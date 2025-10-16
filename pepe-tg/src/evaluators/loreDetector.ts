@@ -6,13 +6,9 @@ import { type Evaluator, type IAgentRuntime, type Memory, type State, ModelType,
  * Extracts and stores the lore for future retrieval
  * 
  * Runs AFTER conversations to analyze if new information was shared
+ * 
+ * SCALES ACROSS ALL CARDS - No hardcoded card list!
  */
-
-// Known cards to monitor
-const MONITORED_CARDS = [
-  'FREEDOMKEK', 'WAGMIWORLD', 'PEPONACID', 'BOOTLEGGED',
-  'FAKEQQ', 'KARPEPELES', 'FAKEASF', 'PEPEPUNK'
-];
 
 export const loreDetectorEvaluator: Evaluator = {
   name: 'FAKE_RARES_LORE_DETECTOR',
@@ -23,15 +19,23 @@ export const loreDetectorEvaluator: Evaluator = {
   examples: [],
   
   validate: async (runtime: IAgentRuntime, message: Memory, state?: State) => {
-    const text = message.content.text?.toUpperCase() || '';
+    const text = message.content.text?.toLowerCase() || '';
     
-    // Only run if message mentions a card
-    const mentionsCard = MONITORED_CARDS.some(card => text.includes(card));
+    // Run if message mentions Fake Rares topics OR has card-like patterns
+    const hasFakeRaresContext = (
+      text.includes('fake rare') ||
+      text.includes('la faka nostra') ||
+      text.includes('rare scrilla') ||
+      text.includes('card') ||
+      text.includes('series') ||
+      text.includes('artist') ||
+      /\b[A-Z]{4,}[A-Z0-9]*\b/.test(message.content.text || '')  // Has all-caps words (potential card names)
+    );
     
     // Don't run on bot's own messages
     const isFromBot = message.entityId === runtime.agentId;
     
-    return mentionsCard && !isFromBot;
+    return hasFakeRaresContext && !isFromBot;
   },
   
   handler: async (runtime: IAgentRuntime, message: Memory, state?: State) => {

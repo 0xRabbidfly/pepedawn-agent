@@ -18,15 +18,15 @@ const FAKE_RARES_BASE_URL = 'https://pepewtf.s3.amazonaws.com/collections/fake-r
 
 /**
  * Constructs the image URL for a Fake Rares card
- * Tries .jpg, .jpeg, and .gif extensions
+ * Tries .jpg, .jpeg, .gif, and .png extensions
  */
-function getFakeRaresImageUrl(assetName: string, seriesNumber: number, extension: 'jpg' | 'jpeg' | 'gif'): string {
+function getFakeRaresImageUrl(assetName: string, seriesNumber: number, extension: 'jpg' | 'jpeg' | 'gif' | 'png'): string {
   return `${FAKE_RARES_BASE_URL}/${seriesNumber}/${assetName.toUpperCase()}.${extension}`;
 }
 
 /**
  * Attempts to find the card image by trying different series numbers (0-18)
- * Tries .jpg, .jpeg, and .gif extensions
+ * Tries .jpg, .jpeg, .gif, and .png extensions
  */
 async function findCardImage(assetName: string): Promise<{ url: string; extension: string } | null> {
   const upperAsset = assetName.toUpperCase();
@@ -35,8 +35,8 @@ async function findCardImage(assetName: string): Promise<{ url: string; extensio
   const knownSeries = getCardSeries(upperAsset);
   if (knownSeries !== undefined) {
     // Try all extensions for the known series
-    for (const ext of ['jpg', 'jpeg', 'gif']) {
-      const testUrl = getFakeRaresImageUrl(upperAsset, knownSeries, ext as 'jpg' | 'jpeg' | 'gif');
+    for (const ext of ['jpg', 'jpeg', 'gif', 'png']) {
+      const testUrl = getFakeRaresImageUrl(upperAsset, knownSeries, ext as 'jpg' | 'jpeg' | 'gif' | 'png');
       try {
         const response = await fetch(testUrl, { method: 'HEAD' });
         if (response.ok) {
@@ -54,8 +54,8 @@ async function findCardImage(assetName: string): Promise<{ url: string; extensio
   
   for (let series = 0; series < SERIES_INFO.TOTAL_SERIES; series++) {
     // Try all extensions
-    for (const ext of ['jpg', 'jpeg', 'gif']) {
-      const testUrl = getFakeRaresImageUrl(upperAsset, series, ext as 'jpg' | 'jpeg' | 'gif');
+    for (const ext of ['jpg', 'jpeg', 'gif', 'png']) {
+      const testUrl = getFakeRaresImageUrl(upperAsset, series, ext as 'jpg' | 'jpeg' | 'gif' | 'png');
       try {
         const response = await fetch(testUrl, { method: 'HEAD' });
         if (response.ok) {
@@ -123,6 +123,8 @@ export const fakeRaresCardAction: Action = {
     options?: any,
     callback?: HandlerCallback
   ) => {
+    let assetName = 'UNKNOWN'; // Declare outside try block for error handling
+    
     try {
       const text = message.content.text || '';
       
@@ -137,99 +139,49 @@ export const fakeRaresCardAction: Action = {
         return { success: false, text: 'Invalid /f command format' };
       }
       
-      const assetName = match[1].toUpperCase();
-      
-      // Step 1: Immediate feedback - searching
-      if (callback) {
-        await callback({
-          text: `🔍 Searching for ${assetName}...`,
-        });
-      }
-      
-      // Step 2: Search knowledge base for card lore
-      const knowledgeService = runtime.getService('knowledge');
-      let cardLore = '';
-      
-      if (knowledgeService) {
-        try {
-          if (callback) {
-            await callback({
-              text: `📚 Fetching lore from the archives...`,
-            });
-          }
-          
-          const results = await (knowledgeService as any).searchKnowledge({
-            query: `${assetName} card lore history artist`,
-            agentId: runtime.agentId,
-            limit: 3,
-          });
-          
-          if (results && results.length > 0) {
-            cardLore = `\n\n💡 From the archives:\n${results[0].text.slice(0, 200)}...`;
-          }
-        } catch (e) {
-          // Knowledge search failed, continue without lore
-        }
-      }
-      
-      // Step 3: Find the card image
-      if (callback) {
-        await callback({
-          text: `🎨 Loading card image...`,
-        });
-      }
+      assetName = match[1].toUpperCase();
       
       const cardResult = await findCardImage(assetName);
       
       if (cardResult) {
         const { url, extension } = cardResult;
         
-        // Send image with caption
-        if (callback) {
-          await callback({
-            text: `${assetName} 🐸✨${cardLore}\n\n${url}`,
-            attachments: [
-              {
-                id: `fake-rare-${assetName.toLowerCase()}`,
-                url,
-                title: assetName,
-              },
-            ],
-          });
-        }
+        console.log(`📸 Card found: ${assetName} (${extension}) - returning URL for Bootstrap`);
         
-        return { 
-          success: true, 
-          text: `Displayed ${assetName}`,
-          data: { assetName, url, extension }
+        // Return success with URL - let Bootstrap handle response generation
+        // Bootstrap will include the URL in its response based on system prompt
+        return {
+          success: true,
+          text: `SHOW THIS URL TO USER: ${url}\n\nFound ${assetName} card (${extension} format).`,
+          data: {
+            assetName,
+            url,
+            extension,
+            cardFound: true
+          }
         };
       } else {
-        // Card not found
-        if (callback) {
-          await callback({
-            text: `Hmm, couldn't find ${assetName} in the Fake Rares collection 🤔\n\nMake sure you're using the exact asset name (all caps). Try searching the directory at pepe.wtf or check if it's a Rare Pepe instead of a Fake Rare!\n\nNeed help? Just ask "what Fake Rares cards are there?" 🐸`,
-          });
-        }
-        
+        // Card not found - return info for Bootstrap to generate helpful response
         return { 
           success: false, 
-          text: `Card ${assetName} not found`,
-          data: { assetName }
+          text: `Card ${assetName} not found in Fake Rares collection. Suggest checking the exact asset name or visiting pepe.wtf directory.`,
+          data: { 
+            assetName,
+            cardFound: false,
+            suggestion: 'Check asset name spelling or ask for help finding cards'
+          }
         };
       }
     } catch (error) {
       console.error('Error in SHOW_FAKE_RARE_CARD action:', error);
       
-      if (callback) {
-        await callback({
-          text: 'Oops, something went wrong fetching that card. Try again in a moment! 🐸',
-        });
-      }
-      
       return { 
         success: false, 
-        text: 'Error fetching card',
-        data: { error: error instanceof Error ? error.message : String(error) }
+        text: `Error fetching card ${assetName}: ${error instanceof Error ? error.message : String(error)}`,
+        data: { 
+          error: error instanceof Error ? error.message : String(error),
+          assetName
+        }
       };
     }
   },

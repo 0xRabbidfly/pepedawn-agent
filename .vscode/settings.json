@@ -2,8 +2,5 @@
   "terminal.integrated.defaultProfile.linux": "bash",
   "terminal.integrated.shell.linux": "/bin/bash",
   "terminal.integrated.cwd": "${workspaceFolder}",
-  "terminal.integrated.automationProfile.linux": {
-    "path": "/bin/bash"
-  }
+  "terminal.integrated.automationProfile.linux": "bash"
 }
-

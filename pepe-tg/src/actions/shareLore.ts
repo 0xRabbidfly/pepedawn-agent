@@ -189,33 +189,41 @@ Your response (YES or NO):`;
 /**
  * Extract search query from user message
  * Identifies card names, topics, and relevant keywords
+ * SCALES ACROSS ALL CARDS - No hardcoded list!
  */
 function extractSearchQuery(text: string): string {
   const upperText = text.toUpperCase();
+  const lowerText = text.toLowerCase();
   
-  // Common card names (add more as discovered)
-  const knownCards = [
-    'FREEDOMKEK', 'WAGMIWORLD', 'PEPONACID', 'BOOTLEGGED', 
-    'FAKEQQ', 'KARPEPELES'
-  ];
+  // Extract all-caps words (potential card names)
+  const capsWords = text.match(/\b[A-Z]{4,}[A-Z0-9]*\b/g) || [];
   
-  // Check for card mentions
-  for (const card of knownCards) {
-    if (upperText.includes(card)) {
-      return `${card} card lore history artist`;
-    }
+  // If we found all-caps words, assume they're card names
+  if (capsWords.length > 0) {
+    const primaryCard = capsWords[0];
+    return `${primaryCard} card lore history artist community`;
   }
   
   // Check for topic keywords
-  if (text.toLowerCase().includes('rare scrilla')) {
+  if (lowerText.includes('rare scrilla')) {
     return 'Rare Scrilla ban FREEDOMKEK genesis story';
   }
   
-  if (text.toLowerCase().includes('la faka nostra')) {
+  if (lowerText.includes('la faka nostra')) {
     return 'La Faka Nostra directory philosophy freedom gatekeeping';
   }
   
+  if (lowerText.includes('genesis') || lowerText.includes('first')) {
+    return 'FREEDOMKEK genesis first card Rare Scrilla origin';
+  }
+  
+  // Extract any meaningful words for search
+  const words = text.toLowerCase().split(/\s+/).filter(w => w.length > 3);
+  if (words.length > 0) {
+    return `Fake Rares ${words.slice(0, 5).join(' ')} lore history`;
+  }
+  
   // Default: general Fake Rares context
-  return `Fake Rares ${text} lore history`;
+  return `Fake Rares lore history community`;
 }
 

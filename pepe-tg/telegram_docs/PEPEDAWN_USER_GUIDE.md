@@ -16,7 +16,7 @@ PEPEDAWN is an AI-powered bot that knows everything about Fake Rares - from card
 ```
 /f FREEDOMKEK
 ```
-Use `/f` followed by any card name (in CAPS) to instantly see the card image with lore from the archives.
+Use `/f` followed by any card name (in CAPS) to instantly see the card image with lore from the archives. The bot will send a single message with the image and lore - no URLs visible!
 
 **Examples:**
 - `/f FREEDOMKEK` - See the genesis card

@@ -4,13 +4,14 @@ import { type Provider, type IAgentRuntime, type Memory, type State } from '@eli
  * Fake Rares Context Provider
  * Detects card mentions and Fake Rares topics in conversations
  * Provides contextual information to help the agent respond intelligently
+ * 
+ * SCALES ACROSS ALL CARDS - Uses dynamic detection instead of hardcoded list
  */
 
-// Known Fake Rares cards (expand as discovered)
-const KNOWN_CARDS = [
-  'FREEDOMKEK', 'WAGMIWORLD', 'PEPONACID', 'BOOTLEGGED',
-  'FAKEQQ', 'KARPEPELES', 'FAKEASF', 'PEPEPUNK'
-];
+import { CARD_SERIES_MAP } from '../data/cardSeriesMap';
+
+// Get all known cards dynamically from the series map
+const getKnownCards = (): string[] => Object.keys(CARD_SERIES_MAP);
 
 // Community-specific terminology
 const FAKE_RARES_TERMS = [
@@ -26,8 +27,9 @@ export const fakeRaresContextProvider: Provider = {
     const text = message.content.text?.toUpperCase() || '';
     const lowerText = text.toLowerCase();
     
-    // Detect mentioned cards
-    const mentionedCards = KNOWN_CARDS.filter(card => 
+    // Detect mentioned cards dynamically from all known cards
+    const knownCards = getKnownCards();
+    const mentionedCards = knownCards.filter(card => 
       text.includes(card)
     );
     
