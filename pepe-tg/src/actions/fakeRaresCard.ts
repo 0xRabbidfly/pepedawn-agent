@@ -146,13 +146,19 @@ export const fakeRaresCardAction: Action = {
       if (cardResult) {
         const { url, extension } = cardResult;
         
-        console.log(`📸 Card found: ${assetName} (${extension}) - returning URL for Bootstrap`);
+        console.log(`📸 Card found: ${assetName} (${extension}) - sending response`);
         
-        // Return success with URL - let Bootstrap handle response generation
-        // Bootstrap will include the URL in its response based on system prompt
+        // Call callback to send response (non-blocking, per telegram plugin examples)
+        if (callback) {
+          callback({
+            text: url, // Send just the URL for Telegram to display inline
+          }).catch((err) => console.error('Error sending Telegram callback:', err));
+        }
+        
+        // Return success result for action tracking
         return {
           success: true,
-          text: `SHOW THIS URL TO USER: ${url}\n\nFound ${assetName} card (${extension} format).`,
+          text: `Displayed ${assetName} card`,
           data: {
             assetName,
             url,

@@ -19,7 +19,13 @@ export const loreDetectorEvaluator: Evaluator = {
   examples: [],
   
   validate: async (runtime: IAgentRuntime, message: Memory, state?: State) => {
-    const text = message.content.text?.toLowerCase() || '';
+    const rawText = message.content.text || '';
+    const text = rawText.toLowerCase();
+
+    // Skip evaluator on bot commands (e.g., /f, /p)
+    if (rawText.trim().startsWith('/')) {
+      return false;
+    }
     
     // Run if message mentions Fake Rares topics OR has card-like patterns
     const hasFakeRaresContext = (
@@ -66,7 +72,7 @@ Examples:
 - "WAGMIWORLD had 770 players" → YES, factual, worth saving
 - "I love FREEDOMKEK" → NO, just opinion
 - "Rare Scrilla created FREEDOMKEK after getting banned" → YES, historical fact`;
-
+      
       const prompt = loreDetectionTemplate;
       
       const assessment = await runtime.useModel(ModelType.TEXT_SMALL, {
