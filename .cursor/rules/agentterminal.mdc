@@ -1,5 +1,0 @@
----
-alwaysApply: true
----
-Agent mode will always use WSL2 for terminal commands - never powershell
-Use the pattern: wsl bash -c "cd /home/nuno/projects/Fake-Rare-TG-Agent && [command]"

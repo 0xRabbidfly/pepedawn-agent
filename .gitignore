@@ -24,3 +24,5 @@ result.json
 
 # Backup directories
 pepe-tg.1/
+# Generated knowledge chunks
+docs/
