@@ -1,0 +1,26 @@
+# Node dependencies
+node_modules/
+**/node_modules/
+
+# Build output
+dist/
+**/dist/
+
+# Environment files
+.env
+**/.env
+.env.local
+**/.env.local
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Eliza config
+.eliza/
+**/.eliza/
+
+# Large result files
+result.json
+
+# Backup directories
+pepe-tg.1/
