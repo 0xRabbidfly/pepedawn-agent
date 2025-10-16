@@ -1,22 +1,20 @@
 import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, type State } from '@elizaos/core';
+import { getCardSeries, addCardToMap, isKnownCard, SERIES_INFO } from '../data/cardSeriesMap';
 
 /**
  * Fake Rares Card Display Action
  * Responds to /f <ASSET> commands by fetching and displaying card images
  * 
  * URL Structure: https://pepewtf.s3.amazonaws.com/collections/fake-rares/full/{SERIES}/{ASSET}.{jpg|gif}
- * Series 0-18 (18 is currently releasing)
+ * Series 0-18 (19 series total, 50 cards each = ~950 total cards)
+ * 
+ * Performance optimization:
+ * - Known cards: ~200ms (direct lookup, 1-3 HTTP requests)
+ * - Unknown cards: ~2-10s (search series 0-18, auto-cache result)
  */
 
 // Base URL for Fake Rares card images
 const FAKE_RARES_BASE_URL = 'https://pepewtf.s3.amazonaws.com/collections/fake-rares/full';
-
-// Known card series and their series numbers (expand as you discover more)
-const CARD_SERIES_MAP: Record<string, number> = {
-  'KARPEPELES': 0,
-  'FREEDOMKEK': 0,  // First Fake Rare - series 0 (confirmed!)
-  // Add more as discovered from chat history
-};
 
 /**
  * Constructs the image URL for a Fake Rares card
@@ -33,15 +31,16 @@ function getFakeRaresImageUrl(assetName: string, seriesNumber: number, extension
 async function findCardImage(assetName: string): Promise<{ url: string; extension: string } | null> {
   const upperAsset = assetName.toUpperCase();
   
-  // Try known mapping first
-  const knownSeries = CARD_SERIES_MAP[upperAsset];
+  // Try known mapping first (fast path)
+  const knownSeries = getCardSeries(upperAsset);
   if (knownSeries !== undefined) {
-    // Try all extensions
+    // Try all extensions for the known series
     for (const ext of ['jpg', 'jpeg', 'gif']) {
       const testUrl = getFakeRaresImageUrl(upperAsset, knownSeries, ext as 'jpg' | 'jpeg' | 'gif');
       try {
         const response = await fetch(testUrl, { method: 'HEAD' });
         if (response.ok) {
+          console.log(`✅ Found ${upperAsset} in series ${knownSeries} (${ext}) - cached lookup`);
           return { url: testUrl, extension: ext };
         }
       } catch (e) {
@@ -50,8 +49,10 @@ async function findCardImage(assetName: string): Promise<{ url: string; extensio
     }
   }
   
-  // Search through all series 0-18
-  for (let series = 0; series <= 18; series++) {
+  // Unknown card - search through all series (slow path)
+  console.log(`🔍 ${upperAsset} not in cache, searching series 0-${SERIES_INFO.TOTAL_SERIES - 1}...`);
+  
+  for (let series = 0; series < SERIES_INFO.TOTAL_SERIES; series++) {
     // Try all extensions
     for (const ext of ['jpg', 'jpeg', 'gif']) {
       const testUrl = getFakeRaresImageUrl(upperAsset, series, ext as 'jpg' | 'jpeg' | 'gif');
@@ -59,8 +60,8 @@ async function findCardImage(assetName: string): Promise<{ url: string; extensio
         const response = await fetch(testUrl, { method: 'HEAD' });
         if (response.ok) {
           // Cache this for future use
-          CARD_SERIES_MAP[upperAsset] = series;
-          console.log(`✅ Found ${upperAsset} in series ${series} (${ext})`);
+          addCardToMap(upperAsset, series);
+          console.log(`✅ Found ${upperAsset} in series ${series} (${ext}) - added to cache`);
           return { url: testUrl, extension: ext };
         }
       } catch (e) {
@@ -69,6 +70,7 @@ async function findCardImage(assetName: string): Promise<{ url: string; extensio
     }
   }
   
+  console.log(`❌ ${upperAsset} not found in any series 0-${SERIES_INFO.TOTAL_SERIES - 1}`);
   return null;
 }
 
