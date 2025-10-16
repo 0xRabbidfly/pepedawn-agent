@@ -1,0 +1,2 @@
+export { loreDetectorEvaluator } from './loreDetector';
+
