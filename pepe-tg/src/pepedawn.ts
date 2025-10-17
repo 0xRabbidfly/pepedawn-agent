@@ -10,7 +10,10 @@ import { type Character } from '@elizaos/core';
 export const character: Character = {
   name: 'PEPEDAWN',
   plugins: [
-    // Core plugins first
+    // Bootstrap plugin - MUST be first! Provides core message handling and event system
+    ...(!process.env.IGNORE_BOOTSTRAP ? ['@elizaos/plugin-bootstrap'] : []),
+
+    // Core plugins
     '@elizaos/plugin-sql',
 
     // Knowledge plugin for enhanced information retrieval
@@ -36,9 +39,6 @@ export const character: Character = {
     process.env.TWITTER_ACCESS_TOKEN_SECRET?.trim()
       ? ['@elizaos/plugin-twitter']
       : []),
-
-    // Bootstrap plugin
-    ...(!process.env.IGNORE_BOOTSTRAP ? ['@elizaos/plugin-bootstrap'] : []),
   ],
   settings: {
     secrets: {},
