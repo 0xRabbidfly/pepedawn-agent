@@ -16,10 +16,13 @@ export interface CardInfo {
   asset: string;
   series: number;
   card: number;  // Card number within series (1-50)
-  ext: 'jpeg' | 'png' | 'gif';
+  ext: 'jpeg' | 'png' | 'gif' | 'mp4' | 'jpg' | 'webp';
   artist: string | null;
   artistSlug: string | null;
   supply: number | null;
+  issuance?: string | null;  // Release date (e.g., "September 2021")
+  videoUri?: string | null;  // Direct video URL (for mp4 files, often on Arweave)
+  imageUri?: string | null;  // Direct image URL (alternative to constructed URL)
   issues?: string[];  // Optional: Data quality issues like 'no_artist', 'no_supply', etc.
 }
 

@@ -5,7 +5,7 @@
 **Status**: Draft  
 **Input**: User description: "$ARGUMENTS"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios *(mandatory)*
 
 <!--
   IMPORTANT: User stories should be PRIORITIZED as user journeys ordered by importance.
@@ -26,7 +26,7 @@
 
 **Why this priority**: [Explain the value and why it has this priority level]
 
-**Independent Test**: [Describe how this can be tested independently - e.g., "Can be fully tested by [specific action] and delivers [specific value]"]
+**Independent Verification**: [Describe how to verify independently - e.g., "Manual chat flow walkthrough or scripted check; delivers [specific value]"]
 
 **Acceptance Scenarios**:
 
@@ -41,7 +41,7 @@
 
 **Why this priority**: [Explain the value and why it has this priority level]
 
-**Independent Test**: [Describe how this can be tested independently]
+**Independent Verification**: [Describe how this can be verified independently]
 
 **Acceptance Scenarios**:
 
@@ -55,7 +55,7 @@
 
 **Why this priority**: [Explain the value and why it has this priority level]
 
-**Independent Test**: [Describe how this can be tested independently]
+**Independent Verification**: [Describe how this can be verified independently]
 
 **Acceptance Scenarios**:
 
