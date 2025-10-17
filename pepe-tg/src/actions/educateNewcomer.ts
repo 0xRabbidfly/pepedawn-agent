@@ -141,34 +141,46 @@ QUESTION: [main question]`;
       }
       
       // Search knowledge base for relevant intro content
-      const knowledgeService = runtime.getService('knowledge');
       let educationContent = '';
       
-      if (knowledgeService) {
-        try {
-          const searchQuery = buildEducationQuery(level, question);
+      try {
+        const searchQuery = buildEducationQuery(level, question);
+        console.log(`🔍 [educateNewcomer] Searching knowledge for: "${searchQuery}"`);
+        
+        // Wrap search in timeout to prevent hanging
+        // Use runtime.searchMemories directly (not through service!)
+        const searchPromise = runtime.searchMemories({
+          tableName: 'knowledge',
+          roomId: message.roomId,
+          query: searchQuery,
+          count: 5,
+          match_threshold: 0.5,
+        });
           
-          const results = await (knowledgeService as any).searchKnowledge({
-            query: searchQuery,
-            agentId: runtime.agentId,
-            limit: 5,
-          });
+          const timeoutPromise = new Promise((_, reject) => 
+            setTimeout(() => reject(new Error('Knowledge search timeout')), 5000)
+          );
           
-          if (results && results.length > 0) {
-            // Aggregate knowledge from results
-            educationContent = results
-              .slice(0, 3)
-              .map((r: any) => r.text)
-              .join('\n\n');
-            
-            // Keep it concise for Telegram
-            if (educationContent.length > 800) {
-              educationContent = educationContent.slice(0, 800) + '...';
-            }
+          const results = await Promise.race([searchPromise, timeoutPromise]);
+          
+          console.log(`📚 [educateNewcomer] Found ${results?.length || 0} knowledge results`);
+          
+        if (results && results.length > 0) {
+          // Aggregate knowledge from results
+          educationContent = results
+            .slice(0, 3)
+            .map((r: any) => r.content?.text || '')
+            .filter((text: string) => text.length > 0)
+            .join('\n\n');
+          
+          // Keep it concise for Telegram
+          if (educationContent.length > 800) {
+            educationContent = educationContent.slice(0, 800) + '...';
           }
-        } catch (e) {
-          // Knowledge search failed
         }
+      } catch (e) {
+        console.error(`❌ [educateNewcomer] Knowledge search failed:`, e instanceof Error ? e.message : String(e));
+        // Continue without knowledge rather than hanging
       }
       
       // Build welcome message based on level

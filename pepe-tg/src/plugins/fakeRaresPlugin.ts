@@ -14,14 +14,14 @@ export const fakeRaresPlugin: Plugin = {
     startCommand,             // /start command
     helpCommand,              // /help command
     fakeRaresCardAction,      // /f command for card display
-    shareLoreAction,          // Proactive lore sharing
-    educateNewcomerAction,    // Newcomer detection and onboarding
+    // shareLoreAction,       // DISABLED: Bootstrap handles natural language + embeddings better
+    // educateNewcomerAction, // DISABLED: Bootstrap handles this naturally
   ],
   providers: [
-    fakeRaresContextProvider,  // Detects card mentions and community context
+    fakeRaresContextProvider,  // Detects card mentions and community context (pure string matching - safe)
   ],
   evaluators: [
-    loreDetectorEvaluator,     // Detects and curates new lore from conversations
+    // loreDetectorEvaluator,  // DISABLED: Uses LLM calls that hang when multiple actions compete
   ],
   services: [],
 };

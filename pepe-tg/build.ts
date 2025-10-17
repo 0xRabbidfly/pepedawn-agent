@@ -4,7 +4,7 @@
  */
 
 import { existsSync } from 'node:fs';
-import { rm } from 'node:fs/promises';
+import { rm, mkdir, copyFile } from 'node:fs/promises';
 import { $ } from 'bun';
 
 async function cleanBuild(outdir = 'dist') {
@@ -75,6 +75,20 @@ async function build() {
         } catch (error) {
           console.warn('⚠ Failed to generate TypeScript declarations');
           console.warn('  This is usually due to test files or type errors.');
+          return { success: false };
+        }
+      })(),
+
+      // Task 3: Copy data files
+      (async () => {
+        console.log('📋 Copying data files...');
+        try {
+          await mkdir('dist/data', { recursive: true });
+          await copyFile('src/data/fake-rares-data.json', 'dist/data/fake-rares-data.json');
+          console.log('✓ Copied fake-rares-data.json to dist/data/');
+          return { success: true };
+        } catch (error) {
+          console.warn('⚠ Failed to copy data files:', error);
           return { success: false };
         }
       })(),

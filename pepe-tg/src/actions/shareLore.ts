@@ -46,25 +46,35 @@ export const shareLoreAction: Action = {
   ],
   
   validate: async (runtime: IAgentRuntime, message: Memory, state?: State) => {
-    const text = message.content.text?.toLowerCase() || '';
+    const text = message.content.text || '';
+    const lowerText = text.toLowerCase();
+    
+    console.log(`🔍 [shareLore.validate] Checking: "${text}"`);
     
     // Don't trigger if user explicitly used /f command
-    if (text.startsWith('/f ')) {
+    if (lowerText.startsWith('/f ')) {
+      console.log(`❌ [shareLore.validate] Skipping /f command`);
       return false;
     }
+    
+    // Check for ALL-CAPS card names (potential Fake Rares)
+    const hasCardName = /\b[A-Z]{4,}[A-Z0-9]*\b/.test(text);
     
     // Check if message mentions Fake Rares topics
     const fakeRaresKeywords = [
       'fake rare', 'fake rares', 'freedomkek', 'wagmiworld', 'peponacid',
       'rare scrilla', 'la faka nostra', 'counterparty', 'rare pepe',
-      'card', 'series', 'artist', 'lore', 'genesis'
+      'card', 'series', 'artist', 'lore', 'genesis', 'tell me about', 'what is'
     ];
     
-    const hasFakeRaresContext = fakeRaresKeywords.some(keyword => 
-      text.includes(keyword.toLowerCase())
+    const hasKeyword = fakeRaresKeywords.some(keyword => 
+      lowerText.includes(keyword.toLowerCase())
     );
     
-    return hasFakeRaresContext;
+    const shouldTrigger = hasCardName || hasKeyword;
+    console.log(`${shouldTrigger ? '✅' : '❌'} [shareLore.validate] CardName: ${hasCardName}, Keyword: ${hasKeyword} → ${shouldTrigger}`);
+    
+    return shouldTrigger;
   },
   
   handler: async (
@@ -74,100 +84,76 @@ export const shareLoreAction: Action = {
     options?: any,
     callback?: HandlerCallback
   ) => {
+    console.log(`🚀 [shareLore.handler] STARTED for message: "${message.content.text}"`);
+    
     try {
-      // Compose state with recent messages for context
-      const composedState = await runtime.composeState(message, [
-        'recentMessages', 'characterDescription'
-      ]);
+      // Validation already confirmed this is card-related, skip LLM decision to avoid hanging
+      // Extract topics mentioned for knowledge search
+      const text = message.content.text || '';
+      const searchQuery = extractSearchQuery(text);
       
-      // Create decision prompt
-      const shouldShareTemplate = `# Task: Should {{agentName}} share Fake Rares lore?
-
-{{recentMessages}}
-
-Current message: "${message.content.text}"
-
-Context: {{agentName}} is an OG Fake Rares community member who knows all the lore, history, and card details.
-
-Should {{agentName}} proactively share relevant Fake Rares knowledge or lore in response to this conversation?
-
-Respond YES if:
-- Someone asks about a specific card or artist
-- Discussion is about Fake Rares history or culture
-- User seems curious or wants to learn
-- Context would benefit from insider knowledge
-- Opportunity to educate or share stories
-
-Respond NO if:
-- Question already answered in conversation
-- Off-topic or unrelated discussion
-- Just casual greetings or small talk
-- User explicitly doesn't want information
-
-Your response (YES or NO):`;
-
-      const prompt = composePromptFromState({ 
-        state: composedState, 
-        template: shouldShareTemplate 
-      });
+      console.log(`🔍 [shareLore] Searching knowledge for: "${searchQuery}"`);
       
-      const decision = await runtime.useModel(ModelType.TEXT_SMALL, {
-        prompt,
-        runtime,
-      });
+      // Search knowledge base for relevant lore with timeout
+      let loreContent = '';
       
-      if (decision.toLowerCase().includes('yes')) {
-        // Extract topics mentioned for knowledge search
-        const text = message.content.text || '';
-        const searchQuery = extractSearchQuery(text);
+      try {
+        // Use runtime.searchMemories directly (not through service!)
+        const searchPromise = runtime.searchMemories({
+          tableName: 'knowledge',
+          roomId: message.roomId,
+          query: searchQuery,
+          count: 3,
+          match_threshold: 0.5,
+        });
+          
+        const timeoutPromise = new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Knowledge search timeout')), 5000)
+        );
         
-        // Search knowledge base for relevant lore
-        const knowledgeService = runtime.getService('knowledge');
-        let loreContent = '';
+        const results = await Promise.race([searchPromise, timeoutPromise]);
         
-        if (knowledgeService) {
-          try {
-            const results = await (knowledgeService as any).searchKnowledge({
-              query: searchQuery,
-              agentId: runtime.agentId,
-              limit: 3,
-            });
-            
-            if (results && results.length > 0) {
-              // Use first result as primary lore
-              loreContent = results[0].text;
-              
-              // Trim to reasonable length for chat
-              if (loreContent.length > 500) {
-                loreContent = loreContent.slice(0, 500) + '...';
-              }
-            }
-          } catch (e) {
-            // Knowledge search failed
-          }
-        }
+        console.log(`📚 [shareLore] Found ${results?.length || 0} knowledge results`);
         
-        if (loreContent) {
-          // Share the lore via callback
-          if (callback) {
-            await callback({
-              text: `${loreContent}\n\nWAGMI 🐸✨`,
-            });
+        if (results && results.length > 0) {
+          // Use first result as primary lore
+          loreContent = results[0].content?.text || '';
+          
+          // Trim to reasonable length for chat
+          if (loreContent.length > 500) {
+            loreContent = loreContent.slice(0, 500) + '...';
           }
           
-          return {
-            success: true,
-            text: 'Shared Fake Rares lore',
-            data: {
-              lore: loreContent,
-              searchQuery,
-              trigger: 'proactive'
-            }
-          };
+          console.log(`✅ [shareLore] Using lore (${loreContent.length} chars)`);
+        } else {
+          console.log(`⚠️ [shareLore] No lore found in knowledge base`);
         }
+      } catch (e) {
+        console.error(`❌ [shareLore] Knowledge search failed:`, e instanceof Error ? e.message : String(e));
+        // Continue without lore rather than hanging
       }
       
-      // Decision was NO or no lore found
+      if (loreContent) {
+        // Share the lore via callback
+        if (callback) {
+          await callback({
+            text: `${loreContent}\n\nWAGMI 🐸✨`,
+          });
+        }
+        
+        return {
+          success: true,
+          text: 'Shared Fake Rares lore',
+          data: {
+            lore: loreContent,
+            searchQuery,
+            trigger: 'proactive'
+          }
+        };
+      }
+      
+      // No lore found
+      console.log(`⏭️ [shareLore.handler] Declining - no lore needed`);
       return {
         success: false,
         text: 'No lore sharing needed',
@@ -175,7 +161,7 @@ Your response (YES or NO):`;
       };
       
     } catch (error) {
-      console.error('Error in SHARE_FAKE_RARES_LORE action:', error);
+      console.error(`💥 [shareLore.handler] ERROR:`, error);
       
       return {
         success: false,
