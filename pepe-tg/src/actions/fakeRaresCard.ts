@@ -1,4 +1,4 @@
-import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, type State } from '@elizaos/core';
+import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, type State, ModelType } from '@elizaos/core';
 import { getCardSeries, addCardToMap, isKnownCard, SERIES_INFO, getCardExtension } from '../data/cardSeriesMap';
 import { getCardInfo, type CardInfo } from '../data/fullCardIndex';
 
@@ -23,6 +23,79 @@ const FAKE_RARES_BASE_URL = 'https://pepewtf.s3.amazonaws.com/collections/fake-r
  */
 function getFakeRaresImageUrl(assetName: string, seriesNumber: number, extension: 'jpg' | 'jpeg' | 'gif' | 'png' | 'mp4' | 'webp'): string {
   return `${FAKE_RARES_BASE_URL}/${seriesNumber}/${assetName.toUpperCase()}.${extension}`;
+}
+
+/**
+ * Fetch lore snippets from knowledge base using runtime.searchMemories
+ * Same approach as shareLore.ts (confirmed working on master)
+ */
+async function fetchLoreSnippets(runtime: IAgentRuntime, message: Memory, assetName: string): Promise<string[]> {
+  try {
+    console.log(`🔍 Searching for lore about ${assetName}...`);
+    
+    // Generate embedding for the search query (same approach as knowledge plugin)
+    const embedding = await runtime.useModel(ModelType.TEXT_EMBEDDING, {
+      text: assetName,
+    });
+    
+    if (!embedding || !Array.isArray(embedding)) {
+      console.log(`⚠️  Failed to generate embedding for "${assetName}"`);
+      return [];
+    }
+    
+    console.log(`✅ Generated embedding (dimension: ${embedding.length})`);
+    
+    // Try without roomId restriction first (knowledge is often global)
+    const searchPromise = runtime.searchMemories({
+      tableName: 'knowledge',
+      embedding,  // Pass the pre-generated embedding
+      query: assetName,
+      count: 10,
+      match_threshold: 0.25,  // Higher threshold for more precise matches
+    });
+    
+    const timeoutPromise = new Promise<any>((_, reject) => 
+      setTimeout(() => reject(new Error('Lore search timeout')), 5000)
+    );
+    
+    const results = await Promise.race([searchPromise, timeoutPromise]);
+    
+    if (!results || !Array.isArray(results) || results.length === 0) {
+      console.log(`ℹ️  No lore found for ${assetName}`);
+      
+      // Check if knowledge table has any entries at all
+      try {
+        const allKnowledge = await runtime.messageManager.getMemories({
+          tableName: 'knowledge',
+          count: 1,
+        });
+        console.log(`📊 Knowledge table has ${allKnowledge?.length || 0} total entries`);
+      } catch (e) {
+        console.log(`⚠️  Could not check knowledge table:`, e instanceof Error ? e.message : String(e));
+      }
+      
+      return [];
+    }
+    
+    console.log(`📚 Found ${results.length} lore entries for ${assetName}`);
+    
+    return results
+      .map((r: any) => r?.content?.text || '')
+      .filter((t: string) => t.length > 0);
+  } catch (err) {
+    console.error(`❌ Lore search failed for ${assetName}:`, err instanceof Error ? err.message : String(err));
+    return [];
+  }
+}
+
+function pickRandom<T>(items: T[]): T | null {
+  if (!items || items.length === 0) return null;
+  return items[Math.floor(Math.random() * items.length)] ?? null;
+}
+
+function truncate(text: string, maxLen: number): string {
+  if (text.length <= maxLen) return text;
+  return text.slice(0, Math.max(0, maxLen - 1)).trimEnd() + '…';
 }
 
 /**
@@ -186,6 +259,15 @@ export const fakeRaresCardAction: Action = {
       if (actualUrl) {
         console.log(`📸 Card found: ${assetName} (${extension}) - sending response`);
         
+        // Fetch lore snippets (random selection, 250 char max)
+        const loreCandidates = await fetchLoreSnippets(runtime, message, assetName);
+        const selectedLore = pickRandom(loreCandidates);
+        const lore = selectedLore ? truncate(selectedLore, 250) : null;
+        
+        if (lore) {
+          console.log(`📚 Lore selected (${lore.length} chars)`);
+        }
+        
         // Build rich card info message
         let cardDetailsText = actualUrl; // Start with media URL
         
@@ -222,6 +304,11 @@ export const fakeRaresCardAction: Action = {
           if (details.length > 0) {
             cardDetailsText = actualUrl + '\n\n' + details.join('\n');
           }
+        }
+        
+        // Append lore if available
+        if (lore) {
+          cardDetailsText += '\n\n📜 ' + lore;
         }
         
         // Call callback to send response (non-blocking, per telegram plugin examples)
