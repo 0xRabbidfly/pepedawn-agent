@@ -332,7 +332,7 @@ export const fakeRaresCardAction: Action = {
           const details: string[] = [];
           
           // Series - Card & Supply on same line
-          let seriesLine = `🎴 Series ${cardInfo.series} - Card ${cardInfo.card}`;
+          let seriesLine = `🐸 Series ${cardInfo.series} - Card ${cardInfo.card}`;
           if (cardInfo.supply) {
             seriesLine += ` • 💎 Supply: ${cardInfo.supply.toLocaleString()}`;
           }
