@@ -19,9 +19,9 @@ const FAKE_RARES_BASE_URL = 'https://pepewtf.s3.amazonaws.com/collections/fake-r
 
 /**
  * Constructs the image URL for a Fake Rares card
- * Tries .jpg, .jpeg, .gif, and .png extensions
+ * Tries .jpg, .jpeg, .gif, .png, .mp4, and .webp extensions
  */
-function getFakeRaresImageUrl(assetName: string, seriesNumber: number, extension: 'jpg' | 'jpeg' | 'gif' | 'png'): string {
+function getFakeRaresImageUrl(assetName: string, seriesNumber: number, extension: 'jpg' | 'jpeg' | 'gif' | 'png' | 'mp4' | 'webp'): string {
   return `${FAKE_RARES_BASE_URL}/${seriesNumber}/${assetName.toUpperCase()}.${extension}`;
 }
 
@@ -152,29 +152,95 @@ export const fakeRaresCardAction: Action = {
       
       assetName = match[1].toUpperCase();
       
-      const cardResult = await findCardImage(assetName);
+      // Get full card metadata first
+      const cardInfo = getCardInfo(assetName);
       
-      if (cardResult) {
-        const { url, extension } = cardResult;
-        
+      // Determine the actual URL to use (prefer videoUri/imageUri from metadata)
+      let actualUrl: string | null = null;
+      let extension: string | null = null;
+      
+      if (cardInfo) {
+        // Prefer videoUri for mp4 files
+        if (cardInfo.ext === 'mp4' && cardInfo.videoUri) {
+          actualUrl = cardInfo.videoUri;
+          extension = 'mp4';
+          console.log(`🎬 Using videoUri for ${assetName}: ${actualUrl}`);
+        }
+        // Or imageUri if specified
+        else if (cardInfo.imageUri) {
+          actualUrl = cardInfo.imageUri;
+          extension = cardInfo.ext;
+          console.log(`🖼️ Using imageUri for ${assetName}: ${actualUrl}`);
+        }
+      }
+      
+      // Fall back to finding the card via HTTP probing
+      if (!actualUrl) {
+        const cardResult = await findCardImage(assetName);
+        if (cardResult) {
+          actualUrl = cardResult.url;
+          extension = cardResult.extension;
+        }
+      }
+      
+      if (actualUrl) {
         console.log(`📸 Card found: ${assetName} (${extension}) - sending response`);
+        
+        // Build rich card info message
+        let cardDetailsText = actualUrl; // Start with media URL
+        
+        if (cardInfo) {
+          const details: string[] = [];
+          
+          // Series - Card
+          details.push(`🎴 Series ${cardInfo.series} - Card ${cardInfo.card}`);
+          
+          // Supply
+          if (cardInfo.supply) {
+            details.push(`💎 Supply: ${cardInfo.supply.toLocaleString()}`);
+          }
+          
+          // Author with link
+          if (cardInfo.artist) {
+            const artistLink = cardInfo.artistSlug 
+              ? `https://pepe.wtf/artists/${cardInfo.artistSlug}`
+              : null;
+            
+            const artistText = artistLink
+              ? `👨‍🎨 ${cardInfo.artist} (${artistLink})`
+              : `👨‍🎨 ${cardInfo.artist}`;
+            
+            details.push(artistText);
+          }
+          
+          // Released date
+          if (cardInfo.issuance) {
+            details.push(`📅 Released: ${cardInfo.issuance}`);
+          }
+          
+          // Append details after URL
+          if (details.length > 0) {
+            cardDetailsText = actualUrl + '\n\n' + details.join('\n');
+          }
+        }
         
         // Call callback to send response (non-blocking, per telegram plugin examples)
         if (callback) {
           callback({
-            text: url, // Send just the URL for Telegram to display inline
+            text: cardDetailsText,
           }).catch((err) => console.error('Error sending Telegram callback:', err));
         }
         
         // Return success result for action tracking
         return {
           success: true,
-          text: `Displayed ${assetName} card`,
+          text: `Displayed ${assetName} card with metadata`,
           data: {
             assetName,
-            url,
+            url: actualUrl,
             extension,
-            cardFound: true
+            cardFound: true,
+            cardInfo
           }
         };
       } else {
