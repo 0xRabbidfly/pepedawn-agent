@@ -79,9 +79,62 @@ async function fetchLoreSnippets(runtime: IAgentRuntime, message: Memory, assetN
     
     console.log(`📚 Found ${results.length} lore entries for ${assetName}`);
     
-    return results
+    // Extract raw lore text
+    const loreCandidates = results
       .map((r: any) => r?.content?.text || '')
       .filter((t: string) => t.length > 0);
+    
+    if (loreCandidates.length === 0) {
+      return [];
+    }
+    
+    // Pick random lore snippet and prettify it with LLM
+    const rawLore = pickRandom(loreCandidates);
+    if (!rawLore) {
+      return [];
+    }
+    
+    // LLM prettification - DISABLED for now
+    // TODO: Re-enable once LLM hanging issue is resolved
+    /*
+    console.log(`🎨 Prettifying lore snippet (${rawLore.length} chars)...`);
+    
+    try {
+      // Truncate raw lore if too long (to avoid huge prompts)
+      const truncatedLore = rawLore.length > 500 ? rawLore.slice(0, 500) + '...' : rawLore;
+      
+      const prompt = `You are PEPEDAWN, the legendary Fake Rares OG. Transform this raw knowledge snippet into a fun, engaging fact about ${assetName}. Keep it 2-3 sentences max, casual but accurate.
+
+Raw info:
+${truncatedLore}
+
+Engaging tidbit about ${assetName}:`;
+
+      const llmPromise = runtime.useModel(ModelType.TEXT_SMALL, {
+        prompt,
+        runtime,
+      });
+      
+      const timeoutPromise = new Promise<string>((_, reject) =>
+        setTimeout(() => reject(new Error('LLM timeout')), 3000)
+      );
+      
+      const prettifiedLore = await Promise.race([llmPromise, timeoutPromise]);
+      
+      if (prettifiedLore && typeof prettifiedLore === 'string') {
+        const cleanLore = prettifiedLore.trim();
+        console.log(`✨ Lore prettified successfully (${cleanLore.length} chars)`);
+        return [cleanLore];
+      }
+    } catch (e) {
+      console.log(`⚠️  LLM prettification failed, using raw lore:`, e instanceof Error ? e.message : String(e));
+      // Fallback to raw lore if LLM fails
+      return [rawLore.slice(0, 250)];
+    }
+    */
+    
+    // Return raw lore for now
+    return [rawLore.slice(0, 250)];
   } catch (err) {
     console.error(`❌ Lore search failed for ${assetName}:`, err instanceof Error ? err.message : String(err));
     return [];
@@ -259,7 +312,9 @@ export const fakeRaresCardAction: Action = {
       if (actualUrl) {
         console.log(`📸 Card found: ${assetName} (${extension}) - sending response`);
         
-        // Fetch lore snippets (random selection, 250 char max)
+        // Lore fetching - DISABLED for now
+        // TODO: Re-enable once ready
+        /*
         const loreCandidates = await fetchLoreSnippets(runtime, message, assetName);
         const selectedLore = pickRandom(loreCandidates);
         const lore = selectedLore ? truncate(selectedLore, 250) : null;
@@ -267,6 +322,8 @@ export const fakeRaresCardAction: Action = {
         if (lore) {
           console.log(`📚 Lore selected (${lore.length} chars)`);
         }
+        */
+        const lore = null; // Disabled
         
         // Build rich card info message
         let cardDetailsText = actualUrl; // Start with media URL
@@ -274,13 +331,12 @@ export const fakeRaresCardAction: Action = {
         if (cardInfo) {
           const details: string[] = [];
           
-          // Series - Card
-          details.push(`🎴 Series ${cardInfo.series} - Card ${cardInfo.card}`);
-          
-          // Supply
+          // Series - Card & Supply on same line
+          let seriesLine = `🎴 Series ${cardInfo.series} - Card ${cardInfo.card}`;
           if (cardInfo.supply) {
-            details.push(`💎 Supply: ${cardInfo.supply.toLocaleString()}`);
+            seriesLine += ` • 💎 Supply: ${cardInfo.supply.toLocaleString()}`;
           }
+          details.push(seriesLine);
           
           // Author with link
           if (cardInfo.artist) {
