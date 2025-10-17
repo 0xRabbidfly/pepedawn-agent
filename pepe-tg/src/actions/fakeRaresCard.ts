@@ -1,5 +1,5 @@
 import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, type State } from '@elizaos/core';
-import { getCardSeries, addCardToMap, isKnownCard, SERIES_INFO } from '../data/cardSeriesMap';
+import { getCardSeries, addCardToMap, isKnownCard, SERIES_INFO, getCardExtension } from '../data/cardSeriesMap';
 import { getCardInfo, type CardInfo } from '../data/fullCardIndex';
 
 /**

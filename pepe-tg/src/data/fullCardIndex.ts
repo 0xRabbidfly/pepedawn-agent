@@ -15,7 +15,12 @@ import * as path from 'path';
 export interface CardInfo {
   asset: string;
   series: number;
+  card: number;  // Card number within series (1-50)
   ext: 'jpeg' | 'png' | 'gif';
+  artist: string | null;
+  artistSlug: string | null;
+  supply: number | null;
+  issues?: string[];  // Optional: Data quality issues like 'no_artist', 'no_supply', etc.
 }
 
 // Load the full card index from JSON file
@@ -79,6 +84,38 @@ export function isInFullIndex(cardName: string): boolean {
 }
 
 /**
+ * Get cards by artist
+ */
+export function getCardsByArtist(artistName: string): CardInfo[] {
+  return FULL_CARD_INDEX.filter(card => 
+    card.artist?.toLowerCase() === artistName.toLowerCase()
+  );
+}
+
+/**
+ * Get cards with specific issues
+ */
+export function getCardsWithIssues(issueType?: string): CardInfo[] {
+  if (issueType) {
+    return FULL_CARD_INDEX.filter(card => 
+      card.issues?.includes(issueType)
+    );
+  }
+  return FULL_CARD_INDEX.filter(card => card.issues !== null);
+}
+
+/**
+ * Get all unique artists
+ */
+export function getAllArtists(): string[] {
+  const artists = new Set<string>();
+  FULL_CARD_INDEX.forEach(card => {
+    if (card.artist) artists.add(card.artist);
+  });
+  return Array.from(artists).sort();
+}
+
+/**
  * Statistics about the full index
  */
 export const FULL_INDEX_STATS = {
@@ -93,5 +130,15 @@ export const FULL_INDEX_STATS = {
     acc[card.ext] = (acc[card.ext] || 0) + 1;
     return acc;
   }, {} as Record<string, number>),
+  artistBreakdown: FULL_CARD_INDEX.reduce((acc, card) => {
+    if (card.artist) {
+      acc[card.artist] = (acc[card.artist] || 0) + 1;
+    }
+    return acc;
+  }, {} as Record<string, number>),
+  cardsWithArtist: FULL_CARD_INDEX.filter(c => c.artist).length,
+  cardsWithSupply: FULL_CARD_INDEX.filter(c => c.supply).length,
+  cardsWithIssues: FULL_CARD_INDEX.filter(c => c.issues).length,
+  uniqueArtists: new Set(FULL_CARD_INDEX.map(c => c.artist).filter(Boolean)).size,
 };
 
