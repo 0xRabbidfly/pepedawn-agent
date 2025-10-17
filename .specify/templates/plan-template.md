@@ -3,7 +3,7 @@
 **Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
 **Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
 
-**Note**: This template is filled in by the `/speckit.plan` command. See `.specify/templates/commands/plan.md` for the execution workflow.
+**Note**: This template is filled in by the `/speckit.plan` command.
 
 ## Summary
 
@@ -17,10 +17,10 @@
   the iteration process.
 -->
 
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]  
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]  
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]  
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]  
+**Language/Version**: [e.g., Node 23 + Bun, Python 3.11, etc., or NEEDS CLARIFICATION]  
+**Primary Dependencies**: [e.g., ElizaOS, Telegram API SDK, etc., or NEEDS CLARIFICATION]  
+**Storage**: [if applicable, e.g., PostgreSQL, SQLite, files or N/A]  
+**Verification (optional)**: [e.g., manual chat flow checklist, scripts, or N/A]  
 **Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
 **Project Type**: [single/web/mobile - determines source structure]  
 **Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
@@ -63,10 +63,10 @@ src/
 ├── cli/
 └── lib/
 
-tests/
-├── contract/
-├── integration/
-└── unit/
+# [OPTIONAL] tests/ (include only if explicitly requested)
+# ├── contract/
+# ├── integration/
+# └── unit/
 
 # [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
 backend/
@@ -74,7 +74,7 @@ backend/
 │   ├── models/
 │   ├── services/
 │   └── api/
-└── tests/
+└── [OPTIONAL] tests/
 
 frontend/
 ├── src/
@@ -88,7 +88,7 @@ api/
 └── [same as backend above]
 
 ios/ or android/
-└── [platform-specific structure: feature modules, UI flows, platform tests]
+└── [platform-specific structure: feature modules, UI flows]
 ```
 
 **Structure Decision**: [Document the selected structure and reference the real

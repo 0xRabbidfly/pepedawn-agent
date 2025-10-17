@@ -1,50 +1,92 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report
+- Version change: [unknown/template] → 1.0.0
+- Modified principles: template placeholders → concrete agent principles
+- Added sections: Additional Constraints; Development Workflow
+- Removed sections: None (testing/TDD guidance explicitly excluded)
+- Templates requiring updates:
+  - ✅ .specify/templates/plan-template.md (testing → verification; tests dirs optional)
+  - ✅ .specify/templates/spec-template.md (remove mandatory testing; rename verification fields)
+  - ✅ .specify/templates/tasks-template.md (remove TDD-first wording; tests optional)
+- Follow-up TODOs:
+  - TODO(RATIFICATION_DATE): Provide original adoption date
+-->
+
+# Fake-Rare-TG-Agent Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Single-Responsibility Agent
+The Telegram agent and its plugins MUST focus on a narrow, well-defined mission: to
+deliver the Fake Rare domain experience through conversational interfaces, with
+minimal surface area. Features MUST be scoped as independent, user-facing slices
+that can be delivered and operated without cross-cutting entanglement.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+Rationale: Focus reduces complexity, operational risk, and accelerates delivery.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### II. Explicit Configuration and Secret Hygiene
+All operational configuration MUST be provided via environment variables or
+checked-in config templates. Secrets (e.g., TELEGRAM_BOT_TOKEN, model provider
+keys) MUST never be committed to the repository and MUST be loaded at runtime
+through environment-specific files or secret managers. Default-safe values and
+clear setup instructions MUST be provided.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+Rationale: Prevent secret leakage and ensure reproducible, environment-specific deploys.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### III. Stable Chat Contracts and Backward Compatibility
+Public bot behaviors (commands, message patterns, callback data) constitute a
+contract. Changes MUST be backward compatible or gated behind explicit versioned
+opt-ins. Deprecations MUST include a migration note and a grace window.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+Rationale: Predictability preserves user trust and enables incremental rollout.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### IV. Operational Observability and Resilience
+The system MUST provide structured logs with levels, trace identifiers where
+possible, and clear error messages. Message handling MUST be idempotent where
+retries may occur, and rate limits MUST be respected. Failure modes MUST fail
+closed (safe) and surface actionable diagnostics.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+Rationale: Operability is essential for bots interacting with external platforms.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### V. Versioned Delivery and Change Transparency
+All user-visible or plugin API changes MUST follow semantic versioning. A
+CHANGELOG entry MUST accompany modifications that affect behaviors or
+configuration. Breaking changes require a major version bump and an upgrade
+guide.
+
+Rationale: Transparent versioning reduces integration surprises for maintainers and users.
+
+## Additional Constraints
+
+- Stack: Node.js + Bun, ElizaOS framework, Telegram Bot API. Keep dependencies
+  minimal and reviewed.
+- Security: Principle of least privilege for tokens and webhooks; avoid logging
+  secrets or PII; validate and sanitize external inputs.
+- Performance: Aim for responsive interactions; avoid blocking operations in the
+  message loop; offload long-running work asynchronously when feasible.
+- Configuration: Provide example `.env` templates and `elizaconfig` guidance.
+- Data: Persist only what is necessary for features; document any stored data and
+  retention expectations.
+
+## Development Workflow
+
+- Planning: Express work as independent, user-facing slices aligned to the agent’s
+  mission. Keep PRs small and scoped to a single slice when possible.
+- Reviews: Every change MUST be reviewed for principle alignment, security,
+  backwards compatibility, and observability. Favor clarity over cleverness.
+- Verification: Manual or scripted verification steps are expected for critical
+  chat flows. Automated tests are OPTIONAL and not mandated by this constitution.
+- Releases: Update version per semantic versioning and add CHANGELOG notes. Provide
+  migration notes for any behavior changes. Prefer gradual rollout where possible.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+- Authority: This constitution supersedes informal practices. Conflicts are
+  resolved by amending this document.
+- Amendments: Proposed via PR including rationale, migration considerations, and
+  version bump. Approval requires maintainer review.
+- Compliance: Reviewers MUST check for alignment with principles, especially
+  security, configuration hygiene, compatibility, and operability.
+- Versioning Policy: Follow SemVer for constitution itself. See version line below.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: TODO(RATIFICATION_DATE): Provide original adoption date | **Last Amended**: 2025-10-17
