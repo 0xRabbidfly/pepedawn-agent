@@ -3701,12 +3701,12 @@
     "asset": "RCSAPEPE",
     "series": 7,
     "card": 46,
-    "ext": "mp4",
+    "ext": "png",
     "artist": "netidx",
     "artistSlug": "netidx",
     "supply": 1774,
     "issuance": "October 2021",
-    "videoUri": "https://tlydozqdw474dqrdvbfutcyzbbnc76azlxatkrzkg25bbld5gv6q.arweave.net/mvA3ZgO3P8HCI6hLSYsZCFov-BldwTVHKja6EKx9NX0"
+    "imageUri": "https://tokenscan.io/img/cards/RCSAPEPE.png"
   },
   {
     "asset": "MECHAPEP",

@@ -7,7 +7,7 @@ import { getCardInfo, type CardInfo, FULL_CARD_INDEX } from '../data/fullCardInd
  * Responds to /f <ASSET> commands by fetching and displaying card images
  * Also supports /f (no asset) to display a random card from the collection
  * 
- * URL Structure: https://pepewtf.s3.amazonaws.com/collections/fake-rares/full/{SERIES}/{ASSET}.{jpg|gif}
+ * URL Structure: https://pepewtf.s3.amazonaws.com/collections/fake-rares/small/{SERIES}/{ASSET}.{jpg|gif}
  * Series 0-18 (19 series total, 50 cards each = ~950 total cards)
  * 
  * Performance optimization:
@@ -15,11 +15,11 @@ import { getCardInfo, type CardInfo, FULL_CARD_INDEX } from '../data/fullCardInd
  * - Unknown cards: ~2-10s (search series 0-18, auto-cache result)
  * - Random cards: instant (picks from full card index)
  * 
- * Note: Patched @elizaos/plugin-telegram to handle button sanitization
+ * Note: Using /small/ instead of /full/ for better Telegram preview compatibility (<10MB, optimized dimensions)
  */
 
-// Base URL for Fake Rares card images
-const FAKE_RARES_BASE_URL = 'https://pepewtf.s3.amazonaws.com/collections/fake-rares/full';
+// Base URL for Fake Rares card images (using /small/ for better Telegram preview compatibility)
+const FAKE_RARES_BASE_URL = 'https://pepewtf.s3.amazonaws.com/collections/fake-rares/small';
 
 /**
  * Constructs the image URL for a Fake Rares card
@@ -226,11 +226,11 @@ export const fakeRaresCardAction: Action = {
   examples: [],  // Empty examples - action handles everything via callback
   
   validate: async (runtime: IAgentRuntime, message: Memory, state?: State) => {
-    const text = message.content.text?.toLowerCase().trim() || '';
-    
-    // Check if message is /f (random card) or /f <ASSET> (specific card)
-    // Strict matching to prevent Bootstrap from also responding
-    return text.match(/^\/f(\s+[a-z0-9]+)?$/i) !== null;
+    const raw = message.content.text || '';
+    const text = raw.trim();
+    // Accept: "/f", "/f ASSET", "/f@bot ASSET", and leading mentions like "@bot /f ASSET"
+    const fPattern = /^(?:@[A-Za-z0-9_]+\s+)?\/f(?:@[A-Za-z0-9_]+)?(?:\s+[A-Za-z0-9_-]+)?$/i;
+    return fPattern.test(text);
   },
   
   handler: async (
@@ -250,13 +250,14 @@ export const fakeRaresCardAction: Action = {
     let isRandomCard = false; // Track if this is a random card request
     
     try {
-      const text = message.content.text || '';
+      const text = (message.content.text || '').trim();
       
       console.log(`🔧 STEP 1: Parse command`);
       // Extract asset name from /f <ASSET> or detect /f (random)
-      const match = text.match(/^\/f\s+([a-z0-9]+)/i);
+      // Support optional @bot mention attached to /f and optional asset token
+      const match = text.match(/^\/?f(?:@[A-Za-z0-9_]+)?(?:\s+([A-Za-z0-9_-]+))?/i);
       
-      if (!match) {
+      if (!match || !match[1]) {
         // No asset name provided - select random card
         if (FULL_CARD_INDEX.length === 0) {
           console.log(`❌ Cannot select random card: index is empty`);
@@ -378,14 +379,9 @@ export const fakeRaresCardAction: Action = {
         }
         console.log('');
         
-        // Return explicit card context for Bootstrap FIRST
-        // This ensures Bootstrap knows which card to discuss before generating response
-        const actionResult = isRandomCard
-          ? `Random card selected: ${assetName}. Share lore about ${assetName}.`
-          : `Showing card: ${assetName}. Share lore about ${assetName}.`;
-        
-        console.log(`🔧 STEP 6: Return card context to Bootstrap`);
-        console.log(`   📤 Context: ${actionResult}`);
+        // This action is callback-only. Do not return a prompt for any other handler.
+        // Instead, use a suppression flag to indicate downstream handlers should no-op.
+        console.log(`🔧 STEP 6: Mark message as handled (suppress bootstrap)`);
         
         // Build buttons array: just artist link (media preview shows automatically)
         const buttons = [];
@@ -407,7 +403,8 @@ export const fakeRaresCardAction: Action = {
           callback({
             text: cardDetailsText,
             buttons: buttons.length > 0 ? buttons : undefined,
-            // Enable link preview so Telegram shows media inline
+            __fromAction: 'fakeRaresCard',
+            suppressBootstrap: true,
           }).catch((err) => console.error('❌ Error sending callback:', err));
           console.log(`   ✅ Callback queued: message with media preview + ${buttons.length} button(s)\n`);
         }
@@ -417,21 +414,33 @@ export const fakeRaresCardAction: Action = {
         
         return {
           success: true,
-          text: actionResult,  // Bootstrap sees which card to discuss
+          data: {
+            suppressBootstrap: true,
+            reason: 'handled_by_fakeRaresCard',
+            assetName,
+            isRandomCard,
+          },
         };
       } else {
         console.log(`❌ FAILURE: Card ${assetName} not found anywhere`);
         console.log(`${'='.repeat(60)}\n`);
         
-        // Card not found - return info for Bootstrap to generate helpful response
-        return { 
-          success: false, 
-          text: `Card ${assetName} not found in Fake Rares collection. Suggest checking the exact asset name or visiting pepe.wtf directory.`,
-          data: { 
+        // Card not found - respond via callback and suppress bootstrap
+        if (callback) {
+          await callback({
+            text: `❌ Could not find ${assetName} in the Fake Rares collection. Double-check the asset name or browse on pepe.wtf.`,
+            __fromAction: 'fakeRaresCard',
+            suppressBootstrap: true,
+          });
+        }
+        return {
+          success: false,
+          data: {
+            suppressBootstrap: true,
+            reason: 'card_not_found',
             assetName,
             cardFound: false,
-            suggestion: 'Check asset name spelling or ask for help finding cards'
-          }
+          },
         };
       }
     } catch (error) {
@@ -439,14 +448,22 @@ export const fakeRaresCardAction: Action = {
       console.error('Error details:', error);
       console.log(`${'='.repeat(60)}\n`);
       
-      // Error occurred - let Bootstrap generate error response
-      return { 
-        success: false, 
-        text: `Error fetching card ${assetName}`,
-        data: { 
+      // Error occurred - respond via callback and suppress bootstrap
+      if (callback) {
+        await callback({
+          text: `❌ Error while fetching ${assetName}. Please try again later.`,
+          __fromAction: 'fakeRaresCard',
+          suppressBootstrap: true,
+        });
+      }
+      return {
+        success: false,
+        data: {
+          suppressBootstrap: true,
+          reason: 'exception',
           error: error instanceof Error ? error.message : String(error),
-          assetName
-        }
+          assetName,
+        },
       };
     }
   },
