@@ -22,6 +22,70 @@ import { getCardInfo, type CardInfo, FULL_CARD_INDEX } from '../data/fullCardInd
 const FAKE_RARES_BASE_URL = 'https://pepewtf.s3.amazonaws.com/collections/fake-rares/small';
 
 /**
+ * Calculate Levenshtein distance between two strings
+ * Returns the minimum number of edits (insertions, deletions, substitutions) needed
+ */
+function levenshteinDistance(str1: string, str2: string): number {
+  const len1 = str1.length;
+  const len2 = str2.length;
+  const matrix: number[][] = [];
+
+  // Initialize matrix
+  for (let i = 0; i <= len1; i++) {
+    matrix[i] = [i];
+  }
+  for (let j = 0; j <= len2; j++) {
+    matrix[0][j] = j;
+  }
+
+  // Fill matrix
+  for (let i = 1; i <= len1; i++) {
+    for (let j = 1; j <= len2; j++) {
+      if (str1[i - 1] === str2[j - 1]) {
+        matrix[i][j] = matrix[i - 1][j - 1];
+      } else {
+        matrix[i][j] = Math.min(
+          matrix[i - 1][j] + 1,     // deletion
+          matrix[i][j - 1] + 1,     // insertion
+          matrix[i - 1][j - 1] + 1  // substitution
+        );
+      }
+    }
+  }
+
+  return matrix[len1][len2];
+}
+
+/**
+ * Calculate similarity percentage between two strings (0-1 range)
+ */
+function calculateSimilarity(str1: string, str2: string): number {
+  const distance = levenshteinDistance(str1.toUpperCase(), str2.toUpperCase());
+  const maxLen = Math.max(str1.length, str2.length);
+  return maxLen === 0 ? 1 : 1 - (distance / maxLen);
+}
+
+/**
+ * Find the best matching card name from all available cards
+ */
+function findBestMatch(inputName: string, allAssets: string[]): { name: string; similarity: number } | null {
+  if (allAssets.length === 0) return null;
+
+  let bestMatch = allAssets[0];
+  let bestSimilarity = calculateSimilarity(inputName, allAssets[0]);
+
+  for (const asset of allAssets) {
+    const similarity = calculateSimilarity(inputName, asset);
+    if (similarity > bestSimilarity) {
+      bestSimilarity = similarity;
+      bestMatch = asset;
+    }
+  }
+
+  return { name: bestMatch, similarity: bestSimilarity };
+}
+
+/**
  * Constructs the image URL for a Fake Rares card
  * Tries .jpg, .jpeg, .gif, .png, .mp4, and .webp extensions
  */
@@ -423,9 +487,88 @@ export const fakeRaresCardAction: Action = {
         };
       } else {
         console.log(`❌ FAILURE: Card ${assetName} not found anywhere`);
+        console.log(`🔧 Attempting fuzzy match...`);
+        
+        // Try fuzzy matching against all known cards
+        const allAssets = FULL_CARD_INDEX.map(c => c.asset);
+        const bestMatch = findBestMatch(assetName, allAssets);
+        
+        if (bestMatch && bestMatch.similarity > 0.75) {
+          console.log(`✅ Fuzzy match found: "${bestMatch.name}" (${(bestMatch.similarity * 100).toFixed(1)}% similar)`);
+          console.log(`🔧 Fetching matched card...`);
+          
+          // Get the matched card info
+          const matchedCard = getCardInfo(bestMatch.name);
+          if (matchedCard) {
+            let matchedUrl: string;
+            let matchedExt: string;
+            
+            // Determine the URL for the matched card
+            if (matchedCard.ext === 'mp4' && matchedCard.videoUri) {
+              matchedUrl = matchedCard.videoUri;
+              matchedExt = 'mp4';
+            } else if (matchedCard.imageUri) {
+              matchedUrl = matchedCard.imageUri;
+              matchedExt = matchedCard.ext;
+            } else {
+              matchedUrl = getFakeRaresImageUrl(bestMatch.name, matchedCard.series, matchedCard.ext);
+              matchedExt = matchedCard.ext;
+            }
+            
+            // Build card details with playful typo message
+            let matchedCardText = `😅 Ha, spelling not your thing? No worries - got you fam.\n\n`;
+            matchedCardText += `🎴 ${bestMatch.name}\n`;
+            matchedCardText += `📦 Series ${matchedCard.series}`;
+            if (matchedCard.artist) {
+              matchedCardText += ` • 👨‍🎨 ${matchedCard.artist}`;
+            }
+            if (matchedCard.supply) {
+              matchedCardText += ` • 💎 ${matchedCard.supply.toLocaleString()}`;
+            }
+            matchedCardText += '\n\n';
+            matchedCardText += matchedUrl;
+            
+            // Build buttons
+            const buttons = [];
+            if (matchedCard.artist && matchedCard.artistSlug) {
+              buttons.push({
+                text: `👨‍🎨 ${matchedCard.artist}`,
+                url: `https://pepe.wtf/artists/${matchedCard.artistSlug}`
+              });
+            }
+            
+            // Send the matched card
+            if (callback) {
+              await callback({
+                text: matchedCardText,
+                buttons: buttons.length > 0 ? buttons : undefined,
+                __fromAction: 'fakeRaresCard',
+                suppressBootstrap: true,
+              });
+            }
+            
+            console.log(`✅ SUCCESS: Fuzzy-matched card ${bestMatch.name} displayed for typo "${assetName}"`);
+            console.log(`${'='.repeat(60)}\n`);
+            
+            return {
+              success: true,
+              data: {
+                suppressBootstrap: true,
+                reason: 'fuzzy_matched',
+                assetName,
+                matchedAssetName: bestMatch.name,
+                similarity: bestMatch.similarity,
+              },
+            };
+          }
+        } else {
+          const similarityPercent = bestMatch ? (bestMatch.similarity * 100).toFixed(1) : '0.0';
+          console.log(`❌ No good fuzzy match found (best: "${bestMatch?.name}" at ${similarityPercent}% - below 75% threshold)`);
+        }
+        
         console.log(`${'='.repeat(60)}\n`);
         
-        // Card not found - respond via callback and suppress bootstrap
+        // No fuzzy match - show error
         if (callback) {
           await callback({
             text: `❌ Could not find ${assetName} in the Fake Rares collection. Double-check the asset name or browse on pepe.wtf.`,

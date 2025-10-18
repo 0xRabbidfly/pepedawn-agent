@@ -56,17 +56,29 @@ export const fakeRaresPlugin: Plugin = {
           // Accept /f, /f@bot, and variants with leading mentions
           const isFCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/f(?:@[A-Za-z0-9_]+)?(?:\s+[A-Za-z0-9_-]+)?$/i.test(text);
           
+          // Check if message contains capitalized text (2+ uppercase letters in a row)
+          const hasCapitalizedText = /\b[A-Z]{2,}\b/.test(text);
+          
           // Determine if suppression should be active for this message
-          const shouldSuppress = globalSuppression || isFCommand;
+          // Suppress if: global flag is on, OR it's /f command, OR it has no capitalized text
+          const shouldSuppress = globalSuppression || isFCommand || !hasCapitalizedText;
           
           if (shouldSuppress) {
-            const source = globalSuppression ? 'GLOBAL_ENV_FLAG' : '/f command';
+            const source = globalSuppression 
+              ? 'GLOBAL_ENV_FLAG' 
+              : isFCommand 
+                ? '/f command' 
+                : 'no capitalized text';
             console.log(`🛡️  [Suppression] Active for message: "${text.substring(0, 50)}${text.length > 50 ? '...' : ''}" (source: ${source})`);
             
             // Tag state so downstream layers can detect suppression intent
             const state = params?.state ?? {};
             state.suppressBootstrap = true;
-            state.suppressSource = globalSuppression ? 'global_env_flag' : 'message_received:/f';
+            state.suppressSource = globalSuppression 
+              ? 'global_env_flag' 
+              : isFCommand 
+                ? 'message_received:/f' 
+                : 'message_received:no_caps';
             params.state = state;
 
             // Wrap callback to allow the first response (our action) and suppress follow-ups
@@ -111,8 +123,8 @@ export const fakeRaresPlugin: Plugin = {
               };
             }
           } else {
-            // No suppression - normal message flow
-            console.log(`📨 [Suppression] No suppression for message: "${text.substring(0, 50)}${text.length > 50 ? '...' : ''}" - normal flow`);
+            // No suppression - message has capitalized text and is not /f command
+            console.log(`📨 [Suppression] No suppression for message: "${text.substring(0, 50)}${text.length > 50 ? '...' : ''}" - has capitalized text, bootstrap allowed`);
           }
         } catch (_e) {
           // best-effort tagging; never throw
