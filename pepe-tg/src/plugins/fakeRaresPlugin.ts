@@ -59,12 +59,12 @@ export const fakeRaresPlugin: Plugin = {
           // Check if message contains capitalized text (2+ uppercase letters in a row)
           const hasCapitalizedText = /\b[A-Z]{2,}\b/.test(text);
           
-          // Check if bot is explicitly mentioned with @pepedawnbot
-          const hasBotMention = /@pepedawnbot/i.test(text);
+          // Check if bot is explicitly mentioned with @pepedawn_bot
+          const hasBotMention = /@pepedawn_bot/i.test(text);
           
           // Determine if suppression should be active for this message
           // Suppress if: global flag is on, OR it's /f command, OR (no capitalized text AND no @mention)
-          // Allow if: has capitalized text OR has @pepedawnbot mention
+          // Allow if: has capitalized text OR has @pepedawn_bot mention
           const shouldSuppress = globalSuppression || isFCommand || (!hasCapitalizedText && !hasBotMention);
           
           if (shouldSuppress) {
@@ -128,7 +128,7 @@ export const fakeRaresPlugin: Plugin = {
             }
           } else {
             // No suppression - message has capitalized text or @mention, and is not /f command
-            const reason = hasBotMention ? 'bot mentioned with @pepedawnbot' : 'has capitalized text';
+            const reason = hasBotMention ? 'bot mentioned with @pepedawn_bot' : 'has capitalized text';
             console.log(`📨 [Suppression] No suppression for message: "${text.substring(0, 50)}${text.length > 50 ? '...' : ''}" - ${reason}, bootstrap allowed`);
           }
         } catch (_e) {
