@@ -1,10 +1,11 @@
 import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, type State, ModelType } from '@elizaos/core';
 import { getCardSeries, addCardToMap, isKnownCard, SERIES_INFO, getCardExtension } from '../data/cardSeriesMap';
-import { getCardInfo, type CardInfo } from '../data/fullCardIndex';
+import { getCardInfo, type CardInfo, FULL_CARD_INDEX } from '../data/fullCardIndex';
 
 /**
  * Fake Rares Card Display Action
  * Responds to /f <ASSET> commands by fetching and displaying card images
+ * Also supports /f (no asset) to display a random card from the collection
  * 
  * URL Structure: https://pepewtf.s3.amazonaws.com/collections/fake-rares/full/{SERIES}/{ASSET}.{jpg|gif}
  * Series 0-18 (19 series total, 50 cards each = ~950 total cards)
@@ -12,6 +13,7 @@ import { getCardInfo, type CardInfo } from '../data/fullCardIndex';
  * Performance optimization:
  * - Known cards: ~200ms (direct lookup, 1-3 HTTP requests)
  * - Unknown cards: ~2-10s (search series 0-18, auto-cache result)
+ * - Random cards: instant (picks from full card index)
  */
 
 // Base URL for Fake Rares card images
@@ -30,21 +32,23 @@ function getFakeRaresImageUrl(assetName: string, seriesNumber: number, extension
  * Same approach as shareLore.ts (confirmed working on master)
  */
 async function fetchLoreSnippets(runtime: IAgentRuntime, message: Memory, assetName: string): Promise<string[]> {
+  console.log(`  🔍 [Lore] Starting knowledge search for: ${assetName}`);
+  
   try {
-    console.log(`🔍 Searching for lore about ${assetName}...`);
-    
+    console.log(`  📡 [Lore] Generating embedding...`);
     // Generate embedding for the search query (same approach as knowledge plugin)
     const embedding = await runtime.useModel(ModelType.TEXT_EMBEDDING, {
       text: assetName,
     });
     
     if (!embedding || !Array.isArray(embedding)) {
-      console.log(`⚠️  Failed to generate embedding for "${assetName}"`);
+      console.log(`  ❌ [Lore] Failed to generate embedding`);
       return [];
     }
     
-    console.log(`✅ Generated embedding (dimension: ${embedding.length})`);
+    console.log(`  ✅ [Lore] Embedding generated (dimension: ${embedding.length})`);
     
+    console.log(`  🔎 [Lore] Searching knowledge table (threshold: 0.25, count: 10)...`);
     // Try without roomId restriction first (knowledge is often global)
     const searchPromise = runtime.searchMemories({
       tableName: 'knowledge',
@@ -61,38 +65,33 @@ async function fetchLoreSnippets(runtime: IAgentRuntime, message: Memory, assetN
     const results = await Promise.race([searchPromise, timeoutPromise]);
     
     if (!results || !Array.isArray(results) || results.length === 0) {
-      console.log(`ℹ️  No lore found for ${assetName}`);
-      
-      // Check if knowledge table has any entries at all
-      try {
-        const allKnowledge = await runtime.messageManager.getMemories({
-          tableName: 'knowledge',
-          count: 1,
-        });
-        console.log(`📊 Knowledge table has ${allKnowledge?.length || 0} total entries`);
-      } catch (e) {
-        console.log(`⚠️  Could not check knowledge table:`, e instanceof Error ? e.message : String(e));
-      }
-      
+      console.log(`  ℹ️  [Lore] No results found in knowledge base`);
       return [];
     }
     
-    console.log(`📚 Found ${results.length} lore entries for ${assetName}`);
+    console.log(`  📚 [Lore] Found ${results.length} matching entries`);
     
+    console.log(`  🎲 [Lore] Extracting text content...`);
     // Extract raw lore text
     const loreCandidates = results
       .map((r: any) => r?.content?.text || '')
       .filter((t: string) => t.length > 0);
     
     if (loreCandidates.length === 0) {
+      console.log(`  ⚠️  [Lore] No valid text in results`);
       return [];
     }
+    
+    console.log(`  ✅ [Lore] Extracted ${loreCandidates.length} lore candidate(s)`);
     
     // Pick random lore snippet and prettify it with LLM
     const rawLore = pickRandom(loreCandidates);
     if (!rawLore) {
+      console.log(`  ⚠️  [Lore] Random selection returned null`);
       return [];
     }
+    
+    console.log(`  🎯 [Lore] Selected random snippet (${rawLore.length} chars)`);
     
     // LLM prettification - DISABLED for now
     // TODO: Re-enable once LLM hanging issue is resolved
@@ -134,9 +133,14 @@ Engaging tidbit about ${assetName}:`;
     */
     
     // Return raw lore for now
-    return [rawLore.slice(0, 250)];
+    const truncatedLore = rawLore.slice(0, 250);
+    console.log(`  ✂️  [Lore] Truncated to ${truncatedLore.length} chars`);
+    console.log(`  ✅ [Lore] Returning 1 lore snippet\n`);
+    return [truncatedLore];
   } catch (err) {
-    console.error(`❌ Lore search failed for ${assetName}:`, err instanceof Error ? err.message : String(err));
+    console.log(`  ❌ [Lore] Exception occurred`);
+    console.error(`  Error:`, err instanceof Error ? err.message : String(err));
+    console.log('');
     return [];
   }
 }
@@ -213,44 +217,18 @@ async function findCardImage(assetName: string): Promise<{ url: string; extensio
 
 export const fakeRaresCardAction: Action = {
   name: 'SHOW_FAKE_RARE_CARD',
-  description: 'Display a Fake Rares card image when user requests with /f <ASSET>',
+  description: 'Display a Fake Rares card image when user requests with /f <ASSET> or a random card with /f',
   
   similes: ['/f'],
   
-  examples: [
-    [
-      {
-        name: '{{user1}}',
-        content: { text: '/f FAKEQQ' },
-      },
-      {
-        name: '{{agentName}}',
-        content: {
-          text: 'Here\'s FAKEQQ! 🐸✨',
-          action: 'SHOW_FAKE_RARE_CARD',
-        },
-      },
-    ],
-    [
-      {
-        name: '{{user1}}',
-        content: { text: '/f FREEDOMKEK' },
-      },
-      {
-        name: '{{agentName}}',
-        content: {
-          text: 'The legendary genesis card! FREEDOMKEK 🔥',
-          action: 'SHOW_FAKE_RARE_CARD',
-        },
-      },
-    ],
-  ],
+  examples: [],  // Empty examples - action handles everything via callback
   
   validate: async (runtime: IAgentRuntime, message: Memory, state?: State) => {
-    const text = message.content.text?.toLowerCase() || '';
+    const text = message.content.text?.toLowerCase().trim() || '';
     
-    // Check if message starts with /f followed by asset name
-    return text.match(/^\/f\s+[a-z0-9]+/i) !== null;
+    // Check if message is /f (random card) or /f <ASSET> (specific card)
+    // Strict matching to prevent Bootstrap from also responding
+    return text.match(/^\/f(\s+[a-z0-9]+)?$/i) !== null;
   },
   
   handler: async (
@@ -260,57 +238,88 @@ export const fakeRaresCardAction: Action = {
     options?: any,
     callback?: HandlerCallback
   ) => {
+    console.log(`\n${'='.repeat(60)}`);
+    console.log(`🚀 [/f] HANDLER STARTED`);
+    console.log(`📝 Message: "${message.content.text}"`);
+    console.log(`👤 User: ${message.entityId}`);
+    console.log(`${'='.repeat(60)}\n`);
+    
     let assetName = 'UNKNOWN'; // Declare outside try block for error handling
+    let isRandomCard = false; // Track if this is a random card request
     
     try {
       const text = message.content.text || '';
       
-      // Extract asset name from /f <ASSET>
+      console.log(`🔧 STEP 1: Parse command`);
+      // Extract asset name from /f <ASSET> or detect /f (random)
       const match = text.match(/^\/f\s+([a-z0-9]+)/i);
+      
       if (!match) {
-        if (callback) {
-          await callback({
-            text: 'Usage: /f <ASSET_NAME>\nExample: /f FAKEQQ',
-          });
+        // No asset name provided - select random card
+        if (FULL_CARD_INDEX.length === 0) {
+          console.log(`❌ Cannot select random card: index is empty`);
+          if (callback) {
+            await callback({
+              text: '❌ Card index not loaded. Please try again later.',
+            });
+          }
+          return { success: false, text: 'Card index not available' };
         }
-        return { success: false, text: 'Invalid /f command format' };
+        
+        const randomCard = FULL_CARD_INDEX[Math.floor(Math.random() * FULL_CARD_INDEX.length)];
+        assetName = randomCard.asset;
+        isRandomCard = true;
+        console.log(`🎲 Random card selected: ${assetName} (from ${FULL_CARD_INDEX.length} cards)\n`);
+      } else {
+        assetName = match[1].toUpperCase();
+        console.log(`✅ Extracted asset: ${assetName}\n`);
       }
       
-      assetName = match[1].toUpperCase();
-      
-      // Get full card metadata first
+      console.log(`🔧 STEP 2: Lookup card metadata`);
+      // Get card info from fullCardIndex (already loads from fake-rares-data.json)
       const cardInfo = getCardInfo(assetName);
-      
-      // Determine the actual URL to use (prefer videoUri/imageUri from metadata)
       let actualUrl: string | null = null;
       let extension: string | null = null;
       
       if (cardInfo) {
-        // Prefer videoUri for mp4 files
+        console.log(`✅ Found in fullCardIndex: Series ${cardInfo.series}, Card ${cardInfo.card}`);
+        console.log(`   📊 Artist: ${cardInfo.artist || 'unknown'}`);
+        console.log(`   💎 Supply: ${cardInfo.supply?.toLocaleString() || 'unknown'}`);
+        console.log(`   🎨 Extension: .${cardInfo.ext}`);
+        
+        console.log(`\n🔧 STEP 3: Determine image/video URL`);
+        // Check for special URIs (videoUri for mp4, imageUri for others)
         if (cardInfo.ext === 'mp4' && cardInfo.videoUri) {
           actualUrl = cardInfo.videoUri;
           extension = 'mp4';
-          console.log(`🎬 Using videoUri for ${assetName}: ${actualUrl}`);
-        }
-        // Or imageUri if specified
-        else if (cardInfo.imageUri) {
+          console.log(`   🎬 Using videoUri: ${actualUrl.substring(0, 60)}...`);
+        } else if (cardInfo.imageUri) {
           actualUrl = cardInfo.imageUri;
           extension = cardInfo.ext;
-          console.log(`🖼️ Using imageUri for ${assetName}: ${actualUrl}`);
+          console.log(`   🖼️  Using imageUri: ${actualUrl.substring(0, 60)}...`);
+        } else {
+          // Construct URL from series and ext
+          actualUrl = getFakeRaresImageUrl(assetName, cardInfo.series, cardInfo.ext);
+          extension = cardInfo.ext;
+          console.log(`   🏗️  Constructed from series/ext: ${actualUrl.substring(0, 60)}...`);
         }
-      }
-      
-      // Fall back to finding the card via HTTP probing
-      if (!actualUrl) {
+      } else {
+        console.log(`⚠️  Not in fullCardIndex, trying HTTP probing fallback...`);
+        
+        console.log(`\n🔧 STEP 3: Fallback - HTTP probing`);
         const cardResult = await findCardImage(assetName);
         if (cardResult) {
           actualUrl = cardResult.url;
           extension = cardResult.extension;
+          console.log(`✅ Probing found: ${actualUrl.substring(0, 60)}...`);
+        } else {
+          console.log(`❌ Probing failed - card not found anywhere`);
         }
       }
+      console.log('');
       
       if (actualUrl) {
-        console.log(`📸 Card found: ${assetName} (${extension}) - sending response`);
+        console.log(`🔧 STEP 4: Fetch lore from knowledge base`);
         
         // Lore fetching - DISABLED for now
         // TODO: Re-enable once ready
@@ -324,69 +333,98 @@ export const fakeRaresCardAction: Action = {
         }
         */
         const lore = null; // Disabled
+        console.log(`⏭️  Lore fetching currently disabled\n`);
         
+        console.log(`🔧 STEP 5: Compose response message`);
         // Build rich card info message
-        let cardDetailsText = actualUrl; // Start with media URL
+        let cardDetailsText = '';
+        
+        // Add random card indicator if applicable
+        if (isRandomCard) {
+          cardDetailsText = `🎲 Random card: ${assetName}\n\n`;
+          console.log(`   🎲 Added random card header`);
+        }
+        
+        // Escape underscores in URL so Telegram doesn't treat them as markdown
+        const escapedUrl = actualUrl.replace(/_/g, '\\_');
+        cardDetailsText += escapedUrl;
+        console.log(`   📎 Base: media URL (underscores escaped)`);
         
         if (cardInfo) {
           const details: string[] = [];
           
-          // Series - Card & Supply on same line
-          let seriesLine = `🐸 Series ${cardInfo.series} - Card ${cardInfo.card}`;
+          // Card name + Series + Card number + Supply on same line
+          let seriesLine = `🐸 ${assetName} • Series ${cardInfo.series} - Card ${cardInfo.card}`;
           if (cardInfo.supply) {
             seriesLine += ` • 💎 Supply: ${cardInfo.supply.toLocaleString()}`;
           }
           details.push(seriesLine);
           
-          // Author with link
+          // Author with link (markdown format for clickable link) + issuance on same line
           if (cardInfo.artist) {
             const artistLink = cardInfo.artistSlug 
               ? `https://pepe.wtf/artists/${cardInfo.artistSlug}`
               : null;
             
-            const artistText = artistLink
-              ? `👨‍🎨 ${cardInfo.artist} (${artistLink})`
+            let artistLine = artistLink
+              ? `👨‍🎨 [${cardInfo.artist}](${artistLink})`
               : `👨‍🎨 ${cardInfo.artist}`;
             
-            details.push(artistText);
-          }
-          
-          // Released date
-          if (cardInfo.issuance) {
+            // Add issuance date on same line if available
+            if (cardInfo.issuance) {
+              artistLine += ` • 📅 ${cardInfo.issuance}`;
+            }
+            
+            details.push(artistLine);
+          } else if (cardInfo.issuance) {
+            // Only issuance date if no artist
             details.push(`📅 Released: ${cardInfo.issuance}`);
           }
           
           // Append details after URL
           if (details.length > 0) {
             cardDetailsText = actualUrl + '\n\n' + details.join('\n');
+            console.log(`   📊 Added ${details.length} metadata line(s)`);
           }
+        } else {
+          console.log(`   ⚠️  No metadata available (URL only)`);
         }
         
         // Append lore if available
         if (lore) {
           cardDetailsText += '\n\n📜 ' + lore;
+          console.log(`   📜 Added lore snippet`);
         }
+        console.log('');
         
-        // Call callback to send response (non-blocking, per telegram plugin examples)
+        // Return explicit card context for Bootstrap FIRST
+        // This ensures Bootstrap knows which card to discuss before generating response
+        const actionResult = isRandomCard
+          ? `Random card selected: ${assetName}. Share lore about ${assetName}.`
+          : `Showing card: ${assetName}. Share lore about ${assetName}.`;
+        
+        console.log(`🔧 STEP 6: Return card context to Bootstrap`);
+        console.log(`   📤 Context: ${actionResult}`);
+        
+        // THEN send card details via callback (async, after Bootstrap gets the card name)
         if (callback) {
           callback({
             text: cardDetailsText,
-          }).catch((err) => console.error('Error sending Telegram callback:', err));
+          }).catch((err) => console.error('❌ Error sending callback:', err));
+          console.log(`   ✅ Callback queued (non-blocking)\n`);
         }
         
-        // Return success result for action tracking
+        console.log(`✅ SUCCESS: ${assetName} card will be displayed`);
+        console.log(`${'='.repeat(60)}\n`);
+        
         return {
           success: true,
-          text: `Displayed ${assetName} card with metadata`,
-          data: {
-            assetName,
-            url: actualUrl,
-            extension,
-            cardFound: true,
-            cardInfo
-          }
+          text: actionResult,  // Bootstrap sees which card to discuss
         };
       } else {
+        console.log(`❌ FAILURE: Card ${assetName} not found anywhere`);
+        console.log(`${'='.repeat(60)}\n`);
+        
         // Card not found - return info for Bootstrap to generate helpful response
         return { 
           success: false, 
@@ -399,11 +437,14 @@ export const fakeRaresCardAction: Action = {
         };
       }
     } catch (error) {
-      console.error('Error in SHOW_FAKE_RARE_CARD action:', error);
+      console.log(`\n❌ EXCEPTION in /f handler for ${assetName}`);
+      console.error('Error details:', error);
+      console.log(`${'='.repeat(60)}\n`);
       
+      // Error occurred - let Bootstrap generate error response
       return { 
         success: false, 
-        text: `Error fetching card ${assetName}: ${error instanceof Error ? error.message : String(error)}`,
+        text: `Error fetching card ${assetName}`,
         data: { 
           error: error instanceof Error ? error.message : String(error),
           assetName
