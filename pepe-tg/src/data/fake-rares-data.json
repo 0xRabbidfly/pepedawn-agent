@@ -1699,19 +1699,18 @@
     "artist": "Rare Scrilla and Ghostface Killah",
     "artistSlug": "Rare-Scrilla-and-Ghostface-Killah",
     "supply": 21,
-    "issuance": "November 2021",
-    "imageUri": "https://tokenscan.io/img/cards/GHOSTFAKE.gif"
+    "issuance": "November 2021"
   },
   {
     "asset": "FAKETONY",
     "series": 4,
     "card": 2,
-    "ext": "jpeg",
+    "ext": "mp4",
     "artist": "Mr Hansel and Ghostface Killah",
     "artistSlug": "Mr-Hansel-and-Ghostface-Killah",
-    "supply": 100,  
+    "supply": 100,
     "issuance": "November 2021",
-    "imageUri": "https://tokenscan.io/img/cards/FAKETONY.jpeg"
+    "videoUri": "https://arweave.net/NJjOc9eHaXfqu_O_ad6u-4K4cs7nGLsKUQx44kGUTiI"
   },
   {
     "asset": "FAKEAFGHOST",
@@ -1721,8 +1720,7 @@
     "artist": "Indelible and Ghostface Killah",
     "artistSlug": "Indelible-and-Ghostface-Killah",
     "supply": 250,
-    "issuance": "November 2021",
-    "imageUri": "https://tokenscan.io/img/cards/FAKEAFGHOST.gif"
+    "issuance": "November 2021"
   },
   {
     "asset": "FAKEGHOST",
@@ -1732,19 +1730,18 @@
     "artist": "Indelible and Ghostface Killah",
     "artistSlug": "Indelible-and-Ghostface-Killah",
     "supply": 500,
-    "issuance": "November 2021",
-    "imageUri": "https://tokenscan.io/img/cards/FAKEGHOST.gif"
+    "issuance": "November 2021"
   },
   {
     "asset": "FAKENUTMEG",
     "series": 4,
     "card": 5,
-    "ext": "jpeg",
+    "ext": "mp4",
     "artist": "Rare Scrilla and Ghostface Killah",
     "artistSlug": "Rare-Scrilla-and-Ghostface-Killah",
     "supply": 1000,
     "issuance": "November 2021",
-    "imageUri": "https://tokenscan.io/img/cards/FAKENUTMEG.jpeg"
+    "videoUri": "https://arweave.net/GwCWCCbWJbzhhO2d3HjePsefGyD1qHDzVDwf184b5hk"
   },
   {
     "asset": "LILPEPEVERT",
@@ -1754,8 +1751,7 @@
     "artist": "AWRALPH x Rare Scrilla",
     "artistSlug": "AWRALPH-x-Rare-Scrilla",
     "supply": 44,
-    "issuance": "November 2021",
-    "imageUri": "https://tokenscan.io/img/cards/LILPEPEVERT.gif"
+    "issuance": "November 2021"
   },
   {
     "asset": "PEPELEVANDAL",
@@ -1829,8 +1825,7 @@
     "artist": "Ill Bill x VIVALAVANDAL x Rare Scrilla",
     "artistSlug": "Ill-Bill-x-VIVALAVANDAL-x-Rare-Scrilla",
     "supply": 69,
-    "issuance": "November 2021",
-    "imageUri": "https://tokenscan.io/img/cards/SCRILLBILL.gif"
+    "issuance": "November 2021"
   },
   {
     "asset": "PEPETAROTSIX",
@@ -1840,8 +1835,7 @@
     "artist": "SHEWOLF",
     "artistSlug": "SHEWOLF",
     "supply": 100,
-    "issuance": "December 2021",
-    "imageUri": "https://tokenscan.io/img/cards/PEPETAROTSIX.gif"
+    "issuance": "December 2021"
   },
   {
     "asset": "PEPONACID",
@@ -1883,8 +1877,7 @@
     "artist": "Da'Block God",
     "artistSlug": "Da'Block-God",
     "supply": 121,
-    "issuance": "October 2021",
-    "imageUri": "https://tokenscan.io/img/cards/STJOHNPEPE.gif"
+    "issuance": "October 2021"
   },
   {
     "asset": "JIMMYHENDRIX",
@@ -1894,8 +1887,7 @@
     "artist": "Indelible",
     "artistSlug": "Indelible",
     "supply": 80,
-    "issuance": "November 2021",
-    "imageUri": "https://tokenscan.io/img/cards/JIMMYHENDRIX.gif"
+    "issuance": "November 2021"
   },
   {
     "asset": "PEPEBILLION",
@@ -1923,12 +1915,12 @@
     "asset": "NFTORIGINS",
     "series": 4,
     "card": 23,
-    "ext": "jpg",
+    "ext": "mp4",
     "artist": "ROCHIGG",
     "artistSlug": "ROCHIGG",
     "supply": 70,
     "issuance": "December 2021",
-    "imageUri": "https://tokenscan.io/img/cards/NFTORIGINS.jpg"
+    "videoUri": "https://e2usoznt7fdhjvbss2waqjxy6ikp2pg3n72rrraa5r5mzpgfnpgq.arweave.net/JqknZbP5RnTUMpasCCb48hT9PNtv9RjEAOx6zLzFa80"
   },
   {
     "asset": "QUEENOFCARDS",
@@ -1945,12 +1937,12 @@
     "asset": "PEPEMAGPIE",
     "series": 4,
     "card": 25,
-    "ext": "jpg",
+    "ext": "mp4",
     "artist": "Pepenardo",
     "artistSlug": "Pepenardo",
     "supply": 100,
     "issuance": "December 2021",
-    "imageUri": "https://tokenscan.io/img/cards/PEPEMAGPIE.jpg"
+    "videoUri": "https://arweave.net/YpL0JE3Tz7ixdOwXmk_IM5FfXkOoEGMntBsICVVogwQ"
   },
   {
     "asset": "THEBURNCARD",
@@ -1960,8 +1952,7 @@
     "artist": "80sKurtRussell x Sketch",
     "artistSlug": "80sKurtRussell-x-Sketch",
     "supply": 55,
-    "issuance": "December 2021",
-    "imageUri": "https://tokenscan.io/img/cards/THEBURNCARD.gif"
+    "issuance": "December 2021"
   },
   {
     "asset": "PEPDILLINGER",
@@ -2003,8 +1994,7 @@
     "artist": "Whoisit",
     "artistSlug": "Whoisit",
     "supply": 333,
-    "issuance": "December 2021",
-    "imageUri": "https://tokenscan.io/img/cards/FAKEANTHEM.gif"
+    "issuance": "December 2021"
   },
   {
     "asset": "FPHOTOPENPEN",
@@ -2057,8 +2047,7 @@
     "artist": "Kane Mayfield",
     "artistSlug": "Kane-Mayfield",
     "supply": 35,
-    "issuance": "December 2021",
-    "imageUri": "https://tokenscan.io/img/cards/MAYFAKEFIELD.gif"
+    "issuance": "December 2021"
   },
   {
     "asset": "PEPEMPERNEL",
@@ -2068,8 +2057,7 @@
     "artist": "Indelible",
     "artistSlug": "Indelible",
     "supply": 42,
-    "issuance": "December 2021",
-    "imageUri": "https://tokenscan.io/img/cards/PEPEMPERNEL.gif"
+    "issuance": "December 2021"
   },
   {
     "asset": "STARWARSFAKE",
@@ -2079,8 +2067,7 @@
     "artist": "GoingPepe100",
     "artistSlug": "GoingPepe100",
     "supply": 33,
-    "issuance": "December 2021",
-    "imageUri": "https://tokenscan.io/img/cards/STARWARSFAKE.gif"
+    "issuance": "December 2021"
   },
   {
     "asset": "DANKBETTY",
@@ -2144,8 +2131,7 @@
     "artist": "Fishbrain, Luifex, Viva La Vandal",
     "artistSlug": "Fishbrain-Luifex-Viva-La-Vandal",
     "supply": 404,
-    "issuance": "January 2022",
-    "imageUri": "https://tokenscan.io/img/cards/FAKEBRAIN.gif"
+    "issuance": "January 2022"
   },
   {
     "asset": "LILPEPA",
@@ -2187,8 +2173,7 @@
     "artist": "Worm",
     "artistSlug": "Worm",
     "supply": 24,
-    "issuance": "January 2022",
-    "imageUri": "https://tokenscan.io/img/cards/DOLFIN.gif"
+    "issuance": "January 2022"
   },
   {
     "asset": "PHONEYACE",
@@ -2198,8 +2183,7 @@
     "artist": "Maya",
     "artistSlug": "Maya",
     "supply": 100,
-    "issuance": "October 2021",
-    "imageUri": "https://tokenscan.io/img/cards/PHONEYACE.gif"
+    "issuance": "October 2021"
   },
   {
     "asset": "FAKESHARK",
@@ -2262,8 +2246,7 @@
     "artist": "T. Wade",
     "artistSlug": "T.-Wade",
     "supply": 99,
-    "issuance": "February 2022",
-    "imageUri": "https://tokenscan.io/img/cards/JACKIEPEPE.gif"
+    "issuance": "February 2022"
   },
   {
     "asset": "SMALLFAKE",
@@ -2310,12 +2293,12 @@
     "asset": "PEPARARE",
     "series": 5,
     "card": 8,
-    "ext": "jpg",
+    "ext": "mp4",
     "artist": "Whoisit",
     "artistSlug": "Whoisit",
     "supply": 30,
     "issuance": "December 2021",
-    "imageUri": "https://tokenscan.io/img/cards/PEPARARE.jpg"
+    "videoUri": "https://n3euxo2wflhxdpdynbw7dk7f44tt7n33djklrleuoxjb5kl2sysq.arweave.net/bslLu1Yqz3G8eGht8avl5yc_t3saVLislHXSHql6liU"
   },
   {
     "asset": "FAKELAWS",
@@ -2382,12 +2365,12 @@
     "asset": "PEPEBLITZ",
     "series": 5,
     "card": 16,
-    "ext": "png",
+    "ext": "mp4",
     "artist": "ZETRA",
     "artistSlug": "ZETRA",
     "supply": 77,
     "issuance": "October 2021",
-    "imageUri": "https://tokenscan.io/img/cards/PEPEBLITZ.png"
+    "videoUri": "https://arweave.net/0SmV95CVwfu5j8byHoFN2_otaravHRSDOAWvDgsIHKY"
   },
   {
     "asset": "SNOOPEPEGG",
@@ -2403,12 +2386,12 @@
     "asset": "PEPESFUTURE",
     "series": 5,
     "card": 18,
-    "ext": "png",
+    "ext": "mp4",
     "artist": "Scorch",
     "artistSlug": "Scorch",
     "supply": 37,
     "issuance": "December 2021",
-    "imageUri": "https://tokenscan.io/img/cards/PEPESFUTURE.png"
+    "videoUri": "https://gateway.pinata.cloud/ipfs/Qmb1TyGwLjNv3xpSr9dszWbPpbn7YzDmPorFBoCuJ1RAFx"
   },
   {
     "asset": "FAKEWARS",
@@ -2564,8 +2547,7 @@
     "artist": "Tomopen",
     "artistSlug": "Tomopen",
     "supply": 50,
-    "issuance": "December 2021",
-    "imageUri": "https://tokenscan.io/img/cards/MAGICTRICK.gif"
+    "issuance": "December 2021"
   },
   {
     "asset": "THEHOLYGRAIL",
@@ -2781,8 +2763,7 @@
     "artist": "FWD x DJ Kermit",
     "artistSlug": "FWD-x-DJ-Kermit",
     "supply": 69,
-    "issuance": "November 2021",
-    "imageUri": "https://tokenscan.io/img/cards/KEKGRAM.gif"
+    "issuance": "November 2021"
   },
   {
     "asset": "PEPESIMULATE",
@@ -3132,8 +3113,7 @@
     "artist": "Yog Joshi",
     "artistSlug": "Yog-Joshi",
     "supply": 100,
-    "issuance": "November 2021",
-    "imageUri": "https://tokenscan.io/img/cards/PEPOSESSION.gif"
+    "issuance": "November 2021"
   },
   {
     "asset": "KINDOFGREEN",
@@ -3235,8 +3215,7 @@
     "artist": "Dr. Greedy",
     "artistSlug": "Dr.-Greedy",
     "supply": 66,
-    "issuance": "December 2021",
-    "imageUri": "https://tokenscan.io/img/cards/LOVEOFPEPE.gif"
+    "issuance": "December 2021"
   },
   {
     "asset": "FAKEDIAMONDS",
@@ -3450,8 +3429,7 @@
     "artist": "CryptoAli",
     "artistSlug": "CryptoAli",
     "supply": 69,
-    "issuance": "December 2021",
-    "imageUri": "https://tokenscan.io/img/cards/MRPEPEVERSE.gif"
+    "issuance": "December 2021"
   },
   {
     "asset": "PEPEFLOCK",
@@ -3574,8 +3552,7 @@
     "artist": "calboy99",
     "artistSlug": "calboy99",
     "supply": 99,
-    "issuance": "March 2022",
-    "imageUri": "https://tokenscan.io/img/cards/INVSBLEFAKE.gif"
+    "issuance": "March 2022"
   },
   {
     "asset": "PEPETUNES",
@@ -3626,8 +3603,7 @@
     "artist": "Indelible",
     "artistSlug": "Indelible",
     "supply": 100,
-    "issuance": "February 2022",
-    "imageUri": "https://tokenscan.io/img/cards/DILLIGAFPEPE.gif"
+    "issuance": "February 2022"
   },
   {
     "asset": "JUSTHODLPEPE",
@@ -3725,12 +3701,12 @@
     "asset": "RCSAPEPE",
     "series": 7,
     "card": 46,
-    "ext": "png",
+    "ext": "mp4",
     "artist": "netidx",
     "artistSlug": "netidx",
     "supply": 1774,
     "issuance": "October 2021",
-    "imageUri": "https://tokenscan.io/img/cards/RCSAPEPE.png"
+    "videoUri": "https://tlydozqdw474dqrdvbfutcyzbbnc76azlxatkrzkg25bbld5gv6q.arweave.net/mvA3ZgO3P8HCI6hLSYsZCFov-BldwTVHKja6EKx9NX0"
   },
   {
     "asset": "MECHAPEP",
@@ -5529,12 +5505,12 @@
     "asset": "MADAMEPEPE",
     "series": 11,
     "card": 22,
-    "ext": "jpeg",
+    "ext": "mp4",
     "artist": "SNUXTONPACK",
     "artistSlug": "SNUXTONPACK",
     "supply": 31,
     "issuance": "June 2022",
-    "imageUri": "https://pepewtf.s3.amazonaws.com/collections/fake-rares/full/11/MADAMPEPE.jpeg"
+    "videoUri": "https://pepewtf.s3.amazonaws.com/collections/fake-rares/full/11/MADAMPEPE.jpeg"
   },
   {
     "asset": "FAKEAFPRINT",
@@ -7181,12 +7157,12 @@
     "asset": "PEPVOLUTION",
     "series": 14,
     "card": 39,
-    "ext": "jpeg",
+    "ext": "mp4",
     "artist": "Baldopg",
     "artistSlug": "Baldopg",
     "supply": 21,
     "issuance": "March 2023",
-    "imageUri": "https://pepewtf.s3.amazonaws.com/collections/fake-rares/full/14/PEPEVOLVE.jpeg"
+    "videoUri": "https://pepewtf.s3.amazonaws.com/collections/fake-rares/full/14/PEPEVOLVE.jpeg"
   },
   {
     "asset": "PEPEFESTIVAL",
