@@ -14,6 +14,8 @@ import { getCardInfo, type CardInfo, FULL_CARD_INDEX } from '../data/fullCardInd
  * - Known cards: ~200ms (direct lookup, 1-3 HTTP requests)
  * - Unknown cards: ~2-10s (search series 0-18, auto-cache result)
  * - Random cards: instant (picks from full card index)
+ * 
+ * Note: Patched @elizaos/plugin-telegram to handle button sanitization
  */
 
 // Base URL for Fake Rares card images
@@ -336,7 +338,7 @@ export const fakeRaresCardAction: Action = {
         console.log(`⏭️  Lore fetching currently disabled\n`);
         
         console.log(`🔧 STEP 5: Compose response message`);
-        // Build rich card info message
+        // Build rich card info message with URL (Telegram will auto-preview the media)
         let cardDetailsText = '';
         
         // Add random card indicator if applicable
@@ -345,10 +347,9 @@ export const fakeRaresCardAction: Action = {
           console.log(`   🎲 Added random card header`);
         }
         
-        // Escape underscores in URL so Telegram doesn't treat them as markdown
-        const escapedUrl = actualUrl.replace(/_/g, '\\_');
-        cardDetailsText += escapedUrl;
-        console.log(`   📎 Base: media URL (underscores escaped)`);
+        // Add URL first - Telegram will show image/video preview inline
+        cardDetailsText += actualUrl + '\n\n';
+        console.log(`   📎 Added media URL (preview will show inline)`);
         
         if (cardInfo) {
           const details: string[] = [];
@@ -360,15 +361,9 @@ export const fakeRaresCardAction: Action = {
           }
           details.push(seriesLine);
           
-          // Author with link (markdown format for clickable link) + issuance on same line
+          // Author (plain text, link will be via button below) + issuance on same line
           if (cardInfo.artist) {
-            const artistLink = cardInfo.artistSlug 
-              ? `https://pepe.wtf/artists/${cardInfo.artistSlug}`
-              : null;
-            
-            let artistLine = artistLink
-              ? `👨‍🎨 [${cardInfo.artist}](${artistLink})`
-              : `👨‍🎨 ${cardInfo.artist}`;
+            let artistLine = `👨‍🎨 ${cardInfo.artist}`;
             
             // Add issuance date on same line if available
             if (cardInfo.issuance) {
@@ -383,7 +378,7 @@ export const fakeRaresCardAction: Action = {
           
           // Append details after URL
           if (details.length > 0) {
-            cardDetailsText = actualUrl + '\n\n' + details.join('\n');
+            cardDetailsText += details.join('\n');
             console.log(`   📊 Added ${details.length} metadata line(s)`);
           }
         } else {
@@ -406,10 +401,27 @@ export const fakeRaresCardAction: Action = {
         console.log(`🔧 STEP 6: Return card context to Bootstrap`);
         console.log(`   📤 Context: ${actionResult}`);
         
+        // Build buttons array: just artist link (media preview shows automatically)
+        const buttons = [];
+        
+        // Artist button (if available)
+        if (cardInfo?.artist && cardInfo?.artistSlug) {
+          buttons.push({ 
+            text: `👨‍🎨 ${cardInfo.artist}`, 
+            url: `https://pepe.wtf/artists/${cardInfo.artistSlug}` 
+          });
+          console.log(`   🔗 Added artist button: "${cardInfo.artist}"`);
+        } else if (cardInfo?.artist) {
+          console.log(`   ⚠️  Artist "${cardInfo.artist}" has no artistSlug - no button created`);
+        }
+        
         // THEN send card details via callback (async, after Bootstrap gets the card name)
+        // Link preview ENABLED so image/video shows inline automatically
         if (callback) {
           callback({
             text: cardDetailsText,
+            buttons: buttons.length > 0 ? buttons : undefined, // Only add if artist link exists
+            // NO link_preview_options.is_disabled - let Telegram show the media preview!
           }).catch((err) => console.error('❌ Error sending callback:', err));
           console.log(`   ✅ Callback queued (non-blocking)\n`);
         }
