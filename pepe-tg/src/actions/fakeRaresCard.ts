@@ -337,53 +337,39 @@ export const fakeRaresCardAction: Action = {
         const lore = null; // Disabled
         console.log(`⏭️  Lore fetching currently disabled\n`);
         
-        console.log(`🔧 STEP 5: Compose response message`);
-        // Build rich card info message with URL (Telegram will auto-preview the media)
+        console.log(`🔧 STEP 5: Compose message with metadata`);
+        // Build message: metadata first, URL at bottom (preview appears at bottom)
         let cardDetailsText = '';
         
-        // Add random card indicator if applicable
+        // 1. Random indicator OR card name + Series/Card
         if (isRandomCard) {
-          cardDetailsText = `🎲 Random card: ${assetName}\n\n`;
+          cardDetailsText = `🎲 ${assetName} 🐸 Series ${cardInfo?.series || '?'} - Card ${cardInfo?.card || '?'}\n`;
           console.log(`   🎲 Added random card header`);
+        } else {
+          cardDetailsText = `${assetName} 🐸 Series ${cardInfo?.series || '?'} - Card ${cardInfo?.card || '?'}\n`;
+          console.log(`   📛 Added card name header`);
         }
         
-        // Add URL first - Telegram will show image/video preview inline
-        cardDetailsText += actualUrl + '\n\n';
-        console.log(`   📎 Added media URL (preview will show inline)`);
-        
+        // 2. Supply + Issuance (on same line)
         if (cardInfo) {
-          const details: string[] = [];
-          
-          // Card name + Series + Card number + Supply on same line
-          let seriesLine = `🐸 ${assetName} • Series ${cardInfo.series} - Card ${cardInfo.card}`;
+          let metaLine = '';
           if (cardInfo.supply) {
-            seriesLine += ` • 💎 Supply: ${cardInfo.supply.toLocaleString()}`;
+            metaLine = `💎 Supply: ${cardInfo.supply.toLocaleString()}`;
           }
-          details.push(seriesLine);
-          
-          // Author (plain text, link will be via button below) + issuance on same line
-          if (cardInfo.artist) {
-            let artistLine = `👨‍🎨 ${cardInfo.artist}`;
-            
-            // Add issuance date on same line if available
-            if (cardInfo.issuance) {
-              artistLine += ` • 📅 ${cardInfo.issuance}`;
-            }
-            
-            details.push(artistLine);
-          } else if (cardInfo.issuance) {
-            // Only issuance date if no artist
-            details.push(`📅 Released: ${cardInfo.issuance}`);
+          if (cardInfo.issuance) {
+            metaLine += metaLine ? ` • 📅 ${cardInfo.issuance}` : `📅 ${cardInfo.issuance}`;
           }
-          
-          // Append details after URL
-          if (details.length > 0) {
-            cardDetailsText += details.join('\n');
-            console.log(`   📊 Added ${details.length} metadata line(s)`);
+          if (metaLine) {
+            cardDetailsText += metaLine + '\n\n';
+            console.log(`   📊 Added supply/date metadata`);
           }
         } else {
-          console.log(`   ⚠️  No metadata available (URL only)`);
+          console.log(`   ⚠️  No metadata available`);
         }
+        
+        // 3. URL at the very bottom (Telegram shows preview here)
+        cardDetailsText += actualUrl;
+        console.log(`   📎 Added media URL at bottom`);
         
         // Append lore if available
         if (lore) {
@@ -415,15 +401,15 @@ export const fakeRaresCardAction: Action = {
           console.log(`   ⚠️  Artist "${cardInfo.artist}" has no artistSlug - no button created`);
         }
         
-        // THEN send card details via callback (async, after Bootstrap gets the card name)
-        // Link preview ENABLED so image/video shows inline automatically
+        // THEN send message with link preview + artist button
+        // Telegram auto-shows media preview when URL is in message
         if (callback) {
           callback({
             text: cardDetailsText,
-            buttons: buttons.length > 0 ? buttons : undefined, // Only add if artist link exists
-            // NO link_preview_options.is_disabled - let Telegram show the media preview!
+            buttons: buttons.length > 0 ? buttons : undefined,
+            // Enable link preview so Telegram shows media inline
           }).catch((err) => console.error('❌ Error sending callback:', err));
-          console.log(`   ✅ Callback queued (non-blocking)\n`);
+          console.log(`   ✅ Callback queued: message with media preview + ${buttons.length} button(s)\n`);
         }
         
         console.log(`✅ SUCCESS: ${assetName} card will be displayed`);
