@@ -8815,16 +8815,6 @@
     "issuance": "September 2025"
   },
   {
-    "asset": "MEMETICTRUMP",
-    "series": 18,
-    "card": 2,
-    "ext": "jpeg",
-    "artist": "Memeticx",
-    "artistSlug": "Memeticx",
-    "supply": 47,
-    "issuance": "July 2025"
-  },
-  {
     "asset": "PEEKABOOPEP",
     "series": 18,
     "card": 3,
@@ -8833,16 +8823,6 @@
     "artistSlug": "VVD",
     "supply": 21,
     "issuance": "September 2025"
-  },
-  {
-    "asset": "PEEKABOOPEP",
-    "series": 18,
-    "card": 3,
-    "ext": "png",
-    "artist": "VVD",
-    "artistSlug": "VVD",
-    "supply": 21,
-    "issuance": "July 2025"
   },
   {
     "asset": "YOUL.LASTPEPESUPPER",
@@ -8855,16 +8835,6 @@
     "issuance": "September 2025"
   },
   {
-    "asset": "YOUL.LASTPEPESUPPER",
-    "series": 18,
-    "card": 4,
-    "ext": "jpeg",
-    "artist": "YoulDesign",
-    "artistSlug": "YoulDesign",
-    "supply": 110,
-    "issuance": "July 2025"
-  },
-  {
     "asset": "READYTOKEK",
     "series": 18,
     "card": 5,
@@ -8873,16 +8843,6 @@
     "artistSlug": "HNFT-Pepe",
     "supply": 21,
     "issuance": "September 2025"
-  },
-  {
-    "asset": "READYTOKEK",
-    "series": 18,
-    "card": 5,
-    "ext": "gif",
-    "artist": "HNFT Pepe",
-    "artistSlug": "HNFT-Pepe",
-    "supply": 21,
-    "issuance": "July 2025"
   },
   {
     "asset": "MINDCLEANSE",
@@ -8895,16 +8855,6 @@
     "issuance": "September 2025"
   },
   {
-    "asset": "MINDCLEANSE",
-    "series": 18,
-    "card": 6,
-    "ext": "jpeg",
-    "artist": "uttermelon",
-    "artistSlug": "uttermelon",
-    "supply": 31,
-    "issuance": "July 2025"
-  },
-  {
     "asset": "FAKEASCIIART",
     "series": 18,
     "card": 7,
@@ -8915,30 +8865,10 @@
     "issuance": "September 2025"
   },
   {
-    "asset": "FAKEASCIIART",
-    "series": 18,
-    "card": 7,
-    "ext": "gif",
-    "artist": "TKY",
-    "artistSlug": "TKY",
-    "supply": 100,
-    "issuance": "July 2025"
-  },
-  {
     "asset": "TOOFAKEYPEPE",
     "series": 18,
     "card": 8,
     "ext": "jpg",
-    "artist": "CTC",
-    "artistSlug": "CTC",
-    "supply": 21,
-    "issuance": "August 2025"
-  },
-  {
-    "asset": "TOOFAKEYPEPE",
-    "series": 18,
-    "card": 8,
-    "ext": "jpeg",
     "artist": "CTC",
     "artistSlug": "CTC",
     "supply": 21,
@@ -8955,16 +8885,6 @@
     "issuance": "September 2025"
   },
   {
-    "asset": "FROGDNA",
-    "series": 18,
-    "card": 9,
-    "ext": "jpeg",
-    "artist": "MintFace",
-    "artistSlug": "MintFace",
-    "supply": 88,
-    "issuance": "September 2025"
-  },
-  {
     "asset": "FAKETDH",
     "series": 18,
     "card": 10,
@@ -8973,26 +8893,6 @@
     "artistSlug": "6529er",
     "supply": 69,
     "issuance": "September 2025"
-  },
-  {
-    "asset": "FAKETDH",
-    "series": 18,
-    "card": 10,
-    "ext": "jpeg",
-    "artist": "6529er",
-    "artistSlug": "6529er",
-    "supply": 69,
-    "issuance": "September 2025"
-  },
-  {
-    "asset": "DRAWMEFRENCH",
-    "series": 18,
-    "card": 11,
-    "ext": "png",
-    "artist": "dark0",
-    "artistSlug": "dark0",
-    "supply": 69,
-    "issuance": "September 2023"
   },
   {
     "asset": "DRAWMEFRENCH",
@@ -9015,16 +8915,6 @@
     "issuance": "October 2024"
   },
   {
-    "asset": "SATOSHITASK",
-    "series": 18,
-    "card": 12,
-    "ext": "jpeg",
-    "artist": "RAHVO",
-    "artistSlug": "RAHVO",
-    "supply": 125,
-    "issuance": "October 2024"
-  },
-  {
     "asset": "PEPECREATURE",
     "series": 18,
     "card": 13,
@@ -9032,26 +8922,6 @@
     "artist": "Kane Mayfield",
     "artistSlug": "Kane-Mayfield",
     "supply": 420,
-    "issuance": "September 2025"
-  },
-  {
-    "asset": "PEPECREATURE",
-    "series": 18,
-    "card": 13,
-    "ext": "jpeg",
-    "artist": "Kane Mayfield",
-    "artistSlug": "Kane-Mayfield",
-    "supply": 420,
-    "issuance": "September 2025"
-  },
-  {
-    "asset": "WHATSAPPEPE",
-    "series": 18,
-    "card": 14,
-    "ext": "gif",
-    "artist": "cydr",
-    "artistSlug": "cydr",
-    "supply": 69,
     "issuance": "September 2025"
   },
   {
@@ -9076,31 +8946,10 @@
     "videoUri": "https://ipfs.io/ipfs/QmaLceN2CEjFPCCx9NptrpWgAJ6XhCNnCJHNNy7HZaZuwP?filename=video.mp4"
   },
   {
-    "asset": "RAININGPEPES",
-    "series": 18,
-    "card": 15,
-    "ext": "mp4",
-    "artist": "bhare",
-    "artistSlug": "bhare",
-    "supply": 69,
-    "issuance": "September 2025",
-    "videoUri": "https://ipfs.io/ipfs/QmaLceN2CEjFPCCx9NptrpWgAJ6XhCNnCJHNNy7HZaZuwP?filename=video.mp4"
-  },
-  {
     "asset": "NICEDAYPEPE",
     "series": 18,
     "card": 16,
     "ext": "jpg",
-    "artist": "nicedayJULES",
-    "artistSlug": "nicedayJULES",
-    "supply": 69,
-    "issuance": "September 2025"
-  },
-  {
-    "asset": "NICEDAYPEPE",
-    "series": 18,
-    "card": 16,
-    "ext": "jpeg",
     "artist": "nicedayJULES",
     "artistSlug": "nicedayJULES",
     "supply": 69,
@@ -9115,27 +8964,6 @@
     "artistSlug": "diid",
     "supply": 69,
     "issuance": "September 2025"
-  },
-  {
-    "asset": "CLIPEPE",
-    "series": 18,
-    "card": 17,
-    "ext": "jpeg",
-    "artist": "diid",
-    "artistSlug": "diid",
-    "supply": 69,
-    "issuance": "September 2025"
-  },
-  {
-    "asset": "OKAYPEPE",
-    "series": 18,
-    "card": 18,
-    "ext": "mp4",
-    "artist": "Olivia Pedigo",
-    "artistSlug": "Olivia-Pedigo",
-    "supply": 69,
-    "issuance": "September 2025",
-    "videoUri": "https://ipfs.io/ipfs/QmYCFSEefxiS9Yf4oQgxCjWDQBTYopmid8vt8sAVnwZZFJ?filename=video.mp4"
   },
   {
     "asset": "OKAYPEPE",
@@ -9159,42 +8987,12 @@
     "issuance": "September 2025"
   },
   {
-    "asset": "BLOOMERPEPE",
-    "series": 18,
-    "card": 19,
-    "ext": "gif",
-    "artist": "Bryan Brinkman",
-    "artistSlug": "Bryan-Brinkman",
-    "supply": 69,
-    "issuance": "September 2025"
-  },
-  {
     "asset": "FLOWEEEHHHSS",
     "series": 18,
     "card": 20,
     "ext": "jpg",
     "artist": "batz",
     "artistSlug": "batz",
-    "supply": 69,
-    "issuance": "September 2025"
-  },
-  {
-    "asset": "FLOWEEEHHHSS",
-    "series": 18,
-    "card": 20,
-    "ext": "jpeg",
-    "artist": "batz",
-    "artistSlug": "batz",
-    "supply": 69,
-    "issuance": "September 2025"
-  },
-  {
-    "asset": "PEPEFALFA",
-    "series": 18,
-    "card": 21,
-    "ext": "gif",
-    "artist": "banakin",
-    "artistSlug": "banakin",
     "supply": 69,
     "issuance": "September 2025"
   },
