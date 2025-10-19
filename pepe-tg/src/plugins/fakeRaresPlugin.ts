@@ -100,6 +100,40 @@ export const fakeRaresPlugin: Plugin = {
             console.log(`🔬 [TEST] Callback type: ${typeof originalCallback}, exists: ${!!originalCallback}`);
             console.log(`🔬 [TEST] Params keys: ${Object.keys(params || {}).join(', ')}`);
             
+            // 🔧 FIX for 1.6.2: Manually process /f commands since DefaultMessageService breaks action execution
+            if (isFCommand && typeof originalCallback === 'function') {
+              console.log(`🔧 [1.6.2 FIX] Detected /f command - manually processing action`);
+              
+              try {
+                const runtime = params.runtime;
+                const message = params.message;
+                
+                // Manually validate and execute the fakeRaresCardAction
+                if (fakeRaresCardAction.validate) {
+                  const isValid = await fakeRaresCardAction.validate(runtime, message);
+                  console.log(`🔧 [1.6.2 FIX] Action validation result: ${isValid}`);
+                  
+                  if (isValid && fakeRaresCardAction.handler) {
+                    console.log(`🔧 [1.6.2 FIX] Executing fakeRaresCardAction.handler()`);
+                    await fakeRaresCardAction.handler(
+                      runtime, 
+                      message, 
+                      params.state, 
+                      {}, 
+                      originalCallback
+                    );
+                    console.log(`🔧 [1.6.2 FIX] Action handler completed - preventing bootstrap processing`);
+                    
+                    // Mark params to signal bootstrap should skip this message
+                    params._actionHandled = true;
+                    return; // Early return - action already processed
+                  }
+                }
+              } catch (error) {
+                console.error(`🚨 [1.6.2 FIX] Error manually processing /f action:`, error);
+              }
+            }
+            
             if (typeof originalCallback === 'function') {
               console.log(`🔬 [TEST] Installing callback wrapper for suppression`);
               params.callback = async (content: any, files?: any) => {
