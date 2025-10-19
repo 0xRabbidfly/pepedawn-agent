@@ -30,7 +30,7 @@
     "@elizaos/cli": "1.6.1",
     "@elizaos/client": "1.6.1",
     "@elizaos/core": "1.6.1",
-    "@elizaos/plugin-bootstrap": "1.6.1",
+    "@elizaos/plugin-bootstrap": "1.6.2",
     "@elizaos/plugin-knowledge": "1.5.10",
     "@elizaos/plugin-ollama": "^1.2.4",
     "@elizaos/plugin-openai": "^1.5.16",
