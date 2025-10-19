@@ -58,6 +58,7 @@
   "scripts": {
     "start": "elizaos start",
     "dev": "elizaos dev",
+    "restart": "./scripts/safe-restart.sh",
     "build": "bun run build.ts",
     "lint": "prettier --write ./src",
     "type-check": "tsc --noEmit",

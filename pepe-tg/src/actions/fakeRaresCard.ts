@@ -86,6 +86,17 @@ function findBestMatch(inputName: string, allAssets: string[]): { name: string; 
 }
 
 /**
+ * Format URL for Telegram MarkdownV2
+ * WORKAROUND: Plugin's escapeUrl() doesn't escape underscores, causing them to be stripped
+ * Solution: Percent-encode underscores as %5F (RFC 3986 compliant)
+ * This preserves functionality while ensuring Telegram shows the preview
+ */
+function formatTelegramUrl(url: string): string {
+  // Replace underscores with %5F - ugly but works and shows preview
+  return url.replace(/_/g, '%5F');
+}
+
+/**
  * Constructs the image URL for a Fake Rares card
  * Tries .jpg, .jpeg, .gif, .png, .mp4, and .webp extensions
  */
@@ -294,7 +305,9 @@ export const fakeRaresCardAction: Action = {
     const text = raw.trim();
     // Accept: "/f", "/f ASSET", "/f@bot ASSET", and leading mentions like "@bot /f ASSET"
     const fPattern = /^(?:@[A-Za-z0-9_]+\s+)?\/f(?:@[A-Za-z0-9_]+)?(?:\s+[A-Za-z0-9_-]+)?$/i;
-    return fPattern.test(text);
+    const matches = fPattern.test(text);
+    console.log(`🔍 [/f validation] Message: "${text}" → ${matches ? '✅ MATCH' : '❌ NO MATCH'}`);
+    return matches;
   },
   
   handler: async (
@@ -433,8 +446,9 @@ export const fakeRaresCardAction: Action = {
         }
         
         // 3. URL at the very bottom (Telegram shows preview here)
-        cardDetailsText += actualUrl;
-        console.log(`   📎 Added media URL at bottom`);
+        // Percent-encode underscores as %5F to bypass MarkdownV2 parsing issues
+        cardDetailsText += formatTelegramUrl(actualUrl);
+        console.log(`   📎 Added media URL (underscores percent-encoded as %5F)`);
         
         // Append lore if available
         if (lore) {
@@ -526,7 +540,8 @@ export const fakeRaresCardAction: Action = {
               matchedCardText += ` • 💎 ${matchedCard.supply.toLocaleString()}`;
             }
             matchedCardText += '\n\n';
-            matchedCardText += matchedUrl;
+            // Format as inline link for Telegram MarkdownV2
+            matchedCardText += formatTelegramUrl(matchedUrl);
             
             // Build buttons
             const buttons = [];

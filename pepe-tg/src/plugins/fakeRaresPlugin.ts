@@ -98,17 +98,17 @@ export const fakeRaresPlugin: Plugin = {
                 if (!hasSentOnce) {
                   // Only allow the first send if it originated from our action
                   if (fromAction) {
-                    console.log(`✅ [Suppression] Allowing send from fakeRaresCard action`);
+                    console.log(`✅ [Suppression] Allowing FAKERARECARD send from /f action`);
                     hasSentOnce = true;
                     return originalCallback(sanitized, files);
                   }
                   // Not from our action: if suppression is active, drop it
                   if (params?.state?.suppressBootstrap || content?.suppressBootstrap) {
-                    console.log(`🚫 [Suppression] Dropped first send (not from /f action, suppression active)`);
+                    console.log(`🚫 [Suppression] Dropped BOOTSTRAP send (not from /f action, suppression active)`);
                     return [];
                   }
                   // Otherwise allow
-                  console.log(`✅ [Suppression] Allowing first send (no suppression flag)`);
+                  console.log(`✅ [Suppression] Allowing BOOTSTRAP send (no suppression flag)`);
                   hasSentOnce = true;
                   return originalCallback(sanitized, files);
                 }
@@ -116,10 +116,10 @@ export const fakeRaresPlugin: Plugin = {
                 if (params?.state?.suppressBootstrap || content?.suppressBootstrap) {
                   // Allow only our action content if it appears again (unlikely)
                   if (fromAction) {
-                    console.log(`✅ [Suppression] Allowing additional send from fakeRaresCard action`);
+                    console.log(`✅ [Suppression] Allowing additional FAKERARECARD send from /f action`);
                     return originalCallback(sanitized, files);
                   }
-                  console.log(`🚫 [Suppression] Dropped follow-up send (bootstrap or other handler)`);
+                  console.log(`🚫 [Suppression] Dropped follow-up BOOTSTRAP/OTHER send (suppression active)`);
                   return [];
                 }
                 console.log(`✅ [Suppression] Allowing follow-up send (no suppression)`);
