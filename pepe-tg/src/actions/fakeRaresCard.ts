@@ -7,7 +7,7 @@ import { getCardInfo, type CardInfo, FULL_CARD_INDEX } from '../data/fullCardInd
  * Responds to /f <ASSET> commands by fetching and displaying card images
  * Also supports /f (no asset) to display a random card from the collection
  * 
- * URL Structure: https://pepewtf.s3.amazonaws.com/collections/fake-rares/small/{SERIES}/{ASSET}.{jpg|gif}
+ * URL Structure: https://pepewtf.s3.amazonaws.com/collections/fake-rares/full/{SERIES}/{ASSET}.{jpg|gif|mp4|png}
  * Series 0-18 (19 series total, 50 cards each = ~950 total cards)
  * 
  * Performance optimization:
@@ -15,11 +15,11 @@ import { getCardInfo, type CardInfo, FULL_CARD_INDEX } from '../data/fullCardInd
  * - Unknown cards: ~2-10s (search series 0-18, auto-cache result)
  * - Random cards: instant (picks from full card index)
  * 
- * Note: Using /small/ instead of /full/ for better Telegram preview compatibility (<10MB, optimized dimensions)
+ * Note: Using /full/ for higher quality media (Telegram handles compression automatically)
  */
 
-// Base URL for Fake Rares card images (using /small/ for better Telegram preview compatibility)
-const FAKE_RARES_BASE_URL = 'https://pepewtf.s3.amazonaws.com/collections/fake-rares/small';
+// Base URL for Fake Rares card images (using /full/ for higher quality)
+const FAKE_RARES_BASE_URL = 'https://pepewtf.s3.amazonaws.com/collections/fake-rares/full';
 
 /**
  * Calculate Levenshtein distance between two strings
