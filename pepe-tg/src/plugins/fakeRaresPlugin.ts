@@ -27,29 +27,10 @@ export const fakeRaresPlugin: Plugin = {
     MESSAGE_RECEIVED: [
       async (params: any) => {
         try {
-          // Extract message text
           const text = (params?.message?.content?.text ?? '').toString().trim();
-          
-          // Pattern detection
           const isFCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/f(?:@[A-Za-z0-9_]+)?(?:\s+[A-Za-z0-9_-]+)?$/i.test(text);
-          const hasCapitalizedText = /\b[A-Z]{2,}\b/.test(text); // Card names like PEPE, FREEDOMKEK
-          const hasBotMention = /@pepedawn_bot/i.test(text);
           
-          // Check global suppression mode (env var)
-          const globalSuppression = process.env.SUPPRESS_BOOTSTRAP === 'true';
-          
-          // Log once on first message if global suppression is active
-          if (globalSuppression && !params._globalSuppressionLogged) {
-            console.log(`🛡️ [SUPPRESS_BOOTSTRAP=true] Only /f commands will work, all bootstrap responses blocked`);
-            params._globalSuppressionLogged = true;
-          }
-          
-          // Decision: Should we suppress bootstrap for this message?
-          // Suppress if: (1) global mode, (2) /f command, or (3) no caps and no mention
-          const shouldSuppress = globalSuppression || isFCommand || (!hasCapitalizedText && !hasBotMention);
-          
-          // === /F COMMAND HANDLING ===
-          // Always process /f commands manually (1.6.2 fix)
+          // Only handle /f commands - let bootstrap handle everything else normally
           if (isFCommand) {
             console.log(`🎴 [/f] Processing card command`);
             
@@ -62,34 +43,27 @@ export const fakeRaresPlugin: Plugin = {
               
               if (isValid) {
                 await fakeRaresCardAction.handler(runtime, message, params.state, {}, callback);
-                console.log(`✅ [/f] Card sent successfully`);
-                return; // Exit early - action handled, don't let bootstrap process
+                console.log(`✅ [/f] Card sent`);
+                return; // Done - bootstrap doesn't need to process this
               }
             }
-          }
-          
-          // === BOOTSTRAP SUPPRESSION ===
-          // For non-/f messages, decide if bootstrap should respond
-          if (shouldSuppress) {
-            const reason = globalSuppression 
-              ? 'global mode' 
-              : isFCommand 
-                ? '/f command' 
-                : 'no caps/mention';
-            console.log(`🛡️ [Suppress] Blocking bootstrap (${reason})`);
-            
-            // Wrap callback to prevent bootstrap from sending
-            const originalCallback = params.callback;
-            if (typeof originalCallback === 'function') {
-              params.callback = async (content: any, files?: any) => {
-                console.log(`🚫 [Suppress] Blocked bootstrap response`);
-                return []; // Don't send anything
-              };
-            }
           } else {
-            // Allow bootstrap to respond
-            const reason = hasBotMention ? '@mention' : 'capitalized text';
-            console.log(`✅ [Allow] Bootstrap can respond (${reason})`);
+            // Not a /f command - manually call messageService (1.6.2 fix)
+            console.log(`💬 [Bootstrap] Processing message via messageService`);
+            
+            const runtime = params.runtime;
+            const message = params.message;
+            const callback = params.callback;
+            
+            // Manually invoke messageService since bootstrap's handler is broken
+            if (runtime?.messageService) {
+              try {
+                await runtime.messageService.handleMessage(runtime, message, callback);
+              } catch (err) {
+                console.error(`❌ [Bootstrap] Error:`, err);
+              }
+              return; // Prevent bootstrap's handler from also processing
+            }
           }
           
         } catch (error) {
