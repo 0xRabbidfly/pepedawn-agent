@@ -7,6 +7,13 @@ import { loreDetectorEvaluator } from '../evaluators';
  * Fake Rares Plugin
  * Provides custom actions for the Fake Rares community
  */
+// 🔬 Log actions at plugin load time
+console.log(`🔬 [PLUGIN LOAD] fakeRaresPlugin registering ${3} actions:`, {
+  startCommand: !!startCommand,
+  helpCommand: !!helpCommand,
+  fakeRaresCardAction: !!fakeRaresCardAction,
+});
+
 export const fakeRaresPlugin: Plugin = {
   name: 'fake-rares',
   description: 'Custom actions for Fake Rares card display and community features',
