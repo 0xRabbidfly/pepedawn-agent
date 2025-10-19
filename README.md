@@ -41,7 +41,7 @@ Before you begin, ensure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/0xRabbidfly/pepedawn-agent.git
+git clone https://github.com/0xrabbidfly/pepedawn-agent.git
 cd pepedawn-agent
 ```
 
@@ -271,6 +271,334 @@ bun run restart          # Safe restart with database backup
 ./scripts/backup-db.sh   # Backup database manually
 ./scripts/kill-bot.sh    # Stop the bot
 ```
+
+## 🚀 DigitalOcean Production Deployment
+
+Deploy PEPEDAWN to a DigitalOcean Droplet for 24/7 operation.
+
+### Prerequisites
+
+- DigitalOcean account
+- OpenAI API key
+- Telegram bot token
+- Database backup file (`elizadb-backup-*.tar.gz`)
+
+### Step 1: Create DigitalOcean Droplet
+
+1. Go to [DigitalOcean](https://www.digitalocean.com)
+2. Create Droplet:
+   - **Image**: Ubuntu 22.04 LTS
+   - **Plan**: Basic ($6/month) - 1GB RAM, 1 vCPU, 25GB SSD
+   - **Region**: Closest to you
+   - **Authentication**: SSH Key (recommended) or Password
+3. Note your server IP address
+
+### Step 2: Server Setup
+
+**SSH into your server:**
+```bash
+ssh root@YOUR_SERVER_IP
+```
+
+**Install dependencies:**
+```bash
+# Update system
+apt-get update && apt-get upgrade -y
+
+# Install required packages
+apt-get install -y curl git build-essential unzip
+
+# Install Node.js
+curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+apt-get install -y nodejs
+
+# Install Bun
+curl -fsSL https://bun.sh/install | bash
+export PATH="$HOME/.bun/bin:$PATH"
+
+# Install PM2 for process management
+npm install -g pm2
+
+# Verify installations
+node --version
+bun --version
+```
+
+### Step 3: Deploy Application
+
+**Clone repository:**
+```bash
+# Replace YOUR_TOKEN with your GitHub Personal Access Token
+git clone https://YOUR_TOKEN@github.com/0xrabbidfly/pepedawn-bot.git
+cd pepedawn-bot/pepe-tg
+```
+
+**Install dependencies:**
+```bash
+bun install
+```
+
+### Step 4: Configure Environment
+
+**Create .env file:**
+```bash
+nano .env
+```
+
+**Add your configuration:**
+```bash
+# ================================
+# REQUIRED: OpenAI API
+# ================================
+OPENAI_API_KEY=sk-your-openai-api-key-here
+
+# ================================
+# REQUIRED: Telegram Bot
+# ================================
+TELEGRAM_BOT_TOKEN=your-telegram-bot-token-here
+
+# ================================
+# COST-OPTIMIZED AI MODELS
+# ================================
+TEXT_MODEL=gpt-4o-mini
+SMALL_OPENAI_MODEL=gpt-4o-mini
+
+# Embeddings (already optimized)
+OPENAI_EMBEDDING_MODEL=text-embedding-3-small
+TEXT_EMBEDDING_MODEL=text-embedding-3-small
+EMBEDDING_DIMENSION=1536
+EMBEDDING_PROVIDER=openai
+
+# ================================
+# DATABASE - PGlite (Embedded)
+# ================================
+PGLITE_DATA_DIR=/root/pepedawn-bot/pepe-tg/.eliza/.elizadb
+
+# ================================
+# KNOWLEDGE BASE SETTINGS
+# ================================
+CTX_KNOWLEDGE_ENABLED=false
+KNOWLEDGE_PATH=./docs/chunks
+LOAD_DOCS_ON_STARTUP=true
+
+# ================================
+# SERVER CONFIGURATION
+# ================================
+SERVER_PORT=3000
+NODE_ENV=production
+LOG_LEVEL=info
+ELIZA_UI_ENABLE=true
+
+# ================================
+# RATE LIMITS (Optimized)
+# ================================
+MAX_INPUT_TOKENS=8000
+MAX_OUTPUT_TOKENS=4096
+MAX_CONCURRENT_REQUESTS=10
+REQUESTS_PER_MINUTE=400
+TOKENS_PER_MINUTE=900000
+```
+
+**Save:** `Ctrl+X`, `Y`, `Enter`
+
+### Step 5: Upload Database
+
+**From your local machine:**
+```bash
+cd /home/nuno/projects/Fake-Rare-TG-Agent/pepe-tg
+
+# Upload your database backup
+scp elizadb-backup-Production-*.tar.gz root@YOUR_SERVER_IP:/root/pepedawn-bot/pepe-tg/
+```
+
+**On your server:**
+```bash
+# Extract database
+tar -xzf elizadb-backup-Production-*.tar.gz
+
+# Verify database
+ls -la .eliza/.elizadb/
+du -sh .eliza/.elizadb/
+
+# Clean up backup file
+rm elizadb-backup-Production-*.tar.gz
+```
+
+### Step 6: Build and Start
+
+**Build application:**
+```bash
+bun run build
+```
+
+**Start with PM2:**
+```bash
+# Start bot with PM2 (24/7 operation)
+pm2 start "bun run start" --name pepedawn
+
+# Save PM2 configuration
+pm2 save
+
+# Set up auto-start on server reboot
+pm2 startup
+# Follow the command it shows you
+
+# Check status
+pm2 status
+pm2 logs pepedawn
+```
+
+### Step 7: Set Up Automated Backups
+
+**Create backup script:**
+```bash
+nano /root/backup-pepedawn.sh
+```
+
+**Add this content:**
+```bash
+#!/bin/bash
+# Automated PEPEDAWN database backup script
+
+BACKUP_DIR="/root/backups"
+DATE=$(date +%Y%m%d_%H%M%S)
+DB_PATH="/root/pepedawn-bot/pepe-tg/.eliza/.elizadb"
+BACKUP_FILE="$BACKUP_DIR/elizadb-backup-$DATE.tar.gz"
+
+# Create backup directory
+mkdir -p "$BACKUP_DIR"
+
+# Create backup
+echo "🔒 Creating automated backup..."
+tar -czf "$BACKUP_FILE" -C /root/pepedawn-bot/pepe-tg/.eliza .elizadb/
+
+# Remove backups older than 7 days
+find "$BACKUP_DIR" -name "elizadb-backup-*.tar.gz" -mtime +7 -delete
+
+# Show results
+BACKUP_SIZE=$(du -sh "$BACKUP_FILE" | cut -f1)
+echo "✅ Backup complete: $(basename $BACKUP_FILE) ($BACKUP_SIZE)"
+
+# Log to system log
+logger "PEPEDAWN backup completed: $(basename $BACKUP_FILE)"
+```
+
+**Make executable:**
+```bash
+chmod +x /root/backup-pepedawn.sh
+```
+
+**Set up weekly cron job:**
+```bash
+# Edit crontab
+crontab -e
+
+# Add this line (backup every Sunday at 3 AM)
+0 3 * * 0 /root/backup-pepedawn.sh >> /var/log/pepedawn-backup.log 2>&1
+```
+
+### Step 8: Verify Deployment
+
+**Test your bot:**
+1. Open Telegram
+2. Find your bot: `@your_bot_username`
+3. Send: `/start`
+4. Try: `/f FREEDOMKEK`
+
+**Check logs:**
+```bash
+pm2 logs pepedawn --lines 50
+```
+
+**Monitor status:**
+```bash
+pm2 status
+pm2 monit
+```
+
+## 🔧 Production Management
+
+### PM2 Commands
+
+```bash
+# Check bot status
+pm2 status
+
+# View logs
+pm2 logs pepedawn
+pm2 logs pepedawn --lines 100
+
+# Restart bot
+pm2 restart pepedawn
+
+# Stop bot
+pm2 stop pepedawn
+
+# Start bot
+pm2 start pepedawn
+
+# Monitor in real-time
+pm2 monit
+```
+
+### Backup Management
+
+```bash
+# Manual backup
+/root/backup-pepedawn.sh
+
+# Check backup logs
+tail -f /var/log/pepedawn-backup.log
+
+# List backups
+ls -la /root/backups/
+
+# Restore from backup
+pm2 stop pepedawn
+tar -xzf /root/backups/elizadb-backup-TIMESTAMP.tar.gz -C /root/pepedawn-bot/pepe-tg/.eliza/
+pm2 start pepedawn
+```
+
+### Updates
+
+```bash
+# Update code
+cd /root/pepedawn-bot
+git pull origin main
+
+# Rebuild and restart
+cd pepe-tg
+bun install
+bun run build
+pm2 restart pepedawn
+```
+
+### Monitoring
+
+```bash
+# Check system resources
+htop
+df -h
+free -h
+
+# Check bot logs for errors
+pm2 logs pepedawn | grep -i error
+
+# Check OpenAI API usage
+# Visit: https://platform.openai.com/usage
+```
+
+## 💰 Cost Monitoring
+
+**Monthly costs:**
+- DigitalOcean Droplet: $6/month
+- OpenAI API (GPT-4o Mini): $1-3/month
+- **Total: $7-9/month**
+
+**Set OpenAI spending limits:**
+1. Go to: https://platform.openai.com/account/limits
+2. Set monthly limit: $5-10
+3. Enable alerts
 
 ## 🐳 Docker Deployment (Optional)
 
