@@ -88,14 +88,24 @@ export const fakeRaresPlugin: Plugin = {
             // Wrap callback to allow the first response (our action) and suppress follow-ups
             const originalCallback = params.callback;
             let hasSentOnce = false;
+            
+            // 🧪 DIAGNOSTIC: Log callback wrapper installation
+            console.log(`🔬 [TEST] Callback type: ${typeof originalCallback}, exists: ${!!originalCallback}`);
+            console.log(`🔬 [TEST] Params keys: ${Object.keys(params || {}).join(', ')}`);
+            
             if (typeof originalCallback === 'function') {
+              console.log(`🔬 [TEST] Installing callback wrapper for suppression`);
               params.callback = async (content: any, files?: any) => {
+                console.log(`🔬 [TEST] Callback wrapper invoked! hasSentOnce: ${hasSentOnce}`);
                 const fromAction = content?.__fromAction === 'fakeRaresCard';
+                console.log(`🔬 [TEST] fromAction: ${fromAction}, has __fromAction marker: ${!!content?.__fromAction}`);
+                
                 // Sanitize content to avoid persisting internal markers
                 const sanitized = content && typeof content === 'object'
                   ? (() => { const c = { ...content }; delete (c as any).__fromAction; delete (c as any).suppressBootstrap; return c; })()
                   : content;
                 if (!hasSentOnce) {
+                  console.log(`🔬 [TEST] First send - evaluating rules`);
                   // Only allow the first send if it originated from our action
                   if (fromAction) {
                     console.log(`✅ [Suppression] Allowing FAKERARECARD send from /f action`);
@@ -131,7 +141,10 @@ export const fakeRaresPlugin: Plugin = {
             const reason = hasBotMention ? 'bot mentioned with @pepedawn_bot' : 'has capitalized text';
             console.log(`📨 [Suppression] No suppression for message: "${text.substring(0, 50)}${text.length > 50 ? '...' : ''}" - ${reason}, bootstrap allowed`);
           }
+          
+          console.log(`🔬 [TEST] MESSAGE_RECEIVED handler completed successfully`);
         } catch (_e) {
+          console.error(`🚨 [TEST] ERROR in MESSAGE_RECEIVED handler:`, _e);
           // best-effort tagging; never throw
         }
       },
