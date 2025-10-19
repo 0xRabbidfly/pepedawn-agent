@@ -18,8 +18,35 @@ import { getCardInfo, type CardInfo, FULL_CARD_INDEX } from '../data/fullCardInd
  * Note: Using /full/ for higher quality media (Telegram handles compression automatically)
  */
 
+// ============================================================================
+// CONSTANTS
+// ============================================================================
+
 // Base URL for Fake Rares card images (using /full/ for higher quality)
 const FAKE_RARES_BASE_URL = 'https://pepewtf.s3.amazonaws.com/collections/fake-rares/full';
+
+// Fuzzy matching thresholds and configuration
+const FUZZY_MATCH_THRESHOLDS = {
+  HIGH_CONFIDENCE: 0.75,  // ≥75% similarity: Auto-show the matched card
+  MODERATE: 0.5,          // 50-74% similarity: Show suggestions
+  TOP_SUGGESTIONS: 3,     // Number of suggestions to show for moderate matches
+} as const;
+
+// ============================================================================
+// TYPE DEFINITIONS
+// ============================================================================
+
+type MediaExtension = 'jpg' | 'jpeg' | 'gif' | 'png' | 'mp4' | 'webp';
+
+interface CardUrlResult {
+  url: string;
+  extension: MediaExtension;
+}
+
+interface FuzzyMatch {
+  name: string;
+  similarity: number;
+}
 
 /**
  * Calculate Levenshtein distance between two strings
@@ -66,23 +93,20 @@ function calculateSimilarity(str1: string, str2: string): number {
 }
 
 /**
- * Find the best matching card name from all available cards
+ * Find top N matching card names from all available cards
  */
-function findBestMatch(inputName: string, allAssets: string[]): { name: string; similarity: number } | null {
-  if (allAssets.length === 0) return null;
+function findTopMatches(inputName: string, allAssets: string[], topN: number = FUZZY_MATCH_THRESHOLDS.TOP_SUGGESTIONS): FuzzyMatch[] {
+  if (allAssets.length === 0) return [];
 
-  let bestMatch = allAssets[0];
-  let bestSimilarity = calculateSimilarity(inputName, allAssets[0]);
+  const matches: FuzzyMatch[] = allAssets.map(asset => ({
+    name: asset,
+    similarity: calculateSimilarity(inputName, asset)
+  }));
 
-  for (const asset of allAssets) {
-    const similarity = calculateSimilarity(inputName, asset);
-    if (similarity > bestSimilarity) {
-      bestSimilarity = similarity;
-      bestMatch = asset;
-    }
-  }
-
-  return { name: bestMatch, similarity: bestSimilarity };
+  // Sort by similarity (descending) and take top N
+  return matches
+    .sort((a, b) => b.similarity - a.similarity)
+    .slice(0, topN);
 }
 
 /**
@@ -98,154 +122,45 @@ function formatTelegramUrl(url: string): string {
 
 /**
  * Constructs the image URL for a Fake Rares card
- * Tries .jpg, .jpeg, .gif, .png, .mp4, and .webp extensions
  */
-function getFakeRaresImageUrl(assetName: string, seriesNumber: number, extension: 'jpg' | 'jpeg' | 'gif' | 'png' | 'mp4' | 'webp'): string {
+function getFakeRaresImageUrl(assetName: string, seriesNumber: number, extension: MediaExtension): string {
   return `${FAKE_RARES_BASE_URL}/${seriesNumber}/${assetName.toUpperCase()}.${extension}`;
 }
 
 /**
- * Fetch lore snippets from knowledge base using runtime.searchMemories
- * Same approach as shareLore.ts (confirmed working on master)
+ * Determines the card URL from CardInfo, prioritizing special URIs over constructed URLs
  */
-async function fetchLoreSnippets(runtime: IAgentRuntime, message: Memory, assetName: string): Promise<string[]> {
-  console.log(`  🔍 [Lore] Starting knowledge search for: ${assetName}`);
-  
-  try {
-    console.log(`  📡 [Lore] Generating embedding...`);
-    // Generate embedding for the search query (same approach as knowledge plugin)
-    const embedding = await runtime.useModel(ModelType.TEXT_EMBEDDING, {
-      text: assetName,
-    });
-    
-    if (!embedding || !Array.isArray(embedding)) {
-      console.log(`  ❌ [Lore] Failed to generate embedding`);
-      return [];
-    }
-    
-    console.log(`  ✅ [Lore] Embedding generated (dimension: ${embedding.length})`);
-    
-    console.log(`  🔎 [Lore] Searching knowledge table (threshold: 0.25, count: 10)...`);
-    // Try without roomId restriction first (knowledge is often global)
-    const searchPromise = runtime.searchMemories({
-      tableName: 'knowledge',
-      embedding,  // Pass the pre-generated embedding
-      query: assetName,
-      count: 10,
-      match_threshold: 0.25,  // Higher threshold for more precise matches
-    });
-    
-    const timeoutPromise = new Promise<any>((_, reject) => 
-      setTimeout(() => reject(new Error('Lore search timeout')), 5000)
-    );
-    
-    const results = await Promise.race([searchPromise, timeoutPromise]);
-    
-    if (!results || !Array.isArray(results) || results.length === 0) {
-      console.log(`  ℹ️  [Lore] No results found in knowledge base`);
-      return [];
-    }
-    
-    console.log(`  📚 [Lore] Found ${results.length} matching entries`);
-    
-    console.log(`  🎲 [Lore] Extracting text content...`);
-    // Extract raw lore text
-    const loreCandidates = results
-      .map((r: any) => r?.content?.text || '')
-      .filter((t: string) => t.length > 0);
-    
-    if (loreCandidates.length === 0) {
-      console.log(`  ⚠️  [Lore] No valid text in results`);
-      return [];
-    }
-    
-    console.log(`  ✅ [Lore] Extracted ${loreCandidates.length} lore candidate(s)`);
-    
-    // Pick random lore snippet and prettify it with LLM
-    const rawLore = pickRandom(loreCandidates);
-    if (!rawLore) {
-      console.log(`  ⚠️  [Lore] Random selection returned null`);
-      return [];
-    }
-    
-    console.log(`  🎯 [Lore] Selected random snippet (${rawLore.length} chars)`);
-    
-    // LLM prettification - DISABLED for now
-    // TODO: Re-enable once LLM hanging issue is resolved
-    /*
-    console.log(`🎨 Prettifying lore snippet (${rawLore.length} chars)...`);
-    
-    try {
-      // Truncate raw lore if too long (to avoid huge prompts)
-      const truncatedLore = rawLore.length > 500 ? rawLore.slice(0, 500) + '...' : rawLore;
-      
-      const prompt = `You are PEPEDAWN, the legendary Fake Rares OG. Transform this raw knowledge snippet into a fun, engaging fact about ${assetName}. Keep it 2-3 sentences max, casual but accurate.
-
-Raw info:
-${truncatedLore}
-
-Engaging tidbit about ${assetName}:`;
-
-      const llmPromise = runtime.useModel(ModelType.TEXT_SMALL, {
-        prompt,
-        runtime,
-      });
-      
-      const timeoutPromise = new Promise<string>((_, reject) =>
-        setTimeout(() => reject(new Error('LLM timeout')), 3000)
-      );
-      
-      const prettifiedLore = await Promise.race([llmPromise, timeoutPromise]);
-      
-      if (prettifiedLore && typeof prettifiedLore === 'string') {
-        const cleanLore = prettifiedLore.trim();
-        console.log(`✨ Lore prettified successfully (${cleanLore.length} chars)`);
-        return [cleanLore];
-      }
-    } catch (e) {
-      console.log(`⚠️  LLM prettification failed, using raw lore:`, e instanceof Error ? e.message : String(e));
-      // Fallback to raw lore if LLM fails
-      return [rawLore.slice(0, 250)];
-    }
-    */
-    
-    // Return raw lore for now
-    const truncatedLore = rawLore.slice(0, 250);
-    console.log(`  ✂️  [Lore] Truncated to ${truncatedLore.length} chars`);
-    console.log(`  ✅ [Lore] Returning 1 lore snippet\n`);
-    return [truncatedLore];
-  } catch (err) {
-    console.log(`  ❌ [Lore] Exception occurred`);
-    console.error(`  Error:`, err instanceof Error ? err.message : String(err));
-    console.log('');
-    return [];
+function determineCardUrl(cardInfo: CardInfo, assetName: string): CardUrlResult {
+  // Check for special URIs (videoUri for mp4, imageUri for others)
+  if (cardInfo.ext === 'mp4' && cardInfo.videoUri) {
+    return { url: cardInfo.videoUri, extension: 'mp4' };
   }
-}
-
-function pickRandom<T>(items: T[]): T | null {
-  if (!items || items.length === 0) return null;
-  return items[Math.floor(Math.random() * items.length)] ?? null;
-}
-
-function truncate(text: string, maxLen: number): string {
-  if (text.length <= maxLen) return text;
-  return text.slice(0, Math.max(0, maxLen - 1)).trimEnd() + '…';
+  
+  if (cardInfo.imageUri) {
+    return { url: cardInfo.imageUri, extension: cardInfo.ext as MediaExtension };
+  }
+  
+  // Construct URL from series and ext
+  return {
+    url: getFakeRaresImageUrl(assetName, cardInfo.series, cardInfo.ext as MediaExtension),
+    extension: cardInfo.ext as MediaExtension
+  };
 }
 
 /**
  * Attempts to find the card image by trying different series numbers (0-18)
  * Uses full card index for instant lookups when available
  */
-async function findCardImage(assetName: string): Promise<{ url: string; extension: string } | null> {
+async function findCardImage(assetName: string): Promise<CardUrlResult | null> {
   const upperAsset = assetName.toUpperCase();
   const t0 = Date.now();
   
   // Check full card index first (SUPER FAST - no HTTP requests!)
   const cardInfo = getCardInfo(upperAsset);
   if (cardInfo) {
-    const url = getFakeRaresImageUrl(upperAsset, cardInfo.series, cardInfo.ext);
+    const url = getFakeRaresImageUrl(upperAsset, cardInfo.series, cardInfo.ext as MediaExtension);
     console.log(`⚡ INSTANT: ${upperAsset} series=${cardInfo.series} ext=.${cardInfo.ext} (${Date.now() - t0}ms)`);
-    return { url, extension: cardInfo.ext };
+    return { url, extension: cardInfo.ext as MediaExtension };
   }
   
   // Try known mapping from runtime cache (fast path with probing)
@@ -253,8 +168,9 @@ async function findCardImage(assetName: string): Promise<{ url: string; extensio
   if (knownSeries !== undefined) {
     console.log(`🧭 Fast path: ${upperAsset} series=${knownSeries} (trying extensions...)`);
     // Try all extensions for the known series
-    for (const ext of ['jpg', 'jpeg', 'gif', 'png']) {
-      const testUrl = getFakeRaresImageUrl(upperAsset, knownSeries, ext as 'jpg' | 'jpeg' | 'gif' | 'png');
+    const extensions: MediaExtension[] = ['jpg', 'jpeg', 'gif', 'png'];
+    for (const ext of extensions) {
+      const testUrl = getFakeRaresImageUrl(upperAsset, knownSeries, ext);
       try {
         const response = await fetch(testUrl, { method: 'HEAD' });
         if (response.ok) {
@@ -270,10 +186,11 @@ async function findCardImage(assetName: string): Promise<{ url: string; extensio
   // Unknown card - search through all series (slow path)
   console.log(`🔍 ${upperAsset} not in index or cache, searching series 0-${SERIES_INFO.TOTAL_SERIES - 1}...`);
   
+  const extensions: MediaExtension[] = ['jpg', 'jpeg', 'gif', 'png'];
   for (let series = 0; series < SERIES_INFO.TOTAL_SERIES; series++) {
     // Try all extensions
-    for (const ext of ['jpg', 'jpeg', 'gif', 'png']) {
-      const testUrl = getFakeRaresImageUrl(upperAsset, series, ext as 'jpg' | 'jpeg' | 'gif' | 'png');
+    for (const ext of extensions) {
+      const testUrl = getFakeRaresImageUrl(upperAsset, series, ext);
       try {
         const response = await fetch(testUrl, { method: 'HEAD' });
         if (response.ok) {
@@ -358,8 +275,7 @@ export const fakeRaresCardAction: Action = {
       console.log(`🔧 STEP 2: Lookup card metadata`);
       // Get card info from fullCardIndex (already loads from fake-rares-data.json)
       const cardInfo = getCardInfo(assetName);
-      let actualUrl: string | null = null;
-      let extension: string | null = null;
+      let cardUrlResult: CardUrlResult | null = null;
       
       if (cardInfo) {
         console.log(`✅ Found in fullCardIndex: Series ${cardInfo.series}, Card ${cardInfo.card}`);
@@ -368,54 +284,30 @@ export const fakeRaresCardAction: Action = {
         console.log(`   🎨 Extension: .${cardInfo.ext}`);
         
         console.log(`\n🔧 STEP 3: Determine image/video URL`);
-        // Check for special URIs (videoUri for mp4, imageUri for others)
+        cardUrlResult = determineCardUrl(cardInfo, assetName);
+        
         if (cardInfo.ext === 'mp4' && cardInfo.videoUri) {
-          actualUrl = cardInfo.videoUri;
-          extension = 'mp4';
-          console.log(`   🎬 Using videoUri: ${actualUrl.substring(0, 60)}...`);
+          console.log(`   🎬 Using videoUri: ${cardUrlResult.url.substring(0, 60)}...`);
         } else if (cardInfo.imageUri) {
-          actualUrl = cardInfo.imageUri;
-          extension = cardInfo.ext;
-          console.log(`   🖼️  Using imageUri: ${actualUrl.substring(0, 60)}...`);
+          console.log(`   🖼️  Using imageUri: ${cardUrlResult.url.substring(0, 60)}...`);
         } else {
-          // Construct URL from series and ext
-          actualUrl = getFakeRaresImageUrl(assetName, cardInfo.series, cardInfo.ext);
-          extension = cardInfo.ext;
-          console.log(`   🏗️  Constructed from series/ext: ${actualUrl.substring(0, 60)}...`);
+          console.log(`   🏗️  Constructed from series/ext: ${cardUrlResult.url.substring(0, 60)}...`);
         }
       } else {
         console.log(`⚠️  Not in fullCardIndex, trying HTTP probing fallback...`);
         
         console.log(`\n🔧 STEP 3: Fallback - HTTP probing`);
-        const cardResult = await findCardImage(assetName);
-        if (cardResult) {
-          actualUrl = cardResult.url;
-          extension = cardResult.extension;
-          console.log(`✅ Probing found: ${actualUrl.substring(0, 60)}...`);
+        cardUrlResult = await findCardImage(assetName);
+        if (cardUrlResult) {
+          console.log(`✅ Probing found: ${cardUrlResult.url.substring(0, 60)}...`);
         } else {
           console.log(`❌ Probing failed - card not found anywhere`);
         }
       }
       console.log('');
       
-      if (actualUrl) {
-        console.log(`🔧 STEP 4: Fetch lore from knowledge base`);
-        
-        // Lore fetching - DISABLED for now
-        // TODO: Re-enable once ready
-        /*
-        const loreCandidates = await fetchLoreSnippets(runtime, message, assetName);
-        const selectedLore = pickRandom(loreCandidates);
-        const lore = selectedLore ? truncate(selectedLore, 250) : null;
-        
-        if (lore) {
-          console.log(`📚 Lore selected (${lore.length} chars)`);
-        }
-        */
-        const lore = null; // Disabled
-        console.log(`⏭️  Lore fetching currently disabled\n`);
-        
-        console.log(`🔧 STEP 5: Compose message with metadata`);
+      if (cardUrlResult) {
+        console.log(`🔧 STEP 4: Compose message with metadata`);
         // Build message: metadata first, URL at bottom (preview appears at bottom)
         let cardDetailsText = '';
         
@@ -447,19 +339,13 @@ export const fakeRaresCardAction: Action = {
         
         // 3. URL at the very bottom (Telegram shows preview here)
         // Percent-encode underscores as %5F to bypass MarkdownV2 parsing issues
-        cardDetailsText += formatTelegramUrl(actualUrl);
+        cardDetailsText += formatTelegramUrl(cardUrlResult.url);
         console.log(`   📎 Added media URL (underscores percent-encoded as %5F)`);
-        
-        // Append lore if available
-        if (lore) {
-          cardDetailsText += '\n\n📜 ' + lore;
-          console.log(`   📜 Added lore snippet`);
-        }
         console.log('');
         
         // This action is callback-only. Do not return a prompt for any other handler.
         // Instead, use a suppression flag to indicate downstream handlers should no-op.
-        console.log(`🔧 STEP 6: Mark message as handled (suppress bootstrap)`);
+        console.log(`🔧 STEP 5: Send message with media preview and artist button`);
         
         // Build buttons array: just artist link (media preview shows automatically)
         const buttons = [];
@@ -504,30 +390,21 @@ export const fakeRaresCardAction: Action = {
         console.log(`🔧 Attempting fuzzy match...`);
         
         // Try fuzzy matching against all known cards
+        // Performance: Calculate top matches once (O(n log n)) and reuse for all tiers
         const allAssets = FULL_CARD_INDEX.map(c => c.asset);
-        const bestMatch = findBestMatch(assetName, allAssets);
+        const topMatches = findTopMatches(assetName, allAssets);
+        const bestMatch = topMatches.length > 0 ? topMatches[0] : null;
         
-        if (bestMatch && bestMatch.similarity > 0.75) {
+        if (bestMatch && bestMatch.similarity >= FUZZY_MATCH_THRESHOLDS.HIGH_CONFIDENCE) {
+          // HIGH CONFIDENCE MATCH (≥75%) - Auto-show the card
           console.log(`✅ Fuzzy match found: "${bestMatch.name}" (${(bestMatch.similarity * 100).toFixed(1)}% similar)`);
           console.log(`🔧 Fetching matched card...`);
           
           // Get the matched card info
           const matchedCard = getCardInfo(bestMatch.name);
           if (matchedCard) {
-            let matchedUrl: string;
-            let matchedExt: string;
-            
             // Determine the URL for the matched card
-            if (matchedCard.ext === 'mp4' && matchedCard.videoUri) {
-              matchedUrl = matchedCard.videoUri;
-              matchedExt = 'mp4';
-            } else if (matchedCard.imageUri) {
-              matchedUrl = matchedCard.imageUri;
-              matchedExt = matchedCard.ext;
-            } else {
-              matchedUrl = getFakeRaresImageUrl(bestMatch.name, matchedCard.series, matchedCard.ext);
-              matchedExt = matchedCard.ext;
-            }
+            const matchedUrlResult = determineCardUrl(matchedCard, bestMatch.name);
             
             // Build card details with playful typo message
             let matchedCardText = `😅 Ha, spelling not your thing? No worries - got you fam.\n\n`;
@@ -541,7 +418,7 @@ export const fakeRaresCardAction: Action = {
             }
             matchedCardText += '\n\n';
             // Format as inline link for Telegram MarkdownV2
-            matchedCardText += formatTelegramUrl(matchedUrl);
+            matchedCardText += formatTelegramUrl(matchedUrlResult.url);
             
             // Build buttons
             const buttons = [];
@@ -576,30 +453,70 @@ export const fakeRaresCardAction: Action = {
               },
             };
           }
+        } else if (bestMatch && bestMatch.similarity >= FUZZY_MATCH_THRESHOLDS.MODERATE) {
+          // MODERATE MATCH (50-74%) - Suggest alternatives
+          console.log(`🤔 Moderate fuzzy match: "${bestMatch.name}" (${(bestMatch.similarity * 100).toFixed(1)}% similar)`);
+          console.log(`🔧 Using pre-calculated top ${FUZZY_MATCH_THRESHOLDS.TOP_SUGGESTIONS} suggestions...`);
+          
+          // topMatches already calculated above - reuse it!
+          const suggestions = topMatches
+            .filter(m => m.similarity >= FUZZY_MATCH_THRESHOLDS.MODERATE)  // Only show suggestions ≥50%
+            .map(m => `• ${m.name}`)
+            .join('\n');
+          
+          console.log(`📋 Suggestions:\n${suggestions}`);
+          console.log(`${'='.repeat(60)}\n`);
+          
+          let errorText = `❌ Could not find "${assetName}" in the Fake Rares collection.\n\n`;
+          if (suggestions) {
+            errorText += `🤔 Did you mean:\n${suggestions}\n\n`;
+            errorText += `Try /f <CARD_NAME> with one of the above.`;
+          } else {
+            errorText += `Double-check the asset name or browse on pepe.wtf.`;
+          }
+          
+          if (callback) {
+            await callback({
+              text: errorText,
+              __fromAction: 'fakeRaresCard',
+              suppressBootstrap: true,
+            });
+          }
+          
+          return {
+            success: false,
+            data: {
+              suppressBootstrap: true,
+              reason: 'card_not_found_with_suggestions',
+              assetName,
+              suggestions: topMatches.map(m => m.name),
+            },
+          };
         } else {
+          // LOW MATCH (<50%) - Just show error
           const similarityPercent = bestMatch ? (bestMatch.similarity * 100).toFixed(1) : '0.0';
-          console.log(`❌ No good fuzzy match found (best: "${bestMatch?.name}" at ${similarityPercent}% - below 75% threshold)`);
+          const thresholdPercent = (FUZZY_MATCH_THRESHOLDS.MODERATE * 100).toFixed(0);
+          console.log(`❌ No good fuzzy match found (best: "${bestMatch?.name}" at ${similarityPercent}% - below ${thresholdPercent}% threshold)`);
+          console.log(`${'='.repeat(60)}\n`);
+          
+          if (callback) {
+            await callback({
+              text: `❌ Could not find "${assetName}" in the Fake Rares collection. Double-check the asset name or browse on pepe.wtf.`,
+              __fromAction: 'fakeRaresCard',
+              suppressBootstrap: true,
+            });
+          }
+          
+          return {
+            success: false,
+            data: {
+              suppressBootstrap: true,
+              reason: 'card_not_found',
+              assetName,
+              cardFound: false,
+            },
+          };
         }
-        
-        console.log(`${'='.repeat(60)}\n`);
-        
-        // No fuzzy match - show error
-        if (callback) {
-          await callback({
-            text: `❌ Could not find ${assetName} in the Fake Rares collection. Double-check the asset name or browse on pepe.wtf.`,
-            __fromAction: 'fakeRaresCard',
-            suppressBootstrap: true,
-          });
-        }
-        return {
-          success: false,
-          data: {
-            suppressBootstrap: true,
-            reason: 'card_not_found',
-            assetName,
-            cardFound: false,
-          },
-        };
       }
     } catch (error) {
       console.log(`\n❌ EXCEPTION in /f handler for ${assetName}`);
