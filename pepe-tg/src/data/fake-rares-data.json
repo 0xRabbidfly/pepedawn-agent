@@ -8412,7 +8412,8 @@
     "artist": "netidx",
     "artistSlug": "netidx",
     "supply": 36,
-    "issuance": "October 2021"
+    "issuance": "October 2021",
+    "imageUri": "https://tokenscan.io/img/cards/WUPEPE.gif"
   },
   {
     "asset": "FAKAPAMP",
