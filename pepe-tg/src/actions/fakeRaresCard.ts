@@ -55,6 +55,7 @@ interface CardDisplayParams {
   mediaUrl: string;
   isRandomCard?: boolean;
   isTypoCorrection?: boolean;
+  includeMediaUrl?: boolean; // If true, append URL to message (for debugging/fallback)
 }
 
 // ============================================================================
@@ -214,23 +215,16 @@ function buildCardDisplayMessage(params: CardDisplayParams): string {
     message += '😅 Ha, spelling not your thing? No worries - got you fam.\n\n';
   }
   
-  // Add card name header with random indicator if applicable
+  // Add card name header - UNIFIED FORMAT FOR ALL FLOWS
   if (params.isRandomCard) {
     message += `🎲 ${params.assetName} 🐸`;
-  } else if (params.isTypoCorrection) {
-    message += `🎴 ${params.assetName}\n`;
-    message += `📦`;
   } else {
     message += `${params.assetName} 🐸`;
   }
   
-  // Add series and card number
+  // Add series and card number - SAME FOR ALL FLOWS
   if (params.cardInfo) {
-    if (!params.isTypoCorrection) {
-      message += ` Series ${params.cardInfo.series} - Card ${params.cardInfo.card}\n`;
-    } else {
-      message += ` Series ${params.cardInfo.series}`;
-    }
+    message += ` Series ${params.cardInfo.series} - Card ${params.cardInfo.card}\n`;
     
     // Add metadata line (artist and/or supply)
     const metadata: string[] = [];
@@ -242,14 +236,13 @@ function buildCardDisplayMessage(params: CardDisplayParams): string {
     }
     
     if (metadata.length > 0) {
-      message += params.isTypoCorrection ? ' • ' : '';
       message += metadata.join(' • ');
     }
     
     message += '\n\n';
     
-    // Add issuance date if available (only for non-typo correction messages)
-    if (params.cardInfo.issuance && !params.isTypoCorrection) {
+    // Add issuance date if available
+    if (params.cardInfo.issuance) {
       if (params.cardInfo.supply) {
         // Already added supply above, so add issuance separately
         message = message.slice(0, -2); // Remove last \n\n
@@ -262,8 +255,7 @@ function buildCardDisplayMessage(params: CardDisplayParams): string {
     message += ` Series ? - Card ?\n`;
   }
   
-  // Add media URL (Telegram shows preview for this)
-  message += formatTelegramUrl(params.mediaUrl);
+  // URL not included in message text - handled via attachments in callback
   
   return message;
 }
@@ -280,6 +272,43 @@ function buildArtistButton(cardInfo: CardInfo | null): Array<{ text: string; url
     text: `👨‍🎨 ${cardInfo.artist}`,
     url: `https://pepe.wtf/artists/${cardInfo.artistSlug}`
   }];
+}
+
+/**
+ * Sends card message with media attachment (unified callback handler)
+ * Handles all card display flows with consistent formatting
+ */
+async function sendCardWithMedia(params: {
+  callback: ((response: any) => Promise<any>) | null;
+  cardMessage: string;
+  mediaUrl: string;
+  mediaExtension: MediaExtension;
+  assetName: string;
+}): Promise<void> {
+  if (!params.callback) {
+    return;
+  }
+  
+  // Determine media type from extension
+  const isVideo = params.mediaExtension === 'mp4';
+  const isAnimation = params.mediaExtension === 'gif';
+  
+  await params.callback({
+    text: params.cardMessage,
+    attachments: [{
+      url: params.mediaUrl,
+      title: params.assetName,
+      source: 'fake-rares',
+      contentType: isVideo ? 'video/mp4' : isAnimation ? 'image/gif' : 'image/jpeg',
+    }],
+    __fromAction: 'fakeRaresCard',
+    suppressBootstrap: true,
+  });
+  
+  logger.debug('Card sent with media attachment', {
+    mediaType: isVideo ? 'video' : isAnimation ? 'gif' : 'image',
+    assetName: params.assetName,
+  });
 }
 
 /**
@@ -463,16 +492,14 @@ async function handleCardFound(params: {
   logger.step(5, 'Send message with media preview and artist button');
   const buttons = buildArtistButton(params.cardInfo);
   
-  if (params.callback) {
-    params.callback({
-      text: cardMessage,
-      buttons: buttons.length > 0 ? buttons : undefined,
-      __fromAction: 'fakeRaresCard',
-      suppressBootstrap: true,
-    }).catch((err) => logger.error('Error sending callback', err));
-    
-    logger.debug('Callback queued', { buttonCount: buttons.length });
-  }
+  // Send card with media attachment
+  await sendCardWithMedia({
+    callback: params.callback,
+    cardMessage,
+    mediaUrl: params.urlResult.url,
+    mediaExtension: params.urlResult.extension,
+    assetName: params.assetName,
+  }).catch((err) => logger.error('Error sending callback', err));
   
   logger.success(`${params.assetName} card will be displayed`);
   logger.separator();
@@ -521,16 +548,14 @@ async function handleCardNotFound(params: {
         isTypoCorrection: true,
       });
       
-      const buttons = buildArtistButton(matchedCard);
-      
-      if (params.callback) {
-        await params.callback({
-          text: matchedCardText,
-          buttons: buttons.length > 0 ? buttons : undefined,
-          __fromAction: 'fakeRaresCard',
-          suppressBootstrap: true,
-        });
-      }
+      // Send typo-corrected card with media attachment
+      await sendCardWithMedia({
+        callback: params.callback,
+        cardMessage: matchedCardText,
+        mediaUrl: matchedUrlResult.url,
+        mediaExtension: matchedUrlResult.extension,
+        assetName: bestMatch.name,
+      });
       
       logger.success(`Fuzzy-matched card ${bestMatch.name} displayed for typo "${params.assetName}"`);
       logger.separator();

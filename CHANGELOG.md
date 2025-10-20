@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Hide Asset URLs**: Cleaner card display with hidden URLs
+  - `/f` command now shows media previews without displaying asset URLs
+  - Professional, clutter-free card presentation
+  - All metadata preserved (artist, supply, series, issuance)
+  - Graceful fallback to text-only when preview fails
+  - ~20% reduction in message length
+
 - **LLM-LORE Feature**: AI-powered lore storytelling from community history
   - `/lore` command for knowledge-backed narrative generation
   - RAG pipeline: retrieval → clustering → summarization → story generation
@@ -21,8 +28,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Configurable via env: `RETRIEVAL_LIMIT`, `MIN_HITS`, `STORY_LENGTH_WORDS`, `TEMPERATURE`, `TOP_P`
 
 ### Changed
+- Card Display: Removed asset URLs from `/f` command responses (file: `pepe-tg/src/actions/fakeRaresCard.ts`)
+  - Modified `buildCardDisplayMessage()` to exclude URL text
+  - Added optional `includeMediaUrl` parameter for debugging scenarios
 - Plugin: Added `/lore` command routing to `fakeRaresPlugin.ts`
-- README: Documented LLM-LORE feature and updated BotFather commands
+- README: Documented LLM-LORE feature, clean preview display, and updated BotFather commands
 - `.env.example`: Added LLM-LORE configuration section
 
 ### Technical Details

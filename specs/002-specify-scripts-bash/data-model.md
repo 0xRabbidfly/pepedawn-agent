@@ -1,0 +1,202 @@
+# Data Model: Hide Asset URLs in Card Display
+
+**Feature**: 002-specify-scripts-bash  
+**Date**: 2025-10-20
+
+---
+
+## Overview
+
+This feature modifies the presentation layer only—no database or data storage changes. The data model describes the message structure and card information format used in `/f` command responses.
+
+---
+
+## Entities
+
+### CardInfo (Existing - No Changes)
+
+**Purpose**: Represents a Fake Rare card with metadata and asset location
+
+**Attributes**:
+- `asset`: string - Card name/identifier (e.g., "FAKEMONA")
+- `series`: number - Series number (0-18)
+- `card`: number - Card number within series (1-50)
+- `ext`: 'jpeg' | 'png' | 'gif' | 'mp4' | 'jpg' | 'webp' - File extension
+- `artist`: string | null - Artist name
+- `artistSlug`: string | null - Artist identifier for links
+- `supply`: number | null - Card supply count
+- `issuance`: string | null - Release date (e.g., "September 2021")
+- `videoUri`: string | null - Direct video URL (Arweave or S3)
+- `imageUri`: string | null - Direct image URL (S3 or CDN)
+- `issues`: string[] | null - Data quality flags (optional)
+
+**Source**: `pepe-tg/src/data/fullCardIndex.ts`
+
+**Lifecycle**: Read-only during `/f` command execution. Loaded from `fake-rares-data.json` on startup.
+
+---
+
+### CardResponse (Modified)
+
+**Purpose**: Formatted message sent to Telegram user in response to `/f` command
+
+**Attributes**:
+- `text`: string - Message caption/body (MODIFIED: no longer contains URL)
+- `mediaUrl`: string - Asset URL (internal, not displayed to user)
+- `mediaType`: 'photo' | 'video' - Derived from extension
+- `buttons`: Array<{ text: string; url: string }> - Optional inline keyboard (artist link)
+
+**Structure** (After Changes):
+
+**Success Case - Image Card**:
+```
+text: "FAKEMONA 🐸 Series 1 - Card 42\n👨‍🎨 Artist Name • 💎 5,000 • 📅 September 2021\n\n"
+mediaUrl: "https://pepewtf.s3.amazonaws.com/collections/fake-rares/full/1/FAKEMONA.jpg"
+mediaType: "photo"
+buttons: [{ text: "👨‍🎨 Artist Name", url: "https://pepe.wtf/artists/artist-slug" }]
+```
+
+**Success Case - Video Card**:
+```
+text: "RAREANIM 🐸 Series 5 - Card 12\n👨‍🎨 Creator • 💎 1,000\n\n"
+mediaUrl: "https://arweave.net/xxxxx.mp4"
+mediaType: "video"
+buttons: [{ text: "👨‍🎨 Creator", url: "https://pepe.wtf/artists/creator-slug" }]
+```
+
+**Fallback Case - Preview Failure**:
+```
+text: "CARDNAME 🐸 Series 3 - Card 25\n👨‍🎨 Artist • 💎 10,000 • 📅 March 2022\n\n"
+mediaUrl: null
+mediaType: null
+buttons: [{ text: "👨‍🎨 Artist", url: "https://pepe.wtf/artists/artist-slug" }]
+```
+
+**Changes from Current**:
+- ❌ REMOVED: URL text line at end of message (previously added by `formatTelegramUrl()`)
+- ✅ PRESERVED: All card metadata (name, series, card, artist, supply, issuance)
+- ✅ PRESERVED: Inline keyboard with artist link
+- ✅ NEW: Optional `includeMediaUrl` flag for fallback text-only mode
+
+---
+
+### CardDisplayParams (Internal Type - Modified)
+
+**Purpose**: Parameters for message builder function
+
+**Attributes**:
+- `assetName`: string - Card name
+- `cardInfo`: CardInfo | null - Full card metadata
+- `mediaUrl`: string - Asset URL
+- `isRandomCard`: boolean - Whether this was a random selection
+- `isTypoCorrection`: boolean - Whether fuzzy matching was used
+- `includeMediaUrl`: boolean - **NEW**: Whether to append URL to message (default: false)
+
+**Usage**: Passed to `buildCardDisplayMessage()` to generate formatted response
+
+---
+
+## Data Flow
+
+### Before (Current Behavior)
+
+```
+User: /f FAKEMONA
+  ↓
+Parse command → Extract "FAKEMONA"
+  ↓
+Lookup card → Find series 1, card 42, jpg
+  ↓
+Build URL → https://pepewtf.s3.amazonaws.com/.../FAKEMONA.jpg
+  ↓
+Build message → "FAKEMONA 🐸 ...\n\nhttps://pepewtf.s3.amazonaws.com/.../FAKEMONA.jpg"
+  ↓
+Send callback({ text: message, buttons })
+  ↓
+Telegram: Shows preview + URL text
+```
+
+### After (New Behavior)
+
+```
+User: /f FAKEMONA
+  ↓
+Parse command → Extract "FAKEMONA"
+  ↓
+Lookup card → Find series 1, card 42, jpg
+  ↓
+Build URL → https://pepewtf.s3.amazonaws.com/.../FAKEMONA.jpg
+  ↓
+Build message → "FAKEMONA 🐸 ...\n\n" (NO URL)
+  ↓
+Send callback({ text: message, buttons })
+  ↓
+Telegram: Shows preview (URL still used internally for fetching, but not visible)
+```
+
+### Fallback Flow (Preview Failure)
+
+```
+User: /f BROKENCARD
+  ↓
+Lookup card → Find card with invalid/broken URL
+  ↓
+Build message → "BROKENCARD 🐸 Series X - Card Y\n👨‍🎨 Artist • 💎 Supply\n\n" (NO URL)
+  ↓
+Send callback({ text: message, buttons })
+  ↓
+Telegram: Shows text only, no media preview
+```
+
+---
+
+## Validation Rules
+
+### Before Response
+- ✅ Card name must be valid (handled by existing lookup logic)
+- ✅ Asset URL must be constructed or available in card data
+- ✅ Message length must be <4096 chars (Telegram limit)
+
+### After Implementation
+- ✅ Response text must NOT contain any URL patterns (http://, https://)
+- ✅ Media preview must still be generated by Telegram (when URL valid)
+- ✅ Fallback text must contain all card metadata when preview fails
+
+---
+
+## State Transitions
+
+**Not Applicable** - This is a stateless presentation change. No entity state tracking required.
+
+---
+
+## Data Sources
+
+1. **Card Index**: `pepe-tg/src/data/fake-rares-data.json`
+   - Format: Array of CardInfo objects
+   - Access: Read-only via `FULL_CARD_INDEX` or `getRefreshableCardInfo()`
+   - Update frequency: Hourly auto-refresh from GitHub
+
+2. **Asset URLs**: 
+   - Source 1: CardInfo.videoUri or CardInfo.imageUri (direct URLs)
+   - Source 2: Constructed from `{BASE_URL}/{series}/{asset}.{ext}`
+   - Base URL: `https://pepewtf.s3.amazonaws.com/collections/fake-rares/full`
+
+---
+
+## Performance Considerations
+
+- **No Performance Impact**: Removing text from message actually reduces message size slightly
+- **Message Length**: Average reduction of ~50-150 chars per response (typical URL length)
+- **Telegram API Calls**: No change - same number of API calls as before
+- **Response Time**: No impact - no additional processing required
+
+---
+
+## Notes
+
+- This is purely a presentation/formatting change
+- Zero database or storage modifications
+- Card data structure remains identical
+- All business logic (lookup, fuzzy matching, caching) unchanged
+

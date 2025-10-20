@@ -47,7 +47,11 @@
 - **Moderate (50-74%)** → Suggests top 3 possible matches
 - **Low (<50%)** → Shows helpful error with pepe.wtf link
 
-**Display includes:** Card image/video, artist, supply, issuance date, series info, artist profile button
+**Clean Preview Display:**
+- Card image/video preview displays inline
+- No asset URLs shown (clean, professional presentation)
+- Includes: Artist, supply, issuance date, series info, artist profile button
+- Fallback: Shows card metadata if preview fails (no broken URLs)
 
 ### 🔄 Auto-Updating System
 
