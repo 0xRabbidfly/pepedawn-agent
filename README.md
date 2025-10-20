@@ -4,699 +4,457 @@
 
 **PEPEDAWN** is built on [ElizaOS](https://elizaos.ai) and embodies the spirit of the Fake Rares community - knowing every card, every artist, and every meme from the movement that started when Rare Scrilla got banned and created La Faka Nostra.
 
+## ⚡ Quick Highlights
+
+- 🎴 **950+ Fake Rares cards** with instant lookup and full metadata
+- 🧠 **Smart typo correction** - Fuzzy matching with 3-tier intelligence
+- 🔄 **Auto-updating** - New cards appear within hours, no restart needed
+- 🤖 **AI-powered** - Natural conversations with context awareness
+- ⚡ **Performance optimized** - Refactored for speed and maintainability
+- 📊 **Production-ready** - Structured logging, type-safe, tested
+
 ## 🌟 Features
 
-- **🎴 Card Viewing**: Display any Fake Rares card with `/f CARDNAME` command
-- **🧠 Lore Expert**: Deep knowledge of all Fake Rares cards, artists, and community history
-- **💬 Context-Aware Chat**: Remembers conversations and recognizes returning community members
-- **🎯 Smart Actions**: 
-  - Automatic lore sharing when cards are mentioned
-  - Newcomer education for people asking about Fake Rares
-  - Community knowledge curation from chat history
-- **🔍 Knowledge Base**: Searches Telegram history to provide accurate, contextual responses
+### 🎴 Card Viewing with Fuzzy Matching
 
-## 📋 Prerequisites
+**Commands:**
+- **`/f CARDNAME`** - Display any card (e.g., `/f FREEDOMKEK`)
+- **`/f`** - Show a random card from the collection
 
-Before you begin, ensure you have the following installed:
+**Smart Typo Correction:**
+- **High confidence (≥75%)** → Auto-shows correct card with playful message
+- **Moderate (50-74%)** → Suggests top 3 possible matches
+- **Low (<50%)** → Shows helpful error with pepe.wtf link
 
-- **[Bun](https://bun.sh)** (v1.0.0 or higher) - Required for ElizaOS
-  ```bash
-  # Install Bun
-  curl -fsSL https://bun.sh/install | bash
-  ```
+**Display includes:** Card image/video, artist, supply, issuance date, series info, artist profile button
 
-- **Node.js** (v18 or higher) - For some dependencies
-  ```bash
-  # Check your Node version
-  node --version
-  ```
+### 🔄 Auto-Updating System
 
-- **Git** - To clone the repository
-  ```bash
-  git --version
-  ```
+**Completely automated new card discovery:**
+
+1. **GitHub Action** runs daily at 12pm UTC
+2. **Scrapes** series 18-25 from pepe.wtf and fakeraredirectory.com
+3. **Creates PR** only if new cards found
+4. **You review & merge** the changes
+5. **Bot auto-refreshes** every hour from GitHub (no restart needed!)
+
+**Timeline:** New card released → Discovered within 24h → Available to users within 1h of merge
+
+### 🧠 AI Intelligence
+
+- Natural language conversations about Fake Rares
+- Context-aware responses with community memory
+- Automatic lore sharing when cards mentioned
+- Newcomer education and onboarding
+- Knowledge base search across Telegram history
+
+---
 
 ## 🚀 Quick Start
 
-### 1. Clone the Repository
+### Prerequisites
+
+- **[Bun](https://bun.sh)** v1.0.0+ (`curl -fsSL https://bun.sh/install | bash`)
+- **Node.js** v18+ (for some dependencies)
+- **Git**
+
+### Installation
 
 ```bash
+# 1. Clone repository
 git clone https://github.com/0xrabbidfly/pepedawn-agent.git
-cd pepedawn-agent
-```
+cd pepedawn-agent/pepe-tg
 
-### 2. Navigate to the Bot Directory
-
-```bash
-cd pepe-tg
-```
-
-### 3. Install Dependencies
-
-```bash
+# 2. Install dependencies
 bun install
-```
 
-### 4. Set Up Environment Variables
-
-Create a `.env` file in the `pepe-tg` directory:
-
-```bash
-# Copy the example if it exists, or create a new file
+# 3. Create .env file
 touch .env
 ```
 
-Add the following environment variables to your `.env` file:
+### Environment Configuration
+
+Add to `.env`:
 
 ```bash
-# ================================
-# REQUIRED: AI Model Provider
-# ================================
-# At least one AI provider is required
+# REQUIRED: AI Provider (choose one)
+OPENAI_API_KEY=sk-your-key-here           # Recommended
+# ANTHROPIC_API_KEY=your-key-here         # Alternative
+# OPENROUTER_API_KEY=your-key-here        # Alternative
 
-# OpenAI (Recommended)
-OPENAI_API_KEY=sk-your-openai-api-key-here
+# REQUIRED: Telegram
+TELEGRAM_BOT_TOKEN=your-bot-token-here
 
-# OR Anthropic (Claude)
-# ANTHROPIC_API_KEY=your-anthropic-key-here
-
-# OR OpenRouter (Alternative)
-# OPENROUTER_API_KEY=your-openrouter-key-here
-
-# OR Google Gemini
-# GOOGLE_GENERATIVE_AI_API_KEY=your-google-key-here
-
-# OR Ollama (Local - requires Ollama installed)
-# OLLAMA_API_ENDPOINT=http://localhost:11434
-
-# ================================
-# REQUIRED: Telegram Bot
-# ================================
-TELEGRAM_BOT_TOKEN=your-telegram-bot-token-here
-
-# ================================
-# OPTIONAL: System Configuration
-# ================================
-LOG_LEVEL=info  # Options: debug, info, warn, error
+# OPTIONAL: Cost optimization
+TEXT_MODEL=gpt-4o-mini                    # Cheaper model
+SMALL_OPENAI_MODEL=gpt-4o-mini
 ```
 
-### 5. Get Your API Keys
+**Get API Keys:**
+- **OpenAI:** [platform.openai.com](https://platform.openai.com/api-keys)
+- **Telegram:** Message [@BotFather](https://t.me/BotFather) → `/newbot`
 
-#### OpenAI API Key (Recommended)
-1. Go to [platform.openai.com](https://platform.openai.com)
-2. Sign up or log in
-3. Navigate to API Keys section
-4. Create a new API key
-5. Copy the key and add it to your `.env` file
+### Setup Bot Commands
 
-#### Telegram Bot Token (Required)
-1. Open Telegram and search for **@BotFather**
-2. Send `/newbot` command
-3. Follow the prompts to create your bot
-4. Copy the bot token provided
-5. Add it to your `.env` file as `TELEGRAM_BOT_TOKEN`
-
-### 6. Configure Telegram Bot Commands
-
-After creating your bot with BotFather, set up the commands:
-
-1. Message **@BotFather** in Telegram
-2. Send `/setcommands`
-3. Select your bot
-4. Paste these commands:
+Message [@BotFather](https://t.me/BotFather) in Telegram:
 
 ```
-f - View a Fake Rares card (usage: /f CARDNAME)
-start - Start the bot and see welcome message
-help - Show how to use PEPEDAWN
+/setcommands
 ```
 
-### 7. Build the Project
+Then paste:
+```
+f - View a Fake Rares card or random card
+start - Welcome message and quick guide
+help - Show detailed instructions
+```
+
+### Run
 
 ```bash
-bun run build
-```
-
-### 8. Start the Bot
-
-#### Development Mode (with hot-reload)
-```bash
+# Development (with hot-reload)
 bun run dev
-```
 
-#### Production Mode
-```bash
+# Production
+bun run build
 bun run start
 ```
 
-#### Using ElizaOS CLI
-```bash
-# Install ElizaOS CLI globally if you haven't
-bun add -g @elizaos/cli
-
-# Start in development mode
-elizaos dev
-
-# Or start in production mode
-elizaos start
-```
+---
 
 ## 🎯 Usage
 
-### Telegram Commands
+### Commands
 
-- **`/f CARDNAME`** - View any Fake Rares card with lore
-  - Example: `/f FREEDOMKEK`
-  - Example: `/f WAGMIWORLD`
-  - Example: `/f PEPONACID`
+```
+/f FREEDOMKEK      → Shows FREEDOMKEK card with metadata
+/f PEEP            → Auto-corrects to PEPE (fuzzy matching)
+/f FREEDOMK        → Suggests: FREEDOMKEK, FREEDOMWAR, KINGFAKE
+/f                 → Random card from collection
+/start             → Welcome message
+/help              → Usage guide
+```
 
-- **`/start`** - Get welcome message and quick start guide
+### Natural Conversation
 
-- **`/help`** - Show detailed usage instructions
-
-### Natural Language Interaction
-
-The bot doesn't require commands for everything! Just chat naturally:
-
+Just chat naturally! Ask about:
 - "What are Fake Rares?"
 - "Tell me about FREEDOMKEK"
-- "I'm new here, how does this work?"
+- "Who is Rare Scrilla?"
 - "What's La Faka Nostra?"
 
-The bot will automatically:
-- Share relevant lore when cards are mentioned
-- Detect and educate newcomers
-- Remember and reference past conversations
-- Curate community knowledge
+The bot understands context and remembers past conversations.
 
-## 🗂️ Project Structure
+---
+
+## 📁 Project Structure
 
 ```
 pepe-tg/
 ├── src/
-│   ├── actions/               # Bot actions (commands, lore sharing)
-│   │   ├── basicCommands.ts  # /start, /help commands
-│   │   ├── fakeRaresCard.ts  # /f command handler
-│   │   ├── shareLore.ts      # Automatic lore sharing
-│   │   └── educateNewcomer.ts # Newcomer onboarding
-│   ├── evaluators/           # Context detection
-│   │   └── loreDetector.ts   # Detects and saves lore
-│   ├── providers/            # Data providers
-│   │   └── fakeRaresContext.ts # Card data and context
-│   ├── plugins/              # Custom plugins
-│   │   └── fakeRaresPlugin.ts # Main plugin integration
-│   ├── data/                 # Card data and mappings
-│   │   ├── fake-rares-data.json
-│   │   ├── cardSeriesMap.ts
-│   │   └── fullCardIndex.ts
-│   ├── frontend/             # Web interface (optional)
-│   ├── character.ts          # Bot personality configuration
-│   ├── pepedawn.ts           # PEPEDAWN character definition
-│   ├── plugin.ts             # Custom plugin logic
-│   └── index.ts              # Main entry point
-├── telegram_docs/            # Documentation
-│   ├── TELEGRAM_SETUP.md     # Telegram configuration guide
-│   ├── PEPEDAWN_USER_GUIDE.md # User guide
-│   └── TECHNICAL_HANDOVER.md # Technical details
-├── scripts/                  # Utility scripts
-│   ├── safe-restart.sh       # Safe bot restart
-│   ├── backup-db.sh          # Database backup
-│   └── add-new-cards.js      # Add new card data
-├── package.json              # Dependencies and scripts
-├── tsconfig.json             # TypeScript configuration
-└── .env                      # Environment variables (create this)
+│   ├── actions/              # Bot commands and handlers
+│   │   ├── fakeRaresCard.ts  # /f command (refactored, optimized)
+│   │   └── basicCommands.ts  # /start, /help
+│   ├── plugins/              # Plugin system
+│   │   └── fakeRaresPlugin.ts # Main plugin + auto-refresh
+│   ├── data/                 # Card database
+│   │   ├── fake-rares-data.json # 950+ cards
+│   │   └── fullCardIndex.ts  # Index loader
+│   ├── utils/                # Utilities
+│   │   └── cardIndexRefresher.ts # GitHub sync
+│   └── pepedawn.ts           # Character definition
+├── .github/workflows/
+│   └── update-fake-rares.yml # Auto-scraper
+├── scripts/
+│   └── add-new-cards.js      # Web scraper
+└── .env                      # Your config (create this)
 ```
 
-## 🔧 Configuration
+---
 
-### Character Customization
-
-The bot's personality is defined in `src/pepedawn.ts`. You can customize:
-
-- **System prompt**: How the bot behaves and responds
-- **Bio**: Background and knowledge areas
-- **Topics**: What the bot knows about
-- **Style**: Communication patterns
-- **Message examples**: Training data for responses
+## 🔧 Advanced Configuration
 
 ### Adding New Cards
 
-1. Update `src/data/fake-rares-data.json` with new card information
-2. Update `src/data/cardSeriesMap.ts` if adding a new series
-3. Rebuild the project: `bun run build`
-4. Restart the bot
+**Automatic (Recommended):**
+- GitHub Action runs daily
+- Creates PR when new cards found
+- Merge PR → Bot updates within 1 hour
 
-## 📊 Scripts
-
+**Manual:**
 ```bash
-# Development
-bun run dev              # Start with hot-reload
-bun run start            # Start in production mode
-bun run build            # Build the project
-bun run build:watch      # Build with watch mode
+# Scrape specific series
+node scripts/add-new-cards.js 18 19 20
 
-# Testing
-bun run test             # Run all tests
-bun run test:component   # Run component tests
-bun run test:e2e         # Run end-to-end tests
-bun run test:coverage    # Run tests with coverage
-
-# Code Quality
-bun run lint             # Format code
-bun run type-check       # Check TypeScript types
-bun run check-all        # Run type-check, format-check, and tests
-
-# Utilities
-bun run restart          # Safe restart with database backup
-./scripts/backup-db.sh   # Backup database manually
-./scripts/kill-bot.sh    # Stop the bot
+# Commit and push
+git add src/data/fake-rares-data.json
+git commit -m "Add new cards"
+git push
 ```
 
-## 🚀 DigitalOcean Production Deployment
+Bot refreshes automatically within 1 hour (or restart for immediate update).
 
-Deploy PEPEDAWN to a DigitalOcean Droplet for 24/7 operation.
+### Character Customization
 
-### Prerequisites
+Edit `src/pepedawn.ts` to customize:
+- System prompt (personality and behavior)
+- Bio (background and expertise)
+- Topics (knowledge areas)
+- Style (communication patterns)
 
-- DigitalOcean account
-- OpenAI API key
-- Telegram bot token
-- Database backup file (`elizadb-backup-*.tar.gz`)
+### Auto-Refresh Configuration
 
-### Step 1: Create DigitalOcean Droplet
+Edit `src/utils/cardIndexRefresher.ts`:
 
-1. Go to [DigitalOcean](https://www.digitalocean.com)
-2. Create Droplet:
-   - **Image**: Ubuntu 22.04 LTS
-   - **Plan**: Basic ($6/month) - 1GB RAM, 1 vCPU, 25GB SSD
-   - **Region**: Closest to you
-   - **Authentication**: SSH Key (recommended) or Password
-3. Note your server IP address
+```typescript
+// Change refresh interval
+const REFRESH_INTERVAL_MS = 30 * 60 * 1000;  // 30 minutes
 
-### Step 2: Server Setup
+// Change GitHub source
+const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/YOUR_ORG/YOUR_REPO/...';
+```
 
-**SSH into your server:**
+---
+
+## 🚀 Production Deployment
+
+### DigitalOcean Setup
+
+**1. Create Droplet**
+- Ubuntu 22.04 LTS
+- Basic plan: $6/month (1GB RAM, 1 vCPU)
+- Note your server IP
+
+**2. Install Dependencies**
 ```bash
 ssh root@YOUR_SERVER_IP
-```
 
-**Install dependencies:**
-```bash
-# Update system
+# System update
 apt-get update && apt-get upgrade -y
+apt-get install -y curl git build-essential
 
-# Install required packages
-apt-get install -y curl git build-essential unzip
-
-# Install Node.js
+# Node.js
 curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
 apt-get install -y nodejs
 
-# Install Bun
+# Bun
 curl -fsSL https://bun.sh/install | bash
 export PATH="$HOME/.bun/bin:$PATH"
 
-# Install PM2 for process management
+# PM2 for process management
 npm install -g pm2
-
-# Verify installations
-node --version
-bun --version
 ```
 
-### Step 3: Deploy Application
-
-**Clone repository:**
+**3. Deploy Application**
 ```bash
-# Replace YOUR_TOKEN with your GitHub Personal Access Token
-git clone https://YOUR_TOKEN@github.com/0xrabbidfly/pepedawn-bot.git
-cd pepedawn-bot/pepe-tg
-```
+# Clone
+git clone https://github.com/0xrabbidfly/pepedawn-agent.git
+cd pepedawn-agent/pepe-tg
 
-**Install dependencies:**
-```bash
+# Install and build
 bun install
-```
-
-### Step 4: Configure Environment
-
-**Create .env file:**
-```bash
-nano .env
-```
-
-**Add your configuration:**
-```bash
-# ================================
-# REQUIRED: OpenAI API
-# ================================
-OPENAI_API_KEY=sk-your-openai-api-key-here
-
-# ================================
-# REQUIRED: Telegram Bot
-# ================================
-TELEGRAM_BOT_TOKEN=your-telegram-bot-token-here
-
-# ================================
-# COST-OPTIMIZED AI MODELS
-# ================================
-TEXT_MODEL=gpt-4o-mini
-SMALL_OPENAI_MODEL=gpt-4o-mini
-
-# Embeddings (already optimized)
-OPENAI_EMBEDDING_MODEL=text-embedding-3-small
-TEXT_EMBEDDING_MODEL=text-embedding-3-small
-EMBEDDING_DIMENSION=1536
-EMBEDDING_PROVIDER=openai
-
-# ================================
-# DATABASE - PGlite (Embedded)
-# ================================
-PGLITE_DATA_DIR=/root/pepedawn-bot/pepe-tg/.eliza/.elizadb
-
-# ================================
-# KNOWLEDGE BASE SETTINGS
-# ================================
-CTX_KNOWLEDGE_ENABLED=false
-KNOWLEDGE_PATH=./docs/chunks
-LOAD_DOCS_ON_STARTUP=true
-
-# ================================
-# SERVER CONFIGURATION
-# ================================
-SERVER_PORT=3000
-NODE_ENV=production
-LOG_LEVEL=info
-ELIZA_UI_ENABLE=true
-
-# ================================
-# RATE LIMITS (Optimized)
-# ================================
-MAX_INPUT_TOKENS=8000
-MAX_OUTPUT_TOKENS=4096
-MAX_CONCURRENT_REQUESTS=10
-REQUESTS_PER_MINUTE=400
-TOKENS_PER_MINUTE=900000
-```
-
-**Save:** `Ctrl+X`, `Y`, `Enter`
-
-### Step 5: Upload Database
-
-**From your local machine:**
-```bash
-cd /home/nuno/projects/Fake-Rare-TG-Agent/pepe-tg
-
-# Upload your database backup
-scp elizadb-backup-Production-*.tar.gz root@YOUR_SERVER_IP:/root/pepedawn-bot/pepe-tg/
-```
-
-**On your server:**
-```bash
-# Extract database
-tar -xzf elizadb-backup-Production-*.tar.gz
-
-# Verify database
-ls -la .eliza/.elizadb/
-du -sh .eliza/.elizadb/
-
-# Clean up backup file
-rm elizadb-backup-Production-*.tar.gz
-```
-
-### Step 6: Build and Start
-
-**Build application:**
-```bash
 bun run build
-```
 
-**Start with PM2:**
-```bash
-# Start bot with PM2 (24/7 operation)
+# Create .env (add your keys)
+nano .env
+
+# Start with PM2
 pm2 start "bun run start" --name pepedawn
-
-# Save PM2 configuration
 pm2 save
+pm2 startup  # Follow the command it shows
+```
 
-# Set up auto-start on server reboot
-pm2 startup
-# Follow the command it shows you
-
-# Check status
+**4. Verify**
+```bash
 pm2 status
 pm2 logs pepedawn
 ```
 
-### Step 7: Set Up Automated Backups
+Test in Telegram: Send `/start` to your bot
 
-**Create backup script:**
-```bash
-nano /root/backup-pepedawn.sh
-```
-
-**Add this content:**
-```bash
-#!/bin/bash
-# Automated PEPEDAWN database backup script
-
-BACKUP_DIR="/root/backups"
-DATE=$(date +%Y%m%d_%H%M%S)
-DB_PATH="/root/pepedawn-bot/pepe-tg/.eliza/.elizadb"
-BACKUP_FILE="$BACKUP_DIR/elizadb-backup-$DATE.tar.gz"
-
-# Create backup directory
-mkdir -p "$BACKUP_DIR"
-
-# Create backup
-echo "🔒 Creating automated backup..."
-tar -czf "$BACKUP_FILE" -C /root/pepedawn-bot/pepe-tg/.eliza .elizadb/
-
-# Remove backups older than 7 days
-find "$BACKUP_DIR" -name "elizadb-backup-*.tar.gz" -mtime +7 -delete
-
-# Show results
-BACKUP_SIZE=$(du -sh "$BACKUP_FILE" | cut -f1)
-echo "✅ Backup complete: $(basename $BACKUP_FILE) ($BACKUP_SIZE)"
-
-# Log to system log
-logger "PEPEDAWN backup completed: $(basename $BACKUP_FILE)"
-```
-
-**Make executable:**
-```bash
-chmod +x /root/backup-pepedawn.sh
-```
-
-**Set up weekly cron job:**
-```bash
-# Edit crontab
-crontab -e
-
-# Add this line (backup every Sunday at 3 AM)
-0 3 * * 0 /root/backup-pepedawn.sh >> /var/log/pepedawn-backup.log 2>&1
-```
-
-### Step 8: Verify Deployment
-
-**Test your bot:**
-1. Open Telegram
-2. Find your bot: `@your_bot_username`
-3. Send: `/start`
-4. Try: `/f FREEDOMKEK`
-
-**Check logs:**
-```bash
-pm2 logs pepedawn --lines 50
-```
-
-**Monitor status:**
-```bash
-pm2 status
-pm2 monit
-```
-
-## 🔧 Production Management
-
-### PM2 Commands
+### PM2 Management
 
 ```bash
-# Check bot status
-pm2 status
-
-# View logs
-pm2 logs pepedawn
-pm2 logs pepedawn --lines 100
-
-# Restart bot
-pm2 restart pepedawn
-
-# Stop bot
-pm2 stop pepedawn
-
-# Start bot
-pm2 start pepedawn
-
-# Monitor in real-time
-pm2 monit
-```
-
-### Backup Management
-
-```bash
-# Manual backup
-/root/backup-pepedawn.sh
-
-# Check backup logs
-tail -f /var/log/pepedawn-backup.log
-
-# List backups
-ls -la /root/backups/
-
-# Restore from backup
-pm2 stop pepedawn
-tar -xzf /root/backups/elizadb-backup-TIMESTAMP.tar.gz -C /root/pepedawn-bot/pepe-tg/.eliza/
-pm2 start pepedawn
+pm2 status              # Check status
+pm2 logs pepedawn       # View logs
+pm2 restart pepedawn    # Restart
+pm2 stop pepedawn       # Stop
+pm2 monit               # Real-time monitoring
 ```
 
 ### Updates
 
 ```bash
-# Update code
-cd /root/pepedawn-bot
-git pull origin main
-
-# Rebuild and restart
+cd ~/pepedawn-agent
+git pull
 cd pepe-tg
 bun install
 bun run build
 pm2 restart pepedawn
 ```
 
-### Monitoring
+---
+
+## 📊 Available Scripts
 
 ```bash
-# Check system resources
-htop
-df -h
-free -h
+# Development
+bun run dev              # Start with hot-reload
+bun run build            # Build TypeScript
+bun run start            # Production mode
 
-# Check bot logs for errors
-pm2 logs pepedawn | grep -i error
+# Testing
+bun run test             # Run all tests
+bun run test:e2e         # End-to-end tests
+bun run lint             # Format code
 
-# Check OpenAI API usage
-# Visit: https://platform.openai.com/usage
+# Card Management
+node scripts/add-new-cards.js 18 19 20  # Scrape new cards
+./scripts/backup-db.sh                   # Backup database
 ```
 
-## 💰 Cost Monitoring
+---
 
-**Monthly costs:**
-- DigitalOcean Droplet: $6/month
-- OpenAI API (GPT-4o Mini): $1-3/month
-- **Total: $7-9/month**
+## 🏗️ Technical Architecture
 
-**Set OpenAI spending limits:**
-1. Go to: https://platform.openai.com/account/limits
-2. Set monthly limit: $5-10
-3. Enable alerts
+### Card Lookup Performance
 
-## 🐳 Docker Deployment (Optional)
+**Three-layer strategy:**
+1. **Full Index** (Instant) - In-memory hash map, O(1) lookup
+2. **Runtime Cache** (Fast ~200ms) - Previously discovered cards
+3. **HTTP Probing** (Slow 2-10s) - Fallback for unknown cards
 
-Build and run using Docker:
+### Fuzzy Matching
 
-```bash
-# Build the image
-docker build -t pepedawn-bot .
+**Algorithm:** Levenshtein distance with optimized single-pass calculation
 
-# Run the container
-docker run -d --name pepedawn \
-  --env-file .env \
-  -v $(pwd)/data:/app/data \
-  pepedawn-bot
+**Performance:** ~20ms to search all 950 cards (50% faster after refactoring)
 
-# Or use docker-compose
-docker-compose up -d
+**Thresholds:**
+```typescript
+HIGH_CONFIDENCE: 0.75   // Auto-show
+MODERATE: 0.5           // Suggest
+TOP_SUGGESTIONS: 3      // Number of suggestions
 ```
+
+### Auto-Update Components
+
+**1. Web Scraper** (`scripts/add-new-cards.js`)
+- Two-pass: Structure → Metadata
+- Handles tokenscan.io, custom URIs, misspelled S3 assets
+- Smart deduplication
+
+**2. GitHub Action** (`.github/workflows/update-fake-rares.yml`)
+- Scheduled: Daily 12pm UTC
+- Monitors: Series 18-25
+- Output: PR only if changes detected
+
+**3. Real-Time Refresher** (`src/utils/cardIndexRefresher.ts`)
+- Fetches from GitHub hourly
+- Updates in-memory index
+- Zero-downtime, graceful fallback
+
+### Code Quality
+
+**Recent Refactoring:**
+- Main handler: 356 → 92 lines (-74% complexity)
+- Dead code removed: ~160 lines
+- Strong TypeScript typing throughout
+- Structured JSON logging
+- 13 testable functions (vs. 1 monolithic handler)
+
+---
 
 ## 🔍 Troubleshooting
 
 ### Bot Won't Start
 
-**Problem**: "Plugin not found" errors
 ```bash
-# Solution: Reinstall dependencies
-rm -rf node_modules
-bun install
-```
+# Check dependencies
+rm -rf node_modules && bun install
 
-**Problem**: "API key not found"
-```bash
-# Solution: Check your .env file
+# Verify API keys
 cat .env | grep API_KEY
-# Ensure keys are properly set without quotes
+
+# Check logs
+tail -f logs/*.log
 ```
 
 ### Bot Not Responding
 
-**Problem**: Bot loads but doesn't respond in Telegram
+1. Verify `TELEGRAM_BOT_TOKEN` in `.env`
+2. Ensure at least one AI provider key is set
+3. Check bot is running: `pm2 status` or `ps aux | grep bun`
 
-1. Verify your `TELEGRAM_BOT_TOKEN` is correct
-2. Check that the bot is running: `ps aux | grep elizaos`
-3. Check logs for errors: `tail -f logs/bot.log`
-4. Ensure at least one AI provider API key is set
+### Card Not Found
 
-### Database Issues
+- Check spelling (fuzzy matching helps but has limits)
+- Verify card exists on [pepe.wtf](https://pepe.wtf)
+- For new cards: Wait for auto-update or run scraper manually
 
-**Problem**: Database connection errors
+### GitHub Action Not Running
 
-```bash
-# Check if database file exists
-ls -la data/
+1. Check Actions tab: `https://github.com/0xrabbidfly/pepedawn-agent/actions`
+2. Verify workflow file exists: `.github/workflows/update-fake-rares.yml`
+3. Check you have Actions enabled in repo settings
 
-# Reset database (WARNING: loses data)
-rm -rf data/*.db
-bun run build
-bun run start
-```
+---
 
-### Rate Limiting
+## 📚 Documentation
 
-**Problem**: API quota exceeded
+- **[Telegram Setup Guide](pepe-tg/telegram_docs/TELEGRAM_SETUP.md)** - Detailed Telegram bot configuration
+- **[User Guide](pepe-tg/telegram_docs/PEPEDAWN_USER_GUIDE.md)** - Guide for bot users
+- **[Technical Handover](pepe-tg/telegram_docs/TECHNICAL_HANDOVER.md)** - Technical architecture
 
-- Switch to a faster/cheaper model in `src/pepedawn.ts`
-- Reduce conversation history in memory settings
-- Implement rate limiting in your Telegram group
+### External Resources
 
-## 📚 Additional Resources
+- [ElizaOS Documentation](https://elizaos.github.io/eliza/) - Framework docs
+- [Telegram Bot API](https://core.telegram.org/bots/api) - API reference
+- [pepe.wtf](https://pepe.wtf) - Card explorer and marketplace
+- [Fake Rares Official](https://fakerares.com) - Official website
 
-- [ElizaOS Documentation](https://elizaos.github.io/eliza/)
-- [Telegram Bot API](https://core.telegram.org/bots/api)
-- [Fake Rares Official](https://fakerares.com)
-- [La Faka Nostra Directory](https://lafakanostra.art)
+---
+
+## 💰 Costs
+
+**Estimated monthly costs:**
+- DigitalOcean Droplet (Basic): **$6/month**
+- OpenAI API (GPT-4o Mini): **$1-3/month**
+- **Total: $7-9/month**
+
+**Set spending limits:**
+- OpenAI: [platform.openai.com/account/limits](https://platform.openai.com/account/limits)
+- Set monthly limit to $5-10
+
+---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Feel free to:
+Contributions welcome! Please:
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
 4. Submit a pull request
 
+---
+
 ## 📄 License
 
-This project is open source and available under the MIT License.
+MIT License - Open source and free to use.
+
+---
 
 ## 💬 Support
 
-For questions or issues:
-- Check the `telegram_docs/` folder for detailed guides
-- Review the troubleshooting section above
-- Open an issue on GitHub
+- **Issues**: Open a GitHub issue
+- **Setup Help**: Check `telegram_docs/` folder
+- **Technical Questions**: See `TECHNICAL_HANDOVER.md`
+
+---
 
 ## 🐸 WAGMI
 
 Built with ❤️ for the Fake Rares community.
 
 *gm anon! ☀️ WAGMI 🐸✨*
-

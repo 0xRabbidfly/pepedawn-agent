@@ -1,0 +1,100 @@
+name: Auto-Update Fake Rares Cards
+
+on:
+  # Run daily at 12pm UTC
+  schedule:
+    - cron: '0 12 * * *'
+  
+  # Allow manual triggering from GitHub UI
+  workflow_dispatch:
+    inputs:
+      series:
+        description: 'Series numbers to scrape (space-separated, e.g., "18 19 20")'
+        required: false
+        default: '18 19 20 21 22 23 24 25'
+
+jobs:
+  scrape-new-cards:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: pepe-tg/package-lock.json
+      
+      - name: Install dependencies
+        working-directory: pepe-tg
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+      
+      - name: Scrape new Fake Rares cards
+        working-directory: pepe-tg
+        run: |
+          SERIES="${{ github.event.inputs.series || '18 19 20 21 22 23 24 25' }}"
+          echo "🔍 Scraping series: $SERIES"
+          node scripts/add-new-cards.js $SERIES
+      
+      - name: Check for changes
+        id: check-changes
+        run: |
+          if git diff --quiet pepe-tg/src/data/fake-rares-data.json; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "ℹ️  No new cards found"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            ADDED=$(git diff pepe-tg/src/data/fake-rares-data.json | grep '^+' | grep -c '"asset"' || echo "0")
+            echo "cards_added=$ADDED" >> $GITHUB_OUTPUT
+            echo "✅ Found $ADDED new cards"
+          fi
+      
+      - name: Create Pull Request
+        if: steps.check-changes.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore: auto-discovered ${{ steps.check-changes.outputs.cards_added }} new Fake Rares cards'
+          title: '🤖 Auto-discovered ${{ steps.check-changes.outputs.cards_added }} new Fake Rares cards'
+          body: |
+            ## 🎴 New Fake Rares Cards Discovered
+            
+            The automated scraper found **${{ steps.check-changes.outputs.cards_added }} new cards** on pepe.wtf!
+            
+            ### 📊 Details
+            - **Scraped from**: fakeraredirectory.com + pepe.wtf
+            - **Series checked**: ${{ github.event.inputs.series || '18-25' }}
+            - **Timestamp**: ${{ github.event.repository.updated_at }}
+            
+            ### ✅ What to do
+            1. Review the changes to `fake-rares-data.json`
+            2. Check that metadata looks correct (artist, supply, issuance)
+            3. Merge this PR to make cards available to users
+            
+            ### 🚀 After Merge
+            - Bot will auto-refresh within 1 hour (or restart to load immediately)
+            - Users can query new cards with `/f <CARD_NAME>`
+            
+            ---
+            *Automated by GitHub Actions*
+          branch: auto-update-fake-rares
+          delete-branch: true
+          labels: |
+            automated
+            data-update
+      
+      - name: Summary
+        run: |
+          if [[ "${{ steps.check-changes.outputs.changed }}" == "true" ]]; then
+            echo "✅ Created PR with ${{ steps.check-changes.outputs.cards_added }} new cards"
+          else
+            echo "ℹ️  No new cards - no action needed"
+          fi
+

@@ -1,6 +1,7 @@
 import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, type State, ModelType } from '@elizaos/core';
 import { getCardSeries, addCardToMap, isKnownCard, SERIES_INFO, getCardExtension } from '../data/cardSeriesMap';
-import { getCardInfo, type CardInfo, FULL_CARD_INDEX } from '../data/fullCardIndex';
+import { type CardInfo, FULL_CARD_INDEX } from '../data/fullCardIndex';
+import { getCardInfo as getRefreshableCardInfo, getFullCardIndex as getRefreshableCardIndex } from '../utils/cardIndexRefresher';
 
 /**
  * Fake Rares Card Display Action
@@ -103,6 +104,27 @@ const logger = {
 // ============================================================================
 // UTILITY FUNCTIONS
 // ============================================================================
+
+/**
+ * Get card info - uses refreshable index if available, falls back to static
+ */
+function getCardInfo(cardName: string): CardInfo | null {
+  // Try refreshable index first (may have newer data)
+  const refreshableCard = getRefreshableCardInfo(cardName);
+  if (refreshableCard) return refreshableCard;
+  
+  // Fallback to static index
+  const staticCard = FULL_CARD_INDEX.find(c => c.asset === cardName.toUpperCase());
+  return staticCard || null;
+}
+
+/**
+ * Get all cards - uses refreshable index if available, falls back to static
+ */
+function getAllCards(): CardInfo[] {
+  const refreshableIndex = getRefreshableCardIndex();
+  return refreshableIndex.length > 0 ? refreshableIndex : FULL_CARD_INDEX;
+}
 
 /**
  * Calculate Levenshtein distance between two strings
@@ -477,7 +499,7 @@ async function handleCardNotFound(params: {
   logger.info('Attempting fuzzy match...');
   
   // Perform fuzzy matching
-  const allAssets = FULL_CARD_INDEX.map(c => c.asset);
+  const allAssets = getAllCards().map(c => c.asset);
   const topMatches = findTopMatches(params.assetName, allAssets);
   const bestMatch = topMatches.length > 0 ? topMatches[0] : null;
   
@@ -645,7 +667,8 @@ export const fakeRaresCardAction: Action = {
       
       // Handle random card request
       if (request.isRandomCard) {
-        if (FULL_CARD_INDEX.length === 0) {
+        const allCards = getAllCards();
+        if (allCards.length === 0) {
           logger.error('Cannot select random card: index is empty');
           if (callback) {
             await callback({
@@ -655,11 +678,11 @@ export const fakeRaresCardAction: Action = {
           return { success: false, text: 'Card index not available' };
         }
         
-        const randomCard = FULL_CARD_INDEX[Math.floor(Math.random() * FULL_CARD_INDEX.length)];
+        const randomCard = allCards[Math.floor(Math.random() * allCards.length)];
         assetName = randomCard.asset;
         logger.info('Random card selected', {
           assetName,
-          totalCards: FULL_CARD_INDEX.length
+          totalCards: allCards.length
         });
       } else {
         assetName = request.assetName!;
@@ -680,7 +703,7 @@ export const fakeRaresCardAction: Action = {
         });
       } else {
         return await handleCardNotFound({
-          assetName,
+                assetName,
           callback,
         });
       }

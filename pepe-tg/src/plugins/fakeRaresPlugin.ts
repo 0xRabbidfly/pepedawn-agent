@@ -2,6 +2,8 @@ import { type Plugin } from '@elizaos/core';
 import { fakeRaresCardAction, shareLoreAction, educateNewcomerAction, startCommand, helpCommand } from '../actions';
 import { fakeRaresContextProvider } from '../providers';
 import { loreDetectorEvaluator } from '../evaluators';
+import { FULL_CARD_INDEX } from '../data/fullCardIndex';
+import { startAutoRefresh } from '../utils/cardIndexRefresher';
 
 /**
  * Fake Rares Plugin - Bootstrap 1.6.2 Compatible
@@ -10,11 +12,26 @@ import { loreDetectorEvaluator } from '../evaluators';
  * Bootstrap 1.6.2 removed its MESSAGE_RECEIVED handler, so we provide one that:
  * 1. Manually executes /f commands (our custom action)
  * 2. Routes all other messages to runtime.messageService (bootstrap's new architecture)
+ * 
+ * Features:
+ * - Auto-refreshes card index from GitHub every hour
+ * - Zero-downtime updates when new cards are added
  */
 export const fakeRaresPlugin: Plugin = {
   name: 'fake-rares',
-  description: 'Fake Rares card display and community features',
+  description: 'Fake Rares card display and community features with auto-updating index',
   priority: 1000,
+  
+  // Initialize auto-refresh on plugin load
+  init: async () => {
+    console.log('\n🎴 Initializing Fake Rares Plugin...');
+    console.log(`📦 Loaded ${FULL_CARD_INDEX.length} cards from disk`);
+    
+    // Start auto-refresh from GitHub
+    startAutoRefresh(FULL_CARD_INDEX);
+    
+    console.log('✅ Fake Rares Plugin initialized\n');
+  },
   
   actions: [
     startCommand,

@@ -20,7 +20,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const dataPath = path.join(__dirname, 'src', 'data', 'fake-rares-data.json');
+const dataPath = path.join(__dirname, '..', 'src', 'data', 'fake-rares-data.json');
 
 // Parse command line arguments
 const args = process.argv.slice(2);
@@ -155,17 +155,39 @@ async function pass2ScrapeCard(page, baseCard) {
         }
       }
       
-      // Check for image from S3
+      // Check for image
       const images = Array.from(document.querySelectorAll('img'));
       for (const img of images) {
         const src = img.src || '';
-        if (src.includes('amazonaws') && src.includes('/fake-rares/')) {
-          const extMatch = src.match(/\.(jpg|jpeg|png|gif)($|\?)/i);
-          if (extMatch) {
-            data.ext = extMatch[1].toLowerCase();
-            if (data.ext === 'jpg') data.ext = 'jpeg';
-            return data;
-          }
+        
+        // Extract extension
+        const extMatch = src.match(/\.(jpg|jpeg|png|gif|webp)($|\?)/i);
+        if (!extMatch) continue;
+        
+        data.ext = extMatch[1].toLowerCase();
+        if (data.ext === 'jpg') data.ext = 'jpeg';
+        
+        // Check if it's on tokenscan.io - ALWAYS save imageUri
+        if (src.includes('tokenscan.io')) {
+          data.imageUri = src;
+          return data;
+        }
+        
+        // Check if it's standard S3 path with correct asset name
+        const standardS3Pattern = new RegExp(
+          `https://pepewtf\\.s3\\.amazonaws\\.com/collections/fake-rares/full/\\d+/${baseCard.asset}\\.`,
+          'i'
+        );
+        
+        if (standardS3Pattern.test(src)) {
+          // Standard S3 with correct name - don't save imageUri (can construct)
+          return data;
+        }
+        
+        // Non-standard path OR misspelled asset name - save imageUri
+        if (src.includes('amazonaws') || src.includes('arweave') || src.includes('imgur')) {
+          data.imageUri = src;
+          return data;
         }
       }
       
@@ -252,6 +274,11 @@ async function pass2ScrapeCard(page, baseCard) {
     // Add videoUri if it's an MP4
     if (metadata.videoUri) {
       fullCard.videoUri = metadata.videoUri;
+    }
+    
+    // Add imageUri if it's custom-hosted (tokenscan, non-standard S3, etc.)
+    if (metadata.imageUri) {
+      fullCard.imageUri = metadata.imageUri;
     }
     
     // Track issues
