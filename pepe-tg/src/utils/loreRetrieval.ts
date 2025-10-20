@@ -188,6 +188,11 @@ export async function searchKnowledgeWithExpansion(
       } else if (typeof createdAtValue === 'number') {
         timestamp = createdAtValue;
       }
+      
+      // Debug: Log first few timestamps
+      if (idx < 3) {
+        console.log(`[DEBUG] Passage ${idx}: raw timestamp = ${createdAtValue}, parsed = ${timestamp}`);
+      }
     }
 
     // Extract author/poster (common telegram fields)
@@ -217,16 +222,32 @@ export async function searchKnowledgeWithExpansion(
     if (metadataSource === 'telegram' || hasTelegramMarkers || contentLooksTelegram) {
       sourceType = 'telegram';
       sourceRef = r.metadata?.messageId || r.content?.metadata?.messageId || id;
-      // Populate author/timestamp from content if missing
+      
+      // Populate author/timestamp from content if missing or if timestamp is in the future (sync timestamp)
+      const timestampIsInFuture = timestamp && timestamp > Date.now();
+      
       if (!author && fromMatch) {
         author = fromMatch[1];
       }
       if (!author && fromIdMatch) {
         author = fromIdMatch[1];
       }
-      if (!timestamp && dateMatch) {
+      
+      // ALWAYS prefer embedded date from content over metadata timestamp (which is sync time)
+      if (dateMatch) {
         const parsed = Date.parse(dateMatch[1]);
-        if (!Number.isNaN(parsed)) timestamp = parsed;
+        if (!Number.isNaN(parsed)) {
+          timestamp = parsed;
+          if (idx < 3) {
+            console.log(`[DEBUG] Using embedded date from content: ${dateMatch[1]} -> ${new Date(parsed).toISOString()}`);
+          }
+        }
+      } else if (timestampIsInFuture) {
+        // Timestamp is sync time (future), and no embedded date found - clear it
+        if (idx < 3) {
+          console.log(`[DEBUG] Clearing future timestamp (sync time): ${timestamp}`);
+        }
+        timestamp = undefined;
       }
     } else if (metadataSource === 'wiki' || metadataSource === 'rag-service-fragment-sync') {
       // rag-service-fragment-sync = wiki fragments

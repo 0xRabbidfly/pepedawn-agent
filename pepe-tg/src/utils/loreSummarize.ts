@@ -145,11 +145,25 @@ export function formatCompactCitation(passage: RetrievedPassage): string {
     // Format date if available
     let datePart = '';
     if (passage.timestamp) {
-      const date = new Date(passage.timestamp);
-      const year = date.getFullYear();
-      const month = String(date.getMonth() + 1).padStart(2, '0');
-      const day = String(date.getDate()).padStart(2, '0');
-      datePart = ` ${year}-${month}-${day}`;
+      // Convert Unix timestamp (seconds) to milliseconds if needed
+      // Timestamps < 10000000000 are in seconds, >= are in milliseconds
+      const timestampMs = passage.timestamp < 10000000000 
+        ? passage.timestamp * 1000 
+        : passage.timestamp;
+      
+      const date = new Date(timestampMs);
+      
+      // Debug: Check if date is valid
+      if (Number.isNaN(date.getTime())) {
+        console.warn(`Invalid timestamp for ${shortRef}:`, passage.timestamp);
+      } else {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        datePart = ` ${year}-${month}-${day}`;
+      }
+    } else {
+      console.warn(`No timestamp for telegram passage ${shortRef}`);
     }
     
     // Format author if available
