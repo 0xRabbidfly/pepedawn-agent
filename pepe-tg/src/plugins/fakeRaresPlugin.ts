@@ -88,10 +88,18 @@ export const fakeRaresPlugin: Plugin = {
           
           // === CUSTOM ACTION: /fl COMMANDS ===
           if (isLoreCommand) {
+            // Apply the same suppression pattern as /f
+            const actionCallback = typeof params.callback === 'function' ? params.callback : null;
+            params.callback = async () => [];
+
             if (loreCommand.validate && loreCommand.handler) {
               const isValid = await loreCommand.validate(runtime, message);
               if (isValid) {
-                await loreCommand.handler(runtime, message, params.state, {}, params.callback);
+                await loreCommand.handler(runtime, message, params.state, {}, actionCallback ?? undefined);
+                try {
+                  message.metadata = message.metadata || {};
+                  (message.metadata as any).__handledByCustom = true;
+                } catch {}
                 return; // Done
               }
             }
