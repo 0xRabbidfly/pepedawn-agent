@@ -48,6 +48,62 @@ interface FuzzyMatch {
   similarity: number;
 }
 
+interface CardDisplayParams {
+  assetName: string;
+  cardInfo: CardInfo | null;
+  mediaUrl: string;
+  isRandomCard?: boolean;
+  isTypoCorrection?: boolean;
+}
+
+// ============================================================================
+// LOGGING
+// ============================================================================
+
+/**
+ * Structured logger for card actions
+ * Provides consistent, searchable log format with context
+ */
+const logger = {
+  debug: (message: string, context?: Record<string, any>) => {
+    const ctx = context ? ` ${JSON.stringify(context)}` : '';
+    console.log(`🔍 [DEBUG] ${message}${ctx}`);
+  },
+  
+  info: (message: string, context?: Record<string, any>) => {
+    const ctx = context ? ` ${JSON.stringify(context)}` : '';
+    console.log(`ℹ️  [INFO] ${message}${ctx}`);
+  },
+  
+  success: (message: string, context?: Record<string, any>) => {
+    const ctx = context ? ` ${JSON.stringify(context)}` : '';
+    console.log(`✅ [SUCCESS] ${message}${ctx}`);
+  },
+  
+  warning: (message: string, context?: Record<string, any>) => {
+    const ctx = context ? ` ${JSON.stringify(context)}` : '';
+    console.log(`⚠️  [WARNING] ${message}${ctx}`);
+  },
+  
+  error: (message: string, error?: Error | string, context?: Record<string, any>) => {
+    const errorMsg = error instanceof Error ? error.message : error;
+    const ctx = context ? ` ${JSON.stringify(context)}` : '';
+    console.error(`❌ [ERROR] ${message}${errorMsg ? ` - ${errorMsg}` : ''}${ctx}`);
+  },
+  
+  step: (stepNumber: number, description: string) => {
+    console.log(`\n🔧 STEP ${stepNumber}: ${description}`);
+  },
+  
+  separator: () => {
+    console.log(`${'='.repeat(60)}`);
+  },
+};
+
+// ============================================================================
+// UTILITY FUNCTIONS
+// ============================================================================
+
 /**
  * Calculate Levenshtein distance between two strings
  * Returns the minimum number of edits (insertions, deletions, substitutions) needed
@@ -120,6 +176,90 @@ function formatTelegramUrl(url: string): string {
   return url.replace(/_/g, '%5F');
 }
 
+// ============================================================================
+// MESSAGE BUILDING
+// ============================================================================
+
+/**
+ * Builds the card display message with metadata and media URL
+ * Consolidates message formatting logic used in multiple places
+ */
+function buildCardDisplayMessage(params: CardDisplayParams): string {
+  let message = '';
+  
+  // Add typo correction header if applicable
+  if (params.isTypoCorrection) {
+    message += '😅 Ha, spelling not your thing? No worries - got you fam.\n\n';
+  }
+  
+  // Add card name header with random indicator if applicable
+  if (params.isRandomCard) {
+    message += `🎲 ${params.assetName} 🐸`;
+  } else if (params.isTypoCorrection) {
+    message += `🎴 ${params.assetName}\n`;
+    message += `📦`;
+  } else {
+    message += `${params.assetName} 🐸`;
+  }
+  
+  // Add series and card number
+  if (params.cardInfo) {
+    if (!params.isTypoCorrection) {
+      message += ` Series ${params.cardInfo.series} - Card ${params.cardInfo.card}\n`;
+    } else {
+      message += ` Series ${params.cardInfo.series}`;
+    }
+    
+    // Add metadata line (artist and/or supply)
+    const metadata: string[] = [];
+    if (params.cardInfo.artist) {
+      metadata.push(`👨‍🎨 ${params.cardInfo.artist}`);
+    }
+    if (params.cardInfo.supply) {
+      metadata.push(`💎 ${params.cardInfo.supply.toLocaleString()}`);
+    }
+    
+    if (metadata.length > 0) {
+      message += params.isTypoCorrection ? ' • ' : '';
+      message += metadata.join(' • ');
+    }
+    
+    message += '\n\n';
+    
+    // Add issuance date if available (only for non-typo correction messages)
+    if (params.cardInfo.issuance && !params.isTypoCorrection) {
+      if (params.cardInfo.supply) {
+        // Already added supply above, so add issuance separately
+        message = message.slice(0, -2); // Remove last \n\n
+        message += ` • 📅 ${params.cardInfo.issuance}\n\n`;
+      } else {
+        message += `📅 ${params.cardInfo.issuance}\n\n`;
+      }
+    }
+  } else {
+    message += ` Series ? - Card ?\n`;
+  }
+  
+  // Add media URL (Telegram shows preview for this)
+  message += formatTelegramUrl(params.mediaUrl);
+  
+  return message;
+}
+
+/**
+ * Builds artist button if artist info is available
+ */
+function buildArtistButton(cardInfo: CardInfo | null): Array<{ text: string; url: string }> {
+  if (!cardInfo?.artist || !cardInfo?.artistSlug) {
+    return [];
+  }
+  
+  return [{
+    text: `👨‍🎨 ${cardInfo.artist}`,
+    url: `https://pepe.wtf/artists/${cardInfo.artistSlug}`
+  }];
+}
+
 /**
  * Constructs the image URL for a Fake Rares card
  */
@@ -146,6 +286,10 @@ function determineCardUrl(cardInfo: CardInfo, assetName: string): CardUrlResult 
     extension: cardInfo.ext as MediaExtension
   };
 }
+
+// ============================================================================
+// CARD LOOKUP FUNCTIONS
+// ============================================================================
 
 /**
  * Attempts to find the card image by trying different series numbers (0-18)
@@ -209,6 +353,254 @@ async function findCardImage(assetName: string): Promise<CardUrlResult | null> {
   return null;
 }
 
+// ============================================================================
+// HANDLER HELPER FUNCTIONS
+// ============================================================================
+
+/**
+ * Parses the card request from message text
+ * Returns asset name and whether it's a random card request
+ */
+function parseCardRequest(text: string): { assetName: string | null; isRandomCard: boolean } {
+  const match = text.match(/^\/?f(?:@[A-Za-z0-9_]+)?(?:\s+([A-Za-z0-9_-]+))?/i);
+  
+  if (!match || !match[1]) {
+    // No asset name provided - random card
+    return { assetName: null, isRandomCard: true };
+  }
+  
+  return { assetName: match[1].toUpperCase(), isRandomCard: false };
+}
+
+/**
+ * Looks up card metadata and determines the URL
+ * Returns card info and URL result if found
+ */
+async function lookupCardUrl(assetName: string): Promise<{
+  cardInfo: CardInfo | null;
+  urlResult: CardUrlResult | null;
+}> {
+  logger.step(2, 'Lookup card metadata');
+  const cardInfoResult = getCardInfo(assetName);
+  const cardInfo: CardInfo | null = cardInfoResult || null;
+  let urlResult: CardUrlResult | null = null;
+  
+  if (cardInfo) {
+    logger.info('Found in fullCardIndex', {
+      series: cardInfo.series,
+      card: cardInfo.card,
+      artist: cardInfo.artist || 'unknown',
+      supply: cardInfo.supply || 'unknown',
+      ext: cardInfo.ext
+    });
+    
+    logger.step(3, 'Determine image/video URL');
+    urlResult = determineCardUrl(cardInfo, assetName);
+    
+    if (cardInfo.ext === 'mp4' && cardInfo.videoUri) {
+      logger.debug('Using videoUri');
+    } else if (cardInfo.imageUri) {
+      logger.debug('Using imageUri');
+    } else {
+      logger.debug('Constructed from series/ext');
+    }
+  } else {
+    logger.warning('Not in fullCardIndex, trying HTTP probing fallback');
+    logger.step(3, 'Fallback - HTTP probing');
+    urlResult = await findCardImage(assetName);
+    
+    if (urlResult) {
+      logger.success('Probing found card');
+    } else {
+      logger.warning('Probing failed - card not found anywhere');
+    }
+  }
+  
+  return { cardInfo, urlResult };
+}
+
+/**
+ * Handles successful card lookup - sends card to user
+ */
+async function handleCardFound(params: {
+  assetName: string;
+  cardInfo: CardInfo | null;
+  urlResult: CardUrlResult;
+  isRandomCard: boolean;
+  callback?: HandlerCallback;
+}): Promise<{ success: true; data: any }> {
+  logger.step(4, 'Compose message with metadata');
+  
+  const cardMessage = buildCardDisplayMessage({
+    assetName: params.assetName,
+    cardInfo: params.cardInfo,
+    mediaUrl: params.urlResult.url,
+    isRandomCard: params.isRandomCard,
+  });
+  
+  logger.step(5, 'Send message with media preview and artist button');
+  const buttons = buildArtistButton(params.cardInfo);
+  
+  if (params.callback) {
+    params.callback({
+      text: cardMessage,
+      buttons: buttons.length > 0 ? buttons : undefined,
+      __fromAction: 'fakeRaresCard',
+      suppressBootstrap: true,
+    }).catch((err) => logger.error('Error sending callback', err));
+    
+    logger.debug('Callback queued', { buttonCount: buttons.length });
+  }
+  
+  logger.success(`${params.assetName} card will be displayed`);
+  logger.separator();
+  
+  return {
+    success: true,
+    data: {
+      suppressBootstrap: true,
+      reason: 'handled_by_fakeRaresCard',
+      assetName: params.assetName,
+      isRandomCard: params.isRandomCard,
+    },
+  };
+}
+
+/**
+ * Handles card not found - performs fuzzy matching and shows suggestions
+ */
+async function handleCardNotFound(params: {
+  assetName: string;
+  callback?: HandlerCallback;
+}): Promise<{ success: boolean; data: any }> {
+  logger.warning(`Card ${params.assetName} not found anywhere`);
+  logger.info('Attempting fuzzy match...');
+  
+  // Perform fuzzy matching
+  const allAssets = FULL_CARD_INDEX.map(c => c.asset);
+  const topMatches = findTopMatches(params.assetName, allAssets);
+  const bestMatch = topMatches.length > 0 ? topMatches[0] : null;
+  
+  // High confidence match - auto-show the card
+  if (bestMatch && bestMatch.similarity >= FUZZY_MATCH_THRESHOLDS.HIGH_CONFIDENCE) {
+    logger.success('Fuzzy match found', {
+      match: bestMatch.name,
+      similarity: `${(bestMatch.similarity * 100).toFixed(1)}%`
+    });
+    
+    const matchedCard = getCardInfo(bestMatch.name);
+    if (matchedCard) {
+      const matchedUrlResult = determineCardUrl(matchedCard, bestMatch.name);
+      
+      const matchedCardText = buildCardDisplayMessage({
+        assetName: bestMatch.name,
+        cardInfo: matchedCard,
+        mediaUrl: matchedUrlResult.url,
+        isTypoCorrection: true,
+      });
+      
+      const buttons = buildArtistButton(matchedCard);
+      
+      if (params.callback) {
+        await params.callback({
+          text: matchedCardText,
+          buttons: buttons.length > 0 ? buttons : undefined,
+          __fromAction: 'fakeRaresCard',
+          suppressBootstrap: true,
+        });
+      }
+      
+      logger.success(`Fuzzy-matched card ${bestMatch.name} displayed for typo "${params.assetName}"`);
+      logger.separator();
+      
+      return {
+        success: true,
+        data: {
+          suppressBootstrap: true,
+          reason: 'fuzzy_matched',
+          assetName: params.assetName,
+          matchedAssetName: bestMatch.name,
+          similarity: bestMatch.similarity,
+        },
+      };
+    }
+  }
+  
+  // Moderate match - show suggestions
+  if (bestMatch && bestMatch.similarity >= FUZZY_MATCH_THRESHOLDS.MODERATE) {
+    logger.info('Moderate fuzzy match', {
+      match: bestMatch.name,
+      similarity: `${(bestMatch.similarity * 100).toFixed(1)}%`
+    });
+    
+    const suggestions = topMatches
+      .filter(m => m.similarity >= FUZZY_MATCH_THRESHOLDS.MODERATE)
+      .map(m => `• ${m.name}`)
+      .join('\n');
+    
+    logger.debug('Suggestions', { count: topMatches.length });
+    logger.separator();
+    
+    let errorText = `❌ Could not find "${params.assetName}" in the Fake Rares collection.\n\n`;
+    if (suggestions) {
+      errorText += `🤔 Did you mean:\n${suggestions}\n\n`;
+      errorText += `Try /f <CARD_NAME> with one of the above.`;
+    } else {
+      errorText += `Double-check the asset name or browse on pepe.wtf.`;
+    }
+    
+    if (params.callback) {
+      await params.callback({
+        text: errorText,
+        __fromAction: 'fakeRaresCard',
+        suppressBootstrap: true,
+      });
+    }
+    
+    return {
+      success: false,
+      data: {
+        suppressBootstrap: true,
+        reason: 'card_not_found_with_suggestions',
+        assetName: params.assetName,
+        suggestions: topMatches.map(m => m.name),
+      },
+    };
+  }
+  
+  // Low match - just show error
+  const similarityPercent = bestMatch ? (bestMatch.similarity * 100).toFixed(1) : '0.0';
+  const thresholdPercent = (FUZZY_MATCH_THRESHOLDS.MODERATE * 100).toFixed(0);
+  logger.warning('No good fuzzy match found', {
+    best: bestMatch?.name || 'none',
+    similarity: `${similarityPercent}%`,
+    threshold: `${thresholdPercent}%`
+  });
+  logger.separator();
+  
+  if (params.callback) {
+    await params.callback({
+      text: `❌ Could not find "${params.assetName}" in the Fake Rares collection. Double-check the asset name or browse on pepe.wtf.`,
+      __fromAction: 'fakeRaresCard',
+      suppressBootstrap: true,
+    });
+  }
+  
+  return {
+    success: false,
+    data: {
+      suppressBootstrap: true,
+      reason: 'card_not_found',
+      assetName: params.assetName,
+      cardFound: false,
+    },
+  };
+}
+
+// ============================================================================
+// MAIN ACTION EXPORT
+// ============================================================================
+
 export const fakeRaresCardAction: Action = {
   name: 'SHOW_FAKE_RARE_CARD',
   description: 'Display a Fake Rares card image when user requests with /f <ASSET> or a random card with /f',
@@ -223,7 +615,7 @@ export const fakeRaresCardAction: Action = {
     // Accept: "/f", "/f ASSET", "/f@bot ASSET", and leading mentions like "@bot /f ASSET"
     const fPattern = /^(?:@[A-Za-z0-9_]+\s+)?\/f(?:@[A-Za-z0-9_]+)?(?:\s+[A-Za-z0-9_-]+)?$/i;
     const matches = fPattern.test(text);
-    console.log(`🔍 [/f validation] Message: "${text}" → ${matches ? '✅ MATCH' : '❌ NO MATCH'}`);
+    logger.debug('Command validation', { text, matches });
     return matches;
   },
   
@@ -234,27 +626,27 @@ export const fakeRaresCardAction: Action = {
     options?: any,
     callback?: HandlerCallback
   ) => {
-    console.log(`\n${'='.repeat(60)}`);
-    console.log(`🚀 [/f] HANDLER STARTED`);
-    console.log(`📝 Message: "${message.content.text}"`);
-    console.log(`👤 User: ${message.entityId}`);
-    console.log(`${'='.repeat(60)}\n`);
+    // Initialize handler
+    logger.separator();
+    logger.info('HANDLER STARTED', {
+      message: message.content.text,
+      user: message.entityId
+    });
+    logger.separator();
     
     let assetName = 'UNKNOWN'; // Declare outside try block for error handling
-    let isRandomCard = false; // Track if this is a random card request
     
     try {
       const text = (message.content.text || '').trim();
       
-      console.log(`🔧 STEP 1: Parse command`);
-      // Extract asset name from /f <ASSET> or detect /f (random)
-      // Support optional @bot mention attached to /f and optional asset token
-      const match = text.match(/^\/?f(?:@[A-Za-z0-9_]+)?(?:\s+([A-Za-z0-9_-]+))?/i);
+      // STEP 1: Parse the command
+      logger.step(1, 'Parse command');
+      const request = parseCardRequest(text);
       
-      if (!match || !match[1]) {
-        // No asset name provided - select random card
+      // Handle random card request
+      if (request.isRandomCard) {
         if (FULL_CARD_INDEX.length === 0) {
-          console.log(`❌ Cannot select random card: index is empty`);
+          logger.error('Cannot select random card: index is empty');
           if (callback) {
             await callback({
               text: '❌ Card index not loaded. Please try again later.',
@@ -265,263 +657,39 @@ export const fakeRaresCardAction: Action = {
         
         const randomCard = FULL_CARD_INDEX[Math.floor(Math.random() * FULL_CARD_INDEX.length)];
         assetName = randomCard.asset;
-        isRandomCard = true;
-        console.log(`🎲 Random card selected: ${assetName} (from ${FULL_CARD_INDEX.length} cards)\n`);
+        logger.info('Random card selected', {
+          assetName,
+          totalCards: FULL_CARD_INDEX.length
+        });
       } else {
-        assetName = match[1].toUpperCase();
-        console.log(`✅ Extracted asset: ${assetName}\n`);
+        assetName = request.assetName!;
+        logger.info('Extracted asset', { assetName });
       }
       
-      console.log(`🔧 STEP 2: Lookup card metadata`);
-      // Get card info from fullCardIndex (already loads from fake-rares-data.json)
-      const cardInfo = getCardInfo(assetName);
-      let cardUrlResult: CardUrlResult | null = null;
+      // STEP 2-3: Lookup card URL
+      const { cardInfo, urlResult } = await lookupCardUrl(assetName);
       
-      if (cardInfo) {
-        console.log(`✅ Found in fullCardIndex: Series ${cardInfo.series}, Card ${cardInfo.card}`);
-        console.log(`   📊 Artist: ${cardInfo.artist || 'unknown'}`);
-        console.log(`   💎 Supply: ${cardInfo.supply?.toLocaleString() || 'unknown'}`);
-        console.log(`   🎨 Extension: .${cardInfo.ext}`);
-        
-        console.log(`\n🔧 STEP 3: Determine image/video URL`);
-        cardUrlResult = determineCardUrl(cardInfo, assetName);
-        
-        if (cardInfo.ext === 'mp4' && cardInfo.videoUri) {
-          console.log(`   🎬 Using videoUri: ${cardUrlResult.url.substring(0, 60)}...`);
-        } else if (cardInfo.imageUri) {
-          console.log(`   🖼️  Using imageUri: ${cardUrlResult.url.substring(0, 60)}...`);
-        } else {
-          console.log(`   🏗️  Constructed from series/ext: ${cardUrlResult.url.substring(0, 60)}...`);
-        }
+      // STEP 4-5: Handle result
+      if (urlResult) {
+        return await handleCardFound({
+          assetName,
+          cardInfo,
+          urlResult,
+          isRandomCard: request.isRandomCard,
+          callback,
+        });
       } else {
-        console.log(`⚠️  Not in fullCardIndex, trying HTTP probing fallback...`);
-        
-        console.log(`\n🔧 STEP 3: Fallback - HTTP probing`);
-        cardUrlResult = await findCardImage(assetName);
-        if (cardUrlResult) {
-          console.log(`✅ Probing found: ${cardUrlResult.url.substring(0, 60)}...`);
-        } else {
-          console.log(`❌ Probing failed - card not found anywhere`);
-        }
-      }
-      console.log('');
-      
-      if (cardUrlResult) {
-        console.log(`🔧 STEP 4: Compose message with metadata`);
-        // Build message: metadata first, URL at bottom (preview appears at bottom)
-        let cardDetailsText = '';
-        
-        // 1. Random indicator OR card name + Series/Card
-        if (isRandomCard) {
-          cardDetailsText = `🎲 ${assetName} 🐸 Series ${cardInfo?.series || '?'} - Card ${cardInfo?.card || '?'}\n`;
-          console.log(`   🎲 Added random card header`);
-        } else {
-          cardDetailsText = `${assetName} 🐸 Series ${cardInfo?.series || '?'} - Card ${cardInfo?.card || '?'}\n`;
-          console.log(`   📛 Added card name header`);
-        }
-        
-        // 2. Supply + Issuance (on same line)
-        if (cardInfo) {
-          let metaLine = '';
-          if (cardInfo.supply) {
-            metaLine = `💎 Supply: ${cardInfo.supply.toLocaleString()}`;
-          }
-          if (cardInfo.issuance) {
-            metaLine += metaLine ? ` • 📅 ${cardInfo.issuance}` : `📅 ${cardInfo.issuance}`;
-          }
-          if (metaLine) {
-            cardDetailsText += metaLine + '\n\n';
-            console.log(`   📊 Added supply/date metadata`);
-          }
-        } else {
-          console.log(`   ⚠️  No metadata available`);
-        }
-        
-        // 3. URL at the very bottom (Telegram shows preview here)
-        // Percent-encode underscores as %5F to bypass MarkdownV2 parsing issues
-        cardDetailsText += formatTelegramUrl(cardUrlResult.url);
-        console.log(`   📎 Added media URL (underscores percent-encoded as %5F)`);
-        console.log('');
-        
-        // This action is callback-only. Do not return a prompt for any other handler.
-        // Instead, use a suppression flag to indicate downstream handlers should no-op.
-        console.log(`🔧 STEP 5: Send message with media preview and artist button`);
-        
-        // Build buttons array: just artist link (media preview shows automatically)
-        const buttons = [];
-        
-        // Artist button (if available)
-        if (cardInfo?.artist && cardInfo?.artistSlug) {
-          buttons.push({ 
-            text: `👨‍🎨 ${cardInfo.artist}`, 
-            url: `https://pepe.wtf/artists/${cardInfo.artistSlug}` 
-          });
-          console.log(`   🔗 Added artist button: "${cardInfo.artist}"`);
-        } else if (cardInfo?.artist) {
-          console.log(`   ⚠️  Artist "${cardInfo.artist}" has no artistSlug - no button created`);
-        }
-        
-        // THEN send message with link preview + artist button
-        // Telegram auto-shows media preview when URL is in message
-        if (callback) {
-          callback({
-            text: cardDetailsText,
-            buttons: buttons.length > 0 ? buttons : undefined,
-            __fromAction: 'fakeRaresCard',
-            suppressBootstrap: true,
-          }).catch((err) => console.error('❌ Error sending callback:', err));
-          console.log(`   ✅ Callback queued: message with media preview + ${buttons.length} button(s)\n`);
-        }
-        
-        console.log(`✅ SUCCESS: ${assetName} card will be displayed`);
-        console.log(`${'='.repeat(60)}\n`);
-        
-        return {
-          success: true,
-          data: {
-            suppressBootstrap: true,
-            reason: 'handled_by_fakeRaresCard',
-            assetName,
-            isRandomCard,
-          },
-        };
-      } else {
-        console.log(`❌ FAILURE: Card ${assetName} not found anywhere`);
-        console.log(`🔧 Attempting fuzzy match...`);
-        
-        // Try fuzzy matching against all known cards
-        // Performance: Calculate top matches once (O(n log n)) and reuse for all tiers
-        const allAssets = FULL_CARD_INDEX.map(c => c.asset);
-        const topMatches = findTopMatches(assetName, allAssets);
-        const bestMatch = topMatches.length > 0 ? topMatches[0] : null;
-        
-        if (bestMatch && bestMatch.similarity >= FUZZY_MATCH_THRESHOLDS.HIGH_CONFIDENCE) {
-          // HIGH CONFIDENCE MATCH (≥75%) - Auto-show the card
-          console.log(`✅ Fuzzy match found: "${bestMatch.name}" (${(bestMatch.similarity * 100).toFixed(1)}% similar)`);
-          console.log(`🔧 Fetching matched card...`);
-          
-          // Get the matched card info
-          const matchedCard = getCardInfo(bestMatch.name);
-          if (matchedCard) {
-            // Determine the URL for the matched card
-            const matchedUrlResult = determineCardUrl(matchedCard, bestMatch.name);
-            
-            // Build card details with playful typo message
-            let matchedCardText = `😅 Ha, spelling not your thing? No worries - got you fam.\n\n`;
-            matchedCardText += `🎴 ${bestMatch.name}\n`;
-            matchedCardText += `📦 Series ${matchedCard.series}`;
-            if (matchedCard.artist) {
-              matchedCardText += ` • 👨‍🎨 ${matchedCard.artist}`;
-            }
-            if (matchedCard.supply) {
-              matchedCardText += ` • 💎 ${matchedCard.supply.toLocaleString()}`;
-            }
-            matchedCardText += '\n\n';
-            // Format as inline link for Telegram MarkdownV2
-            matchedCardText += formatTelegramUrl(matchedUrlResult.url);
-            
-            // Build buttons
-            const buttons = [];
-            if (matchedCard.artist && matchedCard.artistSlug) {
-              buttons.push({
-                text: `👨‍🎨 ${matchedCard.artist}`,
-                url: `https://pepe.wtf/artists/${matchedCard.artistSlug}`
-              });
-            }
-            
-            // Send the matched card
-            if (callback) {
-              await callback({
-                text: matchedCardText,
-                buttons: buttons.length > 0 ? buttons : undefined,
-                __fromAction: 'fakeRaresCard',
-                suppressBootstrap: true,
-              });
-            }
-            
-            console.log(`✅ SUCCESS: Fuzzy-matched card ${bestMatch.name} displayed for typo "${assetName}"`);
-            console.log(`${'='.repeat(60)}\n`);
-            
-            return {
-              success: true,
-              data: {
-                suppressBootstrap: true,
-                reason: 'fuzzy_matched',
-                assetName,
-                matchedAssetName: bestMatch.name,
-                similarity: bestMatch.similarity,
-              },
-            };
-          }
-        } else if (bestMatch && bestMatch.similarity >= FUZZY_MATCH_THRESHOLDS.MODERATE) {
-          // MODERATE MATCH (50-74%) - Suggest alternatives
-          console.log(`🤔 Moderate fuzzy match: "${bestMatch.name}" (${(bestMatch.similarity * 100).toFixed(1)}% similar)`);
-          console.log(`🔧 Using pre-calculated top ${FUZZY_MATCH_THRESHOLDS.TOP_SUGGESTIONS} suggestions...`);
-          
-          // topMatches already calculated above - reuse it!
-          const suggestions = topMatches
-            .filter(m => m.similarity >= FUZZY_MATCH_THRESHOLDS.MODERATE)  // Only show suggestions ≥50%
-            .map(m => `• ${m.name}`)
-            .join('\n');
-          
-          console.log(`📋 Suggestions:\n${suggestions}`);
-          console.log(`${'='.repeat(60)}\n`);
-          
-          let errorText = `❌ Could not find "${assetName}" in the Fake Rares collection.\n\n`;
-          if (suggestions) {
-            errorText += `🤔 Did you mean:\n${suggestions}\n\n`;
-            errorText += `Try /f <CARD_NAME> with one of the above.`;
-          } else {
-            errorText += `Double-check the asset name or browse on pepe.wtf.`;
-          }
-          
-          if (callback) {
-            await callback({
-              text: errorText,
-              __fromAction: 'fakeRaresCard',
-              suppressBootstrap: true,
-            });
-          }
-          
-          return {
-            success: false,
-            data: {
-              suppressBootstrap: true,
-              reason: 'card_not_found_with_suggestions',
-              assetName,
-              suggestions: topMatches.map(m => m.name),
-            },
-          };
-        } else {
-          // LOW MATCH (<50%) - Just show error
-          const similarityPercent = bestMatch ? (bestMatch.similarity * 100).toFixed(1) : '0.0';
-          const thresholdPercent = (FUZZY_MATCH_THRESHOLDS.MODERATE * 100).toFixed(0);
-          console.log(`❌ No good fuzzy match found (best: "${bestMatch?.name}" at ${similarityPercent}% - below ${thresholdPercent}% threshold)`);
-          console.log(`${'='.repeat(60)}\n`);
-          
-          if (callback) {
-            await callback({
-              text: `❌ Could not find "${assetName}" in the Fake Rares collection. Double-check the asset name or browse on pepe.wtf.`,
-              __fromAction: 'fakeRaresCard',
-              suppressBootstrap: true,
-            });
-          }
-          
-          return {
-            success: false,
-            data: {
-              suppressBootstrap: true,
-              reason: 'card_not_found',
-              assetName,
-              cardFound: false,
-            },
-          };
-        }
+        return await handleCardNotFound({
+          assetName,
+          callback,
+        });
       }
     } catch (error) {
-      console.log(`\n❌ EXCEPTION in /f handler for ${assetName}`);
-      console.error('Error details:', error);
-      console.log(`${'='.repeat(60)}\n`);
+      logger.separator();
+      logger.error('EXCEPTION in /f handler', error instanceof Error ? error : String(error), {
+        assetName
+      });
+      logger.separator();
       
       // Error occurred - respond via callback and suppress bootstrap
       if (callback) {
