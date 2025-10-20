@@ -106,10 +106,11 @@ export async function searchKnowledgeWithExpansion(
   
   let results: any[] = [];
   
-  // Initial search
+  // Initial search - GLOBAL scope to search across all content (wiki + all telegram chats)
   if (knowledgeService?.getKnowledge) {
     const pseudoMessage = { id: 'query', content: { text: query } };
-    const scope = { roomId: runtime.agentId } as any;
+    // Use undefined/null roomId for global search across all rooms
+    const scope = { roomId: undefined } as any;
     
     try {
       const searchPromise = knowledgeService.getKnowledge(pseudoMessage, scope);
@@ -123,12 +124,12 @@ export async function searchKnowledgeWithExpansion(
       results = [];
     }
   } else {
-    // Fallback to direct memory search
+    // Fallback to direct memory search - also global
     try {
       const embedding = await runtime.useModel('TEXT_EMBEDDING' as any, { text: query });
       results = await runtime.searchMemories({
         tableName: 'knowledge',
-        roomId: runtime.agentId,
+        roomId: undefined, // Global search
         embedding,
         query,
         count: LORE_CONFIG.RETRIEVAL_LIMIT,
@@ -142,16 +143,12 @@ export async function searchKnowledgeWithExpansion(
   
   // Check if we need expansion
   if (results.length < LORE_CONFIG.MIN_HITS) {
-    console.log(`⚠️  Low hits (${results.length}), expanding search...`);
-    
-    // TODO: Implement staged expansion (wiki → global chats)
-    // For now, relax threshold
     if (!knowledgeService && results.length < LORE_CONFIG.MIN_HITS) {
       try {
         const embedding = await runtime.useModel('TEXT_EMBEDDING' as any, { text: query });
         const expandedResults = await runtime.searchMemories({
           tableName: 'knowledge',
-          roomId: runtime.agentId,
+          roomId: undefined, // Still global
           embedding,
           query,
           count: LORE_CONFIG.RETRIEVAL_LIMIT * 2,
@@ -159,7 +156,6 @@ export async function searchKnowledgeWithExpansion(
         } as any) || [];
         
         results = expandedResults;
-        console.log(`📈 Expanded to ${results.length} results`);
       } catch (err) {
         console.error('Expansion search error:', err);
       }
@@ -179,51 +175,103 @@ export async function searchKnowledgeWithExpansion(
     let author: string | undefined = undefined;
     
     // Extract timestamp
-    const createdAtValue = r.createdAt || r.content?.createdAt || r.metadata?.timestamp || r.content?.metadata?.timestamp;
+    const createdAtValue = r.createdAt || r.content?.createdAt || r.metadata?.timestamp || r.content?.metadata?.timestamp || r.metadata?.date || r.content?.metadata?.date;
     if (createdAtValue) {
       if (createdAtValue instanceof Date) {
         timestamp = createdAtValue.getTime();
       } else if (typeof createdAtValue === 'string') {
-        timestamp = new Date(createdAtValue).getTime();
+        // Support ISO strings like "2022-02-21T21:07:09"
+        const parsed = Date.parse(createdAtValue);
+        if (!Number.isNaN(parsed)) {
+          timestamp = parsed;
+        }
       } else if (typeof createdAtValue === 'number') {
         timestamp = createdAtValue;
       }
     }
-    
-    // Extract author/poster
-    author = r.metadata?.author || r.content?.metadata?.author || 
+
+    // Extract author/poster (common telegram fields)
+    author = r.metadata?.author || r.content?.metadata?.author ||
              r.metadata?.username || r.content?.metadata?.username ||
-             r.userId || r.content?.userId;
-    
-    // Debug first result
-    if (idx === 0) {
-      console.log('🔍 [DEBUG] First result:', JSON.stringify({
-        'r.metadata?.source': r.metadata?.source,
-        'r.content?.metadata?.source': r.content?.metadata?.source,
-        'hasTimestamp': !!timestamp,
-        'hasAuthor': !!author,
-        'idPrefix': id.slice(0, 20),
-      }, null, 2));
-    }
-    
-    if (r.metadata?.source === 'telegram' || r.content?.metadata?.source === 'telegram') {
+             r.metadata?.from || r.content?.metadata?.from ||
+             r.userId || r.content?.userId ||
+             r.metadata?.from_id || r.content?.metadata?.from_id;
+
+    // Detect source type based on metadata
+    const metadataSource = r.metadata?.source || r.content?.metadata?.source;
+
+    // Stronger telegram detection
+    const hasTelegramMarkers =
+      !!(r.metadata?.messageId || r.content?.metadata?.messageId ||
+         r.metadata?.chatId || r.content?.metadata?.chatId ||
+         r.metadata?.from || r.content?.metadata?.from ||
+         r.metadata?.from_id || r.content?.metadata?.from_id);
+
+    // Content-based telegram detection for fragments containing exported chat lines
+    // e.g.  { "from": "Name", "from_id": "user...", "text": "...", "date": "2022-..." }
+    const fromMatch = text.match(/"from"\s*:\s*"([^"]+)"/);
+    const fromIdMatch = text.match(/"from_id"\s*:\s*"([^"]+)"/);
+    const dateMatch = text.match(/"date"\s*:\s*"([0-9T:\-]+)"/);
+    const contentLooksTelegram = !!(fromMatch || fromIdMatch || dateMatch);
+
+    if (metadataSource === 'telegram' || hasTelegramMarkers || contentLooksTelegram) {
       sourceType = 'telegram';
       sourceRef = r.metadata?.messageId || r.content?.metadata?.messageId || id;
-    } else if (r.metadata?.source === 'wiki' || r.content?.metadata?.source === 'wiki') {
+      // Populate author/timestamp from content if missing
+      if (!author && fromMatch) {
+        author = fromMatch[1];
+      }
+      if (!author && fromIdMatch) {
+        author = fromIdMatch[1];
+      }
+      if (!timestamp && dateMatch) {
+        const parsed = Date.parse(dateMatch[1]);
+        if (!Number.isNaN(parsed)) timestamp = parsed;
+      }
+    } else if (metadataSource === 'wiki' || metadataSource === 'rag-service-fragment-sync') {
+      // rag-service-fragment-sync = wiki fragments
       sourceType = 'wiki';
-      sourceRef = r.metadata?.pageSlug || r.content?.metadata?.pageSlug || id;
+      sourceRef = r.metadata?.documentId || r.content?.metadata?.documentId ||
+                  r.metadata?.pageSlug || r.content?.metadata?.pageSlug || id;
     } else if (timestamp && author) {
       // Heuristic: If has timestamp AND author, likely telegram
       sourceType = 'telegram';
+    } else if (r.metadata?.type === 'fragment') {
+      // Fragments without explicit source are likely wiki
+      sourceType = 'wiki';
+      sourceRef = r.metadata?.documentId || id;
     } else if (timestamp && !author) {
       // Has timestamp but no author - could be wiki or telegram
       sourceType = text.length > 200 ? 'wiki' : 'telegram';
     }
     
+    // Optional debug logging (controlled by LORE_DEBUG env var)
+    if (process.env.LORE_DEBUG === 'true' && idx < 3) {
+      console.log(`\n🔍 [DEBUG] Result ${idx}:`, JSON.stringify({
+        'metadata.source': metadataSource,
+        'metadata.type': r.metadata?.type,
+        'detected': sourceType,
+        'hasTimestamp': !!timestamp,
+        'hasAuthor': !!author,
+        'textLength': text.length,
+      }, null, 2));
+    }
+    
     return { id, text, score, sourceType, sourceRef, timestamp, author };
   });
   
-  return passages.filter(p => p.text.length > 0);
+  const filtered = passages.filter(p => p.text.length > 0);
+  
+  // Optional debug: Show source distribution
+  if (process.env.LORE_DEBUG === 'true') {
+    const sourceBreakdown = filtered.reduce((acc, p) => {
+      acc[p.sourceType] = (acc[p.sourceType] || 0) + 1;
+      return acc;
+    }, {} as Record<string, number>);
+    console.log(`📊 [SOURCE BREAKDOWN] Retrieved:`, sourceBreakdown);
+  }
+  
+  return filtered;
 }
 
 /**
@@ -249,5 +297,51 @@ export function expandQuery(query: string): string {
   }
   
   return expanded;
+}
+
+/**
+ * Raw knowledge search (global scope) - returns provider-native results
+ */
+export async function searchKnowledgeRaw(
+  runtime: IAgentRuntime,
+  query: string
+): Promise<any[]> {
+  const knowledgeService = (runtime as any).getService
+    ? (runtime as any).getService('knowledge')
+    : null;
+
+  let results: any[] = [];
+
+  if (knowledgeService?.getKnowledge) {
+    const pseudoMessage = { id: 'query', content: { text: query } };
+    const scope = { roomId: undefined } as any;
+    try {
+      const searchPromise = knowledgeService.getKnowledge(pseudoMessage, scope);
+      const timeoutPromise: Promise<never> = new Promise((_, reject) => {
+        setTimeout(() => reject(new Error('Search timeout')), LORE_CONFIG.SEARCH_TIMEOUT_MS);
+      });
+      results = await Promise.race([searchPromise, timeoutPromise]) || [];
+    } catch (err) {
+      console.error('Knowledge raw search error:', err);
+      results = [];
+    }
+  } else {
+    try {
+      const embedding = await (runtime as any).useModel('TEXT_EMBEDDING' as any, { text: query });
+      results = await (runtime as any).searchMemories({
+        tableName: 'knowledge',
+        roomId: undefined,
+        embedding,
+        query,
+        count: LORE_CONFIG.RETRIEVAL_LIMIT * 2,
+        match_threshold: LORE_CONFIG.MATCH_THRESHOLD * 0.7,
+      } as any) || [];
+    } catch (err) {
+      console.error('Memory raw search error:', err);
+      results = [];
+    }
+  }
+
+  return results;
 }
 

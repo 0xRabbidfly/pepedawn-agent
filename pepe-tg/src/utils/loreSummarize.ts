@@ -162,7 +162,8 @@ export function formatCompactCitation(passage: RetrievedPassage): string {
     return `${prefix}:${shortRef}${datePart}${authorPart}`;
   }
   
-  // For wiki: just prefix and ID
+  // For wiki: just prefix and short doc ID (not timestamp-based)
+  // Use documentId if available for more stable references
   return `${prefix}:${shortRef}`;
 }
 
@@ -206,6 +207,6 @@ export function formatSourcesLine(summaries: ClusterSummary[]): string {
   
   if (uniqueCitations.length === 0) return '';
   
-  return `\n\nSources: ${uniqueCitations.join(', ')}`;
+  return `\n\nSources:  ${uniqueCitations.join('  ||  ')}`;
 }
 
