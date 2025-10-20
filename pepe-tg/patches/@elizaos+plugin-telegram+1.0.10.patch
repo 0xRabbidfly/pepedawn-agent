@@ -1,0 +1,183 @@
+diff --git a/node_modules/@elizaos/plugin-telegram/dist/index.js b/node_modules/@elizaos/plugin-telegram/dist/index.js
+index 6a508dd..dfae2d2 100644
+--- a/node_modules/@elizaos/plugin-telegram/dist/index.js
++++ b/node_modules/@elizaos/plugin-telegram/dist/index.js
+@@ -56,7 +56,8 @@ function escapeCode(text) {
+ }
+ function escapeUrl(url) {
+   if (!url) return "";
+-  return url.replace(/([)\\])/g, "\\$1");
++  // FIX: also escape underscores for MarkdownV2
++  return url.replace(/([)\\_])/g, "\\$1");
+ }
+ function convertMarkdownToTelegram(markdown) {
+   const replacements = [];
+@@ -127,14 +128,32 @@ function convertMarkdownToTelegram(markdown) {
+ }
+ function convertToTelegramButtons(buttons) {
+   if (!buttons) return [];
+-  return buttons.map((button) => {
+-    switch (button.kind) {
+-      case "login":
++  // Flatten if nested, filter nulls/undefined, ensure valid shape
++  const flat = Array.isArray(buttons) 
++    ? (buttons.flat ? buttons.flat() : [].concat(...buttons))
++    : [];
++  
++  return flat
++    .filter(button => button && typeof button === 'object')
++    .map((button) => {
++      // Handle kind-based buttons (legacy)
++      if (button.kind === "login" && button.url) {
+         return Markup.button.login(button.text, button.url);
+-      case "url":
++      }
++      if (button.kind === "url" && button.url) {
+         return Markup.button.url(button.text, button.url);
+-    }
+-  });
++      }
++      // Handle direct url buttons (no kind property)
++      if (button.url && button.text) {
++        return Markup.button.url(button.text, button.url);
++      }
++      // Handle callback buttons
++      if (button.callback_data && button.text) {
++        return Markup.button.callback(button.text, button.callback_data);
++      }
++      return null; // Invalid button
++    })
++    .filter(b => b !== null); // Remove any nulls from invalid buttons
+ }
+ 
+ // src/messageManager.ts
+@@ -207,13 +226,93 @@ ${description}]` };
+    * @returns {Promise<Message.TextMessage[]>} - An array of TextMessage objects representing the messages sent
+    */
+   async sendMessageInChunks(ctx, content, replyToMessageId) {
++    // FIX: properly await attachments and use native Telegram media methods for inline preview
+     if (content.attachments && content.attachments.length > 0) {
+-      content.attachments.map(async (attachment) => {
++      // Convert buttons for later use
++      const telegramButtons = convertToTelegramButtons(content.buttons ?? []);
++      const hasButtons = telegramButtons && telegramButtons.length > 0;
++      
++      // Use awaited for-loop instead of map(async...) to ensure media sends complete
++      for (const attachment of content.attachments) {
++        const url = attachment.url || attachment.href || "";
++        const ct = (attachment.contentType || "").toLowerCase();
++        const isVideo = /^video\//.test(ct) || /\.mp4(\?|$)/i.test(url);
++        const isGif = ct === "image/gif" || /\.gif(\?|$)/i.test(url);
++        const isImage = /^image\//.test(ct) || /\.(png|jpe?g|webp)(\?|$)/i.test(url);
++        
++        // Route to Telegram media methods for inline preview/player
++        if (isVideo) {
++          try {
++            await ctx.replyWithVideo(url, {
++              caption: content.text || undefined,
++              // Don't use parse_mode for captions - plain text avoids escaping issues
++              supports_streaming: true,
++              reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined
++            });
++            continue;
++          } catch (videoErr) {
++            // Fallback: send as document if video fails (common with Arweave URLs)
++            try {
++              await ctx.replyWithDocument(url, {
++                caption: content.text || undefined,
++                reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined
++              });
++              continue;
++            } catch (docErr) {
++              // Final fallback: send caption + clickable video link
++              const fallbackText = (content.text ? content.text + '\n\n' : '') + 
++                                   '🎬 Video: ' + url;
++              await ctx.telegram.sendMessage(ctx.chat.id, fallbackText, {
++                reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
++                link_preview_options: { is_disabled: false }
++              });
++              continue;
++            }
++          }
++        }
++        
++        // Handle animated GIFs separately from static images
++        if (isGif) {
++          try {
++            await ctx.replyWithAnimation(url, {
++              caption: content.text || undefined,
++              reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined
++            });
++            continue;
++          } catch (gifErr) {
++            // Fallback: try as document if animation fails
++            try {
++              await ctx.replyWithDocument(url, {
++                caption: content.text || undefined,
++                reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined
++              });
++              continue;
++            } catch (docErr) {
++              // Final fallback: send caption + link
++              const fallbackText = (content.text ? content.text + '\n\n' : '') + 
++                                   '🎬 GIF: ' + url;
++              await ctx.telegram.sendMessage(ctx.chat.id, fallbackText, {
++                reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
++                link_preview_options: { is_disabled: false }
++              });
++              continue;
++            }
++          }
++        }
++        
++        if (isImage) {
++          await ctx.replyWithPhoto(url, {
++            caption: content.text || undefined,
++            // Don't use parse_mode for captions - plain text avoids escaping issues
++            reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined
++          });
++          continue;
++        }
++        
++        // Fallback: check other media types using legacy typeMap
+         const typeMap = {
+           "image/gif": "animation" /* ANIMATION */,
+-          image: "photo" /* PHOTO */,
+           doc: "document" /* DOCUMENT */,
+-          video: "video" /* VIDEO */,
+           audio: "audio" /* AUDIO */
+         };
+         let mediaType = void 0;
+@@ -223,13 +322,26 @@ ${description}]` };
+             break;
+           }
+         }
+-        if (!mediaType) {
+-          throw new Error(
+-            `Unsupported Telegram attachment content type: ${attachment.contentType}`
+-          );
++        
++        if (mediaType) {
++          await this.sendMedia(ctx, attachment.url, mediaType, attachment.description);
++        } else {
++          // Final fallback: plain text link with preview enabled
++          await ctx.telegram.sendMessage(ctx.chat.id, url, {
++            reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
++            link_preview_options: { is_disabled: false }
++          });
+         }
+-        await this.sendMedia(ctx, attachment.url, mediaType, attachment.description);
+-      });
++      }
++      
++      // Send buttons in a follow-up message if present (media messages don't support inline keyboards in captions)
++      if (hasButtons && ctx.chat) {
++        await ctx.telegram.sendMessage(ctx.chat.id, '👇 More info:', {
++          reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
++          ...Markup2.inlineKeyboard(telegramButtons)
++        });
++      }
++      
+       return [];
+     } else {
+       const chunks = this.splitMessage(content.text ?? "");
