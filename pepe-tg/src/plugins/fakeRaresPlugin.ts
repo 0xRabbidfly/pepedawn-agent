@@ -105,31 +105,18 @@ export const fakeRaresPlugin: Plugin = {
             }
           }
           
-          // === BOOTSTRAP: Interesting Messages Only ===
-          // Respond if: @mention OR capitalized words OR reply to bot
+          // === BOOTSTRAP ROUTING ===
+          // Do not call messageService here to avoid double-callbacks.
+          // Telegram platform will invoke messageService exactly once.
+          // Keep logs for visibility only.
           const shouldRespond = hasBotMention || hasCapitalizedWord || isReply;
-          
-          if (shouldRespond) {
-            if (globalSuppression) {
-              console.log('[Suppress] SUPPRESS_BOOTSTRAP=true → skipping bootstrap routing');
-              return;
-            }
-            console.log(`[Route] Message matches criteria: "${text}"`);
-            
-            // Force response by marking message as if it's a reply to the bot
-            // This tricks shouldRespond() into always returning true
-            if (message.content) {
-              message.content.inReplyTo = message.content.inReplyTo || 'force-response';
-            }
-            
-            if (runtime?.messageService) {
-              const result = await runtime.messageService.handleMessage(runtime, message, params.callback);
-              console.log(`[Result] didRespond:${result.didRespond}, mode:${result.mode}`);
-            }
+          if (globalSuppression) {
+            console.log('[Suppress] SUPPRESS_BOOTSTRAP=true → platform will skip via handled flag when set');
+          } else if (shouldRespond) {
+            console.log(`[Info] Bootstrap allowed by platform for: "${text}"`);
           } else {
-            console.log(`[Suppress] Ignoring: "${text}"`);
+            console.log(`[Suppress] Not interesting: "${text}"`);
           }
-          // Suppressed messages don't get routed to messageService
           
         } catch (error) {
           console.error(`[Plugin Error]`, error);
