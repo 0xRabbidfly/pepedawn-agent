@@ -20,7 +20,8 @@ import { startAutoRefresh } from '../utils/cardIndexRefresher';
 export const fakeRaresPlugin: Plugin = {
   name: 'fake-rares',
   description: 'Fake Rares card display and community features with auto-updating index',
-  priority: 1000,
+  // Ensure this plugin's MESSAGE_RECEIVED handler runs before bootstrap routing
+  priority: 1000000,
   
   // Initialize auto-refresh on plugin load
   init: async () => {
@@ -48,6 +49,7 @@ export const fakeRaresPlugin: Plugin = {
       async (params: any) => {
         try {
           const text = (params?.message?.content?.text ?? '').toString().trim();
+          const globalSuppression = process.env.SUPPRESS_BOOTSTRAP === 'true';
           
           // Pattern detection
           const isFCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/f(?:@[A-Za-z0-9_]+)?(?:\s+[A-Za-z0-9_-]+)?$/i.test(text);
@@ -58,14 +60,27 @@ export const fakeRaresPlugin: Plugin = {
           
           const runtime = params.runtime;
           const message = params.message;
-          const callback = params.callback;
+
+          console.log(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${/^(?:@[A-Za-z0-9_]+\s+)?\/f(?:@[A-Za-z0-9_]+)?(?:\s+[A-Za-z0-9_-]+)?$/i.test(text)} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
           
           // === CUSTOM ACTION: /f COMMANDS ===
           if (isFCommand) {
+            console.log('[FakeRaresPlugin] /f detected → applying strong suppression and invoking action');
+            // Strong suppression: route all subsequent callbacks to a no-op
+            // Keep a reference to the original callback for our action only
+            const actionCallback = typeof params.callback === 'function' ? params.callback : null;
+            params.callback = async () => [];
+            
             if (fakeRaresCardAction.validate && fakeRaresCardAction.handler) {
               const isValid = await fakeRaresCardAction.validate(runtime, message);
               if (isValid) {
-                await fakeRaresCardAction.handler(runtime, message, params.state, {}, callback);
+                await fakeRaresCardAction.handler(runtime, message, params.state, {}, actionCallback ?? undefined);
+                // Mark as handled so platform can skip bootstrap/messageService
+                try {
+                  message.metadata = message.metadata || {};
+                  (message.metadata as any).__handledByCustom = true;
+                } catch {}
+                console.log('[FakeRaresPlugin] /f action completed');
                 return; // Done
               }
             }
@@ -76,7 +91,7 @@ export const fakeRaresPlugin: Plugin = {
             if (loreCommand.validate && loreCommand.handler) {
               const isValid = await loreCommand.validate(runtime, message);
               if (isValid) {
-                await loreCommand.handler(runtime, message, params.state, {}, callback);
+                await loreCommand.handler(runtime, message, params.state, {}, params.callback);
                 return; // Done
               }
             }
@@ -87,6 +102,10 @@ export const fakeRaresPlugin: Plugin = {
           const shouldRespond = hasBotMention || hasCapitalizedWord || isReply;
           
           if (shouldRespond) {
+            if (globalSuppression) {
+              console.log('[Suppress] SUPPRESS_BOOTSTRAP=true → skipping bootstrap routing');
+              return;
+            }
             console.log(`[Route] Message matches criteria: "${text}"`);
             
             // Force response by marking message as if it's a reply to the bot
@@ -96,7 +115,7 @@ export const fakeRaresPlugin: Plugin = {
             }
             
             if (runtime?.messageService) {
-              const result = await runtime.messageService.handleMessage(runtime, message, callback);
+              const result = await runtime.messageService.handleMessage(runtime, message, params.callback);
               console.log(`[Result] didRespond:${result.didRespond}, mode:${result.mode}`);
             }
           } else {

@@ -3,8 +3,8 @@
   "description": "Project starter for elizaOS",
   "version": "0.1.0",
   "type": "module",
-  "main": "dist/src/index.js",
-  "module": "dist/src/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "keywords": [
     "project",
@@ -19,7 +19,7 @@
     ".": {
       "import": {
         "types": "./dist/index.d.ts",
-        "default": "./dist/src/index.js"
+        "default": "./dist/index.js"
       }
     }
   },
