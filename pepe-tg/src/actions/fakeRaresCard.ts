@@ -296,7 +296,7 @@ async function sendCardWithMedia(params: {
   await params.callback({
     text: params.cardMessage,
     attachments: [{
-      url: params.mediaUrl,
+      url: formatTelegramUrl(params.mediaUrl), // Fix underscore issues for Arweave URLs
       title: params.assetName,
       source: 'fake-rares',
       contentType: isVideo ? 'video/mp4' : isAnimation ? 'image/gif' : 'image/jpeg',
