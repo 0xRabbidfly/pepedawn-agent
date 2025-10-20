@@ -1,5 +1,5 @@
 import { type Plugin } from '@elizaos/core';
-import { fakeRaresCardAction, shareLoreAction, educateNewcomerAction, startCommand, helpCommand } from '../actions';
+import { fakeRaresCardAction, educateNewcomerAction, startCommand, helpCommand, loreCommand } from '../actions';
 import { fakeRaresContextProvider } from '../providers';
 import { loreDetectorEvaluator } from '../evaluators';
 import { FULL_CARD_INDEX } from '../data/fullCardIndex';
@@ -37,6 +37,7 @@ export const fakeRaresPlugin: Plugin = {
     startCommand,
     helpCommand,
     fakeRaresCardAction,
+    loreCommand,
   ],
   
   providers: [fakeRaresContextProvider],
@@ -50,9 +51,9 @@ export const fakeRaresPlugin: Plugin = {
           
           // Pattern detection
           const isFCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/f(?:@[A-Za-z0-9_]+)?(?:\s+[A-Za-z0-9_-]+)?$/i.test(text);
+          const isLoreCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fl/i.test(text);
           const hasCapitalizedWord = /\b[A-Z]{2,}\b/.test(text);
           const hasBotMention = /@pepedawn_bot/i.test(text);
-          const mentionsScrilla = /scrilla/i.test(text);
           const isReply = params?.message?.metadata?.isReply || params?.message?.content?.inReplyTo;
           
           const runtime = params.runtime;
@@ -70,9 +71,20 @@ export const fakeRaresPlugin: Plugin = {
             }
           }
           
+          // === CUSTOM ACTION: /fl COMMANDS ===
+          if (isLoreCommand) {
+            if (loreCommand.validate && loreCommand.handler) {
+              const isValid = await loreCommand.validate(runtime, message);
+              if (isValid) {
+                await loreCommand.handler(runtime, message, params.state, {}, callback);
+                return; // Done
+              }
+            }
+          }
+          
           // === BOOTSTRAP: Interesting Messages Only ===
-          // Respond if: @mention OR scrilla OR capitalized words OR reply to bot
-          const shouldRespond = hasBotMention || mentionsScrilla || hasCapitalizedWord || isReply;
+          // Respond if: @mention OR capitalized words OR reply to bot
+          const shouldRespond = hasBotMention || hasCapitalizedWord || isReply;
           
           if (shouldRespond) {
             console.log(`[Route] Message matches criteria: "${text}"`);

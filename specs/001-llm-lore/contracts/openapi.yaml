@@ -1,0 +1,47 @@
+openapi: 3.1.0
+info:
+  title: LLM-LORE Internal API
+  version: 0.1.0
+paths:
+  /lore/query:
+    post:
+      summary: Run lore retrieval and story generation
+      operationId: loreQuery
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                chatId:
+                  type: string
+                userId:
+                  type: string
+                minHits:
+                  type: integer
+                  default: 8
+                limit:
+                  type: integer
+                  default: 24
+              required: [query]
+      responses:
+        '200':
+          description: Lore story response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  story:
+                    type: string
+                  sourcesLine:
+                    type: string
+        '400':
+          description: Invalid input
+        '500':
+          description: Internal error
+
+

@@ -15,6 +15,27 @@
 
 ## 🌟 Features
 
+### 📚 LLM-LORE: AI-Powered Lore Storytelling
+
+**New Feature:** Get personalized, grounded stories from 3+ years of community history!
+
+**Commands:**
+- **`/lore TOPIC`** - AI generates unique stories from Telegram history + pepe.wtf wiki
+- **`/lore`** - Random lore from the community vault
+
+**How it works:**
+1. Searches local vector database (Telegram messages + wiki)
+2. Clusters relevant passages for diversity
+3. Generates PEPEDAWN-persona story (120-180 words)
+4. Includes compact source citations (e.g., `tg:1234, wiki:purple-era`)
+5. Each telling is unique while staying grounded in real history
+
+**Examples:**
+- `/lore purple subasset era` → Stories about that specific time
+- `/lore Rare Scrilla` → Lore about the founder
+- `/lore FREEDOMKEK` → The genesis card's history
+- `/lore` → Surprise me with community history!
+
 ### 🎴 Card Viewing with Fuzzy Matching
 
 **Commands:**
@@ -105,6 +126,7 @@ Message [@BotFather](https://t.me/BotFather) in Telegram:
 Then paste:
 ```
 f - View a Fake Rares card or random card
+lore - Get AI-powered lore stories from community history
 start - Welcome message and quick guide
 help - Show detailed instructions
 ```
@@ -131,6 +153,9 @@ bun run start
 /f PEEP            → Auto-corrects to PEPE (fuzzy matching)
 /f FREEDOMK        → Suggests: FREEDOMKEK, FREEDOMWAR, KINGFAKE
 /f                 → Random card from collection
+/lore purple subasset era → AI-powered lore story from chat history
+/lore Rare Scrilla → Get stories about specific topics
+/lore              → Random lore from community history
 /start             → Welcome message
 /help              → Usage guide
 ```
