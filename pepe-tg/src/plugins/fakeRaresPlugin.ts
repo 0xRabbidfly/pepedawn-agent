@@ -54,6 +54,8 @@ export const fakeRaresPlugin: Plugin = {
           // Pattern detection
           const isFCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/f(?:@[A-Za-z0-9_]+)?(?:\s+[A-Za-z0-9_-]+)?$/i.test(text);
           const isLoreCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fl/i.test(text);
+          const isHelpCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/help$/i.test(text);
+          const isStartCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/start$/i.test(text);
           const hasCapitalizedWord = /\b[A-Z]{3,}[A-Z0-9]*\b/.test(text); // 3+ caps (likely card names)
           const hasBotMention = /@pepedawn_bot/i.test(text);
           const isReplyToBot = params?.message?.content?.inReplyTo; // User replied to bot's message
@@ -61,7 +63,7 @@ export const fakeRaresPlugin: Plugin = {
           const runtime = params.runtime;
           const message = params.message;
 
-          console.log(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${/^(?:@[A-Za-z0-9_]+\s+)?\/f(?:@[A-Za-z0-9_]+)?(?:\s+[A-Za-z0-9_-]+)?$/i.test(text)} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
+          console.log(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${isFCommand} isHelp=${isHelpCommand} isStart=${isStartCommand} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
           
           // === CUSTOM ACTION: /f COMMANDS ===
           if (isFCommand) {
@@ -110,10 +112,11 @@ export const fakeRaresPlugin: Plugin = {
           // 1. Someone replied to the bot
           // 2. Someone used capitals (3+ letter word)
           // 3. Someone mentioned @pepedawn_bot
+          // 4. Someone used /help or /start commands
           //
           // Otherwise, suppress bootstrap (mark as handled)
           
-          const shouldAllowBootstrap = isReplyToBot || hasCapitalizedWord || hasBotMention;
+          const shouldAllowBootstrap = isReplyToBot || hasCapitalizedWord || hasBotMention || isHelpCommand || isStartCommand;
           
           if (globalSuppression) {
             console.log('[Suppress] SUPPRESS_BOOTSTRAP=true → suppressing all bootstrap');
@@ -123,7 +126,7 @@ export const fakeRaresPlugin: Plugin = {
           }
           
           if (shouldAllowBootstrap) {
-            console.log(`[Allow] Bootstrap allowed: reply=${!!isReplyToBot} caps=${hasCapitalizedWord} mention=${hasBotMention} | "${text}"`);
+            console.log(`[Allow] Bootstrap allowed: reply=${!!isReplyToBot} caps=${hasCapitalizedWord} mention=${hasBotMention} help=${isHelpCommand} start=${isStartCommand} | "${text}"`);
             // Let bootstrap handle it - do NOT mark as handled
           } else {
             console.log(`[Suppress] Bootstrap blocked (no trigger): "${text}"`);

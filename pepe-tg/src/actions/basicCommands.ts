@@ -70,35 +70,16 @@ export const helpCommand: Action = {
     options?: any,
     callback?: HandlerCallback
   ) => {
-    const helpMessage = `🐸 **PEPEDAWN Help Guide**
+    const helpMessage = `🐸 **PEPEDAWN Commands**
 
-**View Cards:**
-\`/f CARDNAME\` - Display any Fake Rares card
-Example: \`/f FREEDOMKEK\`
+\`/f CARDNAME\` - View any Fake Rares card
+\`/fl [topic]\` - Get lore stories from community history
+\`/start\` - Welcome message
 
-**Ask Questions:**
-Just chat naturally! I understand:
-• "Tell me about WAGMIWORLD"
-• "Who is Rare Scrilla?"
-• "What are Fake Rares?"
-• "How do I start collecting?"
+**Examples:**
+• \`/f FREEDOMKEK\` • \`/fl Rare Scrilla\` • \`/f\` (random)
 
-**Contribute Knowledge:**
-Share facts about cards and I'll save them:
-• "Fun fact: WAGMIWORLD had 770 players..."
-• I detect and preserve valuable lore automatically
-
-**Pro Tips:**
-✅ Card names in CAPS for /f command
-✅ Ask follow-up questions
-✅ Share stories and facts
-❌ No price predictions or financial advice
-
-**Resources:**
-• pepe.wtf - Full directory
-• Just ask me anything!
-
-Need help? Ask a specific question! 🚀`;
+Just chat naturally or mention me with @pepedawn_bot 🐸`;
 
     if (callback) {
       await callback({ text: helpMessage });
