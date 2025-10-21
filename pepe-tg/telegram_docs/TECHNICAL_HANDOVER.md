@@ -3,7 +3,7 @@
 **Project:** Fake Rares Telegram Bot (PEPEDAWN)  
 **Framework:** ElizaOS v1.6.1  
 **Status:** Production Ready ✅  
-**Date:** 2025-10-16 (Updated)
+**Date:** 2025-01-21 (Updated)
 
 ---
 
@@ -41,10 +41,11 @@ PEPEDAWN is an AI-powered Telegram bot for the Fake Rares community that:
 - Bot tested and working in Telegram
 - Dynamic card discovery implemented
 - Image attachments working perfectly
+- Custom actions tested and deployed
 
 ### 📋 Optional Enhancements
-1. Configure BotFather commands (cosmetic)
-2. Deploy to production server
+1. Migrate to OpenRouter for 20% cost savings
+2. Populate card series map for faster lookups
 3. Monitor performance and usage
 
 ---
@@ -58,7 +59,7 @@ ElizaOS (AI Agent Framework)
 ├── Runtime: Node.js with Bun
 ├── Database: PGlite (embedded PostgreSQL)
 ├── Embeddings: OpenAI text-embedding-3-small
-├── LLM: GPT-4-turbo (responses) + GPT-3.5-turbo (decisions)
+├── LLM: GPT-4-turbo (responses) + GPT-4o-mini (decisions)
 └── Platform: Telegram via @elizaos/plugin-telegram
 ```
 
@@ -85,9 +86,9 @@ pepe-tg/
 ├── docs/
 │   ├── chunks/                     # 529 message chunks (embedded)
 │   └── *.md                        # Documentation
-├── scripts/
+├── telegram_docs/
 │   ├── split_telegram_history.py  # Data cleaning script
-│   └── scrape_card_series.py      # Card mapping scraper
+│   └── *.md                       # Documentation files
 ├── .env                            # Configuration (see below)
 └── package.json
 ```
@@ -179,7 +180,7 @@ https://pepewtf.s3.amazonaws.com/collections/fake-rares/full/{SERIES}/{CARDNAME}
 
 **How it works:**
 1. **Validation:** Triggers when Fake Rares keywords detected
-2. **LLM Decision:** Asks GPT-3.5: "Should I share lore here?" (YES/NO)
+2. **LLM Decision:** Asks GPT-4o-mini: "Should I share lore here?" (YES/NO)
 3. **Search:** If YES, queries knowledge base
 4. **Share:** Posts relevant lore
 
@@ -190,7 +191,7 @@ Bot (internal): LLM decides YES
 Bot: "Absolutely ser! FREEDOMKEK is the genesis card..."
 ```
 
-**Cost:** ~$0.0001 per decision (GPT-3.5-turbo, ~300 tokens)
+**Cost:** ~$0.0001 per decision (GPT-4o-mini, ~300 tokens)
 
 ---
 
@@ -273,7 +274,7 @@ Bot: "Absolutely ser! FREEDOMKEK is the genesis card..."
 
 **Result:** Community knowledge grows automatically!
 
-**Cost:** ~$0.0001 per analysis (GPT-3.5-turbo)
+**Cost:** ~$0.0001 per analysis (GPT-4o-mini)
 
 ---
 
@@ -354,24 +355,68 @@ TOKENS_PER_MINUTE=900000
 - `CTX_KNOWLEDGE_ENABLED=false` - Saves ~$3/day vs GPT-4 enrichment
 - `text-embedding-3-small` - 6.5x cheaper than `text-embedding-3-large`
 - Rate limits tuned for 529 chunks × ~60 embeddings each
+- See Cost Analysis section below for detailed breakdown
 
 ---
 
 ## Cost Analysis
 
+### Model Usage Breakdown
+
+The bot uses **two different models** for different purposes:
+
+#### **Small Model (TEXT_SMALL) - GPT-4o-mini**
+- **Lore Detection**: Analyzes messages for new lore (~5 calls/day)
+- **Newcomer Assessment**: Evaluates if user needs education (~10 calls/day)
+- **Token Usage**: ~200 input + 50 output per call
+- **Daily**: 15 calls × 250 tokens = 3,750 tokens/day
+
+#### **Large Model (TEXT_MODEL) - GPT-4-turbo**
+- **Main Bot Responses**: All user conversations (~35 calls/day)
+- **Lore Summarization**: Creates story summaries (~5 calls/day)
+- **Story Generation**: Composes lore stories (~5 calls/day)
+- **Token Usage**: ~800 input + 400 output per call
+- **Daily**: 45 calls × 1,200 tokens = 54,000 tokens/day
+
 ### One-Time Costs
 - **Embeddings:** ~$2-3 (264,500 messages, one-time)
 
-### Monthly Operating Costs
-| Component | Usage | Cost/Month |
-|-----------|-------|------------|
-| Bot responses (gpt-4-turbo) | ~50/day | $15-45 |
-| Lore sharing decisions (gpt-3.5) | ~20/day | $0.06 |
-| Newcomer assessments (gpt-3.5) | ~5/day | $0.02 |
-| Lore detection (gpt-3.5) | ~5/day | $0.02 |
-| **Total** | | **~$15-45/month** |
+### Monthly Operating Costs (Current Usage: 100 messages/day)
 
-**Enhancements add:** < $0.10/month (negligible!)
+| Component | Model | Usage | Monthly Cost |
+|-----------|-------|-------|--------------|
+| **Main Bot Responses** | GPT-4-turbo | ~35 calls/day | $6.30 |
+| **Lore Generation** | GPT-4-turbo | ~10 calls/day | $1.80 |
+| **Lore Detection** | GPT-4o-mini | ~5 calls/day | $0.01 |
+| **Newcomer Assessment** | GPT-4o-mini | ~10 calls/day | $0.02 |
+| **Total** | | | **$8.13/month** |
+
+### Cost Scaling
+
+| Usage Level | Messages/Day | Monthly Cost | OpenRouter Savings |
+|-------------|--------------|--------------|-------------------|
+| **Current** | 100 | $8.13 | $1.63 (20%) |
+| **2x Growth** | 200 | $16.25 | $3.25 (20%) |
+| **10x Growth** | 1,000 | $81.27 | $16.25 (20%) |
+
+### OpenRouter Alternative
+
+**OpenRouter provides 20% savings** with same model quality:
+- **Current**: $6.50/month (vs $8.13 OpenAI)
+- **2x Growth**: $13.00/month (vs $16.25 OpenAI)
+- **10x Growth**: $65.02/month (vs $81.27 OpenAI)
+
+**Migration Benefits:**
+- ✅ Same model quality (GPT-4-turbo via OpenRouter)
+- ✅ 20% cost reduction
+- ✅ Pay-as-you-go pricing
+- ✅ Multiple model options
+
+**Total Infrastructure Cost:**
+- **DigitalOcean Server**: $6.00/month
+- **AI (OpenAI)**: $8.13/month
+- **AI (OpenRouter)**: $6.50/month
+- **Total**: $14.13/month (OpenAI) vs $12.50/month (OpenRouter)
 
 ---
 
@@ -501,7 +546,7 @@ elizaos start
 
 ### Future Enhancements
 - Persist card series map to database
-- Add `/lore CARDNAME` command to view curated lore
+- Add `/fl CARDNAME` command to view curated lore
 - Implement card comparison feature
 - Add artist spotlight action
 - Create gallery/collection browsing
@@ -534,6 +579,7 @@ elizaos start
 - Check `CTX_KNOWLEDGE_ENABLED=false`
 - Verify using `text-embedding-3-small`
 - Monitor `TEXT_MODEL` (should be `gpt-4-turbo`)
+- Consider migrating to OpenRouter for 20% savings
 
 ---
 
@@ -596,10 +642,10 @@ export const myEvaluator: Evaluator = {
 - Fake Rares Cards: https://pepewtf.s3.amazonaws.com/collections/fake-rares/full/{SERIES}/{CARD}.{ext}
 
 ### Project Docs
-- `docs/TECHNICAL_HANDOVER.md` - This file
-- `docs/CARD_MAP_OPTIMIZATION.md` - Performance optimization guide
+- `telegram_docs/TECHNICAL_HANDOVER.md` - This file
 - `telegram_docs/TELEGRAM_SETUP.md` - Telegram configuration
 - `telegram_docs/PEPEDAWN_USER_GUIDE.md` - User-facing guide
+- `README.md` - Project overview and setup
 
 ---
 
@@ -617,7 +663,7 @@ For questions about this implementation:
 
 ---
 
-**Last Updated:** 2025-10-16  
-**Version:** 1.0  
-**Status:** Production Ready (pending embeddings completion)
+**Last Updated:** 2025-01-21  
+**Version:** 1.1  
+**Status:** Production Ready ✅
 

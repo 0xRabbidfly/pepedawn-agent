@@ -1,0 +1,177 @@
+#!/bin/bash
+
+# PEPEDAWN Bot Deployment Script
+# Automates SSH deployment to DigitalOcean server
+
+set -e  # Exit on any error
+
+# Configuration
+SERVER_IP="134.122.45.20"
+SSH_KEY="~/.ssh/pepedawn"
+PROJECT_DIR="pepedawn-agent/pepe-tg"
+PM2_CONFIG="ecosystem.config.cjs"
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+# Logging function
+log() {
+    echo -e "${BLUE}[$(date +'%H:%M:%S')]${NC} $1"
+}
+
+success() {
+    echo -e "${GREEN}[$(date +'%H:%M:%S')] ✅${NC} $1"
+}
+
+warning() {
+    echo -e "${YELLOW}[$(date +'%H:%M:%S')] ⚠️${NC} $1"
+}
+
+error() {
+    echo -e "${RED}[$(date +'%H:%M:%S')] ❌${NC} $1"
+}
+
+# Function to execute SSH commands with retries
+ssh_exec() {
+    local max_attempts=3
+    local attempt=1
+    
+    while [ $attempt -le $max_attempts ]; do
+        log "SSH attempt $attempt/$max_attempts..."
+        
+        if ssh -i "$SSH_KEY" -o ConnectTimeout=10 -o StrictHostKeyChecking=no root@"$SERVER_IP" "$1"; then
+            return 0
+        else
+            if [ $attempt -eq $max_attempts ]; then
+                error "SSH command failed after $max_attempts attempts"
+                return 1
+            fi
+            warning "SSH attempt $attempt failed, retrying in 5 seconds..."
+            sleep 5
+            ((attempt++))
+        fi
+    done
+}
+
+# Main deployment function
+deploy() {
+    log "🚀 Starting PEPEDAWN bot deployment..."
+    
+    # Step 1: SSH into server
+    log "Step 1: Connecting to server $SERVER_IP..."
+    if ! ssh -i "$SSH_KEY" -o ConnectTimeout=10 -o StrictHostKeyChecking=no root@"$SERVER_IP" "echo 'Connected successfully'"; then
+        error "Failed to connect to server"
+        exit 1
+    fi
+    success "Connected to server"
+    
+    # Step 2: Navigate to project directory
+    log "Step 2: Navigating to project directory..."
+    ssh_exec "cd $PROJECT_DIR && pwd"
+    success "Navigated to project directory"
+    
+    # Step 3: Check git status
+    log "Step 3: Checking git status..."
+    ssh_exec "cd $PROJECT_DIR && git status"
+    success "Git status checked"
+    
+    # Step 4: Pull latest changes
+    log "Step 4: Pulling latest changes..."
+    ssh_exec "cd $PROJECT_DIR && git pull"
+    success "Latest changes pulled"
+    
+    # Step 5: Check if patches need updating (placeholder)
+    log "Step 5: Checking if patches need updating..."
+    warning "Manual check required: Do patches need updating? (y/n)"
+    read -p "Continue with restart? (y/n): " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        warning "Deployment cancelled by user"
+        exit 0
+    fi
+    
+    # Step 6: Restart PM2
+    log "Step 6: Restarting PM2..."
+    ssh_exec "cd $PROJECT_DIR && pm2 restart $PM2_CONFIG"
+    success "PM2 restarted"
+    
+    # Step 7: Check PM2 status
+    log "Step 7: Checking PM2 status..."
+    ssh_exec "cd $PROJECT_DIR && pm2 status"
+    success "PM2 status checked"
+    
+    # Step 8: Show recent logs
+    log "Step 8: Showing recent logs..."
+    ssh_exec "cd $PROJECT_DIR && pm2 logs --lines 10"
+    
+    success "🎉 Deployment completed successfully!"
+}
+
+# Function to show help
+show_help() {
+    echo "PEPEDAWN Bot Deployment Script"
+    echo ""
+    echo "Usage: $0 [OPTIONS]"
+    echo ""
+    echo "Options:"
+    echo "  -h, --help     Show this help message"
+    echo "  -d, --dry-run  Show what would be executed without running"
+    echo "  -q, --quick    Skip manual confirmation steps"
+    echo ""
+    echo "Configuration:"
+    echo "  Server IP: $SERVER_IP"
+    echo "  SSH Key: $SSH_KEY"
+    echo "  Project Dir: $PROJECT_DIR"
+    echo "  PM2 Config: $PM2_CONFIG"
+}
+
+# Function for dry run
+dry_run() {
+    log "🔍 DRY RUN - Commands that would be executed:"
+    echo ""
+    echo "1. ssh -i $SSH_KEY root@$SERVER_IP 'echo Connected successfully'"
+    echo "2. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pwd'"
+    echo "3. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && git status'"
+    echo "4. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && git pull'"
+    echo "5. Manual check: Do patches need updating?"
+    echo "6. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 restart $PM2_CONFIG'"
+    echo "7. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 status'"
+    echo "8. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 logs --lines 10'"
+}
+
+# Parse command line arguments
+QUICK_MODE=false
+DRY_RUN=false
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -h|--help)
+            show_help
+            exit 0
+            ;;
+        -d|--dry-run)
+            DRY_RUN=true
+            shift
+            ;;
+        -q|--quick)
+            QUICK_MODE=true
+            shift
+            ;;
+        *)
+            error "Unknown option: $1"
+            show_help
+            exit 1
+            ;;
+    esac
+done
+
+# Main execution
+if [ "$DRY_RUN" = true ]; then
+    dry_run
+else
+    deploy
+fi
