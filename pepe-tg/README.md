@@ -120,3 +120,191 @@ Customize your project by modifying:
 
 - `src/index.ts` - Main entry point
 - `src/character.ts` - Character definition
+
+## PM2 Production Administration
+
+For production deployment, this project includes PM2 configuration for robust process management.
+
+### Quick Start
+
+```bash
+# Option 1: Start with ecosystem config (recommended)
+pm2 start ecosystem.config.js
+
+# Option 2: Start directly with npm script
+pm2 start npm --name pepe-tg -- start
+
+# Option 3: Start with elizaos start command
+pm2 start "elizaos start" --name pepe-tg
+
+# Check status
+pm2 status
+
+# View logs
+pm2 logs pepe-tg
+
+# Restart if needed
+pm2 restart pepe-tg
+```
+
+### PM2 Commands
+
+#### Basic Operations
+```bash
+# Start with ecosystem config (recommended - includes health monitoring)
+pm2 start ecosystem.config.js
+
+# Alternative: Start directly with npm script
+pm2 start npm --name pepe-tg -- start
+
+# Alternative: Start with elizaos start command
+pm2 start "elizaos start" --name pepe-tg
+
+# Stop the bot
+pm2 stop pepe-tg
+
+# Restart the bot
+pm2 restart pepe-tg
+
+# Delete the process
+pm2 delete pepe-tg
+
+# Reload configuration
+pm2 reload ecosystem.config.js
+```
+
+#### Monitoring & Logs
+```bash
+# View real-time logs
+pm2 logs pepe-tg --follow
+
+# View only error logs
+pm2 logs pepe-tg --err
+
+# View only output logs
+pm2 logs pepe-tg --out
+
+# Monitor CPU/Memory usage
+pm2 monit
+
+# Show detailed process info
+pm2 show pepe-tg
+```
+
+#### Health & Maintenance
+```bash
+# Check if bot is responsive (look for heartbeat logs)
+pm2 logs pepe-tg | grep "HEARTBEAT"
+
+# Force restart if zombie state detected
+pm2 restart pepe-tg --force
+
+# Clear old logs
+pm2 flush
+
+# Save current PM2 configuration
+pm2 save
+
+# Resurrect saved processes on reboot
+pm2 startup
+```
+
+### Health Monitoring Features
+
+The bot includes built-in health monitoring:
+
+- **💓 Heartbeat**: Logs every 30 seconds to confirm bot is alive
+- **🚨 Zombie Detection**: Warns if no activity for 2+ minutes
+- **🔄 Auto-restart**: PM2 restarts on crashes or memory limits
+- **⏰ Daily Restart**: Automatic restart at 2 AM to prevent memory leaks
+- **📊 Memory Limit**: Restarts if memory usage exceeds 1GB
+
+### Troubleshooting
+
+#### Bot Appears Unresponsive
+```bash
+# Check if heartbeat is still running
+pm2 logs pepe-tg | tail -20 | grep "HEARTBEAT"
+
+# If no recent heartbeats, restart
+pm2 restart pepe-tg
+```
+
+#### Memory Issues
+```bash
+# Check memory usage
+pm2 monit
+
+# Force restart if memory is high
+pm2 restart pepe-tg
+```
+
+#### Error Logs
+```bash
+# Check for errors
+pm2 logs pepe-tg --err | tail -50
+
+# Look for specific error patterns
+pm2 logs pepe-tg | grep -E "(ERROR|UNHANDLED|EXCEPTION)"
+```
+
+#### Database Issues
+```bash
+# Check if database is accessible
+ls -la .eliza/.elizadb/
+
+# Restart if database path is wrong
+pm2 restart pepe-tg
+```
+
+### Environment Variables
+
+Key environment variables for production:
+
+```bash
+# Required
+TELEGRAM_BOT_TOKEN=your_bot_token
+OPENAI_API_KEY=your_openai_key
+
+# Optional
+SUPPRESS_BOOTSTRAP=true          # Reduces debug logs
+HIDE_LORE_SOURCES=true           # Hides sources in /fl responses
+PGLITE_DATABASE_URL=file:///path/to/.elizadb
+```
+
+### Production Checklist
+
+- [ ] Bot token configured in `.env`
+- [ ] Database properly extracted to `.eliza/.elizadb/`
+- [ ] Patches applied (`npx patch-package`)
+- [ ] PM2 started with `ecosystem.config.js`
+- [ ] Heartbeat logs visible every 30 seconds
+- [ ] Bot responds to `/f` and `/fl` commands
+- [ ] No unhandled promise rejection errors
+
+### Emergency Procedures
+
+#### Complete Bot Reset
+```bash
+# Stop everything
+pm2 delete all
+
+# Clear logs
+pm2 flush
+
+# Restart fresh
+pm2 start ecosystem.config.js
+```
+
+#### Database Recovery
+```bash
+# Stop bot
+pm2 stop pepe-tg
+
+# Extract database backup
+cd .eliza/
+tar -xzf elizadb-backup-*.tar.gz
+
+# Restart bot
+pm2 start pepe-tg
+```

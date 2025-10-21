@@ -120,6 +120,18 @@ export const fakeRaresPlugin: Plugin = {
           
         } catch (error) {
           console.error(`[Plugin Error]`, error);
+          
+          // Send error response to prevent hanging
+          try {
+            if (params.callback && typeof params.callback === 'function') {
+              await params.callback({
+                text: `❌ Sorry, I encountered an error processing your message. Please try again.`,
+                suppressBootstrap: true,
+              });
+            }
+          } catch (callbackError) {
+            console.error(`[Plugin Error] Callback failed:`, callbackError);
+          }
         }
       },
     ],

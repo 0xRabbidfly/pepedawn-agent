@@ -96,7 +96,7 @@ export const loreCommand: Action = {
       console.log(`✍️  Generated story (${story.split(/\s+/).length} words)`);
 
       // STEP 6: Format with sources
-      const sourcesLine = formatSourcesLine(summaries);
+      const sourcesLine = process.env.HIDE_LORE_SOURCES === 'true' ? '' : formatSourcesLine(summaries);
       let finalMessage = story + sourcesLine;
 
       // Truncate if needed (Telegram limit)
