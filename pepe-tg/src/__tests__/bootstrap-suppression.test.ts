@@ -276,10 +276,10 @@ describe('Bootstrap Suppression Logic', () => {
   });
 
   // ========================================
-  // Custom Action Tests (/f and /fl)
+  // Custom Action Tests (/f, /fl, /help, /start)
   // ========================================
 
-  describe('Custom Actions (/f and /fl commands)', () => {
+  describe('Custom Actions (/f, /fl, /help, /start commands)', () => {
     it('should handle /f commands via custom action', async () => {
       const message = {
         id: 'test-13',
@@ -344,6 +344,94 @@ describe('Bootstrap Suppression Logic', () => {
 
       expect((message.metadata as any).__handledByCustom).toBe(true);
     });
+
+    it('should handle /help commands via custom action', async () => {
+      const message = {
+        id: 'test-16',
+        content: { text: '/help' },
+        metadata: {},
+      };
+
+      const params = {
+        message,
+        runtime: {
+          agentId: 'test-agent',
+        },
+        callback: async () => [],
+        state: {},
+      };
+
+      await messageHandler!(params);
+
+      // /help commands should be marked as handled
+      expect((message.metadata as any).__handledByCustom).toBe(true);
+    });
+
+    it('should handle /start commands via custom action', async () => {
+      const message = {
+        id: 'test-17',
+        content: { text: '/start' },
+        metadata: {},
+      };
+
+      const params = {
+        message,
+        runtime: {
+          agentId: 'test-agent',
+        },
+        callback: async () => [],
+        state: {},
+      };
+
+      await messageHandler!(params);
+
+      // /start commands should be marked as handled
+      expect((message.metadata as any).__handledByCustom).toBe(true);
+    });
+
+    it('should handle /help with @mention prefix', async () => {
+      const message = {
+        id: 'test-18',
+        content: { text: '@pepedawn_bot /help' },
+        metadata: {},
+      };
+
+      const params = {
+        message,
+        runtime: {
+          agentId: 'test-agent',
+        },
+        callback: async () => [],
+        state: {},
+      };
+
+      await messageHandler!(params);
+
+      // Custom action should take precedence over bootstrap routing
+      expect((message.metadata as any).__handledByCustom).toBe(true);
+    });
+
+    it('should handle /start with @mention prefix', async () => {
+      const message = {
+        id: 'test-19',
+        content: { text: '@pepedawn_bot /start' },
+        metadata: {},
+      };
+
+      const params = {
+        message,
+        runtime: {
+          agentId: 'test-agent',
+        },
+        callback: async () => [],
+        state: {},
+      };
+
+      await messageHandler!(params);
+
+      // Custom action should take precedence over bootstrap routing
+      expect((message.metadata as any).__handledByCustom).toBe(true);
+    });
   });
 
   // ========================================
@@ -353,7 +441,7 @@ describe('Bootstrap Suppression Logic', () => {
   describe('Edge Cases', () => {
     it('should handle empty messages', async () => {
       const message = {
-        id: 'test-16',
+        id: 'test-20',
         content: { text: '' },
         metadata: {},
       };
@@ -372,7 +460,7 @@ describe('Bootstrap Suppression Logic', () => {
 
     it('should handle messages with only whitespace', async () => {
       const message = {
-        id: 'test-17',
+        id: 'test-21',
         content: { text: '   ' },
         metadata: {},
       };
@@ -390,7 +478,7 @@ describe('Bootstrap Suppression Logic', () => {
 
     it('should handle null/undefined text gracefully', async () => {
       const message = {
-        id: 'test-18',
+        id: 'test-22',
         content: {},
         metadata: {},
       };
@@ -410,7 +498,7 @@ describe('Bootstrap Suppression Logic', () => {
 
     it('should handle multiple capitalized words', async () => {
       const message = {
-        id: 'test-19',
+        id: 'test-23',
         content: { text: 'Both FREEDOMKEK and WAGMIWORLD are amazing' },
         metadata: {},
       };
@@ -429,7 +517,7 @@ describe('Bootstrap Suppression Logic', () => {
 
     it('should handle mixed case @mention variations', async () => {
       const message = {
-        id: 'test-20',
+        id: 'test-24',
         content: { text: '@PEPEDAWN_BOT hello' },
         metadata: {},
       };

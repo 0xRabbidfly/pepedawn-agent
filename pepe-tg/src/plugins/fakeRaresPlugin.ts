@@ -107,16 +107,69 @@ export const fakeRaresPlugin: Plugin = {
             }
           }
           
+          // === CUSTOM ACTION: /help COMMANDS ===
+          if (isHelpCommand) {
+            console.log('[FakeRaresPlugin] /help detected → applying strong suppression and invoking action');
+            const actionCallback = typeof params.callback === 'function' ? params.callback : null;
+            params.callback = async () => [];
+
+            if (helpCommand.validate && helpCommand.handler) {
+              const isValid = await helpCommand.validate(runtime, message);
+              if (isValid) {
+                await helpCommand.handler(runtime, message, params.state, {}, actionCallback ?? undefined);
+                try {
+                  message.metadata = message.metadata || {};
+                  (message.metadata as any).__handledByCustom = true;
+                } catch {}
+                console.log('[FakeRaresPlugin] /help action completed');
+                return; // Done - exit entire function
+              } else {
+                console.log('[FakeRaresPlugin] /help validation failed, but still marking as handled');
+                try {
+                  message.metadata = message.metadata || {};
+                  (message.metadata as any).__handledByCustom = true;
+                } catch {}
+                return; // Done - exit entire function
+              }
+            }
+          }
+          
+          // === CUSTOM ACTION: /start COMMANDS ===
+          if (isStartCommand) {
+            console.log('[FakeRaresPlugin] /start detected → applying strong suppression and invoking action');
+            const actionCallback = typeof params.callback === 'function' ? params.callback : null;
+            params.callback = async () => [];
+
+            if (startCommand.validate && startCommand.handler) {
+              const isValid = await startCommand.validate(runtime, message);
+              if (isValid) {
+                await startCommand.handler(runtime, message, params.state, {}, actionCallback ?? undefined);
+                try {
+                  message.metadata = message.metadata || {};
+                  (message.metadata as any).__handledByCustom = true;
+                } catch {}
+                console.log('[FakeRaresPlugin] /start action completed');
+                return; // Done - exit entire function
+              } else {
+                console.log('[FakeRaresPlugin] /start validation failed, but still marking as handled');
+                try {
+                  message.metadata = message.metadata || {};
+                  (message.metadata as any).__handledByCustom = true;
+                } catch {}
+                return; // Done - exit entire function
+              }
+            }
+          }
+          
           // === BOOTSTRAP ROUTING ===
           // CLEAR LOGIC: Bootstrap replies ONLY when:
           // 1. Someone replied to the bot
           // 2. Someone used capitals (3+ letter word)
           // 3. Someone mentioned @pepedawn_bot
-          // 4. Someone used /help or /start commands
           //
           // Otherwise, suppress bootstrap (mark as handled)
           
-          const shouldAllowBootstrap = isReplyToBot || hasCapitalizedWord || hasBotMention || isHelpCommand || isStartCommand;
+          const shouldAllowBootstrap = isReplyToBot || hasCapitalizedWord || hasBotMention;
           
           if (globalSuppression) {
             console.log('[Suppress] SUPPRESS_BOOTSTRAP=true → suppressing all bootstrap');
@@ -126,7 +179,7 @@ export const fakeRaresPlugin: Plugin = {
           }
           
           if (shouldAllowBootstrap) {
-            console.log(`[Allow] Bootstrap allowed: reply=${!!isReplyToBot} caps=${hasCapitalizedWord} mention=${hasBotMention} help=${isHelpCommand} start=${isStartCommand} | "${text}"`);
+            console.log(`[Allow] Bootstrap allowed: reply=${!!isReplyToBot} caps=${hasCapitalizedWord} mention=${hasBotMention} | "${text}"`);
             // Let bootstrap handle it - do NOT mark as handled
           } else {
             console.log(`[Suppress] Bootstrap blocked (no trigger): "${text}"`);
