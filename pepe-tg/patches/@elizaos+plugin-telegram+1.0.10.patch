@@ -580,7 +580,7 @@ index 6a508dd..22d0281 100644
 +            try {
 +              const head = await fetch(url, { method: 'HEAD' });
 +              const lenStr = head.ok ? head.headers.get('content-length') : null;
-+              const maxBytes = 20 * 1024 * 1024; // 20MB safety for animations
++              const maxBytes = 40 * 1024 * 1024; // 40MB safety for animations
 +              const length = lenStr ? parseInt(lenStr, 10) : NaN;
 +              if (!Number.isNaN(length) && length > maxBytes) {
 +                throw new Error('GifTooLargeForBotUpload');

@@ -343,16 +343,16 @@ async function sendCardWithMedia(params: {
   const isVideo = params.mediaExtension === 'mp4';
   const isAnimation = params.mediaExtension === 'gif';
 
-  // Smart hybrid: Only send inline MP4 if HEAD indicates video/mp4 and size ≤ MP4_URL_MAX_MB (default 20MB). Otherwise send link.
+  // Smart hybrid: Only send inline MP4 if HEAD indicates video/mp4 and size ≤ MP4_URL_MAX_MB (default 40MB). Otherwise send link.
   if (isVideo) {
     try {
-      const maxMb = getEnvNumber('MP4_URL_MAX_MB', 20);
+      const maxMb = getEnvNumber('MP4_URL_MAX_MB', 40);
       const { contentType, contentLength } = await headInfo(params.mediaUrl, 3000);
       const typeOk = (contentType || '').toLowerCase().includes('video/mp4');
       const sizeOk = contentLength !== null ? contentLength <= maxMb * 1024 * 1024 : false;
       if (!typeOk || !sizeOk) {
         await params.callback({
-          text: `${params.cardMessage}\n\n🎬 Video: ${params.mediaUrl}`,
+          text: `${params.cardMessage}\n\nFile too large for viewing on TG - click the link to view asset\n🎬 Video: ${params.mediaUrl}`,
           buttons: params.buttons && params.buttons.length > 0 ? params.buttons : undefined,
           plainText: true,
           __fromAction: 'fakeRaresCard',
@@ -365,13 +365,46 @@ async function sendCardWithMedia(params: {
     } catch {
       // If preflight failed entirely, send link to avoid timeouts
       await params.callback({
-        text: `${params.cardMessage}\n\n🎬 Video: ${params.mediaUrl}`,
+        text: `${params.cardMessage}\n\nFile too large for viewing on TG - click the link to view asset\n🎬 Video: ${params.mediaUrl}`,
         buttons: params.buttons && params.buttons.length > 0 ? params.buttons : undefined,
         plainText: true,
         __fromAction: 'fakeRaresCard',
         suppressBootstrap: true,
       });
       logger.debug('MP4 preflight failed; sent link', { assetName: params.assetName });
+      return;
+    }
+  }
+
+  // Smart hybrid: Only send inline GIF if HEAD indicates image/gif and size ≤ GIF_URL_MAX_MB (default 40MB). Otherwise send link.
+  if (isAnimation) {
+    try {
+      const maxMb = getEnvNumber('GIF_URL_MAX_MB', 40);
+      const { contentType, contentLength } = await headInfo(params.mediaUrl, 3000);
+      const typeOk = (contentType || '').toLowerCase().includes('image/gif');
+      const sizeOk = contentLength !== null ? contentLength <= maxMb * 1024 * 1024 : false;
+      if (!typeOk || !sizeOk) {
+        await params.callback({
+          text: `${params.cardMessage}\n\nFile too large for viewing on TG - click the link to view asset\n🎞️ Animation: ${params.mediaUrl}`,
+          buttons: params.buttons && params.buttons.length > 0 ? params.buttons : undefined,
+          plainText: true,
+          __fromAction: 'fakeRaresCard',
+          suppressBootstrap: true,
+        });
+        logger.debug('GIF sent as link due to preflight', { assetName: params.assetName, contentType, contentLength, maxMb });
+        return;
+      }
+      // Eligible: proceed with attachments below
+    } catch {
+      // If preflight failed entirely, send link to avoid timeouts
+      await params.callback({
+        text: `${params.cardMessage}\n\nFile too large for viewing on TG - click the link to view asset\n🎞️ Animation: ${params.mediaUrl}`,
+        buttons: params.buttons && params.buttons.length > 0 ? params.buttons : undefined,
+        plainText: true,
+        __fromAction: 'fakeRaresCard',
+        suppressBootstrap: true,
+      });
+      logger.debug('GIF preflight failed; sent link', { assetName: params.assetName });
       return;
     }
   }
