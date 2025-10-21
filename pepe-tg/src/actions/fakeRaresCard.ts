@@ -199,6 +199,48 @@ function formatTelegramUrl(url: string): string {
   return url.replace(/_/g, '%5F');
 }
 
+/**
+ * Fetch Content-Length via HEAD with a timeout. Returns null if unknown.
+ */
+async function headContentLength(url: string, timeoutMs: number = 3000): Promise<number | null> {
+  try {
+    const controller = new AbortController();
+    const tid = setTimeout(() => controller.abort(), timeoutMs);
+    const res = await fetch(url, { method: 'HEAD', signal: controller.signal });
+    clearTimeout(tid);
+    if (!res.ok) return null;
+    const len = res.headers.get('content-length');
+    return len ? parseInt(len, 10) : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Fetch Content-Type and Content-Length via HEAD with a timeout.
+ */
+async function headInfo(url: string, timeoutMs: number = 3000): Promise<{ contentType: string | null; contentLength: number | null }>{
+  try {
+    const controller = new AbortController();
+    const tid = setTimeout(() => controller.abort(), timeoutMs);
+    const res = await fetch(url, { method: 'HEAD', signal: controller.signal });
+    clearTimeout(tid);
+    if (!res.ok) return { contentType: null, contentLength: null };
+    const ct = res.headers.get('content-type');
+    const len = res.headers.get('content-length');
+    return { contentType: ct, contentLength: len ? parseInt(len, 10) : null };
+  } catch {
+    return { contentType: null, contentLength: null };
+  }
+}
+
+function getEnvNumber(name: string, fallback: number): number {
+  const val = process.env[name];
+  if (!val) return fallback;
+  const n = Number(val);
+  return Number.isFinite(n) && n > 0 ? n : fallback;
+}
+
 // ============================================================================
 // MESSAGE BUILDING
 // ============================================================================
@@ -228,7 +270,8 @@ function buildCardDisplayMessage(params: CardDisplayParams): string {
     
     // Add metadata line (artist and/or supply)
     const metadata: string[] = [];
-    if (params.cardInfo.artist) {
+    const artistButtonsEnabled = process.env.FAKE_RARES_ARTIST_BUTTONS === 'true';
+    if (params.cardInfo.artist && !artistButtonsEnabled) {
       metadata.push(`👨‍🎨 ${params.cardInfo.artist}`);
     }
     if (params.cardInfo.supply) {
@@ -264,6 +307,11 @@ function buildCardDisplayMessage(params: CardDisplayParams): string {
  * Builds artist button if artist info is available
  */
 function buildArtistButton(cardInfo: CardInfo | null): Array<{ text: string; url: string }> {
+  // Feature toggle: set FAKE_RARES_ARTIST_BUTTONS=true to enable globally
+  const isEnabled = process.env.FAKE_RARES_ARTIST_BUTTONS === 'true';
+  if (!isEnabled) {
+    return [];
+  }
   if (!cardInfo?.artist || !cardInfo?.artistSlug) {
     return [];
   }
@@ -284,6 +332,8 @@ async function sendCardWithMedia(params: {
   mediaUrl: string;
   mediaExtension: MediaExtension;
   assetName: string;
+  buttons?: Array<{ text: string; url: string }>;
+  fallbackImages?: Array<{ url: string; contentType: string }>;
 }): Promise<void> {
   if (!params.callback) {
     return;
@@ -292,15 +342,67 @@ async function sendCardWithMedia(params: {
   // Determine media type from extension
   const isVideo = params.mediaExtension === 'mp4';
   const isAnimation = params.mediaExtension === 'gif';
+
+  // Smart hybrid: Only send inline MP4 if HEAD indicates video/mp4 and size ≤ MP4_URL_MAX_MB (default 20MB). Otherwise send link.
+  if (isVideo) {
+    try {
+      const maxMb = getEnvNumber('MP4_URL_MAX_MB', 20);
+      const { contentType, contentLength } = await headInfo(params.mediaUrl, 3000);
+      const typeOk = (contentType || '').toLowerCase().includes('video/mp4');
+      const sizeOk = contentLength !== null ? contentLength <= maxMb * 1024 * 1024 : false;
+      if (!typeOk || !sizeOk) {
+        await params.callback({
+          text: `${params.cardMessage}\n\n🎬 Video: ${params.mediaUrl}`,
+          buttons: params.buttons && params.buttons.length > 0 ? params.buttons : undefined,
+          plainText: true,
+          __fromAction: 'fakeRaresCard',
+          suppressBootstrap: true,
+        });
+        logger.debug('MP4 sent as link due to preflight', { assetName: params.assetName, contentType, contentLength, maxMb });
+        return;
+      }
+      // Eligible: proceed with attachments below
+    } catch {
+      // If preflight failed entirely, send link to avoid timeouts
+      await params.callback({
+        text: `${params.cardMessage}\n\n🎬 Video: ${params.mediaUrl}`,
+        buttons: params.buttons && params.buttons.length > 0 ? params.buttons : undefined,
+        plainText: true,
+        __fromAction: 'fakeRaresCard',
+        suppressBootstrap: true,
+      });
+      logger.debug('MP4 preflight failed; sent link', { assetName: params.assetName });
+      return;
+    }
+  }
+  
+  const attachments: Array<{ url: string; title: string; source: string; contentType: string }> = [];
+  
+  // Primary media first (video/gif/image)
+  attachments.push({
+    url: params.mediaUrl,
+    title: params.assetName,
+    source: 'fake-rares',
+    contentType: isVideo ? 'video/mp4' : isAnimation ? 'image/gif' : 'image/jpeg',
+  });
+  
+  // Add optional fallback images to improve preview success on Telegram
+  if (params.fallbackImages && params.fallbackImages.length > 0) {
+    for (const fb of params.fallbackImages) {
+      attachments.push({
+        url: fb.url,
+        title: params.assetName,
+        source: 'fake-rares-fallback',
+        contentType: fb.contentType,
+      });
+    }
+  }
   
   await params.callback({
     text: params.cardMessage,
-    attachments: [{
-      url: formatTelegramUrl(params.mediaUrl), // Fix underscore issues for Arweave URLs
-      title: params.assetName,
-      source: 'fake-rares',
-      contentType: isVideo ? 'video/mp4' : isAnimation ? 'image/gif' : 'image/jpeg',
-    }],
+    attachments,
+    // Pass artist button through so the Telegram bridge can render inline keyboard
+    buttons: params.buttons && params.buttons.length > 0 ? params.buttons : undefined,
     __fromAction: 'fakeRaresCard',
     suppressBootstrap: true,
   });
@@ -336,6 +438,32 @@ function determineCardUrl(cardInfo: CardInfo, assetName: string): CardUrlResult 
     url: getFakeRaresImageUrl(assetName, cardInfo.series, cardInfo.ext as MediaExtension),
     extension: cardInfo.ext as MediaExtension
   };
+}
+
+/**
+ * Build a list of fallback image URLs to try if video fails on Telegram.
+ * Prefers cardInfo.imageUri, then S3 JPG and PNG variants.
+ */
+function buildFallbackImageUrls(assetName: string, cardInfo: CardInfo | null): Array<{ url: string; contentType: string }> {
+  const results: Array<{ url: string; contentType: string }> = [];
+  const upperAsset = assetName.toUpperCase();
+  if (cardInfo?.imageUri) {
+    // Heuristic: guess content type by extension
+    const lower = cardInfo.imageUri.toLowerCase();
+    const ct = lower.endsWith('.png') ? 'image/png' : lower.endsWith('.webp') ? 'image/webp' : 'image/jpeg';
+    results.push({ url: cardInfo.imageUri, contentType: ct });
+  }
+  if (typeof cardInfo?.series === 'number') {
+    // Try common formats from S3
+    results.push({ url: getFakeRaresImageUrl(upperAsset, cardInfo.series, 'jpg'), contentType: 'image/jpeg' });
+    results.push({ url: getFakeRaresImageUrl(upperAsset, cardInfo.series, 'png'), contentType: 'image/png' });
+    results.push({ url: getFakeRaresImageUrl(upperAsset, cardInfo.series, 'webp' as any), contentType: 'image/webp' });
+    // If original ext is gif, include S3 gif variant explicitly
+    if ((cardInfo.ext || '').toLowerCase() === 'gif') {
+      results.push({ url: getFakeRaresImageUrl(upperAsset, cardInfo.series, 'gif' as any), contentType: 'image/gif' });
+    }
+  }
+  return results;
 }
 
 // ============================================================================
@@ -491,14 +619,17 @@ async function handleCardFound(params: {
   
   logger.step(5, 'Send message with media preview and artist button');
   const buttons = buildArtistButton(params.cardInfo);
+  const fallbackImages = buildFallbackImageUrls(params.assetName, params.cardInfo);
   
   // Send card with media attachment
   await sendCardWithMedia({
-    callback: params.callback,
+    callback: (params.callback ?? null) as ((response: any) => Promise<any>) | null,
     cardMessage,
     mediaUrl: params.urlResult.url,
     mediaExtension: params.urlResult.extension,
     assetName: params.assetName,
+    buttons,
+    fallbackImages,
   }).catch((err) => logger.error('Error sending callback', err));
   
   logger.success(`${params.assetName} card will be displayed`);
@@ -550,7 +681,7 @@ async function handleCardNotFound(params: {
       
       // Send typo-corrected card with media attachment
       await sendCardWithMedia({
-        callback: params.callback,
+        callback: (params.callback ?? null) as ((response: any) => Promise<any>) | null,
         cardMessage: matchedCardText,
         mediaUrl: matchedUrlResult.url,
         mediaExtension: matchedUrlResult.extension,
