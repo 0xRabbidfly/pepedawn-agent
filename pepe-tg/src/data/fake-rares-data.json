@@ -8789,11 +8789,12 @@
     "asset": "THEBIGDEGEN",
     "series": 17,
     "card": 50,
-    "ext": "webp",
+    "ext": "jpg",
     "artist": "ZeroG",
     "artistSlug": "ZeroG",
     "supply": 21,
-    "issuance": "February 2025"
+    "issuance": "February 2025",
+    "imageUri": "https://github.com/0xRabbidfly/pepedawn-agent/blob/master/pepe-tg/src/assets/images/THEBIGDEGEN.jpg"
   },
   {
     "asset": "HATRSGONHATE",
