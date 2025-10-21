@@ -109,7 +109,7 @@ export const fakeRaresPlugin: Plugin = {
           // Do not call messageService here to avoid double-callbacks.
           // Telegram platform will invoke messageService exactly once.
           // Keep logs for visibility only.
-          const shouldRespond = hasBotMention || hasCapitalizedWord || isReply;
+          const shouldRespond = hasBotMention || hasCapitalizedWord;
           if (globalSuppression) {
             console.log('[Suppress] SUPPRESS_BOOTSTRAP=true → platform will skip via handled flag when set');
           } else if (shouldRespond) {
