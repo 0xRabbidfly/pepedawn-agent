@@ -54,9 +54,9 @@ export const fakeRaresPlugin: Plugin = {
           // Pattern detection
           const isFCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/f(?:@[A-Za-z0-9_]+)?(?:\s+[A-Za-z0-9_-]+)?$/i.test(text);
           const isLoreCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fl/i.test(text);
-          const hasCapitalizedWord = /\b[A-Z]{2,}\b/.test(text);
+          const hasCapitalizedWord = /\b[A-Z]{3,}[A-Z0-9]*\b/.test(text); // 3+ caps (likely card names)
           const hasBotMention = /@pepedawn_bot/i.test(text);
-          const isReply = params?.message?.metadata?.isReply || params?.message?.content?.inReplyTo;
+          const isReplyToBot = params?.message?.content?.inReplyTo; // User replied to bot's message
           
           const runtime = params.runtime;
           const message = params.message;
@@ -106,16 +106,30 @@ export const fakeRaresPlugin: Plugin = {
           }
           
           // === BOOTSTRAP ROUTING ===
-          // Do not call messageService here to avoid double-callbacks.
-          // Telegram platform will invoke messageService exactly once.
-          // Keep logs for visibility only.
-          const shouldRespond = hasBotMention || hasCapitalizedWord;
+          // CLEAR LOGIC: Bootstrap replies ONLY when:
+          // 1. Someone replied to the bot
+          // 2. Someone used capitals (3+ letter word)
+          // 3. Someone mentioned @pepedawn_bot
+          //
+          // Otherwise, suppress bootstrap (mark as handled)
+          
+          const shouldAllowBootstrap = isReplyToBot || hasCapitalizedWord || hasBotMention;
+          
           if (globalSuppression) {
-            console.log('[Suppress] SUPPRESS_BOOTSTRAP=true → platform will skip via handled flag when set');
-          } else if (shouldRespond) {
-            console.log(`[Info] Bootstrap allowed by platform for: "${text}"`);
+            console.log('[Suppress] SUPPRESS_BOOTSTRAP=true → suppressing all bootstrap');
+            message.metadata = message.metadata || {};
+            (message.metadata as any).__handledByCustom = true;
+            return;
+          }
+          
+          if (shouldAllowBootstrap) {
+            console.log(`[Allow] Bootstrap allowed: reply=${!!isReplyToBot} caps=${hasCapitalizedWord} mention=${hasBotMention} | "${text}"`);
+            // Let bootstrap handle it - do NOT mark as handled
           } else {
-            console.log(`[Suppress] Not interesting: "${text}"`);
+            console.log(`[Suppress] Bootstrap blocked (no trigger): "${text}"`);
+            // Mark as handled to suppress bootstrap
+            message.metadata = message.metadata || {};
+            (message.metadata as any).__handledByCustom = true;
           }
           
         } catch (error) {

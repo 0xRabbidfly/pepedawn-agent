@@ -343,10 +343,10 @@ async function sendCardWithMedia(params: {
   const isVideo = params.mediaExtension === 'mp4';
   const isAnimation = params.mediaExtension === 'gif';
 
-  // Smart hybrid: Only send inline MP4 if HEAD indicates video/mp4 and size ≤ MP4_URL_MAX_MB (default 40MB). Otherwise send link.
+  // Smart hybrid: Only send inline MP4 if HEAD indicates video/mp4 and size ≤ MP4_URL_MAX_MB (default 50MB). Otherwise send link.
   if (isVideo) {
     try {
-      const maxMb = getEnvNumber('MP4_URL_MAX_MB', 40);
+      const maxMb = getEnvNumber('MP4_URL_MAX_MB', 50);
       const { contentType, contentLength } = await headInfo(params.mediaUrl, 3000);
       const typeOk = (contentType || '').toLowerCase().includes('video/mp4');
       const sizeOk = contentLength !== null ? contentLength <= maxMb * 1024 * 1024 : false;
