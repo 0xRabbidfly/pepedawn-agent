@@ -189,6 +189,9 @@ pepe-tg/
 │   ├── data/                 # Card database
 │   │   ├── fake-rares-data.json # 950+ cards
 │   │   └── fullCardIndex.ts  # Index loader
+│   ├── assets/               # GitHub-hosted assets
+│   │   ├── images/           # Override S3 for problematic images
+│   │   └── videos/           # Override S3 for problematic videos
 │   ├── utils/                # Utilities
 │   │   └── cardIndexRefresher.ts # GitHub sync
 │   └── pepedawn.ts           # Character definition
@@ -222,6 +225,23 @@ git push
 ```
 
 Bot refreshes automatically within 1 hour (or restart for immediate update).
+
+### Hosting Problematic Assets
+
+**For assets that don't display through S3 scanning:**
+
+1. Convert/fix the asset (e.g., WEBP → JPG, compress MP4)
+2. Place in `pepe-tg/src/assets/images/` or `pepe-tg/src/assets/videos/`
+3. Add `imageUri` or `videoUri` to override S3 in `fake-rares-data.json`:
+
+```json
+{
+  "asset": "THEBIGDEGEN",
+  "imageUri": "https://raw.githubusercontent.com/[user]/[repo]/master/pepe-tg/src/assets/images/THEBIGDEGEN.jpg"
+}
+```
+
+**Note:** Use `raw.githubusercontent.com` URLs (not `github.com/blob`). See `pepe-tg/src/assets/README.md` for details.
 
 ### Character Customization
 
