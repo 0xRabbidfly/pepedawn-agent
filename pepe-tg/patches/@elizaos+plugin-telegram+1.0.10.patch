@@ -1,5 +1,5 @@
 diff --git a/node_modules/@elizaos/plugin-telegram/dist/index.js b/node_modules/@elizaos/plugin-telegram/dist/index.js
-index 6a508dd..c1ed316 100644
+index 6a508dd..22d0281 100644
 --- a/node_modules/@elizaos/plugin-telegram/dist/index.js
 +++ b/node_modules/@elizaos/plugin-telegram/dist/index.js
 @@ -19,7 +19,7 @@ import {
@@ -481,7 +481,7 @@ index 6a508dd..c1ed316 100644
 +              ...Markup2.inlineKeyboard(telegramButtons)
 +            });
 +            sentPrimaryMedia = true;
-+            break;
+             break;
 +          } catch (videoErr) {
 +            // Try alternative URL variants first (Arweave quirks)
 +            try {
@@ -559,8 +559,12 @@ index 6a508dd..c1ed316 100644
 +            } catch (streamErr) {
 +              logger2.warn({ videoErr, url, streamErr }, "Video attachment failed after streaming fallback, sending text link");
 +            }
-+          }
-+        }
+           }
+         }
+-        if (!mediaType) {
+-          throw new Error(
+-            `Unsupported Telegram attachment content type: ${attachment.contentType}`
+-          );
 +        
 +        if (isGif) {
 +          try {
@@ -570,7 +574,7 @@ index 6a508dd..c1ed316 100644
 +              ...Markup2.inlineKeyboard(telegramButtons)
 +            });
 +            sentPrimaryMedia = true;
-             break;
++            break;
 +          } catch (gifErr) {
 +            // Stream fallback for GIF
 +            try {
@@ -604,12 +608,10 @@ index 6a508dd..c1ed316 100644
 +            } catch (gifStreamErr) {
 +              logger2.warn({ gifErr, gifStreamErr, url }, "GIF attachment failed after streaming fallback");
 +            }
-           }
++          }
          }
--        if (!mediaType) {
--          throw new Error(
--            `Unsupported Telegram attachment content type: ${attachment.contentType}`
--          );
+-        await this.sendMedia(ctx, attachment.url, mediaType, attachment.description);
+-      });
 +        
 +        if (isImage) {
 +          try {
@@ -654,9 +656,7 @@ index 6a508dd..c1ed316 100644
 +              logger2.warn({ photoErr, photoStreamErr, url }, "Photo attachment failed after streaming fallback");
 +            }
 +          }
-         }
--        await this.sendMedia(ctx, attachment.url, mediaType, attachment.description);
--      });
++        }
 +        
 +        // Fallback: send as document for unsupported types
 +        try {
@@ -852,7 +852,7 @@ index 6a508dd..c1ed316 100644
            channelType,
            inReplyTo: "reply_to_message" in message && message.reply_to_message ? createUniqueUuid(this.runtime, message.reply_to_message.message_id.toString()) : void 0
          },
-@@ -442,26 +1054,35 @@ ${description}]` };
+@@ -442,26 +1054,46 @@ ${description}]` };
            }
            return memories;
          } catch (error) {
@@ -891,6 +891,17 @@ index 6a508dd..c1ed316 100644
 +        return;
 +      }
 +
++      // Skip bootstrap if this is a reply to someone OTHER than the bot
++      if ("reply_to_message" in message && message.reply_to_message) {
++        const replyToUserId = message.reply_to_message.from?.id;
++        const botUserId = this.bot.botInfo?.id;
++        if (replyToUserId && botUserId && replyToUserId !== botUserId) {
++          // This is a reply to another user, not the bot - skip bootstrap
++          logger2.debug(`Skipping bootstrap for reply to user ${replyToUserId} (not bot ${botUserId})`);
++          return;
++        }
++      }
++
 +      if (!this.runtime.messageService) {
 +        logger2.error("Message service is not available");
 +        throw new Error(
@@ -904,7 +915,7 @@ index 6a508dd..c1ed316 100644
          {
            error,
            chatId: ctx.chat?.id,
-@@ -527,7 +1148,7 @@ ${description}]` };
+@@ -527,7 +1159,7 @@ ${description}]` };
            };
            return [responseMemory];
          } catch (error) {
@@ -913,7 +924,7 @@ index 6a508dd..c1ed316 100644
            return [];
          }
        };
-@@ -555,7 +1176,7 @@ ${description}]` };
+@@ -555,7 +1187,7 @@ ${description}]` };
        });
      } catch (error) {
        const errorMessage = error instanceof Error ? error.message : String(error);
@@ -922,7 +933,7 @@ index 6a508dd..c1ed316 100644
          {
            error: errorMessage,
            originalError: error
-@@ -621,7 +1242,7 @@ ${description}]` };
+@@ -621,7 +1253,7 @@ ${description}]` };
        return sentMessages;
      } catch (error) {
        const errorMessage = error instanceof Error ? error.message : String(error);
@@ -931,7 +942,7 @@ index 6a508dd..c1ed316 100644
          {
            error: errorMessage,
            originalError: error
-@@ -648,10 +1269,10 @@ var TelegramService = class _TelegramService extends Service {
+@@ -648,10 +1280,10 @@ var TelegramService = class _TelegramService extends Service {
     */
    constructor(runtime) {
      super(runtime);
@@ -944,7 +955,7 @@ index 6a508dd..c1ed316 100644
        this.bot = null;
        this.messageManager = null;
        return;
-@@ -664,9 +1285,9 @@ var TelegramService = class _TelegramService extends Service {
+@@ -664,9 +1296,9 @@ var TelegramService = class _TelegramService extends Service {
      try {
        this.bot = new Telegraf(botToken, this.options);
        this.messageManager = new MessageManager(this.bot, this.runtime);
@@ -956,7 +967,7 @@ index 6a508dd..c1ed316 100644
          `Error initializing Telegram bot: ${error instanceof Error ? error.message : String(error)}`
        );
        this.bot = null;
-@@ -682,7 +1303,7 @@ var TelegramService = class _TelegramService extends Service {
+@@ -682,7 +1314,7 @@ var TelegramService = class _TelegramService extends Service {
    static async start(runtime) {
      const service = new _TelegramService(runtime);
      if (!service.bot) {
@@ -965,7 +976,7 @@ index 6a508dd..c1ed316 100644
        return service;
      }
      const maxRetries = 5;
-@@ -690,10 +1311,10 @@ var TelegramService = class _TelegramService extends Service {
+@@ -690,10 +1322,10 @@ var TelegramService = class _TelegramService extends Service {
      let lastError = null;
      while (retryCount < maxRetries) {
        try {
@@ -978,7 +989,7 @@ index 6a508dd..c1ed316 100644
          await service.initializeBot();
          service.setupMiddlewares();
          service.setupMessageHandlers();
-@@ -701,18 +1322,18 @@ var TelegramService = class _TelegramService extends Service {
+@@ -701,18 +1333,18 @@ var TelegramService = class _TelegramService extends Service {
          return service;
        } catch (error) {
          lastError = error instanceof Error ? error : new Error(String(error));
@@ -1000,7 +1011,7 @@ index 6a508dd..c1ed316 100644
        `Telegram initialization failed after ${maxRetries} attempts. Last error: ${lastError?.message}. Service will continue without Telegram functionality.`
      );
      return service;
-@@ -751,7 +1372,7 @@ var TelegramService = class _TelegramService extends Service {
+@@ -751,7 +1383,7 @@ var TelegramService = class _TelegramService extends Service {
        allowedUpdates: ["message", "message_reaction"]
      });
      const botInfo = await this.bot.telegram.getMe();
@@ -1009,7 +1020,7 @@ index 6a508dd..c1ed316 100644
      process.once("SIGINT", () => this.bot?.stop("SIGINT"));
      process.once("SIGTERM", () => this.bot?.stop("SIGTERM"));
    }
-@@ -785,7 +1406,7 @@ var TelegramService = class _TelegramService extends Service {
+@@ -785,7 +1417,7 @@ var TelegramService = class _TelegramService extends Service {
     */
    async authorizationMiddleware(ctx, next) {
      if (!await this.isGroupAuthorized(ctx)) {
@@ -1018,7 +1029,7 @@ index 6a508dd..c1ed316 100644
        return;
      }
      await next();
-@@ -825,7 +1446,7 @@ var TelegramService = class _TelegramService extends Service {
+@@ -825,7 +1457,7 @@ var TelegramService = class _TelegramService extends Service {
        try {
          await this.handleForumTopic(ctx);
        } catch (error) {
@@ -1027,7 +1038,7 @@ index 6a508dd..c1ed316 100644
        }
      }
      if (ctx.from && ctx.chat.type !== "private") {
-@@ -843,14 +1464,14 @@ var TelegramService = class _TelegramService extends Service {
+@@ -843,14 +1475,14 @@ var TelegramService = class _TelegramService extends Service {
        try {
          await this.messageManager.handleMessage(ctx);
        } catch (error) {
@@ -1044,7 +1055,7 @@ index 6a508dd..c1ed316 100644
        }
      });
    }
-@@ -870,7 +1491,7 @@ var TelegramService = class _TelegramService extends Service {
+@@ -870,7 +1502,7 @@ var TelegramService = class _TelegramService extends Service {
        const allowedChatsList = JSON.parse(allowedChats);
        return allowedChatsList.includes(chatId);
      } catch (error) {
@@ -1053,7 +1064,7 @@ index 6a508dd..c1ed316 100644
        return false;
      }
    }
-@@ -1059,7 +1680,7 @@ var TelegramService = class _TelegramService extends Service {
+@@ -1059,7 +1691,7 @@ var TelegramService = class _TelegramService extends Service {
          );
          owner = foundOwner || null;
        } catch (error) {
@@ -1062,7 +1073,7 @@ index 6a508dd..c1ed316 100644
            `Could not get chat administrators: ${error instanceof Error ? error.message : String(error)}`
          );
        }
-@@ -1172,13 +1793,13 @@ var TelegramService = class _TelegramService extends Service {
+@@ -1172,13 +1804,13 @@ var TelegramService = class _TelegramService extends Service {
                  worldId
                });
              } else {
@@ -1078,7 +1089,7 @@ index 6a508dd..c1ed316 100644
            }
          })
        );
-@@ -1274,11 +1895,11 @@ var TelegramService = class _TelegramService extends Service {
+@@ -1274,11 +1906,11 @@ var TelegramService = class _TelegramService extends Service {
              }
            }
          } catch (error) {
@@ -1092,7 +1103,7 @@ index 6a508dd..c1ed316 100644
          `Error building standardized entities: ${error instanceof Error ? error.message : String(error)}`
        );
      }
-@@ -1330,7 +1951,7 @@ var TelegramService = class _TelegramService extends Service {
+@@ -1330,7 +1962,7 @@ var TelegramService = class _TelegramService extends Service {
        };
        return room;
      } catch (error) {
@@ -1101,7 +1112,7 @@ index 6a508dd..c1ed316 100644
          `Error building forum topic room: ${error instanceof Error ? error.message : String(error)}`
        );
        return null;
-@@ -1342,14 +1963,14 @@ var TelegramService = class _TelegramService extends Service {
+@@ -1342,14 +1974,14 @@ var TelegramService = class _TelegramService extends Service {
          "telegram",
          serviceInstance.handleSendMessage.bind(serviceInstance)
        );
@@ -1119,7 +1130,7 @@ index 6a508dd..c1ed316 100644
        throw new Error("Telegram bot is not initialized. Please provide TELEGRAM_BOT_TOKEN.");
      }
      let chatId;
-@@ -1361,7 +1982,7 @@ var TelegramService = class _TelegramService extends Service {
+@@ -1361,7 +1993,7 @@ var TelegramService = class _TelegramService extends Service {
        if (!chatId)
          throw new Error(`Could not resolve Telegram chat ID from roomId ${target.roomId}`);
      } else if (target.entityId) {
@@ -1128,7 +1139,7 @@ index 6a508dd..c1ed316 100644
        throw new Error("Sending DMs via entityId is not yet supported for Telegram.");
      } else {
        throw new Error("Telegram SendHandler requires channelId, roomId, or entityId.");
-@@ -1373,9 +1994,9 @@ var TelegramService = class _TelegramService extends Service {
+@@ -1373,9 +2005,9 @@ var TelegramService = class _TelegramService extends Service {
      }
      try {
        await this.messageManager.sendMessage(chatId, content);
@@ -1140,7 +1151,7 @@ index 6a508dd..c1ed316 100644
          {
            target,
            content
-@@ -1388,7 +2009,7 @@ var TelegramService = class _TelegramService extends Service {
+@@ -1388,7 +2020,7 @@ var TelegramService = class _TelegramService extends Service {
  };
  
  // src/tests.ts
@@ -1149,7 +1160,7 @@ index 6a508dd..c1ed316 100644
  var TEST_IMAGE_URL = "https://github.com/elizaOS/awesome-eliza/blob/main/assets/eliza-logo.jpg?raw=true";
  var TelegramTestSuite = class {
    name = "telegram";
-@@ -1457,7 +2078,7 @@ var TelegramTestSuite = class {
+@@ -1457,7 +2089,7 @@ var TelegramTestSuite = class {
          throw new Error("Bot is not initialized.");
        }
        const chat = await this.bot.telegram.getChat(chatId);
@@ -1158,7 +1169,7 @@ index 6a508dd..c1ed316 100644
        return chat;
      } catch (error) {
        throw new Error(`Error fetching real Telegram chat: ${error}`);
-@@ -1472,14 +2093,14 @@ var TelegramTestSuite = class {
+@@ -1472,14 +2104,14 @@ var TelegramTestSuite = class {
      }
      this.bot = this.telegramClient.messageManager.bot;
      this.messageManager = this.telegramClient.messageManager;
@@ -1175,7 +1186,7 @@ index 6a508dd..c1ed316 100644
      } catch (error) {
        throw new Error(`Error sending Telegram message: ${error}`);
      }
-@@ -1512,7 +2133,7 @@ var TelegramTestSuite = class {
+@@ -1512,7 +2144,7 @@ var TelegramTestSuite = class {
          mockContext,
          messageContent
        );
@@ -1184,7 +1195,7 @@ index 6a508dd..c1ed316 100644
      } catch (error) {
        throw new Error(`Error sending Telegram message with attachment: ${error}`);
      }
-@@ -1573,7 +2194,7 @@ var TelegramTestSuite = class {
+@@ -1573,7 +2205,7 @@ var TelegramTestSuite = class {
          throw new Error("Error processing Telegram image or description not found");
        }
        const { description } = result;
@@ -1193,7 +1204,7 @@ index 6a508dd..c1ed316 100644
      } catch (error) {
        throw new Error(`Error processing Telegram image: ${error}`);
      }
-@@ -1589,7 +2210,7 @@ var TelegramTestSuite = class {
+@@ -1589,7 +2221,7 @@ var TelegramTestSuite = class {
        }
        return message.photo[message.photo.length - 1].file_id;
      } catch (error) {
@@ -1202,7 +1213,7 @@ index 6a508dd..c1ed316 100644
        throw error;
      }
    }
-@@ -1606,6 +2227,9 @@ var index_default = telegramPlugin;
+@@ -1606,6 +2238,9 @@ var index_default = telegramPlugin;
  export {
    MessageManager,
    TelegramService,
