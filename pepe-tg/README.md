@@ -125,17 +125,13 @@ Customize your project by modifying:
 
 For production deployment, this project includes PM2 configuration for robust process management.
 
+> **⚠️ Important:** This project uses **Bun** as the runtime. The ecosystem config is named `.cjs` (not `.js`) to ensure compatibility with ES modules.
+
 ### Quick Start
 
 ```bash
-# Option 1: Start with ecosystem config (recommended)
-pm2 start ecosystem.config.js
-
-# Option 2: Start directly with npm script
-pm2 start npm --name pepe-tg -- start
-
-# Option 3: Start with elizaos start command
-pm2 start "elizaos start" --name pepe-tg
+# Start with ecosystem config (recommended - includes Bun interpreter)
+pm2 start ecosystem.config.cjs
 
 # Check status
 pm2 status
@@ -152,13 +148,7 @@ pm2 restart pepe-tg
 #### Basic Operations
 ```bash
 # Start with ecosystem config (recommended - includes health monitoring)
-pm2 start ecosystem.config.js
-
-# Alternative: Start directly with npm script
-pm2 start npm --name pepe-tg -- start
-
-# Alternative: Start with elizaos start command
-pm2 start "elizaos start" --name pepe-tg
+pm2 start ecosystem.config.cjs
 
 # Stop the bot
 pm2 stop pepe-tg
@@ -170,7 +160,7 @@ pm2 restart pepe-tg
 pm2 delete pepe-tg
 
 # Reload configuration
-pm2 reload ecosystem.config.js
+pm2 reload ecosystem.config.cjs
 ```
 
 #### Monitoring & Logs
@@ -277,7 +267,8 @@ PGLITE_DATABASE_URL=file:///path/to/.elizadb
 - [ ] Bot token configured in `.env`
 - [ ] Database properly extracted to `.eliza/.elizadb/`
 - [ ] Patches applied (`npx patch-package`)
-- [ ] PM2 started with `ecosystem.config.js`
+- [ ] PM2 started with `ecosystem.config.cjs`
+- [ ] Bun runtime properly configured in PM2
 - [ ] Heartbeat logs visible every 30 seconds
 - [ ] Bot responds to `/f` and `/fl` commands
 - [ ] No unhandled promise rejection errors
@@ -293,7 +284,7 @@ pm2 delete all
 pm2 flush
 
 # Restart fresh
-pm2 start ecosystem.config.js
+pm2 start ecosystem.config.cjs
 ```
 
 #### Database Recovery
