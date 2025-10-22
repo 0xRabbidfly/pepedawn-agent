@@ -1,4 +1,6 @@
 import { type Evaluator, type IAgentRuntime, type Memory, type State, ModelType, composePromptFromState } from '@elizaos/core';
+import { evaluatorCache, hashKey } from '../utils/llmCache';
+import { truncateMiddle } from '../utils/promptUtils';
 
 /**
  * Lore Detection Evaluator
@@ -73,24 +75,34 @@ Examples:
 - "I love FREEDOMKEK" → NO, just opinion
 - "Rare Scrilla created FREEDOMKEK after getting banned" → YES, historical fact`;
       
-      const prompt = loreDetectionTemplate;
-      
-      const assessment = await runtime.useModel(ModelType.TEXT_SMALL, {
-        prompt,
-        runtime,
-      });
+      const prompt = truncateMiddle(loreDetectionTemplate, 2500);
+      const cacheKey = `eval|lore|v1|${hashKey(prompt)}`;
+      let assessmentText: string;
+      const cached = evaluatorCache.get(cacheKey);
+      if (cached) {
+        assessmentText = cached;
+      } else {
+        const assessment = await runtime.useModel(ModelType.TEXT_SMALL, {
+          prompt,
+          runtime,
+          maxTokens: 200,
+          temperature: 0.2,
+        });
+        assessmentText = String(assessment);
+        evaluatorCache.set(cacheKey, assessmentText);
+      }
       
       // Parse the LLM response
-      const containsLore = assessment.toUpperCase().includes('CONTAINS_LORE: YES');
+      const containsLore = assessmentText.toUpperCase().includes('CONTAINS_LORE: YES');
       
       if (!containsLore) {
         return;
       }
       
       // Extract details from assessment
-      const cardName = extractValue(assessment, 'CARD_NAME');
-      const loreType = extractValue(assessment, 'LORE_TYPE');
-      const loreSummary = extractValue(assessment, 'LORE_SUMMARY');
+      const cardName = extractValue(assessmentText, 'CARD_NAME');
+      const loreType = extractValue(assessmentText, 'LORE_TYPE');
+      const loreSummary = extractValue(assessmentText, 'LORE_SUMMARY');
       
       if (!cardName || cardName === 'NONE') {
         return;

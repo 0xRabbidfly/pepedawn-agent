@@ -3,8 +3,11 @@
  */
 
 import type { IAgentRuntime } from '@elizaos/core';
+import { ModelType } from '@elizaos/core';
 import type { ClusterSummary } from './loreSummarize';
 import { LORE_CONFIG } from './loreConfig';
+import { storyCache, hashKey } from './llmCache';
+import { truncateMiddle } from './promptUtils';
 
 /**
  * Generate a PEPEDAWN persona-aligned story from cluster summaries
@@ -33,15 +36,25 @@ Tell a short, fun, persona-aligned story (${LORE_CONFIG.STORY_LENGTH_WORDS} word
 Story:`;
   
   try {
-    const result = await runtime.generateText(storyPrompt, {
+    const boundedPrompt = truncateMiddle(storyPrompt, 3500);
+    const cacheKey = `story|v1|${LORE_CONFIG.MAX_TOKENS_STORY}|${LORE_CONFIG.TEMPERATURE}|${hashKey(boundedPrompt)}`;
+    const cached = storyCache.get(cacheKey);
+    if (cached) return cached.trim();
+
+    const result = await runtime.useModel(ModelType.TEXT_LARGE, {
+      prompt: boundedPrompt,
+      runtime,
       maxTokens: LORE_CONFIG.MAX_TOKENS_STORY,
       temperature: LORE_CONFIG.TEMPERATURE,
-    });
+      topP: LORE_CONFIG.TOP_P,
+    } as any);
     
     // Extract text from result (may be string or {text: string})
     const story = typeof result === 'string' ? result : (result as any)?.text || '';
     
-    return story.trim();
+    const output = story.trim();
+    storyCache.set(cacheKey, output);
+    return output;
   } catch (err) {
     console.error('Story generation error:', err);
     
