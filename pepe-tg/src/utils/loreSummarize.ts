@@ -199,13 +199,12 @@ export async function clusterAndSummarize(
   
   console.log(`📊 Clustered ${passages.length} passages into ${clusters.length} clusters`);
   
-  const summaries: ClusterSummary[] = [];
-  
-  for (let i = 0; i < clusters.length; i++) {
-    const cluster = clusters[i];
-    const summary = await summarizeCluster(runtime, cluster, `cluster-${i}`);
-    summaries.push(summary);
-  }
+  // 🚀 OPTIMIZATION: Parallelize LLM calls instead of sequential
+  const summaries = await Promise.all(
+    clusters.map((cluster, i) => 
+      summarizeCluster(runtime, cluster, `cluster-${i}`)
+    )
+  );
   
   return summaries;
 }
