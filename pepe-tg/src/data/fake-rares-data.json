@@ -9008,5 +9008,69 @@
     "artistSlug": "banakin",
     "supply": 69,
     "issuance": "September 2025"
+  },
+  {
+    "asset": "PEPEDAWN",
+    "series": 18,
+    "card": 22,
+    "ext": null,
+    "artist": null,
+    "artistSlug": null,
+    "supply": null,
+    "issuance": null,
+    "issues": [
+      "no_artist",
+      "no_supply",
+      "no_issuance",
+      "no_extension"
+    ]
+  },
+  {
+    "asset": "FAKEVOID",
+    "series": 18,
+    "card": 23,
+    "ext": null,
+    "artist": null,
+    "artistSlug": null,
+    "supply": null,
+    "issuance": null,
+    "issues": [
+      "no_artist",
+      "no_supply",
+      "no_issuance",
+      "no_extension"
+    ]
+  },
+  {
+    "asset": "POLKKAPEPE",
+    "series": 18,
+    "card": 24,
+    "ext": null,
+    "artist": null,
+    "artistSlug": null,
+    "supply": null,
+    "issuance": null,
+    "issues": [
+      "no_artist",
+      "no_supply",
+      "no_issuance",
+      "no_extension"
+    ]
+  },
+  {
+    "asset": "FAKEREBIRTH",
+    "series": 18,
+    "card": 25,
+    "ext": null,
+    "artist": null,
+    "artistSlug": null,
+    "supply": null,
+    "issuance": null,
+    "issues": [
+      "no_artist",
+      "no_supply",
+      "no_issuance",
+      "no_extension"
+    ]
   }
 ]
