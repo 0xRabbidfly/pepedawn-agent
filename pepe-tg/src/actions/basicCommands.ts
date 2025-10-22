@@ -29,6 +29,7 @@ I'm PEPEDAWN, your AI companion for all things Fake Rares.
 
 **Quick Start:**
 • Use \`/f CARDNAME\` to view any card (try \`/f FREEDOMKEK\`)
+• Use \`/f ARTIST\` to get a random card by an artist (try \`/f Rare Scrilla\`)
 • Ask me anything about cards, artists, or lore
 • Share facts and I'll remember them for the community
 
@@ -73,11 +74,12 @@ export const helpCommand: Action = {
     const helpMessage = `🐸 **PEPEDAWN Commands**
 
 \`/f CARDNAME\` - View any Fake Rares card
+\`/f ARTIST\` - Random card by artist (supports misspellings!)
 \`/fl [topic]\` - Get lore stories from community history
 \`/start\` - Welcome message
 
 **Examples:**
-• \`/f FREEDOMKEK\` • \`/fl Rare Scrilla\` • \`/f\` (random)
+• \`/f FREEDOMKEK\` • \`/f Rare Scrilla\` • \`/f\` (random)
 
 Just chat naturally or mention me with @pepedawn_bot 🐸`;
 

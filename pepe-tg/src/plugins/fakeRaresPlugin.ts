@@ -52,7 +52,7 @@ export const fakeRaresPlugin: Plugin = {
           const globalSuppression = process.env.SUPPRESS_BOOTSTRAP === 'true';
           
           // Pattern detection
-          const isFCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/f(?:@[A-Za-z0-9_]+)?(?:\s+[A-Za-z0-9_-]+)?$/i.test(text);
+          const isFCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/f(?:@[A-Za-z0-9_]+)?(?:\s+.+)?$/i.test(text);
           const isLoreCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fl/i.test(text);
           const isHelpCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/help$/i.test(text);
           const isStartCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/start$/i.test(text);

@@ -189,6 +189,81 @@ function findTopMatches(inputName: string, allAssets: string[], topN: number = F
 }
 
 /**
+ * Find cards by exact artist name match (case-insensitive)
+ * Returns array of matching cards and the matched artist name
+ */
+function findCardsByArtistExact(inputArtist: string): {
+  cards: CardInfo[];
+  matchedArtist: string;
+} | null {
+  const allCards = getAllCards();
+  if (allCards.length === 0) return null;
+
+  // Case-insensitive exact match
+  const inputLower = inputArtist.toLowerCase().trim();
+  
+  const artistCards = allCards.filter(card => 
+    card.artist && card.artist.toLowerCase() === inputLower
+  );
+
+  if (artistCards.length === 0) return null;
+
+  return {
+    cards: artistCards,
+    matchedArtist: artistCards[0].artist!, // Use the properly cased artist name from data
+  };
+}
+
+/**
+ * Find cards by artist name with fuzzy matching support
+ * Returns array of matching cards and the matched artist name
+ */
+function findCardsByArtistFuzzy(inputArtist: string): {
+  cards: CardInfo[];
+  matchedArtist: string;
+  similarity: number;
+} | null {
+  const allCards = getAllCards();
+  if (allCards.length === 0) return null;
+
+  // Get unique artist names from all cards
+  const artistNames = new Set<string>();
+  allCards.forEach(card => {
+    if (card.artist) {
+      artistNames.add(card.artist);
+    }
+  });
+
+  const uniqueArtists = Array.from(artistNames);
+  if (uniqueArtists.length === 0) return null;
+
+  // Find best matching artist using fuzzy matching
+  const artistMatches = uniqueArtists.map(artist => ({
+    name: artist,
+    similarity: calculateSimilarity(inputArtist, artist)
+  }));
+
+  // Sort by similarity and get best match
+  const bestMatch = artistMatches.sort((a, b) => b.similarity - a.similarity)[0];
+
+  // Only accept moderate or better matches (same threshold as card matching)
+  if (bestMatch.similarity < FUZZY_MATCH_THRESHOLDS.MODERATE) {
+    return null;
+  }
+
+  // Get all cards by this artist
+  const artistCards = allCards.filter(card => card.artist === bestMatch.name);
+
+  if (artistCards.length === 0) return null;
+
+  return {
+    cards: artistCards,
+    matchedArtist: bestMatch.name,
+    similarity: bestMatch.similarity
+  };
+}
+
+/**
  * Format URL for Telegram MarkdownV2
  * WORKAROUND: Plugin's escapeUrl() doesn't escape underscores, causing them to be stripped
  * Solution: Percent-encode underscores as %5F (RFC 3986 compliant)
@@ -572,16 +647,20 @@ async function findCardImage(assetName: string): Promise<CardUrlResult | null> {
 /**
  * Parses the card request from message text
  * Returns asset name and whether it's a random card request
+ * Now supports multi-word names like "Fake Annie" for artist searches
  */
 function parseCardRequest(text: string): { assetName: string | null; isRandomCard: boolean } {
-  const match = text.match(/^\/?f(?:@[A-Za-z0-9_]+)?(?:\s+([A-Za-z0-9_-]+))?/i);
+  // Updated regex to capture everything after /f, including spaces
+  const match = text.match(/^\/?f(?:@[A-Za-z0-9_]+)?(?:\s+(.+))?/i);
   
   if (!match || !match[1]) {
     // No asset name provided - random card
     return { assetName: null, isRandomCard: true };
   }
   
-  return { assetName: match[1].toUpperCase(), isRandomCard: false };
+  // Trim whitespace and return - keep original case for artist matching
+  const input = match[1].trim();
+  return { assetName: input, isRandomCard: false };
 }
 
 /**
@@ -680,16 +759,90 @@ async function handleCardFound(params: {
 }
 
 /**
+ * Displays a random card from an artist's collection
+ * Used for both exact and fuzzy artist matches
+ */
+async function displayArtistCard(params: {
+  artistName: string;
+  cards: CardInfo[];
+  similarity?: number;
+  query: string;
+  callback?: HandlerCallback;
+}): Promise<{ success: true; data: any }> {
+  // Pick random card by this artist
+  const randomCard = params.cards[Math.floor(Math.random() * params.cards.length)];
+  logger.success('Artist match - displaying random card', {
+    artist: params.artistName,
+    similarity: params.similarity ? `${(params.similarity * 100).toFixed(1)}%` : 'exact',
+    cardCount: params.cards.length,
+    selectedCard: randomCard.asset
+  });
+  
+  const matchedUrlResult = determineCardUrl(randomCard, randomCard.asset);
+  
+  // Build message with artist context
+  const isTypoCorrected = params.similarity !== undefined && params.similarity < FUZZY_MATCH_THRESHOLDS.HIGH_CONFIDENCE;
+  let artistMessage = '';
+  
+  if (isTypoCorrected) {
+    artistMessage = `😅 Ha, spelling not your thing? No worries - got you fam.\n\n`;
+  }
+  
+  artistMessage += `👨‍🎨 Random card by ${params.artistName} (${params.cards.length} card${params.cards.length > 1 ? 's' : ''} total)\n\n`;
+  
+  const cardMessage = buildCardDisplayMessage({
+    assetName: randomCard.asset,
+    cardInfo: randomCard,
+    mediaUrl: matchedUrlResult.url,
+    isRandomCard: false,
+  });
+  
+  // Prepend artist context to card message
+  const fullMessage = artistMessage + cardMessage;
+  
+  // Send card with media attachment
+  const buttons = buildArtistButton(randomCard);
+  const fallbackImages = buildFallbackImageUrls(randomCard.asset, randomCard);
+  
+  await sendCardWithMedia({
+    callback: (params.callback ?? null) as ((response: any) => Promise<any>) | null,
+    cardMessage: fullMessage,
+    mediaUrl: matchedUrlResult.url,
+    mediaExtension: matchedUrlResult.extension,
+    assetName: randomCard.asset,
+    buttons,
+    fallbackImages,
+  });
+  
+  logger.success(`Artist-matched card ${randomCard.asset} displayed for query "${params.query}"`);
+  logger.separator();
+  
+  return {
+    success: true,
+    data: {
+      suppressBootstrap: true,
+      reason: params.similarity !== undefined ? 'artist_fuzzy_matched' : 'artist_exact_matched',
+      query: params.query,
+      matchedArtist: params.artistName,
+      selectedCard: randomCard.asset,
+      similarity: params.similarity,
+    },
+  };
+}
+
+/**
  * Handles card not found - performs fuzzy matching and shows suggestions
+ * This is called after exact card and exact artist matches have already failed
+ * Priority: Card fuzzy match (high confidence auto-show) -> Card fuzzy match (suggestions) -> Artist fuzzy match
  */
 async function handleCardNotFound(params: {
   assetName: string;
   callback?: HandlerCallback;
 }): Promise<{ success: boolean; data: any }> {
-  logger.warning(`Card ${params.assetName} not found anywhere`);
-  logger.info('Attempting fuzzy match...');
+  logger.warning(`Exact matches failed for "${params.assetName}"`);
+  logger.info('STEP 4a: Attempting fuzzy card match...');
   
-  // Perform fuzzy matching
+  // Perform fuzzy matching on card names
   const allAssets = getAllCards().map(c => c.asset);
   const topMatches = findTopMatches(params.assetName, allAssets);
   const bestMatch = topMatches.length > 0 ? topMatches[0] : null;
@@ -779,6 +932,20 @@ async function handleCardNotFound(params: {
     };
   }
   
+  // No good card name match - try fuzzy artist search
+  logger.info('STEP 4b: No good card fuzzy match, trying fuzzy artist search...');
+  const artistFuzzyMatch = findCardsByArtistFuzzy(params.assetName);
+  
+  if (artistFuzzyMatch) {
+    return await displayArtistCard({
+      artistName: artistFuzzyMatch.matchedArtist,
+      cards: artistFuzzyMatch.cards,
+      similarity: artistFuzzyMatch.similarity,
+      query: params.assetName,
+      callback: params.callback,
+    });
+  }
+  
   // Low match - just show error
   const similarityPercent = bestMatch ? (bestMatch.similarity * 100).toFixed(1) : '0.0';
   const thresholdPercent = (FUZZY_MATCH_THRESHOLDS.MODERATE * 100).toFixed(0);
@@ -823,8 +990,8 @@ export const fakeRaresCardAction: Action = {
   validate: async (runtime: IAgentRuntime, message: Memory, state?: State) => {
     const raw = message.content.text || '';
     const text = raw.trim();
-    // Accept: "/f", "/f ASSET", "/f@bot ASSET", and leading mentions like "@bot /f ASSET"
-    const fPattern = /^(?:@[A-Za-z0-9_]+\s+)?\/f(?:@[A-Za-z0-9_]+)?(?:\s+[A-Za-z0-9_-]+)?$/i;
+    // Accept: "/f", "/f ASSET", "/f ARTIST NAME" (with spaces), "/f@bot ASSET", and leading mentions like "@bot /f ASSET"
+    const fPattern = /^(?:@[A-Za-z0-9_]+\s+)?\/f(?:@[A-Za-z0-9_]+)?(?:\s+.+)?$/i;
     const matches = fPattern.test(text);
     logger.debug('Command validation', { text, matches });
     return matches;
@@ -875,14 +1042,15 @@ export const fakeRaresCardAction: Action = {
         });
       } else {
         assetName = request.assetName!;
-        logger.info('Extracted asset', { assetName });
+        logger.info('Extracted asset/artist', { input: assetName });
       }
       
-      // STEP 2-3: Lookup card URL
+      // STEP 2: Try exact card match
+      logger.step(2, 'Try exact card match');
       const { cardInfo, urlResult } = await lookupCardUrl(assetName);
       
-      // STEP 4-5: Handle result
       if (urlResult) {
+        logger.success('Exact card match found');
         return await handleCardFound({
           assetName,
           cardInfo,
@@ -890,12 +1058,28 @@ export const fakeRaresCardAction: Action = {
           isRandomCard: request.isRandomCard,
           callback,
         });
-      } else {
-        return await handleCardNotFound({
-                assetName,
+      }
+      
+      // STEP 3: Try exact artist match
+      logger.step(3, 'Try exact artist match');
+      const exactArtistMatch = findCardsByArtistExact(assetName);
+      
+      if (exactArtistMatch) {
+        logger.success('Exact artist match found', { artist: exactArtistMatch.matchedArtist });
+        return await displayArtistCard({
+          artistName: exactArtistMatch.matchedArtist,
+          cards: exactArtistMatch.cards,
+          query: assetName,
           callback,
         });
       }
+      
+      // STEP 4-5: Try fuzzy matches (card then artist)
+      logger.step(4, 'Try fuzzy matches');
+      return await handleCardNotFound({
+        assetName,
+        callback,
+      });
     } catch (error) {
       logger.separator();
       logger.error('EXCEPTION in /f handler', error instanceof Error ? error : String(error), {
