@@ -29,8 +29,9 @@ const FAKE_RARES_BASE_URL = 'https://pepewtf.s3.amazonaws.com/collections/fake-r
 // Fuzzy matching thresholds and configuration
 const FUZZY_MATCH_THRESHOLDS = {
   HIGH_CONFIDENCE: 0.75,  // ≥75% similarity: Auto-show the matched card
-  MODERATE: 0.5,          // 50-74% similarity: Show suggestions
-  TOP_SUGGESTIONS: 3,     // Number of suggestions to show for moderate matches
+  MODERATE: 0.55,          // 55-74% similarity: Show suggestions
+  ARTIST_FUZZY: 0.65,      // 65% similarity: Minimum for artist fuzzy matching
+  TOP_SUGGESTIONS: 3,      // Number of suggestions to show for moderate matches
 } as const;
 
 // ============================================================================
@@ -246,8 +247,8 @@ function findCardsByArtistFuzzy(inputArtist: string): {
   // Sort by similarity and get best match
   const bestMatch = artistMatches.sort((a, b) => b.similarity - a.similarity)[0];
 
-  // Only accept moderate or better matches (same threshold as card matching)
-  if (bestMatch.similarity < FUZZY_MATCH_THRESHOLDS.MODERATE) {
+  // Only accept moderate or better matches (higher threshold for artist matching)
+  if (bestMatch.similarity < FUZZY_MATCH_THRESHOLDS.ARTIST_FUZZY) {
     return null;
   }
 
@@ -525,7 +526,9 @@ async function sendCardWithMedia(params: {
  * Constructs the image URL for a Fake Rares card
  */
 function getFakeRaresImageUrl(assetName: string, seriesNumber: number, extension: MediaExtension): string {
-  return `${FAKE_RARES_BASE_URL}/${seriesNumber}/${assetName.toUpperCase()}.${extension}`;
+  // URL encode the asset name to handle special characters like dots and underscores
+  const encodedAssetName = encodeURIComponent(assetName.toUpperCase());
+  return `${FAKE_RARES_BASE_URL}/${seriesNumber}/${encodedAssetName}.${extension}`;
 }
 
 /**

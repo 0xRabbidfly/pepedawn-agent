@@ -4952,7 +4952,8 @@
     "artist": "Carsonate",
     "artistSlug": "Carsonat",
     "supply": 21,
-    "issuance": "October 2022"
+    "issuance": "October 2022",
+    "imageUri": "https://tokenscan.io/img/cards/A1281492670795062916.jpg"
   },
   {
     "asset": "KENPEPEYJR",
