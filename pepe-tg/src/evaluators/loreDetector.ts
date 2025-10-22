@@ -8,7 +8,27 @@ import { type Evaluator, type IAgentRuntime, type Memory, type State, ModelType,
  * Runs AFTER conversations to analyze if new information was shared
  * 
  * SCALES ACROSS ALL CARDS - No hardcoded card list!
+ * 
+ * OPTIMIZATIONS:
+ * - Simple cache for recent assessments (5 min TTL)
+ * - Early exit for very short messages
+ * - Timeout for LLM calls (8s)
  */
+
+// Simple in-memory cache for LLM assessments (hash -> result)
+const assessmentCache = new Map<string, { result: string; timestamp: number }>();
+const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
+const LLM_TIMEOUT_MS = 8000; // 8 seconds
+
+// Clean expired cache entries periodically
+setInterval(() => {
+  const now = Date.now();
+  for (const [key, value] of assessmentCache.entries()) {
+    if (now - value.timestamp > CACHE_TTL_MS) {
+      assessmentCache.delete(key);
+    }
+  }
+}, 60000); // Clean every minute
 
 export const loreDetectorEvaluator: Evaluator = {
   name: 'FAKE_RARES_LORE_DETECTOR',
@@ -48,36 +68,78 @@ export const loreDetectorEvaluator: Evaluator = {
     try {
       const text = message.content.text || '';
       
-      // Use LLM to detect if this contains new/interesting lore
-      const loreDetectionTemplate = `# Task: Detect Fake Rares Card Lore
+      // Early exit for very short messages (likely not lore)
+      if (text.length < 20) {
+        return;
+      }
+      
+      // Check cache first (use first 200 chars as key)
+      const cacheKey = text.slice(0, 200);
+      const cached = assessmentCache.get(cacheKey);
+      if (cached && (Date.now() - cached.timestamp < CACHE_TTL_MS)) {
+        // Use cached assessment
+        const containsLore = cached.result.toUpperCase().includes('CONTAINS_LORE: YES');
+        if (!containsLore) return;
+        
+        // Re-extract and store (same logic as below)
+        const cardName = extractValue(cached.result, 'CARD_NAME');
+        const loreType = extractValue(cached.result, 'LORE_TYPE');
+        const loreSummary = extractValue(cached.result, 'LORE_SUMMARY');
+        
+        if (!cardName || cardName === 'NONE') return;
+        
+        await runtime.createMemory({
+          entityId: runtime.agentId,
+          roomId: message.roomId,
+          content: {
+            text: `${cardName} Lore (${loreType}): ${loreSummary}\n\nSource: "${text}"\n\nShared by user in ${new Date().toISOString()}`,
+            type: 'curated_lore',
+            metadata: {
+              cardName,
+              loreType,
+              originalMessage: text,
+              sourceMessageId: message.id,
+              curatedAt: Date.now(),
+              confidence: 'user_contributed'
+            }
+          }
+        }, 'lore_repository');
+        
+        console.log(`✅ New lore detected (cached) for ${cardName}: ${loreSummary}`);
+        return;
+      }
+      
+      // OPTIMIZED: Shorter, more focused prompt
+      const loreDetectionTemplate = `# Detect Fake Rares Card Lore
 
-Analyze this message for factual information about Fake Rares cards:
+Message: "${text.slice(0, 300)}"
 
-Message: "${text}"
+Contains factual info about Fake Rares cards? (history, technical, cultural, anecdotes)
 
-Does this message contain:
-- Historical facts about a card (creation date, artist, series)
-- Interesting stories or anecdotes about a card
-- Technical details (editions, features, mechanics)
-- Community significance or cultural context
-- Artist intentions or meanings
-
-Respond in format:
-CONTAINS_LORE: [YES or NO]
-CARD_NAME: [card name if found, or NONE]
-LORE_TYPE: [HISTORICAL, TECHNICAL, CULTURAL, ANECDOTE, or NONE]
-LORE_SUMMARY: [one sentence summary of the lore, or NONE]
-
-Examples:
-- "WAGMIWORLD had 770 players" → YES, factual, worth saving
-- "I love FREEDOMKEK" → NO, just opinion
-- "Rare Scrilla created FREEDOMKEK after getting banned" → YES, historical fact`;
+Format:
+CONTAINS_LORE: YES/NO
+CARD_NAME: [name or NONE]
+LORE_TYPE: HISTORICAL/TECHNICAL/CULTURAL/ANECDOTE/NONE
+LORE_SUMMARY: [one sentence or NONE]`;
       
       const prompt = loreDetectionTemplate;
       
-      const assessment = await runtime.useModel(ModelType.TEXT_SMALL, {
+      // Add timeout to LLM call
+      const assessmentPromise = runtime.useModel(ModelType.TEXT_SMALL, {
         prompt,
         runtime,
+      });
+      
+      const timeoutPromise = new Promise<string>((_, reject) => 
+        setTimeout(() => reject(new Error('LLM timeout')), LLM_TIMEOUT_MS)
+      );
+      
+      const assessment = await Promise.race([assessmentPromise, timeoutPromise]) as string;
+      
+      // Cache the assessment
+      assessmentCache.set(cacheKey, {
+        result: assessment,
+        timestamp: Date.now()
       });
       
       // Parse the LLM response
