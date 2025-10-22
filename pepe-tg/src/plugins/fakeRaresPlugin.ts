@@ -1,5 +1,5 @@
 import { type Plugin } from '@elizaos/core';
-import { fakeRaresCardAction, educateNewcomerAction, startCommand, helpCommand, loreCommand } from '../actions';
+import { fakeRaresCardAction, educateNewcomerAction, startCommand, helpCommand, loreCommand, oddsCommand } from '../actions';
 import { fakeRaresContextProvider } from '../providers';
 import { loreDetectorEvaluator } from '../evaluators';
 import { FULL_CARD_INDEX } from '../data/fullCardIndex';
@@ -54,7 +54,7 @@ export const fakeRaresPlugin: Plugin = {
           // Pattern detection
           const isFCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/f(?:@[A-Za-z0-9_]+)?(?:\s+.+)?$/i.test(text);
           const isLoreCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fl/i.test(text);
-          const isOddsCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/odds$/i.test(text);
+          const isDawnCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/dawn$/i.test(text);
           const isHelpCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/help$/i.test(text);
           const isStartCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/start$/i.test(text);
           const hasCapitalizedWord = /\b[A-Z]{3,}[A-Z0-9]*\b/.test(text); // 3+ caps (likely card names)
@@ -64,7 +64,7 @@ export const fakeRaresPlugin: Plugin = {
           const runtime = params.runtime;
           const message = params.message;
 
-          console.log(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${isFCommand} isLore=${isLoreCommand} isOdds=${isOddsCommand} isHelp=${isHelpCommand} isStart=${isStartCommand} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
+          console.log(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${isFCommand} isLore=${isLoreCommand} isDawn=${isDawnCommand} isHelp=${isHelpCommand} isStart=${isStartCommand} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
           
           // === CUSTOM ACTION: /f COMMANDS ===
           if (isFCommand) {
@@ -108,9 +108,9 @@ export const fakeRaresPlugin: Plugin = {
             }
           }
           
-          // === CUSTOM ACTION: /odds COMMANDS ===
-          if (isOddsCommand) {
-            console.log('[FakeRaresPlugin] /odds detected → applying strong suppression and invoking action');
+          // === CUSTOM ACTION: /dawn COMMANDS ===
+          if (isDawnCommand) {
+            console.log('[FakeRaresPlugin] /dawn detected → applying strong suppression and invoking action');
             const actionCallback = typeof params.callback === 'function' ? params.callback : null;
             params.callback = async () => [];
 
@@ -122,10 +122,10 @@ export const fakeRaresPlugin: Plugin = {
                   message.metadata = message.metadata || {};
                   (message.metadata as any).__handledByCustom = true;
                 } catch {}
-                console.log('[FakeRaresPlugin] /odds action completed');
+                console.log('[FakeRaresPlugin] /dawn action completed');
                 return; // Done
               } else {
-                console.log('[FakeRaresPlugin] /odds validation failed');
+                console.log('[FakeRaresPlugin] /dawn validation failed');
               }
             }
           }
