@@ -1,6 +1,6 @@
 import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, type State } from '@elizaos/core';
 import { createPublicClient, http, formatEther, type Address } from 'viem';
-import { sepolia } from 'viem/chains';
+import { sepolia, mainnet } from 'viem/chains';
 import raffleAbi from '../contracts/PepedawnRaffle.abi.json';
 
 /**
@@ -30,11 +30,12 @@ const CACHE_TTL_MS = 30 * 1000; // 30 seconds cache
 const PEPEDAWN_SITE_URL = process.env.PEPEDAWN_SITE_URL || 'https://pepedawn.art';
 
 // Environment validation
-const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL || 'https://sepolia.drpc.org';
+const ETHEREUM_RPC_URL = process.env.ETHEREUM_RPC_URL || process.env.SEPOLIA_RPC_URL || 'https://sepolia.drpc.org';
 const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS as Address;
+const IS_MAINNET = process.env.ETHEREUM_NETWORK === 'mainnet';
 
 if (!CONTRACT_ADDRESS) {
-  console.warn('[oddsCommand] CONTRACT_ADDRESS not set - /odds command will fail');
+  console.warn('[oddsCommand] CONTRACT_ADDRESS not set - /dawn command will fail');
 }
 
 // ============================================================================
@@ -42,8 +43,8 @@ if (!CONTRACT_ADDRESS) {
 // ============================================================================
 
 const publicClient = createPublicClient({
-  chain: sepolia,
-  transport: http(SEPOLIA_RPC_URL),
+  chain: IS_MAINNET ? mainnet : sepolia,
+  transport: http(ETHEREUM_RPC_URL),
 });
 
 // ============================================================================
@@ -68,6 +69,7 @@ interface ParticipantStats {
   address: Address;
   tickets: bigint;
   wagered: bigint;
+  hasProof: boolean;
 }
 
 interface CachedOddsData {
@@ -182,6 +184,7 @@ async function fetchLotteryData(): Promise<CachedOddsData> {
           address: participant,
           tickets: stats[1], // tickets
           wagered: stats[0], // wagered
+          hasProof: stats[3], // hasProof
         });
       } catch (error) {
         console.error(`[oddsCommand] Failed to fetch stats for ${participant}:`, error);
@@ -212,24 +215,34 @@ async function fetchLotteryData(): Promise<CachedOddsData> {
 }
 
 /**
- * Format time until draw
+ * Calculate odds of winning at least 1 prize if user buys N tickets
+ * Uses hypergeometric distribution for drawing without replacement
+ * @param currentTotal - Current total tickets in the raffle
+ * @param buyAmount - Number of tickets user would buy
+ * @param numPrizes - Number of prizes drawn (default 10)
  */
-function formatTimeUntilDraw(endTimeUnix: bigint): string {
-  const now = Math.floor(Date.now() / 1000);
-  const endTime = Number(endTimeUnix);
-  const secondsRemaining = endTime - now;
-
-  if (secondsRemaining <= 0) {
-    return 'Drawing soon';
+function calculateBuyOdds(currentTotal: bigint, buyAmount: number, numPrizes: number = 10): string {
+  const total = Number(currentTotal) + buyAmount;
+  
+  // Edge cases
+  if (total === 0 || buyAmount === 0) return '0.00';
+  if (buyAmount >= total) return '100.00';
+  if (numPrizes >= total) return '100.00';
+  
+  // Probability of NOT winning any prizes (drawing numPrizes from tickets that aren't yours)
+  // P(win 0) = C(total-buyAmount, numPrizes) / C(total, numPrizes)
+  // We calculate this using the ratio: (total-buyAmount)! * (total-numPrizes)! / ((total-buyAmount-numPrizes)! * total!)
+  // Simplified: Product of (total-buyAmount-i)/(total-i) for i=0 to numPrizes-1
+  
+  let probWinNone = 1.0;
+  for (let i = 0; i < numPrizes; i++) {
+    probWinNone *= (total - buyAmount - i) / (total - i);
   }
-
-  const hours = Math.floor(secondsRemaining / 3600);
-  const minutes = Math.floor((secondsRemaining % 3600) / 60);
-
-  if (hours > 0) {
-    return `${hours}h ${minutes}m`;
-  }
-  return `${minutes}m`;
+  
+  // Probability of winning at least 1 prize
+  const probWinAtLeastOne = (1 - probWinNone) * 100;
+  
+  return probWinAtLeastOne.toFixed(2);
 }
 
 /**
@@ -244,20 +257,18 @@ function formatAddress(address: Address): string {
  */
 function formatOddsMessage(data: CachedOddsData): string {
   const pool = formatEther(data.totalWagered);
-  const timeUntil = formatTimeUntilDraw(data.endTime);
+  const buyTenOdds = calculateBuyOdds(data.totalTickets, 10);
   
-  let message = `🎟 **Round ${data.roundId}** • Tickets: **${data.totalTickets}** • Pool: **${pool} ETH**\n`;
-  message += `⏰ Next draw in **${timeUntil}**\n\n`;
+  let message = `🐸 **Round ${data.roundId}** • Tickets: **${data.totalTickets}** • Pool: **${pool} ETH**\n`;
+  message += `🌅 if you buy 10 tix --> odds = **${buyTenOdds}%**\n\n`;
 
   // Top 3 leaderboard
   if (data.topParticipants.length > 0) {
-    message += `**🏆 Top Participants:**\n`;
+    message += `**🏆 Leaderboard:**\n`;
     data.topParticipants.forEach((p, idx) => {
       const emoji = ['🥇', '🥈', '🥉'][idx];
-      const odds = data.totalTickets > 0n 
-        ? ((Number(p.tickets) / Number(data.totalTickets)) * 100).toFixed(2)
-        : '0.00';
-      message += `${emoji} ${formatAddress(p.address)} • ${p.tickets} tickets (${odds}%)\n`;
+      const proofBadge = p.hasProof ? ' 🧩' : '';
+      message += `${emoji} ${formatAddress(p.address)}${proofBadge} • ${p.tickets} tickets\n`;
     });
   } else {
     message += `No participants yet. Be the first! 🌅`;
@@ -271,14 +282,14 @@ function formatOddsMessage(data: CachedOddsData): string {
 // ============================================================================
 
 export const oddsCommand: Action = {
-  name: 'ODDS_COMMAND',
+  name: 'DAWN_COMMAND',
   description: 'Displays PEPEDAWN lottery odds and leaderboard from smart contract',
   similes: ['LOTTERY', 'STATS', 'LEADERBOARD'],
   examples: [],
 
   validate: async (runtime: IAgentRuntime, message: Memory) => {
     const text = message.content.text?.toLowerCase().trim() || '';
-    return text === '/odds';
+    return text === '/dawn';
   },
 
   handler: async (
