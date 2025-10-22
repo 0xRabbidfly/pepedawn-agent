@@ -298,7 +298,8 @@
     "artist": "Indelible and Cam",
     "artistSlug": "Indelible-and-Cam",
     "supply": 30,
-    "issuance": "October 2021"
+    "issuance": "October 2021",
+    "imageUri": "https://tokenscan.io/img/cards/A13878139361092822353.png"
   },
   {
     "asset": "PEPEORBIT",
