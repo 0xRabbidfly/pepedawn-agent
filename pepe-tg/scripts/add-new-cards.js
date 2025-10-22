@@ -4,8 +4,14 @@
  * 
  * This script performs a complete 2-pass data collection for new Fake Rares cards:
  * 
- * PASS 1: Collect basic structure (asset, series, card) from fakeraredirectory.com
- * PASS 2: Scrape detailed metadata from pepe.wtf (artist, supply, issuance, media)
+ * PASS 1: Extract asset names from fakeraredirectory.com
+ *   - Gets: asset name, series, card number (required)
+ *   - Gets: media URI (optional fallback for cards not yet on pepe.wtf)
+ * 
+ * PASS 2: Extract ALL metadata from pepe.wtf (authoritative source)
+ *   - Gets: artist, artistSlug, supply, issuance
+ *   - Gets: extension, image/video URIs
+ *   - Fallback: If card doesn't exist on pepe.wtf (404), use media URI from Pass 1
  * 
  * Usage: node add-new-cards.js [seriesNumbers...]
  * Examples:
@@ -43,7 +49,7 @@ const pass1Results = [];
 const pass2Results = [];
 
 // ============================================================
-// PASS 1: Collect basic card structure from fakeraredirectory.com
+// PASS 1: Extract asset names + fallback media URIs from fakeraredirectory.com
 // ============================================================
 
 async function pass1ScrapeSeries(page, seriesNum) {
@@ -75,7 +81,27 @@ async function pass1ScrapeSeries(page, seriesNum) {
         const asset = assetLink.textContent?.trim();
         if (!asset) return;
         
-        cardsData.push({ asset, series, card });
+        const cardData = { asset, series, card };
+        
+        // Try to extract media URI from fakeraredirectory (fallback only)
+        // Check for video first
+        const video = fig.querySelector('video');
+        if (video) {
+          const source = video.querySelector('source');
+          if (source && source.src) {
+            cardData.fallbackMediaUri = source.src;
+          }
+        }
+        
+        // Check for image if no video found
+        if (!cardData.fallbackMediaUri) {
+          const img = fig.querySelector('img');
+          if (img && img.src) {
+            cardData.fallbackMediaUri = img.src;
+          }
+        }
+        
+        cardsData.push(cardData);
       });
       
       return cardsData.sort((a, b) => a.card - b.card);
@@ -91,18 +117,52 @@ async function pass1ScrapeSeries(page, seriesNum) {
 }
 
 // ============================================================
-// PASS 2: Scrape detailed metadata from pepe.wtf
+// PASS 2: Extract ALL metadata from pepe.wtf (authoritative source)
 // ============================================================
 
 async function pass2ScrapeCard(page, baseCard) {
   const url = `https://pepe.wtf/asset/${baseCard.asset}`;
   
   try {
-    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+    const response = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+    
+    // Check if page exists
+    if (!response || response.status() === 404) {
+      console.log(`  ⏳ Card not yet available on pepe.wtf (404)`);
+      return {
+        artist: null,
+        artistSlug: null,
+        supply: null,
+        issuance: null,
+        ext: null,
+        notFoundOnPepeWtf: true
+      };
+    }
+    
+    if (response.status() !== 200) {
+      console.log(`  ⚠️  Unexpected status: ${response.status()}`);
+      return {
+        artist: null,
+        artistSlug: null,
+        supply: null,
+        issuance: null,
+        ext: null,
+        httpError: response.status()
+      };
+    }
+    
     await page.waitForTimeout(2000);
     
-    const metadata = await page.evaluate(() => {
+    // Pass assetName into the browser context
+    const metadata = await page.evaluate((assetName) => {
       const data = {};
+      
+      // Check if page shows "ASSET NOT FOUND"
+      const bodyText = document.body?.textContent || '';
+      if (bodyText.includes('ASSET NOT FOUND') || bodyText.includes('Asset not found')) {
+        data.assetNotFound = true;
+        return data;
+      }
       
       // Artist
       const artistLink = document.querySelector('a[href*="/artists/"]');
@@ -175,7 +235,7 @@ async function pass2ScrapeCard(page, baseCard) {
         
         // Check if it's standard S3 path with correct asset name
         const standardS3Pattern = new RegExp(
-          `https://pepewtf\\.s3\\.amazonaws\\.com/collections/fake-rares/full/\\d+/${baseCard.asset}\\.`,
+          `https://pepewtf\\.s3\\.amazonaws\\.com/collections/fake-rares/full/\\d+/${assetName}\\.`,
           'i'
         );
         
@@ -194,7 +254,20 @@ async function pass2ScrapeCard(page, baseCard) {
       // No media found
       data.ext = null;
       return data;
-    });
+    }, baseCard.asset);  // Pass asset name as parameter
+    
+    // Treat "ASSET NOT FOUND" same as 404
+    if (metadata.assetNotFound) {
+      console.log(`  ⏳ Asset not found on pepe.wtf (page shows "ASSET NOT FOUND")`);
+      return {
+        artist: null,
+        artistSlug: null,
+        supply: null,
+        issuance: null,
+        ext: null,
+        notFoundOnPepeWtf: true
+      };
+    }
     
     return metadata;
     
@@ -205,7 +278,8 @@ async function pass2ScrapeCard(page, baseCard) {
       artistSlug: null,
       supply: null,
       issuance: null,
-      ext: null
+      ext: null,
+      scrapingError: true
     };
   }
 }
@@ -221,7 +295,7 @@ async function pass2ScrapeCard(page, baseCard) {
   
   // ========== PASS 1 ==========
   console.log('\n' + '='.repeat(60));
-  console.log('PASS 1: Collecting basic card structure');
+  console.log('PASS 1: Extracting asset names from fakeraredirectory');
   console.log('='.repeat(60));
   
   for (const seriesNum of seriesToScrape) {
@@ -231,32 +305,58 @@ async function pass2ScrapeCard(page, baseCard) {
   
   console.log(`\n✅ PASS 1 Complete: ${pass1Results.length} cards collected\n`);
   
-  // Filter out cards that already exist
-  const newCards = pass1Results.filter(newCard => {
-    return !existingData.some(existing => 
-      existing.asset === newCard.asset && 
-      existing.series === newCard.series && 
-      existing.card === newCard.card
-    );
-  });
+  // Split cards into two groups:
+  // 1. Brand new cards (not in database at all)
+  // 2. Existing cards with issues (need re-scraping)
+  const newCards = [];
+  const cardsToRescrape = [];
   
-  if (newCards.length === 0) {
-    console.log('ℹ️  No new cards found - all cards already in database\n');
+  for (const card of pass1Results) {
+    const existingCard = existingData.find(existing => 
+      existing.asset === card.asset && 
+      existing.series === card.series && 
+      existing.card === card.card
+    );
+    
+    if (!existingCard) {
+      // Brand new card
+      newCards.push(card);
+    } else if (existingCard.issues && existingCard.issues.length > 0) {
+      // Existing card with issues - mark for re-scraping
+      cardsToRescrape.push(card);
+    }
+  }
+  
+  const totalToProcess = newCards.length + cardsToRescrape.length;
+  
+  if (totalToProcess === 0) {
+    console.log('ℹ️  No new cards and no cards with issues to re-scrape\n');
     await browser.close();
     return;
   }
   
-  console.log(`📌 Found ${newCards.length} NEW cards to add\n`);
+  console.log(`📌 Found ${newCards.length} NEW cards to add`);
+  if (cardsToRescrape.length > 0) {
+    console.log(`🔄 Found ${cardsToRescrape.length} existing cards with issues to re-scrape`);
+  }
+  console.log();
   
   // ========== PASS 2 ==========
   console.log('='.repeat(60));
-  console.log('PASS 2: Scraping detailed metadata from pepe.wtf');
+  console.log('PASS 2: Extracting metadata from pepe.wtf');
   console.log('='.repeat(60) + '\n');
   
-  for (let i = 0; i < newCards.length; i++) {
-    const card = newCards[i];
+  // Process both new cards and cards to re-scrape
+  const allCardsToProcess = [
+    ...newCards.map(c => ({ ...c, isNew: true })),
+    ...cardsToRescrape.map(c => ({ ...c, isNew: false }))
+  ];
+  
+  for (let i = 0; i < allCardsToProcess.length; i++) {
+    const card = allCardsToProcess[i];
+    const label = card.isNew ? '🆕 NEW' : '🔄 UPDATE';
     
-    console.log(`[${i + 1}/${newCards.length}] ${card.asset} - S${card.series} C${card.card}`);
+    console.log(`[${i + 1}/${allCardsToProcess.length}] ${label} ${card.asset} - S${card.series} C${card.card}`);
     
     const metadata = await pass2ScrapeCard(page, card);
     
@@ -271,22 +371,58 @@ async function pass2ScrapeCard(page, baseCard) {
       issuance: metadata.issuance
     };
     
-    // Add videoUri if it's an MP4
+    // Add media URIs from pepe.wtf if available
     if (metadata.videoUri) {
       fullCard.videoUri = metadata.videoUri;
     }
     
-    // Add imageUri if it's custom-hosted (tokenscan, non-standard S3, etc.)
     if (metadata.imageUri) {
       fullCard.imageUri = metadata.imageUri;
     }
     
     // Track issues
     const issues = [];
+    
+    // Determine if we should use fallback (404, error, or page exists but no data)
+    const shouldUseFallback = metadata.notFoundOnPepeWtf || 
+                              metadata.httpError || 
+                              metadata.scrapingError ||
+                              !metadata.ext; // Page exists but no media found
+    
+    // Check for page availability issues first
+    if (metadata.notFoundOnPepeWtf) {
+      issues.push('not_on_pepe_wtf');
+    } else if (metadata.httpError) {
+      issues.push(`http_error_${metadata.httpError}`);
+    } else if (metadata.scrapingError) {
+      issues.push('scraping_error');
+    }
+    
+    // Use fallback media URI if needed
+    if (shouldUseFallback && card.fallbackMediaUri) {
+      // Determine if it's video or image based on URL
+      const isVideo = card.fallbackMediaUri.match(/\.(mp4|webm|mov)($|\?)/i);
+      if (isVideo) {
+        fullCard.videoUri = card.fallbackMediaUri;
+        fullCard.ext = 'mp4';
+        console.log(`  📦 Using fallback video from fakeraredirectory`);
+      } else {
+        fullCard.imageUri = card.fallbackMediaUri;
+        // Try to extract extension from URL
+        const extMatch = card.fallbackMediaUri.match(/\.(jpg|jpeg|png|gif|webp)($|\?)/i);
+        if (extMatch) {
+          fullCard.ext = extMatch[1].toLowerCase();
+          if (fullCard.ext === 'jpg') fullCard.ext = 'jpeg';
+        }
+        console.log(`  📦 Using fallback image from fakeraredirectory`);
+      }
+    }
+    
+    // Check for missing metadata (all from pepe.wtf)
     if (!metadata.artist) issues.push('no_artist');
     if (!metadata.supply) issues.push('no_supply');
     if (!metadata.issuance) issues.push('no_issuance');
-    if (!metadata.ext) issues.push('no_extension');
+    if (!fullCard.ext) issues.push('no_extension');
     
     if (issues.length > 0) {
       fullCard.issues = issues;
@@ -304,11 +440,20 @@ async function pass2ScrapeCard(page, baseCard) {
   
   // ========== SAVE ==========
   console.log('\n' + '='.repeat(60));
-  console.log('💾 Saving new cards to database');
+  console.log('💾 Saving to database');
   console.log('='.repeat(60) + '\n');
   
-  // Merge with existing data
-  const updatedData = [...existingData, ...pass2Results];
+  // Remove old versions of cards we're updating
+  let updatedData = existingData.filter(existing => {
+    return !pass2Results.some(newCard => 
+      newCard.asset === existing.asset && 
+      newCard.series === existing.series && 
+      newCard.card === existing.card
+    );
+  });
+  
+  // Add new/updated cards
+  updatedData = [...updatedData, ...pass2Results];
   
   // Sort by series then card
   updatedData.sort((a, b) => {
@@ -318,14 +463,22 @@ async function pass2ScrapeCard(page, baseCard) {
   
   fs.writeFileSync(dataPath, JSON.stringify(updatedData, null, 2), 'utf-8');
   
-  console.log(`✅ Added ${pass2Results.length} new cards`);
+  console.log(`✅ Added ${newCards.length} new cards`);
+  if (cardsToRescrape.length > 0) {
+    console.log(`🔄 Updated ${cardsToRescrape.length} cards (resolved issues)`);
+  }
   console.log(`📦 Total cards in database: ${updatedData.length}`);
   console.log(`💾 Saved to: ${dataPath}\n`);
   
-  // Summary
-  const withIssues = pass2Results.filter(c => c.issues && c.issues.length > 0);
-  if (withIssues.length > 0) {
-    console.log(`⚠️  ${withIssues.length} new cards have issues - may need manual review`);
+  // Summary of remaining issues
+  const stillWithIssues = pass2Results.filter(c => c.issues && c.issues.length > 0);
+  const resolvedIssues = cardsToRescrape.length - stillWithIssues.filter(c => !c.isNew).length;
+  
+  if (resolvedIssues > 0) {
+    console.log(`✨ Resolved issues for ${resolvedIssues} card(s)!`);
+  }
+  if (stillWithIssues.length > 0) {
+    console.log(`⚠️  ${stillWithIssues.length} card(s) still have issues - may need manual review`);
   }
   
   console.log('\n✅ Complete!\n');
