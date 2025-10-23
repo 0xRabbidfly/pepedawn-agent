@@ -39,7 +39,7 @@ function formatCostReport(logs: ReturnType<typeof readTokenLogs>, period: string
   if (Object.keys(stats.byModel).length > 0) {
     report += `\n**By Model:**\n`;
     for (const [model, data] of Object.entries(stats.byModel)) {
-      report += `• ${model}: $${data.cost.toFixed(4)} (${data.calls} calls)\n`;
+      report += `• ${model}: $${data.cost.toFixed(4)} [${data.calls}]\n`;
     }
   }
   
@@ -51,7 +51,7 @@ function formatCostReport(logs: ReturnType<typeof readTokenLogs>, period: string
       .sort(([, a], [, b]) => b.cost - a.cost);
     
     for (const [source, data] of sortedSources) {
-      report += `• ${source}: $${data.cost.toFixed(4)} (${data.calls} calls)\n`;
+      report += `• ${source}: $${data.cost.toFixed(4)} [${data.calls}]\n`;
     }
   }
   

@@ -1,5 +1,5 @@
 import { type Plugin } from '@elizaos/core';
-import { fakeRaresCardAction, educateNewcomerAction, startCommand, helpCommand, loreCommand, oddsCommand, costCommand } from '../actions';
+import { fakeRaresCardAction, educateNewcomerAction, startCommand, helpCommand, loreCommand, oddsCommand, costCommand, fakeVisualCommand } from '../actions';
 import { fakeRaresContextProvider } from '../providers';
 import { loreDetectorEvaluator } from '../evaluators';
 import { FULL_CARD_INDEX } from '../data/fullCardIndex';
@@ -39,6 +39,7 @@ export const fakeRaresPlugin: Plugin = {
     startCommand,
     helpCommand,
     fakeRaresCardAction,
+    fakeVisualCommand,
     loreCommand,
     costCommand,
   ],
@@ -61,6 +62,7 @@ export const fakeRaresPlugin: Plugin = {
           
           // Pattern detection
           const isFCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/f(?:@[A-Za-z0-9_]+)?(?:\s+.+)?$/i.test(text);
+          const isFvCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fv\s+/i.test(text);
           const isLoreCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fl/i.test(text);
           const isDawnCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/dawn$/i.test(text);
           const isHelpCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/help$/i.test(text);
@@ -70,7 +72,7 @@ export const fakeRaresPlugin: Plugin = {
           const hasBotMention = /@pepedawn_bot/i.test(text);
           const isReplyToBot = params?.message?.content?.inReplyTo; // User replied to bot's message
 
-          console.log(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${isFCommand} isLore=${isLoreCommand} isDawn=${isDawnCommand} isHelp=${isHelpCommand} isStart=${isStartCommand} isCost=${isCostCommand} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
+          console.log(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${isFCommand} isFv=${isFvCommand} isLore=${isLoreCommand} isDawn=${isDawnCommand} isHelp=${isHelpCommand} isStart=${isStartCommand} isCost=${isCostCommand} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
           
           // === CUSTOM ACTION: /f COMMANDS ===
           if (isFCommand) {
@@ -90,6 +92,26 @@ export const fakeRaresPlugin: Plugin = {
                   (message.metadata as any).__handledByCustom = true;
                 } catch {}
                 console.log('[FakeRaresPlugin] /f action completed');
+                return; // Done
+              }
+            }
+          }
+          
+          // === CUSTOM ACTION: /fv COMMANDS ===
+          if (isFvCommand) {
+            console.log('[FakeRaresPlugin] /fv detected → applying strong suppression and invoking action');
+            const actionCallback = typeof params.callback === 'function' ? params.callback : null;
+            params.callback = async () => [];
+            
+            if (fakeVisualCommand.validate && fakeVisualCommand.handler) {
+              const isValid = await fakeVisualCommand.validate(runtime, message);
+              if (isValid) {
+                await fakeVisualCommand.handler(runtime, message, params.state, {}, actionCallback ?? undefined);
+                try {
+                  message.metadata = message.metadata || {};
+                  (message.metadata as any).__handledByCustom = true;
+                } catch {}
+                console.log('[FakeRaresPlugin] /fv action completed');
                 return; // Done
               }
             }

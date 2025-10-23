@@ -103,6 +103,7 @@ Complete this checklist to get PEPEDAWN running on your own server.
 - [ ] Paste this list:
   ```
   f - View a Fake Rares card or random card by artist
+  fv - Analyze card visuals and memes with AI vision (reads text + commentary)
   fl - Get AI-powered lore stories from community history
   fc - View token costs (admin-only)
   start - Welcome message and quick guide
@@ -127,6 +128,7 @@ Complete this checklist to get PEPEDAWN running on your own server.
   ```
   /start
   /f FREEDOMKEK
+  /fv FREEDOMKEK
   /help
   ```
 
@@ -380,9 +382,10 @@ This enables the `/fl` (lore) command with AI-powered stories from community his
 
 - [ ] **Test in Telegram:**
   ```
-  /start      → Should show welcome
+  /start        → Should show welcome
   /f FREEDOMKEK → Should show card
-  /fc d       → Should show today's costs
+  /fv FREEDOMKEK → Should show memetic analysis
+  /fc d         → Should show today's costs
   ```
 
 **✅ If all commands work, deployment successful!**
@@ -410,6 +413,7 @@ This enables the `/fl` (lore) command with AI-powered stories from community his
   /f FREEDOMKEK
   /f Rare Scrilla
   /f
+  /fv FREEDOMKEK
   ```
 
 - [ ] **Lore** (if knowledge base configured):

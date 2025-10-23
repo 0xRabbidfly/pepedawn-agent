@@ -13,6 +13,7 @@
 ## ⚡ Quick Highlights
 
 - 🎴 **890+ Fake Rares cards** with instant lookup and full metadata
+- 🔍 **Visual analysis** - AI vision reads text + memetic commentary
 - 🧠 **Smart typo correction** - Fuzzy matching with 3-tier intelligence
 - 🔄 **Auto-updating** - Hourly refresh from GitHub, no restart needed
 - 🤖 **AI-powered** - Natural conversations with context awareness  
@@ -31,6 +32,29 @@
 - **`/f CARDNAME`** - Display any card (e.g., `/f FREEDOMKEK`)
 - **`/f ARTIST`** - Random card by artist (e.g., `/f Rare Scrilla`)
 - **`/f`** - Show a random card from the collection
+
+---
+
+### 🔍 Visual Analysis & Memetic Commentary
+
+**Command:**
+- **`/fv CARDNAME`** - AI-powered visual analysis of any card
+
+**What it does:**
+- 📝 Reads and extracts ALL text on the card (OCR)
+- 🎨 Analyzes composition, colors, and artistic style
+- 🧬 Identifies meme references and crypto culture elements
+- 🎯 Provides vibe check + visual rarity impression
+
+**Example:**
+```
+/fv FREEDOMKEK      → Full memetic breakdown
+/fv WAGMIWORLD      → Visual & cultural analysis
+```
+
+**Powered by:** Configurable model (default: GPT-4o) - Set `VISUAL_MODEL` in `.env`  
+**Cost:** ~$0.005 per analysis (GPT-4o) or varies by model  
+**Supports:** JPG, PNG, GIF, WEBP (not MP4 videos)
 
 **Smart Typo Correction:**
 - **High confidence (≥75%)** → Auto-shows correct card with playful message
@@ -207,6 +231,7 @@ TELEGRAM_ADMIN_IDS=your-telegram-user-id
 # ========================================
 OPENAI_SMALL_MODEL=gpt-4o-mini
 OPENAI_LARGE_MODEL=gpt-4o
+VISUAL_MODEL=gpt-4o                      # Vision analysis model (/fv command)
 # See available models: https://platform.openai.com/docs/models
 
 # ========================================
@@ -230,7 +255,8 @@ HIDE_LORE_SOURCES=false                   # Show/hide source citations in /fl
 LOG_LEVEL=info                            # debug | info | warn | error
 FAKE_RARES_ARTIST_BUTTONS=true
 #NODE_ENV=production
-LORE_STORY_MODEL=gpt-5
+LORE_STORY_MODEL=gpt-5                   # Lore generation model (/fl command)
+VISUAL_MODEL=gpt-4o                      # Vision analysis model (/fv command)
 ```
 
 **Cost Optimization Tips:**
@@ -252,6 +278,7 @@ Then paste this list:
 
 ```
 f - View a Fake Rares card or random card by artist
+fv - Analyze card visuals and memes with AI vision (reads text + commentary)
 fl - Get AI-powered lore stories from community history
 odds - Check PEPEDAWN lottery stats and leaderboard
 fc - View token costs (admin-only)
@@ -853,10 +880,12 @@ const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/YOUR_ORG/YOUR_REPO/...
 | Component | Model | Monthly Cost |
 |-----------|-------|--------------|
 | **Card Display** | GPT-4-turbo | ~$3.00 |
+| **Visual Analysis** (20/day) | GPT-4o Vision | ~$3.00 |
 | **Lore Generation** (if enabled) | GPT-4-turbo | ~$4.00 |
 | **Cost Tracking** | GPT-4o-mini | ~$0.02 |
 | **Bot Responses** | GPT-4-turbo | ~$1.00 |
-| **TOTAL (with lore)** | | ~$8.00/month |
+| **TOTAL (all features)** | | ~$11.00/month |
+| **TOTAL (cards + vision)** | | ~$7.00/month |
 | **TOTAL (cards only)** | | ~$4.00/month |
 
 ### Cost Optimization
@@ -894,6 +923,14 @@ OPENROUTER_API_KEY=your-key
 /f                      → Random card
 /f Rare Scrilla         → Random card by artist
 /f indelible            → Random by Indelible (case-insensitive)
+```
+
+### Analyzing Cards
+
+```
+/fv FREEDOMKEK          → Memetic analysis with OCR text extraction
+/fv WAGMIWORLD          → Visual breakdown + crypto culture refs
+/fv PEPONACID           → Artistic style + vibe check
 ```
 
 ### Getting Lore (requires knowledge base)

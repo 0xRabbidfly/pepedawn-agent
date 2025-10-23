@@ -225,6 +225,7 @@ PEPEDAWN follows ElizaOS architectural patterns:
 5. **Update BotFather commands:**
    ```
    stats - View collection statistics
+   fv - Analyze card visuals and memes with AI vision
    ```
 
 6. **Update documentation:**

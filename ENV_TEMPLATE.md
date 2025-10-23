@@ -54,6 +54,10 @@ PGLITE_DATA_DIR=<path_to_db>.eliza/.elizadb
 OPENAI_SMALL_MODEL=gpt-4o-mini
 OPENAI_LARGE_MODEL=gpt-4o
 
+# Vision analysis model for /fv command (default: gpt-4o)
+# Can also use: gpt-5, o1, o3-mini for advanced vision capabilities
+VISUAL_MODEL=gpt-4o
+
 # ========================================
 # OPTIONAL: Alternative AI Providers
 # ========================================
@@ -112,7 +116,10 @@ OPENAI_LARGE_MODEL=gpt-4o
 FAKE_RARES_ARTIST_BUTTONS=true
 
 # Premium model for lore stories only
-LORE_STORY_MODEL=gpt-5  
+LORE_STORY_MODEL=gpt-5
+
+# Vision analysis model for /fv command
+# VISUAL_MODEL=gpt-4o
 
 # ========================================
 # OPTIONAL: Advanced Configuration

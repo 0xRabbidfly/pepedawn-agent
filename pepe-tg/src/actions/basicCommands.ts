@@ -75,11 +75,13 @@ export const helpCommand: Action = {
 
 \`/f CARDNAME\` - View any Fake Rares card
 \`/f ARTIST\` - Random card by artist (supports misspellings!)
+\`/fv CARDNAME\` - Analyze card visuals & memes with AI vision
 \`/fl [topic]\` - Get lore stories from community history
 \`/start\` - Welcome message
 
 **Examples:**
 • \`/f FREEDOMKEK\` • \`/f Rare Scrilla\` • \`/f\` (random)
+• \`/fv WAGMIWORLD\` - Get memetic analysis
 
 Just chat naturally or mention me with @pepedawn_bot 🐸`;
 
