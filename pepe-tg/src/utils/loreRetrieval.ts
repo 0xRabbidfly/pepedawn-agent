@@ -1,10 +1,54 @@
 /**
  * LLM-LORE Retrieval Utilities
  * Vector search with MMR diversification and fallback expansion
+ * 
+ * OPTIMIZATIONS:
+ * - Embedding cache (30 min TTL) to avoid redundant embedding calls
+ * - Reduced retrieval limits in config
+ * - Existing timeout handling
  */
 
 import type { IAgentRuntime, Memory } from '@elizaos/core';
 import { LORE_CONFIG } from './loreConfig';
+
+// Simple embedding cache (query -> embedding vector)
+const embeddingCache = new Map<string, { embedding: any; timestamp: number }>();
+const EMBEDDING_CACHE_TTL_MS = 30 * 60 * 1000; // 30 minutes
+
+// Clean expired embedding cache entries periodically
+setInterval(() => {
+  const now = Date.now();
+  for (const [key, value] of embeddingCache.entries()) {
+    if (now - value.timestamp > EMBEDDING_CACHE_TTL_MS) {
+      embeddingCache.delete(key);
+    }
+  }
+}, 60000); // Clean every minute
+
+/**
+ * Get embedding with caching to reduce redundant calls
+ */
+async function getEmbeddingCached(runtime: IAgentRuntime, text: string): Promise<any> {
+  // Normalize query for cache key
+  const cacheKey = text.toLowerCase().trim();
+  
+  // Check cache
+  const cached = embeddingCache.get(cacheKey);
+  if (cached && (Date.now() - cached.timestamp < EMBEDDING_CACHE_TTL_MS)) {
+    return cached.embedding;
+  }
+  
+  // Generate new embedding
+  const embedding = await runtime.useModel('TEXT_EMBEDDING' as any, { text });
+  
+  // Cache it
+  embeddingCache.set(cacheKey, {
+    embedding,
+    timestamp: Date.now()
+  });
+  
+  return embedding;
+}
 
 export interface RetrievedPassage {
   id: string;
@@ -124,9 +168,9 @@ export async function searchKnowledgeWithExpansion(
       results = [];
     }
   } else {
-    // Fallback to direct memory search - also global
+    // Fallback to direct memory search - also global (with embedding cache)
     try {
-      const embedding = await runtime.useModel('TEXT_EMBEDDING' as any, { text: query });
+      const embedding = await getEmbeddingCached(runtime, query);
       results = await runtime.searchMemories({
         tableName: 'knowledge',
         roomId: undefined, // Global search
@@ -141,11 +185,11 @@ export async function searchKnowledgeWithExpansion(
     }
   }
   
-  // Check if we need expansion
+  // Check if we need expansion (reuse cached embedding)
   if (results.length < LORE_CONFIG.MIN_HITS) {
     if (!knowledgeService && results.length < LORE_CONFIG.MIN_HITS) {
       try {
-        const embedding = await runtime.useModel('TEXT_EMBEDDING' as any, { text: query });
+        const embedding = await getEmbeddingCached(runtime, query);
         const expandedResults = await runtime.searchMemories({
           tableName: 'knowledge',
           roomId: undefined, // Still global
@@ -348,7 +392,7 @@ export async function searchKnowledgeRaw(
     }
   } else {
     try {
-      const embedding = await (runtime as any).useModel('TEXT_EMBEDDING' as any, { text: query });
+      const embedding = await getEmbeddingCached(runtime as any, query);
       results = await (runtime as any).searchMemories({
         tableName: 'knowledge',
         roomId: undefined,

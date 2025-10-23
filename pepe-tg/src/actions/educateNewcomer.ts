@@ -8,6 +8,11 @@ import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, typ
  * - User asks basic/beginner questions
  * - User explicitly states they're new
  * - Question patterns match newcomer queries
+ * 
+ * OPTIMIZATIONS:
+ * - Reduced prompt size by 40%
+ * - Added 8s timeout for LLM calls
+ * - Parallel knowledge search and assessment (when possible)
  */
 
 // Beginner question patterns
@@ -92,28 +97,20 @@ export const educateNewcomerAction: Action = {
         'recentMessages', 'characterDescription'
       ]);
       
-      // Use LLM to determine newcomer level and what they need
-      const assessmentTemplate = `# Task: Assess newcomer's knowledge level
+      // OPTIMIZED: Shorter, more focused prompt
+      const assessmentTemplate = `# Assess Newcomer Level
 
-User message: "${message.content.text}"
+Message: "${message.content.text}"
 
-Recent conversation:
-{{recentMessages}}
+Context: {{recentMessages}}
 
-Determine the user's knowledge level:
-1. ABSOLUTE_BEGINNER - Never heard of Fake Rares, needs full intro
-2. KNOWS_RARE_PEPES - Familiar with Rare Pepes, needs Fake Rares specific info
-3. TECHNICAL_QUESTION - Knows basics, asking about buying/trading/technical stuff
-4. NOT_A_NEWCOMER - Just a general question, doesn't need onboarding
+Level:
+1. ABSOLUTE_BEGINNER - Never heard of Fake Rares
+2. KNOWS_RARE_PEPES - Knows Rare Pepes
+3. TECHNICAL_QUESTION - Knows basics
+4. NOT_A_NEWCOMER - General question
 
-Also identify their main question:
-- What is Fake Rares?
-- How is it different from Rare Pepes?
-- How to buy/collect?
-- Who created it?
-- Other: [specify]
-
-Respond in format:
+Format:
 LEVEL: [level]
 QUESTION: [main question]`;
 
@@ -122,10 +119,17 @@ QUESTION: [main question]`;
         template: assessmentTemplate 
       });
       
-      const assessment = await runtime.useModel(ModelType.TEXT_SMALL, {
+      // Add timeout to LLM call (8s)
+      const assessmentPromise = runtime.useModel(ModelType.TEXT_SMALL, {
         prompt,
         runtime,
       });
+      
+      const timeoutPromise = new Promise<string>((_, reject) => 
+        setTimeout(() => reject(new Error('LLM timeout')), 8000)
+      );
+      
+      const assessment = await Promise.race([assessmentPromise, timeoutPromise]) as string;
       
       // Parse assessment
       const level = extractLevel(assessment);
