@@ -1,18 +1,23 @@
 {
   "name": "pepe-tg",
-  "description": "Project starter for elizaOS",
-  "version": "0.1.0",
+  "description": "PEPEDAWN - AI-powered Telegram bot for Fake Rares community",
+  "version": "1.2.0",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "keywords": [
-    "project",
-    "elizaos"
+    "telegram-bot",
+    "elizaos",
+    "fake-rares",
+    "nft",
+    "ai-agent",
+    "cryptocurrency",
+    "rare-pepes"
   ],
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/0xrabbidfly/pepedawn-agent.git"
   },
   "exports": {
     "./package.json": "./package.json",

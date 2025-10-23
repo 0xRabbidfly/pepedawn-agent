@@ -732,7 +732,7 @@ cache.set('PEPEBASQUIAT.jpg', fileIdJpg);
 - [ ] Deploy to production with flag off
 - [ ] Enable flag and monitor
 - [ ] Add cache statistics command
-- [ ] Document cache behavior in TECHNICAL_HANDOVER.md
+- [ ] Document cache behavior in main README.md when implemented
 
 ---
 

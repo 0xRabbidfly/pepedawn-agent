@@ -1,44 +1,40 @@
-# Project Starter
+# PEPEDAWN Bot
 
-This is the starter template for ElizaOS projects.
+> **📘 Main Documentation:** [../README.md](../README.md)
 
-## Features
+This directory contains the PEPEDAWN bot application.
 
-- Pre-configured project structure for ElizaOS development
-- Comprehensive testing setup with component and e2e tests
-- Default character configuration with plugin integration
-- Example service, action, and provider implementations
-- TypeScript configuration for optimal developer experience
-- Built-in documentation and examples
+---
 
-## Getting Started
+## Quick Start
 
 ```bash
-# Create a new project
-elizaos create -t project my-project
-# Dependencies are automatically installed and built
-
-# Navigate to the project directory
-cd my-project
-
-# Start development immediately
-elizaos dev
+bun install                    # Install dependencies
+cp .env.example .env          # Configure (see ENV_TEMPLATE.md)
+bun run dev                   # Start development
 ```
 
-## Development
+## Key Commands
 
 ```bash
-# Start development with hot-reloading (recommended)
-elizaos dev
-
-# OR start without hot-reloading
-elizaos start
-# Note: When using 'start', you need to rebuild after changes:
-# bun run build
-
-# Test the project
-elizaos test
+bun run dev          # Development (hot-reload)
+bun run start        # Production
+bun test             # Run tests
+bun run lint         # Format code
 ```
+
+## Documentation
+
+- **[Setup Guide](../README.md)** - Complete installation & deployment
+- **[Setup Checklist](../SETUP_CHECKLIST.md)** - Step-by-step for beginners
+- **[Environment Vars](../ENV_TEMPLATE.md)** - Configuration reference
+- **[Scripts](scripts/README.md)** - Utility scripts documentation
+- **[Contributing](../CONTRIBUTING.md)** - Architecture & development
+- **[Telegram Docs](telegram_docs/)** - Feature-specific technical docs
+
+---
+
+*For everything else, see [../README.md](../README.md)*
 
 ## Testing
 

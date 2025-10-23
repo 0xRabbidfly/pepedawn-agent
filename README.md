@@ -4,74 +4,142 @@
 
 **PEPEDAWN** is built on [ElizaOS](https://elizaos.ai) and embodies the spirit of the Fake Rares community - knowing every card, every artist, and every meme from the movement that started when Rare Scrilla got banned and created La Faka Nostra.
 
+[![ElizaOS](https://img.shields.io/badge/ElizaOS-v1.6.2-blue)](https://elizaos.ai)
+[![Bun](https://img.shields.io/badge/Bun-v1.0+-orange)](https://bun.sh)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+
+---
+
 ## ⚡ Quick Highlights
 
-- 🎴 **950+ Fake Rares cards** with instant lookup and full metadata
+- 🎴 **890+ Fake Rares cards** with instant lookup and full metadata
 - 🧠 **Smart typo correction** - Fuzzy matching with 3-tier intelligence
-- 🔄 **Auto-updating** - New cards appear within hours, no restart needed
-- 🤖 **AI-powered** - Natural conversations with context awareness
+- 🔄 **Auto-updating** - Hourly refresh from GitHub, no restart needed
+- 🤖 **AI-powered** - Natural conversations with context awareness  
+- 📚 **Knowledge base** - Optional: Search 264k+ embedded Telegram messages
+- 💰 **Cost tracking** - Built-in token usage monitoring (admin-only)
 - ⚡ **Performance optimized** - Refactored for speed and maintainability
 - 📊 **Production-ready** - Structured logging, type-safe, tested
 
+---
+
 ## 🌟 Features
-
-### 📚 LLM-LORE: AI-Powered Lore Storytelling
-
-**New Feature:** Get personalized, grounded stories from 3+ years of community history!
-
-**Commands:**
-- **`/lore TOPIC`** - AI generates unique stories from Telegram history + pepe.wtf wiki
-- **`/lore`** - Random lore from the community vault
-
-**How it works:**
-1. Searches local vector database (Telegram messages + wiki)
-2. Clusters relevant passages for diversity
-3. Generates PEPEDAWN-persona story (120-180 words)
-4. Includes compact source citations (e.g., `tg:1234, wiki:purple-era`)
-5. Each telling is unique while staying grounded in real history
-
-**Examples:**
-- `/lore purple subasset era` → Stories about that specific time
-- `/lore Rare Scrilla` → Lore about the founder
-- `/lore FREEDOMKEK` → The genesis card's history
-- `/lore` → Surprise me with community history!
 
 ### 🎴 Card Viewing with Fuzzy Matching
 
 **Commands:**
 - **`/f CARDNAME`** - Display any card (e.g., `/f FREEDOMKEK`)
+- **`/f ARTIST`** - Random card by artist (e.g., `/f Rare Scrilla`)
 - **`/f`** - Show a random card from the collection
 
 **Smart Typo Correction:**
 - **High confidence (≥75%)** → Auto-shows correct card with playful message
-- **Moderate (50-74%)** → Suggests top 3 possible matches
-- **Low (<50%)** → Shows helpful error with pepe.wtf link
+- **Moderate (55-74%)** → Suggests top 3 possible matches
+- **Low (<55%)** → Shows helpful error with search tips
 
 **Clean Preview Display:**
-- Card image/video preview displays inline
+- Card image/video preview displays inline in Telegram
 - No asset URLs shown (clean, professional presentation)
 - Includes: Artist, supply, issuance date, series info, artist profile button
 - Fallback: Shows card metadata if preview fails (no broken URLs)
 
+**Example:**
+```
+/f FREEDOMKEK      → Shows genesis card
+/f PEEP            → Auto-corrects to PEPE (fuzzy match)
+/f FREEDOM         → Suggests: FREEDOMKEK, FREEDOMWAR
+/f Rare Scrilla    → Random card by artist
+```
+
+---
+
+### 📚 LLM-LORE: AI-Powered Lore Storytelling
+
+**Commands:**
+- **`/fl TOPIC`** - AI generates unique stories from Telegram history + pepe.wtf wiki
+- **`/fl`** - Random lore from the community vault
+
+**How it works:**
+1. Searches local vector database (Telegram messages + wiki content)
+2. Clusters relevant passages for diversity (MMR algorithm)
+3. Generates PEPEDAWN-persona story (120-180 words)
+4. Includes compact source citations (e.g., `tg:1234, wiki:purple-era`)
+5. Each telling is unique while staying grounded in real history
+
+**Examples:**
+- `/fl purple subasset era` → Stories about that specific time
+- `/fl Rare Scrilla` → Lore about the founder
+- `/fl FREEDOMKEK` → The genesis card's history
+- `/fl` → Surprise me with community history!
+
+**Note:** Requires knowledge base setup (optional - see [Knowledge Base Setup](#-knowledge-base-setup-optional))
+
+---
+
+### 🎰 Lottery Stats (If Deployed)
+
+**Commands:**
+- **`/odds`** - Check PEPEDAWN lottery stats and leaderboard
+
+Displays real-time data from Ethereum smart contract:
+- Current round number
+- Total tickets sold  
+- Prize pool (ETH)
+- Top 3 participants
+- Time until draw
+
+**Note:** Requires contract configuration (see [Lottery Feature Setup](#-lottery-feature-setup-optional))
+
+---
+
+### 💰 Cost Monitoring (Admin Only)
+
+**Commands:**
+- **`/fc d`** - Today's token usage and costs
+- **`/fc m`** - Current month's costs
+
+Provides detailed breakdown:
+- Total cost in USD
+- Tokens in/out
+- API call counts
+- Per-model breakdown
+- Per-feature breakdown (lore, card display, etc.)
+
+**Access:** Only admins specified in `TELEGRAM_ADMIN_IDS` can use this command.
+
+---
+
 ### 🔄 Auto-Updating System
 
-**Completely automated new card discovery:**
+**Hourly GitHub Refresh:**
+1. Bot checks GitHub every hour for updated `fake-rares-data.json`
+2. If new cards found, automatically updates in-memory index
+3. **No restart required** - zero-downtime updates
 
-1. **GitHub Action** runs daily at 12pm UTC
-2. **Scrapes** series 18-25 from pepe.wtf and fakeraredirectory.com
-3. **Creates PR** only if new cards found
-4. **You review & merge** the changes
-5. **Bot auto-refreshes** every hour from GitHub (no restart needed!)
+**Manual Scraping:**
+```bash
+# Scrape new cards from pepe.wtf and fakeraredirectory.com
+node scripts/add-new-cards.js 18 19 20
 
-**Timeline:** New card released → Discovered within 24h → Available to users within 1h of merge
+# Commit and push
+git add src/data/fake-rares-data.json
+git commit -m "Add new cards from series 18-20"
+git push
+```
+
+**Timeline:** New card released → Manually scraped → Pushed to GitHub → Available to users within 1 hour
+
+<TODO>**GitHub Action (Not Yet Implemented):** Automated daily scraping workflow</TODO>
+
+---
 
 ### 🧠 AI Intelligence
 
 - Natural language conversations about Fake Rares
 - Context-aware responses with community memory
-- Automatic lore sharing when cards mentioned
+- Artist and card knowledge (890+ cards, 200+ artists)
 - Newcomer education and onboarding
-- Knowledge base search across Telegram history
+- Optional: Knowledge base search across 264k+ Telegram messages
 
 ---
 
@@ -79,7 +147,10 @@
 
 ### Prerequisites
 
-- **[Bun](https://bun.sh)** v1.0.0+ (`curl -fsSL https://bun.sh/install | bash`)
+- **[Bun](https://bun.sh)** v1.0.0+ (required for ElizaOS)
+  ```bash
+  curl -fsSL https://bun.sh/install | bash
+  ```
 - **Node.js** v18+ (for some dependencies)
 - **Git**
 
@@ -93,33 +164,87 @@ cd pepedawn-agent/pepe-tg
 # 2. Install dependencies
 bun install
 
-# 3. Create .env file
-touch .env
+# 3. Create environment file
+cp .env.example .env
+# Edit .env with your API keys (see below)
 ```
 
-### Environment Configuration
+---
 
-Add to `.env`:
+## 🔧 Environment Configuration
+
+### Required Variables
+
+Create `.env` file with these **required** settings:
 
 ```bash
-# REQUIRED: AI Provider (choose one)
-OPENAI_API_KEY=sk-your-key-here           # Recommended
-# ANTHROPIC_API_KEY=your-key-here         # Alternative
-# OPENROUTER_API_KEY=your-key-here        # Alternative
+# ========================================
+# REQUIRED: AI Provider
+# ========================================
+OPENAI_API_KEY=sk-your-openai-key-here
 
-# REQUIRED: Telegram
+# ========================================
+# REQUIRED: Telegram Bot
+# ========================================
 TELEGRAM_BOT_TOKEN=your-bot-token-here
 
-# OPTIONAL: Cost optimization
-TEXT_MODEL=gpt-4o-mini                    # Cheaper model
-SMALL_OPENAI_MODEL=gpt-4o-mini
+# ========================================
+# REQUIRED: Admin Access (for /fc command)
+# ========================================
+TELEGRAM_ADMIN_IDS=your-telegram-user-id
 ```
 
 **Get API Keys:**
-- **OpenAI:** [platform.openai.com](https://platform.openai.com/api-keys)
-- **Telegram:** Message [@BotFather](https://t.me/BotFather) → `/newbot`
+- **OpenAI:** [platform.openai.com/api-keys](https://platform.openai.com/api-keys)
+- **Telegram Bot Token:** Message [@BotFather](https://t.me/BotFather) → `/newbot` → Follow prompts
+- **Your Telegram User ID:** Message [@userinfobot](https://t.me/userinfobot) to get your ID
 
-### Setup Bot Commands
+### Optional Variables
+
+```bash
+# ========================================
+# OPTIONAL: Model Configuration
+# ========================================
+TEXT_MODEL=gpt-4o-mini                    # Main model (default: gpt-4-turbo)
+SMALL_OPENAI_MODEL=gpt-4o-mini            # Small model for simple tasks
+# See available models: https://platform.openai.com/docs/models
+
+# ========================================
+# OPTIONAL: Alternative AI Providers
+# ========================================
+ANTHROPIC_API_KEY=your-anthropic-key      # For Claude models
+OPENROUTER_API_KEY=your-openrouter-key    # For 20% cost savings
+
+# ========================================
+# OPTIONAL: Knowledge Base (for /fl command)
+# ========================================
+# See "Knowledge Base Setup" section below
+# KNOWLEDGE_PATH=./docs/chunks
+# LOAD_DOCS_ON_STARTUP=true
+
+# ========================================
+# OPTIONAL: Lottery Feature (Ethereum)
+# ========================================
+SEPOLIA_RPC_URL=https://sepolia.drpc.org
+CONTRACT_ADDRESS=0xfd4BE1898Ee3d529aE06741001D3211914C1B90A
+PEPEDAWN_SITE_URL=https://pepedawn.xyz
+
+# ========================================
+# OPTIONAL: System Configuration
+# ========================================
+SUPPRESS_BOOTSTRAP=true                   # Reduce debug logs
+HIDE_LORE_SOURCES=false                   # Show/hide source citations in /fl
+LOG_LEVEL=info                            # debug | info | warn | error
+```
+
+**Cost Optimization Tips:**
+- Use `gpt-4o-mini` for both models → ~$1-3/month
+- Use `gpt-4-turbo` for TEXT_MODEL + `gpt-4o-mini` for SMALL → ~$8/month (better quality)
+- Use OpenRouter → 20% savings on same models
+
+---
+
+## 🎮 Bot Commands Setup
 
 Message [@BotFather](https://t.me/BotFather) in Telegram:
 
@@ -127,43 +252,670 @@ Message [@BotFather](https://t.me/BotFather) in Telegram:
 /setcommands
 ```
 
-Then paste:
+Then paste this list:
+
 ```
-f - View a Fake Rares card or random card
-lore - Get AI-powered lore stories from community history
+f - View a Fake Rares card or random card by artist
+fl - Get AI-powered lore stories from community history
+odds - Check PEPEDAWN lottery stats and leaderboard
+fc - View token costs (admin-only)
 start - Welcome message and quick guide
 help - Show detailed instructions
 ```
 
-### Run
+**Note:** The `/fc` (cost) and `/odds` (lottery) commands will only work if you have the necessary environment variables configured.
+
+---
+
+## 🏃 Running the Bot
+
+### Development (Hot-reload)
 
 ```bash
-# Development (with hot-reload)
+cd pepe-tg
 bun run dev
+```
 
-# Production
+Changes to `.ts` files will auto-reload.
+
+### Production
+
+```bash
+# 1. Build
 bun run build
+
+# 2. Start
 bun run start
+```
+
+### Verify It's Working
+
+In Telegram, message your bot:
+```
+/start
+/f FREEDOMKEK
+```
+
+You should see the welcome message and the FREEDOMKEK card image.
+
+---
+
+## 📊 Card Data Setup
+
+### Included: 890+ Cards
+
+The repository includes `src/data/fake-rares-data.json` with **890+ pre-indexed cards** (Series 0-18).
+
+**Data structure:**
+```json
+{
+  "asset": "FREEDOMKEK",
+  "series": 0,
+  "card": 1,
+  "ext": "jpeg",
+  "artist": "Rare Scrilla",
+  "artistSlug": "Rare-Scrilla",
+  "supply": 298,
+  "issuance": "October 2017"
+}
+```
+
+**Optional fields:**
+- `imageUri` - Override S3 URL with custom URL (for problematic assets)
+- `videoUri` - Direct video URL (often on Arweave for MP4 files)
+- `issues` - Data quality flags (e.g., `["no_artist", "no_supply"]`)
+
+### Adding New Cards
+
+**Method 1: Automated Scraping (Recommended)**
+
+```bash
+# Scrape specific series from pepe.wtf + fakeraredirectory.com
+cd pepe-tg
+node scripts/add-new-cards.js 19 20 21
+
+# Review changes
+git diff src/data/fake-rares-data.json
+
+# Commit and push
+git add src/data/fake-rares-data.json
+git commit -m "Add new cards from series 19-21"
+git push origin main
+```
+
+The bot automatically refreshes from GitHub every hour - new cards appear within 60 minutes!
+
+**Method 2: Manual Entry**
+
+Edit `src/data/fake-rares-data.json` and add card objects following the structure above.
+
+### Fixing Problematic Assets
+
+Some cards don't display properly through S3 (wrong format, WEBP issues, etc).
+
+**Solution:**
+1. Convert/fix the asset (e.g., WEBP → JPG, compress MP4)
+2. Place in `pepe-tg/src/assets/images/` or `pepe-tg/src/assets/videos/`
+3. Add override in `fake-rares-data.json`:
+
+```json
+{
+  "asset": "THEBIGDEGEN",
+  "imageUri": "https://raw.githubusercontent.com/YOUR_USERNAME/pepedawn-agent/master/pepe-tg/src/assets/images/THEBIGDEGEN.jpg"
+}
+```
+
+See `pepe-tg/src/assets/README.md` for detailed instructions.
+
+---
+
+## 📚 Knowledge Base Setup (Optional)
+
+The `/fl` (lore) command requires an embedded knowledge base. If you don't set this up, `/fl` will not work.
+
+### Quick Start (No Knowledge Base)
+
+If you just want card display (`/f`), **skip this section entirely**. The bot works perfectly without it!
+
+### Full Setup (With Lore Feature)
+
+**Requirements:**
+- Telegram chat export (JSON format)
+- OR markdown/text documents you want to embed
+
+**Steps:**
+
+1. **Prepare your documents:**
+   ```bash
+   mkdir -p pepe-tg/docs/chunks
+   # Place your .md or .txt files in docs/chunks/
+   ```
+
+2. **Add to `.env`:**
+   ```bash
+   KNOWLEDGE_PATH=./docs/chunks
+   LOAD_DOCS_ON_STARTUP=true
+   ```
+
+3. **First run (generates embeddings):**
+   ```bash
+   bun run dev
+   # Wait for "✅ Knowledge indexed" message
+   # This can take 10-30 minutes for large datasets
+   ```
+
+4. **Database backup (important!):**
+   ```bash
+   ./scripts/backup-db.sh after-embeddings
+   # Embeddings are stored in .eliza/.elizadb/
+   # This database is NOT in git - back it up!
+   ```
+
+**Cost:** One-time embedding cost ~$2-3 for 260k messages (using `text-embedding-3-small`)
+
+**See also:** `telegram_docs/PEPEDAWN_cost_analysis.md` for detailed cost breakdown.
+
+---
+
+## 🛠️ Available Scripts
+
+All scripts are in `pepe-tg/scripts/` directory:
+
+### Production Scripts
+
+| Script | Purpose | Usage |
+|--------|---------|-------|
+| `add-new-cards.js` | Scrape new cards from pepe.wtf | `node scripts/add-new-cards.js 19 20` |
+| `backup-db.sh` | Backup ElizaDB database | `./scripts/backup-db.sh [label]` |
+| `safe-restart.sh` | Gracefully restart bot | `./scripts/safe-restart.sh` |
+| `deploy.sh` | SSH deploy to DigitalOcean | `./scripts/deploy.sh` |
+
+### Development Scripts
+
+| Script | Purpose | Usage |
+|--------|---------|-------|
+| `install-test-deps.js` | Install Cypress/testing deps | Auto-runs via `bun test` |
+| `test-all.sh` | Run full test suite | `./scripts/test-all.sh` |
+| `kill-bot.sh` | Force kill bot process | `./scripts/kill-bot.sh` |
+
+### Script Details
+
+#### `add-new-cards.js` - Card Scraper
+
+**Two-pass scraping process:**
+
+**Pass 1:** Extract asset names from fakeraredirectory.com
+- Gets: asset name, series, card number, fallback media URI
+
+**Pass 2:** Extract full metadata from pepe.wtf (authoritative)
+- Gets: artist, artistSlug, supply, issuance date, extension, media URIs
+
+**Usage:**
+```bash
+# Scrape specific series
+node scripts/add-new-cards.js 18 19 20
+
+# Scrape single series
+node scripts/add-new-cards.js 19
+
+# Scrape all series (0-18 by default)
+node scripts/add-new-cards.js
+```
+
+**Output:** Updates `src/data/fake-rares-data.json` with new/updated cards
+
+---
+
+#### `backup-db.sh` - Database Backup
+
+Backs up `.eliza/.elizadb/` which contains:
+- Embeddings (if knowledge base is configured)
+- Conversation history
+- Bot memory
+
+**Usage:**
+```bash
+# Simple backup
+./scripts/backup-db.sh
+
+# Labeled backup
+./scripts/backup-db.sh pre-upgrade
+
+# Output: ../backups/elizadb-backup-[label]-[timestamp].tar.gz
+```
+
+**Restore:**
+```bash
+cd pepe-tg
+tar -xzf ../backups/elizadb-backup-*.tar.gz -C .eliza/
+```
+
+**Important:** Run backups before major changes and after embedding generation!
+
+---
+
+#### `safe-restart.sh` - Graceful Restart
+
+Safely restarts the bot:
+1. Kills all `elizaos` processes
+2. Waits for cleanup (5 seconds)
+3. Verifies port 3000 is free
+4. Starts fresh instance
+
+**Usage:**
+```bash
+./scripts/safe-restart.sh
 ```
 
 ---
 
-## 🎯 Usage
+#### `deploy.sh` - DigitalOcean Deployment
 
-### Commands
+<TODO>Automates SSH deployment to production server. Update `SERVER_IP` and `SSH_KEY` path in the script before using.</TODO>
+
+**Usage:**
+```bash
+# Deploy with confirmation prompts
+./scripts/deploy.sh
+
+# Dry run (show what would execute)
+./scripts/deploy.sh --dry-run
+```
+
+---
+
+## 🚀 Production Deployment (DigitalOcean)
+
+### Server Requirements
+
+**Minimum specs:**
+- **RAM:** 2GB (1.5GB for ElizaOS + embeddings, 500MB headroom)
+- **Storage:** 5GB (1GB for code, 2-3GB for database/embeddings, 1GB headroom)
+- **CPU:** 1 vCPU (sufficient for low-moderate traffic)
+
+**Recommended DigitalOcean Droplet:**
+- **Plan:** Basic ($12/month) - 2GB RAM, 1 vCPU, 50GB SSD
+- **OS:** Ubuntu 22.04 LTS
+- **Region:** Choose closest to your users
+
+### Initial Server Setup
+
+```bash
+# 1. SSH into your server
+ssh root@YOUR_SERVER_IP
+
+# 2. Update system
+apt-get update && apt-get upgrade -y
+apt-get install -y curl git build-essential
+
+# 3. Install Node.js 20
+curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+apt-get install -y nodejs
+
+# 4. Install Bun
+curl -fsSL https://bun.sh/install | bash
+export PATH="$HOME/.bun/bin:$PATH"
+echo 'export PATH="$HOME/.bun/bin:$PATH"' >> ~/.bashrc
+
+# 5. Install PM2 for process management
+npm install -g pm2
+
+# 6. Verify installations
+node --version  # Should show v20.x
+bun --version   # Should show v1.x
+pm2 --version   # Should show latest
+```
+
+### Application Deployment
+
+```bash
+# 1. Clone repository
+cd ~
+git clone https://github.com/0xrabbidfly/pepedawn-agent.git
+cd pepedawn-agent/pepe-tg
+
+# 2. Install dependencies
+bun install
+
+# 3. Build application
+bun run build
+
+# 4. Configure environment
+nano .env
+# Add your API keys (see Environment Configuration section)
+# Save and exit (Ctrl+X, Y, Enter)
+
+# 5. Test manually first
+bun run start
+# Verify it works, then Ctrl+C to stop
+```
+
+### PM2 Production Setup
+
+**Configure PM2 (if needed):**
+
+Edit `ecosystem.config.cjs` and update the `cwd` path:
+
+```javascript
+cwd: '/root/pepedawn-agent/pepe-tg',  // Update to your actual path
+```
+
+**Start with PM2:**
+
+```bash
+# Start bot with PM2
+pm2 start ecosystem.config.cjs
+
+# Save PM2 configuration
+pm2 save
+
+# Setup auto-start on server reboot
+pm2 startup
+# ⚠️ IMPORTANT: Copy and run the command it shows!
+```
+
+**PM2 Features (Automatic):**
+- 💓 Health monitoring (heartbeat logs every 30s in production)
+- 🔄 Auto-restart on crashes
+- 📊 Memory limit: Auto-restart if >1.5GB
+- ⏰ Daily restart: 2 AM (prevents memory leaks)
+- 📝 Log rotation: Automatic
+
+### Verify Deployment
+
+```bash
+# Check PM2 status
+pm2 status
+
+# View live logs
+pm2 logs pepe-tg --lines 50
+
+# Test in Telegram
+# Message your bot: /start
+```
+
+---
+
+## 📊 Monitoring & Maintenance
+
+### PM2 Management Commands
+
+```bash
+# View status
+pm2 status
+
+# View logs (live tail)
+pm2 logs pepe-tg
+
+# View last 50 log lines
+pm2 logs pepe-tg --lines 50
+
+# Restart bot
+pm2 restart pepe-tg
+
+# Stop bot
+pm2 stop pepe-tg
+
+# Monitor CPU/Memory
+pm2 monit
+
+# Clear old logs
+pm2 flush
+```
+
+### Health Checks
+
+**Built-in health monitoring:**
+- 💓 Heartbeat logs every 30 seconds (production only)
+- 🚨 Warns if no activity for 2+ minutes
+- Automatic restart on crashes or memory limits
+
+**Check if bot is healthy:**
+```bash
+# Look for recent heartbeats
+pm2 logs pepe-tg | grep "HEARTBEAT" | tail -5
+
+# Should see timestamps within last 30-60 seconds
+```
+
+**If bot appears frozen:**
+```bash
+pm2 restart pepe-tg
+```
+
+### Cost Monitoring
+
+**View costs directly in Telegram:**
+```
+/fc d  → Today's costs
+/fc m  → This month's costs
+```
+
+**Expected costs (100 messages/day):**
+- GPT-4o-mini only: ~$1-3/month
+- GPT-4-turbo + GPT-4o-mini: ~$8/month
+- OpenRouter (20% savings): ~$6.50/month
+
+**Set spending limits:**
+- OpenAI: [platform.openai.com/account/limits](https://platform.openai.com/account/limits)
+- Recommended: Set $10/month hard limit
+
+### Updates & Maintenance
+
+**Pull latest changes:**
+```bash
+cd ~/pepedawn-agent
+git pull
+cd pepe-tg
+bun install          # Update dependencies if needed
+bun run build        # Rebuild
+pm2 restart pepe-tg  # Restart
+```
+
+**Database backup (before major changes):**
+```bash
+cd ~/pepedawn-agent/pepe-tg
+./scripts/backup-db.sh pre-upgrade
+```
+
+---
+
+## 📁 Project Structure
 
 ```
-/f FREEDOMKEK      → Shows FREEDOMKEK card with metadata
-/f PEEP            → Auto-corrects to PEPE (fuzzy matching)
-/f FREEDOMK        → Suggests: FREEDOMKEK, FREEDOMWAR, KINGFAKE
-/f                 → Random card from collection
-/lore purple subasset era → AI-powered lore story from chat history
-/lore Rare Scrilla → Get stories about specific topics
-/lore              → Random lore from community history
-/start             → Welcome message
-/help              → Usage guide
-/fc d              → Token costs today (admin-only)
-/fc m              → Token costs this month (admin-only)
+pepe-tg/
+├── 📂 src/
+│   ├── 📂 actions/              # Bot commands and handlers
+│   │   ├── fakeRaresCard.ts     # /f command (card display)
+│   │   ├── loreCommand.ts       # /fl command (lore stories)
+│   │   ├── costCommand.ts       # /fc command (cost tracking)
+│   │   ├── oddsCommand.ts       # /odds command (lottery stats)
+│   │   └── basicCommands.ts     # /start, /help
+│   ├── 📂 plugins/
+│   │   └── fakeRaresPlugin.ts   # Main plugin + auto-refresh
+│   ├── 📂 providers/
+│   │   └── fakeRaresContext.ts  # Context detection provider
+│   ├── 📂 evaluators/
+│   │   └── loreDetector.ts      # Lore detection evaluator
+│   ├── 📂 utils/
+│   │   ├── cardIndexRefresher.ts  # GitHub hourly sync
+│   │   ├── tokenLogger.ts         # Cost tracking
+│   │   ├── loreRetrieval.ts       # Knowledge base search (RAG)
+│   │   ├── loreSummarize.ts       # Clustering & summarization
+│   │   ├── storyComposer.ts       # LLM story generation
+│   │   └── loreConfig.ts          # Lore feature configuration
+│   ├── 📂 data/
+│   │   ├── fake-rares-data.json   # 890+ cards database
+│   │   ├── fullCardIndex.ts       # Card index loader
+│   │   ├── cardSeriesMap.ts       # Series mapping
+│   │   └── token-logs.jsonl       # Cost logs (gitignored)
+│   ├── 📂 assets/                 # GitHub-hosted assets
+│   │   ├── images/                # Override S3 images
+│   │   └── videos/                # Override S3 videos
+│   ├── 📂 contracts/
+│   │   └── PepedawnRaffle.abi.json  # Lottery contract ABI
+│   ├── index.ts                   # Entry point
+│   └── pepedawn.ts                # Character definition
+├── 📂 scripts/                    # Utility scripts
+│   ├── add-new-cards.js           # Card scraper
+│   ├── backup-db.sh               # Database backup
+│   ├── safe-restart.sh            # Safe restart
+│   └── deploy.sh                  # Production deployment
+├── 📂 docs/                       # Knowledge base (optional)
+│   └── chunks/                    # Text files for embeddings
+├── 📂 telegram_docs/              # Feature-specific documentation
+│   ├── PEPEDAWN_cost_analysis.md  # Detailed cost breakdown
+│   ├── PEPEDAWN_ODDS_SUMMARY.md   # Lottery feature docs
+│   ├── ODDS_ARCHITECTURE.md       # Lottery technical details
+│   ├── CACHE_*.md                 # Cache design docs (future)
+│   └── *.sh, *.py                 # Utility scripts
+├── .env                           # Environment config (create this!)
+├── .env.example                   # Environment template
+├── ecosystem.config.cjs           # PM2 configuration
+├── Dockerfile                     # Docker deployment
+├── docker-compose.yaml            # Docker Compose setup
+├── package.json                   # Dependencies
+└── tsconfig.json                  # TypeScript config
+```
+
+---
+
+## 🏗️ Architecture & Performance
+
+### Card Lookup Strategy
+
+**Three-tier system:**
+
+1. **Full Index (Instant)** - 890+ cards in-memory, O(1) lookup
+   - Loads from `fake-rares-data.json` on startup
+   - Hash map: `CARDNAME` → card metadata
+   - ~200ms response time
+
+2. **GitHub Auto-Refresh (Hourly)** 
+   - Fetches latest `fake-rares-data.json` from GitHub
+   - Updates in-memory index if changes detected
+   - Zero-downtime updates
+
+3. **HTTP Probing (Fallback)** - For unknown cards
+   - Searches S3 across all series (0-18)
+   - ~2-10s for first lookup
+   - Caches result for future requests
+
+### Fuzzy Matching
+
+**Algorithm:** Levenshtein distance with optimized single-pass calculation
+
+**Performance:** ~20ms to search all 890 cards
+
+**Thresholds:**
+```typescript
+HIGH_CONFIDENCE: 0.75   // ≥75% → Auto-show
+MODERATE: 0.55          // 55-74% → Show suggestions
+ARTIST_FUZZY: 0.65      // 65% → Artist name matching
+```
+
+**Examples:**
+- `FREEDOMK` → 83% match → Auto-shows FREEDOMKEK
+- `WAGMI` → 60% match → Suggests: WAGMIWORLD, WAGMIPEPE
+- `RARE` → Too generic → Returns error with search tips
+
+### Auto-Refresh System
+
+**How it works:**
+
+1. On startup, loads `fake-rares-data.json` from disk (890 cards)
+2. Every hour, fetches latest from GitHub:
+   ```
+   https://raw.githubusercontent.com/0xRabbidfly/pepedawn-agent/master/pepe-tg/src/data/fake-rares-data.json
+   ```
+3. If changes detected, updates in-memory index
+4. Logs update: `"✅ Card index updated: 890 → 920 cards (+30)"`
+
+**Configuration:** Edit `src/utils/cardIndexRefresher.ts`:
+```typescript
+const REFRESH_INTERVAL_MS = 60 * 60 * 1000;  // 1 hour (default)
+const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/YOUR_ORG/YOUR_REPO/...';
+```
+
+### Lore Generation Pipeline (if knowledge base configured)
+
+**For `/fl` command:**
+
+1. **Query Expansion** - Adds synonyms, context
+2. **Vector Search** - Retrieves 24 relevant passages from knowledge base
+3. **MMR Diversity** - Selects 4-6 diverse passages (avoid repetition)
+4. **Clustering** - Groups similar content, generates summaries
+5. **Story Generation** - GPT-4-turbo creates persona-aligned narrative (120-180 words)
+6. **Citation** - Adds compact source references
+
+**Performance:** 1-3 seconds per lore request
+
+---
+
+## 💰 Cost Analysis
+
+### Estimated Monthly Costs (100 messages/day)
+
+| Component | Model | Monthly Cost |
+|-----------|-------|--------------|
+| **Card Display** | GPT-4-turbo | ~$3.00 |
+| **Lore Generation** (if enabled) | GPT-4-turbo | ~$4.00 |
+| **Cost Tracking** | GPT-4o-mini | ~$0.02 |
+| **Bot Responses** | GPT-4-turbo | ~$1.00 |
+| **TOTAL (with lore)** | | ~$8.00/month |
+| **TOTAL (cards only)** | | ~$4.00/month |
+
+### Cost Optimization
+
+**Use cheaper models:**
+```bash
+# In .env
+TEXT_MODEL=gpt-4o-mini           # Reduces costs to ~$1-3/month
+SMALL_OPENAI_MODEL=gpt-4o-mini
+```
+
+**Use OpenRouter (20% savings):**
+```bash
+# In .env
+OPENROUTER_API_KEY=your-key
+# Same models, 20% cheaper
+```
+
+**Track costs:**
+```
+/fc d  # Check daily spending
+/fc m  # Check monthly total
+```
+
+---
+
+## 🎯 Usage Examples
+
+### Viewing Cards
+
+```
+/f FREEDOMKEK           → Genesis card by Rare Scrilla
+/f WAGMIWORLD           → Interactive game card
+/f PEPONACID            → Psychedelic masterpiece
+/f                      → Random card
+/f Rare Scrilla         → Random card by artist
+/f indelible            → Random by Indelible (case-insensitive)
+```
+
+### Getting Lore (requires knowledge base)
+
+```
+/fl purple subasset era → Stories about purple subasset era
+/fl Rare Scrilla        → Lore about the founder
+/fl FREEDOMKEK          → Genesis card history
+/fl                     → Random lore from community
+```
+
+### Admin Commands
+
+```
+/fc d                   → Today's costs
+/fc m                   → This month's costs
 ```
 
 ### Natural Conversation
@@ -174,245 +926,7 @@ Just chat naturally! Ask about:
 - "Who is Rare Scrilla?"
 - "What's La Faka Nostra?"
 
-The bot understands context and remembers past conversations.
-
----
-
-## 📁 Project Structure
-
-```
-pepe-tg/
-├── src/
-│   ├── actions/              # Bot commands and handlers
-│   │   ├── fakeRaresCard.ts  # /f command (refactored, optimized)
-│   │   └── basicCommands.ts  # /start, /help
-│   ├── plugins/              # Plugin system
-│   │   └── fakeRaresPlugin.ts # Main plugin + auto-refresh
-│   ├── data/                 # Card database
-│   │   ├── fake-rares-data.json # 950+ cards
-│   │   └── fullCardIndex.ts  # Index loader
-│   ├── assets/               # GitHub-hosted assets
-│   │   ├── images/           # Override S3 for problematic images
-│   │   └── videos/           # Override S3 for problematic videos
-│   ├── utils/                # Utilities
-│   │   └── cardIndexRefresher.ts # GitHub sync
-│   └── pepedawn.ts           # Character definition
-├── .github/workflows/
-│   └── update-fake-rares.yml # Auto-scraper
-├── scripts/
-│   └── add-new-cards.js      # Web scraper
-└── .env                      # Your config (create this)
-```
-
----
-
-## 🔧 Advanced Configuration
-
-### Adding New Cards
-
-**Automatic (Recommended):**
-- GitHub Action runs daily
-- Creates PR when new cards found
-- Merge PR → Bot updates within 1 hour
-
-**Manual:**
-```bash
-# Scrape specific series
-node scripts/add-new-cards.js 18 19 20
-
-# Commit and push
-git add src/data/fake-rares-data.json
-git commit -m "Add new cards"
-git push
-```
-
-Bot refreshes automatically within 1 hour (or restart for immediate update).
-
-### Hosting Problematic Assets
-
-**For assets that don't display through S3 scanning:**
-
-1. Convert/fix the asset (e.g., WEBP → JPG, compress MP4)
-2. Place in `pepe-tg/src/assets/images/` or `pepe-tg/src/assets/videos/`
-3. Add `imageUri` or `videoUri` to override S3 in `fake-rares-data.json`:
-
-```json
-{
-  "asset": "THEBIGDEGEN",
-  "imageUri": "https://raw.githubusercontent.com/[user]/[repo]/master/pepe-tg/src/assets/images/THEBIGDEGEN.jpg"
-}
-```
-
-**Note:** Use `raw.githubusercontent.com` URLs (not `github.com/blob`). See `pepe-tg/src/assets/README.md` for details.
-
-### Character Customization
-
-Edit `src/pepedawn.ts` to customize:
-- System prompt (personality and behavior)
-- Bio (background and expertise)
-- Topics (knowledge areas)
-- Style (communication patterns)
-
-### Auto-Refresh Configuration
-
-Edit `src/utils/cardIndexRefresher.ts`:
-
-```typescript
-// Change refresh interval
-const REFRESH_INTERVAL_MS = 30 * 60 * 1000;  // 30 minutes
-
-// Change GitHub source
-const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/YOUR_ORG/YOUR_REPO/...';
-```
-
----
-
-## 🚀 Production Deployment
-
-### DigitalOcean Setup
-
-**1. Create Droplet**
-- Ubuntu 22.04 LTS
-- Basic plan: $6/month (1GB RAM, 1 vCPU)
-- Note your server IP
-
-**2. Install Dependencies**
-```bash
-ssh root@YOUR_SERVER_IP
-
-# System update
-apt-get update && apt-get upgrade -y
-apt-get install -y curl git build-essential
-
-# Node.js
-curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
-apt-get install -y nodejs
-
-# Bun
-curl -fsSL https://bun.sh/install | bash
-export PATH="$HOME/.bun/bin:$PATH"
-
-# PM2 for process management
-npm install -g pm2
-```
-
-**3. Deploy Application**
-```bash
-# Clone
-git clone https://github.com/0xrabbidfly/pepedawn-agent.git
-cd pepedawn-agent/pepe-tg
-
-# Install and build
-bun install
-bun run build
-
-# Create .env (add your keys)
-nano .env
-
-# Start with PM2
-pm2 start "bun run start" --name pepedawn
-pm2 save
-pm2 startup  # Follow the command it shows
-```
-
-**4. Verify**
-```bash
-pm2 status
-pm2 logs pepedawn
-```
-
-Test in Telegram: Send `/start` to your bot
-
-### PM2 Management
-
-```bash
-pm2 status              # Check status
-pm2 logs pepedawn       # View logs
-pm2 restart pepedawn    # Restart
-pm2 stop pepedawn       # Stop
-pm2 monit               # Real-time monitoring
-```
-
-### Updates
-
-```bash
-cd ~/pepedawn-agent
-git pull
-cd pepe-tg
-bun install
-bun run build
-pm2 restart pepedawn
-```
-
----
-
-## 📊 Available Scripts
-
-```bash
-# Development
-bun run dev              # Start with hot-reload
-bun run build            # Build TypeScript
-bun run start            # Production mode
-
-# Testing
-bun run test             # Run all tests
-bun run test:e2e         # End-to-end tests
-bun run lint             # Format code
-
-# Card Management
-node scripts/add-new-cards.js 18 19 20  # Scrape new cards
-./scripts/backup-db.sh                   # Backup database
-```
-
----
-
-## 🏗️ Technical Architecture
-
-### Card Lookup Performance
-
-**Three-layer strategy:**
-1. **Full Index** (Instant) - In-memory hash map, O(1) lookup
-2. **Runtime Cache** (Fast ~200ms) - Previously discovered cards
-3. **HTTP Probing** (Slow 2-10s) - Fallback for unknown cards
-
-### Fuzzy Matching
-
-**Algorithm:** Levenshtein distance with optimized single-pass calculation
-
-**Performance:** ~20ms to search all 950 cards (50% faster after refactoring)
-
-**Thresholds:**
-```typescript
-HIGH_CONFIDENCE: 0.75   // Auto-show
-MODERATE: 0.5           // Suggest
-TOP_SUGGESTIONS: 3      // Number of suggestions
-```
-
-### Auto-Update Components
-
-**1. Web Scraper** (`scripts/add-new-cards.js`)
-- Two-pass: Structure → Metadata
-- Handles tokenscan.io, custom URIs, misspelled S3 assets
-- Smart deduplication
-
-**2. GitHub Action** (`.github/workflows/update-fake-rares.yml`)
-- Scheduled: Daily 12pm UTC
-- Monitors: Series 18-25
-- Output: PR only if changes detected
-
-**3. Real-Time Refresher** (`src/utils/cardIndexRefresher.ts`)
-- Fetches from GitHub hourly
-- Updates in-memory index
-- Zero-downtime, graceful fallback
-
-### Code Quality
-
-**Recent Refactoring:**
-- Main handler: 356 → 92 lines (-74% complexity)
-- Dead code removed: ~160 lines
-- Strong TypeScript typing throughout
-- Structured JSON logging
-- 13 testable functions (vs. 1 monolithic handler)
+The bot understands context and remembers conversations.
 
 ---
 
@@ -421,72 +935,437 @@ TOP_SUGGESTIONS: 3      // Number of suggestions
 ### Bot Won't Start
 
 ```bash
-# Check dependencies
+# 1. Check dependencies
 rm -rf node_modules && bun install
 
-# Verify API keys
+# 2. Verify API keys in .env
 cat .env | grep API_KEY
 
-# Check logs
-tail -f logs/*.log
+# 3. Try rebuilding
+bun run build
+bun run start
+
+# 4. Check for errors
+# Look for specific error messages in console
 ```
 
-### Bot Not Responding
+### Bot Not Responding in Telegram
 
-1. Verify `TELEGRAM_BOT_TOKEN` in `.env`
-2. Ensure at least one AI provider key is set
-3. Check bot is running: `pm2 status` or `ps aux | grep bun`
+**Checklist:**
+1. Verify `TELEGRAM_BOT_TOKEN` is correct in `.env`
+2. Ensure `OPENAI_API_KEY` is set and valid
+3. Check bot is running: `pm2 status` or `ps aux | grep elizaos`
+4. Check logs: `pm2 logs pepe-tg` (if using PM2)
+5. Test bot token: `curl https://api.telegram.org/bot<YOUR_BOT_TOKEN>/getMe`
 
 ### Card Not Found
 
-- Check spelling (fuzzy matching helps but has limits)
-- Verify card exists on [pepe.wtf](https://pepe.wtf)
-- For new cards: Wait for auto-update or run scraper manually
+**Possible causes:**
+- Spelling error (bot will suggest corrections if close match)
+- Card doesn't exist in `fake-rares-data.json` yet
+- Card is too new (wait for hourly refresh or run scraper)
 
-### GitHub Action Not Running
+**Solutions:**
+```bash
+# 1. Check if card exists
+grep -i "CARDNAME" pepe-tg/src/data/fake-rares-data.json
 
-1. Check Actions tab: `https://github.com/0xrabbidfly/pepedawn-agent/actions`
-2. Verify workflow file exists: `.github/workflows/update-fake-rares.yml`
-3. Check you have Actions enabled in repo settings
+# 2. If missing, scrape from pepe.wtf
+cd pepe-tg
+node scripts/add-new-cards.js 18  # Replace 18 with correct series
+
+# 3. Restart bot (or wait up to 1 hour for auto-refresh)
+pm2 restart pepe-tg
+```
+
+### /fl Command Not Working
+
+**Likely cause:** Knowledge base not configured
+
+**Fix:**
+1. Set up knowledge base (see [Knowledge Base Setup](#-knowledge-base-setup-optional))
+2. OR disable the command by removing it from `fakeRaresPlugin.ts`:
+   ```typescript
+   actions: [
+     startCommand,
+     helpCommand,
+     fakeRaresCardAction,
+     // loreCommand,  // Comment out if not using
+     costCommand,
+   ],
+   ```
+
+### High OpenAI Costs
+
+**Check your model configuration:**
+```bash
+# View your .env
+cat .env | grep TEXT_MODEL
+
+# Recommended for cost savings:
+TEXT_MODEL=gpt-4o-mini
+SMALL_OPENAI_MODEL=gpt-4o-mini
+```
+
+**Check actual usage:**
+```
+/fc m  # In Telegram (admin only)
+```
+
+**Review OpenAI dashboard:**
+[platform.openai.com/usage](https://platform.openai.com/usage)
+
+### PM2 Issues
+
+**Bot in zombie state (responding but frozen):**
+```bash
+# Check for heartbeat
+pm2 logs pepe-tg | grep "HEARTBEAT" | tail -5
+
+# If no recent heartbeats:
+pm2 restart pepe-tg
+```
+
+**Memory leak detected:**
+```bash
+# Check memory usage
+pm2 monit
+
+# If >1.5GB, restart
+pm2 restart pepe-tg
+```
+
+**Bot won't start with PM2:**
+```bash
+# Check PM2 logs
+pm2 logs pepe-tg --err
+
+# Common issues:
+# 1. Wrong path in ecosystem.config.cjs
+# 2. Missing .env file
+# 3. Bun not in PATH
+
+# Fix PATH for PM2:
+pm2 delete pepe-tg
+pm2 start ecosystem.config.cjs
+```
+
+### Database Issues
+
+**Database not found:**
+```bash
+# Check if database exists
+ls -la .eliza/.elizadb/
+
+# If missing, first run will create it
+bun run start
+```
+
+**Database corruption:**
+```bash
+# Stop bot
+pm2 stop pepe-tg
+
+# Restore from backup
+tar -xzf ../backups/elizadb-backup-*.tar.gz -C .eliza/
+
+# Restart
+pm2 start pepe-tg
+```
+
+---
+
+## 🧪 Testing
+
+### Run Tests
+
+```bash
+# All tests (unit + integration)
+bun test
+
+# Specific test file
+bun test src/__tests__/actions.test.ts
+
+# Watch mode (auto-rerun on changes)
+bun test --watch
+
+# Coverage report
+bun test --coverage
+```
+
+### Test Structure
+
+- `src/__tests__/*.test.ts` - Unit/integration tests (Bun test runner)
+- `src/__tests__/e2e/*.e2e.ts` - End-to-end tests (ElizaOS test runner)
+- `src/__tests__/cypress/` - Component tests (Cypress)
+
+---
+
+## 🎨 Customization
+
+### Character Personality
+
+Edit `src/pepedawn.ts` to customize:
+- **System prompt** - Bot's personality and behavior rules
+- **Bio** - Background and expertise areas
+- **Topics** - Knowledge domains
+- **Style** - Communication patterns
+- **Message examples** - Training examples for LLM
+
+### Auto-Refresh Configuration
+
+Edit `src/utils/cardIndexRefresher.ts`:
+
+```typescript
+// Change refresh interval
+const REFRESH_INTERVAL_MS = 30 * 60 * 1000;  // 30 minutes instead of 60
+
+// Change GitHub source (for forks)
+const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/pepe-tg/src/data/fake-rares-data.json';
+```
+
+### Lore Feature Configuration
+
+Edit `src/utils/loreConfig.ts`:
+
+```typescript
+export const LORE_CONFIG = {
+  RETRIEVAL_LIMIT: 24,              // Passages to retrieve
+  STORY_LENGTH_WORDS: '120-180',    // Story length
+  TEMPERATURE: 0.7,                  // LLM creativity (0-1)
+  LRU_WINDOW_SIZE: 50,              // Recent lore memory
+};
+```
 
 ---
 
 ## 📚 Documentation
 
-- **[Telegram Setup Guide](pepe-tg/telegram_docs/TELEGRAM_SETUP.md)** - Detailed Telegram bot configuration
-- **[User Guide](pepe-tg/telegram_docs/PEPEDAWN_USER_GUIDE.md)** - Guide for bot users
-- **[Technical Handover](pepe-tg/telegram_docs/TECHNICAL_HANDOVER.md)** - Technical architecture
+### Documentation Structure
+
+```
+pepedawn-agent/
+│
+├── 📘 README.md                    ⭐ You are here - Complete guide
+├── 📗 SETUP_CHECKLIST.md           Step-by-step setup (Phase 1-4)
+├── 📙 CONTRIBUTING.md              Developer guide + ElizaOS patterns
+├── 📕 CHANGELOG.md                 Version history
+├── 📓 ENV_TEMPLATE.md              .env template
+│
+└── pepe-tg/
+    ├── 📄 README.md                → Points to this file
+    ├── scripts/README.md           All scripts documented
+    └── telegram_docs/
+        ├── README.md               Index
+        ├── PEPEDAWN_cost_analysis.md       Detailed costs
+        ├── PEPEDAWN_ODDS_SUMMARY.md        Lottery setup
+        ├── ODDS_ARCHITECTURE.md            Lottery tech
+        └── CACHE_*.md              Cache design (future)
+```
+
+### Quick Links
+
+| What do you need? | Read this |
+|-------------------|-----------|
+| **Install the bot** | This README → [Quick Start](#-quick-start) |
+| **Step-by-step setup** | [SETUP_CHECKLIST.md](SETUP_CHECKLIST.md) |
+| **Configure .env** | [ENV_TEMPLATE.md](ENV_TEMPLATE.md) |
+| **Develop features** | [CONTRIBUTING.md](CONTRIBUTING.md) |
+| **Understand costs** | [Cost Analysis](#-cost-analysis) or [telegram_docs/PEPEDAWN_cost_analysis.md](pepe-tg/telegram_docs/PEPEDAWN_cost_analysis.md) |
+| **Set up lottery** | [telegram_docs/PEPEDAWN_ODDS_SUMMARY.md](pepe-tg/telegram_docs/PEPEDAWN_ODDS_SUMMARY.md) |
+| **Use scripts** | [scripts/README.md](pepe-tg/scripts/README.md) |
 
 ### External Resources
 
-- [ElizaOS Documentation](https://elizaos.github.io/eliza/) - Framework docs
-- [Telegram Bot API](https://core.telegram.org/bots/api) - API reference
+- [ElizaOS Documentation](https://docs.elizaos.ai) - Framework docs
+- [Telegram Bot API](https://core.telegram.org/bots/api) - API reference  
 - [pepe.wtf](https://pepe.wtf) - Card explorer and marketplace
 - [Fake Rares Official](https://fakerares.com) - Official website
 
 ---
 
-## 💰 Costs
+## 🔧 Development Workflow
 
-**Estimated monthly costs:**
-- DigitalOcean Droplet (Basic): **$6/month**
-- OpenAI API (GPT-4o Mini): **$1-3/month**
-- **Total: $7-9/month**
+### Local Development
 
-**Set spending limits:**
-- OpenAI: [platform.openai.com/account/limits](https://platform.openai.com/account/limits)
-- Set monthly limit to $5-10
+```bash
+cd pepe-tg
+
+# Start with hot-reload
+bun run dev
+
+# In another terminal, run tests on save
+bun test --watch
+
+# Lint/format code
+bun run lint
+```
+
+### Code Quality
+
+```bash
+# Type checking
+bun run type-check
+
+# Format code
+bun run format
+
+# Check formatting
+bun run format:check
+
+# Run all checks
+bun run check-all
+```
+
+### Adding a New Command
+
+1. Create action in `src/actions/yourCommand.ts`
+2. Export from `src/actions/index.ts`
+3. Register in `src/plugins/fakeRaresPlugin.ts`:
+   ```typescript
+   import { yourCommand } from '../actions';
+   
+   export const fakeRaresPlugin: Plugin = {
+     actions: [
+       // ... existing actions
+       yourCommand,  // Add here
+     ],
+   };
+   ```
+4. Update BotFather commands
+5. Test and deploy
+
+See `src/actions/costCommand.ts` for a simple example.
+
+---
+
+## 🐳 Docker Deployment (Alternative)
+
+### Build and Run with Docker
+
+```bash
+cd pepe-tg
+
+# Build image
+docker build -t pepedawn-bot .
+
+# Run container
+docker run -d \
+  --name pepedawn \
+  --env-file .env \
+  -p 3000:3000 \
+  pepedawn-bot
+
+# View logs
+docker logs -f pepedawn
+
+# Stop container
+docker stop pepedawn
+```
+
+### Docker Compose (Not Recommended)
+
+The included `docker-compose.yaml` sets up PostgreSQL with pgvector, but **PEPEDAWN uses PGlite (embedded database)** and doesn't need external Postgres.
+
+<TODO>**Action needed:** Either update `docker-compose.yaml` for PEPEDAWN-specific setup or remove it.</TODO>
 
 ---
 
 ## 🤝 Contributing
 
-Contributions welcome! Please:
+Contributions welcome! To contribute:
 
 1. Fork the repository
-2. Create a feature branch
+2. Create a feature branch: `git checkout -b feature/your-feature`
 3. Make your changes
-4. Submit a pull request
+4. Run tests: `bun test`
+5. Format code: `bun run lint`
+6. Commit: `git commit -m "feat: Add your feature"`
+7. Push and create Pull Request
+
+**Code Standards:**
+- TypeScript strict mode
+- ESM modules (not CommonJS)
+- Prettier formatting (automatic on save)
+- Test coverage for new features
+
+---
+
+## 🎯 Feature Roadmap
+
+**Current Features:**
+- ✅ Card display with fuzzy matching
+- ✅ AI-powered lore stories (optional knowledge base)
+- ✅ Cost tracking and monitoring
+- ✅ Lottery stats integration (optional)
+- ✅ Auto-updating from GitHub
+- ✅ Smart artist search
+
+**Potential Enhancements:**
+- ⏳ GitHub Actions for automated card scraping
+- ⏳ Card comparison feature (`/compare CARD1 CARD2`)
+- ⏳ Artist spotlight action
+- ⏳ Gallery browsing by series
+- ⏳ Rarity stats and floor prices
+- ⏳ Collection management (owned cards)
+
+---
+
+## ❓ FAQ
+
+### Do I need the knowledge base for basic card display?
+
+**No!** The bot works perfectly with just the `/f` command. Knowledge base is only needed for `/fl` (lore) command.
+
+### How much does it cost to run?
+
+**Minimum:** $1-3/month (cards only, gpt-4o-mini)  
+**Recommended:** $8-12/month (cards + lore, gpt-4-turbo)  
+**Plus:** $12/month DigitalOcean server  
+**Total:** $13-24/month
+
+### Can I run this on a cheaper server?
+
+Minimum requirements:
+- 2GB RAM (1GB might work without knowledge base)
+- 1 vCPU (0.5 vCPU might be slow)
+
+Try DigitalOcean Basic ($6/month, 1GB RAM) for cards-only deployment.
+
+### How do I get my Telegram User ID?
+
+Message [@userinfobot](https://t.me/userinfobot) - it will reply with your user ID.
+
+### Where are embeddings stored?
+
+In `.eliza/.elizadb/` directory (PGlite embedded database). This is NOT in git - back it up!
+
+### How do I update ElizaOS version?
+
+```bash
+cd pepe-tg
+bun update @elizaos/cli@latest @elizaos/core@latest @elizaos/plugin-telegram@latest
+bun install
+bun run build
+bun test  # Verify everything works
+```
+
+### Can I use Anthropic/Claude instead of OpenAI?
+
+Yes! Add to `.env`:
+```bash
+ANTHROPIC_API_KEY=your-anthropic-key
+```
+
+The bot will automatically use Claude if OpenAI is not configured.
+
+### How do I change the bot's personality?
+
+Edit `src/pepedawn.ts`:
+- Change `system` prompt for behavior
+- Modify `bio` for background
+- Update `style` for tone
+- Add `messageExamples` for training
 
 ---
 
@@ -496,11 +1375,32 @@ MIT License - Open source and free to use.
 
 ---
 
-## 💬 Support
+## 💬 Support & Community
 
-- **Issues**: Open a GitHub issue
-- **Setup Help**: Check `telegram_docs/` folder
-- **Technical Questions**: See `TECHNICAL_HANDOVER.md`
+- **Issues:** [GitHub Issues](https://github.com/0xrabbidfly/pepedawn-agent/issues)
+- **Discussions:** [GitHub Discussions](https://github.com/0xrabbidfly/pepedawn-agent/discussions)
+- **Fake Rares Community:** [Telegram](https://t.me/fakerares) | [Discord](https://discord.gg/fakerares)
+- **Technical Docs:** See `pepe-tg/telegram_docs/` folder
+
+---
+
+## 🙏 Credits
+
+**Built with:**
+- [ElizaOS](https://elizaos.ai) - AI agent framework
+- [Bun](https://bun.sh) - Fast all-in-one JavaScript runtime
+- [Telegraf](https://telegraf.js.org) - Telegram bot framework
+- [OpenAI](https://openai.com) - GPT models
+- [Viem](https://viem.sh) - Ethereum interaction
+
+**Data sources:**
+- [pepe.wtf](https://pepe.wtf) - Card metadata and images
+- [fakeraredirectory.com](https://fakeraredirectory.com) - Card directory
+
+**Special thanks:**
+- Rare Scrilla - For creating Fake Rares
+- La Faka Nostra community - For the culture and vibes
+- All Fake Rares artists - For the incredible art
 
 ---
 
@@ -509,3 +1409,25 @@ MIT License - Open source and free to use.
 Built with ❤️ for the Fake Rares community.
 
 *gm anon! ☀️ WAGMI 🐸✨*
+
+---
+
+## Quick Reference Card
+
+```
+📦 Clone:       git clone https://github.com/0xrabbidfly/pepedawn-agent.git
+📥 Install:     cd pepedawn-agent/pepe-tg && bun install
+⚙️ Configure:   cp .env.example .env && nano .env
+▶️ Run:         bun run dev (development) or bun run start (production)
+🚀 Deploy:      pm2 start ecosystem.config.cjs
+📊 Monitor:     pm2 logs pepe-tg
+💰 Costs:       /fc m (in Telegram)
+🔄 Update:      node scripts/add-new-cards.js [series]
+💾 Backup:      ./scripts/backup-db.sh
+```
+
+---
+
+**Last Updated:** October 23, 2025  
+**Version:** 1.2.0  
+**Status:** Production Ready ✅
