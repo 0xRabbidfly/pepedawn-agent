@@ -736,7 +736,9 @@ async function handleCardFound(params: {
   
   logger.step(5, 'Send message with media preview and artist button');
   const buttons = buildArtistButton(params.cardInfo);
-  const fallbackImages = buildFallbackImageUrls(params.assetName, params.cardInfo);
+  // Use the properly capitalized name from cardInfo for display and file purposes
+  const displayAssetName = params.cardInfo?.asset || params.assetName;
+  const fallbackImages = buildFallbackImageUrls(displayAssetName, params.cardInfo);
   
   // Send card with media attachment
   await sendCardWithMedia({
@@ -744,7 +746,7 @@ async function handleCardFound(params: {
     cardMessage,
     mediaUrl: params.urlResult.url,
     mediaExtension: params.urlResult.extension,
-    assetName: params.assetName,
+    assetName: displayAssetName,
     buttons,
     fallbackImages,
   }).catch((err) => logger.error('Error sending callback', err));
