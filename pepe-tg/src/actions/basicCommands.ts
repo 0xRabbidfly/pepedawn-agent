@@ -80,8 +80,7 @@ export const helpCommand: Action = {
 \`/start\` - Welcome message
 
 **Examples:**
-• \`/f FREEDOMKEK\` • \`/f Rare Scrilla\` • \`/f\` (random)
-• \`/fv WAGMIWORLD\` - Get memetic analysis
+• \`/f FREEDOMKEK\` • \`/f Pepenardo\` • \`/f\` (random)
 
 Just chat naturally or mention me with @pepedawn_bot 🐸`;
 

@@ -57,19 +57,25 @@ export function determineCardUrl(cardInfo: CardInfo, assetName: string): CardUrl
 
 /**
  * Determines the best image URL for visual analysis
- * For MP4 videos, returns null since vision APIs can't analyze videos directly
+ * For MP4 videos, checks memeUri (scraped static version) before failing
  * For images, returns the best available URL
  */
 export function determineImageUrlForAnalysis(
   cardInfo: CardInfo,
   assetName: string
 ): string | null {
-  // Can't analyze videos with vision API
+  // For MP4 videos, try memeUri first (static image/gif scraped from tokenscan)
   if (cardInfo.ext === 'mp4') {
+    // @ts-ignore - memeUri exists on some CardInfo objects but not in type def
+    if (cardInfo.memeUri) {
+      // @ts-ignore
+      return cardInfo.memeUri;
+    }
+    // No static version available for this MP4
     return null;
   }
   
-  // Priority: imageUri > constructed S3 URL
+  // For non-MP4 cards: Priority is imageUri > constructed S3 URL
   if (cardInfo.imageUri) {
     return cardInfo.imageUri;
   }

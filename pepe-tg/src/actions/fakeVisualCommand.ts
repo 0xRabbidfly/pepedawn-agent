@@ -196,32 +196,14 @@ async function analyzeCardWithVision(
 function formatAnalysisMessage(
   cardName: string,
   cardInfo: any,
-  result: AnalysisResult
+  result: AnalysisResult,
+  imageUrl: string
 ): string {
   return `🐸 **MEMETIC ANALYSIS: ${cardName}**
 
 ${result.analysis}`;
 }
 
-/**
- * Determines content type from file extension
- */
-function getContentType(extension: string): string {
-  const ext = extension.toLowerCase();
-  switch (ext) {
-    case 'jpg':
-    case 'jpeg':
-      return 'image/jpeg';
-    case 'png':
-      return 'image/png';
-    case 'gif':
-      return 'image/gif';
-    case 'webp':
-      return 'image/webp';
-    default:
-      return 'image/jpeg';
-  }
-}
 
 /**
  * Formats error message for user
@@ -326,11 +308,11 @@ export const fakeVisualCommand: Action = {
       const imageUrl = determineImageUrlForAnalysis(cardInfo, cardName);
       
       if (!imageUrl) {
-        logger.warning('Cannot analyze video card', { cardName, ext: cardInfo.ext });
+        logger.warning('Cannot analyze card - no static version available', { cardName, ext: cardInfo.ext });
         await callback?.({
-          text: `⚠️ **${cardName}** is a video (MP4) card.\n\nVision analysis currently only supports static images (JPG, PNG, GIF, WEBP).\n\n💡 **Alternative:** Use \`/f ${cardName}\` to view the card.`
+          text: `⚠️ **${cardName}** (${cardInfo.ext.toUpperCase()}) does not have a static image version for analysis.\n\n💡 **Alternative:** Use \`/f ${cardName}\` to view the card.`
         });
-        return { success: false, text: 'Video cards not supported for visual analysis' };
+        return { success: false, text: 'No static image version available for analysis' };
       }
       
       logger.info('Image URL determined', { url: imageUrl });
@@ -339,23 +321,12 @@ export const fakeVisualCommand: Action = {
       logger.step(4, 'Perform vision analysis');
       const result = await analyzeCardWithVision(imageUrl, cardName);
       
-      // STEP 5: Format and send results with card image
+      // STEP 5: Format and send results
       logger.step(5, 'Send results');
-      const responseText = formatAnalysisMessage(cardName, cardInfo, result);
+      const responseText = formatAnalysisMessage(cardName, cardInfo, result, imageUrl);
       
-      // Include the card image as a thumbnail attachment
-      const contentType = getContentType(cardInfo.ext);
-      await callback?.({ 
-        text: responseText,
-        attachments: [
-          {
-            url: imageUrl,
-            title: cardName,
-            source: 'fake-rares-visual',
-            contentType
-          }
-        ]
-      });
+      // Send text only (no attachment) so Telegram displays full-width text
+      await callback?.({ text: responseText });
       
       logger.separator();
       logger.success('Handler completed successfully', { cardName });
