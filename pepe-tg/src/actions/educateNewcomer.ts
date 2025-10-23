@@ -1,4 +1,6 @@
 import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, type State, ModelType, composePromptFromState } from '@elizaos/core';
+import { evaluatorCache, hashKey } from '../utils/llmCache';
+import { truncateMiddle } from '../utils/promptUtils';
 
 /**
  * Newcomer Education Action
@@ -117,19 +119,30 @@ Respond in format:
 LEVEL: [level]
 QUESTION: [main question]`;
 
-      const prompt = composePromptFromState({ 
+      const promptFull = composePromptFromState({ 
         state: composedState, 
         template: assessmentTemplate 
       });
-      
-      const assessment = await runtime.useModel(ModelType.TEXT_SMALL, {
-        prompt,
-        runtime,
-      });
+      const prompt = truncateMiddle(promptFull, 3000);
+      const cacheKey = `eval|newcomer|v1|${hashKey(prompt)}`;
+      let assessmentText: string;
+      const cached = evaluatorCache.get(cacheKey);
+      if (cached) {
+        assessmentText = cached;
+      } else {
+        const assessment = await runtime.useModel(ModelType.TEXT_SMALL, {
+          prompt,
+          runtime,
+          maxTokens: 180,
+          temperature: 0.2,
+        });
+        assessmentText = String(assessment);
+        evaluatorCache.set(cacheKey, assessmentText);
+      }
       
       // Parse assessment
-      const level = extractLevel(assessment);
-      const question = extractQuestion(assessment);
+      const level = extractLevel(assessmentText);
+      const question = extractQuestion(assessmentText);
       
       // If not a real newcomer, skip
       if (level === 'NOT_A_NEWCOMER') {
@@ -149,23 +162,24 @@ QUESTION: [main question]`;
         
         // Wrap search in timeout to prevent hanging
         // Use runtime.searchMemories directly (not through service!)
+        const embedding = await runtime.useModel('TEXT_EMBEDDING' as any, { text: searchQuery });
         const searchPromise = runtime.searchMemories({
           tableName: 'knowledge',
           roomId: message.roomId,
-          query: searchQuery,
+          embedding: embedding as number[],
           count: 5,
           match_threshold: 0.5,
-        });
+        } as any);
           
           const timeoutPromise = new Promise((_, reject) => 
             setTimeout(() => reject(new Error('Knowledge search timeout')), 5000)
           );
           
-          const results = await Promise.race([searchPromise, timeoutPromise]);
+          const results = (await Promise.race([searchPromise, timeoutPromise])) as any[];
           
           console.log(`📚 [educateNewcomer] Found ${results?.length || 0} knowledge results`);
           
-        if (results && results.length > 0) {
+        if (Array.isArray(results) && results.length > 0) {
           // Aggregate knowledge from results
           educationContent = results
             .slice(0, 3)

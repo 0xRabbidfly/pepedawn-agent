@@ -202,11 +202,12 @@ const plugin: Plugin = {
       }
     } catch (error) {
       if (error instanceof z.ZodError) {
+        const issues = (error as z.ZodError).issues?.map((e) => e.message) ?? [];
         throw new Error(
-          `Invalid plugin configuration: ${error.errors.map((e) => e.message).join(', ')}`
+          `Invalid plugin configuration: ${issues.join(', ')}`
         );
       }
-      throw error;
+      throw error as Error;
     }
   },
   models: {

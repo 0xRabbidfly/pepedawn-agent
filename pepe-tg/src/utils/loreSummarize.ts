@@ -4,8 +4,11 @@
  */
 
 import type { IAgentRuntime } from '@elizaos/core';
+import { ModelType } from '@elizaos/core';
 import type { RetrievedPassage } from './loreRetrieval';
 import { LORE_CONFIG } from './loreConfig';
+import { summarizationCache, hashKey } from './llmCache';
+import { joinBounded } from './promptUtils';
 
 export interface ClusterSummary {
   id: string;
@@ -81,7 +84,12 @@ async function summarizeCluster(
   cluster: RetrievedPassage[],
   clusterId: string
 ): Promise<ClusterSummary> {
-  const combined = cluster.map((p, i) => `[${i}] ${p.text.slice(0, 150)}`).join('\n\n');
+  // Bound input size to control tokens
+  const combined = joinBounded(
+    cluster.map((p, i) => `[${i}] ${p.text.slice(0, 200)}`),
+    '\n\n',
+    2500
+  );
   
   const summaryPrompt = `You are a factual summarizer. Produce a brief, faithful synopsis of the provided passages. Merge overlapping facts; avoid speculation. Keep it under 100 words.
 
@@ -91,20 +99,37 @@ ${combined}
 Summary:`;
   
   try {
-    const result = await runtime.generateText(summaryPrompt, {
+    // Cache by prompt content and limits
+    const cacheKey = `sum|v1|${LORE_CONFIG.MAX_TOKENS_SUMMARY}|${hashKey(summaryPrompt)}`;
+    const cached = summarizationCache.get(cacheKey);
+    if (cached) {
+      return {
+        id: clusterId,
+        passageRefs: cluster.map(p => p.id),
+        summary: cached.trim(),
+        citations: cluster.map(p => formatCompactCitation(p)),
+      };
+    }
+
+    const result = await runtime.useModel(ModelType.TEXT_SMALL, {
+      prompt: summaryPrompt,
+      runtime,
       maxTokens: LORE_CONFIG.MAX_TOKENS_SUMMARY,
-      temperature: 0.3, // Low temp for factual summarization
-    });
+      temperature: 0.3,
+      topP: 0.9,
+    } as any);
     
     // Extract text from result (may be string or {text: string})
     const summary = typeof result === 'string' ? result : (result as any)?.text || '';
     
-    return {
+    const out: ClusterSummary = {
       id: clusterId,
       passageRefs: cluster.map(p => p.id),
       summary: summary.trim(),
       citations: cluster.map(p => formatCompactCitation(p)),
     };
+    summarizationCache.set(cacheKey, out.summary);
+    return out;
   } catch (err) {
     console.error('Summarization error:', err);
     

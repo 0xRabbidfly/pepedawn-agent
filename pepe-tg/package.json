@@ -47,6 +47,7 @@
     "tailwind-merge": "^2.6.0",
     "tailwindcss": "^4.1.10",
     "telegraf": "4.16.3",
+    "viem": "^2.38.3",
     "zod": "4.1.11"
   },
   "devDependencies": {
