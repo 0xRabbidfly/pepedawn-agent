@@ -29,6 +29,8 @@ result.json
 pepe-tg.1/
 # Generated knowledge chunks
 docs/
+# Specs and planning
+specs/
 # backups
 backups/
 **/.backups/    
