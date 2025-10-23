@@ -34,20 +34,25 @@ OPENAI_API_KEY=sk-your-openai-key-here
 # ========================================
 # Get bot token: Message @BotFather in Telegram, use /newbot command
 TELEGRAM_BOT_TOKEN=your-telegram-bot-token-here
+TELEGRAM_ADMIN_IDS=<ID1,ID2>
 
 # Get your user ID: Message @userinfobot in Telegram
 # For multiple admins, separate with commas: 123456789,987654321
 TELEGRAM_ADMIN_IDS=your-telegram-user-id
 
 # ========================================
+# REQUIRED: Database location
+# ========================================
+# Database directory (default: .eliza/.elizadb)
+PGLITE_DATA_DIR=<path_to_db>.eliza/.elizadb
+
+# ========================================
 # OPTIONAL: Model Configuration
 # ========================================
 # Main conversation model (default: gpt-4-turbo)
 # For cost savings, use: gpt-4o-mini (~$1-3/month vs ~$8/month)
-# TEXT_MODEL=gpt-4o-mini
-
-# Small tasks model (default: gpt-4o-mini)
-# SMALL_OPENAI_MODEL=gpt-4o-mini
+OPENAI_SMALL_MODEL=gpt-4o-mini
+OPENAI_LARGE_MODEL=gpt-4o
 
 # ========================================
 # OPTIONAL: Alternative AI Providers
@@ -74,22 +79,6 @@ TELEGRAM_ADMIN_IDS=your-telegram-user-id
 # LOAD_DOCS_ON_STARTUP=true
 
 # ========================================
-# OPTIONAL: Lottery Feature (Ethereum)
-# ========================================
-# Sepolia testnet RPC URL
-# SEPOLIA_RPC_URL=https://sepolia.drpc.org
-
-# Or mainnet
-# ETHEREUM_RPC_URL=https://eth-mainnet.g.alchemy.com/v2/YOUR_KEY
-# ETHEREUM_NETWORK=mainnet
-
-# Smart contract address
-# CONTRACT_ADDRESS=0xfd4BE1898Ee3d529aE06741001D3211914C1B90A
-
-# PEPEDAWN website URL (for lottery button)
-# PEPEDAWN_SITE_URL=https://pepedawn.xyz
-
-# ========================================
 # OPTIONAL: Lore Generation Tuning
 # ========================================
 # Number of passages to retrieve from knowledge base
@@ -113,17 +102,21 @@ TELEGRAM_ADMIN_IDS=your-telegram-user-id
 # Logging level: debug | info | warn | error
 # LOG_LEVEL=info
 
-# Suppress ElizaOS bootstrap debug logs (cleaner console)
-# SUPPRESS_BOOTSTRAP=true
+# Suppress ElizaOS bootstrap conversations
+# SUPPRESS_BOOTSTRAP=false
 
 # Hide source citations in /fl responses
-# HIDE_LORE_SOURCES=false
+# HIDE_LORE_SOURCES=true
+
+# Include Artist linkable button in /f response
+FAKE_RARES_ARTIST_BUTTONS=true
+
+# Premium model for lore stories only
+LORE_STORY_MODEL=gpt-5  
 
 # ========================================
 # OPTIONAL: Advanced Configuration
 # ========================================
-# Database directory (default: .eliza/.elizadb)
-# PGLITE_DATA_DIR=.eliza/.elizadb
 
 # Server port (default: 3000)
 # SERVER_PORT=3000

@@ -79,7 +79,7 @@
 ### 🎰 Lottery Stats (If Deployed)
 
 **Commands:**
-- **`/odds`** - Check PEPEDAWN lottery stats and leaderboard
+- **`/dawn`** - Check PEPEDAWN lottery stats and leaderboard
 
 Displays real-time data from Ethereum smart contract:
 - Current round number
@@ -116,7 +116,9 @@ Provides detailed breakdown:
 2. If new cards found, automatically updates in-memory index
 3. **No restart required** - zero-downtime updates
 
-**Manual Scraping:**
+**Automated Scraping via Github action update-fake-rares.yml :**
+
+If manual then follow
 ```bash
 # Scrape new cards from pepe.wtf and fakeraredirectory.com
 node scripts/add-new-cards.js 18 19 20
@@ -127,9 +129,7 @@ git commit -m "Add new cards from series 18-20"
 git push
 ```
 
-**Timeline:** New card released → Manually scraped → Pushed to GitHub → Available to users within 1 hour
-
-<TODO>**GitHub Action (Not Yet Implemented):** Automated daily scraping workflow</TODO>
+**Timeline:** New card released → Auto scraped → Pushed to GitHub as PR → Available to users within 1 hour
 
 ---
 
@@ -205,8 +205,8 @@ TELEGRAM_ADMIN_IDS=your-telegram-user-id
 # ========================================
 # OPTIONAL: Model Configuration
 # ========================================
-TEXT_MODEL=gpt-4o-mini                    # Main model (default: gpt-4-turbo)
-SMALL_OPENAI_MODEL=gpt-4o-mini            # Small model for simple tasks
+OPENAI_SMALL_MODEL=gpt-4o-mini
+OPENAI_LARGE_MODEL=gpt-4o
 # See available models: https://platform.openai.com/docs/models
 
 # ========================================
@@ -223,18 +223,14 @@ OPENROUTER_API_KEY=your-openrouter-key    # For 20% cost savings
 # LOAD_DOCS_ON_STARTUP=true
 
 # ========================================
-# OPTIONAL: Lottery Feature (Ethereum)
-# ========================================
-SEPOLIA_RPC_URL=https://sepolia.drpc.org
-CONTRACT_ADDRESS=0xfd4BE1898Ee3d529aE06741001D3211914C1B90A
-PEPEDAWN_SITE_URL=https://pepedawn.xyz
-
-# ========================================
 # OPTIONAL: System Configuration
 # ========================================
 SUPPRESS_BOOTSTRAP=true                   # Reduce debug logs
 HIDE_LORE_SOURCES=false                   # Show/hide source citations in /fl
 LOG_LEVEL=info                            # debug | info | warn | error
+FAKE_RARES_ARTIST_BUTTONS=true
+#NODE_ENV=production
+LORE_STORY_MODEL=gpt-5
 ```
 
 **Cost Optimization Tips:**
@@ -263,7 +259,7 @@ start - Welcome message and quick guide
 help - Show detailed instructions
 ```
 
-**Note:** The `/fc` (cost) and `/odds` (lottery) commands will only work if you have the necessary environment variables configured.
+**Note:** The `/fc` (cost) command will only work if you have the necessary environment variables configured.
 
 ---
 
@@ -275,8 +271,6 @@ help - Show detailed instructions
 cd pepe-tg
 bun run dev
 ```
-
-Changes to `.ts` files will auto-reload.
 
 ### Production
 
@@ -494,7 +488,7 @@ tar -xzf ../backups/elizadb-backup-*.tar.gz -C .eliza/
 
 ---
 
-#### `safe-restart.sh` - Graceful Restart
+#### `safe-restart.sh` - Graceful Restart for local dev
 
 Safely restarts the bot:
 1. Kills all `elizaos` processes
@@ -870,8 +864,8 @@ const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/YOUR_ORG/YOUR_REPO/...
 **Use cheaper models:**
 ```bash
 # In .env
-TEXT_MODEL=gpt-4o-mini           # Reduces costs to ~$1-3/month
-SMALL_OPENAI_MODEL=gpt-4o-mini
+OPENAI_SMALL_MODEL=gpt-4o-mini
+OPENAI_LARGE_MODEL=gpt-4o
 ```
 
 **Use OpenRouter (20% savings):**
@@ -1149,7 +1143,6 @@ pepedawn-agent/
 ├── 📘 README.md                    ⭐ You are here - Complete guide
 ├── 📗 SETUP_CHECKLIST.md           Step-by-step setup (Phase 1-4)
 ├── 📙 CONTRIBUTING.md              Developer guide + ElizaOS patterns
-├── 📕 CHANGELOG.md                 Version history
 ├── 📓 ENV_TEMPLATE.md              .env template
 │
 └── pepe-tg/
