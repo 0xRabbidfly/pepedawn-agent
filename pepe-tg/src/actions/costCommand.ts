@@ -85,8 +85,16 @@ export const costCommand: Action = {
   ) => {
     const telegramId = ((message as any).metadata?.fromId)?.toString() || '';
     
+    // Debug logging
+    console.log('[CostCommand] Debug info:');
+    console.log('  Raw message metadata:', JSON.stringify((message as any).metadata, null, 2));
+    console.log('  Extracted telegramId:', telegramId);
+    console.log('  TELEGRAM_ADMIN_IDS env var:', process.env.TELEGRAM_ADMIN_IDS);
+    
     // Check authorized users (bot owner + group admins via env var)
     const authorizedIds = process.env.TELEGRAM_ADMIN_IDS?.split(',').map(id => id.trim()) || [];
+    console.log('  Parsed authorizedIds:', authorizedIds);
+    console.log('  Is authorized?', authorizedIds.includes(telegramId));
     
     if (!telegramId || !authorizedIds.includes(telegramId)) {
       if (callback) {
