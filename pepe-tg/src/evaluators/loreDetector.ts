@@ -1,4 +1,5 @@
 import { type Evaluator, type IAgentRuntime, type Memory, type State, ModelType, composePromptFromState } from '@elizaos/core';
+import { setCallContext } from '../utils/tokenLogger';
 
 /**
  * Lore Detection Evaluator
@@ -75,6 +76,7 @@ Examples:
       
       const prompt = loreDetectionTemplate;
       
+      setCallContext('Background tasks');
       const assessment = await runtime.useModel(ModelType.TEXT_SMALL, {
         prompt,
         runtime,

@@ -162,6 +162,8 @@ bun run start
 /lore              → Random lore from community history
 /start             → Welcome message
 /help              → Usage guide
+/fc d              → Token costs today (admin-only)
+/fc m              → Token costs this month (admin-only)
 ```
 
 ### Natural Conversation

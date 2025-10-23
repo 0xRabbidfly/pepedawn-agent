@@ -1,9 +1,10 @@
 import { type Plugin } from '@elizaos/core';
-import { fakeRaresCardAction, educateNewcomerAction, startCommand, helpCommand, loreCommand, oddsCommand } from '../actions';
+import { fakeRaresCardAction, educateNewcomerAction, startCommand, helpCommand, loreCommand, oddsCommand, costCommand } from '../actions';
 import { fakeRaresContextProvider } from '../providers';
 import { loreDetectorEvaluator } from '../evaluators';
 import { FULL_CARD_INDEX } from '../data/fullCardIndex';
 import { startAutoRefresh } from '../utils/cardIndexRefresher';
+import { patchRuntimeForTracking } from '../utils/tokenLogger';
 
 /**
  * Fake Rares Plugin - Bootstrap 1.6.2 Compatible
@@ -39,6 +40,7 @@ export const fakeRaresPlugin: Plugin = {
     helpCommand,
     fakeRaresCardAction,
     loreCommand,
+    costCommand,
   ],
   
   providers: [fakeRaresContextProvider],
@@ -48,6 +50,12 @@ export const fakeRaresPlugin: Plugin = {
     MESSAGE_RECEIVED: [
       async (params: any) => {
         try {
+          const runtime = params.runtime;
+          const message = params.message;
+          
+          // Patch runtime to track ALL AI calls (including bootstrap)
+          patchRuntimeForTracking(runtime);
+          
           const text = (params?.message?.content?.text ?? '').toString().trim();
           const globalSuppression = process.env.SUPPRESS_BOOTSTRAP === 'true';
           
@@ -57,14 +65,12 @@ export const fakeRaresPlugin: Plugin = {
           const isDawnCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/dawn$/i.test(text);
           const isHelpCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/help$/i.test(text);
           const isStartCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/start$/i.test(text);
+          const isCostCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fc/i.test(text);
           const hasCapitalizedWord = /\b[A-Z]{3,}[A-Z0-9]*\b/.test(text); // 3+ caps (likely card names)
           const hasBotMention = /@pepedawn_bot/i.test(text);
           const isReplyToBot = params?.message?.content?.inReplyTo; // User replied to bot's message
-          
-          const runtime = params.runtime;
-          const message = params.message;
 
-          console.log(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${isFCommand} isLore=${isLoreCommand} isDawn=${isDawnCommand} isHelp=${isHelpCommand} isStart=${isStartCommand} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
+          console.log(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${isFCommand} isLore=${isLoreCommand} isDawn=${isDawnCommand} isHelp=${isHelpCommand} isStart=${isStartCommand} isCost=${isCostCommand} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
           
           // === CUSTOM ACTION: /f COMMANDS ===
           if (isFCommand) {
@@ -175,6 +181,33 @@ export const fakeRaresPlugin: Plugin = {
                 return; // Done - exit entire function
               } else {
                 console.log('[FakeRaresPlugin] /start validation failed, but still marking as handled');
+                try {
+                  message.metadata = message.metadata || {};
+                  (message.metadata as any).__handledByCustom = true;
+                } catch {}
+                return; // Done - exit entire function
+              }
+            }
+          }
+          
+          // === CUSTOM ACTION: /fc COMMANDS (admin-only) ===
+          if (isCostCommand) {
+            console.log('[FakeRaresPlugin] /fc detected → applying strong suppression and invoking action');
+            const actionCallback = typeof params.callback === 'function' ? params.callback : null;
+            params.callback = async () => [];
+
+            if (costCommand.validate && costCommand.handler) {
+              const isValid = await costCommand.validate(runtime, message);
+              if (isValid) {
+                await costCommand.handler(runtime, message, params.state, {}, actionCallback ?? undefined);
+                try {
+                  message.metadata = message.metadata || {};
+                  (message.metadata as any).__handledByCustom = true;
+                } catch {}
+                console.log('[FakeRaresPlugin] /fc action completed');
+                return; // Done - exit entire function
+              } else {
+                console.log('[FakeRaresPlugin] /fc validation failed (not admin), suppressing');
                 try {
                   message.metadata = message.metadata || {};
                   (message.metadata as any).__handledByCustom = true;

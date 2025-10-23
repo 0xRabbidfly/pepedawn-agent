@@ -299,3 +299,50 @@ tar -xzf elizadb-backup-*.tar.gz
 # Restart bot
 pm2 start pepe-tg
 ```
+
+---
+
+## Available OpenAI Models
+
+### Checking Available Models
+
+To see which models your API key has access to:
+
+```bash
+curl https://api.openai.com/v1/models \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  | grep -o '"id":"[^"]*"' | grep -E '(gpt-4|gpt-5|o1|o3)' | cut -d'"' -f4 | sort
+```
+
+### Models Available (as of Oct 2025)
+
+**GPT-5 Series:**
+- `gpt-5` - Latest flagship model
+- `gpt-5-pro` (2025-10-06) - Most advanced reasoning
+- `gpt-5-mini` - Faster/cheaper variant
+- `gpt-5-nano` - Smallest/cheapest variant
+- `gpt-5-codex` - Code-optimized
+- `gpt-5-search-api` - Search-optimized
+
+**o3 Reasoning Models:**
+- `o3` (2025-04-16) - Latest reasoning model
+- `o3-mini` (2025-01-31) - Cheaper reasoning
+
+**o1 Reasoning Models:**
+- `o1` (2024-12-17) - Production reasoning
+- `o1-pro` (2025-03-19) - Pro reasoning
+- `o1-mini` (2024-09-12) - Faster reasoning
+
+**GPT-4.1 Series:**
+- `gpt-4.1` (2025-04-14) - Improved GPT-4
+- `gpt-4.1-mini` - Faster variant
+- `gpt-4.1-nano` - Smallest variant
+
+**GPT-4o Series:**
+- `gpt-4o` - Optimized flagship
+- `gpt-4o-mini` - Faster/cheaper
+- `chatgpt-4o-latest` - Latest ChatGPT model
+
+**GPT-4 Series:**
+- `gpt-4` - Original GPT-4
+- `gpt-4-turbo` - Faster variant

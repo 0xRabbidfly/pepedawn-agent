@@ -4,6 +4,7 @@
  */
 
 import type { IAgentRuntime } from '@elizaos/core';
+import { ModelType } from '@elizaos/core';
 import type { RetrievedPassage } from './loreRetrieval';
 import { LORE_CONFIG } from './loreConfig';
 
@@ -91,13 +92,15 @@ ${combined}
 Summary:`;
   
   try {
-    const result = await runtime.generateText(summaryPrompt, {
+    // Use TEXT_SMALL for summaries (uses OPENAI_SMALL_MODEL from .env)
+    // Context is set at loreCommand level (not here, to avoid parallel conflicts)
+    const result = await runtime.useModel(ModelType.TEXT_SMALL, {
+      prompt: summaryPrompt,
       maxTokens: LORE_CONFIG.MAX_TOKENS_SUMMARY,
       temperature: 0.3, // Low temp for factual summarization
     });
     
-    // Extract text from result (may be string or {text: string})
-    const summary = typeof result === 'string' ? result : (result as any)?.text || '';
+    const summary = typeof result === 'string' ? result : (result as any)?.text || result?.toString() || '';
     
     return {
       id: clusterId,

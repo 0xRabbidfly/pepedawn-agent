@@ -1,1 +1,6 @@
 logs/
+
+# Token tracking data
+src/data/token-logs.jsonl
+src/data/archives/
+src/data/.last-archive-check

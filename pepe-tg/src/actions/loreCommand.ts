@@ -4,6 +4,7 @@ import { clusterAndSummarize, formatSourcesLine } from '../utils/loreSummarize';
 import { generatePersonaStory } from '../utils/storyComposer';
 import { filterOutRecentlyUsed, markIdAsRecentlyUsed } from '../utils/lru';
 import { LORE_CONFIG } from '../utils/loreConfig';
+import { setCallContext, clearCallContext } from '../utils/tokenLogger';
 
 /**
  * /fl command - LLM-LORE: Knowledge-backed lore with RAG, clustering, and persona storytelling
@@ -88,12 +89,15 @@ export const loreCommand: Action = {
       diversePassages.forEach(p => markIdAsRecentlyUsed(message.roomId, p.id));
 
       // STEP 4: Cluster and summarize
+      setCallContext('Lore calls'); // Set context for all lore operations
       const summaries = await clusterAndSummarize(runtime, diversePassages);
       console.log(`📊 Generated ${summaries.length} cluster summaries`);
 
       // STEP 5: Generate persona story
       const story = await generatePersonaStory(runtime, query, summaries);
       console.log(`✍️  Generated story (${story.split(/\s+/).length} words)`);
+      
+      clearCallContext(); // Clear after lore flow complete
 
       // STEP 6: Format with sources
       const sourcesLine = process.env.HIDE_LORE_SOURCES === 'true' ? '' : formatSourcesLine(summaries);
