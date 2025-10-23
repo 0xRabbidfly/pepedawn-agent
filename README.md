@@ -37,8 +37,9 @@
 
 ### 🔍 Visual Analysis & Memetic Commentary
 
-**Command:**
+**Commands:**
 - **`/fv CARDNAME`** - AI-powered visual analysis of any card
+- **`/fv [attach image]`** - Analyze any uploaded image
 
 **What it does:**
 - 📝 Reads and extracts ALL text on the card (OCR)
@@ -46,15 +47,18 @@
 - 🧬 Identifies meme references and crypto culture elements
 - 🎯 Provides vibe check + visual rarity impression
 
-**Example:**
+**Examples:**
 ```
-/fv FREEDOMKEK      → Full memetic breakdown
-/fv WAGMIWORLD      → Visual & cultural analysis
+/fv FREEDOMKEK      → Full memetic breakdown of card
+/fv WAGMIWORLD      → Visual & cultural analysis of card
+/fv + attach image  → Analyze your own meme/art
 ```
 
 **Powered by:** Configurable model (default: GPT-4o) - Set `VISUAL_MODEL` in `.env`  
 **Cost:** ~$0.005 per analysis (GPT-4o) or varies by model  
-**Supports:** JPG, PNG, GIF, WEBP (not MP4 videos)
+**Supports:** Cards (JPG, PNG, GIF, WEBP, MP4*) + any uploaded images
+
+*MP4 cards use scraped static versions when available
 
 **Smart Typo Correction:**
 - **High confidence (≥75%)** → Auto-shows correct card with playful message

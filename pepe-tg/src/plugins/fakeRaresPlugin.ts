@@ -62,7 +62,7 @@ export const fakeRaresPlugin: Plugin = {
           
           // Pattern detection
           const isFCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/f(?:@[A-Za-z0-9_]+)?(?:\s+.+)?$/i.test(text);
-          const isFvCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fv\s+/i.test(text);
+          const isFvCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fv(?:\s|$)/i.test(text);
           const isLoreCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fl/i.test(text);
           const isDawnCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/dawn$/i.test(text);
           const isHelpCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/help$/i.test(text);
@@ -100,6 +100,9 @@ export const fakeRaresPlugin: Plugin = {
           // === CUSTOM ACTION: /fv COMMANDS ===
           if (isFvCommand) {
             console.log('[FakeRaresPlugin] /fv detected → applying strong suppression and invoking action');
+            
+            // CRITICAL: Preserve attachments for our handler, then clear them to prevent Bootstrap from processing
+            const preservedAttachments = message.content.attachments ? [...message.content.attachments] : [];
             const actionCallback = typeof params.callback === 'function' ? params.callback : null;
             params.callback = async () => [];
             
@@ -112,6 +115,10 @@ export const fakeRaresPlugin: Plugin = {
                   (message.metadata as any).__handledByCustom = true;
                 } catch {}
                 console.log('[FakeRaresPlugin] /fv action completed');
+                
+                // NOW clear attachments to prevent Bootstrap from processing them
+                message.content.attachments = [];
+                
                 return; // Done
               }
             }

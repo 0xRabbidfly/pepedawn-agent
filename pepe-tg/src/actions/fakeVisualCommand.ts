@@ -1,13 +1,11 @@
 /**
  * Fake Visual Command - Memetic Visual Analysis
  * 
- * /fv CARDNAME - Analyzes a Fake Rares card using GPT-4o vision to:
- * - Extract and read all text on the card (OCR)
- * - Analyze visual composition and artistic style
- * - Identify memetic references and cultural context
- * - Provide "vibe check" and rarity assessment
+ * /fv CARDNAME - Analyzes a Fake Rares card
+ * /fv [attach image] - Analyzes any uploaded image
  * 
- * Cost: ~$0.005 per analysis (GPT-4o vision)
+ * Uses GPT-4o vision to extract text, analyze visuals, and provide memetic commentary
+ * Cost: ~$0.005 per analysis
  */
 
 import {
@@ -32,7 +30,7 @@ const logger = createLogger('FakeVisual');
 // High-detail vision uses ~765 tokens for image encoding
 const IMAGE_ENCODING_TOKENS = 765;
 
-const MEME_ANALYSIS_PROMPT = `You are analyzing a Fake Rares NFT card for memetic and visual content.
+const CARD_ANALYSIS_PROMPT = `You are analyzing a Fake Rares NFT card for memetic and visual content.
 
 Provide a comprehensive analysis in this format:
 
@@ -51,6 +49,24 @@ Provide a comprehensive analysis in this format:
 
 Keep your tone casual, crypto-native, and insightful. Be funny but accurate. Use emojis naturally.`;
 
+const GENERIC_IMAGE_PROMPT = `You are analyzing an image for memetic and visual content.
+
+Provide a comprehensive analysis in this format:
+
+📝 **TEXT:**
+[Extract and transcribe ALL visible text. No more than 2 sentences. IMPORTANT: If there is NO visible text, skip this entire section including the title.]
+
+🎨 **VISUAL BREAKDOWN:**
+[Describe the composition, color palette, artistic style, and visual elements in 2-3 sentences. Be specific and descriptive.]
+
+🧬 **MEMETIC DNA:**
+[Identify ACTUAL meme references, cultural elements, symbols, and recognizable formats/templates. Use bullet points. DO NOT speculate on what things "could symbolize" - only note what is explicitly present.]
+
+🎯 **FAKE APPEAL:**
+[Score out of 10 based on STRICT Fake Rare ethos. Weight these SPECIFIC elements: 1) PEPE culture (Fake Rare cards, Rare Pepe, danks, Pepe characters) - highest weight, 2) Text content (memetic, Pepe-related) - high weight, 3) Color palette (GREEN tones prominent) - medium weight, 4) Name/title (fake, rare, pepe references) - medium weight. DO NOT give credit for: vague "crypto vibes", "meme energy", random animals (bears, dogs, cats), generic art styles, or "could symbolize" interpretations. If the image has NONE of the 4 specific elements above (no Pepe, no green, no memetic text, no Pepe name), score 1-2/10. Be harsh and specific in your reasoning.]
+
+Keep your tone casual and insightful. Be funny but accurate.`;
+
 // ============================================================================
 // VISION ANALYSIS
 // ============================================================================
@@ -65,15 +81,16 @@ interface AnalysisResult {
 }
 
 /**
- * Analyzes a card image using vision API
+ * Analyzes an image using vision API
  * Includes OCR text extraction and memetic analysis
  * 
  * Uses custom VISUAL_MODEL env var to bypass runtime's model selection
  * This allows visual analysis to use a specific model (e.g., gpt-4o, gpt-5)
  */
-async function analyzeCardWithVision(
+async function analyzeWithVision(
   imageUrl: string,
-  cardName: string
+  subject: string,
+  prompt: string
 ): Promise<AnalysisResult> {
   // Use custom env var VISUAL_MODEL (same pattern as LORE_STORY_MODEL)
   const model = process.env.VISUAL_MODEL || 'gpt-4o';
@@ -83,11 +100,19 @@ async function analyzeCardWithVision(
   });
   
   const startTime = Date.now();
-  const textPrompt = `Analyzing card: **${cardName}**\n\n${MEME_ANALYSIS_PROMPT}`;
+  const textPrompt = `Analyzing: **${subject}**\n\n${prompt}`;
   const estimatedTokensIn = estimateTokens(textPrompt) + IMAGE_ENCODING_TOKENS;
   
-  logger.info('Starting vision analysis', { cardName, model });
-  logger.debug('Image URL', { url: imageUrl });
+  logger.info('Starting vision analysis', { subject, model });
+  
+  // Log image URL details for debugging
+  const isBase64 = imageUrl.startsWith('data:');
+  logger.info('Image URL info', {
+    isBase64,
+    urlLength: imageUrl.length,
+    urlPreview: isBase64 ? imageUrl.substring(0, 50) + '...' : imageUrl,
+    estimatedSizeMB: isBase64 ? (imageUrl.length * 0.75 / 1024 / 1024).toFixed(2) : 'N/A'
+  });
   
   try {
     // Newer models (o1, o3, gpt-5) use different parameters
@@ -114,6 +139,14 @@ async function analyzeCardWithVision(
         }
       ],
     };
+    
+    logger.info('Sending request to OpenAI', {
+      model,
+      messageContent: requestParams.messages[0].content.map((c: any) => ({
+        type: c.type,
+        ...(c.type === 'image_url' ? { urlType: c.image_url.url.startsWith('data:') ? 'base64' : 'url' } : {})
+      }))
+    });
     
     // Configure parameters based on model type
     if (isReasoningModel) {
@@ -171,7 +204,24 @@ async function analyzeCardWithVision(
     };
     
   } catch (error: any) {
-    logger.error('Vision API error', error);
+    // Extract detailed error information
+    const errorDetails = {
+      message: error.message,
+      code: error.code,
+      status: error.status,
+      type: error.type,
+      imageType: imageUrl?.startsWith('data:') ? 'base64' : 'url',
+      // OpenAI SDK v4+ error structure
+      openaiError: error.error?.message || error.error,
+      // Raw response data
+      responseData: error.response?.data,
+      responseStatus: error.response?.status,
+      responseBody: error.response?.body,
+    };
+    
+    // Log comprehensive error details for debugging
+    logger.error('Vision API error - FULL DETAILS:', error);
+    console.error('🔴 OpenAI Error Details:', JSON.stringify(errorDetails, null, 2));
     
     // Provide helpful error messages
     if (error.code === 'insufficient_quota') {
@@ -180,6 +230,10 @@ async function analyzeCardWithVision(
       throw new Error('Invalid OpenAI API key. Please check your configuration.');
     } else if (error.message?.includes('rate_limit')) {
       throw new Error('Rate limit reached. Please wait a moment and try again.');
+    } else if (error.status === 400 || error.response?.status === 400) {
+      // 400 errors - extract the actual OpenAI error message
+      const openaiMsg = error.error?.message || error.response?.data?.error?.message || error.message;
+      throw new Error(`OpenAI 400 error: ${openaiMsg}`);
     }
     
     throw new Error(`Vision analysis failed: ${error.message || 'Unknown error'}`);
@@ -253,8 +307,8 @@ export const fakeVisualCommand: Action = {
 
   validate: async (runtime: IAgentRuntime, message: Memory) => {
     const text = (message.content.text || '').trim();
-    // Match /fv followed by a card name (with optional bot mention)
-    return /^(?:@[A-Za-z0-9_]+\s+)?\/fv\s+\S+/i.test(text);
+    // Match /fv command (with or without card name, attachment checked in handler)
+    return /^(?:@[A-Za-z0-9_]+\s+)?\/fv(?:\s|$)/i.test(text);
   },
 
   handler: async (
@@ -272,14 +326,123 @@ export const fakeVisualCommand: Action = {
     
     try {
       const text = (message.content.text || '').trim();
+      const hasAttachment = message.content.attachments && message.content.attachments.length > 0;
       
-      // STEP 1: Parse command
+      // Branch 1: User uploaded an image
+      if (hasAttachment) {
+        logger.step(1, 'Analyze uploaded image');
+        const attachment = message.content.attachments?.[0];
+        
+        if (!attachment) {
+          logger.error('Attachment missing despite hasAttachment check');
+          await callback?.({ text: '❌ Could not access the uploaded image. Please try again.' });
+          return { success: false, text: 'No attachment found' };
+        }
+        
+        logger.info('Attachment detected', {
+          source: attachment.source
+        });
+        
+        if (!attachment.url) {
+          logger.error('No URL in attachment', undefined, { attachmentSource: attachment.source });
+          await callback?.({ text: '❌ Could not access the uploaded image. Please try again.' });
+          return { success: false, text: 'No image URL' };
+        }
+        
+        // STEP 2: Download and convert image to base64 (Telegram URLs are temporary)
+        logger.step(2, 'Download image');
+        let imageDataUrl: string;
+        try {
+          const response = await fetch(attachment.url);
+          if (!response.ok) {
+            throw new Error(`Failed to download image: ${response.statusText}`);
+          }
+          const arrayBuffer = await response.arrayBuffer();
+          const buffer = Buffer.from(arrayBuffer);
+          
+          // Check image size (OpenAI has 20MB limit)
+          const sizeMB = arrayBuffer.byteLength / 1024 / 1024;
+          logger.info('Image downloaded', { 
+            sizeBytes: arrayBuffer.byteLength,
+            sizeMB: sizeMB.toFixed(2)
+          });
+          
+          if (sizeMB > 20) {
+            throw new Error(`Image too large: ${sizeMB.toFixed(2)}MB (max 20MB). Please upload a smaller image.`);
+          }
+          
+          // Detect actual image type from magic bytes (Telegram returns octet-stream)
+          let contentType = 'image/jpeg'; // Default
+          if (buffer[0] === 0x89 && buffer[1] === 0x50) {
+            contentType = 'image/png';
+          } else if (buffer[0] === 0x47 && buffer[1] === 0x49) {
+            contentType = 'image/gif';
+          } else if (buffer[0] === 0x52 && buffer[1] === 0x49) {
+            contentType = 'image/webp';
+          } else if (buffer[0] === 0xFF && buffer[1] === 0xD8) {
+            contentType = 'image/jpeg';
+          }
+          
+          logger.info('Detected content type', { contentType });
+          
+          const base64 = buffer.toString('base64');
+          imageDataUrl = `data:${contentType};base64,${base64}`;
+          
+          logger.info('Converted to base64 data URL', { 
+            base64Length: base64.length,
+            dataUrlLength: imageDataUrl.length,
+            estimatedSizeMB: (imageDataUrl.length * 0.75 / 1024 / 1024).toFixed(2)
+          });
+        } catch (downloadError: any) {
+          logger.error('Failed to download image', downloadError);
+          await callback?.({ text: '❌ Could not download the image. Please try again.' });
+          return { success: false, text: 'Image download failed' };
+        }
+        
+        // STEP 3: Perform visual analysis
+        logger.step(3, 'Perform vision analysis');
+        try {
+          const result = await analyzeWithVision(imageDataUrl, 'User Image', GENERIC_IMAGE_PROMPT);
+          
+          // STEP 4: Format and send results
+          logger.step(4, 'Send results');
+          const responseText = `🐸 **MEMETIC ANALYSIS**\n\n${result.analysis}`;
+          await callback?.({ text: responseText });
+          
+          logger.separator();
+          logger.success('Handler completed successfully');
+          
+          return {
+            success: true,
+            text: 'Visual analysis complete',
+            data: {
+              analysis: result.analysis,
+              cost: result.cost,
+              tokensIn: result.tokensIn,
+              tokensOut: result.tokensOut,
+              duration: result.duration
+            }
+          };
+        } catch (error: any) {
+          logger.error('Failed to analyze uploaded image', error);
+          
+          const errorMsg = error.message || String(error) || 'Unknown error';
+          await callback?.({ 
+            text: `❌ Failed to analyze image: ${errorMsg}\n\nPlease try uploading a different image format (JPG, PNG, GIF, or WEBP).` 
+          });
+          return { success: false, text: errorMsg };
+        }
+      }
+      
+      // Branch 2: Analyze a Fake Rares card
       logger.step(1, 'Parse command');
       const { cardName, error } = parseCommand(text);
       
       if (error || !cardName) {
-        logger.warning('Invalid command format');
-        await callback?.({ text: error || 'Invalid command' });
+        logger.warning('No card name and no attachment');
+        await callback?.({ 
+          text: '❌ **Usage:**\n\n**Option 1:** `/fv CARDNAME` - Analyze a Fake Rares card\n**Option 2:** `/fv` + attach image - Analyze any image\n\n**Examples:**\n• `/fv FREEDOMKEK`\n• `/fv` then attach your meme' 
+        });
         return { success: false, text: 'Invalid command format' };
       }
       
@@ -319,7 +482,7 @@ export const fakeVisualCommand: Action = {
       
       // STEP 4: Perform visual analysis
       logger.step(4, 'Perform vision analysis');
-      const result = await analyzeCardWithVision(imageUrl, cardName);
+      const result = await analyzeWithVision(imageUrl, `card: ${cardName}`, CARD_ANALYSIS_PROMPT);
       
       // STEP 5: Format and send results
       logger.step(5, 'Send results');
