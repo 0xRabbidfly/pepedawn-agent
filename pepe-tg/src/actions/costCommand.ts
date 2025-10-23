@@ -72,14 +72,7 @@ export const costCommand: Action = {
       return false;
     }
     
-    // Admin check - extract Telegram ID from metadata
-    const adminIds = process.env.TELEGRAM_ADMIN_IDS?.split(',').map(id => id.trim()) || [];
-    const telegramId = ((message as any).metadata?.fromId)?.toString() || '';
-    
-    if (!telegramId || !adminIds.includes(telegramId)) {
-      return false;
-    }
-    
+    // Always validate true so handler can send error message for non-admins
     return true;
   },
   
@@ -90,6 +83,20 @@ export const costCommand: Action = {
     options?: any,
     callback?: HandlerCallback
   ) => {
+    const telegramId = ((message as any).metadata?.fromId)?.toString() || '';
+    
+    // Check authorized users (bot owner + group admins via env var)
+    const authorizedIds = process.env.TELEGRAM_ADMIN_IDS?.split(',').map(id => id.trim()) || [];
+    
+    if (!telegramId || !authorizedIds.includes(telegramId)) {
+      if (callback) {
+        await callback({ 
+          text: '🔒 This command is admin-only. Contact the bot administrator for access.' 
+        });
+      }
+      return { success: false, text: 'Unauthorized' };
+    }
+    
     const text = message.content.text?.toLowerCase().trim() || '';
     const args = text.split(/\s+/);
     const periodArg = args[1];
