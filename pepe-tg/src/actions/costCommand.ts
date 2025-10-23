@@ -72,7 +72,15 @@ export const costCommand: Action = {
       return false;
     }
     
-    // Always validate true so handler can send error message for non-admins
+    // Only work in DMs (private chats) - fromId positive = user, negative = group
+    const metadata = (message as any).metadata || {};
+    const isDM = metadata.fromId && metadata.fromId > 0;
+    
+    if (!isDM) {
+      // Not a DM - don't even process the command
+      return false;
+    }
+    
     return true;
   },
   
@@ -83,20 +91,15 @@ export const costCommand: Action = {
     options?: any,
     callback?: HandlerCallback
   ) => {
-    const telegramId = ((message as any).metadata?.fromId)?.toString() || '';
+    const metadata = (message as any).metadata || {};
     
-    // Debug logging
-    console.log('[CostCommand] Debug info:');
-    console.log('  Raw message metadata:', JSON.stringify((message as any).metadata, null, 2));
-    console.log('  Extracted telegramId:', telegramId);
-    console.log('  TELEGRAM_ADMIN_IDS env var:', process.env.TELEGRAM_ADMIN_IDS);
+    // Extract user ID from DM (we know it's a DM because validate() already checked)
+    const telegramId = metadata.fromId.toString();
     
     // Check authorized users (bot owner + group admins via env var)
     const authorizedIds = process.env.TELEGRAM_ADMIN_IDS?.split(',').map(id => id.trim()) || [];
-    console.log('  Parsed authorizedIds:', authorizedIds);
-    console.log('  Is authorized?', authorizedIds.includes(telegramId));
     
-    if (!telegramId || !authorizedIds.includes(telegramId)) {
+    if (!authorizedIds.includes(telegramId)) {
       if (callback) {
         await callback({ 
           text: '🔒 This command is admin-only. Contact the bot administrator for access.' 
@@ -136,7 +139,7 @@ export const costCommand: Action = {
     const logs = readTokenLogs(startDate);
     const report = formatCostReport(logs, period);
     
-    // Send response
+    // Send response to DM
     if (callback) {
       await callback({ text: report });
     }
