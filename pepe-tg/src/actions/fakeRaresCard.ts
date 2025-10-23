@@ -334,10 +334,12 @@ function buildCardDisplayMessage(params: CardDisplayParams): string {
   }
   
   // Add card name header - UNIFIED FORMAT FOR ALL FLOWS
+  // Use the properly capitalized name from cardInfo if available, otherwise fall back to user input
+  const displayName = params.cardInfo?.asset || params.assetName;
   if (params.isRandomCard) {
-    message += `🎲 ${params.assetName} 🐸`;
+    message += `🎲 ${displayName} 🐸`;
   } else {
-    message += `${params.assetName} 🐸`;
+    message += `${displayName} 🐸`;
   }
   
   // Add series and card number - SAME FOR ALL FLOWS
