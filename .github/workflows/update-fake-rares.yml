@@ -50,8 +50,9 @@ jobs:
           else
             echo "changed=true" >> $GITHUB_OUTPUT
             ADDED=$(git diff pepe-tg/src/data/fake-rares-data.json | grep '^+' | grep -c '"asset"' || echo "0")
-            echo "cards_added=$ADDED" >> $GITHUB_OUTPUT
-            echo "✅ Found $ADDED new cards"
+            ADDED=$(echo "$ADDED" | tr -d '\n\r ')
+            echo "cards_added=${ADDED}" >> $GITHUB_OUTPUT
+            echo "✅ Found ${ADDED} new cards"
           fi
       
       - name: Create Pull Request

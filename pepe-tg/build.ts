@@ -86,6 +86,13 @@ async function build() {
           await mkdir('dist/data', { recursive: true });
           await copyFile('src/data/fake-rares-data.json', 'dist/data/fake-rares-data.json');
           console.log('✓ Copied fake-rares-data.json to dist/data/');
+          
+          // Copy embeddings if exists
+          if (existsSync('src/data/card-embeddings.json')) {
+            await copyFile('src/data/card-embeddings.json', 'dist/data/card-embeddings.json');
+            console.log('✓ Copied card-embeddings.json to dist/data/');
+          }
+          
           return { success: true };
         } catch (error) {
           console.warn('⚠ Failed to copy data files:', error);

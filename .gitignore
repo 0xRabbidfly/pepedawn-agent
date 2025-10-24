@@ -22,6 +22,18 @@ dist/
 .eliza/
 **/.eliza/
 
+# Embedding service (Python)
+embedding-service/__pycache__/
+embedding-service/*.log
+embedding-service/.venv/
+**/embedding-service/__pycache__/
+**/embedding-service/*.log
+**/embedding-service/.venv/
+
+# Embeddings (JSON file is committed, temp files ignored)
+embedding-progress.log
+**/embedding-progress.log
+
 # Large result files
 result.json
 

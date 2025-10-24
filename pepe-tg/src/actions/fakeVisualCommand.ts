@@ -19,6 +19,8 @@ import { getCardInfo } from '../utils/cardIndexRefresher';
 import { determineImageUrlForAnalysis } from '../utils/cardUrlUtils';
 import { logTokenUsage, estimateTokens, calculateCost } from '../utils/tokenLogger';
 import { createLogger } from '../utils/actionLogger';
+import { generateEmbeddingFromBase64, interpretSimilarity } from '../utils/visualEmbeddings';
+import { findMostSimilarCard } from '../utils/embeddingsDb';
 import OpenAI from 'openai';
 
 // ============================================================================
@@ -105,15 +107,6 @@ async function analyzeWithVision(
   
   logger.info('Starting vision analysis', { subject, model });
   
-  // Log image URL details for debugging
-  const isBase64 = imageUrl.startsWith('data:');
-  logger.info('Image URL info', {
-    isBase64,
-    urlLength: imageUrl.length,
-    urlPreview: isBase64 ? imageUrl.substring(0, 50) + '...' : imageUrl,
-    estimatedSizeMB: isBase64 ? (imageUrl.length * 0.75 / 1024 / 1024).toFixed(2) : 'N/A'
-  });
-  
   try {
     // Newer models (o1, o3, gpt-5) use different parameters
     const isReasoningModel = model.startsWith('o1') || model.startsWith('o3') || model.startsWith('gpt-5');
@@ -139,14 +132,6 @@ async function analyzeWithVision(
         }
       ],
     };
-    
-    logger.info('Sending request to OpenAI', {
-      model,
-      messageContent: requestParams.messages[0].content.map((c: any) => ({
-        type: c.type,
-        ...(c.type === 'image_url' ? { urlType: c.image_url.url.startsWith('data:') ? 'base64' : 'url' } : {})
-      }))
-    });
     
     // Configure parameters based on model type
     if (isReasoningModel) {
@@ -362,11 +347,6 @@ export const fakeVisualCommand: Action = {
           
           // Check image size (OpenAI has 20MB limit)
           const sizeMB = arrayBuffer.byteLength / 1024 / 1024;
-          logger.info('Image downloaded', { 
-            sizeBytes: arrayBuffer.byteLength,
-            sizeMB: sizeMB.toFixed(2)
-          });
-          
           if (sizeMB > 20) {
             throw new Error(`Image too large: ${sizeMB.toFixed(2)}MB (max 20MB). Please upload a smaller image.`);
           }
@@ -383,30 +363,84 @@ export const fakeVisualCommand: Action = {
             contentType = 'image/jpeg';
           }
           
-          logger.info('Detected content type', { contentType });
-          
           const base64 = buffer.toString('base64');
           imageDataUrl = `data:${contentType};base64,${base64}`;
-          
-          logger.info('Converted to base64 data URL', { 
-            base64Length: base64.length,
-            dataUrlLength: imageDataUrl.length,
-            estimatedSizeMB: (imageDataUrl.length * 0.75 / 1024 / 1024).toFixed(2)
-          });
         } catch (downloadError: any) {
           logger.error('Failed to download image', downloadError);
           await callback?.({ text: '❌ Could not download the image. Please try again.' });
           return { success: false, text: 'Image download failed' };
         }
         
-        // STEP 3: Perform visual analysis
-        logger.step(3, 'Perform vision analysis');
+        // STEP 3: Check for existing card similarity (BEFORE LLM call to save costs!)
+        logger.step(3, 'Check embedding similarity');
+        let similarCard: { asset: string; imageUrl: string; similarity: number } | null = null;
+        let matchType: 'exact' | 'high' | 'low' = 'low';
+        
+        try {
+          // Generate embedding for uploaded image
+          const userEmbedding = await generateEmbeddingFromBase64(imageDataUrl);
+          
+          // Find most similar card in database
+          similarCard = await findMostSimilarCard(userEmbedding);
+          
+          if (similarCard) {
+            matchType = interpretSimilarity(similarCard.similarity);
+            
+            // EXACT MATCH: User uploaded an existing Fake Rare!
+            if (matchType === 'exact') {
+              logger.success('Exact match detected - no LLM call needed!');
+              const responseText = `🐸 **HA! NICE TRY!**\n\nThat's **${similarCard.asset}** - already a certified FAKE RARE!\n\n🎯 **10/10** because it's already legendary.\n\nTry uploading your own original art instead! 😏`;
+              await callback?.({ text: responseText });
+              
+              return {
+                success: true,
+                text: 'Exact match detected',
+                data: {
+                  matchType: 'exact',
+                  matchedCard: similarCard.asset,
+                  similarity: similarCard.similarity
+                }
+              };
+            }
+            
+            // HIGH MATCH: User modified an existing card
+            if (matchType === 'high') {
+              logger.success('High similarity detected - no LLM call needed!');
+              const responseText = `🐸 **SNEAKY! ALMOST GOT ME!**\n\nLooks like you tried to modify **${similarCard.asset}**! The vibes are too similar.\n\nNice try, but I can spot a derivative when I see one! 😏\n\nWant a real analysis? Upload something more original! 🎨`;
+              await callback?.({ text: responseText });
+              
+              return {
+                success: true,
+                text: 'High similarity detected',
+                data: {
+                  matchType: 'high',
+                  matchedCard: similarCard.asset,
+                  similarity: similarCard.similarity
+                }
+              };
+            }
+          }
+        } catch (embeddingError: any) {
+          // If embedding check fails, log but continue to LLM analysis
+          logger.warning('Embedding similarity check failed, proceeding to LLM', {
+            error: embeddingError.message
+          });
+        }
+        
+        // STEP 4: Perform visual analysis (LOW similarity or embedding check failed)
+        logger.step(4, 'Perform vision analysis');
         try {
           const result = await analyzeWithVision(imageDataUrl, 'User Image', GENERIC_IMAGE_PROMPT);
           
-          // STEP 4: Format and send results
-          logger.step(4, 'Send results');
-          const responseText = `🐸 **MEMETIC ANALYSIS**\n\n${result.analysis}`;
+          // STEP 5: Format and send results (include closest card if available)
+          logger.step(5, 'Send results');
+          let responseText = `🐸 **MEMETIC ANALYSIS**\n\n${result.analysis}`;
+          
+          // Add closest matching card info (if low similarity)
+          if (similarCard && matchType === 'low') {
+            responseText += `\n\n💡 **CLOSEST MATCH IN COLLECTION:**\nYour image has some vibes similar to **${similarCard.asset}**\nCheck it out: \`/f ${similarCard.asset}\``;
+          }
+          
           await callback?.({ text: responseText });
           
           logger.separator();

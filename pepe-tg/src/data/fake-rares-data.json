@@ -2952,7 +2952,14 @@
     "artistSlug": "Alpha-Centauri-Kid",
     "supply": 100,
     "issuance": "February 2022",
-    "videoUri": "https://4sj3vgyruqxhwqnkk7sm6pn6h3xovowg6u6u6hfywmec4yl6a5pq.arweave.net/5JO6mxGkLntBqlfkzz2-Pu7qusb1PU8cuLMILmF-B18/mkb0xm_video.mp4"
+    "videoUri": "https://4sj3vgyruqxhwqnkk7sm6pn6h3xovowg6u6u6hfywmec4yl6a5pq.arweave.net/5JO6mxGkLntBqlfkzz2-Pu7qusb1PU8cuLMILmF-B18/mkb0xm_video.mp4",
+    "issues": [
+      {
+        "type": "missing_embedding_source",
+        "message": "MP4 card without memeUri - cannot generate embedding",
+        "addedAt": "2025-10-24T01:46:33.405Z"
+      }
+    ]
   },
   {
     "asset": "FAKEGENESIS",
@@ -2983,7 +2990,14 @@
     "artistSlug": "teymthebeast",
     "supply": 55,
     "issuance": "February 2022",
-    "videoUri": "https://arweave.net/OcedcDJ7teakVKkVQGFJiyMiAKdkhWtA0ErrSBtFUm0/PepeBernie.mp4"
+    "videoUri": "https://arweave.net/OcedcDJ7teakVKkVQGFJiyMiAKdkhWtA0ErrSBtFUm0/PepeBernie.mp4",
+    "issues": [
+      {
+        "type": "missing_embedding_source",
+        "message": "MP4 card without memeUri - cannot generate embedding",
+        "addedAt": "2025-10-24T01:46:33.739Z"
+      }
+    ]
   },
   {
     "asset": "THEGODFAKA",
@@ -5612,7 +5626,14 @@
     "artistSlug": "SNUXTONPACK",
     "supply": 31,
     "issuance": "June 2022",
-    "videoUri": "https://pepewtf.s3.amazonaws.com/collections/fake-rares/full/11/MADAMPEPE.jpeg"
+    "videoUri": "https://pepewtf.s3.amazonaws.com/collections/fake-rares/full/11/MADAMPEPE.jpeg",
+    "issues": [
+      {
+        "type": "embedding_generation_failed",
+        "message": "Embedding generation failed: Unable to read image from \"https://fakerare.s3.amazonaws.com/series11/MADAMEPEPE.jpeg\" (404 Not Found)",
+        "addedAt": "2025-10-24T01:47:45.425Z"
+      }
+    ]
   },
   {
     "asset": "FAKEAFPRINT",
@@ -7589,7 +7610,14 @@
     "artist": "ThreePanelCrimes",
     "artistSlug": "ThreePanelCrimes",
     "supply": 28,
-    "issuance": "August 2023"
+    "issuance": "August 2023",
+    "issues": [
+      {
+        "type": "embedding_generation_failed",
+        "message": "Embedding generation failed: Unable to read image from \"https://fakerare.s3.amazonaws.com/series15/ORNGFFAKEASF.gif\" (404 Not Found)",
+        "addedAt": "2025-10-24T01:48:36.063Z"
+      }
+    ]
   },
   {
     "asset": "ORANGEVENT",
@@ -7610,7 +7638,14 @@
     "artistSlug": "Pork-Chop-Express",
     "supply": 77,
     "issuance": "August 2023",
-    "videoUri": "https://ipfs.io/ipfs/QmY5BkHCqW8WaF7waMH2j8ZkiNcVS3R6r1hrx8cYyqFc1e?filename=PepeHarvest.mp4"
+    "videoUri": "https://ipfs.io/ipfs/QmY5BkHCqW8WaF7waMH2j8ZkiNcVS3R6r1hrx8cYyqFc1e?filename=PepeHarvest.mp4",
+    "issues": [
+      {
+        "type": "missing_embedding_source",
+        "message": "MP4 card without memeUri - cannot generate embedding",
+        "addedAt": "2025-10-24T01:48:36.316Z"
+      }
+    ]
   },
   {
     "asset": "KEKFORCE",
@@ -7683,7 +7718,14 @@
     "artistSlug": "Da'Block-God",
     "supply": 21,
     "issuance": "August 2023",
-    "videoUri": "https://arweave.net/Gc-UmJxHFzkqzZHP1A5CZR9JSC7taraYnldrVM0Flts/mc8183_video.mp4"
+    "videoUri": "https://arweave.net/Gc-UmJxHFzkqzZHP1A5CZR9JSC7taraYnldrVM0Flts/mc8183_video.mp4",
+    "issues": [
+      {
+        "type": "missing_embedding_source",
+        "message": "MP4 card without memeUri - cannot generate embedding",
+        "addedAt": "2025-10-24T01:48:39.080Z"
+      }
+    ]
   },
   {
     "asset": "TUBKING",

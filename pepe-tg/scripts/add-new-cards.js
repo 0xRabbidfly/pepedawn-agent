@@ -470,6 +470,71 @@ async function pass2ScrapeCard(page, baseCard) {
   console.log(`📦 Total cards in database: ${updatedData.length}`);
   console.log(`💾 Saved to: ${dataPath}\n`);
   
+  // Generate embeddings for new cards (for /fv similarity matching)
+  if (newCards.length > 0) {
+    console.log('🔮 Generating visual embeddings for new cards...');
+    try {
+      const { generateVisualEmbedding } = await import('../src/utils/visualEmbeddings.ts');
+      const { initEmbeddingsDb, upsertCardEmbedding } = await import('../src/utils/embeddingsDb.ts');
+      
+      await initEmbeddingsDb();
+      
+      let embeddingsSuccess = 0;
+      let embeddingsFailed = 0;
+      
+      for (const card of newCards) {
+        try {
+          // Determine image URL (same logic as script/generate-card-embeddings.js)
+          let imageUrl = null;
+          
+          if (card.ext === 'mp4') {
+            imageUrl = card.memeUri || null;
+          } else {
+            imageUrl = card.imageUri || `https://pepewtf.s3.amazonaws.com/collections/fake-rares/full/${card.series}/${encodeURIComponent(card.asset.toUpperCase())}.${card.ext}`;
+          }
+          
+          if (!imageUrl) {
+            console.log(`  ⚠️  [${card.asset}] Skipped - no image URL`);
+            if (!card.issues) card.issues = [];
+            card.issues.push({
+              type: 'missing_embedding_source',
+              message: 'MP4 without memeUri - run generate-card-embeddings.js manually',
+              addedAt: new Date().toISOString()
+            });
+            embeddingsFailed++;
+            continue;
+          }
+          
+          const embedding = await generateVisualEmbedding(imageUrl);
+          await upsertCardEmbedding(card.asset, embedding, imageUrl);
+          embeddingsSuccess++;
+          console.log(`  ✅ [${card.asset}] Embedding generated`);
+          
+        } catch (error) {
+          console.error(`  ❌ [${card.asset}] Embedding failed:`, error.message);
+          if (!card.issues) card.issues = [];
+          card.issues.push({
+            type: 'embedding_generation_failed',
+            message: error.message,
+            addedAt: new Date().toISOString()
+          });
+          embeddingsFailed++;
+        }
+      }
+      
+      // Save updated data with any new issues
+      if (embeddingsFailed > 0) {
+        fs.writeFileSync(dataPath, JSON.stringify(updatedData, null, 2), 'utf-8');
+      }
+      
+      console.log(`  📊 Embeddings: ${embeddingsSuccess} success, ${embeddingsFailed} failed\n`);
+      
+    } catch (error) {
+      console.error('❌ Embedding generation module error:', error.message);
+      console.log('  ℹ️  Run "bun run scripts/generate-card-embeddings.js" manually to generate embeddings\n');
+    }
+  }
+  
   // Summary of remaining issues
   const stillWithIssues = pass2Results.filter(c => c.issues && c.issues.length > 0);
   const resolvedIssues = cardsToRescrape.length - stillWithIssues.filter(c => !c.isNew).length;

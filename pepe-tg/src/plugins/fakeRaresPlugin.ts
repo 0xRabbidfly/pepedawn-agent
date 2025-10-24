@@ -100,9 +100,6 @@ export const fakeRaresPlugin: Plugin = {
           // === CUSTOM ACTION: /fv COMMANDS ===
           if (isFvCommand) {
             console.log('[FakeRaresPlugin] /fv detected → applying strong suppression and invoking action');
-            
-            // CRITICAL: Preserve attachments for our handler, then clear them to prevent Bootstrap from processing
-            const preservedAttachments = message.content.attachments ? [...message.content.attachments] : [];
             const actionCallback = typeof params.callback === 'function' ? params.callback : null;
             params.callback = async () => [];
             
@@ -115,10 +112,6 @@ export const fakeRaresPlugin: Plugin = {
                   (message.metadata as any).__handledByCustom = true;
                 } catch {}
                 console.log('[FakeRaresPlugin] /fv action completed');
-                
-                // NOW clear attachments to prevent Bootstrap from processing them
-                message.content.attachments = [];
-                
                 return; // Done
               }
             }
@@ -268,6 +261,15 @@ export const fakeRaresPlugin: Plugin = {
             // Let bootstrap handle it - do NOT mark as handled
           } else {
             console.log(`[Suppress] Bootstrap blocked (no trigger): "${text}"`);
+            
+            // CRITICAL: Strip image attachments to prevent Bootstrap from auto-analyzing them
+            // (Only when Bootstrap would be suppressed anyway - doesn't affect @mentions or replies)
+            const hasAttachments = message.content.attachments && message.content.attachments.length > 0;
+            if (hasAttachments) {
+              console.log('[FakeRaresPlugin] Clearing image attachment (Bootstrap suppressed, not /fv command)');
+              message.content.attachments = [];
+            }
+            
             // Mark as handled to suppress bootstrap
             message.metadata = message.metadata || {};
             (message.metadata as any).__handledByCustom = true;
