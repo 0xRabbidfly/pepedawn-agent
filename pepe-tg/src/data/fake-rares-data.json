@@ -9189,16 +9189,10 @@
     "series": 18,
     "card": 22,
     "ext": "gif",
-    "artist": null,
-    "artistSlug": null,
-    "supply": null,
-    "issuance": null,
-    "imageUri": "https://www.pepedawn.art/PEPEDAWN.gif",
-    "issues": [
-      "no_artist",
-      "no_supply",
-      "no_issuance"
-    ]
+    "artist": "rabbidfly",
+    "artistSlug": "rabbidfly",
+    "supply": 133,
+    "issuance": "May 2024"
   },
   {
     "asset": "FAKEVOID",
