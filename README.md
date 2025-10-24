@@ -82,6 +82,8 @@ When you upload an image with `/ft`, the bot automatically checks if it matches 
 - **Low match (30-84%)** → Shows similar card + provides full analysis
 - **No match (<30%)** → Full fake appeal scoring
 
+**Setup Required:** Duplicate detection requires `REPLICATE_API_TOKEN` in `.env` and pre-generated card embeddings. See [Embedding Setup](#-embedding-setup-for-ft-duplicate-detection) below.
+
 **Example:**
 ```
 /ft + attach your meme  → Get Fake appeal score (1-10)
@@ -258,12 +260,18 @@ TELEGRAM_BOT_TOKEN=your-bot-token-here
 # REQUIRED: Admin Access (for /fc command)
 # ========================================
 TELEGRAM_ADMIN_IDS=your-telegram-user-id
+
+# ========================================
+# OPTIONAL: Visual Embeddings (for /ft duplicate detection)
+# ========================================
+REPLICATE_API_TOKEN=r8_your-replicate-token-here
 ```
 
 **Get API Keys:**
 - **OpenAI:** [platform.openai.com/api-keys](https://platform.openai.com/api-keys)
 - **Telegram Bot Token:** Message [@BotFather](https://t.me/BotFather) → `/newbot` → Follow prompts
 - **Your Telegram User ID:** Message [@userinfobot](https://t.me/userinfobot) to get your ID
+- **Replicate (optional):** [replicate.com/account/api-tokens](https://replicate.com/account/api-tokens) - For `/ft` duplicate detection
 
 ### Optional Variables
 
@@ -429,6 +437,86 @@ Some cards don't display properly through S3 (wrong format, WEBP issues, etc).
 ```
 
 See `pepe-tg/src/assets/README.md` for detailed instructions.
+
+---
+
+## 🎨 Embedding Setup (For `/ft` Duplicate Detection)
+
+The `/ft` command uses CLIP embeddings to detect if uploaded images match existing Fake Rares.
+
+### Quick Start
+
+**If `card-embeddings.json` exists in the repo:**
+```bash
+# You're ready! No action needed.
+ls pepe-tg/src/data/card-embeddings.json
+```
+
+**If `card-embeddings.json` is missing:**
+
+1. **Get Replicate API token:**
+   ```bash
+   # Sign up at replicate.com and get token
+   # Add to .env:
+   echo "REPLICATE_API_TOKEN=r8_your-token-here" >> pepe-tg/.env
+   ```
+
+2. **Generate embeddings** (one-time, ~5-10 minutes):
+   ```bash
+   cd pepe-tg
+   bun run scripts/generate-card-embeddings.js
+   ```
+   This will:
+   - Process all ~890 cards
+   - Generate 512-D CLIP embeddings via Replicate
+   - Create `src/data/card-embeddings.json` (~680KB)
+   - Cost: ~$0.18 one-time ($0.0002 per image)
+
+3. **Verify:**
+   ```bash
+   ls -lh src/data/card-embeddings.json
+   # Should show ~680KB file
+   ```
+
+### How It Works
+
+1. User uploads image with `/ft`
+2. Bot generates CLIP embedding for image
+3. Compares to all 890 card embeddings
+4. Returns match classification:
+   - **≥95%** = Exact match ("HA! NICE TRY!")
+   - **≥85%** = High similarity ("SNEAKY!")
+   - **30-84%** = Low similarity (shows closest match)
+   - **<30%** = No match (full analysis)
+
+### Adding New Cards
+
+When you add cards, regenerate their embeddings:
+
+```bash
+# 1. Add new cards
+node scripts/add-new-cards.js 19
+
+# 2. Generate embeddings for new cards only
+bun run scripts/generate-card-embeddings.js NEWCARD1 NEWCARD2 NEWCARD3
+
+# 3. Or regenerate all (safe, idempotent)
+bun run scripts/generate-card-embeddings.js
+
+# 4. Commit both files
+git add src/data/fake-rares-data.json src/data/card-embeddings.json
+git commit -m "Add series 19 cards with embeddings"
+```
+
+**Note:** The `add-new-cards.js` script reminds you to regenerate embeddings at the end.
+
+### What If I Skip This?
+
+The `/ft` command will still work but:
+- ❌ No duplicate detection (won't catch existing Fake Rares)
+- ❌ No similarity matching (won't show closest card)
+- ✅ Will still analyze images and score them
+- ⚠️ Costs slightly more (no early-exit on exact matches)
 
 ---
 

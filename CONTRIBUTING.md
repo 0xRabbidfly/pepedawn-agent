@@ -31,6 +31,7 @@ nano .env
 **Required for testing:**
 - `OPENAI_API_KEY` - Get from [platform.openai.com](https://platform.openai.com/api-keys)
 - `TELEGRAM_BOT_TOKEN` - Create test bot via [@BotFather](https://t.me/BotFather)
+- `REPLICATE_API_TOKEN` - Get from [replicate.com/account/api-tokens](https://replicate.com/account/api-tokens) (for `/ft` duplicate detection)
 
 ### 4. Run Tests
 
@@ -45,7 +46,36 @@ bun test src/__tests__/actions.test.ts
 bun test --watch
 ```
 
-### 5. Start Development
+### 5. Generate Card Embeddings (One-Time Setup)
+
+The `/ft` command requires CLIP embeddings for duplicate detection.
+
+**Option 1: Use Existing Embeddings** (Recommended)
+```bash
+# If card-embeddings.json exists in the repo, you're done!
+ls src/data/card-embeddings.json
+```
+
+**Option 2: Generate Embeddings** (If Missing)
+```bash
+# Add REPLICATE_API_TOKEN to .env
+echo "REPLICATE_API_TOKEN=r8_your-token-here" >> .env
+
+# Generate embeddings for all cards (~5-10 minutes)
+bun run scripts/generate-card-embeddings.js
+
+# This creates: src/data/card-embeddings.json (~680KB)
+```
+
+**What it does:**
+- Generates 512-dimensional CLIP embeddings for all ~890 cards
+- Enables duplicate detection when users upload images with `/ft`
+- Uses Replicate API (`krthr/clip-embeddings` model)
+- Cost: ~$0.0002 per image × 890 cards = ~$0.18 one-time
+
+**Note:** Without embeddings, `/ft` will skip duplicate checking and go straight to LLM analysis.
+
+### 6. Start Development
 
 ```bash
 # Development mode (hot-reload)
@@ -53,6 +83,7 @@ bun run dev
 
 # Test in Telegram
 # Message your test bot: /f FREEDOMKEK
+# Message your test bot: /ft [attach image]
 ```
 
 ---
@@ -150,6 +181,9 @@ PEPEDAWN follows ElizaOS architectural patterns:
 
 **Utilities** (`src/utils/`) - Shared functionality
 - Card lookups, fuzzy matching, cost tracking, lore retrieval, etc.
+- **visionAnalyzer** - Shared OpenAI Vision API integration
+- **visualEmbeddings** - Replicate CLIP embeddings for duplicate detection
+- **embeddingsDb** - JSON storage for card embeddings
 - Reusable functions imported by actions/providers
 
 ### Adding a New Feature
@@ -236,6 +270,249 @@ PEPEDAWN follows ElizaOS architectural patterns:
 6. **Update documentation:**
    - Add to README.md features section
    - Document in relevant markdown files
+
+---
+
+## 🖼️ Visual Commands & Embeddings
+
+### How `/ft` Duplicate Detection Works
+
+When a user uploads an image with `/ft`:
+
+1. **Generate CLIP embedding** for uploaded image (via Replicate API)
+2. **Compare to all card embeddings** in `card-embeddings.json` using cosine similarity
+3. **Classify similarity:**
+   - ≥95% = Exact match (existing Fake Rare)
+   - ≥85% = High similarity (modified card)
+   - 30-84% = Low similarity (show closest match + full analysis)
+   - <30% = No match (full analysis only)
+
+### Setting Up Embeddings
+
+**Required for `/ft` duplicate detection:**
+
+1. **Add Replicate API token** to `.env`:
+   ```bash
+   REPLICATE_API_TOKEN=r8_your-token-here
+   ```
+   Get token: [replicate.com/account/api-tokens](https://replicate.com/account/api-tokens)
+
+2. **Generate embeddings** (one-time, ~5-10 minutes):
+   ```bash
+   bun run scripts/generate-card-embeddings.js
+   ```
+
+3. **Verify creation:**
+   ```bash
+   ls -lh src/data/card-embeddings.json
+   # Should be ~680KB with 890 card embeddings
+   ```
+
+**When to regenerate:**
+- ✅ When adding new cards
+- ✅ When card images change
+- ✅ When `card-embeddings.json` is missing
+
+**Cost:** ~$0.0002 per image via Replicate (`krthr/clip-embeddings`)
+
+### Adding New Cards with Embeddings
+
+When you add new cards, regenerate embeddings:
+
+```bash
+# 1. Add new cards
+node scripts/add-new-cards.js 19
+
+# 2. Generate embeddings for new cards only
+bun run scripts/generate-card-embeddings.js NEWCARD1 NEWCARD2 NEWCARD3
+
+# 3. Or regenerate all (safe, updates only changed cards)
+bun run scripts/generate-card-embeddings.js
+
+# 4. Commit both files
+git add src/data/fake-rares-data.json src/data/card-embeddings.json
+git commit -m "feat: Add series 19 cards with embeddings"
+```
+
+**Note:** The `add-new-cards.js` script will remind you to run embedding generation at the end.
+
+---
+
+## 🎨 Adapting for Your Own Collection
+
+Want to use this bot for a different NFT/trading card collection? Here's how:
+
+### 1. Create Your Data File
+
+Replace `src/data/fake-rares-data.json` with your collection data:
+
+```json
+[
+  {
+    "asset": "YOURCARD001",
+    "series": 0,
+    "card": 1,
+    "ext": "png",
+    "artist": "Artist Name",
+    "artistSlug": "artist-name",
+    "supply": 100,
+    "issuance": "October 2024"
+  }
+]
+```
+
+**Required fields:**
+- `asset` - Card/token name (UPPERCASE recommended)
+- `series` - Series/collection number
+- `card` - Card number within series
+- `ext` - File extension (jpg, png, gif, mp4, webp)
+- `artist` - Artist/creator name
+- `supply` - Total supply/mintage
+
+**Optional fields:**
+- `artistSlug` - URL-safe artist name
+- `issuance` - Release date/time
+- `imageUri` - Override image URL
+- `videoUri` - Direct video URL (for MP4s)
+- `memeUri` - Static image URL (for animated cards)
+
+### 2. Adapt the Scraper
+
+**Option A: Manual data entry** (small collections)
+```bash
+# Just edit fake-rares-data.json directly
+nano src/data/fake-rares-data.json
+```
+
+**Option B: Write custom scraper** (large collections)
+
+Copy and modify `scripts/add-new-cards.js`:
+
+```javascript
+// scripts/scrape-your-collection.js
+const BASE_URL = 'https://your-collection-site.com';
+
+async function scrapeYourCollection(seriesNumber) {
+  // Your scraping logic here
+  // Target: Extract asset name, artist, supply, etc.
+  
+  return cards.map(card => ({
+    asset: card.name.toUpperCase(),
+    series: seriesNumber,
+    card: card.number,
+    ext: determineExtension(card.imageUrl),
+    artist: card.creator,
+    supply: card.totalSupply,
+    issuance: card.releaseDate,
+  }));
+}
+```
+
+**Scraping tips:**
+- Use Playwright for dynamic sites (included in dependencies)
+- Respect rate limits (add delays between requests)
+- Validate data completeness after scraping
+- Handle missing fields gracefully
+
+### 3. Update URLs and Branding
+
+**Files to modify:**
+
+1. **`src/pepedawn.ts`** - Character personality, collection knowledge
+2. **`src/actions/basicCommands.ts`** - Help text, collection name references
+3. **`src/utils/cardUrlUtils.ts`** - Image URL construction logic
+4. **`README.md`** - All collection-specific references
+
+**Search and replace:**
+```bash
+# Find all Fake Rares references
+grep -r "Fake Rares" pepe-tg/src/
+
+# Find all pepe.wtf references  
+grep -r "pepe.wtf" pepe-tg/src/
+
+# Find all S3 URL patterns
+grep -r "pepewtf.s3.amazonaws.com" pepe-tg/src/
+```
+
+### 4. Generate Embeddings for Your Collection
+
+```bash
+# 1. Ensure REPLICATE_API_TOKEN in .env
+
+# 2. Generate embeddings for all your cards
+bun run scripts/generate-card-embeddings.js
+
+# This creates: src/data/card-embeddings.json with your collection
+```
+
+### 5. Test Thoroughly
+
+```bash
+# Test card lookup
+/f YOURCARD001
+
+# Test visual analysis  
+/fv YOURCARD001
+
+# Test duplicate detection
+/ft [upload image of YOURCARD001]
+```
+
+### Example: Adapting for "Cool Cats"
+
+**Step 1: Data structure**
+```json
+[
+  {
+    "asset": "COOLCAT001",
+    "series": 1,
+    "card": 1,
+    "ext": "png",
+    "artist": "Clon",
+    "supply": 9999,
+    "issuance": "July 2021"
+  }
+]
+```
+
+**Step 2: Update character (`src/pepedawn.ts`)**
+```typescript
+bio: [
+  "I'm the keeper of Cool Cats knowledge",
+  "I know every Cool Cat ever created",
+  // ... etc
+]
+```
+
+**Step 3: Update help text**
+```typescript
+const helpMessage = `🐱 **Cool Cats Bot Commands**
+
+\`/f CARDNAME\` - View any Cool Cat
+\`/fv CARDNAME\` - Analyze Cool Cat visuals
+\`/ft [attach image]\` - Test your cat for appeal
+// ... etc
+```
+
+**Step 4: Update URLs**
+```typescript
+// In cardUrlUtils.ts
+const BASE_URL = 'https://coolcats-cdn.com/images/';
+```
+
+### When to Fork vs. Contribute
+
+**Fork this project if:**
+- ✅ Building bot for a different collection
+- ✅ Need different branding/personality  
+- ✅ Different data structure/APIs
+
+**Contribute to this project if:**
+- ✅ Improving Fake Rares features
+- ✅ Bug fixes or optimizations
+- ✅ Better documentation
+- ✅ General ElizaOS improvements that benefit everyone
 
 ---
 
