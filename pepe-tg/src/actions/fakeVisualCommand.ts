@@ -146,12 +146,19 @@ async function analyzeWithVision(
       requestParams.temperature = 0.7; // Balance creativity and consistency
     }
     
-    const response = await openai.chat.completions.create(requestParams);
+    let response = await openai.chat.completions.create(requestParams);
+    let analysis = response.choices[0]?.message?.content || '';
     
-    const analysis = response.choices[0]?.message?.content || '';
-    
+    // Retry once if empty (common with animated GIFs - OpenAI picks bad frame)
     if (!analysis) {
-      throw new Error('Empty response from vision model');
+      logger.warning('Empty response from vision model, retrying once...');
+      await new Promise(resolve => setTimeout(resolve, 1500)); // 1.5s delay
+      response = await openai.chat.completions.create(requestParams);
+      analysis = response.choices[0]?.message?.content || '';
+      
+      if (!analysis) {
+        throw new Error('Empty response from vision model (after retry)');
+      }
     }
     
     const tokensIn = response.usage?.prompt_tokens || estimatedTokensIn;
@@ -252,12 +259,7 @@ function formatErrorMessage(cardName: string, errorMessage: string): string {
 
 ${errorMessage}
 
-💡 **Troubleshooting:**
-• Make sure your OpenAI API key is configured
-• Check if you have API credits remaining
-• Try again in a few moments
-
-Need help? Use \`/help\` for more information.`;
+@rabbidfly - hey dev, something broke! 😅`;
 }
 
 // ============================================================================
@@ -312,9 +314,11 @@ export const fakeVisualCommand: Action = {
     try {
       const text = (message.content.text || '').trim();
       const hasAttachment = message.content.attachments && message.content.attachments.length > 0;
+      let assetName = 'UNKNOWN'; // Track asset name for error reporting
       
       // Branch 1: User uploaded an image
       if (hasAttachment) {
+        assetName = 'User Image';
         logger.step(1, 'Analyze uploaded image');
         const attachment = message.content.attachments?.[0];
         
@@ -472,6 +476,10 @@ export const fakeVisualCommand: Action = {
       logger.step(1, 'Parse command');
       const { cardName, error } = parseCommand(text);
       
+      if (cardName) {
+        assetName = cardName; // Update asset name for error reporting
+      }
+      
       if (error || !cardName) {
         logger.warning('No card name and no attachment');
         await callback?.({ 
@@ -545,8 +553,16 @@ export const fakeVisualCommand: Action = {
       logger.separator();
       logger.error('Handler error', error);
       
+      // Extract asset name from error context if available
+      let errorAssetName = 'UNKNOWN';
+      try {
+        const text = (message.content.text || '').trim();
+        const { cardName } = parseCommand(text);
+        if (cardName) errorAssetName = cardName;
+      } catch {}
+      
       const errorMessage = error.message || 'Unknown error occurred';
-      await callback?.({ text: formatErrorMessage('UNKNOWN', errorMessage) });
+      await callback?.({ text: formatErrorMessage(errorAssetName, errorMessage) });
       
       return {
         success: false,
