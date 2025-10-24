@@ -13,7 +13,7 @@ import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-// Path relative to THIS file (works in both src/ and dist/)
+// Path relative to THIS file (works everywhere)
 // src/utils/embeddingsDb.ts → src/data/card-embeddings.json
 // dist/utils/embeddingsDb.js → dist/data/card-embeddings.json
 const __filename = fileURLToPath(import.meta.url);
@@ -34,9 +34,16 @@ let embeddingsCache: EmbeddingsDatabase | null = null;
  * Load embeddings from JSON file
  */
 function loadEmbeddings(): EmbeddingsDatabase {
-  if (embeddingsCache) return embeddingsCache;
+  if (embeddingsCache) {
+    console.log(`📦 [EmbeddingsDB] Using cached embeddings (${Object.keys(embeddingsCache).length} cards)`);
+    return embeddingsCache;
+  }
+  
+  console.log(`🔍 [EmbeddingsDB] Loading from: ${EMBEDDINGS_FILE}`);
+  console.log(`🔍 [EmbeddingsDB] File exists: ${existsSync(EMBEDDINGS_FILE)}`);
   
   if (!existsSync(EMBEDDINGS_FILE)) {
+    console.warn(`⚠️  [EmbeddingsDB] File not found! Creating empty database.`);
     // Create empty file if doesn't exist
     writeFileSync(EMBEDDINGS_FILE, JSON.stringify({}, null, 2));
     embeddingsCache = {};
@@ -45,6 +52,7 @@ function loadEmbeddings(): EmbeddingsDatabase {
   
   const data = readFileSync(EMBEDDINGS_FILE, 'utf-8');
   embeddingsCache = JSON.parse(data);
+  console.log(`✅ [EmbeddingsDB] Loaded ${Object.keys(embeddingsCache).length} card embeddings`);
   return embeddingsCache;
 }
 
@@ -149,7 +157,12 @@ export async function findMostSimilarCard(
   const embeddings = loadEmbeddings();
   const assets = Object.keys(embeddings);
   
-  if (assets.length === 0) return null;
+  console.log(`🔍 [EmbeddingsDB] Searching ${assets.length} cards for similarity...`);
+  
+  if (assets.length === 0) {
+    console.warn(`⚠️  [EmbeddingsDB] No embeddings in database! Cannot find similar cards.`);
+    return null;
+  }
   
   let bestMatch: { asset: string; imageUrl: string; similarity: number } | null = null;
   
@@ -164,6 +177,12 @@ export async function findMostSimilarCard(
         similarity
       };
     }
+  }
+  
+  if (bestMatch) {
+    console.log(`✅ [EmbeddingsDB] Most similar: ${bestMatch.asset} (${(bestMatch.similarity * 100).toFixed(1)}% match)`);
+  } else {
+    console.log(`ℹ️  [EmbeddingsDB] No similar cards found`);
   }
   
   return bestMatch;
