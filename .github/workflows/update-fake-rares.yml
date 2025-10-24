@@ -49,10 +49,11 @@ jobs:
             echo "ℹ️  No new cards found"
           else
             echo "changed=true" >> $GITHUB_OUTPUT
-            ADDED=$(git diff pepe-tg/src/data/fake-rares-data.json | grep '^+' | grep -c '"asset"' || echo "0")
-            ADDED=$(echo "$ADDED" | tr -d '\n\r ')
-            echo "cards_added=${ADDED}" >> $GITHUB_OUTPUT
-            echo "✅ Found ${ADDED} new cards"
+            # Count unique card names in the diff (both added and modified cards)
+            CHANGED=$(git diff pepe-tg/src/data/fake-rares-data.json | grep -E '^\+.*"name":\s*"' | sed -E 's/.*"name":\s*"([^"]+)".*/\1/' | sort -u | wc -l || echo "0")
+            CHANGED=$(echo "$CHANGED" | tr -d '\n\r ')
+            echo "cards_added=${CHANGED}" >> $GITHUB_OUTPUT
+            echo "✅ Found ${CHANGED} cards updated"
           fi
       
       - name: Create Pull Request
@@ -60,12 +61,12 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: 'chore: auto-discovered ${{ steps.check-changes.outputs.cards_added }} new Fake Rares cards'
-          title: '🤖 Auto-discovered ${{ steps.check-changes.outputs.cards_added }} new Fake Rares cards'
+          commit-message: 'chore: auto-discovered ${{ steps.check-changes.outputs.cards_added }} Fake Rares card updates'
+          title: '🤖 Auto-discovered ${{ steps.check-changes.outputs.cards_added }} Fake Rares card updates'
           body: |
-            ## 🎴 New Fake Rares Cards Discovered
+            ## 🎴 Fake Rares Cards Updated
             
-            The automated scraper found **${{ steps.check-changes.outputs.cards_added }} new cards** on pepe.wtf!
+            The automated scraper found **${{ steps.check-changes.outputs.cards_added }} card(s)** with new data on pepe.wtf!
             
             ### 📊 Details
             - **Scraped from**: fakeraredirectory.com + pepe.wtf
@@ -92,8 +93,8 @@ jobs:
       - name: Summary
         run: |
           if [[ "${{ steps.check-changes.outputs.changed }}" == "true" ]]; then
-            echo "✅ Created PR with ${{ steps.check-changes.outputs.cards_added }} new cards"
+            echo "✅ Created PR with ${{ steps.check-changes.outputs.cards_added }} card update(s)"
           else
-            echo "ℹ️  No new cards - no action needed"
+            echo "ℹ️  No card updates - no action needed"
           fi
 
