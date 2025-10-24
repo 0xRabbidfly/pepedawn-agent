@@ -9193,7 +9193,12 @@
     "artistSlug": null,
     "supply": null,
     "issuance": null,
-    "imageUri": "https://www.pepedawn.art/PEPEDAWN.gif"
+    "imageUri": "https://www.pepedawn.art/PEPEDAWN.gif",
+    "issues": [
+      "no_artist",
+      "no_supply",
+      "no_issuance"
+    ]
   },
   {
     "asset": "FAKEVOID",
