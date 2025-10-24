@@ -14,11 +14,15 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 // Path relative to THIS file (works everywhere)
-// src/utils/embeddingsDb.ts → src/data/card-embeddings.json
-// dist/utils/embeddingsDb.js → dist/data/card-embeddings.json
+// When running from src: src/utils/embeddingsDb.ts → src/data/card-embeddings.json
+// When running from dist: dist/index.js → dist/data/card-embeddings.json (bundled)
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const EMBEDDINGS_FILE = join(__dirname, '..', 'data', 'card-embeddings.json');
+
+// For bundled dist, __dirname will be dist/ root, so we need to check
+const EMBEDDINGS_FILE = __dirname.includes('/dist')
+  ? join(__dirname, 'data', 'card-embeddings.json')  // dist/data/
+  : join(__dirname, '..', 'data', 'card-embeddings.json');  // src/utils/../data/
 
 interface EmbeddingEntry {
   embedding: number[];
@@ -51,7 +55,12 @@ function loadEmbeddings(): EmbeddingsDatabase {
   }
   
   const data = readFileSync(EMBEDDINGS_FILE, 'utf-8');
-  embeddingsCache = JSON.parse(data);
+  embeddingsCache = JSON.parse(data) as EmbeddingsDatabase;
+  
+  if (!embeddingsCache) {
+    embeddingsCache = {};
+  }
+  
   console.log(`✅ [EmbeddingsDB] Loaded ${Object.keys(embeddingsCache).length} card embeddings`);
   return embeddingsCache;
 }
@@ -125,7 +134,8 @@ export async function getCardEmbedding(asset: string): Promise<{
  */
 export function cosineSimilarity(a: number[], b: number[]): number {
   if (a.length !== b.length) {
-    throw new Error('Embeddings must have same length');
+    console.warn(`⚠️  [EmbeddingsDB] Dimension mismatch: ${a.length} vs ${b.length} - cannot compare`);
+    return 0;  // Return no similarity if dimensions don't match
   }
   
   let dotProduct = 0;

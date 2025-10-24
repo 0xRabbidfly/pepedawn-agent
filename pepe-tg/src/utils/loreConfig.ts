@@ -15,11 +15,11 @@ export const LORE_CONFIG = {
   TOP_K_FOR_CLUSTERING: 20,
   
   // Story Generation
-  STORY_LENGTH_WORDS: process.env.STORY_LENGTH_WORDS || '120-180',
+  STORY_LENGTH_WORDS: process.env.STORY_LENGTH_WORDS || '80-120',
   TEMPERATURE: parseFloat(process.env.TEMPERATURE || '0.7'),
   TOP_P: parseFloat(process.env.TOP_P || '0.9'),
   MAX_TOKENS_SUMMARY: parseInt(process.env.MAX_TOKENS_SUMMARY || '500', 10),
-  MAX_TOKENS_STORY: parseInt(process.env.MAX_TOKENS_STORY || '300', 10),
+  MAX_TOKENS_STORY: parseInt(process.env.MAX_TOKENS_STORY || '200', 10),
   
   // Message Limits
   TELEGRAM_MAX_LENGTH: 4096,

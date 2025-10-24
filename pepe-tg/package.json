@@ -40,12 +40,13 @@
     "@elizaos/plugin-ollama": "^1.2.4",
     "@elizaos/plugin-openai": "^1.5.16",
     "@elizaos/plugin-sql": "1.6.2",
-    "@elizaos/plugin-telegram": "1.0.10",
+    "@elizaos/plugin-telegram": "^1.0.10",
     "@elizaos/server": "1.6.2",
     "@tanstack/react-query": "^5.29.0",
     "@telegraf/types": "7.1.0",
     "@xenova/transformers": "^2.17.2",
     "clsx": "^2.1.1",
+    "formdata-node": "^6.0.3",
     "jsdom": "^27.0.0",
     "node-fetch": "^3.3.2",
     "react": "^18.3.1",
@@ -54,6 +55,7 @@
     "tailwind-merge": "^2.6.0",
     "tailwindcss": "^4.1.10",
     "telegraf": "4.16.3",
+    "viem": "^2.38.4",
     "zod": "4.1.11"
   },
   "devDependencies": {

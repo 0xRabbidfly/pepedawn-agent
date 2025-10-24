@@ -19,7 +19,7 @@ import { getCardInfo } from '../utils/cardIndexRefresher';
 import { determineImageUrlForAnalysis } from '../utils/cardUrlUtils';
 import { logTokenUsage, estimateTokens, calculateCost } from '../utils/tokenLogger';
 import { createLogger } from '../utils/actionLogger';
-import { generateEmbeddingFromBase64, interpretSimilarity } from '../utils/visualEmbeddings';
+import { generateEmbeddingFromUrl, interpretSimilarity } from '../utils/visualEmbeddings';
 import { findMostSimilarCard } from '../utils/embeddingsDb';
 import OpenAI from 'openai';
 
@@ -325,7 +325,9 @@ export const fakeVisualCommand: Action = {
         }
         
         logger.info('Attachment detected', {
-          source: attachment.source
+          source: attachment.source,
+          url: attachment.url,
+          contentType: attachment.contentType
         });
         
         if (!attachment.url) {
@@ -334,41 +336,35 @@ export const fakeVisualCommand: Action = {
           return { success: false, text: 'No image URL' };
         }
         
-        // STEP 2: Download and convert image to base64 (Telegram URLs are temporary)
-        logger.step(2, 'Download image');
-        let imageDataUrl: string;
+        // Block animations (GIF/MP4) immediately - ask user to clip a frame
+        const isAnimation = attachment.source === 'Animation' || 
+                           attachment.source === 'Document' ||
+                           attachment.url.includes('.mp4') || 
+                           attachment.url.includes('.mov') || 
+                           attachment.url.includes('/animations/');
+        
+        if (isAnimation) {
+          logger.info('Animation detected - blocking and asking user to clip a frame');
+          await callback?.({
+            text: '❌ **Sorry brother Fake, but we cannot analyze animations.**\n\n💡 **To analyze:**\n1. Clip the starter frame\n2. Upload or just paste into TG with `/fv` caption'
+          });
+          return { success: false, text: 'Animation blocked' };
+        }
+        
+        const imageUrlToUse = attachment.url;
+        
+        // STEP 2: Validate image URL is accessible
+        logger.step(2, 'Validate image');
         try {
-          const response = await fetch(attachment.url);
-          if (!response.ok) {
-            throw new Error(`Failed to download image: ${response.statusText}`);
+          // Quick HEAD request to verify the image is accessible
+          const headResponse = await fetch(imageUrlToUse, { method: 'HEAD' });
+          if (!headResponse.ok) {
+            throw new Error(`Image not accessible: ${headResponse.statusText}`);
           }
-          const arrayBuffer = await response.arrayBuffer();
-          const buffer = Buffer.from(arrayBuffer);
-          
-          // Check image size (OpenAI has 20MB limit)
-          const sizeMB = arrayBuffer.byteLength / 1024 / 1024;
-          if (sizeMB > 20) {
-            throw new Error(`Image too large: ${sizeMB.toFixed(2)}MB (max 20MB). Please upload a smaller image.`);
-          }
-          
-          // Detect actual image type from magic bytes (Telegram returns octet-stream)
-          let contentType = 'image/jpeg'; // Default
-          if (buffer[0] === 0x89 && buffer[1] === 0x50) {
-            contentType = 'image/png';
-          } else if (buffer[0] === 0x47 && buffer[1] === 0x49) {
-            contentType = 'image/gif';
-          } else if (buffer[0] === 0x52 && buffer[1] === 0x49) {
-            contentType = 'image/webp';
-          } else if (buffer[0] === 0xFF && buffer[1] === 0xD8) {
-            contentType = 'image/jpeg';
-          }
-          
-          const base64 = buffer.toString('base64');
-          imageDataUrl = `data:${contentType};base64,${base64}`;
-        } catch (downloadError: any) {
-          logger.error('Failed to download image', downloadError);
-          await callback?.({ text: '❌ Could not download the image. Please try again.' });
-          return { success: false, text: 'Image download failed' };
+        } catch (validateError: any) {
+          logger.error('Failed to access image', validateError);
+          await callback?.({ text: '❌ Could not access the uploaded image. Please try again.' });
+          return { success: false, text: 'Image validation failed' };
         }
         
         // STEP 3: Check for existing card similarity (BEFORE LLM call to save costs!)
@@ -376,61 +372,65 @@ export const fakeVisualCommand: Action = {
         let similarCard: { asset: string; imageUrl: string; similarity: number } | null = null;
         let matchType: 'exact' | 'high' | 'low' = 'low';
         
-        try {
-          // Generate embedding for uploaded image
-          const userEmbedding = await generateEmbeddingFromBase64(imageDataUrl);
-          
-          // Find most similar card in database
-          similarCard = await findMostSimilarCard(userEmbedding);
-          
-          if (similarCard) {
-            matchType = interpretSimilarity(similarCard.similarity);
+        if (imageUrlToUse && process.env.REPLICATE_API_TOKEN) {
+          try {
+            // Generate embedding using static image URL
+            const userEmbedding = await generateEmbeddingFromUrl(imageUrlToUse);
             
-            // EXACT MATCH: User uploaded an existing Fake Rare!
-            if (matchType === 'exact') {
-              logger.success('Exact match detected - no LLM call needed!');
-              const responseText = `🐸 **HA! NICE TRY!**\n\nThat's **${similarCard.asset}** - already a certified FAKE RARE!\n\n🎯 **10/10** because it's already legendary.\n\nTry uploading your own original art instead! 😏`;
-              await callback?.({ text: responseText });
+            // Find most similar card in database
+            similarCard = await findMostSimilarCard(userEmbedding);
+          
+            if (similarCard) {
+              matchType = interpretSimilarity(similarCard.similarity);
               
-              return {
-                success: true,
-                text: 'Exact match detected',
-                data: {
-                  matchType: 'exact',
-                  matchedCard: similarCard.asset,
-                  similarity: similarCard.similarity
-                }
-              };
-            }
-            
-            // HIGH MATCH: User modified an existing card
-            if (matchType === 'high') {
-              logger.success('High similarity detected - no LLM call needed!');
-              const responseText = `🐸 **SNEAKY! ALMOST GOT ME!**\n\nLooks like you tried to modify **${similarCard.asset}**! The vibes are too similar.\n\nNice try, but I can spot a derivative when I see one! 😏\n\nWant a real analysis? Upload something more original! 🎨`;
-              await callback?.({ text: responseText });
+              // EXACT MATCH: User uploaded an existing Fake Rare!
+              if (matchType === 'exact') {
+                logger.success('Exact match detected - no LLM call needed!');
+                const responseText = `🐸 **HA! NICE TRY!**\n\nThat's **${similarCard.asset}** - already a certified FAKE RARE!\n\n🎯 **10/10** because it's already legendary.\n\nTry uploading your own original art instead! 😏`;
+                await callback?.({ text: responseText });
+                
+                return {
+                  success: true,
+                  text: 'Exact match detected',
+                  data: {
+                    matchType: 'exact',
+                    matchedCard: similarCard.asset,
+                    similarity: similarCard.similarity
+                  }
+                };
+              }
               
-              return {
-                success: true,
-                text: 'High similarity detected',
-                data: {
-                  matchType: 'high',
-                  matchedCard: similarCard.asset,
-                  similarity: similarCard.similarity
-                }
-              };
+              // HIGH MATCH: User modified an existing card or sent a clipped frame
+              if (matchType === 'high') {
+                logger.success('High similarity detected - no LLM call needed!');
+                const responseText = `🐸 **SNEAKY! ALMOST GOT ME!**\n\nLooks like you tried to modify **${similarCard.asset}**! The vibes are too similar, or you sent a clipping of a true FAKE RARE.\n\nNice try, but I can spot a derivative when I see one! 😏\n\nWant a real analysis? Upload something more original! 🎨`;
+                await callback?.({ text: responseText });
+                
+                return {
+                  success: true,
+                  text: 'High similarity detected',
+                  data: {
+                    matchType: 'high',
+                    matchedCard: similarCard.asset,
+                    similarity: similarCard.similarity
+                  }
+                };
+              }
             }
+          } catch (embeddingError: any) {
+            // If embedding check fails, log but continue to LLM analysis
+            logger.warning('Embedding similarity check failed, proceeding to LLM', {
+              error: embeddingError.message
+            });
           }
-        } catch (embeddingError: any) {
-          // If embedding check fails, log but continue to LLM analysis
-          logger.warning('Embedding similarity check failed, proceeding to LLM', {
-            error: embeddingError.message
-          });
         }
         
-        // STEP 4: Perform visual analysis (LOW similarity or embedding check failed)
+        // STEP 4: Perform visual analysis (LOW similarity or embedding check skipped/failed)
         logger.step(4, 'Perform vision analysis');
+        
         try {
-          const result = await analyzeWithVision(imageDataUrl, 'User Image', GENERIC_IMAGE_PROMPT);
+          // Use static image URL
+          const result = await analyzeWithVision(imageUrlToUse, 'User Image', GENERIC_IMAGE_PROMPT);
           
           // STEP 5: Format and send results (include closest card if available)
           logger.step(5, 'Send results');

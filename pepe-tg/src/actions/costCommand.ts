@@ -5,8 +5,8 @@ import { readTokenLogs, calculateTotalCost } from '../utils/tokenLogger';
  * /fc Command - Token usage and cost tracking (admin-only)
  * 
  * Usage:
- *   /fc d  → Today's costs
- *   /fc m  → Current month's costs
+ *   /fc d  → Today's costs + 12-day chart
+ *   /fc m  → Current month's costs + 12-month chart
  */
 
 function getStartOfDay(): Date {
@@ -22,7 +22,75 @@ function getStartOfMonth(): Date {
   return now;
 }
 
-function formatCostReport(logs: ReturnType<typeof readTokenLogs>, period: string): string {
+/**
+ * Generate a mini ASCII bar chart
+ */
+function generateMiniChart(data: { label: string; value: number }[], maxBarLength: number = 10): string {
+  if (data.length === 0) return '';
+  
+  const maxValue = Math.max(...data.map(d => d.value));
+  if (maxValue === 0) return '';
+  
+  let chart = '\n📊 **Trend:**\n```\n';
+  
+  for (const item of data) {
+    const barLength = Math.round((item.value / maxValue) * maxBarLength);
+    const bar = '█'.repeat(barLength) + '░'.repeat(maxBarLength - barLength);
+    const valueStr = item.value > 0 ? `$${item.value.toFixed(3)}` : '$0';
+    chart += `${item.label} ${bar} ${valueStr}\n`;
+  }
+  
+  chart += '```';
+  return chart;
+}
+
+/**
+ * Get last N days of data
+ */
+function getLast12Days(): { label: string; value: number }[] {
+  const now = new Date();
+  const result: { label: string; value: number }[] = [];
+  
+  for (let i = 11; i >= 0; i--) {
+    const date = new Date(now);
+    date.setDate(date.getDate() - i);
+    date.setHours(0, 0, 0, 0);
+    
+    const nextDate = new Date(date);
+    nextDate.setDate(nextDate.getDate() + 1);
+    
+    const logs = readTokenLogs(date, nextDate);
+    const stats = calculateTotalCost(logs);
+    
+    const label = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    result.push({ label, value: stats.totalCost });
+  }
+  
+  return result;
+}
+
+/**
+ * Get last N months of data
+ */
+function getLast12Months(): { label: string; value: number }[] {
+  const now = new Date();
+  const result: { label: string; value: number }[] = [];
+  
+  for (let i = 11; i >= 0; i--) {
+    const date = new Date(now.getFullYear(), now.getMonth() - i, 1, 0, 0, 0, 0);
+    const nextDate = new Date(date.getFullYear(), date.getMonth() + 1, 1, 0, 0, 0, 0);
+    
+    const logs = readTokenLogs(date, nextDate);
+    const stats = calculateTotalCost(logs);
+    
+    const label = date.toLocaleDateString('en-US', { month: 'short' });
+    result.push({ label, value: stats.totalCost });
+  }
+  
+  return result;
+}
+
+function formatCostReport(logs: ReturnType<typeof readTokenLogs>, period: string, chart?: string): string {
   if (logs.length === 0) {
     return `📊 No token usage recorded for ${period}.`;
   }
@@ -53,6 +121,11 @@ function formatCostReport(logs: ReturnType<typeof readTokenLogs>, period: string
     for (const [source, data] of sortedSources) {
       report += `• ${source}: $${data.cost.toFixed(4)} [${data.calls}]\n`;
     }
+  }
+  
+  // Add chart if provided
+  if (chart) {
+    report += chart;
   }
   
   return report.trim();
@@ -122,22 +195,29 @@ export const costCommand: Action = {
       return { success: false, text: 'Invalid parameter' };
     }
     
-    // Determine period
+    // Determine period and generate chart
     let period: string;
     let startDate: Date;
+    let chart: string | undefined;
     
     if (periodArg === 'm') {
       period = 'This Month';
       startDate = getStartOfMonth();
+      // Generate 12-month chart
+      const monthData = getLast12Months();
+      chart = generateMiniChart(monthData);
     } else {
       // Daily report (default)
       period = 'Today';
       startDate = getStartOfDay();
+      // Generate 12-day chart
+      const dayData = getLast12Days();
+      chart = generateMiniChart(dayData);
     }
     
     // Read logs and generate report
     const logs = readTokenLogs(startDate);
-    const report = formatCostReport(logs, period);
+    const report = formatCostReport(logs, period, chart);
     
     // Send response to DM
     if (callback) {

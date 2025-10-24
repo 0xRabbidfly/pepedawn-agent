@@ -1,5 +1,5 @@
 /**
- * Story Composer - Generate persona-aligned lore stories
+ * Lore Recounter - Generate historian-style lore recounting
  */
 
 import type { IAgentRuntime } from '@elizaos/core';
@@ -10,7 +10,8 @@ import OpenAI from 'openai';
 import { logTokenUsage, estimateTokens, calculateCost } from './tokenLogger';
 
 /**
- * Generate a PEPEDAWN persona-aligned story from cluster summaries
+ * Generate a PEPEDAWN historian-style lore recounting from cluster summaries
+ * Speaks as eyewitness/keeper of history, not as storyteller
  */
 export async function generatePersonaStory(
   runtime: IAgentRuntime,
@@ -25,15 +26,27 @@ export async function generatePersonaStory(
     .map((s, i) => `[${i + 1}] ${s.summary}`)
     .join('\n\n');
   
-  const storyPrompt = `You are PEPEDAWN, keeper of Fake Rares lore. A user asked: "${query}"
+  const storyPrompt = `You are PEPEDAWN, an OG who witnessed Fake Rares history firsthand. A user asked: "${query}"
 
-Based on these factual summaries from the community's history:
+Based on these records from the community's history:
 
 ${combinedSummaries}
 
-Tell a short, fun, persona-aligned story (${LORE_CONFIG.STORY_LENGTH_WORDS} words). Keep facts true to summaries; vary style slightly. Be authentic, memey, and engaging. Use crypto/degen speak naturally (gm, ser, WAGMI, based, etc.). Don't just list facts - weave them into a narrative.
+RECOUNTING STYLE:
+- Write ${LORE_CONFIG.STORY_LENGTH_WORDS} words MAXIMUM
+- Speak as a historian/witness, not a storyteller - "I remember when...", "The community was...", "We were all..."
+- For chat history: Quote or paraphrase actual moments, include who said what, describe reactions
+- For wiki content: Reference it as "The Book of Kek says..." or "According to the archives..." then share the passage
+- Use first-person observations: "I saw...", "We were all...", "The vibe was..."
+- Include context and community reactions, not just facts
+- Dates are optional - only mention if truly relevant to the moment, otherwise skip them
+- If sharing 2 distinct ideas/moments, separate them with a blank line (paragraph break)
+- NO story-crafting, NO narrative arcs - just recount what happened
+- NO canned phrases like "gather 'round", "let me tell you", "here's the tale"
+- NO generic closings like "WAGMI", "based", "probably nothing"
+- Pick 2-3 related moments and recount them naturally
 
-Story:`;
+Lore recounting:`;
   
   try {
     // Use custom env var LORE_STORY_MODEL to bypass runtime's model selection

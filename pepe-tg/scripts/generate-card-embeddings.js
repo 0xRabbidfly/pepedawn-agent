@@ -6,7 +6,8 @@
  * 
  * Usage:
  *   bun run scripts/generate-card-embeddings.js              # Process all cards
- *   bun run scripts/generate-card-embeddings.js FREEDOMKEK   # Process specific card
+ *   bun run scripts/generate-card-embeddings.js CARDNAME     # Process specific card
+ *   bun run scripts/generate-card-embeddings.js "" 100       # Process first 100 cards
  * 
  * For MP4 cards: Uses memeUri (scraped static image) instead of video
  * If embedding fails: Adds issue to fake-rares-data.json for manual fix
@@ -103,6 +104,8 @@ async function processCard(card, cardsData) {
 
 async function main() {
   const specificCard = process.argv[2]?.toUpperCase();
+  const limitArg = process.argv[3];
+  const limit = limitArg ? parseInt(limitArg, 10) : null;
   
   console.log('🚀 Starting card embedding generation...\n');
   
@@ -113,16 +116,22 @@ async function main() {
   const cardsData = JSON.parse(readFileSync(DATA_FILE, 'utf-8'));
   
   // Filter to specific card if provided
-  const cardsToProcess = specificCard
+  let cardsToProcess = specificCard
     ? cardsData.filter(c => c.asset === specificCard)
     : cardsData;
+  
+  // Apply limit if provided
+  if (limit && !specificCard) {
+    console.log(`📏 Limiting to first ${limit} cards\n`);
+    cardsToProcess = cardsToProcess.slice(0, limit);
+  }
   
   if (specificCard && cardsToProcess.length === 0) {
     console.error(`❌ Card "${specificCard}" not found in database`);
     process.exit(1);
   }
   
-  console.log(`📊 Processing ${cardsToProcess.length} card(s)...\n`);
+  console.log(`📊 Processing ${cardsToProcess.length} card(s)${limit ? ` (batch of ${limit})` : ''}...\n`);
   
   const results = {
     success: 0,

@@ -39,7 +39,7 @@
 
 **Commands:**
 - **`/fv CARDNAME`** - AI-powered visual analysis of any card
-- **`/fv [attach image]`** - Analyze any uploaded image
+- **`/fv [attach image]`** - Analyze any uploaded static image
 
 **What it does:**
 - 📝 Reads and extracts ALL text on the card (OCR)
@@ -51,14 +51,29 @@
 ```
 /fv FREEDOMKEK      → Full memetic breakdown of card
 /fv WAGMIWORLD      → Visual & cultural analysis of card
-/fv + attach image  → Analyze your own meme/art
+/fv + attach image  → Analyze your own meme/art (static images only)
 ```
 
-**Powered by:** Configurable model (default: GPT-4o) - Set `VISUAL_MODEL` in `.env`  
-**Cost:** ~$0.005 per analysis (GPT-4o) or varies by model  
-**Supports:** Cards (JPG, PNG, GIF, WEBP, MP4*) + any uploaded images
+**Powered by:** 
+- Vision AI: Configurable model (default: GPT-4o) - Set `VISUAL_MODEL` in `.env`
+- Duplicate Detection: CLIP embeddings via Replicate (`krthr/clip-embeddings`)
 
-*MP4 cards use scraped static versions when available
+**Cost:** 
+- ~$0.005 per analysis (GPT-4o) or varies by model
+- ~$0.0002 per image for duplicate detection
+
+**Supported Formats:** 
+- Card analysis: JPG, PNG, GIF, WEBP, MP4 (uses static versions)
+- User uploads: JPG, PNG, WEBP only (animations blocked - clip a frame instead)
+
+**Duplicate Detection:**
+When you upload an image with `/fv`, the bot automatically checks if it matches an existing Fake Rare:
+- **Exact match (≥95%)** → "That's [CARDNAME] - already a certified FAKE RARE! 10/10"
+- **High match (≥85%)** → "Looks like you modified [CARDNAME] or sent a clipped frame"
+- **Low match (30-84%)** → Shows similar card + provides memetic analysis
+- **No match (<30%)** → Full memetic analysis of your original art
+
+**Note:** If you upload a GIF/MP4 animation, the bot will ask you to clip the first frame and upload as a static image instead.
 
 **Smart Typo Correction:**
 - **High confidence (≥75%)** → Auto-shows correct card with playful message
@@ -81,18 +96,18 @@
 
 ---
 
-### 📚 LLM-LORE: AI-Powered Lore Storytelling
+### 📚 LLM-LORE: AI-Powered Lore Recounting
 
 **Commands:**
-- **`/fl TOPIC`** - AI generates unique stories from Telegram history + pepe.wtf wiki
+- **`/fl TOPIC`** - PEPEDAWN recounts history from Telegram archives + pepe.wtf wiki
 - **`/fl`** - Random lore from the community vault
 
 **How it works:**
 1. Searches local vector database (Telegram messages + wiki content)
 2. Clusters relevant passages for diversity (MMR algorithm)
-3. Generates PEPEDAWN-persona story (120-180 words)
+3. PEPEDAWN recounts as historian/eyewitness (80-120 words)
 4. Includes compact source citations (e.g., `tg:1234, wiki:purple-era`)
-5. Each telling is unique while staying grounded in real history
+5. Speaks as "I remember when..." not creative storytelling
 
 **Examples:**
 - `/fl purple subasset era` → Stories about that specific time
@@ -767,7 +782,7 @@ pepe-tg/
 │   │   ├── tokenLogger.ts         # Cost tracking
 │   │   ├── loreRetrieval.ts       # Knowledge base search (RAG)
 │   │   ├── loreSummarize.ts       # Clustering & summarization
-│   │   ├── storyComposer.ts       # LLM story generation
+│   │   ├── storyComposer.ts       # LLM historian recounting
 │   │   └── loreConfig.ts          # Lore feature configuration
 │   ├── 📂 data/
 │   │   ├── fake-rares-data.json   # 890+ cards database
@@ -870,7 +885,7 @@ const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/YOUR_ORG/YOUR_REPO/...
 2. **Vector Search** - Retrieves 24 relevant passages from knowledge base
 3. **MMR Diversity** - Selects 4-6 diverse passages (avoid repetition)
 4. **Clustering** - Groups similar content, generates summaries
-5. **Story Generation** - GPT-4-turbo creates persona-aligned narrative (120-180 words)
+5. **Lore Recounting** - GPT-4-turbo recounts history as witness/historian (80-120 words)
 6. **Citation** - Adds compact source references
 
 **Performance:** 1-3 seconds per lore request
@@ -1166,7 +1181,7 @@ Edit `src/utils/loreConfig.ts`:
 ```typescript
 export const LORE_CONFIG = {
   RETRIEVAL_LIMIT: 24,              // Passages to retrieve
-  STORY_LENGTH_WORDS: '120-180',    // Story length
+  STORY_LENGTH_WORDS: '80-120',     // Story length
   TEMPERATURE: 0.7,                  // LLM creativity (0-1)
   LRU_WINDOW_SIZE: 50,              // Recent lore memory
 };

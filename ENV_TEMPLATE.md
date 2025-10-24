@@ -29,6 +29,10 @@ nano .env  # Paste template below
 # Get your key: https://platform.openai.com/api-keys
 OPENAI_API_KEY=sk-your-openai-key-here
 
+# Replicate API (for /fv duplicate detection)
+# Get your key: https://replicate.com/account/api-tokens
+REPLICATE_API_TOKEN=r8_your-replicate-token-here
+
 # ========================================
 # REQUIRED: Telegram Bot
 # ========================================

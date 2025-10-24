@@ -800,7 +800,14 @@
     "artist": "GoingPepe100",
     "artistSlug": "GoingPepe100",
     "supply": 100,
-    "issuance": "October 2021"
+    "issuance": "October 2021",
+    "issues": [
+      {
+        "type": "embedding_generation_failed",
+        "message": "Embedding generation failed: Replicate failed: Director: unexpected error handling prediction (E6716)",
+        "addedAt": "2025-10-24T14:22:55.206Z"
+      }
+    ]
   },
   {
     "asset": "PEPEMANTLE",
@@ -810,7 +817,14 @@
     "artist": "T. Wade",
     "artistSlug": "T.-Wade",
     "supply": 177,
-    "issuance": "October 2021"
+    "issuance": "October 2021",
+    "issues": [
+      {
+        "type": "embedding_generation_failed",
+        "message": "Embedding generation failed: Replicate failed: Director: unexpected error handling prediction (E6716)",
+        "addedAt": "2025-10-24T14:23:00.347Z"
+      }
+    ]
   },
   {
     "asset": "FAKEFRIDA",
@@ -820,7 +834,14 @@
     "artist": "Chaotic Crypto",
     "artistSlug": "Chaotic-Crypto",
     "supply": 200,
-    "issuance": "October 2021"
+    "issuance": "October 2021",
+    "issues": [
+      {
+        "type": "embedding_generation_failed",
+        "message": "Embedding generation failed: Replicate failed: Director: unexpected error handling prediction (E6716)",
+        "addedAt": "2025-10-24T14:23:05.523Z"
+      }
+    ]
   },
   {
     "asset": "CYBERPEPUNK",
@@ -5630,8 +5651,8 @@
     "issues": [
       {
         "type": "embedding_generation_failed",
-        "message": "Embedding generation failed: Unable to read image from \"https://fakerare.s3.amazonaws.com/series11/MADAMEPEPE.jpeg\" (404 Not Found)",
-        "addedAt": "2025-10-24T01:47:45.425Z"
+        "message": "Embedding generation failed: Replicate failed: 403 Client Error: Forbidden for url: https://pepewtf.s3.amazonaws.com/collections/fake-rares/full/11/MADAMEPEPE.jpeg",
+        "addedAt": "2025-10-24T14:34:12.141Z"
       }
     ]
   },
@@ -7614,8 +7635,8 @@
     "issues": [
       {
         "type": "embedding_generation_failed",
-        "message": "Embedding generation failed: Unable to read image from \"https://fakerare.s3.amazonaws.com/series15/ORNGFFAKEASF.gif\" (404 Not Found)",
-        "addedAt": "2025-10-24T01:48:36.063Z"
+        "message": "Embedding generation failed: Replicate failed: 403 Client Error: Forbidden for url: https://pepewtf.s3.amazonaws.com/collections/fake-rares/full/15/ORNGFFAKEASF.gif",
+        "addedAt": "2025-10-24T14:38:52.716Z"
       }
     ]
   },
@@ -9228,6 +9249,13 @@
     "artist": "Aquaticmane",
     "artistSlug": "Aquaticmane",
     "supply": 72,
-    "issuance": "October 2025"
+    "issuance": "October 2025",
+    "issues": [
+      {
+        "type": "embedding_generation_failed",
+        "message": "Embedding generation failed: Replicate failed: 403 Client Error: Forbidden for url: https://pepewtf.s3.amazonaws.com/collections/fake-rares/full/18/FAKEREBIRTH.jpeg",
+        "addedAt": "2025-10-24T14:42:42.980Z"
+      }
+    ]
   }
 ]

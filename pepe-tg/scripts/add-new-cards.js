@@ -470,13 +470,11 @@ async function pass2ScrapeCard(page, baseCard) {
   console.log(`📦 Total cards in database: ${updatedData.length}`);
   console.log(`💾 Saved to: ${dataPath}\n`);
   
-  // NOTE: Embedding generation disabled for GitHub Actions
-  // Requires Python embedding service (not available in CI)
-  // Run "bun run scripts/generate-card-embeddings.js" manually to generate embeddings
-  // if (newCards.length > 0) {
-  //   console.log('🔮 Generating visual embeddings for new cards...');
-  //   ...
-  // }
+  // Note: Embeddings need to be generated for new cards
+  if (newCards.length > 0) {
+    console.log(`\n💡 Run embedding generation for ${newCards.length} new card(s):`);
+    console.log(`   bun run scripts/generate-card-embeddings.js "${newCards.map(c => c.asset).join(' ')}"`);
+  }
   
   // Summary of remaining issues
   const stillWithIssues = pass2Results.filter(c => c.issues && c.issues.length > 0);
