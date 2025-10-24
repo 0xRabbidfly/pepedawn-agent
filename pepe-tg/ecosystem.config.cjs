@@ -27,10 +27,9 @@ module.exports = {
     },
     {
       name: 'embedding-service',
-      script: 'python',
-      args: 'main.py',
-      cwd: '/root/pepedawn-agent/pepe-tg/embedding-service',
+      script: 'main.py',
       interpreter: '/root/pepedawn-agent/pepe-tg/embedding-service/.venv/bin/python',
+      cwd: '/root/pepedawn-agent/pepe-tg/embedding-service',
       instances: 1,
       exec_mode: 'fork',
       autorestart: true,
