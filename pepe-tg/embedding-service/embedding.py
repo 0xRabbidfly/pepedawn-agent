@@ -24,7 +24,7 @@ class EmbeddingService:
         self.tokenizer = None
         self.device = None
         self.model_name = "ViT-B-32"
-        self.pretrained = "openai"
+        self.pretrained = "laion2b_s34b_b79k"  # More reliable than 'openai'
         self.embedding_dim = 512
         
         # Load model on initialization
