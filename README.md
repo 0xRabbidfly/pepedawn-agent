@@ -37,9 +37,10 @@
 
 ### 🔍 Visual Analysis & Memetic Commentary
 
-**Commands:**
-- **`/fv CARDNAME`** - AI-powered visual analysis of any card
-- **`/fv [attach image]`** - Analyze any uploaded static image
+#### Card Analysis: `/fv CARDNAME`
+
+**Command:**
+- **`/fv CARDNAME`** - AI-powered visual analysis of any Fake Rares card
 
 **What it does:**
 - 📝 Reads and extracts ALL text on the card (OCR)
@@ -49,31 +50,53 @@
 
 **Examples:**
 ```
-/fv FREEDOMKEK      → Full memetic breakdown of card
-/fv WAGMIWORLD      → Visual & cultural analysis of card
-/fv + attach image  → Analyze your own meme/art (static images only)
+/fv FREEDOMKEK      → Full memetic breakdown
+/fv WAGMIWORLD      → Visual & cultural analysis
 ```
 
-**Powered by:** 
-- Vision AI: Configurable model (default: GPT-4o) - Set `VISUAL_MODEL` in `.env`
-- Duplicate Detection: CLIP embeddings via Replicate (`krthr/clip-embeddings`)
+**Supported Formats:** JPG, PNG, GIF, WEBP, MP4 (uses static versions for animations)
 
-**Cost:** 
-- ~$0.005 per analysis (GPT-4o) or varies by model
-- ~$0.0002 per image for duplicate detection
+---
 
-**Supported Formats:** 
-- Card analysis: JPG, PNG, GIF, WEBP, MP4 (uses static versions)
-- User uploads: JPG, PNG, WEBP only (animations blocked - clip a frame instead)
+#### Fake Appeal Test: `/ft [attach image]`
+
+**Command:**
+- **`/ft [attach image]`** - Test your own art for Fake Rares appeal score
+
+**What it does:**
+- 📝 Extracts visible text (OCR)
+- 🎨 Analyzes visual composition and style
+- 🧬 Identifies memetic DNA and cultural references
+- 🎯 Scores Fake appeal (1-10) based on strict Fake Rares ethos
+
+**Scoring Criteria:**
+1. **PEPE culture** (Fake Rares, Rare Pepe, danks, Pepe characters) - highest weight
+2. **Text content** (memetic, Pepe-related) - high weight
+3. **Color palette** (GREEN tones prominent) - medium weight
+4. **Name/title** (fake, rare, pepe references) - medium weight
 
 **Duplicate Detection:**
-When you upload an image with `/fv`, the bot automatically checks if it matches an existing Fake Rare:
+When you upload an image with `/ft`, the bot automatically checks if it matches an existing Fake Rare:
 - **Exact match (≥95%)** → "That's [CARDNAME] - already a certified FAKE RARE! 10/10"
 - **High match (≥85%)** → "Looks like you modified [CARDNAME] or sent a clipped frame"
-- **Low match (30-84%)** → Shows similar card + provides memetic analysis
-- **No match (<30%)** → Full memetic analysis of your original art
+- **Low match (30-84%)** → Shows similar card + provides full analysis
+- **No match (<30%)** → Full fake appeal scoring
+
+**Example:**
+```
+/ft + attach your meme  → Get Fake appeal score (1-10)
+```
+
+**Supported Formats:** JPG, PNG, WEBP only (animations blocked - clip a frame instead)
 
 **Note:** If you upload a GIF/MP4 animation, the bot will ask you to clip the first frame and upload as a static image instead.
+
+---
+
+**Technical Details (Both Commands):**
+- **Vision AI:** Configurable model (default: GPT-4o) - Set `VISUAL_MODEL` in `.env`
+- **Duplicate Detection:** CLIP embeddings via Replicate (`krthr/clip-embeddings`)
+- **Cost:** ~$0.005 per analysis (GPT-4o) + ~$0.0002 per image for duplicate detection
 
 **Smart Typo Correction:**
 - **High confidence (≥75%)** → Auto-shows correct card with playful message
@@ -767,6 +790,8 @@ pepe-tg/
 ├── 📂 src/
 │   ├── 📂 actions/              # Bot commands and handlers
 │   │   ├── fakeRaresCard.ts     # /f command (card display)
+│   │   ├── fakeVisualCommand.ts # /fv command (card analysis)
+│   │   ├── fakeTestCommand.ts   # /ft command (image appeal test)
 │   │   ├── loreCommand.ts       # /fl command (lore stories)
 │   │   ├── costCommand.ts       # /fc command (cost tracking)
 │   │   ├── oddsCommand.ts       # /odds command (lottery stats)
@@ -779,6 +804,7 @@ pepe-tg/
 │   │   └── loreDetector.ts      # Lore detection evaluator
 │   ├── 📂 utils/
 │   │   ├── cardIndexRefresher.ts  # GitHub hourly sync
+│   │   ├── visionAnalyzer.ts      # Shared vision API utility
 │   │   ├── tokenLogger.ts         # Cost tracking
 │   │   ├── loreRetrieval.ts       # Knowledge base search (RAG)
 │   │   ├── loreSummarize.ts       # Clustering & summarization
@@ -1130,11 +1156,17 @@ pm2 start pepe-tg
 ### Run Tests
 
 ```bash
-# All tests (unit + integration)
+# All custom tests
 bun test
 
-# Specific test file
-bun test src/__tests__/actions.test.ts
+# Pre-commit test (bootstrap suppression)
+bun test src/__tests__/bootstrap-suppression.test.ts
+
+# Visual commands tests
+bun test src/__tests__/actions/fakeVisualCommand.test.ts
+bun test src/__tests__/actions/fakeTestCommand.test.ts
+bun test src/__tests__/utils/visionAnalyzer.test.ts
+bun test src/__tests__/integration/visual-commands.test.ts
 
 # Watch mode (auto-rerun on changes)
 bun test --watch
@@ -1145,9 +1177,19 @@ bun test --coverage
 
 ### Test Structure
 
-- `src/__tests__/*.test.ts` - Unit/integration tests (Bun test runner)
-- `src/__tests__/e2e/*.e2e.ts` - End-to-end tests (ElizaOS test runner)
-- `src/__tests__/cypress/` - Component tests (Cypress)
+The project has **5 custom test files** (67+ tests total):
+
+**1. Bootstrap Suppression** (pre-commit)
+- `bootstrap-suppression.test.ts` - Validates Bootstrap AI suppression
+- Runs automatically on every `git commit`
+
+**2-5. Visual Commands** (4 files)
+- `actions/fakeVisualCommand.test.ts` - `/fv` card analysis command
+- `actions/fakeTestCommand.test.ts` - `/ft` image appeal test command
+- `utils/visionAnalyzer.test.ts` - Shared vision API utility
+- `integration/visual-commands.test.ts` - Plugin routing & command conflicts
+
+> **Note:** Framework test files (ElizaOS boilerplate) are also present but focus on these 5 custom tests for this project.
 
 ---
 

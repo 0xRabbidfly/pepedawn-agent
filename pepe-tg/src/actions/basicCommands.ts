@@ -76,13 +76,13 @@ export const helpCommand: Action = {
 \`/f CARDNAME\` - View any Fake Rares card
 \`/f ARTIST\` - Random card by artist (supports misspellings!)
 \`/fv CARDNAME\` - Analyze card visuals & memes with AI vision
-\`/fv [attach image]\` - Analyze any uploaded image
+\`/ft [attach image]\` - Test your art for Fake appeal score
 \`/fl [topic]\` - Get lore stories from community history
 \`/start\` - Welcome message
 
 **Examples:**
 • \`/f FREEDOMKEK\` • \`/f Pepenardo\` • \`/f\` (random)
-• \`/fv PEPEPARTY\` • \`/fv\` + attach image
+• \`/fv PEPEPARTY\` • \`/ft\` + attach your meme
 
 Just chat naturally or mention me with @pepedawn_bot 🐸`;
 

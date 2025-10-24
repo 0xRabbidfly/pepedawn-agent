@@ -134,7 +134,7 @@ PEPEDAWN follows ElizaOS architectural patterns:
 - Handle specific commands or behaviors (e.g., `/f`, `/fl`, `/fc`)
 - **Must have:** `validate()` and `handler()` functions
 - **Returns:** `ActionResult` with `success` boolean
-- **Active actions:** startCommand, helpCommand, fakeRaresCardAction, loreCommand, costCommand
+- **Active actions:** startCommand, helpCommand, fakeRaresCardAction, fakeVisualCommand, fakeTestCommand, loreCommand, costCommand
 
 **Providers** (`src/providers/`) - Context enrichment
 - Run **BEFORE** actions to add contextual data to state
@@ -209,9 +209,9 @@ PEPEDAWN follows ElizaOS architectural patterns:
 
 4. **Add tests:**
    ```typescript
-   // src/__tests__/stats.test.ts
+   // src/__tests__/actions/stats.test.ts
    import { describe, it, expect } from 'bun:test';
-   import { statsCommand } from '../actions/statsCommand';
+   import { statsCommand } from '../../actions/statsCommand';
    
    describe('Stats Command', () => {
      it('should validate /stats command', async () => {
@@ -221,6 +221,11 @@ PEPEDAWN follows ElizaOS architectural patterns:
      });
    });
    ```
+   
+   **Note:** Organize tests by type:
+   - `__tests__/actions/` - Action command tests
+   - `__tests__/utils/` - Utility function tests
+   - `__tests__/integration/` - Integration tests
 
 5. **Update BotFather commands:**
    ```
@@ -238,45 +243,59 @@ PEPEDAWN follows ElizaOS architectural patterns:
 
 ### Test Types
 
-**Unit Tests** - Test individual functions
-```typescript
-// src/__tests__/utils.test.ts
-import { describe, it, expect } from 'bun:test';
-import { calculateSimilarity } from '../utils/fuzzyMatch';
+The project has **5 custom test files** (excluding framework boilerplate):
 
-describe('Fuzzy Matching', () => {
-  it('should calculate similarity correctly', () => {
-    expect(calculateSimilarity('PEPE', 'PEEP')).toBeGreaterThan(0.75);
+**1. Bootstrap Suppression Test** (pre-commit hook)
+```typescript
+// src/__tests__/bootstrap-suppression.test.ts
+// Validates that Bootstrap AI responses are properly suppressed
+// Runs automatically on every commit
+```
+
+**2-5. Visual Commands Tests** (4 files, 67+ tests)
+- `__tests__/utils/visionAnalyzer.test.ts` - Shared vision API utility
+- `__tests__/actions/fakeVisualCommand.test.ts` - `/fv` card analysis
+- `__tests__/actions/fakeTestCommand.test.ts` - `/ft` image appeal test
+- `__tests__/integration/visual-commands.test.ts` - Plugin routing
+
+**Organize new tests by type:**
+
+**Action Tests** - Test command handlers
+```typescript
+// src/__tests__/actions/yourCommand.test.ts
+import { describe, it, expect } from 'bun:test';
+import { yourCommand } from '../../actions/yourCommand';
+
+describe('Your Command', () => {
+  it('should validate command correctly', async () => {
+    // Test validation logic
+  });
+});
+```
+
+**Utility Tests** - Test shared utilities
+```typescript
+// src/__tests__/utils/yourUtil.test.ts
+import { describe, it, expect } from 'bun:test';
+import { yourFunction } from '../../utils/yourUtil';
+
+describe('Your Utility', () => {
+  it('should process data correctly', () => {
+    expect(yourFunction('input')).toBe('output');
   });
 });
 ```
 
 **Integration Tests** - Test component interactions
 ```typescript
-// src/__tests__/integration.test.ts
+// src/__tests__/integration/feature.test.ts
 import { describe, it, expect } from 'bun:test';
 
-describe('Card Lookup Integration', () => {
-  it('should find card and display with metadata', async () => {
-    // Test complete card lookup flow
+describe('Feature Integration', () => {
+  it('should work end-to-end', async () => {
+    // Test complete flow
   });
 });
-```
-
-**E2E Tests** - Test full user scenarios
-```typescript
-// src/__tests__/e2e/bot.e2e.ts
-export class BotTestSuite implements TestSuite {
-  name = 'bot_e2e';
-  tests = [
-    {
-      name: 'card_display',
-      fn: async (runtime) => {
-        // Test complete /f command flow
-      },
-    },
-  ];
-}
 ```
 
 ### Running Tests
