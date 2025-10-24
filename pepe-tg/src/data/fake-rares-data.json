@@ -9210,16 +9210,11 @@
     "series": 18,
     "card": 22,
     "ext": "gif",
-    "artist": null,
-    "artistSlug": null,
-    "supply": null,
-    "issuance": null,
-    "imageUri": "https://www.pepedawn.art/PEPEDAWN.gif",
-    "issues": [
-      "no_artist",
-      "no_supply",
-      "no_issuance"
-    ]
+    "artist": "rabbidfly",
+    "artistSlug": "rabbidfly",
+    "supply": 133,
+    "issuance": "May 2024",
+    "imageUri": "https://www.pepedawn.art/PEPEDAWN.gif"
   },
   {
     "asset": "FAKEVOID",
@@ -9245,17 +9240,10 @@
     "asset": "FAKEREBIRTH",
     "series": 18,
     "card": 25,
-    "ext": "jpeg",
+    "ext": "jpg",
     "artist": "Aquaticmane",
     "artistSlug": "Aquaticmane",
     "supply": 72,
-    "issuance": "October 2025",
-    "issues": [
-      {
-        "type": "embedding_generation_failed",
-        "message": "Embedding generation failed: Replicate failed: 403 Client Error: Forbidden for url: https://pepewtf.s3.amazonaws.com/collections/fake-rares/full/18/FAKEREBIRTH.jpeg",
-        "addedAt": "2025-10-24T14:42:42.980Z"
-      }
-    ]
+    "issuance": "October 2025"
   }
 ]
