@@ -10,9 +10,15 @@
  */
 
 import { readFileSync, writeFileSync, existsSync } from 'fs';
-import { join } from 'path';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-const EMBEDDINGS_FILE = join(process.cwd(), 'src', 'data', 'card-embeddings.json');
+// Path relative to THIS file (works in both src/ and dist/)
+// src/utils/embeddingsDb.ts → src/data/card-embeddings.json
+// dist/utils/embeddingsDb.js → dist/data/card-embeddings.json
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const EMBEDDINGS_FILE = join(__dirname, '..', 'data', 'card-embeddings.json');
 
 interface EmbeddingEntry {
   embedding: number[];
