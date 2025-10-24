@@ -9205,47 +9205,29 @@
     "series": 18,
     "card": 23,
     "ext": "gif",
-    "artist": null,
-    "artistSlug": null,
-    "supply": null,
-    "issuance": null,
-    "imageUri": "https://fakeraredirectory.com/wp-content/uploads/2025/10/zoomo.gif?w=400",
-    "issues": [
-      "no_artist",
-      "no_supply",
-      "no_issuance"
-    ]
+    "artist": "ZOOMO",
+    "artistSlug": "ZOOMO",
+    "supply": 100,
+    "issuance": "October 2025"
   },
   {
     "asset": "POLKKAPEPE",
     "series": 18,
     "card": 24,
     "ext": "gif",
-    "artist": null,
-    "artistSlug": null,
-    "supply": null,
-    "issuance": null,
-    "imageUri": "https://fakeraredirectory.com/wp-content/uploads/2025/10/strangersolemn.gif?w=400",
-    "issues": [
-      "no_artist",
-      "no_supply",
-      "no_issuance"
-    ]
+    "artist": "StrangerSolemn",
+    "artistSlug": "StrangerSolemn",
+    "supply": 69,
+    "issuance": "August 2025"
   },
   {
     "asset": "FAKEREBIRTH",
     "series": 18,
     "card": 25,
     "ext": "jpeg",
-    "artist": null,
-    "artistSlug": null,
-    "supply": null,
-    "issuance": null,
-    "imageUri": "https://fakeraredirectory.com/wp-content/uploads/2025/10/acquatic.jpg?w=400",
-    "issues": [
-      "no_artist",
-      "no_supply",
-      "no_issuance"
-    ]
+    "artist": "Aquaticmane",
+    "artistSlug": "Aquaticmane",
+    "supply": 72,
+    "issuance": "October 2025"
   }
 ]
