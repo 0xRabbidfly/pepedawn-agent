@@ -94,19 +94,35 @@ deploy() {
     ssh_exec "cd $PROJECT_DIR && bun run build"
     success "Project built successfully"
     
-    # Step 7: Restart PM2 (hard restart for reliability)
-    log "Step 7: Stopping PM2 process..."
-    ssh_exec "cd $PROJECT_DIR && pm2 stop pepe-tg || true"
-    
-    log "Step 7b: Deleting PM2 process..."
-    ssh_exec "cd $PROJECT_DIR && pm2 delete pepe-tg || true"
-    
-    log "Step 7c: Starting PM2 with new build..."
-    ssh_exec "cd $PROJECT_DIR && pm2 start $PM2_CONFIG"
-    
-    log "Step 7d: Saving PM2 state..."
-    ssh_exec "cd $PROJECT_DIR && pm2 save"
-    success "PM2 restarted (hard restart)"
+    # Step 7: Restart PM2
+    if [ "$NUCLEAR_MODE" = true ]; then
+        log "Step 7: NUCLEAR RESTART - Killing PM2 daemon and all processes..."
+        ssh_exec "cd $PROJECT_DIR && pm2 delete pepe-tg || true"
+        ssh_exec "cd $PROJECT_DIR && pm2 kill"
+        ssh_exec "sleep 3"
+        ssh_exec "lsof -ti:3000 | xargs kill -9 2>/dev/null || true"
+        ssh_exec "pkill -f 'elizaos' || true"
+        ssh_exec "sleep 2"
+        success "Nuclear cleanup complete"
+        
+        log "Step 7b: Starting PM2 fresh..."
+        ssh_exec "cd $PROJECT_DIR && pm2 start $PM2_CONFIG"
+        ssh_exec "cd $PROJECT_DIR && pm2 save"
+        success "PM2 restarted (NUCLEAR mode)"
+    else
+        log "Step 7: Hard restart PM2 process..."
+        ssh_exec "cd $PROJECT_DIR && pm2 stop pepe-tg || true"
+        
+        log "Step 7b: Deleting PM2 process..."
+        ssh_exec "cd $PROJECT_DIR && pm2 delete pepe-tg || true"
+        
+        log "Step 7c: Starting PM2 with new build..."
+        ssh_exec "cd $PROJECT_DIR && pm2 start $PM2_CONFIG"
+        
+        log "Step 7d: Saving PM2 state..."
+        ssh_exec "cd $PROJECT_DIR && pm2 save"
+        success "PM2 restarted (hard restart)"
+    fi
     
     # Step 8: Check PM2 status
     log "Step 8: Checking PM2 status..."
@@ -127,9 +143,9 @@ show_help() {
     echo "Usage: $0 [OPTIONS]"
     echo ""
     echo "Options:"
-    echo "  -h, --help     Show this help message"
-    echo "  -d, --dry-run  Show what would be executed without running"
-    echo "  -q, --quick    Skip manual confirmation steps"
+    echo "  -h, --help      Show this help message"
+    echo "  -d, --dry-run   Show what would be executed without running"
+    echo "  -n, --nuclear   Use nuclear restart (pm2 kill + process cleanup)"
     echo ""
     echo "Configuration:"
     echo "  Server IP: $SERVER_IP"
@@ -148,16 +164,25 @@ dry_run() {
     echo "4. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && git pull'"
     echo "5. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && bun install'"
     echo "6. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && bun run build'"
-    echo "7a. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 stop pepe-tg'"
-    echo "7b. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 delete pepe-tg'"
-    echo "7c. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 start $PM2_CONFIG'"
-    echo "7d. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 save'"
+    if [ "$NUCLEAR_MODE" = true ]; then
+        echo "7. [NUCLEAR] ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 delete pepe-tg || true'"
+        echo "7a. [NUCLEAR] ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 kill'"
+        echo "7b. [NUCLEAR] ssh -i $SSH_KEY root@$SERVER_IP 'sleep 3 && lsof -ti:3000 | xargs kill -9'"
+        echo "7c. [NUCLEAR] ssh -i $SSH_KEY root@$SERVER_IP 'pkill -f elizaos'"
+        echo "7d. [NUCLEAR] ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 start $PM2_CONFIG'"
+        echo "7e. [NUCLEAR] ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 save'"
+    else
+        echo "7a. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 stop pepe-tg'"
+        echo "7b. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 delete pepe-tg'"
+        echo "7c. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 start $PM2_CONFIG'"
+        echo "7d. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 save'"
+    fi
     echo "8. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 status'"
     echo "9. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 logs --lines 10'"
 }
 
 # Parse command line arguments
-QUICK_MODE=false
+NUCLEAR_MODE=false
 DRY_RUN=false
 
 while [[ $# -gt 0 ]]; do
@@ -170,8 +195,8 @@ while [[ $# -gt 0 ]]; do
             DRY_RUN=true
             shift
             ;;
-        -q|--quick)
-            QUICK_MODE=true
+        -n|--nuclear)
+            NUCLEAR_MODE=true
             shift
             ;;
         *)
