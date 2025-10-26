@@ -94,10 +94,19 @@ deploy() {
     ssh_exec "cd $PROJECT_DIR && bun run build"
     success "Project built successfully"
     
-    # Step 7: Restart PM2
-    log "Step 7: Restarting PM2..."
-    ssh_exec "cd $PROJECT_DIR && pm2 restart $PM2_CONFIG"
-    success "PM2 restarted"
+    # Step 7: Restart PM2 (hard restart for reliability)
+    log "Step 7: Stopping PM2 process..."
+    ssh_exec "cd $PROJECT_DIR && pm2 stop pepe-tg || true"
+    
+    log "Step 7b: Deleting PM2 process..."
+    ssh_exec "cd $PROJECT_DIR && pm2 delete pepe-tg || true"
+    
+    log "Step 7c: Starting PM2 with new build..."
+    ssh_exec "cd $PROJECT_DIR && pm2 start $PM2_CONFIG"
+    
+    log "Step 7d: Saving PM2 state..."
+    ssh_exec "cd $PROJECT_DIR && pm2 save"
+    success "PM2 restarted (hard restart)"
     
     # Step 8: Check PM2 status
     log "Step 8: Checking PM2 status..."
@@ -139,7 +148,10 @@ dry_run() {
     echo "4. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && git pull'"
     echo "5. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && bun install'"
     echo "6. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && bun run build'"
-    echo "7. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 restart $PM2_CONFIG'"
+    echo "7a. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 stop pepe-tg'"
+    echo "7b. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 delete pepe-tg'"
+    echo "7c. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 start $PM2_CONFIG'"
+    echo "7d. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 save'"
     echo "8. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 status'"
     echo "9. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 logs --lines 10'"
 }
