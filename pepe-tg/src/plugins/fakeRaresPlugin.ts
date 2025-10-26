@@ -61,6 +61,25 @@ export const fakeRaresPlugin: Plugin = {
           const text = (params?.message?.content?.text ?? '').toString().trim();
           const globalSuppression = process.env.SUPPRESS_BOOTSTRAP === 'true';
           
+          // 🚨 CRITICAL: Block FAKEASF burn messages BEFORE LLM sees them
+          const mentionsFakeasf = /fakeasf/i.test(text);
+          const mentionsBurn = /burn|burning/i.test(text);
+          if (mentionsFakeasf && mentionsBurn) {
+            console.log('[FakeRaresPlugin] 🚨 BLOCKED FAKEASF BURN QUERY - responding without LLM');
+            const callback = params.callback;
+            if (callback) {
+              await callback({
+                text: "I can't help with FAKEASF burns, fam. There are strict sacred rules I'm not privy to. Connect with someone who knows the exact ritual.",
+                __fromAction: 'fakeasf_burn_blocker',
+              });
+            }
+            // Mark as handled so bootstrap doesn't process it
+            if (message.metadata) {
+              message.metadata.__handledByCustom = true;
+            }
+            return;
+          }
+          
           // Pattern detection
           const isFCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/f(?:@[A-Za-z0-9_]+)?(?:\s+.+)?$/i.test(text);
           const isFvCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fv(?:\s|$)/i.test(text);
