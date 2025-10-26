@@ -84,28 +84,28 @@ deploy() {
     ssh_exec "cd $PROJECT_DIR && git pull"
     success "Latest changes pulled"
     
-    # Step 5: Check if patches need updating (placeholder)
-    log "Step 5: Checking if patches need updating..."
-    warning "Manual check required: Do patches need updating? (y/n)"
-    read -p "Continue with restart? (y/n): " -n 1 -r
-    echo
-    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        warning "Deployment cancelled by user"
-        exit 0
-    fi
+    # Step 5: Install dependencies (if needed)
+    log "Step 5: Installing dependencies..."
+    ssh_exec "cd $PROJECT_DIR && bun install"
+    success "Dependencies installed"
     
-    # Step 6: Restart PM2
-    log "Step 6: Restarting PM2..."
+    # Step 6: Build TypeScript project
+    log "Step 6: Building TypeScript project..."
+    ssh_exec "cd $PROJECT_DIR && bun run build"
+    success "Project built successfully"
+    
+    # Step 7: Restart PM2
+    log "Step 7: Restarting PM2..."
     ssh_exec "cd $PROJECT_DIR && pm2 restart $PM2_CONFIG"
     success "PM2 restarted"
     
-    # Step 7: Check PM2 status
-    log "Step 7: Checking PM2 status..."
+    # Step 8: Check PM2 status
+    log "Step 8: Checking PM2 status..."
     ssh_exec "cd $PROJECT_DIR && pm2 status"
     success "PM2 status checked"
     
-    # Step 8: Show recent logs
-    log "Step 8: Showing recent logs..."
+    # Step 9: Show recent logs
+    log "Step 9: Showing recent logs..."
     ssh_exec "cd $PROJECT_DIR && pm2 logs --lines 10"
     
     success "🎉 Deployment completed successfully!"
@@ -137,10 +137,11 @@ dry_run() {
     echo "2. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pwd'"
     echo "3. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && git status'"
     echo "4. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && git pull'"
-    echo "5. Manual check: Do patches need updating?"
-    echo "6. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 restart $PM2_CONFIG'"
-    echo "7. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 status'"
-    echo "8. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 logs --lines 10'"
+    echo "5. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && bun install'"
+    echo "6. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && bun run build'"
+    echo "7. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 restart $PM2_CONFIG'"
+    echo "8. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 status'"
+    echo "9. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 logs --lines 10'"
 }
 
 # Parse command line arguments
