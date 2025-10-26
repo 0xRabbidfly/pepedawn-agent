@@ -69,7 +69,7 @@ export const fakeRaresPlugin: Plugin = {
             const callback = params.callback;
             if (callback) {
               await callback({
-                text: "I can't help with FAKEASF burns, fam. There are strict sacred rules I'm not privy to. Connect with someone who knows the exact ritual.",
+                text: "I can't help with FAKEASF destroying or burning, fam. There are strict sacred rules I'm not privy to. Connect with Scrilla or someone who knows the exact ritual.\n\nRead them carefully at https://wiki.pepe.wtf/chapter-2-the-rare-pepe-project/fake-rares-and-dank-rares/fake-rares-submission-rules",
                 __fromAction: 'fakeasf_burn_blocker',
               });
             }
