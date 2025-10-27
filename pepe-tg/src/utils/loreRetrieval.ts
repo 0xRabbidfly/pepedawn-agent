@@ -308,16 +308,36 @@ export async function searchKnowledgeWithExpansion(
   
   const filtered = passages.filter(p => p.text.length > 0);
   
-  // Optional debug: Show source distribution
-  if (process.env.LORE_DEBUG === 'true') {
-    const sourceBreakdown = filtered.reduce((acc, p) => {
-      acc[p.sourceType] = (acc[p.sourceType] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
-    console.log(`📊 [SOURCE BREAKDOWN] Retrieved:`, sourceBreakdown);
-  }
+  // Apply source-based ranking boost
+  // Priority: Wiki (highest) > Memories (2nd) > Telegram (lowest)
+  const boosted = filtered.map(p => {
+    const originalScore = p.score;
+    let boost = 1.0;
+    
+    switch (p.sourceType) {
+      case 'wiki':
+        boost = 2.0;  // Highest priority - authoritative content
+        break;
+      case 'memory':
+        boost = 1.5;  // 2nd priority - user-contributed facts
+        break;
+      case 'telegram':
+        boost = 0.5;  // Lowest priority - conversational noise
+        break;
+      default:
+        boost = 1.0;
+    }
+    
+    return {
+      ...p,
+      score: originalScore * boost,
+    };
+  });
   
-  return filtered;
+  // Re-sort by boosted score (highest first)
+  const ranked = boosted.sort((a, b) => b.score - a.score);
+  
+  return ranked;
 }
 
 /**

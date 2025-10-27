@@ -1,6 +1,6 @@
 import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, type State } from '@elizaos/core';
 import { searchKnowledgeWithExpansion, selectDiversePassages, expandQuery } from '../utils/loreRetrieval';
-import { clusterAndSummarize, formatSourcesLine } from '../utils/loreSummarize';
+import { clusterAndSummarize, formatSourcesLine, formatCompactCitation } from '../utils/loreSummarize';
 import { generatePersonaStory } from '../utils/storyComposer';
 import { filterOutRecentlyUsed, markIdAsRecentlyUsed } from '../utils/lru';
 import { LORE_CONFIG } from '../utils/loreConfig';
@@ -98,19 +98,65 @@ export const loreCommand: Action = {
       // Mark passages as recently used
       diversePassages.forEach(p => markIdAsRecentlyUsed(message.roomId, p.id));
 
-      // STEP 4: Cluster and summarize
+      // STEP 4: Different flow for FACTS vs LORE
       setCallContext('Lore calls'); // Set context for all lore operations
-      const summaries = await clusterAndSummarize(runtime, diversePassages);
-      console.log(`📊 Generated ${summaries.length} cluster summaries`);
-
-      // STEP 5: Generate persona story
-      const story = await generatePersonaStory(runtime, query, summaries);
-      console.log(`✍️  Generated story (${story.split(/\s+/).length} words)`);
       
+      // Classify query type
+      const { classifyQuery } = await import('../utils/queryClassifier');
+      const queryType = classifyQuery(query);
+      console.log(`🎯 Query type: ${queryType}`);
+      
+      let story: string;
+      let sourcesLine: string;
+      let clusterCount = 0;
+      
+      if (queryType === 'FACTS') {
+        // FACTS mode: Take top wiki passages and send directly to LLM (no clustering/summarization)
+        console.log('📋 FACTS mode: Using top wiki passages directly');
+        
+        // Filter to wiki sources only and take top 5
+        const wikiPassages = diversePassages.filter(p => p.sourceType === 'wiki').slice(0, 5);
+        
+        if (wikiPassages.length === 0) {
+          // Fallback to any source if no wiki
+          const topPassages = diversePassages.slice(0, 5);
+          story = await generatePersonaStory(runtime, query, [{
+            id: 'direct',
+            passageRefs: topPassages.map(p => p.id),
+            summary: topPassages.map(p => p.text).join('\n\n'),
+            citations: topPassages.map(p => formatCompactCitation(p))
+          }]);
+          sourcesLine = process.env.HIDE_LORE_SOURCES === 'true' ? '' : 
+            `\n\nSources:  ${topPassages.map(p => formatCompactCitation(p)).join('  ||  ')}`;
+          clusterCount = 1; // Single direct passage cluster
+        } else {
+          // Use wiki passages directly
+          story = await generatePersonaStory(runtime, query, [{
+            id: 'wiki-facts',
+            passageRefs: wikiPassages.map(p => p.id),
+            summary: wikiPassages.map(p => p.text).join('\n\n'),
+            citations: wikiPassages.map(p => formatCompactCitation(p))
+          }]);
+          sourcesLine = process.env.HIDE_LORE_SOURCES === 'true' ? '' : 
+            `\n\nSources:  ${wikiPassages.map(p => formatCompactCitation(p)).join('  ||  ')}`;
+          clusterCount = 1; // Single wiki facts cluster
+        }
+        console.log(`📋 Sent ${wikiPassages.length || diversePassages.slice(0, 5).length} passages directly (no clustering)`);
+      } else {
+        // LORE mode: Use full clustering and summarization pipeline
+        console.log('📖 LORE mode: Using clustering and summarization');
+        const summaries = await clusterAndSummarize(runtime, diversePassages, query);
+        clusterCount = summaries.length;
+        console.log(`📊 Generated ${summaries.length} cluster summaries`);
+        
+        story = await generatePersonaStory(runtime, query, summaries);
+        sourcesLine = process.env.HIDE_LORE_SOURCES === 'true' ? '' : formatSourcesLine(summaries);
+      }
+      
+      console.log(`✍️  Generated story (${story.split(/\s+/).length} words)`);
       clearCallContext(); // Clear after lore flow complete
 
       // STEP 6: Format with sources
-      const sourcesLine = process.env.HIDE_LORE_SOURCES === 'true' ? '' : formatSourcesLine(summaries);
       let finalMessage = story + sourcesLine;
 
       // Truncate if needed (Telegram limit)
@@ -126,7 +172,7 @@ export const loreCommand: Action = {
       console.log(`   Query: "${query}"`);
       console.log(`   Hits raw: ${passages.length}`);
       console.log(`   Hits used: ${diversePassages.length}`);
-      console.log(`   Clusters: ${summaries.length}`);
+      console.log(`   Clusters: ${clusterCount}`);
       console.log(`   Latency: ${latencyMs}ms`);
       console.log(`   Story length: ${story.split(/\s+/).length} words`);
       console.log('='  .repeat(60) + '\n');
@@ -143,7 +189,7 @@ export const loreCommand: Action = {
           query,
           hits_raw: passages.length,
           hits_used: diversePassages.length,
-          clusters: summaries.length,
+          clusters: clusterCount,
           latency_ms: latencyMs,
           story_words: story.split(/\s+/).length,
         }

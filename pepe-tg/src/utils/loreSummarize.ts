@@ -7,6 +7,7 @@ import type { IAgentRuntime } from '@elizaos/core';
 import { ModelType } from '@elizaos/core';
 import type { RetrievedPassage } from './loreRetrieval';
 import { LORE_CONFIG } from './loreConfig';
+import { classifyQuery, type QueryType } from './queryClassifier';
 
 export interface ClusterSummary {
   id: string;
@@ -80,11 +81,24 @@ function calculateClusterSimilarity(clusterA: RetrievedPassage[], clusterB: Retr
 async function summarizeCluster(
   runtime: IAgentRuntime,
   cluster: RetrievedPassage[],
-  clusterId: string
+  clusterId: string,
+  queryType: QueryType = 'LORE'
 ): Promise<ClusterSummary> {
-  const combined = cluster.map((p, i) => `[${i}] ${p.text.slice(0, 150)}`).join('\n\n');
+  // For FACTS queries: use MUCH more text to preserve detailed specs
+  // For LORE queries: use 150 chars (current behavior)
+  const charLimit = queryType === 'FACTS' ? 1500 : 150;
   
-  const summaryPrompt = `You are a factual summarizer. Produce a brief, faithful synopsis of the provided passages. Merge overlapping facts; avoid speculation. Keep it under 100 words.
+  const combined = cluster.map((p, i) => `[${i}] ${p.text.slice(0, charLimit)}`).join('\n\n');
+  
+  // Different summarization instructions based on query type
+  const summaryPrompt = queryType === 'FACTS'
+    ? `You are a factual summarizer. Extract ALL specific details, rules, requirements, and specifications from the passages. Preserve numbers, sizes, fees, and exact requirements. DO NOT condense or generalize specifications. Keep under 200 words.
+
+Passages:
+${combined}
+
+Summary (preserve all specifications):`
+    : `You are a factual summarizer. Produce a brief, faithful synopsis of the provided passages. Merge overlapping facts; avoid speculation. Keep it under 100 words.
 
 Passages:
 ${combined}
@@ -190,9 +204,13 @@ export function formatCompactCitation(passage: RetrievedPassage): string {
  */
 export async function clusterAndSummarize(
   runtime: IAgentRuntime,
-  passages: RetrievedPassage[]
+  passages: RetrievedPassage[],
+  query: string
 ): Promise<ClusterSummary[]> {
   if (passages.length === 0) return [];
+  
+  // Classify query to determine summarization strategy
+  const queryType = classifyQuery(query);
   
   const targetClusters = Math.min(
     Math.max(LORE_CONFIG.CLUSTER_TARGET_MIN, passages.length),
@@ -206,7 +224,7 @@ export async function clusterAndSummarize(
   // 🚀 OPTIMIZATION: Parallelize LLM calls instead of sequential
   const summaries = await Promise.all(
     clusters.map((cluster, i) => 
-      summarizeCluster(runtime, cluster, `cluster-${i}`)
+      summarizeCluster(runtime, cluster, `cluster-${i}`, queryType)
     )
   );
   

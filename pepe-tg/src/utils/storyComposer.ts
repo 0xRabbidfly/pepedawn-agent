@@ -1,5 +1,5 @@
 /**
- * Lore Recounter - Generate historian-style lore recounting
+ * Lore Recounter - Generate historian-style lore recounting or factual answers
  */
 
 import type { IAgentRuntime } from '@elizaos/core';
@@ -8,6 +8,57 @@ import type { ClusterSummary } from './loreSummarize';
 import { LORE_CONFIG } from './loreConfig';
 import OpenAI from 'openai';
 import { logTokenUsage, estimateTokens, calculateCost } from './tokenLogger';
+import { classifyQuery, type QueryType } from './queryClassifier';
+
+/**
+ * Create prompt for FACTS-based queries (rules, requirements, how-to)
+ */
+function createFactsPrompt(query: string, summaries: string): string {
+  return `You are PEPEDAWN. A user asked: "${query}"
+
+Based on these sources:
+
+${summaries}
+
+FACTUAL RESPONSE STYLE:
+- Write ${LORE_CONFIG.STORY_LENGTH_WORDS} words MAXIMUM
+- Answer DIRECTLY with concrete facts, rules, and requirements
+- Use lists, bullet points, or numbered steps when appropriate
+- NO storytelling, NO "I remember when", NO vibes or reactions
+- Extract exact specifications: sizes, fees, requirements, steps
+- If it's rules/requirements: list them clearly and completely
+- If it's a how-to: provide step-by-step instructions
+- Keep it concise and scannable
+- Only add brief context if absolutely necessary for understanding
+- NO personality flourishes, NO meme language, NO emojis
+
+Answer:`}
+
+/**
+ * Create prompt for LORE-based queries (history, stories, community)
+ */
+function createLorePrompt(query: string, summaries: string): string {
+  return `You are PEPEDAWN, an OG who witnessed Fake Rares history firsthand. A user asked: "${query}"
+
+Based on these records from the community's history:
+
+${summaries}
+
+RECOUNTING STYLE:
+- Write ${LORE_CONFIG.STORY_LENGTH_WORDS} words MAXIMUM
+- Speak as a historian/witness, not a storyteller - "I remember when...", "The community was...", "We were all..."
+- For chat history: Quote or paraphrase actual moments, include who said what, describe reactions
+- For wiki content: Reference it as "The Book of Kek says..." or "According to the archives..." then share the passage
+- Use first-person observations: "I saw...", "We were all...", "The vibe was..."
+- Include context and community reactions, not just facts
+- Dates are optional - only mention if truly relevant to the moment, otherwise skip them
+- If sharing 2 distinct ideas/moments, separate them with a blank line (paragraph break)
+- NO story-crafting, NO narrative arcs - just recount what happened
+- NO canned phrases like "gather 'round", "let me tell you", "here's the tale"
+- NO generic closings like "WAGMI", "based", "probably nothing"
+- Pick 2-3 related moments and recount them naturally
+
+Lore recounting:`}
 
 /**
  * Generate a PEPEDAWN historian-style lore recounting from cluster summaries
@@ -26,27 +77,14 @@ export async function generatePersonaStory(
     .map((s, i) => `[${i + 1}] ${s.summary}`)
     .join('\n\n');
   
-  const storyPrompt = `You are PEPEDAWN, an OG who witnessed Fake Rares history firsthand. A user asked: "${query}"
-
-Based on these records from the community's history:
-
-${combinedSummaries}
-
-RECOUNTING STYLE:
-- Write ${LORE_CONFIG.STORY_LENGTH_WORDS} words MAXIMUM
-- Speak as a historian/witness, not a storyteller - "I remember when...", "The community was...", "We were all..."
-- For chat history: Quote or paraphrase actual moments, include who said what, describe reactions
-- For wiki content: Reference it as "The Book of Kek says..." or "According to the archives..." then share the passage
-- Use first-person observations: "I saw...", "We were all...", "The vibe was..."
-- Include context and community reactions, not just facts
-- Dates are optional - only mention if truly relevant to the moment, otherwise skip them
-- If sharing 2 distinct ideas/moments, separate them with a blank line (paragraph break)
-- NO story-crafting, NO narrative arcs - just recount what happened
-- NO canned phrases like "gather 'round", "let me tell you", "here's the tale"
-- NO generic closings like "WAGMI", "based", "probably nothing"
-- Pick 2-3 related moments and recount them naturally
-
-Lore recounting:`;
+  // Classify the query type
+  const queryType = classifyQuery(query);
+  console.log(`🎯 Query classified as: ${queryType}`);
+  
+  // Different prompts for FACTS vs LORE
+  const storyPrompt = queryType === 'FACTS' 
+    ? createFactsPrompt(query, combinedSummaries)
+    : createLorePrompt(query, combinedSummaries);
   
   try {
     // Use custom env var LORE_STORY_MODEL to bypass runtime's model selection
