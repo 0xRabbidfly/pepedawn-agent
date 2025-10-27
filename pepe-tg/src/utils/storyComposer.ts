@@ -21,7 +21,7 @@ Based on these sources:
 ${summaries}
 
 FACTUAL RESPONSE STYLE:
-- Write ${LORE_CONFIG.STORY_LENGTH_WORDS} words MAXIMUM
+- Keep response ${LORE_CONFIG.STORY_LENGTH_WORDS} words - be concise but complete
 - Answer DIRECTLY with concrete facts, rules, and requirements
 - Use lists, bullet points, or numbered steps when appropriate
 - NO storytelling, NO "I remember when", NO vibes or reactions
@@ -45,7 +45,7 @@ Based on these records from the community's history:
 ${summaries}
 
 RECOUNTING STYLE:
-- Write ${LORE_CONFIG.STORY_LENGTH_WORDS} words MAXIMUM
+- Keep response ${LORE_CONFIG.STORY_LENGTH_WORDS} words - be concise but complete
 - Speak as a historian/witness, not a storyteller - "I remember when...", "The community was...", "We were all..."
 - For chat history: Quote or paraphrase actual moments, include who said what, describe reactions
 - For wiki content: Reference it as "The Book of Kek says..." or "According to the archives..." then share the passage
