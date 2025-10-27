@@ -15,7 +15,7 @@ import { setCallContext, clearCallContext } from '../utils/tokenLogger';
  * 2. Retrieve passages from vector KB (with fallback expansion)
  * 3. Apply MMR for diversity
  * 4. Cluster and summarize with citations
- * 5. Generate historian-style lore recounting (80-120 words)
+ * 5. Generate historian-style lore recounting (concise, under 120 words)
  * 6. Format with compact sources line
  */
 export const loreCommand: Action = {

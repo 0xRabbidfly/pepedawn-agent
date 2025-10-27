@@ -15,7 +15,7 @@ export const LORE_CONFIG = {
   TOP_K_FOR_CLUSTERING: 20,
   
   // Story Generation
-  STORY_LENGTH_WORDS: process.env.STORY_LENGTH_WORDS || '80-120',
+  STORY_LENGTH_WORDS: process.env.STORY_LENGTH_WORDS || 'under 120',
   TEMPERATURE: parseFloat(process.env.TEMPERATURE || '0.7'),
   TOP_P: parseFloat(process.env.TOP_P || '0.9'),
   MAX_TOKENS_SUMMARY: parseInt(process.env.MAX_TOKENS_SUMMARY || '500', 10),
