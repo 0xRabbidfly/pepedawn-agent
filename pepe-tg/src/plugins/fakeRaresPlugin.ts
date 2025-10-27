@@ -5,6 +5,7 @@ import { loreDetectorEvaluator } from '../evaluators';
 import { FULL_CARD_INDEX } from '../data/fullCardIndex';
 import { startAutoRefresh } from '../utils/cardIndexRefresher';
 import { patchRuntimeForTracking } from '../utils/tokenLogger';
+import { storeUserMemory } from '../utils/memoryStorage';
 
 /**
  * Fake Rares Plugin - Bootstrap 1.6.2 Compatible
@@ -92,8 +93,51 @@ export const fakeRaresPlugin: Plugin = {
           const hasCapitalizedWord = /\b[A-Z]{3,}[A-Z0-9]*\b/.test(text); // 3+ caps (likely card names)
           const hasBotMention = /@pepedawn_bot/i.test(text);
           const isReplyToBot = params?.message?.content?.inReplyTo; // User replied to bot's message
+          const hasRememberThis = /remember\s+this/i.test(text);
 
           console.log(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${isFCommand} isFv=${isFvCommand} isFt=${isFtCommand} isLore=${isLoreCommand} isDawn=${isDawnCommand} isHelp=${isHelpCommand} isStart=${isStartCommand} isCost=${isCostCommand} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
+          
+          // === MEMORY CAPTURE: "remember this" ===
+          if ((hasCapitalizedWord || isReplyToBot || hasBotMention) && hasRememberThis) {
+            console.log('[FakeRaresPlugin] "remember this" detected → storing memory');
+            const actionCallback = typeof params.callback === 'function' ? params.callback : null;
+            
+            try {
+              const result = await storeUserMemory(runtime, message, params.ctx?.message);
+              
+              if (result.success && !result.ignoredReason) {
+                // Memory stored successfully
+                if (actionCallback) {
+                  await actionCallback({
+                    text: 'storing the memory... to access this in the future ensure you use the /fl fake lore method'
+                  });
+                }
+                // Mark as handled to prevent bootstrap processing
+                try {
+                  message.metadata = message.metadata || {};
+                  (message.metadata as any).__handledByCustom = true;
+                } catch {}
+                console.log('[FakeRaresPlugin] Memory stored successfully');
+                return; // Done
+              } else if (result.ignoredReason) {
+                // Silent ignore (empty content, etc.)
+                console.debug(`[FakeRaresPlugin] Memory ignored: ${result.ignoredReason}`);
+                // Don't respond, don't mark as handled, let flow continue
+              } else if (result.error) {
+                // Storage failed
+                console.error(`[FakeRaresPlugin] Memory storage failed: ${result.error}`);
+                if (actionCallback) {
+                  await actionCallback({
+                    text: `❌ Failed to store memory: ${result.error}`
+                  });
+                }
+                return; // Done (with error)
+              }
+            } catch (error) {
+              console.error('[FakeRaresPlugin] Memory storage exception:', error);
+              // Continue to normal flow on exception
+            }
+          }
           
           // === CUSTOM ACTION: /f COMMANDS ===
           if (isFCommand) {
