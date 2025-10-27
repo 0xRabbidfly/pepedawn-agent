@@ -111,14 +111,14 @@ export const loreCommand: Action = {
       let clusterCount = 0;
       
       if (queryType === 'FACTS') {
-        // FACTS mode: Take top wiki passages and send directly to LLM (no clustering/summarization)
-        console.log('📋 FACTS mode: Using top wiki passages directly');
+        // FACTS mode: Take top wiki and memory passages and send directly to LLM (no clustering/summarization)
+        console.log('📋 FACTS mode: Using top wiki and memory passages directly');
         
-        // Filter to wiki sources only and take top 5
-        const wikiPassages = diversePassages.filter(p => p.sourceType === 'wiki').slice(0, 5);
+        // Filter to wiki and memory sources only (prioritize authoritative sources) and take top 5
+        const factsPassages = diversePassages.filter(p => p.sourceType === 'wiki' || p.sourceType === 'memory').slice(0, 5);
         
-        if (wikiPassages.length === 0) {
-          // Fallback to any source if no wiki
+        if (factsPassages.length === 0) {
+          // Fallback to any source if no wiki or memory
           const topPassages = diversePassages.slice(0, 5);
           story = await generatePersonaStory(runtime, query, [{
             id: 'direct',
@@ -130,18 +130,18 @@ export const loreCommand: Action = {
             `\n\nSources:  ${topPassages.map(p => formatCompactCitation(p)).join('  ||  ')}`;
           clusterCount = 1; // Single direct passage cluster
         } else {
-          // Use wiki passages directly
+          // Use wiki and memory passages directly
           story = await generatePersonaStory(runtime, query, [{
-            id: 'wiki-facts',
-            passageRefs: wikiPassages.map(p => p.id),
-            summary: wikiPassages.map(p => p.text).join('\n\n'),
-            citations: wikiPassages.map(p => formatCompactCitation(p))
+            id: 'facts',
+            passageRefs: factsPassages.map(p => p.id),
+            summary: factsPassages.map(p => p.text).join('\n\n'),
+            citations: factsPassages.map(p => formatCompactCitation(p))
           }]);
           sourcesLine = process.env.HIDE_LORE_SOURCES === 'true' ? '' : 
-            `\n\nSources:  ${wikiPassages.map(p => formatCompactCitation(p)).join('  ||  ')}`;
-          clusterCount = 1; // Single wiki facts cluster
+            `\n\nSources:  ${factsPassages.map(p => formatCompactCitation(p)).join('  ||  ')}`;
+          clusterCount = 1; // Single facts cluster (wiki + memories)
         }
-        console.log(`📋 Sent ${wikiPassages.length || diversePassages.slice(0, 5).length} passages directly (no clustering)`);
+        console.log(`📋 Sent ${factsPassages.length || diversePassages.slice(0, 5).length} passages directly (no clustering)`);
       } else {
         // LORE mode: Use full clustering and summarization pipeline
         console.log('📖 LORE mode: Using clustering and summarization');

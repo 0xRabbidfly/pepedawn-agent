@@ -309,17 +309,17 @@ export async function searchKnowledgeWithExpansion(
   const filtered = passages.filter(p => p.text.length > 0);
   
   // Apply source-based ranking boost
-  // Priority: Wiki (highest) > Memories (2nd) > Telegram (lowest)
+  // Priority: Memories (highest) > Wiki (2nd) > Telegram (lowest)
   const boosted = filtered.map(p => {
     const originalScore = p.score;
     let boost = 1.0;
     
     switch (p.sourceType) {
-      case 'wiki':
-        boost = 2.0;  // Highest priority - authoritative content
-        break;
       case 'memory':
-        boost = 1.5;  // 2nd priority - user-contributed facts
+        boost = 4.0;  // Highest priority - explicitly saved user facts (2x wiki)
+        break;
+      case 'wiki':
+        boost = 2.0;  // 2nd priority - authoritative content
         break;
       case 'telegram':
         boost = 0.5;  // Lowest priority - conversational noise
