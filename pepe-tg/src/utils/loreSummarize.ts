@@ -100,7 +100,7 @@ Summary:`;
       temperature: 0.3, // Low temp for factual summarization
     });
     
-    const summary = typeof result === 'string' ? result : (result as any)?.text || result?.toString() || '';
+    const summary = typeof result === 'string' ? result : (result as any)?.text || (result as any)?.toString?.() || '';
     
     return {
       id: clusterId,
@@ -133,7 +133,8 @@ Summary:`;
  */
 export function formatCompactCitation(passage: RetrievedPassage): string {
   const prefix = passage.sourceType === 'telegram' ? 'tg' :
-                 passage.sourceType === 'wiki' ? 'wiki' : 'src';
+                 passage.sourceType === 'wiki' ? 'wiki' :
+                 passage.sourceType === 'memory' ? 'mem' : 'src';
   
   // Extract short ID - first 6 alphanumeric chars
   let shortRef = passage.sourceRef.split(/[:/]/).pop() || passage.sourceRef;
@@ -143,8 +144,8 @@ export function formatCompactCitation(passage: RetrievedPassage): string {
     shortRef = shortRef.slice(0, 6);
   }
   
-  // For telegram: add date and author
-  if (passage.sourceType === 'telegram') {
+  // For telegram or memory: add date and author
+  if (passage.sourceType === 'telegram' || passage.sourceType === 'memory') {
     // Format date if available
     let datePart = '';
     if (passage.timestamp) {

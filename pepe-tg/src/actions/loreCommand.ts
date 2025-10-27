@@ -56,6 +56,16 @@ export const loreCommand: Action = {
       );
 
       console.log(`📚 Retrieved ${passages.length} passages`);
+      
+      // Source type breakdown for debugging
+      const sourceBreakdown = passages.reduce((acc, p) => {
+        const type = p.sourceType === 'telegram' ? 'tg' : 
+                     p.sourceType === 'wiki' ? 'wiki' :
+                     p.sourceType === 'memory' ? 'Mem' : 'other';
+        acc[type] = (acc[type] || 0) + 1;
+        return acc;
+      }, {} as Record<string, number>);
+      console.log(`📊 Sources: ${JSON.stringify(sourceBreakdown)}`);
 
       if (passages.length === 0) {
         const fallbackMsg = `Hmm, couldn't find any lore on "${query}". Try asking about:\n• Rare Scrilla\n• FREEDOMKEK\n• La Faka Nostra\n• Specific card names\n\nOr just ask me to tell you about Fake Rares in general! 🐸`;

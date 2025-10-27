@@ -121,23 +121,31 @@ When you upload an image with `/ft`, the bot automatically checks if it matches 
 
 ---
 
-### 📚 LLM-LORE: AI-Powered Lore Recounting
+### 📚 LLM-LORE: AI-Powered Lore Recounting + Community Memory
 
 **Commands:**
-- **`/fl TOPIC`** - PEPEDAWN recounts history from Telegram archives + pepe.wtf wiki
+- **`/fl TOPIC`** - PEPEDAWN recounts history from Telegram archives + pepe.wtf wiki + community memories
 - **`/fl`** - Random lore from the community vault
+- **`remember this: FACT`** - Contribute a memory to the community knowledge base (NEW!)
 
 **How it works:**
-1. Searches local vector database (Telegram messages + wiki content)
+1. Searches local vector database (Telegram messages + wiki content + user memories)
 2. Clusters relevant passages for diversity (MMR algorithm)
 3. PEPEDAWN recounts as historian/eyewitness (80-120 words)
-4. Includes compact source citations (e.g., `tg:1234, wiki:purple-era`)
+4. Includes compact source citations (e.g., `tg:1234, wiki:purple-era, mem:abc123`)
 5. Speaks as "I remember when..." not creative storytelling
+
+**Memory Capture** (NEW):
+- Say "remember this: [fact]" in messages with card names (CAPITALS) or when replying to the bot
+- Example: `FREEDOMKEK remember this: it was inspired by the Free Kekistan movement`
+- Bot stores it and confirms: "storing the memory... to access this in the future ensure you use the /fl fake lore method"
+- Memories are searchable globally across all chats
+- Citations include user attribution (e.g., `mem:abc123 2025-10-27 by:YourName`)
 
 **Examples:**
 - `/fl purple subasset era` → Stories about that specific time
 - `/fl Rare Scrilla` → Lore about the founder
-- `/fl FREEDOMKEK` → The genesis card's history
+- `/fl FREEDOMKEK` → The genesis card's history (including community memories!)
 - `/fl` → Surprise me with community history!
 
 **Note:** Requires knowledge base setup (optional - see [Knowledge Base Setup](#-knowledge-base-setup-optional))

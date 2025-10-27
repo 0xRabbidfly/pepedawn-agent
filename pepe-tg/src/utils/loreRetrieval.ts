@@ -10,7 +10,7 @@ export interface RetrievedPassage {
   id: string;
   text: string;
   score: number;
-  sourceType: 'telegram' | 'wiki' | 'unknown';
+  sourceType: 'telegram' | 'wiki' | 'memory' | 'unknown';
   sourceRef: string;
   timestamp?: number;
   author?: string;
@@ -164,19 +164,35 @@ export async function searchKnowledgeWithExpansion(
   
   // Convert to RetrievedPassage format
   const passages: RetrievedPassage[] = results.map((r: any, idx: number) => {
-    const text = (r.content?.text || r.text || '').trim();
+    let text = (r.content?.text || r.text || '').trim();
     const id = (r.id || r.content?.id || `result-${idx}`) as string;
     const score = r.similarity || r.score || 1.0;
     
+    // Check for embedded memory marker in content
+    // User memories are stored with metadata embedded in content (workaround for KnowledgeService metadata stripping)
+    // Format: [MEMORY:userId:displayName:timestamp] actual_content
+    const memoryMarkerMatch = text.match(/^\[MEMORY:([^:]+):([^:]+):([^\]]+)\]\s*(.+)$/s);
+    const isMemoryByContent = !!memoryMarkerMatch;
+    
     // Infer source type from metadata if available
-    let sourceType: 'telegram' | 'wiki' | 'unknown' = 'unknown';
+    let sourceType: 'telegram' | 'wiki' | 'memory' | 'unknown' = 'unknown';
     let sourceRef = id;
     let timestamp: number | undefined = undefined;
     let author: string | undefined = undefined;
     
-    // Extract timestamp
-    const createdAtValue = r.createdAt || r.content?.createdAt || r.metadata?.timestamp || r.content?.metadata?.timestamp || r.metadata?.date || r.content?.metadata?.date;
-    if (createdAtValue) {
+    // If this is a memory, extract metadata from content marker and clean the text
+    if (isMemoryByContent && memoryMarkerMatch) {
+      sourceType = 'memory';
+      author = memoryMarkerMatch[2]; // displayName
+      timestamp = parseInt(memoryMarkerMatch[3], 10); // timestamp
+      text = memoryMarkerMatch[4].trim(); // Clean text without marker
+      sourceRef = id;
+    }
+    
+    // Extract timestamp (skip if already set from memory marker)
+    if (!timestamp) {
+      const createdAtValue = r.createdAt || r.content?.createdAt || r.metadata?.timestamp || r.content?.metadata?.timestamp || r.metadata?.date || r.content?.metadata?.date;
+      if (createdAtValue) {
       if (createdAtValue instanceof Date) {
         timestamp = createdAtValue.getTime();
       } else if (typeof createdAtValue === 'string') {
@@ -193,18 +209,29 @@ export async function searchKnowledgeWithExpansion(
       if (idx < 3) {
         console.log(`[DEBUG] Passage ${idx}: raw timestamp = ${createdAtValue}, parsed = ${timestamp}`);
       }
+      }
     }
 
-    // Extract author/poster (common telegram fields)
-    author = r.metadata?.author || r.content?.metadata?.author ||
+    // Extract author/poster (common telegram fields) - skip if already set from memory marker
+    if (!author) {
+      author = r.metadata?.author || r.content?.metadata?.author ||
              r.metadata?.username || r.content?.metadata?.username ||
              r.metadata?.from || r.content?.metadata?.from ||
              r.userId || r.content?.userId ||
              r.metadata?.from_id || r.content?.metadata?.from_id;
+    }
 
-    // Detect source type based on metadata
+    // Detect source type based on metadata (skip if already set from memory marker)
     const metadataSource = r.metadata?.source || r.content?.metadata?.source;
-
+    
+    // Content-based telegram detection variables (needed for source type detection)
+    const fromMatch = text.match(/"from"\s*:\s*"([^"]+)"/);
+    const fromIdMatch = text.match(/"from_id"\s*:\s*"([^"]+)"/);
+    const dateMatch = text.match(/"date"\s*:\s*"([0-9T:\-]+)"/);
+    
+    // Only do further source detection if not already identified as memory
+    if (sourceType !== 'memory') {
+    
     // Stronger telegram detection
     const hasTelegramMarkers =
       !!(r.metadata?.messageId || r.content?.metadata?.messageId ||
@@ -212,13 +239,10 @@ export async function searchKnowledgeWithExpansion(
          r.metadata?.from || r.content?.metadata?.from ||
          r.metadata?.from_id || r.content?.metadata?.from_id);
 
-    // Content-based telegram detection for fragments containing exported chat lines
-    // e.g.  { "from": "Name", "from_id": "user...", "text": "...", "date": "2022-..." }
-    const fromMatch = text.match(/"from"\s*:\s*"([^"]+)"/);
-    const fromIdMatch = text.match(/"from_id"\s*:\s*"([^"]+)"/);
-    const dateMatch = text.match(/"date"\s*:\s*"([0-9T:\-]+)"/);
+    // Content-based telegram detection (fromMatch, fromIdMatch, dateMatch already declared above)
     const contentLooksTelegram = !!(fromMatch || fromIdMatch || dateMatch);
 
+    // Determine source type
     if (metadataSource === 'telegram' || hasTelegramMarkers || contentLooksTelegram) {
       sourceType = 'telegram';
       sourceRef = r.metadata?.messageId || r.content?.metadata?.messageId || id;
@@ -265,6 +289,7 @@ export async function searchKnowledgeWithExpansion(
       // Has timestamp but no author - could be wiki or telegram
       sourceType = text.length > 200 ? 'wiki' : 'telegram';
     }
+    } // End if (sourceType !== 'memory')
     
     // Optional debug logging (controlled by LORE_DEBUG env var)
     if (process.env.LORE_DEBUG === 'true' && idx < 3) {
