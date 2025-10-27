@@ -10,6 +10,7 @@ SERVER_IP="134.122.45.20"
 SSH_KEY="~/.ssh/pepedawn"
 PROJECT_DIR="pepedawn-agent/pepe-tg"
 PM2_CONFIG="ecosystem.config.cjs"
+BUN_PATH="/root/.bun/bin"
 
 # Colors for output
 RED='\033[0;31m'
@@ -43,7 +44,8 @@ ssh_exec() {
     while [ $attempt -le $max_attempts ]; do
         log "SSH attempt $attempt/$max_attempts..."
         
-        if ssh -i "$SSH_KEY" -o ConnectTimeout=10 -o StrictHostKeyChecking=no root@"$SERVER_IP" "$1"; then
+        # Prepend PATH with Bun for non-interactive shells
+        if ssh -i "$SSH_KEY" -o ConnectTimeout=10 -o StrictHostKeyChecking=no root@"$SERVER_IP" "export PATH=\"$BUN_PATH:\$PATH\" && $1"; then
             return 0
         else
             if [ $attempt -eq $max_attempts ]; then
@@ -159,26 +161,26 @@ dry_run() {
     log "🔍 DRY RUN - Commands that would be executed:"
     echo ""
     echo "1. ssh -i $SSH_KEY root@$SERVER_IP 'echo Connected successfully'"
-    echo "2. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pwd'"
-    echo "3. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && git status'"
-    echo "4. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && git pull'"
-    echo "5. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && bun install'"
-    echo "6. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && bun run build'"
+    echo "2. ssh -i $SSH_KEY root@$SERVER_IP 'export PATH=\"$BUN_PATH:\$PATH\" && cd $PROJECT_DIR && pwd'"
+    echo "3. ssh -i $SSH_KEY root@$SERVER_IP 'export PATH=\"$BUN_PATH:\$PATH\" && cd $PROJECT_DIR && git status'"
+    echo "4. ssh -i $SSH_KEY root@$SERVER_IP 'export PATH=\"$BUN_PATH:\$PATH\" && cd $PROJECT_DIR && git pull'"
+    echo "5. ssh -i $SSH_KEY root@$SERVER_IP 'export PATH=\"$BUN_PATH:\$PATH\" && cd $PROJECT_DIR && bun install'"
+    echo "6. ssh -i $SSH_KEY root@$SERVER_IP 'export PATH=\"$BUN_PATH:\$PATH\" && cd $PROJECT_DIR && bun run build'"
     if [ "$NUCLEAR_MODE" = true ]; then
-        echo "7. [NUCLEAR] ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 delete pepe-tg || true'"
-        echo "7a. [NUCLEAR] ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 kill'"
+        echo "7. [NUCLEAR] ssh -i $SSH_KEY root@$SERVER_IP 'export PATH=\"$BUN_PATH:\$PATH\" && cd $PROJECT_DIR && pm2 delete pepe-tg || true'"
+        echo "7a. [NUCLEAR] ssh -i $SSH_KEY root@$SERVER_IP 'export PATH=\"$BUN_PATH:\$PATH\" && cd $PROJECT_DIR && pm2 kill'"
         echo "7b. [NUCLEAR] ssh -i $SSH_KEY root@$SERVER_IP 'sleep 3 && lsof -ti:3000 | xargs kill -9'"
         echo "7c. [NUCLEAR] ssh -i $SSH_KEY root@$SERVER_IP 'pkill -f elizaos'"
-        echo "7d. [NUCLEAR] ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 start $PM2_CONFIG'"
-        echo "7e. [NUCLEAR] ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 save'"
+        echo "7d. [NUCLEAR] ssh -i $SSH_KEY root@$SERVER_IP 'export PATH=\"$BUN_PATH:\$PATH\" && cd $PROJECT_DIR && pm2 start $PM2_CONFIG'"
+        echo "7e. [NUCLEAR] ssh -i $SSH_KEY root@$SERVER_IP 'export PATH=\"$BUN_PATH:\$PATH\" && cd $PROJECT_DIR && pm2 save'"
     else
-        echo "7a. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 stop pepe-tg'"
-        echo "7b. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 delete pepe-tg'"
-        echo "7c. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 start $PM2_CONFIG'"
-        echo "7d. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 save'"
+        echo "7a. ssh -i $SSH_KEY root@$SERVER_IP 'export PATH=\"$BUN_PATH:\$PATH\" && cd $PROJECT_DIR && pm2 stop pepe-tg'"
+        echo "7b. ssh -i $SSH_KEY root@$SERVER_IP 'export PATH=\"$BUN_PATH:\$PATH\" && cd $PROJECT_DIR && pm2 delete pepe-tg'"
+        echo "7c. ssh -i $SSH_KEY root@$SERVER_IP 'export PATH=\"$BUN_PATH:\$PATH\" && cd $PROJECT_DIR && pm2 start $PM2_CONFIG'"
+        echo "7d. ssh -i $SSH_KEY root@$SERVER_IP 'export PATH=\"$BUN_PATH:\$PATH\" && cd $PROJECT_DIR && pm2 save'"
     fi
-    echo "8. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 status'"
-    echo "9. ssh -i $SSH_KEY root@$SERVER_IP 'cd $PROJECT_DIR && pm2 logs --lines 10'"
+    echo "8. ssh -i $SSH_KEY root@$SERVER_IP 'export PATH=\"$BUN_PATH:\$PATH\" && cd $PROJECT_DIR && pm2 status'"
+    echo "9. ssh -i $SSH_KEY root@$SERVER_IP 'export PATH=\"$BUN_PATH:\$PATH\" && cd $PROJECT_DIR && pm2 logs --lines 10'"
 }
 
 # Parse command line arguments
