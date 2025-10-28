@@ -14,6 +14,13 @@ import { LORE_CONFIG } from '../utils/loreConfig';
  * 5. Generate historian-style lore recounting (80-120 words)
  * 6. Format with compact sources line
  */
+
+// Shared clarification message for uncertain/no-results queries
+export const CLARIFICATION_MESSAGE = '🤔 Not sure what you\'re looking for. Try:\n\n' +
+                                     '• `/fl CARDNAME` - Get card lore\n' +
+                                     '• `/fl what is X` - Get facts\n' +
+                                     '• `/fl tell me about Y` - Get stories\n\n' +
+                                     'Or ask me naturally without /fl!';
 export const loreCommand: Action = {
   name: 'LORE_COMMAND',
   description: 'Handles /fl command to return knowledge-backed lore with persona storytelling',
@@ -42,14 +49,8 @@ export const loreCommand: Action = {
     if (queryType === 'UNCERTAIN') {
       console.log(`[LoreCommand] UNCERTAIN query - sending clarification prompt`);
       
-      const clarificationMsg = '🤔 Not sure what you\'re looking for. Try:\n\n' +
-                               '• `/fl CARDNAME` - Get card lore\n' +
-                               '• `/fl what is X` - Get facts\n' +
-                               '• `/fl tell me about Y` - Get stories\n\n' +
-                               'Or ask me naturally without /fl!';
-      
       if (callback) {
-        await callback({ text: clarificationMsg });
+        await callback({ text: CLARIFICATION_MESSAGE });
       }
       
       return { 

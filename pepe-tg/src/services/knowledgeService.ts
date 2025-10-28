@@ -11,6 +11,7 @@ import { filterOutRecentlyUsed, markIdAsRecentlyUsed } from '../utils/lru';
 import { LORE_CONFIG } from '../utils/loreConfig';
 import { setCallContext, clearCallContext } from '../utils/tokenLogger';
 import { classifyQuery } from '../utils/queryClassifier';
+import { CLARIFICATION_MESSAGE } from '../actions/loreCommand';
 
 export interface KnowledgeRetrievalOptions {
   mode?: 'FACTS' | 'LORE';
@@ -64,17 +65,10 @@ export async function retrieveKnowledge(
   console.log(`📊 Sources: ${JSON.stringify(sourceBreakdown)}`);
 
   if (passages.length === 0) {
-    console.log('⚠️  No passages found - returning friendly no-results message');
-    
-    const noResultsStory = `Hmm, couldn't find any lore on "${query}". Try asking about:\n` +
-                           `• Rare Scrilla\n` +
-                           `• FREEDOMKEK\n` +
-                           `• La Faka Nostra\n` +
-                           `• Specific card names\n\n` +
-                           `Or just ask me to tell you about Fake Rares in general! 🐸`;
+    console.log('⚠️  No passages found - returning clarification message');
     
     return {
-      story: noResultsStory,
+      story: CLARIFICATION_MESSAGE,
       sourcesLine: '',
       metrics: {
         query,
@@ -82,7 +76,7 @@ export async function retrieveKnowledge(
         hits_used: 0,
         clusters: 0,
         latency_ms: Date.now() - startTime,
-        story_words: noResultsStory.split(/\s+/).length,
+        story_words: CLARIFICATION_MESSAGE.split(/\s+/).length,
       }
     };
   }

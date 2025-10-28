@@ -104,14 +104,10 @@ async function searchExactCardMemories(
     // Search for memories with [CARD:CARDNAME] marker
     const cardMarker = `[CARD:${cardName}]`;
     
-    // Generate embedding for the card name to search
-    const embedding = await runtime.useModel('TEXT_EMBEDDING' as any, { text: cardName });
-    
-    // Use direct memory search
+    // Use direct memory search (searchMemories generates embeddings internally)
     const memories = await runtime.searchMemories({
       tableName: 'knowledge',
       roomId: undefined, // Global search
-      embedding,
       query: cardName,
       count: 20,
       match_threshold: 0.1, // Very low threshold to cast wide net
@@ -178,11 +174,9 @@ export async function searchKnowledgeWithExpansion(
   } else {
     // Fallback to direct memory search - also global
     try {
-      const embedding = await runtime.useModel('TEXT_EMBEDDING' as any, { text: query });
       vectorResults = await runtime.searchMemories({
         tableName: 'knowledge',
         roomId: undefined, // Global search
-        embedding,
         query,
         count: LORE_CONFIG.RETRIEVAL_LIMIT,
         match_threshold: LORE_CONFIG.MATCH_THRESHOLD,
@@ -202,11 +196,9 @@ export async function searchKnowledgeWithExpansion(
   if (results.length < LORE_CONFIG.MIN_HITS) {
     if (!knowledgeService && results.length < LORE_CONFIG.MIN_HITS) {
       try {
-        const embedding = await runtime.useModel('TEXT_EMBEDDING' as any, { text: query });
         const expandedResults = await runtime.searchMemories({
           tableName: 'knowledge',
           roomId: undefined, // Still global
-          embedding,
           query,
           count: LORE_CONFIG.RETRIEVAL_LIMIT * 2,
           match_threshold: LORE_CONFIG.MATCH_THRESHOLD * 0.7, // Relaxed
@@ -452,11 +444,9 @@ export async function searchKnowledgeRaw(
     }
   } else {
     try {
-      const embedding = await (runtime as any).useModel('TEXT_EMBEDDING' as any, { text: query });
       results = await (runtime as any).searchMemories({
         tableName: 'knowledge',
         roomId: undefined,
-        embedding,
         query,
         count: LORE_CONFIG.RETRIEVAL_LIMIT * 2,
         match_threshold: LORE_CONFIG.MATCH_THRESHOLD * 0.7,
