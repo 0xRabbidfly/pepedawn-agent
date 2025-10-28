@@ -428,10 +428,12 @@
 
 **Key Features:**
 - **3 source types:** Telegram archives, wiki, user memories
+- **Hybrid search:** Exact card match + vector search for card memories
 - **Query classification:** FACTS vs LORE (different prompts & selection)
 - **Conditional MMR:** Diversity for LORE, relevance-only for FACTS
+- **Card memory emphasis:** Dedicated cluster, no summarization (preserves artist words)
 - **LRU cache:** Don't repeat recently shown content
-- **Source priority:** Memories > Wiki > Telegram
+- **Source priority:** Memories (4.0x) > Wiki (2.0x) > Telegram (0.5x)
 - **Global search:** Searches across ALL chats/content
 
 ---
@@ -555,9 +557,11 @@
 
 **Key Features:**
 - **2 input methods:** Direct command or reply to bot
+- **Card detection:** Validates card names, adds [CARD:NAME] marker for exact retrieval
 - **Metadata embedding:** Workaround for KnowledgeService limitation
 - **Global storage:** Available to all chats
 - **Highest priority:** 4x boost in lore searches
+- **Dedicated clustering:** Card memories preserved raw (no summarization) in LORE mode
 - **User attribution:** Shows who contributed the memory
 - **Automatic validation:** Filters empty/invalid content
 

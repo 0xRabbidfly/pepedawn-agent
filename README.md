@@ -1272,6 +1272,7 @@ bun test src/__tests__/integration/visual-commands.test.ts
 # Knowledge & auto-routing tests
 bun test src/__tests__/utils/queryClassifier.test.ts
 bun test src/__tests__/utils/loreRetrieval.test.ts
+bun test src/__tests__/utils/memoryStorage.test.ts
 bun test src/__tests__/actions/loreCommand.test.ts
 
 # Watch mode (auto-rerun on changes)
@@ -1283,7 +1284,7 @@ bun test --coverage
 
 ### Test Structure
 
-The project has **8 custom test files** (100+ tests total):
+The project has **9 custom test files** (120+ tests total):
 
 **1. Bootstrap Suppression** (pre-commit)
 - `bootstrap-suppression.test.ts` - Validates Bootstrap AI suppression
@@ -1295,12 +1296,13 @@ The project has **8 custom test files** (100+ tests total):
 - `utils/visionAnalyzer.test.ts` - Shared vision API utility
 - `integration/visual-commands.test.ts` - Plugin routing & command conflicts
 
-**6-8. Knowledge & Auto-Routing** (3 files)
+**6-9. Knowledge & Auto-Routing** (4 files)
 - `utils/queryClassifier.test.ts` - FACTS/LORE/UNCERTAIN classification
 - `utils/loreRetrieval.test.ts` - Memory priority & source boost logic
+- `utils/memoryStorage.test.ts` - Card detection & memory boost logic
 - `actions/loreCommand.test.ts` - `/fl` command & FACTS mode filtering
 
-> **Note:** Framework test files (ElizaOS boilerplate) are also present but focus on these 8 custom tests for this project.
+> **Note:** Framework test files (ElizaOS boilerplate) are also present but focus on these 9 custom tests for this project.
 
 ---
 

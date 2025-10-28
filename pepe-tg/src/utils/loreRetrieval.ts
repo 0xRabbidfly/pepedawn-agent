@@ -5,6 +5,7 @@
 
 import type { IAgentRuntime, Memory } from '@elizaos/core';
 import { LORE_CONFIG } from './loreConfig';
+import { FULL_CARD_INDEX } from '../data/fullCardIndex';
 
 export interface RetrievedPassage {
   id: string;
@@ -93,6 +94,41 @@ export function selectDiversePassages(
 }
 
 /**
+ * Search for exact card memory matches (hybrid search optimization)
+ */
+async function searchExactCardMemories(
+  runtime: IAgentRuntime,
+  cardName: string
+): Promise<any[]> {
+  try {
+    // Search for memories with [CARD:CARDNAME] marker
+    const cardMarker = `[CARD:${cardName}]`;
+    
+    // Generate embedding for the card name to search
+    const embedding = await runtime.useModel('TEXT_EMBEDDING' as any, { text: cardName });
+    
+    // Use direct memory search
+    const memories = await runtime.searchMemories({
+      tableName: 'knowledge',
+      roomId: undefined, // Global search
+      embedding,
+      query: cardName,
+      count: 20,
+      match_threshold: 0.1, // Very low threshold to cast wide net
+    } as any) || [];
+    
+    // Filter to only those that actually contain the marker (exact match)
+    return memories.filter((m: any) => {
+      const text = m.content?.text || m.text || '';
+      return text.includes(cardMarker);
+    });
+  } catch (err) {
+    console.error('[ExactCardSearch] Error:', err);
+    return [];
+  }
+}
+
+/**
  * Perform knowledge search with automatic fallback expansion
  */
 export async function searchKnowledgeWithExpansion(
@@ -106,7 +142,23 @@ export async function searchKnowledgeWithExpansion(
   
   let results: any[] = [];
   
+  // HYBRID SEARCH: Detect card names in query and prepend exact card matches
+  const capitalWords = query.match(/\b[A-Z]{3,}[A-Z0-9]*\b/g) || [];
+  const validCards = capitalWords.filter(word =>
+    FULL_CARD_INDEX.some(card => card.asset.toUpperCase() === word.toUpperCase())
+  );
+  
+  let exactCardMatches: any[] = [];
+  if (validCards.length > 0) {
+    console.log(`[HybridSearch] Detected card in query: ${validCards[0]}`);
+    exactCardMatches = await searchExactCardMemories(runtime, validCards[0]);
+    if (exactCardMatches.length > 0) {
+      console.log(`[HybridSearch] Found ${exactCardMatches.length} exact card memories`);
+    }
+  }
+  
   // Initial search - GLOBAL scope to search across all content (wiki + all telegram chats)
+  let vectorResults: any[] = [];
   if (knowledgeService?.getKnowledge) {
     const pseudoMessage = { id: 'query', content: { text: query } };
     // Use undefined/null roomId for global search across all rooms
@@ -118,16 +170,16 @@ export async function searchKnowledgeWithExpansion(
         setTimeout(() => reject(new Error('Search timeout')), LORE_CONFIG.SEARCH_TIMEOUT_MS);
       });
       
-      results = await Promise.race([searchPromise, timeoutPromise]) || [];
+      vectorResults = await Promise.race([searchPromise, timeoutPromise]) || [];
     } catch (err) {
       console.error('Knowledge search error:', err);
-      results = [];
+      vectorResults = [];
     }
   } else {
     // Fallback to direct memory search - also global
     try {
       const embedding = await runtime.useModel('TEXT_EMBEDDING' as any, { text: query });
-      results = await runtime.searchMemories({
+      vectorResults = await runtime.searchMemories({
         tableName: 'knowledge',
         roomId: undefined, // Global search
         embedding,
@@ -137,9 +189,14 @@ export async function searchKnowledgeWithExpansion(
       } as any) || [];
     } catch (err) {
       console.error('Memory search error:', err);
-      results = [];
+      vectorResults = [];
     }
   }
+  
+  // Combine exact matches + vector results (exact matches first, dedupe by id)
+  const exactIds = new Set(exactCardMatches.map((r: any) => r.id || r.content?.id));
+  const deduped = vectorResults.filter((r: any) => !exactIds.has(r.id || r.content?.id));
+  results = [...exactCardMatches, ...deduped];
   
   // Check if we need expansion
   if (results.length < LORE_CONFIG.MIN_HITS) {
@@ -170,8 +227,9 @@ export async function searchKnowledgeWithExpansion(
     
     // Check for embedded memory marker in content
     // User memories are stored with metadata embedded in content (workaround for KnowledgeService metadata stripping)
-    // Format: [MEMORY:userId:displayName:timestamp] actual_content
-    const memoryMarkerMatch = text.match(/^\[MEMORY:([^:]+):([^:]+):([^\]]+)\]\s*(.+)$/s);
+    // Format: [MEMORY:userId:displayName:timestamp][CARD:CARDNAME] actual_content
+    // or: [MEMORY:userId:displayName:timestamp] actual_content
+    const memoryMarkerMatch = text.match(/^\[MEMORY:([^:]+):([^:]+):([^\]]+)\](\[CARD:([^\]]+)\])?\s*(.+)$/s);
     const isMemoryByContent = !!memoryMarkerMatch;
     
     // Infer source type from metadata if available
@@ -185,8 +243,9 @@ export async function searchKnowledgeWithExpansion(
       sourceType = 'memory';
       author = memoryMarkerMatch[2]; // displayName
       timestamp = parseInt(memoryMarkerMatch[3], 10); // timestamp
-      text = memoryMarkerMatch[4].trim(); // Clean text without marker
-      sourceRef = id;
+      const cardName = memoryMarkerMatch[5]; // Optional [CARD:NAME]
+      text = memoryMarkerMatch[6].trim(); // Clean text without markers
+      sourceRef = cardName ? `card:${cardName}` : id;
     }
     
     // Extract timestamp (skip if already set from memory marker)

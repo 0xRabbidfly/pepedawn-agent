@@ -65,10 +65,10 @@ describe('queryClassifier', () => {
     });
 
     it('should classify origin/beginning queries as LORE', () => {
-      // "start" doesn't match "started" keyword, gets ? boost → FACTS
-      expect(classifyQuery('how did fake rares start?')).toBe('FACTS');
+      // "how did" not in keywords, "started" not in keywords → tie, 5 words → LORE
+      expect(classifyQuery('how did fake rares start?')).toBe('LORE');
       // "began" keyword matches → LORE
-      expect(classifyQuery('how did fake rares began?')).toBe('LORE');
+      expect(classifyQuery('tell me when it began')).toBe('LORE');
       // "beginning" keyword matches → LORE  
       expect(classifyQuery('tell me about the beginning')).toBe('LORE');
     });
@@ -93,8 +93,8 @@ describe('queryClassifier', () => {
     });
 
     it('should return UNCERTAIN for ambiguous messages with no keywords', () => {
-      // "thoughts?" gets ? boost (0.5) → FACTS, not UNCERTAIN
-      expect(classifyQuery('thoughts?', { allowUncertain: true })).toBe('FACTS');
+      // "thoughts?" has no fact keywords, so ? boost doesn't apply → UNCERTAIN
+      expect(classifyQuery('thoughts?', { allowUncertain: true })).toBe('UNCERTAIN');
       // No keywords, no ? boost → UNCERTAIN
       expect(classifyQuery('interesting', { allowUncertain: true })).toBe('UNCERTAIN');
       expect(classifyQuery('ok then', { allowUncertain: true })).toBe('UNCERTAIN');

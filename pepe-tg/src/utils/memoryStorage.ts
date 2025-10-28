@@ -11,6 +11,7 @@
 
 import type { IAgentRuntime, Memory } from '@elizaos/core';
 import type { MemoryContent, MemoryStorageResult, UserMemoryMetadata } from '../types/memory';
+import { FULL_CARD_INDEX } from '../data/fullCardIndex';
 
 /**
  * Store a user-contributed memory in the knowledge database
@@ -40,7 +41,12 @@ export async function storeUserMemory(
     
     // Build metadata
     const metadata = buildMemoryMetadata(runtime, message, rawMessage, content);
-    console.debug(`[memoryStorage] Storing memory for ${metadata.displayName}`);
+    
+    // Detect card name for card-specific memories
+    const cardName = detectCardForMemory(content.text);
+    const memoryType = cardName ? 'CARD memory' : 'Static memory';
+    
+    console.log(`[memoryStorage] Storing ${memoryType} for ${metadata.displayName}${cardName ? ` (card: ${cardName})` : ''}`);
     
     // Get KnowledgeService
     const knowledgeService = (runtime as any).getService
@@ -56,7 +62,10 @@ export async function storeUserMemory(
     }
     
     // Store in knowledge database with embedded metadata marker
-    const contentWithMetadata = `[MEMORY:${metadata.userId}:${metadata.displayName}:${metadata.timestamp}] ${content.text}`;
+    // Card memories get [CARD:NAME] marker for exact matching during retrieval
+    const contentWithMetadata = cardName
+      ? `[MEMORY:${metadata.userId}:${metadata.displayName}:${metadata.timestamp}][CARD:${cardName}] ${content.text}`
+      : `[MEMORY:${metadata.userId}:${metadata.displayName}:${metadata.timestamp}] ${content.text}`;
     
     const result = await knowledgeService.addKnowledge({
       agentId: runtime.agentId,
@@ -71,7 +80,7 @@ export async function storeUserMemory(
     });
     
     if (result && result.success !== false) {
-      console.log(`[memoryStorage] Memory stored successfully`);
+      console.log(`[memoryStorage] ${memoryType} stored successfully${cardName ? ` for ${cardName}` : ''}`);
       return {
         success: true,
         memoryId: result.documentId || 'unknown'
@@ -155,6 +164,26 @@ export function validateMemoryContent(content: MemoryContent): {
 /**
  * Build metadata object for knowledge storage
  */
+/**
+ * Detect card name in first sentence for card-specific memories
+ */
+export function detectCardForMemory(text: string): string | null {
+  const firstSentence = text.split(/[.!?]/)[0];
+  const capitalWords = firstSentence.match(/\b[A-Z]{3,}[A-Z0-9]*\b/g) || [];
+  
+  for (const word of capitalWords) {
+    const isValidCard = FULL_CARD_INDEX.some(card => 
+      card.asset.toUpperCase() === word.toUpperCase()
+    );
+    
+    if (isValidCard) {
+      return word.toUpperCase();
+    }
+  }
+  
+  return null;
+}
+
 export function buildMemoryMetadata(
   runtime: IAgentRuntime,
   message: Memory,

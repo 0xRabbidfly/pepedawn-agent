@@ -80,12 +80,20 @@ export async function retrieveKnowledge(
   const topK = Math.min(LORE_CONFIG.TOP_K_FOR_CLUSTERING, candidatePassages.length);
   const topPassages = candidatePassages.slice(0, topK);
   
+  // Check if top result is a card memory - if so, reduce passage count for emphasis
+  const topPassage = topPassages[0];
+  const hasCardMemory = topPassage?.sourceType === 'memory' && 
+                        topPassage?.sourceRef?.startsWith('card:');
+  
+  // Reduce passages when card memory present (less dilution in clustering)
+  const targetPassageCount = hasCardMemory ? 5 : LORE_CONFIG.CLUSTER_TARGET_MAX * 2;
+  
   const diversePassages = selectDiversePassages(
     topPassages,
-    Math.min(LORE_CONFIG.CLUSTER_TARGET_MAX * 2, topK)
+    Math.min(targetPassageCount, topK)
   );
   
-  console.log(`🎯 Selected ${diversePassages.length} diverse passages via MMR`);
+  console.log(`🎯 Selected ${diversePassages.length} diverse passages via MMR${hasCardMemory ? ' (reduced for card memory emphasis)' : ''}`);
 
   diversePassages.forEach(p => markIdAsRecentlyUsed(roomId, p.id));
 
@@ -129,9 +137,43 @@ export async function retrieveKnowledge(
     console.log(`📋 Sent ${factsPassages.length || diversePassages.slice(0, 5).length} passages directly (no clustering)`);
   } else {
     console.log('📖 LORE mode: Using clustering and summarization');
-    const summaries = await clusterAndSummarize(runtime, diversePassages, query);
+    
+    // Separate card memories from other sources for dedicated treatment
+    const cardMemories = diversePassages.filter(p => 
+      p.sourceType === 'memory' && p.sourceRef?.startsWith('card:')
+    );
+    const otherPassages = diversePassages.filter(p => 
+      !(p.sourceType === 'memory' && p.sourceRef?.startsWith('card:'))
+    );
+    
+    let summaries: any[] = [];
+    
+    if (cardMemories.length > 0) {
+      console.log(`🎨 Found ${cardMemories.length} card memories - creating dedicated cluster`);
+      
+      // Card memories get their own cluster with NO LLM summarization (preserve exact words)
+      const cardCluster = {
+        id: 'card-memories',
+        passageRefs: cardMemories.map(p => p.id),
+        summary: cardMemories.map(p => p.text).join('\n\n'), // Raw text
+        citations: cardMemories.map(p => formatCompactCitation(p))
+      };
+      
+      // Cluster the rest normally
+      const otherClusters = otherPassages.length > 0 
+        ? await clusterAndSummarize(runtime, otherPassages, query)
+        : [];
+      
+      // Card cluster FIRST (highest prominence in story)
+      summaries = [cardCluster, ...otherClusters];
+      console.log(`📊 Created 1 card cluster + ${otherClusters.length} other clusters`);
+    } else {
+      // No card memories, normal clustering
+      summaries = await clusterAndSummarize(runtime, diversePassages, query);
+      console.log(`📊 Generated ${summaries.length} cluster summaries`);
+    }
+    
     clusterCount = summaries.length;
-    console.log(`📊 Generated ${summaries.length} cluster summaries`);
     
     story = await generatePersonaStory(runtime, query, summaries);
     sourcesLine = process.env.HIDE_LORE_SOURCES === 'true' ? '' : formatSourcesLine(summaries);

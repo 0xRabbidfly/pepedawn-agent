@@ -4,7 +4,7 @@
 
 ## 📊 Test Summary
 
-**Total:** 8 custom test files (100+ tests)
+**Total:** 9 custom test files (120+ tests)
 
 ### 1. Bootstrap Suppression Test ⚡
 
@@ -33,17 +33,18 @@
 
 ---
 
-### 6-8. Knowledge & Auto-Routing Tests 📚
+### 6-9. Knowledge & Auto-Routing Tests 📚
 
-**Files:** 3 test files, 67 tests covering `/fl` command and auto-routing
+**Files:** 4 test files, 91 tests covering `/fl` command and auto-routing
 
 | File | Tests | Purpose |
 |------|-------|---------|
 | `utils/queryClassifier.test.ts` | 33 | FACTS/LORE/UNCERTAIN classification |
 | `utils/loreRetrieval.test.ts` | 19 | Memory priority & source boost logic |
+| `utils/memoryStorage.test.ts` | 24 | Card detection & memory boost logic |
 | `actions/loreCommand.test.ts` | 15 | `/fl` command & FACTS mode filtering |
 
-**Purpose:** Validates query classification, memory prioritization (4.0x boost), and auto-routing of fact questions to knowledge retrieval.
+**Purpose:** Validates query classification, memory prioritization (4.0x boost), card memory detection, and auto-routing of fact questions to knowledge retrieval.
 
 ---
 
@@ -66,9 +67,10 @@ bun test src/__tests__/actions/fakeTestCommand.test.ts
 bun test src/__tests__/utils/visionAnalyzer.test.ts
 bun test src/__tests__/integration/visual-commands.test.ts
 
-# Knowledge & auto-routing (all 3 files)
+# Knowledge & auto-routing (all 4 files)
 bun test src/__tests__/utils/queryClassifier.test.ts
 bun test src/__tests__/utils/loreRetrieval.test.ts
+bun test src/__tests__/utils/memoryStorage.test.ts
 bun test src/__tests__/actions/loreCommand.test.ts
 
 # Watch mode

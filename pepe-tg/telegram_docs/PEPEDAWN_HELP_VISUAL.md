@@ -78,7 +78,8 @@
 │  [Reply to bot message] "remember this"                      │
 │                                                              │
 │  💡 Your memory becomes searchable via /fl for everyone!    │
-│  💡 Memories get HIGHEST priority in lore searches          │
+│  💡 Memories get HIGHEST priority in lore searches (4x)     │
+│  💡 Card memories preserved verbatim (artist lore honored)  │
 └──────────────────────────────────────────────────────────────┘
 
 ┌──────────────────────────────────────────────────────────────┐

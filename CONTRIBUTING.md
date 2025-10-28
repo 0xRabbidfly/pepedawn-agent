@@ -524,7 +524,7 @@ const BASE_URL = 'https://coolcats-cdn.com/images/';
 
 ### Test Types
 
-The project has **8 custom test files** (100+ tests, excluding framework boilerplate):
+The project has **9 custom test files** (120+ tests, excluding framework boilerplate):
 
 **1. Bootstrap Suppression Test** (pre-commit hook)
 ```typescript
@@ -539,9 +539,10 @@ The project has **8 custom test files** (100+ tests, excluding framework boilerp
 - `__tests__/actions/fakeTestCommand.test.ts` - `/ft` image appeal test
 - `__tests__/integration/visual-commands.test.ts` - Plugin routing
 
-**6-8. Knowledge & Auto-Routing Tests** (3 files, 67 tests)
+**6-9. Knowledge & Auto-Routing Tests** (4 files, 91 tests)
 - `__tests__/utils/queryClassifier.test.ts` - FACTS/LORE/UNCERTAIN classification
 - `__tests__/utils/loreRetrieval.test.ts` - Memory priority & source boost logic
+- `__tests__/utils/memoryStorage.test.ts` - Card detection & memory boost logic
 - `__tests__/actions/loreCommand.test.ts` - `/fl` command & FACTS mode filtering
 
 **Organize new tests by type:**

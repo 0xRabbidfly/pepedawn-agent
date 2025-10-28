@@ -87,7 +87,7 @@ Cost: ~$0.007 | Time: 2-4s
 ```
 User → /fl TOPIC
   ↓
-  Vector search (Telegram + Wiki + Memories)
+  Hybrid search (exact card match + vector search)
   ↓
   Rank by source priority:
   ⭐⭐⭐ Memories (4x boost)
@@ -99,11 +99,15 @@ User → /fl TOPIC
   │           ↓
   │           Direct answer (rules, specs)
   │
-  └─ LORE → Filter diversity (MMR)
-            ↓
-            Cluster + historian recounting
-            ↓
-            "I remember when..."
+  └─ LORE → Card memory detected?
+            ├─ YES → Dedicated cluster (raw text)
+            │         + other clusters (summarized)
+            │         ↓
+            │         Artist's exact words preserved
+            │
+            └─ NO → Normal clustering
+                    ↓
+                    "I remember when..."
             ↓
             80-120 words + sources
 
