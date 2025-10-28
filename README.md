@@ -1005,10 +1005,15 @@ const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/YOUR_ORG/YOUR_REPO/...
 
 1. **Query Expansion** - Adds synonyms, context
 2. **Vector Search** - Retrieves 24 relevant passages from knowledge base
-3. **MMR Diversity** - Selects 4-6 diverse passages (avoid repetition)
-4. **Clustering** - Groups similar content, generates summaries
-5. **Lore Recounting** - GPT-4-turbo recounts history as witness/historian (80-120 words)
-6. **Citation** - Adds compact source references
+3. **Query Classification** - Determines if FACTS (rules, specs) or LORE (stories, history)
+4. **Selection Strategy:**
+   - **FACTS mode:** Top-k by relevance (no diversity filtering - want best facts)
+   - **LORE mode:** MMR diversity selection (avoid repetition in storytelling)
+5. **Processing:**
+   - **FACTS:** Direct passages to LLM (no clustering)
+   - **LORE:** Clustering and summarization
+6. **Lore Recounting** - GPT-4-turbo recounts as witness/historian (80-120 words)
+7. **Citation** - Adds compact source references
 
 **Performance:** 1-3 seconds per lore request
 

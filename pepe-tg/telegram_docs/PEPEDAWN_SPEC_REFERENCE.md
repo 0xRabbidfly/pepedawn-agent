@@ -94,15 +94,18 @@ User → /fl TOPIC
   ⭐⭐ Wiki (2x boost)
   ⚡ Telegram (0.5x)
   ↓
-  Filter diversity (MMR)
-  ↓
   Classify: FACTS or LORE?
-  ├─ FACTS → Direct answer (rules, specs)
-  └─ LORE → Cluster + historian recounting
-      ↓
-      "I remember when..."
-      ↓
-      80-120 words + sources
+  ├─ FACTS → Top-k by relevance (no MMR)
+  │           ↓
+  │           Direct answer (rules, specs)
+  │
+  └─ LORE → Filter diversity (MMR)
+            ↓
+            Cluster + historian recounting
+            ↓
+            "I remember when..."
+            ↓
+            80-120 words + sources
 
 Cost: ~$0.01 | Time: 1-3s
 ```

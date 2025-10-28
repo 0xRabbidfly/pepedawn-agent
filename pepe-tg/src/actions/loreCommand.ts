@@ -13,10 +13,11 @@ import { setCallContext, clearCallContext } from '../utils/tokenLogger';
  * Pipeline:
  * 1. Parse query and expand with synonyms
  * 2. Retrieve passages from vector KB (with fallback expansion)
- * 3. Apply MMR for diversity
- * 4. Cluster and summarize with citations
- * 5. Generate historian-style lore recounting (concise, under 120 words)
- * 6. Format with compact sources line
+ * 3. Classify query type (FACTS vs LORE)
+ * 4. Apply MMR for diversity (LORE only) OR top-k by relevance (FACTS)
+ * 5. Cluster and summarize with citations (LORE) OR direct passages (FACTS)
+ * 6. Generate historian-style lore recounting (concise, under 120 words)
+ * 7. Format with compact sources line
  */
 export const loreCommand: Action = {
   name: 'LORE_COMMAND',
@@ -88,23 +89,23 @@ export const loreCommand: Action = {
       const topK = Math.min(LORE_CONFIG.TOP_K_FOR_CLUSTERING, candidatePassages.length);
       const topPassages = candidatePassages.slice(0, topK);
       
-      const diversePassages = selectDiversePassages(
-        topPassages,
-        Math.min(LORE_CONFIG.CLUSTER_TARGET_MAX * 2, topK)
-      );
-      
-      console.log(`🎯 Selected ${diversePassages.length} diverse passages via MMR`);
-
-      // Mark passages as recently used
-      diversePassages.forEach(p => markIdAsRecentlyUsed(message.roomId, p.id));
-
-      // STEP 4: Different flow for FACTS vs LORE
-      setCallContext('Lore calls'); // Set context for all lore operations
-      
-      // Classify query type
+      // STEP 4: Classify query type BEFORE applying MMR
       const { classifyQuery } = await import('../utils/queryClassifier');
       const queryType = classifyQuery(query);
       console.log(`🎯 Query type: ${queryType}`);
+      
+      // Only apply MMR diversity for LORE queries, not FACTS
+      const finalPassages = queryType === 'LORE' 
+        ? selectDiversePassages(topPassages, Math.min(LORE_CONFIG.CLUSTER_TARGET_MAX * 2, topK))
+        : topPassages.slice(0, Math.min(LORE_CONFIG.CLUSTER_TARGET_MAX * 2, topK));
+      
+      console.log(`🎯 Selected ${finalPassages.length} passages${queryType === 'LORE' ? ' via MMR' : ' (top-k by relevance)'}`);
+
+      // Mark passages as recently used
+      finalPassages.forEach(p => markIdAsRecentlyUsed(message.roomId, p.id));
+
+      // STEP 5: Different flow for FACTS vs LORE
+      setCallContext('Lore calls'); // Set context for all lore operations
       
       let story: string;
       let sourcesLine: string;
@@ -115,11 +116,11 @@ export const loreCommand: Action = {
         console.log('📋 FACTS mode: Using top wiki and memory passages directly');
         
         // Filter to wiki and memory sources only (prioritize authoritative sources) and take top 5
-        const factsPassages = diversePassages.filter(p => p.sourceType === 'wiki' || p.sourceType === 'memory').slice(0, 5);
+        const factsPassages = finalPassages.filter(p => p.sourceType === 'wiki' || p.sourceType === 'memory').slice(0, 5);
         
         if (factsPassages.length === 0) {
           // Fallback to any source if no wiki or memory
-          const topPassages = diversePassages.slice(0, 5);
+          const topPassages = finalPassages.slice(0, 5);
           story = await generatePersonaStory(runtime, query, [{
             id: 'direct',
             passageRefs: topPassages.map(p => p.id),
@@ -141,11 +142,11 @@ export const loreCommand: Action = {
             `\n\nSources:  ${factsPassages.map(p => formatCompactCitation(p)).join('  ||  ')}`;
           clusterCount = 1; // Single facts cluster (wiki + memories)
         }
-        console.log(`📋 Sent ${factsPassages.length || diversePassages.slice(0, 5).length} passages directly (no clustering)`);
+        console.log(`📋 Sent ${factsPassages.length || finalPassages.slice(0, 5).length} passages directly (no clustering)`);
       } else {
         // LORE mode: Use full clustering and summarization pipeline
         console.log('📖 LORE mode: Using clustering and summarization');
-        const summaries = await clusterAndSummarize(runtime, diversePassages, query);
+        const summaries = await clusterAndSummarize(runtime, finalPassages, query);
         clusterCount = summaries.length;
         console.log(`📊 Generated ${summaries.length} cluster summaries`);
         
@@ -171,7 +172,7 @@ export const loreCommand: Action = {
       console.log(`\n📈 [METRICS]`);
       console.log(`   Query: "${query}"`);
       console.log(`   Hits raw: ${passages.length}`);
-      console.log(`   Hits used: ${diversePassages.length}`);
+      console.log(`   Hits used: ${finalPassages.length}`);
       console.log(`   Clusters: ${clusterCount}`);
       console.log(`   Latency: ${latencyMs}ms`);
       console.log(`   Story length: ${story.split(/\s+/).length} words`);
@@ -188,7 +189,7 @@ export const loreCommand: Action = {
         metrics: {
           query,
           hits_raw: passages.length,
-          hits_used: diversePassages.length,
+          hits_used: finalPassages.length,
           clusters: clusterCount,
           latency_ms: latencyMs,
           story_words: story.split(/\s+/).length,

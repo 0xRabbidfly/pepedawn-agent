@@ -350,17 +350,10 @@
                             │
                             ▼
                 ┌───────────────────────────────────────┐
-                │  4. MMR DIVERSITY SELECTION           │
-                │  • Filter recently used (LRU cache)   │
-                │  • Apply MMR algorithm                │
-                │  • Select 4-6 diverse passages        │
-                │  • Balance relevance vs diversity     │
-                └───────────┬───────────────────────────┘
-                            │
-                            ▼
-                ┌───────────────────────────────────────┐
-                │  5. QUERY CLASSIFICATION              │
+                │  4. QUERY CLASSIFICATION              │
                 │  Is this FACTS or LORE?               │
+                │  • FACTS: Rules, specs, how-to        │
+                │  • LORE: Stories, history, vibes      │
                 └───────────┬───────────────────────────┘
                             │
                 ┌───────────▼──────────┐
@@ -372,6 +365,16 @@
               FACTS                   LORE
                 │                       │
                 ▼                       ▼
+    ┌─────────────────────┐   ┌────────────────────────┐
+    │ 5a. FACTS SELECTION │   │ 5b. MMR DIVERSITY      │
+    │ • LRU filter fresh  │   │ • Filter recently used │
+    │ • Take top-k by     │   │ • Apply MMR algorithm  │
+    │   RELEVANCE only    │   │ • Select 4-6 diverse   │
+    │ • NO diversity MMR  │   │ • Balance relevance    │
+    │   (want best facts) │   │   vs diversity         │
+    └──────────┬──────────┘   └──────────┬─────────────┘
+               │                         │
+               ▼                         ▼
     ┌─────────────────────┐   ┌────────────────────────┐
     │ 6a. FACTS MODE      │   │ 6b. LORE MODE          │
     │                     │   │                        │
@@ -425,8 +428,8 @@
 
 **Key Features:**
 - **3 source types:** Telegram archives, wiki, user memories
-- **Query classification:** FACTS vs LORE (different prompts)
-- **MMR diversity:** Avoid repetitive passages
+- **Query classification:** FACTS vs LORE (different prompts & selection)
+- **Conditional MMR:** Diversity for LORE, relevance-only for FACTS
 - **LRU cache:** Don't repeat recently shown content
 - **Source priority:** Memories > Wiki > Telegram
 - **Global search:** Searches across ALL chats/content
