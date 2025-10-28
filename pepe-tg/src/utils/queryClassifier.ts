@@ -8,12 +8,9 @@ export type QueryType = 'FACTS' | 'LORE' | 'UNCERTAIN';
  * Classify query as either:
  * - FACTS: Rules, requirements, specifications, how-to, what is X
  * - LORE: History, stories, community moments, vibes
- * - UNCERTAIN: No clear indicators (only returned if allowUncertain=true)
+ * - UNCERTAIN: No clear indicators, ambiguous queries (route to AI conversation)
  */
-export function classifyQuery(
-  query: string,
-  options?: { allowUncertain?: boolean }
-): QueryType {
+export function classifyQuery(query: string): QueryType {
   const lowerQuery = query.toLowerCase();
   
   // FACTS indicators - looking for concrete information
@@ -52,9 +49,27 @@ export function classifyQuery(
     'who is', 'who was', 'what happened', 'why did',
   ];
   
+  // CONVERSATIONAL indicators - casual chat, not knowledge-seeking
+  const conversationalKeywords = [
+    // Greetings
+    'gm', 'gn', 'hi', 'hello', 'hey', 'sup', 'yo',
+    
+    // Thanks/reactions
+    'thanks', 'thank you', 'ty', 'thx',
+    'nice', 'cool', 'awesome', 'great', 'sweet', 
+    
+    // Memes/slang
+    'lol', 'lmao', 'haha', 'kek', 'based',
+    'wagmi', 'ngmi', 'wen', 'ser', 'fren', 'rekt',
+    
+    // Agreement/acknowledgment
+    'ok', 'okay', 'yes', 'yeah', 'yep', 'yup', 'nope',
+  ];
+  
   // Count matches
   let factScore = 0;
   let loreScore = 0;
+  let conversationalScore = 0;
   
   for (const keyword of factKeywords) {
     if (lowerQuery.includes(keyword)) {
@@ -65,6 +80,15 @@ export function classifyQuery(
   for (const keyword of loreKeywords) {
     if (lowerQuery.includes(keyword)) {
       loreScore++;
+    }
+  }
+  
+  for (const keyword of conversationalKeywords) {
+    // Use word boundary for single-word conversational keywords to avoid false matches
+    // (e.g., "this" shouldn't match "hi")
+    const wordBoundaryRegex = new RegExp(`\\b${keyword}\\b`, 'i');
+    if (wordBoundaryRegex.test(lowerQuery)) {
+      conversationalScore++;
     }
   }
   
@@ -79,6 +103,11 @@ export function classifyQuery(
     return 'FACTS';
   }
   
+  // Check if conversational wins (casual chat, not knowledge-seeking)
+  if (conversationalScore > 0 && conversationalScore >= factScore && conversationalScore >= loreScore) {
+    return 'UNCERTAIN';
+  }
+  
   // Default: If tied or no clear winner, check query length
   const wordCount = lowerQuery.trim().split(/\s+/).length;
   
@@ -87,12 +116,14 @@ export function classifyQuery(
   } else if (loreScore > factScore) {
     return 'LORE';
   } else {
-    // No keywords matched - uncertain
-    if (factScore === 0 && loreScore === 0 && options?.allowUncertain) {
-      return 'UNCERTAIN';
+    // No keywords matched
+    if (factScore === 0 && loreScore === 0) {
+      // Short queries (≤3 words) likely card/artist names → search knowledge
+      // Long unclear queries → route to AI conversation
+      return wordCount <= 4 ? 'LORE' : 'UNCERTAIN';
     }
     
-    // Tie-breaker: short queries = lore (conversation), long queries = facts
+    // Both have keywords but tied - use length heuristic
     return wordCount <= 6 ? 'LORE' : 'FACTS';
   }
 }

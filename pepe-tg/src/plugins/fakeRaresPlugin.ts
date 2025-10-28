@@ -328,7 +328,7 @@ export const fakeRaresPlugin: Plugin = {
           
           // === AUTO-ROUTE FACTS QUESTIONS ===
           // Detect fact questions and route to knowledge retrieval
-          const queryType = classifyQuery(text, { allowUncertain: true });
+          const queryType = classifyQuery(text);
           console.log(`[FakeRaresPlugin] Query classification: ${queryType}`);
           
           if (queryType === 'FACTS') {

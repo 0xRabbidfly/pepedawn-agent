@@ -35,6 +35,21 @@ export const loreCommand: Action = {
     const raw = message.content.text || '';
     const query = raw.replace(/^\s*\/fl\s*/i, '').trim() || 'Fake Rares lore history community';
 
+    // Pre-classify query to detect unclear/ambiguous requests
+    const { classifyQuery } = await import('../utils/queryClassifier');
+    const queryType = classifyQuery(query);
+    
+    if (queryType === 'UNCERTAIN') {
+      console.log(`[LoreCommand] UNCERTAIN query - routing to AI conversation instead of knowledge retrieval`);
+      // Don't mark as handled - let bootstrap/AI handle it naturally
+      // This allows AI to ask clarifying questions or understand context
+      return { 
+        success: true, 
+        text: 'Uncertain query routed to conversation',
+        data: { queryType: 'UNCERTAIN', routedToConversation: true }
+      };
+    }
+
     try {
       const result = await retrieveKnowledge(runtime, query, message.roomId, {
         includeMetrics: true,

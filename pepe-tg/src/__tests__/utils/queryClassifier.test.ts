@@ -65,8 +65,8 @@ describe('queryClassifier', () => {
     });
 
     it('should classify origin/beginning queries as LORE', () => {
-      // "how did" not in keywords, "started" not in keywords → tie, 5 words → LORE
-      expect(classifyQuery('how did fake rares start?')).toBe('LORE');
+      // "how did" not in keywords, "started" not in keywords → 5 words → UNCERTAIN
+      expect(classifyQuery('how did fake rares start?')).toBe('UNCERTAIN');
       // "began" keyword matches → LORE
       expect(classifyQuery('tell me when it began')).toBe('LORE');
       // "beginning" keyword matches → LORE  
@@ -74,55 +74,64 @@ describe('queryClassifier', () => {
     });
   });
 
-  describe('UNCERTAIN Classification (Conservative Auto-Routing)', () => {
-    it('should return UNCERTAIN for conversational messages when allowUncertain=true', () => {
-      expect(classifyQuery('gm', { allowUncertain: true })).toBe('UNCERTAIN');
-      expect(classifyQuery('nice', { allowUncertain: true })).toBe('UNCERTAIN');
-      expect(classifyQuery('thanks', { allowUncertain: true })).toBe('UNCERTAIN');
-      expect(classifyQuery('cool card', { allowUncertain: true })).toBe('UNCERTAIN');
-      expect(classifyQuery('lol', { allowUncertain: true })).toBe('UNCERTAIN');
-      expect(classifyQuery('WAGMI', { allowUncertain: true })).toBe('UNCERTAIN');
+  describe('UNCERTAIN Classification', () => {
+    it('should return UNCERTAIN for conversational keywords', () => {
+      // Conversational keywords detected → UNCERTAIN (not knowledge-seeking)
+      expect(classifyQuery('gm')).toBe('UNCERTAIN');
+      expect(classifyQuery('nice')).toBe('UNCERTAIN');
+      expect(classifyQuery('thanks')).toBe('UNCERTAIN');
+      expect(classifyQuery('cool card')).toBe('UNCERTAIN');
+      expect(classifyQuery('lol')).toBe('UNCERTAIN');
+      expect(classifyQuery('WAGMI')).toBe('UNCERTAIN');
+    });
+    
+    it('should return LORE for short queries without conversational keywords', () => {
+      // Short queries likely card/artist names (no conversational keywords)
+      expect(classifyQuery('FREEDOMKEK')).toBe('LORE');
+      expect(classifyQuery('Rare Scrilla')).toBe('LORE');
+      expect(classifyQuery('purple era')).toBe('LORE');
     });
 
-    it('should return LORE for conversational messages when allowUncertain=false (default)', () => {
-      // Without allowUncertain, short messages default to LORE
-      expect(classifyQuery('gm')).toBe('LORE');
-      expect(classifyQuery('nice')).toBe('LORE');
-      expect(classifyQuery('thanks')).toBe('LORE');
-      expect(classifyQuery('cool card')).toBe('LORE');
+    it('should return UNCERTAIN for long ambiguous queries (>3 words, no keywords)', () => {
+      // Long queries without keywords → let AI handle
+      expect(classifyQuery('have you ever seen that thing')).toBe('UNCERTAIN'); // 6 words
+      expect(classifyQuery('but i said it just now')).toBe('UNCERTAIN'); // 6 words
+      expect(classifyQuery('ok then whatever happens')).toBe('UNCERTAIN'); // 4 words
+      expect(classifyQuery('interesting to think about it')).toBe('UNCERTAIN'); // 6 words
+    });
+    
+    it('should return LORE for single-word queries without keywords', () => {
+      // Single word, no keywords → ≤3 words → LORE (likely card/artist name)
+      expect(classifyQuery('thoughts?')).toBe('LORE');
+      expect(classifyQuery('interesting')).toBe('LORE');
     });
 
-    it('should return UNCERTAIN for ambiguous messages with no keywords', () => {
-      // "thoughts?" has no fact keywords, so ? boost doesn't apply → UNCERTAIN
-      expect(classifyQuery('thoughts?', { allowUncertain: true })).toBe('UNCERTAIN');
-      // No keywords, no ? boost → UNCERTAIN
-      expect(classifyQuery('interesting', { allowUncertain: true })).toBe('UNCERTAIN');
-      expect(classifyQuery('ok then', { allowUncertain: true })).toBe('UNCERTAIN');
+    it('should still classify clear FACTS with keywords', () => {
+      expect(classifyQuery('what are the rules?')).toBe('FACTS');
+      expect(classifyQuery('how do I submit?')).toBe('FACTS');
     });
 
-    it('should still classify clear FACTS even with allowUncertain=true', () => {
-      expect(classifyQuery('what are the rules?', { allowUncertain: true })).toBe('FACTS');
-      expect(classifyQuery('how do I submit?', { allowUncertain: true })).toBe('FACTS');
-    });
-
-    it('should still classify clear LORE even with allowUncertain=true', () => {
-      expect(classifyQuery('tell me about this', { allowUncertain: true })).toBe('LORE');
-      expect(classifyQuery('who created this?', { allowUncertain: true })).toBe('LORE');
+    it('should still classify clear LORE with keywords', () => {
+      expect(classifyQuery('tell me about this')).toBe('LORE');
+      expect(classifyQuery('who created this?')).toBe('LORE');
     });
   });
 
   describe('Tie-breaker Logic (Your Custom Logic)', () => {
-    it('should classify short queries (<=6 words) as LORE when tied', () => {
-      // No keywords matched, short query → LORE
-      expect(classifyQuery('hello there friend')).toBe('LORE'); // 3 words
-      expect(classifyQuery('nice to meet you today')).toBe('LORE'); // 5 words
-      expect(classifyQuery('that is a cool card')).toBe('LORE'); // 6 words
+    it('should classify short queries (≤4 words) as LORE when no keywords', () => {
+      // No keywords matched (including conversational), ≤4 words → LORE (likely card/artist names)
+      expect(classifyQuery('FREEDOMKEK')).toBe('LORE'); // 1 word
+      expect(classifyQuery('purple era')).toBe('LORE'); // 2 words
+      expect(classifyQuery('fake rare card')).toBe('LORE'); // 3 words
+      expect(classifyQuery('series one genesis')).toBe('LORE'); // 3 words
     });
 
-    it('should classify long queries (>6 words) as FACTS when tied', () => {
-      // No keywords matched, long query → FACTS
-      expect(classifyQuery('I really enjoyed looking at that card today')).toBe('FACTS'); // 8 words
-      expect(classifyQuery('this has been a very interesting conversation so far')).toBe('FACTS'); // 9 words
+    it('should classify longer queries (>4 words) as UNCERTAIN when no keywords', () => {
+      // No keywords matched, >4 words → UNCERTAIN (ambiguous)
+      expect(classifyQuery('would like to see more')).toBe('UNCERTAIN'); // 5 words
+      expect(classifyQuery('that is something to consider')).toBe('UNCERTAIN'); // 5 words
+      expect(classifyQuery('I really enjoyed looking at that card today')).toBe('UNCERTAIN'); // 8 words
+      expect(classifyQuery('this has been a very interesting conversation so far')).toBe('UNCERTAIN'); // 9 words
     });
 
     it('should not use tie-breaker when keywords are matched', () => {
@@ -147,9 +156,9 @@ describe('queryClassifier', () => {
     });
 
     it('should not boost long questions ending with ?', () => {
-      // >10 words, no keyword match → still applies tie-breaker
+      // >10 words, no keywords → UNCERTAIN (ambiguous)
       const longQuestion = 'would you please tell me more about that interesting thing you mentioned earlier?';
-      expect(classifyQuery(longQuestion)).toBe('FACTS'); // >6 words
+      expect(classifyQuery(longQuestion)).toBe('UNCERTAIN');
     });
   });
 
@@ -159,9 +168,10 @@ describe('queryClassifier', () => {
     });
 
     it('should handle single words', () => {
-      expect(classifyQuery('hello')).toBe('LORE'); // 1 word, no keywords
-      expect(classifyQuery('rules')).toBe('FACTS'); // 1 word, has keyword
-      expect(classifyQuery('history')).toBe('LORE'); // 1 word, has keyword
+      expect(classifyQuery('hello')).toBe('UNCERTAIN'); // 1 word, conversational keyword
+      expect(classifyQuery('rules')).toBe('FACTS'); // 1 word, fact keyword
+      expect(classifyQuery('history')).toBe('LORE'); // 1 word, lore keyword
+      expect(classifyQuery('FREEDOMKEK')).toBe('LORE'); // 1 word, no keywords (likely card)
     });
 
     it('should be case-insensitive', () => {
@@ -206,23 +216,27 @@ describe('queryClassifier', () => {
     });
 
     describe('Should NOT Auto-Route (LORE or UNCERTAIN)', () => {
-      it('should not route casual conversation', () => {
-        expect(classifyQuery('gm', { allowUncertain: true })).toBe('UNCERTAIN');
-        expect(classifyQuery('gn', { allowUncertain: true })).toBe('UNCERTAIN');
-        expect(classifyQuery('thanks', { allowUncertain: true })).toBe('UNCERTAIN');
-        expect(classifyQuery('nice work', { allowUncertain: true })).toBe('UNCERTAIN');
+      it('should not route casual conversation (conversational keywords)', () => {
+        // Conversational keywords → UNCERTAIN (won't auto-route)
+        expect(classifyQuery('gm')).toBe('UNCERTAIN');
+        expect(classifyQuery('gn')).toBe('UNCERTAIN');
+        expect(classifyQuery('thanks')).toBe('UNCERTAIN');
+        expect(classifyQuery('nice work')).toBe('UNCERTAIN');
+        expect(classifyQuery('ok')).toBe('UNCERTAIN');
+        expect(classifyQuery('cool')).toBe('UNCERTAIN');
+        expect(classifyQuery('lol')).toBe('UNCERTAIN');
       });
 
-      it('should not route story requests (route to AI conversation)', () => {
+      it('should not route long ambiguous messages (>3 words, no keywords)', () => {
+        // Long, no keywords → UNCERTAIN (routed to AI conversation)
+        expect(classifyQuery('have you ever seen that')).toBe('UNCERTAIN');
+        expect(classifyQuery('but i said it just now')).toBe('UNCERTAIN');
+      });
+
+      it('should not route story requests (LORE keywords)', () => {
         expect(classifyQuery('tell me about fake rares')).toBe('LORE');
         expect(classifyQuery('who created this project?')).toBe('LORE');
         expect(classifyQuery('what happened with the community?')).toBe('LORE');
-      });
-
-      it('should not route reactions and acknowledgments', () => {
-        expect(classifyQuery('ok', { allowUncertain: true })).toBe('UNCERTAIN');
-        expect(classifyQuery('cool', { allowUncertain: true })).toBe('UNCERTAIN');
-        expect(classifyQuery('lol', { allowUncertain: true })).toBe('UNCERTAIN');
       });
     });
   });
