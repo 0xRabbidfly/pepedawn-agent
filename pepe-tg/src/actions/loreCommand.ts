@@ -40,13 +40,21 @@ export const loreCommand: Action = {
     const queryType = classifyQuery(query);
     
     if (queryType === 'UNCERTAIN') {
-      console.log(`[LoreCommand] UNCERTAIN query - routing to AI conversation instead of knowledge retrieval`);
-      // Don't mark as handled - let bootstrap/AI handle it naturally
-      // This allows AI to ask clarifying questions or understand context
+      console.log(`[LoreCommand] UNCERTAIN query - sending clarification prompt`);
+      
+      const clarificationMsg = '🤔 Not sure what you\'re looking for. Try:\n\n' +
+                               '• `/fl CARDNAME` - Get card lore\n' +
+                               '• `/fl what is X` - Get facts\n' +
+                               '• `/fl tell me about Y` - Get stories\n\n' +
+                               'Or ask me naturally without /fl!';
+      
+      if (callback) {
+        await callback({ text: clarificationMsg });
+      }
+      
       return { 
         success: true, 
-        text: 'Uncertain query routed to conversation',
-        data: { queryType: 'UNCERTAIN', routedToConversation: true }
+        text: 'Clarification sent for uncertain query'
       };
     }
 
@@ -76,9 +84,7 @@ export const loreCommand: Action = {
     } catch (err) {
       console.error('❌ [LORE ERROR]', err);
       
-      const errorMsg = err instanceof Error && err.message === 'No knowledge found for query'
-        ? `Hmm, couldn't find any lore on "${query}". Try asking about:\n• Rare Scrilla\n• FREEDOMKEK\n• La Faka Nostra\n• Specific card names\n\nOr just ask me to tell you about Fake Rares in general! 🐸`
-        : 'Bruh, something went wrong searching for that lore. Try again? 🐸';
+      const errorMsg = 'Bruh, something went wrong searching for that lore. Try again? 🐸';
       
       if (callback) await callback({ text: errorMsg });
       

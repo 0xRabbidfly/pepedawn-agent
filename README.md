@@ -1005,7 +1005,7 @@ const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/YOUR_ORG/YOUR_REPO/...
 
 1. **Query Expansion** - Adds synonyms, context
 2. **Vector Search** - Retrieves 24 relevant passages from knowledge base
-3. **Query Classification** - Determines if FACTS (rules, specs) or LORE (stories, history)
+3. **Query Classification** - Determines if FACTS (rules, specs), LORE (stories, history), or UNCERTAIN (ambiguous/casual)
 4. **Selection Strategy:**
    - **FACTS mode:** Top-k by relevance (no diversity filtering - want best facts)
    - **LORE mode:** MMR diversity selection (avoid repetition in storytelling)

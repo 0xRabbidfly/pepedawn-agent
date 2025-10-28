@@ -94,7 +94,10 @@ User → /fl TOPIC
   ⭐⭐ Wiki (2x boost)
   ⚡ Telegram (0.5x)
   ↓
-  Classify: FACTS or LORE?
+  Classify: FACTS, LORE, or UNCERTAIN?
+  ├─ UNCERTAIN → Clarification prompt
+  │              "🤔 Not sure... Try: /fl CARDNAME"
+  │
   ├─ FACTS → Top-k by relevance (no MMR)
   │           ↓
   │           Direct answer (rules, specs)

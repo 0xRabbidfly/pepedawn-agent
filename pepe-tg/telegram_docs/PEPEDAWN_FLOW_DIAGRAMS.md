@@ -351,20 +351,33 @@
                             ▼
                 ┌───────────────────────────────────────┐
                 │  4. QUERY CLASSIFICATION              │
-                │  Is this FACTS or LORE?               │
+                │  Keyword scoring + conversational     │
+                │  detection                            │
                 │  • FACTS: Rules, specs, how-to        │
                 │  • LORE: Stories, history, vibes      │
+                │  • UNCERTAIN: Ambiguous/casual        │
                 └───────────┬───────────────────────────┘
                             │
                 ┌───────────▼──────────┐
                 │   Query Type?        │
                 └───────────┬──────────┘
                             │
-                ┌───────────┴───────────┐
-                │                       │
-              FACTS                   LORE
-                │                       │
-                ▼                       ▼
+                ┌───────────┴────────────┐
+                │           │            │
+             FACTS       LORE      UNCERTAIN
+                │           │            │
+                ▼           ▼            ▼
+                                ┌─────────────────┐
+                                │Send clarification│
+                                │"🤔 Not sure..." │
+                                │Try examples     │
+                                │Or ask w/o /fl   │
+                                └────────┬────────┘
+                                         │
+                                       (done)
+                
+                │           │
+                ▼           ▼
     ┌─────────────────────┐   ┌────────────────────────┐
     │ 5a. FACTS SELECTION │   │ 5b. MMR DIVERSITY      │
     │ • LRU filter fresh  │   │ • Filter recently used │
@@ -429,9 +442,10 @@
 **Key Features:**
 - **3 source types:** Telegram archives, wiki, user memories
 - **Hybrid search:** Exact card match + vector search for card memories
-- **Query classification:** FACTS vs LORE (different prompts & selection)
+- **Query classification:** FACTS vs LORE vs UNCERTAIN (conversational detection)
+- **UNCERTAIN handling:** Sends clarification prompt with examples, routes casual chat to AI
 - **Conditional MMR:** Diversity for LORE, relevance-only for FACTS
-- **Card memory emphasis:** Dedicated cluster, no summarization (preserves artist words)
+- **Card memory emphasis:** Dedicated cluster (12→5 passages), no summarization (preserves artist words)
 - **LRU cache:** Don't repeat recently shown content
 - **Source priority:** Memories (4.0x) > Wiki (2.0x) > Telegram (0.5x)
 - **Global search:** Searches across ALL chats/content

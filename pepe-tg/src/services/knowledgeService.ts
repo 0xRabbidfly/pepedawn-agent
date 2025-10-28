@@ -64,7 +64,27 @@ export async function retrieveKnowledge(
   console.log(`📊 Sources: ${JSON.stringify(sourceBreakdown)}`);
 
   if (passages.length === 0) {
-    throw new Error('No knowledge found for query');
+    console.log('⚠️  No passages found - returning friendly no-results message');
+    
+    const noResultsStory = `Hmm, couldn't find any lore on "${query}". Try asking about:\n` +
+                           `• Rare Scrilla\n` +
+                           `• FREEDOMKEK\n` +
+                           `• La Faka Nostra\n` +
+                           `• Specific card names\n\n` +
+                           `Or just ask me to tell you about Fake Rares in general! 🐸`;
+    
+    return {
+      story: noResultsStory,
+      sourcesLine: '',
+      metrics: {
+        query,
+        hits_raw: 0,
+        hits_used: 0,
+        clusters: 0,
+        latency_ms: Date.now() - startTime,
+        story_words: noResultsStory.split(/\s+/).length,
+      }
+    };
   }
 
   // STEP 3: Apply MMR for diversity and filter recently used
