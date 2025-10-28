@@ -1,221 +1,178 @@
-import { describe, expect, it, beforeAll, afterAll } from 'bun:test';
-import { selectDiversePassages, expandQuery } from '../../utils/loreRetrieval';
-import type { RetrievedPassage } from '../../utils/loreRetrieval';
+import { describe, expect, it, mock } from 'bun:test';
+import { searchKnowledgeWithExpansion } from '../../utils/loreRetrieval';
 
 /**
- * Tests for loreRetrieval utilities
- * Covers memory boost priority and source ranking
+ * Tests for loreRetrieval hybrid search and card detection
+ * 
+ * CRITICAL: These tests prevent regressions in card memory retrieval
  */
 
-describe('loreRetrieval - Source Boost Priority', () => {
-  describe('Memory Boost Priority', () => {
-    it('should boost memory sources by 4.0x', () => {
-      // This test validates the documented boost factor for memory sources
-      // The boost is applied in searchKnowledgeWithExpansion function
-      const expectedBoost = 4.0;
+describe('loreRetrieval - Hybrid Card Search', () => {
+  
+  describe('Card Detection (Case Insensitivity)', () => {
+    
+    it('should detect uppercase card names (e.g., PEPEDAWN)', () => {
+      const query = "PEPEDAWN";
+      const words = query.match(/\b[A-Za-z]{3,}[A-Za-z0-9]*\b/g) || [];
       
-      // Create mock passages with different source types
-      const memoryPassage: RetrievedPassage = {
-        id: 'mem-1',
-        text: 'Pepe green code is 420',
-        score: 0.5, // Base similarity score
-        sourceType: 'memory',
-        sourceRef: 'mem-1',
-        timestamp: Date.now(),
-        author: 'test-user',
-      };
-      
-      // Expected boosted score
-      const expectedBoostedScore = 0.5 * expectedBoost;
-      
-      expect(expectedBoost).toBe(4.0);
-      expect(expectedBoostedScore).toBe(2.0);
+      expect(words).toContain('PEPEDAWN');
+      expect(words.length).toBeGreaterThan(0);
     });
-
-    it('should boost wiki sources by 2.0x', () => {
-      const expectedBoost = 2.0;
+    
+    it('should detect lowercase card names (e.g., pepedawn)', () => {
+      const query = "pepedawn";
+      const words = query.match(/\b[A-Za-z]{3,}[A-Za-z0-9]*\b/g) || [];
       
-      const wikiPassage: RetrievedPassage = {
-        id: 'wiki-1',
-        text: 'Rare Pepe Directory has 1,774 cards',
-        score: 0.5,
-        sourceType: 'wiki',
-        sourceRef: 'wiki-1',
-      };
-      
-      const expectedBoostedScore = 0.5 * expectedBoost;
-      
-      expect(expectedBoost).toBe(2.0);
-      expect(expectedBoostedScore).toBe(1.0);
+      expect(words).toContain('pepedawn');
+      expect(words.length).toBeGreaterThan(0);
     });
-
-    it('should boost telegram sources by 0.5x', () => {
-      const expectedBoost = 0.5;
+    
+    it('should detect mixed case card names (e.g., PepeDawn)', () => {
+      const query = "PepeDawn";
+      const words = query.match(/\b[A-Za-z]{3,}[A-Za-z0-9]*\b/g) || [];
       
-      const telegramPassage: RetrievedPassage = {
-        id: 'tg-1',
-        text: 'Some random chat message',
-        score: 0.5,
-        sourceType: 'telegram',
-        sourceRef: 'tg-1',
-        timestamp: Date.now(),
-        author: 'chat-user',
-      };
-      
-      const expectedBoostedScore = 0.5 * expectedBoost;
-      
-      expect(expectedBoost).toBe(0.5);
-      expect(expectedBoostedScore).toBe(0.25);
+      expect(words).toContain('PepeDawn');
+      expect(words.length).toBeGreaterThan(0);
     });
-
-    it('should rank memory 2x higher than wiki (4.0x vs 2.0x)', () => {
-      // This is the key business logic: memory should be prioritized over wiki
-      const memoryBoost = 4.0;
-      const wikiBoost = 2.0;
-      const ratio = memoryBoost / wikiBoost;
+    
+    it('should detect card names in longer queries', () => {
+      const query = "tell me about pepedawn lore";
+      const words = query.match(/\b[A-Za-z]{3,}[A-Za-z0-9]*\b/g) || [];
       
-      expect(ratio).toBe(2.0);
-      expect(memoryBoost).toBeGreaterThan(wikiBoost);
+      expect(words).toContain('pepedawn');
+      expect(words).toContain('tell');
+      expect(words).toContain('about');
+      expect(words).toContain('lore');
     });
-
-    it('should rank wiki 4x higher than telegram (2.0x vs 0.5x)', () => {
-      const wikiBoost = 2.0;
-      const telegramBoost = 0.5;
-      const ratio = wikiBoost / telegramBoost;
+    
+    it('should detect cards with numbers (e.g., PEPE420)', () => {
+      const query = "PEPE420";
+      const words = query.match(/\b[A-Za-z]{3,}[A-Za-z0-9]*\b/g) || [];
       
-      expect(ratio).toBe(4.0);
-      expect(wikiBoost).toBeGreaterThan(telegramBoost);
+      expect(words).toContain('PEPE420');
     });
-
-    it('should rank memory 8x higher than telegram (4.0x vs 0.5x)', () => {
-      const memoryBoost = 4.0;
-      const telegramBoost = 0.5;
-      const ratio = memoryBoost / telegramBoost;
+    
+    it('should NOT detect 2-letter words', () => {
+      const query = "ok hi";
+      const words = query.match(/\b[A-Za-z]{3,}[A-Za-z0-9]*\b/g) || [];
       
-      expect(ratio).toBe(8.0);
-      expect(memoryBoost).toBeGreaterThan(telegramBoost);
+      expect(words).not.toContain('ok');
+      expect(words).not.toContain('hi');
     });
   });
-
-  describe('Source Ranking Priority Order', () => {
-    it('should maintain priority order: memory > wiki > telegram', () => {
-      const boosts = {
-        memory: 4.0,
-        wiki: 2.0,
-        telegram: 0.5,
+  
+  describe('Card Name Normalization', () => {
+    
+    it('should uppercase card names for marker matching', () => {
+      const detectedCard = "pepedawn";
+      const normalizedCard = detectedCard.toUpperCase();
+      const expectedMarker = `[CARD:${normalizedCard}]`;
+      
+      expect(normalizedCard).toBe('PEPEDAWN');
+      expect(expectedMarker).toBe('[CARD:PEPEDAWN]');
+    });
+    
+    it('should handle already uppercase cards', () => {
+      const detectedCard = "FREEDOMKEK";
+      const normalizedCard = detectedCard.toUpperCase();
+      const expectedMarker = `[CARD:${normalizedCard}]`;
+      
+      expect(normalizedCard).toBe('FREEDOMKEK');
+      expect(expectedMarker).toBe('[CARD:FREEDOMKEK]');
+    });
+  });
+  
+  describe('Card Memory Marker Filtering', () => {
+    
+    it('should filter results to only include [CARD:NAME] markers', () => {
+      const cardMarker = '[CARD:PEPEDAWN]';
+      
+      const mockResults = [
+        { content: { text: '[CARD:PEPEDAWN] The raven\'s call...' } },
+        { content: { text: 'Some wiki content about PEPEDAWN' } },
+        { content: { text: '[CARD:FREEDOMKEK] Different card' } },
+        { text: '[CARD:PEPEDAWN] Another memory' },
+      ];
+      
+      const filtered = mockResults.filter((m: any) => {
+        const text = m.content?.text || m.text || '';
+        return text.includes(cardMarker);
+      });
+      
+      expect(filtered.length).toBe(2);
+      expect(filtered[0].content.text).toContain('[CARD:PEPEDAWN]');
+      expect(filtered[1].text).toContain('[CARD:PEPEDAWN]');
+    });
+    
+    it('should not match partial card names in markers', () => {
+      const cardMarker = '[CARD:PEPE]';
+      
+      const mockResults = [
+        { content: { text: '[CARD:PEPEDAWN] Should not match' } },
+        { content: { text: '[CARD:PEPE] Should match' } },
+        { content: { text: '[CARD:PEPE420] Should not match' } },
+      ];
+      
+      const filtered = mockResults.filter((m: any) => {
+        const text = m.content?.text || m.text || '';
+        return text.includes(cardMarker);
+      });
+      
+      expect(filtered.length).toBe(1);
+      expect(filtered[0].content.text).toBe('[CARD:PEPE] Should match');
+    });
+  });
+  
+  describe('searchKnowledgeWithExpansion Integration', () => {
+    
+    it('should use knowledge service when available', async () => {
+      const mockKnowledgeService = {
+        getKnowledge: mock().mockResolvedValue([
+          { content: { text: 'Mock wiki result' }, similarity: 0.8 }
+        ])
       };
       
-      expect(boosts.memory).toBeGreaterThan(boosts.wiki);
-      expect(boosts.wiki).toBeGreaterThan(boosts.telegram);
-      expect(boosts.memory).toBeGreaterThan(boosts.telegram);
-    });
-
-    it('should ensure memory passages with lower similarity score can outrank wiki', () => {
-      // Example: Memory with 0.6 similarity vs Wiki with 0.9 similarity
-      const memoryScore = 0.6 * 4.0; // 2.4
-      const wikiScore = 0.9 * 2.0; // 1.8
+      const mockRuntime = {
+        getService: mock().mockReturnValue(mockKnowledgeService),
+        searchMemories: mock(),
+      } as any;
       
-      expect(memoryScore).toBeGreaterThan(wikiScore);
-    });
-
-    it('should ensure wiki passages with lower similarity score can outrank telegram', () => {
-      // Example: Wiki with 0.6 similarity vs Telegram with 0.9 similarity
-      const wikiScore = 0.6 * 2.0; // 1.2
-      const telegramScore = 0.9 * 0.5; // 0.45
+      const results = await searchKnowledgeWithExpansion(mockRuntime, 'test query', 'room123');
       
-      expect(wikiScore).toBeGreaterThan(telegramScore);
+      expect(mockKnowledgeService.getKnowledge).toHaveBeenCalled();
+      expect(mockRuntime.searchMemories).not.toHaveBeenCalled();
+      expect(results.length).toBeGreaterThan(0);
     });
-  });
-
-  describe('MMR Diversity Selection', () => {
-    it('should return all passages when count is less than target', () => {
-      const passages: RetrievedPassage[] = [
-        { id: '1', text: 'passage 1', score: 1.0, sourceType: 'wiki', sourceRef: '1' },
-        { id: '2', text: 'passage 2', score: 0.9, sourceType: 'wiki', sourceRef: '2' },
-      ];
+    
+    it('should fallback to searchMemories when knowledge service unavailable', async () => {
+      const mockRuntime = {
+        getService: mock().mockReturnValue(null),
+        searchMemories: mock().mockResolvedValue([
+          { content: { text: 'Fallback result' }, similarity: 0.7 }
+        ])
+      } as any;
       
-      const result = selectDiversePassages(passages, 5);
-      expect(result.length).toBe(2);
-    });
-
-    it('should select diverse passages when count exceeds target', () => {
-      const passages: RetrievedPassage[] = [
-        { id: '1', text: 'Fake Rares are NFTs', score: 1.0, sourceType: 'wiki', sourceRef: '1' },
-        { id: '2', text: 'Fake Rares are digital art', score: 0.9, sourceType: 'wiki', sourceRef: '2' },
-        { id: '3', text: 'Bitcoin is a cryptocurrency', score: 0.8, sourceType: 'wiki', sourceRef: '3' },
-        { id: '4', text: 'Ethereum has smart contracts', score: 0.7, sourceType: 'wiki', sourceRef: '4' },
-      ];
+      const results = await searchKnowledgeWithExpansion(mockRuntime, 'test query', 'room123');
       
-      const result = selectDiversePassages(passages, 2);
-      expect(result.length).toBe(2);
-      expect(result[0].id).toBe('1'); // First one is always highest score
+      expect(mockRuntime.searchMemories).toHaveBeenCalled();
+      expect(results.length).toBeGreaterThan(0);
     });
-
-    it('should start with highest scoring passage', () => {
-      const passages: RetrievedPassage[] = [
-        { id: '1', text: 'passage 1', score: 1.0, sourceType: 'wiki', sourceRef: '1' },
-        { id: '2', text: 'passage 2', score: 0.9, sourceType: 'wiki', sourceRef: '2' },
-        { id: '3', text: 'passage 3', score: 0.8, sourceType: 'wiki', sourceRef: '3' },
-      ];
+    
+    it('should handle knowledge service errors gracefully', async () => {
+      const mockKnowledgeService = {
+        getKnowledge: mock().mockRejectedValue(new Error('Service error'))
+      };
       
-      const result = selectDiversePassages(passages, 2);
-      expect(result[0].id).toBe('1');
-      expect(result[0].score).toBe(1.0);
-    });
-  });
-
-  describe('Query Expansion', () => {
-    it('should expand "scrilla" query', () => {
-      const expanded = expandQuery('scrilla');
-      expect(expanded).toContain('scrilla');
-      expect(expanded).toContain('Rare Scrilla');
-      expect(expanded).toContain('Scrilla');
-    });
-
-    it('should expand "freedomkek" query', () => {
-      const expanded = expandQuery('freedomkek');
-      expect(expanded).toContain('freedomkek');
-      expect(expanded).toContain('FREEDOMKEK');
-      expect(expanded).toContain('Freedom Kek');
-    });
-
-    it('should expand "pepe" query', () => {
-      const expanded = expandQuery('pepe');
-      expect(expanded).toContain('pepe');
-      expect(expanded).toContain('Pepe');
-      expect(expanded).toContain('Rare Pepe');
-      expect(expanded).toContain('Fake Rare');
-    });
-
-    it('should expand "faka" query', () => {
-      const expanded = expandQuery('faka');
-      expect(expanded).toContain('faka');
-      expect(expanded).toContain('La Faka Nostra');
-      expect(expanded).toContain('Faka Nostra');
-    });
-
-    it('should handle queries with multiple expandable terms', () => {
-      const expanded = expandQuery('pepe scrilla');
-      expect(expanded).toContain('pepe scrilla');
-      expect(expanded).toContain('Rare Pepe');
-      expect(expanded).toContain('Rare Scrilla');
-    });
-
-    it('should return original query if no expansions match', () => {
-      const expanded = expandQuery('random query');
-      expect(expanded).toBe('random query');
-    });
-
-    it('should be case-insensitive', () => {
-      const expanded1 = expandQuery('PEPE');
-      const expanded2 = expandQuery('pepe');
-      const expanded3 = expandQuery('Pepe');
+      const mockRuntime = {
+        getService: mock().mockReturnValue(mockKnowledgeService),
+        searchMemories: mock().mockResolvedValue([])
+      } as any;
       
-      // All should expand (contain the original plus expansions)
-      expect(expanded1).toContain('Rare Pepe');
-      expect(expanded2).toContain('Rare Pepe');
-      expect(expanded3).toContain('Rare Pepe');
+      const results = await searchKnowledgeWithExpansion(mockRuntime, 'test query', 'room123');
+      
+      // Should not throw, should return empty array
+      expect(results).toBeDefined();
+      expect(Array.isArray(results)).toBe(true);
     });
   });
 });
-

@@ -103,18 +103,38 @@ async function searchExactCardMemories(
   try {
     // Search for memories with [CARD:CARDNAME] marker
     const cardMarker = `[CARD:${cardName}]`;
-    
-    // Use direct memory search (searchMemories generates embeddings internally)
-    const memories = await runtime.searchMemories({
-      tableName: 'knowledge',
-      roomId: undefined, // Global search
-      query: cardName,
-      count: 20,
-      match_threshold: 0.1, // Very low threshold to cast wide net
-    } as any) || [];
-    
+    // Prefer the Knowledge plugin (global scope); fallback to direct search
+    const knowledgeService = (runtime as any).getService
+      ? (runtime as any).getService('knowledge')
+      : null;
+
+    let rawResults: any[] = [];
+    if (knowledgeService?.getKnowledge) {
+      const pseudoMessage = { id: 'query', content: { text: cardName } };
+      const scope = { roomId: undefined } as any;
+      try {
+        const searchPromise = knowledgeService.getKnowledge(pseudoMessage, scope);
+        const timeoutPromise: Promise<never> = new Promise((_, reject) => {
+          setTimeout(() => reject(new Error('Search timeout')), LORE_CONFIG.SEARCH_TIMEOUT_MS);
+        });
+        rawResults = await Promise.race([searchPromise, timeoutPromise]) || [];
+      } catch (e) {
+        console.error('[ExactCardSearch] Knowledge service error:', e);
+        rawResults = [];
+      }
+    } else {
+      // Fallback to direct memory search (global)
+      rawResults = await runtime.searchMemories({
+        tableName: 'knowledge',
+        roomId: undefined,
+        query: cardName,
+        count: 20,
+        match_threshold: 0.1,
+      } as any) || [];
+    }
+
     // Filter to only those that actually contain the marker (exact match)
-    return memories.filter((m: any) => {
+    return rawResults.filter((m: any) => {
       const text = m.content?.text || m.text || '';
       return text.includes(cardMarker);
     });
@@ -139,15 +159,18 @@ export async function searchKnowledgeWithExpansion(
   let results: any[] = [];
   
   // HYBRID SEARCH: Detect card names in query and prepend exact card matches
-  const capitalWords = query.match(/\b[A-Z]{3,}[A-Z0-9]*\b/g) || [];
-  const validCards = capitalWords.filter(word =>
+  // Extract all words with 3+ letters (case insensitive)
+  const words = query.match(/\b[A-Za-z]{3,}[A-Za-z0-9]*\b/g) || [];
+  const validCards = words.filter(word =>
     FULL_CARD_INDEX.some(card => card.asset.toUpperCase() === word.toUpperCase())
   );
   
   let exactCardMatches: any[] = [];
   if (validCards.length > 0) {
-    console.log(`[HybridSearch] Detected card in query: ${validCards[0]}`);
-    exactCardMatches = await searchExactCardMemories(runtime, validCards[0]);
+    // Uppercase the card name to match the [CARD:CARDNAME] marker format
+    const cardName = validCards[0].toUpperCase();
+    console.log(`[HybridSearch] Detected card in query: ${cardName}`);
+    exactCardMatches = await searchExactCardMemories(runtime, cardName);
     if (exactCardMatches.length > 0) {
       console.log(`[HybridSearch] Found ${exactCardMatches.length} exact card memories`);
     }
