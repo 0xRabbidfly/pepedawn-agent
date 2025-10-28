@@ -123,7 +123,7 @@ describe('Bootstrap Suppression Logic', () => {
     it('should allow bootstrap when message mentions @pepedawn_bot', async () => {
       const message = {
         id: 'test-5',
-        content: { text: '@pepedawn_bot what is fake rares?' },
+        content: { text: '@pepedawn_bot tell me about fake rares' },
         metadata: {},
       };
 

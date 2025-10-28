@@ -2,14 +2,18 @@
  * Query Classifier - Detect if user wants FACTS or LORE
  */
 
-export type QueryType = 'FACTS' | 'LORE';
+export type QueryType = 'FACTS' | 'LORE' | 'UNCERTAIN';
 
 /**
  * Classify query as either:
  * - FACTS: Rules, requirements, specifications, how-to, what is X
  * - LORE: History, stories, community moments, vibes
+ * - UNCERTAIN: No clear indicators (only returned if allowUncertain=true)
  */
-export function classifyQuery(query: string): QueryType {
+export function classifyQuery(
+  query: string,
+  options?: { allowUncertain?: boolean }
+): QueryType {
   const lowerQuery = query.toLowerCase();
   
   // FACTS indicators - looking for concrete information
@@ -26,7 +30,7 @@ export function classifyQuery(query: string): QueryType {
     
     // Technical details
     'locked', 'divisible', 'issuance', 'supply', 'tokens',
-    'xcp', 'fakeasf', 'pepecash',
+    'xcp', 'pepecash',
     'process', 'steps', 'instructions', 'guide',
     
     // Definitions
@@ -65,7 +69,8 @@ export function classifyQuery(query: string): QueryType {
   }
   
   // Special case: Questions with "?" are more likely to want facts
-  if (lowerQuery.endsWith('?') && lowerQuery.split(' ').length <= 10) {
+  // But only boost if there's already some fact indication (not standalone "?")
+  if (lowerQuery.endsWith('?') && lowerQuery.split(' ').length <= 10 && factScore > 0) {
     factScore += 0.5;
   }
   
@@ -75,7 +80,6 @@ export function classifyQuery(query: string): QueryType {
   }
   
   // Default: If tied or no clear winner, check query length
-  // Short queries (<5 words) tend to be fact-seeking
   const wordCount = lowerQuery.trim().split(/\s+/).length;
   
   if (factScore > loreScore) {
@@ -83,8 +87,13 @@ export function classifyQuery(query: string): QueryType {
   } else if (loreScore > factScore) {
     return 'LORE';
   } else {
-    // Tie-breaker: short queries = facts, long queries = lore
-    return wordCount <= 6 ? 'FACTS' : 'LORE';
+    // No keywords matched - uncertain
+    if (factScore === 0 && loreScore === 0 && options?.allowUncertain) {
+      return 'UNCERTAIN';
+    }
+    
+    // Tie-breaker: short queries = lore (conversation), long queries = facts
+    return wordCount <= 6 ? 'LORE' : 'FACTS';
   }
 }
 

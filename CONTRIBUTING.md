@@ -179,12 +179,16 @@ PEPEDAWN follows ElizaOS architectural patterns:
 - **Returns:** void (no return needed)
 - **Active evaluators:** None currently
 
+**Services** (`src/services/`) - Shared business logic
+- **knowledgeService** - Shared knowledge retrieval for `/fl` and auto-routing
+
 **Utilities** (`src/utils/`) - Shared functionality
 - Card lookups, fuzzy matching, cost tracking, lore retrieval, etc.
 - **visionAnalyzer** - Shared OpenAI Vision API integration
 - **visualEmbeddings** - Replicate CLIP embeddings for duplicate detection
 - **embeddingsDb** - JSON storage for card embeddings
-- Reusable functions imported by actions/providers
+- **queryClassifier** - FACTS/LORE/UNCERTAIN query classification
+- Reusable functions imported by actions/providers/services
 
 ### Adding a New Feature
 
@@ -520,7 +524,7 @@ const BASE_URL = 'https://coolcats-cdn.com/images/';
 
 ### Test Types
 
-The project has **5 custom test files** (excluding framework boilerplate):
+The project has **8 custom test files** (100+ tests, excluding framework boilerplate):
 
 **1. Bootstrap Suppression Test** (pre-commit hook)
 ```typescript
@@ -534,6 +538,11 @@ The project has **5 custom test files** (excluding framework boilerplate):
 - `__tests__/actions/fakeVisualCommand.test.ts` - `/fv` card analysis
 - `__tests__/actions/fakeTestCommand.test.ts` - `/ft` image appeal test
 - `__tests__/integration/visual-commands.test.ts` - Plugin routing
+
+**6-8. Knowledge & Auto-Routing Tests** (3 files, 67 tests)
+- `__tests__/utils/queryClassifier.test.ts` - FACTS/LORE/UNCERTAIN classification
+- `__tests__/utils/loreRetrieval.test.ts` - Memory priority & source boost logic
+- `__tests__/actions/loreCommand.test.ts` - `/fl` command & FACTS mode filtering
 
 **Organize new tests by type:**
 

@@ -6,6 +6,8 @@ import { FULL_CARD_INDEX } from '../data/fullCardIndex';
 import { startAutoRefresh } from '../utils/cardIndexRefresher';
 import { patchRuntimeForTracking } from '../utils/tokenLogger';
 import { storeUserMemory } from '../utils/memoryStorage';
+import { classifyQuery } from '../utils/queryClassifier';
+import { retrieveKnowledge } from '../services/knowledgeService';
 
 /**
  * Fake Rares Plugin - Bootstrap 1.6.2 Compatible
@@ -324,15 +326,53 @@ export const fakeRaresPlugin: Plugin = {
             }
           }
           
+          // === AUTO-ROUTE FACTS QUESTIONS ===
+          // Detect fact questions and route to knowledge retrieval
+          const queryType = classifyQuery(text, { allowUncertain: true });
+          console.log(`[FakeRaresPlugin] Query classification: ${queryType}`);
+          
+          if (queryType === 'FACTS') {
+            console.log(`[FakeRaresPlugin] 📚 Auto-routing FACTS query to knowledge retrieval`);
+            const actionCallback = typeof params.callback === 'function' ? params.callback : null;
+            params.callback = async () => [];
+            
+            try {
+              const result = await retrieveKnowledge(runtime, text, message.roomId, {
+                mode: 'FACTS',
+                includeMetrics: true,
+              });
+              
+              const finalMessage = result.story + result.sourcesLine;
+              
+              if (actionCallback) {
+                await actionCallback({ text: finalMessage });
+              }
+              
+              console.log(`[FakeRaresPlugin] ✅ Auto-routed knowledge response sent`);
+              console.log(`   Hits: ${result.metrics.hits_used}, Latency: ${result.metrics.latency_ms}ms`);
+              
+              try {
+                message.metadata = message.metadata || {};
+                (message.metadata as any).__handledByCustom = true;
+              } catch {}
+              
+              return;
+            } catch (err) {
+              console.error('[FakeRaresPlugin] ❌ Auto-route failed, falling back to conversation:', err);
+              // Fall through to normal bootstrap flow
+            }
+          }
+          
           // === BOOTSTRAP ROUTING ===
           // CLEAR LOGIC: Bootstrap replies ONLY when:
           // 1. Someone replied to the bot
           // 2. Someone used capitals (3+ letter word)
           // 3. Someone mentioned @pepedawn_bot
+          // 4. NOT a FACTS query (already handled above)
           //
           // Otherwise, suppress bootstrap (mark as handled)
           
-          const shouldAllowBootstrap = isReplyToBot || hasCapitalizedWord || hasBotMention;
+          const shouldAllowBootstrap = (isReplyToBot || hasCapitalizedWord || hasBotMention) && queryType !== 'FACTS';
           
           if (globalSuppression) {
             console.log('[Suppress] SUPPRESS_BOOTSTRAP=true → suppressing all bootstrap');

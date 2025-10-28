@@ -4,7 +4,7 @@
 
 ## 📊 Test Summary
 
-**Total:** 5 custom test files (67+ tests)
+**Total:** 8 custom test files (100+ tests)
 
 ### 1. Bootstrap Suppression Test ⚡
 
@@ -33,6 +33,20 @@
 
 ---
 
+### 6-8. Knowledge & Auto-Routing Tests 📚
+
+**Files:** 3 test files, 67 tests covering `/fl` command and auto-routing
+
+| File | Tests | Purpose |
+|------|-------|---------|
+| `utils/queryClassifier.test.ts` | 33 | FACTS/LORE/UNCERTAIN classification |
+| `utils/loreRetrieval.test.ts` | 19 | Memory priority & source boost logic |
+| `actions/loreCommand.test.ts` | 15 | `/fl` command & FACTS mode filtering |
+
+**Purpose:** Validates query classification, memory prioritization (4.0x boost), and auto-routing of fact questions to knowledge retrieval.
+
+---
+
 ## 🧪 Running Tests
 
 ### All Custom Tests
@@ -52,6 +66,11 @@ bun test src/__tests__/actions/fakeTestCommand.test.ts
 bun test src/__tests__/utils/visionAnalyzer.test.ts
 bun test src/__tests__/integration/visual-commands.test.ts
 
+# Knowledge & auto-routing (all 3 files)
+bun test src/__tests__/utils/queryClassifier.test.ts
+bun test src/__tests__/utils/loreRetrieval.test.ts
+bun test src/__tests__/actions/loreCommand.test.ts
+
 # Watch mode
 bun test --watch
 
@@ -68,9 +87,12 @@ pepe-tg/src/__tests__/
 ├── bootstrap-suppression.test.ts    # Pre-commit hook test
 ├── actions/
 │   ├── fakeVisualCommand.test.ts    # /fv command tests
-│   └── fakeTestCommand.test.ts      # /ft command tests
+│   ├── fakeTestCommand.test.ts      # /ft command tests
+│   └── loreCommand.test.ts          # /fl command tests
 ├── utils/
-│   └── visionAnalyzer.test.ts       # Shared vision utility tests
+│   ├── visionAnalyzer.test.ts       # Shared vision utility tests
+│   ├── queryClassifier.test.ts      # FACTS/LORE classification tests
+│   └── loreRetrieval.test.ts        # Memory priority & source boost tests
 └── integration/
     └── visual-commands.test.ts      # Plugin routing tests
 ```
@@ -83,7 +105,7 @@ pepe-tg/src/__tests__/
 
 Before deploying:
 
-- [ ] All 5 custom tests pass
+- [ ] All 8 custom tests pass (100+ tests)
 - [ ] Pre-commit hook validates (bootstrap suppression)
 - [ ] Manual testing completed (see manual test plan)
 - [ ] No linting errors
@@ -136,7 +158,7 @@ git commit --no-verify
 
 ---
 
-**Last Updated:** October 24, 2025  
+**Last Updated:** October 28, 2025  
 **Test Framework:** Bun Test  
-**Coverage:** 5 custom test files, 67+ tests
+**Coverage:** 8 custom test files, 100+ tests
 
