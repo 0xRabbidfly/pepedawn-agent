@@ -73,18 +73,29 @@ export const helpCommand: Action = {
   ) => {
     const helpMessage = `🐸 **PEPEDAWN Commands**
 
-\`/f CARDNAME\` - View any Fake Rares card
-\`/f ARTIST\` - Random card by artist (supports misspellings!)
-\`/fv CARDNAME\` - Analyze card visuals & memes with AI vision
-\`/ft [attach image]\` - Test your art for Fake appeal score
-\`/fl [topic]\` - Get lore stories from community history
-\`/start\` - Welcome message
+**Cards:**
+\`/f CARDNAME\` - View any card (try \`/f FREEDOMKEK\`)
+\`/f ARTIST\` - Random card by artist
+\`/f\` - Random card
 
-**Examples:**
-• \`/f FREEDOMKEK\` • \`/f Pepenardo\` • \`/f\` (random)
-• \`/fv PEPEPARTY\` • \`/ft\` + attach your meme
+**Fake Vision:**
+\`/fv CARDNAME\` - AI visual analysis & meme breakdown
 
-Just chat naturally or mention me with @pepedawn_bot 🐸`;
+**Fake Lore:**
+\`/fl CARDNAME\` - Get card lore & community stories
+\`/fl what is X\` - Get facts (rules, specs, how-to)
+\`/fl tell me about Y\` - Get history & narratives
+\`/fl\` - Random lore story
+
+**Fake Memory:**
+\`CARDNAME remember this CARDNAME: FACT\` - Save community knowledge
+
+**Tips:**
+• Case-insensitive: \`/f pepedawn\` = \`/f PEPEDAWN\`
+• Chat naturally - I understand questions!
+• Memories appear in future \`/fl\` searches
+
+Type \`/start\` for welcome • Mention @pepedawn_bot anytime 🐸`;
 
     if (callback) {
       await callback({ text: helpMessage });
