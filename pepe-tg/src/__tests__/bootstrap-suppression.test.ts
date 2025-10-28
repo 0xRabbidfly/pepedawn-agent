@@ -1,4 +1,4 @@
-import { describe, expect, it, beforeEach } from 'bun:test';
+import { describe, expect, it, beforeEach, mock } from 'bun:test';
 import { fakeRaresPlugin } from '../plugins/fakeRaresPlugin';
 
 /**
@@ -14,6 +14,15 @@ import { fakeRaresPlugin } from '../plugins/fakeRaresPlugin';
  */
 describe('Bootstrap Suppression Logic', () => {
   const messageHandler = fakeRaresPlugin.events?.MESSAGE_RECEIVED?.[0];
+
+  // Create a proper mock runtime with all required methods
+  const createMockRuntime = () => ({
+    agentId: 'test-agent',
+    useModel: mock().mockResolvedValue([0.1, 0.2, 0.3]), // Mock embedding
+    searchMemories: mock().mockResolvedValue([]),
+    getMemory: mock().mockResolvedValue(null),
+    createMemory: mock().mockResolvedValue(undefined),
+  });
 
   beforeEach(() => {
     // Reset env var before each test
@@ -41,7 +50,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {},
+        runtime: createMockRuntime(),
         callback: async () => [],
       };
 
@@ -63,7 +72,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {},
+        runtime: createMockRuntime(),
         callback: async () => [],
       };
 
@@ -86,7 +95,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {},
+        runtime: createMockRuntime(),
         callback: async () => [],
       };
 
@@ -110,7 +119,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {},
+        runtime: createMockRuntime(),
         callback: async () => [],
       };
 
@@ -129,7 +138,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {},
+        runtime: createMockRuntime(),
         callback: async () => [],
       };
 
@@ -150,7 +159,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {},
+        runtime: createMockRuntime(),
         callback: async () => [],
       };
 
@@ -168,7 +177,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {},
+        runtime: createMockRuntime(),
         callback: async () => [],
       };
 
@@ -192,7 +201,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {},
+        runtime: createMockRuntime(),
         callback: async () => [],
       };
 
@@ -210,7 +219,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {},
+        runtime: createMockRuntime(),
         callback: async () => [],
       };
 
@@ -228,7 +237,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {},
+        runtime: createMockRuntime(),
         callback: async () => [],
       };
 
@@ -246,7 +255,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {},
+        runtime: createMockRuntime(),
         callback: async () => [],
       };
 
@@ -265,7 +274,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {},
+        runtime: createMockRuntime(),
         callback: async () => [],
       };
 
@@ -289,9 +298,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {
-          agentId: 'test-agent',
-        },
+        runtime: createMockRuntime(),
         callback: async () => [],
         state: {},
       };
@@ -311,9 +318,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {
-          agentId: 'test-agent',
-        },
+        runtime: createMockRuntime(),
         callback: async () => [],
         state: {},
       };
@@ -333,9 +338,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {
-          agentId: 'test-agent',
-        },
+        runtime: createMockRuntime(),
         callback: async () => [],
         state: {},
       };
@@ -354,9 +357,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {
-          agentId: 'test-agent',
-        },
+        runtime: createMockRuntime(),
         callback: async () => [],
         state: {},
       };
@@ -376,9 +377,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {
-          agentId: 'test-agent',
-        },
+        runtime: createMockRuntime(),
         callback: async () => [],
         state: {},
       };
@@ -398,9 +397,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {
-          agentId: 'test-agent',
-        },
+        runtime: createMockRuntime(),
         callback: async () => [],
         state: {},
       };
@@ -420,9 +417,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {
-          agentId: 'test-agent',
-        },
+        runtime: createMockRuntime(),
         callback: async () => [],
         state: {},
       };
@@ -448,7 +443,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {},
+        runtime: createMockRuntime(),
         callback: async () => [],
       };
 
@@ -467,7 +462,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {},
+        runtime: createMockRuntime(),
         callback: async () => [],
       };
 
@@ -485,7 +480,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {},
+        runtime: createMockRuntime(),
         callback: async () => [],
       };
 
@@ -505,7 +500,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {},
+        runtime: createMockRuntime(),
         callback: async () => [],
       };
 
@@ -524,7 +519,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {},
+        runtime: createMockRuntime(),
         callback: async () => [],
       };
 
@@ -549,7 +544,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {},
+        runtime: createMockRuntime(),
         callback: async () => [],
       };
 
@@ -567,7 +562,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {},
+        runtime: createMockRuntime(),
         callback: async () => [],
       };
 
@@ -585,7 +580,7 @@ describe('Bootstrap Suppression Logic', () => {
 
       const params = {
         message,
-        runtime: {},
+        runtime: createMockRuntime(),
         callback: async () => [],
       };
 
