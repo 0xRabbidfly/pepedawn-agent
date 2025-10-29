@@ -446,7 +446,15 @@ export const fakeRaresPlugin: Plugin = {
             // 2. It's clearly replying to someone other than the bot
             if (!replyToUserId || !botUserId || replyToUserId !== botUserId) {
               console.log(`[FakeRaresPlugin] Skipping auto-routing - message is a reply ${replyToUserId && botUserId ? `to user ${replyToUserId} (not bot ${botUserId})` : '(unknown target)'}`);
-              // Let it go to bootstrap for natural conversation handling
+              // IMPORTANT: Check global suppression before returning
+              // If SUPPRESS_BOOTSTRAP=true, we need to mark as handled
+              if (globalSuppression) {
+                console.log('[FakeRaresPlugin] Global suppression active - marking reply as handled');
+                message.metadata = message.metadata || {};
+                (message.metadata as any).__handledByCustom = true;
+                return;
+              }
+              // Otherwise, let it go to bootstrap for natural conversation handling
               return;
             }
             // If it IS a reply to the bot, continue with auto-routing check below
