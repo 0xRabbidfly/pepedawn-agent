@@ -3,10 +3,10 @@ import { fakeRaresCardAction, educateNewcomerAction, startCommand, helpCommand, 
 import { fakeRaresContextProvider } from '../providers';
 import { loreDetectorEvaluator } from '../evaluators';
 import { KnowledgeOrchestratorService } from '../services/KnowledgeOrchestratorService';
+import { MemoryStorageService } from '../services/MemoryStorageService';
 import { FULL_CARD_INDEX } from '../data/fullCardIndex';
 import { startAutoRefresh } from '../utils/cardIndexRefresher';
 import { patchRuntimeForTracking } from '../utils/tokenLogger';
-import { storeUserMemory } from '../utils/memoryStorage';
 import { classifyQuery } from '../utils/queryClassifier';
 
 /**
@@ -50,7 +50,7 @@ export const fakeRaresPlugin: Plugin = {
   
   providers: [fakeRaresContextProvider],
   evaluators: [],
-  services: [KnowledgeOrchestratorService],
+  services: [KnowledgeOrchestratorService, MemoryStorageService],
   
   events: {
     MESSAGE_RECEIVED: [
@@ -106,7 +106,15 @@ export const fakeRaresPlugin: Plugin = {
             const actionCallback = typeof params.callback === 'function' ? params.callback : null;
             
             try {
-              const result = await storeUserMemory(runtime, message, params.ctx?.message);
+              const memoryService = runtime.getService(
+                MemoryStorageService.serviceType
+              ) as MemoryStorageService;
+              
+              if (!memoryService) {
+                throw new Error('MemoryStorageService not available');
+              }
+              
+              const result = await memoryService.storeMemory(message, params.ctx?.message);
               
               if (result.success && !result.ignoredReason) {
                 // Memory stored successfully
