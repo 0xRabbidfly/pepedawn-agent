@@ -5,8 +5,8 @@
  * Used by /fv (card analysis) and /ft (fake test) commands
  */
 
-import OpenAI from 'openai';
-import { logTokenUsage, estimateTokens, calculateCost } from './tokenLogger';
+import type { IAgentRuntime } from '@elizaos/core';
+import { callVisionModel } from './modelGateway';
 import { createLogger } from './actionLogger';
 
 const logger = createLogger('VisionAnalyzer');
@@ -33,105 +33,44 @@ export interface AnalysisResult {
  * @returns Analysis result with tokens, cost, and duration
  */
 export async function analyzeWithVision(
+  runtime: IAgentRuntime,
   imageUrl: string,
   subject: string,
   prompt: string,
   source: string
 ): Promise<AnalysisResult> {
   const model = process.env.VISUAL_MODEL || 'gpt-4o';
-  
-  const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY
-  });
-  
-  const startTime = Date.now();
   const textPrompt = `Analyzing: **${subject}**\n\n${prompt}`;
-  const estimatedTokensIn = estimateTokens(textPrompt) + IMAGE_ENCODING_TOKENS;
   
   logger.info('Starting vision analysis', { subject, model });
   
   try {
-    // Newer models (o1, o3, gpt-5) use different parameters
-    const isReasoningModel = model.startsWith('o1') || model.startsWith('o3') || model.startsWith('gpt-5');
-    
-    const requestParams: any = {
+    // Use centralized model gateway for telemetry
+    const result = await callVisionModel(runtime, {
       model,
-      messages: [
-        {
-          role: 'user',
-          content: [
-            {
-              type: 'text',
-              text: textPrompt
-            },
-            {
-              type: 'image_url',
-              image_url: {
-                url: imageUrl,
-                detail: 'high' // High detail for better OCR and analysis
-              }
-            }
-          ]
-        }
-      ],
-    };
-    
-    // Configure parameters based on model type
-    if (isReasoningModel) {
-      requestParams.max_completion_tokens = 1600;
-      requestParams.reasoning_effort = 'low';
-      logger.info('Using reasoning model configuration', { model });
-    } else {
-      requestParams.max_tokens = 800;
-      requestParams.temperature = 0.7;
-    }
-    
-    let response = await openai.chat.completions.create(requestParams);
-    let analysis = response.choices[0]?.message?.content || '';
-    
-    // Retry once if empty (common with animated GIFs - OpenAI picks bad frame)
-    if (!analysis) {
-      logger.warning('Empty response from vision model, retrying once...');
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      response = await openai.chat.completions.create(requestParams);
-      analysis = response.choices[0]?.message?.content || '';
-      
-      if (!analysis) {
-        throw new Error('Empty response from vision model (after retry)');
-      }
-    }
-    
-    const tokensIn = response.usage?.prompt_tokens || estimatedTokensIn;
-    const tokensOut = response.usage?.completion_tokens || estimateTokens(analysis);
-    
-    const cost = calculateCost(model, tokensIn, tokensOut);
-    const duration = Date.now() - startTime;
-    
-    logger.success('Analysis complete', {
-      duration: `${duration}ms`,
-      cost: `$${cost.toFixed(4)}`,
-      tokensIn,
-      tokensOut,
-      model
+      prompt: textPrompt,
+      imageUrl,
+      maxTokens: 800,
+      temperature: 0.7,
+      source,
+      detail: 'high',
     });
     
-    // Log token usage for cost tracking
-    logTokenUsage({
-      timestamp: new Date().toISOString(),
-      model,
-      tokensIn,
-      tokensOut,
-      cost,
-      source,
+    logger.success('Analysis complete', {
+      duration: `${result.duration}ms`,
+      cost: `$${result.cost.toFixed(4)}`,
+      tokensIn: result.tokensIn,
+      tokensOut: result.tokensOut,
+      model: result.model
     });
     
     return {
-      analysis,
-      tokensIn,
-      tokensOut,
-      model,
-      cost,
-      duration
+      analysis: result.text,
+      tokensIn: result.tokensIn,
+      tokensOut: result.tokensOut,
+      model: result.model,
+      cost: result.cost,
+      duration: result.duration
     };
     
   } catch (error: any) {

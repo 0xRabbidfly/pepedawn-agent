@@ -107,11 +107,11 @@ Summary:`;
   
   try {
     // Use TEXT_SMALL for summaries (uses OPENAI_SMALL_MODEL from .env)
-    // Context is set at loreCommand level (not here, to avoid parallel conflicts)
     const result = await runtime.useModel(ModelType.TEXT_SMALL, {
       prompt: summaryPrompt,
       maxTokens: LORE_CONFIG.MAX_TOKENS_SUMMARY,
       temperature: 0.3, // Low temp for factual summarization
+      context: 'Knowledge Service',  // Proper source labeling for telemetry
     });
     
     const summary = typeof result === 'string' ? result : (result as any)?.text || (result as any)?.toString?.() || '';

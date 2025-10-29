@@ -170,6 +170,7 @@ export const fakeVisualCommand: Action = {
       // STEP 4: Perform visual analysis
       logger.step(4, 'Perform vision analysis');
       const result = await analyzeWithVision(
+        runtime,
         imageUrl,
         `card: ${cardName}`,
         CARD_ANALYSIS_PROMPT,

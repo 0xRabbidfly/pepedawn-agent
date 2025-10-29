@@ -16,7 +16,6 @@ import { clusterAndSummarize, formatSourcesLine, formatCompactCitation } from '.
 import { generatePersonaStory } from '../utils/storyComposer';
 import { filterOutRecentlyUsed, markIdAsRecentlyUsed } from '../utils/lru';
 import { LORE_CONFIG } from '../utils/loreConfig';
-import { setCallContext, clearCallContext } from '../utils/tokenLogger';
 import { classifyQuery } from '../utils/queryClassifier';
 import { CLARIFICATION_MESSAGE } from '../actions/loreCommand';
 
@@ -162,8 +161,6 @@ export class KnowledgeOrchestratorService extends Service {
     diversePassages.forEach(p => markIdAsRecentlyUsed(roomId, p.id));
 
     // STEP 4: Classify or use provided mode
-    setCallContext('Knowledge Service');
-    
     const queryType = options?.mode || classifyQuery(query);
     console.log(`🎯 Query type: ${queryType}`);
     
@@ -244,7 +241,6 @@ export class KnowledgeOrchestratorService extends Service {
     }
     
     console.log(`✍️  Generated story (${story.split(/\s+/).length} words)`);
-    clearCallContext();
 
     const latencyMs = Date.now() - startTime;
     console.log(`\n📈 [METRICS]`);

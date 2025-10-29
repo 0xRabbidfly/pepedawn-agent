@@ -239,11 +239,11 @@ describe('Visual Commands Plugin Integration', () => {
       expect(typeof analyzeWithVision).toBe('function');
     });
 
-    it('vision analyzer should accept 4 parameters', async () => {
+    it('vision analyzer should accept 5 parameters (runtime added for telemetry)', async () => {
       const { analyzeWithVision } = await import('../../utils/visionAnalyzer');
-      
-      // Check function signature
-      expect(analyzeWithVision.length).toBe(4);
+
+      // Check function signature: runtime, imageUrl, subject, prompt, source
+      expect(analyzeWithVision.length).toBe(5);
     });
   });
 

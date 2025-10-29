@@ -198,6 +198,7 @@ export const fakeTestCommand: Action = {
       
       try {
         const result = await analyzeWithVision(
+          runtime,
           imageUrlToUse,
           'User Image',
           FAKE_TEST_PROMPT,

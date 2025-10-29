@@ -79,10 +79,20 @@ This document summarizes all components in `src/` across actions, providers, eva
 
 ## Services (`src/services`)
 
-- `knowledgeService.ts`
-  - **summary**: Functional service: expands query, searches knowledge (hybrid exact card + vector), diversity/MMR, clustering, summarization, persona story generation, sources line, metrics.
-  - **used in flows**: Called by `loreCommand.ts`.
-  - **elizaOS best practices**: Not a formal `Service` subclass registered via plugin `services`. It’s a plain module with exported function. Works fine, but deviates from the ElizaOS `Service` pattern (discoverable, lifecycle-managed). Consider wrapping as a `Service` or delegating to `@elizaos/plugin-knowledge` fully and keeping this as orchestration logic.
+- `KnowledgeOrchestratorService.ts`
+  - **summary**: RAG pipeline orchestration service. Expands query, searches knowledge (hybrid exact card + vector), diversity/MMR, clustering, summarization, persona story generation, sources line, metrics.
+  - **used in flows**: Called by `loreCommand.ts` and auto-FACTS routing in plugin.
+  - **elizaOS best practices**: ✅ Proper Service class extending `Service`, registered in plugin. Clean lifecycle management. Follows ElizaOS Service pattern.
+
+- `MemoryStorageService.ts`
+  - **summary**: User memory storage service with card detection and metadata embedding. Integrates with @elizaos/plugin-knowledge. Cached card index for O(1) lookups.
+  - **used in flows**: Called by plugin MESSAGE_RECEIVED handler for "remember this" commands.
+  - **elizaOS best practices**: ✅ Proper Service class, lifecycle managed, performance optimized with caching.
+
+- `TelemetryService.ts`
+  - **summary**: Cost and usage tracking service. Logs all model calls (via runtime monkey-patch and modelGateway), JSONL persistence, monthly archiving, queryable reports.
+  - **used in flows**: Registered in plugin, tracks all LLM calls, queried by `/fc` command.
+  - **elizaOS best practices**: ✅ Proper Service class, lifecycle managed. Uses hybrid approach (monkey-patch + events) since MODEL_USED event lacks params/result data.
 
 ---
 

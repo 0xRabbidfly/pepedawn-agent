@@ -1,5 +1,5 @@
 import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, type State } from '@elizaos/core';
-import { readTokenLogs, calculateTotalCost } from '../utils/tokenLogger';
+import type { TelemetryService } from '../services/TelemetryService';
 
 /**
  * /fc Command - Token usage and cost tracking (admin-only)
@@ -47,7 +47,7 @@ function generateMiniChart(data: { label: string; value: number }[], maxBarLengt
 /**
  * Get last N days of data
  */
-function getLast12Days(): { label: string; value: number }[] {
+async function getLast12Days(telemetry: TelemetryService): Promise<{ label: string; value: number }[]> {
   const now = new Date();
   const result: { label: string; value: number }[] = [];
   
@@ -59,8 +59,7 @@ function getLast12Days(): { label: string; value: number }[] {
     const nextDate = new Date(date);
     nextDate.setDate(nextDate.getDate() + 1);
     
-    const logs = readTokenLogs(date, nextDate);
-    const stats = calculateTotalCost(logs);
+    const stats = await telemetry.getCostReport(date, nextDate);
     
     const label = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
     result.push({ label, value: stats.totalCost });
@@ -72,7 +71,7 @@ function getLast12Days(): { label: string; value: number }[] {
 /**
  * Get last N months of data
  */
-function getLast12Months(): { label: string; value: number }[] {
+async function getLast12Months(telemetry: TelemetryService): Promise<{ label: string; value: number }[]> {
   const now = new Date();
   const result: { label: string; value: number }[] = [];
   
@@ -80,8 +79,7 @@ function getLast12Months(): { label: string; value: number }[] {
     const date = new Date(now.getFullYear(), now.getMonth() - i, 1, 0, 0, 0, 0);
     const nextDate = new Date(date.getFullYear(), date.getMonth() + 1, 1, 0, 0, 0, 0);
     
-    const logs = readTokenLogs(date, nextDate);
-    const stats = calculateTotalCost(logs);
+    const stats = await telemetry.getCostReport(date, nextDate);
     
     const label = date.toLocaleDateString('en-US', { month: 'short' });
     result.push({ label, value: stats.totalCost });
@@ -90,12 +88,10 @@ function getLast12Months(): { label: string; value: number }[] {
   return result;
 }
 
-function formatCostReport(logs: ReturnType<typeof readTokenLogs>, period: string, chart?: string): string {
-  if (logs.length === 0) {
+function formatCostReport(stats: Awaited<ReturnType<TelemetryService['getCostReport']>>, period: string, chart?: string): string {
+  if (stats.callCount === 0) {
     return `📊 No token usage recorded for ${period}.`;
   }
-  
-  const stats = calculateTotalCost(logs);
   
   let report = `📊 **Token Usage - ${period}**\n\n`;
   report += `💰 Total Cost: $${stats.totalCost.toFixed(4)}\n`;
@@ -120,6 +116,18 @@ function formatCostReport(logs: ReturnType<typeof readTokenLogs>, period: string
     
     for (const [source, data] of sortedSources) {
       report += `• ${source}: $${data.cost.toFixed(4)} [${data.calls}]\n`;
+    }
+  }
+  
+  // Breakdown by action (if available)
+  if (stats.byAction && Object.keys(stats.byAction).length > 0) {
+    report += `\n**By Action:**\n`;
+    const sortedActions = Object.entries(stats.byAction)
+      .sort(([, a], [, b]) => b.cost - a.cost);
+    
+    for (const [action, data] of sortedActions) {
+      const avgMs = data.avgDuration > 0 ? `, ${Math.round(data.avgDuration)}ms avg` : '';
+      report += `• ${action}: $${data.cost.toFixed(4)} [${data.calls}${avgMs}]\n`;
     }
   }
   
@@ -195,6 +203,16 @@ export const costCommand: Action = {
       return { success: false, text: 'Invalid parameter' };
     }
     
+    // Get telemetry service
+    const telemetry = runtime.getService('telemetry') as TelemetryService;
+    
+    if (!telemetry) {
+      if (callback) {
+        await callback({ text: '❌ Telemetry service not available' });
+      }
+      return { success: false, text: 'Service unavailable' };
+    }
+    
     // Determine period and generate chart
     let period: string;
     let startDate: Date;
@@ -204,20 +222,20 @@ export const costCommand: Action = {
       period = 'This Month';
       startDate = getStartOfMonth();
       // Generate 12-month chart
-      const monthData = getLast12Months();
+      const monthData = await getLast12Months(telemetry);
       chart = generateMiniChart(monthData);
     } else {
       // Daily report (default)
       period = 'Today';
       startDate = getStartOfDay();
       // Generate 12-day chart
-      const dayData = getLast12Days();
+      const dayData = await getLast12Days(telemetry);
       chart = generateMiniChart(dayData);
     }
     
-    // Read logs and generate report
-    const logs = readTokenLogs(startDate);
-    const report = formatCostReport(logs, period, chart);
+    // Get cost report and format
+    const stats = await telemetry.getCostReport(startDate);
+    const report = formatCostReport(stats, period, chart);
     
     // Send response to DM
     if (callback) {

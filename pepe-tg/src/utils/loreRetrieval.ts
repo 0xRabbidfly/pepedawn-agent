@@ -278,11 +278,6 @@ export async function searchKnowledgeWithExpansion(
       } else if (typeof createdAtValue === 'number') {
         timestamp = createdAtValue;
       }
-      
-      // Debug: Log first few timestamps
-      if (idx < 3) {
-        console.log(`[DEBUG] Passage ${idx}: raw timestamp = ${createdAtValue}, parsed = ${timestamp}`);
-      }
       }
     }
 
@@ -336,15 +331,9 @@ export async function searchKnowledgeWithExpansion(
         const parsed = Date.parse(dateMatch[1]);
         if (!Number.isNaN(parsed)) {
           timestamp = parsed;
-          if (idx < 3) {
-            console.log(`[DEBUG] Using embedded date from content: ${dateMatch[1]} -> ${new Date(parsed).toISOString()}`);
-          }
         }
       } else if (timestampIsInFuture) {
         // Timestamp is sync time (future), and no embedded date found - clear it
-        if (idx < 3) {
-          console.log(`[DEBUG] Clearing future timestamp (sync time): ${timestamp}`);
-        }
         timestamp = undefined;
       }
     } else if (metadataSource === 'wiki' || metadataSource === 'rag-service-fragment-sync') {
@@ -365,16 +354,13 @@ export async function searchKnowledgeWithExpansion(
     }
     } // End if (sourceType !== 'memory')
     
-    // Optional debug logging (controlled by LORE_DEBUG env var)
+    // Debug logging available via LORE_DEBUG=true env var
     if (process.env.LORE_DEBUG === 'true' && idx < 3) {
-      console.log(`\n🔍 [DEBUG] Result ${idx}:`, JSON.stringify({
-        'metadata.source': metadataSource,
-        'metadata.type': r.metadata?.type,
-        'detected': sourceType,
-        'hasTimestamp': !!timestamp,
-        'hasAuthor': !!author,
-        'textLength': text.length,
-      }, null, 2));
+      console.log(`[LoreRetrieval] Passage ${idx}:`, {
+        source: sourceType,
+        hasTimestamp: !!timestamp,
+        hasAuthor: !!author,
+      });
     }
     
     return { id, text, score, sourceType, sourceRef, timestamp, author };

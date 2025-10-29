@@ -4,10 +4,84 @@ import { fakeRaresContextProvider } from '../providers';
 import { loreDetectorEvaluator } from '../evaluators';
 import { KnowledgeOrchestratorService } from '../services/KnowledgeOrchestratorService';
 import { MemoryStorageService } from '../services/MemoryStorageService';
+import { TelemetryService } from '../services/TelemetryService';
 import { FULL_CARD_INDEX } from '../data/fullCardIndex';
 import { startAutoRefresh } from '../utils/cardIndexRefresher';
-import { patchRuntimeForTracking } from '../utils/tokenLogger';
 import { classifyQuery } from '../utils/queryClassifier';
+import type { IAgentRuntime } from '@elizaos/core';
+
+// Track patched runtimes to avoid double-patching
+const patchedRuntimes = new WeakSet<any>();
+
+/**
+ * Patch runtime.useModel to track all LLM calls via TelemetryService
+ * 
+ * Why we need this: MODEL_USED event doesn't include params/result in payload,
+ * making it impossible to calculate accurate token counts for cost tracking.
+ * 
+ * This intercepts runtime.useModel() calls and logs to TelemetryService.
+ */
+function patchRuntimeForTelemetry(runtime: IAgentRuntime): void {
+  if (patchedRuntimes.has(runtime)) return;
+  if (!runtime.useModel || typeof runtime.useModel !== 'function') return;
+  
+  patchedRuntimes.add(runtime);
+  
+  const originalUseModel = runtime.useModel.bind(runtime);
+  (runtime as any).useModel = async function(modelType: any, params: any) {
+    // Skip embeddings (tracked separately)
+    if (modelType && (modelType.includes('EMBEDDING') || modelType === 'TEXT_EMBEDDING')) {
+      return await originalUseModel(modelType, params);
+    }
+    
+    const startTime = Date.now();
+    const prompt = params?.prompt || params?.text || '';
+    
+    try {
+      const result = await originalUseModel(modelType, params);
+      const duration = Date.now() - startTime;
+      
+      // Get telemetry service
+      const telemetry = runtime.getService('telemetry') as TelemetryService;
+      
+      if (telemetry) {
+        const resultText = typeof result === 'string' 
+          ? result 
+          : (result as any)?.text || result?.toString?.() || '';
+        
+        const tokensIn = telemetry.estimateTokens(prompt);
+        const tokensOut = telemetry.estimateTokens(resultText);
+        
+        // Determine model from env vars
+        let model: string;
+        if (modelType === 'TEXT_SMALL' || modelType?.includes?.('SMALL')) {
+          model = process.env.OPENAI_SMALL_MODEL || 'gpt-4o-mini';
+        } else if (modelType === 'TEXT_LARGE' || modelType?.includes?.('LARGE')) {
+          model = process.env.OPENAI_LARGE_MODEL || 'gpt-4o';
+        } else {
+          model = process.env.TEXT_MODEL || 'gpt-4o-mini';
+        }
+        
+        const cost = telemetry.calculateCost(model, tokensIn, tokensOut);
+        
+        await telemetry.logModelUsage({
+          timestamp: new Date().toISOString(),
+          model,
+          tokensIn,
+          tokensOut,
+          cost,
+          source: params?.context || 'Conversation',
+          duration,
+        });
+      }
+      
+      return result;
+    } catch (err) {
+      console.error('[Runtime Patch] Model call error:', err);
+      throw err;
+    }
+  };
+}
 
 /**
  * Fake Rares Plugin - Bootstrap 1.6.2 Compatible
@@ -50,7 +124,7 @@ export const fakeRaresPlugin: Plugin = {
   
   providers: [fakeRaresContextProvider],
   evaluators: [],
-  services: [KnowledgeOrchestratorService, MemoryStorageService],
+  services: [KnowledgeOrchestratorService, MemoryStorageService, TelemetryService],
   
   events: {
     MESSAGE_RECEIVED: [
@@ -59,8 +133,9 @@ export const fakeRaresPlugin: Plugin = {
           const runtime = params.runtime;
           const message = params.message;
           
-          // Patch runtime to track ALL AI calls (including bootstrap)
-          patchRuntimeForTracking(runtime);
+          // Patch runtime to track ALL AI calls for accurate token/cost tracking
+          // MODEL_USED event doesn't provide params/result, so we need the monkey-patch
+          patchRuntimeForTelemetry(runtime);
           
           const text = (params?.message?.content?.text ?? '').toString().trim();
           const globalSuppression = process.env.SUPPRESS_BOOTSTRAP === 'true';
@@ -433,6 +508,44 @@ export const fakeRaresPlugin: Plugin = {
             console.error(`[Plugin Error] Callback failed:`, callbackError);
           }
         }
+      },
+    ],
+    
+    // MODEL_USED event is not useful - ElizaOS doesn't populate params/result
+    // We use monkey-patch for accurate cost tracking instead
+    
+    MODEL_FAILED: [
+      async (params: any) => {
+        console.error('[Plugin] Model call failed:', {
+          modelType: params.modelType,
+          provider: params.provider,
+          error: params.error?.message,
+        });
+      },
+    ],
+    
+    // Track action execution for /fc metrics
+    ACTION_STARTED: [
+      async (params: any) => {
+        console.debug('[Plugin] Action started:', params.action?.name);
+      },
+    ],
+    
+    ACTION_COMPLETED: [
+      async (params: any) => {
+        console.debug('[Plugin] Action completed:', {
+          action: params.action?.name,
+          success: params.result?.success,
+        });
+      },
+    ],
+    
+    ACTION_FAILED: [
+      async (params: any) => {
+        console.error('[Plugin] Action failed:', {
+          action: params.action?.name,
+          error: params.error?.message,
+        });
       },
     ],
   },

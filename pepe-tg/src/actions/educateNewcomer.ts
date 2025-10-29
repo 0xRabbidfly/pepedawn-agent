@@ -1,5 +1,4 @@
 import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, type State, ModelType, composePromptFromState } from '@elizaos/core';
-import { setCallContext } from '../utils/tokenLogger';
 
 /**
  * Newcomer Education Action
@@ -123,10 +122,10 @@ QUESTION: [main question]`;
         template: assessmentTemplate 
       });
       
-      setCallContext('Background tasks');
       const assessment = await runtime.useModel(ModelType.TEXT_SMALL, {
         prompt,
         runtime,
+        context: 'Background tasks',  // Context for telemetry
       });
       
       // Parse assessment
