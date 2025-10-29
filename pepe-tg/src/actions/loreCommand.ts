@@ -1,5 +1,5 @@
 import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, type State } from '@elizaos/core';
-import { retrieveKnowledge } from '../services/knowledgeService';
+import { KnowledgeOrchestratorService } from '../services/KnowledgeOrchestratorService';
 import { LORE_CONFIG } from '../utils/loreConfig';
 
 /**
@@ -60,7 +60,16 @@ export const loreCommand: Action = {
     }
 
     try {
-      const result = await retrieveKnowledge(runtime, query, message.roomId, {
+      // Get the KnowledgeOrchestratorService from runtime
+      const knowledgeService = runtime.getService(
+        KnowledgeOrchestratorService.serviceType
+      ) as KnowledgeOrchestratorService;
+      
+      if (!knowledgeService) {
+        throw new Error('KnowledgeOrchestratorService not available');
+      }
+      
+      const result = await knowledgeService.retrieveKnowledge(query, message.roomId, {
         includeMetrics: true,
       });
 

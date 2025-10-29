@@ -2,12 +2,12 @@ import { type Plugin } from '@elizaos/core';
 import { fakeRaresCardAction, educateNewcomerAction, startCommand, helpCommand, loreCommand, oddsCommand, costCommand, fakeVisualCommand, fakeTestCommand } from '../actions';
 import { fakeRaresContextProvider } from '../providers';
 import { loreDetectorEvaluator } from '../evaluators';
+import { KnowledgeOrchestratorService } from '../services/KnowledgeOrchestratorService';
 import { FULL_CARD_INDEX } from '../data/fullCardIndex';
 import { startAutoRefresh } from '../utils/cardIndexRefresher';
 import { patchRuntimeForTracking } from '../utils/tokenLogger';
 import { storeUserMemory } from '../utils/memoryStorage';
 import { classifyQuery } from '../utils/queryClassifier';
-import { retrieveKnowledge } from '../services/knowledgeService';
 
 /**
  * Fake Rares Plugin - Bootstrap 1.6.2 Compatible
@@ -50,6 +50,7 @@ export const fakeRaresPlugin: Plugin = {
   
   providers: [fakeRaresContextProvider],
   evaluators: [],
+  services: [KnowledgeOrchestratorService],
   
   events: {
     MESSAGE_RECEIVED: [
@@ -337,7 +338,15 @@ export const fakeRaresPlugin: Plugin = {
             params.callback = async () => [];
             
             try {
-              const result = await retrieveKnowledge(runtime, text, message.roomId, {
+              const knowledgeService = runtime.getService(
+                KnowledgeOrchestratorService.serviceType
+              ) as KnowledgeOrchestratorService;
+              
+              if (!knowledgeService) {
+                throw new Error('KnowledgeOrchestratorService not available');
+              }
+              
+              const result = await knowledgeService.retrieveKnowledge(text, message.roomId, {
                 mode: 'FACTS',
                 includeMetrics: true,
               });
@@ -419,7 +428,5 @@ export const fakeRaresPlugin: Plugin = {
       },
     ],
   },
-  
-  services: [],
 };
 
