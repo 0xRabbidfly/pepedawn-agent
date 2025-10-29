@@ -311,8 +311,13 @@ When PEPEDAWN receives a message, it checks in this order:
 
 1. **Memory capture** - "remember this" detection
 2. **Commands** - `/f`, `/fv`, `/ft`, `/fl`, `/fc`, `/odds`, etc.
-3. **Context injection** - If card names mentioned (CAPITALS)
-4. **General conversation** - ElizaOS default AI response
+3. **Auto-routing** - FACTS questions → knowledge retrieval
+   - ✅ Questions: "What are the submission rules?"
+   - ❌ Statements: "Three grails for sale..."
+   - ❌ User-to-user replies: User A → User B conversation
+   - ✅ Replies to bot: User → Bot question
+4. **Context injection** - If card names mentioned (CAPITALS)
+5. **General conversation** - ElizaOS default AI response
 
 ---
 
@@ -335,6 +340,6 @@ For new users, try these in order:
 
 ---
 
-**Last Updated:** October 28, 2025  
-**Version:** 1.0.0
+**Last Updated:** October 29, 2025  
+**Version:** 2.2.0
 

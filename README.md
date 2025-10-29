@@ -1274,6 +1274,7 @@ bun test src/__tests__/utils/queryClassifier.test.ts
 bun test src/__tests__/utils/loreRetrieval.test.ts
 bun test src/__tests__/utils/memoryStorage.test.ts
 bun test src/__tests__/actions/loreCommand.test.ts
+bun test src/__tests__/auto-routing.test.ts
 
 # Watch mode (auto-rerun on changes)
 bun test --watch
@@ -1284,7 +1285,7 @@ bun test --coverage
 
 ### Test Structure
 
-The project has **9 custom test files** (120+ tests total):
+The project has **10 custom test files** (140+ tests total):
 
 **1. Bootstrap Suppression** (pre-commit)
 - `bootstrap-suppression.test.ts` - Validates Bootstrap AI suppression
@@ -1296,13 +1297,14 @@ The project has **9 custom test files** (120+ tests total):
 - `utils/visionAnalyzer.test.ts` - Shared vision API utility
 - `integration/visual-commands.test.ts` - Plugin routing & command conflicts
 
-**6-9. Knowledge & Auto-Routing** (4 files)
+**6-10. Knowledge & Auto-Routing** (5 files)
 - `utils/queryClassifier.test.ts` - FACTS/LORE/UNCERTAIN classification
 - `utils/loreRetrieval.test.ts` - Memory priority & source boost logic
 - `utils/memoryStorage.test.ts` - Card detection & memory boost logic
 - `actions/loreCommand.test.ts` - `/fl` command & FACTS mode filtering
+- `auto-routing.test.ts` - Auto-routing logic & reply detection (20 tests) ✨
 
-> **Note:** Framework test files (ElizaOS boilerplate) are also present but focus on these 9 custom tests for this project.
+> **Note:** Framework test files (ElizaOS boilerplate) are also present but focus on these 10 custom tests for this project.
 
 ---
 
@@ -1632,6 +1634,6 @@ Built with ❤️ for the Fake Rares community.
 
 ---
 
-**Last Updated:** October 23, 2025  
-**Version:** 1.2.0  
+**Last Updated:** October 29, 2025  
+**Version:** 2.2.0  
 **Status:** Production Ready ✅

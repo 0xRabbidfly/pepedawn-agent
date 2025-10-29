@@ -99,7 +99,9 @@
 │  • Tell me about FREEDOMKEK                                  │
 │  • What's La Faka Nostra?                                    │
 │                                                              │
-│  I remember conversations and have deep Fake Rares knowledge!│
+│  💡 Smart routing: FACTS questions auto-route to /fl        │
+│  💡 Statements (e.g., "Three grails for sale") stay natural │
+│  💡 I remember conversations and have deep Fake Rares know!  │
 └──────────────────────────────────────────────────────────────┘
 
 ╔══════════════════════════════════════════════════════════════╗
@@ -162,5 +164,5 @@ Any text      →   GPT-4o + PEPEDAWN    →   💬 Helpful reply
 
 ---
 
-**Last Updated:** October 28, 2025
+**Last Updated:** October 29, 2025
 

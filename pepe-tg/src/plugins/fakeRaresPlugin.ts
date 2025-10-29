@@ -411,12 +411,57 @@ export const fakeRaresPlugin: Plugin = {
           }
           
           // === AUTO-ROUTE FACTS QUESTIONS ===
-          // Detect fact questions and route to knowledge retrieval
+          // Only auto-route actual questions, not statements/announcements or replies to other users
           const queryType = classifyQuery(text);
           console.log(`[FakeRaresPlugin] Query classification: ${queryType}`);
           
-          if (queryType === 'FACTS') {
-            console.log(`[FakeRaresPlugin] 📚 Auto-routing FACTS query to knowledge retrieval`);
+          // Skip auto-routing if this is a reply to another user (not the bot)
+          // Replies to other users are conversation between humans, not questions for the bot
+          const isReply = !!message.content?.inReplyTo;
+          if (isReply) {
+            // Try to determine if this is a reply to the bot or another user
+            const rawMessage = params.ctx?.message;
+            const replyToUserId = rawMessage?.reply_to_message?.from?.id;
+            
+            // Try to get bot ID from ctx or Telegram service
+            let botUserId: number | undefined;
+            if (params.ctx?.telegram?.bot?.botInfo?.id) {
+              botUserId = params.ctx.telegram.bot.botInfo.id;
+            } else if (params.ctx?.telegram?.bot?.me?.id) {
+              botUserId = params.ctx.telegram.bot.me.id;
+            } else {
+              // Fallback: try to get Telegram service from runtime
+              try {
+                const telegramService = runtime.services?.find(
+                  (s: any) => s.serviceType === 'telegram'
+                );
+                botUserId = telegramService?.bot?.botInfo?.id || telegramService?.bot?.me?.id;
+              } catch (e) {
+                // If we can't get bot ID, assume it's a reply to another user (safer default)
+              }
+            }
+            
+            // Skip auto-routing if:
+            // 1. We can't determine who it's replying to, OR
+            // 2. It's clearly replying to someone other than the bot
+            if (!replyToUserId || !botUserId || replyToUserId !== botUserId) {
+              console.log(`[FakeRaresPlugin] Skipping auto-routing - message is a reply ${replyToUserId && botUserId ? `to user ${replyToUserId} (not bot ${botUserId})` : '(unknown target)'}`);
+              // Let it go to bootstrap for natural conversation handling
+              return;
+            }
+            // If it IS a reply to the bot, continue with auto-routing check below
+            console.log(`[FakeRaresPlugin] Message is a reply to bot, checking if it's a question`);
+          }
+          
+          // Comprehensive question detection
+          const isQuestion = 
+            text.includes('?') ||  // Explicit question mark
+            /^(what|how|when|where|who|why|can|do|does|is|are|will|should|could)\s/i.test(text) ||  // Question words
+            /^(tell|show|explain|describe|list|give)\s+(me|us)\s+(about|the|how)/i.test(text) ||  // Imperative requests
+            /\b(need to know|want to know|wondering|curious)\b/i.test(text);  // Indirect questions
+          
+          if (queryType === 'FACTS' && isQuestion) {
+            console.log(`[FakeRaresPlugin] 📚 Auto-routing FACTS question to knowledge retrieval`);
             const actionCallback = typeof params.callback === 'function' ? params.callback : null;
             params.callback = async () => [];
             
@@ -527,24 +572,29 @@ export const fakeRaresPlugin: Plugin = {
     // Track action execution for /fc metrics
     ACTION_STARTED: [
       async (params: any) => {
-        console.debug('[Plugin] Action started:', params.action?.name);
+        const actionName = params.action?.name || params.actionName || 'unknown';
+        if (actionName !== 'unknown') {
+          console.debug(`[Plugin] Action started: ${actionName}`);
+        }
       },
     ],
     
     ACTION_COMPLETED: [
       async (params: any) => {
-        console.debug('[Plugin] Action completed:', {
-          action: params.action?.name,
-          success: params.result?.success,
-        });
+        const actionName = params.action?.name || params.actionName || 'unknown';
+        if (actionName !== 'unknown') {
+          console.debug(`[Plugin] Action completed: ${actionName}`, {
+            success: params.result?.success ?? true,
+          });
+        }
       },
     ],
     
     ACTION_FAILED: [
       async (params: any) => {
-        console.error('[Plugin] Action failed:', {
-          action: params.action?.name,
-          error: params.error?.message,
+        const actionName = params.action?.name || params.actionName || 'unknown';
+        console.error(`[Plugin] Action failed: ${actionName}`, {
+          error: params.error?.message || 'Unknown error',
         });
       },
     ],

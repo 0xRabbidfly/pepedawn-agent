@@ -625,7 +625,9 @@
                                       │
                           ┌───────────▼───────────┐
                           │ FACTS (what/how/rules)│
-                          │      detected?        │
+                          │    + Is Question?     │
+                          │    + Not reply to     │
+                          │      other user?      │
                           └───────────┬───────────┘
                                       │
                               YES ────┼──── NO
@@ -635,6 +637,12 @@
                     │ • Force FACTS mode │    │
                     │ • Wiki + memories  │    │
                     │ • Skip Bootstrap   │    │
+                    │                    │    │
+                    │ Blocked:           │    │
+                    │ • Statements       │    │
+                    │ • Announcements    │    │
+                    │ • User-to-user     │    │
+                    │   replies          │    │
                     └──────────┬─────────┘    │
                                │              │
                             (done)            ▼
@@ -688,7 +696,10 @@
 ```
 
 **Key Features:**
-- **Auto-routing** - FACTS questions → knowledge retrieval (no AI hallucination)
+- **Smart auto-routing** - FACTS questions → knowledge retrieval (no AI hallucination)
+  - Only routes actual questions (not statements like "Three grails for sale...")
+  - Skips user-to-user replies (only routes replies to bot)
+  - Detects: explicit `?`, question words, imperative requests, indirect questions
 - **PEPEDAWN persona** - Community OG, helpful, knowledgeable
 - **Context injection** - Card info when cards mentioned
 - **Conversation memory** - Remembers chat history
@@ -772,7 +783,7 @@ For new team members, ensure you understand:
 
 ---
 
-**Last Updated:** October 28, 2025  
-**Version:** 1.0.0  
+**Last Updated:** October 29, 2025  
+**Version:** 2.2.0  
 **Status:** Ready for onboarding 🎓
 
