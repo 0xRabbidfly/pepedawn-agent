@@ -5,6 +5,8 @@
  * and monitoring bot actions.
  */
 
+import { logger } from '@elizaos/core';
+
 export interface LogContext {
   [key: string]: any;
 }
@@ -18,36 +20,36 @@ export function createLogger(namespace: string) {
   return {
     debug: (message: string, context?: LogContext) => {
       const ctx = context ? ` ${JSON.stringify(context)}` : '';
-      console.log(`🔍 ${prefix} ${message}${ctx}`);
+      logger.debug(`🔍 ${prefix} ${message}${ctx}`);
     },
     
     info: (message: string, context?: LogContext) => {
       const ctx = context ? ` ${JSON.stringify(context)}` : '';
-      console.log(`ℹ️  ${prefix} ${message}${ctx}`);
+      logger.info(`ℹ️  ${prefix} ${message}${ctx}`);
     },
     
     success: (message: string, context?: LogContext) => {
       const ctx = context ? ` ${JSON.stringify(context)}` : '';
-      console.log(`✅ ${prefix} ${message}${ctx}`);
+      logger.info(`✅ ${prefix} ${message}${ctx}`);
     },
     
     warning: (message: string, context?: LogContext) => {
       const ctx = context ? ` ${JSON.stringify(context)}` : '';
-      console.log(`⚠️  ${prefix} ${message}${ctx}`);
+      logger.warn(`⚠️  ${prefix} ${message}${ctx}`);
     },
     
     error: (message: string, error?: Error | string, context?: LogContext) => {
       const errorMsg = error instanceof Error ? error.message : error;
       const ctx = context ? ` ${JSON.stringify(context)}` : '';
-      console.error(`❌ ${prefix} ${message}${errorMsg ? ` - ${errorMsg}` : ''}${ctx}`);
+      logger.error(`❌ ${prefix} ${message}${errorMsg ? ` - ${errorMsg}` : ''}${ctx}`);
     },
     
     step: (stepNumber: number, description: string) => {
-      console.log(`\n🔧 ${prefix} STEP ${stepNumber}: ${description}`);
+      logger.debug(`\n🔧 ${prefix} STEP ${stepNumber}: ${description}`);
     },
     
     separator: () => {
-      console.log(`${'='.repeat(60)}`);
+      logger.debug(`${'='.repeat(60)}`);
     },
   };
 }

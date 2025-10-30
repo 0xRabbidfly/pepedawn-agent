@@ -12,6 +12,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { logger } from '@elizaos/core';
 
 // Path relative to THIS file (works everywhere)
 // When running from src: src/utils/embeddingsDb.ts → src/data/card-embeddings.json
@@ -39,15 +40,15 @@ let embeddingsCache: EmbeddingsDatabase | null = null;
  */
 function loadEmbeddings(): EmbeddingsDatabase {
   if (embeddingsCache) {
-    console.log(`📦 [EmbeddingsDB] Using cached embeddings (${Object.keys(embeddingsCache).length} cards)`);
+    logger.info(`📦 [EmbeddingsDB] Using cached embeddings (${Object.keys(embeddingsCache).length} cards)`);
     return embeddingsCache;
   }
   
-  console.log(`🔍 [EmbeddingsDB] Loading from: ${EMBEDDINGS_FILE}`);
-  console.log(`🔍 [EmbeddingsDB] File exists: ${existsSync(EMBEDDINGS_FILE)}`);
+  logger.debug(`🔍 [EmbeddingsDB] Loading from: ${EMBEDDINGS_FILE}`);
+  logger.debug(`🔍 [EmbeddingsDB] File exists: ${existsSync(EMBEDDINGS_FILE)}`);
   
   if (!existsSync(EMBEDDINGS_FILE)) {
-    console.warn(`⚠️  [EmbeddingsDB] File not found! Creating empty database.`);
+    logger.warn(`⚠️  [EmbeddingsDB] File not found! Creating empty database.`);
     // Create empty file if doesn't exist
     writeFileSync(EMBEDDINGS_FILE, JSON.stringify({}, null, 2));
     embeddingsCache = {};
@@ -61,7 +62,7 @@ function loadEmbeddings(): EmbeddingsDatabase {
     embeddingsCache = {};
   }
   
-  console.log(`✅ [EmbeddingsDB] Loaded ${Object.keys(embeddingsCache).length} card embeddings`);
+  logger.info(`✅ [EmbeddingsDB] Loaded ${Object.keys(embeddingsCache).length} card embeddings`);
   return embeddingsCache;
 }
 
@@ -134,7 +135,7 @@ export async function getCardEmbedding(asset: string): Promise<{
  */
 export function cosineSimilarity(a: number[], b: number[]): number {
   if (a.length !== b.length) {
-    console.warn(`⚠️  [EmbeddingsDB] Dimension mismatch: ${a.length} vs ${b.length} - cannot compare`);
+    logger.warn(`⚠️  [EmbeddingsDB] Dimension mismatch: ${a.length} vs ${b.length} - cannot compare`);
     return 0;  // Return no similarity if dimensions don't match
   }
   
@@ -167,10 +168,10 @@ export async function findMostSimilarCard(
   const embeddings = loadEmbeddings();
   const assets = Object.keys(embeddings);
   
-  console.log(`🔍 [EmbeddingsDB] Searching ${assets.length} cards for similarity...`);
+  logger.debug(`🔍 [EmbeddingsDB] Searching ${assets.length} cards for similarity...`);
   
   if (assets.length === 0) {
-    console.warn(`⚠️  [EmbeddingsDB] No embeddings in database! Cannot find similar cards.`);
+    logger.warn(`⚠️  [EmbeddingsDB] No embeddings in database! Cannot find similar cards.`);
     return null;
   }
   
@@ -190,7 +191,7 @@ export async function findMostSimilarCard(
   }
   
   if (bestMatch) {
-    console.log(`✅ [EmbeddingsDB] Most similar: ${bestMatch.asset} (${(bestMatch.similarity * 100).toFixed(1)}% match)`);
+    logger.info(`✅ [EmbeddingsDB] Most similar: ${bestMatch.asset} (${(bestMatch.similarity * 100).toFixed(1)}% match)`);
   } else {
     console.log(`ℹ️  [EmbeddingsDB] No similar cards found`);
   }

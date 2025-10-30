@@ -83,10 +83,10 @@ export function addCardToMap(cardName: string, series: number): void {
   if (inFullIndex) {
     // Card is already in full index - no need to cache
     CARD_SERIES_MAP[upper] = series;
-    console.log(`ℹ️  ${upper} already in full index (series ${series})`);
+    logger.debug(`ℹ️  ${upper} already in full index (series ${series})`);
   } else {
     // NEW CARD discovered! (likely series 19+)
-    console.log(`🆕 NEW CARD DISCOVERED: ${upper} in series ${series}`);
+    logger.info(`🆕 NEW CARD DISCOVERED: ${upper} in series ${series}`);
     
     RUNTIME_CACHE[upper] = series;
     CARD_SERIES_MAP[upper] = series;

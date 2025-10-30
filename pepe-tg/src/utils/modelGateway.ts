@@ -13,6 +13,7 @@
 
 import OpenAI from 'openai';
 import type { IAgentRuntime } from '@elizaos/core';
+import { logger } from '@elizaos/core';
 import type { TelemetryService } from '../services/TelemetryService';
 
 export interface ModelCallOptions {
@@ -80,17 +81,17 @@ export async function callTextModel(
   }
   
   try {
-    console.log(`[ModelGateway] Calling ${options.model} with prompt length: ${options.prompt.length}`);
+    logger.debug(`[ModelGateway] Calling ${options.model} with prompt length: ${options.prompt.length}`);
     const response = await openai.chat.completions.create(requestParams);
     const text = response.choices[0]?.message?.content || '';
     
     // Check for empty response
     if (!text || text.trim().length === 0) {
-      console.error(`[ModelGateway] Empty response from ${options.model}`);
+      logger.error(`[ModelGateway] Empty response from ${options.model}`);
       throw new Error(`Empty response from model ${options.model}`);
     }
     
-    console.log(`[ModelGateway] Response received: ${text.length} chars`);
+    logger.debug(`[ModelGateway] Response received: ${text.length} chars`);
     
     const tokensIn = response.usage?.prompt_tokens || estimateTokens(options.prompt);
     const tokensOut = response.usage?.completion_tokens || estimateTokens(text);
@@ -121,8 +122,8 @@ export async function callTextModel(
       duration,
     };
   } catch (error: any) {
-    console.error(`[ModelGateway] ${options.model} call failed:`, error.message);
-    console.error(`[ModelGateway] Full error:`, error);
+    logger.error(`[ModelGateway] ${options.model} call failed:`, error.message);
+    logger.error(`[ModelGateway] Full error:`, error);
     throw error;
   }
 }
@@ -178,7 +179,7 @@ export async function callVisionModel(
     
     // Retry once if empty (common with animated GIFs)
     if (!text) {
-      console.warn('[ModelGateway] Empty response, retrying...');
+      logger.warn('[ModelGateway] Empty response, retrying...');
       await new Promise(resolve => setTimeout(resolve, 1500));
       response = await openai.chat.completions.create(requestParams);
       text = response.choices[0]?.message?.content || '';
@@ -217,7 +218,7 @@ export async function callVisionModel(
       duration,
     };
   } catch (error: any) {
-    console.error(`[ModelGateway] ${options.model} vision call failed:`, error.message);
+    logger.error(`[ModelGateway] ${options.model} vision call failed:`, error.message);
     throw error;
   }
 }

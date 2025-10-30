@@ -1,4 +1,10 @@
-import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, type State } from '@elizaos/core';
+import {
+  type Action,
+  type HandlerCallback,
+  type IAgentRuntime,
+  type Memory,
+  type State,
+} from "@elizaos/core";
 
 /**
  * Basic Telegram Commands
@@ -6,22 +12,22 @@ import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, typ
  */
 
 export const startCommand: Action = {
-  name: 'START_COMMAND',
-  description: 'Handles /start command for new users',
-  similes: ['START', 'BEGIN'],
+  name: "START_COMMAND",
+  description: "Handles /start command for new users",
+  similes: ["START", "BEGIN"],
   examples: [],
-  
+
   validate: async (runtime: IAgentRuntime, message: Memory) => {
-    const text = message.content.text?.toLowerCase().trim() || '';
-    return text === '/start';
+    const text = message.content.text?.toLowerCase().trim() || "";
+    return text === "/start";
   },
-  
+
   handler: async (
     runtime: IAgentRuntime,
     message: Memory,
     state?: State,
     options?: any,
-    callback?: HandlerCallback
+    callback?: HandlerCallback,
   ) => {
     const welcomeMessage = `gm anon! 🐸✨
 
@@ -45,31 +51,31 @@ WAGMI 🚀`;
     if (callback) {
       await callback({ text: welcomeMessage });
     }
-    
+
     return {
       success: true,
-      text: 'Sent welcome message'
+      text: "Sent welcome message",
     };
-  }
+  },
 };
 
 export const helpCommand: Action = {
-  name: 'HELP_COMMAND',
-  description: 'Handles /help command',
-  similes: ['HELP', 'INFO'],
+  name: "HELP_COMMAND",
+  description: "Handles /help command",
+  similes: ["HELP", "INFO"],
   examples: [],
-  
+
   validate: async (runtime: IAgentRuntime, message: Memory) => {
-    const text = message.content.text?.toLowerCase().trim() || '';
-    return text === '/help' || text === '/info';
+    const text = message.content.text?.toLowerCase().trim() || "";
+    return text === "/help" || text === "/info";
   },
-  
+
   handler: async (
     runtime: IAgentRuntime,
     message: Memory,
     state?: State,
     options?: any,
-    callback?: HandlerCallback
+    callback?: HandlerCallback,
   ) => {
     const helpMessage = `🐸 **PEPEDAWN Commands**
 
@@ -80,6 +86,11 @@ export const helpCommand: Action = {
 
 **Fake Vision:**
 \`/fv CARDNAME\` - AI visual analysis & meme breakdown
+
+**Fake Market:**
+\`/fm 10\` - Last 10 sales + listings
+\`/fm S 5\` - Last 5 sales only
+\`/fm L 15\` - Last 15 listings only
 
 **Fake Lore:**
 \`/fl CARDNAME\` - Get card lore & community stories
@@ -100,11 +111,10 @@ Type \`/start\` for welcome • Mention @pepedawn_bot anytime 🐸`;
     if (callback) {
       await callback({ text: helpMessage });
     }
-    
+
     return {
       success: true,
-      text: 'Sent help message'
+      text: "Sent help message",
     };
-  }
+  },
 };
-

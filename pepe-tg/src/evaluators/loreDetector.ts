@@ -115,13 +115,13 @@ Examples:
         }
       }, 'lore_repository');
       
-      console.log(`✅ New lore detected for ${cardName}: ${loreSummary}`);
+      logger.info(`✅ New lore detected for ${cardName}: ${loreSummary}`);
       
       // Evaluators can return void or nothing
       return;
       
     } catch (error) {
-      console.error('Error in lore detector:', error);
+      logger.error({ error }, 'Error in lore detector');
       return;
     }
   },

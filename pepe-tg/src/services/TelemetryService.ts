@@ -91,7 +91,7 @@ export class TelemetryService extends Service {
   }
 
   static async start(runtime: IAgentRuntime): Promise<TelemetryService> {
-    console.log('📊 [Telemetry] Starting service...');
+    logger.info('📊 [Telemetry] Starting service...');
     const service = new TelemetryService(runtime);
     
     // Start daily archive check
@@ -100,12 +100,12 @@ export class TelemetryService extends Service {
       24 * 60 * 60 * 1000  // Check daily
     );
     
-    console.log('✅ [Telemetry] Service ready');
+    logger.info('✅ [Telemetry] Service ready');
     return service;
   }
 
   static async stop(runtime: IAgentRuntime): Promise<void> {
-    console.log('🛑 [Telemetry] Stopping service...');
+    logger.info('🛑 [Telemetry] Stopping service...');
     const service = runtime.getService(TelemetryService.serviceType);
     if (service) {
       await service.stop();
@@ -117,7 +117,7 @@ export class TelemetryService extends Service {
       clearInterval(this.archiveTimer);
       this.archiveTimer = null;
     }
-    console.log('✅ [Telemetry] Service stopped');
+    logger.info('✅ [Telemetry] Service stopped');
   }
 
   /**
@@ -137,13 +137,13 @@ export class TelemetryService extends Service {
       
       // Console output
       const durationStr = log.duration ? `, ${log.duration}ms` : '';
-      console.log(
+      logger.debug(
         `[Telemetry] ${log.model} [${log.source}]: ` +
         `${log.tokensIn}→${log.tokensOut} tokens, ` +
         `$${log.cost.toFixed(6)}${durationStr}`
       );
     } catch (err) {
-      console.error('[Telemetry] Failed to log:', err);
+      logger.error('[Telemetry] Failed to log:', err);
     }
   }
 
@@ -195,7 +195,7 @@ export class TelemetryService extends Service {
       
       return logs;
     } catch (err) {
-      console.error('[Telemetry] Failed to read logs:', err);
+      logger.error('[Telemetry] Failed to read logs:', err);
       return [];
     }
   }
@@ -285,7 +285,7 @@ export class TelemetryService extends Service {
       
       writeFileSync(lastCheckFile, currentMonth, 'utf8');
     } catch (err) {
-      console.error('[Telemetry] Archive check failed:', err);
+      logger.error('[Telemetry] Archive check failed:', err);
     }
   }
 
@@ -327,15 +327,15 @@ export class TelemetryService extends Service {
           logs,
         }, null, 2), 'utf8');
         
-        console.log(`[Telemetry] 📦 Archived ${logs.length} logs to ${monthKey}`);
+        logger.debug(`[Telemetry] 📦 Archived ${logs.length} logs to ${monthKey}`);
       }
       
       // Clear main log
       writeFileSync(LOG_FILE, '', 'utf8');
-      console.log('[Telemetry] 🗑️  Cleared main log file');
+      logger.debug('[Telemetry] 🗑️  Cleared main log file');
       
     } catch (err) {
-      console.error('[Telemetry] Archive failed:', err);
+      logger.error('[Telemetry] Archive failed:', err);
     }
   }
 }

@@ -13,6 +13,11 @@ export type QueryType = 'FACTS' | 'LORE' | 'UNCERTAIN';
 export function classifyQuery(query: string): QueryType {
   const lowerQuery = query.toLowerCase();
   
+  // Skip slash commands - they're handled by specific actions
+  if (/^\/[a-z]+/i.test(lowerQuery.trim())) {
+    return 'UNCERTAIN';
+  }
+  
   // FACTS indicators - looking for concrete information
   const factKeywords = [
     // Direct questions

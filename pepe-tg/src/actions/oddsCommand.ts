@@ -35,7 +35,7 @@ const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS as Address;
 const IS_MAINNET = process.env.ETHEREUM_NETWORK === 'mainnet';
 
 if (!CONTRACT_ADDRESS) {
-  console.warn('[oddsCommand] CONTRACT_ADDRESS not set - /dawn command will fail');
+  logger.warn('[oddsCommand] CONTRACT_ADDRESS not set - /dawn command will fail');
 }
 
 // ============================================================================
@@ -187,7 +187,7 @@ async function fetchLotteryData(): Promise<CachedOddsData> {
           hasProof: stats[3], // hasProof
         });
       } catch (error) {
-        console.error(`[oddsCommand] Failed to fetch stats for ${participant}:`, error);
+        logger.error(`[oddsCommand] Failed to fetch stats for ${participant}:`, error);
       }
     }
 
@@ -209,7 +209,7 @@ async function fetchLotteryData(): Promise<CachedOddsData> {
 
     return cachedData;
   } catch (error) {
-    console.error('[oddsCommand] Failed to fetch lottery data:', error);
+    logger.error('[oddsCommand] Failed to fetch lottery data:', error);
     throw error;
   }
 }
@@ -350,7 +350,7 @@ export const oddsCommand: Action = {
         text: 'Odds displayed successfully',
       };
     } catch (error) {
-      console.error('[oddsCommand] Handler error:', error);
+      logger.error('[oddsCommand] Handler error:', error);
 
       if (callback) {
         await callback({

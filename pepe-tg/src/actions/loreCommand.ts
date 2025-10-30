@@ -1,4 +1,4 @@
-import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, type State } from '@elizaos/core';
+import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, type State, logger } from '@elizaos/core';
 import { KnowledgeOrchestratorService } from '../services/KnowledgeOrchestratorService';
 import { LORE_CONFIG } from '../utils/loreConfig';
 
@@ -47,7 +47,7 @@ export const loreCommand: Action = {
     const queryType = classifyQuery(query);
     
     if (queryType === 'UNCERTAIN') {
-      console.log(`[LoreCommand] UNCERTAIN query - sending clarification prompt`);
+      logger.debug(`[LoreCommand] UNCERTAIN query - sending clarification prompt`);
       
       if (callback) {
         await callback({ text: CLARIFICATION_MESSAGE });
@@ -78,7 +78,7 @@ export const loreCommand: Action = {
       if (finalMessage.length > LORE_CONFIG.TELEGRAM_MAX_LENGTH) {
         const truncatePoint = LORE_CONFIG.TELEGRAM_MAX_LENGTH - 50;
         finalMessage = finalMessage.slice(0, truncatePoint) + '...\n\n(continued in next message)';
-        console.log(`⚠️  Truncated message to ${finalMessage.length} chars`);
+        logger.debug(`⚠️  Truncated message to ${finalMessage.length} chars`);
       }
 
       if (callback) {
@@ -92,7 +92,7 @@ export const loreCommand: Action = {
       };
 
     } catch (err) {
-      console.error('❌ [LORE ERROR]', err);
+      logger.error({ error: err }, '❌ [LORE ERROR]');
       
       const errorMsg = 'Bruh, something went wrong searching for that lore. Try again? 🐸';
       

@@ -4,6 +4,7 @@ Auto-generated from all feature plans. Last updated: 2025-10-20
 
 ## Active Technologies
 - Node.js 20+ with Bun 1.0+ + ElizaOS framework, Telegram Bot API (@telegraf/telegram or similar), existing card data index (002-specify-scripts-bash)
+- Node.js 23 + Bun (ElizaOS runtime environment) (002-market-transaction-reporter)
 
 ## Project Structure
 ```
@@ -18,6 +19,7 @@ tests/
 Node.js 20+ with Bun 1.0+: Follow standard conventions
 
 ## Recent Changes
+- 002-market-transaction-reporter: Added Node.js 23 + Bun (ElizaOS runtime environment)
 - 002-specify-scripts-bash: Added Node.js 20+ with Bun 1.0+ + ElizaOS framework, Telegram Bot API (@telegraf/telegram or similar), existing card data index
 
 <!-- MANUAL ADDITIONS START -->

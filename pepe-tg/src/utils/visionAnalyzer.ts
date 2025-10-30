@@ -88,7 +88,7 @@ export async function analyzeWithVision(
     };
     
     logger.error('Vision API error - FULL DETAILS:', error);
-    console.error('🔴 OpenAI Error Details:', JSON.stringify(errorDetails, null, 2));
+    logger.error({ errorDetails }, '🔴 OpenAI Error Details');
     
     // Provide helpful error messages
     if (error.code === 'insufficient_quota') {

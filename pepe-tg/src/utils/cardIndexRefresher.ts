@@ -8,6 +8,7 @@
  */
 
 import type { CardInfo } from '../data/fullCardIndex';
+import { logger as coreLogger } from '@elizaos/core';
 
 // Configuration
 const REFRESH_INTERVAL_MS = 60 * 60 * 1000; // 1 hour
@@ -25,11 +26,11 @@ let refreshTimer: NodeJS.Timeout | null = null;
 const logger = {
   info: (msg: string, data?: any) => {
     const timestamp = new Date().toISOString();
-    console.log(`[${timestamp}] [CardRefresh] ${msg}`, data || '');
+    coreLogger.info(`[${timestamp}] [CardRefresh] ${msg}`, data || '');
   },
   error: (msg: string, error: any) => {
     const timestamp = new Date().toISOString();
-    console.error(`[${timestamp}] [CardRefresh] ERROR: ${msg}`, error);
+    coreLogger.error(`[${timestamp}] [CardRefresh] ERROR: ${msg}`, error);
   },
 };
 

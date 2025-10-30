@@ -1,5 +1,9 @@
 logs/
 
+# Runtime databases
+data/transactions/
+:memory:/
+
 # Token tracking data
 src/data/token-logs.jsonl
 src/data/archives/

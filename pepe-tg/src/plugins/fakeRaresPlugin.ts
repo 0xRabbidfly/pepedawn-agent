@@ -1,5 +1,6 @@
-import { type Plugin } from '@elizaos/core';
+import { type Plugin, logger } from '@elizaos/core';
 import { fakeRaresCardAction, educateNewcomerAction, startCommand, helpCommand, loreCommand, oddsCommand, costCommand, fakeVisualCommand, fakeTestCommand } from '../actions';
+import { fakeMarketAction } from '../actions/fakeMarketAction';
 import { fakeRaresContextProvider } from '../providers';
 import { loreDetectorEvaluator } from '../evaluators';
 import { KnowledgeOrchestratorService } from '../services/KnowledgeOrchestratorService';
@@ -77,7 +78,7 @@ function patchRuntimeForTelemetry(runtime: IAgentRuntime): void {
       
       return result;
     } catch (err) {
-      console.error('[Runtime Patch] Model call error:', err);
+        logger.error({ error: err }, '[Runtime Patch] Model call error');
       throw err;
     }
   };
@@ -103,13 +104,13 @@ export const fakeRaresPlugin: Plugin = {
   
   // Initialize auto-refresh on plugin load
   init: async () => {
-    console.log('\n🎴 Initializing Fake Rares Plugin...');
-    console.log(`📦 Loaded ${FULL_CARD_INDEX.length} cards from disk`);
+    logger.info('\n🎴 Initializing Fake Rares Plugin...');
+    logger.info(`📦 Loaded ${FULL_CARD_INDEX.length} cards from disk`);
     
     // Start auto-refresh from GitHub
     startAutoRefresh(FULL_CARD_INDEX);
     
-    console.log('✅ Fake Rares Plugin initialized\n');
+    logger.info('✅ Fake Rares Plugin initialized\n');
   },
   
   actions: [
@@ -144,7 +145,7 @@ export const fakeRaresPlugin: Plugin = {
           const mentionsFakeasf = /fakeasf/i.test(text);
           const mentionsBurn = /burn|burning/i.test(text);
           if (mentionsFakeasf && mentionsBurn) {
-            console.log('[FakeRaresPlugin] 🚨 BLOCKED FAKEASF BURN QUERY - responding without LLM');
+            logger.info('[FakeRaresPlugin] 🚨 BLOCKED FAKEASF BURN QUERY - responding without LLM');
             const callback = params.callback;
             if (callback) {
               await callback({
@@ -164,6 +165,7 @@ export const fakeRaresPlugin: Plugin = {
           const isFvCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fv(?:\s|$)/i.test(text);
           const isFtCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/ft(?:\s|$)/i.test(text);
           const isLoreCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fl/i.test(text);
+          const isFmCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fm(?:\s|$)/i.test(text);
           const isDawnCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/dawn$/i.test(text);
           const isHelpCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/help$/i.test(text);
           const isStartCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/start$/i.test(text);
@@ -173,11 +175,11 @@ export const fakeRaresPlugin: Plugin = {
           const isReplyToBot = params?.message?.content?.inReplyTo; // User replied to bot's message
           const hasRememberThis = /remember\s+this/i.test(text);
 
-          console.log(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${isFCommand} isFv=${isFvCommand} isFt=${isFtCommand} isLore=${isLoreCommand} isDawn=${isDawnCommand} isHelp=${isHelpCommand} isStart=${isStartCommand} isCost=${isCostCommand} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
+          logger.debug(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${isFCommand} isFv=${isFvCommand} isFt=${isFtCommand} isLore=${isLoreCommand} isFm=${isFmCommand} isDawn=${isDawnCommand} isHelp=${isHelpCommand} isStart=${isStartCommand} isCost=${isCostCommand} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
           
           // === MEMORY CAPTURE: "remember this" ===
           if ((hasCapitalizedWord || isReplyToBot || hasBotMention) && hasRememberThis) {
-            console.log('[FakeRaresPlugin] "remember this" detected → storing memory');
+            logger.debug('[FakeRaresPlugin] "remember this" detected → storing memory');
             const actionCallback = typeof params.callback === 'function' ? params.callback : null;
             
             try {
@@ -203,15 +205,15 @@ export const fakeRaresPlugin: Plugin = {
                   message.metadata = message.metadata || {};
                   (message.metadata as any).__handledByCustom = true;
                 } catch {}
-                console.log('[FakeRaresPlugin] Memory stored successfully');
+                logger.debug('[FakeRaresPlugin] Memory stored successfully');
                 return; // Done
               } else if (result.ignoredReason) {
                 // Silent ignore (empty content, etc.)
-                console.debug(`[FakeRaresPlugin] Memory ignored: ${result.ignoredReason}`);
+                logger.debug(`[FakeRaresPlugin] Memory ignored: ${result.ignoredReason}`);
                 // Don't respond, don't mark as handled, let flow continue
               } else if (result.error) {
                 // Storage failed
-                console.error(`[FakeRaresPlugin] Memory storage failed: ${result.error}`);
+                logger.error(`[FakeRaresPlugin] Memory storage failed: ${result.error}`);
                 if (actionCallback) {
                   await actionCallback({
                     text: `❌ Failed to store memory: ${result.error}`
@@ -220,14 +222,14 @@ export const fakeRaresPlugin: Plugin = {
                 return; // Done (with error)
               }
             } catch (error) {
-              console.error('[FakeRaresPlugin] Memory storage exception:', error);
+              logger.error('[FakeRaresPlugin] Memory storage exception:', error);
               // Continue to normal flow on exception
             }
           }
           
           // === CUSTOM ACTION: /f COMMANDS ===
           if (isFCommand) {
-            console.log('[FakeRaresPlugin] /f detected → applying strong suppression and invoking action');
+            logger.debug('[FakeRaresPlugin] /f detected → applying strong suppression and invoking action');
             // Strong suppression: route all subsequent callbacks to a no-op
             // Keep a reference to the original callback for our action only
             const actionCallback = typeof params.callback === 'function' ? params.callback : null;
@@ -242,7 +244,7 @@ export const fakeRaresPlugin: Plugin = {
                   message.metadata = message.metadata || {};
                   (message.metadata as any).__handledByCustom = true;
                 } catch {}
-                console.log('[FakeRaresPlugin] /f action completed');
+                logger.debug('[FakeRaresPlugin] /f action completed');
                 return; // Done
               }
             }
@@ -250,7 +252,7 @@ export const fakeRaresPlugin: Plugin = {
           
           // === CUSTOM ACTION: /fv COMMANDS ===
           if (isFvCommand) {
-            console.log('[FakeRaresPlugin] /fv detected → applying strong suppression and invoking action');
+            logger.debug('[FakeRaresPlugin] /fv detected → applying strong suppression and invoking action');
             const actionCallback = typeof params.callback === 'function' ? params.callback : null;
             params.callback = async () => [];
             
@@ -262,7 +264,7 @@ export const fakeRaresPlugin: Plugin = {
                   message.metadata = message.metadata || {};
                   (message.metadata as any).__handledByCustom = true;
                 } catch {}
-                console.log('[FakeRaresPlugin] /fv action completed');
+                logger.debug('[FakeRaresPlugin] /fv action completed');
                 return; // Done
               }
             }
@@ -270,7 +272,7 @@ export const fakeRaresPlugin: Plugin = {
           
           // === CUSTOM ACTION: /ft COMMANDS ===
           if (isFtCommand) {
-            console.log('[FakeRaresPlugin] /ft detected → applying strong suppression and invoking action');
+            logger.debug('[FakeRaresPlugin] /ft detected → applying strong suppression and invoking action');
             const actionCallback = typeof params.callback === 'function' ? params.callback : null;
             params.callback = async () => [];
             
@@ -282,7 +284,7 @@ export const fakeRaresPlugin: Plugin = {
                   message.metadata = message.metadata || {};
                   (message.metadata as any).__handledByCustom = true;
                 } catch {}
-                console.log('[FakeRaresPlugin] /ft action completed');
+                logger.debug('[FakeRaresPlugin] /ft action completed');
                 return; // Done
               }
             }
@@ -307,9 +309,29 @@ export const fakeRaresPlugin: Plugin = {
             }
           }
           
+          // === CUSTOM ACTION: /fm COMMANDS ===
+          if (isFmCommand) {
+            logger.debug('[FakeRaresPlugin] /fm detected → applying strong suppression and invoking action');
+            const actionCallback = typeof params.callback === 'function' ? params.callback : null;
+            params.callback = async () => [];
+
+            if (fakeMarketAction.validate && fakeMarketAction.handler) {
+              const isValid = await fakeMarketAction.validate(runtime, message);
+              if (isValid) {
+                await fakeMarketAction.handler(runtime, message, params.state, {}, actionCallback ?? undefined);
+                try {
+                  message.metadata = message.metadata || {};
+                  (message.metadata as any).__handledByCustom = true;
+                } catch {}
+                logger.debug('[FakeRaresPlugin] /fm action completed');
+                return; // Done
+              }
+            }
+          }
+          
           // === CUSTOM ACTION: /dawn COMMANDS ===
           if (isDawnCommand) {
-            console.log('[FakeRaresPlugin] /dawn detected → applying strong suppression and invoking action');
+            logger.debug('[FakeRaresPlugin] /dawn detected → applying strong suppression and invoking action');
             const actionCallback = typeof params.callback === 'function' ? params.callback : null;
             params.callback = async () => [];
 
@@ -321,17 +343,17 @@ export const fakeRaresPlugin: Plugin = {
                   message.metadata = message.metadata || {};
                   (message.metadata as any).__handledByCustom = true;
                 } catch {}
-                console.log('[FakeRaresPlugin] /dawn action completed');
+                logger.debug('[FakeRaresPlugin] /dawn action completed');
                 return; // Done
               } else {
-                console.log('[FakeRaresPlugin] /dawn validation failed');
+                logger.debug('[FakeRaresPlugin] /dawn validation failed');
               }
             }
           }
           
           // === CUSTOM ACTION: /help COMMANDS ===
           if (isHelpCommand) {
-            console.log('[FakeRaresPlugin] /help detected → applying strong suppression and invoking action');
+            logger.debug('[FakeRaresPlugin] /help detected → applying strong suppression and invoking action');
             const actionCallback = typeof params.callback === 'function' ? params.callback : null;
             params.callback = async () => [];
 
@@ -343,10 +365,10 @@ export const fakeRaresPlugin: Plugin = {
                   message.metadata = message.metadata || {};
                   (message.metadata as any).__handledByCustom = true;
                 } catch {}
-                console.log('[FakeRaresPlugin] /help action completed');
+                logger.debug('[FakeRaresPlugin] /help action completed');
                 return; // Done - exit entire function
               } else {
-                console.log('[FakeRaresPlugin] /help validation failed, but still marking as handled');
+                logger.debug('[FakeRaresPlugin] /help validation failed, but still marking as handled');
                 try {
                   message.metadata = message.metadata || {};
                   (message.metadata as any).__handledByCustom = true;
@@ -358,7 +380,7 @@ export const fakeRaresPlugin: Plugin = {
           
           // === CUSTOM ACTION: /start COMMANDS ===
           if (isStartCommand) {
-            console.log('[FakeRaresPlugin] /start detected → applying strong suppression and invoking action');
+            logger.debug('[FakeRaresPlugin] /start detected → applying strong suppression and invoking action');
             const actionCallback = typeof params.callback === 'function' ? params.callback : null;
             params.callback = async () => [];
 
@@ -370,10 +392,10 @@ export const fakeRaresPlugin: Plugin = {
                   message.metadata = message.metadata || {};
                   (message.metadata as any).__handledByCustom = true;
                 } catch {}
-                console.log('[FakeRaresPlugin] /start action completed');
+                logger.debug('[FakeRaresPlugin] /start action completed');
                 return; // Done - exit entire function
               } else {
-                console.log('[FakeRaresPlugin] /start validation failed, but still marking as handled');
+                logger.debug('[FakeRaresPlugin] /start validation failed, but still marking as handled');
                 try {
                   message.metadata = message.metadata || {};
                   (message.metadata as any).__handledByCustom = true;
@@ -385,7 +407,7 @@ export const fakeRaresPlugin: Plugin = {
           
           // === CUSTOM ACTION: /fc COMMANDS (admin-only) ===
           if (isCostCommand) {
-            console.log('[FakeRaresPlugin] /fc detected → applying strong suppression and invoking action');
+            logger.debug('[FakeRaresPlugin] /fc detected → applying strong suppression and invoking action');
             const actionCallback = typeof params.callback === 'function' ? params.callback : null;
             params.callback = async () => [];
 
@@ -397,10 +419,10 @@ export const fakeRaresPlugin: Plugin = {
                   message.metadata = message.metadata || {};
                   (message.metadata as any).__handledByCustom = true;
                 } catch {}
-                console.log('[FakeRaresPlugin] /fc action completed');
+                logger.debug('[FakeRaresPlugin] /fc action completed');
                 return; // Done - exit entire function
               } else {
-                console.log('[FakeRaresPlugin] /fc validation failed (not admin), suppressing');
+                logger.debug('[FakeRaresPlugin] /fc validation failed (not admin), suppressing');
                 try {
                   message.metadata = message.metadata || {};
                   (message.metadata as any).__handledByCustom = true;
@@ -413,7 +435,7 @@ export const fakeRaresPlugin: Plugin = {
           // === AUTO-ROUTE FACTS QUESTIONS ===
           // Only auto-route actual questions, not statements/announcements or replies to other users
           const queryType = classifyQuery(text);
-          console.log(`[FakeRaresPlugin] Query classification: ${queryType}`);
+          logger.debug(`[FakeRaresPlugin] Query classification: ${queryType}`);
           
           // Skip auto-routing if this is a reply to another user (not the bot)
           // Replies to other users are conversation between humans, not questions for the bot
@@ -445,11 +467,11 @@ export const fakeRaresPlugin: Plugin = {
             // 1. We can't determine who it's replying to, OR
             // 2. It's clearly replying to someone other than the bot
             if (!replyToUserId || !botUserId || replyToUserId !== botUserId) {
-              console.log(`[FakeRaresPlugin] Skipping auto-routing - message is a reply ${replyToUserId && botUserId ? `to user ${replyToUserId} (not bot ${botUserId})` : '(unknown target)'}`);
+              logger.debug(`[FakeRaresPlugin] Skipping auto-routing - message is a reply ${replyToUserId && botUserId ? `to user ${replyToUserId} (not bot ${botUserId})` : '(unknown target)'}`);
               // IMPORTANT: Check global suppression before returning
               // If SUPPRESS_BOOTSTRAP=true, we need to mark as handled
               if (globalSuppression) {
-                console.log('[FakeRaresPlugin] Global suppression active - marking reply as handled');
+                logger.debug('[FakeRaresPlugin] Global suppression active - marking reply as handled');
                 message.metadata = message.metadata || {};
                 (message.metadata as any).__handledByCustom = true;
                 return;
@@ -458,7 +480,7 @@ export const fakeRaresPlugin: Plugin = {
               return;
             }
             // If it IS a reply to the bot, continue with auto-routing check below
-            console.log(`[FakeRaresPlugin] Message is a reply to bot, checking if it's a question`);
+            logger.debug(`[FakeRaresPlugin] Message is a reply to bot, checking if it's a question`);
           }
           
           // Comprehensive question detection
@@ -469,7 +491,7 @@ export const fakeRaresPlugin: Plugin = {
             /\b(need to know|want to know|wondering|curious)\b/i.test(text);  // Indirect questions
           
           if (queryType === 'FACTS' && isQuestion) {
-            console.log(`[FakeRaresPlugin] 📚 Auto-routing FACTS question to knowledge retrieval`);
+            logger.debug(`[FakeRaresPlugin] 📚 Auto-routing FACTS question to knowledge retrieval`);
             const actionCallback = typeof params.callback === 'function' ? params.callback : null;
             params.callback = async () => [];
             
@@ -493,8 +515,8 @@ export const fakeRaresPlugin: Plugin = {
                 await actionCallback({ text: finalMessage });
               }
               
-              console.log(`[FakeRaresPlugin] ✅ Auto-routed knowledge response sent`);
-              console.log(`   Hits: ${result.metrics.hits_used}, Latency: ${result.metrics.latency_ms}ms`);
+              logger.debug(`[FakeRaresPlugin] ✅ Auto-routed knowledge response sent`);
+              logger.debug(`   Hits: ${result.metrics.hits_used}, Latency: ${result.metrics.latency_ms}ms`);
               
               try {
                 message.metadata = message.metadata || {};
@@ -503,7 +525,7 @@ export const fakeRaresPlugin: Plugin = {
               
               return;
             } catch (err) {
-              console.error('[FakeRaresPlugin] ❌ Auto-route failed, falling back to conversation:', err);
+              logger.error('[FakeRaresPlugin] ❌ Auto-route failed, falling back to conversation:', err);
               // Fall through to normal bootstrap flow
             }
           }
@@ -520,24 +542,24 @@ export const fakeRaresPlugin: Plugin = {
           const shouldAllowBootstrap = (isReplyToBot || hasCapitalizedWord || hasBotMention) && queryType !== 'FACTS';
           
           if (globalSuppression) {
-            console.log('[Suppress] SUPPRESS_BOOTSTRAP=true → suppressing all bootstrap');
+            logger.debug('[Suppress] SUPPRESS_BOOTSTRAP=true → suppressing all bootstrap');
             message.metadata = message.metadata || {};
             (message.metadata as any).__handledByCustom = true;
             return;
           }
           
           if (shouldAllowBootstrap) {
-            console.log(`[Allow] Bootstrap allowed: reply=${!!isReplyToBot} caps=${hasCapitalizedWord} mention=${hasBotMention} | "${text}"`);
+            logger.debug(`[Allow] Bootstrap allowed: reply=${!!isReplyToBot} caps=${hasCapitalizedWord} mention=${hasBotMention} | "${text}"`);
             // Let bootstrap handle it - do NOT mark as handled
           } else {
-            console.log(`[Suppress] Bootstrap blocked (no trigger): "${text}"`);
+            logger.debug(`[Suppress] Bootstrap blocked (no trigger): "${text}"`);
             
             // CRITICAL: Strip image attachments to prevent Bootstrap from auto-analyzing them
             // (Only when Bootstrap would be suppressed anyway - doesn't affect @mentions or replies)
             // PRESERVE attachments for /fv and /ft commands which need them
             const hasAttachments = message.content.attachments && message.content.attachments.length > 0;
             if (hasAttachments && !isFvCommand && !isFtCommand) {
-              console.log('[FakeRaresPlugin] Clearing image attachment (Bootstrap suppressed, not /fv or /ft command)');
+              logger.debug('[FakeRaresPlugin] Clearing image attachment (Bootstrap suppressed, not /fv or /ft command)');
               message.content.attachments = [];
             }
             
@@ -547,7 +569,7 @@ export const fakeRaresPlugin: Plugin = {
           }
           
         } catch (error) {
-          console.error(`[Plugin Error]`, error);
+          logger.error(`[Plugin Error]`, error);
           
           // Send error response to prevent hanging
           try {
@@ -558,7 +580,7 @@ export const fakeRaresPlugin: Plugin = {
               });
             }
           } catch (callbackError) {
-            console.error(`[Plugin Error] Callback failed:`, callbackError);
+            logger.error(`[Plugin Error] Callback failed:`, callbackError);
           }
         }
       },
@@ -569,7 +591,7 @@ export const fakeRaresPlugin: Plugin = {
     
     MODEL_FAILED: [
       async (params: any) => {
-        console.error('[Plugin] Model call failed:', {
+        logger.error('[Plugin] Model call failed:', {
           modelType: params.modelType,
           provider: params.provider,
           error: params.error?.message,
@@ -582,7 +604,7 @@ export const fakeRaresPlugin: Plugin = {
       async (params: any) => {
         const actionName = params.action?.name || params.actionName || 'unknown';
         if (actionName !== 'unknown') {
-          console.debug(`[Plugin] Action started: ${actionName}`);
+          logger.debug(`[Plugin] Action started: ${actionName}`);
         }
       },
     ],
@@ -591,7 +613,7 @@ export const fakeRaresPlugin: Plugin = {
       async (params: any) => {
         const actionName = params.action?.name || params.actionName || 'unknown';
         if (actionName !== 'unknown') {
-          console.debug(`[Plugin] Action completed: ${actionName}`, {
+          logger.debug(`[Plugin] Action completed: ${actionName}`, {
             success: params.result?.success ?? true,
           });
         }
@@ -601,7 +623,7 @@ export const fakeRaresPlugin: Plugin = {
     ACTION_FAILED: [
       async (params: any) => {
         const actionName = params.action?.name || params.actionName || 'unknown';
-        console.error(`[Plugin] Action failed: ${actionName}`, {
+        logger.error(`[Plugin] Action failed: ${actionName}`, {
           error: params.error?.message || 'Unknown error',
         });
       },

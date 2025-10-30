@@ -32,6 +32,7 @@
     "dist"
   ],
   "dependencies": {
+    "@electric-sql/pglite": "^0.3.11",
     "@elizaos/cli": "1.6.2",
     "@elizaos/client": "1.6.2",
     "@elizaos/core": "1.6.2",
@@ -45,6 +46,7 @@
     "@tanstack/react-query": "^5.29.0",
     "@telegraf/types": "7.1.0",
     "@xenova/transformers": "^2.17.2",
+    "axios": "^1.13.1",
     "clsx": "^2.1.1",
     "formdata-node": "^6.0.3",
     "jsdom": "^27.0.0",

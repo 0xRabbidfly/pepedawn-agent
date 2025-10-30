@@ -11,6 +11,7 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import { logger } from '@elizaos/core';
 
 export interface CardInfo {
   asset: string;
@@ -40,15 +41,15 @@ function loadFullCardIndex(): CardInfo[] {
       if (fs.existsSync(dataPath)) {
         const data = fs.readFileSync(dataPath, 'utf-8');
         const cards = JSON.parse(data) as CardInfo[];
-        console.log(`📦 Loaded ${cards.length} cards from full index (${dataPath})`);
+        logger.info(`📦 Loaded ${cards.length} cards from full index (${dataPath})`);
         return cards;
       }
     }
     
-    console.warn('⚠️  Full card index not found, falling back to empty array');
+    logger.warn('⚠️  Full card index not found, falling back to empty array');
     return [];
   } catch (error) {
-    console.error('Error loading full card index:', error);
+    logger.error({ error }, 'Error loading full card index');
     return [];
   }
 }

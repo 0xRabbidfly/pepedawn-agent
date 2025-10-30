@@ -3,7 +3,7 @@
  */
 
 import type { IAgentRuntime } from '@elizaos/core';
-import { ModelType } from '@elizaos/core';
+import { ModelType, logger } from '@elizaos/core';
 import type { ClusterSummary } from './loreSummarize';
 import { LORE_CONFIG } from './loreConfig';
 import { callTextModel } from './modelGateway';
@@ -78,7 +78,7 @@ export async function generatePersonaStory(
   
   // Classify the query type
   const queryType = classifyQuery(query);
-  console.log(`🎯 Query classified as: ${queryType}`);
+  logger.debug(`🎯 Query classified as: ${queryType}`);
   
   // Different prompts for FACTS vs LORE
   const storyPrompt = queryType === 'FACTS' 
@@ -97,11 +97,11 @@ export async function generatePersonaStory(
       source: 'Lore calls',
     });
     
-    console.log(`[StoryComposer] Generated story: ${result.text.length} chars (${result.text.split(/\s+/).length} words)`);
+    logger.debug(`[StoryComposer] Generated story: ${result.text.length} chars (${result.text.split(/\s+/).length} words)`);
     
     return result.text.trim();
   } catch (err) {
-    console.error('Story generation error:', err);
+    logger.error({ error: err }, 'Story generation error');
     
     // Fallback: Simple concatenation with personality
     const fallback = `Alright ser, here's what I found about "${query}":\n\n` +

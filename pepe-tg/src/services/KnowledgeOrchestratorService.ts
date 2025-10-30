@@ -52,9 +52,9 @@ export class KnowledgeOrchestratorService extends Service {
    * Initialize service
    */
   static async start(runtime: IAgentRuntime): Promise<KnowledgeOrchestratorService> {
-    console.log('🧠 [KnowledgeOrchestrator] Starting service...');
+    logger.info('🧠 [KnowledgeOrchestrator] Starting service...');
     const service = new KnowledgeOrchestratorService(runtime);
-    console.log('✅ [KnowledgeOrchestrator] Service ready');
+    logger.info('✅ [KnowledgeOrchestrator] Service ready');
     return service;
   }
 
@@ -62,7 +62,7 @@ export class KnowledgeOrchestratorService extends Service {
    * Cleanup service
    */
   static async stop(runtime: IAgentRuntime): Promise<void> {
-    console.log('🛑 [KnowledgeOrchestrator] Stopping service...');
+    logger.info('🛑 [KnowledgeOrchestrator] Stopping service...');
     const service = runtime.getService(KnowledgeOrchestratorService.serviceType);
     if (service) {
       await service.stop();
@@ -70,7 +70,7 @@ export class KnowledgeOrchestratorService extends Service {
   }
 
   async stop(): Promise<void> {
-    console.log('✅ [KnowledgeOrchestrator] Service stopped');
+    logger.info('✅ [KnowledgeOrchestrator] Service stopped');
   }
 
   /**
@@ -88,12 +88,12 @@ export class KnowledgeOrchestratorService extends Service {
   ): Promise<KnowledgeRetrievalResult> {
     const startTime = Date.now();
 
-    console.log(`\n🔍 [KNOWLEDGE] Query: "${query}"`);
-    console.log('='.repeat(60));
+    logger.debug(`\n🔍 [KNOWLEDGE] Query: "${query}"`);
+    logger.debug('='.repeat(60));
 
     // STEP 1: Query expansion
     const expandedQuery = expandQuery(query);
-    console.log(`📝 Expanded query: "${expandedQuery}"`);
+    logger.debug(`📝 Expanded query: "${expandedQuery}"`);
 
     // STEP 2: Retrieve passages
     const passages = await searchKnowledgeWithExpansion(
@@ -102,7 +102,7 @@ export class KnowledgeOrchestratorService extends Service {
       roomId
     );
 
-    console.log(`📚 Retrieved ${passages.length} passages`);
+    logger.debug(`📚 Retrieved ${passages.length} passages`);
     
     const sourceBreakdown = passages.reduce((acc, p) => {
       const type = p.sourceType === 'telegram' ? 'tg' : 
@@ -111,10 +111,10 @@ export class KnowledgeOrchestratorService extends Service {
       acc[type] = (acc[type] || 0) + 1;
       return acc;
     }, {} as Record<string, number>);
-    console.log(`📊 Sources: ${JSON.stringify(sourceBreakdown)}`);
+    logger.debug(`📊 Sources: ${JSON.stringify(sourceBreakdown)}`);
 
     if (passages.length === 0) {
-      console.log('⚠️  No passages found - returning clarification message');
+      logger.debug('⚠️  No passages found - returning clarification message');
       
       return {
         story: CLARIFICATION_MESSAGE,
@@ -137,7 +137,7 @@ export class KnowledgeOrchestratorService extends Service {
     let candidatePassages = passages;
     if (filteredIds.length >= LORE_CONFIG.MIN_HITS) {
       candidatePassages = passages.filter(p => filteredIds.includes(p.id));
-      console.log(`🔄 Filtered to ${candidatePassages.length} fresh passages`);
+      logger.debug(`🔄 Filtered to ${candidatePassages.length} fresh passages`);
     }
 
     const topK = Math.min(LORE_CONFIG.TOP_K_FOR_CLUSTERING, candidatePassages.length);
@@ -156,20 +156,20 @@ export class KnowledgeOrchestratorService extends Service {
       Math.min(targetPassageCount, topK)
     );
     
-    console.log(`🎯 Selected ${diversePassages.length} diverse passages via MMR${hasCardMemory ? ' (reduced for card memory emphasis)' : ''}`);
+    logger.debug(`🎯 Selected ${diversePassages.length} diverse passages via MMR${hasCardMemory ? ' (reduced for card memory emphasis)' : ''}`);
 
     diversePassages.forEach(p => markIdAsRecentlyUsed(roomId, p.id));
 
     // STEP 4: Classify or use provided mode
     const queryType = options?.mode || classifyQuery(query);
-    console.log(`🎯 Query type: ${queryType}`);
+    logger.debug(`🎯 Query type: ${queryType}`);
     
     let story: string;
     let sourcesLine: string;
     let clusterCount = 0;
     
     if (queryType === 'FACTS') {
-      console.log('📋 FACTS mode: Using top wiki and memory passages directly');
+      logger.debug('📋 FACTS mode: Using top wiki and memory passages directly');
       
       const factsPassages = diversePassages.filter(p => p.sourceType === 'wiki' || p.sourceType === 'memory').slice(0, 5);
       
@@ -195,9 +195,9 @@ export class KnowledgeOrchestratorService extends Service {
           `\n\nSources:  ${factsPassages.map(p => formatCompactCitation(p)).join('  ||  ')}`;
         clusterCount = 1;
       }
-      console.log(`📋 Sent ${factsPassages.length || diversePassages.slice(0, 5).length} passages directly (no clustering)`);
+      logger.debug(`📋 Sent ${factsPassages.length || diversePassages.slice(0, 5).length} passages directly (no clustering)`);
     } else {
-      console.log('📖 LORE mode: Using clustering and summarization');
+      logger.debug('📖 LORE mode: Using clustering and summarization');
       
       // Separate card memories from other sources for dedicated treatment
       const cardMemories = diversePassages.filter(p => 
@@ -210,7 +210,7 @@ export class KnowledgeOrchestratorService extends Service {
       let summaries: any[] = [];
       
       if (cardMemories.length > 0) {
-        console.log(`🎨 Found ${cardMemories.length} card memories - creating dedicated cluster`);
+        logger.debug(`🎨 Found ${cardMemories.length} card memories - creating dedicated cluster`);
         
         // Card memories get their own cluster with NO LLM summarization (preserve exact words)
         const cardCluster = {
@@ -227,11 +227,11 @@ export class KnowledgeOrchestratorService extends Service {
         
         // Card cluster FIRST (highest prominence in story)
         summaries = [cardCluster, ...otherClusters];
-        console.log(`📊 Created 1 card cluster + ${otherClusters.length} other clusters`);
+        logger.debug(`📊 Created 1 card cluster + ${otherClusters.length} other clusters`);
       } else {
         // No card memories, normal clustering
         summaries = await clusterAndSummarize(this.runtime, diversePassages, query);
-        console.log(`📊 Generated ${summaries.length} cluster summaries`);
+        logger.debug(`📊 Generated ${summaries.length} cluster summaries`);
       }
       
       clusterCount = summaries.length;
@@ -240,17 +240,17 @@ export class KnowledgeOrchestratorService extends Service {
       sourcesLine = process.env.HIDE_LORE_SOURCES === 'true' ? '' : formatSourcesLine(summaries);
     }
     
-    console.log(`✍️  Generated story (${story.split(/\s+/).length} words)`);
+    logger.debug(`✍️  Generated story (${story.split(/\s+/).length} words)`);
 
     const latencyMs = Date.now() - startTime;
-    console.log(`\n📈 [METRICS]`);
-    console.log(`   Query: "${query}"`);
-    console.log(`   Hits raw: ${passages.length}`);
-    console.log(`   Hits used: ${diversePassages.length}`);
-    console.log(`   Clusters: ${clusterCount}`);
-    console.log(`   Latency: ${latencyMs}ms`);
-    console.log(`   Story length: ${story.split(/\s+/).length} words`);
-    console.log('='.repeat(60) + '\n');
+    logger.debug(`\n📈 [METRICS]`);
+    logger.debug(`   Query: "${query}"`);
+    logger.debug(`   Hits raw: ${passages.length}`);
+    logger.debug(`   Hits used: ${diversePassages.length}`);
+    logger.debug(`   Clusters: ${clusterCount}`);
+    logger.debug(`   Latency: ${latencyMs}ms`);
+    logger.debug(`   Story length: ${story.split(/\s+/).length} words`);
+    logger.debug('='.repeat(60) + '\n');
 
     return {
       story,

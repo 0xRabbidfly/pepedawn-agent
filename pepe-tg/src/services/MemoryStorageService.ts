@@ -35,10 +35,10 @@ export class MemoryStorageService extends Service {
    * Initialize service
    */
   static async start(runtime: IAgentRuntime): Promise<MemoryStorageService> {
-    console.log('💾 [MemoryStorage] Starting service...');
+    logger.info('💾 [MemoryStorage] Starting service...');
     const service = new MemoryStorageService(runtime);
-    console.log(`💾 [MemoryStorage] Card index cached (${service.cardIndex.size} cards)`);
-    console.log('✅ [MemoryStorage] Service ready');
+    logger.info(`💾 [MemoryStorage] Card index cached (${service.cardIndex.size} cards)`);
+    logger.info('✅ [MemoryStorage] Service ready');
     return service;
   }
 
@@ -46,7 +46,7 @@ export class MemoryStorageService extends Service {
    * Cleanup service
    */
   static async stop(runtime: IAgentRuntime): Promise<void> {
-    console.log('🛑 [MemoryStorage] Stopping service...');
+    logger.info('🛑 [MemoryStorage] Stopping service...');
     const service = runtime.getService(MemoryStorageService.serviceType);
     if (service) {
       await service.stop();
@@ -54,7 +54,7 @@ export class MemoryStorageService extends Service {
   }
 
   async stop(): Promise<void> {
-    console.log('✅ [MemoryStorage] Service stopped');
+    logger.info('✅ [MemoryStorage] Service stopped');
   }
 
   /**
@@ -79,7 +79,7 @@ export class MemoryStorageService extends Service {
       // Validate content
       const validation = this.validateMemoryContent(content);
       if (!validation.valid) {
-        console.debug(`[MemoryStorage] Ignoring: ${validation.reason}`);
+        logger.debug(`[MemoryStorage] Ignoring: ${validation.reason}`);
         return {
           success: true,  // Success = no error, just ignored
           ignoredReason: validation.reason
@@ -93,7 +93,7 @@ export class MemoryStorageService extends Service {
       const cardName = this.detectCard(content.text);
       const memoryType = cardName ? 'CARD memory' : 'Static memory';
       
-      console.log(`[MemoryStorage] Storing ${memoryType} for ${metadata.displayName}${cardName ? ` (card: ${cardName})` : ''}`);
+      logger.info(`[MemoryStorage] Storing ${memoryType} for ${metadata.displayName}${cardName ? ` (card: ${cardName})` : ''}`);
       
       // Get KnowledgeService
       const knowledgeService = (this.runtime as any).getService
@@ -101,7 +101,7 @@ export class MemoryStorageService extends Service {
         : null;
       
       if (!knowledgeService) {
-        console.error('[MemoryStorage] KnowledgeService not available');
+        logger.error('[MemoryStorage] KnowledgeService not available');
         return {
           success: false,
           error: 'Knowledge service unavailable'
@@ -127,20 +127,20 @@ export class MemoryStorageService extends Service {
       });
       
       if (result && result.success !== false) {
-        console.log(`[MemoryStorage] ${memoryType} stored successfully${cardName ? ` for ${cardName}` : ''}`);
+        logger.info(`[MemoryStorage] ${memoryType} stored successfully${cardName ? ` for ${cardName}` : ''}`);
         return {
           success: true,
           memoryId: result.documentId || 'unknown'
         };
       } else {
-        console.error('[MemoryStorage] Storage failed:', result?.error);
+        logger.error('[MemoryStorage] Storage failed:', result?.error);
         return {
           success: false,
           error: result?.error || 'Storage failed'
         };
       }
     } catch (error) {
-      console.error('[MemoryStorage] Exception during storage:', error);
+      logger.error('[MemoryStorage] Exception during storage:', error);
       return {
         success: false,
         error: error instanceof Error ? error.message : 'Unknown error'

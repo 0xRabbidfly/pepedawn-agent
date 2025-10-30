@@ -5,6 +5,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import { logger } from '@elizaos/core';
 
 const CACHE_FILE = path.join(process.cwd(), '.eliza', 'card-series-cache.json');
 
@@ -23,11 +24,11 @@ export function loadCardCache(): Record<string, number> {
     if (fs.existsSync(CACHE_FILE)) {
       const data = fs.readFileSync(CACHE_FILE, 'utf-8');
       const cache = JSON.parse(data);
-      console.log(`📦 Loaded ${Object.keys(cache).length} cached card series from disk`);
+      logger.info(`📦 Loaded ${Object.keys(cache).length} cached card series from disk`);
       return cache;
     }
   } catch (error) {
-    console.error('Error loading card cache:', error);
+    logger.error({ error }, 'Error loading card cache');
   }
   
   return {};
@@ -45,9 +46,9 @@ export function saveCardCache(cache: Record<string, number>): void {
     }
     
     fs.writeFileSync(CACHE_FILE, JSON.stringify(cache, null, 2), 'utf-8');
-    console.log(`💾 Saved ${Object.keys(cache).length} card series to disk`);
+    logger.info(`💾 Saved ${Object.keys(cache).length} card series to disk`);
   } catch (error) {
-    console.error('Error saving card cache:', error);
+    logger.error({ error }, 'Error saving card cache');
   }
 }
 

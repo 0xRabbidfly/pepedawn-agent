@@ -12,6 +12,8 @@
  * Cost: ~$0.0002 per image (~500 images per $1)
  */
 
+import { logger } from '@elizaos/core';
+
 const REPLICATE_API_TOKEN = process.env.REPLICATE_API_TOKEN;
 // Uses CLIP for feature extraction (embeddings)
 // Model: krthr/clip-embeddings (clip-vit-large-patch14 - 768-D)
@@ -39,7 +41,7 @@ export async function generateVisualEmbedding(imageUrl: string): Promise<number[
   }
 
   try {
-    console.log(`  📤 Calling Replicate CLIP API...`);
+    logger.debug(`  📤 Calling Replicate CLIP API...`);
     
     // First, get the latest version
     const versionsResponse = await fetch(
@@ -62,7 +64,7 @@ export async function generateVisualEmbedding(imageUrl: string): Promise<number[
       throw new Error('No versions found for model');
     }
     
-    console.log(`  🔍 Using version: ${latestVersion.substring(0, 12)}...`);
+    logger.debug(`  🔍 Using version: ${latestVersion.substring(0, 12)}...`);
     
     // Create prediction (async)
     const createResponse = await fetch('https://api.replicate.com/v1/predictions', {
@@ -87,7 +89,7 @@ export async function generateVisualEmbedding(imageUrl: string): Promise<number[
     const prediction = await createResponse.json();
     const predictionId = prediction.id;
     
-    console.log(`  ⏳ Waiting for prediction...`);
+    logger.debug(`  ⏳ Waiting for prediction...`);
     
     // Poll for completion (max 30 attempts = 30 seconds)
     let result = prediction;
@@ -128,12 +130,12 @@ export async function generateVisualEmbedding(imageUrl: string): Promise<number[
       throw new Error(`Invalid embedding format: ${JSON.stringify(result.output).substring(0, 200)}`);
     }
     
-    console.log(`  📊 Embedding dimensions: ${embedding.length}`);
-    console.log(`  ✅ Embedding generated (${embedding.length}-D vector)`);
+    logger.debug(`  📊 Embedding dimensions: ${embedding.length}`);
+    logger.debug(`  ✅ Embedding generated (${embedding.length}-D vector)`);
     return embedding;
     
   } catch (error: any) {
-    console.error('❌ Failed to generate visual embedding:', error.message);
+    logger.error({ error }, '❌ Failed to generate visual embedding');
     throw new Error(`Embedding generation failed: ${error.message}`);
   }
 }

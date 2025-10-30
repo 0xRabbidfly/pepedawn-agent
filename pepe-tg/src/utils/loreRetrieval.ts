@@ -4,6 +4,7 @@
  */
 
 import type { IAgentRuntime, Memory } from '@elizaos/core';
+import { logger } from '@elizaos/core';
 import { LORE_CONFIG } from './loreConfig';
 import { FULL_CARD_INDEX } from '../data/fullCardIndex';
 
@@ -119,7 +120,7 @@ async function searchExactCardMemories(
         });
         rawResults = await Promise.race([searchPromise, timeoutPromise]) || [];
       } catch (e) {
-        console.error('[ExactCardSearch] Knowledge service error:', e);
+        logger.error('[ExactCardSearch] Knowledge service error:', e);
         rawResults = [];
       }
     } else {
@@ -139,7 +140,7 @@ async function searchExactCardMemories(
       return text.includes(cardMarker);
     });
   } catch (err) {
-    console.error('[ExactCardSearch] Error:', err);
+    logger.error('[ExactCardSearch] Error:', err);
     return [];
   }
 }
@@ -169,10 +170,10 @@ export async function searchKnowledgeWithExpansion(
   if (validCards.length > 0) {
     // Uppercase the card name to match the [CARD:CARDNAME] marker format
     const cardName = validCards[0].toUpperCase();
-    console.log(`[HybridSearch] Detected card in query: ${cardName}`);
+    logger.debug(`[HybridSearch] Detected card in query: ${cardName}`);
     exactCardMatches = await searchExactCardMemories(runtime, cardName);
     if (exactCardMatches.length > 0) {
-      console.log(`[HybridSearch] Found ${exactCardMatches.length} exact card memories`);
+      logger.debug(`[HybridSearch] Found ${exactCardMatches.length} exact card memories`);
     }
   }
   
@@ -191,7 +192,7 @@ export async function searchKnowledgeWithExpansion(
       
       vectorResults = await Promise.race([searchPromise, timeoutPromise]) || [];
     } catch (err) {
-      console.error('Knowledge search error:', err);
+      logger.error({ error: err }, 'Knowledge search error');
       vectorResults = [];
     }
   } else {
@@ -205,7 +206,7 @@ export async function searchKnowledgeWithExpansion(
         match_threshold: LORE_CONFIG.MATCH_THRESHOLD,
       } as any) || [];
     } catch (err) {
-      console.error('Memory search error:', err);
+      logger.error({ error: err }, 'Memory search error');
       vectorResults = [];
     }
   }
@@ -229,7 +230,7 @@ export async function searchKnowledgeWithExpansion(
         
         results = expandedResults;
       } catch (err) {
-        console.error('Expansion search error:', err);
+        logger.error({ error: err }, 'Expansion search error');
       }
     }
   }
@@ -356,7 +357,7 @@ export async function searchKnowledgeWithExpansion(
     
     // Debug logging available via LORE_DEBUG=true env var
     if (process.env.LORE_DEBUG === 'true' && idx < 3) {
-      console.log(`[LoreRetrieval] Passage ${idx}:`, {
+      logger.debug(`[LoreRetrieval] Passage ${idx}:`, {
         source: sourceType,
         hasTimestamp: !!timestamp,
         hasAuthor: !!author,
@@ -448,7 +449,7 @@ export async function searchKnowledgeRaw(
       });
       results = await Promise.race([searchPromise, timeoutPromise]) || [];
     } catch (err) {
-      console.error('Knowledge raw search error:', err);
+      logger.error({ error: err }, 'Knowledge raw search error');
       results = [];
     }
   } else {
@@ -461,7 +462,7 @@ export async function searchKnowledgeRaw(
         match_threshold: LORE_CONFIG.MATCH_THRESHOLD * 0.7,
       } as any) || [];
     } catch (err) {
-      console.error('Memory raw search error:', err);
+      logger.error({ error: err }, 'Memory raw search error');
       results = [];
     }
   }

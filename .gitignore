@@ -45,4 +45,8 @@ docs/
 specs/
 # backups
 backups/
-**/.backups/    
+**/.backups/
+
+# Market Transaction Reporter database
+data/transactions.db
+**/data/transactions.db    

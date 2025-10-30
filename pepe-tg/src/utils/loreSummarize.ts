@@ -4,7 +4,7 @@
  */
 
 import type { IAgentRuntime } from '@elizaos/core';
-import { ModelType } from '@elizaos/core';
+import { ModelType, logger } from '@elizaos/core';
 import type { RetrievedPassage } from './loreRetrieval';
 import { LORE_CONFIG } from './loreConfig';
 import { classifyQuery, type QueryType } from './queryClassifier';
@@ -123,7 +123,7 @@ Summary:`;
       citations: cluster.map(p => formatCompactCitation(p)),
     };
   } catch (err) {
-    console.error('Summarization error:', err);
+    logger.error({ error: err }, 'Summarization error');
     
     // Fallback: just concat first sentences
     const fallbackSummary = cluster
@@ -173,7 +173,7 @@ export function formatCompactCitation(passage: RetrievedPassage): string {
       
       // Debug: Check if date is valid
       if (Number.isNaN(date.getTime())) {
-        console.warn(`Invalid timestamp for ${shortRef}:`, passage.timestamp);
+        logger.warn(`Invalid timestamp for ${shortRef}:`, passage.timestamp);
       } else {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -181,7 +181,7 @@ export function formatCompactCitation(passage: RetrievedPassage): string {
         datePart = ` ${year}-${month}-${day}`;
       }
     } else {
-      console.warn(`No timestamp for telegram passage ${shortRef}`);
+      logger.warn(`No timestamp for telegram passage ${shortRef}`);
     }
     
     // Format author if available
@@ -219,7 +219,7 @@ export async function clusterAndSummarize(
   
   const clusters = clusterPassages(passages, targetClusters);
   
-  console.log(`📊 Clustered ${passages.length} passages into ${clusters.length} clusters`);
+  logger.debug(`📊 Clustered ${passages.length} passages into ${clusters.length} clusters`);
   
   // 🚀 OPTIMIZATION: Parallelize LLM calls instead of sequential
   const summaries = await Promise.all(

@@ -29,7 +29,7 @@ const configSchema = z.object({
     .optional()
     .transform((val) => {
       if (!val) {
-        console.warn('Warning: Example plugin variable is not provided');
+        // Warning: Example plugin variable is not provided (silenced)
       }
       return val;
     }),
