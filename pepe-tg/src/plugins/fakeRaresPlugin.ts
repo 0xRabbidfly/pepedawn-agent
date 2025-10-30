@@ -141,6 +141,8 @@ export const fakeRaresPlugin: Plugin = {
           const text = (params?.message?.content?.text ?? '').toString().trim();
           const globalSuppression = process.env.SUPPRESS_BOOTSTRAP === 'true';
           
+          logger.info(`\n📩 TG Post: "${text.substring(0, 80)}${text.length > 80 ? '...' : ''}}"`);
+          
           // 🚨 CRITICAL: Block FAKEASF burn messages BEFORE LLM sees them
           const mentionsFakeasf = /fakeasf/i.test(text);
           const mentionsBurn = /burn|burning/i.test(text);
@@ -174,6 +176,9 @@ export const fakeRaresPlugin: Plugin = {
           const hasBotMention = /@pepedawn_bot/i.test(text);
           const isReplyToBot = params?.message?.content?.inReplyTo; // User replied to bot's message
           const hasRememberThis = /remember\s+this/i.test(text);
+          
+          // Log routing factors
+          logger.info(`   Triggers: reply=${!!isReplyToBot} | CAPS=${hasCapitalizedWord} | @mention=${hasBotMention}`);
 
           logger.debug(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${isFCommand} isFv=${isFvCommand} isFt=${isFtCommand} isLore=${isLoreCommand} isFm=${isFmCommand} isDawn=${isDawnCommand} isHelp=${isHelpCommand} isStart=${isStartCommand} isCost=${isCostCommand} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
           
@@ -491,7 +496,8 @@ export const fakeRaresPlugin: Plugin = {
             /\b(need to know|want to know|wondering|curious)\b/i.test(text);  // Indirect questions
           
           if (queryType === 'FACTS' && isQuestion) {
-            logger.debug(`[FakeRaresPlugin] 📚 Auto-routing FACTS question to knowledge retrieval`);
+            logger.info(`   Decision: Auto-route to FACTS (detected question)`);
+            logger.info(`\n━━━━━ /fl (auto-routed FACTS) ━━━━━ ${text}`);
             const actionCallback = typeof params.callback === 'function' ? params.callback : null;
             params.callback = async () => [];
             
@@ -542,6 +548,7 @@ export const fakeRaresPlugin: Plugin = {
           const shouldAllowBootstrap = (isReplyToBot || hasCapitalizedWord || hasBotMention) && queryType !== 'FACTS';
           
           if (globalSuppression) {
+            logger.info('   Decision: SUPPRESS all (SUPPRESS_BOOTSTRAP=true)');
             logger.debug('[Suppress] SUPPRESS_BOOTSTRAP=true → suppressing all bootstrap');
             message.metadata = message.metadata || {};
             (message.metadata as any).__handledByCustom = true;
@@ -549,9 +556,11 @@ export const fakeRaresPlugin: Plugin = {
           }
           
           if (shouldAllowBootstrap) {
+            logger.info(`   Decision: ALLOW bootstrap (normal conversation)`);
             logger.debug(`[Allow] Bootstrap allowed: reply=${!!isReplyToBot} caps=${hasCapitalizedWord} mention=${hasBotMention} | "${text}"`);
             // Let bootstrap handle it - do NOT mark as handled
           } else {
+            logger.info(`   Decision: SUPPRESS bootstrap (no trigger)`);
             logger.debug(`[Suppress] Bootstrap blocked (no trigger): "${text}"`);
             
             // CRITICAL: Strip image attachments to prevent Bootstrap from auto-analyzing them
@@ -582,6 +591,9 @@ export const fakeRaresPlugin: Plugin = {
           } catch (callbackError) {
             logger.error(`[Plugin Error] Callback failed:`, callbackError);
           }
+        } finally {
+          // Log message completion separator
+          logger.info(`━━━━━━━━━━ Message complete ━━━━━━━━━━`);
         }
       },
     ],

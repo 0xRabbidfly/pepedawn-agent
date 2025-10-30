@@ -11,7 +11,7 @@ import type { CardInfo } from '../data/fullCardIndex';
 import { logger as coreLogger } from '@elizaos/core';
 
 // Configuration
-const REFRESH_INTERVAL_MS = 60 * 60 * 1000; // 1 hour
+const REFRESH_INTERVAL_MS = 24 * 60 * 60 * 1000; // 24 hours (once per day)
 const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/0xRabbidfly/pepedawn-agent/master/pepe-tg/src/data/fake-rares-data.json';
 
 // In-memory card data (updated periodically)
@@ -133,7 +133,7 @@ export function startAutoRefresh(initialData: CardInfo[]): void {
   );
   
   logger.info(`🚀 Auto-refresh started with ${initialData.length} cards`);
-  logger.info(`   Refresh interval: ${REFRESH_INTERVAL_MS / 1000 / 60} minutes`);
+  logger.info(`   Refresh interval: ${REFRESH_INTERVAL_MS / 1000 / 60 / 60} hours (once per day)`);
   logger.info(`   GitHub source: ${GITHUB_RAW_URL}`);
   
   // Perform first refresh after 5 minutes

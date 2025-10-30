@@ -41,8 +41,6 @@ export async function generateVisualEmbedding(imageUrl: string): Promise<number[
   }
 
   try {
-    logger.debug(`  📤 Calling Replicate CLIP API...`);
-    
     // First, get the latest version
     const versionsResponse = await fetch(
       `https://api.replicate.com/v1/models/${CLIP_MODEL_OWNER}/${CLIP_MODEL_NAME}/versions`,
@@ -63,8 +61,6 @@ export async function generateVisualEmbedding(imageUrl: string): Promise<number[
     if (!latestVersion) {
       throw new Error('No versions found for model');
     }
-    
-    logger.debug(`  🔍 Using version: ${latestVersion.substring(0, 12)}...`);
     
     // Create prediction (async)
     const createResponse = await fetch('https://api.replicate.com/v1/predictions', {
@@ -89,11 +85,9 @@ export async function generateVisualEmbedding(imageUrl: string): Promise<number[
     const prediction = await createResponse.json();
     const predictionId = prediction.id;
     
-    logger.debug(`  ⏳ Waiting for prediction...`);
-    
-    // Poll for completion (max 30 attempts = 30 seconds)
+    // Poll for completion (max 60 attempts = 60 seconds)
     let result = prediction;
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 60; i++) {
       if (result.status === 'succeeded' || result.status === 'failed' || result.status === 'canceled') {
         break;
       }
@@ -130,8 +124,6 @@ export async function generateVisualEmbedding(imageUrl: string): Promise<number[
       throw new Error(`Invalid embedding format: ${JSON.stringify(result.output).substring(0, 200)}`);
     }
     
-    logger.debug(`  📊 Embedding dimensions: ${embedding.length}`);
-    logger.debug(`  ✅ Embedding generated (${embedding.length}-D vector)`);
     return embedding;
     
   } catch (error: any) {

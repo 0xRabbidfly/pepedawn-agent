@@ -118,55 +118,38 @@ export const fakeVisualCommand: Action = {
     options?: any,
     callback?: HandlerCallback,
   ) => {
-    logger.separator();
-    logger.info("Handler started", {
-      user: message.entityId,
-      text: message.content.text,
-    });
-
     try {
       const text = (message.content.text || "").trim();
+      logger.info(`\n━━━━━ /fv ━━━━━ ${text}`);
 
-      // STEP 1: Analyze a Fake Rares card
-      logger.step(1, "Parse command");
+      // Parse command
       const { cardName, error } = parseCommand(text);
 
       if (error || !cardName) {
-        logger.warning("No card name provided");
+        logger.info(`/fv: No card name provided`);
         const errorMessage = error ?? "Invalid command format";
         await callback?.({ text: errorMessage });
         return { success: false, text: "Invalid command format" };
       }
 
-      logger.info("Card name extracted", { cardName });
-
-      // STEP 2: Look up card in index
-      logger.step(2, "Look up card in index");
+      logger.info(`/fv: Card name "${cardName}" - looking up in index`);
       const cardInfo = getCardInfo(cardName);
 
       if (!cardInfo) {
-        logger.warning("Card not found in index", { cardName });
+        logger.info(`/fv: Card "${cardName}" not found in index`);
         await callback?.({
           text: `❌ Card **"${cardName}"** not found in the index.\n\n💡 **Tip:** Use \`/f ${cardName}\` to check if the card exists.`,
         });
         return { success: false, text: `Card ${cardName} not found` };
       }
 
-      logger.success("Card found", {
-        series: cardInfo.series,
-        artist: cardInfo.artist || "unknown",
-        ext: cardInfo.ext,
-      });
+      logger.info(`/fv: Card found - series ${cardInfo.series}, ${cardInfo.ext}`);
 
-      // STEP 3: Determine image URL for analysis
-      logger.step(3, "Determine image URL");
+      // Determine image URL for analysis
       const imageUrl = determineImageUrlForAnalysis(cardInfo, cardName);
 
       if (!imageUrl) {
-        logger.warning("Cannot analyze card - no static version available", {
-          cardName,
-          ext: cardInfo.ext,
-        });
+        logger.info(`/fv: No static image available for ${cardName} (${cardInfo.ext})`);
         await callback?.({
           text: `⚠️ **${cardName}** (${cardInfo.ext.toUpperCase()}) does not have a static image version for analysis.\n\n💡 **Alternative:** Use \`/f ${cardName}\` to view the card.`,
         });
@@ -176,10 +159,7 @@ export const fakeVisualCommand: Action = {
         };
       }
 
-      logger.info("Image URL determined", { url: imageUrl });
-
-      // STEP 4: Perform visual analysis
-      logger.step(4, "Perform vision analysis");
+      logger.info(`/fv: Analyzing ${cardName} with vision API`);
       const result = await analyzeWithVision(
         runtime,
         imageUrl,
@@ -188,15 +168,11 @@ export const fakeVisualCommand: Action = {
         "Visual Meme calls",
       );
 
-      // STEP 5: Format and send results
-      logger.step(5, "Send results");
+      // Format and send results
       const responseText = formatAnalysisMessage(cardName, result.analysis);
-
-      // Send text only (no attachment) so Telegram displays full-width text
       await callback?.({ text: responseText });
 
-      logger.separator();
-      logger.success("Handler completed successfully", { cardName });
+      logger.info(`/fv complete: ${cardName} analyzed (${result.tokensIn + result.tokensOut} tokens, ${result.duration}ms)`);
 
       return {
         success: true,

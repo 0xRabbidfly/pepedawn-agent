@@ -217,6 +217,8 @@ export const fakeMarketAction: Action = {
     try {
       const text = (message.content.text || '').trim();
       
+      logger.info(`\n━━━━━ /fm ━━━━━ ${text}`);
+      
       // Parse command
       const parseResult = parseCommand(text);
       if (parseResult.error) {
@@ -292,15 +294,7 @@ export const fakeMarketAction: Action = {
         await callback({ text: response });
       }
       
-      logger.info(
-        {
-          type: parseResult.type || 'combined',
-          limit: parseResult.limit,
-          salesCount: sales.length,
-          listingsCount: listings.length,
-        },
-        'Transaction query executed'
-      );
+      logger.info(`/fm complete: ${sales.length} sales, ${listings.length} listings (${parseResult.type || 'combined'}, limit ${parseResult.limit})`);
       
       return {
         success: true,

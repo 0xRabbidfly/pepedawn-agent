@@ -107,6 +107,8 @@ Summary:`;
   
   try {
     // Use TEXT_SMALL for summaries (uses OPENAI_SMALL_MODEL from .env)
+    const startTime = Date.now();
+    const modelName = process.env.OPENAI_SMALL_MODEL || 'gpt-4o-mini';
     const result = await runtime.useModel(ModelType.TEXT_SMALL, {
       prompt: summaryPrompt,
       maxTokens: LORE_CONFIG.MAX_TOKENS_SUMMARY,
@@ -115,6 +117,12 @@ Summary:`;
     });
     
     const summary = typeof result === 'string' ? result : (result as any)?.text || (result as any)?.toString?.() || '';
+    const duration = Date.now() - startTime;
+    
+    // Log cluster summarization LLM call
+    const tokensIn = Math.ceil(summaryPrompt.length / 4);
+    const tokensOut = Math.ceil(summary.length / 4);
+    logger.info(`🤖 LLM call: ${modelName} cluster-summary #${clusterId.split('-')[1]} (${tokensIn} → ${tokensOut} tokens, ${duration}ms)`);
     
     return {
       id: clusterId,

@@ -42,12 +42,14 @@ export const loreCommand: Action = {
     const raw = message.content.text || '';
     const query = raw.replace(/^\s*\/fl\s*/i, '').trim() || 'Fake Rares lore history community';
 
+    logger.info(`\n━━━━━ /fl ━━━━━ ${query}`);
+
     // Pre-classify query to detect unclear/ambiguous requests
     const { classifyQuery } = await import('../utils/queryClassifier');
     const queryType = classifyQuery(query);
     
     if (queryType === 'UNCERTAIN') {
-      logger.debug(`[LoreCommand] UNCERTAIN query - sending clarification prompt`);
+      logger.info(`[LoreCommand] UNCERTAIN query - sending clarification`);
       
       if (callback) {
         await callback({ text: CLARIFICATION_MESSAGE });
@@ -72,6 +74,8 @@ export const loreCommand: Action = {
       const result = await knowledgeService.retrieveKnowledge(query, message.roomId, {
         includeMetrics: true,
       });
+      
+      logger.info(`/fl complete: ${result.metrics.hits_used} hits, ${result.metrics.latency_ms}ms, ${result.story.split(/\s+/).length} words`);
 
       let finalMessage = result.story + result.sourcesLine;
 

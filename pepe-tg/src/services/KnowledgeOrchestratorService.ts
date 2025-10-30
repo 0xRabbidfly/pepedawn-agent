@@ -10,7 +10,7 @@
  * - Better composability with other services
  */
 
-import { Service, type IAgentRuntime } from '@elizaos/core';
+import { Service, type IAgentRuntime, logger } from '@elizaos/core';
 import { searchKnowledgeWithExpansion, selectDiversePassages, expandQuery } from '../utils/loreRetrieval';
 import { clusterAndSummarize, formatSourcesLine, formatCompactCitation } from '../utils/loreSummarize';
 import { generatePersonaStory } from '../utils/storyComposer';
@@ -89,12 +89,14 @@ export class KnowledgeOrchestratorService extends Service {
     const startTime = Date.now();
 
     logger.debug(`\n🔍 [KNOWLEDGE] Query: "${query}"`);
+    logger.info(`STEP 1/5: Expanding query`);
     logger.debug('='.repeat(60));
 
     // STEP 1: Query expansion
     const expandedQuery = expandQuery(query);
     logger.debug(`📝 Expanded query: "${expandedQuery}"`);
 
+    logger.info(`STEP 2/5: Retrieving passages`);
     // STEP 2: Retrieve passages
     const passages = await searchKnowledgeWithExpansion(
       this.runtime,
@@ -102,16 +104,19 @@ export class KnowledgeOrchestratorService extends Service {
       roomId
     );
 
-    logger.debug(`📚 Retrieved ${passages.length} passages`);
-    
     const sourceBreakdown = passages.reduce((acc, p) => {
       const type = p.sourceType === 'telegram' ? 'tg' : 
                    p.sourceType === 'wiki' ? 'wiki' :
-                   p.sourceType === 'memory' ? 'Mem' : 'other';
+                   p.sourceType === 'memory' ? 'mem' : 'other';
       acc[type] = (acc[type] || 0) + 1;
       return acc;
     }, {} as Record<string, number>);
-    logger.debug(`📊 Sources: ${JSON.stringify(sourceBreakdown)}`);
+    
+    const sourceStr = Object.entries(sourceBreakdown)
+      .map(([type, count]) => `${count} ${type}`)
+      .join(', ');
+    
+    logger.info(`STEP 2/5: Retrieved ${passages.length} passages (${sourceStr})`);
 
     if (passages.length === 0) {
       logger.debug('⚠️  No passages found - returning clarification message');
@@ -130,6 +135,7 @@ export class KnowledgeOrchestratorService extends Service {
       };
     }
 
+    logger.info(`STEP 3/5: Selecting diverse passages (MMR)`);
     // STEP 3: Apply MMR for diversity and filter recently used
     const passageIds = passages.map(p => p.id);
     const filteredIds = filterOutRecentlyUsed(roomId, passageIds);
@@ -157,12 +163,14 @@ export class KnowledgeOrchestratorService extends Service {
     );
     
     logger.debug(`🎯 Selected ${diversePassages.length} diverse passages via MMR${hasCardMemory ? ' (reduced for card memory emphasis)' : ''}`);
+    logger.info(`STEP 3/5: Selected ${diversePassages.length} diverse passages`);
 
     diversePassages.forEach(p => markIdAsRecentlyUsed(roomId, p.id));
 
+    logger.info(`STEP 4/5: Determining mode and composing summary`);
     // STEP 4: Classify or use provided mode
     const queryType = options?.mode || classifyQuery(query);
-    logger.debug(`🎯 Query type: ${queryType}`);
+    logger.info(`STEP 4/5: Mode = ${queryType} ${queryType === 'FACTS' ? '📋' : '📖'}`);
     
     let story: string;
     let sourcesLine: string;
@@ -172,6 +180,7 @@ export class KnowledgeOrchestratorService extends Service {
       logger.debug('📋 FACTS mode: Using top wiki and memory passages directly');
       
       const factsPassages = diversePassages.filter(p => p.sourceType === 'wiki' || p.sourceType === 'memory').slice(0, 5);
+      logger.info(`   → FACTS: Using ${factsPassages.length} passages (no clustering)`);
       
       if (factsPassages.length === 0) {
         const topPassages = diversePassages.slice(0, 5);
@@ -227,11 +236,11 @@ export class KnowledgeOrchestratorService extends Service {
         
         // Card cluster FIRST (highest prominence in story)
         summaries = [cardCluster, ...otherClusters];
-        logger.debug(`📊 Created 1 card cluster + ${otherClusters.length} other clusters`);
+        logger.info(`   → LORE: ${summaries.length} clusters (1 card + ${otherClusters.length} other)`);
       } else {
         // No card memories, normal clustering
         summaries = await clusterAndSummarize(this.runtime, diversePassages, query);
-        logger.debug(`📊 Generated ${summaries.length} cluster summaries`);
+        logger.info(`   → LORE: ${summaries.length} clusters generated`);
       }
       
       clusterCount = summaries.length;
@@ -241,6 +250,7 @@ export class KnowledgeOrchestratorService extends Service {
     }
     
     logger.debug(`✍️  Generated story (${story.split(/\s+/).length} words)`);
+    logger.info(`STEP 5/5: Story generated (${story.split(/\s+/).length} words)`);
 
     const latencyMs = Date.now() - startTime;
     logger.debug(`\n📈 [METRICS]`);

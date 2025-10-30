@@ -113,6 +113,8 @@ export async function callTextModel(
       });
     }
     
+    logger.info(`🤖 LLM call: ${options.model} (${tokensIn} → ${tokensOut} tokens, $${cost.toFixed(4)}, ${duration}ms)`);
+    
     return {
       text,
       tokensIn,
@@ -208,6 +210,8 @@ export async function callVisionModel(
         duration,
       });
     }
+    
+    logger.info(`🤖 LLM call: ${options.model} (${tokensIn} → ${tokensOut} tokens, $${cost.toFixed(4)}, ${duration}ms)`);
     
     return {
       text,

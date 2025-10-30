@@ -72,19 +72,11 @@ export class TransactionMonitor extends Service {
       // No historical catchup per FR-027, FR-028
       this.currentBlockCursor = await tokenScanClient.getCurrentBlockHeight();
       
-      logger.info(
-        { 
-          blockCursor: this.currentBlockCursor,
-          pollInterval: this.pollIntervalMs 
-        },
-        'TransactionMonitor started - polling initialized'
-      );
-
       // Start polling loop
       this.isRunning = true;
       this.startPolling();
 
-      logger.info('TransactionMonitor polling started');
+      logger.info(`TransactionMonitor started at block ${this.currentBlockCursor}`);
     } catch (error) {
       logger.error({ error }, 'Failed to start TransactionMonitor');
       throw error;
@@ -175,14 +167,7 @@ export class TransactionMonitor extends Service {
       }
 
       // Single consolidated log line
-      logger.info(
-        { 
-          block: this.currentBlockCursor,
-          sales: salesFound,
-          listings: listingsFound,
-        },
-        'Poll complete'
-      );
+      logger.info(`📊 Counterparty Market Poll [🧪 TEST MODE - ALL ASSETS]: block ${this.currentBlockCursor} - ${salesFound} sales, ${listingsFound} listings`);
     } catch (error) {
       logger.error({ error }, 'Error in polling cycle - continuing monitoring');
       // Continue monitoring per FR-022
@@ -201,9 +186,10 @@ export class TransactionMonitor extends Service {
       return false;
     }
 
-    // Check if asset is in Fake Rare collection
-    const asset = dispense.asset_longname || dispense.asset;
-    return tokenScanClient.isFakeRareAsset(dispense.asset, dispense.asset_longname);
+    // 🧪 TEMPORARILY DISABLED: Check if asset is in Fake Rare collection
+    // const asset = dispense.asset_longname || dispense.asset;
+    // return tokenScanClient.isFakeRareAsset(dispense.asset, dispense.asset_longname);
+    return true; // 🧪 TEST MODE: Accept all valid transactions
   }
 
   /**
@@ -218,8 +204,9 @@ export class TransactionMonitor extends Service {
       return false;
     }
 
-    // Check if asset is in Fake Rare collection
-    return tokenScanClient.isFakeRareAsset(dispenser.asset, dispenser.asset_longname);
+    // 🧪 TEMPORARILY DISABLED: Check if asset is in Fake Rare collection
+    // return tokenScanClient.isFakeRareAsset(dispenser.asset, dispenser.asset_longname);
+    return true; // 🧪 TEST MODE: Accept all open dispensers
   }
 
   /**

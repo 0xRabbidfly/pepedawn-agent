@@ -103,10 +103,7 @@ export class TokenScanClient extends Service {
       // Note: FULL_CARD_INDEX doesn't have longnames, only asset names
     }
     
-    logger.info(
-      { assetCount: this.fakeRareAssets.size },
-      'Loaded Fake Rare assets from FULL_CARD_INDEX'
-    );
+    logger.info(`Loaded ${this.fakeRareAssets.size} Fake Rare assets from FULL_CARD_INDEX`);
     
     // Initialize HTTP client with timeout and retry configuration
     this.client = axios.create({

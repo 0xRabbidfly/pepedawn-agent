@@ -69,46 +69,35 @@ export const fakeTestCommand: Action = {
     options?: any,
     callback?: HandlerCallback,
   ) => {
-    logger.separator();
-    logger.info("Handler started", {
-      user: message.entityId,
-      text: message.content.text,
-    });
-
     try {
       const hasAttachment =
         message.content.attachments && message.content.attachments.length > 0;
 
+      logger.info(`\n━━━━━ /ft ━━━━━ ${hasAttachment ? '1 attachment' : 'no attachment'}`);
+
       // Require image attachment
       if (!hasAttachment) {
-        logger.warning("No attachment found");
+        logger.info("/ft: No attachment found");
         await callback?.({
           text: "❌ **Usage:** `/ft` + attach image\n\nAnalyzes any uploaded image for Fake Rares appeal.\n\n**Example:** Type `/ft` in the caption when uploading your meme.",
         });
         return { success: false, text: "No attachment" };
       }
 
-      logger.step(1, "Process uploaded image");
       const attachment = message.content.attachments?.[0];
 
       if (!attachment) {
-        logger.error("Attachment missing despite hasAttachment check");
+        logger.info("/ft: Attachment missing despite check");
         await callback?.({
           text: "❌ Could not access the uploaded image. Please try again.",
         });
         return { success: false, text: "No attachment found" };
       }
 
-      logger.info("Attachment detected", {
-        source: attachment.source,
-        url: attachment.url,
-        contentType: attachment.contentType,
-      });
+      logger.info(`/ft: STEP 1/3 - Validating ${attachment.source} attachment`);
 
       if (!attachment.url) {
-        logger.error("No URL in attachment", undefined, {
-          attachmentSource: attachment.source,
-        });
+        logger.info("/ft: No URL in attachment");
         await callback?.({
           text: "❌ Could not access the uploaded image. Please try again.",
         });
@@ -124,9 +113,7 @@ export const fakeTestCommand: Action = {
         attachment.url.includes("/animations/");
 
       if (isAnimation) {
-        logger.info(
-          "Animation detected - blocking and asking user to clip a frame",
-        );
+        logger.info("/ft: Animation detected - blocking");
         await callback?.({
           text: "❌ **Sorry brother Fake, but we cannot analyze animations.**\n\n💡 **To analyze:**\n1. Clip the starter frame\n2. Upload or just paste into TG with `/ft` caption",
         });
@@ -136,22 +123,21 @@ export const fakeTestCommand: Action = {
       const imageUrlToUse = attachment.url;
 
       // STEP 2: Validate image URL is accessible
-      logger.step(2, "Validate image");
       try {
         const headResponse = await fetch(imageUrlToUse, { method: "HEAD" });
         if (!headResponse.ok) {
           throw new Error(`Image not accessible: ${headResponse.statusText}`);
         }
       } catch (validateError: any) {
-        logger.error("Failed to access image", validateError);
+        logger.info("/ft: Failed to access image");
         await callback?.({
           text: "❌ Could not access the uploaded image. Please try again.",
         });
         return { success: false, text: "Image validation failed" };
       }
 
-      // STEP 3: Check for existing card similarity (BEFORE LLM call to save costs!)
-      logger.step(3, "Check embedding similarity");
+      // STEP 2: Check for existing card similarity (BEFORE LLM call to save costs!)
+      logger.info("/ft: STEP 2/3 - Checking for duplicates via embeddings");
       let similarCard: {
         asset: string;
         imageUrl: string;
@@ -172,7 +158,7 @@ export const fakeTestCommand: Action = {
 
             // EXACT MATCH: User uploaded an existing Fake Rare!
             if (matchType === "exact") {
-              logger.success("Exact match detected - no LLM call needed!");
+              logger.info(`/ft: Exact match - ${similarCard.asset} (no LLM needed)`);
               const responseText = `🐸 **HA! NICE TRY!**\n\nThat's **${similarCard.asset}** - already a certified FAKE RARE!\n\n🎯 **10/10** because it's already legendary.\n\nTry uploading your own original art instead! 😏`;
               await callback?.({ text: responseText });
 
@@ -189,7 +175,7 @@ export const fakeTestCommand: Action = {
 
             // HIGH MATCH: User modified an existing card or sent a clipped frame
             if (matchType === "high") {
-              logger.success("High similarity detected - no LLM call needed!");
+              logger.info(`/ft: High similarity - ${similarCard.asset} (${(similarCard.similarity * 100).toFixed(1)}%, no LLM)`);
               const responseText = `🐸 **SNEAKY! ALMOST GOT ME!**\n\nLooks like you tried to modify **${similarCard.asset}**! The vibes are too similar, or you sent a clipping of a true FAKE RARE.\n\nNice try, but I can spot a derivative when I see one! 😏\n\nWant a real analysis? Upload something more original! 🎨`;
               await callback?.({ text: responseText });
 
@@ -206,17 +192,11 @@ export const fakeTestCommand: Action = {
           }
         } catch (embeddingError: any) {
           // If embedding check fails, log but continue to LLM analysis
-          logger.warning(
-            "Embedding similarity check failed, proceeding to LLM",
-            {
-              error: embeddingError.message,
-            },
-          );
+          logger.info("/ft: Embedding check failed, proceeding to LLM");
         }
       }
 
-      // STEP 4: Perform visual analysis (LOW similarity or embedding check skipped/failed)
-      logger.step(4, "Perform vision analysis");
+      // STEP 3: Perform visual analysis (LOW similarity or embedding check skipped/failed)
 
       try {
         const result = await analyzeWithVision(
@@ -238,8 +218,7 @@ export const fakeTestCommand: Action = {
 
         await callback?.({ text: responseText });
 
-        logger.separator();
-        logger.success("Handler completed successfully");
+        logger.info(`/ft complete: Analysis sent (${result.tokensIn} → ${result.tokensOut} tokens, $${result.cost.toFixed(4)}, ${result.duration}ms)`);
 
         return {
           success: true,

@@ -2,6 +2,8 @@
  * Query Classifier - Detect if user wants FACTS or LORE
  */
 
+import { logger } from '@elizaos/core';
+
 export type QueryType = 'FACTS' | 'LORE' | 'UNCERTAIN';
 
 /**
@@ -15,6 +17,7 @@ export function classifyQuery(query: string): QueryType {
   
   // Skip slash commands - they're handled by specific actions
   if (/^\/[a-z]+/i.test(lowerQuery.trim())) {
+    logger.info(`   QueryClassifier: UNCERTAIN (slash command)`);
     return 'UNCERTAIN';
   }
   
@@ -105,32 +108,44 @@ export function classifyQuery(query: string): QueryType {
   
   // Special case: "submission rules" always = FACTS
   if (lowerQuery.includes('submission') && lowerQuery.includes('rule')) {
+    logger.info(`   QueryClassifier: FACTS (submission rules keyword)`);
     return 'FACTS';
   }
   
   // Check if conversational wins (casual chat, not knowledge-seeking)
   if (conversationalScore > 0 && conversationalScore >= factScore && conversationalScore >= loreScore) {
+    logger.info(`   QueryClassifier: UNCERTAIN (conversational, score=${conversationalScore})`);
     return 'UNCERTAIN';
   }
   
   // Default: If tied or no clear winner, check query length
   const wordCount = lowerQuery.trim().split(/\s+/).length;
   
+  let result: QueryType;
+  let reason: string;
+  
   if (factScore > loreScore) {
-    return 'FACTS';
+    result = 'FACTS';
+    reason = `fact=${factScore} > lore=${loreScore}`;
   } else if (loreScore > factScore) {
-    return 'LORE';
+    result = 'LORE';
+    reason = `lore=${loreScore} > fact=${factScore}`;
   } else {
     // No keywords matched
     if (factScore === 0 && loreScore === 0) {
       // Short queries (≤3 words) likely card/artist names → search knowledge
       // Long unclear queries → route to AI conversation
-      return wordCount <= 4 ? 'LORE' : 'UNCERTAIN';
+      result = wordCount <= 4 ? 'LORE' : 'UNCERTAIN';
+      reason = factScore === 0 && loreScore === 0 ? `no keywords, ${wordCount} words` : `tied, ${wordCount} words`;
+    } else {
+      // Both have keywords but tied - use length heuristic
+      result = wordCount <= 6 ? 'LORE' : 'FACTS';
+      reason = `tied at ${factScore}, ${wordCount} words`;
     }
-    
-    // Both have keywords but tied - use length heuristic
-    return wordCount <= 6 ? 'LORE' : 'FACTS';
   }
+  
+  logger.info(`   QueryClassifier: ${result} (${reason})`);
+  return result;
 }
 
 /**

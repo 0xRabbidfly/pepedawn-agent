@@ -81,51 +81,7 @@ interface CardDisplayParams {
 // LOGGING
 // ============================================================================
 
-/**
- * Structured logger for card actions
- * Provides consistent, searchable log format with context
- */
-const logger = {
-  debug: (message: string, context?: Record<string, any>) => {
-    const ctx = context ? ` ${JSON.stringify(context)}` : "";
-    coreLogger.debug(`🔍 [DEBUG] ${message}${ctx}`);
-  },
-
-  info: (message: string, context?: Record<string, any>) => {
-    const ctx = context ? ` ${JSON.stringify(context)}` : "";
-    coreLogger.info(`ℹ️  [INFO] ${message}${ctx}`);
-  },
-
-  success: (message: string, context?: Record<string, any>) => {
-    const ctx = context ? ` ${JSON.stringify(context)}` : "";
-    coreLogger.info(`✅ [SUCCESS] ${message}${ctx}`);
-  },
-
-  warning: (message: string, context?: Record<string, any>) => {
-    const ctx = context ? ` ${JSON.stringify(context)}` : "";
-    coreLogger.warn(`⚠️  [WARNING] ${message}${ctx}`);
-  },
-
-  error: (
-    message: string,
-    error?: Error | string,
-    context?: Record<string, any>,
-  ) => {
-    const errorMsg = error instanceof Error ? error.message : error;
-    const ctx = context ? ` ${JSON.stringify(context)}` : "";
-    coreLogger.error(
-      `❌ [ERROR] ${message}${errorMsg ? ` - ${errorMsg}` : ""}${ctx}`,
-    );
-  },
-
-  step: (stepNumber: number, description: string) => {
-    coreLogger.debug(`\n🔧 STEP ${stepNumber}: ${description}`);
-  },
-
-  separator: () => {
-    coreLogger.debug(`${"=".repeat(60)}`);
-  },
-};
+// Use coreLogger directly to avoid any bundler confusion
 
 // ============================================================================
 // UTILITY FUNCTIONS
@@ -484,7 +440,7 @@ async function sendCardWithMedia(params: {
           __fromAction: "fakeRaresCard",
           suppressBootstrap: true,
         });
-        logger.debug("MP4 sent as link due to preflight", {
+        coreLogger.debug("MP4 sent as link due to preflight", {
           assetName: params.assetName,
           contentType,
           contentLength,
@@ -505,7 +461,7 @@ async function sendCardWithMedia(params: {
         __fromAction: "fakeRaresCard",
         suppressBootstrap: true,
       });
-      logger.debug("MP4 preflight failed; sent link", {
+      coreLogger.debug("MP4 preflight failed; sent link", {
         assetName: params.assetName,
       });
       return;
@@ -534,7 +490,7 @@ async function sendCardWithMedia(params: {
           __fromAction: "fakeRaresCard",
           suppressBootstrap: true,
         });
-        logger.debug("GIF sent as link due to preflight", {
+        coreLogger.debug("GIF sent as link due to preflight", {
           assetName: params.assetName,
           contentType,
           contentLength,
@@ -555,7 +511,7 @@ async function sendCardWithMedia(params: {
         __fromAction: "fakeRaresCard",
         suppressBootstrap: true,
       });
-      logger.debug("GIF preflight failed; sent link", {
+      coreLogger.debug("GIF preflight failed; sent link", {
         assetName: params.assetName,
       });
       return;
@@ -603,7 +559,7 @@ async function sendCardWithMedia(params: {
     suppressBootstrap: true,
   });
 
-  logger.debug("Card sent with media attachment", {
+  coreLogger.debug("Card sent with media attachment", {
     mediaType: isVideo ? "video" : isAnimation ? "gif" : "image",
     assetName: params.assetName,
   });
@@ -717,7 +673,7 @@ async function findCardImage(assetName: string): Promise<CardUrlResult | null> {
       cardInfo.series,
       cardInfo.ext as MediaExtension,
     );
-    logger.debug(
+    coreLogger.debug(
       `⚡ INSTANT: ${upperAsset} series=${cardInfo.series} ext=.${cardInfo.ext} (${Date.now() - t0}ms)`,
     );
     return { url, extension: cardInfo.ext as MediaExtension };
@@ -726,7 +682,7 @@ async function findCardImage(assetName: string): Promise<CardUrlResult | null> {
   // Try known mapping from runtime cache (fast path with probing)
   const knownSeries = getCardSeries(upperAsset);
   if (knownSeries !== undefined) {
-    logger.debug(
+    coreLogger.debug(
       `🧭 Fast path: ${upperAsset} series=${knownSeries} (trying extensions...)`,
     );
     // Try all extensions for the known series
@@ -736,7 +692,7 @@ async function findCardImage(assetName: string): Promise<CardUrlResult | null> {
       try {
         const response = await fetch(testUrl, { method: "HEAD" });
         if (response.ok) {
-          logger.debug(
+          coreLogger.debug(
             `✅ Found ${upperAsset} in series ${knownSeries} (${ext}) in ${Date.now() - t0}ms`,
           );
           return { url: testUrl, extension: ext };
@@ -748,7 +704,7 @@ async function findCardImage(assetName: string): Promise<CardUrlResult | null> {
   }
 
   // Unknown card - search through all series (slow path)
-  logger.debug(
+  coreLogger.debug(
     `🔍 ${upperAsset} not in index or cache, searching series 0-${SERIES_INFO.TOTAL_SERIES - 1}...`,
   );
 
@@ -762,7 +718,7 @@ async function findCardImage(assetName: string): Promise<CardUrlResult | null> {
         if (response.ok) {
           // Cache this for future use
           addCardToMap(upperAsset, series);
-          logger.debug(
+          coreLogger.debug(
             `✅ Found ${upperAsset} in series ${series} (${ext}) in ${Date.now() - t0}ms - added to cache`,
           );
           return { url: testUrl, extension: ext };
@@ -773,7 +729,7 @@ async function findCardImage(assetName: string): Promise<CardUrlResult | null> {
     }
   }
 
-  logger.debug(
+  coreLogger.debug(
     `❌ ${upperAsset} not found in any series 0-${SERIES_INFO.TOTAL_SERIES - 1} after ${Date.now() - t0}ms`,
   );
   return null;
@@ -813,13 +769,13 @@ async function lookupCardUrl(assetName: string): Promise<{
   cardInfo: CardInfo | null;
   urlResult: CardUrlResult | null;
 }> {
-  logger.step(2, "Lookup card metadata");
+  coreLogger.debug(2, "Lookup card metadata");
   const cardInfoResult = getCardInfo(assetName);
   const cardInfo: CardInfo | null = cardInfoResult || null;
   let urlResult: CardUrlResult | null = null;
 
   if (cardInfo) {
-    logger.info("Found in fullCardIndex", {
+    coreLogger.info("Found in fullCardIndex", {
       series: cardInfo.series,
       card: cardInfo.card,
       artist: cardInfo.artist || "unknown",
@@ -827,26 +783,20 @@ async function lookupCardUrl(assetName: string): Promise<{
       ext: cardInfo.ext,
     });
 
-    logger.step(3, "Determine image/video URL");
+    coreLogger.debug(3, "Determine image/video URL");
     urlResult = determineCardUrl(cardInfo, assetName);
 
     if (cardInfo.ext === "mp4" && cardInfo.videoUri) {
-      logger.debug("Using videoUri");
+      coreLogger.debug("Using videoUri");
     } else if (cardInfo.imageUri) {
-      logger.debug("Using imageUri");
+      coreLogger.debug("Using imageUri");
     } else {
-      logger.debug("Constructed from series/ext");
+      coreLogger.debug("Constructed from series/ext");
     }
   } else {
-    logger.warning("Not in fullCardIndex, trying HTTP probing fallback");
-    logger.step(3, "Fallback - HTTP probing");
-    urlResult = await findCardImage(assetName);
-
-    if (urlResult) {
-      logger.success("Probing found card");
-    } else {
-      logger.warning("Probing failed - card not found anywhere");
-    }
+    // Skip HTTP probing: rely on offline FULL_CARD_INDEX and fuzzy matching
+    coreLogger.info("Not in fullCardIndex - skipping HTTP probing (using fuzzy match next)");
+    urlResult = null;
   }
 
   return { cardInfo, urlResult };
@@ -862,7 +812,7 @@ async function handleCardFound(params: {
   isRandomCard: boolean;
   callback?: HandlerCallback;
 }): Promise<{ success: true; data: any }> {
-  logger.step(4, "Compose message with metadata");
+  coreLogger.debug(4, "Compose message with metadata");
 
   const cardMessage = buildCardDisplayMessage({
     assetName: params.assetName,
@@ -871,7 +821,7 @@ async function handleCardFound(params: {
     isRandomCard: params.isRandomCard,
   });
 
-  logger.step(5, "Send message with media preview and artist button");
+  coreLogger.debug(5, "Send message with media preview and artist button");
   const buttons = buildArtistButton(params.cardInfo);
   // Use the properly capitalized name from cardInfo for display and file purposes
   const displayAssetName = params.cardInfo?.asset || params.assetName;
@@ -891,10 +841,10 @@ async function handleCardFound(params: {
     assetName: displayAssetName,
     buttons,
     fallbackImages,
-  }).catch((err) => logger.error("Error sending callback", err));
+  }).catch((err) => coreLogger.error("Error sending callback", err));
 
-  logger.success(`${params.assetName} card will be displayed`);
-  logger.separator();
+  coreLogger.info(`${params.assetName} card will be displayed`);
+  coreLogger.debug();
 
   return {
     success: true,
@@ -921,7 +871,7 @@ async function displayArtistCard(params: {
   // Pick random card by this artist
   const randomCard =
     params.cards[Math.floor(Math.random() * params.cards.length)];
-  logger.success("Artist match - displaying random card", {
+  coreLogger.info("Artist match - displaying random card", {
     artist: params.artistName,
     similarity: params.similarity
       ? `${(params.similarity * 100).toFixed(1)}%`
@@ -970,10 +920,10 @@ async function displayArtistCard(params: {
     fallbackImages,
   });
 
-  logger.success(
+  coreLogger.info(
     `Artist-matched card ${randomCard.asset} displayed for query "${params.query}"`,
   );
-  logger.separator();
+  coreLogger.debug();
 
   return {
     success: true,
@@ -1000,8 +950,8 @@ async function handleCardNotFound(params: {
   assetName: string;
   callback?: HandlerCallback;
 }): Promise<{ success: boolean; data: any }> {
-  logger.warning(`Exact matches failed for "${params.assetName}"`);
-  logger.info("STEP 4a: Attempting fuzzy card match...");
+  coreLogger.warn(`Exact matches failed for "${params.assetName}"`);
+  coreLogger.info("STEP 4a: Attempting fuzzy card match...");
 
   // Perform fuzzy matching on card names
   const allAssets = getAllCards().map((c) => c.asset);
@@ -1013,7 +963,7 @@ async function handleCardNotFound(params: {
     bestMatch &&
     bestMatch.similarity >= FUZZY_MATCH_THRESHOLDS.HIGH_CONFIDENCE
   ) {
-    logger.success("Fuzzy match found", {
+    coreLogger.info("Fuzzy match found", {
       match: bestMatch.name,
       similarity: `${(bestMatch.similarity * 100).toFixed(1)}%`,
     });
@@ -1040,10 +990,10 @@ async function handleCardNotFound(params: {
         assetName: bestMatch.name,
       });
 
-      logger.success(
+      coreLogger.info(
         `Fuzzy-matched card ${bestMatch.name} displayed for typo "${params.assetName}"`,
       );
-      logger.separator();
+      coreLogger.debug();
 
       return {
         success: true,
@@ -1060,7 +1010,7 @@ async function handleCardNotFound(params: {
 
   // Moderate match - show suggestions
   if (bestMatch && bestMatch.similarity >= FUZZY_MATCH_THRESHOLDS.MODERATE) {
-    logger.info("Moderate fuzzy match", {
+    coreLogger.info("Moderate fuzzy match", {
       match: bestMatch.name,
       similarity: `${(bestMatch.similarity * 100).toFixed(1)}%`,
     });
@@ -1070,8 +1020,8 @@ async function handleCardNotFound(params: {
       .map((m) => `• ${m.name}`)
       .join("\n");
 
-    logger.debug("Suggestions", { count: topMatches.length });
-    logger.separator();
+    coreLogger.debug("Suggestions", { count: topMatches.length });
+    coreLogger.debug();
 
     let errorText = `❌ Could not find "${params.assetName}" in the Fake Rares collection.\n\n`;
     if (suggestions) {
@@ -1101,7 +1051,7 @@ async function handleCardNotFound(params: {
   }
 
   // No good card name match - try fuzzy artist search
-  logger.info(
+  coreLogger.info(
     "STEP 4b: No good card fuzzy match, trying fuzzy artist search...",
   );
   const artistFuzzyMatch = findCardsByArtistFuzzy(params.assetName);
@@ -1121,12 +1071,12 @@ async function handleCardNotFound(params: {
     ? (bestMatch.similarity * 100).toFixed(1)
     : "0.0";
   const thresholdPercent = (FUZZY_MATCH_THRESHOLDS.MODERATE * 100).toFixed(0);
-  logger.warning("No good fuzzy match found", {
+  coreLogger.warn("No good fuzzy match found", {
     best: bestMatch?.name || "none",
     similarity: `${similarityPercent}%`,
     threshold: `${thresholdPercent}%`,
   });
-  logger.separator();
+  coreLogger.debug();
 
   if (params.callback) {
     await params.callback({
@@ -1167,7 +1117,7 @@ export const fakeRaresCardAction: Action = {
     const fPattern =
       /^(?:@[A-Za-z0-9_]+\s+)?\/f(?:@[A-Za-z0-9_]+)?(?:\s+.+)?$/i;
     const matches = fPattern.test(text);
-    logger.debug("Command validation", { text, matches });
+    coreLogger.debug("Command validation", { text, matches });
     return matches;
   },
 
@@ -1179,12 +1129,8 @@ export const fakeRaresCardAction: Action = {
     callback?: HandlerCallback,
   ) => {
     // Initialize handler
-    logger.separator();
-    logger.info("HANDLER STARTED", {
-      message: message.content.text,
-      user: message.entityId,
-    });
-    logger.separator();
+    coreLogger.info(`\n━━━━━ /f ━━━━━ ${message.content.text}`);
+    coreLogger.debug();
 
     let assetName = "UNKNOWN"; // Declare outside try block for error handling
 
@@ -1192,14 +1138,14 @@ export const fakeRaresCardAction: Action = {
       const text = (message.content.text || "").trim();
 
       // STEP 1: Parse the command
-      logger.step(1, "Parse command");
+      coreLogger.debug(1, "Parse command");
       const request = parseCardRequest(text);
 
       // Handle random card request
       if (request.isRandomCard) {
         const allCards = getAllCards();
         if (allCards.length === 0) {
-          logger.error("Cannot select random card: index is empty");
+          coreLogger.error("Cannot select random card: index is empty");
           if (callback) {
             await callback({
               text: "❌ Card index not loaded. Please try again later.",
@@ -1211,21 +1157,21 @@ export const fakeRaresCardAction: Action = {
         const randomCard =
           allCards[Math.floor(Math.random() * allCards.length)];
         assetName = randomCard.asset;
-        logger.info("Random card selected", {
+        coreLogger.info("Random card selected", {
           assetName,
           totalCards: allCards.length,
         });
       } else {
         assetName = request.assetName!;
-        logger.info("Extracted asset/artist", { input: assetName });
+        coreLogger.info("Extracted asset/artist", { input: assetName });
       }
 
       // STEP 2: Try exact card match
-      logger.step(2, "Try exact card match");
+      coreLogger.debug(2, "Try exact card match");
       const { cardInfo, urlResult } = await lookupCardUrl(assetName);
 
       if (urlResult) {
-        logger.success("Exact card match found");
+        coreLogger.info("Exact card match found");
         return await handleCardFound({
           assetName,
           cardInfo,
@@ -1236,11 +1182,11 @@ export const fakeRaresCardAction: Action = {
       }
 
       // STEP 3: Try exact artist match
-      logger.step(3, "Try exact artist match");
+      coreLogger.debug(3, "Try exact artist match");
       const exactArtistMatch = findCardsByArtistExact(assetName);
 
       if (exactArtistMatch) {
-        logger.success("Exact artist match found", {
+        coreLogger.info("Exact artist match found", {
           artist: exactArtistMatch.matchedArtist,
         });
         return await displayArtistCard({
@@ -1252,21 +1198,21 @@ export const fakeRaresCardAction: Action = {
       }
 
       // STEP 4-5: Try fuzzy matches (card then artist)
-      logger.step(4, "Try fuzzy matches");
+      coreLogger.debug(4, "Try fuzzy matches");
       return await handleCardNotFound({
         assetName,
         callback,
       });
     } catch (error) {
-      logger.separator();
-      logger.error(
+      coreLogger.debug();
+      coreLogger.error(
         "EXCEPTION in /f handler",
         error instanceof Error ? error : String(error),
         {
           assetName,
         },
       );
-      logger.separator();
+      coreLogger.debug();
 
       // Error occurred - respond via callback and suppress bootstrap
       if (callback) {

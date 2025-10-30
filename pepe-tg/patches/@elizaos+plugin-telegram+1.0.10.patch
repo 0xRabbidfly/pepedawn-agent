@@ -149,7 +149,7 @@ index 6a508dd..22d0281 100644
      try {
        let imageUrl = null;
 -      logger.info(`Telegram Message: ${JSON.stringify(message, null, 2)}`);
-+      logger2.info(`Telegram Message: ${JSON.stringify(message, null, 2)}`);
++      logger2.debug(`Telegram Message: ${JSON.stringify(message, null, 2)}`);
        if ("photo" in message && message.photo?.length > 0) {
          const photo = message.photo[message.photo.length - 1];
          const fileLink = await this.bot.telegram.getFileLink(photo.file_id);
