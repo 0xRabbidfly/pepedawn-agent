@@ -95,7 +95,8 @@ export const helpCommand: Action = {
 \`/fl CARDNAME\` - Get card lore & community stories
 
 **Fake Memory:**
-\`CARDNAME remember this CARDNAME: FACT\` - Save community knowledge`;
+\`@pepedawn_bot Remember this CARDNAME:\` <enter lore>
+\`@pepedawn_bot Remember this:\` <enter any lore/facts>`;
 
     if (callback) {
       await callback({ text: helpMessage });
