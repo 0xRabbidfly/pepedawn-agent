@@ -86,31 +86,16 @@ export const helpCommand: Action = {
 
 **Fake Vision:**
 \`/fv CARDNAME\` - AI visual analysis & meme breakdown
+\`/ft <img>\` - Attach and img and get a fake appeal score!
 
 **Fake Market:** 📊 NEW!
 \`/fm\` - Recent sales + listings (default 10)
-\`/fm S 5\` - Last 5 sales only
-\`/fm L 15\` - Last 15 listings only
-
-Real-time notifications for dispenser & DEX activity!
-• 💰 Dispenser sales | ⚡ DEX swaps
-• 📋 Listings | 🎰 Dispenser 📊 DEX
 
 **Fake Lore:**
 \`/fl CARDNAME\` - Get card lore & community stories
-\`/fl what is X\` - Get facts (rules, specs, how-to)
-\`/fl tell me about Y\` - Get history & narratives
-\`/fl\` - Random lore story
 
 **Fake Memory:**
-\`CARDNAME remember this CARDNAME: FACT\` - Save community knowledge
-
-**Tips:**
-• Case-insensitive: \`/f pepedawn\` = \`/f PEPEDAWN\`
-• Chat naturally - I understand questions!
-• Memories appear in future \`/fl\` searches
-
-Type \`/start\` for welcome • Mention @pepedawn_bot anytime 🐸`;
+\`CARDNAME remember this CARDNAME: FACT\` - Save community knowledge`;
 
     if (callback) {
       await callback({ text: helpMessage });
