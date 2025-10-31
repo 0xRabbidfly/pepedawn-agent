@@ -58,8 +58,8 @@ export const fakeTestCommand: Action = {
 
   validate: async (runtime: IAgentRuntime, message: Memory) => {
     const text = (message.content.text || "").trim();
-    // Match /ft command (must have attachment, checked in handler)
-    return /^(?:@[A-Za-z0-9_]+\s+)?\/ft(?:\s|$)/i.test(text);
+    // Match /ft command (must have attachment, checked in handler), handles @botname
+    return /^(?:@[A-Za-z0-9_]+\s+)?\/ft(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text);
   },
 
   handler: async (

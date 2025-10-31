@@ -39,7 +39,7 @@ export const loreCommand: Action = {
     callback?: HandlerCallback
   ) => {
     const raw = message.content.text || '';
-    const query = raw.replace(/^\s*\/fl\s*/i, '').trim() || 'Fake Rares lore history community';
+    const query = raw.replace(/^\s*\/fl(?:@[A-Za-z0-9_]+)?\s*/i, '').trim() || 'Fake Rares lore history community';
 
     logger.info(`\n━━━━━ /fl ━━━━━ ${query}`);
 

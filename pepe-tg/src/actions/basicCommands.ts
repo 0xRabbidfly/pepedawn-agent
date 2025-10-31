@@ -19,7 +19,7 @@ export const startCommand: Action = {
 
   validate: async (runtime: IAgentRuntime, message: Memory) => {
     const text = message.content.text?.toLowerCase().trim() || "";
-    return text === "/start";
+    return text.startsWith("/start");
   },
 
   handler: async (
@@ -67,7 +67,7 @@ export const helpCommand: Action = {
 
   validate: async (runtime: IAgentRuntime, message: Memory) => {
     const text = message.content.text?.toLowerCase().trim() || "";
-    return text === "/help" || text === "/info";
+    return text.startsWith("/help") || text.startsWith("/info");
   },
 
   handler: async (

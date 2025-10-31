@@ -124,6 +124,7 @@ export const fakeRaresPlugin: Plugin = {
     fakeVisualCommand,
     fakeTestCommand,
     loreCommand,
+    oddsCommand,
     costCommand,
   ],
   
@@ -168,13 +169,13 @@ export const fakeRaresPlugin: Plugin = {
           
           // Pattern detection
           const isFCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/f(?:@[A-Za-z0-9_]+)?(?:\s+.+)?$/i.test(text);
-          const isFvCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fv(?:\s|$)/i.test(text);
-          const isFtCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/ft(?:\s|$)/i.test(text);
-          const isLoreCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fl/i.test(text);
-          const isFmCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fm(?:\s|$)/i.test(text);
-          const isDawnCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/dawn$/i.test(text);
-          const isHelpCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/help$/i.test(text);
-          const isStartCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/start$/i.test(text);
+          const isFvCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fv(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text);
+          const isFtCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/ft(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text);
+          const isLoreCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fl(?:@[A-Za-z0-9_]+)?/i.test(text);
+          const isFmCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fm(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text);
+          const isDawnCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/dawn(?:@[A-Za-z0-9_]+)?$/i.test(text);
+          const isHelpCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/help(?:@[A-Za-z0-9_]+)?$/i.test(text);
+          const isStartCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/start(?:@[A-Za-z0-9_]+)?$/i.test(text);
           const isCostCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fc/i.test(text);
           const hasCapitalizedWord = /\b[A-Z]{3,}[A-Z0-9]*\b/.test(text); // 3+ caps (likely card names)
           const hasBotMention = /@pepedawn_bot/i.test(text);

@@ -289,7 +289,7 @@ export const oddsCommand: Action = {
 
   validate: async (runtime: IAgentRuntime, message: Memory) => {
     const text = message.content.text?.toLowerCase().trim() || '';
-    return text === '/dawn';
+    return text.startsWith('/dawn');
   },
 
   handler: async (

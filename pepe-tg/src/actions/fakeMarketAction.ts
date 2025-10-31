@@ -19,15 +19,15 @@ import type { Transaction } from '../models/transaction.js';
 function parseCommand(text: string): { type: 'SALE' | 'LISTING' | null; limit: number; error: string | null } {
   const trimmed = text.trim();
   
-  // Default: /fm alone = last 10 combined
-  if (trimmed === '/fm') {
+  // Default: /fm alone = last 10 combined (handle @botname suffix)
+  if (/^\/fm(?:@[A-Za-z0-9_]+)?$/i.test(trimmed)) {
     return { type: null, limit: 10, error: null };
   }
   
-  // Match patterns: /fm N, /fm S N, /fm L N
-  const combinedPattern = /^\/fm\s+(\d+)$/i;
-  const salesPattern = /^\/fm\s+s\s+(\d+)$/i;
-  const listingsPattern = /^\/fm\s+l\s+(\d+)$/i;
+  // Match patterns: /fm N, /fm S N, /fm L N (handle @botname suffix)
+  const combinedPattern = /^\/fm(?:@[A-Za-z0-9_]+)?\s+(\d+)$/i;
+  const salesPattern = /^\/fm(?:@[A-Za-z0-9_]+)?\s+s\s+(\d+)$/i;
+  const listingsPattern = /^\/fm(?:@[A-Za-z0-9_]+)?\s+l\s+(\d+)$/i;
   
   let match = trimmed.match(combinedPattern);
   if (match) {
@@ -208,8 +208,8 @@ export const fakeMarketAction: Action = {
   
   validate: async (_runtime: IAgentRuntime, message: Memory) => {
     const text = (message.content.text || '').trim();
-    // Match /fm command patterns
-    return /^\/fm(\s+(s|l)\s+\d+|\s+\d+)?$/i.test(text);
+    // Match /fm command patterns (with optional @botname mention)
+    return /^(?:@[A-Za-z0-9_]+\s+)?\/fm(?:@[A-Za-z0-9_]+)?(\s+(s|l)\s+\d+|\s+\d+)?$/i.test(text);
   },
   
   handler: async (

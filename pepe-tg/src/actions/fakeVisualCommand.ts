@@ -79,7 +79,7 @@ function parseCommand(text: string): {
   cardName: string | null;
   error: string | null;
 } {
-  const match = text.match(/^(?:@[A-Za-z0-9_]+\s+)?\/fv\s+(.+)/i);
+  const match = text.match(/^(?:@[A-Za-z0-9_]+\s+)?\/fv(?:@[A-Za-z0-9_]+)?\s+(.+)/i);
 
   if (!match || !match[1]) {
     return {
@@ -107,8 +107,8 @@ export const fakeVisualCommand: Action = {
     const text = (message.content.text || "").trim();
     const hasAttachment =
       message.content.attachments && message.content.attachments.length > 0;
-    // Match /fv command with card name (no attachments)
-    return /^(?:@[A-Za-z0-9_]+\s+)?\/fv\s+.+/i.test(text) && !hasAttachment;
+    // Match /fv command with card name (no attachments), handles @botname before or after /fv
+    return /^(?:@[A-Za-z0-9_]+\s+)?\/fv(?:@[A-Za-z0-9_]+)?\s+.+/i.test(text) && !hasAttachment;
   },
 
   handler: async (
