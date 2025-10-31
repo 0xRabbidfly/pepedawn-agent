@@ -31,7 +31,9 @@ export const marketTransactionReporterPlugin: Plugin = {
     TransactionMonitor,   // Depends on TokenScanClient and TransactionHistory (must be last)
   ],
   
-  actions: [fakeMarketAction], // /fm command for querying transaction history
+  actions: [
+    fakeMarketAction,           // /fm command for querying transaction history
+  ],
   
   providers: [],
   

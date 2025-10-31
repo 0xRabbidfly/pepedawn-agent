@@ -51,10 +51,12 @@ export class TransactionHistory extends Service {
       await this.db.waitReady;
       
       // Create transactions table (PostgreSQL syntax)
+      // Drop and recreate to ensure correct schema (temporary for migration)
       await this.db.exec(`
-        CREATE TABLE IF NOT EXISTS transactions (
+        DROP TABLE IF EXISTS transactions CASCADE;
+        CREATE TABLE transactions (
           tx_hash TEXT PRIMARY KEY,
-          type TEXT NOT NULL CHECK(type IN ('SALE', 'LISTING')),
+          type TEXT NOT NULL CHECK(type IN ('DIS_SALE', 'DIS_LISTING', 'DEX_SALE', 'DEX_LISTING')),
           asset TEXT NOT NULL,
           amount BIGINT NOT NULL CHECK(amount > 0),
           price BIGINT NOT NULL CHECK(price >= 0),
@@ -89,10 +91,37 @@ export class TransactionHistory extends Service {
         ['schema_version']
       );
       
-      if (versionResult.rows.length === 0) {
+      const currentVersion = versionResult.rows.length > 0 ? parseInt(versionResult.rows[0].value as string, 10) : 0;
+      
+      if (currentVersion === 0) {
         await this.db.exec(
           "INSERT INTO metadata (key, value) VALUES ('schema_version', '1') ON CONFLICT (key) DO UPDATE SET value = '1'"
         );
+      }
+      
+      // Migration: Update type constraint for v2 (DIS_SALE, DIS_LISTING, DEX_SALE, DEX_LISTING)
+      if (currentVersion < 2) {
+        logger.info('Running migration v1 → v2: Updating transaction type constraint...');
+        
+        // Drop old constraint and add new one
+        await this.db.exec(`
+          ALTER TABLE transactions DROP CONSTRAINT IF EXISTS transactions_type_check;
+          ALTER TABLE transactions ADD CONSTRAINT transactions_type_check 
+            CHECK(type IN ('DIS_SALE', 'DIS_LISTING', 'DEX_SALE', 'DEX_LISTING'));
+        `);
+        
+        // Update existing rows if any (SALE → DIS_SALE, LISTING → DIS_LISTING)
+        await this.db.exec(`
+          UPDATE transactions SET type = 'DIS_SALE' WHERE type = 'SALE';
+          UPDATE transactions SET type = 'DIS_LISTING' WHERE type = 'LISTING';
+        `);
+        
+        // Update schema version
+        await this.db.exec(
+          "UPDATE metadata SET value = '2' WHERE key = 'schema_version'"
+        );
+        
+        logger.info('Migration v1 → v2 complete');
       }
       
       // Run initial purge on startup
@@ -101,7 +130,11 @@ export class TransactionHistory extends Service {
       // Schedule auto-purge every 24 hours
       this.scheduleAutoPurge();
       
-      logger.info({ dbPath: this.dbPath }, 'TransactionHistory database initialized');
+      // Log current row count for debugging
+      const countResult = await this.db.query('SELECT COUNT(*) as count FROM transactions');
+      const rowCount = countResult.rows[0]?.count || 0;
+      
+      logger.info({ dbPath: this.dbPath, rowCount }, 'TransactionHistory database initialized');
     } catch (error) {
       logger.error({ error, dbPath: this.dbPath }, 'Failed to initialize TransactionHistory database');
       throw error;
@@ -163,7 +196,8 @@ export class TransactionHistory extends Service {
         ]
       );
 
-      return (result.rowCount || 0) > 0;
+      // PGlite returns affectedRows, not rowCount
+      return (result.affectedRows || result.rowCount || 0) > 0;
     } catch (error) {
       logger.error({ error, txHash: transaction.txHash }, 'Failed to insert transaction');
       throw error;
@@ -210,7 +244,7 @@ export class TransactionHistory extends Service {
   }
 
   /**
-   * Query sales transactions (ordered by timestamp DESC, then reversed for display)
+   * Query sales transactions (dispenser + DEX, ordered by timestamp DESC, then reversed for display)
    */
   async querySales(limit: number): Promise<Transaction[]> {
     if (!this.db) {
@@ -220,7 +254,7 @@ export class TransactionHistory extends Service {
     try {
       const result = await this.db.query(
         `SELECT * FROM transactions
-        WHERE type = 'SALE'
+        WHERE type IN ('DIS_SALE', 'DEX_SALE')
         ORDER BY timestamp DESC
         LIMIT $1`,
         [limit]
@@ -235,7 +269,7 @@ export class TransactionHistory extends Service {
   }
 
   /**
-   * Query listings transactions (ordered by timestamp DESC, then reversed for display)
+   * Query listings transactions (dispenser + DEX, ordered by timestamp DESC, then reversed for display)
    */
   async queryListings(limit: number): Promise<Transaction[]> {
     if (!this.db) {
@@ -245,7 +279,7 @@ export class TransactionHistory extends Service {
     try {
       const result = await this.db.query(
         `SELECT * FROM transactions
-        WHERE type = 'LISTING'
+        WHERE type IN ('DIS_LISTING', 'DEX_LISTING')
         ORDER BY timestamp DESC
         LIMIT $1`,
         [limit]
@@ -283,7 +317,7 @@ export class TransactionHistory extends Service {
       const thirtyDaysAgo = Math.floor(Date.now() / 1000) - (30 * 24 * 60 * 60);
       const result = await this.db.query(
         `SELECT COUNT(*) as count FROM transactions
-        WHERE type = 'SALE' AND timestamp >= $1`,
+        WHERE type IN ('DIS_SALE', 'DEX_SALE') AND timestamp >= $1`,
         [thirtyDaysAgo]
       );
       return parseInt(result.rows[0]?.count || '0', 10);
@@ -305,7 +339,7 @@ export class TransactionHistory extends Service {
       const thirtyDaysAgo = Math.floor(Date.now() / 1000) - (30 * 24 * 60 * 60);
       const result = await this.db.query(
         `SELECT COUNT(*) as count FROM transactions
-        WHERE type = 'LISTING' AND timestamp >= $1`,
+        WHERE type IN ('DIS_LISTING', 'DEX_LISTING') AND timestamp >= $1`,
         [thirtyDaysAgo]
       );
       return parseInt(result.rows[0]?.count || '0', 10);
@@ -370,10 +404,10 @@ export class TransactionHistory extends Service {
       const totalResult = await this.db.query('SELECT COUNT(*) as count FROM transactions');
       const total = parseInt(totalResult.rows[0]?.count || '0', 10);
 
-      const salesResult = await this.db.query("SELECT COUNT(*) as count FROM transactions WHERE type = 'SALE'");
+      const salesResult = await this.db.query("SELECT COUNT(*) as count FROM transactions WHERE type IN ('DIS_SALE', 'DEX_SALE')");
       const sales = parseInt(salesResult.rows[0]?.count || '0', 10);
 
-      const listingsResult = await this.db.query("SELECT COUNT(*) as count FROM transactions WHERE type = 'LISTING'");
+      const listingsResult = await this.db.query("SELECT COUNT(*) as count FROM transactions WHERE type IN ('DIS_LISTING', 'DEX_LISTING')");
       const listings = parseInt(listingsResult.rows[0]?.count || '0', 10);
 
       const oldestResult = await this.db.query('SELECT MIN(timestamp) as oldest FROM transactions');

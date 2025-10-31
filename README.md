@@ -13,6 +13,7 @@
 ## ⚡ Quick Highlights
 
 - 🎴 **890+ Fake Rares cards** with instant lookup and full metadata
+- 📊 **Market monitoring** - Real-time Counterparty sales & listings tracker (NEW!)
 - 🔍 **Visual analysis** - AI vision reads text + memetic commentary
 - 🧠 **Smart typo correction** - Fuzzy matching with 3-tier intelligence
 - 🔄 **Auto-updating** - Hourly refresh from GitHub, no restart needed
@@ -149,6 +150,52 @@ When you upload an image with `/ft`, the bot automatically checks if it matches 
 - `/fl` → Surprise me with community history!
 
 **Note:** Requires knowledge base setup (optional - see [Knowledge Base Setup](#-knowledge-base-setup-optional))
+
+---
+
+### 📊 Market Transaction Monitoring (NEW!)
+
+**Commands:**
+- **`/fm`** - Recent sales + listings (default: last 10 transactions)
+- **`/fm 20`** - Last 20 sales + listings
+- **`/fm S 5`** - Last 5 sales only
+- **`/fm L 15`** - Last 15 listings only
+
+**Real-time Telegram Notifications:**
+The bot automatically monitors Counterparty blockchain for Fake Rare market activity and sends instant notifications to configured Telegram channels.
+
+**Supported Transaction Types:**
+- 💰 **Dispenser Sales** - When someone buys from a vending machine (🎰)
+- ⚡ **DEX Atomic Swaps** - When someone completes a trustless trade (📊)
+- 📋 **Dispenser Listings** - New vending machines posted (🎰)
+- 🔄 **DEX Orders** - New swap offers posted (📊)
+
+**Notification Format:**
+```
+💰 SOLD: PEPENOPOULOS x1 | Paid: 0.0001 BTC
+Oct 31 09:45 | Block 921,547 | 🔗 TokenScan 🎰
+🐸 [celebration sticker]
+```
+
+**Configuration:**
+```bash
+# In .env
+TELEGRAM_CHANNEL_ID=<group_id_1>,<group_id_2>  # Comma-separated for multiple channels
+TELEGRAM_SALE_STICKER_ID=<sticker_id>          # Optional: sticker after sales
+POLL_INTERVAL_SECONDS=180                       # Poll every 3 minutes (default)
+```
+
+**Features:**
+- ✅ Multi-channel notifications (send to multiple groups simultaneously)
+- ✅ Deduplication (never notifies same transaction twice)
+- ✅ Explorer links (TokenScan for sales, Horizon Market for listings)
+- ✅ 30-day transaction history queryable via `/fm`
+- ✅ Database-backed (PGlite) with automatic schema migration
+- ✅ Block-sequential scanning (never misses transactions)
+- ✅ Fake Rare filter (only monitors collection assets)
+
+**Database:**
+All transactions are stored in PGlite database (`.eliza/.elizadb/`) alongside conversation history and embeddings. Included in standard database backups.
 
 ---
 
@@ -337,6 +384,7 @@ Then paste this list:
 ```
 f - View a Fake Rares card or random card by artist
 fv - Analyze card visuals and memes with AI vision (reads text + commentary)
+fm - View recent market activity (sales & listings)
 fl - Get AI-powered lore stories from community history
 odds - Check PEPEDAWN lottery stats and leaderboard
 fc - View token costs (admin-only)
@@ -888,12 +936,19 @@ pepe-tg/
 │   │   ├── fakeRaresCard.ts     # /f command (card display)
 │   │   ├── fakeVisualCommand.ts # /fv command (card analysis)
 │   │   ├── fakeTestCommand.ts   # /ft command (image appeal test)
+│   │   ├── fakeMarketAction.ts  # /fm command (market query) ✨
 │   │   ├── loreCommand.ts       # /fl command (lore stories)
 │   │   ├── costCommand.ts       # /fc command (cost tracking)
 │   │   ├── oddsCommand.ts       # /odds command (lottery stats)
 │   │   └── basicCommands.ts     # /start, /help
 │   ├── 📂 plugins/
-│   │   └── fakeRaresPlugin.ts   # Main plugin + auto-refresh
+│   │   ├── fakeRaresPlugin.ts   # Main plugin + auto-refresh
+│   │   └── marketTransactionReporterPlugin.ts  # Market monitoring ✨
+│   ├── 📂 services/             # Business logic services ✨
+│   │   ├── transactionMonitor.ts      # Blockchain polling
+│   │   ├── transactionHistory.ts      # Database layer
+│   │   ├── tokenscanClient.ts         # Counterparty API client
+│   │   └── telegramNotification.ts    # TG notifications
 │   ├── 📂 providers/
 │   │   └── fakeRaresContext.ts  # Context detection provider
 │   ├── 📂 evaluators/
@@ -905,12 +960,17 @@ pepe-tg/
 │   │   ├── loreRetrieval.ts       # Knowledge base search (RAG)
 │   │   ├── loreSummarize.ts       # Clustering & summarization
 │   │   ├── storyComposer.ts       # LLM historian recounting
-│   │   └── loreConfig.ts          # Lore feature configuration
+│   │   ├── loreConfig.ts          # Lore feature configuration
+│   │   └── transactionUrls.ts     # URL building utilities ✨
 │   ├── 📂 data/
 │   │   ├── fake-rares-data.json   # 890+ cards database
 │   │   ├── fullCardIndex.ts       # Card index loader
 │   │   ├── cardSeriesMap.ts       # Series mapping
 │   │   └── token-logs.jsonl       # Cost logs (gitignored)
+│   ├── 📂 types/
+│   │   └── transaction.ts         # Transaction type definitions ✨
+│   ├── 📂 events/
+│   │   └── transactionEvents.ts   # Event type definitions ✨
 │   ├── 📂 assets/                 # GitHub-hosted assets
 │   │   ├── images/                # Override S3 images
 │   │   └── videos/                # Override S3 videos
@@ -1285,7 +1345,7 @@ bun test --coverage
 
 ### Test Structure
 
-The project has **10 custom test files** (140+ tests total):
+The project has **13 custom test files** (160+ tests total):
 
 **1. Bootstrap Suppression** (pre-commit)
 - `bootstrap-suppression.test.ts` - Validates Bootstrap AI suppression
@@ -1304,7 +1364,12 @@ The project has **10 custom test files** (140+ tests total):
 - `actions/loreCommand.test.ts` - `/fl` command & FACTS mode filtering
 - `auto-routing.test.ts` - Auto-routing logic & reply detection (20 tests) ✨
 
-> **Note:** Framework test files (ElizaOS boilerplate) are also present but focus on these 10 custom tests for this project.
+**11-13. Market Monitoring** (3 files)
+- `actions/fakeMarketAction.test.ts` - `/fm` command validation & parsing
+- `services/transactionMonitor.test.ts` - Transaction polling & filtering
+- `utils/transactionUrls.test.ts` - URL utilities (100% coverage)
+
+> **Note:** Framework test files (ElizaOS boilerplate) are also present but focus on these 13 custom tests for this project.
 
 ---
 
@@ -1634,6 +1699,6 @@ Built with ❤️ for the Fake Rares community.
 
 ---
 
-**Last Updated:** October 29, 2025  
-**Version:** 2.2.0  
+**Last Updated:** October 31, 2025  
+**Version:** 3.0.0  
 **Status:** Production Ready ✅

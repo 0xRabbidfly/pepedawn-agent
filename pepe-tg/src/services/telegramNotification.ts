@@ -13,22 +13,32 @@ import { TransactionHistory } from './transactionHistory.js';
 
 export class TelegramNotificationService extends Service {
   static serviceType = 'telegramNotification';
-  capabilityDescription = 'Posts transaction notifications to Telegram channel';
+  capabilityDescription = 'Posts transaction notifications to Telegram channel(s)';
 
-  private channelId: string | null = null;
+  private channelIds: string[] = [];
+  private saleStickerId: string | null = null;
 
   constructor(runtime: IAgentRuntime) {
     super(runtime);
     
-    // Get channel ID from settings
+    // Get channel ID(s) from settings - supports comma-separated list
     const channelIdSetting = runtime.getSetting('TELEGRAM_CHANNEL_ID') as string | undefined;
-    this.channelId = channelIdSetting || null;
-    
-    if (!this.channelId) {
-      logger.warn('TELEGRAM_CHANNEL_ID not configured - notifications will be skipped');
+    if (channelIdSetting) {
+      this.channelIds = channelIdSetting
+        .split(',')
+        .map(id => id.trim())
+        .filter(id => id.length > 0);
     }
-
-    logger.info('TelegramNotificationService initialized');
+    
+    // Get optional sticker ID for sale notifications
+    const stickerSetting = runtime.getSetting('TELEGRAM_SALE_STICKER_ID') as string | undefined;
+    this.saleStickerId = stickerSetting || null;
+    
+    if (this.channelIds.length === 0) {
+      logger.warn('TELEGRAM_CHANNEL_ID not configured - notifications will be skipped');
+    } else {
+      logger.info(`TelegramNotificationService initialized with ${this.channelIds.length} channel(s)${this.saleStickerId ? ' + sale sticker' : ''}`);
+    }
   }
 
   /**
@@ -36,16 +46,33 @@ export class TelegramNotificationService extends Service {
    */
   async handleTransactionEvent(event: FakeRareTransactionEvent): Promise<void> {
     try {
-      if (!this.channelId) {
-        logger.debug({ txHash: event.txHash }, 'Skipping notification - channel ID not configured');
+      if (this.channelIds.length === 0) {
+        logger.debug({ txHash: event.txHash }, 'Skipping notification - no channel IDs configured');
         return;
       }
 
       // Format notification message
       const message = this.formatNotification(event);
 
-      // Send to Telegram channel
-      await this.sendTelegramMessage(this.channelId, message);
+      // Send to all configured Telegram channels in parallel
+      let sentCount = 0;
+      await Promise.all(
+        this.channelIds.map(async (channelId) => {
+          try {
+            // Send text message
+            await this.sendTelegramMessage(channelId, message);
+            
+            // Send sticker for sales (dispenser or DEX, if configured)
+            if ((event.type === 'DIS_SALE' || event.type === 'DEX_SALE') && this.saleStickerId) {
+              await this.sendTelegramSticker(channelId, this.saleStickerId);
+            }
+            
+            sentCount++;
+          } catch (error) {
+            logger.warn(`❌ TG notification failed: ${event.txHash} to channel ${channelId}`);
+          }
+        })
+      );
 
       // Mark as notified in database
       const transactionHistory = this.runtime.getService(TransactionHistory.serviceType) as TransactionHistory;
@@ -53,10 +80,9 @@ export class TelegramNotificationService extends Service {
         transactionHistory.markNotified(event.txHash);
       }
 
-      logger.info(
-        { txHash: event.txHash, type: event.type },
-        'Transaction notification sent successfully'
-      );
+      if (sentCount > 0) {
+        logger.info(`✅ TG notification sent: ${event.asset} (${event.type}) to ${sentCount} channel(s)`);
+      }
     } catch (error) {
       // Log error and continue processing (per FR-021, FR-022)
       logger.error(
@@ -75,7 +101,7 @@ export class TelegramNotificationService extends Service {
    * Format notification message based on transaction type
    */
   private formatNotification(event: FakeRareTransactionEvent): string {
-    if (event.type === 'SALE') {
+    if (event.type === 'DIS_SALE' || event.type === 'DEX_SALE') {
       return this.formatSaleNotification(event);
     } else {
       return this.formatListingNotification(event);
@@ -83,32 +109,41 @@ export class TelegramNotificationService extends Service {
   }
 
   /**
-   * Format sale notification
-   * Format: "SOLD: {asset} x{amount} | Paid: {price} {paymentAsset} | {timestamp}\n🔗 [TokenScan]({url}) | [XChain]({url})"
+   * Format sale notification (dispenser or DEX)
+   * Format: "{icon} SOLD: {asset} x{amount} | Paid: {price} {paymentAsset}\n{timestamp} | Block {block} | 🔗 [TokenScan]({url}) {typeIcon}"
    */
   private formatSaleNotification(event: FakeRareTransactionEvent): string {
     const amount = event.amount.toLocaleString();
     const price = this.formatPrice(event.price, event.paymentAsset);
     const timestamp = this.formatTimestamp(event.timestamp);
+    const icon = event.type === 'DIS_SALE' ? '💰' : '⚡';
+    const typeIcon = event.type === 'DIS_SALE' ? '🎰' : '📊';
 
     return (
-      `SOLD: ${event.asset} x${amount} | Paid: ${price} ${event.paymentAsset} | ${timestamp}\n` +
-      `🔗 [TokenScan](${event.tokenscanUrl}) | [XChain](${event.xchainUrl})`
+      `${icon} SOLD: ${event.asset} x${amount} | Paid: ${price} ${event.paymentAsset}\n` +
+      `${timestamp} | Block ${event.blockIndex.toLocaleString()} | 🔗 [TokenScan](${event.tokenscanUrl}) ${typeIcon}`
     );
   }
 
   /**
-   * Format listing notification
-   * Format: "LISTING: {asset} | Qty: {amount} | Price: {price} {paymentAsset} | {timestamp}\n🔗 [TokenScan]({url}) | [XChain]({url})"
+   * Format listing notification (dispenser or DEX)
+   * Format: "{icon} LISTING: {asset} | Qty: {amount} | Price: {price} {paymentAsset}\n{timestamp} | Block {block} | 🔗 [Horizon]({url}) {typeIcon}"
    */
   private formatListingNotification(event: FakeRareTransactionEvent): string {
     const amount = event.amount.toLocaleString();
     const price = this.formatPrice(event.price, event.paymentAsset);
     const timestamp = this.formatTimestamp(event.timestamp);
+    const icon = event.type === 'DIS_LISTING' ? '📋' : '🔄';
+    const typeIcon = event.type === 'DIS_LISTING' ? '🎰' : '📊';
+    
+    // Horizon Market asset page with appropriate type filter
+    const quoteAsset = event.paymentAsset === 'BTC' ? 'BTC' : event.paymentAsset;
+    const listingType = event.type === 'DIS_LISTING' ? 'dispenser' : 'swap';
+    const horizonUrl = `https://horizon.market/assets/${event.asset}?from=1M&quote_asset=${quoteAsset}&tab=buy&type=${listingType}`;
 
     return (
-      `LISTING: ${event.asset} | Qty: ${amount} | Price: ${price} ${event.paymentAsset} | ${timestamp}\n` +
-      `🔗 [TokenScan](${event.tokenscanUrl}) | [XChain](${event.xchainUrl})`
+      `${icon} LISTING: ${event.asset} | Qty: ${amount} | Price: ${price} ${event.paymentAsset}\n` +
+      `${timestamp} | Block ${event.blockIndex.toLocaleString()} | 🔗 [Horizon](${horizonUrl}) ${typeIcon}`
     );
   }
 
@@ -145,23 +180,36 @@ export class TelegramNotificationService extends Service {
   }
 
   /**
-   * Send message to Telegram channel
+   * Send message to Telegram channel using Bot API directly
    */
   private async sendTelegramMessage(chatId: string, text: string): Promise<void> {
     try {
-      // Access Telegram client from runtime
-      // ElizaOS runtime should have telegram property when plugin-telegram is loaded
-      const telegram = (this.runtime as any).telegram;
+      const botToken = this.runtime.getSetting('TELEGRAM_BOT_TOKEN') as string | undefined;
       
-      if (!telegram) {
-        throw new Error('Telegram client not available - ensure @elizaos/plugin-telegram is loaded');
+      if (!botToken) {
+        throw new Error('TELEGRAM_BOT_TOKEN not configured');
       }
 
-      // Use telegram.sendMessage method
-      // API format: sendMessage(chatId, text, options)
-      await telegram.sendMessage(chatId, text, {
-        parse_mode: 'Markdown',
+      // Use Telegram Bot API directly
+      const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text,
+          parse_mode: 'Markdown',
+          disable_web_page_preview: true, // Suppress link previews
+        }),
       });
+
+      if (!response.ok) {
+        const error = await response.text();
+        throw new Error(`Telegram API error: ${response.status} - ${error}`);
+      }
+
+      logger.debug({ chatId }, 'Message sent successfully');
     } catch (error) {
       logger.error(
         {
@@ -171,6 +219,50 @@ export class TelegramNotificationService extends Service {
         'Telegram API error'
       );
       throw error;
+    }
+  }
+
+  /**
+   * Send sticker to Telegram channel using native Bot API
+   * Note: ElizaOS runtime.sendMessage doesn't support stickers yet, so we use direct API
+   */
+  private async sendTelegramSticker(chatId: string, stickerId: string): Promise<void> {
+    try {
+      const botToken = this.runtime.getSetting('TELEGRAM_BOT_TOKEN') as string | undefined;
+      
+      if (!botToken) {
+        logger.warn('TELEGRAM_BOT_TOKEN not available - cannot send sticker');
+        return;
+      }
+
+      // Use Telegram Bot API directly
+      const response = await fetch(`https://api.telegram.org/bot${botToken}/sendSticker`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          sticker: stickerId,
+        }),
+      });
+
+      if (!response.ok) {
+        const error = await response.text();
+        throw new Error(`Telegram API error: ${response.status} - ${error}`);
+      }
+
+      logger.debug({ chatId, stickerId }, 'Sticker sent successfully');
+    } catch (error) {
+      logger.error(
+        {
+          error: error instanceof Error ? error.message : String(error),
+          chatId,
+          stickerId,
+        },
+        'Failed to send sticker'
+      );
+      // Don't throw - stickers are optional
     }
   }
 

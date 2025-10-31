@@ -5,7 +5,7 @@
  * (sales and listings) as stored in the database and used throughout the system.
  */
 
-export type TransactionType = 'SALE' | 'LISTING';
+export type TransactionType = 'DIS_SALE' | 'DIS_LISTING' | 'DEX_SALE' | 'DEX_LISTING';
 
 /**
  * Core transaction entity representing a single Fake Rare market transaction
@@ -14,7 +14,13 @@ export interface Transaction {
   /** Primary key: Counterparty transaction hash (64-char hex) */
   txHash: string;
   
-  /** Transaction type: SALE (dispense) or LISTING (dispenser) */
+  /** 
+   * Transaction type:
+   * - DIS_SALE: Dispenser sale (vending machine purchase)
+   * - DIS_LISTING: Dispenser listing (vending machine setup)
+   * - DEX_SALE: DEX order match (atomic swap sale)
+   * - DEX_LISTING: DEX order (atomic swap listing)
+   */
   type: TransactionType;
   
   /** Asset name or longname from Counterparty */

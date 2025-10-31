@@ -162,10 +162,10 @@ test: Add tests for cost command
 PEPEDAWN follows ElizaOS architectural patterns:
 
 **Actions** (`src/actions/`) - Bot commands and handlers
-- Handle specific commands or behaviors (e.g., `/f`, `/fl`, `/fc`)
+- Handle specific commands or behaviors (e.g., `/f`, `/fl`, `/fm`)
 - **Must have:** `validate()` and `handler()` functions
 - **Returns:** `ActionResult` with `success` boolean
-- **Active actions:** startCommand, helpCommand, fakeRaresCardAction, fakeVisualCommand, fakeTestCommand, loreCommand, costCommand
+- **Active actions:** startCommand, helpCommand, fakeRaresCardAction, fakeVisualCommand, fakeTestCommand, loreCommand, costCommand, fakeMarketAction
 
 **Providers** (`src/providers/`) - Context enrichment
 - Run **BEFORE** actions to add contextual data to state
@@ -181,6 +181,10 @@ PEPEDAWN follows ElizaOS architectural patterns:
 
 **Services** (`src/services/`) - Shared business logic
 - **knowledgeService** - Shared knowledge retrieval for `/fl` and auto-routing
+- **TransactionMonitor** - Polls Counterparty blockchain for market activity
+- **TransactionHistory** - Database layer for transaction storage/queries
+- **TokenScanClient** - HTTP client for Counterparty API v2
+- **TelegramNotificationService** - Sends market notifications to Telegram channels
 
 **Utilities** (`src/utils/`) - Shared functionality
 - Card lookups, fuzzy matching, cost tracking, lore retrieval, etc.
@@ -188,6 +192,7 @@ PEPEDAWN follows ElizaOS architectural patterns:
 - **visualEmbeddings** - Replicate CLIP embeddings for duplicate detection
 - **embeddingsDb** - JSON storage for card embeddings
 - **queryClassifier** - FACTS/LORE/UNCERTAIN query classification
+- **transactionUrls** - Centralized URL building for explorer links
 - Reusable functions imported by actions/providers/services
 
 ### Adding a New Feature
@@ -524,7 +529,7 @@ const BASE_URL = 'https://coolcats-cdn.com/images/';
 
 ### Test Types
 
-The project has **9 custom test files** (120+ tests, excluding framework boilerplate):
+The project has **12 custom test files** (160+ tests, excluding framework boilerplate):
 
 **1. Bootstrap Suppression Test** (pre-commit hook)
 ```typescript
@@ -544,6 +549,11 @@ The project has **9 custom test files** (120+ tests, excluding framework boilerp
 - `__tests__/utils/loreRetrieval.test.ts` - Memory priority & source boost logic
 - `__tests__/utils/memoryStorage.test.ts` - Card detection & memory boost logic
 - `__tests__/actions/loreCommand.test.ts` - `/fl` command & FACTS mode filtering
+
+**10-12. Market Monitoring Tests** (3 files, 19 tests)
+- `__tests__/actions/fakeMarketAction.test.ts` - `/fm` command validation & parsing
+- `__tests__/services/transactionMonitor.test.ts` - Transaction polling & filtering logic
+- `__tests__/utils/transactionUrls.test.ts` - URL building utilities (100% coverage)
 
 **Organize new tests by type:**
 

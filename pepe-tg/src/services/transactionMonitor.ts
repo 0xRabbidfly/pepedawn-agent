@@ -13,6 +13,7 @@ import type { FakeRareTransactionEvent } from '../events/transactionEvents.js';
 import { TransactionHistory } from './transactionHistory.js';
 import { TokenScanClient, type DispenseResponse, type DispenserResponse } from './tokenscanClient.js';
 import { TelegramNotificationService } from './telegramNotification.js';
+import { buildTokenScanUrl, buildXChainUrl } from '../utils/transactionUrls.js';
 
 export class TransactionMonitor extends Service {
   static serviceType = 'transactionMonitor';
@@ -70,7 +71,14 @@ export class TransactionMonitor extends Service {
 
       // Query current Counterparty block height and set as initial cursor
       // No historical catchup per FR-027, FR-028
-      this.currentBlockCursor = await tokenScanClient.getCurrentBlockHeight();
+      // Optional: Override starting block for testing/debugging
+      const testBlockOverride = this.runtime.getSetting('TEST_START_BLOCK') as string | undefined;
+      if (testBlockOverride) {
+        this.currentBlockCursor = parseInt(testBlockOverride, 10);
+        logger.info(`Starting from block ${this.currentBlockCursor} (TEST_START_BLOCK override)`);
+      } else {
+        this.currentBlockCursor = await tokenScanClient.getCurrentBlockHeight();
+      }
       
       // Start polling loop
       this.isRunning = true;
@@ -120,11 +128,22 @@ export class TransactionMonitor extends Service {
         return;
       }
 
-      // Poll dispenses (sales) and dispensers (listings) in parallel
-      const [dispenses, dispensers] = await Promise.all([
+      // Poll all transaction types in parallel:
+      // - Dispenses: Sales from dispensers (vending machines)
+      // - Dispensers: Listings/vending machines
+      // - Order Matches: DEX atomic swap sales
+      // - Orders: DEX listings
+      // - Block info: To get timestamp
+      const [dispenses, dispensers, orderMatches, orders, blockInfo] = await Promise.all([
         tokenScanClient.pollDispenses(this.currentBlockCursor),
         tokenScanClient.pollDispensers(this.currentBlockCursor),
+        tokenScanClient.pollOrderMatches(this.currentBlockCursor),
+        tokenScanClient.pollOrders(this.currentBlockCursor),
+        tokenScanClient.getBlock(this.currentBlockCursor).catch(() => null),
       ]);
+      
+      // Get block timestamp (fallback to 0 if block fetch fails)
+      const blockTimestamp = blockInfo?.block_time || 0;
 
       let processedCount = 0;
       let salesFound = 0;
@@ -134,7 +153,7 @@ export class TransactionMonitor extends Service {
       // Process dispenses (sales)
       for (const dispense of dispenses) {
         if (this.shouldProcessTransaction(dispense, tokenScanClient)) {
-          const transaction = await this.processDispense(dispense, transactionHistory);
+          const transaction = await this.processDispense(dispense, transactionHistory, blockTimestamp);
           if (transaction) {
             processedCount++;
             salesFound++;
@@ -149,7 +168,7 @@ export class TransactionMonitor extends Service {
       // Process dispensers (listings)
       for (const dispenser of dispensers) {
         if (this.shouldProcessDispenser(dispenser, tokenScanClient)) {
-          const transaction = await this.processDispenser(dispenser, transactionHistory);
+          const transaction = await this.processDispenser(dispenser, transactionHistory, blockTimestamp);
           if (transaction) {
             processedCount++;
             listingsFound++;
@@ -161,13 +180,53 @@ export class TransactionMonitor extends Service {
         latestBlockIndex = Math.max(latestBlockIndex, dispenser.block_index);
       }
 
+      // Process order matches (DEX atomic swap sales)
+      for (const orderMatch of orderMatches) {
+        if (this.shouldProcessOrderMatch(orderMatch, tokenScanClient)) {
+          const transaction = await this.processOrderMatch(orderMatch, transactionHistory, blockTimestamp);
+          if (transaction) {
+            processedCount++;
+            salesFound++;
+            this.lastTransactionTime = Date.now();
+            latestBlockIndex = Math.max(latestBlockIndex, orderMatch.block_index);
+            this.emitTransactionEvent(transaction);
+          }
+        }
+        latestBlockIndex = Math.max(latestBlockIndex, orderMatch.block_index);
+      }
+
+      // Process orders (DEX listings)
+      for (const order of orders) {
+        if (this.shouldProcessOrder(order, tokenScanClient)) {
+          const transaction = await this.processOrder(order, transactionHistory, blockTimestamp);
+          if (transaction) {
+            processedCount++;
+            listingsFound++;
+            this.lastTransactionTime = Date.now();
+            latestBlockIndex = Math.max(latestBlockIndex, order.block_index);
+            this.emitTransactionEvent(transaction);
+          }
+        }
+        latestBlockIndex = Math.max(latestBlockIndex, order.block_index);
+      }
+
       // Update cursor to latest block + 1
       if (latestBlockIndex > this.currentBlockCursor) {
         this.currentBlockCursor = latestBlockIndex + 1;
+      } else {
+        // No transactions found in this poll - advance by 1 block to continue scanning
+        // This ensures we don't skip blocks when there's no activity
+        this.currentBlockCursor += 1;
+        
+        // But don't go beyond current blockchain height
+        const currentHeight = await tokenScanClient.getCurrentBlockHeight();
+        if (this.currentBlockCursor > currentHeight) {
+          this.currentBlockCursor = currentHeight;
+        }
       }
 
       // Single consolidated log line
-      logger.info(`📊 Counterparty Market Poll [🧪 TEST MODE - ALL ASSETS]: block ${this.currentBlockCursor} - ${salesFound} sales, ${listingsFound} listings`);
+      logger.info(`📊 Counterparty Market Poll: block ${this.currentBlockCursor} - ${salesFound} sales, ${listingsFound} listings`);
     } catch (error) {
       logger.error({ error }, 'Error in polling cycle - continuing monitoring');
       // Continue monitoring per FR-022
@@ -186,10 +245,8 @@ export class TransactionMonitor extends Service {
       return false;
     }
 
-    // 🧪 TEMPORARILY DISABLED: Check if asset is in Fake Rare collection
-    // const asset = dispense.asset_longname || dispense.asset;
-    // return tokenScanClient.isFakeRareAsset(dispense.asset, dispense.asset_longname);
-    return true; // 🧪 TEST MODE: Accept all valid transactions
+    // Check if asset is in Fake Rare collection
+    return tokenScanClient.isFakeRareAsset(dispense.asset, dispense.asset_longname);
   }
 
   /**
@@ -204,9 +261,8 @@ export class TransactionMonitor extends Service {
       return false;
     }
 
-    // 🧪 TEMPORARILY DISABLED: Check if asset is in Fake Rare collection
-    // return tokenScanClient.isFakeRareAsset(dispenser.asset, dispenser.asset_longname);
-    return true; // 🧪 TEST MODE: Accept all open dispensers
+    // Check if asset is in Fake Rare collection
+    return tokenScanClient.isFakeRareAsset(dispenser.asset, dispenser.asset_longname);
   }
 
   /**
@@ -214,7 +270,8 @@ export class TransactionMonitor extends Service {
    */
   private async processDispense(
     dispense: DispenseResponse['data'][0],
-    transactionHistory: TransactionHistory
+    transactionHistory: TransactionHistory,
+    blockTimestamp: number
   ): Promise<Transaction | null> {
     try {
       // Deduplication check
@@ -225,16 +282,16 @@ export class TransactionMonitor extends Service {
       // Map dispense to Transaction
       const transaction: Transaction = {
         txHash: dispense.tx_hash,
-        type: 'SALE',
+        type: 'DIS_SALE',
         asset: dispense.asset_longname || dispense.asset,
         amount: parseInt(dispense.dispense_quantity, 10),
         price: 0, // Dispenses don't include price directly - need to look up dispenser
         paymentAsset: 'XCP', // Default assumption - may need to look up from dispenser
-        timestamp: dispense.timestamp,
+        timestamp: blockTimestamp,
         blockIndex: dispense.block_index,
         notified: false,
-        tokenscanUrl: `https://tokenscan.io/transaction/${dispense.tx_hash}`,
-        xchainUrl: `https://xchain.io/tx/${dispense.tx_hash}`,
+        tokenscanUrl: buildTokenScanUrl(dispense.tx_hash),
+        xchainUrl: buildXChainUrl(dispense.tx_hash),
         createdAt: Math.floor(Date.now() / 1000),
       };
 
@@ -274,7 +331,8 @@ export class TransactionMonitor extends Service {
    */
   private async processDispenser(
     dispenser: DispenserResponse['data'][0],
-    transactionHistory: TransactionHistory
+    transactionHistory: TransactionHistory,
+    blockTimestamp: number
   ): Promise<Transaction | null> {
     try {
       // Deduplication check
@@ -285,16 +343,100 @@ export class TransactionMonitor extends Service {
       // Map dispenser to Transaction
       const transaction: Transaction = {
         txHash: dispenser.tx_hash,
-        type: 'LISTING',
+        type: 'DIS_LISTING',
         asset: dispenser.asset_longname || dispenser.asset,
         amount: parseInt(dispenser.give_quantity, 10),
         price: parseInt(dispenser.satoshirate, 10),
         paymentAsset: 'BTC', // Dispensers use BTC
-        timestamp: dispenser.timestamp,
+        timestamp: blockTimestamp,
         blockIndex: dispenser.block_index,
         notified: false,
-        tokenscanUrl: `https://tokenscan.io/transaction/${dispenser.tx_hash}`,
-        xchainUrl: `https://xchain.io/tx/${dispenser.tx_hash}`,
+        tokenscanUrl: buildTokenScanUrl(dispenser.tx_hash),
+        xchainUrl: buildXChainUrl(dispenser.tx_hash),
+        createdAt: Math.floor(Date.now() / 1000),
+      };
+
+      // Store transaction
+      const inserted = await transactionHistory.insert(transaction);
+      if (!inserted) {
+        return null;
+      }
+
+      logger.debug({ txHash: transaction.txHash, type: transaction.type }, 'Transaction stored');
+      return transaction;
+    } catch (error) {
+      logger.error({ error, txHash: dispenser.tx_hash }, 'Failed to process dispenser');
+      return null;
+    }
+  }
+
+  /**
+   * Check if order match should be processed
+   */
+  private shouldProcessOrderMatch(
+    orderMatch: import('./tokenscanClient.js').OrderMatchResponse['data'][0],
+    tokenScanClient: TokenScanClient
+  ): boolean {
+    // Only process completed order matches
+    if (orderMatch.status !== 'completed') {
+      return false;
+    }
+
+    // Check if either asset is a Fake Rare
+    return tokenScanClient.isFakeRareAsset(orderMatch.forward_asset, orderMatch.forward_asset_longname) ||
+           tokenScanClient.isFakeRareAsset(orderMatch.backward_asset, orderMatch.backward_asset_longname);
+  }
+
+  /**
+   * Check if order should be processed
+   */
+  private shouldProcessOrder(
+    order: import('./tokenscanClient.js').OrderResponse['data'][0],
+    tokenScanClient: TokenScanClient
+  ): boolean {
+    // Only process open orders
+    if (order.status !== 'open') {
+      return false;
+    }
+
+    // Check if give_asset is a Fake Rare (selling a card)
+    return tokenScanClient.isFakeRareAsset(order.give_asset, order.give_asset_longname);
+  }
+
+  /**
+   * Process an order match (DEX atomic swap sale)
+   */
+  private async processOrderMatch(
+    orderMatch: import('./tokenscanClient.js').OrderMatchResponse['data'][0],
+    transactionHistory: TransactionHistory,
+    blockTimestamp: number
+  ): Promise<Transaction | null> {
+    try {
+      // Use match ID as unique identifier (since there's no single tx_hash)
+      const uniqueId = orderMatch.id;
+      
+      // Deduplication check
+      if (await transactionHistory.exists(uniqueId)) {
+        return null;
+      }
+
+      // Determine which asset is the Fake Rare (for now, assume forward_asset)
+      // In test mode, we'll track both assets
+      const asset = orderMatch.forward_asset_longname || orderMatch.forward_asset;
+      const paymentAsset = orderMatch.backward_asset_longname || orderMatch.backward_asset;
+
+      const transaction: Transaction = {
+        txHash: uniqueId, // Use match ID
+        type: 'DEX_SALE',
+        asset,
+        amount: parseInt(orderMatch.forward_quantity, 10),
+        price: parseInt(orderMatch.backward_quantity, 10),
+        paymentAsset,
+        timestamp: blockTimestamp,
+        blockIndex: orderMatch.block_index,
+        notified: false,
+        tokenscanUrl: buildTokenScanUrl(orderMatch.tx0_hash),
+        xchainUrl: buildXChainUrl(orderMatch.tx0_hash),
         createdAt: Math.floor(Date.now() / 1000),
       };
 
@@ -305,10 +447,57 @@ export class TransactionMonitor extends Service {
         return null;
       }
 
-      logger.debug({ txHash: transaction.txHash, type: transaction.type }, 'Transaction stored');
+      logger.debug({ txHash: transaction.txHash, type: transaction.type }, 'DEX order match stored');
       return transaction;
     } catch (error) {
-      logger.error({ error, txHash: dispenser.tx_hash }, 'Failed to process dispenser');
+      logger.error({ error, matchId: orderMatch.id }, 'Failed to process order match');
+      return null;
+    }
+  }
+
+  /**
+   * Process an order (DEX listing)
+   */
+  private async processOrder(
+    order: import('./tokenscanClient.js').OrderResponse['data'][0],
+    transactionHistory: TransactionHistory,
+    blockTimestamp: number
+  ): Promise<Transaction | null> {
+    try {
+      // Deduplication check
+      if (await transactionHistory.exists(order.tx_hash)) {
+        return null;
+      }
+
+      const asset = order.give_asset_longname || order.give_asset;
+      const paymentAsset = order.get_asset_longname || order.get_asset;
+
+      const transaction: Transaction = {
+        txHash: order.tx_hash,
+        type: 'DEX_LISTING',
+        asset,
+        amount: parseInt(order.give_quantity, 10),
+        price: parseInt(order.get_quantity, 10),
+        paymentAsset,
+        timestamp: blockTimestamp,
+        blockIndex: order.block_index,
+        notified: false,
+        tokenscanUrl: buildTokenScanUrl(order.tx_hash),
+        xchainUrl: buildXChainUrl(order.tx_hash),
+        createdAt: Math.floor(Date.now() / 1000),
+      };
+
+      // Store transaction
+      const inserted = await transactionHistory.insert(transaction);
+      if (!inserted) {
+        logger.debug({ txHash: transaction.txHash }, 'Transaction already exists (race condition)');
+        return null;
+      }
+
+      logger.debug({ txHash: transaction.txHash, type: transaction.type }, 'DEX order stored');
+      return transaction;
+    } catch (error) {
+      logger.error({ error, txHash: order.tx_hash }, 'Failed to process order');
       return null;
     }
   }

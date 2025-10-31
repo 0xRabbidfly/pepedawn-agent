@@ -5,6 +5,34 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.0] - 2025-10-31
+
+### Added
+- **🎯 Market Transaction Monitoring** - Real-time Fake Rare market activity tracking
+  - Monitors Counterparty dispenser sales and listings
+  - Monitors DEX atomic swap sales and listings
+  - Telegram notifications for all market activity
+  - `/fm` command to query transaction history (sales, listings, or combined)
+  - Multi-channel notification support (send to multiple Telegram groups)
+  - Sale celebration stickers (optional)
+  - Transaction type icons: 🎰 (dispenser) 📊 (DEX)
+  - Integrated with Counterparty API v2 for reliable polling
+  - PGlite database for transaction history storage
+  - Deduplication and block-sequential scanning
+  - Explorer links: TokenScan for sales, Horizon Market for listings
+
+### Changed
+- **Transaction types** now use explicit naming: `DIS_SALE`, `DIS_LISTING`, `DEX_SALE`, `DEX_LISTING`
+- **Centralized URL utilities** - Single source of truth for all explorer links
+- **Database schema** updated to support new transaction types with automatic migration
+
+### Technical Details
+- New services: `TransactionMonitor`, `TransactionHistory`, `TokenScanClient`, `TelegramNotificationService`
+- New action: `fakeMarketAction` (`/fm` command)
+- New plugin: `marketTransactionReporterPlugin`
+- Test coverage: 3 new test files (19 tests) for market monitoring features
+- Production-ready with proper error handling, logging, and database backup
+
 ## [2.2.0] - 2025-10-29
 
 ### Added

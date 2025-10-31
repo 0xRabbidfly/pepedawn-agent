@@ -87,10 +87,14 @@ export const helpCommand: Action = {
 **Fake Vision:**
 \`/fv CARDNAME\` - AI visual analysis & meme breakdown
 
-**Fake Market:**
-\`/fm 10\` - Last 10 sales + listings
+**Fake Market:** 📊 NEW!
+\`/fm\` - Recent sales + listings (default 10)
 \`/fm S 5\` - Last 5 sales only
 \`/fm L 15\` - Last 15 listings only
+
+Real-time notifications for dispenser & DEX activity!
+• 💰 Dispenser sales | ⚡ DEX swaps
+• 📋 Listings | 🎰 Dispenser 📊 DEX
 
 **Fake Lore:**
 \`/fl CARDNAME\` - Get card lore & community stories

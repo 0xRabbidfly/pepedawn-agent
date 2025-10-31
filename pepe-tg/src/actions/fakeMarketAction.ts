@@ -19,6 +19,11 @@ import type { Transaction } from '../models/transaction.js';
 function parseCommand(text: string): { type: 'SALE' | 'LISTING' | null; limit: number; error: string | null } {
   const trimmed = text.trim();
   
+  // Default: /fm alone = last 10 combined
+  if (trimmed === '/fm') {
+    return { type: null, limit: 10, error: null };
+  }
+  
   // Match patterns: /fm N, /fm S N, /fm L N
   const combinedPattern = /^\/fm\s+(\d+)$/i;
   const salesPattern = /^\/fm\s+s\s+(\d+)$/i;
@@ -89,10 +94,16 @@ function formatTransactionLine(tx: Transaction): string {
   const price = formatPrice(tx.price, tx.paymentAsset);
   const timestamp = formatTimestamp(tx.timestamp);
   
-  if (tx.type === 'SALE') {
-    return `SOLD: ${tx.asset} x${tx.amount.toLocaleString()} | ${price} ${tx.paymentAsset} | ${timestamp} 🔗 [View](${tx.tokenscanUrl})`;
+  // Icons for transaction types
+  const isSale = tx.type === 'DIS_SALE' || tx.type === 'DEX_SALE';
+  const saleIcon = tx.type === 'DIS_SALE' ? '💰' : '⚡';
+  const listingIcon = tx.type === 'DIS_LISTING' ? '📋' : '🔄';
+  const typeIcon = (tx.type === 'DIS_SALE' || tx.type === 'DIS_LISTING') ? '🎰' : '📊';
+  
+  if (isSale) {
+    return `• ${tx.asset} x${tx.amount.toLocaleString()} | ${price} ${tx.paymentAsset} | ${timestamp} ${typeIcon}`;
   } else {
-    return `LISTING: ${tx.asset} | Qty: ${tx.amount.toLocaleString()} | ${price} ${tx.paymentAsset} | ${timestamp} 🔗 [View](${tx.tokenscanUrl})`;
+    return `• ${tx.asset} | Qty: ${tx.amount.toLocaleString()} | ${price} ${tx.paymentAsset} | ${timestamp} ${typeIcon}`;
   }
 }
 
@@ -106,7 +117,7 @@ function formatCombinedResponse(
   totalListings: number,
   limit: number
 ): string {
-  let response = `📊 Last ${limit} Sales and Listings\n\n`;
+  let response = '';
   
   if (sales.length > 0) {
     response += `💰 SALES (${sales.length}):\n`;
@@ -120,7 +131,7 @@ function formatCombinedResponse(
     response += '\n\n';
   }
   
-  response += `Total in 30 days: ${totalSales} sales, ${totalListings} listings`;
+  response += `30-day total: ${totalSales} sales, ${totalListings} listings`;
   
   return response;
 }
@@ -129,9 +140,8 @@ function formatCombinedResponse(
  * Format sales-only query response
  */
 function formatSalesResponse(sales: Transaction[], totalSales: number, limit: number): string {
-  let response = `💰 Last ${limit} Sales\n\n`;
-  response += sales.map(formatTransactionLine).join('\n');
-  response += `\n\nTotal in 30 days: ${totalSales} sales`;
+  let response = sales.map(formatTransactionLine).join('\n');
+  response += `\n\n30-day total: ${totalSales} sales`;
   return response;
 }
 
@@ -139,9 +149,8 @@ function formatSalesResponse(sales: Transaction[], totalSales: number, limit: nu
  * Format listings-only query response
  */
 function formatListingsResponse(listings: Transaction[], totalListings: number, limit: number): string {
-  let response = `📋 Last ${limit} Listings\n\n`;
-  response += listings.map(formatTransactionLine).join('\n');
-  response += `\n\nTotal in 30 days: ${totalListings} listings`;
+  let response = listings.map(formatTransactionLine).join('\n');
+  response += `\n\n30-day total: ${totalListings} listings`;
   return response;
 }
 
@@ -165,14 +174,10 @@ function formatHelpMessage(): string {
   return `❌ Invalid command format.
 
 Usage:
+  /fm - Recent sales + listings (default 10)
   /fm N - Last N sales and listings (max 20)
   /fm S N - Last N sales (max 20)
-  /fm L N - Last N listings (max 20)
-
-Examples:
-  /fm 10
-  /fm S 5
-  /fm L 15`;
+  /fm L N - Last N listings (max 20)`;
 }
 
 /**
