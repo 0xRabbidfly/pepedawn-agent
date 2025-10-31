@@ -51,10 +51,8 @@ export class TransactionHistory extends Service {
       await this.db.waitReady;
       
       // Create transactions table (PostgreSQL syntax)
-      // Drop and recreate to ensure correct schema (temporary for migration)
       await this.db.exec(`
-        DROP TABLE IF EXISTS transactions CASCADE;
-        CREATE TABLE transactions (
+        CREATE TABLE IF NOT EXISTS transactions (
           tx_hash TEXT PRIMARY KEY,
           type TEXT NOT NULL CHECK(type IN ('DIS_SALE', 'DIS_LISTING', 'DEX_SALE', 'DEX_LISTING')),
           asset TEXT NOT NULL,

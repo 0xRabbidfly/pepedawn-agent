@@ -1,7 +1,7 @@
 {
   "name": "pepe-tg",
   "description": "PEPEDAWN - AI-powered Telegram bot for Fake Rares community",
-  "version": "2.2.1",
+  "version": "3.0.0",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.js",

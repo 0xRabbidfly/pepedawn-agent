@@ -18,8 +18,8 @@ describe('Fake Market Action (/fm)', () => {
       expect(result).toBe(true);
     });
 
-    it('should validate /fm sales', async () => {
-      const message = { content: { text: '/fm s' } };
+    it('should validate /fm sales with count', async () => {
+      const message = { content: { text: '/fm s 10' } };
       const result = await fakeMarketAction.validate(mockRuntime, message as any);
       expect(result).toBe(true);
     });
