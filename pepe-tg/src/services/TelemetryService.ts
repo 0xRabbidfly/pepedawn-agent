@@ -17,6 +17,8 @@ import { writeFileSync, appendFileSync, existsSync, readFileSync, mkdirSync } fr
 import { join } from 'path';
 
 const LOG_FILE = join(process.cwd(), 'src', 'data', 'token-logs.jsonl');
+const CONVERSATION_LOG_FILE = join(process.cwd(), 'src', 'data', 'conversation-logs.jsonl');
+const LORE_QUERY_LOG_FILE = join(process.cwd(), 'src', 'data', 'lore-query-logs.jsonl');
 const ARCHIVE_DIR = join(process.cwd(), 'src', 'data', 'archives');
 
 // Pricing per 1M tokens (USD)
@@ -57,6 +59,20 @@ export interface TokenLog {
   source: string;
   actionName?: string;  // For action tracking
   duration?: number;    // For performance tracking
+  messageId?: string;   // For grouping Bootstrap's multi-call conversations
+}
+
+export interface ConversationLog {
+  timestamp: string;
+  messageId: string;
+  source: 'bootstrap' | 'auto-route';
+}
+
+export interface LoreQueryLog {
+  timestamp: string;
+  queryId: string;
+  query: string;
+  source: 'fl-command' | 'auto-route';
 }
 
 export interface ActionLog {
@@ -72,6 +88,8 @@ export interface CostStats {
   totalTokensIn: number;
   totalTokensOut: number;
   callCount: number;
+  conversationCount?: number;  // Unique user conversations
+  loreQueryCount?: number;     // Unique lore queries
   byModel: Record<string, { cost: number; calls: number }>;
   bySource: Record<string, { cost: number; calls: number }>;
   byAction?: Record<string, { cost: number; calls: number; avgDuration: number }>;
@@ -148,11 +166,48 @@ export class TelemetryService extends Service {
   }
 
   /**
+   * Log a user conversation (once per message, not per API call)
+   */
+  async logConversation(log: ConversationLog): Promise<void> {
+    try {
+      if (!existsSync(CONVERSATION_LOG_FILE)) {
+        writeFileSync(CONVERSATION_LOG_FILE, '', 'utf8');
+      }
+      
+      appendFileSync(CONVERSATION_LOG_FILE, JSON.stringify(log) + '\n', 'utf8');
+      logger.debug(`[Telemetry] Conversation logged: ${log.source} ${log.messageId}`);
+    } catch (err) {
+      logger.error('[Telemetry] Failed to log conversation:', err);
+    }
+  }
+
+  /**
+   * Log a lore query (once per query, not per API call)
+   */
+  async logLoreQuery(log: LoreQueryLog): Promise<void> {
+    try {
+      if (!existsSync(LORE_QUERY_LOG_FILE)) {
+        writeFileSync(LORE_QUERY_LOG_FILE, '', 'utf8');
+      }
+      
+      appendFileSync(LORE_QUERY_LOG_FILE, JSON.stringify(log) + '\n', 'utf8');
+      logger.debug(`[Telemetry] Lore query logged: ${log.source} "${log.query.substring(0, 50)}..."`);
+    } catch (err) {
+      logger.error('[Telemetry] Failed to log lore query:', err);
+    }
+  }
+
+  /**
    * Get cost report for date range
    */
   async getCostReport(startDate?: Date, endDate?: Date): Promise<CostStats> {
     const logs = this.readLogs(startDate, endDate);
-    return this.calculateStats(logs);
+    const conversations = this.readConversationLogs(startDate, endDate);
+    const loreQueries = this.readLoreQueryLogs(startDate, endDate);
+    const stats = this.calculateStats(logs);
+    stats.conversationCount = conversations.length;
+    stats.loreQueryCount = loreQueries.length;
+    return stats;
   }
 
   /**
@@ -196,6 +251,62 @@ export class TelemetryService extends Service {
       return logs;
     } catch (err) {
       logger.error('[Telemetry] Failed to read logs:', err);
+      return [];
+    }
+  }
+
+  /**
+   * Read conversation logs from file
+   */
+  private readConversationLogs(startDate?: Date, endDate?: Date): ConversationLog[] {
+    try {
+      if (!existsSync(CONVERSATION_LOG_FILE)) {
+        return [];
+      }
+      
+      const content = readFileSync(CONVERSATION_LOG_FILE, 'utf8');
+      const lines = content.trim().split('\n').filter(line => line.length > 0);
+      
+      let logs: ConversationLog[] = lines.map(line => JSON.parse(line));
+      
+      if (startDate) {
+        logs = logs.filter(log => new Date(log.timestamp) >= startDate);
+      }
+      if (endDate) {
+        logs = logs.filter(log => new Date(log.timestamp) <= endDate);
+      }
+      
+      return logs;
+    } catch (err) {
+      logger.error('[Telemetry] Failed to read conversation logs:', err);
+      return [];
+    }
+  }
+
+  /**
+   * Read lore query logs from file
+   */
+  private readLoreQueryLogs(startDate?: Date, endDate?: Date): LoreQueryLog[] {
+    try {
+      if (!existsSync(LORE_QUERY_LOG_FILE)) {
+        return [];
+      }
+      
+      const content = readFileSync(LORE_QUERY_LOG_FILE, 'utf8');
+      const lines = content.trim().split('\n').filter(line => line.length > 0);
+      
+      let logs: LoreQueryLog[] = lines.map(line => JSON.parse(line));
+      
+      if (startDate) {
+        logs = logs.filter(log => new Date(log.timestamp) >= startDate);
+      }
+      if (endDate) {
+        logs = logs.filter(log => new Date(log.timestamp) <= endDate);
+      }
+      
+      return logs;
+    } catch (err) {
+      logger.error('[Telemetry] Failed to read lore query logs:', err);
       return [];
     }
   }

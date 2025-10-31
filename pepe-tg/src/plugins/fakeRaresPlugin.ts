@@ -64,6 +64,10 @@ function patchRuntimeForTelemetry(runtime: IAgentRuntime): void {
         }
         
         const cost = telemetry.calculateCost(model, tokensIn, tokensOut);
+        const source = params?.context || 'Conversation';
+        
+        // Console log for visibility (matches modelGateway format)
+        logger.info(`🤖 LLM call: ${model} [${source}] (${tokensIn} → ${tokensOut} tokens, $${cost.toFixed(4)}, ${duration}ms)`);
         
         await telemetry.logModelUsage({
           timestamp: new Date().toISOString(),
@@ -71,7 +75,7 @@ function patchRuntimeForTelemetry(runtime: IAgentRuntime): void {
           tokensIn,
           tokensOut,
           cost,
-          source: params?.context || 'Conversation',
+          source,
           duration,
         });
       }
@@ -521,6 +525,24 @@ export const fakeRaresPlugin: Plugin = {
                 await actionCallback({ text: finalMessage });
               }
               
+              // Log as conversation (auto-routed)
+              const telemetry = runtime.getService('telemetry') as TelemetryService;
+              if (telemetry) {
+                await telemetry.logConversation({
+                  timestamp: new Date().toISOString(),
+                  messageId: message.id,
+                  source: 'auto-route',
+                });
+                
+                // Also log as lore query
+                await telemetry.logLoreQuery({
+                  timestamp: new Date().toISOString(),
+                  queryId: message.id,
+                  query: text,
+                  source: 'auto-route',
+                });
+              }
+              
               logger.debug(`[FakeRaresPlugin] ✅ Auto-routed knowledge response sent`);
               logger.debug(`   Hits: ${result.metrics.hits_used}, Latency: ${result.metrics.latency_ms}ms`);
               
@@ -558,6 +580,17 @@ export const fakeRaresPlugin: Plugin = {
           if (shouldAllowBootstrap) {
             logger.info(`   Decision: ALLOW bootstrap (normal conversation)`);
             logger.debug(`[Allow] Bootstrap allowed: reply=${!!isReplyToBot} caps=${hasCapitalizedWord} mention=${hasBotMention} | "${text}"`);
+            
+            // Log this as a conversation (once per user message, not per API call)
+            const telemetry = runtime.getService('telemetry') as TelemetryService;
+            if (telemetry) {
+              await telemetry.logConversation({
+                timestamp: new Date().toISOString(),
+                messageId: message.id,
+                source: 'bootstrap',
+              });
+            }
+            
             // Let bootstrap handle it - do NOT mark as handled
           } else {
             logger.info(`   Decision: SUPPRESS bootstrap (no trigger)`);

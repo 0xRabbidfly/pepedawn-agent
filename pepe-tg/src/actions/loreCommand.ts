@@ -62,6 +62,17 @@ export const loreCommand: Action = {
     }
 
     try {
+      // Log this lore query (once per query, not per API call)
+      const telemetry = runtime.getService('telemetry');
+      if (telemetry && typeof (telemetry as any).logLoreQuery === 'function') {
+        await (telemetry as any).logLoreQuery({
+          timestamp: new Date().toISOString(),
+          queryId: message.id,
+          query,
+          source: 'fl-command',
+        });
+      }
+      
       // Get the KnowledgeOrchestratorService from runtime
       const knowledgeService = runtime.getService(
         KnowledgeOrchestratorService.serviceType

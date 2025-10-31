@@ -49,4 +49,10 @@ backups/
 
 # Market Transaction Reporter database
 data/transactions.db
-**/data/transactions.db    
+**/data/transactions.db
+
+# Telemetry logs (runtime data, not tracked in git)
+**/token-logs.jsonl
+**/conversation-logs.jsonl
+**/lore-query-logs.jsonl
+**/data/archives/    

@@ -126,6 +126,12 @@ function formatCostReport(
   report += `📥 Tokens In: ${stats.totalTokensIn.toLocaleString()}\n`;
   report += `📤 Tokens Out: ${stats.totalTokensOut.toLocaleString()}\n`;
   report += `🔢 API Calls: ${stats.callCount}\n`;
+  if (stats.conversationCount !== undefined) {
+    report += `💬 Conversations: ${stats.conversationCount}\n`;
+  }
+  if (stats.loreQueryCount !== undefined && stats.loreQueryCount > 0) {
+    report += `📚 Lore Queries: ${stats.loreQueryCount}\n`;
+  }
 
   // Breakdown by model
   if (Object.keys(stats.byModel).length > 0) {
