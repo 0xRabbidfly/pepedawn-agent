@@ -119,10 +119,28 @@ export class KnowledgeOrchestratorService extends Service {
     logger.info(`STEP 2/5: Retrieved ${passages.length} passages (${sourceStr})`);
 
     if (passages.length === 0) {
-      logger.debug('⚠️  No passages found - returning clarification message');
+      logger.debug('⚠️  No passages found - checking if query is a known card');
+      
+      // Check if query matches a card in our index
+      const { getCardInfo } = await import('../data/fullCardIndex');
+      const cardInfo = getCardInfo(query.trim());
+      
+      let responseMessage: string;
+      
+      if (cardInfo) {
+        // Card exists but has no lore yet
+        logger.info(`✨ Card "${cardInfo.asset}" found in index but has no lore - prompting user to add`);
+        responseMessage = `🎨 The lore vault for ${cardInfo.asset.toUpperCase()} is empty - a blank canvas waiting for your story!\n\n` +
+          `Help fill it by dropping some knowledge:\n` +
+          `"@pepedawn_bot remember this ${cardInfo.asset.toUpperCase()}: <share that sweet lore here>"\n\n` +
+          `Every card has a tale worth telling 🐸✨`;
+      } else {
+        // Not a card, give general clarification
+        responseMessage = CLARIFICATION_MESSAGE;
+      }
       
       return {
-        story: CLARIFICATION_MESSAGE,
+        story: responseMessage,
         sourcesLine: '',
         metrics: {
           query,
@@ -130,7 +148,7 @@ export class KnowledgeOrchestratorService extends Service {
           hits_used: 0,
           clusters: 0,
           latency_ms: Date.now() - startTime,
-          story_words: CLARIFICATION_MESSAGE.split(/\s+/).length,
+          story_words: responseMessage.split(/\s+/).length,
         }
       };
     }

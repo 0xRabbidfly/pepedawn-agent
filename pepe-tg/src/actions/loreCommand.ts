@@ -19,8 +19,7 @@ import { LORE_CONFIG } from '../utils/loreConfig';
 export const CLARIFICATION_MESSAGE = '🤔 Not sure what you\'re looking for. Try:\n\n' +
                                      '• `/fl CARDNAME` - Get card lore\n' +
                                      '• `/fl what is X` - Get facts\n' +
-                                     '• `/fl tell me about Y` - Get stories\n\n' +
-                                     'Or ask me naturally without /fl!';
+                                     '• `/fl tell me about Y` - Get stories';
 export const loreCommand: Action = {
   name: 'LORE_COMMAND',
   description: 'Handles /fl command to return knowledge-backed lore with persona storytelling',

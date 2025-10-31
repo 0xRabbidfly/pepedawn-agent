@@ -179,16 +179,16 @@ export const fakeRaresPlugin: Plugin = {
           const hasCapitalizedWord = /\b[A-Z]{3,}[A-Z0-9]*\b/.test(text); // 3+ caps (likely card names)
           const hasBotMention = /@pepedawn_bot/i.test(text);
           const isReplyToBot = params?.message?.content?.inReplyTo; // User replied to bot's message
-          const hasRememberThis = /remember\s+this/i.test(text);
+          const hasRememberCommand = /remember(?:\s+this)?/i.test(text);
           
           // Log routing factors
           logger.info(`   Triggers: reply=${!!isReplyToBot} | CAPS=${hasCapitalizedWord} | @mention=${hasBotMention}`);
 
           logger.debug(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${isFCommand} isFv=${isFvCommand} isFt=${isFtCommand} isLore=${isLoreCommand} isFm=${isFmCommand} isDawn=${isDawnCommand} isHelp=${isHelpCommand} isStart=${isStartCommand} isCost=${isCostCommand} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
           
-          // === MEMORY CAPTURE: "remember this" ===
-          if ((hasCapitalizedWord || isReplyToBot || hasBotMention) && hasRememberThis) {
-            logger.debug('[FakeRaresPlugin] "remember this" detected → storing memory');
+          // === MEMORY CAPTURE: "remember" or "remember this" ===
+          if ((hasCapitalizedWord || isReplyToBot || hasBotMention) && hasRememberCommand) {
+            logger.debug('[FakeRaresPlugin] "remember" command detected → storing memory');
             const actionCallback = typeof params.callback === 'function' ? params.callback : null;
             
             try {

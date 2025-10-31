@@ -156,8 +156,8 @@ export class MemoryStorageService extends Service {
     isReply: boolean,
     originalMessage?: string
   ): MemoryContent {
-    // Remove "remember this" trigger phrase and extract content
-    const cleanText = messageText.replace(/remember\s+this[:\s]*/i, '').trim();
+    // Remove "remember" or "remember this" trigger phrase and extract content
+    const cleanText = messageText.replace(/remember(?:\s+this)?[:\s]*/i, '').trim();
     
     if (isReply && originalMessage) {
       // REPLY flow: combine original bot message + user's comment
