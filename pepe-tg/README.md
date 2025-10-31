@@ -10,7 +10,7 @@ This directory contains the PEPEDAWN bot application.
 
 ```bash
 bun install                    # Install dependencies
-cp .env.example .env          # Configure (see ENV_TEMPLATE.md)
+cp .env.example .env          # Configure (edit with your API keys)
 bun run dev                   # Start development
 ```
 
@@ -27,7 +27,7 @@ bun run lint         # Format code
 
 - **[Setup Guide](../README.md)** - Complete installation & deployment
 - **[Setup Checklist](../SETUP_CHECKLIST.md)** - Step-by-step for beginners
-- **[Environment Vars](../ENV_TEMPLATE.md)** - Configuration reference
+- **[Environment Config](.env.example)** - Copy to `.env` and configure
 - **[Scripts](scripts/README.md)** - Utility scripts documentation
 - **[Contributing](../CONTRIBUTING.md)** - Architecture & development
 - **[Telegram Docs](telegram_docs/)** - Feature-specific technical docs

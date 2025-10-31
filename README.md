@@ -633,7 +633,8 @@ All scripts are in `pepe-tg/scripts/` directory:
 | Script | Purpose | Usage |
 |--------|---------|-------|
 | `add-new-cards.js` | Scrape new cards from pepe.wtf | `node scripts/add-new-cards.js 19 20` |
-| `backup-db.sh` | Backup ElizaDB database | `./scripts/backup-db.sh [label]` |
+| `backup-db.sh` | Manual database backup | `./scripts/backup-db.sh [label]` |
+| `setup-backup-cron.sh` | Install automated weekly backups | `bash scripts/setup-backup-cron.sh` |
 | `safe-restart.sh` | Gracefully restart bot | `./scripts/safe-restart.sh` |
 | `deploy.sh` | SSH deploy to DigitalOcean | `./scripts/deploy.sh` |
 
@@ -679,6 +680,8 @@ Backs up `.eliza/.elizadb/` which contains:
 - Embeddings (if knowledge base is configured)
 - Conversation history
 - Bot memory
+- Transaction history (if market monitoring enabled)
+- Telemetry logs
 
 **Usage:**
 ```bash
@@ -698,6 +701,36 @@ tar -xzf ../backups/elizadb-backup-*.tar.gz -C .eliza/
 ```
 
 **Important:** Run backups before major changes and after embedding generation!
+
+---
+
+#### `setup-backup-cron.sh` - Automated Weekly Backups
+
+**One-time setup for automated backups on production:**
+
+```bash
+# Install automated backup system
+cd ~/pepedawn-agent/pepe-tg
+bash scripts/setup-backup-cron.sh
+```
+
+**What it does:**
+1. Creates weekly backup job (Sundays at 2 AM)
+2. Auto-cleanup old backups (keeps last 4 weeks)
+3. Logs to `logs/backup.log`
+4. Installs cron job on the server
+
+**Verify installation:**
+```bash
+crontab -l | grep ElizaDB
+```
+
+**Test manually:**
+```bash
+bash scripts/weekly-backup.sh
+```
+
+**Note:** This is for production servers. Not needed for local development.
 
 ---
 
@@ -925,6 +958,15 @@ cd ~/pepedawn-agent/pepe-tg
 ./scripts/backup-db.sh pre-upgrade
 ```
 
+**Check automated backups:**
+```bash
+# View backup logs
+tail -20 logs/backup.log
+
+# List backups (shows 4 most recent)
+ls -lht ../backups/ | head -5
+```
+
 ---
 
 ## 📁 Project Structure
@@ -980,7 +1022,10 @@ pepe-tg/
 │   └── pepedawn.ts                # Character definition
 ├── 📂 scripts/                    # Utility scripts
 │   ├── add-new-cards.js           # Card scraper
-│   ├── backup-db.sh               # Database backup
+│   ├── backup-db.sh               # Manual database backup
+│   ├── setup-backup-cron.sh       # Install automated backups
+│   ├── weekly-backup.sh           # Weekly backup wrapper (auto-generated)
+│   ├── cleanup-old-backups.sh     # Cleanup script (auto-generated)
 │   ├── safe-restart.sh            # Safe restart
 │   └── deploy.sh                  # Production deployment
 ├── 📂 docs/                       # Knowledge base (optional)
@@ -1421,7 +1466,6 @@ pepedawn-agent/
 ├── 📘 README.md                    ⭐ You are here - Complete guide
 ├── 📗 SETUP_CHECKLIST.md           Step-by-step setup (Phase 1-4)
 ├── 📙 CONTRIBUTING.md              Developer guide + ElizaOS patterns
-├── 📓 ENV_TEMPLATE.md              .env template
 │
 └── pepe-tg/
     ├── 📄 README.md                → Points to this file
@@ -1440,7 +1484,7 @@ pepedawn-agent/
 |-------------------|-----------|
 | **Install the bot** | This README → [Quick Start](#-quick-start) |
 | **Step-by-step setup** | [SETUP_CHECKLIST.md](SETUP_CHECKLIST.md) |
-| **Configure .env** | [ENV_TEMPLATE.md](ENV_TEMPLATE.md) |
+| **Configure .env** | Copy `pepe-tg/.env.example` → `.env` |
 | **Develop features** | [CONTRIBUTING.md](CONTRIBUTING.md) |
 | **Understand costs** | [Cost Analysis](#-cost-analysis) or [telegram_docs/PEPEDAWN_cost_analysis.md](pepe-tg/telegram_docs/PEPEDAWN_cost_analysis.md) |
 | **Set up lottery** | [telegram_docs/PEPEDAWN_ODDS_SUMMARY.md](pepe-tg/telegram_docs/PEPEDAWN_ODDS_SUMMARY.md) |
@@ -1691,10 +1735,11 @@ Built with ❤️ for the Fake Rares community.
 ⚙️ Configure:   cp .env.example .env && nano .env
 ▶️ Run:         bun run dev (development) or bun run start (production)
 🚀 Deploy:      pm2 start ecosystem.config.cjs
+🔄 Auto-Backup: bash scripts/setup-backup-cron.sh (one-time setup)
 📊 Monitor:     pm2 logs pepe-tg
 💰 Costs:       /fc m (in Telegram)
 🔄 Update:      node scripts/add-new-cards.js [series]
-💾 Backup:      ./scripts/backup-db.sh
+💾 Backup:      ./scripts/backup-db.sh (manual)
 ```
 
 ---

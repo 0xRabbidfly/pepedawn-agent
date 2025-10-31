@@ -10,8 +10,8 @@ export const LORE_CONFIG = {
   MATCH_THRESHOLD: 0.25,
   
   // Clustering & Diversity
-  CLUSTER_TARGET_MIN: 4,
-  CLUSTER_TARGET_MAX: 6,
+  CLUSTER_TARGET_MIN: 2,  // Reduced from 4 for better story coherence
+  CLUSTER_TARGET_MAX: 3,  // Reduced from 6 for better story coherence
   TOP_K_FOR_CLUSTERING: 20,
   
   // Story Generation

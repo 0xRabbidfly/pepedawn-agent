@@ -435,15 +435,30 @@ This enables the `/fl` (lore) command with AI-powered stories from community his
   Tell me about WAGMIWORLD
   ```
 
-### 3. Create First Backup
+### 3. Setup Automated Backups
 
-- [ ] Backup production database:
+- [ ] **Install weekly backup cron job:**
   ```bash
   cd ~/pepedawn-agent/pepe-tg
+  bash scripts/setup-backup-cron.sh
+  ```
+  This will:
+  - Create weekly backup every Sunday at 2 AM
+  - Automatically cleanup old backups (keeps last 4 weeks)
+  - Log to `logs/backup.log`
+
+- [ ] **Create first manual backup:**
+  ```bash
   ./scripts/backup-db.sh production-initial
   ```
 
-- [ ] **Download backup to local machine:**
+- [ ] **Verify cron job installed:**
+  ```bash
+  crontab -l | grep ElizaDB
+  # Should show: 0 2 * * 0 cd .../weekly-backup.sh
+  ```
+
+- [ ] **Optional - Download backup to local machine:**
   ```bash
   # On local machine:
   scp root@YOUR_SERVER_IP:~/pepedawn-agent/backups/elizadb-backup-*.tar.gz ~/backups/
@@ -464,8 +479,9 @@ This enables the `/fl` (lore) command with AI-powered stories from community his
 ### 5. Set Reminders
 
 - [ ] **Weekly:** Check PM2 status and logs
+- [ ] **Weekly:** Backups run automatically (Sundays at 2 AM)
 - [ ] **Monthly:** Review costs (`/fc m`)
-- [ ] **Monthly:** Create database backup
+- [ ] **Monthly:** Review backup logs (`tail logs/backup.log`)
 - [ ] **Quarterly:** Update dependencies
 
 ---
@@ -493,7 +509,8 @@ Your PEPEDAWN bot is now:
 | Stop bot | `pm2 stop pepe-tg` |
 | Check costs | `/fc m` (in Telegram) |
 | Add new cards | `node scripts/add-new-cards.js [series]` |
-| Backup DB | `./scripts/backup-db.sh [label]` |
+| Manual backup | `./scripts/backup-db.sh [label]` |
+| Check backups | `ls -lh ../backups/` |
 | Update code | `git pull && bun install && bun run build && pm2 restart pepe-tg` |
 
 ### Emergency Procedures

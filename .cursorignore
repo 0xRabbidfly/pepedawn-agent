@@ -1,0 +1,54 @@
+# Cursor IDE Ignore
+# Files/folders to exclude from Cursor's indexing and AI context
+
+# Node modules
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+**/dist/
+*.tsbuildinfo
+
+# Database
+.eliza/
+**/.eliza/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Backups
+backups/
+**/.backups/
+
+# Large data files
+*.db
+*.log
+*.jsonl
+
+# Environment files (secrets hidden, templates visible)
+# First, explicitly ALLOW .env.example
+!.env.example
+!**/.env.example
+
+# Then ignore other .env files
+.env
+**/.env
+.env.local
+**/.env.local
+.env.*
+**/.env.*
+
+# But re-allow .env.example (negation must come after the ignore)
+!.env.example
+!**/.env.example
+
+# Generated docs
+docs/
+specs/
+
+# Git
+.git/
+
