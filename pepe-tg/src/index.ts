@@ -18,7 +18,7 @@ process.on('uncaughtException', (error) => {
 // Health monitoring to detect zombie state
 let lastHeartbeat = Date.now();
 const HEARTBEAT_INTERVAL = process.env.NODE_ENV === 'production' ? 300000 : 60000; // 5min prod, 60s dev
-const MAX_SILENCE_TIME = 120000; // 2 minutes
+const MAX_SILENCE_TIME = process.env.NODE_ENV === 'production' ? 600000 : 180000; // 10min prod, 3min dev
 const LOG_HEARTBEAT = process.env.NODE_ENV === 'production'; // Only log in production
 
 // Heartbeat function - silent in dev, visible in prod
@@ -34,7 +34,7 @@ setInterval(() => {
   if (LOG_HEARTBEAT) {
     logger.info(`💓 [HEARTBEAT] Bot is alive - ${new Date().toISOString()}`);
   }
-  lastHeartbeat = now;
+  // DON'T update lastHeartbeat here - only actual activity should update it
 }, HEARTBEAT_INTERVAL);
 
 // Update heartbeat on any activity

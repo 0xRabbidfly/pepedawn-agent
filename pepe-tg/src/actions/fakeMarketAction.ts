@@ -101,9 +101,9 @@ function formatTransactionLine(tx: Transaction): string {
   const typeIcon = (tx.type === 'DIS_SALE' || tx.type === 'DIS_LISTING') ? '🎰' : '📊';
   
   if (isSale) {
-    return `• ${tx.asset} x${tx.amount.toLocaleString()} | ${price} ${tx.paymentAsset} | ${timestamp} ${typeIcon}`;
+    return `• *${tx.asset}* x${tx.amount.toLocaleString()} | ${price} ${tx.paymentAsset} | ${timestamp} ${typeIcon}`;
   } else {
-    return `• ${tx.asset} | Qty: ${tx.amount.toLocaleString()} | ${price} ${tx.paymentAsset} | ${timestamp} ${typeIcon}`;
+    return `• *${tx.asset}* | Qty: ${tx.amount.toLocaleString()} | ${price} ${tx.paymentAsset} | ${timestamp} ${typeIcon}`;
   }
 }
 
@@ -120,13 +120,13 @@ function formatCombinedResponse(
   let response = '';
   
   if (sales.length > 0) {
-    response += `💰 Fake Rare SALES (${sales.length}):\n`;
+    response += `💰 FAKE RARE Sales (${sales.length}):\n`;
     response += sales.map(formatTransactionLine).join('\n');
     response += '\n\n';
   }
   
   if (listings.length > 0) {
-    response += `📋 Fake Rare LISTINGS (${listings.length}):\n`;
+    response += `📋 FAKE RARE Listings (${listings.length}):\n`;
     response += listings.map(formatTransactionLine).join('\n');
     response += '\n\n';
   }
