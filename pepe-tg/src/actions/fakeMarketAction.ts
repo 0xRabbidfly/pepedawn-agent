@@ -120,13 +120,13 @@ function formatCombinedResponse(
   let response = '';
   
   if (sales.length > 0) {
-    response += `💰 SALES (${sales.length}):\n`;
+    response += `💰 Fake Rare SALES (${sales.length}):\n`;
     response += sales.map(formatTransactionLine).join('\n');
     response += '\n\n';
   }
   
   if (listings.length > 0) {
-    response += `📋 LISTINGS (${listings.length}):\n`;
+    response += `📋 Fake Rare LISTINGS (${listings.length}):\n`;
     response += listings.map(formatTransactionLine).join('\n');
     response += '\n\n';
   }
