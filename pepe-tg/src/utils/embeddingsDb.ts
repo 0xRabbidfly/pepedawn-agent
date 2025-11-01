@@ -80,7 +80,7 @@ function saveEmbeddings(embeddings: EmbeddingsDatabase): void {
 export async function initEmbeddingsDb(): Promise<void> {
   loadEmbeddings();
   const count = Object.keys(embeddingsCache!).length;
-  console.log(`✅ Embeddings database initialized (${count} cards)`);
+  logger.info(`✅ Embeddings database initialized (${count} cards)`);
 }
 
 /**
@@ -193,7 +193,7 @@ export async function findMostSimilarCard(
   if (bestMatch) {
     logger.info(`✅ [EmbeddingsDB] Most similar: ${bestMatch.asset} (${(bestMatch.similarity * 100).toFixed(1)}% match)`);
   } else {
-    console.log(`ℹ️  [EmbeddingsDB] No similar cards found`);
+    logger.info(`ℹ️  [EmbeddingsDB] No similar cards found`);
   }
   
   return bestMatch;

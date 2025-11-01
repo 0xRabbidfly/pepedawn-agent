@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.1.0] - 2025-11-01
+
 ### Added
 - **`/fr` Command** - Slash command alternative for memory capture
   - `/fr CARDNAME <lore>` - Store card-specific memories
@@ -18,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - **Pre-commit test suite** - Now runs ALL 11 custom test files (197+ tests) instead of subset
 - **Test documentation** - Updated TESTS.md to reflect complete coverage
+- **Logging consistency** - Replaced console.log with logger in embeddingsDb.ts
 
 ### Fixed
 - **CRITICAL: FACTS mode MMR bug** - FACTS queries now skip MMR diversity selection (use pure relevance ranking)
@@ -28,6 +31,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - memoryStorage.test.ts imports (utility functions extracted to utils/memoryStorage.ts)
 - test-all.sh now accurately runs all custom tests (was misleadingly named)
 - Removed false-positive health check warnings (tracked console.log but bot uses logger; PM2 handles process monitoring)
+
+### Technical Details
+- Code productionalization: Removed debug console.log statements
+- No breaking changes - fully backward compatible
+- Test coverage: 11 custom test files, 197+ tests
 
 ## [3.0.0] - 2025-10-31
 
