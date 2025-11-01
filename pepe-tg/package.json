@@ -72,9 +72,10 @@
   },
   "scripts": {
     "postinstall": "patch-package || echo 'Warning: Some patches failed to apply'",
-    "start": "elizaos start",
+    "start": "./scripts/start-bot.sh",
     "dev": "elizaos dev",
     "restart": "./scripts/safe-restart.sh",
+    "kill": "./scripts/kill-bot.sh",
     "build": "bun run build.ts",
     "lint": "prettier --write ./src",
     "type-check": "tsc --noEmit",
@@ -95,7 +96,8 @@
     "cypress:component": "bun run test:install && cypress run --component",
     "cypress:e2e": "bun run test:install && cypress run --e2e",
     "cypress:open": "bun run test:install && cypress open",
-    "build:watch": "bun run build.ts --watch"
+    "build:watch": "bun run build.ts --watch",
+    "db:query": "node scripts/query-db.js"
   },
   "publishConfig": {
     "access": "public"

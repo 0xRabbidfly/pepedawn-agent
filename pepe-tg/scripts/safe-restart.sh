@@ -4,14 +4,27 @@
 cd "$(dirname "$0")/.." || exit 1
 
 echo "🛑 Stopping bot..."
-pkill -f "elizaos start" || echo "No running bot found"
+
+# Get bot PIDs using reliable detection
+BOT_PIDS=$(ps aux | grep -E "elizaos start|bun.*elizaos.*start|node.*dist/index" | grep -v grep | awk '{print $2}' | tr '\n' ' ')
+
+if [ -n "$BOT_PIDS" ]; then
+    echo "   Found processes: $BOT_PIDS"
+    # Send graceful shutdown
+    for pid in $BOT_PIDS; do
+        kill -TERM $pid 2>/dev/null || true
+    done
+else
+    echo "   No running bot found"
+fi
 
 echo "⏳ Waiting for cleanup (5 seconds)..."
 sleep 5
 
 # Verify all processes are dead
 for i in {1..3}; do
-  if pgrep -f "elizaos start" >/dev/null 2>&1; then
+  REMAINING=$(ps aux | grep -E "elizaos start|bun.*elizaos.*start|node.*dist/index" | grep -v grep || true)
+  if [ -n "$REMAINING" ]; then
     echo "⚠️  Bot still running, waiting... (attempt $i/3)"
     sleep 2
   else
@@ -26,7 +39,13 @@ if lsof -ti:3000 >/dev/null 2>&1; then
   sleep 1
 fi
 
+# Clean up any stale lock files
+if [ -f ".eliza/.elizadb/postmaster.pid" ]; then
+  echo "🧹 Removing stale database lock files..."
+  rm -f .eliza/.elizadb/postmaster.pid .eliza/.elizadb/postmaster.opts 2>/dev/null
+fi
+
 echo "✅ Cleanup complete"
 echo "🚀 Starting bot..."
-bun run start
+./scripts/start-bot.sh
 
