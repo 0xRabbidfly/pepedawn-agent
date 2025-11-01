@@ -1,0 +1,92 @@
+---
+description: Systematic production deployment preparation checklist
+manual: true
+---
+
+# Production Deployment Preparation
+
+Execute this comprehensive pre-deployment checklist when preparing code for production release.
+
+## Usage
+
+Invoke with: `@production-prep [major|minor|patch]`
+
+Example: `@production-prep minor`
+
+## Checklist
+
+### 1. Code Productionalization
+- Review all new/modified code for:
+  - Deduplication opportunities
+  - Clean code practices
+  - Removal of debug logic (console.logs, debug flags, etc.)
+  - Best practices compliance
+  - Performance considerations
+  - Error handling completeness
+
+### 2. Debug Artifact Cleanup
+- Identify and remove:
+  - Temporary scripts used for debugging
+  - Test data files not needed in production
+  - Development-only utilities
+  - Commented-out code blocks
+  - Unused imports
+
+### 3. Test Coverage Validation
+- Verify test automation for new functionality
+- If tests missing, explicitly document gaps
+- Update test documentation:
+  - `pepe-tg/src/__tests__/README.md` (or equivalent)
+  - Test count summaries
+  - Coverage of new features
+
+### 4. Documentation Updates
+Review and update if necessary:
+- `README.md` (root) - Feature list, usage examples
+- `CONTRIBUTING.md` - Development workflow changes
+- `telegram_docs/PEPEDAWN_FLOW_DIAGRAMS.md` - Architecture changes
+- `telegram_docs/PEPEDAWN_HELP_VISUAL.md` - User-facing commands
+- `telegram_docs/PEPEDAWN_SPEC_REFERENCE.md` - Technical specifications
+- `pepe-tg/README.md` - Project-specific documentation
+
+### 5. CHANGELOG.md Update
+- Add new entry under `[Unreleased]` or create version section
+- Document:
+  - Added features
+  - Changed behavior
+  - Fixed bugs
+  - Technical details
+- Follow Keep a Changelog format
+
+### 6. Version Bump & Tagging
+- Update `package.json` version based on type (major/minor/patch)
+- Follow semantic versioning:
+  - **MAJOR**: Breaking changes
+  - **MINOR**: New features (backward compatible)
+  - **PATCH**: Bug fixes (backward compatible)
+- Prepare git tag command (DO NOT EXECUTE)
+
+### 7. Git Command Preparation
+- Generate commands for user to execute manually:
+  ```bash
+  git add .
+  git commit -m "Release vX.Y.Z: <summary>"
+  git tag -a vX.Y.Z -m "Version X.Y.Z"
+  git push origin main --tags
+  ```
+
+## Important Rules
+
+⚠️ **NEVER execute git commands** - Always prompt user with commands to run manually
+⚠️ **Be thorough** - Don't skip steps even if they seem minor
+⚠️ **Document gaps** - If tests/docs are missing, explicitly note them
+
+## Execution Flow
+
+1. Create TODO list with all checklist items
+2. Execute each step systematically
+3. Mark items complete as you go
+4. Present final summary with:
+   - Items completed
+   - Items that need manual attention
+   - Git commands ready to execute
