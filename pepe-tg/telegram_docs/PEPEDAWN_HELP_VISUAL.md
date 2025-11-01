@@ -71,10 +71,14 @@
 ├──────────────────────────────────────────────────────────────┤
 │  Save facts to the community knowledge base!                 │
 │                                                              │
-│  Method 1: Direct command                                    │
+│  Method 1: Slash command (NEW!)                              │
+│  /fr CARDNAME <lore>         - Card-specific memory          │
+│  /fr <general lore>          - General memory                │
+│                                                              │
+│  Method 2: Natural language                                  │
 │  CARDNAME remember this: [your fact here]                    │
 │                                                              │
-│  Method 2: Reply to bot                                      │
+│  Method 3: Reply to bot                                      │
 │  [Reply to bot message] "remember this"                      │
 │                                                              │
 │  💡 Your memory becomes searchable via /fl for everyone!    │

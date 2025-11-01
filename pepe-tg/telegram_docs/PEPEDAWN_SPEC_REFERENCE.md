@@ -98,9 +98,10 @@ User → /fl TOPIC
   ├─ UNCERTAIN → Clarification prompt
   │              "🤔 Not sure... Try: /fl CARDNAME"
   │
-  ├─ FACTS → Top-k by relevance (no MMR)
+  ├─ FACTS → Top-k by relevance (no MMR) ✅ WORKING
   │           ↓
   │           Direct answer (rules, specs)
+  │           Memories preserved (4.0x boost ensures top ranking)
   │
   └─ LORE → Card memory detected?
             ├─ YES → Dedicated cluster (raw text)
@@ -119,9 +120,10 @@ Cost: ~$0.01 | Time: 1-3s
 
 ### Memory Capture
 ```
-User → "FREEDOMKEK remember this: it was..."
-  OR
-User → [Reply to bot] "remember this"
+User → /fr CARDNAME <lore>
+  OR /fr <general lore>
+  OR "FREEDOMKEK remember this: it was..."
+  OR [Reply to bot] "remember this"
   ↓
   Extract content
   ↓
@@ -129,7 +131,7 @@ User → [Reply to bot] "remember this"
   ↓
   Store in Knowledge DB (global)
   ↓
-  "storing the memory..."
+  "💾 Memory stored! Access it anytime with /fl"
   ↓
   Now searchable via /fl! ✅
 
@@ -188,8 +190,9 @@ Priority: HIGHEST in lore searches
 
 ### Memory Capture
 - **Two ways to trigger:**
-  1. Direct: `FREEDOMKEK remember this: fact here`
-  2. Reply to bot + say "remember this"
+  1. Slash command: `/fr CARDNAME <lore>` or `/fr <general lore>`
+  2. Natural language: `FREEDOMKEK remember this: fact here`
+  3. Reply to bot + say "remember this"
 - **Requirements:**
   - Must have CAPITALIZED word OR reply to bot OR mention bot
   - Plus "remember this" in text
@@ -330,7 +333,8 @@ For new users, try these in order:
 - [ ] `/f` - View a random card
 - [ ] `/fv FREEDOMKEK` - See AI visual analysis
 - [ ] `/fl Rare Scrilla` - Get some lore
-- [ ] `FREEDOMKEK remember this: it's the genesis card` - Save a memory
+- [ ] `/fr FREEDOMKEK it's the genesis card` - Save a memory
+- [ ] `FREEDOMKEK remember this: it's the genesis card` - Save a memory (alt method)
 - [ ] `/fl FREEDOMKEK` - See your memory appear in lore!
 - [ ] Ask a question naturally - Try conversation mode
 

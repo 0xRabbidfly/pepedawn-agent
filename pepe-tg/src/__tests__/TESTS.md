@@ -4,7 +4,7 @@
 
 ## 📊 Test Summary
 
-**Total:** 9 custom test files (120+ tests)
+**Total:** 11 custom test files (197+ tests)
 
 ### 1. Bootstrap Suppression Test ⚡
 
@@ -33,9 +33,17 @@
 
 ---
 
-### 6-9. Knowledge & Auto-Routing Tests 📚
+### 6. Auto-Routing Tests 🔀
 
-**Files:** 4 test files, 91 tests covering `/fl` command and auto-routing
+**File:** `auto-routing.test.ts` (20 tests)
+
+**Purpose:** Validates MESSAGE_RECEIVED auto-routing logic - ensures FACTS questions are routed to knowledge retrieval while statements/opinions are properly suppressed.
+
+---
+
+### 7-11. Knowledge & Lore Tests 📚
+
+**Files:** 5 test files, 110 tests covering `/fl`, `/fr` commands and knowledge retrieval
 
 | File | Tests | Purpose |
 |------|-------|---------|
@@ -43,8 +51,10 @@
 | `utils/loreRetrieval.test.ts` | 19 | Memory priority & source boost logic |
 | `utils/memoryStorage.test.ts` | 24 | Card detection & memory boost logic |
 | `actions/loreCommand.test.ts` | 15 | `/fl` command & FACTS mode filtering |
+| `actions/fakeRememberCommand.test.ts` | 7 | `/fr` command memory capture |
+| **Total** | **98** | **Complete lore & knowledge coverage** |
 
-**Purpose:** Validates query classification, memory prioritization (4.0x boost), card memory detection, and auto-routing of fact questions to knowledge retrieval.
+**Purpose:** Validates query classification, memory prioritization (4.0x boost), card memory detection, slash command memory capture, and hybrid search logic.
 
 ---
 
@@ -67,11 +77,15 @@ bun test src/__tests__/actions/fakeTestCommand.test.ts
 bun test src/__tests__/utils/visionAnalyzer.test.ts
 bun test src/__tests__/integration/visual-commands.test.ts
 
-# Knowledge & auto-routing (all 4 files)
+# Auto-routing
+bun test src/__tests__/auto-routing.test.ts
+
+# Knowledge & lore (all 5 files)
 bun test src/__tests__/utils/queryClassifier.test.ts
 bun test src/__tests__/utils/loreRetrieval.test.ts
 bun test src/__tests__/utils/memoryStorage.test.ts
 bun test src/__tests__/actions/loreCommand.test.ts
+bun test src/__tests__/actions/fakeRememberCommand.test.ts
 
 # Watch mode
 bun test --watch
@@ -86,17 +100,20 @@ bun test --coverage
 
 ```
 pepe-tg/src/__tests__/
-├── bootstrap-suppression.test.ts    # Pre-commit hook test
+├── bootstrap-suppression.test.ts    # Bootstrap suppression logic (28 tests)
+├── auto-routing.test.ts             # Auto-routing FACTS questions (20 tests)
 ├── actions/
-│   ├── fakeVisualCommand.test.ts    # /fv command tests
-│   ├── fakeTestCommand.test.ts      # /ft command tests
-│   └── loreCommand.test.ts          # /fl command tests
+│   ├── fakeVisualCommand.test.ts    # /fv command tests (14 tests)
+│   ├── fakeTestCommand.test.ts      # /ft command tests (16 tests)
+│   ├── loreCommand.test.ts          # /fl command tests (15 tests)
+│   └── fakeRememberCommand.test.ts  # /fr command tests (7 tests)
 ├── utils/
-│   ├── visionAnalyzer.test.ts       # Shared vision utility tests
-│   ├── queryClassifier.test.ts      # FACTS/LORE classification tests
-│   └── loreRetrieval.test.ts        # Memory priority & source boost tests
+│   ├── queryClassifier.test.ts      # FACTS/LORE classification (33 tests)
+│   ├── visionAnalyzer.test.ts       # Vision API utility (1 test)
+│   ├── loreRetrieval.test.ts        # Memory priority & hybrid search (19 tests)
+│   └── memoryStorage.test.ts        # Memory utilities (24 tests)
 └── integration/
-    └── visual-commands.test.ts      # Plugin routing tests
+    └── visual-commands.test.ts      # Plugin routing integration (26 tests)
 ```
 
 **Note:** Additional test files exist from ElizaOS framework but are not actively maintained as part of this project.
@@ -107,8 +124,8 @@ pepe-tg/src/__tests__/
 
 Before deploying:
 
-- [ ] All 8 custom tests pass (100+ tests)
-- [ ] Pre-commit hook validates (bootstrap suppression)
+- [ ] All 11 custom tests pass (197+ tests)
+- [ ] Pre-commit hook validates (all 11 tests)
 - [ ] Manual testing completed (see manual test plan)
 - [ ] No linting errors
 - [ ] Cost tracking verified in logs
@@ -160,7 +177,7 @@ git commit --no-verify
 
 ---
 
-**Last Updated:** October 28, 2025  
+**Last Updated:** November 1, 2025  
 **Test Framework:** Bun Test  
-**Coverage:** 8 custom test files, 100+ tests
+**Coverage:** 11 custom test files, 197+ tests
 

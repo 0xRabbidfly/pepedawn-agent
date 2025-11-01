@@ -444,7 +444,7 @@
 - **Hybrid search:** Exact card match + vector search for card memories
 - **Query classification:** FACTS vs LORE vs UNCERTAIN (conversational detection)
 - **UNCERTAIN handling:** Sends clarification prompt with examples, routes casual chat to AI
-- **Conditional MMR:** Diversity for LORE, relevance-only for FACTS
+- **Conditional MMR:** Diversity for LORE, relevance-only for FACTS ✅ **FIXED** (Nov 2025 - was incorrectly applying MMR to all queries)
 - **Card memory emphasis:** Dedicated cluster (12→5 passages), no summarization (preserves artist words)
 - **LRU cache:** Don't repeat recently shown content
 - **Source priority:** Memories (4.0x) > Wiki (2.0x) > Telegram (0.5x)
@@ -452,13 +452,15 @@
 
 ---
 
-## 5. Memory Capture Flow ("remember this")
+## 5. Memory Capture Flow ("/fr" or "remember this")
 
-**Command:** `CARDNAME remember this: FACT` or reply to bot with "remember this"
+**Command:** `/fr CARDNAME <lore>`, `/fr <general lore>`, `CARDNAME remember this: FACT`, or reply to bot with "remember this"
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                        USER INPUT                               │
+│ "/fr FREEDOMKEK it was inspired by Free Kekistan"               │
+│              OR                                                 │
 │ "FREEDOMKEK remember this: it was inspired by Free Kekistan"    │
 │              OR                                                 │
 │ [Reply to bot message] "remember this"                          │
@@ -471,6 +473,7 @@
                 │  MESSAGE_RECEIVED     │
                 │                       │
                 │  Check:               │
+                │  • /fr command OR     │
                 │  • Has CAPITALIZED    │
                 │    word OR            │
                 │  • Is reply to bot OR │
@@ -608,7 +611,7 @@
                 │  • /fc (cost - admin)         │
                 │  • /odds (lottery)            │
                 │  • /start, /help              │
-                │  • "remember this"            │
+                │  • "/fr" or "remember this"   │
                 └───────────┬───────────────────┘
                             │
                     ┌───────▼────────┐
@@ -716,7 +719,7 @@
 | **Visual Analysis** | `/fv CARD` | GPT-4o Vision, OCR | Memetic analysis breakdown | ~$0.005 |
 | **Fake Appeal Test** | `/ft` + image | CLIP embeddings, GPT-4o | Appeal score + duplicate check | ~$0.007 |
 | **Lore Retrieval** | `/fl TOPIC` | RAG (vector search), clustering, LLM | Historical recounting | ~$0.01 |
-| **Memory Capture** | "remember this" | Knowledge DB storage | Confirmation message | Free |
+| **Memory Capture** | "/fr" or "remember this" | Knowledge DB storage | Confirmation message | Free |
 | **Conversation** | Any text | ElizaOS + GPT-4 | Natural AI response | ~$0.01 |
 
 ---

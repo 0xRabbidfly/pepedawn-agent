@@ -1,5 +1,5 @@
 import { type Plugin, logger } from '@elizaos/core';
-import { fakeRaresCardAction, educateNewcomerAction, startCommand, helpCommand, loreCommand, oddsCommand, costCommand, fakeVisualCommand, fakeTestCommand } from '../actions';
+import { fakeRaresCardAction, educateNewcomerAction, startCommand, helpCommand, loreCommand, fakeRememberCommand, oddsCommand, costCommand, fakeVisualCommand, fakeTestCommand } from '../actions';
 import { fakeMarketAction } from '../actions/fakeMarketAction';
 import { fakeRaresContextProvider } from '../providers';
 import { loreDetectorEvaluator } from '../evaluators';
@@ -124,6 +124,7 @@ export const fakeRaresPlugin: Plugin = {
     fakeVisualCommand,
     fakeTestCommand,
     loreCommand,
+    fakeRememberCommand,
     oddsCommand,
     costCommand,
   ],
@@ -172,6 +173,7 @@ export const fakeRaresPlugin: Plugin = {
           const isFvCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fv(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text);
           const isFtCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/ft(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text);
           const isLoreCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fl(?:@[A-Za-z0-9_]+)?/i.test(text);
+          const isFrCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fr(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text);
           const isFmCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fm(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text);
           const isDawnCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/dawn(?:@[A-Za-z0-9_]+)?$/i.test(text);
           const isHelpCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/help(?:@[A-Za-z0-9_]+)?$/i.test(text);
@@ -185,7 +187,7 @@ export const fakeRaresPlugin: Plugin = {
           // Log routing factors
           logger.info(`   Triggers: reply=${!!isReplyToBot} | CAPS=${hasCapitalizedWord} | @mention=${hasBotMention}`);
 
-          logger.debug(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${isFCommand} isFv=${isFvCommand} isFt=${isFtCommand} isLore=${isLoreCommand} isFm=${isFmCommand} isDawn=${isDawnCommand} isHelp=${isHelpCommand} isStart=${isStartCommand} isCost=${isCostCommand} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
+          logger.debug(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${isFCommand} isFv=${isFvCommand} isFt=${isFtCommand} isLore=${isLoreCommand} isFr=${isFrCommand} isFm=${isFmCommand} isDawn=${isDawnCommand} isHelp=${isHelpCommand} isStart=${isStartCommand} isCost=${isCostCommand} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
           
           // === MEMORY CAPTURE: "remember" or "remember this" ===
           if ((hasCapitalizedWord || isReplyToBot || hasBotMention) && hasRememberCommand) {
@@ -314,6 +316,26 @@ export const fakeRaresPlugin: Plugin = {
                   message.metadata = message.metadata || {};
                   (message.metadata as any).__handledByCustom = true;
                 } catch {}
+                return; // Done
+              }
+            }
+          }
+          
+          // === CUSTOM ACTION: /fr COMMANDS ===
+          if (isFrCommand) {
+            logger.debug('[FakeRaresPlugin] /fr detected → applying strong suppression and invoking action');
+            const actionCallback = typeof params.callback === 'function' ? params.callback : null;
+            params.callback = async () => [];
+
+            if (fakeRememberCommand.validate && fakeRememberCommand.handler) {
+              const isValid = await fakeRememberCommand.validate(runtime, message);
+              if (isValid) {
+                await fakeRememberCommand.handler(runtime, message, params.state, {}, actionCallback ?? undefined);
+                try {
+                  message.metadata = message.metadata || {};
+                  (message.metadata as any).__handledByCustom = true;
+                } catch {}
+                logger.debug('[FakeRaresPlugin] /fr action completed');
                 return; // Done
               }
             }

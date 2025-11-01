@@ -8,10 +8,15 @@
  * - Lifecycle management (init/stop)
  * - Discoverability via runtime.getService()
  * - Better composability with other services
+ * 
+ * CRITICAL: Conditional MMR application
+ * - FACTS mode: Skip MMR, use pure relevance (preserves high-priority memories)
+ * - LORE mode: Apply MMR for diverse storytelling
+ * Fixed Nov 2025 - was incorrectly applying MMR to all queries
  */
 
 import { Service, type IAgentRuntime, logger } from '@elizaos/core';
-import { searchKnowledgeWithExpansion, selectDiversePassages, expandQuery } from '../utils/loreRetrieval';
+import { searchKnowledgeWithExpansion, selectDiversePassages, expandQuery, type RetrievedPassage } from '../utils/loreRetrieval';
 import { clusterAndSummarize, formatSourcesLine, formatCompactCitation } from '../utils/loreSummarize';
 import { generatePersonaStory } from '../utils/storyComposer';
 import { filterOutRecentlyUsed, markIdAsRecentlyUsed } from '../utils/lru';
@@ -153,8 +158,11 @@ export class KnowledgeOrchestratorService extends Service {
       };
     }
 
-    logger.info(`STEP 3/5: Selecting diverse passages (MMR)`);
-    // STEP 3: Apply MMR for diversity and filter recently used
+    // STEP 3: Pre-classify to determine if we need MMR
+    const queryType = options?.mode || classifyQuery(query);
+    logger.info(`STEP 3/5: Selecting passages (${queryType === 'FACTS' ? 'by relevance' : 'MMR diversity'})`);
+    
+    // Filter recently used
     const passageIds = passages.map(p => p.id);
     const filteredIds = filterOutRecentlyUsed(roomId, passageIds);
     
@@ -172,22 +180,42 @@ export class KnowledgeOrchestratorService extends Service {
     const hasCardMemory = topPassage?.sourceType === 'memory' && 
                           topPassage?.sourceRef?.startsWith('card:');
     
-    // Reduce passages when card memory present (less dilution in clustering)
+    // Determine target passage count
     const targetPassageCount = hasCardMemory ? 5 : LORE_CONFIG.CLUSTER_TARGET_MAX * 2;
     
-    const diversePassages = selectDiversePassages(
-      topPassages,
-      Math.min(targetPassageCount, topK)
-    );
+    // CRITICAL: Only apply MMR for LORE mode (FACTS needs pure relevance)
+    let diversePassages: RetrievedPassage[];
+    if (queryType === 'FACTS') {
+      // FACTS mode: Use top passages by relevance (no diversity)
+      diversePassages = topPassages.slice(0, Math.min(targetPassageCount, topK));
+      logger.debug(`📋 FACTS mode: Skipping MMR, using top ${diversePassages.length} by relevance`);
+    } else {
+      // LORE mode: Apply MMR for diversity
+      diversePassages = selectDiversePassages(
+        topPassages,
+        Math.min(targetPassageCount, topK)
+      );
+      logger.debug(`📖 LORE mode: Applied MMR for diversity`);
+    }
     
-    logger.debug(`🎯 Selected ${diversePassages.length} diverse passages via MMR${hasCardMemory ? ' (reduced for card memory emphasis)' : ''}`);
-    logger.info(`STEP 3/5: Selected ${diversePassages.length} diverse passages`);
+    // Debug: Check source breakdown after selection
+    const postSelectionBreakdown = diversePassages.reduce((acc, p) => {
+      const type = p.sourceType === 'telegram' ? 'tg' : 
+                   p.sourceType === 'wiki' ? 'wiki' :
+                   p.sourceType === 'memory' ? 'mem' : 'other';
+      acc[type] = (acc[type] || 0) + 1;
+      return acc;
+    }, {} as Record<string, number>);
+    
+    const postSelectionStr = Object.entries(postSelectionBreakdown)
+      .map(([type, count]) => `${count} ${type}`)
+      .join(', ');
+    
+    logger.info(`STEP 3/5: Selected ${diversePassages.length} passages (${postSelectionStr})`);
 
     diversePassages.forEach(p => markIdAsRecentlyUsed(roomId, p.id));
 
-    logger.info(`STEP 4/5: Determining mode and composing summary`);
-    // STEP 4: Classify or use provided mode
-    const queryType = options?.mode || classifyQuery(query);
+    logger.info(`STEP 4/5: Composing response for ${queryType} mode`);
     logger.info(`STEP 4/5: Mode = ${queryType} ${queryType === 'FACTS' ? '📋' : '📖'}`);
     
     let story: string;
@@ -198,7 +226,13 @@ export class KnowledgeOrchestratorService extends Service {
       logger.debug('📋 FACTS mode: Using top wiki and memory passages directly');
       
       const factsPassages = diversePassages.filter(p => p.sourceType === 'wiki' || p.sourceType === 'memory').slice(0, 5);
-      logger.info(`   → FACTS: Using ${factsPassages.length} passages (no clustering)`);
+      const factsBreakdown = factsPassages.reduce((acc, p) => {
+        const type = p.sourceType === 'memory' ? 'mem' : 'wiki';
+        acc[type] = (acc[type] || 0) + 1;
+        return acc;
+      }, {} as Record<string, number>);
+      const factsStr = Object.entries(factsBreakdown).map(([t, c]) => `${c} ${t}`).join(', ');
+      logger.info(`   → FACTS: Using ${factsPassages.length} passages (${factsStr})`);
       
       if (factsPassages.length === 0) {
         const topPassages = diversePassages.slice(0, 5);

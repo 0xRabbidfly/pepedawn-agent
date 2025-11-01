@@ -9,7 +9,9 @@ import { LORE_CONFIG } from '../utils/loreConfig';
  * Pipeline:
  * 1. Parse query and expand with synonyms
  * 2. Retrieve passages from vector KB (with fallback expansion)
- * 3. Apply MMR for diversity
+ * 3. Conditional selection:
+ *    - FACTS: Top-k by relevance (preserves memories)
+ *    - LORE: Apply MMR for diversity
  * 4. Cluster and summarize with citations
  * 5. Generate historian-style lore recounting (80-120 words)
  * 6. Format with compact sources line
