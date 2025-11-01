@@ -5,6 +5,30 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+- **`/fr` Command** - Slash command alternative for memory capture
+  - `/fr CARDNAME <lore>` - Store card-specific memories
+  - `/fr <general lore>` - Store general community memories
+  - Complements existing "remember this" natural language flow
+  - Uses same MemoryStorageService backend for consistency
+  - 7 new tests in `fakeRememberCommand.test.ts`
+
+### Changed
+- **Pre-commit test suite** - Now runs ALL 11 custom test files (197+ tests) instead of subset
+- **Test documentation** - Updated TESTS.md to reflect complete coverage
+
+### Fixed
+- **CRITICAL: FACTS mode MMR bug** - FACTS queries now skip MMR diversity selection (use pure relevance ranking)
+  - Bug: MMR was applied to ALL queries, dropping high-relevance memories for diversity
+  - Fix: FACTS mode now preserves top passages by relevance (memories with 4.0x boost stay on top)
+  - Impact: Fixes "PEPEDAWN's poem is not defined" responses when memories exist but were filtered by MMR
+- MemoryStorageService logger import (was missing from '@elizaos/core')
+- memoryStorage.test.ts imports (utility functions extracted to utils/memoryStorage.ts)
+- test-all.sh now accurately runs all custom tests (was misleadingly named)
+- Removed false-positive health check warnings (tracked console.log but bot uses logger; PM2 handles process monitoring)
+
 ## [3.0.0] - 2025-10-31
 
 ### Added

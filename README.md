@@ -127,19 +127,26 @@ When you upload an image with `/ft`, the bot automatically checks if it matches 
 **Commands:**
 - **`/fl TOPIC`** - PEPEDAWN recounts history from Telegram archives + pepe.wtf wiki + community memories
 - **`/fl`** - Random lore from the community vault
-- **`remember this: FACT`** - Contribute a memory to the community knowledge base (NEW!)
+- **`/fr CARDNAME <lore>`** - Store card-specific memory (NEW!)
+- **`/fr <general lore>`** - Store general memory (NEW!)
+- **`remember this: FACT`** - Contribute a memory to the community knowledge base
 
 **How it works:**
 1. Searches local vector database (Telegram messages + wiki content + user memories)
-2. Clusters relevant passages for diversity (MMR algorithm)
+2. Applies conditional selection:
+   - **FACTS questions:** Top passages by relevance (preserves high-priority memories)
+   - **LORE queries:** MMR diversity algorithm (varied storytelling)
 3. PEPEDAWN recounts as historian/eyewitness (80-120 words)
 4. Includes compact source citations (e.g., `tg:1234, wiki:purple-era, mem:abc123`)
 5. Speaks as "I remember when..." not creative storytelling
 
-**Memory Capture** (NEW):
-- Say "remember this: [fact]" in messages with card names (CAPITALS) or when replying to the bot
+**Memory Capture**:
+- Use `/fr CARDNAME <lore>` to store card-specific memories
+- Use `/fr <general lore>` to store general memories
+- Or say "remember this: [fact]" in messages with card names (CAPITALS) or when replying to the bot
+- Example: `/fr FREEDOMKEK it was inspired by the Free Kekistan movement`
 - Example: `FREEDOMKEK remember this: it was inspired by the Free Kekistan movement`
-- Bot stores it and confirms: "storing the memory... to access this in the future ensure you use the /fl fake lore method"
+- Bot stores it and confirms with a success message
 - Memories are searchable globally across all chats
 - Citations include user attribution (e.g., `mem:abc123 2025-10-27 by:YourName`)
 
@@ -1112,8 +1119,9 @@ const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/YOUR_ORG/YOUR_REPO/...
 2. **Vector Search** - Retrieves 24 relevant passages from knowledge base
 3. **Query Classification** - Determines if FACTS (rules, specs), LORE (stories, history), or UNCERTAIN (ambiguous/casual)
 4. **Selection Strategy:**
-   - **FACTS mode:** Top-k by relevance (no diversity filtering - want best facts)
+   - **FACTS mode:** Top-k by relevance (no diversity filtering - want best facts) ✅
    - **LORE mode:** MMR diversity selection (avoid repetition in storytelling)
+   - **Note:** Fixed Nov 2025 - FACTS mode now correctly preserves memory ranking
 5. **Processing:**
    - **FACTS:** Direct passages to LLM (no clustering)
    - **LORE:** Clustering and summarization
