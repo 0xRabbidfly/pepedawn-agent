@@ -188,8 +188,9 @@ describe('Bootstrap Suppression Logic', () => {
 
       await messageHandler!(params);
 
-      // question=+35 (established user, no newcomer boost) = 35 > 31 threshold
-      expect((message.metadata as any).__handledByCustom).toBeUndefined();
+      // question=+30 (established user, no newcomer boost) = 30 >= 25 threshold
+      // NOW HANDLED by custom (changed from Bootstrap with new threshold)
+      expect((message.metadata as any).__handledByCustom).toBe(true);
     });
 
     it('should suppress short questions', async () => {
@@ -530,9 +531,9 @@ describe('Bootstrap Suppression Logic', () => {
 
       await messageHandler!(params);
 
-      // NEW BEHAVIOR: Questions (including "why") get question=+35 → score=35 >= 30 threshold
-      // Allowed to Bootstrap for natural conversation
-      expect((message.metadata as any).__handledByCustom).toBeUndefined();
+      // NEW BEHAVIOR: Questions (including "why") get question=+30 → score=30 >= 25 threshold
+      // NOW HANDLED by custom (threshold lowered from 31 to 25)
+      expect((message.metadata as any).__handledByCustom).toBe(true);
     });
 
     it('should NOT respond to single word "what?"', async () => {

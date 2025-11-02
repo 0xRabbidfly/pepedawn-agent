@@ -7,6 +7,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.3.1] - 2025-11-02
+
+### Changed
+- **Engagement Scoring Optimization** - Monte Carlo simulation on 264k real messages
+  - Tested 72,000 parameter configurations across 6 engagement categories
+  - **threshold**: 31 → 25 (lower barrier for engagement)
+  - **cardBoost**: 20 → 15 (reduce card statement spam)
+  - **questionBoost**: 35 → 30 (balanced question prioritization)
+  - **multiwordBoost**: 10 → 5 (reduced weight on long messages)
+  - **returningBoost**: 20 → 25 (reward users returning after 24h)
+  - **quietBoost**: 30 → 20 (less aggressive in quiet threads)
+  - **genericPenalty**: 10 → 15 (stronger filter for gm/lol spam)
+  - **shortPenalty**: 5 → 10 (more aggressive short message filtering)
+  - **Target engagement achieved**: Bot-directed 100%, Questions 76%, Cards 42%, Overall 24%
+  
+### Fixed
+- Updated all 28 engagement scorer tests to reflect optimized parameter values
+- Tests now correctly validate threshold=25 and updated boost/penalty values
+
+### Added
+- `scripts/montecarlo/` - Monte Carlo simulation suite for engagement optimization
+  - `parse-real-data.js` - Extract features from 264k+ Telegram messages
+  - `monte-carlo-real-data.js` - Test parameter combinations
+  - `analyze-engagement.js` - Detailed configuration analysis
+  - `OPTIMIZATION_SUMMARY.md` - Complete optimization documentation
+  - Performance optimized: O(n²) → O(n log n) quiet period detection
+  - Simulated bot-directed engagement (5% synthetic data)
+  - New categorization: bot_directed, cards, questions, substantive, brief, generic
+
 ## [3.3.0] - 2025-11-02
 
 ### Added

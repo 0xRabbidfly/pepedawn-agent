@@ -22,13 +22,13 @@ export interface EngagementParams {
 // Track user activity
 const userLastSeen: { [userId: string]: number } = {};
 const HOURS_FOR_RETURNING_BOOST = 24;
-const RETURNING_USER_BOOST = 20;
+const RETURNING_USER_BOOST = 25;  // Optimized: 20 → 25 (Monte Carlo on 264k messages)
 const NEWCOMER_BOOST = 100;  // First-time users get high priority
 
 // Track room activity
 const roomLastMessage: { [roomId: string]: number } = {};
 const MINUTES_FOR_QUIET_BOOST = 5;
-const QUIET_THREAD_BOOST = 30;  // Optimized via Monte Carlo simulation
+const QUIET_THREAD_BOOST = 20;  // Optimized: 30 → 20 (Monte Carlo on 264k messages)
 
 /**
  * Generic reaction patterns that typically don't need bot responses
@@ -137,34 +137,34 @@ export function calculateEngagementScore(params: EngagementParams): number {
   
   // Fake Rare card name mentioned → Discussing specific cards
   if (params.isFakeRareCard) {
-    score += 20;  // Optimized: 40 → 20 (reduce card statement spam)
-    scoreBreakdown.push('card=+20');
+    score += 15;  // Optimized: 20 → 15 (Monte Carlo V2: 72k configs, 264k messages)
+    scoreBreakdown.push('card=+15');
   }
   
   // Question asked → Seeking information
   if (isQuestion(params.text)) {
-    score += 35;  // Optimized: 30 → 35 (prioritize questions)
-    scoreBreakdown.push('question=+35');
+    score += 30;  // Optimized: 35 → 30 (Monte Carlo V2: 72k configs, 264k messages)
+    scoreBreakdown.push('question=+30');
   }
   
   // Multi-word message → More substantive than reactions
   if (wordCount > 7) {
-    score += 10;  // Optimized: 20 → 10 (reduce weight)
-    scoreBreakdown.push(`multiword(${wordCount})=+10`);
+    score += 5;  // Optimized: 10 → 5 (Monte Carlo V2: 72k configs, 264k messages)
+    scoreBreakdown.push(`multiword(${wordCount})=+5`);
   }
   
   // === LOW PRIORITY (penalties) ===
   
   // Short messages → Often reactions/noise
   if (wordCount < 5 && !params.hasBotMention && !params.isReplyToBot) {
-    score -= 5;  // Optimized: 10 → 5 (less harsh)
-    scoreBreakdown.push(`short(${wordCount})=-5`);
+    score -= 10;  // Optimized: 5 → 10 (Monte Carlo V2: 72k configs, 264k messages)
+    scoreBreakdown.push(`short(${wordCount})=-10`);
   }
   
   // Generic reactions → Low value
   if (isGenericReaction(params.text)) {
-    score -= 10;  // Optimized: 15 → 10 (less harsh)
-    scoreBreakdown.push('generic=-10');
+    score -= 15;  // Optimized: 10 → 15 (Monte Carlo V2: 72k configs, 264k messages)
+    scoreBreakdown.push('generic=-15');
   }
   
   // Log engagement calculation with visual marker
@@ -176,10 +176,13 @@ export function calculateEngagementScore(params: EngagementParams): number {
 
 /**
  * Engagement threshold - minimum score required to respond
- * Optimized via Monte Carlo simulation (918,750 configurations tested)
- * Configurable via ENGAGEMENT_THRESHOLD env var (default: 31)
+ * Optimized via Monte Carlo V2 simulation:
+ * - 72,000 configurations tested
+ * - 264,323 real messages analyzed
+ * - Target: 10-20% overall engagement
+ * Configurable via ENGAGEMENT_THRESHOLD env var (default: 25)
  */
-const ENGAGEMENT_THRESHOLD = parseInt(process.env.ENGAGEMENT_THRESHOLD || '31', 10);
+const ENGAGEMENT_THRESHOLD = parseInt(process.env.ENGAGEMENT_THRESHOLD || '25', 10);
 
 /**
  * Check if message meets engagement threshold

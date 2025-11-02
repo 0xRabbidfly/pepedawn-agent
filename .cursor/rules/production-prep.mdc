@@ -40,7 +40,15 @@ Example: `@production-prep minor`
   - Test count summaries
   - Coverage of new features
 
-### 4. Documentation Updates
+### 4. Environment Configuration Review
+**MANDATORY:** Check if `.env.example` needs updates:
+- New environment variables added in code
+- Changed default values for existing variables
+- Deprecated/removed variables that should be documented
+- Updated descriptions or usage notes
+- Configuration examples for new features
+
+### 5. Documentation Updates
 Review and update if necessary:
 - `README.md` (root) - Feature list, usage examples
 - `CONTRIBUTING.md` - Development workflow changes
@@ -49,7 +57,7 @@ Review and update if necessary:
 - `telegram_docs/PEPEDAWN_SPEC_REFERENCE.md` - Technical specifications
 - `pepe-tg/README.md` - Project-specific documentation
 
-### 5. CHANGELOG.md Update
+### 6. CHANGELOG.md Update
 - Add new entry under `[Unreleased]` or create version section
 - Document:
   - Added features
@@ -58,7 +66,7 @@ Review and update if necessary:
   - Technical details
 - Follow Keep a Changelog format
 
-### 6. Version Bump & Tagging
+### 7. Version Bump & Tagging
 - Update `package.json` version based on type (major/minor/patch)
 - Follow semantic versioning:
   - **MAJOR**: Breaking changes
@@ -66,7 +74,7 @@ Review and update if necessary:
   - **PATCH**: Bug fixes (backward compatible)
 - Prepare git tag command (DO NOT EXECUTE)
 
-### 7. Git Command Preparation
+### 8. Git Command Preparation
 - Generate commands for user to execute manually:
   ```bash
   git add .

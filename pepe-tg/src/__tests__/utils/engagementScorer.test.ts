@@ -62,13 +62,13 @@ describe('engagementScorer', () => {
           roomId: 'room1',
         });
         
-        // newcomer=+100, short=-5 = 95 ("hello" not detected as generic?)
-        expect(score).toBe(95);
+        // newcomer=+100, short=-10 = 90 ("hello" not detected as generic)
+        expect(score).toBe(90);
       });
     });
 
     describe('Medium Priority (contextual)', () => {
-      it('should give +20 for Fake Rare card', () => {
+      it('should give +15 for Fake Rare card', () => {
         establishUser('user1', 'room1');
         
         const score = calculateEngagementScore({
@@ -80,11 +80,11 @@ describe('engagementScorer', () => {
           roomId: 'room1',
         });
         
-        // card=+20, short=-5 = 15
-        expect(score).toBe(15);
+        // card=+15, short=-10 = 5
+        expect(score).toBe(5);
       });
 
-      it('should give +35 for question', () => {
+      it('should give +30 for question', () => {
         establishUser('user1', 'room1');
         
         const score = calculateEngagementScore({
@@ -96,15 +96,15 @@ describe('engagementScorer', () => {
           roomId: 'room1',
         });
         
-        // question=+35, short=-5 = 30
-        expect(score).toBe(30);
+        // question=+30, short=-10 = 20
+        expect(score).toBe(20);
       });
 
       it('should detect imperative requests as questions', () => {
         establishUser('user1', 'room1');
         
         const score = calculateEngagementScore({
-          text: 'tell me about PEPEDAWN',
+          text: 'tell me about the PEPEDAWN card',  // 6 words - no short penalty
           hasBotMention: false,
           isReplyToBot: false,
           isFakeRareCard: true,
@@ -112,8 +112,8 @@ describe('engagementScorer', () => {
           roomId: 'room1',
         });
         
-        // card=+20, question=+35, short=-5 = 50
-        expect(score).toBe(50);
+        // card=+15, question=+30 = 45
+        expect(score).toBe(45);
       });
 
       it('should detect indirect questions', () => {
@@ -128,11 +128,11 @@ describe('engagementScorer', () => {
           roomId: 'room1',
         });
         
-        // question=+35 = 35
-        expect(score).toBe(35);
+        // question=+30 = 30
+        expect(score).toBe(30);
       });
 
-      it('should give +10 for multi-word messages (>7 words)', () => {
+      it('should give +5 for multi-word messages (>7 words)', () => {
         establishUser('user1', 'room1');
         
         const score = calculateEngagementScore({
@@ -144,8 +144,8 @@ describe('engagementScorer', () => {
           roomId: 'room1',
         });
         
-        // multiword=+10 = 10
-        expect(score).toBe(10);
+        // multiword=+5 = 5
+        expect(score).toBe(5);
       });
     });
 
@@ -160,11 +160,11 @@ describe('engagementScorer', () => {
           roomId: 'room1',
         });
         
-        // Should get newcomer=+100, short=-5 = 95
-        expect(score).toBe(95);
+        // Should get newcomer=+100, short=-10 = 90
+        expect(score).toBe(90);
       });
 
-      it('should give +20 for returning users (after 24h)', async () => {
+      it('should give +25 for returning users (after 24h)', async () => {
         // Simulate user activity tracking
         const userId = 'returning-user';
         
@@ -192,11 +192,11 @@ describe('engagementScorer', () => {
         });
         
         // Should NOT get returning boost (only 1ms passed, not 24h)
-        // Just short=-5, generic=-10 = -15
+        // Just short=-10, generic=-15 = -25
         expect(score2).toBeLessThan(0);
       });
 
-      it('should give +30 for quiet threads (after 5min)', async () => {
+      it('should give +20 for quiet threads (after 5min)', async () => {
         const roomId = 'quiet-room';
         
         // First message establishes room activity
@@ -225,7 +225,7 @@ describe('engagementScorer', () => {
     });
 
     describe('Penalties', () => {
-      it('should apply -5 for short messages (<5 words)', () => {
+      it('should apply -10 for short messages (<5 words)', () => {
         establishUser('user1', 'room1');
         
         const score = calculateEngagementScore({
@@ -237,11 +237,11 @@ describe('engagementScorer', () => {
           roomId: 'room1',
         });
         
-        // short=-5 = -5 ("ok" not in generic list)
-        expect(score).toBe(-5);
+        // short=-10 = -10 ("ok" not in generic list)
+        expect(score).toBe(-10);
       });
 
-      it('should apply -10 for generic reactions', () => {
+      it('should apply -15 for generic reactions', () => {
         establishUser('user1', 'room1');
         
         const score = calculateEngagementScore({
@@ -253,8 +253,8 @@ describe('engagementScorer', () => {
           roomId: 'room1',
         });
         
-        // short=-5, generic=-10 = -15
-        expect(score).toBe(-15);
+        // short=-10, generic=-15 = -25
+        expect(score).toBe(-25);
       });
 
       it('should NOT apply short penalty for @mentions', () => {
@@ -301,8 +301,8 @@ describe('engagementScorer', () => {
           roomId: 'room1',
         });
         
-        // short=-5, generic=-10 = -15
-        expect(score).toBe(-15);
+        // short=-10, generic=-15 = -25
+        expect(score).toBe(-25);
       });
     });
 
@@ -311,7 +311,7 @@ describe('engagementScorer', () => {
         establishUser('user1', 'room1');
         
         const score = calculateEngagementScore({
-          text: 'what is PEPEDAWN?',
+          text: 'what is PEPEDAWN card about exactly',  // 6 words - no short penalty
           hasBotMention: false,
           isReplyToBot: false,
           isFakeRareCard: true,
@@ -319,8 +319,8 @@ describe('engagementScorer', () => {
           roomId: 'room1',
         });
         
-        // card=+20, question=+35, short=-5 = 50
-        expect(score).toBe(50);
+        // card=+15, question=+30 = 45
+        expect(score).toBe(45);
       });
 
       it('should calculate active user with no boosts', () => {
@@ -336,8 +336,8 @@ describe('engagementScorer', () => {
           roomId: 'room1',
         });
         
-        // No context boosts, short=-5, generic=-10 = -15
-        expect(score2).toBe(-15);
+        // No context boosts, short=-10, generic=-15 = -25
+        expect(score2).toBe(-25);
       });
     });
   });
@@ -391,8 +391,8 @@ describe('engagementScorer', () => {
         roomId: 'room1',
       });
       
-      // Should get newcomer boost: 100 - 5 (short) = 95
-      expect(score).toBe(95);
+      // Should get newcomer boost: 100 - 10 (short) = 90
+      expect(score).toBe(90);
     });
   });
 
@@ -411,7 +411,7 @@ describe('engagementScorer', () => {
         roomId: 'room1',
       });
       
-      // newcomer=+100, short=-5, generic=-10 = 85 > 31
+      // newcomer=+100, short=-10, generic=-15 = 75 > 25
       expect(shouldRespond(score)).toBe(true);
     });
 
@@ -436,7 +436,7 @@ describe('engagementScorer', () => {
         roomId: 'room1',
       });
       
-      // short=-5, generic=-10 = -15 < 31
+      // short=-10, generic=-15 = -25 < 25
       expect(shouldRespond(score)).toBe(false);
     });
 
@@ -451,7 +451,7 @@ describe('engagementScorer', () => {
         roomId: 'room1',
       });
       
-      // newcomer=+100, card=+20, question=+35, short=-5 = 150 > 31
+      // newcomer=+100, card=+15, question=+30 = 145 > 25
       expect(shouldRespond(score)).toBe(true);
     });
 
@@ -466,11 +466,11 @@ describe('engagementScorer', () => {
         roomId: 'room1',
       });
       
-      // newcomer=+100, question=+35 = 135 > 31
+      // newcomer=+100, question=+30 = 130 > 25
       expect(shouldRespond(score)).toBe(true);
     });
 
-    it('should suppress vague single-word questions', () => {
+    it('should respond to vague single-word questions', () => {
       // Establish user first
       calculateEngagementScore({
         text: 'first',
@@ -490,7 +490,7 @@ describe('engagementScorer', () => {
         roomId: 'room1',
       });
       
-      // question=+35, short=-5 = 30 < 31
+      // question=+30, short=-10 = 20 < 25
       expect(shouldRespond(score)).toBe(false);
     });
 
@@ -514,7 +514,7 @@ describe('engagementScorer', () => {
         roomId: 'room1',
       });
       
-      // card=+20 = 20 < 31
+      // card=+15 = 15 < 25
       expect(shouldRespond(score)).toBe(false);
     });
   });

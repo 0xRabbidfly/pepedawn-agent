@@ -1,0 +1,1190 @@
+{
+  "metadata": {
+    "completedAt": "2025-11-02T19:33:14.001Z",
+    "totalIterations": 72000,
+    "elapsedSeconds": 683.1,
+    "messagesAnalyzed": 264323
+  },
+  "topConfigs": [
+    {
+      "params": {
+        "threshold": 25,
+        "returningBoost": 25,
+        "quietBoost": 20,
+        "cardBoost": 15,
+        "questionBoost": 30,
+        "multiwordBoost": 5,
+        "genericPenalty": 15,
+        "shortPenalty": 10
+      },
+      "engagement": {
+        "bot_directed": {
+          "total": 11215,
+          "responses": 11215,
+          "rate": 100
+        },
+        "cards": {
+          "total": 24887,
+          "responses": 10569,
+          "rate": 42.467955157311046
+        },
+        "questions": {
+          "total": 20975,
+          "responses": 15931,
+          "rate": 75.9523241954708
+        },
+        "substantive": {
+          "total": 82234,
+          "responses": 16769,
+          "rate": 20.391808740910086
+        },
+        "brief": {
+          "total": 109880,
+          "responses": 7657,
+          "rate": 6.968511103021478
+        },
+        "generic": {
+          "total": 15132,
+          "responses": 208,
+          "rate": 1.3745704467353952
+        },
+        "overall": {
+          "total": 264323,
+          "responses": 62349,
+          "rate": 23.5881856667789
+        }
+      },
+      "fitnessScore": -25.11729966745231,
+      "deviations": {
+        "bot_directed": 0,
+        "questions": 0,
+        "cards": 0,
+        "substantive": 0,
+        "brief": 0,
+        "generic": 0,
+        "overall": 3.5881856667789016
+      }
+    },
+    {
+      "params": {
+        "threshold": 25,
+        "returningBoost": 25,
+        "quietBoost": 20,
+        "cardBoost": 15,
+        "questionBoost": 30,
+        "multiwordBoost": 5,
+        "genericPenalty": 20,
+        "shortPenalty": 10
+      },
+      "engagement": {
+        "bot_directed": {
+          "total": 11215,
+          "responses": 11215,
+          "rate": 100
+        },
+        "cards": {
+          "total": 24887,
+          "responses": 10569,
+          "rate": 42.467955157311046
+        },
+        "questions": {
+          "total": 20975,
+          "responses": 15931,
+          "rate": 75.9523241954708
+        },
+        "substantive": {
+          "total": 82234,
+          "responses": 16769,
+          "rate": 20.391808740910086
+        },
+        "brief": {
+          "total": 109880,
+          "responses": 7657,
+          "rate": 6.968511103021478
+        },
+        "generic": {
+          "total": 15132,
+          "responses": 208,
+          "rate": 1.3745704467353952
+        },
+        "overall": {
+          "total": 264323,
+          "responses": 62349,
+          "rate": 23.5881856667789
+        }
+      },
+      "fitnessScore": -25.11729966745231,
+      "deviations": {
+        "bot_directed": 0,
+        "questions": 0,
+        "cards": 0,
+        "substantive": 0,
+        "brief": 0,
+        "generic": 0,
+        "overall": 3.5881856667789016
+      }
+    },
+    {
+      "params": {
+        "threshold": 25,
+        "returningBoost": 30,
+        "quietBoost": 20,
+        "cardBoost": 15,
+        "questionBoost": 30,
+        "multiwordBoost": 5,
+        "genericPenalty": 20,
+        "shortPenalty": 10
+      },
+      "engagement": {
+        "bot_directed": {
+          "total": 11215,
+          "responses": 11215,
+          "rate": 100
+        },
+        "cards": {
+          "total": 24887,
+          "responses": 10569,
+          "rate": 42.467955157311046
+        },
+        "questions": {
+          "total": 20975,
+          "responses": 15931,
+          "rate": 75.9523241954708
+        },
+        "substantive": {
+          "total": 82234,
+          "responses": 16769,
+          "rate": 20.391808740910086
+        },
+        "brief": {
+          "total": 109880,
+          "responses": 7657,
+          "rate": 6.968511103021478
+        },
+        "generic": {
+          "total": 15132,
+          "responses": 208,
+          "rate": 1.3745704467353952
+        },
+        "overall": {
+          "total": 264323,
+          "responses": 62349,
+          "rate": 23.5881856667789
+        }
+      },
+      "fitnessScore": -25.11729966745231,
+      "deviations": {
+        "bot_directed": 0,
+        "questions": 0,
+        "cards": 0,
+        "substantive": 0,
+        "brief": 0,
+        "generic": 0,
+        "overall": 3.5881856667789016
+      }
+    },
+    {
+      "params": {
+        "threshold": 30,
+        "returningBoost": 30,
+        "quietBoost": 20,
+        "cardBoost": 15,
+        "questionBoost": 30,
+        "multiwordBoost": 10,
+        "genericPenalty": 20,
+        "shortPenalty": 5
+      },
+      "engagement": {
+        "bot_directed": {
+          "total": 11215,
+          "responses": 11215,
+          "rate": 100
+        },
+        "cards": {
+          "total": 24887,
+          "responses": 10569,
+          "rate": 42.467955157311046
+        },
+        "questions": {
+          "total": 20975,
+          "responses": 15931,
+          "rate": 75.9523241954708
+        },
+        "substantive": {
+          "total": 82234,
+          "responses": 16769,
+          "rate": 20.391808740910086
+        },
+        "brief": {
+          "total": 109880,
+          "responses": 7657,
+          "rate": 6.968511103021478
+        },
+        "generic": {
+          "total": 15132,
+          "responses": 208,
+          "rate": 1.3745704467353952
+        },
+        "overall": {
+          "total": 264323,
+          "responses": 62349,
+          "rate": 23.5881856667789
+        }
+      },
+      "fitnessScore": -25.11729966745231,
+      "deviations": {
+        "bot_directed": 0,
+        "questions": 0,
+        "cards": 0,
+        "substantive": 0,
+        "brief": 0,
+        "generic": 0,
+        "overall": 3.5881856667789016
+      }
+    },
+    {
+      "params": {
+        "threshold": 30,
+        "returningBoost": 30,
+        "quietBoost": 25,
+        "cardBoost": 15,
+        "questionBoost": 30,
+        "multiwordBoost": 5,
+        "genericPenalty": 20,
+        "shortPenalty": 10
+      },
+      "engagement": {
+        "bot_directed": {
+          "total": 11215,
+          "responses": 11215,
+          "rate": 100
+        },
+        "cards": {
+          "total": 24887,
+          "responses": 10569,
+          "rate": 42.467955157311046
+        },
+        "questions": {
+          "total": 20975,
+          "responses": 15931,
+          "rate": 75.9523241954708
+        },
+        "substantive": {
+          "total": 82234,
+          "responses": 16769,
+          "rate": 20.391808740910086
+        },
+        "brief": {
+          "total": 109880,
+          "responses": 7657,
+          "rate": 6.968511103021478
+        },
+        "generic": {
+          "total": 15132,
+          "responses": 208,
+          "rate": 1.3745704467353952
+        },
+        "overall": {
+          "total": 264323,
+          "responses": 62349,
+          "rate": 23.5881856667789
+        }
+      },
+      "fitnessScore": -25.11729966745231,
+      "deviations": {
+        "bot_directed": 0,
+        "questions": 0,
+        "cards": 0,
+        "substantive": 0,
+        "brief": 0,
+        "generic": 0,
+        "overall": 3.5881856667789016
+      }
+    },
+    {
+      "params": {
+        "threshold": 30,
+        "returningBoost": 30,
+        "quietBoost": 25,
+        "cardBoost": 15,
+        "questionBoost": 30,
+        "multiwordBoost": 10,
+        "genericPenalty": 20,
+        "shortPenalty": 10
+      },
+      "engagement": {
+        "bot_directed": {
+          "total": 11215,
+          "responses": 11215,
+          "rate": 100
+        },
+        "cards": {
+          "total": 24887,
+          "responses": 10569,
+          "rate": 42.467955157311046
+        },
+        "questions": {
+          "total": 20975,
+          "responses": 15931,
+          "rate": 75.9523241954708
+        },
+        "substantive": {
+          "total": 82234,
+          "responses": 16769,
+          "rate": 20.391808740910086
+        },
+        "brief": {
+          "total": 109880,
+          "responses": 7657,
+          "rate": 6.968511103021478
+        },
+        "generic": {
+          "total": 15132,
+          "responses": 208,
+          "rate": 1.3745704467353952
+        },
+        "overall": {
+          "total": 264323,
+          "responses": 62349,
+          "rate": 23.5881856667789
+        }
+      },
+      "fitnessScore": -25.11729966745231,
+      "deviations": {
+        "bot_directed": 0,
+        "questions": 0,
+        "cards": 0,
+        "substantive": 0,
+        "brief": 0,
+        "generic": 0,
+        "overall": 3.5881856667789016
+      }
+    },
+    {
+      "params": {
+        "threshold": 30,
+        "returningBoost": 30,
+        "quietBoost": 25,
+        "cardBoost": 15,
+        "questionBoost": 35,
+        "multiwordBoost": 5,
+        "genericPenalty": 20,
+        "shortPenalty": 10
+      },
+      "engagement": {
+        "bot_directed": {
+          "total": 11215,
+          "responses": 11215,
+          "rate": 100
+        },
+        "cards": {
+          "total": 24887,
+          "responses": 10569,
+          "rate": 42.467955157311046
+        },
+        "questions": {
+          "total": 20975,
+          "responses": 15931,
+          "rate": 75.9523241954708
+        },
+        "substantive": {
+          "total": 82234,
+          "responses": 16769,
+          "rate": 20.391808740910086
+        },
+        "brief": {
+          "total": 109880,
+          "responses": 7657,
+          "rate": 6.968511103021478
+        },
+        "generic": {
+          "total": 15132,
+          "responses": 208,
+          "rate": 1.3745704467353952
+        },
+        "overall": {
+          "total": 264323,
+          "responses": 62349,
+          "rate": 23.5881856667789
+        }
+      },
+      "fitnessScore": -25.11729966745231,
+      "deviations": {
+        "bot_directed": 0,
+        "questions": 0,
+        "cards": 0,
+        "substantive": 0,
+        "brief": 0,
+        "generic": 0,
+        "overall": 3.5881856667789016
+      }
+    },
+    {
+      "params": {
+        "threshold": 30,
+        "returningBoost": 30,
+        "quietBoost": 25,
+        "cardBoost": 15,
+        "questionBoost": 35,
+        "multiwordBoost": 10,
+        "genericPenalty": 20,
+        "shortPenalty": 10
+      },
+      "engagement": {
+        "bot_directed": {
+          "total": 11215,
+          "responses": 11215,
+          "rate": 100
+        },
+        "cards": {
+          "total": 24887,
+          "responses": 10569,
+          "rate": 42.467955157311046
+        },
+        "questions": {
+          "total": 20975,
+          "responses": 15931,
+          "rate": 75.9523241954708
+        },
+        "substantive": {
+          "total": 82234,
+          "responses": 16769,
+          "rate": 20.391808740910086
+        },
+        "brief": {
+          "total": 109880,
+          "responses": 7657,
+          "rate": 6.968511103021478
+        },
+        "generic": {
+          "total": 15132,
+          "responses": 208,
+          "rate": 1.3745704467353952
+        },
+        "overall": {
+          "total": 264323,
+          "responses": 62349,
+          "rate": 23.5881856667789
+        }
+      },
+      "fitnessScore": -25.11729966745231,
+      "deviations": {
+        "bot_directed": 0,
+        "questions": 0,
+        "cards": 0,
+        "substantive": 0,
+        "brief": 0,
+        "generic": 0,
+        "overall": 3.5881856667789016
+      }
+    },
+    {
+      "params": {
+        "threshold": 30,
+        "returningBoost": 30,
+        "quietBoost": 25,
+        "cardBoost": 20,
+        "questionBoost": 30,
+        "multiwordBoost": 5,
+        "genericPenalty": 20,
+        "shortPenalty": 10
+      },
+      "engagement": {
+        "bot_directed": {
+          "total": 11215,
+          "responses": 11215,
+          "rate": 100
+        },
+        "cards": {
+          "total": 24887,
+          "responses": 10569,
+          "rate": 42.467955157311046
+        },
+        "questions": {
+          "total": 20975,
+          "responses": 15931,
+          "rate": 75.9523241954708
+        },
+        "substantive": {
+          "total": 82234,
+          "responses": 16769,
+          "rate": 20.391808740910086
+        },
+        "brief": {
+          "total": 109880,
+          "responses": 7657,
+          "rate": 6.968511103021478
+        },
+        "generic": {
+          "total": 15132,
+          "responses": 208,
+          "rate": 1.3745704467353952
+        },
+        "overall": {
+          "total": 264323,
+          "responses": 62349,
+          "rate": 23.5881856667789
+        }
+      },
+      "fitnessScore": -25.11729966745231,
+      "deviations": {
+        "bot_directed": 0,
+        "questions": 0,
+        "cards": 0,
+        "substantive": 0,
+        "brief": 0,
+        "generic": 0,
+        "overall": 3.5881856667789016
+      }
+    },
+    {
+      "params": {
+        "threshold": 30,
+        "returningBoost": 30,
+        "quietBoost": 25,
+        "cardBoost": 20,
+        "questionBoost": 35,
+        "multiwordBoost": 5,
+        "genericPenalty": 20,
+        "shortPenalty": 10
+      },
+      "engagement": {
+        "bot_directed": {
+          "total": 11215,
+          "responses": 11215,
+          "rate": 100
+        },
+        "cards": {
+          "total": 24887,
+          "responses": 10569,
+          "rate": 42.467955157311046
+        },
+        "questions": {
+          "total": 20975,
+          "responses": 15931,
+          "rate": 75.9523241954708
+        },
+        "substantive": {
+          "total": 82234,
+          "responses": 16769,
+          "rate": 20.391808740910086
+        },
+        "brief": {
+          "total": 109880,
+          "responses": 7657,
+          "rate": 6.968511103021478
+        },
+        "generic": {
+          "total": 15132,
+          "responses": 208,
+          "rate": 1.3745704467353952
+        },
+        "overall": {
+          "total": 264323,
+          "responses": 62349,
+          "rate": 23.5881856667789
+        }
+      },
+      "fitnessScore": -25.11729966745231,
+      "deviations": {
+        "bot_directed": 0,
+        "questions": 0,
+        "cards": 0,
+        "substantive": 0,
+        "brief": 0,
+        "generic": 0,
+        "overall": 3.5881856667789016
+      }
+    },
+    {
+      "params": {
+        "threshold": 25,
+        "returningBoost": 20,
+        "quietBoost": 20,
+        "cardBoost": 15,
+        "questionBoost": 30,
+        "multiwordBoost": 5,
+        "genericPenalty": 10,
+        "shortPenalty": 10
+      },
+      "engagement": {
+        "bot_directed": {
+          "total": 11215,
+          "responses": 11215,
+          "rate": 100
+        },
+        "cards": {
+          "total": 24887,
+          "responses": 10569,
+          "rate": 42.467955157311046
+        },
+        "questions": {
+          "total": 20975,
+          "responses": 15931,
+          "rate": 75.9523241954708
+        },
+        "substantive": {
+          "total": 82234,
+          "responses": 16116,
+          "rate": 19.597733297662767
+        },
+        "brief": {
+          "total": 109880,
+          "responses": 7258,
+          "rate": 6.605387695668001
+        },
+        "generic": {
+          "total": 15132,
+          "responses": 208,
+          "rate": 1.3745704467353952
+        },
+        "overall": {
+          "total": 264323,
+          "responses": 61297,
+          "rate": 23.190187762699424
+        }
+      },
+      "fitnessScore": -25.147181255256594,
+      "deviations": {
+        "bot_directed": 0,
+        "questions": 0,
+        "cards": 0,
+        "substantive": 0.40226670233723283,
+        "brief": 0,
+        "generic": 0,
+        "overall": 3.1901877626994235
+      }
+    },
+    {
+      "params": {
+        "threshold": 25,
+        "returningBoost": 20,
+        "quietBoost": 20,
+        "cardBoost": 15,
+        "questionBoost": 30,
+        "multiwordBoost": 5,
+        "genericPenalty": 15,
+        "shortPenalty": 10
+      },
+      "engagement": {
+        "bot_directed": {
+          "total": 11215,
+          "responses": 11215,
+          "rate": 100
+        },
+        "cards": {
+          "total": 24887,
+          "responses": 10569,
+          "rate": 42.467955157311046
+        },
+        "questions": {
+          "total": 20975,
+          "responses": 15931,
+          "rate": 75.9523241954708
+        },
+        "substantive": {
+          "total": 82234,
+          "responses": 16116,
+          "rate": 19.597733297662767
+        },
+        "brief": {
+          "total": 109880,
+          "responses": 7258,
+          "rate": 6.605387695668001
+        },
+        "generic": {
+          "total": 15132,
+          "responses": 208,
+          "rate": 1.3745704467353952
+        },
+        "overall": {
+          "total": 264323,
+          "responses": 61297,
+          "rate": 23.190187762699424
+        }
+      },
+      "fitnessScore": -25.147181255256594,
+      "deviations": {
+        "bot_directed": 0,
+        "questions": 0,
+        "cards": 0,
+        "substantive": 0.40226670233723283,
+        "brief": 0,
+        "generic": 0,
+        "overall": 3.1901877626994235
+      }
+    },
+    {
+      "params": {
+        "threshold": 25,
+        "returningBoost": 20,
+        "quietBoost": 20,
+        "cardBoost": 15,
+        "questionBoost": 30,
+        "multiwordBoost": 5,
+        "genericPenalty": 20,
+        "shortPenalty": 10
+      },
+      "engagement": {
+        "bot_directed": {
+          "total": 11215,
+          "responses": 11215,
+          "rate": 100
+        },
+        "cards": {
+          "total": 24887,
+          "responses": 10569,
+          "rate": 42.467955157311046
+        },
+        "questions": {
+          "total": 20975,
+          "responses": 15931,
+          "rate": 75.9523241954708
+        },
+        "substantive": {
+          "total": 82234,
+          "responses": 16116,
+          "rate": 19.597733297662767
+        },
+        "brief": {
+          "total": 109880,
+          "responses": 7258,
+          "rate": 6.605387695668001
+        },
+        "generic": {
+          "total": 15132,
+          "responses": 208,
+          "rate": 1.3745704467353952
+        },
+        "overall": {
+          "total": 264323,
+          "responses": 61297,
+          "rate": 23.190187762699424
+        }
+      },
+      "fitnessScore": -25.147181255256594,
+      "deviations": {
+        "bot_directed": 0,
+        "questions": 0,
+        "cards": 0,
+        "substantive": 0.40226670233723283,
+        "brief": 0,
+        "generic": 0,
+        "overall": 3.1901877626994235
+      }
+    },
+    {
+      "params": {
+        "threshold": 30,
+        "returningBoost": 20,
+        "quietBoost": 20,
+        "cardBoost": 15,
+        "questionBoost": 30,
+        "multiwordBoost": 10,
+        "genericPenalty": 10,
+        "shortPenalty": 5
+      },
+      "engagement": {
+        "bot_directed": {
+          "total": 11215,
+          "responses": 11215,
+          "rate": 100
+        },
+        "cards": {
+          "total": 24887,
+          "responses": 10569,
+          "rate": 42.467955157311046
+        },
+        "questions": {
+          "total": 20975,
+          "responses": 15931,
+          "rate": 75.9523241954708
+        },
+        "substantive": {
+          "total": 82234,
+          "responses": 16116,
+          "rate": 19.597733297662767
+        },
+        "brief": {
+          "total": 109880,
+          "responses": 7258,
+          "rate": 6.605387695668001
+        },
+        "generic": {
+          "total": 15132,
+          "responses": 208,
+          "rate": 1.3745704467353952
+        },
+        "overall": {
+          "total": 264323,
+          "responses": 61297,
+          "rate": 23.190187762699424
+        }
+      },
+      "fitnessScore": -25.147181255256594,
+      "deviations": {
+        "bot_directed": 0,
+        "questions": 0,
+        "cards": 0,
+        "substantive": 0.40226670233723283,
+        "brief": 0,
+        "generic": 0,
+        "overall": 3.1901877626994235
+      }
+    },
+    {
+      "params": {
+        "threshold": 30,
+        "returningBoost": 20,
+        "quietBoost": 20,
+        "cardBoost": 15,
+        "questionBoost": 30,
+        "multiwordBoost": 10,
+        "genericPenalty": 15,
+        "shortPenalty": 5
+      },
+      "engagement": {
+        "bot_directed": {
+          "total": 11215,
+          "responses": 11215,
+          "rate": 100
+        },
+        "cards": {
+          "total": 24887,
+          "responses": 10569,
+          "rate": 42.467955157311046
+        },
+        "questions": {
+          "total": 20975,
+          "responses": 15931,
+          "rate": 75.9523241954708
+        },
+        "substantive": {
+          "total": 82234,
+          "responses": 16116,
+          "rate": 19.597733297662767
+        },
+        "brief": {
+          "total": 109880,
+          "responses": 7258,
+          "rate": 6.605387695668001
+        },
+        "generic": {
+          "total": 15132,
+          "responses": 208,
+          "rate": 1.3745704467353952
+        },
+        "overall": {
+          "total": 264323,
+          "responses": 61297,
+          "rate": 23.190187762699424
+        }
+      },
+      "fitnessScore": -25.147181255256594,
+      "deviations": {
+        "bot_directed": 0,
+        "questions": 0,
+        "cards": 0,
+        "substantive": 0.40226670233723283,
+        "brief": 0,
+        "generic": 0,
+        "overall": 3.1901877626994235
+      }
+    },
+    {
+      "params": {
+        "threshold": 30,
+        "returningBoost": 20,
+        "quietBoost": 20,
+        "cardBoost": 15,
+        "questionBoost": 30,
+        "multiwordBoost": 10,
+        "genericPenalty": 20,
+        "shortPenalty": 5
+      },
+      "engagement": {
+        "bot_directed": {
+          "total": 11215,
+          "responses": 11215,
+          "rate": 100
+        },
+        "cards": {
+          "total": 24887,
+          "responses": 10569,
+          "rate": 42.467955157311046
+        },
+        "questions": {
+          "total": 20975,
+          "responses": 15931,
+          "rate": 75.9523241954708
+        },
+        "substantive": {
+          "total": 82234,
+          "responses": 16116,
+          "rate": 19.597733297662767
+        },
+        "brief": {
+          "total": 109880,
+          "responses": 7258,
+          "rate": 6.605387695668001
+        },
+        "generic": {
+          "total": 15132,
+          "responses": 208,
+          "rate": 1.3745704467353952
+        },
+        "overall": {
+          "total": 264323,
+          "responses": 61297,
+          "rate": 23.190187762699424
+        }
+      },
+      "fitnessScore": -25.147181255256594,
+      "deviations": {
+        "bot_directed": 0,
+        "questions": 0,
+        "cards": 0,
+        "substantive": 0.40226670233723283,
+        "brief": 0,
+        "generic": 0,
+        "overall": 3.1901877626994235
+      }
+    },
+    {
+      "params": {
+        "threshold": 30,
+        "returningBoost": 20,
+        "quietBoost": 25,
+        "cardBoost": 15,
+        "questionBoost": 30,
+        "multiwordBoost": 10,
+        "genericPenalty": 15,
+        "shortPenalty": 5
+      },
+      "engagement": {
+        "bot_directed": {
+          "total": 11215,
+          "responses": 11215,
+          "rate": 100
+        },
+        "cards": {
+          "total": 24887,
+          "responses": 10569,
+          "rate": 42.467955157311046
+        },
+        "questions": {
+          "total": 20975,
+          "responses": 15931,
+          "rate": 75.9523241954708
+        },
+        "substantive": {
+          "total": 82234,
+          "responses": 16116,
+          "rate": 19.597733297662767
+        },
+        "brief": {
+          "total": 109880,
+          "responses": 7258,
+          "rate": 6.605387695668001
+        },
+        "generic": {
+          "total": 15132,
+          "responses": 208,
+          "rate": 1.3745704467353952
+        },
+        "overall": {
+          "total": 264323,
+          "responses": 61297,
+          "rate": 23.190187762699424
+        }
+      },
+      "fitnessScore": -25.147181255256594,
+      "deviations": {
+        "bot_directed": 0,
+        "questions": 0,
+        "cards": 0,
+        "substantive": 0.40226670233723283,
+        "brief": 0,
+        "generic": 0,
+        "overall": 3.1901877626994235
+      }
+    },
+    {
+      "params": {
+        "threshold": 30,
+        "returningBoost": 20,
+        "quietBoost": 25,
+        "cardBoost": 15,
+        "questionBoost": 30,
+        "multiwordBoost": 10,
+        "genericPenalty": 20,
+        "shortPenalty": 5
+      },
+      "engagement": {
+        "bot_directed": {
+          "total": 11215,
+          "responses": 11215,
+          "rate": 100
+        },
+        "cards": {
+          "total": 24887,
+          "responses": 10569,
+          "rate": 42.467955157311046
+        },
+        "questions": {
+          "total": 20975,
+          "responses": 15931,
+          "rate": 75.9523241954708
+        },
+        "substantive": {
+          "total": 82234,
+          "responses": 16116,
+          "rate": 19.597733297662767
+        },
+        "brief": {
+          "total": 109880,
+          "responses": 7258,
+          "rate": 6.605387695668001
+        },
+        "generic": {
+          "total": 15132,
+          "responses": 208,
+          "rate": 1.3745704467353952
+        },
+        "overall": {
+          "total": 264323,
+          "responses": 61297,
+          "rate": 23.190187762699424
+        }
+      },
+      "fitnessScore": -25.147181255256594,
+      "deviations": {
+        "bot_directed": 0,
+        "questions": 0,
+        "cards": 0,
+        "substantive": 0.40226670233723283,
+        "brief": 0,
+        "generic": 0,
+        "overall": 3.1901877626994235
+      }
+    },
+    {
+      "params": {
+        "threshold": 30,
+        "returningBoost": 25,
+        "quietBoost": 20,
+        "cardBoost": 15,
+        "questionBoost": 30,
+        "multiwordBoost": 10,
+        "genericPenalty": 15,
+        "shortPenalty": 5
+      },
+      "engagement": {
+        "bot_directed": {
+          "total": 11215,
+          "responses": 11215,
+          "rate": 100
+        },
+        "cards": {
+          "total": 24887,
+          "responses": 10569,
+          "rate": 42.467955157311046
+        },
+        "questions": {
+          "total": 20975,
+          "responses": 15931,
+          "rate": 75.9523241954708
+        },
+        "substantive": {
+          "total": 82234,
+          "responses": 16116,
+          "rate": 19.597733297662767
+        },
+        "brief": {
+          "total": 109880,
+          "responses": 7258,
+          "rate": 6.605387695668001
+        },
+        "generic": {
+          "total": 15132,
+          "responses": 208,
+          "rate": 1.3745704467353952
+        },
+        "overall": {
+          "total": 264323,
+          "responses": 61297,
+          "rate": 23.190187762699424
+        }
+      },
+      "fitnessScore": -25.147181255256594,
+      "deviations": {
+        "bot_directed": 0,
+        "questions": 0,
+        "cards": 0,
+        "substantive": 0.40226670233723283,
+        "brief": 0,
+        "generic": 0,
+        "overall": 3.1901877626994235
+      }
+    },
+    {
+      "params": {
+        "threshold": 30,
+        "returningBoost": 25,
+        "quietBoost": 20,
+        "cardBoost": 15,
+        "questionBoost": 30,
+        "multiwordBoost": 10,
+        "genericPenalty": 20,
+        "shortPenalty": 5
+      },
+      "engagement": {
+        "bot_directed": {
+          "total": 11215,
+          "responses": 11215,
+          "rate": 100
+        },
+        "cards": {
+          "total": 24887,
+          "responses": 10569,
+          "rate": 42.467955157311046
+        },
+        "questions": {
+          "total": 20975,
+          "responses": 15931,
+          "rate": 75.9523241954708
+        },
+        "substantive": {
+          "total": 82234,
+          "responses": 16116,
+          "rate": 19.597733297662767
+        },
+        "brief": {
+          "total": 109880,
+          "responses": 7258,
+          "rate": 6.605387695668001
+        },
+        "generic": {
+          "total": 15132,
+          "responses": 208,
+          "rate": 1.3745704467353952
+        },
+        "overall": {
+          "total": 264323,
+          "responses": 61297,
+          "rate": 23.190187762699424
+        }
+      },
+      "fitnessScore": -25.147181255256594,
+      "deviations": {
+        "bot_directed": 0,
+        "questions": 0,
+        "cards": 0,
+        "substantive": 0.40226670233723283,
+        "brief": 0,
+        "generic": 0,
+        "overall": 3.1901877626994235
+      }
+    }
+  ]
+}
