@@ -4,7 +4,7 @@
 
 ## 📊 Test Summary
 
-**Total:** 11 custom test files (197+ tests)
+**Total:** 13 custom test files (230+ tests)
 
 ### 1. Bootstrap Suppression Test ⚡
 
@@ -41,7 +41,25 @@
 
 ---
 
-### 7-11. Knowledge & Lore Tests 📚
+### 7-8. Card Display Tests 🎴
+
+**Files:** 2 test files, 41 tests covering `/f` and `/c` commands
+
+| File | Tests | Purpose |
+|------|-------|---------|
+| `actions/fakeRaresCard.test.ts` | 32 | `/f` command (random, exact, fuzzy, artist) |
+| `actions/fakeCommonsCard.test.ts` | 9 | `/c` command (random, exact match only) |
+
+**Covers:**
+- Random card selection
+- Exact card lookup (case-insensitive)
+- Fuzzy matching and typo correction (Fake Rares only)
+- Artist search (Fake Rares only)
+- Edge cases: whitespace, special chars, long input, missing callback
+
+---
+
+### 9-13. Knowledge & Lore Tests 📚
 
 **Files:** 5 test files, 110 tests covering `/fl`, `/fr` commands and knowledge retrieval
 

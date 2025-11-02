@@ -90,6 +90,9 @@ async function build() {
       await copyFile('src/data/fake-rares-data.json', 'dist/data/fake-rares-data.json');
       console.log('✓ Copied fake-rares-data.json to dist/data/');
       
+      await copyFile('src/data/fake-commons-data.json', 'dist/data/fake-commons-data.json');
+      console.log('✓ Copied fake-commons-data.json to dist/data/');
+      
       // Copy embeddings if exists
       if (existsSync('src/data/card-embeddings.json')) {
         await copyFile('src/data/card-embeddings.json', 'dist/data/card-embeddings.json');

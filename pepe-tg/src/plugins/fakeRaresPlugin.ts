@@ -1,5 +1,5 @@
 import { type Plugin, logger } from '@elizaos/core';
-import { fakeRaresCardAction, educateNewcomerAction, startCommand, helpCommand, loreCommand, fakeRememberCommand, oddsCommand, costCommand, fakeVisualCommand, fakeTestCommand } from '../actions';
+import { fakeRaresCardAction, fakeCommonsCardAction, educateNewcomerAction, startCommand, helpCommand, loreCommand, fakeRememberCommand, oddsCommand, costCommand, fakeVisualCommand, fakeTestCommand } from '../actions';
 import { fakeMarketAction } from '../actions/fakeMarketAction';
 import { fakeRaresContextProvider, userHistoryProvider } from '../providers';
 import { loreDetectorEvaluator } from '../evaluators';
@@ -171,12 +171,12 @@ export const fakeRaresPlugin: Plugin = {
           
           // Extract for convenience
           const { isFakeRareCard, hasBotMention, isReplyToBot, hasRememberCommand } = triggers;
-          const { isHelp, isStart, isF, isFv, isFt, isFl, isFr, isFm, isDawn, isFc } = commands;
+          const { isHelp, isStart, isF, isC, isFv, isFt, isFl, isFr, isFm, isDawn, isFc } = commands;
           
           // Log routing factors
           logger.info(`   Triggers: reply=${!!isReplyToBot} | card=${isFakeRareCard} | @mention=${hasBotMention}`);
 
-          logger.debug(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${isF} isFv=${isFv} isFt=${isFt} isLore=${isFl} isFr=${isFr} isFm=${isFm} isDawn=${isDawn} isHelp=${isHelp} isStart=${isStart} isCost=${isFc} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
+          logger.debug(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${isF} isC=${isC} isFv=${isFv} isFt=${isFt} isLore=${isFl} isFr=${isFr} isFm=${isFm} isDawn=${isDawn} isHelp=${isHelp} isStart=${isStart} isCost=${isFc} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
           
           logger.info('━━━━━━━━━━ STEP 2/5: COMMAND EXECUTION ━━━━━━━━━━');
           
@@ -240,6 +240,7 @@ export const fakeRaresPlugin: Plugin = {
           
           // Card and lore commands
           if (isF && await executeCommand(fakeRaresCardAction, cmdParams, '/f')) return;
+          if (isC && await executeCommand(fakeCommonsCardAction, cmdParams, '/c')) return;
           if (isFv && await executeCommand(fakeVisualCommand, cmdParams, '/fv')) return;
           if (isFt && await executeCommand(fakeTestCommand, cmdParams, '/ft')) return;
           if (isFl && await executeCommand(loreCommand, cmdParams, '/fl')) return;

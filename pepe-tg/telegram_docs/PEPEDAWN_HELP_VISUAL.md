@@ -16,6 +16,9 @@
 │  /f ARTIST        →  Random card by that artist              │
 │  /f               →  Random card from 890+ collection        │
 │                                                              │
+│  /c CARDNAME      →  View any Fake Commons card             │
+│  /c               →  Random card from 1813+ collection       │
+│                                                              │
 │  💡 Typo-friendly! "FREEDOMK" → auto-corrects to FREEDOMKEK │
 │  💡 Case-insensitive! "freedomkek" works too                │
 └──────────────────────────────────────────────────────────────┘
@@ -113,7 +116,7 @@
 ╠══════════════════════════════════════════════════════════════╣
 ║  • Commands are case-insensitive                             ║
 ║  • Card names support fuzzy matching (typo-friendly)         ║
-║  • 890+ cards, auto-updated hourly from GitHub              ║
+║  • 890+ Fake Rares + 1813+ Fake Commons, auto-updated       ║
 ║  • All visual features use GPT-4o Vision                    ║
 ║  • Lore searches across Telegram + Wiki + User Memories     ║
 ║  • Memories you save help the whole community! 💚           ║
@@ -133,7 +136,10 @@
 YOU                PEPEDAWN                RESULT
 ─────────────────────────────────────────────────────────────
 /f CARDNAME   →   Looks up in index    →   📷 Card image
-                  (890+ cards)              + metadata
+                  (890+ Fake Rares)         + metadata
+
+/c CARDNAME   →   Looks up in index    →   📷 Card image
+                  (1813+ Fake Commons)      + metadata
 
 /fv CARDNAME  →   GPT-4o Vision API    →   🔍 Analysis:
                   analyzes card             • Text (OCR)
@@ -168,5 +174,5 @@ Any text      →   GPT-4o + PEPEDAWN    →   💬 Helpful reply
 
 ---
 
-**Last Updated:** October 29, 2025
+**Last Updated:** November 2, 2025
 

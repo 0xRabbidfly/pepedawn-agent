@@ -7,6 +7,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.3.0] - 2025-11-02
+
+### Added
+- **`/c` Command** - Fake Commons card display
+  - `/c CARDNAME` - View specific Fake Commons card (exact match)
+  - `/c` - Random card from 1813+ card collection
+  - Supports all 54 series from the Fake Commons collection
+  - Same Telegram post format as `/f` (image, metadata, artist button)
+  - Simple and fast: No fuzzy matching, no artist search (keeps it lightweight)
+
+- **Fake Commons Data Integration**
+  - 1813 cards with full metadata (asset, series, card, artist, supply)
+  - S3-hosted images via reliable URLs (no local storage needed)
+  - `fakeCommonsIndex.ts` - Lookup utilities matching `fullCardIndex.ts` pattern
+  - `fake-commons-data.json` - Complete card database with `imageUri` fields
+  - `generate-commons-json-with-urls.js` - API scraper for data regeneration
+
+### Changed
+- Build script now copies `fake-commons-data.json` to `dist/data/`
+- Documentation updated with `/c` command usage
+- Message pattern detection extended to recognize `/c` command
+- Plugin routing includes Commons card display handler
+
+### Testing
+- Added 2 new test files: `fakeRaresCard.test.ts` (32 tests), `fakeCommonsCard.test.ts` (9 tests)
+- Total test coverage: 13 files, 230+ tests (all passing)
+- Pre-commit hook updated to run both card command tests
+
+### Technical Details
+- Data source: `https://api.pepe.wtf/api/asset?collection=fake-commons`
+- Image URLs: `https://pepewtf.s3.amazonaws.com/collections/fake-commons/full/{series}/{filename}`
+- Zero breaking changes - purely additive feature
+- Separate action file (`fakeCommonsCard.ts`) - no risk to existing `/f` logic
+- Total card coverage: 890+ Fake Rares + 1813+ Fake Commons = 2703+ cards
+
 ## [3.2.1] - 2025-11-02
 
 ### Fixed

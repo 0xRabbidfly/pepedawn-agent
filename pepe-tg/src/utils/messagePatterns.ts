@@ -25,6 +25,7 @@ export interface MessagePatterns {
     isHelp: boolean;
     isStart: boolean;
     isF: boolean;
+    isC: boolean;
     isFv: boolean;
     isFt: boolean;
     isFl: boolean;
@@ -65,6 +66,7 @@ export function detectMessagePatterns(
     isHelp: /^(?:@[A-Za-z0-9_]+\s+)?\/help(?:@[A-Za-z0-9_]+)?$/i.test(text),
     isStart: /^(?:@[A-Za-z0-9_]+\s+)?\/start(?:@[A-Za-z0-9_]+)?$/i.test(text),
     isF: /^(?:@[A-Za-z0-9_]+\s+)?\/f(?:@[A-Za-z0-9_]+)?(?:\s+.+)?$/i.test(text),
+    isC: /^(?:@[A-Za-z0-9_]+\s+)?\/c(?:@[A-Za-z0-9_]+)?(?:\s+.+)?$/i.test(text),
     isFv: /^(?:@[A-Za-z0-9_]+\s+)?\/fv(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
     isFt: /^(?:@[A-Za-z0-9_]+\s+)?\/ft(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
     isFl: /^(?:@[A-Za-z0-9_]+\s+)?\/fl(?:@[A-Za-z0-9_]+)?/i.test(text),

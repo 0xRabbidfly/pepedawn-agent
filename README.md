@@ -12,10 +12,10 @@
 
 ## ⚡ Quick Highlights
 
-- 🎴 **890+ Fake Rares cards** with instant lookup and full metadata
-- 📊 **Market monitoring** - Real-time Counterparty sales & listings tracker (NEW!)
+- 🎴 **890+ Fake Rares + 1813+ Fake Commons cards** with instant lookup and full metadata
+- 📊 **Market monitoring** - Real-time Counterparty sales & listings tracker
 - 🔍 **Visual analysis** - AI vision reads text + memetic commentary
-- 🧠 **Smart typo correction** - Fuzzy matching with 3-tier intelligence
+- 🧠 **Smart typo correction** - Fuzzy matching with 3-tier intelligence (Fake Rares)
 - 🔄 **Auto-updating** - Hourly refresh from GitHub, no restart needed
 - 🤖 **AI-powered** - Natural conversations with context awareness  
 - 📚 **Knowledge base** - Optional: Search 264k+ embedded Telegram messages
@@ -27,12 +27,30 @@
 
 ## 🌟 Features
 
-### 🎴 Card Viewing with Fuzzy Matching
+### 🎴 Card Viewing
+
+#### Fake Rares (with Fuzzy Matching & Artist Search)
 
 **Commands:**
 - **`/f CARDNAME`** - Display any card (e.g., `/f FREEDOMKEK`)
 - **`/f ARTIST`** - Random card by artist (e.g., `/f Rare Scrilla`)
-- **`/f`** - Show a random card from the collection
+- **`/f`** - Show a random card from 890+ collection
+
+**Features:**
+- Typo correction with fuzzy matching
+- Artist name search with partial matches
+- 890+ cards, auto-updated hourly
+
+#### Fake Commons (Simple & Fast)
+
+**Commands:**
+- **`/c CARDNAME`** - Display any Commons card (e.g., `/c NOTAFAKERARE`)
+- **`/c`** - Show a random card from 1813+ collection
+
+**Features:**
+- Exact name matching (case-insensitive)
+- 1813 cards across 54 series
+- Same metadata display as Fake Rares
 
 ---
 

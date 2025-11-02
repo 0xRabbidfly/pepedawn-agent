@@ -22,6 +22,10 @@ dist/
 .eliza/
 **/.eliza/
 
+# Playwright MCP
+.playwright-mcp/
+**/.playwright-mcp/
+
 # Embedding service (Python)
 embedding-service/__pycache__/
 embedding-service/*.log
