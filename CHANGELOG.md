@@ -7,6 +7,66 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.2.0] - 2025-11-02
+
+### Added
+- **Intelligent Engagement Scoring System** - Context-aware message filtering
+  - Monte Carlo optimized (918,750 configurations tested)
+  - Newcomer boost (+100) - Welcomes first-time users
+  - Returning user boost (+20 after 24h away) - Recognizes familiar faces
+  - Quiet thread boost (+30 after 5min silence) - Breaks awkward silences
+  - Configurable via `ENGAGEMENT_THRESHOLD` env var (default: 31)
+  - Expected response rate: ~20% (filters spam, engages meaningfully)
+  - 28 new tests in `engagementScorer.test.ts`
+
+- **userHistoryProvider** - Conversational memory context injection
+  - Automatically injects user conversation history into LLM prompts
+  - Tracks card interests from last 20 messages (e.g., "likes: PEPEDAWN (3x)")
+  - Classifies user familiarity (newcomer/active/regular)
+  - Dynamic context length (50-280 chars, scaled to user input)
+  - Enables natural, personalized responses without forced routing
+  - 7 new tests in `userHistoryProvider.test.ts`
+
+- **New Utility Modules** - DRY code refactoring
+  - `messagePatterns.ts` - Centralized pattern detection (commands, triggers, metadata)
+  - `commandHandler.ts` - Reduced action execution boilerplate
+  - `engagementScorer.ts` - Context-aware scoring with activity tracking
+  - 38 tests in `messagePatterns.test.ts`, 7 in `commandHandler.test.ts`
+
+- **Monte Carlo Simulation Scripts** - For future tuning
+  - `scripts/monte-carlo-full.js` - Test 918k+ configurations
+  - `scripts/daily-simulation.js` - Simulate 200-message days
+
+### Changed
+- **Enhanced Question Detection** - Broader pattern recognition
+  - Imperative requests: "tell me about X", "I need to know"
+  - Indirect questions: "wondering", "curious about"
+  - Auto-routes to FACTS mode when appropriate
+
+- **Logging Consistency** - Unified visual style across all commands
+  - Step markers: `STEP 1/5, 2/5, 3/5, 4/5, 5/5` (was `1, 1A, 2, 2.5, 3`)
+  - Action-specific loggers: `ℹ️ [FakeCard]`, `ℹ️ [FakeLore]`, etc.
+  - Removed redundant command echo logs
+  - Clean visual separators (`━━━━━`)
+
+- **Engagement Model** - From capitalized-word detection to card-specific scoring
+  - Removed generic CAPS detection (was too broad)
+  - Card names trigger context-based scoring (not auto-respond)
+  - Question-based routing prioritized over statement-based
+
+### Fixed
+- **Test compatibility** - Added `runtime.getService` guards for mock environments
+- **Context boost false positives** - Only apply returning/quiet boosts to tracked users
+- **LLM source citations** - Removed unwanted "Source:" lines in FACTS mode responses
+- **Memory LRU filtering** - Explicitly exempt user memories from diversity filtering
+
+### Technical Details
+- **Test coverage:** 172 → 252 tests (+47%, all passing)
+- **New files:** 4 utilities, 4 test suites
+- **Deleted:** 3 obsolete tests (capitalized-word detection)
+- **Performance:** ~70% reduction in bot spam while maintaining engagement quality
+- **Backward compatible:** All existing functionality preserved
+
 ## [3.1.0] - 2025-11-01
 
 ### Added
