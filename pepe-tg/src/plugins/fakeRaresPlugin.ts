@@ -159,6 +159,13 @@ export const fakeRaresPlugin: Plugin = {
           // 🎯 STEP 1A: Determine if this is a reply to the bot (not just any reply)
           let isActuallyReplyToBot = false;
           const isReply = !!message.content?.inReplyTo;
+          
+          // DEBUG: Log reply detection inputs
+          if (!isReply && params.ctx?.message?.reply_to_message) {
+            logger.info(`   ⚠️  WARNING: Telegram reply detected but inReplyTo is missing!`);
+          }
+          logger.debug(`[Reply Debug] inReplyTo=${message.content?.inReplyTo}, ctx.message exists=${!!params.ctx?.message}, reply_to_message exists=${!!params.ctx?.message?.reply_to_message}`);
+          
           if (isReply) {
             const rawMessage = params.ctx?.message;
             const replyToUserId = rawMessage?.reply_to_message?.from?.id;
