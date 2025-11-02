@@ -155,9 +155,43 @@ export const fakeRaresPlugin: Plugin = {
           logger.info(`📩 "${text.substring(0, 80)}${text.length > 80 ? '...' : ''}"`);
           
           logger.info('━━━━━━━━━━ STEP 1/5: PATTERN DETECTION ━━━━━━━━━━');
+          
+          // 🎯 STEP 1A: Determine if this is a reply to the bot (not just any reply)
+          let isActuallyReplyToBot = false;
+          const isReply = !!message.content?.inReplyTo;
+          if (isReply) {
+            const rawMessage = params.ctx?.message;
+            const replyToUserId = rawMessage?.reply_to_message?.from?.id;
+            
+            // Try to get bot ID from ctx or Telegram service
+            let botUserId: number | undefined;
+            if (params.ctx?.telegram?.bot?.botInfo?.id) {
+              botUserId = params.ctx.telegram.bot.botInfo.id;
+            } else if (params.ctx?.telegram?.bot?.me?.id) {
+              botUserId = params.ctx.telegram.bot.me.id;
+            } else {
+              // Fallback: try to get Telegram service from runtime
+              try {
+                const telegramService = runtime.services?.find(
+                  (s: any) => s.serviceType === 'telegram'
+                );
+                botUserId = telegramService?.bot?.botInfo?.id || telegramService?.bot?.me?.id;
+              } catch (e) {
+                // If we can't get bot ID, assume it's NOT a reply to the bot (safer default)
+              }
+            }
+            
+            // Only mark as reply to bot if we can confirm it
+            isActuallyReplyToBot = !!(replyToUserId && botUserId && replyToUserId === botUserId);
+            logger.debug(`[Reply Detection] replyToUserId=${replyToUserId}, botUserId=${botUserId}, isReplyToBot=${isActuallyReplyToBot}`);
+          }
+          
           // Detect all patterns once - commands, triggers, metadata
           const patterns = detectMessagePatterns(text, params);
           let { commands, triggers } = patterns;
+          
+          // Override isReplyToBot with the accurate check
+          triggers.isReplyToBot = isActuallyReplyToBot;
           
           // 🎯 AUTO-ROUTE: Single card name → treat as "/f CARDNAME"
           if (triggers.isFakeRareCard && patterns.metadata.wordCount === 1) {
@@ -170,7 +204,8 @@ export const fakeRaresPlugin: Plugin = {
           }
           
           // Extract for convenience
-          const { isFakeRareCard, hasBotMention, isReplyToBot, hasRememberCommand } = triggers;
+          const { isFakeRareCard, hasBotMention, hasRememberCommand } = triggers;
+          const isReplyToBot = triggers.isReplyToBot;  // Use the corrected value
           const { isHelp, isStart, isF, isC, isFv, isFt, isFl, isFr, isFm, isDawn, isFc } = commands;
           
           // Log routing factors
@@ -323,48 +358,18 @@ export const fakeRaresPlugin: Plugin = {
           
           // Skip auto-routing if this is a reply to another user (not the bot)
           // Replies to other users are conversation between humans, not questions for the bot
-          const isReply = !!message.content?.inReplyTo;
-          if (isReply) {
-            // Try to determine if this is a reply to the bot or another user
-            const rawMessage = params.ctx?.message;
-            const replyToUserId = rawMessage?.reply_to_message?.from?.id;
-            
-            // Try to get bot ID from ctx or Telegram service
-            let botUserId: number | undefined;
-            if (params.ctx?.telegram?.bot?.botInfo?.id) {
-              botUserId = params.ctx.telegram.bot.botInfo.id;
-            } else if (params.ctx?.telegram?.bot?.me?.id) {
-              botUserId = params.ctx.telegram.bot.me.id;
-            } else {
-              // Fallback: try to get Telegram service from runtime
-              try {
-                const telegramService = runtime.services?.find(
-                  (s: any) => s.serviceType === 'telegram'
-                );
-                botUserId = telegramService?.bot?.botInfo?.id || telegramService?.bot?.me?.id;
-              } catch (e) {
-                // If we can't get bot ID, assume it's a reply to another user (safer default)
-              }
-            }
-            
-            // Skip auto-routing if:
-            // 1. We can't determine who it's replying to, OR
-            // 2. It's clearly replying to someone other than the bot
-            if (!replyToUserId || !botUserId || replyToUserId !== botUserId) {
-              logger.debug(`[FakeRaresPlugin] Skipping auto-routing - message is a reply ${replyToUserId && botUserId ? `to user ${replyToUserId} (not bot ${botUserId})` : '(unknown target)'}`);
-              // IMPORTANT: Check global suppression before returning
-              // If SUPPRESS_BOOTSTRAP=true, we need to mark as handled
-              if (globalSuppression) {
-                logger.debug('[FakeRaresPlugin] Global suppression active - marking reply as handled');
-                message.metadata = message.metadata || {};
-                (message.metadata as any).__handledByCustom = true;
-                return;
-              }
-              // Otherwise, let it go to bootstrap for natural conversation handling
+          if (isReply && !isReplyToBot) {
+            logger.debug(`[FakeRaresPlugin] Skipping auto-routing - message is a reply to another user, not to the bot`);
+            // IMPORTANT: Check global suppression before returning
+            // If SUPPRESS_BOOTSTRAP=true, we need to mark as handled
+            if (globalSuppression) {
+              logger.debug('[FakeRaresPlugin] Global suppression active - marking reply as handled');
+              message.metadata = message.metadata || {};
+              (message.metadata as any).__handledByCustom = true;
               return;
             }
-            // If it IS a reply to the bot, continue with auto-routing check below
-            logger.debug(`[FakeRaresPlugin] Message is a reply to bot, checking if it's a question`);
+            // Otherwise, let it go to bootstrap for natural conversation handling
+            return;
           }
           
           // Comprehensive question detection
@@ -440,13 +445,14 @@ export const fakeRaresPlugin: Plugin = {
             }
           }
           
-          logger.info('━━━━━━━━━━ STEP 4: BOOTSTRAP DECISION ━━━━━━━━━━');
+          logger.info('━━━━━━━━━━ STEP 4 (FINAL): BOOTSTRAP DECISION ━━━━━━━━━━');
           
           // At this point:
           // - Commands already handled and exited
           // - FAKEASF burn already filtered and exited
           // - Off-topic already filtered and exited
           // - FACTS queries already auto-routed and exited
+          // - Replies to other users already filtered and exited (not replies to bot)
           //
           // Remaining messages: LORE/UNCERTAIN → Allow Bootstrap for natural conversation
           // (Bootstrap will use userHistoryProvider for context)
