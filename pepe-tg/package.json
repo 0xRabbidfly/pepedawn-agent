@@ -71,7 +71,7 @@
     "vite": "^6.0.1"
   },
   "scripts": {
-    "postinstall": "patch-package || echo 'Warning: Some patches failed to apply'",
+    "postinstall": "patch-package || echo 'Warning: Some patches failed to apply' && node scripts/fix-telegram-mentioncontext.cjs || echo 'Warning: mentionContext fix failed'",
     "start": "./scripts/start-bot.sh",
     "dev": "elizaos dev",
     "restart": "./scripts/safe-restart.sh",

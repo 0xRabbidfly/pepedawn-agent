@@ -150,13 +150,17 @@ export const fakeRaresPlugin: Plugin = {
           
           //Wrap callback to log what bootstrap is trying to send
           const originalCallback = params.callback;
+          const callbackInvoked = { count: 0 };
           if (originalCallback && typeof originalCallback === 'function') {
             params.callback = async (response: any) => {
+              callbackInvoked.count++;
               const textPreview = typeof response?.text === 'string' 
                 ? response.text.substring(0, 100) 
                 : String(response?.text || '').substring(0, 100);
-              logger.info(`📤 [Callback Invoked] text=${!!response?.text}, textLength=${response?.text?.length || 0}, textPreview="${textPreview}"`);
-              return await originalCallback(response);
+              logger.info(`📤 [Callback Invoked #${callbackInvoked.count}] text=${!!response?.text}, textLength=${response?.text?.length || 0}, textPreview="${textPreview}"`);
+              const result = await originalCallback(response);
+              logger.info(`📤 [Callback Complete #${callbackInvoked.count}] returned ${Array.isArray(result) ? result.length : 'non-array'} memories`);
+              return result;
             };
           }
           
