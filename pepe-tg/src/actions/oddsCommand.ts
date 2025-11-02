@@ -1,4 +1,4 @@
-import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, type State } from '@elizaos/core';
+import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, type State, logger } from '@elizaos/core';
 import { createPublicClient, http, formatEther, type Address } from 'viem';
 import { sepolia, mainnet } from 'viem/chains';
 import raffleAbi from '../contracts/PepedawnRaffle.abi.json';

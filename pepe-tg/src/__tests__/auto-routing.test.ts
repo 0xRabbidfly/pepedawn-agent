@@ -3,6 +3,7 @@ import { fakeRaresPlugin } from '../plugins/fakeRaresPlugin';
 import { KnowledgeOrchestratorService } from '../services/KnowledgeOrchestratorService';
 import { TelemetryService } from '../services/TelemetryService';
 import { MemoryStorageService } from '../services/MemoryStorageService';
+import { resetEngagementTracking, calculateEngagementScore } from '../utils/engagementScorer';
 
 /**
  * Auto-Routing Logic Tests
@@ -113,6 +114,19 @@ describe('Auto-Routing Logic', () => {
   beforeEach(() => {
     // Clean env before each test
     delete process.env.SUPPRESS_BOOTSTRAP;
+    
+    // Reset engagement tracking
+    resetEngagementTracking();
+    
+    // Establish test users to remove newcomer boost
+    calculateEngagementScore({
+      text: 'setup',
+      hasBotMention: false,
+      isReplyToBot: false,
+      isFakeRareCard: false,
+      userId: 'test-user',
+      roomId: 'test-room',
+    });
   });
 
   it('should have MESSAGE_RECEIVED handler', () => {
@@ -127,6 +141,7 @@ describe('Auto-Routing Logic', () => {
     it('should NOT auto-route transaction announcements', async () => {
       const message = {
         id: 'test-1',
+        entityId: 'test-user',
         roomId: 'test-room',
         content: { 
           text: 'Three grails for sale. FAKEPARTY 1/1, supply 44. Send 0.01 BTC.'
@@ -148,17 +163,17 @@ describe('Auto-Routing Logic', () => {
       // Should NOT call knowledge service (statement, not question)
       expect(runtime._mockServices.knowledge.retrieveKnowledge).not.toHaveBeenCalled();
       
-      // NOTE: This WILL be marked as handled (bootstrap suppressed) because:
-      // - queryType = FACTS
-      // - No capitals, no bot mention, not a reply
-      // - Bootstrap suppression logic: shouldAllowBootstrap = false for FACTS queries without triggers
-      // This is CORRECT - we don't want statements to trigger bootstrap either
+      // Card statements without questions are SUPPRESSED by engagement filter
+      // Score: card=+20, multiword=+10, context boosts = 30-80 points
+      // Most fail threshold (31) unless in very specific contexts (returning + quiet)
+      // This prevents spam from sale announcements while allowing questions
       expect((message.metadata as any).__handledByCustom).toBe(true);
     });
 
     it('should NOT auto-route sale announcements', async () => {
       const message = {
         id: 'test-2',
+        entityId: 'test-user',
         roomId: 'test-room',
         content: { 
           text: 'Just listed PEPEFISHBAND on the market, supply is 33'
@@ -178,12 +193,14 @@ describe('Auto-Routing Logic', () => {
       await messageHandler!(params);
 
       expect(runtime._mockServices.knowledge.retrieveKnowledge).not.toHaveBeenCalled();
-      expect((message.metadata as any).__handledByCustom).toBe(true); // Bootstrap suppressed (FACTS query, no triggers)
+      // Card statements suppressed by engagement filter (score below threshold)
+      expect((message.metadata as any).__handledByCustom).toBe(true);
     });
 
     it('should NOT auto-route card info statements', async () => {
       const message = {
         id: 'test-3',
+        entityId: 'test-user',
         roomId: 'test-room',
         content: { 
           text: 'FAKEPARTY is divisible and locked'
@@ -203,8 +220,7 @@ describe('Auto-Routing Logic', () => {
       await messageHandler!(params);
 
       expect(runtime._mockServices.knowledge.retrieveKnowledge).not.toHaveBeenCalled();
-      // NOTE: queryType is FACTS, so bootstrap suppression logic blocks it (line 512: queryType !== 'FACTS')
-      // Even though it has capitals, FACTS queries don't allow bootstrap unless they're questions
+      // Card statements without questions are suppressed by engagement filter
       expect((message.metadata as any).__handledByCustom).toBe(true);
     });
   });
@@ -541,6 +557,7 @@ describe('Auto-Routing Logic', () => {
     it('should NOT auto-route opinions', async () => {
       const message = {
         id: 'test-14',
+        entityId: 'test-user',
         roomId: 'test-room',
         content: { 
           text: 'PEPEDAWN is the best bot ever'
@@ -560,12 +577,14 @@ describe('Auto-Routing Logic', () => {
       await messageHandler!(params);
 
       expect(runtime._mockServices.knowledge.retrieveKnowledge).not.toHaveBeenCalled();
-      expect((message.metadata as any).__handledByCustom).toBeUndefined();
+      // Card opinions suppressed by engagement filter (card=+20, below threshold 31)
+      expect((message.metadata as any).__handledByCustom).toBe(true);
     });
 
     it('should NOT auto-route greetings', async () => {
       const message = {
         id: 'test-15',
+        entityId: 'test-user',
         roomId: 'test-room',
         content: { 
           text: 'gm everyone'
@@ -592,6 +611,7 @@ describe('Auto-Routing Logic', () => {
     it('should NOT auto-route casual conversation', async () => {
       const message = {
         id: 'test-16',
+        entityId: 'test-user',
         roomId: 'test-room',
         content: { 
           text: 'nice work on that card'
@@ -676,10 +696,10 @@ describe('Auto-Routing Logic', () => {
       // Should attempt to call service
       expect(runtime._mockServices.knowledge.retrieveKnowledge).toHaveBeenCalled();
       
-      // When auto-route fails, it falls through to bootstrap (doesn't call callback directly)
-      // The error is logged but bootstrap suppression kicks in since queryType=FACTS and no triggers
-      expect((message.metadata as any).__handledByCustom).toBe(true);
-      expect(callbackFn).not.toHaveBeenCalled(); // Falls through, doesn't send error message
+      // When auto-route fails, it falls through to bootstrap
+      // The error is logged and Bootstrap is allowed (question=+35 passes threshold)
+      expect((message.metadata as any).__handledByCustom).toBeUndefined();
+      expect(callbackFn).not.toHaveBeenCalled(); // Falls through to Bootstrap, doesn't call callback directly
     });
 
     it('should skip auto-routing when SUPPRESS_BOOTSTRAP=true', async () => {

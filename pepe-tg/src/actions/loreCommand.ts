@@ -1,6 +1,9 @@
-import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, type State, logger } from '@elizaos/core';
+import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, type State } from '@elizaos/core';
 import { KnowledgeOrchestratorService } from '../services/KnowledgeOrchestratorService';
 import { LORE_CONFIG } from '../utils/loreConfig';
+import { createLogger } from '../utils/actionLogger';
+
+const logger = createLogger("FakeLore");
 
 /**
  * /fl command - LLM-LORE: Knowledge-backed lore with RAG, clustering, and historian recounting
@@ -42,27 +45,28 @@ export const loreCommand: Action = {
   ) => {
     const raw = message.content.text || '';
     const query = raw.replace(/^\s*\/fl(?:@[A-Za-z0-9_]+)?\s*/i, '').trim() || 'Fake Rares lore history community';
-
-    logger.info(`\n━━━━━ /fl ━━━━━ ${query}`);
-
-    // Pre-classify query to detect unclear/ambiguous requests
-    const { classifyQuery } = await import('../utils/queryClassifier');
-    const queryType = classifyQuery(query);
-    
-    if (queryType === 'UNCERTAIN') {
-      logger.info(`[LoreCommand] UNCERTAIN query - sending clarification`);
-      
-      if (callback) {
-        await callback({ text: CLARIFICATION_MESSAGE });
-      }
-      
-      return { 
-        success: true, 
-        text: 'Clarification sent for uncertain query'
-      };
-    }
+    logger.info(`━━━━━ /fl ━━━━━ ${query}`);
 
     try {
+      logger.info("   STEP 1/2: Validating query");
+      
+      // Pre-classify query to detect unclear/ambiguous requests
+      const { classifyQuery } = await import('../utils/queryClassifier');
+      const queryType = classifyQuery(query);
+      
+      if (queryType === 'UNCERTAIN') {
+        logger.info(`   ⚠️  Query unclear - sending clarification`);
+        
+        if (callback) {
+          await callback({ text: CLARIFICATION_MESSAGE });
+        }
+        
+        return { 
+          success: true, 
+          text: 'Clarification sent for uncertain query'
+        };
+      }
+
       // Log this lore query (once per query, not per API call)
       const telemetry = runtime.getService('telemetry');
       if (telemetry && typeof (telemetry as any).logLoreQuery === 'function') {
@@ -73,6 +77,8 @@ export const loreCommand: Action = {
           source: 'fl-command',
         });
       }
+      
+      logger.info("   STEP 2/2: Retrieving knowledge");
       
       // Get the KnowledgeOrchestratorService from runtime
       const knowledgeService = runtime.getService(
@@ -87,14 +93,14 @@ export const loreCommand: Action = {
         includeMetrics: true,
       });
       
-      logger.info(`/fl complete: ${result.metrics.hits_used} hits, ${result.metrics.latency_ms}ms, ${result.story.split(/\s+/).length} words`);
+      const wordCount = result.story.split(/\s+/).length;
+      logger.info(`   /fl complete: ${result.metrics.hits_used} sources, ${wordCount} words, ${result.metrics.latency_ms}ms`);
 
       let finalMessage = result.story + result.sourcesLine;
 
       if (finalMessage.length > LORE_CONFIG.TELEGRAM_MAX_LENGTH) {
         const truncatePoint = LORE_CONFIG.TELEGRAM_MAX_LENGTH - 50;
         finalMessage = finalMessage.slice(0, truncatePoint) + '...\n\n(continued in next message)';
-        logger.debug(`⚠️  Truncated message to ${finalMessage.length} chars`);
       }
 
       if (callback) {
@@ -108,7 +114,7 @@ export const loreCommand: Action = {
       };
 
     } catch (err) {
-      logger.error({ error: err }, '❌ [LORE ERROR]');
+      logger.error(`   ❌ Error: ${err instanceof Error ? err.message : String(err)}`);
       
       const errorMsg = 'Bruh, something went wrong searching for that lore. Try again? 🐸';
       

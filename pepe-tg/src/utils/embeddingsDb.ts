@@ -62,7 +62,7 @@ function loadEmbeddings(): EmbeddingsDatabase {
     embeddingsCache = {};
   }
   
-  logger.info(`✅ [EmbeddingsDB] Loaded ${Object.keys(embeddingsCache).length} card embeddings`);
+  logger.info(`   ✅ Loaded ${Object.keys(embeddingsCache).length} card embeddings`);
   return embeddingsCache;
 }
 
@@ -191,9 +191,9 @@ export async function findMostSimilarCard(
   }
   
   if (bestMatch) {
-    logger.info(`✅ [EmbeddingsDB] Most similar: ${bestMatch.asset} (${(bestMatch.similarity * 100).toFixed(1)}% match)`);
+    logger.info(`   ✅ Most similar: ${bestMatch.asset} (${(bestMatch.similarity * 100).toFixed(1)}% match)`);
   } else {
-    logger.info(`ℹ️  [EmbeddingsDB] No similar cards found`);
+    logger.info(`   ℹ️  No similar cards found`);
   }
   
   return bestMatch;

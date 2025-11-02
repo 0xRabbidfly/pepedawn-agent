@@ -120,36 +120,36 @@ export const fakeVisualCommand: Action = {
   ) => {
     try {
       const text = (message.content.text || "").trim();
-      logger.info(`\n━━━━━ /fv ━━━━━ ${text}`);
+      logger.info(`━━━━━ /fv ━━━━━ ${text}`);
 
       // Parse command
       const { cardName, error } = parseCommand(text);
 
       if (error || !cardName) {
-        logger.info(`/fv: No card name provided`);
+        logger.info(`   No card name provided`);
         const errorMessage = error ?? "Invalid command format";
         await callback?.({ text: errorMessage });
         return { success: false, text: "Invalid command format" };
       }
 
-      logger.info(`/fv: Card name "${cardName}" - looking up in index`);
+      logger.info(`   STEP 1/3: Looking up "${cardName}" in index`);
       const cardInfo = getCardInfo(cardName);
 
       if (!cardInfo) {
-        logger.info(`/fv: Card "${cardName}" not found in index`);
+        logger.info(`   Card "${cardName}" not found in index`);
         await callback?.({
           text: `❌ Card **"${cardName}"** not found in the index.\n\n💡 **Tip:** Use \`/f ${cardName}\` to check if the card exists.`,
         });
         return { success: false, text: `Card ${cardName} not found` };
       }
 
-      logger.info(`/fv: Card found - series ${cardInfo.series}, ${cardInfo.ext}`);
+      logger.info(`   STEP 2/3: Card found - series ${cardInfo.series}, ${cardInfo.ext}`);
 
       // Determine image URL for analysis
       const imageUrl = determineImageUrlForAnalysis(cardInfo, cardName);
 
       if (!imageUrl) {
-        logger.info(`/fv: No static image available for ${cardName} (${cardInfo.ext})`);
+        logger.info(`   No static image available for ${cardName} (${cardInfo.ext})`);
         await callback?.({
           text: `⚠️ **${cardName}** (${cardInfo.ext.toUpperCase()}) does not have a static image version for analysis.\n\n💡 **Alternative:** Use \`/f ${cardName}\` to view the card.`,
         });
@@ -159,7 +159,7 @@ export const fakeVisualCommand: Action = {
         };
       }
 
-      logger.info(`/fv: Analyzing ${cardName} with vision API`);
+      logger.info(`   STEP 3/3: Analyzing ${cardName} with vision API`);
       const result = await analyzeWithVision(
         runtime,
         imageUrl,
@@ -172,7 +172,7 @@ export const fakeVisualCommand: Action = {
       const responseText = formatAnalysisMessage(cardName, result.analysis);
       await callback?.({ text: responseText });
 
-      logger.info(`/fv complete: ${cardName} analyzed (${result.tokensIn + result.tokensOut} tokens, ${result.duration}ms)`);
+      logger.info(`   /fv complete: ${cardName} analyzed (${result.tokensIn} → ${result.tokensOut} tokens, $${result.cost.toFixed(4)}, ${result.duration}ms)`);
 
       return {
         success: true,

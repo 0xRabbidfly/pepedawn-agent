@@ -80,7 +80,7 @@
     "lint": "prettier --write ./src",
     "type-check": "tsc --noEmit",
     "type-check:watch": "tsc --noEmit --watch",
-    "test:custom": "bun test src/__tests__/{bootstrap-suppression,auto-routing,actions,integration,utils}/*.test.ts",
+    "test:custom": "bun test src/__tests__/{bootstrap-suppression,auto-routing,actions,integration,providers,utils}/*.test.ts",
     "test:component": "bun run test:install && bun test",
     "test:e2e": "bun run test:install && bun test",
     "test": "bun run test:custom",

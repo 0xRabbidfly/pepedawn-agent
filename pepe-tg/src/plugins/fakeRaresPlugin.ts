@@ -1,7 +1,7 @@
 import { type Plugin, logger } from '@elizaos/core';
 import { fakeRaresCardAction, educateNewcomerAction, startCommand, helpCommand, loreCommand, fakeRememberCommand, oddsCommand, costCommand, fakeVisualCommand, fakeTestCommand } from '../actions';
 import { fakeMarketAction } from '../actions/fakeMarketAction';
-import { fakeRaresContextProvider } from '../providers';
+import { fakeRaresContextProvider, userHistoryProvider } from '../providers';
 import { loreDetectorEvaluator } from '../evaluators';
 import { KnowledgeOrchestratorService } from '../services/KnowledgeOrchestratorService';
 import { MemoryStorageService } from '../services/MemoryStorageService';
@@ -9,6 +9,10 @@ import { TelemetryService } from '../services/TelemetryService';
 import { FULL_CARD_INDEX } from '../data/fullCardIndex';
 import { startAutoRefresh } from '../utils/cardIndexRefresher';
 import { classifyQuery } from '../utils/queryClassifier';
+import { isOffTopic, getOffTopicReason } from '../utils/offTopicDetector';
+import { detectMessagePatterns } from '../utils/messagePatterns';
+import { calculateEngagementScore, shouldRespond } from '../utils/engagementScorer';
+import { executeCommand, executeCommandAlways, type CommandHandlerParams } from '../utils/commandHandler';
 import type { IAgentRuntime } from '@elizaos/core';
 
 // Track patched runtimes to avoid double-patching
@@ -129,7 +133,7 @@ export const fakeRaresPlugin: Plugin = {
     costCommand,
   ],
   
-  providers: [fakeRaresContextProvider],
+  providers: [fakeRaresContextProvider, userHistoryProvider],
   evaluators: [],
   services: [KnowledgeOrchestratorService, MemoryStorageService, TelemetryService],
   
@@ -147,50 +151,37 @@ export const fakeRaresPlugin: Plugin = {
           const text = (params?.message?.content?.text ?? '').toString().trim();
           const globalSuppression = process.env.SUPPRESS_BOOTSTRAP === 'true';
           
-          logger.info(`\n📩 TG Post: "${text.substring(0, 80)}${text.length > 80 ? '...' : ''}}"`);
+          logger.info('━'.repeat(60));
+          logger.info(`📩 "${text.substring(0, 80)}${text.length > 80 ? '...' : ''}"`);
           
-          // 🚨 CRITICAL: Block FAKEASF burn messages BEFORE LLM sees them
-          const mentionsFakeasf = /fakeasf/i.test(text);
-          const mentionsBurn = /burn|burning/i.test(text);
-          if (mentionsFakeasf && mentionsBurn) {
-            logger.info('[FakeRaresPlugin] 🚨 BLOCKED FAKEASF BURN QUERY - responding without LLM');
-            const callback = params.callback;
-            if (callback) {
-              await callback({
-                text: "I can't help with FAKEASF destroying or burning, fam. There are strict sacred rules I'm not privy to. Connect with Scrilla or someone who knows the exact ritual.\n\nRead them carefully at https://wiki.pepe.wtf/chapter-2-the-rare-pepe-project/fake-rares-and-dank-rares/fake-rares-submission-rules",
-                __fromAction: 'fakeasf_burn_blocker',
-              });
-            }
-            // Mark as handled so bootstrap doesn't process it
-            if (message.metadata) {
-              message.metadata.__handledByCustom = true;
-            }
-            return;
+          logger.info('━━━━━━━━━━ STEP 1/5: PATTERN DETECTION ━━━━━━━━━━');
+          // Detect all patterns once - commands, triggers, metadata
+          const patterns = detectMessagePatterns(text, params);
+          let { commands, triggers } = patterns;
+          
+          // 🎯 AUTO-ROUTE: Single card name → treat as "/f CARDNAME"
+          if (triggers.isFakeRareCard && patterns.metadata.wordCount === 1) {
+            logger.info(`   Auto-route: Single card name "${text}" → converting to /f command`);
+            
+            // Prepend "/f " so the action handler can parse the card name correctly
+            const originalText = text;
+            message.content.text = `/f ${originalText}`;
+            commands.isF = true;
           }
           
-          // Pattern detection
-          const isFCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/f(?:@[A-Za-z0-9_]+)?(?:\s+.+)?$/i.test(text);
-          const isFvCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fv(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text);
-          const isFtCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/ft(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text);
-          const isLoreCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fl(?:@[A-Za-z0-9_]+)?/i.test(text);
-          const isFrCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fr(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text);
-          const isFmCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fm(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text);
-          const isDawnCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/dawn(?:@[A-Za-z0-9_]+)?$/i.test(text);
-          const isHelpCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/help(?:@[A-Za-z0-9_]+)?$/i.test(text);
-          const isStartCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/start(?:@[A-Za-z0-9_]+)?$/i.test(text);
-          const isCostCommand = /^(?:@[A-Za-z0-9_]+\s+)?\/fc/i.test(text);
-          const hasCapitalizedWord = /\b[A-Z]{3,}[A-Z0-9]*\b/.test(text); // 3+ caps (likely card names)
-          const hasBotMention = /@pepedawn_bot/i.test(text);
-          const isReplyToBot = params?.message?.content?.inReplyTo; // User replied to bot's message
-          const hasRememberCommand = /remember(?:\s+this)?/i.test(text);
+          // Extract for convenience
+          const { isFakeRareCard, hasBotMention, isReplyToBot, hasRememberCommand } = triggers;
+          const { isHelp, isStart, isF, isFv, isFt, isFl, isFr, isFm, isDawn, isFc } = commands;
           
           // Log routing factors
-          logger.info(`   Triggers: reply=${!!isReplyToBot} | CAPS=${hasCapitalizedWord} | @mention=${hasBotMention}`);
+          logger.info(`   Triggers: reply=${!!isReplyToBot} | card=${isFakeRareCard} | @mention=${hasBotMention}`);
 
-          logger.debug(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${isFCommand} isFv=${isFvCommand} isFt=${isFtCommand} isLore=${isLoreCommand} isFr=${isFrCommand} isFm=${isFmCommand} isDawn=${isDawnCommand} isHelp=${isHelpCommand} isStart=${isStartCommand} isCost=${isCostCommand} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
+          logger.debug(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${isF} isFv=${isFv} isFt=${isFt} isLore=${isFl} isFr=${isFr} isFm=${isFm} isDawn=${isDawn} isHelp=${isHelp} isStart=${isStart} isCost=${isFc} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
+          
+          logger.info('━━━━━━━━━━ STEP 2/5: COMMAND EXECUTION ━━━━━━━━━━');
           
           // === MEMORY CAPTURE: "remember" or "remember this" ===
-          if ((hasCapitalizedWord || isReplyToBot || hasBotMention) && hasRememberCommand) {
+          if ((isFakeRareCard || isReplyToBot || hasBotMention) && hasRememberCommand) {
             logger.debug('[FakeRaresPlugin] "remember" command detected → storing memory');
             const actionCallback = typeof params.callback === 'function' ? params.callback : null;
             
@@ -239,234 +230,94 @@ export const fakeRaresPlugin: Plugin = {
             }
           }
           
-          // === CUSTOM ACTION: /f COMMANDS ===
-          if (isFCommand) {
-            logger.debug('[FakeRaresPlugin] /f detected → applying strong suppression and invoking action');
-            // Strong suppression: route all subsequent callbacks to a no-op
-            // Keep a reference to the original callback for our action only
-            const actionCallback = typeof params.callback === 'function' ? params.callback : null;
-            params.callback = async () => [];
-            
-            if (fakeRaresCardAction.validate && fakeRaresCardAction.handler) {
-              const isValid = await fakeRaresCardAction.validate(runtime, message);
-              if (isValid) {
-                await fakeRaresCardAction.handler(runtime, message, params.state, {}, actionCallback ?? undefined);
-                // Mark as handled so platform can skip bootstrap/messageService
-                try {
-                  message.metadata = message.metadata || {};
-                  (message.metadata as any).__handledByCustom = true;
-                } catch {}
-                logger.debug('[FakeRaresPlugin] /f action completed');
-                return; // Done
-              }
+          // === STEP 2: COMMAND EXECUTION ===
+          // Use command handler utility to reduce boilerplate
+          const cmdParams: CommandHandlerParams = { runtime, message, state: params.state, callback: params.callback };
+          
+          // /help and /start commands (always mark as handled, even on validation failure)
+          if (isHelp && await executeCommandAlways(helpCommand, cmdParams, '/help')) return;
+          if (isStart && await executeCommandAlways(startCommand, cmdParams, '/start')) return;
+          
+          // Card and lore commands
+          if (isF && await executeCommand(fakeRaresCardAction, cmdParams, '/f')) return;
+          if (isFv && await executeCommand(fakeVisualCommand, cmdParams, '/fv')) return;
+          if (isFt && await executeCommand(fakeTestCommand, cmdParams, '/ft')) return;
+          if (isFl && await executeCommand(loreCommand, cmdParams, '/fl')) return;
+          if (isFr && await executeCommand(fakeRememberCommand, cmdParams, '/fr')) return;
+          if (isFm && await executeCommand(fakeMarketAction, cmdParams, '/fm')) return;
+          if (isDawn && await executeCommand(oddsCommand, cmdParams, '/dawn')) return;
+          
+          // Admin-only command
+          if (isFc) {
+            const executed = await executeCommand(costCommand, cmdParams, '/fc');
+            if (executed || !executed) {
+              // Always mark as handled (whether admin or not)
+              message.metadata = message.metadata || {};
+              (message.metadata as any).__handledByCustom = true;
+              return;
             }
           }
           
-          // === CUSTOM ACTION: /fv COMMANDS ===
-          if (isFvCommand) {
-            logger.debug('[FakeRaresPlugin] /fv detected → applying strong suppression and invoking action');
-            const actionCallback = typeof params.callback === 'function' ? params.callback : null;
-            params.callback = async () => [];
-            
-            if (fakeVisualCommand.validate && fakeVisualCommand.handler) {
-              const isValid = await fakeVisualCommand.validate(runtime, message);
-              if (isValid) {
-                await fakeVisualCommand.handler(runtime, message, params.state, {}, actionCallback ?? undefined);
-                try {
-                  message.metadata = message.metadata || {};
-                  (message.metadata as any).__handledByCustom = true;
-                } catch {}
-                logger.debug('[FakeRaresPlugin] /fv action completed');
-                return; // Done
-              }
+          logger.info('━━━━━━━━━━ STEP 3/5: CONTENT FILTERS ━━━━━━━━━━');
+          
+          // 🚨 Block FAKEASF burn messages
+          const mentionsFakeasf = /fakeasf/i.test(text);
+          const mentionsBurn = /burn|burning/i.test(text);
+          if (mentionsFakeasf && mentionsBurn) {
+            logger.info('[FakeRaresPlugin] 🚨 BLOCKED FAKEASF BURN QUERY - responding without LLM');
+            const callback = params.callback;
+            if (callback) {
+              await callback({
+                text: "I can't help with FAKEASF destroying or burning, fam. There are strict sacred rules I'm not privy to. Connect with Scrilla or someone who knows the exact ritual.\n\nRead them carefully at https://wiki.pepe.wtf/chapter-2-the-rare-pepe-project/fake-rares-and-dank-rares/fake-rares-submission-rules",
+                __fromAction: 'fakeasf_burn_blocker',
+              });
             }
+            if (message.metadata) {
+              message.metadata.__handledByCustom = true;
+            }
+            return;
           }
           
-          // === CUSTOM ACTION: /ft COMMANDS ===
-          if (isFtCommand) {
-            logger.debug('[FakeRaresPlugin] /ft detected → applying strong suppression and invoking action');
-            const actionCallback = typeof params.callback === 'function' ? params.callback : null;
-            params.callback = async () => [];
-            
-            if (fakeTestCommand.validate && fakeTestCommand.handler) {
-              const isValid = await fakeTestCommand.validate(runtime, message);
-              if (isValid) {
-                await fakeTestCommand.handler(runtime, message, params.state, {}, actionCallback ?? undefined);
-                try {
-                  message.metadata = message.metadata || {};
-                  (message.metadata as any).__handledByCustom = true;
-                } catch {}
-                logger.debug('[FakeRaresPlugin] /ft action completed');
-                return; // Done
-              }
+          // 🚫 Filter off-topic messages
+          if (isOffTopic(text)) {
+            const reason = getOffTopicReason(text);
+            logger.info(`[FakeRaresPlugin] 🚫 OFF-TOPIC detected, ignoring silently: ${reason}`);
+            if (message.metadata) {
+              message.metadata.__handledByCustom = true;
             }
+            return;
           }
           
-          // === CUSTOM ACTION: /fl COMMANDS ===
-          if (isLoreCommand) {
-            // Apply the same suppression pattern as /f
-            const actionCallback = typeof params.callback === 'function' ? params.callback : null;
-            params.callback = async () => [];
-
-            if (loreCommand.validate && loreCommand.handler) {
-              const isValid = await loreCommand.validate(runtime, message);
-              if (isValid) {
-                await loreCommand.handler(runtime, message, params.state, {}, actionCallback ?? undefined);
-                try {
-                  message.metadata = message.metadata || {};
-                  (message.metadata as any).__handledByCustom = true;
-                } catch {}
-                return; // Done
-              }
-            }
+          logger.info('━━━━━━━━━━ STEP 4/5: ENGAGEMENT FILTER ━━━━━━━━━━');
+          
+          // Calculate engagement score to determine if bot should respond
+          const engagementScore = calculateEngagementScore({
+            text,
+            hasBotMention,
+            isReplyToBot,
+            isFakeRareCard,
+            userId: message.entityId,
+            roomId: message.roomId,
+          });
+          
+          if (!shouldRespond(engagementScore)) {
+            logger.info(`   Decision: SUPPRESS (low engagement, score=${engagementScore})`);
+            message.metadata = message.metadata || {};
+            (message.metadata as any).__handledByCustom = true;
+            return;
           }
           
-          // === CUSTOM ACTION: /fr COMMANDS ===
-          if (isFrCommand) {
-            logger.debug('[FakeRaresPlugin] /fr detected → applying strong suppression and invoking action');
-            const actionCallback = typeof params.callback === 'function' ? params.callback : null;
-            params.callback = async () => [];
-
-            if (fakeRememberCommand.validate && fakeRememberCommand.handler) {
-              const isValid = await fakeRememberCommand.validate(runtime, message);
-              if (isValid) {
-                await fakeRememberCommand.handler(runtime, message, params.state, {}, actionCallback ?? undefined);
-                try {
-                  message.metadata = message.metadata || {};
-                  (message.metadata as any).__handledByCustom = true;
-                } catch {}
-                logger.debug('[FakeRaresPlugin] /fr action completed');
-                return; // Done
-              }
-            }
-          }
+          logger.info('━━━━━━━━━━ STEP 5/5: QUERY CLASSIFICATION ━━━━━━━━━━');
           
-          // === CUSTOM ACTION: /fm COMMANDS ===
-          if (isFmCommand) {
-            logger.debug('[FakeRaresPlugin] /fm detected → applying strong suppression and invoking action');
-            const actionCallback = typeof params.callback === 'function' ? params.callback : null;
-            params.callback = async () => [];
-
-            if (fakeMarketAction.validate && fakeMarketAction.handler) {
-              const isValid = await fakeMarketAction.validate(runtime, message);
-              if (isValid) {
-                await fakeMarketAction.handler(runtime, message, params.state, {}, actionCallback ?? undefined);
-                try {
-                  message.metadata = message.metadata || {};
-                  (message.metadata as any).__handledByCustom = true;
-                } catch {}
-                logger.debug('[FakeRaresPlugin] /fm action completed');
-                return; // Done
-              }
-            }
-          }
-          
-          // === CUSTOM ACTION: /dawn COMMANDS ===
-          if (isDawnCommand) {
-            logger.debug('[FakeRaresPlugin] /dawn detected → applying strong suppression and invoking action');
-            const actionCallback = typeof params.callback === 'function' ? params.callback : null;
-            params.callback = async () => [];
-
-            if (oddsCommand.validate && oddsCommand.handler) {
-              const isValid = await oddsCommand.validate(runtime, message);
-              if (isValid) {
-                await oddsCommand.handler(runtime, message, params.state, {}, actionCallback ?? undefined);
-                try {
-                  message.metadata = message.metadata || {};
-                  (message.metadata as any).__handledByCustom = true;
-                } catch {}
-                logger.debug('[FakeRaresPlugin] /dawn action completed');
-                return; // Done
-              } else {
-                logger.debug('[FakeRaresPlugin] /dawn validation failed');
-              }
-            }
-          }
-          
-          // === CUSTOM ACTION: /help COMMANDS ===
-          if (isHelpCommand) {
-            logger.debug('[FakeRaresPlugin] /help detected → applying strong suppression and invoking action');
-            const actionCallback = typeof params.callback === 'function' ? params.callback : null;
-            params.callback = async () => [];
-
-            if (helpCommand.validate && helpCommand.handler) {
-              const isValid = await helpCommand.validate(runtime, message);
-              if (isValid) {
-                await helpCommand.handler(runtime, message, params.state, {}, actionCallback ?? undefined);
-                try {
-                  message.metadata = message.metadata || {};
-                  (message.metadata as any).__handledByCustom = true;
-                } catch {}
-                logger.debug('[FakeRaresPlugin] /help action completed');
-                return; // Done - exit entire function
-              } else {
-                logger.debug('[FakeRaresPlugin] /help validation failed, but still marking as handled');
-                try {
-                  message.metadata = message.metadata || {};
-                  (message.metadata as any).__handledByCustom = true;
-                } catch {}
-                return; // Done - exit entire function
-              }
-            }
-          }
-          
-          // === CUSTOM ACTION: /start COMMANDS ===
-          if (isStartCommand) {
-            logger.debug('[FakeRaresPlugin] /start detected → applying strong suppression and invoking action');
-            const actionCallback = typeof params.callback === 'function' ? params.callback : null;
-            params.callback = async () => [];
-
-            if (startCommand.validate && startCommand.handler) {
-              const isValid = await startCommand.validate(runtime, message);
-              if (isValid) {
-                await startCommand.handler(runtime, message, params.state, {}, actionCallback ?? undefined);
-                try {
-                  message.metadata = message.metadata || {};
-                  (message.metadata as any).__handledByCustom = true;
-                } catch {}
-                logger.debug('[FakeRaresPlugin] /start action completed');
-                return; // Done - exit entire function
-              } else {
-                logger.debug('[FakeRaresPlugin] /start validation failed, but still marking as handled');
-                try {
-                  message.metadata = message.metadata || {};
-                  (message.metadata as any).__handledByCustom = true;
-                } catch {}
-                return; // Done - exit entire function
-              }
-            }
-          }
-          
-          // === CUSTOM ACTION: /fc COMMANDS (admin-only) ===
-          if (isCostCommand) {
-            logger.debug('[FakeRaresPlugin] /fc detected → applying strong suppression and invoking action');
-            const actionCallback = typeof params.callback === 'function' ? params.callback : null;
-            params.callback = async () => [];
-
-            if (costCommand.validate && costCommand.handler) {
-              const isValid = await costCommand.validate(runtime, message);
-              if (isValid) {
-                await costCommand.handler(runtime, message, params.state, {}, actionCallback ?? undefined);
-                try {
-                  message.metadata = message.metadata || {};
-                  (message.metadata as any).__handledByCustom = true;
-                } catch {}
-                logger.debug('[FakeRaresPlugin] /fc action completed');
-                return; // Done - exit entire function
-              } else {
-                logger.debug('[FakeRaresPlugin] /fc validation failed (not admin), suppressing');
-                try {
-                  message.metadata = message.metadata || {};
-                  (message.metadata as any).__handledByCustom = true;
-                } catch {}
-                return; // Done - exit entire function
-              }
-            }
-          }
-          
-          // === AUTO-ROUTE FACTS QUESTIONS ===
           // Only auto-route actual questions, not statements/announcements or replies to other users
-          const queryType = classifyQuery(text);
+          let queryType = classifyQuery(text);
+          
+          // 🎯 OVERRIDE: Card name + question → Force FACTS (wiki/memory only, no telegram noise)
+          if (isFakeRareCard && patterns.metadata.hasQuestion) {
+            logger.info('   Override: Card + question → forcing FACTS mode');
+            queryType = 'FACTS';
+          }
+          
           logger.debug(`[FakeRaresPlugin] Query classification: ${queryType}`);
           
           // Skip auto-routing if this is a reply to another user (not the bot)
@@ -524,7 +375,6 @@ export const fakeRaresPlugin: Plugin = {
           
           if (queryType === 'FACTS' && isQuestion) {
             logger.info(`   Decision: Auto-route to FACTS (detected question)`);
-            logger.info(`\n━━━━━ /fl (auto-routed FACTS) ━━━━━ ${text}`);
             const actionCallback = typeof params.callback === 'function' ? params.callback : null;
             params.callback = async () => [];
             
@@ -542,6 +392,14 @@ export const fakeRaresPlugin: Plugin = {
                 includeMetrics: true,
               });
               
+              // Silent ignore if card question has no wiki/memory sources
+              if (isFakeRareCard && patterns.metadata.hasQuestion && !result.hasWikiOrMemory) {
+                logger.info(`   Decision: SILENT IGNORE (card question, no wiki/memory sources)`);
+                message.metadata = message.metadata || {};
+                (message.metadata as any).__handledByCustom = true;
+                return;
+              }
+              
               const finalMessage = result.story + result.sourcesLine;
               
               if (actionCallback) {
@@ -550,14 +408,14 @@ export const fakeRaresPlugin: Plugin = {
               
               // Log as conversation (auto-routed)
               const telemetry = runtime.getService('telemetry') as TelemetryService;
-              if (telemetry) {
+              if (telemetry && typeof telemetry.logConversation === 'function') {
                 await telemetry.logConversation({
                   timestamp: new Date().toISOString(),
                   messageId: message.id,
                   source: 'auto-route',
                 });
-                
-                // Also log as lore query
+              }
+              if (telemetry && typeof telemetry.logLoreQuery === 'function') {
                 await telemetry.logLoreQuery({
                   timestamp: new Date().toISOString(),
                   queryId: message.id,
@@ -581,16 +439,16 @@ export const fakeRaresPlugin: Plugin = {
             }
           }
           
-          // === BOOTSTRAP ROUTING ===
-          // CLEAR LOGIC: Bootstrap replies ONLY when:
-          // 1. Someone replied to the bot
-          // 2. Someone used capitals (3+ letter word)
-          // 3. Someone mentioned @pepedawn_bot
-          // 4. NOT a FACTS query (already handled above)
-          //
-          // Otherwise, suppress bootstrap (mark as handled)
+          logger.info('━━━━━━━━━━ STEP 4: BOOTSTRAP DECISION ━━━━━━━━━━');
           
-          const shouldAllowBootstrap = (isReplyToBot || hasCapitalizedWord || hasBotMention) && queryType !== 'FACTS';
+          // At this point:
+          // - Commands already handled and exited
+          // - FAKEASF burn already filtered and exited
+          // - Off-topic already filtered and exited
+          // - FACTS queries already auto-routed and exited
+          //
+          // Remaining messages: LORE/UNCERTAIN → Allow Bootstrap for natural conversation
+          // (Bootstrap will use userHistoryProvider for context)
           
           if (globalSuppression) {
             logger.info('   Decision: SUPPRESS all (SUPPRESS_BOOTSTRAP=true)');
@@ -600,38 +458,24 @@ export const fakeRaresPlugin: Plugin = {
             return;
           }
           
-          if (shouldAllowBootstrap) {
-            logger.info(`   Decision: ALLOW bootstrap (normal conversation)`);
-            logger.debug(`[Allow] Bootstrap allowed: reply=${!!isReplyToBot} caps=${hasCapitalizedWord} mention=${hasBotMention} | "${text}"`);
-            
-            // Log this as a conversation (once per user message, not per API call)
+          // Allow Bootstrap for all remaining messages
+          logger.info(`   Decision: ALLOW bootstrap (normal conversation)`);
+          logger.debug(`[Allow] Bootstrap allowed: reply=${!!isReplyToBot} card=${isFakeRareCard} mention=${hasBotMention} | "${text}"`);
+          
+          // Log this as a conversation (once per user message, not per API call)
+          // Guard for test environments where runtime.getService might not exist
+          if (typeof runtime.getService === 'function') {
             const telemetry = runtime.getService('telemetry') as TelemetryService;
-            if (telemetry) {
+            if (telemetry && typeof telemetry.logConversation === 'function') {
               await telemetry.logConversation({
                 timestamp: new Date().toISOString(),
                 messageId: message.id,
                 source: 'bootstrap',
               });
             }
-            
-            // Let bootstrap handle it - do NOT mark as handled
-          } else {
-            logger.info(`   Decision: SUPPRESS bootstrap (no trigger)`);
-            logger.debug(`[Suppress] Bootstrap blocked (no trigger): "${text}"`);
-            
-            // CRITICAL: Strip image attachments to prevent Bootstrap from auto-analyzing them
-            // (Only when Bootstrap would be suppressed anyway - doesn't affect @mentions or replies)
-            // PRESERVE attachments for /fv and /ft commands which need them
-            const hasAttachments = message.content.attachments && message.content.attachments.length > 0;
-            if (hasAttachments && !isFvCommand && !isFtCommand) {
-              logger.debug('[FakeRaresPlugin] Clearing image attachment (Bootstrap suppressed, not /fv or /ft command)');
-              message.content.attachments = [];
-            }
-            
-            // Mark as handled to suppress bootstrap
-            message.metadata = message.metadata || {};
-            (message.metadata as any).__handledByCustom = true;
           }
+          
+          // Let Bootstrap handle it naturally (don't mark as handled, let userHistoryProvider inject context)
           
         } catch (error) {
           logger.error(`[Plugin Error]`, error);
@@ -649,7 +493,7 @@ export const fakeRaresPlugin: Plugin = {
           }
         } finally {
           // Log message completion separator
-          logger.info(`━━━━━━━━━━ Message complete ━━━━━━━━━━`);
+          logger.info('━'.repeat(60) + '\n');
         }
       },
     ],

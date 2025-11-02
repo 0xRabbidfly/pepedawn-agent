@@ -73,11 +73,11 @@ export const fakeTestCommand: Action = {
       const hasAttachment =
         message.content.attachments && message.content.attachments.length > 0;
 
-      logger.info(`\n━━━━━ /ft ━━━━━ ${hasAttachment ? '1 attachment' : 'no attachment'}`);
+      logger.info(`━━━━━ /ft ━━━━━ ${hasAttachment ? '1 attachment' : 'no attachment'}`);
 
       // Require image attachment
       if (!hasAttachment) {
-        logger.info("/ft: No attachment found");
+        logger.info("   No attachment found");
         await callback?.({
           text: "❌ **Usage:** `/ft` + attach image\n\nAnalyzes any uploaded image for Fake Rares appeal.\n\n**Example:** Type `/ft` in the caption when uploading your meme.",
         });
@@ -87,17 +87,17 @@ export const fakeTestCommand: Action = {
       const attachment = message.content.attachments?.[0];
 
       if (!attachment) {
-        logger.info("/ft: Attachment missing despite check");
+        logger.info("   Attachment missing despite check");
         await callback?.({
           text: "❌ Could not access the uploaded image. Please try again.",
         });
         return { success: false, text: "No attachment found" };
       }
 
-      logger.info(`/ft: STEP 1/3 - Validating ${attachment.source} attachment`);
+      logger.info(`   STEP 1/3: Validating ${attachment.source} attachment`);
 
       if (!attachment.url) {
-        logger.info("/ft: No URL in attachment");
+        logger.info("   No URL in attachment");
         await callback?.({
           text: "❌ Could not access the uploaded image. Please try again.",
         });
@@ -113,7 +113,7 @@ export const fakeTestCommand: Action = {
         attachment.url.includes("/animations/");
 
       if (isAnimation) {
-        logger.info("/ft: Animation detected - blocking");
+        logger.info("   Animation detected - blocking");
         await callback?.({
           text: "❌ **Sorry brother Fake, but we cannot analyze animations.**\n\n💡 **To analyze:**\n1. Clip the starter frame\n2. Upload or just paste into TG with `/ft` caption",
         });
@@ -129,7 +129,7 @@ export const fakeTestCommand: Action = {
           throw new Error(`Image not accessible: ${headResponse.statusText}`);
         }
       } catch (validateError: any) {
-        logger.info("/ft: Failed to access image");
+        logger.info("   Failed to access image");
         await callback?.({
           text: "❌ Could not access the uploaded image. Please try again.",
         });
@@ -137,7 +137,7 @@ export const fakeTestCommand: Action = {
       }
 
       // STEP 2: Check for existing card similarity (BEFORE LLM call to save costs!)
-      logger.info("/ft: STEP 2/3 - Checking for duplicates via embeddings");
+      logger.info("   STEP 2/3: Checking for duplicates via embeddings");
       let similarCard: {
         asset: string;
         imageUrl: string;
@@ -218,7 +218,7 @@ export const fakeTestCommand: Action = {
 
         await callback?.({ text: responseText });
 
-        logger.info(`/ft complete: Analysis sent (${result.tokensIn} → ${result.tokensOut} tokens, $${result.cost.toFixed(4)}, ${result.duration}ms)`);
+        logger.info(`   /ft complete: Analysis sent (${result.tokensIn} → ${result.tokensOut} tokens, $${result.cost.toFixed(4)}, ${result.duration}ms)`);
 
         return {
           success: true,

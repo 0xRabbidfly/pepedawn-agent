@@ -32,6 +32,7 @@ export interface KnowledgeRetrievalOptions {
 export interface KnowledgeRetrievalResult {
   story: string;
   sourcesLine: string;
+  hasWikiOrMemory?: boolean;  // True if wiki/memory sources were found (for silent ignore logic)
   metrics: {
     query: string;
     hits_raw: number;
@@ -147,6 +148,7 @@ export class KnowledgeOrchestratorService extends Service {
       return {
         story: responseMessage,
         sourcesLine: '',
+        hasWikiOrMemory: false,
         metrics: {
           query,
           hits_raw: 0,
@@ -162,14 +164,18 @@ export class KnowledgeOrchestratorService extends Service {
     const queryType = options?.mode || classifyQuery(query);
     logger.info(`STEP 3/5: Selecting passages (${queryType === 'FACTS' ? 'by relevance' : 'MMR diversity'})`);
     
-    // Filter recently used
+    // Filter recently used (but ALWAYS preserve memories)
     const passageIds = passages.map(p => p.id);
     const filteredIds = filterOutRecentlyUsed(roomId, passageIds);
     
     let candidatePassages = passages;
     if (filteredIds.length >= LORE_CONFIG.MIN_HITS) {
-      candidatePassages = passages.filter(p => filteredIds.includes(p.id));
-      logger.debug(`🔄 Filtered to ${candidatePassages.length} fresh passages`);
+      // Apply LRU filter BUT preserve all memories (user-contributed facts are sacred)
+      candidatePassages = passages.filter(p => 
+        p.sourceType === 'memory' || filteredIds.includes(p.id)
+      );
+      const memCount = candidatePassages.filter(p => p.sourceType === 'memory').length;
+      logger.debug(`🔄 Filtered to ${candidatePassages.length} fresh passages (${memCount} memories always included)`);
     }
 
     const topK = Math.min(LORE_CONFIG.TOP_K_FOR_CLUSTERING, candidatePassages.length);
@@ -221,6 +227,7 @@ export class KnowledgeOrchestratorService extends Service {
     let story: string;
     let sourcesLine: string;
     let clusterCount = 0;
+    let hasWikiOrMemory = false;  // Track if wiki/memory sources were found (for silent ignore logic)
     
     if (queryType === 'FACTS') {
       logger.debug('📋 FACTS mode: Using top wiki and memory passages directly');
@@ -233,6 +240,8 @@ export class KnowledgeOrchestratorService extends Service {
       }, {} as Record<string, number>);
       const factsStr = Object.entries(factsBreakdown).map(([t, c]) => `${c} ${t}`).join(', ');
       logger.info(`   → FACTS: Using ${factsPassages.length} passages (${factsStr})`);
+      
+      hasWikiOrMemory = factsPassages.length > 0;
       
       if (factsPassages.length === 0) {
         const topPassages = diversePassages.slice(0, 5);
@@ -317,6 +326,7 @@ export class KnowledgeOrchestratorService extends Service {
     return {
       story,
       sourcesLine,
+      hasWikiOrMemory,
       metrics: {
         query,
         hits_raw: passages.length,

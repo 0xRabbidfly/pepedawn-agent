@@ -219,11 +219,10 @@ export const fakeMarketAction: Action = {
     _options?: any,
     callback?: HandlerCallback
   ) => {
+    const text = (message.content.text || '').trim();
+    logger.info(`━━━━━ /fm ━━━━━ ${text}`);
+
     try {
-      const text = (message.content.text || '').trim();
-      
-      logger.info(`\n━━━━━ /fm ━━━━━ ${text}`);
-      
       // Parse command
       const parseResult = parseCommand(text);
       if (parseResult.error) {

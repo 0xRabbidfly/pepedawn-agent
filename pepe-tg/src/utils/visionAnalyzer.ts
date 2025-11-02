@@ -42,7 +42,7 @@ export async function analyzeWithVision(
   const model = process.env.VISUAL_MODEL || 'gpt-4o';
   const textPrompt = `Analyzing: **${subject}**\n\n${prompt}`;
   
-  logger.info('Starting vision analysis', { subject, model });
+  logger.info(`   STEP 3/3: Vision analysis (${model})`);
   
   try {
     // Use centralized model gateway for telemetry
@@ -56,13 +56,7 @@ export async function analyzeWithVision(
       detail: 'high',
     });
     
-    logger.success('Analysis complete', {
-      duration: `${result.duration}ms`,
-      cost: `$${result.cost.toFixed(4)}`,
-      tokensIn: result.tokensIn,
-      tokensOut: result.tokensOut,
-      model: result.model
-    });
+    logger.info(`   ✅ Analysis complete (${result.tokensIn} → ${result.tokensOut} tokens, $${result.cost.toFixed(4)}, ${result.duration}ms)`);
     
     return {
       analysis: result.text,

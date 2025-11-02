@@ -31,8 +31,7 @@ export const fakeRememberCommand: Action = {
   ) => {
     const raw = message.content.text || '';
     const content = raw.replace(/^\s*\/fr(?:@[A-Za-z0-9_]+)?\s*/i, '').trim();
-
-    logger.info(`\n━━━━━ /fr ━━━━━ ${content.slice(0, 50)}${content.length > 50 ? '...' : ''}`);
+    logger.info(`━━━━━ /fr ━━━━━ ${content.slice(0, 50)}${content.length > 50 ? '...' : ''}`);
 
     // Validate content
     if (!content || content.length === 0) {

@@ -1,5 +1,6 @@
 import { describe, expect, it, beforeEach, mock } from 'bun:test';
 import { fakeRaresPlugin } from '../plugins/fakeRaresPlugin';
+import { resetEngagementTracking, calculateEngagementScore } from '../utils/engagementScorer';
 
 /**
  * Bootstrap Suppression Logic Tests
@@ -22,11 +23,26 @@ describe('Bootstrap Suppression Logic', () => {
     searchMemories: mock().mockResolvedValue([]),
     getMemory: mock().mockResolvedValue(null),
     createMemory: mock().mockResolvedValue(undefined),
+    getService: mock().mockReturnValue(null), // Mock for telemetry service
   });
 
   beforeEach(() => {
     // Reset env var before each test
     delete process.env.SUPPRESS_BOOTSTRAP;
+    
+    // Reset engagement tracking
+    resetEngagementTracking();
+    
+    // Establish test users to remove newcomer boost (for cleaner test expectations)
+    // This simulates users who have already been active in the chat
+    calculateEngagementScore({
+      text: 'setup',
+      hasBotMention: false,
+      isReplyToBot: false,
+      isFakeRareCard: false,
+      userId: 'test-user',
+      roomId: 'test-room',
+    });
   });
 
   it('should have MESSAGE_RECEIVED handler', () => {
@@ -110,25 +126,6 @@ describe('Bootstrap Suppression Logic', () => {
   // ========================================
 
   describe('Bootstrap Allowed (trigger conditions met)', () => {
-    it('should allow bootstrap when message has capitalized word (3+ letters)', async () => {
-      const message = {
-        id: 'test-4',
-        content: { text: 'I love FREEDOMKEK' },
-        metadata: {},
-      };
-
-      const params = {
-        message,
-        runtime: createMockRuntime(),
-        callback: async () => [],
-      };
-
-      await messageHandler!(params);
-
-      // Should NOT mark as handled (let bootstrap process it)
-      expect((message.metadata as any).__handledByCustom).toBeUndefined();
-    });
-
     it('should allow bootstrap when message mentions @pepedawn_bot', async () => {
       const message = {
         id: 'test-5',
@@ -167,24 +164,6 @@ describe('Bootstrap Suppression Logic', () => {
 
       expect((message.metadata as any).__handledByCustom).toBeUndefined();
     });
-
-    it('should detect capitalized words with numbers (e.g., WAGMIWORLD, PEPE420)', async () => {
-      const message = {
-        id: 'test-7',
-        content: { text: 'Check out WAGMIWORLD' },
-        metadata: {},
-      };
-
-      const params = {
-        message,
-        runtime: createMockRuntime(),
-        callback: async () => [],
-      };
-
-      await messageHandler!(params);
-
-      expect((message.metadata as any).__handledByCustom).toBeUndefined();
-    });
   });
 
   // ========================================
@@ -192,9 +171,11 @@ describe('Bootstrap Suppression Logic', () => {
   // ========================================
 
   describe('Bootstrap Suppressed (no trigger conditions)', () => {
-    it('should suppress casual conversation without caps or mention', async () => {
+    it('should allow questions to go to Bootstrap', async () => {
       const message = {
         id: 'test-8',
+        entityId: 'test-user',
+        roomId: 'test-room',
         content: { text: 'why are you replying to me' },
         metadata: {},
       };
@@ -207,12 +188,15 @@ describe('Bootstrap Suppression Logic', () => {
 
       await messageHandler!(params);
 
-      expect((message.metadata as any).__handledByCustom).toBe(true);
+      // question=+35 (established user, no newcomer boost) = 35 > 31 threshold
+      expect((message.metadata as any).__handledByCustom).toBeUndefined();
     });
 
     it('should suppress short questions', async () => {
       const message = {
         id: 'test-9',
+        entityId: 'test-user',
+        roomId: 'test-room',
         content: { text: 'what?' },
         metadata: {},
       };
@@ -225,12 +209,15 @@ describe('Bootstrap Suppression Logic', () => {
 
       await messageHandler!(params);
 
+      // question=+35, short=-5 = 30 < 31 threshold → SUPPRESS
       expect((message.metadata as any).__handledByCustom).toBe(true);
     });
 
     it('should suppress acknowledgements', async () => {
       const message = {
         id: 'test-10',
+        entityId: 'test-user',
+        roomId: 'test-room',
         content: { text: 'ok cool' },
         metadata: {},
       };
@@ -249,6 +236,8 @@ describe('Bootstrap Suppression Logic', () => {
     it('should suppress messages with only 2-letter caps (e.g., OK, PM)', async () => {
       const message = {
         id: 'test-11',
+        entityId: 'test-user',
+        roomId: 'test-room',
         content: { text: 'OK thanks' },
         metadata: {},
       };
@@ -268,6 +257,8 @@ describe('Bootstrap Suppression Logic', () => {
     it('should suppress lowercase messages without triggers', async () => {
       const message = {
         id: 'test-12',
+        entityId: 'test-user',
+        roomId: 'test-room',
         content: { text: 'nice one' },
         metadata: {},
       };
@@ -437,6 +428,8 @@ describe('Bootstrap Suppression Logic', () => {
     it('should handle empty messages', async () => {
       const message = {
         id: 'test-20',
+        entityId: 'test-user',
+        roomId: 'test-room',
         content: { text: '' },
         metadata: {},
       };
@@ -456,6 +449,8 @@ describe('Bootstrap Suppression Logic', () => {
     it('should handle messages with only whitespace', async () => {
       const message = {
         id: 'test-21',
+        entityId: 'test-user',
+        roomId: 'test-room',
         content: { text: '   ' },
         metadata: {},
       };
@@ -474,6 +469,8 @@ describe('Bootstrap Suppression Logic', () => {
     it('should handle null/undefined text gracefully', async () => {
       const message = {
         id: 'test-22',
+        entityId: 'test-user',
+        roomId: 'test-room',
         content: {},
         metadata: {},
       };
@@ -489,25 +486,6 @@ describe('Bootstrap Suppression Logic', () => {
       
       // Should suppress (no text = no triggers)
       expect((message.metadata as any).__handledByCustom).toBe(true);
-    });
-
-    it('should handle multiple capitalized words', async () => {
-      const message = {
-        id: 'test-23',
-        content: { text: 'Both FREEDOMKEK and WAGMIWORLD are amazing' },
-        metadata: {},
-      };
-
-      const params = {
-        message,
-        runtime: createMockRuntime(),
-        callback: async () => [],
-      };
-
-      await messageHandler!(params);
-
-      // Should allow bootstrap
-      expect((message.metadata as any).__handledByCustom).toBeUndefined();
     });
 
     it('should handle mixed case @mention variations', async () => {
@@ -535,9 +513,11 @@ describe('Bootstrap Suppression Logic', () => {
   // ========================================
 
   describe('Regression: Ensure no over-responding', () => {
-    it('should NOT respond to "why are you replying to me"', async () => {
+    it('should allow "why" questions to go to Bootstrap', async () => {
       const message = {
         id: 'regression-1',
+        entityId: 'test-user',
+        roomId: 'test-room',
         content: { text: 'why are you replying to me' },
         metadata: {},
       };
@@ -550,12 +530,16 @@ describe('Bootstrap Suppression Logic', () => {
 
       await messageHandler!(params);
 
-      expect((message.metadata as any).__handledByCustom).toBe(true);
+      // NEW BEHAVIOR: Questions (including "why") get question=+35 → score=35 >= 30 threshold
+      // Allowed to Bootstrap for natural conversation
+      expect((message.metadata as any).__handledByCustom).toBeUndefined();
     });
 
     it('should NOT respond to single word "what?"', async () => {
       const message = {
         id: 'regression-2',
+        entityId: 'test-user',
+        roomId: 'test-room',
         content: { text: 'what?' },
         metadata: {},
       };
@@ -574,6 +558,8 @@ describe('Bootstrap Suppression Logic', () => {
     it('should NOT respond to "ok cool"', async () => {
       const message = {
         id: 'regression-3',
+        entityId: 'test-user',
+        roomId: 'test-room',
         content: { text: 'ok cool' },
         metadata: {},
       };
