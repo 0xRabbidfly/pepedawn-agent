@@ -148,6 +148,18 @@ export const fakeRaresPlugin: Plugin = {
           // MODEL_USED event doesn't provide params/result, so we need the monkey-patch
           patchRuntimeForTelemetry(runtime);
           
+          //Wrap callback to log what bootstrap is trying to send
+          const originalCallback = params.callback;
+          if (originalCallback && typeof originalCallback === 'function') {
+            params.callback = async (response: any) => {
+              const textPreview = typeof response?.text === 'string' 
+                ? response.text.substring(0, 100) 
+                : String(response?.text || '').substring(0, 100);
+              logger.info(`📤 [Callback Invoked] text=${!!response?.text}, textLength=${response?.text?.length || 0}, textPreview="${textPreview}"`);
+              return await originalCallback(response);
+            };
+          }
+          
           const text = (params?.message?.content?.text ?? '').toString().trim();
           const globalSuppression = process.env.SUPPRESS_BOOTSTRAP === 'true';
           
