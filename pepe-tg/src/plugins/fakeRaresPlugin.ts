@@ -148,29 +148,11 @@ export const fakeRaresPlugin: Plugin = {
           // MODEL_USED event doesn't provide params/result, so we need the monkey-patch
           patchRuntimeForTelemetry(runtime);
           
-          //Wrap callback to log what bootstrap is trying to send
-          const originalCallback = params.callback;
-          const callbackInvoked = { count: 0 };
-          if (originalCallback && typeof originalCallback === 'function') {
-            params.callback = async (response: any) => {
-              callbackInvoked.count++;
-              const textPreview = typeof response?.text === 'string' 
-                ? response.text.substring(0, 100) 
-                : String(response?.text || '').substring(0, 100);
-              logger.info(`📤 [Callback Invoked #${callbackInvoked.count}] text=${!!response?.text}, textLength=${response?.text?.length || 0}, textPreview="${textPreview}"`);
-              const result = await originalCallback(response);
-              logger.info(`📤 [Callback Complete #${callbackInvoked.count}] returned ${Array.isArray(result) ? result.length : 'non-array'} memories`);
-              return result;
-            };
-          }
-          
           const text = (params?.message?.content?.text ?? '').toString().trim();
           const globalSuppression = process.env.SUPPRESS_BOOTSTRAP === 'true';
           
           logger.info('━'.repeat(60));
           logger.info(`📩 "${text.substring(0, 80)}${text.length > 80 ? '...' : ''}"`);
-          logger.info(`🔍 [FakeRaresPlugin] message.content keys RECEIVED:`, Object.keys(message.content || {}));
-          logger.info(`🔍 [FakeRaresPlugin] message.content.mentionContext = ${JSON.stringify(message.content?.mentionContext)}`);
           
           logger.info('━━━━━━━━━━ STEP 1/5: PATTERN DETECTION ━━━━━━━━━━');
           
@@ -520,33 +502,12 @@ export const fakeRaresPlugin: Plugin = {
           logger.info(`   Decision: ALLOW bootstrap (normal conversation)`);
           logger.debug(`[Allow] Bootstrap allowed: reply=${!!isReplyToBot} card=${isFakeRareCard} mention=${hasBotMention} | "${text}"`);
           
-          // WORKAROUND: Manually inject mentionContext since Telegram plugin's version is being stripped
+          // Inject mentionContext to inform Bootstrap's shouldRespond logic
+          // This allows Bootstrap to skip LLM evaluation and always respond to bot replies
           if (!message.content.mentionContext) {
             message.content.mentionContext = {
               isMention: hasBotMention,
               isReply: isActuallyReplyToBot
-            };
-            logger.info(`✅ [FakeRaresPlugin] Manually injected mentionContext: ${JSON.stringify(message.content.mentionContext)}`);
-          }
-          
-          // Intercept handleMessage to log what bootstrap returns
-          const originalHandleMessage = runtime.messageService.handleMessage;
-          if (originalHandleMessage) {
-            runtime.messageService.handleMessage = async (runtime: any, message: any, callback?: any, options?: any) => {
-              logger.info(`🔍 [Bootstrap Intercept] handleMessage called for message: ${message.id}`);
-              logger.info(`🔍 [Bootstrap Intercept] message.content keys:`, Object.keys(message.content || {}));
-              logger.info(`🔍 [Bootstrap Intercept] message.content.mentionContext = ${JSON.stringify(message.content?.mentionContext)}`);
-              const result = await originalHandleMessage.call(runtime.messageService, runtime, message, callback, options);
-              logger.info(`🔍 [Bootstrap Intercept] handleMessage returned:`, {
-                didRespond: result?.didRespond,
-                hasResponseContent: !!result?.responseContent,
-                responseText: result?.responseContent?.text || '(none)',
-                responseTextLength: result?.responseContent?.text?.length || 0,
-                mode: result?.mode,
-                actions: result?.responseContent?.actions,
-                simple: result?.responseContent?.simple,
-              });
-              return result;
             };
           }
           
