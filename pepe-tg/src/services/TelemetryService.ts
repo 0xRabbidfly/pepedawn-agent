@@ -19,7 +19,6 @@ import { join } from 'path';
 const LOG_FILE = join(process.cwd(), 'src', 'data', 'token-logs.jsonl');
 const CONVERSATION_LOG_FILE = join(process.cwd(), 'src', 'data', 'conversation-logs.jsonl');
 const LORE_QUERY_LOG_FILE = join(process.cwd(), 'src', 'data', 'lore-query-logs.jsonl');
-const ARCHIVE_DIR = join(process.cwd(), 'src', 'data', 'archives');
 
 // Pricing per 1M tokens (USD)
 const MODEL_PRICING: Record<string, { input: number; output: number }> = {
@@ -111,30 +110,12 @@ export class TelemetryService extends Service {
   static async start(runtime: IAgentRuntime): Promise<TelemetryService> {
     logger.info('📊 [Telemetry] Starting service...');
     const service = new TelemetryService(runtime);
-    
-    // Start daily archive check
-    service.archiveTimer = setInterval(
-      () => service.checkAndArchive(),
-      24 * 60 * 60 * 1000  // Check daily
-    );
-    
     logger.info('✅ [Telemetry] Service ready');
     return service;
   }
 
   static async stop(runtime: IAgentRuntime): Promise<void> {
     logger.info('🛑 [Telemetry] Stopping service...');
-    const service = runtime.getService(TelemetryService.serviceType);
-    if (service) {
-      await service.stop();
-    }
-  }
-
-  async stop(): Promise<void> {
-    if (this.archiveTimer) {
-      clearInterval(this.archiveTimer);
-      this.archiveTimer = null;
-    }
     logger.info('✅ [Telemetry] Service stopped');
   }
 
@@ -143,9 +124,6 @@ export class TelemetryService extends Service {
    */
   async logModelUsage(log: TokenLog): Promise<void> {
     try {
-      // Check archive
-      this.checkAndArchive();
-      
       // Persist
       if (!existsSync(LOG_FILE)) {
         writeFileSync(LOG_FILE, '', 'utf8');
@@ -228,7 +206,7 @@ export class TelemetryService extends Service {
   }
 
   /**
-   * Read logs from file
+   * Read logs from file with optional date filtering
    */
   private readLogs(startDate?: Date, endDate?: Date): TokenLog[] {
     try {
@@ -376,78 +354,5 @@ export class TelemetryService extends Service {
     };
   }
 
-  /**
-   * Check if we're in a new month and archive if needed
-   */
-  private checkAndArchive(): void {
-    const lastCheckFile = join(process.cwd(), 'src', 'data', '.last-archive-check');
-    const now = new Date();
-    const currentMonth = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
-    
-    try {
-      let lastMonth = '';
-      if (existsSync(lastCheckFile)) {
-        lastMonth = readFileSync(lastCheckFile, 'utf8').trim();
-      }
-      
-      if (lastMonth && lastMonth !== currentMonth) {
-        this.archiveLogs();
-      }
-      
-      writeFileSync(lastCheckFile, currentMonth, 'utf8');
-    } catch (err) {
-      logger.error('[Telemetry] Archive check failed:', err);
-    }
-  }
-
-  /**
-   * Archive previous month's logs
-   */
-  private archiveLogs(): void {
-    try {
-      const allLogs = this.readLogs(new Date(0));
-      
-      if (allLogs.length === 0) return;
-      
-      // Group by month
-      const logsByMonth = new Map<string, TokenLog[]>();
-      
-      for (const log of allLogs) {
-        const date = new Date(log.timestamp);
-        const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
-        
-        if (!logsByMonth.has(monthKey)) {
-          logsByMonth.set(monthKey, []);
-        }
-        logsByMonth.get(monthKey)!.push(log);
-      }
-      
-      // Create archive directory
-      if (!existsSync(ARCHIVE_DIR)) {
-        mkdirSync(ARCHIVE_DIR, { recursive: true });
-      }
-      
-      // Archive each month
-      for (const [monthKey, logs] of logsByMonth.entries()) {
-        const stats = this.calculateStats(logs);
-        const archiveFile = join(ARCHIVE_DIR, `token-logs-${monthKey}.json`);
-        
-        writeFileSync(archiveFile, JSON.stringify({
-          month: monthKey,
-          summary: stats,
-          logs,
-        }, null, 2), 'utf8');
-        
-        logger.debug(`[Telemetry] 📦 Archived ${logs.length} logs to ${monthKey}`);
-      }
-      
-      // Clear main log
-      writeFileSync(LOG_FILE, '', 'utf8');
-      logger.debug('[Telemetry] 🗑️  Cleared main log file');
-      
-    } catch (err) {
-      logger.error('[Telemetry] Archive failed:', err);
-    }
-  }
 }
 

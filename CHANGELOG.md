@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.2.1] - 2025-11-02
+
+### Fixed
+- **Telemetry data loss at month boundaries** - Removed monthly archiving system
+  - Issue: Data was being archived and cleared at month start, causing `/fc d` to reset
+  - Fix: Keep all telemetry data in single JSONL files (no archiving)
+  - Impact: `/fc d` and `/fc m` now show continuous historical data across months
+  - Migration: Merge `archives/token-logs-YYYY-MM.json` into main JSONL on existing deployments
+  - Data volume: ~200KB/month, ~2.4MB/year (archiving was overkill)
+
+### Removed
+- Monthly archiving logic from TelemetryService
+- Archive timer and checkAndArchive() methods
+- ARCHIVE_DIR constant and .last-archive-check tracking
+
 ## [3.2.0] - 2025-11-02
 
 ### Added
