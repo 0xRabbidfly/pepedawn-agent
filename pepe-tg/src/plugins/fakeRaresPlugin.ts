@@ -161,10 +161,17 @@ export const fakeRaresPlugin: Plugin = {
           const isReply = !!message.content?.inReplyTo;
           
           // DEBUG: Log reply detection inputs
+          logger.info(`   [Reply Debug] inReplyTo=${!!message.content?.inReplyTo}, hasCtx=${!!params.ctx}, hasCtxMessage=${!!params.ctx?.message}, hasReplyToMessage=${!!params.ctx?.message?.reply_to_message}`);
+          
           if (!isReply && params.ctx?.message?.reply_to_message) {
             logger.info(`   ⚠️  WARNING: Telegram reply detected but inReplyTo is missing!`);
           }
-          logger.debug(`[Reply Debug] inReplyTo=${message.content?.inReplyTo}, ctx.message exists=${!!params.ctx?.message}, reply_to_message exists=${!!params.ctx?.message?.reply_to_message}`);
+          
+          if (!isReply && !params.ctx?.message?.reply_to_message) {
+            logger.info(`   ⚠️  WARNING: No reply context found anywhere - Telegram not sending reply data!`);
+          }
+          
+          logger.debug(`[Reply Debug Full] inReplyTo=${message.content?.inReplyTo}, ctx exists=${!!params.ctx}, message exists=${!!params.ctx?.message}, reply_to_message exists=${!!params.ctx?.message?.reply_to_message}`);
           
           if (isReply) {
             const rawMessage = params.ctx?.message;
