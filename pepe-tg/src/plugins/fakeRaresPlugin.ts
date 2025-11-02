@@ -197,6 +197,9 @@ export const fakeRaresPlugin: Plugin = {
             
             // Only mark as reply to bot if we can confirm it
             isActuallyReplyToBot = !!(replyToUserId && botUserId && replyToUserId === botUserId);
+            
+            // LOG AT INFO LEVEL for visibility
+            logger.info(`   [ID Check] replyToUserId=${replyToUserId}, botUserId=${botUserId}, match=${replyToUserId === botUserId}`);
             logger.debug(`[Reply Detection] replyToUserId=${replyToUserId}, botUserId=${botUserId}, isReplyToBot=${isActuallyReplyToBot}`);
           }
           
