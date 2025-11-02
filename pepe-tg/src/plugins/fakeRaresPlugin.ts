@@ -177,21 +177,34 @@ export const fakeRaresPlugin: Plugin = {
             const rawMessage = params.ctx?.message;
             const replyToUserId = rawMessage?.reply_to_message?.from?.id;
             
-            // Try to get bot ID from ctx or Telegram service
+            // Try to get bot ID from multiple sources
             let botUserId: number | undefined;
-            if (params.ctx?.telegram?.bot?.botInfo?.id) {
-              botUserId = params.ctx.telegram.bot.botInfo.id;
-            } else if (params.ctx?.telegram?.bot?.me?.id) {
-              botUserId = params.ctx.telegram.bot.me.id;
-            } else {
-              // Fallback: try to get Telegram service from runtime
+            
+            // Method 1: From ctx.telegram.botInfo (Telegraf)
+            if (params.ctx?.botInfo?.id) {
+              botUserId = params.ctx.botInfo.id;
+            }
+            // Method 2: From ctx.telegram.bot.botInfo
+            else if (params.ctx?.telegram?.botInfo?.id) {
+              botUserId = params.ctx.telegram.botInfo.id;
+            }
+            // Method 3: From ctx.telegram.bot.me
+            else if (params.ctx?.telegram?.me?.id) {
+              botUserId = params.ctx.telegram.me.id;
+            }
+            // Method 4: From ctx.me (direct property)
+            else if ((params.ctx as any)?.me?.id) {
+              botUserId = (params.ctx as any).me.id;
+            }
+            // Method 5: From Telegram service
+            else {
               try {
                 const telegramService = runtime.services?.find(
                   (s: any) => s.serviceType === 'telegram'
-                );
-                botUserId = telegramService?.bot?.botInfo?.id || telegramService?.bot?.me?.id;
+                ) as any;
+                botUserId = telegramService?.bot?.botInfo?.id || telegramService?.botInfo?.id;
               } catch (e) {
-                // If we can't get bot ID, assume it's NOT a reply to the bot (safer default)
+                // Couldn't get bot ID from service
               }
             }
             
