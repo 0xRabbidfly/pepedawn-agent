@@ -169,6 +169,8 @@ export const fakeRaresPlugin: Plugin = {
           
           logger.info('━'.repeat(60));
           logger.info(`📩 "${text.substring(0, 80)}${text.length > 80 ? '...' : ''}"`);
+          logger.info(`🔍 [FakeRaresPlugin] message.content keys RECEIVED:`, Object.keys(message.content || {}));
+          logger.info(`🔍 [FakeRaresPlugin] message.content.mentionContext = ${JSON.stringify(message.content?.mentionContext)}`);
           
           logger.info('━━━━━━━━━━ STEP 1/5: PATTERN DETECTION ━━━━━━━━━━');
           
