@@ -518,6 +518,25 @@ export const fakeRaresPlugin: Plugin = {
           logger.info(`   Decision: ALLOW bootstrap (normal conversation)`);
           logger.debug(`[Allow] Bootstrap allowed: reply=${!!isReplyToBot} card=${isFakeRareCard} mention=${hasBotMention} | "${text}"`);
           
+          // Intercept handleMessage to log what bootstrap returns
+          const originalHandleMessage = runtime.messageService.handleMessage;
+          if (originalHandleMessage) {
+            runtime.messageService.handleMessage = async (runtime: any, message: any, callback?: any, options?: any) => {
+              logger.info(`🔍 [Bootstrap Intercept] handleMessage called for message: ${message.id}`);
+              const result = await originalHandleMessage.call(runtime.messageService, runtime, message, callback, options);
+              logger.info(`🔍 [Bootstrap Intercept] handleMessage returned:`, {
+                didRespond: result?.didRespond,
+                hasResponseContent: !!result?.responseContent,
+                responseText: result?.responseContent?.text || '(none)',
+                responseTextLength: result?.responseContent?.text?.length || 0,
+                mode: result?.mode,
+                actions: result?.responseContent?.actions,
+                simple: result?.responseContent?.simple,
+              });
+              return result;
+            };
+          }
+          
           // Log this as a conversation (once per user message, not per API call)
           // Guard for test environments where runtime.getService might not exist
           if (typeof runtime.getService === 'function') {
