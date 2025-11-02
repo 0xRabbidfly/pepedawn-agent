@@ -520,6 +520,15 @@ export const fakeRaresPlugin: Plugin = {
           logger.info(`   Decision: ALLOW bootstrap (normal conversation)`);
           logger.debug(`[Allow] Bootstrap allowed: reply=${!!isReplyToBot} card=${isFakeRareCard} mention=${hasBotMention} | "${text}"`);
           
+          // WORKAROUND: Manually inject mentionContext since Telegram plugin's version is being stripped
+          if (!message.content.mentionContext) {
+            message.content.mentionContext = {
+              isMention: hasBotMention,
+              isReply: isActuallyReplyToBot
+            };
+            logger.info(`✅ [FakeRaresPlugin] Manually injected mentionContext: ${JSON.stringify(message.content.mentionContext)}`);
+          }
+          
           // Intercept handleMessage to log what bootstrap returns
           const originalHandleMessage = runtime.messageService.handleMessage;
           if (originalHandleMessage) {
