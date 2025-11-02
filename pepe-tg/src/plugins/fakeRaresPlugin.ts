@@ -523,7 +523,8 @@ export const fakeRaresPlugin: Plugin = {
           if (originalHandleMessage) {
             runtime.messageService.handleMessage = async (runtime: any, message: any, callback?: any, options?: any) => {
               logger.info(`🔍 [Bootstrap Intercept] handleMessage called for message: ${message.id}`);
-              logger.info(`🔍 [Bootstrap Intercept] message.content.mentionContext:`, message.content?.mentionContext);
+              logger.info(`🔍 [Bootstrap Intercept] message.content keys:`, Object.keys(message.content || {}));
+              logger.info(`🔍 [Bootstrap Intercept] message.content.mentionContext = ${JSON.stringify(message.content?.mentionContext)}`);
               const result = await originalHandleMessage.call(runtime.messageService, runtime, message, callback, options);
               logger.info(`🔍 [Bootstrap Intercept] handleMessage returned:`, {
                 didRespond: result?.didRespond,
