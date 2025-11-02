@@ -160,8 +160,7 @@ export const fakeRaresPlugin: Plugin = {
           let isActuallyReplyToBot = false;
           const isReply = !!message.content?.inReplyTo;
           
-          // DEBUG: Log reply detection inputs
-          logger.info(`   [Reply Debug] inReplyTo=${!!message.content?.inReplyTo}, hasCtx=${!!params.ctx}, hasCtxMessage=${!!params.ctx?.message}, hasReplyToMessage=${!!params.ctx?.message?.reply_to_message}`);
+          logger.debug(`[Reply Detection] inReplyTo=${!!message.content?.inReplyTo}, hasCtx=${!!params.ctx}, hasCtxMessage=${!!params.ctx?.message}, hasReplyToMessage=${!!params.ctx?.message?.reply_to_message}`);
           
           if (!isReply && params.ctx?.message?.reply_to_message) {
             logger.info(`   ⚠️  WARNING: Telegram reply detected but inReplyTo is missing!`);
@@ -211,8 +210,6 @@ export const fakeRaresPlugin: Plugin = {
             // Only mark as reply to bot if we can confirm it
             isActuallyReplyToBot = !!(replyToUserId && botUserId && replyToUserId === botUserId);
             
-            // LOG AT INFO LEVEL for visibility
-            logger.info(`   [ID Check] replyToUserId=${replyToUserId}, botUserId=${botUserId}, match=${replyToUserId === botUserId}`);
             logger.debug(`[Reply Detection] replyToUserId=${replyToUserId}, botUserId=${botUserId}, isReplyToBot=${isActuallyReplyToBot}`);
           }
           
@@ -431,15 +428,22 @@ export const fakeRaresPlugin: Plugin = {
                 includeMetrics: true,
               });
               
-              // Silent ignore if card question has no wiki/memory sources
-              if (isFakeRareCard && patterns.metadata.hasQuestion && !result.hasWikiOrMemory) {
-                logger.info(`   Decision: SILENT IGNORE (card question, no wiki/memory sources)`);
-                message.metadata = message.metadata || {};
-                (message.metadata as any).__handledByCustom = true;
-                return;
+              // Fall back to bootstrap if no wiki/memory sources found
+              // Let the LLM handle it conversationally instead of returning "I don't know"
+              if (!result.hasWikiOrMemory) {
+                logger.info(`   Decision: FALLBACK to Bootstrap (FACTS question, no wiki/memory sources)`);
+                // Throw to trigger catch block which falls through to bootstrap
+                throw new Error('No knowledge hits - fallback to bootstrap');
               }
               
               const finalMessage = result.story + result.sourcesLine;
+              
+              // Detect if LLM couldn't answer from sources (returns "NO_ANSWER" signal)
+              // If so, fall back to bootstrap for conversational response
+              if (result.story.trim() === 'NO_ANSWER') {
+                logger.info(`   Decision: FALLBACK to Bootstrap (FACTS returned NO_ANSWER)`);
+                throw new Error('Knowledge sources not relevant - fallback to bootstrap');
+              }
               
               if (actionCallback) {
                 await actionCallback({ text: finalMessage });
@@ -473,7 +477,16 @@ export const fakeRaresPlugin: Plugin = {
               
               return;
             } catch (err) {
-              logger.error('[FakeRaresPlugin] ❌ Auto-route failed, falling back to conversation:', err);
+              // Expected fallback scenarios (not actual errors)
+              const isFallback = err instanceof Error && 
+                (err.message.includes('fallback to bootstrap') || 
+                 err.message.includes('No knowledge hits'));
+              
+              if (isFallback) {
+                logger.debug('[FakeRaresPlugin] Auto-route fallback triggered, using bootstrap');
+              } else {
+                logger.error('[FakeRaresPlugin] ❌ Auto-route failed, falling back to conversation:', err);
+              }
               // Fall through to normal bootstrap flow
             }
           }

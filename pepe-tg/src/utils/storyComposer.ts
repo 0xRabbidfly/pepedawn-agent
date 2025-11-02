@@ -35,11 +35,8 @@ FACTUAL RESPONSE STYLE:
 - JUST provide the facts directly
 
 🚨 IF SOURCES DON'T ANSWER THE QUESTION:
-- Keep response under 30 words MAX
-- Be casual: "Haven't heard of that" or "Not sure what you mean"
-- Ask for clarification: "Got more details?" or "Where'd you see that?"
-- NEVER dump unrelated facts from the sources
-- Example: "Haven't heard of a PEPEDAWN poem. Where'd you see it?" (10 words ✓)
+- Reply with exactly: "NO_ANSWER"
+- DO NOT elaborate, DO NOT dump unrelated facts
 
 Answer:`}
 

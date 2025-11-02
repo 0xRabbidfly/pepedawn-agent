@@ -42,8 +42,9 @@ describe('Auto-Routing Logic', () => {
   const createMockKnowledgeService = () => ({
     serviceType: 'knowledge-orchestrator',
     retrieveKnowledge: mock().mockResolvedValue({
-      answer: 'Test wiki response',
-      metadata: { mode: 'FACTS', passagesRetrieved: 5 },
+      story: 'Test wiki response',
+      sourcesLine: '\n\nSources: wiki:test',
+      hasWikiOrMemory: true,  // Mock has wiki/memory hits
       metrics: {
         hits_used: 5,
         latency_ms: 100,
