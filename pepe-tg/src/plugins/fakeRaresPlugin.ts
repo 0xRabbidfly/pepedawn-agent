@@ -359,16 +359,19 @@ export const fakeRaresPlugin: Plugin = {
           // Skip auto-routing if this is a reply to another user (not the bot)
           // Replies to other users are conversation between humans, not questions for the bot
           if (isReply && !isReplyToBot) {
+            logger.info(`   Decision: Skip auto-routing (reply to another user, not bot)`);
             logger.debug(`[FakeRaresPlugin] Skipping auto-routing - message is a reply to another user, not to the bot`);
             // IMPORTANT: Check global suppression before returning
             // If SUPPRESS_BOOTSTRAP=true, we need to mark as handled
             if (globalSuppression) {
+              logger.info(`   Decision: SUPPRESS (global suppression active)`);
               logger.debug('[FakeRaresPlugin] Global suppression active - marking reply as handled');
               message.metadata = message.metadata || {};
               (message.metadata as any).__handledByCustom = true;
               return;
             }
             // Otherwise, let it go to bootstrap for natural conversation handling
+            logger.info(`   Decision: ALLOW bootstrap (conversation between users)`);
             return;
           }
           
