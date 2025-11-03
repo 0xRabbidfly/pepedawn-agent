@@ -167,7 +167,7 @@ export const fakeRaresPlugin: Plugin = {
           }
           
           if (!isReply && !params.ctx?.message?.reply_to_message) {
-            logger.info(`   ⚠️  WARNING: No reply context found anywhere - Telegram not sending reply data!`);
+            logger.debug(`[Reply Detection] No reply context - this is normal for non-reply messages`);
           }
           
           logger.debug(`[Reply Debug Full] inReplyTo=${message.content?.inReplyTo}, ctx exists=${!!params.ctx}, message exists=${!!params.ctx?.message}, reply_to_message exists=${!!params.ctx?.message?.reply_to_message}`);
