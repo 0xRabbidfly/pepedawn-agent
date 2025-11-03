@@ -4099,12 +4099,12 @@
     "asset": "DANKRAVES",
     "series": 8,
     "card": 24,
-    "ext": "gif",
+    "ext": "png",
     "artist": "Skife",
     "artistSlug": "Skife",
     "supply": 101,
     "issuance": "April 2022",
-    "memeUri": "https://tokenscan.io/img/cards/DANKRAVES.gif"
+    "memeUri": "https://arweave.net/Mqqk3ZM428M7MFJomgHxxF8FB0Py7aFBq2i8_GQNTz8/68qra3_thumb.png"
   },
   {
     "asset": "SAMURAIPEP",
@@ -8598,12 +8598,12 @@
     "asset": "WUPEPE",
     "series": 17,
     "card": 11,
-    "ext": "gif",
+    "ext": "png",
     "artist": "netidx",
     "artistSlug": "netidx",
     "supply": 36,
     "issuance": "October 2021",
-    "memeUri": "https://tokenscan.io/img/cards/WUPEPE.gif"
+    "memeUri": "https://arweave.net/wJ_HyCbtjvxpyOFgbYdO66yVLxbtRGzDtYuwkftR7Vk/euhysr_thumb.png"
   },
   {
     "asset": "FAKAPAMP",
