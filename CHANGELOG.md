@@ -7,6 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.4.0] - 2025-11-03
+
+### Added
+- **`/p` Command** - Rare Pepes card display
+  - `/p CARDNAME` - View specific Rare Pepes card (exact match)
+  - `/p` - Random card from 1774 card collection
+  - Supports all 36 series from the original Rare Pepes collection
+  - Same Telegram post format as `/f` and `/c` (image, metadata, artist button)
+  - Simple and fast: Exact match only (keeps it lightweight)
+
+- **Rare Pepes Data Integration**
+  - 1774 cards with full metadata (asset, series, card, artist, supply)
+  - S3-hosted images via reliable URLs (no local storage needed)
+  - `rarePepesIndex.ts` - Lookup utilities matching existing card index patterns
+  - `rare-pepes-data.json` - Complete card database with `imageUri` fields
+  - `generate-rare-pepes-json-with-urls.js` - API scraper for data regeneration
+
+### Changed
+- Build script now copies `rare-pepes-data.json` to `dist/data/`
+- Help command updated with `/p` usage examples
+- Message pattern detection extended to recognize `/p` command
+- Plugin routing includes Rare Pepes card display handler
+
+### Technical Details
+- Data source: `https://api.pepe.wtf/api/asset?collection=rare-pepes`
+- Image URLs: `https://pepewtf.s3.amazonaws.com/collections/rare-pepes/full/{series}/{filename}`
+- Zero breaking changes - purely additive feature
+- Separate action file (`rarePepesCard.ts`) - no risk to existing `/f` or `/c` logic
+- **Total card coverage: 422 Fake Rares + 1,813 Fake Commons + 1,774 Rare Pepes = 4,009 cards**
+
 ## [3.3.1] - 2025-11-02
 
 ### Changed

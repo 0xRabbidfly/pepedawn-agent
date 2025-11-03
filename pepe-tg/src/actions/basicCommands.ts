@@ -80,9 +80,9 @@ export const helpCommand: Action = {
     const helpMessage = `🐸 **PEPEDAWN Commands**
 
 **Cards:**
-\`/f CARDNAME\` - View any card (try \`/f FREEDOMKEK\`)
+\`/f CARDNAME\` - View Fake Rares card (try \`/f FREEDOMKEK\`)
 \`/f ARTIST\` - Random card by artist
-\`/f\` - Random card
+\`/f\` - Random Fake Rares card
 
 **Fake Vision:**
 \`/fv CARDNAME\` - AI visual analysis & meme breakdown
