@@ -292,7 +292,7 @@
     "issuance": "September 2021"
   },
   {
-    "asset": "NOFAPPEPE.crema",
+    "asset": "NOFAPPEPE",
     "series": 1,
     "card": 10,
     "ext": "png",
@@ -4099,12 +4099,12 @@
     "asset": "DANKRAVES",
     "series": 8,
     "card": 24,
-    "ext": "png",
+    "ext": "jpg",
     "artist": "Skife",
     "artistSlug": "Skife",
     "supply": 101,
     "issuance": "April 2022",
-    "memeUri": "https://arweave.net/Mqqk3ZM428M7MFJomgHxxF8FB0Py7aFBq2i8_GQNTz8/68qra3_thumb.png"
+    "imageUri": "https://raw.githubusercontent.com/0xRabbidfly/pepedawn-agent/master/pepe-tg/src/assets/images/DANKRAVES.jpg"
   },
   {
     "asset": "SAMURAIPEP",
@@ -6614,11 +6614,12 @@
     "asset": "LESXX",
     "series": 13,
     "card": 17,
-    "ext": "gif",
+    "ext": "jpg",
     "artist": "Kane Mayfield",
     "artistSlug": "Kane-Mayfield",
     "supply": 77,
-    "issuance": "February 2023"
+    "issuance": "February 2023",
+    "imageUri": "https://raw.githubusercontent.com/0xRabbidfly/pepedawn-agent/master/pepe-tg/src/assets/images/LESXX.jpg"
   },
   {
     "asset": "TUCKERPEPE",
@@ -8598,12 +8599,12 @@
     "asset": "WUPEPE",
     "series": 17,
     "card": 11,
-    "ext": "png",
+    "ext": "jpg",
     "artist": "netidx",
     "artistSlug": "netidx",
     "supply": 36,
     "issuance": "October 2021",
-    "memeUri": "https://arweave.net/wJ_HyCbtjvxpyOFgbYdO66yVLxbtRGzDtYuwkftR7Vk/euhysr_thumb.png"
+    "imageUri": "https://raw.githubusercontent.com/0xRabbidfly/pepedawn-agent/master/pepe-tg/src/assets/images/WUPEPE.jpg"
   },
   {
     "asset": "FAKAPAMP",
