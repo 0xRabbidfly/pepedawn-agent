@@ -1803,12 +1803,11 @@
     "asset": "FAKEPARTY",
     "series": 4,
     "card": 10,
-    "ext": "mp4",
+    "ext": "gif",
     "artist": "Nipdog",
     "artistSlug": "Nipdog",
     "supply": 44,
     "issuance": "November 2021",
-    "videoUri": "https://i.imgur.com/hmjyDFh.mp4",
     "memeUri": "https://tokenscan.io/img/cards/FAKEPARTY.jpeg"
   },
   {
@@ -1991,12 +1990,11 @@
     "asset": "PEPDILLINGER",
     "series": 4,
     "card": 27,
-    "ext": "mp4",
+    "ext": "gif",
     "artist": "Aera One",
     "artistSlug": "Aera-One",
     "supply": 100,
     "issuance": "December 2021",
-    "videoUri": "https://i.imgur.com/64WQtGr.mp4",
     "memeUri": "https://tokenscan.io/img/cards/PEPDILLINGER.gif"
   },
   {
@@ -4101,12 +4099,11 @@
     "asset": "DANKRAVES",
     "series": 8,
     "card": 24,
-    "ext": "mp4",
+    "ext": "gif",
     "artist": "Skife",
     "artistSlug": "Skife",
     "supply": 101,
     "issuance": "April 2022",
-    "videoUri": "https://arweave.net/iBufS-MwGK2pD4gMKlEmyODtp85RL7r_HaRD9u76WjI/68qra3_video.mp4",
     "memeUri": "https://tokenscan.io/img/cards/DANKRAVES.gif"
   },
   {
@@ -4216,12 +4213,11 @@
     "asset": "PEPEHISTORY",
     "series": 8,
     "card": 35,
-    "ext": "mp4",
+    "ext": "gif",
     "artist": "Rare Scrilla",
     "artistSlug": "Rare-Scrilla",
     "supply": 111,
     "issuance": "July 2022",
-    "videoUri": "https://arweave.net/1LRDVx8MQNKMlPCLl0gzk3VZAuXHAel0dDQmL6rmKE0/3vje99_video.mp4",
     "memeUri": "https://tokenscan.io/img/cards/PEPEHISTORY.gif"
   },
   {
@@ -8602,12 +8598,11 @@
     "asset": "WUPEPE",
     "series": 17,
     "card": 11,
-    "ext": "mp4",
+    "ext": "gif",
     "artist": "netidx",
     "artistSlug": "netidx",
     "supply": 36,
     "issuance": "October 2021",
-    "imageUri": "https://arweave.net/D84ZYTMAoLjYZk6FKQOqVZcPz63qx5ZcDn12C6NfA30/euhysr_video.mp4",
     "memeUri": "https://tokenscan.io/img/cards/WUPEPE.gif"
   },
   {
