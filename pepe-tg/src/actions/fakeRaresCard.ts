@@ -524,7 +524,8 @@ async function sendCardWithMedia(params: {
   });
 
   // Add optional fallback images to improve preview success on Telegram
-  if (params.fallbackImages && params.fallbackImages.length > 0) {
+  // Only use fallbacks for videos (GIFs and images work directly with primary URL)
+  if (isVideo && params.fallbackImages && params.fallbackImages.length > 0) {
     for (const fb of params.fallbackImages) {
       attachments.push({
         url: fb.url,

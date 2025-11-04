@@ -9,10 +9,12 @@ This directory contains the PEPEDAWN bot application.
 ## Quick Start
 
 ```bash
-bun install                    # Install dependencies
+bun install                    # Install dependencies (includes custom Telegram plugin fork)
 cp .env.example .env          # Configure (edit with your API keys)
 bun run dev                   # Start development
 ```
+
+> **Note:** This project uses a custom fork of `@elizaos/plugin-telegram` located in `packages/plugin-telegram-fakerares/`. See [FORK_MIGRATION.md](FORK_MIGRATION.md) for details.
 
 ## Key Commands
 

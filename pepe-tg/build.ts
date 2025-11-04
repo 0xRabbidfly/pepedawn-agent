@@ -105,12 +105,7 @@ async function build() {
       console.warn('⚠ Failed to copy data files:', error);
     }
     
-    // Explicit checkpoint to verify execution reaches here
-    console.log('DEBUG: Reached checkpoint after data files copy');
-    
     // Copy PGLite WASM files (required for PGLite to work when running from dist/)
-    // Note: This must run after dist/ directory is created
-    console.log('DEBUG: About to enter PGLite copy try block');
     try {
       console.log('📦 Copying PGLite WASM files...');
       const pgliteDist = path.join(process.cwd(), 'node_modules/@electric-sql/pglite/dist');
