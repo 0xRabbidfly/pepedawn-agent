@@ -166,9 +166,6 @@ export class MessageManager {
       }
     }
 
-    logger.info(
-      `━━━━━━━━━━ Message processed ━━━━━━━━━━ Content: ${processedContent ? 'yes' : 'no'}, Attachments: ${attachments.length}`
-    );
     return { processedContent, attachments };
   }
 
