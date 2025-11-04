@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.5.1] - 2025-11-04
+
+### Changed
+- Upgraded ElizaOS core packages to 1.6.3 (from 1.6.2)
+- Updated `@elizaos/plugin-knowledge` to 1.5.13 (from 1.5.11)
+- Updated `@elizaos/plugin-openai` to 1.5.18 (from 1.5.16)
+
+### Technical Details
+- Dependency upgrades tested and verified in worktree before merging to main
+- No breaking changes in ElizaOS 1.6.3 affecting local Telegram fork
+- Build and runtime compatibility confirmed
+
 ## [3.5.0] - 2025-11-04
 
 ### Added
