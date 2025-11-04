@@ -2,9 +2,14 @@
  * Market Transaction Reporter Plugin
  * 
  * Plugin for monitoring Fake Rare market transactions and posting notifications.
- * Registers services: TransactionHistory, TokenScanClient, TransactionMonitor, TelegramNotificationService
+ * Also handles periodic educational content (tips and card showcases).
  * 
- * Actions will be registered in Phase 4.
+ * Registered services:
+ * - TransactionHistory: SQLite database for transaction storage
+ * - TokenScanClient: Counterparty blockchain API client
+ * - TransactionMonitor: Polls blockchain for market activity
+ * - TelegramNotificationService: Posts market notifications to Telegram
+ * - PeriodicContentService: Posts helpful tips and card showcases
  */
 
 import type { Plugin } from '@elizaos/core';
@@ -13,11 +18,12 @@ import { TransactionHistory } from '../services/transactionHistory.js';
 import { TokenScanClient } from '../services/tokenscanClient.js';
 import { TransactionMonitor } from '../services/transactionMonitor.js';
 import { TelegramNotificationService } from '../services/telegramNotification.js';
+import { PeriodicContentService } from '../services/periodicContent.js';
 import { fakeMarketAction } from '../actions/fakeMarketAction.js';
 
 export const marketTransactionReporterPlugin: Plugin = {
   name: 'market-transaction-reporter',
-  description: 'Monitors Fake Rare market transactions and posts notifications to Telegram',
+  description: 'Monitors Fake Rare market transactions, posts notifications, and shares periodic educational content',
   priority: 1000, // Lower priority than fake-rares plugin
   
   async init() {
@@ -28,7 +34,8 @@ export const marketTransactionReporterPlugin: Plugin = {
     TransactionHistory,   // Database - no dependencies
     TokenScanClient,      // HTTP client - no dependencies  
     TelegramNotificationService, // Notification service - no dependencies
-    TransactionMonitor,   // Depends on TokenScanClient and TransactionHistory (must be last)
+    TransactionMonitor,   // Depends on TokenScanClient and TransactionHistory
+    PeriodicContentService, // Periodic tips and card showcases - depends on TransactionHistory (must be last)
   ],
   
   actions: [

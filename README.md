@@ -178,7 +178,7 @@ When you upload an image with `/ft`, the bot automatically checks if it matches 
 
 ---
 
-### 📊 Market Transaction Monitoring (NEW!)
+### 📊 Market Transaction Monitoring
 
 **Commands:**
 - **`/fm`** - Recent sales + listings (default: last 10 transactions)
@@ -194,6 +194,34 @@ The bot automatically monitors Counterparty blockchain for Fake Rare market acti
 - ⚡ **DEX Atomic Swaps** - When someone completes a trustless trade (📊)
 - 📋 **Dispenser Listings** - New vending machines posted (🎰)
 - 🔄 **DEX Orders** - New swap offers posted (📊)
+
+---
+
+### 💡 Periodic Content (Community Engagement)
+
+**Automatic Features:**
+The bot can periodically post helpful tips and card showcases to your Telegram channel to keep the community engaged and educated.
+
+**What it posts:**
+- 💡 **Helpful Tips** (60%) - Rotates through 10 curated tips about bot features
+- 🎴 **Card Showcases** (40%) - Random cards from the 890+ collection
+
+**Anti-Spam Protection:**
+- Only posts if there's been user activity since the last periodic post
+- Never posts back-to-back during periods of silence
+- Configurable interval (default: 60 minutes)
+
+**Setup:**
+```bash
+# In pepe-tg/.env
+PERIODIC_CONTENT_ENABLED=true
+PERIODIC_CONTENT_INTERVAL_MINUTES=60  # Optional, defaults to 60
+TELEGRAM_CHANNEL_ID=-1001234567890    # Your channel/group ID
+```
+
+**Example Posts:**
+- "💡 Fuzzy Card Matching: Did you know? I'm typo-friendly! Try `/f FREEDOMK`..."
+- "🎴 Random Card: FREEDOMKEK" (with image and metadata)
 
 **Notification Format:**
 ```

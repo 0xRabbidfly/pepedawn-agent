@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Periodic Content Service** - Automatic community engagement posts to Telegram channels
+  - Posts helpful tips (60%) and random card showcases (40%) every 60 minutes (configurable)
+  - Rotates through 10 curated tips about bot features (`/f`, `/fv`, `/fm`, `/fl`, memory, etc.)
+  - Random card selection from 890+ Fake Rares collection with images
+  - Anti-spam: Only posts if there's been user activity since last post (prevents back-to-back spam)
+  - Configuration: `PERIODIC_CONTENT_ENABLED=true`, `PERIODIC_CONTENT_INTERVAL_MINUTES=60`
+  - Production-ready with clean logging and error handling
+
 ## [3.4.0] - 2025-11-03
 
 ### Added
