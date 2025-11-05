@@ -1,6 +1,7 @@
 import { type Plugin, logger } from '@elizaos/core';
 import { fakeRaresCardAction, fakeCommonsCardAction, rarePepesCardAction, educateNewcomerAction, startCommand, helpCommand, loreCommand, fakeRememberCommand, oddsCommand, costCommand, fakeVisualCommand, fakeTestCommand } from '../actions';
 import { fakeMarketAction } from '../actions/fakeMarketAction';
+import { fakeRaresCarouselAction } from '../actions/fakeRaresCarousel';
 import { fakeRaresContextProvider, userHistoryProvider } from '../providers';
 import { loreDetectorEvaluator } from '../evaluators';
 import { KnowledgeOrchestratorService } from '../services/KnowledgeOrchestratorService';
@@ -125,6 +126,7 @@ export const fakeRaresPlugin: Plugin = {
     startCommand,
     helpCommand,
     fakeRaresCardAction,
+    fakeRaresCarouselAction,
     fakeCommonsCardAction,
     rarePepesCardAction,
     fakeVisualCommand,
@@ -236,7 +238,7 @@ export const fakeRaresPlugin: Plugin = {
           // Extract for convenience
           const { isFakeRareCard, hasBotMention, hasRememberCommand } = triggers;
           const isReplyToBot = triggers.isReplyToBot;  // Use the corrected value
-          const { isHelp, isStart, isF, isC, isP, isFv, isFt, isFl, isFr, isFm, isDawn, isFc } = commands;
+          const { isHelp, isStart, isF, isFCarousel, isC, isP, isFv, isFt, isFl, isFr, isFm, isDawn, isFc } = commands;
           
           // Log routing factors
           logger.info(`   Triggers: reply=${!!isReplyToBot} | card=${isFakeRareCard} | @mention=${hasBotMention}`);
@@ -303,7 +305,8 @@ export const fakeRaresPlugin: Plugin = {
           if (isHelp && await executeCommandAlways(helpCommand, cmdParams, '/help')) return;
           if (isStart && await executeCommandAlways(startCommand, cmdParams, '/start')) return;
           
-          // Card and lore commands
+          // Card and lore commands  
+          if (isFCarousel && await executeCommand(fakeRaresCarouselAction, cmdParams, '/f c')) return;
           if (isF && await executeCommand(fakeRaresCardAction, cmdParams, '/f')) return;
           if (isC && await executeCommand(fakeCommonsCardAction, cmdParams, '/c')) return;
           if (isP && await executeCommand(rarePepesCardAction, cmdParams, '/p')) return;

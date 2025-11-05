@@ -176,7 +176,7 @@ export class TelegramService extends Service {
     });
     this.bot?.launch({
       dropPendingUpdates: true,
-      allowedUpdates: ['message', 'message_reaction'],
+      allowedUpdates: ['message', 'message_reaction', 'callback_query'],
     });
 
     // Get bot info for identification purposes
@@ -309,6 +309,15 @@ export class TelegramService extends Service {
         await this.messageManager!.handleReaction(ctx);
       } catch (error) {
         logger.error({ error }, 'Error handling reaction');
+      }
+    });
+
+    // Callback query handler (for inline keyboard buttons)
+    this.bot?.on('callback_query', async (ctx) => {
+      try {
+        await this.messageManager!.handleCallbackQuery(ctx);
+      } catch (error) {
+        logger.error({ error }, 'Error handling callback query');
       }
     });
   }

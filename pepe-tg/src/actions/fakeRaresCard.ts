@@ -45,7 +45,7 @@ const FAKE_RARES_BASE_URL =
   "https://pepewtf.s3.amazonaws.com/collections/fake-rares/full";
 
 // Fuzzy matching thresholds and configuration
-const FUZZY_MATCH_THRESHOLDS = {
+export const FUZZY_MATCH_THRESHOLDS = {
   HIGH_CONFIDENCE: 0.75, // ≥75% similarity: Auto-show the matched card
   MODERATE: 0.55, // 55-74% similarity: Show suggestions
   ARTIST_FUZZY: 0.65, // 65% similarity: Minimum for artist fuzzy matching
@@ -90,7 +90,7 @@ const logger = createLogger("FakeCard");
 /**
  * Get card info - uses refreshable index if available, falls back to static
  */
-function getCardInfo(cardName: string): CardInfo | null {
+export function getCardInfo(cardName: string): CardInfo | null {
   // Try refreshable index first (may have newer data)
   const refreshableCard = getRefreshableCardInfo(cardName);
   if (refreshableCard) return refreshableCard;
@@ -105,7 +105,7 @@ function getCardInfo(cardName: string): CardInfo | null {
 /**
  * Get all cards - uses refreshable index if available, falls back to static
  */
-function getAllCards(): CardInfo[] {
+export function getAllCards(): CardInfo[] {
   const refreshableIndex = getRefreshableCardIndex();
   return refreshableIndex.length > 0 ? refreshableIndex : FULL_CARD_INDEX;
 }
@@ -177,7 +177,7 @@ function findTopMatches(
  * Find cards by exact artist name match (case-insensitive)
  * Returns array of matching cards and the matched artist name
  */
-function findCardsByArtistExact(inputArtist: string): {
+export function findCardsByArtistExact(inputArtist: string): {
   cards: CardInfo[];
   matchedArtist: string;
 } | null {
@@ -203,7 +203,7 @@ function findCardsByArtistExact(inputArtist: string): {
  * Find cards by artist name with fuzzy matching support
  * Returns array of matching cards and the matched artist name
  */
-function findCardsByArtistFuzzy(inputArtist: string): {
+export function findCardsByArtistFuzzy(inputArtist: string): {
   cards: CardInfo[];
   matchedArtist: string;
   similarity: number;
@@ -284,7 +284,7 @@ async function headContentLength(
 /**
  * Fetch Content-Type and Content-Length via HEAD with a timeout.
  */
-async function headInfo(
+export async function headInfo(
   url: string,
   timeoutMs: number = 3000,
 ): Promise<{ contentType: string | null; contentLength: number | null }> {
@@ -302,7 +302,7 @@ async function headInfo(
   }
 }
 
-function getEnvNumber(name: string, fallback: number): number {
+export function getEnvNumber(name: string, fallback: number): number {
   const val = process.env[name];
   if (!val) return fallback;
   const n = Number(val);
@@ -401,13 +401,13 @@ export function buildArtistButton(
  * Sends card message with media attachment (unified callback handler)
  * Handles all card display flows with consistent formatting
  */
-async function sendCardWithMedia(params: {
+export async function sendCardWithMedia(params: {
   callback: ((response: any) => Promise<any>) | null;
   cardMessage: string;
   mediaUrl: string;
   mediaExtension: MediaExtension;
   assetName: string;
-  buttons?: Array<{ text: string; url: string }>;
+  buttons?: Array<{ text: string; url?: string; callback_data?: string }>;
   fallbackImages?: Array<{ url: string; contentType: string }>;
 }): Promise<void> {
   if (!params.callback) {
@@ -440,10 +440,8 @@ async function sendCardWithMedia(params: {
           __fromAction: "fakeRaresCard",
           suppressBootstrap: true,
         });
-        // Debug: MP4 sent as link due to preflight check
         return;
       }
-      // Eligible: proceed with attachments below
     } catch {
       // If preflight failed entirely, send link to avoid timeouts
       await params.callback({
@@ -456,7 +454,6 @@ async function sendCardWithMedia(params: {
         __fromAction: "fakeRaresCard",
         suppressBootstrap: true,
       });
-      // Debug: MP4 preflight failed; sent link
       return;
     }
   }
@@ -483,10 +480,8 @@ async function sendCardWithMedia(params: {
           __fromAction: "fakeRaresCard",
           suppressBootstrap: true,
         });
-        // Debug: GIF sent as link due to preflight check
         return;
       }
-      // Eligible: proceed with attachments below
     } catch {
       // If preflight failed entirely, send link to avoid timeouts
       await params.callback({
@@ -499,7 +494,6 @@ async function sendCardWithMedia(params: {
         __fromAction: "fakeRaresCard",
         suppressBootstrap: true,
       });
-      // Debug: GIF preflight failed; sent link
       return;
     }
   }
@@ -539,14 +533,12 @@ async function sendCardWithMedia(params: {
   await params.callback({
     text: params.cardMessage,
     attachments,
-    // Pass artist button through so the Telegram bridge can render inline keyboard
+    // Pass buttons through so the Telegram bridge can render inline keyboard
     buttons:
       params.buttons && params.buttons.length > 0 ? params.buttons : undefined,
     __fromAction: "fakeRaresCard",
     suppressBootstrap: true,
   });
-
-  // Debug: Card sent with media attachment
 }
 
 /**
@@ -596,7 +588,7 @@ export function determineCardUrl(
  * Build a list of fallback image URLs to try if video fails on Telegram.
  * Prefers cardInfo.imageUri, then S3 JPG and PNG variants.
  */
-function buildFallbackImageUrls(
+export function buildFallbackImageUrls(
   assetName: string,
   cardInfo: CardInfo | null,
 ): Array<{ url: string; contentType: string }> {
@@ -1023,9 +1015,12 @@ export const fakeRaresCardAction: Action = {
     const raw = message.content.text || "";
     const text = raw.trim();
     // Accept: "/f", "/f ASSET", "/f ARTIST NAME" (with spaces), "/f@bot ASSET", and leading mentions like "@bot /f ASSET"
+    // Exclude carousel mode (/f c <artist>) - handled by fakeRaresCarouselAction
     const fPattern =
       /^(?:@[A-Za-z0-9_]+\s+)?\/f(?:@[A-Za-z0-9_]+)?(?:\s+.+)?$/i;
-    return fPattern.test(text);
+    const carouselPattern =
+      /^(?:@[A-Za-z0-9_]+\s+)?\/f(?:@[A-Za-z0-9_]+)?\s+c\s+.+$/i;
+    return fPattern.test(text) && !carouselPattern.test(text);
   },
 
   handler: async (

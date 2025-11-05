@@ -596,17 +596,28 @@ export class MessageManager {
         try {
           // Skip ONLY if explicitly marked as reasoning (don't block low-token responses)
           // sendMessageInChunks will handle empty text with ' ' fallback
-          if (content.text === undefined && !content.attachments?.length && !content.buttons?.length) {
+          if (content.text === undefined && !content.attachments?.length && !(content as TelegramContent).buttons?.length) {
             return [];
           }
 
           let sentMessages: boolean | Message.TextMessage[] = false;
           // channelType target === 'telegram'
-          if (content?.channelType === 'DM') {
+          // Only use DM shortcut for text-only messages (no attachments)
+          if (content?.channelType === 'DM' && !content.attachments?.length) {
             sentMessages = [];
             if (ctx.from) {
               // FIXME split on 4096 chars
-              const res = await this.bot.telegram.sendMessage(ctx.from.id, content.text);
+              // Convert buttons for DM messages
+              const telegramButtons = convertToTelegramButtons((content as TelegramContent).buttons ?? []);
+              
+              const textToSend = content.text || '';
+              const res = await this.bot.telegram.sendMessage(
+                ctx.from.id, 
+                textToSend,
+                telegramButtons.length > 0 ? {
+                  ...Markup.inlineKeyboard(telegramButtons),
+                } : undefined
+              );
               sentMessages.push(res);
             }
           } else {
@@ -821,6 +832,95 @@ export class MessageManager {
         },
         'Error handling reaction'
       );
+    }
+  }
+
+  /**
+   * Handles callback query from inline keyboard buttons
+   * @param {Context} ctx - The Telegram context
+   * @returns {Promise<void>}
+   */
+  public async handleCallbackQuery(ctx: Context): Promise<void> {
+    try {
+      // Type guard to check if this is a callback query
+      if (!ctx.callbackQuery || !('data' in ctx.callbackQuery)) {
+        return;
+      }
+
+      const callbackData = ctx.callbackQuery.data;
+      
+      // Check if this is a carousel navigation callback (starts with "fc:")
+      if (callbackData.startsWith('fc:')) {
+        
+        // Import the carousel handler dynamically to avoid circular dependencies
+        // @ts-ignore - Dynamic import from parent project
+        const { handleCarouselNavigation } = await import('../../../src/actions/fakeRaresCarousel.js');
+        
+        const result = await handleCarouselNavigation(callbackData);
+        
+        if (!result) {
+          // Invalid callback or noop - just answer the callback query
+          await ctx.answerCbQuery();
+          return;
+        }
+        
+        // Edit the message with the new card
+        const { cardMessage, mediaUrl, card, buttons } = result;
+        
+        // Build attachment for the card media
+        const attachment = {
+          url: mediaUrl,
+          title: card.asset,
+          source: 'fake-rares',
+          contentType: result.mediaExtension === 'mp4' ? 'video/mp4' 
+            : result.mediaExtension === 'gif' ? 'image/gif' 
+            : 'image/jpeg',
+        };
+        
+        // Answer callback query FIRST to prevent timeout (Telegram has ~5 sec limit)
+        await ctx.answerCbQuery();
+        
+        // Delete the old message
+        try {
+          if (ctx.callbackQuery.message) {
+            await ctx.telegram.deleteMessage(
+              ctx.callbackQuery.message.chat.id,
+              ctx.callbackQuery.message.message_id
+            );
+          }
+        } catch {
+          // Ignore delete errors
+        }
+        
+        // Send new message with media using sendMessageInChunks
+        try {
+          const content: TelegramContent = {
+            text: cardMessage,
+            attachments: [{
+              ...attachment,
+              id: createUniqueUuid(this.runtime, `${card.asset}-${Date.now()}`),
+            } as any],
+            buttons: buttons as any,
+          };
+          
+          await this.sendMessageInChunks(ctx, content);
+          logger.info(`[MessageManager] Carousel navigation successful: ${result.artistName} [${result.newIndex + 1}/${result.totalCards}]`);
+        } catch (error) {
+          logger.error({ error }, '[MessageManager] Error sending carousel message');
+        }
+      } else {
+        // Unknown callback query - just acknowledge it
+        await ctx.answerCbQuery();
+      }
+    } catch (error) {
+      logger.error({ error }, '[MessageManager] Error handling callback query');
+      
+      // Try to answer the callback query to avoid UI issues
+      try {
+        await ctx.answerCbQuery('❌ An error occurred');
+      } catch {
+        // Ignore if we can't answer
+      }
     }
   }
 

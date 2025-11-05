@@ -82,6 +82,7 @@ export const helpCommand: Action = {
 **Cards:**
 \`/f CARDNAME\` - View Fake Rares card (try \`/f FREEDOMKEK\`)
 \`/f ARTIST\` - Random card by artist
+\`/f c ARTIST\` - Browse artist's cards with carousel 🎠
 \`/f\` - Random Fake Rares card
 
 **Fake Vision:**
