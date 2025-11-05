@@ -236,7 +236,32 @@ export class MessageManager {
         
         // Route to Telegram media methods for inline preview/player
         if (isVideo) {
-          // Attempt streaming first for Arweave/S3 hosts
+          // Handle local file:// URLs (from converted GIFs)
+          if (url.startsWith('file://')) {
+            try {
+              const localPath = url.replace('file://', '');
+              if (!fs.existsSync(localPath)) {
+                throw new Error(`Local file not found: ${localPath}`);
+              }
+              
+              const filename = localPath.split('/').pop() || 'video.mp4';
+              const fileBuffer = fs.readFileSync(localPath);
+              
+              await ctx.replyWithVideo({ source: fileBuffer, filename }, {
+                caption: content.text || undefined,
+                supports_streaming: true,
+                reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
+                ...Markup.inlineKeyboard(telegramButtons),
+              });
+              sentPrimaryMedia = true;
+              break;
+            } catch (localFileErr) {
+              logger.warn({ url, localFileErr }, 'Local file video failed, falling back to text');
+              // Don't try other methods - local file should work or fail cleanly
+            }
+          }
+          
+          // Attempt streaming first for Arweave/S3/tokenscan hosts (HTTP/HTTPS only)
           let streamingFirst = false;
           try {
             const host = new URL(url).hostname;
@@ -278,42 +303,89 @@ export class MessageManager {
             }
           }
           
-          try {
-            await ctx.replyWithVideo(url, {
-              caption: content.text || undefined,
-              supports_streaming: true,
-              reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
-              ...Markup.inlineKeyboard(telegramButtons),
-            });
-            sentPrimaryMedia = true;
-            break;
-          } catch (videoErr) {
-            // Fallback: send as document if video fails (common with Arweave URLs)
+          // Try direct URL send (only for HTTP/HTTPS URLs)
+          if (!url.startsWith('file://')) {
             try {
-              await ctx.replyWithDocument(url, {
+              await ctx.replyWithVideo(url, {
+                caption: content.text || undefined,
+                supports_streaming: true,
+                reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
+                ...Markup.inlineKeyboard(telegramButtons),
+              });
+              sentPrimaryMedia = true;
+              break;
+            } catch (videoErr) {
+              // Fallback: send as document if video fails (common with Arweave URLs)
+              try {
+                await ctx.replyWithDocument(url, {
+                  caption: content.text || undefined,
+                  reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
+                  ...Markup.inlineKeyboard(telegramButtons),
+                });
+                sentPrimaryMedia = true;
+                break;
+              } catch (docErr) {
+                logger.warn({ videoErr, docErr, url }, 'Video attachment failed, falling back to text');
+              }
+            }
+          }
+        }
+        
+        if (isGif) {
+          // Try streaming first for large GIFs from known hosts
+          let streamingFirst = false;
+          try {
+            const host = new URL(url).hostname;
+            streamingFirst = /arweave\.net$/i.test(host) || /amazonaws\.com$/i.test(host) || /tokenscan\.io$/i.test(host);
+          } catch {}
+          
+          if (streamingFirst) {
+            try {
+              const head = await fetch(url, { method: 'HEAD' });
+              const lenStr = head.ok ? head.headers.get('content-length') : null;
+              const maxBytes = 49 * 1024 * 1024; // ~49MB for bot upload
+              const length = lenStr ? parseInt(lenStr, 10) : NaN;
+              if (!Number.isNaN(length) && length > maxBytes) {
+                throw new Error('FileTooLargeForBotUpload');
+              }
+              const response = await fetch(url);
+              if (response && response.ok) {
+                const ab = await response.arrayBuffer();
+                const filename = (() => {
+                  try {
+                    const u = new URL(url);
+                    const last = u.pathname.split('/').pop() || '';
+                    return last && last.length <= 100 ? last : 'animation.gif';
+                  } catch (_) {
+                    return 'animation.gif';
+                  }
+                })();
+                await ctx.replyWithAnimation({ source: Buffer.from(ab), filename }, {
+                  caption: content.text || undefined,
+                  reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
+                  ...Markup.inlineKeyboard(telegramButtons),
+                });
+                sentPrimaryMedia = true;
+                break;
+              }
+            } catch (gifStreamFirstErr) {
+              logger.warn({ url, gifStreamFirstErr }, 'GIF streaming-first failed, trying URL send');
+            }
+          }
+          
+          // Try direct URL send (only for HTTP/HTTPS and non-streamed GIFs)
+          if (!url.startsWith('file://')) {
+            try {
+              await ctx.replyWithAnimation(url, {
                 caption: content.text || undefined,
                 reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
                 ...Markup.inlineKeyboard(telegramButtons),
               });
               sentPrimaryMedia = true;
               break;
-            } catch (docErr) {
-              logger.warn({ videoErr, docErr, url }, 'Video attachment failed, falling back to text');
+            } catch (gifErr) {
+              logger.warn({ gifErr, url }, 'GIF attachment failed, falling back to text');
             }
-          }
-        }
-        
-        if (isGif) {
-          try {
-            await ctx.replyWithAnimation(url, {
-              caption: content.text || undefined,
-              reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
-              ...Markup.inlineKeyboard(telegramButtons),
-            });
-            sentPrimaryMedia = true;
-            break;
-          } catch (gifErr) {
-            logger.warn({ gifErr, url }, 'GIF attachment failed, falling back to text');
           }
         }
         

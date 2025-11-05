@@ -19,6 +19,7 @@ import {
   getCardInfo as getRefreshableCardInfo,
   getFullCardIndex as getRefreshableCardIndex,
 } from "../utils/cardIndexRefresher";
+import { convertGifUrlToMp4 } from "../services/videoConversionService";
 
 /**
  * Fake Rares Card Display Action
@@ -409,6 +410,7 @@ export async function sendCardWithMedia(params: {
   mediaUrl: string;
   mediaExtension: MediaExtension;
   assetName: string;
+  cardInfo?: CardInfo | null; // Card info for fallback URL generation
   buttons?: Array<{ text: string; url?: string; callback_data?: string }>;
   fallbackImages?: Array<{ url: string; contentType: string }>;
   runtime?: IAgentRuntime; // Optional runtime for service access
@@ -442,28 +444,86 @@ export async function sendCardWithMedia(params: {
   const isVideo = params.mediaExtension === "mp4";
   const isAnimation = params.mediaExtension === "gif";
 
-  if (isVideo) {
+  // ========================================================================
+  // GIF CONVERSION LOGIC
+  // Check if GIF is too large and convert to MP4 for better compression
+  // ========================================================================
+  if (isAnimation) {
+    const maxMb = getEnvNumber("GIF_URL_MAX_MB", 40);
     try {
-      const maxMb = getEnvNumber("MP4_URL_MAX_MB", 50);
       const { contentType, contentLength } = await headInfo(
         params.mediaUrl,
         3000,
       );
-      const typeOk = (contentType || "").toLowerCase().includes("video/mp4");
-      const sizeOk =
-        contentLength !== null ? contentLength <= maxMb * 1024 * 1024 : false;
-      if (!typeOk || !sizeOk) {
-        await params.callback({
-          text: `${params.cardMessage}\n\nFile too large for viewing on TG - click the link to view asset\n🎬 Video: ${params.mediaUrl}`,
-          buttons:
-            params.buttons && params.buttons.length > 0
-              ? params.buttons
-              : undefined,
-          plainText: true,
-          __fromAction: "fakeRaresCard",
-          suppressBootstrap: true,
-        });
-        return;
+      const typeOk = (contentType || "").toLowerCase().includes("image/gif");
+      const isOverLimit =
+        contentLength !== null && contentLength > maxMb * 1024 * 1024;
+
+      // If GIF is over limit, try to convert to MP4
+      if (typeOk && isOverLimit) {
+        const origSizeMb = (contentLength! / 1024 / 1024).toFixed(2);
+        logger.info(
+          `   GIF over limit (${origSizeMb}MB > ${maxMb}MB), attempting conversion...`,
+        );
+
+        const conversionResult = await convertGifUrlToMp4(params.mediaUrl);
+
+        if (conversionResult.success && conversionResult.outputPath) {
+          const convertedSizeMb = (conversionResult.convertedSize! / 1024 / 1024).toFixed(2);
+          logger.info(
+            `   ✅ Converted ${origSizeMb}MB → ${convertedSizeMb}MB (${conversionResult.compressionRatio?.toFixed(1)}% reduction)`,
+          );
+
+          // Update params to send converted MP4 instead
+          // Convert file path to file:// URL for Telegram
+          params.mediaUrl = `file://${conversionResult.outputPath}`;
+          params.mediaExtension = "mp4";
+
+          // Continue to video sending logic below with the converted file
+        } else {
+          logger.warning(
+            `   ⚠️ Conversion failed: ${conversionResult.error}, falling back to link`,
+          );
+          // Fall through to existing large file handling
+        }
+      }
+    } catch (error) {
+      logger.error(`   Error checking/converting GIF: ${error}`);
+      // Fall through to existing handling
+    }
+  }
+
+  // Re-evaluate media type after potential conversion
+  const finalIsVideo = params.mediaExtension === "mp4";
+  const finalIsAnimation = params.mediaExtension === "gif";
+
+  if (finalIsVideo) {
+    try {
+      const maxMb = getEnvNumber("MP4_URL_MAX_MB", 50);
+      // Skip size check for local converted files (file:// URLs)
+      if (params.mediaUrl.startsWith("file://")) {
+        // Local converted file, proceed directly to sending
+      } else {
+        const { contentType, contentLength } = await headInfo(
+          params.mediaUrl,
+          3000,
+        );
+        const typeOk = (contentType || "").toLowerCase().includes("video/mp4");
+        const sizeOk =
+          contentLength !== null ? contentLength <= maxMb * 1024 * 1024 : false;
+        if (!typeOk || !sizeOk) {
+          await params.callback({
+            text: `${params.cardMessage}\n\nFile too large for viewing on TG - click the link to view asset\n🎬 Video: ${params.mediaUrl}`,
+            buttons:
+              params.buttons && params.buttons.length > 0
+                ? params.buttons
+                : undefined,
+            plainText: true,
+            __fromAction: "fakeRaresCard",
+            suppressBootstrap: true,
+          });
+          return;
+        }
       }
     } catch {
       await params.callback({
@@ -480,7 +540,8 @@ export async function sendCardWithMedia(params: {
     }
   }
 
-  if (isAnimation) {
+  // Check remaining GIF animations (ones that weren't converted above)
+  if (finalIsAnimation) {
     try {
       const maxMb = getEnvNumber("GIF_URL_MAX_MB", 40);
       const { contentType, contentLength } = await headInfo(
@@ -529,14 +590,14 @@ export async function sendCardWithMedia(params: {
     url: params.mediaUrl,
     title: params.assetName,
     source: "fake-rares",
-    contentType: isVideo
+    contentType: finalIsVideo
       ? "video/mp4"
-      : isAnimation
+      : finalIsAnimation
         ? "image/gif"
         : "image/jpeg",
   });
 
-  if (isVideo && params.fallbackImages && params.fallbackImages.length > 0) {
+  if (finalIsVideo && params.fallbackImages && params.fallbackImages.length > 0) {
     for (const fb of params.fallbackImages) {
       attachments.push({
         url: fb.url,
@@ -571,7 +632,28 @@ function getFakeRaresImageUrl(
 }
 
 /**
+ * Known bad domains that should be skipped in favor of fallbacks
+ */
+const BAD_DOMAINS = [
+  'reasoningwithshapes.com',
+  'www.reasoningwithshapes.com',
+];
+
+/**
+ * Check if a URL is from a known bad domain
+ */
+function isDeadDomain(url: string): boolean {
+  try {
+    const hostname = new URL(url).hostname.toLowerCase();
+    return BAD_DOMAINS.some(bad => hostname.includes(bad));
+  } catch {
+    return false;
+  }
+}
+
+/**
  * Determines the card URL from CardInfo, prioritizing special URIs over constructed URLs
+ * Skips known dead custom URIs and falls back to memeUri or S3
  */
 export function determineCardUrl(
   cardInfo: CardInfo,
@@ -579,10 +661,23 @@ export function determineCardUrl(
 ): CardUrlResult {
   // Check for special URIs (videoUri for mp4, imageUri for others)
   if (cardInfo.ext === "mp4" && cardInfo.videoUri) {
-    return { url: cardInfo.videoUri, extension: "mp4" };
+    // Skip dead domains and fallback to memeUri
+    if (isDeadDomain(cardInfo.videoUri)) {
+      logger.info(`   Skipping dead videoUri, using memeUri fallback`);
+      if (cardInfo.memeUri) {
+        const memeExt = cardInfo.memeUri.toLowerCase().endsWith('.gif') ? 'gif' : 'jpeg';
+        return { 
+          url: cardInfo.memeUri, 
+          extension: memeExt as MediaExtension 
+        };
+      }
+      // No memeUri, fall through to S3
+    } else {
+      return { url: cardInfo.videoUri, extension: "mp4" };
+    }
   }
 
-  if (cardInfo.imageUri) {
+  if (cardInfo.imageUri && !isDeadDomain(cardInfo.imageUri)) {
     return {
       url: cardInfo.imageUri,
       extension: cardInfo.ext as MediaExtension,
@@ -796,6 +891,7 @@ async function handleCardFound(params: {
     mediaUrl: params.urlResult.url,
     mediaExtension: params.urlResult.extension,
     assetName: displayAssetName,
+    cardInfo: params.cardInfo,
     buttons,
     fallbackImages,
     runtime: params.runtime,
@@ -866,6 +962,7 @@ async function displayArtistCard(params: {
     mediaUrl: matchedUrlResult.url,
     mediaExtension: matchedUrlResult.extension,
     assetName: randomCard.asset,
+    cardInfo: randomCard,
     buttons,
     fallbackImages,
     runtime: params.runtime,
@@ -930,6 +1027,7 @@ async function handleCardNotFound(params: {
         mediaUrl: matchedUrlResult.url,
         mediaExtension: matchedUrlResult.extension,
         assetName: bestMatch.name,
+        cardInfo: matchedCard,
         runtime: params.runtime,
       });
 

@@ -2143,13 +2143,12 @@
     "asset": "COOGIPEPE",
     "series": 4,
     "card": 41,
-    "ext": "mp4",
+    "ext": "png",
     "artist": "ROCHIGG",
     "artistSlug": "ROCHIGG",
     "supply": 175,
     "issuance": "January 2022",
-    "videoUri": "http://reasoningwithshapes.com/ROCCOIT/COOGIPEPE/GOOCIPEPEmp4.mp4",
-    "memeUri": "https://tokenscan.io/img/cards/COOGIPEPE.png"
+    "imageUri": "https://tokenscan.io/img/cards/COOGIPEPE.png"
   },
   {
     "asset": "PUFFPUFFPEPE",
@@ -3919,13 +3918,12 @@
     "asset": "PEPEAVENLY",
     "series": 8,
     "card": 8,
-    "ext": "mp4",
+    "ext": "gif",
     "artist": "Coit",
     "artistSlug": "Coit",
     "supply": 57,
     "issuance": "May 2022",
-    "videoUri": "https://www.reasoningwithshapes.com/PEPEAVENLY/fullpower.mp4",
-    "memeUri": "https://tokenscan.io/img/cards/PEPEAVENLY.gif"
+    "imageUri": "https://tokenscan.io/img/cards/PEPEAVENLY.gif"
   },
   {
     "asset": "FAKERUMORS",
@@ -6308,13 +6306,12 @@
     "asset": "PEPELALALAND",
     "series": 12,
     "card": 37,
-    "ext": "mp4",
+    "ext": "gif",
     "artist": "Coit",
     "artistSlug": "Coit",
     "supply": 48,
     "issuance": "May 2022",
-    "videoUri": "https://arweave.net/yipz3qP44vDwkl6czMBhYGTjeoQfNHyg7fOPUEQ5SgA/ei1lbt_video.mp4",
-    "memeUri": "https://tokenscan.io/img/cards/PEPELALALAND.gif"
+    "imageUri": "https://tokenscan.io/img/cards/PEPELALALAND.gif"
   },
   {
     "asset": "SADNESSBEACH",
@@ -7163,13 +7160,12 @@
     "asset": "XPEPEX",
     "series": 14,
     "card": 22,
-    "ext": "mp4",
+    "ext": "gif",
     "artist": "Coit",
     "artistSlug": "Coit",
     "supply": 36,
     "issuance": "April 2023",
-    "videoUri": "https://arweave.net/hS7nH0pYx5ZOsjBT3BHAsPfX36eDb4LMDpR9XTgnqXw/4gfuyr_video.mp4",
-    "memeUri": "https://tokenscan.io/img/cards/XPEPEX.gif"
+    "imageUri": "https://tokenscan.io/img/cards/XPEPEX.gif"
   },
   {
     "asset": "SMOLSTAMP",
@@ -7679,13 +7675,12 @@
     "asset": "PEPEZION",
     "series": 15,
     "card": 23,
-    "ext": "mp4",
+    "ext": "gif",
     "artist": "Coit",
     "artistSlug": "Coit",
     "supply": 26,
     "issuance": "September 2022",
-    "videoUri": "https://arweave.net/a-Qu8nLPFlAqds2QFzE7DiPx3By_FGzlKSWH4WLwJCo/sxavdy_video.mp4",
-    "memeUri": "https://tokenscan.io/img/cards/PEPEZION.gif"
+    "imageUri": "https://tokenscan.io/img/cards/PEPEZION.gif"
   },
   {
     "asset": "MAZEPEPE",

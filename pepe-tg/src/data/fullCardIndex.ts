@@ -24,6 +24,7 @@ export interface CardInfo {
   issuance?: string | null;  // Release date (e.g., "September 2021")
   videoUri?: string | null;  // Direct video URL (for mp4 files, often on Arweave)
   imageUri?: string | null;  // Direct image URL (alternative to constructed URL)
+  memeUri?: string | null;   // Meme/preview URL (usually GIF on tokenscan.io)
   issues?: string[];  // Optional: Data quality issues like 'no_artist', 'no_supply', etc.
 }
 
