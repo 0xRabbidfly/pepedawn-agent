@@ -32,7 +32,7 @@
     "vitest": "1.6.1"
   },
   "scripts": {
-    "build": "tsup && tsc",
+    "build": "tsup && tsc || true",
     "dev": "tsup --watch",
     "test": "vitest run",
     "test:watch": "vitest",

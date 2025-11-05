@@ -23,6 +23,21 @@ async function build() {
     // Clean previous build
     await cleanBuild('dist');
 
+    // Build the Telegram plugin first if it exists (required by main project)
+    const pluginPath = 'packages/plugin-telegram-fakerares';
+    if (existsSync(pluginPath)) {
+      console.log('📦 Building Telegram plugin...');
+      try {
+        await $`cd ${pluginPath} && npm run build`.quiet();
+        console.log('✓ Telegram plugin built');
+      } catch (error) {
+        console.error('✗ Failed to build Telegram plugin:', error);
+        return false;
+      }
+    } else {
+      console.log('ℹ️  Telegram plugin not found, skipping plugin build');
+    }
+
     // Run JavaScript build and TypeScript declarations in parallel
     console.log('Starting build tasks...');
 
@@ -46,6 +61,7 @@ async function build() {
             '@elizaos/core',
             '@elizaos/plugin-bootstrap',
             '@elizaos/plugin-sql',
+            '@elizaos/plugin-telegram', // Keep external to load our forked plugin from node_modules
             '@elizaos/cli',
             'zod',
             'axios',
