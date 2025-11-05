@@ -14,6 +14,7 @@
 ├──────────────────────────────────────────────────────────────┤
 │  /f CARDNAME      →  View any Fake Rare card                │
 │  /f ARTIST        →  Random card by that artist              │
+│  /f c ARTIST      →  Browse artist's cards (carousel) ⭐NEW  │
 │  /f               →  Random card from 890+ collection        │
 │                                                              │
 │  /c CARDNAME      →  View any Fake Commons card             │
@@ -21,6 +22,7 @@
 │                                                              │
 │  💡 Typo-friendly! "FREEDOMK" → auto-corrects to FREEDOMKEK │
 │  💡 Case-insensitive! "freedomkek" works too                │
+│  💡 Carousel: Navigate with ⬅️ Prev / ➡️ Next buttons       │
 └──────────────────────────────────────────────────────────────┘
 
 ┌──────────────────────────────────────────────────────────────┐
@@ -138,6 +140,9 @@ YOU                PEPEDAWN                RESULT
 /f CARDNAME   →   Looks up in index    →   📷 Card image
                   (890+ Fake Rares)         + metadata
 
+/f c ARTIST   →   Browse carousel      →   🎠 Interactive
+                  with ⬅️ / ➡️ buttons       card browser
+
 /c CARDNAME   →   Looks up in index    →   📷 Card image
                   (1813+ Fake Commons)      + metadata
 
@@ -174,5 +179,5 @@ Any text      →   GPT-4o + PEPEDAWN    →   💬 Helpful reply
 
 ---
 
-**Last Updated:** November 2, 2025
+**Last Updated:** November 5, 2025
 

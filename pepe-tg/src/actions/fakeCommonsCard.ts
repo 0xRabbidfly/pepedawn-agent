@@ -165,7 +165,29 @@ async function sendCardWithMedia(params: {
   mediaExtension: MediaExtension;
   assetName: string;
   buttons?: Array<{ text: string; url: string }>;
+  runtime?: IAgentRuntime;
 }): Promise<void> {
+  // Try to use CardDisplayService if runtime is provided
+  if (params.runtime) {
+    try {
+      const service = params.runtime.getService('card-display');
+      if (service && typeof service.sendCard === 'function') {
+        await service.sendCard({
+          callback: params.callback,
+          cardMessage: params.cardMessage,
+          mediaUrl: params.mediaUrl,
+          mediaExtension: params.mediaExtension,
+          assetName: params.assetName,
+          buttons: params.buttons,
+        });
+        return;
+      }
+    } catch {
+      // Fallback to direct implementation
+    }
+  }
+  
+  // Direct implementation (fallback)
   if (!params.callback) {
     return;
   }
@@ -295,6 +317,7 @@ function lookupCommonsCard(cardName: string): CommonsCardInfo | null {
 async function handleExactCard(
   assetName: string,
   callback?: HandlerCallback,
+  runtime?: IAgentRuntime,
 ): Promise<{ success: boolean; data: any }> {
   logger.info("   STEP 2/2: Card lookup");
   const cardInfo = lookupCommonsCard(assetName);
@@ -334,6 +357,7 @@ async function handleExactCard(
     mediaExtension: extension,
     assetName: cardInfo.asset,
     buttons,
+    runtime,
   });
 
   logger.info(`   /c complete: ${cardInfo.asset}`);
@@ -354,6 +378,7 @@ async function handleExactCard(
  */
 async function handleRandomCard(
   callback?: HandlerCallback,
+  runtime?: IAgentRuntime,
 ): Promise<{ success: boolean; data: any }> {
   const allCards = getAllCommonsCards();
   
@@ -386,6 +411,7 @@ async function handleRandomCard(
     mediaExtension: extension,
     assetName: randomCard.asset,
     buttons,
+    runtime,
   });
 
   logger.info(`   /c complete: ${randomCard.asset} (S${randomCard.series} C${randomCard.card})`);
@@ -441,10 +467,10 @@ export const fakeCommonsCardAction: Action = {
       
       // Handle random or exact match
       if (request.isRandomCard) {
-        return await handleRandomCard(callback);
+        return await handleRandomCard(callback, runtime);
       } else {
         logger.info(`   Looking up: "${request.assetName}"`);
-        return await handleExactCard(request.assetName!, callback);
+        return await handleExactCard(request.assetName!, callback, runtime);
       }
       
     } catch (error) {

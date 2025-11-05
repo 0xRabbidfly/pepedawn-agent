@@ -34,7 +34,7 @@ Example: `@production-prep minor`
 
 ### 3. Test Coverage Validation
 - Verify test automation for new functionality
-- If tests missing, explicitly document gaps
+- If tests missing, add the coverage and run tests until they pass
 - Update test documentation:
   - `pepe-tg/src/__tests__/README.md` (or equivalent)
   - Test count summaries
@@ -80,7 +80,7 @@ Review and update if necessary:
   git add .
   git commit -m "Release vX.Y.Z: <summary>"
   git tag -a vX.Y.Z -m "Version X.Y.Z"
-  git push origin main --tags
+  git push origin master --tags
   ```
 
 ## Important Rules

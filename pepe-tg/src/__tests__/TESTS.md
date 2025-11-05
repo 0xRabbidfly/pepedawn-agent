@@ -4,7 +4,7 @@
 
 ## 📊 Test Summary
 
-**Total:** 13 custom test files (230+ tests)
+**Total:** 15 custom test files (257+ tests)
 
 ### 1. Bootstrap Suppression Test ⚡
 
@@ -41,21 +41,27 @@
 
 ---
 
-### 7-8. Card Display Tests 🎴
+### 7-9. Card Display Tests 🎴
 
-**Files:** 2 test files, 41 tests covering `/f` and `/c` commands
+**Files:** 3 test files, 57 tests covering `/f`, `/f c`, and `/c` commands
 
 | File | Tests | Purpose |
 |------|-------|---------|
 | `actions/fakeRaresCard.test.ts` | 32 | `/f` command (random, exact, fuzzy, artist) |
+| `actions/fakeRaresCarousel.test.ts` | 16 | `/f c` carousel (validation, buttons, navigation) |
 | `actions/fakeCommonsCard.test.ts` | 9 | `/c` command (random, exact match only) |
 
 **Covers:**
 - Random card selection
 - Exact card lookup (case-insensitive)
+- Artist search with fuzzy matching
+- Carousel validation and button generation
+- Carousel navigation logic (prev/next/noop actions)
 - Fuzzy matching and typo correction (Fake Rares only)
 - Artist search (Fake Rares only)
 - Edge cases: whitespace, special chars, long input, missing callback
+
+**Note:** Carousel callback_query integration tested manually (requires live Telegram interaction)
 
 ---
 
@@ -195,7 +201,27 @@ git commit --no-verify
 
 ---
 
-**Last Updated:** November 1, 2025  
+### 17. Card Display Service Tests 🔧
+
+**File:** `services/CardDisplayService.test.ts` (11 tests)
+
+**Purpose:** Validates unified card display service used across `/f`, `/c`, `/p` commands
+
+**Covers:**
+- Size checking for images, videos, animations
+- Result caching (5-minute TTL)
+- Callback invocation with correct structure
+- Fallback URL generation for all collections
+- Service lifecycle (start/stop)
+- Null callback handling
+
+---
+
+**Last Updated:** November 5, 2025  
 **Test Framework:** Bun Test  
-**Coverage:** 11 custom test files, 197+ tests
+**Coverage:** 15 custom test files, 257+ tests
+
+## 🚧 Known Test Gaps
+
+- **Carousel Callback Integration** - Telegram `callback_query` events require live bot testing. Navigation logic covered by unit tests, but end-to-end button flow is manual-only.
 

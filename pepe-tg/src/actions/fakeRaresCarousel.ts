@@ -17,8 +17,6 @@ import {
   buildFallbackImageUrls,
   sendCardWithMedia,
   FUZZY_MATCH_THRESHOLDS,
-  headInfo,
-  getEnvNumber,
 } from "./fakeRaresCard";
 
 /**

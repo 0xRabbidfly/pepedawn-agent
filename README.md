@@ -13,6 +13,7 @@
 ## ⚡ Quick Highlights
 
 - 🎴 **890+ Fake Rares + 1813+ Fake Commons cards** with instant lookup and full metadata
+- 🎠 **Interactive carousels** - Browse artist collections with prev/next buttons
 - 📊 **Market monitoring** - Real-time Counterparty sales & listings tracker
 - 🔍 **Visual analysis** - AI vision reads text + memetic commentary
 - 🧠 **Smart typo correction** - Fuzzy matching with 3-tier intelligence (Fake Rares)
@@ -20,7 +21,7 @@
 - 🤖 **AI-powered** - Natural conversations with context awareness  
 - 📚 **Knowledge base** - Optional: Search 264k+ embedded Telegram messages
 - 💰 **Cost tracking** - Built-in token usage monitoring (admin-only)
-- ⚡ **Performance optimized** - Refactored for speed and maintainability
+- ⚡ **Performance optimized** - Unified CardDisplayService with caching
 - 📊 **Production-ready** - Structured logging, type-safe, tested
 
 ---
@@ -29,16 +30,18 @@
 
 ### 🎴 Card Viewing
 
-#### Fake Rares (with Fuzzy Matching & Artist Search)
+#### Fake Rares (with Fuzzy Matching, Artist Search & Carousel)
 
 **Commands:**
 - **`/f CARDNAME`** - Display any card (e.g., `/f FREEDOMKEK`)
 - **`/f ARTIST`** - Random card by artist (e.g., `/f Rare Scrilla`)
+- **`/f c ARTIST`** - Browse artist's cards in carousel mode ⭐**NEW**
 - **`/f`** - Show a random card from 890+ collection
 
 **Features:**
 - Typo correction with fuzzy matching
 - Artist name search with partial matches
+- Interactive carousel with ⬅️ Prev / ➡️ Next buttons
 - 890+ cards, auto-updated hourly
 
 #### Fake Commons (Simple & Fast)

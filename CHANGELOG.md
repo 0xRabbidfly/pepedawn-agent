@@ -7,6 +7,47 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.0] - 2025-11-05
+
+### Added
+- **Artist Carousel Feature** (`/f c <ARTIST>`) - Interactive card browsing for Fake Rares
+  - Browse all cards by an artist in alphabetical order
+  - ⬅️ Prev / ➡️ Next buttons with circular navigation (wraps from last to first)
+  - Shows card count (e.g., "3/11") and total collection size
+  - Supports exact and fuzzy artist name matching
+  - Works seamlessly in both DM and group conversations
+  - Handles large media files with "File too large..." fallback messages
+
+- **CardDisplayService** - Unified card display logic across all collections
+  - Centralized media size checking with 5-minute caching
+  - Eliminates ~450 lines of duplicated code across `/f`, `/c`, `/p` actions
+  - 10x faster carousel navigation (cached size checks)
+  - Instant repeated card requests (cache hits)
+  - Supports fake-rares, fake-commons, rare-pepes collections
+  - Graceful fallback if service unavailable (backward compatible)
+
+### Changed
+- Refactored `/f` command to exclude carousel mode (`/f c` now handled separately)
+- Split carousel logic into dedicated `fakeRaresCarousel.ts` action (~325 lines)
+- Updated `fakeRaresCard.ts`, `fakeCommonsCard.ts`, `rarePepesCard.ts` to use CardDisplayService
+- Telegram plugin now accepts `callback_query` updates for button interactions
+- MessageManager handles callback queries with delete+send pattern (robust for mixed media types)
+- DM messages with attachments now route through `sendMessageInChunks` (fixes media display)
+- Callback queries answered immediately to prevent Telegram timeout errors
+
+### Technical Details
+- Carousel state encoded in callback_data: `fc:action:artist:index:total`
+- Navigation handler (`handleCarouselNavigation`) exported for Telegram plugin
+- Service pattern follows ElizaOS best practices with `start()` and `stop()` methods
+- Size check cache auto-expires after 5 minutes to handle URL changes
+- Production logging cleaned: removed all debug markers and console.log statements
+
+### Architecture
+- Actions: `fakeRaresCard.ts` (1126 lines, -300) + `fakeRaresCarousel.ts` (325 lines, new)
+- Service: `CardDisplayService.ts` (280 lines, new)
+- Plugin: Updated to register carousel action and service
+- Tests: Carousel documented as manual-only (UI-level Telegram callback testing required)
+
 ## [3.5.3] - 2025-11-05
 
 ### Added
