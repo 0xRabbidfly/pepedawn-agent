@@ -400,6 +400,8 @@ export function buildArtistButton(
 /**
  * Sends card message with media attachment (unified callback handler)
  * Handles all card display flows with consistent formatting
+ * 
+ * Delegates to CardDisplayService if runtime is provided, otherwise uses direct implementation
  */
 export async function sendCardWithMedia(params: {
   callback: ((response: any) => Promise<any>) | null;
@@ -409,16 +411,37 @@ export async function sendCardWithMedia(params: {
   assetName: string;
   buttons?: Array<{ text: string; url?: string; callback_data?: string }>;
   fallbackImages?: Array<{ url: string; contentType: string }>;
+  runtime?: IAgentRuntime; // Optional runtime for service access
 }): Promise<void> {
+  // Try to use service if runtime is provided
+  if (params.runtime) {
+    try {
+      const service = params.runtime.getService('card-display');
+      if (service && typeof service.sendCard === 'function') {
+        await service.sendCard({
+          callback: params.callback,
+          cardMessage: params.cardMessage,
+          mediaUrl: params.mediaUrl,
+          mediaExtension: params.mediaExtension,
+          assetName: params.assetName,
+          buttons: params.buttons,
+          fallbackImages: params.fallbackImages,
+        });
+        return;
+      }
+    } catch {
+      // Fallback to direct implementation
+    }
+  }
+  
+  // Direct implementation (fallback)
   if (!params.callback) {
     return;
   }
 
-  // Determine media type from extension
   const isVideo = params.mediaExtension === "mp4";
   const isAnimation = params.mediaExtension === "gif";
 
-  // Smart hybrid: Only send inline MP4 if HEAD indicates video/mp4 and size ≤ MP4_URL_MAX_MB (default 50MB). Otherwise send link.
   if (isVideo) {
     try {
       const maxMb = getEnvNumber("MP4_URL_MAX_MB", 50);
@@ -443,7 +466,6 @@ export async function sendCardWithMedia(params: {
         return;
       }
     } catch {
-      // If preflight failed entirely, send link to avoid timeouts
       await params.callback({
         text: `${params.cardMessage}\n\nFile too large for viewing on TG - click the link to view asset\n🎬 Video: ${params.mediaUrl}`,
         buttons:
@@ -458,7 +480,6 @@ export async function sendCardWithMedia(params: {
     }
   }
 
-  // Smart hybrid: Only send inline GIF if HEAD indicates image/gif and size ≤ GIF_URL_MAX_MB (default 40MB). Otherwise send link.
   if (isAnimation) {
     try {
       const maxMb = getEnvNumber("GIF_URL_MAX_MB", 40);
@@ -483,7 +504,6 @@ export async function sendCardWithMedia(params: {
         return;
       }
     } catch {
-      // If preflight failed entirely, send link to avoid timeouts
       await params.callback({
         text: `${params.cardMessage}\n\nFile too large for viewing on TG - click the link to view asset\n🎞️ Animation: ${params.mediaUrl}`,
         buttons:
@@ -505,7 +525,6 @@ export async function sendCardWithMedia(params: {
     contentType: string;
   }> = [];
 
-  // Primary media first (video/gif/image)
   attachments.push({
     url: params.mediaUrl,
     title: params.assetName,
@@ -517,8 +536,6 @@ export async function sendCardWithMedia(params: {
         : "image/jpeg",
   });
 
-  // Add optional fallback images to improve preview success on Telegram
-  // Only use fallbacks for videos (GIFs and images work directly with primary URL)
   if (isVideo && params.fallbackImages && params.fallbackImages.length > 0) {
     for (const fb of params.fallbackImages) {
       attachments.push({
@@ -533,7 +550,6 @@ export async function sendCardWithMedia(params: {
   await params.callback({
     text: params.cardMessage,
     attachments,
-    // Pass buttons through so the Telegram bridge can render inline keyboard
     buttons:
       params.buttons && params.buttons.length > 0 ? params.buttons : undefined,
     __fromAction: "fakeRaresCard",
@@ -755,6 +771,7 @@ async function handleCardFound(params: {
   urlResult: CardUrlResult;
   isRandomCard: boolean;
   callback?: HandlerCallback;
+  runtime?: IAgentRuntime;
 }): Promise<{ success: true; data: any }> {
   const cardMessage = buildCardDisplayMessage({
     assetName: params.assetName,
@@ -781,6 +798,7 @@ async function handleCardFound(params: {
     assetName: displayAssetName,
     buttons,
     fallbackImages,
+    runtime: params.runtime,
   }).catch((err) => logger.error(`   Error sending callback: ${err}`));
 
   logger.info(`   /f complete: ${params.assetName} displayed`);
@@ -806,6 +824,7 @@ async function displayArtistCard(params: {
   similarity?: number;
   query: string;
   callback?: HandlerCallback;
+  runtime?: IAgentRuntime;
 }): Promise<{ success: true; data: any }> {
   // Pick random card by this artist
   const randomCard =
@@ -849,6 +868,7 @@ async function displayArtistCard(params: {
     assetName: randomCard.asset,
     buttons,
     fallbackImages,
+    runtime: params.runtime,
   });
 
   logger.info(`   /f complete: ${randomCard.asset} (artist: ${params.artistName})`);
@@ -877,6 +897,7 @@ async function displayArtistCard(params: {
 async function handleCardNotFound(params: {
   assetName: string;
   callback?: HandlerCallback;
+  runtime?: IAgentRuntime;
 }): Promise<{ success: boolean; data: any }> {
   // Perform fuzzy matching on card names
   const allAssets = getAllCards().map((c) => c.asset);
@@ -909,6 +930,7 @@ async function handleCardNotFound(params: {
         mediaUrl: matchedUrlResult.url,
         mediaExtension: matchedUrlResult.extension,
         assetName: bestMatch.name,
+        runtime: params.runtime,
       });
 
       logger.info(`   /f complete: ${bestMatch.name} (fuzzy matched)`);
@@ -967,13 +989,14 @@ async function handleCardNotFound(params: {
 
   if (artistFuzzyMatch) {
     logger.info(`   Artist fuzzy match: ${artistFuzzyMatch.matchedArtist}`);
-    return await displayArtistCard({
-      artistName: artistFuzzyMatch.matchedArtist,
-      cards: artistFuzzyMatch.cards,
-      similarity: artistFuzzyMatch.similarity,
-      query: params.assetName,
-      callback: params.callback,
-    });
+        return await displayArtistCard({
+          artistName: artistFuzzyMatch.matchedArtist,
+          cards: artistFuzzyMatch.cards,
+          similarity: artistFuzzyMatch.similarity,
+          query: params.assetName,
+          callback: params.callback,
+          runtime: params.runtime,
+        });
   }
 
   // No match found
@@ -1076,6 +1099,7 @@ export const fakeRaresCardAction: Action = {
           urlResult,
           isRandomCard: request.isRandomCard,
           callback,
+          runtime,
         });
       }
 
@@ -1090,6 +1114,7 @@ export const fakeRaresCardAction: Action = {
           cards: exactArtistMatch.cards,
           query: assetName,
           callback,
+          runtime,
         });
       }
 
@@ -1097,6 +1122,7 @@ export const fakeRaresCardAction: Action = {
       return await handleCardNotFound({
         assetName,
         callback,
+        runtime,
       });
     } catch (error) {
       logger.error(

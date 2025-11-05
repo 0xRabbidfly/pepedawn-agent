@@ -7,6 +7,7 @@ import { loreDetectorEvaluator } from '../evaluators';
 import { KnowledgeOrchestratorService } from '../services/KnowledgeOrchestratorService';
 import { MemoryStorageService } from '../services/MemoryStorageService';
 import { TelemetryService } from '../services/TelemetryService';
+import { CardDisplayService } from '../services/CardDisplayService';
 import { FULL_CARD_INDEX } from '../data/fullCardIndex';
 import { startAutoRefresh } from '../utils/cardIndexRefresher';
 import { classifyQuery } from '../utils/queryClassifier';
@@ -140,7 +141,7 @@ export const fakeRaresPlugin: Plugin = {
   
   providers: [fakeRaresContextProvider, userHistoryProvider],
   evaluators: [],
-  services: [KnowledgeOrchestratorService, MemoryStorageService, TelemetryService],
+  services: [KnowledgeOrchestratorService, MemoryStorageService, TelemetryService, CardDisplayService],
   
   events: {
     MESSAGE_RECEIVED: [
