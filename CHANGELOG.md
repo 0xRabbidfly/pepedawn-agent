@@ -7,14 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.5.3] - 2025-11-05
+
 ### Added
-- **Periodic Content Service** - Automatic community engagement posts to Telegram channels
-  - Posts helpful tips (60%) and random card showcases (40%) every 60 minutes (configurable)
-  - Rotates through 10 curated tips about bot features (`/f`, `/fv`, `/fm`, `/fl`, memory, etc.)
-  - Random card selection from 890+ Fake Rares collection with images
-  - Anti-spam: Only posts if there's been user activity since last post (prevents back-to-back spam)
-  - Configuration: `PERIODIC_CONTENT_ENABLED=true`, `PERIODIC_CONTENT_INTERVAL_MINUTES=60`
-  - Production-ready with clean logging and error handling
+- **Periodic Content Service** - Automated community engagement for Telegram channels
+  - **60% tips** - Randomly selected helpful tips about bot features (`/f`, `/fv`, `/fm`, `/fl`, memory, etc.)
+  - **40% card showcases** - Random cards from 890+ Fake Rares collection
+  - Uses same URL resolution and formatting logic as `/f` command (handles all card types correctly)
+  - Includes artist profile buttons when `FAKE_RARES_ARTIST_BUTTONS=true`
+  - **Anti-spam protection**: Only posts if there's been user activity since last post
+  - Configurable interval via `PERIODIC_CONTENT_INTERVAL_MINUTES` (default: 60 minutes)
+  - Enable/disable via `PERIODIC_CONTENT_ENABLED=true/false`
+  - Completely independent of market notification system
+
+### Changed
+- Exported `determineCardUrl`, `buildCardDisplayMessage`, and `buildArtistButton` from `fakeRaresCard.ts` for reuse in periodic content service
+
+### Technical Details
+- Periodic content and market notifications are completely separate systems
+- Market notifications post immediately when trades/listings occur
+- Periodic content respects user activity to prevent spam
+- Clean production logging with info-level post confirmations
 
 ## [3.4.0] - 2025-11-03
 

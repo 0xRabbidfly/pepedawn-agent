@@ -317,7 +317,7 @@ function getEnvNumber(name: string, fallback: number): number {
  * Builds the card display message with metadata and media URL
  * Consolidates message formatting logic used in multiple places
  */
-function buildCardDisplayMessage(params: CardDisplayParams): string {
+export function buildCardDisplayMessage(params: CardDisplayParams): string {
   let message = "";
 
   // Add typo correction header if applicable
@@ -377,7 +377,7 @@ function buildCardDisplayMessage(params: CardDisplayParams): string {
 /**
  * Builds artist button if artist info is available
  */
-function buildArtistButton(
+export function buildArtistButton(
   cardInfo: CardInfo | null,
 ): Array<{ text: string; url: string }> {
   // Feature toggle: set FAKE_RARES_ARTIST_BUTTONS=true to enable globally
@@ -565,7 +565,7 @@ function getFakeRaresImageUrl(
 /**
  * Determines the card URL from CardInfo, prioritizing special URIs over constructed URLs
  */
-function determineCardUrl(
+export function determineCardUrl(
   cardInfo: CardInfo,
   assetName: string,
 ): CardUrlResult {

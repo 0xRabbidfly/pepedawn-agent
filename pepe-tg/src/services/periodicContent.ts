@@ -19,6 +19,7 @@
 import type { IAgentRuntime } from '@elizaos/core';
 import { Service, logger } from '@elizaos/core';
 import { getCardInfo, FULL_CARD_INDEX, type CardInfo } from '../data/fullCardIndex.js';
+import { determineCardUrl, buildCardDisplayMessage, buildArtistButton } from '../actions/fakeRaresCard.js';
 
 // ============================================================================
 // HELPFUL TIPS CONTENT
@@ -81,7 +82,6 @@ export class PeriodicContentService extends Service {
   private channelIds: string[] = [];
   private lastContentPostTime: number = 0;
   private lastChannelMessageId: Map<string, number> = new Map(); // Track last seen message per channel
-  private currentTipIndex: number = 0;
   private enabled: boolean = false;
 
   constructor(runtime: IAgentRuntime) {
@@ -145,10 +145,15 @@ export class PeriodicContentService extends Service {
       clearInterval(this.pollingInterval);
     }
 
-    // Post immediately on first run, then use interval
-    this.tryPostContent().catch((error) => {
-      logger.error({ error }, 'Error in initial periodic content post');
-    });
+    // Delay first post by 30 seconds to ensure Telegram service is fully initialized
+    logger.info('PeriodicContentService: First post will occur after 30s initialization delay');
+    setTimeout(() => {
+      if (this.isRunning) {
+        this.tryPostContent().catch((error) => {
+          logger.error({ error }, 'Error in initial periodic content post');
+        });
+      }
+    }, 30000); // 30 second startup delay
 
     this.pollingInterval = setInterval(() => {
       if (this.isRunning) {
@@ -263,20 +268,19 @@ export class PeriodicContentService extends Service {
   }
 
   /**
-   * Post a helpful tip (rotates through list)
+   * Post a helpful tip (random selection)
    */
   private async postTip(): Promise<void> {
     try {
-      const tip = HELPFUL_TIPS[this.currentTipIndex];
+      // Pick random tip each time
+      const randomIndex = Math.floor(Math.random() * HELPFUL_TIPS.length);
+      const tip = HELPFUL_TIPS[randomIndex];
       const message = `💡 ${tip.title}\n\n${tip.text}`;
 
       const messageIds = await this.sendToChannels(message);
       
       // Update last seen message IDs for anti-spam tracking
       this.updateLastMessageIds(messageIds);
-      
-      // Rotate to next tip
-      this.currentTipIndex = (this.currentTipIndex + 1) % HELPFUL_TIPS.length;
       
       logger.info(`💡 Posted periodic tip: ${tip.title}`);
     } catch (error) {
@@ -296,14 +300,11 @@ export class PeriodicContentService extends Service {
   }
 
   /**
-   * Post a random card showcase (uses /f or /fv)
-   * Always picks a random card from the in-memory index
+   * Post a random card showcase with photo
+   * Note: We send photos directly because bot can't process its own /f commands
    */
   private async postCardShowcase(): Promise<void> {
     try {
-      // 70% chance for /f, 30% chance for /fv
-      const useVisualAnalysis = Math.random() < 0.3;
-      
       // Always get a random card from the in-memory index
       const randomCard = this.getRandomCard();
       if (!randomCard) {
@@ -318,30 +319,25 @@ export class PeriodicContentService extends Service {
         return;
       }
 
-      // Build card URL
-      const imageUrl = this.getCardImageUrl(cardInfo);
-
-      if (useVisualAnalysis) {
-        // Post with visual analysis hint
-        const message = `🔍 **Card Spotlight: ${cardName}**\n\n` +
-          `Artist: ${cardInfo.artist}\n` +
-          `Series: ${cardInfo.series} | Supply: ${cardInfo.supply}\n\n` +
-          `💡 Try \`/fv ${cardName}\` for AI visual analysis!`;
-        
-        const messageIds = await this.sendPhotoToChannels(imageUrl, message);
-        this.updateLastMessageIds(messageIds);
-        logger.info(`🎴 Posted periodic card spotlight: ${cardName} (with /fv hint)`);
-      } else {
-        // Simple card display
-        const message = `🎴 **Random Card: ${cardName}**\n\n` +
-          `Artist: ${cardInfo.artist}\n` +
-          `Series: ${cardInfo.series} | Supply: ${cardInfo.supply}\n` +
-          `Issued: ${cardInfo.issuance}`;
-        
-        const messageIds = await this.sendPhotoToChannels(imageUrl, message);
-        this.updateLastMessageIds(messageIds);
-        logger.info(`🎴 Posted periodic card showcase: ${cardName}`);
-      }
+      // Use same URL and formatting logic as /f command
+      const urlResult = determineCardUrl(cardInfo, cardName);
+      const imageUrl = urlResult.url;
+      
+      // Use same message formatting as /f
+      const message = buildCardDisplayMessage({
+        assetName: cardName,
+        cardInfo: cardInfo,
+        mediaUrl: imageUrl,
+        isRandomCard: true,
+      });
+      
+      // Build artist button (if enabled)
+      const buttons = buildArtistButton(cardInfo);
+      
+      const messageIds = await this.sendPhotoToChannels(imageUrl, message, buttons);
+      this.updateLastMessageIds(messageIds);
+      
+      logger.info(`🎴 Posted periodic card showcase: ${cardName}`);
     } catch (error) {
       logger.error({ error }, 'Failed to post card showcase');
     }
@@ -356,17 +352,6 @@ export class PeriodicContentService extends Service {
     }
   }
 
-  /**
-   * Get card image URL (same logic as fakeRaresCard action)
-   */
-  private getCardImageUrl(cardInfo: any): string {
-    if (cardInfo.imageUri) {
-      return cardInfo.imageUri;
-    }
-    
-    const fileName = `${cardInfo.asset}.${cardInfo.ext}`;
-    return `https://fakerare.s3.us-east-2.amazonaws.com/series-${cardInfo.series}/${fileName}`;
-  }
 
   /**
    * Send text message to all configured channels
@@ -416,7 +401,11 @@ export class PeriodicContentService extends Service {
    * Send photo with caption to all configured channels
    * Returns map of channelId -> messageId for anti-spam tracking
    */
-  private async sendPhotoToChannels(photoUrl: string, caption: string): Promise<Map<string, number>> {
+  private async sendPhotoToChannels(
+    photoUrl: string, 
+    caption: string,
+    buttons?: Array<{ text: string; url: string }>
+  ): Promise<Map<string, number>> {
     const botToken = this.runtime.getSetting('TELEGRAM_BOT_TOKEN') as string | undefined;
     if (!botToken) {
       throw new Error('TELEGRAM_BOT_TOKEN not configured');
@@ -427,15 +416,29 @@ export class PeriodicContentService extends Service {
     await Promise.all(
       this.channelIds.map(async (channelId) => {
         try {
+          const body: any = {
+            chat_id: channelId,
+            photo: photoUrl,
+            caption,
+            parse_mode: 'Markdown',
+          };
+
+          // Add inline keyboard if buttons provided
+          if (buttons && buttons.length > 0) {
+            body.reply_markup = {
+              inline_keyboard: [
+                buttons.map(btn => ({
+                  text: btn.text,
+                  url: btn.url,
+                }))
+              ]
+            };
+          }
+
           const response = await fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              chat_id: channelId,
-              photo: photoUrl,
-              caption,
-              parse_mode: 'Markdown',
-            }),
+            body: JSON.stringify(body),
           });
 
           if (!response.ok) {
