@@ -594,8 +594,11 @@ export class MessageManager {
       // Create callback for handling responses
       const callback: HandlerCallback = async (content: Content, _files?: string[]) => {
         try {
-          // If response is from reasoning do not send it.
-          if (!content.text) return [];
+          // Skip ONLY if explicitly marked as reasoning (don't block low-token responses)
+          // sendMessageInChunks will handle empty text with ' ' fallback
+          if (content.text === undefined && !content.attachments?.length && !content.buttons?.length) {
+            return [];
+          }
 
           let sentMessages: boolean | Message.TextMessage[] = false;
           // channelType target === 'telegram'

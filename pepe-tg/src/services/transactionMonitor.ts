@@ -225,8 +225,12 @@ export class TransactionMonitor extends Service {
         }
       }
 
-      // Single consolidated log line
-      logger.info(`📊 Counterparty Market Poll: block ${this.currentBlockCursor} - ${salesFound} sales, ${listingsFound} listings`);
+      // Single consolidated log line (only info if there's activity)
+      if (salesFound > 0 || listingsFound > 0) {
+        logger.info(`📊 Counterparty Market Poll: block ${this.currentBlockCursor} - ${salesFound} sales, ${listingsFound} listings`);
+      } else {
+        logger.debug(`📊 Counterparty Market Poll: block ${this.currentBlockCursor} - no activity`);
+      }
     } catch (error) {
       logger.error({ error }, 'Error in polling cycle - continuing monitoring');
       // Continue monitoring per FR-022
