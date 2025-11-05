@@ -30,6 +30,11 @@ async function build() {
       try {
         await $`cd ${pluginPath} && npm run build`.quiet();
         console.log('✓ Telegram plugin built');
+        
+        // Update the copy in node_modules
+        console.log('📦 Updating plugin in node_modules...');
+        await $`npm install`.quiet();
+        console.log('✓ Plugin updated in node_modules');
       } catch (error) {
         console.error('✗ Failed to build Telegram plugin:', error);
         return false;
