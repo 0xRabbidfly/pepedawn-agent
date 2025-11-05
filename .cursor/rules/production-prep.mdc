@@ -35,6 +35,7 @@ Example: `@production-prep minor`
 ### 3. Test Coverage Validation
 - Verify test automation for new functionality
 - If tests missing, add the coverage and run tests until they pass
+- update our pre-commit to absorb any new test files at .git/hooks/pre-commit
 - Update test documentation:
   - `pepe-tg/src/__tests__/README.md` (or equivalent)
   - Test count summaries

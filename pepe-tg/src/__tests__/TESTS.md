@@ -160,7 +160,7 @@ Before deploying:
 
 **Location:** `.git/hooks/pre-commit`
 
-**What it does:** Runs `bootstrap-suppression.test.ts` before every commit
+**What it does:** Runs 14 custom test files before every commit (including new carousel & service tests)
 
 **To bypass (not recommended):**
 ```bash
