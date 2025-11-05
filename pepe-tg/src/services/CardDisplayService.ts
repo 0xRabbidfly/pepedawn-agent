@@ -16,6 +16,7 @@ import {
   buildCardDisplayMessage,
   type MediaExtension,
 } from '../actions/fakeRaresCard';
+import { checkAndConvertGif } from '../utils/gifConversionHelper';
 
 type CollectionType = 'fake-rares' | 'fake-commons' | 'rare-pepes';
 
@@ -227,24 +228,40 @@ export class CardDisplayService extends Service {
       return;
     }
 
-    const isVideo = params.mediaExtension === 'mp4';
-    const isAnimation = params.mediaExtension === 'gif';
+    let mediaUrl = params.mediaUrl;
+    let mediaExtension = params.mediaExtension;
+    let isVideo = params.mediaExtension === 'mp4';
+    let isAnimation = params.mediaExtension === 'gif';
 
-    // Check size for videos and animations
+    // ========================================================================
+    // GIF CONVERSION LOGIC (Centralized)
+    // ========================================================================
+    const conversionCheck = await checkAndConvertGif(mediaUrl, mediaExtension);
+    if (conversionCheck.shouldConvert && conversionCheck.convertedUrl) {
+      mediaUrl = conversionCheck.convertedUrl;
+      mediaExtension = conversionCheck.convertedExtension as MediaExtension;
+      isVideo = true;
+      isAnimation = false;
+    }
+
+    // Check size for videos and remaining GIFs (after potential conversion)
     if (isVideo || isAnimation) {
-      const sizeCheck = await this.checkMediaSize(params.mediaUrl, params.mediaExtension);
+      // Skip size check for local converted files
+      if (!mediaUrl.startsWith('file://')) {
+        const sizeCheck = await this.checkMediaSize(mediaUrl, mediaExtension);
 
-      if (sizeCheck.shouldUseLink) {
-        const mediaType = isVideo ? '🎬 Video' : '🎞️ Animation';
-        await params.callback({
-          text: `${params.cardMessage}\n\nFile too large for viewing on TG - click the link to view asset\n${mediaType}: ${params.mediaUrl}`,
-          buttons:
-            params.buttons && params.buttons.length > 0 ? params.buttons : undefined,
-          plainText: true,
-          __fromAction: 'cardDisplay',
-          suppressBootstrap: true,
-        });
-        return;
+        if (sizeCheck.shouldUseLink) {
+          const mediaType = isVideo ? '🎬 Video' : '🎞️ Animation';
+          await params.callback({
+            text: `${params.cardMessage}\n\nFile too large for viewing on TG - click the link to view asset\n${mediaType}: ${mediaUrl}`,
+            buttons:
+              params.buttons && params.buttons.length > 0 ? params.buttons : undefined,
+            plainText: true,
+            __fromAction: 'cardDisplay',
+            suppressBootstrap: true,
+          });
+          return;
+        }
       }
     }
 
@@ -256,9 +273,9 @@ export class CardDisplayService extends Service {
       contentType: string;
     }> = [];
 
-    // Primary media first (video/gif/image)
+    // Primary media first (video/gif/image) - use updated URL after potential conversion
     attachments.push({
-      url: params.mediaUrl,
+      url: mediaUrl,
       title: params.assetName,
       source: 'card-display',
       contentType: isVideo

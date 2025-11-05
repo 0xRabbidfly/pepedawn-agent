@@ -19,7 +19,7 @@ import {
   getCardInfo as getRefreshableCardInfo,
   getFullCardIndex as getRefreshableCardIndex,
 } from "../utils/cardIndexRefresher";
-import { convertGifUrlToMp4 } from "../services/videoConversionService";
+import { checkAndConvertGif } from "../utils/gifConversionHelper";
 
 /**
  * Fake Rares Card Display Action
@@ -57,7 +57,7 @@ export const FUZZY_MATCH_THRESHOLDS = {
 // TYPE DEFINITIONS
 // ============================================================================
 
-type MediaExtension = "jpg" | "jpeg" | "gif" | "png" | "mp4" | "webp";
+export type MediaExtension = "jpg" | "jpeg" | "gif" | "png" | "mp4" | "webp";
 
 interface CardUrlResult {
   url: string;
@@ -441,61 +441,23 @@ export async function sendCardWithMedia(params: {
     return;
   }
 
-  const isVideo = params.mediaExtension === "mp4";
-  const isAnimation = params.mediaExtension === "gif";
+  let isVideo = params.mediaExtension === "mp4";
+  let isAnimation = params.mediaExtension === "gif";
 
   // ========================================================================
-  // GIF CONVERSION LOGIC
-  // Check if GIF is too large and convert to MP4 for better compression
+  // GIF CONVERSION LOGIC (Centralized)
   // ========================================================================
-  if (isAnimation) {
-    const maxMb = getEnvNumber("GIF_URL_MAX_MB", 40);
-    try {
-      const { contentType, contentLength } = await headInfo(
-        params.mediaUrl,
-        3000,
-      );
-      const typeOk = (contentType || "").toLowerCase().includes("image/gif");
-      const isOverLimit =
-        contentLength !== null && contentLength > maxMb * 1024 * 1024;
-
-      // If GIF is over limit, try to convert to MP4
-      if (typeOk && isOverLimit) {
-        const origSizeMb = (contentLength! / 1024 / 1024).toFixed(2);
-        logger.info(
-          `   GIF over limit (${origSizeMb}MB > ${maxMb}MB), attempting conversion...`,
-        );
-
-        const conversionResult = await convertGifUrlToMp4(params.mediaUrl);
-
-        if (conversionResult.success && conversionResult.outputPath) {
-          const convertedSizeMb = (conversionResult.convertedSize! / 1024 / 1024).toFixed(2);
-          logger.info(
-            `   ✅ Converted ${origSizeMb}MB → ${convertedSizeMb}MB (${conversionResult.compressionRatio?.toFixed(1)}% reduction)`,
-          );
-
-          // Update params to send converted MP4 instead
-          // Convert file path to file:// URL for Telegram
-          params.mediaUrl = `file://${conversionResult.outputPath}`;
-          params.mediaExtension = "mp4";
-
-          // Continue to video sending logic below with the converted file
-        } else {
-          logger.warning(
-            `   ⚠️ Conversion failed: ${conversionResult.error}, falling back to link`,
-          );
-          // Fall through to existing large file handling
-        }
-      }
-    } catch (error) {
-      logger.error(`   Error checking/converting GIF: ${error}`);
-      // Fall through to existing handling
-    }
+  const conversionCheck = await checkAndConvertGif(params.mediaUrl, params.mediaExtension);
+  if (conversionCheck.shouldConvert && conversionCheck.convertedUrl) {
+    params.mediaUrl = conversionCheck.convertedUrl;
+    params.mediaExtension = conversionCheck.convertedExtension as MediaExtension;
+    isVideo = true;
+    isAnimation = false;
   }
 
   // Re-evaluate media type after potential conversion
-  const finalIsVideo = params.mediaExtension === "mp4";
-  const finalIsAnimation = params.mediaExtension === "gif";
+  const finalIsVideo = isVideo;
+  const finalIsAnimation = isAnimation;
 
   if (finalIsVideo) {
     try {

@@ -332,6 +332,30 @@ export class MessageManager {
         }
         
         if (isGif) {
+          // Handle local file:// URLs (from converted GIFs)
+          if (url.startsWith('file://')) {
+            try {
+              const localPath = url.replace('file://', '');
+              if (!fs.existsSync(localPath)) {
+                throw new Error(`Local file not found: ${localPath}`);
+              }
+              
+              const filename = localPath.split('/').pop() || 'animation.gif';
+              const fileBuffer = fs.readFileSync(localPath);
+              
+              await ctx.replyWithAnimation({ source: fileBuffer, filename }, {
+                caption: content.text || undefined,
+                reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
+                ...Markup.inlineKeyboard(telegramButtons),
+              });
+              sentPrimaryMedia = true;
+              break;
+            } catch (localFileErr) {
+              logger.warn({ url, localFileErr }, 'Local file GIF failed, falling back to text');
+              // Don't try other methods - local file should work or fail cleanly
+            }
+          }
+          
           // Try streaming first for large GIFs from known hosts
           let streamingFirst = false;
           try {
