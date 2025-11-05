@@ -22,6 +22,41 @@ import {
 } from './types';
 import { convertToTelegramButtons, convertMarkdownToTelegram } from './utils';
 import fs from 'fs';
+import * as path from 'path';
+
+// Dynamic import for file_id cache (cross-package, loaded at runtime)
+let telegramFileIdCache: any = null;
+async function getFileIdCache() {
+  if (!telegramFileIdCache) {
+    try {
+      // Try multiple path resolution strategies
+      const possiblePaths = [
+        path.join(process.cwd(), 'src', 'utils', 'telegramFileIdCache.js'),
+        path.join(process.cwd(), 'dist', 'utils', 'telegramFileIdCache.js'),
+        path.join(__dirname, '../../../../src/utils/telegramFileIdCache.js'),
+        path.join(__dirname, '../../../../dist/utils/telegramFileIdCache.js'),
+      ];
+      
+      for (const cachePath of possiblePaths) {
+        try {
+          // @ts-ignore - Dynamic import with computed path
+          telegramFileIdCache = await import(/* @ts-ignore */ 'file://' + cachePath);
+          if (telegramFileIdCache) break;
+        } catch {}
+      }
+      
+      if (!telegramFileIdCache) throw new Error('Cache not found');
+    } catch {
+      // Cache utility not available - fallback gracefully (no caching)
+      telegramFileIdCache = {
+        getTelegramFileId: () => null,
+        saveTelegramFileId: () => {},
+        extractFileId: () => null,
+      };
+    }
+  }
+  return telegramFileIdCache;
+}
 
 /**
  * Removes null bytes from text to prevent Telegram API errors
@@ -44,6 +79,25 @@ export enum MediaType {
 }
 
 const MAX_MESSAGE_LENGTH = 4096; // Telegram's max message length
+
+/**
+ * Helper to send media and cache file_id for future instant recall
+ */
+async function sendMediaAndCache(
+  assetName: string,
+  sendFn: () => Promise<any>,
+): Promise<any> {
+  const result = await sendFn();
+  if (result && assetName) {
+    const cache = await getFileIdCache();
+    const fileId = cache.extractFileId(result);
+    if (fileId) {
+      logger.info(`📦 Captured Telegram file_id for ${assetName}: ${fileId.substring(0, 20)}...`);
+      cache.saveTelegramFileId(assetName, fileId);
+    }
+  }
+  return result;
+}
 
 const getChannelType = (chat: Chat): ChannelType => {
   // Use a switch statement for clarity and exhaustive checks
@@ -230,11 +284,54 @@ export class MessageManager {
         if (sentPrimaryMedia) break;
         const url = attachment.url || '';
         const ct = (attachment.contentType || '').toLowerCase();
+        const assetName = attachment.title || '';
         const isVideo = /^video\//.test(ct) || /\.mp4(\?|$)/i.test(url);
         const isGif = ct === 'image/gif' || /\.gif(\?|$)/i.test(url);
         const isImage = /^image\//.test(ct) || /\.(png|jpe?g|webp)(\?|$)/i.test(url);
         
-        // Route to Telegram media methods for inline preview/player
+        // ====================================================================
+        // TELEGRAM FILE_ID CACHE - Check cache first (instant recall)
+        // ====================================================================
+        if (assetName) {
+          const cache = await getFileIdCache();
+          const cachedFileId = cache.getTelegramFileId(assetName);
+          if (cachedFileId) {
+            try {
+              let sentMessage: any;
+              if (isVideo) {
+                sentMessage = await ctx.replyWithVideo(cachedFileId, {
+                  caption: content.text || undefined,
+                  supports_streaming: true,
+                  reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
+                  ...Markup.inlineKeyboard(telegramButtons),
+                });
+              } else if (isGif) {
+                sentMessage = await ctx.replyWithAnimation(cachedFileId, {
+                  caption: content.text || undefined,
+                  reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
+                  ...Markup.inlineKeyboard(telegramButtons),
+                });
+              } else if (isImage) {
+                sentMessage = await ctx.replyWithPhoto(cachedFileId, {
+                  caption: content.text || undefined,
+                  reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
+                  ...Markup.inlineKeyboard(telegramButtons),
+                });
+              }
+              
+              if (sentMessage) {
+                sentPrimaryMedia = true;
+                logger.info(`✅ Used cached file_id for ${assetName} (instant)`);
+                break;
+              }
+            } catch (fileIdErr) {
+              logger.warn({ assetName, fileIdErr }, 'Cached file_id failed, falling back to upload');
+              // Fall through to normal upload flow
+            }
+          }
+        }
+        
+        // Route to Telegram media methods for inline preview/player (first-time upload)
         if (isVideo) {
           // Handle local file:// URLs (from converted GIFs)
           if (url.startsWith('file://')) {
@@ -247,12 +344,14 @@ export class MessageManager {
               const filename = localPath.split('/').pop() || 'video.mp4';
               const fileBuffer = fs.readFileSync(localPath);
               
-              await ctx.replyWithVideo({ source: fileBuffer, filename }, {
-                caption: content.text || undefined,
-                supports_streaming: true,
-                reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
-                ...Markup.inlineKeyboard(telegramButtons),
-              });
+              await sendMediaAndCache(assetName, () =>
+                ctx.replyWithVideo({ source: fileBuffer, filename }, {
+                  caption: content.text || undefined,
+                  supports_streaming: true,
+                  reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
+                  ...Markup.inlineKeyboard(telegramButtons),
+                })
+              );
               sentPrimaryMedia = true;
               break;
             } catch (localFileErr) {
@@ -289,12 +388,14 @@ export class MessageManager {
                     return 'video.mp4';
                   }
                 })();
-                await ctx.replyWithVideo({ source: Buffer.from(ab), filename }, {
-                  caption: content.text || undefined,
-                  supports_streaming: true,
-                  reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
-                  ...Markup.inlineKeyboard(telegramButtons),
-                });
+                await sendMediaAndCache(assetName, () =>
+                  ctx.replyWithVideo({ source: Buffer.from(ab), filename }, {
+                    caption: content.text || undefined,
+                    supports_streaming: true,
+                    reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
+                    ...Markup.inlineKeyboard(telegramButtons),
+                  })
+                );
                 sentPrimaryMedia = true;
                 break;
               }
@@ -306,22 +407,26 @@ export class MessageManager {
           // Try direct URL send (only for HTTP/HTTPS URLs)
           if (!url.startsWith('file://')) {
             try {
-              await ctx.replyWithVideo(url, {
-                caption: content.text || undefined,
-                supports_streaming: true,
-                reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
-                ...Markup.inlineKeyboard(telegramButtons),
-              });
+              await sendMediaAndCache(assetName, () =>
+                ctx.replyWithVideo(url, {
+                  caption: content.text || undefined,
+                  supports_streaming: true,
+                  reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
+                  ...Markup.inlineKeyboard(telegramButtons),
+                })
+              );
               sentPrimaryMedia = true;
               break;
             } catch (videoErr) {
               // Fallback: send as document if video fails (common with Arweave URLs)
               try {
-                await ctx.replyWithDocument(url, {
-                  caption: content.text || undefined,
-                  reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
-                  ...Markup.inlineKeyboard(telegramButtons),
-                });
+                await sendMediaAndCache(assetName, () =>
+                  ctx.replyWithDocument(url, {
+                    caption: content.text || undefined,
+                    reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
+                    ...Markup.inlineKeyboard(telegramButtons),
+                  })
+                );
                 sentPrimaryMedia = true;
                 break;
               } catch (docErr) {
@@ -343,11 +448,13 @@ export class MessageManager {
               const filename = localPath.split('/').pop() || 'animation.gif';
               const fileBuffer = fs.readFileSync(localPath);
               
-              await ctx.replyWithAnimation({ source: fileBuffer, filename }, {
-                caption: content.text || undefined,
-                reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
-                ...Markup.inlineKeyboard(telegramButtons),
-              });
+              await sendMediaAndCache(assetName, () =>
+                ctx.replyWithAnimation({ source: fileBuffer, filename }, {
+                  caption: content.text || undefined,
+                  reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
+                  ...Markup.inlineKeyboard(telegramButtons),
+                })
+              );
               sentPrimaryMedia = true;
               break;
             } catch (localFileErr) {
@@ -384,11 +491,13 @@ export class MessageManager {
                     return 'animation.gif';
                   }
                 })();
-                await ctx.replyWithAnimation({ source: Buffer.from(ab), filename }, {
-                  caption: content.text || undefined,
-                  reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
-                  ...Markup.inlineKeyboard(telegramButtons),
-                });
+                await sendMediaAndCache(assetName, () =>
+                  ctx.replyWithAnimation({ source: Buffer.from(ab), filename }, {
+                    caption: content.text || undefined,
+                    reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
+                    ...Markup.inlineKeyboard(telegramButtons),
+                  })
+                );
                 sentPrimaryMedia = true;
                 break;
               }
@@ -400,11 +509,13 @@ export class MessageManager {
           // Try direct URL send (only for HTTP/HTTPS and non-streamed GIFs)
           if (!url.startsWith('file://')) {
             try {
-              await ctx.replyWithAnimation(url, {
-                caption: content.text || undefined,
-                reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
-                ...Markup.inlineKeyboard(telegramButtons),
-              });
+              await sendMediaAndCache(assetName, () =>
+                ctx.replyWithAnimation(url, {
+                  caption: content.text || undefined,
+                  reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
+                  ...Markup.inlineKeyboard(telegramButtons),
+                })
+              );
               sentPrimaryMedia = true;
               break;
             } catch (gifErr) {
@@ -415,11 +526,13 @@ export class MessageManager {
         
         if (isImage) {
           try {
-            await ctx.replyWithPhoto(url, {
-              caption: content.text || undefined,
-              reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
-              ...Markup.inlineKeyboard(telegramButtons),
-            });
+            await sendMediaAndCache(assetName, () =>
+              ctx.replyWithPhoto(url, {
+                caption: content.text || undefined,
+                reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
+                ...Markup.inlineKeyboard(telegramButtons),
+              })
+            );
             sentPrimaryMedia = true;
             break;
           } catch (photoErr) {
@@ -429,11 +542,13 @@ export class MessageManager {
         
         // Fallback: send as document for unsupported types
         try {
-          await ctx.replyWithDocument(url, {
-            caption: content.text || undefined,
-            reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
-            ...Markup.inlineKeyboard(telegramButtons),
-          });
+          await sendMediaAndCache(assetName, () =>
+            ctx.replyWithDocument(url, {
+              caption: content.text || undefined,
+              reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
+              ...Markup.inlineKeyboard(telegramButtons),
+            })
+          );
           sentPrimaryMedia = true;
           break;
         } catch (docErr) {

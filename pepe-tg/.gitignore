@@ -12,3 +12,6 @@ src/data/lore-query-logs.jsonl
 # TypeScript declaration files (generated, not committed)
 *.d.ts
 !packages/**/*.d.ts
+
+# Telegram file_id cache (bot-specific, not shared)
+.cache/
