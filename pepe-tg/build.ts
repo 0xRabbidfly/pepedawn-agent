@@ -26,18 +26,45 @@ async function build() {
     // Build the Telegram plugin first if it exists (required by main project)
     const pluginPath = 'packages/plugin-telegram-fakerares';
     if (existsSync(pluginPath)) {
-      console.log('📦 Building Telegram plugin...');
-      try {
-        await $`cd ${pluginPath} && npm run build`.quiet();
-        console.log('✓ Telegram plugin built');
-        
-        // Update the copy in node_modules
-        console.log('📦 Updating plugin in node_modules...');
-        await $`npm install`.quiet();
-        console.log('✓ Plugin updated in node_modules');
-      } catch (error) {
-        console.error('✗ Failed to build Telegram plugin:', error);
-        return false;
+      // Check if plugin needs rebuilding (source newer than dist)
+      const pluginSrcPath = path.join(pluginPath, 'src');
+      const pluginDistPath = path.join(pluginPath, 'dist/index.js');
+      
+      let needsRebuild = !existsSync(pluginDistPath);
+      
+      if (!needsRebuild && existsSync(pluginSrcPath)) {
+        try {
+          const distStat = await Bun.file(pluginDistPath).stat();
+          const srcFiles = await Array.fromAsync(new Bun.Glob('**/*.ts').scan(pluginSrcPath));
+          
+          for (const srcFile of srcFiles) {
+            const srcStat = await Bun.file(path.join(pluginSrcPath, srcFile)).stat();
+            if (srcStat.mtime > distStat.mtime) {
+              needsRebuild = true;
+              break;
+            }
+          }
+        } catch {
+          needsRebuild = true; // If check fails, rebuild to be safe
+        }
+      }
+      
+      if (needsRebuild) {
+        console.log('📦 Building Telegram plugin...');
+        try {
+          await $`cd ${pluginPath} && npm run build`.quiet();
+          console.log('✓ Telegram plugin built');
+          
+          // Update the copy in node_modules
+          console.log('📦 Updating plugin in node_modules...');
+          await $`npm install`.quiet();
+          console.log('✓ Plugin updated in node_modules');
+        } catch (error) {
+          console.error('✗ Failed to build Telegram plugin:', error);
+          return false;
+        }
+      } else {
+        console.log('ℹ️  Telegram plugin up-to-date, skipping build');
       }
     } else {
       console.log('ℹ️  Telegram plugin not found, skipping plugin build');
