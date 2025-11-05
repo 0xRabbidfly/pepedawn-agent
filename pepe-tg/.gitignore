@@ -8,3 +8,7 @@ data/transactions/
 src/data/token-logs.jsonl
 src/data/conversation-logs.jsonl
 src/data/lore-query-logs.jsonl
+
+# TypeScript declaration files (generated, not committed)
+*.d.ts
+!packages/**/*.d.ts
