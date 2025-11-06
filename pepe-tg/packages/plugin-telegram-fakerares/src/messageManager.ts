@@ -20,7 +20,7 @@ import {
   type TelegramMessageSentPayload,
   type TelegramReactionReceivedPayload,
 } from './types';
-import { convertToTelegramButtons, convertMarkdownToTelegram } from './utils';
+import { convertToTelegramButtons } from './utils';
 import fs from 'fs';
 import * as path from 'path';
 
@@ -642,7 +642,8 @@ export class MessageManager {
       await ctx.telegram.sendChatAction(ctx.chat.id, 'typing');
 
       for (let i = 0; i < chunks.length; i++) {
-        const chunk = convertMarkdownToTelegram(chunks[i]);
+        // Use Markdown instead of MarkdownV2 for better link compatibility
+        const chunk = chunks[i];
         if (!ctx.chat) {
           logger.error('sendMessageInChunks loop: ctx.chat is undefined');
           continue;
@@ -650,7 +651,7 @@ export class MessageManager {
         const sentMessage = (await ctx.telegram.sendMessage(ctx.chat.id, chunk, {
           reply_parameters:
             i === 0 && replyToMessageId ? { message_id: replyToMessageId } : undefined,
-          parse_mode: 'MarkdownV2',
+          parse_mode: 'Markdown',
           link_preview_options: { is_disabled: true },
           ...Markup.inlineKeyboard(telegramButtons),
         })) as Message.TextMessage;
