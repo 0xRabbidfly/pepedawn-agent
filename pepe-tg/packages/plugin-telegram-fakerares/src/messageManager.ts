@@ -365,7 +365,7 @@ export class MessageManager {
                 throw new Error(`Local file not found: ${localPath}`);
               }
               
-              const filename = localPath.split('/').pop() || 'video.mp4';
+              const _filename = localPath.split('/').pop() || 'video.mp4';
               const fileBuffer = fs.readFileSync(localPath);
               
               await sendMediaAndCache(assetName, () =>
@@ -408,7 +408,7 @@ export class MessageManager {
                 }
                 
                 const ab = await response.arrayBuffer();
-                const filename = (() => {
+                const _filename = (() => {
                   try {
                     const u = new URL(url);
                     const last = u.pathname.split('/').pop() || '';
@@ -465,7 +465,7 @@ export class MessageManager {
                 throw new Error(`Local file not found: ${localPath}`);
               }
               
-              const filename = localPath.split('/').pop() || 'animation.gif';
+              const _filename = localPath.split('/').pop() || 'animation.gif';
               const fileBuffer = fs.readFileSync(localPath);
               
               await sendMediaAndCache(assetName, () =>
@@ -500,7 +500,7 @@ export class MessageManager {
                   logger.warn({ url, contentType, sizeBytes: ab.byteLength }, `❌ Invalid GIF (wrong content-type or too small <1KB), skipping to next attachment`);
                   throw new Error(`Invalid content-type or size: ${contentType}, ${ab.byteLength} bytes`);
                 }
-                const filename = (() => {
+                const _filename = (() => {
                   try {
                     const parsed = new URL(url);
                     const parts = parsed.pathname.split('/');
@@ -563,7 +563,7 @@ export class MessageManager {
                 
                 const ab = await response.arrayBuffer();
                 const maxPhotoBytes = 10 * 1024 * 1024; // 10MB limit for photos
-                const filename = (() => {
+                const _filename = (() => {
                   try {
                     const parsed = new URL(url);
                     const parts = parsed.pathname.split('/');
