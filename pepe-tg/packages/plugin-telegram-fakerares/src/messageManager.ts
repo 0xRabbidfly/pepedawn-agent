@@ -408,15 +408,6 @@ export class MessageManager {
                 }
                 
                 const ab = await response.arrayBuffer();
-                const _filename = (() => {
-                  try {
-                    const u = new URL(url);
-                    const last = u.pathname.split('/').pop() || '';
-                    return last && last.length <= 100 ? last : 'video.mp4';
-                  } catch (_) {
-                    return 'video.mp4';
-                  }
-                })();
                 await sendMediaAndCache(assetName, () =>
                   ctx.replyWithVideo(Input.fromBuffer(Buffer.from(ab)), {
                     caption: content.text || undefined,
@@ -465,7 +456,6 @@ export class MessageManager {
                 throw new Error(`Local file not found: ${localPath}`);
               }
               
-              const _filename = localPath.split('/').pop() || 'animation.gif';
               const fileBuffer = fs.readFileSync(localPath);
               
               await sendMediaAndCache(assetName, () =>
@@ -500,15 +490,6 @@ export class MessageManager {
                   logger.warn({ url, contentType, sizeBytes: ab.byteLength }, `❌ Invalid GIF (wrong content-type or too small <1KB), skipping to next attachment`);
                   throw new Error(`Invalid content-type or size: ${contentType}, ${ab.byteLength} bytes`);
                 }
-                const _filename = (() => {
-                  try {
-                    const parsed = new URL(url);
-                    const parts = parsed.pathname.split('/');
-                    return parts[parts.length - 1] || 'animation.gif';
-                  } catch {
-                    return 'animation.gif';
-                  }
-                })();
                 
                 const result = await sendMediaAndCache(assetName, () =>
                   ctx.replyWithAnimation(Input.fromBuffer(Buffer.from(ab)), {
@@ -563,15 +544,6 @@ export class MessageManager {
                 
                 const ab = await response.arrayBuffer();
                 const maxPhotoBytes = 10 * 1024 * 1024; // 10MB limit for photos
-                const _filename = (() => {
-                  try {
-                    const parsed = new URL(url);
-                    const parts = parsed.pathname.split('/');
-                    return parts[parts.length - 1] || 'image.jpg';
-                  } catch {
-                    return 'image.jpg';
-                  }
-                })();
                 
                 // If too large, send as document instead of photo
                 if (ab.byteLength > maxPhotoBytes) {
