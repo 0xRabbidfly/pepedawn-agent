@@ -57,6 +57,7 @@ Review and update if necessary:
 - `telegram_docs/PEPEDAWN_HELP_VISUAL.md` - User-facing commands
 - `telegram_docs/PEPEDAWN_SPEC_REFERENCE.md` - Technical specifications
 - `pepe-tg/README.md` - Project-specific documentation
+- if introducing a new cmd - update the '/help' cmd handler, and add a new tip to periodicContent.ts
 
 ### 6. CHANGELOG.md Update
 - Add new entry under `[Unreleased]` or create version section
@@ -76,7 +77,8 @@ Review and update if necessary:
 - Prepare git tag command (DO NOT EXECUTE)
 
 ### 8. Git Command Preparation
-- Generate commands for user to execute manually:
+- Generate commands for user to execute MANUALLY:
+- NEVER EXECUTE GIT COMMANDS!
   ```bash
   git add .
   git commit -m "Release vX.Y.Z: <summary>"

@@ -37,13 +37,15 @@
 **Commands:**
 - **`/f CARDNAME`** - Display any card (e.g., `/f FREEDOMKEK`)
 - **`/f ARTIST`** - Random card by artist (e.g., `/f Rare Scrilla`)
-- **`/f c ARTIST`** - Browse artist's cards in carousel mode ⭐**NEW**
+- **`/f c ARTIST`** - Browse artist's cards in carousel mode 🎠
+- **`/f c SERIES`** - Browse series cards (e.g., `/f c 5`) ⭐**NEW**
 - **`/f`** - Show a random card from 890+ collection
 
 **Features:**
 - Typo correction with fuzzy matching
 - Artist name search with partial matches
 - Interactive carousel with ⬅️ Prev / ➡️ Next buttons
+- Series browsing (cards 1→50 in order)
 - 890+ cards, auto-updated hourly
 
 #### Fake Commons (Simple & Fast)

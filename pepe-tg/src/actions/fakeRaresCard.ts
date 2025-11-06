@@ -27,11 +27,11 @@ import { checkAndConvertGif } from "../utils/gifConversionHelper";
  * Also supports /f (no asset) to display a random card from the collection
  *
  * URL Structure: https://pepewtf.s3.amazonaws.com/collections/fake-rares/full/{SERIES}/{ASSET}.{jpg|gif|mp4|png}
- * Series 0-18 (19 series total, 50 cards each = ~950 total cards)
+ * Series range auto-detected from card data (50 cards each)
  *
  * Performance optimization:
  * - Known cards: ~200ms (direct lookup, 1-3 HTTP requests)
- * - Unknown cards: ~2-10s (search series 0-18, auto-cache result)
+ * - Unknown cards: ~2-10s (search all series, auto-cache result)
  * - Random cards: instant (picks from full card index)
  *
  * Note: Using /full/ for higher quality media (Telegram handles compression automatically)
@@ -604,8 +604,9 @@ export function buildFallbackImageUrls(
 // ============================================================================
 
 /**
- * Attempts to find the card image by trying different series numbers (0-18)
+ * Attempts to find the card image by trying different series numbers
  * Uses full card index for instant lookups when available
+ * Series range auto-detected from SERIES_INFO.TOTAL_SERIES
  */
 async function findCardImage(assetName: string): Promise<CardUrlResult | null> {
   const upperAsset = assetName.toUpperCase();

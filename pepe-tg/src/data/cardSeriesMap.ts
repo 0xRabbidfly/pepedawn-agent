@@ -108,15 +108,24 @@ export function getCardsInSeries(seriesNum: number): string[] {
 }
 
 /**
+ * Calculate max series number from all cards (auto-detects new series)
+ */
+function getMaxSeries(): number {
+  const allSeries = Object.values(CARD_SERIES_MAP);
+  return allSeries.length > 0 ? Math.max(...allSeries) : 0;
+}
+
+/**
  * Series information
  */
 export const SERIES_INFO = {
-  TOTAL_SERIES: 19,  // 0-18
+  TOTAL_SERIES: getMaxSeries() + 1,  // Auto-detected from card data (e.g., max=18 → total=19)
   CARDS_PER_SERIES: 50,
-  EXPECTED_TOTAL_CARDS: 921,  // Series 0: 21, Series 1-18: 50 each
-  CURRENT_INDEXED_CARDS: Object.keys(STATIC_SERIES_MAP).length,  // 893 from full index
+  EXPECTED_TOTAL_CARDS: 921,  // Series 0: 21, Series 1-18: 50 each (updates when series 19+ arrive)
+  CURRENT_INDEXED_CARDS: Object.keys(STATIC_SERIES_MAP).length,  // Cards from full index
   CURRENT_CACHED_CARDS: Object.keys(RUNTIME_CACHE).length,  // Runtime discoveries
   CURRENT_MAPPED_CARDS: Object.keys(CARD_SERIES_MAP).length,  // Total available
+  MAX_SERIES: getMaxSeries(),  // Highest series number found (e.g., 18)
 };
 
 /**

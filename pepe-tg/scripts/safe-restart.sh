@@ -45,6 +45,23 @@ if [ -f ".eliza/.elizadb/postmaster.pid" ]; then
   rm -f .eliza/.elizadb/postmaster.pid .eliza/.elizadb/postmaster.opts 2>/dev/null
 fi
 
+# Clean up stale TypeScript declaration files (prevents cached signature issues)
+echo "🧹 Removing stale type declarations..."
+find src -name "*.d.ts" -type f -delete 2>/dev/null || true
+echo "   Cleaned stale .d.ts files"
+
+# Rebuild plugin and main project to ensure fresh code
+echo "🔨 Rebuilding plugin..."
+cd packages/plugin-telegram-fakerares
+rm -rf dist
+bun run build > /dev/null 2>&1
+cd ../..
+echo "   Plugin rebuilt"
+
+echo "🔨 Rebuilding main project..."
+bun run build > /dev/null 2>&1
+echo "   Main project rebuilt"
+
 echo "✅ Cleanup complete"
 echo "🚀 Starting bot..."
 ./scripts/start-bot.sh

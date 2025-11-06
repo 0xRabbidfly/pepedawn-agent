@@ -39,6 +39,10 @@ const HELPFUL_TIPS = [
     text: "Browse all cards by an artist! Use `/f c ARTIST_NAME` to see an interactive carousel with ⬅️ Prev/➡️ Next buttons. Try `/f c pepenardo` to explore all their cards!",
   },
   {
+    title: "📚 Series Collection Browser",
+    text: "Explore cards by series number! Use `/f c 5` to browse all Series 5 cards. Perfect for discovering cards from specific eras. Navigate with ⬅️ Prev/➡️ Next!",
+  },
+  {
     title: "🔍 AI Visual Analysis",
     text: "Use `/fv CARDNAME` to get deep memetic analysis! I'll read ALL text (OCR), identify meme references, and break down the visual composition. Try `/fv FREEDOMKEK`!",
   },

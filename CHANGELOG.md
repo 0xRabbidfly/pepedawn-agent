@@ -7,6 +7,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.9.0] - 2025-11-06
+
+### Added
+- **Series Carousel Feature** (`/f c <SERIES>`) - Browse cards by series number
+  - Works identically to artist carousel but filters by series (0-18)
+  - Use `/f c 5` to browse all Series 5 cards in alphabetical order
+  - Same ⬅️ Prev / ➡️ Next navigation with circular wrapping
+  - Series-first detection: numeric input (0-18) routes to series, otherwise artist
+  - Callback format updated to support both modes: `fc:action:type:identifier:index:total`
+  - 'type' field: 's' for series, 'a' for artist
+  - Shows "🎠 Carousel: Series 5 (X cards total)" header
+
+### Changed
+- **Carousel Action** - Unified to support both artist and series browsing
+  - `buildCarouselButtons()` now accepts type parameter ('a' | 's')
+  - `displayArtistCarousel()` renamed conceptually to handle both modes
+  - `handleCarouselNavigation()` updated to decode type and route appropriately
+  - **Smart Sorting**: Series carousels sort by card number (1→50), artist carousels sort alphabetically
+  - Updated action description: "Browse artist's cards or series in interactive carousel"
+  - Help command updated with `/f c SERIES` example
+  - Added new periodic tip: "📚 Series Collection Browser"
+
+### Technical Details
+- Reuses existing `getCardsBySeries()` function from `fullCardIndex.ts`
+- Test coverage: Added 3 new tests for series validation and navigation
+- All 21 carousel tests passing
+- Zero code duplication - same logic for both artist and series modes
+- **Future-proof**: `SERIES_INFO.TOTAL_SERIES` auto-detects from card data
+  - When Series 19 arrives, just update `fake-rares-data.json` - no code changes needed
+  - Validation automatically extends to new series
+
 ## [3.8.0] - 2025-01-06
 
 ### Added
