@@ -226,7 +226,7 @@ The bot automatically monitors Counterparty blockchain for Fake Rare market acti
 The bot can periodically post helpful tips and card showcases to your Telegram channel to keep the community engaged and educated.
 
 **What it posts:**
-- 💡 **Helpful Tips** (60%) - Rotates through 10 curated tips about bot features
+- 💡 **Helpful Tips** (60%) - Rotates through 11 curated tips about bot features
 - 🎴 **Card Showcases** (40%) - Random cards from the 890+ collection
 
 **Anti-Spam Protection:**

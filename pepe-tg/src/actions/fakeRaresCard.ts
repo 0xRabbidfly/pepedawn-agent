@@ -878,6 +878,10 @@ async function handleCardNotFound(params: {
         isTypoCorrection: true,
       });
 
+      // Build artist button and fallback images (was missing!)
+      const buttons = buildArtistButton(matchedCard);
+      const fallbackImages = buildFallbackImageUrls(bestMatch.name, matchedCard);
+
       await sendCardWithMedia({
         callback: (params.callback ?? null) as
           | ((response: any) => Promise<any>)
@@ -887,6 +891,8 @@ async function handleCardNotFound(params: {
         mediaExtension: matchedUrlResult.extension,
         assetName: bestMatch.name,
         cardInfo: matchedCard,
+        buttons,
+        fallbackImages,
         runtime: params.runtime,
       });
 

@@ -4,7 +4,7 @@
  * Periodically posts helpful tips and card showcases to Telegram channel(s).
  * 
  * Features:
- * - Posts helpful usage tips (rotates through 10 tips)
+ * - Posts helpful usage tips (rotates through 11 tips)
  * - Posts random card showcases (/f or /fv)
  * - Anti-spam: Only posts if there's been user activity since last post
  * - Configurable intervals
@@ -33,6 +33,10 @@ const HELPFUL_TIPS = [
   {
     title: "🎨 Search by Artist",
     text: "Want to explore an artist's work? Use `/f ARTIST_NAME` to get a random card by that artist. Try `/f Rare Scrilla` or `/f indelible`!",
+  },
+  {
+    title: "🎠 Artist Carousel Browser",
+    text: "Browse all cards by an artist! Use `/f c ARTIST_NAME` to see an interactive carousel with ⬅️ Prev/➡️ Next buttons. Try `/f c pepenardo` to explore all their cards!",
   },
   {
     title: "🔍 AI Visual Analysis",
@@ -64,7 +68,7 @@ const HELPFUL_TIPS = [
   },
   {
     title: "💡 Natural Conversation",
-    text: "You don't need to use commands for everything! Ask me naturally: \"Who is Rare Scrilla?\" or \"What are Fake Rares?\" and I'll answer with context awareness.",
+    text: "You don't need to use commands for everything! Ask me naturally: \"What is the Book of Kek?\" or \"What are Fake Rares?\" and I'll answer with context awareness.",
   },
 ];
 
