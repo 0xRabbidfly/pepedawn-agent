@@ -365,7 +365,6 @@ export class MessageManager {
                 throw new Error(`Local file not found: ${localPath}`);
               }
               
-              const _filename = localPath.split('/').pop() || 'video.mp4';
               const fileBuffer = fs.readFileSync(localPath);
               
               await sendMediaAndCache(assetName, () =>
