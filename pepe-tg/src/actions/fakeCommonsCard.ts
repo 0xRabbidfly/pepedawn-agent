@@ -7,6 +7,7 @@ import {
 } from "@elizaos/core";
 import { createLogger } from "../utils/actionLogger";
 import { type CommonsCardInfo, COMMONS_CARD_INDEX } from "../data/fakeCommonsIndex";
+import { checkAndConvertGif } from "../utils/gifConversionHelper";
 
 /**
  * Fake Commons Card Display Action
@@ -124,36 +125,6 @@ function buildCardMessage(
   return message;
 }
 
-/**
- * Get environment variable as number with fallback
- */
-function getEnvNumber(name: string, fallback: number): number {
-  const val = process.env[name];
-  if (!val) return fallback;
-  const n = Number(val);
-  return Number.isFinite(n) && n > 0 ? n : fallback;
-}
-
-/**
- * Check media size via HEAD request with timeout
- */
-async function headInfo(
-  url: string,
-  timeoutMs: number = 3000,
-): Promise<{ contentType: string | null; contentLength: number | null }> {
-  try {
-    const controller = new AbortController();
-    const tid = setTimeout(() => controller.abort(), timeoutMs);
-    const res = await fetch(url, { method: "HEAD", signal: controller.signal });
-    clearTimeout(tid);
-    if (!res.ok) return { contentType: null, contentLength: null };
-    const ct = res.headers.get("content-type");
-    const len = res.headers.get("content-length");
-    return { contentType: ct, contentLength: len ? parseInt(len, 10) : null };
-  } catch {
-    return { contentType: null, contentLength: null };
-  }
-}
 
 /**
  * Send card with media attachment
@@ -187,7 +158,7 @@ async function sendCardWithMedia(params: {
     }
   }
   
-  // Direct implementation (fallback)
+  // Direct implementation (fallback) - uses same caching logic via messageManager
   if (!params.callback) {
     return;
   }
@@ -195,73 +166,25 @@ async function sendCardWithMedia(params: {
   const isVideo = params.mediaExtension === "mp4";
   const isAnimation = params.mediaExtension === "gif" || params.mediaExtension === "GIF";
 
-  // Check video size before sending
-  if (isVideo) {
-    try {
-      const maxMb = getEnvNumber("MP4_URL_MAX_MB", 50);
-      const { contentType, contentLength } = await headInfo(params.mediaUrl, 3000);
-      const typeOk = (contentType || "").toLowerCase().includes("video/mp4");
-      const sizeOk = contentLength !== null ? contentLength <= maxMb * 1024 * 1024 : false;
-      
-      if (!typeOk || !sizeOk) {
-        await params.callback({
-          text: `${params.cardMessage}\n\nFile too large for viewing on TG - click the link to view asset\n🎬 Video: ${params.mediaUrl}`,
-          buttons: params.buttons && params.buttons.length > 0 ? params.buttons : undefined,
-          plainText: true,
-          __fromAction: "fakeCommonsCard",
-          suppressBootstrap: true,
-        });
-        return;
-      }
-    } catch {
-      await params.callback({
-        text: `${params.cardMessage}\n\n🎬 Video: ${params.mediaUrl}`,
-        buttons: params.buttons && params.buttons.length > 0 ? params.buttons : undefined,
-        plainText: true,
-        __fromAction: "fakeCommonsCard",
-        suppressBootstrap: true,
-      });
-      return;
-    }
-  }
-
-  // Check GIF size before sending
+  // Check and convert large GIFs to MP4 (reuses same logic as /f)
+  let finalUrl = params.mediaUrl;
+  let finalExtension = params.mediaExtension;
+  
   if (isAnimation) {
-    try {
-      const maxMb = getEnvNumber("GIF_URL_MAX_MB", 40);
-      const { contentType, contentLength } = await headInfo(params.mediaUrl, 3000);
-      const typeOk = (contentType || "").toLowerCase().includes("image/gif");
-      const sizeOk = contentLength !== null ? contentLength <= maxMb * 1024 * 1024 : false;
-      
-      if (!typeOk || !sizeOk) {
-        await params.callback({
-          text: `${params.cardMessage}\n\nFile too large for viewing on TG - click the link to view asset\n🎞️ Animation: ${params.mediaUrl}`,
-          buttons: params.buttons && params.buttons.length > 0 ? params.buttons : undefined,
-          plainText: true,
-          __fromAction: "fakeCommonsCard",
-          suppressBootstrap: true,
-        });
-        return;
+    const converted = await checkAndConvertGif(params.mediaUrl, params.assetName);
+    if (converted) {
+      finalUrl = converted;
+      finalExtension = "mp4";
       }
-    } catch {
-      await params.callback({
-        text: `${params.cardMessage}\n\n🎞️ Animation: ${params.mediaUrl}`,
-        buttons: params.buttons && params.buttons.length > 0 ? params.buttons : undefined,
-        plainText: true,
-        __fromAction: "fakeCommonsCard",
-        suppressBootstrap: true,
-      });
-      return;
-    }
   }
 
-  // Send with media attachment
+  // Send with media attachment (messageManager handles file_id caching automatically)
   const attachments = [
     {
-      url: params.mediaUrl,
+      url: finalUrl,
       title: params.assetName,
       source: "fake-commons",
-      contentType: isVideo
+      contentType: isVideo || finalExtension === "mp4"
         ? "video/mp4"
         : isAnimation
           ? "image/gif"

@@ -28,21 +28,12 @@ interface SendCardParams {
   assetName: string;
   buttons?: Array<{ text: string; url?: string; callback_data?: string }>;
   fallbackImages?: Array<{ url: string; contentType: string }>;
-}
-
-interface SizeCheckResult {
-  contentType: string | null;
-  contentLength: number | null;
-  isStreamable: boolean;
-  shouldUseLink: boolean;
+  cardInfo?: CardInfo | null; // For memeUri fallback when primary media fails
 }
 
 export class CardDisplayService extends Service {
   static serviceType = 'card-display';
   capabilityDescription = 'Unified card display with media handling for all collections';
-
-  private sizeCheckCache = new Map<string, SizeCheckResult>();
-  private cacheTimeout = 5 * 60 * 1000; // 5 minutes
 
   constructor(protected runtime: IAgentRuntime) {
     super();
@@ -57,102 +48,6 @@ export class CardDisplayService extends Service {
   /**
    * Fetch Content-Type and Content-Length via HEAD with a timeout.
    */
-  private async headInfo(
-    url: string,
-    timeoutMs: number = 3000,
-  ): Promise<{ contentType: string | null; contentLength: number | null }> {
-    try {
-      const controller = new AbortController();
-      const tid = setTimeout(() => controller.abort(), timeoutMs);
-      const res = await fetch(url, { method: 'HEAD', signal: controller.signal });
-      clearTimeout(tid);
-      if (!res.ok) return { contentType: null, contentLength: null };
-      const ct = res.headers.get('content-type');
-      const len = res.headers.get('content-length');
-      return { contentType: ct, contentLength: len ? parseInt(len, 10) : null };
-    } catch {
-      return { contentType: null, contentLength: null };
-    }
-  }
-
-  private getEnvNumber(name: string, fallback: number): number {
-    const val = process.env[name];
-    if (!val) return fallback;
-    const n = Number(val);
-    return Number.isFinite(n) && n > 0 ? n : fallback;
-  }
-
-  /**
-   * Checks if media is too large for Telegram streaming
-   * Caches results to avoid repeated HEAD requests
-   */
-  async checkMediaSize(
-    url: string,
-    extension: MediaExtension,
-  ): Promise<SizeCheckResult> {
-    // Check cache first
-    const cached = this.sizeCheckCache.get(url);
-    if (cached) {
-      return cached;
-    }
-
-    const isVideo = extension === 'mp4';
-    const isAnimation = extension === 'gif';
-
-    if (!isVideo && !isAnimation) {
-      // Images (jpg/png) are always streamable
-      const result: SizeCheckResult = {
-        contentType: null,
-        contentLength: null,
-        isStreamable: true,
-        shouldUseLink: false,
-      };
-      this.sizeCheckCache.set(url, result);
-      return result;
-    }
-
-    try {
-      const maxMb = isVideo
-        ? this.getEnvNumber('MP4_URL_MAX_MB', 50)
-        : this.getEnvNumber('GIF_URL_MAX_MB', 40);
-
-      const { contentType, contentLength } = await this.headInfo(url, 3000);
-
-      const typeOk = isVideo
-        ? (contentType || '').toLowerCase().includes('video/mp4')
-        : (contentType || '').toLowerCase().includes('image/gif');
-
-      const sizeOk =
-        contentLength !== null ? contentLength <= maxMb * 1024 * 1024 : false;
-
-      const result: SizeCheckResult = {
-        contentType,
-        contentLength,
-        isStreamable: typeOk && sizeOk,
-        shouldUseLink: !typeOk || !sizeOk,
-      };
-
-      // Cache result
-      this.sizeCheckCache.set(url, result);
-
-      // Clear cache after timeout
-      setTimeout(() => {
-        this.sizeCheckCache.delete(url);
-      }, this.cacheTimeout);
-
-      return result;
-    } catch {
-      // On error, assume too large and use link
-      const result: SizeCheckResult = {
-        contentType: null,
-        contentLength: null,
-        isStreamable: false,
-        shouldUseLink: true,
-      };
-      this.sizeCheckCache.set(url, result);
-      return result;
-    }
-  }
 
   /**
    * Build a list of fallback image URLs to try if video fails on Telegram.
@@ -234,38 +129,25 @@ export class CardDisplayService extends Service {
     let isAnimation = params.mediaExtension === 'gif';
 
     // ========================================================================
-    // GIF CONVERSION LOGIC (Centralized)
+    // CHECK CACHE FIRST - Skip expensive conversion if we have a cached file_id
     // ========================================================================
-    const conversionCheck = await checkAndConvertGif(mediaUrl, mediaExtension);
-    if (conversionCheck.shouldConvert && conversionCheck.convertedUrl) {
-      mediaUrl = conversionCheck.convertedUrl;
-      mediaExtension = conversionCheck.convertedExtension as MediaExtension;
-      isVideo = true;
-      isAnimation = false;
-    }
-
-    // Check size for videos and remaining GIFs (after potential conversion)
-    if (isVideo || isAnimation) {
-      // Skip size check for local converted files
-      if (!mediaUrl.startsWith('file://')) {
-        const sizeCheck = await this.checkMediaSize(mediaUrl, mediaExtension);
-
-        if (sizeCheck.shouldUseLink) {
-          const mediaType = isVideo ? '🎬 Video' : '🎞️ Animation';
-          await params.callback({
-            text: `${params.cardMessage}\n\nFile too large for viewing on TG - click the link to view asset\n${mediaType}: ${mediaUrl}`,
-            buttons:
-              params.buttons && params.buttons.length > 0 ? params.buttons : undefined,
-            plainText: true,
-            __fromAction: 'cardDisplay',
-            suppressBootstrap: true,
-          });
-          return;
-        }
+    const { getTelegramFileId } = await import('../utils/telegramFileIdCache.js');
+    const cachedFileId = getTelegramFileId(params.assetName);
+    
+    // ========================================================================
+    // GIF CONVERSION LOGIC (Centralized) - Only if no cache hit
+    // ========================================================================
+    if (!cachedFileId) {
+      const conversionCheck = await checkAndConvertGif(mediaUrl, mediaExtension);
+      if (conversionCheck.shouldConvert && conversionCheck.convertedUrl) {
+        mediaUrl = conversionCheck.convertedUrl;
+        mediaExtension = conversionCheck.convertedExtension as MediaExtension;
+        isVideo = true;
+        isAnimation = false;
       }
     }
 
-    // Build attachments array
+    // Build attachments array (size checks removed - file_id caching handles all sizes)
     const attachments: Array<{
       url: string;
       title: string;
@@ -284,6 +166,16 @@ export class CardDisplayService extends Service {
           ? 'image/gif'
           : 'image/jpeg',
     });
+
+    // Add memeUri as fallback for videos and GIFs (handles oversized MP4s and dead primary URLs)
+    if ((isVideo || isAnimation) && params.cardInfo?.memeUri) {
+      attachments.push({
+        url: params.cardInfo.memeUri,
+        title: params.assetName,
+        source: 'card-display-memeuri-fallback',
+        contentType: 'image/gif',
+      });
+    }
 
     // Add optional fallback images to improve preview success on Telegram
     // Only use fallbacks for videos (GIFs and images work directly with primary URL)
@@ -312,7 +204,6 @@ export class CardDisplayService extends Service {
    * Cleanup on service stop
    */
   async stop(): Promise<void> {
-    this.sizeCheckCache.clear();
     logger.info('CardDisplayService stopped');
   }
 }

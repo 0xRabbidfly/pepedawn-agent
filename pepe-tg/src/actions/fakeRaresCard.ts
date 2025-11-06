@@ -282,33 +282,6 @@ async function headContentLength(
   }
 }
 
-/**
- * Fetch Content-Type and Content-Length via HEAD with a timeout.
- */
-export async function headInfo(
-  url: string,
-  timeoutMs: number = 3000,
-): Promise<{ contentType: string | null; contentLength: number | null }> {
-  try {
-    const controller = new AbortController();
-    const tid = setTimeout(() => controller.abort(), timeoutMs);
-    const res = await fetch(url, { method: "HEAD", signal: controller.signal });
-    clearTimeout(tid);
-    if (!res.ok) return { contentType: null, contentLength: null };
-    const ct = res.headers.get("content-type");
-    const len = res.headers.get("content-length");
-    return { contentType: ct, contentLength: len ? parseInt(len, 10) : null };
-  } catch {
-    return { contentType: null, contentLength: null };
-  }
-}
-
-export function getEnvNumber(name: string, fallback: number): number {
-  const val = process.env[name];
-  if (!val) return fallback;
-  const n = Number(val);
-  return Number.isFinite(n) && n > 0 ? n : fallback;
-}
 
 // ============================================================================
 // MESSAGE BUILDING
@@ -428,6 +401,7 @@ export async function sendCardWithMedia(params: {
           assetName: params.assetName,
           buttons: params.buttons,
           fallbackImages: params.fallbackImages,
+          cardInfo: params.cardInfo, // For memeUri fallback
         });
         return;
       }
@@ -459,87 +433,10 @@ export async function sendCardWithMedia(params: {
   const finalIsVideo = isVideo;
   const finalIsAnimation = isAnimation;
 
-  if (finalIsVideo) {
-    try {
-      const maxMb = getEnvNumber("MP4_URL_MAX_MB", 50);
-      // Skip size check for local converted files (file:// URLs)
-      if (params.mediaUrl.startsWith("file://")) {
-        // Local converted file, proceed directly to sending
-      } else {
-        const { contentType, contentLength } = await headInfo(
-          params.mediaUrl,
-          3000,
-        );
-        const typeOk = (contentType || "").toLowerCase().includes("video/mp4");
-        const sizeOk =
-          contentLength !== null ? contentLength <= maxMb * 1024 * 1024 : false;
-        if (!typeOk || !sizeOk) {
-          await params.callback({
-            text: `${params.cardMessage}\n\nFile too large for viewing on TG - click the link to view asset\n🎬 Video: ${params.mediaUrl}`,
-            buttons:
-              params.buttons && params.buttons.length > 0
-                ? params.buttons
-                : undefined,
-            plainText: true,
-            __fromAction: "fakeRaresCard",
-            suppressBootstrap: true,
-          });
-          return;
-        }
-      }
-    } catch {
-      await params.callback({
-        text: `${params.cardMessage}\n\nFile too large for viewing on TG - click the link to view asset\n🎬 Video: ${params.mediaUrl}`,
-        buttons:
-          params.buttons && params.buttons.length > 0
-            ? params.buttons
-            : undefined,
-        plainText: true,
-        __fromAction: "fakeRaresCard",
-        suppressBootstrap: true,
-      });
-      return;
-    }
-  }
+  // Size checks removed - file_id caching handles all sizes
+  // Oversized files will fail gracefully and use memeUri fallback
 
-  // Check remaining GIF animations (ones that weren't converted above)
-  if (finalIsAnimation) {
-    try {
-      const maxMb = getEnvNumber("GIF_URL_MAX_MB", 40);
-      const { contentType, contentLength } = await headInfo(
-        params.mediaUrl,
-        3000,
-      );
-      const typeOk = (contentType || "").toLowerCase().includes("image/gif");
-      const sizeOk =
-        contentLength !== null ? contentLength <= maxMb * 1024 * 1024 : false;
-      if (!typeOk || !sizeOk) {
-        await params.callback({
-          text: `${params.cardMessage}\n\nFile too large for viewing on TG - click the link to view asset\n🎞️ Animation: ${params.mediaUrl}`,
-          buttons:
-            params.buttons && params.buttons.length > 0
-              ? params.buttons
-              : undefined,
-          plainText: true,
-          __fromAction: "fakeRaresCard",
-          suppressBootstrap: true,
-        });
-        return;
-      }
-    } catch {
-      await params.callback({
-        text: `${params.cardMessage}\n\nFile too large for viewing on TG - click the link to view asset\n🎞️ Animation: ${params.mediaUrl}`,
-        buttons:
-          params.buttons && params.buttons.length > 0
-            ? params.buttons
-            : undefined,
-        plainText: true,
-        __fromAction: "fakeRaresCard",
-        suppressBootstrap: true,
-      });
-      return;
-    }
-  }
+  // GIF size checks removed - file_id caching handles all sizes
 
   const attachments: Array<{
     url: string;
@@ -635,7 +532,7 @@ export function determineCardUrl(
       }
       // No memeUri, fall through to S3
     } else {
-      return { url: cardInfo.videoUri, extension: "mp4" };
+    return { url: cardInfo.videoUri, extension: "mp4" };
     }
   }
 

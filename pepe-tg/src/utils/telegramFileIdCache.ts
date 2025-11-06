@@ -10,9 +10,8 @@ import { createLogger } from './actionLogger';
 
 const logger = createLogger('TelegramFileIdCache');
 
-// Separate cache file (gitignored, environment-specific)
-const CACHE_DIR = process.env.TELEGRAM_CACHE_DIR || path.join(process.cwd(), '.cache');
-const CACHE_FILE = path.join(CACHE_DIR, 'telegram-file-ids.json');
+// Cache file location (with other data files)
+const CACHE_FILE = process.env.TELEGRAM_CACHE_FILE || path.join(process.cwd(), 'src', 'data', 'telegram-file-ids.json');
 
 // In-memory cache for fast lookups
 let memoryCache: Record<string, string> = {};
@@ -57,9 +56,10 @@ export function saveTelegramFileId(assetName: string, fileId: string): void {
     
     memoryCache[assetName.toUpperCase()] = fileId;
     
-    // Ensure cache directory exists
-    if (!fs.existsSync(CACHE_DIR)) {
-      fs.mkdirSync(CACHE_DIR, { recursive: true });
+    // Ensure directory exists
+    const dir = path.dirname(CACHE_FILE);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
     }
     
     // Write back to disk

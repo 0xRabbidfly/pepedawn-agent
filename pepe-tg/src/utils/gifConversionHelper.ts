@@ -63,7 +63,7 @@ export async function checkAndConvertGif(
     };
   }
 
-  const maxMb = getEnvNumber('GIF_URL_MAX_MB', 40);
+  const maxMb = getEnvNumber('GIF_URL_MAX_MB', 8);
   
   try {
     const { contentType, contentLength } = await headInfo(mediaUrl, 3000);

@@ -14,4 +14,5 @@ src/data/lore-query-logs.jsonl
 !packages/**/*.d.ts
 
 # Telegram file_id cache (bot-specific, not shared)
-.cache/
+src/data/telegram-file-ids.json
+dist/data/telegram-file-ids.json

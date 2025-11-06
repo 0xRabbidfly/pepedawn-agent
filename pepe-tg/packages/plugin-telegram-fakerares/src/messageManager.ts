@@ -12,7 +12,7 @@ import {
 } from '@elizaos/core';
 import type { Chat, Message, ReactionType, Update } from '@telegraf/types';
 import type { Context, NarrowedContext, Telegraf } from 'telegraf';
-import { Markup } from 'telegraf';
+import { Input, Markup } from 'telegraf';
 import {
   TelegramContent,
   TelegramEventTypes,
@@ -23,6 +23,9 @@ import {
 import { convertToTelegramButtons, convertMarkdownToTelegram } from './utils';
 import fs from 'fs';
 import * as path from 'path';
+
+// Card dimensions (5:7 aspect ratio enforced at collection level)
+const CARD_DIMENSIONS = { width: 500, height: 700 } as const;
 
 // Dynamic import for file_id cache (cross-package, loaded at runtime)
 let telegramFileIdCache: any = null;
@@ -287,7 +290,12 @@ export class MessageManager {
         const assetName = attachment.title || '';
         const isVideo = /^video\//.test(ct) || /\.mp4(\?|$)/i.test(url);
         const isGif = ct === 'image/gif' || /\.gif(\?|$)/i.test(url);
-        const isImage = /^image\//.test(ct) || /\.(png|jpe?g|webp)(\?|$)/i.test(url);
+        const isImage = !isGif && (/^image\//.test(ct) || /\.(png|jpe?g|webp)(\?|$)/i.test(url));
+        
+        // Debug logging for media type detection
+        if (assetName) {
+          logger.debug(`🔍 Media detection for ${assetName}: contentType="${ct}", url="${url.substring(0, 60)}...", isVideo=${isVideo}, isGif=${isGif}, isImage=${isImage}`);
+        }
         
         // ====================================================================
         // TELEGRAM FILE_ID CACHE - Check cache first (instant recall)
@@ -296,29 +304,45 @@ export class MessageManager {
           const cache = await getFileIdCache();
           const cachedFileId = cache.getTelegramFileId(assetName);
           if (cachedFileId) {
+            // Detect file_id type from prefix
+            const isDocumentId = cachedFileId.startsWith('BQAC') || cachedFileId.startsWith('BAAC');
+            
             try {
               let sentMessage: any;
               if (isVideo) {
                 sentMessage = await ctx.replyWithVideo(cachedFileId, {
+                caption: content.text || undefined,
+                supports_streaming: true,
+                ...CARD_DIMENSIONS,
+                reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
+                ...Markup.inlineKeyboard(telegramButtons),
+              });
+            } else if (isGif) {
+              // CRITICAL FIX: If Telegram returned this GIF as a document, use replyWithDocument
+              // This happens when Telegram decides a GIF doesn't meet animation criteria (size, format, etc)
+              if (isDocumentId) {
+                logger.debug(`📄 Using document method for ${assetName} (Telegram classified this GIF as document)`);
+                sentMessage = await ctx.replyWithDocument(cachedFileId, {
                   caption: content.text || undefined,
-                  supports_streaming: true,
                   reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
                   ...Markup.inlineKeyboard(telegramButtons),
                 });
-              } else if (isGif) {
+              } else {
                 sentMessage = await ctx.replyWithAnimation(cachedFileId, {
                   caption: content.text || undefined,
                   reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
                   ...Markup.inlineKeyboard(telegramButtons),
                 });
-              } else if (isImage) {
-                sentMessage = await ctx.replyWithPhoto(cachedFileId, {
-                  caption: content.text || undefined,
-                  reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
-                  ...Markup.inlineKeyboard(telegramButtons),
-                });
               }
-              
+            } else if (isImage) {
+              sentMessage = await ctx.replyWithPhoto(cachedFileId, {
+                caption: content.text || undefined,
+                ...CARD_DIMENSIONS,
+                reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
+                ...Markup.inlineKeyboard(telegramButtons),
+              });
+            }
+            
               if (sentMessage) {
                 sentPrimaryMedia = true;
                 logger.info(`✅ Used cached file_id for ${assetName} (instant)`);
@@ -345,9 +369,10 @@ export class MessageManager {
               const fileBuffer = fs.readFileSync(localPath);
               
               await sendMediaAndCache(assetName, () =>
-                ctx.replyWithVideo({ source: fileBuffer, filename }, {
+                ctx.replyWithVideo(Input.fromBuffer(fileBuffer), {
                   caption: content.text || undefined,
                   supports_streaming: true,
+                  ...CARD_DIMENSIONS,
                   reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
                   ...Markup.inlineKeyboard(telegramButtons),
                 })
@@ -360,24 +385,28 @@ export class MessageManager {
             }
           }
           
-          // Attempt streaming first for Arweave/S3/tokenscan hosts (HTTP/HTTPS only)
-          let streamingFirst = false;
-          try {
-            const host = new URL(url).hostname;
-            streamingFirst = /arweave\.net$/i.test(host) || /amazonaws\.com$/i.test(host) || /tokenscan\.io$/i.test(host);
-          } catch {}
-          
-          if (streamingFirst) {
+          // Stream all videos (download buffer first, then send) - works with all hosts + enables file_id caching
+          if (!url.startsWith('file://')) {
             try {
               const head = await fetch(url, { method: 'HEAD' });
               const lenStr = head.ok ? head.headers.get('content-length') : null;
               const maxBytes = 49 * 1024 * 1024; // ~49MB for bot upload
               const length = lenStr ? parseInt(lenStr, 10) : NaN;
               if (!Number.isNaN(length) && length > maxBytes) {
-                throw new Error('FileTooLargeForBotUpload');
+                // File too large - try next attachment (e.g. memeUri fallback)
+                logger.warn({ url, sizeMB: (length / 1024 / 1024).toFixed(2) }, 'Video too large for Telegram upload (>49MB), trying next attachment');
+                continue; // Try next attachment in the loop
               }
               const response = await fetch(url);
               if (response && response.ok) {
+                const contentType = response.headers.get('content-type') || '';
+                
+                // Validate it's actually a video, not an error page
+                if (!contentType.includes('video/') && !contentType.includes('application/octet-stream')) {
+                  logger.warn({ url, contentType }, `❌ Invalid content-type for video (got ${contentType}), skipping stream`);
+                  throw new Error(`Invalid content-type: ${contentType}`);
+                }
+                
                 const ab = await response.arrayBuffer();
                 const filename = (() => {
                   try {
@@ -389,9 +418,10 @@ export class MessageManager {
                   }
                 })();
                 await sendMediaAndCache(assetName, () =>
-                  ctx.replyWithVideo({ source: Buffer.from(ab), filename }, {
+                  ctx.replyWithVideo(Input.fromBuffer(Buffer.from(ab)), {
                     caption: content.text || undefined,
                     supports_streaming: true,
+                    ...CARD_DIMENSIONS,
                     reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
                     ...Markup.inlineKeyboard(telegramButtons),
                   })
@@ -411,6 +441,7 @@ export class MessageManager {
                 ctx.replyWithVideo(url, {
                   caption: content.text || undefined,
                   supports_streaming: true,
+                  ...CARD_DIMENSIONS,
                   reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
                   ...Markup.inlineKeyboard(telegramButtons),
                 })
@@ -418,25 +449,14 @@ export class MessageManager {
               sentPrimaryMedia = true;
               break;
             } catch (videoErr) {
-              // Fallback: send as document if video fails (common with Arweave URLs)
-              try {
-                await sendMediaAndCache(assetName, () =>
-                  ctx.replyWithDocument(url, {
-                    caption: content.text || undefined,
-                    reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
-                    ...Markup.inlineKeyboard(telegramButtons),
-                  })
-                );
-                sentPrimaryMedia = true;
-                break;
-              } catch (docErr) {
-                logger.warn({ videoErr, docErr, url }, 'Video attachment failed, falling back to text');
-              }
+              logger.warn({ videoErr, url }, 'Direct video URL failed, trying next attachment or text fallback');
+              // Don't try document - just continue to next attachment or text fallback
             }
           }
         }
         
         if (isGif) {
+          logger.info(`🎞️ Entering GIF handler for ${assetName}, url starts with: ${url.substring(0, 30)}`);
           // Handle local file:// URLs (from converted GIFs)
           if (url.startsWith('file://')) {
             try {
@@ -449,7 +469,7 @@ export class MessageManager {
               const fileBuffer = fs.readFileSync(localPath);
               
               await sendMediaAndCache(assetName, () =>
-                ctx.replyWithAnimation({ source: fileBuffer, filename }, {
+                ctx.replyWithAnimation(Input.fromBuffer(fileBuffer), {
                   caption: content.text || undefined,
                   reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
                   ...Markup.inlineKeyboard(telegramButtons),
@@ -463,50 +483,53 @@ export class MessageManager {
             }
           }
           
-          // Try streaming first for large GIFs from known hosts
-          let streamingFirst = false;
-          try {
-            const host = new URL(url).hostname;
-            streamingFirst = /arweave\.net$/i.test(host) || /amazonaws\.com$/i.test(host) || /tokenscan\.io$/i.test(host);
-          } catch {}
-          
-          if (streamingFirst) {
+          // Stream all GIFs (download buffer first, then send) - works with all hosts + enables file_id caching
+          if (!url.startsWith('file://')) {
+            logger.info(`📥 Attempting to stream GIF for ${assetName}`);
             try {
-              const head = await fetch(url, { method: 'HEAD' });
-              const lenStr = head.ok ? head.headers.get('content-length') : null;
-              const maxBytes = 49 * 1024 * 1024; // ~49MB for bot upload
-              const length = lenStr ? parseInt(lenStr, 10) : NaN;
-              if (!Number.isNaN(length) && length > maxBytes) {
-                throw new Error('FileTooLargeForBotUpload');
-              }
               const response = await fetch(url);
               if (response && response.ok) {
+                const contentType = response.headers.get('content-type') || '';
                 const ab = await response.arrayBuffer();
+                const sizeMB = (ab.byteLength / 1024 / 1024).toFixed(2);
+                
+                logger.info(`📊 Downloaded from ${url.slice(0, 50)}... contentType="${contentType}", size=${sizeMB}MB`);
+                
+                // Validate it's actually an image, not an error page (check size too - error pages are tiny)
+                if ((!contentType.includes('image/') && !contentType.includes('application/octet-stream')) || ab.byteLength < 1000) {
+                  logger.warn({ url, contentType, sizeBytes: ab.byteLength }, `❌ Invalid GIF (wrong content-type or too small <1KB), skipping to next attachment`);
+                  throw new Error(`Invalid content-type or size: ${contentType}, ${ab.byteLength} bytes`);
+                }
                 const filename = (() => {
                   try {
-                    const u = new URL(url);
-                    const last = u.pathname.split('/').pop() || '';
-                    return last && last.length <= 100 ? last : 'animation.gif';
-                  } catch (_) {
+                    const parsed = new URL(url);
+                    const parts = parsed.pathname.split('/');
+                    return parts[parts.length - 1] || 'animation.gif';
+                  } catch {
                     return 'animation.gif';
                   }
                 })();
-                await sendMediaAndCache(assetName, () =>
-                  ctx.replyWithAnimation({ source: Buffer.from(ab), filename }, {
+                
+                const result = await sendMediaAndCache(assetName, () =>
+                  ctx.replyWithAnimation(Input.fromBuffer(Buffer.from(ab)), {
                     caption: content.text || undefined,
                     reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
                     ...Markup.inlineKeyboard(telegramButtons),
                   })
                 );
+                // Debug: Log what Telegram actually returned
+                if (result) {
+                  logger.info(`📤 Telegram response for ${assetName}: animation=${!!result.animation}, document=${!!result.document}, video=${!!result.video}`);
+                }
                 sentPrimaryMedia = true;
                 break;
               }
-            } catch (gifStreamFirstErr) {
-              logger.warn({ url, gifStreamFirstErr }, 'GIF streaming-first failed, trying URL send');
+            } catch (streamErr) {
+              logger.warn({ url, streamErr }, 'GIF streaming failed, trying direct URL send');
             }
           }
           
-          // Try direct URL send (only for HTTP/HTTPS and non-streamed GIFs)
+          // Fallback: try direct URL send if streaming failed
           if (!url.startsWith('file://')) {
             try {
               await sendMediaAndCache(assetName, () =>
@@ -519,45 +542,116 @@ export class MessageManager {
               sentPrimaryMedia = true;
               break;
             } catch (gifErr) {
-              logger.warn({ gifErr, url }, 'GIF attachment failed, falling back to text');
+              logger.warn({ gifErr, url }, 'GIF direct URL also failed, falling back to text');
             }
           }
         }
         
         if (isImage) {
-          try {
-            await sendMediaAndCache(assetName, () =>
-              ctx.replyWithPhoto(url, {
-                caption: content.text || undefined,
-                reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
-                ...Markup.inlineKeyboard(telegramButtons),
-              })
-            );
-            sentPrimaryMedia = true;
-            break;
-          } catch (photoErr) {
-            logger.warn({ photoErr, url }, 'Photo attachment failed, falling back to text');
+          // Stream all images (download buffer first, then send) - works with all hosts + enables file_id caching
+          if (!url.startsWith('file://')) {
+            try {
+              const response = await fetch(url);
+              if (response && response.ok) {
+                const contentType = response.headers.get('content-type') || '';
+                
+                // Validate it's actually an image, not an error page
+                if (!contentType.includes('image/') && !contentType.includes('application/octet-stream')) {
+                  logger.warn({ url, contentType }, `❌ Invalid content-type for image (got ${contentType}), skipping stream`);
+                  throw new Error(`Invalid content-type: ${contentType}`);
+                }
+                
+                const ab = await response.arrayBuffer();
+                const maxPhotoBytes = 10 * 1024 * 1024; // 10MB limit for photos
+                const filename = (() => {
+                  try {
+                    const parsed = new URL(url);
+                    const parts = parsed.pathname.split('/');
+                    return parts[parts.length - 1] || 'image.jpg';
+                  } catch {
+                    return 'image.jpg';
+                  }
+                })();
+                
+                // If too large, send as document instead of photo
+                if (ab.byteLength > maxPhotoBytes) {
+                  logger.info({ url, sizeMB: (ab.byteLength / 1024 / 1024).toFixed(2) }, 'Image too large for photo (>10MB), sending as document');
+                  await sendMediaAndCache(assetName, () =>
+                    ctx.replyWithDocument(Input.fromBuffer(Buffer.from(ab)), {
+                      caption: content.text || undefined,
+                      reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
+                      ...Markup.inlineKeyboard(telegramButtons),
+                    })
+                  );
+                } else {
+                  // Normal size - send as photo
+                  await sendMediaAndCache(assetName, () =>
+                    ctx.replyWithPhoto(Input.fromBuffer(Buffer.from(ab)), {
+                      caption: content.text || undefined,
+                      ...CARD_DIMENSIONS,
+                      reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
+                      ...Markup.inlineKeyboard(telegramButtons),
+                    })
+                  );
+                }
+                sentPrimaryMedia = true;
+                break;
+              }
+            } catch (streamErr) {
+              logger.warn({ url, streamErr }, 'Image streaming failed, trying direct URL send');
+            }
+          }
+          
+          // Fallback: try direct URL send if streaming failed
+          if (!url.startsWith('file://')) {
+            try {
+              await sendMediaAndCache(assetName, () =>
+                ctx.replyWithPhoto(url, {
+                  caption: content.text || undefined,
+                  ...CARD_DIMENSIONS,
+                  reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
+                  ...Markup.inlineKeyboard(telegramButtons),
+                })
+              );
+              sentPrimaryMedia = true;
+              break;
+            } catch (photoErr) {
+              logger.warn({ photoErr, url }, 'Photo direct URL also failed, falling back to text');
+            }
+          }
+        }
+      }
+      
+      // If no media was sent, send text-only message with attachment links
+      if (!sentPrimaryMedia) {
+        let textMessage = content.text || '';
+        
+        // Add media links to message
+        for (const attachment of content.attachments) {
+          const url = attachment.url || '';
+          const ct = (attachment.contentType || '').toLowerCase();
+          const isVideo = /^video\//.test(ct) || /\.mp4(\?|$)/i.test(url);
+          const isGif = ct === 'image/gif' || /\.gif(\?|$)/i.test(url);
+          
+          if (isVideo) {
+            textMessage += `\n\n🎬 Video: ${url}`;
+          } else if (isGif) {
+            textMessage += `\n\n🎞️ Animation: ${url}`;
           }
         }
         
-        // Fallback: send as document for unsupported types
-        try {
-          await sendMediaAndCache(assetName, () =>
-            ctx.replyWithDocument(url, {
-              caption: content.text || undefined,
-              reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
-              ...Markup.inlineKeyboard(telegramButtons),
-            })
+        if (textMessage) {
+          await ctx.reply(
+            textMessage,
+            telegramButtons && telegramButtons.length > 0
+              ? Markup.inlineKeyboard(telegramButtons)
+              : undefined
           );
-          sentPrimaryMedia = true;
-          break;
-        } catch (docErr) {
-          logger.warn({ docErr, url }, 'Document attachment failed, falling back to text');
         }
       }
       
       // If we have buttons but no text, send them separately
-      if (telegramButtons && telegramButtons.length > 0 && !content.text) {
+      if (telegramButtons && telegramButtons.length > 0 && !content.text && sentPrimaryMedia) {
         await ctx.reply('', Markup.inlineKeyboard(telegramButtons));
       }
       
@@ -1076,15 +1170,31 @@ export class MessageManager {
         }
         
         // Edit the message with the new card
-        const { cardMessage, mediaUrl, card, buttons } = result;
+        const { cardMessage, card, buttons } = result;
+        let { mediaUrl, mediaExtension } = result;
+        
+        // Check cache first - skip expensive conversion if we have a cached file_id
+        const cache = await getFileIdCache();
+        const cachedFileId = cache.getTelegramFileId(card.asset);
+        
+        // Apply GIF conversion if needed (same logic as CardDisplayService) - only if no cache
+        if (!cachedFileId && mediaExtension === 'gif') {
+          // @ts-ignore - Dynamic import
+          const { checkAndConvertGif } = await import('../../../src/utils/gifConversionHelper.js');
+          const conversionCheck = await checkAndConvertGif(mediaUrl, mediaExtension);
+          if (conversionCheck.shouldConvert && conversionCheck.convertedUrl) {
+            mediaUrl = conversionCheck.convertedUrl;
+            mediaExtension = 'mp4';
+          }
+        }
         
         // Build attachment for the card media
         const attachment = {
           url: mediaUrl,
           title: card.asset,
           source: 'fake-rares',
-          contentType: result.mediaExtension === 'mp4' ? 'video/mp4' 
-            : result.mediaExtension === 'gif' ? 'image/gif' 
+          contentType: mediaExtension === 'mp4' ? 'video/mp4' 
+            : mediaExtension === 'gif' ? 'image/gif' 
             : 'image/jpeg',
         };
         

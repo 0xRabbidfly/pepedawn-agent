@@ -4097,12 +4097,12 @@
     "asset": "DANKRAVES",
     "series": 8,
     "card": 24,
-    "ext": "jpg",
+    "ext": "gif",
     "artist": "Skife",
     "artistSlug": "Skife",
     "supply": 101,
     "issuance": "April 2022",
-    "imageUri": "https://raw.githubusercontent.com/0xRabbidfly/pepedawn-agent/master/pepe-tg/src/assets/images/DANKRAVES.jpg"
+    "imageUri": "https://tokenscan.io/img/cards/DANKRAVES.gif"
   },
   {
     "asset": "SAMURAIPEP",
@@ -4897,7 +4897,8 @@
     "artist": "Rare Scrilla",
     "artistSlug": "Rare-Scrilla",
     "supply": 49,
-    "issuance": "September 2022"
+    "issuance": "September 2022",
+    "imageUri": "https://tokenscan.io/img/cards/ENTERTAINED.gif"
   },
   {
     "asset": "QUEENASF",
@@ -8594,11 +8595,12 @@
     "asset": "WUPEPE",
     "series": 17,
     "card": 11,
-    "ext": "jpg",
+    "ext": "mp4",
     "artist": "netidx",
     "artistSlug": "netidx",
     "supply": 36,
     "issuance": "October 2021",
+    "videoUri": "https://b7hbsyjtacqlrwdgj2cssa5kkwlq7t5n5ldzmxaopv3axi27an6q.arweave.net/D84ZYTMAoLjYZk6FKQOqVZcPz63qx5ZcDn12C6NfA30/euhysr_video.mp4",
     "imageUri": "https://raw.githubusercontent.com/0xRabbidfly/pepedawn-agent/master/pepe-tg/src/assets/images/WUPEPE.jpg"
   },
   {
@@ -8980,7 +8982,7 @@
     "artistSlug": "ZeroG",
     "supply": 21,
     "issuance": "February 2025",
-    "imageUri": "https://raw.githubusercontent.com/0xRabbidfly/pepedawn-agent/master/pepe-tg/src/assets/images/THEBIGDEGEN.jpg"
+    "imageUri": "https://tokenscan.io/img/cards/THEBIGDEGEN.jpg"
   },
   {
     "asset": "HATRSGONHATE",
