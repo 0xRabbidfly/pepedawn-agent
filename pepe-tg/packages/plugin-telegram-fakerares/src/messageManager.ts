@@ -651,6 +651,7 @@ export class MessageManager {
           reply_parameters:
             i === 0 && replyToMessageId ? { message_id: replyToMessageId } : undefined,
           parse_mode: 'MarkdownV2',
+          link_preview_options: { is_disabled: true },
           ...Markup.inlineKeyboard(telegramButtons),
         })) as Message.TextMessage;
 
@@ -890,9 +891,11 @@ export class MessageManager {
               const res = await this.bot.telegram.sendMessage(
                 ctx.from.id, 
                 textToSend,
-                telegramButtons.length > 0 ? {
-                  ...Markup.inlineKeyboard(telegramButtons),
-                } : undefined
+                {
+                  parse_mode: 'Markdown',
+                  link_preview_options: { is_disabled: true },
+                  ...(telegramButtons.length > 0 ? Markup.inlineKeyboard(telegramButtons) : {}),
+                }
               );
               sentMessages.push(res);
             }

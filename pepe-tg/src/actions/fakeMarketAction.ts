@@ -3,20 +3,36 @@
  * 
  * Handles /fm command for querying Fake Rare transaction history.
  * Supports:
+ * - /fm - Last 10 sales and listings (default)
  * - /fm N - Last N sales and listings (combined)
  * - /fm S N - Last N sales only
  * - /fm L N - Last N listings only
+ * - /fm CARDNAME - Active dispensers for a specific card (real-time)
  */
 
 import type { Action, HandlerCallback, IAgentRuntime, Memory, State } from '@elizaos/core';
 import { logger } from '@elizaos/core';
 import { TransactionHistory } from '../services/transactionHistory.js';
-import type { Transaction } from '../models/transaction.js';
+import { DispenserQueryService, type DispenserListing } from '../services/dispenserQuery.js';
+import type { Transaction } from '../types/transaction.js';
+import { FULL_CARD_INDEX } from '../data/fullCardIndex.js';
+import { findBestMatch, findTopMatches, FUZZY_MATCH_THRESHOLDS } from '../utils/fuzzyMatch.js';
+import { buildTokenScanUrl } from '../utils/transactionUrls.js';
+
+/**
+ * Parse result with optional asset for dispenser queries
+ */
+interface ParseResult {
+  type: 'SALE' | 'LISTING' | 'DISPENSER' | null;
+  limit: number;
+  asset?: string;
+  error: string | null;
+}
 
 /**
  * Parse /fm command and extract query parameters
  */
-function parseCommand(text: string): { type: 'SALE' | 'LISTING' | null; limit: number; error: string | null } {
+function parseCommand(text: string): ParseResult {
   const trimmed = text.trim();
   
   // Default: /fm alone = last 10 combined (handle @botname suffix)
@@ -24,10 +40,60 @@ function parseCommand(text: string): { type: 'SALE' | 'LISTING' | null; limit: n
     return { type: null, limit: 10, error: null };
   }
   
+  // NEW: /fm CARDNAME - Check for card name pattern BEFORE numeric patterns
+  // Pattern: /fm CARDNAME (card names start with letter, not digit)
+  const dispenserCardPattern = /^\/fm(?:@[A-Za-z0-9_]+)?\s+([A-Za-z][A-Za-z0-9]*)$/i;
+  const cardMatch = trimmed.match(dispenserCardPattern);
+  
+  if (cardMatch) {
+    const cardInput = cardMatch[1].toUpperCase();
+    
+    // Try exact match first
+    const allAssets = FULL_CARD_INDEX.map(c => c.asset);
+    const exactMatch = allAssets.find(asset => asset.toUpperCase() === cardInput);
+    
+    if (exactMatch) {
+      return { type: 'DISPENSER', limit: 10, asset: exactMatch, error: null };
+    }
+    
+    // Try fuzzy match (high confidence = 75%+)
+    const fuzzyMatch = findBestMatch(
+      cardInput, 
+      allAssets, 
+      FUZZY_MATCH_THRESHOLDS.HIGH_CONFIDENCE
+    );
+    
+    if (fuzzyMatch) {
+      logger.info(`Fuzzy matched "${cardInput}" → "${fuzzyMatch.name}" (${(fuzzyMatch.similarity * 100).toFixed(0)}%)`);
+      return { type: 'DISPENSER', limit: 10, asset: fuzzyMatch.name, error: null };
+    }
+    
+    // No match - show suggestions
+    const topMatches = findTopMatches(cardInput, allAssets, 3);
+    const suggestions = topMatches
+      .filter(m => m.similarity >= FUZZY_MATCH_THRESHOLDS.MODERATE)
+      .map(m => m.name)
+      .join(', ');
+    
+    if (suggestions) {
+      return { 
+        type: null, 
+        limit: 0, 
+        error: `Card "${cardInput}" not found. Did you mean: ${suggestions}?` 
+      };
+    } else {
+      return { 
+        type: null, 
+        limit: 0, 
+        error: `Card "${cardInput}" not found in Fake Rares collection.` 
+      };
+    }
+  }
+  
   // Match patterns: /fm N, /fm S N, /fm L N (handle @botname suffix)
   const combinedPattern = /^\/fm(?:@[A-Za-z0-9_]+)?\s+(\d+)$/i;
   const salesPattern = /^\/fm(?:@[A-Za-z0-9_]+)?\s+s\s+(\d+)$/i;
-  const listingsPattern = /^\/fm(?:@[A-Za-z0-9_]+)?\s+l\s+(\d+)$/i;
+  const listingsNumericPattern = /^\/fm(?:@[A-Za-z0-9_]+)?\s+l\s+(\d+)$/i;
   
   let match = trimmed.match(combinedPattern);
   if (match) {
@@ -47,7 +113,7 @@ function parseCommand(text: string): { type: 'SALE' | 'LISTING' | null; limit: n
     return { type: 'SALE', limit, error: null };
   }
   
-  match = trimmed.match(listingsPattern);
+  match = trimmed.match(listingsNumericPattern);
   if (match) {
     const limit = parseInt(match[1], 10);
     if (limit < 1 || limit > 20) {
@@ -168,6 +234,37 @@ function formatEmptyResponse(type: 'SALE' | 'LISTING' | null): string {
 }
 
 /**
+ * Format dispensers for a specific asset (real-time data)
+ * Shows: price | available/escrow | address (8 chars) | clickable link
+ */
+function formatDispensersByAsset(
+  asset: string,
+  dispensers: DispenserListing[]
+): string {
+  if (dispensers.length === 0) {
+    return `ℹ️ No active dispensers found for *${asset}*\n\n💡 Dispensers may be closed or sold out. Check Horizon Market for DEX orders.`;
+  }
+  
+  // Limit to top 5 cheapest
+  const topFive = dispensers.slice(0, 5);
+  
+  let response = `🎰 *(${topFive.length}) Active Dispensers for ${asset} (lowest price):*\n`;
+  
+  for (const d of topFive) {
+    // Format price in BTC
+    const price = formatPrice(d.pricePerUnit, 'BTC');
+    
+    // Truncate address to first 8 chars with ellipsis
+    const addr = d.source.slice(0, 8) + '...';
+    
+    // Format with bullet point, no spacing between lines
+    response += `• ${price} BTC | ${d.giveRemaining}/${d.escrowQuantity} available | ${addr} | 🔗 [View](${buildTokenScanUrl(d.txHash)})\n`;
+  }
+  
+  return response;
+}
+
+/**
  * Format help/error message
  */
 function formatHelpMessage(): string {
@@ -177,7 +274,8 @@ Usage:
   /fm - Recent sales + listings (default 10)
   /fm N - Last N sales and listings (max 20)
   /fm S N - Last N sales (max 20)
-  /fm L N - Last N listings (max 20)`;
+  /fm L N - Last N listings (max 20)
+  /fm CARDNAME - Active dispensers for card (real-time)`;
 }
 
 /**
@@ -209,7 +307,8 @@ export const fakeMarketAction: Action = {
   validate: async (_runtime: IAgentRuntime, message: Memory) => {
     const text = (message.content.text || '').trim();
     // Match /fm command patterns (with optional @botname mention)
-    return /^(?:@[A-Za-z0-9_]+\s+)?\/fm(?:@[A-Za-z0-9_]+)?(\s+(s|l)\s+\d+|\s+\d+)?$/i.test(text);
+    // Supports: /fm, /fm N, /fm S N, /fm L N, /fm CARDNAME
+    return /^(?:@[A-Za-z0-9_]+\s+)?\/fm(?:@[A-Za-z0-9_]+)?(\s+([A-Za-z][A-Za-z0-9]*|(s|l)\s+\d+|\d+))?$/i.test(text);
   },
   
   handler: async (
@@ -228,7 +327,10 @@ export const fakeMarketAction: Action = {
       if (parseResult.error) {
         const helpMessage = formatHelpMessage();
         if (callback) {
-          await callback({ text: helpMessage });
+          await callback({ 
+            text: helpMessage,
+            channelType: message.content.channelType 
+          });
         }
         return {
           success: false,
@@ -242,7 +344,10 @@ export const fakeMarketAction: Action = {
         logger.error('TransactionHistory service not found');
         const errorMessage = formatSystemErrorMessage();
         if (callback) {
-          await callback({ text: errorMessage });
+          await callback({ 
+            text: errorMessage,
+            channelType: message.content.channelType 
+          });
         }
         return {
           success: false,
@@ -257,7 +362,46 @@ export const fakeMarketAction: Action = {
       let totalSales = 0;
       let totalListings = 0;
       
-      if (parseResult.type === 'SALE') {
+      if (parseResult.type === 'DISPENSER') {
+        // Real-time dispenser query for specific asset
+        const dispenserService = runtime.getService(DispenserQueryService.serviceType) as DispenserQueryService;
+        if (!dispenserService) {
+          logger.error('DispenserQueryService not found');
+          const errorMessage = formatSystemErrorMessage();
+          if (callback) {
+            await callback({ 
+              text: errorMessage,
+              channelType: message.content.channelType 
+            });
+          }
+          return {
+            success: false,
+            text: 'Dispenser service not available',
+          };
+        }
+        
+        logger.info(`Fetching dispensers for asset: ${parseResult.asset}`);
+        const dispensers = await dispenserService.getActiveDispensersForAsset(
+          parseResult.asset!,
+          parseResult.limit
+        );
+        
+        response = formatDispensersByAsset(parseResult.asset!, dispensers);
+        
+        if (callback) {
+          await callback({ 
+            text: response,
+            channelType: message.content.channelType 
+          });
+        }
+        
+        logger.info(`/fm ${parseResult.asset} complete: ${dispensers.length} active dispensers`);
+        
+        return {
+          success: true,
+          text: 'Dispenser query sent',
+        };
+      } else if (parseResult.type === 'SALE') {
         sales = await transactionHistory.querySales(parseResult.limit);
         totalSales = await transactionHistory.getTotalSales();
         
@@ -295,7 +439,10 @@ export const fakeMarketAction: Action = {
       
       // Send response
       if (callback) {
-        await callback({ text: response });
+        await callback({ 
+          text: response,
+          channelType: message.content.channelType 
+        });
       }
       
       logger.info(`/fm complete: ${sales.length} sales, ${listings.length} listings (${parseResult.type || 'combined'}, limit ${parseResult.limit})`);
@@ -308,7 +455,10 @@ export const fakeMarketAction: Action = {
       logger.error({ error }, 'Failed to execute transaction query');
       const errorMessage = formatSystemErrorMessage();
       if (callback) {
-        await callback({ text: errorMessage });
+        await callback({ 
+          text: errorMessage,
+          channelType: message.content.channelType 
+        });
       }
       return {
         success: false,

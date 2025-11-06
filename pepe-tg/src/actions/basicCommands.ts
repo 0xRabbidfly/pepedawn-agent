@@ -90,8 +90,9 @@ export const helpCommand: Action = {
 \`/fv CARDNAME\` - AI visual analysis & meme breakdown
 \`/ft <img>\` - Attach and img and get a fake appeal score!
 
-**Fake Market:** 📊 NEW!
+**Fake Market:** 📊
 \`/fm\` - Recent sales + listings (default 10)
+\`/fm CARDNAME\` - Live dispensers for any card (e.g. \`/fm FAKEASF\`)
 
 **Fake Lore:**
 \`/fl CARDNAME\` - Get card lore & community stories

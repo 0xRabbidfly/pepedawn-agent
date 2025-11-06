@@ -192,6 +192,15 @@ When you upload an image with `/ft`, the bot automatically checks if it matches 
 - **`/fm 20`** - Last 20 sales + listings
 - **`/fm S 5`** - Last 5 sales only
 - **`/fm L 15`** - Last 15 listings only
+- **`/fm CARDNAME`** - Live dispensers for any card (e.g., `/fm FAKEASF`) ⭐**NEW**
+
+**Live Dispenser Query:**
+Query active dispensers for any card in real-time! The bot fetches current dispenser data directly from the Counterparty API, showing:
+- Top 5 cheapest dispensers
+- Price in BTC
+- Available quantity / Total escrow
+- Truncated address
+- Direct link to TokenScan
 
 **Real-time Telegram Notifications:**
 The bot automatically monitors Counterparty blockchain for Fake Rare market activity and sends instant notifications to configured Telegram channels.

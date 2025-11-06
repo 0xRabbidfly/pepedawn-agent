@@ -7,6 +7,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.10.0] - 2025-11-06
+
+### Added
+- **`/fm CARDNAME`** - Real-time dispenser query for any card (e.g., `/fm FAKEASF`)
+  - Fetches live dispenser data directly from Counterparty API
+  - Shows top 5 cheapest dispensers with price, availability, address, and TokenScan link
+  - Supports fuzzy matching for card names (exact match, then fuzzy fallback)
+  - Compact bullet-point format for easy scanning
+- New `DispenserQueryService` for real-time dispenser data fetching
+- New `fuzzyMatch.ts` utility module (extracted from fakeRaresCard.ts for reusability)
+- Test coverage for `/fm CARDNAME` validation and card name pattern matching
+
+### Fixed
+- **Telegram link previews** - Markdown links now render properly in both DMs and group chats
+  - Added `link_preview_options: { is_disabled: true }` to messageManager DM path
+  - Added `link_preview_options: { is_disabled: true }` to messageManager group path
+  - Fixed missing `channelType` in action callback responses
+  - All `/fm` responses now properly pass `channelType` for correct message routing
+
+### Changed
+- Updated `/help` command to include new `/fm CARDNAME` usage
+- Updated periodic content tips to mention live dispenser queries
+- Enhanced `/fm` command parser to differentiate between numeric limits and card names
+
+### Technical Details
+- messageManager now uses modern Telegram Bot API `link_preview_options` (replaces deprecated `disable_web_page_preview`)
+- Action callbacks now properly propagate `channelType` from incoming messages to outgoing responses
+- Fuzzy matching utilities now shared between `/f` and `/fm` commands
+
 ## [3.5.1] - 2025-11-04
 
 ### Changed

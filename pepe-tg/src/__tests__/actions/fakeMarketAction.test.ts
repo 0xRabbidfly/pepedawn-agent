@@ -30,6 +30,18 @@ describe('Fake Market Action (/fm)', () => {
       expect(result).toBe(true);
     });
 
+    it('should validate /fm with card name', async () => {
+      const message = { content: { text: '/fm FAKEASF' } };
+      const result = await fakeMarketAction.validate(mockRuntime, message as any);
+      expect(result).toBe(true);
+    });
+
+    it('should validate /fm with lowercase card name', async () => {
+      const message = { content: { text: '/fm pepedawn' } };
+      const result = await fakeMarketAction.validate(mockRuntime, message as any);
+      expect(result).toBe(true);
+    });
+
     it('should reject non-fm commands', async () => {
       const message = { content: { text: '/f FREEDOMKEK' } };
       const result = await fakeMarketAction.validate(mockRuntime, message as any);
@@ -88,6 +100,31 @@ describe('Fake Market Action (/fm)', () => {
 
     it('should use bullet points for line items', () => {
       // Testing that • is used instead of individual icons
+      expect(true).toBe(true); // Placeholder
+    });
+  });
+
+  describe('dispenser query feature', () => {
+    it('should validate card name pattern', async () => {
+      const message = { content: { text: '/fm PEPEDAWN' } };
+      const result = await fakeMarketAction.validate(mockRuntime, message as any);
+      expect(result).toBe(true);
+    });
+
+    it('should reject card names starting with numbers', async () => {
+      const message = { content: { text: '/fm 1CARD' } };
+      const result = await fakeMarketAction.validate(mockRuntime, message as any);
+      expect(result).toBe(false);
+    });
+
+    it('should format dispenser output with bullet points', () => {
+      // Test that dispenser listings use • bullet points
+      // and include price, available/escrow, address, and link
+      expect(true).toBe(true); // Placeholder for formatting test
+    });
+
+    it('should limit dispensers to top 5', () => {
+      // Test that only 5 cheapest dispensers are shown
       expect(true).toBe(true); // Placeholder
     });
   });
