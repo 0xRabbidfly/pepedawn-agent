@@ -1146,7 +1146,14 @@ export class MessageManager {
         
         // Check cache first - skip expensive conversion if we have a cached file_id
         const cache = await getFileIdCache();
-        const cachedFileId = cache.getTelegramFileId(card.asset);
+        let cachedFileId = cache.getTelegramFileId(card.asset);
+        
+        // Skip document-type file_ids in carousel - bot may not have document permissions
+        // Document file_ids start with BAAC or BQAC
+        if (cachedFileId && (cachedFileId.startsWith('BAAC') || cachedFileId.startsWith('BQAC'))) {
+          logger.info(`⚠️ Skipping document-type file_id for ${card.asset} in carousel (permission issue), will convert instead`);
+          cachedFileId = null; // Force re-upload with conversion
+        }
         
         // Apply GIF conversion if needed (same logic as CardDisplayService) - only if no cache
         if (!cachedFileId && mediaExtension === 'gif') {
