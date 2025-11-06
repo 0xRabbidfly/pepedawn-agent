@@ -66,9 +66,7 @@ export function determineImageUrlForAnalysis(
 ): string | null {
   // For MP4 videos, try memeUri first (static image/gif scraped from tokenscan)
   if (cardInfo.ext === 'mp4') {
-    // @ts-ignore - memeUri exists on some CardInfo objects but not in type def
     if (cardInfo.memeUri) {
-      // @ts-ignore
       return cardInfo.memeUri;
     }
     // No static version available for this MP4

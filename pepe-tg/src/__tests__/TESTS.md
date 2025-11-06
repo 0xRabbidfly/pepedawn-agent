@@ -4,7 +4,7 @@
 
 ## 📊 Test Summary
 
-**Total:** 15 custom test files (257+ tests)
+**Total:** 16 custom test files (309 tests)
 
 ### 1. Bootstrap Suppression Test ⚡
 
@@ -41,15 +41,16 @@
 
 ---
 
-### 7-9. Card Display Tests 🎴
+### 7-10. Card Display Tests 🎴
 
-**Files:** 3 test files, 57 tests covering `/f`, `/f c`, and `/c` commands
+**Files:** 4 test files, 73 tests covering `/f`, `/f c`, `/c`, and CardDisplayService
 
 | File | Tests | Purpose |
 |------|-------|---------|
 | `actions/fakeRaresCard.test.ts` | 32 | `/f` command (random, exact, fuzzy, artist) |
 | `actions/fakeRaresCarousel.test.ts` | 16 | `/f c` carousel (validation, buttons, navigation) |
 | `actions/fakeCommonsCard.test.ts` | 9 | `/c` command (random, exact match only) |
+| `services/CardDisplayService.test.ts` | 16 | Unified card display service |
 
 **Covers:**
 - Random card selection

@@ -7,6 +7,60 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.7.0] - 2025-11-06
+
+### Added
+- **Automatic GIF→MP4 Conversion** - Large GIFs (>8MB) automatically convert to compressed MP4
+  - Uses FFmpeg for high-quality compression (typically 60-80% size reduction)
+  - Configurable threshold via `GIF_URL_MAX_MB` environment variable (default: 8MB)
+  - Preserves quality while ensuring Telegram compatibility
+  - Conversion cache prevents redundant processing
+  - Applies to all card collections (Fake Rares, Fake Commons, Rare Pepes)
+
+- **Telegram File ID Caching** - Prevents re-uploading previously sent media
+  - Caches Telegram's `file_id` after first successful upload
+  - Instant card delivery for repeat requests (no download/upload)
+  - Stored in `src/data/telegram-file-ids.json`
+  - Configurable location via `TELEGRAM_CACHE_FILE` env var
+  - Dramatically improves performance and reduces bandwidth
+
+- **memeUri Fallback System** - Multi-tier media delivery resilience
+  - Primary: `videoUri` or `imageUri` (direct URLs)
+  - Fallback 1: `memeUri` (static preview for oversized/dead URLs)
+  - Fallback 2: S3 constructed URL
+  - Automatically handles 49MB Telegram upload limit
+  - Works for dead Arweave gateways and expired custom domains
+
+### Changed
+- **CardDisplayService** - Removed pre-upload size checking (now handled by file_id cache + fallback chain)
+  - Eliminated 100+ lines of duplicate HEAD request code
+  - Size checks moved to conversion layer (only for GIFs >8MB)
+  - Oversized media gracefully handled via memeUri fallback
+  - Faster card display (skips size checks when cache hit)
+
+- **GIF Conversion Logic** - Centralized in `gifConversionHelper.ts`
+  - Shared across all 3 card collections
+  - Consistent behavior for `/f`, `/c`, `/p` commands
+  - Returns structured `ConversionCheckResult` with metadata
+
+### Fixed
+- **Type Safety** - Removed outdated `@ts-ignore` comments in `cardUrlUtils.ts`
+- **Bug Fix** - Corrected GIF conversion calls in `fakeCommonsCard.ts` and `rarePepesCard.ts`
+  - Fixed wrong parameter (assetName → mediaExtension)
+  - Fixed wrong return type handling (string → ConversionCheckResult object)
+- **Cleanup** - Removed orphaned JSDoc comments in CardDisplayService
+
+### Technical Details
+- New utility: `gifConversionHelper.ts` - Centralized GIF processing logic
+- New service: `videoConversionService.ts` - FFmpeg wrapper with caching
+- New utility: `telegramFileIdCache.ts` - Persistent file_id storage
+- File_id cache integrates seamlessly with messageManager upload loop
+- All 309 tests passing (added 16 CardDisplayService tests)
+
+### Environment Variables
+- `GIF_URL_MAX_MB` - Conversion threshold for GIFs (default: 8)
+- `TELEGRAM_CACHE_FILE` - Cache file location (default: src/data/telegram-file-ids.json)
+
 ## [3.6.0] - 2025-11-05
 
 ### Added

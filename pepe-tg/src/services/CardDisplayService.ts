@@ -46,10 +46,6 @@ export class CardDisplayService extends Service {
   }
 
   /**
-   * Fetch Content-Type and Content-Length via HEAD with a timeout.
-   */
-
-  /**
    * Build a list of fallback image URLs to try if video fails on Telegram.
    * Prefers cardInfo.imageUri, then S3 JPG and PNG variants.
    */

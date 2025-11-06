@@ -171,11 +171,11 @@ async function sendCardWithMedia(params: {
   let finalExtension = params.mediaExtension;
   
   if (isAnimation) {
-    const converted = await checkAndConvertGif(params.mediaUrl, params.assetName);
-    if (converted) {
-      finalUrl = converted;
+    const conversionResult = await checkAndConvertGif(params.mediaUrl, params.mediaExtension);
+    if (conversionResult.shouldConvert && conversionResult.convertedUrl) {
+      finalUrl = conversionResult.convertedUrl;
       finalExtension = "mp4";
-      }
+    }
   }
 
   // Send with media attachment (messageManager handles file_id caching automatically)

@@ -21,7 +21,8 @@
 - 🤖 **AI-powered** - Natural conversations with context awareness  
 - 📚 **Knowledge base** - Optional: Search 264k+ embedded Telegram messages
 - 💰 **Cost tracking** - Built-in token usage monitoring (admin-only)
-- ⚡ **Performance optimized** - Unified CardDisplayService with caching
+- ⚡ **Performance optimized** - Unified CardDisplayService with caching & automatic GIF→MP4 conversion
+- 📦 **Smart media handling** - File ID caching prevents re-uploads, oversized GIFs auto-convert
 - 📊 **Production-ready** - Structured logging, type-safe, tested
 
 ---
