@@ -86,19 +86,39 @@ deploy() {
     ssh_exec "cd $PROJECT_DIR && git pull"
     success "Latest changes pulled"
     
-    # Step 5: Install dependencies (if needed)
-    log "Step 5: Installing dependencies..."
+    # Step 5: Hard reset to prevent corruption
+    log "Step 5: Hard reset and clean..."
+    ssh_exec "cd $PROJECT_DIR && git reset --hard HEAD"
+    ssh_exec "cd $PROJECT_DIR && git clean -fd"
+    success "Repository cleaned"
+    
+    # Step 6: Clean install dependencies (prevents plugin version issues)
+    log "Step 6: Clean installing dependencies..."
+    ssh_exec "cd $PROJECT_DIR && rm -rf node_modules bun.lockb"
     ssh_exec "cd $PROJECT_DIR && bun install"
     success "Dependencies installed"
     
-    # Step 6: Build TypeScript project
-    log "Step 6: Building TypeScript project..."
+    # Step 7: Force clean and rebuild plugin
+    log "Step 7: Rebuilding Telegram plugin..."
+    ssh_exec "cd $PROJECT_DIR/packages/plugin-telegram-fakerares && rm -rf dist"
+    ssh_exec "cd $PROJECT_DIR/packages/plugin-telegram-fakerares && bun install"
+    ssh_exec "cd $PROJECT_DIR/packages/plugin-telegram-fakerares && bun run build"
+    success "Plugin rebuilt"
+    
+    # Step 8: Force relink plugin in node_modules
+    log "Step 8: Relinking plugin..."
+    ssh_exec "cd $PROJECT_DIR && rm -rf node_modules/@elizaos/plugin-telegram"
+    ssh_exec "cd $PROJECT_DIR && bun install"
+    success "Plugin relinked"
+    
+    # Step 9: Build main project
+    log "Step 9: Building main project..."
     ssh_exec "cd $PROJECT_DIR && bun run build"
     success "Project built successfully"
     
-    # Step 7: Restart PM2
+    # Step 10: Restart PM2
     if [ "$NUCLEAR_MODE" = true ]; then
-        log "Step 7: NUCLEAR RESTART - Killing PM2 daemon and all processes..."
+        log "Step 10: NUCLEAR RESTART - Killing PM2 daemon and all processes..."
         ssh_exec "cd $PROJECT_DIR && pm2 delete pepe-tg || true"
         ssh_exec "cd $PROJECT_DIR && pm2 kill"
         ssh_exec "sleep 3"
@@ -107,32 +127,32 @@ deploy() {
         ssh_exec "sleep 2"
         success "Nuclear cleanup complete"
         
-        log "Step 7b: Starting PM2 fresh..."
+        log "Step 10b: Starting PM2 fresh..."
         ssh_exec "cd $PROJECT_DIR && pm2 start $PM2_CONFIG"
         ssh_exec "cd $PROJECT_DIR && pm2 save"
         success "PM2 restarted (NUCLEAR mode)"
     else
-        log "Step 7: Hard restart PM2 process..."
+        log "Step 10: Hard restart PM2 process..."
         ssh_exec "cd $PROJECT_DIR && pm2 stop pepe-tg || true"
         
-        log "Step 7b: Deleting PM2 process..."
+        log "Step 10b: Deleting PM2 process..."
         ssh_exec "cd $PROJECT_DIR && pm2 delete pepe-tg || true"
         
-        log "Step 7c: Starting PM2 with new build..."
+        log "Step 10c: Starting PM2 with new build..."
         ssh_exec "cd $PROJECT_DIR && pm2 start $PM2_CONFIG"
         
-        log "Step 7d: Saving PM2 state..."
+        log "Step 10d: Saving PM2 state..."
         ssh_exec "cd $PROJECT_DIR && pm2 save"
         success "PM2 restarted (hard restart)"
     fi
     
-    # Step 8: Check PM2 status
-    log "Step 8: Checking PM2 status..."
+    # Step 11: Check PM2 status
+    log "Step 11: Checking PM2 status..."
     ssh_exec "cd $PROJECT_DIR && pm2 status"
     success "PM2 status checked"
     
-    # Step 9: Show recent logs
-    log "Step 9: Showing recent logs..."
+    # Step 12: Show recent logs
+    log "Step 12: Showing recent logs..."
     ssh_exec "cd $PROJECT_DIR && pm2 logs --lines 10"
     
     success "🎉 Deployment completed successfully!"

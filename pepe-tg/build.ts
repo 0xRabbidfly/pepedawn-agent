@@ -52,6 +52,12 @@ async function build() {
       if (needsRebuild) {
         console.log('📦 Building Telegram plugin...');
         try {
+          // Clean plugin dist before rebuild
+          const pluginDistPath = path.join(pluginPath, 'dist');
+          if (existsSync(pluginDistPath)) {
+            await rm(pluginDistPath, { recursive: true, force: true });
+            console.log('✓ Cleaned plugin dist');
+          }
           await $`cd ${pluginPath} && npm run build`.quiet();
           console.log('✓ Telegram plugin built');
           
