@@ -9,3 +9,4 @@ export { oddsCommand } from "./oddsCommand";
 export { costCommand } from "./costCommand";
 export { fakeVisualCommand } from "./fakeVisualCommand";
 export { fakeTestCommand } from "./fakeTestCommand";
+export { xcpCommand } from "./xcpCommand";

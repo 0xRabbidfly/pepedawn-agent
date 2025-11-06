@@ -35,6 +35,7 @@ export interface MessagePatterns {
     isFm: boolean;
     isDawn: boolean;
     isFc: boolean;
+    isXcp: boolean;
   };
   
   // Triggers for routing
@@ -78,6 +79,7 @@ export function detectMessagePatterns(
     isFm: /^(?:@[A-Za-z0-9_]+\s+)?\/fm(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
     isDawn: /^(?:@[A-Za-z0-9_]+\s+)?\/dawn(?:@[A-Za-z0-9_]+)?$/i.test(text),
     isFc: /^(?:@[A-Za-z0-9_]+\s+)?\/fc/i.test(text),
+    isXcp: /^(?:@[A-Za-z0-9_]+\s+)?\/xcp(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
   };
   
   // Routing triggers

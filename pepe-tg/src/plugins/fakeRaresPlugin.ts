@@ -1,5 +1,5 @@
 import { type Plugin, logger } from '@elizaos/core';
-import { fakeRaresCardAction, fakeCommonsCardAction, rarePepesCardAction, educateNewcomerAction, startCommand, helpCommand, loreCommand, fakeRememberCommand, oddsCommand, costCommand, fakeVisualCommand, fakeTestCommand } from '../actions';
+import { fakeRaresCardAction, fakeCommonsCardAction, rarePepesCardAction, educateNewcomerAction, startCommand, helpCommand, loreCommand, fakeRememberCommand, oddsCommand, costCommand, fakeVisualCommand, fakeTestCommand, xcpCommand } from '../actions';
 import { fakeMarketAction } from '../actions/fakeMarketAction';
 import { fakeRaresCarouselAction } from '../actions/fakeRaresCarousel';
 import { fakeRaresContextProvider, userHistoryProvider } from '../providers';
@@ -137,6 +137,7 @@ export const fakeRaresPlugin: Plugin = {
     fakeMarketAction,
     oddsCommand,
     costCommand,
+    xcpCommand,
   ],
   
   providers: [fakeRaresContextProvider, userHistoryProvider],
@@ -239,7 +240,7 @@ export const fakeRaresPlugin: Plugin = {
           // Extract for convenience
           const { isFakeRareCard, hasBotMention, hasRememberCommand } = triggers;
           const isReplyToBot = triggers.isReplyToBot;  // Use the corrected value
-          const { isHelp, isStart, isF, isFCarousel, isC, isP, isFv, isFt, isFl, isFr, isFm, isDawn, isFc } = commands;
+          const { isHelp, isStart, isF, isFCarousel, isC, isP, isFv, isFt, isFl, isFr, isFm, isDawn, isFc, isXcp } = commands;
           
           // Log routing factors
           logger.info(`   Triggers: reply=${!!isReplyToBot} | card=${isFakeRareCard} | @mention=${hasBotMention}`);
@@ -317,6 +318,7 @@ export const fakeRaresPlugin: Plugin = {
           if (isFr && await executeCommand(fakeRememberCommand, cmdParams, '/fr')) return;
           if (isFm && await executeCommand(fakeMarketAction, cmdParams, '/fm')) return;
           if (isDawn && await executeCommand(oddsCommand, cmdParams, '/dawn')) return;
+          if (isXcp && await executeCommand(xcpCommand, cmdParams, '/xcp')) return;
           
           // Admin-only command
           if (isFc) {

@@ -97,7 +97,10 @@ export const helpCommand: Action = {
 
 **Fake Remember:** 💾
 \`/fr CARDNAME <lore>\` - Store card-specific memory
-\`@pepedawn_bot Remember this:\` <enter any lore/facts>`;
+\`@pepedawn_bot Remember this:\` <enter any lore/facts>
+
+**XCP Dispensers:** 💰
+\`/xcp\` - View verified XCP dispenser list`;
 
     if (callback) {
       await callback({ text: helpMessage });

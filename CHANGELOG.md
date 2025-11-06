@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.8.0] - 2025-01-06
+
+### Added
+- **`/xcp` Command** - XCP Dispenser List Management
+  - View verified XCP dispenser list curated by community
+  - Authorization system: Specific usernames + `TELEGRAM_ADMIN_IDS` for updates
+  - `/xcp` - View current dispenser list with metadata (updater, timestamp)
+  - `/xcp [content]` - Update list (authorized users only, complete replace)
+  - Persistent JSON storage at `src/data/xcp-dispensers.json`
+  - Clean error messages for unauthorized update attempts
+  - Integrated into help command and documentation
+
+### Technical Details
+- New action: `xcpCommand.ts` with dual authorization (username + Telegram ID)
+- Pattern detection: Added `isXcp` to `messagePatterns.ts`
+- Test coverage: 8 tests in `xcpCommand.test.ts` (view, update, authorization)
+- Plugin integration: Wired into `fakeRaresPlugin.ts` event handler
+- Help text updated in `basicCommands.ts`
+
 ## [3.7.0] - 2025-11-06
 
 ### Added

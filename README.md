@@ -15,6 +15,7 @@
 - 🎴 **890+ Fake Rares + 1813+ Fake Commons cards** with instant lookup and full metadata
 - 🎠 **Interactive carousels** - Browse artist collections with prev/next buttons
 - 📊 **Market monitoring** - Real-time Counterparty sales & listings tracker
+- 💰 **XCP Dispensers** - Community-curated list of verified XCP dispenser links
 - 🔍 **Visual analysis** - AI vision reads text + memetic commentary
 - 🧠 **Smart typo correction** - Fuzzy matching with 3-tier intelligence (Fake Rares)
 - 🔄 **Auto-updating** - Hourly refresh from GitHub, no restart needed
@@ -198,6 +199,24 @@ The bot automatically monitors Counterparty blockchain for Fake Rare market acti
 - ⚡ **DEX Atomic Swaps** - When someone completes a trustless trade (📊)
 - 📋 **Dispenser Listings** - New vending machines posted (🎰)
 - 🔄 **DEX Orders** - New swap offers posted (📊)
+
+---
+
+### 💰 XCP Dispenser List
+
+**Commands:**
+- **`/xcp`** - View verified XCP dispenser list
+
+**Authorization:**
+- Authorized users can update the list with `/xcp [content]`
+- Anyone can view the current list with `/xcp`
+- List includes verified dispensers shared by trusted community members
+
+**Features:**
+- ✅ Simple view/update system
+- ✅ Shows last updated timestamp and user
+- ✅ Complete replace operation on each update
+- ✅ Persisted in JSON storage
 
 ---
 
