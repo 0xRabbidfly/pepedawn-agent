@@ -16,40 +16,7 @@ describe('CardDisplayService', () => {
     service = new CardDisplayService(mockRuntime);
   });
 
-  describe('checkMediaSize', () => {
-    it('should mark images as always streamable', async () => {
-      const result = await service.checkMediaSize(
-        'https://example.com/image.jpg',
-        'jpg'
-      );
-      
-      expect(result.isStreamable).toBe(true);
-      expect(result.shouldUseLink).toBe(false);
-    });
-
-    it('should cache size check results', async () => {
-      const url = 'https://example.com/test.jpg';
-      
-      // First call
-      const result1 = await service.checkMediaSize(url, 'jpg');
-      
-      // Second call should return same object from cache
-      const result2 = await service.checkMediaSize(url, 'jpg');
-      
-      expect(result1).toBe(result2);
-    });
-
-    it('should handle videos and animations differently than images', async () => {
-      const imageResult = await service.checkMediaSize(
-        'https://example.com/image.jpg',
-        'jpg'
-      );
-      
-      // Images are always streamable without size check
-      expect(imageResult.isStreamable).toBe(true);
-      expect(imageResult.contentLength).toBeNull();
-    });
-  });
+  // checkMediaSize method was removed - size checks now handled by messageManager
 
   describe('sendCard', () => {
     it('should call callback with correct structure for images', async () => {
@@ -170,15 +137,12 @@ describe('CardDisplayService', () => {
   });
 
   describe('service lifecycle', () => {
-    it('should clear cache on stop', async () => {
-      // Add something to cache
-      await service.checkMediaSize('https://example.com/test.jpg', 'jpg');
-      
+    it('should stop gracefully', async () => {
       // Stop service
       await service.stop();
       
-      // Cache should be cleared
-      expect(true).toBe(true); // If no error, test passes
+      // If no error, test passes
+      expect(true).toBe(true);
     });
   });
 });
