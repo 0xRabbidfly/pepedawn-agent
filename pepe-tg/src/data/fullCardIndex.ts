@@ -26,6 +26,7 @@ export interface CardInfo {
   imageUri?: string | null;  // Direct image URL (alternative to constructed URL)
   memeUri?: string | null;   // Meme/preview URL (usually GIF on tokenscan.io)
   issues?: string[];  // Optional: Data quality issues like 'no_artist', 'no_supply', etc.
+  collection?: 'fake-rares' | 'fake-commons';  // Collection identifier for mixed searches
 }
 
 // Load the full card index from JSON file

@@ -20,6 +20,7 @@ import {
   getFullCardIndex as getRefreshableCardIndex,
 } from "../utils/cardIndexRefresher";
 import { checkAndConvertGif } from "../utils/gifConversionHelper";
+import { type CommonsCardInfo, COMMONS_CARD_INDEX } from "../data/fakeCommonsIndex";
 
 /**
  * Fake Rares Card Display Action
@@ -76,6 +77,8 @@ interface CardDisplayParams {
   isRandomCard?: boolean;
   isTypoCorrection?: boolean;
   includeMediaUrl?: boolean; // If true, append URL to message (for debugging/fallback)
+  collectionTotals?: { fake: number; commons: number } | null;
+  currentCollection?: 'fake-rares' | 'fake-commons';
 }
 
 // ============================================================================
@@ -84,9 +87,63 @@ interface CardDisplayParams {
 
 const logger = createLogger("FakeCard");
 
+const TELEGRAM_ESCAPE_REGEX = /[\\_*\[\]()~>#+=|{}.!-]/g;
+
+function escapeTelegramMarkdown(text: string): string {
+  return text.replace(TELEGRAM_ESCAPE_REGEX, (match) => `\\${match}`);
+}
+
 // ============================================================================
 // UTILITY FUNCTIONS
 // ============================================================================
+
+/**
+ * Convert CommonsCardInfo to CardInfo format for unified handling
+ */
+function convertCommonsToCardInfo(commonsCard: CommonsCardInfo): CardInfo {
+  return {
+    asset: commonsCard.asset,
+    series: commonsCard.series,
+    card: commonsCard.card,
+    ext: commonsCard.ext as any, // Commons may have 'GIF' which isn't in CardInfo type
+    artist: commonsCard.artist,
+    artistSlug: commonsCard.artistSlug,
+    supply: commonsCard.supply,
+    issuance: commonsCard.issuance,
+    videoUri: commonsCard.videoUri || null,
+    imageUri: commonsCard.imageUri || null,
+    memeUri: null,
+    issues: commonsCard.issues,
+    collection: 'fake-commons',
+  };
+}
+
+function ensureCardCollection(card: CardInfo): CardInfo {
+  if (card.collection) {
+    return card;
+  }
+  return {
+    ...card,
+    collection: 'fake-rares',
+  };
+}
+
+export function formatCollectionCounts(
+  fakeCount: number,
+  commonsCount: number,
+): string {
+  const parts: string[] = [];
+
+  if (fakeCount > 0) {
+    parts.push(`Fakes: ${fakeCount}`);
+  }
+
+  if (commonsCount > 0) {
+    parts.push(`Commons: ${commonsCount}`);
+  }
+
+  return parts.join(' | ');
+}
 
 /**
  * Get card info - uses refreshable index if available, falls back to static
@@ -94,21 +151,38 @@ const logger = createLogger("FakeCard");
 export function getCardInfo(cardName: string): CardInfo | null {
   // Try refreshable index first (may have newer data)
   const refreshableCard = getRefreshableCardInfo(cardName);
-  if (refreshableCard) return refreshableCard;
+  if (refreshableCard) return ensureCardCollection(refreshableCard);
 
   // Fallback to static index
   const staticCard = FULL_CARD_INDEX.find(
     (c) => c.asset === cardName.toUpperCase(),
   );
-  return staticCard || null;
+  return staticCard ? ensureCardCollection(staticCard) : null;
 }
 
 /**
  * Get all cards - uses refreshable index if available, falls back to static
+ * For artist searches, includes both Fake Rares and Commons collections
  */
 export function getAllCards(): CardInfo[] {
   const refreshableIndex = getRefreshableCardIndex();
-  return refreshableIndex.length > 0 ? refreshableIndex : FULL_CARD_INDEX;
+  const base = refreshableIndex.length > 0 ? refreshableIndex : FULL_CARD_INDEX;
+  return base.map(ensureCardCollection);
+}
+
+/**
+ * Get all cards from both Fake Rares and Commons collections
+ * Used for artist searches to find cards across both collections
+ */
+export function getAllCardsIncludingCommons(): CardInfo[] {
+  const fakeRaresCards = getAllCards().map(card => ({
+    ...card,
+    collection: 'fake-rares' as const,
+  }));
+  
+  const commonsCards = COMMONS_CARD_INDEX.map(convertCommonsToCardInfo);
+  
+  return [...fakeRaresCards, ...commonsCards];
 }
 
 /**
@@ -177,12 +251,13 @@ function findTopMatches(
 /**
  * Find cards by exact artist name match (case-insensitive)
  * Returns array of matching cards and the matched artist name
+ * NOW SEARCHES BOTH FAKE RARES AND COMMONS COLLECTIONS
  */
 export function findCardsByArtistExact(inputArtist: string): {
   cards: CardInfo[];
   matchedArtist: string;
 } | null {
-  const allCards = getAllCards();
+  const allCards = getAllCardsIncludingCommons();
   if (allCards.length === 0) return null;
 
   // Case-insensitive exact match
@@ -203,13 +278,14 @@ export function findCardsByArtistExact(inputArtist: string): {
 /**
  * Find cards by artist name with fuzzy matching support
  * Returns array of matching cards and the matched artist name
+ * NOW SEARCHES BOTH FAKE RARES AND COMMONS COLLECTIONS
  */
 export function findCardsByArtistFuzzy(inputArtist: string): {
   cards: CardInfo[];
   matchedArtist: string;
   similarity: number;
 } | null {
-  const allCards = getAllCards();
+  const allCards = getAllCardsIncludingCommons();
   if (allCards.length === 0) return null;
 
   // Get unique artist names from all cards
@@ -301,16 +377,26 @@ export function buildCardDisplayMessage(params: CardDisplayParams): string {
 
   // Add card name header - UNIFIED FORMAT FOR ALL FLOWS
   // Use the properly capitalized name from cardInfo if available, otherwise fall back to user input
-  const displayName = params.cardInfo?.asset || params.assetName;
+  const rawDisplayName = params.cardInfo?.asset || params.assetName;
+  const displayName = escapeTelegramMarkdown(rawDisplayName);
+  const currentCollection = params.currentCollection
+    || params.cardInfo?.collection
+    || 'fake-rares';
+
   if (params.isRandomCard) {
-    message += `🎲 ${displayName} 🐸`;
+    message += `🎲 ${displayName}`;
   } else {
-    message += `${displayName} 🐸`;
+    message += `${displayName}`;
   }
 
   // Add series and card number - SAME FOR ALL FLOWS
   if (params.cardInfo) {
-    message += ` Series ${params.cardInfo.series} - Card ${params.cardInfo.card}\n`;
+    const isCommons = currentCollection === 'fake-commons';
+    const hasCollectionTotals = params.collectionTotals !== undefined && params.collectionTotals !== null;
+    const shouldShowTag = isCommons || hasCollectionTotals;
+    const collectionTag = isCommons ? '(C)' : '(F)';
+    const prefix = shouldShowTag ? ` • ${collectionTag}` : ' •';
+    message += `${prefix} Series ${params.cardInfo.series} - Card ${params.cardInfo.card}\n`;
 
     // Add metadata line (artist and/or supply)
     const metadata: string[] = [];
@@ -340,7 +426,7 @@ export function buildCardDisplayMessage(params: CardDisplayParams): string {
       }
     }
   } else {
-    message += ` Series ? - Card ?\n`;
+    message += ` • Series ? - Card ?\n`;
   }
 
   // URL not included in message text - handled via attachments in callback
@@ -391,7 +477,7 @@ export async function sendCardWithMedia(params: {
   // Try to use service if runtime is provided
   if (params.runtime) {
     try {
-      const service = params.runtime.getService('card-display');
+      const service = params.runtime.getService('card-display') as any;
       if (service && typeof service.sendCard === 'function') {
         await service.sendCard({
           callback: params.callback,
@@ -491,6 +577,19 @@ function getFakeRaresImageUrl(
 }
 
 /**
+ * Constructs the image URL for a Fake Commons card
+ */
+function getFakeCommonsImageUrl(
+  assetName: string,
+  seriesNumber: number,
+  extension: MediaExtension,
+): string {
+  const FAKE_COMMONS_BASE_URL = "https://pepewtf.s3.amazonaws.com/collections/fake-commons/full";
+  const encodedAssetName = encodeURIComponent(assetName.toUpperCase());
+  return `${FAKE_COMMONS_BASE_URL}/${seriesNumber}/${encodedAssetName}.${extension}`;
+}
+
+/**
  * Known bad domains that should be skipped in favor of fallbacks
  */
 const BAD_DOMAINS = [
@@ -513,6 +612,7 @@ function isDeadDomain(url: string): boolean {
 /**
  * Determines the card URL from CardInfo, prioritizing special URIs over constructed URLs
  * Skips known dead custom URIs and falls back to memeUri or S3
+ * NOW SUPPORTS BOTH FAKE RARES AND COMMONS COLLECTIONS
  */
 export function determineCardUrl(
   cardInfo: CardInfo,
@@ -543,9 +643,12 @@ export function determineCardUrl(
     };
   }
 
-  // Construct URL from series and ext
+  // Construct URL from series and ext - use appropriate base URL for collection
+  const isCommons = cardInfo.collection === 'fake-commons';
+  const urlBuilder = isCommons ? getFakeCommonsImageUrl : getFakeRaresImageUrl;
+  
   return {
-    url: getFakeRaresImageUrl(
+    url: urlBuilder(
       assetName,
       cardInfo.series,
       cardInfo.ext as MediaExtension,
@@ -557,6 +660,7 @@ export function determineCardUrl(
 /**
  * Build a list of fallback image URLs to try if video fails on Telegram.
  * Prefers cardInfo.imageUri, then S3 JPG and PNG variants.
+ * NOW SUPPORTS BOTH FAKE RARES AND COMMONS COLLECTIONS
  */
 export function buildFallbackImageUrls(
   assetName: string,
@@ -575,23 +679,27 @@ export function buildFallbackImageUrls(
     results.push({ url: cardInfo.imageUri, contentType: ct });
   }
   if (typeof cardInfo?.series === "number") {
+    // Determine which URL builder to use based on collection
+    const isCommons = cardInfo.collection === 'fake-commons';
+    const urlBuilder = isCommons ? getFakeCommonsImageUrl : getFakeRaresImageUrl;
+    
     // Try common formats from S3
     results.push({
-      url: getFakeRaresImageUrl(upperAsset, cardInfo.series, "jpg"),
+      url: urlBuilder(upperAsset, cardInfo.series, "jpg"),
       contentType: "image/jpeg",
     });
     results.push({
-      url: getFakeRaresImageUrl(upperAsset, cardInfo.series, "png"),
+      url: urlBuilder(upperAsset, cardInfo.series, "png"),
       contentType: "image/png",
     });
     results.push({
-      url: getFakeRaresImageUrl(upperAsset, cardInfo.series, "webp" as any),
+      url: urlBuilder(upperAsset, cardInfo.series, "webp" as any),
       contentType: "image/webp",
     });
     // If original ext is gif, include S3 gif variant explicitly
     if ((cardInfo.ext || "").toLowerCase() === "gif") {
       results.push({
-        url: getFakeRaresImageUrl(upperAsset, cardInfo.series, "gif" as any),
+        url: urlBuilder(upperAsset, cardInfo.series, "gif" as any),
         contentType: "image/gif",
       });
     }
@@ -798,13 +906,20 @@ async function displayArtistCard(params: {
     artistMessage = `😅 Ha, spelling not your thing? No worries - got you fam.\n\n`;
   }
 
-  artistMessage += `👨‍🎨 Random card by ${params.artistName} (${params.cards.length} card${params.cards.length > 1 ? "s" : ""} total)\n\n`;
+  const currentCollection = randomCard.collection || 'fake-rares';
+  const fakeRaresCount = params.cards.filter(c => (c.collection || 'fake-rares') === 'fake-rares').length;
+  const commonsCount = params.cards.filter(c => c.collection === 'fake-commons').length;
+  const countsText = formatCollectionCounts(fakeRaresCount, commonsCount);
+
+  artistMessage += `👨‍🎨 Random card by ${params.artistName}   (${countsText})\n\n`;
 
   const cardMessage = buildCardDisplayMessage({
     assetName: randomCard.asset,
     cardInfo: randomCard,
     mediaUrl: matchedUrlResult.url,
     isRandomCard: false,
+    collectionTotals: { fake: fakeRaresCount, commons: commonsCount },
+    currentCollection,
   });
 
   // Prepend artist context to card message
@@ -916,15 +1031,16 @@ async function handleCardNotFound(params: {
   if (bestMatch && bestMatch.similarity >= FUZZY_MATCH_THRESHOLDS.MODERATE) {
     const suggestions = topMatches
       .filter((m) => m.similarity >= FUZZY_MATCH_THRESHOLDS.MODERATE)
-      .map((m) => `• ${m.name}`)
+      .map((m) => `• ${escapeTelegramMarkdown(m.name)}`)
       .join("\n");
 
     logger.info(`   Suggestions: ${topMatches.length} similar cards found`);
 
-    let errorText = `❌ Could not find "${params.assetName}" in the Fake Rares collection.\n\n`;
+    const safeAssetName = escapeTelegramMarkdown(params.assetName);
+    let errorText = `❌ Could not find "${safeAssetName}" in the Fake Rares collection.\n\n`;
     if (suggestions) {
       errorText += `🤔 Did you mean:\n${suggestions}\n\n`;
-      errorText += `Try /f <CARD_NAME> with one of the above.`;
+      errorText += `Try /f CARD_NAME with one of the above.`;
     } else {
       errorText += `Double-check the asset name or browse on pepe.wtf.`;
     }
@@ -967,8 +1083,9 @@ async function handleCardNotFound(params: {
   logger.info(`   ❌ No matches found for "${params.assetName}"`);
 
   if (params.callback) {
+    const safeAssetName = escapeTelegramMarkdown(params.assetName);
     await params.callback({
-      text: `❌ Could not find "${params.assetName}" in the Fake Rares collection. Double-check the asset name or browse on pepe.wtf.`,
+      text: `❌ Could not find "${safeAssetName}" in the Fake Rares collection. Double-check the asset name or browse on pepe.wtf.`,
       __fromAction: "fakeRaresCard",
       suppressBootstrap: true,
     });

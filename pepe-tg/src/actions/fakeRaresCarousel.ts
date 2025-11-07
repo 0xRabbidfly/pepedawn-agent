@@ -17,6 +17,7 @@ import {
   buildFallbackImageUrls,
   sendCardWithMedia,
   FUZZY_MATCH_THRESHOLDS,
+  formatCollectionCounts,
 } from "./fakeRaresCard";
 import { getCardsBySeries, FULL_CARD_INDEX } from "../data/fullCardIndex";
 import { SERIES_INFO } from "../data/cardSeriesMap";
@@ -79,6 +80,7 @@ export function buildCarouselButtons(
 /**
  * Displays a carousel of cards (by artist or series)
  * Shows the first card with prev/next navigation buttons
+ * NOW SUPPORTS MIXED FAKE RARES AND COMMONS COLLECTIONS
  */
 async function displayArtistCarousel(params: {
   artistName?: string;
@@ -94,13 +96,21 @@ async function displayArtistCarousel(params: {
   const identifier = isSeries ? String(params.seriesNum) : params.artistName!;
   const label = isSeries ? `Series ${params.seriesNum}` : params.artistName!;
   
-  // Sort cards: by card number for series, alphabetically for artist
+  // Sort cards: by card number for series, by collection then alphabetically for artist
   const sortedCards = [...params.cards].sort((a, b) => {
     if (isSeries) {
       // Series: sort by card number (1, 2, 3... 50)
       return a.card - b.card;
     } else {
-      // Artist: sort alphabetically by asset name
+      // Artist: Fake Rares first, then Commons, then alphabetically within each collection
+      const aCollection = a.collection === 'fake-commons' ? 1 : 0;
+      const bCollection = b.collection === 'fake-commons' ? 1 : 0;
+      
+      if (aCollection !== bCollection) {
+        return aCollection - bCollection; // fake-rares (0) before fake-commons (1)
+      }
+      
+      // Within same collection, sort alphabetically
       return a.asset.localeCompare(b.asset);
     }
   });
@@ -110,6 +120,8 @@ async function displayArtistCarousel(params: {
   const currentIndex = 0;
 
   const matchedUrlResult = determineCardUrl(currentCard, currentCard.asset);
+  const fakeRaresCount = params.cards.filter(c => (c.collection || 'fake-rares') === 'fake-rares').length;
+  const commonsCount = params.cards.filter(c => c.collection === 'fake-commons').length;
 
   // Build message with context
   const isTypoCorrected =
@@ -121,13 +133,21 @@ async function displayArtistCarousel(params: {
     carouselMessage = `😅 Ha, spelling not your thing? No worries - got you fam.\n\n`;
   }
 
-  carouselMessage += `🎠 Carousel: ${label} (${params.cards.length} card${params.cards.length > 1 ? "s" : ""} total)\n\n`;
+  // For artist carousels, show collection breakdown
+  if (!isSeries) {
+    const countsText = formatCollectionCounts(fakeRaresCount, commonsCount);
+    carouselMessage += `🎠 Carousel: ${label}  (${countsText})\n\n`;
+  } else {
+    carouselMessage += `🎠 Carousel: ${label}   (${params.cards.length} card${params.cards.length > 1 ? "s" : ""} total)\n\n`;
+  }
 
   const cardMessage = buildCardDisplayMessage({
     assetName: currentCard.asset,
     cardInfo: currentCard,
     mediaUrl: matchedUrlResult.url,
     isRandomCard: false,
+    collectionTotals: { fake: fakeRaresCount, commons: commonsCount },
+    currentCollection: currentCard.collection || 'fake-rares',
   });
 
   const fullMessage = carouselMessage + cardMessage;
@@ -220,7 +240,10 @@ export async function handleCarouselNavigation(callbackData: string): Promise<{
 
     // Determine if this is series or artist carousel
     const isSeries = type === 's';
-    const label = isSeries ? `Series ${identifier}` : decodeURIComponent(identifier);
+    
+    // Decode the identifier for display and lookup
+    const decodedIdentifier = isSeries ? identifier : decodeURIComponent(identifier);
+    const label = isSeries ? `Series ${identifier}` : decodedIdentifier;
 
     logger.info(`   Carousel nav: ${action} for ${label} (current: ${currentIndex}/${totalCards})`);
 
@@ -240,14 +263,23 @@ export async function handleCarouselNavigation(callbackData: string): Promise<{
       // Series: sort by card number (1, 2, 3... 50)
       sortedCards = [...seriesCards].sort((a, b) => a.card - b.card);
     } else {
-      const artistName = decodeURIComponent(identifier);
-      const exactArtistMatch = findCardsByArtistExact(artistName);
+      const exactArtistMatch = findCardsByArtistExact(decodedIdentifier);
       if (!exactArtistMatch) {
-        logger.error(`Artist not found for carousel: ${artistName}`);
+        logger.error(`Artist not found for carousel: ${decodedIdentifier}`);
         return null;
       }
-      // Artist: sort alphabetically by asset name
-      sortedCards = [...exactArtistMatch.cards].sort((a, b) => a.asset.localeCompare(b.asset));
+      // Artist: Fake Rares first, then Commons, then alphabetically within each collection
+      sortedCards = [...exactArtistMatch.cards].sort((a, b) => {
+        const aCollection = a.collection === 'fake-commons' ? 1 : 0;
+        const bCollection = b.collection === 'fake-commons' ? 1 : 0;
+        
+        if (aCollection !== bCollection) {
+          return aCollection - bCollection; // fake-rares (0) before fake-commons (1)
+        }
+        
+        // Within same collection, sort alphabetically
+        return a.asset.localeCompare(b.asset);
+      });
     }
 
     // Calculate new index with circular wrapping
@@ -267,29 +299,60 @@ export async function handleCarouselNavigation(callbackData: string): Promise<{
     const card = sortedCards[newIndex];
     const urlResult = determineCardUrl(card, card.asset);
 
-    // Build card message
-    const carouselMessage = `🎠 Carousel: ${label} (${sortedCards.length} card${sortedCards.length > 1 ? "s" : ""} total)\n\n`;
-    const cardMessage = buildCardDisplayMessage({
-      assetName: card.asset,
-      cardInfo: card,
-      mediaUrl: urlResult.url,
-      isRandomCard: false,
-    });
-    const fullMessage = carouselMessage + cardMessage;
+    // Build card message with collection breakdown for artist carousels
+    let carouselMessage = "";
+    if (!isSeries) {
+      const fakeRaresCount = sortedCards.filter(c => (c.collection || 'fake-rares') === 'fake-rares').length;
+      const commonsCount = sortedCards.filter(c => c.collection === 'fake-commons').length;
+      const countsText = formatCollectionCounts(fakeRaresCount, commonsCount);
+      carouselMessage = `🎠 Carousel:  ${label} (${countsText})\n\n`;
+      const cardMessage = buildCardDisplayMessage({
+        assetName: card.asset,
+        cardInfo: card,
+        mediaUrl: urlResult.url,
+        isRandomCard: false,
+        collectionTotals: { fake: fakeRaresCount, commons: commonsCount },
+        currentCollection: card.collection || 'fake-rares',
+      });
+      const fullMessage = carouselMessage + cardMessage;
 
-    // Build new buttons with updated index
-    const buttons = buildCarouselButtons(identifier, type as 'a' | 's', newIndex, sortedCards.length);
+      // Build new buttons with updated index - use decoded identifier for artists to avoid double-encoding
+      const buttons = buildCarouselButtons(decodedIdentifier, type as 'a' | 's', newIndex, sortedCards.length);
 
-    return {
-      artistName: label, // Return label for compatibility
-      card,
-      cardMessage: fullMessage,
-      mediaUrl: urlResult.url,
-      mediaExtension: urlResult.extension,
-      buttons,
-      newIndex,
-      totalCards: sortedCards.length,
-    };
+      return {
+        artistName: label,
+        card,
+        cardMessage: fullMessage,
+        mediaUrl: urlResult.url,
+        mediaExtension: urlResult.extension,
+        buttons,
+        newIndex,
+        totalCards: sortedCards.length,
+      };
+    } else {
+      carouselMessage = `🎠 Carousel: ${label} (${sortedCards.length} card${sortedCards.length > 1 ? "s" : ""} total)\n\n`;
+      const cardMessage = buildCardDisplayMessage({
+        assetName: card.asset,
+        cardInfo: card,
+        mediaUrl: urlResult.url,
+        isRandomCard: false,
+      });
+      const fullMessage = carouselMessage + cardMessage;
+
+      // Build new buttons with updated index - use decoded identifier for artists to avoid double-encoding
+      const buttons = buildCarouselButtons(decodedIdentifier, type as 'a' | 's', newIndex, sortedCards.length);
+
+      return {
+        artistName: label,
+        card,
+        cardMessage: fullMessage,
+        mediaUrl: urlResult.url,
+        mediaExtension: urlResult.extension,
+        buttons,
+        newIndex,
+        totalCards: sortedCards.length,
+      };
+    }
   } catch (error) {
     logger.error(`Error handling carousel navigation: ${error}`);
     return null;

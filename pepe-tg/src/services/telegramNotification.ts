@@ -151,6 +151,9 @@ export class TelegramNotificationService extends Service {
    * Format price from satoshis/smallest unit to decimal
    */
   private formatPrice(priceSatoshis: number, paymentAsset: string): string {
+    if (priceSatoshis === 0) {
+      return '0';
+    }
     // For BTC, convert satoshis to BTC (divide by 100000000)
     if (paymentAsset === 'BTC') {
       const btc = priceSatoshis / 100000000;
@@ -161,7 +164,7 @@ export class TelegramNotificationService extends Service {
     // For XCP and other assets, assume same decimal places as BTC
     // In practice, XCP might use different decimals, but TokenScan API uses satoshis
     const amount = priceSatoshis / 100000000;
-    return amount.toString().replace(/\.?0+$/, '');
+    return amount === 0 ? '0' : amount.toString().replace(/\.?0+$/, '');
   }
 
   /**
