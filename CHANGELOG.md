@@ -7,6 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.11.0] - 2025-11-07
+
+### Added
+- **Commons Awareness in `/f` Artist Flow**  
+  - Artist searches now aggregate cards across Fake Rares and Commons collections  
+  - Carousel displays show per-collection counts so admins can gauge coverage at a glance  
+  - `/f` typo-correction replies include collection tag `(F)` or `(C)` in the header  
+- **Commons Support in Carousel**  
+  - Artist carousel ordering prioritizes Fake Rares, then Commons, keeping navigation predictable  
+  - Carousel headers surface Fake vs Commons totals to make mixed collections obvious
+
+### Changed
+- **Card Display Messaging**  
+  - Unified formatter adds `(F)` or `(C)` collection markers beside the series/card metadata  
+  - Random card responses keep the 🎲 indicator while benefitting from the new metadata layout  
+  - Fallback media selection now respects the originating collection when building S3 URLs
+- **Market Notifications**  
+  - Telegram notifier accepts comma-separated channel IDs (multi-broadcast support)  
+  - Optional sale sticker triggers for dispenser/DEX sales without affecting listings  
+  - Error handling downgrades per-channel failures to warnings to keep other postings flowing
+
+### Technical Details
+- Introduced `formatCollectionCounts()` helper shared by `/f` and carousel flows  
+- Normalized `CardInfo` objects to always carry a `collection` flag for downstream consumers  
+- Refreshed commons index bridge to reuse Fake Commons metadata without duplicating schemas
+
 ## [3.9.0] - 2025-11-06
 
 ### Added
