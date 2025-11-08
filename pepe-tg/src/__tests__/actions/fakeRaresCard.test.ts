@@ -165,8 +165,7 @@ describe('fakeRaresCardAction', () => {
       );
 
       const callbackArg = callback.mock.calls[0][0];
-      expect(callbackArg.text).toContain('🐸'); // Card emoji
-      expect(callbackArg.text).toContain('Series'); // Series info
+      expect(callbackArg.text).toMatch(/S \d+ - C \d+/); // Series/Card shorthand
       // Note: attachments may be undefined if card is a large video/gif (size check fallback)
       // The important thing is that the callback was called with valid text
       expect(callback).toHaveBeenCalled();
@@ -278,7 +277,30 @@ describe('fakeRaresCardAction', () => {
 
       const callbackArg = callback.mock.calls[0][0];
       expect(callbackArg.text).not.toContain('🎲');
+      expect(callbackArg.text).toMatch(/S \d+ - C \d+/);
+    });
+
+    it('should handle mention-prefixed commands', async () => {
+      const message: Memory = {
+        userId: 'user1',
+        agentId: 'agent1',
+        roomId: 'room1',
+        content: { text: '@pepedawn_bot /f FREEDOMKEK' }
+      };
+
+      const callback = mock();
+      const result = await fakeRaresCardAction.handler(
+        mockRuntime,
+        message,
+        undefined,
+        undefined,
+        callback
+      );
+
+      expect(result.success).toBe(true);
+      const callbackArg = callback.mock.calls[0][0];
       expect(callbackArg.text).toContain('FREEDOMKEK');
+      expect(callbackArg.text).not.toContain('🎲');
     });
   });
 
@@ -327,6 +349,78 @@ describe('fakeRaresCardAction', () => {
       expect(callback).toHaveBeenCalled();
       const callbackArg = callback.mock.calls[0][0];
       expect(callbackArg.text).toBeDefined();
+    });
+
+    it('should show suggestions for hodlpepe and escape markdown', async () => {
+      const message: Memory = {
+        userId: 'user1',
+        agentId: 'agent1',
+        roomId: 'room1',
+        content: { text: '/f hodlpepe' }
+      };
+
+      const callback = mock(() => Promise.resolve());
+      const result = await fakeRaresCardAction.handler(
+        mockRuntime,
+        message,
+        undefined,
+        undefined,
+        callback
+      );
+
+      expect(result.success).toBe(false);
+      expect(callback).toHaveBeenCalledTimes(1);
+
+      const callbackArg = callback.mock.calls[0][0];
+      expect(callbackArg.text).toContain('JUSTHODLPEPE');
+      expect(callbackArg.text).toContain('PEPEHODLPEPE');
+      expect(callbackArg.text).toContain('Tap a suggestion below');
+      expect(callbackArg.buttons).toBeDefined();
+      const suggestionButtons = (callbackArg.buttons || []) as Array<any>;
+      expect(suggestionButtons.length).toBeGreaterThan(0);
+      const buttonPayloads = suggestionButtons.map(
+        (b: any) => b.switch_inline_query_current_chat,
+      );
+      expect(buttonPayloads).toEqual(
+        expect.arrayContaining(['/f PEPEHODLPEPE', '/f JUSTHODLPEPE']),
+      );
+    });
+
+    it('should retry suggestions with fallback when callback fails', async () => {
+      const message: Memory = {
+        userId: 'user1',
+        agentId: 'agent1',
+        roomId: 'room1',
+        content: { text: '/f hodlpepe' }
+      };
+
+      let callCount = 0;
+      const callback = mock(async () => {
+        callCount += 1;
+        if (callCount === 1) {
+          throw new Error('parse error');
+        }
+      });
+
+      await fakeRaresCardAction.handler(
+        mockRuntime,
+        message,
+        undefined,
+        undefined,
+        callback
+      );
+
+      expect(callback).toHaveBeenCalledTimes(2);
+      const fallbackArg = callback.mock.calls[1][0];
+      expect(fallbackArg.text).toContain('Suggestions:');
+      expect(fallbackArg.text).toContain('JUSTHODLPEPE');
+      expect(fallbackArg.buttons).toBeDefined();
+      const fallbackButtons = (fallbackArg.buttons || []).map(
+        (b: any) => b.switch_inline_query_current_chat,
+      );
+      expect(fallbackButtons).toEqual(
+        expect.arrayContaining(['/f PEPEHODLPEPE', '/f JUSTHODLPEPE']),
+      );
     });
   });
 
@@ -498,7 +592,7 @@ describe('fakeRaresCardAction', () => {
       );
 
       const callbackArg = callback.mock.calls[0][0];
-      expect(callbackArg.text).toMatch(/Series \d+/);
+      expect(callbackArg.text).toMatch(/S \d+ - C \d+/);
     });
 
     it('should include card number in response', async () => {
@@ -519,7 +613,7 @@ describe('fakeRaresCardAction', () => {
       );
 
       const callbackArg = callback.mock.calls[0][0];
-      expect(callbackArg.text).toMatch(/Card \d+/);
+      expect(callbackArg.text).toMatch(/C \d+/);
     });
 
     it('should return card name in data object', async () => {

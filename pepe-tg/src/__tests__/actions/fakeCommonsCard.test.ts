@@ -5,7 +5,7 @@ import type { IAgentRuntime, Memory } from '@elizaos/core';
 /**
  * Tests for /c command (Fake Commons Card Display)
  * 
- * Simple version: Random + exact match only (no fuzzy, no artist search)
+ * Covers random display, exact matches, and fuzzy suggestions.
  */
 
 describe('fakeCommonsCardAction', () => {
@@ -162,6 +162,83 @@ describe('fakeCommonsCardAction', () => {
       expect(callbackArg.text).toContain('not found');
     });
 
+    it('should auto-correct close match', async () => {
+      const message: Memory = {
+        userId: 'user1',
+        agentId: 'agent1',
+        roomId: 'room1',
+        content: { text: '/c NOTAFKERARE' } // missing a letter
+      };
+
+      const callback = mock();
+      const result = await fakeCommonsCardAction.handler(
+        mockRuntime,
+        message,
+        undefined,
+        undefined,
+        callback
+      );
+
+      expect(result.success).toBe(true);
+      const callbackArg = callback.mock.calls[0][0];
+      expect(callbackArg.text).toContain('Close enough');
+      expect(callbackArg.text).toContain('NOTAFAKERARE');
+      expect(callbackArg.buttons?.length ?? 0).toBeGreaterThanOrEqual(0);
+    });
+
+    it('should show suggestions for moderate matches', async () => {
+      const message: Memory = {
+        userId: 'user1',
+        agentId: 'agent1',
+        roomId: 'room1',
+        content: { text: '/c MEMEFAKE' }
+      };
+
+      const callback = mock();
+      const result = await fakeCommonsCardAction.handler(
+        mockRuntime,
+        message,
+        undefined,
+        undefined,
+        callback
+      );
+
+      expect(result.success).toBe(false);
+      expect(result.data.reason).toBe('card_not_found_with_suggestions');
+      const callbackArg = callback.mock.calls[0][0];
+      expect(callbackArg.text).toContain('Did you mean');
+      expect(callbackArg.buttons?.length ?? 0).toBeGreaterThan(0);
+      const buttonPayloads = (callbackArg.buttons || []).map((b: any) => b.switch_inline_query_current_chat);
+      expect(buttonPayloads.some((payload) => payload?.startsWith('/c '))).toBe(true);
+    });
+
+    it('should suggest similar cards for very short input', async () => {
+      const message: Memory = {
+        userId: 'user1',
+        agentId: 'agent1',
+        roomId: 'room1',
+        content: { text: '/c pepe' }
+      };
+
+      const callback = mock();
+      const result = await fakeCommonsCardAction.handler(
+        mockRuntime,
+        message,
+        undefined,
+        undefined,
+        callback
+      );
+
+      expect(result.success).toBe(false);
+      expect(result.data.reason).toBe('card_not_found_with_suggestions');
+      const callbackArg = callback.mock.calls[0][0];
+      expect(callbackArg.text).toContain('Did you mean');
+      const payloads = (callbackArg.buttons || []).map(
+        (b: any) => b.switch_inline_query_current_chat,
+      );
+      expect(payloads.every((text: string) => text?.startsWith('/c '))).toBe(true);
+    });
+
     it('should include metadata (series, card, supply)', async () => {
       const message: Memory = {
         userId: 'user1',
@@ -180,11 +257,34 @@ describe('fakeCommonsCardAction', () => {
       );
 
       const callbackArg = callback.mock.calls[0][0];
-      expect(callbackArg.text).toMatch(/Series \d+/);
-      expect(callbackArg.text).toMatch(/Card \d+/);
+      expect(callbackArg.text).toMatch(/S \d+ - C \d+/);
+      expect(callbackArg.text).toMatch(/C \d+/);
       // Note: attachments may be undefined if card is a large video/gif (size check fallback)
       // The important thing is that the callback was called with valid metadata in text
       expect(callback).toHaveBeenCalled();
+    });
+
+    it('should handle mention-prefixed commands', async () => {
+      const message: Memory = {
+        userId: 'user1',
+        agentId: 'agent1',
+        roomId: 'room1',
+        content: { text: '@pepedawn_bot /c NOTAFAKERARE' }
+      };
+
+      const callback = mock();
+      const result = await fakeCommonsCardAction.handler(
+        mockRuntime,
+        message,
+        undefined,
+        undefined,
+        callback
+      );
+
+      expect(result.success).toBe(true);
+      const callbackArg = callback.mock.calls[0][0];
+      expect(callbackArg.text).toContain('NOTAFAKERARE');
+      expect(callbackArg.text).not.toContain('🎲');
     });
   });
 

@@ -16,6 +16,9 @@ Example: `@production-prep minor`
 ## Checklist
 
 ### 1. Code Productionalization
+- Gather context before reviewing code:
+  - `git status -sb` to list all local changes
+  - `git log origin/master..HEAD --stat` (or your main branch equivalent) to confirm everything done since the last push
 - Review all new/modified code for:
   - Deduplication opportunities
   - Clean code practices
@@ -69,19 +72,22 @@ Review and update if necessary:
 - Follow Keep a Changelog format
 
 ### 7. Version Bump & Tagging
-- Update `package.json` version based on type (major/minor/patch)
+- Read the current version from `package.json`
+- Decide the new semantic version (major/minor/patch) based on the release scope
+- Update `package.json` (and any lock files) with the new version
 - Follow semantic versioning:
   - **MAJOR**: Breaking changes
   - **MINOR**: New features (backward compatible)
   - **PATCH**: Bug fixes (backward compatible)
-- Prepare git tag command (DO NOT EXECUTE)
+- Prepare git tag command (DO NOT EXECUTE) using the new version, e.g. `v1.2.3`
 
 ### 8. Git Command Preparation
-- Generate commands for user to execute MANUALLY:
+- Create a commit message that accurately summarizes the work since the last push (use `git log origin/master..HEAD` for reference)
+- Generate commands for user to execute MANUALLY (replace version/summary placeholders):
 - NEVER EXECUTE GIT COMMANDS!
   ```bash
   git add .
-  git commit -m "Release vX.Y.Z: <summary>"
+  git commit -m "Release vX.Y.Z: <concise summary of changes>"
   git tag -a vX.Y.Z -m "Version X.Y.Z"
   git push origin master --tags
   ```

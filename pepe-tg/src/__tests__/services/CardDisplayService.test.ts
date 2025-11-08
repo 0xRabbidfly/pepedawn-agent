@@ -28,14 +28,14 @@ describe('CardDisplayService', () => {
 
       await service.sendCard({
         callback: mockCallback,
-        cardMessage: 'TEST CARD\nSeries 1 - Card 1',
+        cardMessage: 'TEST CARD\nS 1 - C 1',
         mediaUrl: 'https://example.com/test.jpg',
         mediaExtension: 'jpg',
         assetName: 'TESTCARD',
       });
 
       expect(calledWith).toBeTruthy();
-      expect(calledWith.text).toBe('TEST CARD\nSeries 1 - Card 1');
+      expect(calledWith.text).toBe('TEST CARD\nS 1 - C 1');
       expect(calledWith.attachments).toBeTruthy();
       expect(calledWith.attachments.length).toBe(1);
       expect(calledWith.attachments[0].url).toBe('https://example.com/test.jpg');

@@ -21,6 +21,7 @@
 │  /c               →  Random card from 1813+ collection       │
 │                                                              │
 │  💡 Typo-friendly! "FREEDOMK" → auto-corrects to FREEDOMKEK │
+│  💡 Suggestions! `/f hodlpepe` shows tap-to-fill buttons       │
 │  💡 Case-insensitive! "freedomkek" works too                │
 │  💡 Carousel: Navigate with ⬅️ Prev / ➡️ Next buttons       │
 └──────────────────────────────────────────────────────────────┘
@@ -117,7 +118,7 @@
 ║                       ⚡ QUICK TIPS ⚡                       ║
 ╠══════════════════════════════════════════════════════════════╣
 ║  • Commands are case-insensitive                             ║
-║  • Card names support fuzzy matching (typo-friendly)         ║
+║  • Card names support fuzzy matching + tap-to-fill buttons   ║
 ║  • 890+ Fake Rares + 1813+ Fake Commons, auto-updated       ║
 ║  • All visual features use GPT-4o Vision                    ║
 ║  • Lore searches across Telegram + Wiki + User Memories     ║
@@ -179,5 +180,5 @@ Any text      →   GPT-4o + PEPEDAWN    →   💬 Helpful reply
 
 ---
 
-**Last Updated:** November 5, 2025
+**Last Updated:** November 8, 2025
 

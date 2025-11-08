@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.12.0] - 2025-11-08
+
+### Added
+- **Inline Fuzzy Suggestions**  
+  - `/f`, `/c`, and `/p` now surface tap-to-fill buttons when fuzzy matches are returned  
+  - Shared `cardSuggestions` helper generates Markdown-safe messages + inline buttons  
+  - New `rarePepesCard` action tests cover the legacy collection behaviour
+
+### Changed
+- **Unified Fuzzy Matching**  
+  - Commons and Rare Pepes reuse the enhanced `/f` scoring (prefix/contains weighting)  
+  - High-confidence auto-correct now requires ≥5 normalized characters to avoid single-word misfires  
+  - Command parsers accept leading `@bot` mentions so inline buttons work in groups
+- **Telegram Button Adapter**  
+  - Plugin converts `switch_inline_query_current_chat` buttons for suggestion taps
+
+### Documentation
+- README highlights fuzzy suggestions across all card commands  
+- Updated `telegram_docs/PEPEDAWN_HELP_VISUAL.md` + flow diagrams to reflect tap-to-fill UX
+
 ## [3.11.0] - 2025-11-07
 
 ### Added

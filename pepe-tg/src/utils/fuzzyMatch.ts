@@ -68,6 +68,60 @@ export function calculateSimilarity(str1: string, str2: string): number {
 }
 
 /**
+ * Normalize value for fuzzy comparisons (uppercase alphanumeric)
+ */
+export function normalizeForMatching(value: string): string {
+  return value.replace(/[^A-Z0-9]/gi, "").toUpperCase();
+}
+
+interface RankedMatch extends FuzzyMatch {
+  score: number;
+}
+
+function rankMatches(
+  input: string,
+  candidates: string[],
+): RankedMatch[] {
+  if (candidates.length === 0) return [];
+
+  const normalizedInput = normalizeForMatching(input);
+
+  return candidates.map((candidate) => {
+    const similarity = calculateSimilarity(input, candidate);
+    const normalizedCandidate = normalizeForMatching(candidate);
+
+    const containsInput =
+      normalizedInput.length > 0 &&
+      normalizedCandidate.includes(normalizedInput);
+    const startsWithInput =
+      normalizedInput.length > 0 &&
+      normalizedCandidate.startsWith(normalizedInput);
+    const inputContainsCandidate =
+      normalizedCandidate.length > 0 &&
+      normalizedInput.length > normalizedCandidate.length &&
+      normalizedInput.includes(normalizedCandidate);
+
+    let score = similarity;
+    if (startsWithInput) score += 0.25;
+    if (containsInput) score += 0.2;
+    if (inputContainsCandidate) score += 0.05;
+
+    score = Math.min(score, 1);
+
+    return {
+      name: candidate,
+      similarity,
+      score,
+    };
+  }).sort((a, b) => {
+    if (b.score !== a.score) {
+      return b.score - a.score;
+    }
+    return b.similarity - a.similarity;
+  });
+}
+
+/**
  * Find top N matching strings from a list
  * 
  * @param input - String to match against
@@ -80,15 +134,9 @@ export function findTopMatches(
   candidates: string[],
   topN: number = FUZZY_MATCH_THRESHOLDS.TOP_SUGGESTIONS,
 ): FuzzyMatch[] {
-  if (candidates.length === 0) return [];
-
-  const matches: FuzzyMatch[] = candidates.map((candidate) => ({
-    name: candidate,
-    similarity: calculateSimilarity(input, candidate),
-  }));
-
-  // Sort by similarity (descending) and take top N
-  return matches.sort((a, b) => b.similarity - a.similarity).slice(0, topN);
+  return rankMatches(input, candidates)
+    .slice(0, topN)
+    .map(({ name, similarity }) => ({ name, similarity }));
 }
 
 /**
@@ -104,13 +152,28 @@ export function findBestMatch(
   candidates: string[],
   minSimilarity: number = FUZZY_MATCH_THRESHOLDS.HIGH_CONFIDENCE
 ): FuzzyMatch | null {
-  const matches = findTopMatches(input, candidates, 1);
-  const bestMatch = matches.length > 0 ? matches[0] : null;
-  
+  const ranked = rankMatches(input, candidates);
+  const bestMatch = ranked.length > 0 ? ranked[0] : null;
+
   if (bestMatch && bestMatch.similarity >= minSimilarity) {
-    return bestMatch;
+    return {
+      name: bestMatch.name,
+      similarity: bestMatch.similarity,
+    };
   }
-  
+
   return null;
+}
+
+/**
+ * Internal helper to expose ranked matches while keeping the public API stable.
+ * Useful for actions that need sorted matches with score metadata.
+ */
+export function getRankedMatches(
+  input: string,
+  candidates: string[],
+  topN: number = FUZZY_MATCH_THRESHOLDS.TOP_SUGGESTIONS,
+): RankedMatch[] {
+  return rankMatches(input, candidates).slice(0, topN);
 }
 

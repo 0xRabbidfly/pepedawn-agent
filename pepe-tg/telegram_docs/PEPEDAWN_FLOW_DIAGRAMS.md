@@ -116,8 +116,11 @@
 - **4-tier matching:** Exact card → Exact artist → Fuzzy card → Fuzzy artist
 - **Auto-correction:** ≥75% similarity shows card immediately
 - **Suggestions:** 55-74% shows top 3 matches
+- **Inline buttons:** `/f`, `/c`, `/p` suggestions come with tap-to-fill buttons for instant retry
 - **890+ cards** in-memory index
 - **<200ms** response time for known cards
+
+> **Note:** The Fake Commons (`/c`) and Rare Pepes (`/p`) actions reuse this same pipeline, so the auto-correct and suggestion behaviour is consistent across all card collections.
 
 ---
 

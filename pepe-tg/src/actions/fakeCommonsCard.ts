@@ -8,6 +8,13 @@ import {
 import { createLogger } from "../utils/actionLogger";
 import { type CommonsCardInfo, COMMONS_CARD_INDEX } from "../data/fakeCommonsIndex";
 import { checkAndConvertGif } from "../utils/gifConversionHelper";
+import {
+  findTopMatches,
+  FUZZY_MATCH_THRESHOLDS,
+  normalizeForMatching,
+} from "../utils/fuzzyMatch";
+import { buildSuggestionResponse } from "../utils/cardSuggestions";
+import { escapeTelegramMarkdown } from "../utils/telegramMarkdown";
 
 /**
  * Fake Commons Card Display Action
@@ -104,7 +111,7 @@ function buildCardMessage(
     : `${cardInfo.asset} 🐸`;
   
   // Series and card number
-  message += ` Series ${cardInfo.series} - Card ${cardInfo.card}\n`;
+  message += ` S ${cardInfo.series} - C ${cardInfo.card}\n`;
   
   // Add metadata line (artist and/or supply)
   const metadata: string[] = [];
@@ -214,7 +221,9 @@ function parseCardRequest(text: string): {
   isRandomCard: boolean;
 } {
   // Match /c or /c@bot optionally followed by card name
-  const match = text.match(/^\/?c(?:@[A-Za-z0-9_]+)?(?:\s+(.+))?/i);
+  const match = text.match(
+    /^(?:@[A-Za-z0-9_]+\s+)?\/?c(?:@[A-Za-z0-9_]+)?(?:\s+(.+))?/i,
+  );
 
   if (!match || !match[1]) {
     // No asset name provided - random card
@@ -234,6 +243,119 @@ function lookupCommonsCard(cardName: string): CommonsCardInfo | null {
   return allCards.find(c => c.asset === cardName.toUpperCase()) || null;
 }
 
+async function handleCommonsFuzzyMatch(
+  assetName: string,
+  callback?: HandlerCallback,
+  runtime?: IAgentRuntime,
+): Promise<{ success: boolean; data: any } | null> {
+  const allCards = getAllCommonsCards();
+  if (allCards.length === 0) {
+    return null;
+  }
+
+  const allAssets = allCards.map((card) => card.asset);
+  const topMatches = findTopMatches(assetName, allAssets);
+  const bestMatch = topMatches.length > 0 ? topMatches[0] : null;
+
+  const normalizedInput = normalizeForMatching(assetName);
+
+  if (
+    bestMatch &&
+    bestMatch.similarity >= FUZZY_MATCH_THRESHOLDS.HIGH_CONFIDENCE &&
+    normalizedInput.length >= 5
+  ) {
+    const matchedCard = lookupCommonsCard(bestMatch.name);
+    if (matchedCard) {
+      logger.info(
+        `   ✅ Fuzzy match: ${matchedCard.asset} (${(bestMatch.similarity * 100).toFixed(1)}%)`,
+      );
+      const { url, extension } = determineCardUrl(matchedCard);
+      const buttons = buildArtistButton(matchedCard);
+      const cardMessage = `😅 Close enough! Showing ${matchedCard.asset}.\n\n${buildCardMessage(matchedCard, false)}`;
+
+      await sendCardWithMedia({
+        callback: callback ?? null,
+        cardMessage,
+        mediaUrl: url,
+        mediaExtension: extension,
+        assetName: matchedCard.asset,
+        buttons,
+        runtime,
+      });
+
+      return {
+        success: true,
+        data: {
+          suppressBootstrap: true,
+          reason: "fuzzy_matched",
+          assetName,
+          matchedAssetName: matchedCard.asset,
+          similarity: bestMatch.similarity,
+        },
+      };
+    }
+  }
+
+  if (bestMatch && bestMatch.similarity >= FUZZY_MATCH_THRESHOLDS.MODERATE) {
+    const suggestionMatches = topMatches.filter(
+      (match) => match.similarity >= FUZZY_MATCH_THRESHOLDS.MODERATE,
+    );
+
+    logger.info(
+      `   Suggestions: ${suggestionMatches.length} similar Commons cards found`,
+    );
+
+    const suggestionResponse = buildSuggestionResponse({
+      assetName,
+      matches: suggestionMatches,
+      collectionLabel: "Fake Commons collection",
+      commandPrefix: "/c",
+    });
+
+    if (callback) {
+      try {
+        await callback({
+          text: suggestionResponse.primaryText,
+          __fromAction: "fakeCommonsCard",
+          suppressBootstrap: true,
+          buttons: suggestionResponse.buttons,
+        });
+      } catch (err) {
+        logger.warning(
+          `   Callback failed for Commons suggestions, attempting fallback`,
+          { error: err instanceof Error ? err.message : String(err) },
+        );
+
+        try {
+          await callback({
+            text: suggestionResponse.fallbackText,
+            __fromAction: "fakeCommonsCard",
+            suppressBootstrap: true,
+            buttons: suggestionResponse.buttons,
+          });
+        } catch (fallbackError) {
+          logger.error(
+            `   Failed to send Commons fallback suggestions`,
+            fallbackError instanceof Error ? fallbackError : String(fallbackError),
+          );
+        }
+      }
+    }
+
+    return {
+      success: false,
+      data: {
+        suppressBootstrap: true,
+        reason: "card_not_found_with_suggestions",
+        assetName,
+        suggestions: suggestionMatches.map((m) => m.name),
+      },
+    };
+  }
+
+  return null;
+}
+
 /**
  * Display a specific Commons card
  */
@@ -247,9 +369,15 @@ async function handleExactCard(
   
   if (!cardInfo) {
     logger.info(`   ❌ Not found: ${assetName}`);
+    const fuzzyResult = await handleCommonsFuzzyMatch(assetName, callback, runtime);
+    if (fuzzyResult) {
+      return fuzzyResult;
+    }
+
     if (callback) {
+      const safeAssetName = escapeTelegramMarkdown(assetName);
       await callback({
-        text: `❌ Fake Commons card "${assetName}" not found.\n\nTry /c for a random card.`,
+        text: `❌ Fake Commons card "${safeAssetName}" not found.\n\nTry /c for a random card.`,
         suppressBootstrap: true,
       });
     }

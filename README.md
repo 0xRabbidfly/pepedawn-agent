@@ -17,7 +17,7 @@
 - 📊 **Market monitoring** - Real-time Counterparty sales & listings tracker
 - 💰 **XCP Dispensers** - Community-curated list of verified XCP dispenser links
 - 🔍 **Visual analysis** - AI vision reads text + memetic commentary
-- 🧠 **Smart typo correction** - Fuzzy matching with 3-tier intelligence (Fake Rares)
+- 🧠 **Smart typo correction** - `/f`, `/c`, `/p` auto-correct typos and offer tap-to-fill suggestions
 - 🔄 **Auto-updating** - Hourly refresh from GitHub, no restart needed
 - 🤖 **AI-powered** - Natural conversations with context awareness  
 - 📚 **Knowledge base** - Optional: Search 264k+ embedded Telegram messages
@@ -42,7 +42,7 @@
 - **`/f`** - Show a random card from 890+ collection
 
 **Features:**
-- Typo correction with fuzzy matching
+- Typo correction with fuzzy matching + inline suggestions (tap buttons to re-run)
 - Artist name search with partial matches
 - Interactive carousel with ⬅️ Prev / ➡️ Next buttons
 - Series browsing (cards 1→50 in order)
@@ -55,9 +55,20 @@
 - **`/c`** - Show a random card from 1813+ collection
 
 **Features:**
-- Exact name matching (case-insensitive)
+- Fuzzy matching with inline suggestions (three closest cards)
 - 1813 cards across 54 series
 - Same metadata display as Fake Rares
+
+#### Rare Pepes (Legacy Collection)
+
+**Commands:**
+- **`/p CARDNAME`** - Display any Rare Pepe card (e.g., `/p RAREPEPE`)
+- **`/p`** - Show a random card from the classic Rare Pepe catalog
+
+**Features:**
+- Uses the same fuzzy-matching pipeline with tap-to-fill suggestions
+- Supports the unified CardDisplayService (GIF→MP4, cached file_ids)
+- Complements Fake Rares/Commons responses with classic metadata
 
 ---
 

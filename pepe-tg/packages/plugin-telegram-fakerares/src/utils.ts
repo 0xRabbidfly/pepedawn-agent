@@ -224,6 +224,13 @@ export function convertToTelegramButtons(buttons?: Button[] | null): InlineKeybo
       if (button.url && button.text) {
          return Markup.button.url(button.text, button.url);
       }
+      // Handle switch inline query (prefill current chat)
+      if (button.switch_inline_query_current_chat && button.text) {
+        return Markup.button.switchToCurrentChat(
+          button.text,
+          button.switch_inline_query_current_chat,
+        );
+      }
       // Handle callback buttons
       if (button.callback_data && button.text) {
         return Markup.button.callback(button.text, button.callback_data);

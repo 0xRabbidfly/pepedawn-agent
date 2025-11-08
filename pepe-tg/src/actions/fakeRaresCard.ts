@@ -21,6 +21,14 @@ import {
 } from "../utils/cardIndexRefresher";
 import { checkAndConvertGif } from "../utils/gifConversionHelper";
 import { type CommonsCardInfo, COMMONS_CARD_INDEX } from "../data/fakeCommonsIndex";
+import {
+  calculateSimilarity,
+  findTopMatches,
+  FUZZY_MATCH_THRESHOLDS,
+  normalizeForMatching,
+} from "../utils/fuzzyMatch";
+import { buildSuggestionResponse } from "../utils/cardSuggestions";
+import { escapeTelegramMarkdown } from "../utils/telegramMarkdown";
 
 /**
  * Fake Rares Card Display Action
@@ -46,13 +54,7 @@ import { type CommonsCardInfo, COMMONS_CARD_INDEX } from "../data/fakeCommonsInd
 const FAKE_RARES_BASE_URL =
   "https://pepewtf.s3.amazonaws.com/collections/fake-rares/full";
 
-// Fuzzy matching thresholds and configuration
-export const FUZZY_MATCH_THRESHOLDS = {
-  HIGH_CONFIDENCE: 0.75, // ≥75% similarity: Auto-show the matched card
-  MODERATE: 0.55, // 55-74% similarity: Show suggestions
-  ARTIST_FUZZY: 0.65, // 65% similarity: Minimum for artist fuzzy matching
-  TOP_SUGGESTIONS: 3, // Number of suggestions to show for moderate matches
-} as const;
+export { FUZZY_MATCH_THRESHOLDS } from "../utils/fuzzyMatch";
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -63,11 +65,6 @@ export type MediaExtension = "jpg" | "jpeg" | "gif" | "png" | "mp4" | "webp";
 interface CardUrlResult {
   url: string;
   extension: MediaExtension;
-}
-
-interface FuzzyMatch {
-  name: string;
-  similarity: number;
 }
 
 interface CardDisplayParams {
@@ -86,12 +83,6 @@ interface CardDisplayParams {
 // ============================================================================
 
 const logger = createLogger("FakeCard");
-
-const TELEGRAM_ESCAPE_REGEX = /[\\_*\[\]()~>#+=|{}.!-]/g;
-
-function escapeTelegramMarkdown(text: string): string {
-  return text.replace(TELEGRAM_ESCAPE_REGEX, (match) => `\\${match}`);
-}
 
 // ============================================================================
 // UTILITY FUNCTIONS
@@ -185,68 +176,6 @@ export function getAllCardsIncludingCommons(): CardInfo[] {
   return [...fakeRaresCards, ...commonsCards];
 }
 
-/**
- * Calculate Levenshtein distance between two strings
- * Returns the minimum number of edits (insertions, deletions, substitutions) needed
- */
-function levenshteinDistance(str1: string, str2: string): number {
-  const len1 = str1.length;
-  const len2 = str2.length;
-  const matrix: number[][] = [];
-
-  // Initialize matrix
-  for (let i = 0; i <= len1; i++) {
-    matrix[i] = [i];
-  }
-  for (let j = 0; j <= len2; j++) {
-    matrix[0][j] = j;
-  }
-
-  // Fill matrix
-  for (let i = 1; i <= len1; i++) {
-    for (let j = 1; j <= len2; j++) {
-      if (str1[i - 1] === str2[j - 1]) {
-        matrix[i][j] = matrix[i - 1][j - 1];
-      } else {
-        matrix[i][j] = Math.min(
-          matrix[i - 1][j] + 1, // deletion
-          matrix[i][j - 1] + 1, // insertion
-          matrix[i - 1][j - 1] + 1, // substitution
-        );
-      }
-    }
-  }
-
-  return matrix[len1][len2];
-}
-
-/**
- * Calculate similarity percentage between two strings (0-1 range)
- */
-function calculateSimilarity(str1: string, str2: string): number {
-  const distance = levenshteinDistance(str1.toUpperCase(), str2.toUpperCase());
-  const maxLen = Math.max(str1.length, str2.length);
-  return maxLen === 0 ? 1 : 1 - distance / maxLen;
-}
-
-/**
- * Find top N matching card names from all available cards
- */
-function findTopMatches(
-  inputName: string,
-  allAssets: string[],
-  topN: number = FUZZY_MATCH_THRESHOLDS.TOP_SUGGESTIONS,
-): FuzzyMatch[] {
-  if (allAssets.length === 0) return [];
-
-  const matches: FuzzyMatch[] = allAssets.map((asset) => ({
-    name: asset,
-    similarity: calculateSimilarity(inputName, asset),
-  }));
-
-  // Sort by similarity (descending) and take top N
-  return matches.sort((a, b) => b.similarity - a.similarity).slice(0, topN);
-}
 
 /**
  * Find cards by exact artist name match (case-insensitive)
@@ -396,7 +325,7 @@ export function buildCardDisplayMessage(params: CardDisplayParams): string {
     const shouldShowTag = isCommons || hasCollectionTotals;
     const collectionTag = isCommons ? '(C)' : '(F)';
     const prefix = shouldShowTag ? ` • ${collectionTag}` : ' •';
-    message += `${prefix} Series ${params.cardInfo.series} - Card ${params.cardInfo.card}\n`;
+    message += `${prefix} S ${params.cardInfo.series} - C ${params.cardInfo.card}\n`;
 
     // Add metadata line (artist and/or supply)
     const metadata: string[] = [];
@@ -426,7 +355,7 @@ export function buildCardDisplayMessage(params: CardDisplayParams): string {
       }
     }
   } else {
-    message += ` • Series ? - Card ?\n`;
+    message += ` • S ? - C ?\n`;
   }
 
   // URL not included in message text - handled via attachments in callback
@@ -470,7 +399,12 @@ export async function sendCardWithMedia(params: {
   mediaExtension: MediaExtension;
   assetName: string;
   cardInfo?: CardInfo | null; // Card info for fallback URL generation
-  buttons?: Array<{ text: string; url?: string; callback_data?: string }>;
+  buttons?: Array<{
+    text: string;
+    url?: string;
+    callback_data?: string;
+    switch_inline_query_current_chat?: string;
+  }>;
   fallbackImages?: Array<{ url: string; contentType: string }>;
   runtime?: IAgentRuntime; // Optional runtime for service access
 }): Promise<void> {
@@ -792,7 +726,9 @@ function parseCardRequest(text: string): {
   isRandomCard: boolean;
 } {
   // Updated regex to capture everything after /f, including spaces
-  const match = text.match(/^\/?f(?:@[A-Za-z0-9_]+)?(?:\s+(.+))?/i);
+  const match = text.match(
+    /^(?:@[A-Za-z0-9_]+\s+)?\/?f(?:@[A-Za-z0-9_]+)?(?:\s+(.+))?/i,
+  );
 
   if (!match || !match[1]) {
     // No asset name provided - random card
@@ -977,9 +913,12 @@ async function handleCardNotFound(params: {
   const bestMatch = topMatches.length > 0 ? topMatches[0] : null;
 
   // High confidence match - auto-show the card
+  const normalizedInput = normalizeForMatching(params.assetName);
+
   if (
     bestMatch &&
-    bestMatch.similarity >= FUZZY_MATCH_THRESHOLDS.HIGH_CONFIDENCE
+    bestMatch.similarity >= FUZZY_MATCH_THRESHOLDS.HIGH_CONFIDENCE &&
+    normalizedInput.length >= 5
   ) {
     logger.info(`   Fuzzy match: ${bestMatch.name} (${(bestMatch.similarity * 100).toFixed(1)}%)`);
 
@@ -1029,28 +968,49 @@ async function handleCardNotFound(params: {
 
   // Moderate match - show suggestions
   if (bestMatch && bestMatch.similarity >= FUZZY_MATCH_THRESHOLDS.MODERATE) {
-    const suggestions = topMatches
-      .filter((m) => m.similarity >= FUZZY_MATCH_THRESHOLDS.MODERATE)
-      .map((m) => `• ${escapeTelegramMarkdown(m.name)}`)
-      .join("\n");
+    const suggestionMatches = topMatches.filter(
+      (m) => m.similarity >= FUZZY_MATCH_THRESHOLDS.MODERATE,
+    );
 
-    logger.info(`   Suggestions: ${topMatches.length} similar cards found`);
+    logger.info(
+      `   Suggestions: ${suggestionMatches.length} similar cards found`,
+    );
 
-    const safeAssetName = escapeTelegramMarkdown(params.assetName);
-    let errorText = `❌ Could not find "${safeAssetName}" in the Fake Rares collection.\n\n`;
-    if (suggestions) {
-      errorText += `🤔 Did you mean:\n${suggestions}\n\n`;
-      errorText += `Try /f CARD_NAME with one of the above.`;
-    } else {
-      errorText += `Double-check the asset name or browse on pepe.wtf.`;
-    }
+    const suggestionResponse = buildSuggestionResponse({
+      assetName: params.assetName,
+      matches: suggestionMatches,
+      collectionLabel: "Fake Rares collection",
+      commandPrefix: "/f",
+    });
 
     if (params.callback) {
-      await params.callback({
-        text: errorText,
-        __fromAction: "fakeRaresCard",
-        suppressBootstrap: true,
-      });
+      try {
+        await params.callback({
+          text: suggestionResponse.primaryText,
+          __fromAction: "fakeRaresCard",
+          suppressBootstrap: true,
+          buttons: suggestionResponse.buttons,
+        });
+      } catch (callbackError) {
+        logger.warning(
+          `   Callback failed for suggestions response, attempting fallback`,
+          { error: callbackError instanceof Error ? callbackError.message : String(callbackError) },
+        );
+
+        try {
+          await params.callback({
+            text: suggestionResponse.fallbackText,
+            __fromAction: "fakeRaresCard",
+            suppressBootstrap: true,
+            buttons: suggestionResponse.buttons,
+          });
+        } catch (fallbackError) {
+          logger.error(
+            `   Failed to send fallback suggestions response`,
+            fallbackError instanceof Error ? fallbackError : String(fallbackError),
+          );
+        }
+      }
     }
 
     return {
