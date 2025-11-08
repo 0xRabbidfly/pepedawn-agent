@@ -85,7 +85,8 @@ describe('MessageManager', () => {
         CHAT_ID,
         content.text,
         expect.objectContaining({
-          parse_mode: 'MarkdownV2',
+          parse_mode: 'Markdown',
+          link_preview_options: { is_disabled: true },
         })
       );
       expect(result[0].message_id).toBe(123);
@@ -108,13 +109,13 @@ describe('MessageManager', () => {
         1,
         CHAT_ID,
         message1,
-        expect.objectContaining({ parse_mode: 'MarkdownV2' })
+        expect.objectContaining({ parse_mode: 'Markdown', link_preview_options: { is_disabled: true } })
       );
       expect(mockBot.telegram.sendMessage).toHaveBeenNthCalledWith(
         2,
         CHAT_ID,
         message2,
-        expect.objectContaining({ parse_mode: 'MarkdownV2' })
+        expect.objectContaining({ parse_mode: 'Markdown', link_preview_options: { is_disabled: true } })
       );
     });
   });

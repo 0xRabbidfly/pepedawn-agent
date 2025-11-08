@@ -25,10 +25,7 @@ _Generated: November 8, 2025_
 ## Recommended Next Steps
 
 1. Update the flagged entries in `fake-commons-data.json` with correct card numbers and metadata.
-2. Re-run the automated check:
-   ```bash
-   node pepe-tg/scripts/check-commons.js # (or rerun the inline script used for this report)
-   ```
+2. Re-run the automated check (using the inline Node script that produced this report) to confirm the dataset is clean.
 3. Once clean, regenerate commons embeddings if any asset names changed.
 
 ## Reference

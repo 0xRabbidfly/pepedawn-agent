@@ -623,7 +623,9 @@ export class MessageManager {
       
       // If we have buttons but no text, send them separately
       if (telegramButtons && telegramButtons.length > 0 && !content.text && sentPrimaryMedia) {
-        await ctx.reply('', Markup.inlineKeyboard(telegramButtons));
+        // Telegram rejects completely empty messages (400: text must be non-empty),
+        // so use a single space when sending button-only follow-ups.
+        await ctx.reply(' ', Markup.inlineKeyboard(telegramButtons));
       }
       
       return [];
