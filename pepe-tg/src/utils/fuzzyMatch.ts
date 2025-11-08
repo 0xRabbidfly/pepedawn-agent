@@ -103,7 +103,7 @@ function rankMatches(
 
     let score = similarity;
     if (startsWithInput) score += 0.25;
-    if (containsInput) score += 0.2;
+    if (containsInput) score += 0.3;
     if (inputContainsCandidate) score += 0.05;
 
     score = Math.min(score, 1);
