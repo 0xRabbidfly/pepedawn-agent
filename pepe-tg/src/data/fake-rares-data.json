@@ -272,6 +272,16 @@
     "issuance": "September 2021"
   },
   {
+    "asset": "LABRADEPE",
+    "series": 1,
+    "card": 7,
+    "ext": "gif",
+    "artist": "Kaph Resh",
+    "artistSlug": "Kaph-Resh",
+    "supply": 163,
+    "issuance": "September 2021"
+  },
+  {
     "asset": "PEPEKAWS",
     "series": 1,
     "card": 8,
@@ -292,15 +302,14 @@
     "issuance": "September 2021"
   },
   {
-    "asset": "NOFAPPEPE",
+    "asset": "NOFAPPEPE.crema",
     "series": 1,
     "card": 10,
     "ext": "png",
     "artist": "Indelible and Cam",
     "artistSlug": "Indelible-and-Cam",
     "supply": 30,
-    "issuance": "October 2021",
-    "imageUri": "https://tokenscan.io/img/cards/A13878139361092822353.png"
+    "issuance": "October 2021"
   },
   {
     "asset": "PEPEORBIT",
@@ -401,6 +410,17 @@
     "artistSlug": "FakeBuddha",
     "supply": 100,
     "issuance": "September 2021"
+  },
+  {
+    "asset": "Reserved for Cryptograffiti",
+    "series": 1,
+    "card": 21,
+    "ext": "jpg",
+    "artist": "cryptograffiti",
+    "artistSlug": "cryptograffiti",
+    "supply": 0,
+    "issuance": "future",
+    "imageUri": "https://fakeraredirectory.com/wp-content/uploads/2021/10/image-2021-10-05-110028.jpg"
   },
   {
     "asset": "HODLPIGPEPE",
@@ -1800,6 +1820,17 @@
     "issuance": "November 2021"
   },
   {
+    "asset": "LAMAPEPE",
+    "series": 4,
+    "card": 9,
+    "ext": "png",
+    "artist": Tasa,
+    "artistSlug": "Tasa",
+    "supply": 99,
+    "issuance": "November 2021",
+    "imageUri": "https://tokenscan.io/img/cards/LAMAPEPE.png"
+  },
+  {
     "asset": "FAKEPARTY",
     "series": 4,
     "card": 10,
@@ -2251,6 +2282,16 @@
     "memeUri": "https://tokenscan.io/img/cards/PEPEISDEAD.gif"
   },
   {
+    "asset": "FAKEWAX",
+    "series": 4,
+    "card": 51,
+    "ext": "jpg",
+    "artist": "FAKERARES",
+    "artistSlug": "FAKERARES",
+    "supply": 150,
+    "issuance": "February 2022"
+  },
+  {
     "asset": "FAKEFAKEWAX",
     "series": 4,
     "card": 52,
@@ -2406,6 +2447,16 @@
     "artistSlug": "L_vs_D",
     "supply": 96,
     "issuance": "January 2022"
+  },
+  {
+    "asset": "BTCTRUCKERS",
+    "series": 5,
+    "card": 15,
+    "ext": "png",
+    "artist": "GMONEY",
+    "artistSlug": "GMONEY",
+    "supply": 57,
+    "issuance": "February 2022"
   },
   {
     "asset": "PEPEBLITZ",
@@ -6230,6 +6281,16 @@
     "memeUri": "https://tokenscan.io/img/cards/PEPEXTASIS.gif"
   },
   {
+    "asset": "ERROR404",
+    "series": 12,
+    "card": 29,
+    "ext": "jpg",
+    "artist": "unknown",
+    "artistSlug": "unknown",
+    "supply": 0,
+    "issuance": "November 2022"
+  },
+  {
     "asset": "BADMANFRAUD",
     "series": 12,
     "card": 30,
@@ -6349,7 +6410,7 @@
   {
     "asset": "PREDICTIONS",
     "series": 12,
-    "card": 40,
+    "card": 41,
     "ext": "jpeg",
     "artist": "SaSHA-256",
     "artistSlug": "SaSHA-256",
@@ -6547,6 +6608,16 @@
     "artistSlug": "Rare-Scrilla",
     "supply": 69,
     "issuance": "February 2023"
+  },
+  {
+    "asset": "MCAMOTO",
+    "series": 13,
+    "card": 11,
+    "ext": "jpeg",
+    "artist": "Mr Hansel",
+    "artistSlug": "Mr-Hansel",
+    "supply": 100,
+    "issuance": "January 2023"
   },
   {
     "asset": "MCAMOTO",
@@ -6896,6 +6967,16 @@
     "issuance": "November 2022",
     "videoUri": "https://arweave.net/tQnw5MyM4Ha_ndhuhzQVtKQylfl1ZnL-R9qAs4PcUf8/idrl0g_video.mp4",
     "memeUri": "https://tokenscan.io/img/cards/PEPOGATE.gif"
+  },
+  {
+    "asset": "A8008135800813580085",
+    "series": 13,
+    "card": 45,
+    "ext": "png",
+    "artist": "Alth0tas x Regan",
+    "artistSlug": "Alth0tas-x-Regan",
+    "supply": 21,
+    "issuance": "March 2025"
   },
   {
     "asset": "IMWITHCRYPTO",
@@ -7743,7 +7824,7 @@
   },
   {
     "asset": "TUBKING",
-    "series": 15,
+    "series": 14,
     "card": 29,
     "ext": "gif",
     "artist": "Ryan D. Anderson",
@@ -7765,7 +7846,7 @@
   },
   {
     "asset": "ILLIQUID",
-    "series": 15,
+    "series": 14,
     "card": 30,
     "ext": "jpeg",
     "artist": "Dalek",
@@ -8722,6 +8803,16 @@
     "artistSlug": "Pepe-Capitol",
     "supply": 55,
     "issuance": "November 2023"
+  },
+  {
+    "asset": "A1619006396900464164",
+    "series": 17,
+    "card": 24,
+    "ext": "jpg",
+    "artist": "HNFT Pepe",
+    "artistSlug": "HNFT-Pepe",
+    "supply": 299,
+    "issuance": "March 2024"
   },
   {
     "asset": "FAKEASYOU",
