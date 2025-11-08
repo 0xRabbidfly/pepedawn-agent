@@ -1824,8 +1824,8 @@
     "series": 4,
     "card": 9,
     "ext": "png",
-    "artist": Tasa,
-    "artistSlug": "Tasa",
+    "artist": "Tasha",
+    "artistSlug": "Tasha",
     "supply": 99,
     "issuance": "November 2021",
     "imageUri": "https://tokenscan.io/img/cards/LAMAPEPE.png"
@@ -6608,16 +6608,6 @@
     "artistSlug": "Rare-Scrilla",
     "supply": 69,
     "issuance": "February 2023"
-  },
-  {
-    "asset": "MCAMOTO",
-    "series": 13,
-    "card": 11,
-    "ext": "jpeg",
-    "artist": "Mr Hansel",
-    "artistSlug": "Mr-Hansel",
-    "supply": 100,
-    "issuance": "January 2023"
   },
   {
     "asset": "MCAMOTO",
