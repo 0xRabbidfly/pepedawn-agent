@@ -290,7 +290,7 @@ export class TransactionMonitor extends Service {
         asset: dispense.asset_longname || dispense.asset,
         amount: parseInt(dispense.dispense_quantity, 10),
         price: 0, // Dispenses don't include price directly - need to look up dispenser
-        paymentAsset: 'XCP', // Default assumption - may need to look up from dispenser
+        paymentAsset: 'BTC', // Default assumption for dispensers
         timestamp: blockTimestamp,
         blockIndex: dispense.block_index,
         notified: false,
@@ -302,14 +302,29 @@ export class TransactionMonitor extends Service {
       // Look up dispenser to get price
       try {
         const tokenScanClient = this.runtime.getService(TokenScanClient.serviceType) as TokenScanClient;
-        const dispensers = await tokenScanClient.pollDispensers();
-        const matchingDispenser = dispensers.find(
-          (d) => d.tx_hash === dispense.dispenser_tx_hash
-        );
-        
-        if (matchingDispenser) {
-          transaction.price = parseInt(matchingDispenser.satoshirate, 10);
-          transaction.paymentAsset = 'BTC'; // Dispensers typically use BTC
+        const txDetails = await tokenScanClient.getTransaction(dispense.tx_hash);
+
+        if (txDetails) {
+          if (typeof txDetails.btc_amount === 'number' && txDetails.btc_amount > 0) {
+            transaction.price = txDetails.btc_amount;
+            transaction.paymentAsset = 'BTC';
+          } else if (typeof txDetails.xcp_amount === 'number' && txDetails.xcp_amount > 0) {
+            transaction.price = txDetails.xcp_amount;
+            transaction.paymentAsset = 'XCP';
+          }
+        }
+
+        // Fallback: attempt to infer price from dispenser listing in the same block
+        if (transaction.price === 0) {
+          const dispensers = await tokenScanClient.pollDispensers(dispense.block_index);
+          const matchingDispenser = dispensers.find(
+            (d) => d.tx_hash === dispense.dispenser_tx_hash
+          );
+          
+          if (matchingDispenser) {
+            transaction.price = parseInt(matchingDispenser.satoshirate, 10);
+            transaction.paymentAsset = 'BTC';
+          }
         }
       } catch (error) {
         logger.warn({ txHash: dispense.tx_hash }, 'Could not lookup dispenser price');

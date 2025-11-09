@@ -245,6 +245,16 @@ export const fakeRaresPlugin: Plugin = {
           // Log routing factors
           logger.info(`   Triggers: reply=${!!isReplyToBot} | card=${isFakeRareCard} | @mention=${hasBotMention}`);
 
+          const textLower = text.toLowerCase();
+          const hasCardKeyword =
+            /\b(card|cards|fake|fakes|fake rare|fake rares|rake rare|rare fake|rare card|rare cards)\b/i.test(textLower) ||
+            /\bpepes?\b/i.test(textLower) ||
+            /\brare pepes?\b/i.test(textLower);
+          const hasInquisitiveCue =
+            /\b(show|find|looking|search|need|want|which|what|who|how|can|where|is|are|do|does|any|recommend|suggest|tell|give|got)\b/i.test(textLower) ||
+            text.includes('?');
+          const hasCardDiscoveryIntent = hasCardKeyword && hasInquisitiveCue;
+
           logger.debug(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${isF} isC=${isC} isP=${isP} isFv=${isFv} isFt=${isFt} isLore=${isFl} isFr=${isFr} isFm=${isFm} isDawn=${isDawn} isHelp=${isHelp} isStart=${isStart} isCost=${isFc} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
           
           logger.info('━━━━━━━━━━ STEP 2/5: COMMAND EXECUTION ━━━━━━━━━━');
@@ -373,11 +383,13 @@ export const fakeRaresPlugin: Plugin = {
             roomId: message.roomId,
           });
           
-          if (!shouldRespond(engagementScore)) {
+          if (!shouldRespond(engagementScore) && !hasCardDiscoveryIntent) {
             logger.info(`   Decision: SUPPRESS (low engagement, score=${engagementScore})`);
             message.metadata = message.metadata || {};
             (message.metadata as any).__handledByCustom = true;
             return;
+          } else if (!shouldRespond(engagementScore) && hasCardDiscoveryIntent) {
+            logger.info(`   Engagement below threshold (${engagementScore}) but overriding due to card intent`);
           }
           
           logger.info('━━━━━━━━━━ STEP 5/5: QUERY CLASSIFICATION ━━━━━━━━━━');
@@ -388,6 +400,11 @@ export const fakeRaresPlugin: Plugin = {
           // 🎯 OVERRIDE: Card name + question → Force FACTS (wiki/memory only, no telegram noise)
           if (isFakeRareCard && patterns.metadata.hasQuestion) {
             logger.info('   Override: Card + question → forcing FACTS mode');
+            queryType = 'FACTS';
+          }
+          
+          if (hasCardDiscoveryIntent && queryType !== 'FACTS') {
+            logger.info('   Override: Card discovery intent → forcing FACTS mode');
             queryType = 'FACTS';
           }
           
@@ -419,8 +436,10 @@ export const fakeRaresPlugin: Plugin = {
             /^(tell|show|explain|describe|list|give)\s+(me|us)\s+(about|the|how)/i.test(text) ||  // Imperative requests
             /\b(need to know|want to know|wondering|curious)\b/i.test(text);  // Indirect questions
           
-          if (queryType === 'FACTS' && isQuestion) {
-            logger.info(`   Decision: Auto-route to FACTS (detected question)`);
+          if (queryType === 'FACTS' && (isQuestion || hasCardDiscoveryIntent)) {
+            logger.info(
+              `   Decision: Auto-route to FACTS (${isQuestion ? 'question' : 'card intent'})`
+            );
             const actionCallback = typeof params.callback === 'function' ? params.callback : null;
             params.callback = async () => [];
             
@@ -436,6 +455,7 @@ export const fakeRaresPlugin: Plugin = {
               const result = await knowledgeService.retrieveKnowledge(text, message.roomId, {
                 mode: 'FACTS',
                 includeMetrics: true,
+                preferCardFacts: hasCardDiscoveryIntent,
               });
               
               // Fall back to bootstrap if no wiki/memory sources found
@@ -446,17 +466,35 @@ export const fakeRaresPlugin: Plugin = {
                 throw new Error('No knowledge hits - fallback to bootstrap');
               }
               
-              const finalMessage = result.story + result.sourcesLine;
-              
-              // Detect if LLM couldn't answer from sources (returns "NO_ANSWER" signal)
-              // If so, fall back to bootstrap for conversational response
-              if (result.story.trim() === 'NO_ANSWER') {
-                logger.info(`   Decision: FALLBACK to Bootstrap (FACTS returned NO_ANSWER)`);
-                throw new Error('Knowledge sources not relevant - fallback to bootstrap');
+              if (result.primaryCardAsset) {
+                if (result.cardSummary && actionCallback) {
+                  await actionCallback({ text: result.cardSummary });
+                }
+                const cardMessage = {
+                  ...message,
+                  content: {
+                    ...message.content,
+                    text: `/f ${result.primaryCardAsset}`,
+                  },
+                };
+                try {
+                  await fakeRaresCardAction.handler(
+                    runtime,
+                    cardMessage,
+                    params.state,
+                    {},
+                    actionCallback,
+                  );
+                } catch (cardErr) {
+                  logger.error('[FakeRaresPlugin] Failed to auto-display card:', cardErr);
+                }
               }
-              
-              if (actionCallback) {
-                await actionCallback({ text: finalMessage });
+
+              if (actionCallback && result.story && result.story.trim().length > 0) {
+                await actionCallback({ text: result.story });
+              }
+              if (actionCallback && result.sourcesLine && result.sourcesLine.trim().length > 0) {
+                await actionCallback({ text: result.sourcesLine });
               }
               
               // Log as conversation (auto-routed)
@@ -501,7 +539,7 @@ export const fakeRaresPlugin: Plugin = {
             }
           }
           
-          logger.info('━━━━━━━━━━ STEP 4 (FINAL): BOOTSTRAP DECISION ━━━━━━━━━━');
+          logger.info('━━━━━━━━━━ STEP 6/6: BOOTSTRAP DECISION ━━━━━━━━━━');
           
           // At this point:
           // - Commands already handled and exited

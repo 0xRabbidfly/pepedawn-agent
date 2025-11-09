@@ -20,6 +20,16 @@ export function classifyQuery(query: string): QueryType {
     logger.info(`   QueryClassifier: UNCERTAIN (slash command)`);
     return 'UNCERTAIN';
   }
+
+  // Card discovery intent: inquisitive language + mention of cards/fakes
+  const hasCardKeyword = /\b(card|cards|fake|fakes|fake rare|fake rares|rake rare|rare fake|rare card|rare cards)\b/.test(lowerQuery);
+  const hasInquisitive =
+    /\b(show|find|looking|search|need|want|which|what|who|how|can|where|is|are|do|does|any|recommend|suggest|tell|give|got)\b/.test(lowerQuery) ||
+    lowerQuery.includes('?');
+  if (hasCardKeyword && hasInquisitive) {
+    logger.info(`   QueryClassifier: FACTS (card discovery intent)`);
+    return 'FACTS';
+  }
   
   // FACTS indicators - looking for concrete information
   const factKeywords = [

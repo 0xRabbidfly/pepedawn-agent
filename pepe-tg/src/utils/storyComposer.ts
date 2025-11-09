@@ -113,7 +113,9 @@ export async function generatePersonaStory(
     
     logger.debug(`[StoryComposer] Generated story: ${result.text.length} chars (${result.text.split(/\s+/).length} words)`);
     
-    return result.text.trim();
+    // Replace literal \n strings with actual newlines (LLM sometimes returns these)
+    const textWithNewlines = result.text.replace(/\\n/g, '\n');
+    return textWithNewlines.trim();
   } catch (err) {
     logger.error({ error: err }, 'Story generation error');
     

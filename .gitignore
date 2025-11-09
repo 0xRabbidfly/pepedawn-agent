@@ -62,4 +62,8 @@ data/transactions.db
 **/data/archives/
 
 # Monte Carlo simulation data (large analysis files, not production code)
-**/scripts/montecarlo/parsed-messages.json    
+**/scripts/montecarlo/parsed-messages.json
+
+# Temporary files
+tmp/
+**/tmp/

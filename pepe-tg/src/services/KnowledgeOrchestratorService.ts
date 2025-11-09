@@ -15,7 +15,7 @@
  * Fixed Nov 2025 - was incorrectly applying MMR to all queries
  */
 
-import { Service, type IAgentRuntime, logger } from '@elizaos/core';
+import { Service, type IAgentRuntime, logger, ModelType } from '@elizaos/core';
 import { searchKnowledgeWithExpansion, selectDiversePassages, expandQuery, type RetrievedPassage } from '../utils/loreRetrieval';
 import { clusterAndSummarize, formatSourcesLine, formatCompactCitation } from '../utils/loreSummarize';
 import { generatePersonaStory } from '../utils/storyComposer';
@@ -27,12 +27,16 @@ import { CLARIFICATION_MESSAGE } from '../actions/loreCommand';
 export interface KnowledgeRetrievalOptions {
   mode?: 'FACTS' | 'LORE';
   includeMetrics?: boolean;
+  preferCardFacts?: boolean;
 }
 
 export interface KnowledgeRetrievalResult {
   story: string;
   sourcesLine: string;
   hasWikiOrMemory?: boolean;  // True if wiki/memory sources were found (for silent ignore logic)
+  primaryCardAsset?: string;
+  cardSummary?: string;
+  cardMatches?: Array<{ asset: string; reason: string }>;
   metrics: {
     query: string;
     hits_raw: number;
@@ -93,6 +97,7 @@ export class KnowledgeOrchestratorService extends Service {
     options?: KnowledgeRetrievalOptions
   ): Promise<KnowledgeRetrievalResult> {
     const startTime = Date.now();
+    const preferCardFacts = options?.preferCardFacts ?? false;
 
     logger.debug(`\n🔍 [KNOWLEDGE] Query: "${query}"`);
     logger.info(`STEP 1/5: Expanding query`);
@@ -113,7 +118,8 @@ export class KnowledgeOrchestratorService extends Service {
     const sourceBreakdown = passages.reduce((acc, p) => {
       const type = p.sourceType === 'telegram' ? 'tg' : 
                    p.sourceType === 'wiki' ? 'wiki' :
-                   p.sourceType === 'memory' ? 'mem' : 'other';
+                   p.sourceType === 'memory' ? 'mem' :
+                   p.sourceType === 'card-fact' ? 'card' : 'other';
       acc[type] = (acc[type] || 0) + 1;
       return acc;
     }, {} as Record<string, number>);
@@ -161,6 +167,41 @@ export class KnowledgeOrchestratorService extends Service {
     }
 
     // STEP 3: Pre-classify to determine if we need MMR
+    const hasWikiOrMemoryPassages = passages.some(
+      (p) => p.sourceType === 'memory' || p.sourceType === 'wiki'
+    );
+    const cardFactPassages = passages.filter(
+      (p) => p.sourceType === 'card-fact' && p.cardAsset
+    );
+    if (preferCardFacts) {
+      const cardIntentResult = await this.composeCardFactAnswer(
+        query,
+        cardFactPassages,
+        startTime
+      );
+      if (cardIntentResult) {
+        logger.info(
+          `🃏 [KNOWLEDGE] Card discovery forced (intent) using ${cardFactPassages.length} card-related passages.`
+        );
+        return cardIntentResult;
+      }
+      logger.info(
+        `🧠 [KNOWLEDGE] Card intent detected but no strong card matches found; falling back to wiki/memory flow.`
+      );
+    } else if (!hasWikiOrMemoryPassages) {
+      const cardFactResult = await this.composeCardFactAnswer(
+        query,
+        cardFactPassages,
+        startTime
+      );
+      if (cardFactResult) {
+        logger.info(`🃏 [KNOWLEDGE] Card discovery fired (no wiki/memory hits, ${cardFactPassages.length} card-fact passages)`);
+        return cardFactResult;
+      }
+    } else if (cardFactPassages.length > 0) {
+      logger.info(`🧠 [KNOWLEDGE] Wiki/memory hits found – skipping card discovery despite ${cardFactPassages.length} card-fact passages.`);
+    }
+
     const queryType = options?.mode || classifyQuery(query);
     logger.info(`STEP 3/5: Selecting passages (${queryType === 'FACTS' ? 'by relevance' : 'MMR diversity'})`);
     
@@ -208,7 +249,8 @@ export class KnowledgeOrchestratorService extends Service {
     const postSelectionBreakdown = diversePassages.reduce((acc, p) => {
       const type = p.sourceType === 'telegram' ? 'tg' : 
                    p.sourceType === 'wiki' ? 'wiki' :
-                   p.sourceType === 'memory' ? 'mem' : 'other';
+                   p.sourceType === 'memory' ? 'mem' :
+                   p.sourceType === 'card-fact' ? 'card' : 'other';
       acc[type] = (acc[type] || 0) + 1;
       return acc;
     }, {} as Record<string, number>);
@@ -310,6 +352,12 @@ export class KnowledgeOrchestratorService extends Service {
       sourcesLine = process.env.HIDE_LORE_SOURCES === 'true' ? '' : formatSourcesLine(summaries);
     }
     
+    if (!story || story.trim().length === 0) {
+      story = '🤔 Not sure which fake fits that yet. Try a different clue or ping `/fl CARDNAME` for direct lore.';
+      sourcesLine = '';
+      hasWikiOrMemory = false;
+    }
+
     logger.debug(`✍️  Generated story (${story.split(/\s+/).length} words)`);
     logger.info(`STEP 5/5: Story generated (${story.split(/\s+/).length} words)`);
 
@@ -337,5 +385,294 @@ export class KnowledgeOrchestratorService extends Service {
       }
     };
   }
+
+  private async composeCardFactAnswer(
+    query: string,
+    passages: RetrievedPassage[],
+    startTime: number
+  ): Promise<KnowledgeRetrievalResult | null> {
+    if (passages.length === 0) {
+      return null;
+    }
+
+    const sorted = [...passages].sort((a, b) => {
+      const priorityDiff =
+        (b.cardBlockPriority ?? 0) - (a.cardBlockPriority ?? 0);
+      if (priorityDiff !== 0) return priorityDiff;
+      return b.score - a.score;
+    });
+
+    const groups = new Map<string, CardFactGroup>();
+
+    for (const passage of sorted) {
+      const asset =
+        passage.cardAsset ??
+        (passage.sourceRef?.startsWith('card:')
+          ? passage.sourceRef.slice(5)
+          : undefined);
+      if (!asset) continue;
+
+      const normalizedAsset = asset.toUpperCase();
+      const existing = groups.get(normalizedAsset);
+      if (existing) {
+        existing.passages.push(passage);
+      } else {
+        groups.set(normalizedAsset, {
+          asset: normalizedAsset,
+          passages: [passage],
+          best: passage,
+          score:
+            (passage.cardBlockPriority ?? 0) * 10 + passage.score,
+        });
+      }
+    }
+
+    if (groups.size === 0) {
+      return null;
+    }
+
+    const ranked = Array.from(groups.values())
+      .map((group) => {
+        const best = group.passages[0];
+        const score =
+          (best.cardBlockPriority ?? 0) * 10 + best.score;
+        return { ...group, best, score };
+      })
+      .sort((a, b) => b.score - a.score);
+
+    const limited = ranked.slice(0, Math.min(3, ranked.length));
+    const topGroup = limited[0];
+    let cardSummary: string | null = null;
+
+    if (topGroup?.best) {
+      cardSummary = await this.generateCardDiscoverySummary(
+        query,
+        topGroup.asset,
+        topGroup.best
+      );
+    }
+
+    const fallbackReason = topGroup
+      ? this.buildCardReason(topGroup)
+      : 'This card matches your clue.';
+    const finalSummary =
+      (cardSummary && cardSummary.trim().length > 0 ? cardSummary.trim() : fallbackReason);
+
+    const latencyMs = Date.now() - startTime;
+    return {
+      story: '',
+      sourcesLine: '',
+      hasWikiOrMemory: true,
+      primaryCardAsset: topGroup?.asset,
+      cardSummary: finalSummary,
+      cardMatches: limited.map((group) => ({
+        asset: group.asset,
+        reason: this.buildCardReason(group),
+      })),
+      metrics: {
+        query,
+        hits_raw: passages.length,
+        hits_used: limited.reduce(
+          (sum, group) => sum + group.passages.length,
+          0
+        ),
+        clusters: limited.length,
+        latency_ms: latencyMs,
+        story_words: finalSummary.split(/\s+/).length,
+      },
+    };
+  }
+
+  private async generateCardDiscoverySummary(
+    query: string,
+    asset: string,
+    passage: RetrievedPassage
+  ): Promise<string | null> {
+    const evidence =
+      this.normalizeCardFactText(passage) ||
+      (passage.text ? this.truncateSnippet(passage.text) : '');
+
+    if (!evidence) {
+      return null;
+    }
+
+    const modelName =
+      process.env.CARD_DISCOVERY_SUMMARY_MODEL || 'o3-mini';
+    const prompt = `You match user questions to Fake Rares cards.
+User question: "${query}"
+Selected card: "${asset}"
+Supporting details: "${evidence}"
+
+Write ONE short sentence (max 20 words) telling the user why this card fits the request. Mention the card name.`;
+
+    try {
+      const result = await this.runtime.useModel(ModelType.TEXT_SMALL, {
+        prompt,
+        maxTokens: 60,
+        temperature: 0.2,
+        context: 'Card Discovery Summary',
+        model: modelName,
+      });
+
+      const summary =
+        typeof result === 'string'
+          ? result
+          : (result as any)?.text ??
+            (result as any)?.toString?.() ??
+            '';
+      // Replace literal \n strings with actual newlines, then normalize whitespace
+      const withNewlines = summary.replace(/\\n/g, '\n');
+      const trimmed = withNewlines.trim().replace(/\s+/g, ' ');
+      return trimmed.length > 0 ? trimmed : null;
+    } catch (err) {
+      logger.warn(
+        { err },
+        '[KnowledgeOrchestrator] Failed to generate card discovery summary'
+      );
+      return null;
+    }
+  }
+
+  private formatCardFactSnippet(passage: RetrievedPassage): string {
+    const label = this.mapCardBlockLabel(
+      passage.cardBlockType,
+      passage.cardBlockLabel
+    );
+    const normalized = this.normalizeCardFactText(passage);
+    if (!normalized) {
+      return label;
+    }
+    return `${label}: ${this.truncateSnippet(normalized)}`;
+  }
+
+  private mapCardBlockLabel(
+    type: RetrievedPassage['cardBlockType'],
+    fallback?: string
+  ): string {
+    if (fallback) return fallback;
+    switch (type) {
+      case 'text':
+        return 'On-card text';
+      case 'memetic':
+        return 'Memetic vibe';
+      case 'visual':
+        return 'Visual summary';
+      case 'raw':
+        return 'Analysis snippet';
+      case 'combined':
+        return 'Card summary';
+      default:
+        return 'Details';
+    }
+  }
+
+  private normalizeCardFactText(passage: RetrievedPassage): string {
+    let text = (passage.text || '').trim();
+    if (!text) return '';
+
+    text = text.replace(/\*\*/g, '').replace(/[_`]/g, '').trim();
+
+    switch (passage.cardBlockType) {
+      case 'text': {
+        return text.replace(/\s*\n\s*/g, ' | ');
+      }
+      case 'memetic': {
+        const bullet = text
+          .split(/\n+/)
+          .map((line) => line.replace(/^[-•\s]+/, '').trim())
+          .find(Boolean);
+        return bullet || text;
+      }
+      case 'visual': {
+        const sentences = text.split(/(?<=[.!?])\s+/);
+        return sentences.find((s) => s.trim().length > 0) || text;
+      }
+      case 'raw': {
+        const sections = text.split(/\n\n+/);
+        const preferred = sections.find((section) =>
+          /(TEXT ON CARD|VISUAL|MEMETIC)/i.test(section)
+        );
+        const cleaned = (preferred || sections[0] || '')
+          .replace(/^[📝🎨🧬🎯]\s*/g, '')
+          .trim();
+        return cleaned || text;
+      }
+      default:
+        return text;
+    }
+  }
+
+  private truncateSnippet(text: string, maxLength = 180): string {
+    if (text.length <= maxLength) return text;
+    return text.slice(0, maxLength - 1).trimEnd() + '…';
+  }
+
+  private buildCardReason(group: CardFactGroup): string {
+    const snippet =
+      this.extractSnippetFromGroup(group, [
+        'visual',
+        'memetic',
+        'combined',
+        'raw',
+        'text',
+      ]) || 'it nails the vibe you described.';
+
+    const trimmed = this.truncateSnippet(snippet.replace(/\*\*/g, '').trim());
+    const ensured = /[.!?]$/.test(trimmed) ? trimmed : `${trimmed}.`;
+    const lowered = ensured.charAt(0).toLowerCase() + ensured.slice(1);
+    return `**${group.asset}** fits because ${lowered}`;
+  }
+
+  private formatCardMeta(passage: RetrievedPassage): string {
+    const metadata = passage.metadata || {};
+    const parts: string[] = [];
+
+    if (metadata.series !== undefined && metadata.series !== null) {
+      const series = typeof metadata.series === 'number' ? metadata.series : parseInt(metadata.series, 10);
+      if (!Number.isNaN(series)) {
+        parts.push(`Series ${series}`);
+      }
+    }
+
+    if (metadata.cardNumber !== undefined && metadata.cardNumber !== null) {
+      const cardNumber = typeof metadata.cardNumber === 'number' ? metadata.cardNumber : parseInt(metadata.cardNumber, 10);
+      if (!Number.isNaN(cardNumber)) {
+        parts.push(`Card ${cardNumber}`);
+      }
+    }
+
+    if (metadata.artist) {
+      parts.push(`by ${metadata.artist}`);
+    }
+
+    if (metadata.collection && !parts.includes(metadata.collection)) {
+      parts.unshift(metadata.collection);
+    }
+
+    return parts.join(' • ');
+  }
+
+  private extractSnippetFromGroup(
+    group: CardFactGroup,
+    preferredTypes: Array<RetrievedPassage['cardBlockType']>
+  ): string | null {
+    for (const type of preferredTypes) {
+      const passage = group.passages.find(
+        (p) => p.cardBlockType === type && this.normalizeCardFactText(p).length > 0
+      );
+      if (passage) {
+        return this.normalizeCardFactText(passage);
+      }
+    }
+
+    const bestNormalized = this.normalizeCardFactText(group.best);
+    return bestNormalized || null;
+  }
 }
 
+interface CardFactGroup {
+  asset: string;
+  passages: RetrievedPassage[];
+  best: RetrievedPassage;
+  score: number;
+}

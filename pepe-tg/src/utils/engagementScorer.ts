@@ -146,6 +146,16 @@ export function calculateEngagementScore(params: EngagementParams): number {
     score += 30;  // Optimized: 35 → 30 (Monte Carlo V2: 72k configs, 264k messages)
     scoreBreakdown.push('question=+30');
   }
+
+  // Card discovery intent (e.g. "show me a card about...","looking for a card that...")
+  const normalizedLower = params.text.toLowerCase();
+  const hasCardIntent =
+    normalizedLower.includes('card') &&
+    /(show|find|looking|search|need|want|recommend|suggest|any|which|what)/i.test(params.text);
+  if (hasCardIntent) {
+    score += 60;
+    scoreBreakdown.push('cardIntent=+60');
+  }
   
   // Multi-word message → More substantive than reactions
   if (wordCount > 7) {

@@ -26,7 +26,7 @@ export function getFakeRaresImageUrl(
   extension: MediaExtension
 ): string {
   // URL encode the asset name to handle special characters
-  const encodedAssetName = encodeURIComponent(assetName.toUpperCase());
+  const encodedAssetName = encodeURIComponent(assetName);
   return `${FAKE_RARES_BASE_URL}/${seriesNumber}/${encodedAssetName}.${extension}`;
 }
 
@@ -91,7 +91,7 @@ export function buildFallbackImageUrls(
   cardInfo: CardInfo | null
 ): Array<{ url: string; contentType: string }> {
   const results: Array<{ url: string; contentType: string }> = [];
-  const upperAsset = assetName.toUpperCase();
+  const normalizedAsset = assetName;
   
   if (cardInfo?.imageUri) {
     // Heuristic: guess content type by extension
@@ -107,22 +107,22 @@ export function buildFallbackImageUrls(
   if (typeof cardInfo?.series === 'number') {
     // Try common formats from S3
     results.push({
-      url: getFakeRaresImageUrl(upperAsset, cardInfo.series, 'jpg'),
+      url: getFakeRaresImageUrl(normalizedAsset, cardInfo.series, 'jpg'),
       contentType: 'image/jpeg'
     });
     results.push({
-      url: getFakeRaresImageUrl(upperAsset, cardInfo.series, 'png'),
+      url: getFakeRaresImageUrl(normalizedAsset, cardInfo.series, 'png'),
       contentType: 'image/png'
     });
     results.push({
-      url: getFakeRaresImageUrl(upperAsset, cardInfo.series, 'webp' as any),
+      url: getFakeRaresImageUrl(normalizedAsset, cardInfo.series, 'webp' as any),
       contentType: 'image/webp'
     });
     
     // If original ext is gif, include S3 gif variant
     if ((cardInfo.ext || '').toLowerCase() === 'gif') {
       results.push({
-        url: getFakeRaresImageUrl(upperAsset, cardInfo.series, 'gif' as any),
+        url: getFakeRaresImageUrl(normalizedAsset, cardInfo.series, 'gif' as any),
         contentType: 'image/gif'
       });
     }

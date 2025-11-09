@@ -195,6 +195,22 @@ export interface OrderMatchResponse {
   total: number;
 }
 
+interface TransactionDetailResponse {
+  tx_hash: string;
+  block_index: number;
+  block_time: number;
+  source: string;
+  destination: string | null;
+  btc_amount?: number;
+  xcp_amount?: number;
+  fee?: number;
+  data?: string | null;
+  supported: boolean;
+  transaction_type: string;
+  confirmed: boolean;
+  valid: number;
+}
+
 export interface BlockResponse {
   block_index: number;
   block_hash: string;
@@ -328,6 +344,20 @@ export class TokenScanClient extends Service {
     } catch (error) {
       logger.error({ error, blockIndex }, 'Failed to poll dispenses from Counterparty API v2');
       throw error;
+    }
+  }
+
+  /**
+   * Fetch detailed transaction data for a given hash
+   */
+  async getTransaction(txHash: string): Promise<TransactionDetailResponse | null> {
+    try {
+      const endpoint = `/transactions/${txHash}`;
+      const response = await this.client.get<{ result: TransactionDetailResponse }>(endpoint);
+      return response.data.result ?? null;
+    } catch (error) {
+      logger.warn({ error, txHash }, 'Failed to fetch transaction details from Counterparty API v2');
+      return null;
     }
   }
 

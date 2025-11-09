@@ -12,10 +12,16 @@ export interface RetrievedPassage {
   id: string;
   text: string;
   score: number;
-  sourceType: 'telegram' | 'wiki' | 'memory' | 'unknown';
+  sourceType: 'telegram' | 'wiki' | 'memory' | 'card-fact' | 'unknown';
   sourceRef: string;
   timestamp?: number;
   author?: string;
+  cardAsset?: string;
+  cardBlockType?: 'combined' | 'text' | 'memetic' | 'visual' | 'raw' | 'other';
+  cardBlockLabel?: string;
+  cardBlockPriority?: number;
+  cardKeywords?: string[];
+  metadata?: Record<string, any>;
 }
 
 /**
@@ -240,6 +246,7 @@ export async function searchKnowledgeWithExpansion(
     let text = (r.content?.text || r.text || '').trim();
     const id = (r.id || r.content?.id || `result-${idx}`) as string;
     const score = r.similarity || r.score || 1.0;
+    const metadata = r.metadata || r.content?.metadata || {};
     
     // Check for embedded memory marker in content
     // User memories are stored with metadata embedded in content (workaround for KnowledgeService metadata stripping)
@@ -249,10 +256,15 @@ export async function searchKnowledgeWithExpansion(
     const isMemoryByContent = !!memoryMarkerMatch;
     
     // Infer source type from metadata if available
-    let sourceType: 'telegram' | 'wiki' | 'memory' | 'unknown' = 'unknown';
+    let sourceType: 'telegram' | 'wiki' | 'memory' | 'card-fact' | 'unknown' = 'unknown';
     let sourceRef = id;
     let timestamp: number | undefined = undefined;
     let author: string | undefined = undefined;
+    let cardAsset: string | undefined;
+    let cardBlockType: RetrievedPassage['cardBlockType'];
+    let cardBlockLabel: string | undefined;
+    let cardBlockPriority: number | undefined;
+    let cardKeywords: string[] | undefined;
     
     // If this is a memory, extract metadata from content marker and clean the text
     if (isMemoryByContent && memoryMarkerMatch) {
@@ -266,7 +278,11 @@ export async function searchKnowledgeWithExpansion(
     
     // Extract timestamp (skip if already set from memory marker)
     if (!timestamp) {
-      const createdAtValue = r.createdAt || r.content?.createdAt || r.metadata?.timestamp || r.content?.metadata?.timestamp || r.metadata?.date || r.content?.metadata?.date;
+      const createdAtValue =
+        r.createdAt ||
+        r.content?.createdAt ||
+        metadata?.timestamp ||
+        metadata?.date;
       if (createdAtValue) {
       if (createdAtValue instanceof Date) {
         timestamp = createdAtValue.getTime();
@@ -284,15 +300,17 @@ export async function searchKnowledgeWithExpansion(
 
     // Extract author/poster (common telegram fields) - skip if already set from memory marker
     if (!author) {
-      author = r.metadata?.author || r.content?.metadata?.author ||
-             r.metadata?.username || r.content?.metadata?.username ||
-             r.metadata?.from || r.content?.metadata?.from ||
-             r.userId || r.content?.userId ||
-             r.metadata?.from_id || r.content?.metadata?.from_id;
+      author =
+        metadata?.author ||
+        metadata?.username ||
+        metadata?.from ||
+        metadata?.from_id ||
+        r.userId ||
+        r.content?.userId;
     }
 
     // Detect source type based on metadata (skip if already set from memory marker)
-    const metadataSource = r.metadata?.source || r.content?.metadata?.source;
+    const metadataSource = metadata?.source;
     
     // Content-based telegram detection variables (needed for source type detection)
     const fromMatch = text.match(/"from"\s*:\s*"([^"]+)"/);
@@ -304,18 +322,30 @@ export async function searchKnowledgeWithExpansion(
     
     // Stronger telegram detection
     const hasTelegramMarkers =
-      !!(r.metadata?.messageId || r.content?.metadata?.messageId ||
-         r.metadata?.chatId || r.content?.metadata?.chatId ||
-         r.metadata?.from || r.content?.metadata?.from ||
-         r.metadata?.from_id || r.content?.metadata?.from_id);
+      !!(metadata?.messageId ||
+         metadata?.chatId ||
+         metadata?.from ||
+         metadata?.from_id);
 
     // Content-based telegram detection (fromMatch, fromIdMatch, dateMatch already declared above)
     const contentLooksTelegram = !!(fromMatch || fromIdMatch || dateMatch);
 
     // Determine source type
-    if (metadataSource === 'telegram' || hasTelegramMarkers || contentLooksTelegram) {
+    if (metadata?.blockType && metadata?.asset) {
+      sourceType = 'card-fact';
+      cardAsset = (metadata.asset as string)?.toUpperCase?.() || metadata.asset;
+      cardBlockType = metadata.blockType as RetrievedPassage['cardBlockType'] ?? 'other';
+      cardBlockLabel = metadata.blockLabel;
+      if (typeof metadata.blockPriority === 'number') {
+        cardBlockPriority = metadata.blockPriority;
+      }
+      if (Array.isArray(metadata.keywords)) {
+        cardKeywords = metadata.keywords as string[];
+      }
+      sourceRef = `card:${cardAsset || id}`;
+    } else if (metadataSource === 'telegram' || hasTelegramMarkers || contentLooksTelegram) {
       sourceType = 'telegram';
-      sourceRef = r.metadata?.messageId || r.content?.metadata?.messageId || id;
+      sourceRef = metadata?.messageId || id;
       
       // Populate author/timestamp from content if missing or if timestamp is in the future (sync timestamp)
       const timestampIsInFuture = timestamp && timestamp > Date.now();
@@ -340,15 +370,16 @@ export async function searchKnowledgeWithExpansion(
     } else if (metadataSource === 'wiki' || metadataSource === 'rag-service-fragment-sync') {
       // rag-service-fragment-sync = wiki fragments
       sourceType = 'wiki';
-      sourceRef = r.metadata?.documentId || r.content?.metadata?.documentId ||
-                  r.metadata?.pageSlug || r.content?.metadata?.pageSlug || id;
+      sourceRef = metadata?.documentId ||
+                  metadata?.pageSlug ||
+                  id;
     } else if (timestamp && author) {
       // Heuristic: If has timestamp AND author, likely telegram
       sourceType = 'telegram';
-    } else if (r.metadata?.type === 'fragment') {
+    } else if (metadata?.type === 'fragment') {
       // Fragments without explicit source are likely wiki
       sourceType = 'wiki';
-      sourceRef = r.metadata?.documentId || id;
+      sourceRef = metadata?.documentId || id;
     } else if (timestamp && !author) {
       // Has timestamp but no author - could be wiki or telegram
       sourceType = text.length > 200 ? 'wiki' : 'telegram';
@@ -364,7 +395,21 @@ export async function searchKnowledgeWithExpansion(
       });
     }
     
-    return { id, text, score, sourceType, sourceRef, timestamp, author };
+    return {
+      id,
+      text,
+      score,
+      sourceType,
+      sourceRef,
+      timestamp,
+      author,
+      cardAsset,
+      cardBlockType,
+      cardBlockLabel,
+      cardBlockPriority,
+      cardKeywords,
+      metadata,
+    };
   });
   
   const filtered = passages.filter(p => p.text.length > 0);
@@ -379,6 +424,11 @@ export async function searchKnowledgeWithExpansion(
       case 'memory':
         boost = 4.0;  // Highest priority - explicitly saved user facts (2x wiki)
         break;
+      case 'card-fact': {
+        const priorityBoost = (p.cardBlockPriority ?? 0) / 200;
+        boost = 5.0 + priorityBoost;
+        break;
+      }
       case 'wiki':
         boost = 2.0;  // 2nd priority - authoritative content
         break;

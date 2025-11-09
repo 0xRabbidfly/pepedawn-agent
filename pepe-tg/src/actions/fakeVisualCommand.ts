@@ -25,7 +25,7 @@ import { analyzeWithVision } from "../utils/visionAnalyzer";
 
 const logger = createLogger("FakeVisual");
 
-const CARD_ANALYSIS_PROMPT = `You are analyzing a Fake Rares NFT card for memetic and visual content.
+export const CARD_ANALYSIS_PROMPT = `You are analyzing a Fake Rares NFT card for memetic and visual content.
 
 Provide a comprehensive analysis in this format:
 

@@ -264,6 +264,72 @@ bun run cy:open
 
 ---
 
+### `fv-crawl-sample.ts` - Single Card /fv Harvest
+
+**Purpose:** Manually run the production `/fv` vision analysis for one card to review the normalized output and cost before scaling a crawl.
+
+**Usage:**
+```bash
+# Basic run (writes to ./tmp/fv-crawl/<CARD>.json)
+bun run tsx scripts/fv-crawl-sample.ts --card FREEDOMKEK
+
+# Custom output path
+bun run tsx scripts/fv-crawl-sample.ts --card WAGMIWORLD --out ./tmp/fv-wagmi.json
+
+# Dry run to verify arguments without calling OpenAI
+bun run tsx scripts/fv-crawl-sample.ts --card FREEDOMKEK --dry-run
+```
+
+**Behavior:**
+- Loads canonical card metadata from `fake-rares-data.json`.
+- Reuses the `/fv` prompt and OpenAI vision pipeline for consistent results.
+- Stores only the structured sections (text/visual/memetic) in JSON; metrics stay in the console logs.
+- Calls OpenAI once per run; designed for manual spot checks (no batching yet).
+
+---
+
+### `fv-merge-card-facts.ts` - Build Embedding-Ready Card Facts
+
+**Purpose:** Convert raw `/fv` crawl output into normalized card facts suitable for vector embeddings.
+
+**Usage:**
+```bash
+# Merge specific cards from ./tmp/fv-crawl into ./tmp/fv-merged
+bun run scripts/fv-merge-card-facts.ts --card FREEDOMKEK --card PEPEDAWN
+
+# Custom source/output directories
+bun run scripts/fv-merge-card-facts.ts --source ./tmp/custom-crawl --out ./tmp/custom-merged
+```
+
+**Behavior:**
+- Reads the structured `/fv` results produced by `fv-crawl-sample.ts`.
+- Enriches them with canonical metadata (artist, supply, issuance) from `fake-rares-data.json`.
+- Extracts clean lists for on-card text, memetic references, derived keywords, and builds both a combined `embeddingInput` string and multiple granular `embeddingBlocks` (text/memetic/visual/raw) for per-section embeddings.
+- Writes one JSON per card to the output directory (default `./tmp/fv-merged`).
+
+---
+
+### `fv-embed-card-facts.ts` - Generate Card Fact Embeddings
+
+**Purpose:** Create embeddings for the merged card facts so they can be ingested into the memory/vector store.
+
+**Usage:**
+```bash
+# Embed everything in ./tmp/fv-merged (writes timestamped file under ./tmp/fv-embeddings)
+bun run scripts/fv-embed-card-facts.ts
+
+# Dry run, just to see which blocks would be embedded
+bun run scripts/fv-embed-card-facts.ts --asset FREEDOMKEK --dry-run
+```
+
+**Behavior:**
+- Loads each merged card fact JSON.
+- Generates embeddings for the combined summary and every granular block (text/memetic/visual/raw).
+- Emits a JSON array of embedding records with metadata, ready for ingestion or upsert into your memory store.
+- Requires `OPENAI_API_KEY` in the environment; uses `text-embedding-3-large` by default (override with `OPENAI_EMBEDDING_MODEL`).
+
+---
+
 ### `test-all.sh` - Full Test Suite Runner
 
 **Purpose:** Run complete test suite (component + e2e + type-check)
