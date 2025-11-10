@@ -180,6 +180,7 @@ export class KnowledgeOrchestratorService extends Service {
       const cardIntentResult = await this.composeCardFactAnswer(
         query,
         cardFactPassages,
+        roomId,
         startTime
       );
       if (cardIntentResult) {
@@ -195,6 +196,7 @@ export class KnowledgeOrchestratorService extends Service {
       const cardFactResult = await this.composeCardFactAnswer(
         query,
         cardFactPassages,
+        roomId,
         startTime
       );
       if (cardFactResult) {
@@ -451,6 +453,7 @@ export class KnowledgeOrchestratorService extends Service {
   private async composeCardFactAnswer(
     query: string,
     passages: RetrievedPassage[],
+    roomId: string,
     startTime: number
   ): Promise<KnowledgeRetrievalResult | null> {
     if (passages.length === 0) {
@@ -503,7 +506,33 @@ export class KnowledgeOrchestratorService extends Service {
       .sort((a, b) => b.score - a.score);
 
     const limited = ranked.slice(0, Math.min(3, ranked.length));
-    const topGroup = limited[0];
+
+    const candidateIds = limited.map((group) => `card:${group.asset}`);
+    const freshIds = filterOutRecentlyUsed(roomId, candidateIds);
+    let selectionPool = limited;
+    if (freshIds.length > 0) {
+      const freshGroups = limited.filter((group) =>
+        freshIds.includes(`card:${group.asset}`)
+      );
+      if (freshGroups.length > 0) {
+        selectionPool = freshGroups;
+      }
+    }
+
+    let selectedGroup = selectionPool[0];
+    if (selectionPool.length > 1) {
+      const randomIndex = Math.floor(Math.random() * selectionPool.length);
+      selectedGroup = selectionPool[randomIndex];
+    }
+
+    if (selectedGroup) {
+      markIdAsRecentlyUsed(roomId, `card:${selectedGroup.asset}`);
+    }
+
+    const orderedGroups = selectedGroup
+      ? [selectedGroup, ...limited.filter((group) => group.asset !== selectedGroup.asset)]
+      : limited;
+    const topGroup = orderedGroups[0];
     let cardSummary: string | null = null;
 
     if (topGroup?.best) {
@@ -527,7 +556,7 @@ export class KnowledgeOrchestratorService extends Service {
       hasWikiOrMemory: true,
       primaryCardAsset: topGroup?.asset,
       cardSummary: finalSummary,
-      cardMatches: limited.map((group) => ({
+      cardMatches: orderedGroups.map((group) => ({
         asset: group.asset,
         reason: this.buildCardReason(group),
       })),
