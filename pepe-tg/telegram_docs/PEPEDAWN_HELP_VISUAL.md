@@ -70,6 +70,10 @@
 │  /fl FREEDOMKEK                                             │
 │  /fl purple subasset era                                    │
 │  /fl submission rules                                       │
+│                                                              │
+│  💡 Repeated card-related asks shuffle through the best      │
+│     matches (top 3, 30 min cooldown) so you’ll see different │
+│     cards over time                                          │
 └──────────────────────────────────────────────────────────────┘
 
 ┌──────────────────────────────────────────────────────────────┐
@@ -122,6 +126,7 @@
 ║  • 890+ Fake Rares + 1813+ Fake Commons, auto-updated       ║
 ║  • All visual features use GPT-4o Vision                    ║
 ║  • Lore searches across Telegram + Wiki + User Memories     ║
+║  • Lore card discovery rotates fresh highlights (no repeats)║
 ║  • Memories you save help the whole community! 💚           ║
 ╚══════════════════════════════════════════════════════════════╝
 

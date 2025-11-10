@@ -450,8 +450,16 @@
 - **Conditional MMR:** Diversity for LORE, relevance-only for FACTS ✅ **FIXED** (Nov 2025 - was incorrectly applying MMR to all queries)
 - **Card memory emphasis:** Dedicated cluster (12→5 passages), no summarization (preserves artist words)
 - **LRU cache:** Don't repeat recently shown content
+- **Card discovery variety:** When multiple cards match, picks a *fresh* candidate (30 min LRU) and randomly rotates through the top 3 to avoid the same answer every time (Nov 2025)
 - **Source priority:** Memories (4.0x) > Wiki (2.0x) > Telegram (0.5x)
 - **Global search:** Searches across ALL chats/content
+
+> 🆕 **Card Discovery Randomization (Nov 2025)**
+>
+> - Top matches are grouped by asset and scored.
+> - The bot prefers cards you haven’t seen in the last 30 minutes (per room).
+> - If several fresh matches remain, it chooses one at random before formatting the story.
+> - Fallback still returns the strongest match when only a single candidate exists.
 
 ---
 
@@ -706,6 +714,7 @@
   - Only routes actual questions (not statements like "Three grails for sale...")
   - Skips user-to-user replies (only routes replies to bot)
   - Detects: explicit `?`, question words, imperative requests, indirect questions
+- **Answer variety** - When card discovery fires, the bot rotates through the freshest matching cards (top 3, 30 min cooldown) so repeated questions surface different highlights
 - **PEPEDAWN persona** - Community OG, helpful, knowledgeable
 - **Context injection** - Card info when cards mentioned
 - **Conversation memory** - Remembers chat history
