@@ -25,6 +25,19 @@ export interface RetrievedPassage {
 }
 
 /**
+ * Decode newline escape sequences (supports single- and double-escaped variants).
+ * Ensures downstream consumers always receive actual line breaks.
+ */
+export function decodeEscapedNewlines(text: string): string {
+  return text
+    .replace(/\\+r\\+n/g, '\n')
+    .replace(/\\+n/g, '\n')
+    .replace(/\\+r/g, '\n')
+    .replace(/\r\n/g, '\n')
+    .replace(/\r/g, '\n');
+}
+
+/**
  * Calculate cosine similarity between two vectors
  */
 function cosineSimilarity(a: number[], b: number[]): number {
@@ -245,14 +258,7 @@ export async function searchKnowledgeWithExpansion(
   const passages: RetrievedPassage[] = results.map((r: any, idx: number) => {
     const rawText = r.content?.text || r.text || '';
     // Normalize newline sequences so downstream rendering receives actual line breaks.
-    // Handles cases where memories were stored with escaped "\n" (e.g., PEPEDAWN poem regression).
-    let text = rawText
-      .replace(/\\r\\n/g, '\n')
-      .replace(/\\n/g, '\n')
-      .replace(/\\r/g, '\n')
-      .replace(/\r\n/g, '\n')
-      .replace(/\r/g, '\n')
-      .trim();
+    let text = decodeEscapedNewlines(rawText).trim();
     const id = (r.id || r.content?.id || `result-${idx}`) as string;
     const score = r.similarity || r.score || 1.0;
     const metadata = r.metadata || r.content?.metadata || {};

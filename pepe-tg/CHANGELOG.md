@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Card Lore Embedding Pipeline**
+  - New scripts (`scripts/fv-crawl-sample.ts`, `fv-crawl-all.ts`, `fv-embed-card-facts.ts`, `fv-merge-card-facts.ts`) to crawl, embed, and consolidate Fake Rare lore.
+  - `scripts/import-card-visual-facts.ts` and `types/cardVisualFacts.ts` to normalize visual lore facts.
+  - Regenerated `plugin-knowledge-index.js` with embedding-backed card memory metadata.
+
+### Changed
+- `KnowledgeOrchestratorService`, `loreRetrieval`, and `queryClassifier` tuned to prioritize embedded card facts and improve `/fv` flows.
+- Telegram message chunking now recombines short `/fl` replies into a single post.
+
+### Fixed
+- `/fl` responses preserve newline formatting when lore memories contain escaped characters.
+- Telegram plugin retries without Markdown when Telegram rejects entity parsing, preventing 400 errors.
+
+### Tests
+- Added regression coverage for newline normalization, Telegram Markdown fallback, and `/fv` lore retrieval behavior.
+
 ## [3.10.0] - 2025-11-06
 
 ### Added

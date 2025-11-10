@@ -176,12 +176,15 @@ describe('loreRetrieval - Hybrid Card Search', () => {
     });
 
     it('should normalize escaped newline sequences in memory passages', async () => {
-      const memoryContent =
+      const memoryContentSingle =
         '[MEMORY:user123:BasedSer:1728600000000][CARD:PEPEDAWN] The raven\\nEchoes through\\n\\nNew dawn';
+      const memoryContentDouble =
+        '[MEMORY:user124:BasedSer:1728600100000][CARD:PEPEDAWN] Dawn arrives\\\\n\\\\nLight returns';
       
       const mockKnowledgeService = {
         getKnowledge: mock().mockResolvedValue([
-          { content: { text: memoryContent }, similarity: 0.99 },
+          { content: { text: memoryContentSingle }, similarity: 0.99 },
+          { content: { text: memoryContentDouble }, similarity: 0.98 },
         ]),
       };
       
@@ -200,6 +203,11 @@ describe('loreRetrieval - Hybrid Card Search', () => {
       expect(results[0].sourceType).toBe('memory');
       expect(results[0].text).toBe('The raven\nEchoes through\n\nNew dawn');
       expect(results[0].text.includes('\\n')).toBe(false);
+
+      expect(results[1]).toBeDefined();
+      expect(results[1].sourceType).toBe('memory');
+      expect(results[1].text).toBe('Dawn arrives\n\nLight returns');
+      expect(results[1].text.includes('\\n')).toBe(false);
     });
   });
 });

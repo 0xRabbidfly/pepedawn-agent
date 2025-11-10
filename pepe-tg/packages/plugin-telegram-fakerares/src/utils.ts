@@ -194,6 +194,14 @@ export function splitMessage(text: string, maxLength = 4096): string[] {
   }
 
   if (currentChunk) chunks.push(currentChunk);
+
+  if (chunks.length > 1) {
+    const combined = chunks.join('\n');
+    if (combined.length <= maxLength) {
+      return [combined];
+    }
+  }
+
   return chunks;
 }
 

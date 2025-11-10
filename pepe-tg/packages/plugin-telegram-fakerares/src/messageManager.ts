@@ -68,6 +68,33 @@ function cleanText(text: string | undefined | null): string {
   if (!text) return '';
   return text.split('\0').join('');
 }
+
+function normalizeNewlines(text: string | undefined | null): string {
+  if (!text) return '';
+  return text
+    .replace(/\\+r\\+n/g, '\n')
+    .replace(/\\+n/g, '\n')
+    .replace(/\\+r/g, '\n')
+    .replace(/\r\n/g, '\n')
+    .replace(/\r/g, '\n');
+}
+
+function isMarkdownEntityError(error: unknown): boolean {
+  if (!error) return false;
+  const maybeError = error as any;
+  const description = String(
+    maybeError?.description ??
+      maybeError?.response?.description ??
+      maybeError?.message ??
+      ''
+  );
+  const errorCode =
+    maybeError?.response?.error_code ?? maybeError?.error_code ?? null;
+  return (
+    description.includes("can't parse entities") &&
+    (errorCode === null || errorCode === 400)
+  );
+}
 /**
  * Enum representing different types of media.
  * @enum { string }
@@ -276,6 +303,7 @@ export class MessageManager {
     content: TelegramContent,
     replyToMessageId?: number
   ): Promise<Message.TextMessage[]> {
+    const normalizedText = normalizeNewlines(content.text);
     // FIX: properly await attachments and use native Telegram media methods for inline preview
     if (content.attachments && content.attachments.length > 0) {
       // Convert buttons for later use
@@ -311,7 +339,7 @@ export class MessageManager {
               let sentMessage: any;
               if (isVideo) {
                 sentMessage = await ctx.replyWithVideo(cachedFileId, {
-                caption: content.text || undefined,
+                caption: normalizedText || undefined,
                 supports_streaming: true,
                 ...CARD_DIMENSIONS,
                 reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
@@ -323,20 +351,20 @@ export class MessageManager {
               if (isDocumentId) {
                 logger.debug(`📄 Using document method for ${assetName} (Telegram classified this GIF as document)`);
                 sentMessage = await ctx.replyWithDocument(cachedFileId, {
-                  caption: content.text || undefined,
+                  caption: normalizedText || undefined,
                   reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
                   ...Markup.inlineKeyboard(telegramButtons),
                 });
               } else {
                 sentMessage = await ctx.replyWithAnimation(cachedFileId, {
-                  caption: content.text || undefined,
+                  caption: normalizedText || undefined,
                   reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
                   ...Markup.inlineKeyboard(telegramButtons),
                 });
               }
             } else if (isImage) {
               sentMessage = await ctx.replyWithPhoto(cachedFileId, {
-                caption: content.text || undefined,
+                caption: normalizedText || undefined,
                 ...CARD_DIMENSIONS,
                 reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
                 ...Markup.inlineKeyboard(telegramButtons),
@@ -369,7 +397,7 @@ export class MessageManager {
               
               await sendMediaAndCache(assetName, () =>
                 ctx.replyWithVideo(Input.fromBuffer(fileBuffer), {
-                  caption: content.text || undefined,
+                  caption: normalizedText || undefined,
                   supports_streaming: true,
                   ...CARD_DIMENSIONS,
                   reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
@@ -409,7 +437,7 @@ export class MessageManager {
                 const ab = await response.arrayBuffer();
                 await sendMediaAndCache(assetName, () =>
                   ctx.replyWithVideo(Input.fromBuffer(Buffer.from(ab)), {
-                    caption: content.text || undefined,
+                    caption: normalizedText || undefined,
                     supports_streaming: true,
                     ...CARD_DIMENSIONS,
                     reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
@@ -429,7 +457,7 @@ export class MessageManager {
             try {
               await sendMediaAndCache(assetName, () =>
                 ctx.replyWithVideo(url, {
-                  caption: content.text || undefined,
+                  caption: normalizedText || undefined,
                   supports_streaming: true,
                   ...CARD_DIMENSIONS,
                   reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
@@ -459,7 +487,7 @@ export class MessageManager {
               
               await sendMediaAndCache(assetName, () =>
                 ctx.replyWithAnimation(Input.fromBuffer(fileBuffer), {
-                  caption: content.text || undefined,
+                  caption: normalizedText || undefined,
                   reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
                   ...Markup.inlineKeyboard(telegramButtons),
                 })
@@ -492,7 +520,7 @@ export class MessageManager {
                 
                 const result = await sendMediaAndCache(assetName, () =>
                   ctx.replyWithAnimation(Input.fromBuffer(Buffer.from(ab)), {
-                    caption: content.text || undefined,
+                caption: normalizedText || undefined,
                     reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
                     ...Markup.inlineKeyboard(telegramButtons),
                   })
@@ -514,7 +542,7 @@ export class MessageManager {
             try {
               await sendMediaAndCache(assetName, () =>
                 ctx.replyWithAnimation(url, {
-                  caption: content.text || undefined,
+                  caption: normalizedText || undefined,
                   reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
                   ...Markup.inlineKeyboard(telegramButtons),
                 })
@@ -549,7 +577,7 @@ export class MessageManager {
                   logger.info({ url, sizeMB: (ab.byteLength / 1024 / 1024).toFixed(2) }, 'Image too large for photo (>10MB), sending as document');
                   await sendMediaAndCache(assetName, () =>
                     ctx.replyWithDocument(Input.fromBuffer(Buffer.from(ab)), {
-                      caption: content.text || undefined,
+                      caption: normalizedText || undefined,
                       reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
                       ...Markup.inlineKeyboard(telegramButtons),
                     })
@@ -558,7 +586,7 @@ export class MessageManager {
                   // Normal size - send as photo
                   await sendMediaAndCache(assetName, () =>
                     ctx.replyWithPhoto(Input.fromBuffer(Buffer.from(ab)), {
-                      caption: content.text || undefined,
+                      caption: normalizedText || undefined,
                       ...CARD_DIMENSIONS,
                       reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
                       ...Markup.inlineKeyboard(telegramButtons),
@@ -578,7 +606,7 @@ export class MessageManager {
             try {
               await sendMediaAndCache(assetName, () =>
                 ctx.replyWithPhoto(url, {
-                  caption: content.text || undefined,
+                caption: normalizedText || undefined,
                   ...CARD_DIMENSIONS,
                   reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
                   ...Markup.inlineKeyboard(telegramButtons),
@@ -595,7 +623,7 @@ export class MessageManager {
       
       // If no media was sent, send text-only message with attachment links
       if (!sentPrimaryMedia) {
-        let textMessage = content.text || '';
+        let textMessage = normalizedText;
         
         // Add media links to message
         for (const attachment of content.attachments) {
@@ -622,7 +650,7 @@ export class MessageManager {
       }
       
       // If we have buttons but no text, send them separately
-      if (telegramButtons && telegramButtons.length > 0 && !content.text && sentPrimaryMedia) {
+      if (telegramButtons && telegramButtons.length > 0 && !normalizedText && sentPrimaryMedia) {
         // Telegram rejects completely empty messages (400: text must be non-empty),
         // so use a single space when sending button-only follow-ups.
         await ctx.reply(' ', Markup.inlineKeyboard(telegramButtons));
@@ -631,7 +659,7 @@ export class MessageManager {
       return [];
     } else {
       // Use space fallback for empty/minimal content (supports small LLM responses)
-      const textToSend = content.text || ' ';
+      const textToSend = normalizedText || ' ';
       const chunks = this.splitMessage(textToSend);
       const sentMessages: Message.TextMessage[] = [];
 
@@ -650,15 +678,32 @@ export class MessageManager {
           logger.error('sendMessageInChunks loop: ctx.chat is undefined');
           continue;
         }
-        const sentMessage = (await ctx.telegram.sendMessage(ctx.chat.id, chunk, {
+        const baseOptions = {
           reply_parameters:
             i === 0 && replyToMessageId ? { message_id: replyToMessageId } : undefined,
-          parse_mode: 'Markdown',
-          link_preview_options: { is_disabled: true },
-          ...Markup.inlineKeyboard(telegramButtons),
-        })) as Message.TextMessage;
-
-        sentMessages.push(sentMessage);
+          link_preview_options: { is_disabled: true } as { is_disabled: boolean },
+          ...(telegramButtons.length > 0 ? Markup.inlineKeyboard(telegramButtons) : {}),
+        };
+        try {
+          const sentMessage = (await ctx.telegram.sendMessage(ctx.chat.id, chunk, {
+            ...baseOptions,
+            parse_mode: 'Markdown',
+          })) as Message.TextMessage;
+          sentMessages.push(sentMessage);
+        } catch (err) {
+          if (isMarkdownEntityError(err)) {
+            logger.warn(
+              { err },
+              '[MessageManager] Markdown parse failed for chunk, retrying without parse_mode'
+            );
+            const sentMessage = (await ctx.telegram.sendMessage(ctx.chat.id, chunk, {
+              ...baseOptions,
+            })) as Message.TextMessage;
+            sentMessages.push(sentMessage);
+          } else {
+            throw err;
+          }
+        }
       }
 
       return sentMessages;
@@ -890,17 +935,38 @@ export class MessageManager {
               // Convert buttons for DM messages
               const telegramButtons = convertToTelegramButtons((content as TelegramContent).buttons ?? []);
               
-              const textToSend = content.text || '';
-              const res = await this.bot.telegram.sendMessage(
-                ctx.from.id, 
-                textToSend,
-                {
-                  parse_mode: 'Markdown',
-                  link_preview_options: { is_disabled: true },
-                  ...(telegramButtons.length > 0 ? Markup.inlineKeyboard(telegramButtons) : {}),
+              const normalizedText = normalizeNewlines(content.text);
+              const textToSend = normalizedText || '';
+              try {
+                const res = await this.bot.telegram.sendMessage(
+                  ctx.from.id, 
+                  textToSend,
+                  {
+                    parse_mode: 'Markdown',
+                    link_preview_options: { is_disabled: true },
+                    ...(telegramButtons.length > 0 ? Markup.inlineKeyboard(telegramButtons) : {}),
+                  }
+                );
+                sentMessages.push(res);
+              } catch (err) {
+                if (isMarkdownEntityError(err)) {
+                  logger.warn(
+                    { err },
+                    '[MessageManager] Markdown parse failed for DM response, retrying without parse_mode'
+                  );
+                  const fallback = await this.bot.telegram.sendMessage(
+                    ctx.from.id,
+                    textToSend,
+                    {
+                      link_preview_options: { is_disabled: true },
+                      ...(telegramButtons.length > 0 ? Markup.inlineKeyboard(telegramButtons) : {}),
+                    }
+                  );
+                  sentMessages.push(fallback);
+                } else {
+                  throw err;
                 }
-              );
-              sentMessages.push(res);
+              }
             }
           } else {
             sentMessages = await this.sendMessageInChunks(ctx, content, message.message_id);

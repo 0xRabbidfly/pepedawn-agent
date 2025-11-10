@@ -280,5 +280,50 @@ describe('loreCommand - FACTS Mode', () => {
       expect(sentText.includes('\\n')).toBe(false);
     });
   });
+
+  describe('Output Formatting', () => {
+    it('should decode double-escaped newline sequences before sending response', async () => {
+      const runtime = createMockRuntime();
+      const message = createMockMessage('/fl PEPEDAWN poem');
+
+      const mockKnowledgeService = {
+        retrieveKnowledge: mock().mockResolvedValue({
+          story: 'PEPEDAWN poem\\\\n\\\\nLine two arrives',
+          sourcesLine: '\\n\\nSources: [CARD:PEPEDAWN]',
+          hasWikiOrMemory: true,
+          metrics: {
+            query: 'PEPEDAWN poem',
+            hits_raw: 1,
+            hits_used: 1,
+            clusters: 1,
+            latency_ms: 10,
+            story_words: 4,
+          },
+        }),
+      };
+
+      runtime.getService = mock().mockImplementation((serviceType: string) => {
+        if (serviceType === 'knowledge-orchestrator') {
+          return mockKnowledgeService as any;
+        }
+        return null;
+      });
+
+      const callback = mock(async (_response: any) => {});
+
+      await loreCommand.handler(
+        runtime,
+        message,
+        null as unknown as State,
+        undefined,
+        callback
+      );
+
+      expect(callback.mock.calls.length).toBe(1);
+      const sentText = callback.mock.calls[0][0].text as string;
+      expect(sentText).toContain('PEPEDAWN poem\n\nLine two arrives');
+      expect(sentText.includes('\\n')).toBe(false);
+    });
+  });
 });
 

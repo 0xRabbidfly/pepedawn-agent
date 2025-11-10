@@ -92,6 +92,50 @@ describe('MessageManager', () => {
       expect(result[0].message_id).toBe(123);
     });
 
+    it('should normalize escaped newlines before sending', async () => {
+      const ctx = {
+        telegram: mockBot.telegram,
+        chat: { id: CHAT_ID },
+      } as Context;
+
+      const content = { text: 'Line1\\n\\nLine2' };
+      await messageManager.sendMessageInChunks(ctx, content);
+
+      expect(mockBot.telegram.sendMessage).toHaveBeenCalledWith(
+        CHAT_ID,
+        'Line1\n\nLine2',
+        expect.objectContaining({
+          parse_mode: 'Markdown',
+          link_preview_options: { is_disabled: true },
+        })
+      );
+    });
+
+    it('should retry without parse_mode when telegram rejects entities', async () => {
+      const ctx = {
+        telegram: mockBot.telegram,
+        chat: { id: CHAT_ID },
+      } as Context;
+
+      const parseError = {
+        description: "Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 2",
+        response: {
+          error_code: 400,
+          description: "Bad Request: can't parse entities: Can't find end of the entity starting at byte offset 2",
+        },
+      };
+
+      sendMessageMock
+        .mockRejectedValueOnce(parseError)
+        .mockResolvedValueOnce({ message_id: 999 });
+
+      await messageManager.sendMessageInChunks(ctx, { text: '_underscore_' });
+
+      expect(mockBot.telegram.sendMessage).toHaveBeenCalledTimes(2);
+      expect(mockBot.telegram.sendMessage.mock.calls[0][2].parse_mode).toBe('Markdown');
+      expect(mockBot.telegram.sendMessage.mock.calls[1][2].parse_mode).toBeUndefined();
+    });
+
     it('should split long messages', async () => {
       const ctx = {
         telegram: mockBot.telegram,

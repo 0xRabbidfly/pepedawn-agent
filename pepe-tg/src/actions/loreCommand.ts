@@ -2,6 +2,7 @@ import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, typ
 import { KnowledgeOrchestratorService } from '../services/KnowledgeOrchestratorService';
 import { LORE_CONFIG } from '../utils/loreConfig';
 import { createLogger } from '../utils/actionLogger';
+import { decodeEscapedNewlines } from '../utils/loreRetrieval';
 
 const logger = createLogger("FakeLore");
 
@@ -96,14 +97,7 @@ export const loreCommand: Action = {
       const wordCount = result.story.split(/\s+/).length;
       logger.info(`   /fl complete: ${result.metrics.hits_used} sources, ${wordCount} words, ${result.metrics.latency_ms}ms`);
 
-      let finalMessage = result.story + result.sourcesLine;
-
-      // Normalize escaped newline sequences to avoid literal "\n" showing in Telegram.
-      // Handles double-escaped strings coming from knowledge service or intermediate formatting.
-      finalMessage = finalMessage
-        .replace(/\\r\\n/g, '\n')
-        .replace(/\\n/g, '\n')
-        .replace(/\\r/g, '\n');
+      let finalMessage = decodeEscapedNewlines(result.story + result.sourcesLine);
 
       if (finalMessage.length > LORE_CONFIG.TELEGRAM_MAX_LENGTH) {
         const truncatePoint = LORE_CONFIG.TELEGRAM_MAX_LENGTH - 50;

@@ -19,6 +19,7 @@ Example: `@production-prep minor`
 - Gather context before reviewing code:
   - `git status -sb` to list all local changes
   - `git log origin/master..HEAD --stat` (or your main branch equivalent) to confirm everything done since the last push
+  - Identify the **primary feature(s)** delivered by the branch (not just the latest fixes) so release notes and changelog lead with the dominant work
 - Review all new/modified code for:
   - Deduplication opportunities
   - Clean code practices
