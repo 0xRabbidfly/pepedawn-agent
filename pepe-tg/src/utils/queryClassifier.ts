@@ -21,12 +21,26 @@ export function classifyQuery(query: string): QueryType {
     return 'UNCERTAIN';
   }
 
-  // Card discovery intent: inquisitive language + mention of cards/fakes
-  const hasCardKeyword = /\b(card|cards|fake|fakes|fake rare|fake rares|rake rare|rare fake|rare card|rare cards)\b/.test(lowerQuery);
-  const hasInquisitive =
-    /\b(show|find|looking|search|need|want|which|what|who|how|can|where|is|are|do|does|any|recommend|suggest|tell|give|got)\b/.test(lowerQuery) ||
-    lowerQuery.includes('?');
-  if (hasCardKeyword && hasInquisitive) {
+  // Card discovery intent: user asking to browse/find cards
+  const hasCardKeyword = /\b(card|cards|fake|fakes|fake rare|fake rares|rare fake|rare card|rare cards)\b/.test(lowerQuery);
+  const cardDiscoveryPatterns = [
+    /\bshow (me|us)\b/,
+    /\bcan you (show|recommend|suggest)\b/,
+    /\bfind( me| us| some)?\b/,
+    /\bsearch(ing)? for\b/,
+    /\blooking for\b/,
+    /\blook for\b/,
+    /\brecommend(ation)?s?\b/,
+    /\bsuggest(ion)?s?\b/,
+    /\blist\b/,
+    /\bbrowse\b/,
+    /\bcatalog\b/,
+    /\bgallery\b/,
+  ];
+  const hasCardDiscoveryIntent =
+    cardDiscoveryPatterns.some((pattern) => pattern.test(lowerQuery)) ||
+    (/\bwhich\b/.test(lowerQuery) && hasCardKeyword);
+  if (hasCardKeyword && hasCardDiscoveryIntent) {
     logger.info(`   QueryClassifier: FACTS (card discovery intent)`);
     return 'FACTS';
   }

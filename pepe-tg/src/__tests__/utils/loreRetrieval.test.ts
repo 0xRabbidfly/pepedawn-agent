@@ -174,5 +174,32 @@ describe('loreRetrieval - Hybrid Card Search', () => {
       expect(results).toBeDefined();
       expect(Array.isArray(results)).toBe(true);
     });
+
+    it('should normalize escaped newline sequences in memory passages', async () => {
+      const memoryContent =
+        '[MEMORY:user123:BasedSer:1728600000000][CARD:PEPEDAWN] The raven\\nEchoes through\\n\\nNew dawn';
+      
+      const mockKnowledgeService = {
+        getKnowledge: mock().mockResolvedValue([
+          { content: { text: memoryContent }, similarity: 0.99 },
+        ]),
+      };
+      
+      const mockRuntime = {
+        getService: mock().mockReturnValue(mockKnowledgeService),
+        searchMemories: mock(),
+      } as any;
+
+      const results = await searchKnowledgeWithExpansion(
+        mockRuntime,
+        'PEPEDAWN poem',
+        'room123'
+      );
+
+      expect(results[0]).toBeDefined();
+      expect(results[0].sourceType).toBe('memory');
+      expect(results[0].text).toBe('The raven\nEchoes through\n\nNew dawn');
+      expect(results[0].text.includes('\\n')).toBe(false);
+    });
   });
 });

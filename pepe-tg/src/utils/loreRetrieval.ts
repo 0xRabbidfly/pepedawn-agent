@@ -243,7 +243,16 @@ export async function searchKnowledgeWithExpansion(
   
   // Convert to RetrievedPassage format
   const passages: RetrievedPassage[] = results.map((r: any, idx: number) => {
-    let text = (r.content?.text || r.text || '').trim();
+    const rawText = r.content?.text || r.text || '';
+    // Normalize newline sequences so downstream rendering receives actual line breaks.
+    // Handles cases where memories were stored with escaped "\n" (e.g., PEPEDAWN poem regression).
+    let text = rawText
+      .replace(/\\r\\n/g, '\n')
+      .replace(/\\n/g, '\n')
+      .replace(/\\r/g, '\n')
+      .replace(/\r\n/g, '\n')
+      .replace(/\r/g, '\n')
+      .trim();
     const id = (r.id || r.content?.id || `result-${idx}`) as string;
     const score = r.similarity || r.score || 1.0;
     const metadata = r.metadata || r.content?.metadata || {};

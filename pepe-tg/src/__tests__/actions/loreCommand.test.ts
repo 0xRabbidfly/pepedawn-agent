@@ -235,5 +235,50 @@ describe('loreCommand - FACTS Mode', () => {
       expect(sorted[0].text).toContain('420');
     });
   });
+
+  describe('Output Formatting', () => {
+    it('should convert escaped newline sequences before sending response', async () => {
+      const runtime = createMockRuntime();
+      const message = createMockMessage('/fl PEPEDAWN poem');
+
+      const mockKnowledgeService = {
+        retrieveKnowledge: mock().mockResolvedValue({
+          story: 'Here\\n\\nComes the dawn',
+          sourcesLine: '\\n\\nSources: [CARD:PEPEDAWN]',
+          hasWikiOrMemory: true,
+          metrics: {
+            query: 'PEPEDAWN poem',
+            hits_raw: 1,
+            hits_used: 1,
+            clusters: 1,
+            latency_ms: 10,
+            story_words: 3,
+          },
+        }),
+      };
+
+      runtime.getService = mock().mockImplementation((serviceType: string) => {
+        if (serviceType === 'knowledge-orchestrator') {
+          return mockKnowledgeService as any;
+        }
+        return null;
+      });
+
+      const callback = mock(async (_response: any) => {});
+
+      await loreCommand.handler(
+        runtime,
+        message,
+        null as unknown as State,
+        undefined,
+        callback
+      );
+
+      expect(callback.mock.calls.length).toBe(1);
+      const sentText = callback.mock.calls[0][0].text as string;
+      expect(sentText).toContain('Here\n\nComes the dawn');
+      expect(sentText.includes('\\n')).toBe(false);
+    });
+  });
 });
 

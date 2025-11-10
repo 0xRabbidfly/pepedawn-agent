@@ -98,6 +98,13 @@ export const loreCommand: Action = {
 
       let finalMessage = result.story + result.sourcesLine;
 
+      // Normalize escaped newline sequences to avoid literal "\n" showing in Telegram.
+      // Handles double-escaped strings coming from knowledge service or intermediate formatting.
+      finalMessage = finalMessage
+        .replace(/\\r\\n/g, '\n')
+        .replace(/\\n/g, '\n')
+        .replace(/\\r/g, '\n');
+
       if (finalMessage.length > LORE_CONFIG.TELEGRAM_MAX_LENGTH) {
         const truncatePoint = LORE_CONFIG.TELEGRAM_MAX_LENGTH - 50;
         finalMessage = finalMessage.slice(0, truncatePoint) + '...\n\n(continued in next message)';
