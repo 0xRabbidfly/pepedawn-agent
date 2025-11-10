@@ -106,11 +106,36 @@ export const loreCommand: Action = {
         includeMetrics: true,
       });
       
-      const wordCount = result.story.split(/\s+/).length;
+      const wordCount = (result.story || '').split(/\s+/).filter(Boolean).length;
       logger.info(`   /fl complete: ${result.metrics.hits_used} sources, ${wordCount} words, ${result.metrics.latency_ms}ms`);
 
-      let finalMessage = decodeEscapedNewlines(result.story + result.sourcesLine);
-      finalMessage = sanitizeForTelegram(finalMessage);
+      // Build final message with robust fallbacks to avoid empty Telegram payloads
+      let finalMessageRaw = '';
+      const story = (result.story || '').trim();
+      const sourcesLine = (result.sourcesLine || '').trim();
+      
+      if (story.length > 0) {
+        finalMessageRaw = decodeEscapedNewlines(story + (sourcesLine ? sourcesLine : ''));
+      } else if ((result as any)?.cardSummary) {
+        // Card discovery path: use cardSummary and candidates
+        const asset = (result as any)?.primaryCardAsset as string | undefined;
+        const summary = ((result as any)?.cardSummary as string || '').trim();
+        const header = asset ? `${asset}: ` : '';
+        let candidatesLine = '';
+        const matches = Array.isArray((result as any)?.cardMatches) ? (result as any).cardMatches : [];
+        if (matches.length > 0) {
+          const list = matches.slice(0, 3).map((m: any) => `${m.asset}`).join('  ||  ');
+          if (list) {
+            candidatesLine = `\n\nCandidates:  ${list}`;
+          }
+        }
+        finalMessageRaw = `${header}${summary}${candidatesLine}`;
+      } else {
+        // Last-resort clarification
+        finalMessageRaw = CLARIFICATION_MESSAGE;
+      }
+
+      let finalMessage = sanitizeForTelegram(finalMessageRaw);
 
       if (finalMessage.length > LORE_CONFIG.TELEGRAM_MAX_LENGTH) {
         const truncatePoint = LORE_CONFIG.TELEGRAM_MAX_LENGTH - 50;
@@ -118,7 +143,8 @@ export const loreCommand: Action = {
       }
 
       if (callback) {
-        await callback({ text: finalMessage });
+        // Guard: Telegram requires non-empty text
+        await callback({ text: finalMessage && finalMessage.trim().length > 0 ? finalMessage : sanitizeForTelegram(CLARIFICATION_MESSAGE) });
       }
 
       return { 
