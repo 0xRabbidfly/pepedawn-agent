@@ -16,6 +16,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - `KnowledgeOrchestratorService`, `loreRetrieval`, and `queryClassifier` tuned to prioritize embedded card facts and improve `/fv` flows.
 - Telegram message chunking now recombines short `/fl` replies into a single post.
+- Lore/FACT auto-routing refined: exact card-name gating, sticky card memories, and LORE question auto-routing ensure `/fl` and card queries return precise stories.
+- Submission rules and other global policy questions now bypass engagement suppression and link directly to the canonical wiki guide.
+- `/fl` responses escape Telegram Markdown V2 characters and synthesize fallbacks to avoid empty or 1-word replies.
 
 ### Fixed
 - `/fl` responses preserve newline formatting when lore memories contain escaped characters.

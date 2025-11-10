@@ -21,6 +21,17 @@ export function classifyQuery(query: string): QueryType {
     return 'UNCERTAIN';
   }
 
+  // Strong override: "story" or popularity-of-X implies LORE intent even with "what is"
+  // Examples: "what is the most popular story about X?", "tell me a story about X"
+  const hasStoryWord = /\bstory\b/.test(lowerQuery);
+  const hasPopularityWhy =
+    /\bwhy\b/.test(lowerQuery) &&
+    /\b(popular|famous|legendary|notable|memorable)\b/.test(lowerQuery);
+  if (hasStoryWord || hasPopularityWhy) {
+    logger.info(`   QueryClassifier: LORE (story/popularity intent)`);
+    return 'LORE';
+  }
+
   // Card discovery intent: user asking to browse/find cards
   const hasCardKeyword = /\b(card|cards|fake|fakes|fake rare|fake rares|rare fake|rare card|rare cards)\b/.test(lowerQuery);
   const cardDiscoveryPatterns = [
@@ -69,12 +80,12 @@ export function classifyQuery(query: string): QueryType {
   // LORE indicators - looking for stories/history
   const loreKeywords = [
     // Story requests
-    'tell me about', 'history of', 'story of', 'who created',
+    'tell me about', 'history of', 'story of', 'who created', 'story',
     'origin', 'beginning', 'started', 'began',
     
     // Community/cultural
     'community', 'vibe', 'culture', 'scene',
-    'famous', 'legendary', 'notable', 'memorable',
+    'famous', 'legendary', 'notable', 'memorable', 'popular',
     'remember when', 'back when',
     
     // People and moments

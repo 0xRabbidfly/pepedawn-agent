@@ -121,36 +121,42 @@ async function searchExactCardMemories(
   cardName: string
 ): Promise<any[]> {
   try {
+    const tryQueries: string[] = [];
     // Search for memories with [CARD:CARDNAME] marker
     const cardMarker = `[CARD:${cardName}]`;
+    // Prefer searching for explicit marker first, then fall back to bare name
+    tryQueries.push(cardMarker, cardName);
     // Prefer the Knowledge plugin (global scope); fallback to direct search
     const knowledgeService = (runtime as any).getService
       ? (runtime as any).getService('knowledge')
       : null;
 
     let rawResults: any[] = [];
-    if (knowledgeService?.getKnowledge) {
-      const pseudoMessage = { id: 'query', content: { text: cardName } };
-      const scope = { roomId: undefined } as any;
-      try {
-        const searchPromise = knowledgeService.getKnowledge(pseudoMessage, scope);
-        const timeoutPromise: Promise<never> = new Promise((_, reject) => {
-          setTimeout(() => reject(new Error('Search timeout')), LORE_CONFIG.SEARCH_TIMEOUT_MS);
-        });
-        rawResults = await Promise.race([searchPromise, timeoutPromise]) || [];
-      } catch (e) {
-        logger.error('[ExactCardSearch] Knowledge service error:', e);
-        rawResults = [];
+    for (const q of tryQueries) {
+      if (rawResults.length > 0) break;
+      if (knowledgeService?.getKnowledge) {
+        const pseudoMessage = { id: 'query', content: { text: q } };
+        const scope = { roomId: undefined } as any;
+        try {
+          const searchPromise = knowledgeService.getKnowledge(pseudoMessage, scope);
+          const timeoutPromise: Promise<never> = new Promise((_, reject) => {
+            setTimeout(() => reject(new Error('Search timeout')), LORE_CONFIG.SEARCH_TIMEOUT_MS);
+          });
+          rawResults = await Promise.race([searchPromise, timeoutPromise]) || [];
+        } catch (e) {
+          logger.error('[ExactCardSearch] Knowledge service error:', e);
+          rawResults = [];
+        }
+      } else {
+        // Fallback to direct memory search (global)
+        rawResults = await runtime.searchMemories({
+          tableName: 'knowledge',
+          roomId: undefined,
+          query: q,
+          count: 20,
+          match_threshold: 0.1,
+        } as any) || [];
       }
-    } else {
-      // Fallback to direct memory search (global)
-      rawResults = await runtime.searchMemories({
-        tableName: 'knowledge',
-        roomId: undefined,
-        query: cardName,
-        count: 20,
-        match_threshold: 0.1,
-      } as any) || [];
     }
 
     // Filter to only those that actually contain the marker (exact match)
@@ -255,7 +261,7 @@ export async function searchKnowledgeWithExpansion(
   }
   
   // Convert to RetrievedPassage format
-  const passages: RetrievedPassage[] = results.map((r: any, idx: number) => {
+  let passages: RetrievedPassage[] = results.map((r: any, idx: number) => {
     const rawText = r.content?.text || r.text || '';
     // Normalize newline sequences so downstream rendering receives actual line breaks.
     let text = decodeEscapedNewlines(rawText).trim();
@@ -427,6 +433,38 @@ export async function searchKnowledgeWithExpansion(
     };
   });
   
+  const primaryCard =
+    validCards.length > 0 ? validCards[0].toUpperCase() : undefined;
+
+  if (primaryCard) {
+    const filterCardMatch = (asset?: string) =>
+      asset?.toUpperCase() === primaryCard;
+
+    passages = passages.filter((p) => {
+      if (p.sourceType === 'card-fact') {
+        return filterCardMatch(p.cardAsset) ||
+          (p.sourceRef?.startsWith('card:')
+            ? filterCardMatch(p.sourceRef.slice(5))
+            : false);
+      }
+
+      if (p.sourceType === 'memory' && p.sourceRef?.startsWith('card:')) {
+        return filterCardMatch(p.sourceRef.slice(5));
+      }
+
+      // Exact-name gate for wiki/telegram when a card is explicitly mentioned
+      if (p.sourceType === 'wiki' || p.sourceType === 'telegram') {
+        const text = p.text || '';
+        const escaped = primaryCard.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const regex = new RegExp(`\\b${escaped}\\b`, 'i');
+        if (text.includes(`[CARD:${primaryCard}]`)) return true;
+        return regex.test(text);
+      }
+
+      return true;
+    });
+  }
+
   const filtered = passages.filter(p => p.text.length > 0);
   
   // Apply source-based ranking boost

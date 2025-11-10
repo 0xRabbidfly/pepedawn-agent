@@ -253,7 +253,13 @@ export const fakeRaresPlugin: Plugin = {
           const hasInquisitiveCue =
             /\b(show|find|looking|search|need|want|which|what|who|how|can|where|is|are|do|does|any|recommend|suggest|tell|give|got)\b/i.test(textLower) ||
             text.includes('?');
-          const hasCardDiscoveryIntent = hasCardKeyword && hasInquisitiveCue;
+          let hasCardDiscoveryIntent = hasCardKeyword && hasInquisitiveCue;
+          // Do not treat collection-level policy questions as card discovery
+          if (/\bsubmission\b/i.test(textLower) && /\brules?\b/i.test(textLower)) {
+            hasCardDiscoveryIntent = false;
+          }
+          const isSubmissionRulesQuery =
+            /\bsubmission\b/i.test(textLower) && /\brules?\b/i.test(textLower);
 
           logger.debug(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${isF} isC=${isC} isP=${isP} isFv=${isFv} isFt=${isFt} isLore=${isFl} isFr=${isFr} isFm=${isFm} isDawn=${isDawn} isHelp=${isHelp} isStart=${isStart} isCost=${isFc} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
           
@@ -383,13 +389,13 @@ export const fakeRaresPlugin: Plugin = {
             roomId: message.roomId,
           });
           
-          if (!shouldRespond(engagementScore) && !hasCardDiscoveryIntent) {
+          if (!shouldRespond(engagementScore) && !(hasCardDiscoveryIntent || isSubmissionRulesQuery)) {
             logger.info(`   Decision: SUPPRESS (low engagement, score=${engagementScore})`);
             message.metadata = message.metadata || {};
             (message.metadata as any).__handledByCustom = true;
             return;
-          } else if (!shouldRespond(engagementScore) && hasCardDiscoveryIntent) {
-            logger.info(`   Engagement below threshold (${engagementScore}) but overriding due to card intent`);
+          } else if (!shouldRespond(engagementScore) && (hasCardDiscoveryIntent || isSubmissionRulesQuery)) {
+            logger.info(`   Engagement below threshold (${engagementScore}) but overriding due to ${hasCardDiscoveryIntent ? 'card intent' : 'submission rules query'}`);
           }
           
           logger.info('━━━━━━━━━━ STEP 5/5: QUERY CLASSIFICATION ━━━━━━━━━━');
@@ -436,14 +442,34 @@ export const fakeRaresPlugin: Plugin = {
             /^(tell|show|explain|describe|list|give)\s+(me|us)\s+(about|the|how)/i.test(text) ||  // Imperative requests
             /\b(need to know|want to know|wondering|curious)\b/i.test(text);  // Indirect questions
           
-          if (queryType === 'FACTS' && (isQuestion || hasCardDiscoveryIntent)) {
+          if (queryType === 'FACTS' && (isQuestion || hasCardDiscoveryIntent || isSubmissionRulesQuery)) {
             logger.info(
-              `   Decision: Auto-route to FACTS (${isQuestion ? 'question' : 'card intent'})`
+              `   Decision: Auto-route to FACTS (${isSubmissionRulesQuery ? 'submission rules' : (isQuestion ? 'question' : 'card intent')})`
             );
             const actionCallback = typeof params.callback === 'function' ? params.callback : null;
             params.callback = async () => [];
             
             try {
+              // Short-circuit: Always answer with canonical wiki link for submission rules
+              if (isSubmissionRulesQuery && actionCallback) {
+                const url = 'https://wiki.pepe.wtf/chapter-2-the-rare-pepe-project/fake-rares-and-dank-rares/fake-rares-submission-rules';
+                await actionCallback({
+                  text: `**Fake Rares Submission Rules**\n${url}`,
+                });
+                const telemetry = runtime.getService('telemetry') as TelemetryService;
+                if (telemetry && typeof telemetry.logLoreQuery === 'function') {
+                  await telemetry.logLoreQuery({
+                    timestamp: new Date().toISOString(),
+                    queryId: message.id,
+                    query: text,
+                    source: 'auto-route',
+                  });
+                }
+                message.metadata = message.metadata || {};
+                (message.metadata as any).__handledByCustom = true;
+                return;
+              }
+              
               const knowledgeService = runtime.getService(
                 KnowledgeOrchestratorService.serviceType
               ) as KnowledgeOrchestratorService;
@@ -536,6 +562,66 @@ export const fakeRaresPlugin: Plugin = {
                 logger.error('[FakeRaresPlugin] ❌ Auto-route failed, falling back to conversation:', err);
               }
               // Fall through to normal bootstrap flow
+            }
+          }
+          
+          // NEW: Auto-route LORE questions to knowledge orchestrator for story mode
+          if (queryType === 'LORE' && isQuestion) {
+            logger.info('   Decision: Auto-route to LORE (question/story intent)');
+            const actionCallback = typeof params.callback === 'function' ? params.callback : null;
+            params.callback = async () => [];
+            
+            try {
+              const knowledgeService = runtime.getService(
+                KnowledgeOrchestratorService.serviceType
+              ) as KnowledgeOrchestratorService;
+              
+              if (!knowledgeService) {
+                throw new Error('KnowledgeOrchestratorService not available');
+              }
+              
+              const result = await knowledgeService.retrieveKnowledge(text, message.roomId, {
+                mode: 'LORE',
+                includeMetrics: true,
+              });
+              
+              if (actionCallback && result.story && result.story.trim().length > 0) {
+                await actionCallback({ text: result.story });
+              }
+              if (actionCallback && result.sourcesLine && result.sourcesLine.trim().length > 0) {
+                await actionCallback({ text: result.sourcesLine });
+              }
+              
+              // Log as conversation (auto-routed)
+              const telemetry = runtime.getService('telemetry') as TelemetryService;
+              if (telemetry && typeof telemetry.logConversation === 'function') {
+                await telemetry.logConversation({
+                  timestamp: new Date().toISOString(),
+                  messageId: message.id,
+                  source: 'auto-route',
+                });
+              }
+              if (telemetry && typeof telemetry.logLoreQuery === 'function') {
+                await telemetry.logLoreQuery({
+                  timestamp: new Date().toISOString(),
+                  queryId: message.id,
+                  query: text,
+                  source: 'auto-route',
+                });
+              }
+              
+              logger.debug(`[FakeRaresPlugin] ✅ Auto-routed LORE response sent`);
+              logger.debug(`   Hits: ${result.metrics.hits_used}, Latency: ${result.metrics.latency_ms}ms`);
+              
+              try {
+                message.metadata = message.metadata || {};
+                (message.metadata as any).__handledByCustom = true;
+              } catch {}
+              
+              return;
+            } catch (err) {
+              logger.error('[FakeRaresPlugin] ❌ Auto-route LORE failed, falling back to conversation:', err);
+              // Fall through to bootstrap
             }
           }
           

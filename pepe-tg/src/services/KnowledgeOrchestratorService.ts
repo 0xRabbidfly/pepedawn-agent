@@ -23,6 +23,7 @@ import { filterOutRecentlyUsed, markIdAsRecentlyUsed } from '../utils/lru';
 import { LORE_CONFIG } from '../utils/loreConfig';
 import { classifyQuery } from '../utils/queryClassifier';
 import { CLARIFICATION_MESSAGE } from '../actions/loreCommand';
+import { isInFullIndex, getCardInfo } from '../data/fullCardIndex';
 
 export interface KnowledgeRetrievalOptions {
   mode?: 'FACTS' | 'LORE';
@@ -115,6 +116,8 @@ export class KnowledgeOrchestratorService extends Service {
       roomId
     );
 
+    const primaryCardAsset = this.detectPrimaryCardAsset(query);
+
     const sourceBreakdown = passages.reduce((acc, p) => {
       const type = p.sourceType === 'telegram' ? 'tg' : 
                    p.sourceType === 'wiki' ? 'wiki' :
@@ -167,8 +170,8 @@ export class KnowledgeOrchestratorService extends Service {
     }
 
     // STEP 3: Pre-classify to determine if we need MMR
-    const hasWikiOrMemoryPassages = passages.some(
-      (p) => p.sourceType === 'memory' || p.sourceType === 'wiki'
+    const hasWikiOrMemoryPassages = passages.some((p) =>
+      this.isMatchingWikiOrMemory(p, primaryCardAsset)
     );
     const cardFactPassages = passages.filter(
       (p) => p.sourceType === 'card-fact' && p.cardAsset
@@ -274,6 +277,43 @@ export class KnowledgeOrchestratorService extends Service {
     if (queryType === 'FACTS') {
       logger.debug('📋 FACTS mode: Using top wiki and memory passages directly');
       
+      // Special-case: direct supply question for a card -> deterministic answer
+      const isSupplyQuestion =
+        /\b(supply|how many|how much)\b/i.test(query) &&
+        !!primaryCardAsset;
+      if (isSupplyQuestion && primaryCardAsset) {
+        const info = getCardInfo(primaryCardAsset);
+        if (info && info.supply) {
+          const parts: string[] = [`${primaryCardAsset} supply: ${info.supply}`];
+          if (typeof info.series === 'number' && typeof info.card === 'number') {
+            parts.push(`Series ${info.series} • Card ${info.card}`);
+          } else if (typeof info.series === 'number') {
+            parts.push(`Series ${info.series}`);
+          }
+          if (info.artist) {
+            parts.push(`by ${info.artist}`);
+          }
+          story = parts.join(' | ');
+          sourcesLine = process.env.HIDE_LORE_SOURCES === 'true' ? '' : '';
+          hasWikiOrMemory = false;
+          logger.debug('📋 FACTS mode: Answered supply using fullCardIndex');
+          const latencyMs = Date.now() - startTime;
+          return {
+            story,
+            sourcesLine,
+            hasWikiOrMemory,
+            metrics: {
+              query,
+              hits_raw: passages.length,
+              hits_used: diversePassages.length,
+              clusters: 0,
+              latency_ms: latencyMs,
+              story_words: story.split(/\s+/).length,
+            }
+          };
+        }
+      }
+      
       const factsPassages = diversePassages.filter(p => p.sourceType === 'wiki' || p.sourceType === 'memory').slice(0, 5);
       const factsBreakdown = factsPassages.reduce((acc, p) => {
         const type = p.sourceType === 'memory' ? 'mem' : 'wiki';
@@ -352,10 +392,32 @@ export class KnowledgeOrchestratorService extends Service {
       sourcesLine = process.env.HIDE_LORE_SOURCES === 'true' ? '' : formatSourcesLine(summaries);
     }
     
-    if (!story || story.trim().length === 0) {
-      story = '🤔 Not sure which fake fits that yet. Try a different clue or ping `/fl CARDNAME` for direct lore.';
-      sourcesLine = '';
-      hasWikiOrMemory = false;
+    // Robust fallback: if story is empty or too short (e.g., 1 word), synthesize from top passages
+    const wordCount = (story || '').trim().split(/\s+/).filter(Boolean).length;
+    if (!story || story.trim().length === 0 || wordCount < 4) {
+      const take = (arr: RetrievedPassage[], n: number) => arr.slice(0, Math.max(0, n));
+      const pickFacts = diversePassages.filter(p => p.sourceType === 'wiki' || p.sourceType === 'memory');
+      const fallbackSet = (queryType === 'FACTS'
+        ? (pickFacts.length > 0 ? take(pickFacts, 3) : take(diversePassages, 3))
+        : take(diversePassages, 3));
+      
+      const firstSentence = (text: string) => {
+        const trimmed = (text || '').trim();
+        const m = trimmed.match(/^[\s\S]*?[.!?](\s|$)/);
+        return (m ? m[0] : trimmed).trim();
+      };
+      
+      const synthesized = fallbackSet.map(p => firstSentence(p.text)).filter(Boolean).join(' ');
+      if (synthesized && synthesized.length > 0) {
+        story = synthesized;
+        sourcesLine = process.env.HIDE_LORE_SOURCES === 'true' ? '' :
+          `\n\nSources:  ${fallbackSet.map(p => formatCompactCitation(p)).join('  ||  ')}`;
+        hasWikiOrMemory = fallbackSet.some(p => p.sourceType === 'wiki' || p.sourceType === 'memory');
+      } else {
+        story = '🤔 Not sure which fake fits that yet. Try a different clue or ping `/fl CARDNAME` for direct lore.';
+        sourcesLine = '';
+        hasWikiOrMemory = false;
+      }
     }
 
     logger.debug(`✍️  Generated story (${story.split(/\s+/).length} words)`);
@@ -667,6 +729,98 @@ Write ONE short sentence (max 20 words) telling the user why this card fits the 
 
     const bestNormalized = this.normalizeCardFactText(group.best);
     return bestNormalized || null;
+  }
+
+  private detectPrimaryCardAsset(query: string): string | undefined {
+    const words = query.match(/\b[A-Za-z]{3,}[A-Za-z0-9]*\b/g) || [];
+    const lower = query.toLowerCase();
+    // Avoid card detection for global policy/FAQ questions
+    const globalFactTerms = ['submission', 'rules', 'requirements', 'fee', 'fees', 'cost', 'price', 'format', 'size', 'spec', 'specs', 'guide'];
+    if (globalFactTerms.some(t => lower.includes(t))) {
+      return undefined;
+    }
+
+    for (const word of words) {
+      const upper = word.toUpperCase();
+      if (isInFullIndex(upper)) {
+        return upper;
+      }
+    }
+
+    return undefined;
+  }
+
+  private isMatchingWikiOrMemory(
+    passage: RetrievedPassage,
+    targetAsset?: string
+  ): boolean {
+    if (!(passage.sourceType === 'memory' || passage.sourceType === 'wiki')) {
+      return false;
+    }
+
+    if (!targetAsset) {
+      return true;
+    }
+
+    return this.passageMatchesCard(passage, targetAsset);
+  }
+
+  private passageMatchesCard(
+    passage: RetrievedPassage,
+    asset: string
+  ): boolean {
+    const upperAsset = asset.toUpperCase();
+    const normalize = (value?: string | null) =>
+      typeof value === 'string' ? value.toUpperCase() : undefined;
+
+    if (normalize(passage.cardAsset) === upperAsset) {
+      return true;
+    }
+
+    const sourceRef = normalize(passage.sourceRef);
+    if (sourceRef === upperAsset) {
+      return true;
+    }
+
+    if (sourceRef?.startsWith('CARD:')) {
+      const refAsset = sourceRef.slice(5);
+      if (refAsset === upperAsset) {
+        return true;
+      }
+    }
+
+    const metadata = passage.metadata ?? {};
+    const metaCandidates = [
+      normalize((metadata as any).asset),
+      normalize((metadata as any).cardAsset),
+      normalize((metadata as any).card),
+      normalize((metadata as any).cardName),
+    ];
+
+    if (metaCandidates.some((value) => value === upperAsset)) {
+      return true;
+    }
+
+    const keywords = (metadata as any).keywords;
+    if (
+      Array.isArray(keywords) &&
+      keywords.some((kw) => normalize(kw) === upperAsset)
+    ) {
+      return true;
+    }
+
+    const text = passage.text || '';
+    if (text.includes(`[CARD:${upperAsset}]`)) {
+      return true;
+    }
+
+    const escapedAsset = upperAsset.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`\\b${escapedAsset}\\b`, 'i');
+    if (regex.test(text)) {
+      return true;
+    }
+
+    return false;
   }
 }
 

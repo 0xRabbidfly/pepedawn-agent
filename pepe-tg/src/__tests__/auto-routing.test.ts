@@ -5,6 +5,9 @@ import { TelemetryService } from '../services/TelemetryService';
 import { MemoryStorageService } from '../services/MemoryStorageService';
 import { resetEngagementTracking, calculateEngagementScore } from '../utils/engagementScorer';
 
+const SUBMISSION_RULES_URL =
+  'https://wiki.pepe.wtf/chapter-2-the-rare-pepe-project/fake-rares-and-dank-rares/fake-rares-submission-rules';
+
 /**
  * Auto-Routing Logic Tests
  * 
@@ -251,21 +254,12 @@ describe('Auto-Routing Logic', () => {
 
       await messageHandler!(params);
 
-      // Should call knowledge service
-      expect(runtime._mockServices.knowledge.retrieveKnowledge).toHaveBeenCalledWith(
-        'What are the submission rules?',
-        'test-room',
-        expect.objectContaining({ mode: 'FACTS' })
-      );
-      
-      // Should mark as handled
+      // Submission rules short-circuits to canonical wiki link
+      expect(runtime._mockServices.knowledge.retrieveKnowledge).not.toHaveBeenCalled();
+      expect(callbackFn).toHaveBeenCalledWith({
+        text: expect.stringContaining(SUBMISSION_RULES_URL),
+      });
       expect((message.metadata as any).__handledByCustom).toBe(true);
-      
-      // actionCallback is extracted on line 465, so we check if the original params.callback was stored
-      // The auto-routing code saves the original callback and calls it directly (line 485)
-      // Since we passed callbackFn in params, it should have been called
-      // Let's just verify the knowledge service was called - callback testing is integration-level
-      // (In real usage, the callback would send the message to Telegram)
     });
 
     it('should auto-route "how do" questions', async () => {
@@ -663,8 +657,11 @@ describe('Auto-Routing Logic', () => {
 
       await messageHandler!(params);
 
-      // Should still auto-route (no reply, so no need for ctx)
-      expect(runtime._mockServices.knowledge.retrieveKnowledge).toHaveBeenCalled();
+      // Submission rules short-circuits regardless of ctx
+      expect(runtime._mockServices.knowledge.retrieveKnowledge).not.toHaveBeenCalled();
+      expect(callbackFn).toHaveBeenCalledWith({
+        text: expect.stringContaining(SUBMISSION_RULES_URL),
+      });
       expect((message.metadata as any).__handledByCustom).toBe(true);
     });
 
@@ -694,13 +691,12 @@ describe('Auto-Routing Logic', () => {
 
       await messageHandler!(params);
 
-      // Should attempt to call service
-      expect(runtime._mockServices.knowledge.retrieveKnowledge).toHaveBeenCalled();
-      
-      // When auto-route fails, it falls through to bootstrap
-      // The error is logged and Bootstrap is allowed (question=+35 passes threshold)
-      expect((message.metadata as any).__handledByCustom).toBeUndefined();
-      expect(callbackFn).not.toHaveBeenCalled(); // Falls through to Bootstrap, doesn't call callback directly
+      // Short-circuit invoked before knowledge service, so error path not triggered
+      expect(runtime._mockServices.knowledge.retrieveKnowledge).not.toHaveBeenCalled();
+      expect(callbackFn).toHaveBeenCalledWith({
+        text: expect.stringContaining(SUBMISSION_RULES_URL),
+      });
+      expect((message.metadata as any).__handledByCustom).toBe(true);
     });
 
     it('should skip auto-routing when SUPPRESS_BOOTSTRAP=true', async () => {
@@ -726,10 +722,10 @@ describe('Auto-Routing Logic', () => {
 
       await messageHandler!(params);
 
-      // NOTE: Global suppression happens AFTER auto-routing check
-      // So this WILL still call knowledge service, but bootstrap will be suppressed
-      // This is actually correct behavior - we want to answer FACTS questions even with SUPPRESS_BOOTSTRAP=true
-      expect(runtime._mockServices.knowledge.retrieveKnowledge).toHaveBeenCalled();
+      expect(runtime._mockServices.knowledge.retrieveKnowledge).not.toHaveBeenCalled();
+      expect(callbackFn).toHaveBeenCalledWith({
+        text: expect.stringContaining(SUBMISSION_RULES_URL),
+      });
       expect((message.metadata as any).__handledByCustom).toBe(true);
     });
   });
