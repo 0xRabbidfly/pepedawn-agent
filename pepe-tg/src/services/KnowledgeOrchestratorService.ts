@@ -59,6 +59,48 @@ export class KnowledgeOrchestratorService extends Service {
     super(runtime);
   }
 
+  private static readonly CARD_QUERY_STOP_WORDS = new Set<string>([
+    'fake',
+    'rares',
+    'rare',
+    'card',
+    'cards',
+    'pepe',
+    'please',
+    'pls',
+    'show',
+    'find',
+    'look',
+    'search',
+    'need',
+    'want',
+    'with',
+    'word',
+    'text',
+    'have',
+    'that',
+    'this',
+    'about',
+    'give',
+    'tell',
+    'most',
+    'any',
+    'kind',
+    'type',
+    'really',
+    'which',
+    'what',
+    'whats',
+    'does',
+    'like',
+    'make',
+    'maybe',
+    'someone',
+    'something',
+    'good',
+    'best',
+  ]);
+
   /**
    * Initialize service
    */
@@ -470,6 +512,8 @@ export class KnowledgeOrchestratorService extends Service {
     const groups = new Map<string, CardFactGroup>();
 
     for (const passage of sorted) {
+      const passageKeywords = this.collectPassageKeywords(passage);
+      const normalizedSnippet = this.normalizeCardFactText(passage).toLowerCase();
       const asset =
         passage.cardAsset ??
         (passage.sourceRef?.startsWith('card:')
@@ -481,6 +525,10 @@ export class KnowledgeOrchestratorService extends Service {
       const existing = groups.get(normalizedAsset);
       if (existing) {
         existing.passages.push(passage);
+        passageKeywords.forEach((kw) => existing.keywordSet.add(kw));
+        if (normalizedSnippet && !existing.textSnippets.includes(normalizedSnippet)) {
+          existing.textSnippets.push(normalizedSnippet);
+        }
       } else {
         groups.set(normalizedAsset, {
           asset: normalizedAsset,
@@ -488,6 +536,8 @@ export class KnowledgeOrchestratorService extends Service {
           best: passage,
           score:
             (passage.cardBlockPriority ?? 0) * 10 + passage.score,
+          keywordSet: new Set(passageKeywords),
+          textSnippets: normalizedSnippet ? [normalizedSnippet] : [],
         });
       }
     }
@@ -496,12 +546,22 @@ export class KnowledgeOrchestratorService extends Service {
       return null;
     }
 
+    const analysis = this.analyzeCardQueryIntent(query);
+
     const ranked = Array.from(groups.values())
       .map((group) => {
         const best = group.passages[0];
-        const score =
+        const baseScore =
           (best.cardBlockPriority ?? 0) * 10 + best.score;
-        return { ...group, best, score };
+        const relevance = this.computeGroupRelevance(group, analysis);
+        const score = baseScore + relevance.boost - relevance.literalMisses * 80;
+        return {
+          ...group,
+          best,
+          score,
+          matchHighlights: relevance.highlights,
+          literalSatisfied: relevance.literalMisses === 0,
+        };
       })
       .sort((a, b) => b.score - a.score);
 
@@ -693,6 +753,179 @@ Write ONE short sentence (max 20 words) telling the user why this card fits the 
     }
   }
 
+  private collectPassageKeywords(passage: RetrievedPassage): string[] {
+    const result = new Set<string>();
+    const addPhrase = (phrase: string) => {
+      const lower = phrase.toLowerCase().trim();
+      if (!lower) return;
+      if (lower.length >= 3) {
+        result.add(lower);
+      }
+      for (const part of lower.split(/\s+/)) {
+        const trimmed = part.trim();
+        if (trimmed.length >= 3) {
+          result.add(trimmed);
+        }
+      }
+    };
+
+    if (Array.isArray(passage.cardKeywords)) {
+      for (const keyword of passage.cardKeywords) {
+        if (typeof keyword === 'string') {
+          addPhrase(keyword);
+        }
+      }
+    }
+
+    const metadataKeywords = (passage.metadata as any)?.keywords;
+    if (Array.isArray(metadataKeywords)) {
+      for (const keyword of metadataKeywords) {
+        if (typeof keyword === 'string') {
+          addPhrase(keyword);
+        }
+      }
+    }
+
+    if (typeof passage.cardBlockLabel === 'string') {
+      addPhrase(passage.cardBlockLabel);
+    }
+
+    return Array.from(result);
+  }
+
+  private analyzeCardQueryIntent(query: string): CardQueryAnalysis {
+    const literalMap = new Map<string, CardLiteralTerm>();
+    const captureLiteral = (rawTerm?: string) => {
+      if (!rawTerm) return;
+      const normalized = rawTerm.toLowerCase().trim();
+      if (!normalized) return;
+      if (!literalMap.has(normalized)) {
+        literalMap.set(normalized, { raw: rawTerm.trim(), normalized });
+      }
+    };
+
+    for (const match of query.matchAll(/"([^"]+?)"/g)) {
+      captureLiteral(match[1]);
+    }
+
+    const literalPatterns = [
+      /\bword\s+([a-z0-9]+)/gi,
+      /\bwith\s+the\s+word\s+([a-z0-9]+)/gi,
+      /\bcontains?\s+([a-z0-9]+)/gi,
+      /\bhas\s+the\s+word\s+([a-z0-9]+)/gi,
+      /\btext\s+([a-z0-9]+)/gi,
+      /\bspell(?:ed|s)?\s+([a-z0-9]+)/gi,
+    ];
+
+    for (const pattern of literalPatterns) {
+      for (const match of query.matchAll(pattern)) {
+        captureLiteral(match[1]);
+      }
+    }
+
+    const literalTerms = Array.from(literalMap.values());
+
+    const tokenSet = new Set<string>();
+    const lower = query.toLowerCase();
+    const words = lower.match(/\b[a-z0-9]{3,}\b/g) || [];
+
+    for (const word of words) {
+      if (!KnowledgeOrchestratorService.CARD_QUERY_STOP_WORDS.has(word)) {
+        tokenSet.add(word);
+      }
+    }
+
+    for (const literal of literalTerms) {
+      const parts = literal.normalized.split(/\s+/);
+      for (const part of parts) {
+        if (part.length >= 3 && !KnowledgeOrchestratorService.CARD_QUERY_STOP_WORDS.has(part)) {
+          tokenSet.add(part);
+        }
+      }
+    }
+
+    return {
+      tokens: Array.from(tokenSet),
+      literalTerms,
+    };
+  }
+
+  private computeGroupRelevance(
+    group: CardFactGroup,
+    analysis: CardQueryAnalysis
+  ): { boost: number; highlights: string[]; literalMisses: number } {
+    const keywordSet = group.keywordSet ?? new Set<string>();
+    const textSnippets = group.textSnippets ?? [];
+    const matchedKeywords = new Set<string>();
+    const textMatches = new Set<string>();
+    const highlightTokens = new Set<string>();
+
+    for (const token of analysis.tokens) {
+      if (keywordSet.has(token)) {
+        matchedKeywords.add(token);
+        highlightTokens.add(this.formatHighlightToken(token));
+      } else if (textSnippets.some((snippet) => snippet.includes(token))) {
+        textMatches.add(token);
+        highlightTokens.add(this.formatHighlightToken(token));
+      }
+    }
+
+    let literalMisses = 0;
+    let literalHits = 0;
+
+    for (const literal of analysis.literalTerms) {
+      const target = literal.normalized;
+      let satisfied =
+        (target.length >= 3 && keywordSet.has(target)) ||
+        textSnippets.some((snippet) => snippet.includes(target));
+
+      if (!satisfied && target.includes(' ')) {
+        const parts = target.split(/\s+/).filter(Boolean);
+        if (
+          parts.length > 0 &&
+          parts.every(
+            (part) =>
+              part.length < 3 ||
+              keywordSet.has(part) ||
+              textSnippets.some((snippet) => snippet.includes(part))
+          )
+        ) {
+          satisfied = true;
+        }
+      }
+
+      if (satisfied) {
+        literalHits += 1;
+        highlightTokens.add(this.formatHighlightToken(literal.raw));
+      } else {
+        literalMisses += 1;
+      }
+    }
+
+    const keywordBoost = matchedKeywords.size * 8;
+    const textOnlyTokens = Array.from(textMatches).filter(
+      (token) => !matchedKeywords.has(token)
+    );
+    const textBoost = textOnlyTokens.length * 4;
+    const literalBonus = literalHits * 35;
+    const boost = keywordBoost + textBoost + literalBonus;
+
+    return {
+      boost,
+      highlights: Array.from(highlightTokens).slice(0, 4),
+      literalMisses,
+    };
+  }
+
+  private formatHighlightToken(token: string): string {
+    const trimmed = token.trim();
+    if (!trimmed) return trimmed;
+    if (trimmed.length <= 4) {
+      return trimmed.toUpperCase();
+    }
+    return trimmed.replace(/\b\w/g, (char) => char.toUpperCase());
+  }
+
   private truncateSnippet(text: string, maxLength = 180): string {
     if (text.length <= maxLength) return text;
     return text.slice(0, maxLength - 1).trimEnd() + '…';
@@ -711,7 +944,11 @@ Write ONE short sentence (max 20 words) telling the user why this card fits the 
     const trimmed = this.truncateSnippet(snippet.replace(/\*\*/g, '').trim());
     const ensured = /[.!?]$/.test(trimmed) ? trimmed : `${trimmed}.`;
     const lowered = ensured.charAt(0).toLowerCase() + ensured.slice(1);
-    return `**${group.asset}** fits because ${lowered}`;
+    const highlightSuffix =
+      group.matchHighlights && group.matchHighlights.length > 0
+        ? ` It hits your cues: ${group.matchHighlights.join(', ')}.`
+        : '';
+    return `**${group.asset}** fits because ${lowered}${highlightSuffix}`;
   }
 
   private formatCardMeta(passage: RetrievedPassage): string {
@@ -853,9 +1090,23 @@ Write ONE short sentence (max 20 words) telling the user why this card fits the 
   }
 }
 
+interface CardLiteralTerm {
+  raw: string;
+  normalized: string;
+}
+
+interface CardQueryAnalysis {
+  tokens: string[];
+  literalTerms: CardLiteralTerm[];
+}
+
 interface CardFactGroup {
   asset: string;
   passages: RetrievedPassage[];
   best: RetrievedPassage;
   score: number;
+  keywordSet: Set<string>;
+  textSnippets: string[];
+  matchHighlights?: string[];
+  literalSatisfied?: boolean;
 }
