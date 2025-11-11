@@ -1357,13 +1357,20 @@ Write ONE short sentence (max 20 words) telling the user why this card fits the 
 
       // Some deployments (e.g., prod) wrap the JSON in Markdown code fences or extra text.
       // We attempt to unwrap ``` fences first, then fall back to raw extraction.
-      let cleaned: string = raw;
-      const fenceMatch = cleaned.match(/```(?:json)?([^`]+)```/is);
-      if (fenceMatch) {
-        cleaned = fenceMatch[1];
-      }
+      const stripCodeFence = (text: string): string => {
+        const match = text.match(/```(?:json)?\s*([\s\S]*?)\s*```/i);
+        if (match && match[1]) {
+          return match[1];
+        }
+        return text;
+      };
 
-      const jsonText = this.extractJsonObject(cleaned) ?? this.extractJsonObject(raw);
+      const cleaned = stripCodeFence(raw);
+      const jsonText =
+        this.extractJsonObject(cleaned) ??
+        this.extractJsonObject(cleaned.replace(/^[^{]*\{/, '{')) ??
+        this.extractJsonObject(cleaned.replace(/\}[^}]*$/, '}')) ??
+        this.extractJsonObject(raw);
       if (!jsonText) {
         logger.warn({
           msg: '[CardTraitRerank] Unable to parse LLM response',
