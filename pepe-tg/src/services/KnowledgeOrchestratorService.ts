@@ -1372,6 +1372,32 @@ Write ONE short sentence (max 20 words) telling the user why this card fits the 
         this.extractJsonObject(cleaned.replace(/\}[^}]*$/, '}')) ??
         this.extractJsonObject(raw);
       if (!jsonText) {
+        // Try heuristic extraction if the JSON is truncated but still contains asset/score pairs.
+        const heuristicMatches = Array.from(
+          cleaned.matchAll(
+            /"asset"\s*:\s*"([^"]+)"[\s\S]*?"score"\s*:\s*([0-9.]+)(?:[\s\S]*?"reason"\s*:\s*"([^"]*)")?/g
+          )
+        );
+        if (heuristicMatches.length > 0) {
+          const heuristicMap = new Map<string, { score: number; reason?: string }>();
+          for (const [, assetRaw, scoreRaw, reasonRaw] of heuristicMatches) {
+            if (!assetRaw) continue;
+            const score = parseFloat(scoreRaw ?? '');
+            if (!Number.isFinite(score)) continue;
+            heuristicMap.set(assetRaw.toUpperCase(), {
+              score: Math.max(0, Math.min(1, score)),
+              reason: reasonRaw?.trim() || 'Heuristic parse (truncated JSON)',
+            });
+          }
+          if (heuristicMap.size > 0) {
+            logger.warn({
+              msg: '[CardTraitRerank] Heuristic parse used (JSON truncated)',
+              extracted: Array.from(heuristicMap.entries()).map(([asset, { score }]) => `${asset}:${score}`),
+            });
+            return heuristicMap;
+          }
+        }
+
         logger.warn({
           msg: '[CardTraitRerank] Unable to parse LLM response',
           raw,
