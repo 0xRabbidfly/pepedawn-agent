@@ -24,6 +24,7 @@ import { LORE_CONFIG } from '../utils/loreConfig';
 import { classifyQuery } from '../utils/queryClassifier';
 import { CLARIFICATION_MESSAGE } from '../actions/loreCommand';
 import { isInFullIndex, getCardInfo } from '../data/fullCardIndex';
+import { callTextModel } from '../utils/modelGateway';
 
 export interface KnowledgeRetrievalOptions {
   mode?: 'FACTS' | 'LORE';
@@ -914,22 +915,16 @@ Supporting details: "${evidence}"
 Write ONE short sentence (max 20 words) telling the user why this card fits the request. Mention the card name.`;
 
     try {
-      const result = await this.runtime.useModel(ModelType.TEXT_SMALL, {
+      const result = await callTextModel(this.runtime, {
+        model: modelName,
         prompt,
         maxTokens: 60,
         temperature: 0.2,
-        context: 'Card Discovery Summary',
-        model: modelName,
+        source: 'Card Discovery Summary',
       });
 
-      const summary =
-        typeof result === 'string'
-          ? result
-          : (result as any)?.text ??
-            (result as any)?.toString?.() ??
-            '';
       // Replace literal \n strings with actual newlines, then normalize whitespace
-      const withNewlines = summary.replace(/\\n/g, '\n');
+      const withNewlines = result.text.replace(/\\n/g, '\n');
       const trimmed = withNewlines.trim().replace(/\s+/g, ' ');
       return trimmed.length > 0 ? trimmed : null;
     } catch (err) {

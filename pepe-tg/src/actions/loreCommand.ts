@@ -7,15 +7,8 @@ import { decodeEscapedNewlines } from '../utils/loreRetrieval';
 const logger = createLogger("FakeLore");
 
 function sanitizeForTelegram(text: string): string {
-  const trimmed = (text || '').trim();
-  if (trimmed.length === 0) return trimmed;
-  // If it's just a number or very short token, wrap in backticks to avoid markdown parse issues
-  if (/^[\s\W]*\d+[\s\W]*$/.test(trimmed) || trimmed.split(/\s+/).length <= 2) {
-    return '`' + trimmed.replace(/`/g, '') + '`';
-  }
-  // Escape all Telegram MarkdownV2 special characters
-  // See: https://core.telegram.org/bots/api#markdownv2-style
-  return trimmed.replace(/([_*\[\]()~`>#+\-=|{}.!\\])/g, '\\$1');
+  // Just return trimmed text - no escaping needed for plain text messages
+  return (text || '').trim();
 }
 
 /**

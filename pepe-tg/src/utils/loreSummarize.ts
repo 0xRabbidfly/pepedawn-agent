@@ -8,6 +8,7 @@ import { ModelType, logger } from '@elizaos/core';
 import type { RetrievedPassage } from './loreRetrieval';
 import { LORE_CONFIG } from './loreConfig';
 import { classifyQuery, type QueryType } from './queryClassifier';
+import { callTextModel } from './modelGateway';
 
 export interface ClusterSummary {
   id: string;
@@ -107,27 +108,19 @@ Summary:`;
   
   try {
     // Use TEXT_SMALL for summaries (uses OPENAI_SMALL_MODEL from .env)
-    const startTime = Date.now();
     const modelName = process.env.OPENAI_SMALL_MODEL || 'gpt-4o-mini';
-    const result = await runtime.useModel(ModelType.TEXT_SMALL, {
+    const result = await callTextModel(runtime, {
+      model: modelName,
       prompt: summaryPrompt,
       maxTokens: LORE_CONFIG.MAX_TOKENS_SUMMARY,
       temperature: 0.3, // Low temp for factual summarization
-      context: 'Knowledge Service',  // Proper source labeling for telemetry
+      source: 'Knowledge Service',  // Proper source labeling for telemetry
     });
-    
-    const summary = typeof result === 'string' ? result : (result as any)?.text || (result as any)?.toString?.() || '';
-    const duration = Date.now() - startTime;
-    
-    // Log cluster summarization LLM call
-    const tokensIn = Math.ceil(summaryPrompt.length / 4);
-    const tokensOut = Math.ceil(summary.length / 4);
-    logger.info(`🤖 LLM call: ${modelName} cluster-summary #${clusterId.split('-')[1]} (${tokensIn} → ${tokensOut} tokens, ${duration}ms)`);
     
     return {
       id: clusterId,
       passageRefs: cluster.map(p => p.id),
-      summary: summary.trim(),
+      summary: result.text.trim(),
       citations: cluster.map(p => formatCompactCitation(p)),
     };
   } catch (err) {

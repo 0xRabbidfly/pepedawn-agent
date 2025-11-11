@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.14.0] - 2025-11-11
+
+### Fixed
+- **LLM Integration Stability**  
+  - Fixed ElizaOS `runtime.useModel()` conflicts by switching to direct `callTextModel()` for card discovery summaries and lore cluster summarization
+  - Resolved GPT-5 model routing issues where ElizaOS was forcing `/v1/responses` endpoint instead of `/v1/chat/completions`
+  - Added system message to prevent GPT models from escaping special characters in responses
+- **Telegram Message Formatting**  
+  - Removed unnecessary MarkdownV2 escaping from `/fl` lore responses that was causing `\.` `\,` `\[` artifacts
+  - Lore stories now display cleanly without escaped punctuation or brackets
+
+### Changed
+- **Model Gateway Enhancement**  
+  - All LLM calls through `modelGateway.ts` now include explicit system message for plain text output
+  - Simplified `loreSummarize.ts` by removing redundant token estimation and manual logging (now handled by gateway)
+  - Cleaned up `sanitizeForTelegram()` to only trim text without escaping (plain text mode)
+
+### Added
+- **Periodic Content Tips**  
+  - Added `/xcp` command tip for XCP dispenser list feature
+  - Updated `/fm` tip to clarify card-specific dispenser lookup functionality
+
 ## [3.12.0] - 2025-11-08
 
 ### Added

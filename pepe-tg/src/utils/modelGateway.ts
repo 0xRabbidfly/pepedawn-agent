@@ -65,7 +65,10 @@ export async function callTextModel(
   
   const requestParams: any = {
     model: options.model,
-    messages: [{ role: 'user', content: options.prompt }],
+    messages: [
+      { role: 'system', content: 'You are a helpful assistant. Output plain text without escaping special characters.' },
+      { role: 'user', content: options.prompt }
+    ],
   };
   
   // Configure based on model type
