@@ -1335,20 +1335,15 @@ Write ONE short sentence (max 20 words) telling the user why this card fits the 
     );
 
     try {
-      const result = await this.runtime.useModel(chosenModelType, {
-        prompt,
-        temperature: 0.2,
-        maxTokens,
-        context: 'Card Trait Rerank',
+      const result = await callTextModel(this.runtime, {
         model: modelName,
+        prompt,
+        maxTokens,
+        temperature: 0.2,
+        source: 'Card Trait Rerank',
       });
 
-      const raw =
-        typeof result === 'string'
-          ? result
-          : (result as any)?.text ??
-            (result as any)?.toString?.() ??
-            '';
+      const raw = result?.text ?? '';
 
       // Some deployments (e.g., prod) wrap the JSON in Markdown code fences or extra text.
       // We attempt to unwrap ``` fences first, then fall back to raw extraction.
