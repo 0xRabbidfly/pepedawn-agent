@@ -231,21 +231,19 @@ async function mergeFacts(
     const memeticReferences = sanitizeList(fact.analysis.sections.memeticDna?.content ?? null);
     const visualSummary = fact.analysis.sections.visualBreakdown?.content ?? '';
 
-    const keywordSet = new Set<string>();
-    textOnCard.forEach((line) => tokenizeForKeywords(line).forEach((token) => keywordSet.add(token)));
-    memeticReferences.forEach((line) =>
-      tokenizeForKeywords(line).forEach((token) => keywordSet.add(token))
+    const textKeywordSet = new Set<string>();
+    textOnCard.forEach((line) =>
+      tokenizeForKeywords(line).forEach((token) => textKeywordSet.add(token))
     );
+    const textKeywords = Array.from(textKeywordSet).slice(0, 30);
 
+    const visualKeywordSet = new Set<string>();
     tokenizeForKeywords(visualSummary)
-      .slice(0, 20)
-      .forEach((token) => keywordSet.add(token));
+      .slice(0, 40)
+      .forEach((token) => visualKeywordSet.add(token));
+    const visualKeywords = Array.from(visualKeywordSet).slice(0, 40);
 
-    if (canonical?.artist) {
-      tokenizeForKeywords(canonical.artist).forEach((token) => keywordSet.add(token));
-    }
-
-    const keywords = Array.from(keywordSet).slice(0, 40);
+    const keywords = Array.from(new Set([...visualKeywords, ...textKeywords])).slice(0, 60);
 
     const embeddingBlocks: CardVisualMemory['embeddingBlocks'] = [];
 
@@ -301,6 +299,9 @@ async function mergeFacts(
       textOnCard,
       memeticReferences,
       visualSummary,
+      visualSummaryShort: visualSummary.trim(),
+      visualKeywords,
+      textKeywords,
       keywords,
       embeddingInput: buildEmbeddingInput({
         asset: cardName,

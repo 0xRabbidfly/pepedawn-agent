@@ -23,7 +23,8 @@
 
 "remember this..."   →  💾 Save a fact to memory
 
-/odds                →  🎰 Lottery stats (if deployed)
+/fm CARDNAME         →  📈 Market stats snapshot
+/xcp ASSET           →  🔗 Counterparty asset info
 /fc d|m              →  💰 Cost tracking (admin only)
 
 /start               →  👋 Welcome message
@@ -98,7 +99,7 @@ User → /fl TOPIC
   ├─ UNCERTAIN → Clarification prompt
   │              "🤔 Not sure... Try: /fl CARDNAME"
   │
-  ├─ FACTS → Top-k by relevance (no MMR) ✅ WORKING
+  ├─ FACTS → Top-k by relevance (no MMR) ✅
   │           ↓
   │           Direct answer (rules, specs)
   │           Memories preserved (4.0x boost ensures top ranking)
@@ -112,8 +113,10 @@ User → /fl TOPIC
             └─ NO → Normal clustering
                     ↓
                     "I remember when..."
-            ↓
-            80-120 words + sources
+  ↓
+  Knowledge response sent with citations
+  ↓
+  No wiki/memory hits? → Bootstrap persona fallback (short reply)
 
 Cost: ~$0.01 | Time: 1-3s
 ```
@@ -149,7 +152,7 @@ Priority: HIGHEST in lore searches
 | `/ft` | Score image appeal | GPT-4o + CLIP | $0.007 | 2-4s |
 | `/fl` | Get lore/history | GPT-5/GPT-4o + embeddings | $0.01 | 1-3s |
 | Memory | Save facts | None (DB write) | Free | <500ms |
-| Chat | Conversation | GPT-4o | $0.01 | 1-2s |
+| Chat | Conversation | Knowledge Orchestrator → GPT-4o persona fallback | $0.01 | 1-2s |
 
 ---
 
@@ -313,14 +316,16 @@ FREEDOMKEK remember this: it was inspired by Free Kekistan
 When PEPEDAWN receives a message, it checks in this order:
 
 1. **Memory capture** - "remember this" detection
-2. **Commands** - `/f`, `/fv`, `/ft`, `/fl`, `/fc`, `/odds`, etc.
-3. **Auto-routing** - FACTS questions → knowledge retrieval
+2. **Command execution** - `/f`, `/fv`, `/ft`, `/fl`, `/fc`, `/fm`, `/xcp`, etc.
+3. **Safety filters** - FAKEASF burn blocker & off-topic suppression
+4. **Engagement gate** - Suppress low-signal chatter (unless card intent)
+5. **Auto-routing** - FACTS/LORE questions → Knowledge Orchestrator
    - ✅ Questions: "What are the submission rules?"
    - ❌ Statements: "Three grails for sale..."
    - ❌ User-to-user replies: User A → User B conversation
    - ✅ Replies to bot: User → Bot question
-4. **Context injection** - If card names mentioned (CAPITALS)
-5. **General conversation** - ElizaOS default AI response
+6. **Context provider** - Inject card hints when capitals match
+7. **Bootstrap persona** - Handles UNCERTAIN chat or knowledge fallbacks
 
 ---
 
@@ -344,6 +349,6 @@ For new users, try these in order:
 
 ---
 
-**Last Updated:** October 29, 2025  
-**Version:** 2.2.0
+**Last Updated:** November 11, 2025  
+**Version:** 2.3.0
 

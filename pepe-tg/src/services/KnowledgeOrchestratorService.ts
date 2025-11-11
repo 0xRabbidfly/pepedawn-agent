@@ -99,7 +99,12 @@ export class KnowledgeOrchestratorService extends Service {
     'something',
     'good',
     'best',
+    'absolute',
+    'absolutely',
+    'teh',
   ]);
+
+  private static readonly CARD_VISUAL_TRAIT_TOKENS = new Set<string>();
 
   /**
    * Initialize service
@@ -512,8 +517,8 @@ export class KnowledgeOrchestratorService extends Service {
     const groups = new Map<string, CardFactGroup>();
 
     for (const passage of sorted) {
-      const passageKeywords = this.collectPassageKeywords(passage);
       const normalizedSnippet = this.normalizeCardFactText(passage).toLowerCase();
+      const passageKeywords = this.collectPassageKeywords(passage, normalizedSnippet);
       const asset =
         passage.cardAsset ??
         (passage.sourceRef?.startsWith('card:')
@@ -521,13 +526,18 @@ export class KnowledgeOrchestratorService extends Service {
           : undefined);
       if (!asset) continue;
 
+      const blockTypeKey = this.getBlockTypeKey(passage.cardBlockType);
       const normalizedAsset = asset.toUpperCase();
       const existing = groups.get(normalizedAsset);
       if (existing) {
         existing.passages.push(passage);
-        passageKeywords.forEach((kw) => existing.keywordSet.add(kw));
+        passageKeywords.all.forEach((kw) => existing.keywordSet.add(kw));
+        this.mergeKeywordMaps(existing.keywordSetByType, passageKeywords.byType);
         if (normalizedSnippet && !existing.textSnippets.includes(normalizedSnippet)) {
           existing.textSnippets.push(normalizedSnippet);
+        }
+        if (normalizedSnippet) {
+          this.addSnippetToMap(existing.textSnippetsByType, blockTypeKey, normalizedSnippet);
         }
       } else {
         groups.set(normalizedAsset, {
@@ -536,8 +546,10 @@ export class KnowledgeOrchestratorService extends Service {
           best: passage,
           score:
             (passage.cardBlockPriority ?? 0) * 10 + passage.score,
-          keywordSet: new Set(passageKeywords),
+          keywordSet: new Set(passageKeywords.all),
+          keywordSetByType: this.cloneKeywordMap(passageKeywords.byType),
           textSnippets: normalizedSnippet ? [normalizedSnippet] : [],
+          textSnippetsByType: this.createSnippetMap(blockTypeKey, normalizedSnippet),
         });
       }
     }
@@ -548,41 +560,151 @@ export class KnowledgeOrchestratorService extends Service {
 
     const analysis = this.analyzeCardQueryIntent(query);
 
-    const ranked = Array.from(groups.values())
-      .map((group) => {
-        const best = group.passages[0];
-        const baseScore =
-          (best.cardBlockPriority ?? 0) * 10 + best.score;
-        const relevance = this.computeGroupRelevance(group, analysis);
-        const score = baseScore + relevance.boost - relevance.literalMisses * 80;
-        return {
-          ...group,
-          best,
-          score,
-          matchHighlights: relevance.highlights,
-          literalSatisfied: relevance.literalMisses === 0,
-        };
-      })
-      .sort((a, b) => b.score - a.score);
+    if (process.env.LORE_DEBUG === 'verbose') {
+      logger.info(
+        `🧠 [CardDiscovery] Groups=${groups.size} query="${query}"`
+      );
+    }
+
+    const baseGroups = Array.from(groups.values()).map((group) => {
+      const best = group.passages[0];
+      const baseScore =
+        (best.cardBlockPriority ?? 0) * 10 + best.score;
+      const relevance = this.computeGroupRelevance(group, analysis);
+      const heuristicScore =
+        baseScore +
+        relevance.boost -
+        relevance.literalMisses * 80 -
+        relevance.tokenMissPenalty;
+
+      if (process.env.LORE_DEBUG === 'verbose') {
+        logger.info(
+          `🧠 [CardDiscovery] ${group.asset} base=${baseScore.toFixed(
+            2
+          )} boost=${relevance.boost.toFixed(2)} literalMiss=${
+            relevance.literalMisses
+          } tokenPenalty=${relevance.tokenMissPenalty.toFixed(
+            2
+          )} visualMatches=${relevance.visualMatches} heuristic=${heuristicScore.toFixed(2)}`
+        );
+        logger.info(
+          `   • highlights=${relevance.highlights.join(', ') || 'none'}`
+        );
+      }
+
+      return {
+        ...group,
+        best,
+        heuristicScore,
+        score: heuristicScore,
+        matchHighlights: relevance.highlights,
+        literalSatisfied: relevance.literalMisses === 0,
+        visualMatches: relevance.visualMatches,
+        totalKeywordMatches: relevance.keywordMatches,
+        literalMisses: relevance.literalMisses,
+        tokenPenalty: relevance.tokenMissPenalty,
+        rerankSource: 'heuristic' as const,
+      };
+    });
+
+    let ranked: CardFactGroup[];
+
+    const llmMap = await this.rerankCardCandidatesWithLLM(query, baseGroups);
+    if (!llmMap) {
+      logger.debug('🤖 [CardDiscovery.LLM] Reranker disabled or failed (map=null)');
+    } else {
+      logger.debug(`🤖 [CardDiscovery.LLM] Returned ${llmMap.size} scores`);
+    }
+
+    if (llmMap && llmMap.size > 0) {
+      ranked = baseGroups
+        .map((group) => {
+          const rerank = llmMap.get(group.asset);
+          if (rerank) {
+            const llmScore = Math.max(0, Math.min(1, rerank.score));
+            if (process.env.LORE_DEBUG === 'verbose') {
+              logger.info(
+                `🤖 [CardDiscovery.LLM] ${group.asset} score=${llmScore.toFixed(
+                  3
+                )} reason=${rerank.reason || 'n/a'}`
+              );
+            }
+            return {
+              ...group,
+              score: llmScore,
+              llmScore,
+              llmReason: rerank.reason,
+              rerankSource: 'llm' as const,
+            };
+          }
+          return {
+            ...group,
+            score: group.heuristicScore ?? group.score ?? 0,
+            rerankSource: 'heuristic' as const,
+          };
+        })
+        .sort((a, b) => {
+          const aHas = a.rerankSource === 'llm';
+          const bHas = b.rerankSource === 'llm';
+          if (aHas && bHas) {
+            return (b.llmScore ?? 0) - (a.llmScore ?? 0);
+          }
+          if (aHas) return -1;
+          if (bHas) return 1;
+          return (b.heuristicScore ?? 0) - (a.heuristicScore ?? 0);
+        });
+    } else {
+      ranked = baseGroups.sort(
+        (a, b) => (b.heuristicScore ?? 0) - (a.heuristicScore ?? 0)
+      );
+    }
 
     const limited = ranked.slice(0, Math.min(3, ranked.length));
 
-    const candidateIds = limited.map((group) => `card:${group.asset}`);
-    const freshIds = filterOutRecentlyUsed(roomId, candidateIds);
-    let selectionPool = limited;
-    if (freshIds.length > 0) {
-      const freshGroups = limited.filter((group) =>
-        freshIds.includes(`card:${group.asset}`)
+    const threshold = Math.max(
+      0,
+      Math.min(
+        1,
+        parseFloat(process.env.CARD_TRAIT_RERANK_MIN_SCORE || '0.55')
+      )
+    );
+
+    let selectedGroup: CardFactGroup | undefined;
+
+    const topLlms = limited.filter(
+      (group) => group.rerankSource === 'llm' && (group.llmScore ?? 0) >= threshold
+    );
+    if (topLlms.length > 0) {
+      selectedGroup = topLlms[0];
+      logger.debug(
+        `🤖 [CardDiscovery.LLM] Selected ${selectedGroup.asset} with score ${(selectedGroup.llmScore ?? 0).toFixed(2)} >= ${threshold.toFixed(
+          2
+        )}`
       );
-      if (freshGroups.length > 0) {
-        selectionPool = freshGroups;
+    }
+
+    if (!selectedGroup) {
+      const candidateIds = limited.map((group) => `card:${group.asset}`);
+      const freshIds = filterOutRecentlyUsed(roomId, candidateIds);
+      let selectionPool = limited;
+      if (freshIds.length > 0) {
+        const freshGroups = limited.filter((group) =>
+          freshIds.includes(`card:${group.asset}`)
+        );
+        if (freshGroups.length > 0) {
+          selectionPool = freshGroups;
+        }
+      }
+
+      selectedGroup = selectionPool[0];
+      if (selectionPool.length > 1) {
+        const randomIndex = Math.floor(Math.random() * selectionPool.length);
+        selectedGroup = selectionPool[randomIndex];
       }
     }
 
-    let selectedGroup = selectionPool[0];
-    if (selectionPool.length > 1) {
-      const randomIndex = Math.floor(Math.random() * selectionPool.length);
-      selectedGroup = selectionPool[randomIndex];
+    if (!selectedGroup) {
+      return null;
     }
 
     if (selectedGroup) {
@@ -753,54 +875,85 @@ Write ONE short sentence (max 20 words) telling the user why this card fits the 
     }
   }
 
-  private collectPassageKeywords(passage: RetrievedPassage): string[] {
-    const result = new Set<string>();
-    const addPhrase = (phrase: string) => {
-      const lower = phrase.toLowerCase().trim();
-      if (!lower) return;
-      if (lower.length >= 3) {
-        result.add(lower);
+  private collectPassageKeywords(
+    passage: RetrievedPassage,
+    normalizedSnippet: string
+  ): CollectedPassageKeywords {
+    const all = new Set<string>();
+    const byType: KeywordMap = {};
+    const blockType = this.getBlockTypeKey(passage.cardBlockType);
+
+    const ingest = (token: string, type: CardBlockTypeKey) => {
+      if (!this.isVisualOrText(type)) return;
+      const normalized = this.normalizeSearchToken(token);
+      if (!normalized) return;
+      all.add(normalized);
+      if (!byType[type]) {
+        byType[type] = new Set<string>();
       }
-      for (const part of lower.split(/\s+/)) {
-        const trimmed = part.trim();
-        if (trimmed.length >= 3) {
-          result.add(trimmed);
+      byType[type]!.add(normalized);
+    };
+
+    const collectTokens = (tokens: string[] | null | undefined, type: CardBlockTypeKey) => {
+      if (!this.isVisualOrText(type)) return;
+      if (!Array.isArray(tokens)) return;
+      for (const token of tokens) {
+        if (typeof token === 'string') {
+          const lowercase = token.toLowerCase();
+          if (lowercase) ingest(lowercase, type);
         }
       }
     };
 
-    if (Array.isArray(passage.cardKeywords)) {
-      for (const keyword of passage.cardKeywords) {
-        if (typeof keyword === 'string') {
-          addPhrase(keyword);
-        }
-      }
+    const metadata = passage.metadata as any;
+
+    if (metadata?.keywords && this.isVisualOrText(blockType)) {
+      collectTokens(metadata.keywords, blockType);
     }
 
-    const metadataKeywords = (passage.metadata as any)?.keywords;
-    if (Array.isArray(metadataKeywords)) {
-      for (const keyword of metadataKeywords) {
-        if (typeof keyword === 'string') {
-          addPhrase(keyword);
-        }
-      }
+    if (metadata?.visualKeywords) {
+      collectTokens(metadata.visualKeywords, 'visual');
+    }
+
+    if (metadata?.textKeywords) {
+      collectTokens(metadata.textKeywords, 'text');
     }
 
     if (typeof passage.cardBlockLabel === 'string') {
-      addPhrase(passage.cardBlockLabel);
+      if (this.isVisualOrText(blockType)) {
+        const tokens = this.tokenizePhrase(passage.cardBlockLabel);
+        tokens.forEach((token) => ingest(token, blockType));
+      }
     }
 
-    return Array.from(result);
+    if (normalizedSnippet) {
+      if (blockType === 'visual') {
+        this.tokenizePhrase(normalizedSnippet).forEach((token) =>
+          ingest(token, 'visual')
+        );
+      } else if (blockType === 'text' || blockType === 'combined') {
+        this.tokenizePhrase(normalizedSnippet).forEach((token) => ingest(token, 'text'));
+      }
+    }
+
+    return { all, byType };
   }
 
   private analyzeCardQueryIntent(query: string): CardQueryAnalysis {
     const literalMap = new Map<string, CardLiteralTerm>();
     const captureLiteral = (rawTerm?: string) => {
       if (!rawTerm) return;
-      const normalized = rawTerm.toLowerCase().trim();
-      if (!normalized) return;
-      if (!literalMap.has(normalized)) {
-        literalMap.set(normalized, { raw: rawTerm.trim(), normalized });
+      const normalizedPhrase = this.normalizeLiteralPhrase(rawTerm);
+      if (!normalizedPhrase) return;
+      if (!literalMap.has(normalizedPhrase)) {
+        const tokens = this.tokenizePhrase(normalizedPhrase)
+          .map((token) => this.normalizeSearchToken(token))
+          .filter((token): token is string => !!token);
+        literalMap.set(normalizedPhrase, {
+          raw: rawTerm.trim(),
+          normalized: normalizedPhrase,
+          tokens,
+        });
       }
     };
 
@@ -826,47 +979,78 @@ Write ONE short sentence (max 20 words) telling the user why this card fits the 
     const literalTerms = Array.from(literalMap.values());
 
     const tokenSet = new Set<string>();
-    const lower = query.toLowerCase();
-    const words = lower.match(/\b[a-z0-9]{3,}\b/g) || [];
+    const words = query.match(/\b[a-zA-Z0-9]{3,}\b/g) || [];
 
     for (const word of words) {
-      if (!KnowledgeOrchestratorService.CARD_QUERY_STOP_WORDS.has(word)) {
-        tokenSet.add(word);
+      const normalized = this.normalizeSearchToken(word);
+      if (normalized) {
+        tokenSet.add(normalized);
       }
     }
 
     for (const literal of literalTerms) {
-      const parts = literal.normalized.split(/\s+/);
-      for (const part of parts) {
-        if (part.length >= 3 && !KnowledgeOrchestratorService.CARD_QUERY_STOP_WORDS.has(part)) {
-          tokenSet.add(part);
-        }
+      for (const token of literal.tokens) {
+        tokenSet.add(token);
       }
     }
+
+    const hasVisualTraitIntent = false;
 
     return {
       tokens: Array.from(tokenSet),
       literalTerms,
+      hasVisualTraitIntent,
     };
   }
 
   private computeGroupRelevance(
     group: CardFactGroup,
     analysis: CardQueryAnalysis
-  ): { boost: number; highlights: string[]; literalMisses: number } {
+  ): {
+    boost: number;
+    highlights: string[];
+    literalMisses: number;
+    tokenMissPenalty: number;
+    visualMatches: number;
+    keywordMatches: number;
+  } {
     const keywordSet = group.keywordSet ?? new Set<string>();
+    const keywordSetByType = group.keywordSetByType ?? {};
     const textSnippets = group.textSnippets ?? [];
-    const matchedKeywords = new Set<string>();
-    const textMatches = new Set<string>();
+    const textSnippetsByType = group.textSnippetsByType ?? {};
+
     const highlightTokens = new Set<string>();
+    const matchesByType: Record<'visual' | 'text', Set<string>> = {
+      visual: new Set<string>(),
+      text: new Set<string>(),
+    };
+    const matchedTokenSet = new Set<string>();
+    const typePriority: Array<'visual' | 'text'> = ['visual', 'text'];
+
+    const tokenMatchesType = (token: string, type: CardBlockTypeKey): boolean => {
+      if (!this.isVisualOrText(type)) return false;
+      const keywordMatches = keywordSetByType[type]?.has(token);
+      if (keywordMatches) {
+        return true;
+      }
+      const snippetMatches = this.includesToken(textSnippetsByType[type], token);
+      return snippetMatches;
+    };
 
     for (const token of analysis.tokens) {
-      if (keywordSet.has(token)) {
-        matchedKeywords.add(token);
-        highlightTokens.add(this.formatHighlightToken(token));
-      } else if (textSnippets.some((snippet) => snippet.includes(token))) {
-        textMatches.add(token);
-        highlightTokens.add(this.formatHighlightToken(token));
+      let matchedType: CardBlockTypeKey | null = null;
+      for (const type of typePriority) {
+        if (tokenMatchesType(token, type)) {
+          matchedType = type;
+          matchesByType[type]!.add(token);
+          matchedTokenSet.add(token);
+          highlightTokens.add(this.formatHighlightToken(token, type));
+          break;
+        }
+      }
+
+      if (matchedType) {
+        continue;
       }
     }
 
@@ -874,56 +1058,449 @@ Write ONE short sentence (max 20 words) telling the user why this card fits the 
     let literalHits = 0;
 
     for (const literal of analysis.literalTerms) {
-      const target = literal.normalized;
-      let satisfied =
-        (target.length >= 3 && keywordSet.has(target)) ||
-        textSnippets.some((snippet) => snippet.includes(target));
+      let satisfied = false;
 
-      if (!satisfied && target.includes(' ')) {
-        const parts = target.split(/\s+/).filter(Boolean);
-        if (
-          parts.length > 0 &&
-          parts.every(
-            (part) =>
-              part.length < 3 ||
-              keywordSet.has(part) ||
-              textSnippets.some((snippet) => snippet.includes(part))
-          )
-        ) {
-          satisfied = true;
+      if (literal.tokens.length > 0) {
+        satisfied = literal.tokens.every((token) => {
+          if (matchedTokenSet.has(token)) {
+            return true;
+          }
+          for (const type of typePriority) {
+            if (tokenMatchesType(token, type)) {
+              matchesByType[type].add(token);
+              matchedTokenSet.add(token);
+              highlightTokens.add(this.formatHighlightToken(literal.raw, 'literal'));
+              return true;
+            }
+          }
+          return false;
+        });
+      }
+
+      if (!satisfied && literal.normalized) {
+        satisfied = textSnippets.some((snippet) => snippet.includes(literal.normalized));
+        if (satisfied) {
+          highlightTokens.add(this.formatHighlightToken(literal.raw, 'literal'));
         }
       }
 
       if (satisfied) {
         literalHits += 1;
-        highlightTokens.add(this.formatHighlightToken(literal.raw));
       } else {
         literalMisses += 1;
       }
     }
 
-    const keywordBoost = matchedKeywords.size * 8;
-    const textOnlyTokens = Array.from(textMatches).filter(
-      (token) => !matchedKeywords.has(token)
-    );
-    const textBoost = textOnlyTokens.length * 4;
+    const visualBoost = matchesByType.visual.size * 18;
+    const textBoost = matchesByType.text.size * 15;
     const literalBonus = literalHits * 35;
-    const boost = keywordBoost + textBoost + literalBonus;
+
+    const visualMatches = matchesByType.visual.size;
+    const keywordMatches = matchedTokenSet.size;
+
+    const boost =
+      visualBoost +
+      textBoost +
+      literalBonus;
+
+    const unmatchedTokens = analysis.tokens.filter((token) => !matchedTokenSet.has(token));
+    let tokenMissPenalty = 0;
+    if (analysis.tokens.length > 0 && matchedTokenSet.size === 0) {
+      tokenMissPenalty = Math.max(60, analysis.tokens.length * 15);
+    } else if (unmatchedTokens.length > 0) {
+      tokenMissPenalty = unmatchedTokens.length * 6;
+    }
+
+    if (analysis.hasVisualTraitIntent && visualMatches === 0) {
+      tokenMissPenalty += Math.max(120, analysis.tokens.length * 20);
+    }
 
     return {
       boost,
       highlights: Array.from(highlightTokens).slice(0, 4),
       literalMisses,
+      tokenMissPenalty,
+      visualMatches,
+      keywordMatches,
     };
   }
 
-  private formatHighlightToken(token: string): string {
+  private async rerankCardCandidatesWithLLM(
+    query: string,
+    groups: CardFactGroup[]
+  ): Promise<Map<string, { score: number; reason?: string }> | null> {
+    const rerankFlag = process.env.CARD_TRAIT_RERANK_ENABLED;
+    if (
+      rerankFlag &&
+      rerankFlag.toLowerCase() !== 'true' &&
+      rerankFlag !== '1'
+    ) {
+      logger.debug('🤖 [CardDiscovery.LLM] Reranker explicitly disabled via CARD_TRAIT_RERANK_ENABLED flag');
+      return null;
+    }
+
+    const maxCandidates = Math.max(
+      1,
+      parseInt(process.env.CARD_TRAIT_RERANK_TOPK || '30', 10)
+    );
+    const prepared: TraitRerankCandidate[] = [];
+
+    for (const group of groups) {
+      const descriptor = this.buildTraitCandidateDescriptor(group);
+      if (!descriptor) continue;
+      prepared.push({
+        asset: descriptor.asset,
+        name: descriptor.name,
+        description: this.truncateForPrompt(descriptor.visualSummary, 340),
+        textOnCard: descriptor.textOnCard,
+        keywords: Array.from(
+          new Set([...descriptor.visualKeywords, ...descriptor.textKeywords])
+        ).slice(0, 10),
+      });
+      if (prepared.length >= maxCandidates) {
+        break;
+      }
+    }
+
+    logger.debug(
+      `🤖 [CardDiscovery.LLM] Preparing ${prepared.length} candidates for "${query}": ` +
+      prepared.map((c) => c.asset).join(', ')
+    );
+
+    if (prepared.length === 0) {
+      return null;
+    }
+
+    const payload = {
+      question: query,
+      candidates: prepared,
+    };
+
+    const systemInstructions =
+      'You rank Fake Rare trading cards by how well they match a user request about visual traits.\n' +
+      'Focus ONLY on appearance: objects, characters, colors, environment, mood, visible text.\n' +
+      'Ignore supply, rarity, lore, and other metadata not seen on the card.\n' +
+      'Return strict JSON: {"ranked":[{"asset":"...","score":0-1,"reason":"..."}]}.\n' +
+      'Scores must be between 0 and 1. Use 0 when a candidate clearly does NOT match.\n' +
+      'Keep reasons short (<=20 words) and reference the visible cues that match or miss.';
+
+    const prompt =
+      `${systemInstructions}\n\n` +
+      `Input JSON:\n${JSON.stringify(payload, null, 2)}\n\n` +
+      'Respond with JSON only.';
+
+    const modelTypePref = (process.env.CARD_TRAIT_RERANK_MODEL_TYPE || 'TEXT_LARGE')
+      .toUpperCase()
+      .trim();
+    const chosenModelType =
+      modelTypePref === 'TEXT_SMALL' ? ModelType.TEXT_SMALL : ModelType.TEXT_LARGE;
+    const defaultModel =
+      chosenModelType === ModelType.TEXT_SMALL
+        ? process.env.OPENAI_SMALL_MODEL || 'gpt-4o-mini'
+        : process.env.OPENAI_LARGE_MODEL || 'gpt-4o';
+    const modelName = process.env.CARD_TRAIT_RERANK_MODEL || defaultModel;
+    const maxTokens = Math.max(
+      200,
+      parseInt(process.env.CARD_TRAIT_RERANK_MAX_TOKENS || '600', 10)
+    );
+
+    try {
+      const result = await this.runtime.useModel(chosenModelType, {
+        prompt,
+        temperature: 0.2,
+        maxTokens,
+        context: 'Card Trait Rerank',
+        model: modelName,
+      });
+
+      const raw =
+        typeof result === 'string'
+          ? result
+          : (result as any)?.text ??
+            (result as any)?.toString?.() ??
+            '';
+
+      const jsonText = this.extractJsonObject(raw);
+      if (!jsonText) {
+        logger.warn({ msg: '[CardTraitRerank] Unable to parse LLM response', raw });
+        return null;
+      }
+
+      logger.debug(
+        `🤖 [CardDiscovery.LLM] Raw response for "${query}": ${this.truncateForPrompt(
+          jsonText,
+          500
+        )}`
+      );
+
+      const parsed = JSON.parse(jsonText) as {
+        ranked?: Array<{ asset: string; score?: number; reason?: string }>;
+      };
+
+      if (!Array.isArray(parsed.ranked)) {
+        return null;
+      }
+
+      const map = new Map<string, { score: number; reason?: string }>();
+      for (const entry of parsed.ranked) {
+        if (!entry || typeof entry.asset !== 'string') continue;
+        const score =
+          typeof entry.score === 'number'
+            ? entry.score
+            : parseFloat(String(entry.score));
+        if (!Number.isFinite(score)) continue;
+        const normalizedScore = Math.max(0, Math.min(1, score));
+        const reason =
+          typeof entry.reason === 'string' ? entry.reason.trim() : undefined;
+        map.set(entry.asset.toUpperCase(), { score: normalizedScore, reason });
+      }
+
+      return map.size > 0 ? map : null;
+    } catch (err) {
+      logger.warn({ err, msg: '[CardTraitRerank] LLM rerank failed' });
+      return null;
+    }
+  }
+
+  private buildTraitCandidateDescriptor(group: CardFactGroup): TraitCandidateDescriptor | null {
+    const descriptor: TraitCandidateDescriptor = {
+      asset: group.asset,
+      name: group.asset,
+      visualSummary: '',
+      textOnCard: [],
+      visualKeywords: [],
+      textKeywords: [],
+    };
+
+    for (const passage of group.passages) {
+      const metadata = passage.metadata ?? {};
+      if (!descriptor.visualSummary && typeof (metadata as any).visualSummaryShort === 'string') {
+        descriptor.visualSummary = ((metadata as any).visualSummaryShort as string).trim();
+      } else if (
+        !descriptor.visualSummary &&
+        typeof (metadata as any).visualSummary === 'string'
+      ) {
+        descriptor.visualSummary = ((metadata as any).visualSummary as string).trim();
+      }
+
+      if (Array.isArray((metadata as any).textOnCard)) {
+        (metadata as any).textOnCard.forEach((line: any) => {
+          if (typeof line === 'string' && line.trim().length > 0) {
+            descriptor.textOnCard.push(line.trim());
+          }
+        });
+      }
+
+      if (Array.isArray((metadata as any).visualKeywords)) {
+        (metadata as any).visualKeywords.forEach((kw: any) => {
+          if (typeof kw === 'string' && kw.trim().length > 0) {
+            descriptor.visualKeywords.push(kw.trim());
+          }
+        });
+      }
+
+      if (Array.isArray((metadata as any).textKeywords)) {
+        (metadata as any).textKeywords.forEach((kw: any) => {
+          if (typeof kw === 'string' && kw.trim().length > 0) {
+            descriptor.textKeywords.push(kw.trim());
+          }
+        });
+      }
+    }
+
+    if (!descriptor.visualSummary) {
+      const visualPassage = group.passages.find((p) => p.cardBlockType === 'visual');
+      if (visualPassage) {
+        descriptor.visualSummary = this.normalizeCardFactText(visualPassage);
+      }
+    }
+
+    descriptor.visualSummary = descriptor.visualSummary.trim();
+    descriptor.textOnCard = Array.from(new Set(descriptor.textOnCard)).slice(0, 4);
+    descriptor.visualKeywords = Array.from(new Set(descriptor.visualKeywords)).slice(0, 10);
+    descriptor.textKeywords = Array.from(new Set(descriptor.textKeywords)).slice(0, 10);
+
+    if (!descriptor.visualSummary && descriptor.textOnCard.length === 0) {
+      return null;
+    }
+
+    return descriptor;
+  }
+
+  private extractJsonObject(text: string): string | null {
+    if (!text) return null;
+    const start = text.indexOf('{');
+    const end = text.lastIndexOf('}');
+    if (start === -1 || end === -1 || end <= start) {
+      return null;
+    }
+    const candidate = text.slice(start, end + 1);
+    try {
+      JSON.parse(candidate);
+      return candidate;
+    } catch {
+      return null;
+    }
+  }
+
+  private truncateForPrompt(text: string, maxLength: number): string {
+    const trimmed = text.trim();
+    if (trimmed.length <= maxLength) return trimmed;
+    return `${trimmed.slice(0, maxLength - 1).trim()}…`;
+  }
+
+  private formatHighlightToken(token: string, type?: CardBlockTypeKey | 'literal'): string {
     const trimmed = token.trim();
     if (!trimmed) return trimmed;
-    if (trimmed.length <= 4) {
-      return trimmed.toUpperCase();
+    const display =
+      trimmed.length <= 4
+        ? trimmed.toUpperCase()
+        : trimmed.replace(/\b\w/g, (char) => char.toUpperCase());
+
+    const label = (() => {
+      switch (type) {
+        case 'visual':
+          return 'Visual';
+        case 'text':
+          return 'On-card';
+        case 'memetic':
+          return 'Memetic';
+        case 'combined':
+          return 'Summary';
+        case 'raw':
+          return 'Analysis';
+        case 'literal':
+          return 'Literal';
+        case 'other':
+        case 'unknown':
+        default:
+          return null;
+      }
+    })();
+
+    return label ? `${label}: ${display}` : display;
+  }
+
+  private mergeKeywordMaps(target: KeywordMap, source?: KeywordMap): void {
+    if (!source) return;
+    for (const key of Object.keys(source) as CardBlockTypeKey[]) {
+      const values = source[key];
+      if (!values) continue;
+      if (!target[key]) {
+        target[key] = new Set<string>();
+      }
+      values.forEach((value) => target[key]!.add(value));
     }
-    return trimmed.replace(/\b\w/g, (char) => char.toUpperCase());
+  }
+
+  private cloneKeywordMap(source?: KeywordMap): KeywordMap {
+    const clone: KeywordMap = {};
+    if (!source) return clone;
+    for (const key of Object.keys(source) as CardBlockTypeKey[]) {
+      const values = source[key];
+      if (values && values.size > 0) {
+        clone[key] = new Set(values);
+      }
+    }
+    return clone;
+  }
+
+  private createSnippetMap(type: CardBlockTypeKey, snippet?: string): SnippetMap {
+    const map: SnippetMap = {};
+    if (snippet && this.isVisualOrText(type)) {
+      map[type] = [snippet];
+    }
+    return map;
+  }
+
+  private addSnippetToMap(target: SnippetMap, type: CardBlockTypeKey, snippet: string): void {
+    if (!this.isVisualOrText(type)) return;
+    if (!snippet) return;
+    if (!target[type]) {
+      target[type] = [];
+    }
+    if (!target[type]!.includes(snippet)) {
+      target[type]!.push(snippet);
+    }
+  }
+
+  private tokenizePhrase(phrase: string): string[] {
+    return phrase
+      .toLowerCase()
+      .split(/[^a-z0-9]+/)
+      .map((token) => token.trim())
+      .filter((token) => token.length > 0);
+  }
+
+  private normalizeSearchToken(token: string): string | null {
+    if (!token) return null;
+    let normalized = token
+      .toLowerCase()
+      .replace(/[^a-z0-9]/g, '');
+
+    if (!normalized) return null;
+    normalized = this.simpleStem(normalized);
+
+    if (normalized.length < 3) return null;
+    if (KnowledgeOrchestratorService.CARD_QUERY_STOP_WORDS.has(normalized)) return null;
+    return normalized;
+  }
+
+  private simpleStem(token: string): string {
+    let result = token;
+
+    if (result.endsWith('iest') && result.length > 5) {
+      result = result.slice(0, -4) + 'y';
+    } else if (result.endsWith('ies') && result.length > 4) {
+      result = result.slice(0, -3) + 'y';
+    } else if (result.endsWith('ing') && result.length > 5) {
+      result = result.slice(0, -3);
+    } else if (result.endsWith('ers') && result.length > 5) {
+      result = result.slice(0, -3);
+    } else if (result.endsWith('er') && result.length > 4) {
+      result = result.slice(0, -2);
+    } else if (result.endsWith('est') && result.length > 4) {
+      result = result.slice(0, -3);
+    } else if (result.endsWith('ed') && result.length > 4) {
+      result = result.slice(0, -2);
+    } else if (result.endsWith('es') && result.length > 4) {
+      result = result.slice(0, -2);
+    } else if (result.endsWith('s') && result.length > 4) {
+      result = result.slice(0, -1);
+    }
+
+    return result;
+  }
+
+  private normalizeLiteralPhrase(phrase: string): string {
+    return phrase
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  private includesToken(snippets: string[] | undefined, token: string): boolean {
+    if (!snippets || snippets.length === 0) return false;
+    return snippets.some((snippet) => snippet.includes(token));
+  }
+
+  private getBlockTypeKey(type?: RetrievedPassage['cardBlockType']): CardBlockTypeKey {
+    switch (type) {
+      case 'visual':
+      case 'text':
+      case 'memetic':
+      case 'combined':
+      case 'raw':
+      case 'other':
+        return type;
+      default:
+        return 'unknown';
+    }
+  }
+
+  private isVisualOrText(type: CardBlockTypeKey): type is 'visual' | 'text' {
+    return type === 'visual' || type === 'text';
   }
 
   private truncateSnippet(text: string, maxLength = 180): string {
@@ -932,6 +1509,11 @@ Write ONE short sentence (max 20 words) telling the user why this card fits the 
   }
 
   private buildCardReason(group: CardFactGroup): string {
+    if (group.llmReason && group.llmReason.trim().length > 0) {
+      const reason = group.llmReason.trim();
+      return `**${group.asset}** fits because ${reason.endsWith('.') ? reason : `${reason}.`}`;
+    }
+
     const snippet =
       this.extractSnippetFromGroup(group, [
         'visual',
@@ -1090,14 +1672,34 @@ Write ONE short sentence (max 20 words) telling the user why this card fits the 
   }
 }
 
+type CardBlockTypeKey =
+  | 'visual'
+  | 'text'
+  | 'memetic'
+  | 'combined'
+  | 'raw'
+  | 'other'
+  | 'unknown';
+
+type KeywordMap = Partial<Record<CardBlockTypeKey, Set<string>>>;
+
+type SnippetMap = Partial<Record<CardBlockTypeKey, string[]>>;
+
+interface CollectedPassageKeywords {
+  all: Set<string>;
+  byType: KeywordMap;
+}
+
 interface CardLiteralTerm {
   raw: string;
   normalized: string;
+  tokens: string[];
 }
 
 interface CardQueryAnalysis {
   tokens: string[];
   literalTerms: CardLiteralTerm[];
+  hasVisualTraitIntent: boolean;
 }
 
 interface CardFactGroup {
@@ -1105,8 +1707,35 @@ interface CardFactGroup {
   passages: RetrievedPassage[];
   best: RetrievedPassage;
   score: number;
+  heuristicScore?: number;
+  llmScore?: number;
+  llmReason?: string;
+  rerankSource?: 'llm' | 'heuristic';
   keywordSet: Set<string>;
+  keywordSetByType: KeywordMap;
   textSnippets: string[];
+  textSnippetsByType: SnippetMap;
   matchHighlights?: string[];
   literalSatisfied?: boolean;
+  totalKeywordMatches?: number;
+  literalMisses?: number;
+  tokenPenalty?: number;
+  visualMatches?: number;
+}
+
+interface TraitCandidateDescriptor {
+  asset: string;
+  name: string;
+  visualSummary: string;
+  textOnCard: string[];
+  visualKeywords: string[];
+  textKeywords: string[];
+}
+
+interface TraitRerankCandidate {
+  asset: string;
+  name: string;
+  description: string;
+  textOnCard: string[];
+  keywords: string[];
 }

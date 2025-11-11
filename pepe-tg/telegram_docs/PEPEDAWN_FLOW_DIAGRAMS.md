@@ -603,123 +603,85 @@
 ┌─────────────────────────────────────────────────────────────────┐
 │                        USER INPUT                               │
 │  "Tell me about Fake Rares"  │  "Who is Rare Scrilla?"          │
-└───────────────────────────┬─────────────────────────────────────┘
-                            │
-                            ▼
-                ┌───────────────────────┐
-                │  1. MESSAGE RECEIVED  │
-                │  Plugin event         │
-                └───────────┬───────────┘
-                            │
-                            ▼
-                ┌───────────────────────────────┐
-                │  2. COMMAND DETECTION         │
-                │  Check if matches:            │
-                │  • /f (card)                  │
-                │  • /fv (visual)               │
-                │  • /ft (test)                 │
-                │  • /fl (lore)                 │
-                │  • /fc (cost - admin)         │
-                │  • /odds (lottery)            │
-                │  • /start, /help              │
-                │  • "/fr" or "remember this"   │
-                └───────────┬───────────────────┘
-                            │
-                    ┌───────▼────────┐
-                    │  Is command?   │
-                    └───────┬────────┘
-                            │
-                    YES ────┼──── NO
-                     │              │
-              (handled by           ▼
-               action)    ┌───────────────────────┐
-                          │ 3. QUERY CLASSIFIER   │
-                          │ Detect: FACTS/LORE?   │
-                          └───────────┬───────────┘
-                                      │
-                          ┌───────────▼───────────┐
-                          │ FACTS (what/how/rules)│
-                          │    + Is Question?     │
-                          │    + Not reply to     │
-                          │      other user?      │
-                          └───────────┬───────────┘
-                                      │
-                              YES ────┼──── NO
-                               │              │
-                    ┌──────────▼─────────┐    │
-                    │ AUTO-ROUTE to /fl  │    │
-                    │ • Force FACTS mode │    │
-                    │ • Wiki + memories  │    │
-                    │ • Skip Bootstrap   │    │
-                    │                    │    │
-                    │ Blocked:           │    │
-                    │ • Statements       │    │
-                    │ • Announcements    │    │
-                    │ • User-to-user     │    │
-                    │   replies          │    │
-                    └──────────┬─────────┘    │
-                               │              │
-                            (done)            ▼
-                                    ┌─────────────────────┐
-                                    │ 5. CONTEXT PROVIDER │
-                                    │ (if mentioned cards)│
-                                    │                     │
-                                    │ Inject context:     │
-                                    │ • Card info         │
-                                    │ • Artist info       │
-                                    │ • Series info       │
-                                    └──────────┬──────────┘
-                                               │
-                                               ▼
-                                    ┌─────────────────────┐
-                                    │ 6. BOOTSTRAP AI     │
-                                    │ ElizaOS framework   │
-                                    │                     │
-                                    │ Character:          │
-                                    │ • PEPEDAWN persona  │
-                                    │ • Fake Rares expert │
-                                    │ • Community OG      │
-                                    │                     │
-                                    │ Model:              │
-                                    │ • TEXT_LARGE (GPT-4)│
-                                    │ • With character    │
-                                    │   context           │
-                                    │                     │
-                                    │ Features:           │
-                                    │ • Conversation hist │
-                                    │ • Memory/context    │
-                                    │ • Natural responses │
-                                    └──────────┬──────────┘
-                                               │
-                                               ▼
-                                    ┌─────────────────────┐
-                                    │ 7. SEND RESPONSE    │
-                                    │                     │
-                                    │ Helpful, friendly,  │
-                                    │ knowledgeable reply │
-                                    │                     │
-                                    │ Cost: ~$0.01-0.02   │
-                                    │ per exchange        │
-                                    └──────────┬──────────┘
-                                               │
-                                               ▼
-                                    ┌─────────────────────┐
-                                    │  USER GETS ANSWER!  │
-                                    │         💬          │
-                                    └─────────────────────┘
+└───────────┬─────────────────────────────────────────────────────┘
+            ▼
+┌───────────────────────┐
+│ 1. MESSAGE RECEIVED   │
+│    Plugin event       │
+└───────────┬───────────┘
+            ▼
+┌───────────────────────────────┐
+│ 2. COMMAND / MEMORY CHECK     │
+│    Looks for:                 │
+│    • /f, /f c, /fv, /ft, /fl  │
+│    • /c, /p, /fm, /xcp, /fc   │
+│    • /start, /help            │
+│    • "/fr" or "remember this" │
+└───────────┬───────────────────┘
+            │
+            ├── YES → handled by command/memory action
+            │
+            ▼
+┌───────────────────────────────┐
+│ 3. SAFETY & TOPIC FILTERS     │
+│    • FAKEASF burn blocker     │
+│    • Off-topic suppression    │
+└───────────┬───────────┐
+            │           └── Filtered → stop or send policy reply
+            ▼
+┌───────────────────────────────┐
+│ 4. ENGAGEMENT GATE            │
+│    • Suppress low-signal chat │
+│    • Override for card intent │
+└───────────┬───────────┐
+            │           └── Suppressed → no response
+            ▼
+┌───────────────────────────────┐
+│ 5. QUERY CLASSIFICATION       │
+│    • FACTS / LORE / UNCERTAIN │
+│    • Card intent → FACTS      │
+│    • Replies to humans skip   │
+└───────────┬───────────┐
+            │           └── UNCERTAIN → Step 7B
+            ▼
+┌───────────────────────────────┐
+│ 6. KNOWLEDGE ORCHESTRATOR     │
+│    • FACTS → relevance ranking│
+│    • LORE → persona story     │
+│    • No wiki/memory hits →    │
+│      fall back to AI          │
+└───────────┬───────────┘
+            │
+            ▼
+┌─────────────────────┐
+│ 7A. SEND RESPONSE   │
+│     Knowledge answer│
+└───────────┬─────────┘
+            ▼
+┌─────────────────────┐
+│ USER GETS ANSWER 💬 │
+└─────────────────────┘
+
+If Step 5 → UNCERTAIN or Step 6 falls back:
+
+┌───────────────────────────────┐
+│ 7B. BOOTSTRAP CONVERSATION    │
+│    PEPEDAWN persona reply     │
+│    with convo context         │
+└───────────┬───────────┘
+            ▼
+┌─────────────────────┐
+│ USER GETS ANSWER 💬 │
+└─────────────────────┘
 ```
 
 **Key Features:**
-- **Smart auto-routing** - FACTS questions → knowledge retrieval (no AI hallucination)
-  - Only routes actual questions (not statements like "Three grails for sale...")
-  - Skips user-to-user replies (only routes replies to bot)
-  - Detects: explicit `?`, question words, imperative requests, indirect questions
-- **Answer variety** - When card discovery fires, the bot rotates through the freshest matching cards (top 3, 30 min cooldown) so repeated questions surface different highlights
-- **PEPEDAWN persona** - Community OG, helpful, knowledgeable
-- **Context injection** - Card info when cards mentioned
-- **Conversation memory** - Remembers chat history
-- **Natural language** - No rigid command structure
-- **ElizaOS framework** - Handles conversation flow
+- **Command-first routing** – slash commands and memory capture always win before conversation logic.
+- **Layered guards** – FAKEASF burn blocker, off-topic filter, and engagement scoring run before any LLM call.
+- **Direct knowledge orchestration** – FACTS/LORE questions call the `KnowledgeOrchestratorService` (no `/fl` shell-out) with fallback to Bootstrap when no wiki/memory hits exist.
+- **Card intent override** – single-card questions force FACTS mode so memories and wiki entries surface first.
+- **Conversation persona** – Bootstrap only handles UNCERTAIN chat or knowledge fallbacks, keeping replies short and on-brand.
+- **LRU freshness** – knowledge responses rotate passages, preserving memories while avoiding repeats.
 
 ---
 

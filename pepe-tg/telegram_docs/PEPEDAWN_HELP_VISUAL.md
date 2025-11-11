@@ -12,16 +12,16 @@
 ┌──────────────────────────────────────────────────────────────┐
 │  📷 CARD VIEWING                                             │
 ├──────────────────────────────────────────────────────────────┤
-│  /f CARDNAME      →  View any Fake Rare card                │
+│  /f CARDNAME      →  View any Fake Rare card                 │
 │  /f ARTIST        →  Random card by that artist              │
 │  /f c ARTIST      →  Browse artist's cards (carousel) ⭐NEW  │
 │  /f               →  Random card from 890+ collection        │
 │                                                              │
-│  /c CARDNAME      →  View any Fake Commons card             │
+│  /c CARDNAME      →  View any Fake Commons card              │
 │  /c               →  Random card from 1813+ collection       │
 │                                                              │
 │  💡 Typo-friendly! "FREEDOMK" → auto-corrects to FREEDOMKEK │
-│  💡 Suggestions! `/f hodlpepe` shows tap-to-fill buttons       │
+│  💡 Suggestions! `/f hodlpepe` shows tap-to-fill buttons    │
 │  💡 Case-insensitive! "freedomkek" works too                │
 │  💡 Carousel: Navigate with ⬅️ Prev / ➡️ Next buttons       │
 └──────────────────────────────────────────────────────────────┘
@@ -29,13 +29,13 @@
 ┌──────────────────────────────────────────────────────────────┐
 │  🔍 VISUAL ANALYSIS                                          │
 ├──────────────────────────────────────────────────────────────┤
-│  /fv CARDNAME     →  AI-powered memetic analysis            │
+│  /fv CARDNAME     →  AI-powered memetic analysis             │
 │                      • Reads ALL text (OCR)                  │
 │                      • Analyzes visual style                 │
 │                      • Identifies meme references            │
 │                      • Vibe check + rarity impression        │
 │                                                              │
-│  Cost: ~$0.005 per analysis                                 │
+│  Cost: ~$0.005 per analysis                                  │
 └──────────────────────────────────────────────────────────────┘
 
 ┌──────────────────────────────────────────────────────────────┐
@@ -45,8 +45,8 @@
 │                      [Attach an image with /ft caption]      │
 │                                                              │
 │  Scoring based on:                                           │
-│  ⭐️ PEPE culture (Fake Rares, Rare Pepe, danks)            │
-│  ⭐️ Memetic text (pepe-related)                            │
+│  ⭐️ PEPE culture (Fake Rares, Rare Pepe, danks)             │
+│  ⭐️ Memetic text (pepe-related)                             │
 │  ⚡ Green palette                                           │
 │  ⚡ Pepe name/references                                    │
 │                                                              │
@@ -77,7 +77,7 @@
 └──────────────────────────────────────────────────────────────┘
 
 ┌──────────────────────────────────────────────────────────────┐
-│  💾 MEMORY CAPTURE                                           │
+│  💾 MEMORY CAPTURE                                          │
 ├──────────────────────────────────────────────────────────────┤
 │  Save facts to the community knowledge base!                 │
 │                                                              │
@@ -97,11 +97,12 @@
 └──────────────────────────────────────────────────────────────┘
 
 ┌──────────────────────────────────────────────────────────────┐
-│  🎰 LOTTERY & ADMIN                                          │
+│  🛠️ ADMIN & ANALYTICS                                       │
 ├──────────────────────────────────────────────────────────────┤
-│  /odds            →  PEPEDAWN lottery stats (if deployed)    │
 │  /fc d            →  Today's costs (admin only)              │
 │  /fc m            →  This month's costs (admin only)         │
+│  /fm CARDNAME     →  Market stats snapshot                   │
+│  /xcp ASSET       →  XCP supply breakdown                    │
 └──────────────────────────────────────────────────────────────┘
 
 ┌──────────────────────────────────────────────────────────────┐
@@ -113,20 +114,20 @@
 │  • Tell me about FREEDOMKEK                                  │
 │  • What's La Faka Nostra?                                    │
 │                                                              │
-│  💡 Smart routing: FACTS questions auto-route to /fl        │
-│  💡 Statements (e.g., "Three grails for sale") stay natural │
+│  💡 Smart routing: FACTS/LORE questions hit Knowledge AI    │
+│  💡 Bootstrap persona only replies when knowledge misses    │
 │  💡 I remember conversations and have deep Fake Rares know!  │
 └──────────────────────────────────────────────────────────────┘
 
 ╔══════════════════════════════════════════════════════════════╗
-║                       ⚡ QUICK TIPS ⚡                       ║
+║                       ⚡ QUICK TIPS ⚡                      ║
 ╠══════════════════════════════════════════════════════════════╣
 ║  • Commands are case-insensitive                             ║
 ║  • Card names support fuzzy matching + tap-to-fill buttons   ║
-║  • 890+ Fake Rares + 1813+ Fake Commons, auto-updated       ║
-║  • All visual features use GPT-4o Vision                    ║
-║  • Lore searches across Telegram + Wiki + User Memories     ║
-║  • Lore card discovery rotates fresh highlights (no repeats)║
+║  • 890+ Fake Rares + 1813+ Fake Commons, auto-updated        ║
+║  • All visual features use GPT-4o Vision                     ║
+║  • Lore searches across Telegram + Wiki + User Memories      ║
+║  • Lore card discovery rotates fresh highlights (no repeats) ║
 ║  • Memories you save help the whole community! 💚           ║
 ╚══════════════════════════════════════════════════════════════╝
 
@@ -163,15 +164,17 @@ YOU                PEPEDAWN                RESULT
                   3. Strict scoring
 
 /fl TOPIC     →   1. Vector search     →   📚 Lore story:
-                  2. Rank sources           • 80-120 words
+                  2. Rank wiki/mems         • 80-120 words
                   3. Cluster & LLM          • Sources cited
-                  4. Recounting             • Historian tone
+                  4. Persona narration      • Historian tone
 
 "remember     →   Store in Knowledge   →   ✅ Saved!
 this..."          Database (global)         Searchable via /fl
 
-Any text      →   GPT-4o + PEPEDAWN    →   💬 Helpful reply
-                  character context         + card context
+Any text      →   Auto-checks commands →   💬 Helpful reply
+  (no slash)      & filters, then         • Knowledge answer first
+                  Knowledge AI or         • Persona fallback if no hits
+                  Bootstrap persona        • Still stays on-topic
 ```
 
 ---

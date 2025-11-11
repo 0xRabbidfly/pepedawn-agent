@@ -84,6 +84,7 @@ Review and update if necessary:
 
 ### 8. Git Command Preparation
 - Create a commit message that accurately summarizes the work since the last push (use `git log origin/master..HEAD` for reference)
+- **If the release is MINOR or MAJOR:** make the commit message multi-clause (or add a short multiline body) that explicitly calls out the key user-facing changes, notable technical shifts, and any follow-up actions. One-liners are only acceptable for PATCH releases.
 - Generate commands for user to execute MANUALLY (replace version/summary placeholders):
 - NEVER EXECUTE GIT COMMANDS!
   ```bash

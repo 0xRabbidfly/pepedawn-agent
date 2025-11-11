@@ -38,6 +38,9 @@ export interface CardVisualMemory {
   textOnCard: string[];
   memeticReferences: string[];
   visualSummary: string;
+  visualSummaryShort: string;
+  visualKeywords: string[];
+  textKeywords: string[];
   keywords: string[];
   embeddingInput: string;
   embeddingBlocks: Array<{
@@ -62,6 +65,9 @@ export interface CardVisualEmbeddingRecord {
     cardNumber: number | null;
     artist: string | null;
     keywords: string[];
+    visualKeywords?: string[];
+    textKeywords?: string[];
+    visualSummaryShort?: string;
     version: number;
     blockId: string;
     blockLabel: string;

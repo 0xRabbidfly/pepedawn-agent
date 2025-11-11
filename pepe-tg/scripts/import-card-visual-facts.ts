@@ -316,6 +316,12 @@ async function importBlocks(runtime: any, card: CardVisualMemory, overwrite: boo
   };
 
   const documentId = `${card.asset}#card-visual`;
+  const visualSummaryShort =
+    card.visualSummaryShort && card.visualSummaryShort.trim().length > 0
+      ? card.visualSummaryShort
+      : card.visualSummary;
+  const visualKeywords = Array.isArray(card.visualKeywords) ? card.visualKeywords : [];
+  const textKeywords = Array.isArray(card.textKeywords) ? card.textKeywords : [];
 
   for (let idx = 0; idx < card.embeddingBlocks.length; idx += 1) {
     const block = card.embeddingBlocks[idx];
@@ -345,6 +351,11 @@ async function importBlocks(runtime: any, card: CardVisualMemory, overwrite: boo
           blockPriority: block.priority,
           sourceFactVersion: card.sourceFactVersion,
           combinedHash: hashText(text),
+          visualSummary: card.visualSummary,
+          visualSummaryShort,
+          visualKeywords,
+          textKeywords,
+          textOnCard: card.textOnCard,
         },
       },
       metadata: {
@@ -364,6 +375,11 @@ async function importBlocks(runtime: any, card: CardVisualMemory, overwrite: boo
         blockPriority: block.priority,
         blockType: block.id.split('#')[1] ?? 'unknown',
         keywords: card.keywords,
+        visualKeywords,
+        textKeywords,
+        visualSummary: card.visualSummary,
+        visualSummaryShort,
+        textOnCard: card.textOnCard,
         generatedAt: card.generatedAt,
         sourceFactVersion: card.sourceFactVersion,
         timestamp: Date.now(),
