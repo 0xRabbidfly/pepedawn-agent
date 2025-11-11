@@ -611,9 +611,20 @@ export class KnowledgeOrchestratorService extends Service {
 
     const llmMap = await this.rerankCardCandidatesWithLLM(query, baseGroups);
     if (!llmMap) {
-      logger.debug('🤖 [CardDiscovery.LLM] Reranker disabled or failed (map=null)');
+      logger.info('🤖 [CardDiscovery.LLM] Reranker disabled or failed (map=null)');
     } else {
-      logger.debug(`🤖 [CardDiscovery.LLM] Returned ${llmMap.size} scores`);
+      const sortedScores = Array.from(llmMap.entries())
+        .map(([asset, entry]) => ({
+          asset,
+          score: typeof entry.score === 'number' ? entry.score : Number(entry.score) || 0,
+        }))
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 3)
+        .map(({ asset, score }) => `${asset}:${score.toFixed(2)}`)
+        .join(', ');
+      logger.info(
+        `🤖 [CardDiscovery.LLM] Returned ${llmMap.size} scores | Top3 ${sortedScores || 'n/a'}`
+      );
     }
 
     if (llmMap && llmMap.size > 0) {
@@ -1162,9 +1173,9 @@ Write ONE short sentence (max 20 words) telling the user why this card fits the 
       }
     }
 
-    logger.debug(
-      `🤖 [CardDiscovery.LLM] Preparing ${prepared.length} candidates for "${query}": ` +
-      prepared.map((c) => c.asset).join(', ')
+    const candidateList = prepared.map((c) => c.asset);
+    logger.info(
+      `🤖 [CardDiscovery.LLM] Preparing ${prepared.length} candidates for "${query}": ${candidateList.join(', ')}`
     );
 
     if (prepared.length === 0) {
