@@ -1355,9 +1355,26 @@ Write ONE short sentence (max 20 words) telling the user why this card fits the 
             (result as any)?.toString?.() ??
             '';
 
-      const jsonText = this.extractJsonObject(raw);
+      // Some deployments (e.g., prod) wrap the JSON in Markdown code fences or extra text.
+      // We attempt to unwrap ``` fences first, then fall back to raw extraction.
+      let cleaned: string = raw;
+      const fenceMatch = cleaned.match(/```(?:json)?([^`]+)```/is);
+      if (fenceMatch) {
+        cleaned = fenceMatch[1];
+      }
+
+      const jsonText = this.extractJsonObject(cleaned) ?? this.extractJsonObject(raw);
       if (!jsonText) {
-        logger.warn({ msg: '[CardTraitRerank] Unable to parse LLM response', raw });
+        logger.warn({
+          msg: '[CardTraitRerank] Unable to parse LLM response',
+          raw,
+        });
+        if (process.env.FALLBACK_CARD_TRAIT_ASSET) {
+          const asset = process.env.FALLBACK_CARD_TRAIT_ASSET.toUpperCase();
+          const fallbackMap = new Map<string, { score: number; reason?: string }>();
+          fallbackMap.set(asset, { score: 1, reason: 'Fallback asset due to parse failure' });
+          return fallbackMap;
+        }
         return null;
       }
 
