@@ -59,6 +59,96 @@ export class KnowledgeOrchestratorService extends Service {
     super(runtime);
   }
 
+  /**
+   * Perform a dedicated global recall for card facts only.
+   * Fetches a larger pool and post-filters to metadata.source === 'card-visual'.
+   */
+  private async expandCardOnlyPassages(
+    query: string,
+    count: number
+  ): Promise<RetrievedPassage[]> {
+    try {
+      const knowledgeService = (this.runtime as any).getService
+        ? (this.runtime as any).getService('knowledge')
+        : null;
+
+      let raw: any[] = [];
+      if (knowledgeService?.getKnowledge) {
+        const pseudoMessage = { id: 'card-expansion', content: { text: query } };
+        const scope = { roomId: undefined, count } as any;
+
+        const searchPromise = knowledgeService.getKnowledge(pseudoMessage, scope);
+        const timeoutPromise: Promise<never> = new Promise((_, reject) => {
+          setTimeout(() => reject(new Error('Card-only search timeout')), LORE_CONFIG.SEARCH_TIMEOUT_MS);
+        });
+        raw = (await Promise.race([searchPromise, timeoutPromise])) || [];
+      } else {
+        logger.warn('[CardDiscovery] Knowledge service unavailable for card-only recall');
+        raw = [];
+      }
+
+      if (!Array.isArray(raw) || raw.length === 0) return [];
+
+      const mapped: RetrievedPassage[] = raw.map((r: any, idx: number) => {
+        const text = (r.content?.text || r.text || '').trim();
+        const id = (r.id || r.content?.id || `card-extra-${idx}`) as string;
+        const score = r.similarity || r.score || 1.0;
+        const metadata = r.metadata || r.content?.metadata || {};
+
+        // Identify card-visual memories
+        const isCardVisual =
+          (metadata?.source === 'card-visual') ||
+          /\[CARD:[^\]]+\]/.test(text) ||
+          !!metadata?.asset;
+
+        const asset =
+          (metadata?.asset &&
+            typeof metadata.asset === 'string' &&
+            metadata.asset.toUpperCase()) ||
+          undefined;
+
+        const cardBlockType =
+          (metadata?.blockType as RetrievedPassage['cardBlockType']) ||
+          'combined';
+        const cardBlockLabel =
+          (typeof metadata?.blockLabel === 'string' &&
+            metadata.blockLabel) ||
+          undefined;
+        const cardBlockPriority =
+          typeof metadata?.blockPriority === 'number'
+            ? metadata.blockPriority
+            : undefined;
+        const visualKws: string[] = Array.isArray(metadata?.visualKeywords)
+          ? metadata.visualKeywords
+          : [];
+        const textKws: string[] = Array.isArray(metadata?.textKeywords)
+          ? metadata.textKeywords
+          : [];
+
+        return {
+          id,
+          text,
+          score,
+          sourceType: isCardVisual ? 'card-fact' : 'unknown',
+          sourceRef: asset ? `card:${asset}` : id,
+          cardAsset: asset,
+          cardBlockType,
+          cardBlockLabel,
+          cardBlockPriority,
+          cardKeywords: [...visualKws, ...textKws],
+          metadata,
+        } as RetrievedPassage;
+      });
+
+      return mapped.filter(
+        (p) => p.sourceType === 'card-fact' && !!p.cardAsset
+      );
+    } catch (err) {
+      logger.warn({ err }, '[CardDiscovery] expandCardOnlyPassages failed');
+      return [];
+    }
+  }
+
   private static readonly CARD_QUERY_STOP_WORDS = new Set<string>([
     'fake',
     'rares',
@@ -220,9 +310,43 @@ export class KnowledgeOrchestratorService extends Service {
     const hasWikiOrMemoryPassages = passages.some((p) =>
       this.isMatchingWikiOrMemory(p, primaryCardAsset)
     );
-    const cardFactPassages = passages.filter(
+    let cardFactPassages = passages.filter(
       (p) => p.sourceType === 'card-fact' && p.cardAsset
     );
+
+    // Dedicated card-only recall to guarantee enough candidates for the reranker
+    // We bypass wiki/memory here and fetch additional card-visual facts globally.
+    // This avoids channel LRU variance and ensures winter cards can enter the pool.
+    const TARGET_CARD_CANDIDATES =
+      parseInt(process.env.CARD_FACT_RECALL_TARGET || '60', 10);
+    if (cardFactPassages.length < TARGET_CARD_CANDIDATES) {
+      const needed = TARGET_CARD_CANDIDATES - cardFactPassages.length;
+      try {
+        const extra = await this.expandCardOnlyPassages(query, TARGET_CARD_CANDIDATES * 2);
+        if (extra.length > 0) {
+          const existingIds = new Set(cardFactPassages.map((p) => p.id));
+          const merged = [...cardFactPassages];
+          for (const p of extra) {
+            if (existingIds.has(p.id)) continue;
+            if (p.sourceType !== 'card-fact' || !p.cardAsset) continue;
+            merged.push(p);
+            existingIds.add(p.id);
+          }
+          // Keep the strongest candidates first
+          merged.sort((a, b) => {
+            const prio = (b.cardBlockPriority ?? 0) - (a.cardBlockPriority ?? 0);
+            if (prio !== 0) return prio;
+            return (b.score ?? 0) - (a.score ?? 0);
+          });
+          cardFactPassages = merged.slice(0, TARGET_CARD_CANDIDATES);
+          logger.info(
+            `🧠 [CardDiscovery] Card-only recall expanded → ${cardFactPassages.length} card passages`
+          );
+        }
+      } catch (err) {
+        logger.warn({ err }, 'Card-only recall expansion failed');
+      }
+    }
     if (preferCardFacts) {
       const cardIntentResult = await this.composeCardFactAnswer(
         query,
