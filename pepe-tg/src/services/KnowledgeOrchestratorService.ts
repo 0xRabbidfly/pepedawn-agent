@@ -905,7 +905,7 @@ export class KnowledgeOrchestratorService extends Service {
     }
 
     const modelName =
-      process.env.CARD_DISCOVERY_SUMMARY_MODEL || 'o3-mini';
+      process.env.CARD_DISCOVERY_SUMMARY_MODEL || process.env.OPENAI_SMALL_MODEL || 'gpt-4o-mini';
     const prompt = `You match user questions to Fake Rares cards.
 User question: "${query}"
 Selected card: "${asset}"
