@@ -13,7 +13,7 @@ import {
   createUniqueUuid,
   logger,
 } from '@elizaos/core';
-import { type Context, Telegraf } from 'telegraf';
+import { type Context, Telegraf, TelegramError } from 'telegraf';
 import { type ChatMemberOwner, type ChatMemberAdministrator, type User } from 'telegraf/types';
 import { TELEGRAM_SERVICE_NAME } from './constants';
 import { MessageManager } from './messageManager';
@@ -30,9 +30,17 @@ import { TelegramEventTypes, type TelegramWorldPayload } from './types';
  *
  * @extends Service
  */
+class TelegramConflictError extends Error {
+  constructor(message = 'Telegram polling conflict detected.') {
+    super(message);
+    this.name = 'TelegramConflictError';
+  }
+}
+
 export class TelegramService extends Service {
   static serviceType = TELEGRAM_SERVICE_NAME;
   capabilityDescription = 'The agent is able to send and receive messages on telegram';
+  private static processHandlersRegistered = false;
   private bot: Telegraf<Context> | null;
   public messageManager: MessageManager | null;
   private options;
@@ -68,6 +76,18 @@ export class TelegramService extends Service {
 
     try {
       this.bot = new Telegraf(botToken, this.options);
+      this.bot.catch((err) => {
+        if (this.isConflictError(err)) {
+          logger.warn(
+            '⚠️  Telegram API reported that another instance is already polling updates. Shutting down this process quietly.'
+          );
+          // Allow logs to flush, then exit without error so supervisors stay happy.
+          setTimeout(() => process.exit(0), 10);
+          return;
+        }
+
+        logger.error({ error: err }, 'Unhandled Telegram error');
+      });
       this.messageManager = new MessageManager(this.bot, this.runtime);
       logger.log('✅ TelegramService constructor completed');
     } catch (error) {
@@ -76,6 +96,18 @@ export class TelegramService extends Service {
       );
       this.bot = null;
       this.messageManager = null;
+    }
+
+    if (!TelegramService.processHandlersRegistered) {
+      process.on('unhandledRejection', (reason) => {
+        if (this.isConflictError(reason)) {
+          logger.warn(
+            '⚠️  Detected Telegram getUpdates conflict via unhandled promise rejection. Exiting duplicate process safely.'
+          );
+          setTimeout(() => process.exit(0), 10);
+        }
+      });
+      TelegramService.processHandlersRegistered = true;
     }
   }
 
@@ -121,10 +153,20 @@ export class TelegramService extends Service {
         return service;
       } catch (error) {
         lastError = error instanceof Error ? error : new Error(String(error));
+        const isConflict = lastError instanceof TelegramConflictError;
+        const prefix = isConflict ? 'Telegram polling conflict' : 'Telegram initialization';
         logger.error(
-          `Telegram initialization attempt ${retryCount + 1} failed: ${lastError.message}`
+          `${prefix} attempt ${retryCount + 1} failed: ${lastError.message}`
         );
         retryCount++;
+
+        if (isConflict) {
+          logger.warn(
+            'Another bot instance is already connected to Telegram. Exiting this process to avoid conflicts.'
+          );
+          setTimeout(() => process.exit(0), 10);
+          return service;
+        }
 
         if (retryCount < maxRetries) {
           const delay = 2 ** retryCount * 1000; // Exponential backoff
@@ -174,10 +216,21 @@ export class TelegramService extends Service {
         ctx,
       });
     });
-    this.bot?.launch({
-      dropPendingUpdates: true,
-      allowedUpdates: ['message', 'message_reaction', 'callback_query'],
-    });
+    try {
+      await this.bot?.launch({
+        dropPendingUpdates: true,
+        allowedUpdates: ['message', 'message_reaction', 'callback_query'],
+      });
+    } catch (error) {
+      if (this.isConflictError(error)) {
+        throw new TelegramConflictError(
+          typeof (error as any)?.description === 'string'
+            ? (error as any).description
+            : 'Another process is already polling Telegram getUpdates.'
+        );
+      }
+      throw error;
+    }
 
     // Get bot info for identification purposes
     const botInfo = await this.bot!.telegram.getMe();
@@ -412,6 +465,36 @@ export class TelegramService extends Service {
 
       this.syncedEntityIds.add(entityId);
     }
+  }
+
+  private isConflictError(error: unknown): boolean {
+    if (!error || typeof error !== 'object') return false;
+
+    const tgError = error as TelegramError & {
+      response?: { error_code?: number; description?: string };
+      description?: string;
+      parameters?: Record<string, unknown>;
+    };
+
+    const code =
+      (tgError as any).code ??
+      tgError.response?.error_code ??
+      (typeof (tgError as any).message === 'string' && (tgError as any).message.includes('409')
+        ? 409
+        : undefined);
+
+    const description =
+      tgError.description ?? tgError.response?.description ?? (tgError as any).message ?? '';
+
+    if (code === 409) return true;
+    if (typeof description === 'string') {
+      const lower = description.toLowerCase();
+      if (lower.includes('terminated by other getupdates request')) return true;
+      if (lower.includes('another getupdates request')) return true;
+      if (lower.includes('conflict: terminated')) return true;
+    }
+
+    return false;
   }
 
   /**
