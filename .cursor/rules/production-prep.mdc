@@ -1,8 +1,6 @@
 ---
-description: Systematic production deployment preparation checklist
-manual: true
+alwaysApply: false
 ---
-
 # Production Deployment Preparation
 
 Execute this comprehensive pre-deployment checklist when preparing code for production release.

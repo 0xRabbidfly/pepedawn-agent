@@ -19,6 +19,7 @@ import type { TelemetryService } from '../services/TelemetryService';
 export interface ModelCallOptions {
   model: string;
   prompt: string;
+  systemPrompt?: string;
   maxTokens?: number;
   temperature?: number;
   source: string;  // For telemetry (e.g., "Lore calls", "Visual Meme calls")
@@ -66,7 +67,7 @@ export async function callTextModel(
   const requestParams: any = {
     model: options.model,
     messages: [
-      { role: 'system', content: 'You are a helpful assistant. Output plain text without escaping special characters.' },
+      { role: 'system', content: options.systemPrompt ?? 'You are a helpful assistant. Output plain text without escaping special characters.' },
       { role: 'user', content: options.prompt }
     ],
   };

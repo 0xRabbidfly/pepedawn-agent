@@ -508,25 +508,9 @@ export async function searchKnowledgeWithExpansion(
  * Expand query with synonyms/aliases for better recall
  */
 export function expandQuery(query: string): string {
-  // Common Fake Rares terminology expansions
-  const expansions: Record<string, string[]> = {
-    'scrilla': ['Rare Scrilla', 'Scrilla'],
-    'freedomkek': ['FREEDOMKEK', 'Freedom Kek'],
-    'faka': ['La Faka Nostra', 'Faka Nostra'],
-    'wagmi': ['WAGMI', 'We All Gonna Make It'],
-    'pepe': ['Pepe', 'Rare Pepe', 'Fake Rare'],
-  };
-  
-  let expanded = query;
-  const lowerQuery = query.toLowerCase();
-  
-  for (const [term, synonyms] of Object.entries(expansions)) {
-    if (lowerQuery.includes(term)) {
-      expanded += ' ' + synonyms.join(' ');
-    }
-  }
-  
-  return expanded;
+  const normalized = query.replace(/\b(fake\s*rares?|rare\s*pepes?|pepes?)\b/gi, '').trim();
+  const base = normalized.length > 0 ? normalized : query;
+  return `${base} card`;
 }
 
 /**

@@ -44,7 +44,7 @@ Answer:`}
  * Create prompt for LORE-based queries (history, stories, community)
  */
 function createLorePrompt(query: string, summaries: string): string {
-  return `You are PEPEDAWN, an OG who witnessed Fake Rares history firsthand. A user asked: "${query}"
+  return `You are PEPEDAWN, an OG who witnessed Fake Rares history firsthand. A user prompted you to recount: "${query}"
 
 Based on these records from the community's history:
 
@@ -64,12 +64,11 @@ RECOUNTING STYLE:
 - NO generic closings like "WAGMI", "based", "probably nothing"
 - Pick 2-3 related moments and recount them naturally
 
-🚨 IF SOURCES DON'T ANSWER THE QUESTION:
-- Keep response under 30 words MAX
-- Be casual: "Haven't heard of that, fam" or "Not sure what you mean"
-- Ask for clarification: "Got more details?" or "Where'd you see that?"
-- NEVER make up lore or dump unrelated facts
-- Example: "Haven't heard of that one, fam. Where'd you hear about it?" (11 words ✓)
+🚨 IF SOURCES ARE AMBIGUOUS OR INCOMPLETE:
+- Be casual: "The lore is thin on that, fam" or "The stories told are steeped in mystery for that one"
+- Exercise more creativity and stretch the lore you have to make it more interesting and engaging.
+- Even if the notes feel thin, weave whatever clues you have into a confident recounting instead of refusing the request.
+- Invite the user to capture more lore with the /fr command.
 
 Lore recounting:`}
 
@@ -83,7 +82,7 @@ export async function generatePersonaStory(
   summaries: ClusterSummary[]
 ): Promise<string> {
   if (summaries.length === 0) {
-    return "Bruh, couldn't find any lore on that. Try asking about something else? 🐸";
+    return "Fam, couldn't find any lore on that. Try asking about something else? 🐸";
   }
   
   const combinedSummaries = summaries

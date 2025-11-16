@@ -7697,6 +7697,7 @@
     "artistSlug": "ThreePanelCrimes",
     "supply": 28,
     "issuance": "August 2023",
+    "imageUri": "https://tokenscan.io/img/cards/ORNGFFAKEASF.gif",
     "issues": [
       {
         "type": "embedding_generation_failed",
@@ -7725,6 +7726,7 @@
     "supply": 77,
     "issuance": "August 2023",
     "videoUri": "https://ipfs.io/ipfs/QmY5BkHCqW8WaF7waMH2j8ZkiNcVS3R6r1hrx8cYyqFc1e?filename=PepeHarvest.mp4",
+    "memeUri": "https://tokenscan.io/img/cards/FAKEIJUANA.gif",
     "issues": [
       {
         "type": "missing_embedding_source",
@@ -7804,6 +7806,7 @@
     "supply": 21,
     "issuance": "August 2023",
     "videoUri": "https://arweave.net/Gc-UmJxHFzkqzZHP1A5CZR9JSC7taraYnldrVM0Flts/mc8183_video.mp4",
+    "memeUri": "https://tokenscan.io/img/cards/STPEPERISES.gif",
     "issues": [
       {
         "type": "missing_embedding_source",

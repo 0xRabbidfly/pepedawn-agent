@@ -1,0 +1,54 @@
+{
+  "description": "Golden fixture for card fast-path routing decisions",
+  "input": {
+    "text": "Show me the lore for PEPEDAWN",
+    "roomId": "room-test",
+    "candidates": [
+      {
+        "id": "card:PEPEDAWN:summary",
+        "source_type": "card_data",
+        "similarity": 0.91,
+        "priority_weight": 1.5,
+        "text_preview": "PEPEDAWN is the dawn of Fake Rares Season...",
+        "card_asset": "PEPEDAWN"
+      },
+      {
+        "id": "wiki:submission-rules",
+        "source_type": "wiki",
+        "similarity": 0.32,
+        "priority_weight": 2.0,
+        "text_preview": "Submission rules apply to all fake rare entries."
+      }
+    ],
+    "metrics": {
+      "countsBySource": {
+        "card_data": 1,
+        "wiki": 1,
+        "memory": 0,
+        "telegram": 0,
+        "unknown": 0
+      },
+      "weightedBySource": {
+        "card_data": 1.365,
+        "wiki": 0.64,
+        "memory": 0,
+        "telegram": 0,
+        "unknown": 0
+      }
+    }
+  },
+  "expected": {
+    "strategy": "FAST_PATH_CARD",
+    "reason": "fast_path_triggered",
+    "fastPath": {
+      "cardAsset": "PEPEDAWN",
+      "score": 1.3,
+      "dominant": true
+    },
+    "telemetry": {
+      "result": "handled",
+      "handled": true
+    }
+  }
+}
+

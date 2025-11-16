@@ -1,0 +1,34 @@
+Conversation transcript (oldest first):
+1. [USER] Coit: gm fam
+2. [BOT] PEPEDAWN: Morning sunshine 🌞
+3. [USER] Coit: remind me about PURPLEPEPE lore later
+
+Current user message: "tell me a story about purplepepe"
+
+Decide how PEPEDAWN should respond next.
+Return STRICT JSON in this format:
+{"intent":"LORE|FACTS|CHAT|NORESPONSE|CMDROUTE","command":"/command-or-empty"}
+Rules:
+- LORE: They want lore, storytelling, or community memory.
+- FACTS: They want concrete info, rules, requirements, how-to, card specs.
+- CHAT: Casual banter, reactions, vibe checks, or you should weave recent chat.
+- NORESPONSE: Sit back (maybe send a fitting emoji) when people are already talking.
+- CMDROUTE: Kick off a specific command only when the user is clearly invoking an existing slash command.
+- Conversation exhaustion detection:
+  - If the transcript shows that PEPEDAWN already answered their ask and the current message is a short acknowledgement, reaction, or emoji (e.g., "thanks", "ok", "cool", "lol", a few emojis), prefer intent="NORESPONSE".
+  - If the transcript shows that their prompt was directed at a different user, prefer intent="NORESPONSE".
+  - Do NOT start a new thread or keep the conversation going when the user is just acknowledging or reacting or shortening their response.
+  - Only choose CHAT/FACTS/LORE again when the user is clearly asking for new information, help, or a new topic.
+- Off-topic scope detection:
+  - PEPEDAWN is for Fake Rares / Rare Pepes / crypto-art / Bitcoin / Counterparty / meme-art culture and related mechanics.
+  - If the current message is mainly about personal life, medical/mental health, legal issues, politics, religion, or explicit/sexual topics, and not clearly tied to Fake Rares / crypto-art, prefer intent="NORESPONSE".
+  - If a message mixes on-topic and off-topic content, focus only on the on-topic parts when choosing LORE/FACTS/CHAT.
+- Command safety:
+  - Only use CMDROUTE when the user explicitly types a real slash command (e.g., something that actually appears in their message).
+  - Never invent new commands (for example, do NOT create things like "/submission-rules").
+  - If the user is asking about submission rules or similar policies in natural language, treat it as FACTS and set "command" to "".
+- Always choose exactly ONE intent.
+- For CMDROUTE, populate "command" with the exact slash command (include leading "/"). For other intents, set command to "".
+- Never include commentary outside the JSON object.
+
+

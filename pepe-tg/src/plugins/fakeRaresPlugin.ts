@@ -1,4 +1,4 @@
-import { type Plugin, logger } from '@elizaos/core';
+import { type Plugin, logger, ModelType, type HandlerCallback } from '@elizaos/core';
 import { fakeRaresCardAction, fakeCommonsCardAction, rarePepesCardAction, educateNewcomerAction, startCommand, helpCommand, loreCommand, fakeRememberCommand, oddsCommand, costCommand, fakeVisualCommand, fakeTestCommand, xcpCommand } from '../actions';
 import { fakeMarketAction } from '../actions/fakeMarketAction';
 import { fakeRaresCarouselAction } from '../actions/fakeRaresCarousel';
@@ -6,19 +6,34 @@ import { fakeRaresContextProvider, userHistoryProvider } from '../providers';
 import { loreDetectorEvaluator } from '../evaluators';
 import { KnowledgeOrchestratorService } from '../services/KnowledgeOrchestratorService';
 import { MemoryStorageService } from '../services/MemoryStorageService';
-import { TelemetryService } from '../services/TelemetryService';
+import { TelemetryService, type SmartRouterDecisionLog } from '../services/TelemetryService';
 import { CardDisplayService } from '../services/CardDisplayService';
+import { SmartRouterService, type SmartRoutingPlan } from '../services/SmartRouterService';
+import { SMART_ROUTER_CONFIG } from '../config/smartRouterConfig';
 import { FULL_CARD_INDEX } from '../data/fullCardIndex';
 import { startAutoRefresh } from '../utils/cardIndexRefresher';
-import { classifyQuery } from '../utils/queryClassifier';
-import { isOffTopic, getOffTopicReason } from '../utils/offTopicDetector';
 import { detectMessagePatterns } from '../utils/messagePatterns';
 import { calculateEngagementScore, shouldRespond } from '../utils/engagementScorer';
 import { executeCommand, executeCommandAlways, type CommandHandlerParams } from '../utils/commandHandler';
+import { stripCardNamePrefix } from '../utils/cardNamePrefixSanitizer';
 import type { IAgentRuntime } from '@elizaos/core';
 
 // Track patched runtimes to avoid double-patching
 const patchedRuntimes = new WeakSet<any>();
+
+function sanitizeOutgoingPayload(payload: any): void {
+  if (payload && typeof payload.text === 'string') {
+    payload.text = stripCardNamePrefix(payload.text);
+  }
+}
+
+function wrapHandlerCallback(callback: HandlerCallback | null | undefined): HandlerCallback | null {
+  if (!callback) return null;
+  return (async (payload: any) => {
+    sanitizeOutgoingPayload(payload);
+    return callback(payload);
+  }) as HandlerCallback;
+}
 
 /**
  * Patch runtime.useModel to track all LLM calls via TelemetryService
@@ -94,6 +109,426 @@ function patchRuntimeForTelemetry(runtime: IAgentRuntime): void {
   };
 }
 
+interface SmartRouterExecutionContext {
+  runtime: IAgentRuntime;
+  smartRouter: SmartRouterService;
+  plan: SmartRoutingPlan;
+  message: any;
+  params: any;
+  text: string;
+  telemetry?: TelemetryService;
+  telemetryDetails?: SmartRouterTelemetryDetails;
+}
+
+type SmartRouterTelemetryDetails = Omit<SmartRouterDecisionLog, 'timestamp' | 'handled' | 'result'>;
+
+function createSmartRouterTelemetryDetails(
+  plan: SmartRoutingPlan,
+  text: string,
+  messageId: string
+): SmartRouterTelemetryDetails {
+  return {
+    messageId,
+    userText: text,
+    intent: plan.intent,
+    kind: plan.kind,
+    reason: plan.reason,
+    command: plan.command,
+    emoji: plan.emoji,
+    fastPath: plan.fastPath
+      ? {
+          score: plan.fastPath.score,
+          asset: plan.fastPath.primaryCandidate?.card_asset,
+          metrics: plan.fastPath.metrics,
+        }
+      : undefined,
+    retrieval: plan.retrieval
+      ? {
+          totalPassages: plan.retrieval.metrics.totalPassages,
+          totalCandidates: plan.retrieval.metrics.totalCandidates,
+          countsBySource: plan.retrieval.metrics.countsBySource,
+          weightedBySource: plan.retrieval.metrics.weightedBySource,
+        }
+      : undefined,
+  };
+}
+
+async function runRouterCommand(command: string, context: SmartRouterExecutionContext): Promise<boolean> {
+  const { runtime, message, params, smartRouter } = context;
+  const trimmed = command.trim();
+  if (!trimmed.startsWith('/')) {
+    logger.warn(`[SmartRouter] CMDROUTE ignored non-slash command "${command}"`);
+    return false;
+  }
+
+  const [base, ...rest] = trimmed.split(/\s+/);
+  const baseLower = base.toLowerCase();
+
+  const commandMap: Record<
+    string,
+    { action: any; always?: boolean }
+  > = {
+    '/f': { action: fakeRaresCardAction },
+    '/fc': { action: costCommand, always: true },
+    '/fm': { action: fakeMarketAction },
+    '/fr': { action: fakeRememberCommand },
+    '/fl': { action: loreCommand },
+    '/fv': { action: fakeVisualCommand },
+    '/ft': { action: fakeTestCommand },
+    '/c': { action: fakeCommonsCardAction },
+    '/p': { action: rarePepesCardAction },
+    '/xcp': { action: xcpCommand },
+    '/dawn': { action: oddsCommand },
+    '/help': { action: helpCommand, always: true },
+    '/start': { action: startCommand, always: true },
+  };
+
+  const mapping = commandMap[baseLower];
+  if (!mapping) {
+    logger.warn(`[SmartRouter] CMDROUTE has no handler for "${baseLower}"`);
+    return false;
+  }
+
+  const syntheticMessage = {
+    ...message,
+    content: {
+      ...message.content,
+      text: [baseLower, ...rest].join(' ').trim(),
+    },
+  };
+
+  const originalCallback = wrapHandlerCallback(
+    typeof params.callback === 'function' ? (params.callback as HandlerCallback) : null
+  );
+  const wrappedCallback = originalCallback
+    ? async (response: any) => {
+        await originalCallback(response);
+        if (typeof response?.text === 'string') {
+          smartRouter.recordBotTurn(message.roomId, response.text);
+        }
+      }
+    : undefined;
+
+  const commandParams: CommandHandlerParams = {
+    runtime,
+    message: syntheticMessage,
+    state: params.state,
+    callback: wrappedCallback,
+  };
+
+  if (mapping.always) {
+    return executeCommandAlways(mapping.action, commandParams, baseLower);
+  }
+  return executeCommand(mapping.action, commandParams, baseLower);
+}
+
+function getDisplayName(params: any, message: any): string {
+  const tgMessage = params?.ctx?.message ?? params?.ctx?.callbackQuery?.message;
+  const from = tgMessage?.from;
+  if (from) {
+    const firstName = from.first_name ?? '';
+    const lastName = from.last_name ?? '';
+    const combined = `${firstName} ${lastName}`.trim();
+    if (combined) return combined;
+    if (from.username) return `@${from.username}`;
+  }
+  if (typeof message?.entityId === 'string' || typeof message?.entityId === 'number') {
+    return `User ${message.entityId}`;
+  }
+  return 'User';
+}
+
+async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Promise<boolean> {
+  const { runtime, plan, message, params, text } = context;
+  const baseCallback = wrapHandlerCallback(
+    typeof params.callback === 'function' ? (params.callback as HandlerCallback) : null
+  );
+  const actionCallback = baseCallback;
+  const telemetry =
+    context.telemetry ??
+    (typeof runtime.getService === 'function'
+      ? (runtime.getService('telemetry') as TelemetryService | undefined)
+      : undefined);
+  const baseDetails: SmartRouterTelemetryDetails =
+    context.telemetryDetails ?? createSmartRouterTelemetryDetails(plan, text, message.id);
+
+  const markHandled = () => {
+    try {
+      message.metadata = message.metadata || {};
+      (message.metadata as any).__handledByCustom = true;
+    } catch {}
+  };
+
+  const sendTelemetry = async (options: { logLore?: boolean }) => {
+    if (!telemetry) return;
+    try {
+      if (typeof telemetry.logConversation === 'function') {
+        await telemetry.logConversation({
+          timestamp: new Date().toISOString(),
+          messageId: message.id,
+          source: 'auto-route',
+        });
+      }
+      if (options.logLore && typeof telemetry.logLoreQuery === 'function') {
+        await telemetry.logLoreQuery({
+          timestamp: new Date().toISOString(),
+          queryId: message.id,
+          query: text,
+          source: 'auto-route',
+        });
+      }
+    } catch (err) {
+      logger.debug({ error: err }, '[SmartRouter] Telemetry logging failed');
+    }
+  };
+
+  const logDecision = async (result: 'handled' | 'fallback' | 'skipped') => {
+    if (!telemetry?.logSmartRouterDecision) return;
+    const payload: SmartRouterDecisionLog = {
+      ...baseDetails,
+      timestamp: new Date().toISOString(),
+      handled: result === 'handled',
+      result,
+    };
+    await telemetry.logSmartRouterDecision(payload);
+  };
+
+  const recordBotTurn = async (outgoingText: string | undefined) => {
+    if (!outgoingText) return;
+    const trimmed = outgoingText.trim();
+    if (!trimmed) return;
+    context.smartRouter.recordBotTurn(message.roomId, trimmed);
+  };
+
+  const fallbackCandidates =
+    plan.selectedCandidates && plan.selectedCandidates.length > 0
+      ? plan.selectedCandidates
+      : plan.retrieval?.candidates?.slice(0, 3) ?? [];
+
+  const sendTelemetryLoreFlag = plan.intent === 'FACTS' || plan.intent === 'LORE';
+
+  try {
+    switch (plan.kind) {
+      case 'FAST_PATH_CARD': {
+        const candidate = plan.fastPath?.primaryCandidate;
+        if (!candidate?.card_asset) {
+          await logDecision('fallback');
+          return false;
+        }
+
+        const preview =
+          candidate.text_preview?.replace(/\s+/g, ' ').trim() ||
+          candidate.full_text?.replace(/\s+/g, ' ').trim() ||
+          '';
+        const explanation =
+          preview.length > 0
+            ? `Pulling up ${candidate.card_asset} — ${preview.slice(0, 200)}${preview.length > 200 ? '…' : ''}`
+            : `Pulling up ${candidate.card_asset} for you.`;
+
+        if (actionCallback) {
+          await actionCallback({
+            text: explanation,
+            __fromAction: 'smart_router_fastpath',
+          });
+          await recordBotTurn(explanation);
+        }
+
+        markHandled();
+        await sendTelemetry({ logLore: true });
+        await logDecision('handled');
+
+        const cardCallback: HandlerCallback | undefined =
+          actionCallback != null
+            ? (async (payload: any) => {
+                const result = await actionCallback(payload);
+                if (typeof payload?.text === 'string') {
+                  await recordBotTurn(payload.text);
+                }
+                return Array.isArray(result) ? result : [];
+              }) as HandlerCallback
+            : undefined;
+
+        const cardMessage = {
+          ...message,
+          content: {
+            ...message.content,
+            text: `/f ${candidate.card_asset}`,
+          },
+        };
+
+        try {
+          await fakeRaresCardAction.handler(
+            runtime,
+            cardMessage,
+            params.state,
+            {},
+            cardCallback
+          );
+        } catch (error) {
+          logger.error({ error }, '[SmartRouter] Fast-path card display failed');
+        }
+
+        logger.info('[SmartRouter] Fast-path card response executed.');
+        return true;
+      }
+
+      case 'CARD_RECOMMEND': {
+        const summary =
+          plan.cardSummary?.trim().replace(/^["“”]+/, '').replace(/["“”]+$/, '') ||
+          plan.story?.trim() ||
+          'Here’s a card that nails the vibe you described.';
+        if (actionCallback && summary) {
+          await actionCallback({
+            text: summary,
+            __fromAction: 'smart_router_card_recommend',
+          });
+          await recordBotTurn(summary);
+        }
+
+        if (Array.isArray(plan.cardMatches) && plan.cardMatches.length > 0) {
+          const list = plan.cardMatches
+            .map((match, idx) => {
+              const reasonSnippet = match.reason
+                ? match.reason.replace(/\s+/g, ' ').slice(0, 80)
+                : '';
+              return `#${idx + 1} ${match.asset}${reasonSnippet ? ` — ${reasonSnippet}` : ''}`;
+            })
+            .join('  |  ');
+          logger.info(`[CardDiscovery] Ranked candidates => ${list}`);
+        }
+
+        if (plan.primaryCardAsset) {
+          const cardCallback: HandlerCallback | undefined =
+            actionCallback != null
+              ? (async (payload: any) => {
+                  const result = await actionCallback(payload);
+                  if (typeof payload?.text === 'string') {
+                    await recordBotTurn(payload.text);
+                  }
+                  return Array.isArray(result) ? result : [];
+                }) as HandlerCallback
+              : undefined;
+
+          const cardMessage = {
+            ...message,
+            content: {
+              ...message.content,
+              text: `/f ${plan.primaryCardAsset}`,
+            },
+          };
+
+          try {
+            await fakeRaresCardAction.handler(
+              runtime,
+              cardMessage,
+              params.state,
+              {},
+              cardCallback
+            );
+          } catch (error) {
+            logger.error({ error }, '[SmartRouter] Card recommendation display failed');
+          }
+        }
+
+        markHandled();
+        await sendTelemetry({ logLore: true });
+        await logDecision('handled');
+        logger.info('[SmartRouter] CARD_RECOMMEND response delivered.');
+        return true;
+      }
+
+      case 'FACTS':
+      case 'LORE': {
+        const story = plan.story?.trim();
+        if (!story) {
+          await logDecision('fallback');
+          return false;
+        }
+
+        if (actionCallback) {
+          await actionCallback({
+            text: story,
+            __fromAction: plan.kind === 'FACTS' ? 'smart_router_facts' : 'smart_router_lore',
+          });
+          await recordBotTurn(story);
+          if (plan.sources?.trim()) {
+            await actionCallback({
+              text: plan.sources,
+              __fromAction: plan.kind === 'FACTS' ? 'smart_router_facts_sources' : 'smart_router_lore_sources',
+            });
+            await recordBotTurn(plan.sources);
+          }
+        }
+
+        markHandled();
+        await sendTelemetry({ logLore: sendTelemetryLoreFlag });
+        logger.info(`[SmartRouter] ${plan.kind} response delivered via router plan.`);
+        await logDecision('handled');
+        return true;
+      }
+
+      case 'CHAT': {
+        const response = plan.chatResponse?.trim();
+        if (!response) {
+          await logDecision('fallback');
+          return false;
+        }
+
+        if (actionCallback) {
+          await actionCallback({
+            text: response,
+            __fromAction: 'smart_router_chat',
+          });
+          await recordBotTurn(response);
+        }
+
+        markHandled();
+        await sendTelemetry({ logLore: false });
+        logger.info('[SmartRouter] CHAT response delivered via router plan.');
+        await logDecision('handled');
+        return true;
+      }
+
+      case 'NORESPONSE': {
+        markHandled();
+        await sendTelemetry({ logLore: false });
+        await logDecision('handled');
+        logger.info('[SmartRouter] NORESPONSE plan acknowledged silently (no emoji).');
+        return true;
+      }
+
+      case 'CMDROUTE': {
+        const command = plan.command;
+        if (!command) {
+          await logDecision('fallback');
+          return false;
+        }
+
+        const executed = await runRouterCommand(command, context);
+        if (executed) {
+          markHandled();
+          await sendTelemetry({ logLore: false });
+          await logDecision('handled');
+          logger.info(`[SmartRouter] CMDROUTE executed command "${command}".`);
+          return true;
+        }
+
+        logger.warn(`[SmartRouter] CMDROUTE could not execute command "${command}".`);
+        await logDecision('fallback');
+        return false;
+      }
+
+      default:
+        await logDecision('fallback');
+        return false;
+    }
+  } catch (error) {
+    logger.error({ error }, '[SmartRouter] Failed to execute router plan');
+    await logDecision('fallback');
+    return false;
+  }
+}
+
 /**
  * Fake Rares Plugin - Bootstrap 1.6.2 Compatible
  * 
@@ -142,11 +577,12 @@ export const fakeRaresPlugin: Plugin = {
   
   providers: [fakeRaresContextProvider, userHistoryProvider],
   evaluators: [],
-  services: [KnowledgeOrchestratorService, MemoryStorageService, TelemetryService, CardDisplayService],
+  services: [KnowledgeOrchestratorService, MemoryStorageService, TelemetryService, CardDisplayService, SmartRouterService],
   
   events: {
     MESSAGE_RECEIVED: [
       async (params: any) => {
+        let baseCallback: HandlerCallback | null = null;
         try {
           const runtime = params.runtime;
           const message = params.message;
@@ -156,10 +592,22 @@ export const fakeRaresPlugin: Plugin = {
           patchRuntimeForTelemetry(runtime);
           
           const text = (params?.message?.content?.text ?? '').toString().trim();
+          baseCallback = wrapHandlerCallback(
+            typeof params.callback === 'function' ? (params.callback as HandlerCallback) : null
+          );
           const globalSuppression = process.env.SUPPRESS_BOOTSTRAP === 'true';
           
           logger.info('━'.repeat(60));
           logger.info(`📩 "${text.substring(0, 80)}${text.length > 80 ? '...' : ''}"`);
+          
+          const smartRouter =
+            typeof runtime.getService === 'function'
+              ? (runtime.getService(SmartRouterService.serviceType) as SmartRouterService | undefined)
+              : undefined;
+          
+          if (smartRouter && text.length > 0) {
+            smartRouter.recordUserTurn(message.roomId, text, getDisplayName(params, message));
+          }
           
           logger.info('━━━━━━━━━━ STEP 1/5: PATTERN DETECTION ━━━━━━━━━━');
           
@@ -250,10 +698,7 @@ export const fakeRaresPlugin: Plugin = {
             /\b(card|cards|fake|fakes|fake rare|fake rares|rake rare|rare fake|rare card|rare cards)\b/i.test(textLower) ||
             /\bpepes?\b/i.test(textLower) ||
             /\brare pepes?\b/i.test(textLower);
-          const hasInquisitiveCue =
-            /\b(show|find|looking|search|need|want|which|what|who|how|can|where|is|are|do|does|any|recommend|suggest|tell|give|got)\b/i.test(textLower) ||
-            text.includes('?');
-          let hasCardDiscoveryIntent = hasCardKeyword && hasInquisitiveCue;
+          let hasCardDiscoveryIntent = hasCardKeyword;
           // Do not treat collection-level policy questions as card discovery
           if (/\bsubmission\b/i.test(textLower) && /\brules?\b/i.test(textLower)) {
             hasCardDiscoveryIntent = false;
@@ -268,7 +713,7 @@ export const fakeRaresPlugin: Plugin = {
           // === MEMORY CAPTURE: "remember" or "remember this" ===
           if ((isFakeRareCard || isReplyToBot || hasBotMention) && hasRememberCommand) {
             logger.debug('[FakeRaresPlugin] "remember" command detected → storing memory');
-            const actionCallback = typeof params.callback === 'function' ? params.callback : null;
+            const actionCallback = baseCallback;
             
             try {
               const memoryService = runtime.getService(
@@ -317,7 +762,7 @@ export const fakeRaresPlugin: Plugin = {
           
           // === STEP 2: COMMAND EXECUTION ===
           // Use command handler utility to reduce boilerplate
-          const cmdParams: CommandHandlerParams = { runtime, message, state: params.state, callback: params.callback };
+          const cmdParams: CommandHandlerParams = { runtime, message, state: params.state, callback: baseCallback ?? undefined };
           
           // /help and /start commands (always mark as handled, even on validation failure)
           if (isHelp && await executeCommandAlways(helpCommand, cmdParams, '/help')) return;
@@ -354,23 +799,13 @@ export const fakeRaresPlugin: Plugin = {
           const mentionsBurn = /burn|burning/i.test(text);
           if (mentionsFakeasf && mentionsBurn) {
             logger.info('[FakeRaresPlugin] 🚨 BLOCKED FAKEASF BURN QUERY - responding without LLM');
-            const callback = params.callback;
+            const callback = baseCallback;
             if (callback) {
               await callback({
                 text: "I can't help with FAKEASF destroying or burning, fam. There are strict sacred rules I'm not privy to. Connect with Scrilla or someone who knows the exact ritual.\n\nRead them carefully at https://wiki.pepe.wtf/chapter-2-the-rare-pepe-project/fake-rares-and-dank-rares/fake-rares-submission-rules",
                 __fromAction: 'fakeasf_burn_blocker',
               });
             }
-            if (message.metadata) {
-              message.metadata.__handledByCustom = true;
-            }
-            return;
-          }
-          
-          // 🚫 Filter off-topic messages
-          if (isOffTopic(text)) {
-            const reason = getOffTopicReason(text);
-            logger.info(`[FakeRaresPlugin] 🚫 OFF-TOPIC detected, ignoring silently: ${reason}`);
             if (message.metadata) {
               message.metadata.__handledByCustom = true;
             }
@@ -389,254 +824,80 @@ export const fakeRaresPlugin: Plugin = {
             roomId: message.roomId,
           });
           
-          if (!shouldRespond(engagementScore) && !(hasCardDiscoveryIntent || isSubmissionRulesQuery)) {
-            logger.info(`   Decision: SUPPRESS (low engagement, score=${engagementScore})`);
-            message.metadata = message.metadata || {};
-            (message.metadata as any).__handledByCustom = true;
-            return;
-          } else if (!shouldRespond(engagementScore) && (hasCardDiscoveryIntent || isSubmissionRulesQuery)) {
+          const engagementAllowsResponse = shouldRespond(engagementScore);
+          const engagementOverride = !engagementAllowsResponse && (hasCardDiscoveryIntent || isSubmissionRulesQuery);
+          const engagementSuppressed = !engagementAllowsResponse && !engagementOverride;
+
+          if (engagementSuppressed) {
+            logger.info(`   Engagement below threshold (score=${engagementScore}) → evaluating smart router before suppressing`);
+          } else if (engagementOverride) {
             logger.info(`   Engagement below threshold (${engagementScore}) but overriding due to ${hasCardDiscoveryIntent ? 'card intent' : 'submission rules query'}`);
           }
           
           logger.info('━━━━━━━━━━ STEP 5/5: QUERY CLASSIFICATION ━━━━━━━━━━');
-          
-          // Only auto-route actual questions, not statements/announcements or replies to other users
-          let queryType = classifyQuery(text);
-          
-          // 🎯 OVERRIDE: Card name + question → Force FACTS (wiki/memory only, no telegram noise)
-          if (isFakeRareCard && patterns.metadata.hasQuestion) {
-            logger.info('   Override: Card + question → forcing FACTS mode');
-            queryType = 'FACTS';
-          }
-          
-          if (hasCardDiscoveryIntent && queryType !== 'FACTS') {
-            logger.info('   Override: Card discovery intent → forcing FACTS mode');
-            queryType = 'FACTS';
-          }
-          
-          logger.debug(`[FakeRaresPlugin] Query classification: ${queryType}`);
-          
-          // Skip auto-routing if this is a reply to another user (not the bot)
-          // Replies to other users are conversation between humans, not questions for the bot
-          if (isReply && !isReplyToBot) {
-            logger.info(`   Decision: Skip auto-routing (reply to another user, not bot)`);
-            logger.debug(`[FakeRaresPlugin] Skipping auto-routing - message is a reply to another user, not to the bot`);
-            // IMPORTANT: Check global suppression before returning
-            // If SUPPRESS_BOOTSTRAP=true, we need to mark as handled
-            if (globalSuppression) {
-              logger.info(`   Decision: SUPPRESS (global suppression active)`);
-              logger.debug('[FakeRaresPlugin] Global suppression active - marking reply as handled');
-              message.metadata = message.metadata || {};
-              (message.metadata as any).__handledByCustom = true;
-              return;
-            }
-            // Otherwise, let it go to bootstrap for natural conversation handling
-            logger.info(`   Decision: ALLOW bootstrap (conversation between users)`);
-            return;
-          }
-          
-          // Comprehensive question detection
-          const isQuestion = 
-            text.includes('?') ||  // Explicit question mark
-            /^(what|how|when|where|who|why|can|do|does|is|are|will|should|could)\s/i.test(text) ||  // Question words
-            /^(tell|show|explain|describe|list|give)\s+(me|us)\s+(about|the|how)/i.test(text) ||  // Imperative requests
-            /\b(need to know|want to know|wondering|curious)\b/i.test(text);  // Indirect questions
-          
-          if (queryType === 'FACTS' && (isQuestion || hasCardDiscoveryIntent || isSubmissionRulesQuery)) {
-            logger.info(
-              `   Decision: Auto-route to FACTS (${isSubmissionRulesQuery ? 'submission rules' : (isQuestion ? 'question' : 'card intent')})`
-            );
-            const actionCallback = typeof params.callback === 'function' ? params.callback : null;
-            params.callback = async () => [];
-            
-            try {
-              // Short-circuit: Always answer with canonical wiki link for submission rules
-              if (isSubmissionRulesQuery && actionCallback) {
-                const url = 'https://wiki.pepe.wtf/chapter-2-the-rare-pepe-project/fake-rares-and-dank-rares/fake-rares-submission-rules';
-                await actionCallback({
-                  text: `**Fake Rares Submission Rules**\n${url}`,
+
+          let smartRouterHandled = false;
+          const shouldUseSmartRouter =
+            SMART_ROUTER_CONFIG.rollout.enabled &&
+            (SMART_ROUTER_CONFIG.rollout.percentage ?? 0) >= 100
+              ? true
+              : SMART_ROUTER_CONFIG.rollout.enabled &&
+                Math.random() * 100 < (SMART_ROUTER_CONFIG.rollout.percentage ?? 0);
+
+          if (shouldUseSmartRouter && smartRouter) {
+            const runPlanWithTelemetry = async (plan: SmartRoutingPlan): Promise<boolean> => {
+              const telemetry = runtime.getService('telemetry') as TelemetryService | undefined;
+              const details = createSmartRouterTelemetryDetails(plan, text, message.id);
+              if (telemetry?.logSmartRouterDecision) {
+                await telemetry.logSmartRouterDecision({
+                  ...details,
+                  timestamp: new Date().toISOString(),
+                  handled: false,
+                  result: 'pending',
                 });
-                const telemetry = runtime.getService('telemetry') as TelemetryService;
-                if (telemetry && typeof telemetry.logLoreQuery === 'function') {
-                  await telemetry.logLoreQuery({
-                    timestamp: new Date().toISOString(),
-                    queryId: message.id,
-                    query: text,
-                    source: 'auto-route',
-                  });
-                }
-                message.metadata = message.metadata || {};
-                (message.metadata as any).__handledByCustom = true;
-                return;
               }
-              
-              const knowledgeService = runtime.getService(
-                KnowledgeOrchestratorService.serviceType
-              ) as KnowledgeOrchestratorService;
-              
-              if (!knowledgeService) {
-                throw new Error('KnowledgeOrchestratorService not available');
-              }
-              
-              const result = await knowledgeService.retrieveKnowledge(text, message.roomId, {
-                mode: 'FACTS',
-                includeMetrics: true,
-                preferCardFacts: hasCardDiscoveryIntent,
+              return executeSmartRouterPlan({
+                runtime,
+                smartRouter,
+                plan,
+                message,
+                params,
+                text,
+                telemetry,
+                telemetryDetails: details,
               });
-              
-              // Fall back to bootstrap if no wiki/memory sources found
-              // Let the LLM handle it conversationally instead of returning "I don't know"
-              if (!result.hasWikiOrMemory) {
-                logger.info(`   Decision: FALLBACK to Bootstrap (FACTS question, no wiki/memory sources)`);
-                // Throw to trigger catch block which falls through to bootstrap
-                throw new Error('No knowledge hits - fallback to bootstrap');
-              }
-              
-              if (result.primaryCardAsset) {
-                if (result.cardSummary && actionCallback) {
-                  await actionCallback({ text: result.cardSummary });
-                }
-                const cardMessage = {
-                  ...message,
-                  content: {
-                    ...message.content,
-                    text: `/f ${result.primaryCardAsset}`,
-                  },
-                };
-                try {
-                  await fakeRaresCardAction.handler(
-                    runtime,
-                    cardMessage,
-                    params.state,
-                    {},
-                    actionCallback,
-                  );
-                } catch (cardErr) {
-                  logger.error('[FakeRaresPlugin] Failed to auto-display card:', cardErr);
-                }
+            };
+
+            try {
+              if (hasCardDiscoveryIntent && !isFl && !isFakeRareCard) {
+                const descriptorPlan = await smartRouter.planRouting(text, message.roomId, {
+                  forceCardFacts: true,
+                });
+                smartRouterHandled = await runPlanWithTelemetry(descriptorPlan);
               }
 
-              if (actionCallback && result.story && result.story.trim().length > 0) {
-                await actionCallback({ text: result.story });
+              if (!smartRouterHandled) {
+                const plan = await smartRouter.planRouting(text, message.roomId);
+                smartRouterHandled = await runPlanWithTelemetry(plan);
               }
-              if (actionCallback && result.sourcesLine && result.sourcesLine.trim().length > 0) {
-                await actionCallback({ text: result.sourcesLine });
-              }
-              
-              // Log as conversation (auto-routed)
-              const telemetry = runtime.getService('telemetry') as TelemetryService;
-              if (telemetry && typeof telemetry.logConversation === 'function') {
-                await telemetry.logConversation({
-                  timestamp: new Date().toISOString(),
-                  messageId: message.id,
-                  source: 'auto-route',
-                });
-              }
-              if (telemetry && typeof telemetry.logLoreQuery === 'function') {
-                await telemetry.logLoreQuery({
-                  timestamp: new Date().toISOString(),
-                  queryId: message.id,
-                  query: text,
-                  source: 'auto-route',
-                });
-              }
-              
-              logger.debug(`[FakeRaresPlugin] ✅ Auto-routed knowledge response sent`);
-              logger.debug(`   Hits: ${result.metrics.hits_used}, Latency: ${result.metrics.latency_ms}ms`);
-              
-              try {
-                message.metadata = message.metadata || {};
-                (message.metadata as any).__handledByCustom = true;
-              } catch {}
-              
-              return;
-            } catch (err) {
-              // Expected fallback scenarios (not actual errors)
-              const isFallback = err instanceof Error && 
-                (err.message.includes('fallback to bootstrap') || 
-                 err.message.includes('No knowledge hits'));
-              
-              if (isFallback) {
-                logger.debug('[FakeRaresPlugin] Auto-route fallback triggered, using bootstrap');
-              } else {
-                logger.error('[FakeRaresPlugin] ❌ Auto-route failed, falling back to conversation:', err);
-              }
-              // Fall through to normal bootstrap flow
+            } catch (routerErr) {
+              logger.error({ error: routerErr }, '[SmartRouter] Failed to evaluate routing plan');
             }
           }
-          
-          // NEW: Auto-route LORE questions to knowledge orchestrator for story mode
-          if (queryType === 'LORE' && isQuestion) {
-            logger.info('   Decision: Auto-route to LORE (question/story intent)');
-            const actionCallback = typeof params.callback === 'function' ? params.callback : null;
-            params.callback = async () => [];
-            
-            try {
-              const knowledgeService = runtime.getService(
-                KnowledgeOrchestratorService.serviceType
-              ) as KnowledgeOrchestratorService;
-              
-              if (!knowledgeService) {
-                throw new Error('KnowledgeOrchestratorService not available');
-              }
-              
-              const result = await knowledgeService.retrieveKnowledge(text, message.roomId, {
-                mode: 'LORE',
-                includeMetrics: true,
-              });
-              
-              if (actionCallback && result.story && result.story.trim().length > 0) {
-                await actionCallback({ text: result.story });
-              }
-              if (actionCallback && result.sourcesLine && result.sourcesLine.trim().length > 0) {
-                await actionCallback({ text: result.sourcesLine });
-              }
-              
-              // Log as conversation (auto-routed)
-              const telemetry = runtime.getService('telemetry') as TelemetryService;
-              if (telemetry && typeof telemetry.logConversation === 'function') {
-                await telemetry.logConversation({
-                  timestamp: new Date().toISOString(),
-                  messageId: message.id,
-                  source: 'auto-route',
-                });
-              }
-              if (telemetry && typeof telemetry.logLoreQuery === 'function') {
-                await telemetry.logLoreQuery({
-                  timestamp: new Date().toISOString(),
-                  queryId: message.id,
-                  query: text,
-                  source: 'auto-route',
-                });
-              }
-              
-              logger.debug(`[FakeRaresPlugin] ✅ Auto-routed LORE response sent`);
-              logger.debug(`   Hits: ${result.metrics.hits_used}, Latency: ${result.metrics.latency_ms}ms`);
-              
-              try {
-                message.metadata = message.metadata || {};
-                (message.metadata as any).__handledByCustom = true;
-              } catch {}
-              
-              return;
-            } catch (err) {
-              logger.error('[FakeRaresPlugin] ❌ Auto-route LORE failed, falling back to conversation:', err);
-              // Fall through to bootstrap
-            }
+
+          if (!smartRouterHandled && engagementSuppressed) {
+            logger.info('   Decision: SUPPRESS (smart router had no actionable plan and engagement below threshold)');
+            message.metadata = message.metadata || {};
+            (message.metadata as any).__handledByCustom = true;
+            return;
           }
-          
-          logger.info('━━━━━━━━━━ STEP 6/6: BOOTSTRAP DECISION ━━━━━━━━━━');
-          
-          // At this point:
-          // - Commands already handled and exited
-          // - FAKEASF burn already filtered and exited
-          // - Off-topic already filtered and exited
-          // - FACTS queries already auto-routed and exited
-          // - Replies to other users already filtered and exited (not replies to bot)
-          //
-          // Remaining messages: LORE/UNCERTAIN → Allow Bootstrap for natural conversation
-          // (Bootstrap will use userHistoryProvider for context)
-          
+
+          if (smartRouterHandled) {
+            return;
+          }
+
+          logger.info('━━━━━━━━━━ STEP 6/6: BOOTSTRAP HANDOFF ━━━━━━━━━━');
+
           if (globalSuppression) {
             logger.info('   Decision: SUPPRESS all (SUPPRESS_BOOTSTRAP=true)');
             logger.debug('[Suppress] SUPPRESS_BOOTSTRAP=true → suppressing all bootstrap');
@@ -644,22 +905,20 @@ export const fakeRaresPlugin: Plugin = {
             (message.metadata as any).__handledByCustom = true;
             return;
           }
-          
-          // Allow Bootstrap for all remaining messages
-          logger.info(`   Decision: ALLOW bootstrap (normal conversation)`);
-          logger.debug(`[Allow] Bootstrap allowed: reply=${!!isReplyToBot} card=${isFakeRareCard} mention=${hasBotMention} | "${text}"`);
-          
-          // Inject mentionContext to inform Bootstrap's shouldRespond logic
-          // This allows Bootstrap to skip LLM evaluation and always respond to bot replies
+
+          // Allow Bootstrap to handle anything the Smart Router declined
+          logger.info('   Decision: ALLOW bootstrap (router declined to handle message)');
+          logger.debug(
+            `[Allow] Bootstrap allowed: reply=${!!isReplyToBot} card=${isFakeRareCard} mention=${hasBotMention} | "${text}"`
+          );
+
           if (!message.content.mentionContext) {
             message.content.mentionContext = {
               isMention: hasBotMention,
-              isReply: isActuallyReplyToBot
+              isReply: isActuallyReplyToBot,
             };
           }
-          
-          // Log this as a conversation (once per user message, not per API call)
-          // Guard for test environments where runtime.getService might not exist
+
           if (typeof runtime.getService === 'function') {
             const telemetry = runtime.getService('telemetry') as TelemetryService;
             if (telemetry && typeof telemetry.logConversation === 'function') {
@@ -671,15 +930,13 @@ export const fakeRaresPlugin: Plugin = {
             }
           }
           
-          // Let Bootstrap handle it naturally (don't mark as handled, let userHistoryProvider inject context)
-          
         } catch (error) {
           logger.error(`[Plugin Error]`, error);
           
           // Send error response to prevent hanging
           try {
-            if (params.callback && typeof params.callback === 'function') {
-              await params.callback({
+            if (baseCallback) {
+              await baseCallback({
                 text: `❌ Sorry, I encountered an error processing your message. Please try again.`,
                 suppressBootstrap: true,
               });
@@ -699,11 +956,14 @@ export const fakeRaresPlugin: Plugin = {
     
     MODEL_FAILED: [
       async (params: any) => {
-        logger.error('[Plugin] Model call failed:', {
-          modelType: params.modelType,
-          provider: params.provider,
-          error: params.error?.message,
-        });
+        logger.error(
+          {
+            modelType: params.modelType,
+            provider: params.provider,
+            error: params.error?.message,
+          },
+          '[Plugin] Model call failed'
+        );
       },
     ],
     
@@ -721,9 +981,13 @@ export const fakeRaresPlugin: Plugin = {
       async (params: any) => {
         const actionName = params.action?.name || params.actionName || 'unknown';
         if (actionName !== 'unknown') {
-          logger.debug(`[Plugin] Action completed: ${actionName}`, {
-            success: params.result?.success ?? true,
-          });
+          logger.debug(
+            {
+              actionName,
+              success: params.result?.success ?? true,
+            },
+            '[Plugin] Action completed'
+          );
         }
       },
     ],
@@ -731,9 +995,13 @@ export const fakeRaresPlugin: Plugin = {
     ACTION_FAILED: [
       async (params: any) => {
         const actionName = params.action?.name || params.actionName || 'unknown';
-        logger.error(`[Plugin] Action failed: ${actionName}`, {
-          error: params.error?.message || 'Unknown error',
-        });
+        logger.error(
+          {
+            actionName,
+            error: params.error?.message || 'Unknown error',
+          },
+          '[Plugin] Action failed'
+        );
       },
     ],
   },

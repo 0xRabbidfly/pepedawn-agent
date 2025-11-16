@@ -30,6 +30,8 @@ export interface KnowledgeRetrievalOptions {
   mode?: 'FACTS' | 'LORE';
   includeMetrics?: boolean;
   preferCardFacts?: boolean;
+  deterministicCardSelection?: boolean;
+  suppressCardDiscovery?: boolean;
 }
 
 export interface KnowledgeRetrievalResult {
@@ -58,6 +60,111 @@ export class KnowledgeOrchestratorService extends Service {
 
   constructor(runtime: IAgentRuntime) {
     super(runtime);
+  }
+
+  private logStep(step: number, label: string, info?: Record<string, any>): void {
+    const message = `[STEP ${step}/5] ${label}`;
+    if (info && Object.keys(info).length > 0) {
+      logger.info({ step: `${step}/5`, label, ...info }, message);
+    } else {
+      logger.info(message);
+    }
+  }
+
+  private shouldRegenerateFactsAnswer(output: string): boolean {
+    const normalized = (output || '').trim();
+    if (!normalized) return true;
+    if (normalized.toUpperCase() === 'NO_ANSWER') return true;
+    const fallbackPatterns = [
+      /haven['’]t heard of that/i,
+      /not sure what you mean/i,
+      /need a hint/i,
+      /try asking/i,
+      /couldn['’]t find any lore/i,
+      /not sure which fake fits/i,
+    ];
+    return fallbackPatterns.some((pattern) => pattern.test(normalized));
+  }
+
+  private async regenerateFactsAnswer(
+    query: string,
+    passages: RetrievedPassage[]
+  ): Promise<{ story: string; sourcesLine: string }> {
+    const usable = passages.slice(0, Math.max(3, Math.min(5, passages.length)));
+    const notes = usable
+      .map((p, idx) => {
+        const contentText =
+          typeof (p as any)?.content?.text === 'string'
+            ? ((p as any).content.text as string)
+            : '';
+        const text = (p.text || contentText || '').trim();
+        return text ? `[${idx + 1}] ${text}` : '';
+      })
+      .filter(Boolean)
+      .join('\n\n');
+
+    if (!notes) {
+      return {
+        story: 'No factual passages available to answer.',
+        sourcesLine: '',
+      };
+    }
+
+    const prompt = [
+      `You are PEPEDAWN, the factual Rare Pepe archivist. The user asked: "${query}"`,
+      'Write a concise factual answer using only the notes below. Tie the key facts together in 2-4 sentences or short bullets.',
+      'Requirements:',
+      '- Use confident, informative language (no apologies, no requests for more info).',
+      '- Do not say you have not heard of it.',
+      '- Cite specific details when available (names, events, outcomes).',
+      '- If the notes contain multiple beats, connect them logically.',
+      '- Stay under 120 words.',
+      '',
+      'Notes:',
+      notes,
+      '',
+      'Answer:',
+    ].join('\n');
+
+    try {
+      const model = process.env.LORE_STORY_MODEL || 'gpt-4o';
+      const response = await callTextModel(this.runtime, {
+        model,
+        prompt,
+        maxTokens: Math.min(LORE_CONFIG.MAX_TOKENS_STORY, 320),
+        temperature: Math.min(0.7, LORE_CONFIG.TEMPERATURE),
+        source: 'Lore facts regeneration',
+      });
+      const regenerated = (response.text || '').trim();
+
+      if (!this.shouldRegenerateFactsAnswer(regenerated)) {
+        const sourcesLine =
+          process.env.HIDE_LORE_SOURCES === 'true'
+            ? ''
+            : `\n\nSources:  ${usable
+                .map((p) => formatCompactCitation(p))
+                .join('  ||  ')}`;
+        return { story: regenerated, sourcesLine };
+      }
+    } catch (err) {
+      logger.warn({ err }, '[KnowledgeOrchestrator] Facts regeneration failed');
+    }
+
+    // Fall back to direct concatenation if regeneration still refused
+    const fallback = usable
+      .map((p) => (p.text || '').trim())
+      .filter(Boolean)
+      .join(' ');
+    const sourcesLine =
+      process.env.HIDE_LORE_SOURCES === 'true'
+        ? ''
+        : `\n\nSources:  ${usable
+            .map((p) => formatCompactCitation(p))
+            .join('  ||  ')}`;
+    return {
+      story: fallback || 'Information unavailable.',
+      sourcesLine,
+    };
   }
 
   /**
@@ -237,16 +344,16 @@ export class KnowledgeOrchestratorService extends Service {
   ): Promise<KnowledgeRetrievalResult> {
     const startTime = Date.now();
     const preferCardFacts = options?.preferCardFacts ?? false;
+    const suppressCardDiscovery = options?.suppressCardDiscovery ?? false;
 
     logger.debug(`\n🔍 [KNOWLEDGE] Query: "${query}"`);
-    logger.info(`STEP 1/5: Expanding query`);
+    this.logStep(1, 'expand_query', { query });
     logger.debug('='.repeat(60));
 
     // STEP 1: Query expansion
     const expandedQuery = expandQuery(query);
     logger.debug(`📝 Expanded query: "${expandedQuery}"`);
-
-    logger.info(`STEP 2/5: Retrieving passages`);
+    this.logStep(2, 'retrieve_passages_start');
     // STEP 2: Retrieve passages
     const passages = await searchKnowledgeWithExpansion(
       this.runtime,
@@ -269,7 +376,10 @@ export class KnowledgeOrchestratorService extends Service {
       .map(([type, count]) => `${count} ${type}`)
       .join(', ');
     
-    logger.info(`STEP 2/5: Retrieved ${passages.length} passages (${sourceStr})`);
+    this.logStep(2, 'retrieve_passages_complete', {
+      total: passages.length,
+      sources: sourceStr || 'none',
+    });
 
     if (passages.length === 0) {
       logger.debug('⚠️  No passages found - checking if query is a known card');
@@ -315,6 +425,17 @@ export class KnowledgeOrchestratorService extends Service {
       (p) => p.sourceType === 'card-fact' && p.cardAsset
     );
 
+    const metadataAnswer = this.tryAnswerCardMetadata(
+      query,
+      primaryCardAsset,
+      startTime,
+      passages.length,
+      passages.length
+    );
+    if (metadataAnswer) {
+      return metadataAnswer;
+    }
+
     // Dedicated card-only recall to guarantee enough candidates for the reranker
     // We bypass wiki/memory here and fetch additional card-visual facts globally.
     // This avoids channel LRU variance and ensures winter cards can enter the pool.
@@ -348,39 +469,48 @@ export class KnowledgeOrchestratorService extends Service {
         logger.warn({ err }, 'Card-only recall expansion failed');
       }
     }
-    if (preferCardFacts) {
-      const cardIntentResult = await this.composeCardFactAnswer(
-        query,
-        cardFactPassages,
-        roomId,
-        startTime
-      );
-      if (cardIntentResult) {
-        logger.info(
-          `🃏 [KNOWLEDGE] Card discovery forced (intent) using ${cardFactPassages.length} card-related passages.`
+    if (!suppressCardDiscovery) {
+      if (preferCardFacts) {
+        const cardIntentResult = await this.composeCardFactAnswer(
+          query,
+          cardFactPassages,
+          roomId,
+          startTime,
+          { deterministicSelection: options?.deterministicCardSelection }
         );
-        return cardIntentResult;
+        if (cardIntentResult) {
+          logger.info(
+            `🃏 [KNOWLEDGE] Card discovery forced (intent) using ${cardFactPassages.length} card-related passages.`
+          );
+          return cardIntentResult;
+        }
+        logger.info(
+          `🧠 [KNOWLEDGE] Card intent detected but no strong card matches found; falling back to wiki/memory flow.`
+        );
+      } else if (!hasWikiOrMemoryPassages && !primaryCardAsset) {
+        const cardFactResult = await this.composeCardFactAnswer(
+          query,
+          cardFactPassages,
+          roomId,
+          startTime,
+          { deterministicSelection: options?.deterministicCardSelection }
+        );
+        if (cardFactResult) {
+          logger.info(`🃏 [KNOWLEDGE] Card discovery fired (no wiki/memory hits, ${cardFactPassages.length} card-fact passages)`);
+          return cardFactResult;
+        }
+      } else if (cardFactPassages.length > 0) {
+        logger.info(`🧠 [KNOWLEDGE] Wiki/memory hits found – skipping card discovery despite ${cardFactPassages.length} card-fact passages.`);
       }
-      logger.info(
-        `🧠 [KNOWLEDGE] Card intent detected but no strong card matches found; falling back to wiki/memory flow.`
-      );
-    } else if (!hasWikiOrMemoryPassages) {
-      const cardFactResult = await this.composeCardFactAnswer(
-        query,
-        cardFactPassages,
-        roomId,
-        startTime
-      );
-      if (cardFactResult) {
-        logger.info(`🃏 [KNOWLEDGE] Card discovery fired (no wiki/memory hits, ${cardFactPassages.length} card-fact passages)`);
-        return cardFactResult;
-      }
-    } else if (cardFactPassages.length > 0) {
-      logger.info(`🧠 [KNOWLEDGE] Wiki/memory hits found – skipping card discovery despite ${cardFactPassages.length} card-fact passages.`);
+    } else if (process.env.LORE_DEBUG === 'verbose') {
+      logger.info('🧠 [KNOWLEDGE] Card discovery suppressed by caller.');
     }
 
     const queryType = options?.mode || classifyQuery(query);
-    logger.info(`STEP 3/5: Selecting passages (${queryType === 'FACTS' ? 'by relevance' : 'MMR diversity'})`);
+    this.logStep(3, 'select_passages', {
+      mode: queryType,
+      hasPrimaryCardAsset: !!primaryCardAsset,
+    });
     
     // Filter recently used (but ALWAYS preserve memories)
     const passageIds = passages.map(p => p.id);
@@ -436,12 +566,17 @@ export class KnowledgeOrchestratorService extends Service {
       .map(([type, count]) => `${count} ${type}`)
       .join(', ');
     
-    logger.info(`STEP 3/5: Selected ${diversePassages.length} passages (${postSelectionStr})`);
+    this.logStep(3, 'select_passages_complete', {
+      selected: diversePassages.length,
+      sources: postSelectionStr || 'none',
+    });
 
     diversePassages.forEach(p => markIdAsRecentlyUsed(roomId, p.id));
 
-    logger.info(`STEP 4/5: Composing response for ${queryType} mode`);
-    logger.info(`STEP 4/5: Mode = ${queryType} ${queryType === 'FACTS' ? '📋' : '📖'}`);
+    this.logStep(4, 'compose_response', {
+      mode: queryType,
+      passageCount: diversePassages.length,
+    });
     
     let story: string;
     let sourcesLine: string;
@@ -451,43 +586,6 @@ export class KnowledgeOrchestratorService extends Service {
     if (queryType === 'FACTS') {
       logger.debug('📋 FACTS mode: Using top wiki and memory passages directly');
       
-      // Special-case: direct supply question for a card -> deterministic answer
-      const isSupplyQuestion =
-        /\b(supply|how many|how much)\b/i.test(query) &&
-        !!primaryCardAsset;
-      if (isSupplyQuestion && primaryCardAsset) {
-        const info = getCardInfo(primaryCardAsset);
-        if (info && info.supply) {
-          const parts: string[] = [`${primaryCardAsset} supply: ${info.supply}`];
-          if (typeof info.series === 'number' && typeof info.card === 'number') {
-            parts.push(`Series ${info.series} • Card ${info.card}`);
-          } else if (typeof info.series === 'number') {
-            parts.push(`Series ${info.series}`);
-          }
-          if (info.artist) {
-            parts.push(`by ${info.artist}`);
-          }
-          story = parts.join(' | ');
-          sourcesLine = process.env.HIDE_LORE_SOURCES === 'true' ? '' : '';
-          hasWikiOrMemory = false;
-          logger.debug('📋 FACTS mode: Answered supply using fullCardIndex');
-          const latencyMs = Date.now() - startTime;
-          return {
-            story,
-            sourcesLine,
-            hasWikiOrMemory,
-            metrics: {
-              query,
-              hits_raw: passages.length,
-              hits_used: diversePassages.length,
-              clusters: 0,
-              latency_ms: latencyMs,
-              story_words: story.split(/\s+/).length,
-            }
-          };
-        }
-      }
-      
       const factsPassages = diversePassages.filter(p => p.sourceType === 'wiki' || p.sourceType === 'memory').slice(0, 5);
       const factsBreakdown = factsPassages.reduce((acc, p) => {
         const type = p.sourceType === 'memory' ? 'mem' : 'wiki';
@@ -495,7 +593,10 @@ export class KnowledgeOrchestratorService extends Service {
         return acc;
       }, {} as Record<string, number>);
       const factsStr = Object.entries(factsBreakdown).map(([t, c]) => `${c} ${t}`).join(', ');
-      logger.info(`   → FACTS: Using ${factsPassages.length} passages (${factsStr})`);
+      logger.info(
+        { step: '4/5', branch: 'FACTS', passages: factsPassages.length, breakdown: factsStr },
+        '[KnowledgeOrchestrator] FACTS passage selection'
+      );
       
       hasWikiOrMemory = factsPassages.length > 0;
       
@@ -511,17 +612,41 @@ export class KnowledgeOrchestratorService extends Service {
           `\n\nSources:  ${topPassages.map(p => formatCompactCitation(p)).join('  ||  ')}`;
         clusterCount = 1;
       } else {
-        story = await generatePersonaStory(this.runtime, query, [{
+        story = await generatePersonaStory(this.runtime, query, [
+          {
           id: 'facts',
           passageRefs: factsPassages.map(p => p.id),
           summary: factsPassages.map(p => p.text).join('\n\n'),
           citations: factsPassages.map(p => formatCompactCitation(p))
-        }]);
-        sourcesLine = process.env.HIDE_LORE_SOURCES === 'true' ? '' : 
-          `\n\nSources:  ${factsPassages.map(p => formatCompactCitation(p)).join('  ||  ')}`;
+          },
+        ]);
+        sourcesLine =
+          process.env.HIDE_LORE_SOURCES === 'true'
+            ? ''
+            : `\n\nSources:  ${factsPassages
+                .map((p) => formatCompactCitation(p))
+                .join('  ||  ')}`;
         clusterCount = 1;
       }
       logger.debug(`📋 Sent ${factsPassages.length || diversePassages.slice(0, 5).length} passages directly (no clustering)`);
+
+      if (this.shouldRegenerateFactsAnswer(story)) {
+        const fallbackPassages =
+          factsPassages.length > 0 ? factsPassages : diversePassages.slice(0, 5);
+        const { story: regeneratedStory, sourcesLine: regeneratedSources } =
+          await this.regenerateFactsAnswer(query, fallbackPassages);
+        story = regeneratedStory;
+        if (regeneratedSources) {
+          sourcesLine = regeneratedSources;
+        }
+        hasWikiOrMemory = fallbackPassages.some(
+          (p) => p.sourceType === 'wiki' || p.sourceType === 'memory'
+        );
+        logger.info(
+          { step: '4/5', branch: 'FACTS', regeneration: true },
+          '[KnowledgeOrchestrator] FACTS regeneration executed due to fallback output'
+        );
+      }
     } else {
       logger.debug('📖 LORE mode: Using clustering and summarization');
       
@@ -553,11 +678,17 @@ export class KnowledgeOrchestratorService extends Service {
         
         // Card cluster FIRST (highest prominence in story)
         summaries = [cardCluster, ...otherClusters];
-        logger.info(`   → LORE: ${summaries.length} clusters (1 card + ${otherClusters.length} other)`);
+        logger.info(
+          { step: '4/5', branch: 'LORE', clusters: summaries.length, cardClusters: 1 },
+          '[KnowledgeOrchestrator] LORE clustering (card memories present)'
+        );
       } else {
         // No card memories, normal clustering
         summaries = await clusterAndSummarize(this.runtime, diversePassages, query);
-        logger.info(`   → LORE: ${summaries.length} clusters generated`);
+        logger.info(
+          { step: '4/5', branch: 'LORE', clusters: summaries.length },
+          '[KnowledgeOrchestrator] LORE clustering'
+        );
       }
       
       clusterCount = summaries.length;
@@ -595,7 +726,10 @@ export class KnowledgeOrchestratorService extends Service {
     }
 
     logger.debug(`✍️  Generated story (${story.split(/\s+/).length} words)`);
-    logger.info(`STEP 5/5: Story generated (${story.split(/\s+/).length} words)`);
+    this.logStep(5, 'story_generated', {
+      words: story.split(/\s+/).length,
+      clusters: clusterCount,
+    });
 
     const latencyMs = Date.now() - startTime;
     logger.debug(`\n📈 [METRICS]`);
@@ -626,7 +760,8 @@ export class KnowledgeOrchestratorService extends Service {
     query: string,
     passages: RetrievedPassage[],
     roomId: string,
-    startTime: number
+    startTime: number,
+    options?: { deterministicSelection?: boolean }
   ): Promise<KnowledgeRetrievalResult | null> {
     if (passages.length === 0) {
       return null;
@@ -753,6 +888,16 @@ export class KnowledgeOrchestratorService extends Service {
     }
 
     if (llmMap && llmMap.size > 0) {
+      const detailedScores = Array.from(llmMap.entries())
+        .map(
+          ([asset, entry]) =>
+            `${asset.toUpperCase()}:${(entry.score ?? 0).toFixed(2)}${
+              entry.reason ? ` "${entry.reason}"` : ''
+            }`
+        )
+        .join('  ||  ');
+      logger.info(`🤖 [CardDiscovery.LLM] Scores: ${detailedScores}`);
+
       ranked = baseGroups
         .map((group) => {
           const rerank = llmMap.get(group.asset);
@@ -790,6 +935,14 @@ export class KnowledgeOrchestratorService extends Service {
           return (b.heuristicScore ?? 0) - (a.heuristicScore ?? 0);
         });
     } else {
+      const heuristicLog = baseGroups
+        .slice(0, 6)
+        .map(
+          (group) =>
+            `${group.asset}:${(group.heuristicScore ?? 0).toFixed(2)}`
+        )
+        .join('  ||  ');
+      logger.info(`[CardDiscovery] Heuristic ranking used: ${heuristicLog || 'n/a'}`);
       ranked = baseGroups.sort(
         (a, b) => (b.heuristicScore ?? 0) - (a.heuristicScore ?? 0)
       );
@@ -832,10 +985,13 @@ export class KnowledgeOrchestratorService extends Service {
         }
       }
 
-      selectedGroup = selectionPool[0];
-      if (selectionPool.length > 1) {
-        const randomIndex = Math.floor(Math.random() * selectionPool.length);
-        selectedGroup = selectionPool[randomIndex];
+      if (selectionPool.length > 0) {
+        if (options?.deterministicSelection || selectionPool.length === 1) {
+          selectedGroup = selectionPool[0];
+        } else {
+          const randomIndex = Math.floor(Math.random() * selectionPool.length);
+          selectedGroup = selectionPool[randomIndex];
+        }
       }
     }
 
@@ -862,7 +1018,7 @@ export class KnowledgeOrchestratorService extends Service {
     }
 
     const fallbackReason = topGroup
-      ? this.buildCardReason(topGroup)
+      ? this.buildCardReason(topGroup, false)
       : 'This card matches your clue.';
     const finalSummary =
       (cardSummary && cardSummary.trim().length > 0 ? cardSummary.trim() : fallbackReason);
@@ -876,7 +1032,7 @@ export class KnowledgeOrchestratorService extends Service {
       cardSummary: finalSummary,
       cardMatches: orderedGroups.map((group) => ({
         asset: group.asset,
-        reason: this.buildCardReason(group),
+        reason: this.buildCardReason(group, false),
       })),
       metrics: {
         query,
@@ -1363,18 +1519,20 @@ Write ONE short sentence (max 20 words) telling the user why this card fits the 
         this.extractJsonObject(raw);
       if (!jsonText) {
         // Try heuristic extraction if the JSON is truncated but still contains asset/score pairs.
-        const heuristicMatches = Array.from(
-          cleaned.matchAll(
-            /"asset"\s*:\s*"([^"]+)"[\s\S]*?"score"\s*:\s*([0-9.]+)(?:[\s\S]*?"reason"\s*:\s*"([^"]*)")?/g
-          )
-        );
+      const heuristicMatches = Array.from(
+        cleaned.matchAll(
+          /["']?asset["']?\s*[:=]\s*["']?\s*([^"'\n\r,}]+)\s*["']?[\s\S]*?["']?score["']?\s*[:=]\s*["']?\s*([0-9.]+)\s*["']?(?:[\s\S]*?["']?reason["']?\s*[:=]\s*["']?\s*([^"']*)["']?)?/gi
+        )
+      );
         if (heuristicMatches.length > 0) {
           const heuristicMap = new Map<string, { score: number; reason?: string }>();
-          for (const [, assetRaw, scoreRaw, reasonRaw] of heuristicMatches) {
+        for (const [, assetRaw, scoreRaw, reasonRaw] of heuristicMatches) {
             if (!assetRaw) continue;
-            const score = parseFloat(scoreRaw ?? '');
+          const normalizedAsset = assetRaw.replace(/["'\s]/g, '').toUpperCase();
+          if (!normalizedAsset) continue;
+          const score = parseFloat(scoreRaw ?? '');
             if (!Number.isFinite(score)) continue;
-            heuristicMap.set(assetRaw.toUpperCase(), {
+          heuristicMap.set(normalizedAsset, {
               score: Math.max(0, Math.min(1, score)),
               reason: reasonRaw?.trim() || 'Heuristic parse (truncated JSON)',
             });
@@ -1683,10 +1841,14 @@ Write ONE short sentence (max 20 words) telling the user why this card fits the 
     return text.slice(0, maxLength - 1).trimEnd() + '…';
   }
 
-  private buildCardReason(group: CardFactGroup): string {
+  private buildCardReason(group: CardFactGroup, includeAsset: boolean): string {
+    const prefix = includeAsset ? `**${group.asset}** ` : '';
+
     if (group.llmReason && group.llmReason.trim().length > 0) {
-      const reason = group.llmReason.trim();
-      return `**${group.asset}** fits because ${reason.endsWith('.') ? reason : `${reason}.`}`;
+      const reason = this.removeCardAnnotations(group.llmReason.trim());
+      if (reason) {
+        return `${prefix}${reason.endsWith('.') ? reason : `${reason}.`}`;
+      }
     }
 
     const snippet =
@@ -1698,14 +1860,24 @@ Write ONE short sentence (max 20 words) telling the user why this card fits the 
         'text',
       ]) || 'it nails the vibe you described.';
 
-    const trimmed = this.truncateSnippet(snippet.replace(/\*\*/g, '').trim());
+    const trimmed = this.truncateSnippet(this.removeCardAnnotations(snippet).trim());
     const ensured = /[.!?]$/.test(trimmed) ? trimmed : `${trimmed}.`;
     const lowered = ensured.charAt(0).toLowerCase() + ensured.slice(1);
     const highlightSuffix =
       group.matchHighlights && group.matchHighlights.length > 0
         ? ` It hits your cues: ${group.matchHighlights.join(', ')}.`
         : '';
-    return `**${group.asset}** fits because ${lowered}${highlightSuffix}`;
+    const combined = `${prefix}${lowered}${highlightSuffix}`.trim();
+    return combined || `${prefix}Fits what you asked for.`;
+  }
+
+  private removeCardAnnotations(text: string): string {
+    return text
+      .replace(/\*\*/g, '')
+      .replace(/\[CARD:[^\]]+\]/gi, '')
+      .replace(/\[CARDFACT:[^\]]+\]/gi, '')
+      .replace(/\s+/g, ' ')
+      .trim();
   }
 
   private formatCardMeta(passage: RetrievedPassage): string {
@@ -1844,6 +2016,76 @@ Write ONE short sentence (max 20 words) telling the user why this card fits the 
     }
 
     return false;
+  }
+
+  private tryAnswerCardMetadata(
+    query: string,
+    primaryCardAsset: string | undefined,
+    startTime: number,
+    rawPassagesCount: number,
+    topPassageCount: number
+  ): KnowledgeRetrievalResult | null {
+    if (!primaryCardAsset) return null;
+    const isSupplyQuestion = /\b(supply|issuance|mint(?:ed)?|mint\s+count|copies|how many|how much)\b/i.test(query);
+    if (!isSupplyQuestion) return null;
+
+    const info = getCardInfo(primaryCardAsset);
+    if (!info) return null;
+
+    const parts: string[] = [];
+    if (typeof info.supply !== 'undefined') {
+      parts.push(`${primaryCardAsset} supply: ${info.supply}`);
+    }
+    if (typeof info.series === 'number' && typeof info.card === 'number') {
+      parts.push(`Series ${info.series} • Card ${info.card}`);
+    } else if (typeof info.series === 'number') {
+      parts.push(`Series ${info.series}`);
+    }
+    if (info.artist) {
+      parts.push(`by ${info.artist}`);
+    }
+    if (info.issuance) {
+      parts.push(`Issued ${info.issuance}`);
+    }
+
+    if (parts.length === 0) {
+      return null;
+    }
+
+    const story = parts.join(' | ');
+    const latencyMs = Date.now() - startTime;
+    return {
+      story,
+      sourcesLine: '',
+      hasWikiOrMemory: false,
+      metrics: {
+        query,
+        hits_raw: rawPassagesCount,
+        hits_used: topPassageCount,
+        clusters: 0,
+        latency_ms: latencyMs,
+        story_words: story.split(/\s+/).length,
+      },
+    };
+  }
+
+  private normalizeCardSummary(
+    summary: string | null | undefined,
+    fallbackReason: string,
+    group: CardFactGroup | undefined,
+    _query: string
+  ): string {
+    const trimmed = (summary || '').trim();
+    if (!trimmed || /no factual data available yet/i.test(trimmed)) {
+      const snippet = group
+        ? this.extractSnippetFromGroup(group, ['text', 'combined', 'memetic', 'visual'])
+        : null;
+      if (snippet) {
+        return `Not sure about that detail, but here is what stands out about ${group?.asset}: ${snippet}`;
+      }
+      return fallbackReason || `Not sure about that detail, but here is what I can share about ${group?.asset || 'this card'}.`;
+    }
+    return trimmed;
   }
 }
 

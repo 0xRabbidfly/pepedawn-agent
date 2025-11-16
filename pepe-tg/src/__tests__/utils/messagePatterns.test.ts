@@ -23,6 +23,13 @@ describe('messagePatterns', () => {
     it('should detect /fl command', () => {
       const patterns = detectMessagePatterns('/fl what is PEPEDAWN', {});
       expect(patterns.commands.isFl).toBe(true);
+      expect(patterns.commands.isF).toBe(false);
+    });
+
+    it('should not treat /fl as /f', () => {
+      const patterns = detectMessagePatterns('/fl', {});
+      expect(patterns.commands.isFl).toBe(true);
+      expect(patterns.commands.isF).toBe(false);
     });
 
     it('should detect /fr command', () => {

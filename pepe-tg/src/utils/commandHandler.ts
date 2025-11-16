@@ -14,7 +14,7 @@ export interface Action {
     message: Memory,
     state: any,
     options: any,
-    callback?: (response: any) => Promise<void>
+    callback?: (response: any) => Promise<any>
   ) => Promise<any>;
 }
 
@@ -22,7 +22,7 @@ export interface CommandHandlerParams {
   runtime: IAgentRuntime;
   message: Memory;
   state: any;
-  callback?: (response: any) => Promise<any[] | void>;
+  callback?: (response: any) => Promise<any>;
 }
 
 /**

@@ -1,0 +1,60 @@
+{
+  "LORE": {
+    "sourceWeights": {
+      "memory": 4.0,
+      "wiki": 2.6,
+      "card_data": 1.2,
+      "telegram": 2.2,
+      "unknown": 0.5
+    },
+    "topKPerSource": 6,
+    "matchThresholds": {
+      "memory": 0.25,
+      "memories": 0.25,
+      "wiki": 0.25,
+      "card_data": 0.35,
+      "telegram": 0.3,
+      "unknown": 0
+    },
+    "previewLength": 320
+  },
+  "FACTS": {
+    "sourceWeights": {
+      "memory": 3.2,
+      "wiki": 2.2,
+      "card_data": 3.0,
+      "telegram": 0.6,
+      "unknown": 0.4
+    },
+    "topKPerSource": 5,
+    "matchThresholds": {
+      "memory": 0.25,
+      "memories": 0.25,
+      "wiki": 0.25,
+      "card_data": 0.35,
+      "telegram": 0.3,
+      "unknown": 0
+    },
+    "previewLength": 320
+  },
+  "CHAT": {
+    "sourceWeights": {
+      "memory": 1.4,
+      "wiki": 0.6,
+      "card_data": 0.4,
+      "telegram": 3.2,
+      "unknown": 0.6
+    },
+    "topKPerSource": 8,
+    "matchThresholds": {
+      "memory": 0.25,
+      "memories": 0.25,
+      "wiki": 0.25,
+      "card_data": 0.35,
+      "telegram": 0.3,
+      "unknown": 0
+    },
+    "previewLength": 320
+  }
+}
+

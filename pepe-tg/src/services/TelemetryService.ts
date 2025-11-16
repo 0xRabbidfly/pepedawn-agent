@@ -19,6 +19,7 @@ import { join } from 'path';
 const LOG_FILE = join(process.cwd(), 'src', 'data', 'token-logs.jsonl');
 const CONVERSATION_LOG_FILE = join(process.cwd(), 'src', 'data', 'conversation-logs.jsonl');
 const LORE_QUERY_LOG_FILE = join(process.cwd(), 'src', 'data', 'lore-query-logs.jsonl');
+const SMART_ROUTER_LOG_FILE = join(process.cwd(), 'src', 'data', 'smart-router-logs.jsonl');
 
 // Pricing per 1M tokens (USD)
 const MODEL_PRICING: Record<string, { input: number; output: number }> = {
@@ -80,6 +81,30 @@ export interface ActionLog {
   success: boolean;
   duration: number;
   error?: string;
+}
+
+export interface SmartRouterDecisionLog {
+  timestamp: string;
+  messageId: string;
+  userText: string;
+  intent: string;
+  kind: string;
+  reason: string;
+  command?: string;
+  emoji?: string;
+  fastPath?: {
+    score: number;
+    asset?: string;
+    metrics?: Record<string, any>;
+  };
+  retrieval?: {
+    totalPassages: number;
+    totalCandidates: number;
+    countsBySource: Record<string, number>;
+    weightedBySource: Record<string, number>;
+  };
+  handled?: boolean;
+  result?: 'pending' | 'handled' | 'fallback' | 'skipped';
 }
 
 export interface CostStats {
@@ -172,6 +197,31 @@ export class TelemetryService extends Service {
       logger.debug(`[Telemetry] Lore query logged: ${log.source} "${log.query.substring(0, 50)}..."`);
     } catch (err) {
       logger.error('[Telemetry] Failed to log lore query:', err);
+    }
+  }
+
+  /**
+   * Log smart router decisions and execution details
+   */
+  async logSmartRouterDecision(log: SmartRouterDecisionLog): Promise<void> {
+    try {
+      if (!existsSync(SMART_ROUTER_LOG_FILE)) {
+        writeFileSync(SMART_ROUTER_LOG_FILE, '', 'utf8');
+      }
+
+      const record = {
+        ...log,
+        userText: log.userText.length > 240 ? `${log.userText.slice(0, 240)}…` : log.userText,
+      };
+
+      appendFileSync(SMART_ROUTER_LOG_FILE, JSON.stringify(record) + '\n', 'utf8');
+      logger.debug(
+        `[Telemetry] SmartRouter logged: intent=${log.intent} kind=${log.kind} handled=${
+          log.result ?? 'pending'
+        }`
+      );
+    } catch (err) {
+      logger.error('[Telemetry] Failed to log smart router decision:', err);
     }
   }
 

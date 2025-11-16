@@ -1,0 +1,28 @@
+{
+  "source_weights": {
+    "memories": 3.0,
+    "wiki": 2.0,
+    "card_data": 1.5,
+    "telegram": 0.5
+  },
+  "top_k_per_source": 5,
+  "match_thresholds": {
+    "card_data": 0.35,
+    "memories": 0.25,
+    "wiki": 0.25,
+    "telegram": 0.3
+  },
+  "min_confidence_for_facts_or_lore": 0.6,
+  "max_router_tokens": 256,
+  "router_model": "small",
+  "fastpath": {
+    "card_data_aggregate_min": 0.7,
+    "top_similarity_min": 0.8,
+    "dominance_margin": 0.1
+  },
+  "rollout": {
+    "enabled": true,
+    "percentage": 100
+  }
+}
+

@@ -325,5 +325,117 @@ describe('loreCommand - FACTS Mode', () => {
       expect(sentText.includes('\\n')).toBe(false);
     });
   });
+
+  describe('Knowledge service invocation', () => {
+    const baseResult = {
+      story: 'Sample lore output',
+      sourcesLine: '',
+      hasWikiOrMemory: true,
+      metrics: {
+        query: 'SAMPLE',
+        hits_raw: 1,
+        hits_used: 1,
+        clusters: 1,
+        latency_ms: 10,
+        story_words: 3,
+      },
+    };
+
+    it('should request lore with card discovery suppressed for explicit queries', async () => {
+      const runtime = createMockRuntime();
+      const message = createMockMessage('/fl FREEDOMKEK');
+
+      const retrieveKnowledge = mock().mockResolvedValue(baseResult);
+      runtime.getService = mock().mockImplementation((serviceType: string) => {
+        if (serviceType === 'knowledge-orchestrator') {
+          return { retrieveKnowledge } as any;
+        }
+        return null;
+      });
+
+      const callback = mock(async () => {});
+
+      await loreCommand.handler(
+        runtime,
+        message,
+        null as unknown as State,
+        undefined,
+        callback
+      );
+
+      expect(retrieveKnowledge.mock.calls.length).toBe(1);
+      const options = retrieveKnowledge.mock.calls[0][2];
+      expect(options?.suppressCardDiscovery).toBe(true);
+      expect(options?.includeMetrics).toBe(true);
+    });
+
+    it('should force LORE mode when using random seed', async () => {
+      const runtime = createMockRuntime();
+      const message = createMockMessage('/fl');
+
+      const retrieveKnowledge = mock().mockResolvedValue(baseResult);
+      runtime.getService = mock().mockImplementation((serviceType: string) => {
+        if (serviceType === 'knowledge-orchestrator') {
+          return { retrieveKnowledge } as any;
+        }
+        return null;
+      });
+
+      const callback = mock(async () => {});
+      const originalRandom = Math.random;
+      Math.random = () => 0;
+      try {
+        await loreCommand.handler(
+          runtime,
+          message,
+          null as unknown as State,
+          undefined,
+          callback
+        );
+      } finally {
+        Math.random = originalRandom;
+      }
+
+      expect(retrieveKnowledge.mock.calls.length).toBe(1);
+      const options = retrieveKnowledge.mock.calls[0][2];
+      expect(options?.suppressCardDiscovery).toBe(true);
+      expect(options?.mode).toBe('LORE');
+    });
+
+    it('should bypass clarification when random seed is classified as UNCERTAIN', async () => {
+      const runtime = createMockRuntime();
+      const message = createMockMessage('/fl');
+
+      const retrieveKnowledge = mock().mockResolvedValue(baseResult);
+      runtime.getService = mock().mockImplementation((serviceType: string) => {
+        if (serviceType === 'knowledge-orchestrator') {
+          return { retrieveKnowledge } as any;
+        }
+        return null;
+      });
+
+      const callback = mock(async () => {});
+
+      const originalRandom = Math.random;
+      Math.random = () => 0.65; // Pick a seed with >4 words -> classifier = UNCERTAIN
+      try {
+        await loreCommand.handler(
+          runtime,
+          message,
+          null as unknown as State,
+          undefined,
+          callback
+        );
+      } finally {
+        Math.random = originalRandom;
+      }
+
+      expect(retrieveKnowledge.mock.calls.length).toBe(1);
+      expect(callback.mock.calls.length).toBe(1);
+      const payload = callback.mock.calls[0][0];
+      expect(payload.text).toBe(baseResult.story);
+      expect(payload.text).not.toContain('Try:');
+    });
+  });
 });
 

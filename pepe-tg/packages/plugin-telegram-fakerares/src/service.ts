@@ -138,14 +138,11 @@ export class TelegramService extends Service {
           `✅ Telegram client successfully started for character ${runtime.character.name}`
         );
 
-        logger.log('🚀 Starting Telegram bot...');
-        await service.initializeBot();
-
-        // Set up middlewares before message handlers to ensure proper preprocessing
+        logger.log('🚀 Starting Telegram bot (registering handlers before launch)...');
         service.setupMiddlewares();
-
-        // Set up message handlers after middlewares
         service.setupMessageHandlers();
+
+        await service.initializeBot();
 
         // Wait for bot to be ready by testing getMe()
         await service.bot!.telegram.getMe();

@@ -40,10 +40,11 @@
                 │ YES       │ NO
                 ▼           ▼
 ┌──────────────────────────────┐    ┌──────────────────────────────────┐
-│ FAST‑PATH FACTS              │    │ 4) ROUTER (LLM POLICY)           │
+│ FAST‑PATH FACTS / CARD RECO  │    │ 4) ROUTER (LLM POLICY)           │
 │ • preferCardFacts=true       │    │ • Input: msg + candidates        │
-│ • “Why this fits” summary    │    │ • Output JSON: { mode, ids, conf}│
-│ • Invoke card display        │    │ • Config: weights & thresholds   │
+│ • Skip fast-path if user     │    │ • Output JSON: { mode, ids, conf}│
+│   already names the card     │    │ • Config: weights & thresholds   │
+│ • Otherwise /f card display  │    │                                  │
 └───────────────┬────────── ───┘    └───────────────┬──────────────────┘
                 │                                   │
                 └──────────────┬─────────── ────────┘
@@ -75,7 +76,7 @@
 
 ---
 
-## Detailed Steps
+## Detailed Steps (current implementation – Nov 2025)
 
 - 1) Message Received
   - Telegraf → Plugin event. Command/memory paths short-circuit out.
@@ -86,6 +87,12 @@
 - 3) Multi-source Retrieval
   - Run semantic search across: memories, wiki, card data, telegram.
   - Return top‑k per source with: id, source_type, similarity, priority_weight, text preview.
+  - `/fl` with an empty argument now injects a random lore prompt so retrieval always has a concrete seed.
+
+- 3A) Card-Intent Gates
+  - **Descriptor questions (“find a card that…”)** trigger a router override: the plugin hints the Smart Router to treat the turn as FACTS so it always runs the KnowledgeOrchestrator card-discovery flow (RAG + `composeCardFactAnswer()` reranker) and returns multi-card matches, not CHAT.
+  - **Fast-path suppression on named cards:** when the user already names the card (exact asset match), Smart Router logs `[Fast-path suppressed]` and keeps the request in FACTS/LORE instead of shelling out to `/f`.
+  - **Metadata hook:** supply/issuance questions that name a card are answered deterministically from `fullCardIndex` before any card discovery or LLM call.
 
 - 4) Router (LLM Policy)
   - Inputs: user message + compact candidate descriptors (no full text unless needed).
@@ -93,11 +100,14 @@
   - Outputs strict JSON (mode, chosen_passage_ids, confidence).
   - Threshold: low confidence → default to CHAT.
   - Config: weights, k, thresholds in YAML/JSON (no branching code).
+  - **Card recommendation plan:** when a descriptor override is active, Smart Router returns `CARD_RECOMMEND` with the KnowledgeOrchestrator `cardSummary`, multi-card matches, and the selected primary card so the plugin can send the LLM explanation and still trigger `/f <card>` afterward.
 
 - 5) Mode-specific Generation
   - FACTS: concise, neutral, cite sources; no MMR.
   - LORE: storyteller persona; clustering/MMR for diversity; cite sources.
   - CHAT: social, brief, never invent facts.
+  - CARD_RECOMMEND: reuses the FACTS preset with `preferCardFacts=true`, so `composeCardFactAnswer()` scores the card candidates, logs the multi-card table, and returns `cardSummary` + `cardMatches` which we surface before showing the card.
+  - Card-fact fallbacks now replace “No factual data…” with “Here’s what stands out about <card>…” whenever passages exist; only truly empty recalls return clarifications.
 
 - 6) Send + Observe
   - Telegram-safe text; optional “hide sources” flag.

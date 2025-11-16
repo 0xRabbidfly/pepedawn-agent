@@ -345,8 +345,25 @@ export class PeriodicContentService extends Service {
       
       // Build artist button (if enabled)
       const buttons = buildArtistButton(cardInfo);
+
+      const mediaType: 'photo' | 'video' | 'animation' =
+        urlResult.extension === 'mp4'
+          ? 'video'
+          : urlResult.extension === 'gif'
+            ? 'animation'
+            : 'photo';
+      const fallbackPhotoUrl =
+        mediaType === 'video' ? cardInfo.memeUri ?? undefined : undefined;
       
-      const messageIds = await this.sendPhotoToChannels(imageUrl, message, buttons);
+      const messageIds = await this.sendMediaToChannels(
+        {
+          mediaType,
+          mediaUrl: imageUrl,
+          caption: message,
+          buttons,
+          fallbackPhotoUrl,
+        }
+      );
       this.updateLastMessageIds(messageIds);
       
       logger.info(`🎴 Posted periodic card showcase: ${cardName}`);
@@ -410,60 +427,108 @@ export class PeriodicContentService extends Service {
   }
 
   /**
-   * Send photo with caption to all configured channels
+   * Send media with caption to all configured channels
    * Returns map of channelId -> messageId for anti-spam tracking
    */
-  private async sendPhotoToChannels(
-    photoUrl: string, 
-    caption: string,
-    buttons?: Array<{ text: string; url: string }>
-  ): Promise<Map<string, number>> {
+  private async sendMediaToChannels(options: {
+    mediaType: 'photo' | 'video' | 'animation';
+    mediaUrl: string;
+    caption: string;
+    buttons?: Array<{ text: string; url: string }>;
+    fallbackPhotoUrl?: string;
+  }): Promise<Map<string, number>> {
     const botToken = this.runtime.getSetting('TELEGRAM_BOT_TOKEN') as string | undefined;
     if (!botToken) {
       throw new Error('TELEGRAM_BOT_TOKEN not configured');
     }
 
     const messageIds = new Map<string, number>();
+    const endpointMap = {
+      photo: { endpoint: 'sendPhoto', field: 'photo' },
+      video: { endpoint: 'sendVideo', field: 'video' },
+      animation: { endpoint: 'sendAnimation', field: 'animation' },
+    } as const;
+
+    const sendRequest = async (
+      channelId: string,
+      mediaType: 'photo' | 'video' | 'animation',
+      mediaUrl: string,
+      caption: string,
+      buttons?: Array<{ text: string; url: string }>
+    ): Promise<number | null> => {
+      const { endpoint, field } = endpointMap[mediaType];
+      const body: any = {
+        chat_id: channelId,
+        [field]: mediaUrl,
+        caption,
+        parse_mode: 'Markdown',
+      };
+
+      if (buttons && buttons.length > 0) {
+        body.reply_markup = {
+          inline_keyboard: [
+            buttons.map((btn) => ({
+              text: btn.text,
+              url: btn.url,
+            })),
+          ],
+        };
+      }
+
+      const response = await fetch(`https://api.telegram.org/bot${botToken}/${endpoint}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Telegram API error: ${response.status} - ${errorText}`);
+      }
+
+      const data = await response.json();
+      return data.result?.message_id ?? null;
+    };
 
     await Promise.all(
       this.channelIds.map(async (channelId) => {
         try {
-          const body: any = {
-            chat_id: channelId,
-            photo: photoUrl,
-            caption,
-            parse_mode: 'Markdown',
-          };
-
-          // Add inline keyboard if buttons provided
-          if (buttons && buttons.length > 0) {
-            body.reply_markup = {
-              inline_keyboard: [
-                buttons.map(btn => ({
-                  text: btn.text,
-                  url: btn.url,
-                }))
-              ]
-            };
-          }
-
-          const response = await fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(body),
-          });
-
-          if (!response.ok) {
-            const error = await response.text();
-            throw new Error(`Telegram API error: ${response.status} - ${error}`);
-          }
-
-          const data = await response.json();
-          if (data.result?.message_id) {
-            messageIds.set(channelId, data.result.message_id);
+          const messageId = await sendRequest(
+            channelId,
+            options.mediaType,
+            options.mediaUrl,
+            options.caption,
+            options.buttons
+          );
+          if (messageId) {
+            messageIds.set(channelId, messageId);
           }
         } catch (error) {
-          logger.warn({ channelId, error }, 'Failed to send photo to channel');
+          logger.warn({ channelId, error }, `Failed to send ${options.mediaType} to channel`);
+
+          if (options.mediaType === 'video' && options.fallbackPhotoUrl) {
+            try {
+              logger.warn(
+                { channelId },
+                'Falling back to sendPhoto with meme/preview URL after video failure'
+              );
+              const fallbackId = await sendRequest(
+                channelId,
+                'photo',
+                options.fallbackPhotoUrl,
+                options.caption,
+                options.buttons
+              );
+              if (fallbackId) {
+                messageIds.set(channelId, fallbackId);
+              }
+            } catch (fallbackError) {
+              logger.warn(
+                { channelId, error: fallbackError },
+                'Fallback photo send also failed'
+              );
+            }
+          }
         }
       })
     );

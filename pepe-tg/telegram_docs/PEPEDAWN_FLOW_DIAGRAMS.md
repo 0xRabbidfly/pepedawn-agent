@@ -600,88 +600,79 @@
 **When:** Any message that doesn't match a command
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                        USER INPUT                               │
-│  "Tell me about Fake Rares"  │  "Who is Rare Scrilla?"          │
-└───────────┬─────────────────────────────────────────────────────┘
-            ▼
-┌───────────────────────┐
-│ 1. MESSAGE RECEIVED   │
-│    Plugin event       │
-└───────────┬───────────┘
-            ▼
-┌───────────────────────────────┐
-│ 2. COMMAND / MEMORY CHECK     │
-│    Looks for:                 │
-│    • /f, /f c, /fv, /ft, /fl  │
-│    • /c, /p, /fm, /xcp, /fc   │
-│    • /start, /help            │
-│    • "/fr" or "remember this" │
-└───────────┬───────────────────┘
-            │
-            ├── YES → handled by command/memory action
-            │
-            ▼
-┌───────────────────────────────┐
-│ 3. SAFETY & TOPIC FILTERS     │
-│    • FAKEASF burn blocker     │
-│    • Off-topic suppression    │
-└───────────┬───────────┐
-            │           └── Filtered → stop or send policy reply
-            ▼
-┌───────────────────────────────┐
-│ 4. ENGAGEMENT GATE            │
-│    • Suppress low-signal chat │
-│    • Override for card intent │
-└───────────┬───────────┐
-            │           └── Suppressed → no response
-            ▼
-┌───────────────────────────────┐
-│ 5. QUERY CLASSIFICATION       │
-│    • FACTS / LORE / UNCERTAIN │
-│    • Card intent → FACTS      │
-│    • Replies to humans skip   │
-└───────────┬───────────┐
-            │           └── UNCERTAIN → Step 7B
-            ▼
-┌───────────────────────────────┐
-│ 6. KNOWLEDGE ORCHESTRATOR     │
-│    • FACTS → relevance ranking│
-│    • LORE → persona story     │
-│    • No wiki/memory hits →    │
-│      fall back to AI          │
-└───────────┬───────────┘
-            │
-            ▼
-┌─────────────────────┐
-│ 7A. SEND RESPONSE   │
-│     Knowledge answer│
-└───────────┬─────────┘
-            ▼
-┌─────────────────────┐
-│ USER GETS ANSWER 💬 │
-└─────────────────────┘
-
-If Step 5 → UNCERTAIN or Step 6 falls back:
-
-┌───────────────────────────────┐
-│ 7B. BOOTSTRAP CONVERSATION    │
-│    PEPEDAWN persona reply     │
-│    with convo context         │
-└───────────┬───────────┘
-            ▼
-┌─────────────────────┐
-│ USER GETS ANSWER 💬 │
-└─────────────────────┘
+┌────────────────────────────────────────────────────────────────────┐
+│                        USER INPUT (non-command)                    │
+│  "Tell me about Fake Rares"  │  "What card fits COIT?"             │
+└─────────────┬──────────────────────────────────────────────────────┘
+              ▼
+┌──────────────────────────────┐
+│ 1. PRE-GUARDS (Plugin)       │
+│    • Slash command / memory? │
+│    • FAKEASF + off-topic     │
+│    • Engagement gate         │
+└─────────────┬────────────────┘
+              │
+          Short-circuit
+              │
+              ▼
+┌──────────────────────────────┐
+│ 2. SMART ROUTER ENTRY        │
+│    Gather last 20 posts      │
+│    Sanitize + clamp context  │
+│    Bundle transcript + msg   │
+└─────────────┬────────────────┘
+              ▼
+┌──────────────────────────────┐
+│ 3. INTENT CLASSIFIER (LLM)   │
+│    Outputs: intent + command │
+│    INTENT ∈ {FACTS, LORE,    │
+│      CHAT, CARD_FASTPATH,    │
+│      CARD_RECOMMEND,         │
+│      CMDROUTE, NORESPONSE}   │
+└─────────────┬────────────────┘
+              │
+      ┌───────┴─────────────────────────────────────────────────────┐
+      │                                                             │
+┌─────▼──────┐                                             ┌────────▼─────────┐
+│CARD_FASTPATH│                                             │  Other intents   │
+└─────┬──────┘                                             └────────┬─────────┘
+      │ fast intent score ≥ threshold                                │
+      │                                                              │
+┌─────▼────────────────┐                    ┌────────────────────────▼─────────────────┐
+│Deterministic Card Plan│                    │ 4. MODE PRESET + RETRIEVAL               │
+│preferCardFacts=true   │                    │    Map intent → source weights/topK      │
+│→ call `/f CARD`       │                    │    Call KnowledgeOrchestratorService     │
+└─────┬────────────────┘                    │    (FACTS skip MMR, LORE clusters, etc.) │
+      │                                     └─────────────┬────────────────────────────┘
+      └──► Send card + one-liner ➜ Done                  │
+                                                        ▼
+                                 ┌────────────────────────────────────────────────────┐
+                                 │ 5. MODE EXECUTION                                  │
+                                 │  • FACTS → factual answer + citations              │
+                                 │  • LORE  → historian story + citations             │
+                                 │  • CHAT  → small-model social reply                │
+                                 │  • CARD_RECOMMEND → multi-card plan                │
+                                 │  • CMDROUTE → run suggested /command               │
+                                 │  • NORESPONSE → suppression token (emoji optional) │
+                                 └─────────────┬──────────────────────────────────────┘
+                                               ▼
+                                 ┌────────────────────────────────────┐
+                                 │ 6. TELEMETRY & OUTPUT              │
+                                 │  • SmartRouterDecisionLog (intent, │
+                                 │    reason, fast-path metrics)      │
+                                 │  • TelemetryService.logConversation│
+                                 │  • runtime.useModel token tracking │
+                                 │  • Send Telegram-safe response     │
+                                 └────────────────────────────────────┘
 ```
 
-**Key Features:**
-- **Command-first routing** – slash commands and memory capture always win before conversation logic.
-- **Layered guards** – FAKEASF burn blocker, off-topic filter, and engagement scoring run before any LLM call.
-- **Direct knowledge orchestration** – FACTS/LORE questions call the `KnowledgeOrchestratorService` (no `/fl` shell-out) with fallback to Bootstrap when no wiki/memory hits exist.
-- **Card intent override** – single-card questions force FACTS mode so memories and wiki entries surface first.
-- **Conversation persona** – Bootstrap only handles UNCERTAIN chat or knowledge fallbacks, keeping replies short and on-brand.
-- **LRU freshness** – knowledge responses rotate passages, preserving memories while avoiding repeats.
+**Key Features (Smart Router era):**
+- **Layered guards before routing** – commands, FAKEASF/off-topic policies, and engagement scoring run before Smart Router does any work.
+- **Context-aware classifier** – every decision uses a sanitized 20-message transcript plus the live message so multi-user context and bot replies are visible to the LLM.
+- **Deterministic card fast-path** – strong card discovery intent short-circuits directly into `/f <card>` with `preferCardFacts=true`, skipping the full LLM plan.
+- **Mode presets + KnowledgeOrchestrator** – each intent has fixed source weights/topK so FACTS, LORE, CHAT, and CARD_RECOMMEND share the same retrieval pipeline with different knobs.
+- **Chat + command routing** – CHAT responses use the lightweight persona model, CMDROUTE invokes the mapped slash flow, and NORESPONSE emits a suppression token.
+- **Unified telemetry** – every plan logs a SmartRouterDecisionLog entry and TelemetryService call, with token/cost tracking via the runtime `useModel` monkey patch.
 
 ---
 
@@ -695,6 +686,61 @@ If Step 5 → UNCERTAIN or Step 6 falls back:
 | **Lore Retrieval** | `/fl TOPIC` | RAG (vector search), clustering, LLM | Historical recounting | ~$0.01 |
 | **Memory Capture** | "/fr" or "remember this" | Knowledge DB storage | Confirmation message | Free |
 | **Conversation** | Any text | ElizaOS + GPT-4 | Natural AI response | ~$0.01 |
+
+---
+
+## 🌐 Unified Response Map (NEW)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                          USER INPUT / EVENTS                                │
+├───────────────────────────────┬─────────────────────────────────────────────┤
+│ Slash Commands                │ Natural Language                            │
+│ (/f, /fl, /fv, /ft, /fr, ...) │ (DMs, group chat, replies)                  │
+└─────────────┬─────────────────┴──────────────────────┬──────────────────────┘
+              │                                        │
+              │                                        ▼
+              │                             ┌────────────────────────────┐
+              │                             │  Message Classifier        │
+              │                             │  (FACTS / LORE / UNCERTAIN │
+              │                             │   + command detection)     │
+              │                             └───────────┬────────────────┘
+              │                                         │
+              │                             ┌───────────┴───────────┐
+              │                             │                       │
+              │                             ▼                       ▼
+              │                 ┌────────────────────┐   ┌────────────────────┐
+              │                 │  Knowledge Orchestrator│ │  Bootstrap Conversation│
+              │                 │  (FACTS / LORE Modes)│ │  (PEPEDAWN persona)   │
+              │                 └───────┬────────────┘   └─────────┬──────────┘
+              │                         │                          │
+              │            uses vector DB + LLM         uses LLM + context providers
+              │
+              ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ ACTION-SPECIFIC FLOWS                                                       │
+├───────────────────────────────┬──────────────────────────┬──────────────────┤
+│ Card Viewers (/f,/c,/p)       │ Market Pulse (/fm)       │ Vision (/fv,/ft) │
+│ • Card index + media map      │ • PGlite transactions    │ • Card index +   │
+│ • No LLM                      │ • TokenScan API          │   GPT-4o Vision  │
+├───────────────────────────────┼──────────────────────────┼──────────────────┤
+│ Memory Capture (/fr, natural) │ Help/Utility (/help,/fc) │ Telemetry/Other │
+│ • Writes to knowledge DB      │ • Static templates       │ • JSONL logs     │
+│ • No LLM                      │ • No LLM                 │ • No user output │
+└───────────────────────────────┴──────────────────────────┴──────────────────┘
+
+LEGEND:
+  🔷 Local DB only (no LLM): card viewers, market, memory capture, telemetry.
+  🟣 Hybrid (Local DB + LLM): lore FACTS/LORE modes, conversation, vision, educate flows.
+  🔸 External API touchpoints: TokenScan (market, notifications), Replicate (optional CLIP).
+```
+
+**Highlights**
+- **Classifier hub** routes natural messages into FACTS (concise answers), LORE (storytelling with random card rotation), or UNCERTAIN (Bootstrap chat).
+- **Hybrid flows** leverage both local stores (vector DB, history providers) and LLMs via `modelGateway`.
+- **Pure local flows** (card viewers, market, memory capture, telemetry) never touch the LLM budget.
+
+> Use this map to spot optimization targets: e.g., FACTS mode already rides the cheapest model; market flow is purely local and sensitive to PGlite performance; conversation depends entirely on Bootstrap token costs.
 
 ---
 

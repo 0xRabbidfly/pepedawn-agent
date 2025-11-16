@@ -1,10 +1,33 @@
 import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, type State } from '@elizaos/core';
-import { KnowledgeOrchestratorService } from '../services/KnowledgeOrchestratorService';
+import { KnowledgeOrchestratorService, type KnowledgeRetrievalOptions } from '../services/KnowledgeOrchestratorService';
 import { LORE_CONFIG } from '../utils/loreConfig';
 import { createLogger } from '../utils/actionLogger';
 import { decodeEscapedNewlines } from '../utils/loreRetrieval';
 
 const logger = createLogger("FakeLore");
+
+const RANDOM_LORE_PROMPTS = [
+  'FREEDOMKEK genesis lore',
+  'Rare Scrilla origin story',
+  'Fake Commons market drama',
+  'purple subasset era highlights',
+  'La Faka Nostra crew history',
+  'FAKEASF burn saga',
+  'Counterparty 2016 auction night',
+  'X COPY Fake Rare submissions',
+  'TCF OG chat moments',
+  'Terry Trad vs Rare Pepe feud',
+  'Nakamoto card myths',
+  'PepeDawn early telegram logs',
+  'Card 21 printing drama',
+  'Remember this community captures',
+  'Barter Town underground trades',
+];
+
+function pickRandomLorePrompt(): string {
+  const idx = Math.floor(Math.random() * RANDOM_LORE_PROMPTS.length);
+  return RANDOM_LORE_PROMPTS[idx] || 'Fake Rares lore highlights';
+}
 
 function sanitizeForTelegram(text: string): string {
   // Just return trimmed text - no escaping needed for plain text messages
@@ -50,7 +73,9 @@ export const loreCommand: Action = {
     callback?: HandlerCallback
   ) => {
     const raw = message.content.text || '';
-    const query = raw.replace(/^\s*\/fl(?:@[A-Za-z0-9_]+)?\s*/i, '').trim() || 'Fake Rares lore history community';
+    const parsed = raw.replace(/^\s*\/fl(?:@[A-Za-z0-9_]+)?\s*/i, '').trim();
+    const usedRandomSeed = parsed.length === 0;
+    const query = usedRandomSeed ? pickRandomLorePrompt() : parsed;
     logger.info(`━━━━━ /fl ━━━━━ ${query}`);
 
     try {
@@ -60,7 +85,7 @@ export const loreCommand: Action = {
       const { classifyQuery } = await import('../utils/queryClassifier');
       const queryType = classifyQuery(query);
       
-      if (queryType === 'UNCERTAIN') {
+      if (!usedRandomSeed && queryType === 'UNCERTAIN') {
         logger.info(`   ⚠️  Query unclear - sending clarification`);
         
         if (callback) {
@@ -95,9 +120,20 @@ export const loreCommand: Action = {
         throw new Error('KnowledgeOrchestratorService not available');
       }
       
-      const result = await knowledgeService.retrieveKnowledge(query, message.roomId, {
+      const retrievalOptions: KnowledgeRetrievalOptions = {
         includeMetrics: true,
-      });
+        suppressCardDiscovery: true,
+      };
+
+      if (usedRandomSeed) {
+        retrievalOptions.mode = 'LORE';
+      }
+
+      const result = await knowledgeService.retrieveKnowledge(
+        query,
+        message.roomId,
+        retrievalOptions
+      );
       
       const wordCount = (result.story || '').split(/\s+/).filter(Boolean).length;
       logger.info(`   /fl complete: ${result.metrics.hits_used} sources, ${wordCount} words, ${result.metrics.latency_ms}ms`);
@@ -111,18 +147,8 @@ export const loreCommand: Action = {
         finalMessageRaw = decodeEscapedNewlines(story + (sourcesLine ? sourcesLine : ''));
       } else if ((result as any)?.cardSummary) {
         // Card discovery path: use cardSummary and candidates
-        const asset = (result as any)?.primaryCardAsset as string | undefined;
         const summary = ((result as any)?.cardSummary as string || '').trim();
-        const header = asset ? `${asset}: ` : '';
-        let candidatesLine = '';
-        const matches = Array.isArray((result as any)?.cardMatches) ? (result as any).cardMatches : [];
-        if (matches.length > 0) {
-          const list = matches.slice(0, 3).map((m: any) => `${m.asset}`).join('  ||  ');
-          if (list) {
-            candidatesLine = `\n\nCandidates:  ${list}`;
-          }
-        }
-        finalMessageRaw = `${header}${summary}${candidatesLine}`;
+        finalMessageRaw = summary;
       } else {
         // Last-resort clarification
         finalMessageRaw = CLARIFICATION_MESSAGE;

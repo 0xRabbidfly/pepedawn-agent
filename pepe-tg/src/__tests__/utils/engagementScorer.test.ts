@@ -112,7 +112,7 @@ describe('engagementScorer', () => {
           roomId: 'room1',
         });
         
-        // card=+15, question=+30 = 45
+        // card=+15, question=+30 = 45 (cardIntent requires explicit search verbs)
         expect(score).toBe(45);
       });
 
@@ -319,8 +319,24 @@ describe('engagementScorer', () => {
           roomId: 'room1',
         });
         
-        // card=+15, question=+30 = 45
-        expect(score).toBe(45);
+        // card=+15, question=+30, cardIntent=+60 = 105
+        expect(score).toBe(105);
+      });
+
+      it('should boost explicit card discovery intent', () => {
+        establishUser('user1', 'room1');
+        
+        const score = calculateEngagementScore({
+          text: 'show me a card about PEPEDAWN lore',
+          hasBotMention: false,
+          isReplyToBot: false,
+          isFakeRareCard: true,
+          userId: 'user1',
+          roomId: 'room1',
+        });
+        
+        // card=+15, cardIntent=+60 = 75 (pattern does not match question due to "a card" phrasing)
+        expect(score).toBe(75);
       });
 
       it('should calculate active user with no boosts', () => {

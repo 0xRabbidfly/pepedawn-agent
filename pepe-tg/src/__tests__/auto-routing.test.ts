@@ -251,15 +251,14 @@ describe('Auto-Routing Logic', () => {
         runtime,
         callback: callbackFn,
       };
-
       await messageHandler!(params);
 
-      // Submission rules short-circuits to canonical wiki link
+      // With SmartRouter+LLM, submission-rule questions are now routed via the router/Bootstrap
+      // instead of a hard-coded wiki short-circuit in this plugin.
       expect(runtime._mockServices.knowledge.retrieveKnowledge).not.toHaveBeenCalled();
-      expect(callbackFn).toHaveBeenCalledWith({
-        text: expect.stringContaining(SUBMISSION_RULES_URL),
-      });
-      expect((message.metadata as any).__handledByCustom).toBe(true);
+      // Plugin leaves handling to Bootstrap (no direct callback or handled flag).
+      expect(callbackFn).not.toHaveBeenCalled();
+      expect((message.metadata as any).__handledByCustom).toBeUndefined();
     });
 
     it('should auto-route "how do" questions', async () => {
@@ -280,11 +279,13 @@ describe('Auto-Routing Logic', () => {
         runtime,
         callback: callbackFn,
       };
-
       await messageHandler!(params);
 
-      expect(runtime._mockServices.knowledge.retrieveKnowledge).toHaveBeenCalled();
-      expect((message.metadata as any).__handledByCustom).toBe(true);
+      // FACTS-style questions are now classified by the SmartRouter/LLM and handled
+      // upstream; the plugin no longer calls the knowledge orchestrator directly.
+      expect(runtime._mockServices.knowledge.retrieveKnowledge).not.toHaveBeenCalled();
+      expect(callbackFn).not.toHaveBeenCalled();
+      expect((message.metadata as any).__handledByCustom).toBeUndefined();
     });
 
     it('should auto-route questions with "?" mark', async () => {
@@ -305,11 +306,11 @@ describe('Auto-Routing Logic', () => {
         runtime,
         callback: callbackFn,
       };
-
       await messageHandler!(params);
 
-      expect(runtime._mockServices.knowledge.retrieveKnowledge).toHaveBeenCalled();
-      expect((message.metadata as any).__handledByCustom).toBe(true);
+      expect(runtime._mockServices.knowledge.retrieveKnowledge).not.toHaveBeenCalled();
+      expect(callbackFn).not.toHaveBeenCalled();
+      expect((message.metadata as any).__handledByCustom).toBeUndefined();
     });
 
     it('should auto-route imperative requests', async () => {
@@ -330,11 +331,11 @@ describe('Auto-Routing Logic', () => {
         runtime,
         callback: callbackFn,
       };
-
       await messageHandler!(params);
 
-      expect(runtime._mockServices.knowledge.retrieveKnowledge).toHaveBeenCalled();
-      expect((message.metadata as any).__handledByCustom).toBe(true);
+      expect(runtime._mockServices.knowledge.retrieveKnowledge).not.toHaveBeenCalled();
+      expect(callbackFn).not.toHaveBeenCalled();
+      expect((message.metadata as any).__handledByCustom).toBeUndefined();
     });
 
     it('should auto-route indirect questions', async () => {
@@ -355,11 +356,11 @@ describe('Auto-Routing Logic', () => {
         runtime,
         callback: callbackFn,
       };
-
       await messageHandler!(params);
 
-      expect(runtime._mockServices.knowledge.retrieveKnowledge).toHaveBeenCalled();
-      expect((message.metadata as any).__handledByCustom).toBe(true);
+      expect(runtime._mockServices.knowledge.retrieveKnowledge).not.toHaveBeenCalled();
+      expect(callbackFn).not.toHaveBeenCalled();
+      expect((message.metadata as any).__handledByCustom).toBeUndefined();
     });
   });
 
@@ -502,12 +503,14 @@ describe('Auto-Routing Logic', () => {
           },
         },
       };
-
       await messageHandler!(params);
 
-      // Should call knowledge service (it's a FACTS question TO the bot)
-      expect(runtime._mockServices.knowledge.retrieveKnowledge).toHaveBeenCalled();
-      expect((message.metadata as any).__handledByCustom).toBe(true);
+      // Under the SmartRouter+LLM flow, replies-to-bot FACTS questions are handled
+      // via the router; the plugin itself just hands off to Bootstrap when the
+      // router declines, so there is no direct knowledge call here.
+      expect(runtime._mockServices.knowledge.retrieveKnowledge).not.toHaveBeenCalled();
+      expect(callbackFn).not.toHaveBeenCalled();
+      expect((message.metadata as any).__handledByCustom).toBeUndefined();
     });
 
     it('should NOT auto-route non-question replies to bot', async () => {
@@ -622,12 +625,13 @@ describe('Auto-Routing Logic', () => {
         runtime,
         callback: callbackFn,
       };
-
       await messageHandler!(params);
 
       expect(runtime._mockServices.knowledge.retrieveKnowledge).not.toHaveBeenCalled();
-      // Bootstrap IS suppressed (UNCERTAIN query, no triggers)
-      expect((message.metadata as any).__handledByCustom).toBe(true);
+      // Card-intent chat like this is now allowed through to Bootstrap when
+      // engagement overrides suppression, so the plugin does not mark it handled.
+      expect(callbackFn).not.toHaveBeenCalled();
+      expect((message.metadata as any).__handledByCustom).toBeUndefined();
     });
   });
 
@@ -654,15 +658,13 @@ describe('Auto-Routing Logic', () => {
         callback: callbackFn,
         // No ctx provided
       };
-
       await messageHandler!(params);
 
-      // Submission rules short-circuits regardless of ctx
+      // With SmartRouter+LLM, submission-rule questions are delegated upstream
+      // rather than being short-circuited inside this plugin.
       expect(runtime._mockServices.knowledge.retrieveKnowledge).not.toHaveBeenCalled();
-      expect(callbackFn).toHaveBeenCalledWith({
-        text: expect.stringContaining(SUBMISSION_RULES_URL),
-      });
-      expect((message.metadata as any).__handledByCustom).toBe(true);
+      expect(callbackFn).not.toHaveBeenCalled();
+      expect((message.metadata as any).__handledByCustom).toBeUndefined();
     });
 
     it('should handle knowledge service errors gracefully', async () => {
@@ -688,15 +690,13 @@ describe('Auto-Routing Logic', () => {
         runtime,
         callback: callbackFn,
       };
-
       await messageHandler!(params);
 
-      // Short-circuit invoked before knowledge service, so error path not triggered
       expect(runtime._mockServices.knowledge.retrieveKnowledge).not.toHaveBeenCalled();
-      expect(callbackFn).toHaveBeenCalledWith({
-        text: expect.stringContaining(SUBMISSION_RULES_URL),
-      });
-      expect((message.metadata as any).__handledByCustom).toBe(true);
+      // Knowledge orchestrator errors are now handled in the SmartRouter layer,
+      // so the plugin simply defers to Bootstrap (no direct callback).
+      expect(callbackFn).not.toHaveBeenCalled();
+      expect((message.metadata as any).__handledByCustom).toBeUndefined();
     });
 
     it('should skip auto-routing when SUPPRESS_BOOTSTRAP=true', async () => {
@@ -719,13 +719,12 @@ describe('Auto-Routing Logic', () => {
         runtime,
         callback: callbackFn,
       };
-
       await messageHandler!(params);
 
       expect(runtime._mockServices.knowledge.retrieveKnowledge).not.toHaveBeenCalled();
-      expect(callbackFn).toHaveBeenCalledWith({
-        text: expect.stringContaining(SUBMISSION_RULES_URL),
-      });
+      // When SUPPRESS_BOOTSTRAP is enabled, the plugin always marks the message
+      // as handled and does not call the callback.
+      expect(callbackFn).not.toHaveBeenCalled();
       expect((message.metadata as any).__handledByCustom).toBe(true);
     });
   });

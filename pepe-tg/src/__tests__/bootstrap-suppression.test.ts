@@ -1,6 +1,7 @@
 import { describe, expect, it, beforeEach, mock } from 'bun:test';
 import { fakeRaresPlugin } from '../plugins/fakeRaresPlugin';
 import { resetEngagementTracking, calculateEngagementScore } from '../utils/engagementScorer';
+import { SmartRouterService } from '../services/SmartRouterService';
 
 /**
  * Bootstrap Suppression Logic Tests
@@ -16,17 +17,59 @@ import { resetEngagementTracking, calculateEngagementScore } from '../utils/enga
 describe('Bootstrap Suppression Logic', () => {
   const messageHandler = fakeRaresPlugin.events?.MESSAGE_RECEIVED?.[0];
 
+  const createNoResponsePlan = () => ({
+    kind: 'NORESPONSE' as const,
+    intent: 'NORESPONSE' as const,
+    reason: 'test_stub',
+    retrieval: null,
+    emoji: '👀',
+  });
+
+  const createChatFallbackPlan = () => ({
+    kind: 'CHAT' as const,
+    intent: 'CHAT' as const,
+    reason: 'test_stub_chat',
+    retrieval: null,
+    chatResponse: '',
+  });
+
   // Create a proper mock runtime with all required methods
+  const telemetryStub = {
+    logSmartRouterDecision: mock().mockResolvedValue(undefined),
+    logConversation: mock().mockResolvedValue(undefined),
+    logLoreQuery: mock().mockResolvedValue(undefined),
+    logModelUsage: mock().mockResolvedValue(undefined),
+  };
+
+  const smartRouterStub = {
+    recordUserTurn: mock().mockReturnValue(undefined),
+    recordBotTurn: mock().mockReturnValue(undefined),
+    planRouting: mock().mockResolvedValue(createNoResponsePlan()),
+  };
+
   const createMockRuntime = () => ({
     agentId: 'test-agent',
     useModel: mock().mockResolvedValue([0.1, 0.2, 0.3]), // Mock embedding
     searchMemories: mock().mockResolvedValue([]),
     getMemory: mock().mockResolvedValue(null),
     createMemory: mock().mockResolvedValue(undefined),
-    getService: mock().mockReturnValue(null), // Mock for telemetry service
+    getService: mock((serviceType: string) => {
+      if (serviceType === 'telemetry') return telemetryStub;
+      if (serviceType === SmartRouterService.serviceType) return smartRouterStub;
+      return null;
+    }),
   });
 
   beforeEach(() => {
+    smartRouterStub.recordUserTurn.mockReset();
+    smartRouterStub.recordBotTurn.mockReset();
+    smartRouterStub.planRouting.mockReset();
+    smartRouterStub.planRouting.mockResolvedValue(createNoResponsePlan());
+    telemetryStub.logSmartRouterDecision.mockReset();
+    telemetryStub.logConversation.mockReset();
+    telemetryStub.logLoreQuery.mockReset();
+    telemetryStub.logModelUsage.mockReset();
+
     // Reset env var before each test
     delete process.env.SUPPRESS_BOOTSTRAP;
     
@@ -127,6 +170,9 @@ describe('Bootstrap Suppression Logic', () => {
 
   describe('Bootstrap Allowed (trigger conditions met)', () => {
     it('should allow bootstrap when message mentions @pepedawn_bot', async () => {
+      smartRouterStub.planRouting
+        .mockImplementationOnce(async () => createChatFallbackPlan())
+        .mockImplementationOnce(async () => createChatFallbackPlan());
       const message = {
         id: 'test-5',
         content: { text: '@pepedawn_bot tell me about fake rares' },
@@ -145,6 +191,13 @@ describe('Bootstrap Suppression Logic', () => {
     });
 
     it('should allow bootstrap when message is a reply to bot', async () => {
+      smartRouterStub.planRouting.mockResolvedValueOnce({
+        kind: 'CHAT',
+        intent: 'CHAT',
+        reason: 'test_stub_chat',
+        retrieval: null,
+        chatResponse: '',
+      });
       const message = {
         id: 'test-6',
         content: { 
@@ -490,6 +543,7 @@ describe('Bootstrap Suppression Logic', () => {
     });
 
     it('should handle mixed case @mention variations', async () => {
+      smartRouterStub.planRouting.mockResolvedValueOnce(createChatFallbackPlan());
       const message = {
         id: 'test-24',
         content: { text: '@PEPEDAWN_BOT hello' },
