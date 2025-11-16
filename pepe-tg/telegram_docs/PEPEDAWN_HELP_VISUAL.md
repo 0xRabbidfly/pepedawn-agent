@@ -115,6 +115,9 @@
 │  • What's La Faka Nostra?                                    │
 │                                                              │
 │  💡 Smart routing: FACTS/LORE questions hit Knowledge AI    │
+│  💡 PEPEDAWN is both the bot and a card – casual chat       │
+│     about the bot won’t auto-trigger card lookup unless     │
+│     you clearly ask for the PEPEDAWN card                    │
 │  💡 Bootstrap persona only replies when knowledge misses    │
 │  💡 I remember conversations and have deep Fake Rares know!  │
 └──────────────────────────────────────────────────────────────┘

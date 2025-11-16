@@ -59,6 +59,7 @@ data/transactions.db
 **/token-logs.jsonl
 **/conversation-logs.jsonl
 **/lore-query-logs.jsonl
+**/smart-router-logs.jsonl
 **/data/archives/
 
 # Monte Carlo simulation data (large analysis files, not production code)

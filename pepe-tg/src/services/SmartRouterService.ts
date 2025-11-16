@@ -223,6 +223,93 @@ export class SmartRouterService extends Service {
     return history.slice(history.length - count);
   }
 
+  /**
+   * Disambiguate how "PEPEDAWN" is being used in the current message.
+   *
+   * Because PEPEDAWN is both the bot persona and a card asset, we delegate
+   * the distinction to a small LLM instead of hard-coding regex rules.
+   *
+   * The model decides whether the user is talking *to/about the bot*,
+   * asking for *card details*, or clearly mixing both.
+   *
+   * Returns one of:
+   * - "BOT_CHAT"   → treat as conversation about the bot, NOT card intent
+   * - "CARD_INTENT"→ treat as card-intent mention
+   * - "BOTH"       → ambiguous / mixed; may still allow card overrides
+   */
+  private async classifyPepedawnUsage(
+    roomId: string,
+    currentMessage: string
+  ): Promise<'BOT_CHAT' | 'CARD_INTENT' | 'BOTH'> {
+    const turns = this.getRecentTurns(roomId, 12);
+    const transcript = this.formatTranscript(turns);
+    const prompt = [
+      'You are the routing brain for PEPEDAWN, the Fake Rares Telegram host.',
+      'The name "PEPEDAWN" can mean either the bot persona or the trading card asset.',
+      '',
+      'Conversation transcript (oldest first):',
+      transcript || '(no prior conversation yet)',
+      '',
+      `Current user message: "${currentMessage}"`,
+      '',
+      'Question:',
+      'Is the user mainly talking TO / ABOUT the PEPEDAWN bot (chatting about its behavior/personality),',
+      'or are they asking ABOUT the PEPEDAWN card (card facts, supply, lore, visuals, which card, etc.)?',
+      '',
+      'Respond with STRICT JSON in this format:',
+      '{"usage":"BOT_CHAT|CARD_INTENT|BOTH"}',
+      '',
+      'Guidelines:',
+      '- BOT_CHAT when they are adjusting settings, reacting to replies, commenting on how PEPEDAWN behaves,',
+      '  or addressing PEPEDAWN like a person (e.g., "hey pepedawn, what do you think?").',
+      '- CARD_INTENT when they want card details, lore, supply, visuals, or are asking about the card\'s attributes',
+      '  (e.g., "what is pepedawn\'s poem?", "tell me about pepedawn\'s supply", "what card is PEPEDAWN?").',
+      '  Possessive forms like "pepedawn\'s" almost always indicate card intent.',
+      '- BOTH only when they are clearly doing both at once (e.g., comparing the bot and the card).',
+      '- If unsure, prefer BOT_CHAT (do NOT over-call card intent).',
+      '- Never add any commentary outside the JSON object.',
+    ].join('\n');
+
+    try {
+      const model = process.env.OPENAI_SMALL_MODEL || 'gpt-4o-mini';
+      const result = await callTextModel(this.runtime, {
+        model,
+        prompt,
+        systemPrompt:
+          'You disambiguate whether "PEPEDAWN" refers to the bot persona or the trading card in chat messages.',
+        maxTokens: 40,
+        source: 'Router-PepedawnDisambiguator',
+      });
+      const text = result.text ?? '';
+      const jsonStart = text.indexOf('{');
+      const jsonEnd = text.lastIndexOf('}');
+      if (jsonStart >= 0 && jsonEnd > jsonStart) {
+        const parsed = safeJSONParse<{ usage?: string }>(
+          text.slice(jsonStart, jsonEnd + 1)
+        );
+        const usage = (parsed?.usage || '').toUpperCase();
+        if (usage === 'BOT_CHAT' || usage === 'CARD_INTENT' || usage === 'BOTH') {
+          logger.info(
+            { usage, raw: text.length > 160 ? `${text.slice(0, 160)}…` : text },
+            '[SmartRouter] PEPEDAWN usage disambiguated'
+          );
+          return usage;
+        }
+      }
+      logger.warn(
+        { raw: text },
+        '[SmartRouter] PEPEDAWN usage classifier returned unparseable output, defaulting to BOT_CHAT.'
+      );
+      return 'BOT_CHAT';
+    } catch (error) {
+      logger.error(
+        { error },
+        '[SmartRouter] PEPEDAWN usage classifier error, defaulting to BOT_CHAT'
+      );
+      return 'BOT_CHAT';
+    }
+  }
+
   private formatTranscript(turns: ConversationTurn[]): string {
     return turns
       .map((turn, index) => {
@@ -381,7 +468,10 @@ export class SmartRouterService extends Service {
     classifierRaw?: string,
     options?: { forceCardFacts?: boolean }
   ): Promise<SmartRoutingPlan> {
-    if (this.looksLikeCardDescriptor(userText)) {
+    // Skip card descriptor check if a card is explicitly mentioned.
+    // Card descriptors are for discovery queries, not queries about specific card attributes.
+    const mentionedCard = this.detectMentionedCard(userText);
+    if (!mentionedCard && this.looksLikeCardDescriptor(userText)) {
       const cardPlan = await this.buildCardRecommendPlan(userText, roomId, retrieval, classifierRaw);
       if (cardPlan) {
         return cardPlan;
@@ -403,7 +493,9 @@ export class SmartRouterService extends Service {
       };
     }
 
-    const preferCardFacts = options?.forceCardFacts ?? false;
+    // When a card is explicitly mentioned, don't use preferCardFacts (which triggers card discovery).
+    // We want normal retrieval to fetch facts about the mentioned card from memories/wiki.
+    const preferCardFacts = mentionedCard ? false : (options?.forceCardFacts ?? false);
 
     const result = await knowledge.retrieveKnowledge(userText, roomId, {
       mode: 'FACTS',
@@ -642,6 +734,37 @@ export class SmartRouterService extends Service {
     return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
 
+  /**
+   * Strips PEPEDAWN from the query when it's used conversationally (addressing the bot).
+   * Removes patterns like "hey pepedawn", "pepedawn,", "pepedawn -", etc.
+   * Note: This is only called when PEPEDAWN disambiguation returns BOT_CHAT.
+   */
+  private stripPepedawnFromQuery(text: string): string {
+    if (!text) return text;
+    
+    // Case-insensitive regex to match PEPEDAWN with various punctuation/context
+    // Order matters: more specific patterns first
+    const patterns = [
+      /\bhey\s+pepedawn\s*[,:—-]?\s*/gi,  // "hey pepedawn, " or "hey pepedawn - "
+      /\bpepedawn\s*[,:—-]\s*/gi,          // "pepedawn, " or "pepedawn - " (with punctuation)
+      /^\s*pepedawn\s*[,:—-]?\s*/gi,       // "pepedawn, " at start
+      /\bpepedawn\s+$/gi,                  // "pepedawn " at end (with space)
+      /\bpepedawn\s+/gi,                   // "pepedawn " in middle (with space after)
+    ];
+    
+    let cleaned = text;
+    for (const pattern of patterns) {
+      cleaned = cleaned.replace(pattern, ' ');
+    }
+    
+    // Clean up multiple spaces, orphaned punctuation, and trim
+    cleaned = cleaned.replace(/\s+/g, ' ').trim();
+    // Remove orphaned punctuation at start (e.g., "'s" left behind)
+    cleaned = cleaned.replace(/^['"]\s*/, '').trim();
+    
+    return cleaned || text; // Return original if stripping would empty the query
+  }
+
   private async buildChatPlan(
     userText: string,
     roomId: string,
@@ -722,7 +845,8 @@ export class SmartRouterService extends Service {
     options?: { forceCardFacts?: boolean }
   ): Promise<SmartRoutingPlan> {
     const trimmed = text.trim();
-    const mentionedCard = this.detectMentionedCard(trimmed);
+    let mentionedCard = this.detectMentionedCard(trimmed);
+    let pepedawnUsage: 'BOT_CHAT' | 'CARD_INTENT' | 'BOTH' | null = null;
     const looksLikeDescriptor = this.looksLikeCardDescriptor(trimmed);
     if (!trimmed) {
       return {
@@ -752,6 +876,34 @@ export class SmartRouterService extends Service {
           metadata: { classifierRaw },
         };
       }
+    }
+
+    // Track if we need to strip PEPEDAWN from the query for RAG search
+    // Only strip when PEPEDAWN is used conversationally (BOT_CHAT), NOT when asking about the card (CARD_INTENT)
+    // Examples:
+    // - "hey pepedawn, what do you think?" → BOT_CHAT → strip "pepedawn" from RAG query
+    // - "what is pepedawn's poem?" → CARD_INTENT → keep "pepedawn" in RAG query (we want card facts)
+    let queryForRetrieval = trimmed;
+    
+    if (mentionedCard === 'PEPEDAWN') {
+      const usage = await this.classifyPepedawnUsage(roomId, trimmed);
+      pepedawnUsage = usage;
+      if (usage === 'BOT_CHAT') {
+        logger.debug(
+          { reason: 'pepedawn_bot_chat', query: trimmed },
+          '[SmartRouter] Suppressing named-card override for PEPEDAWN (bot conversation)'
+        );
+        mentionedCard = null;
+        // Strip PEPEDAWN from query for RAG search when it's conversational
+        // This prevents PEPEDAWN from polluting the search results when user is just addressing the bot
+        queryForRetrieval = this.stripPepedawnFromQuery(trimmed);
+        logger.debug(
+          { original: trimmed, cleaned: queryForRetrieval },
+          '[SmartRouter] Stripped PEPEDAWN from query for RAG search'
+        );
+      }
+      // If usage === 'CARD_INTENT' or 'BOTH', we keep mentionedCard and don't strip PEPEDAWN
+      // This ensures queries like "what is pepedawn's poem?" search for PEPEDAWN card facts
     }
 
     if (mentionedCard) {
@@ -809,13 +961,26 @@ export class SmartRouterService extends Service {
     const retrieval =
       retrievalOptions === null
         ? null
-        : await retrieveCandidates(this.runtime, trimmed, roomId, retrievalOptions);
+        : await retrieveCandidates(this.runtime, queryForRetrieval, roomId, retrievalOptions);
     const topCardAsset = this.getTopCardAsset(retrieval);
-    const namesTopCard = mentionedCard
+    let namesTopCard = mentionedCard
       ? true
       : topCardAsset
       ? this.queryExplicitlyNamesCard(trimmed, topCardAsset)
       : false;
+
+    // If retrieval surfaced PEPEDAWN as the top card but the disambiguator
+    // judged this as bot chat, do NOT treat it as a named-card descriptor.
+    if (topCardAsset === 'PEPEDAWN' && pepedawnUsage === 'BOT_CHAT' && namesTopCard) {
+      logger.debug(
+        {
+          reason: 'pepedawn_bot_chat_suppress_descriptor',
+          query: trimmed,
+        },
+        '[SmartRouter] Suppressing descriptor-based FACTS override for PEPEDAWN (bot conversation)'
+      );
+      namesTopCard = false;
+    }
 
     if (namesTopCard && intent !== 'FACTS') {
       logger.debug(
@@ -850,7 +1015,10 @@ export class SmartRouterService extends Service {
       logger.info('[SmartRouter] Retrieval skipped (intent does not require evidence)');
     }
 
-    if (options?.forceCardFacts) {
+    // Skip card discovery when a card is explicitly mentioned.
+    // When a card is mentioned, we want to fetch facts about that specific card,
+    // not discover/recommend other cards.
+    if (options?.forceCardFacts && !mentionedCard) {
       const plan = await this.buildCardRecommendPlan(
         trimmed,
         roomId,
@@ -864,7 +1032,10 @@ export class SmartRouterService extends Service {
     }
 
     if (intent === 'FACTS') {
-      if (this.looksLikeCardDescriptor(trimmed)) {
+      // Skip card descriptor check if a card is explicitly mentioned.
+      // Card descriptors are for discovery queries ("what is the sexiest card"),
+      // not for queries about a specific card's attributes ("what is pepedawn's poem").
+      if (!mentionedCard && this.looksLikeCardDescriptor(trimmed)) {
         const cardPlan = await this.buildCardRecommendPlan(
           trimmed,
           roomId,
@@ -875,7 +1046,10 @@ export class SmartRouterService extends Service {
           return cardPlan;
         }
       }
-      if (retrieval) {
+      // Skip fast path and card discovery when a card is explicitly mentioned.
+      // When a card is mentioned, we want to fetch facts about that specific card,
+      // not discover/recommend other cards.
+      if (!mentionedCard && retrieval) {
         const fastPath = detectCardFastPath(retrieval.candidates, retrieval.metrics);
         const fastCard = fastPath.primaryCandidate?.card_asset;
         const queryNamesCard = fastCard ? this.queryExplicitlyNamesCard(trimmed, fastCard) : false;
@@ -899,17 +1073,22 @@ export class SmartRouterService extends Service {
           );
         }
       }
-      return this.buildFactsPlan(trimmed, roomId, retrieval, classifierRaw, {
-        forceCardFacts: options?.forceCardFacts || namesTopCard,
+      // When a card is explicitly mentioned, don't use forceCardFacts (which triggers card discovery).
+      // We want normal retrieval to fetch facts about the mentioned card from memories/wiki.
+      // Use cleaned query (with PEPEDAWN stripped if bot chat) for plan building
+      return this.buildFactsPlan(queryForRetrieval, roomId, retrieval, classifierRaw, {
+        forceCardFacts: mentionedCard ? false : (options?.forceCardFacts || namesTopCard),
       });
     }
 
     if (intent === 'LORE') {
-      return this.buildLorePlan(trimmed, roomId, retrieval, classifierRaw);
+      // Use cleaned query (with PEPEDAWN stripped if bot chat) for plan building
+      return this.buildLorePlan(queryForRetrieval, roomId, retrieval, classifierRaw);
     }
 
     // Intent must be CHAT at this point
-    return this.buildChatPlan(trimmed, roomId, retrieval, classifierRaw);
+    // Use cleaned query (with PEPEDAWN stripped if bot chat) for plan building
+    return this.buildChatPlan(queryForRetrieval, roomId, retrieval, classifierRaw);
   }
 
   private queryExplicitlyNamesCard(text: string, cardAsset: string): boolean {

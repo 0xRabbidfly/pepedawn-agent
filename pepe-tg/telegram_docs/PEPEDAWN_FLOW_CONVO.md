@@ -76,43 +76,92 @@
 
 ---
 
-## Detailed Steps (current implementation – Nov 2025)
+## Detailed State Machines (current implementation – Nov 2025)
 
-- 1) Message Received
-  - Telegraf → Plugin event. Command/memory paths short-circuit out.
+### 1) General Conversation (non-command auto-routing)
 
-- 2) Guards
-  - Safety (FAKEASF) → policy reply. Off-topic → suppress. Engagement → suppress low-signal.
+- **Entry conditions**
+  - Plugin `MESSAGE_RECEIVED` event.
+  - No slash command handled in step 2 (commands short‑circuit before router).
+  - Not blocked by FAKEASF / off‑topic content filters.
+  - Engagement gate either allows response, or is overridden by card/submission intent.
 
-- 3) Multi-source Retrieval
-  - Run semantic search across: memories, wiki, card data, telegram.
-  - Return top‑k per source with: id, source_type, similarity, priority_weight, text preview.
-  - `/fl` with an empty argument now injects a random lore prompt so retrieval always has a concrete seed.
+- **Transitions**
+  1. `SmartRouterService.planRouting(text, roomId)`:
+     - Build transcript (last 20 turns), call `classifyIntent` → `intent ∈ {FACTS, LORE, CHAT, NORESPONSE, CMDROUTE}`.
+     - Detect named cards via `detectMentionedCard`.
+       - If named card and `intent !== FACTS` → override `intent = FACTS` (except for PEPEDAWN with `BOT_CHAT` usage).
+       - If descriptor‑style query but classifier returned `NORESPONSE` → override to `FACTS`.
+     - For non‑NORESPONSE intents, derive per‑mode retrieval options and call `retrieveCandidates`.
+     - For intent `FACTS`:
+       - If descriptor‑like query → try `buildCardRecommendPlan` (card discovery / `CARD_RECOMMEND` plan).
+       - Else:
+         - Run fast‑path detection (`FAST_PATH_CARD` plan when high‑confidence single card).
+         - Fallback to `buildFactsPlan` (FACTS plan using KnowledgeOrchestrator, optionally forcing card facts).
+     - For intent `LORE` → `buildLorePlan` (LORE plan via KnowledgeOrchestrator).
+     - For intent `CHAT` → `buildChatPlan` (CHAT plan via small‑model persona).
+     - For intent `CMDROUTE` → `CMDROUTE` plan (synthetic command).
+     - For intent `NORESPONSE` → NORESPONSE plan with emoji (no retrieval).
+  2. `executeSmartRouterPlan(plan)`:
+     - `FAST_PATH_CARD` → send short explanation + synthetic `/f CARD` call.
+     - `CARD_RECOMMEND` → send summary text + synthetic `/f PRIMARY_CARD` call.
+     - `FACTS` / `LORE` → send `story` and optional `sourcesLine`.
+     - `CHAT` → send `chatResponse`.
+     - `CMDROUTE` → route to mapped action (`/f`, `/fl`, etc.).
+     - `NORESPONSE` → no visible reply (only telemetry).
 
-- 3A) Card-Intent Gates
-  - **Descriptor questions (“find a card that…”)** trigger a router override: the plugin hints the Smart Router to treat the turn as FACTS so it always runs the KnowledgeOrchestrator card-discovery flow (RAG + `composeCardFactAnswer()` reranker) and returns multi-card matches, not CHAT.
-  - **Fast-path suppression on named cards:** when the user already names the card (exact asset match), Smart Router logs `[Fast-path suppressed]` and keeps the request in FACTS/LORE instead of shelling out to `/f`.
-  - **Metadata hook:** supply/issuance questions that name a card are answered deterministically from `fullCardIndex` before any card discovery or LLM call.
+- **Exit conditions**
+  - **FACTS / LORE / CHAT / CARD_RECOMMEND / FAST_PATH_CARD / CMDROUTE:** Telegram message(s) are sent and logged via TelemetryService, and SmartRouterDecisionLog records `{ intent, kind, reason }`.
+  - **NORESPONSE:** no user‑visible reply; only telemetry/logging is emitted.
+  - In all cases, the plugin marks the message as handled to prevent Bootstrap from re‑processing it when the router produced a plan.
 
-- 4) Router (LLM Policy)
-  - Inputs: user message + compact candidate descriptors (no full text unless needed).
-  - Policy: prefers artist memories when strong; facts when wiki/card dominate; chat when evidence is weak.
-  - Outputs strict JSON (mode, chosen_passage_ids, confidence).
-  - Threshold: low confidence → default to CHAT.
-  - Config: weights, k, thresholds in YAML/JSON (no branching code).
-  - **Card recommendation plan:** when a descriptor override is active, Smart Router returns `CARD_RECOMMEND` with the KnowledgeOrchestrator `cardSummary`, multi-card matches, and the selected primary card so the plugin can send the LLM explanation and still trigger `/f <card>` afterward.
+### 2) Card Discovery (descriptor → card recommendation)
 
-- 5) Mode-specific Generation
-  - FACTS: concise, neutral, cite sources; no MMR.
-  - LORE: storyteller persona; clustering/MMR for diversity; cite sources.
-  - CHAT: social, brief, never invent facts.
-  - CARD_RECOMMEND: reuses the FACTS preset with `preferCardFacts=true`, so `composeCardFactAnswer()` scores the card candidates, logs the multi-card table, and returns `cardSummary` + `cardMatches` which we surface before showing the card.
-  - Card-fact fallbacks now replace “No factual data…” with “Here’s what stands out about <card>…” whenever passages exist; only truly empty recalls return clarifications.
+- **Entry conditions**
+  - Auto‑routing flow above with:
+    - `intent === 'FACTS'` after classifier + overrides.
+    - Query either:
+      - Passes `looksLikeCardDescriptor(...)`, or
+      - Has `forceCardFacts: true` (e.g., descriptor override, named‑card questions).
 
-- 6) Send + Observe
-  - Telegram-safe text; optional “hide sources” flag.
-  - Log router JSON, chosen IDs, confidence, and model costs.
-  - Golden cases for regression (router + generation).
+- **Transitions**
+  1. `KnowledgeOrchestratorService.retrieveKnowledge(...)` with `mode: 'FACTS'`, `preferCardFacts: true`:
+     - Multi‑source retrieval (mem/wiki/telegram/card‑facts).
+     - Card‑only expansion (`expandCardOnlyPassages`) to guarantee enough `card-fact` candidates.
+     - `composeCardFactAnswer`:
+       - Group passages per card asset.
+       - Heuristic scoring + optional LLM reranker (`CardDiscovery.LLM`).
+       - Select primary card (`primaryCardAsset`) and build `cardSummary` + `cardMatches`.
+  2. SmartRouter:
+     - When card‑intent override is explicit (`forceCardFacts`) and `cardMatches` found:
+       - Prefer `CARD_RECOMMEND` plan (card summary + synthetic `/f` call).
+     - When KnowledgeOrchestrator returns only `cardSummary` but no matches:
+       - FACTS plan with `story = cardSummary` (no `/f` execution).
+
+- **Exit conditions**
+  - **CARD_RECOMMEND:** user sees a 1–2 sentence summary plus the card image via `/f PRIMARY_CARD`.
+  - **FACTS (card summary only):** user sees a short factual answer, but no card render, when card intent was too weak/ambiguous.
+
+### 3) PEPEDAWN bot‑vs‑card disambiguation
+
+- **Entry conditions**
+  - Auto‑routing flow where:
+    - `detectMentionedCard(text)` or `getTopCardAsset(retrieval)` returns `PEPEDAWN`.
+
+- **Transitions**
+  1. `classifyPepedawnUsage(roomId, text)`:
+     - LLM reads recent transcript and current message.
+     - Returns `usage ∈ { BOT_CHAT, CARD_INTENT, BOTH }` (defaults to BOT_CHAT on errors/parse failures).
+  2. SmartRouter:
+     - If `mentionedCard === 'PEPEDAWN'` and `usage === 'BOT_CHAT'`:
+       - Suppress named‑card override (`mentionedCard = null`).
+     - If `topCardAsset === 'PEPEDAWN'` and `usage === 'BOT_CHAT'`:
+       - Suppress descriptor‑based FACTS override (do not treat PEPEDAWN as named‑card target for this turn).
+     - For `CARD_INTENT`/`BOTH`, normal named‑card/card‑intent behavior applies.
+
+- **Exit conditions**
+  - **BOT_CHAT:** intent and plan follow classifier (typically CHAT/NORESPONSE) with no card discovery.
+  - **CARD_INTENT / BOTH:** FACTS/card‑intent flow executes as usual (may produce `CARD_RECOMMEND`, `FAST_PATH_CARD`, or FACTS).
 
 ---
 

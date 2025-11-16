@@ -600,10 +600,11 @@
 **When:** Any message that doesn't match a command
 
 ```
-┌────────────────────────────────────────────────────────────────────┐
-│                        USER INPUT (non-command)                    │
-│  "Tell me about Fake Rares"  │  "What card fits COIT?"             │
-└─────────────┬──────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────────┐
+│                        USER INPUT (non-command)                          │
+│  "Tell me about Fake Rares"  │  "What card fits COIT?"                  │
+│  "hey pepedawn how are you?" │  "show me a pepe with laser eyes"        │
+└─────────────┬────────────────────────────────────────────────────────────┘
               ▼
 ┌──────────────────────────────┐
 │ 1. PRE-GUARDS (Plugin)       │
@@ -626,51 +627,65 @@
 │ 3. INTENT CLASSIFIER (LLM)   │
 │    Outputs: intent + command │
 │    INTENT ∈ {FACTS, LORE,    │
-│      CHAT, CARD_FASTPATH,    │
-│      CARD_RECOMMEND,         │
-│      CMDROUTE, NORESPONSE}   │
+│      CHAT, CMDROUTE,         │
+│      NORESPONSE}             │
 └─────────────┬────────────────┘
               │
-      ┌───────┴─────────────────────────────────────────────────────┐
-      │                                                             │
-┌─────▼──────┐                                             ┌────────▼─────────┐
-│CARD_FASTPATH│                                             │  Other intents   │
-└─────┬──────┘                                             └────────┬─────────┘
-      │ fast intent score ≥ threshold                                │
-      │                                                              │
-┌─────▼────────────────┐                    ┌────────────────────────▼─────────────────┐
-│Deterministic Card Plan│                    │ 4. MODE PRESET + RETRIEVAL               │
-│preferCardFacts=true   │                    │    Map intent → source weights/topK      │
-│→ call `/f CARD`       │                    │    Call KnowledgeOrchestratorService     │
-└─────┬────────────────┘                    │    (FACTS skip MMR, LORE clusters, etc.) │
-      │                                     └─────────────┬────────────────────────────┘
-      └──► Send card + one-liner ➜ Done                  │
-                                                        ▼
-                                 ┌────────────────────────────────────────────────────┐
-                                 │ 5. MODE EXECUTION                                  │
-                                 │  • FACTS → factual answer + citations              │
-                                 │  • LORE  → historian story + citations             │
-                                 │  • CHAT  → small-model social reply                │
-                                 │  • CARD_RECOMMEND → multi-card plan                │
-                                 │  • CMDROUTE → run suggested /command               │
-                                 │  • NORESPONSE → suppression token (emoji optional) │
-                                 └─────────────┬──────────────────────────────────────┘
-                                               ▼
-                                 ┌────────────────────────────────────┐
-                                 │ 6. TELEMETRY & OUTPUT              │
-                                 │  • SmartRouterDecisionLog (intent, │
-                                 │    reason, fast-path metrics)      │
-                                 │  • TelemetryService.logConversation│
-                                 │  • runtime.useModel token tracking │
-                                 │  • Send Telegram-safe response     │
-                                 └────────────────────────────────────┘
+              ▼
+┌──────────────────────────────┐
+│ 4. CARD / DESCRIPTOR GATES   │
+│    • Detect named cards      │
+│    • Detect descriptor-style │
+│      card queries            │
+│    • PEPEDAWN usage LLM:     │
+│      BOT_CHAT vs CARD_INTENT │
+└─────────────┬────────────────┘
+              │
+              ▼
+┌──────────────────────────────┐
+│ 5. MODE PRESET + RETRIEVAL   │
+│    • Map intent → source     │
+│      weights/topK            │
+│    • Skip retrieval for      │
+│      NORESPONSE/CMDROUTE     │
+│    • Run retrieveCandidates  │
+└─────────────┬────────────────┘
+              ▼
+┌────────────────────────────────────────────────────────────────┐
+│ 6. PLAN SELECTION (SmartRouterService.planRouting)             │
+│    • INTENT=FACTS → FACTS | FAST_PATH_CARD | CARD_RECOMMEND    │
+│    • INTENT=LORE  → LORE                                       │
+│    • INTENT=CHAT  → CHAT                                       │
+│    • INTENT=CMDROUTE → CMDROUTE                                │
+│    • INTENT=NORESPONSE → NORESPONSE                            │
+│    • PEPEDAWN BOT_CHAT usage suppresses card overrides         │
+└─────────────┬──────────────────────────────────────────────────┘
+              ▼
+┌────────────────────────────────────────────────────────────────┐
+│ 7. MODE EXECUTION (executeSmartRouterPlan)                     │
+│    • FAST_PATH_CARD → short explainer + synthetic `/f CARD`    │
+│    • CARD_RECOMMEND → summary + synthetic `/f PRIMARY_CARD`    │
+│    • FACTS / LORE   → story + optional sources line            │
+│    • CHAT           → small-model social reply                 │
+│    • CMDROUTE       → run mapped slash command                 │
+│    • NORESPONSE     → silent (emoji rotation optional)         │
+└─────────────┬──────────────────────────────────────────────────┘
+              ▼
+┌────────────────────────────────────────────────────────────────┐
+│ 8. TELEMETRY & OUTPUT                                          │
+│    • SmartRouterDecisionLog (intent, kind, reason, fast-path)  │
+│    • TelemetryService.logConversation                          │
+│    • runtime.useModel token tracking                           │
+│    • Send Telegram-safe response (if any)                      │
+└────────────────────────────────────────────────────────────────┘
 ```
 
 **Key Features (Smart Router era):**
 - **Layered guards before routing** – commands, FAKEASF/off-topic policies, and engagement scoring run before Smart Router does any work.
 - **Context-aware classifier** – every decision uses a sanitized 20-message transcript plus the live message so multi-user context and bot replies are visible to the LLM.
-- **Deterministic card fast-path** – strong card discovery intent short-circuits directly into `/f <card>` with `preferCardFacts=true`, skipping the full LLM plan.
+- **Deterministic card fast-path** – strong card discovery intent short-circuits into `FAST_PATH_CARD` or `CARD_RECOMMEND` plans, which in turn invoke `/f <card>` with `preferCardFacts=true`.
 - **Mode presets + KnowledgeOrchestrator** – each intent has fixed source weights/topK so FACTS, LORE, CHAT, and CARD_RECOMMEND share the same retrieval pipeline with different knobs.
+- **PEPEDAWN disambiguation** – when "PEPEDAWN" appears, a small LLM decides whether the user is chatting about the bot vs asking about the PEPEDAWN card; only card intent triggers card discovery.
 - **Chat + command routing** – CHAT responses use the lightweight persona model, CMDROUTE invokes the mapped slash flow, and NORESPONSE emits a suppression token.
 - **Unified telemetry** – every plan logs a SmartRouterDecisionLog entry and TelemetryService call, with token/cost tracking via the runtime `useModel` monkey patch.
 

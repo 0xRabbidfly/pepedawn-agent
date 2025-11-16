@@ -1,7 +1,8 @@
-import { describe, it, expect } from 'bun:test';
+import { describe, it, expect, spyOn } from 'bun:test';
 import type { IAgentRuntime } from '@elizaos/core';
 import { SmartRouterService } from '../../services/SmartRouterService';
 import { KnowledgeOrchestratorService } from '../../services/KnowledgeOrchestratorService';
+import { callTextModel } from '../../utils/modelGateway';
 
 function createRouter(): SmartRouterService {
   const runtimeStub = {} as unknown as IAgentRuntime;
@@ -113,6 +114,39 @@ describe('SmartRouterService card recommend formatting', () => {
     expect(plan?.cardSummary).toBe('DJPEPEBADGER.GORILLA-GLUE-MONEY-BADGER — fits because it flexes the fattest stacks.');
     expect(plan?.cardMatches?.[0]?.reason).toBe('fits because it flexes the fattest stacks.');
     expect(plan?.cardMatches?.[1]?.reason).toBe('fits because enormous collage energy.');
+  });
+});
+
+describe('SmartRouterService PEPEDAWN disambiguation', () => {
+  it('does not treat conversational PEPEDAWN message as named-card intent when classifier returns NORESPONSE', async () => {
+    const classifySpy = spyOn(
+      SmartRouterService.prototype as any,
+      'classifyIntent'
+    ).mockResolvedValue({
+      intent: 'NORESPONSE',
+      raw: '{"intent":"NORESPONSE","command":""}',
+    });
+
+    const pepedawnUsageSpy = spyOn(
+      SmartRouterService.prototype as any,
+      'classifyPepedawnUsage'
+    ).mockResolvedValue('BOT_CHAT');
+
+    const runtimeStub = {} as unknown as IAgentRuntime;
+    const router = new SmartRouterService(runtimeStub);
+
+    const plan = await router.planRouting(
+      'pepedawn will be a bit more chatty now - but it should feel more conversational and smarter',
+      'room-pepe'
+    );
+
+    expect(classifySpy).toHaveBeenCalled();
+    expect(pepedawnUsageSpy).toHaveBeenCalled();
+    expect(plan.kind).toBe('NORESPONSE');
+    expect(plan.intent).toBe('NORESPONSE');
+
+    classifySpy.mockRestore();
+    pepedawnUsageSpy.mockRestore();
   });
 });
 
