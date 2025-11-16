@@ -176,7 +176,8 @@ async function searchExactCardMemories(
 export async function searchKnowledgeWithExpansion(
   runtime: IAgentRuntime,
   query: string,
-  roomId: string
+  roomId: string,
+  mode?: 'FACTS' | 'LORE'
 ): Promise<RetrievedPassage[]> {
   const knowledgeService = (runtime as any).getService
     ? (runtime as any).getService('knowledge')
@@ -467,29 +468,53 @@ export async function searchKnowledgeWithExpansion(
 
   const filtered = passages.filter(p => p.text.length > 0);
   
-  // Apply source-based ranking boost
-  // Priority: Memories (highest) > Wiki (2nd) > Telegram (lowest)
+  // Apply source-based ranking boost using mode-specific weights
+  // Default to LORE mode weights if mode not specified
+  const isFactsMode = mode === 'FACTS';
   const boosted = filtered.map(p => {
     const originalScore = p.score;
     let boost = 1.0;
     
-    switch (p.sourceType) {
-      case 'memory':
-        boost = 4.0;  // Highest priority - explicitly saved user facts (2x wiki)
-        break;
-      case 'card-fact': {
-        const priorityBoost = (p.cardBlockPriority ?? 0) / 200;
-        boost = 5.0 + priorityBoost;
-        break;
+    if (isFactsMode) {
+      // FACTS mode weights: memory (3.2) > card_data (3.0) > wiki (2.2) > telegram (0.6)
+      switch (p.sourceType) {
+        case 'memory':
+          boost = 3.2;
+          break;
+        case 'card-fact': {
+          const priorityBoost = (p.cardBlockPriority ?? 0) / 200;
+          boost = 3.0 + priorityBoost;
+          break;
+        }
+        case 'wiki':
+          boost = 2.2;
+          break;
+        case 'telegram':
+          boost = 0.6;
+          break;
+        default:
+          boost = 0.4;
       }
-      case 'wiki':
-        boost = 2.0;  // 2nd priority - authoritative content
-        break;
-      case 'telegram':
-        boost = 0.5;  // Lowest priority - conversational noise
-        break;
-      default:
-        boost = 1.0;
+    } else {
+      // LORE mode weights: memory (4.0) > wiki (2.6) > telegram (2.2) > card_data (1.2)
+      switch (p.sourceType) {
+        case 'memory':
+          boost = 4.0;  // Highest priority - explicitly saved user facts
+          break;
+        case 'card-fact': {
+          const priorityBoost = (p.cardBlockPriority ?? 0) / 200;
+          boost = 1.2 + priorityBoost;  // Lower priority in LORE mode
+          break;
+        }
+        case 'wiki':
+          boost = 2.6;  // 2nd priority - authoritative content
+          break;
+        case 'telegram':
+          boost = 2.2;  // 3rd priority - community chat history
+          break;
+        default:
+          boost = 0.5;
+      }
     }
     
     return {

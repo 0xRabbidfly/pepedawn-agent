@@ -81,12 +81,9 @@ export const loreCommand: Action = {
     try {
       logger.info("   STEP 1/2: Validating query");
       
-      // Pre-classify query to detect unclear/ambiguous requests
-      const { classifyQuery } = await import('../utils/queryClassifier');
-      const queryType = classifyQuery(query);
-      
-      if (!usedRandomSeed && queryType === 'UNCERTAIN') {
-        logger.info(`   ⚠️  Query unclear - sending clarification`);
+      // Check for empty/unclear queries (only for non-random seeds)
+      if (!usedRandomSeed && (!query || query.trim().length === 0)) {
+        logger.info(`   ⚠️  Query empty - sending clarification`);
         
         if (callback) {
           await callback({ text: CLARIFICATION_MESSAGE });
@@ -94,7 +91,7 @@ export const loreCommand: Action = {
         
         return { 
           success: true, 
-          text: 'Clarification sent for uncertain query'
+          text: 'Clarification sent for empty query'
         };
       }
 
@@ -123,11 +120,8 @@ export const loreCommand: Action = {
       const retrievalOptions: KnowledgeRetrievalOptions = {
         includeMetrics: true,
         suppressCardDiscovery: true,
+        mode: 'LORE', // /fl is always for lore retrieval, regardless of query classification
       };
-
-      if (usedRandomSeed) {
-        retrievalOptions.mode = 'LORE';
-      }
 
       const result = await knowledgeService.retrieveKnowledge(
         query,

@@ -90,21 +90,18 @@ User → /fl TOPIC
   ↓
   Hybrid search (exact card match + vector search)
   ↓
-  Rank by source priority:
-  ⭐⭐⭐ Memories (4x boost)
-  ⭐⭐ Wiki (2x boost)
-  ⚡ Telegram (0.5x)
+  Rank by source priority (LORE mode):
+  ⭐⭐⭐ Memories (4.0x boost)
+  ⭐⭐ Wiki (2.6x boost)
+  ⭐ Telegram (2.2x boost)
+  ⚡ Card-fact (1.2x boost)
   ↓
-  Classify: FACTS, LORE, or UNCERTAIN?
-  ├─ UNCERTAIN → Clarification prompt
-  │              "🤔 Not sure... Try: /fl CARDNAME"
-  │
-  ├─ FACTS → Top-k by relevance (no MMR) ✅
-  │           ↓
-  │           Direct answer (rules, specs)
-  │           Memories preserved (4.0x boost ensures top ranking)
-  │
-  └─ LORE → Card memory detected?
+  Source diversity + MMR selection:
+  - Ensures representation from all source types
+  - Applies MMR for text diversity
+  - Prevents card-facts from dominating
+  ↓
+  Card memory detected?
             ├─ YES → Dedicated cluster (raw text)
             │         + other clusters (summarized)
             │         ↓
@@ -114,9 +111,7 @@ User → /fl TOPIC
                     ↓
                     "I remember when..."
   ↓
-  Knowledge response sent with citations
-  ↓
-  No wiki/memory hits? → Bootstrap persona fallback (short reply)
+  Knowledge response sent with citations (always LORE-style storytelling)
 
 Cost: ~$0.01 | Time: 1-3s
 ```

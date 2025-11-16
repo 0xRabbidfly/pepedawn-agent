@@ -79,7 +79,8 @@ Lore recounting:`}
 export async function generatePersonaStory(
   runtime: IAgentRuntime,
   query: string,
-  summaries: ClusterSummary[]
+  summaries: ClusterSummary[],
+  mode?: 'FACTS' | 'LORE'
 ): Promise<string> {
   if (summaries.length === 0) {
     return "Fam, couldn't find any lore on that. Try asking about something else? 🐸";
@@ -89,9 +90,9 @@ export async function generatePersonaStory(
     .map((s, i) => `[${i + 1}] ${s.summary}`)
     .join('\n\n');
   
-  // Classify the query type
-  const queryType = classifyQuery(query);
-  logger.debug(`🎯 Query classified as: ${queryType}`);
+  // Use provided mode, or classify the query type as fallback
+  const queryType = mode || classifyQuery(query);
+  logger.debug(`🎯 Query classified as: ${queryType}${mode ? ' (mode override)' : ''}`);
   
   // Different prompts for FACTS vs LORE
   const storyPrompt = queryType === 'FACTS' 

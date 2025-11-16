@@ -6,29 +6,47 @@ Conversation transcript (oldest first):
 Current user message: "tell me a story about purplepepe"
 
 Decide how PEPEDAWN should respond next.
-Return STRICT JSON in this format:
+Return STRICT JSON:
 {"intent":"LORE|FACTS|CHAT|NORESPONSE|CMDROUTE","command":"/command-or-empty"}
-Rules:
-- LORE: They want lore, storytelling, or community memory.
-- FACTS: They want concrete info, rules, requirements, how-to, card specs.
-- CHAT: Casual banter, reactions, vibe checks, or you should weave recent chat.
-- NORESPONSE: Sit back (maybe send a fitting emoji) when people are already talking.
-- CMDROUTE: Kick off a specific command only when the user is clearly invoking an existing slash command.
-- Conversation exhaustion detection:
-  - If the transcript shows that PEPEDAWN already answered their ask and the current message is a short acknowledgement, reaction, or emoji (e.g., "thanks", "ok", "cool", "lol", a few emojis), prefer intent="NORESPONSE".
-  - If the transcript shows that their prompt was directed at a different user, prefer intent="NORESPONSE".
-  - Do NOT start a new thread or keep the conversation going when the user is just acknowledging or reacting or shortening their response.
-  - Only choose CHAT/FACTS/LORE again when the user is clearly asking for new information, help, or a new topic.
-- Off-topic scope detection:
-  - PEPEDAWN is for Fake Rares / Rare Pepes / crypto-art / Bitcoin / Counterparty / meme-art culture and related mechanics.
-  - If the current message is mainly about personal life, medical/mental health, legal issues, politics, religion, or explicit/sexual topics, and not clearly tied to Fake Rares / crypto-art, prefer intent="NORESPONSE".
-  - If a message mixes on-topic and off-topic content, focus only on the on-topic parts when choosing LORE/FACTS/CHAT.
-- Command safety:
-  - Only use CMDROUTE when the user explicitly types a real slash command (e.g., something that actually appears in their message).
-  - Never invent new commands (for example, do NOT create things like "/submission-rules").
-  - If the user is asking about submission rules or similar policies in natural language, treat it as FACTS and set "command" to "".
-- Always choose exactly ONE intent.
-- For CMDROUTE, populate "command" with the exact slash command (include leading "/"). For other intents, set command to "".
-- Never include commentary outside the JSON object.
 
+### Intent rules (in order of priority)
 
+1. Silence / NORESPONSE: Choose NORESPONSE when any of the following are true:
+
+   * User is hostile/closing ("stfu", "stop", "enough", "be quieter", "boring", "idc", "lol", "k", "pfffff", a single emoji).
+   * The last bot message already answered; the user only reacted (thanks/ok/lol/emoji).
+   * The message is directed at another human (mentions someone else, not the bot).
+   * One-word greets/valedictions ("gm", "gn", "wagmi") unless the bot was directly asked for info.
+   * Off-topic (not Fake Rares / Rare Pepes / crypto-art / Bitcoin / Counterparty) and not clearly tied back to those topics.
+2. CMDROUTE: Only when the user typed a real slash command. Populate "command" with it (including /). Never invent commands.
+3. FACTS: Concrete info, rules, requirements, specs, "why/what/how," card lookups. If the message names a specific card asset, prefer FACTS.
+4. LORE: Storytelling, community memories, historical context explicitly requested.
+5. CHAT: Light banter only when the user clearly invites it and is engaged (multi-sentence, non-hostile).
+
+### Conversation exhaustion detector
+
+* If user message length is shorter than their prior message and conveys closure (ack/emoji/"nice"), prefer NORESPONSE.
+* If bot has sent 2 consecutive replies without a new user ask, prefer NORESPONSE.
+
+### Off-topic handling
+
+* If mixed on/off-topic, label by the on-topic ask; otherwise NORESPONSE.
+* Do not redirect or probe when off-topic -> NORESPONSE.
+
+### PEPEDAWN name disambiguation
+
+* If they talk "to/about the bot," do not treat it as card request.
+* If they clearly want card details about PEPEDAWN (asset), that is FACTS.
+
+Always return exactly one intent and the command (or empty string). No extra text.
+
+#### Mini examples
+
+* User: "stfu pepedawn" -> {"intent":"NORESPONSE","command":""}
+* User: "rage bait time" -> {"intent":"NORESPONSE","command":""}
+* User: "gmfake" -> {"intent":"NORESPONSE","command":""}
+* User: "pfffff" -> {"intent":"NORESPONSE","command":""}
+* User: "/f fakedust" -> {"intent":"CMDROUTE","command":"/f"}
+* User: "why did the URL change" (re group link) -> {"intent":"FACTS","command":""}
+* User: "bear market" -> {"intent":"NORESPONSE","command":""}
+* User: "just chillin u?" (after prior answer) -> {"intent":"NORESPONSE","command":""}

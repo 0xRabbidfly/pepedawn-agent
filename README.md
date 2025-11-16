@@ -169,12 +169,15 @@ When you upload an image with `/ft`, the bot automatically checks if it matches 
 
 **How it works:**
 1. Searches local vector database (Telegram messages + wiki content + user memories)
-2. Applies conditional selection:
-   - **FACTS questions:** Top passages by relevance (preserves high-priority memories)
-   - **LORE queries:** MMR diversity algorithm (varied storytelling)
+2. Applies source diversity + MMR selection:
+   - Ensures representation from all source types (memory, telegram, wiki, card-fact)
+   - Applies MMR diversity algorithm for varied storytelling
+   - Prevents any single source type from dominating results
 3. PEPEDAWN recounts as historian/eyewitness (80-120 words)
 4. Includes compact source citations (e.g., `tg:1234, wiki:purple-era, mem:abc123`)
 5. Speaks as "I remember when..." not creative storytelling
+
+**Note:** `/fl` is a pure storytelling interface - always returns LORE-style historian recounting, never factual answers
 
 **Memory Capture**:
 - Use `/fr CARDNAME <lore>` to store card-specific memories

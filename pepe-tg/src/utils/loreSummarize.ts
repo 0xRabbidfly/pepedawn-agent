@@ -206,12 +206,13 @@ export function formatCompactCitation(passage: RetrievedPassage): string {
 export async function clusterAndSummarize(
   runtime: IAgentRuntime,
   passages: RetrievedPassage[],
-  query: string
+  query: string,
+  mode?: 'FACTS' | 'LORE'
 ): Promise<ClusterSummary[]> {
   if (passages.length === 0) return [];
   
-  // Classify query to determine summarization strategy
-  const queryType = classifyQuery(query);
+  // Use provided mode, or classify query to determine summarization strategy
+  const queryType = mode || classifyQuery(query);
   
   const targetClusters = Math.min(
     Math.max(LORE_CONFIG.CLUSTER_TARGET_MIN, passages.length),

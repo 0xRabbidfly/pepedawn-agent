@@ -355,10 +355,12 @@ export class KnowledgeOrchestratorService extends Service {
     logger.debug(`📝 Expanded query: "${expandedQuery}"`);
     this.logStep(2, 'retrieve_passages_start');
     // STEP 2: Retrieve passages
+    const queryMode = options?.mode; // Pass mode to use correct source weights
     const passages = await searchKnowledgeWithExpansion(
       this.runtime,
       expandedQuery,
-      roomId
+      roomId,
+      queryMode
     );
 
     const primaryCardAsset = this.detectPrimaryCardAsset(query);
@@ -506,7 +508,10 @@ export class KnowledgeOrchestratorService extends Service {
       logger.info('🧠 [KNOWLEDGE] Card discovery suppressed by caller.');
     }
 
-    const queryType = options?.mode || classifyQuery(query);
+    // /fl flow is always LORE - skip all FACTS logic when mode is explicitly LORE
+    const isLoreMode = options?.mode === 'LORE';
+    const queryType = isLoreMode ? 'LORE' : (options?.mode || classifyQuery(query));
+    
     this.logStep(3, 'select_passages', {
       mode: queryType,
       hasPrimaryCardAsset: !!primaryCardAsset,
@@ -518,7 +523,6 @@ export class KnowledgeOrchestratorService extends Service {
     
     let candidatePassages = passages;
     if (filteredIds.length >= LORE_CONFIG.MIN_HITS) {
-      // Apply LRU filter BUT preserve all memories (user-contributed facts are sacred)
       candidatePassages = passages.filter(p => 
         p.sourceType === 'memory' || filteredIds.includes(p.id)
       );
@@ -529,27 +533,47 @@ export class KnowledgeOrchestratorService extends Service {
     const topK = Math.min(LORE_CONFIG.TOP_K_FOR_CLUSTERING, candidatePassages.length);
     const topPassages = candidatePassages.slice(0, topK);
     
-    // Check if top result is a card memory - if so, reduce passage count for emphasis
     const topPassage = topPassages[0];
     const hasCardMemory = topPassage?.sourceType === 'memory' && 
                           topPassage?.sourceRef?.startsWith('card:');
-    
-    // Determine target passage count
     const targetPassageCount = hasCardMemory ? 5 : LORE_CONFIG.CLUSTER_TARGET_MAX * 2;
     
-    // CRITICAL: Only apply MMR for LORE mode (FACTS needs pure relevance)
     let diversePassages: RetrievedPassage[];
-    if (queryType === 'FACTS') {
-      // FACTS mode: Use top passages by relevance (no diversity)
+    
+    if (isLoreMode || queryType !== 'FACTS') {
+      // LORE mode: source diversity + MMR
+      const bySource: Record<string, RetrievedPassage[]> = {
+        'memory': [], 'wiki': [], 'telegram': [], 'card-fact': [], 'unknown': [],
+      };
+      for (const p of topPassages) {
+        const source = p.sourceType || 'unknown';
+        (bySource[source] || bySource['unknown']).push(p);
+      }
+      
+      const sourceDiverse: RetrievedPassage[] = [];
+      const sourceOrder = ['memory', 'telegram', 'wiki', 'card-fact', 'unknown'];
+      const maxPerSource = Math.max(2, Math.floor(targetPassageCount / 3));
+      
+      for (const sourceType of sourceOrder) {
+        const available = bySource[sourceType] || [];
+        if (available.length > 0 && sourceDiverse.length < targetPassageCount) {
+          const toTake = Math.min(maxPerSource, available.length, targetPassageCount - sourceDiverse.length);
+          sourceDiverse.push(...available.slice(0, toTake));
+        }
+      }
+      
+      if (sourceDiverse.length < targetPassageCount) {
+        const sourceDiverseIds = new Set(sourceDiverse.map(p => p.id));
+        const remaining = topPassages.filter(p => !sourceDiverseIds.has(p.id));
+        sourceDiverse.push(...remaining.slice(0, targetPassageCount - sourceDiverse.length));
+      }
+      
+      diversePassages = selectDiversePassages(sourceDiverse, Math.min(targetPassageCount, sourceDiverse.length));
+      logger.debug(`📖 LORE mode: Applied source diversity + MMR (${diversePassages.length} passages)`);
+    } else {
+      // FACTS mode: top-k by relevance
       diversePassages = topPassages.slice(0, Math.min(targetPassageCount, topK));
       logger.debug(`📋 FACTS mode: Skipping MMR, using top ${diversePassages.length} by relevance`);
-    } else {
-      // LORE mode: Apply MMR for diversity
-      diversePassages = selectDiversePassages(
-        topPassages,
-        Math.min(targetPassageCount, topK)
-      );
-      logger.debug(`📖 LORE mode: Applied MMR for diversity`);
     }
     
     // Debug: Check source breakdown after selection
@@ -581,9 +605,41 @@ export class KnowledgeOrchestratorService extends Service {
     let story: string;
     let sourcesLine: string;
     let clusterCount = 0;
-    let hasWikiOrMemory = false;  // Track if wiki/memory sources were found (for silent ignore logic)
+    let hasWikiOrMemory = false;
     
-    if (queryType === 'FACTS') {
+    if (isLoreMode || queryType !== 'FACTS') {
+      // LORE mode: clustering and storytelling
+      const cardMemories = diversePassages.filter(p => 
+        p.sourceType === 'memory' && p.sourceRef?.startsWith('card:')
+      );
+      const otherPassages = diversePassages.filter(p => 
+        !(p.sourceType === 'memory' && p.sourceRef?.startsWith('card:'))
+      );
+      
+      let summaries: any[] = [];
+      if (cardMemories.length > 0) {
+        const cardCluster = {
+          id: 'card-memories',
+          passageRefs: cardMemories.map(p => p.id),
+          summary: cardMemories.map(p => p.text).join('\n\n'),
+          citations: cardMemories.map(p => formatCompactCitation(p))
+        };
+        const otherClusters = otherPassages.length > 0 
+          ? await clusterAndSummarize(this.runtime, otherPassages, query, 'LORE')
+          : [];
+        summaries = [cardCluster, ...otherClusters];
+        logger.info({ step: '4/5', branch: 'LORE', clusters: summaries.length, cardClusters: 1 },
+          '[KnowledgeOrchestrator] LORE clustering (card memories present)');
+      } else {
+        summaries = await clusterAndSummarize(this.runtime, diversePassages, query, 'LORE');
+        logger.info({ step: '4/5', branch: 'LORE', clusters: summaries.length },
+          '[KnowledgeOrchestrator] LORE clustering');
+      }
+      
+      clusterCount = summaries.length;
+      story = await generatePersonaStory(this.runtime, query, summaries, 'LORE');
+      sourcesLine = process.env.HIDE_LORE_SOURCES === 'true' ? '' : formatSourcesLine(summaries);
+    } else {
       logger.debug('📋 FACTS mode: Using top wiki and memory passages directly');
       
       const factsPassages = diversePassages.filter(p => p.sourceType === 'wiki' || p.sourceType === 'memory').slice(0, 5);
@@ -607,7 +663,7 @@ export class KnowledgeOrchestratorService extends Service {
           passageRefs: topPassages.map(p => p.id),
           summary: topPassages.map(p => p.text).join('\n\n'),
           citations: topPassages.map(p => formatCompactCitation(p))
-        }]);
+        }], queryType);
         sourcesLine = process.env.HIDE_LORE_SOURCES === 'true' ? '' : 
           `\n\nSources:  ${topPassages.map(p => formatCompactCitation(p)).join('  ||  ')}`;
         clusterCount = 1;
@@ -619,7 +675,7 @@ export class KnowledgeOrchestratorService extends Service {
           summary: factsPassages.map(p => p.text).join('\n\n'),
           citations: factsPassages.map(p => formatCompactCitation(p))
           },
-        ]);
+        ], queryType);
         sourcesLine =
           process.env.HIDE_LORE_SOURCES === 'true'
             ? ''
@@ -647,64 +703,18 @@ export class KnowledgeOrchestratorService extends Service {
           '[KnowledgeOrchestrator] FACTS regeneration executed due to fallback output'
         );
       }
-    } else {
-      logger.debug('📖 LORE mode: Using clustering and summarization');
-      
-      // Separate card memories from other sources for dedicated treatment
-      const cardMemories = diversePassages.filter(p => 
-        p.sourceType === 'memory' && p.sourceRef?.startsWith('card:')
-      );
-      const otherPassages = diversePassages.filter(p => 
-        !(p.sourceType === 'memory' && p.sourceRef?.startsWith('card:'))
-      );
-      
-      let summaries: any[] = [];
-      
-      if (cardMemories.length > 0) {
-        logger.debug(`🎨 Found ${cardMemories.length} card memories - creating dedicated cluster`);
-        
-        // Card memories get their own cluster with NO LLM summarization (preserve exact words)
-        const cardCluster = {
-          id: 'card-memories',
-          passageRefs: cardMemories.map(p => p.id),
-          summary: cardMemories.map(p => p.text).join('\n\n'), // Raw text
-          citations: cardMemories.map(p => formatCompactCitation(p))
-        };
-        
-        // Cluster the rest normally
-        const otherClusters = otherPassages.length > 0 
-          ? await clusterAndSummarize(this.runtime, otherPassages, query)
-          : [];
-        
-        // Card cluster FIRST (highest prominence in story)
-        summaries = [cardCluster, ...otherClusters];
-        logger.info(
-          { step: '4/5', branch: 'LORE', clusters: summaries.length, cardClusters: 1 },
-          '[KnowledgeOrchestrator] LORE clustering (card memories present)'
-        );
-      } else {
-        // No card memories, normal clustering
-        summaries = await clusterAndSummarize(this.runtime, diversePassages, query);
-        logger.info(
-          { step: '4/5', branch: 'LORE', clusters: summaries.length },
-          '[KnowledgeOrchestrator] LORE clustering'
-        );
-      }
-      
-      clusterCount = summaries.length;
-      
-      story = await generatePersonaStory(this.runtime, query, summaries);
-      sourcesLine = process.env.HIDE_LORE_SOURCES === 'true' ? '' : formatSourcesLine(summaries);
     }
     
     // Robust fallback: if story is empty or too short (e.g., 1 word), synthesize from top passages
     const wordCount = (story || '').trim().split(/\s+/).filter(Boolean).length;
     if (!story || story.trim().length === 0 || wordCount < 4) {
       const take = (arr: RetrievedPassage[], n: number) => arr.slice(0, Math.max(0, n));
-      const pickFacts = diversePassages.filter(p => p.sourceType === 'wiki' || p.sourceType === 'memory');
-      const fallbackSet = (queryType === 'FACTS'
-        ? (pickFacts.length > 0 ? take(pickFacts, 3) : take(diversePassages, 3))
-        : take(diversePassages, 3));
+      const fallbackSet = (isLoreMode || queryType !== 'FACTS')
+        ? take(diversePassages, 3)
+        : (() => {
+            const pickFacts = diversePassages.filter(p => p.sourceType === 'wiki' || p.sourceType === 'memory');
+            return pickFacts.length > 0 ? take(pickFacts, 3) : take(diversePassages, 3);
+          })();
       
       const firstSentence = (text: string) => {
         const trimmed = (text || '').trim();

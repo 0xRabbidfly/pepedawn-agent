@@ -7,6 +7,55 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.1.0] - 2025-11-16
+
+### Changed
+- **Reduced Bot Chattiness** - Improved intent classifier to be more selective about responses
+  - Aggressive NORESPONSE routing for acknowledgements, hostile messages, and low-engagement interactions
+  - Conversation exhaustion detection: Prefers silence when user messages shorten or bot has sent consecutive replies
+  - Enhanced off-topic handling: No redirects or probes for off-topic messages
+  - Mini few-shot examples added to classifier prompt for better pattern recognition
+- **CHAT Response Length Limits** - Responses now scale with user message length
+  - User < 5 words → 1-5 word reply (or single emoji)
+  - User 5-15 words → one short sentence (≤ 16 words)
+  - User > 15 words → one sentence (≤ 22 words), rarely two if necessary
+  - No follow-up questions or probing ("anything else?")
+  - Hostility cues trigger minimal neutral responses (emoji or 1-2 word acknowledge)
+- **`/fl` Command Simplification** - Clean LORE-only storytelling interface
+  - Removed all FACTS logic from `/fl` flow - always returns historian-style lore recounting
+  - No query classification checks - `/fl` is purely for community stories and history
+  - Simplified code path: ~100 lines of duplicate logic removed
+
+### Fixed
+- **LORE Mode Source Weights** - Corrected ranking boosts to match original heuristics
+  - Card-fact: 5.0x → 1.2x (was incorrectly boosted, now lowest priority in LORE)
+  - Telegram: 0.5x → 2.2x (was incorrectly penalized, now properly weighted for community chat)
+  - Memory: 4.0x (unchanged, highest priority)
+  - Wiki: 2.6x (unchanged)
+  - Telegram messages now properly surface in `/fl` queries (e.g., `/fl coit`)
+- **Source Diversity in LORE Mode** - Ensures all source types are represented
+  - Added source diversity guarantees before MMR application
+  - Prevents card-facts from dominating results even with higher scores
+  - Telegram messages now included in final selection even when card-facts rank higher
+- **Mode Propagation** - Fixed downstream functions to respect explicit LORE mode
+  - `generatePersonaStory()` and `clusterAndSummarize()` now accept mode parameter
+  - Prevents re-classification from overriding `/fl`'s forced LORE mode
+  - Query "X COPY Fake Rare submissions" now correctly uses LORE prompts instead of FACTS
+
+### Technical Details
+- Updated classifier prompt with priority-based intent rules and exhaustion detection
+- Updated CHAT generator prompt with word-count limits and energy matching
+- Updated PEPEDAWN disambiguator prompt for clearer bot vs card distinction
+- Mode-specific source weights in `loreRetrieval.ts` (LORE vs FACTS use different boosts)
+- FACTS flow from SmartRouter remains unchanged and functional
+
+## [4.0.0] - 2025-11-XX
+
+### Added
+- SmartRouter service for intelligent intent classification
+- LLM-based off-topic detection
+- NORESPONSE silence improvements
+
 ## [3.14.0] - 2025-11-11
 
 ### Fixed
