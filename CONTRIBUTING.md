@@ -529,28 +529,37 @@ const BASE_URL = 'https://coolcats-cdn.com/images/';
 
 ### Test Types
 
-The project has **12 custom test files** (160+ tests, excluding framework boilerplate):
+The project has **19 custom unit/integration test files** (300+ tests, excluding framework boilerplate):
 
-**1. Bootstrap Suppression Test** (pre-commit hook)
+**1. Bootstrap Suppression & Routing Tests** (pre-commit hook)
 ```typescript
 // src/__tests__/bootstrap-suppression.test.ts
-// Validates that Bootstrap AI responses are properly suppressed
-// Runs automatically on every commit
+// Validates that Bootstrap AI responses are properly suppressed and routing handoff works
+// Runs automatically on every commit via `.git/hooks/pre-commit` → `bun run test`
 ```
 
-**2-5. Visual Commands Tests** (4 files, 67+ tests)
+**2-5. Visual Commands Tests** (4 files, 60+ tests)
 - `__tests__/utils/visionAnalyzer.test.ts` - Shared vision API utility
 - `__tests__/actions/fakeVisualCommand.test.ts` - `/fv` card analysis
 - `__tests__/actions/fakeTestCommand.test.ts` - `/ft` image appeal test
 - `__tests__/integration/visual-commands.test.ts` - Plugin routing
 
-**6-9. Knowledge & Auto-Routing Tests** (4 files, 91 tests)
+**6-10. Knowledge & Auto-Routing Tests** (5 files, 100+ tests)
 - `__tests__/utils/queryClassifier.test.ts` - FACTS/LORE/UNCERTAIN classification
 - `__tests__/utils/loreRetrieval.test.ts` - Memory priority & source boost logic
 - `__tests__/utils/memoryStorage.test.ts` - Card detection & memory boost logic
 - `__tests__/actions/loreCommand.test.ts` - `/fl` command & FACTS mode filtering
+- `__tests__/auto-routing.test.ts` - MESSAGE_RECEIVED auto-routing behavior
 
-**10-12. Market Monitoring Tests** (3 files, 19 tests)
+**11-13. Smart Router & Plugin Routing Tests** (3 files)
+- `__tests__/services/smartRouterService.test.ts` – Router history & transcript
+- `__tests__/services/smartRouterService.golden.test.ts` – Classifier prompt + routing plans
+- `__tests__/plugins/fakeRaresPlugin.memory-and-filters.test.ts` – Memory capture, card intent hint, FAKEASF filter
+
+**14. Card Fast-Path Tests** (1 file)
+- `__tests__/router/cardFastPath.test.ts` – Card fast-path decision thresholds
+
+**15-17. Market Monitoring Tests** (3 files, 19 tests)
 - `__tests__/actions/fakeMarketAction.test.ts` - `/fm` command validation & parsing
 - `__tests__/services/transactionMonitor.test.ts` - Transaction polling & filtering logic
 - `__tests__/utils/transactionUrls.test.ts` - URL building utilities (100% coverage)

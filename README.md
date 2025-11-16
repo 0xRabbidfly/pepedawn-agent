@@ -1464,8 +1464,9 @@ pm2 start pepe-tg
 # All custom tests
 bun test
 
-# Pre-commit test (bootstrap suppression)
-bun test src/__tests__/bootstrap-suppression.test.ts
+# Pre-commit test (runs via .git/hooks/pre-commit)
+# Equivalent to: bun run test (see package.json "test:custom")
+bun run test
 
 # Visual commands tests
 bun test src/__tests__/actions/fakeVisualCommand.test.ts
@@ -1480,6 +1481,11 @@ bun test src/__tests__/utils/memoryStorage.test.ts
 bun test src/__tests__/actions/loreCommand.test.ts
 bun test src/__tests__/auto-routing.test.ts
 
+# Smart router and plugin routing tests
+bun test src/__tests__/services/smartRouterService.golden.test.ts
+bun test src/__tests__/router/cardFastPath.test.ts
+bun test src/__tests__/plugins/fakeRaresPlugin.memory-and-filters.test.ts
+
 # Watch mode (auto-rerun on changes)
 bun test --watch
 
@@ -1489,31 +1495,39 @@ bun test --coverage
 
 ### Test Structure
 
-The project has **13 custom test files** (160+ tests total):
+The project has **19 custom unit/integration test files** (300+ tests total):
 
 **1. Bootstrap Suppression** (pre-commit)
-- `bootstrap-suppression.test.ts` - Validates Bootstrap AI suppression
-- Runs automatically on every `git commit`
+- `bootstrap-suppression.test.ts` – Validates Bootstrap AI suppression and routing handoff
+- Runs automatically on every `git commit` via `.git/hooks/pre-commit` → `bun run test`
 
 **2-5. Visual Commands** (4 files)
-- `actions/fakeVisualCommand.test.ts` - `/fv` card analysis command
-- `actions/fakeTestCommand.test.ts` - `/ft` image appeal test command
-- `utils/visionAnalyzer.test.ts` - Shared vision API utility
-- `integration/visual-commands.test.ts` - Plugin routing & command conflicts
+- `actions/fakeVisualCommand.test.ts` – `/fv` card analysis command
+- `actions/fakeTestCommand.test.ts` – `/ft` image appeal test command
+- `utils/visionAnalyzer.test.ts` – Shared vision API utility
+- `integration/visual-commands.test.ts` – Plugin routing & command conflicts
 
 **6-10. Knowledge & Auto-Routing** (5 files)
-- `utils/queryClassifier.test.ts` - FACTS/LORE/UNCERTAIN classification
-- `utils/loreRetrieval.test.ts` - Memory priority & source boost logic
-- `utils/memoryStorage.test.ts` - Card detection & memory boost logic
-- `actions/loreCommand.test.ts` - `/fl` command & FACTS mode filtering
-- `auto-routing.test.ts` - Auto-routing logic & reply detection (20 tests) ✨
+- `utils/queryClassifier.test.ts` – FACTS/LORE/UNCERTAIN classification
+- `utils/loreRetrieval.test.ts` – Memory priority & source boost logic
+- `utils/memoryStorage.test.ts` – Card detection & memory boost logic
+- `actions/loreCommand.test.ts` – `/fl` command & FACTS mode filtering
+- `auto-routing.test.ts` – Auto-routing logic & reply detection (20 tests)
 
-**11-13. Market Monitoring** (3 files)
-- `actions/fakeMarketAction.test.ts` - `/fm` command validation & parsing
-- `services/transactionMonitor.test.ts` - Transaction polling & filtering
-- `utils/transactionUrls.test.ts` - URL utilities (100% coverage)
+**11-13. Smart Router & Plugin Routing** (3 files)
+- `services/smartRouterService.test.ts` – Router history & transcript formatting
+- `services/smartRouterService.golden.test.ts` – Golden classifier prompt + routing plans
+- `plugins/fakeRaresPlugin.memory-and-filters.test.ts` – Memory capture, card intent hint, FAKEASF safety filter
 
-> **Note:** Framework test files (ElizaOS boilerplate) are also present but focus on these 13 custom tests for this project.
+**14. Card Fast-Path** (1 file)
+- `router/cardFastPath.test.ts` – Card fast-path decision rules (dominance, similarity, card share)
+
+**15-17. Market Monitoring** (3 files)
+- `actions/fakeMarketAction.test.ts` – `/fm` command validation & parsing
+- `services/transactionMonitor.test.ts` – Transaction polling & filtering
+- `utils/transactionUrls.test.ts` – URL utilities (100% coverage)
+
+> **Note:** Framework test files (ElizaOS boilerplate) are also present but focus on these custom tests for this project.
 
 ---
 

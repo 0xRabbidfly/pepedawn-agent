@@ -4,7 +4,7 @@
 
 ## 📊 Test Summary
 
-**Total:** 16 custom test files (309 tests)
+**Total:** 19 custom unit/integration test files (300+ tests)
 
 ### 1. Bootstrap Suppression Test ⚡
 
@@ -37,7 +37,37 @@
 
 **File:** `auto-routing.test.ts` (20 tests)
 
-**Purpose:** Validates MESSAGE_RECEIVED auto-routing logic - ensures FACTS questions are routed to knowledge retrieval while statements/opinions are properly suppressed.
+**Purpose:** Validates MESSAGE_RECEIVED auto-routing logic – ensures SmartRouter/LLM-driven FACTS routing and engagement suppression behave correctly for questions, statements, replies, and edge cases.
+
+---
+
+### 7. Smart Router Service Tests 🧠
+
+**Files:**
+
+- `services/smartRouterService.test.ts`
+- `services/smartRouterService.golden.test.ts`
+
+**Purpose:** Unit tests for `SmartRouterService` covering:
+
+- Conversation history and transcript formatting
+- Golden classifier prompt fixture
+- Mode presets for LORE/FACTS/CHAT retrieval
+- Intent overrides (NORESPONSE → FACTS for card descriptors, named card overrides)
+- Plan kinds: FACTS, LORE, CHAT, NORESPONSE, CMDROUTE
+- Fallback behavior when knowledge is unavailable or CHAT generation fails
+
+---
+
+### 8. Card Fast-Path Routing Tests 🚀
+
+**File:** `router/cardFastPath.test.ts`
+
+**Purpose:** Validates card fast-path decision logic:
+
+- Triggers only when card_data evidence is dominant
+- Ensures no fast-path when there are no candidates or no card_data
+- Checks dominance ratio and similarity thresholds
 
 ---
 
@@ -102,8 +132,13 @@ bun test src/__tests__/actions/fakeTestCommand.test.ts
 bun test src/__tests__/utils/visionAnalyzer.test.ts
 bun test src/__tests__/integration/visual-commands.test.ts
 
-# Auto-routing
+# Auto-routing & Smart Router
 bun test src/__tests__/auto-routing.test.ts
+bun test src/__tests__/services/smartRouterService.golden.test.ts
+bun test src/__tests__/router/cardFastPath.test.ts
+
+# Plugin routing (memory & filters)
+bun test src/__tests__/plugins/fakeRaresPlugin.memory-and-filters.test.ts
 
 # Knowledge & lore (all 5 files)
 bun test src/__tests__/utils/queryClassifier.test.ts
@@ -125,20 +160,27 @@ bun test --coverage
 
 ```
 pepe-tg/src/__tests__/
-├── bootstrap-suppression.test.ts    # Bootstrap suppression logic (28 tests)
-├── auto-routing.test.ts             # Auto-routing FACTS questions (20 tests)
+├── bootstrap-suppression.test.ts                 # Bootstrap suppression logic
+├── auto-routing.test.ts                          # MESSAGE_RECEIVED auto-routing logic
+├── services/
+│   ├── smartRouterService.test.ts                # Router history & transcript
+│   └── smartRouterService.golden.test.ts         # Classifier prompt + routing plans
+├── router/
+│   └── cardFastPath.test.ts                      # Card fast-path decision logic
+├── plugins/
+│   └── fakeRaresPlugin.memory-and-filters.test.ts# Memory capture, card intent hint, FAKEASF filter
 ├── actions/
-│   ├── fakeVisualCommand.test.ts    # /fv command tests (14 tests)
-│   ├── fakeTestCommand.test.ts      # /ft command tests (16 tests)
-│   ├── loreCommand.test.ts          # /fl command tests (15 tests)
-│   └── fakeRememberCommand.test.ts  # /fr command tests (7 tests)
+│   ├── fakeVisualCommand.test.ts                 # /fv command tests
+│   ├── fakeTestCommand.test.ts                   # /ft command tests
+│   ├── loreCommand.test.ts                       # /fl command tests
+│   └── fakeRememberCommand.test.ts               # /fr command tests
 ├── utils/
-│   ├── queryClassifier.test.ts      # FACTS/LORE classification (33 tests)
-│   ├── visionAnalyzer.test.ts       # Vision API utility (1 test)
-│   ├── loreRetrieval.test.ts        # Memory priority & hybrid search (19 tests)
-│   └── memoryStorage.test.ts        # Memory utilities (24 tests)
+│   ├── queryClassifier.test.ts                   # FACTS/LORE classification
+│   ├── visionAnalyzer.test.ts                    # Vision API utility
+│   ├── loreRetrieval.test.ts                     # Memory priority & hybrid search
+│   └── memoryStorage.test.ts                     # Memory utilities
 └── integration/
-    └── visual-commands.test.ts      # Plugin routing integration (26 tests)
+    └── visual-commands.test.ts                   # Plugin routing integration
 ```
 
 **Note:** Additional test files exist from ElizaOS framework but are not actively maintained as part of this project.
@@ -161,7 +203,7 @@ Before deploying:
 
 **Location:** `.git/hooks/pre-commit`
 
-**What it does:** Runs 14 custom test files before every commit (including new carousel & service tests)
+**What it does:** Runs `bun run test` (alias for `bun test` on all custom unit/integration test files under `src/__tests__/{bootstrap-suppression,auto-routing,actions,integration,providers,utils,services,router,plugins}`) before every commit.
 
 **To bypass (not recommended):**
 ```bash
@@ -218,9 +260,9 @@ git commit --no-verify
 
 ---
 
-**Last Updated:** November 5, 2025  
+**Last Updated:** November 16, 2025  
 **Test Framework:** Bun Test  
-**Coverage:** 15 custom test files, 257+ tests
+**Coverage:** 19 custom unit/integration test files, 300+ tests
 
 ## 🚧 Known Test Gaps
 
