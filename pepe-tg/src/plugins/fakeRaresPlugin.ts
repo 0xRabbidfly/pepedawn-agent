@@ -695,7 +695,7 @@ export const fakeRaresPlugin: Plugin = {
 
           const textLower = text.toLowerCase();
           const hasCardKeyword =
-            /\b(card|cards|fake|fakes|fake rare|fake rares|rake rare|rare fake|rare card|rare cards)\b/i.test(textLower) ||
+            /\b(card|cards|fake|fakes|fake rare|fake rares|rake rare|rare fake|rare card|rare cards|rare|rares)\b/i.test(textLower) ||
             /\bpepes?\b/i.test(textLower) ||
             /\brare pepes?\b/i.test(textLower);
           let hasCardDiscoveryIntent = hasCardKeyword;

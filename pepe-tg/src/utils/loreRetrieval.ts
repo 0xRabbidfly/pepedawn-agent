@@ -261,6 +261,43 @@ export async function searchKnowledgeWithExpansion(
     }
   }
   
+  /**
+   * Extract clean message text from telegram JSON structure
+   * Handles both raw JSON strings and parsed objects
+   */
+  function extractTelegramText(rawText: string): string {
+    // First, try to parse as JSON object if it looks like one
+    try {
+      // Check if it looks like a JSON object (starts with {)
+      if (rawText.trim().startsWith('{')) {
+        const parsed = JSON.parse(rawText);
+        if (parsed && typeof parsed === 'object' && parsed.text) {
+          return String(parsed.text).trim();
+        }
+      }
+    } catch {
+      // Not valid JSON, continue with regex extraction
+    }
+    
+    // Try to extract "text" field from JSON structure using regex
+    // Pattern: "text": "actual message" (handles escaped quotes and newlines)
+    // More flexible pattern that handles multiline and escaped content
+    const textFieldMatch = rawText.match(/"text"\s*:\s*"((?:[^"\\]|\\.|\\n|\\t)*)"/s);
+    if (textFieldMatch && textFieldMatch[1]) {
+      // Unescape JSON string escapes
+      return textFieldMatch[1]
+        .replace(/\\n/g, '\n')
+        .replace(/\\t/g, '\t')
+        .replace(/\\r/g, '\r')
+        .replace(/\\"/g, '"')
+        .replace(/\\\\/g, '\\')
+        .trim();
+    }
+    
+    // If no JSON structure found, return as-is
+    return rawText;
+  }
+
   // Convert to RetrievedPassage format
   let passages: RetrievedPassage[] = results.map((r: any, idx: number) => {
     const rawText = r.content?.text || r.text || '';
@@ -349,8 +386,11 @@ export async function searchKnowledgeWithExpansion(
          metadata?.from ||
          metadata?.from_id);
 
-    // Content-based telegram detection (fromMatch, fromIdMatch, dateMatch already declared above)
-    const contentLooksTelegram = !!(fromMatch || fromIdMatch || dateMatch);
+    // Content-based telegram detection:
+    // - Legacy raw TG JSON markers (from/date/etc)
+    // - New session chunks marked with [TELEGRAM_SESSION:...]
+    const telegramSessionMarker = text.startsWith('[TELEGRAM_SESSION:');
+    const contentLooksTelegram = !!(fromMatch || fromIdMatch || dateMatch || telegramSessionMarker);
 
     // Determine source type
     if (metadata?.blockType && metadata?.asset) {
@@ -368,6 +408,14 @@ export async function searchKnowledgeWithExpansion(
     } else if (metadataSource === 'telegram' || hasTelegramMarkers || contentLooksTelegram) {
       sourceType = 'telegram';
       sourceRef = metadata?.messageId || id;
+      
+      // Extract clean message text from JSON structure if present
+      if (contentLooksTelegram && (fromMatch || fromIdMatch || dateMatch)) {
+        const extractedText = extractTelegramText(text);
+        if (extractedText && extractedText !== text) {
+          text = extractedText;
+        }
+      }
       
       // Populate author/timestamp from content if missing or if timestamp is in the future (sync timestamp)
       const timestampIsInFuture = timestamp && timestamp > Date.now();
@@ -530,12 +578,33 @@ export async function searchKnowledgeWithExpansion(
 }
 
 /**
- * Expand query with synonyms/aliases for better recall
+ * Expand query with synonyms/aliases for better recall.
+ *
+ * Goals:
+ * - Keep card-oriented asks strongly tied to Fake Rares / Rare Pepes cards.
+ * - For explicitly chat-focused asks ("in chat", "in tg", "telegram chat"),
+ *   bias the embedding toward Telegram conversation history instead of cards.
  */
 export function expandQuery(query: string): string {
-  const normalized = query.replace(/\b(fake\s*rares?|rare\s*pepes?|pepes?)\b/gi, '').trim();
-  const base = normalized.length > 0 ? normalized : query;
-  return `${base} card`;
+  const raw = (query || '').trim();
+  if (!raw) return query;
+
+  // Strip very generic collection terms so the core intent stands out.
+  const stripped = raw.replace(/\b(fake\s*rares?|rare\s*pepes?|pepes?)\b/gi, '').trim();
+  const base = stripped.length > 0 ? stripped : raw;
+
+  // Heuristic: user is explicitly asking about what happened "in chat" / "in tg".
+  // These should lean heavily on telegram session lore, not generic card facts.
+  const chatFocusPattern =
+    /\b(in\s+chat|chat\s+logs?|telegram\s+chat|in\s+tg|tg\s+chat|in\s+the\s+chat)\b/i;
+  const hasChatFocus = chatFocusPattern.test(base);
+
+  if (hasChatFocus) {
+    return `${base} telegram chat logs conversation history Fake Rares community`;
+  }
+
+  // Default: emphasise card context without overwhelming the original phrasing.
+  return `${base} Fake Rares Rare Pepes trading card`;
 }
 
 /**
