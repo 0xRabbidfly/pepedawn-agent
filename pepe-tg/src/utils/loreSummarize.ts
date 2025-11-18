@@ -85,11 +85,20 @@ async function summarizeCluster(
   clusterId: string,
   queryType: QueryType = 'LORE'
 ): Promise<ClusterSummary> {
-  // For FACTS queries: use MUCH more text to preserve detailed specs
-  // For LORE queries: use 150 chars (current behavior)
-  const charLimit = queryType === 'FACTS' ? 1500 : 150;
-  
-  const combined = cluster.map((p, i) => `[${i}] ${p.text.slice(0, charLimit)}`).join('\n\n');
+  // For FACTS queries: cap per‑passage text to keep prompts bounded while preserving detailed specs.
+  // For LORE queries: pass full passage text so intermediate LLM calls see the richest possible context.
+  const charLimitFacts = 1500;
+
+  const combined = cluster
+    .map((p, i) => {
+      const fullText = p.text || '';
+      const snippet =
+        queryType === 'FACTS'
+          ? fullText.slice(0, charLimitFacts)
+          : fullText; // no truncation in LORE mode
+      return `[${i}] ${snippet}`;
+    })
+    .join('\n\n');
   
   // Different summarization instructions based on query type
   const summaryPrompt = queryType === 'FACTS'
