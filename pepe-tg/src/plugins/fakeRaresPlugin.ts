@@ -17,9 +17,12 @@ import { calculateEngagementScore, shouldRespond } from '../utils/engagementScor
 import { executeCommand, executeCommandAlways, type CommandHandlerParams } from '../utils/commandHandler';
 import { stripCardNamePrefix } from '../utils/cardNamePrefixSanitizer';
 import type { IAgentRuntime } from '@elizaos/core';
+import { isBareBitcoinAddress, looksLikeAddressCallout } from '../utils/bitcoinAddress';
 
 // Track patched runtimes to avoid double-patching
 const patchedRuntimes = new WeakSet<any>();
+
+const OWNER_BITCOIN_ADDRESS = '1L17y13ty6pvZjX8PhWiF89wf5AW7AfFZN';
 
 function sanitizeOutgoingPayload(payload: any): void {
   if (payload && typeof payload.text === 'string') {
@@ -705,6 +708,35 @@ export const fakeRaresPlugin: Plugin = {
           }
           const isSubmissionRulesQuery =
             /\bsubmission\b/i.test(textLower) && /\brules?\b/i.test(textLower);
+
+          const hasReplyContext = isReply || !!params.ctx?.message?.reply_to_message;
+          const isAddressCallout = looksLikeAddressCallout(text);
+          const isBareBitcoinDrop = isBareBitcoinAddress(text);
+
+          if (isAddressCallout && !hasReplyContext) {
+            logger.info('[FakeRaresPlugin] Address call detected → replying with collector address');
+            if (baseCallback) {
+              await baseCallback({
+                text: OWNER_BITCOIN_ADDRESS,
+                __fromAction: 'artist_address_drop',
+              });
+            } else {
+              logger.warn('[FakeRaresPlugin] Address call detected but no callback available to respond.');
+            }
+            if (smartRouter) {
+              smartRouter.recordBotTurn(message.roomId, OWNER_BITCOIN_ADDRESS);
+            }
+            message.metadata = message.metadata || {};
+            (message.metadata as any).__handledByCustom = true;
+            return;
+          }
+
+          if (isBareBitcoinDrop) {
+            logger.info('[FakeRaresPlugin] Suppressing bare bitcoin address drop');
+            message.metadata = message.metadata || {};
+            (message.metadata as any).__handledByCustom = true;
+            return;
+          }
 
           logger.debug(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${isF} isC=${isC} isP=${isP} isFv=${isFv} isFt=${isFt} isLore=${isFl} isFr=${isFr} isFm=${isFm} isDawn=${isDawn} isHelp=${isHelp} isStart=${isStart} isCost=${isFc} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
           
