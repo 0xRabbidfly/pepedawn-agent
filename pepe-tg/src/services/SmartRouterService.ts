@@ -13,6 +13,7 @@ import { detectCardFastPath } from '../router/cardFastPath';
 import { KnowledgeOrchestratorService } from './KnowledgeOrchestratorService';
 import { callTextModel } from '../utils/modelGateway';
 import { describeCard, randomCard } from '../utils/cardFacts';
+import { describeTraitMatch } from '../utils/cardTraits';
 import { answerCardQuery } from '../utils/cardQueries';
 import { recallForPrompt } from '../conversation/shadow';
 import { isInFullIndex } from '../data/fullCardIndex';
@@ -505,11 +506,26 @@ export class SmartRouterService extends Service {
    * only number in front of it and called a 299-supply card limited. An opinion
    * asked for is an opinion owned.
    */
-  private isTasteQuestion(text: string): boolean {
-    return /\b(best|favou?rite|coolest|greatest|nicest|prettiest|ugliest|worst|top|sexiest|hottest|dopest|weirdest|funniest|wildest|most\s+\w+)\b/i.test(
+  /**
+   * A question about how a card LOOKS - colour, mood, style - as opposed to how
+   * PEPEDAWN feels about it. These have answers in the vision data.
+   */
+  private looksDescriptive(text: string): boolean {
+    return /\b(most|more|very|really|sexiest|ugliest|weirdest|scariest|darkest|brightest|prettiest|funniest|wildest|colou?rful|psychedelic|trippy|retro|vintage|creepy|red|blue|green|purple|orange|yellow|pink|black|white|gold)\b/i.test(
       text
     );
   }
+
+  private isTasteQuestion(text: string): boolean {
+    // Only genuine personal preference. "Sexiest" and "most red" are
+    // descriptive - the vision pass recorded those traits and they have real
+    // answers. Asking PEPEDAWN what IT likes has no data behind it, and ranking
+    // cards is against this community's etiquette, so that one is randomised.
+    return /\b(your\s+(favou?rite|pick|choice)|favou?rite\s+(card|fake|pepe)|do\s+you\s+(like|prefer)|which\s+do\s+you|what.s\s+your\s+\w+|best\s+fake\s+rare|the\s+best)\b/i.test(
+      text
+    );
+  }
+
 
 
 
@@ -760,8 +776,22 @@ Say briefly why it is worth a look — something true about the art, the artist 
     // classifier decides. Ranking cards is against this community's etiquette,
     // so the answer is a card drawn at random with something true said about it.
     if (this.isTasteQuestion(trimmed)) {
-      logger.debug({ query: trimmed }, '[SmartRouter] Taste question -> opinion, not lookup');
+      logger.debug({ query: trimmed }, '[SmartRouter] Personal preference -> random card');
       return this.buildChatPlan(trimmed, roomId, null, undefined, { tasteQuestion: true });
+    }
+
+    // Descriptive questions - "most red", "sexiest", "most psychedelic" - are
+    // answered from what the /fv vision pass actually recorded, not by semantic
+    // similarity over prose. That is how "grantfly" came back for a red query.
+    if (this.looksDescriptive(trimmed)) {
+      const trait = describeTraitMatch(trimmed);
+      if (trait) {
+        logger.debug({ query: trimmed, asset: trait.asset }, '[SmartRouter] Visual trait match');
+        return this.buildChatPlan(trimmed, roomId, null, undefined, {
+          knownFact: trait.fact,
+          card: trait.asset,
+        });
+      }
     }
 
     const structured = answerCardQuery(trimmed);

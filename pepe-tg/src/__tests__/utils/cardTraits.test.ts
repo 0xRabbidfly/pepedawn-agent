@@ -1,0 +1,72 @@
+import { describe, expect, it } from 'bun:test';
+import { findCardsByTrait, describeTraitMatch, traitTerms, traitCoverage } from '../../utils/cardTraits';
+
+describe('visual trait search', () => {
+  it('covers most of the collection', () => {
+    expect(traitCoverage()).toBeGreaterThan(800);
+  });
+
+  it('finds genuinely red cards, ranked by how red they are', () => {
+    const hits = findCardsByTrait('which fake rare has the most red?', 3);
+    expect(hits.length).toBeGreaterThan(0);
+    // Every hit must have matched on an actual red trait, not a coincidence.
+    for (const h of hits) {
+      expect(h.matched.some((m) => /\b(red|crimson|scarlet|blood)\b/.test(m))).toBe(true);
+    }
+    // More red traits should outrank fewer.
+    expect(hits[0].score).toBeGreaterThanOrEqual(hits[hits.length - 1].score);
+  });
+
+  it('never matches a term hiding inside another word', () => {
+    // "incredible" contains "red" and previously scored cards with nothing red.
+    for (const h of findCardsByTrait('most red', 10)) {
+      expect(h.matched.every((m) => !/incredible/.test(m) || /\bred\b/.test(m))).toBe(true);
+    }
+  });
+
+  it('resolves subjective-sounding but descriptive terms', () => {
+    expect(findCardsByTrait('sexiest pepe', 1).length).toBeGreaterThan(0);
+    expect(findCardsByTrait('most psychedelic', 1).length).toBeGreaterThan(0);
+  });
+
+  it('expands ordinary phrasing into the vision vocabulary', () => {
+    expect(traitTerms('most colourful card')).toContain('vibrant');
+    expect(traitTerms('a red one')).toContain('crimson');
+  });
+
+  it('drops filler words so they cannot match', () => {
+    const terms = traitTerms('what is the card that looks most like a pepe');
+    expect(terms).not.toContain('card');
+    expect(terms).not.toContain('pepe');
+    expect(terms).not.toContain('looks');
+  });
+
+  it('returns nothing when the query holds no descriptive terms', () => {
+    // Every word is filler, so there is nothing to match on.
+    expect(traitTerms('what is the best card for me')).toHaveLength(0);
+    expect(findCardsByTrait('what is the best card for me')).toHaveLength(0);
+    expect(describeTraitMatch('the one that you like')).toBeNull();
+  });
+
+  it('is gated by intent, not by the search itself', async () => {
+    // findCardsByTrait is a raw search: "rules" is a real recorded trait, so
+    // "submission rules and fees" does match cards. The guard is upstream -
+    // looksDescriptive() requires a colour or mood word before trait search is
+    // consulted at all.
+    const { SmartRouterService } = await import('../../services/SmartRouterService');
+    const router: any = new (SmartRouterService as any)({
+      agentId: 'test',
+      getService: () => null,
+    } as any);
+    expect(router.looksDescriptive('what are the submission rules and fees?')).toBe(false);
+    expect(router.looksDescriptive('which fake rare has the most red?')).toBe(true);
+    expect(router.looksDescriptive('what is the sexiest pepe')).toBe(true);
+  });
+
+  it('names the card and the traits behind the pick', () => {
+    const m = describeTraitMatch('most green card');
+    expect(m).not.toBeNull();
+    expect(m!.fact).toContain(m!.asset);
+    expect(m!.fact).toContain('vision pass recorded');
+  });
+});
