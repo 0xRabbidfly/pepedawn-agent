@@ -74,6 +74,10 @@
 
 ### 🔍 Visual Analysis & Memetic Commentary
 
+> ⚠️ **DEPRECATED (2026-08-18)** — scheduled for removal after **2026-11-18**.
+> `/fv` and `/ft` are deprecated. Just ask PEPEDAWN what a card looks like or says — visual analysis runs automatically.
+> See `pepe-tg/src/config/deprecatedCommands.ts` for the usage data behind this decision.
+
 #### Card Analysis: `/fv CARDNAME`
 
 **Command:**
@@ -159,6 +163,10 @@ When you upload an image with `/ft`, the bot automatically checks if it matches 
 ---
 
 ### 📚 LLM-LORE: AI-Powered Lore Recounting + Community Memory
+
+> ⚠️ **DEPRECATED (2026-08-18)** — scheduled for removal after **2026-11-18**.
+> The `/fl` and `/fr` **commands** are deprecated — the lore feature itself is not. Ask about any card in plain language and lore is retrieved automatically; reply with `remember this: ...` to store it.
+> See `pepe-tg/src/config/deprecatedCommands.ts` for the usage data behind this decision.
 
 **Commands:**
 - **`/fl TOPIC`** - PEPEDAWN recounts history from Telegram archives + pepe.wtf wiki + community memories
@@ -301,6 +309,10 @@ All transactions are stored in PGlite database (`.eliza/.elizadb/`) alongside co
 ---
 
 ### 🎰 Lottery Stats (If Deployed)
+
+> ⚠️ **DEPRECATED (2026-08-18)** — scheduled for removal after **2026-11-18**.
+> `/dawn` is deprecated with no replacement — it had zero recorded uses across the full telemetry window.
+> See `pepe-tg/src/config/deprecatedCommands.ts` for the usage data behind this decision.
 
 **Commands:**
 - **`/dawn`** - Check PEPEDAWN lottery stats and leaderboard

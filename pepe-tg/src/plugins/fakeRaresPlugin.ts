@@ -1,5 +1,5 @@
 import { type Plugin, logger, ModelType, type HandlerCallback } from '@elizaos/core';
-import { fakeRaresCardAction, fakeCommonsCardAction, rarePepesCardAction, educateNewcomerAction, startCommand, helpCommand, loreCommand, fakeRememberCommand, oddsCommand, costCommand, fakeVisualCommand, fakeTestCommand, xcpCommand } from '../actions';
+import { fakeRaresCardAction, fakeCommonsCardAction, rarePepesCardAction, startCommand, helpCommand, loreCommand, fakeRememberCommand, oddsCommand, costCommand, fakeVisualCommand, fakeTestCommand, xcpCommand } from '../actions';
 import { fakeMarketAction } from '../actions/fakeMarketAction';
 import { fakeRaresCarouselAction } from '../actions/fakeRaresCarousel';
 import { fakeRaresContextProvider, userHistoryProvider } from '../providers';

@@ -6,6 +6,7 @@
  */
 
 import { logger, type IAgentRuntime, type Memory } from '@elizaos/core';
+import { getDeprecation, formatDeprecationNotice } from '../config/deprecatedCommands';
 
 export interface Action {
   validate?: (runtime: IAgentRuntime, message: Memory) => Promise<boolean>;
@@ -39,9 +40,10 @@ export async function executeCommand(
   commandName: string
 ): Promise<boolean> {
   logger.debug(`[CommandHandler] Executing ${commandName}`);
-  
+
   // Prepare callback
   const actionCallback = typeof params.callback === 'function' ? params.callback : null;
+  const deprecation = getDeprecation(commandName);
   
   // Suppress Bootstrap by replacing callback with no-op
   // Keep reference to original for action's use
@@ -54,10 +56,10 @@ export async function executeCommand(
     logger.warn(`[CommandHandler] ${commandName} missing validate or handler`);
     return false;
   }
-  
+
   try {
     const isValid = await action.validate(params.runtime, params.message);
-    
+
     if (isValid) {
       await action.handler(
         params.runtime,
@@ -66,7 +68,19 @@ export async function executeCommand(
         {},
         actionCallback ?? undefined
       );
-      
+
+      // Deprecated commands still run, but tell the user where to go next.
+      if (deprecation && actionCallback) {
+        try {
+          await actionCallback({
+            text: formatDeprecationNotice(deprecation),
+            __fromAction: 'deprecation_notice',
+          });
+        } catch (err) {
+          logger.debug(`[CommandHandler] Failed to send deprecation notice: ${err}`);
+        }
+      }
+
       // Mark as handled to prevent Bootstrap processing
       try {
         params.message.metadata = params.message.metadata || {};
@@ -74,16 +88,50 @@ export async function executeCommand(
       } catch (err) {
         logger.debug(`[CommandHandler] Failed to mark as handled: ${err}`);
       }
-      
+
       logger.debug(`[CommandHandler] ${commandName} completed successfully`);
+      recordCommandUsage(params, commandName, true, !!deprecation);
       return true;
     } else {
       logger.debug(`[CommandHandler] ${commandName} validation failed`);
+      recordCommandUsage(params, commandName, false, !!deprecation);
       return false;
     }
   } catch (err) {
     logger.error(`[CommandHandler] ${commandName} execution error:`, err);
+    recordCommandUsage(params, commandName, false, !!deprecation);
     return false;
+  }
+}
+
+/**
+ * Record a command invocation to telemetry.
+ *
+ * Fire-and-forget: telemetry must never break or delay a command response.
+ */
+function recordCommandUsage(
+  params: CommandHandlerParams,
+  commandName: string,
+  success: boolean,
+  deprecated: boolean
+): void {
+  try {
+    const telemetry = (params.runtime as any)?.getService?.('telemetry');
+    if (!telemetry?.logCommandUsage) return;
+
+    void telemetry
+      .logCommandUsage({
+        timestamp: new Date().toISOString(),
+        command: commandName,
+        success,
+        deprecated,
+        roomId: params.message?.roomId,
+        entityId: params.message?.entityId,
+        messageId: params.message?.id,
+      })
+      .catch(() => {});
+  } catch {
+    // Telemetry is best-effort only.
   }
 }
 

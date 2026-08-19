@@ -86,23 +86,16 @@ export const helpCommand: Action = {
 \`/f c SERIES\` - Browse series cards (e.g. \`/f c 5\`) 📚
 \`/f\` - Random Fake Rares card
 
-**Fake Vision:**
-\`/fv CARDNAME\` - AI visual analysis & meme breakdown
-\`/ft <img>\` - Attach and img and get a fake appeal score!
-
 **Fake Market:** 📊
 \`/fm\` - Recent sales + listings (default 10)
 \`/fm CARDNAME\` - Live dispensers for any card (e.g. \`/fm FAKEASF\`)
 
-**Fake Lore:**
-\`/fl CARDNAME\` - Get card lore & community stories
-
-**Fake Remember:** 💾
-\`/fr CARDNAME <lore>\` - Store card-specific memory
-\`@pepedawn_bot Remember this:\` <enter any lore/facts>
-
 **XCP Dispensers:** 💰
-\`/xcp\` - View verified XCP dispenser list`;
+\`/xcp\` - View verified XCP dispenser list
+
+**Just talk to me:** 💬
+Ask about any card, its lore, what it looks like, or who made it —
+no command needed. Reply with \`remember this: ...\` to store lore.`;
 
     if (callback) {
       await callback({ text: helpMessage });

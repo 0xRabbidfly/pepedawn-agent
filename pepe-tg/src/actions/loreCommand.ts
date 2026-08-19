@@ -1,3 +1,8 @@
+/**
+ * @deprecated Since 2026-08-18. Scheduled for removal after 2026-11-18.
+ * See src/config/deprecatedCommands.ts for the usage data behind this decision.
+ * `/fl` still works and emits a deprecation notice; do not build on it.
+ */
 import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, type State } from '@elizaos/core';
 import { KnowledgeOrchestratorService, type KnowledgeRetrievalOptions } from '../services/KnowledgeOrchestratorService';
 import { LORE_CONFIG } from '../utils/loreConfig';

@@ -1,4 +1,9 @@
 /**
+ * @deprecated Since 2026-08-18. Scheduled for removal after 2026-11-18.
+ * See src/config/deprecatedCommands.ts for the usage data behind this decision.
+ * `/ft` still works and emits a deprecation notice; do not build on it.
+ */
+/**
  * Fake Test Command - Image Appeal Scoring
  *
  * /ft [attach image] - Analyzes uploaded image for Fake Rares appeal

@@ -12,7 +12,7 @@
  * - Queryable reports for /fc command
  */
 
-import { Service, type IAgentRuntime } from '@elizaos/core';
+import { Service, logger, type IAgentRuntime } from '@elizaos/core';
 import { writeFileSync, appendFileSync, existsSync, readFileSync, mkdirSync } from 'fs';
 import { join } from 'path';
 
@@ -20,6 +20,7 @@ const LOG_FILE = join(process.cwd(), 'src', 'data', 'token-logs.jsonl');
 const CONVERSATION_LOG_FILE = join(process.cwd(), 'src', 'data', 'conversation-logs.jsonl');
 const LORE_QUERY_LOG_FILE = join(process.cwd(), 'src', 'data', 'lore-query-logs.jsonl');
 const SMART_ROUTER_LOG_FILE = join(process.cwd(), 'src', 'data', 'smart-router-logs.jsonl');
+const COMMAND_LOG_FILE = join(process.cwd(), 'src', 'data', 'command-logs.jsonl');
 
 // Pricing per 1M tokens (USD)
 const MODEL_PRICING: Record<string, { input: number; output: number }> = {
@@ -81,6 +82,16 @@ export interface ActionLog {
   success: boolean;
   duration: number;
   error?: string;
+}
+
+export interface CommandLog {
+  timestamp: string;
+  command: string;
+  success: boolean;
+  deprecated: boolean;
+  roomId?: string;
+  entityId?: string;
+  messageId?: string;
 }
 
 export interface SmartRouterDecisionLog {
@@ -197,6 +208,29 @@ export class TelemetryService extends Service {
       logger.debug(`[Telemetry] Lore query logged: ${log.source} "${log.query.substring(0, 50)}..."`);
     } catch (err) {
       logger.error('[Telemetry] Failed to log lore query:', err);
+    }
+  }
+
+  /**
+   * Log a slash command invocation.
+   *
+   * Until now command usage could only be reconstructed by grepping PM2 logs,
+   * which rotate — leaving multi-month gaps. This gives deprecation decisions
+   * an exact, durable baseline.
+   */
+  async logCommandUsage(log: CommandLog): Promise<void> {
+    try {
+      if (!existsSync(COMMAND_LOG_FILE)) {
+        writeFileSync(COMMAND_LOG_FILE, '', 'utf8');
+      }
+
+      appendFileSync(COMMAND_LOG_FILE, JSON.stringify(log) + '\n', 'utf8');
+      logger.debug(
+        `[Telemetry] Command logged: ${log.command} success=${log.success}` +
+          (log.deprecated ? ' (deprecated)' : '')
+      );
+    } catch (err) {
+      logger.error('[Telemetry] Failed to log command usage:', err);
     }
   }
 
