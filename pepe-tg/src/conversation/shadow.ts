@@ -21,7 +21,17 @@ import { FileRoomHistoryStore } from './fileRoomHistoryStore';
 import { RoomHistory } from './roomHistory';
 import type { ConversationTurn } from './types';
 
-const SHADOW_LOG_FILE = join(process.cwd(), 'src', 'data', 'shadow-logs.jsonl');
+/**
+ * Output directory. Overridable so tests (and a future separate volume) do not
+ * write into the live src/data/ alongside production telemetry.
+ */
+function shadowDir(): string {
+  return process.env.V5_SHADOW_DIR || join(process.cwd(), 'src', 'data');
+}
+
+function shadowLogFile(): string {
+  return join(shadowDir(), 'shadow-logs.jsonl');
+}
 
 export function shadowEnabled(): boolean {
   return process.env.V5_SHADOW === 'true';
@@ -30,18 +40,26 @@ export function shadowEnabled(): boolean {
 let history: RoomHistory | null = null;
 
 function getHistory(): RoomHistory {
-  if (!history) history = new RoomHistory(new FileRoomHistoryStore());
+  if (!history) {
+    history = new RoomHistory(new FileRoomHistoryStore(join(shadowDir(), 'room-history.json')));
+  }
   return history;
+}
+
+/** Test hook: drop cached state so a fresh directory is picked up. */
+export function resetShadowState(): void {
+  history = null;
 }
 
 function write(record: Record<string, unknown>): void {
   try {
     // Create the directory first. Without this every write throws ENOENT into
     // the catch below and shadow mode silently produces no data at all.
-    const dir = dirname(SHADOW_LOG_FILE);
+    const file = shadowLogFile();
+    const dir = dirname(file);
     if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
-    if (!existsSync(SHADOW_LOG_FILE)) writeFileSync(SHADOW_LOG_FILE, '', 'utf8');
-    appendFileSync(SHADOW_LOG_FILE, JSON.stringify(record) + '\n', 'utf8');
+    if (!existsSync(file)) writeFileSync(file, '', 'utf8');
+    appendFileSync(file, JSON.stringify(record) + '\n', 'utf8');
   } catch {
     // Shadow logging is best effort by definition.
   }
@@ -66,8 +84,27 @@ export async function observeUserMessage(input: {
   try {
     const now = input.now ?? Date.now();
     const h = getHistory();
-    const turns = await h.get(input.roomId);
+    // Read and append atomically, or a fast room observes a stale history.
+    await h.withRoom(input.roomId, (turns) => {
+      observeWithTurns(h, input, turns, now);
+    });
+  } catch {
+    // Never let shadow mode interfere with a real response.
+  }
+}
 
+function observeWithTurns(
+  h: RoomHistory,
+  input: {
+    roomId: string;
+    text: string;
+    author?: string;
+    addressedBot: boolean;
+    actualHandled?: boolean;
+  },
+  turns: ConversationTurn[],
+  now: number
+): void {
     const temperature = readRoomTemperature(
       turns,
       now,
@@ -91,17 +128,13 @@ export async function observeUserMessage(input: {
       metrics: cadence.metrics,
     });
 
-    const turn: ConversationTurn = {
+    h.commit(input.roomId, turns, {
       role: 'user',
       text: input.text,
       author: input.author,
       at: now,
       addressedBot: input.addressedBot,
-    };
-    await h.append(input.roomId, turn);
-  } catch {
-    // Never let shadow mode interfere with a real response.
-  }
+    });
 }
 
 /** Record that the live bot actually replied, so history stays truthful. */

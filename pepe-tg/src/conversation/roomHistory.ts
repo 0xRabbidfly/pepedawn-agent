@@ -66,6 +66,13 @@ export class RoomHistory {
   private cache = new Map<string, ConversationTurn[]>();
   private dirty = new Set<string>();
   private timers = new Map<string, ReturnType<typeof setTimeout>>();
+  /**
+   * Per-room serialization. Appends are fire-and-forget at the call site, so
+   * without this two messages arriving together both read the same base array
+   * and the second overwrites the first — losing turns precisely in the busy
+   * rooms where the cadence governor matters most.
+   */
+  private chains = new Map<string, Promise<unknown>>();
 
   constructor(
     private store: RoomHistoryStore,
@@ -81,9 +88,35 @@ export class RoomHistory {
     return loaded;
   }
 
-  /** Append a turn and schedule a flush. */
+  /**
+   * Run `fn` with exclusive access to a room's history, passing the current
+   * turns. Readers that then append must use this, otherwise the read races
+   * with queued appends and observes a stale (often empty) room.
+   */
+  async withRoom<T>(
+    roomId: string,
+    fn: (turns: ConversationTurn[]) => Promise<T> | T
+  ): Promise<T> {
+    const previous = this.chains.get(roomId) ?? Promise.resolve();
+    const next = previous.then(async () => fn(await this.get(roomId)));
+    this.chains.set(
+      roomId,
+      next.catch(() => undefined)
+    );
+    return next;
+  }
+
+  /** Append a turn and schedule a flush. Serialized per room. */
   async append(roomId: string, turn: ConversationTurn): Promise<ConversationTurn[]> {
-    const turns = await this.get(roomId);
+    return this.withRoom(roomId, (turns) => this.commit(roomId, turns, turn));
+  }
+
+  /** Apply a turn to the cached array. Must be called under withRoom(). */
+  commit(
+    roomId: string,
+    turns: ConversationTurn[],
+    turn: ConversationTurn
+  ): ConversationTurn[] {
     const next = this.prune([...turns, turn], turn.at);
     this.cache.set(roomId, next);
     this.dirty.add(roomId);
@@ -123,6 +156,8 @@ export class RoomHistory {
 
   /** Force a write for every dirty room. Call on shutdown. */
   async flushAll(): Promise<void> {
+    // Let queued appends land before flushing, otherwise a pending turn is lost.
+    await Promise.all([...this.chains.values()].map((c) => c.catch(() => undefined)));
     for (const timer of this.timers.values()) clearTimeout(timer);
     this.timers.clear();
     await Promise.all([...this.dirty].map((roomId) => this.flush(roomId)));
