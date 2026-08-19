@@ -582,6 +582,27 @@ export class SmartRouterService extends Service {
    * A question about how a card LOOKS - colour, mood, style - as opposed to how
    * PEPEDAWN feels about it. These have answers in the vision data.
    */
+  /**
+   * Whether a message plausibly concerns a card at all.
+   *
+   * Retrieval runs for every CHAT turn and the preset weights card_data at 2.4,
+   * so anything semantically near a card name pulls cards in. "If you had
+   * feelings, which would you have right now?" retrieved six card fragments and
+   * the reply became "...the feeling behind FEELSMAGICAL". Card grounding is
+   * only offered when the message is actually about cards.
+   */
+  private concernsCards(text: string): boolean {
+    const named = this.detectMentionedCard(text);
+    // PEPEDAWN alone is not a card signal - it is how people address the bot.
+    // "do you have feelings pepedawn?" is a question for the bot, not about the
+    // card of the same name.
+    if (named && named.toUpperCase() !== 'PEPEDAWN') return true;
+    if (named && this.pepedawnMeansTheCard({ role: 'user', text })) return true;
+    return /\b(card|cards|fake|fakes|rare|rares|pepe|pepes|series|artist|supply|issued|issuance|drop|drops|collection|dispenser|mint|burn|submission)\b/i.test(
+      text
+    );
+  }
+
   private looksDescriptive(text: string): boolean {
     return /\b(most|more|very|really|sexiest|ugliest|weirdest|scariest|darkest|brightest|prettiest|funniest|wildest|colou?rful|psychedelic|trippy|retro|vintage|creepy|red|blue|green|purple|orange|yellow|pink|black|white|gold)\b/i.test(
       text
@@ -690,7 +711,10 @@ export class SmartRouterService extends Service {
   ): Promise<SmartRoutingPlan> {
     const history = this.getTurnsForPrompt(roomId, 12);
     const recentTranscript = this.formatRecentChat(history, 12);
-    const throwbackNotes = this.buildChatNotes(retrieval);
+    // Only ground on card facts when the message is about cards. Otherwise a
+    // personal or introspective question gets answered through whatever card
+    // happened to embed nearby.
+    const throwbackNotes = this.concernsCards(userText) ? this.buildChatNotes(retrieval) : '';
 
     // What PEPEDAWN remembers about the people in this room. Rate-limited
     // upstream, so this is usually empty - a bot that constantly references

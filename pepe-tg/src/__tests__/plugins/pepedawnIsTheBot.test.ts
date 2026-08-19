@@ -72,3 +72,35 @@ describe('PEPEDAWN the bot is not PEPEDAWN the card', () => {
     expect(plan.knownFact).toContain('PEPEDAWN');
   });
 });
+
+describe('card grounding only when the message concerns cards', () => {
+  /**
+   * Retrieval runs for every CHAT turn and card_data is weighted 2.4, so
+   * anything semantically near a card name pulls cards in. In production, "if
+   * you had feelings, which would you have right now?" retrieved six card
+   * fragments and the reply became "...the feeling behind FEELSMAGICAL".
+   */
+  const concerns = async (text: string) => {
+    const router: any = await makeRouter();
+    return router.concernsCards(text);
+  };
+
+  it('does not ground a personal question on card facts', async () => {
+    expect(await concerns('if you had feelings in a human sense, which feeling would you have right now?')).toBe(false);
+    expect(await concerns('how are you today?')).toBe(false);
+    expect(await concerns('what do you think about life')).toBe(false);
+    expect(await concerns('gm')).toBe(false);
+  });
+
+  it('treats addressing the bot by name as no card signal', async () => {
+    expect(await concerns('do you have feelings pepedawn?')).toBe(false);
+    expect(await concerns('hey pepedawn how are you')).toBe(false);
+  });
+
+  it('grounds when a card is genuinely the subject', async () => {
+    expect(await concerns("what's the supply of PEPEDAWN?")).toBe(true);
+    expect(await concerns('who made PEPEDAWN?')).toBe(true);
+    expect(await concerns('FREEDOMKEK is underrated')).toBe(true);
+    expect(await concerns('anyone selling a rare?')).toBe(true);
+  });
+});

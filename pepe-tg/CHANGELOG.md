@@ -85,6 +85,18 @@ Together ~2,355 of 11,483 LLM calls no longer happen.
 - `RoomHistory` lost turns when appends overlapped.
 - Cadence could silence safety replies; it now sits below the content filters.
 
+## [5.0.2] - 2026-08-19
+
+### Fixed
+
+- Personal questions were answered through whatever card happened to embed
+  nearby. Retrieval runs for every CHAT turn and the preset weights card_data at
+  2.4, so "if you had feelings, which would you have right now?" pulled six card
+  fragments and the reply became "...the feeling behind FEELSMAGICAL". Card
+  facts are now only offered as grounding when the message actually concerns
+  cards. Addressing the bot by name is not a card signal, since PEPEDAWN is also
+  a card.
+
 ## [5.0.1] - 2026-08-19
 
 ### Fixed
