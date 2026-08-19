@@ -19,3 +19,7 @@
 {"timestamp":"2026-08-19T14:12:53.024Z","command":"/f","success":true,"roomId":"e36d8988-f603-0aae-a116-b3ad966ec484","entityId":"e36d8988-f603-0aae-a116-b3ad966ec484","messageId":"78868a39-ad1a-097c-9c7b-326d88fa14c1"}
 {"timestamp":"2026-08-19T14:13:11.395Z","command":"/f","success":true,"roomId":"e36d8988-f603-0aae-a116-b3ad966ec484","entityId":"e36d8988-f603-0aae-a116-b3ad966ec484","messageId":"5d256686-4cf5-0c1e-ad20-c7d24bc8a397"}
 {"timestamp":"2026-08-19T14:25:42.619Z","command":"/fc","success":true,"roomId":"e36d8988-f603-0aae-a116-b3ad966ec484","entityId":"e36d8988-f603-0aae-a116-b3ad966ec484","messageId":"99913bf6-bfb6-0335-b447-1e5697700e24"}
+{"timestamp":"2026-08-19T14:38:19.769Z","command":"/f c","success":true,"roomId":"e36d8988-f603-0aae-a116-b3ad966ec484","entityId":"e36d8988-f603-0aae-a116-b3ad966ec484","messageId":"1dca30f8-e782-0541-95c5-2ff7100c0f5c"}
+{"timestamp":"2026-08-19T14:38:25.014Z","command":"/c","success":true,"roomId":"e36d8988-f603-0aae-a116-b3ad966ec484","entityId":"e36d8988-f603-0aae-a116-b3ad966ec484","messageId":"ca28055c-9700-0860-886d-c25d3af5f021"}
+{"timestamp":"2026-08-19T14:38:58.848Z","command":"/c","success":true,"roomId":"e36d8988-f603-0aae-a116-b3ad966ec484","entityId":"e36d8988-f603-0aae-a116-b3ad966ec484","messageId":"f490f3fa-f3f8-09e2-ac8d-73676b26d205"}
+{"timestamp":"2026-08-19T14:39:06.572Z","command":"/f","success":true,"roomId":"e36d8988-f603-0aae-a116-b3ad966ec484","entityId":"e36d8988-f603-0aae-a116-b3ad966ec484","messageId":"7c973e16-fc6d-0b10-9ac4-5fad4ea88dc5"}

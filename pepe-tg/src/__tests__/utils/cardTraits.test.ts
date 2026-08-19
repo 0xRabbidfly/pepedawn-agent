@@ -70,3 +70,42 @@ describe('visual trait search', () => {
     expect(m!.fact).toContain('vision pass recorded');
   });
 });
+
+describe('collections are kept apart', () => {
+  const assets = async (file: string) => {
+    const { readFileSync } = await import('fs');
+    const raw = JSON.parse(readFileSync(`${import.meta.dir}/../../data/${file}`, 'utf8'));
+    return new Set((raw as any[]).map((c) => String(c.asset).toUpperCase()));
+  };
+
+  it('reads which collection a question is about', async () => {
+    const { detectCollection } = await import('../../utils/cardFacts');
+    expect(detectCollection('what is your favourite fake commons card?')).toBe('fake-commons');
+    expect(detectCollection('favourite rare pepe?')).toBe('rare-pepes');
+    expect(detectCollection('your favourite fake rare?')).toBe('fake-rares');
+    expect(detectCollection('which do you like most?')).toBe('fake-rares');
+  });
+
+  it('draws from the collection that was asked about', async () => {
+    // "Your favourite fake commons card?" answered with a Fake Rare, because
+    // every pool was the Fake Rares index.
+    const { randomCard } = await import('../../utils/cardFacts');
+    const commons = await assets('fake-commons-data.json');
+    const rares = await assets('fake-rares-data.json');
+
+    for (let i = 0; i < 15; i++) {
+      expect(commons.has(randomCard('fake-commons')!.asset.toUpperCase())).toBe(true);
+      expect(rares.has(randomCard('fake-rares')!.asset.toUpperCase())).toBe(true);
+    }
+  });
+
+  it('has visual traits for Fake Rares only', async () => {
+    // The /fv pass never ran over Commons or Rare Pepes, so a descriptive
+    // question about them has no data and must not borrow from Fake Rares.
+    const { findCardsByTrait } = await import('../../utils/cardTraits');
+    const rares = await assets('fake-rares-data.json');
+    for (const hit of findCardsByTrait('most red', 10)) {
+      expect(rares.has(hit.asset.toUpperCase())).toBe(true);
+    }
+  });
+});

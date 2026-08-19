@@ -12,7 +12,7 @@ import {
 import { detectCardFastPath } from '../router/cardFastPath';
 import { KnowledgeOrchestratorService } from './KnowledgeOrchestratorService';
 import { callTextModel } from '../utils/modelGateway';
-import { describeCard, randomCard } from '../utils/cardFacts';
+import { describeCard, detectCollection, randomCard } from '../utils/cardFacts';
 import { getCardInfo } from '../data/fullCardIndex';
 import { describeTraitMatch } from '../utils/cardTraits';
 import { answerCardQuery } from '../utils/cardQueries';
@@ -687,7 +687,10 @@ export class SmartRouterService extends Service {
     let offeredCard = '';
     let offeredCardAsset: string | undefined;
     if (options?.tasteQuestion) {
-      const card = randomCard();
+      // Draw from the collection the question is about. "Your favourite fake
+      // commons card?" was answered with a Fake Rare, because every pool was
+      // the Fake Rares index.
+      const card = randomCard(detectCollection(userText));
       if (card) {
         offeredCardAsset = card.asset;
         offeredCard = describeCard(card.asset) ?? '';
@@ -832,7 +835,11 @@ Say briefly why it is worth a look — something true about the art, the artist 
     // answered from what the /fv vision pass actually recorded, not by semantic
     // similarity over prose. That is how "grantfly" came back for a red query.
     if (this.looksDescriptive(trimmed)) {
-      const trait = describeTraitMatch(trimmed);
+      // The /fv vision pass only ever ran over Fake Rares - 875 cards, none in
+      // Commons or Rare Pepes - so a descriptive question about another
+      // collection has no data behind it and must not be answered from this one.
+      const collection = detectCollection(trimmed);
+      const trait = collection === 'fake-rares' ? describeTraitMatch(trimmed) : null;
       if (trait) {
         logger.debug({ query: trimmed, asset: trait.asset }, '[SmartRouter] Visual trait match');
         return this.buildChatPlan(trimmed, roomId, null, undefined, {

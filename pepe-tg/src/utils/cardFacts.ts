@@ -11,6 +11,8 @@
  */
 
 import { FULL_CARD_INDEX, getCardInfo, type CardInfo } from '../data/fullCardIndex';
+import { COMMONS_CARD_INDEX } from '../data/fakeCommonsIndex';
+import { RARE_PEPES_CARD_INDEX } from '../data/rarePepesIndex';
 
 function findCard(asset: string): CardInfo | undefined {
   const upper = asset.toUpperCase();
@@ -71,6 +73,36 @@ export function cardFacts(asset: string): CardInfo | null {
   return findCard(asset) ?? null;
 }
 
+/** Which collection a question is about. */
+export type Collection = 'fake-rares' | 'fake-commons' | 'rare-pepes';
+
+/**
+ * Which collection the wording points at.
+ *
+ * "What's your favourite fake commons card?" was answered with a Fake Rare,
+ * because every pool in this file is the Fake Rares index. Commons and Rare
+ * Pepes are separate collections with their own indexes.
+ */
+export function detectCollection(text: string): Collection {
+  if (/\b(fake\s*commons?|commons?)\b/i.test(text)) return 'fake-commons';
+  if (/\brare\s*pepes?\b/i.test(text)) return 'rare-pepes';
+  return 'fake-rares';
+}
+
+function poolFor(collection: Collection): CardInfo[] {
+  const index =
+    collection === 'fake-commons'
+      ? COMMONS_CARD_INDEX
+      : collection === 'rare-pepes'
+      ? RARE_PEPES_CARD_INDEX
+      : FULL_CARD_INDEX;
+  const pool = (index as unknown as CardInfo[]).filter((c) => c?.asset);
+  // Falling back silently would answer a Commons question with a Fake Rare,
+  // which is the bug this exists to prevent - so only fall back if the index is
+  // genuinely empty.
+  return pool.length > 0 ? pool : FULL_CARD_INDEX.filter((c) => c.asset);
+}
+
 /**
  * One card, drawn uniformly at random from the collection.
  *
@@ -81,8 +113,8 @@ export function cardFacts(asset: string): CardInfo | null {
  * rejects temperature, top_p, presence_penalty and frequency_penalty outright,
  * so identical context produces near-identical answers.
  */
-export function randomCard(): CardInfo | null {
-  const pool = FULL_CARD_INDEX.filter((c) => c.asset);
+export function randomCard(collection: Collection = 'fake-rares'): CardInfo | null {
+  const pool = poolFor(collection);
   if (pool.length === 0) return null;
   return pool[Math.floor(Math.random() * pool.length)];
 }
