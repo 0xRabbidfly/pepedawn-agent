@@ -457,7 +457,10 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
             __fromAction: plan.kind === 'FACTS' ? 'smart_router_facts' : 'smart_router_lore',
           });
           await recordBotTurn(story);
-          if (plan.sources?.trim()) {
+          // The sources line ("Sources: mem:FREEDO 2025-11-01 by:Unknown") leaks
+          // internal record ids into the room as a second message. Useful when
+          // debugging retrieval, noise for everyone else.
+          if (process.env.SHOW_SOURCES === 'true' && plan.sources?.trim()) {
             await actionCallback({
               text: plan.sources,
               __fromAction: plan.kind === 'FACTS' ? 'smart_router_facts_sources' : 'smart_router_lore_sources',

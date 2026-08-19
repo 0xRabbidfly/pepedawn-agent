@@ -12,6 +12,7 @@ import {
 import { detectCardFastPath } from '../router/cardFastPath';
 import { KnowledgeOrchestratorService } from './KnowledgeOrchestratorService';
 import { callTextModel } from '../utils/modelGateway';
+import { describeCard } from '../utils/cardFacts';
 import { isInFullIndex } from '../data/fullCardIndex';
 
 export type ConversationIntent = 'LORE' | 'FACTS' | 'CHAT' | 'NORESPONSE' | 'CMDROUTE';
@@ -519,6 +520,19 @@ export class SmartRouterService extends Service {
     let story = result.story?.trim();
     let sources = result.sourcesLine || '';
 
+    // Structured card facts live in the card index, not in the vector store, so
+    // retrieval alone can answer "tell me about FREEDOMKEK" with whatever thin
+    // note happens to be embedded. When a card is named, always fold in what we
+    // actually know about it.
+    if (mentionedCard) {
+      const facts = describeCard(mentionedCard);
+      if (facts) {
+        story = story && story.length > 0 && !this.isThinAnswer(story)
+          ? `${facts}\n\n${story}`
+          : facts;
+      }
+    }
+
     if ((!story || story.length === 0) && result.cardSummary) {
       const summary = result.cardSummary.trim();
       story = summary;
@@ -539,6 +553,15 @@ export class SmartRouterService extends Service {
       sources,
       metadata: { classifierRaw },
     };
+  }
+
+  /**
+   * True when a composed answer is too thin to be worth appending to the card
+   * facts - typically a single clause echoing a stub memory.
+   */
+  private isThinAnswer(story: string): boolean {
+    const words = story.trim().split(/\s+/).filter(Boolean).length;
+    return words <= 14;
   }
 
   private looksLikeCardDescriptor(text: string): boolean {
