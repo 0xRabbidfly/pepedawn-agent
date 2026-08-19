@@ -265,3 +265,106 @@ describe('capture parsing', () => {
     expect(parseCaptureResponse(raw, ctx)).toHaveLength(0);
   });
 });
+
+describe('SocialMemory runtime', () => {
+  const turn = (text: string, author: string, minutes: number): ConversationTurn => ({
+    role: 'user',
+    text,
+    author,
+    at: NOW + minutes * 60_000,
+  });
+
+  const makeMemory = async (reply: string) => {
+    const { SocialMemory } = await import('../../conversation/socialMemoryRuntime');
+    const { InMemorySocialStore } = await import('../../conversation/socialMemory');
+    const store = new InMemorySocialStore();
+    const calls: string[] = [];
+    const memory = new SocialMemory({
+      store,
+      model: async (prompt: string) => {
+        calls.push(prompt);
+        return reply;
+      },
+    });
+    return { memory, store, calls };
+  };
+
+  it('captures on session close, not per message', async () => {
+    const { memory, calls } = await makeMemory(
+      JSON.stringify({ records: [{ kind: 'quote', summary: 'bob and the kidney', people: ['bob'] }] })
+    );
+    memory.noteAuthor('bob', 'u-bob');
+
+    // A live session: no capture yet.
+    for (let i = 0; i < 6; i++) {
+      const t = turn(`m${i}`, i % 2 ? 'bob' : 'alice', i);
+      const out = await memory.observe('r', t, t.at);
+      expect(out).toHaveLength(0);
+    }
+    expect(calls).toHaveLength(0);
+
+    // A turn after a long gap closes the previous session and captures it.
+    const later = turn('back', 'alice', 60);
+    const captured = await memory.observe('r', later, later.at);
+    expect(calls).toHaveLength(1);
+    expect(captured).toHaveLength(1);
+    expect(captured[0].participants[0].id).toBe('u-bob');
+  });
+
+  it('does not call the model for an unmemorable session', async () => {
+    const { memory, calls } = await makeMemory('{"records":[]}');
+    const t1 = turn('hi', 'alice', 0);
+    await memory.observe('r', t1, t1.at);
+    const t2 = turn('back', 'alice', 60);
+    await memory.observe('r', t2, t2.at);
+    expect(calls).toHaveLength(0); // single speaker, too few turns
+  });
+
+  it('survives a model failure without throwing', async () => {
+    const { SocialMemory } = await import('../../conversation/socialMemoryRuntime');
+    const { InMemorySocialStore } = await import('../../conversation/socialMemory');
+    const memory = new SocialMemory({
+      store: new InMemorySocialStore(),
+      model: async () => {
+        throw new Error('model down');
+      },
+    });
+    for (let i = 0; i < 6; i++) {
+      const t = turn(`m${i}`, i % 2 ? 'bob' : 'alice', i);
+      await memory.observe('r', t, t.at);
+    }
+    const later = turn('back', 'alice', 60);
+    await expect(memory.observe('r', later, later.at)).resolves.toEqual([]);
+  });
+
+  it('rate-limits recall per room', async () => {
+    const { memory, store } = await makeMemory('{"records":[]}');
+    await store.add(rec({ roomId: 'r' }));
+    expect(await memory.recall('r', new Set(['u-bob']), NOW)).toHaveLength(1);
+    // Immediately after, the room has already heard a callback.
+    expect(await memory.recall('r', new Set(['u-bob']), NOW + 60_000)).toHaveLength(0);
+    // Well after the gap, allowed again.
+    expect(await memory.recall('r', new Set(['u-bob']), NOW + 31 * 60_000)).toHaveLength(1);
+  });
+
+  it('renders recalled memories for a prompt', async () => {
+    const { memory, store } = await makeMemory('{"records":[]}');
+    await store.add(rec({ roomId: 'r', cards: ['FREEDOMKEK'] }));
+    const recalled = await memory.recall('r', new Set(['u-bob']), NOW);
+    const { SocialMemory } = await import('../../conversation/socialMemoryRuntime');
+    const block = SocialMemory.renderForPrompt(recalled);
+    expect(block).toContain('bob');
+    expect(block).toContain('FREEDOMKEK');
+    expect(SocialMemory.renderForPrompt([])).toBe('');
+  });
+
+  it('flushes a buffered session on shutdown', async () => {
+    const { memory, calls } = await makeMemory('{"records":[]}');
+    for (let i = 0; i < 6; i++) {
+      const t = turn(`m${i}`, i % 2 ? 'bob' : 'alice', i);
+      await memory.observe('r', t, t.at);
+    }
+    await memory.flush('r', NOW + 10 * 60_000);
+    expect(calls).toHaveLength(1);
+  });
+});
