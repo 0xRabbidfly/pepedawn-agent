@@ -115,6 +115,105 @@ on `gpt-4o-mini`, the cheapest model available, at $0.28 across the whole period
 
 ---
 
+## 2b. Target behaviour (agreed 2026-08-19)
+
+### The actual complaint, restated
+
+"PEPEDAWN wouldn't shut up" was **not** about frequency. It was:
+
+1. **Responding out of context** — poor retrieval, poor logic.
+2. **Walls of text** — which made every out-of-context reply worse.
+
+This inverts the priority order. Retrieval quality and length control are the
+primary fixes; the cadence governor is a safety net for the burst pattern, not
+the centrepiece. Nuno is happy for the bot to talk *often* — he was never
+bothered by rate, he was bothered by irrelevance and verbosity.
+
+It also makes dropping the Telegram archive load-bearing rather than merely
+tidy: that corpus is the out-of-context machine. 22% of it is misclassified as
+authoritative wiki, and its strongest hits are form-matches — "Any buyer for
+4xcp?" retrieving other people saying "any buyer".
+
+### Persona
+
+**A knowledgeable regular.** A collector who has been around since series 1.
+Has taste, opinions and memory. Talks like a peer — short, dry, occasionally
+funny. Not a service desk, not a database.
+
+**Opinions are owned.** Asked for "best/coolest/favourite", it gives a genuine
+pick and a reason, framed as its own view. It never dresses taste up as fact.
+Supply, series and issuance are context, never proof of quality. (The failure
+that prompted this: "limited supply" asserted about a 299-supply card.)
+
+### Dials
+
+| Setting | Value |
+|---|---|
+| Share of voice | **30%** |
+| Minimum gap between unprompted replies | **45s** |
+| Never two bot turns in a row | hard rule |
+| Direct address (mention / reply / DM / command) | exempt from all of the above |
+| Retrieval relevance floor | **0.45** |
+
+### Reply length — scales to the question
+
+| Situation | Ceiling |
+|---|---|
+| Banter | one line (~25 words) |
+| A real question | short paragraph (~60 words) |
+| Explicitly asked for the story | ~120 words |
+
+Nothing exceeds these without a slash command. This is the wall-of-text fix.
+
+### When retrieval finds nothing relevant
+
+Acknowledge the gap **and invite a contribution**:
+
+> *"No record of that one. If you know the story, drop it with `/fr` and I'll
+> remember it."*
+
+This turns every knowledge gap into corpus growth and gives `/fr` a real
+purpose. **Must be rate-limited** — at most once per room per few hours, or it
+becomes nagging.
+
+### Corpus
+
+| Source | Status |
+|---|---|
+| Card data (877 cards × 5 blocks) | **keep** |
+| Wiki markdown | **keep** |
+| Live conversation highlights, time-decayed | **add** (requirement 6) |
+| Artist lore via `/fr` | **keep**, wiki-class |
+| Curated episodes | **add** (requirement 7) |
+| Twitter/X results | **future** |
+| **Telegram archive** | **remove from all RAG** |
+
+### Commands
+
+**Preserved:** `/f`, `/p`, `/c`, `/fm`, `/fr`
+**Dropped:** `/fl`, `/fv`, `/ft`, `/dawn`, `/educate`
+
+Vision is kept as a *capability* — parsing images into prose — while `/fv` and
+`/ft` go. Card data stays regardless.
+
+### Cards in conversation
+
+When a card comes up outside `/f`, the bot talks about it **and shows the
+image**.
+
+### Proactive behaviours — all retained
+
+Market sale/listing alerts, the hourly card showcase, and periodic tips.
+(Tips referencing dropped commands need rewriting.)
+
+### Model
+
+**GPT-5.6 Luna** ($0.20/M in, $1.20/M out) — outperforms Opus 4.8, and is 12×
+cheaper on input than the `gpt-4o` currently used for lore. Total spend has been
+$10.26 over 9.5 months; this is expected to *reduce* it while improving quality.
+
+---
+
 ## 3. Architecture
 
 ### 3.1 The core change: split one axis into two
@@ -367,6 +466,31 @@ Estimated total: **~4,000 lines and ~19 MB**, against 20,221 source lines.
 ## 6. Build sequence
 
 Each step ships independently.
+
+### Revised plan (2026-08-19), ordered by impact on the actual complaint
+
+| # | Step | Fixes | Deletes |
+|---|---|---|---|
+| **1** | **Purge Telegram from retrieval.** Filter by tier at query time, then delete the rows. | out-of-context replies | 15,443 fragments |
+| **2** | **Relevance floor 0.45 + length ladder.** Nothing below the floor is used; every path gets a word ceiling. | both halves of the complaint | CHAT's 9 suppression rules |
+| **3** | **Model → GPT-5.6 Luna** everywhere; retire `gpt-4o` and `gpt-4o-mini`. | reasoning quality | — |
+| **4** | **Owned-opinion handling.** Taste questions answered as opinion; specs never used as verdicts. | the 299-supply answer | `CARD_RECOMMEND` justification path |
+| **5** | **Persona rewrite.** Knowledgeable regular, peer voice, card facts woven in conversationally. | flatness | — |
+| **6** | **Owned retrieval layer.** Real `sourceType`/`tier` at ingest; decay in SQL. | provenance guesswork | `plugin-knowledge`, 141-line heuristic, `queryClassifier`, most of the KOS helper tail |
+| **7** | **Live highlights + decay** (req 6), **episodes** (req 7). | community memory | — |
+| **8** | **`/fr` gap-prompt**, rate-limited. | corpus growth | — |
+| **9** | **Cadence governor live** at 30% / 45s. | bursting | — |
+| **10** | **Delete dropped commands** after 2026-11-18; keep vision as image→prose. | ~2,000 lines | `/fl` `/fv` `/ft` `/dawn` `/educate`, `embeddingsDb`, `visualEmbeddings`, `card-embeddings.json` |
+
+Steps 1–3 target the complaint directly and are independently shippable. Step 6
+is the large structural one. Step 9 is deliberately late: it is a backstop, and
+Nuno wants the bot chatty once it is relevant and concise.
+
+**Known gap:** with the archive removed and highlights starting empty, the bot
+has no community history until highlights accumulate. Wiki and artist lore carry
+it in the meantime — which is exactly what the `/fr` gap-prompt is for.
+
+### Original sequencing (superseded, kept for reference)
 
 | Step | Delivers | Deletes |
 |---|---|---|
