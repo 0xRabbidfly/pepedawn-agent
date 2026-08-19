@@ -15,14 +15,15 @@ describe('deprecatedCommands registry', () => {
       '/dawn',
       '/educate',
       '/fl',
-      '/fr',
       '/ft',
       '/fv',
     ]);
   });
 
   it('does not deprecate commands that are still in active use', () => {
-    for (const live of ['/f', '/c', '/fm', '/xcp', '/fc', '/help', '/start']) {
+    // /fr is deliberately NOT deprecated: it is being repositioned as the
+    // artist lore contribution channel (wiki-class entries).
+    for (const live of ['/f', '/c', '/fm', '/xcp', '/fc', '/help', '/start', '/fr']) {
       expect(isDeprecatedCommand(live)).toBe(false);
     }
   });

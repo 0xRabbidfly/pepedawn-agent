@@ -60,11 +60,6 @@ export const DEPRECATED_COMMANDS: Record<string, DeprecationInfo> = {
     'No replacement — the fake appeal scorer is being retired.',
     '13 calls ever, 0 since 2026-06. Sole consumer of the 18MB card-embeddings.json.'
   ),
-  '/fr': entry(
-    '/fr',
-    'Reply to me with "remember this: ..." and I will store it.',
-    '4 uses, all 2025-11; only 28 memories stored in 9.5 months.'
-  ),
   '/dawn': entry(
     '/dawn',
     'No replacement — lottery stats are being retired.',

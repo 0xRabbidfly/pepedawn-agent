@@ -1,8 +1,3 @@
-/**
- * @deprecated Since 2026-08-18. Scheduled for removal after 2026-11-18.
- * See src/config/deprecatedCommands.ts for the usage data behind this decision.
- * `/fr` still works and emits a deprecation notice; do not build on it.
- */
 import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, type State, logger } from '@elizaos/core';
 import { MemoryStorageService } from '../services/MemoryStorageService';
 
