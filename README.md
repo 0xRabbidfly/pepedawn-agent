@@ -72,141 +72,6 @@
 
 ---
 
-### 🔍 Visual Analysis & Memetic Commentary
-
-> ⚠️ **DEPRECATED (2026-08-18)** — scheduled for removal after **2026-11-18**.
-> `/fv` and `/ft` are deprecated. Just ask PEPEDAWN what a card looks like or says — visual analysis runs automatically.
-> See `pepe-tg/src/config/deprecatedCommands.ts` for the usage data behind this decision.
-
-#### Card Analysis: `/fv CARDNAME`
-
-**Command:**
-- **`/fv CARDNAME`** - AI-powered visual analysis of any Fake Rares card
-
-**What it does:**
-- 📝 Reads and extracts ALL text on the card (OCR)
-- 🎨 Analyzes composition, colors, and artistic style
-- 🧬 Identifies meme references and crypto culture elements
-- 🎯 Provides vibe check + visual rarity impression
-
-**Examples:**
-```
-/fv FREEDOMKEK      → Full memetic breakdown
-/fv WAGMIWORLD      → Visual & cultural analysis
-```
-
-**Supported Formats:** JPG, PNG, GIF, WEBP, MP4 (uses static versions for animations)
-
----
-
-#### Fake Appeal Test: `/ft [attach image]`
-
-**Command:**
-- **`/ft [attach image]`** - Test your own art for Fake Rares appeal score
-
-**What it does:**
-- 📝 Extracts visible text (OCR)
-- 🎨 Analyzes visual composition and style
-- 🧬 Identifies memetic DNA and cultural references
-- 🎯 Scores Fake appeal (1-10) based on strict Fake Rares ethos
-
-**Scoring Criteria:**
-1. **PEPE culture** (Fake Rares, Rare Pepe, danks, Pepe characters) - highest weight
-2. **Text content** (memetic, Pepe-related) - high weight
-3. **Color palette** (GREEN tones prominent) - medium weight
-4. **Name/title** (fake, rare, pepe references) - medium weight
-
-**Duplicate Detection:**
-When you upload an image with `/ft`, the bot automatically checks if it matches an existing Fake Rare:
-- **Exact match (≥95%)** → "That's [CARDNAME] - already a certified FAKE RARE! 10/10"
-- **High match (≥85%)** → "Looks like you modified [CARDNAME] or sent a clipped frame"
-- **Low match (30-84%)** → Shows similar card + provides full analysis
-- **No match (<30%)** → Full fake appeal scoring
-
-**Setup Required:** Duplicate detection requires `REPLICATE_API_TOKEN` in `.env` and pre-generated card embeddings. See [Embedding Setup](#-embedding-setup-for-ft-duplicate-detection) below.
-
-**Example:**
-```
-/ft + attach your meme  → Get Fake appeal score (1-10)
-```
-
-**Supported Formats:** JPG, PNG, WEBP only (animations blocked - clip a frame instead)
-
-**Note:** If you upload a GIF/MP4 animation, the bot will ask you to clip the first frame and upload as a static image instead.
-
----
-
-**Technical Details (Both Commands):**
-- **Vision AI:** Configurable model (default: GPT-4o) - Set `VISUAL_MODEL` in `.env`
-- **Duplicate Detection:** CLIP embeddings via Replicate (`krthr/clip-embeddings`)
-- **Cost:** ~$0.005 per analysis (GPT-4o) + ~$0.0002 per image for duplicate detection
-
-**Smart Typo Correction:**
-- **High confidence (≥75%)** → Auto-shows correct card with playful message
-- **Moderate (55-74%)** → Suggests top 3 possible matches
-- **Low (<55%)** → Shows helpful error with search tips
-
-**Clean Preview Display:**
-- Card image/video preview displays inline in Telegram
-- No asset URLs shown (clean, professional presentation)
-- Includes: Artist, supply, issuance date, series info, artist profile button
-- Fallback: Shows card metadata if preview fails (no broken URLs)
-
-**Example:**
-```
-/f FREEDOMKEK      → Shows genesis card
-/f PEEP            → Auto-corrects to PEPE (fuzzy match)
-/f FREEDOM         → Suggests: FREEDOMKEK, FREEDOMWAR
-/f Rare Scrilla    → Random card by artist
-```
-
----
-
-### 📚 LLM-LORE: AI-Powered Lore Recounting + Community Memory
-
-> ⚠️ **DEPRECATED (2026-08-18)** — scheduled for removal after **2026-11-18**.
-> The `/fl` and `/fr` **commands** are deprecated — the lore feature itself is not. Ask about any card in plain language and lore is retrieved automatically; reply with `remember this: ...` to store it.
-> See `pepe-tg/src/config/deprecatedCommands.ts` for the usage data behind this decision.
-
-**Commands:**
-- **`/fl TOPIC`** - PEPEDAWN recounts history from Telegram archives + pepe.wtf wiki + community memories
-- **`/fl`** - Random lore from the community vault
-- **`/fr CARDNAME <lore>`** - Store card-specific memory (NEW!)
-- **`/fr <general lore>`** - Store general memory (NEW!)
-- **`remember this: FACT`** - Contribute a memory to the community knowledge base
-
-**How it works:**
-1. Searches local vector database (Telegram messages + wiki content + user memories)
-2. Applies source diversity + MMR selection:
-   - Ensures representation from all source types (memory, telegram, wiki, card-fact)
-   - Applies MMR diversity algorithm for varied storytelling
-   - Prevents any single source type from dominating results
-3. PEPEDAWN recounts as historian/eyewitness (80-120 words)
-4. Includes compact source citations (e.g., `tg:1234, wiki:purple-era, mem:abc123`)
-5. Speaks as "I remember when..." not creative storytelling
-
-**Note:** `/fl` is a pure storytelling interface - always returns LORE-style historian recounting, never factual answers
-
-**Memory Capture**:
-- Use `/fr CARDNAME <lore>` to store card-specific memories
-- Use `/fr <general lore>` to store general memories
-- Or say "remember this: [fact]" in messages with card names (CAPITALS) or when replying to the bot
-- Example: `/fr FREEDOMKEK it was inspired by the Free Kekistan movement`
-- Example: `FREEDOMKEK remember this: it was inspired by the Free Kekistan movement`
-- Bot stores it and confirms with a success message
-- Memories are searchable globally across all chats
-- Citations include user attribution (e.g., `mem:abc123 2025-10-27 by:YourName`)
-
-**Examples:**
-- `/fl purple subasset era` → Stories about that specific time
-- `/fl Rare Scrilla` → Lore about the founder
-- `/fl FREEDOMKEK` → The genesis card's history (including community memories!)
-- `/fl` → Surprise me with community history!
-
-**Note:** Requires knowledge base setup (optional - see [Knowledge Base Setup](#-knowledge-base-setup-optional))
-
----
-
 ### 📊 Market Transaction Monitoring
 
 **Commands:**
@@ -305,26 +170,6 @@ POLL_INTERVAL_SECONDS=180                       # Poll every 3 minutes (default)
 
 **Database:**
 All transactions are stored in PGlite database (`.eliza/.elizadb/`) alongside conversation history and embeddings. Included in standard database backups.
-
----
-
-### 🎰 Lottery Stats (If Deployed)
-
-> ⚠️ **DEPRECATED (2026-08-18)** — scheduled for removal after **2026-11-18**.
-> `/dawn` is deprecated with no replacement — it had zero recorded uses across the full telemetry window.
-> See `pepe-tg/src/config/deprecatedCommands.ts` for the usage data behind this decision.
-
-**Commands:**
-- **`/dawn`** - Check PEPEDAWN lottery stats and leaderboard
-
-Displays real-time data from Ethereum smart contract:
-- Current round number
-- Total tickets sold  
-- Prize pool (ETH)
-- Top 3 participants
-- Time until draw
-
-**Note:** Requires contract configuration (see [Lottery Feature Setup](#-lottery-feature-setup-optional))
 
 ---
 
@@ -430,7 +275,6 @@ TELEGRAM_BOT_TOKEN=your-bot-token-here
 TELEGRAM_ADMIN_IDS=your-telegram-user-id
 
 # ========================================
-# OPTIONAL: Visual Embeddings (for /ft duplicate detection)
 # ========================================
 REPLICATE_API_TOKEN=r8_your-replicate-token-here
 ```
@@ -439,7 +283,6 @@ REPLICATE_API_TOKEN=r8_your-replicate-token-here
 - **OpenAI:** [platform.openai.com/api-keys](https://platform.openai.com/api-keys)
 - **Telegram Bot Token:** Message [@BotFather](https://t.me/BotFather) → `/newbot` → Follow prompts
 - **Your Telegram User ID:** Message [@userinfobot](https://t.me/userinfobot) to get your ID
-- **Replicate (optional):** [replicate.com/account/api-tokens](https://replicate.com/account/api-tokens) - For `/ft` duplicate detection
 
 ### Optional Variables
 
@@ -449,7 +292,6 @@ REPLICATE_API_TOKEN=r8_your-replicate-token-here
 # ========================================
 OPENAI_SMALL_MODEL=gpt-4o-mini
 OPENAI_LARGE_MODEL=gpt-4o
-VISUAL_MODEL=gpt-4o                      # Vision analysis model (/fv command)
 # See available models: https://platform.openai.com/docs/models
 
 # ========================================
@@ -459,7 +301,6 @@ ANTHROPIC_API_KEY=your-anthropic-key      # For Claude models
 OPENROUTER_API_KEY=your-openrouter-key    # For 20% cost savings
 
 # ========================================
-# OPTIONAL: Knowledge Base (for /fl command)
 # ========================================
 # See "Knowledge Base Setup" section below
 # KNOWLEDGE_PATH=./docs/chunks
@@ -469,12 +310,9 @@ OPENROUTER_API_KEY=your-openrouter-key    # For 20% cost savings
 # OPTIONAL: System Configuration
 # ========================================
 SUPPRESS_BOOTSTRAP=true                   # Reduce debug logs
-HIDE_LORE_SOURCES=false                   # Show/hide source citations in /fl
 LOG_LEVEL=info                            # debug | info | warn | error
 FAKE_RARES_ARTIST_BUTTONS=true
 #NODE_ENV=production
-LORE_STORY_MODEL=gpt-5                   # Lore generation model (/fl command)
-VISUAL_MODEL=gpt-4o                      # Vision analysis model (/fv command)
 ```
 
 **Cost Optimization Tips:**
@@ -609,14 +447,6 @@ See `pepe-tg/src/assets/README.md` for detailed instructions.
 
 ---
 
-## 🎨 Embedding Setup (For `/ft` Duplicate Detection)
-
-The `/ft` command uses CLIP embeddings to detect if uploaded images match existing Fake Rares.
-
-### Quick Start
-
-**If `card-embeddings.json` exists in the repo:**
-```bash
 # You're ready! No action needed.
 ls pepe-tg/src/data/card-embeddings.json
 ```
@@ -649,7 +479,6 @@ ls pepe-tg/src/data/card-embeddings.json
 
 ### How It Works
 
-1. User uploads image with `/ft`
 2. Bot generates CLIP embedding for image
 3. Compares to all 890 card embeddings
 4. Returns match classification:
@@ -681,17 +510,10 @@ git commit -m "Add series 19 cards with embeddings"
 
 ### What If I Skip This?
 
-The `/ft` command will still work but:
-- ❌ No duplicate detection (won't catch existing Fake Rares)
-- ❌ No similarity matching (won't show closest card)
-- ✅ Will still analyze images and score them
-- ⚠️ Costs slightly more (no early-exit on exact matches)
-
 ---
 
 ## 📚 Knowledge Base Setup (Optional)
 
-The `/fl` (lore) command requires an embedded knowledge base. If you don't set this up, `/fl` will not work.
 
 ### Quick Start (No Knowledge Base)
 
@@ -1089,10 +911,7 @@ pepe-tg/
 ├── 📂 src/
 │   ├── 📂 actions/              # Bot commands and handlers
 │   │   ├── fakeRaresCard.ts     # /f command (card display)
-│   │   ├── fakeVisualCommand.ts # /fv command (card analysis)
-│   │   ├── fakeTestCommand.ts   # /ft command (image appeal test)
 │   │   ├── fakeMarketAction.ts  # /fm command (market query) ✨
-│   │   ├── loreCommand.ts       # /fl command (lore stories)
 │   │   ├── costCommand.ts       # /fc command (cost tracking)
 │   │   ├── oddsCommand.ts       # /odds command (lottery stats)
 │   │   └── basicCommands.ts     # /start, /help
@@ -1219,7 +1038,6 @@ const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/YOUR_ORG/YOUR_REPO/...
 
 ### Lore Generation Pipeline (if knowledge base configured)
 
-**For `/fl` command:**
 
 1. **Query Expansion** - Adds synonyms, context
 2. **Vector Search** - Retrieves 24 relevant passages from knowledge base
@@ -1293,18 +1111,11 @@ OPENROUTER_API_KEY=your-key
 ### Analyzing Cards
 
 ```
-/fv FREEDOMKEK          → Memetic analysis with OCR text extraction
-/fv WAGMIWORLD          → Visual breakdown + crypto culture refs
-/fv PEPONACID           → Artistic style + vibe check
 ```
 
 ### Getting Lore (requires knowledge base)
 
 ```
-/fl purple subasset era → Stories about purple subasset era
-/fl Rare Scrilla        → Lore about the founder
-/fl FREEDOMKEK          → Genesis card history
-/fl                     → Random lore from community
 ```
 
 ### Admin Commands
@@ -1373,23 +1184,6 @@ node scripts/add-new-cards.js 18  # Replace 18 with correct series
 # 3. Restart bot (or wait up to 1 hour for auto-refresh)
 pm2 restart pepe-tg
 ```
-
-### /fl Command Not Working
-
-**Likely cause:** Knowledge base not configured
-
-**Fix:**
-1. Set up knowledge base (see [Knowledge Base Setup](#-knowledge-base-setup-optional))
-2. OR disable the command by removing it from `fakeRaresPlugin.ts`:
-   ```typescript
-   actions: [
-     startCommand,
-     helpCommand,
-     fakeRaresCardAction,
-     // loreCommand,  // Comment out if not using
-     costCommand,
-   ],
-   ```
 
 ### High OpenAI Costs
 
@@ -1484,8 +1278,6 @@ bun test
 bun run test
 
 # Visual commands tests
-bun test src/__tests__/actions/fakeVisualCommand.test.ts
-bun test src/__tests__/actions/fakeTestCommand.test.ts
 bun test src/__tests__/utils/visionAnalyzer.test.ts
 bun test src/__tests__/integration/visual-commands.test.ts
 
@@ -1493,7 +1285,6 @@ bun test src/__tests__/integration/visual-commands.test.ts
 bun test src/__tests__/utils/queryClassifier.test.ts
 bun test src/__tests__/utils/loreRetrieval.test.ts
 bun test src/__tests__/utils/memoryStorage.test.ts
-bun test src/__tests__/actions/loreCommand.test.ts
 bun test src/__tests__/auto-routing.test.ts
 
 # Smart router and plugin routing tests
@@ -1517,8 +1308,6 @@ The project has **19 custom unit/integration test files** (300+ tests total):
 - Runs automatically on every `git commit` via `.git/hooks/pre-commit` → `bun run test`
 
 **2-5. Visual Commands** (4 files)
-- `actions/fakeVisualCommand.test.ts` – `/fv` card analysis command
-- `actions/fakeTestCommand.test.ts` – `/ft` image appeal test command
 - `utils/visionAnalyzer.test.ts` – Shared vision API utility
 - `integration/visual-commands.test.ts` – Plugin routing & command conflicts
 
@@ -1526,7 +1315,6 @@ The project has **19 custom unit/integration test files** (300+ tests total):
 - `utils/queryClassifier.test.ts` – FACTS/LORE/UNCERTAIN classification
 - `utils/loreRetrieval.test.ts` – Memory priority & source boost logic
 - `utils/memoryStorage.test.ts` – Card detection & memory boost logic
-- `actions/loreCommand.test.ts` – `/fl` command & FACTS mode filtering
 - `auto-routing.test.ts` – Auto-routing logic & reply detection (20 tests)
 
 **11-13. Smart Router & Plugin Routing** (3 files)
@@ -1758,7 +1546,7 @@ Contributions welcome! To contribute:
 
 ### Do I need the knowledge base for basic card display?
 
-**No!** The bot works perfectly with just the `/f` command. Knowledge base is only needed for `/fl` (lore) command.
+**No!** The bot works with just the card commands. The knowledge base powers lore and factual answers in conversation.
 
 ### How much does it cost to run?
 

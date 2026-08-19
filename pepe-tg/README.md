@@ -256,7 +256,7 @@ OPENAI_API_KEY=your_openai_key
 
 # Optional
 SUPPRESS_BOOTSTRAP=true          # Reduces debug logs
-HIDE_LORE_SOURCES=true           # Hides sources in /fl responses
+HIDE_LORE_SOURCES=true           # Hides source citations in lore answers
 PGLITE_DATABASE_URL=file:///path/to/.elizadb
 ```
 
@@ -268,7 +268,7 @@ PGLITE_DATABASE_URL=file:///path/to/.elizadb
 - [ ] PM2 started with `ecosystem.config.cjs`
 - [ ] Bun runtime properly configured in PM2
 - [ ] Heartbeat logs visible every 30 seconds
-- [ ] Bot responds to `/f` and `/fl` commands
+- [ ] Bot responds to `/f` and to plain questions about cards
 - [ ] No unhandled promise rejection errors
 
 ### Emergency Procedures

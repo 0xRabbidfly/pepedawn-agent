@@ -5,6 +5,86 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.0.0] - 2026-08-19
+
+Conversational redesign. PEPEDAWN answers from data it actually has, says less,
+and remembers the room. See
+`telegram_docs/design_docs/PEPEDAWN_CHAT_V5.md` for the measurements behind each
+decision.
+
+### Removed — BREAKING
+
+- **Commands `/fl`, `/fv`, `/ft`, `/dawn`, `/educate`** and everything that
+  existed to warn about them. All had zero recorded use in the trailing quarter;
+  lore, visual description and card questions are answered in conversation now.
+- **Card discovery.** 546 router decisions, 60% of them not questions at all
+  ("GM fakes...", "Woow BREAKUP is a wicked card!"). Genuine descriptor searches
+  amounted to roughly two examples in 9.5 months.
+- **ElizaOS bootstrap handoff.** Served 2.9% of conversations and was the sole
+  reason the `__handledByCustom` sentinel was threaded through three files. The
+  router now owns the decision end to end; anything it declines is silence.
+- **The engagement-score filter.** It computed suppression, ran the entire router
+  anyway, then applied the decision afterwards. Rate control is now the cadence
+  governor, enforced in code.
+- **LORE as a separate mode.** 0.8% of decisions, 69% of total LLM spend.
+- **The PEPEDAWN disambiguator** — a model round-trip to decide whether
+  "pepedawn" meant the bot or the card; the mention and reply flags already say.
+- **The Telegram archive from all RAG.** Frozen at 2025-10-11, 22% of it
+  misclassified as authoritative wiki, and its strongest hits were form-matches
+  rather than answers. Set `RAG_INCLUDE_TELEGRAM=true` to compare.
+- `visionAnalyzer`, `visualEmbeddings`, `embeddingsDb` and the 18MB
+  `card-embeddings.json`, all reachable only from the removed commands.
+
+Together ~2,355 of 11,483 LLM calls no longer happen.
+
+### Added
+
+- **Cadence governor** (`src/conversation/`) — share of voice, a ban on
+  consecutive turns, a minimum gap and unaddressed backoff, with a full
+  exemption when the bot is addressed. Replayed against 20,742 production
+  events: worst 10-minute burst **67 → 10**, replies less than 60s apart
+  **43.6% → 2.4%**.
+- **Room temperature and a register ladder** so a wall of lore is structurally
+  impossible while the room is bantering.
+- **Exact card lookups** (`cardQueries.ts`) — artist, issuance, supply, series,
+  an artist's largest or smallest card. The fact is produced by code; the model
+  only wraps it.
+- **Visual trait search** (`cardTraits.ts`) — "most red", "sexiest",
+  "most psychedelic" answered from what the /fv pass recorded, via a 133KB index
+  built by `scripts/build-card-traits.ts`.
+- **Person-linked social memory** — episodes, highlights, quotes and reactions,
+  scored by `similarity × decay × participantBoost` so a line from someone in
+  the room outranks a better one from someone absent.
+- **Persistent room history**, surviving the nightly 02:00 restart, feeding the
+  classifier, CHAT and FACTS alike.
+- **Follow-up resolution**: "who made it?" resolves to the card in play.
+- **Card images alongside answers** — any reply about a card now shows it.
+- `V5_SHADOW`, `V5_ENFORCE`, `CHAT_MODEL`, `RAG_INCLUDE_TELEGRAM`,
+  `SHOW_SOURCES`; `scripts/run-testbot.sh`, `scripts/replay-cadence.ts`.
+
+### Changed
+
+- **Models → `gpt-5.6-luna`.** Outperforms the previous frontier tier at roughly
+  a twelfth the input cost of the `gpt-4o` used for lore.
+- Retrieval relevance floor raised to **0.45** across every source; measured mean
+  similarity for chat retrieval was 0.34, i.e. mostly noise.
+- CHAT grounds on card data, wiki and memories rather than old chat logs.
+- Taste questions get an owned opinion or a randomly drawn card, never a
+  justification built from supply numbers.
+- `/fr` repositioned as the artist lore channel and restored to `/help`.
+
+### Fixed
+
+- `TelemetryService` used `logger` 17 times without importing it.
+- `modelGateway` sent a `reasoning_effort` value the gpt-5.6 family rejects,
+  which would have 400'd every call.
+- Card answers echoed stub memories instead of the card manifest.
+- Artist matching hit substrings — an artist named "RC" inside "sca**rc**est".
+- Every card pool was the Fake Rares index, so a Fake Commons question was
+  answered with a Fake Rare.
+- `RoomHistory` lost turns when appends overlapped.
+- Cadence could silence safety replies; it now sits below the content filters.
+
 ## [Unreleased]
 
 ### Added
