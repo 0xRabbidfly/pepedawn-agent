@@ -15,12 +15,23 @@
 import { Service, logger, type IAgentRuntime } from '@elizaos/core';
 import { writeFileSync, appendFileSync, existsSync, readFileSync, mkdirSync } from 'fs';
 import { join } from 'path';
+import { getCurrentAction, UNATTRIBUTED_ACTION } from '../utils/actionContext';
 
-const LOG_FILE = join(process.cwd(), 'src', 'data', 'token-logs.jsonl');
-const CONVERSATION_LOG_FILE = join(process.cwd(), 'src', 'data', 'conversation-logs.jsonl');
-const LORE_QUERY_LOG_FILE = join(process.cwd(), 'src', 'data', 'lore-query-logs.jsonl');
-const SMART_ROUTER_LOG_FILE = join(process.cwd(), 'src', 'data', 'smart-router-logs.jsonl');
-const COMMAND_LOG_FILE = join(process.cwd(), 'src', 'data', 'command-logs.jsonl');
+/**
+ * Log locations, resolved per call rather than at import.
+ *
+ * ElizaOS runs with cwd forced to `pepe-tg` (see scripts/start-bot.sh), so the
+ * default is the real `src/data`. Resolving lazily lets tests point
+ * TELEMETRY_DATA_DIR at a scratch directory regardless of module import order —
+ * binding these at import time meant a test could append fixtures to the
+ * production JSONL if any other suite imported this module first.
+ */
+const dataDir = () => process.env.TELEMETRY_DATA_DIR || join(process.cwd(), 'src', 'data');
+const LOG_FILE = () => join(dataDir(), 'token-logs.jsonl');
+const CONVERSATION_LOG_FILE = () => join(dataDir(), 'conversation-logs.jsonl');
+const LORE_QUERY_LOG_FILE = () => join(dataDir(), 'lore-query-logs.jsonl');
+const SMART_ROUTER_LOG_FILE = () => join(dataDir(), 'smart-router-logs.jsonl');
+const COMMAND_LOG_FILE = () => join(dataDir(), 'command-logs.jsonl');
 
 // Pricing per 1M tokens (USD)
 const MODEL_PRICING: Record<string, { input: number; output: number }> = {
@@ -53,6 +64,11 @@ const MODEL_PRICING: Record<string, { input: number; output: number }> = {
   'gpt-5-pro': { input: 25.0, output: 100.0 },
   'gpt-5-mini': { input: 0.3, output: 1.2 },
   'gpt-5-nano': { input: 0.1, output: 0.4 },
+
+  // Embeddings — priced per input token only; output is always 0
+  'text-embedding-3-small': { input: 0.02, output: 0 },
+  'text-embedding-3-large': { input: 0.13, output: 0 },
+  'text-embedding-ada-002': { input: 0.1, output: 0 },
 };
 
 export interface TokenLog {
@@ -164,19 +180,25 @@ export class TelemetryService extends Service {
    */
   async logModelUsage(log: TokenLog): Promise<void> {
     try {
+      // Callers rarely know which command they are serving; the ambient
+      // action label from runWithAction() supplies it. See utils/actionContext.
+      const entry: TokenLog = log.actionName
+        ? log
+        : { ...log, actionName: getCurrentAction() ?? UNATTRIBUTED_ACTION };
+
       // Persist
-      if (!existsSync(LOG_FILE)) {
-        writeFileSync(LOG_FILE, '', 'utf8');
+      if (!existsSync(LOG_FILE())) {
+        writeFileSync(LOG_FILE(), '', 'utf8');
       }
       
-      appendFileSync(LOG_FILE, JSON.stringify(log) + '\n', 'utf8');
+      appendFileSync(LOG_FILE(), JSON.stringify(entry) + '\n', 'utf8');
       
       // Console output
-      const durationStr = log.duration ? `, ${log.duration}ms` : '';
+      const durationStr = entry.duration ? `, ${entry.duration}ms` : '';
       logger.debug(
-        `[Telemetry] ${log.model} [${log.source}]: ` +
-        `${log.tokensIn}→${log.tokensOut} tokens, ` +
-        `$${log.cost.toFixed(6)}${durationStr}`
+        `[Telemetry] ${entry.model} [${entry.source}] (${entry.actionName}): ` +
+        `${entry.tokensIn}→${entry.tokensOut} tokens, ` +
+        `$${entry.cost.toFixed(6)}${durationStr}`
       );
     } catch (err) {
       logger.error('[Telemetry] Failed to log:', err);
@@ -188,11 +210,11 @@ export class TelemetryService extends Service {
    */
   async logConversation(log: ConversationLog): Promise<void> {
     try {
-      if (!existsSync(CONVERSATION_LOG_FILE)) {
-        writeFileSync(CONVERSATION_LOG_FILE, '', 'utf8');
+      if (!existsSync(CONVERSATION_LOG_FILE())) {
+        writeFileSync(CONVERSATION_LOG_FILE(), '', 'utf8');
       }
       
-      appendFileSync(CONVERSATION_LOG_FILE, JSON.stringify(log) + '\n', 'utf8');
+      appendFileSync(CONVERSATION_LOG_FILE(), JSON.stringify(log) + '\n', 'utf8');
       logger.debug(`[Telemetry] Conversation logged: ${log.source} ${log.messageId}`);
     } catch (err) {
       logger.error('[Telemetry] Failed to log conversation:', err);
@@ -204,11 +226,11 @@ export class TelemetryService extends Service {
    */
   async logLoreQuery(log: LoreQueryLog): Promise<void> {
     try {
-      if (!existsSync(LORE_QUERY_LOG_FILE)) {
-        writeFileSync(LORE_QUERY_LOG_FILE, '', 'utf8');
+      if (!existsSync(LORE_QUERY_LOG_FILE())) {
+        writeFileSync(LORE_QUERY_LOG_FILE(), '', 'utf8');
       }
       
-      appendFileSync(LORE_QUERY_LOG_FILE, JSON.stringify(log) + '\n', 'utf8');
+      appendFileSync(LORE_QUERY_LOG_FILE(), JSON.stringify(log) + '\n', 'utf8');
       logger.debug(`[Telemetry] Lore query logged: ${log.source} "${log.query.substring(0, 50)}..."`);
     } catch (err) {
       logger.error('[Telemetry] Failed to log lore query:', err);
@@ -224,11 +246,11 @@ export class TelemetryService extends Service {
    */
   async logCommandUsage(log: CommandLog): Promise<void> {
     try {
-      if (!existsSync(COMMAND_LOG_FILE)) {
-        writeFileSync(COMMAND_LOG_FILE, '', 'utf8');
+      if (!existsSync(COMMAND_LOG_FILE())) {
+        writeFileSync(COMMAND_LOG_FILE(), '', 'utf8');
       }
 
-      appendFileSync(COMMAND_LOG_FILE, JSON.stringify(log) + '\n', 'utf8');
+      appendFileSync(COMMAND_LOG_FILE(), JSON.stringify(log) + '\n', 'utf8');
       logger.debug(
         `[Telemetry] Command logged: ${log.command} success=${log.success}` +
           (log.deprecated ? ' (deprecated)' : '')
@@ -243,8 +265,8 @@ export class TelemetryService extends Service {
    */
   async logSmartRouterDecision(log: SmartRouterDecisionLog): Promise<void> {
     try {
-      if (!existsSync(SMART_ROUTER_LOG_FILE)) {
-        writeFileSync(SMART_ROUTER_LOG_FILE, '', 'utf8');
+      if (!existsSync(SMART_ROUTER_LOG_FILE())) {
+        writeFileSync(SMART_ROUTER_LOG_FILE(), '', 'utf8');
       }
 
       const record = {
@@ -252,7 +274,7 @@ export class TelemetryService extends Service {
         userText: log.userText.length > 240 ? `${log.userText.slice(0, 240)}…` : log.userText,
       };
 
-      appendFileSync(SMART_ROUTER_LOG_FILE, JSON.stringify(record) + '\n', 'utf8');
+      appendFileSync(SMART_ROUTER_LOG_FILE(), JSON.stringify(record) + '\n', 'utf8');
       logger.debug(
         `[Telemetry] SmartRouter logged: intent=${log.intent} kind=${log.kind} handled=${
           log.result ?? 'pending'
@@ -298,11 +320,11 @@ export class TelemetryService extends Service {
    */
   private readLogs(startDate?: Date, endDate?: Date): TokenLog[] {
     try {
-      if (!existsSync(LOG_FILE)) {
+      if (!existsSync(LOG_FILE())) {
         return [];
       }
       
-      const content = readFileSync(LOG_FILE, 'utf8');
+      const content = readFileSync(LOG_FILE(), 'utf8');
       const lines = content.trim().split('\n').filter(line => line.length > 0);
       
       let logs: TokenLog[] = lines.map(line => JSON.parse(line));
@@ -326,11 +348,11 @@ export class TelemetryService extends Service {
    */
   private readConversationLogs(startDate?: Date, endDate?: Date): ConversationLog[] {
     try {
-      if (!existsSync(CONVERSATION_LOG_FILE)) {
+      if (!existsSync(CONVERSATION_LOG_FILE())) {
         return [];
       }
       
-      const content = readFileSync(CONVERSATION_LOG_FILE, 'utf8');
+      const content = readFileSync(CONVERSATION_LOG_FILE(), 'utf8');
       const lines = content.trim().split('\n').filter(line => line.length > 0);
       
       let logs: ConversationLog[] = lines.map(line => JSON.parse(line));
@@ -354,11 +376,11 @@ export class TelemetryService extends Service {
    */
   private readLoreQueryLogs(startDate?: Date, endDate?: Date): LoreQueryLog[] {
     try {
-      if (!existsSync(LORE_QUERY_LOG_FILE)) {
+      if (!existsSync(LORE_QUERY_LOG_FILE())) {
         return [];
       }
       
-      const content = readFileSync(LORE_QUERY_LOG_FILE, 'utf8');
+      const content = readFileSync(LORE_QUERY_LOG_FILE(), 'utf8');
       const lines = content.trim().split('\n').filter(line => line.length > 0);
       
       let logs: LoreQueryLog[] = lines.map(line => JSON.parse(line));
@@ -408,16 +430,17 @@ export class TelemetryService extends Service {
       bySource[log.source].cost += log.cost;
       bySource[log.source].calls += 1;
       
-      // By action (if tracked)
-      if (log.actionName) {
-        if (!byAction[log.actionName]) {
-          byAction[log.actionName] = { cost: 0, calls: 0, totalDuration: 0 };
-        }
-        byAction[log.actionName].cost += log.cost;
-        byAction[log.actionName].calls += 1;
-        if (log.duration) {
-          byAction[log.actionName].totalDuration += log.duration;
-        }
+      // By action. Logs written before action attribution existed carry no
+      // actionName; bucketing them keeps this breakdown summing to the total
+      // rather than silently omitting cost.
+      const actionName = log.actionName || UNATTRIBUTED_ACTION;
+      if (!byAction[actionName]) {
+        byAction[actionName] = { cost: 0, calls: 0, totalDuration: 0 };
+      }
+      byAction[actionName].cost += log.cost;
+      byAction[actionName].calls += 1;
+      if (log.duration) {
+        byAction[actionName].totalDuration += log.duration;
       }
     }
     

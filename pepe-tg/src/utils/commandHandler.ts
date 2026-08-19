@@ -7,6 +7,7 @@
 
 import { logger, type IAgentRuntime, type Memory } from '@elizaos/core';
 import { getDeprecation, formatDeprecationNotice } from '../config/deprecatedCommands';
+import { runWithAction } from './actionContext';
 
 export interface Action {
   validate?: (runtime: IAgentRuntime, message: Memory) => Promise<boolean>;
@@ -61,12 +62,16 @@ export async function executeCommand(
     const isValid = await action.validate(params.runtime, params.message);
 
     if (isValid) {
-      await action.handler(
-        params.runtime,
-        params.message,
-        params.state,
-        {},
-        actionCallback ?? undefined
+      // Attribute every model call made inside the handler to this command,
+      // so /fc can separate an explicit /fl from an auto-routed lore query.
+      await runWithAction(commandName, () =>
+        action.handler!(
+          params.runtime,
+          params.message,
+          params.state,
+          {},
+          actionCallback ?? undefined
+        )
       );
 
       // Deprecated commands still run, but tell the user where to go next.

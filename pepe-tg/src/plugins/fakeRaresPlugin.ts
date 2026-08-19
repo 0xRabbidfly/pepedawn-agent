@@ -15,6 +15,7 @@ import { startAutoRefresh } from '../utils/cardIndexRefresher';
 import { detectMessagePatterns, hasAnyCommand } from '../utils/messagePatterns';
 import { calculateEngagementScore, shouldRespond } from '../utils/engagementScorer';
 import { executeCommand, executeCommandAlways, type CommandHandlerParams } from '../utils/commandHandler';
+import { runWithAction } from '../utils/actionContext';
 import { stripCardNamePrefix } from '../utils/cardNamePrefixSanitizer';
 import type { IAgentRuntime } from '@elizaos/core';
 import { isBareBitcoinAddress, looksLikeAddressCallout } from '../utils/bitcoinAddress';
@@ -55,13 +56,12 @@ function patchRuntimeForTelemetry(runtime: IAgentRuntime): void {
   
   const originalUseModel = runtime.useModel.bind(runtime);
   (runtime as any).useModel = async function(modelType: any, params: any) {
-    // Skip embeddings (tracked separately)
-    if (modelType && (modelType.includes('EMBEDDING') || modelType === 'TEXT_EMBEDDING')) {
-      return await originalUseModel(modelType, params);
-    }
-    
+    const isEmbedding = !!modelType && (modelType.includes?.('EMBEDDING') || modelType === 'TEXT_EMBEDDING');
+
     const startTime = Date.now();
-    const prompt = params?.prompt || params?.text || '';
+    // Embedding callers pass a bare string as often as { text }.
+    const prompt =
+      typeof params === 'string' ? params : params?.prompt || params?.text || '';
     
     try {
       const result = await originalUseModel(modelType, params);
@@ -76,11 +76,19 @@ function patchRuntimeForTelemetry(runtime: IAgentRuntime): void {
           : (result as any)?.text || result?.toString?.() || '';
         
         const tokensIn = telemetry.estimateTokens(prompt);
-        const tokensOut = telemetry.estimateTokens(resultText);
+        // Embeddings return a vector, not text, and are billed on input only.
+        const tokensOut = isEmbedding ? 0 : telemetry.estimateTokens(resultText);
         
         // Determine model from env vars
         let model: string;
-        if (modelType === 'TEXT_SMALL' || modelType?.includes?.('SMALL')) {
+        if (isEmbedding) {
+          // Same precedence @elizaos/plugin-knowledge uses to pick the model,
+          // so the cost line always names the model that was actually called.
+          model =
+            process.env.TEXT_EMBEDDING_MODEL ||
+            process.env.OPENAI_EMBEDDING_MODEL ||
+            'text-embedding-3-small';
+        } else if (modelType === 'TEXT_SMALL' || modelType?.includes?.('SMALL')) {
           model = process.env.OPENAI_SMALL_MODEL || 'gpt-4o-mini';
         } else if (modelType === 'TEXT_LARGE' || modelType?.includes?.('LARGE')) {
           model = process.env.OPENAI_LARGE_MODEL || 'gpt-4o';
@@ -89,10 +97,17 @@ function patchRuntimeForTelemetry(runtime: IAgentRuntime): void {
         }
         
         const cost = telemetry.calculateCost(model, tokensIn, tokensOut);
-        const source = params?.context || 'Conversation';
+        const source = isEmbedding ? 'Embeddings' : params?.context || 'Conversation';
         
-        // Console log for visibility (matches modelGateway format)
-        logger.info(`🤖 LLM call: ${model} [${source}] (${tokensIn} → ${tokensOut} tokens, $${cost.toFixed(4)}, ${duration}ms)`);
+        // Console log for visibility (matches modelGateway format). Embeddings
+        // fire several times per query and are logged at debug to keep the
+        // operator-facing log readable.
+        const line = `🤖 LLM call: ${model} [${source}] (${tokensIn} → ${tokensOut} tokens, $${cost.toFixed(4)}, ${duration}ms)`;
+        if (isEmbedding) {
+          logger.debug(line);
+        } else {
+          logger.info(line);
+        }
         
         await telemetry.logModelUsage({
           timestamp: new Date().toISOString(),
@@ -935,17 +950,21 @@ export const fakeRaresPlugin: Plugin = {
             };
 
             try {
-              if (hasCardDiscoveryIntent && !isFl && !isFakeRareCard) {
-                const descriptorPlan = await smartRouter.planRouting(text, message.roomId, {
-                  forceCardFacts: true,
-                });
-                smartRouterHandled = await runPlanWithTelemetry(descriptorPlan);
-              }
+              // Classification, CHAT generation and plan execution all bill to
+              // the router unless they dispatch a command, whose own label wins.
+              await runWithAction('smart-router', async () => {
+                if (hasCardDiscoveryIntent && !isFl && !isFakeRareCard) {
+                  const descriptorPlan = await smartRouter.planRouting(text, message.roomId, {
+                    forceCardFacts: true,
+                  });
+                  smartRouterHandled = await runPlanWithTelemetry(descriptorPlan);
+                }
 
-              if (!smartRouterHandled) {
-                const plan = await smartRouter.planRouting(text, message.roomId);
-                smartRouterHandled = await runPlanWithTelemetry(plan);
-              }
+                if (!smartRouterHandled) {
+                  const plan = await smartRouter.planRouting(text, message.roomId);
+                  smartRouterHandled = await runPlanWithTelemetry(plan);
+                }
+              });
             } catch (routerErr) {
               logger.error({ error: routerErr }, '[SmartRouter] Failed to evaluate routing plan');
             }

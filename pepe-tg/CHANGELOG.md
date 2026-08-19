@@ -33,6 +33,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   in a 1:1 chat
 
 ### Fixed
+- **`/fc` under-reported spend and had a breakdown that could never render.**
+  Embedding calls were skipped by the runtime telemetry patch with a comment
+  claiming they were "tracked separately" — nothing tracked them, and the
+  embedding models were absent from `MODEL_PRICING`, so every total omitted
+  them. They are now logged under a distinct `Embeddings` type, billed on input
+  only, and priced for `text-embedding-3-{small,large}` and `ada-002`.
+  Separately, `TokenLog.actionName` was aggregated into a **By Action** section
+  that no caller ever populated. Model calls now inherit an ambient action label
+  (`src/utils/actionContext.ts`, `AsyncLocalStorage`) set by `executeCommand()`
+  and around the smart-router block, so the report distinguishes an explicit
+  `/fl` from the same lore retrieval reached by auto-routing — the question
+  `src/config/deprecatedCommands.ts` exists to answer. Rows predating this
+  bucket as `(unattributed)` so the section still sums to the reported total
+- `TelemetryService` bound its five JSONL paths at import time from
+  `process.cwd()`, so a test could only redirect them by winning the import
+  race — and lost it, appending fixtures to the production cost log. Paths now
+  resolve per call and honour `TELEMETRY_DATA_DIR`
 - `/fc` matched any command starting with those letters (`/fcarousel` was swallowed and
   answered nothing); the pattern is now anchored like every other command, and its
   dispatch branch no longer hides the always-handled behaviour behind an
