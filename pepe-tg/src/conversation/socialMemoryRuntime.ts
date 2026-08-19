@@ -117,6 +117,25 @@ export class SocialMemory {
     if (name && id) this.authorIds.set(name, id);
   }
 
+  /**
+   * Resolve display names to the ids memories are stored against.
+   *
+   * Callers upstream often have only a display name - the router's own
+   * conversation turns carry no id - so a name that was never linked falls back
+   * to the same `name:<display>` form parseCaptureResponse uses. Without this,
+   * participant boosting silently never matches.
+   */
+  resolveIds(names: Array<string | undefined>): string[] {
+    const out: string[] = [];
+    for (const name of names) {
+      if (!name) continue;
+      out.push(this.authorIds.get(name) ?? `name:${name}`);
+      const id = this.authorIds.get(name);
+      if (id) out.push(`name:${name}`);
+    }
+    return [...new Set(out)];
+  }
+
   /** Record a turn and capture the previous session if this one closed it. */
   async observe(roomId: string, turn: ConversationTurn, now: number): Promise<MemoryRecord[]> {
     const buffered = this.pending.get(roomId) ?? [];

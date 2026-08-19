@@ -31,7 +31,11 @@ import {
 export interface CadenceConfig {
   /** Rolling window over which share of voice is measured. */
   windowMs: number;
-  /** Bot turns / total turns must stay at or below this. */
+  /**
+   * Bot turns / total turns must stay at or below this. 0.3 is the agreed
+   * "chatty regular" setting - a genuine voice in the room rather than a
+   * background service.
+   */
   maxShareOfVoice: number;
   /**
    * Minimum turns in the window before share of voice is enforced.
@@ -55,9 +59,9 @@ export interface CadenceConfig {
 
 export const DEFAULT_CADENCE_CONFIG: CadenceConfig = {
   windowMs: 10 * 60 * 1000,
-  maxShareOfVoice: 0.2,
+  maxShareOfVoice: 0.3,
   shareOfVoiceMinSample: 8,
-  minGapMs: 90 * 1000,
+  minGapMs: 45 * 1000,
   maxConsecutiveBotTurns: 1,
   backoffAfter: 2,
 };

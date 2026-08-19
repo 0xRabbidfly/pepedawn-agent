@@ -22,7 +22,7 @@ import { generatePersonaStory } from '../utils/storyComposer';
 import { filterOutRecentlyUsed, markIdAsRecentlyUsed } from '../utils/lru';
 import { LORE_CONFIG } from '../utils/loreConfig';
 import { classifyQuery } from '../utils/queryClassifier';
-import { CLARIFICATION_MESSAGE } from '../actions/loreCommand';
+import { CLARIFICATION_MESSAGE } from '../utils/clarification';
 import { isInFullIndex, getCardInfo } from '../data/fullCardIndex';
 import { callTextModel } from '../utils/modelGateway';
 
@@ -729,7 +729,7 @@ export class KnowledgeOrchestratorService extends Service {
           `\n\nSources:  ${fallbackSet.map(p => formatCompactCitation(p)).join('  ||  ')}`;
         hasWikiOrMemory = fallbackSet.some(p => p.sourceType === 'wiki' || p.sourceType === 'memory');
       } else {
-        story = '🤔 Not sure which fake fits that yet. Try a different clue or ping `/fl CARDNAME` for direct lore.';
+        story = "Not sure which fake fits that yet. Give me another clue, or name the card directly.";
         sourcesLine = '';
         hasWikiOrMemory = false;
       }

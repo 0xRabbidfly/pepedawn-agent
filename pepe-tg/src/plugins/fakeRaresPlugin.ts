@@ -1,5 +1,5 @@
 import { type Plugin, logger, ModelType, type HandlerCallback } from '@elizaos/core';
-import { fakeRaresCardAction, fakeCommonsCardAction, rarePepesCardAction, startCommand, helpCommand, loreCommand, fakeRememberCommand, oddsCommand, costCommand, fakeVisualCommand, fakeTestCommand, xcpCommand } from '../actions';
+import { fakeRaresCardAction, fakeCommonsCardAction, rarePepesCardAction, startCommand, helpCommand, fakeRememberCommand, costCommand, xcpCommand } from '../actions';
 import { fakeMarketAction } from '../actions/fakeMarketAction';
 import { fakeRaresCarouselAction } from '../actions/fakeRaresCarousel';
 import { fakeRaresContextProvider, userHistoryProvider } from '../providers';
@@ -191,13 +191,9 @@ async function runRouterCommand(command: string, context: SmartRouterExecutionCo
     '/fc': { action: costCommand, always: true },
     '/fm': { action: fakeMarketAction },
     '/fr': { action: fakeRememberCommand },
-    '/fl': { action: loreCommand },
-    '/fv': { action: fakeVisualCommand },
-    '/ft': { action: fakeTestCommand },
     '/c': { action: fakeCommonsCardAction },
     '/p': { action: rarePepesCardAction },
     '/xcp': { action: xcpCommand },
-    '/dawn': { action: oddsCommand },
     '/help': { action: helpCommand, always: true },
     '/start': { action: startCommand, always: true },
   };
@@ -589,12 +585,8 @@ export const fakeRaresPlugin: Plugin = {
     fakeRaresCarouselAction,
     fakeCommonsCardAction,
     rarePepesCardAction,
-    fakeVisualCommand,
-    fakeTestCommand,
-    loreCommand,
     fakeRememberCommand,
     fakeMarketAction,
-    oddsCommand,
     costCommand,
     xcpCommand,
   ],
@@ -740,7 +732,7 @@ export const fakeRaresPlugin: Plugin = {
             (message.metadata as any).__handledByCustom = true;
             return;
           }
-          const { isHelp, isStart, isF, isFCarousel, isC, isP, isFv, isFt, isFl, isFr, isFm, isDawn, isFc, isXcp } = commands;
+          const { isHelp, isStart, isF, isFCarousel, isC, isP, isFr, isFm, isFc, isXcp } = commands;
           
           // Log routing factors
           logger.info(`   Triggers: reply=${!!isReplyToBot} | card=${isFakeRareCard} | @mention=${hasBotMention}`);
@@ -787,7 +779,7 @@ export const fakeRaresPlugin: Plugin = {
             return;
           }
 
-          logger.debug(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${isF} isC=${isC} isP=${isP} isFv=${isFv} isFt=${isFt} isLore=${isFl} isFr=${isFr} isFm=${isFm} isDawn=${isDawn} isHelp=${isHelp} isStart=${isStart} isCost=${isFc} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
+          logger.debug(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${isF} isC=${isC} isP=${isP} isFr=${isFr} isFm=${isFm} isHelp=${isHelp} isStart=${isStart} isCost=${isFc} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
           
           logger.info('━━━━━━━━━━ STEP 2/5: COMMAND EXECUTION ━━━━━━━━━━');
           
@@ -811,7 +803,7 @@ export const fakeRaresPlugin: Plugin = {
                 // Memory stored successfully
                 if (actionCallback) {
                   await actionCallback({
-                    text: 'storing the memory... to access this in the future ensure you use the /fl fake lore method'
+                    text: 'Got it — stored. Ask me about the card any time and I\'ll bring it up.'
                   });
                 }
                 // Mark as handled to prevent bootstrap processing
@@ -854,12 +846,8 @@ export const fakeRaresPlugin: Plugin = {
           if (isF && await executeCommand(fakeRaresCardAction, cmdParams, '/f')) return;
           if (isC && await executeCommand(fakeCommonsCardAction, cmdParams, '/c')) return;
           if (isP && await executeCommand(rarePepesCardAction, cmdParams, '/p')) return;
-          if (isFv && await executeCommand(fakeVisualCommand, cmdParams, '/fv')) return;
-          if (isFt && await executeCommand(fakeTestCommand, cmdParams, '/ft')) return;
-          if (isFl && await executeCommand(loreCommand, cmdParams, '/fl')) return;
           if (isFr && await executeCommand(fakeRememberCommand, cmdParams, '/fr')) return;
           if (isFm && await executeCommand(fakeMarketAction, cmdParams, '/fm')) return;
-          if (isDawn && await executeCommand(oddsCommand, cmdParams, '/dawn')) return;
           if (isXcp && await executeCommand(xcpCommand, cmdParams, '/xcp')) return;
           
           // Admin-only command. Marked handled whether or not validation
@@ -953,7 +941,7 @@ export const fakeRaresPlugin: Plugin = {
               // Classification, CHAT generation and plan execution all bill to
               // the router unless they dispatch a command, whose own label wins.
               await runWithAction('smart-router', async () => {
-                if (hasCardDiscoveryIntent && !isFl && !isFakeRareCard) {
+                if (hasCardDiscoveryIntent && !isFakeRareCard) {
                   const descriptorPlan = await smartRouter.planRouting(text, message.roomId, {
                     forceCardFacts: true,
                   });

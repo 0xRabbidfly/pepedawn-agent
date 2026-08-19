@@ -13,6 +13,7 @@ import { detectCardFastPath } from '../router/cardFastPath';
 import { KnowledgeOrchestratorService } from './KnowledgeOrchestratorService';
 import { callTextModel } from '../utils/modelGateway';
 import { describeCard } from '../utils/cardFacts';
+import { recallForPrompt } from '../conversation/shadow';
 import { isInFullIndex } from '../data/fullCardIndex';
 
 export type ConversationIntent = 'LORE' | 'FACTS' | 'CHAT' | 'NORESPONSE' | 'CMDROUTE';
@@ -485,6 +486,14 @@ export class SmartRouterService extends Service {
     // Skip card descriptor check if a card is explicitly mentioned.
     // Card descriptors are for discovery queries, not queries about specific card attributes.
     const mentionedCard = this.detectMentionedCard(userText);
+    // Matters of taste go down the conversational path, where PEPEDAWN has a
+    // voice and can own a pick, rather than the card-recommend path, which
+    // builds a factual justification for something that has none.
+    if (this.isTasteQuestion(userText)) {
+      logger.debug({ query: userText }, '[SmartRouter] Taste question -> opinion, not card lookup');
+      return this.buildChatPlan(userText, roomId, retrieval, classifierRaw);
+    }
+
     if (!mentionedCard && this.looksLikeCardDescriptor(userText)) {
       const cardPlan = await this.buildCardRecommendPlan(userText, roomId, retrieval, classifierRaw);
       if (cardPlan) {
@@ -562,6 +571,20 @@ export class SmartRouterService extends Service {
   private isThinAnswer(story: string): boolean {
     const words = story.trim().split(/\s+/).filter(Boolean).length;
     return words <= 14;
+  }
+
+  /**
+   * A question of taste rather than fact - "best", "favourite", "coolest".
+   *
+   * These were routed to CARD_RECOMMEND, which justifies a pick from card
+   * specifications. There is no factual basis for "best", so it reached for the
+   * only number in front of it and called a 299-supply card limited. An opinion
+   * asked for is an opinion owned.
+   */
+  private isTasteQuestion(text: string): boolean {
+    return /\b(best|favou?rite|coolest|greatest|nicest|prettiest|ugliest|worst|top|most\s+(?:beautiful|underrated|overrated))\b/i.test(
+      text
+    );
   }
 
   private looksLikeCardDescriptor(text: string): boolean {
@@ -826,6 +849,17 @@ export class SmartRouterService extends Service {
     const recentTranscript = this.formatRecentChat(history, 12);
     const throwbackNotes = this.buildChatNotes(retrieval);
 
+    // What PEPEDAWN remembers about the people in this room. Rate-limited
+    // upstream, so this is usually empty - a bot that constantly references
+    // what you said weeks ago is unsettling rather than warm.
+    const speakers = history.filter((t) => t.role !== 'bot').map((t) => t.author);
+    const roomMemories = await recallForPrompt(roomId, speakers);
+
+    // Nothing retrieved and nothing remembered: invite a contribution rather
+    // than bluffing. This is how the corpus grows now the Telegram archive is
+    // gone.
+    const nothingKnown = !throwbackNotes && !roomMemories;
+
     const prompt = [
       'Recent conversation:',
       recentTranscript,
@@ -834,6 +868,10 @@ export class SmartRouterService extends Service {
         ? `What you know that is relevant (retrieved just now):\n${throwbackNotes}`
         : 'What you know that is relevant: (nothing retrieved)',
       '',
+      roomMemories ? `What you remember about people here:\n${roomMemories}\n` : '',
+      nothingKnown
+        ? 'You have nothing on this. If they asked about a specific card or piece of history, say so plainly and invite them to add it with /fr - once, lightly, not as a sales pitch.\n'
+        : '',
       `Respond as PEPEDAWN to: "${userText}"`,
       '',
       '### Using what you know',
@@ -843,8 +881,10 @@ export class SmartRouterService extends Service {
       '  One or two concrete details, in the flow of talking. Not a fact sheet.',
       '* Never present a spec as a verdict. Supply, series and issuance are context,',
       '  not proof that something is good, rare or valuable.',
-      '* If the question is a matter of taste ("best", "coolest", "favourite"), answer',
-      '  as an opinion and own it. Do not manufacture a factual justification.',
+      '* If the question is a matter of taste ("best", "coolest", "favourite"),',
+      '  NAME AN ACTUAL CARD and say why you like it, in your own voice. Own it.',
+      '  Never hedge with "it depends" or "there is no objective best", and never',
+      '  build a justification out of supply, series or issuance numbers.',
       '* Never invent card facts or history. If nothing was retrieved, just talk.',
       '',
       '### Length — this is a hard ceiling',

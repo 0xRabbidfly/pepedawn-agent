@@ -2,11 +2,10 @@
  * Action Attribution Context
  *
  * `/fc` reports cost broken down **By Type** (the call site, e.g. "Lore calls")
- * and **By Action** (what the user actually asked for, e.g. `/fl` or
+ * and **By Action** (what the user actually asked for, e.g. `/f` or
  * `smart-router`). The two answer different questions: "Lore calls" cost the
- * same whether it came from an explicit `/fl` or from auto-routing, and the
- * deprecation work in `src/config/deprecatedCommands.ts` needs to tell those
- * apart.
+ * same whether it came from a command or from auto-routing, and knowing which
+ * is what makes the report actionable.
  *
  * Model calls happen several frames below the point where the action is known,
  * so the label rides along in an AsyncLocalStorage rather than being threaded

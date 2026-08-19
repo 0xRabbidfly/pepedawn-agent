@@ -93,9 +93,13 @@ export const helpCommand: Action = {
 **XCP Dispensers:** 💰
 \`/xcp\` - View verified XCP dispenser list
 
+**Fake Remember:** 💾
+\`/fr CARDNAME <lore>\` - Artists: add lore for your card
+\`@pepedawn_bot Remember this:\` <enter any lore/facts>
+
 **Just talk to me:** 💬
 Ask about any card, its lore, what it looks like, or who made it —
-no command needed. Reply with \`remember this: ...\` to store lore.`;
+no command needed.`;
 
     if (callback) {
       await callback({ text: helpMessage });

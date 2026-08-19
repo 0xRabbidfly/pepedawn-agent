@@ -6,7 +6,6 @@
  */
 
 import { logger, type IAgentRuntime, type Memory } from '@elizaos/core';
-import { getDeprecation, formatDeprecationNotice } from '../config/deprecatedCommands';
 import { runWithAction } from './actionContext';
 
 export interface Action {
@@ -44,7 +43,6 @@ export async function executeCommand(
 
   // Prepare callback
   const actionCallback = typeof params.callback === 'function' ? params.callback : null;
-  const deprecation = getDeprecation(commandName);
   
   // Suppress Bootstrap by replacing callback with no-op
   // Keep reference to original for action's use
@@ -74,17 +72,6 @@ export async function executeCommand(
         )
       );
 
-      // Deprecated commands still run, but tell the user where to go next.
-      if (deprecation && actionCallback) {
-        try {
-          await actionCallback({
-            text: formatDeprecationNotice(deprecation),
-            __fromAction: 'deprecation_notice',
-          });
-        } catch (err) {
-          logger.debug(`[CommandHandler] Failed to send deprecation notice: ${err}`);
-        }
-      }
 
       // Mark as handled to prevent Bootstrap processing
       try {
@@ -95,16 +82,16 @@ export async function executeCommand(
       }
 
       logger.debug(`[CommandHandler] ${commandName} completed successfully`);
-      recordCommandUsage(params, commandName, true, !!deprecation);
+      recordCommandUsage(params, commandName, true);
       return true;
     } else {
       logger.debug(`[CommandHandler] ${commandName} validation failed`);
-      recordCommandUsage(params, commandName, false, !!deprecation);
+      recordCommandUsage(params, commandName, false);
       return false;
     }
   } catch (err) {
     logger.error(`[CommandHandler] ${commandName} execution error:`, err);
-    recordCommandUsage(params, commandName, false, !!deprecation);
+    recordCommandUsage(params, commandName, false);
     return false;
   }
 }
@@ -117,8 +104,7 @@ export async function executeCommand(
 function recordCommandUsage(
   params: CommandHandlerParams,
   commandName: string,
-  success: boolean,
-  deprecated: boolean
+  success: boolean
 ): void {
   try {
     const telemetry = (params.runtime as any)?.getService?.('telemetry');
@@ -129,7 +115,6 @@ function recordCommandUsage(
         timestamp: new Date().toISOString(),
         command: commandName,
         success,
-        deprecated,
         roomId: params.message?.roomId,
         entityId: params.message?.entityId,
         messageId: params.message?.id,

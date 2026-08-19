@@ -108,7 +108,6 @@ export interface CommandLog {
   timestamp: string;
   command: string;
   success: boolean;
-  deprecated: boolean;
   roomId?: string;
   entityId?: string;
   messageId?: string;
@@ -251,10 +250,7 @@ export class TelemetryService extends Service {
       }
 
       appendFileSync(COMMAND_LOG_FILE(), JSON.stringify(log) + '\n', 'utf8');
-      logger.debug(
-        `[Telemetry] Command logged: ${log.command} success=${log.success}` +
-          (log.deprecated ? ' (deprecated)' : '')
-      );
+      logger.debug(`[Telemetry] Command logged: ${log.command} success=${log.success}`);
     } catch (err) {
       logger.error('[Telemetry] Failed to log command usage:', err);
     }

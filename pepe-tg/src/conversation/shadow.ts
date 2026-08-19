@@ -21,6 +21,7 @@ import { FileRoomHistoryStore } from './fileRoomHistoryStore';
 import { RoomHistory } from './roomHistory';
 import { REGISTER_RANK, type ConversationTurn } from './types';
 import { FileSocialStore, SocialMemory, defaultSocialStorePath } from './socialMemoryRuntime';
+import type { ScoredMemory } from './socialMemory';
 
 /**
  * Output directory. Overridable so tests (and a future separate volume) do not
@@ -234,5 +235,30 @@ export async function flushShadow(): Promise<void> {
     social = null;
   } catch {
     // As above.
+  }
+}
+
+/**
+ * Memories worth mentioning to the people currently in the room.
+ *
+ * Returns '' when there is nothing to say or the room heard a callback
+ * recently, so callers can inject it unconditionally.
+ */
+export async function recallForPrompt(
+  roomId: string,
+  presentNames: Array<string | undefined>,
+  now = Date.now()
+): Promise<string> {
+  if (!shadowEnabled()) return '';
+  try {
+    const memory = getSocialMemory();
+    const memories: ScoredMemory[] = await memory.recall(
+      roomId,
+      new Set(memory.resolveIds(presentNames)),
+      now
+    );
+    return SocialMemory.renderForPrompt(memories);
+  } catch {
+    return '';
   }
 }
