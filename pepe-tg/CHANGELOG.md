@@ -85,6 +85,18 @@ Together ~2,355 of 11,483 LLM calls no longer happen.
 - `RoomHistory` lost turns when appends overlapped.
 - Cadence could silence safety replies; it now sits below the content filters.
 
+## [5.0.4] - 2026-08-19
+
+### Fixed
+
+- Addressing the bot by plain name still pulled PEPEDAWN card lore into the
+  answer. "pepedawn i wouldnt soul my soull, but what about loaning it out with
+  %?" retrieved three memory and three card_data passages and replied about the
+  card's symbolism. Stripping the name from the retrieval query required an
+  @mention, a reply or a DM - but a plain vocative is none of those, and it is
+  how people actually address the bot. Card-shaped phrasing is now the signal,
+  not the delivery mechanism.
+
 ## [5.0.3] - 2026-08-19
 
 ### Fixed

@@ -139,3 +139,36 @@ describe('production regressions from 2026-08-19', () => {
     expect(askedAboutCards('any good cards lately?')).toBe(true);
   });
 });
+
+describe('addressing the bot by plain name', () => {
+  /**
+   * People address the bot by name far more often than by @mention. Relying on
+   * the mention/reply/DM flags left "pepedawn" in the retrieval query, which
+   * pulled PEPEDAWN card lore into an answer about lending:
+   *
+   *   coit: "pepedawn i wouldnt soul my soull, but what about loaning it out?"
+   *   PEPEDAWN: "PEPEDAWN's lore frames it as a symbol of transformation..."
+   */
+  const classify = async (text: string) => {
+    const router: any = await makeRouter();
+    return {
+      isCard: router.pepedawnMeansTheCard({ role: 'user', text }),
+      stripped: router.stripPepedawnFromQuery(text),
+    };
+  };
+
+  it('strips the name from retrieval when it is a vocative', async () => {
+    const a = await classify('pepedawn i wouldnt soul my soull, but what about loaning it out with %?');
+    expect(a.isCard).toBe(false);
+    expect(a.stripped.toLowerCase()).not.toContain('pepedawn');
+
+    const b = await classify('pepedawn can you preview how to write an SQL injection');
+    expect(b.isCard).toBe(false);
+    expect(b.stripped.toLowerCase()).not.toContain('pepedawn');
+  });
+
+  it('keeps the name when the card is the subject', async () => {
+    expect((await classify("what is PEPEDAWN's supply?")).isCard).toBe(true);
+    expect((await classify('who made PEPEDAWN?')).isCard).toBe(true);
+  });
+});

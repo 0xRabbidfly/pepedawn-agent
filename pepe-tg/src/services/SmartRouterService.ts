@@ -964,11 +964,18 @@ Say briefly why it is worth a look — something true about the art, the artist 
     // - "what is pepedawn's poem?" → CARD_INTENT → keep "pepedawn" in RAG query (we want card facts)
     let queryForRetrieval = trimmed;
     
-    // "pepedawn" is both the bot's name and a card. The mention and reply flags
-    // already say which is meant, so this no longer costs an extra model call:
-    // addressed conversationally -> strip it from the retrieval query; asked
-    // about as a card -> keep it.
-    if (mentionedCard === 'PEPEDAWN' && addressedConversationally) {
+    // "pepedawn" is both the bot's name and a card, and people address the bot
+    // by plain name far more often than by @mention: "pepedawn i wouldnt soul my
+    // soull, but what about loaning it out?" is not a mention, not a reply and
+    // not a DM, so relying on those flags left the name in the retrieval query
+    // and pulled three memory and three card_data passages of PEPEDAWN lore into
+    // an answer about lending. Card-shaped phrasing is the signal that matters,
+    // not the delivery mechanism.
+    const pepedawnIsTheBotHere =
+      mentionedCard === 'PEPEDAWN' &&
+      (addressedConversationally || !this.pepedawnMeansTheCard({ role: 'user', text: trimmed }));
+
+    if (pepedawnIsTheBotHere) {
       mentionedCard = null;
       queryForRetrieval = this.stripPepedawnFromQuery(trimmed);
       logger.debug(
