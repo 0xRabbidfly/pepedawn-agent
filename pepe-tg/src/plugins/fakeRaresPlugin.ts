@@ -697,11 +697,19 @@ export const fakeRaresPlugin: Plugin = {
 
           // v5 shadow mode: observe only, never responds. Disabled unless
           // V5_SHADOW=true. See src/conversation/shadow.ts
+          // In a DM every message is addressed to the bot by definition, so
+          // group cadence rules (share of voice, minimum gap) must not apply.
+          // Live testing on @pepedawntest_bot surfaced this: a direct question
+          // in a private chat scored addressedBot=false.
+          const isDirectMessage =
+            (message.content as any)?.channelType === 'DM' ||
+            params.ctx?.chat?.type === 'private';
+
           void observeUserMessage({
             roomId: message.roomId,
             text,
             author: getDisplayName(params, message),
-            addressedBot: !!(isReplyToBot || triggers.hasBotMention),
+            addressedBot: !!(isReplyToBot || triggers.hasBotMention || isDirectMessage),
           });
           const { isHelp, isStart, isF, isFCarousel, isC, isP, isFv, isFt, isFl, isFr, isFm, isDawn, isFc, isXcp } = commands;
           
