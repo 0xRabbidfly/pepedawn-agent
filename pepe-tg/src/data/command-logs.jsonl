@@ -14,3 +14,4 @@
 {"timestamp":"2026-08-19T13:18:38.343Z","command":"/f","success":true,"roomId":"e36d8988-f603-0aae-a116-b3ad966ec484","entityId":"e36d8988-f603-0aae-a116-b3ad966ec484","messageId":"3a5544a8-6570-0dff-bfe0-0f472d7fa798"}
 {"timestamp":"2026-08-19T13:18:42.622Z","command":"/f","success":true,"roomId":"e36d8988-f603-0aae-a116-b3ad966ec484","entityId":"e36d8988-f603-0aae-a116-b3ad966ec484","messageId":"8b714552-f3f7-0365-aad5-ef2639ff2226"}
 {"timestamp":"2026-08-19T13:18:47.236Z","command":"/f c","success":true,"roomId":"e36d8988-f603-0aae-a116-b3ad966ec484","entityId":"e36d8988-f603-0aae-a116-b3ad966ec484","messageId":"c2a7a6d8-3541-0130-90fd-2bf57de75d19"}
+{"timestamp":"2026-08-19T13:32:15.182Z","command":"/help","success":true,"roomId":"e36d8988-f603-0aae-a116-b3ad966ec484","entityId":"e36d8988-f603-0aae-a116-b3ad966ec484","messageId":"af5602a9-4e97-0fdc-a840-20088903b568"}

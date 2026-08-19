@@ -114,6 +114,9 @@ describe('shadow mode through the real message path', () => {
     shadowDir = mkdtempSync(join(tmpdir(), 'pepedawn-shadow-'));
     process.env.V5_SHADOW = 'true';
     process.env.V5_SHADOW_DIR = shadowDir;
+    // shadowEnabled() is true if EITHER flag is set, so enforcement must be
+    // explicitly off or the "flag off" case cannot be tested.
+    delete process.env.V5_ENFORCE;
     process.env.SUPPRESS_BOOTSTRAP = 'true';
     resetShadowState();
     resetEngagementTracking();
@@ -122,6 +125,7 @@ describe('shadow mode through the real message path', () => {
   afterEach(async () => {
     await flushShadow();
     delete process.env.V5_SHADOW;
+    delete process.env.V5_ENFORCE;
     delete process.env.V5_SHADOW_DIR;
     delete process.env.SUPPRESS_BOOTSTRAP;
     resetShadowState();
@@ -168,6 +172,7 @@ describe('shadow mode through the real message path', () => {
 
   it('writes nothing at all when the flag is off', async () => {
     delete process.env.V5_SHADOW;
+    delete process.env.V5_ENFORCE;
     resetShadowState();
     await handler!(makeParams('gm with shadow disabled'));
     await flushShadow();

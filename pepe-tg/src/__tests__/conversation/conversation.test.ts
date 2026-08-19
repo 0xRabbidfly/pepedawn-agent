@@ -283,6 +283,7 @@ describe('RoomHistory persistence', () => {
 describe('enforcement gating', () => {
   it('suppresses only when V5_ENFORCE is on and cadence says SILENT', async () => {
     const { observeUserMessage, resetShadowState } = await import('../../conversation/shadow');
+    try {
     const dir = `${process.env.TMPDIR || '/tmp'}/pepedawn-enforce-${Date.now()}`;
     process.env.V5_SHADOW_DIR = dir;
 
@@ -301,9 +302,14 @@ describe('enforcement gating', () => {
     expect(addressed.suppress).toBe(false);
     expect(addressed.reason).toBe('addressed_exempt');
 
-    delete process.env.V5_ENFORCE;
-    delete process.env.V5_SHADOW;
-    delete process.env.V5_SHADOW_DIR;
-    resetShadowState();
+    // Cleared in a finally so a failing assertion above cannot leak enforcement
+    // into every later test file - which is exactly how a single broken
+    // expectation turned into a dozen unrelated failures.
+    } finally {
+      delete process.env.V5_ENFORCE;
+      delete process.env.V5_SHADOW;
+      delete process.env.V5_SHADOW_DIR;
+      resetShadowState();
+    }
   });
 });
