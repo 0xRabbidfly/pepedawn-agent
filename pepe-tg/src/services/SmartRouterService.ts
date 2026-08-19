@@ -613,7 +613,10 @@ export class SmartRouterService extends Service {
   }
 
   private looksDescriptive(text: string): boolean {
-    return /\b(most|more|very|really|sexiest|ugliest|weirdest|scariest|darkest|brightest|prettiest|funniest|wildest|colou?rful|psychedelic|trippy|retro|vintage|creepy|red|blue|green|purple|orange|yellow|pink|black|white|gold)\b/i.test(
+    // Intensifiers alone are not descriptions - "i get really awkward" is not a
+    // question about how a card looks. A colour or a visual quality must be
+    // present, optionally preceded by an intensifier.
+    return /\b(sexiest|ugliest|weirdest|scariest|darkest|brightest|prettiest|funniest|wildest|colou?rful|psychedelic|trippy|retro|vintage|creepy|dark|scary|sexy|ugly|weird|wild|pretty|bright|funny|red|blue|green|purple|orange|yellow|pink|black|white|gold|rainbow|neon|pastel|abstract|minimal)\b/i.test(
       text
     );
   }
@@ -891,7 +894,7 @@ Say briefly why it is worth a look — something true about the art, the artist 
     // Descriptive questions - "most red", "sexiest", "most psychedelic" - are
     // answered from what the /fv vision pass actually recorded, not by semantic
     // similarity over prose. That is how "grantfly" came back for a red query.
-    if (this.looksDescriptive(trimmed)) {
+    if (this.concernsCards(trimmed) && this.looksDescriptive(trimmed)) {
       // The /fv vision pass only ever ran over Fake Rares - 875 cards, none in
       // Commons or Rare Pepes - so a descriptive question about another
       // collection has no data behind it and must not be answered from this one.

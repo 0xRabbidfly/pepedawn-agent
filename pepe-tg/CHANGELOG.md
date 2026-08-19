@@ -85,6 +85,23 @@ Together ~2,355 of 11,483 LLM calls no longer happen.
 - `RoomHistory` lost turns when appends overlapped.
 - Cadence could silence safety replies; it now sits below the content filters.
 
+## [5.0.5] - 2026-08-19
+
+### Fixed
+
+- The bot volunteered a card for ordinary conversation. "oh no, i get really
+  awkward in small places when scrilla is there" was answered "DONALDTPEPE by
+  Rodro - the vision pass recorded: get." followed by the card video. Three
+  faults compounded and all three are fixed: trait search was never gated on the
+  message concerning cards; the descriptive check was satisfied by the bare
+  intensifier "really"; and arbitrary words were scored against recorded traits,
+  so the word "get" picked a card.
+
+  Trait search now runs only when the message concerns cards AND names a real
+  visual quality, and only recognised descriptive vocabulary - colours, moods,
+  styles - can score at all. Ordinary chatter now yields no search terms
+  whatsoever, so a card cannot be named however the sentence is phrased.
+
 ## [5.0.4] - 2026-08-19
 
 ### Fixed

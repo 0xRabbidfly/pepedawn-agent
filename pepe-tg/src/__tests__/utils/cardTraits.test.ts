@@ -109,3 +109,42 @@ describe('collections are kept apart', () => {
     }
   });
 });
+
+describe('never volunteer a card for ordinary conversation', () => {
+  const gateAndSearch = async (text: string) => {
+    const { SmartRouterService } = await import('../../services/SmartRouterService');
+    const router: any = new (SmartRouterService as any)({
+      agentId: 'test',
+      getService: () => null,
+    } as any);
+    const gated = router.concernsCards(text) && router.looksDescriptive(text);
+    return gated ? findCardsByTrait(text, 1)[0] : undefined;
+  };
+
+  it('says nothing about cards when the user did not mention one', async () => {
+    // "oh no, i get really awkward in small places when scrilla is there"
+    // answered "DONALDTPEPE by Rodro — the vision pass recorded: get." and
+    // posted the video. Three faults compounded: "really" satisfied the
+    // descriptive check, "get" was scored as a trait, and trait search was
+    // never gated on the message concerning cards at all.
+    expect(await gateAndSearch('oh no , i get really awkawrd ni small places when scrilla is there')).toBeUndefined();
+    expect(await gateAndSearch('lol - more work to do')).toBeUndefined();
+    expect(await gateAndSearch('i really like this place')).toBeUndefined();
+    expect(await gateAndSearch('how are you today?')).toBeUndefined();
+    expect(await gateAndSearch('pepedawn i wouldnt soul my soull, but what about loaning it out?')).toBeUndefined();
+  });
+
+  it('still answers genuine descriptive questions', async () => {
+    expect((await gateAndSearch('which fake rare has the most red?'))?.asset).toBeTruthy();
+    expect((await gateAndSearch('what is the sexiest pepe'))?.asset).toBeTruthy();
+    expect((await gateAndSearch('show me a dark scary card'))?.asset).toBeTruthy();
+    expect((await gateAndSearch('most psychedelic card'))?.asset).toBeTruthy();
+  });
+
+  it('only scores recognised descriptive vocabulary', () => {
+    // Arbitrary words must never reach the traits at all.
+    expect(traitTerms('i get really awkward when scrilla is there')).toEqual([]);
+    expect(traitTerms('lol more work to do')).toEqual([]);
+    expect(traitTerms('most red card')).toContain('red');
+  });
+});

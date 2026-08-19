@@ -22,6 +22,15 @@ const STOP = new Set([
   'what','card','cards','fake','fakes','rare','rares','pepe','pepes','show','me','find','one','that',
   'best','top','you','your','it','its','to','for','about','any','some','got','give','tell','looks',
   'look','like','something','thing','really','very','much','lot','lots','full','all',
+  // Ordinary conversation words. Without these, "i get really awkward in small
+  // places when scrilla is there" matched a card whose recorded traits include
+  // the word "get", and the bot answered "the vision pass recorded: get."
+  'get','got','when','where','there','here','then','than','this','that','these','those',
+  'oh','no','yes','not','but','so','just','now','too','also','been','being','was','were',
+  'they','them','their','his','her','our','who','whom','why','how','can','could','would',
+  'should','will','shall','may','might','do','does','did','done','make','made','take',
+  'small','big','little','places','place','people','person','time','day','way','know',
+  'think','feel','feels','said','say','says','going','goes','come','came','want','need',
 ]);
 
 /** Loose synonyms so ordinary phrasing reaches the vision vocabulary. */
@@ -70,7 +79,11 @@ export function traitTerms(query: string): string[] {
     .split(/\s+/)
     .filter((w) => w.length > 2 && !STOP.has(w));
   const terms = new Set<string>();
-  for (const w of words) for (const e of expand(w)) terms.add(e);
+  for (const w of words) {
+    for (const e of expand(w)) {
+      if (DESCRIPTIVE_VOCABULARY.has(e)) terms.add(e);
+    }
+  }
   return [...terms];
 }
 
@@ -81,6 +94,31 @@ export function traitTerms(query: string): string[] {
  * every distinct matching trait, so a card described as "red tones, crimson
  * background" outranks one that merely mentions red once.
  */
+/**
+ * Minimum score for a trait match to be offered.
+ *
+ * One exact hit scores 3, which let a single incidental word decide the answer.
+ * Requiring more means a card has to match the description in more than one
+ * way before it is named.
+ */
+const MIN_TRAIT_SCORE = 3;
+
+/**
+ * The only vocabulary trait search will match on.
+ *
+ * Scoring arbitrary words against recorded traits is what produced "the vision
+ * pass recorded: get." for "i get really awkward in small places". A term has to
+ * be a recognised description - a colour, a mood, a style - before it can decide
+ * which card gets named.
+ */
+const DESCRIPTIVE_VOCABULARY: ReadonlySet<string> = new Set(
+  Object.values(SYNONYMS).flat().concat([
+    'cubist','geometric','angular','portrait','landscape','cartoon','anime','pixel',
+    'glitch','collage','sketch','painterly','monochrome','sepia','metallic','glossy',
+    'skull','frog','crown','fire','water','space','city','forest','ocean','moon','sun',
+  ])
+);
+
 export function findCardsByTrait(query: string, limit = 5): TraitMatch[] {
   const terms = traitTerms(query);
   if (terms.length === 0) return [];
@@ -104,7 +142,7 @@ export function findCardsByTrait(query: string, limit = 5): TraitMatch[] {
         // "grantfly" for a red query.
       }
     }
-    if (score > 0) {
+    if (score >= MIN_TRAIT_SCORE) {
       results.push({ asset, score, matched: [...new Set(matched)] });
     }
   }
