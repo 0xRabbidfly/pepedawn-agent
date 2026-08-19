@@ -88,15 +88,19 @@ const MODE_PRESETS: Record<
     },
     topKPerSource: Math.max(5, SMART_ROUTER_CONFIG.topKPerSource),
   },
+  // Conversation is still *about* Fake Rares, so card facts and wiki are the
+  // useful grounding. This previously weighted telegram at 3.2 - the highest of
+  // any source in any mode - and card_data at 0.4, which meant the bot could not
+  // discuss a card conversationally even when it had just retrieved it.
   CHAT: {
     sourceWeights: {
-      memory: 1.4,
-      wiki: 0.6,
-      card_data: 0.4,
-      telegram: 3.2,
-      unknown: 0.6,
+      memory: 2.0,
+      wiki: 1.8,
+      card_data: 2.4,
+      telegram: 0.5,
+      unknown: 0.4,
     },
-    topKPerSource: Math.max(8, SMART_ROUTER_CONFIG.topKPerSource),
+    topKPerSource: Math.max(6, SMART_ROUTER_CONFIG.topKPerSource),
   },
 };
 
@@ -607,16 +611,31 @@ export class SmartRouterService extends Service {
     };
   }
 
+  /**
+   * Grounding facts for conversation.
+   *
+   * Previously this filtered to source_type === 'telegram', so chat replies were
+   * seeded with old chat-log snippets and never with card facts or wiki — the
+   * bot could not talk about a card it had just retrieved. Card data and wiki
+   * are what a conversation about a card actually needs; the frozen Telegram
+   * archive is being retired (see PEPEDAWN_CHAT_V5.md §2).
+   */
   private buildChatNotes(retrieval: RetrieveCandidatesResult | null): string {
     if (!retrieval) return '';
-    const telegramSnippets = retrieval.candidates
-      .filter((c) => c.source_type === 'telegram')
+    const useful = retrieval.candidates.filter(
+      (c) => c.source_type === 'card_data' || c.source_type === 'wiki' || c.source_type === 'memory'
+    );
+    if (useful.length === 0) return '';
+    return useful
       .slice(0, 5)
       .map((c) => {
         const text = (c.full_text ?? c.text_preview ?? '').replace(/\s+/g, ' ').trim();
-        return `- ${text}${text.length > 220 ? '…' : ''}`;
-      });
-    return telegramSnippets.join('\n');
+        const label =
+          c.source_type === 'card_data' ? 'card' : c.source_type === 'memory' ? 'memory' : 'wiki';
+        const clipped = text.length > 320 ? `${text.slice(0, 320)}…` : text;
+        return `- [${label}] ${clipped}`;
+      })
+      .join('\n');
   }
 
   private formatRecentChat(turns: ConversationTurn[], limit: number): string {
@@ -789,37 +808,39 @@ export class SmartRouterService extends Service {
       recentTranscript,
       '',
       throwbackNotes
-        ? `Relevant throwbacks:\n${throwbackNotes}`
-        : 'Relevant throwbacks:\n(none)',
+        ? `What you know that is relevant (retrieved just now):\n${throwbackNotes}`
+        : 'What you know that is relevant: (nothing retrieved)',
       '',
       `Respond as PEPEDAWN to: "${userText}"`,
       '',
-      '### Output contract',
+      '### Using what you know',
       '',
-      '* If the classifier *should have* chosen NORESPONSE, default to a single neutral emoji.',
-      '* Max length:',
+      '* If card facts are listed above and the message touches that card, weave them',
+      '  in naturally - the way a collector who knows the piece would mention it.',
+      '  One or two concrete details, in the flow of talking. Not a fact sheet.',
+      '* Never present a spec as a verdict. Supply, series and issuance are context,',
+      '  not proof that something is good, rare or valuable.',
+      '* If the question is a matter of taste ("best", "coolest", "favourite"), answer',
+      '  as an opinion and own it. Do not manufacture a factual justification.',
+      '* Never invent card facts or history. If nothing was retrieved, just talk.',
       '',
-      '  * If user < 5 words -> reply 1-5 words (or a single fitting emoji).',
-      '  * If user 5-15 words -> one short sentence (<= 16 words).',
-      '  * If user > 15 words -> one sentence (<= 22 words), rarely two if absolutely necessary.',
-      '* Never end with a question mark. No probing follow-ups. No "anything else?"',
-      '* Match energy: mirror emoji/punctuation intensity; if they are flat, stay flat.',
-      '* Hostility or "be quiet" cues (e.g., stfu/stop/boring/pfffff) -> reply with one neutral emoji (e.g., 👂 or 🫡) or a 1-2 word acknowledge (e.g., "noted").',
-      '* If the prior two bot replies were consecutive without a new ask -> return a single emoji only.',
-      '* If you are unsure, state it in <= 8 words (e.g., "Not sure yet; need details.").',
-      '* Do not fabricate card facts or history; if uncertain, be brief and neutral.',
+      '### Voice',
       '',
-      '### Style',
-      '',
-      '* Degen tone is fine (gm/ser/kek) but minimal.',
-      '* Never lecture. Never hijack. End cleanly.',
-      '* Stay on topic (Fake Rares / Rare Pepes / crypto-art / Bitcoin / Counterparty).',
+      '* Warm, dry, culturally fluent. A regular in the room, not a service desk.',
+      '* Match the energy in front of you - brief with brief, relaxed with relaxed.',
+      '* Two or three sentences at most. Usually one.',
+      '* Degen register is fine (gm/ser/kek) when it fits. Never forced.',
+      '* Do not lecture, do not summarise the conversation, do not offer further help.',
+      '* Stay on Fake Rares / Rare Pepes / crypto-art / Bitcoin / Counterparty.',
       '',
       'Return only the final message text (no metadata).',
     ].join('\n');
 
     try {
-      const model = process.env.OPENAI_SMALL_MODEL || 'gpt-4o-mini';
+      // Conversation is the thing the community actually reads, so it gets a
+      // capable model. CHAT_MODEL overrides; the default is no longer the
+      // cheapest option available.
+      const model = process.env.CHAT_MODEL || process.env.OPENAI_LARGE_MODEL || 'gpt-4o';
       const result = await callTextModel(this.runtime, {
         model,
         prompt,
