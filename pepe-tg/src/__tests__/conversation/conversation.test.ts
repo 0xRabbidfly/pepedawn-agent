@@ -279,3 +279,31 @@ describe('RoomHistory persistence', () => {
     expect((await history.get('b'))[0].text).toBe('in b');
   });
 });
+
+describe('enforcement gating', () => {
+  it('suppresses only when V5_ENFORCE is on and cadence says SILENT', async () => {
+    const { observeUserMessage, resetShadowState } = await import('../../conversation/shadow');
+    const dir = `${process.env.TMPDIR || '/tmp'}/pepedawn-enforce-${Date.now()}`;
+    process.env.V5_SHADOW_DIR = dir;
+
+    // Shadow only: never suppresses, however hot the room.
+    process.env.V5_SHADOW = 'true';
+    delete process.env.V5_ENFORCE;
+    resetShadowState();
+    await observeUserMessage({ roomId: 'r1', text: 'gm', addressedBot: false });
+    const shadowVerdict = await observeUserMessage({ roomId: 'r1', text: 'gm again', addressedBot: false });
+    expect(shadowVerdict.suppress).toBe(false);
+
+    // Enforcing: a direct address is still never suppressed.
+    process.env.V5_ENFORCE = 'true';
+    resetShadowState();
+    const addressed = await observeUserMessage({ roomId: 'r2', text: 'pepedawn?', addressedBot: true });
+    expect(addressed.suppress).toBe(false);
+    expect(addressed.reason).toBe('addressed_exempt');
+
+    delete process.env.V5_ENFORCE;
+    delete process.env.V5_SHADOW;
+    delete process.env.V5_SHADOW_DIR;
+    resetShadowState();
+  });
+});

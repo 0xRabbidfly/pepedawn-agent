@@ -33,8 +33,14 @@ message was lost this way. Let the bot poll; read results from logs. (Telegram
 queues updates ~24h, so a message sent while the bot is off is processed on the
 next boot.)
 
-**Testing is local.** Running `bun run start` locally against @pepedawntest_bot
-is the full test loop. Deploying to DigitalOcean is *not* required to test.
+**Testing is local.** `./scripts/run-testbot.sh` runs against @pepedawntest_bot
+with v5 **enforced** and periodic content off, and restores `.env` on exit.
+Deploying to DigitalOcean is *not* required to test.
+
+`V5_ENFORCE=true` makes the cadence governor binding; `V5_SHADOW=true` only
+records. Shadow exists for the production rollout — measuring a change against
+real users without affecting them. On the test bot, enforce is the default,
+because there you want to feel the behaviour rather than read a log.
 
 ---
 

@@ -12,7 +12,7 @@ import { SmartRouterService, type SmartRoutingPlan } from '../services/SmartRout
 import { SMART_ROUTER_CONFIG } from '../config/smartRouterConfig';
 import { FULL_CARD_INDEX } from '../data/fullCardIndex';
 import { startAutoRefresh } from '../utils/cardIndexRefresher';
-import { detectMessagePatterns } from '../utils/messagePatterns';
+import { detectMessagePatterns, hasAnyCommand } from '../utils/messagePatterns';
 import { calculateEngagementScore, shouldRespond } from '../utils/engagementScorer';
 import { executeCommand, executeCommandAlways, type CommandHandlerParams } from '../utils/commandHandler';
 import { stripCardNamePrefix } from '../utils/cardNamePrefixSanitizer';
@@ -705,12 +705,22 @@ export const fakeRaresPlugin: Plugin = {
             (message.content as any)?.channelType === 'DM' ||
             params.ctx?.chat?.type === 'private';
 
-          void observeUserMessage({
+          const v5 = await observeUserMessage({
             roomId: message.roomId,
             text,
             author: getDisplayName(params, message),
             addressedBot: !!(isReplyToBot || triggers.hasBotMention || isDirectMessage),
           });
+
+          // V5_ENFORCE makes the cadence governor binding rather than observed.
+          // Commands are exempt: an explicit /f is a direct request, and
+          // silencing it would look broken rather than tactful.
+          if (v5.suppress && !hasAnyCommand(patterns)) {
+            logger.info(`   Decision: SUPPRESS (v5 cadence: ${v5.reason})`);
+            message.metadata = message.metadata || {};
+            (message.metadata as any).__handledByCustom = true;
+            return;
+          }
           const { isHelp, isStart, isF, isFCarousel, isC, isP, isFv, isFt, isFl, isFr, isFm, isDawn, isFc, isXcp } = commands;
           
           // Log routing factors

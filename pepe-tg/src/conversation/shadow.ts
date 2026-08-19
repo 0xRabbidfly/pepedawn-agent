@@ -19,7 +19,7 @@ import { evaluateCadence } from './cadenceGovernor';
 import { readRoomTemperature } from './roomTemperature';
 import { FileRoomHistoryStore } from './fileRoomHistoryStore';
 import { RoomHistory } from './roomHistory';
-import type { ConversationTurn } from './types';
+import { REGISTER_RANK, type ConversationTurn } from './types';
 
 /**
  * Output directory. Overridable so tests (and a future separate volume) do not
@@ -34,7 +34,16 @@ function shadowLogFile(): string {
 }
 
 export function shadowEnabled(): boolean {
-  return process.env.V5_SHADOW === 'true';
+  return process.env.V5_SHADOW === 'true' || enforceEnabled();
+}
+
+/**
+ * When true the cadence verdict actually gates replies instead of only being
+ * recorded. Intended for the test bot, so the new behaviour can be felt rather
+ * than read off a log.
+ */
+export function enforceEnabled(): boolean {
+  return process.env.V5_ENFORCE === 'true';
 }
 
 let history: RoomHistory | null = null;
@@ -79,18 +88,27 @@ export async function observeUserMessage(input: {
   /** What the existing pipeline went on to do, for comparison. */
   actualHandled?: boolean;
   now?: number;
-}): Promise<void> {
-  if (!shadowEnabled()) return;
+}): Promise<ShadowVerdict> {
+  const allow: ShadowVerdict = { suppress: false, register: 'DEEP', reason: 'shadow_disabled' };
+  if (!shadowEnabled()) return allow;
   try {
     const now = input.now ?? Date.now();
     const h = getHistory();
     // Read and append atomically, or a fast room observes a stale history.
-    await h.withRoom(input.roomId, (turns) => {
-      observeWithTurns(h, input, turns, now);
-    });
+    return await h.withRoom(input.roomId, (turns) =>
+      observeWithTurns(h, input, turns, now)
+    );
   } catch {
     // Never let shadow mode interfere with a real response.
+    return allow;
   }
+}
+
+export interface ShadowVerdict {
+  /** True only when enforcement is on AND the register collapsed to SILENT. */
+  suppress: boolean;
+  register: string;
+  reason: string;
 }
 
 function observeWithTurns(
@@ -104,7 +122,7 @@ function observeWithTurns(
   },
   turns: ConversationTurn[],
   now: number
-): void {
+): ShadowVerdict {
     const temperature = readRoomTemperature(
       turns,
       now,
@@ -135,6 +153,17 @@ function observeWithTurns(
       at: now,
       addressedBot: input.addressedBot,
     });
+
+    // Room temperature caps how much to say; only cadence decides whether to
+    // speak at all. Suppression is therefore driven by the cadence verdict.
+    const register = REGISTER_RANK[temperature.cap] <= REGISTER_RANK[cadence.cap]
+      ? temperature.cap
+      : cadence.cap;
+    return {
+      suppress: enforceEnabled() && cadence.cap === 'SILENT',
+      register,
+      reason: cadence.reason,
+    };
 }
 
 /** Record that the live bot actually replied, so history stays truthful. */
