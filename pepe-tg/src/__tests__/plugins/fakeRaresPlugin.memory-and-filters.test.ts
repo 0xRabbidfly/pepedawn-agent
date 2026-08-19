@@ -114,48 +114,6 @@ describe('fakeRaresPlugin MESSAGE_RECEIVED – memory capture and filters', () =
     expect((message.metadata as any).__handledByCustom).toBeUndefined();
   });
 
-  it('uses card discovery hint to call SmartRouter with forceCardFacts=true', async () => {
-    const planRouting = mock().mockResolvedValue({
-      kind: 'FACTS',
-      intent: 'FACTS',
-      reason: 'test_card_intent',
-      retrieval: null,
-      story: 'test',
-    });
-    const smartRouterStub = {
-      recordUserTurn: mock().mockReturnValue(undefined),
-      recordBotTurn: mock().mockReturnValue(undefined),
-      planRouting,
-    };
-
-    const runtime = {
-      agentId: 'test-agent',
-      useModel: mock().mockResolvedValue([0.1, 0.2, 0.3]),
-      searchMemories: mock().mockResolvedValue([]),
-      getService: mock((serviceType: string) => {
-        if (serviceType === SmartRouterService.serviceType) return smartRouterStub;
-        return null;
-      }),
-    };
-
-    const callback = mock();
-    const message = {
-      id: 'card-intent-1',
-      entityId: 'test-user',
-      roomId: 'test-room',
-      content: { text: 'show me a card about pepe art' },
-      metadata: {},
-    };
-
-    const params = { runtime, message, callback, ctx: {} };
-
-    await messageHandler!(params);
-
-    expect(planRouting).toHaveBeenCalled();
-    const firstCallArgs = planRouting.mock.calls[0];
-    expect(firstCallArgs[0]).toBe('show me a card about pepe art');
-    expect(firstCallArgs[2]).toMatchObject({ forceCardFacts: true });
-  });
 
   it('blocks FAKEASF burn requests with a fixed response and no router involvement', async () => {
     const smartRouterStub = {

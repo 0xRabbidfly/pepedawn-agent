@@ -75,78 +75,24 @@ describe('SmartRouterService conversation history', () => {
   });
 });
 
-describe('SmartRouterService card recommend formatting', () => {
-  function createRouterWithKnowledge(mockResult: any): SmartRouterService {
-    const runtimeStub = {
-      getService: (serviceType: string) => {
-        if (serviceType === SmartRouterService.serviceType) return null;
-        if (serviceType === (KnowledgeOrchestratorService as any).serviceType) {
-          return {
-            retrieveKnowledge: async () => mockResult,
-          };
-        }
-        return null;
-      },
-    } as unknown as IAgentRuntime;
-    return new SmartRouterService(runtimeStub);
-  }
-
-  it('strips duplicate card names and annotations from summaries and reasons', async () => {
-    const mockResult = {
-      primaryCardAsset: 'DJPEPEBADGER.GORILLA-GLUE-MONEY-BADGER',
-      cardSummary: '',
-      story: '',
-      cardMatches: [
-        {
-          asset: 'DJPEPEBADGER.GORILLA-GLUE-MONEY-BADGER',
-          reason: '**DJPEPEBADGER.GORILLA-GLUE-MONEY-BADGER** fits because [CARD:DJPEPEBADGER.GORILLA-GLUE-MONEY-BADGER] it flexes the fattest stacks.',
-        },
-        {
-          asset: 'BIGTIMEWOW',
-          reason: '**BIGTIMEWOW** fits because [CARDFACT:COMBINED CARD FACT] enormous collage energy.',
-        },
-      ],
-    };
-
-    const router = createRouterWithKnowledge(mockResult);
-    const plan = await (router as any).buildCardRecommendPlan('what is the biggest pepe?', 'room-1', null, '{}');
-
-    expect(plan?.cardSummary).toBe('DJPEPEBADGER.GORILLA-GLUE-MONEY-BADGER — fits because it flexes the fattest stacks.');
-    expect(plan?.cardMatches?.[0]?.reason).toBe('fits because it flexes the fattest stacks.');
-    expect(plan?.cardMatches?.[1]?.reason).toBe('fits because enormous collage energy.');
-  });
-});
 
 describe('SmartRouterService PEPEDAWN disambiguation', () => {
-  it('does not treat conversational PEPEDAWN message as named-card intent when classifier returns NORESPONSE', async () => {
-    const classifySpy = spyOn(
-      SmartRouterService.prototype as any,
-      'classifyIntent'
-    ).mockResolvedValue({
-      intent: 'NORESPONSE',
-      raw: '{"intent":"NORESPONSE","command":""}',
-    });
-
-    const pepedawnUsageSpy = spyOn(
-      SmartRouterService.prototype as any,
-      'classifyPepedawnUsage'
-    ).mockResolvedValue('BOT_CHAT');
-
-    const runtimeStub = {} as unknown as IAgentRuntime;
-    const router = new SmartRouterService(runtimeStub);
-
-    const plan = await router.planRouting(
-      'pepedawn will be a bit more chatty now - but it should feel more conversational and smarter',
-      'room-pepe'
-    );
-
-    expect(classifySpy).toHaveBeenCalled();
-    expect(pepedawnUsageSpy).toHaveBeenCalled();
-    expect(plan.kind).toBe('NORESPONSE');
-    expect(plan.intent).toBe('NORESPONSE');
-
-    classifySpy.mockRestore();
-    pepedawnUsageSpy.mockRestore();
+  it('treats PEPEDAWN as the bot when the message addressed it', async () => {
+    const { SmartRouterService } = await import('../../services/SmartRouterService');
+    const router: any = new (SmartRouterService as any)({
+      agentId: 'test',
+      getService: () => null,
+    } as any);
+    // The dedicated disambiguator LLM call is gone: the caller already knows
+    // whether the bot was addressed, so it passes that in.
+    let seen: string | undefined;
+    router.buildChatPlan = async (t: string) => {
+      seen = t;
+      return { kind: 'CHAT' };
+    };
+    router.classifyIntent = async () => ({ intent: 'CHAT', raw: '{}' });
+    await router.planRouting('hey pepedawn what do you think', 'room', true);
+    expect(seen).not.toContain('pepedawn');
   });
 });
 

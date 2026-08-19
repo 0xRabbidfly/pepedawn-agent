@@ -389,70 +389,6 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
         return true;
       }
 
-      case 'CARD_RECOMMEND': {
-        const summary =
-          plan.cardSummary?.trim().replace(/^["“”]+/, '').replace(/["“”]+$/, '') ||
-          plan.story?.trim() ||
-          'Here’s a card that nails the vibe you described.';
-        if (actionCallback && summary) {
-          await actionCallback({
-            text: summary,
-            __fromAction: 'smart_router_card_recommend',
-          });
-          await recordBotTurn(summary);
-        }
-
-        if (Array.isArray(plan.cardMatches) && plan.cardMatches.length > 0) {
-          const list = plan.cardMatches
-            .map((match, idx) => {
-              const reasonSnippet = match.reason
-                ? match.reason.replace(/\s+/g, ' ').slice(0, 80)
-                : '';
-              return `#${idx + 1} ${match.asset}${reasonSnippet ? ` — ${reasonSnippet}` : ''}`;
-            })
-            .join('  |  ');
-          logger.info(`[CardDiscovery] Ranked candidates => ${list}`);
-        }
-
-        if (plan.primaryCardAsset) {
-          const cardCallback: HandlerCallback | undefined =
-            actionCallback != null
-              ? (async (payload: any) => {
-                  const result = await actionCallback(payload);
-                  if (typeof payload?.text === 'string') {
-                    await recordBotTurn(payload.text);
-                  }
-                  return Array.isArray(result) ? result : [];
-                }) as HandlerCallback
-              : undefined;
-
-          const cardMessage = {
-            ...message,
-            content: {
-              ...message.content,
-              text: `/f ${plan.primaryCardAsset}`,
-            },
-          };
-
-          try {
-            await fakeRaresCardAction.handler(
-              runtime,
-              cardMessage,
-              params.state,
-              {},
-              cardCallback
-            );
-          } catch (error) {
-            logger.error({ error }, '[SmartRouter] Card recommendation display failed');
-          }
-        }
-
-        markHandled();
-        await sendTelemetry({ logLore: true });
-        await logDecision('handled');
-        logger.info('[SmartRouter] CARD_RECOMMEND response delivered.');
-        return true;
-      }
 
       case 'FACTS':
       case 'LORE': {
@@ -920,7 +856,9 @@ export const fakeRaresPlugin: Plugin = {
               : SMART_ROUTER_CONFIG.rollout.enabled &&
                 Math.random() * 100 < (SMART_ROUTER_CONFIG.rollout.percentage ?? 0);
 
-          if (shouldUseSmartRouter && smartRouter) {
+          // 10% of router decisions were on messages with no text at all -
+          // photos, stickers, joins. Nothing downstream can act on those.
+          if (shouldUseSmartRouter && smartRouter && text.length > 0) {
             const runPlanWithTelemetry = async (plan: SmartRoutingPlan): Promise<boolean> => {
               const telemetry = runtime.getService('telemetry') as TelemetryService | undefined;
               const details = createSmartRouterTelemetryDetails(plan, text, message.id);
@@ -948,15 +886,13 @@ export const fakeRaresPlugin: Plugin = {
               // Classification, CHAT generation and plan execution all bill to
               // the router unless they dispatch a command, whose own label wins.
               await runWithAction('smart-router', async () => {
-                if (hasCardDiscoveryIntent && !isFakeRareCard) {
-                  const descriptorPlan = await smartRouter.planRouting(text, message.roomId, {
-                    forceCardFacts: true,
-                  });
-                  smartRouterHandled = await runPlanWithTelemetry(descriptorPlan);
-                }
 
                 if (!smartRouterHandled) {
-                  const plan = await smartRouter.planRouting(text, message.roomId);
+                  const plan = await smartRouter.planRouting(
+                  text,
+                  message.roomId,
+                  !!(isReplyToBot || triggers.hasBotMention || isDirectMessage)
+                );
                   smartRouterHandled = await runPlanWithTelemetry(plan);
                 }
               });
