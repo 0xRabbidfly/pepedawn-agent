@@ -1,19 +1,51 @@
 import { type Action, type HandlerCallback, type IAgentRuntime, type Memory, type State, logger } from '@elizaos/core';
 import { MemoryStorageService } from '../services/MemoryStorageService';
+import { callTextModel } from '../utils/modelGateway';
+import {
+  gateSubmission,
+  buildQualityPrompt,
+  parseQualityResponse,
+  type ArtistAliases,
+  type Submitter,
+  MAX_ENTRIES_PER_CARD,
+} from '../utils/loreSubmission';
+import aliasFile from '../data/artist-aliases.json';
+import { countLoreForCard, existingLoreTexts, recordLore } from '../utils/loreInventory';
+import { isAdminUser } from '../utils/admins';
 
 /**
- * /fr command - Fake Remember: Store user-contributed memories
- * Usage: 
- *   /fr CARDNAME <lore>   - Store card-specific memory
- *   /fr <general lore>    - Store general memory
- * 
- * Complements the "remember this" flow with a dedicated slash command.
- * Reuses MemoryStorageService for consistency.
+ * /fr - Fake Remember: artist-contributed card lore.
+ *
+ * Usage: /fr CARDNAME <the story behind the card>
+ *
+ * This writes into the knowledge base at the highest retrieval weight
+ * (`memories: 3.0`), so it is gated rather than open. On 2026-08-19 the
+ * ungated version took 21 false submissions in 18 minutes - seven of them the
+ * same string - which is why every rule in utils/loreSubmission.ts exists.
+ *
+ * Gates, in order: a real card, the card's artist (admins bypass), at most two
+ * entries per card, no duplicates, and content that actually reads like lore.
  */
+
+/** Alias map, minus the documentation keys. */
+const ARTIST_ALIASES: ArtistAliases = Object.fromEntries(
+  Object.entries(aliasFile as Record<string, unknown>)
+    .filter(([k, v]) => !k.startsWith('_') && Array.isArray(v))
+    .map(([k, v]) => [k, v as string[]])
+);
+
+/** Read the submitter's identity from the raw Telegram context. */
+function identify(message: Memory, ctx: any): Submitter {
+  const from = ctx?.message?.from ?? (message as any).rawMessage?.from;
+  const id = from?.id?.toString();
+  const username = from?.username;
+  const displayName = [from?.first_name, from?.last_name].filter(Boolean).join(' ') || username;
+  return { id, username, displayName, isAdmin: isAdminUser(id, username) };
+}
 
 export const fakeRememberCommand: Action = {
   name: 'FAKE_REMEMBER_COMMAND',
-  description: 'Handles /fr command to store user-contributed memories',
+  description: 'Handles /fr command to store artist-contributed card lore',
   similes: ['REMEMBER', 'MEMORY'],
   examples: [],
 
@@ -26,110 +58,101 @@ export const fakeRememberCommand: Action = {
     runtime: IAgentRuntime,
     message: Memory,
     _state?: State,
-    _options?: any,
+    options?: any,
     callback?: HandlerCallback
   ) => {
     const raw = message.content.text || '';
-    const content = raw.replace(/^\s*\/fr(?:@[A-Za-z0-9_]+)?\s*/i, '').trim();
-    logger.info(`━━━━━ /fr ━━━━━ ${content.slice(0, 50)}${content.length > 50 ? '...' : ''}`);
+    const submitter = identify(message, options?.ctx);
+    const who = submitter.username || submitter.displayName || 'unknown';
+    logger.info(`━━━━━ /fr ━━━━━ [${who}] ${raw.slice(0, 60)}`);
 
-    // Validate content
-    if (!content || content.length === 0) {
-      const errorMsg = '⚠️ Please provide something to remember!\n\n' +
-                       'Usage:\n' +
-                       '• `/fr CARDNAME <lore>` - Store card-specific memory\n' +
-                       '• `/fr <general lore>` - Store general memory';
-      
-      if (callback) {
-        await callback({ text: errorMsg });
-      }
-      
-      return {
-        success: false,
-        text: 'Empty memory content'
-      };
+    const reject = async (code: string, text: string) => {
+      logger.info(`[/fr] rejected (${code}) from ${who}`);
+      if (callback) await callback({ text });
+      return { success: true, text: `Rejected: ${code}` };
+    };
+
+    // Resolve the card first so the entry count and duplicate check can run.
+    const preview = gateSubmission({ raw, submitter, existingForCard: 0, aliases: ARTIST_ALIASES });
+    if (!preview.ok && preview.code !== 'card_full' && preview.code !== 'duplicate') {
+      return reject(preview.code!, preview.message!);
+    }
+
+    const card = preview.card!;
+    let existingForCard = 0;
+    let existingTexts: string[] = [];
+    try {
+      existingForCard = await countLoreForCard(runtime, card);
+      existingTexts = await existingLoreTexts(runtime, card);
+    } catch (err) {
+      // A failure to count must not open the gate; treat it as full.
+      logger.error({ error: err }, '[/fr] could not count existing lore — refusing');
+      return reject('count_failed', 'Can’t check that card right now — try again shortly.');
+    }
+
+    const verdict = gateSubmission({ raw, submitter, existingForCard, existingTexts, aliases: ARTIST_ALIASES });
+    if (!verdict.ok) return reject(verdict.code!, verdict.message!);
+
+    // Model screen, last because it costs tokens and everything cheap has passed.
+    try {
+      const screen = await callTextModel(runtime, {
+        model: process.env.OPENAI_SMALL_MODEL || 'gpt-4o-mini',
+        prompt: buildQualityPrompt(card, verdict.lore!),
+        systemPrompt: 'You screen community lore submissions for a Fake Rares card archive. Be strict.',
+        maxTokens: 120,
+        source: 'Lore-Submission-Screen',
+      });
+      const quality = parseQualityResponse(screen?.text ?? '');
+      if (!quality.ok) return reject('low_quality_model', `Not stored — ${quality.reason}.`);
+    } catch (err) {
+      // If the screen is unavailable, fall through on the heuristics alone
+      // rather than blocking a legitimate artist.
+      logger.warn({ error: err }, '[/fr] quality screen unavailable, using heuristics only');
     }
 
     try {
-      // Get MemoryStorageService
-      const memoryService = runtime.getService(
-        MemoryStorageService.serviceType
-      ) as MemoryStorageService;
-      
-      if (!memoryService) {
-        throw new Error('MemoryStorageService not available');
-      }
+      const memoryService = runtime.getService(MemoryStorageService.serviceType) as MemoryStorageService;
+      if (!memoryService) throw new Error('MemoryStorageService not available');
 
-      // Create a modified message with the content in the right format
-      // The MemoryStorageService expects "remember this" format, so we prepend it
-      const modifiedMessage: Memory = {
+      // Hand the service the canonical form: card name up front, so its own
+      // card detector tags the entry [CARD:X] and the cap stays enforceable.
+      const stored: Memory = {
         ...message,
-        content: {
-          ...message.content,
-          text: `remember this: ${content}`
-        }
+        content: { ...message.content, text: `remember this: ${card} ${verdict.lore}` },
       };
 
-      // Store the memory (reuses existing service logic)
-      const result = await memoryService.storeMemory(modifiedMessage, (message as any).rawMessage);
+      const result = await memoryService.storeMemory(stored, options?.ctx?.message ?? (message as any).rawMessage);
 
       if (result.success && !result.ignoredReason) {
-        // Memory stored successfully
-        const successMsg = '💾 Memory stored! Just ask me about the card any time.\n\n' +
-                          'Your contribution is now part of the community knowledge base 🐸✨';
-        
+        const remaining = MAX_ENTRIES_PER_CARD - (existingForCard + 1);
         if (callback) {
-          await callback({ text: successMsg });
+          await callback({
+            text:
+              `💾 Lore stored for ${card}.` +
+              (remaining > 0 ? ` One more slot left on this card.` : ` That's this card full.`),
+          });
         }
-        
-        logger.info(`[/fr] Memory stored successfully (ID: ${result.memoryId})`);
-        
-        return {
-          success: true,
-          text: 'Memory stored via /fr command',
-          memoryId: result.memoryId
-        };
-      } else if (result.ignoredReason) {
-        // Content was ignored (empty, too long, etc.)
-        const ignoreMsg = `⚠️ Memory not stored: ${result.ignoredReason}`;
-        
-        if (callback) {
-          await callback({ text: ignoreMsg });
-        }
-        
-        return {
-          success: true,
-          text: `Memory ignored: ${result.ignoredReason}`
-        };
-      } else {
-        // Storage failed
-        const errorMsg = `❌ Failed to store memory: ${result.error || 'Unknown error'}`;
-        
-        if (callback) {
-          await callback({ text: errorMsg });
-        }
-        
-        return {
-          success: false,
-          text: 'Memory storage failed',
-          error: new Error(result.error)
-        };
+        // Ledger last: it is the quota authority, so it must only ever reflect
+        // entries that actually reached the knowledge base.
+        await recordLore({
+          card,
+          lore: verdict.lore!,
+          submitterId: submitter.id,
+          submitterName: who,
+          at: Date.now(),
+          memoryId: result.memoryId,
+        });
+
+        logger.info(`[/fr] stored for ${card} by ${who} (ID: ${result.memoryId})`);
+        return { success: true, text: 'Lore stored', memoryId: result.memoryId };
       }
+
+      if (result.ignoredReason) return reject(result.ignoredReason, `⚠️ Not stored: ${result.ignoredReason}`);
+      return reject('storage_failed', `❌ Failed to store: ${result.error || 'unknown error'}`);
     } catch (err) {
       logger.error({ error: err }, '❌ [/fr ERROR]');
-      
-      const errorMsg = 'Bruh, something went wrong storing that memory. Try again? 🐸';
-      
-      if (callback) {
-        await callback({ text: errorMsg });
-      }
-      
-      return {
-        success: false,
-        text: 'Memory storage error',
-        error: err as Error
-      };
+      if (callback) await callback({ text: 'Bruh, something went wrong storing that. Try again? 🐸' });
+      return { success: false, text: 'Memory storage error', error: err as Error };
     }
   },
 };
-

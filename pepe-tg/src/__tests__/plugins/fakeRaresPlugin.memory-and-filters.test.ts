@@ -2,108 +2,116 @@ import { describe, it, expect, beforeEach, mock } from 'bun:test';
 import { fakeRaresPlugin } from '../../plugins/fakeRaresPlugin';
 import { MemoryStorageService } from '../../services/MemoryStorageService';
 import { SmartRouterService } from '../../services/SmartRouterService';
+import { _resetCache as _resetLedger } from '../../utils/loreInventory';
+import { _resetCache as _resetRates } from '../../utils/rateLimiter';
+import { tmpdir } from 'os';
+import { join } from 'path';
+import { rmSync } from 'fs';
 
 const messageHandler = fakeRaresPlugin.events?.MESSAGE_RECEIVED?.[0];
 
 describe('fakeRaresPlugin MESSAGE_RECEIVED – memory capture and filters', () => {
-  const createRuntimeWithMemory = (storeResult: any, smartRouter?: any) => ({
-    agentId: 'test-agent',
-    useModel: mock().mockResolvedValue([0.1, 0.2, 0.3]),
-    searchMemories: mock().mockResolvedValue([]),
-    getService: mock((serviceType: string) => {
-      if (serviceType === MemoryStorageService.serviceType) {
-        return {
-          serviceType: MemoryStorageService.serviceType,
-          storeMemory: mock().mockResolvedValue(storeResult),
-        };
-      }
-      if (serviceType === SmartRouterService.serviceType) {
-        return smartRouter ?? null;
-      }
-      return null;
-    }),
-  });
+  /**
+   * The storeMemory mock is created once per runtime, not per getService call.
+   * Returning a fresh mock each call made "not.toHaveBeenCalled" assertions
+   * pass vacuously - they were inspecting an instance the handler never used.
+   */
+  const createRuntimeWithMemory = (storeResult: any, smartRouter?: any) => {
+    const storeMemory = mock().mockResolvedValue(storeResult);
+    const service = { serviceType: MemoryStorageService.serviceType, storeMemory };
+    return {
+      agentId: 'test-agent',
+      storeMemory, // exposed for assertions
+      useModel: mock().mockResolvedValue([0.1, 0.2, 0.3]),
+      searchMemories: mock().mockResolvedValue([]),
+      getService: mock((serviceType: string) => {
+        if (serviceType === MemoryStorageService.serviceType) return service;
+        if (serviceType === SmartRouterService.serviceType) return smartRouter ?? null;
+        return null;
+      }),
+    };
+  };
 
   beforeEach(() => {
     // Establish test user so they are not treated as a newcomer
     delete process.env.SUPPRESS_BOOTSTRAP;
+    // Keep the /fr quota ledger and rate-limit state out of real data files.
+    process.env.LORE_LEDGER_PATH = join(tmpdir(), `lore-ledger-plugin-${process.pid}.json`);
+    process.env.RATE_LIMIT_PATH = join(tmpdir(), `rate-limits-plugin-${process.pid}.json`);
+    rmSync(process.env.LORE_LEDGER_PATH, { force: true });
+    rmSync(process.env.RATE_LIMIT_PATH, { force: true });
+    _resetLedger();
+    _resetRates();
   });
 
-  it('stores memory and marks message as handled on success', async () => {
-    const runtime = createRuntimeWithMemory({
-      success: true,
-      memoryId: 'mem-1',
-    });
+  /**
+   * The natural-language "remember this" path writes to the same knowledge base
+   * as /fr, so as of 2026-08-19 it runs through the same gate. These assert the
+   * gate, because an ungated second door would make the /fr rules decorative.
+   */
+  const artistCtx = {
+    message: { from: { id: '4242', username: 'rarescrilla', first_name: 'Rare', last_name: 'Scrilla' } },
+  };
+  const LORE = "it was inspired by Free Kekistan and drawn the week of the fork";
+
+  it('stores lore when the credited artist asks it to remember', async () => {
+    const runtime = createRuntimeWithMemory({ success: true, memoryId: 'mem-1' });
 
     const callback = mock();
     const message = {
       id: 'mem-1',
       entityId: 'test-user',
       roomId: 'test-room',
-      content: { text: 'remember this FREEDOMKEK lore' },
+      content: { text: `remember this FREEDOMKEK ${LORE}` },
       metadata: {},
     };
 
-    const params = { runtime, message, callback, ctx: {} };
+    await messageHandler!({ runtime, message, callback, ctx: artistCtx });
 
-    await messageHandler!(params);
-
+    expect(runtime.storeMemory).toHaveBeenCalled();
     expect(callback).toHaveBeenCalledTimes(1);
-    const payload = callback.mock.calls[0][0];
-    expect(typeof payload.text).toBe('string');
     expect((message.metadata as any).__handledByCustom).toBe(true);
   });
 
-  it('silently ignores when memory storage returns an ignoredReason', async () => {
-    const runtime = createRuntimeWithMemory({
-      success: false,
-      ignoredReason: 'empty_content',
-    });
+  it('refuses a stranger using "remember this" on someone else\'s card', async () => {
+    const runtime = createRuntimeWithMemory({ success: true, memoryId: 'mem-2' });
 
     const callback = mock();
     const message = {
       id: 'mem-2',
       entityId: 'test-user',
       roomId: 'test-room',
-      content: { text: 'remember this FREEDOMKEK lore' },
+      content: { text: `remember this FREEDOMKEK ${LORE}` },
       metadata: {},
     };
 
-    const params = { runtime, message, callback, ctx: {} };
+    await messageHandler!({
+      runtime,
+      message,
+      callback,
+      ctx: { message: { from: { id: '9999', username: 'coit', first_name: 'Coit' } } },
+    });
 
-    await messageHandler!(params);
-
-    // No confirmation; message may still be marked handled later by engagement/router,
-    // but the memory branch itself does not send a response.
-    expect(callback).not.toHaveBeenCalled();
+    expect(runtime.storeMemory).not.toHaveBeenCalled();
+    expect(callback.mock.calls[0][0].text).toContain('Only');
   });
 
-  it('reports an error when memory storage fails', async () => {
-    const runtime = createRuntimeWithMemory({
-      success: false,
-      error: 'boom',
-    });
+  it('refuses the false-attribution shape via "remember this" too', async () => {
+    const runtime = createRuntimeWithMemory({ success: true, memoryId: 'mem-3' });
 
     const callback = mock();
     const message = {
       id: 'mem-3',
       entityId: 'test-user',
       roomId: 'test-room',
-      content: { text: 'remember this FREEDOMKEK lore' },
+      content: { text: 'remember this djpepe made by coit' },
       metadata: {},
     };
 
-    const params = { runtime, message, callback, ctx: {} };
+    await messageHandler!({ runtime, message, callback, ctx: artistCtx });
 
-    await messageHandler!(params);
-
-    expect(callback).toHaveBeenCalledTimes(1);
-    const payload = callback.mock.calls[0][0];
-    expect(payload.text).toContain('Failed to store memory');
-    // Error path responds but does not mark as handled
-    expect((message.metadata as any).__handledByCustom).toBeUndefined();
+    expect(runtime.storeMemory).not.toHaveBeenCalled();
   });
-
 
   it('blocks FAKEASF burn requests with a fixed response and no router involvement', async () => {
     const smartRouterStub = {

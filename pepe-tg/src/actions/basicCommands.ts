@@ -37,7 +37,7 @@ I'm PEPEDAWN, your AI companion for all things Fake Rares.
 • Use \`/f CARDNAME\` to view any card (try \`/f FREEDOMKEK\`)
 • Use \`/f ARTIST\` to get a random card by an artist (try \`/f Rare Scrilla\`)
 • Ask me anything about cards, artists, or lore
-• Share facts and I'll remember them for the community
+• Artists: use \`/fr\` to add lore for your own cards
 
 **Popular Cards:**
 • \`/f FREEDOMKEK\` - The genesis card
@@ -94,8 +94,8 @@ export const helpCommand: Action = {
 \`/xcp\` - View verified XCP dispenser list
 
 **Fake Remember:** 💾
-\`/fr CARDNAME <lore>\` - Artists: add lore for your card
-\`@pepedawn_bot Remember this:\` <enter any lore/facts>
+\`/fr CARDNAME <lore>\` - Artists: add the story behind your own card
+_Only the credited artist can add lore, max 2 entries per card. Different handle? Ask an admin to link it._
 
 **Just talk to me:** 💬
 Ask about any card, its lore, what it looks like, or who made it —

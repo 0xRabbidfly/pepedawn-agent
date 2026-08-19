@@ -1,4 +1,4 @@
-import { type Plugin, logger, ModelType, type HandlerCallback } from '@elizaos/core';
+import { type Plugin, logger, ModelType, type HandlerCallback, type Memory } from '@elizaos/core';
 import { fakeRaresCardAction, fakeCommonsCardAction, rarePepesCardAction, startCommand, helpCommand, fakeRememberCommand, costCommand, xcpCommand } from '../actions';
 import { fakeMarketAction } from '../actions/fakeMarketAction';
 import { fakeRaresCarouselAction } from '../actions/fakeRaresCarousel';
@@ -14,6 +14,8 @@ import { FULL_CARD_INDEX, getCardInfo } from '../data/fullCardIndex';
 import { startAutoRefresh } from '../utils/cardIndexRefresher';
 import { detectMessagePatterns, hasAnyCommand } from '../utils/messagePatterns';
 import { executeCommand, executeCommandAlways, type CommandHandlerParams } from '../utils/commandHandler';
+import { checkRateLimit, DEFAULT_RATE_LIMIT } from '../utils/rateLimiter';
+import { isRateLimitExempt } from '../utils/admins';
 import { runWithAction } from '../utils/actionContext';
 import { stripCardNamePrefix } from '../utils/cardNamePrefixSanitizer';
 import type { IAgentRuntime } from '@elizaos/core';
@@ -791,59 +793,88 @@ export const fakeRaresPlugin: Plugin = {
           
           logger.info('━━━━━━━━━━ STEP 2/5: COMMAND EXECUTION ━━━━━━━━━━');
           
-          // === MEMORY CAPTURE: "remember" or "remember this" ===
-          if ((isFakeRareCard || isReplyToBot || hasBotMention) && hasRememberCommand) {
-            logger.debug('[FakeRaresPlugin] "remember" command detected → storing memory');
-            const actionCallback = baseCallback;
-            
-            try {
-              const memoryService = runtime.getService(
-                MemoryStorageService.serviceType
-              ) as MemoryStorageService;
-              
-              if (!memoryService) {
-                throw new Error('MemoryStorageService not available');
-              }
-              
-              const result = await memoryService.storeMemory(message, params.ctx?.message);
-              
-              if (result.success && !result.ignoredReason) {
-                // Memory stored successfully
-                if (actionCallback) {
-                  await actionCallback({
-                    text: 'Got it — stored. Ask me about the card any time and I\'ll bring it up.'
+          // Rate gate, ahead of every command. Commands do real work - database
+          // writes, model calls - so a loop firing them is a denial of service
+          // regardless of whether the content is ultimately accepted. On
+          // 2026-08-19 a bot pushed 21 /fr submissions through in 18 minutes.
+          //
+          // Placed before dispatch rather than inside any one command: the next
+          // abused endpoint will not be /fr. It also covers the natural-language
+          // "remember this" path, which writes to the same store.
+          const anyCommand = isHelp || isStart || isF || isFCarousel || isC || isP || isFr || isFm || isFc || isXcp;
+          if (anyCommand || hasRememberCommand) {
+            const from = params.ctx?.message?.from;
+            const rateId = from?.id?.toString() || message.entityId?.toString();
+            if (rateId) {
+              const verdict = checkRateLimit(rateId, Date.now(), {
+                isAdmin: isRateLimitExempt(rateId, from?.username),
+              });
+              if (!verdict.allowed) {
+                // Warn once on the way in, then go silent. Replying every time
+                // would hand the flooder a response per message - the denial of
+                // service, served back to them.
+                if (verdict.justSilenced && baseCallback) {
+                  await baseCallback({
+                    text: `Easy — that's ${DEFAULT_RATE_LIMIT.maxPerWindow}+ commands in a minute. Muted for ${verdict.penalty}.`,
                   });
                 }
-                // Mark as handled to prevent bootstrap processing
+                logger.warn(`[RateLimit] ${rateId} silenced (level ${verdict.level})${verdict.justSilenced ? ` for ${verdict.penalty}` : ''}`);
                 try {
                   message.metadata = message.metadata || {};
                   (message.metadata as any).__handledByCustom = true;
                 } catch {}
-                logger.debug('[FakeRaresPlugin] Memory stored successfully');
-                return; // Done
-              } else if (result.ignoredReason) {
-                // Silent ignore (empty content, etc.)
-                logger.debug(`[FakeRaresPlugin] Memory ignored: ${result.ignoredReason}`);
-                // Don't respond, don't mark as handled, let flow continue
-              } else if (result.error) {
-                // Storage failed
-                logger.error(`[FakeRaresPlugin] Memory storage failed: ${result.error}`);
-                if (actionCallback) {
-                  await actionCallback({
-                    text: `❌ Failed to store memory: ${result.error}`
-                  });
-                }
-                return; // Done (with error)
+                return;
               }
-            } catch (error) {
-              logger.error('[FakeRaresPlugin] Memory storage exception:', error);
-              // Continue to normal flow on exception
             }
           }
-          
+
+
+          // === MEMORY CAPTURE: "remember" or "remember this" ===
+          //
+          // This is the natural-language spelling of /fr and writes to exactly
+          // the same store, so it runs through exactly the same gate. Keeping a
+          // second, ungated door here would have made the /fr rules decorative:
+          // "@pepedawn FREEDOMKEK remember this: <anything>" would still land.
+          if ((isFakeRareCard || isReplyToBot || hasBotMention) && hasRememberCommand) {
+            logger.debug('[FakeRaresPlugin] "remember" detected -> /fr gate');
+
+            // Rewrite to the /fr form and delegate. The card, if named, is found
+            // anywhere in the text by parseLoreSubmission.
+            const spoken = (text || '')
+              .replace(/@\w+/g, ' ')
+              .replace(/\bremember\s+this\s*:?/i, ' ')
+              .replace(/\bremember\s*:?/i, ' ')
+              .replace(/\s+/g, ' ')
+              .trim();
+
+            // On a reply, the lore is the message being replied to.
+            const replied = params.ctx?.message?.reply_to_message?.text || '';
+            const lore = spoken || replied;
+
+            const delegated: Memory = {
+              ...message,
+              content: { ...message.content, text: `/fr ${lore}` },
+            };
+
+            await fakeRememberCommand.handler(
+              runtime,
+              delegated,
+              params.state,
+              { ctx: params.ctx },
+              baseCallback ?? undefined
+            );
+
+            try {
+              message.metadata = message.metadata || {};
+              (message.metadata as any).__handledByCustom = true;
+            } catch {}
+            return;
+          }
+
           // === STEP 2: COMMAND EXECUTION ===
+
           // Use command handler utility to reduce boilerplate
-          const cmdParams: CommandHandlerParams = { runtime, message, state: params.state, callback: baseCallback ?? undefined };
+          const cmdParams: CommandHandlerParams = { runtime, message, state: params.state, callback: baseCallback ?? undefined, ctx: params.ctx };
           
           // /help and /start commands (always mark as handled, even on validation failure)
           if (isHelp && await executeCommandAlways(helpCommand, cmdParams, '/help')) return;

@@ -1,0 +1,4 @@
+{
+  "_comment": "Maps a Telegram identity to the artist name(s) credited on cards, for /fr lore submissions. Keys are either a numeric Telegram user id (preferred - stable across handle changes) or a lowercased @handle. Values must match the 'artist' field in the card index. Add an entry when an artist's Telegram name does not resemble their credited name. See src/utils/loreSubmission.ts.",
+  "_example": ["Rare Scrilla"]
+}

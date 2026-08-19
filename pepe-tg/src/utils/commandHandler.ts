@@ -24,6 +24,14 @@ export interface CommandHandlerParams {
   message: Memory;
   state: any;
   callback?: (response: any) => Promise<any>;
+  /**
+   * Raw Telegram context. Carried so a command can identify its caller.
+   *
+   * Without this, `message.rawMessage` is undefined and every /fr submission
+   * was stored as userId "unknown" - which made the artist check, per-user rate
+   * limiting and any purge-by-author impossible. See utils/loreSubmission.ts.
+   */
+  ctx?: any;
 }
 
 /**
@@ -67,7 +75,7 @@ export async function executeCommand(
           params.runtime,
           params.message,
           params.state,
-          {},
+          { ctx: params.ctx },
           actionCallback ?? undefined
         )
       );

@@ -56,7 +56,7 @@ const HELPFUL_TIPS = [
   },
   {
     title: "💾 Community Memory",
-    text: "Help build our lore! Use `/fr CARDNAME <fact>` or say `FREEDOMKEK remember this: it's the genesis card`. Artists especially - add the story behind your own cards and I'll remember it.",
+    text: "Artists: `/fr CARDNAME <the story behind it>` adds lore to your own card — up to two entries each. If your Telegram handle doesn't match your signature, ask an admin to link them.",
   },
   {
     title: "📚 Lore & History",

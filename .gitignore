@@ -81,3 +81,5 @@ pepe-tg/.staging/
 pepe-tg/src/data/*.jsonl
 pepe-tg/src/data/room-history.json
 pepe-tg/src/data/social-memory.json
+pepe-tg/src/data/lore-ledger.json
+pepe-tg/src/data/rate-limits.json

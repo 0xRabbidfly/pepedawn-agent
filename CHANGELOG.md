@@ -7,6 +7,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.1.0] - 2026-08-19
+
+### Security
+- **`/fr` is now gated.** It was an unauthenticated write into the highest-weighted
+  retrieval source (`memories: 3.0`, above wiki at 2.0 and card_data at 1.5): any
+  user, any text up to 10k chars, unlimited repeats. On 2026-08-19 someone pushed
+  21 false submissions through in 18 minutes. Four gates now apply, cheapest first:
+  - must name a real card (matched against the index, case-insensitively — the old
+    detector required ALL CAPS, so every lowercase spam entry was stored as
+    *untagged general lore*, the least constrained tier)
+  - the submitter must be the card's credited artist; collaborators on `A x B`
+    cards both qualify, and admins bypass
+  - at most 2 entries per card, counted from a ledger rather than vector search
+    (a similarity threshold cannot enforce a hard cap)
+  - the text must read like lore: length, emoji/link checks, rejection of
+    authorship claims that contradict the card manifest, then a model screen
+- **The natural-language `remember this:` path runs through the same gate.** It
+  writes to the same store, so leaving it open would have made the `/fr` rules
+  decorative.
+- **Escalating rate limit on commands.** More than 5 in a minute silences a user
+  for 10 minutes, then 1 hour, 1 day, and 1 week for continued abuse. State is
+  persisted, because production restarts nightly and a day-long silence must
+  survive that; the ladder decays after a clean week, measured from when the
+  silence lifted rather than when the offence occurred. Retrying during a silence
+  does not extend it, and the warning is sent exactly once.
+- **Submissions are attributed.** `executeCommand` did not pass the Telegram
+  context through, so every `/fr` entry was stored as user `unknown` — which made
+  the artist check, per-user limiting and any purge-by-author impossible.
+
+### Added
+- `src/utils/loreSubmission.ts` — the submission policy, as pure functions
+- `src/utils/loreInventory.ts` — quota ledger and audit trail for accepted lore
+- `src/utils/rateLimiter.ts` — the escalating silence ladder
+- `src/utils/admins.ts` — one admin check, replacing three inline copies
+- `src/data/artist-aliases.json` — links a Telegram identity to a credited artist
+  name, for artists whose handle does not resemble their signature
+- `scripts/purge-lore-spam.ts` — lists and removes user-submitted memories with
+  their embeddings; dry-run by default. There was previously no removal path.
+
+### Changed
+- `/help` states the `/fr` rules rather than inviting open contribution
+- New env vars: `TELEGRAM_ADMIN_USERNAMES`, `LORE_LEDGER_PATH`, `RATE_LIMIT_PATH`
+
 ## [4.1.0] - 2025-11-16
 
 ### Changed
