@@ -10,7 +10,7 @@ import { TelemetryService, type SmartRouterDecisionLog } from '../services/Telem
 import { CardDisplayService } from '../services/CardDisplayService';
 import { SmartRouterService, type SmartRoutingPlan } from '../services/SmartRouterService';
 import { SMART_ROUTER_CONFIG } from '../config/smartRouterConfig';
-import { FULL_CARD_INDEX } from '../data/fullCardIndex';
+import { FULL_CARD_INDEX, getCardInfo } from '../data/fullCardIndex';
 import { startAutoRefresh } from '../utils/cardIndexRefresher';
 import { detectMessagePatterns, hasAnyCommand } from '../utils/messagePatterns';
 import { executeCommand, executeCommandAlways, type CommandHandlerParams } from '../utils/commandHandler';
@@ -253,6 +253,52 @@ function getDisplayName(params: any, message: any): string {
   return 'User';
 }
 
+
+/**
+ * Show the card an answer is about.
+ *
+ * PEPEDAWN naming a card and not showing it is the single most jarring gap in
+ * the experience — this is a card collection, and people want to see the thing.
+ * Reuses the /f display path so caching, GIF conversion and formatting behave
+ * exactly as they do for the command.
+ *
+ * The asset is preferred from the plan (the card the answer is *about*), and
+ * otherwise taken from the first known asset named in the reply, so a card the
+ * model brings up unprompted is still shown.
+ */
+async function showCardForAnswer(
+  context: SmartRouterExecutionContext,
+  planAsset: string | undefined,
+  answerText: string | undefined,
+  deliver: HandlerCallback | null
+): Promise<void> {
+  if (!deliver) return;
+  const asset = planAsset ?? firstKnownAssetIn(answerText ?? '');
+  if (!asset) return;
+
+  const { runtime, message, params } = context;
+  const cardMessage = {
+    ...message,
+    content: { ...message.content, text: `/f ${asset}` },
+  };
+  try {
+    await fakeRaresCardAction.handler(runtime, cardMessage as any, params.state, {}, deliver);
+    logger.info(`[SmartRouter] Showed ${asset} alongside the answer`);
+  } catch (error) {
+    // A missing image must never swallow the answer that was already sent.
+    logger.warn({ error, asset }, '[SmartRouter] Could not show card for answer');
+  }
+}
+
+/** First Fake Rares asset named in a block of text, if any. */
+function firstKnownAssetIn(text: string): string | undefined {
+  if (!text) return undefined;
+  for (const word of text.toUpperCase().match(/\b[A-Z][A-Z0-9]{2,}\b/g) ?? []) {
+    if (getCardInfo(word)) return word;
+  }
+  return undefined;
+}
+
 async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Promise<boolean> {
   const { runtime, plan, message, params, text } = context;
   const baseCallback = wrapHandlerCallback(
@@ -403,6 +449,7 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
             __fromAction: plan.kind === 'FACTS' ? 'smart_router_facts' : 'smart_router_lore',
           });
           await recordBotTurn(story);
+          await showCardForAnswer(context, plan.primaryCardAsset, story, actionCallback);
           // The sources line ("Sources: mem:FREEDO 2025-11-01 by:Unknown") leaks
           // internal record ids into the room as a second message. Useful when
           // debugging retrieval, noise for everyone else.
@@ -435,6 +482,7 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
             __fromAction: 'smart_router_chat',
           });
           await recordBotTurn(response);
+          await showCardForAnswer(context, plan.primaryCardAsset, response, actionCallback);
         }
 
         markHandled();

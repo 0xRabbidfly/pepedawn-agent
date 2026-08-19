@@ -18,6 +18,8 @@ export interface CardQueryAnswer {
   fact: string;
   /** Which lookup produced it, for logging. */
   kind: string;
+  /** The card the answer is about, when it is about exactly one. */
+  asset?: string;
 }
 
 /** Assets mentioned in the text, longest first so PEPEDAWN2 beats PEPEDAWN. */
@@ -76,21 +78,21 @@ export function answerCardQuery(text: string): CardQueryAnswer | null {
   // --- Artist of a specific card -----------------------------------------
   if (card && asks('artist', 'who made', 'who drew', 'who created', 'created by')) {
     return card.artist
-      ? { fact: `${card.asset} is by ${card.artist}.`, kind: 'artist_of_card' }
+      ? { fact: `${card.asset} is by ${card.artist}.`, kind: 'artist_of_card', asset: card.asset }
       : { fact: `${card.asset} has no artist recorded in the index.`, kind: 'artist_of_card' };
   }
 
   // --- Issuance date -------------------------------------------------------
   if (card && asks('issued', 'issuance', 'released', 'release date', 'when was', 'what year')) {
     return card.issuance
-      ? { fact: `${card.asset} was issued ${card.issuance}.`, kind: 'issuance' }
+      ? { fact: `${card.asset} was issued ${card.issuance}.`, kind: 'issuance', asset: card.asset }
       : { fact: `No issuance date is recorded for ${card.asset}.`, kind: 'issuance' };
   }
 
   // --- Supply of a specific card ------------------------------------------
   if (card && asks('supply', 'how many', 'issuance size', 'edition size')) {
     return typeof card.supply === 'number'
-      ? { fact: `${card.asset} has a supply of ${card.supply}.`, kind: 'supply_of_card' }
+      ? { fact: `${card.asset} has a supply of ${card.supply}.`, kind: 'supply_of_card', asset: card.asset }
       : { fact: `No supply is recorded for ${card.asset}.`, kind: 'supply_of_card' };
   }
 
@@ -99,6 +101,7 @@ export function answerCardQuery(text: string): CardQueryAnswer | null {
     return {
       fact: `${card.asset} is series ${card.series}, card ${card.card}.`,
       kind: 'series_of_card',
+      asset: card.asset,
     };
   }
 
@@ -123,6 +126,7 @@ export function answerCardQuery(text: string): CardQueryAnswer | null {
       return {
         fact: `${artist}'s ${label} supply is ${pick.asset} at ${pick.supply}.`,
         kind: 'artist_supply_extreme',
+        asset: pick.asset,
       };
     }
   }

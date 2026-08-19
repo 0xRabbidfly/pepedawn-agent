@@ -479,6 +479,7 @@ export class SmartRouterService extends Service {
       kind: 'FACTS',
       intent: 'FACTS',
       reason: 'classifier_facts',
+      primaryCardAsset: mentionedCard ?? undefined,
       retrieval,
       selectedCandidates: this.selectTopCandidates(retrieval, 3),
       story,
@@ -597,7 +598,7 @@ export class SmartRouterService extends Service {
     roomId: string,
     retrieval: RetrieveCandidatesResult | null,
     classifierRaw?: string,
-    options?: { tasteQuestion?: boolean; knownFact?: string }
+    options?: { tasteQuestion?: boolean; knownFact?: string; card?: string }
   ): Promise<SmartRoutingPlan> {
     const history = this.getRecentTurns(roomId, 12);
     const recentTranscript = this.formatRecentChat(history, 12);
@@ -620,9 +621,13 @@ export class SmartRouterService extends Service {
     // in code — gpt-5.6-luna accepts no temperature, top_p or penalties at all,
     // so nothing varies unless the context does.
     let offeredCard = '';
+    let offeredCardAsset: string | undefined;
     if (options?.tasteQuestion) {
       const card = randomCard();
-      offeredCard = card ? (describeCard(card.asset) ?? '') : '';
+      if (card) {
+        offeredCardAsset = card.asset;
+        offeredCard = describeCard(card.asset) ?? '';
+      }
     }
 
     const prompt = [
@@ -704,6 +709,7 @@ Say briefly why it is worth a look — something true about the art, the artist 
         kind: 'CHAT',
         intent: 'CHAT',
         reason: 'classifier_chat',
+        primaryCardAsset: options?.card ?? offeredCardAsset,
         retrieval,
         selectedCandidates: this.selectTopCandidates(retrieval, 3),
         chatResponse: finalText,
@@ -763,6 +769,7 @@ Say briefly why it is worth a look — something true about the art, the artist 
       logger.debug({ kind: structured.kind }, '[SmartRouter] Structured card query');
       return this.buildChatPlan(trimmed, roomId, null, undefined, {
         knownFact: structured.fact,
+        card: structured.asset,
       });
     }
 
