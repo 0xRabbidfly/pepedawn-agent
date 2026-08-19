@@ -127,3 +127,53 @@ describe('routing: structured queries reach the lookup', () => {
     }
   });
 });
+
+describe('follow-up questions resolve the card in play', () => {
+  const makeRouter = async () => {
+    const { SmartRouterService } = await import('../../services/SmartRouterService');
+    const router: any = new (SmartRouterService as any)({
+      agentId: 'test',
+      getService: () => null,
+    } as any);
+    router.buildChatPlan = async (_t: string, _a: any, _b: any, _c: any, o: any) => ({
+      kind: 'CHAT',
+      knownFact: o?.knownFact,
+    });
+    router.buildFactsPlan = async () => ({ kind: 'FACTS' });
+    router.classifyIntent = async () => ({ intent: 'FACTS', raw: '{}' });
+    return router;
+  };
+
+  it('answers "who made it?" from the card just discussed', async () => {
+    // Live test showed this reaching retrieval with no subject and coming back
+    // "Which card do you mean?".
+    const router = await makeRouter();
+    router.recordUserTurn('room', 'what is freedomkek supply?', 'bob');
+    router.recordBotTurn('room', 'FREEDOMKEK has a supply of 298.');
+    const plan = await router.planRouting('who made it?', 'room');
+    expect(plan.knownFact).toContain('Rare Scrilla');
+  });
+
+  it('carries the subject across several follow-ups', async () => {
+    const router = await makeRouter();
+    router.recordBotTurn('room', 'FREEDOMKEK has a supply of 298.');
+    expect((await router.planRouting('what series is it?', 'room')).knownFact).toContain('series 0');
+    expect((await router.planRouting('when was it issued?', 'room')).knownFact).toContain(
+      'October 2017'
+    );
+  });
+
+  it('prefers an explicitly named card over the pronoun subject', async () => {
+    const router = await makeRouter();
+    router.recordBotTurn('room', 'FREEDOMKEK has a supply of 298.');
+    const plan = await router.planRouting('and who made PEPEDAWN?', 'room');
+    expect(plan.knownFact).toContain('PEPEDAWN');
+    expect(plan.knownFact).not.toContain('FREEDOMKEK');
+  });
+
+  it('does not invent a subject when nothing has been discussed', async () => {
+    const router = await makeRouter();
+    const plan = await router.planRouting('who made it?', 'empty-room');
+    expect(plan.knownFact).toBeUndefined();
+  });
+});

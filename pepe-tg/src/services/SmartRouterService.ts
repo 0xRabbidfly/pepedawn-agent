@@ -13,6 +13,7 @@ import { detectCardFastPath } from '../router/cardFastPath';
 import { KnowledgeOrchestratorService } from './KnowledgeOrchestratorService';
 import { callTextModel } from '../utils/modelGateway';
 import { describeCard, randomCard } from '../utils/cardFacts';
+import { getCardInfo } from '../data/fullCardIndex';
 import { describeTraitMatch } from '../utils/cardTraits';
 import { answerCardQuery } from '../utils/cardQueries';
 import { recallForPrompt, recordTurn, recentTurns } from '../conversation/shadow';
@@ -533,6 +534,27 @@ export class SmartRouterService extends Service {
    * asked for is an opinion owned.
    */
   /**
+   * The card most recently named by anyone in the room, newest first.
+   *
+   * Follow-ups are how people actually talk: "what's FREEDOMKEK's supply?" then
+   * "and who made it?". Without this the second question reaches retrieval with
+   * no subject and comes back "which card do you mean?".
+   */
+  private lastMentionedCard(roomId: string): string | undefined {
+    const turns = this.getTurnsForPrompt(roomId, 8);
+    for (let i = turns.length - 1; i >= 0; i--) {
+      const words = (turns[i].text || '').toUpperCase().match(/\b[A-Z][A-Z0-9]{2,}\b/g) ?? [];
+      for (const w of words) if (getCardInfo(w)) return w;
+    }
+    return undefined;
+  }
+
+  /** True when the message leans on a pronoun instead of naming a card. */
+  private usesPronounForCard(text: string): boolean {
+    return /\b(it|its|it's|that|this|the same|that one|this one|them|they)\b/i.test(text);
+  }
+
+  /**
    * A question about how a card LOOKS - colour, mood, style - as opposed to how
    * PEPEDAWN feels about it. These have answers in the vision data.
    */
@@ -820,7 +842,18 @@ Say briefly why it is worth a look — something true about the art, the artist 
       }
     }
 
-    const structured = answerCardQuery(trimmed);
+    // Resolve a pronoun to the card under discussion, so a follow-up can be
+    // answered exactly rather than sent to retrieval without a subject.
+    let lookupText = trimmed;
+    if (this.usesPronounForCard(trimmed) && !this.detectMentionedCard(trimmed)) {
+      const subject = this.lastMentionedCard(roomId);
+      if (subject) {
+        lookupText = `${trimmed} ${subject}`;
+        logger.debug({ query: trimmed, subject }, '[SmartRouter] Resolved pronoun to the card in play');
+      }
+    }
+
+    const structured = answerCardQuery(lookupText);
     if (structured) {
       logger.debug({ kind: structured.kind }, '[SmartRouter] Structured card query');
       return this.buildChatPlan(trimmed, roomId, null, undefined, {
