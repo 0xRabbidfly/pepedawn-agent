@@ -85,3 +85,45 @@ describe('phrasing and matching robustness', () => {
     expect(a?.fact).toContain('Pepenardo:');
   });
 });
+
+describe('routing: structured queries reach the lookup', () => {
+  const makeRouter = async () => {
+    const { SmartRouterService } = await import('../../services/SmartRouterService');
+    const router: any = new (SmartRouterService as any)({
+      agentId: 'test',
+      getService: () => null,
+    } as any);
+    // Capture the plan instead of calling a model.
+    router.buildChatPlan = async (_t: string, _r: string, _x: any, _c: any, o: any) => ({
+      kind: 'CHAT',
+      knownFact: o?.knownFact,
+    });
+    return router;
+  };
+
+  it('answers before card-discovery can hijack the query', async () => {
+    // "cards" in the text makes the plugin set forceCardFacts, and planRouting
+    // used to hand that straight to buildCardRecommendPlan - which answered
+    // PEPEPOSSE (a Gonkulator card, supply 23) for a question whose answer is
+    // PEPERMINE at 150.
+    const router = await makeRouter();
+    const plan = await router.planRouting(
+      "look at all pepenardo's cards, and tell me which has the highest collection size?",
+      'room'
+    );
+    expect(plan.knownFact).toContain('PEPERMINE');
+    expect(plan.knownFact).toContain('150');
+  });
+
+  it('routes other exact questions to the lookup too', async () => {
+    const router = await makeRouter();
+    for (const [q, expected] of [
+      ['who is the artist for untitledfrog?', 'nicedayJULES'],
+      ['when was freedomkek issued?', 'October 2017'],
+      ["what's pepenardo's scarcest card?", 'WAKEMEUPEPE'],
+    ] as const) {
+      const plan = await router.planRouting(q, 'room');
+      expect(plan.knownFact).toContain(expected);
+    }
+  });
+});

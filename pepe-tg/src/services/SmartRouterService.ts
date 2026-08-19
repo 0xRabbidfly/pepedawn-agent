@@ -487,18 +487,6 @@ export class SmartRouterService extends Service {
     // Skip card descriptor check if a card is explicitly mentioned.
     // Card descriptors are for discovery queries, not queries about specific card attributes.
     const mentionedCard = this.detectMentionedCard(userText);
-    // Questions the card index answers exactly - artist, issuance, supply,
-    // series, an artist's largest or smallest card - are looked up rather than
-    // retrieved. Semantic search returns whatever text is similar, which is how
-    // the bot ended up asserting things it could simply have read off. The fact
-    // is stated by code; only the wrapper around it is generated.
-    const structured = answerCardQuery(userText);
-    if (structured) {
-      logger.debug({ kind: structured.kind }, '[SmartRouter] Structured card query');
-      return this.buildChatPlan(userText, roomId, retrieval, classifierRaw, {
-        knownFact: structured.fact,
-      });
-    }
 
     // Matters of taste go down the conversational path, where PEPEDAWN has a
     // voice and can own a pick, rather than the card-recommend path, which
@@ -598,7 +586,7 @@ export class SmartRouterService extends Service {
    * asked for is an opinion owned.
    */
   private isTasteQuestion(text: string): boolean {
-    return /\b(best|favou?rite|coolest|greatest|nicest|prettiest|ugliest|worst|top|most\s+(?:beautiful|underrated|overrated))\b/i.test(
+    return /\b(best|favou?rite|coolest|greatest|nicest|prettiest|ugliest|worst|top|sexiest|hottest|dopest|weirdest|funniest|wildest|most\s+\w+)\b/i.test(
       text
     );
   }
@@ -1002,6 +990,25 @@ Say briefly why it is worth a look — something true about the art, the artist 
     options?: { forceCardFacts?: boolean }
   ): Promise<SmartRoutingPlan> {
     const trimmed = text.trim();
+
+    // Questions the card index answers exactly — artist, issuance, supply,
+    // series, an artist's largest or smallest card — are looked up, never
+    // retrieved or recommended.
+    //
+    // This has to sit ahead of everything: "look at all pepenardo's cards, which
+    // has the highest collection size?" contains the word "cards", so the plugin
+    // sets forceCardFacts and planRouting hands it to buildCardRecommendPlan
+    // long before buildFactsPlan is reached. That path answered PEPEPOSSE — a
+    // Gonkulator card with supply 23 — for a question whose answer is
+    // PEPERMINE at 150.
+    const structured = answerCardQuery(trimmed);
+    if (structured) {
+      logger.debug({ kind: structured.kind }, '[SmartRouter] Structured card query');
+      return this.buildChatPlan(trimmed, roomId, null, undefined, {
+        knownFact: structured.fact,
+      });
+    }
+
     let mentionedCard = this.detectMentionedCard(trimmed);
     let pepedawnUsage: 'BOT_CHAT' | 'CARD_INTENT' | 'BOTH' | null = null;
     const looksLikeDescriptor = this.looksLikeCardDescriptor(trimmed);
