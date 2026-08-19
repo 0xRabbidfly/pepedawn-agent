@@ -2,7 +2,6 @@ import { describe, it, expect, beforeEach, mock } from 'bun:test';
 import { fakeRaresPlugin } from '../../plugins/fakeRaresPlugin';
 import { MemoryStorageService } from '../../services/MemoryStorageService';
 import { SmartRouterService } from '../../services/SmartRouterService';
-import { resetEngagementTracking, calculateEngagementScore } from '../../utils/engagementScorer';
 
 const messageHandler = fakeRaresPlugin.events?.MESSAGE_RECEIVED?.[0];
 
@@ -26,16 +25,7 @@ describe('fakeRaresPlugin MESSAGE_RECEIVED – memory capture and filters', () =
   });
 
   beforeEach(() => {
-    resetEngagementTracking();
     // Establish test user so they are not treated as a newcomer
-    calculateEngagementScore({
-      text: 'setup',
-      hasBotMention: false,
-      isReplyToBot: false,
-      isFakeRareCard: false,
-      userId: 'test-user',
-      roomId: 'test-room',
-    });
     delete process.env.SUPPRESS_BOOTSTRAP;
   });
 

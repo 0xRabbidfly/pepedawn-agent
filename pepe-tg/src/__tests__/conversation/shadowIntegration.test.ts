@@ -19,7 +19,6 @@ import { fakeRaresPlugin } from '../../plugins/fakeRaresPlugin';
 import { KnowledgeOrchestratorService } from '../../services/KnowledgeOrchestratorService';
 import { TelemetryService } from '../../services/TelemetryService';
 import { MemoryStorageService } from '../../services/MemoryStorageService';
-import { resetEngagementTracking } from '../../utils/engagementScorer';
 import { flushShadow, resetShadowState } from '../../conversation/shadow';
 
 const BOT_ID = 12345;
@@ -119,7 +118,6 @@ describe('shadow mode through the real message path', () => {
     delete process.env.V5_ENFORCE;
     process.env.SUPPRESS_BOOTSTRAP = 'true';
     resetShadowState();
-    resetEngagementTracking();
   });
 
   afterEach(async () => {

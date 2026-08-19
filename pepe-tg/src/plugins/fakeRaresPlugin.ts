@@ -13,7 +13,6 @@ import { SMART_ROUTER_CONFIG } from '../config/smartRouterConfig';
 import { FULL_CARD_INDEX } from '../data/fullCardIndex';
 import { startAutoRefresh } from '../utils/cardIndexRefresher';
 import { detectMessagePatterns, hasAnyCommand } from '../utils/messagePatterns';
-import { calculateEngagementScore, shouldRespond } from '../utils/engagementScorer';
 import { executeCommand, executeCommandAlways, type CommandHandlerParams } from '../utils/commandHandler';
 import { runWithAction } from '../utils/actionContext';
 import { stripCardNamePrefix } from '../utils/cardNamePrefixSanitizer';
@@ -824,29 +823,14 @@ export const fakeRaresPlugin: Plugin = {
             return;
           }
 
-          logger.info('━━━━━━━━━━ STEP 4/5: ENGAGEMENT FILTER ━━━━━━━━━━');
-          
-          // Calculate engagement score to determine if bot should respond
-          const engagementScore = calculateEngagementScore({
-            text,
-            hasBotMention,
-            isReplyToBot,
-            isFakeRareCard,
-            userId: message.entityId,
-            roomId: message.roomId,
-          });
-          
-          const engagementAllowsResponse = shouldRespond(engagementScore);
-          const engagementOverride = !engagementAllowsResponse && (hasCardDiscoveryIntent || isSubmissionRulesQuery);
-          const engagementSuppressed = !engagementAllowsResponse && !engagementOverride;
+          // The engagement score used to gate replies here. It never actually
+          // did: it computed suppression, ran the entire router anyway, then
+          // applied the decision afterwards - saving nothing while adding a
+          // branch. Rate control now lives in the cadence governor, which is
+          // enforced in code and understands consecutive turns and share of
+          // voice, neither of which a per-message score can express.
 
-          if (engagementSuppressed) {
-            logger.info(`   Engagement below threshold (score=${engagementScore}) → evaluating smart router before suppressing`);
-          } else if (engagementOverride) {
-            logger.info(`   Engagement below threshold (${engagementScore}) but overriding due to ${hasCardDiscoveryIntent ? 'card intent' : 'submission rules query'}`);
-          }
-          
-          logger.info('━━━━━━━━━━ STEP 5/5: QUERY CLASSIFICATION ━━━━━━━━━━');
+          logger.info('━━━━━━━━━━ QUERY CLASSIFICATION ━━━━━━━━━━');
 
           let smartRouterHandled = false;
           const shouldUseSmartRouter =
@@ -901,51 +885,20 @@ export const fakeRaresPlugin: Plugin = {
             }
           }
 
-          if (!smartRouterHandled && engagementSuppressed) {
-            logger.info('   Decision: SUPPRESS (smart router had no actionable plan and engagement below threshold)');
-            message.metadata = message.metadata || {};
-            (message.metadata as any).__handledByCustom = true;
-            return;
-          }
 
           if (smartRouterHandled) {
             return;
           }
 
-          logger.info('━━━━━━━━━━ STEP 6/6: BOOTSTRAP HANDOFF ━━━━━━━━━━');
+          // Bootstrap handled 207 of 7,132 conversations (2.9%) and was the sole
+          // reason for the __handledByCustom sentinel threaded through three
+          // files. The router now owns the decision end to end: anything it
+          // declines is silence, which is the correct default for a bot that
+          // talks in a busy room.
+          logger.info('   Decision: SILENT (router declined)');
+          message.metadata = message.metadata || {};
+          (message.metadata as any).__handledByCustom = true;
 
-          if (globalSuppression) {
-            logger.info('   Decision: SUPPRESS all (SUPPRESS_BOOTSTRAP=true)');
-            logger.debug('[Suppress] SUPPRESS_BOOTSTRAP=true → suppressing all bootstrap');
-            message.metadata = message.metadata || {};
-            (message.metadata as any).__handledByCustom = true;
-            return;
-          }
-
-          // Allow Bootstrap to handle anything the Smart Router declined
-          logger.info('   Decision: ALLOW bootstrap (router declined to handle message)');
-          logger.debug(
-            `[Allow] Bootstrap allowed: reply=${!!isReplyToBot} card=${isFakeRareCard} mention=${hasBotMention} | "${text}"`
-          );
-
-          if (!message.content.mentionContext) {
-            message.content.mentionContext = {
-              isMention: hasBotMention,
-              isReply: isActuallyReplyToBot,
-            };
-          }
-
-          if (typeof runtime.getService === 'function') {
-            const telemetry = runtime.getService('telemetry') as TelemetryService;
-            if (telemetry && typeof telemetry.logConversation === 'function') {
-              await telemetry.logConversation({
-                timestamp: new Date().toISOString(),
-                messageId: message.id,
-                source: 'bootstrap',
-              });
-            }
-          }
-          
         } catch (error) {
           logger.error(`[Plugin Error]`, error);
           
