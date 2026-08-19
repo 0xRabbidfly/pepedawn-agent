@@ -723,15 +723,6 @@ export const fakeRaresPlugin: Plugin = {
             addressedBot: !!(isReplyToBot || triggers.hasBotMention || isDirectMessage),
           });
 
-          // V5_ENFORCE makes the cadence governor binding rather than observed.
-          // Commands are exempt: an explicit /f is a direct request, and
-          // silencing it would look broken rather than tactful.
-          if (v5.suppress && !hasAnyCommand(patterns)) {
-            logger.info(`   Decision: SUPPRESS (v5 cadence: ${v5.reason})`);
-            message.metadata = message.metadata || {};
-            (message.metadata as any).__handledByCustom = true;
-            return;
-          }
           const { isHelp, isStart, isF, isFCarousel, isC, isP, isFr, isFm, isFc, isXcp } = commands;
           
           // Log routing factors
@@ -881,6 +872,22 @@ export const fakeRaresPlugin: Plugin = {
             return;
           }
           
+          // V5_ENFORCE makes the cadence governor binding rather than observed.
+          //
+          // Deliberately placed AFTER the content filters. Cadence governs when
+          // PEPEDAWN volunteers an opinion; it must never silence a safety or
+          // policy response. The FAKEASF burn blocker and the address callout
+          // above answer regardless of how recently the bot last spoke.
+          //
+          // Commands are exempt for the same reason: an explicit /f is a direct
+          // request, and swallowing it reads as broken rather than tactful.
+          if (v5.suppress && !hasAnyCommand(patterns)) {
+            logger.info(`   Decision: SUPPRESS (v5 cadence: ${v5.reason})`);
+            message.metadata = message.metadata || {};
+            (message.metadata as any).__handledByCustom = true;
+            return;
+          }
+
           logger.info('━━━━━━━━━━ STEP 4/5: ENGAGEMENT FILTER ━━━━━━━━━━');
           
           // Calculate engagement score to determine if bot should respond

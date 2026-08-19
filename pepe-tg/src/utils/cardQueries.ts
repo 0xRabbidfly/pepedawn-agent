@@ -28,13 +28,31 @@ function assetsIn(text: string): CardInfo[] {
   );
 }
 
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+/**
+ * Artists named in the text, longest name first.
+ *
+ * Matching is on word boundaries, not substrings. Short artist names otherwise
+ * match inside ordinary words - an artist called "RC" hides in "scarcest", which
+ * made "pepenardo's scarcest card" answer about the wrong person entirely.
+ */
 function artistsIn(text: string): string[] {
-  const lower = text.toLowerCase();
-  const names = new Set<string>();
+  const names: string[] = [];
+  const seen = new Set<string>();
   for (const card of FULL_CARD_INDEX) {
-    if (card.artist && lower.includes(card.artist.toLowerCase())) names.add(card.artist);
+    const artist = card.artist;
+    if (!artist || seen.has(artist)) continue;
+    const pattern = new RegExp(`(?:^|[^\\p{L}\\p{N}])${escapeRegExp(artist)}(?![\\p{L}\\p{N}])`, 'iu');
+    if (pattern.test(text)) {
+      seen.add(artist);
+      names.push(artist);
+    }
   }
-  return [...names];
+  // Longest first, so "Rare Scrilla" wins over a hypothetical "Rare".
+  return names.sort((a, b) => b.length - a.length);
 }
 
 function cardsByArtist(artist: string): CardInfo[] {
@@ -85,13 +103,19 @@ export function answerCardQuery(text: string): CardQueryAnswer | null {
   }
 
   // --- Extremes across an artist's cards -----------------------------------
-  if (artists.length > 0 && asks('largest', 'biggest', 'highest', 'smallest', 'lowest', 'rarest')) {
+  if (
+    artists.length > 0 &&
+    asks(
+      'largest', 'biggest', 'highest', 'most common', 'commonest', 'most plentiful',
+      'smallest', 'lowest', 'rarest', 'scarcest', 'hardest to find'
+    )
+  ) {
     const artist = artists[0];
     const withSupply = cardsByArtist(artist).filter(
       (c): c is CardInfo & { supply: number } => typeof c.supply === 'number'
     );
     if (withSupply.length > 0) {
-      const wantsSmallest = asks('smallest', 'lowest', 'rarest');
+      const wantsSmallest = asks('smallest', 'lowest', 'rarest', 'scarcest', 'hardest to find');
       const pick = withSupply.reduce((best, c) =>
         wantsSmallest ? (c.supply < best.supply ? c : best) : c.supply > best.supply ? c : best
       );
@@ -114,7 +138,10 @@ export function answerCardQuery(text: string): CardQueryAnswer | null {
   }
 
   // --- Everything by an artist ---------------------------------------------
-  if (artists.length > 0 && asks('what cards', 'which cards', 'cards by', 'made by')) {
+  if (
+    artists.length > 0 &&
+    asks('what cards', 'which cards', 'cards by', 'made by', 'all of', 'all the', "'s cards", 'list')
+  ) {
     const artist = artists[0];
     const all = cardsByArtist(artist);
     if (all.length > 0) {

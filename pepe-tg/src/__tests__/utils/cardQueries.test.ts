@@ -55,3 +55,33 @@ describe('random card for taste questions', () => {
     expect(seen.size).toBeGreaterThan(1);
   });
 });
+
+describe('phrasing and matching robustness', () => {
+  it("handles the natural phrasing of an artist's largest card", () => {
+    const a = answerCardQuery(
+      "look at all pepenardo's cards, and tell me which has the highest collection size?"
+    );
+    expect(a?.kind).toBe('artist_supply_extreme');
+    expect(a?.fact).toContain('Pepenardo');
+    expect(a?.fact).toContain('largest');
+  });
+
+  it('treats "most common" as largest and "scarcest" as smallest', () => {
+    expect(answerCardQuery('which pepenardo card is most common?')?.fact).toContain('largest');
+    expect(answerCardQuery("what's pepenardo's scarcest card?")?.fact).toContain('smallest');
+  });
+
+  it('matches artist names on word boundaries, not substrings', () => {
+    // An artist named "RC" hides inside "scarcest"; substring matching answered
+    // about the wrong person entirely.
+    const a = answerCardQuery("what's pepenardo's scarcest card?");
+    expect(a?.fact.startsWith('Pepenardo')).toBe(true);
+    expect(a?.fact.startsWith('RC')).toBe(false);
+  });
+
+  it('lists an artist catalogue from a natural request', () => {
+    const a = answerCardQuery("show me all of pepenardo's cards");
+    expect(a?.kind).toBe('artist_cards');
+    expect(a?.fact).toContain('Pepenardo:');
+  });
+});
