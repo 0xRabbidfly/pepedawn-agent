@@ -15,7 +15,7 @@ import { callTextModel } from '../utils/modelGateway';
 import { describeCard, randomCard } from '../utils/cardFacts';
 import { describeTraitMatch } from '../utils/cardTraits';
 import { answerCardQuery } from '../utils/cardQueries';
-import { recallForPrompt } from '../conversation/shadow';
+import { recallForPrompt, recordTurn, recentTurns } from '../conversation/shadow';
 import { isInFullIndex } from '../data/fullCardIndex';
 
 export type ConversationIntent = 'LORE' | 'FACTS' | 'CHAT' | 'NORESPONSE' | 'CMDROUTE';
@@ -198,6 +198,27 @@ export class SmartRouterService extends Service {
     this.historyByRoom.clear();
   }
 
+  /**
+   * Recent turns for a room, preferring the persisted store.
+   *
+   * historyByRoom is a plain in-memory Map, and PM2 cron-restarts nightly at
+   * 02:00 plus `pm2 delete` on every deploy - so the model started each morning
+   * with no recollection of the community. The persisted store already existed
+   * for the cadence governor; it just never reached the prompt.
+   */
+  private getTurnsForPrompt(roomId: string, count: number): ConversationTurn[] {
+    const persisted = recentTurns(roomId, count);
+    if (persisted.length > 0) {
+      return persisted.map((t) => ({
+        role: t.role,
+        author: t.author ?? (t.role === 'bot' ? 'PEPEDAWN' : 'User'),
+        text: t.text,
+        timestamp: t.at,
+      }));
+    }
+    return this.getRecentTurns(roomId, count);
+  }
+
   recordUserTurn(roomId: string, text: string, author?: string): void {
     const turn: ConversationTurn = {
       role: 'user',
@@ -257,7 +278,7 @@ export class SmartRouterService extends Service {
   }
 
   private async classifyIntent(roomId: string, currentMessage: string): Promise<IntentClassifierResult> {
-    const turns = this.getRecentTurns(roomId, CLASSIFIER_HISTORY_WINDOW);
+    const turns = this.getTurnsForPrompt(roomId, CLASSIFIER_HISTORY_WINDOW);
     const transcript = this.formatTranscript(turns);
     const prompt = [
       'Conversation transcript (oldest first):',
@@ -445,9 +466,14 @@ export class SmartRouterService extends Service {
 
     // We want normal retrieval to fetch facts about the mentioned card from memories/wiki.
 
+    // Factual answers were context-blind: "what's FREEDOMKEK's supply?" then
+    // "and who made it?" left the second question with no idea what "it" meant.
+    const recentTranscript = this.formatRecentChat(this.getTurnsForPrompt(roomId, 8), 8);
+
     const result = await knowledge.retrieveKnowledge(userText, roomId, {
       mode: 'FACTS',
       includeMetrics: true,
+      conversation: recentTranscript,
     });
 
     let story = result.story?.trim();
@@ -616,7 +642,7 @@ export class SmartRouterService extends Service {
     classifierRaw?: string,
     options?: { tasteQuestion?: boolean; knownFact?: string; card?: string }
   ): Promise<SmartRoutingPlan> {
-    const history = this.getRecentTurns(roomId, 12);
+    const history = this.getTurnsForPrompt(roomId, 12);
     const recentTranscript = this.formatRecentChat(history, 12);
     const throwbackNotes = this.buildChatNotes(retrieval);
 

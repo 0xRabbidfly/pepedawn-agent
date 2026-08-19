@@ -32,6 +32,11 @@ export interface KnowledgeRetrievalOptions {
   preferCardFacts?: boolean;
   deterministicCardSelection?: boolean;
   suppressCardDiscovery?: boolean;
+  /**
+   * Recent conversation, so a factual answer can resolve a follow-up.
+   * Without it, "and who made it?" has no idea what "it" refers to.
+   */
+  conversation?: string;
 }
 
 export interface KnowledgeRetrievalResult {
@@ -636,7 +641,7 @@ export class KnowledgeOrchestratorService extends Service {
       }
       
       clusterCount = summaries.length;
-      story = await generatePersonaStory(this.runtime, query, summaries, 'LORE');
+      story = await generatePersonaStory(this.runtime, query, summaries, 'LORE', options?.conversation);
       sourcesLine = process.env.HIDE_LORE_SOURCES === 'true' ? '' : formatSourcesLine(summaries);
     } else {
       logger.debug('📋 FACTS mode: Using top wiki and memory passages directly');

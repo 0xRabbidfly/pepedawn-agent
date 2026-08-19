@@ -79,6 +79,14 @@ export class RoomHistory {
     private config: RoomHistoryConfig = DEFAULT_HISTORY_CONFIG
   ) {}
 
+  /**
+   * Cached turns without awaiting a load. Returns [] for a cold room; callers
+   * in a hot path use this and fall back rather than blocking.
+   */
+  peek(roomId: string): ConversationTurn[] {
+    return this.cache.get(roomId) ?? [];
+  }
+
   /** Load a room's history, from cache when warm. */
   async get(roomId: string): Promise<ConversationTurn[]> {
     const cached = this.cache.get(roomId);

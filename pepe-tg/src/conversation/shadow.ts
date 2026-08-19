@@ -122,7 +122,19 @@ export async function observeUserMessage(input: {
   now?: number;
 }): Promise<ShadowVerdict> {
   const allow: ShadowVerdict = { suppress: false, register: 'DEEP', reason: 'shadow_disabled' };
-  if (!shadowEnabled()) return allow;
+  // History persists unconditionally: it is what the model reads to know the
+  // conversation, not merely shadow-mode bookkeeping. Only the decision logging
+  // and the suppression verdict are gated.
+  if (!shadowEnabled()) {
+    await recordTurn(input.roomId, {
+      role: 'user',
+      text: input.text,
+      author: input.author,
+      at: input.now ?? Date.now(),
+      addressedBot: input.addressedBot,
+    });
+    return allow;
+  }
   try {
     const now = input.now ?? Date.now();
     const h = getHistory();
@@ -211,7 +223,10 @@ export async function observeBotMessage(input: {
   text: string;
   now?: number;
 }): Promise<void> {
-  if (!shadowEnabled()) return;
+  if (!shadowEnabled()) {
+    await recordTurn(input.roomId, { role: 'bot', text: input.text, at: input.now ?? Date.now() });
+    return;
+  }
   try {
     const now = input.now ?? Date.now();
     const botTurn: ConversationTurn = { role: 'bot', text: input.text, at: now };
@@ -260,5 +275,30 @@ export async function recallForPrompt(
     return SocialMemory.renderForPrompt(memories);
   } catch {
     return '';
+  }
+}
+
+/**
+ * Recent turns for a room, newest last.
+ *
+ * Synchronous by design: the router builds prompts in a hot path and the cache
+ * is already warm from observeUserMessage. Returns [] when the room is unknown,
+ * so callers can fall back.
+ */
+export function recentTurns(roomId: string, count: number): ConversationTurn[] {
+  try {
+    const turns = getHistory().peek(roomId);
+    return turns.slice(-count);
+  } catch {
+    return [];
+  }
+}
+
+/** Record a turn even when shadow/enforce are off, so history always persists. */
+export async function recordTurn(roomId: string, turn: ConversationTurn): Promise<void> {
+  try {
+    await getHistory().append(roomId, turn);
+  } catch {
+    // History is best effort; never break a response over it.
   }
 }

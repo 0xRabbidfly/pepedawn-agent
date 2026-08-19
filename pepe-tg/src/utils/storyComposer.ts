@@ -12,8 +12,9 @@ import { classifyQuery, type QueryType } from './queryClassifier';
 /**
  * Create prompt for FACTS-based queries (rules, requirements, how-to)
  */
-function createFactsPrompt(query: string, summaries: string): string {
+function createFactsPrompt(query: string, summaries: string, conversation?: string): string {
   return `You are PEPEDAWN. A user asked: "${query}"
+${conversation ? `\nRecent conversation (use it to resolve what "it" or "that one" refers to):\n${conversation}\n` : ''}
 
 Based on these sources:
 
@@ -88,7 +89,9 @@ export async function generatePersonaStory(
   runtime: IAgentRuntime,
   query: string,
   summaries: ClusterSummary[],
-  mode?: 'FACTS' | 'LORE'
+  mode?: 'FACTS' | 'LORE',
+  /** Recent conversation, so follow-ups like "and who made it?" resolve. */
+  conversation?: string
 ): Promise<string> {
   if (summaries.length === 0) {
     return "Fam, couldn't find any lore on that. Try asking about something else? 🐸";
@@ -103,8 +106,8 @@ export async function generatePersonaStory(
   logger.debug(`🎯 Query classified as: ${queryType}${mode ? ' (mode override)' : ''}`);
   
   // Different prompts for FACTS vs LORE
-  const storyPrompt = queryType === 'FACTS' 
-    ? createFactsPrompt(query, combinedSummaries)
+  const storyPrompt = queryType === 'FACTS'
+    ? createFactsPrompt(query, combinedSummaries, conversation)
     : createLorePrompt(query, combinedSummaries);
   
   try {
