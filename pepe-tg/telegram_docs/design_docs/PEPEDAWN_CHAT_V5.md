@@ -91,6 +91,25 @@ gets the largest boost, and 90.5% of the "wiki" bucket is impostors.
 **The bot forgets the room nightly.** `historyByRoom` is an in-memory `Map`
 (`HISTORY_LIMIT = 60`), never persisted, and PM2 cron-restarts at 02:00 daily.
 
+**The "won't shut up" failure mode was never fixed — only made rarer.**
+
+| Month | Bot replies | Worst 10-min burst | Replies <60s apart |
+|---|---|---|---|
+| 2026-01 | 1314 | **67** | 649 |
+| 2026-02 | 1155 | 43 | 562 |
+| 2026-03 | 643 | 43 | 268 |
+| 2026-08 | 565 | 31 | 278 |
+
+**43.6% of all bot replies land within 60 seconds of the previous one**; 33.6%
+within 30 seconds; p10 gap is 5 seconds. Raising `ENGAGEMENT_THRESHOLD` 25 → 31 in
+March halved total volume but left the bursting pattern intact — 49% of August
+replies are still <60s apart.
+
+The only defence against this in the entire codebase is **two lines of prompt text**
+asking the LLM to count its own turns (`SmartRouterService.ts:343` and `:808`). No
+code enforces cadence. By contrast `oddsCommand.ts` has a real 5-minute cooldown —
+the pattern exists, it was just never applied to conversation.
+
 **Cost is not a constraint.** Total LLM spend is **$10.26 over 9.5 months**. Chat runs
 on `gpt-4o-mini`, the cheapest model available, at $0.28 across the whole period.
 
@@ -164,6 +183,52 @@ becomes a structural guarantee**, not a prompt asking nicely.
 Most signals already exist in `engagementScorer.ts`, which tracks `roomLastMessage`,
 `userLastSeen`, word count and question detection — it just collapses them into a
 single fire/don't-fire threshold instead of a register.
+
+### 3.35 Cadence governor — the third axis
+
+**This is the missing piece, and the reason previous fixes failed.**
+
+Engagement threshold, classifier NORESPONSE, and the register ladder are all
+*per-message*: they answer "should I reply to **this**?" in isolation. "Won't shut up"
+is not a per-message property — it is a **rate** property. A bot can make twenty
+individually defensible decisions and still dominate the room.
+
+That is exactly what the data shows: the March intervention made the bot reply less
+*often* without making it reply less *consecutively*. Volume fell, rhythm did not
+change. Tuning a per-message threshold to fix a rate problem suppresses good
+contributions and bad ones equally — which is precisely why PEPEDAWN now reads as
+both too quiet (75% NORESPONSE) and still capable of 31 replies in ten minutes.
+
+**The governor is code, never prompt.** Per room, over a rolling window:
+
+| Rule | Default |
+|---|---|
+| Share of voice — bot messages ÷ total messages | ≤ 20% |
+| Never two bot turns without an intervening user message | hard |
+| Minimum gap between unprompted contributions | 90s |
+| Backoff — each unaddressed contribution raises the bar for the next | +1 register step |
+
+**Exemption:** direct @mention or reply-to-bot bypasses the governor entirely. Being
+responsive when addressed is categorically different from volunteering. This is what
+lets us *lower* the engagement threshold for requirement 1 without recreating the
+original problem.
+
+The governor caps `register` the same way room temperature does — it can only push
+**down** the ladder, never up. Order of application:
+
+```
+classifier register -> capped by room temperature -> capped by cadence governor
+```
+
+**EQ is the composition of all three:**
+
+| Axis | Question | Enforced by |
+|---|---|---|
+| Register ladder | *how much* to say | classifier + caps |
+| Room temperature | *what the room is doing* | computed signals |
+| **Cadence governor** | *whether to speak at all* | **hard code** |
+
+Restraint is the axis that was missing. It cannot be delegated to a prompt.
 
 ### 3.4 Memory tiers
 
@@ -307,6 +372,7 @@ Each step ships independently.
 |---|---|---|
 | **1. Persist room history** | #1, #3 foundation | — |
 | **2. Room temperature + register axis** | #3, #4 | CHAT suppression rules |
+| **2b. Cadence governor** | #3, unblocks #1 | prompt-based turn counting |
 | **3. Owned retrieval layer, wiki+cards only** | #2 | `plugin-knowledge`, 141-line heuristic |
 | **4. Highlights stream + decay** | #6 | TG archive rows |
 | **5. Two-call routing, frontier generate** | #5, #1 | duplicate classifier, bootstrap |
@@ -318,11 +384,12 @@ Step 1 is a prerequisite for everything. Steps 3 and 4 are the largest deletions
 
 ## 7. Open questions
 
-1. **What drove v4.1's chattiness reduction?** `ENGAGEMENT_THRESHOLD` was raised from
-   25 to 31 in prod and NORESPONSE climbed 62% → 75%. Requirements 1 and 3 reopen
-   that deliberately. If the original complaint was interruption, the fix is *better*
-   engagement, not simply more — and the register ladder is designed for exactly that.
-   But the original failure mode should be on record before we turn the dial.
+1. ~~What drove v4.1's chattiness reduction?~~ **Resolved.** The complaint was that
+   PEPEDAWN would not stop replying. Two interventions followed — v4.1 (2025-11-16,
+   classifier prompt) and a prod `ENGAGEMENT_THRESHOLD` 25 → 31 change in March 2026
+   with no commit. Neither addressed the actual failure mode; see §2 and §3.35. The
+   cadence governor is the direct response, and it is what makes lowering the
+   engagement threshold for requirement 1 safe.
 2. **`/help` wording for `/fr`** under the new artist-lore framing.
 3. **Highlight half-life** — 30 days is a starting default, not a measured one.
 4. **Wiki corpus depth.** After dropping the archive, all prose knowledge rests on 468
