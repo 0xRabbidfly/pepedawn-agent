@@ -382,6 +382,39 @@ Step 1 is a prerequisite for everything. Steps 3 and 4 are the largest deletions
 
 ---
 
+## 6b. Verification status (2026-08-19)
+
+Steps 1, 2 and 2b are implemented in `src/conversation/` and deployed to the
+**test bot** (@pepedawntest_bot, token `8216356616`) — see
+`docs/TESTING_WITH_TEST_BOT.md`.
+
+| Check | Result |
+|---|---|
+| Unit + integration tests | 575 pass (from 533 at session start) |
+| Typecheck | 46 errors, down from 61; none in new code |
+| Cadence replay, 20,742 production events | worst 10-min burst **67 → 10**; replies <60s apart **43.6% → 2.4%**; share of traffic 34.4% → 21.7% |
+| Deployed boot on test bot | agent starts, periodic content disabled, `.env` restored byte-identical |
+| Shadow write in deployed layout | 4 decisions to `src/data/shadow-logs.jsonl`, room history persisted |
+
+**Not yet done:** live user traffic through the deployed bot. Bots cannot message
+bots, so this requires a human sending messages to @pepedawntest_bot with
+`V5_SHADOW=true` set in `pepe-tg/.env`.
+
+### Operational lessons recorded during this work
+
+- **ElizaOS resolves `.env` from its working directory**, and
+  `scripts/start-bot.sh` forces the working directory back to `pepe-tg`. Shell
+  `export`s and `unset`s are therefore ignored. Any isolation must come from the
+  `.env` file the process will actually load.
+- **`periodicContent.sendToChannels()` swallows send failures** — it logs
+  `Failed to send to channel` at warn level and does not rethrow, so
+  `Posted periodic …` is logged whether or not the send succeeded. Absence of the
+  warning is the only reliable success signal.
+- **Never call `getUpdates` by hand against a bot under test.** It consumes the
+  queue; a queued user message was lost this way.
+- **Always `getMe` before running anything that can send.** Production is
+  `8462…`, test is `8216…`.
+
 ## 7. Open questions
 
 1. ~~What drove v4.1's chattiness reduction?~~ **Resolved.** The complaint was that
