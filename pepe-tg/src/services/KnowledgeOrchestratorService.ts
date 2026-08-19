@@ -667,7 +667,7 @@ export class KnowledgeOrchestratorService extends Service {
           passageRefs: topPassages.map(p => p.id),
           summary: topPassages.map(p => p.text).join('\n\n'),
           citations: topPassages.map(p => formatCompactCitation(p))
-        }], queryType);
+        }], queryType, options?.conversation);
         sourcesLine = process.env.HIDE_LORE_SOURCES === 'true' ? '' : 
           `\n\nSources:  ${topPassages.map(p => formatCompactCitation(p)).join('  ||  ')}`;
         clusterCount = 1;
@@ -679,7 +679,7 @@ export class KnowledgeOrchestratorService extends Service {
           summary: factsPassages.map(p => p.text).join('\n\n'),
           citations: factsPassages.map(p => formatCompactCitation(p))
           },
-        ], queryType);
+        ], queryType, options?.conversation);
         sourcesLine =
           process.env.HIDE_LORE_SOURCES === 'true'
             ? ''

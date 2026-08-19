@@ -104,3 +104,38 @@ describe('card grounding only when the message concerns cards', () => {
     expect(await concerns('anyone selling a rare?')).toBe(true);
   });
 });
+
+describe('production regressions from 2026-08-19', () => {
+  it('does not treat "Hey pepedawn, ..." as a card question', async () => {
+    // Prod answered this by prepending the PEPEDAWN card's specs and showing
+    // its image: "PEPEDAWN — by rabbidfly, series 18, card 22, supply 133..."
+    const router = await makeRouter();
+    const plan = await router.planRouting(
+      'Hey pepedawn, should I interpret what Scrilla said as a compliment?',
+      'room'
+    );
+    expect(plan.card).toBeUndefined();
+    expect(plan.knownFact).toBeUndefined();
+  });
+
+  it('still answers a real question about the PEPEDAWN card', async () => {
+    const router = await makeRouter();
+    const plan = await router.planRouting("what is PEPEDAWN's supply?", 'room');
+    expect(plan.knownFact).toContain('133');
+  });
+
+  it('does not show a card the model invented in ordinary chat', () => {
+    // "lol - more work to do" retrieved nothing (sources: none) yet the reply
+    // recommended HELLAPAPELLA and the image was posted. The display fallback
+    // must require that the user asked about cards.
+    const askedAboutCards = (text: string) =>
+      /\b(card|cards|fake|fakes|rare|rares|pepe|pepes|series|artist|supply|issued|issuance|drop|drops|collection)\b/i.test(
+        text
+      ) || firstKnownAssetIn(text) !== undefined;
+
+    expect(askedAboutCards('lol - more work to do')).toBe(false);
+    expect(askedAboutCards('how are you today?')).toBe(false);
+    expect(askedAboutCards('show me FREEDOMKEK')).toBe(true);
+    expect(askedAboutCards('any good cards lately?')).toBe(true);
+  });
+});

@@ -446,7 +446,16 @@ export class SmartRouterService extends Service {
   ): Promise<SmartRoutingPlan> {
     // Skip card descriptor check if a card is explicitly mentioned.
     // Card descriptors are for discovery queries, not queries about specific card attributes.
-    const mentionedCard = this.detectMentionedCard(userText);
+    // PEPEDAWN is the bot's name as well as a card. "Hey pepedawn, should I
+    // interpret what Scrilla said as a compliment?" was answered by prepending
+    // the PEPEDAWN card's specs and showing its image. Only treat it as a named
+    // card when the phrasing is actually about the card.
+    const named = this.detectMentionedCard(userText);
+    const mentionedCard =
+      named && named.toUpperCase() === 'PEPEDAWN' &&
+      !this.pepedawnMeansTheCard({ role: 'user', text: userText })
+        ? null
+        : named;
 
 
     const knowledge = this.runtime.getService(

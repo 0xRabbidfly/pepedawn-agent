@@ -266,14 +266,39 @@ function getDisplayName(params: any, message: any): string {
  * otherwise taken from the first known asset named in the reply, so a card the
  * model brings up unprompted is still shown.
  */
+/**
+ * Whether the user's own message was about cards at all.
+ *
+ * Guards the display fallback: without it, any card name the model happens to
+ * produce gets an image attached, including invented ones.
+ */
+function userAskedAboutCards(context: SmartRouterExecutionContext): boolean {
+  const text = String((context.message as any)?.content?.text ?? '');
+  if (!text) return false;
+  if (
+    /\b(card|cards|fake|fakes|rare|rares|pepe|pepes|series|artist|supply|issued|issuance|drop|drops|collection)\b/i.test(
+      text
+    )
+  ) {
+    return true;
+  }
+  return firstKnownAssetIn(text) !== undefined;
+}
+
 async function showCardForAnswer(
   context: SmartRouterExecutionContext,
   planAsset: string | undefined,
   answerText: string | undefined,
-  deliver: HandlerCallback | null
+  deliver: HandlerCallback | null,
+  askedAboutCards: boolean
 ): Promise<void> {
   if (!deliver) return;
-  const asset = planAsset ?? firstKnownAssetIn(answerText ?? '');
+  // Only fall back to scanning the reply when the plan has no subject AND the
+  // user's message was actually about cards. Luna invents plausible card names
+  // in ordinary chat - "lol - more work to do" produced a HELLAPAPELLA
+  // recommendation with sources:[none], i.e. nothing retrieved - and this path
+  // dutifully showed the image for a card nobody asked about.
+  const asset = planAsset ?? (askedAboutCards ? firstKnownAssetIn(answerText ?? '') : undefined);
   if (!asset) return;
 
   const { runtime, message, params } = context;
@@ -458,7 +483,7 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
             __fromAction: plan.kind === 'FACTS' ? 'smart_router_facts' : 'smart_router_lore',
           });
           await recordBotTurn(story);
-          await showCardForAnswer(context, plan.primaryCardAsset, story, actionCallback);
+          await showCardForAnswer(context, plan.primaryCardAsset, story, actionCallback, userAskedAboutCards(context));
           // The sources line ("Sources: mem:FREEDO 2025-11-01 by:Unknown") leaks
           // internal record ids into the room as a second message. Useful when
           // debugging retrieval, noise for everyone else.
@@ -491,7 +516,7 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
             __fromAction: 'smart_router_chat',
           });
           await recordBotTurn(response);
-          await showCardForAnswer(context, plan.primaryCardAsset, response, actionCallback);
+          await showCardForAnswer(context, plan.primaryCardAsset, response, actionCallback, userAskedAboutCards(context));
         }
 
         markHandled();

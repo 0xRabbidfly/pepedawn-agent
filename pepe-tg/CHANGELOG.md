@@ -85,6 +85,22 @@ Together ~2,355 of 11,483 LLM calls no longer happen.
 - `RoomHistory` lost turns when appends overlapped.
 - Cadence could silence safety replies; it now sits below the content filters.
 
+## [5.0.3] - 2026-08-19
+
+### Fixed
+
+- "Hey pepedawn, should I interpret what Scrilla said as a compliment?" was
+  answered by prepending the PEPEDAWN card's specifications and posting its
+  image. buildFactsPlan treated any mention of the name as a named card; 5.0.1
+  had guarded the other two inference paths but not this one.
+- A card the model invented in ordinary chat was displayed. "lol - more work to
+  do" retrieved nothing at all, yet the reply recommended HELLAPAPELLA and the
+  image was posted, because the display fallback showed any card named in a
+  reply. It now requires that the user's message was about cards.
+- Recent conversation never reached factual answers. The transcript was passed
+  only to the LORE composition call, which is unreachable since LORE collapsed
+  into FACTS, so "what Scrilla said" had no context to resolve against.
+
 ## [5.0.2] - 2026-08-19
 
 ### Fixed
