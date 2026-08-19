@@ -847,15 +847,15 @@ export const fakeRaresPlugin: Plugin = {
           if (isDawn && await executeCommand(oddsCommand, cmdParams, '/dawn')) return;
           if (isXcp && await executeCommand(xcpCommand, cmdParams, '/xcp')) return;
           
-          // Admin-only command
+          // Admin-only command. Marked handled whether or not validation
+          // passed: in a group /fc must fall silent rather than reach the
+          // conversational path, and in a DM a non-admin gets the refusal the
+          // handler already sent.
           if (isFc) {
-            const executed = await executeCommand(costCommand, cmdParams, '/fc');
-            if (executed || !executed) {
-              // Always mark as handled (whether admin or not)
-              message.metadata = message.metadata || {};
-              (message.metadata as any).__handledByCustom = true;
-              return;
-            }
+            await executeCommand(costCommand, cmdParams, '/fc');
+            message.metadata = message.metadata || {};
+            (message.metadata as any).__handledByCustom = true;
+            return;
           }
           
           logger.info('━━━━━━━━━━ STEP 3/5: CONTENT FILTERS ━━━━━━━━━━');

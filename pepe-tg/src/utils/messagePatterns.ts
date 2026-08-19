@@ -78,7 +78,7 @@ export function detectMessagePatterns(
     isFr: /^(?:@[A-Za-z0-9_]+\s+)?\/fr(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
     isFm: /^(?:@[A-Za-z0-9_]+\s+)?\/fm(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
     isDawn: /^(?:@[A-Za-z0-9_]+\s+)?\/dawn(?:@[A-Za-z0-9_]+)?$/i.test(text),
-    isFc: /^(?:@[A-Za-z0-9_]+\s+)?\/fc/i.test(text),
+    isFc: /^(?:@[A-Za-z0-9_]+\s+)?\/fc(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
     isXcp: /^(?:@[A-Za-z0-9_]+\s+)?\/xcp(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
   };
   

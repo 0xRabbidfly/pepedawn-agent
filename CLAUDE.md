@@ -44,6 +44,44 @@ because there you want to feel the behaviour rather than read a log.
 
 ---
 
+## 🔴 Never kill the bot with pkill
+
+The local PGlite database corrupts if the process is killed mid-shutdown or if
+the lock file is removed while it is still releasing. Once broken, even
+`CREATE SCHEMA IF NOT EXISTS migrations` aborts inside the WASM and the bot will
+not start. This has happened more than once.
+
+**Always:**
+
+```bash
+./scripts/kill-bot.sh       # SIGTERM, waits 10s, force-kills only as last resort
+./scripts/safe-restart.sh   # stop + verify + start
+```
+
+**Never:**
+
+- `pkill -f eliza` or `kill -9` on the bot
+- `rm .eliza/.elizadb/postmaster.pid` while a process may still hold it
+  (`start-bot.sh` clears genuinely stale locks on its own)
+- opening PGlite directly while the bot runs — use `scripts/query-db.js`, which
+  refuses when it detects a running bot
+
+**Recovery** (also in README.md "Database corruption"):
+
+```bash
+./scripts/kill-bot.sh
+mv .eliza/.elizadb .eliza/.elizadb.broken-$(date +%F)   # keep it, do not delete
+tar -xzf ../backups/elizadb-backup-*.tar.gz -C .eliza/
+./scripts/start-bot.sh
+```
+
+Restorable copies live in `pepe-tg/.eliza/` (`.elizadb OLD`,
+`.elizadb post embedding`) and `backups/elizadb-backup-*.tar.gz`. Production is
+a separate database on the droplet and is unaffected by local corruption — it
+can also be pulled down as a last resort.
+
+---
+
 ## Environment gotchas
 
 - **ElizaOS resolves `.env` from its working directory**, and

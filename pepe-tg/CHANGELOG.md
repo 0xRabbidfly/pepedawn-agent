@@ -33,6 +33,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   in a 1:1 chat
 
 ### Fixed
+- `/fc` matched any command starting with those letters (`/fcarousel` was swallowed and
+  answered nothing); the pattern is now anchored like every other command, and its
+  dispatch branch no longer hides the always-handled behaviour behind an
+  `if (executed || !executed)` tautology
 - `TelemetryService` used `logger` 17 times without importing it — every call would have
   thrown at runtime. Repo typecheck errors dropped 61 → 46
 - `RoomHistory` lost turns when appends overlapped; appends are now serialized per room
