@@ -10,7 +10,7 @@
  * This gives the answer real material to work with.
  */
 
-import { getCardInfo, type CardInfo } from '../data/fullCardIndex';
+import { FULL_CARD_INDEX, getCardInfo, type CardInfo } from '../data/fullCardIndex';
 
 function findCard(asset: string): CardInfo | undefined {
   const upper = asset.toUpperCase();
@@ -69,4 +69,20 @@ export function describeCard(asset: string): string | null {
 /** Structured form, for callers that want to compose their own phrasing. */
 export function cardFacts(asset: string): CardInfo | null {
   return findCard(asset) ?? null;
+}
+
+/**
+ * One card, drawn uniformly at random from the collection.
+ *
+ * Used for questions of taste. Ranking cards is against the etiquette of this
+ * community, so rather than nominating a favourite the bot offers something at
+ * random and says why it is worth a look. Drawing here rather than asking the
+ * model to choose is also the only source of variety available: gpt-5.6-luna
+ * rejects temperature, top_p, presence_penalty and frequency_penalty outright,
+ * so identical context produces near-identical answers.
+ */
+export function randomCard(): CardInfo | null {
+  const pool = FULL_CARD_INDEX.filter((c) => c.asset);
+  if (pool.length === 0) return null;
+  return pool[Math.floor(Math.random() * pool.length)];
 }

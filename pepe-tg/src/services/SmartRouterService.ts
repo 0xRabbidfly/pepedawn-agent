@@ -12,7 +12,8 @@ import {
 import { detectCardFastPath } from '../router/cardFastPath';
 import { KnowledgeOrchestratorService } from './KnowledgeOrchestratorService';
 import { callTextModel } from '../utils/modelGateway';
-import { describeCard } from '../utils/cardFacts';
+import { describeCard, randomCard } from '../utils/cardFacts';
+import { answerCardQuery } from '../utils/cardQueries';
 import { recallForPrompt } from '../conversation/shadow';
 import { isInFullIndex } from '../data/fullCardIndex';
 
@@ -486,12 +487,27 @@ export class SmartRouterService extends Service {
     // Skip card descriptor check if a card is explicitly mentioned.
     // Card descriptors are for discovery queries, not queries about specific card attributes.
     const mentionedCard = this.detectMentionedCard(userText);
+    // Questions the card index answers exactly - artist, issuance, supply,
+    // series, an artist's largest or smallest card - are looked up rather than
+    // retrieved. Semantic search returns whatever text is similar, which is how
+    // the bot ended up asserting things it could simply have read off. The fact
+    // is stated by code; only the wrapper around it is generated.
+    const structured = answerCardQuery(userText);
+    if (structured) {
+      logger.debug({ kind: structured.kind }, '[SmartRouter] Structured card query');
+      return this.buildChatPlan(userText, roomId, retrieval, classifierRaw, {
+        knownFact: structured.fact,
+      });
+    }
+
     // Matters of taste go down the conversational path, where PEPEDAWN has a
     // voice and can own a pick, rather than the card-recommend path, which
     // builds a factual justification for something that has none.
     if (this.isTasteQuestion(userText)) {
       logger.debug({ query: userText }, '[SmartRouter] Taste question -> opinion, not card lookup');
-      return this.buildChatPlan(userText, roomId, retrieval, classifierRaw);
+      return this.buildChatPlan(userText, roomId, retrieval, classifierRaw, {
+        tasteQuestion: true,
+      });
     }
 
     if (!mentionedCard && this.looksLikeCardDescriptor(userText)) {
@@ -839,11 +855,13 @@ export class SmartRouterService extends Service {
     return cleaned || text; // Return original if stripping would empty the query
   }
 
+
   private async buildChatPlan(
     userText: string,
     roomId: string,
     retrieval: RetrieveCandidatesResult | null,
-    classifierRaw?: string
+    classifierRaw?: string,
+    options?: { tasteQuestion?: boolean; knownFact?: string }
   ): Promise<SmartRoutingPlan> {
     const history = this.getRecentTurns(roomId, 12);
     const recentTranscript = this.formatRecentChat(history, 12);
@@ -860,6 +878,17 @@ export class SmartRouterService extends Service {
     // gone.
     const nothingKnown = !throwbackNotes && !roomMemories;
 
+    // Ranking cards is against the etiquette of this community, so a question of
+    // taste is answered by picking a card uniformly at random and saying
+    // something true and appreciative about it. The non-determinism lives here,
+    // in code — gpt-5.6-luna accepts no temperature, top_p or penalties at all,
+    // so nothing varies unless the context does.
+    let offeredCard = '';
+    if (options?.tasteQuestion) {
+      const card = randomCard();
+      offeredCard = card ? (describeCard(card.asset) ?? '') : '';
+    }
+
     const prompt = [
       'Recent conversation:',
       recentTranscript,
@@ -869,6 +898,15 @@ export class SmartRouterService extends Service {
         : 'What you know that is relevant: (nothing retrieved)',
       '',
       roomMemories ? `What you remember about people here:\n${roomMemories}\n` : '',
+      options?.knownFact
+        ? `THIS IS THE ANSWER, and it is exact — state it, do not hedge it, do not add specifications around it:\n${options.knownFact}\nWrap it in one conversational sentence. Do not turn it into a fact sheet.\n`
+        : '',
+      offeredCard
+        ? `This community does not rank its cards, and you would not want to. Instead, here is one drawn at random:
+${offeredCard}
+Say briefly why it is worth a look — something true about the art, the artist or the era. Make clear it is one of many, not "the best".
+`
+        : '',
       nothingKnown
         ? 'You have nothing on this. If they asked about a specific card or piece of history, say so plainly and invite them to add it with /fr - once, lightly, not as a sales pitch.\n'
         : '',

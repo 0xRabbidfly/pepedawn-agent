@@ -368,3 +368,4 @@ describe('SocialMemory runtime', () => {
     expect(calls).toHaveLength(1);
   });
 });
+
