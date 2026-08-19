@@ -425,15 +425,6 @@ export class SmartRouterService extends Service {
     // Card descriptors are for discovery queries, not queries about specific card attributes.
     const mentionedCard = this.detectMentionedCard(userText);
 
-    // Matters of taste go down the conversational path, where PEPEDAWN has a
-    // voice and can own a pick, rather than the card-recommend path, which
-    // builds a factual justification for something that has none.
-    if (this.isTasteQuestion(userText)) {
-      logger.debug({ query: userText }, '[SmartRouter] Taste question -> opinion, not card lookup');
-      return this.buildChatPlan(userText, roomId, retrieval, classifierRaw, {
-        tasteQuestion: true,
-      });
-    }
 
     const knowledge = this.runtime.getService(
       KnowledgeOrchestratorService.serviceType
@@ -759,6 +750,14 @@ Say briefly why it is worth a look — something true about the art, the artist 
     // That path answered PEPEPOSSE — a
     // Gonkulator card with supply 23 — for a question whose answer is
     // PEPERMINE at 150.
+    // Matters of taste go straight to the conversational path, whatever the
+    // classifier decides. Ranking cards is against this community's etiquette,
+    // so the answer is a card drawn at random with something true said about it.
+    if (this.isTasteQuestion(trimmed)) {
+      logger.debug({ query: trimmed }, '[SmartRouter] Taste question -> opinion, not lookup');
+      return this.buildChatPlan(trimmed, roomId, null, undefined, { tasteQuestion: true });
+    }
+
     const structured = answerCardQuery(trimmed);
     if (structured) {
       logger.debug({ kind: structured.kind }, '[SmartRouter] Structured card query');
