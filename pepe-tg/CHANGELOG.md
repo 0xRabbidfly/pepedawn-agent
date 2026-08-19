@@ -85,6 +85,18 @@ Together ~2,355 of 11,483 LLM calls no longer happen.
 - `RoomHistory` lost turns when appends overlapped.
 - Cadence could silence safety replies; it now sits below the content filters.
 
+## [5.0.6] - 2026-08-19
+
+### Fixed
+
+- A direct question to the bot was answered with silence. "pepedawn how do YOU
+  FEEL?" was classified NORESPONSE and ignored - twice, while the room watched
+  and someone remarked "pepedawn is ignoring us". The classifier silences
+  anything outside Fake Rares, and a question about the bot itself is off-topic
+  by that rule. Being addressed now overrides an off-topic or closing
+  classification, provided the message is actually a question. Hostility and
+  one-word dismissals still pass through as silence.
+
 ## [5.0.5] - 2026-08-19
 
 ### Fixed

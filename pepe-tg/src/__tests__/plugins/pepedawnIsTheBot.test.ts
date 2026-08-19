@@ -172,3 +172,38 @@ describe('addressing the bot by plain name', () => {
     expect((await classify('who made PEPEDAWN?')).isCard).toBe(true);
   });
 });
+
+describe('a direct question to the bot always gets an answer', () => {
+  const askSilently = async (text: string, addressed = false) => {
+    const { SmartRouterService } = await import('../../services/SmartRouterService');
+    const router: any = new (SmartRouterService as any)({
+      agentId: 'test',
+      getService: () => null,
+    } as any);
+    router.buildChatPlan = async () => ({ kind: 'CHAT' });
+    router.buildFactsPlan = async () => ({ kind: 'FACTS' });
+    // The classifier wants silence; the override decides whether that stands.
+    router.classifyIntent = async () => ({ intent: 'NORESPONSE', raw: '{}' });
+    return (await router.planRouting(text, 'room', addressed)).kind;
+  };
+
+  it('answers a personal question addressed by name', async () => {
+    // The classifier silences anything outside Fake Rares, so "how do you feel?"
+    // was off-topic and ignored - twice, while the room watched and someone
+    // said "pepedawn is ignoring us".
+    expect(await askSilently('pepedawn how do YOU FEEL?')).toBe('CHAT');
+    expect(await askSilently('ok pepedawn - enough testing for today - how do you feel?')).toBe('CHAT');
+    expect(await askSilently('hey pepedawn what do you think of this?')).toBe('CHAT');
+  });
+
+  it('still stays silent on hostility and chatter', async () => {
+    expect(await askSilently('stfu pepedawn')).toBe('NORESPONSE');
+    expect(await askSilently('pepedawn')).toBe('NORESPONSE');
+    expect(await askSilently('gm everyone')).toBe('NORESPONSE');
+    expect(await askSilently('lol')).toBe('NORESPONSE');
+  });
+
+  it('answers a question in a DM or reply even without the name', async () => {
+    expect(await askSilently('how are you feeling today?', true)).toBe('CHAT');
+  });
+});

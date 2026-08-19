@@ -573,6 +573,26 @@ export class SmartRouterService extends Service {
    * supply", "who made PEPEDAWN" - whereas addressing the bot reads as "hey
    * pepedawn" or "pepedawn what do you think".
    */
+  /**
+   * True when someone is talking TO the bot: by @mention, reply, DM, or simply
+   * by using its name in a way that is not about the card.
+   */
+  private addressesTheBot(text: string, addressedConversationally: boolean): boolean {
+    if (addressedConversationally) return true;
+    if (!/\bpepedawn\b/i.test(text)) return false;
+    return !this.pepedawnMeansTheCard({ role: 'user', text });
+  }
+
+  /** A genuine question rather than a one-word dismissal. */
+  private isAQuestion(text: string): boolean {
+    return (
+      /\?/.test(text) ||
+      /\b(what|how|why|when|where|who|which|do|does|did|are|is|can|could|would|should|tell me)\b/i.test(
+        text
+      )
+    );
+  }
+
   private pepedawnMeansTheCard(turn: { role: string; text: string }): boolean {
     if (turn.role === 'bot') return false;
     const text = turn.text || '';
@@ -1007,6 +1027,23 @@ Say briefly why it is worth a look — something true about the art, the artist 
         });
     }
 
+
+    // Someone asking PEPEDAWN a direct question deserves an answer, even when
+    // the subject is off-topic. The classifier silences anything outside Fake
+    // Rares, so "pepedawn how do YOU FEEL?" was classified off-topic and
+    // ignored - twice, while the room watched. Hostility and one-word
+    // dismissals still pass through as silence, because they are not questions.
+    if (
+      intent === 'NORESPONSE' &&
+      this.addressesTheBot(trimmed, addressedConversationally) &&
+      this.isAQuestion(trimmed)
+    ) {
+      logger.debug(
+        { query: trimmed },
+        '[SmartRouter] Direct question to the bot overrides off-topic silence'
+      );
+      intent = 'CHAT';
+    }
 
     if (intent === 'NORESPONSE') {
       return {
