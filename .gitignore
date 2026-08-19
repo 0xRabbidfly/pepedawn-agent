@@ -75,3 +75,9 @@ pepe-tg/.env.staging
 pepe-tg/.staging/
 **/room-history.json
 **/shadow-logs.jsonl
+
+# Runtime telemetry — written by the bot, must never be tracked or it conflicts
+# on every deploy (and a `git checkout` to clean the tree discards real data).
+pepe-tg/src/data/*.jsonl
+pepe-tg/src/data/room-history.json
+pepe-tg/src/data/social-memory.json
