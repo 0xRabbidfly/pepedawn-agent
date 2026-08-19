@@ -543,10 +543,34 @@ export class SmartRouterService extends Service {
   private lastMentionedCard(roomId: string): string | undefined {
     const turns = this.getTurnsForPrompt(roomId, 8);
     for (let i = turns.length - 1; i >= 0; i--) {
-      const words = (turns[i].text || '').toUpperCase().match(/\b[A-Z][A-Z0-9]{2,}\b/g) ?? [];
-      for (const w of words) if (getCardInfo(w)) return w;
+      const turn = turns[i];
+      const words = (turn.text || '').toUpperCase().match(/\b[A-Z][A-Z0-9]{2,}\b/g) ?? [];
+      for (const w of words) {
+        // PEPEDAWN is the bot's own name as well as a card. It appears in almost
+        // every bot turn and in anyone addressing it, so inheriting it as "the
+        // card in play" made unrelated follow-ups answer about the PEPEDAWN
+        // card. Only accept it when a user said it AND asked about it as a card.
+        if (w === 'PEPEDAWN' && !this.pepedawnMeansTheCard(turn)) continue;
+        if (getCardInfo(w)) return w;
+      }
     }
     return undefined;
+  }
+
+  /**
+   * True when a turn used "pepedawn" to mean the card rather than the bot.
+   *
+   * Card-shaped phrasing is possessive or attribute-seeking - "PEPEDAWN's
+   * supply", "who made PEPEDAWN" - whereas addressing the bot reads as "hey
+   * pepedawn" or "pepedawn what do you think".
+   */
+  private pepedawnMeansTheCard(turn: { role: string; text: string }): boolean {
+    if (turn.role === 'bot') return false;
+    const text = turn.text || '';
+    if (/\bpepedawn['’]s\b/i.test(text)) return true;
+    return /\b(who\s+made|artist|supply|issued|issuance|series|card\s+number)\b[^.?!]*\bpepedawn\b/i.test(
+      text
+    ) || /\bpepedawn\b[^.?!]*\b(supply|artist|issued|issuance|series|card\s+number)\b/i.test(text);
   }
 
   /** True when the message leans on a pronoun instead of naming a card. */

@@ -290,10 +290,19 @@ async function showCardForAnswer(
   }
 }
 
-/** First Fake Rares asset named in a block of text, if any. */
+/**
+ * First Fake Rares asset named in a block of text, if any.
+ *
+ * PEPEDAWN is deliberately never inferred here. It is both a card and the bot's
+ * own name, and the bot says its name constantly - "PEPEDAWN endures", "I'm
+ * PEPEDAWN" - which was surfacing the PEPEDAWN card in replies that had nothing
+ * to do with it. The card is still shown when it is the explicit subject, which
+ * arrives on the plan rather than by inference from prose.
+ */
 function firstKnownAssetIn(text: string): string | undefined {
   if (!text) return undefined;
   for (const word of text.toUpperCase().match(/\b[A-Z][A-Z0-9]{2,}\b/g) ?? []) {
+    if (word === 'PEPEDAWN') continue;
     if (getCardInfo(word)) return word;
   }
   return undefined;

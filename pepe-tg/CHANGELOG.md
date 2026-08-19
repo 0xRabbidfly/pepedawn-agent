@@ -85,6 +85,19 @@ Together ~2,355 of 11,483 LLM calls no longer happen.
 - `RoomHistory` lost turns when appends overlapped.
 - Cadence could silence safety replies; it now sits below the content filters.
 
+## [5.0.1] - 2026-08-19
+
+### Fixed
+
+- The PEPEDAWN card was shown when "pepedawn" meant the bot. It is both a card
+  and the bot's own name, and the bot says its name constantly ("PEPEDAWN
+  endures"), so the card was surfacing in replies that had nothing to do with
+  it. The card is never inferred from prose now; it is shown only when it is the
+  explicit subject, which reaches the display path on the plan rather than by
+  guessing. Inheriting it as "the card in play" for a follow-up also requires
+  that a user asked about it as a card - possessive or attribute-seeking
+  phrasing - rather than merely addressing the bot.
+
 ## [Unreleased]
 
 ### Added
