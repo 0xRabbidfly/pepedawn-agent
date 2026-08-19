@@ -709,6 +709,7 @@ export const fakeRaresPlugin: Plugin = {
             roomId: message.roomId,
             text,
             author: getDisplayName(params, message),
+            entityId: message.entityId,
             addressedBot: !!(isReplyToBot || triggers.hasBotMention || isDirectMessage),
           });
 

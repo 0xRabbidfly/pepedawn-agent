@@ -66,12 +66,15 @@ const DEFAULT_CONFIG: SmartRouterConfig = {
     unknown: 0.5,
   },
   topKPerSource: 5,
+  // Relevance floor. Measured mean similarity for chat retrieval was 0.34,
+  // i.e. mostly noise, which is what produced out-of-context replies. Nothing
+  // below RAG_RELEVANCE_FLOOR is used at all.
   matchThresholds: {
-    memory: 0.25,
-    wiki: 0.25,
-    card_data: 0.35,
-    telegram: 0.3,
-    unknown: 0.0,
+    memory: 0.45,
+    wiki: 0.45,
+    card_data: 0.45,
+    telegram: 0.45,
+    unknown: 0.45,
   },
   previewLength: 320,
   minConfidenceForFactsOrLore: 0.6,
@@ -279,6 +282,14 @@ const SMART_ROUTER_CONFIG_INTERNAL: SmartRouterConfig = (() => {
 
 export const SMART_ROUTER_CONFIG: SmartRouterConfig = SMART_ROUTER_CONFIG_INTERNAL;
 
+/**
+ * Whether the frozen Telegram archive is excluded from retrieval.
+ * Set RAG_INCLUDE_TELEGRAM=true only to compare against the old behaviour.
+ */
+export function excludeTelegramFromRag(): boolean {
+  return process.env.RAG_INCLUDE_TELEGRAM !== 'true';
+}
+
 export function passagesToRouterCandidates(
   passages: RetrievedPassage[],
   weights: Record<RouterSourceType, number>,
@@ -310,6 +321,14 @@ export function passagesToRouterCandidates(
         : passage.sourceType === 'telegram'
         ? 'telegram'
         : 'unknown';
+
+    // The Telegram archive is frozen at 2025-10-11 and is the main source of
+    // out-of-context replies: 22% of it is misclassified as authoritative wiki,
+    // and its strongest hits are form-matches ("Any buyer for 4xcp?" retrieving
+    // other people saying "any buyer"). Excluded from retrieval entirely.
+    // Community history now comes from live social memory instead.
+    if (sourceType === 'telegram' && excludeTelegramFromRag()) continue;
+
     grouped[sourceType].push(passage);
   }
 

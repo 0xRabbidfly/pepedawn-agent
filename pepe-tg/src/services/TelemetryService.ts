@@ -44,6 +44,10 @@ const MODEL_PRICING: Record<string, { input: number; output: number }> = {
   'o3': { input: 20.0, output: 80.0 },
   'o3-mini': { input: 4.0, output: 16.0 },
   
+  // GPT-5.6 series (published 2026-07-30 price drop)
+  'gpt-5.6-luna': { input: 0.2, output: 1.2 },
+  'gpt-5.6-terra': { input: 2.0, output: 12.0 },
+
   // GPT-5 series (estimated)
   'gpt-5': { input: 5.0, output: 20.0 },
   'gpt-5-pro': { input: 25.0, output: 100.0 },
