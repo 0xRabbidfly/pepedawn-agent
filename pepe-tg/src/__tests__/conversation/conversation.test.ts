@@ -313,3 +313,47 @@ describe('enforcement gating', () => {
     }
   });
 });
+
+describe('active exchange lifts the cadence caps', () => {
+  const T = 1_700_000_000_000;
+  const usr = (text: string, sec: number, addressed = false): ConversationTurn => ({
+    role: 'user',
+    text,
+    author: 'bob',
+    at: T + sec * 1000,
+    addressedBot: addressed,
+  });
+  const bot2 = (text: string, sec: number): ConversationTurn => ({
+    role: 'bot',
+    text,
+    at: T + sec * 1000,
+  });
+
+  it('stands down when someone is engaging with what the bot said', async () => {
+    const { inActiveExchange, evaluateCadence } = await import('../../conversation/cadenceGovernor');
+    const turns = [usr('what is FREEDOMKEK', 0), bot2('series 0', 5), usr('and who made it?', 20, true)];
+    expect(inActiveExchange(turns, T + 30_000)).toBe(true);
+    // Every rule below would otherwise throttle a live conversation.
+    const v = evaluateCadence(turns, T + 30_000, { addressed: false });
+    expect(v.cap).toBe('DEEP');
+    expect(v.reason).toBe('active_exchange');
+  });
+
+  it('is not fooled by a busy room where nobody is talking to the bot', async () => {
+    const { inActiveExchange } = await import('../../conversation/cadenceGovernor');
+    const turns = [usr('gm', 0), bot2('gm', 5), usr('lfg', 10), usr('kek', 15)];
+    expect(inActiveExchange(turns, T + 30_000)).toBe(false);
+  });
+
+  it('does not count the bot merely having spoken', async () => {
+    const { inActiveExchange } = await import('../../conversation/cadenceGovernor');
+    expect(inActiveExchange([bot2('showcase', 0), usr('unrelated', 10)], T + 30_000)).toBe(false);
+  });
+
+  it('expires once the exchange goes quiet', async () => {
+    const { inActiveExchange } = await import('../../conversation/cadenceGovernor');
+    const turns = [bot2('reply', 0), usr('following up', 10, true)];
+    expect(inActiveExchange(turns, T + 30_000)).toBe(true);
+    expect(inActiveExchange(turns, T + 700_000)).toBe(false);
+  });
+});

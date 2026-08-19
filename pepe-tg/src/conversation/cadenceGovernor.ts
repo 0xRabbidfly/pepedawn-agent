@@ -55,6 +55,12 @@ export interface CadenceConfig {
    * register down one rung per extra contribution.
    */
   backoffAfter: number;
+  /**
+   * How recently the bot must have spoken, and been answered, for the exchange
+   * to count as live. In a live exchange the governor stands down entirely:
+   * throttling someone mid-conversation is exactly the wrong moment.
+   */
+  activeExchangeMs: number;
 }
 
 export const DEFAULT_CADENCE_CONFIG: CadenceConfig = {
@@ -64,7 +70,33 @@ export const DEFAULT_CADENCE_CONFIG: CadenceConfig = {
   minGapMs: 45 * 1000,
   maxConsecutiveBotTurns: 1,
   backoffAfter: 2,
+  activeExchangeMs: 5 * 60 * 1000,
 };
+
+/**
+ * True when someone is actively engaging with what the bot said.
+ *
+ * The signal is a user turn that ADDRESSES the bot - a reply, a mention, a DM -
+ * arriving after the bot spoke, inside the window. Merely talking after the bot
+ * is not engagement: in a busy room that describes every message, and treating
+ * it as a live exchange would disable the governor entirely.
+ */
+export function inActiveExchange(
+  turns: ConversationTurn[],
+  now: number,
+  config: CadenceConfig = DEFAULT_CADENCE_CONFIG
+): boolean {
+  // Walking backwards, the addressed user turn is seen before the bot turn it
+  // responded to, so track it and look for a bot turn earlier in the window.
+  let userAddressedBot = false;
+  for (let i = turns.length - 1; i >= 0; i--) {
+    const turn = turns[i];
+    if (now - turn.at > config.activeExchangeMs) break;
+    if (turn.role === 'user' && turn.addressedBot) userAddressedBot = true;
+    else if (turn.role === 'bot' && userAddressedBot) return true;
+  }
+  return false;
+}
 
 /**
  * Decide the cadence ceiling for a prospective reply.
@@ -131,6 +163,13 @@ export function evaluateCadence(
   // Exemption: the bot was spoken to. Answer.
   if (opts.addressed) {
     return { cap: 'DEEP', reason: 'addressed_exempt', exempt: true, metrics };
+  }
+
+  // Exemption: a live back-and-forth. Someone is engaging with what the bot
+  // said, so every rule below - share of voice, consecutive turns, minimum gap -
+  // would throttle a real conversation rather than an interruption.
+  if (inActiveExchange(turns, now, config)) {
+    return { cap: 'DEEP', reason: 'active_exchange', exempt: true, metrics };
   }
 
   // Hard rule: never two bot turns in a row without a user between them.

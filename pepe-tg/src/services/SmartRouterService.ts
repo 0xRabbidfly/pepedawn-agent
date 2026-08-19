@@ -13,6 +13,7 @@ import { detectCardFastPath } from '../router/cardFastPath';
 import { KnowledgeOrchestratorService } from './KnowledgeOrchestratorService';
 import { callTextModel } from '../utils/modelGateway';
 import { describeCard, detectCollection, randomCard } from '../utils/cardFacts';
+import { inActiveExchange } from '../conversation/cadenceGovernor';
 import { getCardInfo } from '../data/fullCardIndex';
 import { describeTraitMatch } from '../utils/cardTraits';
 import { answerCardQuery } from '../utils/cardQueries';
@@ -299,7 +300,9 @@ export class SmartRouterService extends Service {
       '   * The last bot message already answered; the user only reacted (thanks/ok/lol/emoji).',
       '   * The message is directed at another human (mentions someone else, not the bot).',
       '   * One-word greets/valedictions ("gm", "gn", "wagmi") unless the bot was directly asked for info.',
-      '   * Off-topic (not Fake Rares / Rare Pepes / crypto-art / Bitcoin / Counterparty) and not clearly tied back to those topics.',
+      '   * Off-topic AND nobody is talking to you. A little off-topic banter is',
+      '     fine when the room is chatting with you - you live here too. Stay silent',
+      '     only when the subject is unrelated and the message is not aimed at you.',
       '2. CMDROUTE: Only when the user typed a real slash command. Populate "command" with it (including /). Never invent commands.',
       '3. FACTS: Concrete info, rules, requirements, specs, "why/what/how," card lookups. If the message names a specific card asset, prefer FACTS.',
       '4. LORE: Storytelling, community memories, historical context explicitly requested.',
@@ -312,8 +315,11 @@ export class SmartRouterService extends Service {
       '',
       '### Off-topic handling',
       '',
-      '* If mixed on/off-topic, label by the on-topic ask; otherwise NORESPONSE.',
-      '* Do not redirect or probe when off-topic -> NORESPONSE.',
+      '* If mixed on/off-topic, label by the on-topic ask.',
+      '* Off-topic is not automatically silence. If someone is talking TO you, or',
+      '  you are already mid-conversation with them, answer as CHAT - briefly, in',
+      '  your own voice. You are a regular here, not a search box.',
+      '* Never redirect or lecture someone back on-topic. Answer or stay quiet.',
       '',
       '### PEPEDAWN name disambiguation',
       '',
@@ -1033,9 +1039,19 @@ Say briefly why it is worth a look — something true about the art, the artist 
     // Rares, so "pepedawn how do YOU FEEL?" was classified off-topic and
     // ignored - twice, while the room watched. Hostility and one-word
     // dismissals still pass through as silence, because they are not questions.
+    const engaged = inActiveExchange(
+      this.getTurnsForPrompt(roomId, 12).map((t) => ({
+        role: t.role,
+        text: t.text,
+        at: t.timestamp,
+        addressedBot: t.role === 'user' && /\bpepedawn\b/i.test(t.text || ''),
+      })),
+      Date.now()
+    );
+
     if (
       intent === 'NORESPONSE' &&
-      this.addressesTheBot(trimmed, addressedConversationally) &&
+      (engaged || this.addressesTheBot(trimmed, addressedConversationally)) &&
       this.isAQuestion(trimmed)
     ) {
       logger.debug(
