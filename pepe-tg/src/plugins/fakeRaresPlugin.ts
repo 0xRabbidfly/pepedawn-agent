@@ -18,6 +18,7 @@ import { executeCommand, executeCommandAlways, type CommandHandlerParams } from 
 import { stripCardNamePrefix } from '../utils/cardNamePrefixSanitizer';
 import type { IAgentRuntime } from '@elizaos/core';
 import { isBareBitcoinAddress, looksLikeAddressCallout } from '../utils/bitcoinAddress';
+import { observeUserMessage, observeBotMessage } from '../conversation/shadow';
 
 // Track patched runtimes to avoid double-patching
 const patchedRuntimes = new WeakSet<any>();
@@ -208,6 +209,7 @@ async function runRouterCommand(command: string, context: SmartRouterExecutionCo
         await originalCallback(response);
         if (typeof response?.text === 'string') {
           smartRouter.recordBotTurn(message.roomId, response.text);
+          void observeBotMessage({ roomId: message.roomId, text: response.text });
         }
       }
     : undefined;
@@ -301,6 +303,7 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
     const trimmed = outgoingText.trim();
     if (!trimmed) return;
     context.smartRouter.recordBotTurn(message.roomId, trimmed);
+    void observeBotMessage({ roomId: message.roomId, text: trimmed });
   };
 
   const fallbackCandidates =
@@ -691,6 +694,15 @@ export const fakeRaresPlugin: Plugin = {
           // Extract for convenience
           const { isFakeRareCard, hasBotMention, hasRememberCommand } = triggers;
           const isReplyToBot = triggers.isReplyToBot;  // Use the corrected value
+
+          // v5 shadow mode: observe only, never responds. Disabled unless
+          // V5_SHADOW=true. See src/conversation/shadow.ts
+          void observeUserMessage({
+            roomId: message.roomId,
+            text,
+            author: getDisplayName(params, message),
+            addressedBot: !!(isReplyToBot || triggers.hasBotMention),
+          });
           const { isHelp, isStart, isF, isFCarousel, isC, isP, isFv, isFt, isFl, isFr, isFm, isDawn, isFc, isXcp } = commands;
           
           // Log routing factors
