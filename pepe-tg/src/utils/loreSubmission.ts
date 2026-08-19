@@ -49,6 +49,11 @@ export interface SubmissionVerdict {
   message?: string;
   card?: string;
   lore?: string;
+  /**
+   * Where an accepted submission goes: straight into the corpus for the
+   * credited artist and admins, or to the room for vouching for anyone else.
+   */
+  route?: 'store' | 'vouch';
 }
 
 /* ------------------------------------------------------------------ parsing */
@@ -268,8 +273,14 @@ export function parseQualityResponse(raw: string): QualityVerdict {
 
 /* ------------------------------------------------------------ the whole gate */
 
-/** How many lore entries one card may hold. */
-export const MAX_ENTRIES_PER_CARD = 2;
+/**
+ * How many lore entries one card may hold.
+ *
+ * Raised from 2 to 10 once third-party lore had to clear community vouching:
+ * the tight cap was standing in for the absence of any review, and with review
+ * in place it was mostly denying artists room to tell a story.
+ */
+export const MAX_ENTRIES_PER_CARD = 10;
 
 export interface GateInput {
   raw: string;
@@ -304,18 +315,13 @@ export function gateSubmission(input: GateInput): SubmissionVerdict {
     };
   }
 
-  // Artist gate. Admins bypass so curation is still possible.
-  if (!input.submitter.isAdmin) {
-    const artists = artistsForCard(card);
-    if (!identityMatchesArtist(input.submitter, artists, input.aliases ?? {})) {
-      const credited = artists.length ? artists.join(' x ') : 'its artist';
-      return {
-        ok: false,
-        code: 'not_the_artist',
-        message: `Only ${credited} can add lore for ${card}. If that's you under a different handle, ask an admin to link it.`,
-      };
-    }
-  }
+  // Artist check. No longer fatal: a non-artist submission is routed to
+  // community vouching instead of refused, because credited names match a
+  // Telegram handle for only a minority of the roster and the strict gate was
+  // turning away most genuine contributors.
+  const isArtist =
+    input.submitter.isAdmin ||
+    identityMatchesArtist(input.submitter, artistsForCard(card), input.aliases ?? {});
 
   if (input.existingForCard >= MAX_ENTRIES_PER_CARD) {
     return {
@@ -330,10 +336,12 @@ export function gateSubmission(input: GateInput): SubmissionVerdict {
     return { ok: false, code: 'duplicate', message: `Already recorded that one for ${card}.` };
   }
 
+  // Quality runs before vouching, always. Vouching decides whether a plausible
+  // claim is true; it must never be the room's job to adjudicate junk.
   const quality = assessLoreQuality(lore, card);
   if (!quality.ok) {
     return { ok: false, code: 'low_quality', message: `Not stored — ${quality.reason}.` };
   }
 
-  return { ok: true, card, lore };
+  return { ok: true, card, lore, route: isArtist ? 'store' : 'vouch' };
 }

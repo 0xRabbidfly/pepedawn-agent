@@ -12,6 +12,7 @@ import {
 import aliasFile from '../data/artist-aliases.json';
 import { countLoreForCard, existingLoreTexts, recordLore } from '../utils/loreInventory';
 import { isAdminUser } from '../utils/admins';
+import { propose, DEFAULT_VOUCH_CONFIG } from '../utils/vouching';
 
 /**
  * /fr - Fake Remember: artist-contributed card lore.
@@ -108,6 +109,36 @@ export const fakeRememberCommand: Action = {
       // If the screen is unavailable, fall through on the heuristics alone
       // rather than blocking a legitimate artist.
       logger.warn({ error: err }, '[/fr] quality screen unavailable, using heuristics only');
+    }
+
+    // Third-party lore goes to the room rather than straight into the corpus.
+    // The artist gate is right about authority and wrong about coverage, so
+    // this is the path most genuine contributors will take.
+    if (verdict.route === 'vouch') {
+      if (!submitter.id) {
+        return reject('no_identity', 'I can’t tell who you are, so I can’t put this up for vouching.');
+      }
+      const result = propose({
+        card,
+        lore: verdict.lore!,
+        proposerId: submitter.id,
+        proposerName: who,
+        roomId: message.roomId?.toString() || 'unknown',
+      });
+      if (!result.ok) return reject(result.refusal!, result.message!);
+
+      const p = result.proposal!;
+      logger.info(`[/fr] proposal ${p.id} for ${card} by ${who}`);
+      if (callback) {
+        await callback({
+          text:
+            `📜 *Lore proposed for ${card}* by ${who}\n\n` +
+            `_${verdict.lore}_\n\n` +
+            `Not from the credited artist, so it needs ${DEFAULT_VOUCH_CONFIG.required} vouches to land. ` +
+            `If you can confirm this, send \`/vouch ${p.id}\`.`,
+        });
+      }
+      return { success: true, text: `Proposed ${p.id}` };
     }
 
     try {

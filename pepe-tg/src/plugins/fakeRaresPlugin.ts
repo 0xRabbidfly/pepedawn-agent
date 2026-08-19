@@ -1,5 +1,5 @@
 import { type Plugin, logger, ModelType, type HandlerCallback, type Memory } from '@elizaos/core';
-import { fakeRaresCardAction, fakeCommonsCardAction, rarePepesCardAction, startCommand, helpCommand, fakeRememberCommand, costCommand, xcpCommand } from '../actions';
+import { fakeRaresCardAction, fakeCommonsCardAction, rarePepesCardAction, startCommand, helpCommand, fakeRememberCommand, vouchCommand, costCommand, xcpCommand } from '../actions';
 import { fakeMarketAction } from '../actions/fakeMarketAction';
 import { fakeRaresCarouselAction } from '../actions/fakeRaresCarousel';
 import { fakeRaresContextProvider, userHistoryProvider } from '../providers';
@@ -16,6 +16,7 @@ import { detectMessagePatterns, hasAnyCommand } from '../utils/messagePatterns';
 import { executeCommand, executeCommandAlways, type CommandHandlerParams } from '../utils/commandHandler';
 import { checkRateLimit, DEFAULT_RATE_LIMIT } from '../utils/rateLimiter';
 import { isRateLimitExempt } from '../utils/admins';
+import { noteParticipant } from '../utils/participants';
 import { runWithAction } from '../utils/actionContext';
 import { stripCardNamePrefix } from '../utils/cardNamePrefixSanitizer';
 import type { IAgentRuntime } from '@elizaos/core';
@@ -192,6 +193,7 @@ async function runRouterCommand(command: string, context: SmartRouterExecutionCo
     '/fc': { action: costCommand, always: true },
     '/fm': { action: fakeMarketAction },
     '/fr': { action: fakeRememberCommand },
+    '/vouch': { action: vouchCommand },
     '/c': { action: fakeCommonsCardAction },
     '/p': { action: rarePepesCardAction },
     '/xcp': { action: xcpCommand },
@@ -605,6 +607,7 @@ export const fakeRaresPlugin: Plugin = {
     fakeCommonsCardAction,
     rarePepesCardAction,
     fakeRememberCommand,
+    vouchCommand,
     fakeMarketAction,
     costCommand,
     xcpCommand,
@@ -734,6 +737,18 @@ export const fakeRaresPlugin: Plugin = {
             (message.content as any)?.channelType === 'DM' ||
             params.ctx?.chat?.type === 'private';
 
+          // Standing registry. Every user message counts, so that when someone
+          // is asked to vouch we know whether they were here before the thing
+          // they are vouching for existed. Cheap: buffered, flushed on an
+          // interval, with a first sighting written through immediately.
+          {
+            const speaker = params.ctx?.message?.from;
+            noteParticipant(
+              speaker?.id?.toString(),
+              [speaker?.first_name, speaker?.last_name].filter(Boolean).join(' ') || speaker?.username
+            );
+          }
+
           const v5 = await observeUserMessage({
             roomId: message.roomId,
             text,
@@ -742,7 +757,7 @@ export const fakeRaresPlugin: Plugin = {
             addressedBot: !!(isReplyToBot || triggers.hasBotMention || isDirectMessage),
           });
 
-          const { isHelp, isStart, isF, isFCarousel, isC, isP, isFr, isFm, isFc, isXcp } = commands;
+          const { isHelp, isStart, isF, isFCarousel, isC, isP, isFr, isVouch, isFm, isFc, isXcp } = commands;
           
           // Log routing factors
           logger.info(`   Triggers: reply=${!!isReplyToBot} | card=${isFakeRareCard} | @mention=${hasBotMention}`);
@@ -801,7 +816,7 @@ export const fakeRaresPlugin: Plugin = {
           // Placed before dispatch rather than inside any one command: the next
           // abused endpoint will not be /fr. It also covers the natural-language
           // "remember this" path, which writes to the same store.
-          const anyCommand = isHelp || isStart || isF || isFCarousel || isC || isP || isFr || isFm || isFc || isXcp;
+          const anyCommand = isHelp || isStart || isF || isFCarousel || isC || isP || isFr || isVouch || isFm || isFc || isXcp;
           if (anyCommand || hasRememberCommand) {
             const from = params.ctx?.message?.from;
             const rateId = from?.id?.toString() || message.entityId?.toString();
@@ -886,6 +901,7 @@ export const fakeRaresPlugin: Plugin = {
           if (isC && await executeCommand(fakeCommonsCardAction, cmdParams, '/c')) return;
           if (isP && await executeCommand(rarePepesCardAction, cmdParams, '/p')) return;
           if (isFr && await executeCommand(fakeRememberCommand, cmdParams, '/fr')) return;
+          if (isVouch && await executeCommand(vouchCommand, cmdParams, '/vouch')) return;
           if (isFm && await executeCommand(fakeMarketAction, cmdParams, '/fm')) return;
           if (isXcp && await executeCommand(xcpCommand, cmdParams, '/xcp')) return;
           

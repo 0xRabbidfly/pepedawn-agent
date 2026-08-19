@@ -94,8 +94,10 @@ export const helpCommand: Action = {
 \`/xcp\` - View verified XCP dispenser list
 
 **Fake Remember:** 💾
-\`/fr CARDNAME <lore>\` - Artists: add the story behind your own card
-_Only the credited artist can add lore, max 2 entries per card. Different handle? Ask an admin to link it._
+\`/fr CARDNAME <lore>\` - Add the story behind a card
+\`/vouch\` - See lore waiting on confirmation
+\`/vouch CODE\` - Confirm someone's lore
+_Artists' lore lands straight away. Anyone else's needs 2 vouches from regulars first._
 
 **Just talk to me:** 💬
 Ask about any card, its lore, what it looks like, or who made it —

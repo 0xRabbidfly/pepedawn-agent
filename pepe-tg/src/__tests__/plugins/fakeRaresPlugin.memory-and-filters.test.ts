@@ -4,6 +4,7 @@ import { MemoryStorageService } from '../../services/MemoryStorageService';
 import { SmartRouterService } from '../../services/SmartRouterService';
 import { _resetCache as _resetLedger } from '../../utils/loreInventory';
 import { _resetCache as _resetRates } from '../../utils/rateLimiter';
+import { _resetCache as _resetProposals } from '../../utils/vouching';
 import { tmpdir } from 'os';
 import { join } from 'path';
 import { rmSync } from 'fs';
@@ -38,8 +39,14 @@ describe('fakeRaresPlugin MESSAGE_RECEIVED – memory capture and filters', () =
     // Keep the /fr quota ledger and rate-limit state out of real data files.
     process.env.LORE_LEDGER_PATH = join(tmpdir(), `lore-ledger-plugin-${process.pid}.json`);
     process.env.RATE_LIMIT_PATH = join(tmpdir(), `rate-limits-plugin-${process.pid}.json`);
+    process.env.PROPOSALS_PATH = join(tmpdir(), `proposals-plugin-${process.pid}.json`);
+    process.env.PARTICIPANTS_PATH = join(tmpdir(), `participants-plugin-${process.pid}.json`);
+    delete process.env.OPENAI_API_KEY;
     rmSync(process.env.LORE_LEDGER_PATH, { force: true });
     rmSync(process.env.RATE_LIMIT_PATH, { force: true });
+    rmSync(process.env.PROPOSALS_PATH, { force: true });
+    rmSync(process.env.PARTICIPANTS_PATH, { force: true });
+    _resetProposals();
     _resetLedger();
     _resetRates();
   });
@@ -73,7 +80,7 @@ describe('fakeRaresPlugin MESSAGE_RECEIVED – memory capture and filters', () =
     expect((message.metadata as any).__handledByCustom).toBe(true);
   });
 
-  it('refuses a stranger using "remember this" on someone else\'s card', async () => {
+  it('sends a stranger\'s "remember this" to the room for vouching', async () => {
     const runtime = createRuntimeWithMemory({ success: true, memoryId: 'mem-2' });
 
     const callback = mock();
@@ -92,8 +99,9 @@ describe('fakeRaresPlugin MESSAGE_RECEIVED – memory capture and filters', () =
       ctx: { message: { from: { id: '9999', username: 'coit', first_name: 'Coit' } } },
     });
 
+    // Same policy as /fr: nothing reaches the corpus without confirmation.
     expect(runtime.storeMemory).not.toHaveBeenCalled();
-    expect(callback.mock.calls[0][0].text).toContain('Only');
+    expect(callback.mock.calls[0][0].text).toContain('/vouch');
   });
 
   it('refuses the false-attribution shape via "remember this" too', async () => {

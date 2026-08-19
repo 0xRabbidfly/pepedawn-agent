@@ -29,6 +29,7 @@ export interface MessagePatterns {
     isC: boolean;
     isP: boolean;
     isFr: boolean;
+    isVouch: boolean;
     isFm: boolean;
     isFc: boolean;
     isXcp: boolean;
@@ -69,6 +70,7 @@ export function detectMessagePatterns(
     isC: /^(?:@[A-Za-z0-9_]+\s+)?\/c(?:@[A-Za-z0-9_]+)?(?:\s+.+)?$/i.test(text),
     isP: /^(?:@[A-Za-z0-9_]+\s+)?\/p(?:@[A-Za-z0-9_]+)?(?:\s+.+)?$/i.test(text),
     isFr: /^(?:@[A-Za-z0-9_]+\s+)?\/fr(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
+    isVouch: /^(?:@[A-Za-z0-9_]+\s+)?\/vouch(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
     isFm: /^(?:@[A-Za-z0-9_]+\s+)?\/fm(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
     isFc: /^(?:@[A-Za-z0-9_]+\s+)?\/fc(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
     isXcp: /^(?:@[A-Za-z0-9_]+\s+)?\/xcp(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),

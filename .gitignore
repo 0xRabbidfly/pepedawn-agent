@@ -83,3 +83,5 @@ pepe-tg/src/data/room-history.json
 pepe-tg/src/data/social-memory.json
 pepe-tg/src/data/lore-ledger.json
 pepe-tg/src/data/rate-limits.json
+pepe-tg/src/data/lore-proposals.json
+pepe-tg/src/data/participants.json

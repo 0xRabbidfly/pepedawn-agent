@@ -1,6 +1,8 @@
 import { describe, it, expect, mock, beforeEach } from 'bun:test';
 import { fakeRememberCommand } from '../../actions/fakeRememberCommand';
-import { _resetCache } from '../../utils/loreInventory';
+import { _resetCache, recordLore } from '../../utils/loreInventory';
+import { MAX_ENTRIES_PER_CARD } from '../../utils/loreSubmission';
+import { _resetCache as _resetProposals } from '../../utils/vouching';
 import type { IAgentRuntime, Memory } from '@elizaos/core';
 import { tmpdir } from 'os';
 import { join } from 'path';
@@ -9,6 +11,11 @@ import { rmSync } from 'fs';
 // Point the quota ledger at a scratch file so tests never touch real data.
 const LEDGER = join(tmpdir(), `lore-ledger-test-${process.pid}.json`);
 process.env.LORE_LEDGER_PATH = LEDGER;
+// No API key: the model screen throws and the handler falls back to heuristics,
+// which is the documented behaviour and keeps these tests off the network.
+delete process.env.OPENAI_API_KEY;
+const PROPOSALS = join(tmpdir(), `proposals-fr-test-${process.pid}.json`);
+process.env.PROPOSALS_PATH = PROPOSALS;
 
 /**
  * Tests for /fr command (Fake Remember).
@@ -90,7 +97,9 @@ describe('fakeRememberCommand', () => {
     beforeEach(() => {
       storeMemoryMock.mockClear();
       rmSync(LEDGER, { force: true });
+      rmSync(PROPOSALS, { force: true });
       _resetCache();
+      _resetProposals();
     });
 
     it('stores lore from the credited artist', async () => {
@@ -108,7 +117,7 @@ describe('fakeRememberCommand', () => {
       expect(callback.mock.calls[0][0].text).toContain('FREEDOMKEK');
     });
 
-    it('refuses a stranger writing lore onto someone else\'s card', async () => {
+    it('sends a stranger\'s lore to the room for vouching instead of storing it', async () => {
       const callback = mock();
       await fakeRememberCommand.handler(
         mockRuntime,
@@ -118,8 +127,11 @@ describe('fakeRememberCommand', () => {
         callback
       );
 
+      // Nothing reaches the corpus until the community confirms it.
       expect(storeMemoryMock).not.toHaveBeenCalled();
-      expect(callback.mock.calls[0][0].text).toContain('Only');
+      const text = callback.mock.calls[0][0].text;
+      expect(text).toContain('Lore proposed');
+      expect(text).toContain('/vouch');
     });
 
     it('refuses lore with no card attached', async () => {
@@ -157,22 +169,23 @@ describe('fakeRememberCommand', () => {
       expect(storeMemoryMock).not.toHaveBeenCalled();
     });
 
-    it('caps a card at two entries', async () => {
-      const good = [
-        '/fr FREEDOMKEK it was inspired by Free Kekistan and drawn the week of the fork',
-        '/fr FREEDOMKEK the frog holds a receipt because Counterparty fees spiked that month',
-        '/fr FREEDOMKEK a third story that should never be accepted by the quota gate',
-      ];
-
-      for (const text of good.slice(0, 2)) {
-        await fakeRememberCommand.handler(mockRuntime, msg(text), undefined, { ctx: artistCtx }, mock());
+    it(`caps a card at ${MAX_ENTRIES_PER_CARD} entries`, async () => {
+      // Seed the ledger to the cap rather than submitting that many times: the
+      // quota is checked before the model screen, so this stays offline.
+      for (let i = 0; i < MAX_ENTRIES_PER_CARD; i++) {
+        await recordLore({ card: 'FREEDOMKEK', lore: `story number ${i}`, at: Date.now() });
       }
-      expect(storeMemoryMock).toHaveBeenCalledTimes(2);
 
       const callback = mock();
-      await fakeRememberCommand.handler(mockRuntime, msg(good[2]), undefined, { ctx: artistCtx }, callback);
+      await fakeRememberCommand.handler(
+        mockRuntime,
+        msg('/fr FREEDOMKEK one more story that should not fit under the quota'),
+        undefined,
+        { ctx: artistCtx },
+        callback
+      );
 
-      expect(storeMemoryMock).toHaveBeenCalledTimes(2);
+      expect(storeMemoryMock).not.toHaveBeenCalled();
       expect(callback.mock.calls[0][0].text).toContain('limit');
     });
 

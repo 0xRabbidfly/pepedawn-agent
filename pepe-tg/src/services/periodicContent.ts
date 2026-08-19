@@ -56,7 +56,7 @@ const HELPFUL_TIPS = [
   },
   {
     title: "💾 Community Memory",
-    text: "Artists: `/fr CARDNAME <the story behind it>` adds lore to your own card — up to two entries each. If your Telegram handle doesn't match your signature, ask an admin to link them.",
+    text: "Know the story behind a card? `/fr CARDNAME <the story>`. If you're the artist it lands straight away; otherwise two regulars need to `/vouch` for it. Check `/vouch` to see what's waiting.",
   },
   {
     title: "📚 Lore & History",

@@ -19,3 +19,5 @@ src/data/telegram-file-ids.json
 dist/data/telegram-file-ids.json
 src/data/lore-ledger.json
 src/data/rate-limits.json
+src/data/lore-proposals.json
+src/data/participants.json

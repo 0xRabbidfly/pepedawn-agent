@@ -7,6 +7,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.2.0] - 2026-08-19
+
+### Added
+- **Community vouching for third-party lore.** The artist gate alone matched a
+  Telegram handle for only a minority of the credited roster, so most genuine
+  contributors were being turned away. Non-artist submissions are now *proposed*
+  rather than refused: PEPEDAWN posts the lore with a short code, and two vouches
+  from members in good standing store it. The credited artist or an admin is
+  decisive on their own.
+  - `/vouch` lists what is waiting, `/vouch CODE` confirms, `/vouch no CODE`
+    drops it (admins)
+  - Proposals expire after 24h — an unanswered proposal is a "no"
+  - One open proposal per person and three per card, because a proposal is a
+    broadcast to the room and therefore its own amplification vector
+- **Participant standing registry** (`src/utils/participants.ts`). A vouch
+  threshold with no notion of standing is defeated by registering accounts to
+  vouch for each other, and the abuse it defends against was already automated.
+  A voucher needs history that *predates the proposal*, which an account created
+  to rubber-stamp it cannot have, plus a minimum age and message count.
+
+### Changed
+- Lore slots per card raised from 2 to **10**. The tight cap was standing in for
+  the absence of any review; with review in place it mostly denied artists room
+  to tell a story.
+- Quality and card gates still run *before* a proposal is created — vouching
+  decides whether a plausible claim is true, not whether junk is junk. The room
+  should never be asked to adjudicate spam.
+- New env vars: `PROPOSALS_PATH`, `PARTICIPANTS_PATH`
+
 ## [5.1.0] - 2026-08-19
 
 ### Security

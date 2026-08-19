@@ -40,6 +40,9 @@ describe('/fr gate — the payloads that got through', () => {
         existingForCard: 0,
       });
       expect(verdict.ok, `should have rejected: ${raw}`).toBe(false);
+      // Never routed to the room: vouching decides whether a plausible claim is
+      // true, it is not a queue for junk.
+      expect(verdict.route, `should not have proposed: ${raw}`).toBeUndefined();
     }
   });
 
@@ -134,11 +137,13 @@ describe('entry cap', () => {
 
   it(`allows up to ${MAX_ENTRIES_PER_CARD}`, () => {
     expect(gateSubmission({ raw: good, submitter: artistSubmitter, existingForCard: 0 }).ok).toBe(true);
-    expect(gateSubmission({ raw: good, submitter: artistSubmitter, existingForCard: 1 }).ok).toBe(true);
+    expect(
+      gateSubmission({ raw: good, submitter: artistSubmitter, existingForCard: MAX_ENTRIES_PER_CARD - 1 }).ok
+    ).toBe(true);
   });
 
-  it('refuses the third', () => {
-    const v = gateSubmission({ raw: good, submitter: artistSubmitter, existingForCard: 2 });
+  it('refuses the one past the cap', () => {
+    const v = gateSubmission({ raw: good, submitter: artistSubmitter, existingForCard: MAX_ENTRIES_PER_CARD });
     expect(v.ok).toBe(false);
     expect(v.code).toBe('card_full');
   });
@@ -152,6 +157,28 @@ describe('entry cap', () => {
     });
     expect(v.ok).toBe(false);
     expect(v.code).toBe('duplicate');
+  });
+});
+
+describe('routing', () => {
+  it('sends a non-artist with plausible lore to vouching', () => {
+    const v = gateSubmission({
+      raw: '/fr FREEDOMKEK drawn the week Counterparty fees spiked, hence the receipt',
+      submitter: { id: '9', username: 'somebody', displayName: 'Somebody' },
+      existingForCard: 0,
+    });
+    expect(v.ok).toBe(true);
+    expect(v.route).toBe('vouch');
+  });
+
+  it('stores straight away for the credited artist', () => {
+    const v = gateSubmission({
+      raw: '/fr FREEDOMKEK drawn the week Counterparty fees spiked, hence the receipt',
+      submitter: { id: '7', username: 'rarescrilla', displayName: 'Rare Scrilla' },
+      existingForCard: 0,
+    });
+    expect(v.ok).toBe(true);
+    expect(v.route).toBe('store');
   });
 });
 
