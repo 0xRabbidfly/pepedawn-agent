@@ -176,6 +176,45 @@ This turns every knowledge gap into corpus growth and gives `/fr` a real
 purpose. **Must be rate-limited** — at most once per room per few hours, or it
 becomes nagging.
 
+### Social memory — people, not just facts
+
+PEPEDAWN should accumulate a sense of *who the community is*, not only what the
+cards are. Four record kinds, all person-linked:
+
+| Kind | Example | Decay |
+|---|---|---|
+| `episode` | "The FAKEASF burn argument, June 2026" | pinned, never |
+| `highlight` | "Quiet Sunday, mostly series 8 talk" | 30-day half-life |
+| `quote` | "@bob: 'I'd sell a kidney for a FREEDOMKEK'" | 90-day half-life |
+| `reaction` | "@carol always defends the ugly cards" | 90-day half-life |
+
+Every record carries **participants** — who said it, who it was about, who
+reacted. That is what makes recall conversational rather than encyclopaedic:
+
+> **bob:** anyone got a spare FREEDOMKEK
+> **PEPEDAWN:** still on that kidney offer, bob?
+
+**Capture** runs on session close (a 20-minute gap, reusing the sessionization
+in `scripts/tg-build-sessions.ts`), not per message — one LLM pass per session
+asking "was anything here worth remembering, and who was involved?". Sessions
+with nothing notable produce no record.
+
+**Recall** is scored `similarity × decay × participantBoost`, where
+`participantBoost` lifts records involving people currently in the room. A
+funny remark from someone present outranks a better-matching one from someone
+absent.
+
+**Constraints:**
+
+- Quotes are stored verbatim with attribution, so they must be **revocable**.
+  A person can have their records removed; admin can purge any record.
+- Never surface a quote to mock someone. Callbacks are affectionate or they do
+  not happen.
+- Rate-limit callbacks the same way as the `/fr` prompt — a bot that constantly
+  references what you said six weeks ago is unsettling, not warm.
+- Records are community-visible by construction; nothing private is captured
+  that was not said in the room.
+
 ### Corpus
 
 | Source | Status |
@@ -477,7 +516,7 @@ Each step ships independently.
 | **4** | **Owned-opinion handling.** Taste questions answered as opinion; specs never used as verdicts. | the 299-supply answer | `CARD_RECOMMEND` justification path |
 | **5** | **Persona rewrite.** Knowledgeable regular, peer voice, card facts woven in conversationally. | flatness | — |
 | **6** | **Owned retrieval layer.** Real `sourceType`/`tier` at ingest; decay in SQL. | provenance guesswork | `plugin-knowledge`, 141-line heuristic, `queryClassifier`, most of the KOS helper tail |
-| **7** | **Live highlights + decay** (req 6), **episodes** (req 7). | community memory | — |
+| **7** | **Social memory**: live highlights + decay (req 6), episodes (req 7), plus person-linked quotes and reactions with participant-boosted recall. | community memory, and knowing *who* people are | — |
 | **8** | **`/fr` gap-prompt**, rate-limited. | corpus growth | — |
 | **9** | **Cadence governor live** at 30% / 45s. | bursting | — |
 | **10** | **Delete dropped commands** after 2026-11-18; keep vision as image→prose. | ~2,000 lines | `/fl` `/fv` `/ft` `/dawn` `/educate`, `embeddingsDb`, `visualEmbeddings`, `card-embeddings.json` |
