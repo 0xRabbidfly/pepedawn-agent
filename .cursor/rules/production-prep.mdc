@@ -78,13 +78,12 @@ Review and update if necessary:
   - **MAJOR**: Breaking changes
   - **MINOR**: New features (backward compatible)
   - **PATCH**: Bug fixes (backward compatible)
-- Prepare git tag command (DO NOT EXECUTE) using the new version, e.g. `v1.2.3`
+- Create the git tag using the new version, e.g. `v1.2.3`
 
 ### 8. Git Command Preparation
 - Create a commit message that accurately summarizes the work since the last push (use `git log origin/master..HEAD` for reference)
 - **If the release is MINOR or MAJOR:** make the commit message multi-clause (or add a short multiline body) that explicitly calls out the key user-facing changes, notable technical shifts, and any follow-up actions. One-liners are only acceptable for PATCH releases.
-- Generate commands for user to execute MANUALLY (replace version/summary placeholders):
-- NEVER EXECUTE GIT COMMANDS!
+- Run the commands (replace version/summary placeholders):
   ```bash
   git add .
   git commit -m "Release vX.Y.Z: <concise summary of changes>"
@@ -94,7 +93,8 @@ Review and update if necessary:
 
 ## Important Rules
 
-⚠️ **NEVER execute git commands** - Always prompt user with commands to run manually
+✅ **Git commands may be executed directly** — commits, branches and tags. Pushing
+to `master` is what production pulls, so call that out when you do it.
 ⚠️ **Be thorough** - Don't skip steps even if they seem minor
 ⚠️ **Document gaps** - If tests/docs are missing, explicitly note them
 
@@ -106,4 +106,4 @@ Review and update if necessary:
 4. Present final summary with:
    - Items completed
    - Items that need manual attention
-   - Git commands ready to execute
+   - Git actions taken

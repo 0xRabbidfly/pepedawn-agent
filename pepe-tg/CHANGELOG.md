@@ -8,6 +8,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **v5 conversation core** (`src/conversation/`) — plain TypeScript, no ElizaOS imports
+  - Register ladder (`SILENT`→`REACT`→`BANTER`→`ANSWER`→`DEEP`) separating *how much to say*
+    from *what to look up*; retrieval is structurally impossible below `ANSWER`
+  - Room temperature: caps register from message rate, terseness, participant count and
+    question density. No LLM call
+  - **Cadence governor**: code-enforced restraint — share of voice, consecutive-turn ban,
+    minimum gap, unaddressed backoff, with a full exemption when the bot is addressed
+  - Persistent room history, fixing the amnesia caused by the nightly 02:00 PM2 restart
+- **Shadow mode** (`V5_SHADOW=true`) — observes live traffic and records what v5 *would*
+  decide, without sending. Output in `src/data/shadow-logs.jsonl`
+- `scripts/replay-cadence.ts` — replays the governor against production telemetry
+- `TelemetryService.logCommandUsage()` → `command-logs.jsonl`, giving durable per-command
+  data (PM2 logs rotate and left multi-month gaps)
+- `CLAUDE.md` and `docs/TESTING_WITH_TEST_BOT.md`
+
+### Changed
+- **Deprecated `/dawn`, `/fl`, `/ft`, `/fv`, `/educate`** — zero recorded use in the
+  trailing quarter. They still work and emit a notice naming their replacement; removable
+  after 2026-11-18. Registry with the supporting usage data in
+  `src/config/deprecatedCommands.ts`
+- `/help` no longer lists deprecated commands and points at plain conversation
+- Direct messages now count as addressing the bot, so group cadence rules do not apply
+  in a 1:1 chat
+
+### Fixed
+- `TelemetryService` used `logger` 17 times without importing it — every call would have
+  thrown at runtime. Repo typecheck errors dropped 61 → 46
+- `RoomHistory` lost turns when appends overlapped; appends are now serialized per room
+  and the read/append pair is atomic
+- Removed the dead `educateNewcomerAction` import — never registered, unreachable
+
+### Notes
+- Measured against 20,742 production events: worst 10-minute burst **67 → 10**, replies
+  less than 60s apart **43.6% → 2.4%**, share of traffic 34.4% → 21.7%
 - **Card Lore Embedding Pipeline**
   - New scripts (`scripts/fv-crawl-sample.ts`, `fv-crawl-all.ts`, `fv-embed-card-facts.ts`, `fv-merge-card-facts.ts`) to crawl, embed, and consolidate Fake Rare lore.
   - `scripts/import-card-visual-facts.ts` and `types/cardVisualFacts.ts` to normalize visual lore facts.

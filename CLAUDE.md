@@ -102,6 +102,30 @@ test loop.
 
 ---
 
+## Project rules (these already exist — follow them)
+
+Two files predate this one and remain authoritative:
+
+- **`.cursor/rules/production-prep.mdc`** — the release checklist, invoked as
+  `@production-prep [major|minor|patch]`.
+- **`.specify/memory/constitution.md`** — project principles, v1.0.0.
+
+The parts that bite most often:
+
+- ✅ **Git commands may be run directly** — commits, branches, tags. (The old
+  "never execute git commands" rule was lifted 2026-08-19.) Pushing to `master`
+  is what production pulls, so say so when you do it.
+- **`.env.example` is mandatory upkeep.** Any new environment variable must be
+  documented there in the same change.
+- **`CHANGELOG.md` accompanies every behavioural change** (constitution §V,
+  Keep a Changelog format). Version bumps follow SemVer.
+- **`.git/hooks/pre-commit` enumerates test files explicitly.** New test files
+  must be added or they never run in the hook.
+- **Deprecations need a migration note and a grace window** (constitution §III) —
+  chat commands are a public contract. See `src/config/deprecatedCommands.ts`.
+- **Secrets never in the repo** (constitution §II); avoid logging secrets or PII.
+- New command? Update the `/help` handler *and* add a tip to `periodicContent.ts`.
+
 ## Conventions
 
 - `bun test src/__tests__/` — **11 failures are pre-existing** (scaffolding tests
@@ -110,3 +134,5 @@ test loop.
 - `npx tsc --noEmit` reports ~46 errors, also pre-existing. Same rule.
 - Commits: `feature:` / `bug:` / `data:` / `design:` / `tests:` prefixes.
 - Work on a branch; `master` is what prod pulls.
+- Automated tests are *optional* per the constitution, but verification of
+  critical chat flows is expected.
