@@ -22,7 +22,7 @@ import { generatePersonaStory } from '../utils/storyComposer';
 import { filterOutRecentlyUsed, markIdAsRecentlyUsed } from '../utils/lru';
 import { LORE_CONFIG } from '../utils/loreConfig';
 import { classifyQuery } from '../utils/queryClassifier';
-import { CLARIFICATION_MESSAGE } from '../actions/loreCommand';
+import { CLARIFICATION_MESSAGE } from '../utils/clarification';
 import { isInFullIndex, getCardInfo } from '../data/fullCardIndex';
 import { callTextModel } from '../utils/modelGateway';
 
@@ -32,6 +32,11 @@ export interface KnowledgeRetrievalOptions {
   preferCardFacts?: boolean;
   deterministicCardSelection?: boolean;
   suppressCardDiscovery?: boolean;
+  /**
+   * Recent conversation, so a factual answer can resolve a follow-up.
+   * Without it, "and who made it?" has no idea what "it" refers to.
+   */
+  conversation?: string;
 }
 
 export interface KnowledgeRetrievalResult {
@@ -509,8 +514,7 @@ export class KnowledgeOrchestratorService extends Service {
     }
 
     // /fl flow is always LORE - skip all FACTS logic when mode is explicitly LORE
-    const isLoreMode = options?.mode === 'LORE';
-    const queryType = isLoreMode ? 'LORE' : (options?.mode || classifyQuery(query));
+    const queryType = options?.mode || classifyQuery(query);
     
     this.logStep(3, 'select_passages', {
       mode: queryType,
@@ -540,7 +544,7 @@ export class KnowledgeOrchestratorService extends Service {
     
     let diversePassages: RetrievedPassage[];
     
-    if (isLoreMode || queryType !== 'FACTS') {
+    if (queryType !== 'FACTS') {
       // LORE mode: source diversity + MMR
       const bySource: Record<string, RetrievedPassage[]> = {
         'memory': [], 'wiki': [], 'telegram': [], 'card-fact': [], 'unknown': [],
@@ -607,7 +611,7 @@ export class KnowledgeOrchestratorService extends Service {
     let clusterCount = 0;
     let hasWikiOrMemory = false;
     
-    if (isLoreMode || queryType !== 'FACTS') {
+    if (queryType !== 'FACTS') {
       // LORE mode: clustering and storytelling
       const cardMemories = diversePassages.filter(p => 
         p.sourceType === 'memory' && p.sourceRef?.startsWith('card:')
@@ -637,7 +641,7 @@ export class KnowledgeOrchestratorService extends Service {
       }
       
       clusterCount = summaries.length;
-      story = await generatePersonaStory(this.runtime, query, summaries, 'LORE');
+      story = await generatePersonaStory(this.runtime, query, summaries, 'LORE', options?.conversation);
       sourcesLine = process.env.HIDE_LORE_SOURCES === 'true' ? '' : formatSourcesLine(summaries);
     } else {
       logger.debug('📋 FACTS mode: Using top wiki and memory passages directly');
@@ -709,7 +713,7 @@ export class KnowledgeOrchestratorService extends Service {
     const wordCount = (story || '').trim().split(/\s+/).filter(Boolean).length;
     if (!story || story.trim().length === 0 || wordCount < 4) {
       const take = (arr: RetrievedPassage[], n: number) => arr.slice(0, Math.max(0, n));
-      const fallbackSet = (isLoreMode || queryType !== 'FACTS')
+      const fallbackSet = (queryType !== 'FACTS')
         ? take(diversePassages, 3)
         : (() => {
             const pickFacts = diversePassages.filter(p => p.sourceType === 'wiki' || p.sourceType === 'memory');
@@ -729,7 +733,7 @@ export class KnowledgeOrchestratorService extends Service {
           `\n\nSources:  ${fallbackSet.map(p => formatCompactCitation(p)).join('  ||  ')}`;
         hasWikiOrMemory = fallbackSet.some(p => p.sourceType === 'wiki' || p.sourceType === 'memory');
       } else {
-        story = '🤔 Not sure which fake fits that yet. Try a different clue or ping `/fl CARDNAME` for direct lore.';
+        story = "Not sure which fake fits that yet. Give me another clue, or name the card directly.";
         sourcesLine = '';
         hasWikiOrMemory = false;
       }

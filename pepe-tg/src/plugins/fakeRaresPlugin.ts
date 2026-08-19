@@ -1,5 +1,5 @@
 import { type Plugin, logger, ModelType, type HandlerCallback } from '@elizaos/core';
-import { fakeRaresCardAction, fakeCommonsCardAction, rarePepesCardAction, educateNewcomerAction, startCommand, helpCommand, loreCommand, fakeRememberCommand, oddsCommand, costCommand, fakeVisualCommand, fakeTestCommand, xcpCommand } from '../actions';
+import { fakeRaresCardAction, fakeCommonsCardAction, rarePepesCardAction, startCommand, helpCommand, fakeRememberCommand, costCommand, xcpCommand } from '../actions';
 import { fakeMarketAction } from '../actions/fakeMarketAction';
 import { fakeRaresCarouselAction } from '../actions/fakeRaresCarousel';
 import { fakeRaresContextProvider, userHistoryProvider } from '../providers';
@@ -10,14 +10,15 @@ import { TelemetryService, type SmartRouterDecisionLog } from '../services/Telem
 import { CardDisplayService } from '../services/CardDisplayService';
 import { SmartRouterService, type SmartRoutingPlan } from '../services/SmartRouterService';
 import { SMART_ROUTER_CONFIG } from '../config/smartRouterConfig';
-import { FULL_CARD_INDEX } from '../data/fullCardIndex';
+import { FULL_CARD_INDEX, getCardInfo } from '../data/fullCardIndex';
 import { startAutoRefresh } from '../utils/cardIndexRefresher';
-import { detectMessagePatterns } from '../utils/messagePatterns';
-import { calculateEngagementScore, shouldRespond } from '../utils/engagementScorer';
+import { detectMessagePatterns, hasAnyCommand } from '../utils/messagePatterns';
 import { executeCommand, executeCommandAlways, type CommandHandlerParams } from '../utils/commandHandler';
+import { runWithAction } from '../utils/actionContext';
 import { stripCardNamePrefix } from '../utils/cardNamePrefixSanitizer';
 import type { IAgentRuntime } from '@elizaos/core';
 import { isBareBitcoinAddress, looksLikeAddressCallout } from '../utils/bitcoinAddress';
+import { observeUserMessage, observeBotMessage } from '../conversation/shadow';
 
 // Track patched runtimes to avoid double-patching
 const patchedRuntimes = new WeakSet<any>();
@@ -54,13 +55,12 @@ function patchRuntimeForTelemetry(runtime: IAgentRuntime): void {
   
   const originalUseModel = runtime.useModel.bind(runtime);
   (runtime as any).useModel = async function(modelType: any, params: any) {
-    // Skip embeddings (tracked separately)
-    if (modelType && (modelType.includes('EMBEDDING') || modelType === 'TEXT_EMBEDDING')) {
-      return await originalUseModel(modelType, params);
-    }
-    
+    const isEmbedding = !!modelType && (modelType.includes?.('EMBEDDING') || modelType === 'TEXT_EMBEDDING');
+
     const startTime = Date.now();
-    const prompt = params?.prompt || params?.text || '';
+    // Embedding callers pass a bare string as often as { text }.
+    const prompt =
+      typeof params === 'string' ? params : params?.prompt || params?.text || '';
     
     try {
       const result = await originalUseModel(modelType, params);
@@ -75,11 +75,19 @@ function patchRuntimeForTelemetry(runtime: IAgentRuntime): void {
           : (result as any)?.text || result?.toString?.() || '';
         
         const tokensIn = telemetry.estimateTokens(prompt);
-        const tokensOut = telemetry.estimateTokens(resultText);
+        // Embeddings return a vector, not text, and are billed on input only.
+        const tokensOut = isEmbedding ? 0 : telemetry.estimateTokens(resultText);
         
         // Determine model from env vars
         let model: string;
-        if (modelType === 'TEXT_SMALL' || modelType?.includes?.('SMALL')) {
+        if (isEmbedding) {
+          // Same precedence @elizaos/plugin-knowledge uses to pick the model,
+          // so the cost line always names the model that was actually called.
+          model =
+            process.env.TEXT_EMBEDDING_MODEL ||
+            process.env.OPENAI_EMBEDDING_MODEL ||
+            'text-embedding-3-small';
+        } else if (modelType === 'TEXT_SMALL' || modelType?.includes?.('SMALL')) {
           model = process.env.OPENAI_SMALL_MODEL || 'gpt-4o-mini';
         } else if (modelType === 'TEXT_LARGE' || modelType?.includes?.('LARGE')) {
           model = process.env.OPENAI_LARGE_MODEL || 'gpt-4o';
@@ -88,10 +96,17 @@ function patchRuntimeForTelemetry(runtime: IAgentRuntime): void {
         }
         
         const cost = telemetry.calculateCost(model, tokensIn, tokensOut);
-        const source = params?.context || 'Conversation';
+        const source = isEmbedding ? 'Embeddings' : params?.context || 'Conversation';
         
-        // Console log for visibility (matches modelGateway format)
-        logger.info(`🤖 LLM call: ${model} [${source}] (${tokensIn} → ${tokensOut} tokens, $${cost.toFixed(4)}, ${duration}ms)`);
+        // Console log for visibility (matches modelGateway format). Embeddings
+        // fire several times per query and are logged at debug to keep the
+        // operator-facing log readable.
+        const line = `🤖 LLM call: ${model} [${source}] (${tokensIn} → ${tokensOut} tokens, $${cost.toFixed(4)}, ${duration}ms)`;
+        if (isEmbedding) {
+          logger.debug(line);
+        } else {
+          logger.info(line);
+        }
         
         await telemetry.logModelUsage({
           timestamp: new Date().toISOString(),
@@ -175,13 +190,9 @@ async function runRouterCommand(command: string, context: SmartRouterExecutionCo
     '/fc': { action: costCommand, always: true },
     '/fm': { action: fakeMarketAction },
     '/fr': { action: fakeRememberCommand },
-    '/fl': { action: loreCommand },
-    '/fv': { action: fakeVisualCommand },
-    '/ft': { action: fakeTestCommand },
     '/c': { action: fakeCommonsCardAction },
     '/p': { action: rarePepesCardAction },
     '/xcp': { action: xcpCommand },
-    '/dawn': { action: oddsCommand },
     '/help': { action: helpCommand, always: true },
     '/start': { action: startCommand, always: true },
   };
@@ -208,6 +219,7 @@ async function runRouterCommand(command: string, context: SmartRouterExecutionCo
         await originalCallback(response);
         if (typeof response?.text === 'string') {
           smartRouter.recordBotTurn(message.roomId, response.text);
+          void observeBotMessage({ roomId: message.roomId, text: response.text });
         }
       }
     : undefined;
@@ -239,6 +251,52 @@ function getDisplayName(params: any, message: any): string {
     return `User ${message.entityId}`;
   }
   return 'User';
+}
+
+
+/**
+ * Show the card an answer is about.
+ *
+ * PEPEDAWN naming a card and not showing it is the single most jarring gap in
+ * the experience — this is a card collection, and people want to see the thing.
+ * Reuses the /f display path so caching, GIF conversion and formatting behave
+ * exactly as they do for the command.
+ *
+ * The asset is preferred from the plan (the card the answer is *about*), and
+ * otherwise taken from the first known asset named in the reply, so a card the
+ * model brings up unprompted is still shown.
+ */
+async function showCardForAnswer(
+  context: SmartRouterExecutionContext,
+  planAsset: string | undefined,
+  answerText: string | undefined,
+  deliver: HandlerCallback | null
+): Promise<void> {
+  if (!deliver) return;
+  const asset = planAsset ?? firstKnownAssetIn(answerText ?? '');
+  if (!asset) return;
+
+  const { runtime, message, params } = context;
+  const cardMessage = {
+    ...message,
+    content: { ...message.content, text: `/f ${asset}` },
+  };
+  try {
+    await fakeRaresCardAction.handler(runtime, cardMessage as any, params.state, {}, deliver);
+    logger.info(`[SmartRouter] Showed ${asset} alongside the answer`);
+  } catch (error) {
+    // A missing image must never swallow the answer that was already sent.
+    logger.warn({ error, asset }, '[SmartRouter] Could not show card for answer');
+  }
+}
+
+/** First Fake Rares asset named in a block of text, if any. */
+function firstKnownAssetIn(text: string): string | undefined {
+  if (!text) return undefined;
+  for (const word of text.toUpperCase().match(/\b[A-Z][A-Z0-9]{2,}\b/g) ?? []) {
+    if (getCardInfo(word)) return word;
+  }
+  return undefined;
 }
 
 async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Promise<boolean> {
@@ -301,6 +359,7 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
     const trimmed = outgoingText.trim();
     if (!trimmed) return;
     context.smartRouter.recordBotTurn(message.roomId, trimmed);
+    void observeBotMessage({ roomId: message.roomId, text: trimmed });
   };
 
   const fallbackCandidates =
@@ -375,70 +434,6 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
         return true;
       }
 
-      case 'CARD_RECOMMEND': {
-        const summary =
-          plan.cardSummary?.trim().replace(/^["“”]+/, '').replace(/["“”]+$/, '') ||
-          plan.story?.trim() ||
-          'Here’s a card that nails the vibe you described.';
-        if (actionCallback && summary) {
-          await actionCallback({
-            text: summary,
-            __fromAction: 'smart_router_card_recommend',
-          });
-          await recordBotTurn(summary);
-        }
-
-        if (Array.isArray(plan.cardMatches) && plan.cardMatches.length > 0) {
-          const list = plan.cardMatches
-            .map((match, idx) => {
-              const reasonSnippet = match.reason
-                ? match.reason.replace(/\s+/g, ' ').slice(0, 80)
-                : '';
-              return `#${idx + 1} ${match.asset}${reasonSnippet ? ` — ${reasonSnippet}` : ''}`;
-            })
-            .join('  |  ');
-          logger.info(`[CardDiscovery] Ranked candidates => ${list}`);
-        }
-
-        if (plan.primaryCardAsset) {
-          const cardCallback: HandlerCallback | undefined =
-            actionCallback != null
-              ? (async (payload: any) => {
-                  const result = await actionCallback(payload);
-                  if (typeof payload?.text === 'string') {
-                    await recordBotTurn(payload.text);
-                  }
-                  return Array.isArray(result) ? result : [];
-                }) as HandlerCallback
-              : undefined;
-
-          const cardMessage = {
-            ...message,
-            content: {
-              ...message.content,
-              text: `/f ${plan.primaryCardAsset}`,
-            },
-          };
-
-          try {
-            await fakeRaresCardAction.handler(
-              runtime,
-              cardMessage,
-              params.state,
-              {},
-              cardCallback
-            );
-          } catch (error) {
-            logger.error({ error }, '[SmartRouter] Card recommendation display failed');
-          }
-        }
-
-        markHandled();
-        await sendTelemetry({ logLore: true });
-        await logDecision('handled');
-        logger.info('[SmartRouter] CARD_RECOMMEND response delivered.');
-        return true;
-      }
 
       case 'FACTS':
       case 'LORE': {
@@ -454,7 +449,11 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
             __fromAction: plan.kind === 'FACTS' ? 'smart_router_facts' : 'smart_router_lore',
           });
           await recordBotTurn(story);
-          if (plan.sources?.trim()) {
+          await showCardForAnswer(context, plan.primaryCardAsset, story, actionCallback);
+          // The sources line ("Sources: mem:FREEDO 2025-11-01 by:Unknown") leaks
+          // internal record ids into the room as a second message. Useful when
+          // debugging retrieval, noise for everyone else.
+          if (process.env.SHOW_SOURCES === 'true' && plan.sources?.trim()) {
             await actionCallback({
               text: plan.sources,
               __fromAction: plan.kind === 'FACTS' ? 'smart_router_facts_sources' : 'smart_router_lore_sources',
@@ -483,6 +482,7 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
             __fromAction: 'smart_router_chat',
           });
           await recordBotTurn(response);
+          await showCardForAnswer(context, plan.primaryCardAsset, response, actionCallback);
         }
 
         markHandled();
@@ -568,12 +568,8 @@ export const fakeRaresPlugin: Plugin = {
     fakeRaresCarouselAction,
     fakeCommonsCardAction,
     rarePepesCardAction,
-    fakeVisualCommand,
-    fakeTestCommand,
-    loreCommand,
     fakeRememberCommand,
     fakeMarketAction,
-    oddsCommand,
     costCommand,
     xcpCommand,
   ],
@@ -691,7 +687,26 @@ export const fakeRaresPlugin: Plugin = {
           // Extract for convenience
           const { isFakeRareCard, hasBotMention, hasRememberCommand } = triggers;
           const isReplyToBot = triggers.isReplyToBot;  // Use the corrected value
-          const { isHelp, isStart, isF, isFCarousel, isC, isP, isFv, isFt, isFl, isFr, isFm, isDawn, isFc, isXcp } = commands;
+
+          // v5 shadow mode: observe only, never responds. Disabled unless
+          // V5_SHADOW=true. See src/conversation/shadow.ts
+          // In a DM every message is addressed to the bot by definition, so
+          // group cadence rules (share of voice, minimum gap) must not apply.
+          // Live testing on @pepedawntest_bot surfaced this: a direct question
+          // in a private chat scored addressedBot=false.
+          const isDirectMessage =
+            (message.content as any)?.channelType === 'DM' ||
+            params.ctx?.chat?.type === 'private';
+
+          const v5 = await observeUserMessage({
+            roomId: message.roomId,
+            text,
+            author: getDisplayName(params, message),
+            entityId: message.entityId,
+            addressedBot: !!(isReplyToBot || triggers.hasBotMention || isDirectMessage),
+          });
+
+          const { isHelp, isStart, isF, isFCarousel, isC, isP, isFr, isFm, isFc, isXcp } = commands;
           
           // Log routing factors
           logger.info(`   Triggers: reply=${!!isReplyToBot} | card=${isFakeRareCard} | @mention=${hasBotMention}`);
@@ -738,7 +753,7 @@ export const fakeRaresPlugin: Plugin = {
             return;
           }
 
-          logger.debug(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${isF} isC=${isC} isP=${isP} isFv=${isFv} isFt=${isFt} isLore=${isFl} isFr=${isFr} isFm=${isFm} isDawn=${isDawn} isHelp=${isHelp} isStart=${isStart} isCost=${isFc} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
+          logger.debug(`[FakeRaresPlugin] MESSAGE_RECEIVED text="${text}" isF=${isF} isC=${isC} isP=${isP} isFr=${isFr} isFm=${isFm} isHelp=${isHelp} isStart=${isStart} isCost=${isFc} SUPPRESS_BOOTSTRAP=${globalSuppression}`);
           
           logger.info('━━━━━━━━━━ STEP 2/5: COMMAND EXECUTION ━━━━━━━━━━');
           
@@ -762,7 +777,7 @@ export const fakeRaresPlugin: Plugin = {
                 // Memory stored successfully
                 if (actionCallback) {
                   await actionCallback({
-                    text: 'storing the memory... to access this in the future ensure you use the /fl fake lore method'
+                    text: 'Got it — stored. Ask me about the card any time and I\'ll bring it up.'
                   });
                 }
                 // Mark as handled to prevent bootstrap processing
@@ -805,23 +820,19 @@ export const fakeRaresPlugin: Plugin = {
           if (isF && await executeCommand(fakeRaresCardAction, cmdParams, '/f')) return;
           if (isC && await executeCommand(fakeCommonsCardAction, cmdParams, '/c')) return;
           if (isP && await executeCommand(rarePepesCardAction, cmdParams, '/p')) return;
-          if (isFv && await executeCommand(fakeVisualCommand, cmdParams, '/fv')) return;
-          if (isFt && await executeCommand(fakeTestCommand, cmdParams, '/ft')) return;
-          if (isFl && await executeCommand(loreCommand, cmdParams, '/fl')) return;
           if (isFr && await executeCommand(fakeRememberCommand, cmdParams, '/fr')) return;
           if (isFm && await executeCommand(fakeMarketAction, cmdParams, '/fm')) return;
-          if (isDawn && await executeCommand(oddsCommand, cmdParams, '/dawn')) return;
           if (isXcp && await executeCommand(xcpCommand, cmdParams, '/xcp')) return;
           
-          // Admin-only command
+          // Admin-only command. Marked handled whether or not validation
+          // passed: in a group /fc must fall silent rather than reach the
+          // conversational path, and in a DM a non-admin gets the refusal the
+          // handler already sent.
           if (isFc) {
-            const executed = await executeCommand(costCommand, cmdParams, '/fc');
-            if (executed || !executed) {
-              // Always mark as handled (whether admin or not)
-              message.metadata = message.metadata || {};
-              (message.metadata as any).__handledByCustom = true;
-              return;
-            }
+            await executeCommand(costCommand, cmdParams, '/fc');
+            message.metadata = message.metadata || {};
+            (message.metadata as any).__handledByCustom = true;
+            return;
           }
           
           logger.info('━━━━━━━━━━ STEP 3/5: CONTENT FILTERS ━━━━━━━━━━');
@@ -844,29 +855,30 @@ export const fakeRaresPlugin: Plugin = {
             return;
           }
           
-          logger.info('━━━━━━━━━━ STEP 4/5: ENGAGEMENT FILTER ━━━━━━━━━━');
-          
-          // Calculate engagement score to determine if bot should respond
-          const engagementScore = calculateEngagementScore({
-            text,
-            hasBotMention,
-            isReplyToBot,
-            isFakeRareCard,
-            userId: message.entityId,
-            roomId: message.roomId,
-          });
-          
-          const engagementAllowsResponse = shouldRespond(engagementScore);
-          const engagementOverride = !engagementAllowsResponse && (hasCardDiscoveryIntent || isSubmissionRulesQuery);
-          const engagementSuppressed = !engagementAllowsResponse && !engagementOverride;
-
-          if (engagementSuppressed) {
-            logger.info(`   Engagement below threshold (score=${engagementScore}) → evaluating smart router before suppressing`);
-          } else if (engagementOverride) {
-            logger.info(`   Engagement below threshold (${engagementScore}) but overriding due to ${hasCardDiscoveryIntent ? 'card intent' : 'submission rules query'}`);
+          // V5_ENFORCE makes the cadence governor binding rather than observed.
+          //
+          // Deliberately placed AFTER the content filters. Cadence governs when
+          // PEPEDAWN volunteers an opinion; it must never silence a safety or
+          // policy response. The FAKEASF burn blocker and the address callout
+          // above answer regardless of how recently the bot last spoke.
+          //
+          // Commands are exempt for the same reason: an explicit /f is a direct
+          // request, and swallowing it reads as broken rather than tactful.
+          if (v5.suppress && !hasAnyCommand(patterns)) {
+            logger.info(`   Decision: SUPPRESS (v5 cadence: ${v5.reason})`);
+            message.metadata = message.metadata || {};
+            (message.metadata as any).__handledByCustom = true;
+            return;
           }
-          
-          logger.info('━━━━━━━━━━ STEP 5/5: QUERY CLASSIFICATION ━━━━━━━━━━');
+
+          // The engagement score used to gate replies here. It never actually
+          // did: it computed suppression, ran the entire router anyway, then
+          // applied the decision afterwards - saving nothing while adding a
+          // branch. Rate control now lives in the cadence governor, which is
+          // enforced in code and understands consecutive turns and share of
+          // voice, neither of which a per-message score can express.
+
+          logger.info('━━━━━━━━━━ QUERY CLASSIFICATION ━━━━━━━━━━');
 
           let smartRouterHandled = false;
           const shouldUseSmartRouter =
@@ -876,7 +888,9 @@ export const fakeRaresPlugin: Plugin = {
               : SMART_ROUTER_CONFIG.rollout.enabled &&
                 Math.random() * 100 < (SMART_ROUTER_CONFIG.rollout.percentage ?? 0);
 
-          if (shouldUseSmartRouter && smartRouter) {
+          // 10% of router decisions were on messages with no text at all -
+          // photos, stickers, joins. Nothing downstream can act on those.
+          if (shouldUseSmartRouter && smartRouter && text.length > 0) {
             const runPlanWithTelemetry = async (plan: SmartRoutingPlan): Promise<boolean> => {
               const telemetry = runtime.getService('telemetry') as TelemetryService | undefined;
               const details = createSmartRouterTelemetryDetails(plan, text, message.id);
@@ -901,67 +915,38 @@ export const fakeRaresPlugin: Plugin = {
             };
 
             try {
-              if (hasCardDiscoveryIntent && !isFl && !isFakeRareCard) {
-                const descriptorPlan = await smartRouter.planRouting(text, message.roomId, {
-                  forceCardFacts: true,
-                });
-                smartRouterHandled = await runPlanWithTelemetry(descriptorPlan);
-              }
+              // Classification, CHAT generation and plan execution all bill to
+              // the router unless they dispatch a command, whose own label wins.
+              await runWithAction('smart-router', async () => {
 
-              if (!smartRouterHandled) {
-                const plan = await smartRouter.planRouting(text, message.roomId);
-                smartRouterHandled = await runPlanWithTelemetry(plan);
-              }
+                if (!smartRouterHandled) {
+                  const plan = await smartRouter.planRouting(
+                  text,
+                  message.roomId,
+                  !!(isReplyToBot || triggers.hasBotMention || isDirectMessage)
+                );
+                  smartRouterHandled = await runPlanWithTelemetry(plan);
+                }
+              });
             } catch (routerErr) {
               logger.error({ error: routerErr }, '[SmartRouter] Failed to evaluate routing plan');
             }
           }
 
-          if (!smartRouterHandled && engagementSuppressed) {
-            logger.info('   Decision: SUPPRESS (smart router had no actionable plan and engagement below threshold)');
-            message.metadata = message.metadata || {};
-            (message.metadata as any).__handledByCustom = true;
-            return;
-          }
 
           if (smartRouterHandled) {
             return;
           }
 
-          logger.info('━━━━━━━━━━ STEP 6/6: BOOTSTRAP HANDOFF ━━━━━━━━━━');
+          // Bootstrap handled 207 of 7,132 conversations (2.9%) and was the sole
+          // reason for the __handledByCustom sentinel threaded through three
+          // files. The router now owns the decision end to end: anything it
+          // declines is silence, which is the correct default for a bot that
+          // talks in a busy room.
+          logger.info('   Decision: SILENT (router declined)');
+          message.metadata = message.metadata || {};
+          (message.metadata as any).__handledByCustom = true;
 
-          if (globalSuppression) {
-            logger.info('   Decision: SUPPRESS all (SUPPRESS_BOOTSTRAP=true)');
-            logger.debug('[Suppress] SUPPRESS_BOOTSTRAP=true → suppressing all bootstrap');
-            message.metadata = message.metadata || {};
-            (message.metadata as any).__handledByCustom = true;
-            return;
-          }
-
-          // Allow Bootstrap to handle anything the Smart Router declined
-          logger.info('   Decision: ALLOW bootstrap (router declined to handle message)');
-          logger.debug(
-            `[Allow] Bootstrap allowed: reply=${!!isReplyToBot} card=${isFakeRareCard} mention=${hasBotMention} | "${text}"`
-          );
-
-          if (!message.content.mentionContext) {
-            message.content.mentionContext = {
-              isMention: hasBotMention,
-              isReply: isActuallyReplyToBot,
-            };
-          }
-
-          if (typeof runtime.getService === 'function') {
-            const telemetry = runtime.getService('telemetry') as TelemetryService;
-            if (telemetry && typeof telemetry.logConversation === 'function') {
-              await telemetry.logConversation({
-                timestamp: new Date().toISOString(),
-                messageId: message.id,
-                source: 'bootstrap',
-              });
-            }
-          }
-          
         } catch (error) {
           logger.error(`[Plugin Error]`, error);
           

@@ -12,27 +12,36 @@ import { classifyQuery, type QueryType } from './queryClassifier';
 /**
  * Create prompt for FACTS-based queries (rules, requirements, how-to)
  */
-function createFactsPrompt(query: string, summaries: string): string {
+function createFactsPrompt(query: string, summaries: string, conversation?: string): string {
   return `You are PEPEDAWN. A user asked: "${query}"
+${conversation ? `\nRecent conversation (use it to resolve what "it" or "that one" refers to):\n${conversation}\n` : ''}
 
 Based on these sources:
 
 ${summaries}
 
-FACTUAL RESPONSE STYLE:
-- Keep response ${LORE_CONFIG.STORY_LENGTH_WORDS} words - be concise but complete
-- Answer DIRECTLY with concrete facts, rules, and requirements
-- Use lists, bullet points, or numbered steps when appropriate
-- NO storytelling, NO "I remember when", NO vibes or reactions
-- Extract exact specifications: sizes, fees, requirements, steps
-- If it's rules/requirements: list them clearly and completely
-- If it's a how-to: provide step-by-step instructions
-- Keep it concise and scannable
-- Only add brief context if absolutely necessary for understanding
-- NO personality flourishes, NO meme language, NO emojis
-- DO NOT cite sources in your response (sources are appended separately)
-- DO NOT include references, or "Source:" lines in the answer
-- JUST provide the facts directly
+YOU ARE A COLLECTOR, NOT AN ENCYCLOPAEDIA:
+- You have been in this community since series 1. Write like a knowledgeable
+  regular telling someone what they want to know, not like a reference entry.
+- Keep it to ${LORE_CONFIG.STORY_LENGTH_WORDS} words. Two or three sentences is
+  usually right. Never a wall of text.
+- Answer directly and concretely. Lists only for genuine step-by-step rules.
+- Dry wit is fine. Hype is not. No emojis.
+
+WHAT YOU ALREADY KNOW (do not contradict it):
+- A card's artist, series, card number, supply and issuance date are stated
+  separately, above your answer, from the card manifest.
+- NEVER write that the sources "do not specify" the creator, supply, artwork,
+  issuance or token details. That line appears directly under those exact facts
+  and makes you look broken. If the passages below add nothing to the specs,
+  say something short about the card's character instead, or say nothing.
+- Do not restate the specs either. Add what they do not cover: what the card
+  looks like, what it says, why it matters, how people treat it.
+
+NEVER:
+- Speculate with "appears to be", "reportedly", "some participants".
+- Cite sources or include "Source:" lines - they are appended separately.
+- Quote chat chatter about price or speculation as though it were fact.
 
 🚨 IF SOURCES DON'T ANSWER THE QUESTION:
 - Reply with exactly: "NO_ANSWER"
@@ -80,7 +89,9 @@ export async function generatePersonaStory(
   runtime: IAgentRuntime,
   query: string,
   summaries: ClusterSummary[],
-  mode?: 'FACTS' | 'LORE'
+  mode?: 'FACTS' | 'LORE',
+  /** Recent conversation, so follow-ups like "and who made it?" resolve. */
+  conversation?: string
 ): Promise<string> {
   if (summaries.length === 0) {
     return "Fam, couldn't find any lore on that. Try asking about something else? 🐸";
@@ -95,8 +106,8 @@ export async function generatePersonaStory(
   logger.debug(`🎯 Query classified as: ${queryType}${mode ? ' (mode override)' : ''}`);
   
   // Different prompts for FACTS vs LORE
-  const storyPrompt = queryType === 'FACTS' 
-    ? createFactsPrompt(query, combinedSummaries)
+  const storyPrompt = queryType === 'FACTS'
+    ? createFactsPrompt(query, combinedSummaries, conversation)
     : createLorePrompt(query, combinedSummaries);
   
   try {

@@ -84,28 +84,6 @@ describe('SmartRouterService golden fixtures', () => {
     expect(options.prompt).toBe(expectedPrompt);
   });
 
-  it('overrides NORESPONSE to FACTS for card descriptor-style queries', async () => {
-    const router = createRouter();
-    const roomId = 'descriptor-room';
-
-    // Simulate a prior bit of chat to populate history (not strictly required)
-    router.recordUserTurn(roomId, 'gm fam', 'User');
-
-    // Force the classifier to say NORESPONSE even though the query looks like a descriptor
-    const descriptorQuery = 'what is the coldest af pepe in the collection?';
-    const classifierSpy = vi
-      .spyOn(modelGateway, 'callTextModel')
-      .mockResolvedValue({
-        ...mockModelResult,
-        text: '{"intent":"NORESPONSE","command":""}',
-      });
-
-    const plan = await router.planRouting(descriptorQuery, roomId);
-
-    expect(classifierSpy).toHaveBeenCalledTimes(1);
-    expect(plan.intent).toBe('FACTS');
-    expect(plan.kind === 'FACTS' || plan.kind === 'CARD_RECOMMEND').toBe(true);
-  });
 
   it('returns mode presets matching golden fixtures', () => {
     const expected = JSON.parse(readFixture('mode-presets.json')) as Record<

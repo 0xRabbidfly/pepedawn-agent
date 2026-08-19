@@ -5,7 +5,7 @@
  * 
  * Features:
  * - Posts helpful usage tips (rotates through 11 tips)
- * - Posts random card showcases (/f or /fv)
+ * - Posts random card showcases
  * - Anti-spam: Only posts if there's been user activity since last post
  * - Configurable intervals
  * 
@@ -43,8 +43,8 @@ const HELPFUL_TIPS = [
     text: "Explore cards by series number! Use `/f c 5` to browse all Series 5 cards. Perfect for discovering cards from specific eras. Navigate with ⬅️ Prev/➡️ Next!",
   },
   {
-    title: "🔍 AI Visual Analysis",
-    text: "Use `/fv CARDNAME` to get deep memetic analysis! I'll read ALL text (OCR), identify meme references, and break down the visual composition. Try `/fv FREEDOMKEK`!",
+    title: "🔍 Ask What A Card Looks Like",
+    text: "Curious what's actually printed on a card? Just ask - \"what does FREEDOMKEK say?\" or \"what does it look like?\" - and I'll tell you what's on it.",
   },
   {
     title: "📊 Market Activity Tracking",
@@ -56,19 +56,15 @@ const HELPFUL_TIPS = [
   },
   {
     title: "💾 Community Memory",
-    text: "Help build our lore! Use `/fr CARDNAME <fact>` or say `FREEDOMKEK remember this: it's the genesis card` to save community knowledge. Everyone can search it via `/fl`!",
+    text: "Help build our lore! Use `/fr CARDNAME <fact>` or say `FREEDOMKEK remember this: it's the genesis card`. Artists especially - add the story behind your own cards and I'll remember it.",
   },
   {
     title: "📚 Lore & History",
-    text: "Use `/fl TOPIC` to get AI-powered stories from our community archives! Try `/fl Rare Scrilla` or `/fl purple subasset era`. I search 264k+ embedded messages!",
+    text: "Ask me about any card, artist or era and I'll tell you what I know - no command needed. Try \"tell me about Rare Scrilla\" or \"what happened in series 1?\"",
   },
   {
     title: "🎲 Random Discovery",
     text: "Just type `/f` with no arguments to see a random card from our 890+ collection. Great way to discover hidden gems!",
-  },
-  {
-    title: "🧬 Fake Appeal Test",
-    text: "Got art? Test its Fake Rares appeal! Send `/ft` with an image attached and I'll score it 1-10 based on PEPE culture, memetic DNA, and visual style!",
   },
   {
     title: "⚡ Real-time Notifications",

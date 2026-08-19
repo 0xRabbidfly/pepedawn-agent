@@ -52,6 +52,26 @@ function estimateTokens(text: string): number {
 /**
  * Call OpenAI text completion with telemetry
  */
+
+/**
+ * Reasoning-family models take max_completion_tokens rather than max_tokens,
+ * and reject temperature overrides.
+ */
+function isReasoningModel(model: string): boolean {
+  return model.startsWith('o1') || model.startsWith('o3') || model.startsWith('gpt-5');
+}
+
+/**
+ * Lowest reasoning effort a model accepts.
+ *
+ * The gpt-5.6 family rejects 'minimal' outright - the API replies
+ * "Supported values are: 'none'" - so sending the older value 400s every call.
+ * Probed against gpt-5.6-luna on 2026-08-19.
+ */
+function minimalEffort(model: string): string {
+  return model.startsWith('gpt-5.6') ? 'none' : 'minimal';
+}
+
 export async function callTextModel(
   runtime: IAgentRuntime,
   options: ModelCallOptions
@@ -59,11 +79,8 @@ export async function callTextModel(
   const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
   const startTime = Date.now();
   
-  const isReasoningModel = 
-    options.model.startsWith('o1') || 
-    options.model.startsWith('o3') || 
-    options.model.startsWith('gpt-5');
-  
+  const reasoning = isReasoningModel(options.model);
+
   const requestParams: any = {
     model: options.model,
     messages: [
@@ -73,10 +90,10 @@ export async function callTextModel(
   };
   
   // Configure based on model type
-  if (isReasoningModel) {
+  if (reasoning) {
     // Reasoning models need 2x tokens since they use internal reasoning
     requestParams.max_completion_tokens = options.maxTokens ? options.maxTokens * 2 : 600;
-    requestParams.reasoning_effort = 'minimal';
+    requestParams.reasoning_effort = minimalEffort(options.model);
   } else {
     requestParams.max_tokens = options.maxTokens || 300;
     if (options.temperature !== undefined) {
@@ -144,11 +161,8 @@ export async function callVisionModel(
   const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
   const startTime = Date.now();
   
-  const isReasoningModel = 
-    options.model.startsWith('o1') || 
-    options.model.startsWith('o3') || 
-    options.model.startsWith('gpt-5');
-  
+  const reasoning = isReasoningModel(options.model);
+
   const requestParams: any = {
     model: options.model,
     messages: [
@@ -169,7 +183,7 @@ export async function callVisionModel(
   };
   
   // Configure based on model type
-  if (isReasoningModel) {
+  if (reasoning) {
     requestParams.max_completion_tokens = options.maxTokens || 1600;
     requestParams.reasoning_effort = 'low';
   } else {

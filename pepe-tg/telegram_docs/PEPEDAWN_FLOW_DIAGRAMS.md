@@ -1,5 +1,14 @@
 # PEPEDAWN Bot Flow Diagrams 🐸
 
+> ⚠️ **Superseded by v5 (2026-08-19).** This document describes the pre-v5
+> architecture. Removed since: the `/fl`, `/fv`, `/ft`, `/dawn` and `/educate`
+> commands, ElizaOS bootstrap handoff, the engagement-score filter, card
+> discovery, and LORE as a separate mode.
+>
+> Current design: [`design_docs/PEPEDAWN_CHAT_V5.md`](design_docs/PEPEDAWN_CHAT_V5.md).
+> Live command list: the `/help` handler in `src/actions/basicCommands.ts`.
+
+
 > **Visual teaching guide for understanding how PEPEDAWN works**  
 > Each diagram shows the complete flow from user input to bot response
 

@@ -6,31 +6,11 @@ describe('messagePatterns', () => {
     it('should detect /f command', () => {
       const patterns = detectMessagePatterns('/f PEPEDAWN', {});
       expect(patterns.commands.isF).toBe(true);
-      expect(patterns.commands.isFv).toBe(false);
     });
 
-    it('should detect /fv command', () => {
-      const patterns = detectMessagePatterns('/fv PEPEDAWN', {});
-      expect(patterns.commands.isFv).toBe(true);
-      expect(patterns.commands.isF).toBe(false);
-    });
 
-    it('should detect /ft command', () => {
-      const patterns = detectMessagePatterns('/ft', {});
-      expect(patterns.commands.isFt).toBe(true);
-    });
 
-    it('should detect /fl command', () => {
-      const patterns = detectMessagePatterns('/fl what is PEPEDAWN', {});
-      expect(patterns.commands.isFl).toBe(true);
-      expect(patterns.commands.isF).toBe(false);
-    });
 
-    it('should not treat /fl as /f', () => {
-      const patterns = detectMessagePatterns('/fl', {});
-      expect(patterns.commands.isFl).toBe(true);
-      expect(patterns.commands.isF).toBe(false);
-    });
 
     it('should detect /fr command', () => {
       const patterns = detectMessagePatterns('/fr PEPEDAWN has supply of 133', {});
@@ -52,10 +32,6 @@ describe('messagePatterns', () => {
       expect(patterns.commands.isStart).toBe(true);
     });
 
-    it('should detect /dawn command', () => {
-      const patterns = detectMessagePatterns('/dawn', {});
-      expect(patterns.commands.isDawn).toBe(true);
-    });
 
     it('should detect /fc command', () => {
       const patterns = detectMessagePatterns('/fc', {});

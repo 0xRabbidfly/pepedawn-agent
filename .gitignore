@@ -68,3 +68,10 @@ data/transactions.db
 # Temporary files
 tmp/
 **/tmp/
+
+# v5 staging + shadow-mode local artifacts (may contain a bot token)
+.env.staging
+pepe-tg/.env.staging
+pepe-tg/.staging/
+**/room-history.json
+**/shadow-logs.jsonl

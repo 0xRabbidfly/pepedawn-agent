@@ -12,6 +12,11 @@ import {
 import { detectCardFastPath } from '../router/cardFastPath';
 import { KnowledgeOrchestratorService } from './KnowledgeOrchestratorService';
 import { callTextModel } from '../utils/modelGateway';
+import { describeCard, detectCollection, randomCard } from '../utils/cardFacts';
+import { getCardInfo } from '../data/fullCardIndex';
+import { describeTraitMatch } from '../utils/cardTraits';
+import { answerCardQuery } from '../utils/cardQueries';
+import { recallForPrompt, recordTurn, recentTurns } from '../conversation/shadow';
 import { isInFullIndex } from '../data/fullCardIndex';
 
 export type ConversationIntent = 'LORE' | 'FACTS' | 'CHAT' | 'NORESPONSE' | 'CMDROUTE';
@@ -31,7 +36,6 @@ interface IntentClassifierResult {
 
 export type SmartRouterPlanKind =
   | 'FAST_PATH_CARD'
-  | 'CARD_RECOMMEND'
   | 'LORE'
   | 'FACTS'
   | 'CHAT'
@@ -88,15 +92,19 @@ const MODE_PRESETS: Record<
     },
     topKPerSource: Math.max(5, SMART_ROUTER_CONFIG.topKPerSource),
   },
+  // Conversation is still *about* Fake Rares, so card facts and wiki are the
+  // useful grounding. This previously weighted telegram at 3.2 - the highest of
+  // any source in any mode - and card_data at 0.4, which meant the bot could not
+  // discuss a card conversationally even when it had just retrieved it.
   CHAT: {
     sourceWeights: {
-      memory: 1.4,
-      wiki: 0.6,
-      card_data: 0.4,
-      telegram: 3.2,
-      unknown: 0.6,
+      memory: 2.0,
+      wiki: 1.8,
+      card_data: 2.4,
+      telegram: 0.5,
+      unknown: 0.4,
     },
-    topKPerSource: Math.max(8, SMART_ROUTER_CONFIG.topKPerSource),
+    topKPerSource: Math.max(6, SMART_ROUTER_CONFIG.topKPerSource),
   },
 };
 
@@ -191,6 +199,27 @@ export class SmartRouterService extends Service {
     this.historyByRoom.clear();
   }
 
+  /**
+   * Recent turns for a room, preferring the persisted store.
+   *
+   * historyByRoom is a plain in-memory Map, and PM2 cron-restarts nightly at
+   * 02:00 plus `pm2 delete` on every deploy - so the model started each morning
+   * with no recollection of the community. The persisted store already existed
+   * for the cadence governor; it just never reached the prompt.
+   */
+  private getTurnsForPrompt(roomId: string, count: number): ConversationTurn[] {
+    const persisted = recentTurns(roomId, count);
+    if (persisted.length > 0) {
+      return persisted.map((t) => ({
+        role: t.role,
+        author: t.author ?? (t.role === 'bot' ? 'PEPEDAWN' : 'User'),
+        text: t.text,
+        timestamp: t.at,
+      }));
+    }
+    return this.getRecentTurns(roomId, count);
+  }
+
   recordUserTurn(roomId: string, text: string, author?: string): void {
     const turn: ConversationTurn = {
       role: 'user',
@@ -237,67 +266,6 @@ export class SmartRouterService extends Service {
    * - "CARD_INTENT"→ treat as card-intent mention
    * - "BOTH"       → ambiguous / mixed; may still allow card overrides
    */
-  private async classifyPepedawnUsage(
-    roomId: string,
-    currentMessage: string
-  ): Promise<'BOT_CHAT' | 'CARD_INTENT' | 'BOTH'> {
-    const turns = this.getRecentTurns(roomId, 12);
-    const transcript = this.formatTranscript(turns);
-    const prompt = [
-      'You disambiguate whether "PEPEDAWN" refers to the bot persona or the trading card asset.',
-      '',
-      'Transcript:',
-      transcript || '(no prior conversation yet)',
-      '',
-      `Current message: "${currentMessage}"`,
-      '',
-      'Respond with STRICT JSON: {"usage":"BOT_CHAT|CARD_INTENT|BOTH"}',
-      '',
-      'Guidelines:',
-      '* BOT_CHAT: they\'re addressing behavior, settings, vibe, or reacting to replies. Prefer this when uncertain.',
-      '* CARD_INTENT: they want facts/lore/supply/visuals about the card.',
-      '* BOTH: explicitly mixing both.',
-    ].join('\n');
-
-    try {
-      const model = process.env.OPENAI_SMALL_MODEL || 'gpt-4o-mini';
-      const result = await callTextModel(this.runtime, {
-        model,
-        prompt,
-        systemPrompt:
-          'You disambiguate whether "PEPEDAWN" refers to the bot persona or the trading card asset.',
-        maxTokens: 40,
-        source: 'Router-PepedawnDisambiguator',
-      });
-      const text = result.text ?? '';
-      const jsonStart = text.indexOf('{');
-      const jsonEnd = text.lastIndexOf('}');
-      if (jsonStart >= 0 && jsonEnd > jsonStart) {
-        const parsed = safeJSONParse<{ usage?: string }>(
-          text.slice(jsonStart, jsonEnd + 1)
-        );
-        const usage = (parsed?.usage || '').toUpperCase();
-        if (usage === 'BOT_CHAT' || usage === 'CARD_INTENT' || usage === 'BOTH') {
-          logger.info(
-            { usage, raw: text.length > 160 ? `${text.slice(0, 160)}…` : text },
-            '[SmartRouter] PEPEDAWN usage disambiguated'
-          );
-          return usage;
-        }
-      }
-      logger.warn(
-        { raw: text },
-        '[SmartRouter] PEPEDAWN usage classifier returned unparseable output, defaulting to BOT_CHAT.'
-      );
-      return 'BOT_CHAT';
-    } catch (error) {
-      logger.error(
-        { error },
-        '[SmartRouter] PEPEDAWN usage classifier error, defaulting to BOT_CHAT'
-      );
-      return 'BOT_CHAT';
-    }
-  }
 
   private formatTranscript(turns: ConversationTurn[]): string {
     return turns
@@ -311,7 +279,7 @@ export class SmartRouterService extends Service {
   }
 
   private async classifyIntent(roomId: string, currentMessage: string): Promise<IntentClassifierResult> {
-    const turns = this.getRecentTurns(roomId, CLASSIFIER_HISTORY_WINDOW);
+    const turns = this.getTurnsForPrompt(roomId, CLASSIFIER_HISTORY_WINDOW);
     const transcript = this.formatTranscript(turns);
     const prompt = [
       'Conversation transcript (oldest first):',
@@ -475,17 +443,12 @@ export class SmartRouterService extends Service {
     roomId: string,
     retrieval: RetrieveCandidatesResult | null,
     classifierRaw?: string,
-    options?: { forceCardFacts?: boolean }
   ): Promise<SmartRoutingPlan> {
     // Skip card descriptor check if a card is explicitly mentioned.
     // Card descriptors are for discovery queries, not queries about specific card attributes.
     const mentionedCard = this.detectMentionedCard(userText);
-    if (!mentionedCard && this.looksLikeCardDescriptor(userText)) {
-      const cardPlan = await this.buildCardRecommendPlan(userText, roomId, retrieval, classifierRaw);
-      if (cardPlan) {
-        return cardPlan;
-      }
-    }
+
+
     const knowledge = this.runtime.getService(
       KnowledgeOrchestratorService.serviceType
     ) as KnowledgeOrchestratorService | undefined;
@@ -502,18 +465,33 @@ export class SmartRouterService extends Service {
       };
     }
 
-    // When a card is explicitly mentioned, don't use preferCardFacts (which triggers card discovery).
     // We want normal retrieval to fetch facts about the mentioned card from memories/wiki.
-    const preferCardFacts = mentionedCard ? false : (options?.forceCardFacts ?? false);
+
+    // Factual answers were context-blind: "what's FREEDOMKEK's supply?" then
+    // "and who made it?" left the second question with no idea what "it" meant.
+    const recentTranscript = this.formatRecentChat(this.getTurnsForPrompt(roomId, 8), 8);
 
     const result = await knowledge.retrieveKnowledge(userText, roomId, {
       mode: 'FACTS',
       includeMetrics: true,
-      preferCardFacts,
+      conversation: recentTranscript,
     });
 
     let story = result.story?.trim();
     let sources = result.sourcesLine || '';
+
+    // Structured card facts live in the card index, not in the vector store, so
+    // retrieval alone can answer "tell me about FREEDOMKEK" with whatever thin
+    // note happens to be embedded. When a card is named, always fold in what we
+    // actually know about it.
+    if (mentionedCard) {
+      const facts = describeCard(mentionedCard);
+      if (facts) {
+        story = story && story.length > 0 && !this.isThinAnswer(story)
+          ? `${facts}\n\n${story}`
+          : facts;
+      }
+    }
 
     if ((!story || story.length === 0) && result.cardSummary) {
       const summary = result.cardSummary.trim();
@@ -529,6 +507,7 @@ export class SmartRouterService extends Service {
       kind: 'FACTS',
       intent: 'FACTS',
       reason: 'classifier_facts',
+      primaryCardAsset: mentionedCard ?? undefined,
       retrieval,
       selectedCandidates: this.selectTopCandidates(retrieval, 3),
       story,
@@ -537,86 +516,92 @@ export class SmartRouterService extends Service {
     };
   }
 
-  private looksLikeCardDescriptor(text: string): boolean {
-    const upper = text.toUpperCase();
-    const hasCardWord = /\bCARD\b|\bPEPE\b|FAKE\s*RARE|RARE\s*PEPE/i.test(text);
-    const hasQuestionWord = /\bWHAT\b|\bWHICH\b|\bSHOW\b|\bFIND\b/i.test(upper);
-    const hasAdjective = /(SEXIEST|SEXY|HOTTEST|COLDEST|GREENEST|COOLEST|BEST|VIB(E|EST)|WILDEST|MEANEST|SADDEST|FUNNIEST|SCARIEST)/i.test(
+  /**
+   * True when a composed answer is too thin to be worth appending to the card
+   * facts - typically a single clause echoing a stub memory.
+   */
+  private isThinAnswer(story: string): boolean {
+    const words = story.trim().split(/\s+/).filter(Boolean).length;
+    return words <= 14;
+  }
+
+  /**
+   * A question of taste rather than fact - "best", "favourite", "coolest".
+   *
+   * These once went to a card-recommendation path that justified a pick from
+   * specifications. There is no factual basis for "best", so it reached for the
+   * only number in front of it and called a 299-supply card limited. An opinion
+   * asked for is an opinion owned.
+   */
+  /**
+   * The card most recently named by anyone in the room, newest first.
+   *
+   * Follow-ups are how people actually talk: "what's FREEDOMKEK's supply?" then
+   * "and who made it?". Without this the second question reaches retrieval with
+   * no subject and comes back "which card do you mean?".
+   */
+  private lastMentionedCard(roomId: string): string | undefined {
+    const turns = this.getTurnsForPrompt(roomId, 8);
+    for (let i = turns.length - 1; i >= 0; i--) {
+      const words = (turns[i].text || '').toUpperCase().match(/\b[A-Z][A-Z0-9]{2,}\b/g) ?? [];
+      for (const w of words) if (getCardInfo(w)) return w;
+    }
+    return undefined;
+  }
+
+  /** True when the message leans on a pronoun instead of naming a card. */
+  private usesPronounForCard(text: string): boolean {
+    return /\b(it|its|it's|that|this|the same|that one|this one|them|they)\b/i.test(text);
+  }
+
+  /**
+   * A question about how a card LOOKS - colour, mood, style - as opposed to how
+   * PEPEDAWN feels about it. These have answers in the vision data.
+   */
+  private looksDescriptive(text: string): boolean {
+    return /\b(most|more|very|really|sexiest|ugliest|weirdest|scariest|darkest|brightest|prettiest|funniest|wildest|colou?rful|psychedelic|trippy|retro|vintage|creepy|red|blue|green|purple|orange|yellow|pink|black|white|gold)\b/i.test(
       text
     );
-    // Treat ALL-CAPS tokens (3+ chars) in the original text as asset-like symbols.
-    // Using the original casing avoids flagging normal prose like "what" as assets.
-    const looksLikeAsset = /\b[A-Z0-9]{3,}\b/.test(text);
-
-    if (this.detectMentionedCard(text)) {
-      return false;
-    }
-
-    return hasCardWord && hasQuestionWord && hasAdjective && !looksLikeAsset;
   }
 
-  private async buildLorePlan(
-    userText: string,
-    roomId: string,
-    retrieval: RetrieveCandidatesResult | null,
-    classifierRaw?: string
-  ): Promise<SmartRoutingPlan> {
-    const knowledge = this.runtime.getService(
-      KnowledgeOrchestratorService.serviceType
-    ) as KnowledgeOrchestratorService | undefined;
-
-    if (!knowledge) {
-      logger.error('[SmartRouter] Knowledge orchestrator unavailable for LORE plan.');
-      return {
-        kind: 'NORESPONSE',
-        intent: 'NORESPONSE',
-        reason: 'knowledge_unavailable',
-        retrieval,
-        emoji: this.pickEmoji(userText),
-        metadata: { classifierRaw },
-      };
-    }
-
-    let preferCardFacts = false;
-    if (retrieval) {
-      const counts = retrieval.metrics.countsBySource;
-      const memoryAndWiki = (counts.memory ?? 0) + (counts.wiki ?? 0);
-      const telegram = counts.telegram ?? 0;
-      if (memoryAndWiki === 0 && telegram === 0) {
-        preferCardFacts = true;
-      }
-    }
-
-      const result = await knowledge.retrieveKnowledge(userText, roomId, {
-      mode: 'LORE',
-        includeMetrics: true,
-      preferCardFacts,
-    });
-
-    const story = result.story?.trim() || 'Still collecting lore on that—want to drop more alpha? 🐸';
-    const sources = result.sourcesLine || '';
-    return {
-      kind: 'LORE',
-      intent: 'LORE',
-      reason: 'classifier_lore',
-      retrieval,
-      selectedCandidates: this.selectTopCandidates(retrieval, 3),
-      story,
-      sources,
-      metadata: { classifierRaw },
-    };
+  private isTasteQuestion(text: string): boolean {
+    // Only genuine personal preference. "Sexiest" and "most red" are
+    // descriptive - the vision pass recorded those traits and they have real
+    // answers. Asking PEPEDAWN what IT likes has no data behind it, and ranking
+    // cards is against this community's etiquette, so that one is randomised.
+    return /\b(your\s+(favou?rite|pick|choice)|favou?rite\s+(card|fake|pepe)|do\s+you\s+(like|prefer)|which\s+do\s+you|what.s\s+your\s+\w+|best\s+fake\s+rare|the\s+best)\b/i.test(
+      text
+    );
   }
 
+
+
+
+  /**
+   * Grounding facts for conversation.
+   *
+   * Previously this filtered to source_type === 'telegram', so chat replies were
+   * seeded with old chat-log snippets and never with card facts or wiki — the
+   * bot could not talk about a card it had just retrieved. Card data and wiki
+   * are what a conversation about a card actually needs; the frozen Telegram
+   * archive is being retired (see PEPEDAWN_CHAT_V5.md §2).
+   */
   private buildChatNotes(retrieval: RetrieveCandidatesResult | null): string {
     if (!retrieval) return '';
-    const telegramSnippets = retrieval.candidates
-      .filter((c) => c.source_type === 'telegram')
+    const useful = retrieval.candidates.filter(
+      (c) => c.source_type === 'card_data' || c.source_type === 'wiki' || c.source_type === 'memory'
+    );
+    if (useful.length === 0) return '';
+    return useful
       .slice(0, 5)
       .map((c) => {
         const text = (c.full_text ?? c.text_preview ?? '').replace(/\s+/g, ' ').trim();
-        return `- ${text}${text.length > 220 ? '…' : ''}`;
-      });
-    return telegramSnippets.join('\n');
+        const label =
+          c.source_type === 'card_data' ? 'card' : c.source_type === 'memory' ? 'memory' : 'wiki';
+        const clipped = text.length > 320 ? `${text.slice(0, 320)}…` : text;
+        return `- [${label}] ${clipped}`;
+      })
+      .join('\n');
   }
 
   private formatRecentChat(turns: ConversationTurn[], limit: number): string {
@@ -630,114 +615,11 @@ export class SmartRouterService extends Service {
       .join('\n');
   }
 
-  private async buildCardRecommendPlan(
-    userText: string,
-    roomId: string,
-    retrieval: RetrieveCandidatesResult | null,
-    classifierRaw?: string
-  ): Promise<SmartRoutingPlan | null> {
-    const knowledge = this.runtime.getService(
-      KnowledgeOrchestratorService.serviceType
-    ) as KnowledgeOrchestratorService | undefined;
 
-    if (!knowledge) {
-      logger.error('[SmartRouter] Knowledge orchestrator unavailable for CARD_RECOMMEND plan.');
-      return null;
-    }
 
-    const result = await knowledge.retrieveKnowledge(userText, roomId, {
-      mode: 'FACTS',
-      includeMetrics: true,
-      preferCardFacts: true,
-      deterministicCardSelection: true,
-    });
 
-    const cardMatches = (result as any)?.cardMatches;
-    if (!Array.isArray(cardMatches) || cardMatches.length === 0) {
-      return null;
-    }
 
-    const primaryMatch = cardMatches[0];
-    const autoSummary =
-      primaryMatch && primaryMatch.asset
-        ? this.composeCardSummary(primaryMatch.asset, primaryMatch.reason)
-        : '';
-    const rawSummary =
-      (result as any)?.cardSummary?.trim() ||
-      result.story?.trim() ||
-      autoSummary ||
-      'Here’s a card that fits what you asked for.';
 
-    const conciseSummary = this.limitSentences(rawSummary, 2, 200);
-
-    return {
-      kind: 'CARD_RECOMMEND',
-      intent: 'FACTS',
-      reason: 'card_descriptor_intent',
-      retrieval,
-      selectedCandidates: this.selectTopCandidates(retrieval, 5),
-      primaryCardAsset: (result as any)?.primaryCardAsset,
-      cardSummary: conciseSummary,
-      cardMatches: cardMatches.slice(0, 3).map((match: any) => {
-        const stripped = this.stripCardAnnotations(match.reason || '');
-        const cleaned = this.removeLeadingAsset(stripped, match.asset);
-        const normalized = cleaned || 'Fits what you asked for.';
-        return {
-          asset: match.asset,
-          reason: this.truncateReason(normalized),
-        };
-      }),
-      metadata: {
-        classifierRaw:
-          classifierRaw ||
-          JSON.stringify({ intent: 'FACTS', reason: 'card_descriptor_override' }),
-      },
-    };
-  }
-
-  private limitSentences(text: string, maxSentences: number, maxChars: number): string {
-    if (!text) return '';
-    const cleaned = text.replace(/\s+/g, ' ').trim();
-    const sentences = cleaned.split(/(?<=[.!?])\s+/).filter(Boolean);
-    const clipped = sentences.slice(0, maxSentences).join(' ');
-    if (clipped.length <= maxChars) return clipped;
-    return clipped.slice(0, maxChars).trimEnd() + '…';
-  }
-
-  private truncateReason(reason: string): string {
-    if (!reason) return '';
-    const cleaned = reason.replace(/\s+/g, ' ').trim();
-    if (cleaned.length <= 160) return cleaned;
-    return cleaned.slice(0, 157).trimEnd() + '…';
-  }
-
-  private stripCardAnnotations(text: string): string {
-    return text
-      .replace(/\*\*/g, '')
-      .replace(/\[CARD:[^\]]+\]/gi, '')
-      .replace(/\[CARDFACT:[^\]]+\]/gi, '')
-      .replace(/\s+/g, ' ')
-      .trim();
-  }
-
-  private composeCardSummary(asset: string, reason?: string): string {
-    const stripped = this.stripCardAnnotations(reason || '');
-    let normalizedReason = this.removeLeadingAsset(stripped, asset);
-    if (!normalizedReason) {
-      normalizedReason = 'fits what you asked for.';
-    }
-    const normalizedAsset = asset.replace(/[\s*_`~]/g, '').toLowerCase();
-    const reasonHasAsset = normalizedReason.toLowerCase().includes(normalizedAsset);
-    return reasonHasAsset ? normalizedReason : `${asset} — ${normalizedReason}`;
-  }
-
-  private removeLeadingAsset(text: string, asset: string): string {
-    if (!text || !asset) {
-      return text || '';
-    }
-    const pattern = new RegExp(`^${this.escapeRegExp(asset)}[\\s:—-]+`, 'i');
-    return text.replace(pattern, '').trim();
-  }
 
   private escapeRegExp(value: string): string {
     return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -774,52 +656,108 @@ export class SmartRouterService extends Service {
     return cleaned || text; // Return original if stripping would empty the query
   }
 
+
   private async buildChatPlan(
     userText: string,
     roomId: string,
     retrieval: RetrieveCandidatesResult | null,
-    classifierRaw?: string
+    classifierRaw?: string,
+    options?: { tasteQuestion?: boolean; knownFact?: string; card?: string }
   ): Promise<SmartRoutingPlan> {
-    const history = this.getRecentTurns(roomId, 12);
+    const history = this.getTurnsForPrompt(roomId, 12);
     const recentTranscript = this.formatRecentChat(history, 12);
     const throwbackNotes = this.buildChatNotes(retrieval);
+
+    // What PEPEDAWN remembers about the people in this room. Rate-limited
+    // upstream, so this is usually empty - a bot that constantly references
+    // what you said weeks ago is unsettling rather than warm.
+    const speakers = history.filter((t) => t.role !== 'bot').map((t) => t.author);
+    const roomMemories = await recallForPrompt(roomId, speakers);
+
+    // Nothing retrieved and nothing remembered: invite a contribution rather
+    // than bluffing. This is how the corpus grows now the Telegram archive is
+    // gone.
+    const nothingKnown = !throwbackNotes && !roomMemories;
+
+    // Ranking cards is against the etiquette of this community, so a question of
+    // taste is answered by picking a card uniformly at random and saying
+    // something true and appreciative about it. The non-determinism lives here,
+    // in code — gpt-5.6-luna accepts no temperature, top_p or penalties at all,
+    // so nothing varies unless the context does.
+    let offeredCard = '';
+    let offeredCardAsset: string | undefined;
+    if (options?.tasteQuestion) {
+      // Draw from the collection the question is about. "Your favourite fake
+      // commons card?" was answered with a Fake Rare, because every pool was
+      // the Fake Rares index.
+      const card = randomCard(detectCollection(userText));
+      if (card) {
+        offeredCardAsset = card.asset;
+        offeredCard = describeCard(card.asset) ?? '';
+      }
+    }
 
     const prompt = [
       'Recent conversation:',
       recentTranscript,
       '',
       throwbackNotes
-        ? `Relevant throwbacks:\n${throwbackNotes}`
-        : 'Relevant throwbacks:\n(none)',
+        ? `What you know that is relevant (retrieved just now):\n${throwbackNotes}`
+        : 'What you know that is relevant: (nothing retrieved)',
       '',
+      roomMemories ? `What you remember about people here:\n${roomMemories}\n` : '',
+      options?.knownFact
+        ? `THIS IS THE ANSWER, and it is exact — state it, do not hedge it, do not add specifications around it:\n${options.knownFact}\nWrap it in one conversational sentence. Do not turn it into a fact sheet.\n`
+        : '',
+      offeredCard
+        ? `This community does not rank its cards, and you would not want to. Instead, here is one drawn at random:
+${offeredCard}
+Say briefly why it is worth a look — something true about the art, the artist or the era. Make clear it is one of many, not "the best".
+`
+        : '',
+      nothingKnown
+        ? 'You have nothing on this. If they asked about a specific card or piece of history, say so plainly and invite them to add it with /fr - once, lightly, not as a sales pitch.\n'
+        : '',
       `Respond as PEPEDAWN to: "${userText}"`,
       '',
-      '### Output contract',
+      '### Using what you know',
       '',
-      '* If the classifier *should have* chosen NORESPONSE, default to a single neutral emoji.',
-      '* Max length:',
+      '* If card facts are listed above and the message touches that card, weave them',
+      '  in naturally - the way a collector who knows the piece would mention it.',
+      '  One or two concrete details, in the flow of talking. Not a fact sheet.',
+      '* Never present a spec as a verdict. Supply, series and issuance are context,',
+      '  not proof that something is good, rare or valuable.',
+      '* If the question is a matter of taste ("best", "coolest", "favourite"),',
+      '  NAME AN ACTUAL CARD and say why you like it, in your own voice. Own it.',
+      '  Never hedge with "it depends" or "there is no objective best", and never',
+      '  build a justification out of supply, series or issuance numbers.',
+      '* Never invent card facts or history. If nothing was retrieved, just talk.',
       '',
-      '  * If user < 5 words -> reply 1-5 words (or a single fitting emoji).',
-      '  * If user 5-15 words -> one short sentence (<= 16 words).',
-      '  * If user > 15 words -> one sentence (<= 22 words), rarely two if absolutely necessary.',
-      '* Never end with a question mark. No probing follow-ups. No "anything else?"',
-      '* Match energy: mirror emoji/punctuation intensity; if they are flat, stay flat.',
-      '* Hostility or "be quiet" cues (e.g., stfu/stop/boring/pfffff) -> reply with one neutral emoji (e.g., 👂 or 🫡) or a 1-2 word acknowledge (e.g., "noted").',
-      '* If the prior two bot replies were consecutive without a new ask -> return a single emoji only.',
-      '* If you are unsure, state it in <= 8 words (e.g., "Not sure yet; need details.").',
-      '* Do not fabricate card facts or history; if uncertain, be brief and neutral.',
+      '### Length — this is a hard ceiling',
       '',
-      '### Style',
+      '* Banter or a passing remark: ONE line, 25 words maximum.',
+      '* A real question: a short paragraph, 60 words maximum.',
+      '* Only when someone explicitly asks for the story: 120 words maximum.',
+      '* Never a wall of text. If you cannot say it inside the ceiling, say the',
+      '  most useful part and stop.',
       '',
-      '* Degen tone is fine (gm/ser/kek) but minimal.',
-      '* Never lecture. Never hijack. End cleanly.',
-      '* Stay on topic (Fake Rares / Rare Pepes / crypto-art / Bitcoin / Counterparty).',
+      '### Voice',
+      '',
+      '* Warm, dry, culturally fluent. A regular in the room, not a service desk.',
+      '* You have been here since series 1. You have taste and you own it.',
+      '* Match the energy in front of you - brief with brief, relaxed with relaxed.',
+      '* Degen register is fine (gm/ser/kek) when it fits. Never forced.',
+      '* Do not lecture, do not summarise the conversation, do not offer further help.',
+      '* Stay on Fake Rares / Rare Pepes / crypto-art / Bitcoin / Counterparty.',
       '',
       'Return only the final message text (no metadata).',
     ].join('\n');
 
     try {
-      const model = process.env.OPENAI_SMALL_MODEL || 'gpt-4o-mini';
+      // Conversation is the thing the community actually reads, so it gets a
+      // capable model. CHAT_MODEL overrides; the default is no longer the
+      // cheapest option available.
+      const model = process.env.CHAT_MODEL || process.env.OPENAI_LARGE_MODEL || 'gpt-4o';
       const result = await callTextModel(this.runtime, {
         model,
         prompt,
@@ -838,6 +776,7 @@ export class SmartRouterService extends Service {
         kind: 'CHAT',
         intent: 'CHAT',
         reason: 'classifier_chat',
+        primaryCardAsset: options?.card ?? offeredCardAsset,
         retrieval,
         selectedCandidates: this.selectTopCandidates(retrieval, 3),
         chatResponse: finalText,
@@ -869,12 +808,68 @@ export class SmartRouterService extends Service {
   async planRouting(
     text: string,
     roomId: string,
-    options?: { forceCardFacts?: boolean }
+    /** True when the message @mentioned the bot, replied to it, or is a DM. */
+    addressedConversationally = false,
   ): Promise<SmartRoutingPlan> {
     const trimmed = text.trim();
+
+    // Questions the card index answers exactly — artist, issuance, supply,
+    // series, an artist's largest or smallest card — are looked up, never
+    // retrieved or recommended.
+    //
+    // This has to sit ahead of everything: "look at all pepenardo's cards, which
+    // has the highest collection size?" contains the word "cards", so the plugin
+    // routed it into card discovery long before buildFactsPlan was reached.
+    // That path answered PEPEPOSSE — a
+    // Gonkulator card with supply 23 — for a question whose answer is
+    // PEPERMINE at 150.
+    // Matters of taste go straight to the conversational path, whatever the
+    // classifier decides. Ranking cards is against this community's etiquette,
+    // so the answer is a card drawn at random with something true said about it.
+    if (this.isTasteQuestion(trimmed)) {
+      logger.debug({ query: trimmed }, '[SmartRouter] Personal preference -> random card');
+      return this.buildChatPlan(trimmed, roomId, null, undefined, { tasteQuestion: true });
+    }
+
+    // Descriptive questions - "most red", "sexiest", "most psychedelic" - are
+    // answered from what the /fv vision pass actually recorded, not by semantic
+    // similarity over prose. That is how "grantfly" came back for a red query.
+    if (this.looksDescriptive(trimmed)) {
+      // The /fv vision pass only ever ran over Fake Rares - 875 cards, none in
+      // Commons or Rare Pepes - so a descriptive question about another
+      // collection has no data behind it and must not be answered from this one.
+      const collection = detectCollection(trimmed);
+      const trait = collection === 'fake-rares' ? describeTraitMatch(trimmed) : null;
+      if (trait) {
+        logger.debug({ query: trimmed, asset: trait.asset }, '[SmartRouter] Visual trait match');
+        return this.buildChatPlan(trimmed, roomId, null, undefined, {
+          knownFact: trait.fact,
+          card: trait.asset,
+        });
+      }
+    }
+
+    // Resolve a pronoun to the card under discussion, so a follow-up can be
+    // answered exactly rather than sent to retrieval without a subject.
+    let lookupText = trimmed;
+    if (this.usesPronounForCard(trimmed) && !this.detectMentionedCard(trimmed)) {
+      const subject = this.lastMentionedCard(roomId);
+      if (subject) {
+        lookupText = `${trimmed} ${subject}`;
+        logger.debug({ query: trimmed, subject }, '[SmartRouter] Resolved pronoun to the card in play');
+      }
+    }
+
+    const structured = answerCardQuery(lookupText);
+    if (structured) {
+      logger.debug({ kind: structured.kind }, '[SmartRouter] Structured card query');
+      return this.buildChatPlan(trimmed, roomId, null, undefined, {
+        knownFact: structured.fact,
+        card: structured.asset,
+      });
+    }
+
     let mentionedCard = this.detectMentionedCard(trimmed);
-    let pepedawnUsage: 'BOT_CHAT' | 'CARD_INTENT' | 'BOTH' | null = null;
-    const looksLikeDescriptor = this.looksLikeCardDescriptor(trimmed);
     if (!trimmed) {
       return {
         kind: 'NORESPONSE',
@@ -912,25 +907,17 @@ export class SmartRouterService extends Service {
     // - "what is pepedawn's poem?" → CARD_INTENT → keep "pepedawn" in RAG query (we want card facts)
     let queryForRetrieval = trimmed;
     
-    if (mentionedCard === 'PEPEDAWN') {
-      const usage = await this.classifyPepedawnUsage(roomId, trimmed);
-      pepedawnUsage = usage;
-      if (usage === 'BOT_CHAT') {
-        logger.debug(
-          { reason: 'pepedawn_bot_chat', query: trimmed },
-          '[SmartRouter] Suppressing named-card override for PEPEDAWN (bot conversation)'
-        );
-        mentionedCard = null;
-        // Strip PEPEDAWN from query for RAG search when it's conversational
-        // This prevents PEPEDAWN from polluting the search results when user is just addressing the bot
-        queryForRetrieval = this.stripPepedawnFromQuery(trimmed);
-        logger.debug(
-          { original: trimmed, cleaned: queryForRetrieval },
-          '[SmartRouter] Stripped PEPEDAWN from query for RAG search'
-        );
-      }
-      // If usage === 'CARD_INTENT' or 'BOTH', we keep mentionedCard and don't strip PEPEDAWN
-      // This ensures queries like "what is pepedawn's poem?" search for PEPEDAWN card facts
+    // "pepedawn" is both the bot's name and a card. The mention and reply flags
+    // already say which is meant, so this no longer costs an extra model call:
+    // addressed conversationally -> strip it from the retrieval query; asked
+    // about as a card -> keep it.
+    if (mentionedCard === 'PEPEDAWN' && addressedConversationally) {
+      mentionedCard = null;
+      queryForRetrieval = this.stripPepedawnFromQuery(trimmed);
+      logger.debug(
+        { original: trimmed, cleaned: queryForRetrieval },
+        '[SmartRouter] PEPEDAWN used as the bot name; stripped from retrieval query'
+      );
     }
 
     if (mentionedCard) {
@@ -953,25 +940,6 @@ export class SmartRouterService extends Service {
         });
     }
 
-    // If the classifier chose NORESPONSE but the query clearly looks like a
-    // card descriptor ("what is the coldest af pepe", etc.), override to FACTS
-    // so we can still run card discovery / facts instead of going silent.
-    if (looksLikeDescriptor && intent === 'NORESPONSE') {
-      logger.debug(
-        {
-          reason: 'descriptor_override_from_noreply',
-          query: trimmed,
-        },
-        '[SmartRouter] Overriding NORESPONSE to FACTS for card descriptor-like query'
-      );
-      intent = 'FACTS';
-      classifierRaw =
-        classifierRaw ||
-        JSON.stringify({
-          intent: 'FACTS',
-          reason: 'descriptor_override_from_noreply',
-        });
-    }
 
     if (intent === 'NORESPONSE') {
       return {
@@ -996,15 +964,12 @@ export class SmartRouterService extends Service {
       ? this.queryExplicitlyNamesCard(trimmed, topCardAsset)
       : false;
 
-    // If retrieval surfaced PEPEDAWN as the top card but the disambiguator
-    // judged this as bot chat, do NOT treat it as a named-card descriptor.
-    if (topCardAsset === 'PEPEDAWN' && pepedawnUsage === 'BOT_CHAT' && namesTopCard) {
+    // Retrieval surfacing PEPEDAWN as top card does not make it a named card
+    // when the user was simply addressing the bot.
+    if (topCardAsset === 'PEPEDAWN' && addressedConversationally && namesTopCard) {
       logger.debug(
-        {
-          reason: 'pepedawn_bot_chat_suppress_descriptor',
-          query: trimmed,
-        },
-        '[SmartRouter] Suppressing descriptor-based FACTS override for PEPEDAWN (bot conversation)'
+        { reason: 'pepedawn_is_the_bot_here', query: trimmed },
+        '[SmartRouter] PEPEDAWN treated as the bot, not a named card'
       );
       namesTopCard = false;
     }
@@ -1042,37 +1007,8 @@ export class SmartRouterService extends Service {
       logger.info('[SmartRouter] Retrieval skipped (intent does not require evidence)');
     }
 
-    // Skip card discovery when a card is explicitly mentioned.
-    // When a card is mentioned, we want to fetch facts about that specific card,
-    // not discover/recommend other cards.
-    if (options?.forceCardFacts && !mentionedCard) {
-      const plan = await this.buildCardRecommendPlan(
-        trimmed,
-        roomId,
-        retrieval,
-        classifierRaw
-      );
-      if (plan) {
-        return plan;
-      }
-      logger.warn('[SmartRouter] Card recommendation plan unavailable, falling back to standard FACTS plan.');
-    }
 
     if (intent === 'FACTS') {
-      // Skip card descriptor check if a card is explicitly mentioned.
-      // Card descriptors are for discovery queries ("what is the sexiest card"),
-      // not for queries about a specific card's attributes ("what is pepedawn's poem").
-      if (!mentionedCard && this.looksLikeCardDescriptor(trimmed)) {
-        const cardPlan = await this.buildCardRecommendPlan(
-          trimmed,
-          roomId,
-          retrieval,
-          classifierRaw
-        );
-        if (cardPlan) {
-          return cardPlan;
-        }
-      }
       // Skip fast path and card discovery when a card is explicitly mentioned.
       // When a card is mentioned, we want to fetch facts about that specific card,
       // not discover/recommend other cards.
@@ -1100,17 +1036,18 @@ export class SmartRouterService extends Service {
           );
         }
       }
-      // When a card is explicitly mentioned, don't use forceCardFacts (which triggers card discovery).
       // We want normal retrieval to fetch facts about the mentioned card from memories/wiki.
       // Use cleaned query (with PEPEDAWN stripped if bot chat) for plan building
-      return this.buildFactsPlan(queryForRetrieval, roomId, retrieval, classifierRaw, {
-        forceCardFacts: mentionedCard ? false : (options?.forceCardFacts || namesTopCard),
-      });
+      return this.buildFactsPlan(queryForRetrieval, roomId, retrieval, classifierRaw);
     }
 
     if (intent === 'LORE') {
       // Use cleaned query (with PEPEDAWN stripped if bot chat) for plan building
-      return this.buildLorePlan(queryForRetrieval, roomId, retrieval, classifierRaw);
+      // LORE was 104 of 13,610 decisions (0.8%) yet carried its own weights,
+      // prompt and composer, and drove 69% of total LLM spend. The FACTS path
+      // now writes as a collector rather than a reference entry, so it tells
+      // the story without a second stack behind it.
+      return this.buildFactsPlan(queryForRetrieval, roomId, retrieval, classifierRaw);
     }
 
     // Intent must be CHAT at this point

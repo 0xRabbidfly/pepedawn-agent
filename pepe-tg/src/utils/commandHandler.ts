@@ -6,6 +6,7 @@
  */
 
 import { logger, type IAgentRuntime, type Memory } from '@elizaos/core';
+import { runWithAction } from './actionContext';
 
 export interface Action {
   validate?: (runtime: IAgentRuntime, message: Memory) => Promise<boolean>;
@@ -39,7 +40,7 @@ export async function executeCommand(
   commandName: string
 ): Promise<boolean> {
   logger.debug(`[CommandHandler] Executing ${commandName}`);
-  
+
   // Prepare callback
   const actionCallback = typeof params.callback === 'function' ? params.callback : null;
   
@@ -54,19 +55,24 @@ export async function executeCommand(
     logger.warn(`[CommandHandler] ${commandName} missing validate or handler`);
     return false;
   }
-  
+
   try {
     const isValid = await action.validate(params.runtime, params.message);
-    
+
     if (isValid) {
-      await action.handler(
-        params.runtime,
-        params.message,
-        params.state,
-        {},
-        actionCallback ?? undefined
+      // Attribute every model call made inside the handler to this command,
+      // so /fc can separate an explicit /fl from an auto-routed lore query.
+      await runWithAction(commandName, () =>
+        action.handler!(
+          params.runtime,
+          params.message,
+          params.state,
+          {},
+          actionCallback ?? undefined
+        )
       );
-      
+
+
       // Mark as handled to prevent Bootstrap processing
       try {
         params.message.metadata = params.message.metadata || {};
@@ -74,16 +80,48 @@ export async function executeCommand(
       } catch (err) {
         logger.debug(`[CommandHandler] Failed to mark as handled: ${err}`);
       }
-      
+
       logger.debug(`[CommandHandler] ${commandName} completed successfully`);
+      recordCommandUsage(params, commandName, true);
       return true;
     } else {
       logger.debug(`[CommandHandler] ${commandName} validation failed`);
+      recordCommandUsage(params, commandName, false);
       return false;
     }
   } catch (err) {
     logger.error(`[CommandHandler] ${commandName} execution error:`, err);
+    recordCommandUsage(params, commandName, false);
     return false;
+  }
+}
+
+/**
+ * Record a command invocation to telemetry.
+ *
+ * Fire-and-forget: telemetry must never break or delay a command response.
+ */
+function recordCommandUsage(
+  params: CommandHandlerParams,
+  commandName: string,
+  success: boolean
+): void {
+  try {
+    const telemetry = (params.runtime as any)?.getService?.('telemetry');
+    if (!telemetry?.logCommandUsage) return;
+
+    void telemetry
+      .logCommandUsage({
+        timestamp: new Date().toISOString(),
+        command: commandName,
+        success,
+        roomId: params.message?.roomId,
+        entityId: params.message?.entityId,
+        messageId: params.message?.id,
+      })
+      .catch(() => {});
+  } catch {
+    // Telemetry is best-effort only.
   }
 }
 

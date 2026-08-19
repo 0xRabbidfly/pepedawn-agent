@@ -390,7 +390,16 @@ export async function searchKnowledgeWithExpansion(
     // - Legacy raw TG JSON markers (from/date/etc)
     // - New session chunks marked with [TELEGRAM_SESSION:...]
     const telegramSessionMarker = text.startsWith('[TELEGRAM_SESSION:');
-    const contentLooksTelegram = !!(fromMatch || fromIdMatch || dateMatch || telegramSessionMarker);
+    // Only the FIRST chunk of a session carries the marker. Continuation chunks
+    // begin "Messages:\n- <id> | <name>: ..." and were falling through to the
+    // wiki branch - 4,344 of them, measured 2026-08-18, drawing wiki's boost as
+    // though they were authoritative. That is how chat chatter ("reportedly
+    // trading around 50 XCP") reached factual answers.
+    const telegramTranscriptShape =
+      /^\s*-\s+\d+\s*\|\s*[^:\n]{1,60}:/m.test(text) || /^Messages:\s*$/m.test(text);
+    const contentLooksTelegram = !!(
+      fromMatch || fromIdMatch || dateMatch || telegramSessionMarker || telegramTranscriptShape
+    );
 
     // Determine source type
     if (metadata?.blockType && metadata?.asset) {
@@ -573,8 +582,15 @@ export async function searchKnowledgeWithExpansion(
   
   // Re-sort by boosted score (highest first)
   const ranked = boosted.sort((a, b) => b.score - a.score);
-  
-  return ranked;
+
+  // Drop the frozen Telegram archive. This is the shared chokepoint: the smart
+  // router filters its own candidates, but KnowledgeOrchestratorService calls
+  // this function directly, so filtering only in the router left the FACTS path
+  // still quoting 2021-2025 chat ("It was reportedly trading around 50 XCP").
+  // Set RAG_INCLUDE_TELEGRAM=true to restore the old behaviour for comparison.
+  return process.env.RAG_INCLUDE_TELEGRAM === 'true'
+    ? ranked
+    : ranked.filter((p) => p.sourceType !== 'telegram');
 }
 
 /**

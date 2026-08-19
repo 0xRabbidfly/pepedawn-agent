@@ -7,10 +7,12 @@
   },
   "top_k_per_source": 5,
   "match_thresholds": {
-    "card_data": 0.35,
-    "memories": 0.25,
-    "wiki": 0.25,
-    "telegram": 0.3
+    "card_data": 0.45,
+    "memories": 0.45,
+    "wiki": 0.45,
+    "telegram": 0.45,
+    "memory": 0.45,
+    "unknown": 0.45
   },
   "min_confidence_for_facts_or_lore": 0.6,
   "max_router_tokens": 256,
@@ -25,4 +27,3 @@
     "percentage": 100
   }
 }
-

@@ -75,7 +75,7 @@ export const fakeRememberCommand: Action = {
 
       if (result.success && !result.ignoredReason) {
         // Memory stored successfully
-        const successMsg = '💾 Memory stored! Access it anytime with `/fl`\n\n' +
+        const successMsg = '💾 Memory stored! Just ask me about the card any time.\n\n' +
                           'Your contribution is now part of the community knowledge base 🐸✨';
         
         if (callback) {

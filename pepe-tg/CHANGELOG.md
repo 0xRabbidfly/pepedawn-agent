@@ -5,9 +5,144 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.0.0] - 2026-08-19
+
+Conversational redesign. PEPEDAWN answers from data it actually has, says less,
+and remembers the room. See
+`telegram_docs/design_docs/PEPEDAWN_CHAT_V5.md` for the measurements behind each
+decision.
+
+### Removed — BREAKING
+
+- **Commands `/fl`, `/fv`, `/ft`, `/dawn`, `/educate`** and everything that
+  existed to warn about them. All had zero recorded use in the trailing quarter;
+  lore, visual description and card questions are answered in conversation now.
+- **Card discovery.** 546 router decisions, 60% of them not questions at all
+  ("GM fakes...", "Woow BREAKUP is a wicked card!"). Genuine descriptor searches
+  amounted to roughly two examples in 9.5 months.
+- **ElizaOS bootstrap handoff.** Served 2.9% of conversations and was the sole
+  reason the `__handledByCustom` sentinel was threaded through three files. The
+  router now owns the decision end to end; anything it declines is silence.
+- **The engagement-score filter.** It computed suppression, ran the entire router
+  anyway, then applied the decision afterwards. Rate control is now the cadence
+  governor, enforced in code.
+- **LORE as a separate mode.** 0.8% of decisions, 69% of total LLM spend.
+- **The PEPEDAWN disambiguator** — a model round-trip to decide whether
+  "pepedawn" meant the bot or the card; the mention and reply flags already say.
+- **The Telegram archive from all RAG.** Frozen at 2025-10-11, 22% of it
+  misclassified as authoritative wiki, and its strongest hits were form-matches
+  rather than answers. Set `RAG_INCLUDE_TELEGRAM=true` to compare.
+- `visionAnalyzer`, `visualEmbeddings`, `embeddingsDb` and the 18MB
+  `card-embeddings.json`, all reachable only from the removed commands.
+
+Together ~2,355 of 11,483 LLM calls no longer happen.
+
+### Added
+
+- **Cadence governor** (`src/conversation/`) — share of voice, a ban on
+  consecutive turns, a minimum gap and unaddressed backoff, with a full
+  exemption when the bot is addressed. Replayed against 20,742 production
+  events: worst 10-minute burst **67 → 10**, replies less than 60s apart
+  **43.6% → 2.4%**.
+- **Room temperature and a register ladder** so a wall of lore is structurally
+  impossible while the room is bantering.
+- **Exact card lookups** (`cardQueries.ts`) — artist, issuance, supply, series,
+  an artist's largest or smallest card. The fact is produced by code; the model
+  only wraps it.
+- **Visual trait search** (`cardTraits.ts`) — "most red", "sexiest",
+  "most psychedelic" answered from what the /fv pass recorded, via a 133KB index
+  built by `scripts/build-card-traits.ts`.
+- **Person-linked social memory** — episodes, highlights, quotes and reactions,
+  scored by `similarity × decay × participantBoost` so a line from someone in
+  the room outranks a better one from someone absent.
+- **Persistent room history**, surviving the nightly 02:00 restart, feeding the
+  classifier, CHAT and FACTS alike.
+- **Follow-up resolution**: "who made it?" resolves to the card in play.
+- **Card images alongside answers** — any reply about a card now shows it.
+- `V5_SHADOW`, `V5_ENFORCE`, `CHAT_MODEL`, `RAG_INCLUDE_TELEGRAM`,
+  `SHOW_SOURCES`; `scripts/run-testbot.sh`, `scripts/replay-cadence.ts`.
+
+### Changed
+
+- **Models → `gpt-5.6-luna`.** Outperforms the previous frontier tier at roughly
+  a twelfth the input cost of the `gpt-4o` used for lore.
+- Retrieval relevance floor raised to **0.45** across every source; measured mean
+  similarity for chat retrieval was 0.34, i.e. mostly noise.
+- CHAT grounds on card data, wiki and memories rather than old chat logs.
+- Taste questions get an owned opinion or a randomly drawn card, never a
+  justification built from supply numbers.
+- `/fr` repositioned as the artist lore channel and restored to `/help`.
+
+### Fixed
+
+- `TelemetryService` used `logger` 17 times without importing it.
+- `modelGateway` sent a `reasoning_effort` value the gpt-5.6 family rejects,
+  which would have 400'd every call.
+- Card answers echoed stub memories instead of the card manifest.
+- Artist matching hit substrings — an artist named "RC" inside "sca**rc**est".
+- Every card pool was the Fake Rares index, so a Fake Commons question was
+  answered with a Fake Rare.
+- `RoomHistory` lost turns when appends overlapped.
+- Cadence could silence safety replies; it now sits below the content filters.
+
 ## [Unreleased]
 
 ### Added
+- **v5 conversation core** (`src/conversation/`) — plain TypeScript, no ElizaOS imports
+  - Register ladder (`SILENT`→`REACT`→`BANTER`→`ANSWER`→`DEEP`) separating *how much to say*
+    from *what to look up*; retrieval is structurally impossible below `ANSWER`
+  - Room temperature: caps register from message rate, terseness, participant count and
+    question density. No LLM call
+  - **Cadence governor**: code-enforced restraint — share of voice, consecutive-turn ban,
+    minimum gap, unaddressed backoff, with a full exemption when the bot is addressed
+  - Persistent room history, fixing the amnesia caused by the nightly 02:00 PM2 restart
+- **Shadow mode** (`V5_SHADOW=true`) — observes live traffic and records what v5 *would*
+  decide, without sending. Output in `src/data/shadow-logs.jsonl`
+- `scripts/replay-cadence.ts` — replays the governor against production telemetry
+- `TelemetryService.logCommandUsage()` → `command-logs.jsonl`, giving durable per-command
+  data (PM2 logs rotate and left multi-month gaps)
+- `CLAUDE.md` and `docs/TESTING_WITH_TEST_BOT.md`
+
+### Changed
+- **Deprecated `/dawn`, `/fl`, `/ft`, `/fv`, `/educate`** — zero recorded use in the
+  trailing quarter. They still work and emit a notice naming their replacement; removable
+  after 2026-11-18. Registry with the supporting usage data in
+  `src/config/deprecatedCommands.ts`
+- `/help` no longer lists deprecated commands and points at plain conversation
+- Direct messages now count as addressing the bot, so group cadence rules do not apply
+  in a 1:1 chat
+
+### Fixed
+- **`/fc` under-reported spend and had a breakdown that could never render.**
+  Embedding calls were skipped by the runtime telemetry patch with a comment
+  claiming they were "tracked separately" — nothing tracked them, and the
+  embedding models were absent from `MODEL_PRICING`, so every total omitted
+  them. They are now logged under a distinct `Embeddings` type, billed on input
+  only, and priced for `text-embedding-3-{small,large}` and `ada-002`.
+  Separately, `TokenLog.actionName` was aggregated into a **By Action** section
+  that no caller ever populated. Model calls now inherit an ambient action label
+  (`src/utils/actionContext.ts`, `AsyncLocalStorage`) set by `executeCommand()`
+  and around the smart-router block, so the report distinguishes an explicit
+  `/fl` from the same lore retrieval reached by auto-routing — the question
+  `src/config/deprecatedCommands.ts` exists to answer. Rows predating this
+  bucket as `(unattributed)` so the section still sums to the reported total
+- `TelemetryService` bound its five JSONL paths at import time from
+  `process.cwd()`, so a test could only redirect them by winning the import
+  race — and lost it, appending fixtures to the production cost log. Paths now
+  resolve per call and honour `TELEMETRY_DATA_DIR`
+- `/fc` matched any command starting with those letters (`/fcarousel` was swallowed and
+  answered nothing); the pattern is now anchored like every other command, and its
+  dispatch branch no longer hides the always-handled behaviour behind an
+  `if (executed || !executed)` tautology
+- `TelemetryService` used `logger` 17 times without importing it — every call would have
+  thrown at runtime. Repo typecheck errors dropped 61 → 46
+- `RoomHistory` lost turns when appends overlapped; appends are now serialized per room
+  and the read/append pair is atomic
+- Removed the dead `educateNewcomerAction` import — never registered, unreachable
+
+### Notes
+- Measured against 20,742 production events: worst 10-minute burst **67 → 10**, replies
+  less than 60s apart **43.6% → 2.4%**, share of traffic 34.4% → 21.7%
 - **Card Lore Embedding Pipeline**
   - New scripts (`scripts/fv-crawl-sample.ts`, `fv-crawl-all.ts`, `fv-embed-card-facts.ts`, `fv-merge-card-facts.ts`) to crawl, embed, and consolidate Fake Rare lore.
   - `scripts/import-card-visual-facts.ts` and `types/cardVisualFacts.ts` to normalize visual lore facts.
