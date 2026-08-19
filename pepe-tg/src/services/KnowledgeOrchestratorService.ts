@@ -509,8 +509,7 @@ export class KnowledgeOrchestratorService extends Service {
     }
 
     // /fl flow is always LORE - skip all FACTS logic when mode is explicitly LORE
-    const isLoreMode = options?.mode === 'LORE';
-    const queryType = isLoreMode ? 'LORE' : (options?.mode || classifyQuery(query));
+    const queryType = options?.mode || classifyQuery(query);
     
     this.logStep(3, 'select_passages', {
       mode: queryType,
@@ -540,7 +539,7 @@ export class KnowledgeOrchestratorService extends Service {
     
     let diversePassages: RetrievedPassage[];
     
-    if (isLoreMode || queryType !== 'FACTS') {
+    if (queryType !== 'FACTS') {
       // LORE mode: source diversity + MMR
       const bySource: Record<string, RetrievedPassage[]> = {
         'memory': [], 'wiki': [], 'telegram': [], 'card-fact': [], 'unknown': [],
@@ -607,7 +606,7 @@ export class KnowledgeOrchestratorService extends Service {
     let clusterCount = 0;
     let hasWikiOrMemory = false;
     
-    if (isLoreMode || queryType !== 'FACTS') {
+    if (queryType !== 'FACTS') {
       // LORE mode: clustering and storytelling
       const cardMemories = diversePassages.filter(p => 
         p.sourceType === 'memory' && p.sourceRef?.startsWith('card:')
@@ -709,7 +708,7 @@ export class KnowledgeOrchestratorService extends Service {
     const wordCount = (story || '').trim().split(/\s+/).filter(Boolean).length;
     if (!story || story.trim().length === 0 || wordCount < 4) {
       const take = (arr: RetrievedPassage[], n: number) => arr.slice(0, Math.max(0, n));
-      const fallbackSet = (isLoreMode || queryType !== 'FACTS')
+      const fallbackSet = (queryType !== 'FACTS')
         ? take(diversePassages, 3)
         : (() => {
             const pickFacts = diversePassages.filter(p => p.sourceType === 'wiki' || p.sourceType === 'memory');

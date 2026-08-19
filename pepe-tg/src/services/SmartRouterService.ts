@@ -520,56 +520,6 @@ export class SmartRouterService extends Service {
   }
 
 
-  private async buildLorePlan(
-    userText: string,
-    roomId: string,
-    retrieval: RetrieveCandidatesResult | null,
-    classifierRaw?: string
-  ): Promise<SmartRoutingPlan> {
-    const knowledge = this.runtime.getService(
-      KnowledgeOrchestratorService.serviceType
-    ) as KnowledgeOrchestratorService | undefined;
-
-    if (!knowledge) {
-      logger.error('[SmartRouter] Knowledge orchestrator unavailable for LORE plan.');
-      return {
-        kind: 'NORESPONSE',
-        intent: 'NORESPONSE',
-        reason: 'knowledge_unavailable',
-        retrieval,
-        emoji: this.pickEmoji(userText),
-        metadata: { classifierRaw },
-      };
-    }
-
-    let preferCardFacts = false;
-    if (retrieval) {
-      const counts = retrieval.metrics.countsBySource;
-      const memoryAndWiki = (counts.memory ?? 0) + (counts.wiki ?? 0);
-      const telegram = counts.telegram ?? 0;
-      if (memoryAndWiki === 0 && telegram === 0) {
-        preferCardFacts = true;
-      }
-    }
-
-      const result = await knowledge.retrieveKnowledge(userText, roomId, {
-      mode: 'LORE',
-        includeMetrics: true,
-    });
-
-    const story = result.story?.trim() || 'Still collecting lore on that—want to drop more alpha? 🐸';
-    const sources = result.sourcesLine || '';
-    return {
-      kind: 'LORE',
-      intent: 'LORE',
-      reason: 'classifier_lore',
-      retrieval,
-      selectedCandidates: this.selectTopCandidates(retrieval, 3),
-      story,
-      sources,
-      metadata: { classifierRaw },
-    };
-  }
 
   /**
    * Grounding facts for conversation.
@@ -991,7 +941,11 @@ Say briefly why it is worth a look — something true about the art, the artist 
 
     if (intent === 'LORE') {
       // Use cleaned query (with PEPEDAWN stripped if bot chat) for plan building
-      return this.buildLorePlan(queryForRetrieval, roomId, retrieval, classifierRaw);
+      // LORE was 104 of 13,610 decisions (0.8%) yet carried its own weights,
+      // prompt and composer, and drove 69% of total LLM spend. The FACTS path
+      // now writes as a collector rather than a reference entry, so it tells
+      // the story without a second stack behind it.
+      return this.buildFactsPlan(queryForRetrieval, roomId, retrieval, classifierRaw);
     }
 
     // Intent must be CHAT at this point
