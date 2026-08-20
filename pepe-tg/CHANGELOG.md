@@ -5,6 +5,40 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.3.4] - 2026-08-20
+
+### Fixed
+
+- The bot credited the wrong artist for a card, confidently. "pepedawn who
+  created djpepe ?" in the official channel was answered "DJPepe was created by
+  rabbidfly." DJPEPE is a Rare Pepe, series 4, by Rare Scrilla.
+
+  Two faults met. The structured lookup read the Fake Rares index alone, so
+  DJPEPE - along with every other Rare Pepe and Fake Common, two thirds of the
+  4,484 known assets - was invisible to it. And "pepedawn", typed only to
+  address the bot, was matched as a card; its artist was then handed to the
+  model as "THIS IS THE ANSWER, and it is exact", which the model duly attached
+  to the card the user had actually asked about. The router carries five
+  separate guards against its own name being read as a card, but all five sit
+  downstream of this lookup, which short-circuits ahead of them.
+
+  Card lookups now span all three collections, and name the collection when it
+  is not Fake Rares - series numbering restarts in each, so "series 4" alone is
+  not an answer. PEPEDAWN never outranks another card named in the same message,
+  and counts on its own only when the phrasing is genuinely about the card. The
+  bot-name test is now shared with the router rather than duplicated.
+
+- Assets match as whole words. Matching was a substring scan, so a card name
+  buried inside another word was read as a reference to that card - the same
+  fault already fixed for artist names, where "RC" hid inside "scarcest".
+
+### Changed
+
+- An artist's largest/smallest supply now says "(Fake Rares)". That lookup only
+  ever considered Fake Rares, and for an artist with cards in more than one
+  collection - Rare Scrilla has both - an unqualified superlative was
+  misleading.
+
 ## [5.0.0] - 2026-08-19
 
 Conversational redesign. PEPEDAWN answers from data it actually has, says less,

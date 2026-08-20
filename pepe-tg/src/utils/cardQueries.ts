@@ -12,6 +12,13 @@
  */
 
 import { FULL_CARD_INDEX, getCardInfo, type CardInfo } from '../data/fullCardIndex';
+import {
+  ALL_CARDS_MAP,
+  COLLECTION_LABEL,
+  collectionSuffix,
+  getAnyCardInfo,
+  type AnyCardInfo,
+} from '../data/allCardsIndex';
 
 export interface CardQueryAnswer {
   /** Plain statement of fact, for the model to wrap conversationally. */
@@ -22,12 +29,70 @@ export interface CardQueryAnswer {
   asset?: string;
 }
 
-/** Assets mentioned in the text, longest first so PEPEDAWN2 beats PEPEDAWN. */
-function assetsIn(text: string): CardInfo[] {
-  const upper = text.toUpperCase();
-  return FULL_CARD_INDEX.filter((c) => c.asset && upper.includes(c.asset.toUpperCase())).sort(
-    (a, b) => b.asset.length - a.asset.length
-  );
+/**
+ * Assets named in the text, longest first so PEPEDAWN2 beats PEPEDAWN.
+ *
+ * Matching is on whole words across all three collections. It used to be a
+ * substring scan of the Fake Rares index alone, which failed in both
+ * directions: a card named inside another word matched when it should not
+ * have, and every Rare Pepe and Fake Common - two thirds of the 4,484 assets -
+ * was invisible to every structured lookup.
+ *
+ * Tokenising and looking each token up is also cheaper than testing 4,484
+ * regexes per message, which is what mirroring `artistsIn` would have cost.
+ */
+function assetsIn(text: string): AnyCardInfo[] {
+  const found = new Map<string, AnyCardInfo>();
+  // Assets are Counterparty names: A-Z, digits, and '.' or '-' in the
+  // sub-asset forms ("DJPEPEBADGER.MC-PEPE-BADGER"). Four is the shortest real
+  // asset name, and a shorter token cannot be one.
+  for (const raw of text.toUpperCase().match(/[A-Z0-9][A-Z0-9.\-]{3,}/g) ?? []) {
+    // "FREEDOMKEK." at the end of a sentence, "DJPEPE," mid-list.
+    for (const token of [raw, raw.replace(/^[.\-]+|[.\-]+$/g, '')]) {
+      const card = token && ALL_CARDS_MAP[token];
+      if (card) found.set(card.asset, card);
+    }
+  }
+  return [...found.values()].sort((a, b) => b.asset.length - a.asset.length);
+}
+
+/**
+ * True when "pepedawn" in this text means the card, not the bot.
+ *
+ * PEPEDAWN is both the bot's name and one of its cards, and people address it
+ * by plain name constantly. Card-shaped phrasing either asks who made it or
+ * pairs the name with an attribute - "PEPEDAWN's supply", "who created
+ * PEPEDAWN". A bare vocative - "pepedawn who created djpepe?" - is neither.
+ *
+ * The two halves are deliberately not symmetric. A creation verb counts only
+ * when it comes *before* the name, because "pepedawn who created djpepe?" has
+ * the verb after it and is a question about another card entirely - that exact
+ * sentence made the bot answer "DJPepe was created by rabbidfly" in the
+ * official channel on 2026-08-20.
+ */
+export function pepedawnMeansTheCard(text: string): boolean {
+  if (!text) return false;
+  if (/\bpepedawn['\u2019]s\b/i.test(text)) return true;
+  const madeBefore =
+    /\b(who\s+(?:made|created|drew|did)|artist|supply|issued|issuance|series|card\s+number)\b[^.?!]*\bpepedawn\b/i;
+  const attributeAfter =
+    /\bpepedawn\b[^.?!]*\b(supply|artist|issued|issuance|series|card\s+number)\b/i;
+  return madeBefore.test(text) || attributeAfter.test(text);
+}
+
+/**
+ * The card a question is about, or undefined.
+ *
+ * PEPEDAWN never wins over another named card, and only counts on its own when
+ * the phrasing is genuinely about the card. Both guards exist because the bot's
+ * own name is in the index: the router has five separate guards for this, all
+ * of them downstream of this lookup, which short-circuits ahead of them.
+ */
+function subjectCard(text: string): AnyCardInfo | undefined {
+  const named = assetsIn(text);
+  const others = named.filter((c) => c.asset !== 'PEPEDAWN');
+  if (others.length > 0) return others[0];
+  return pepedawnMeansTheCard(text) ? named[0] : undefined;
 }
 
 function escapeRegExp(value: string): string {
@@ -66,11 +131,14 @@ function cardsByArtist(artist: string): CardInfo[] {
  *
  * Deliberately conservative — anything it cannot answer exactly falls through
  * to normal retrieval rather than guessing.
+ *
+ * `subject` is the card already under discussion, for follow-ups that lean on a
+ * pronoun ("and who made it?"). It is used only when the question itself names
+ * no card, and the caller is responsible for having resolved it.
  */
-export function answerCardQuery(text: string): CardQueryAnswer | null {
+export function answerCardQuery(text: string, subject?: string): CardQueryAnswer | null {
   const lower = text.toLowerCase();
-  const cards = assetsIn(text);
-  const card = cards[0];
+  const card = subjectCard(text) ?? (subject ? getAnyCardInfo(subject) : undefined);
   const artists = artistsIn(text);
 
   const asks = (...words: string[]) => words.some((w) => lower.includes(w));
@@ -78,28 +146,44 @@ export function answerCardQuery(text: string): CardQueryAnswer | null {
   // --- Artist of a specific card -----------------------------------------
   if (card && asks('artist', 'who made', 'who drew', 'who created', 'created by')) {
     return card.artist
-      ? { fact: `${card.asset} is by ${card.artist}.`, kind: 'artist_of_card', asset: card.asset }
+      ? {
+          fact: `${card.asset}${collectionSuffix(card)} is by ${card.artist}.`,
+          kind: 'artist_of_card',
+          asset: card.asset,
+        }
       : { fact: `${card.asset} has no artist recorded in the index.`, kind: 'artist_of_card' };
   }
 
   // --- Issuance date -------------------------------------------------------
   if (card && asks('issued', 'issuance', 'released', 'release date', 'when was', 'what year')) {
     return card.issuance
-      ? { fact: `${card.asset} was issued ${card.issuance}.`, kind: 'issuance', asset: card.asset }
+      ? {
+          fact: `${card.asset}${collectionSuffix(card)} was issued ${card.issuance}.`,
+          kind: 'issuance',
+          asset: card.asset,
+        }
       : { fact: `No issuance date is recorded for ${card.asset}.`, kind: 'issuance' };
   }
 
   // --- Supply of a specific card ------------------------------------------
   if (card && asks('supply', 'how many', 'issuance size', 'edition size')) {
     return typeof card.supply === 'number'
-      ? { fact: `${card.asset} has a supply of ${card.supply}.`, kind: 'supply_of_card', asset: card.asset }
+      ? {
+          fact: `${card.asset}${collectionSuffix(card)} has a supply of ${card.supply}.`,
+          kind: 'supply_of_card',
+          asset: card.asset,
+        }
       : { fact: `No supply is recorded for ${card.asset}.`, kind: 'supply_of_card' };
   }
 
   // --- Series / card number ------------------------------------------------
   if (card && asks('series', 'card number', 'which series')) {
+    // Series numbering restarts in each collection, so "series 4" on its own is
+    // not an answer for anything outside Fake Rares.
+    const where =
+      card.collection === 'fake-rares' ? '' : ` in ${COLLECTION_LABEL[card.collection]}`;
     return {
-      fact: `${card.asset} is series ${card.series}, card ${card.card}.`,
+      fact: `${card.asset} is series ${card.series}, card ${card.card}${where}.`,
       kind: 'series_of_card',
       asset: card.asset,
     };
@@ -124,7 +208,7 @@ export function answerCardQuery(text: string): CardQueryAnswer | null {
       );
       const label = wantsSmallest ? 'smallest' : 'largest';
       return {
-        fact: `${artist}'s ${label} supply is ${pick.asset} at ${pick.supply}.`,
+        fact: `${artist}'s ${label} supply is ${pick.asset} at ${pick.supply} (Fake Rares).`,
         kind: 'artist_supply_extreme',
         asset: pick.asset,
       };

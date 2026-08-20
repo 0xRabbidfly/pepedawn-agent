@@ -16,7 +16,7 @@ import { describeCard, detectCollection, randomCard } from '../utils/cardFacts';
 import { inActiveExchange } from '../conversation/cadenceGovernor';
 import { getCardInfo } from '../data/fullCardIndex';
 import { describeTraitMatch } from '../utils/cardTraits';
-import { answerCardQuery } from '../utils/cardQueries';
+import { answerCardQuery, pepedawnMeansTheCard } from '../utils/cardQueries';
 import { recallForPrompt, recordTurn, recentTurns } from '../conversation/shadow';
 import { isInFullIndex } from '../data/fullCardIndex';
 
@@ -573,13 +573,6 @@ export class SmartRouterService extends Service {
   }
 
   /**
-   * True when a turn used "pepedawn" to mean the card rather than the bot.
-   *
-   * Card-shaped phrasing is possessive or attribute-seeking - "PEPEDAWN's
-   * supply", "who made PEPEDAWN" - whereas addressing the bot reads as "hey
-   * pepedawn" or "pepedawn what do you think".
-   */
-  /**
    * True when someone is talking TO the bot: by @mention, reply, DM, or simply
    * by using its name in a way that is not about the card.
    */
@@ -599,13 +592,20 @@ export class SmartRouterService extends Service {
     );
   }
 
+  /**
+   * True when a turn used "pepedawn" to mean the card rather than the bot.
+   *
+   * Card-shaped phrasing is possessive or attribute-seeking - "PEPEDAWN's
+   * supply", "who made PEPEDAWN" - whereas addressing the bot reads as "hey
+   * pepedawn" or "pepedawn what do you think".
+   *
+   * The test itself lives in `cardQueries`, because the structured lookup runs
+   * ahead of every guard in this class and needs the same answer. Only the
+   * "the bot saying its own name is never a card reference" rule is local.
+   */
   private pepedawnMeansTheCard(turn: { role: string; text: string }): boolean {
     if (turn.role === 'bot') return false;
-    const text = turn.text || '';
-    if (/\bpepedawn['’]s\b/i.test(text)) return true;
-    return /\b(who\s+made|artist|supply|issued|issuance|series|card\s+number)\b[^.?!]*\bpepedawn\b/i.test(
-      text
-    ) || /\bpepedawn\b[^.?!]*\b(supply|artist|issued|issuance|series|card\s+number)\b/i.test(text);
+    return pepedawnMeansTheCard(turn.text || '');
   }
 
   /** True when the message leans on a pronoun instead of naming a card. */
@@ -937,16 +937,20 @@ Say briefly why it is worth a look — something true about the art, the artist 
 
     // Resolve a pronoun to the card under discussion, so a follow-up can be
     // answered exactly rather than sent to retrieval without a subject.
-    let lookupText = trimmed;
+    //
+    // The subject is passed alongside the text, not appended to it. Appending
+    // meant the lookup had to re-parse a sentence nobody wrote - "who made it?
+    // PEPEDAWN" - and `lastMentionedCard` has already applied the bot-name
+    // guard by the time we get here.
+    let subject: string | undefined;
     if (this.usesPronounForCard(trimmed) && !this.detectMentionedCard(trimmed)) {
-      const subject = this.lastMentionedCard(roomId);
+      subject = this.lastMentionedCard(roomId);
       if (subject) {
-        lookupText = `${trimmed} ${subject}`;
         logger.debug({ query: trimmed, subject }, '[SmartRouter] Resolved pronoun to the card in play');
       }
     }
 
-    const structured = answerCardQuery(lookupText);
+    const structured = answerCardQuery(trimmed, subject);
     if (structured) {
       logger.debug({ kind: structured.kind }, '[SmartRouter] Structured card query');
       return this.buildChatPlan(trimmed, roomId, null, undefined, {

@@ -86,6 +86,77 @@ describe('phrasing and matching robustness', () => {
   });
 });
 
+describe('production regression 2026-08-20: "pepedawn who created djpepe ?"', () => {
+  /**
+   * Answered "DJPepe was created by rabbidfly." in the official channel.
+   *
+   * Two faults met: the lookup scanned the Fake Rares index only, so DJPEPE - a
+   * Rare Pepe by Rare Scrilla - was invisible; and "pepedawn", typed only to
+   * address the bot, was matched as a card and its artist handed to the model
+   * as "THIS IS THE ANSWER, and it is exact".
+   */
+  it('answers about the card asked for, not the bot being addressed', () => {
+    const a = answerCardQuery('pepedawn who created djpepe ?');
+    expect(a?.asset).toBe('DJPEPE');
+    expect(a?.fact).toContain('Rare Scrilla');
+    expect(a?.fact).not.toContain('rabbidfly');
+  });
+
+  it('never lets PEPEDAWN outrank another card named in the same message', () => {
+    // The old tie-break was name length, so the bot's own name won at 8
+    // characters against DJPEPE at 6 - even had DJPEPE been in the index.
+    const a = answerCardQuery('pepedawn what is the supply of freedomkek?');
+    expect(a?.asset).toBe('FREEDOMKEK');
+    expect(a?.fact).toContain('298');
+  });
+
+  it('still answers when PEPEDAWN genuinely is the subject', () => {
+    expect(answerCardQuery('who made PEPEDAWN?')?.fact).toContain('rabbidfly');
+    expect(answerCardQuery('who created pepedawn?')?.fact).toContain('rabbidfly');
+    expect(answerCardQuery("what is PEPEDAWN's supply?")?.fact).toContain('133');
+  });
+
+  it('treats a bare vocative as no card question at all', () => {
+    expect(answerCardQuery('hey pepedawn how are you')).toBeNull();
+    expect(answerCardQuery('pepedawn what do you think about life')).toBeNull();
+  });
+});
+
+describe('all three collections are reachable', () => {
+  it('answers about a Rare Pepe and names the collection', () => {
+    const a = answerCardQuery('who is the artist for DJPEPE?');
+    expect(a?.fact).toBe('DJPEPE (Rare Pepes) is by Rare Scrilla.');
+  });
+
+  it('answers about a Fake Common', () => {
+    const a = answerCardQuery('who made MASTERDJPEPE?');
+    expect(a?.fact).toContain('Fake Commons');
+    expect(a?.fact).toContain('Crimson Rider');
+  });
+
+  it('leaves Fake Rares unmarked, since that is the default here', () => {
+    expect(answerCardQuery('who made FREEDOMKEK?')?.fact).toBe('FREEDOMKEK is by Rare Scrilla.');
+  });
+
+  it('qualifies a series number, which restarts per collection', () => {
+    expect(answerCardQuery('what series is DJPEPE?')?.fact).toContain('in Rare Pepes');
+    expect(answerCardQuery('what series is FAKEASF?')?.fact).not.toContain(' in ');
+  });
+});
+
+describe('assets match as whole words', () => {
+  it('does not match a card name buried inside another word', () => {
+    // Substring matching pulled a card out of any word that contained one.
+    expect(answerCardQuery('who made this thing')).toBeNull();
+    expect(answerCardQuery('what is the supply of hopium')).toBeNull();
+  });
+
+  it('still matches around ordinary punctuation', () => {
+    expect(answerCardQuery('who made freedomkek.')?.asset).toBe('FREEDOMKEK');
+    expect(answerCardQuery('the artist for "FREEDOMKEK", anyone?')?.asset).toBe('FREEDOMKEK');
+  });
+});
+
 describe('routing: structured queries reach the lookup', () => {
   const makeRouter = async () => {
     const { SmartRouterService } = await import('../../services/SmartRouterService');
@@ -113,6 +184,16 @@ describe('routing: structured queries reach the lookup', () => {
     );
     expect(plan.knownFact).toContain('PEPERMINE');
     expect(plan.knownFact).toContain('150');
+  });
+
+  it('routes the djpepe question to the right card end to end', async () => {
+    // The whole path, not just the lookup: planRouting hands knownFact to the
+    // model as an exact answer, so a wrong subject here becomes a confident
+    // false statement in the channel.
+    const router = await makeRouter();
+    const plan = await router.planRouting('pepedawn who created djpepe ?', 'room');
+    expect(plan.knownFact).toContain('Rare Scrilla');
+    expect(plan.knownFact).not.toContain('rabbidfly');
   });
 
   it('routes other exact questions to the lookup too', async () => {
