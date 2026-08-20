@@ -241,6 +241,29 @@ describe('matchForConversation', () => {
     mergePosts([post({ id: 'c', cards: ['FAKEHAIRPEP'], usedAt: NOW })], NOW);
     expect(matchForConversation('tell me about FAKEHAIRPEP', { now: NOW })).toBeNull();
   });
+
+  it('does not offer a post about a different card', () => {
+    // Production: "who created DJPEPE?" surfaced a lore post about PEPONG,
+    // matched on "created" against "creator" - one stemmed term, distinctive
+    // only because the store is small. When both sides name cards, they have
+    // to be the same cards.
+    const posts = [
+      {
+        id: 'pepong',
+        author: 'subterranean_1',
+        text: "Today's Rare Pepe Lore Lesson is Series 12, Card 35 - PEPONG. The creator is unknown.",
+        postedAt: NOW - 60_000,
+        harvestedAt: NOW - 60_000,
+        query: 'phrase',
+        cards: ['PEPONG'],
+        interest: 1,
+      },
+    ] as any;
+
+    expect(matchForConversation('who created DJPEPE?', { now: NOW, posts })).toBeNull();
+    // The same post is still the right answer when PEPONG is what was asked about.
+    expect(matchForConversation('who created PEPONG?', { now: NOW, posts })?.id).toBe('pepong');
+  });
 });
 
 // ---------------------------------------------------------------- rendering

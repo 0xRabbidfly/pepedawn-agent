@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'bun:test';
 import { getCardInfo } from '../../data/fullCardIndex';
+import { getAnyCardInfo } from '../../data/allCardsIndex';
 import { answerCardQuery } from '../../utils/cardQueries';
 
 /**
@@ -37,5 +38,39 @@ describe('card shown alongside an answer', () => {
   it('does not mistake ordinary shouting for a card', () => {
     expect(firstKnownAssetIn('GM EVERYONE HOW ARE WE')).toBeUndefined();
     expect(firstKnownAssetIn('no cards here')).toBeUndefined();
+  });
+});
+
+describe('the card is shown from its own collection', () => {
+  /**
+   * Production, 2026-08-20 17:26. "who created DJPEPE ?" was answered
+   * correctly - "DJPEPE (Rare Pepes) is by Rare Scrilla" - and then a second
+   * message told the room: "Could not find DJPEPE in the Fake Rares
+   * collection." Every automatic display went through `/f`, which only knows
+   * Fake Rares, so any card outside that collection produced an answer and a
+   * contradiction of it.
+   */
+  const commandFor = (asset: string): string | undefined => {
+    const info = getAnyCardInfo(asset);
+    if (!info) return undefined;
+    return info.collection === 'rare-pepes' ? '/p' : info.collection === 'fake-commons' ? '/c' : '/f';
+  };
+
+  it('sends a Rare Pepe to /p, not /f', () => {
+    expect(commandFor('DJPEPE')).toBe('/p');
+    expect(getCardInfo('DJPEPE')).toBeUndefined(); // not a Fake Rare, hence the bug
+  });
+
+  it('sends a Fake Common to /c and a Fake Rare to /f', () => {
+    expect(commandFor('MASTERDJPEPE')).toBe('/c');
+    expect(commandFor('FREEDOMKEK')).toBe('/f');
+    expect(commandFor('PEPEDAWN')).toBe('/f');
+  });
+
+  it('shows nothing at all for an asset in no collection', () => {
+    // A display nobody asked for must never announce a miss: the "could not
+    // find" text belongs to an explicit /f, not to a volunteered image.
+    expect(commandFor('NOTACARD')).toBeUndefined();
+    expect(commandFor('HELLAPAPELLA2')).toBeUndefined();
   });
 });

@@ -1,4 +1,11 @@
-import { type Plugin, logger, ModelType, type HandlerCallback, type Memory } from '@elizaos/core';
+import {
+  type Plugin,
+  logger,
+  ModelType,
+  type HandlerCallback,
+  type Memory,
+  type State,
+} from '@elizaos/core';
 import { fakeRaresCardAction, fakeCommonsCardAction, rarePepesCardAction, startCommand, helpCommand, fakeRememberCommand, vouchCommand, costCommand, xcpCommand } from '../actions';
 import { fakeMarketAction } from '../actions/fakeMarketAction';
 import { fakeRaresCarouselAction } from '../actions/fakeRaresCarousel';
@@ -17,6 +24,7 @@ import { CardDisplayService } from '../services/CardDisplayService';
 import { SmartRouterService, type SmartRoutingPlan } from '../services/SmartRouterService';
 import { SMART_ROUTER_CONFIG } from '../config/smartRouterConfig';
 import { FULL_CARD_INDEX, getCardInfo } from '../data/fullCardIndex';
+import { getAnyCardInfo } from '../data/allCardsIndex';
 import { startAutoRefresh } from '../utils/cardIndexRefresher';
 import { detectMessagePatterns, hasAnyCommand } from '../utils/messagePatterns';
 import { executeCommand, executeCommandAlways, type CommandHandlerParams } from '../utils/commandHandler';
@@ -295,6 +303,44 @@ function userAskedAboutCards(context: SmartRouterExecutionContext): boolean {
   return firstKnownAssetIn(text) !== undefined;
 }
 
+/**
+ * Show a card, whichever collection it belongs to.
+ *
+ * Every automatic display went through `/f`, which only knows Fake Rares. Asked
+ * "who created DJPEPE?" the bot answered correctly from the index and then, in
+ * a second message, told the room it could not find DJPEPE in the Fake Rares
+ * collection - because DJPEPE is a Rare Pepe, and `/f` is the wrong door.
+ *
+ * A card nobody asked to see is also never worth an error. An explicit `/f`
+ * that misses should say so; a display volunteered alongside an answer should
+ * simply not happen. Hence the `getAnyCardInfo` gate rather than letting the
+ * action reach its own not-found branch.
+ */
+async function displayCardFromAnyCollection(
+  runtime: IAgentRuntime,
+  message: Memory,
+  state: State | undefined,
+  asset: string,
+  deliver: HandlerCallback
+): Promise<boolean> {
+  const info = getAnyCardInfo(asset);
+  if (!info) return false;
+
+  const { action, command } =
+    info.collection === 'rare-pepes'
+      ? { action: rarePepesCardAction, command: '/p' }
+      : info.collection === 'fake-commons'
+        ? { action: fakeCommonsCardAction, command: '/c' }
+        : { action: fakeRaresCardAction, command: '/f' };
+
+  const cardMessage = {
+    ...message,
+    content: { ...message.content, text: `${command} ${info.asset}` },
+  };
+  await action.handler(runtime, cardMessage as any, state, {}, deliver);
+  return true;
+}
+
 async function showCardForAnswer(
   context: SmartRouterExecutionContext,
   planAsset: string | undefined,
@@ -317,8 +363,11 @@ async function showCardForAnswer(
     content: { ...message.content, text: `/f ${asset}` },
   };
   try {
-    await fakeRaresCardAction.handler(runtime, cardMessage as any, params.state, {}, deliver);
-    logger.info(`[SmartRouter] Showed ${asset} alongside the answer`);
+    if (await displayCardFromAnyCollection(runtime, message, params.state, asset, deliver)) {
+      logger.info(`[SmartRouter] Showed ${asset} alongside the answer`);
+    } else {
+      logger.debug({ asset }, '[SmartRouter] No card to show alongside the answer');
+    }
   } catch (error) {
     // A missing image must never swallow the answer that was already sent.
     logger.warn({ error, asset }, '[SmartRouter] Could not show card for answer');
@@ -454,21 +503,13 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
               }) as HandlerCallback
             : undefined;
 
-        const cardMessage = {
-          ...message,
-          content: {
-            ...message.content,
-            text: `/f ${candidate.card_asset}`,
-          },
-        };
-
         try {
-          await fakeRaresCardAction.handler(
+          await displayCardFromAnyCollection(
             runtime,
-            cardMessage,
+            message,
             params.state,
-            {},
-            cardCallback
+            candidate.card_asset,
+            cardCallback as HandlerCallback
           );
         } catch (error) {
           logger.error({ error }, '[SmartRouter] Fast-path card display failed');

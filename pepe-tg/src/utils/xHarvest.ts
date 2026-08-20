@@ -540,6 +540,13 @@ export function matchForConversation(
     const shared = [...(postTerms.get(p.id) ?? [])].filter((t) => userTerms.has(t));
     const hasDistinctive = shared.some(distinctive);
 
+    // A post about other cards is not a post about this one, whatever words it
+    // shares. "who created DJPEPE?" surfaced a lore post about PEPONG on the
+    // strength of "created" against "creator" - one stemmed term, distinctive
+    // only because the store is small. When the user names cards and the post
+    // names cards, they have to be the same cards.
+    if (userCards.length > 0 && p.cards.length > 0 && !cardHit) continue;
+
     if (!authorHit && !cardHit && !hasDistinctive && shared.length < minOverlap) continue;
 
     matches.push({

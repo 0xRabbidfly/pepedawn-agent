@@ -5,6 +5,31 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.4.1] - 2026-08-20
+
+### Fixed
+
+- **The bot contradicted its own answer.** "who created DJPEPE ?" was answered
+  correctly — "DJPEPE (Rare Pepes) is by Rare Scrilla" — and then, in a second
+  message, "❌ Could not find DJPEPE in the Fake Rares collection." 5.3.4 taught
+  the *lookup* about all three collections; the *display* still went through
+  `/f`, which only knows Fake Rares, so any card outside it produced an answer
+  followed by a denial of that answer.
+
+  A card is now shown by the action that owns its collection — `/p` for Rare
+  Pepes, `/c` for Fake Commons, `/f` for Fake Rares — resolved through
+  `getAnyCardInfo`. And a display nobody asked for no longer announces a miss:
+  the "could not find" text belongs to an explicit `/f`, not to an image
+  volunteered alongside an answer. Both automatic display paths go through one
+  function now instead of hardcoding `/f`.
+
+- **An unrelated tweet followed the answer.** The X reveal matched a Rare Pepe
+  lore post about PEPONG to a question about DJPEPE, on the strength of
+  "created" stemming to the same term as "creator" — one shared word, counted
+  as distinctive only because the harvest store is small. A post about other
+  cards is not a post about this one: when the user names cards and the post
+  names cards, they must now be the same cards.
+
 ## [5.4.0] - 2026-08-20
 
 Type errors and test failures both to zero. `npx tsc --noEmit` reported 37
