@@ -43,19 +43,22 @@ Mandatory upkeep, per `.specify/memory/constitution.md`:
 ## 2. Verify locally
 
 ```bash
-bun test src/__tests__/          # compare against the baseline, do not read raw
+bun test src/__tests__/          # expect 0 fail
 npx tsc --noEmit | grep -c "error TS"
 ```
 
-**Known-good baseline — do not chase these:**
+**Both are now zero, as of 5.4.0.** They used to be a baseline you compared
+against — 11 test failures and 37 type errors, all "pre-existing" — and that
+baseline hid three live bugs, including a provider whose output never reached a
+prompt. Do not let it grow back:
 
-| Check | Expected | Cause |
-|---|---|---|
-| `bun test src/__tests__/` | **11 fail** | scaffolding tests expecting `tsup.config.ts`, `dist/`, README strings |
-| `npx tsc --noEmit` | **37 errors** | pre-existing |
+| Check | Expected |
+|---|---|
+| `bun test src/__tests__/` | **0 fail** (670 pass, 7 skip) |
+| `npx tsc --noEmit` | **0 errors** |
+| `.git/hooks/pre-commit` | **0 fail** (the curated list) |
 
-A change is clean when those numbers are unchanged, not when they are zero.
-The pre-commit hook runs only the curated list and **must be 0 fail**.
+If a number is not zero, it is your change — not the baseline.
 
 ## 3. Commit and tag
 

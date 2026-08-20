@@ -180,10 +180,10 @@ The parts that bite most often:
 
 ## Conventions
 
-- `bun test src/__tests__/` — **11 failures are pre-existing** (scaffolding tests
-  expecting `tsup.config.ts`, `dist/`, README strings). Compare against master
-  before blaming your change.
-- `npx tsc --noEmit` reports ~46 errors, also pre-existing. Same rule.
+- `bun test src/__tests__/` and `npx tsc --noEmit` are both **zero** as of
+  5.4.0 (2026-08-20). They were 11 failures and 37 errors, carried as a
+  "pre-existing" baseline that turned out to be hiding three live bugs. A
+  non-zero count is now your change.
 - Commits: `feature:` / `bug:` / `data:` / `design:` / `tests:` prefixes.
 - Work on a branch; `master` is what prod pulls.
 - Automated tests are *optional* per the constitution, but verification of
