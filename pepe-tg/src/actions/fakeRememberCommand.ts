@@ -4,6 +4,8 @@ import { callTextModel } from '../utils/modelGateway';
 import {
   gateSubmission,
   buildQualityPrompt,
+  isForcedSubmission,
+  parseLoreSubmission,
   parseQualityResponse,
   type ArtistAliases,
   type Submitter,
@@ -52,7 +54,8 @@ export const fakeRememberCommand: Action = {
 
   validate: async (_runtime: IAgentRuntime, message: Memory) => {
     const text = message.content.text?.trim().toLowerCase() || '';
-    return text.startsWith('/fr');
+    // Word boundary, or "/frisbee" submits lore beginning "isbee".
+    return /^\/fr!?(?:@[a-z0-9_]+)?(?:\s|$)/.test(text);
   },
 
   handler: async (
@@ -67,9 +70,25 @@ export const fakeRememberCommand: Action = {
     const who = submitter.username || submitter.displayName || 'unknown';
     logger.info(`━━━━━ /fr ━━━━━ [${who}] ${raw.slice(0, 60)}`);
 
-    const reject = async (code: string, text: string) => {
+    const forced = isForcedSubmission(raw);
+
+    /**
+     * Rejections echo the submission back.
+     *
+     * Without it the only way to try different wording is to retype the whole
+     * thing from memory, in a chat client, on a phone. The text is already
+     * written; hand it back so it can be edited.
+     */
+    const reject = async (code: string, text: string, echo?: string) => {
       logger.info(`[/fr] rejected (${code}) from ${who}`);
-      if (callback) await callback({ text });
+      if (callback) {
+        await callback({
+          text: echo
+            ? `${text}\n\n_${echo}_\n\nEdit and resend.` +
+              (submitter.isAdmin ? ' Or force it with `/fr!`.' : '')
+            : text,
+        });
+      }
       return { success: true, text: `Rejected: ${code}` };
     };
 
@@ -91,24 +110,64 @@ export const fakeRememberCommand: Action = {
       return reject('count_failed', 'Can’t check that card right now — try again shortly.');
     }
 
-    const verdict = gateSubmission({ raw, submitter, existingForCard, existingTexts, aliases: ARTIST_ALIASES });
-    if (!verdict.ok) return reject(verdict.code!, verdict.message!);
+    const verdict = gateSubmission({
+      raw,
+      submitter,
+      existingForCard,
+      existingTexts,
+      aliases: ARTIST_ALIASES,
+      forced: forced && submitter.isAdmin,
+    });
+    if (!verdict.ok) {
+      // Echo back anything long enough to be worth editing rather than retyping.
+      const { lore } = parseLoreSubmission(raw);
+      return reject(verdict.code!, verdict.message!, lore.length >= 20 ? lore : undefined);
+    }
 
     // Model screen, last because it costs tokens and everything cheap has passed.
-    try {
-      const screen = await callTextModel(runtime, {
-        model: process.env.OPENAI_SMALL_MODEL || 'gpt-4o-mini',
-        prompt: buildQualityPrompt(card, verdict.lore!),
-        systemPrompt: 'You screen community lore submissions for a Fake Rares card archive. Be strict.',
-        maxTokens: 120,
-        source: 'Lore-Submission-Screen',
-      });
-      const quality = parseQualityResponse(screen?.text ?? '');
-      if (!quality.ok) return reject('low_quality_model', `Not stored — ${quality.reason}.`);
-    } catch (err) {
-      // If the screen is unavailable, fall through on the heuristics alone
-      // rather than blocking a legitimate artist.
-      logger.warn({ error: err }, '[/fr] quality screen unavailable, using heuristics only');
+    //
+    // Binding only for submissions that need it. The gate has already decided
+    // whether this person has authority over this card - `route: 'store'` means
+    // the credited artist or an admin - and a screen that overrules that is
+    // just a small model outvoting the person who made the thing. On
+    // 2026-08-20 it told PEPEDAWN's own artist that "the first fake rare that
+    // is both a card and an agent" was "a bare classification claim".
+    //
+    // It still runs for them, and its verdict is still logged, so the question
+    // "would the screen have blocked this?" stays answerable. It simply does
+    // not get the last word over someone who has one.
+    if (!forced) {
+      try {
+        const screen = await callTextModel(runtime, {
+          model: process.env.OPENAI_SMALL_MODEL || 'gpt-4o-mini',
+          prompt: buildQualityPrompt(card, verdict.lore!),
+          systemPrompt:
+            'You screen community lore submissions for a Fake Rares card archive. ' +
+            'Reject insults, authorship claims and invention; accept genuine contributions.',
+          maxTokens: 120,
+          source: 'Lore-Submission-Screen',
+        });
+        const quality = parseQualityResponse(screen?.text ?? '');
+        if (!quality.ok) {
+          if (verdict.route === 'store') {
+            logger.info(
+              { card, who, reason: quality.reason },
+              '[/fr] screen would have rejected, but the submitter has authority over this card'
+            );
+          } else {
+            return reject('low_quality_model', `Not stored — ${quality.reason}.`, verdict.lore);
+          }
+        }
+      } catch (err) {
+        // The screen being down must not decide policy. Artists were never
+        // blocked by it; third-party submissions still face the room, which is
+        // the real check on whether a claim is true.
+        logger.warn({ error: err }, '[/fr] quality screen unavailable, proceeding on heuristics');
+      }
+    } else if (!submitter.isAdmin) {
+      return reject('force_not_permitted', '`/fr!` is admin-only. Send it as `/fr` and it will be reviewed.');
+    } else {
+      logger.warn({ card, who, lore: verdict.lore }, '[/fr] FORCED past the quality screen by an admin');
     }
 
     // Third-party lore goes to the room rather than straight into the corpus.

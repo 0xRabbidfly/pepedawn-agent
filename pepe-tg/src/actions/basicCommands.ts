@@ -98,6 +98,7 @@ export const helpCommand: Action = {
 \`/vouch\` - See lore waiting on confirmation
 \`/vouch CODE\` - Confirm someone's lore
 _Artists' lore lands straight away. Anyone else's needs 2 vouches from regulars first._
+_Admins: \`/fr!\` stores it even if the quality screen disagrees._
 
 **Just talk to me:** 💬
 Ask about any card, its lore, what it looks like, or who made it —

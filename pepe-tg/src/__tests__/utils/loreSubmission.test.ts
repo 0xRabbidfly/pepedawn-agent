@@ -11,8 +11,10 @@ import {
   artistsForCard,
   assessLoreQuality,
   gateSubmission,
+  isForcedSubmission,
   normaliseName,
   MAX_ENTRIES_PER_CARD,
+  type Submitter,
 } from '../../utils/loreSubmission';
 import { getCardInfo } from '../../data/fullCardIndex';
 
@@ -221,5 +223,95 @@ describe('normaliseName', () => {
   it('collapses case, spacing and punctuation', () => {
     expect(normaliseName('Rare Scrilla')).toBe('rarescrilla');
     expect(normaliseName('AD_AD')).toBe('adad');
+  });
+});
+
+describe('the gate does not outvote the people who own the archive', () => {
+  /**
+   * 2026-08-20, official channel. PEPEDAWN's own artist submitted "pepedawn is
+   * the first fake rare that is both a card and an agent" and was told: "Not
+   * stored — This is a bare classification claim, not story, context, history,
+   * or an anecdote." Every synchronous gate had passed; the model screen
+   * overruled a submitter the gate had already routed to `store`.
+   */
+  const artist: Submitter = {
+    id: '1',
+    username: 'rabbidfly.xcp',
+    displayName: 'rabbidfly',
+    isAdmin: true,
+  };
+  const stranger: Submitter = { id: '2', username: 'someone', displayName: 'someone' };
+
+  it('routes the credited artist straight to storage', () => {
+    const v = gateSubmission({
+      raw: '/fr pepedawn is the first fake rare that is both a card and an agent',
+      submitter: artist,
+      existingForCard: 0,
+    });
+    expect(v.ok).toBe(true);
+    expect(v.route).toBe('store');
+  });
+
+  it('still sends a stranger to vouching', () => {
+    const v = gateSubmission({
+      raw: '/fr pepedawn is the first fake rare that is both a card and an agent',
+      submitter: stranger,
+      existingForCard: 0,
+    });
+    expect(v.ok).toBe(true);
+    expect(v.route).toBe('vouch');
+  });
+
+  it('recognises /fr! and lets it past the taste gate only', () => {
+    expect(isForcedSubmission('/fr! PEPEDAWN it is a whole thing')).toBe(true);
+    expect(isForcedSubmission('/fr PEPEDAWN it is a whole thing')).toBe(false);
+    expect(isForcedSubmission('/fr!@pepedawn_bot PEPEDAWN it is a whole thing')).toBe(true);
+
+    // Too short for the heuristic gate; forced through anyway.
+    const short = { raw: '/fr! PEPEDAWN it just is', submitter: artist, existingForCard: 0 };
+    expect(gateSubmission({ ...short, forced: false }).code).toBe('low_quality');
+    expect(gateSubmission({ ...short, forced: true }).ok).toBe(true);
+  });
+
+  it('never lets a force past the structural gates', () => {
+    // Arithmetic and identity are not matters of taste.
+    expect(
+      gateSubmission({
+        raw: '/fr! PEPEDAWN a perfectly good piece of lore about this card',
+        submitter: artist,
+        existingForCard: MAX_ENTRIES_PER_CARD,
+        forced: true,
+      }).code
+    ).toBe('card_full');
+
+    expect(
+      gateSubmission({
+        raw: '/fr! NOTACARD a perfectly good piece of lore about nothing',
+        submitter: artist,
+        existingForCard: 0,
+        forced: true,
+      }).code
+    ).toBe('no_card');
+
+    expect(
+      gateSubmission({
+        raw: '/fr! PEPEDAWN a perfectly good piece of lore about this card',
+        submitter: artist,
+        existingForCard: 0,
+        existingTexts: ['a perfectly good piece of lore about this card'],
+        forced: true,
+      }).code
+    ).toBe('duplicate');
+  });
+
+  it('keeps rejecting authorship claims, forced or not', () => {
+    // The manifest is the authority on credits; that is not a taste call.
+    const v = gateSubmission({
+      raw: '/fr PEPEDAWN this card was created by someone else entirely, true story',
+      submitter: artist,
+      existingForCard: 0,
+    });
+    expect(v.ok).toBe(false);
+    expect(v.code).toBe('low_quality');
   });
 });

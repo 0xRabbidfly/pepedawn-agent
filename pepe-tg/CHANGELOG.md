@@ -5,6 +5,62 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.5.0] - 2026-08-20
+
+Storing lore was too hard, and the reason was not any of the gates that were
+designed: it was a small model with "Be strict" in its system prompt overruling
+people who own the archive.
+
+### Changed
+
+- **The quality screen no longer outvotes authority.** `gateSubmission` already
+  decides whether a submitter has standing on a card — the credited artist or an
+  admin routes to `store`, everyone else to community vouching. The model screen
+  then ignored that and judged everyone alike. PEPEDAWN's own artist was told
+  that "the first fake rare that is both a card and an agent" was "a bare
+  classification claim, not story, context, history, or an anecdote".
+
+  The screen still runs for those submitters and its verdict is still logged, so
+  "would it have blocked this?" stays answerable — it simply no longer has the
+  last word over someone who has one. For third-party submissions it stays
+  binding, backed by vouching.
+
+- **Significance is lore.** The screen asked for origin anecdotes and listed "a
+  bare fact already in a database" as disqualifying, which rejected exactly the
+  contributions a database cannot hold: what a card is, what it did first, what
+  it means here. What stays disqualifying is narrow — authorship claims (the
+  manifest is the authority), insults, invention, and bare specifications. The
+  screen is now told to err towards accepting.
+
+- **The screen being down no longer decides policy.** It used to be strict when
+  the API answered and absent when it threw. Artists were never blocked by it;
+  third-party lore still faces the room, which is the real check.
+
+- **Rejections hand the submission back.** Retyping a paragraph into a phone to
+  try different wording was the actual cost of a refusal. The text now comes
+  back with the reason, ready to edit.
+
+### Added
+
+- **`/fr!` — admin force.** Stores past the taste gates and only those: the card
+  must still resolve, the per-card cap still holds, duplicates are still
+  refused, and authorship claims are still refused. Logged at warn level with
+  the submitter and the text. A judgement call the screen gets wrong should cost
+  a character, not an argument with a bot in front of the room.
+
+### Fixed
+
+- `/frisbee` was a lore submission beginning "isbee". `/fr` now needs a word
+  boundary.
+
+### Security
+
+- `loreDetectorEvaluator` is documented as not-to-be-registered, and its unused
+  import removed from the plugin. It writes to the knowledge base straight from
+  conversation with none of the `/fr` gates in front of it. `/fr` and `/vouch`
+  remain the only two paths into the corpus, which is what makes every write
+  accountable.
+
 ## [5.4.2] - 2026-08-20
 
 ### Changed

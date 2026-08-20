@@ -1,6 +1,14 @@
 import { type Evaluator, type IAgentRuntime, type Memory, type State, ModelType, composePromptFromState, logger } from '@elizaos/core';
 
 /**
+ * ⚠️ NOT REGISTERED, and must not be registered as it stands.
+ *
+ * This writes to the knowledge base from ordinary conversation with none of the
+ * /fr gates in front of it: no card resolved against the manifest, no artist
+ * check, no per-card cap, no vouching, no quality screen. `/fr` and `/vouch`
+ * are the only two paths into the corpus precisely so that every write is
+ * accountable. Route this through `gateSubmission` before wiring it up.
+ *
  * Lore Detection Evaluator
  * Detects when conversations contain new lore about Fake Rares cards
  * Extracts and stores the lore for future retrieval

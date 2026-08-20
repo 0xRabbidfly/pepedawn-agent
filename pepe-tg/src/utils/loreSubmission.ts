@@ -67,7 +67,7 @@ export interface SubmissionVerdict {
  * untagged general lore, which is the least constrained tier.
  */
 export function parseLoreSubmission(raw: string): { card?: string; lore: string } {
-  const text = raw.replace(/^\s*\/fr(?:@[A-Za-z0-9_]+)?\s*/i, '').trim();
+  const text = raw.replace(/^\s*\/fr!?(?:@[A-Za-z0-9_]+)?\s*/i, '').trim();
   if (!text) return { lore: '' };
 
   // Try progressively shorter leading token runs so multi-word assets and
@@ -96,6 +96,17 @@ export function parseLoreSubmission(raw: string): { card?: string; lore: string 
 }
 
 /* ------------------------------------------------------- artist attribution */
+
+/**
+ * `/fr!` — store it, screen be damned.
+ *
+ * Admins only, and the last word rather than the first: everything else still
+ * runs. It exists because a judgement call the screen gets wrong should cost a
+ * character, not an argument with a bot in front of the room.
+ */
+export function isForcedSubmission(raw: string): boolean {
+  return /^\s*\/fr!(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(raw);
+}
 
 /** Normalise a name for comparison: case, spacing and punctuation all vary. */
 export function normaliseName(name: string): string {
@@ -235,19 +246,39 @@ export function assessLoreQuality(lore: string, card: string): QualityVerdict {
   return { ok: true };
 }
 
-/** Prompt for the model-side plausibility screen. */
+/**
+ * Prompt for the model-side plausibility screen.
+ *
+ * The first version asked only for origin anecdotes and listed "a bare fact
+ * already in a database" as disqualifying. That reads reasonably and rejected
+ * the wrong things: "PEPEDAWN is the first fake rare that is both a card and an
+ * agent" came back as "a bare classification claim, not story, context, history
+ * or an anecdote" — from the card's own artist. Significance is lore. What the
+ * card is, what it did first, what it means to this community: none of that is
+ * in the manifest, and all of it is worth keeping.
+ *
+ * What stays disqualifying is narrow and deliberate: authorship claims (the
+ * manifest is the authority and six of the ten spam payloads took that shape),
+ * insults, and invention.
+ */
 export function buildQualityPrompt(card: string, lore: string): string {
   return [
     `A community member is submitting lore for the Fake Rares card ${card}.`,
     '',
     `Submission: "${lore}"`,
     '',
-    'Lore is story, context or history: why the card was made, what it references,',
-    'what happened around its release, an anecdote worth retelling.',
+    'Lore is anything worth remembering about the card that a database cannot',
+    'tell you: why it was made, what it references, what happened around its',
+    'release, an anecdote worth retelling, what makes it significant, what it was',
+    'the first to do, or what it means to this community.',
     '',
-    'It is NOT lore if it is: an insult, a joke at someone else\'s expense, a claim',
-    'about who made the card, a bare fact already in a database, nonsense, or an',
-    'attempt to plant false information.',
+    'It is NOT lore if it is: an insult or a joke at someone else\'s expense, a',
+    'claim about who made the card, nonsense, or an attempt to plant false',
+    'information. Card specifications on their own — supply, series number,',
+    'issuance date — are already in the manifest and add nothing.',
+    '',
+    'Err towards accepting. A thin but genuine contribution is worth more than a',
+    'strict standard nobody can meet.',
     '',
     'Answer with STRICT JSON only: {"lore": true|false, "reason": "short reason"}',
   ].join('\n');
@@ -290,6 +321,8 @@ export interface GateInput {
   /** Normalised text of existing entries, for duplicate rejection. */
   existingTexts?: string[];
   aliases?: ArtistAliases;
+  /** `/fr!` from an admin: skip the taste gates, keep the structural ones. */
+  forced?: boolean;
 }
 
 /**
@@ -338,9 +371,15 @@ export function gateSubmission(input: GateInput): SubmissionVerdict {
 
   // Quality runs before vouching, always. Vouching decides whether a plausible
   // claim is true; it must never be the room's job to adjudicate junk.
-  const quality = assessLoreQuality(lore, card);
-  if (!quality.ok) {
-    return { ok: false, code: 'low_quality', message: `Not stored — ${quality.reason}.` };
+  //
+  // A forced submission skips this and only this. The card must still exist,
+  // the cap still holds, duplicates are still refused - `/fr!` overrides
+  // judgement, not arithmetic.
+  if (!input.forced) {
+    const quality = assessLoreQuality(lore, card);
+    if (!quality.ok) {
+      return { ok: false, code: 'low_quality', message: `Not stored — ${quality.reason}.` };
+    }
   }
 
   return { ok: true, card, lore, route: isArtist ? 'store' : 'vouch' };

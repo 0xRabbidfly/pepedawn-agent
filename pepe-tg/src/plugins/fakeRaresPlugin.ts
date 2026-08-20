@@ -10,7 +10,6 @@ import { fakeRaresCardAction, fakeCommonsCardAction, rarePepesCardAction, startC
 import { fakeMarketAction } from '../actions/fakeMarketAction';
 import { fakeRaresCarouselAction } from '../actions/fakeRaresCarousel';
 import { fakeRaresContextProvider, userHistoryProvider } from '../providers';
-import { loreDetectorEvaluator } from '../evaluators';
 import { KnowledgeOrchestratorService } from '../services/KnowledgeOrchestratorService';
 import { XHarvestService } from '../services/XHarvestService';
 import {
@@ -723,6 +722,13 @@ export const fakeRaresPlugin: Plugin = {
   ],
   
   providers: [fakeRaresContextProvider, userHistoryProvider],
+  // Deliberately empty. `loreDetectorEvaluator` exists in src/evaluators and was
+  // imported here for a long time without ever being registered. It stores what
+  // it judges to be lore straight from conversation, with none of the /fr gates
+  // in front of it - no card resolution against the manifest, no artist check,
+  // no cap, no vouching. Registering it would reopen exactly the door those
+  // gates were built to close. If it is ever wanted, route it through
+  // gateSubmission first.
   evaluators: [],
   services: [KnowledgeOrchestratorService, MemoryStorageService, TelemetryService, CardDisplayService, SmartRouterService, XHarvestService],
   
