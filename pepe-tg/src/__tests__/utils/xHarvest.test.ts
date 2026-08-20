@@ -297,6 +297,23 @@ describe('isXActivityQuestion', () => {
     ]) expect(isXActivityQuestion(q)).toBe(true);
   });
 
+  it('ignores statements that merely mention X', () => {
+    // The digest fires without the bot being addressed, so a passing remark
+    // must not trigger it mid-conversation.
+    for (const q of [
+      'I saw it on twitter yesterday',
+      'posted this on X earlier',
+      'follow me on twitter',
+      'he said that on X and got ratioed',
+    ]) expect(isXActivityQuestion(q)).toBe(false);
+  });
+
+  it('accepts the real phrasing that failed in production', () => {
+    // Asked unaddressed in the channel on 2026-08-20; the addressing gate meant
+    // it fell through to FACTS, which improvised an answer from the wiki.
+    expect(isXActivityQuestion('anything happening on X lately?')).toBe(true);
+  });
+
   it('ignores questions that are not about X', () => {
     for (const q of [
       'what are people saying in here',

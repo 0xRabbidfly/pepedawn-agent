@@ -5,6 +5,21 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.3.2] - 2026-08-20
+
+### Fixed
+- **"anything happening on X lately?" did not reach the digest.** The digest
+  was gated on the message being a reply, an @mention or a DM - modelled on how
+  commands work. But PEPEDAWN answers unaddressed questions too, so asked
+  plainly in the channel it fell through to the FACTS path and improvised an
+  answer about X from the wiki corpus: exactly the invented-answer failure the
+  harvest exists to prevent.
+
+  The addressing requirement is gone. `isXActivityQuestion` now carries the
+  weight and additionally requires a question form, so a passing remark
+  ("I saw it on twitter", "follow me on X") cannot trigger a digest
+  mid-conversation. Added a 5-minute per-room cooldown.
+
 ## [5.3.1] - 2026-08-20
 
 ### Fixed

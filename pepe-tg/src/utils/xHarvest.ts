@@ -621,10 +621,19 @@ export function formatForTelegram(p: HarvestedPost, lead?: string): TelegramCard
 const X_ACTIVITY_RE =
   /\b(?:on|over on|from|via)\s+(?:x|twitter)\b|\b(?:x|twitter)\s+(?:chatter|activity|feed|timeline)\b|what(?:'s| is| are)?\s+(?:the\s+)?(?:people|folks|everyone|anyone)?\s*(?:saying|posting|talking)\b/i;
 
+/**
+ * Must actually be a question. Since the digest fires whether or not the bot
+ * was addressed, a statement like "I saw it on twitter" or "posted this on X"
+ * would otherwise make PEPEDAWN dump a digest on someone mid-conversation.
+ */
+const QUESTIONISH_RE =
+  /\?|^\s*(?:what|whats|what's|any|anything|anyone|anybody|how|who|hows|how's|is|are|did|does|do|tell me)\b/i;
+
 export function isXActivityQuestion(text: string): boolean {
   if (!X_ACTIVITY_RE.test(text)) return false;
   // "saying" alone is not enough — it must be about X, not about the channel.
-  return /\b(x|twitter)\b/i.test(text);
+  if (!/\b(x|twitter)\b/i.test(text)) return false;
+  return QUESTIONISH_RE.test(text.trim());
 }
 
 /**

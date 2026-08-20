@@ -623,6 +623,15 @@ async function sendXCard(
 const lastXRevealAt = new Map<string, number>();
 const X_REVEAL_COOLDOWN_MS = 30 * 60 * 1000;
 
+/** Digests answer a direct question, so the cooldown only needs to stop a flood. */
+const lastXDigestAt = new Map<string, number>();
+const X_DIGEST_COOLDOWN_MS = 5 * 60 * 1000;
+
+function recentlyDigested(roomId: string): boolean {
+  const last = lastXDigestAt.get(roomId);
+  return last !== undefined && Date.now() - last < X_DIGEST_COOLDOWN_MS;
+}
+
 /**
  * Reveal a harvested tweet that connects to what was just said.
  *
@@ -894,7 +903,13 @@ export const fakeRaresPlugin: Plugin = {
           // the feed, not a lore answer and not a single tweet. Answered from
           // the harvest store directly - the model is not involved, so nothing
           // a stranger posted can be restated as something PEPEDAWN knows.
-          if (isXActivityQuestion(text) && (isReplyToBot || hasBotMention || isDirectMessage)) {
+          // No addressing requirement. PEPEDAWN answers unaddressed questions
+          // anyway, so gating this on reply/mention/DM just meant the FACTS path
+          // improvised an answer about X from the wiki corpus instead - which is
+          // exactly the "made it up" failure the harvest exists to avoid.
+          // isXActivityQuestion carries the weight: it needs X/Twitter, an
+          // activity phrasing, AND a question form.
+          if (isXActivityQuestion(text) && !recentlyDigested(message.roomId?.toString() ?? '')) {
             const digest = buildDigest(3);
             const sent = await sendXCard(
               runtime,
@@ -902,6 +917,7 @@ export const fakeRaresPlugin: Plugin = {
               formatDigestForTelegram(digest)
             );
             if (sent) {
+              lastXDigestAt.set(message.roomId?.toString() ?? '', Date.now());
               logger.info(`[XHarvest] answered an X-activity question with ${digest.length} post(s)`);
               message.metadata = message.metadata || {};
               (message.metadata as any).__handledByCustom = true;
