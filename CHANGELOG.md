@@ -5,6 +5,15 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.3.1] - 2026-08-20
+
+### Fixed
+- **`deploy.sh` no longer hangs after a successful deploy.** Its final step ran
+  `pm2 logs --lines 10`, which tails by default and never exits, so every
+  deploy left an orphaned SSH session open until someone interrupted it by
+  hand. Added `--nostream`. The release itself was always complete by then —
+  which is what made this easy to miss.
+
 ## [5.3.0] - 2026-08-19
 
 ### Added

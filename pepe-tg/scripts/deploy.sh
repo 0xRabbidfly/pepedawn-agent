@@ -153,7 +153,10 @@ deploy() {
     
     # Step 12: Show recent logs
     log "Step 12: Showing recent logs..."
-    ssh_exec "cd $PROJECT_DIR && pm2 logs --lines 10"
+    # --nostream is required: `pm2 logs` tails by default and never exits, so
+    # without it the deploy hangs forever on its own last step, holding an SSH
+    # session open long after the release is finished.
+    ssh_exec "cd $PROJECT_DIR && pm2 logs --lines 10 --nostream"
     
     success "🎉 Deployment completed successfully!"
 }
@@ -200,7 +203,7 @@ dry_run() {
         echo "7d. ssh -i $SSH_KEY root@$SERVER_IP 'export PATH=\"$BUN_PATH:\$PATH\" && cd $PROJECT_DIR && pm2 save'"
     fi
     echo "8. ssh -i $SSH_KEY root@$SERVER_IP 'export PATH=\"$BUN_PATH:\$PATH\" && cd $PROJECT_DIR && pm2 status'"
-    echo "9. ssh -i $SSH_KEY root@$SERVER_IP 'export PATH=\"$BUN_PATH:\$PATH\" && cd $PROJECT_DIR && pm2 logs --lines 10'"
+    echo "9. ssh -i $SSH_KEY root@$SERVER_IP 'export PATH=\"$BUN_PATH:\$PATH\" && cd $PROJECT_DIR && pm2 logs --lines 10 --nostream'"
 }
 
 # Parse command line arguments
