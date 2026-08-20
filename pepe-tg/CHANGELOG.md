@@ -5,6 +5,38 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.4.2] - 2026-08-20
+
+### Changed
+
+- **Harvested tweets are woven into the reply, not dropped under it.** Tweets
+  feed three things, and only one of them is prose: a quiet room gets the
+  volunteer push, someone asking what is happening on X gets the digest, and a
+  live conversation gets — at most — a passing, credited mention. The third was
+  implemented as a tweet card posted after the answer, which read as a non
+  sequitur stapled to a finished thought.
+
+  The post now reaches the model as attributed context: a stranger's words, to
+  be credited out loud if they connect — a real connection or a funny one — and
+  left out entirely otherwise. Never offered when the card index already
+  answered the question exactly; a settled fact does not want a tweet attached,
+  and card facts still come from the index alone.
+
+  A post is spent only when the reply actually credits its author, so one the
+  model declined stays available and starts no cooldown. `revealMatchingTweet`
+  is gone; the tweet card survives only where someone asked for it.
+
+### Fixed
+
+- **One shared word is no longer a connection.** "who created DJPEPE ?" pulled
+  in a post about unreadable JSONs because "created" and "create" stem alike.
+  That term counted as distinctive only because distinctiveness is measured
+  against the store: the bar is "appears in at most a fifth of posts", and with
+  35 posts that is most of the language. Cards and authors remain signals on
+  their own; plain vocabulary now needs two distinctive terms.
+- A reveal that succeeded logged nothing, so a tweet appearing in the room could
+  not be traced to the path that sent it. The weave logs when it lands.
+
 ## [5.4.1] - 2026-08-20
 
 ### Fixed

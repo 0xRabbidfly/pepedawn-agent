@@ -14,7 +14,7 @@ import { loreDetectorEvaluator } from '../evaluators';
 import { KnowledgeOrchestratorService } from '../services/KnowledgeOrchestratorService';
 import { XHarvestService } from '../services/XHarvestService';
 import {
-  matchForConversation, formatForTelegram, markUsed, noteRoom,
+  noteRoom,
   isXActivityQuestion, buildDigest, formatDigestForTelegram,
   type TelegramCard,
 } from '../utils/xHarvest';
@@ -568,7 +568,6 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
           });
           await recordBotTurn(response);
           await showCardForAnswer(context, plan.primaryCardAsset, response, actionCallback, userAskedAboutCards(context));
-          await revealMatchingTweet(runtime, message.roomId?.toString() ?? '', text, params);
         }
 
         markHandled();
@@ -657,21 +656,7 @@ async function sendXCard(
   return res.ok;
 }
 
-/**
- * Last time a tweet was revealed in a room. Without this, three questions in a
- * row about the same person reveal three different tweets in quick succession.
- */
-const lastXRevealAt = new Map<string, number>();
-const X_REVEAL_COOLDOWN_MS = 30 * 60 * 1000;
-
-/**
- * The Telegram chat id, which is NOT `message.roomId`.
- *
- * ElizaOS stores `roomId = createUniqueUuid(runtime, chat.id)` - a UUID. Passing
- * that to sendMessage as chat_id returns HTTP 400, which is how the first
- * digest attempt failed silently in production on 2026-08-20: the gate matched,
- * the send was rejected, and the reply fell through to an improvised answer.
- */
+/** The Telegram chat a message came from, for sends that bypass the callback. */
 function telegramChatId(params: any): string | undefined {
   const id =
     params?.ctx?.message?.chat?.id ??
@@ -691,41 +676,20 @@ function recentlyDigested(roomId: string): boolean {
 }
 
 /**
- * Reveal a harvested tweet that connects to what was just said.
+ * Harvested posts are woven into the reply, not dropped under it.
  *
- * Deliberately a separate message rather than context for the reply: the model
- * never sees the post, so it cannot absorb a stranger's claim into its own
- * voice or answer from it. PEPEDAWN shows the tweet; it does not learn it.
+ * There used to be a `revealMatchingTweet` here: when a post connected to what
+ * was said, PEPEDAWN posted the tweet card as a second message. The reasoning
+ * was that a post the model never sees cannot be absorbed into its own voice.
+ * In the room it read as a non sequitur - a stranger's tweet stapled to a
+ * finished answer - and on 2026-08-20 it put a post about unreadable JSONs
+ * under a question about who made DJPEPE.
  *
- * Sent directly rather than through the callback because that path hardcodes
- * Markdown, and these cards are HTML - handles like @subterranean_1 carry
- * underscores that Markdown would choke on.
+ * `SmartRouterService.weaveableXPost` now offers the post to the model as
+ * attributed context, to be credited out loud or left out entirely, and never
+ * when the card index has already answered the question exactly. The tweet card
+ * survives only where someone asked for it: the X digest below.
  */
-async function revealMatchingTweet(
-  runtime: IAgentRuntime,
-  roomId: string,
-  userText: string,
-  params: any
-): Promise<void> {
-  try {
-    const chatId = telegramChatId(params);
-    if (!chatId) return;
-
-    const now = Date.now();
-    const last = lastXRevealAt.get(roomId);
-    if (last !== undefined && now - last < X_REVEAL_COOLDOWN_MS) return;
-
-    const post = matchForConversation(userText);
-    if (!post) return;
-
-    if (!(await sendXCard(runtime, chatId, formatForTelegram(post, 'Saw this on X:')))) return;
-    markUsed(post.id);
-    lastXRevealAt.set(roomId, now);
-  } catch (error) {
-    // Revealing a tweet is a bonus, never a reason for a reply to fail.
-    logger.debug({ error }, '[XHarvest] reveal skipped');
-  }
-}
 
 export const fakeRaresPlugin: Plugin = {
   name: 'fake-rares',

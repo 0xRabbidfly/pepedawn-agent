@@ -21,6 +21,7 @@ import {
   asksAttributionOfAnUnnamedCard,
   pepedawnMeansTheCard,
 } from '../utils/cardQueries';
+import { matchForConversation, markUsed } from '../utils/xHarvest';
 import { recallForPrompt, recordTurn, recentTurns } from '../conversation/shadow';
 import { isInFullIndex } from '../data/fullCardIndex';
 
@@ -744,6 +745,59 @@ export class SmartRouterService extends Service {
   }
 
 
+  /**
+   * Last time a harvested post was woven into a reply, per room.
+   *
+   * Three questions about the same person must not pull in three different
+   * posts in quick succession.
+   */
+  private readonly lastXWeaveAt = new Map<string, number>();
+  private static readonly X_WEAVE_COOLDOWN_MS = 30 * 60 * 1000;
+
+  /**
+   * A harvested post worth mentioning in this reply, as attributed context.
+   *
+   * It used to arrive as its own message - a tweet card posted after the
+   * answer - on the theory that a post the model never sees is a post it cannot
+   * absorb into its own voice. That is a real risk and the prompt below is
+   * where it is handled: the post is presented as a stranger's words, to be
+   * credited out loud or not used at all. What it bought in safety it lost in
+   * fit; a card dropped under a finished answer reads as a non sequitur, which
+   * is what it was.
+   *
+   * Never offered when the index already answered the question exactly. A
+   * settled fact does not want a tweet stapled to it, and card facts come from
+   * the index alone.
+   */
+  private weaveableXPost(userText: string, roomId: string, hasKnownFact: boolean) {
+    if (hasKnownFact) return null;
+    const last = this.lastXWeaveAt.get(roomId);
+    const now = Date.now();
+    if (last !== undefined && now - last < SmartRouterService.X_WEAVE_COOLDOWN_MS) return null;
+
+    const post = matchForConversation(userText);
+    if (!post) return null;
+
+    return post;
+  }
+
+  /**
+   * Spend the offered post only if the reply actually mentions its author.
+   *
+   * The model is told to leave it out when it does not fit, and most of the
+   * time it should. Marking it used at the moment it was offered would burn a
+   * post nobody ever saw and start the cooldown on a weave that never happened.
+   */
+  private settleXPost(post: { id: string; author: string } | null, replyText: string, roomId: string) {
+    if (!post) return;
+    const handle = post.author.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const said = replyText.toLowerCase().replace(/[^a-z0-9]/g, '').includes(handle);
+    if (!said) return;
+    markUsed(post.id);
+    this.lastXWeaveAt.set(roomId, Date.now());
+    logger.info({ post: post.id, author: post.author }, '[XHarvest] Wove a post into the reply');
+  }
+
   private async buildChatPlan(
     userText: string,
     roomId: string,
@@ -787,6 +841,8 @@ export class SmartRouterService extends Service {
       }
     }
 
+    const xPost = this.weaveableXPost(userText, roomId, Boolean(options?.knownFact));
+
     const prompt = [
       'Recent conversation:',
       recentTranscript,
@@ -798,6 +854,13 @@ export class SmartRouterService extends Service {
       roomMemories ? `What you remember about people here:\n${roomMemories}\n` : '',
       options?.knownFact
         ? `THIS IS THE ANSWER, and it is exact — state it, do not hedge it, do not add specifications around it:\n${options.knownFact}\nWrap it in one conversational sentence. Do not turn it into a fact sheet.\n`
+        : '',
+      xPost
+        ? `Someone on X said this recently — @${xPost.author}:\n"${xPost.text}"\n` +
+          'Their words, not yours, and not something you know. If it connects to what ' +
+          'is being discussed — a real connection or a funny one — you may bring it up, ' +
+          `crediting @${xPost.author} out loud. Never state it as fact, never let it ` +
+          'override card data, and leave it out entirely rather than force it.\n'
         : '',
       offeredCard
         ? `This community does not rank its cards, and you would not want to. Instead, here is one drawn at random:
@@ -862,6 +925,7 @@ Say briefly why it is worth a look — something true about the art, the artist 
         response.length > 0
           ? response
           : "I'm vibing—keep the drops coming. 🐸";
+      this.settleXPost(xPost, finalText, roomId);
       return {
         kind: 'CHAT',
         intent: 'CHAT',

@@ -538,7 +538,17 @@ export function matchForConversation(
     });
     const cardHit = p.cards.some((c) => userCards.includes(c));
     const shared = [...(postTerms.get(p.id) ?? [])].filter((t) => userTerms.has(t));
-    const hasDistinctive = shared.some(distinctive);
+    // Two distinctive terms, not one.
+    //
+    // "who created DJPEPE?" surfaced a post about lost JSONs on the strength of
+    // "created" against "create" - one stemmed verb. It qualified as
+    // distinctive only because the store is small: the threshold is "in at most
+    // a fifth of posts", and with 35 posts that is anything appearing 6 times
+    // or fewer, which is most of the language. Cards and authors are their own
+    // signals below; anything weaker than those needs corroboration before it
+    // is worth interrupting a conversation with.
+    const distinctiveShared = shared.filter(distinctive);
+    const hasDistinctive = distinctiveShared.length >= 2;
 
     // A post about other cards is not a post about this one, whatever words it
     // shares. "who created DJPEPE?" surfaced a lore post about PEPONG on the
@@ -554,7 +564,7 @@ export function matchForConversation(
       score:
         (authorHit ? 2 : 0) +
         (cardHit ? 1.5 : 0) +
-        (hasDistinctive ? 1 : 0) +
+        distinctiveShared.length * 0.5 +
         shared.length * 0.2 +
         p.interest * 0.5,
     });

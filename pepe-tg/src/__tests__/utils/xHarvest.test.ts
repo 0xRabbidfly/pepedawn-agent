@@ -203,11 +203,26 @@ describe('matchForConversation', () => {
     expect(matchForConversation('gm what a pepe card day', { now: NOW })).toBeNull();
   });
 
-  it('connects on a single distinctive term', () => {
-    // One rare proper noun is a stronger signal than two common words, which is
-    // how "tell me about PEPELEO" reaches a post that mentions it once.
+  it('connects on two distinctive terms', () => {
+    // Distinctiveness is measured against the store, and a small store makes
+    // almost any word look rare - "created" against "create" was enough to put
+    // a post about lost JSONs under a question about who made a card. Cards and
+    // authors are their own signals; plain vocabulary needs corroboration.
     mergePosts([post({ text: 'the counterparty dispenser mechanism explained at length for collectors' })], NOW);
     expect(matchForConversation('how does the counterparty dispenser work', { now: NOW })).not.toBeNull();
+  });
+
+  it('does not connect on one generic term the two happen to share', () => {
+    mergePosts([
+      post({
+        id: 'jsons',
+        text: 'The same wallet also created MOOSEPUTIN. Both used EasyAsset so the jsons are unreadable.',
+        cards: [],
+      }),
+    ], NOW);
+    // Production, 2026-08-20 17:41: this post followed "who created DJPEPE ?"
+    // into the channel on the strength of created/create alone.
+    expect(matchForConversation('who created DJPEPE ?', { now: NOW })).toBeNull();
   });
 
   it('does not connect on a term common to the whole store', () => {
@@ -402,5 +417,41 @@ describe('formatDigestForTelegram', () => {
     expect(card.text).toContain('@h_u_e_s_');
     expect((card.text.match(/<blockquote>/g) ?? [])).toHaveLength(2);
     expect(card.parseMode).toBe('HTML');
+  });
+});
+
+describe('a harvested post is woven into the reply, not dropped under it', () => {
+  /**
+   * Tweets feed three things: a quiet room (the volunteer push), someone asking
+   * what is happening on X (the digest), and the flow of a live conversation.
+   * Only the third is prose. It used to be a tweet card posted after the reply,
+   * which on 2026-08-20 put a post about unreadable JSONs under "who created
+   * DJPEPE ?" — the connection being that "created" and "create" stem alike.
+   */
+  const makeRouter = async () => {
+    const { SmartRouterService } = await import('../../services/SmartRouterService');
+    return new (SmartRouterService as any)({ agentId: 'test', getService: () => null } as any) as any;
+  };
+
+  it('offers nothing when the card index already answered exactly', async () => {
+    const router = await makeRouter();
+    mergePosts([post({ id: 'x', cards: ['FAKEHAIRPEP'], text: 'GM FAKEHAIRPEP is underrated' })], NOW);
+    expect(router.weaveableXPost('who made FAKEHAIRPEP?', 'room', true)).toBeNull();
+    expect(router.weaveableXPost('what do you make of FAKEHAIRPEP', 'room', false)).not.toBeNull();
+  });
+
+  it('spends the post only when the reply credits its author', async () => {
+    const router = await makeRouter();
+    mergePosts([post({ id: 'y', author: 'subterranean_1', cards: ['FAKEHAIRPEP'] })], NOW);
+    const chosen = router.weaveableXPost('thoughts on FAKEHAIRPEP', 'r1', false);
+    expect(chosen).not.toBeNull();
+
+    // The model left it out: the post stays available and no cooldown starts.
+    router.settleXPost(chosen, 'FAKEHAIRPEP is a fine card, ser.', 'r1');
+    expect(router.weaveableXPost('thoughts on FAKEHAIRPEP', 'r1', false)).not.toBeNull();
+
+    // The model used it: spent, and the room is on cooldown.
+    router.settleXPost(chosen, '@subterranean_1 was on about this yesterday', 'r1');
+    expect(router.weaveableXPost('thoughts on FAKEHAIRPEP', 'r1', false)).toBeNull();
   });
 });
