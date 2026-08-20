@@ -7,7 +7,7 @@ import { loreDetectorEvaluator } from '../evaluators';
 import { KnowledgeOrchestratorService } from '../services/KnowledgeOrchestratorService';
 import { XHarvestService } from '../services/XHarvestService';
 import {
-  matchForConversation, formatForTelegram, markUsed,
+  matchForConversation, formatForTelegram, markUsed, noteRoom,
   isXActivityQuestion, buildDigest, formatDigestForTelegram,
   type TelegramCard,
 } from '../utils/xHarvest';
@@ -527,7 +527,7 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
           });
           await recordBotTurn(response);
           await showCardForAnswer(context, plan.primaryCardAsset, response, actionCallback, userAskedAboutCards(context));
-          await revealMatchingTweet(runtime, message.roomId?.toString() ?? '', text);
+          await revealMatchingTweet(runtime, message.roomId?.toString() ?? '', text, params);
         }
 
         markHandled();
@@ -623,6 +623,23 @@ async function sendXCard(
 const lastXRevealAt = new Map<string, number>();
 const X_REVEAL_COOLDOWN_MS = 30 * 60 * 1000;
 
+/**
+ * The Telegram chat id, which is NOT `message.roomId`.
+ *
+ * ElizaOS stores `roomId = createUniqueUuid(runtime, chat.id)` - a UUID. Passing
+ * that to sendMessage as chat_id returns HTTP 400, which is how the first
+ * digest attempt failed silently in production on 2026-08-20: the gate matched,
+ * the send was rejected, and the reply fell through to an improvised answer.
+ */
+function telegramChatId(params: any): string | undefined {
+  const id =
+    params?.ctx?.message?.chat?.id ??
+    params?.ctx?.chat?.id ??
+    params?.ctx?.callbackQuery?.message?.chat?.id ??
+    params?.ctx?.channelPost?.chat?.id;
+  return id !== undefined && id !== null ? String(id) : undefined;
+}
+
 /** Digests answer a direct question, so the cooldown only needs to stop a flood. */
 const lastXDigestAt = new Map<string, number>();
 const X_DIGEST_COOLDOWN_MS = 5 * 60 * 1000;
@@ -646,9 +663,13 @@ function recentlyDigested(roomId: string): boolean {
 async function revealMatchingTweet(
   runtime: IAgentRuntime,
   roomId: string,
-  userText: string
+  userText: string,
+  params: any
 ): Promise<void> {
   try {
+    const chatId = telegramChatId(params);
+    if (!chatId) return;
+
     const now = Date.now();
     const last = lastXRevealAt.get(roomId);
     if (last !== undefined && now - last < X_REVEAL_COOLDOWN_MS) return;
@@ -656,7 +677,7 @@ async function revealMatchingTweet(
     const post = matchForConversation(userText);
     if (!post) return;
 
-    if (!(await sendXCard(runtime, roomId, formatForTelegram(post, 'Saw this on X:')))) return;
+    if (!(await sendXCard(runtime, chatId, formatForTelegram(post, 'Saw this on X:')))) return;
     markUsed(post.id);
     lastXRevealAt.set(roomId, now);
   } catch (error) {
@@ -909,13 +930,24 @@ export const fakeRaresPlugin: Plugin = {
           // exactly the "made it up" failure the harvest exists to avoid.
           // isXActivityQuestion carries the weight: it needs X/Twitter, an
           // activity phrasing, AND a question form.
+          // Learn this room's chat-id ↔ room-uuid pairing while both are in hand;
+          // the volunteer check runs later with only the chat id.
+          const tgChatId = telegramChatId(params);
+          if (tgChatId && message.roomId) noteRoom(tgChatId, message.roomId.toString());
+
           if (isXActivityQuestion(text) && !recentlyDigested(message.roomId?.toString() ?? '')) {
             const digest = buildDigest(3);
-            const sent = await sendXCard(
-              runtime,
-              message.roomId?.toString() ?? '',
-              formatDigestForTelegram(digest)
-            );
+            const chatId = tgChatId;
+            const sent = chatId
+              ? await sendXCard(runtime, chatId, formatDigestForTelegram(digest))
+              : false;
+            if (!sent) {
+              // Falling through means the FACTS path answers about X from the
+              // wiki instead, so this must be visible rather than silent.
+              logger.warn(
+                `[XHarvest] X-activity question matched but the card was not sent (chatId=${chatId ?? 'unresolved'}) - falling through`
+              );
+            }
             if (sent) {
               lastXDigestAt.set(message.roomId?.toString() ?? '', Date.now());
               logger.info(`[XHarvest] answered an X-activity question with ${digest.length} post(s)`);

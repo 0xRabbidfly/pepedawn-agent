@@ -393,6 +393,31 @@ export function _resetCache(): void {
   cache = null;
 }
 
+// ------------------------------------------------------- chat ↔ room map
+
+/**
+ * Telegram chat id → ElizaOS room UUID, learned from live messages.
+ *
+ * The two are not interchangeable and neither can be derived from the other
+ * outside the runtime: `roomId = createUniqueUuid(runtime, chatId)` normally,
+ * but `createUniqueUuid(runtime, `${chatId}-${threadId}`)` inside a forum
+ * topic. Sends need the chat id; room history is keyed by the UUID. Guessing
+ * either direction is how the volunteer check would silently read every room
+ * as empty.
+ *
+ * In-memory by design: until the bot has seen a message it has no business
+ * volunteering into that room anyway.
+ */
+const chatToRoom = new Map<string, string>();
+
+export function noteRoom(chatId: string, roomId: string): void {
+  if (chatId && roomId) chatToRoom.set(chatId, roomId);
+}
+
+export function roomForChat(chatId: string): string | undefined {
+  return chatToRoom.get(chatId);
+}
+
 // ---------------------------------------------------------------- push
 
 /**

@@ -11,11 +11,11 @@
  */
 
 import type { IAgentRuntime } from '@elizaos/core';
-import { Service, logger } from '@elizaos/core';
+import { Service, logger, createUniqueUuid } from '@elizaos/core';
 import { FileRoomHistoryStore } from '../conversation/fileRoomHistoryStore';
 import {
   HARVEST_QUERIES, RAW_POSTS_RULE, DEFAULT_HARVEST_CONFIG,
-  parseHarvestResponse, mergePosts, selectForVolunteer, markVolunteered,
+  parseHarvestResponse, mergePosts, selectForVolunteer, markVolunteered, roomForChat,
   formatForTelegram, type HarvestedPost,
 } from '../utils/xHarvest';
 
@@ -136,7 +136,14 @@ export class XHarvestService extends Service {
     if (this.channelIds.length === 0) return;
     for (const roomId of this.channelIds) {
       try {
-        const turns = await this.history.load(roomId);
+        // Room history is keyed by the ElizaOS UUID, not the Telegram chat id -
+        // loading by chat id silently returns [], which would mean the room
+        // always looks empty and nothing is ever volunteered.
+        // Prefer the pairing observed from a real message: inside a forum topic
+        // the room key is `chatId-threadId`, which cannot be derived from the
+        // chat id alone.
+        const historyKey = roomForChat(roomId) ?? (createUniqueUuid(this.runtime, roomId) as string);
+        const turns = await this.history.load(historyKey);
         const lastUser = [...turns].reverse().find((t) => t.role === 'user');
         const post = selectForVolunteer({
           lastUserAt: lastUser?.at,

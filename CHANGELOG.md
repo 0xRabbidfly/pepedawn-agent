@@ -5,6 +5,23 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.3.3] - 2026-08-20
+
+### Fixed
+- **The X digest was built and then thrown away.** It was sent with
+  `message.roomId` as the Telegram `chat_id`, but ElizaOS stores
+  `roomId = createUniqueUuid(runtime, chatId)` - a UUID, not a chat id - so
+  Telegram returned HTTP 400 and the reply fell through to the FACTS path,
+  which improvised an answer about X from the wiki corpus. Both the digest and
+  the reveal now resolve the real chat id from the Telegram context, and a
+  failed send is logged as a warning rather than passing silently.
+- **The volunteer check read every room as empty.** It loaded room history by
+  Telegram chat id, but history is keyed by the room UUID, so `load()` always
+  returned `[]` and nothing would ever have been volunteered. The chat-id ↔
+  room-uuid pairing is now learned from live messages, which also handles forum
+  topics, where the key is `chatId-threadId` and cannot be derived from the
+  chat id at all.
+
 ## [5.3.2] - 2026-08-20
 
 ### Fixed
