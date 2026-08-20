@@ -43,8 +43,11 @@ result.json
 
 # Backup directories
 pepe-tg.1/
-# Generated knowledge chunks
-docs/
+# Generated knowledge chunks.
+# NOTE: this was `docs/` until 2026-08-20, which ignored the whole directory
+# and silently kept every hand-written runbook out of the repo - including
+# ones CLAUDE.md links to. Keep it scoped to the generated subdirectory.
+docs/chunks/
 # Specs and planning
 specs/
 # backups
