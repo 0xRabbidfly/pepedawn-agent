@@ -21,3 +21,4 @@ src/data/lore-ledger.json
 src/data/rate-limits.json
 src/data/lore-proposals.json
 src/data/participants.json
+src/data/x-harvest.json

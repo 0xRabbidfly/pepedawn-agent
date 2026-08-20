@@ -19,6 +19,7 @@
 import type { IAgentRuntime } from '@elizaos/core';
 import { Service, logger } from '@elizaos/core';
 import { getCardInfo, FULL_CARD_INDEX, type CardInfo } from '../data/fullCardIndex.js';
+import { FileRoomHistoryStore } from '../conversation/fileRoomHistoryStore.js';
 import { determineCardUrl, buildCardDisplayMessage, buildArtistButton } from '../actions/fakeRaresCard.js';
 
 // ============================================================================
@@ -90,6 +91,7 @@ export class PeriodicContentService extends Service {
   private channelIds: string[] = [];
   private lastContentPostTime: number = 0;
   private lastChannelMessageId: Map<string, number> = new Map(); // Track last seen message per channel
+  private history = new FileRoomHistoryStore();
   private enabled: boolean = false;
 
   constructor(runtime: IAgentRuntime) {
@@ -217,62 +219,26 @@ export class PeriodicContentService extends Service {
    * Returns true if there's been at least one new message
    */
   private async checkForNewChannelActivity(): Promise<boolean> {
-    const botToken = this.runtime.getSetting('TELEGRAM_BOT_TOKEN') as string | undefined;
-    if (!botToken) {
-      logger.warn('TELEGRAM_BOT_TOKEN not configured - cannot check channel activity');
-      return true; // Allow posting if we can't check
+    // Reads the room history the bot already persists from messages it
+    // received. It must NOT call getUpdates: that consumes the bot's own
+    // update queue, and a queued user message has been lost that way before.
+    // See CLAUDE.md "Never call getUpdates by hand".
+    if (this.lastContentPostTime === 0) {
+      return true; // first post of the process
     }
-
-    // If this is the first post, allow it
-    if (this.lastChannelMessageId.size === 0) {
-      return true;
-    }
-
-    // Check each channel for new messages
     for (const channelId of this.channelIds) {
       try {
-        // Get channel updates
-        const updatesResponse = await fetch(
-          `https://api.telegram.org/bot${botToken}/getUpdates?limit=100&allowed_updates=["message","channel_post"]`
-        );
-
-        if (!updatesResponse.ok) {
-          logger.warn(`Failed to get updates for channel ${channelId}`);
-          continue;
-        }
-
-        const updatesData = await updatesResponse.json();
-        const updates = updatesData.result || [];
-
-        // Find messages from this channel (check both message and channel_post)
-        const channelMessages = updates.filter(
-          (update: any) => {
-            const chatId = update.message?.chat?.id || update.channel_post?.chat?.id;
-            return chatId?.toString() === channelId.toString();
-          }
-        );
-
-        if (channelMessages.length === 0) {
-          continue;
-        }
-
-        // Get the latest message ID
-        const latestMessageId = Math.max(
-          ...channelMessages.map((m: any) => (m.message?.message_id || m.channel_post?.message_id))
-        );
-
-        const lastSeenMessageId = this.lastChannelMessageId.get(channelId) || 0;
-
-        if (latestMessageId > lastSeenMessageId) {
+        const turns = await this.history.load(channelId);
+        const lastUser = [...turns].reverse().find((t) => t.role === 'user');
+        if (lastUser && lastUser.at > this.lastContentPostTime) {
           logger.debug(`New activity detected in channel ${channelId}`);
-          return true; // Found new activity
+          return true;
         }
       } catch (error) {
         logger.warn({ channelId, error }, 'Error checking channel activity');
       }
     }
-
-    return false; // No new activity found in any channel
+    return false;
   }
 
   /**

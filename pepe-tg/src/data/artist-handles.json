@@ -1,0 +1,2174 @@
+{
+ "_comment": "Maps a credited Fake Rares artist to their X/Twitter handle. Generated, not hand-edited - see scripts/build-artist-handles.ts. source=pepe.wtf is curated attribution from https://pepe.wtf/api/artists?collection=fake-rares; source=telegram-archive is inferred by name matching against handles shared in the channel and is less reliable. confidence=confirmed means the curated handle was ALSO seen in the archive. Handles are unverified against X itself - run scripts/x-probe.ts --verify before trusting one.",
+ "_generated": "2026-08-19",
+ "artists": [
+  {
+   "artist": "Lord Jamie V. Shill",
+   "handle": "LordJamieVShiLL",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 20,
+   "archiveMentions": 131
+  },
+  {
+   "artist": "Pepenardo",
+   "handle": "PepenardoStudio",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 16,
+   "archiveMentions": 78
+  },
+  {
+   "artist": "JB",
+   "handle": "JPegKillah",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 14,
+   "archiveMentions": 38
+  },
+  {
+   "artist": "VVD",
+   "handle": "Vince_Van_Dough",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 13,
+   "archiveMentions": 57
+  },
+  {
+   "artist": "Yotet",
+   "handle": "MRcronicmusles",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 13,
+   "archiveMentions": 12
+  },
+  {
+   "artist": "Mr. HODLPIG",
+   "handle": "MrHodlpig",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 12,
+   "archiveMentions": 44
+  },
+  {
+   "artist": "Coit",
+   "handle": "coit133",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 11,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Rare Scrilla",
+   "handle": "ScrillaVentura",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 11,
+   "archiveMentions": 150
+  },
+  {
+   "artist": "Alth0tas",
+   "handle": "alth0tas",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 10,
+   "archiveMentions": 73
+  },
+  {
+   "artist": "Da'Block God",
+   "handle": "dablockgod",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 9,
+   "archiveMentions": 20
+  },
+  {
+   "artist": "EMBLEMATIX",
+   "handle": "EmblematiXart",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 9,
+   "archiveMentions": 11
+  },
+  {
+   "artist": "Michael Naples",
+   "handle": "michaelnaples",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 9,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "Tomopen",
+   "handle": "kouteipenpen_f",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 9,
+   "archiveMentions": 5
+  },
+  {
+   "artist": "Chaotic Crypto",
+   "handle": "chaotic_crypto",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 8,
+   "archiveMentions": 14
+  },
+  {
+   "artist": "Darky",
+   "handle": "Dark_inc_Studio",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 8,
+   "archiveMentions": 35
+  },
+  {
+   "artist": "FWD",
+   "handle": "fabooowy",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 8,
+   "archiveMentions": 27
+  },
+  {
+   "artist": "Fake Annie",
+   "handle": "fakefakeannie",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 8,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Aera One",
+   "handle": "aeraone",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 7,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "DesktopCommando",
+   "handle": "DesktopCommando",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 7,
+   "archiveMentions": 15
+  },
+  {
+   "artist": "Easy B",
+   "handle": "Easy_to_the_b",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 7,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "FourLeafClover",
+   "handle": "4LeafCloverNFT",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 7,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Indelible",
+   "handle": "SuperRareRares",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 7,
+   "archiveMentions": 50
+  },
+  {
+   "artist": "Nikolina Petolas",
+   "handle": "NikolinaPetolas",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 7,
+   "archiveMentions": 5
+  },
+  {
+   "artist": "ZETRA",
+   "handle": "zetra_art",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 7,
+   "archiveMentions": 14
+  },
+  {
+   "artist": "LOVEBEING",
+   "handle": "LOVEBEINGWORLD",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 6,
+   "archiveMentions": 6
+  },
+  {
+   "artist": "Luis Simo",
+   "handle": "simo_eth",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 6,
+   "archiveMentions": 5
+  },
+  {
+   "artist": "Mr Hansel",
+   "handle": "bettidlomas",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 6,
+   "archiveMentions": 5
+  },
+  {
+   "artist": "PiFu",
+   "handle": "PiFu7",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 6,
+   "archiveMentions": 17
+  },
+  {
+   "artist": "T. Wade",
+   "handle": "TWadeArt",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 6,
+   "archiveMentions": 12
+  },
+  {
+   "artist": "Whoisit",
+   "handle": "sureitsnothing",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 6,
+   "archiveMentions": 56
+  },
+  {
+   "artist": "Darkfarms",
+   "handle": "Darkfarms1",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 5,
+   "archiveMentions": 4
+  },
+  {
+   "artist": "HNFT Pepe",
+   "handle": "hnftpepe",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 5,
+   "archiveMentions": 40
+  },
+  {
+   "artist": "Isaac O",
+   "handle": "artist_isaaco",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 5,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Kane Mayfield",
+   "handle": "KaneMayfield",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 5,
+   "archiveMentions": 25
+  },
+  {
+   "artist": "LE HUES",
+   "handle": "pepelehues",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 5,
+   "archiveMentions": 5
+  },
+  {
+   "artist": "Abstract Mirror",
+   "handle": "abstractmirror",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 4,
+   "archiveMentions": 11
+  },
+  {
+   "artist": "Art GarPUNKel",
+   "handle": "Art_GarPUNKel",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 4,
+   "archiveMentions": 10
+  },
+  {
+   "artist": "Carsonated",
+   "handle": "Carsonated",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 4,
+   "archiveMentions": 29
+  },
+  {
+   "artist": "Chris Storm",
+   "handle": "ChrisStorm_",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 4,
+   "archiveMentions": 5
+  },
+  {
+   "artist": "Crimson Rider",
+   "handle": "Crims0nRIdeR",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 4,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Crypsi",
+   "handle": "CrypsiArt",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 4,
+   "archiveMentions": 16
+  },
+  {
+   "artist": "Dangiuz",
+   "handle": "dangiuz",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 4,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "GoingPepe100",
+   "handle": "goingpepe100",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 4,
+   "archiveMentions": 3
+  },
+  {
+   "artist": "MIKEYCORTEZ",
+   "handle": "YungMikeyCortez",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 4,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "Memeticx",
+   "handle": "memeticx",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 4,
+   "archiveMentions": 3
+  },
+  {
+   "artist": "NORMANCOMICS",
+   "handle": "KEKBONDS",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 4,
+   "archiveMentions": 22
+  },
+  {
+   "artist": "Nimzobit",
+   "handle": "Nimzobit",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 4,
+   "archiveMentions": 35
+  },
+  {
+   "artist": "ROCHIGG",
+   "handle": "ROCCOmeta01",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 4,
+   "archiveMentions": 14
+  },
+  {
+   "artist": "Rodro",
+   "handle": "rodritoh89",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 4,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "SteveWeave",
+   "handle": "SteveWeave_",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 4,
+   "archiveMentions": 6
+  },
+  {
+   "artist": "ditacrypto",
+   "handle": "ditacrypto",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 4,
+   "archiveMentions": 3
+  },
+  {
+   "artist": "netidx",
+   "handle": "netindexed",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 4,
+   "archiveMentions": 25
+  },
+  {
+   "artist": "Al",
+   "handle": "al_fernandz",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 3,
+   "archiveMentions": 25
+  },
+  {
+   "artist": "Alpha Centauri Kid",
+   "handle": "lphaCentauriKid",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 3,
+   "archiveMentions": 5
+  },
+  {
+   "artist": "BLISSFULMORG",
+   "handle": "BlissfulMorg",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 3,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "BasqKek",
+   "handle": "BasqKek",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 3,
+   "archiveMentions": 6
+  },
+  {
+   "artist": "Dr. Greedy",
+   "handle": "thedrgreedy",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 3,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Fabrique",
+   "handle": "thisisfabrique",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 3,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "GrantYun",
+   "handle": "grantyun2",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 3,
+   "archiveMentions": 7
+  },
+  {
+   "artist": "Gus Grillasca",
+   "handle": "gusgrillasca",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 3,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "JAMEX",
+   "handle": "jamex_art",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 3,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Jak",
+   "handle": "JakNFT",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 3,
+   "archiveMentions": 9
+  },
+  {
+   "artist": "Kaph Resh",
+   "handle": "KaphResh",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 3,
+   "archiveMentions": 4
+  },
+  {
+   "artist": "Mandarinemarie",
+   "handle": "Mandarinemarie_",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 3,
+   "archiveMentions": 4
+  },
+  {
+   "artist": "Maya",
+   "handle": "mayaNFT",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 3,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "OE",
+   "handle": "EverydayEarth",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 3,
+   "archiveMentions": 5
+  },
+  {
+   "artist": "PabloRicaSSo",
+   "handle": "PabloRicasso",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 3,
+   "archiveMentions": 5
+  },
+  {
+   "artist": "Pepe Capitol",
+   "handle": "Pepecapitol",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 3,
+   "archiveMentions": 3
+  },
+  {
+   "artist": "Pork Chop Express",
+   "handle": "Prkchop7",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 3,
+   "archiveMentions": 30
+  },
+  {
+   "artist": "SNUXTONPACK",
+   "handle": "snuxtonpack",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 3,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Tasha",
+   "handle": "NataljaMoon",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 3,
+   "archiveMentions": 23
+  },
+  {
+   "artist": "The Genius",
+   "handle": "geniusc0rp",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 3,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Viva La Vandal",
+   "handle": "viva_la_vandal",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 3,
+   "archiveMentions": 94
+  },
+  {
+   "artist": "ZeroG",
+   "handle": "g0barry",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 3,
+   "archiveMentions": 7
+  },
+  {
+   "artist": "Zima Blue",
+   "handle": "ZimaBlueArt",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 3,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "ciobo",
+   "handle": "Bociociobo",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 3,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "desultor",
+   "handle": "desultor_",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 3,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "threepanelcrimes",
+   "handle": "fak3panelcrimes",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 3,
+   "archiveMentions": 6
+  },
+  {
+   "artist": "Bryan Brinkman",
+   "handle": "bryanbrinkman",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 2,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "CRIME BREAKFAST",
+   "handle": "maxcapacity",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 9
+  },
+  {
+   "artist": "Chrome Void",
+   "handle": "chrome_void",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 6
+  },
+  {
+   "artist": "Costa Jpeg",
+   "handle": "costajpeg",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 47
+  },
+  {
+   "artist": "CryptoChainer",
+   "handle": "CryptoChainer",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "Dankfarms",
+   "handle": "dankfarms1",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 3
+  },
+  {
+   "artist": "Django Bits",
+   "handle": "djangobits",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "Dr Pep",
+   "handle": "drpep_art",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 2,
+   "archiveMentions": 3
+  },
+  {
+   "artist": "Elispri",
+   "handle": "elisprii",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 2,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "FakeBuddha",
+   "handle": "FakeBuddha69",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "GMONEY",
+   "handle": "gmoneypepe",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 2,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Greencross",
+   "handle": "greencrosslive",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 12
+  },
+  {
+   "artist": "Hafftka",
+   "handle": "hafftka",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 5
+  },
+  {
+   "artist": "Indelible and WetPotatoBrain",
+   "handle": "wetpotatobrain",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 2,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "JackKaido",
+   "handle": "thisjackkaido",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 2,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Johnny Dollar",
+   "handle": "JohnnyDollarArt",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Jonny Johnsonson",
+   "handle": "Jono61145535",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "Jose Burrito",
+   "handle": "Jose_Burrito_",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 22
+  },
+  {
+   "artist": "Katerine Escobar",
+   "handle": "KaterineArt",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 2,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Kero",
+   "handle": "KeroNFTs",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 6
+  },
+  {
+   "artist": "Lenny",
+   "handle": "fakelenny4",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Looney",
+   "handle": "wasthatawolf",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 11
+  },
+  {
+   "artist": "MIGRATING LINES",
+   "handle": "MigratingLines",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 2,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Melih Polat",
+   "handle": "melihpolat_",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Mighty Shroom",
+   "handle": "mighty_shroom",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Mike Three",
+   "handle": "0xMikeThree",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Mr. Million Miles Away",
+   "handle": "bitcoinsmiles",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 2,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Ndhoz",
+   "handle": "Ndhoz_dotule",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 6
+  },
+  {
+   "artist": "OOAKOSIMO",
+   "handle": "OoakosiM",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 223
+  },
+  {
+   "artist": "ParisianForge",
+   "handle": "ParisianForge",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Prateek Dhiman",
+   "handle": "prateekdhiman07",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 2,
+   "archiveMentions": 4
+  },
+  {
+   "artist": "REY",
+   "handle": "reylarsdam",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Rare Scrilla and Ghostface Killah",
+   "handle": "jpegkillah",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 2,
+   "archiveMentions": 38
+  },
+  {
+   "artist": "RareDesigner",
+   "handle": "pepe_designer",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 14
+  },
+  {
+   "artist": "RebelMoney",
+   "handle": "rebelmoneyart",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 2,
+   "archiveMentions": 54
+  },
+  {
+   "artist": "Robness",
+   "handle": "ROBNESSOFFICIAL",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 15
+  },
+  {
+   "artist": "Roger Fliporian",
+   "handle": "edrign",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "SeerLight",
+   "handle": "seerlight",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "Sketch x 80sKurt Russell",
+   "handle": "russellcrowe",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 2,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Skife",
+   "handle": "SkifeHam",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 3
+  },
+  {
+   "artist": "Tommy Marcheschi",
+   "handle": "YungGucciT",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 5
+  },
+  {
+   "artist": "VIVALAVANDAL x ShowerShoes",
+   "handle": "viva_la_vandal",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 2,
+   "archiveMentions": 94
+  },
+  {
+   "artist": "VSTRVL",
+   "handle": "VSTRVL_FFF",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 2,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "WetPotatoBrain",
+   "handle": "wetpotatobrain",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "WomanNFT",
+   "handle": "WomanNFT",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 32
+  },
+  {
+   "artist": "Yog Joshi",
+   "handle": "kiranjoshi235",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 2,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "batz",
+   "handle": "batzdu",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 2,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "calboy99",
+   "handle": "calboy99",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 2,
+   "archiveMentions": 5
+  },
+  {
+   "artist": "coriot",
+   "handle": "coriotcg",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 4
+  },
+  {
+   "artist": "mellow",
+   "handle": "strategy512",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 7
+  },
+  {
+   "artist": "nicedayJULES",
+   "handle": "nicedayJules",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "olliesblog",
+   "handle": "olliesblog",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 2,
+   "archiveMentions": 12
+  },
+  {
+   "artist": "realPepstein",
+   "handle": "realpepstein",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 2,
+   "archiveMentions": 4
+  },
+  {
+   "artist": "shorty",
+   "handle": "dshorty81",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 2,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "uttermelon",
+   "handle": "uttermelon",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 2,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "0010",
+   "handle": "dhjs_0010",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "6529er",
+   "handle": "6529er",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "9272",
+   "handle": "financenewsguy",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "AD_AD",
+   "handle": "adam_disbrow",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "ALIENQUEEN",
+   "handle": "ALIENQUEENNFT",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "ARCHAIN NAIR",
+   "handle": "ArchanNair",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Andrea Chiampo",
+   "handle": "Andrea_Chiampo",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Aravan",
+   "handle": "aravan_es",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Arwyn",
+   "handle": "mrarwyn",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 22
+  },
+  {
+   "artist": "Baldopg",
+   "handle": "baldopg",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Basqkek x HODLPIG",
+   "handle": "basqkek",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 6
+  },
+  {
+   "artist": "Ben Strauss",
+   "handle": "benstraussphoto",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "Bitcoin Audio",
+   "handle": "bitcoinbasement",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 10
+  },
+  {
+   "artist": "Bitstradamus",
+   "handle": "bitstradamus",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 3
+  },
+  {
+   "artist": "Booo_Urns",
+   "handle": "booo_urnsz",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 5
+  },
+  {
+   "artist": "Brocciu",
+   "handle": "Brocciuz",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 3
+  },
+  {
+   "artist": "Bunzy",
+   "handle": "0xBunzy",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 27
+  },
+  {
+   "artist": "C3",
+   "handle": "c3naaX",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "CATH Simard",
+   "handle": "cathsimard_",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "CRYPTOPHOBIA",
+   "handle": "_cryptophobia",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 34
+  },
+  {
+   "artist": "Cana",
+   "handle": "cryptocana",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 3
+  },
+  {
+   "artist": "Caravaggio x Vincent Van Dough",
+   "handle": "vince_van_dough",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 57
+  },
+  {
+   "artist": "Chainleft",
+   "handle": "chainleftist",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Claire Silver",
+   "handle": "ClaireSilver12",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Coldie",
+   "handle": "Coldie",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Cornholio the Great",
+   "handle": "great_martis",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "CryptoAli",
+   "handle": "CryptoAli1",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Cullen Colors",
+   "handle": "CullenColors",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Cyph3rpunk5",
+   "handle": "cyph3rpunk5",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 4
+  },
+  {
+   "artist": "DCOT",
+   "handle": "DCOT15",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 26
+  },
+  {
+   "artist": "DEFSTALKR",
+   "handle": "DEFSTALKR",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "DJ Q-Bert x Rare Scrilla",
+   "handle": "djqbert",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 4
+  },
+  {
+   "artist": "DarkFluffyRabbit",
+   "handle": "DarkFluffyRabb1",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 17
+  },
+  {
+   "artist": "DarkFluffyRabbit x Darkfarms",
+   "handle": "darkfarms1",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 4
+  },
+  {
+   "artist": "Davesta",
+   "handle": "davesta_xcp",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 17
+  },
+  {
+   "artist": "DeeKay",
+   "handle": "deekaymotion",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Digital Ape",
+   "handle": "sebdigitalst",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Dmitri Cherniak",
+   "handle": "dmitricherniak",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Dr Suss",
+   "handle": "thedrsuss",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 12
+  },
+  {
+   "artist": "EclecticMethod",
+   "handle": "EclecticMethod",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "El Cholo Pepe x Arwyn",
+   "handle": "mrarwyn",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 22
+  },
+  {
+   "artist": "Exmoor Beast",
+   "handle": "TheExmoorBeast",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 3
+  },
+  {
+   "artist": "FAKERARES",
+   "handle": "fakerares_xcp",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 232
+  },
+  {
+   "artist": "FRIENDS WITH YOU",
+   "handle": "Friendswithyou",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Father John x Chaotic Crypto",
+   "handle": "doggfathercrew",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 6
+  },
+  {
+   "artist": "Fawkek",
+   "handle": "cryptofawkek",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Finest Rares",
+   "handle": "_____jason___",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "GRNQRTR",
+   "handle": "grnqrtr",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 5
+  },
+  {
+   "artist": "Hitchdank",
+   "handle": "hitchdank",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Hitomi Matsui",
+   "handle": "hitomi_matsui",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "ICQPEPE",
+   "handle": "pepe",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "IPUTSA",
+   "handle": "iputsa",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "JDog",
+   "handle": "jdogresorg",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 7
+  },
+  {
+   "artist": "JOE ATANG",
+   "handle": "JOEATANG",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Jaen",
+   "handle": "jaendotart",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Jake",
+   "handle": "jakethedegen",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Jake Fried",
+   "handle": "jakejfried",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Jeremy Booth",
+   "handle": "jeremybooth",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Joe Pease",
+   "handle": "joepease",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Kaph Resh and Prefer Wealth",
+   "handle": "preferwealth",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "Killer Acid",
+   "handle": "killeracid",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "Killian Moore",
+   "handle": "mazemoore",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "KristyGlas",
+   "handle": "KristyGlas",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Ksenia Buridanova",
+   "handle": "buridanova",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 6
+  },
+  {
+   "artist": "L_vs_D",
+   "handle": "Zbyku",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Limbo Mask",
+   "handle": "Limbo_Mask",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 7
+  },
+  {
+   "artist": "Logik",
+   "handle": "logik185",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 11
+  },
+  {
+   "artist": "Looks Rare",
+   "handle": "utxo__",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Lun Kazuki",
+   "handle": "LunKazuki",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Luna x Al x Pepe",
+   "handle": "pepe",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "M.BTC",
+   "handle": "m__btc",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 5
+  },
+  {
+   "artist": "METAVOXELZ",
+   "handle": "metavoxelz",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "Mallery",
+   "handle": "mr_mallery",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Marcus Connor",
+   "handle": "MarcusConnorNH",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 3
+  },
+  {
+   "artist": "Matt Kane",
+   "handle": "MattKaneArtist",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 3
+  },
+  {
+   "artist": "Matt Szczur",
+   "handle": "superSZCZ4",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Mekabu",
+   "handle": "monolag",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 5
+  },
+  {
+   "artist": "Mike in Space and WhoIsIt",
+   "handle": "mikeinspace",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 17
+  },
+  {
+   "artist": "Moxarra Gonzalez",
+   "handle": "moxarra",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 10
+  },
+  {
+   "artist": "Mr. P x Stack",
+   "handle": "stackbtcup",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 15
+  },
+  {
+   "artist": "Mumbling Bearded Freak and Deep Honey",
+   "handle": "deephoneystudio",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "NFTMANC x VIVA LA VANDAL",
+   "handle": "vandaloruins",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "NessGraphics",
+   "handle": "Ness_Graphics",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Nicolas Sierro",
+   "handle": "NicolasSierro",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "Nipdog",
+   "handle": "nipdog2",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 3
+  },
+  {
+   "artist": "OSF",
+   "handle": "osf_nft",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Odious",
+   "handle": "todayodious",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Oliver Morris",
+   "handle": "official_coder",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 6
+  },
+  {
+   "artist": "Oni Giri",
+   "handle": "7cryptocurrency",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "Other World",
+   "handle": "otherworld_xx",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Paper Ape",
+   "handle": "paperbuddha",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 3
+  },
+  {
+   "artist": "Pepe Flyers",
+   "handle": "pepeflyers",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "Pepe Inside",
+   "handle": "pepeinsidee",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 9
+  },
+  {
+   "artist": "Pepe Inside x Hammad",
+   "handle": "pepeinsidee",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 9
+  },
+  {
+   "artist": "PopWonder",
+   "handle": "PopWonderNFT",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Prorok",
+   "handle": "proroketh",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 3
+  },
+  {
+   "artist": "RAHVO",
+   "handle": "rahvoart",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Raf Grassetti",
+   "handle": "rafagrassetti",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Rare Scrilla x VLAD COSTEA",
+   "handle": "thevladcostea",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 10
+  },
+  {
+   "artist": "Rarejay",
+   "handle": "rarejay_",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 15
+  },
+  {
+   "artist": "Regan",
+   "handle": "DankFroglet",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Remster",
+   "handle": "remster333",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 7
+  },
+  {
+   "artist": "Rik Oostenbroek",
+   "handle": "RikOostenbroek",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "RubenBigQ",
+   "handle": "ruben_bigq",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 5
+  },
+  {
+   "artist": "Ryan D. Anderson",
+   "handle": "ItsRyanAnderson",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Ryan Koopmans",
+   "handle": "ryankoopmans",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "SAHREDTOY",
+   "handle": "Sahred_toy",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "SASHA CHUDO",
+   "handle": "chudosasshha",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 9
+  },
+  {
+   "artist": "STVDIO NOUVEAU",
+   "handle": "stvdionouveau",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Saed",
+   "handle": "SaedKh8",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 17
+  },
+  {
+   "artist": "Shaban Shaame",
+   "handle": "shaban_shaame",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 4
+  },
+  {
+   "artist": "Shannon Code",
+   "handle": "shannonnullcode",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "Shawn Leary",
+   "handle": "shawnleary",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 10
+  },
+  {
+   "artist": "Sir Barry Gibb and Maya",
+   "handle": "g0barry",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 7
+  },
+  {
+   "artist": "StoneOfJordan",
+   "handle": "stoneofjordanft",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "SuperTrip64",
+   "handle": "SuperTrip64",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Theo Goodman",
+   "handle": "theog__",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 69
+  },
+  {
+   "artist": "ThreePanelCrimes",
+   "handle": "fak3panelcrimes",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 6
+  },
+  {
+   "artist": "Tizar Berandalan",
+   "handle": "tizarrr",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 3
+  },
+  {
+   "artist": "Tj0",
+   "handle": "0xTjo",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "Tommy Wilson",
+   "handle": "tommy_wilson_",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "VeryRareFren",
+   "handle": "VeryRareFren",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Virtual Alaska",
+   "handle": "virtualalaska_",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 8
+  },
+  {
+   "artist": "Wazzu",
+   "handle": "Beach_Boho",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "Whalesink",
+   "handle": "WhalesinkXXX",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "Winnie",
+   "handle": "Winnie_NFT",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 7
+  },
+  {
+   "artist": "Wizard X",
+   "handle": "wizardx_0x",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 5
+  },
+  {
+   "artist": "Worm",
+   "handle": "WormDavid",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 7
+  },
+  {
+   "artist": "Zaid Kirdsey",
+   "handle": "Jruffhouse",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "Zoku",
+   "handle": "zoku_nft",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 23
+  },
+  {
+   "artist": "cadmonkey",
+   "handle": "apeinacoupe",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 3
+  },
+  {
+   "artist": "cryptograffiti",
+   "handle": "cryptograffiti",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "dark0",
+   "handle": "dark0eth",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 1
+  },
+  {
+   "artist": "metadad",
+   "handle": "metadad_",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "nathan sonic",
+   "handle": "nathansonic",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "nathansonic",
+   "handle": "nathansonic",
+   "source": "pepe.wtf",
+   "confidence": "confirmed",
+   "cards": 1,
+   "archiveMentions": 2
+  },
+  {
+   "artist": "purplehat.eth",
+   "handle": "purphat",
+   "source": "pepe.wtf",
+   "confidence": "curated",
+   "cards": 1,
+   "archiveMentions": 0
+  },
+  {
+   "artist": "realPepstein x Rare Designer",
+   "handle": "pepe_designer",
+   "source": "telegram-archive",
+   "confidence": "inferred",
+   "cards": 1,
+   "archiveMentions": 14
+  }
+ ]
+}

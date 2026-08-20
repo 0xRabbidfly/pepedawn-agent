@@ -5,6 +5,12 @@ import { fakeRaresCarouselAction } from '../actions/fakeRaresCarousel';
 import { fakeRaresContextProvider, userHistoryProvider } from '../providers';
 import { loreDetectorEvaluator } from '../evaluators';
 import { KnowledgeOrchestratorService } from '../services/KnowledgeOrchestratorService';
+import { XHarvestService } from '../services/XHarvestService';
+import {
+  matchForConversation, formatForTelegram, markUsed,
+  isXActivityQuestion, buildDigest, formatDigestForTelegram,
+  type TelegramCard,
+} from '../utils/xHarvest';
 import { MemoryStorageService } from '../services/MemoryStorageService';
 import { TelemetryService, type SmartRouterDecisionLog } from '../services/TelemetryService';
 import { CardDisplayService } from '../services/CardDisplayService';
@@ -521,6 +527,7 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
           });
           await recordBotTurn(response);
           await showCardForAnswer(context, plan.primaryCardAsset, response, actionCallback, userAskedAboutCards(context));
+          await revealMatchingTweet(runtime, message.roomId?.toString() ?? '', text);
         }
 
         markHandled();
@@ -582,6 +589,73 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
  * - Auto-refreshes card index from GitHub every hour
  * - Zero-downtime updates when new cards are added
  */
+/**
+ * Send an X card straight to Telegram.
+ *
+ * Not via the action callback: that path hardcodes `parse_mode: 'Markdown'`,
+ * and these cards are HTML because handles like @subterranean_1 carry
+ * underscores that Markdown treats as italic delimiters and rejects.
+ */
+async function sendXCard(
+  runtime: IAgentRuntime,
+  chatId: string,
+  card: TelegramCard
+): Promise<boolean> {
+  const token = (runtime.getSetting('TELEGRAM_BOT_TOKEN') as string) || '';
+  if (!token || !chatId) return false;
+  const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      chat_id: chatId, text: card.text,
+      parse_mode: card.parseMode,
+      disable_web_page_preview: card.disableWebPagePreview,
+    }),
+  });
+  if (!res.ok) logger.warn(`[XHarvest] send failed: ${res.status}`);
+  return res.ok;
+}
+
+/**
+ * Last time a tweet was revealed in a room. Without this, three questions in a
+ * row about the same person reveal three different tweets in quick succession.
+ */
+const lastXRevealAt = new Map<string, number>();
+const X_REVEAL_COOLDOWN_MS = 30 * 60 * 1000;
+
+/**
+ * Reveal a harvested tweet that connects to what was just said.
+ *
+ * Deliberately a separate message rather than context for the reply: the model
+ * never sees the post, so it cannot absorb a stranger's claim into its own
+ * voice or answer from it. PEPEDAWN shows the tweet; it does not learn it.
+ *
+ * Sent directly rather than through the callback because that path hardcodes
+ * Markdown, and these cards are HTML - handles like @subterranean_1 carry
+ * underscores that Markdown would choke on.
+ */
+async function revealMatchingTweet(
+  runtime: IAgentRuntime,
+  roomId: string,
+  userText: string
+): Promise<void> {
+  try {
+    const now = Date.now();
+    const last = lastXRevealAt.get(roomId);
+    if (last !== undefined && now - last < X_REVEAL_COOLDOWN_MS) return;
+
+    const post = matchForConversation(userText);
+    if (!post) return;
+
+    if (!(await sendXCard(runtime, roomId, formatForTelegram(post, 'Saw this on X:')))) return;
+    markUsed(post.id);
+    lastXRevealAt.set(roomId, now);
+  } catch (error) {
+    // Revealing a tweet is a bonus, never a reason for a reply to fail.
+    logger.debug({ error }, '[XHarvest] reveal skipped');
+  }
+}
+
 export const fakeRaresPlugin: Plugin = {
   name: 'fake-rares',
   description: 'Fake Rares card display and community features with auto-updating index',
@@ -615,7 +689,7 @@ export const fakeRaresPlugin: Plugin = {
   
   providers: [fakeRaresContextProvider, userHistoryProvider],
   evaluators: [],
-  services: [KnowledgeOrchestratorService, MemoryStorageService, TelemetryService, CardDisplayService, SmartRouterService],
+  services: [KnowledgeOrchestratorService, MemoryStorageService, TelemetryService, CardDisplayService, SmartRouterService, XHarvestService],
   
   events: {
     MESSAGE_RECEIVED: [
@@ -816,6 +890,25 @@ export const fakeRaresPlugin: Plugin = {
           // Placed before dispatch rather than inside any one command: the next
           // abused endpoint will not be /fr. It also covers the natural-language
           // "remember this" path, which writes to the same store.
+          // "What are people saying about Fake Rares on X?" wants the state of
+          // the feed, not a lore answer and not a single tweet. Answered from
+          // the harvest store directly - the model is not involved, so nothing
+          // a stranger posted can be restated as something PEPEDAWN knows.
+          if (isXActivityQuestion(text) && (isReplyToBot || hasBotMention || isDirectMessage)) {
+            const digest = buildDigest(3);
+            const sent = await sendXCard(
+              runtime,
+              message.roomId?.toString() ?? '',
+              formatDigestForTelegram(digest)
+            );
+            if (sent) {
+              logger.info(`[XHarvest] answered an X-activity question with ${digest.length} post(s)`);
+              message.metadata = message.metadata || {};
+              (message.metadata as any).__handledByCustom = true;
+              return;
+            }
+          }
+
           const anyCommand = isHelp || isStart || isF || isFCarousel || isC || isP || isFr || isVouch || isFm || isFc || isXcp;
           if (anyCommand || hasRememberCommand) {
             const from = params.ctx?.message?.from;

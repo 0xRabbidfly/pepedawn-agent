@@ -5,6 +5,44 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.3.0] - 2026-08-19
+
+### Added
+- **X harvest.** PEPEDAWN now collects recent Fake Rares / Rare Pepes activity
+  from X via the xAI Agent Tools API and uses it three ways: it volunteers an
+  item when the channel has been quiet, it reveals one that connects to what is
+  being said, and it answers "what are people saying on X?" with a short
+  digest. Posts are rendered as a Telegram card - 𝕏 mark, linked handle, the
+  post itself, and its like / retweet / reply counts.
+- Harvested posts are **shown, never fed to the model.** The reveal and the
+  digest are sent as their own messages rather than as context for a generated
+  reply, so nothing a stranger posted can be restated in PEPEDAWN's own voice
+  or answered from as though it were known. This is why the cards are HTML:
+  the callback path hardcodes Markdown, which chokes on handles like
+  @subterranean_1.
+- `scripts/x-probe.ts` - read-only reconnaissance against the X data API.
+  Spends nothing without an explicit `--budget`.
+- `src/data/artist-handles.json` - 271 artist-to-X-handle mappings covering 692
+  of 898 cards, merged from pepe.wtf curated attribution and handles shared in
+  the Telegram archive, each tagged with its source and confidence.
+- New settings: `X_HARVEST_ENABLED`, `X_HARVEST_INTERVAL_HOURS`, `XAI_API_KEY`,
+  `XAI_MODEL`.
+
+### Fixed
+- **`periodicContent` no longer calls `getUpdates`.** The hourly activity check
+  polled the Telegram update queue directly, competing with the bot's own
+  polling - the documented cause of a lost user message. It now reads the room
+  history the bot already persists.
+
+### Notes
+- Harvested posts are deliberately kept out of the knowledge corpus. They are
+  unreviewed third-party claims, and `memories` carries a 3.0 retrieval weight;
+  ingesting them would reopen, more widely, the hole that `/fr` gating closed in
+  5.1.0. They expire after 14 days.
+- Query set was chosen by measurement, not guesswork: phrase and market search
+  returned ~50% useful posts; hashtag and card-ticker search returned almost
+  none and are not used. See `HARVEST_QUERIES` for why each was kept or dropped.
+
 ## [Unreleased]
 
 ## [5.2.0] - 2026-08-19
