@@ -110,6 +110,14 @@ DigitalOcean droplet `134.122.45.20`, `ssh -i ~/.ssh/pepedawn root@…`,
 project at `/root/pepedawn-agent/pepe-tg`, PM2 app `pepe-tg`, Bun runtime.
 Deploy with `./scripts/deploy.sh`.
 
+📋 **The full promotion process — local → master → prod, with the checklist,
+the known-good test baseline and the credential situation — is
+`pepe-tg/docs/PROMOTION.md`. Read it before releasing.** Two things that catch
+people: **the dev machine has no GitHub write credentials** (reads are
+anonymous because the repo is public, so a stale `origin/master` looks like
+divergence — always `git fetch` first), and **`.env` is not deployed**, so a
+new variable must be added to the droplet by hand or the feature stays off.
+
 - **Nightly `cron_restart` at 02:00**, plus `pm2 delete` on every deploy. Any
   in-memory state is lost daily — this is why conversation history must persist.
 - ~300 restarts ≈ one per day of uptime. Not a crash loop.
