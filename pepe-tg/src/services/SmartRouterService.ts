@@ -16,7 +16,11 @@ import { describeCard, detectCollection, randomCard } from '../utils/cardFacts';
 import { inActiveExchange } from '../conversation/cadenceGovernor';
 import { getCardInfo } from '../data/fullCardIndex';
 import { describeTraitMatch } from '../utils/cardTraits';
-import { answerCardQuery, pepedawnMeansTheCard } from '../utils/cardQueries';
+import {
+  answerCardQuery,
+  asksAttributionOfAnUnnamedCard,
+  pepedawnMeansTheCard,
+} from '../utils/cardQueries';
 import { recallForPrompt, recordTurn, recentTurns } from '../conversation/shadow';
 import { isInFullIndex } from '../data/fullCardIndex';
 
@@ -956,6 +960,22 @@ Say briefly why it is worth a look — something true about the art, the artist 
       return this.buildChatPlan(trimmed, roomId, null, undefined, {
         knownFact: structured.fact,
         card: structured.asset,
+      });
+    }
+
+    // Who made a card is answered from the index or not at all.
+    //
+    // When the index cannot resolve the card, this used to fall through to
+    // retrieval, which composes from prose - and prose includes the last eight
+    // turns of the room. On 2026-08-20 those turns still held the bot's own
+    // earlier wrong answer, so "who is the true creator of that card?" was
+    // answered by quoting itself. Asking which card is the one response that
+    // cannot be poisoned by what anyone, including the bot, said earlier.
+    if (asksAttributionOfAnUnnamedCard(trimmed)) {
+      logger.debug({ query: trimmed }, '[SmartRouter] Attribution asked of no resolvable card');
+      return this.buildChatPlan(trimmed, roomId, null, undefined, {
+        knownFact:
+          'Which card do you mean? Artists are credited from the card index, never guessed at.',
       });
     }
 

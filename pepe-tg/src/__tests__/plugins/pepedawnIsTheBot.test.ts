@@ -45,18 +45,27 @@ describe('PEPEDAWN the bot is not PEPEDAWN the card', () => {
     expect(firstKnownAssetIn('PEPEDAWN reckons FREEDOMKEK started it all')).toBe('FREEDOMKEK');
   });
 
+  // "who made it?" with no card in play now asks which card, rather than
+  // reaching retrieval - attribution is answered from the index or not at all.
+  // What matters here is unchanged: no card is inherited from the bot's name.
   it('does not inherit the card when the bot named itself', async () => {
     const router = await makeRouter();
     router.recordUserTurn('a', 'are you alive pepedawn?', 'bob');
     router.recordBotTurn('a', 'Alive and lurking. PEPEDAWN endures.');
-    expect((await router.planRouting('who made it?', 'a')).knownFact).toBeUndefined();
+    const plan = await router.planRouting('who made it?', 'a');
+    expect(plan.knownFact).not.toContain('PEPEDAWN');
+    expect(plan.knownFact).not.toContain('rabbidfly');
+    expect(plan.card).toBeUndefined();
   });
 
   it('does not inherit the card when someone addressed the bot', async () => {
     const router = await makeRouter();
     router.recordUserTurn('c', 'hey pepedawn what do you think', 'bob');
     router.recordBotTurn('c', 'decent drop honestly');
-    expect((await router.planRouting('who made it?', 'c')).knownFact).toBeUndefined();
+    const plan = await router.planRouting('who made it?', 'c');
+    expect(plan.knownFact).not.toContain('PEPEDAWN');
+    expect(plan.knownFact).not.toContain('rabbidfly');
+    expect(plan.card).toBeUndefined();
   });
 
   it('does inherit it when someone genuinely asked about the card', async () => {

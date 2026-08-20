@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'bun:test';
-import { answerCardQuery, isStructuredCardQuery } from '../../utils/cardQueries';
+import {
+  answerCardQuery,
+  asksAttributionOfAnUnnamedCard,
+  isStructuredCardQuery,
+} from '../../utils/cardQueries';
 import { randomCard, describeCard } from '../../utils/cardFacts';
 
 describe('structured card queries', () => {
@@ -157,6 +161,54 @@ describe('assets match as whole words', () => {
   });
 });
 
+describe('production regression 2026-08-20: attribution answered from chat prose', () => {
+  /**
+   * The bot's own wrong answer became its source.
+   *
+   * 10:32 the bot said "DJPepe was created by rabbidfly" (the lookup bug). A
+   * user repeated it back, the bot restated it, and both turns stayed in the
+   * room transcript. At 11:44 "who is the true creator of that card?" matched
+   * none of the attribution words, fell through to retrieval - which composes
+   * from prose, transcript included - and the bot quoted itself.
+   */
+  const PRODUCTION_MESSAGE =
+    'Umm pepedawn - now that you have been code cleansed under the church of djpepe- ' +
+    'who is the true creator of that card?';
+
+  it('answers the exact message from the channel out of the index', () => {
+    const a = answerCardQuery(PRODUCTION_MESSAGE);
+    expect(a?.asset).toBe('DJPEPE');
+    expect(a?.fact).toContain('Rare Scrilla');
+    expect(a?.fact).not.toContain('rabbidfly');
+  });
+
+  it('recognises the ways people actually ask who made a card', () => {
+    for (const q of [
+      'who is the creator of djpepe?',
+      'whose card is djpepe?',
+      'djpepe was made by who?',
+      'who is behind djpepe?',
+      'who drew djpepe?',
+      'who did djpepe?',
+    ]) {
+      expect(answerCardQuery(q)?.fact).toContain('Rare Scrilla');
+    }
+  });
+
+  it('leaves a general origin question to lore', () => {
+    // "who created Fake Rares?" has no card in view and is not the index's to
+    // answer - it must still reach retrieval.
+    expect(answerCardQuery('who created fake rares?')).toBeNull();
+    expect(asksAttributionOfAnUnnamedCard('who created fake rares?')).toBe(false);
+  });
+
+  it('flags attribution asked of a card it cannot resolve', () => {
+    expect(asksAttributionOfAnUnnamedCard('who is the true creator of that card?')).toBe(true);
+    expect(asksAttributionOfAnUnnamedCard('who made it?')).toBe(true);
+    expect(asksAttributionOfAnUnnamedCard('gm everyone')).toBe(false);
+  });
+});
+
 describe('routing: structured queries reach the lookup', () => {
   const makeRouter = async () => {
     const { SmartRouterService } = await import('../../services/SmartRouterService');
@@ -184,6 +236,15 @@ describe('routing: structured queries reach the lookup', () => {
     );
     expect(plan.knownFact).toContain('PEPERMINE');
     expect(plan.knownFact).toContain('150');
+  });
+
+  it('asks which card when attribution cannot be resolved, instead of guessing', async () => {
+    // The 11:44 shape: attribution asked of "that card", nothing the index can
+    // resolve. Retrieval must not get the chance to answer it from prose.
+    const router = await makeRouter();
+    const plan = await router.planRouting('who is the true creator of that card?', 'room');
+    expect(plan.knownFact).toContain('Which card');
+    expect(plan.knownFact).not.toContain('rabbidfly');
   });
 
   it('routes the djpepe question to the right card end to end', async () => {
@@ -252,9 +313,13 @@ describe('follow-up questions resolve the card in play', () => {
     expect(plan.knownFact).not.toContain('FREEDOMKEK');
   });
 
-  it('does not invent a subject when nothing has been discussed', async () => {
+  it('asks which card rather than inventing a subject', async () => {
+    // It used to fall through to retrieval, which answers from prose - and
+    // prose includes the room transcript. Asking is the only answer that
+    // cannot be poisoned by what was said earlier.
     const router = await makeRouter();
     const plan = await router.planRouting('who made it?', 'empty-room');
-    expect(plan.knownFact).toBeUndefined();
+    expect(plan.knownFact).toContain('Which card');
+    expect(plan.card).toBeUndefined();
   });
 });

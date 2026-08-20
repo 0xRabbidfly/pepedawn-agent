@@ -5,6 +5,29 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.3.5] - 2026-08-20
+
+### Fixed
+
+- The bot's own wrong answer became its source. At 10:32 it said "DJPepe was
+  created by rabbidfly" (the lookup bug fixed in 5.3.4). A user repeated that
+  back to it, the bot restated it, and both turns stayed in the room transcript.
+  An hour later - after 5.3.4 was live - "who is the true creator of that card?"
+  was answered "The true creator is rabbidfly", composed from that transcript.
+
+  Two gaps let it happen. The attribution vocabulary was five phrases
+  (`artist`, `who made`, `who drew`, `who created`, `created by`) and matched
+  none of "who is the true creator", so the question never reached the card
+  index at all. And when the index does not answer, the question falls to
+  retrieval, which composes from prose - including the last eight turns of the
+  room, where anything the bot previously said reads as established.
+
+  Attribution is now answered from the card index or not at all. The vocabulary
+  covers how people actually ask - creator, made by, drawn by, whose card, who
+  is behind, who did - and a question about who made "that card", where no card
+  can be resolved, asks which card rather than reaching retrieval. Asking is the
+  only answer that cannot be poisoned by what was said earlier in the room.
+
 ## [5.3.4] - 2026-08-20
 
 ### Fixed

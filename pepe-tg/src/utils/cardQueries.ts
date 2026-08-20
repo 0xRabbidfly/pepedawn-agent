@@ -127,6 +127,52 @@ function cardsByArtist(artist: string): CardInfo[] {
 }
 
 /**
+ * The ways people ask who made a card.
+ *
+ * The list was `artist`, `who made`, `who drew`, `who created`, `created by`.
+ * "who is the true creator of that card?" matched none of them, so the question
+ * fell through to retrieval and was answered from chat prose - which by then
+ * contained the bot's own earlier mistake. Attribution is the one thing in this
+ * community that must never be guessed at, so the vocabulary is broad and the
+ * gate below is closed rather than left to fall through.
+ */
+const ATTRIBUTION_WORDS = [
+  'artist',
+  'who made',
+  'who created',
+  'who drew',
+  'who did',
+  'who is behind',
+  "who's behind",
+  'creator',
+  'created by',
+  'made by',
+  'drawn by',
+  'whose card',
+];
+
+/** True when the message asks who made something. */
+export function asksAttribution(text: string): boolean {
+  const lower = text.toLowerCase();
+  return ATTRIBUTION_WORDS.some((w) => lower.includes(w));
+}
+
+/**
+ * True when attribution is asked of a card the text gestures at but does not
+ * name - "who is the true creator of that card?".
+ *
+ * Distinct from a general question like "who created Fake Rares?", which has no
+ * card in view and is perfectly answerable from lore.
+ */
+export function asksAttributionOfAnUnnamedCard(text: string): boolean {
+  if (!asksAttribution(text)) return false;
+  if (subjectCard(text)) return false;
+  return /\b(that|this|the|it|its|it's)\s+(card|one|asset|piece)\b|\bof\s+it\b|\bmade\s+it\b|\bcreated\s+it\b/i.test(
+    text
+  );
+}
+
+/**
  * Answer a factual card question from the index, or null if it isn't one.
  *
  * Deliberately conservative — anything it cannot answer exactly falls through
@@ -144,7 +190,7 @@ export function answerCardQuery(text: string, subject?: string): CardQueryAnswer
   const asks = (...words: string[]) => words.some((w) => lower.includes(w));
 
   // --- Artist of a specific card -----------------------------------------
-  if (card && asks('artist', 'who made', 'who drew', 'who created', 'created by')) {
+  if (card && ATTRIBUTION_WORDS.some((w) => lower.includes(w))) {
     return card.artist
       ? {
           fact: `${card.asset}${collectionSuffix(card)} is by ${card.artist}.`,
