@@ -4,11 +4,15 @@ import { describe, expect, it } from 'bun:test';
 
 describe('Environment Setup', () => {
   it('should verify configuration files exist', () => {
+    // This project builds with `bun run build.ts` and vite, not tsup. The
+    // starter template's tsup.config.ts has never existed here, so requiring
+    // it only ever produced a failure that everyone learned to ignore.
     const requiredFiles = [
       'package.json',
       'tsconfig.json',
       'tsconfig.build.json',
-      'tsup.config.ts',
+      'build.ts',
+      'vite.config.ts',
       'bunfig.toml',
     ];
 
@@ -69,14 +73,15 @@ describe('Environment Setup', () => {
     expect(tsconfig.compilerOptions).toHaveProperty('esModuleInterop');
   });
 
-  it('should have a valid tsup.config.ts for building', () => {
-    const tsupConfigPath = path.join(process.cwd(), 'tsup.config.ts');
-    expect(fs.existsSync(tsupConfigPath)).toBe(true);
+  it('should build from build.ts, wired up in package.json', () => {
+    const buildScriptPath = path.join(process.cwd(), 'build.ts');
+    expect(fs.existsSync(buildScriptPath)).toBe(true);
 
-    const tsupConfig = fs.readFileSync(tsupConfigPath, 'utf8');
-    expect(tsupConfig).toContain('defineConfig');
-    expect(tsupConfig).toContain('entry:');
-    expect(tsupConfig).toContain('src/index.ts');
+    const buildScript = fs.readFileSync(buildScriptPath, 'utf8');
+    expect(buildScript).toContain('src/index.ts');
+
+    const pkg = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf8'));
+    expect(pkg.scripts.build).toContain('build.ts');
   });
 
   it('should have a valid README.md file', () => {
@@ -84,6 +89,6 @@ describe('Environment Setup', () => {
     expect(fs.existsSync(readmePath)).toBe(true);
 
     const readme = fs.readFileSync(readmePath, 'utf8');
-    expect(readme).toContain('# Project Starter');
+    expect(readme).toContain('# PEPEDAWN Bot');
   });
 });

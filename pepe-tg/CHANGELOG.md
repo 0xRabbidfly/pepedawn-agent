@@ -5,6 +5,66 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.4.0] - 2026-08-20
+
+Type errors and test failures both to zero. `npx tsc --noEmit` reported 37
+errors and `bun test src/__tests__/` failed 10-12 tests plus one file that
+could not load; both had been treated as a known-good baseline for long enough
+to be written into the runbook. Three of the type errors were live bugs.
+
+### Fixed
+
+- **The user-history provider never reached a prompt.** `Provider.get` must
+  return a `ProviderResult`; this one returned bare strings, so `result.text`
+  was `undefined` on every call and the context it assembles - what a user
+  talks about, which artists they mention - was discarded. Its own tests
+  asserted the broken shape, which is why they never caught it.
+- **Two card handlers logged `[object Object]` instead of the error.**
+  `logger.error({ error }, "Error in /c handler")` against the action logger,
+  whose signature is `(message, error)`: the message became "[object Object]"
+  and the real error was formatted as the message. Same in `/p`.
+- **`TelemetryService` never implemented `stop()`.** `Service` declares it
+  abstract; the class had only a static `stop`, so the archive timer survived
+  shutdown. The static now delegates to a real instance method that clears it.
+- **The build silently shipped no type declarations.** `tsconfig.build.json`
+  listed three entry files, one of them `src/character.ts`, which was renamed
+  to `pepedawn.ts` long ago - so `tsc` bailed with TS6307 on the first import
+  outside that list and the build printed a warning and carried on. And because
+  `--incremental` state outlives the directory it describes, a stale
+  `tsconfig.build.tsbuildinfo` let `tsc` conclude declarations were up to date
+  after `dist` had just been deleted. Both fixed; `dist/index.d.ts` now exists.
+- Five imports pointed at `../models/transaction.js` and
+  `../events/transactionEvents.js`, which moved into `src/types/` at some point.
+  Type-only imports, so nothing broke at runtime and nothing flagged it.
+- `MediaExtension` existed in three copies that had drifted. The Commons and
+  Rare Pepes scrapes contain uppercase `"GIF"`; the shared copy used by
+  `CardDisplayService` did not allow it. Now one definition in `src/types/media.ts`.
+- `ZodError.errors` (removed in zod 4) → `.issues` in the plugin config
+  validator, which would have thrown while reporting a config error.
+
+### Changed
+
+- Card attachments now go through `asMedia()` in `src/utils/cardAttachments.ts`.
+  Core's `Media` type wants its `ContentType` enum, but `messageManager`
+  dispatches on MIME - `/^video\//`, the exact string `'image/gif'` - so the
+  MIME string is the real contract. Reconciled once, under a name, instead of
+  three unexplained casts.
+- PGlite query results are typed at the call site in `transactionHistory`, and
+  `result.rowCount` - which PGlite does not have - is gone. `COUNT(*)` is
+  coerced through one helper rather than `parseInt()` on a value that is
+  sometimes already a number.
+- **Scaffolding tests now assert this project's contract, not the ElizaOS
+  starter template's.** They required `tsup.config.ts` (this project builds with
+  `build.ts` and vite), a README beginning "# Project Starter", a vite frontend
+  step the build no longer has, and a plugin ordering the character has never
+  used. `build-order.test.ts` now runs the real build and checks what production
+  depends on: the bundle, the card indexes copied into `dist/data`, the PGlite
+  WASM, and the declarations.
+- `character-plugin-ordering.test.ts` imported `../character` and could not
+  load at all. It now imports `../pepedawn` and asserts the real ordering:
+  bootstrap, openai and sql lead; knowledge follows the AI providers; platform
+  plugins close.
+
 ## [5.3.5] - 2026-08-20
 
 ### Fixed

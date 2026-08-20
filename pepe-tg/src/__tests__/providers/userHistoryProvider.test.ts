@@ -3,11 +3,20 @@ import { userHistoryProvider } from '../../providers/userHistoryProvider';
 
 /**
  * userHistoryProvider Tests
- * 
+ *
  * This provider is tested primarily through integration tests.
- * Basic contract tests ensure it doesn't crash and returns strings.
+ * Basic contract tests ensure it doesn't crash and produces sane text.
+ *
+ * The provider returns a `ProviderResult`, not a string. It used to return
+ * bare strings - which type-checked nowhere and meant `result.text` was
+ * `undefined`, so nothing it produced ever reached a prompt. These tests
+ * asserted the broken shape, which is why they did not catch it.
  */
 describe('userHistoryProvider', () => {
+  /** The text the provider contributes, which is what every case here is about. */
+  const contextText = async (runtime: any, message: any): Promise<string> =>
+    (await userHistoryProvider.get(runtime, message, {} as any))?.text ?? '';
+
   const createMockRuntime = (mockMessages: any[] = []) => {
     return {
       agentId: 'bot-123',
@@ -33,20 +42,23 @@ describe('userHistoryProvider', () => {
   } as any);
 
   describe('Basic Contract', () => {
-    it('should return a string', async () => {
+    it('should return a ProviderResult carrying text', async () => {
       const runtime = createMockRuntime();
       const message = createMessage('user-1', 'hello');
-      
-      const context = await userHistoryProvider.get(runtime, message);
-      
-      expect(typeof context).toBe('string');
+
+      const result = await userHistoryProvider.get(runtime, message, {} as any);
+
+      // The shape matters as much as the content: a bare string here is
+      // dropped on the floor by composeState.
+      expect(result).toBeObject();
+      expect(typeof result.text).toBe('string');
     });
 
     it('should return empty string for bot messages', async () => {
       const runtime = createMockRuntime();
       const botMessage = createMessage('bot-123', 'hello');
       
-      const context = await userHistoryProvider.get(runtime, botMessage);
+      const context = await contextText(runtime, botMessage);
       
       expect(context).toBe('');
     });
@@ -58,7 +70,7 @@ describe('userHistoryProvider', () => {
       ]);
       
       const message = createMessage('user-1', 'what is PEPEDAWN?');
-      const context = await userHistoryProvider.get(runtime, message);
+      const context = await contextText(runtime, message);
       
       expect(context).toBe('');
     });
@@ -72,7 +84,7 @@ describe('userHistoryProvider', () => {
       ]);
       
       const message = createMessage('user-1', 'hey');
-      const context = await userHistoryProvider.get(runtime, message);
+      const context = await contextText(runtime, message);
       
       expect(typeof context).toBe('string');
       expect(context.length).toBeGreaterThan(0);
@@ -87,7 +99,7 @@ describe('userHistoryProvider', () => {
       ]);
       
       const message = createMessage('user-1', 'hey');
-      const context = await userHistoryProvider.get(runtime, message);
+      const context = await contextText(runtime, message);
       
       // PEPEDAWN mentioned 3x, FREEDOMKEK 1x
       expect(context).toContain('PEPEDAWN');
@@ -104,7 +116,7 @@ describe('userHistoryProvider', () => {
       );
       
       const message = createMessage('user-regular', 'hi');
-      const context = await userHistoryProvider.get(runtime, message);
+      const context = await contextText(runtime, message);
       
       expect(typeof context).toBe('string');
     });
@@ -124,7 +136,7 @@ describe('userHistoryProvider', () => {
       
       const runtime = createMockRuntime(messages);
       const message = createMessage('user-1', 'short question');
-      const context = await userHistoryProvider.get(runtime, message);
+      const context = await contextText(runtime, message);
       
       // Should be reasonable length (tested in integration, not mocked)
       expect(typeof context).toBe('string');
@@ -146,7 +158,7 @@ describe('userHistoryProvider', () => {
       } as any;
       
       const message = createMessage('user-1', 'test');
-      const context = await userHistoryProvider.get(runtime, message);
+      const context = await contextText(runtime, message);
       
       expect(context).toBe('');
     });
@@ -163,7 +175,7 @@ describe('userHistoryProvider', () => {
       ]);
       
       const message = createMessage('user-1', 'test');
-      const context = await userHistoryProvider.get(runtime, message);
+      const context = await contextText(runtime, message);
       
       // Should only mention cards from user-1 (PEPEDAWN, WAGMIWORLD, KEKGRAM)
       expect(context).toContain('alice');

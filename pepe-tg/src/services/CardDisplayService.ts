@@ -10,6 +10,7 @@
 import type { IAgentRuntime } from '@elizaos/core';
 import { Service, logger } from '@elizaos/core';
 import type { HandlerCallback } from '@elizaos/core';
+import { asMedia, type CardAttachment } from '../utils/cardAttachments';
 import type { CardInfo } from '../data/fullCardIndex';
 import {
   determineCardUrl,
@@ -144,12 +145,7 @@ export class CardDisplayService extends Service {
     }
 
     // Build attachments array (size checks removed - file_id caching handles all sizes)
-    const attachments: Array<{
-      url: string;
-      title: string;
-      source: string;
-      contentType: string;
-    }> = [];
+    const attachments: CardAttachment[] = [];
 
     // Primary media first (video/gif/image) - use updated URL after potential conversion
     attachments.push({
@@ -188,7 +184,7 @@ export class CardDisplayService extends Service {
 
     await params.callback({
       text: params.cardMessage,
-      attachments,
+      attachments: asMedia(attachments),
       buttons:
         params.buttons && params.buttons.length > 0 ? params.buttons : undefined,
       __fromAction: 'cardDisplay',

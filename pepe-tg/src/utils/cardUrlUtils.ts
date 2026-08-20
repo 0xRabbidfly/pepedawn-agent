@@ -10,7 +10,7 @@ import type { CardInfo } from '../data/fullCardIndex';
 // Base URL for Fake Rares card images (using /full/ for higher quality)
 const FAKE_RARES_BASE_URL = 'https://pepewtf.s3.amazonaws.com/collections/fake-rares/full';
 
-type MediaExtension = 'jpg' | 'jpeg' | 'gif' | 'png' | 'mp4' | 'webp';
+import type { MediaExtension } from '../types/media';
 
 export interface CardUrlResult {
   url: string;

@@ -5,7 +5,7 @@
  * Provides consistent error handling and metadata marking.
  */
 
-import { logger, type IAgentRuntime, type Memory } from '@elizaos/core';
+import { logger, MemoryType, type IAgentRuntime, type Memory } from '@elizaos/core';
 import { runWithAction } from './actionContext';
 
 export interface Action {
@@ -83,7 +83,10 @@ export async function executeCommand(
 
       // Mark as handled to prevent Bootstrap processing
       try {
-        params.message.metadata = params.message.metadata || {};
+        // `MemoryMetadata` requires a `type`; a bare {} is not one. The
+        // sentinel itself is what matters - it is what keeps bootstrap from
+        // answering a message a command has already handled.
+        params.message.metadata = params.message.metadata ?? { type: MemoryType.CUSTOM };
         (params.message.metadata as any).__handledByCustom = true;
       } catch (err) {
         logger.debug(`[CommandHandler] Failed to mark as handled: ${err}`);
@@ -148,7 +151,7 @@ export async function executeCommandAlways(
   if (!result) {
     logger.debug(`[CommandHandler] ${commandName} failed, but marking as handled`);
     try {
-      params.message.metadata = params.message.metadata || {};
+      params.message.metadata = params.message.metadata ?? { type: MemoryType.CUSTOM };
       (params.message.metadata as any).__handledByCustom = true;
     } catch {}
   }

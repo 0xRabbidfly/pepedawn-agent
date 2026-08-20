@@ -22,9 +22,16 @@ describe('Project Structure Validation', () => {
       expect(directoryExists(path.join(rootDir, 'src', '__tests__'))).toBe(true);
     });
 
-    it('should have a dist directory after building', () => {
-      // This test assumes the build has been run before testing
-      expect(directoryExists(path.join(rootDir, 'dist'))).toBe(true);
+    it('should have a build script that produces dist', () => {
+      // Asserting that dist/ exists made this test depend on someone having
+      // built first, and on build-order.test.ts not having cleaned up. What is
+      // actually invariant is that the build entry point exists and is wired
+      // up; build-order.test.ts runs it and checks the output.
+      const packageJson = JSON.parse(
+        fs.readFileSync(path.join(rootDir, 'package.json'), 'utf8')
+      );
+      expect(packageJson.scripts.build).toContain('build.ts');
+      expect(fileExists(path.join(rootDir, 'build.ts'))).toBe(true);
     });
   });
 
@@ -52,7 +59,9 @@ describe('Project Structure Validation', () => {
       expect(fileExists(path.join(rootDir, 'package.json'))).toBe(true);
       expect(fileExists(path.join(rootDir, 'tsconfig.json'))).toBe(true);
       expect(fileExists(path.join(rootDir, 'tsconfig.build.json'))).toBe(true);
-      expect(fileExists(path.join(rootDir, 'tsup.config.ts'))).toBe(true);
+      // This project builds with build.ts and vite, never tsup.
+      expect(fileExists(path.join(rootDir, 'build.ts'))).toBe(true);
+      expect(fileExists(path.join(rootDir, 'vite.config.ts'))).toBe(true);
       expect(fileExists(path.join(rootDir, 'bunfig.toml'))).toBe(true);
     });
 
@@ -74,7 +83,7 @@ describe('Project Structure Validation', () => {
       // Check dev dependencies - adjusted for actual dev dependencies
       expect(packageJson.devDependencies).toBeTruthy();
       // bun test is built-in, no external test framework dependency needed
-      expect(packageJson.devDependencies).toHaveProperty('tsup');
+      expect(packageJson.devDependencies).toHaveProperty('typescript');
     });
 
     it('should have proper TypeScript configuration', () => {
@@ -112,10 +121,12 @@ describe('Project Structure Validation', () => {
       const packageJson = JSON.parse(fs.readFileSync(path.join(rootDir, 'package.json'), 'utf8'));
       expect(packageJson.scripts).toHaveProperty('build');
 
-      // Check that tsup.config.ts exists and contains proper configuration
-      const tsupConfig = fs.readFileSync(path.join(rootDir, 'tsup.config.ts'), 'utf8');
-      expect(tsupConfig).toContain('export default');
-      expect(tsupConfig).toContain('entry');
+      // build.ts is a script, not a config module: it has no default export
+      // and no `entry:` key. What it must do is bundle the real entry point
+      // and copy the card data production reads from dist/data.
+      const buildScript = fs.readFileSync(path.join(rootDir, 'build.ts'), 'utf8');
+      expect(buildScript).toContain('./src/index.ts');
+      expect(buildScript).toContain('dist/data');
     });
   });
 
@@ -126,7 +137,7 @@ describe('Project Structure Validation', () => {
 
     it('should have appropriate documentation content', () => {
       const readmeContent = fs.readFileSync(path.join(rootDir, 'README.md'), 'utf8');
-      expect(readmeContent).toContain('Project Starter');
+      expect(readmeContent).toContain('PEPEDAWN');
 
       // Testing key sections exist without requiring specific keywords
       expect(readmeContent).toContain('Development');

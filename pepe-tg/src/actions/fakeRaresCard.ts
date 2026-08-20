@@ -60,7 +60,9 @@ export { FUZZY_MATCH_THRESHOLDS } from "../utils/fuzzyMatch";
 // TYPE DEFINITIONS
 // ============================================================================
 
-export type MediaExtension = "jpg" | "jpeg" | "gif" | "png" | "mp4" | "webp";
+// Re-exported for the actions and services that already import it from here.
+export type { MediaExtension } from "../types/media";
+import type { MediaExtension } from "../types/media";
 
 interface CardUrlResult {
   url: string;

@@ -6,6 +6,8 @@ import {
   type State,
 } from "@elizaos/core";
 import { createLogger } from "../utils/actionLogger";
+import { CardDisplayService } from "../services/CardDisplayService";
+import { asMedia, type CardAttachment } from "../utils/cardAttachments";
 import { type RarePepeCardInfo, RARE_PEPES_CARD_INDEX } from "../data/rarePepesIndex";
 import { checkAndConvertGif } from "../utils/gifConversionHelper";
 import {
@@ -34,7 +36,7 @@ import { escapeTelegramMarkdown } from "../utils/telegramMarkdown";
 
 const BASE_URL = "https://pepewtf.s3.amazonaws.com/collections/rare-pepes/full";
 
-type MediaExtension = "jpg" | "jpeg" | "gif" | "png" | "mp4" | "webp" | "GIF";
+import type { MediaExtension } from "../types/media";
 
 // ============================================================================
 // LOGGING
@@ -148,7 +150,9 @@ async function sendCardWithMedia(params: {
   // Try to use CardDisplayService if runtime is provided
   if (params.runtime) {
     try {
-      const service = params.runtime.getService('card-display');
+      const service = params.runtime.getService<CardDisplayService>(
+        CardDisplayService.serviceType
+      );
       if (service && typeof service.sendCard === 'function') {
         await service.sendCard({
           callback: params.callback,
@@ -186,7 +190,7 @@ async function sendCardWithMedia(params: {
   }
 
   // Send with media attachment (messageManager handles file_id caching automatically)
-  const attachments = [
+  const attachments: CardAttachment[] = [
     {
       url: finalUrl,
       title: params.assetName,
@@ -201,7 +205,7 @@ async function sendCardWithMedia(params: {
 
   await params.callback({
     text: params.cardMessage,
-    attachments,
+    attachments: asMedia(attachments),
     buttons: params.buttons && params.buttons.length > 0 ? params.buttons : undefined,
     __fromAction: "rarePepesCard",
     suppressBootstrap: true,
@@ -526,7 +530,7 @@ export const rarePepesCardAction: Action = {
       }
       
     } catch (error) {
-      logger.error({ error }, "Error in /p handler");
+      logger.error("Error in /p handler", error as Error);
       
       if (callback) {
         await callback({

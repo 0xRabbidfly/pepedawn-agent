@@ -13,6 +13,15 @@ async function cleanBuild(outdir = 'dist') {
     await rm(outdir, { recursive: true, force: true });
     console.log(`✓ Cleaned ${outdir} directory`);
   }
+
+  // tsc's --incremental state outlives the directory it describes. Left in
+  // place, tsc reads it, concludes the declarations are up to date, and emits
+  // nothing into the dist we just deleted - so the build reports success and
+  // ships no .d.ts at all.
+  const tsBuildInfo = 'tsconfig.build.tsbuildinfo';
+  if (existsSync(tsBuildInfo)) {
+    await rm(tsBuildInfo, { force: true });
+  }
 }
 
 async function build() {

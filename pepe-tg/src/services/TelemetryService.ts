@@ -170,7 +170,21 @@ export class TelemetryService extends Service {
   }
 
   static async stop(runtime: IAgentRuntime): Promise<void> {
+    const service = runtime.getService<TelemetryService>(TelemetryService.serviceType);
+    await service?.stop();
+  }
+
+  /**
+   * `Service` declares this abstract, and it was never implemented - the class
+   * only had the static above, which the runtime calls but which did nothing.
+   * The archive timer therefore survived shutdown.
+   */
+  async stop(): Promise<void> {
     logger.info('🛑 [Telemetry] Stopping service...');
+    if (this.archiveTimer) {
+      clearInterval(this.archiveTimer);
+      this.archiveTimer = null;
+    }
     logger.info('✅ [Telemetry] Service stopped');
   }
 

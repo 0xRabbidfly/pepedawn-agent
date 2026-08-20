@@ -183,7 +183,7 @@ export function formatCompactCitation(passage: RetrievedPassage): string {
       
       // Debug: Check if date is valid
       if (Number.isNaN(date.getTime())) {
-        logger.warn(`Invalid timestamp for ${shortRef}:`, passage.timestamp);
+        logger.warn({ timestamp: passage.timestamp }, `Invalid timestamp for ${shortRef}`);
       } else {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0');

@@ -5,7 +5,7 @@
  * emitted by TransactionMonitor and consumed by TelegramNotificationService.
  */
 
-import type { TransactionType } from '../models/transaction.js';
+import type { TransactionType } from './transaction.js';
 
 /**
  * Transaction type enum for events

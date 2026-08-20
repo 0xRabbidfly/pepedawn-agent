@@ -10,9 +10,23 @@
 import { PGlite } from '@electric-sql/pglite';
 import type { IAgentRuntime } from '@elizaos/core';
 import { Service, logger } from '@elizaos/core';
-import type { Transaction, TransactionQuery } from '../models/transaction.js';
+import type { Transaction, TransactionQuery } from '../types/transaction.js';
 import path from 'path';
 import fs from 'fs';
+
+/** A single aggregate column, as PGlite hands it back. */
+type CountRow = { count: string | number | bigint | null };
+
+/**
+ * COUNT(*) and MIN() arrive as a string when Postgres treats them as bigint and
+ * as a number when PGlite parses them; both shapes have been observed. The old
+ * code called parseInt() on the result, which does not type-check against the
+ * first shape and is silently wrong against the second.
+ */
+function toNumber(value: string | number | bigint | null | undefined): number {
+  if (value === null || value === undefined) return 0;
+  return typeof value === 'number' ? value : Number(value);
+}
 
 export class TransactionHistory extends Service {
   static serviceType = 'transactionHistory';
@@ -84,7 +98,7 @@ export class TransactionHistory extends Service {
       `);
       
       // Initialize schema version if not exists
-      const versionResult = await this.db.query(
+      const versionResult = await this.db.query<{ value: string }>(
         'SELECT value FROM metadata WHERE key = $1',
         ['schema_version']
       );
@@ -129,8 +143,8 @@ export class TransactionHistory extends Service {
       this.scheduleAutoPurge();
       
       // Log current row count for debugging
-      const countResult = await this.db.query('SELECT COUNT(*) as count FROM transactions');
-      const rowCount = countResult.rows[0]?.count || 0;
+      const countResult = await this.db.query<CountRow>('SELECT COUNT(*) as count FROM transactions');
+      const rowCount = toNumber(countResult.rows[0]?.count);
       
       logger.info({ dbPath: this.dbPath, rowCount }, 'TransactionHistory database initialized');
     } catch (error) {
@@ -194,8 +208,8 @@ export class TransactionHistory extends Service {
         ]
       );
 
-      // PGlite returns affectedRows, not rowCount
-      return (result.affectedRows || result.rowCount || 0) > 0;
+      // PGlite returns affectedRows; there is no rowCount on its Results.
+      return (result.affectedRows || 0) > 0;
     } catch (error) {
       logger.error({ error, txHash: transaction.txHash }, 'Failed to insert transaction');
       throw error;
@@ -313,12 +327,12 @@ export class TransactionHistory extends Service {
 
     try {
       const thirtyDaysAgo = Math.floor(Date.now() / 1000) - (30 * 24 * 60 * 60);
-      const result = await this.db.query(
+      const result = await this.db.query<CountRow>(
         `SELECT COUNT(*) as count FROM transactions
         WHERE type IN ('DIS_SALE', 'DEX_SALE') AND timestamp >= $1`,
         [thirtyDaysAgo]
       );
-      return parseInt(result.rows[0]?.count || '0', 10);
+      return toNumber(result.rows[0]?.count);
     } catch (error) {
       logger.error({ error }, 'Failed to get total sales count');
       throw error;
@@ -335,12 +349,12 @@ export class TransactionHistory extends Service {
 
     try {
       const thirtyDaysAgo = Math.floor(Date.now() / 1000) - (30 * 24 * 60 * 60);
-      const result = await this.db.query(
+      const result = await this.db.query<CountRow>(
         `SELECT COUNT(*) as count FROM transactions
         WHERE type IN ('DIS_LISTING', 'DEX_LISTING') AND timestamp >= $1`,
         [thirtyDaysAgo]
       );
-      return parseInt(result.rows[0]?.count || '0', 10);
+      return toNumber(result.rows[0]?.count);
     } catch (error) {
       logger.error({ error }, 'Failed to get total listings count');
       throw error;
@@ -361,7 +375,7 @@ export class TransactionHistory extends Service {
         'DELETE FROM transactions WHERE timestamp < $1',
         [thirtyDaysAgo]
       );
-      const deleted = result.rowCount || 0;
+      const deleted = result.affectedRows || 0;
       logger.info({ deleted }, 'Purged old transactions');
       return deleted;
     } catch (error) {
@@ -399,17 +413,20 @@ export class TransactionHistory extends Service {
     }
 
     try {
-      const totalResult = await this.db.query('SELECT COUNT(*) as count FROM transactions');
-      const total = parseInt(totalResult.rows[0]?.count || '0', 10);
+      const totalResult = await this.db.query<CountRow>('SELECT COUNT(*) as count FROM transactions');
+      const total = toNumber(totalResult.rows[0]?.count);
 
-      const salesResult = await this.db.query("SELECT COUNT(*) as count FROM transactions WHERE type IN ('DIS_SALE', 'DEX_SALE')");
-      const sales = parseInt(salesResult.rows[0]?.count || '0', 10);
+      const salesResult = await this.db.query<CountRow>("SELECT COUNT(*) as count FROM transactions WHERE type IN ('DIS_SALE', 'DEX_SALE')");
+      const sales = toNumber(salesResult.rows[0]?.count);
 
-      const listingsResult = await this.db.query("SELECT COUNT(*) as count FROM transactions WHERE type IN ('DIS_LISTING', 'DEX_LISTING')");
-      const listings = parseInt(listingsResult.rows[0]?.count || '0', 10);
+      const listingsResult = await this.db.query<CountRow>("SELECT COUNT(*) as count FROM transactions WHERE type IN ('DIS_LISTING', 'DEX_LISTING')");
+      const listings = toNumber(listingsResult.rows[0]?.count);
 
-      const oldestResult = await this.db.query('SELECT MIN(timestamp) as oldest FROM transactions');
-      const oldest = oldestResult.rows[0]?.oldest ? parseInt(oldestResult.rows[0].oldest, 10) : null;
+      const oldestResult = await this.db.query<{ oldest: string | number | bigint | null }>(
+        'SELECT MIN(timestamp) as oldest FROM transactions'
+      );
+      const oldestRaw = oldestResult.rows[0]?.oldest;
+      const oldest = oldestRaw === null || oldestRaw === undefined ? null : toNumber(oldestRaw);
 
       return {
         totalTransactions: total,

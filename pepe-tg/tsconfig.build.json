@@ -8,12 +8,11 @@
     "declaration": true,
     "jsx": "react-jsx"
   },
+  "//": "The old list named three entry files (one of them src/character.ts, which was renamed to pepedawn.ts long ago). TypeScript requires every file in the program to be listed, so declaration emit failed with TS6307 on the first import out of that set - which is why every build printed 'Failed to generate TypeScript declarations'.",
   "include": [
-    "src/index.ts",
-    "src/plugin.ts",
-    "src/character.ts",
-    "src/frontend/**/*.ts",
-    "src/frontend/**/*.tsx"
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.json"
   ],
   "exclude": [
     "node_modules",

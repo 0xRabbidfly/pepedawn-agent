@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach } from 'bun:test';
-import { character } from '../character';
+import { character } from '../pepedawn';
 
 describe('Project Starter Character Plugin Ordering', () => {
   let originalEnv: Record<string, string | undefined>;
@@ -39,8 +39,10 @@ describe('Project Starter Character Plugin Ordering', () => {
   });
 
   describe('Core Plugin Ordering', () => {
-    it('should always include SQL plugin first', () => {
-      expect(character.plugins[0]).toBe('@elizaos/plugin-sql');
+    it('should always include the SQL plugin', () => {
+      // The template puts SQL first; this character puts bootstrap first and
+      // SQL third. What matters is that it is always present, unconditionally.
+      expect(character.plugins).toContain('@elizaos/plugin-sql');
     });
 
     it('should include bootstrap plugin by default (not ignored)', () => {
@@ -56,14 +58,30 @@ describe('Project Starter Character Plugin Ordering', () => {
   });
 
   describe('Plugin Structure and Ordering', () => {
-    it('should structure embedding plugins after text-only plugins', () => {
+    // These tests were inherited from the ElizaOS starter template and asserted
+    // its ordering - SQL first, embeddings last. PEPEDAWN's character does not
+    // use that ordering and never has: bootstrap, openai and sql lead, the
+    // knowledge plugin follows the AI providers, and platform plugins close.
+    // Asserting the template's shape only ever produced noise, so these now
+    // assert the ordering this character actually depends on.
+    it('keeps the knowledge plugin after the AI providers', () => {
+      const plugins = character.plugins;
+      const knowledgeIndex = plugins.indexOf('@elizaos/plugin-knowledge');
+      const openaiIndex = plugins.indexOf('@elizaos/plugin-openai');
+
+      expect(knowledgeIndex).toBeGreaterThan(-1);
+      expect(openaiIndex).toBeGreaterThan(-1);
+      expect(knowledgeIndex).toBeGreaterThan(openaiIndex);
+    });
+
+    it('leads with the three plugins that are never conditional', () => {
       const plugins = character.plugins;
 
-      // Find indices of key plugins
-      const sqlIndex = plugins.indexOf('@elizaos/plugin-sql');
-
-      // SQL should be first
-      expect(sqlIndex).toBe(0);
+      expect(plugins.slice(0, 3)).toEqual([
+        '@elizaos/plugin-bootstrap',
+        '@elizaos/plugin-openai',
+        '@elizaos/plugin-sql',
+      ]);
     });
   });
 
@@ -114,17 +132,15 @@ describe('Project Starter Character Plugin Ordering', () => {
     it('should maintain proper ordering between plugin categories', () => {
       const plugins = character.plugins;
 
-      // Get indices of representative plugins from each category
       const sqlIndex = plugins.indexOf('@elizaos/plugin-sql');
       const bootstrapIndex = plugins.indexOf('@elizaos/plugin-bootstrap');
+      const knowledgeIndex = plugins.indexOf('@elizaos/plugin-knowledge');
 
-      // SQL should be first
-      expect(sqlIndex).toBe(0);
-
-      // Bootstrap should be present
-      if (bootstrapIndex !== -1) {
-        expect(bootstrapIndex).toBeGreaterThan(sqlIndex);
-      }
+      // Core plugins come as a block, before knowledge and any platform plugin.
+      expect(bootstrapIndex).toBeGreaterThan(-1);
+      expect(sqlIndex).toBeGreaterThan(-1);
+      expect(knowledgeIndex).toBeGreaterThan(sqlIndex);
+      expect(knowledgeIndex).toBeGreaterThan(bootstrapIndex);
     });
   });
 
@@ -160,15 +176,16 @@ describe('Project Starter Character Plugin Ordering', () => {
       expect(plugins).not.toContain('@elizaos/plugin-twitter');
     });
 
-    it('should structure platform plugins between AI plugins', () => {
+    it('puts platform plugins last, after knowledge', () => {
       const plugins = character.plugins;
+      const knowledgeIndex = plugins.indexOf('@elizaos/plugin-knowledge');
 
-      // Platform plugins should be positioned correctly in the array structure
-      const sqlIndex = plugins.indexOf('@elizaos/plugin-sql');
-      const bootstrapIndex = plugins.indexOf('@elizaos/plugin-bootstrap');
-
-      // Platform plugins (when present) should be between SQL and bootstrap
-      expect(sqlIndex).toBeLessThan(bootstrapIndex);
+      // Telegram is only present when a bot token is configured, so assert the
+      // ordering only for the platform plugins this environment actually has.
+      for (const platform of ['@elizaos/plugin-telegram', '@elizaos/plugin-discord']) {
+        const index = plugins.indexOf(platform);
+        if (index !== -1) expect(index).toBeGreaterThan(knowledgeIndex);
+      }
     });
   });
 
@@ -189,12 +206,15 @@ describe('Project Starter Character Plugin Ordering', () => {
       // Check if any embedding plugins are present
       const embeddingPluginsPresent = plugins.filter((plugin) => embeddingPlugins.includes(plugin));
 
-      // If embedding plugins are present, at least one should be at the end
-      if (embeddingPluginsPresent.length > 0) {
-        const hasEmbeddingAtEnd = lastThreePlugins.some((plugin) =>
-          embeddingPlugins.includes(plugin)
+      // The embedding provider must be registered before the knowledge plugin
+      // that depends on it. Where it sits relative to the end of the array is
+      // the template's concern, not this character's.
+      expect(embeddingPluginsPresent.length).toBeGreaterThan(0);
+      expect(lastThreePlugins.length).toBeGreaterThan(0);
+      for (const plugin of embeddingPluginsPresent) {
+        expect(plugins.indexOf(plugin)).toBeLessThan(
+          plugins.indexOf('@elizaos/plugin-knowledge')
         );
-        expect(hasEmbeddingAtEnd).toBe(true);
       }
     });
 
@@ -212,10 +232,9 @@ describe('Project Starter Character Plugin Ordering', () => {
     it('should follow the expected plugin ordering pattern', () => {
       const plugins = character.plugins;
 
-      // Expected pattern: [SQL, Text-only AI, Platforms, Bootstrap, Embedding AI]
-      // Verify the basic structure exists
-      expect(plugins[0]).toBe('@elizaos/plugin-sql'); // SQL always first
-      expect(plugins).toContain('@elizaos/plugin-bootstrap'); // Bootstrap present
+      // Pattern: [bootstrap, openai, sql, conditional AI, knowledge, platforms]
+      expect(plugins[0]).toBe('@elizaos/plugin-bootstrap');
+      expect(plugins).toContain('@elizaos/plugin-sql');
 
       // Verify ordering: text-only plugins before embedding plugins
       const textOnlyPlugins = ['@elizaos/plugin-anthropic', '@elizaos/plugin-openrouter'];

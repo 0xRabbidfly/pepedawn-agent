@@ -8,7 +8,7 @@
 
 import type { IAgentRuntime } from '@elizaos/core';
 import { Service, logger } from '@elizaos/core';
-import type { FakeRareTransactionEvent } from '../events/transactionEvents.js';
+import type { FakeRareTransactionEvent } from '../types/transactionEvents.js';
 import { TransactionHistory } from './transactionHistory.js';
 
 export class TelegramNotificationService extends Service {

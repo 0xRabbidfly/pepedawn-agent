@@ -187,7 +187,7 @@ export async function searchKnowledgeWithExpansion(
   
   // HYBRID SEARCH: Detect card names in query and prepend exact card matches
   // Extract all words with 3+ letters (case insensitive)
-  const words = query.match(/\b[A-Za-z]{3,}[A-Za-z0-9]*\b/g) || [];
+  const words: string[] = query.match(/\b[A-Za-z]{3,}[A-Za-z0-9]*\b/g) ?? [];
   const validCards = words.filter(word =>
     FULL_CARD_INDEX.some(card => card.asset.toUpperCase() === word.toUpperCase())
   );
@@ -467,11 +467,10 @@ export async function searchKnowledgeWithExpansion(
     
     // Debug logging available via LORE_DEBUG=true env var
     if (process.env.LORE_DEBUG === 'true' && idx < 3) {
-      logger.debug(`[LoreRetrieval] Passage ${idx}:`, {
-        source: sourceType,
-        hasTimestamp: !!timestamp,
-        hasAuthor: !!author,
-      });
+      logger.debug(
+        { source: sourceType, hasTimestamp: !!timestamp, hasAuthor: !!author },
+        `[LoreRetrieval] Passage ${idx}`
+      );
     }
     
     return {

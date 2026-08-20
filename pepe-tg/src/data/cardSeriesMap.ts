@@ -13,6 +13,7 @@
  * Result: All 893 cards have instant lookups with rich metadata!
  */
 
+import { logger } from '@elizaos/core';
 import { STATIC_SERIES_MAP, CARD_INFO_MAP, getCardInfo } from './fullCardIndex';
 import { loadCardCache } from '../utils/cardCache';
 

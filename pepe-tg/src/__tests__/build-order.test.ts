@@ -1,59 +1,59 @@
-import { describe, expect, it, beforeAll, afterAll } from 'bun:test';
+import { describe, expect, it } from 'bun:test';
 import fs from 'node:fs';
 import path from 'node:path';
 import { $ } from 'bun';
-import { getViteOutDir } from './vite-config-utils';
 
-describe('Build Order Integration Test', () => {
+/**
+ * What `bun run build` is required to produce.
+ *
+ * This test used to assert a vite frontend build running before a tsup build,
+ * and both of those steps are gone: the build is `build.ts` (Bun.build plus a
+ * copy step), and it emits no frontend at all. It failed on every run for that
+ * reason alone.
+ *
+ * The assertions that matter are about the copy step. In production the card
+ * indexes are read from `dist/data` — `fullCardIndex.ts` looks there first —
+ * so a build that bundles cleanly but forgets to copy them starts a bot that
+ * knows no cards. Same for the PGlite WASM, without which the database will
+ * not open.
+ */
+describe('Build output', () => {
   const rootDir = path.resolve(__dirname, '../..');
   const distDir = path.join(rootDir, 'dist');
-  let viteBuildDir: string;
-  const tsupBuildMarker = path.join(distDir, 'index.js'); // TSup creates this
 
-  beforeAll(async () => {
-    // Get the actual vite build directory from config
-    const viteOutDirRelative = await getViteOutDir(rootDir);
-    viteBuildDir = path.join(rootDir, viteOutDirRelative);
+  // build.ts cleans dist itself, so a stale directory cannot mask a miss.
+  // bun's beforeAll takes no timeout argument, so the build runs in the first
+  // test, which can have one; the rest read what it left behind.
+  it(
+    'bundles the entry point',
+    async () => {
+      await $`cd ${rootDir} && bun run build`.quiet();
+      expect(fs.existsSync(path.join(distDir, 'index.js'))).toBe(true);
+    },
+    120000
+  );
 
-    // Clean dist directory before test
-    if (fs.existsSync(distDir)) {
-      await fs.promises.rm(distDir, { recursive: true, force: true });
+  it('copies the card indexes production reads from dist/data', () => {
+    for (const file of [
+      'fake-rares-data.json',
+      'fake-commons-data.json',
+      'rare-pepes-data.json',
+    ]) {
+      const copied = path.join(distDir, 'data', file);
+      expect(fs.existsSync(copied)).toBe(true);
+      expect(JSON.parse(fs.readFileSync(copied, 'utf8')).length).toBeGreaterThan(0);
     }
   });
 
-  afterAll(async () => {
-    // Clean up after test
-    if (fs.existsSync(distDir)) {
-      await fs.promises.rm(distDir, { recursive: true, force: true });
-    }
+  it('ships the PGlite WASM next to the bundle', () => {
+    expect(fs.existsSync(path.join(distDir, 'pglite.wasm'))).toBe(true);
+    expect(fs.existsSync(path.join(distDir, 'pglite.data'))).toBe(true);
   });
 
-  it('should ensure vite build outputs persist after tsup build', async () => {
-    // Run the full build process
-    await $`cd ${rootDir} && bun run build`;
-
-    // Check that both vite and tsup outputs exist
-    expect(fs.existsSync(viteBuildDir)).toBe(true);
-    expect(fs.existsSync(tsupBuildMarker)).toBe(true);
-
-    // Check vite built frontend files
-    const frontendFiles = fs.readdirSync(viteBuildDir);
-    expect(frontendFiles.length).toBeGreaterThan(0);
-
-    // Should have HTML entry point
-    expect(frontendFiles.some((file) => file.endsWith('.html'))).toBe(true);
-
-    // Should have assets directory (CSS/JS files are in assets/)
-    expect(frontendFiles.includes('assets')).toBe(true);
-
-    // Verify tsup also produced its expected outputs
-    const distFiles = fs.readdirSync(distDir);
-
-    // Should have tsup outputs (index.js)
-    expect(distFiles.some((file) => file === 'index.js')).toBe(true);
-
-    // Should still have vite build directory
-    const viteBuildDirName = path.basename(viteBuildDir);
-    expect(distFiles.includes(viteBuildDirName)).toBe(true);
-  }, 30000); // 30 second timeout for build process
+  it('generates type declarations', () => {
+    // These silently failed to emit for months: tsconfig.build.json listed
+    // three entry files, one of which no longer existed, so tsc bailed with
+    // TS6307 on the first import outside that list and the build only warned.
+    expect(fs.existsSync(path.join(distDir, 'index.d.ts'))).toBe(true);
+  });
 });

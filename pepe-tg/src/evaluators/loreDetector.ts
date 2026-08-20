@@ -1,4 +1,4 @@
-import { type Evaluator, type IAgentRuntime, type Memory, type State, ModelType, composePromptFromState } from '@elizaos/core';
+import { type Evaluator, type IAgentRuntime, type Memory, type State, ModelType, composePromptFromState, logger } from '@elizaos/core';
 
 /**
  * Lore Detection Evaluator

@@ -8,8 +8,8 @@
 
 import type { IAgentRuntime } from '@elizaos/core';
 import { Service, logger } from '@elizaos/core';
-import type { Transaction, TransactionType } from '../models/transaction.js';
-import type { FakeRareTransactionEvent } from '../events/transactionEvents.js';
+import type { Transaction, TransactionType } from '../types/transaction.js';
+import type { FakeRareTransactionEvent } from '../types/transactionEvents.js';
 import { TransactionHistory } from './transactionHistory.js';
 import { TokenScanClient, type DispenseResponse, type DispenserResponse } from './tokenscanClient.js';
 import { TelegramNotificationService } from './telegramNotification.js';

@@ -9,7 +9,13 @@
  * - Never exceeds tweet length (280 chars)
  */
 
-import { type Provider, type IAgentRuntime, type Memory, logger } from '@elizaos/core';
+import {
+  type Provider,
+  type ProviderResult,
+  type IAgentRuntime,
+  type Memory,
+  logger,
+} from '@elizaos/core';
 import { FULL_CARD_INDEX } from '../data/fullCardIndex';
 
 const TWEET_LENGTH = 280;
@@ -89,12 +95,22 @@ function summarizeInterests(
  * Injects brief user context to enable natural conversation continuity.
  * Context is OPTIONAL - character decides when to reference it.
  */
+/**
+ * Returned when there is nothing worth saying about this user.
+ *
+ * A provider must return a `ProviderResult`; this one returned bare strings,
+ * so `result.text` was `undefined` for every call and the context it builds
+ * never reached a prompt. The type error was the only sign.
+ */
+const NO_CONTEXT: ProviderResult = { text: '' };
+
 export const userHistoryProvider: Provider = {
-  get: async (runtime: IAgentRuntime, message: Memory): Promise<string> => {
+  name: 'USER_HISTORY',
+  get: async (runtime: IAgentRuntime, message: Memory): Promise<ProviderResult> => {
     try {
       // Skip for bot's own messages
       if (message.entityId === runtime.agentId) {
-        return '';
+        return NO_CONTEXT;
       }
       
       // Get user's recent messages
@@ -121,11 +137,11 @@ export const userHistoryProvider: Provider = {
         logger.debug('[UserHistoryProvider] Search failed, trying fallback');
         
         // Fallback: just return empty (fail gracefully)
-        return '';
+        return NO_CONTEXT;
       }
       
       if (userOnly.length < MIN_MESSAGES_FOR_CONTEXT) {
-        return ''; // New user, no history to reference
+        return NO_CONTEXT; // New user, no history to reference
       }
       
       // Extract username from message metadata or use fallback
@@ -153,15 +169,15 @@ export const userHistoryProvider: Provider = {
       const summary = summarizeInterests(userOnly, username, maxContextLength);
       
       if (!summary) {
-        return '';
+        return NO_CONTEXT;
       }
       
       // Format as passive context (character decides to use or not)
-      return `[User context: ${summary}]`;
+      return { text: `[User context: ${summary}]` };
       
     } catch (error) {
       logger.error('[UserHistoryProvider] Error:', error);
-      return ''; // Fail gracefully
+      return NO_CONTEXT; // Fail gracefully
     }
   }
 };
