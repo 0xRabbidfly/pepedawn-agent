@@ -5,6 +5,19 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.5.1] - 2026-08-20
+
+### Fixed
+
+- **`/fr` told every artist they were nearly out of room.** The success line
+  said "One more slot left on this card" for every entry but the last — true
+  when the cap was 2, and wrong since it became 10. Storing your first piece of
+  lore announced one remaining slot when nine were free. It now reports the
+  actual count.
+- Two doc comments still described the cap as 2 and the artist gate as fatal.
+  Both have been wrong since `MAX_ENTRIES_PER_CARD` was raised and vouching was
+  added.
+
 ## [5.5.0] - 2026-08-20
 
 Storing lore was too hard, and the reason was not any of the gates that were

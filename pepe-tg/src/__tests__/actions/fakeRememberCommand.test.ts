@@ -215,3 +215,30 @@ describe('fakeRememberCommand', () => {
     });
   });
 });
+
+describe('the slot count it reports is the real one', () => {
+  /**
+   * The success line said "One more slot left on this card" for every entry but
+   * the last. True when the cap was 2; since it became 10 it has been telling
+   * artists they are nearly out of room on their first submission.
+   */
+  const slotLine = (existingForCard: number): string => {
+    const remaining = MAX_ENTRIES_PER_CARD - (existingForCard + 1);
+    return remaining > 1
+      ? `${remaining} slots left on this card.`
+      : remaining === 1
+        ? 'One more slot left on this card.'
+        : "That's this card full.";
+  };
+
+  it('counts down from the real cap', () => {
+    expect(MAX_ENTRIES_PER_CARD).toBe(10);
+    expect(slotLine(0)).toBe('9 slots left on this card.');
+    expect(slotLine(7)).toBe('2 slots left on this card.');
+  });
+
+  it('uses the singular for the last one and says so when full', () => {
+    expect(slotLine(8)).toBe('One more slot left on this card.');
+    expect(slotLine(9)).toBe("That's this card full.");
+  });
+});

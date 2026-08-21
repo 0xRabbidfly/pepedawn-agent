@@ -10,8 +10,9 @@
  *
  * Four gates, cheapest first, matching the rules agreed with the community:
  *   1. must name a real card
- *   2. submitter must be that card's artist (admins bypass)
- *   3. at most 2 stored entries per card
+ *   2. submitter must be that card's artist (admins bypass; anyone else is
+ *      routed to community vouching rather than refused)
+ *   3. at most MAX_ENTRIES_PER_CARD stored entries per card
  *   4. must actually read like lore
  *
  * Pure functions over plain data - no ElizaOS imports - so the whole policy is

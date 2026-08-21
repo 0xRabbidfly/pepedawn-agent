@@ -26,8 +26,9 @@ import { propose, DEFAULT_VOUCH_CONFIG } from '../utils/vouching';
  * ungated version took 21 false submissions in 18 minutes - seven of them the
  * same string - which is why every rule in utils/loreSubmission.ts exists.
  *
- * Gates, in order: a real card, the card's artist (admins bypass), at most two
- * entries per card, no duplicates, and content that actually reads like lore.
+ * Gates, in order: a real card, the card's artist (admins bypass, others go to
+ * community vouching), MAX_ENTRIES_PER_CARD entries per card, no duplicates,
+ * and content that actually reads like lore.
  */
 
 /** Alias map, minus the documentation keys. */
@@ -214,12 +215,19 @@ export const fakeRememberCommand: Action = {
       const result = await memoryService.storeMemory(stored, options?.ctx?.message ?? (message as any).rawMessage);
 
       if (result.success && !result.ignoredReason) {
+        // The count is real. This said "One more slot left" for every entry
+        // but the last, which was true when the cap was 2 and has been telling
+        // artists they are nearly out of room ever since it became 10.
         const remaining = MAX_ENTRIES_PER_CARD - (existingForCard + 1);
         if (callback) {
           await callback({
             text:
               `💾 Lore stored for ${card}.` +
-              (remaining > 0 ? ` One more slot left on this card.` : ` That's this card full.`),
+              (remaining > 1
+                ? ` ${remaining} slots left on this card.`
+                : remaining === 1
+                  ? ` One more slot left on this card.`
+                  : ` That's this card full.`),
           });
         }
         // Ledger last: it is the quota authority, so it must only ever reflect
