@@ -5,6 +5,33 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.6.0] - 2026-08-21
+
+### Fixed
+- **X harvesting ran once per restart, not once per day.** `XHarvestService`
+  armed a 5-minute timer at boot and only then set the 24h interval - but
+  production hard-restarts nightly at 02:00 and again on every deploy, so the
+  process never lived long enough to reach the interval. The post-boot harvest
+  *was* the cadence, and every restart bought another full round of paid
+  queries: on 2026-08-21 it ran four times in three hours, two of them because
+  of deploys. The schedule is now anchored to a `lastHarvestAt` timestamp
+  persisted in the harvest store, so a restart inside the interval skips its
+  round. `X_HARVEST_INTERVAL_HOURS` finally means what it says.
+
+### Changed
+- **Harvest model is now grok-4.3, still a reasoning model.** Measured on the
+  same prompt: grok-4.3 $0.026/49s, grok-4.20-0309-reasoning $0.028/55s,
+  grok-4.6 $0.075/107s, grok-4.20-0309-non-reasoning $0.121/17s. Turning
+  reasoning *off* cost 2.3x more - with nothing narrowing the search, x_search
+  poured 65k tokens of raw results into the request instead of 8k, so the saving
+  on thinking was wiped out by reading. Set `XAI_MODEL` to override.
+- **Dropped the `phrase` harvest query.** Over its lifetime it returned 6 posts:
+  none named a card, none were volunteered, none were ever used in a
+  conversation. `market` and `curated` produced every post the bot has actually
+  said out loud.
+
+Together these take a day of harvesting from ~$1.41 to ~$0.08.
+
 ## [5.5.4] - 2026-08-20
 
 ### Fixed

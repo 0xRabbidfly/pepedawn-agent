@@ -73,13 +73,15 @@ export interface HarvestQuery {
  *    precision of the four and the highest volume — the combination most
  *    likely to poison the store.
  */
+/**
+ * A `phrase` query - the exact strings "fake rare" / "fake rares" - was dropped
+ * on 2026-08-21. Over its lifetime it returned 6 posts: none named a card, none
+ * were ever volunteered, and none were ever used in a conversation, while
+ * costing a full query per round. `market` and `curated` between them produced
+ * every post the bot has actually said out loud. Restore it if the community
+ * spreads beyond the accounts those two reach.
+ */
 export const HARVEST_QUERIES: HarvestQuery[] = [
-  {
-    key: 'phrase',
-    instruction:
-      'Search X for the exact phrases "fake rare" and "fake rares" in a crypto, ' +
-      'Counterparty, Bitcoin or NFT-art context.',
-  },
   {
     key: 'market',
     instruction:
@@ -330,16 +332,45 @@ function storePath(): string {
 }
 
 let cache: HarvestedPost[] | null = null;
+let lastRun = 0;
 
 export function allPosts(): HarvestedPost[] {
   if (cache) return cache;
   try {
     const p = storePath();
-    cache = existsSync(p) ? (JSON.parse(readFileSync(p, 'utf8')).posts ?? []) : [];
+    const raw = existsSync(p) ? JSON.parse(readFileSync(p, 'utf8')) : null;
+    cache = raw?.posts ?? [];
+    lastRun = typeof raw?.lastHarvestAt === 'number' ? raw.lastHarvestAt : 0;
   } catch {
     cache = [];   // a corrupt harvest file must never take the bot down
+    lastRun = 0;
   }
   return cache!;
+}
+
+/**
+ * When the last round of queries fired, epoch ms, or 0 if never.
+ *
+ * This has to survive the process. Production hard-restarts nightly at 02:00
+ * and again on every deploy, so an in-memory interval never gets to fire - the
+ * first harvest after boot WAS the cadence, and each restart bought a fresh
+ * round of paid queries. On 2026-08-21 that ran four times in three hours.
+ */
+export function lastHarvestAt(): number {
+  allPosts();   // forces the store read that populates lastRun
+  return lastRun;
+}
+
+/**
+ * Stamp a harvest round. Call when the queries fire, not when they finish.
+ *
+ * Load before stamping: allPosts() sets `lastRun` from the file as a side
+ * effect of its first read, so stamping first would be undone by the load.
+ */
+export function recordHarvestRun(now = Date.now()): void {
+  const posts = allPosts();
+  lastRun = now;
+  write(posts);
 }
 
 function write(posts: HarvestedPost[]): void {
@@ -348,7 +379,11 @@ function write(posts: HarvestedPost[]): void {
   const dir = dirname(p);
   if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
   const tmp = `${p}.tmp`;
-  writeFileSync(tmp, JSON.stringify({ updatedAt: Date.now(), posts }, null, 1), 'utf8');
+  writeFileSync(
+    tmp,
+    JSON.stringify({ updatedAt: Date.now(), lastHarvestAt: lastRun, posts }, null, 1),
+    'utf8'
+  );
   renameSync(tmp, p);
 }
 
@@ -391,6 +426,7 @@ export function markUsed(id: string, now = Date.now()): void {
 /** Test helper. */
 export function _resetCache(): void {
   cache = null;
+  lastRun = 0;
 }
 
 // ------------------------------------------------------- chat ↔ room map

@@ -17,11 +17,31 @@ import { TelemetryService } from './TelemetryService';
 import {
   HARVEST_QUERIES, RAW_POSTS_RULE, DEFAULT_HARVEST_CONFIG,
   parseHarvestResponse, mergePosts, selectForVolunteer, markVolunteered, roomForChat,
-  formatForTelegram, readXaiSpend, type HarvestedPost,
+  formatForTelegram, readXaiSpend, lastHarvestAt, recordHarvestRun, type HarvestedPost,
 } from '../utils/xHarvest';
 
 const XAI_ENDPOINT = 'https://api.x.ai/v1/responses';
-const XAI_MODEL = process.env.XAI_MODEL || 'grok-4.6';
+
+/**
+ * grok-4.3, not grok-4.6, and deliberately still a reasoning model.
+ *
+ * Measured 2026-08-21 on the same harvest prompt:
+ *
+ *   grok-4.3                       $0.026   49s   10 posts
+ *   grok-4.20-0309-reasoning       $0.028   55s   10 posts
+ *   grok-4.6                       $0.075  107s    5 posts
+ *   grok-4.20-0309-non-reasoning   $0.121   17s   14 posts
+ *
+ * Switching off reasoning costs MORE, which is the counter-intuitive part: with
+ * nothing narrowing the search the x_search tool poured 65k tokens of raw
+ * results into the request instead of 8k, so the saving on thinking was wiped
+ * out several times over by reading. It is much faster, if latency ever matters
+ * more than cost. grok-4.3 keeps the narrowing on a cheaper rate card.
+ */
+const XAI_MODEL = process.env.XAI_MODEL || 'grok-4.3';
+
+/** Boot is already busy; never fire an API call the instant the process is up. */
+const BOOT_STAGGER_MS = 5 * 60 * 1000;
 /** How far back each harvest looks. Overlaps the daily cadence so a missed run self-heals. */
 const HARVEST_WINDOW_DAYS = 7;
 
@@ -65,12 +85,29 @@ export class XHarvestService extends Service {
 
   async start(): Promise<void> {
     if (!this.enabled) return;
-    // Stagger the first harvest: boot is already busy, and a cron restart at
-    // 02:00 must not fire an API call the instant the process comes up.
+
+    // The interval alone never governed anything. Production hard-restarts
+    // nightly at 02:00 and again on every deploy, so the process never lived
+    // long enough to reach it - the post-boot harvest WAS the cadence, and each
+    // restart bought another full round. On 2026-08-21 it ran four times in
+    // three hours, twice because of deploys. So the schedule is anchored to a
+    // timestamp on disk rather than to how long this process has been up.
+    const elapsed = Date.now() - lastHarvestAt();
+    const wait = elapsed >= this.harvestMs
+      ? BOOT_STAGGER_MS
+      : Math.max(BOOT_STAGGER_MS, this.harvestMs - elapsed);
+
+    if (wait > BOOT_STAGGER_MS) {
+      logger.info(
+        `XHarvestService: last harvest ${Math.round(elapsed / 60000)}m ago, ` +
+        `next in ${Math.round(wait / 60000)}m (skipping the post-boot round)`
+      );
+    }
+
     this.harvestTimer = setTimeout(() => {
       void this.harvestAll();
       this.harvestTimer = setInterval(() => void this.harvestAll(), this.harvestMs);
-    }, 5 * 60 * 1000);
+    }, wait);
 
     this.volunteerTimer = setInterval(() => void this.maybeVolunteer(), this.volunteerCheckMs);
     logger.info('XHarvestService started');
@@ -85,6 +122,11 @@ export class XHarvestService extends Service {
 
   /** Run every query and merge what comes back. Public so a script can trigger it. */
   async harvestAll(): Promise<{ added: number; total: number }> {
+    // Stamped before the queries fire, not after: the money is spent the moment
+    // they go out, so a process killed mid-round must not let the next boot pay
+    // for the same round again.
+    recordHarvestRun();
+
     let added = 0;
     let total = 0;
     for (const q of HARVEST_QUERIES) {

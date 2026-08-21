@@ -14,6 +14,7 @@ import {
   scoreInterest, cardsMentioned, parseHarvestResponse, mergePosts,
   selectForVolunteer, matchForConversation, formatForTelegram, readXaiSpend,
   markVolunteered, allPosts, _resetCache,
+  lastHarvestAt, recordHarvestRun, HARVEST_QUERIES,
   isXActivityQuestion, buildDigest, formatDigestForTelegram,
   DEFAULT_HARVEST_CONFIG, type HarvestedPost,
 } from '../../utils/xHarvest';
@@ -477,5 +478,44 @@ describe('what an xAI call cost', () => {
     expect(readXaiSpend({ input_tokens: 5, output_tokens: 5 }).cost).toBeNull();
     expect(readXaiSpend({ input_tokens: 5, output_tokens: 5, cost_in_usd_ticks: 0 }).cost).toBeNull();
     expect(readXaiSpend(undefined)).toEqual({ tokensIn: 0, tokensOut: 0, cost: null });
+  });
+});
+
+describe('harvest cadence survives a restart', () => {
+  it('reports no previous run when the store is empty', () => {
+    expect(lastHarvestAt()).toBe(0);
+  });
+
+  it('persists the run stamp across a process restart', () => {
+    recordHarvestRun(NOW);
+    _resetCache();                      // stands in for the nightly cron restart
+    expect(lastHarvestAt()).toBe(NOW);
+  });
+
+  it('keeps the stamp when posts are merged afterwards', () => {
+    recordHarvestRun(NOW);
+    mergePosts([{
+      id: 'a|1', author: 'a', text: 'FAKEGIANTS dispenser open', postedAt: NOW,
+      harvestedAt: NOW, query: 'market', cards: ['FAKEGIANTS'], interest: 0.9,
+    } as HarvestedPost], DEFAULT_HARVEST_CONFIG, NOW);
+    _resetCache();
+    expect(lastHarvestAt()).toBe(NOW);
+    expect(allPosts()).toHaveLength(1);
+  });
+
+  it('a run inside the interval is not yet due, one outside it is', () => {
+    const interval = DAY;
+    recordHarvestRun(NOW);
+    _resetCache();
+    const elapsedSoon = NOW + 3 * 60 * 60 * 1000 - lastHarvestAt();
+    const elapsedLater = NOW + 25 * 60 * 60 * 1000 - lastHarvestAt();
+    expect(elapsedSoon >= interval).toBe(false);   // restart 3h later: skip
+    expect(elapsedLater >= interval).toBe(true);   // 25h later: harvest
+  });
+});
+
+describe('HARVEST_QUERIES', () => {
+  it('no longer runs the phrase query, which never produced a used post', () => {
+    expect(HARVEST_QUERIES.map((q) => q.key)).toEqual(['market', 'curated']);
   });
 });
