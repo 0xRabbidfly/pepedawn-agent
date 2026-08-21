@@ -7304,6 +7304,26 @@
     "memeUri": "https://tokenscan.io/img/cards/THEPEPEHASU.png"
   },
   {
+    "asset": "TUBKING",
+    "series": 14,
+    "card": 29,
+    "ext": "gif",
+    "artist": "Ryan D. Anderson",
+    "artistSlug": "Ryan-D.-Anderson",
+    "supply": 69,
+    "issuance": "May 2023"
+  },
+  {
+    "asset": "ILLIQUID",
+    "series": 14,
+    "card": 30,
+    "ext": "jpeg",
+    "artist": "Dalek",
+    "artistSlug": "Dalek",
+    "supply": 37,
+    "issuance": "May 2023"
+  },
+  {
     "asset": "LEDGERDEATH",
     "series": 14,
     "card": 31,
@@ -7816,16 +7836,6 @@
     ]
   },
   {
-    "asset": "TUBKING",
-    "series": 14,
-    "card": 29,
-    "ext": "gif",
-    "artist": "Ryan D. Anderson",
-    "artistSlug": "Ryan-D.-Anderson",
-    "supply": 69,
-    "issuance": "May 2023"
-  },
-  {
     "asset": "ELEVVTED",
     "series": 15,
     "card": 29,
@@ -7836,16 +7846,6 @@
     "issuance": "July 2023",
     "videoUri": "https://arweave.net/3DlGYhlje8OamJcdcMl8Fr1l1-pq0fzKVteFfpmqMFw/igv34s_video.mp4",
     "memeUri": "https://tokenscan.io/img/cards/ELEVVTED.gif"
-  },
-  {
-    "asset": "ILLIQUID",
-    "series": 14,
-    "card": 30,
-    "ext": "jpeg",
-    "artist": "Dalek",
-    "artistSlug": "Dalek",
-    "supply": 37,
-    "issuance": "May 2023"
   },
   {
     "asset": "ORANGEPPMAXI",
@@ -9321,5 +9321,225 @@
     "artistSlug": "Aquaticmane",
     "supply": 72,
     "issuance": "October 2025"
+  },
+  {
+    "asset": "SELFISHMEME",
+    "series": 18,
+    "card": 26,
+    "ext": "jpeg",
+    "artist": "Memeticx",
+    "artistSlug": "Memeticx",
+    "supply": 76,
+    "issuance": "June 2025"
+  },
+  {
+    "asset": "MEMEGREEN",
+    "series": 18,
+    "card": 27,
+    "ext": "jpeg",
+    "artist": "Memeticx",
+    "artistSlug": "Memeticx",
+    "supply": 33,
+    "issuance": "December 2025"
+  },
+  {
+    "asset": "CARDINALDOOM",
+    "series": 18,
+    "card": 28,
+    "ext": "jpeg",
+    "artist": "Hues",
+    "artistSlug": "Hues",
+    "supply": 21,
+    "issuance": "February 2026"
+  },
+  {
+    "asset": "RARECIPHER",
+    "series": 18,
+    "card": 29,
+    "ext": "jpeg",
+    "artist": "Hues",
+    "artistSlug": "Hues",
+    "supply": 21,
+    "issuance": "February 2026"
+  },
+  {
+    "asset": "MADMIRROR",
+    "series": 18,
+    "card": 30,
+    "ext": "jpeg",
+    "artist": "Hues",
+    "artistSlug": "Hues",
+    "supply": 21,
+    "issuance": "February 2026"
+  },
+  {
+    "asset": "FAKEGIANTS",
+    "series": 18,
+    "card": 31,
+    "ext": "jpeg",
+    "artist": "EMBLEMATIX",
+    "artistSlug": "EMBLEMATIX",
+    "supply": 169,
+    "issuance": "October 2025"
+  },
+  {
+    "asset": "PEPEFLOW",
+    "series": 18,
+    "card": 32,
+    "ext": "gif",
+    "artist": null,
+    "artistSlug": null,
+    "supply": null,
+    "issuance": null,
+    "imageUri": "https://fakeraredirectory.com/wp-content/uploads/2026/04/hnft-pepe_2.gif?w=400",
+    "issues": [
+      "no_artist",
+      "no_supply",
+      "no_issuance"
+    ]
+  },
+  {
+    "asset": "FAKEQUEST",
+    "series": 18,
+    "card": 33,
+    "ext": "gif",
+    "artist": null,
+    "artistSlug": null,
+    "supply": null,
+    "issuance": null,
+    "imageUri": "https://fakeraredirectory.com/wp-content/uploads/2026/04/hnft-pepe-3.gif?w=400",
+    "issues": [
+      "no_artist",
+      "no_supply",
+      "no_issuance"
+    ]
+  },
+  {
+    "asset": "PEPEDPEPO",
+    "series": 18,
+    "card": 34,
+    "ext": "jpeg",
+    "artist": null,
+    "artistSlug": null,
+    "supply": null,
+    "issuance": null,
+    "imageUri": "https://fakeraredirectory.com/wp-content/uploads/2026/04/spank-ink.jpg?w=400",
+    "issues": [
+      "no_artist",
+      "no_supply",
+      "no_issuance"
+    ]
+  },
+  {
+    "asset": "SPACEJUMP",
+    "series": 18,
+    "card": 35,
+    "ext": "gif",
+    "artist": null,
+    "artistSlug": null,
+    "supply": null,
+    "issuance": null,
+    "imageUri": "https://fakeraredirectory.com/wp-content/uploads/2026/04/ndhoz-pepe-1.gif?w=731",
+    "issues": [
+      "no_artist",
+      "no_supply",
+      "no_issuance"
+    ]
+  },
+  {
+    "asset": "ZOMBIEPPS",
+    "series": 18,
+    "card": 36,
+    "ext": "jpeg",
+    "artist": null,
+    "artistSlug": null,
+    "supply": null,
+    "issuance": null,
+    "imageUri": "https://fakeraredirectory.com/wp-content/uploads/2026/05/gus-2.jpg?w=400",
+    "issues": [
+      "no_artist",
+      "no_supply",
+      "no_issuance"
+    ]
+  },
+  {
+    "asset": "KEKMAXXING",
+    "series": 18,
+    "card": 37,
+    "ext": "jpeg",
+    "artist": null,
+    "artistSlug": null,
+    "supply": null,
+    "issuance": null,
+    "imageUri": "https://fakeraredirectory.com/wp-content/uploads/2026/05/hansel-2.jpg?w=400",
+    "issues": [
+      "no_artist",
+      "no_supply",
+      "no_issuance"
+    ]
+  },
+  {
+    "asset": "SPAMTRIBUNAL",
+    "series": 18,
+    "card": 38,
+    "ext": "jpeg",
+    "artist": null,
+    "artistSlug": null,
+    "supply": null,
+    "issuance": null,
+    "imageUri": "https://fakeraredirectory.com/wp-content/uploads/2026/05/scrilla-1.jpg?w=731",
+    "issues": [
+      "no_artist",
+      "no_supply",
+      "no_issuance"
+    ]
+  },
+  {
+    "asset": "RAREPIXELS",
+    "series": 18,
+    "card": 39,
+    "ext": "jpeg",
+    "artist": null,
+    "artistSlug": null,
+    "supply": null,
+    "issuance": null,
+    "imageUri": "https://fakeraredirectory.com/wp-content/uploads/2026/05/easyb-1.jpg?w=400",
+    "issues": [
+      "no_artist",
+      "no_supply",
+      "no_issuance"
+    ]
+  },
+  {
+    "asset": "WATCHINGPEPE",
+    "series": 18,
+    "card": 40,
+    "ext": "gif",
+    "artist": null,
+    "artistSlug": null,
+    "supply": null,
+    "issuance": null,
+    "imageUri": "https://fakeraredirectory.com/wp-content/uploads/2026/06/nathansonic-1.gif?w=400",
+    "issues": [
+      "no_artist",
+      "no_supply",
+      "no_issuance"
+    ]
+  },
+  {
+    "asset": "RAREGOLFPEPE",
+    "series": 18,
+    "card": 41,
+    "ext": "png",
+    "artist": null,
+    "artistSlug": null,
+    "supply": null,
+    "issuance": null,
+    "imageUri": "https://fakeraredirectory.com/wp-content/uploads/2026/06/shawn-1.png?w=320",
+    "issues": [
+      "no_artist",
+      "no_supply",
+      "no_issuance"
+    ]
   }
 ]

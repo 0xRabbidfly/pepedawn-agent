@@ -27,6 +27,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   imports `src/utils/visualEmbeddings.ts` and `src/utils/embeddingsDb.ts`,
   neither of which exists, so it fails on import.
 
+### Added
+- **Series 18 cards 26-41.** The scheduled scrape was suspended by GitHub on
+  2026-01-25 for repository inactivity and had not run since, so the card index
+  stopped at Series 18 card 25 while the series grew to 41. Backfilled with the
+  now append-only scraper: 16 cards added, no existing record touched. Six are
+  complete; the ten that pepe.wtf has not published yet carry `no_artist`,
+  `no_supply` and `no_issuance` and display from a fakeraredirectory image until
+  upstream catches up.
+
 ## [5.3.3] - 2026-08-20
 
 ### Fixed
