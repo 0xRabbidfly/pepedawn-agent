@@ -117,6 +117,55 @@ async function pass1ScrapeSeries(page, seriesNum) {
 }
 
 // ============================================================
+// Extension verification against the S3 bucket
+// ============================================================
+
+const S3_BASE = 'https://pepewtf.s3.amazonaws.com/collections/fake-rares/full';
+const EXTENSION_CANDIDATES = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+
+function buildS3Url(asset, series, ext) {
+  return `${S3_BASE}/${series}/${encodeURIComponent(asset)}.${ext}`;
+}
+
+/**
+ * Find the extension the bucket actually serves this card under.
+ *
+ * When Pass 2 sees a standard S3 path it deliberately saves no `imageUri`,
+ * because the display URL can be rebuilt from series + asset + ext. That only
+ * holds if `ext` matches the stored object. pepe.wtf reports "jpeg" for objects
+ * stored as ".jpg", so the rebuilt URL 403'd for every Series 18 card added in
+ * the 2026-08 backfill.
+ *
+ * A miss returns 403 rather than 404 - the bucket denies ListBucket, so S3
+ * cannot say "no such key" without leaking whether one exists. That makes
+ * asking for each candidate the only reliable test.
+ *
+ * Returns the working extension, or null if the bucket serves none of them
+ * (normal for a card pepe.wtf has not published yet - the caller then keeps the
+ * fakeraredirectory fallback image instead of a URL it cannot build).
+ */
+async function resolveS3Extension(asset, series, preferred) {
+  const seen = new Set();
+  const order = [];
+  for (const ext of [preferred, ...EXTENSION_CANDIDATES]) {
+    if (!ext || seen.has(ext)) continue;
+    seen.add(ext);
+    order.push(ext);
+  }
+
+  for (const ext of order) {
+    try {
+      const res = await fetch(buildS3Url(asset, series, ext), { method: 'HEAD' });
+      if (res.ok) return ext;
+    } catch {
+      // Network hiccup on one candidate should not stop the others.
+    }
+  }
+
+  return null;
+}
+
+// ============================================================
 // PASS 2: Extract ALL metadata from pepe.wtf (authoritative source)
 // ============================================================
 
@@ -224,8 +273,11 @@ async function pass2ScrapeCard(page, baseCard) {
         const extMatch = src.match(/\.(jpg|jpeg|png|gif|webp)($|\?)/i);
         if (!extMatch) continue;
         
+        // Do not normalise jpg -> jpeg here. When no imageUri is saved the
+        // display URL is rebuilt from `ext`, and S3 stores plenty of objects as
+        // ".jpg" - rewriting the extension made the rebuilt URL 403.
+        // resolveS3Extension() below confirms the real one against the bucket.
         data.ext = extMatch[1].toLowerCase();
-        if (data.ext === 'jpg') data.ext = 'jpeg';
         
         // Check if it's on tokenscan.io - ALWAYS save imageUri
         if (src.includes('tokenscan.io')) {
@@ -363,11 +415,31 @@ async function pass2ScrapeCard(page, baseCard) {
     
     // Track issues
     const issues = [];
-    
-    // Determine if we should use fallback (404, error, or page exists but no data)
-    const shouldUseFallback = metadata.notFoundOnPepeWtf || 
-                              metadata.httpError || 
+
+    // If we are relying on a rebuilt S3 URL - no videoUri, no imageUri - the
+    // extension has to be the one the bucket actually serves, not the one
+    // pepe.wtf reports. Confirm it before trusting the rebuild.
+    let s3Unresolved = false;
+    if (!fullCard.videoUri && !fullCard.imageUri && fullCard.ext !== 'mp4') {
+      const confirmed = await resolveS3Extension(card.asset, card.series, fullCard.ext);
+      if (confirmed) {
+        if (confirmed !== fullCard.ext) {
+          console.log(`  🔧 Extension corrected: ${fullCard.ext || 'none'} -> ${confirmed}`);
+        }
+        fullCard.ext = confirmed;
+      } else {
+        // Bucket serves nothing under any candidate; the rebuilt URL would 403.
+        s3Unresolved = true;
+        console.log(`  ⚠️  Not on S3 under any known extension`);
+      }
+    }
+
+    // Determine if we should use fallback (404, error, page exists but no data,
+    // or a card the bucket will not serve under a rebuildable URL)
+    const shouldUseFallback = metadata.notFoundOnPepeWtf ||
+                              metadata.httpError ||
                               metadata.scrapingError ||
+                              s3Unresolved ||
                               !metadata.ext; // Page exists but no media found
     
     // Check for page availability issues first
@@ -393,7 +465,6 @@ async function pass2ScrapeCard(page, baseCard) {
         const extMatch = card.fallbackMediaUri.match(/\.(jpg|jpeg|png|gif|webp)($|\?)/i);
         if (extMatch) {
           fullCard.ext = extMatch[1].toLowerCase();
-          if (fullCard.ext === 'jpg') fullCard.ext = 'jpeg';
         }
         console.log(`  📦 Using fallback image from fakeraredirectory`);
       }

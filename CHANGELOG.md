@@ -5,6 +5,26 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.5.4] - 2026-08-20
+
+### Fixed
+- **New cards showed metadata but no image.** When pepe.wtf serves a standard
+  S3 path the scraper saves no `imageUri`, because the display URL can be
+  rebuilt from series + asset + `ext`. It also normalised `jpg` to `jpeg` - and
+  S3 stores many objects as `.jpg`, so the rebuilt URL 403'd. Series 18 cards
+  26-31 were affected. The normalisation is gone, and `add-new-cards.js` now
+  confirms the extension against the bucket before trusting a rebuilt URL,
+  falling back to a stored image URL when the bucket serves none. A miss on S3
+  returns 403 rather than 404 - the bucket denies ListBucket - so probing each
+  candidate is the only reliable test.
+
+### Changed
+- **Series 18 cards 32-41 now carry artist and supply.** Both read from the
+  series-18 directory page and confirmed against Counterparty, where every
+  supply matches and is locked. These cards are on chain but not formally
+  issued as Fake Rares yet, so they have no issuance date; they are flagged
+  `awaiting_formal_issuance` as the trigger to revisit.
+
 ## [5.5.3] - 2026-08-20
 
 ### Fixed

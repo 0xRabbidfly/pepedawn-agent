@@ -9326,7 +9326,7 @@
     "asset": "SELFISHMEME",
     "series": 18,
     "card": 26,
-    "ext": "jpeg",
+    "ext": "jpg",
     "artist": "Memeticx",
     "artistSlug": "Memeticx",
     "supply": 76,
@@ -9336,7 +9336,7 @@
     "asset": "MEMEGREEN",
     "series": 18,
     "card": 27,
-    "ext": "jpeg",
+    "ext": "jpg",
     "artist": "Memeticx",
     "artistSlug": "Memeticx",
     "supply": 33,
@@ -9346,7 +9346,7 @@
     "asset": "CARDINALDOOM",
     "series": 18,
     "card": 28,
-    "ext": "jpeg",
+    "ext": "jpg",
     "artist": "Hues",
     "artistSlug": "Hues",
     "supply": 21,
@@ -9356,7 +9356,7 @@
     "asset": "RARECIPHER",
     "series": 18,
     "card": 29,
-    "ext": "jpeg",
+    "ext": "jpg",
     "artist": "Hues",
     "artistSlug": "Hues",
     "supply": 21,
@@ -9366,7 +9366,7 @@
     "asset": "MADMIRROR",
     "series": 18,
     "card": 30,
-    "ext": "jpeg",
+    "ext": "jpg",
     "artist": "Hues",
     "artistSlug": "Hues",
     "supply": 21,
@@ -9376,7 +9376,7 @@
     "asset": "FAKEGIANTS",
     "series": 18,
     "card": 31,
-    "ext": "jpeg",
+    "ext": "jpg",
     "artist": "EMBLEMATIX",
     "artistSlug": "EMBLEMATIX",
     "supply": 169,
@@ -9387,15 +9387,14 @@
     "series": 18,
     "card": 32,
     "ext": "gif",
-    "artist": null,
-    "artistSlug": null,
-    "supply": null,
+    "artist": "HNFT Pepe",
+    "artistSlug": "HNFT-Pepe",
+    "supply": 169,
     "issuance": null,
     "imageUri": "https://fakeraredirectory.com/wp-content/uploads/2026/04/hnft-pepe_2.gif?w=400",
     "issues": [
-      "no_artist",
-      "no_supply",
-      "no_issuance"
+      "no_issuance",
+      "awaiting_formal_issuance"
     ]
   },
   {
@@ -9403,15 +9402,14 @@
     "series": 18,
     "card": 33,
     "ext": "gif",
-    "artist": null,
-    "artistSlug": null,
-    "supply": null,
+    "artist": "HNFT Pepe",
+    "artistSlug": "HNFT-Pepe",
+    "supply": 81,
     "issuance": null,
     "imageUri": "https://fakeraredirectory.com/wp-content/uploads/2026/04/hnft-pepe-3.gif?w=400",
     "issues": [
-      "no_artist",
-      "no_supply",
-      "no_issuance"
+      "no_issuance",
+      "awaiting_formal_issuance"
     ]
   },
   {
@@ -9419,15 +9417,14 @@
     "series": 18,
     "card": 34,
     "ext": "jpeg",
-    "artist": null,
-    "artistSlug": null,
-    "supply": null,
+    "artist": "Spank Ink",
+    "artistSlug": "Spank-Ink",
+    "supply": 50,
     "issuance": null,
     "imageUri": "https://fakeraredirectory.com/wp-content/uploads/2026/04/spank-ink.jpg?w=400",
     "issues": [
-      "no_artist",
-      "no_supply",
-      "no_issuance"
+      "no_issuance",
+      "awaiting_formal_issuance"
     ]
   },
   {
@@ -9435,15 +9432,14 @@
     "series": 18,
     "card": 35,
     "ext": "gif",
-    "artist": null,
-    "artistSlug": null,
-    "supply": null,
+    "artist": "Ndhoz",
+    "artistSlug": "Ndhoz",
+    "supply": 42,
     "issuance": null,
     "imageUri": "https://fakeraredirectory.com/wp-content/uploads/2026/04/ndhoz-pepe-1.gif?w=731",
     "issues": [
-      "no_artist",
-      "no_supply",
-      "no_issuance"
+      "no_issuance",
+      "awaiting_formal_issuance"
     ]
   },
   {
@@ -9451,15 +9447,14 @@
     "series": 18,
     "card": 36,
     "ext": "jpeg",
-    "artist": null,
-    "artistSlug": null,
-    "supply": null,
+    "artist": "Gus Grillasca",
+    "artistSlug": "Gus-Grillasca",
+    "supply": 100,
     "issuance": null,
     "imageUri": "https://fakeraredirectory.com/wp-content/uploads/2026/05/gus-2.jpg?w=400",
     "issues": [
-      "no_artist",
-      "no_supply",
-      "no_issuance"
+      "no_issuance",
+      "awaiting_formal_issuance"
     ]
   },
   {
@@ -9467,15 +9462,14 @@
     "series": 18,
     "card": 37,
     "ext": "jpeg",
-    "artist": null,
-    "artistSlug": null,
-    "supply": null,
+    "artist": "Mr Hansel",
+    "artistSlug": "Mr-Hansel",
+    "supply": 100,
     "issuance": null,
     "imageUri": "https://fakeraredirectory.com/wp-content/uploads/2026/05/hansel-2.jpg?w=400",
     "issues": [
-      "no_artist",
-      "no_supply",
-      "no_issuance"
+      "no_issuance",
+      "awaiting_formal_issuance"
     ]
   },
   {
@@ -9483,15 +9477,14 @@
     "series": 18,
     "card": 38,
     "ext": "jpeg",
-    "artist": null,
-    "artistSlug": null,
-    "supply": null,
+    "artist": "Rare Scrilla",
+    "artistSlug": "Rare-Scrilla",
+    "supply": 42,
     "issuance": null,
     "imageUri": "https://fakeraredirectory.com/wp-content/uploads/2026/05/scrilla-1.jpg?w=731",
     "issues": [
-      "no_artist",
-      "no_supply",
-      "no_issuance"
+      "no_issuance",
+      "awaiting_formal_issuance"
     ]
   },
   {
@@ -9499,15 +9492,14 @@
     "series": 18,
     "card": 39,
     "ext": "jpeg",
-    "artist": null,
-    "artistSlug": null,
-    "supply": null,
+    "artist": "Easy B",
+    "artistSlug": "Easy-B",
+    "supply": 100,
     "issuance": null,
     "imageUri": "https://fakeraredirectory.com/wp-content/uploads/2026/05/easyb-1.jpg?w=400",
     "issues": [
-      "no_artist",
-      "no_supply",
-      "no_issuance"
+      "no_issuance",
+      "awaiting_formal_issuance"
     ]
   },
   {
@@ -9515,15 +9507,14 @@
     "series": 18,
     "card": 40,
     "ext": "gif",
-    "artist": null,
-    "artistSlug": null,
-    "supply": null,
+    "artist": "nathansonic",
+    "artistSlug": "nathansonic",
+    "supply": 56,
     "issuance": null,
     "imageUri": "https://fakeraredirectory.com/wp-content/uploads/2026/06/nathansonic-1.gif?w=400",
     "issues": [
-      "no_artist",
-      "no_supply",
-      "no_issuance"
+      "no_issuance",
+      "awaiting_formal_issuance"
     ]
   },
   {
@@ -9531,15 +9522,14 @@
     "series": 18,
     "card": 41,
     "ext": "png",
-    "artist": null,
-    "artistSlug": null,
-    "supply": null,
+    "artist": "Shawn Leary",
+    "artistSlug": "Shawn-Leary",
+    "supply": 100,
     "issuance": null,
     "imageUri": "https://fakeraredirectory.com/wp-content/uploads/2026/06/shawn-1.png?w=320",
     "issues": [
-      "no_artist",
-      "no_supply",
-      "no_issuance"
+      "no_issuance",
+      "awaiting_formal_issuance"
     ]
   }
 ]
