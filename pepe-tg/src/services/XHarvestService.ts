@@ -13,10 +13,11 @@
 import type { IAgentRuntime } from '@elizaos/core';
 import { Service, logger, createUniqueUuid } from '@elizaos/core';
 import { FileRoomHistoryStore } from '../conversation/fileRoomHistoryStore';
+import { TelemetryService } from './TelemetryService';
 import {
   HARVEST_QUERIES, RAW_POSTS_RULE, DEFAULT_HARVEST_CONFIG,
   parseHarvestResponse, mergePosts, selectForVolunteer, markVolunteered, roomForChat,
-  formatForTelegram, type HarvestedPost,
+  formatForTelegram, readXaiSpend, type HarvestedPost,
 } from '../utils/xHarvest';
 
 const XAI_ENDPOINT = 'https://api.x.ai/v1/responses';
@@ -103,6 +104,7 @@ export class XHarvestService extends Service {
 
   private async runQuery(key: string, instruction: string): Promise<HarvestedPost[]> {
     const prompt = `${instruction} ${RAW_POSTS_RULE.replace('{DAYS}', String(HARVEST_WINDOW_DAYS))}`;
+    const startedAt = Date.now();
     const res = await fetch(XAI_ENDPOINT, {
       method: 'POST',
       headers: { Authorization: `Bearer ${this.apiKey}`, 'Content-Type': 'application/json' },
@@ -123,9 +125,59 @@ export class XHarvestService extends Service {
         if (c.type === 'output_text' || c.type === 'text') text += c.text;
       }
     }
-    const cost = (data.usage?.cost_in_usd_ticks ?? 0) / 1e10;
-    if (cost > 0) logger.debug(`XHarvest[${key}] cost $${cost.toFixed(4)}`);
+    await this.recordSpend(key, data.usage, Date.now() - startedAt);
     return parseHarvestResponse(text, key);
+  }
+
+  /**
+   * Record what a harvest query cost, where `/fc` can see it.
+   *
+   * These calls go straight to api.x.ai rather than through `modelGateway`,
+   * which is what feeds `TelemetryService` — so every xAI call this bot has
+   * ever made was invisible to `/fc`, and the cost report has been an OpenAI
+   * report wearing the name of a total. The exact figure was already in hand:
+   * xAI returns `usage.cost_in_usd_ticks`, and it went to a debug log that
+   * production does not emit.
+   *
+   * The reported cost is authoritative and is used as-is. If it is ever absent,
+   * the fallback runs token counts through `calculateCost`, which knows no xAI
+   * pricing and will quietly use gpt-4o-mini's — so that path says so out loud
+   * rather than presenting a guess as a measurement.
+   */
+  private async recordSpend(key: string, usage: any, duration: number): Promise<void> {
+    try {
+      const telemetry = this.runtime.getService(
+        TelemetryService.serviceType
+      ) as TelemetryService | undefined;
+      if (!telemetry) return;
+
+      const spend = readXaiSpend(usage);
+      const { tokensIn, tokensOut } = spend;
+
+      let cost = spend.cost ?? 0;
+      if (spend.cost === null) {
+        cost = telemetry.calculateCost(XAI_MODEL, tokensIn, tokensOut);
+        logger.warn(
+          { model: XAI_MODEL, tokensIn, tokensOut },
+          '[XHarvest] xAI reported no cost; /fc will show an estimate at OpenAI rates'
+        );
+      }
+
+      await telemetry.logModelUsage({
+        timestamp: new Date().toISOString(),
+        model: XAI_MODEL,
+        tokensIn,
+        tokensOut,
+        cost,
+        source: `X-Harvest-${key}`,
+        actionName: 'x_harvest',
+        duration,
+      });
+      logger.info(`XHarvest[${key}] $${cost.toFixed(4)} (${tokensIn}→${tokensOut} tokens)`);
+    } catch (err) {
+      // Telemetry must never cost us a harvest.
+      logger.debug({ error: err }, '[XHarvest] could not record spend');
+    }
   }
 
   /**

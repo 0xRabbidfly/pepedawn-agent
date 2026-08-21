@@ -5,6 +5,28 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.5.2] - 2026-08-20
+
+### Fixed
+
+- **`/fc` did not count xAI spend at all.** Every Grok call the bot has ever
+  made was invisible to the cost report, which means `/fc` has been an OpenAI
+  report presented as a total. `XHarvestService` calls `api.x.ai` with a plain
+  `fetch` rather than through `modelGateway`, and the gateway is what feeds
+  `TelemetryService`.
+
+  The exact figure was already in hand and being thrown away: xAI returns
+  `usage.cost_in_usd_ticks`, and it went to a `logger.debug` line that
+  production does not emit. Harvest now records each query — three per cycle,
+  every 24h — as `X-Harvest-<query>` under action `x_harvest`, using xAI's own
+  accounting.
+
+  If xAI ever omits the cost, the fallback runs token counts through
+  `calculateCost`, which knows no xAI pricing and would silently apply
+  gpt-4o-mini's. That path logs a warning rather than presenting an estimate as
+  a measurement — and `readXaiSpend` returns a null cost rather than a zero,
+  which would be indistinguishable from a free call.
+
 ## [5.5.1] - 2026-08-20
 
 ### Fixed

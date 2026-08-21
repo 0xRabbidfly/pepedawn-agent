@@ -501,6 +501,31 @@ const RECENCY_RE = /\b(latest|newest|recent|recently|today|this week|new)\b/i;
  * because a bot that answers every message with "speaking of which, someone
  * tweeted..." is precisely the failure mode to avoid.
  */
+/** What one xAI call cost, as far as the response can tell us. */
+export interface XaiSpend {
+  tokensIn: number;
+  tokensOut: number;
+  /** Dollars, from xAI's own accounting. Null when the response omitted it. */
+  cost: number | null;
+}
+
+/**
+ * Read the spend off an xAI `/v1/responses` payload.
+ *
+ * Cost arrives as `cost_in_usd_ticks` — ten-billionths of a dollar — and token
+ * counts under either the responses-API names or the chat-completions ones,
+ * depending on the endpoint's mood. A null cost means the caller has to
+ * estimate and should say that it is estimating.
+ */
+export function readXaiSpend(usage: any): XaiSpend {
+  const ticks = usage?.cost_in_usd_ticks;
+  return {
+    tokensIn: usage?.input_tokens ?? usage?.prompt_tokens ?? 0,
+    tokensOut: usage?.output_tokens ?? usage?.completion_tokens ?? 0,
+    cost: typeof ticks === 'number' && ticks > 0 ? ticks / 1e10 : null,
+  };
+}
+
 export function matchForConversation(
   userText: string,
   opts: { now?: number; posts?: HarvestedPost[]; minOverlap?: number } = {},

@@ -12,7 +12,7 @@ import { tmpdir } from 'os';
 import { rmSync } from 'fs';
 import {
   scoreInterest, cardsMentioned, parseHarvestResponse, mergePosts,
-  selectForVolunteer, matchForConversation, formatForTelegram,
+  selectForVolunteer, matchForConversation, formatForTelegram, readXaiSpend,
   markVolunteered, allPosts, _resetCache,
   isXActivityQuestion, buildDigest, formatDigestForTelegram,
   DEFAULT_HARVEST_CONFIG, type HarvestedPost,
@@ -453,5 +453,29 @@ describe('a harvested post is woven into the reply, not dropped under it', () =>
     // The model used it: spent, and the room is on cooldown.
     router.settleXPost(chosen, '@subterranean_1 was on about this yesterday', 'r1');
     expect(router.weaveableXPost('thoughts on FAKEHAIRPEP', 'r1', false)).toBeNull();
+  });
+});
+
+describe('what an xAI call cost', () => {
+  /**
+   * Harvest calls go straight to api.x.ai rather than through the model
+   * gateway, so nothing they spent ever reached TelemetryService and `/fc` has
+   * been reporting OpenAI spend as if it were the total. The exact figure was
+   * already in the response and went to a debug log production does not emit.
+   */
+  it('reads cost in ticks and both token-count spellings', () => {
+    expect(readXaiSpend({ input_tokens: 900, output_tokens: 2100, cost_in_usd_ticks: 123_456_789 }))
+      .toEqual({ tokensIn: 900, tokensOut: 2100, cost: 0.0123456789 });
+
+    expect(readXaiSpend({ prompt_tokens: 10, completion_tokens: 20, cost_in_usd_ticks: 1e10 }))
+      .toEqual({ tokensIn: 10, tokensOut: 20, cost: 1 });
+  });
+
+  it('reports a null cost rather than zero when xAI omits it', () => {
+    // Zero would be indistinguishable from a free call and would quietly
+    // understate the bill; null tells the caller to estimate and say so.
+    expect(readXaiSpend({ input_tokens: 5, output_tokens: 5 }).cost).toBeNull();
+    expect(readXaiSpend({ input_tokens: 5, output_tokens: 5, cost_in_usd_ticks: 0 }).cost).toBeNull();
+    expect(readXaiSpend(undefined)).toEqual({ tokensIn: 0, tokensOut: 0, cost: null });
   });
 });
