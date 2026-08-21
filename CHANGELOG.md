@@ -5,6 +5,25 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.6.1] - 2026-08-21
+
+### Added
+- **Visual traits for the six new Series 18 cards.** The Series 18 backfill added
+  the cards to the index, but the vision pass behind `card-visual-traits.json`
+  last ran in November 2025, so descriptive questions ("most red", "which one has
+  birds") could not reach them. Crawled, merged, summarised and embedded the six
+  cards pepe.wtf has published, then merged the result into the traits file:
+  875 -> 881 cards.
+
+  The matching 29 fact blocks were imported into the production corpus in a
+  separate operation (3,986 -> 4,015 blocks, 875 -> 881 cards), which is what
+  lets PEPEDAWN discuss their imagery in conversation. The two paths are
+  independent: the corpus feeds `expandCardOnlyPassages`, this file feeds
+  `describeTraitMatch`.
+
+  The ten Series 18 cards pepe.wtf has not published are excluded - there is no
+  full-resolution artwork to analyse, only a 400px directory thumbnail.
+
 ## [5.6.0] - 2026-08-21
 
 ### Fixed
