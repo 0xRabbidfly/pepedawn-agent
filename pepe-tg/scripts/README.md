@@ -27,9 +27,15 @@ node scripts/add-new-cards.js
 ```
 
 **Output:**
-- Updates `src/data/fake-rares-data.json`
-- Shows diff summary (X new cards, Y updated cards)
-- Auto-deduplicates existing entries
+- Appends to `src/data/fake-rares-data.json`
+- Reports how many cards were added, and names any that landed incomplete
+
+**Append-only.** The script adds cards it has never seen and never rewrites an
+existing record. Pass 2 builds a record from scratch — it does not carry
+`memeUri` forward, and a pepe.wtf 404 returns nulls for artist/supply/issuance —
+so re-scraping an existing card erased hand-curated media URIs and could blank
+good metadata. Cards that land incomplete (usually not yet published on
+pepe.wtf) are listed at the end of the run and filled in by hand.
 
 **What it scrapes:**
 - Asset name, series, card number

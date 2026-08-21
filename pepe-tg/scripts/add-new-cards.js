@@ -305,59 +305,40 @@ async function pass2ScrapeCard(page, baseCard) {
   
   console.log(`\n✅ PASS 1 Complete: ${pass1Results.length} cards collected\n`);
   
-  // Split cards into two groups:
-  // 1. Brand new cards (not in database at all)
-  // 2. Existing cards with issues (need re-scraping)
-  const newCards = [];
-  const cardsToRescrape = [];
-  
-  for (const card of pass1Results) {
-    const existingCard = existingData.find(existing => 
-      existing.asset === card.asset && 
-      existing.series === card.series && 
+  // Keep only cards we have never seen before.
+  //
+  // This script is append-only on purpose. It used to re-scrape any existing
+  // card carrying an `issues` array and write the result back, but Pass 2
+  // rebuilds a record from scratch - it does not copy `memeUri` forward, and a
+  // 404 returns nulls for artist/supply/issuance. Re-scraping therefore erased
+  // hand-curated media URIs and could blank good metadata. Existing records are
+  // now left alone; repairs are a deliberate, reviewed edit.
+  const newCards = pass1Results.filter(card =>
+    !existingData.some(existing =>
+      existing.asset === card.asset &&
+      existing.series === card.series &&
       existing.card === card.card
-    );
-    
-    if (!existingCard) {
-      // Brand new card
-      newCards.push(card);
-    } else if (existingCard.issues && existingCard.issues.length > 0) {
-      // Existing card with issues - mark for re-scraping
-      cardsToRescrape.push(card);
-    }
-  }
-  
-  const totalToProcess = newCards.length + cardsToRescrape.length;
-  
-  if (totalToProcess === 0) {
-    console.log('ℹ️  No new cards and no cards with issues to re-scrape\n');
+    )
+  );
+
+  if (newCards.length === 0) {
+    console.log('ℹ️  No new cards found\n');
     await browser.close();
     return;
   }
-  
-  console.log(`📌 Found ${newCards.length} NEW cards to add`);
-  if (cardsToRescrape.length > 0) {
-    console.log(`🔄 Found ${cardsToRescrape.length} existing cards with issues to re-scrape`);
-  }
-  console.log();
+
+  console.log(`📌 Found ${newCards.length} NEW cards to add\n`);
   
   // ========== PASS 2 ==========
   console.log('='.repeat(60));
   console.log('PASS 2: Extracting metadata from pepe.wtf');
   console.log('='.repeat(60) + '\n');
   
-  // Process both new cards and cards to re-scrape
-  const allCardsToProcess = [
-    ...newCards.map(c => ({ ...c, isNew: true })),
-    ...cardsToRescrape.map(c => ({ ...c, isNew: false }))
-  ];
-  
-  for (let i = 0; i < allCardsToProcess.length; i++) {
-    const card = allCardsToProcess[i];
-    const label = card.isNew ? '🆕 NEW' : '🔄 UPDATE';
-    
-    console.log(`[${i + 1}/${allCardsToProcess.length}] ${label} ${card.asset} - S${card.series} C${card.card}`);
-    
+  for (let i = 0; i < newCards.length; i++) {
+    const card = newCards[i];
+
+    console.log(`[${i + 1}/${newCards.length}] 🆕 NEW ${card.asset} - S${card.series} C${card.card}`);
+
     const metadata = await pass2ScrapeCard(page, card);
     
     const fullCard = {
@@ -443,18 +424,10 @@ async function pass2ScrapeCard(page, baseCard) {
   console.log('💾 Saving to database');
   console.log('='.repeat(60) + '\n');
   
-  // Remove old versions of cards we're updating
-  let updatedData = existingData.filter(existing => {
-    return !pass2Results.some(newCard => 
-      newCard.asset === existing.asset && 
-      newCard.series === existing.series && 
-      newCard.card === existing.card
-    );
-  });
-  
-  // Add new/updated cards
-  updatedData = [...updatedData, ...pass2Results];
-  
+  // Append only - every entry in pass2Results was absent from existingData, so
+  // nothing already on disk is replaced.
+  let updatedData = [...existingData, ...pass2Results];
+
   // Sort by series then card
   updatedData.sort((a, b) => {
     if (a.series !== b.series) return a.series - b.series;
@@ -464,29 +437,21 @@ async function pass2ScrapeCard(page, baseCard) {
   fs.writeFileSync(dataPath, JSON.stringify(updatedData, null, 2), 'utf-8');
   
   console.log(`✅ Added ${newCards.length} new cards`);
-  if (cardsToRescrape.length > 0) {
-    console.log(`🔄 Updated ${cardsToRescrape.length} cards (resolved issues)`);
-  }
   console.log(`📦 Total cards in database: ${updatedData.length}`);
   console.log(`💾 Saved to: ${dataPath}\n`);
-  
-  // Note: Embeddings need to be generated for new cards
-  if (newCards.length > 0) {
-    console.log(`\n💡 Run embedding generation for ${newCards.length} new card(s):`);
-    console.log(`   bun run scripts/generate-card-embeddings.js "${newCards.map(c => c.asset).join(' ')}"`);
-  }
-  
-  // Summary of remaining issues
+
+  // Summary of incomplete records
   const stillWithIssues = pass2Results.filter(c => c.issues && c.issues.length > 0);
-  const resolvedIssues = cardsToRescrape.length - stillWithIssues.filter(c => !c.isNew).length;
-  
-  if (resolvedIssues > 0) {
-    console.log(`✨ Resolved issues for ${resolvedIssues} card(s)!`);
-  }
+
   if (stillWithIssues.length > 0) {
-    console.log(`⚠️  ${stillWithIssues.length} card(s) still have issues - may need manual review`);
+    console.log(`⚠️  ${stillWithIssues.length} of the new card(s) landed incomplete:`);
+    for (const c of stillWithIssues) {
+      console.log(`     ${c.asset} - ${c.issues.join(', ')}`);
+    }
+    console.log(`   These are usually cards pepe.wtf has not published yet.`);
+    console.log(`   This script will not revisit them - fill them in by hand once upstream catches up.\n`);
   }
-  
+
   console.log('\n✅ Complete!\n');
 })();
 

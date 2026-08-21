@@ -5,6 +5,28 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.5.3] - 2026-08-20
+
+### Fixed
+- **The card scraper erased hand-curated data when it revisited a card.** Any
+  card carrying an `issues` array was queued for re-scraping, and Pass 2 rebuilt
+  the record from scratch: it never copied `memeUri` forward, and a pepe.wtf 404
+  returned nulls for artist, supply and issuance. Two cards (`FAKEIJUANA`,
+  `STPEPERISES`) would have lost their `memeUri` on the next run - the same
+  field repaired by hand across four earlier commits. `add-new-cards.js` is now
+  append-only: it adds cards it has never seen and never rewrites an existing
+  record. Cards that land incomplete are named at the end of the run and filled
+  in by hand.
+- **The auto-update workflow always reported it had found nothing.** It counted
+  new cards by grepping the diff for `"name":`, a key the card schema does not
+  have - it uses `"asset"`. Every commit the automation produced claimed zero
+  cards, which is part of why the pipeline going quiet looked normal.
+
+### Removed
+- The scraper's closing hint to run `generate-card-embeddings.js`. That script
+  imports `src/utils/visualEmbeddings.ts` and `src/utils/embeddingsDb.ts`,
+  neither of which exists, so it fails on import.
+
 ## [5.3.3] - 2026-08-20
 
 ### Fixed

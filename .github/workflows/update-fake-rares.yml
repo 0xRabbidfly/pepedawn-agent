@@ -50,7 +50,9 @@ jobs:
           else
             echo "changed=true" >> $GITHUB_OUTPUT
             # Count unique card names in the diff (both added and modified cards)
-            CHANGED=$(git diff pepe-tg/src/data/fake-rares-data.json | grep -E '^\+.*"name":\s*"' | sed -E 's/.*"name":\s*"([^"]+)".*/\1/' | sort -u | wc -l || echo "0")
+            # The schema key is "asset" - there is no "name" key, so the old
+            # grep matched nothing and every run reported 0 cards.
+            CHANGED=$(git diff pepe-tg/src/data/fake-rares-data.json | grep -E '^\+.*"asset":\s*"' | sed -E 's/.*"asset":\s*"([^"]+)".*/\1/' | sort -u | wc -l || echo "0")
             CHANGED=$(echo "$CHANGED" | tr -d '\n\r ')
             echo "cards_added=${CHANGED}" >> $GITHUB_OUTPUT
             echo "✅ Found ${CHANGED} cards updated"
