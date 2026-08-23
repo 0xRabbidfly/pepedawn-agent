@@ -165,6 +165,73 @@ export function describeTraitMatch(query: string): { fact: string; asset: string
   };
 }
 
+/**
+ * Traits that describe nothing about the card.
+ *
+ * The vision pass read the artwork *and* whatever text was printed on it, so
+ * alongside "gold background" and "charging bull" the file holds "pepe", "nft",
+ * "atk", "spd" and the odd word lifted straight off the card face. Naming a
+ * card's look from those produces "the vision pass recorded: get."
+ */
+const NON_DESCRIPTIVE: ReadonlySet<string> = new Set([
+  'art', 'artwork', 'artistic', 'digital', 'digital art', 'image', 'picture', 'illustration',
+  'pepe', 'pepes', 'pepe the frog', 'frog', 'meme', 'memes', 'culture', 'character', 'creator',
+  'card', 'cards', 'fake', 'fakes', 'rare', 'rares', 'nft', 'nfts', 'crypto', 'style', 'design',
+  'color', 'colors', 'colour', 'colours', 'background', 'text', 'logo', 'existence', 'rareness',
+  'score', 'atk', 'spd', 'ele', 'hp', 'def',
+  // Ordinary words read off the card face rather than seen in the art.
+  'one', 'out', 'back', 'real', 'way', 'word', 'build', 'ban', 'attack', 'edition', 'level',
+  'solve', 'pull', 'turned', 'whole', 'call', 'put', 'men', 'our', 'run', 'sold', 'live',
+  'value', 'off', 'raw',
+]);
+
+/**
+ * True for a trait that should never reach a reply: a digit-bearing token, a
+ * long unbroken string (the asset-hash artefacts in the file), something with
+ * almost no vowels, a phrase made entirely of filler - or a word that is just
+ * the card's own name read back.
+ */
+function isUndescriptive(trait: string, flatAsset: string): boolean {
+  if (/\d/.test(trait)) return true;
+  if (NON_DESCRIPTIVE.has(trait) || STOP.has(trait)) return true;
+  if (!trait.includes(' ') && trait.length > 12) return true;
+  const letters = trait.replace(/[^a-z]/g, '');
+  const vowels = (trait.match(/[aeiou]/g) || []).length;
+  if (letters.length > 0 && vowels / letters.length < 0.25) return true;
+  if (trait.split(/\s+/).every((w) => NON_DESCRIPTIVE.has(w) || STOP.has(w))) return true;
+  return flatAsset.includes(trait.replace(/[^a-z0-9]/g, ''));
+}
+
+/**
+ * A short line on what a card actually looks like, or null when nothing usable
+ * was recorded.
+ *
+ * For a card nobody has written lore about, the specs alone are a thin reply -
+ * artist, series, supply and nothing of the art itself. The vision pass already
+ * looked at all 858 of them, so this contributes what it saw.
+ *
+ * Phrases come first because they are almost always genuine vision output
+ * ("charging bull", "gold background"); single words are ranked behind them,
+ * recognised description before anything else. Three at most: this rides along
+ * with the facts, it does not become the answer.
+ */
+export function describeLook(asset: string, limit = 3): string | null {
+  const traits = TRAITS[asset.toUpperCase()];
+  if (!traits || traits.length === 0) return null;
+
+  const flatAsset = asset.toLowerCase().replace(/[^a-z0-9]/g, '');
+  const usable = traits.filter((t) => !isUndescriptive(t, flatAsset));
+  const phrases = usable.filter((t) => t.includes(' '));
+  const known = usable.filter((t) => !t.includes(' ') && DESCRIPTIVE_VOCABULARY.has(t));
+  const rest = usable.filter((t) => !t.includes(' ') && !DESCRIPTIVE_VOCABULARY.has(t));
+
+  const picked = [...phrases, ...known, ...rest].slice(0, limit);
+  if (picked.length === 0) return null;
+
+  const line = picked.join(', ');
+  return `${line.charAt(0).toUpperCase()}${line.slice(1)}.`;
+}
+
 /** How many cards have any recorded traits at all. */
 export function traitCoverage(): number {
   return Object.values(TRAITS).filter((t) => t.length > 0).length;

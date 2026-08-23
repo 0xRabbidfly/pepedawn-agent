@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'bun:test';
-import { findCardsByTrait, describeTraitMatch, traitTerms, traitCoverage } from '../../utils/cardTraits';
+import {
+  findCardsByTrait,
+  describeTraitMatch,
+  traitTerms,
+  traitCoverage,
+  describeLook,
+} from '../../utils/cardTraits';
+import traitsJson from '../../data/card-visual-traits.json';
 
 describe('visual trait search', () => {
   it('covers most of the collection', () => {
@@ -146,5 +153,43 @@ describe('never volunteer a card for ordinary conversation', () => {
     expect(traitTerms('i get really awkward when scrilla is there')).toEqual([]);
     expect(traitTerms('lol more work to do')).toEqual([]);
     expect(traitTerms('most red card')).toContain('red');
+  });
+});
+
+describe('describeLook', () => {
+  const TRAITS = traitsJson as Record<string, string[]>;
+
+  it('gives a short look at a card, phrases before loose words', () => {
+    // Recorded: edgy, energetic, punk, rebellious, rock, vibrant colors.
+    // "punk" and "rock" are the card's own name read back, so they are out.
+    expect(describeLook('PEPEPUNKROCK')).toBe('Vibrant colors, edgy, energetic.');
+  });
+
+  it('is case-insensitive, and says nothing about a card it has not seen', () => {
+    expect(describeLook('pepepunkrock')).toBe(describeLook('PEPEPUNKROCK') as string);
+    expect(describeLook('NOSUCHCARDANYWHERE')).toBeNull();
+  });
+
+  it('stays short - three traits at most, for every card', () => {
+    for (const asset of Object.keys(TRAITS)) {
+      const line = describeLook(asset);
+      if (line) expect(line.split(',').length).toBeLessThanOrEqual(3);
+    }
+  });
+
+  it('never offers the junk the vision pass read off the card face', () => {
+    // Stat labels, asset-hash artefacts and digits are all in the traits file;
+    // none of them describe a card.
+    const junk = /\b(atk|spd|ele|rareness|score|nft|could|would)\b|\d/i;
+    for (const asset of Object.keys(TRAITS)) {
+      const line = describeLook(asset);
+      if (line) expect(line).not.toMatch(junk);
+    }
+  });
+
+  it('has something to say about nearly every card it has seen', () => {
+    const seen = Object.keys(TRAITS).filter((a) => TRAITS[a].length > 0);
+    const described = seen.filter((a) => describeLook(a) !== null);
+    expect(described.length / seen.length).toBeGreaterThan(0.95);
   });
 });

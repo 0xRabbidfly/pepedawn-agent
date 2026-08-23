@@ -15,7 +15,7 @@ import { callTextModel } from '../utils/modelGateway';
 import { describeCard, detectCollection, randomCard } from '../utils/cardFacts';
 import { inActiveExchange } from '../conversation/cadenceGovernor';
 import { getCardInfo } from '../data/fullCardIndex';
-import { describeTraitMatch } from '../utils/cardTraits';
+import { describeLook, describeTraitMatch } from '../utils/cardTraits';
 import {
   answerCardQuery,
   asksAttributionOfAnUnnamedCard,
@@ -515,7 +515,15 @@ export class SmartRouterService extends Service {
       if (facts) {
         const worthAppending =
           !!story && story.length > 0 && !result.isNonAnswer && !this.isThinAnswer(story);
-        story = worthAppending ? `${facts}\n\n${story}` : facts;
+        if (worthAppending) {
+          story = `${facts}\n\n${story}`;
+        } else {
+          // Specs alone say nothing about the art. The vision pass has already
+          // looked at every card, so a card with no lore still gets a line on
+          // what it looks like - three traits, no more.
+          const look = describeLook(mentionedCard);
+          story = look ? `${facts}\n${look}` : facts;
+        }
       }
     }
 

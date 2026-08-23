@@ -52,6 +52,23 @@ describe('FACTS plan with a named card', () => {
     expect(plan.story).not.toContain("Not sure what you're after");
   });
 
+  it('contributes what the card looks like when there is no lore', async () => {
+    const router = routerWithKnowledge({
+      story: CLARIFICATION_MESSAGE,
+      sourcesLine: '',
+      hasWikiOrMemory: false,
+      isNonAnswer: true,
+      metrics: NO_METRICS,
+    });
+
+    const plan = await router.buildFactsPlan('tell me about PEPEPUNKROCK', 'room-look');
+
+    // The vision pass recorded edgy / energetic / punk / rebellious / rock /
+    // vibrant colors. Three of them ride along with the specs; no more.
+    expect(plan.story).toContain('Vibrant colors, edgy, energetic.');
+    expect(plan.story.split('\n').filter(Boolean)).toHaveLength(2);
+  });
+
   it('still appends a real answer to the card facts', async () => {
     const router = routerWithKnowledge({
       story:

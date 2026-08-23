@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [5.6.2] - 2026-08-23
 
+### Added
+- **A card with no lore now says what it looks like.** The specs alone are a thin
+  reply — artist, series, supply, and nothing about the art. The /fv vision pass
+  has already looked at 858 cards, so `describeLook` contributes a single line of
+  what it saw: "PEPEPUNKROCK — by REY, series 8, card 37, supply 79, issued July
+  2022. / Vibrant colors, edgy, energetic." Three traits, one line, only when
+  there is no real answer to give — it rides along with the facts, it does not
+  become the reply.
+
+  The traits file is not clean enough to read from directly. The vision pass read
+  the artwork *and* the text printed on it, so it holds "atk", "spd", "rareness",
+  asset-hash artefacts, and ordinary words lifted off the card face — the same
+  material that once produced "the vision pass recorded: get." Selection drops
+  those, drops anything that is just the card's own name read back ("punk" and
+  "rock" for PEPEPUNKROCK), and ranks multi-word phrases ahead of loose words,
+  because a phrase is almost always genuine vision output. 858 of 858 cards with
+  recorded traits produce a usable line.
+
 ### Fixed
 - **The bot named a card and then asked what the person was looking for.** Someone
   posted "on the hunt for a PEPEPUNKROCK if anyone knows anyone selling" and got
