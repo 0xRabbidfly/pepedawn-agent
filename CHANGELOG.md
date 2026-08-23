@@ -5,6 +5,42 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.6.3] - 2026-08-23
+
+### Fixed
+- **`/p djpepe` showed a random card.** Asked in the official channel to run
+  "/p djpepe", the bot posted GIANCARLO by Indelible — a random Rare Pepe — into
+  a conversation about who made DJPEPE, and the thread never recovered.
+
+  Two faults met. The classifier is asked to report the slash command it saw and
+  reports only the command, so "go ahead and do /p djpepe" arrived at the handler
+  as a bare `/p`. And an argument-less `/p` means *show a random card*, which is
+  also what all three card commands returned for any text their parser could not
+  read — the pattern was anchored at the start of the message with an optional
+  slash, so it failed open in the worst possible direction.
+
+  `runRouterCommand` now recovers the argument from the user's own text, which is
+  the authority on what they asked for. `parseCardCommand` finds the command
+  wherever it appears, and treats "random" as something a person asked for rather
+  than as the fallback for a parse that did not work. `/f`, `/c` and `/p` all
+  share it; `/fr` and `/fc` are still their own commands.
+
+- **"DJ Pepe was made by Emblematix."** DJPEPE is a Rare Pepe by Rare Scrilla,
+  and the index says so. Counterparty asset names have no spaces, but people do,
+  and "DJ Pepe" matched nothing — so the question fell through to retrieval,
+  which found the Fake Rare RAREDJPEPE (by EMBLEMATIX) sitting nearby and
+  asserted it. Attribution is the one thing this community will not tolerate
+  being guessed at.
+
+  `assetsIn` now makes one last-resort pass for names written with a space,
+  joining up to three adjacent words and looking the result up across all three
+  collections. It runs only when nothing was named outright, never joins across a
+  function word — "rare pepes and fake rares" contains PEPESAND, "the pepe"
+  contains THEPEPE, both real assets and neither one named — and leaves the
+  spaced collection names ("rare pepe", "fake rares") to lore. Measured against
+  67,600 ordinary word pairs, what survives is almost entirely genuine card names
+  someone spaced out: PEPECASH, DANKPEPE, BITCOINPEPE.
+
 ## [5.6.2] - 2026-08-23
 
 ### Added

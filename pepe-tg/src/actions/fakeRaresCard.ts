@@ -28,6 +28,7 @@ import {
   normalizeForMatching,
 } from "../utils/fuzzyMatch";
 import { buildSuggestionResponse } from "../utils/cardSuggestions";
+import { parseCardCommand } from "../utils/cardCommandParse";
 import { escapeTelegramMarkdown } from "../utils/telegramMarkdown";
 
 /**
@@ -727,19 +728,8 @@ function parseCardRequest(text: string): {
   assetName: string | null;
   isRandomCard: boolean;
 } {
-  // Updated regex to capture everything after /f, including spaces
-  const match = text.match(
-    /^(?:@[A-Za-z0-9_]+\s+)?\/?f(?:@[A-Za-z0-9_]+)?(?:\s+(.+))?/i,
-  );
-
-  if (!match || !match[1]) {
-    // No asset name provided - random card
-    return { assetName: null, isRandomCard: true };
-  }
-
-  // Trim whitespace and return - keep original case for artist matching
-  const input = match[1].trim();
-  return { assetName: input, isRandomCard: false };
+  // Original case is kept: /f matches artist names as well as assets.
+  return parseCardCommand(text, "f");
 }
 
 /**

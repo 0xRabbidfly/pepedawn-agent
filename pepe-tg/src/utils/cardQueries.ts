@@ -41,6 +41,60 @@ export interface CardQueryAnswer {
  * Tokenising and looking each token up is also cheaper than testing 4,484
  * regexes per message, which is what mirroring `artistsIn` would have cost.
  */
+/**
+ * Words that must never be welded to their neighbour when hunting for a card
+ * name written with a space in it.
+ *
+ * "I love rare pepes and fake rares" contains PEPESAND, and "the pepe" contains
+ * THEPEPE - both real assets, neither one named. Refusing to join across a
+ * function word removes that whole class: 107 collisions between ordinary word
+ * pairs and the 4,484 asset names, and every one of them involves a word from
+ * this list.
+ */
+const NOT_PART_OF_A_NAME: ReadonlySet<string> = new Set([
+  'THE', 'A', 'AN', 'AND', 'OR', 'OF', 'TO', 'FOR', 'FROM', 'WITH', 'ON', 'IN', 'AT', 'BY', 'AS',
+  'IT', 'ITS', 'IS', 'ARE', 'WAS', 'WERE', 'BE', 'BEEN', 'THIS', 'THAT', 'THESE', 'THOSE',
+  'MY', 'YOUR', 'OUR', 'THEIR', 'HIS', 'HER', 'US', 'THEM', 'THEY', 'WE', 'YOU', 'I', 'ME', 'HIM',
+  'HOW', 'WHAT', 'WHO', 'WHOM', 'WHY', 'WHEN', 'WHERE', 'WHICH', 'SO', 'IF', 'NOT', 'NO', 'YES',
+  'DO', 'DOES', 'DID', 'HAS', 'HAVE', 'HAD', 'WILL', 'WOULD', 'CAN', 'COULD', 'SHOULD', 'MUST',
+  'ONE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX', 'SEVEN', 'EIGHT', 'NINE', 'TEN',
+  'ALL', 'ANY', 'SOME', 'MORE', 'MOST', 'JUST', 'NOW', 'HERE', 'THERE', 'THEN', 'THAN', 'ABOUT',
+  'LIKE', 'SAME', 'VERY', 'ALSO', 'BUT', 'OUT', 'UP', 'DOWN', 'OVER', 'AGAIN', 'ONCE',
+]);
+
+/**
+ * A card whose name someone wrote with a space in it.
+ *
+ * Counterparty asset names have no spaces, but people do: "DJ Pepe" is DJPEPE,
+ * a Rare Pepe by Rare Scrilla. Unrecognised, that question fell through to
+ * retrieval, which found the Fake Rare RAREDJPEPE nearby and told the room DJ
+ * Pepe was made by Emblematix. Attribution is the one thing this community will
+ * not tolerate being guessed at.
+ *
+ * Last resort only - it runs when no asset was named outright, so a message
+ * that already names a card is never reinterpreted. Longest phrase first, so a
+ * three-word name beats the two-word one inside it.
+ */
+function spacedAssetIn(text: string): AnyCardInfo | undefined {
+  // Written with a space, these name a collection; written without one, they
+  // name a card, and the direct lookup above has already had its turn.
+  const COLLECTIONS = new Set(['RAREPEPE', 'RAREPEPES', 'FAKERARE', 'FAKERARES', 'FAKECOMMON', 'FAKECOMMONS']);
+  const tokens = text.toUpperCase().match(/[A-Z0-9]+/g) ?? [];
+  for (let span = 3; span >= 2; span--) {
+    for (let i = 0; i + span <= tokens.length; i++) {
+      const parts = tokens.slice(i, i + span);
+      if (parts.some((p) => NOT_PART_OF_A_NAME.has(p))) continue;
+      const joined = parts.join('');
+      // Shorter than this and a coincidence is likelier than a name.
+      if (joined.length < 6) continue;
+      if (COLLECTIONS.has(joined)) continue;
+      const card = ALL_CARDS_MAP[joined];
+      if (card) return card;
+    }
+  }
+  return undefined;
+}
+
 function assetsIn(text: string): AnyCardInfo[] {
   const found = new Map<string, AnyCardInfo>();
   // Assets are Counterparty names: A-Z, digits, and '.' or '-' in the
@@ -52,6 +106,10 @@ function assetsIn(text: string): AnyCardInfo[] {
       const card = token && ALL_CARDS_MAP[token];
       if (card) found.set(card.asset, card);
     }
+  }
+  if (found.size === 0) {
+    const spaced = spacedAssetIn(text);
+    if (spaced) found.set(spaced.asset, spaced);
   }
   return [...found.values()].sort((a, b) => b.asset.length - a.asset.length);
 }

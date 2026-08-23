@@ -26,6 +26,7 @@ import { FULL_CARD_INDEX, getCardInfo } from '../data/fullCardIndex';
 import { getAnyCardInfo } from '../data/allCardsIndex';
 import { startAutoRefresh } from '../utils/cardIndexRefresher';
 import { detectMessagePatterns, hasAnyCommand } from '../utils/messagePatterns';
+import { commandArgumentIn } from '../utils/cardCommandParse';
 import { executeCommand, executeCommandAlways, type CommandHandlerParams } from '../utils/commandHandler';
 import { checkRateLimit, DEFAULT_RATE_LIMIT } from '../utils/rateLimiter';
 import { isRateLimitExempt } from '../utils/admins';
@@ -220,11 +221,25 @@ async function runRouterCommand(command: string, context: SmartRouterExecutionCo
     return false;
   }
 
+  // The classifier reports the command it saw, and routinely reports only the
+  // command: "/p" for a message that said "go ahead and do /p djpepe". The
+  // synthetic message then carried no argument, and an argument-less /p means a
+  // random card - so a request for DJPEPE was answered with GIANCARLO. The
+  // user's own text is the authority on what they asked for; the classifier's
+  // rest is the fallback for when they typed the command bare.
+  const typedArgument = commandArgumentIn(message.content.text || '', baseLower);
+  const argument = typedArgument ?? rest.join(' ').trim();
+  if (typedArgument && typedArgument !== rest.join(' ').trim()) {
+    logger.debug(
+      `[SmartRouter] CMDROUTE recovered "${baseLower} ${typedArgument}" from the message text`
+    );
+  }
+
   const syntheticMessage = {
     ...message,
     content: {
       ...message.content,
-      text: [baseLower, ...rest].join(' ').trim(),
+      text: `${baseLower}${argument ? ` ${argument}` : ''}`,
     },
   };
 

@@ -16,6 +16,7 @@ import {
   normalizeForMatching,
 } from "../utils/fuzzyMatch";
 import { buildSuggestionResponse } from "../utils/cardSuggestions";
+import { parseCardCommand } from "../utils/cardCommandParse";
 import { escapeTelegramMarkdown } from "../utils/telegramMarkdown";
 
 /**
@@ -224,19 +225,10 @@ function parseCardRequest(text: string): {
   assetName: string | null;
   isRandomCard: boolean;
 } {
-  // Match /c or /c@bot optionally followed by card name
-  const match = text.match(
-    /^(?:@[A-Za-z0-9_]+\s+)?\/?c(?:@[A-Za-z0-9_]+)?(?:\s+(.+))?/i,
-  );
-
-  if (!match || !match[1]) {
-    // No asset name provided - random card
-    return { assetName: null, isRandomCard: true };
-  }
-
-  // Trim whitespace and uppercase for lookup
-  const input = match[1].trim().toUpperCase();
-  return { assetName: input, isRandomCard: false };
+  const request = parseCardCommand(text, "c");
+  return request.assetName
+    ? { assetName: request.assetName.toUpperCase(), isRandomCard: false }
+    : request;
 }
 
 /**

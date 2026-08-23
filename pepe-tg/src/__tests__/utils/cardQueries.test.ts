@@ -126,6 +126,47 @@ describe('production regression 2026-08-20: "pepedawn who created djpepe ?"', ()
   });
 });
 
+describe('production regression 2026-08-23: "DJ Pepe was made by Emblematix"', () => {
+  /**
+   * Counterparty asset names have no spaces; people do. Written "DJ Pepe", the
+   * card was invisible to every structured lookup, the question fell through to
+   * retrieval, and retrieval found the Fake Rare RAREDJPEPE - by EMBLEMATIX -
+   * sitting nearby. The room was told DJ Pepe was made by Emblematix.
+   */
+  it('resolves a card name written with a space', () => {
+    const a = answerCardQuery('who created dj pepe?');
+    expect(a?.asset).toBe('DJPEPE');
+    expect(a?.fact).toBe('DJPEPE (Rare Pepes) is by Rare Scrilla.');
+    expect(a?.fact).not.toContain('EMBLEMATIX');
+  });
+
+  it('works for the other attributes too', () => {
+    expect(answerCardQuery('what is the supply of dj pepe')?.fact).toContain('165');
+    expect(answerCardQuery('DJ Pepe artist?')?.asset).toBe('DJPEPE');
+  });
+
+  it('never joins across a function word', () => {
+    // "rare pepes and fake rares" contains PEPESAND, "the pepe" contains
+    // THEPEPE - both real assets, neither one named.
+    expect(answerCardQuery('who made the pepe')).toBeNull();
+    expect(answerCardQuery('who made all these rare pepes and fake rares')).toBeNull();
+  });
+
+  it('leaves the collections to lore rather than naming a card', () => {
+    // Spaced, these name a collection. Unspaced they are cards, and the direct
+    // lookup handles them.
+    expect(answerCardQuery('who created rare pepe?')).toBeNull();
+    expect(answerCardQuery('who created fake rares?')).toBeNull();
+    expect(answerCardQuery('who is the artist for RAREPEPE?')?.asset).toBe('RAREPEPE');
+  });
+
+  it('does not reinterpret a message that already names a card', () => {
+    // The spaced hunt is a last resort; a named asset always wins.
+    const a = answerCardQuery('who made FREEDOMKEK, that dank pepe of a card');
+    expect(a?.asset).toBe('FREEDOMKEK');
+  });
+});
+
 describe('all three collections are reachable', () => {
   it('answers about a Rare Pepe and names the collection', () => {
     const a = answerCardQuery('who is the artist for DJPEPE?');
