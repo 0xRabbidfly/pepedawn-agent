@@ -12,6 +12,7 @@
  */
 
 import { FULL_CARD_INDEX, getCardInfo, type CardInfo } from '../data/fullCardIndex';
+import { artistsIn } from './cardFacts';
 import {
   ALL_CARDS_MAP,
   COLLECTION_LABEL,
@@ -29,18 +30,6 @@ export interface CardQueryAnswer {
   asset?: string;
 }
 
-/**
- * Assets named in the text, longest first so PEPEDAWN2 beats PEPEDAWN.
- *
- * Matching is on whole words across all three collections. It used to be a
- * substring scan of the Fake Rares index alone, which failed in both
- * directions: a card named inside another word matched when it should not
- * have, and every Rare Pepe and Fake Common - two thirds of the 4,484 assets -
- * was invisible to every structured lookup.
- *
- * Tokenising and looking each token up is also cheaper than testing 4,484
- * regexes per message, which is what mirroring `artistsIn` would have cost.
- */
 /**
  * Words that must never be welded to their neighbour when hunting for a card
  * name written with a space in it.
@@ -95,6 +84,18 @@ function spacedAssetIn(text: string): AnyCardInfo | undefined {
   return undefined;
 }
 
+/**
+ * Assets named in the text, longest first so PEPEDAWN2 beats PEPEDAWN.
+ *
+ * Matching is on whole words across all three collections. It used to be a
+ * substring scan of the Fake Rares index alone, which failed in both
+ * directions: a card named inside another word matched when it should not
+ * have, and every Rare Pepe and Fake Common - two thirds of the 4,484 assets -
+ * was invisible to every structured lookup.
+ *
+ * Tokenising and looking each token up is also cheaper than testing 4,484
+ * regexes per message, which is what mirroring `artistsIn` would have cost.
+ */
 function assetsIn(text: string): AnyCardInfo[] {
   const found = new Map<string, AnyCardInfo>();
   // Assets are Counterparty names: A-Z, digits, and '.' or '-' in the
@@ -153,31 +154,16 @@ function subjectCard(text: string): AnyCardInfo | undefined {
   return pepedawnMeansTheCard(text) ? named[0] : undefined;
 }
 
-function escapeRegExp(value: string): string {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
 /**
  * Artists named in the text, longest name first.
  *
- * Matching is on word boundaries, not substrings. Short artist names otherwise
- * match inside ordinary words - an artist called "RC" hides in "scarcest", which
- * made "pepenardo's scarcest card" answer about the wrong person entirely.
+ * Scoped to the Fake Rares index on purpose: everything below quotes artist
+ * statistics and says "in the Fake Rares index" out loud, so the pool has to be
+ * the one being counted. `artistsIn` itself lives in cardFacts, where the wider
+ * pool is used to answer "your favourite <artist> card".
  */
-function artistsIn(text: string): string[] {
-  const names: string[] = [];
-  const seen = new Set<string>();
-  for (const card of FULL_CARD_INDEX) {
-    const artist = card.artist;
-    if (!artist || seen.has(artist)) continue;
-    const pattern = new RegExp(`(?:^|[^\\p{L}\\p{N}])${escapeRegExp(artist)}(?![\\p{L}\\p{N}])`, 'iu');
-    if (pattern.test(text)) {
-      seen.add(artist);
-      names.push(artist);
-    }
-  }
-  // Longest first, so "Rare Scrilla" wins over a hypothetical "Rare".
-  return names.sort((a, b) => b.length - a.length);
+function artistsInFakeRares(text: string): string[] {
+  return artistsIn(text, FULL_CARD_INDEX);
 }
 
 function cardsByArtist(artist: string): CardInfo[] {
@@ -243,7 +229,7 @@ export function asksAttributionOfAnUnnamedCard(text: string): boolean {
 export function answerCardQuery(text: string, subject?: string): CardQueryAnswer | null {
   const lower = text.toLowerCase();
   const card = subjectCard(text) ?? (subject ? getAnyCardInfo(subject) : undefined);
-  const artists = artistsIn(text);
+  const artists = artistsInFakeRares(text);
 
   const asks = (...words: string[]) => words.some((w) => lower.includes(w));
 

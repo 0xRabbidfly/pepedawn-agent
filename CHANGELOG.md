@@ -5,6 +5,39 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.6.4] - 2026-08-23
+
+### Fixed
+- **"What is your favourite Memeticx card?" was answered "GREENBEANZ by VVD".**
+  The taste path drew uniformly from the collection and threw the rest of the
+  question away, so the artist named in it never reached the draw. Memeticx has
+  seven cards; the answer was one in 914.
+
+  A constraint someone states has to constrain the answer, or the answer belongs
+  to a question nobody asked. `randomCard` now takes a `CardConstraint` — artist,
+  series, or both — and the taste path reads one out of the question. Short forms
+  resolve to the credits that person actually holds: "scrilla" is Rare Scrilla,
+  DJ Q-Bert x Rare Scrilla, Rare Scrilla and Ghostface Killah, AWRALPH x Rare
+  Scrilla, Ill Bill x VIVALAVANDAL x Rare Scrilla, and Rare Scrilla x VLAD
+  COSTEA — six credits, one artist, and a card under any of them is a fair
+  answer.
+
+  When nothing matches, the constraint is **not** dropped. There is no fallback
+  to the unconstrained pool anywhere in this path: asked for a card by a name the
+  index has never heard of, the bot says so and asks how it is spelled. Offering
+  somebody else's card is the failure this exists to prevent, not the graceful
+  degradation from it.
+
+  Descriptive qualifiers are left alone — "your favourite green card" is a
+  question the vision pass can answer and not a person to draw from — as are
+  collection words and time-spans, so "favourite fake rares card" and "favourite
+  all time card" still draw from everything.
+
+  `artistsIn` moved to `cardFacts` and takes the pool as a parameter. The two
+  callers mean different things by "artist": offering someone a card searches all
+  three collections, while artist *statistics* are quoted from the Fake Rares
+  index and say so out loud.
+
 ## [5.6.3] - 2026-08-23
 
 ### Fixed

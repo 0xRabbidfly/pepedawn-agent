@@ -12,7 +12,14 @@ import {
 import { detectCardFastPath } from '../router/cardFastPath';
 import { KnowledgeOrchestratorService } from './KnowledgeOrchestratorService';
 import { callTextModel } from '../utils/modelGateway';
-import { describeCard, detectCollection, randomCard } from '../utils/cardFacts';
+import {
+  artistsIn,
+  describeCard,
+  detectCollection,
+  randomCard,
+  resolveArtist,
+  type CardConstraint,
+} from '../utils/cardFacts';
 import { inActiveExchange } from '../conversation/cadenceGovernor';
 import { getCardInfo } from '../data/fullCardIndex';
 import { describeLook, describeTraitMatch } from '../utils/cardTraits';
@@ -666,6 +673,88 @@ export class SmartRouterService extends Service {
     );
   }
 
+  /**
+   * What a question of taste asked for beyond "a card".
+   *
+   * "What is your favourite Memeticx card?" was answered GREENBEANZ by VVD. The
+   * draw was uniform over the collection and the artist in the question was
+   * dropped on the floor, so the answer was to a question nobody asked.
+   *
+   * `filter` narrows the draw; `described` is what was asked for, in words, for
+   * when nothing matches it. Returning neither means the question put no
+   * condition on the answer and any card will do.
+   */
+  private tasteConstraint(text: string): {
+    filter?: CardConstraint;
+    described?: string;
+  } {
+    const series = /\bseries\s*(\d{1,2})\b/i.exec(text);
+    const seriesNumber = series ? parseInt(series[1], 10) : undefined;
+
+    // A credited name appearing anywhere in the question is the strongest
+    // signal, and needs no phrasing to hold it.
+    const named = artistsIn(text)[0];
+    if (named) {
+      return {
+        filter: { artists: [named], series: seriesNumber },
+        described: seriesNumber ? `${named} in series ${seriesNumber}` : named,
+      };
+    }
+
+    const qualifier = this.tasteQualifier(text);
+    if (qualifier) {
+      // "scrilla" is credited as both "Rare Scrilla" and "DJ Q-Bert x Rare
+      // Scrilla" - one person, and a card under either answers the question. A
+      // name that resolves to nothing is a name we do not have, and saying so
+      // is the answer, not a card by somebody else.
+      const resolved = resolveArtist(qualifier);
+      return {
+        filter: { artists: resolved.length > 0 ? resolved : [qualifier], series: seriesNumber },
+        described: seriesNumber ? `${qualifier} in series ${seriesNumber}` : qualifier,
+      };
+    }
+
+    if (seriesNumber !== undefined) {
+      return { filter: { series: seriesNumber }, described: `series ${seriesNumber}` };
+    }
+    return {};
+  }
+
+  /**
+   * The words between "favourite" and "card" - usually an artist.
+   *
+   * Only a name survives: collection words ("favourite fake rares card"),
+   * time-spans ("favourite all time card") and anything the vision pass would
+   * call a description ("favourite green card", which is a descriptive question
+   * with a real answer) are not conditions on who made it.
+   */
+  private tasteQualifier(text: string): string | undefined {
+    const match =
+      /\b(?:favou?rite|fav|best|top|go-to)\s+((?:[A-Za-z0-9_'’.-]+\s+){0,2}[A-Za-z0-9_'’.-]+)\s+(?:card|cards|fake|fakes|pepe|pepes|rare|rares|piece|artwork)\b/i.exec(
+        text
+      );
+    if (!match) return undefined;
+
+    const NOT_A_NAME = new Set([
+      'all', 'time', 'ever', 'current', 'personal', 'overall', 'absolute', 'own', 'real',
+      'favourite', 'favorite', 'fav', 'best', 'top', 'single', 'one', 'main', 'actual', 'true',
+      'fake', 'fakes', 'rare', 'rares', 'common', 'commons', 'pepe', 'pepes', 'dank', 'series',
+      'new', 'old', 'first', 'last', 'next', 'recent', 'latest', 'this', 'that', 'the', 'a', 'an',
+      'my', 'your', 'his', 'her', 'their', 'of', 'in', 'from', 'by', 'with', 'and', 'or',
+    ]);
+
+    const words = match[1]
+      .split(/\s+/)
+      .filter((w) => w && !NOT_A_NAME.has(w.toLowerCase()));
+    if (words.length === 0) return undefined;
+
+    const qualifier = words.join(' ');
+    // A colour or a mood is a descriptive question, answered from the vision
+    // pass, not a person whose cards can be drawn from.
+    if (this.looksDescriptive(qualifier)) return undefined;
+    return qualifier.length >= 3 ? qualifier : undefined;
+  }
+
   private isTasteQuestion(text: string): boolean {
     // Only genuine personal preference. "Sexiest" and "most red" are
     // descriptive - the vision pass recorded those traits and they have real
@@ -844,14 +933,25 @@ export class SmartRouterService extends Service {
     // so nothing varies unless the context does.
     let offeredCard = '';
     let offeredCardAsset: string | undefined;
+    let unmetConstraint: string | undefined;
     if (options?.tasteQuestion) {
       // Draw from the collection the question is about. "Your favourite fake
       // commons card?" was answered with a Fake Rare, because every pool was
       // the Fake Rares index.
-      const card = randomCard(detectCollection(userText));
+      //
+      // And draw within whatever else the question asked for. "What is your
+      // favourite Memeticx card?" was answered GREENBEANZ by VVD - the draw was
+      // uniform over the whole collection and the artist was simply dropped. A
+      // constraint someone states has to constrain the answer.
+      const constraint = this.tasteConstraint(userText);
+      const card = randomCard(detectCollection(userText), constraint.filter);
       if (card) {
         offeredCardAsset = card.asset;
         offeredCard = describeCard(card.asset) ?? '';
+      } else if (constraint.described) {
+        // Nothing matches. Offering a card by someone else, as though it were
+        // the answer, is the failure this exists to prevent.
+        unmetConstraint = constraint.described;
       }
     }
 
@@ -881,6 +981,9 @@ export class SmartRouterService extends Service {
 ${offeredCard}
 Say briefly why it is worth a look — something true about the art, the artist or the era. Make clear it is one of many, not "the best".
 `
+        : '',
+      unmetConstraint
+        ? `They asked about ${unmetConstraint}, and the card index has nothing under that name. Say exactly that in one short sentence and ask how it is spelled. Do NOT offer a different card instead — a card by somebody else is not an answer to the question they asked.\n`
         : '',
       nothingKnown
         ? 'You have nothing on this. If they asked about a specific card or piece of history, say so plainly and invite them to add it with /fr - once, lightly, not as a sales pitch.\n'

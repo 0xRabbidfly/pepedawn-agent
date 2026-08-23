@@ -113,8 +113,132 @@ function poolFor(collection: Collection): CardInfo[] {
  * rejects temperature, top_p, presence_penalty and frequency_penalty outright,
  * so identical context produces near-identical answers.
  */
-export function randomCard(collection: Collection = 'fake-rares'): CardInfo | null {
-  const pool = poolFor(collection);
+export function randomCard(
+  collection: Collection = 'fake-rares',
+  constraint?: CardConstraint
+): CardInfo | null {
+  const pool = constrain(poolFor(collection), constraint);
   if (pool.length === 0) return null;
   return pool[Math.floor(Math.random() * pool.length)];
+}
+
+/**
+ * What the question asked for beyond "a card".
+ *
+ * "What is your favourite Memeticx card?" was answered GREENBEANZ by VVD: the
+ * draw was uniform over the whole collection and the artist in the question was
+ * simply dropped. A constraint someone states has to constrain the answer, or
+ * the answer is about a different question than the one asked.
+ */
+export interface CardConstraint {
+  /** Credited names, any of which counts - one person can hold several credits. */
+  artists?: string[];
+  series?: number;
+}
+
+function constrain(pool: CardInfo[], constraint?: CardConstraint): CardInfo[] {
+  if (!constraint) return pool;
+  let filtered = pool;
+  if (constraint.artists && constraint.artists.length > 0) {
+    const wanted = new Set(constraint.artists.map((a) => a.toLowerCase()));
+    filtered = filtered.filter((c) => c.artist && wanted.has(c.artist.toLowerCase()));
+  }
+  if (typeof constraint.series === 'number') {
+    filtered = filtered.filter((c) => c.series === constraint.series);
+  }
+  // Deliberately no fallback to the unconstrained pool: offering a card by
+  // someone else is worse than saying there is nothing to offer.
+  return filtered;
+}
+
+/** Every card in every collection - the widest pool an artist can be found in. */
+export const ALL_COLLECTION_CARDS: CardInfo[] = [
+  ...FULL_CARD_INDEX,
+  ...(COMMONS_CARD_INDEX as unknown as CardInfo[]),
+  ...(RARE_PEPES_CARD_INDEX as unknown as CardInfo[]),
+].filter((c) => c?.asset);
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+/**
+ * Artists credited on cards in this pool who are named in the text, longest
+ * name first so "Rare Scrilla" wins over a hypothetical "Rare".
+ *
+ * Matching is on word boundaries, never substrings: an artist called "RC" hides
+ * inside "scarcest", which once made "pepenardo's scarcest card" answer about
+ * the wrong person entirely.
+ *
+ * The pool is a parameter because callers mean different things by "artist".
+ * Offering someone a card means every collection; artist *statistics* are
+ * quoted from the Fake Rares index and say so out loud.
+ */
+export function artistsIn(text: string, pool: readonly CardInfo[] = ALL_COLLECTION_CARDS): string[] {
+  const names: string[] = [];
+  const seen = new Set<string>();
+  for (const card of pool) {
+    const artist = card.artist;
+    if (!artist || seen.has(artist)) continue;
+    const pattern = new RegExp(
+      `(?:^|[^\\p{L}\\p{N}])${escapeRegExp(artist)}(?![\\p{L}\\p{N}])`,
+      'iu'
+    );
+    if (pattern.test(text)) {
+      seen.add(artist);
+      names.push(artist);
+    }
+  }
+  return names.sort((a, b) => b.length - a.length);
+}
+
+/**
+ * The credited artist a name refers to, or null.
+ *
+ * People use the short form: "scrilla" for "Rare Scrilla", "pepenardo" for
+ * "Pepenardo x Fake Annie". An exact match wins; failing that a whole-word
+ * appearance inside exactly one credited name is unambiguous enough to use. Two
+ * or more candidates is a guess, and guessing is what put the wrong artist's
+ * card in front of someone in the first place.
+ */
+export function resolveArtist(name: string): string[] {
+  const wanted = name.trim().toLowerCase();
+  if (wanted.length < 3) return [];
+
+  const credited = new Set<string>();
+  for (const card of ALL_COLLECTION_CARDS) {
+    if (card.artist) credited.add(card.artist);
+  }
+
+  for (const artist of credited) {
+    if (artist.toLowerCase() === wanted) return [artist];
+  }
+
+  const word = new RegExp(`(?:^|[^\\p{L}\\p{N}])${escapeRegExp(wanted)}(?![\\p{L}\\p{N}])`, 'iu');
+  const partial = [...credited].filter((a) => word.test(a));
+  // A handful of credits is one person under collaboration names; a long list
+  // is a word that happens to appear in a lot of them, and that is a guess.
+  return partial.length <= MAX_CREDITS_FOR_ONE_NAME ? partial : [];
+}
+
+/**
+ * How many credited names a short form may expand to before it is too vague.
+ *
+ * Collaboration credits mean one person holds several: "scrilla" is Rare
+ * Scrilla, DJ Q-Bert x Rare Scrilla, Rare Scrilla and Ghostface Killah, AWRALPH
+ * x Rare Scrilla, Ill Bill x VIVALAVANDAL x Rare Scrilla, and Rare Scrilla x
+ * VLAD COSTEA - six credits, one artist, and a card under any of them answers
+ * "your favourite scrilla card".
+ *
+ * Across all 964 credited names the most widely shared distinctive word appears
+ * in six of them; the only tokens above that are "and", "pepe", "rare" and
+ * "the", none of which reach here. Eight leaves room without letting a common
+ * word stand in for a person.
+ */
+const MAX_CREDITS_FOR_ONE_NAME = 8;
+
+/** How many cards this artist has in the collection, across every collection. */
+export function cardCountForArtist(artist: string): number {
+  const wanted = artist.toLowerCase();
+  return ALL_COLLECTION_CARDS.filter((c) => c.artist?.toLowerCase() === wanted).length;
 }
