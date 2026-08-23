@@ -5,6 +5,28 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.6.2] - 2026-08-23
+
+### Fixed
+- **The bot named a card and then asked what the person was looking for.** Someone
+  posted "on the hunt for a PEPEPUNKROCK if anyone knows anyone selling" and got
+  back "PEPEPUNKROCK — by REY, series 8, card 37, supply 79, issued July 2022.
+  Not sure what you're after. Name a card, or ask me about an artist, a series,
+  or a bit of history."
+
+  Both halves came from the FACTS plan. The card index supplied the specs, and
+  retrieval — which found no lore for the card — returned the clarification
+  stand-in, which `buildFactsPlan` then appended as if it were an answer. The
+  existing guard only dropped *thin* answers (14 words or fewer); the
+  clarification is 21 words, so it sailed through.
+
+  `KnowledgeRetrievalResult` now carries `isNonAnswer`, set when the orchestrator
+  falls back to the clarification, and the FACTS plan will not append a
+  non-answer to material of its own. When a card is named and nothing else is
+  known, the reply is the card facts and nothing more. The clarification still
+  stands alone when no card was recognised, and the "lore vault is empty" invite
+  is unaffected — that one is a real reply to a card someone named.
+
 ## [5.6.1] - 2026-08-21
 
 ### Added

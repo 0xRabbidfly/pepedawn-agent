@@ -44,6 +44,14 @@ export interface KnowledgeRetrievalResult {
   sourcesLine: string;
   hasWikiOrMemory?: boolean;  // True if wiki/memory sources were found (for silent ignore logic)
   primaryCardAsset?: string;
+  /**
+   * True when `story` is a stand-in rather than an answer - the "not sure what
+   * you're after" clarification. Callers that have real material of their own
+   * must not append it: "PEPEPUNKROCK - by REY, series 8 ... Not sure what
+   * you're after" tells someone we found their card and then asks them what
+   * they wanted.
+   */
+  isNonAnswer?: boolean;
   cardSummary?: string;
   cardMatches?: Array<{ asset: string; reason: string }>;
   metrics: {
@@ -396,7 +404,10 @@ export class KnowledgeOrchestratorService extends Service {
       const cardInfo = getCardInfo(query.trim());
       
       let responseMessage: string;
-      
+      // The clarification is a stand-in, not an answer; the lore-vault invite is
+      // a real reply to a card someone named.
+      let isNonAnswer = false;
+
       if (cardInfo) {
         // Card exists but has no lore yet
         logger.info(`✨ Card "${cardInfo.asset}" found in index but has no lore - prompting user to add`);
@@ -407,12 +418,14 @@ export class KnowledgeOrchestratorService extends Service {
       } else {
         // Not a card, give general clarification
         responseMessage = CLARIFICATION_MESSAGE;
+        isNonAnswer = true;
       }
-      
+
       return {
         story: responseMessage,
         sourcesLine: '',
         hasWikiOrMemory: false,
+        isNonAnswer,
         metrics: {
           query,
           hits_raw: 0,

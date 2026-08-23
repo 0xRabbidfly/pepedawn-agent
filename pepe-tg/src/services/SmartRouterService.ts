@@ -504,12 +504,18 @@ export class SmartRouterService extends Service {
     // retrieval alone can answer "tell me about FREEDOMKEK" with whatever thin
     // note happens to be embedded. When a card is named, always fold in what we
     // actually know about it.
+    //
+    // Only fold in what retrieval came back with when it actually answered
+    // something. A named card that retrieval knows nothing about used to read
+    // "PEPEPUNKROCK - by REY, series 8, card 37, supply 79, issued July 2022.
+    // Not sure what you're after." - we found their card and then asked them
+    // what they were looking for. The facts alone are the better reply.
     if (mentionedCard) {
       const facts = describeCard(mentionedCard);
       if (facts) {
-        story = story && story.length > 0 && !this.isThinAnswer(story)
-          ? `${facts}\n\n${story}`
-          : facts;
+        const worthAppending =
+          !!story && story.length > 0 && !result.isNonAnswer && !this.isThinAnswer(story);
+        story = worthAppending ? `${facts}\n\n${story}` : facts;
       }
     }
 
