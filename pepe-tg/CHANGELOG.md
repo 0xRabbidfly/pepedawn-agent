@@ -5,6 +5,22 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- **`docs/atlas/pepedawn-atlas.html` — the codebase as an isometric drawing.**
+  21 structures sized by real line counts, edges that follow the runtime path
+  rather than the import graph, and moving dots carrying real records lifted
+  from the JSONL telemetry in `src/data/` — router decisions, token receipts,
+  cadence verdicts, chain events. Clicking a dot opens the record as written.
+
+  Self-contained HTML, no build step, no network calls beyond the webfont. It
+  exists to be read alongside a model when discussing the system: name a
+  structure by its letter and the file list under it is the exact set to open.
+
+  The generator is a portable skill at `.claude/skills/codebase-atlas/`.
+
 ## [5.5.2] - 2026-08-20
 
 ### Fixed

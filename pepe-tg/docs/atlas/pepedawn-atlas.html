@@ -1,0 +1,1584 @@
+<title>PEPEDAWN Atlas</title>
+<meta name="description" content="An isometric map of the PEPEDAWN Telegram bot: how a message becomes an answer, drawn from the code." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" />
+
+<style>
+/* ============================================================
+   PEPEDAWN Atlas — drafting table
+   light: cold-pressed paper · dark: petrol blueprint
+   ============================================================ */
+:root {
+  --paper:      #e4e8e6;
+  --paper-2:    #edf0ee;
+  --paper-3:    #d8ddda;
+  --ink:        #14262c;
+  --ink-soft:   #46605f;
+  --ink-faint:  #8ea19d;
+  --rule:       #14262c;
+  --rule-faint: rgba(20, 38, 44, 0.22);
+  --grid:       rgba(20, 38, 44, 0.10);
+  --face-top:   #e9ece9;
+  --face-left:  #c6cfcc;
+  --face-right: #aeb9b6;
+  --store-face: #d3dad6;
+  --accent:     #b4611a;
+  --accent-ink: #ffffff;
+  --warn:       #9d3324;
+  --ext:        #4c6f74;
+  --sel:        #14262c;
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --cond: "IBM Plex Sans Condensed", "IBM Plex Sans", system-ui, sans-serif;
+  --prose: "Newsreader", Georgia, "Times New Roman", serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper:      #0d1b21;
+    --paper-2:    #122229;
+    --paper-3:    #091419;
+    --ink:        #cdd9d6;
+    --ink-soft:   #9cb2b0;
+    --ink-faint:  #6b8688;
+    --rule:       #7d9a9c;
+    --rule-faint: rgba(160, 190, 190, 0.26);
+    --grid:       rgba(160, 190, 190, 0.13);
+    --face-top:   #1e363f;
+    --face-left:  #142329;
+    --face-right: #0c171c;
+    --store-face: #182b33;
+    --accent:     #e6a35c;
+    --accent-ink: #0d1b21;
+    --warn:       #e0715e;
+    --ext:        #8fb3b6;
+    --sel:        #e9efed;
+  }
+}
+:root[data-theme="dark"] {
+  --paper:      #0d1b21;
+  --paper-2:    #122229;
+  --paper-3:    #091419;
+  --ink:        #cdd9d6;
+  --ink-soft:   #9cb2b0;
+  --ink-faint:  #6b8688;
+  --rule:       #7d9a9c;
+  --rule-faint: rgba(160, 190, 190, 0.26);
+  --grid:       rgba(160, 190, 190, 0.13);
+  --face-top:   #1e363f;
+  --face-left:  #142329;
+  --face-right: #0c171c;
+  --store-face: #182b33;
+  --accent:     #e6a35c;
+  --accent-ink: #0d1b21;
+  --warn:       #e0715e;
+  --ext:        #8fb3b6;
+  --sel:        #e9efed;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.frame { display: flex; flex-direction: column; height: 100vh; }
+
+/* ---------- title block ---------- */
+.titleblock {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper-2);
+  flex: 0 0 auto;
+  overflow-x: auto;
+}
+.tb-cell {
+  padding: 7px 15px 8px;
+  border-right: 1px solid var(--rule-faint);
+  white-space: nowrap;
+}
+.tb-cell:first-child { border-right: 1px solid var(--rule); }
+.tb-label {
+  font-family: var(--cond);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  display: block;
+}
+.tb-value {
+  font-family: var(--mono);
+  font-size: 13.5px;
+  font-variant-numeric: tabular-nums;
+}
+.tb-cell:first-child .tb-value { font-weight: 600; }
+.tb-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  margin-left: auto;
+  border-left: 1px solid var(--rule-faint);
+}
+
+button {
+  font-family: var(--cond);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  padding: 6px 11px;
+  cursor: pointer;
+}
+button:hover { background: var(--paper-3); }
+button.on { background: var(--sel); color: var(--paper-2); }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+/* ---------- body ---------- */
+.body {
+  display: grid;
+  grid-template-columns: 234px minmax(0, 1fr) 404px;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* ---------- index rail ---------- */
+.index {
+  border-right: 1px solid var(--rule);
+  overflow-y: auto;
+  background: var(--paper-2);
+  padding-bottom: 28px;
+}
+.index h2 {
+  font-family: var(--cond);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 15px 12px 6px;
+}
+.idx-row {
+  display: grid;
+  grid-template-columns: 16px 1fr auto;
+  gap: 8px;
+  align-items: baseline;
+  width: calc(100% - 16px);
+  margin: 0 8px 3px;
+  padding: 6px 8px;
+  border: 1px solid var(--rule-faint);
+  background: transparent;
+  text-align: left;
+  font-family: var(--cond);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink);
+  cursor: pointer;
+  line-height: 1.25;
+}
+.idx-row:hover { background: var(--paper-3); }
+.idx-row .k, .idx-row .n {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+.idx-row.active { background: var(--sel); color: var(--paper-2); border-color: var(--sel); }
+.idx-row.active .k, .idx-row.active .n { color: var(--paper-3); }
+
+/* ---------- canvas ---------- */
+.canvas {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(130% 95% at 50% 0%, var(--paper-2) 0%, var(--paper) 60%);
+  cursor: grab;
+}
+.canvas.dragging { cursor: grabbing; }
+#stage { display: block; width: 100%; height: 100%; touch-action: none; }
+
+.zoombar { position: absolute; top: 12px; right: 12px; display: flex; flex-direction: column; gap: 4px; }
+.zoombar button { width: 26px; height: 26px; padding: 0; font-size: 13px; line-height: 1; }
+
+.crumbs {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--cond);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.crumbs .here { color: var(--ink); }
+.crumbs button { padding: 3px 8px; font-size: 9.5px; }
+
+.hints {
+  position: absolute;
+  left: 16px;
+  bottom: 11px;
+  right: 16px;
+  font-family: var(--cond);
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  pointer-events: none;
+}
+
+/* ---------- reader ---------- */
+.reader {
+  border-left: 1px solid var(--rule);
+  background: var(--paper-2);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.tabs { display: flex; border-bottom: 1px solid var(--rule); flex: 0 0 auto; }
+.tabs button { flex: 1 1 0; border: none; border-right: 1px solid var(--rule-faint); padding: 9px 6px; background: transparent; }
+.tabs button:last-child { border-right: none; }
+.tabs button[aria-selected="true"] { background: var(--sel); color: var(--paper-2); }
+
+.readerbody { overflow-y: auto; padding: 18px 22px 44px; flex: 1 1 auto; }
+.eyebrow {
+  font-family: var(--cond);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 4px;
+}
+.readerbody h1 {
+  font-family: var(--cond);
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.06;
+  text-wrap: balance;
+  margin: 0 0 7px;
+}
+.readerbody h3 {
+  font-family: var(--cond);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 22px 0 9px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--rule-faint);
+}
+.readerbody p {
+  font-family: var(--prose);
+  font-size: 15.5px;
+  line-height: 1.52;
+  margin: 0 0 11px;
+  max-width: 62ch;
+}
+.readerbody p.sub { font-family: var(--mono); font-size: 11.5px; line-height: 1.5; color: var(--ink-soft); }
+mark { background: var(--sel); color: var(--paper-2); padding: 0 4px; }
+.warn { color: var(--warn); }
+.meta { display: grid; grid-template-columns: auto 1fr; gap: 3px 14px; font-size: 11.5px; margin: 0; }
+.meta dt {
+  font-family: var(--cond);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  padding-top: 2px;
+}
+.meta dd { margin: 0; font-variant-numeric: tabular-nums; }
+.filelist { list-style: none; margin: 0; padding: 0; }
+.filelist li {
+  font-size: 11px;
+  color: var(--ink-soft);
+  padding: 3px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px dotted var(--rule-faint);
+}
+.filelist .loc { font-variant-numeric: tabular-nums; color: var(--ink-faint); }
+
+pre {
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.45;
+  background: var(--paper-3);
+  border: 1px solid var(--rule-faint);
+  border-left: 2px solid var(--accent);
+  padding: 10px 12px;
+  margin: 0 0 12px;
+  overflow-x: auto;
+  white-space: pre;
+}
+.steps { list-style: none; margin: 0 0 12px; padding: 0; counter-reset: s; }
+.steps li {
+  counter-increment: s;
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--rule-faint);
+  font-size: 11.5px;
+}
+.steps li::before { content: counter(s, decimal-leading-zero); font-family: var(--mono); color: var(--ink-faint); }
+.steps b { font-family: var(--cond); letter-spacing: 0.05em; text-transform: uppercase; font-size: 11.5px; }
+.steps span { display: block; color: var(--ink-soft); margin-top: 2px; }
+
+.pill {
+  display: inline-block;
+  font-family: var(--cond);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 1px solid var(--rule-faint);
+  padding: 2px 7px;
+  margin: 0 5px 5px 0;
+  color: var(--ink-soft);
+}
+.pill.ext { border-color: var(--ext); color: var(--ext); }
+.pill.hot { border-color: var(--accent); color: var(--accent); }
+
+@media (max-width: 1180px) { .body { grid-template-columns: 196px minmax(0, 1fr) 340px; } }
+@media (max-width: 900px) {
+  .frame { height: auto; }
+  .body { display: block; }
+  .index { border-right: none; border-bottom: 1px solid var(--rule); max-height: 200px; }
+  .canvas { height: 62vh; min-height: 380px; }
+  .reader { border-left: none; border-top: 1px solid var(--rule); }
+}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+
+<div class="frame">
+  <header class="titleblock" id="titleblock"></header>
+  <div class="body">
+    <aside class="index" id="index"></aside>
+    <main class="canvas" id="canvas">
+      <svg id="stage" aria-label="Isometric map of the PEPEDAWN codebase"></svg>
+      <div class="crumbs" id="crumbs"></div>
+      <div class="zoombar">
+        <button type="button" id="zin" title="Zoom in">+</button>
+        <button type="button" id="zout" title="Zoom out">&minus;</button>
+      </div>
+      <div class="hints">Click a structure to read it &middot; Click a moving dot to inspect the payload &middot; Drag to pan &middot; Scroll to zoom &middot; Esc comes back out</div>
+    </main>
+    <aside class="reader">
+      <div class="tabs" id="tabs">
+        <button type="button" data-tab="does" aria-selected="true">What it does</button>
+        <button type="button" data-tab="built" aria-selected="false">How it's built</button>
+        <button type="button" data-tab="payload" aria-selected="false">Payload</button>
+      </div>
+      <div class="readerbody" id="readerbody"></div>
+    </aside>
+  </div>
+</div>
+
+<script>
+/* ATLAS DATA START — everything below this marker is repo-specific */
+const ATLAS = {
+  meta: {
+    repo: "pepedawn · fake-rares-tg-agent",
+    short: "pepedawn",
+    version: "5.6.0",
+    title: "The Answer Machine",
+    subtitle: "how a Telegram message becomes an answer, and what it costs",
+    stats: [
+      { label: "TypeScript", value: "39,032 lines" },
+      { label: "Services", value: "13 classes" },
+      { label: "Cards indexed", value: "4,501" },
+      { label: "Corpus", value: "15,996 fragments" },
+      { label: "Model calls logged", value: "1,738" },
+      { label: "Commits", value: "355" }
+    ],
+    intro: {
+      does: [
+        { h: "What this is", p: [
+          "This repository is a Telegram bot for the <mark>Fake Rares</mark> community — a Counterparty card scene with 4,501 catalogued assets across three collections. The bot shows cards, answers questions about them, remembers lore people submit, reports on-chain sales, and talks in the channel like a regular.",
+          "The hard part is not answering. It is <mark>deciding whether to answer at all</mark>, and from which of four kinds of knowledge: the card index, the community's saved memories, the scraped wiki, or five years of frozen Telegram chat."
+        ]},
+        { h: "The shape of it", p: [
+          "Every message travels the same spine: Telegram bridge → gate → smart router → either a fast structured answer or the knowledge orchestrator → back out as text, a card image, or silence. That spine is the darker line running through the middle of the drawing.",
+          "Everything to the left of it is the front door and the reply. Everything to the right is what the bot knows. The low stacked plates are stores; the tall structures are the parts that decide something."
+        ]},
+        { h: "What it cost to learn", p: [
+          "Most of the tall structures are tall because of a specific failure. The router is 1,298 lines because ranking questions, taste questions, pronouns, and the bot sharing its name with a card each broke it in a different way. The orchestrator is 2,172 lines because retrieval kept returning <span class='warn'>other people saying the same kind of thing</span> rather than answers.",
+          "The comments in those files read like an incident log, and the diagram is drawn to match: where a path exists only to stop a past failure, the reader panel says which one."
+        ]}
+      ],
+      built: [
+        { h: "Runtime", p: [
+          "ElizaOS 1.6.x on Bun, one agent, two plugins. A vendored fork of the Telegram plugin lives in <code>packages/plugin-telegram-fakerares</code> because the upstream bootstrap handler had to be pre-empted rather than extended.",
+          "State that matters is on disk, not in the process: PGlite holds the embeddings, JSON files hold room history and telemetry. PM2 cron-restarts the droplet nightly at 02:00, so anything in memory is gone daily by design."
+        ]},
+        { h: "How to read the drawing", p: [
+          "Footprint is scope, height is lines of code, and the stacked plates are data at rest. Dashed outlines are things outside the process — Telegram, OpenAI, xAI, the Counterparty API.",
+          "The moving dots are real payloads: router decisions, token receipts, cadence verdicts and harvest records lifted from the JSONL telemetry in <code>src/data/</code>. Click one and it opens under the Payload tab, exactly as it was written."
+        ]},
+        { h: "Reading it with a model", p: [
+          "The point of the map is the conversation it makes possible: name a structure by its letter, and the file list under it is the exact set to open. <code>K</code> is the orchestrator, <code>R</code> the router, <code>V</code> the corpus, <code>J</code> the record."
+        ]}
+      ]
+    }
+  },
+
+  groups: [
+    { title: "The front door", ids: ["N", "T", "G"] },
+    { title: "The decision", ids: ["R", "F", "C", "K", "L", "M"] },
+    { title: "The reply", ids: ["A", "D"] },
+    { title: "What it knows", ids: ["I", "V", "H", "S"] },
+    { title: "Work with no one asking", ids: ["P", "Q", "W"] },
+    { title: "The record", ids: ["J"] },
+    { title: "Outside the process", ids: ["O", "X", "B"] }
+  ],
+
+  nodes: {
+    N: {
+      key: "N", label: "Telegram", kind: "ext", cell: [0, 2], w: 2.2, d: 2.2, h: 1.1,
+      loc: 0, tag: "api.telegram.org",
+      does: "Where every message comes from and every reply goes. Long-polling, never webhooks — the bot pulls its own updates.",
+      built: "grammY under the vendored plugin. Updates queue for roughly 24 hours, so a message sent while the bot is down is answered on the next boot.",
+      condition: "Calling getUpdates by hand drains the queue and loses a real user's message. It has happened.",
+      files: []
+    },
+    T: {
+      key: "T", label: "Telegram bridge", kind: "core", cell: [3.4, 2], w: 2.4, d: 2.4, h: 3.3,
+      loc: 2483, tag: "vendored fork",
+      does: "Turns a Telegram update into an ElizaOS memory and back again: text chunking under the 4,096-character limit, media, reactions, callback buttons, image description.",
+      built: "A fork of @elizaos/plugin-telegram. Bootstrap 1.6.2 dropped its MESSAGE_RECEIVED handler, so this fork emits the event itself and then stands aside if a plugin claims the message.",
+      condition: "The claim is a single sentinel, message.metadata.__handledByCustom, set in about nine places. Miss one and bootstrap answers on top of the real reply.",
+      files: [
+        { p: "packages/plugin-telegram-fakerares/src/messageManager.ts", n: 1381 },
+        { p: "packages/plugin-telegram-fakerares/src/service.ts", n: 1102 }
+      ],
+      inside: [
+        { t: "handleMessage(ctx)", d: "Filters bots, resolves the room, builds the memory object." },
+        { t: "processMessage", d: "Extracts text, attachments and reply context; images go to a vision pass." },
+        { t: "emitEvent(MESSAGE_RECEIVED)", d: "Hands the memory to every plugin listener, in registration order." },
+        { t: "check __handledByCustom", d: "Set by the plugin → return. Unset → fall through to bootstrap." },
+        { t: "sendMessageInChunks", d: "Splits on paragraph boundaries under 4,096 characters, keeps Markdown intact." }
+      ]
+    },
+    G: {
+      key: "G", label: "Gate & commands", kind: "core", cell: [6.8, 2], w: 2.6, d: 2.4, h: 2.7,
+      loc: 1259, tag: "fakeRaresPlugin",
+      does: "The doorman. Recognises the ten slash commands, applies rate limits, decides whether a plain message is even the bot's business, and hands anything conversational to the router.",
+      built: "A MESSAGE_RECEIVED listener registered ahead of bootstrap, with helpers for admin checks, participant tracking and card-name sanitising.",
+      condition: "Order-of-registration is load-bearing: this plugin must run before bootstrap or both answer.",
+      files: [
+        { p: "src/plugins/fakeRaresPlugin.ts", n: 1259 },
+        { p: "src/utils/commandHandler.ts", n: 161 },
+        { p: "src/utils/rateLimiter.ts", n: 206 },
+        { p: "src/utils/messagePatterns.ts", n: 115 }
+      ],
+      inside: [
+        { t: "command match", d: "/f /c /p /fr /fm /fc /vouch /xcp /cost /help — exact prefix, no LLM." },
+        { t: "rate limit", d: "Per-user and per-room budgets before anything expensive runs." },
+        { t: "addressed?", d: "Mention, reply, or DM — passed to the router as addressedConversationally." },
+        { t: "planRouting", d: "Everything not a command goes to the router for a plan." },
+        { t: "execute plan", d: "Runs the plan, sets __handledByCustom, logs the decision." }
+      ]
+    },
+    R: {
+      key: "R", label: "Smart router", kind: "core", cell: [10.4, 2], w: 2.8, d: 2.6, h: 3.1,
+      loc: 1298, tag: "the spine",
+      does: "Decides what kind of thing was asked and what to do about it: structured card lookup, facts, lore, chat, run a command, or say nothing.",
+      built: "A ladder of cheap deterministic checks in front of one LLM classifier call. Taste questions, descriptive questions, pronoun resolution and exact card queries are all answered before the model is asked anything.",
+      condition: "Keeps 60 turns of room history in a plain Map. The 02:00 restart wipes it; only the v5 shadow path writes history to disk.",
+      files: [
+        { p: "src/services/SmartRouterService.ts", n: 1298 },
+        { p: "src/config/smartRouterConfig.ts", n: 391 },
+        { p: "src/utils/cardQueries.ts", n: 299 },
+        { p: "src/utils/queryClassifier.ts", n: 204 }
+      ],
+      inside: [
+        { t: "isTasteQuestion", d: "“Favourite card?” never reaches retrieval — ranking cards is against the room's etiquette, so the answer is a random card with something true said about it." },
+        { t: "visual trait match", d: "“Most red” is answered from the 875 recorded vision passes, not from prose similarity. Semantic search once returned a card called grantfly for a red query." },
+        { t: "pronoun → subject", d: "“Who made it?” resolves to the last card named in the room, passed alongside the text rather than appended to it." },
+        { t: "answerCardQuery", d: "Artist, supply, series, issuance, largest and smallest — read straight from the index." },
+        { t: "classifyIntent", d: "One model call: FACTS, LORE, CHAT, CMDROUTE or NORESPONSE, with the last few turns as context." },
+        { t: "cadence check", d: "The governor can only push the register down, never up." }
+      ]
+    },
+    F: {
+      key: "F", label: "Card fast path", kind: "core", cell: [14.2, 1.2], w: 2, d: 2, h: 1.2,
+      loc: 339, tag: "short-circuit",
+      does: "When retrieval comes back overwhelmingly card-shaped, skip composition entirely and show the card.",
+      built: "Weighted share of candidate scores by source type plus a top-similarity floor, both configurable.",
+      condition: "Thresholds live in smartRouterConfig; a tuning change here silently changes what the bot chooses to say.",
+      files: [
+        { p: "src/router/cardFastPath.ts", n: 204 },
+        { p: "src/router/retrieveCandidates.ts", n: 135 }
+      ]
+    },
+    C: {
+      key: "C", label: "Cadence governor", kind: "core", cell: [10.4, 5.6], w: 2.2, d: 2.2, h: 1.8,
+      loc: 866, tag: "the volume knob",
+      does: "Answers a question no per-message check can: not “should I reply to this?” but “am I talking too much?” Share of voice, minimum gap, consecutive turns, backoff.",
+      built: "Pure functions over a rolling 10-minute window: max 30% share of voice, 45-second minimum gap, one consecutive bot turn. It stands down entirely inside a live exchange.",
+      condition: "V5_SHADOW records what it would have done; V5_ENFORCE makes it binding. Production evidence: 43.6% of replies once landed within 60s of the previous one, worst burst 67 in ten minutes.",
+      files: [
+        { p: "src/conversation/shadow.ts", n: 304 },
+        { p: "src/conversation/cadenceGovernor.ts", n: 222 },
+        { p: "src/conversation/roomTemperature.ts", n: 140 },
+        { p: "src/conversation/router.ts", n: 110 }
+      ],
+      inside: [
+        { t: "measure the room", d: "Messages per minute, mean words, distinct participants, question ratio." },
+        { t: "temperature", d: "cool / warm / hot — caps the register the bot may use." },
+        { t: "share of voice", d: "Bot turns ÷ total turns over ten minutes, enforced above an 8-turn sample." },
+        { t: "verdict", d: "A register cap and a reason string, both written to shadow-logs.jsonl." }
+      ]
+    },
+    K: {
+      key: "K", label: "Knowledge orchestrator", kind: "core", cell: [14.6, 4.4], w: 3.2, d: 3.2, h: 4.3,
+      loc: 2172, tag: "tallest thing here",
+      does: "Given a question and a room, produce an answer with sources. Expands the query, retrieves, guarantees enough card candidates, reranks, groups by card, composes, and checks its own answer for thinness.",
+      built: "Eleven logged steps over the PGlite corpus and the card index, with an LLM reranker for card candidates and a second composition pass when the first answer comes back empty of fact.",
+      condition: "Card recall is topped up to 60 candidates because channel-scoped LRU variance kept starving the reranker — winter cards could not enter the pool at all.",
+      files: [
+        { p: "src/services/KnowledgeOrchestratorService.ts", n: 2172 },
+        { p: "src/utils/clarification.ts", n: 40 }
+      ],
+      inside: [
+        { t: "expandQuery", d: "Synonyms and card aliases, tuned to keep asks tied to cards rather than chat." },
+        { t: "searchKnowledgeWithExpansion", d: "Vector search across the corpus with mode-specific source weights." },
+        { t: "tryAnswerCardMetadata", d: "If the question is answerable from the index, stop here — no composition." },
+        { t: "expandCardOnlyPassages", d: "Top the card-fact pool up to 60 candidates, bypassing wiki and memory." },
+        { t: "rerankCardCandidates (LLM)", d: "Groups by card, scores the trait descriptors, picks the subject." },
+        { t: "composeCardFactAnswer", d: "Writes the answer from the winning card's five fact blocks." },
+        { t: "shouldRegenerate", d: "A thin answer — no fact, no card — is composed again rather than sent." }
+      ]
+    },
+    L: {
+      key: "L", label: "Lore retrieval", kind: "core", cell: [14.6, 8.6], w: 2.6, d: 2.2, h: 2.5,
+      loc: 1109, tag: "weights & story",
+      does: "The retrieval layer under the orchestrator: search, filter to the named card, apply source weights, cluster, and compose a story of about 120 words.",
+      built: "Mode-specific weights. FACTS: memory 3.2, card data 3.0, wiki 2.2, telegram 0.6. LORE: memory 4.0, wiki 2.6, telegram 2.2, card data 1.2.",
+      condition: "The frozen Telegram archive is dropped at the end of ranking — the shared chokepoint, because the orchestrator calls this directly and filtering in the router alone left FACTS still quoting 2021 chat. RAG_INCLUDE_TELEGRAM=true restores the old behaviour.",
+      files: [
+        { p: "src/utils/loreRetrieval.ts", n: 668 },
+        { p: "src/utils/loreSummarize.ts", n: 258 },
+        { p: "src/utils/storyComposer.ts", n: 183 }
+      ]
+    },
+    M: {
+      key: "M", label: "Model gateway", kind: "core", cell: [11.2, 9.4], w: 2, d: 1.8, h: 1,
+      loc: 247, tag: "one door out",
+      does: "Every model call the bot makes goes through here, so every call is priced and logged.",
+      built: "A thin wrapper over the OpenAI SDK with token estimation, cost maths and reasoning-model quirks encoded — the gpt-5.6 family rejects 'minimal' effort and needs 'none'.",
+      condition: "Vision calls are charged a flat 765-token image estimate rather than a measured one.",
+      files: [{ p: "src/utils/modelGateway.ts", n: 247 }]
+    },
+    A: {
+      key: "A", label: "Commands", kind: "core", cell: [7, 6], w: 2.6, d: 2.6, h: 3.4,
+      loc: 4020, tag: "ten of them",
+      does: "The explicit surface: /f a Fake Rare, /c a Fake Common, /p a Rare Pepe, /fr random, /fm the market, /fc cost, /vouch, /xcp, /help, and remember-this lore submission.",
+      built: "ElizaOS actions plus direct handlers in the plugin. Card lookup is fuzzy-matched against the index with suggestions when it misses.",
+      condition: "A new command is a public contract: /help and the periodic tips both have to be updated, and removals need a migration note and a grace window.",
+      files: [
+        { p: "src/actions/fakeRaresCard.ts", n: 1194 },
+        { p: "src/actions/rarePepesCard.ts", n: 548 },
+        { p: "src/actions/fakeCommonsCard.ts", n: 547 },
+        { p: "src/actions/fakeRaresCarousel.ts", n: 518 },
+        { p: "src/actions/fakeMarketAction.ts", n: 471 },
+        { p: "src/actions/costCommand.ts", n: 288 },
+        { p: "src/actions/fakeRememberCommand.ts", n: 256 },
+        { p: "src/actions/vouchCommand.ts", n: 143 }
+      ]
+    },
+    D: {
+      key: "D", label: "Card display", kind: "core", cell: [3.4, 6.4], w: 2.4, d: 2.2, h: 2.6,
+      loc: 1752, tag: "images & video",
+      does: "Puts the picture on the screen: resolves the asset, finds the media, converts what Telegram will not animate, and caches the file id so the next send is free.",
+      built: "CardDisplayService over ffmpeg-backed GIF/MP4 conversion, with a persistent telegram-file-ids.json cache.",
+      condition: "Conversion is the slowest thing in the reply path and the only step that touches the filesystem under load.",
+      files: [
+        { p: "src/services/videoConversionService.ts", n: 431 },
+        { p: "src/services/CardDisplayService.ts", n: 202 },
+        { p: "src/utils/gifConversionHelper.ts", n: 119 },
+        { p: "src/utils/telegramFileIdCache.ts", n: 87 }
+      ]
+    },
+    I: {
+      key: "I", label: "Card index", kind: "store", cell: [18.8, 2.6], w: 3, d: 2.4, h: 0.9, plates: 4,
+      loc: 800, tag: "4,501 cards",
+      does: "The ground truth for anything factual: 914 Fake Rares, 1,813 Fake Commons, 1,774 Rare Pepes, plus 875 cards with a recorded visual description from the /fv vision pass.",
+      built: "Three JSON files loaded at boot, wrapped in small typed index modules with fuzzy lookup and a refresher for newly minted series.",
+      condition: "The vision pass only ever ran over Fake Rares, so a descriptive question about the other two collections has no data behind it and must not be answered from this one.",
+      files: [
+        { p: "src/data/fake-commons-data.json", n: 1813 },
+        { p: "src/data/rare-pepes-data.json", n: 1774 },
+        { p: "src/data/fake-rares-data.json", n: 914 },
+        { p: "src/data/card-visual-traits.json", n: 875 }
+      ]
+    },
+    V: {
+      key: "V", label: "Corpus", kind: "store", cell: [18.8, 6.6], w: 3, d: 2.4, h: 1.1, plates: 6,
+      loc: 0, tag: "PGlite · 1.4 GB",
+      does: "One embedded Postgres holding memories and embeddings for four logical sources: the frozen Telegram archive, card visual facts, scraped wiki, and user-submitted memories.",
+      built: "PGlite with text-embedding-3-small at 1,536 dimensions. 15,996 fragments; the wiki is 4.4× more retrieval-efficient per fragment than the chat archive.",
+      condition: "Provenance is lost at ingest — every fragment is stamped rag-service-fragment-sync, and the source is re-derived by content heuristics that are 22% wrong. 4,344 Telegram fragments are labelled wiki and draw wiki's weight.",
+      files: [{ p: ".eliza/.elizadb (memories + embeddings)", n: 15996 }]
+    },
+    H: {
+      key: "H", label: "Room memory", kind: "store", cell: [7.4, 10], w: 2.6, d: 2.2, h: 0.8, plates: 3,
+      loc: 900, tag: "who said what",
+      does: "The recent turns of each room, plus a social layer: who is here, what they are known for, what was said about whom.",
+      built: "In-memory ring per room for the live path; the v5 path writes to src/data/room-history.json through a file-backed store deliberately kept out of the database.",
+      condition: "The live router's history is not persisted. PM2 cron-restarts nightly at 02:00, so the room is forgotten every night.",
+      files: [
+        { p: "src/conversation/socialMemoryRuntime.ts", n: 233 },
+        { p: "src/conversation/socialMemory.ts", n: 208 },
+        { p: "src/conversation/memoryCapture.ts", n: 186 },
+        { p: "src/conversation/roomHistory.ts", n: 173 },
+        { p: "src/conversation/fileRoomHistoryStore.ts", n: 100 }
+      ]
+    },
+    S: {
+      key: "S", label: "Community lore", kind: "store", cell: [11, 12.4], w: 2.6, d: 2.2, h: 0.8, plates: 3,
+      loc: 831, tag: "user-submitted",
+      does: "What the community tells the bot to remember about a card, and the vouching that decides whether it counts.",
+      built: "MemoryStorageService writes an embedded memory tagged card:ASSET; vouching tracks who backed it; loreSubmission handles the remember-this grammar and artist aliases.",
+      condition: "Memory carries the highest retrieval weight of any source — 4.0 in LORE mode — so a wrong memory outranks the wiki and the card index both.",
+      files: [
+        { p: "src/utils/loreSubmission.ts", n: 387 },
+        { p: "src/utils/vouching.ts", n: 258 },
+        { p: "src/services/MemoryStorageService.ts", n: 186 }
+      ]
+    },
+    P: {
+      key: "P", label: "Market watcher", kind: "core", cell: [3.4, 10.4], w: 2.4, d: 2.2, h: 2.2,
+      loc: 1536, tag: "180s poll",
+      does: "Watches Counterparty for Fake Rare sales and listings and posts them to the channel unprompted.",
+      built: "Polls four block event types — DISPENSE, OPEN_DISPENSER, OPEN_ORDER, ORDER_MATCH — filters to assets in the index, dedupes against a history file, and formats a notification.",
+      condition: "Dispenses carry no price, so the price is looked up from the matching dispenser and inferred from the same block when that lookup fails.",
+      files: [
+        { p: "src/services/transactionMonitor.ts", n: 611 },
+        { p: "src/services/transactionHistory.ts", n: 478 },
+        { p: "src/services/telegramNotification.ts", n: 295 },
+        { p: "src/services/dispenserQuery.ts", n: 152 }
+      ]
+    },
+    Q: {
+      key: "Q", label: "Periodic content", kind: "core", cell: [0.4, 9.4], w: 2.2, d: 2, h: 1.5,
+      loc: 532, tag: "hourly",
+      does: "Posts a card showcase or a usage tip on an interval, but only into a channel that has shown recent activity.",
+      built: "An interval timer with an activity check in front of it, sending to every configured channel id.",
+      condition: "sendToChannels logs a warning and swallows the failure, so “Posted periodic…” appears whether or not the send worked. The absent warning is the only success signal.",
+      files: [{ p: "src/services/periodicContent.ts", n: 532 }]
+    },
+    W: {
+      key: "W", label: "X harvester", kind: "core", cell: [11.4, 15.2], w: 2.4, d: 2.2, h: 2.3,
+      loc: 1127, tag: "every 24h",
+      does: "Pulls what the Fake Rares world is saying on X, scores each post for interest, and offers the good ones to the router as something the bot can bring up.",
+      built: "Grok with live search returns structured post JSON; posts are scored, cached to disk, matched against the conversation, and marked once volunteered so nothing is said twice.",
+      condition: "Spend is metered per query from the xAI usage block; the harvest interval is configurable and defaults to 24 hours.",
+      files: [
+        { p: "src/utils/xHarvest.ts", n: 826 },
+        { p: "src/services/XHarvestService.ts", n: 301 }
+      ]
+    },
+    J: {
+      key: "J", label: "The record", kind: "store", cell: [15.4, 12.6], w: 2.8, d: 2.2, h: 0.8, plates: 5,
+      loc: 479, tag: "6 JSONL streams",
+      does: "The only durable analytics this project has: every model call priced, every router decision, every lore query, every command, every cadence verdict.",
+      built: "TelemetryService appends JSON lines to src/data/. Six streams: token, smart-router, conversation, lore-query, command, shadow.",
+      condition: "PM2 logs rotate and leave multi-month holes, so these files are the record. They are also the source of every dot moving in this drawing.",
+      files: [
+        { p: "src/services/TelemetryService.ts", n: 479 },
+        { p: "src/data/token-logs.jsonl", n: 1738 },
+        { p: "src/data/conversation-logs.jsonl", n: 529 },
+        { p: "src/data/lore-query-logs.jsonl", n: 472 },
+        { p: "src/data/smart-router-logs.jsonl", n: 194 },
+        { p: "src/data/shadow-logs.jsonl", n: 80 }
+      ]
+    },
+    O: {
+      key: "O", label: "OpenAI", kind: "ext", cell: [22.4, 5.4], w: 2.2, d: 2.2, h: 1.1,
+      loc: 0, tag: "gpt-5.6-luna · 4o-mini",
+      does: "Intent classification, card reranking, story composition, vision descriptions and every embedding.",
+      built: "Direct SDK calls through the model gateway. Embeddings are text-embedding-3-small at 1,536 dimensions; classification runs on gpt-5.6-luna at roughly two hundredths of a cent per call.",
+      condition: "A model-family change is not free: the reasoning families rename their parameters and reject the older effort values outright.",
+      files: []
+    },
+    X: {
+      key: "X", label: "xAI · Grok", kind: "ext", cell: [15, 16.4], w: 2.2, d: 2.2, h: 1.1,
+      loc: 0, tag: "grok-4.3 live search",
+      does: "The only window onto what is happening on X right now.",
+      built: "One instruction per query key, answered as strict JSON. Usage and spend come back in the response and are logged.",
+      condition: "The bot is asked to bring up a post at most once, and only when the room is already talking about something near it.",
+      files: []
+    },
+    B: {
+      key: "B", label: "Counterparty", kind: "ext", cell: [0.4, 13], w: 2.4, d: 2.2, h: 1.1,
+      loc: 579, tag: "api.counterparty.io:4000/v2",
+      does: "The chain itself: dispensers, dispenses, orders and matches, block by block.",
+      built: "tokenscanClient queries block event endpoints rather than scanning transactions, and filters every asset against the card index before anything is reported.",
+      condition: "Block-indexed polling means a missed window is a missed sale; the last processed block index is carried forward in history.",
+      files: [{ p: "src/services/tokenscanClient.ts", n: 579 }]
+    }
+  },
+
+  edges: [
+    { from: "N", to: "T", label: "update", payload: "tg-update", kind: "spine" },
+    { from: "T", to: "G", label: "memory", payload: "memory", kind: "spine" },
+    { from: "G", to: "A", label: "/f pepedawn", payload: "command" },
+    { from: "G", to: "R", label: "planRouting", payload: "plan-in", kind: "spine" },
+    { from: "R", to: "O", label: "classify", payload: "token" },
+    { from: "R", to: "F", label: "candidates", payload: "candidates" },
+    { from: "F", to: "V", label: "vector search", payload: "candidates" },
+    { from: "R", to: "K", label: "FACTS / LORE", payload: "router", kind: "spine" },
+    { from: "R", to: "C", label: "may I speak?", payload: "shadow" },
+    { from: "R", to: "J", label: "decision", payload: "router", kind: "log" },
+    { from: "K", to: "L", label: "retrieve", payload: "lore-query" },
+    { from: "K", to: "I", label: "card facts", payload: "card" },
+    { from: "L", to: "V", label: "embeddings", payload: "passage" },
+    { from: "L", to: "M", label: "compose", payload: "token" },
+    { from: "M", to: "O", label: "SDK call", payload: "token" },
+    { from: "M", to: "J", label: "cost", payload: "token", kind: "log" },
+    { from: "S", to: "V", label: "embed memory", payload: "memory-write" },
+    { from: "K", to: "A", label: "answer", payload: "answer", kind: "spine" },
+    { from: "A", to: "D", label: "show card", payload: "card", kind: "spine" },
+    { from: "D", to: "T", label: "media", payload: "answer", kind: "spine" },
+    { from: "G", to: "H", label: "record turn", payload: "turn" },
+    { from: "C", to: "J", label: "verdict", payload: "shadow", kind: "log" },
+    { from: "P", to: "B", label: "poll blocks", payload: "dispense" },
+    { from: "P", to: "T", label: "sale", payload: "sale" },
+    { from: "Q", to: "T", label: "showcase", payload: "showcase" },
+    { from: "W", to: "X", label: "harvest", payload: "xpost" },
+    { from: "W", to: "R", label: "offer post", payload: "xpost" }
+  ],
+
+  payloads: {
+    "tg-update": {
+      title: "Telegram update",
+      note: "What arrives from long-polling. Chunked replies go back the same way, under 4,096 characters.",
+      src: "packages/plugin-telegram-fakerares/src/messageManager.ts",
+      body: '{\n  "update_id": 843112907,\n  "message": {\n    "message_id": 91744,\n    "chat": { "id": -1001586933558, "title": "FAKE RARES", "type": "supergroup" },\n    "from": { "id": 51298**, "username": "***", "is_bot": false },\n    "date": 1786650000,\n    "text": "pepedawn what do you know about DJPEPE?"\n  }\n}'
+    },
+    memory: {
+      title: "ElizaOS memory",
+      note: "The bridge turns the update into this, emits MESSAGE_RECEIVED, then checks metadata.__handledByCustom before letting bootstrap near it.",
+      src: "packages/plugin-telegram-fakerares/src/messageManager.ts:1009",
+      body: '{\n  "id": "7f8389db-f492-0ea5-b43f-303338127953",\n  "entityId": "e36d8988-f603-0aae-a116-b3ad966ec484",\n  "roomId": "e36d8988-f603-0aae-a116-b3ad966ec484",\n  "content": {\n    "text": "pepedawn what do you know about DJPEPE?",\n    "source": "telegram"\n  },\n  "metadata": { "__handledByCustom": true }\n}'
+    },
+    command: {
+      title: "Command log",
+      note: "Real line from command-logs.jsonl. Ten commands, matched by exact prefix before any model is asked anything.",
+      src: "src/data/command-logs.jsonl",
+      body: '{\n  "timestamp": "2026-08-19T14:39:06.572Z",\n  "command": "/f",\n  "success": true,\n  "roomId": "e36d8988-f603-0aae-a116-b3ad966ec484",\n  "entityId": "e36d8988-f603-0aae-a116-b3ad966ec484",\n  "messageId": "7c973e16-fc6d-0b10-9ac4-5fad4ea88dc5"\n}'
+    },
+    "plan-in": {
+      title: "Router call",
+      note: "The third argument is the whole addressing question: a mention, a reply, or a DM. Plain-name address does not set it, which is why the router also tests the phrasing.",
+      src: "src/services/SmartRouterService.ts:962",
+      body: 'planRouting(\n  text: "pepedawn what do you know about DJPEPE?",\n  roomId: "e36d8988-…",\n  addressedConversationally: false\n)'
+    },
+    router: {
+      title: "Router decision",
+      note: "Real line from smart-router-logs.jsonl. reason is the rung of the ladder that decided it — classifier_chat, named_card_override, taste_question, structured_card_query.",
+      src: "src/data/smart-router-logs.jsonl",
+      body: '{\n  "messageId": "7f8389db-f492-0ea5-b43f-303338127953",\n  "userText": "what\'s your favourite fake commons card?",\n  "intent": "CHAT",\n  "kind": "CHAT",\n  "reason": "classifier_chat",\n  "timestamp": "2026-08-19T14:38:36.800Z",\n  "handled": true,\n  "result": "handled"\n}'
+    },
+    token: {
+      title: "Token receipt",
+      note: "Real line from token-logs.jsonl — 1,738 of these. Every model call is priced at the gateway; /fc reads this file back to the room.",
+      src: "src/data/token-logs.jsonl",
+      body: '{\n  "timestamp": "2026-08-19T14:38:35.131Z",\n  "model": "gpt-5.6-luna",\n  "tokensIn": 775,\n  "tokensOut": 49,\n  "cost": 0.0002138,\n  "source": "Router-CHAT",\n  "duration": 1126,\n  "actionName": "smart-router"\n}'
+    },
+    candidates: {
+      title: "Retrieval candidates",
+      note: "What the fast path weighs: if card_data holds enough of the weighted score and the top similarity clears the floor, the bot shows the card instead of composing prose about it.",
+      src: "src/router/cardFastPath.ts",
+      body: '[\n  { "source_type": "card_data", "asset": "DJPEPE",\n    "similarity": 0.71, "priority_weight": 3.0 },\n  { "source_type": "memory", "sourceRef": "card:DJPEPE",\n    "similarity": 0.58, "priority_weight": 3.2 },\n  { "source_type": "wiki", "similarity": 0.41,\n    "priority_weight": 2.2 }\n]'
+    },
+    "lore-query": {
+      title: "Lore query",
+      note: "Real line from lore-query-logs.jsonl. source records how the question arrived: auto-route, a command, or a follow-up.",
+      src: "src/data/lore-query-logs.jsonl",
+      body: '{\n  "timestamp": "2026-08-19T14:33:12.929Z",\n  "queryId": "3752077d-3069-0121-92c4-948e6afb4d57",\n  "query": "who made it?",\n  "source": "auto-route"\n}'
+    },
+    passage: {
+      title: "Weighted passage",
+      note: "score is similarity multiplied by the source weight for the mode. Telegram is dropped from the ranked list entirely unless RAG_INCLUDE_TELEGRAM is set.",
+      src: "src/utils/loreRetrieval.ts:527",
+      body: '{\n  "id": "0f2c…",\n  "sourceType": "card-fact",\n  "cardAsset": "DJPEPE",\n  "cardBlockType": "visual",\n  "cardBlockPriority": 180,\n  "similarity": 0.66,\n  "boost": 3.9,          // 3.0 + priority/200 (FACTS mode)\n  "score": 2.574,\n  "text": "A turntablist frog behind decks, …"\n}'
+    },
+    card: {
+      title: "Card index entry",
+      note: "The shape everything factual is answered from. Artist, supply, series and issuance are read, never guessed at.",
+      src: "src/data/fake-rares-data.json",
+      body: '{\n  "asset": "FREEDOMKEK",\n  "series": 0,\n  "card": 1,\n  "ext": "jpeg",\n  "artist": "Rare Scrilla",\n  "artistSlug": "Rare-Scrilla",\n  "supply": 298,\n  "issuance": "October 2017"\n}'
+    },
+    "memory-write": {
+      title: "Community memory",
+      note: "What “remember this DJPEPE: …” becomes. Memory carries the heaviest retrieval weight of any source, which is why vouching exists.",
+      src: "src/services/MemoryStorageService.ts",
+      body: '{\n  "sourceType": "memory",\n  "sourceRef": "card:DJPEPE",\n  "text": "DJPEPE was the first Fake Rare to …",\n  "submittedBy": "***",\n  "vouches": 3,\n  "embedded": true\n}'
+    },
+    shadow: {
+      title: "Cadence verdict",
+      note: "Real line from shadow-logs.jsonl. wouldSpeak is what the governor would have allowed; actualHandled is what the live path did. Shadow mode records the gap without changing anything.",
+      src: "src/data/shadow-logs.jsonl",
+      body: '{\n  "timestamp": "2026-08-19T14:47:30.516Z",\n  "kind": "user",\n  "roomId": "room-1",\n  "temperature": "cool",\n  "cadenceCap": "DEEP",\n  "cadenceReason": "clear",\n  "wouldSpeak": true,\n  "actualHandled": null,\n  "signals": {\n    "messagesPerMinute": 3.09,\n    "meanUserWords": 4.26,\n    "distinctParticipants": 1,\n    "questionRatio": 0.47\n  },\n  "metrics": {\n    "shareOfVoice": 0.05,\n    "botTurnsInWindow": 0,\n    "totalTurnsInWindow": 19,\n    "consecutiveBotTurns": 0\n  }\n}'
+    },
+    turn: {
+      title: "Room turn",
+      note: "The live router keeps 60 of these in memory per room. The v5 path writes them to src/data/room-history.json instead, so the bot can survive the 02:00 restart.",
+      src: "src/conversation/roomHistory.ts",
+      body: '{\n  "role": "user",\n  "author": "***",\n  "text": "pepedawn what do you know about DJPEPE?",\n  "at": 1786650000123,\n  "addressedBot": false\n}'
+    },
+    answer: {
+      title: "Composed answer",
+      note: "What leaves the router: the text, the sources line, and the card to show beside it. A thin answer — no fact, no card — is composed a second time rather than sent.",
+      src: "src/services/KnowledgeOrchestratorService.ts:773",
+      body: '{\n  "story": "DJPEPE is Series 1, Card 3 — …",\n  "sourcesLine": "card facts · community memory",\n  "card": "DJPEPE",\n  "metrics": {\n    "hits_raw": 24, "hits_used": 6,\n    "clusters": 3, "latency_ms": 2841,\n    "story_words": 96\n  }\n}'
+    },
+    dispense: {
+      title: "Chain event",
+      note: "One of four block event types the watcher polls. A dispense carries no price, so the dispenser is looked up to find one.",
+      src: "src/services/tokenscanClient.ts:325",
+      body: 'GET /blocks/{block_index}/events/DISPENSE\n\n{\n  "tx_hash": "9c1f…",\n  "block_index": 879412,\n  "asset": "DJPEPE",\n  "dispenser_tx_hash": "44ab…",\n  "dispense_quantity": 1\n}'
+    },
+    sale: {
+      title: "Market notification",
+      note: "Only assets that resolve against the card index are ever reported — the chain is full of things that are not Fake Rares.",
+      src: "src/services/telegramNotification.ts",
+      body: '{\n  "type": "DISPENSE",\n  "asset": "DJPEPE",\n  "priceBTC": 0.0042,\n  "paymentAsset": "BTC",\n  "block": 879412,\n  "url": "https://xchain.io/tx/9c1f…"\n}'
+    },
+    showcase: {
+      title: "Periodic post",
+      note: "Only fires into a channel with recent activity. The send failure is swallowed — the log line appears either way.",
+      src: "src/services/periodicContent.ts:351",
+      body: '{\n  "kind": "card_showcase",\n  "asset": "PEPEDAWN",\n  "channels": ["-1001586933558"],\n  "intervalMinutes": 60\n}'
+    },
+    xpost: {
+      title: "Harvested post",
+      note: "Scored for interest, matched against what the room is already discussing, and offered to the router once. Marked used so it is never said twice.",
+      src: "src/utils/xHarvest.ts",
+      body: '{\n  "id": "2088016749849682120",\n  "author": "fleetingbits",\n  "url": "https://x.com/…/status/…",\n  "text": "…",\n  "likes": 7409,\n  "cards": ["DJPEPE"],\n  "interest": 0.78,\n  "volunteeredAt": null\n}'
+    }
+  }
+};
+/* ATLAS DATA END */
+</script>
+
+<style>
+/* ---------- the drawing itself ---------- */
+.iso-grid { stroke: var(--grid); stroke-width: 1; fill: none; }
+.floor-band { fill: var(--paper-3); opacity: 0.45; }
+.edge-line {
+  fill: none;
+  stroke: var(--rule);
+  stroke-width: 1.1;
+  opacity: 0.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.edge-line.log { stroke-dasharray: 3 4; opacity: 0.3; }
+.edge-line.spine { opacity: 0.9; stroke-width: 1.9; }
+.edge-line.lit { opacity: 1; stroke-width: 1.8; }
+.edge-cap { fill: var(--rule); opacity: 0.5; }
+.edge-cap.lit { fill: var(--ink); opacity: 1; }
+
+.face { stroke: var(--rule); stroke-width: 1.1; stroke-linejoin: round; }
+.face-top { fill: var(--face-top); }
+.face-left { fill: var(--face-left); }
+.face-right { fill: var(--face-right); }
+.node.ext .face { stroke-dasharray: 4 3; }
+.node.ext .face-top { fill: none; }
+.node.ext .face-left, .node.ext .face-right { fill: var(--paper-3); opacity: 0.55; }
+.node .plate { fill: var(--store-face); stroke: var(--rule); stroke-width: 1; }
+
+.node { cursor: pointer; }
+.node .hit { fill: transparent; }
+.node:hover .face-top { fill: var(--paper-2); }
+.node.sel .face { stroke-width: 2; }
+.node.sel .face-top { fill: var(--sel); }
+.node.sel .key { fill: var(--paper-2); }
+.node.dim { opacity: 0.32; }
+.node:focus { outline: none; }
+.node:focus-visible .face { stroke: var(--accent); stroke-width: 2; }
+
+.key {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  fill: var(--ink);
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+}
+.nodelabel {
+  font-family: var(--cond);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  fill: var(--ink-soft);
+  text-anchor: middle;
+  pointer-events: none;
+  paint-order: stroke;
+  stroke: var(--paper);
+  stroke-width: 3.5px;
+  stroke-linejoin: round;
+}
+.nodelabel.sel { fill: var(--ink); }
+.nodelabel.code {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.edgelabel {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  fill: var(--ink-faint);
+  text-anchor: middle;
+  pointer-events: none;
+  opacity: 0;
+}
+.edgelabel.lit { opacity: 1; fill: var(--ink); }
+
+.dot { fill: var(--accent); stroke: var(--paper); stroke-width: 0.6; cursor: pointer; }
+.dot.lit { stroke: var(--ink); stroke-width: 1; }
+.dothit { fill: transparent; cursor: pointer; }
+
+.scenetitle {
+  font-family: var(--cond);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  fill: var(--ink-faint);
+}
+</style>
+
+<script>
+(function () {
+  "use strict";
+
+  var SVGNS = "http://www.w3.org/2000/svg";
+  var TW = 34, TH = 17, HZ = 27;          /* tile half-width, half-height, one height unit */
+  var SPREAD = 1.55;                       /* gap multiplier applied to plan coordinates */
+  var stage = document.getElementById("stage");
+  var canvasEl = document.getElementById("canvas");
+  var readerBody = document.getElementById("readerbody");
+  var tabsEl = document.getElementById("tabs");
+  var crumbsEl = document.getElementById("crumbs");
+
+  var view = { k: 1, x: 0, y: 0 };
+  var scene = null;                        /* { title, nodes, edges, isInside } */
+  var selected = null;                     /* node id */
+  var payloadKey = null;
+  var tab = "does";
+  var flowing = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var travellers = [];                     /* animated dots */
+  var root, layerGrid, layerEdges, layerNodes, layerLabels, layerDots;
+  var nodeEls = {}, labelEls = {}, edgeEls = [];
+
+  /* ---------------- projection ---------------- */
+  function iso(gx, gy, gz) {
+    return { x: (gx - gy) * TW, y: (gx + gy) * TH - (gz || 0) * HZ };
+  }
+  function pts(list) {
+    return list.map(function (p) { return p.x.toFixed(1) + "," + p.y.toFixed(1); }).join(" ");
+  }
+  function el(name, attrs, parent) {
+    var n = document.createElementNS(SVGNS, name);
+    for (var k in attrs) { if (attrs[k] !== undefined && attrs[k] !== null) n.setAttribute(k, attrs[k]); }
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+
+  /* ---------------- scenes ---------------- */
+  function mainScene() {
+    var nodes = [];
+    Object.keys(ATLAS.nodes).forEach(function (id) {
+      var n = ATLAS.nodes[id];
+      nodes.push({
+        id: id, key: n.key, label: n.label, kind: n.kind,
+        gx: n.cell[0] * SPREAD, gy: n.cell[1] * SPREAD, w: n.w, d: n.d, h: n.h, plates: n.plates
+      });
+    });
+    return { title: null, nodes: nodes, edges: ATLAS.edges.slice(), isInside: false, parent: null };
+  }
+
+  function insideScene(id) {
+    var src = ATLAS.nodes[id];
+    var steps = src.inside || [];
+    var nodes = [], edges = [];
+    steps.forEach(function (s, i) {
+      var nid = "s" + i;
+      nodes.push({
+        id: nid, key: String(i + 1), label: s.t, kind: "core",
+        gx: i * 3.5, gy: i * 1.5, w: 2.1, d: 2.1, h: 0.9 + (i % 2 ? 0.45 : 0.1),
+        step: s
+      });
+      if (i > 0) edges.push({ from: "s" + (i - 1), to: nid, label: "", payload: null, kind: "step" });
+    });
+    return { title: src.label + " — in execution order", nodes: nodes, edges: edges, isInside: true, parent: id };
+  }
+
+  /* ---------------- geometry helpers ---------------- */
+  function centre(n) { return { gx: n.gx + n.w / 2, gy: n.gy + n.d / 2 }; }
+
+  function route(a, b) {
+    var ca = centre(a), cb = centre(b);
+    var dx = cb.gx - ca.gx, dy = cb.gy - ca.gy;
+    var mid = Math.abs(dx) >= Math.abs(dy)
+      ? { gx: cb.gx, gy: ca.gy }
+      : { gx: ca.gx, gy: cb.gy };
+    var raw = [ca, mid, cb];
+    /* drop a redundant corner */
+    if (Math.abs(raw[0].gx - raw[1].gx) < 0.01 && Math.abs(raw[0].gy - raw[1].gy) < 0.01) raw.splice(1, 1);
+    return raw.map(function (p) { return iso(p.gx, p.gy, 0.12); });
+  }
+
+  function pathFrom(points) {
+    var d = "M " + points[0].x.toFixed(1) + " " + points[0].y.toFixed(1);
+    for (var i = 1; i < points.length; i++) d += " L " + points[i].x.toFixed(1) + " " + points[i].y.toFixed(1);
+    return d;
+  }
+
+  /* ---------------- drawing ---------------- */
+  function drawBox(g, n) {
+    var A = iso(n.gx, n.gy, n.h), B = iso(n.gx + n.w, n.gy, n.h),
+        C = iso(n.gx + n.w, n.gy + n.d, n.h), D = iso(n.gx, n.gy + n.d, n.h);
+    var b0 = iso(n.gx + n.w, n.gy, 0), c0 = iso(n.gx + n.w, n.gy + n.d, 0), d0 = iso(n.gx, n.gy + n.d, 0);
+    el("polygon", { points: pts([B, C, c0, b0]), class: "face face-right" }, g);
+    el("polygon", { points: pts([B, C, c0, b0]), fill: "url(#hatch)", stroke: "none" }, g);
+    el("polygon", { points: pts([C, D, d0, c0]), class: "face face-left" }, g);
+    el("polygon", { points: pts([A, B, C, D]), class: "face face-top" }, g);
+    return { A: A, B: B, C: C, D: D };
+  }
+
+  function drawPlates(g, n) {
+    var count = n.plates || 3, thick = 0.26, gap = 0.16;
+    for (var i = 0; i < count; i++) {
+      var z = i * (thick + gap);
+      var A = iso(n.gx, n.gy, z + thick), B = iso(n.gx + n.w, n.gy, z + thick),
+          C = iso(n.gx + n.w, n.gy + n.d, z + thick), D = iso(n.gx, n.gy + n.d, z + thick);
+      var b0 = iso(n.gx + n.w, n.gy, z), c0 = iso(n.gx + n.w, n.gy + n.d, z), d0 = iso(n.gx, n.gy + n.d, z);
+      el("polygon", { points: pts([B, C, c0, b0]), class: "face face-right" }, g);
+      el("polygon", { points: pts([C, D, d0, c0]), class: "face face-left" }, g);
+      el("polygon", { points: pts([A, B, C, D]), class: "plate face-top face" }, g);
+    }
+    var topZ = (count - 1) * (thick + gap) + thick;
+    return {
+      A: iso(n.gx, n.gy, topZ), B: iso(n.gx + n.w, n.gy, topZ),
+      C: iso(n.gx + n.w, n.gy + n.d, topZ), D: iso(n.gx, n.gy + n.d, topZ)
+    };
+  }
+
+  function drawGrid() {
+    var minX = 1e9, maxX = -1e9, minY = 1e9, maxY = -1e9;
+    scene.nodes.forEach(function (n) {
+      minX = Math.min(minX, n.gx); maxX = Math.max(maxX, n.gx + n.w);
+      minY = Math.min(minY, n.gy); maxY = Math.max(maxY, n.gy + n.d);
+    });
+    var pad = 1.6;
+    minX -= pad; minY -= pad; maxX += pad; maxY += pad;
+    for (var gx = Math.floor(minX); gx <= Math.ceil(maxX); gx += 2) {
+      var p1 = iso(gx, minY, 0), p2 = iso(gx, maxY, 0);
+      el("line", { x1: p1.x, y1: p1.y, x2: p2.x, y2: p2.y, class: "iso-grid" }, layerGrid);
+    }
+    for (var gy = Math.floor(minY); gy <= Math.ceil(maxY); gy += 2) {
+      var q1 = iso(minX, gy, 0), q2 = iso(maxX, gy, 0);
+      el("line", { x1: q1.x, y1: q1.y, x2: q2.x, y2: q2.y, class: "iso-grid" }, layerGrid);
+    }
+  }
+
+  /* ---------------- render ---------------- */
+  function render() {
+    while (stage.firstChild) stage.removeChild(stage.firstChild);
+    nodeEls = {}; labelEls = {}; edgeEls = []; travellers = [];
+
+    var defs = el("defs", {}, stage);
+    var hatch = el("pattern", {
+      id: "hatch", width: 5, height: 5, patternUnits: "userSpaceOnUse",
+      patternTransform: "rotate(35)"
+    }, defs);
+    el("line", { x1: 0, y1: 0, x2: 0, y2: 5, style: "stroke: var(--rule-faint); stroke-width: 1;" }, hatch);
+
+    root = el("g", { id: "root" }, stage);
+    layerGrid = el("g", {}, root);
+    layerEdges = el("g", {}, root);
+    layerNodes = el("g", {}, root);
+    layerLabels = el("g", {}, root);
+    layerDots = el("g", {}, root);
+
+    drawGrid();
+
+    var byId = {};
+    scene.nodes.forEach(function (n) { byId[n.id] = n; });
+
+    /* edges under the blocks, as in a drafting plan */
+    scene.edges.forEach(function (e, i) {
+      var a = byId[e.from], b = byId[e.to];
+      if (!a || !b) return;
+      var points = route(a, b);
+      var d = pathFrom(points);
+      var p = el("path", { d: d, class: "edge-line" + (e.kind ? " " + e.kind : "") }, layerEdges);
+      var end = points[points.length - 1];
+      var cap = el("circle", { cx: end.x, cy: end.y, r: 2.4, class: "edge-cap" }, layerEdges);
+      var mid = points.length > 2 ? points[1] : {
+        x: (points[0].x + points[1].x) / 2, y: (points[0].y + points[1].y) / 2
+      };
+      var lab = e.label ? el("text", { x: mid.x, y: mid.y - 7, class: "edgelabel" }, layerEdges) : null;
+      if (lab) lab.textContent = e.label;
+      var rec = { edge: e, path: p, cap: cap, label: lab, from: e.from, to: e.to };
+      edgeEls.push(rec);
+
+      if (e.payload && !scene.isInside) {
+        var len = p.getTotalLength();
+        var dot = el("rect", {
+          x: -3.6, y: -3.6, width: 7.2, height: 7.2, class: "dot",
+          transform: "translate(0,0) rotate(45)"
+        }, layerDots);
+        var hit = el("circle", { cx: 0, cy: 0, r: 9, class: "dothit" }, layerDots);
+        var t = {
+          path: p, len: len, pos: (i * 37) % Math.max(len, 1), dot: dot, hit: hit,
+          payload: e.payload, edge: rec, speed: 26 + (i % 3) * 6
+        };
+        travellers.push(t);
+        var open = function (ev) { ev.stopPropagation(); showPayload(t.payload, rec); };
+        hit.addEventListener("click", open);
+        dot.addEventListener("click", open);
+      }
+    });
+
+    /* blocks, painted back to front so the isometry reads correctly */
+    scene.nodes.slice().sort(function (a, b) {
+      return (a.gx + a.gy) - (b.gx + b.gy);
+    }).forEach(function (n) {
+      var g = el("g", {
+        class: "node " + (n.kind === "ext" ? "ext" : n.kind),
+        tabindex: "0", role: "button",
+        "aria-label": n.label
+      }, layerNodes);
+      var top = n.plates ? drawPlates(g, n) : drawBox(g, n);
+      var cx = (top.A.x + top.C.x) / 2, cy = (top.A.y + top.C.y) / 2;
+      var k = el("text", { x: cx, y: cy, class: "key" }, g);
+      k.textContent = n.key;
+      var base = iso(n.gx + n.w / 2, n.gy + n.d / 2, 0);
+      var foot = iso(n.gx + n.w, n.gy + n.d, 0);
+      var lab = el("text", {
+        x: base.x, y: foot.y + 13,
+        class: "nodelabel" + (n.step ? " code" : "")
+      }, layerLabels);
+      lab.textContent = n.label;
+      labelEls[n.id] = lab;
+      el("polygon", { points: pts([top.A, top.B, top.C, top.D]), class: "hit" }, g);
+
+      g.addEventListener("click", function (ev) { ev.stopPropagation(); select(n.id); });
+      g.addEventListener("dblclick", function (ev) { ev.stopPropagation(); goInside(n.id); });
+      g.addEventListener("keydown", function (ev) {
+        if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); select(n.id); }
+      });
+      g.addEventListener("mouseenter", function () { highlight(n.id, true); });
+      g.addEventListener("mouseleave", function () { highlight(n.id, false); });
+      nodeEls[n.id] = g;
+    });
+
+    fit();
+    applyView();
+    paintSelection();
+  }
+
+  /* ---------------- camera ---------------- */
+  function fit() {
+    var bb;
+    try { bb = layerNodes.getBBox(); } catch (e) { return; }
+    var w = canvasEl.clientWidth, h = canvasEl.clientHeight;
+    if (!bb.width || !bb.height || !w || !h) return;
+    var k = Math.min(w / (bb.width + 96), h / (bb.height + 108));
+    view.k = Math.max(0.28, Math.min(scene && scene.isInside ? 1.0 : 1.9, k));
+    view.x = w / 2 - (bb.x + bb.width / 2) * view.k;
+    view.y = h / 2 - (bb.y + bb.height / 2) * view.k;
+  }
+  function applyView() {
+    root.setAttribute("transform",
+      "translate(" + view.x.toFixed(2) + "," + view.y.toFixed(2) + ") scale(" + view.k.toFixed(3) + ")");
+  }
+  function zoomAt(cx, cy, factor) {
+    var k2 = Math.max(0.25, Math.min(3.2, view.k * factor));
+    var r = k2 / view.k;
+    view.x = cx - (cx - view.x) * r;
+    view.y = cy - (cy - view.y) * r;
+    view.k = k2;
+    applyView();
+  }
+
+  canvasEl.addEventListener("wheel", function (ev) {
+    ev.preventDefault();
+    var rect = canvasEl.getBoundingClientRect();
+    zoomAt(ev.clientX - rect.left, ev.clientY - rect.top, ev.deltaY < 0 ? 1.12 : 1 / 1.12);
+  }, { passive: false });
+
+  var drag = null;
+  canvasEl.addEventListener("pointerdown", function (ev) {
+    if (ev.target.classList && (ev.target.classList.contains("dothit") || ev.target.classList.contains("dot"))) return;
+    drag = { x: ev.clientX, y: ev.clientY, vx: view.x, vy: view.y, moved: false };
+    canvasEl.classList.add("dragging");
+    canvasEl.setPointerCapture(ev.pointerId);
+  });
+  canvasEl.addEventListener("pointermove", function (ev) {
+    if (!drag) return;
+    view.x = drag.vx + (ev.clientX - drag.x);
+    view.y = drag.vy + (ev.clientY - drag.y);
+    if (Math.abs(ev.clientX - drag.x) + Math.abs(ev.clientY - drag.y) > 4) drag.moved = true;
+    applyView();
+  });
+  canvasEl.addEventListener("pointerup", function (ev) {
+    if (drag && !drag.moved && ev.target === stage) select(null);
+    drag = null;
+    canvasEl.classList.remove("dragging");
+  });
+  window.addEventListener("resize", function () { fit(); applyView(); });
+
+  /* ---------------- flow ---------------- */
+  var last = 0;
+  function frame(ts) {
+    var dt = last ? Math.min(0.05, (ts - last) / 1000) : 0;
+    last = ts;
+    if (flowing) advance(dt);
+    requestAnimationFrame(frame);
+  }
+  function advance(dt) {
+    travellers.forEach(function (t) {
+      t.pos = (t.pos + t.speed * dt) % t.len;
+      var p = t.path.getPointAtLength(t.pos);
+      t.dot.setAttribute("transform", "translate(" + p.x.toFixed(1) + "," + p.y.toFixed(1) + ") rotate(45)");
+      t.hit.setAttribute("cx", p.x.toFixed(1));
+      t.hit.setAttribute("cy", p.y.toFixed(1));
+    });
+  }
+  requestAnimationFrame(frame);
+
+  /* ---------------- selection & highlighting ---------------- */
+  function highlight(id, on) {
+    edgeEls.forEach(function (r) {
+      var touches = r.from === id || r.to === id;
+      r.path.classList.toggle("lit", on && touches);
+      r.cap.classList.toggle("lit", on && touches);
+      if (r.label) r.label.classList.toggle("lit", on && touches);
+    });
+  }
+
+  function paintSelection() {
+    Object.keys(nodeEls).forEach(function (id) {
+      nodeEls[id].classList.toggle("sel", id === selected);
+      if (labelEls[id]) labelEls[id].classList.toggle("sel", id === selected);
+    });
+    var rows = document.querySelectorAll(".idx-row");
+    for (var i = 0; i < rows.length; i++) {
+      rows[i].classList.toggle("active", rows[i].dataset.id === selected);
+    }
+    if (selected) highlight(selected, true);
+    else edgeEls.forEach(function (r) {
+      r.path.classList.remove("lit"); r.cap.classList.remove("lit");
+      if (r.label) r.label.classList.remove("lit");
+    });
+  }
+
+  function select(id) {
+    selected = id;
+    if (id && tab === "payload") tab = "does";
+    paintSelection();
+    paintCrumbs();
+    paintReader();
+  }
+
+  function showPayload(key, edgeRec) {
+    payloadKey = key;
+    tab = "payload";
+    if (edgeRec) {
+      edgeEls.forEach(function (r) {
+        r.path.classList.toggle("lit", r === edgeRec);
+        r.cap.classList.toggle("lit", r === edgeRec);
+        if (r.label) r.label.classList.toggle("lit", r === edgeRec);
+      });
+    }
+    paintTabs();
+    paintReader();
+  }
+
+  /* ---------------- inside view ---------------- */
+  function goInside(id) {
+    var n = ATLAS.nodes[id];
+    if (!n || !n.inside || !n.inside.length) return;
+    scene = insideScene(id);
+    selected = null;
+    render();
+    paintCrumbs();
+    paintReader();
+  }
+  function comeBackOut() {
+    var parent = scene.parent;
+    scene = mainScene();
+    selected = parent || null;
+    render();
+    paintCrumbs();
+    paintReader();
+  }
+
+  /* ---------------- chrome ---------------- */
+  function h(str) {
+    return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+
+  function paintTitleBlock() {
+    var tb = document.getElementById("titleblock");
+    var html = '<div class="tb-cell"><span class="tb-label">Repository</span>' +
+      '<span class="tb-value">' + h(ATLAS.meta.repo) + '</span></div>';
+    ATLAS.meta.stats.forEach(function (s) {
+      html += '<div class="tb-cell"><span class="tb-label">' + h(s.label) + '</span>' +
+        '<span class="tb-value">' + h(s.value) + '</span></div>';
+    });
+    html += '<div class="tb-controls">' +
+      '<button type="button" id="flow">' + (flowing ? "Pause the flow" : "Resume the flow") + '</button>' +
+      '<button type="button" id="step">Trace one step</button>' +
+      '<button type="button" id="reset">Reset view</button></div>';
+    tb.innerHTML = html;
+    document.getElementById("flow").addEventListener("click", function () {
+      flowing = !flowing;
+      this.textContent = flowing ? "Pause the flow" : "Resume the flow";
+      this.classList.toggle("on", !flowing);
+    });
+    document.getElementById("step").addEventListener("click", function () {
+      flowing = false;
+      var f = document.getElementById("flow");
+      f.textContent = "Resume the flow"; f.classList.add("on");
+      travellers.forEach(function (t) { t.pos = (t.pos + t.len * 0.09) % t.len; });
+      advance(0);
+    });
+    document.getElementById("reset").addEventListener("click", function () { fit(); applyView(); });
+  }
+
+  function paintIndex() {
+    var idx = document.getElementById("index");
+    var html = "";
+    ATLAS.groups.forEach(function (grp) {
+      html += '<h2>' + h(grp.title) + '</h2>';
+      grp.ids.forEach(function (id) {
+        var n = ATLAS.nodes[id];
+        if (!n) return;
+        var count = n.loc ? (n.loc >= 1000 ? (n.loc / 1000).toFixed(1) + "k" : n.loc) : "—";
+        html += '<button type="button" class="idx-row" data-id="' + id + '">' +
+          '<span class="k">' + h(n.key) + '</span>' +
+          '<span>' + h(n.label) + '</span>' +
+          '<span class="n">' + count + '</span></button>';
+      });
+    });
+    idx.innerHTML = html;
+    idx.addEventListener("click", function (ev) {
+      var row = ev.target.closest(".idx-row");
+      if (!row) return;
+      if (scene.isInside) { scene = mainScene(); render(); }
+      select(row.dataset.id);
+      centreOn(row.dataset.id);
+    });
+  }
+
+  function centreOn(id) {
+    var n = null;
+    scene.nodes.forEach(function (x) { if (x.id === id) n = x; });
+    if (!n) return;
+    var p = iso(n.gx + n.w / 2, n.gy + n.d / 2, 0);
+    view.x = canvasEl.clientWidth / 2 - p.x * view.k;
+    view.y = canvasEl.clientHeight / 2 - p.y * view.k;
+    applyView();
+  }
+
+  function paintCrumbs() {
+    var html = "";
+    if (scene.isInside) {
+      html = '<button type="button" id="back">← Come back out</button>' +
+        '<span class="here">' + h(ATLAS.nodes[scene.parent].label) + '</span>';
+    } else if (selected && ATLAS.nodes[selected] && ATLAS.nodes[selected].inside) {
+      html = '<button type="button" id="in">Go inside ' + h(ATLAS.nodes[selected].key) + ' →</button>';
+    }
+    crumbsEl.innerHTML = html;
+    var back = document.getElementById("back");
+    if (back) back.addEventListener("click", comeBackOut);
+    var into = document.getElementById("in");
+    if (into) into.addEventListener("click", function () { goInside(selected); });
+  }
+
+  function paintTabs() {
+    var btns = tabsEl.querySelectorAll("button");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].setAttribute("aria-selected", btns[i].dataset.tab === tab ? "true" : "false");
+    }
+  }
+  tabsEl.addEventListener("click", function (ev) {
+    var b = ev.target.closest("button");
+    if (!b) return;
+    tab = b.dataset.tab;
+    paintTabs();
+    paintReader();
+  });
+
+  function introHTML(which) {
+    var m = ATLAS.meta;
+    var html = '<p class="eyebrow">' + h(m.short || m.repo) + ' · v' + h(m.version) + '</p>' +
+      '<h1>' + h(m.title) + '</h1>' +
+      '<p class="sub">' + h(m.subtitle) + '</p>';
+    (m.intro[which] || []).forEach(function (sec) {
+      html += '<h3>' + h(sec.h) + '</h3>';
+      sec.p.forEach(function (p) { html += '<p>' + p + '</p>'; });
+    });
+    return html;
+  }
+
+  function nodeHTML(id, which) {
+    var n = ATLAS.nodes[id];
+    var html = '<p class="eyebrow">' + h(n.key) + ' · ' + (n.kind === "ext" ? "outside the process" : n.kind === "store" ? "at rest" : "structure") + '</p>' +
+      '<h1>' + h(n.label) + '</h1>';
+    if (n.tag) html += '<p class="sub">' + h(n.tag) + '</p>';
+
+    if (which === "does") {
+      html += '<h3>What it does</h3><p>' + n.does + '</p>';
+      html += '<h3>Facts</h3><dl class="meta">';
+      if (n.loc) html += '<dt>Lines</dt><dd>' + n.loc.toLocaleString() + '</dd>';
+      html += '<dt>Files</dt><dd>' + (n.files.length || "—") + '</dd>';
+      var ins = ATLAS.edges.filter(function (e) { return e.to === id; });
+      var outs = ATLAS.edges.filter(function (e) { return e.from === id; });
+      html += '<dt>Fed by</dt><dd>' + (ins.map(function (e) { return ATLAS.nodes[e.from].label; }).join(", ") || "—") + '</dd>';
+      html += '<dt>Feeds</dt><dd>' + (outs.map(function (e) { return ATLAS.nodes[e.to].label; }).join(", ") || "—") + '</dd>';
+      html += '</dl>';
+      if (n.files.length) {
+        html += '<h3>Where it lives</h3><ul class="filelist">';
+        n.files.forEach(function (f) {
+          html += '<li><span>' + h(f.p) + '</span><span class="loc">' + f.n.toLocaleString() + '</span></li>';
+        });
+        html += '</ul>';
+      }
+      if (outs.length) {
+        html += '<h3>What moves out of it</h3>';
+        outs.forEach(function (e) {
+          if (!e.payload) return;
+          html += '<button type="button" class="pill hot" data-payload="' + e.payload + '">' + h(e.label) + '</button>';
+        });
+      }
+    } else {
+      html += '<h3>How it is built</h3><p>' + n.built + '</p>';
+      if (n.condition) html += '<h3>Condition</h3><p class="warn">' + n.condition + '</p>';
+      if (n.inside) {
+        html += '<h3>Inside, in order</h3><ol class="steps">';
+        n.inside.forEach(function (s) {
+          html += '<li><div><b>' + h(s.t) + '</b><span>' + h(s.d) + '</span></div></li>';
+        });
+        html += '</ol>';
+      }
+    }
+    return html;
+  }
+
+  function payloadHTML() {
+    if (!payloadKey) {
+      return '<p class="eyebrow">Payload</p><h1>Nothing picked up yet</h1>' +
+        '<p>The dots moving along the lines are real payloads — router decisions, token receipts, cadence verdicts, chain events — taken from the JSONL telemetry in <code>src/data/</code>. Click one and it lands here.</p>';
+    }
+    var p = ATLAS.payloads[payloadKey];
+    return '<p class="eyebrow">Payload in flight</p><h1>' + h(p.title) + '</h1>' +
+      '<p class="sub">' + h(p.src) + '</p>' +
+      '<h3>As written</h3><pre>' + h(p.body) + '</pre>' +
+      '<h3>Why it looks like this</h3><p>' + p.note + '</p>';
+  }
+
+  function stepHTML(id) {
+    var n = null;
+    scene.nodes.forEach(function (x) { if (x.id === id) n = x; });
+    if (!n) return nodeHTML(scene.parent, tab);
+    var parent = ATLAS.nodes[scene.parent];
+    var i = scene.nodes.indexOf(n) + 1;
+    return '<p class="eyebrow">' + h(parent.label) + ' · step ' + i + ' of ' + scene.nodes.length + '</p>' +
+      '<h1>' + h(n.label) + '</h1>' +
+      '<h3>What happens here</h3><p>' + h(n.step.d) + '</p>' +
+      '<h3>Where it lives</h3><ul class="filelist">' +
+      parent.files.map(function (f) {
+        return '<li><span>' + h(f.p) + '</span><span class="loc">' + f.n.toLocaleString() + '</span></li>';
+      }).join("") + '</ul>';
+  }
+
+  function paintReader() {
+    if (tab === "payload") readerBody.innerHTML = payloadHTML();
+    else if (scene.isInside && selected) readerBody.innerHTML = stepHTML(selected);
+    else if (scene.isInside) readerBody.innerHTML = nodeHTML(scene.parent, tab);
+    else if (selected && ATLAS.nodes[selected]) readerBody.innerHTML = nodeHTML(selected, tab);
+    else readerBody.innerHTML = introHTML(tab);
+    readerBody.scrollTop = 0;
+    paintTabs();
+  }
+
+  readerBody.addEventListener("click", function (ev) {
+    var b = ev.target.closest("[data-payload]");
+    if (b) showPayload(b.dataset.payload, null);
+  });
+
+  /* ---------------- keyboard ---------------- */
+  document.addEventListener("keydown", function (ev) {
+    if (ev.target && /^(INPUT|TEXTAREA)$/.test(ev.target.tagName)) return;
+    if (ev.key === "Escape") {
+      if (scene.isInside) comeBackOut();
+      else select(null);
+    } else if (ev.key === " ") {
+      ev.preventDefault();
+      document.getElementById("flow").click();
+    } else if (ev.key === ".") {
+      document.getElementById("step").click();
+    } else if (ev.key === "ArrowLeft") { view.x += 60; applyView(); }
+    else if (ev.key === "ArrowRight") { view.x -= 60; applyView(); }
+    else if (ev.key === "ArrowUp") { view.y += 60; applyView(); }
+    else if (ev.key === "ArrowDown") { view.y -= 60; applyView(); }
+  });
+
+  document.getElementById("zin").addEventListener("click", function () {
+    zoomAt(canvasEl.clientWidth / 2, canvasEl.clientHeight / 2, 1.2);
+  });
+  document.getElementById("zout").addEventListener("click", function () {
+    zoomAt(canvasEl.clientWidth / 2, canvasEl.clientHeight / 2, 1 / 1.2);
+  });
+
+  /* ---------------- boot ---------------- */
+  paintTitleBlock();
+  paintIndex();
+  scene = mainScene();
+  render();
+  paintCrumbs();
+  paintReader();
+  window.__atlas = {
+    select: select, goInside: goInside, showPayload: showPayload,
+    tab: function (t) { tab = t; paintTabs(); paintReader(); }
+  };
+  if (!flowing) {
+    var f = document.getElementById("flow");
+    f.textContent = "Resume the flow";
+    f.classList.add("on");
+  }
+})();
+</script>

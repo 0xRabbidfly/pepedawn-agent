@@ -1,0 +1,1179 @@
+<title>Codebase Atlas</title>
+<meta name="description" content="An isometric map of a codebase, drawn from the code." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" />
+
+<style>
+/* ============================================================
+   Codebase Atlas — drafting table
+   light: cold-pressed paper · dark: petrol blueprint
+   ============================================================ */
+:root {
+  --paper:      #e4e8e6;
+  --paper-2:    #edf0ee;
+  --paper-3:    #d8ddda;
+  --ink:        #14262c;
+  --ink-soft:   #46605f;
+  --ink-faint:  #8ea19d;
+  --rule:       #14262c;
+  --rule-faint: rgba(20, 38, 44, 0.22);
+  --grid:       rgba(20, 38, 44, 0.10);
+  --face-top:   #e9ece9;
+  --face-left:  #c6cfcc;
+  --face-right: #aeb9b6;
+  --store-face: #d3dad6;
+  --accent:     #b4611a;
+  --accent-ink: #ffffff;
+  --warn:       #9d3324;
+  --ext:        #4c6f74;
+  --sel:        #14262c;
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --cond: "IBM Plex Sans Condensed", "IBM Plex Sans", system-ui, sans-serif;
+  --prose: "Newsreader", Georgia, "Times New Roman", serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper:      #0d1b21;
+    --paper-2:    #122229;
+    --paper-3:    #091419;
+    --ink:        #cdd9d6;
+    --ink-soft:   #9cb2b0;
+    --ink-faint:  #6b8688;
+    --rule:       #7d9a9c;
+    --rule-faint: rgba(160, 190, 190, 0.26);
+    --grid:       rgba(160, 190, 190, 0.13);
+    --face-top:   #1e363f;
+    --face-left:  #142329;
+    --face-right: #0c171c;
+    --store-face: #182b33;
+    --accent:     #e6a35c;
+    --accent-ink: #0d1b21;
+    --warn:       #e0715e;
+    --ext:        #8fb3b6;
+    --sel:        #e9efed;
+  }
+}
+:root[data-theme="dark"] {
+  --paper:      #0d1b21;
+  --paper-2:    #122229;
+  --paper-3:    #091419;
+  --ink:        #cdd9d6;
+  --ink-soft:   #9cb2b0;
+  --ink-faint:  #6b8688;
+  --rule:       #7d9a9c;
+  --rule-faint: rgba(160, 190, 190, 0.26);
+  --grid:       rgba(160, 190, 190, 0.13);
+  --face-top:   #1e363f;
+  --face-left:  #142329;
+  --face-right: #0c171c;
+  --store-face: #182b33;
+  --accent:     #e6a35c;
+  --accent-ink: #0d1b21;
+  --warn:       #e0715e;
+  --ext:        #8fb3b6;
+  --sel:        #e9efed;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.frame { display: flex; flex-direction: column; height: 100vh; }
+
+/* ---------- title block ---------- */
+.titleblock {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper-2);
+  flex: 0 0 auto;
+  overflow-x: auto;
+}
+.tb-cell {
+  padding: 7px 15px 8px;
+  border-right: 1px solid var(--rule-faint);
+  white-space: nowrap;
+}
+.tb-cell:first-child { border-right: 1px solid var(--rule); }
+.tb-label {
+  font-family: var(--cond);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  display: block;
+}
+.tb-value {
+  font-family: var(--mono);
+  font-size: 13.5px;
+  font-variant-numeric: tabular-nums;
+}
+.tb-cell:first-child .tb-value { font-weight: 600; }
+.tb-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  margin-left: auto;
+  border-left: 1px solid var(--rule-faint);
+}
+
+button {
+  font-family: var(--cond);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  padding: 6px 11px;
+  cursor: pointer;
+}
+button:hover { background: var(--paper-3); }
+button.on { background: var(--sel); color: var(--paper-2); }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+/* ---------- body ---------- */
+.body {
+  display: grid;
+  grid-template-columns: 234px minmax(0, 1fr) 404px;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* ---------- index rail ---------- */
+.index {
+  border-right: 1px solid var(--rule);
+  overflow-y: auto;
+  background: var(--paper-2);
+  padding-bottom: 28px;
+}
+.index h2 {
+  font-family: var(--cond);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 15px 12px 6px;
+}
+.idx-row {
+  display: grid;
+  grid-template-columns: 16px 1fr auto;
+  gap: 8px;
+  align-items: baseline;
+  width: calc(100% - 16px);
+  margin: 0 8px 3px;
+  padding: 6px 8px;
+  border: 1px solid var(--rule-faint);
+  background: transparent;
+  text-align: left;
+  font-family: var(--cond);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink);
+  cursor: pointer;
+  line-height: 1.25;
+}
+.idx-row:hover { background: var(--paper-3); }
+.idx-row .k, .idx-row .n {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+.idx-row.active { background: var(--sel); color: var(--paper-2); border-color: var(--sel); }
+.idx-row.active .k, .idx-row.active .n { color: var(--paper-3); }
+
+/* ---------- canvas ---------- */
+.canvas {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(130% 95% at 50% 0%, var(--paper-2) 0%, var(--paper) 60%);
+  cursor: grab;
+}
+.canvas.dragging { cursor: grabbing; }
+#stage { display: block; width: 100%; height: 100%; touch-action: none; }
+
+.zoombar { position: absolute; top: 12px; right: 12px; display: flex; flex-direction: column; gap: 4px; }
+.zoombar button { width: 26px; height: 26px; padding: 0; font-size: 13px; line-height: 1; }
+
+.crumbs {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--cond);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.crumbs .here { color: var(--ink); }
+.crumbs button { padding: 3px 8px; font-size: 9.5px; }
+
+.hints {
+  position: absolute;
+  left: 16px;
+  bottom: 11px;
+  right: 16px;
+  font-family: var(--cond);
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  pointer-events: none;
+}
+
+/* ---------- reader ---------- */
+.reader {
+  border-left: 1px solid var(--rule);
+  background: var(--paper-2);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.tabs { display: flex; border-bottom: 1px solid var(--rule); flex: 0 0 auto; }
+.tabs button { flex: 1 1 0; border: none; border-right: 1px solid var(--rule-faint); padding: 9px 6px; background: transparent; }
+.tabs button:last-child { border-right: none; }
+.tabs button[aria-selected="true"] { background: var(--sel); color: var(--paper-2); }
+
+.readerbody { overflow-y: auto; padding: 18px 22px 44px; flex: 1 1 auto; }
+.eyebrow {
+  font-family: var(--cond);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 4px;
+}
+.readerbody h1 {
+  font-family: var(--cond);
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.06;
+  text-wrap: balance;
+  margin: 0 0 7px;
+}
+.readerbody h3 {
+  font-family: var(--cond);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 22px 0 9px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--rule-faint);
+}
+.readerbody p {
+  font-family: var(--prose);
+  font-size: 15.5px;
+  line-height: 1.52;
+  margin: 0 0 11px;
+  max-width: 62ch;
+}
+.readerbody p.sub { font-family: var(--mono); font-size: 11.5px; line-height: 1.5; color: var(--ink-soft); }
+mark { background: var(--sel); color: var(--paper-2); padding: 0 4px; }
+.warn { color: var(--warn); }
+.meta { display: grid; grid-template-columns: auto 1fr; gap: 3px 14px; font-size: 11.5px; margin: 0; }
+.meta dt {
+  font-family: var(--cond);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  padding-top: 2px;
+}
+.meta dd { margin: 0; font-variant-numeric: tabular-nums; }
+.filelist { list-style: none; margin: 0; padding: 0; }
+.filelist li {
+  font-size: 11px;
+  color: var(--ink-soft);
+  padding: 3px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px dotted var(--rule-faint);
+}
+.filelist .loc { font-variant-numeric: tabular-nums; color: var(--ink-faint); }
+
+pre {
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.45;
+  background: var(--paper-3);
+  border: 1px solid var(--rule-faint);
+  border-left: 2px solid var(--accent);
+  padding: 10px 12px;
+  margin: 0 0 12px;
+  overflow-x: auto;
+  white-space: pre;
+}
+.steps { list-style: none; margin: 0 0 12px; padding: 0; counter-reset: s; }
+.steps li {
+  counter-increment: s;
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--rule-faint);
+  font-size: 11.5px;
+}
+.steps li::before { content: counter(s, decimal-leading-zero); font-family: var(--mono); color: var(--ink-faint); }
+.steps b { font-family: var(--cond); letter-spacing: 0.05em; text-transform: uppercase; font-size: 11.5px; }
+.steps span { display: block; color: var(--ink-soft); margin-top: 2px; }
+
+.pill {
+  display: inline-block;
+  font-family: var(--cond);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 1px solid var(--rule-faint);
+  padding: 2px 7px;
+  margin: 0 5px 5px 0;
+  color: var(--ink-soft);
+}
+.pill.ext { border-color: var(--ext); color: var(--ext); }
+.pill.hot { border-color: var(--accent); color: var(--accent); }
+
+@media (max-width: 1180px) { .body { grid-template-columns: 196px minmax(0, 1fr) 340px; } }
+@media (max-width: 900px) {
+  .frame { height: auto; }
+  .body { display: block; }
+  .index { border-right: none; border-bottom: 1px solid var(--rule); max-height: 200px; }
+  .canvas { height: 62vh; min-height: 380px; }
+  .reader { border-left: none; border-top: 1px solid var(--rule); }
+}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+
+<div class="frame">
+  <header class="titleblock" id="titleblock"></header>
+  <div class="body">
+    <aside class="index" id="index"></aside>
+    <main class="canvas" id="canvas">
+      <svg id="stage" aria-label="Isometric map of the codebase"></svg>
+      <div class="crumbs" id="crumbs"></div>
+      <div class="zoombar">
+        <button type="button" id="zin" title="Zoom in">+</button>
+        <button type="button" id="zout" title="Zoom out">&minus;</button>
+      </div>
+      <div class="hints">Click a structure to read it &middot; Click a moving dot to inspect the payload &middot; Drag to pan &middot; Scroll to zoom &middot; Esc comes back out</div>
+    </main>
+    <aside class="reader">
+      <div class="tabs" id="tabs">
+        <button type="button" data-tab="does" aria-selected="true">What it does</button>
+        <button type="button" data-tab="built" aria-selected="false">How it's built</button>
+        <button type="button" data-tab="payload" aria-selected="false">Payload</button>
+      </div>
+      <div class="readerbody" id="readerbody"></div>
+    </aside>
+  </div>
+</div>
+
+<script>
+/* ATLAS DATA START — replace everything down to ATLAS DATA END with your repo.
+   Every string here is prose you write from reading the code. Every number is one
+   you measured. Nothing in this object should be a guess: if you cannot cite the
+   file or count the thing, leave it out.
+   The full field reference is in references/data-model.md. */
+const ATLAS = {
+  meta: {
+    repo: "owner · repo-name",
+    short: "repo-name",
+    version: "0.0.0",
+    title: "Two To Four Word Name",        /* the thesis, not a category label */
+    subtitle: "one line: what this system turns into what",
+    stats: [                                /* 5-7 measured facts; the drawing's title block */
+      { label: "Language", value: "00,000 lines" },
+      { label: "Services", value: "0 classes" }
+    ],
+    intro: {
+      does: [                               /* the What it does tab, shown when nothing is selected */
+        { h: "What this is", p: ["Two or three sentences. Say what the system is for, in the user's words, and name the hard part."] },
+        { h: "The shape of it", p: ["Describe the spine: the path one unit of work takes end to end. Then say what is left of it and what is right of it, so the drawing can be read."] }
+      ],
+      built: [                              /* the How it's built tab */
+        { h: "Runtime", p: ["Language, framework, process model, where state actually lives."] },
+        { h: "How to read the drawing", p: ["Footprint is scope, height is lines of code, stacked plates are data at rest, dashed outlines are outside the process."] }
+      ]
+    }
+  },
+
+  /* The index rail, in reading order. Group titles are editorial: name them after
+     what the reader is looking at ("The decision", "What it knows"), not after
+     folders ("services", "utils"). */
+  groups: [
+    { title: "The front door", ids: ["A"] },
+    { title: "What it knows", ids: ["B"] }
+  ],
+
+  /* One entry per structure. kind: "core" (a building) | "store" (stacked plates)
+     | "ext" (dashed, outside the process).
+     cell [gx, gy] is a plan coordinate: +gx runs right-and-down, +gy left-and-down.
+     w/d are the footprint in tiles, h the height in units — set h from lines of
+     code so the tallest file is visibly the tallest thing. */
+  nodes: {
+    A: {
+      key: "A", label: "Structure name", kind: "core", cell: [0, 0], w: 2.4, d: 2.4, h: 2.5,
+      loc: 1234, tag: "short epithet",
+      does: "What it does, in the reader's terms. One or two sentences.",
+      built: "How it is built: the mechanism, the library, the shape of the algorithm.",
+      condition: "What is currently wrong, surprising, or load-bearing about it. Omit if there is genuinely nothing.",
+      files: [{ p: "src/path/to/file.ts", n: 1234 }],
+      inside: [                              /* optional: gives this node a Go inside view */
+        { t: "functionName()", d: "What this step does and why it exists." }
+      ]
+    },
+    B: {
+      key: "B", label: "Store name", kind: "store", cell: [6, 2], w: 3, d: 2.4, h: 1, plates: 5,
+      loc: 0, tag: "row count · size on disk",
+      does: "What is in it and who reads it.",
+      built: "Engine, schema, how it got there.",
+      condition: "What is wrong with the data itself.",
+      files: [{ p: "path/to/store", n: 0 }]
+    }
+  },
+
+  /* Real control and data flow, not folder dependencies. kind: "spine" for the
+     main path (drawn heavier), "log" for write-only telemetry (dashed). Every edge
+     with a payload gets a moving dot the reader can click. */
+  edges: [
+    { from: "A", to: "B", label: "verb it", payload: "sample-key", kind: "spine" }
+  ],
+
+  /* The moving dots. Use real records — copy them out of logs, fixtures, or a live
+     store, then redact anything personal. The note is why the shape is what it is. */
+  payloads: {
+    "sample-key": {
+      title: "What this record is",
+      note: "Why it looks like this — the constraint, the bug it encodes, the thing it proves.",
+      src: "path/to/where/it/came/from",
+      body: '{\n  "field": "value"\n}'
+    }
+  }
+};
+/* ATLAS DATA END */
+</script>
+
+<style>
+/* ---------- the drawing itself ---------- */
+.iso-grid { stroke: var(--grid); stroke-width: 1; fill: none; }
+.floor-band { fill: var(--paper-3); opacity: 0.45; }
+.edge-line {
+  fill: none;
+  stroke: var(--rule);
+  stroke-width: 1.1;
+  opacity: 0.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.edge-line.log { stroke-dasharray: 3 4; opacity: 0.3; }
+.edge-line.spine { opacity: 0.9; stroke-width: 1.9; }
+.edge-line.lit { opacity: 1; stroke-width: 1.8; }
+.edge-cap { fill: var(--rule); opacity: 0.5; }
+.edge-cap.lit { fill: var(--ink); opacity: 1; }
+
+.face { stroke: var(--rule); stroke-width: 1.1; stroke-linejoin: round; }
+.face-top { fill: var(--face-top); }
+.face-left { fill: var(--face-left); }
+.face-right { fill: var(--face-right); }
+.node.ext .face { stroke-dasharray: 4 3; }
+.node.ext .face-top { fill: none; }
+.node.ext .face-left, .node.ext .face-right { fill: var(--paper-3); opacity: 0.55; }
+.node .plate { fill: var(--store-face); stroke: var(--rule); stroke-width: 1; }
+
+.node { cursor: pointer; }
+.node .hit { fill: transparent; }
+.node:hover .face-top { fill: var(--paper-2); }
+.node.sel .face { stroke-width: 2; }
+.node.sel .face-top { fill: var(--sel); }
+.node.sel .key { fill: var(--paper-2); }
+.node.dim { opacity: 0.32; }
+.node:focus { outline: none; }
+.node:focus-visible .face { stroke: var(--accent); stroke-width: 2; }
+
+.key {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  fill: var(--ink);
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+}
+.nodelabel {
+  font-family: var(--cond);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  fill: var(--ink-soft);
+  text-anchor: middle;
+  pointer-events: none;
+  paint-order: stroke;
+  stroke: var(--paper);
+  stroke-width: 3.5px;
+  stroke-linejoin: round;
+}
+.nodelabel.sel { fill: var(--ink); }
+.nodelabel.code {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.edgelabel {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  fill: var(--ink-faint);
+  text-anchor: middle;
+  pointer-events: none;
+  opacity: 0;
+}
+.edgelabel.lit { opacity: 1; fill: var(--ink); }
+
+.dot { fill: var(--accent); stroke: var(--paper); stroke-width: 0.6; cursor: pointer; }
+.dot.lit { stroke: var(--ink); stroke-width: 1; }
+.dothit { fill: transparent; cursor: pointer; }
+
+.scenetitle {
+  font-family: var(--cond);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  fill: var(--ink-faint);
+}
+</style>
+
+<script>
+(function () {
+  "use strict";
+
+  var SVGNS = "http://www.w3.org/2000/svg";
+  var TW = 34, TH = 17, HZ = 27;          /* tile half-width, half-height, one height unit */
+  var SPREAD = 1.55;                       /* gap multiplier applied to plan coordinates */
+  var stage = document.getElementById("stage");
+  var canvasEl = document.getElementById("canvas");
+  var readerBody = document.getElementById("readerbody");
+  var tabsEl = document.getElementById("tabs");
+  var crumbsEl = document.getElementById("crumbs");
+
+  var view = { k: 1, x: 0, y: 0 };
+  var scene = null;                        /* { title, nodes, edges, isInside } */
+  var selected = null;                     /* node id */
+  var payloadKey = null;
+  var tab = "does";
+  var flowing = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var travellers = [];                     /* animated dots */
+  var root, layerGrid, layerEdges, layerNodes, layerLabels, layerDots;
+  var nodeEls = {}, labelEls = {}, edgeEls = [];
+
+  /* ---------------- projection ---------------- */
+  function iso(gx, gy, gz) {
+    return { x: (gx - gy) * TW, y: (gx + gy) * TH - (gz || 0) * HZ };
+  }
+  function pts(list) {
+    return list.map(function (p) { return p.x.toFixed(1) + "," + p.y.toFixed(1); }).join(" ");
+  }
+  function el(name, attrs, parent) {
+    var n = document.createElementNS(SVGNS, name);
+    for (var k in attrs) { if (attrs[k] !== undefined && attrs[k] !== null) n.setAttribute(k, attrs[k]); }
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+
+  /* ---------------- scenes ---------------- */
+  function mainScene() {
+    var nodes = [];
+    Object.keys(ATLAS.nodes).forEach(function (id) {
+      var n = ATLAS.nodes[id];
+      nodes.push({
+        id: id, key: n.key, label: n.label, kind: n.kind,
+        gx: n.cell[0] * SPREAD, gy: n.cell[1] * SPREAD, w: n.w, d: n.d, h: n.h, plates: n.plates
+      });
+    });
+    return { title: null, nodes: nodes, edges: ATLAS.edges.slice(), isInside: false, parent: null };
+  }
+
+  function insideScene(id) {
+    var src = ATLAS.nodes[id];
+    var steps = src.inside || [];
+    var nodes = [], edges = [];
+    steps.forEach(function (s, i) {
+      var nid = "s" + i;
+      nodes.push({
+        id: nid, key: String(i + 1), label: s.t, kind: "core",
+        gx: i * 3.5, gy: i * 1.5, w: 2.1, d: 2.1, h: 0.9 + (i % 2 ? 0.45 : 0.1),
+        step: s
+      });
+      if (i > 0) edges.push({ from: "s" + (i - 1), to: nid, label: "", payload: null, kind: "step" });
+    });
+    return { title: src.label + " — in execution order", nodes: nodes, edges: edges, isInside: true, parent: id };
+  }
+
+  /* ---------------- geometry helpers ---------------- */
+  function centre(n) { return { gx: n.gx + n.w / 2, gy: n.gy + n.d / 2 }; }
+
+  function route(a, b) {
+    var ca = centre(a), cb = centre(b);
+    var dx = cb.gx - ca.gx, dy = cb.gy - ca.gy;
+    var mid = Math.abs(dx) >= Math.abs(dy)
+      ? { gx: cb.gx, gy: ca.gy }
+      : { gx: ca.gx, gy: cb.gy };
+    var raw = [ca, mid, cb];
+    /* drop a redundant corner */
+    if (Math.abs(raw[0].gx - raw[1].gx) < 0.01 && Math.abs(raw[0].gy - raw[1].gy) < 0.01) raw.splice(1, 1);
+    return raw.map(function (p) { return iso(p.gx, p.gy, 0.12); });
+  }
+
+  function pathFrom(points) {
+    var d = "M " + points[0].x.toFixed(1) + " " + points[0].y.toFixed(1);
+    for (var i = 1; i < points.length; i++) d += " L " + points[i].x.toFixed(1) + " " + points[i].y.toFixed(1);
+    return d;
+  }
+
+  /* ---------------- drawing ---------------- */
+  function drawBox(g, n) {
+    var A = iso(n.gx, n.gy, n.h), B = iso(n.gx + n.w, n.gy, n.h),
+        C = iso(n.gx + n.w, n.gy + n.d, n.h), D = iso(n.gx, n.gy + n.d, n.h);
+    var b0 = iso(n.gx + n.w, n.gy, 0), c0 = iso(n.gx + n.w, n.gy + n.d, 0), d0 = iso(n.gx, n.gy + n.d, 0);
+    el("polygon", { points: pts([B, C, c0, b0]), class: "face face-right" }, g);
+    el("polygon", { points: pts([B, C, c0, b0]), fill: "url(#hatch)", stroke: "none" }, g);
+    el("polygon", { points: pts([C, D, d0, c0]), class: "face face-left" }, g);
+    el("polygon", { points: pts([A, B, C, D]), class: "face face-top" }, g);
+    return { A: A, B: B, C: C, D: D };
+  }
+
+  function drawPlates(g, n) {
+    var count = n.plates || 3, thick = 0.26, gap = 0.16;
+    for (var i = 0; i < count; i++) {
+      var z = i * (thick + gap);
+      var A = iso(n.gx, n.gy, z + thick), B = iso(n.gx + n.w, n.gy, z + thick),
+          C = iso(n.gx + n.w, n.gy + n.d, z + thick), D = iso(n.gx, n.gy + n.d, z + thick);
+      var b0 = iso(n.gx + n.w, n.gy, z), c0 = iso(n.gx + n.w, n.gy + n.d, z), d0 = iso(n.gx, n.gy + n.d, z);
+      el("polygon", { points: pts([B, C, c0, b0]), class: "face face-right" }, g);
+      el("polygon", { points: pts([C, D, d0, c0]), class: "face face-left" }, g);
+      el("polygon", { points: pts([A, B, C, D]), class: "plate face-top face" }, g);
+    }
+    var topZ = (count - 1) * (thick + gap) + thick;
+    return {
+      A: iso(n.gx, n.gy, topZ), B: iso(n.gx + n.w, n.gy, topZ),
+      C: iso(n.gx + n.w, n.gy + n.d, topZ), D: iso(n.gx, n.gy + n.d, topZ)
+    };
+  }
+
+  function drawGrid() {
+    var minX = 1e9, maxX = -1e9, minY = 1e9, maxY = -1e9;
+    scene.nodes.forEach(function (n) {
+      minX = Math.min(minX, n.gx); maxX = Math.max(maxX, n.gx + n.w);
+      minY = Math.min(minY, n.gy); maxY = Math.max(maxY, n.gy + n.d);
+    });
+    var pad = 1.6;
+    minX -= pad; minY -= pad; maxX += pad; maxY += pad;
+    for (var gx = Math.floor(minX); gx <= Math.ceil(maxX); gx += 2) {
+      var p1 = iso(gx, minY, 0), p2 = iso(gx, maxY, 0);
+      el("line", { x1: p1.x, y1: p1.y, x2: p2.x, y2: p2.y, class: "iso-grid" }, layerGrid);
+    }
+    for (var gy = Math.floor(minY); gy <= Math.ceil(maxY); gy += 2) {
+      var q1 = iso(minX, gy, 0), q2 = iso(maxX, gy, 0);
+      el("line", { x1: q1.x, y1: q1.y, x2: q2.x, y2: q2.y, class: "iso-grid" }, layerGrid);
+    }
+  }
+
+  /* ---------------- render ---------------- */
+  function render() {
+    while (stage.firstChild) stage.removeChild(stage.firstChild);
+    nodeEls = {}; labelEls = {}; edgeEls = []; travellers = [];
+
+    var defs = el("defs", {}, stage);
+    var hatch = el("pattern", {
+      id: "hatch", width: 5, height: 5, patternUnits: "userSpaceOnUse",
+      patternTransform: "rotate(35)"
+    }, defs);
+    el("line", { x1: 0, y1: 0, x2: 0, y2: 5, style: "stroke: var(--rule-faint); stroke-width: 1;" }, hatch);
+
+    root = el("g", { id: "root" }, stage);
+    layerGrid = el("g", {}, root);
+    layerEdges = el("g", {}, root);
+    layerNodes = el("g", {}, root);
+    layerLabels = el("g", {}, root);
+    layerDots = el("g", {}, root);
+
+    drawGrid();
+
+    var byId = {};
+    scene.nodes.forEach(function (n) { byId[n.id] = n; });
+
+    /* edges under the blocks, as in a drafting plan */
+    scene.edges.forEach(function (e, i) {
+      var a = byId[e.from], b = byId[e.to];
+      if (!a || !b) return;
+      var points = route(a, b);
+      var d = pathFrom(points);
+      var p = el("path", { d: d, class: "edge-line" + (e.kind ? " " + e.kind : "") }, layerEdges);
+      var end = points[points.length - 1];
+      var cap = el("circle", { cx: end.x, cy: end.y, r: 2.4, class: "edge-cap" }, layerEdges);
+      var mid = points.length > 2 ? points[1] : {
+        x: (points[0].x + points[1].x) / 2, y: (points[0].y + points[1].y) / 2
+      };
+      var lab = e.label ? el("text", { x: mid.x, y: mid.y - 7, class: "edgelabel" }, layerEdges) : null;
+      if (lab) lab.textContent = e.label;
+      var rec = { edge: e, path: p, cap: cap, label: lab, from: e.from, to: e.to };
+      edgeEls.push(rec);
+
+      if (e.payload && !scene.isInside) {
+        var len = p.getTotalLength();
+        var dot = el("rect", {
+          x: -3.6, y: -3.6, width: 7.2, height: 7.2, class: "dot",
+          transform: "translate(0,0) rotate(45)"
+        }, layerDots);
+        var hit = el("circle", { cx: 0, cy: 0, r: 9, class: "dothit" }, layerDots);
+        var t = {
+          path: p, len: len, pos: (i * 37) % Math.max(len, 1), dot: dot, hit: hit,
+          payload: e.payload, edge: rec, speed: 26 + (i % 3) * 6
+        };
+        travellers.push(t);
+        var open = function (ev) { ev.stopPropagation(); showPayload(t.payload, rec); };
+        hit.addEventListener("click", open);
+        dot.addEventListener("click", open);
+      }
+    });
+
+    /* blocks, painted back to front so the isometry reads correctly */
+    scene.nodes.slice().sort(function (a, b) {
+      return (a.gx + a.gy) - (b.gx + b.gy);
+    }).forEach(function (n) {
+      var g = el("g", {
+        class: "node " + (n.kind === "ext" ? "ext" : n.kind),
+        tabindex: "0", role: "button",
+        "aria-label": n.label
+      }, layerNodes);
+      var top = n.plates ? drawPlates(g, n) : drawBox(g, n);
+      var cx = (top.A.x + top.C.x) / 2, cy = (top.A.y + top.C.y) / 2;
+      var k = el("text", { x: cx, y: cy, class: "key" }, g);
+      k.textContent = n.key;
+      var base = iso(n.gx + n.w / 2, n.gy + n.d / 2, 0);
+      var foot = iso(n.gx + n.w, n.gy + n.d, 0);
+      var lab = el("text", {
+        x: base.x, y: foot.y + 13,
+        class: "nodelabel" + (n.step ? " code" : "")
+      }, layerLabels);
+      lab.textContent = n.label;
+      labelEls[n.id] = lab;
+      el("polygon", { points: pts([top.A, top.B, top.C, top.D]), class: "hit" }, g);
+
+      g.addEventListener("click", function (ev) { ev.stopPropagation(); select(n.id); });
+      g.addEventListener("dblclick", function (ev) { ev.stopPropagation(); goInside(n.id); });
+      g.addEventListener("keydown", function (ev) {
+        if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); select(n.id); }
+      });
+      g.addEventListener("mouseenter", function () { highlight(n.id, true); });
+      g.addEventListener("mouseleave", function () { highlight(n.id, false); });
+      nodeEls[n.id] = g;
+    });
+
+    fit();
+    applyView();
+    paintSelection();
+  }
+
+  /* ---------------- camera ---------------- */
+  function fit() {
+    var bb;
+    try { bb = layerNodes.getBBox(); } catch (e) { return; }
+    var w = canvasEl.clientWidth, h = canvasEl.clientHeight;
+    if (!bb.width || !bb.height || !w || !h) return;
+    var k = Math.min(w / (bb.width + 96), h / (bb.height + 108));
+    view.k = Math.max(0.28, Math.min(scene && scene.isInside ? 1.0 : 1.9, k));
+    view.x = w / 2 - (bb.x + bb.width / 2) * view.k;
+    view.y = h / 2 - (bb.y + bb.height / 2) * view.k;
+  }
+  function applyView() {
+    root.setAttribute("transform",
+      "translate(" + view.x.toFixed(2) + "," + view.y.toFixed(2) + ") scale(" + view.k.toFixed(3) + ")");
+  }
+  function zoomAt(cx, cy, factor) {
+    var k2 = Math.max(0.25, Math.min(3.2, view.k * factor));
+    var r = k2 / view.k;
+    view.x = cx - (cx - view.x) * r;
+    view.y = cy - (cy - view.y) * r;
+    view.k = k2;
+    applyView();
+  }
+
+  canvasEl.addEventListener("wheel", function (ev) {
+    ev.preventDefault();
+    var rect = canvasEl.getBoundingClientRect();
+    zoomAt(ev.clientX - rect.left, ev.clientY - rect.top, ev.deltaY < 0 ? 1.12 : 1 / 1.12);
+  }, { passive: false });
+
+  var drag = null;
+  canvasEl.addEventListener("pointerdown", function (ev) {
+    if (ev.target.classList && (ev.target.classList.contains("dothit") || ev.target.classList.contains("dot"))) return;
+    drag = { x: ev.clientX, y: ev.clientY, vx: view.x, vy: view.y, moved: false };
+    canvasEl.classList.add("dragging");
+    canvasEl.setPointerCapture(ev.pointerId);
+  });
+  canvasEl.addEventListener("pointermove", function (ev) {
+    if (!drag) return;
+    view.x = drag.vx + (ev.clientX - drag.x);
+    view.y = drag.vy + (ev.clientY - drag.y);
+    if (Math.abs(ev.clientX - drag.x) + Math.abs(ev.clientY - drag.y) > 4) drag.moved = true;
+    applyView();
+  });
+  canvasEl.addEventListener("pointerup", function (ev) {
+    if (drag && !drag.moved && ev.target === stage) select(null);
+    drag = null;
+    canvasEl.classList.remove("dragging");
+  });
+  window.addEventListener("resize", function () { fit(); applyView(); });
+
+  /* ---------------- flow ---------------- */
+  var last = 0;
+  function frame(ts) {
+    var dt = last ? Math.min(0.05, (ts - last) / 1000) : 0;
+    last = ts;
+    if (flowing) advance(dt);
+    requestAnimationFrame(frame);
+  }
+  function advance(dt) {
+    travellers.forEach(function (t) {
+      t.pos = (t.pos + t.speed * dt) % t.len;
+      var p = t.path.getPointAtLength(t.pos);
+      t.dot.setAttribute("transform", "translate(" + p.x.toFixed(1) + "," + p.y.toFixed(1) + ") rotate(45)");
+      t.hit.setAttribute("cx", p.x.toFixed(1));
+      t.hit.setAttribute("cy", p.y.toFixed(1));
+    });
+  }
+  requestAnimationFrame(frame);
+
+  /* ---------------- selection & highlighting ---------------- */
+  function highlight(id, on) {
+    edgeEls.forEach(function (r) {
+      var touches = r.from === id || r.to === id;
+      r.path.classList.toggle("lit", on && touches);
+      r.cap.classList.toggle("lit", on && touches);
+      if (r.label) r.label.classList.toggle("lit", on && touches);
+    });
+  }
+
+  function paintSelection() {
+    Object.keys(nodeEls).forEach(function (id) {
+      nodeEls[id].classList.toggle("sel", id === selected);
+      if (labelEls[id]) labelEls[id].classList.toggle("sel", id === selected);
+    });
+    var rows = document.querySelectorAll(".idx-row");
+    for (var i = 0; i < rows.length; i++) {
+      rows[i].classList.toggle("active", rows[i].dataset.id === selected);
+    }
+    if (selected) highlight(selected, true);
+    else edgeEls.forEach(function (r) {
+      r.path.classList.remove("lit"); r.cap.classList.remove("lit");
+      if (r.label) r.label.classList.remove("lit");
+    });
+  }
+
+  function select(id) {
+    selected = id;
+    if (id && tab === "payload") tab = "does";
+    paintSelection();
+    paintCrumbs();
+    paintReader();
+  }
+
+  function showPayload(key, edgeRec) {
+    payloadKey = key;
+    tab = "payload";
+    if (edgeRec) {
+      edgeEls.forEach(function (r) {
+        r.path.classList.toggle("lit", r === edgeRec);
+        r.cap.classList.toggle("lit", r === edgeRec);
+        if (r.label) r.label.classList.toggle("lit", r === edgeRec);
+      });
+    }
+    paintTabs();
+    paintReader();
+  }
+
+  /* ---------------- inside view ---------------- */
+  function goInside(id) {
+    var n = ATLAS.nodes[id];
+    if (!n || !n.inside || !n.inside.length) return;
+    scene = insideScene(id);
+    selected = null;
+    render();
+    paintCrumbs();
+    paintReader();
+  }
+  function comeBackOut() {
+    var parent = scene.parent;
+    scene = mainScene();
+    selected = parent || null;
+    render();
+    paintCrumbs();
+    paintReader();
+  }
+
+  /* ---------------- chrome ---------------- */
+  function h(str) {
+    return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+
+  function paintTitleBlock() {
+    var tb = document.getElementById("titleblock");
+    var html = '<div class="tb-cell"><span class="tb-label">Repository</span>' +
+      '<span class="tb-value">' + h(ATLAS.meta.repo) + '</span></div>';
+    ATLAS.meta.stats.forEach(function (s) {
+      html += '<div class="tb-cell"><span class="tb-label">' + h(s.label) + '</span>' +
+        '<span class="tb-value">' + h(s.value) + '</span></div>';
+    });
+    html += '<div class="tb-controls">' +
+      '<button type="button" id="flow">' + (flowing ? "Pause the flow" : "Resume the flow") + '</button>' +
+      '<button type="button" id="step">Trace one step</button>' +
+      '<button type="button" id="reset">Reset view</button></div>';
+    tb.innerHTML = html;
+    document.getElementById("flow").addEventListener("click", function () {
+      flowing = !flowing;
+      this.textContent = flowing ? "Pause the flow" : "Resume the flow";
+      this.classList.toggle("on", !flowing);
+    });
+    document.getElementById("step").addEventListener("click", function () {
+      flowing = false;
+      var f = document.getElementById("flow");
+      f.textContent = "Resume the flow"; f.classList.add("on");
+      travellers.forEach(function (t) { t.pos = (t.pos + t.len * 0.09) % t.len; });
+      advance(0);
+    });
+    document.getElementById("reset").addEventListener("click", function () { fit(); applyView(); });
+  }
+
+  function paintIndex() {
+    var idx = document.getElementById("index");
+    var html = "";
+    ATLAS.groups.forEach(function (grp) {
+      html += '<h2>' + h(grp.title) + '</h2>';
+      grp.ids.forEach(function (id) {
+        var n = ATLAS.nodes[id];
+        if (!n) return;
+        var count = n.loc ? (n.loc >= 1000 ? (n.loc / 1000).toFixed(1) + "k" : n.loc) : "—";
+        html += '<button type="button" class="idx-row" data-id="' + id + '">' +
+          '<span class="k">' + h(n.key) + '</span>' +
+          '<span>' + h(n.label) + '</span>' +
+          '<span class="n">' + count + '</span></button>';
+      });
+    });
+    idx.innerHTML = html;
+    idx.addEventListener("click", function (ev) {
+      var row = ev.target.closest(".idx-row");
+      if (!row) return;
+      if (scene.isInside) { scene = mainScene(); render(); }
+      select(row.dataset.id);
+      centreOn(row.dataset.id);
+    });
+  }
+
+  function centreOn(id) {
+    var n = null;
+    scene.nodes.forEach(function (x) { if (x.id === id) n = x; });
+    if (!n) return;
+    var p = iso(n.gx + n.w / 2, n.gy + n.d / 2, 0);
+    view.x = canvasEl.clientWidth / 2 - p.x * view.k;
+    view.y = canvasEl.clientHeight / 2 - p.y * view.k;
+    applyView();
+  }
+
+  function paintCrumbs() {
+    var html = "";
+    if (scene.isInside) {
+      html = '<button type="button" id="back">← Come back out</button>' +
+        '<span class="here">' + h(ATLAS.nodes[scene.parent].label) + '</span>';
+    } else if (selected && ATLAS.nodes[selected] && ATLAS.nodes[selected].inside) {
+      html = '<button type="button" id="in">Go inside ' + h(ATLAS.nodes[selected].key) + ' →</button>';
+    }
+    crumbsEl.innerHTML = html;
+    var back = document.getElementById("back");
+    if (back) back.addEventListener("click", comeBackOut);
+    var into = document.getElementById("in");
+    if (into) into.addEventListener("click", function () { goInside(selected); });
+  }
+
+  function paintTabs() {
+    var btns = tabsEl.querySelectorAll("button");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].setAttribute("aria-selected", btns[i].dataset.tab === tab ? "true" : "false");
+    }
+  }
+  tabsEl.addEventListener("click", function (ev) {
+    var b = ev.target.closest("button");
+    if (!b) return;
+    tab = b.dataset.tab;
+    paintTabs();
+    paintReader();
+  });
+
+  function introHTML(which) {
+    var m = ATLAS.meta;
+    var html = '<p class="eyebrow">' + h(m.short || m.repo) + ' · v' + h(m.version) + '</p>' +
+      '<h1>' + h(m.title) + '</h1>' +
+      '<p class="sub">' + h(m.subtitle) + '</p>';
+    (m.intro[which] || []).forEach(function (sec) {
+      html += '<h3>' + h(sec.h) + '</h3>';
+      sec.p.forEach(function (p) { html += '<p>' + p + '</p>'; });
+    });
+    return html;
+  }
+
+  function nodeHTML(id, which) {
+    var n = ATLAS.nodes[id];
+    var html = '<p class="eyebrow">' + h(n.key) + ' · ' + (n.kind === "ext" ? "outside the process" : n.kind === "store" ? "at rest" : "structure") + '</p>' +
+      '<h1>' + h(n.label) + '</h1>';
+    if (n.tag) html += '<p class="sub">' + h(n.tag) + '</p>';
+
+    if (which === "does") {
+      html += '<h3>What it does</h3><p>' + n.does + '</p>';
+      html += '<h3>Facts</h3><dl class="meta">';
+      if (n.loc) html += '<dt>Lines</dt><dd>' + n.loc.toLocaleString() + '</dd>';
+      html += '<dt>Files</dt><dd>' + (n.files.length || "—") + '</dd>';
+      var ins = ATLAS.edges.filter(function (e) { return e.to === id; });
+      var outs = ATLAS.edges.filter(function (e) { return e.from === id; });
+      html += '<dt>Fed by</dt><dd>' + (ins.map(function (e) { return ATLAS.nodes[e.from].label; }).join(", ") || "—") + '</dd>';
+      html += '<dt>Feeds</dt><dd>' + (outs.map(function (e) { return ATLAS.nodes[e.to].label; }).join(", ") || "—") + '</dd>';
+      html += '</dl>';
+      if (n.files.length) {
+        html += '<h3>Where it lives</h3><ul class="filelist">';
+        n.files.forEach(function (f) {
+          html += '<li><span>' + h(f.p) + '</span><span class="loc">' + f.n.toLocaleString() + '</span></li>';
+        });
+        html += '</ul>';
+      }
+      if (outs.length) {
+        html += '<h3>What moves out of it</h3>';
+        outs.forEach(function (e) {
+          if (!e.payload) return;
+          html += '<button type="button" class="pill hot" data-payload="' + e.payload + '">' + h(e.label) + '</button>';
+        });
+      }
+    } else {
+      html += '<h3>How it is built</h3><p>' + n.built + '</p>';
+      if (n.condition) html += '<h3>Condition</h3><p class="warn">' + n.condition + '</p>';
+      if (n.inside) {
+        html += '<h3>Inside, in order</h3><ol class="steps">';
+        n.inside.forEach(function (s) {
+          html += '<li><div><b>' + h(s.t) + '</b><span>' + h(s.d) + '</span></div></li>';
+        });
+        html += '</ol>';
+      }
+    }
+    return html;
+  }
+
+  function payloadHTML() {
+    if (!payloadKey) {
+      return '<p class="eyebrow">Payload</p><h1>Nothing picked up yet</h1>' +
+        '<p>The dots moving along the lines are real payloads — router decisions, token receipts, cadence verdicts, chain events — taken from the JSONL telemetry in <code>src/data/</code>. Click one and it lands here.</p>';
+    }
+    var p = ATLAS.payloads[payloadKey];
+    return '<p class="eyebrow">Payload in flight</p><h1>' + h(p.title) + '</h1>' +
+      '<p class="sub">' + h(p.src) + '</p>' +
+      '<h3>As written</h3><pre>' + h(p.body) + '</pre>' +
+      '<h3>Why it looks like this</h3><p>' + p.note + '</p>';
+  }
+
+  function stepHTML(id) {
+    var n = null;
+    scene.nodes.forEach(function (x) { if (x.id === id) n = x; });
+    if (!n) return nodeHTML(scene.parent, tab);
+    var parent = ATLAS.nodes[scene.parent];
+    var i = scene.nodes.indexOf(n) + 1;
+    return '<p class="eyebrow">' + h(parent.label) + ' · step ' + i + ' of ' + scene.nodes.length + '</p>' +
+      '<h1>' + h(n.label) + '</h1>' +
+      '<h3>What happens here</h3><p>' + h(n.step.d) + '</p>' +
+      '<h3>Where it lives</h3><ul class="filelist">' +
+      parent.files.map(function (f) {
+        return '<li><span>' + h(f.p) + '</span><span class="loc">' + f.n.toLocaleString() + '</span></li>';
+      }).join("") + '</ul>';
+  }
+
+  function paintReader() {
+    if (tab === "payload") readerBody.innerHTML = payloadHTML();
+    else if (scene.isInside && selected) readerBody.innerHTML = stepHTML(selected);
+    else if (scene.isInside) readerBody.innerHTML = nodeHTML(scene.parent, tab);
+    else if (selected && ATLAS.nodes[selected]) readerBody.innerHTML = nodeHTML(selected, tab);
+    else readerBody.innerHTML = introHTML(tab);
+    readerBody.scrollTop = 0;
+    paintTabs();
+  }
+
+  readerBody.addEventListener("click", function (ev) {
+    var b = ev.target.closest("[data-payload]");
+    if (b) showPayload(b.dataset.payload, null);
+  });
+
+  /* ---------------- keyboard ---------------- */
+  document.addEventListener("keydown", function (ev) {
+    if (ev.target && /^(INPUT|TEXTAREA)$/.test(ev.target.tagName)) return;
+    if (ev.key === "Escape") {
+      if (scene.isInside) comeBackOut();
+      else select(null);
+    } else if (ev.key === " ") {
+      ev.preventDefault();
+      document.getElementById("flow").click();
+    } else if (ev.key === ".") {
+      document.getElementById("step").click();
+    } else if (ev.key === "ArrowLeft") { view.x += 60; applyView(); }
+    else if (ev.key === "ArrowRight") { view.x -= 60; applyView(); }
+    else if (ev.key === "ArrowUp") { view.y += 60; applyView(); }
+    else if (ev.key === "ArrowDown") { view.y -= 60; applyView(); }
+  });
+
+  document.getElementById("zin").addEventListener("click", function () {
+    zoomAt(canvasEl.clientWidth / 2, canvasEl.clientHeight / 2, 1.2);
+  });
+  document.getElementById("zout").addEventListener("click", function () {
+    zoomAt(canvasEl.clientWidth / 2, canvasEl.clientHeight / 2, 1 / 1.2);
+  });
+
+  /* ---------------- boot ---------------- */
+  paintTitleBlock();
+  paintIndex();
+  scene = mainScene();
+  render();
+  paintCrumbs();
+  paintReader();
+  window.__atlas = {
+    select: select, goInside: goInside, showPayload: showPayload,
+    tab: function (t) { tab = t; paintTabs(); paintReader(); }
+  };
+  if (!flowing) {
+    var f = document.getElementById("flow");
+    f.textContent = "Resume the flow";
+    f.classList.add("on");
+  }
+})();
+</script>

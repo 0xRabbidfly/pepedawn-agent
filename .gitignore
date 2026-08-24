@@ -88,3 +88,6 @@ pepe-tg/src/data/lore-ledger.json
 pepe-tg/src/data/rate-limits.json
 pepe-tg/src/data/lore-proposals.json
 pepe-tg/src/data/participants.json
+
+# Claude Code worktrees (local scratch, never committed)
+.claude/worktrees/
