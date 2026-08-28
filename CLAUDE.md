@@ -170,9 +170,16 @@ The parts that bite most often:
 - **`.env.example` is mandatory upkeep.** Any new environment variable must be
   documented there in the same change.
 - **`CHANGELOG.md` accompanies every behavioural change** (constitution §V,
-  Keep a Changelog format). Version bumps follow SemVer.
+  Keep a Changelog format). Version bumps follow SemVer. This is now checked
+  rather than trusted: `pepe-tg/scripts/check-changelog.sh` runs in the
+  pre-commit hook and fails the commit when the version in `package.json` has
+  no entry, or when any tag at or above 5.5.3 has none. It was added after
+  5.5.3 → 5.6.4 shipped — seven tagged releases — with nothing written down.
+  `.git/hooks` is not version-controlled, so run
+  `pepe-tg/scripts/install-hooks.sh` on a fresh clone.
 - **`.git/hooks/pre-commit` enumerates test files explicitly.** New test files
-  must be added or they never run in the hook.
+  must be added or they never run in the hook. The hook also runs the changelog
+  gate before the tests, so a missing entry fails fast.
 - **Deprecations need a migration note and a grace window** (constitution §III) —
   chat commands are a public contract. See `src/config/deprecatedCommands.ts`.
 - **Secrets never in the repo** (constitution §II); avoid logging secrets or PII.

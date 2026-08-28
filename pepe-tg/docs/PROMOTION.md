@@ -32,6 +32,12 @@ curl -s "https://api.telegram.org/bot<TOKEN>/getChat?chat_id=<ID>"
 Mandatory upkeep, per `.specify/memory/constitution.md`:
 
 - [ ] **`CHANGELOG.md`** — every behavioural change, Keep a Changelog format.
+      **Enforced** by `scripts/check-changelog.sh`, which the pre-commit hook
+      runs: the version in `package.json` must have a `## [x.y.z]` heading, and
+      so must every tag at or above 5.5.3. Between 5.5.2 and 5.6.4 seven
+      releases shipped with no entry at all — the rule existed, nothing checked
+      it. On a fresh clone, install the gate with `scripts/install-hooks.sh`;
+      `.git/hooks` is not version-controlled.
 - [ ] **`pepe-tg/.env.example`** — every new environment variable, documented
       in the same change.
 - [ ] **`package.json` version** — SemVer.

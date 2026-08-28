@@ -33,6 +33,199 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   assert every template renders, names its card, and contains nothing that
   would need HTML-escaping in the card that carries it.
 
+## [5.6.4] - 2026-08-23
+
+### Fixed
+
+- **A question of taste threw away the part that made it a question.** "What is
+  your favourite Memeticx card?" was answered "GREENBEANZ by VVD". The taste
+  path drew uniformly from the whole collection and never read the artist out
+  of the question — Memeticx has seven cards, and the answer was one in 914.
+
+  `randomCard` now takes a `CardConstraint` — artist, series, or both — and the
+  taste path reads one out of the question. Short forms resolve to the credits
+  that person actually holds: "scrilla" is six credited names, and a card under
+  any of them is a fair answer.
+
+  When nothing matches, the constraint is not dropped. There is no fallback to
+  the unconstrained pool anywhere in this path: asked for a card by a name the
+  index has never heard of, the bot says so and asks how it is spelled.
+  Offering somebody else's card is the failure this exists to prevent, not the
+  graceful degradation from it.
+
+  Descriptive qualifiers are left alone — "your favourite green card" is a
+  question the vision pass can answer, not a person to draw from — as are
+  collection words and time spans. `artistsIn` moved to `cardFacts` and takes
+  its pool as a parameter, because the two callers mean different things by
+  "artist": offering someone a card searches all three collections, while
+  artist statistics are quoted from the Fake Rares index and say so out loud.
+
+## [5.6.3] - 2026-08-23
+
+### Fixed
+
+- **`/p djpepe` showed a random card.** The classifier is asked to report the
+  slash command it saw and reports only the command, so "go ahead and do /p
+  djpepe" reached the handler as a bare `/p` — and an argument-less `/p` means
+  show a random card. All three card commands behaved this way for any text
+  their parser could not read: the pattern was anchored at the start of the
+  message, so it failed open in the worst possible direction.
+
+  `runRouterCommand` now recovers the argument from the user's own text, which
+  is the authority on what they asked for, and `parseCardCommand` finds the
+  command wherever it appears and treats random as something a person asked
+  for rather than the fallback for a failed parse. `/f`, `/c` and `/p` share
+  it; `/fr` and `/fc` remain their own commands.
+
+- **DJ Pepe was credited to the wrong artist.** DJPEPE is a Rare Pepe by Rare
+  Scrilla and the index says so, but Counterparty asset names have no spaces
+  and people do — so "DJ Pepe" matched nothing, the question fell through to
+  retrieval, and retrieval found the Fake Rare RAREDJPEPE (by EMBLEMATIX)
+  sitting nearby and asserted it.
+
+  `assetsIn` now makes one last-resort pass for names written with a space,
+  joining up to three adjacent words across all three collections. It runs only
+  when nothing was named outright and never joins across a function word —
+  "rare pepes and fake rares" contains PEPESAND and "the pepe" contains
+  THEPEPE, both real assets and neither one named. Measured over 67,600
+  ordinary word pairs, what survives is almost entirely genuine card names
+  someone spaced out: PEPECASH, DANKPEPE, BITCOINPEPE.
+
+## [5.6.2] - 2026-08-23
+
+### Added
+
+- **A card with no lore now says what it looks like.** The specs alone are a
+  thin reply — artist, series, supply, and nothing of the art itself. The `/fv`
+  vision pass has already looked at 858 cards, so a card nobody has written
+  lore about gets one line of what it saw: three traits, appended only in the
+  fallback branch. When retrieval has a real answer, that is the answer and
+  this stays out of the way.
+
+  The traits file cannot be read from directly. The vision pass read the
+  artwork *and* the text printed on it, so alongside "gold background" it holds
+  "atk", "spd", "rareness", asset-hash artefacts and ordinary words lifted off
+  the card face — the material that once produced "the vision pass recorded:
+  get." `describeLook` drops those, drops anything that is just the card's own
+  name read back, and ranks multi-word phrases ahead of loose words, since a
+  phrase is almost always genuine vision output. All 858 cards with recorded
+  traits produce a usable line.
+
+### Fixed
+
+- **The bot named a card and then asked what they were looking for.** Someone
+  posted "on the hunt for a PEPEPUNKROCK if anyone knows anyone selling" and
+  got back the card's artist, series, number, supply and issuance — followed by
+  "Not sure what you're after. Name a card, or ask me about an artist, a
+  series, or a bit of history."
+
+  Both halves came from `buildFactsPlan`: the card index supplied the specs,
+  retrieval found no lore and returned the clarification stand-in, and it was
+  appended as if it were an answer. The guard already there only dropped thin
+  answers of 14 words or fewer, and the clarification is 21.
+
+  `KnowledgeRetrievalResult` now carries `isNonAnswer`, set only on the
+  clarification branch, and the FACTS plan will not append a non-answer to
+  material of its own. The clarification still stands by itself when no card
+  was recognised, and the "lore vault is empty" invite is untouched — that one
+  is a real reply to a card someone named.
+
+## [5.6.1] - 2026-08-21
+
+### Added
+
+- **Visual traits for the six new Series 18 cards.** The Series 18 backfill put
+  the cards in the index, but the vision pass behind `card-visual-traits.json`
+  last ran in November 2025, so descriptive questions ("most red", "which one
+  has birds") could not reach them. Crawled, merged, summarised and embedded
+  the six cards pepe.wtf has published: 875 → 881 cards.
+
+  The matching 29 fact blocks went into the production corpus separately
+  (3,986 → 4,015 blocks). The two consumers are independent: the corpus feeds
+  `expandCardOnlyPassages`, the traits file feeds `describeTraitMatch`. The ten
+  Series 18 cards pepe.wtf has not published are excluded — there is no
+  full-resolution artwork to analyse, only a 400px directory thumbnail.
+
+## [5.6.0] - 2026-08-21
+
+### Fixed
+
+- **X harvesting ran once per restart, not once per day.** `XHarvestService`
+  armed a 5-minute timer at boot and only then set the 24h interval — but
+  production hard-restarts nightly at 02:00 and on every deploy, so the process
+  never lived to reach it. The post-boot harvest *was* the cadence, and each
+  restart bought another full round of paid queries. On 2026-08-21 it ran four
+  times in three hours, twice because of deploys.
+
+  The schedule is now anchored to a `lastHarvestAt` timestamp in the harvest
+  store, so a restart inside the interval skips its round. It is stamped when
+  the queries fire rather than when they finish: the money is gone by then.
+
+### Changed
+
+- **Harvest model moved to grok-4.3**, still a reasoning model. Measured on one
+  prompt: grok-4.3 $0.026/49s, grok-4.20-0309-reasoning $0.028/55s, grok-4.6
+  $0.075/107s, grok-4.20-0309-non-reasoning $0.121/17s. Turning reasoning off
+  cost 2.3× *more* — with nothing narrowing the search, `x_search` poured 65k
+  tokens of raw results into the request instead of 8k. Recorded in
+  `.env.example` so it is not retried.
+
+- **Dropped the `phrase` harvest query.** Six posts over its lifetime, none
+  naming a card, none volunteered, none ever used. `market` and `curated`
+  between them produced everything the bot has actually said out loud.
+
+  Together: ~$1.41/day → ~$0.08/day.
+
+## [5.5.4] - 2026-08-20
+
+### Fixed
+
+- **New cards had metadata but no image.** pepe.wtf reports `jpeg` for objects
+  S3 stores as `.jpg`. When the page shows a standard S3 path the scraper saves
+  no `imageUri`, because the display URL is rebuilt from series + asset + ext —
+  and it also normalised jpg to jpeg, so the rebuilt URL 403'd. Series 18 cards
+  26–31 showed artist and supply with no image.
+
+  The normalisation is gone, replaced by `resolveS3Extension()`, which HEADs
+  each candidate and keeps the one the bucket answers, falling back to a stored
+  image URL when it serves none. A miss returns 403 rather than 404 — the
+  bucket denies `ListBucket` — so probing is the only reliable test.
+
+- Series 18 cards 32–41 gained artist and supply, read from the directory and
+  confirmed against Counterparty, where every supply matches and is locked.
+  They are on chain but not formally issued as Fake Rares, so they carry no
+  issuance date and are flagged `awaiting_formal_issuance`.
+
+## [5.5.3] - 2026-08-20
+
+### Fixed
+
+- **The card scraper rewrote cards it had already collected.** Any card
+  carrying an `issues` array was queued for re-scraping, and Pass 2 rebuilt the
+  record from scratch — it never copied `memeUri` forward, and a pepe.wtf 404
+  returned nulls for artist, supply and issuance. FAKEIJUANA and STPEPERISES
+  would have lost their `memeUri` on the next run, the same field repaired by
+  hand across four earlier commits.
+
+  `add-new-cards.js` is now append-only: it adds cards it has never seen and
+  never touches an existing record. Cards that land incomplete — usually not
+  yet published on pepe.wtf — are named at the end of the run for a manual
+  fill-in.
+
+- The workflow's change counter grepped the diff for `name`, a key the card
+  schema does not have, so every automated commit reported that it had found
+  zero cards.
+
+### Added
+
+- **Series 18 cards 26–41.** The scheduled scrape was suspended by GitHub on
+  2026-01-25 for repository inactivity, so the card index stopped at card 25
+  while the series grew to 41. 16 cards added, 0 modified, 0 removed; all 127
+  `memeUri` values intact. Six are complete (SELFISHMEME, MEMEGREEN,
+  CARDINALDOOM, RARECIPHER, MADMIRROR, FAKEGIANTS); the ten pepe.wtf has not
+  published carry `no_artist`/`no_supply`/`no_issuance` and display from a
+  fakeraredirectory image until upstream catches up.
+
 ## [5.5.2] - 2026-08-20
 
 ### Fixed
