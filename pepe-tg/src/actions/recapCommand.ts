@@ -42,52 +42,69 @@ export async function runRecap(
   roomId: string,
   text: string
 ): Promise<RecapResult> {
-  const { daysAgo } = parseRecapArgs(text);
-  const { from, to, label } = dayBounds(daysAgo);
-  const turns = readDayTurns(roomId, from, to);
+  const asked = parseRecapArgs(text).daysAgo;
 
-  logger.info(`[Recap] ${label}: ${turns.length} turns in the log for this room`);
+  // Yesterday first, then today.
+  //
+  // On the day the feature ships there is no yesterday: the day log starts
+  // filling at the deploy, so the first person to type /recap would be told the
+  // room was empty when it plainly was not. The same holds after any quiet day.
+  // Falling forward to the day in progress gives an answer instead of an
+  // explanation, and says which day it ended up using.
+  const attempts = asked === 0 ? [0] : [asked, 0];
+  let lastLabel = '';
+  let lastCount = 0;
 
-  if (turns.length < MIN_ELIGIBLE_TURNS) {
+  for (const daysAgo of attempts) {
+    const { from, to, label } = dayBounds(daysAgo);
+    const turns = readDayTurns(roomId, from, to);
+    lastLabel = label;
+    lastCount = turns.length;
+
+    logger.info(`[Recap] ${label}: ${turns.length} turns in the log for this room`);
+    if (turns.length < MIN_ELIGIBLE_TURNS) continue;
+
+    const cardsNamed = new Set(turns.flatMap((t) => cardsMentioned(t.text || ''))).size;
+
+    const strip = await buildStrip({
+      turns,
+      dateLabel: label,
+      cardsNamed,
+      choose: async (prompt) => {
+        const result = await callTextModel(runtime, {
+          model: RECAP_MODEL,
+          prompt,
+          systemPrompt:
+            'You select messages for a comic strip. You never write or reword dialogue. ' +
+            'You return JSON only.',
+          maxTokens: 500,
+          source: 'Recap',
+        });
+        return result.text;
+      },
+    });
+
+    if (!strip) continue;
+
+    logger.info(
+      `[Recap] built ${strip.moments.length} panels for ${label}, ` +
+      `${(strip.durationMs / 1000).toFixed(1)}s, ${(strip.mp4.length / 1024 / 1024).toFixed(2)}MB`
+    );
+
+    const fellForward = daysAgo !== asked;
     return {
-      made: false,
-      caption:
-        `Not enough happened on ${label.toLowerCase()} to make a strip out of — ` +
-        `${turns.length} messages. Try \`/recap today\`, or wait for a livelier day.`,
+      made: true,
+      mp4: strip.mp4,
+      caption: fellForward
+        ? `${strip.caption}\n<i>Nothing worth a strip the day before, so this is the day so far.</i>`
+        : strip.caption,
     };
   }
 
-  const cardsNamed = new Set(turns.flatMap((t) => cardsMentioned(t.text || ''))).size;
-
-  const strip = await buildStrip({
-    turns,
-    dateLabel: label,
-    cardsNamed,
-    choose: async (prompt) => {
-      const result = await callTextModel(runtime, {
-        model: RECAP_MODEL,
-        prompt,
-        systemPrompt:
-          'You select messages for a comic strip. You never write or reword dialogue. ' +
-          'You return JSON only.',
-        maxTokens: 500,
-        source: 'Recap',
-      });
-      return result.text;
-    },
-  });
-
-  if (!strip) {
-    return {
-      made: false,
-      caption: `Nothing worth a strip on ${label.toLowerCase()}.`,
-    };
-  }
-
-  logger.info(
-    `[Recap] built ${strip.moments.length} panels, ${(strip.durationMs / 1000).toFixed(1)}s, ` +
-    `${(strip.mp4.length / 1024 / 1024).toFixed(2)}MB`
-  );
-
-  return { made: true, mp4: strip.mp4, caption: strip.caption };
+  return {
+    made: false,
+    caption:
+      `Not enough has happened to make a strip out of — ${lastCount} messages on ` +
+      `${lastLabel.toLowerCase()}. Talk amongst yourselves and ask me again.`,
+  };
 }
