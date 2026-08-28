@@ -21,12 +21,39 @@ import { mkdtempSync, rmSync, writeFileSync } from 'fs';
 import { tmpdir } from 'os';
 import { join } from 'path';
 import { promisify } from 'util';
-import sharp from 'sharp';
+import type Sharp from 'sharp';
 import { logger } from '@elizaos/core';
 import type { RecapMoment } from './recapMoments';
 import type { CastCard } from './recapCast';
 
 const run = promisify(execFile);
+
+/**
+ * sharp is loaded on first use, never at import time.
+ *
+ * It is a native module, and on 2026-08-28 the droplet had
+ * `@img/sharp-linux-x64` installed without its `@img/sharp-libvips-linux-x64`
+ * payload — so `libvips-cpp.so.42` was missing and the import threw. A
+ * top-level import meant that throw happened while the project was being
+ * loaded: no agents were found, and the bot was down for ten minutes until it
+ * was reverted. sharp had been a dependency for months without ever being
+ * imported, so nothing had exercised it.
+ *
+ * Behind a lazy load, a broken image library costs the recap and nothing else.
+ * Anything in the message path keeps working.
+ */
+let sharpModule: typeof Sharp | null = null;
+
+export async function getSharp(): Promise<typeof Sharp> {
+  if (sharpModule) return sharpModule;
+  try {
+    sharpModule = (await import('sharp')).default;
+    return sharpModule;
+  } catch (error) {
+    logger.error({ error }, '[Recap] sharp is unavailable — no strip can be drawn');
+    throw new Error('Image rendering is unavailable on this host (sharp failed to load).');
+  }
+}
 
 export const SIZE = 1080;
 
@@ -179,6 +206,7 @@ export function panelSvg(moment: RecapMoment, card: CastCard): string {
 
 /** Card art, squared off and inked, ready to sit under the bubble. */
 export async function cardPlate(image: Buffer, box = 420): Promise<Buffer> {
+  const sharp = await getSharp();
   const art = await sharp(image)
     .resize(box, box, { fit: 'cover', position: 'attention' })
     .toBuffer();
@@ -195,7 +223,8 @@ export async function renderQuotePanel(
   card: CastCard,
   art: Buffer | null
 ): Promise<Buffer> {
-  const layers: sharp.OverlayOptions[] = [
+  const sharp = await getSharp();
+  const layers: Sharp.OverlayOptions[] = [
     { input: Buffer.from(panelBackSvg()), top: 0, left: 0 },
   ];
   if (art) {
@@ -210,6 +239,7 @@ export async function renderQuotePanel(
 }
 
 export async function svgToPng(svg: string): Promise<Buffer> {
+  const sharp = await getSharp();
   return sharp(Buffer.from(svg)).png().toBuffer();
 }
 

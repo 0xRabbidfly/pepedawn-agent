@@ -36,7 +36,21 @@ export function dayLogPath(): string {
   return process.env.RECAP_DAYLOG_PATH || join(process.cwd(), 'src', 'data', 'day-log.jsonl');
 }
 
+/**
+ * The suite exercises the message path thousands of times, and every one of
+ * those turns would otherwise land in the real `src/data/day-log.jsonl` — 724
+ * lines of fixture chatter after a single run, and a growing file for the
+ * recap to trip over. A test that wants the log sets RECAP_DAYLOG_PATH.
+ */
+function underTest(): boolean {
+  return (
+    !process.env.RECAP_DAYLOG_PATH &&
+    (process.env.NODE_ENV === 'test' || !!process.env.VITEST || !!process.env.BUN_TEST)
+  );
+}
+
 export function appendDayTurn(turn: DayTurn): void {
+  if (underTest()) return;
   try {
     const path = dayLogPath();
     mkdirSync(dirname(path), { recursive: true });

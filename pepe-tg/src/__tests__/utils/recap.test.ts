@@ -282,3 +282,16 @@ describe('/recap arguments', () => {
     expect(parseRecapArgs('/recap 400').daysAgo).toBe(1);
   });
 });
+
+describe('sharp is not a startup dependency', () => {
+  it('is imported lazily, so a broken image library cannot stop the bot', () => {
+    // 2026-08-28: a top-level `import sharp` failed on the droplet
+    // (libvips-cpp.so.42 missing), the project loaded with no agents, and the
+    // bot was down until it was reverted. The recap may fail; boot may not.
+    const src = require('fs').readFileSync(
+      require('path').join(__dirname, '../../utils/recapRender.ts'), 'utf8'
+    );
+    expect(src).not.toMatch(/^import sharp from/m);
+    expect(src).toContain("await import('sharp')");
+  });
+});
