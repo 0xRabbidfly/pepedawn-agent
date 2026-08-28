@@ -5,6 +5,49 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.7.0] - 2026-08-28
+
+### Added
+
+- **`/recap` — the day as a comic strip.** Six to seven panels: a title card,
+  four or five quoted moments, an outro. Everyone in the room is cast as a real
+  Fake Rare from the index, and the casting is a pure function of the handle,
+  so @dispenser_goblin is the same card tomorrow and regulars become
+  recognisable characters. Rendered with `sharp` and assembled with ffmpeg,
+  both of which were already here for card media — no new dependency.
+
+  **Quotes are never written by the model.** It returns line numbers and a
+  four-word beat for each panel; the text is copied out of the turn it points
+  at. A choice that resolves to no turn is dropped rather than repaired,
+  because a hallucinated index is a hallucinated quote — the DJ Pepe failure
+  with a person on the receiving end instead of an artist.
+
+  **A panel holds long enough to read it.** Time on screen scales with the
+  quote: ~230ms a word over a 1.8s base, floored at 4.2s and capped at 9.5s.
+  Fixed timing suited neither end — short quotes dragged and long ones were
+  gone before the second line.
+
+  Handles in `src/data/recap-optout.json` never appear. Commands, one-word
+  replies and anything under 12 characters are not eligible, and a day with
+  fewer than 8 usable turns produces no strip at all: a recap of four messages
+  says the day was empty in a format implying it was not.
+
+- **A day log**, `src/data/day-log.jsonl`, written from `RoomHistory.commit` —
+  the one chokepoint every append reaches, shadow on or off, user turn or bot
+  turn. `roomHistory` keeps 120 turns over 7 days and prunes, so on a busy day
+  the recap would have covered the last two hours and nothing else. Append-only,
+  8-day horizon, pruned every 500 writes, and it never throws into the message
+  path.
+
+- **The nightly strip**, `RecapService`, off by default behind `RECAP_ENABLED`.
+  PM2 already cron-restarts at 02:00, so that boot is the schedule and no
+  second scheduler is needed — but PM2 also restarts on every deploy, which is
+  exactly how X harvesting became four paid rounds in three hours (5.6.0). The
+  guard is therefore a persisted local day stamp in `src/data/recap-state.json`,
+  written *before* the render rather than after, plus a 02:00–10:00 window so an
+  afternoon deploy cannot post last night's recap to a room that has moved on.
+  Unlike `periodicContent.sendToChannels`, the send reports its own failure.
+
 ## [5.6.5] - 2026-08-28
 
 ### Changed
