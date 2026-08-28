@@ -5,6 +5,33 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.7.1] - 2026-08-28
+
+### Fixed
+
+- **A top-level `sharp` import took production down for ten minutes.** The
+  5.7.0 deploy left the droplet in `No agents found in project`:
+  `@img/sharp-linux-x64` was installed without its
+  `@img/sharp-libvips-linux-x64` payload, `libvips-cpp.so.42` was missing, and
+  the import threw while ElizaOS was loading the project. No agents meant no
+  Telegram. Reverted at 23:42 UTC and restored on the next deploy.
+
+  sharp had been a declared dependency for months without a single runtime
+  import, so nothing had ever exercised the broken install. A dependency being
+  declared is not evidence that it loads.
+
+  sharp is now loaded on first use inside `getSharp()`, so a broken image
+  library costs the recap and nothing else — the message path, the market
+  watcher and the harvest all keep working, and `/recap` says rendering is
+  unavailable on this host. A test asserts the import stays lazy, since this is
+  the kind of thing a later tidy-up would put back at the top of the file.
+  `@img/sharp-libvips-linux-x64` is pinned in `optionalDependencies` rather
+  than left to platform inference that has already been wrong once.
+
+- **The test suite was writing to the real day log.** `appendDayTurn` is a
+  no-op under test unless `RECAP_DAYLOG_PATH` is set; a single run had been
+  leaving 724 lines of fixture chatter in `src/data/day-log.jsonl`.
+
 ## [5.7.0] - 2026-08-28
 
 ### Added
