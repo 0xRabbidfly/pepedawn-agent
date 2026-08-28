@@ -93,6 +93,10 @@ export const helpCommand: Action = {
 **XCP Dispensers:** 💰
 \`/xcp\` - View verified XCP dispenser list
 
+**Daily Recap:** 🎬
+\`/recap\` - Yesterday as a comic strip, frogs cast as cards
+\`/recap today\` - The day so far
+
 **Fake Remember:** 💾
 \`/fr CARDNAME <lore>\` - Add the story behind a card
 \`/vouch\` - See lore waiting on confirmation

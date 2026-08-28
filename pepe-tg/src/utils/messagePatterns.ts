@@ -33,6 +33,7 @@ export interface MessagePatterns {
     isFm: boolean;
     isFc: boolean;
     isXcp: boolean;
+    isRecap: boolean;
   };
   
   // Triggers for routing
@@ -74,6 +75,7 @@ export function detectMessagePatterns(
     isFm: /^(?:@[A-Za-z0-9_]+\s+)?\/fm(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
     isFc: /^(?:@[A-Za-z0-9_]+\s+)?\/fc(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
     isXcp: /^(?:@[A-Za-z0-9_]+\s+)?\/xcp(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
+    isRecap: /^(?:@[A-Za-z0-9_]+\s+)?\/recap(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
   };
   
   // Routing triggers
