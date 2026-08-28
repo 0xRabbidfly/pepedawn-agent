@@ -16,7 +16,6 @@ import { castFor, castForBot, castingPool, _resetPool } from '../../utils/recapC
 import { wrap, esc, panelSvg, titleSvg } from '../../utils/recapRender';
 import { subtitleFor, statsFor } from '../../utils/recapStrip';
 import { isDue, localDayStamp } from '../../services/RecapService';
-import { parseRecapArgs } from '../../actions/recapCommand';
 import {
   appendDayTurn, dayBounds, dayLogPath, pruneDayLog, readDayTurns, _resetPruneCounter,
   type DayTurn,
@@ -266,19 +265,5 @@ describe('when the strip is due', () => {
   it('runs again the next day', () => {
     const state = { lastRecapDay: '2026-08-27' };
     expect(isDue(new Date(2026, 7, 28, 3, 0), state, window).due).toBe(true);
-  });
-});
-
-describe('/recap arguments', () => {
-  it('defaults to yesterday and understands the words people use', () => {
-    expect(parseRecapArgs('/recap').daysAgo).toBe(1);
-    expect(parseRecapArgs('/recap yesterday').daysAgo).toBe(1);
-    expect(parseRecapArgs('/recap today').daysAgo).toBe(0);
-    expect(parseRecapArgs('/recap 3').daysAgo).toBe(3);
-  });
-
-  it('falls back to yesterday rather than accepting nonsense', () => {
-    expect(parseRecapArgs('/recap last tuesday').daysAgo).toBe(1);
-    expect(parseRecapArgs('/recap 400').daysAgo).toBe(1);
   });
 });

@@ -27,13 +27,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Fixed timing suited neither end — short quotes dragged and long ones were
   gone before the second line.
 
-  `/recap` asks for yesterday and falls forward to the day in progress when
-  yesterday has nothing — on the day this ships there is no yesterday, since
-  the day log starts filling at the deploy, and the first person to try it
-  would otherwise be told the room was empty when it plainly was not. The
-  caption says which day it ended up using. The nightly post does not fall
-  forward: a quiet day gets no strip.
-
   Handles in `src/data/recap-optout.json` never appear. Commands, one-word
   replies and anything under 12 characters are not eligible, and a day with
   fewer than 8 usable turns produces no strip at all: a recap of four messages
