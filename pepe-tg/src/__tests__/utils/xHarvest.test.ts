@@ -15,7 +15,7 @@ import {
   selectForVolunteer, matchForConversation, formatForTelegram, readXaiSpend,
   markVolunteered, allPosts, _resetCache,
   lastHarvestAt, recordHarvestRun, HARVEST_QUERIES,
-  isXActivityQuestion, buildDigest, formatDigestForTelegram,
+  isXActivityQuestion, buildDigest, formatDigestForTelegram, volunteerLead,
   DEFAULT_HARVEST_CONFIG, type HarvestedPost,
 } from '../../utils/xHarvest';
 
@@ -321,6 +321,63 @@ describe('formatForTelegram', () => {
   it('keeps PEPEDAWN\'s framing outside the quoted stranger', () => {
     const card = formatForTelegram(post(), 'Quiet in here:');
     expect(card.text.indexOf('Quiet in here:')).toBeLessThan(card.text.indexOf('<blockquote>'));
+  });
+});
+
+// ---------------------------------------------------------------- the lead
+
+describe('volunteerLead', () => {
+  const first = (n: number) => 0;
+
+  it('names the card when the post is about one', () => {
+    for (let i = 0; i < 6; i++) {
+      const lead = volunteerLead(post({ cards: ['DJPEPE'] }), { pick: () => i });
+      expect(lead.text).toContain('DJPEPE');
+      expect(lead.id.startsWith('card:')).toBe(true);
+    }
+  });
+
+  it('uses the lore voice for a lore lesson', () => {
+    const lead = volunteerLead(post({ text: 'todays LORE LESSON: series 1' }), { pick: first });
+    expect(lead.id.startsWith('lore:')).toBe(true);
+  });
+
+  it('falls back to the plain group', () => {
+    expect(volunteerLead(post(), { pick: first }).id.startsWith('plain:')).toBe(true);
+  });
+
+  it('never repeats the template used last time', () => {
+    // The bug this replaces: three fixed strings, so every volunteered post for
+    // months opened with the same six words.
+    let avoid: string | undefined;
+    const seen = new Set<string>();
+    for (let i = 0; i < 12; i++) {
+      const lead = volunteerLead(post(), { avoid, pick: () => i });
+      expect(lead.id).not.toBe(avoid);
+      seen.add(lead.id);
+      avoid = lead.id;
+    }
+    expect(seen.size).toBeGreaterThan(3);
+  });
+
+  it('still answers when avoiding would leave nothing', () => {
+    // Defensive: a group of one, or an avoid id from another group, must not
+    // produce an empty lead — the card is sent either way.
+    const lead = volunteerLead(post(), { avoid: 'plain:0', pick: first });
+    expect(lead.text.length).toBeGreaterThan(0);
+  });
+
+  it('renders every template as a usable sentence', () => {
+    for (const p of [post({ cards: ['PEPEDAWN'] }), post({ text: 'a lore lesson' }), post()]) {
+      for (let i = 0; i < 8; i++) {
+        const { text } = volunteerLead(p, { pick: () => i });
+        expect(text.trim()).toBe(text);
+        expect(text).not.toContain('undefined');
+        // Sent as HTML alongside the quoted post; an unescaped bracket would
+        // make Telegram reject the whole message.
+        expect(text).not.toMatch(/[<>&]/);
+      }
+    }
   });
 });
 

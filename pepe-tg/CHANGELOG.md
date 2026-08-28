@@ -5,6 +5,34 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.6.5] - 2026-08-28
+
+### Changed
+
+- **The unprompted X post always opened with the same six words.** `leadFor`
+  held three fixed strings — "Quiet in here." followed by one of three tails —
+  and the volunteer fires at most once every six hours into a room that has
+  gone silent. That sentence was therefore the whole of PEPEDAWN's unprompted
+  voice, repeated for as long as the feature has been on, and it had started to
+  read as a stuck record rather than a bot noticing the quiet.
+
+  The lead is now drawn from `volunteerLead` in `xHarvest.ts`: seventeen
+  templates in three groups — a named card, a lore lesson, everything else —
+  with the original wording kept as the first entry of each, because it was
+  fine, it was only tired.
+
+  The template used last is passed back and skipped, so the room never sees the
+  same opener twice running. Templates are compared by id rather than by text:
+  the same joke naming PEPEDAWN and naming DJPEPE are different strings, and
+  treating them as different was the failure mode worth designing against.
+  The memory is per-process and the droplet restarts nightly, which is the
+  right lifetime — a repeat separated by a day is not a repeat anyone notices.
+
+  Selection lives in `xHarvest.ts` rather than the service, per the note there,
+  so it is testable without a runtime; the picker is injectable, and the tests
+  assert every template renders, names its card, and contains nothing that
+  would need HTML-escaping in the card that carries it.
+
 ## [5.5.2] - 2026-08-20
 
 ### Fixed

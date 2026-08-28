@@ -17,7 +17,8 @@ import { TelemetryService } from './TelemetryService';
 import {
   HARVEST_QUERIES, RAW_POSTS_RULE, DEFAULT_HARVEST_CONFIG,
   parseHarvestResponse, mergePosts, selectForVolunteer, markVolunteered, roomForChat,
-  formatForTelegram, readXaiSpend, lastHarvestAt, recordHarvestRun, type HarvestedPost,
+  formatForTelegram, readXaiSpend, lastHarvestAt, recordHarvestRun, volunteerLead,
+  type HarvestedPost,
 } from '../utils/xHarvest';
 
 const XAI_ENDPOINT = 'https://api.x.ai/v1/responses';
@@ -57,6 +58,8 @@ export class XHarvestService extends Service {
   private harvestMs = 24 * 60 * 60 * 1000;
   private volunteerCheckMs = 15 * 60 * 1000;
   private lastVolunteerAt: number | undefined;
+  /** Template id of the last lead used, so the next one differs. */
+  private lastLeadId: string | undefined;
   private history = new FileRoomHistoryStore();
 
   constructor(runtime: IAgentRuntime) {
@@ -258,11 +261,19 @@ export class XHarvestService extends Service {
     }
   }
 
-  /** PEPEDAWN's own framing, kept outside the quote. */
+  /**
+   * PEPEDAWN's own framing, kept outside the quote.
+   *
+   * The wording is drawn at random from `volunteerLead`, and the template used
+   * last time is passed back so the room never gets the same opener twice
+   * running. The memory is per-process and the droplet restarts nightly, which
+   * is the right lifetime for it — a repeat separated by a day is not a repeat
+   * anyone notices.
+   */
   private leadFor(post: HarvestedPost): string {
-    if (post.cards.length > 0) return `Quiet in here. Someone was talking about ${post.cards[0]} on X:`;
-    if (/lore lesson/i.test(post.text)) return 'Quiet in here. Todays lore lesson from X:';
-    return 'Quiet in here. This turned up on X:';
+    const lead = volunteerLead(post, { avoid: this.lastLeadId });
+    this.lastLeadId = lead.id;
+    return lead.text;
   }
 
   private async send(chatId: string, text: string): Promise<boolean> {

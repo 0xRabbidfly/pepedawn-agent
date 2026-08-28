@@ -648,6 +648,87 @@ export function formatForPrompt(p: HarvestedPost): string {
   return `@${p.author} posted on X (${when}):\n"${p.text.slice(0, 500)}"`;
 }
 
+// ---------------------------------------------------------------- the lead
+
+/**
+ * PEPEDAWN's own sentence in front of a volunteered post — why this is being
+ * shown now, and the only part of the card the bot wrote itself.
+ *
+ * It used to be three fixed strings, all of them opening "Quiet in here." The
+ * volunteer fires at most once every few hours into a room that has gone
+ * silent, so the same six words were the bot's entire unprompted voice, week
+ * after week. Nobody reads the fourth one.
+ *
+ * Templates are grouped by what the post is, because the joke has to survive
+ * the subject: a named card gets a line about that card, a lore lesson gets a
+ * line about being taught at, and everything else gets a line about the silence
+ * itself. The original wording is kept as the first entry of each group — it
+ * was fine, it was only tired.
+ */
+type LeadGroup = 'card' | 'lore' | 'plain';
+
+const VOLUNTEER_LEADS: Record<LeadGroup, ((card: string) => string)[]> = {
+  card: [
+    (c) => `Quiet in here. Someone was talking about ${c} on X:`,
+    (c) => `Room's gone still, so: ${c} came up on X.`,
+    (c) => `Nobody's typing. Someone on X has ${c} opinions:`,
+    (c) => `Filling the silence with ${c} discourse, straight from X:`,
+    (c) => `You lot are quiet. X is not, and X is talking about ${c}:`,
+    (c) => `While nothing happens here, ${c} is happening on X:`,
+  ],
+  lore: [
+    () => "Quiet in here. Today's lore lesson from X:",
+    () => 'Silence — ideal conditions for a lore lesson. From X:',
+    () => 'Nothing but crickets, so: lore lesson, via X.',
+    () => 'Class is apparently in session. Lore lesson from X:',
+    () => "Lore o'clock, since nobody else is using the room:",
+  ],
+  plain: [
+    () => 'Quiet in here. This turned up on X:',
+    () => 'Tumbleweed. Anyway, from X:',
+    () => "Nobody's said anything in a while, so here's X:",
+    () => 'Suspiciously quiet. Something from X, then:',
+    () => "I'll just leave this here. From X:",
+    () => 'Someone say something. Until then, X:',
+  ],
+};
+
+export interface VolunteerLead {
+  /** The sentence itself. */
+  text: string;
+  /**
+   * Which template produced it, e.g. `card:3`. The caller remembers this rather
+   * than the text: a card line naming PEPEDAWN and the same line naming DJPEPE
+   * are different strings but the same joke, and telling them apart is the
+   * whole point of not repeating.
+   */
+  id: string;
+}
+
+export interface VolunteerLeadOptions {
+  /** Template id used last time; skipped unless it is the only one left. */
+  avoid?: string;
+  /** Injected for tests. Returns an index in [0, n). */
+  pick?: (n: number) => number;
+}
+
+export function volunteerLead(
+  p: HarvestedPost,
+  options: VolunteerLeadOptions = {}
+): VolunteerLead {
+  const pick = options.pick ?? ((n: number) => Math.floor(Math.random() * n));
+
+  const group: LeadGroup =
+    p.cards.length > 0 ? 'card' : /lore lesson/i.test(p.text) ? 'lore' : 'plain';
+
+  const all = VOLUNTEER_LEADS[group].map((render, i) => ({ render, id: `${group}:${i}` }));
+  const eligible = all.filter((t) => t.id !== options.avoid);
+  const pool = eligible.length > 0 ? eligible : all;
+
+  const chosen = pool[Math.min(Math.max(pick(pool.length), 0), pool.length - 1)];
+  return { text: chosen.render(p.cards[0] ?? ''), id: chosen.id };
+}
+
 // ---------------------------------------------------------------- rendering
 
 /**
