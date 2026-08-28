@@ -43,6 +43,9 @@
         "typescript": "^5.6.3",
         "vite": "^6.0.1",
       },
+      "optionalDependencies": {
+        "@img/sharp-libvips-linux-x64": "1.0.4",
+      },
     },
   },
   "packages": {
@@ -284,7 +287,7 @@
 
     "@img/sharp-libvips-linux-s390x": ["@img/sharp-libvips-linux-s390x@1.2.3", "", { "os": "linux", "cpu": "s390x" }, "sha512-RgWrs/gVU7f+K7P+KeHFaBAJlNkD1nIZuVXdQv6S+fNA6syCcoboNjsV2Pou7zNlVdNQoQUpQTk8SWDHUA3y/w=="],
 
-    "@img/sharp-libvips-linux-x64": ["@img/sharp-libvips-linux-x64@1.2.3", "", { "os": "linux", "cpu": "x64" }, "sha512-3JU7LmR85K6bBiRzSUc/Ff9JBVIFVvq6bomKE0e63UXGeRw2HPVEjoJke1Yx+iU4rL7/7kUjES4dZ/81Qjhyxg=="],
+    "@img/sharp-libvips-linux-x64": ["@img/sharp-libvips-linux-x64@1.0.4", "", { "os": "linux", "cpu": "x64" }, "sha512-MmWmQ3iPFZr0Iev+BAgVMb3ZyC4KeFc3jFxnNbEPas60e1cIfevbtuyf9nDGIzOaW9PdnDciJm+wFFaTlj5xYw=="],
 
     "@img/sharp-libvips-linuxmusl-arm64": ["@img/sharp-libvips-linuxmusl-arm64@1.2.3", "", { "os": "linux", "cpu": "arm64" }, "sha512-F9q83RZ8yaCwENw1GieztSfj5msz7GGykG/BA+MOUefvER69K/ubgFHNeSyUu64amHIYKGDs4sRCMzXVj8sEyw=="],
 
@@ -2620,8 +2623,6 @@
 
     "@img/sharp-linux-arm64/@img/sharp-libvips-linux-arm64": ["@img/sharp-libvips-linux-arm64@1.0.4", "", { "os": "linux", "cpu": "arm64" }, "sha512-9B+taZ8DlyyqzZQnoeIvDVR/2F4EbMepXMc/NdVbkzsJbzkUjhXv/70GQJ7tdLA4YJgNP25zukcxpX2/SueNrA=="],
 
-    "@img/sharp-linux-x64/@img/sharp-libvips-linux-x64": ["@img/sharp-libvips-linux-x64@1.0.4", "", { "os": "linux", "cpu": "x64" }, "sha512-MmWmQ3iPFZr0Iev+BAgVMb3ZyC4KeFc3jFxnNbEPas60e1cIfevbtuyf9nDGIzOaW9PdnDciJm+wFFaTlj5xYw=="],
-
     "@isaacs/cliui/string-width": ["string-width@5.1.2", "", { "dependencies": { "eastasianwidth": "^0.2.0", "emoji-regex": "^9.2.2", "strip-ansi": "^7.0.1" } }, "sha512-HnLOCR3vjcY8beoNLtcjZ5/nxn2afmME6lhrDrebokqMap+XbeW8n9TXpPDOqdGK5qcI3oT0GKTW6wC7EMiVqA=="],
 
     "@langchain/core/ansi-styles": ["ansi-styles@5.2.0", "", {}, "sha512-Cxwpt2SfTzTtXcfOlzGEee8O+c+MmUgGrNiBcXnuWxuFJHe6a5Hz7qwhwe5OgaSYI0IJvkLqWX1ASG+cJOkEiA=="],
@@ -2793,6 +2794,8 @@
     "sharp/@img/sharp-darwin-arm64": ["@img/sharp-darwin-arm64@0.34.4", "", { "optionalDependencies": { "@img/sharp-libvips-darwin-arm64": "1.2.3" }, "os": "darwin", "cpu": "arm64" }, "sha512-sitdlPzDVyvmINUdJle3TNHl+AG9QcwiAMsXmccqsCOMZNIdW2/7S26w0LyU8euiLVzFBL3dXPwVCq/ODnf2vA=="],
 
     "sharp/@img/sharp-darwin-x64": ["@img/sharp-darwin-x64@0.34.4", "", { "optionalDependencies": { "@img/sharp-libvips-darwin-x64": "1.2.3" }, "os": "darwin", "cpu": "x64" }, "sha512-rZheupWIoa3+SOdF/IcUe1ah4ZDpKBGWcsPX6MT0lYniH9micvIU7HQkYTfrx5Xi8u+YqwLtxC/3vl8TQN6rMg=="],
+
+    "sharp/@img/sharp-libvips-linux-x64": ["@img/sharp-libvips-linux-x64@1.2.3", "", { "os": "linux", "cpu": "x64" }, "sha512-3JU7LmR85K6bBiRzSUc/Ff9JBVIFVvq6bomKE0e63UXGeRw2HPVEjoJke1Yx+iU4rL7/7kUjES4dZ/81Qjhyxg=="],
 
     "sharp/@img/sharp-linux-arm": ["@img/sharp-linux-arm@0.34.4", "", { "optionalDependencies": { "@img/sharp-libvips-linux-arm": "1.2.3" }, "os": "linux", "cpu": "arm" }, "sha512-Xyam4mlqM0KkTHYVSuc6wXRmM7LGN0P12li03jAnZ3EJWZqj83+hi8Y9UxZUbxsgsK1qOEwg7O0Bc0LjqQVtxA=="],
 
