@@ -12,8 +12,6 @@ import { fakeRaresCarouselAction } from '../actions/fakeRaresCarousel';
 import { fakeRaresContextProvider, userHistoryProvider } from '../providers';
 import { KnowledgeOrchestratorService } from '../services/KnowledgeOrchestratorService';
 import { XHarvestService } from '../services/XHarvestService';
-import { RecapService } from '../services/RecapService';
-import { runRecap } from '../actions/recapCommand';
 import {
   noteRoom,
   isXActivityQuestion, buildDigest, formatDigestForTelegram,
@@ -747,7 +745,7 @@ export const fakeRaresPlugin: Plugin = {
   // gates were built to close. If it is ever wanted, route it through
   // gateSubmission first.
   evaluators: [],
-  services: [KnowledgeOrchestratorService, MemoryStorageService, TelemetryService, CardDisplayService, SmartRouterService, XHarvestService, RecapService],
+  services: [KnowledgeOrchestratorService, MemoryStorageService, TelemetryService, CardDisplayService, SmartRouterService, XHarvestService],
   
   events: {
     MESSAGE_RECEIVED: [
@@ -889,7 +887,7 @@ export const fakeRaresPlugin: Plugin = {
             addressedBot: !!(isReplyToBot || triggers.hasBotMention || isDirectMessage),
           });
 
-          const { isHelp, isStart, isF, isFCarousel, isC, isP, isFr, isVouch, isFm, isFc, isXcp, isRecap } = commands;
+          const { isHelp, isStart, isF, isFCarousel, isC, isP, isFr, isVouch, isFm, isFc, isXcp } = commands;
           
           // Log routing factors
           logger.info(`   Triggers: reply=${!!isReplyToBot} | card=${isFakeRareCard} | @mention=${hasBotMention}`);
@@ -985,7 +983,7 @@ export const fakeRaresPlugin: Plugin = {
             }
           }
 
-          const anyCommand = isHelp || isStart || isF || isFCarousel || isC || isP || isFr || isVouch || isFm || isFc || isXcp || isRecap;
+          const anyCommand = isHelp || isStart || isF || isFCarousel || isC || isP || isFr || isVouch || isFm || isFc || isXcp;
           if (anyCommand || hasRememberCommand) {
             const from = params.ctx?.message?.from;
             const rateId = from?.id?.toString() || message.entityId?.toString();
@@ -1073,37 +1071,6 @@ export const fakeRaresPlugin: Plugin = {
           if (isVouch && await executeCommand(vouchCommand, cmdParams, '/vouch')) return;
           if (isFm && await executeCommand(fakeMarketAction, cmdParams, '/fm')) return;
           if (isXcp && await executeCommand(xcpCommand, cmdParams, '/xcp')) return;
-
-          // /recap — the day as a comic strip. Rendering takes tens of seconds
-          // and costs a model call, so it is answered directly rather than
-          // through the action pipeline, and it says so before it starts.
-          if (isRecap) {
-            (message.metadata as any).__handledByCustom = true;
-            try {
-              await baseCallback?.({ text: '🎬 Rolling the tape…', source: 'telegram' });
-              const recap = await runRecap(runtime, message.roomId, text);
-              if (!recap.made || !recap.mp4) {
-                await baseCallback?.({ text: recap.caption, source: 'telegram' });
-                return;
-              }
-              await baseCallback?.({
-                text: recap.caption,
-                source: 'telegram',
-                attachments: [{
-                  id: 'recap',
-                  url: '',
-                  title: 'Daily recap',
-                  source: 'recap',
-                  contentType: 'video/mp4',
-                  data: recap.mp4,
-                }],
-              } as any);
-            } catch (error) {
-              logger.error({ error }, '[Recap] /recap failed');
-              await baseCallback?.({ text: 'The projector jammed. Nothing to show.', source: 'telegram' });
-            }
-            return;
-          }
           
           // Admin-only command. Marked handled whether or not validation
           // passed: in a group /fc must fall silent rather than reach the

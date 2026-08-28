@@ -28,10 +28,6 @@ import { determineCardUrl, buildCardDisplayMessage, buildArtistButton } from '..
 
 const HELPFUL_TIPS = [
   {
-    title: "🎬 The Day, As A Comic",
-    text: "Missed a day? `/recap` replays it as a strip — the best lines of the day, with everyone cast as a Fake Rare. `/recap today` for the day so far.",
-  },
-  {
     title: "🎯 Fuzzy Card Matching",
     text: "Did you know? I'm typo-friendly! Try `/f FREEDOMK` or `/f WAGMI` and I'll auto-correct to the closest card. Works with 75%+ similarity!",
   },

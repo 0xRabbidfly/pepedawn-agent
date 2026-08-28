@@ -88,7 +88,3 @@ pepe-tg/src/data/lore-ledger.json
 pepe-tg/src/data/rate-limits.json
 pepe-tg/src/data/lore-proposals.json
 pepe-tg/src/data/participants.json
-
-# Recap working state (per-machine, like the other runtime logs)
-pepe-tg/src/data/day-log.jsonl
-pepe-tg/src/data/recap-state.json

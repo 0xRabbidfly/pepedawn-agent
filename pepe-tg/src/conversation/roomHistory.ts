@@ -15,7 +15,6 @@
  */
 
 import type { ConversationTurn } from './types';
-import { appendDayTurn } from './dayLog';
 
 /** Minimal persistence contract. Implementations may be sync or async. */
 export interface RoomHistoryStore {
@@ -126,19 +125,6 @@ export class RoomHistory {
     turns: ConversationTurn[],
     turn: ConversationTurn
   ): ConversationTurn[] {
-    // The day log is written here because this is the one chokepoint every
-    // append reaches, shadow on or off, user turn or bot turn. It keeps a
-    // longer, unpruned horizon than this cache can: prune() below drops to 120
-    // turns, which on a busy day would leave the recap with the last two hours
-    // and nothing else. appendDayTurn never throws.
-    appendDayTurn({
-      roomId,
-      role: turn.role === 'bot' ? 'bot' : 'user',
-      author: turn.author,
-      text: turn.text,
-      at: turn.at,
-    });
-
     const next = this.prune([...turns, turn], turn.at);
     this.cache.set(roomId, next);
     this.dirty.add(roomId);
