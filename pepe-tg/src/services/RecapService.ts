@@ -26,7 +26,7 @@ import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from '
 import { dirname, join } from 'path';
 import { dayBounds, readDayTurns } from '../conversation/dayLog';
 import { callTextModel } from '../utils/modelGateway';
-import { buildStrip } from '../utils/recapStrip';
+import { buildStrip, MIN_ELIGIBLE_TURNS } from '../utils/recapStrip';
 import { cardsMentioned } from '../utils/xHarvest';
 
 interface RecapState {
@@ -134,18 +134,36 @@ export class RecapService extends Service {
       return false;
     }
 
-    // Stamped before the work, not after. A crash mid-render costs one day's
-    // strip; a crash loop that re-renders on every boot costs real money and
-    // posts the same day repeatedly.
+    const { from, to, label } = dayBounds(1, now);
+
+    // Which channels have a day worth recapping. This runs before the stamp
+    // because it is free — reading a JSONL file — and because burning the day
+    // on a room that had nothing to say means no strip even once the room
+    // wakes up. The first night this shipped did exactly that: the log had one
+    // turn in it, the stamp was written anyway, and the 08:00 restart declined
+    // to try again.
+    const work: { chatId: string; roomId: string; turns: ReturnType<typeof readDayTurns> }[] = [];
+    for (const chatId of this.channelIds) {
+      const roomId = this.roomFor(chatId);
+      const turns = readDayTurns(roomId, from, to);
+      logger.info(`[Recap] ${label} in ${chatId}: ${turns.length} turns`);
+      if (turns.length >= MIN_ELIGIBLE_TURNS) work.push({ chatId, roomId, turns });
+    }
+
+    if (work.length === 0) {
+      logger.info(`[Recap] nothing to recap for ${label}; leaving the day unstamped`);
+      return false;
+    }
+
+    // Stamped before the expensive part, not after. A crash mid-render costs
+    // one day's strip; a crash loop that re-renders on every boot costs real
+    // money and posts the same day repeatedly.
     writeState({ ...state, lastRecapDay: localDayStamp(now) });
 
-    const { from, to, label } = dayBounds(1, now);
     let posted = false;
 
-    for (const chatId of this.channelIds) {
+    for (const { chatId, turns } of work) {
       try {
-        const roomId = this.roomFor(chatId);
-        const turns = readDayTurns(roomId, from, to);
         const cardsNamed = new Set(turns.flatMap((t) => cardsMentioned(t.text || ''))).size;
 
         const strip = await buildStrip({

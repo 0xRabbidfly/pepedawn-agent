@@ -13,6 +13,7 @@
 import type { IAgentRuntime } from '@elizaos/core';
 import { Service, logger, createUniqueUuid } from '@elizaos/core';
 import { FileRoomHistoryStore } from '../conversation/fileRoomHistoryStore';
+import { appendDayTurn } from '../conversation/dayLog';
 import { TelemetryService } from './TelemetryService';
 import {
   HARVEST_QUERIES, RAW_POSTS_RULE, DEFAULT_HARVEST_CONFIG,
@@ -253,6 +254,16 @@ export class XHarvestService extends Service {
         if (sent) {
           markVolunteered(post.id);
           this.lastVolunteerAt = Date.now();
+          // The recap reads the day log, and a volunteered post is part of the
+          // day: without this the strip cannot quote the bot bringing something
+          // up, because send() goes straight to the Telegram API and never
+          // touches the history path that writes the log.
+          appendDayTurn({
+            roomId: historyKey,
+            role: 'bot',
+            text: card.text.replace(/<[^>]+>/g, ''),
+            at: Date.now(),
+          });
           logger.info(`XHarvest volunteered ${post.id} to ${roomId}`);
         }
       } catch (error) {

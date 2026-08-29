@@ -5,6 +5,26 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.7.2] - 2026-08-29
+
+### Fixed
+
+- **The first nightly recap burned the day without posting anything.** The day
+  stamp was written before any work, which protects against a crash loop
+  re-rendering on every boot — but it also meant a room with nothing in the log
+  spent its one attempt at 02:00. Overnight on 29 August the log held a single
+  turn, the stamp went down, and the 08:00 restart declined to try again.
+
+  Eligibility is now checked before the stamp. Reading the JSONL log is free,
+  so a day with too little in it leaves the stamp alone and a later boot inside
+  the window can try again. The stamp still goes down before the model call and
+  the render, which is where the money and the crash risk are.
+
+- **Volunteered X posts never reached the day log**, so the recap could not
+  quote the bot bringing something up. `XHarvestService.send` goes straight to
+  the Telegram API and never touches the history path that writes the log; it
+  now records the turn itself.
+
 ## [5.7.1] - 2026-08-28
 
 ### Fixed

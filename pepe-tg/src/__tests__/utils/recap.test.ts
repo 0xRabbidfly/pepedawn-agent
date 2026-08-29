@@ -295,3 +295,18 @@ describe('sharp is not a startup dependency', () => {
     expect(src).toContain("await import('sharp')");
   });
 });
+
+describe('the day stamp', () => {
+  it('is not burned on a day with nothing in it', () => {
+    // The first night this shipped: the log held one turn, the stamp was
+    // written anyway, and the next restart declined to try again — so a room
+    // that woke up at 09:00 got no strip at all that day.
+    const src = require('fs').readFileSync(
+      require('path').join(__dirname, '../../services/RecapService.ts'), 'utf8'
+    );
+    const check = src.indexOf('leaving the day unstamped');
+    const stamp = src.indexOf('writeState({ ...state, lastRecapDay');
+    expect(check).toBeGreaterThan(-1);
+    expect(check).toBeLessThan(stamp);
+  });
+});
