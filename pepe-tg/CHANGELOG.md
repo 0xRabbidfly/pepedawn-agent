@@ -5,6 +5,27 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.7.3] - 2026-08-29
+
+### Fixed
+
+- **`/recap` answered "The projector jammed" in the channel.** sharp 0.34.4's
+  loader calls `binding._isUsingX64V2()`, which only exists in the matching
+  0.34.x platform package. The droplet had `@img/sharp-linux-x64@0.33.5`
+  hoisted — it is what `@xenova/transformers` drags in — and none of the nested
+  0.34.4 copy that makes it work locally, so the render threw
+  `_isUsingX64V2 is not a function` after the model call had already been paid
+  for.
+
+  Both halves of the pair sharp 0.34.4 declares are now pinned:
+  `@img/sharp-linux-x64@0.34.4` and `@img/sharp-libvips-linux-x64@1.2.3`. The
+  earlier 1.0.4 pin was right for the 0.33.5 binding and wrong for the JS
+  wrapper actually doing the loading — matching one half of a native pair is
+  not matching it.
+
+  The lazy import added in 5.7.1 did its job throughout: every one of these
+  failures cost the recap and nothing else.
+
 ## [5.7.2] - 2026-08-29
 
 ### Fixed
