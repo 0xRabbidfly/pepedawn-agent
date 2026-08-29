@@ -81,16 +81,27 @@ deploy() {
     ssh_exec "cd $PROJECT_DIR && git status"
     success "Git status checked"
     
-    # Step 4: Pull latest changes
-    log "Step 4: Pulling latest changes..."
-    ssh_exec "cd $PROJECT_DIR && git pull"
-    success "Latest changes pulled"
-    
-    # Step 5: Hard reset to prevent corruption
-    log "Step 5: Hard reset and clean..."
+    # Step 4: Discard anything the droplet changed under itself
+    #
+    # This runs BEFORE the pull, and the order is the whole point. `bun install`
+    # in step 6 rewrites bun.lock in place, so the working tree is dirty by the
+    # end of every deploy. With the pull first, the next deploy died on
+    # "Your local changes to the following files would be overwritten by merge"
+    # and needed a hand-run `git checkout -- pepe-tg/bun.lock` on the droplet
+    # before it could go out (2026-08-28, twice in one release).
+    #
+    # Nothing here is precious: the droplet is a checkout, not a workspace, and
+    # `git clean -fd` leaves ignored files alone, so .env, logs/ and .eliza/
+    # survive untouched.
+    log "Step 4: Discarding local changes before pulling..."
     ssh_exec "cd $PROJECT_DIR && git reset --hard HEAD"
     ssh_exec "cd $PROJECT_DIR && git clean -fd"
     success "Repository cleaned"
+    
+    # Step 5: Pull latest changes
+    log "Step 5: Pulling latest changes..."
+    ssh_exec "cd $PROJECT_DIR && git pull"
+    success "Latest changes pulled"
     
     # Step 6: Clean install dependencies (prevents plugin version issues)
     log "Step 6: Clean installing dependencies..."
