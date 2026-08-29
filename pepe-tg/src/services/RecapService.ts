@@ -25,6 +25,7 @@ import { Service, logger, type IAgentRuntime } from '@elizaos/core';
 import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'fs';
 import { dirname, join } from 'path';
 import { dayBounds, readDayTurns } from '../conversation/dayLog';
+import { runWithAction } from '../utils/actionContext';
 import { callTextModel } from '../utils/modelGateway';
 import { buildStrip, MIN_ELIGIBLE_TURNS } from '../utils/recapStrip';
 import { cardsMentioned } from '../utils/xHarvest';
@@ -166,7 +167,7 @@ export class RecapService extends Service {
       try {
         const cardsNamed = new Set(turns.flatMap((t) => cardsMentioned(t.text || ''))).size;
 
-        const strip = await buildStrip({
+        const strip = await runWithAction('recap_nightly', () => buildStrip({
           turns,
           dateLabel: label,
           cardsNamed,
@@ -180,7 +181,7 @@ export class RecapService extends Service {
               maxTokens: 500,
               source: 'Recap',
             })).text,
-        });
+        }));
 
         if (!strip) {
           logger.info(`[Recap] ${label} in ${chatId}: nothing worth a strip`);

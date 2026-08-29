@@ -5,6 +5,21 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.7.4] - 2026-08-29
+
+### Fixed
+
+- **Recap spend showed in `/fc` as "(unattributed)".** The cost was always
+  counted — every recap model call goes through `modelGateway`, so it appears
+  under `Recap` in the By Type breakdown at about $0.00025 a strip. But
+  `/recap` is answered inline rather than through the action pipeline, so
+  nothing set the action context and the By Action breakdown could not say
+  whose the spend was.
+
+  Both paths now run inside one: `recap` for the command, `recap_nightly` for
+  the strip built at the restart, so a day's recap cost can be told apart from
+  a day's worth of people asking for one.
+
 ## [5.7.3] - 2026-08-29
 
 ### Fixed

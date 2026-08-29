@@ -310,3 +310,22 @@ describe('the day stamp', () => {
     expect(check).toBeLessThan(stamp);
   });
 });
+
+describe('recap spend is attributable in /fc', () => {
+  it('runs its model calls inside an action context', () => {
+    // /fc groups by source, model and action. Recap calls go through
+    // modelGateway so the cost was always counted, but /recap is answered
+    // inline rather than through the action pipeline, so nothing set the
+    // action and the By Action breakdown read "(unattributed)".
+    const read = (f: string) =>
+      require('fs').readFileSync(require('path').join(__dirname, f), 'utf8');
+
+    const command = read('../../actions/recapCommand.ts');
+    expect(command).toContain("runWithAction('recap'");
+    expect(command).toContain("source: 'Recap'");
+
+    const service = read('../../services/RecapService.ts');
+    expect(service).toContain("runWithAction('recap_nightly'");
+    expect(service).toContain("source: 'Recap'");
+  });
+});

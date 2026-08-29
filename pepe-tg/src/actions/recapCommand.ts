@@ -14,6 +14,7 @@
  */
 
 import { logger, type IAgentRuntime } from '@elizaos/core';
+import { runWithAction } from '../utils/actionContext';
 import { dayBounds, readDayTurns } from '../conversation/dayLog';
 import { callTextModel } from '../utils/modelGateway';
 import { buildStrip, MIN_ELIGIBLE_TURNS } from '../utils/recapStrip';
@@ -38,6 +39,19 @@ export interface RecapResult {
 }
 
 export async function runRecap(
+  runtime: IAgentRuntime,
+  roomId: string,
+  text: string
+): Promise<RecapResult> {
+  // /recap is answered inline rather than through the action pipeline, so
+  // nothing else sets the action context and every model call it makes was
+  // landing in /fc as "(unattributed)". The spend was counted -- it is
+  // logged through modelGateway -- but the By Action breakdown could not say
+  // whose it was.
+  return runWithAction('recap', () => runRecapInner(runtime, roomId, text));
+}
+
+async function runRecapInner(
   runtime: IAgentRuntime,
   roomId: string,
   text: string
