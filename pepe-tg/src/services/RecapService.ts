@@ -26,6 +26,7 @@ import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from '
 import { dirname, join } from 'path';
 import { dayBounds, readDayTurns } from '../conversation/dayLog';
 import { runWithAction } from '../utils/actionContext';
+import { sendRecapVideo } from '../utils/recapSend';
 import { callTextModel } from '../utils/modelGateway';
 import { buildStrip, MIN_ELIGIBLE_TURNS } from '../utils/recapStrip';
 import { cardsMentioned } from '../utils/xHarvest';
@@ -209,38 +210,9 @@ export class RecapService extends Service {
     return roomForChat(chatId) ?? chatId;
   }
 
-  /**
-   * Sends and reports whether it worked.
-   *
-   * `periodicContent.sendToChannels` logs a warning and swallows the failure,
-   * so "Posted periodic…" appears whether or not anything arrived. A recap
-   * that silently fails is worse: the day stamp is already written, so nobody
-   * would find out until someone asked where the strip went.
-   */
   private async sendVideo(chatId: string, mp4: Buffer, caption: string): Promise<boolean> {
     const token = (this.runtime.getSetting('TELEGRAM_BOT_TOKEN') as string) || '';
-    if (!token) {
-      logger.warn('[Recap] no bot token; not sending');
-      return false;
-    }
-
-    const form = new FormData();
-    form.append('chat_id', chatId);
-    form.append('caption', caption);
-    form.append('parse_mode', 'HTML');
-    form.append('supports_streaming', 'true');
-    form.append('video', new Blob([new Uint8Array(mp4)], { type: 'video/mp4' }), 'recap.mp4');
-
-    const res = await fetch(`https://api.telegram.org/bot${token}/sendVideo`, {
-      method: 'POST',
-      body: form,
-    });
-
-    if (!res.ok) {
-      logger.error(`[Recap] send failed: ${res.status} ${(await res.text()).slice(0, 200)}`);
-      return false;
-    }
-    return true;
+    return sendRecapVideo(token, chatId, mp4, caption);
   }
 
   static async start(runtime: IAgentRuntime): Promise<RecapService> {

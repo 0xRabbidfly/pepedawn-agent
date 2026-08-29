@@ -14,6 +14,7 @@ import { KnowledgeOrchestratorService } from '../services/KnowledgeOrchestratorS
 import { XHarvestService } from '../services/XHarvestService';
 import { RecapService } from '../services/RecapService';
 import { runRecap } from '../actions/recapCommand';
+import { sendRecapVideo, stripHtml } from '../utils/recapSend';
 import {
   noteRoom,
   isXActivityQuestion, buildDigest, formatDigestForTelegram,
@@ -1082,22 +1083,27 @@ export const fakeRaresPlugin: Plugin = {
             try {
               await baseCallback?.({ text: '🎬 Rolling the tape…', source: 'telegram' });
               const recap = await runRecap(runtime, message.roomId, text);
+
               if (!recap.made || !recap.mp4) {
-                await baseCallback?.({ text: recap.caption, source: 'telegram' });
+                await baseCallback?.({ text: stripHtml(recap.caption), source: 'telegram' });
                 return;
               }
-              await baseCallback?.({
-                text: recap.caption,
-                source: 'telegram',
-                attachments: [{
-                  id: 'recap',
-                  url: '',
-                  title: 'Daily recap',
-                  source: 'recap',
-                  contentType: 'video/mp4',
-                  data: recap.mp4,
-                }],
-              } as any);
+
+              // Sent straight to the Bot API rather than through the callback.
+              // The callback cannot carry a video buffer — the first version
+              // of this delivered the words "🎬 Video:" — and it does not set
+              // parse_mode, so the caption arrived with its tags showing.
+              const chatId = String(params.ctx?.chat?.id ?? '');
+              const token = (runtime.getSetting('TELEGRAM_BOT_TOKEN') as string) || '';
+              const sent = await sendRecapVideo(token, chatId, recap.mp4, recap.caption);
+
+              if (!sent) {
+                logger.warn(`[Recap] could not deliver the strip to ${chatId || 'an unknown chat'}`);
+                await baseCallback?.({
+                  text: 'The strip is made but Telegram would not take it.',
+                  source: 'telegram',
+                });
+              }
             } catch (error) {
               logger.error({ error }, '[Recap] /recap failed');
               await baseCallback?.({ text: 'The projector jammed. Nothing to show.', source: 'telegram' });

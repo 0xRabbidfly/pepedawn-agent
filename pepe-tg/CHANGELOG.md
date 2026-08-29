@@ -5,6 +5,23 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.7.5] - 2026-08-29
+
+### Fixed
+
+- **`/recap` built the strip and then sent the word "Video:".** The command
+  handed the MP4 to the ElizaOS message callback as an attachment, and the
+  callback has no idea what to do with a raw buffer — so the channel got a
+  clapperboard, the text `🎬 Video:`, and a caption with its `<b>` and `<i>`
+  tags showing, because the callback sets no parse mode either. The render
+  itself had worked: 29 messages, 4 frogs, 6 cards named.
+
+  Delivery now goes straight to the Bot API through `sendRecapVideo`, the same
+  multipart `sendVideo` the nightly post already used, with the chat id taken
+  from the Telegram context. One path, used by both callers, and the caption is
+  capped at the 1,024 characters `sendVideo` accepts. A failure to send says so
+  in the room rather than leaving the strip in a log line.
+
 ## [5.7.4] - 2026-08-29
 
 ### Fixed

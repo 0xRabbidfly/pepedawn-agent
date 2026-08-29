@@ -329,3 +329,31 @@ describe('recap spend is attributable in /fc', () => {
     expect(service).toContain("source: 'Recap'");
   });
 });
+
+describe('delivering the strip', () => {
+  it('never hands the video to the message callback', () => {
+    // The first version passed the MP4 as a callback attachment. Telegram got
+    // the words "🎬 Video:" and a caption with its <b> and <i> tags showing,
+    // because the callback carries neither a buffer nor a parse mode.
+    const plugin = require('fs').readFileSync(
+      require('path').join(__dirname, '../../plugins/fakeRaresPlugin.ts'), 'utf8'
+    );
+    const block = plugin.slice(plugin.indexOf('if (isRecap)'), plugin.indexOf('if (isRecap)') + 2000);
+    expect(block).toContain('sendRecapVideo(');
+    expect(block).not.toMatch(/attachments:/);
+    expect(block).toContain('stripHtml(');
+  });
+
+  it('caps the caption at what sendVideo accepts', () => {
+    const send = require('fs').readFileSync(
+      require('path').join(__dirname, '../../utils/recapSend.ts'), 'utf8'
+    );
+    expect(send).toContain('caption.slice(0, 1024)');
+    expect(send).toContain("form.append('parse_mode', 'HTML')");
+  });
+
+  it('strips tags for the plain-text fallback', () => {
+    const { stripHtml } = require('../../utils/recapSend');
+    expect(stripHtml('<b>The day</b> — <i>so far</i>')).toBe('The day — so far');
+  });
+});
