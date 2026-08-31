@@ -5,6 +5,27 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.7.10] - 2026-08-31
+
+### Changed
+
+- **The strip is as long as the day was.** Five panels was a fixed number, so a
+  Sunday with a dozen messages got the same treatment as a Saturday with two
+  hundred — which meant padding: the model had to find five highlights in a day
+  that contained one, and the strip claimed "the five best things that
+  happened" about a day where nothing much did.
+
+  The cap is now about one panel per eight eligible turns, from two up to five,
+  and the prompt says outright that fewer is better than padding and that one
+  is a legitimate answer. A quiet day comes in around 14 seconds; a busy one
+  still runs the full five.
+
+  The floor is two rather than one because the funniest thing this room
+  produces is an *exchange*, and an exchange has two halves — a one-panel cap
+  would have quoted "duh pepedawn are you bot ?" and thrown away the answer,
+  which is the joke. One-panel strips remain possible: the cap is a ceiling,
+  not a quota, and the model is taken at its word when it returns fewer.
+
 ## [5.7.9] - 2026-08-31
 
 ### Changed

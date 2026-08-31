@@ -12,7 +12,7 @@ import { logger } from '@elizaos/core';
 import type { DayTurn } from '../conversation/dayLog';
 import { castFor, castForBot, type CastCard } from './recapCast';
 import {
-  buildMoments, eligibleTurns, momentPrompt, parseChoices,
+  buildMoments, eligibleTurns, momentPrompt, panelsFor, parseChoices,
   type MomentChoice, type RecapMoment,
 } from './recapMoments';
 import {
@@ -62,6 +62,7 @@ export interface BuildOptions {
   turns: DayTurn[];
   dateLabel: string;
   cardsNamed?: number;
+  /** Overrides the count derived from the day. Tests use it; callers should not. */
   want?: number;
   /** Asks the model which lines to use. Returns raw text; parsing is ours. */
   choose: (prompt: string) => Promise<string>;
@@ -83,13 +84,17 @@ export const MIN_ELIGIBLE_TURNS = 8;
 
 export async function buildStrip(options: BuildOptions): Promise<BuiltStrip | null> {
   const { turns, dateLabel, choose } = options;
-  const want = options.want ?? 5;
 
   const eligible = eligibleTurns(turns, optedOut());
   if (eligible.length < MIN_ELIGIBLE_TURNS) {
     logger.info(`[Recap] ${eligible.length} usable turns for ${dateLabel} — not enough for a strip`);
     return null;
   }
+
+  // The day decides the length, not the template. The model may still come
+  // back with fewer, and it is taken at its word.
+  const want = options.want ?? panelsFor(eligible.length);
+  logger.info(`[Recap] ${dateLabel}: ${eligible.length} eligible turns, asking for up to ${want} panels`);
 
   let choices: MomentChoice[] = [];
   try {

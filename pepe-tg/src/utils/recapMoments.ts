@@ -29,6 +29,33 @@ export interface MomentChoice {
   beat: string;
 }
 
+/**
+ * How many panels a day has earned.
+ *
+ * Five was a fixed number, so a Sunday with a dozen messages got the same
+ * five-panel treatment as a Saturday with two hundred — which meant padding:
+ * the model had to find five highlights in a day that contained one, and the
+ * strip said "here are the five best things that happened" about a day where
+ * nothing much did. A quiet day is not a failure to be dressed up; one good
+ * exchange is a perfectly honest recap.
+ *
+ * Roughly one panel per eight eligible turns, up to five.
+ *
+ * The floor is two rather than one, because the funniest thing this room
+ * produces is an exchange and an exchange has two halves: capping a thin day
+ * at one panel would have quoted "duh pepedawn are you bot ?" and thrown away
+ * the answer, which is the joke. One-panel strips are still possible — the cap
+ * is a ceiling, not a quota, and the prompt says outright that fewer is better
+ * than padding — but the model has to choose it, on a day that really did
+ * contain one thing.
+ */
+export const MAX_PANELS = 5;
+export const MIN_PANELS = 2;
+
+export function panelsFor(eligibleCount: number): number {
+  return Math.max(MIN_PANELS, Math.min(MAX_PANELS, Math.round(eligibleCount / 8)));
+}
+
 /** Longer than this and the panel stops being readable at a glance. */
 export const MAX_QUOTE_CHARS = 180;
 
@@ -169,7 +196,9 @@ export function momentPrompt(turns: DayTurn[], want: number): string {
   return [
     `Below is one day of a Fake Rares Telegram channel, one numbered line per message.`,
     ``,
-    `Pick the ${want} that would make the funniest short catch-up strip for someone who missed the day.`,
+    `Pick AT MOST ${want} that would make the funniest short catch-up strip for someone who missed`,
+    `the day. Pick fewer -- one, if that is the truth of it -- when the day only had fewer. A single`,
+    `good exchange is a better recap than ${want} padded ones, and the strip is not obliged to fill.`,
     `Favour: a strong opinion, a joke that landed, a good question, a trade, a moment the bot was`,
     `actually useful, and anyone talking to PEPEDAWN as though it were a person -- realising it is a`,
     `bot, arguing with it, testing it. Those exchanges are the funniest thing the room produces.`,

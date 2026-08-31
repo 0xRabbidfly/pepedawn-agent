@@ -11,6 +11,7 @@ import { rmSync, existsSync } from 'fs';
 import {
   buildMoments, cleanBeat, eligibleTurns, holdMsFor, momentPrompt,
   parseChoices, truncateQuote, MAX_QUOTE_CHARS, broadcastLanded, MAX_BEAT_CHARS,
+  panelsFor, MAX_PANELS,
 } from '../../utils/recapMoments';
 import { castFor, castForBot, castingPool, _resetPool } from '../../utils/recapCast';
 import { wrap, esc, panelSvg, titleSvg, splitBeat } from '../../utils/recapRender';
@@ -494,5 +495,55 @@ describe('titles are never cut', () => {
     const svg = panelSvg(m, castFor('frog'));
     expect(svg).toContain('THE MARKET FINDS');
     expect(svg).toContain('ITS FLOOR AT LAST');
+  });
+});
+
+describe('the day decides the length', () => {
+  it('gives a quiet day two panels, not five', () => {
+    // The complaint this fixes: every recap was five panels, so a day with one
+    // good exchange in it had four padded ones bolted on.
+    expect(panelsFor(8)).toBe(2);
+    expect(panelsFor(13)).toBe(2);
+  });
+
+  it('never caps below an exchange', () => {
+    // An exchange has two halves. Capping a thin day at one panel would quote
+    // "duh pepedawn are you bot ?" and drop the answer, which is the joke.
+    expect(panelsFor(1)).toBe(2);
+  });
+
+  it('grows with the day', () => {
+    expect(panelsFor(24)).toBe(3);
+    expect(panelsFor(32)).toBe(4);
+    expect(panelsFor(60)).toBe(5);
+  });
+
+  it('never asks for more than five, however loud the day', () => {
+    expect(panelsFor(500)).toBe(MAX_PANELS);
+  });
+
+  it('never asks for none', () => {
+    expect(panelsFor(0)).toBeGreaterThanOrEqual(1);
+  });
+
+  it('still lets the model answer with a single panel', () => {
+    const turns = Array.from({ length: 9 }, (_, i) =>
+      turn({ at: AT + i * 60_000, text: `a message with some substance number ${i}` })
+    );
+    // want = 2, model returns 1: taken at its word, one panel is rendered.
+    expect(buildMoments(turns, [{ index: 3, beat: 'THE ONE THING' }], panelsFor(9))).toHaveLength(1);
+  });
+
+  it('tells the model that fewer is allowed', () => {
+    const prompt = momentPrompt([turn()], 3);
+    expect(prompt).toContain('AT MOST 3');
+    expect(prompt).toMatch(/Pick fewer/);
+  });
+
+  it('takes the model at its word when it returns fewer', () => {
+    const turns = Array.from({ length: 5 }, (_, i) =>
+      turn({ at: AT + i * 60_000, text: `a message with some substance number ${i}` })
+    );
+    expect(buildMoments(turns, [{ index: 2, beat: 'THE ONE THING' }], 5)).toHaveLength(1);
   });
 });
