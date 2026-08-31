@@ -26,6 +26,7 @@ import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from '
 import { dirname, join } from 'path';
 import { dayBounds, readDayTurns } from '../conversation/dayLog';
 import { runWithAction } from '../utils/actionContext';
+import { roomsForChat } from '../conversation/roomMap';
 import { sendRecapVideo } from '../utils/recapSend';
 import { callTextModel } from '../utils/modelGateway';
 import { buildStrip, MIN_ELIGIBLE_TURNS } from '../utils/recapStrip';
@@ -144,12 +145,16 @@ export class RecapService extends Service {
     // wakes up. The first night this shipped did exactly that: the log had one
     // turn in it, the stamp was written anyway, and the 08:00 restart declined
     // to try again.
-    const work: { chatId: string; roomId: string; turns: ReturnType<typeof readDayTurns> }[] = [];
+    const work: { chatId: string; turns: ReturnType<typeof readDayTurns> }[] = [];
     for (const chatId of this.channelIds) {
-      const roomId = this.roomFor(chatId);
-      const turns = readDayTurns(roomId, from, to);
-      logger.info(`[Recap] ${label} in ${chatId}: ${turns.length} turns`);
-      if (turns.length >= MIN_ELIGIBLE_TURNS) work.push({ chatId, roomId, turns });
+      const rooms = this.roomsFor(chatId);
+      const turns = rooms
+        .flatMap((roomId) => readDayTurns(roomId, from, to))
+        .sort((a, b) => a.at - b.at);
+      logger.info(
+        `[Recap] ${label} in ${chatId}: ${turns.length} turns across ${rooms.length} room(s) [${rooms.join(', ')}]`
+      );
+      if (turns.length >= MIN_ELIGIBLE_TURNS) work.push({ chatId, turns });
     }
 
     if (work.length === 0) {
@@ -204,10 +209,21 @@ export class RecapService extends Service {
     return posted;
   }
 
-  /** Day-log rooms are keyed the way the message path keys them. */
-  private roomFor(chatId: string): string {
+  /**
+   * Every room the day log might hold for this chat.
+   *
+   * The persisted map first, because at 02:02 the in-memory pairing has not
+   * been learned yet — that was the whole bug: two nights of "nothing to
+   * recap" on days with plenty in them, because the lookup fell back to the
+   * raw chat id, which is not a key the day log has ever used.
+   */
+  private roomsFor(chatId: string): string[] {
+    const remembered = roomsForChat(chatId);
+    if (remembered.length > 0) return remembered;
+
     const { roomForChat } = require('../utils/xHarvest');
-    return roomForChat(chatId) ?? chatId;
+    const live = roomForChat(chatId);
+    return live ? [live] : [chatId];
   }
 
   private async sendVideo(chatId: string, mp4: Buffer, caption: string): Promise<boolean> {

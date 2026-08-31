@@ -17,6 +17,7 @@ import { wrap, esc, panelSvg, titleSvg } from '../../utils/recapRender';
 import { subtitleFor, statsFor } from '../../utils/recapStrip';
 import { isDue, localDayStamp } from '../../services/RecapService';
 import { parseRecapArgs } from '../../actions/recapCommand';
+import { rememberRoom, roomsForChat, _resetRoomMap } from '../../conversation/roomMap';
 import {
   appendDayTurn, dayBounds, dayLogPath, pruneDayLog, readDayTurns, _resetPruneCounter,
   type DayTurn,
@@ -355,5 +356,46 @@ describe('delivering the strip', () => {
   it('strips tags for the plain-text fallback', () => {
     const { stripHtml } = require('../../utils/recapSend');
     expect(stripHtml('<b>The day</b> — <i>so far</i>')).toBe('The day — so far');
+  });
+});
+
+describe('the chat-to-room map', () => {
+  const mapPath = join(tmpdir(), `recap-roommap-${process.pid}.json`);
+
+  beforeEach(() => {
+    process.env.ROOM_MAP_PATH = mapPath;
+    if (existsSync(mapPath)) rmSync(mapPath);
+    _resetRoomMap();
+  });
+  afterEach(() => {
+    delete process.env.ROOM_MAP_PATH;
+    if (existsSync(mapPath)) rmSync(mapPath);
+    _resetRoomMap();
+  });
+
+  it('survives the restart that the in-memory pairing does not', () => {
+    // The bug this exists for: the nightly runs 90 seconds after the 02:00
+    // restart, before any message has taught the in-memory map anything, so it
+    // looked the day log up under the raw chat id and found nothing — two
+    // nights running, on days with plenty in them.
+    rememberRoom('-1001586933558', 'room-uuid-1');
+    _resetRoomMap(); // as if the process had restarted
+    expect(roomsForChat('-1001586933558')).toEqual(['room-uuid-1']);
+  });
+
+  it('keeps every room a forum chat has used, newest first', () => {
+    rememberRoom('-100', 'topic-a');
+    rememberRoom('-100', 'topic-b');
+    expect(roomsForChat('-100')).toEqual(['topic-b', 'topic-a']);
+  });
+
+  it('does not grow on a repeat', () => {
+    rememberRoom('-100', 'same');
+    rememberRoom('-100', 'same');
+    expect(roomsForChat('-100')).toEqual(['same']);
+  });
+
+  it('is empty, not wrong, for a chat never seen', () => {
+    expect(roomsForChat('-999')).toEqual([]);
   });
 });

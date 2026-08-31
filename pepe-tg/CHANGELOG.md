@@ -5,6 +5,30 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.7.6] - 2026-08-31
+
+### Fixed
+
+- **The nightly recap reported "nothing to recap" on two days that had plenty
+  in them.** The chat-to-room pairing lives in an in-memory Map learned from
+  the first message after boot — fine for the harvest, which only volunteers
+  into a room quiet for 90 minutes, useless to a recap that runs 90 seconds
+  after the 02:00 restart. With nothing learned yet, the lookup fell back to
+  the raw chat id, which is not a key the day log has ever used, so it read
+  zero turns and stood down. `/recap` in the same room worked throughout,
+  because a command arrives with its room id attached.
+
+  The pairing is now persisted to `src/data/room-map.json` as it is observed,
+  and the recap reads every room recorded for the chat — a list, not a single
+  value, so a forum's topics all count toward one day.
+
+### Changed
+
+- **The moment picker is told what the room actually finds funny.** Someone
+  talking to PEPEDAWN as though it were a person — realising it is a bot,
+  arguing with it, testing it — is now named in the prompt as material to
+  favour, alongside opinions, jokes and trades.
+
 ## [5.7.5] - 2026-08-29
 
 ### Fixed

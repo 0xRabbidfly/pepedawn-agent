@@ -15,6 +15,7 @@ import { XHarvestService } from '../services/XHarvestService';
 import { RecapService } from '../services/RecapService';
 import { runRecap } from '../actions/recapCommand';
 import { sendRecapVideo, stripHtml } from '../utils/recapSend';
+import { rememberRoom } from '../conversation/roomMap';
 import {
   noteRoom,
   isXActivityQuestion, buildDigest, formatDigestForTelegram,
@@ -962,7 +963,13 @@ export const fakeRaresPlugin: Plugin = {
           // Learn this room's chat-id ↔ room-uuid pairing while both are in hand;
           // the volunteer check runs later with only the chat id.
           const tgChatId = telegramChatId(params);
-          if (tgChatId && message.roomId) noteRoom(tgChatId, message.roomId.toString());
+          if (tgChatId && message.roomId) {
+            noteRoom(tgChatId, message.roomId.toString());
+            // Persisted as well as held in memory: the nightly recap runs 90
+            // seconds after the 02:00 restart, before any message has arrived
+            // to teach the in-memory map what room this chat is.
+            rememberRoom(tgChatId, message.roomId.toString());
+          }
 
           if (isXActivityQuestion(text) && !recentlyDigested(message.roomId?.toString() ?? '')) {
             const digest = buildDigest(3);
