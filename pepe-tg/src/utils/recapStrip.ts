@@ -20,8 +20,8 @@ import {
   type Frame,
 } from './recapRender';
 
-export const TITLE_HOLD_MS = 3600;
-export const OUTRO_HOLD_MS = 4200;
+export const TITLE_HOLD_MS = 2600;
+export const OUTRO_HOLD_MS = 3000;
 
 /** Handles that have asked not to appear. One per line or a JSON array. */
 export function optedOut(): string[] {

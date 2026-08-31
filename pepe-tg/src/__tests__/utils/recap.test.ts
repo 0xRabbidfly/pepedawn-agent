@@ -10,10 +10,10 @@ import { tmpdir } from 'os';
 import { rmSync, existsSync } from 'fs';
 import {
   buildMoments, cleanBeat, eligibleTurns, holdMsFor, momentPrompt,
-  parseChoices, truncateQuote, MAX_QUOTE_CHARS, broadcastLanded,
+  parseChoices, truncateQuote, MAX_QUOTE_CHARS, broadcastLanded, MAX_BEAT_CHARS,
 } from '../../utils/recapMoments';
 import { castFor, castForBot, castingPool, _resetPool } from '../../utils/recapCast';
-import { wrap, esc, panelSvg, titleSvg } from '../../utils/recapRender';
+import { wrap, esc, panelSvg, titleSvg, splitBeat } from '../../utils/recapRender';
 import { subtitleFor, statsFor } from '../../utils/recapStrip';
 import { isDue, localDayStamp } from '../../services/RecapService';
 import { parseRecapArgs } from '../../actions/recapCommand';
@@ -37,14 +37,21 @@ describe('holdMsFor', () => {
   });
 
   it('never flashes a panel past faster than it can be read', () => {
-    // The whole complaint about the first cut: four seconds is the floor.
+    // 3.2s is the floor after the strip was tightened from 37s to ~26s. Still
+    // above a comfortable read of a short line; the first cut sat at 4.2s and
+    // the whole thing dragged.
     for (const text of ['gm', 'ok', 'a short one', 'x'.repeat(200)]) {
-      expect(holdMsFor(text)).toBeGreaterThanOrEqual(4200);
+      expect(holdMsFor(text)).toBeGreaterThanOrEqual(3200);
     }
   });
 
   it('caps, so one rambling message cannot stall the strip', () => {
-    expect(holdMsFor('word '.repeat(200))).toBeLessThanOrEqual(9500);
+    expect(holdMsFor('word '.repeat(200))).toBeLessThanOrEqual(7000);
+  });
+
+  it('is quicker than the first cut at every length', () => {
+    const quote = 'who set a dispenser at 0.4 XCP, i am going to find you and shake your hand';
+    expect(holdMsFor(quote)).toBeLessThan(6000);
   });
 });
 
@@ -119,7 +126,7 @@ describe('cleanBeat', () => {
   it('caps and upper-cases, and never returns empty', () => {
     expect(cleanBeat('a take is had')).toBe('A TAKE IS HAD');
     expect(cleanBeat(undefined)).toBe('MEANWHILE');
-    expect(cleanBeat('x'.repeat(60)).length).toBeLessThanOrEqual(26);
+    expect(cleanBeat('x'.repeat(60)).length).toBeLessThanOrEqual(MAX_BEAT_CHARS);
   });
 
   it('strips characters that would break the SVG it is stamped into', () => {
@@ -455,5 +462,37 @@ describe('the bot talking to itself', () => {
   it('does not count broadcasts as messages in the stats line', () => {
     const turns = [turn({ author: 'a' }), bcast({ at: AT + 1000 }), bcast({ at: AT + 2000 })];
     expect(statsFor(turns, 0)).toEqual({ messages: 1, people: 1, cards: 0 });
+  });
+});
+
+describe('titles are never cut', () => {
+  it('keeps a long beat whole instead of ending it in an ellipsis', () => {
+    const beat = cleanBeat('the market finds its floor at last');
+    expect(beat).toBe('THE MARKET FINDS ITS FLOOR AT LAST');
+    expect(beat).not.toContain('…');
+  });
+
+  it('drops whole words, never half of one, past the hard limit', () => {
+    const beat = cleanBeat('a'.repeat(20) + ' ' + 'b'.repeat(20) + ' ' + 'c'.repeat(20));
+    expect(beat).not.toContain('…');
+    for (const word of beat.split(' ')) {
+      expect(['A'.repeat(20), 'B'.repeat(20), 'C'.repeat(20)]).toContain(word);
+    }
+  });
+
+  it('breaks a two-line beat at a space, near the middle', () => {
+    const [first, second] = splitBeat('SOMEBODY ASKS THE BOT A REAL QUESTION');
+    expect(first + ' ' + second).toBe('SOMEBODY ASKS THE BOT A REAL QUESTION');
+    expect(Math.abs(first.length - second.length)).toBeLessThan(12);
+  });
+
+  it('renders both lines of a long beat into the panel', () => {
+    const [m] = buildMoments(
+      [turn({ text: 'the dispenser drained again before i could refresh' })],
+      [{ index: 0, beat: 'the market finds its floor at last' }]
+    );
+    const svg = panelSvg(m, castFor('frog'));
+    expect(svg).toContain('THE MARKET FINDS');
+    expect(svg).toContain('ITS FLOOR AT LAST');
   });
 });

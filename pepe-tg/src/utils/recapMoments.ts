@@ -37,14 +37,19 @@ export const MAX_QUOTE_CHARS = 180;
  * words to thirty. Fixed timing suits neither: the short ones drag and the
  * long ones flick past before anyone has finished the second line.
  *
- * ~230ms a word is unhurried reading, and the constant covers the beat spent
- * looking at the card before the eye reaches the bubble. Clamped at both ends
- * so a two-word quote still lands and a long one cannot stall the strip.
+ * ~160ms a word is brisk but comfortable for a line of chat you are half
+ * expecting — this is a recap of a room the reader was in, not prose they have
+ * to parse cold. The constant covers the glance at the card before the eye
+ * reaches the bubble. Clamped at both ends so a two-word quote still lands and
+ * a long one cannot stall the strip.
+ *
+ * The first cut ran ~230ms a word over a 1.8s base with a 4.2s floor, and the
+ * whole strip came to 37 seconds. That is a long time to hold a phone.
  */
 export function holdMsFor(text: string): number {
   const words = text.trim().split(/\s+/).filter(Boolean).length;
-  const raw = 1800 + words * 230 + text.length * 14;
-  return Math.max(4200, Math.min(9500, Math.round(raw / 100) * 100));
+  const raw = 1100 + words * 160 + text.length * 9;
+  return Math.max(3200, Math.min(7000, Math.round(raw / 100) * 100));
 }
 
 export function truncateQuote(text: string): string {
@@ -132,11 +137,30 @@ export function buildMoments(turns: DayTurn[], choices: MomentChoice[], limit = 
   return moments.sort((a, b) => a.at - b.at);
 }
 
-/** The beat is stamped on the panel in a fixed-width slot, so it is capped. */
+/**
+ * The beat, stamped across the corner of the panel.
+ *
+ * It used to be cut at 25 characters with an ellipsis, which turned "THE
+ * MARKET FINDS ITS FLOOR" into something ending mid-word. The stamp now sizes
+ * itself to whatever it is given — smaller type, and two lines when it needs
+ * them — so this only has to keep it sane: strip what would break the SVG, and
+ * stop a runaway line from becoming a paragraph. Words are never split.
+ */
+export const MAX_BEAT_CHARS = 44;
+
 export function cleanBeat(beat: string | undefined): string {
   const clean = (beat || '').replace(/[<>&"]/g, '').replace(/\s+/g, ' ').trim().toUpperCase();
   if (!clean) return 'MEANWHILE';
-  return clean.length > 26 ? clean.slice(0, 25).trimEnd() + '…' : clean;
+  if (clean.length <= MAX_BEAT_CHARS) return clean;
+
+  // Keep whole words: a beat that loses its last word still reads.
+  const words = clean.split(' ');
+  let out = '';
+  for (const word of words) {
+    if ((out ? out.length + 1 : 0) + word.length > MAX_BEAT_CHARS) break;
+    out = out ? `${out} ${word}` : word;
+  }
+  return out || words[0].slice(0, MAX_BEAT_CHARS);
 }
 
 /** The prompt. Kept here so the rule it states lives beside the code enforcing it. */

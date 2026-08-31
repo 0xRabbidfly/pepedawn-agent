@@ -5,6 +5,27 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.7.9] - 2026-08-31
+
+### Changed
+
+- **The strip is a third shorter.** ~160ms a word over a 1.1s base, floored at
+  3.2s and capped at 7s, with quicker bookends. A five-panel strip now runs
+  about 26 seconds rather than 37. The first cut was paced for reading prose
+  cold; this is a recap of a room the reader was already in.
+
+### Fixed
+
+- **A long beat is no longer cut mid-phrase.** "THE MARKET FINDS ITS FLOOR AT
+  LAST" used to arrive as "THE MARKET FINDS ITS FLO…". The stamp now sizes
+  itself to the words: two lines split at a space when it needs them, type
+  stepping down as they grow, and past a hard 44-character limit whole words
+  are dropped rather than half of one.
+
+- **A two-line stamp was cropped off the top of the frame.** It hung from its
+  bottom edge, so a second line grew upward past the border and the zoom took
+  the rest. It is anchored from the top now, inside the safe area.
+
 ## [5.7.8] - 2026-08-31
 
 ### Changed

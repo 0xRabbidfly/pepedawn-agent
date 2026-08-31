@@ -120,14 +120,45 @@ function furniture(beat?: string): string {
   <text x="52" y="65" font-family="DejaVu Sans Mono, monospace" font-size="19" letter-spacing="4" fill="${FROG}">PEPEDAWN · RECAP</text>`;
   if (!beat) return bug;
 
-  const fontSize = beat.length > 18 ? 26 : 31;
-  const width = Math.min(560, Math.round(beat.length * fontSize * 0.66) + 52);
+  // The stamp sizes itself to the beat rather than the beat being cut to fit
+  // the stamp. Long ones break across two lines at a space — never mid-word —
+  // and the type steps down as they grow.
+  const lines = beat.length > 22 ? splitBeat(beat) : [beat];
+  const longest = Math.max(...lines.map((l) => l.length));
+  const fontSize = longest > 30 ? 22 : longest > 22 ? 26 : 31;
+  const width = Math.min(600, Math.round(longest * fontSize * 0.66) + 52);
+  const lineHeight = fontSize + 8;
+  const height = lines.length * lineHeight + 26;
+
+  // Anchored from its top edge, not its bottom. Hung from the bottom, a
+  // two-line stamp grew upward off the top of the frame and the first line was
+  // cropped away — with the ~2% the zoom takes off each edge on top of that.
+  const top = 46;
   const right = SIZE - 62;
+
+  const text = lines
+    .map((line, i) =>
+      `<text x="${-width / 2}" y="${Math.round(26 + i * lineHeight)}" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-weight="bold" font-size="${fontSize}" fill="#ffffff">${esc(line)}</text>`)
+    .join('\n    ');
+
   return `${bug}
-  <g transform="translate(${right} 100) rotate(2.5)">
-    <rect x="${-width}" y="-42" width="${width}" height="64" fill="${STAMP}" stroke="${INK}" stroke-width="5"/>
-    <text x="${-width / 2}" y="2" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-weight="bold" font-size="${fontSize}" fill="#ffffff">${esc(beat)}</text>
+  <g transform="translate(${right} ${top}) rotate(2.5)">
+    <rect x="${-width}" y="0" width="${width}" height="${height}" fill="${STAMP}" stroke="${INK}" stroke-width="5"/>
+    ${text}
   </g>`;
+}
+
+/** Break a long beat at the space nearest the middle, so both lines read. */
+export function splitBeat(beat: string): string[] {
+  const words = beat.split(' ');
+  if (words.length < 2) return [beat];
+  const target = beat.length / 2;
+  let best = 1, bestDelta = Infinity;
+  for (let i = 1; i < words.length; i++) {
+    const delta = Math.abs(words.slice(0, i).join(' ').length - target);
+    if (delta < bestDelta) { bestDelta = delta; best = i; }
+  }
+  return [words.slice(0, best).join(' '), words.slice(best).join(' ')];
 }
 
 export function titleSvg(dateLabel: string, subtitle: string): string {
