@@ -10,7 +10,7 @@ import { tmpdir } from 'os';
 import { rmSync, existsSync } from 'fs';
 import {
   buildMoments, cleanBeat, eligibleTurns, holdMsFor, momentPrompt,
-  parseChoices, truncateQuote, MAX_QUOTE_CHARS,
+  parseChoices, truncateQuote, MAX_QUOTE_CHARS, broadcastLanded,
 } from '../../utils/recapMoments';
 import { castFor, castForBot, castingPool, _resetPool } from '../../utils/recapCast';
 import { wrap, esc, panelSvg, titleSvg } from '../../utils/recapRender';
@@ -397,5 +397,63 @@ describe('the chat-to-room map', () => {
 
   it('is empty, not wrong, for a chat never seen', () => {
     expect(roomsForChat('-999')).toEqual([]);
+  });
+});
+
+describe('the bot talking to itself', () => {
+  const bcast = (over: Partial<DayTurn> = {}): DayTurn =>
+    turn({ role: 'bot', author: undefined, kind: 'broadcast',
+           text: 'Tumbleweed. Anyway, from X: someone posted about DJPEPE', ...over });
+
+  it('leaves a volunteered X post out when nobody answered', () => {
+    const turns = [
+      turn({ text: 'a real message from a real frog' }),
+      bcast({ at: AT + 60_000 }),
+    ];
+    const out = eligibleTurns(turns);
+    expect(out).toHaveLength(1);
+    expect(out[0].kind).toBeUndefined();
+  });
+
+  it('keeps it when somebody answered inside the window', () => {
+    const turns = [
+      bcast(),
+      turn({ at: AT + 5 * 60_000, text: 'ha, that account is always posting' }),
+    ];
+    expect(eligibleTurns(turns)).toHaveLength(2);
+  });
+
+  it('does not count an answer an hour later as an answer to it', () => {
+    const turns = [
+      bcast(),
+      turn({ at: AT + 90 * 60_000, text: 'anyway did anyone see the new series' }),
+    ];
+    const out = eligibleTurns(turns);
+    expect(out).toHaveLength(1);
+    expect(out[0].role).toBe('user');
+  });
+
+  it('does not treat the bot answering itself as engagement', () => {
+    const turns = [
+      bcast(),
+      turn({ role: 'bot', author: undefined, at: AT + 60_000, text: 'and another thing about it' }),
+    ];
+    expect(eligibleTurns(turns).some((t) => t.kind === 'broadcast')).toBe(false);
+  });
+
+  it('still keeps the bot replying to a person', () => {
+    // The Shaban exchange: "duh pepedawn are you bot?" and the answer to it.
+    // Those are a conversation, not furniture, and must survive.
+    const turns = [
+      turn({ author: 'Shaban', text: 'duh pepedawn are you bot ?' }),
+      turn({ role: 'bot', author: undefined, at: AT + 20_000,
+             text: 'Caught me, ser 😄 I am a bot — but a Fake Rares one with opinions.' }),
+    ];
+    expect(eligibleTurns(turns)).toHaveLength(2);
+  });
+
+  it('does not count broadcasts as messages in the stats line', () => {
+    const turns = [turn({ author: 'a' }), bcast({ at: AT + 1000 }), bcast({ at: AT + 2000 })];
+    expect(statsFor(turns, 0)).toEqual({ messages: 1, people: 1, cards: 0 });
   });
 });

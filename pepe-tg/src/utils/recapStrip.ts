@@ -42,10 +42,14 @@ export interface StripStats {
 }
 
 export function statsFor(turns: DayTurn[], cardsNamed: number): StripStats {
+  // Unprompted posts are not the room talking, so they are not counted as
+  // messages either — otherwise a silent day carrying four volunteered X posts
+  // opens with "4 messages" and implies a conversation that never happened.
+  const said = turns.filter((t) => t.kind !== 'broadcast');
   const people = new Set(
-    turns.filter((t) => t.role === 'user' && t.author).map((t) => t.author!.toLowerCase())
+    said.filter((t) => t.role === 'user' && t.author).map((t) => t.author!.toLowerCase())
   );
-  return { messages: turns.length, people: people.size, cards: cardsNamed };
+  return { messages: said.length, people: people.size, cards: cardsNamed };
 }
 
 export function subtitleFor(s: StripStats): string {

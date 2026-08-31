@@ -56,16 +56,45 @@ export function truncateQuote(text: string): string {
 }
 
 /**
+ * How soon someone has to speak after an unprompted post for it to count as
+ * having landed. Twenty minutes is generous for a channel this size: a reply
+ * an hour later is a new conversation, not an answer to that one.
+ */
+export const ENGAGEMENT_WINDOW_MS = 20 * 60 * 1000;
+
+/**
+ * True when a person said something after this broadcast, inside the window.
+ *
+ * The recap is a record of the room talking, and PEPEDAWN volunteering an X
+ * post into a silent channel is the opposite of that: it is the room *not*
+ * talking, with the bot filling the gap. Quoting those back as highlights
+ * makes a quiet day look busy and hands the bot a panel for talking to
+ * itself. When somebody answers, it stops being furniture and becomes an
+ * exchange, and then it belongs in the strip.
+ */
+export function broadcastLanded(turns: DayTurn[], index: number): boolean {
+  const at = turns[index].at;
+  for (let i = index + 1; i < turns.length; i++) {
+    const next = turns[i];
+    if (next.at - at > ENGAGEMENT_WINDOW_MS) return false;
+    if (next.role === 'user') return true;
+  }
+  return false;
+}
+
+/**
  * Turns worth showing at all: long enough to carry something, not a bare
- * command, and not from anyone who has asked to be left out.
+ * command, not from anyone who has asked to be left out, and not the bot
+ * broadcasting into an empty room unless somebody answered it.
  */
 export function eligibleTurns(turns: DayTurn[], optedOut: string[] = []): DayTurn[] {
   const out = new Set(optedOut.map((h) => h.toLowerCase().replace(/^@/, '')));
-  return turns.filter((t) => {
+  return turns.filter((t, i) => {
     const text = (t.text || '').trim();
     if (text.length < 12) return false;
     if (/^\//.test(text)) return false;
     if (t.author && out.has(t.author.toLowerCase().replace(/^@/, ''))) return false;
+    if (t.kind === 'broadcast' && !broadcastLanded(turns, i)) return false;
     return true;
   });
 }

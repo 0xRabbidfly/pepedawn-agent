@@ -22,6 +22,12 @@ export interface DayTurn {
   text: string;
   /** Epoch ms. */
   at: number;
+  /**
+   * Set on anything PEPEDAWN said with nobody asking — a volunteered X post,
+   * a periodic showcase. The recap treats these differently from a reply:
+   * the bot talking to itself is not the day, it is furniture.
+   */
+  kind?: 'broadcast';
 }
 
 /** Turns older than this are dropped on the next prune. */

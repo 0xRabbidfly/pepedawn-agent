@@ -5,6 +5,28 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.7.8] - 2026-08-31
+
+### Changed
+
+- **The recap no longer quotes the bot talking to itself.** A volunteered X
+  post — the "quiet in here, this turned up on X" one — is by definition the
+  room *not* talking, with PEPEDAWN filling the gap. Quoting those back as
+  highlights of the day made a silent day look busy and handed the bot a panel
+  for its own broadcast.
+
+  Unprompted posts are now marked `kind: 'broadcast'` in the day log and are
+  ineligible **unless a person speaks within 20 minutes of one**. Then it is no
+  longer furniture, it is an exchange someone joined, and both halves can be
+  quoted. A reply an hour later is a new conversation, not an answer to that
+  post, and does not rescue it; nor does the bot following itself.
+
+  Broadcasts are also excluded from the message count, so a quiet day carrying
+  four volunteered posts no longer opens with "4 messages".
+
+  The bot answering a person is untouched — "duh pepedawn are you bot?" and
+  what it said back are a conversation, and exactly what the strip is for.
+
 ## [5.7.7] - 2026-08-31
 
 ### Fixed

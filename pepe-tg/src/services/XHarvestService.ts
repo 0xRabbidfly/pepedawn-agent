@@ -263,6 +263,9 @@ export class XHarvestService extends Service {
             role: 'bot',
             text: card.text.replace(/<[^>]+>/g, ''),
             at: Date.now(),
+            // Nobody asked for this one. The recap skips it unless somebody
+            // in the room answered it.
+            kind: 'broadcast',
           });
           logger.info(`XHarvest volunteered ${post.id} to ${roomId}`);
         }
