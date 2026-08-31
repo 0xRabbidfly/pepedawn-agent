@@ -92,3 +92,7 @@ pepe-tg/src/data/participants.json
 # Recap working state (per-machine, like the other runtime logs)
 pepe-tg/src/data/day-log.jsonl
 pepe-tg/src/data/recap-state.json
+# Learned pairing of Telegram chat -> ElizaOS room. Untracked and NOT ignored
+# until now, which meant deploy's `git clean -fd` deleted it on every release —
+# and the nightly recap depends on it surviving the 02:00 restart.
+pepe-tg/src/data/room-map.json
