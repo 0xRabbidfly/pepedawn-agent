@@ -5,6 +5,24 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.7.7] - 2026-08-31
+
+### Fixed
+
+- **PM2 could not find `elizaos`, and the bot crash-looped 27 times.** PM2 hands
+  the app whatever PATH its daemon was started with. A daemon started from a
+  non-interactive shell has no `~/.bun/bin`, so `start-bot.sh` reached
+  `elizaos start`, the shell could not resolve it, and the process died four
+  seconds after printing "Starting bot…" — with nothing on stderr, which is why
+  the logs showed only the banner repeating. The same command run by hand in a
+  login shell worked perfectly throughout, which is what made it confusing.
+
+  PATH is now pinned in `ecosystem.config.cjs`, so the app no longer depends on
+  how the daemon was launched or on whoever last restarted it remembering to
+  export it. PROMOTION.md has warned since 5.3 that non-interactive SSH does
+  not load the profile; this is the same fact biting from inside PM2 rather
+  than from a deploy command.
+
 ## [5.7.6] - 2026-08-31
 
 ### Fixed
