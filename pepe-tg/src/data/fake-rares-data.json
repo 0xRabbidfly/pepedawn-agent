@@ -9531,5 +9531,21 @@
       "no_issuance",
       "awaiting_formal_issuance"
     ]
+  },
+  {
+    "asset": "TRIPLEMIKE",
+    "series": 18,
+    "card": 42,
+    "ext": "jpg",
+    "artist": null,
+    "artistSlug": null,
+    "supply": null,
+    "issuance": null,
+    "imageUri": "https://fakeraredirectory.com/wp-content/uploads/2026/09/triplemike.jpg?w=400",
+    "issues": [
+      "no_artist",
+      "no_supply",
+      "no_issuance"
+    ]
   }
 ]
