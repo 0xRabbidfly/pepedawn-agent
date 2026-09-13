@@ -66,6 +66,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   the server, because this repository is public and a file describing real
   people by id would unmask them. `characters.example.json` documents the format.
 
+- **PEPEDAWN is one notch more eccentric.** It was written as the room's host —
+  "warm, dry, culturally fluent" — and it sounded like one. It is now written as
+  one of the forum's characters: peculiar habits, slightly strange opinions, the
+  unexpected image over the obvious line, and a half-suspicion that it hatched
+  from the FREEDOMKEK dispenser. At most one strange turn per reply, and not in
+  every reply.
+
+  The oddness lives in its voice and its own self-mythology, never in facts. The
+  prompts say so outright: nothing may be invented about real cards, artists,
+  people, prices or history, and exact facts stay exact. Card-fact and story
+  answers get a lighter version of the same notch. Length limits, the no-ranking
+  rule and the no-lecturing rule are unchanged.
+
+  The personality people read is set in the reply prompts (chat, card facts,
+  story), not in `pepedawn.ts` — nothing in the live reply path reads that file's
+  system, bio or style. It is kept consistent and now says where the voice
+  actually lives, so the next change lands where it will be heard.
+
 ## [5.7.10] - 2026-08-31
 
 ### Changed
