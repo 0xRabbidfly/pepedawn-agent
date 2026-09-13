@@ -40,6 +40,7 @@ export interface AnyCardInfo {
   artist: string | null;
   supply: number | null;
   issuance?: string | null;
+  ext: string | null;
   collection: Collection;
 }
 
@@ -53,6 +54,7 @@ function flatten(cards: readonly any[], collection: Collection): AnyCardInfo[] {
       artist: c.artist ?? null,
       supply: typeof c.supply === 'number' ? c.supply : null,
       issuance: c.issuance ?? null,
+      ext: c.ext ?? null,
       collection,
     }));
 }

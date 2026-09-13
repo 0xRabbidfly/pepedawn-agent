@@ -5,6 +5,32 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.8.1] - 2026-09-13
+
+### Fixed
+
+- **GIF cards play again.** FAKEVIBES and every other animated card had been
+  reaching the room as a video that lasted zero seconds and would not play. The
+  GIF was uploaded with no filename, telegraf named it `animation.mp4`, and
+  Telegram took the name at its word: GIF bytes filed as a square video with no
+  duration. All 236 GIF uploads in the production logs came back that way. The
+  upload is named `.gif` now, and Telegram returns a looping animation.
+
+- **A cached GIF no longer fails in the official channel first.** A cached
+  file_id was sent according to the card's extension, and a check that took
+  `BAAC…` — a video — for a document sent GIF cards with `sendDocument`. The
+  channel does not let members post files, so that failed with "not enough
+  rights to send documents", 288 times since November. Each failure fell back
+  to a fresh upload, which repeated the broken one and cached it again. A cached
+  id is now sent as what the id itself says it is, so a big GIF that was
+  converted to MP4 goes out as a video.
+
+- **The broken uploads are dropped, once.** On first boot, every video id cached
+  against a GIF card — 262 in production, across all three collections — is
+  removed, and the card uploads properly on its next request. GIFs large enough
+  to be converted re-convert once. A marker beside the cache,
+  `telegram-file-ids.gif-videos-dropped`, keeps it from running again.
+
 ## [5.8.0] - 2026-09-12
 
 ### Changed

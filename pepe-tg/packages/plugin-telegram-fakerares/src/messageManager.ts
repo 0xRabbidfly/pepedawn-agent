@@ -54,6 +54,7 @@ async function getFileIdCache() {
       telegramFileIdCache = {
         getTelegramFileId: () => null,
         saveTelegramFileId: () => {},
+        fileIdKind: () => null,
         extractFileId: () => null,
       };
     }
@@ -332,12 +333,17 @@ export class MessageManager {
           const cache = await getFileIdCache();
           const cachedFileId = cache.getTelegramFileId(assetName);
           if (cachedFileId) {
-            // Detect file_id type from prefix
-            const isDocumentId = cachedFileId.startsWith('BQAC') || cachedFileId.startsWith('BAAC');
+            // Send the id as what it is, not as what the card's extension suggests.
+            // A GIF card holds a video id when the GIF was big enough to convert to
+            // MP4, and sending that as a document fails in the official channel,
+            // where members may not post files.
+            const kind: string | null =
+              cache.fileIdKind(cachedFileId) ??
+              (isVideo ? 'video' : isGif ? 'animation' : isImage ? 'photo' : null);
             
             try {
               let sentMessage: any;
-              if (isVideo) {
+              if (kind === 'video') {
                 sentMessage = await ctx.replyWithVideo(cachedFileId, {
                 caption: normalizedText || undefined,
                 supports_streaming: true,
@@ -345,24 +351,19 @@ export class MessageManager {
                 reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
                 ...Markup.inlineKeyboard(telegramButtons),
               });
-            } else if (isGif) {
-              // CRITICAL FIX: If Telegram returned this GIF as a document, use replyWithDocument
-              // This happens when Telegram decides a GIF doesn't meet animation criteria (size, format, etc)
-              if (isDocumentId) {
-                logger.debug(`📄 Using document method for ${assetName} (Telegram classified this GIF as document)`);
-                sentMessage = await ctx.replyWithDocument(cachedFileId, {
-                  caption: normalizedText || undefined,
-                  reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
-                  ...Markup.inlineKeyboard(telegramButtons),
-                });
-              } else {
-                sentMessage = await ctx.replyWithAnimation(cachedFileId, {
-                  caption: normalizedText || undefined,
-                  reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
-                  ...Markup.inlineKeyboard(telegramButtons),
-                });
-              }
-            } else if (isImage) {
+            } else if (kind === 'animation') {
+              sentMessage = await ctx.replyWithAnimation(cachedFileId, {
+                caption: normalizedText || undefined,
+                reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
+                ...Markup.inlineKeyboard(telegramButtons),
+              });
+            } else if (kind === 'document') {
+              sentMessage = await ctx.replyWithDocument(cachedFileId, {
+                caption: normalizedText || undefined,
+                reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
+                ...Markup.inlineKeyboard(telegramButtons),
+              });
+            } else if (kind === 'photo') {
               sentMessage = await ctx.replyWithPhoto(cachedFileId, {
                 caption: normalizedText || undefined,
                 ...CARD_DIMENSIONS,
@@ -486,7 +487,7 @@ export class MessageManager {
               const fileBuffer = fs.readFileSync(localPath);
               
               await sendMediaAndCache(assetName, () =>
-                ctx.replyWithAnimation(Input.fromBuffer(fileBuffer), {
+                ctx.replyWithAnimation(Input.fromBuffer(fileBuffer, path.basename(localPath)), {
                   caption: normalizedText || undefined,
                   reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
                   ...Markup.inlineKeyboard(telegramButtons),
@@ -518,8 +519,12 @@ export class MessageManager {
                   throw new Error(`Invalid content-type or size: ${contentType}, ${ab.byteLength} bytes`);
                 }
                 
+                // The upload needs a real name. telegraf calls a nameless one
+                // "animation.mp4", and Telegram files GIF bytes under that name as a
+                // zero-second video that never plays. Named .gif, it is an animation.
+                const uploadExt = /image\/(gif|jpe?g|png|webp)/.exec(contentType)?.[1] ?? 'gif';
                 const result = await sendMediaAndCache(assetName, () =>
-                  ctx.replyWithAnimation(Input.fromBuffer(Buffer.from(ab)), {
+                  ctx.replyWithAnimation(Input.fromBuffer(Buffer.from(ab), `${assetName || 'animation'}.${uploadExt}`), {
                 caption: normalizedText || undefined,
                     reply_parameters: replyToMessageId ? { message_id: replyToMessageId } : undefined,
                     ...Markup.inlineKeyboard(telegramButtons),
@@ -1220,10 +1225,10 @@ export class MessageManager {
         const cache = await getFileIdCache();
         let cachedFileId = cache.getTelegramFileId(card.asset);
         
-        // Skip document-type file_ids in carousel - bot may not have document permissions
-        // Document file_ids start with BAAC or BQAC
-        if (cachedFileId && (cachedFileId.startsWith('BAAC') || cachedFileId.startsWith('BQAC'))) {
-          logger.info(`⚠️ Skipping document-type file_id for ${card.asset} in carousel (permission issue), will convert instead`);
+        // Skip document file_ids in carousel - the bot may not send documents in the
+        // official channel. Video ids are fine: they go out as videos.
+        if (cachedFileId && cache.fileIdKind(cachedFileId) === 'document') {
+          logger.info(`⚠️ Skipping document file_id for ${card.asset} in carousel (no document rights), will convert instead`);
           cachedFileId = null; // Force re-upload with conversion
         }
         

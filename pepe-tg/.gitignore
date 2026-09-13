@@ -16,6 +16,7 @@ src/data/xcp-dispensers.json
 
 # Telegram file_id cache (bot-specific, not shared)
 src/data/telegram-file-ids.json
+src/data/telegram-file-ids.gif-videos-dropped
 dist/data/telegram-file-ids.json
 src/data/lore-ledger.json
 src/data/rate-limits.json
