@@ -491,16 +491,27 @@ describe('a harvested post is woven into the reply, not dropped under it', () =>
     return new (SmartRouterService as any)({ agentId: 'test', getService: () => null } as any) as any;
   };
 
+  /**
+   * These posts are dated from the real clock, not from NOW.
+   *
+   * `weaveableXPost` reads `Date.now()` itself — it has no clock to inject — and
+   * drops anything older than the 14-day harvest horizon. Seeded at NOW (20
+   * August) the posts were fresh when this was written and quietly expired on 3
+   * September; from then on both tests failed on every run, and would have
+   * blocked every commit, because this file is in the pre-commit hook.
+   */
+  const fresh = () => Date.now() - DAY;
+
   it('offers nothing when the card index already answered exactly', async () => {
     const router = await makeRouter();
-    mergePosts([post({ id: 'x', cards: ['FAKEHAIRPEP'], text: 'GM FAKEHAIRPEP is underrated' })], NOW);
+    mergePosts([post({ id: 'x', cards: ['FAKEHAIRPEP'], text: 'GM FAKEHAIRPEP is underrated', postedAt: fresh() })], Date.now());
     expect(router.weaveableXPost('who made FAKEHAIRPEP?', 'room', true)).toBeNull();
     expect(router.weaveableXPost('what do you make of FAKEHAIRPEP', 'room', false)).not.toBeNull();
   });
 
   it('spends the post only when the reply credits its author', async () => {
     const router = await makeRouter();
-    mergePosts([post({ id: 'y', author: 'subterranean_1', cards: ['FAKEHAIRPEP'] })], NOW);
+    mergePosts([post({ id: 'y', author: 'subterranean_1', cards: ['FAKEHAIRPEP'], postedAt: fresh() })], Date.now());
     const chosen = router.weaveableXPost('thoughts on FAKEHAIRPEP', 'r1', false);
     expect(chosen).not.toBeNull();
 

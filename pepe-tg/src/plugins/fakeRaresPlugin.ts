@@ -16,6 +16,7 @@ import { RecapService } from '../services/RecapService';
 import { runRecap } from '../actions/recapCommand';
 import { sendRecapVideo, stripHtml } from '../utils/recapSend';
 import { rememberRoom } from '../conversation/roomMap';
+import { sendReaction } from '../utils/reactions';
 import {
   noteRoom,
   isXActivityQuestion, buildDigest, formatDigestForTelegram,
@@ -597,9 +598,22 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
 
       case 'NORESPONSE': {
         markHandled();
+        // Only set when retrieval came back empty for a post nobody aimed at the
+        // bot. Ordinary silence stays silent: reacting to every "gm" and "lol"
+        // the classifier waves through would be its own kind of noise.
+        if (plan.reaction) {
+          const token = (runtime.getSetting('TELEGRAM_BOT_TOKEN') as string) || '';
+          const reacted = await sendReaction(
+            token,
+            telegramChatId(params),
+            params?.ctx?.message?.message_id,
+            plan.reaction
+          );
+          logger.info(`[SmartRouter] Unaddressed post with no answer: reacted ${plan.reaction} (${reacted ? 'sent' : 'not sent'}).`);
+        }
         await sendTelemetry({ logLore: false });
         await logDecision('handled');
-        logger.info('[SmartRouter] NORESPONSE plan acknowledged silently (no emoji).');
+        if (!plan.reaction) logger.info('[SmartRouter] NORESPONSE plan acknowledged silently (no emoji).');
         return true;
       }
 

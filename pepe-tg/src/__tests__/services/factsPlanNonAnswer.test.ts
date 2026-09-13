@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'bun:test';
 import type { IAgentRuntime } from '@elizaos/core';
-import { SmartRouterService } from '../../services/SmartRouterService';
+import { SmartRouterService, nonAnswerOutcome } from '../../services/SmartRouterService';
+import { REACTION_EMOJI, reactionFor, sendReaction } from '../../utils/reactions';
 import { KnowledgeOrchestratorService } from '../../services/KnowledgeOrchestratorService';
 import { CLARIFICATION_MESSAGE } from '../../utils/clarification';
 
@@ -97,5 +98,99 @@ describe('FACTS plan with a named card', () => {
     const plan = await router.buildFactsPlan('what about that thing', 'room-facts-3');
 
     expect(plan.story).toBe(CLARIFICATION_MESSAGE);
+  });
+});
+
+describe('what happens to a non-answer', () => {
+  // The four real cases, 3-12 September: two posts to the room (a TRIPLEMIKE dex
+  // order link, a HONDACIVIC burn auction) and two clear questions the bot could
+  // not answer. All four got "Not sure what you're after".
+
+  it('marks the plan when no card was named and retrieval came back empty', async () => {
+    const router = routerWithKnowledge({
+      story: CLARIFICATION_MESSAGE, sourcesLine: '', hasWikiOrMemory: false,
+      isNonAnswer: true, metrics: NO_METRICS,
+    });
+    const plan = await router.buildFactsPlan(
+      '🏁 24-HOUR BURN AUCTION — HONDACIVIC.TUNER 🏁 One of one.', 'room-na-1'
+    );
+    expect(plan.isNonAnswer).toBe(true);
+  });
+
+  it('never marks a named card, because a named card always has facts', async () => {
+    const router = routerWithKnowledge({
+      story: CLARIFICATION_MESSAGE, sourcesLine: '', hasWikiOrMemory: false,
+      isNonAnswer: true, metrics: NO_METRICS,
+    });
+    const plan = await router.buildFactsPlan('tell me about PEPEPUNKROCK', 'room-na-2');
+    expect(plan.isNonAnswer).toBe(false);
+  });
+
+  it('sends a real answer as it is', () => {
+    expect(nonAnswerOutcome(false, false)).toBe('send');
+    expect(nonAnswerOutcome(false, true)).toBe('send');
+  });
+
+  it('turns a non-answer to someone talking to the bot into conversation', () => {
+    // "pepedawn whats the last date scrilla wrote in fakerares chat ?" was clear.
+    // The bot not knowing is not the asker being vague.
+    expect(nonAnswerOutcome(true, true)).toBe('chat');
+  });
+
+  it('reacts, and says nothing, to a post nobody aimed at the bot', () => {
+    expect(nonAnswerOutcome(true, false)).toBe('react');
+  });
+});
+
+describe('reactions', () => {
+  it('fires on market activity and looks at everything else', () => {
+    expect(reactionFor('24-HOUR BURN AUCTION — opening bid 500,000')).toBe('🔥');
+    expect(reactionFor('For those wanting to collect TRIPLEMIKE I just opened a dex order.')).toBe('🔥');
+    expect(reactionFor('look at this https://x.com/someone/status/1')).toBe('👀');
+  });
+
+  it('only ever picks a reaction Telegram accepts', () => {
+    // Anything outside the Bot API set is a 400. There is no frog in it.
+    for (const text of ['', 'gm', 'auction', 'https://x.com/a', 'random words here']) {
+      expect(REACTION_EMOJI as readonly string[]).toContain(reactionFor(text));
+    }
+  });
+
+  it('sends setMessageReaction with the emoji on the right message', async () => {
+    const realFetch = globalThis.fetch;
+    let url = '';
+    let body: any = null;
+    globalThis.fetch = (async (u: any, init: any) => {
+      url = String(u);
+      body = JSON.parse(init.body);
+      return new Response('{"ok":true}', { status: 200 });
+    }) as any;
+    try {
+      expect(await sendReaction('TOKEN', '-1001586933558', 4242, '🔥')).toBe(true);
+      expect(url).toBe('https://api.telegram.org/botTOKEN/setMessageReaction');
+      expect(body).toEqual({
+        chat_id: '-1001586933558',
+        message_id: 4242,
+        reaction: [{ type: 'emoji', emoji: '🔥' }],
+      });
+    } finally {
+      globalThis.fetch = realFetch;
+    }
+  });
+
+  it('fails quietly, never loudly — a refused reaction must not become a reply', async () => {
+    const realFetch = globalThis.fetch;
+    try {
+      globalThis.fetch = (async () => new Response('Bad Request: REACTION_INVALID', { status: 400 })) as any;
+      expect(await sendReaction('TOKEN', '-100', 1, '👀')).toBe(false);
+
+      globalThis.fetch = (async () => { throw new Error('network down'); }) as any;
+      expect(await sendReaction('TOKEN', '-100', 1, '👀')).toBe(false);
+    } finally {
+      globalThis.fetch = realFetch;
+    }
+    expect(await sendReaction('', '-100', 1, '👀')).toBe(false);
+    expect(await sendReaction('TOKEN', undefined, 1, '👀')).toBe(false);
+    expect(await sendReaction('TOKEN', '-100', undefined, '👀')).toBe(false);
   });
 });

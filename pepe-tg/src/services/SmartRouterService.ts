@@ -10,6 +10,7 @@ import {
   type RetrieveCandidatesOptions,
 } from '../router/retrieveCandidates';
 import { detectCardFastPath } from '../router/cardFastPath';
+import { reactionFor } from '../utils/reactions';
 import { KnowledgeOrchestratorService } from './KnowledgeOrchestratorService';
 import { callTextModel } from '../utils/modelGateway';
 import {
@@ -70,9 +71,41 @@ export interface SmartRoutingPlan {
   primaryCardAsset?: string;
   cardSummary?: string;
   cardMatches?: Array<{ asset: string; reason?: string }>;
+  /** Retrieval found nothing and the story is the clarification stand-in. */
+  isNonAnswer?: boolean;
+  /** React to the message with this emoji instead of replying. */
+  reaction?: string;
   metadata?: {
     classifierRaw?: string;
   };
+}
+
+/**
+ * What to do when a FACTS or LORE plan comes back empty-handed.
+ *
+ * The clarification — "Not sure what you're after. Name a card, or ask me
+ * about an artist, a series, or a bit of history." — went to the room four
+ * times in nine days, and never once as an answer to anything:
+ *
+ *   - a dex order link for TRIPLEMIKE, posted to the room
+ *   - a 677-character HONDACIVIC burn auction, posted to the room
+ *   - "pepedawn whats the last date scrilla wrote in fakerares chat ?"
+ *   - "what have you done to scrilla ?"
+ *
+ * The first two were not addressed to the bot at all; the classifier read an
+ * asset-shaped word as a card lookup. The last two were perfectly clear — the
+ * bot simply did not know — and "not sure what you're after" blamed the person
+ * for the bot's gap.
+ *
+ * So: a real answer is sent. A non-answer to someone talking to the bot
+ * becomes conversation, in its own voice, where it can say it does not know. A
+ * non-answer to a post nobody aimed at it becomes a reaction and nothing more.
+ */
+export type NonAnswerOutcome = 'send' | 'chat' | 'react';
+
+export function nonAnswerOutcome(isNonAnswer: boolean, addressed: boolean): NonAnswerOutcome {
+  if (!isNonAnswer) return 'send';
+  return addressed ? 'chat' : 'react';
 }
 
 const HISTORY_LIMIT = 60;
@@ -456,6 +489,37 @@ export class SmartRouterService extends Service {
     return NORESPONSE_FALLBACK_EMOJIS[idx];
   }
 
+  private async settleNonAnswer(
+    plan: SmartRoutingPlan,
+    trimmed: string,
+    query: string,
+    roomId: string,
+    retrieval: RetrieveCandidatesResult | null,
+    classifierRaw: string | undefined,
+    addressedConversationally: boolean
+  ): Promise<SmartRoutingPlan> {
+    const outcome = nonAnswerOutcome(
+      !!plan.isNonAnswer,
+      this.addressesTheBot(trimmed, addressedConversationally)
+    );
+    if (outcome === 'send') return plan;
+
+    if (outcome === 'chat') {
+      logger.debug({ query: trimmed }, '[SmartRouter] No facts for a question to the bot; answering conversationally');
+      return this.buildChatPlan(query, roomId, retrieval, classifierRaw);
+    }
+
+    logger.debug({ query: trimmed }, '[SmartRouter] No facts for an unaddressed post; reacting instead of replying');
+    return {
+      kind: 'NORESPONSE',
+      intent: 'NORESPONSE',
+      reason: 'facts_non_answer_react',
+      retrieval,
+      reaction: reactionFor(trimmed),
+      metadata: { classifierRaw },
+    };
+  }
+
   private async buildFactsPlan(
     userText: string,
     roomId: string,
@@ -549,6 +613,8 @@ export class SmartRouterService extends Service {
       intent: 'FACTS',
       reason: 'classifier_facts',
       primaryCardAsset: mentionedCard ?? undefined,
+      // A named card always has facts to give, so it is never a non-answer.
+      isNonAnswer: !mentionedCard && !!result.isNonAnswer,
       retrieval,
       selectedCandidates: this.selectTopCandidates(retrieval, 3),
       story,
@@ -1363,7 +1429,10 @@ Say briefly why it is worth a look — something true about the art, the artist 
       }
       // We want normal retrieval to fetch facts about the mentioned card from memories/wiki.
       // Use cleaned query (with PEPEDAWN stripped if bot chat) for plan building
-      return this.buildFactsPlan(queryForRetrieval, roomId, retrieval, classifierRaw);
+      return this.settleNonAnswer(
+        await this.buildFactsPlan(queryForRetrieval, roomId, retrieval, classifierRaw),
+        trimmed, queryForRetrieval, roomId, retrieval, classifierRaw, addressedConversationally
+      );
     }
 
     if (intent === 'LORE') {
@@ -1372,7 +1441,10 @@ Say briefly why it is worth a look — something true about the art, the artist 
       // prompt and composer, and drove 69% of total LLM spend. The FACTS path
       // now writes as a collector rather than a reference entry, so it tells
       // the story without a second stack behind it.
-      return this.buildFactsPlan(queryForRetrieval, roomId, retrieval, classifierRaw);
+      return this.settleNonAnswer(
+        await this.buildFactsPlan(queryForRetrieval, roomId, retrieval, classifierRaw),
+        trimmed, queryForRetrieval, roomId, retrieval, classifierRaw, addressedConversationally
+      );
     }
 
     // Intent must be CHAT at this point

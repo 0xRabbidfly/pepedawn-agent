@@ -5,6 +5,46 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.8.0] - 2026-09-12
+
+### Changed
+
+- **"Not sure what you're after" is gone from the room.** Between 3 and 12
+  September the clarification stand-in reached the channel four times, and not
+  once as an answer to anything:
+
+  - a TRIPLEMIKE dex order link, posted to the room
+  - a 677-character HONDACIVIC burn auction, posted to the room
+  - "pepedawn whats the last date scrilla wrote in fakerares chat ?"
+  - "what have you done to scrilla ?"
+
+  The first two were never addressed to the bot. The classifier read an
+  asset-shaped word — neither is an indexed card — as a card lookup, retrieval
+  found nothing, and the bot told someone sharing an auction that they had been
+  unclear. The last two were perfectly clear; the bot simply did not know, and
+  the message blamed the asker for the gap.
+
+  A FACTS or LORE plan that comes back empty is now settled by who it was for:
+
+  - **Someone talking to the bot** (mention, reply, DM, or "pepedawn" used as a
+    name) gets a conversational answer in its own voice, where it can say it
+    does not know.
+  - **A post nobody aimed at the bot** gets an emoji reaction and nothing else —
+    🔥 for market activity (auctions, burns, bids, drops, listings, dex
+    orders), 👀 for anything else worth a look. No message, no notification,
+    nothing to reply to.
+
+  A named card is never a non-answer: it always has facts to give, which was
+  already the rule since 5.6.2.
+
+### Added
+
+- **The bot can react to messages.** `setMessageReaction`, sent straight to the
+  Bot API, only from the path above. Ordinary silence stays silent — reacting to
+  every "gm" the classifier waves through would be its own kind of noise. The
+  emoji come only from the set Telegram accepts (there is no frog in it), and a
+  refused reaction fails quietly rather than turning into a reply.
+
 ## [5.7.10] - 2026-08-31
 
 ### Changed
