@@ -11,6 +11,7 @@ import {
 } from '../router/retrieveCandidates';
 import { detectCardFastPath } from '../router/cardFastPath';
 import { reactionFor } from '../utils/reactions';
+import { characterFor, characterNote, type Character } from '../conversation/characters';
 import { KnowledgeOrchestratorService } from './KnowledgeOrchestratorService';
 import { callTextModel } from '../utils/modelGateway';
 import {
@@ -489,6 +490,21 @@ export class SmartRouterService extends Service {
     return NORESPONSE_FALLBACK_EMOJIS[idx];
   }
 
+  /** buildChatPlan, carrying the speaker's character when they have one. */
+  private buildChatPlanAs(
+    character: Character | undefined,
+    userText: string,
+    roomId: string,
+    retrieval: RetrieveCandidatesResult | null,
+    classifierRaw?: string,
+    options?: { tasteQuestion?: boolean; knownFact?: string; card?: string }
+  ): Promise<SmartRoutingPlan> {
+    return this.buildChatPlan(
+      userText, roomId, retrieval, classifierRaw,
+      character ? { ...options, character } : options
+    );
+  }
+
   private async settleNonAnswer(
     plan: SmartRoutingPlan,
     trimmed: string,
@@ -496,7 +512,8 @@ export class SmartRouterService extends Service {
     roomId: string,
     retrieval: RetrieveCandidatesResult | null,
     classifierRaw: string | undefined,
-    addressedConversationally: boolean
+    addressedConversationally: boolean,
+    character?: Character
   ): Promise<SmartRoutingPlan> {
     const outcome = nonAnswerOutcome(
       !!plan.isNonAnswer,
@@ -506,7 +523,7 @@ export class SmartRouterService extends Service {
 
     if (outcome === 'chat') {
       logger.debug({ query: trimmed }, '[SmartRouter] No facts for a question to the bot; answering conversationally');
-      return this.buildChatPlan(query, roomId, retrieval, classifierRaw);
+      return this.buildChatPlanAs(character, query, roomId, retrieval, classifierRaw);
     }
 
     logger.debug({ query: trimmed }, '[SmartRouter] No facts for an unaddressed post; reacting instead of replying');
@@ -972,7 +989,7 @@ export class SmartRouterService extends Service {
     roomId: string,
     retrieval: RetrieveCandidatesResult | null,
     classifierRaw?: string,
-    options?: { tasteQuestion?: boolean; knownFact?: string; card?: string }
+    options?: { tasteQuestion?: boolean; knownFact?: string; card?: string; character?: Character }
   ): Promise<SmartRoutingPlan> {
     const history = this.getTurnsForPrompt(roomId, 12);
     const recentTranscript = this.formatRecentChat(history, 12);
@@ -1031,6 +1048,7 @@ export class SmartRouterService extends Service {
         ? `What you know that is relevant (retrieved just now):\n${throwbackNotes}`
         : 'What you know that is relevant: (nothing retrieved)',
       '',
+      options?.character ? characterNote(options.character) : '',
       roomMemories ? `What you remember about people here:\n${roomMemories}\n` : '',
       options?.knownFact
         ? `THIS IS THE ANSWER, and it is exact — state it, do not hedge it, do not add specifications around it:\n${options.knownFact}\nWrap it in one conversational sentence. Do not turn it into a fact sheet.\n`
@@ -1147,8 +1165,13 @@ Say briefly why it is worth a look — something true about the art, the artist 
     roomId: string,
     /** True when the message @mentioned the bot, replied to it, or is a DM. */
     addressedConversationally = false,
+    /** The sender's numeric Telegram id, when known. Used only to look up the character roster. */
+    speakerTelegramId?: string,
   ): Promise<SmartRoutingPlan> {
     const trimmed = text.trim();
+    // Resolved once and threaded through every conversational reply below, so a
+    // special character gets their register whichever rung answers them.
+    const character = characterFor(speakerTelegramId);
 
     // Questions the card index answers exactly — artist, issuance, supply,
     // series, an artist's largest or smallest card — are looked up, never
@@ -1165,7 +1188,7 @@ Say briefly why it is worth a look — something true about the art, the artist 
     // so the answer is a card drawn at random with something true said about it.
     if (this.isTasteQuestion(trimmed)) {
       logger.debug({ query: trimmed }, '[SmartRouter] Personal preference -> random card');
-      return this.buildChatPlan(trimmed, roomId, null, undefined, { tasteQuestion: true });
+      return this.buildChatPlanAs(character, trimmed, roomId, null, undefined, { tasteQuestion: true });
     }
 
     // Descriptive questions - "most red", "sexiest", "most psychedelic" - are
@@ -1179,7 +1202,7 @@ Say briefly why it is worth a look — something true about the art, the artist 
       const trait = collection === 'fake-rares' ? describeTraitMatch(trimmed) : null;
       if (trait) {
         logger.debug({ query: trimmed, asset: trait.asset }, '[SmartRouter] Visual trait match');
-        return this.buildChatPlan(trimmed, roomId, null, undefined, {
+        return this.buildChatPlanAs(character, trimmed, roomId, null, undefined, {
           knownFact: trait.fact,
           card: trait.asset,
         });
@@ -1204,7 +1227,7 @@ Say briefly why it is worth a look — something true about the art, the artist 
     const structured = answerCardQuery(trimmed, subject);
     if (structured) {
       logger.debug({ kind: structured.kind }, '[SmartRouter] Structured card query');
-      return this.buildChatPlan(trimmed, roomId, null, undefined, {
+      return this.buildChatPlanAs(character, trimmed, roomId, null, undefined, {
         knownFact: structured.fact,
         card: structured.asset,
       });
@@ -1220,7 +1243,7 @@ Say briefly why it is worth a look — something true about the art, the artist 
     // cannot be poisoned by what anyone, including the bot, said earlier.
     if (asksAttributionOfAnUnnamedCard(trimmed)) {
       logger.debug({ query: trimmed }, '[SmartRouter] Attribution asked of no resolvable card');
-      return this.buildChatPlan(trimmed, roomId, null, undefined, {
+      return this.buildChatPlanAs(character, trimmed, roomId, null, undefined, {
         knownFact:
           'Which card do you mean? Artists are credited from the card index, never guessed at.',
       });
@@ -1431,7 +1454,7 @@ Say briefly why it is worth a look — something true about the art, the artist 
       // Use cleaned query (with PEPEDAWN stripped if bot chat) for plan building
       return this.settleNonAnswer(
         await this.buildFactsPlan(queryForRetrieval, roomId, retrieval, classifierRaw),
-        trimmed, queryForRetrieval, roomId, retrieval, classifierRaw, addressedConversationally
+        trimmed, queryForRetrieval, roomId, retrieval, classifierRaw, addressedConversationally, character
       );
     }
 
@@ -1443,13 +1466,13 @@ Say briefly why it is worth a look — something true about the art, the artist 
       // the story without a second stack behind it.
       return this.settleNonAnswer(
         await this.buildFactsPlan(queryForRetrieval, roomId, retrieval, classifierRaw),
-        trimmed, queryForRetrieval, roomId, retrieval, classifierRaw, addressedConversationally
+        trimmed, queryForRetrieval, roomId, retrieval, classifierRaw, addressedConversationally, character
       );
     }
 
     // Intent must be CHAT at this point
     // Use cleaned query (with PEPEDAWN stripped if bot chat) for plan building
-    return this.buildChatPlan(queryForRetrieval, roomId, retrieval, classifierRaw);
+    return this.buildChatPlanAs(character, queryForRetrieval, roomId, retrieval, classifierRaw);
   }
 
   private queryExplicitlyNamesCard(text: string, cardAsset: string): boolean {

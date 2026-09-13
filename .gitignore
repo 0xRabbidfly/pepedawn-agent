@@ -96,3 +96,8 @@ pepe-tg/src/data/recap-state.json
 # until now, which meant deploy's `git clean -fd` deleted it on every release —
 # and the nightly recap depends on it surviving the 02:00 restart.
 pepe-tg/src/data/room-map.json
+
+# The character roster maps Telegram ids to descriptions of real people. The repo
+# is public, so it lives on the server only. Ignored rather than merely untracked,
+# or deploy's `git clean -fd` deletes it on every release (see room-map.json).
+pepe-tg/src/data/characters.json

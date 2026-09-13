@@ -1231,7 +1231,10 @@ export const fakeRaresPlugin: Plugin = {
                   const plan = await smartRouter.planRouting(
                   text,
                   message.roomId,
-                  !!(isReplyToBot || triggers.hasBotMention || isDirectMessage)
+                  !!(isReplyToBot || triggers.hasBotMention || isDirectMessage),
+                  // The numeric sender id, for the character roster. Never the
+                  // display name: anyone can set theirs to match someone else's.
+                  params.ctx?.message?.from?.id?.toString()
                 );
                   smartRouterHandled = await runPlanWithTelemetry(plan);
                 }

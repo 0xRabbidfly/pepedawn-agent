@@ -1,0 +1,10 @@
+{
+  "_comment": "Copy to characters.json on the server. characters.json is gitignored: never commit real ids or descriptions of real people, because this repository is public. One entry per person PEPEDAWN should treat differently. telegramIds are numeric Telegram user ids as strings, and they are the ONLY thing that identifies someone: display names and usernames are ignored, because anyone can change theirs. guidance is plain language added to the reply prompt whenever that person is the one talking. The file is re-read when it changes, so no restart is needed.",
+  "characters": [
+    {
+      "name": "Example Regular",
+      "telegramIds": ["123456789"],
+      "guidance": "A long-time collector who loves a debate. Match their energy, rib them gently, and never be dismissive."
+    }
+  ]
+}

@@ -45,6 +45,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   emoji come only from the set Telegram accepts (there is no frog in it), and a
   refused reaction fails quietly rather than turning into a reply.
 
+- **A roster of the forum's special characters.** Some people need a different
+  register than everyone else. The first is Coit — the bot's creator and a born
+  provocateur. On 11 September he told PEPEDAWN he was going to assassinate
+  Elon, then that he had slit his throat, then asked whether to pull the knife
+  out, and the bot answered every message with fresh emergency-service
+  instructions in the public channel for six minutes. Those were sensible
+  replies to a stranger and exactly the wrong ones to him.
+
+  `src/data/characters.json` lists people by Telegram user id, each with
+  plain-language guidance that is added to the reply prompt whenever they are
+  the one talking. It is a list, not a special case, so any regular can be given
+  a register the same way. The file is re-read when it changes, so an edit takes
+  effect on the next message without a restart.
+
+  Identity is the numeric Telegram id and nothing else. Coit's display name is
+  literally "deleted account", which anyone can set; usernames can be released
+  and claimed. A roster keyed on names would hand the special treatment to
+  whoever typed the right one. The roster is also gitignored and lives only on
+  the server, because this repository is public and a file describing real
+  people by id would unmask them. `characters.example.json` documents the format.
+
 ## [5.7.10] - 2026-08-31
 
 ### Changed
