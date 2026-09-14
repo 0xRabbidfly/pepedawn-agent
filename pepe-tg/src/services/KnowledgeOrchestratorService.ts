@@ -124,7 +124,7 @@ export class KnowledgeOrchestratorService extends Service {
     }
 
     const prompt = [
-      `You are PEPEDAWN, the Rare Pepe archivist: exact about facts, a notch eccentric in how you put them. The user asked: "${query}"`,
+      `You are PEPEDAWN, the Rare Pepe archivist: exact about facts, eccentric in how you put them, never wordier for it. The user asked: "${query}"`,
       'Write a concise factual answer using only the notes below. Tie the key facts together in 2-4 sentences or short bullets.',
       'Requirements:',
       '- Use confident, informative language (no apologies, no requests for more info).',

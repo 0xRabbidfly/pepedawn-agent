@@ -41,6 +41,7 @@ import { stripCardNamePrefix } from '../utils/cardNamePrefixSanitizer';
 import type { IAgentRuntime } from '@elizaos/core';
 import { isBareBitcoinAddress, looksLikeAddressCallout } from '../utils/bitcoinAddress';
 import { observeUserMessage, observeBotMessage } from '../conversation/shadow';
+import { recordingReplies } from '../utils/commandReplies';
 
 // Track patched runtimes to avoid double-patching
 const patchedRuntimes = new WeakSet<any>();
@@ -248,18 +249,15 @@ async function runRouterCommand(command: string, context: SmartRouterExecutionCo
     },
   };
 
-  const originalCallback = wrapHandlerCallback(
-    typeof params.callback === 'function' ? (params.callback as HandlerCallback) : null
+  const wrappedCallback = recordingReplies(
+    wrapHandlerCallback(
+      typeof params.callback === 'function' ? (params.callback as HandlerCallback) : null
+    ),
+    (reply) => {
+      smartRouter.recordBotTurn(message.roomId, reply);
+      void observeBotMessage({ roomId: message.roomId, text: reply });
+    }
   );
-  const wrappedCallback = originalCallback
-    ? async (response: any) => {
-        await originalCallback(response);
-        if (typeof response?.text === 'string') {
-          smartRouter.recordBotTurn(message.roomId, response.text);
-          void observeBotMessage({ roomId: message.roomId, text: response.text });
-        }
-      }
-    : undefined;
 
   const commandParams: CommandHandlerParams = {
     runtime,
@@ -1080,7 +1078,14 @@ export const fakeRaresPlugin: Plugin = {
           // === STEP 2: COMMAND EXECUTION ===
 
           // Use command handler utility to reduce boilerplate
-          const cmdParams: CommandHandlerParams = { runtime, message, state: params.state, callback: baseCallback ?? undefined, ctx: params.ctx };
+          // Remember what a typed command showed, as a routed command already
+          // did. "/p" answered with PEPEMOON, and the next message - "Pepedawn
+          // says Nah" - reached the router with no moon in its history.
+          const commandCallback = recordingReplies(baseCallback, (reply) => {
+            smartRouter?.recordBotTurn(message.roomId, reply);
+            void observeBotMessage({ roomId: message.roomId, text: reply });
+          });
+          const cmdParams: CommandHandlerParams = { runtime, message, state: params.state, callback: commandCallback, ctx: params.ctx };
           
           // /help and /start commands (always mark as handled, even on validation failure)
           if (isHelp && await executeCommandAlways(helpCommand, cmdParams, '/help')) return;
