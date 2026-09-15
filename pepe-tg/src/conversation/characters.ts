@@ -36,6 +36,23 @@ export interface Character {
   telegramIds: string[];
   /** Plain-language guidance added to the reply prompt when they are speaking. */
   guidance: string;
+  /**
+   * Overrides for how much social memory keeps about them. Absent fields fall
+   * back to SOCIAL_MEMORY_CAP / SOCIAL_MEMORY_PER_DAY; `capture: false` stops
+   * anything new being remembered.
+   */
+  memory?: { cap?: number; perDay?: number; capture?: boolean };
+}
+
+function memoryOverride(value: any): Character['memory'] {
+  if (!value || typeof value !== 'object') return undefined;
+  const count = (n: unknown) => (Number.isInteger(n) && (n as number) >= 0 ? (n as number) : undefined);
+  const override = {
+    cap: count(value.cap),
+    perDay: count(value.perDay),
+    capture: typeof value.capture === 'boolean' ? value.capture : undefined,
+  };
+  return Object.values(override).some((v) => v !== undefined) ? override : undefined;
 }
 
 export function charactersPath(): string {
@@ -72,7 +89,12 @@ function roster(): Map<string, Character> {
       if (!entry || typeof entry.name !== 'string' || typeof entry.guidance !== 'string') continue;
       const ids = Array.isArray(entry.telegramIds) ? entry.telegramIds.map(String).filter(Boolean) : [];
       if (ids.length === 0 || !entry.guidance.trim()) continue;
-      const character: Character = { name: entry.name.trim(), telegramIds: ids, guidance: entry.guidance.trim() };
+      const character: Character = {
+        name: entry.name.trim(),
+        telegramIds: ids,
+        guidance: entry.guidance.trim(),
+        memory: memoryOverride(entry.memory),
+      };
       for (const id of ids) byId.set(id, character);
     }
     warned = false;

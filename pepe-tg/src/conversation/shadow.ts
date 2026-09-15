@@ -11,6 +11,9 @@
  *
  * Compare the resulting shadow-logs.jsonl against actual behaviour with
  * scripts/replay-cadence.ts, which reports the same metrics.
+ *
+ * Social memory used to hang off this module and so only ran with shadow on.
+ * It now reads the day log instead; see src/conversation/socialMemoryRuntime.ts
  */
 
 import { appendFileSync, existsSync, mkdirSync, writeFileSync } from 'fs';
@@ -20,8 +23,6 @@ import { readRoomTemperature } from './roomTemperature';
 import { FileRoomHistoryStore } from './fileRoomHistoryStore';
 import { RoomHistory } from './roomHistory';
 import { REGISTER_RANK, type ConversationTurn } from './types';
-import { FileSocialStore, SocialMemory, defaultSocialStorePath } from './socialMemoryRuntime';
-import type { ScoredMemory } from './socialMemory';
 
 /**
  * Output directory. Overridable so tests (and a future separate volume) do not
@@ -49,33 +50,6 @@ export function enforceEnabled(): boolean {
 }
 
 let history: RoomHistory | null = null;
-let social: SocialMemory | null = null;
-
-/**
- * Social memory, wired lazily so it picks up V5_SHADOW_DIR at first use.
- *
- * The capture model is supplied by the caller via setSocialCaptureModel(); with
- * none set, sessions are tracked but never sent to a model, so the feature is
- * inert rather than half-working.
- */
-export function getSocialMemory(): SocialMemory {
-  if (!social) {
-    social = new SocialMemory({
-      store: new FileSocialStore(defaultSocialStorePath()),
-      model: captureModel,
-      logPath: join(shadowDir(), 'social-capture.jsonl'),
-    });
-  }
-  return social;
-}
-
-let captureModel: ((prompt: string) => Promise<string>) | undefined;
-
-/** Supply the model used for session capture. */
-export function setSocialCaptureModel(fn: (prompt: string) => Promise<string>): void {
-  captureModel = fn;
-  social = null; // rebuild with the new model
-}
 
 function getHistory(): RoomHistory {
   if (!history) {
@@ -87,7 +61,6 @@ function getHistory(): RoomHistory {
 /** Test hook: drop cached state so a fresh directory is picked up. */
 export function resetShadowState(): void {
   history = null;
-  social = null;
 }
 
 function write(record: Record<string, unknown>): void {
@@ -114,8 +87,8 @@ export async function observeUserMessage(input: {
   roomId: string;
   text: string;
   author?: string;
-  /** Platform id of the speaker, so memories can be attributed. */
-  entityId?: string;
+  /** Numeric Telegram id of the speaker, so what they say can be attributed. */
+  authorId?: string;
   addressedBot: boolean;
   /** What the existing pipeline went on to do, for comparison. */
   actualHandled?: boolean;
@@ -130,6 +103,7 @@ export async function observeUserMessage(input: {
       role: 'user',
       text: input.text,
       author: input.author,
+      authorId: input.authorId,
       at: input.now ?? Date.now(),
       addressedBot: input.addressedBot,
     });
@@ -161,7 +135,7 @@ function observeWithTurns(
     roomId: string;
     text: string;
     author?: string;
-    entityId?: string;
+    authorId?: string;
     addressedBot: boolean;
     actualHandled?: boolean;
   },
@@ -195,15 +169,11 @@ function observeWithTurns(
       role: 'user',
       text: input.text,
       author: input.author,
+      authorId: input.authorId,
       at: now,
       addressedBot: input.addressedBot,
     };
     h.commit(input.roomId, turns, turn);
-
-    // Social memory tracks the same turns and captures on session close.
-    const memory = getSocialMemory();
-    memory.noteAuthor(input.author, input.entityId);
-    void memory.observe(input.roomId, turn, now).catch(() => {});
 
     // Room temperature caps how much to say; only cadence decides whether to
     // speak at all. Suppression is therefore driven by the cadence verdict.
@@ -231,7 +201,6 @@ export async function observeBotMessage(input: {
     const now = input.now ?? Date.now();
     const botTurn: ConversationTurn = { role: 'bot', text: input.text, at: now };
     await getHistory().append(input.roomId, botTurn);
-    void getSocialMemory().observe(input.roomId, botTurn, now).catch(() => {});
     write({
       timestamp: new Date(now).toISOString(),
       kind: 'bot',
@@ -247,34 +216,8 @@ export async function observeBotMessage(input: {
 export async function flushShadow(): Promise<void> {
   try {
     await history?.flushAll();
-    social = null;
   } catch {
     // As above.
-  }
-}
-
-/**
- * Memories worth mentioning to the people currently in the room.
- *
- * Returns '' when there is nothing to say or the room heard a callback
- * recently, so callers can inject it unconditionally.
- */
-export async function recallForPrompt(
-  roomId: string,
-  presentNames: Array<string | undefined>,
-  now = Date.now()
-): Promise<string> {
-  if (!shadowEnabled()) return '';
-  try {
-    const memory = getSocialMemory();
-    const memories: ScoredMemory[] = await memory.recall(
-      roomId,
-      new Set(memory.resolveIds(presentNames)),
-      now
-    );
-    return SocialMemory.renderForPrompt(memories);
-  } catch {
-    return '';
   }
 }
 

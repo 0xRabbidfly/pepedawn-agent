@@ -13,7 +13,9 @@ import { fakeRaresContextProvider, userHistoryProvider } from '../providers';
 import { KnowledgeOrchestratorService } from '../services/KnowledgeOrchestratorService';
 import { XHarvestService } from '../services/XHarvestService';
 import { RecapService } from '../services/RecapService';
+import { SocialMemoryService } from '../services/SocialMemoryService';
 import { runRecap } from '../actions/recapCommand';
+import { runMemoryCommand } from '../actions/memoryCommands';
 import { sendRecapVideo, stripHtml } from '../utils/recapSend';
 import { rememberRoom } from '../conversation/roomMap';
 import { sendReaction } from '../utils/reactions';
@@ -761,7 +763,7 @@ export const fakeRaresPlugin: Plugin = {
   // gates were built to close. If it is ever wanted, route it through
   // gateSubmission first.
   evaluators: [],
-  services: [KnowledgeOrchestratorService, MemoryStorageService, TelemetryService, CardDisplayService, SmartRouterService, XHarvestService, RecapService],
+  services: [KnowledgeOrchestratorService, MemoryStorageService, TelemetryService, CardDisplayService, SmartRouterService, XHarvestService, RecapService, SocialMemoryService],
   
   events: {
     MESSAGE_RECEIVED: [
@@ -899,11 +901,13 @@ export const fakeRaresPlugin: Plugin = {
             roomId: message.roomId,
             text,
             author: getDisplayName(params, message),
-            entityId: message.entityId,
+            // The numeric id reaches the day log, where social memory attributes
+            // by it. Never the display name: anyone can copy someone else's.
+            authorId: params.ctx?.message?.from?.id?.toString(),
             addressedBot: !!(isReplyToBot || triggers.hasBotMention || isDirectMessage),
           });
 
-          const { isHelp, isStart, isF, isFCarousel, isC, isP, isFr, isVouch, isFm, isFc, isXcp, isRecap } = commands;
+          const { isHelp, isStart, isF, isFCarousel, isC, isP, isFr, isVouch, isFm, isFc, isXcp, isRecap, isAboutMe, isForget } = commands;
           
           // Log routing factors
           logger.info(`   Triggers: reply=${!!isReplyToBot} | card=${isFakeRareCard} | @mention=${hasBotMention}`);
@@ -1005,7 +1009,7 @@ export const fakeRaresPlugin: Plugin = {
             }
           }
 
-          const anyCommand = isHelp || isStart || isF || isFCarousel || isC || isP || isFr || isVouch || isFm || isFc || isXcp || isRecap;
+          const anyCommand = isHelp || isStart || isF || isFCarousel || isC || isP || isFr || isVouch || isFm || isFc || isXcp || isRecap || isAboutMe || isForget;
           if (anyCommand || hasRememberCommand) {
             const from = params.ctx?.message?.from;
             const rateId = from?.id?.toString() || message.entityId?.toString();
@@ -1072,6 +1076,34 @@ export const fakeRaresPlugin: Plugin = {
               message.metadata = message.metadata || {};
               (message.metadata as any).__handledByCustom = true;
             } catch {}
+            return;
+          }
+
+          // Seeing and clearing what PEPEDAWN remembers about you. Unlisted on
+          // purpose - not in /help, not in the periodic tips - while the memory
+          // registry is tried out and shared by word of mouth.
+          //
+          // Answered through the bare callback rather than the recording one: a
+          // list of someone's memories is not conversation, and written to room
+          // history it would reach the day log, the recap and capture itself.
+          if (isAboutMe || isForget) {
+            message.metadata = message.metadata || {};
+            (message.metadata as any).__handledByCustom = true;
+            const from = params.ctx?.message?.from;
+            const replied = params.ctx?.message?.reply_to_message?.from;
+            const reply = runMemoryCommand({
+              text,
+              sender: { id: from?.id?.toString(), name: getDisplayName(params, message), username: from?.username },
+              chatId: tgChatId,
+              repliedTo: replied
+                ? {
+                    id: replied.id?.toString(),
+                    name: [replied.first_name, replied.last_name].filter(Boolean).join(' ') || replied.username,
+                    isBot: !!replied.is_bot,
+                  }
+                : undefined,
+            });
+            if (reply) await baseCallback?.({ text: reply, source: 'telegram' });
             return;
           }
 

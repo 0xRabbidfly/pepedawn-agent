@@ -194,6 +194,29 @@ reacted. That is what makes recall conversational rather than encyclopaedic:
 > **bob:** anyone got a spare FREEDOMKEK
 > **PEPEDAWN:** still on that kidney offer, bob?
 
+> **Superseded in 5.10.0 by a per-person registry.** The design above never
+> ran: no capture model was ever wired, it was gated behind `V5_SHADOW`, and its
+> session buffer was lost at every restart. What shipped instead is below; the
+> code is `src/conversation/socialMemory*.ts` and `memoryCapture.ts`.
+>
+> - **Per person, keyed by numeric Telegram id.** Two kinds, both anchored to a
+>   line the person said: `quote` (verbatim) and `trait` (what they care about).
+>   Episodes and room highlights are not part of it.
+> - **Capture reads the day log**, from a per-chat watermark, 150s after boot
+>   and every 3h. Group chats only. The model picks line numbers and writes a
+>   one-line summary; the words and the person come from the line, never from
+>   the model.
+> - **The cap is three rules**: 30 memories per person, at most 2 new per day,
+>   and once full a new memory must outscore the weakest
+>   (`salience × decay × reinforcement`). A roster entry can override any of
+>   them per person.
+> - **Recall is about the speaker**, scoped to the chat being answered. Their
+>   top five memories shape the reply; a verbatim quote-back is offered at most
+>   every 2h per person, and a used quote rests for 30 days.
+> - **`SOCIAL_MEMORY=off|record|on`**, independent of the v5 flags.
+> - People can see and clear their own memories. The commands are deliberately
+>   unlisted while this is tried out.
+
 **Capture** runs on session close (a 20-minute gap, reusing the sessionization
 in `scripts/tg-build-sessions.ts`), not per message — one LLM pass per session
 asking "was anything here worth remembering, and who was involved?". Sessions

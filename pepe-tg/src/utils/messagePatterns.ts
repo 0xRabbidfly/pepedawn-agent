@@ -34,6 +34,9 @@ export interface MessagePatterns {
     isFc: boolean;
     isXcp: boolean;
     isRecap: boolean;
+    /** Unlisted: not in /help. See src/actions/memoryCommands.ts */
+    isAboutMe: boolean;
+    isForget: boolean;
   };
   
   // Triggers for routing
@@ -76,6 +79,8 @@ export function detectMessagePatterns(
     isFc: /^(?:@[A-Za-z0-9_]+\s+)?\/fc(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
     isXcp: /^(?:@[A-Za-z0-9_]+\s+)?\/xcp(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
     isRecap: /^(?:@[A-Za-z0-9_]+\s+)?\/recap(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
+    isAboutMe: /^(?:@[A-Za-z0-9_]+\s+)?\/aboutme(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
+    isForget: /^(?:@[A-Za-z0-9_]+\s+)?\/forget(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
   };
   
   // Routing triggers

@@ -32,7 +32,8 @@ import {
   pepedawnMeansTheCard,
 } from '../utils/cardQueries';
 import { matchForConversation, markUsed } from '../utils/xHarvest';
-import { recallForPrompt, recordTurn, recentTurns } from '../conversation/shadow';
+import { recordTurn, recentTurns } from '../conversation/shadow';
+import { recallForSpeaker, settleRecall } from '../conversation/socialMemoryRuntime';
 import { isInFullIndex } from '../data/fullCardIndex';
 
 export type ConversationIntent = 'LORE' | 'FACTS' | 'CHAT' | 'NORESPONSE' | 'CMDROUTE';
@@ -44,6 +45,13 @@ interface ConversationTurn {
   timestamp: number;
   /** A user turn that @mentioned the bot, replied to it, or was a DM. */
   addressedBot?: boolean;
+}
+
+/** Who sent the message being answered. Resolved once in planRouting and threaded through. */
+interface Speaker {
+  /** Numeric Telegram id. Never a display name. */
+  telegramId?: string;
+  character?: Character;
 }
 
 interface IntentClassifierResult {
@@ -494,19 +502,20 @@ export class SmartRouterService extends Service {
     return NORESPONSE_FALLBACK_EMOJIS[idx];
   }
 
-  /** buildChatPlan, carrying the speaker's character when they have one. */
+  /** buildChatPlan, carrying who is speaking: their roster character, and their id for memory recall. */
   private buildChatPlanAs(
-    character: Character | undefined,
+    speaker: Speaker,
     userText: string,
     roomId: string,
     retrieval: RetrieveCandidatesResult | null,
     classifierRaw?: string,
     options?: { tasteQuestion?: boolean; knownFact?: string; card?: string; namedAside?: string }
   ): Promise<SmartRoutingPlan> {
-    return this.buildChatPlan(
-      userText, roomId, retrieval, classifierRaw,
-      character ? { ...options, character } : options
-    );
+    return this.buildChatPlan(userText, roomId, retrieval, classifierRaw, {
+      ...options,
+      character: speaker.character,
+      speakerId: speaker.telegramId,
+    });
   }
 
   private async settleNonAnswer(
@@ -517,7 +526,7 @@ export class SmartRouterService extends Service {
     retrieval: RetrieveCandidatesResult | null,
     classifierRaw: string | undefined,
     addressedConversationally: boolean,
-    character?: Character
+    speaker: Speaker
   ): Promise<SmartRoutingPlan> {
     const outcome = nonAnswerOutcome(
       !!plan.isNonAnswer,
@@ -527,7 +536,7 @@ export class SmartRouterService extends Service {
 
     if (outcome === 'chat') {
       logger.debug({ query: trimmed }, '[SmartRouter] No facts for a question to the bot; answering conversationally');
-      return this.buildChatPlanAs(character, query, roomId, retrieval, classifierRaw);
+      return this.buildChatPlanAs(speaker, query, roomId, retrieval, classifierRaw);
     }
 
     logger.debug({ query: trimmed }, '[SmartRouter] No facts for an unaddressed post; reacting instead of replying');
@@ -998,6 +1007,8 @@ export class SmartRouterService extends Service {
       knownFact?: string;
       card?: string;
       character?: Character;
+      /** Numeric Telegram id of the person being answered, for social memory recall. */
+      speakerId?: string;
       /** Set when someone named the bot without asking anything: the message they sent. */
       namedAside?: string;
     }
@@ -1009,16 +1020,14 @@ export class SmartRouterService extends Service {
     // happened to embed nearby.
     const throwbackNotes = this.concernsCards(userText) ? this.buildChatNotes(retrieval) : '';
 
-    // What PEPEDAWN remembers about the people in this room. Rate-limited
-    // upstream, so this is usually empty - a bot that constantly references
-    // what you said weeks ago is unsettling rather than warm.
-    const speakers = history.filter((t) => t.role !== 'bot').map((t) => t.author);
-    const roomMemories = await recallForPrompt(roomId, speakers);
+    // What PEPEDAWN remembers about the person it is answering, from this chat.
+    // Empty unless SOCIAL_MEMORY=on and there is something to remember.
+    const recollection = recallForSpeaker({ speakerId: options?.speakerId, roomId, userText });
 
-    // Nothing retrieved and nothing remembered: invite a contribution rather
-    // than bluffing. This is how the corpus grows now the Telegram archive is
-    // gone.
-    const nothingKnown = !throwbackNotes && !roomMemories;
+    // Nothing retrieved: invite a contribution rather than bluffing. This is how
+    // the corpus grows now the Telegram archive is gone. Knowing the person is
+    // not knowing the card, so memories do not count here.
+    const nothingKnown = !throwbackNotes;
 
     // Ranking cards is against the etiquette of this community, so a question of
     // taste is answered by picking a card uniformly at random and saying
@@ -1060,7 +1069,7 @@ export class SmartRouterService extends Service {
         : 'What you know that is relevant: (nothing retrieved)',
       '',
       options?.character ? characterNote(options.character) : '',
-      roomMemories ? `What you remember about people here:\n${roomMemories}\n` : '',
+      recollection.block,
       options?.knownFact
         ? `THIS IS THE ANSWER, and it is exact — state it, do not hedge it, do not add specifications around it:\n${options.knownFact}\nWrap it in one conversational sentence. Do not turn it into a fact sheet.\n`
         : '',
@@ -1161,6 +1170,7 @@ Say briefly why it is worth a look — something true about the art, the artist 
           ? response
           : "I'm vibing—keep the drops coming. 🐸";
       this.settleXPost(xPost, finalText, roomId);
+      settleRecall(recollection, finalText);
       return {
         kind: 'CHAT',
         intent: 'CHAT',
@@ -1204,8 +1214,9 @@ Say briefly why it is worth a look — something true about the art, the artist 
   ): Promise<SmartRoutingPlan> {
     const trimmed = text.trim();
     // Resolved once and threaded through every conversational reply below, so a
-    // special character gets their register whichever rung answers them.
-    const character = characterFor(speakerTelegramId);
+    // special character gets their register, and a regular is remembered,
+    // whichever rung answers them.
+    const speaker: Speaker = { telegramId: speakerTelegramId, character: characterFor(speakerTelegramId) };
 
     // Questions the card index answers exactly — artist, issuance, supply,
     // series, an artist's largest or smallest card — are looked up, never
@@ -1222,7 +1233,7 @@ Say briefly why it is worth a look — something true about the art, the artist 
     // so the answer is a card drawn at random with something true said about it.
     if (this.isTasteQuestion(trimmed)) {
       logger.debug({ query: trimmed }, '[SmartRouter] Personal preference -> random card');
-      return this.buildChatPlanAs(character, trimmed, roomId, null, undefined, { tasteQuestion: true });
+      return this.buildChatPlanAs(speaker, trimmed, roomId, null, undefined, { tasteQuestion: true });
     }
 
     // Descriptive questions - "most red", "sexiest", "most psychedelic" - are
@@ -1236,7 +1247,7 @@ Say briefly why it is worth a look — something true about the art, the artist 
       const trait = collection === 'fake-rares' ? describeTraitMatch(trimmed) : null;
       if (trait) {
         logger.debug({ query: trimmed, asset: trait.asset }, '[SmartRouter] Visual trait match');
-        return this.buildChatPlanAs(character, trimmed, roomId, null, undefined, {
+        return this.buildChatPlanAs(speaker, trimmed, roomId, null, undefined, {
           knownFact: trait.fact,
           card: trait.asset,
         });
@@ -1261,7 +1272,7 @@ Say briefly why it is worth a look — something true about the art, the artist 
     const structured = answerCardQuery(trimmed, subject);
     if (structured) {
       logger.debug({ kind: structured.kind }, '[SmartRouter] Structured card query');
-      return this.buildChatPlanAs(character, trimmed, roomId, null, undefined, {
+      return this.buildChatPlanAs(speaker, trimmed, roomId, null, undefined, {
         knownFact: structured.fact,
         card: structured.asset,
       });
@@ -1277,7 +1288,7 @@ Say briefly why it is worth a look — something true about the art, the artist 
     // cannot be poisoned by what anyone, including the bot, said earlier.
     if (asksAttributionOfAnUnnamedCard(trimmed)) {
       logger.debug({ query: trimmed }, '[SmartRouter] Attribution asked of no resolvable card');
-      return this.buildChatPlanAs(character, trimmed, roomId, null, undefined, {
+      return this.buildChatPlanAs(speaker, trimmed, roomId, null, undefined, {
         knownFact:
           'Which card do you mean? Artists are credited from the card index, never guessed at.',
       });
@@ -1521,7 +1532,7 @@ Say briefly why it is worth a look — something true about the art, the artist 
       // Use cleaned query (with PEPEDAWN stripped if bot chat) for plan building
       return this.settleNonAnswer(
         await this.buildFactsPlan(queryForRetrieval, roomId, retrieval, classifierRaw),
-        trimmed, queryForRetrieval, roomId, retrieval, classifierRaw, addressedConversationally, character
+        trimmed, queryForRetrieval, roomId, retrieval, classifierRaw, addressedConversationally, speaker
       );
     }
 
@@ -1533,14 +1544,14 @@ Say briefly why it is worth a look — something true about the art, the artist 
       // the story without a second stack behind it.
       return this.settleNonAnswer(
         await this.buildFactsPlan(queryForRetrieval, roomId, retrieval, classifierRaw),
-        trimmed, queryForRetrieval, roomId, retrieval, classifierRaw, addressedConversationally, character
+        trimmed, queryForRetrieval, roomId, retrieval, classifierRaw, addressedConversationally, speaker
       );
     }
 
     // Intent must be CHAT at this point
     // Use cleaned query (with PEPEDAWN stripped if bot chat) for plan building
     return this.buildChatPlanAs(
-      character, queryForRetrieval, roomId, retrieval, classifierRaw,
+      speaker, queryForRetrieval, roomId, retrieval, classifierRaw,
       namedAside ? { namedAside } : undefined
     );
   }

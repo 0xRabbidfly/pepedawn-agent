@@ -5,6 +5,50 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.10.0] - 2026-09-15
+
+### Added
+
+- **PEPEDAWN remembers people.** It keeps a few things about each person in
+  the group: a line that was unmistakably them, a card they keep hunting, a
+  position they keep taking. Over weeks it answers them like a regular who has
+  been listening rather than a stranger meeting them again.
+
+  - **Capture reads the day log** 150 seconds after boot and every three hours,
+    from a per-chat watermark, so a run with nothing new costs nothing. Group
+    chats only; nothing said in a DM is remembered. The model picks line
+    numbers and writes a one-line summary. The words and the person are taken
+    from the line itself, never written by the model.
+  - **Memories belong to a numeric Telegram id**, never a display name. Turns
+    logged before this release are attributed by name only when exactly one
+    known participant has that name.
+  - **Thirty per person, at most two new a day, and once full a new memory has
+    to outscore the weakest.** A cap alone would only make the most prolific
+    poster's thirty turn over every fortnight. The admission rule means noise
+    cannot push out what mattered. A roster entry in `characters.json` can
+    lower anyone's cap or switch capture off for them.
+  - **Recall is about the speaker.** Their strongest memories from the chat
+    being answered shape the reply. The prompt forbids reciting them or using
+    them to mock anyone. A quote is offered back at most every two hours per
+    person, and one that was used rests for a month.
+  - People can see and clear what is remembered about them. An admin can do
+    either for someone else.
+  - `SOCIAL_MEMORY=off|record|on`, off by default. `record` captures without
+    ever touching a reply.
+  - `scripts/social-memory-preview.ts` runs capture over a copied day log and
+    prints what it would remember about each person.
+
+### Changed
+
+- Room history and day log turns now carry the speaker's numeric Telegram id.
+
+### Removed
+
+- **The earlier social memory, which never remembered anything.** No capture
+  model was ever wired to it, it only ran behind `V5_SHADOW`, and its session
+  buffer was dropped at every restart. It had tests and no data, locally or in
+  production.
+
 ## [5.9.0] - 2026-09-14
 
 ### Changed

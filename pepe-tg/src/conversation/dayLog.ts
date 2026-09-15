@@ -19,6 +19,11 @@ export interface DayTurn {
   role: 'user' | 'bot';
   /** Display name as the room sees it. Absent for the bot's own turns. */
   author?: string;
+  /**
+   * Numeric Telegram user id. Social memory attributes by this and never by
+   * the display name. Absent on turns logged before 5.10.0.
+   */
+  authorId?: string;
   text: string;
   /** Epoch ms. */
   at: number;

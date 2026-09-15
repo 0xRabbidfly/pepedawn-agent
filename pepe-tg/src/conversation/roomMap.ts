@@ -65,6 +65,19 @@ export function roomsForChat(chatId: string): string[] {
   return read()[chatId] ?? [];
 }
 
+/** Every chat seen. */
+export function allChats(): string[] {
+  return Object.keys(read());
+}
+
+/** The chat a room belongs to, or undefined when it has never been observed. */
+export function chatForRoom(roomId: string): string | undefined {
+  for (const [chatId, rooms] of Object.entries(read())) {
+    if (rooms.includes(roomId)) return chatId;
+  }
+  return undefined;
+}
+
 export function _resetRoomMap(): void {
   cache = null;
 }

@@ -15,6 +15,8 @@ export interface ConversationTurn {
   text: string;
   /** Display name of the speaker; undefined for the bot. */
   author?: string;
+  /** Numeric Telegram user id of the speaker. Names can be copied; this cannot. */
+  authorId?: string;
   /** Epoch milliseconds. */
   at: number;
   /** True when this user turn @mentioned the bot or replied to it. */

@@ -135,6 +135,7 @@ export class RoomHistory {
       roomId,
       role: turn.role === 'bot' ? 'bot' : 'user',
       author: turn.author,
+      authorId: turn.authorId,
       text: turn.text,
       at: turn.at,
     });

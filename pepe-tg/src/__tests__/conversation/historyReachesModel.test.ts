@@ -68,9 +68,7 @@ describe('history reaches the model and survives restarts', () => {
     const { recentTurns: freshRecent } = await import('../../conversation/shadow');
     // Cold read goes through the file store rather than the cache.
     const { RoomHistory } = await import('../../conversation/roomHistory');
-    const { FileSocialStore } = await import('../../conversation/socialMemoryRuntime');
     void RoomHistory;
-    void FileSocialStore;
     void freshRecent;
     const { FileRoomHistoryStore } = await import('../../conversation/fileRoomHistoryStore');
     const store = new FileRoomHistoryStore(join(dir, 'room-history.json'));

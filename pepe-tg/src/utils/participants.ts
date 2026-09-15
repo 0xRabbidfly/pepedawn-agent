@@ -97,6 +97,20 @@ export function getParticipant(id: string): Participant | undefined {
 }
 
 /**
+ * Ids of everyone whose recorded name matches, ignoring case and a leading @.
+ *
+ * For attributing old log lines that carry only a display name. Callers must
+ * treat anything other than exactly one id as unknown.
+ */
+export function participantIdsNamed(name: string): string[] {
+  const wanted = name.trim().replace(/^@/, '').toLowerCase();
+  if (!wanted) return [];
+  return Object.values(read())
+    .filter((p) => (p.name ?? '').trim().replace(/^@/, '').toLowerCase() === wanted)
+    .map((p) => p.id);
+}
+
+/**
  * May this person vouch for something proposed at `proposedAt`?
  *
  * `proposedAt` is load-bearing: standing must predate the proposal, or an

@@ -1,233 +1,291 @@
 /**
- * Wires social memory into a running bot.
+ * Social memory in a running bot: when to capture, and what to recall.
  *
- * Holds the pieces together — store, session tracking, capture, recall — with
- * the model call injected so everything below stays testable without a runtime.
+ * SOCIAL_MEMORY decides how much of it is live:
+ *
+ *   off     nothing (the default)
+ *   record  capture only — memories accumulate and can be read on the server,
+ *           but never reach a reply
+ *   on      capture, and the speaker's memories inform replies to them
+ *
+ * The model is injected, so everything here runs in tests without one.
  */
 
-import { appendFileSync, existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'fs';
+import { appendFileSync, mkdirSync } from 'fs';
 import { dirname, join } from 'path';
+import { logger } from '@elizaos/core';
+import { characterFor } from './characters';
+import { readDayTurns, type DayTurn } from './dayLog';
+import { allChats, chatForRoom, roomsForChat } from './roomMap';
+import { participantIdsNamed } from '../utils/participants';
 import {
-  CallbackLimiter,
-  formatForPrompt,
-  rankMemories,
-  recallForPerson,
+  DEFAULT_POLICY,
+  formatRecollection,
+  quoteWasUsed,
+  recollect,
+  type MemoryPolicy,
   type MemoryRecord,
-  type ScoredMemory,
-  type SocialMemoryStore,
 } from './socialMemory';
 import {
-  DEFAULT_CAPTURE_CONFIG,
   buildCapturePrompt,
-  formatSession,
+  chunkSession,
+  closedSessions,
+  knownMemoriesFor,
   parseCaptureResponse,
-  sessionClosed,
   worthCapturing,
-  type CaptureConfig,
+  type CaptureDecision,
 } from './memoryCapture';
-import type { ConversationTurn } from './types';
+import { socialStore, type SocialMemoryStore } from './socialMemoryStore';
 
-/** File-backed store. Swappable for pgvector without touching callers. */
-export class FileSocialStore implements SocialMemoryStore {
-  private cache: MemoryRecord[] | null = null;
+export type SocialMemoryMode = 'off' | 'record' | 'on';
 
-  constructor(private path: string) {}
+export function socialMemoryMode(): SocialMemoryMode {
+  const value = (process.env.SOCIAL_MEMORY || '').trim().toLowerCase();
+  return value === 'on' || value === 'record' ? value : 'off';
+}
 
-  private read(): MemoryRecord[] {
-    if (this.cache) return this.cache;
-    try {
-      this.cache = existsSync(this.path) ? JSON.parse(readFileSync(this.path, 'utf8')) : [];
-    } catch {
-      this.cache = [];
-    }
-    return this.cache!;
-  }
+function envInt(name: string, fallback: number): number {
+  const n = parseInt(process.env[name] ?? '', 10);
+  return Number.isFinite(n) && n >= 0 ? n : fallback;
+}
 
-  private write(): void {
-    const dir = dirname(this.path);
-    if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
-    const tmp = `${this.path}.tmp`;
-    writeFileSync(tmp, JSON.stringify(this.cache ?? [], null, 2), 'utf8');
-    renameSync(tmp, this.path);
-  }
+/** The rules for one person: environment defaults, then their roster entry. */
+export function policyFor(personId: string): MemoryPolicy {
+  const base: MemoryPolicy = {
+    ...DEFAULT_POLICY,
+    cap: envInt('SOCIAL_MEMORY_CAP', DEFAULT_POLICY.cap),
+    perDay: envInt('SOCIAL_MEMORY_PER_DAY', DEFAULT_POLICY.perDay),
+  };
+  const override = characterFor(personId)?.memory;
+  if (!override) return base;
+  return {
+    ...base,
+    cap: override.cap ?? base.cap,
+    perDay: override.perDay ?? base.perDay,
+    capture: override.capture ?? base.capture,
+  };
+}
 
-  async add(record: MemoryRecord): Promise<void> {
-    this.read().push(record);
-    this.write();
-  }
+/** Telegram group and supergroup ids are negative; a DM is the user's own, positive id. */
+export function isGroupChat(chatId?: string): chatId is string {
+  return !!chatId && chatId.startsWith('-');
+}
 
-  async all(roomId: string): Promise<MemoryRecord[]> {
-    return this.read().filter((r) => r.roomId === roomId);
-  }
+/** Which chats capture reads. Groups only: nothing said in a DM is remembered. */
+export function captureChats(): string[] {
+  const configured = (process.env.SOCIAL_MEMORY_CHAT_IDS || '')
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean);
+  return (configured.length ? configured : allChats()).filter(isGroupChat);
+}
 
-  async remove(id: string): Promise<boolean> {
-    const before = this.read().length;
-    this.cache = this.read().filter((r) => r.id !== id);
-    this.write();
-    return this.cache.length < before;
-  }
+/** How far back the very first run reads. The day log itself keeps about a week. */
+export const BACKFILL_MS = 30 * 24 * 60 * 60 * 1000;
 
-  async forgetPerson(personId: string): Promise<number> {
-    const before = this.read().length;
-    this.cache = this.read().filter(
-      (r) => !r.participants.some((p) => p.id === personId && p.role !== 'reactor')
-    );
-    for (const r of this.cache) {
-      r.participants = r.participants.filter((p) => p.id !== personId);
-    }
-    this.write();
-    return before - this.cache.length;
+/** Bounds what one run can spend. Whatever is left is picked up by the next. */
+export const MAX_SESSIONS_PER_RUN = 80;
+
+/**
+ * Attribute a turn logged before turns carried the speaker's id.
+ *
+ * Only when exactly one known participant has that display name. Two people
+ * sharing a name means the line belongs to nobody, which is the right answer
+ * for a registry that must never put words in the wrong mouth.
+ */
+export function attributeLegacy(turn: DayTurn): DayTurn {
+  if (turn.role !== 'user' || turn.authorId || !turn.author) return turn;
+  const ids = participantIdsNamed(turn.author);
+  return ids.length === 1 ? { ...turn, authorId: ids[0] } : turn;
+}
+
+export interface CaptureReport {
+  chats: number;
+  sessions: number;
+  calls: number;
+  admitted: number;
+  replaced: number;
+  reinforced: number;
+  rejected: number;
+  failed: number;
+}
+
+let running = false;
+
+function captureLog(store: SocialMemoryStore, entry: Record<string, unknown>): void {
+  try {
+    const path = join(dirname(store.path), 'social-capture.jsonl');
+    mkdirSync(dirname(path), { recursive: true });
+    appendFileSync(path, JSON.stringify(entry) + '\n', 'utf8');
+  } catch {
+    // The audit trail is best effort.
   }
 }
 
-/** Runs a capture prompt. Injected so tests need no model. */
-export type CaptureModel = (prompt: string) => Promise<string>;
+/**
+ * Read every finished conversation since the last run and remember what is
+ * worth it.
+ *
+ * Idempotent by watermark, per chat: a conversation is read once, and the
+ * watermark only moves past it once it has been read. A model failure leaves
+ * the watermark where it is, so the conversation is retried next run rather
+ * than silently skipped. That also defuses the trap XHarvestService fell into
+ * (5.6.0), where every deploy bought another round: a run with nothing new to
+ * read makes no model call at all.
+ */
+export async function runCapture(options: {
+  model: (prompt: string) => Promise<string>;
+  now?: number;
+  store?: SocialMemoryStore;
+  maxSessions?: number;
+}): Promise<CaptureReport | null> {
+  if (running) return null;
+  running = true;
+  try {
+    const now = options.now ?? Date.now();
+    const store = options.store ?? socialStore();
+    let budget = options.maxSessions ?? MAX_SESSIONS_PER_RUN;
+    const report: CaptureReport = {
+      chats: 0, sessions: 0, calls: 0, admitted: 0, replaced: 0, reinforced: 0, rejected: 0, failed: 0,
+    };
 
-export interface SocialMemoryOptions {
-  store: SocialMemoryStore;
-  model?: CaptureModel;
-  capture?: CaptureConfig;
-  /** Minimum gap between memory callbacks, per room. */
-  callbackGapMs?: number;
-  /** Optional audit log of captured records. */
-  logPath?: string;
-}
-
-export class SocialMemory {
-  private store: SocialMemoryStore;
-  private model?: CaptureModel;
-  private captureConfig: CaptureConfig;
-  private limiter: CallbackLimiter;
-  private logPath?: string;
-  /** Turns not yet folded into a captured session, per room. */
-  private pending = new Map<string, ConversationTurn[]>();
-  /** Ids seen per display name, so captures can be attributed. */
-  private authorIds = new Map<string, string>();
-
-  constructor(opts: SocialMemoryOptions) {
-    this.store = opts.store;
-    this.model = opts.model;
-    this.captureConfig = opts.capture ?? DEFAULT_CAPTURE_CONFIG;
-    this.limiter = new CallbackLimiter(opts.callbackGapMs ?? 30 * 60 * 1000);
-    this.logPath = opts.logPath;
-  }
-
-  /** Note who a display name belongs to, so quotes can be attributed. */
-  noteAuthor(name: string | undefined, id: string | undefined): void {
-    if (name && id) this.authorIds.set(name, id);
-  }
-
-  /**
-   * Resolve display names to the ids memories are stored against.
-   *
-   * Callers upstream often have only a display name - the router's own
-   * conversation turns carry no id - so a name that was never linked falls back
-   * to the same `name:<display>` form parseCaptureResponse uses. Without this,
-   * participant boosting silently never matches.
-   */
-  resolveIds(names: Array<string | undefined>): string[] {
-    const out: string[] = [];
-    for (const name of names) {
-      if (!name) continue;
-      out.push(this.authorIds.get(name) ?? `name:${name}`);
-      const id = this.authorIds.get(name);
-      if (id) out.push(`name:${name}`);
-    }
-    return [...new Set(out)];
-  }
-
-  /** Record a turn and capture the previous session if this one closed it. */
-  async observe(roomId: string, turn: ConversationTurn, now: number): Promise<MemoryRecord[]> {
-    const buffered = this.pending.get(roomId) ?? [];
-    let captured: MemoryRecord[] = [];
-
-    if (buffered.length > 0 && sessionClosed(buffered, now, this.captureConfig)) {
-      captured = await this.capture(roomId, buffered, now);
-      this.pending.set(roomId, [turn]);
-    } else {
-      buffered.push(turn);
-      this.pending.set(roomId, buffered.slice(-this.captureConfig.maxTurns));
-    }
-    return captured;
-  }
-
-  /** Force capture of whatever is buffered. Call on shutdown. */
-  async flush(roomId: string, now: number): Promise<MemoryRecord[]> {
-    const buffered = this.pending.get(roomId) ?? [];
-    if (buffered.length === 0) return [];
-    this.pending.set(roomId, []);
-    return this.capture(roomId, buffered, now);
-  }
-
-  private async capture(
-    roomId: string,
-    turns: ConversationTurn[],
-    now: number
-  ): Promise<MemoryRecord[]> {
-    if (!this.model) return [];
-    if (!worthCapturing(turns, this.captureConfig)) return [];
-    try {
-      const raw = await this.model(buildCapturePrompt(formatSession(turns, this.captureConfig)));
-      const records = parseCaptureResponse(raw, { roomId, at: now, authorIds: this.authorIds });
-      for (const record of records) {
-        await this.store.add(record);
-        this.log(record);
+    const apply = (chatId: string, decision: CaptureDecision) => {
+      const logged = { capturedAt: new Date(now).toISOString(), chatId, personId: decision.personId, name: decision.name };
+      if (decision.type === 'reinforce') {
+        if (store.reinforce(decision.personId, decision.recordId, decision.at, decision.salience)) {
+          report.reinforced++;
+          captureLog(store, { ...logged, outcome: 'reinforced', recordId: decision.recordId });
+        }
+        return;
       }
-      return records;
-    } catch {
-      // A failed capture must never disturb a conversation.
-      return [];
+      const outcome = store.admit(decision.personId, decision.name, decision.record, policyFor(decision.personId), now);
+      if (outcome.status === 'admitted') report.admitted++;
+      else if (outcome.status === 'replaced') report.replaced++;
+      else report.rejected++;
+      captureLog(store, {
+        ...logged,
+        outcome: outcome.status,
+        reason: outcome.status === 'rejected' ? outcome.reason : undefined,
+        evicted: outcome.status === 'replaced' ? outcome.evicted.summary : undefined,
+        kind: decision.record.kind,
+        salience: decision.record.salience,
+        summary: decision.record.summary,
+        text: decision.record.text,
+      });
+    };
+
+    for (const chatId of captureChats()) {
+      const rooms = roomsForChat(chatId);
+      if (rooms.length === 0) continue;
+      report.chats++;
+
+      const from = store.watermark(chatId) ?? now - BACKFILL_MS;
+      const turns = rooms
+        .flatMap((roomId) => readDayTurns(roomId, from, now))
+        .sort((a, b) => a.at - b.at)
+        .map(attributeLegacy);
+
+      for (const session of closedSessions(turns, now)) {
+        if (budget <= 0) break;
+        if (worthCapturing(session)) {
+          budget--;
+          report.sessions++;
+          let failed = false;
+          for (const chunk of chunkSession(session)) {
+            if (!worthCapturing(chunk)) continue;
+            const known = knownMemoriesFor(chunk, (id) => store.person(id), now);
+            let raw: string;
+            try {
+              report.calls++;
+              raw = await options.model(buildCapturePrompt(chunk, known));
+            } catch (error) {
+              logger.warn({ error, chatId }, '[SocialMemory] capture call failed; will retry next run');
+              report.failed++;
+              failed = true;
+              break;
+            }
+            for (const decision of parseCaptureResponse(raw, chunk, known, chatId)) apply(chatId, decision);
+          }
+          if (failed) break;
+        }
+        store.setWatermark(chatId, session[session.length - 1].at + 1);
+      }
     }
-  }
 
-  /**
-   * Memories worth mentioning right now.
-   *
-   * Returns [] when the callback limiter says the room has heard one recently.
-   */
-  async recall(
-    roomId: string,
-    presentIds: Set<string>,
-    now: number,
-    similarity: (record: MemoryRecord) => number = () => 1,
-    limit = 3
-  ): Promise<ScoredMemory[]> {
-    if (!this.limiter.allowed(roomId, now)) return [];
-    const records = await this.store.all(roomId);
-    const ranked = rankMemories(records, similarity, presentIds, now).slice(0, limit);
-    if (ranked.length > 0) this.limiter.record(roomId, now);
-    return ranked;
-  }
-
-  /** Everything known about one person, ignoring the callback limiter. */
-  async aboutPerson(roomId: string, personId: string, now: number, limit = 5) {
-    return recallForPerson(await this.store.all(roomId), personId, now, limit);
-  }
-
-  /** Prompt block for recalled memories, or '' when there is nothing to say. */
-  static renderForPrompt(memories: ScoredMemory[]): string {
-    if (memories.length === 0) return '';
-    return memories.map(formatForPrompt).join('\n');
-  }
-
-  private log(record: MemoryRecord): void {
-    if (!this.logPath) return;
-    try {
-      const dir = dirname(this.logPath);
-      if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
-      appendFileSync(
-        this.logPath,
-        JSON.stringify({ capturedAt: new Date(record.at).toISOString(), ...record }) + '\n',
-        'utf8'
-      );
-    } catch {
-      // Auditing is best effort.
-    }
+    return report;
+  } finally {
+    running = false;
   }
 }
 
-/** Default store location, honouring the shadow directory override. */
-export function defaultSocialStorePath(): string {
-  const dir = process.env.V5_SHADOW_DIR || join(process.cwd(), 'src', 'data');
-  return join(dir, 'social-memory.json');
+/** A quote is offered to the same person at most this often. */
+export const QUOTE_OFFER_GAP_MS = 2 * 60 * 60 * 1000;
+
+const lastQuoteOffer = new Map<string, number>();
+
+export interface SpeakerRecall {
+  /** Prompt section, or '' when there is nothing to add. */
+  block: string;
+  personId?: string;
+  quotable?: MemoryRecord;
+}
+
+const NOTHING: SpeakerRecall = { block: '' };
+
+/**
+ * What PEPEDAWN remembers about the person it is answering.
+ *
+ * Scoped to the chat the reply is going to, so a line from the private group
+ * never surfaces in the official channel. In a DM the person hears only about
+ * themselves, so everything is in scope. A room whose chat cannot be resolved
+ * gets nothing rather than everything.
+ */
+export function recallForSpeaker(input: {
+  speakerId?: string;
+  roomId: string;
+  userText: string;
+  now?: number;
+  store?: SocialMemoryStore;
+}): SpeakerRecall {
+  if (socialMemoryMode() !== 'on' || !input.speakerId) return NOTHING;
+  try {
+    const now = input.now ?? Date.now();
+    const person = (input.store ?? socialStore()).person(input.speakerId);
+    if (!person || person.optedOut || person.records.length === 0) return NOTHING;
+
+    const chatId = chatForRoom(input.roomId);
+    if (!chatId) return NOTHING;
+
+    const last = lastQuoteOffer.get(person.id);
+    const recollection = recollect(person, {
+      userText: input.userText,
+      now,
+      scopeChatId: isGroupChat(chatId) ? chatId : undefined,
+      allowQuote: last === undefined || now - last >= QUOTE_OFFER_GAP_MS,
+    });
+    if (!recollection) return NOTHING;
+    if (recollection.quotable) lastQuoteOffer.set(person.id, now);
+
+    const name = characterFor(person.id)?.name || person.name || 'them';
+    return { block: formatRecollection(recollection, name), personId: person.id, quotable: recollection.quotable };
+  } catch {
+    // Remembering someone is a nicety. It must never cost them a reply.
+    return NOTHING;
+  }
+}
+
+/** Start the reuse clock on a quote, but only if the reply actually used it. */
+export function settleRecall(recall: SpeakerRecall, reply: string, now = Date.now(), store?: SocialMemoryStore): boolean {
+  if (!recall.quotable || !recall.personId) return false;
+  if (!quoteWasUsed(reply, recall.quotable.text)) return false;
+  try {
+    (store ?? socialStore()).markUsed(recall.personId, recall.quotable.id, now);
+  } catch {
+    return false;
+  }
+  return true;
+}
+
+export function _resetRecallLimiter(): void {
+  lastQuoteOffer.clear();
 }
