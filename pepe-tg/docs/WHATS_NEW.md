@@ -21,6 +21,14 @@ Rules for writing one, learned the hard way:
 
 <!-- Sections are ## [x.y.z], matching CHANGELOG.md. Newest first. -->
 
+## [5.12.0]
+
+🎂 Tomorrow Fake Rares turns FIVE.
+
+I'll be running the party in here all day: a bit of history, a card every couple of hours, trivia with a leaderboard, and I'm counting every time somebody says Scrilla's name.
+
+Bring your fakes. 🐸
+
 ## [5.11.0]
 
 ⚡ PEPEDAWN — v5.11.0

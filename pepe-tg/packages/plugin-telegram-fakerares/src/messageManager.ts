@@ -1284,6 +1284,13 @@ export class MessageManager {
         } catch (error) {
           logger.error({ error }, '[MessageManager] Error sending carousel message');
         }
+      } else if (callbackData.startsWith('fr5:')) {
+        // Anniversary trivia. The tap is recorded and answered with a toast;
+        // the message itself is edited later by the timeline, not here.
+        // @ts-ignore - Dynamic import from parent project
+        const { handleTriviaTap } = await import('../../../src/conversation/anniversaryRuntime.js');
+        const toast = handleTriviaTap(callbackData, ctx.callbackQuery.from);
+        await ctx.answerCbQuery(toast || undefined);
       } else {
         // Unknown callback query - just acknowledge it
         await ctx.answerCbQuery();

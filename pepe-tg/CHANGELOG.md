@@ -5,6 +5,46 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.12.0] - 2026-09-21
+
+### Added
+
+- **The Fake Rares 5th birthday, 22 September, as a one-day timeline.** Driven
+  by `src/data/fakerares5-schedule.json`: five history drops with the card
+  attached, a card of the hour every two hours, a running count of how often
+  Scrilla's name is said, five rounds of trivia, and a closer with the
+  leaderboard. `ANNIVERSARY_ENABLED=true` turns it on; nothing happens on any
+  other day.
+
+  - **Every fact in the schedule was checked against the card index** — 893
+    cards, 412 artists, 18 series; FAKEASF is Series 1 #1; FAKETORCH has a
+    supply of one; FREEDOMKEK is Series 0 #1 by Rare Scrilla, October 2017.
+    The test suite re-checks that every card named in the file exists.
+  - **No native polls.** The bot is a plain member of the group and the
+    group's member permissions forbid polls, so every question is
+    inline-keyboard trivia: first tap per person is final, scores persist, and
+    fifteen minutes later the message is edited to strip the buttons and show
+    the answer, the explanation and the top five.
+  - **No scraper.** Cards come from the existing index and the 653 cached
+    Telegram file_ids; one that Telegram rejects is skipped for the day and
+    another is drawn. Series 0–2 are weighted double.
+  - **A restart re-sends nothing.** Every post is stamped in
+    `anniversary-state.json` *before* it is sent — the recap's lesson — and a
+    post more than 45 minutes late is skipped rather than replayed, so an
+    outage cannot dump the morning into the room at noon. The 02:00 restart
+    lands inside the day; this is what makes it harmless.
+  - **The Scrilla count** is taken on the live message path, in the event chat
+    only, on the day only. The bot never receives its own messages, so the
+    templates naming him cannot inflate it.
+  - **The hourly showcase stands down** for the day, and every scheduled post
+    is logged as a broadcast so tomorrow's recap strip is not a strip of the
+    bot talking to itself.
+  - `scripts/anniversary-preview.ts --dry-run` prints the plan and logs what
+    it would send against the real clock; `--fast-forward` runs the whole day
+    in about two minutes with three pretend players, through the same engine.
+  - The schedule file is re-read when it changes, so a wording fix on the
+    droplet lands on the next tick without a restart.
+
 ## [5.11.0] - 2026-09-21
 
 ### Added

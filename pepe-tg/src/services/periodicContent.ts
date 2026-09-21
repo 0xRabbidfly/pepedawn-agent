@@ -20,6 +20,7 @@ import type { IAgentRuntime } from '@elizaos/core';
 import { Service, logger } from '@elizaos/core';
 import { getCardInfo, FULL_CARD_INDEX, type CardInfo } from '../data/fullCardIndex.js';
 import { FileRoomHistoryStore } from '../conversation/fileRoomHistoryStore.js';
+import { anniversaryActive } from '../conversation/anniversaryRuntime.js';
 import { determineCardUrl, buildCardDisplayMessage, buildArtistButton } from '../actions/fakeRaresCard.js';
 
 // ============================================================================
@@ -192,6 +193,13 @@ export class PeriodicContentService extends Service {
           logger.debug(`Skipping periodic content - too soon since last post`);
           return;
         }
+      }
+
+      // The birthday runs its own timeline in the same channel. An hourly
+      // showcase on top of it would be two bots' worth of posting.
+      if (anniversaryActive(now)) {
+        logger.info('Skipping periodic content - the anniversary timeline has the room today');
+        return;
       }
 
       // ANTI-SPAM: Check if there's been user activity since last post

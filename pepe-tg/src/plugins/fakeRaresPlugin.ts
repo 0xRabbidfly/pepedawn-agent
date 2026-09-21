@@ -15,6 +15,8 @@ import { XHarvestService } from '../services/XHarvestService';
 import { RecapService } from '../services/RecapService';
 import { SocialMemoryService } from '../services/SocialMemoryService';
 import { ReleaseNoteService } from '../services/ReleaseNoteService';
+import { AnniversaryService } from '../services/AnniversaryService';
+import { noteScrillaMention } from '../conversation/anniversaryRuntime';
 import { runRecap } from '../actions/recapCommand';
 import { runMemoryCommand } from '../actions/memoryCommands';
 import { sendRecapVideo, stripHtml } from '../utils/recapSend';
@@ -764,7 +766,7 @@ export const fakeRaresPlugin: Plugin = {
   // gates were built to close. If it is ever wanted, route it through
   // gateSubmission first.
   evaluators: [],
-  services: [KnowledgeOrchestratorService, MemoryStorageService, TelemetryService, CardDisplayService, SmartRouterService, XHarvestService, RecapService, SocialMemoryService, ReleaseNoteService],
+  services: [KnowledgeOrchestratorService, MemoryStorageService, TelemetryService, CardDisplayService, SmartRouterService, XHarvestService, RecapService, SocialMemoryService, ReleaseNoteService, AnniversaryService],
   
   events: {
     MESSAGE_RECEIVED: [
@@ -896,6 +898,8 @@ export const fakeRaresPlugin: Plugin = {
               speaker?.id?.toString(),
               [speaker?.first_name, speaker?.last_name].filter(Boolean).join(' ') || speaker?.username
             );
+            // The birthday's Scrilla tally. A no-op on every other day.
+            noteScrillaMention(text, telegramChatId(params));
           }
 
           const v5 = await observeUserMessage({

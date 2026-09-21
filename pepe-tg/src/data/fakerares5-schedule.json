@@ -1,0 +1,117 @@
+{
+  "_comment": "The Fake Rares 5th birthday, as a timeline. Times are HH:MM in event.timezone on event.date. Every fact below was checked against the card index (src/data/fullCardIndex.ts) - keep it that way. Placeholders: {SCRILLA} {N} {RATE} {LEADERBOARD} {ASSET} {SERIES} {CARD} {ARTIST} {SUPPLY} {ISSUANCE} {QUESTION} {ANSWER} {EXPLANATION} {TOP} {K} {TOTAL}. Posts are plain text: no markdown, no HTML. The file is re-read when it changes, so an edit on the droplet takes effect on the next tick without a restart.",
+
+  "event": {
+    "date": "2026-09-22",
+    "timezone": "America/New_York",
+    "chat_ids": [],
+    "scrilla_handle": "Rare Scrilla",
+    "stale_after_min": 45
+  },
+
+  "history_drops": [
+    {
+      "time": "09:00",
+      "card": "FAKEASF",
+      "text": "🎂 Five years ago, Series 1 dropped. 50 cards, 41 artists, and this at #1: FAKEASF. Community made, 1,030 of them. Everything since started here."
+    },
+    {
+      "time": "12:30",
+      "card": "FAKETORCH",
+      "text": "🔥 Series 1, card #2. FAKETORCH. Supply: ONE. Five years on it is still the only card in the collection with a supply of one. Somebody in this room is holding it."
+    },
+    {
+      "time": "15:00",
+      "card": "FREEDOMKEK",
+      "text": "🕯 Before there was a Series 1, there was Series 0. FREEDOMKEK: {SCRILLA}, October 2017, 298 of them. Series 0, card #1. The one the rest of us have been chasing ever since."
+    },
+    {
+      "time": "18:30",
+      "text": "📊 Five years, by the numbers:\n\n18 series.\n893 cards.\n412 artists.\n\nSeries 3 alone: 50 cards by 50 different artists. Not one repeat."
+    },
+    {
+      "time": "20:30",
+      "card": "PEPEDAWN",
+      "text": "🖼 Series 18 is the newest, 41 cards and counting. One of them is me. PEPEDAWN, Series 18 #22, by rabbidfly, 133 of us. I half suspect I hatched from a FREEDOMKEK dispenser. Nobody has confirmed or denied it."
+    }
+  ],
+
+  "card_of_the_hour": {
+    "times": ["10:00", "12:00", "14:00", "16:00", "18:00", "20:00"],
+    "template": "🃏 Card of the hour: {ASSET}\nSeries {SERIES}, #{CARD} · {ARTIST}\nSupply {SUPPLY} · {ISSUANCE}",
+    "series_weight": { "0": 2, "1": 2, "2": 2 }
+  },
+
+  "scrilla_counter": {
+    "start": {
+      "time": "00:05",
+      "text": "🎉 It's the day. Fake Rares turns FIVE.\n\nHouse rule for the next 24 hours: every time somebody says {SCRILLA}'s name in here, I count it. Updates through the day. Go."
+    },
+    "updates": [
+      {
+        "time": "11:00",
+        "text": "📣 {SCRILLA} count so far: {N}. That is {RATE} an hour. Pathetic, or impressive. I have not decided."
+      },
+      {
+        "time": "17:00",
+        "text": "📣 {SCRILLA} count: {N}, running at {RATE} an hour. The man cannot escape his own channel."
+      }
+    ],
+    "final": {
+      "time": "22:00",
+      "text": "🏁 Final {SCRILLA} count for the fifth birthday: {N}. {RATE} an hour, all day. A number nobody asked for and nobody will forget."
+    }
+  },
+
+  "trivia": [
+    {
+      "time": "10:30",
+      "question": "How many cards were in Series 1?",
+      "options": ["25", "50", "69", "100"],
+      "answer": 1,
+      "explanation": "50 cards, 41 artists, September 2021."
+    },
+    {
+      "time": "13:30",
+      "question": "Which card is Series 1, #1?",
+      "options": ["FAKETORCH", "FAKAMOTO", "FAKEASF", "WAGMIPEPE"],
+      "answer": 2,
+      "explanation": "FAKEASF. Community made, supply 1,030. FAKETORCH is #2, FAKAMOTO #3, WAGMIPEPE #4."
+    },
+    {
+      "time": "16:30",
+      "question": "How many FAKETORCH exist?",
+      "options": ["1", "10", "100", "1,000"],
+      "answer": 0,
+      "explanation": "One. Series 1 #2, and the only supply-1 card in the whole collection."
+    },
+    {
+      "time": "19:30",
+      "question": "Which artist has the most Fake Rares cards?",
+      "options": ["Pepenardo", "Rare Scrilla", "Lord Jamie V. Shill", "Coit"],
+      "answer": 2,
+      "explanation": "Lord Jamie V. Shill, with 20. Pepenardo 16, Rare Scrilla 12, Coit 11."
+    },
+    {
+      "time": "21:30",
+      "question": "Who made FAKAMOTO, Series 1 #3?",
+      "options": ["Yotet", "JB", "VVD", "Mr. HODLPIG"],
+      "answer": 0,
+      "explanation": "Yotet. September 2021, supply 100."
+    }
+  ],
+
+  "closers": [
+    {
+      "time": "22:05",
+      "text": "🏆 Trivia leaderboard, fifth birthday edition:\n\n{LEADERBOARD}\n\nFive years of fakes. Thanks for having me in the room. Same time in 2031. 🐸"
+    }
+  ],
+
+  "templates": {
+    "trivia": "❓ Trivia {K} of {TOTAL}\n\n{QUESTION}\n\nFirst tap is final. Answer in 15 minutes.",
+    "reveal": "❓ {QUESTION}\n\n✅ {ANSWER}\n{EXPLANATION}\n\n🏅 Top so far:\n{TOP}",
+    "reveal_after_min": 15,
+    "leaderboard_empty": "Nobody played. Cowards."
+  }
+}
