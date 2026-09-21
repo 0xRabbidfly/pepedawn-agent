@@ -3,9 +3,9 @@
 
   "event": {
     "date": "2026-09-22",
-    "timezone": "America/New_York",
+    "timezone": "America/Los_Angeles",
     "chat_ids": [],
-    "scrilla_handle": "Rare Scrilla",
+    "scrilla_handle": "@scrillaventura",
     "stale_after_min": 45
   },
 
