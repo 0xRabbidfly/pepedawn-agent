@@ -5,6 +5,58 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.11.0] - 2026-09-21
+
+### Added
+
+- **It stays out of other people's conversations.** On 21 September Coit was
+  mid-exchange with Crypsi — "xrypsi bro", then "there's no place to 1000x long
+  for real right ?" — and PEPEDAWN answered him with an unprompted lecture about
+  MAXXPAINPEPE being "100% Illiquid". Ninety seconds later it did it again, to
+  "is this all fakes ?". His reply: *"please upgrade your braij so you dont
+  awnser a question directed at someone else ok?"*
+
+  Neither message named the bot, so no addressing rule could have held it back,
+  and every cadence rule passed: it had waited 74 seconds, was nowhere near
+  dominating the window, and had not spoken twice in a row. What was wrong is
+  not measurable in a single message — two other people were talking to each
+  other.
+
+  So when nobody has addressed it and it is not already in an exchange, another
+  person having spoken in the last two minutes is now enough to keep it quiet.
+  It stays silent rather than reacting, and decides before the classifier and
+  retrieval run, so staying out costs nothing. Unaffected: a mention, a reply, a
+  DM, its own name, a command, an exact card answer from the index, and a
+  question asked in a room where nobody else is talking. `STAY_OUT_SECONDS`
+  tunes the window; `0` switches it off.
+
+- **A short "what's new" post after an upgrade.** The section for the running
+  version in `docs/WHATS_NEW.md` is posted to the channel once, a minute after
+  the first boot carrying that version, and never again — a restart with no
+  version change posts nothing, which is almost every restart, and a version
+  with no section posts nothing at all.
+
+  The text is hand-written and sent verbatim. It is deliberately not generated
+  from this changelog: this file names internal flags and unlisted commands, and
+  a post to 1,250 people is the one output nobody reviews before it lands. The
+  stamp is written before the post, so a crash costs one announcement rather
+  than one per boot, and a rollback never re-announces. Off unless
+  `RELEASE_NOTES_ENABLED=true`.
+
+### Changed
+
+- **Social memory keeps more.** In its first six days in production it kept
+  nothing at all: five model calls, zero memories. The prompt had been tightened
+  just before release, after a preview run credited someone else's X account to
+  Coit as a trait of his — and it overshot. A line that is merely characteristic
+  of someone now counts, rather than only a quotable one.
+
+  Every exclusion is unchanged, and was re-tested against the worst exchange in
+  the log — one containing a joke about a member killing himself, and repeated
+  attempts to file insults about another member as lore. It produced four
+  harmless memories and nothing else. Over 24 days of real traffic the same
+  prompt keeps 27 memories across 8 people, against 4 before.
+
 ## [5.10.0] - 2026-09-15
 
 ### Added

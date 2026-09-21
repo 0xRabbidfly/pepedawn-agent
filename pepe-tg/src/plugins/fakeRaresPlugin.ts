@@ -14,6 +14,7 @@ import { KnowledgeOrchestratorService } from '../services/KnowledgeOrchestratorS
 import { XHarvestService } from '../services/XHarvestService';
 import { RecapService } from '../services/RecapService';
 import { SocialMemoryService } from '../services/SocialMemoryService';
+import { ReleaseNoteService } from '../services/ReleaseNoteService';
 import { runRecap } from '../actions/recapCommand';
 import { runMemoryCommand } from '../actions/memoryCommands';
 import { sendRecapVideo, stripHtml } from '../utils/recapSend';
@@ -763,7 +764,7 @@ export const fakeRaresPlugin: Plugin = {
   // gates were built to close. If it is ever wanted, route it through
   // gateSubmission first.
   evaluators: [],
-  services: [KnowledgeOrchestratorService, MemoryStorageService, TelemetryService, CardDisplayService, SmartRouterService, XHarvestService, RecapService, SocialMemoryService],
+  services: [KnowledgeOrchestratorService, MemoryStorageService, TelemetryService, CardDisplayService, SmartRouterService, XHarvestService, RecapService, SocialMemoryService, ReleaseNoteService],
   
   events: {
     MESSAGE_RECEIVED: [

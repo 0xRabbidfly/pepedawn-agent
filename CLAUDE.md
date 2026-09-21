@@ -184,6 +184,10 @@ The parts that bite most often:
   chat commands are a public contract. See `src/config/deprecatedCommands.ts`.
 - **Secrets never in the repo** (constitution §II); avoid logging secrets or PII.
 - New command? Update the `/help` handler *and* add a tip to `periodicContent.ts`.
+- **Would the room notice the change? Add a section to `docs/WHATS_NEW.md`.**
+  It is posted verbatim to the channel on the first boot of that version, so it
+  is written for members and never names anything meant to stay quiet (the
+  memory commands are unlisted by request). No section, no post.
 
 ## Conventions
 

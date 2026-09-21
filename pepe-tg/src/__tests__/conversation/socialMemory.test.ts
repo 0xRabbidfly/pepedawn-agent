@@ -350,6 +350,10 @@ describe('the capture prompt', () => {
     expect(prompt).toContain('0: [bob] a perfectly ordinary line number 0');
     expect(prompt).toContain('m1 [bob] trait: hunting a FREEDOMKEK');
     expect(prompt).toContain('Never write or reword what anyone said');
-    expect(prompt).toContain('{"memories":[]} is the correct and common answer');
+    // Loosened in 5.11.0: six days in production kept nothing at all, so a
+    // merely characteristic line now counts. The exclusions are unchanged.
+    expect(prompt).toContain('merely characteristic of them counts');
+    expect(prompt).toContain('Return {"memories":[]} only when');
+    expect(prompt).toContain('violence, self-harm, threats or death');
   });
 });

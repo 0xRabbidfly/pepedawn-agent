@@ -98,6 +98,71 @@ export function inActiveExchange(
   return false;
 }
 
+/** How recently someone else must have spoken for their conversation to count as in progress. */
+export const DEFAULT_STAY_OUT_MS = 2 * 60 * 1000;
+
+/** Overridable so the room can be made more or less protected without a release. 0 disables it. */
+export function stayOutWindowMs(): number {
+  const seconds = parseInt(process.env.STAY_OUT_SECONDS ?? '', 10);
+  return Number.isFinite(seconds) && seconds >= 0 ? seconds * 1000 : DEFAULT_STAY_OUT_MS;
+}
+
+/** Who is speaking now. Ids are authoritative; a display name is the fallback. */
+export interface SpeakerRef {
+  id?: string;
+  name?: string;
+}
+
+/**
+ * Positively a different person from the one speaking now.
+ *
+ * When identity cannot be established the answer is false, so the rule below
+ * fails open — it stays quiet only where it is certain someone else is talking,
+ * and never silences the bot merely because a turn is unattributed.
+ */
+function isOtherPerson(turn: ConversationTurn, speaker: SpeakerRef): boolean {
+  if (turn.authorId && speaker.id) return turn.authorId !== speaker.id;
+  if (turn.author && speaker.name) return turn.author !== speaker.name;
+  return false;
+}
+
+/**
+ * True when somebody other than the speaker has just been talking.
+ *
+ * This is the "stop disrupting the conversation" rule, and it comes straight
+ * from the room. On 21 September Coit was mid-exchange with Crypsi — "xrypsi
+ * bro", then "there's no place to 1000x long for real right ?" — and the bot
+ * answered him with an unprompted lecture about MAXXPAINPEPE being "100%
+ * Illiquid". Ninety seconds later it did it again, to "is this all fakes ?".
+ * His reply was "please upgrade your braij so you dont awnser a question
+ * directed at someone else ok?".
+ *
+ * Neither message named the bot, so no amount of addressing logic would have
+ * held it back, and the cadence rules above were all satisfied: it had waited
+ * 74 seconds, it was nowhere near dominating the window, and it had not spoken
+ * twice in a row. Every per-message check passed. What was wrong is not
+ * measurable in one message — two other people were talking to each other.
+ *
+ * So: when the bot has not been addressed and is not already in an exchange,
+ * another person having spoken in the last couple of minutes is enough to keep
+ * it out. A question aimed at the room in a quiet channel still gets an answer.
+ */
+export function othersMidConversation(
+  turns: ConversationTurn[],
+  speaker: SpeakerRef,
+  now: number,
+  windowMs: number = stayOutWindowMs()
+): boolean {
+  if (windowMs <= 0) return false;
+  for (let i = turns.length - 1; i >= 0; i--) {
+    const turn = turns[i];
+    if (now - turn.at > windowMs) break;
+    if (turn.role !== 'user') continue;
+    if (isOtherPerson(turn, speaker)) return true;
+  }
+  return false;
+}
+
 /**
  * Decide the cadence ceiling for a prospective reply.
  *

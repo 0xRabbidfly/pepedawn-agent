@@ -22,7 +22,7 @@ import {
   resolveArtist,
   type CardConstraint,
 } from '../utils/cardFacts';
-import { inActiveExchange } from '../conversation/cadenceGovernor';
+import { inActiveExchange, othersMidConversation } from '../conversation/cadenceGovernor';
 import { isAimedAtSomeoneElse, isBait, silenceWhenNamed } from '../utils/addressing';
 import { getCardInfo } from '../data/fullCardIndex';
 import { describeLook, describeTraitMatch } from '../utils/cardTraits';
@@ -41,6 +41,8 @@ export type ConversationIntent = 'LORE' | 'FACTS' | 'CHAT' | 'NORESPONSE' | 'CMD
 interface ConversationTurn {
   role: 'user' | 'bot';
   author: string;
+  /** Numeric Telegram id, when the turn was recorded with one. */
+  authorId?: string;
   text: string;
   timestamp: number;
   /** A user turn that @mentioned the bot, replied to it, or was a DM. */
@@ -271,6 +273,7 @@ export class SmartRouterService extends Service {
       return persisted.map((t) => ({
         role: t.role,
         author: t.author ?? (t.role === 'bot' ? 'PEPEDAWN' : 'User'),
+        authorId: t.authorId,
         text: t.text,
         timestamp: t.at,
         addressedBot: t.addressedBot,
@@ -1305,6 +1308,45 @@ Say briefly why it is worth a look — something true about the art, the artist 
       };
     }
 
+    // Room history in the shape the restraint rules want it. A typed command is
+    // talking to the bot, as much as a mention is.
+    const recent = this.getTurnsForPrompt(roomId, 12).map((t) => {
+      const said = (t.text || '').trim();
+      return {
+        role: t.role,
+        text: t.text,
+        author: t.author,
+        authorId: t.authorId,
+        at: t.timestamp,
+        addressedBot:
+          t.role === 'user' && (!!t.addressedBot || /\bpepedawn\b/i.test(said) || /^\/\w/.test(said)),
+      };
+    });
+
+    const engaged = inActiveExchange(recent, Date.now());
+    const isQuestion = this.isAQuestion(trimmed);
+    const named = this.addressesTheBot(trimmed, addressedConversationally);
+
+    // Two other people talking to each other, and nobody asked. Stay out.
+    //
+    // This is deliberately placed after the exact-fact paths above and before
+    // the classifier: a card question still gets its one-line answer from the
+    // index, but the improvised, retrieval-shaped reply that reads as butting
+    // in never gets made — and it costs no classifier or retrieval call to
+    // decide that. See othersMidConversation for the exchange that prompted it.
+    if (!named && !engaged && othersMidConversation(recent, { id: speakerTelegramId }, Date.now())) {
+      logger.info(
+        { query: trimmed.slice(0, 80) },
+        '[SmartRouter] Others mid-conversation and nobody asked; staying out'
+      );
+      return {
+        kind: 'NORESPONSE',
+        intent: 'NORESPONSE',
+        reason: 'others_mid_conversation',
+        retrieval: null,
+      };
+    }
+
     const intentResult = await this.classifyIntent(roomId, trimmed);
     let intent = intentResult.intent;
     let classifierRaw = intentResult.raw;
@@ -1397,23 +1439,8 @@ Say briefly why it is worth a look — something true about the art, the artist 
     // coming down. A named remark gets one short line and a jab gets a comeback;
     // `silenceWhenNamed` keeps the exceptions - brush-offs, other people's
     // conversations, the bare name, and bait.
-    const engaged = inActiveExchange(
-      this.getTurnsForPrompt(roomId, 12).map((t) => {
-        const said = (t.text || '').trim();
-        return {
-          role: t.role,
-          text: t.text,
-          at: t.timestamp,
-          // A typed command is talking to the bot, as much as a mention is.
-          addressedBot:
-            t.role === 'user' && (!!t.addressedBot || /\bpepedawn\b/i.test(said) || /^\/\w/.test(said)),
-        };
-      }),
-      Date.now()
-    );
-
-    const isQuestion = this.isAQuestion(trimmed);
-    const named = this.addressesTheBot(trimmed, addressedConversationally);
+    // `engaged`, `isQuestion` and `named` are resolved before the classifier
+    // runs, because the stay-out rule up there needs them too.
     let namedAside: string | undefined;
 
     if (intent === 'NORESPONSE') {

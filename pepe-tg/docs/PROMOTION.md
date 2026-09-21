@@ -45,6 +45,12 @@ Mandatory upkeep, per `.specify/memory/constitution.md`:
       hook enumerates tests explicitly, so a file that is not listed **never
       runs in the hook** and can rot silently.
 - [ ] `/help` handler and a `periodicContent.ts` tip, if you added a command.
+- [ ] **`docs/WHATS_NEW.md`**, if the room would notice the change. The section
+      for the new version is posted verbatim to the channel, once, a minute
+      after the first boot on that version — so it is written for members, not
+      for us, and it never names anything meant to stay quiet. No section means
+      no post, which is right for most releases. Requires
+      `RELEASE_NOTES_ENABLED=true` on the droplet.
 
 ## 2. Verify locally
 
