@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [5.13.1] - 2026-09-22
 
+### Changed
+
+- **The lore contest, as it will actually run.** Five entries each, not three.
+  Nothing goes to vouching on the day: before the contest opens a non-artist's
+  `/fr` is asked to wait for 08:00, after it closes it is told so, and in
+  between it enters. PEPEDAWN scores every entry quietly as it lands, on the
+  same criteria as the final judge; asked how it stands, it gives the top five
+  names only — never the scores, never whose lore is which. The pick at 21:55
+  is made between those five, so the winner is never a name the room could not
+  have heard. An entry that puts someone into the top five is told so on the
+  spot. The winner post and the trivia champions post got the full fanfare,
+  the close is stated as Pacific time everywhere, and a countdown posts at one
+  hour, thirty minutes and five minutes before it. The people who made the
+  prize may not enter: `ANNIVERSARY_EXCLUDED_IDS`, Telegram ids, on the
+  droplet rather than in the repo.
+
 ### Added
 
 - **One place that stops repetition, for every reply path.** Prompt rules

@@ -20,8 +20,12 @@ import {
   formatLeaderboard,
   handleFor,
   isEventDay,
+  loreStandings,
+  loreTopNames,
   noteMention,
   parseJudgeResponse,
+  parseScoreResponse,
+  scoreLore,
   parseTriviaCallback,
   pickCard,
   planDay,
@@ -352,6 +356,9 @@ describe('the lore contest', () => {
     expect(enterLore(s, WITH_CONTEST, ['-100'], entry(1, { chatId: '-999' }))).toEqual({ entered: false, reason: 'wrong_chat' });
     expect(enterLore(s, SCHEDULE, ['-100'], entry(1))).toEqual({ entered: false, reason: 'no_contest' });
 
+    // The prize's makers sit it out, by id.
+    expect(enterLore(s, WITH_CONTEST, ['-100'], entry(1, { submitterId: 'maker' }), ['maker'])).toEqual({ entered: false, reason: 'excluded' });
+
     const first = enterLore(s, WITH_CONTEST, ['-100'], entry(1));
     expect(first.entered && first.entry.number).toBe(1);
     expect(first.entered && first.remaining).toBe(2);
@@ -429,6 +436,40 @@ describe('the lore contest', () => {
     expect(bad.d.lore.judgeFailed).toBe(true);
   });
 
+  it('scores entries quietly, ranks by score, and reveals names only', async () => {
+    const s = emptyState();
+    const people = ['Crypsi', 'Coit', 'FWD', 'Kane', 'm0nti', 'Shaban', 'Arwyn'];
+    people.forEach((name, i) =>
+      enterLore(s, WITH_CONTEST, ['-100'], entry(i + 1, { submitterId: `u${i}`, name, username: undefined, lore: `a different story number ${i} about the mint` }))
+    );
+    // Crypsi's second entry scores highest of all; a person is still listed once.
+    enterLore(s, WITH_CONTEST, ['-100'], entry(20, { submitterId: 'u0', name: 'Crypsi', lore: 'another tale from the same person' }));
+    const scores = [4, 9, 7, 8, 2, 6, 5, 10];
+    s.lore.entries.forEach((e, i) => expect(scoreLore(s, e.id, scores[i], 'r')).toBe(true));
+    expect(scoreLore(s, s.lore.entries[0].id, 1, 'again')).toBe(false);
+    expect(s.lore.entries[0].score).toBe(4);
+
+    expect(loreTopNames(s.lore.entries)).toEqual(['Crypsi', 'Coit', 'Kane', 'FWD', 'Shaban']);
+    expect(loreStandings(s.lore.entries)[0].score).toBe(10);
+    expect(parseScoreResponse('{"score": 7.4, "reason": "  true  "}')).toEqual({ score: 7, reason: 'true' });
+    expect(parseScoreResponse('{"score": 11}')).toBeNull();
+    expect(parseScoreResponse('no')).toBeNull();
+
+    // The final judge chooses among the top five only, by their real numbers.
+    const store = new MemStore();
+    store.d = s;
+    const judged: string[] = [];
+    const { effects, sent } = fakeEffects();
+    effects.judgeLore = async (p) => { judged.push(p); return '{"winner": 8, "reason": "the best of the five"}'; };
+    effects.storeLore = async () => true;
+    const engine = new AnniversaryEngine({ schedule: WITH_CONTEST, store, cards: CARDS, effects, chatIds: ['-100'] });
+    await engine.tick(at('21:55'));
+    expect(judged[0]).toContain('8. [Crypsi]');
+    expect(judged[0]).toContain('2. [Coit]');
+    expect(judged[0]).not.toContain('5. [m0nti]');
+    expect(sent.at(-1)!.text).toContain('winner Crypsi');
+  });
+
   it('reads the judge strictly', () => {
     const s = emptyState();
     enterLore(s, WITH_CONTEST, ['-100'], entry(1));
@@ -457,10 +498,16 @@ describe('the lore contest', () => {
     const real = loadSchedule(join(process.cwd(), 'src', 'data', 'fakerares5-schedule.json'))!;
     const lc = real.lore_contest!;
     expect(lc).toBeTruthy();
+    expect(lc.max_per_person).toBe(5);
     const t = (h: string) => zonedToUtc(real.event.date, h, real.event.timezone);
     expect(t(lc.opens)).toBeLessThan(t(lc.closes));
     expect(t(lc.closes)).toBeLessThan(t(lc.announce));
-    expect(planDay(real).map((p) => p.id)).toContain('lore-winner');
+    const ids = planDay(real).map((p) => p.id);
+    expect(ids).toContain('lore-winner');
+    // The countdown: 1 hour, 30 minutes, 5 minutes before close.
+    expect(lc.reminders!.map((r) => r.time)).toEqual(['20:30', '21:00', '21:25']);
+    expect(ids.filter((id) => id.startsWith('lore-reminder'))).toHaveLength(3);
+    expect(lc.open_text).toContain('Pacific');
   });
 });
 
@@ -573,6 +620,34 @@ describe('in the running bot', () => {
     handleTriviaTap('fr5:t:trivia-0:1', { id: 7, first_name: 'Crypsi' }, at('10:31'));
     _resetAnniversary();
     expect(anniversaryFact("who's winning the trivia?", at('10:40'))).toContain('🥇 Crypsi — 1');
+
+    // Asked about the lore contest it gives names only, never the lore or a score.
+    const withContest = { ...loadSchedule()!, lore_contest: {
+      opens: '08:00', closes: '21:30', announce: '21:55', max_per_person: 3, prize: 'a card',
+      open_text: 'o', winner_text: 'w', no_entries_text: 'n', judge_failed_text: 'j',
+    } };
+    writeFileSync(process.env.ANNIVERSARY_SCHEDULE_PATH!, JSON.stringify(withContest));
+    _resetAnniversary();
+    expect(anniversaryFact("who's winning the lore contest?", at('10:40'))).toContain('no entries yet');
+    const { enterLoreContest, recordLoreScore } = await import('../../conversation/anniversaryRuntime');
+    const e1 = enterLoreContest({ card: 'FAKEASF', lore: 'a secret story about the mint', submitterId: '7', name: 'Crypsi', chatId: '-100', fromArtist: false, now: at('10:41') });
+    const e2 = enterLoreContest({ card: 'ONE', lore: 'another secret story here', submitterId: '8', name: 'Coit', chatId: '-100', fromArtist: false, now: at('10:42') });
+    recordLoreScore(e1.entered ? e1.entry.id : '', 3, 'meh');
+    recordLoreScore(e2.entered ? e2.entry.id : '', 9, 'great');
+    const { loreEntryInTop } = await import('../../conversation/anniversaryRuntime');
+    expect(loreEntryInTop(e1.entered ? e1.entry.id : '')).toBe(true);
+    expect(loreEntryInTop(e2.entered ? e2.entry.id : '')).toBe(true);
+    // A weaker second entry from someone already in the top five is not news.
+    const e3 = enterLoreContest({ card: 'TWO', lore: 'a third story, weaker than the first', submitterId: '8', name: 'Coit', chatId: '-100', fromArtist: false, now: at('10:44') });
+    recordLoreScore(e3.entered ? e3.entry.id : '', 2, 'weak');
+    expect(loreEntryInTop(e3.entered ? e3.entry.id : '')).toBe(false);
+    const standing = anniversaryFact('how many entries in the lore contest so far?', at('10:43'))!;
+    expect(standing).toContain('3 entries so far');
+    expect(standing).toContain('Coit, Crypsi');
+    expect(standing).not.toContain('secret story');
+    // Scores were 3, 9 and 2; none may appear. "3 entries" is the count, not a score.
+    expect(standing.replace(/\d+ entries/, '')).not.toMatch(/\b[392]\b/);
+    expect(standing).not.toContain('great');
 
     // And every reply on the day is told what day it is.
     expect(anniversaryContext(at('10:40'))).toContain('5th birthday');

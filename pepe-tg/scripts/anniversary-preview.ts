@@ -21,7 +21,7 @@ import { tmpdir } from 'os';
 import { join } from 'path';
 import { rmSync } from 'fs';
 import { AnniversaryEngine, planDay, zonedToUtc, type Effects } from '../src/conversation/anniversary';
-import { FileAnniversaryStore, enterLoreContest, handleTriviaTap, loadSchedule, schedulePath, _resetAnniversary } from '../src/conversation/anniversaryRuntime';
+import { FileAnniversaryStore, anniversaryFact, enterLoreContest, handleTriviaTap, loadSchedule, recordLoreScore, schedulePath, _resetAnniversary } from '../src/conversation/anniversaryRuntime';
 import { FULL_CARD_INDEX } from '../src/data/fullCardIndex';
 
 const args = process.argv.slice(2);
@@ -117,9 +117,11 @@ if (!fastForward) {
       ];
       for (const t of tries) {
         const r = enterLoreContest({ ...t, submitterId: String(t.p.id), name: t.p.first_name, chatId: chatIds[0], now: fakeNow });
-        console.log(`[${stamp(fakeNow)}] ${t.p.first_name} /fr ${t.card} → ${r.entered ? `entry #${r.entry.number}, ${r.remaining} left` : r.reason}`);
+        if (r.entered) recordLoreScore(r.entry.id, 5 + (r.entry.number % 5), 'pretend score');
+        console.log(`[${stamp(fakeNow)}] ${t.p.first_name} /fr ${t.card} → ${r.entered ? `entry #${r.entry.number}, ${r.remaining} left, scored quietly` : r.reason}`);
         fakeNow += 1000;
       }
+      console.log(`[${stamp(fakeNow)}] someone asks "who's winning the lore contest?" → ${anniversaryFact("who's winning the lore contest?", fakeNow)}`);
     }
     fakeNow += 60_000;
     await new Promise((r) => setTimeout(r, 70));

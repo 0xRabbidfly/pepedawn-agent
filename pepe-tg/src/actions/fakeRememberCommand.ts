@@ -15,7 +15,9 @@ import aliasFile from '../data/artist-aliases.json';
 import { countLoreForCard, existingLoreTexts, recordLore } from '../utils/loreInventory';
 import { isAdminUser } from '../utils/admins';
 import { propose, DEFAULT_VOUCH_CONFIG } from '../utils/vouching';
-import { enterLoreContest, loreContestOpen } from '../conversation/anniversaryRuntime';
+import { enterLoreContest, loreContestOpensAt, loreContestStanding, loreEntryInTop, recordLoreScore } from '../conversation/anniversaryRuntime';
+import { buildScorePrompt, parseScoreResponse } from '../conversation/anniversary';
+import { getCardInfo } from '../data/fullCardIndex';
 
 /**
  * /fr - Fake Remember: artist-contributed card lore.
@@ -178,6 +180,13 @@ export const fakeRememberCommand: Action = {
     // allows one open proposal per person and would have ended most people's
     // day at their first entry. The winner is stored at announcement.
     const chatId = options?.ctx?.message?.chat?.id?.toString();
+    const standing = loreContestStanding(chatId);
+    // On the day nothing goes to vouching. Before the contest opens, a
+    // non-artist is asked to hold their entry; the artist's own lore still
+    // stores, as on any other day.
+    if (standing === 'before' && verdict.route === 'vouch') {
+      return reject('contest_not_open', `🎂 The birthday lore contest opens at ${loreContestOpensAt() ?? 'later today'}. Send that again then and it is entered.`, verdict.lore);
+    }
     const contest = enterLoreContest({
       card,
       lore: verdict.lore!,
@@ -194,24 +203,58 @@ export const fakeRememberCommand: Action = {
         ? '\n\n🎂 Not entered in the contest: you have used your entries for the day.'
         : contest.reason === 'closed'
           ? '\n\n🎂 The contest is closed; this one is not entered.'
-          : '';
+          : contest.reason === 'excluded'
+            ? '\n\n🎂 Not entered in the contest: you made the prize. The lore is very welcome all the same.'
+            : '';
 
-    if (verdict.route === 'vouch' && loreContestOpen(chatId)) {
+    // PEPEDAWN scores each entry as it arrives, quietly. The score is never
+    // shown; if the room asks how it stands, it gets the top five names only.
+    const scoreQuietly = async () => {
+      if (!contest.entered) return;
+      try {
+        const reply = await callTextModel(runtime, {
+          model: process.env.ANNIVERSARY_JUDGE_MODEL || process.env.CHAT_MODEL || 'gpt-5.6-luna',
+          prompt: buildScorePrompt(contest.entry, getCardInfo(card) ?? undefined),
+          systemPrompt: 'You score lore entries for the Fake Rares community. You return JSON only.',
+          maxTokens: 120,
+          source: 'Anniversary-Score',
+        });
+        const parsed = parseScoreResponse(reply.text);
+        if (!parsed) {
+          logger.warn(`[/fr] could not read the score for entry #${contest.entry.number}`);
+          return;
+        }
+        recordLoreScore(contest.entry.id, parsed.score, parsed.reason);
+        // The good news, straight away.
+        if (loreEntryInTop(contest.entry.id) && callback) {
+          await callback({
+            text: `🔥🔥 ${contest.entry.name}, that one puts you in the TOP FIVE right now. 🔥🔥\nThe pick is at the end of the day. Hold on to your hat.`,
+          });
+        }
+      } catch (error) {
+        logger.warn({ error }, '[/fr] scoring failed; the entry stands unscored');
+      }
+    };
+
+    if (verdict.route === 'vouch' && standing !== 'none') {
       if (contest.entered) {
         logger.info(`[/fr] contest entry #${contest.entry.number} for ${card} by ${who}`);
         if (callback) {
           await callback({ text: `📜 *${card}* by ${who}\n\n_${verdict.lore}_${contestLine}` });
         }
+        await scoreQuietly();
         return { success: true, text: `Contest entry #${contest.entry.number}` };
       }
-      if (contest.reason === 'cap' || contest.reason === 'duplicate') {
-        return reject(
-          `contest_${contest.reason}`,
-          contest.reason === 'cap'
-            ? '🎂 You have used your contest entries for today.'
-            : '🎂 Someone already entered that one.'
-        );
-      }
+      return reject(
+        `contest_${contest.reason}`,
+        contest.reason === 'cap'
+          ? '🎂 You have used your contest entries for today.'
+          : contest.reason === 'duplicate'
+            ? '🎂 Someone already entered that one.'
+            : contest.reason === 'excluded'
+              ? '🎂 You made the prize, so you sit this one out. Good lore, though. Send it again tomorrow and it goes up for vouching.'
+              : '🎂 The contest is closed for today; that one is not entered.'
+      );
     }
 
     // Third-party lore goes to the room rather than straight into the corpus.
@@ -286,6 +329,7 @@ export const fakeRememberCommand: Action = {
         });
 
         logger.info(`[/fr] stored for ${card} by ${who} (ID: ${result.memoryId})`);
+        await scoreQuietly();
         return { success: true, text: 'Lore stored', memoryId: result.memoryId };
       }
 

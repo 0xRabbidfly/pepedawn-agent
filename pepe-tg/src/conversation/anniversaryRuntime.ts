@@ -19,8 +19,12 @@ import {
   eventDay,
   formatLeaderboard,
   isEventDay,
+  LORE_SHORTLIST,
   loreContestPhase,
+  loreStandings,
+  loreTopNames,
   noteMention,
+  scoreLore,
   parseTriviaCallback,
   planDay,
   recordTap,
@@ -101,7 +105,12 @@ export function mergeState(target: AnniversaryStateData, source: AnniversaryStat
   if (source.lore) {
     if (!target.lore) target.lore = { entries: [] };
     for (const e of source.lore.entries ?? []) {
-      if (!target.lore.entries.some((m) => m.id === e.id)) target.lore.entries.push(e);
+      const mine = target.lore.entries.find((m) => m.id === e.id);
+      if (!mine) target.lore.entries.push(e);
+      else if (mine.score === undefined && e.score !== undefined) {
+        mine.score = e.score;
+        mine.scoreReason = e.scoreReason;
+      }
     }
     // Numbers are positions in arrival order; renumber after a union so two
     // writers cannot both have handed out "#4".
@@ -184,6 +193,19 @@ export function anniversaryStore(): FileAnniversaryStore {
   const path = statePath();
   if (!store || store.path !== path) store = new FileAnniversaryStore(path);
   return store;
+}
+
+/**
+ * Who may not enter the lore contest: the people who made the prize.
+ *
+ * Numeric Telegram ids, from the environment on the droplet plus any in the
+ * schedule. The environment is preferred, because this repository is public
+ * and the schedule is committed.
+ */
+export function excludedIds(schedule: Schedule): string[] {
+  const fromEnv = (process.env.ANNIVERSARY_EXCLUDED_IDS || '').split(',').map((s) => s.trim()).filter(Boolean);
+  const fromFile = (schedule.lore_contest?.excluded_ids ?? []).map(String);
+  return [...new Set([...fromEnv, ...fromFile])];
 }
 
 /** Which chats the day runs in. */
@@ -285,7 +307,7 @@ export function enterLoreContest(input: {
       chatId: input.chatId,
       at: input.now ?? Date.now(),
       fromArtist: input.fromArtist,
-    });
+    }, excludedIds(schedule));
     if (outcome.entered) s.save();
     return outcome;
   } catch (error) {
@@ -294,13 +316,64 @@ export function enterLoreContest(input: {
   }
 }
 
-/** Whether a non-artist /fr in this chat should go to the contest rather than to vouching, right now. */
-export function loreContestOpen(chatId: string | undefined, now = Date.now()): boolean {
+/**
+ * Where a /fr in this chat stands with the contest right now: 'none' on any
+ * other day or in any other chat, otherwise the contest phase. On the day,
+ * nothing goes to vouching — before open it is asked to wait, after close it
+ * is told so.
+ */
+export function loreContestStanding(chatId: string | undefined, now = Date.now()): 'none' | 'before' | 'open' | 'closed' {
   try {
-    if (!anniversaryEnabled() || !chatId) return false;
+    if (!anniversaryEnabled() || !chatId) return 'none';
     const schedule = loadSchedule();
-    if (!schedule?.lore_contest || !eventChatIds(schedule).includes(chatId)) return false;
-    return loreContestPhase(schedule, now) === 'open';
+    if (!schedule?.lore_contest || !eventChatIds(schedule).includes(chatId)) return 'none';
+    if (!isEventDay(schedule, now)) return 'none';
+    const phase = loreContestPhase(schedule, now);
+    return phase === 'none' ? 'none' : phase;
+  } catch {
+    return 'none';
+  }
+}
+
+/** The contest's opening time, for the "wait until" reply. */
+export function loreContestOpensAt(): string | undefined {
+  return loadSchedule()?.lore_contest?.opens;
+}
+
+/** Keep PEPEDAWN's quiet score for an entry. */
+export function recordLoreScore(entryId: string, score: number, reason: string): boolean {
+  try {
+    const s = anniversaryStore();
+    if (!scoreLore(s.data(), entryId, score, reason)) return false;
+    s.save();
+    return true;
+  } catch (error) {
+    logger.warn({ error }, '[Anniversary] could not record a lore score');
+    return false;
+  }
+}
+
+/** Top names so far, best first. Names only: never the lore, never the score. */
+export function loreTopNamesNow(): { names: string[]; entries: number } {
+  const data = anniversaryStore().data();
+  return { names: loreTopNames(data.lore?.entries ?? []), entries: data.lore?.entries.length ?? 0 };
+}
+
+/** Is this entry one of the top-five people's best right now? For the good news, straight away. */
+export function loreEntryInTop(entryId: string): boolean {
+  try {
+    const entries = anniversaryStore().data().lore?.entries ?? [];
+    const entry = entries.find((e) => e.id === entryId);
+    if (!entry || entry.score === undefined) return false;
+    const top = new Set<string>();
+    for (const e of loreStandings(entries)) {
+      top.add(e.submitterId);
+      if (top.size >= LORE_SHORTLIST) break;
+    }
+    if (!top.has(entry.submitterId)) return false;
+    // Their best entry is the one that put them there; only that one gets the news.
+    const best = loreStandings(entries.filter((e) => e.submitterId === entry.submitterId))[0];
+    return best?.id === entryId;
   } catch {
     return false;
   }
@@ -308,6 +381,7 @@ export function loreContestOpen(chatId: string | undefined, now = Date.now()): b
 
 const ASKS_COUNT = /\b(count(er)?|tally|score|number|how many times)\b/i;
 const ASKS_BOARD = /\b(leaderboard|leader board|trivia|scoreboard|winning|who'?s (ahead|winning|leading))\b/i;
+const ASKS_LORE = /\b(lore|contest|entries|entry|top (5|five)|shortlist|finalists?)\b/i;
 
 /**
  * An exact answer for a question about the birthday, or null.
@@ -327,12 +401,23 @@ export function anniversaryFact(text: string, now = Date.now()): string | null {
     // "What's counter at now you miscreant?", the name was not there and the
     // question went to retrieval, which improvised "5 years" for a second time.
     const asksScrilla = /\b(counter|tally)\b/i.test(text) || (SCRILLA.test(text) && ASKS_COUNT.test(text));
-    const asksBoard = ASKS_BOARD.test(text);
-    if (!asksScrilla && !asksBoard) return null;
+    const asksLore = !!schedule.lore_contest && ASKS_LORE.test(text) && (ASKS_BOARD.test(text) || /\b(who|how many|top|best|standing|leading|winning|so far)\b/i.test(text));
+    const asksBoard = ASKS_BOARD.test(text) && !asksLore;
+    if (!asksScrilla && !asksBoard && !asksLore) return null;
 
     const data = anniversaryStore().data();
     const { start } = eventDay(schedule);
     const parts: string[] = [];
+    if (asksLore) {
+      const lc = schedule.lore_contest!;
+      const { names, entries } = loreTopNamesNow();
+      parts.push(
+        entries === 0
+          ? `The birthday lore contest has no entries yet; it closes ${lc.closes} and the winner is chosen at ${lc.announce}.`
+          : `The birthday lore contest has ${entries} entries so far. Top five right now, names only, best first: ${names.join(', ')}. ` +
+            `That is all that may be revealed: never the scores, never whose lore is which. The winner is chosen at ${lc.announce}.`
+      );
+    }
     if (asksScrilla) {
       const count = data.scrilla.date === schedule.event.date ? data.scrilla.count : 0;
       parts.push(
@@ -364,7 +449,9 @@ export function anniversaryContext(now = Date.now()): string {
     const lc = schedule.lore_contest;
     const contest = lc
       ? ` There is also a lore contest: /fr CARD <story> enters, ${lc.max_per_person} entries each, closes ${lc.closes}, ` +
-        `you judge it and the prize is ${lc.prize}; ${data.lore?.entries.length ?? 0} entries so far.`
+        `you score every entry quietly and choose the winner at ${lc.announce}; the prize is ${lc.prize}; ` +
+        `${data.lore?.entries.length ?? 0} entries so far. If asked how it stands you may give the top five names only, ` +
+        `never scores and never who wrote which lore.`
       : '';
     return (
       `Today is the Fake Rares 5th birthday and you are hosting: history drops, a card every couple of hours, ` +

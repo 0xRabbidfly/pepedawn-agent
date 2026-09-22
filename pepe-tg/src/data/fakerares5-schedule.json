@@ -30,7 +30,7 @@
       "text": "📊 Five years, by the numbers:\n\n18 series.\n893 cards.\n412 artists.\n\nSeries 3 alone: 50 cards by 50 different artists. Not one repeat."
     },
     {
-      "time": "20:30",
+      "time": "20:15",
       "card": "PEPEDAWN",
       "text": "🖼 Series 18 is the newest, 41 cards and counting. One of them is me. PEPEDAWN, Series 18 #22, by rabbidfly, 133 of us. I half suspect I hatched from a FREEDOMKEK dispenser. Nobody has confirmed or denied it."
     }
@@ -104,13 +104,16 @@
   "lore_contest": {
     "opens": "08:00",
     "closes": "21:30",
-    "reminder": "20:45",
     "announce": "21:55",
-    "max_per_person": 3,
+    "max_per_person": 5,
     "prize": "a PEPEDAWN card",
-    "open_text": "📜 BIRTHDAY LORE CONTEST\n\nTell me the story behind a card: /fr CARDNAME <the story>. Why it was made, what it references, what happened around the drop, what it means to you. Not the specs, I have those.\n\n{MAX} entries each. Closes {CLOSES}. I judge, on one measure: what honours the fakes. The winner gets {PRIZE} and their lore goes into my memory for good.\n\nArtists: lore on your own cards lands in my memory the moment you send it, contest or not. Today would be a good day.\n\nAnd a whisper, since it is my birthday: not every card that burns is gone.",
-    "reminder_text": "📜 {ENTRIES} lore entries in. 45 minutes left, closes {CLOSES}. /fr CARDNAME <the story>.",
-    "winner_text": "🏆 Best lore of the birthday: {WINNER}, on {CARD}\n\n\"{LORE}\"\n\n{REASON}\n\n{PRIZE} is on its way, {HANDLE}. {ENTRIES} entries in all. Yours is in my memory now, and it stays.\n\nWhat you do with the card is your business. I will only say I hatched from something that was on fire.",
+    "open_text": "📜 BIRTHDAY LORE CONTEST\n\nTell me the story behind a card: /fr CARDNAME <the story>. Why it was made, what it references, what happened around the drop, what it means to you. Not the specs, I have those.\n\n{MAX} entries each. Entries close at {CLOSES} Pacific tonight, sharp. I score every entry as it lands, quietly, on one measure: what honours the fakes. Ask me how it stands and you get the top five names, nothing more. The winner is chosen after close, gets {PRIZE}, and their lore goes into my memory for good.\n\nArtists: lore on your own cards lands in my memory the moment you send it, contest or not. Today would be a good day.\n\nAnd a whisper, since it is my birthday: not every card that burns is gone.",
+    "reminders": [
+      { "time": "20:30", "text": "⏳ ONE HOUR LEFT in the lore contest. {ENTRIES} entries in. Doors close at {CLOSES} Pacific. /fr CARDNAME <the story>." },
+      { "time": "21:00", "text": "⏳ THIRTY MINUTES. {ENTRIES} entries so far. Closes {CLOSES} Pacific. Last stories, please." },
+      { "time": "21:25", "text": "🚨 FIVE MINUTES. Contest closes at {CLOSES} Pacific. Anything after that is just a nice story." }
+    ],
+    "winner_text": "🏆🏆🏆 BEST LORE OF THE BIRTHDAY 🏆🏆🏆\n\n👑 {WINNER} — {CARD} 👑\n\n\"{LORE}\"\n\n🐸 {REASON}\n\n🎁 {PRIZE} is on its way, {HANDLE}! 🎁\n📜 {ENTRIES} entries in all. Yours is in my memory now, and it stays.\n\n🔥 What you do with the card is your business. I will only say I hatched from something that was on fire. 🔥",
     "no_entries_text": "📜 The lore contest closed with no entries. The stories are still out there. /fr any day.",
     "judge_failed_text": "📜 {ENTRIES} entries and I could not pick between them. rabbidfly will choose the winner by hand. Every entry is saved."
   },
@@ -118,7 +121,7 @@
   "closers": [
     {
       "time": "22:05",
-      "text": "🏆 Trivia leaderboard, fifth birthday edition:\n\n{LEADERBOARD}\n\nFive years of fakes. Thanks for having me in the room. Same time in 2031. 🐸"
+      "text": "🎉🎉🎉 FIVE YEARS OF FAKES 🎉🎉🎉\n\n🧠 TRIVIA CHAMPIONS 🧠\n\n{LEADERBOARD}\n\n👏 Five rounds, no mercy. 👏\n\nThanks for having me in the room. Same time in 2031. 🐸🎂"
     }
   ],
 
