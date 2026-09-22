@@ -15,9 +15,11 @@ import { logger } from '@elizaos/core';
 import {
   SCRILLA,
   emptyState,
+  enterLore,
   eventDay,
   formatLeaderboard,
   isEventDay,
+  loreContestPhase,
   noteMention,
   parseTriviaCallback,
   planDay,
@@ -28,6 +30,7 @@ import {
   type Answer,
   type AnniversaryStateData,
   type AnniversaryStore,
+  type EnterOutcome,
   type Schedule,
   type TapOutcome,
 } from './anniversary';
@@ -94,6 +97,19 @@ export function mergeState(target: AnniversaryStateData, source: AnniversaryStat
     }
     for (const [userId, a] of Object.entries(rec.answers ?? {})) if (!mine.answers[userId]) mine.answers[userId] = a;
     if (rec.revealed) mine.revealed = true;
+  }
+  if (source.lore) {
+    if (!target.lore) target.lore = { entries: [] };
+    for (const e of source.lore.entries ?? []) {
+      if (!target.lore.entries.some((m) => m.id === e.id)) target.lore.entries.push(e);
+    }
+    // Numbers are positions in arrival order; renumber after a union so two
+    // writers cannot both have handed out "#4".
+    target.lore.entries.sort((a, b) => a.at - b.at || a.id.localeCompare(b.id));
+    target.lore.entries.forEach((e, i) => { e.number = i + 1; });
+    if (!target.lore.winner && source.lore.winner) target.lore.winner = source.lore.winner;
+    else if (target.lore.winner && source.lore.winner?.stored) target.lore.winner.stored = true;
+    if (source.lore.judgeFailed) target.lore.judgeFailed = true;
   }
 }
 
@@ -236,6 +252,60 @@ export function handleTriviaTap(
   }
 }
 
+/**
+ * Enter a /fr submission in the birthday lore contest.
+ *
+ * Called by the /fr command after every gate except vouching has passed. On
+ * the day, in the event chat, a non-artist's lore enters here instead of going
+ * to the room for vouches — vouching allows one open proposal per person, which
+ * would have ended most people's contest at their first entry. The winner is
+ * stored at announcement; an artist's own lore was stored on arrival as always.
+ */
+export function enterLoreContest(input: {
+  card: string;
+  lore: string;
+  submitterId?: string;
+  name: string;
+  username?: string;
+  chatId?: string;
+  fromArtist: boolean;
+  now?: number;
+}): EnterOutcome {
+  try {
+    if (!anniversaryEnabled() || !input.chatId || !input.submitterId) return { entered: false, reason: 'no_contest' };
+    const schedule = loadSchedule();
+    if (!schedule?.lore_contest) return { entered: false, reason: 'no_contest' };
+    const s = anniversaryStore();
+    const outcome = enterLore(s.data(), schedule, eventChatIds(schedule), {
+      card: input.card,
+      lore: input.lore,
+      submitterId: input.submitterId,
+      name: input.name,
+      username: input.username,
+      chatId: input.chatId,
+      at: input.now ?? Date.now(),
+      fromArtist: input.fromArtist,
+    });
+    if (outcome.entered) s.save();
+    return outcome;
+  } catch (error) {
+    logger.warn({ error }, '[Anniversary] lore entry failed');
+    return { entered: false, reason: 'no_contest' };
+  }
+}
+
+/** Whether a non-artist /fr in this chat should go to the contest rather than to vouching, right now. */
+export function loreContestOpen(chatId: string | undefined, now = Date.now()): boolean {
+  try {
+    if (!anniversaryEnabled() || !chatId) return false;
+    const schedule = loadSchedule();
+    if (!schedule?.lore_contest || !eventChatIds(schedule).includes(chatId)) return false;
+    return loreContestPhase(schedule, now) === 'open';
+  } catch {
+    return false;
+  }
+}
+
 const ASKS_COUNT = /\b(count(er)?|tally|score|number|how many times)\b/i;
 const ASKS_BOARD = /\b(leaderboard|leader board|trivia|scoreboard|winning|who'?s (ahead|winning|leading))\b/i;
 
@@ -252,7 +322,11 @@ export function anniversaryFact(text: string, now = Date.now()): string | null {
     if (!anniversaryEnabled()) return null;
     const schedule = loadSchedule();
     if (!schedule || !isEventDay(schedule, now)) return null;
-    const asksScrilla = SCRILLA.test(text) && ASKS_COUNT.test(text);
+    // On the day there is exactly one counter, so "what's the counter at" is
+    // about it whether or not Scrilla is named. The second time it was asked,
+    // "What's counter at now you miscreant?", the name was not there and the
+    // question went to retrieval, which improvised "5 years" for a second time.
+    const asksScrilla = /\b(counter|tally)\b/i.test(text) || (SCRILLA.test(text) && ASKS_COUNT.test(text));
     const asksBoard = ASKS_BOARD.test(text);
     if (!asksScrilla && !asksBoard) return null;
 
@@ -287,10 +361,15 @@ export function anniversaryContext(now = Date.now()): string {
     if (!schedule || !isEventDay(schedule, now)) return '';
     const data = anniversaryStore().data();
     const count = data.scrilla.date === schedule.event.date ? data.scrilla.count : 0;
+    const lc = schedule.lore_contest;
+    const contest = lc
+      ? ` There is also a lore contest: /fr CARD <story> enters, ${lc.max_per_person} entries each, closes ${lc.closes}, ` +
+        `you judge it and the prize is ${lc.prize}; ${data.lore?.entries.length ?? 0} entries so far.`
+      : '';
     return (
       `Today is the Fake Rares 5th birthday and you are hosting: history drops, a card every couple of hours, ` +
       `trivia with a leaderboard, and a running count of how often ${schedule.event.scrilla_handle}'s name is said in this chat ` +
-      `(currently ${count}). If anyone asks about the count or the trivia, use these numbers and never invent others.\n`
+      `(currently ${count}).${contest} If anyone asks about the count, the trivia or the contest, use these numbers and never invent others.\n`
     );
   } catch {
     return '';

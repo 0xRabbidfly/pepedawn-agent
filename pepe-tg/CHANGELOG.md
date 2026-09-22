@@ -5,6 +5,50 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.13.0] - 2026-09-22
+
+### Added
+
+- **A birthday lore contest, judged by PEPEDAWN.** From 08:00 to 21:30 on the
+  day, `/fr CARD <story>` in the channel enters — three entries each — and at
+  21:55 the winner is announced by name and handle: a PEPEDAWN card, and their
+  lore goes into the corpus for good.
+
+  - **Judged on one measure: what honours the fakes.** True to the card and
+    its artist first, then the culture, then whether it is worth retelling,
+    then wit and warmth. The model sees each entry beside the card's real facts,
+    picks a number, and writes one sentence for the room. It never rewrites an
+    entry; a reply that does not point at a real entry is asked once more, and
+    then the day says so and hands the choice to rabbidfly.
+  - **Entering is not writing to the corpus.** Vouching allows one open
+    proposal per person, which would have ended most people's contest at their
+    first entry, so on the day a non-artist's `/fr` enters the contest instead
+    of going to vouching. An artist's own lore is stored on arrival, as always,
+    and enters too. The winner is stored at announcement, once, attributed to
+    the entrant.
+  - Every gate that stopped the August flood still applies to entries: a real
+    card, reads like lore, no duplicates, the model screen, the rate limiter.
+  - The verdict is recorded before it is posted, so a restart re-judges,
+    re-stores and re-posts nothing. Entries taken by the Telegram plugin's copy
+    of the state merge with the engine's and are renumbered in arrival order.
+  - The opener and the winner post each carry one quiet line about what a
+    burned card might become.
+
+### Fixed
+
+- **The counter answer, properly this time.** 5.12.1 handed the real count to
+  the chat path, but only when Scrilla was named. "What's counter at now you
+  miscreant?" was not, went to retrieval, and got "5 years" for a second time.
+  On the day any question about "the counter" is about the one counter there
+  is, and the retrieval path now sees the birthday context too.
+- **Asked the same thing twice, it answered the same thing twice.** The facts
+  composer is now told when the question repeats one it just answered, and
+  asked to say what is new or that nothing has changed.
+- **Naming a card five times no longer posts the card five times.** A card
+  shown in a room — alongside an answer, or from a bare card name — is not
+  shown again there for ten minutes. A typed `/f` is an explicit request and
+  is never held back.
+
 ## [5.12.1] - 2026-09-22
 
 ### Fixed

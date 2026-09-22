@@ -17,6 +17,7 @@ import { SocialMemoryService } from '../services/SocialMemoryService';
 import { ReleaseNoteService } from '../services/ReleaseNoteService';
 import { AnniversaryService } from '../services/AnniversaryService';
 import { noteScrillaMention } from '../conversation/anniversaryRuntime';
+import { noteShown, recentlyShown } from '../utils/cardShowCooldown';
 import { runRecap } from '../actions/recapCommand';
 import { runMemoryCommand } from '../actions/memoryCommands';
 import { sendRecapVideo, stripHtml } from '../utils/recapSend';
@@ -347,6 +348,14 @@ async function displayCardFromAnyCollection(
 ): Promise<boolean> {
   const info = getAnyCardInfo(asset);
   if (!info) return false;
+
+  // Shown here a moment ago: the answer stands on its own this time.
+  const roomKey = String(message.roomId ?? '');
+  if (recentlyShown(roomKey, info.asset)) {
+    logger.info(`[CardShow] ${info.asset} was shown in this room recently; not showing it again`);
+    return false;
+  }
+  noteShown(roomKey, info.asset);
 
   const { action, command } =
     info.collection === 'rare-pepes'
@@ -865,8 +874,17 @@ export const fakeRaresPlugin: Plugin = {
           triggers.isReplyToBot = isActuallyReplyToBot;
           
           // 🎯 AUTO-ROUTE: Single card name → treat as "/f CARDNAME"
+          if (triggers.isFakeRareCard && patterns.metadata.wordCount === 1 && recentlyShown(String(message.roomId ?? ''), text)) {
+            // The same bare name again inside the window. It was shown; saying
+            // it five times in a minute does not earn five card posts.
+            logger.info(`   Auto-route skipped: "${text}" was shown in this room recently`);
+            message.metadata = message.metadata || {};
+            (message.metadata as any).__handledByCustom = true;
+            return;
+          }
           if (triggers.isFakeRareCard && patterns.metadata.wordCount === 1) {
             logger.info(`   Auto-route: Single card name "${text}" → converting to /f command`);
+            noteShown(String(message.roomId ?? ''), text);
             
             // Prepend "/f " so the action handler can parse the card name correctly
             const originalText = text;

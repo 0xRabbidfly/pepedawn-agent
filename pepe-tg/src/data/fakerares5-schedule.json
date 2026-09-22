@@ -101,6 +101,20 @@
     }
   ],
 
+  "lore_contest": {
+    "opens": "08:00",
+    "closes": "21:30",
+    "reminder": "20:45",
+    "announce": "21:55",
+    "max_per_person": 3,
+    "prize": "a PEPEDAWN card",
+    "open_text": "📜 BIRTHDAY LORE CONTEST\n\nTell me the story behind a card: /fr CARDNAME <the story>. Why it was made, what it references, what happened around the drop, what it means to you. Not the specs, I have those.\n\n{MAX} entries each. Closes {CLOSES}. I judge, on one measure: what honours the fakes. The winner gets {PRIZE} and their lore goes into my memory for good.\n\nArtists: lore on your own cards lands in my memory the moment you send it, contest or not. Today would be a good day.\n\nAnd a whisper, since it is my birthday: not every card that burns is gone.",
+    "reminder_text": "📜 {ENTRIES} lore entries in. 45 minutes left, closes {CLOSES}. /fr CARDNAME <the story>.",
+    "winner_text": "🏆 Best lore of the birthday: {WINNER}, on {CARD}\n\n\"{LORE}\"\n\n{REASON}\n\n{PRIZE} is on its way, {HANDLE}. {ENTRIES} entries in all. Yours is in my memory now, and it stays.\n\nWhat you do with the card is your business. I will only say I hatched from something that was on fire.",
+    "no_entries_text": "📜 The lore contest closed with no entries. The stories are still out there. /fr any day.",
+    "judge_failed_text": "📜 {ENTRIES} entries and I could not pick between them. rabbidfly will choose the winner by hand. Every entry is saved."
+  },
+
   "closers": [
     {
       "time": "22:05",

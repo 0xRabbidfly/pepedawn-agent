@@ -20,8 +20,8 @@
 import { tmpdir } from 'os';
 import { join } from 'path';
 import { rmSync } from 'fs';
-import { AnniversaryEngine, planDay, type Effects } from '../src/conversation/anniversary';
-import { FileAnniversaryStore, handleTriviaTap, loadSchedule, schedulePath, _resetAnniversary } from '../src/conversation/anniversaryRuntime';
+import { AnniversaryEngine, planDay, zonedToUtc, type Effects } from '../src/conversation/anniversary';
+import { FileAnniversaryStore, enterLoreContest, handleTriviaTap, loadSchedule, schedulePath, _resetAnniversary } from '../src/conversation/anniversaryRuntime';
 import { FULL_CARD_INDEX } from '../src/data/fullCardIndex';
 
 const args = process.argv.slice(2);
@@ -53,9 +53,17 @@ const effects: Effects = {
     return ++messageIds;
   },
   editMessage: async (chatId, messageId, text) => { console.log(`\n[${stamp(fakeNow)}] ✎ ${chatId} #${messageId} EDIT\n${indent(text)}`); return true; },
+  judgeLore: async (prompt) => {
+    console.log(`\n[${stamp(fakeNow)}] ⚖ JUDGE PROMPT (${prompt.length} chars); pretend judge picks entry 2`);
+    return '{"winner": 2, "reason": "It tells the story the artist would tell, and it is true."}';
+  },
+  storeLore: async (entry) => { console.log(`[${stamp(fakeNow)}] 💾 would store winning lore for ${entry.card} by ${entry.name}`); return true; },
   log: (line) => console.log(`[${stamp(fakeNow)}] · ${line}`),
 };
 const chatIds = schedule.event.chat_ids?.length ? schedule.event.chat_ids : ['-100PREVIEW'];
+// The runtime resolves the event chat from TELEGRAM_CHANNEL_ID, and bun loads
+// the local .env, so without this the pretend entrants are in the wrong chat.
+process.env.TELEGRAM_CHANNEL_ID = chatIds.join(',');
 // Deliberately NOT the runtime's shared store: in production the plugin that
 // takes trivia taps holds its own copy of the state, so the preview's taps go
 // through a second instance too. If the leaderboard renders, the merge works.
@@ -76,6 +84,7 @@ if (!fastForward) {
   ];
   const plan = planDay(schedule);
   const answered = new Set<string>();
+  let loreSent = false;
   fakeNow = engine.day.start - 60_000;
   const end = engine.day.end + 60_000;
   const t0 = Date.now();
@@ -92,6 +101,25 @@ if (!fastForward) {
       });
       const again = handleTriviaTap(`fr5:t:${item.id}:0`, players[1], fakeNow + 1000);
       console.log(`[${stamp(fakeNow)}] Coit taps again → ${again}`);
+    }
+    // Pretend entrants, an hour after the contest opens: three lore entries, one over the cap.
+    const lc = schedule.lore_contest;
+    if (lc && !loreSent && fakeNow >= zonedToUtc(schedule.event.date, lc.opens, tz) + 60 * 60_000) {
+      loreSent = true;
+      const tries = [
+        { card: 'FREEDOMKEK', lore: 'Scrilla made it the week the dispenser broke and nobody could buy one for a month.', p: players[0], fromArtist: false },
+        { card: 'FAKEASF', lore: 'The community card. Everyone who was there in September 2021 has a story about the first mint.', p: players[1], fromArtist: false },
+        { card: 'PEPEDAWN', lore: 'The first fake rare that is also an ai agent, and it still hatched from a dispenser.', p: players[2], fromArtist: true },
+        { card: 'FAKETORCH', lore: 'One torch, passed hand to hand. Whoever holds it lights the next series.', p: players[0], fromArtist: false },
+        { card: 'FAKEASF', lore: 'second try', p: players[0], fromArtist: false },
+        { card: 'FAKEASF', lore: 'third try, a longer story about the mint and the people', p: players[0], fromArtist: false },
+        { card: 'WAGMIPEPE', lore: 'a fourth one from the same person, over the cap', p: players[0], fromArtist: false },
+      ];
+      for (const t of tries) {
+        const r = enterLoreContest({ ...t, submitterId: String(t.p.id), name: t.p.first_name, chatId: chatIds[0], now: fakeNow });
+        console.log(`[${stamp(fakeNow)}] ${t.p.first_name} /fr ${t.card} → ${r.entered ? `entry #${r.entry.number}, ${r.remaining} left` : r.reason}`);
+        fakeNow += 1000;
+      }
     }
     fakeNow += 60_000;
     await new Promise((r) => setTimeout(r, 70));

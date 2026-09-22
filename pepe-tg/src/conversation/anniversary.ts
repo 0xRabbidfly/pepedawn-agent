@@ -31,7 +31,29 @@ export interface TriviaQuestion {
   reveal_after_min?: number;
 }
 
+export interface LoreContest {
+  /** When entries open, close, and the winner is announced. HH:MM local. */
+  opens: string;
+  closes: string;
+  announce: string;
+  /** A nudge posted before close, e.g. "30 minutes left". Optional. */
+  reminder?: string;
+  max_per_person: number;
+  /** Posted at open; {PRIZE} {MAX} {CLOSES}. */
+  open_text: string;
+  /** Posted at reminder; {ENTRIES} {CLOSES}. */
+  reminder_text?: string;
+  /** Posted at announce; {WINNER} {HANDLE} {CARD} {LORE} {REASON} {ENTRIES} {PRIZE}. */
+  winner_text: string;
+  /** Posted at announce when nobody entered. */
+  no_entries_text: string;
+  /** Posted at announce when the judge could not decide; {ENTRIES}. */
+  judge_failed_text: string;
+  prize: string;
+}
+
 export interface Schedule {
+  lore_contest?: LoreContest;
   event: {
     date: string;
     timezone: string;
@@ -82,6 +104,15 @@ export function validateSchedule(raw: any): Schedule {
   }
   for (const [i, c] of (raw.closers ?? []).entries()) time(c.time, `closers[${i}]`);
   if (!raw.templates?.trivia || !raw.templates?.reveal) fail('templates.trivia and templates.reveal required');
+  if (raw.lore_contest) {
+    const lc = raw.lore_contest;
+    for (const k of ['opens', 'closes', 'announce']) time(lc[k], `lore_contest.${k}`);
+    if (lc.reminder !== undefined) time(lc.reminder, 'lore_contest.reminder');
+    if (!Number.isInteger(lc.max_per_person) || lc.max_per_person < 1) fail('lore_contest.max_per_person');
+    for (const k of ['open_text', 'winner_text', 'no_entries_text', 'judge_failed_text', 'prize']) {
+      if (typeof lc[k] !== 'string' || !lc[k].trim()) fail(`lore_contest.${k} required`);
+    }
+  }
   return raw as Schedule;
 }
 
@@ -135,7 +166,10 @@ export type PlannedItem =
   | { id: string; at: number; kind: 'card' }
   | { id: string; at: number; kind: 'counter'; text: string }
   | { id: string; at: number; kind: 'trivia'; index: number; question: TriviaQuestion }
-  | { id: string; at: number; kind: 'closer'; text: string };
+  | { id: string; at: number; kind: 'closer'; text: string }
+  | { id: string; at: number; kind: 'lore-open' }
+  | { id: string; at: number; kind: 'lore-reminder' }
+  | { id: string; at: number; kind: 'lore-winner' };
 
 /** The whole day as timed items, oldest first. Ids are stable across restarts. */
 export function planDay(schedule: Schedule): PlannedItem[] {
@@ -161,8 +195,153 @@ export function planDay(schedule: Schedule): PlannedItem[] {
   schedule.closers.forEach((cl, i) =>
     items.push({ id: `closer-${i}`, at: at(cl.time), kind: 'closer', text: cl.text })
   );
+  const lc = schedule.lore_contest;
+  if (lc) {
+    items.push({ id: 'lore-open', at: at(lc.opens), kind: 'lore-open' });
+    if (lc.reminder) items.push({ id: 'lore-reminder', at: at(lc.reminder), kind: 'lore-reminder' });
+    items.push({ id: 'lore-winner', at: at(lc.announce), kind: 'lore-winner' });
+  }
 
   return items.sort((a, b) => a.at - b.at || a.id.localeCompare(b.id));
+}
+
+/* ------------------------------------------------------------ lore contest */
+
+export interface LoreEntry {
+  /** chat, time and person: the same line twice is one entry. */
+  id: string;
+  /** 1-based, in order of arrival. What the room sees. */
+  number: number;
+  card: string;
+  lore: string;
+  submitterId: string;
+  name: string;
+  username?: string;
+  chatId: string;
+  at: number;
+  /** The credited artist's own lore; it went into the corpus on arrival. */
+  fromArtist: boolean;
+}
+
+export interface LoreWinner {
+  entryId: string;
+  reason: string;
+  decidedAt: number;
+  stored?: boolean;
+}
+
+export interface LoreContestState {
+  entries: LoreEntry[];
+  winner?: LoreWinner;
+  /** Set when the judge was asked and gave nothing usable. */
+  judgeFailed?: boolean;
+}
+
+export type EnterOutcome =
+  | { entered: true; entry: LoreEntry; remaining: number }
+  | { entered: false; reason: 'no_contest' | 'not_open' | 'closed' | 'wrong_chat' | 'cap' | 'duplicate' };
+
+/** Contest window for `now`: before, open, or closed. */
+export function loreContestPhase(schedule: Schedule, now: number): 'none' | 'before' | 'open' | 'closed' {
+  const lc = schedule.lore_contest;
+  if (!lc) return 'none';
+  const { date, timezone } = schedule.event;
+  if (now < zonedToUtc(date, lc.opens, timezone)) return 'before';
+  if (now >= zonedToUtc(date, lc.closes, timezone)) return 'closed';
+  return 'open';
+}
+
+/** Try to enter. Pure over the state; mutates it only when the entry is taken. */
+export function enterLore(
+  state: AnniversaryStateData,
+  schedule: Schedule,
+  chatIds: string[],
+  input: { card: string; lore: string; submitterId: string; name: string; username?: string; chatId: string; at: number; fromArtist: boolean }
+): EnterOutcome {
+  const lc = schedule.lore_contest;
+  if (!lc) return { entered: false, reason: 'no_contest' };
+  const phase = loreContestPhase(schedule, input.at);
+  if (phase === 'before') return { entered: false, reason: 'not_open' };
+  if (phase === 'closed') return { entered: false, reason: 'closed' };
+  if (!chatIds.includes(input.chatId)) return { entered: false, reason: 'wrong_chat' };
+
+  const mine = state.lore.entries.filter((e) => e.submitterId === input.submitterId);
+  if (mine.length >= lc.max_per_person) return { entered: false, reason: 'cap' };
+  const same = (a: string, b: string) => a.replace(/\W+/g, ' ').trim().toLowerCase() === b.replace(/\W+/g, ' ').trim().toLowerCase();
+  if (state.lore.entries.some((e) => e.card === input.card && same(e.lore, input.lore))) return { entered: false, reason: 'duplicate' };
+
+  const entry: LoreEntry = {
+    id: `${input.chatId}:${input.at}:${input.submitterId}`,
+    number: state.lore.entries.length + 1,
+    card: input.card.toUpperCase(),
+    lore: input.lore.trim(),
+    submitterId: input.submitterId,
+    name: input.name,
+    username: input.username,
+    chatId: input.chatId,
+    at: input.at,
+    fromArtist: input.fromArtist,
+  };
+  state.lore.entries.push(entry);
+  return { entered: true, entry, remaining: lc.max_per_person - mine.length - 1 };
+}
+
+/**
+ * The judging prompt.
+ *
+ * The model picks a number and writes one sentence for the room. It never
+ * rewrites an entry, and the sentence is about what the entry did right. Each
+ * entry is shown with the card's real facts, so "true to the card" can be
+ * checked against something rather than vibes.
+ */
+export function buildJudgePrompt(entries: LoreEntry[], facts: (asset: string) => CardInfo | undefined): string {
+  const lines = entries.map((e) => {
+    const c = facts(e.card);
+    const known = c
+      ? `${e.card} — Series ${c.series} #${c.card}, by ${c.artist ?? 'unknown'}, supply ${c.supply ?? '?'}, ${c.issuance ?? 'date unknown'}`
+      : e.card;
+    return `${e.number}. [${e.name}${e.fromArtist ? ', the card\'s artist' : ''}] on ${known}\n   "${e.lore.replace(/\s+/g, ' ')}"`;
+  });
+  return [
+    'It is the Fake Rares 5th birthday. Members of the community submitted lore for their favourite',
+    'cards today, and one of them wins a card. Choose the ONE entry that best honours the fakes.',
+    '',
+    'What honours the fakes, in order of weight:',
+    '1. True to the card and its artist. Nothing invented, nothing that contradicts the facts given',
+    '   for that card. A story the artist would recognise.',
+    '2. Captures what Fake Rares are: the art, the humour, the history, the people who made it.',
+    '3. Worth retelling in another five years.',
+    '4. Wit and warmth. Never at anyone\'s expense.',
+    '',
+    'Disqualified outright: insults, claims about who made a card, anything false, anything that is',
+    'not really about the card. Length and polish do not matter; a rough true story beats a slick',
+    'empty one. An artist writing about their own card is welcome and not favoured for it.',
+    '',
+    'Return STRICT JSON only:',
+    '{"winner": <entry number>, "reason": "<one sentence, spoken aloud to the room, naming what it did right>"}',
+    '',
+    'Entries:',
+    ...lines,
+  ].join('\n');
+}
+
+/** The model's choice, or null when it gave nothing that points at a real entry. */
+export function parseJudgeResponse(raw: string, entries: LoreEntry[]): { entry: LoreEntry; reason: string } | null {
+  try {
+    const match = raw.match(/\{[\s\S]*\}/);
+    if (!match) return null;
+    const parsed = JSON.parse(match[0]);
+    const entry = entries.find((e) => e.number === parsed?.winner);
+    if (!entry) return null;
+    const reason = typeof parsed?.reason === 'string' ? parsed.reason.replace(/\s+/g, ' ').trim().slice(0, 240) : '';
+    return { entry, reason: reason || 'It honours the fakes.' };
+  } catch {
+    return null;
+  }
+}
+
+export function handleFor(e: { name: string; username?: string }): string {
+  return e.username ? `@${e.username.replace(/^@/, '')}` : e.name;
 }
 
 export function fill(template: string, vars: Record<string, string | number | undefined>): string {
@@ -291,10 +470,11 @@ export interface AnniversaryStateData {
   cardsUsed: string[];
   scrilla: { date: string; count: number };
   trivia: Record<string, TriviaRecord>;
+  lore: LoreContestState;
 }
 
 export function emptyState(): AnniversaryStateData {
-  return { sent: {}, cardsUsed: [], scrilla: { date: '', count: 0 }, trivia: {} };
+  return { sent: {}, cardsUsed: [], scrilla: { date: '', count: 0 }, trivia: {}, lore: { entries: [] } };
 }
 
 /** Persistence contract. A file today; deliberately small. */
@@ -310,6 +490,10 @@ export interface Effects {
   sendCard(chatId: string, card: CardInfo, caption: string): Promise<boolean>;
   sendQuestion(chatId: string, text: string, buttons: Array<{ label: string; data: string }>): Promise<number | null>;
   editMessage(chatId: string, messageId: number, text: string): Promise<boolean>;
+  /** Ask the judge. Returns the raw model reply; parsing and validation happen here. */
+  judgeLore?(prompt: string): Promise<string>;
+  /** Put the winning lore into the corpus. True when it landed. */
+  storeLore?(entry: LoreEntry): Promise<boolean>;
   log(line: string): void;
 }
 
@@ -435,8 +619,84 @@ export class AnniversaryEngine {
           await effects.sendText(chatId, fill(item.text, { ...this.vars(now), LEADERBOARD: board }));
           break;
         }
+        case 'lore-open': {
+          const lc = schedule.lore_contest!;
+          await effects.sendText(chatId, fill(lc.open_text, { ...this.vars(now), PRIZE: lc.prize, MAX: lc.max_per_person, CLOSES: lc.closes }));
+          break;
+        }
+        case 'lore-reminder': {
+          const lc = schedule.lore_contest!;
+          if (!lc.reminder_text) break;
+          await effects.sendText(chatId, fill(lc.reminder_text, { ...this.vars(now), ENTRIES: this.state.lore.entries.length, CLOSES: lc.closes }));
+          break;
+        }
+        case 'lore-winner': {
+          await effects.sendText(chatId, await this.decideLore(now));
+          break;
+        }
       }
     }
+  }
+
+  /**
+   * Judge once, remember the verdict, store the winner. Idempotent: a second
+   * call (the restart case, or a second chat) reuses the recorded decision.
+   */
+  private async decideLore(now: number): Promise<string> {
+    const lc = this.opts.schedule.lore_contest!;
+    const state = this.state;
+    const entries = state.lore.entries;
+    const vars = { ...this.vars(now), ENTRIES: entries.length, PRIZE: lc.prize };
+    if (entries.length === 0) return fill(lc.no_entries_text, vars);
+
+    let winner = state.lore.winner ? entries.find((e) => e.id === state.lore.winner!.entryId) : undefined;
+    let reason = state.lore.winner?.reason ?? '';
+
+    if (!winner && !state.lore.judgeFailed) {
+      const judge = this.opts.effects.judgeLore;
+      let verdict: { entry: LoreEntry; reason: string } | null = null;
+      if (judge) {
+        const prompt = buildJudgePrompt(entries, (asset) => this.opts.cards.find((c) => c.asset === asset));
+        for (let attempt = 0; attempt < 2 && !verdict; attempt++) {
+          try {
+            verdict = parseJudgeResponse(await judge(prompt), entries);
+          } catch (error) {
+            this.opts.effects.log(`judge failed: ${error instanceof Error ? error.message : String(error)}`);
+          }
+        }
+      }
+      if (!verdict) {
+        state.lore.judgeFailed = true;
+        this.opts.store.save();
+        return fill(lc.judge_failed_text, vars);
+      }
+      winner = verdict.entry;
+      reason = verdict.reason;
+      state.lore.winner = { entryId: winner.id, reason, decidedAt: now };
+      this.opts.store.save();
+    }
+    if (!winner) return fill(lc.judge_failed_text, vars);
+
+    // Into the corpus, once. The artist's own lore is already there.
+    if (!state.lore.winner!.stored && !winner.fromArtist && this.opts.effects.storeLore) {
+      try {
+        if (await this.opts.effects.storeLore(winner)) {
+          state.lore.winner!.stored = true;
+          this.opts.store.save();
+        }
+      } catch (error) {
+        this.opts.effects.log(`could not store the winning lore: ${error instanceof Error ? error.message : String(error)}`);
+      }
+    }
+
+    return fill(lc.winner_text, {
+      ...vars,
+      WINNER: winner.name,
+      HANDLE: handleFor(winner),
+      CARD: winner.card,
+      LORE: winner.lore,
+      REASON: reason,
+    });
   }
 
   private answers(): Record<string, Record<string, Answer>> {
@@ -475,7 +735,10 @@ export class AnniversaryEngine {
         : p.kind === 'card' ? 'card of the hour'
         : p.kind === 'counter' ? `counter: ${p.text.slice(0, 60)}…`
         : p.kind === 'trivia' ? `trivia ${p.index + 1}: ${p.question.question}`
-        : `closer: ${p.text.slice(0, 60)}…`;
+        : p.kind === 'closer' ? `closer: ${p.text.slice(0, 60)}…`
+        : p.kind === 'lore-open' ? 'lore contest opens'
+        : p.kind === 'lore-reminder' ? 'lore contest reminder'
+        : 'lore contest: judge and announce';
       return `${when} ${p.id.padEnd(18)} ${what}`;
     });
   }

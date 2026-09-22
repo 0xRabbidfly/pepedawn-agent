@@ -15,6 +15,7 @@ import aliasFile from '../data/artist-aliases.json';
 import { countLoreForCard, existingLoreTexts, recordLore } from '../utils/loreInventory';
 import { isAdminUser } from '../utils/admins';
 import { propose, DEFAULT_VOUCH_CONFIG } from '../utils/vouching';
+import { enterLoreContest, loreContestOpen } from '../conversation/anniversaryRuntime';
 
 /**
  * /fr - Fake Remember: artist-contributed card lore.
@@ -171,6 +172,48 @@ export const fakeRememberCommand: Action = {
       logger.warn({ card, who, lore: verdict.lore }, '[/fr] FORCED past the quality screen by an admin');
     }
 
+    // The birthday lore contest. Every gate above has passed, so this is a real
+    // card and it reads like lore. Artists' own lore still goes into the corpus
+    // below; a non-artist's goes to the contest instead of to vouching, which
+    // allows one open proposal per person and would have ended most people's
+    // day at their first entry. The winner is stored at announcement.
+    const chatId = options?.ctx?.message?.chat?.id?.toString();
+    const contest = enterLoreContest({
+      card,
+      lore: verdict.lore!,
+      submitterId: submitter.id,
+      name: submitter.displayName || who,
+      username: submitter.username,
+      chatId,
+      fromArtist: verdict.route === 'store' && !submitter.isAdmin,
+    });
+    const contestLine = contest.entered
+      ? `\n\n🎂 Entry #${contest.entry.number} in the birthday lore contest.` +
+        (contest.remaining > 0 ? ` ${contest.remaining} more allowed.` : ' That is your last one.')
+      : contest.reason === 'cap'
+        ? '\n\n🎂 Not entered in the contest: you have used your entries for the day.'
+        : contest.reason === 'closed'
+          ? '\n\n🎂 The contest is closed; this one is not entered.'
+          : '';
+
+    if (verdict.route === 'vouch' && loreContestOpen(chatId)) {
+      if (contest.entered) {
+        logger.info(`[/fr] contest entry #${contest.entry.number} for ${card} by ${who}`);
+        if (callback) {
+          await callback({ text: `📜 *${card}* by ${who}\n\n_${verdict.lore}_${contestLine}` });
+        }
+        return { success: true, text: `Contest entry #${contest.entry.number}` };
+      }
+      if (contest.reason === 'cap' || contest.reason === 'duplicate') {
+        return reject(
+          `contest_${contest.reason}`,
+          contest.reason === 'cap'
+            ? '🎂 You have used your contest entries for today.'
+            : '🎂 Someone already entered that one.'
+        );
+      }
+    }
+
     // Third-party lore goes to the room rather than straight into the corpus.
     // The artist gate is right about authority and wrong about coverage, so
     // this is the path most genuine contributors will take.
@@ -227,7 +270,8 @@ export const fakeRememberCommand: Action = {
                 ? ` ${remaining} slots left on this card.`
                 : remaining === 1
                   ? ` One more slot left on this card.`
-                  : ` That's this card full.`),
+                  : ` That's this card full.`) +
+              contestLine,
           });
         }
         // Ledger last: it is the quota authority, so it must only ever reflect

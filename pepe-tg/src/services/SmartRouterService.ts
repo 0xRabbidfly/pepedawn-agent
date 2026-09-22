@@ -554,6 +554,43 @@ export class SmartRouterService extends Service {
     };
   }
 
+  /**
+   * Notes appended to the conversation the facts composer sees.
+   *
+   * Two things that path was blind to. It never saw the birthday context, so
+   * asked for the counter it improvised "5 years" — twice. And asked the same
+   * thing twice it gave the same answer twice, because nothing told it that it
+   * had. The composer takes one free-text conversation block, so both ride in
+   * there.
+   */
+  private factsNotes(userText: string, turns: ConversationTurn[]): string {
+    const notes: string[] = [];
+    const context = anniversaryContext();
+    if (context) notes.push(context.trim());
+
+    const norm = (s: string) => s.toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter((w) => w.length > 2);
+    const asked = new Set(norm(userText));
+    // The current message is already the last user turn; look for an earlier
+    // user turn that the bot answered and that asked much the same thing.
+    let lastBot: ConversationTurn | undefined;
+    for (let i = turns.length - 2; i >= 0; i--) {
+      const t = turns[i];
+      if (t.role === 'bot' && !lastBot) { lastBot = t; continue; }
+      if (t.role === 'user' && lastBot) {
+        const words = norm(t.text);
+        const overlap = words.filter((w) => asked.has(w)).length;
+        if (asked.size > 0 && words.length > 0 && overlap / Math.max(asked.size, words.length) >= 0.6) {
+          notes.push(
+            'They asked much the same thing a moment ago and you answered it above. Do not give that ' +
+              'answer again in other words: say what is new, or say plainly that nothing has changed.'
+          );
+        }
+        break;
+      }
+    }
+    return notes.length ? `\n\nNotes for this answer:\n${notes.map((n) => `- ${n}`).join('\n')}` : '';
+  }
+
   private async buildFactsPlan(
     userText: string,
     roomId: string,
@@ -594,7 +631,8 @@ export class SmartRouterService extends Service {
 
     // Factual answers were context-blind: "what's FREEDOMKEK's supply?" then
     // "and who made it?" left the second question with no idea what "it" meant.
-    const recentTranscript = this.formatRecentChat(this.getTurnsForPrompt(roomId, 8), 8);
+    const recentTurns = this.getTurnsForPrompt(roomId, 8);
+    const recentTranscript = this.formatRecentChat(recentTurns, 8) + this.factsNotes(userText, recentTurns);
 
     const result = await knowledge.retrieveKnowledge(userText, roomId, {
       mode: 'FACTS',

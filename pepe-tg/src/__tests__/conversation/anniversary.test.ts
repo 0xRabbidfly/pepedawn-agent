@@ -14,11 +14,14 @@ import {
   AnniversaryEngine,
   cardCaption,
   emptyState,
+  enterLore,
   eventDay,
   fill,
   formatLeaderboard,
+  handleFor,
   isEventDay,
   noteMention,
+  parseJudgeResponse,
   parseTriviaCallback,
   pickCard,
   planDay,
@@ -40,6 +43,7 @@ import {
   anniversaryFact,
   handleTriviaTap,
   loadSchedule,
+  mergeState,
   noteScrillaMention,
 } from '../../conversation/anniversaryRuntime';
 import type { CardInfo } from '../../data/fullCardIndex';
@@ -324,6 +328,142 @@ describe('trivia', () => {
   });
 });
 
+describe('the lore contest', () => {
+  const WITH_CONTEST: Schedule = {
+    ...SCHEDULE,
+    lore_contest: {
+      opens: '08:00', closes: '21:30', reminder: '20:45', announce: '21:55', max_per_person: 3, prize: 'a PEPEDAWN card',
+      open_text: 'open: {MAX} each, closes {CLOSES}, prize {PRIZE}',
+      reminder_text: '{ENTRIES} in, closes {CLOSES}',
+      winner_text: 'winner {WINNER} ({HANDLE}) on {CARD}: "{LORE}" — {REASON} [{ENTRIES}] {PRIZE}',
+      no_entries_text: 'nobody entered',
+      judge_failed_text: 'could not pick from {ENTRIES}',
+    },
+  };
+  const entry = (n: number, over: Partial<Parameters<typeof enterLore>[3]> = {}) => ({
+    card: 'FAKEASF', lore: `a story about the first mint number ${n}`, submitterId: 'u1', name: 'Crypsi', username: 'crypsi',
+    chatId: '-100', at: at('09:00') + n * MIN, fromArtist: false, ...over,
+  });
+
+  it('takes entries only while open, only in the event chat, three each, no duplicates', () => {
+    const s = emptyState();
+    expect(enterLore(s, WITH_CONTEST, ['-100'], entry(1, { at: at('07:59') }))).toEqual({ entered: false, reason: 'not_open' });
+    expect(enterLore(s, WITH_CONTEST, ['-100'], entry(1, { at: at('21:30') }))).toEqual({ entered: false, reason: 'closed' });
+    expect(enterLore(s, WITH_CONTEST, ['-100'], entry(1, { chatId: '-999' }))).toEqual({ entered: false, reason: 'wrong_chat' });
+    expect(enterLore(s, SCHEDULE, ['-100'], entry(1))).toEqual({ entered: false, reason: 'no_contest' });
+
+    const first = enterLore(s, WITH_CONTEST, ['-100'], entry(1));
+    expect(first.entered && first.entry.number).toBe(1);
+    expect(first.entered && first.remaining).toBe(2);
+    expect(enterLore(s, WITH_CONTEST, ['-100'], entry(1, { lore: 'A story about the first mint number 1!' }))).toEqual({ entered: false, reason: 'duplicate' });
+    enterLore(s, WITH_CONTEST, ['-100'], entry(2));
+    const third = enterLore(s, WITH_CONTEST, ['-100'], entry(3));
+    expect(third.entered && third.remaining).toBe(0);
+    expect(enterLore(s, WITH_CONTEST, ['-100'], entry(4))).toEqual({ entered: false, reason: 'cap' });
+    const other = enterLore(s, WITH_CONTEST, ['-100'], entry(5, { submitterId: 'u2', name: 'Coit', username: undefined }));
+    expect(other.entered && other.entry.number).toBe(4);
+  });
+
+  it('posts open, reminder and the judged winner, stores the winner once, and survives a restart', async () => {
+    const store = new MemStore();
+    const judged: string[] = [];
+    const stored: string[] = [];
+    const { effects, sent } = fakeEffects();
+    effects.judgeLore = async (prompt) => { judged.push(prompt); return 'Sure: {"winner": 2, "reason": "It is true, and it is theirs."}'; };
+    effects.storeLore = async (e) => { stored.push(e.id); return true; };
+    const engine = new AnniversaryEngine({ schedule: WITH_CONTEST, store, cards: CARDS, effects, chatIds: ['-100'] });
+
+    await engine.tick(at('08:00'));
+    expect(sent.at(-1)!.text).toBe('open: 3 each, closes 21:30, prize a PEPEDAWN card');
+    enterLore(store.d, WITH_CONTEST, ['-100'], entry(1, { fromArtist: true }));
+    enterLore(store.d, WITH_CONTEST, ['-100'], entry(2, { submitterId: 'u2', name: 'Coit', username: undefined, card: 'ONE' }));
+    await engine.tick(at('20:45'));
+    expect(sent.at(-1)!.text).toBe('2 in, closes 21:30');
+
+    await engine.tick(at('21:55'));
+    expect(judged).toHaveLength(1);
+    expect(judged[0]).toContain('2. [Coit] on ONE — Series 1 #1, by A, supply 10, September 2021');
+    expect(judged[0]).toContain("1. [Crypsi, the card's artist] on FAKEASF");
+    expect(sent.at(-1)!.text).toBe('winner Coit (Coit) on ONE: "a story about the first mint number 2" — It is true, and it is theirs. [2] a PEPEDAWN card');
+    expect(stored).toHaveLength(1);
+    expect(store.d.lore.winner).toMatchObject({ reason: 'It is true, and it is theirs.', stored: true });
+
+    // A restart does not re-judge, re-store or re-post.
+    const again = fakeEffects();
+    again.effects.judgeLore = async () => { throw new Error('should not be asked'); };
+    again.effects.storeLore = async () => { throw new Error('should not store'); };
+    const b = new AnniversaryEngine({ schedule: WITH_CONTEST, store, cards: CARDS, effects: again.effects, chatIds: ['-100'] });
+    await b.tick(at('21:56'));
+    expect(again.sent).toHaveLength(0);
+  });
+
+  it("does not store an artist's winning lore twice, and copes with no entries or a useless judge", async () => {
+    const store = new MemStore();
+    const stored: string[] = [];
+    const { effects, sent } = fakeEffects();
+    effects.storeLore = async (e) => { stored.push(e.id); return true; };
+    effects.judgeLore = async () => '{"winner": 1, "reason": "theirs"}';
+    const engine = new AnniversaryEngine({ schedule: WITH_CONTEST, store, cards: CARDS, effects, chatIds: ['-100'] });
+    await engine.tick(at('08:00'));
+    enterLore(store.d, WITH_CONTEST, ['-100'], entry(1, { fromArtist: true }));
+    await engine.tick(at('21:55'));
+    expect(sent.at(-1)!.text).toContain('winner Crypsi (@crypsi)');
+    expect(stored).toHaveLength(0);
+
+    const empty = new MemStore();
+    const e2 = fakeEffects();
+    const engine2 = new AnniversaryEngine({ schedule: WITH_CONTEST, store: empty, cards: CARDS, effects: e2.effects, chatIds: ['-100'] });
+    await engine2.tick(at('21:55'));
+    expect(e2.sent.at(-1)!.text).toBe('nobody entered');
+
+    const bad = new MemStore();
+    const e3 = fakeEffects();
+    let asked = 0;
+    e3.effects.judgeLore = async () => { asked++; return 'I cannot choose {"winner": 9}'; };
+    const engine3 = new AnniversaryEngine({ schedule: WITH_CONTEST, store: bad, cards: CARDS, effects: e3.effects, chatIds: ['-100'] });
+    await engine3.tick(at('08:00'));
+    enterLore(bad.d, WITH_CONTEST, ['-100'], entry(1));
+    await engine3.tick(at('21:55'));
+    expect(asked).toBe(2);
+    expect(e3.sent.at(-1)!.text).toBe('could not pick from 1');
+    expect(bad.d.lore.judgeFailed).toBe(true);
+  });
+
+  it('reads the judge strictly', () => {
+    const s = emptyState();
+    enterLore(s, WITH_CONTEST, ['-100'], entry(1));
+    const es = s.lore.entries;
+    expect(parseJudgeResponse('{"winner": 1, "reason": "  true  and   kind "}', es)).toEqual({ entry: es[0], reason: 'true and kind' });
+    expect(parseJudgeResponse('{"winner": "1"}', es)).toBeNull();
+    expect(parseJudgeResponse('{"winner": 2}', es)).toBeNull();
+    expect(parseJudgeResponse('nothing', es)).toBeNull();
+    expect(parseJudgeResponse('{"winner": 1}', es)!.reason).toBe('It honours the fakes.');
+    expect(handleFor({ name: 'Coit' })).toBe('Coit');
+    expect(handleFor({ name: 'Coit', username: '@coitart' })).toBe('@coitart');
+  });
+
+  it('merges entries from two writers and renumbers them in arrival order', () => {
+    const a = emptyState();
+    const b = emptyState();
+    enterLore(a, WITH_CONTEST, ['-100'], entry(2));
+    enterLore(b, WITH_CONTEST, ['-100'], entry(1, { submitterId: 'u2', name: 'Coit' }));
+    mergeState(a, b);
+    expect(a.lore.entries.map((e) => [e.number, e.name])).toEqual([[1, 'Coit'], [2, 'Crypsi']]);
+    mergeState(a, b);
+    expect(a.lore.entries).toHaveLength(2);
+  });
+
+  it('the real schedule carries a contest that opens before it closes and announces after', () => {
+    const real = loadSchedule(join(process.cwd(), 'src', 'data', 'fakerares5-schedule.json'))!;
+    const lc = real.lore_contest!;
+    expect(lc).toBeTruthy();
+    const t = (h: string) => zonedToUtc(real.event.date, h, real.event.timezone);
+    expect(t(lc.opens)).toBeLessThan(t(lc.closes));
+    expect(t(lc.closes)).toBeLessThan(t(lc.announce));
+    expect(planDay(real).map((p) => p.id)).toContain('lore-winner');
+  });
+});
+
 describe('template filling', () => {
   it('replaces known keys and leaves unknown ones visible', () => {
     expect(fill('{N} by {SCRILLA} {NOPE}', { N: 3, SCRILLA: 'S' })).toBe('3 by S {NOPE}');
@@ -419,6 +559,8 @@ describe('in the running bot', () => {
     const fact = anniversaryFact("Pepedawn what's the Scrilla bday counter at?", at('06:32'))!;
     expect(fact).toContain('count for the birthday is 2 so far today');
     expect(fact).toContain('an hour');
+    // The second time it was asked, Scrilla was not named.
+    expect(anniversaryFact("What's counter at now you miscreant ? 😘", at('06:42'))).toContain('is 2 so far today');
     // Only on the day, and only for the question.
     expect(anniversaryFact("what's the Scrilla counter at?", at('06:32') - 24 * 60 * MIN)).toBeNull();
     expect(anniversaryFact('scrilla is a legend', at('06:32'))).toBeNull();

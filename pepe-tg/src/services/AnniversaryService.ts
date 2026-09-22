@@ -10,8 +10,11 @@
  * a strip of the bot talking to itself all day.
  */
 
-import { Service, logger, type IAgentRuntime } from '@elizaos/core';
-import { AnniversaryEngine, type Effects } from '../conversation/anniversary';
+import { Service, logger, type IAgentRuntime, type Memory, type UUID } from '@elizaos/core';
+import { AnniversaryEngine, type Effects, type LoreEntry } from '../conversation/anniversary';
+import { MemoryStorageService } from './MemoryStorageService';
+import { recordLore } from '../utils/loreInventory';
+import { callTextModel } from '../utils/modelGateway';
 import {
   anniversaryEnabled,
   anniversaryStore,
@@ -128,8 +131,55 @@ export class AnniversaryService extends Service {
         if (sent) this.logBroadcast(chatId, `${caption}`);
         return sent;
       },
+      judgeLore: async (prompt) =>
+        (await callTextModel(this.runtime, {
+          model: process.env.ANNIVERSARY_JUDGE_MODEL || process.env.CHAT_MODEL || 'gpt-5.6-luna',
+          prompt,
+          systemPrompt:
+            'You judge a lore contest for the Fake Rares community. You choose one entry by number and ' +
+            'give one sentence for the room. You never rewrite an entry. You return JSON only.',
+          maxTokens: 200,
+          source: 'Anniversary-Judge',
+        })).text,
+      storeLore: (entry) => this.storeLore(entry),
       log: (line) => logger.info(`[Anniversary] ${line}`),
     };
+  }
+
+  /**
+   * The winning lore goes into the corpus the way an accepted /fr does: through
+   * MemoryStorageService, then the ledger. Attributed to the entrant.
+   */
+  private async storeLore(entry: LoreEntry): Promise<boolean> {
+    const memoryService = this.runtime.getService(MemoryStorageService.serviceType) as MemoryStorageService | null;
+    if (!memoryService) {
+      logger.warn('[Anniversary] MemoryStorageService unavailable; winner not stored');
+      return false;
+    }
+    const message = {
+      id: `lore-${entry.id}` as UUID,
+      entityId: this.runtime.agentId,
+      agentId: this.runtime.agentId,
+      roomId: (roomsForChat(entry.chatId)[0] ?? entry.chatId) as UUID,
+      content: { text: `remember this: ${entry.card} ${entry.lore}`, source: 'telegram' },
+      createdAt: entry.at,
+    } as Memory;
+    const raw = { from: { id: Number(entry.submitterId), first_name: entry.name, username: entry.username }, chat: { id: Number(entry.chatId) }, message_id: 0 };
+    const result = await memoryService.storeMemory(message, raw);
+    if (!result.success || result.ignoredReason) {
+      logger.warn(`[Anniversary] winner not stored: ${result.ignoredReason ?? result.error ?? 'unknown'}`);
+      return false;
+    }
+    await recordLore({
+      card: entry.card,
+      lore: entry.lore,
+      submitterId: entry.submitterId,
+      submitterName: entry.name,
+      at: Date.now(),
+      memoryId: result.memoryId,
+    });
+    logger.info(`[Anniversary] stored the winning lore for ${entry.card} by ${entry.name}`);
+    return true;
   }
 
   /**
