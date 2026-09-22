@@ -13,13 +13,19 @@ import { existsSync, mkdirSync, readFileSync, renameSync, statSync, writeFileSyn
 import { dirname, join } from 'path';
 import { logger } from '@elizaos/core';
 import {
+  SCRILLA,
   emptyState,
+  eventDay,
+  formatLeaderboard,
   isEventDay,
   noteMention,
   parseTriviaCallback,
   planDay,
   recordTap,
+  scrillaRate,
+  standings,
   validateSchedule,
+  type Answer,
   type AnniversaryStateData,
   type AnniversaryStore,
   type Schedule,
@@ -227,6 +233,67 @@ export function handleTriviaTap(
   } catch (error) {
     logger.warn({ error }, '[Anniversary] tap failed');
     return TOAST.closed;
+  }
+}
+
+const ASKS_COUNT = /\b(count(er)?|tally|score|number|how many times)\b/i;
+const ASKS_BOARD = /\b(leaderboard|leader board|trivia|scoreboard|winning|who'?s (ahead|winning|leading))\b/i;
+
+/**
+ * An exact answer for a question about the birthday, or null.
+ *
+ * Asked "what's the Scrilla bday counter at?" on the morning of the event, the
+ * bot answered "5 years, with the next anniversary on September 21, 2026" —
+ * retrieval had nothing on the counter, so it improvised from the words. The
+ * real number was one, in a file it never reads. This hands it the number.
+ */
+export function anniversaryFact(text: string, now = Date.now()): string | null {
+  try {
+    if (!anniversaryEnabled()) return null;
+    const schedule = loadSchedule();
+    if (!schedule || !isEventDay(schedule, now)) return null;
+    const asksScrilla = SCRILLA.test(text) && ASKS_COUNT.test(text);
+    const asksBoard = ASKS_BOARD.test(text);
+    if (!asksScrilla && !asksBoard) return null;
+
+    const data = anniversaryStore().data();
+    const { start } = eventDay(schedule);
+    const parts: string[] = [];
+    if (asksScrilla) {
+      const count = data.scrilla.date === schedule.event.date ? data.scrilla.count : 0;
+      parts.push(
+        `The ${schedule.event.scrilla_handle} count for the birthday is ${count} so far today, ` +
+        `running at ${scrillaRate(count, start, now)} an hour.`
+      );
+    }
+    if (asksBoard) {
+      const perQuestion: Record<string, Record<string, Answer>> = {};
+      for (const [qid, rec] of Object.entries(data.trivia)) perQuestion[qid] = rec.answers;
+      const board = formatLeaderboard(standings(perQuestion), 5, 'nobody has scored yet');
+      const asked = Object.keys(data.trivia).length;
+      parts.push(`Birthday trivia so far (${asked} of ${schedule.trivia.length} questions asked): ${board.replace(/\n/g, '; ')}.`);
+    }
+    return parts.join(' ');
+  } catch {
+    return null;
+  }
+}
+
+/** One line of context for every reply on the day, so the bot knows what day it is. */
+export function anniversaryContext(now = Date.now()): string {
+  try {
+    if (!anniversaryEnabled()) return '';
+    const schedule = loadSchedule();
+    if (!schedule || !isEventDay(schedule, now)) return '';
+    const data = anniversaryStore().data();
+    const count = data.scrilla.date === schedule.event.date ? data.scrilla.count : 0;
+    return (
+      `Today is the Fake Rares 5th birthday and you are hosting: history drops, a card every couple of hours, ` +
+      `trivia with a leaderboard, and a running count of how often ${schedule.event.scrilla_handle}'s name is said in this chat ` +
+      `(currently ${count}). If anyone asks about the count or the trivia, use these numbers and never invent others.\n`
+    );
+  } catch {
+    return '';
   }
 }
 

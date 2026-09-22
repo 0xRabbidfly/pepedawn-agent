@@ -34,6 +34,7 @@ import {
 import { matchForConversation, markUsed } from '../utils/xHarvest';
 import { recordTurn, recentTurns } from '../conversation/shadow';
 import { recallForSpeaker, settleRecall } from '../conversation/socialMemoryRuntime';
+import { anniversaryContext, anniversaryFact } from '../conversation/anniversaryRuntime';
 import { isInFullIndex } from '../data/fullCardIndex';
 
 export type ConversationIntent = 'LORE' | 'FACTS' | 'CHAT' | 'NORESPONSE' | 'CMDROUTE';
@@ -1073,6 +1074,7 @@ export class SmartRouterService extends Service {
       '',
       options?.character ? characterNote(options.character) : '',
       recollection.block,
+      anniversaryContext(),
       options?.knownFact
         ? `THIS IS THE ANSWER, and it is exact — state it, do not hedge it, do not add specifications around it:\n${options.knownFact}\nWrap it in one conversational sentence. Do not turn it into a fact sheet.\n`
         : '',
@@ -1234,6 +1236,15 @@ Say briefly why it is worth a look — something true about the art, the artist 
     // Matters of taste go straight to the conversational path, whatever the
     // classifier decides. Ranking cards is against this community's etiquette,
     // so the answer is a card drawn at random with something true said about it.
+    // On the birthday, the Scrilla count and the trivia standings are exact
+    // facts the bot is keeping itself. Asked for the count, it once answered
+    // "5 years" — the number was in a file the chat path never reads.
+    const birthdayFact = anniversaryFact(trimmed);
+    if (birthdayFact) {
+      logger.debug({ query: trimmed }, '[SmartRouter] Birthday count/leaderboard -> exact answer');
+      return this.buildChatPlanAs(speaker, trimmed, roomId, null, undefined, { knownFact: birthdayFact });
+    }
+
     if (this.isTasteQuestion(trimmed)) {
       logger.debug({ query: trimmed }, '[SmartRouter] Personal preference -> random card');
       return this.buildChatPlanAs(speaker, trimmed, roomId, null, undefined, { tasteQuestion: true });

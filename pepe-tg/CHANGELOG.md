@@ -5,6 +5,19 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.12.1] - 2026-09-22
+
+### Fixed
+
+- **Asked what the Scrilla counter was at, it made a number up.** At 06:32 on
+  the birthday it answered "5 years, with the next anniversary on September
+  21, 2026". The real count was one, in a state file the chat path never
+  reads, so retrieval improvised from the words. A question about the count or
+  the trivia standings is now answered from that file as an exact fact, ahead
+  of the classifier, and every reply on the day carries one line saying what
+  day it is and what the count currently is — with an instruction never to
+  invent other numbers.
+
 ## [5.12.0] - 2026-09-21
 
 ### Added

@@ -36,6 +36,8 @@ import {
   FileAnniversaryStore,
   _resetAnniversary,
   anniversaryActive,
+  anniversaryContext,
+  anniversaryFact,
   handleTriviaTap,
   loadSchedule,
   noteScrillaMention,
@@ -409,6 +411,31 @@ describe('in the running bot', () => {
     // A late tap through the second copy sees the reveal the first copy made.
     expect(handleTriviaTap('fr5:t:trivia-0:1', { id: 9, first_name: 'Late' }, at('10:46'))).toBe("This one's closed.");
     void sent;
+  });
+
+  it('answers "what is the counter at" with the real number, not an improvisation', async () => {
+    noteScrillaMention('scrilla', '-100', at('06:00'));
+    noteScrillaMention('SCRILLA again', '-100', at('06:10'));
+    const fact = anniversaryFact("Pepedawn what's the Scrilla bday counter at?", at('06:32'))!;
+    expect(fact).toContain('count for the birthday is 2 so far today');
+    expect(fact).toContain('an hour');
+    // Only on the day, and only for the question.
+    expect(anniversaryFact("what's the Scrilla counter at?", at('06:32') - 24 * 60 * MIN)).toBeNull();
+    expect(anniversaryFact('scrilla is a legend', at('06:32'))).toBeNull();
+    expect(anniversaryFact('gm', at('06:32'))).toBeNull();
+
+    // The leaderboard, once a question has been asked and answered.
+    const { effects } = fakeEffects();
+    const engine = new AnniversaryEngine({ schedule: loadSchedule()!, store: new FileAnniversaryStore(process.env.ANNIVERSARY_STATE_PATH!), cards: CARDS, effects, chatIds: ['-100'] });
+    await engine.tick(at('10:30'));
+    handleTriviaTap('fr5:t:trivia-0:1', { id: 7, first_name: 'Crypsi' }, at('10:31'));
+    _resetAnniversary();
+    expect(anniversaryFact("who's winning the trivia?", at('10:40'))).toContain('🥇 Crypsi — 1');
+
+    // And every reply on the day is told what day it is.
+    expect(anniversaryContext(at('10:40'))).toContain('5th birthday');
+    expect(anniversaryContext(at('10:40'))).toContain('(currently 2)');
+    expect(anniversaryContext(at('10:40') + 24 * 60 * MIN)).toBe('');
   });
 
   it('refuses to run over a state file it cannot read', () => {
