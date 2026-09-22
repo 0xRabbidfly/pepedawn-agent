@@ -198,7 +198,9 @@ export const fakeRememberCommand: Action = {
     });
     const contestLine = contest.entered
       ? `\n\n🎂 Entry #${contest.entry.number} in the birthday lore contest.` +
-        (contest.remaining > 0 ? ` ${contest.remaining} more allowed.` : ' That is your last one.')
+        (contest.remaining > 0
+          ? ` You are allowed ${contest.remaining} more ${contest.remaining === 1 ? 'entry' : 'entries'} for this contest.`
+          : ' That was your last entry for this contest.')
       : contest.reason === 'cap'
         ? '\n\n🎂 Not entered in the contest: you have used your entries for the day.'
         : contest.reason === 'closed'
