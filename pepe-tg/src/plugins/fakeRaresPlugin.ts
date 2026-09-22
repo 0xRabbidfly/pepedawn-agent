@@ -18,6 +18,8 @@ import { ReleaseNoteService } from '../services/ReleaseNoteService';
 import { AnniversaryService } from '../services/AnniversaryService';
 import { noteScrillaMention } from '../conversation/anniversaryRuntime';
 import { noteShown, recentlyShown } from '../utils/cardShowCooldown';
+import { findRepeat } from '../utils/repeatGuard';
+import { recentTurns } from '../conversation/shadow';
 import { runRecap } from '../actions/recapCommand';
 import { runMemoryCommand } from '../actions/memoryCommands';
 import { sendRecapVideo, stripHtml } from '../utils/recapSend';
@@ -428,7 +430,30 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
   const baseCallback = wrapHandlerCallback(
     typeof params.callback === 'function' ? (params.callback as HandlerCallback) : null
   );
-  const actionCallback = baseCallback;
+  // The single exit for every router reply, and so the one place repetition
+  // can be constrained regardless of which path wrote the text. A reply that
+  // restates what the bot said in this room in the last half hour is not
+  // sent; the message gets a 👀 instead. Card posts carry attachments and are
+  // governed by their own cooldown.
+  const actionCallback: HandlerCallback | null = baseCallback
+    ? (async (payload: any, ...rest: any[]) => {
+        const outgoing = typeof payload?.text === 'string' ? payload.text.trim() : '';
+        if (outgoing && !payload?.attachments?.length) {
+          const prior = findRepeat(
+            outgoing,
+            recentTurns(message.roomId, 12).filter((t) => t.role === 'bot').map((t) => ({ text: t.text, at: t.at })),
+            Date.now()
+          );
+          if (prior) {
+            logger.info(`[RepeatGuard] Not sending a reply that repeats one from ${Math.round((Date.now() - prior.at) / 60000)} min ago`);
+            const token = (runtime.getSetting('TELEGRAM_BOT_TOKEN') as string) || '';
+            await sendReaction(token, telegramChatId(params), params?.ctx?.message?.message_id, '👀');
+            return [];
+          }
+        }
+        return (baseCallback as any)(payload, ...rest);
+      }) as HandlerCallback
+    : null;
   const telemetry =
     context.telemetry ??
     (typeof runtime.getService === 'function'

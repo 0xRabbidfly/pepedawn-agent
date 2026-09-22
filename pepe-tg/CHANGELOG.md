@@ -5,6 +5,18 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.13.1] - 2026-09-22
+
+### Added
+
+- **One place that stops repetition, for every reply path.** Prompt rules
+  against repeating only reach the model paths, and a deterministic fast path
+  that answers the same question with the same exact fact cannot be talked out
+  of it. Every router reply now leaves through one guarded callback: text that
+  restates what the bot said in that room in the last thirty minutes is not
+  sent, and the message gets a 👀 instead. Replies under four words are never
+  held; card posts have their own cooldown.
+
 ## [5.13.0] - 2026-09-22
 
 ### Added
