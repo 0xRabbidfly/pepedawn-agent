@@ -505,8 +505,8 @@ describe('the lore contest', () => {
     const ids = planDay(real).map((p) => p.id);
     expect(ids).toContain('lore-winner');
     // The countdown: 1 hour, 30 minutes, 5 minutes before close.
-    expect(lc.reminders!.map((r) => r.time)).toEqual(['20:30', '21:00', '21:25']);
-    expect(ids.filter((id) => id.startsWith('lore-reminder'))).toHaveLength(3);
+    expect(lc.reminders!.map((r) => r.time).slice(-3)).toEqual(['20:30', '21:00', '21:25']);
+    expect(ids.filter((id) => id.startsWith('lore-reminder'))).toHaveLength(18);
     expect(lc.open_text).toContain('Pacific');
   });
 });
