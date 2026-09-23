@@ -39,6 +39,16 @@ import { isInFullIndex } from '../data/fullCardIndex';
 
 export type ConversationIntent = 'LORE' | 'FACTS' | 'CHAT' | 'NORESPONSE' | 'CMDROUTE';
 
+/**
+ * The old behaviour, behind a switch: answer uninvited questions and comment
+ * on uninvited statements in a group. Off since 5.14.0 at the group owner's
+ * request. Exists so the change can be undone from the droplet without a
+ * release, not because it should be.
+ */
+function volunteerRepliesAllowed(): boolean {
+  return process.env.VOLUNTEER_REPLIES === 'true';
+}
+
 interface ConversationTurn {
   role: 'user' | 'bot';
   author: string;
@@ -1261,6 +1271,52 @@ Say briefly why it is worth a look — something true about the art, the artist 
     // whichever rung answers them.
     const speaker: Speaker = { telegramId: speakerTelegramId, character: characterFor(speakerTelegramId) };
 
+    // Was PEPEDAWN invited to speak? Resolved first, because it decides which
+    // of the paths below may answer at all.
+    //
+    // 23 September, from the group's owner: "u were instructed / programmed
+    // not to butt into ppls conversations a couple days ago." Two replies
+    // earned that. It answered his announcement about the new site's claim
+    // form - a statement, not a question, that nobody had put to it - by
+    // paraphrasing him back to himself. Then it answered Simon's question
+    // about that claim process with "Yes", which was wrong; the question was
+    // for Scrilla, and the bot knows nothing about the new site. Neither was
+    // caught by the stay-out rule, because nobody else had spoken for twenty
+    // minutes. The rule about other people's conversations was right and
+    // not enough: the bar for volunteering has to be higher than "the room
+    // was quiet".
+    //
+    // So, in a group, uninvited: a statement gets nothing; a question gets an
+    // answer only when the card index answers it exactly. Everything else
+    // waits to be asked. Named, replied to, mentioned, DM'd, or already in an
+    // exchange it started with this person: as before.
+    const recent = this.getTurnsForPrompt(roomId, 12).map((t) => {
+      const said = (t.text || '').trim();
+      return {
+        role: t.role,
+        text: t.text,
+        author: t.author,
+        authorId: t.authorId,
+        at: t.timestamp,
+        // A typed command is talking to the bot, as much as a mention is.
+        addressedBot:
+          t.role === 'user' && (!!t.addressedBot || /\bpepedawn\b/i.test(said) || /^\/\w/.test(said)),
+      };
+    });
+    const now = Date.now();
+    const engaged = inActiveExchange(recent, now, undefined, speakerTelegramId);
+    const isQuestion = this.isAQuestion(trimmed);
+    const named = this.addressesTheBot(trimmed, addressedConversationally);
+    const invited = named || engaged || volunteerRepliesAllowed();
+    const silent = (reason: string): SmartRoutingPlan => {
+      logger.info({ query: trimmed.slice(0, 80), reason }, '[SmartRouter] Not invited; staying out');
+      return { kind: 'NORESPONSE', intent: 'NORESPONSE', reason, retrieval: null };
+    };
+    if (!invited && trimmed && !isQuestion) return silent('unaddressed_statement');
+    if (!named && !engaged && othersMidConversation(recent, { id: speakerTelegramId }, now)) {
+      return silent('others_mid_conversation');
+    }
+
     // Questions the card index answers exactly — artist, issuance, supply,
     // series, an artist's largest or smallest card — are looked up, never
     // retrieved or recommended.
@@ -1284,6 +1340,8 @@ Say briefly why it is worth a look — something true about the art, the artist 
     }
 
     if (this.isTasteQuestion(trimmed)) {
+      // An opinion is not an exact fact. Uninvited, it is butting in.
+      if (!invited) return silent('unaddressed_taste');
       logger.debug({ query: trimmed }, '[SmartRouter] Personal preference -> random card');
       return this.buildChatPlanAs(speaker, trimmed, roomId, null, undefined, { tasteQuestion: true });
     }
@@ -1346,6 +1404,12 @@ Say briefly why it is worth a look — something true about the art, the artist 
       });
     }
 
+    // Everything above answered from the index. From here on an answer is
+    // composed - by retrieval or by the model - and an uninvited question gets
+    // neither. "If you were a contributor to a community created card can you
+    // still claim?" was answered "Yes" from here; the right answer was silence.
+    if (!invited && trimmed) return silent('unaddressed_question_not_exact');
+
     let mentionedCard = this.detectMentionedCard(trimmed);
     if (!trimmed) {
       return {
@@ -1354,45 +1418,6 @@ Say briefly why it is worth a look — something true about the art, the artist 
         reason: 'empty_text',
         retrieval: null,
         emoji: this.pickEmoji(''),
-      };
-    }
-
-    // Room history in the shape the restraint rules want it. A typed command is
-    // talking to the bot, as much as a mention is.
-    const recent = this.getTurnsForPrompt(roomId, 12).map((t) => {
-      const said = (t.text || '').trim();
-      return {
-        role: t.role,
-        text: t.text,
-        author: t.author,
-        authorId: t.authorId,
-        at: t.timestamp,
-        addressedBot:
-          t.role === 'user' && (!!t.addressedBot || /\bpepedawn\b/i.test(said) || /^\/\w/.test(said)),
-      };
-    });
-
-    const engaged = inActiveExchange(recent, Date.now());
-    const isQuestion = this.isAQuestion(trimmed);
-    const named = this.addressesTheBot(trimmed, addressedConversationally);
-
-    // Two other people talking to each other, and nobody asked. Stay out.
-    //
-    // This is deliberately placed after the exact-fact paths above and before
-    // the classifier: a card question still gets its one-line answer from the
-    // index, but the improvised, retrieval-shaped reply that reads as butting
-    // in never gets made — and it costs no classifier or retrieval call to
-    // decide that. See othersMidConversation for the exchange that prompted it.
-    if (!named && !engaged && othersMidConversation(recent, { id: speakerTelegramId }, Date.now())) {
-      logger.info(
-        { query: trimmed.slice(0, 80) },
-        '[SmartRouter] Others mid-conversation and nobody asked; staying out'
-      );
-      return {
-        kind: 'NORESPONSE',
-        intent: 'NORESPONSE',
-        reason: 'others_mid_conversation',
-        retrieval: null,
       };
     }
 

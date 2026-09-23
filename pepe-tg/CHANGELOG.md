@@ -5,6 +5,39 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.14.0] - 2026-09-23
+
+### Changed
+
+- **In a group, PEPEDAWN speaks only when invited, or when the card index
+  answers exactly.** From the group's owner, 23 September: *"u were instructed
+  / programmed not to butt into ppls conversations a couple days ago."* Two
+  replies earned that. It answered his announcement about the new site's
+  artist claim form — a statement, not a question, put to nobody — by
+  paraphrasing him back to himself. Then it answered Simon's question about
+  that claim process with "Yes", which was wrong: the question was for Scrilla,
+  and the bot knows nothing about the new site. The stay-out rule from 5.11.0
+  caught neither, because nobody else had spoken for twenty minutes. That rule
+  was right and not enough: "the room is quiet" is too low a bar for
+  volunteering.
+
+  Now, uninvited in a group: a statement gets nothing; a question gets an
+  answer only when the card index answers it exactly (artist, supply, series,
+  issuance, a card's look); a matter of taste is an opinion and waits to be
+  asked; and two other people mid-exchange get left alone even for a card
+  fact. Nothing composed by retrieval or the model is ever volunteered. Named,
+  replied to, mentioned, DM'd, or already in an exchange: as before.
+
+- **An exchange belongs to the person who started it.** After Scrilla told the
+  bot to relax and it replied, the whole room counted as "engaged" for five
+  minutes and the next stranger's question was answered. Only the person who
+  addressed the bot is in an exchange with it now.
+
+- `VOLUNTEER_REPLIES=true` restores the old behaviour from the droplet without
+  a release. It exists so the change can be undone, not because it should be.
+  The silent decisions log as `[SmartRouter] Not invited; staying out` with a
+  reason, so the cost of the rule is visible.
+
 ## [5.13.2] - 2026-09-23
 
 ### Fixed

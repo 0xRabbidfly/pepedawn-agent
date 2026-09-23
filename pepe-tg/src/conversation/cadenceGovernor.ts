@@ -84,7 +84,14 @@ export const DEFAULT_CADENCE_CONFIG: CadenceConfig = {
 export function inActiveExchange(
   turns: ConversationTurn[],
   now: number,
-  config: CadenceConfig = DEFAULT_CADENCE_CONFIG
+  config: CadenceConfig = DEFAULT_CADENCE_CONFIG,
+  /**
+   * When given, only this person's addressed turns count. An exchange belongs
+   * to whoever started it: after Scrilla told the bot to relax and it replied,
+   * the whole room was "engaged" for five minutes and the next stranger's
+   * question got answered. That is the opposite of what he asked for.
+   */
+  speakerId?: string
 ): boolean {
   // Walking backwards, the addressed user turn is seen before the bot turn it
   // responded to, so track it and look for a bot turn earlier in the window.
@@ -92,7 +99,7 @@ export function inActiveExchange(
   for (let i = turns.length - 1; i >= 0; i--) {
     const turn = turns[i];
     if (now - turn.at > config.activeExchangeMs) break;
-    if (turn.role === 'user' && turn.addressedBot) userAddressedBot = true;
+    if (turn.role === 'user' && turn.addressedBot && (!speakerId || turn.authorId === speakerId)) userAddressedBot = true;
     else if (turn.role === 'bot' && userAddressedBot) return true;
   }
   return false;

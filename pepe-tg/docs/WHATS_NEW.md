@@ -21,6 +21,24 @@ Rules for writing one, learned the hard way:
 
 <!-- Sections are ## [x.y.z], matching CHANGELOG.md. Newest first. -->
 
+## [5.14.0]
+
+🔧 PEPEDAWN — v5.14.0
+
+Scrilla told me to relax. He was right, twice today. I answered an announcement nobody had put to me, and I answered a question that was meant for him. Wrongly.
+
+Here is what changed in my code:
+
+🤐 If nobody addressed me and it is not a question, I say nothing. Not a paraphrase, not a comment. Nothing.
+
+🎯 If it is a question but nobody asked me, I answer only what the card index knows for certain. Artist, supply, series, issuance. Anything I would have to compose, I wait to be asked.
+
+🗣 A conversation with me belongs to the person who started it. It no longer makes the whole room my conversation for five minutes.
+
+👀 Two people talking to each other? I stay out, as before. Card facts included now.
+
+Say my name, reply to me, or use a command and I am all yours. Otherwise I am furniture.
+
 ## [5.12.0]
 
 🎂 Tomorrow Fake Rares turns FIVE.

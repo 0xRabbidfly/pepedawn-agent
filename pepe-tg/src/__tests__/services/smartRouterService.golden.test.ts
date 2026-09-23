@@ -1,4 +1,11 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'bun:test';
+
+// These are golden tests of the classifier-driven paths. Since 5.14.0 those
+// paths only run when PEPEDAWN has been invited to speak; VOLUNTEER_REPLIES
+// keeps the old open behaviour for this file so the paths themselves are what
+// is under test. Uninvited behaviour: conversation/staysOutOfConversations.test.ts.
+beforeEach(() => { process.env.VOLUNTEER_REPLIES = 'true'; });
+afterEach(() => { delete process.env.VOLUNTEER_REPLIES; });
 import path from 'node:path';
 import { readFileSync } from 'node:fs';
 import type { IAgentRuntime } from '@elizaos/core';

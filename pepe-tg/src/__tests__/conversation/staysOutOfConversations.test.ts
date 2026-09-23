@@ -161,13 +161,88 @@ describe('the router in a room where two others are talking', () => {
     expect(plan.reason).not.toBe('others_mid_conversation');
   });
 
-  it('still answers an exact card question, which is why the rule sits below those', async () => {
+  it('stays out of their conversation even for an exact card question, since 5.14.0', async () => {
+    // It used to answer these from the index regardless. The group's owner
+    // asked it not to butt into people's conversations; a card fact is still
+    // butting in when two other people are mid-exchange.
     const { service, spy } = router();
     await crypsiAndCoit(service, 'room-stayout-3');
     const plan = await service.planRouting('who made FREEDOMKEK?', 'room-stayout-3', false, COIT);
     spy.mockRestore();
-    expect(plan.reason).not.toBe('others_mid_conversation');
-    expect(plan.kind).toBe('CHAT');
+    expect(plan.reason).toBe('others_mid_conversation');
+  });
+
+  it('in a quiet room, an uninvited question is answered only from the index', async () => {
+    const { service, replies, spy } = router();
+    const { recordTurn } = await import('../../conversation/shadow');
+    await recordTurn('room-quiet-1', { role: 'user', text: 'gm', author: 'coit', authorId: COIT, at: Date.now() - 30 * 60_000 });
+
+    // Exact: the index knows who made FREEDOMKEK.
+    const exact = await service.planRouting('who made FREEDOMKEK?', 'room-quiet-1', false, COIT);
+    expect(exact.kind).toBe('CHAT');
+    expect(exact.reason).not.toMatch(/unaddressed/);
+
+    // Not exact: Simon's question about the new site's claim form, answered
+    // "Yes" on 23 September. The right answer was silence.
+    const composed = await service.planRouting(
+      'If you were a contributor to a community created card can you still claim?', 'room-quiet-1', false, '4242'
+    );
+    expect(composed.kind).toBe('NORESPONSE');
+    expect(composed.reason).toBe('unaddressed_question_not_exact');
+    expect(composed.reaction).toBeUndefined();
+
+    // A statement, not a question: Scrilla's announcement about the claim form.
+    const statement = await service.planRouting(
+      'if u are an artist and u created a card - please use the claim form on the new site', 'room-quiet-1', false, '7777'
+    );
+    expect(statement.kind).toBe('NORESPONSE');
+    // isAQuestion reads "please ..." as a request, so this lands under the
+    // question label; either way it is silence with no model call.
+    expect(statement.reason).toMatch(/^unaddressed_/);
+
+    // A matter of taste is an opinion, not a fact.
+    const taste = await service.planRouting('what is the coolest fake rare?', 'room-quiet-1', false, '4242');
+    expect(taste.kind).toBe('NORESPONSE');
+    expect(taste.reason).toMatch(/^unaddressed_/);
+
+    // No classifier or chat call was spent on any of the silent ones.
+    spy.mockRestore();
+    expect(replies).toHaveLength(1);
+  });
+
+  it('an exchange belongs to the person who started it, not the whole room', async () => {
+    const { service, spy } = router();
+    const { recordTurn } = await import('../../conversation/shadow');
+    const SCRILLA = '154381320';
+    const SIMON = '9999';
+    // Scrilla addressed the bot, it replied, he replied to that, it replied
+    // again - a live exchange. Four minutes later (outside the two-minute
+    // stay-out window, inside the five-minute exchange window) Simon asks the
+    // room something.
+    const t = Date.now();
+    await recordTurn('room-owner', { role: 'user', text: '@pepedawn_bot fucking relax brro', author: 'RARE SCRILLA', authorId: SCRILLA, addressedBot: true, at: t - 240_000 });
+    await recordTurn('room-owner', { role: 'bot', text: "I'm relaxing.", at: t - 230_000 });
+    await recordTurn('room-owner', { role: 'user', text: 'u were instructed not to butt in', author: 'RARE SCRILLA', authorId: SCRILLA, addressedBot: true, at: t - 220_000 });
+    await recordTurn('room-owner', { role: 'bot', text: 'Noted.', at: t - 210_000 });
+    const simon = await service.planRouting('can contributors still claim a community card?', 'room-owner', false, SIMON);
+    expect(simon.kind).toBe('NORESPONSE');
+    expect(simon.reason).toMatch(/^unaddressed_/);
+    // Scrilla himself, continuing, is still in his exchange.
+    const scrilla = await service.planRouting('so what do you actually do all day', 'room-owner', false, SCRILLA);
+    spy.mockRestore();
+    expect(scrilla.reason).not.toMatch(/unaddressed|others_mid/);
+  });
+
+  it('VOLUNTEER_REPLIES=true restores the old behaviour', async () => {
+    process.env.VOLUNTEER_REPLIES = 'true';
+    try {
+      const { service, spy } = router();
+      const plan = await service.planRouting('can contributors still claim a community card?', 'room-volunteer', false, '4242');
+      spy.mockRestore();
+      expect(plan.reason).not.toMatch(/unaddressed/);
+    } finally {
+      delete process.env.VOLUNTEER_REPLIES;
+    }
   });
 
   it('still volunteers in a room where nobody else is talking', async () => {
