@@ -27,14 +27,6 @@ export interface CardInfo {
   memeUri?: string | null;   // Meme/preview URL (usually GIF on tokenscan.io)
   issues?: string[];  // Optional: Data quality issues like 'no_artist', 'no_supply', etc.
   collection?: 'fake-rares' | 'fake-commons';  // Collection identifier for mixed searches
-  /** Original issuance per fakeraredirectory.com. `supply` is the current figure from pepe.wtf. */
-  issuanceCount?: number | null;
-  /** Exact release, per the directory: date YYYY-MM-DD, block, tx, issuer. */
-  release?: { date: string; block: number | null; txHash: string | null; issuer: string | null };
-  /** The directory's own media (GitHub CDN) and page. */
-  directory?: { image: string | null; small: string | null; video: string | null; url: string | null };
-  /** In our index but no longer in the directory. Lookups work; random picks and stats skip it. */
-  retired?: boolean;
 }
 
 // Load the full card index from JSON file

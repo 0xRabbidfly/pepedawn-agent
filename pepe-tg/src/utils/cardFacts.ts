@@ -96,9 +96,7 @@ function poolFor(collection: Collection): CardInfo[] {
       : collection === 'rare-pepes'
       ? RARE_PEPES_CARD_INDEX
       : FULL_CARD_INDEX;
-  // A card the directory has dropped is still answerable by name, but it is
-  // not one to offer.
-  const pool = (index as unknown as CardInfo[]).filter((c) => c?.asset && !c.retired);
+  const pool = (index as unknown as CardInfo[]).filter((c) => c?.asset);
   // Falling back silently would answer a Commons question with a Fake Rare,
   // which is the bug this exists to prevent - so only fall back if the index is
   // genuinely empty.

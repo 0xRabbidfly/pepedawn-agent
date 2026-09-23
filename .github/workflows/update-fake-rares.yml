@@ -40,14 +40,7 @@ jobs:
           SERIES="${{ github.event.inputs.series || '18 19 20 21 22 23 24 25' }}"
           echo "🔍 Scraping series: $SERIES"
           node scripts/add-new-cards.js $SERIES
-
-      # The directory has the last word on artist credits, release dates and
-      # which cards exist; pepe.wtf above still supplies current supply, slugs
-      # and media details. One request. Refuses to write on a suspicious diff.
-      - name: Reconcile with fakeraredirectory.com
-        working-directory: pepe-tg
-        run: bun scripts/sync-directory.ts
-
+      
       - name: Check for changes
         id: check-changes
         run: |

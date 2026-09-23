@@ -15,8 +15,8 @@ const cardNameCache = new Set(FULL_CARD_INDEX.map(c => c.asset.toUpperCase()));
  */
 function containsFakeRareCard(text: string): boolean {
   // Extract all words (3+ letters, case-insensitive)
-  const allWords: string[] = text.match(/\b[A-Za-z]{3,}[A-Za-z0-9]*\b/g) ?? [];
-  return allWords.some((word) => cardNameCache.has(word.toUpperCase()));
+  const allWords = text.match(/\b[A-Za-z]{3,}[A-Za-z0-9]*\b/g) || [];
+  return allWords.some(word => cardNameCache.has(word.toUpperCase()));
 }
 
 export interface MessagePatterns {
