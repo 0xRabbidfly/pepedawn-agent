@@ -281,12 +281,14 @@ export function parseDecisions(logText: string, from: number, to: number): Decis
     if (!head) continue;
     const at = Date.parse(head[1].replace(' ', 'T') + 'Z');
     if (Number.isNaN(at) || at < from || at >= to) continue;
-    // The reason sits on one of the next few lines of the logged object.
+    // The reason sits on one of the next few lines of the logged object. PM2
+    // stamps every continuation line with the timestamp too, so a new entry
+    // is recognised by its level marker, not by the timestamp.
     let reason = head[2].startsWith('Others') ? 'others_mid_conversation' : 'unknown';
-    for (let j = i + 1; j < Math.min(lines.length, i + 6); j++) {
+    for (let j = i + 1; j < Math.min(lines.length, i + 8); j++) {
       const r = /reason: "([a-z_]+)"/.exec(lines[j]);
       if (r) { reason = r[1]; break; }
-      if (/^\d{4}-\d{2}-\d{2} /.test(lines[j])) break;
+      if (/\+00:00:\s+(Info|Warn|Error|Debug)\s/.test(lines[j])) break;
     }
     out.push({ at, reason });
   }

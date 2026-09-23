@@ -89,14 +89,16 @@ describe('triage by id', () => {
 
 describe('stats and anomalies', () => {
   it('counts what the bot did and why it stayed quiet', () => {
+    // Verbatim shape from the droplet: PM2 stamps continuation lines too.
     const log = [
       '2026-09-23 15:36:00 +00:00:  Info       [SmartRouter] Not invited; staying out {',
-      '  query: "will Commons be added?",',
-      '  reason: "unaddressed_question_not_exact",',
-      '}',
+      '2026-09-23 15:36:00 +00:00:   query: "will Commons be added?",',
+      '2026-09-23 15:36:00 +00:00:   reason: "unaddressed_question_not_exact",',
+      '2026-09-23 15:36:00 +00:00: }',
+      '2026-09-23 15:36:00 +00:00:  Info       [SmartRouter] NORESPONSE plan acknowledged silently (no emoji).',
       '2026-09-23 15:37:05 +00:00:  Info       [SmartRouter] Others mid-conversation and nobody asked; staying out {',
-      '  query: "idk",',
-      '}',
+      '2026-09-23 15:37:05 +00:00:   query: "idk",',
+      '2026-09-23 15:37:05 +00:00: }',
       '2026-09-23 15:40:00 +00:00:  Info       [RepeatGuard] Not sending a reply that repeats one from 3 min ago',
       '2026-09-23 15:41:00 +00:00:  Error      [Anniversary] tick failed',
       '2026-09-22 15:41:00 +00:00:  Error      old, outside the window',
