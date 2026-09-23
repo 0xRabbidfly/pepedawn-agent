@@ -5,6 +5,35 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.15.0] - 2026-09-23
+
+### Added
+
+- **The maintainer loop, stage 1: monitor and propose.** An agent that
+  watches the room and reports, without acting. Every six hours
+  `scripts/maintainer-digest.ts` runs on the droplet, reads the day log and
+  the router's own logged decisions, and DMs the owner a digest: what people
+  asked of PEPEDAWN, what it replied, how often and why it stayed silent, and
+  anything odd — the same reply twice, bursts, non-answers.
+
+  The digest keeps two things apart on the page. **Directives** come only from
+  the owner and admins, by numeric Telegram id. Everyone else's request is a
+  **suggestion**, heard and not acted on. That is article I of
+  `docs/AGENT_CONSTITUTION.md`, enforced in `triage()` rather than in a
+  prompt. One small model call labels what each message asks; the rest is
+  deterministic.
+
+  `scripts/maintainer-propose.sh` is the other half: it takes the latest
+  digest and runs Claude Code headless in a git worktree to turn each
+  directive into a fix on a `maintainer/<date>` branch — tests green, changelog
+  written, protected paths left alone — and pushes it for a human to review
+  and deploy. Its tools are allow-listed; it cannot push master, deploy, or
+  touch `.env`.
+
+  Digests are written to `src/data/maintainer/`, gitignored, because they
+  quote real people. The constitution is a draft; stage 1 runs before
+  ratification because it cannot act. Stages 2 and 3 wait for it.
+
 ## [5.14.0] - 2026-09-23
 
 ### Changed
