@@ -27,9 +27,11 @@ function offer(question: string): { asset: string; artist: string | null } | nul
 
 describe('a question of taste honours what it asked for', () => {
   it('offers a card by the artist named, every time', () => {
-    // Memeticx has seven cards across the collections - six Fake Rares and one
-    // Fake Common. Uniform over the Fake Rares pool it was one in 914.
-    expect(cardCountForArtist('Memeticx')).toBe(7);
+    // Memeticx has several cards across the collections; uniform over the
+    // Fake Rares pool the draw was one in 914. The exact count is the
+    // directory's to state (it credits FAKEPEPEBAR and MEMETICPEPE to
+    // HollywoodMeta since 5.16.0), so this asserts only that there is a pool.
+    expect(cardCountForArtist('Memeticx')).toBeGreaterThanOrEqual(3);
     for (let i = 0; i < 100; i++) {
       const card = offer('Pepedawn what is your favourite Memeticx card?');
       expect(card?.artist).toBe('Memeticx');

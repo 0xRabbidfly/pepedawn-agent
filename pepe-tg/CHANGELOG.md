@@ -5,6 +5,33 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.16.0] - 2026-09-23
+
+### Changed
+
+- **fakeraredirectory.com is the canonical card source.** The index was a
+  pepe.wtf scrape from October 2025, topped up by scraping the old directory's
+  HTML. The new directory has a JSON API, and a diff against it found 161
+  artist credits that disagreed — one of ours was a Bitcoin address — 11 cards
+  we lacked, 7 we still offered that the canon had dropped, and exact release
+  dates, blocks and transactions for 904 cards where we held a month.
+
+  `scripts/sync-directory.ts` now runs daily after the pepe.wtf pass and
+  reconciles: the directory wins on artist (except for case alone), release,
+  series and card number, and which cards exist; pepe.wtf still supplies
+  current supply, slugs and media detail. Their original issuance is kept
+  beside our current supply. A card they have dropped is marked `retired` —
+  still answerable by name, never offered at random. "When was FREEDOMKEK
+  issued?" now answers 8 October 2017, block 488,827. The script refuses to
+  write if more than twenty cards would retire at once.
+
+  Production picks the committed index up from GitHub within a day; no
+  deploy is needed for data, only for the code that reads the new fields.
+
+### Added
+
+- `docs/TODO.md` — the open work, in priority, with why each item matters.
+
 ## [5.15.1] - 2026-09-23
 
 ### Changed

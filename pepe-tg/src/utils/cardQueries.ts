@@ -13,6 +13,7 @@
 
 import { FULL_CARD_INDEX, getCardInfo, type CardInfo } from '../data/fullCardIndex';
 import { artistsIn } from './cardFacts';
+import { longDate } from './directorySync';
 import {
   ALL_CARDS_MAP,
   COLLECTION_LABEL,
@@ -246,6 +247,17 @@ export function answerCardQuery(text: string, subject?: string): CardQueryAnswer
 
   // --- Issuance date -------------------------------------------------------
   if (card && asks('issued', 'issuance', 'released', 'release date', 'when was', 'what year')) {
+    // The directory knows the day and the block; pepe.wtf knew the month.
+    const release = (card as CardInfo).release;
+    const exact = release?.date ? longDate(release.date) : null;
+    if (exact) {
+      return {
+        fact: `${card.asset}${collectionSuffix(card)} was issued on ${exact}` +
+          (release?.block ? `, block ${release.block.toLocaleString('en-US')}` : '') + '.',
+        kind: 'issuance',
+        asset: card.asset,
+      };
+    }
     return card.issuance
       ? {
           fact: `${card.asset}${collectionSuffix(card)} was issued ${card.issuance}.`,
