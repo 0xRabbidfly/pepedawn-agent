@@ -649,6 +649,18 @@ describe('in the running bot', () => {
     expect(standing.replace(/\d+ entries/, '')).not.toMatch(/\b[392]\b/);
     expect(standing).not.toContain('great');
 
+    // The closing time is an exact fact, spelled out in three zones, for any "when" question.
+    const { spelledTime } = await import('../../conversation/anniversaryRuntime');
+    // This test schedule runs on New York time; the real one runs on Los Angeles time.
+    expect(spelledTime(withContest, '21:30')).toBe('9:30 PM Eastern (01:30 UTC)');
+    const la = { ...withContest, event: { ...withContest.event, timezone: 'America/Los_Angeles' } };
+    expect(spelledTime(la, '21:30')).toBe('9:30 PM Pacific (12:30 AM Eastern, 04:30 UTC)');
+    for (const q of ['when does the lore contest close?', 'what time does the contest end', 'lore contest deadline?', 'how long until the contest closes']) {
+      expect(anniversaryFact(q, at('10:45'))).toContain('closes at exactly 9:30 PM Eastern (01:30 UTC)');
+    }
+    expect(anniversaryFact('when is the next drop?', at('10:45'))).toBeNull();
+    expect(anniversaryContext(at('10:45'))).toContain('Entries close at exactly 9:30 PM Eastern');
+
     // And every reply on the day is told what day it is.
     expect(anniversaryContext(at('10:40'))).toContain('5th birthday');
     expect(anniversaryContext(at('10:40'))).toContain('(currently 2)');

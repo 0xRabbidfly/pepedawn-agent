@@ -31,6 +31,7 @@ import {
   scrillaRate,
   standings,
   validateSchedule,
+  zonedToUtc,
   type Answer,
   type AnniversaryStateData,
   type AnniversaryStore,
@@ -379,6 +380,35 @@ export function loreEntryInTop(entryId: string): boolean {
   }
 }
 
+/**
+ * A time from the schedule, spelled out so no model has to convert it.
+ *
+ * "closes 21:30" alone invited every reply to pick a timezone and a format of
+ * its own, and they did. This gives Pacific, Eastern and UTC together, and the
+ * prompt tells the bot to say it exactly this way.
+ */
+const ZONE_LABELS: Record<string, string> = {
+  'America/Los_Angeles': 'Pacific',
+  'America/Denver': 'Mountain',
+  'America/Chicago': 'Central',
+  'America/New_York': 'Eastern',
+  'Europe/London': 'London',
+  'Europe/Lisbon': 'Lisbon',
+  UTC: 'UTC',
+};
+
+export function spelledTime(schedule: Schedule, hhmm: string): string {
+  const eventZone = schedule.event.timezone;
+  const instant = zonedToUtc(schedule.event.date, hhmm, eventZone);
+  const fmt = (timeZone: string, style: 'h12' | 'h23') =>
+    new Date(instant).toLocaleTimeString('en-US', { timeZone, hour: 'numeric', minute: '2-digit', hourCycle: style });
+  const also: string[] = [];
+  if (eventZone !== 'America/New_York') also.push(`${fmt('America/New_York', 'h12')} Eastern`);
+  also.push(`${fmt('UTC', 'h23')} UTC`);
+  return `${fmt(eventZone, 'h12')} ${ZONE_LABELS[eventZone] ?? eventZone} (${also.join(', ')})`;
+}
+
+const ASKS_WHEN = /\b(when|what time|clos(e|es|ing)|end(s|ing)?|deadline|until|how long|cut[- ]?off|last call)\b/i;
 const ASKS_COUNT = /\b(count(er)?|tally|score|number|how many times)\b/i;
 const ASKS_BOARD = /\b(leaderboard|leader board|trivia|scoreboard|winning|who'?s (ahead|winning|leading))\b/i;
 const ASKS_LORE = /\b(lore|contest|entries|entry|top (5|five)|shortlist|finalists?)\b/i;
@@ -401,13 +431,21 @@ export function anniversaryFact(text: string, now = Date.now()): string | null {
     // "What's counter at now you miscreant?", the name was not there and the
     // question went to retrieval, which improvised "5 years" for a second time.
     const asksScrilla = /\b(counter|tally)\b/i.test(text) || (SCRILLA.test(text) && ASKS_COUNT.test(text));
+    const asksWhen = !!schedule.lore_contest && ASKS_LORE.test(text) && ASKS_WHEN.test(text);
     const asksLore = !!schedule.lore_contest && ASKS_LORE.test(text) && (ASKS_BOARD.test(text) || /\b(who|how many|top|best|standing|leading|winning|so far)\b/i.test(text));
     const asksBoard = ASKS_BOARD.test(text) && !asksLore;
-    if (!asksScrilla && !asksBoard && !asksLore) return null;
+    if (!asksScrilla && !asksBoard && !asksLore && !asksWhen) return null;
 
     const data = anniversaryStore().data();
     const { start } = eventDay(schedule);
     const parts: string[] = [];
+    if (asksWhen) {
+      const lc = schedule.lore_contest!;
+      parts.push(
+        `The lore contest closes at exactly ${spelledTime(schedule, lc.closes)} and the winner is announced at ` +
+        `${spelledTime(schedule, lc.announce)}. State these times exactly as written; never convert, round or estimate them.`
+      );
+    }
     if (asksLore) {
       const lc = schedule.lore_contest!;
       const { names, entries } = loreTopNamesNow();
@@ -448,10 +486,11 @@ export function anniversaryContext(now = Date.now()): string {
     const count = data.scrilla.date === schedule.event.date ? data.scrilla.count : 0;
     const lc = schedule.lore_contest;
     const contest = lc
-      ? ` There is also a lore contest: /fr CARD <story> enters, ${lc.max_per_person} entries each, closes ${lc.closes}, ` +
-        `you score every entry quietly and choose the winner at ${lc.announce}; the prize is ${lc.prize}; ` +
-        `${data.lore?.entries.length ?? 0} entries so far. If asked how it stands you may give the top five names only, ` +
-        `never scores and never who wrote which lore.`
+      ? ` There is also a lore contest: /fr CARD <story> enters, ${lc.max_per_person} entries each, as many people as like. ` +
+        `Entries close at exactly ${spelledTime(schedule, lc.closes)}; you score every entry quietly and announce the winner at ` +
+        `${spelledTime(schedule, lc.announce)}; the prize is ${lc.prize}; ${data.lore?.entries.length ?? 0} entries so far. ` +
+        `Whenever you mention the closing or announcement time, say it exactly as written here - never convert, round or ` +
+        `estimate it. If asked how it stands you may give the top five names only, never scores and never who wrote which lore.`
       : '';
     return (
       `Today is the Fake Rares 5th birthday and you are hosting: history drops, a card every couple of hours, ` +
