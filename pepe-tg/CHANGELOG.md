@@ -5,6 +5,29 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.13.2] - 2026-09-23
+
+### Fixed
+
+- **The X harvest volunteered strangers' NFT chatter while Scrilla's own post
+  sat unshown.** On the morning after the birthday the room went quiet and the
+  bot offered two strangers' takes on an NFT collection passing Rare Pepe on
+  OpenSea, because the market query scores anything Rare-Pepe-adjacent and
+  volunteering took the top score. Scrilla's post announcing the 5-year
+  anniversary drop was in the store the whole time. His words: *"There was over
+  500 posts about fake rare yesterday and this what u choose?"*
+
+  @scrillaventura and @fakerares_xcp are now must-follow accounts: harvested by
+  name every round (their own posts, not replies) and offered first when a post
+  is volunteered. Everyone else's post is volunteered only if it names a card;
+  market chatter that merely mentions Rare Pepe is never worth interrupting a
+  quiet room for. `X_MUST_FOLLOW` extends the list. Conversation matching is
+  unchanged — a stranger's post can still be brought up when it genuinely
+  connects to what is being said.
+
+- `scripts/x-show.ts` posts chosen harvested posts by hand, with a line from
+  PEPEDAWN first. Written for the apology, kept for the next time.
+
 ## [5.13.1] - 2026-09-22
 
 ### Changed

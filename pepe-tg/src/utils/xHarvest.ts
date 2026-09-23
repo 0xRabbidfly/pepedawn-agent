@@ -81,6 +81,30 @@ export interface HarvestQuery {
  * every post the bot has actually said out loud. Restore it if the community
  * spreads beyond the accounts those two reach.
  */
+/**
+ * Accounts whose posts come first, always.
+ *
+ * On 23 September the room had gone quiet and the harvest volunteered a
+ * stranger's take on an NFT collection passing Rare Pepe on OpenSea — twice,
+ * from two strangers — while Scrilla's own post announcing the 5-year
+ * anniversary drop sat in the store, never shown. His words: "There was over
+ * 500 posts about fake rare yesterday and this what u choose?"
+ *
+ * So: these accounts are harvested by name every round, and when a post is
+ * volunteered into a quiet room theirs are offered before anyone else's.
+ * X_MUST_FOLLOW extends the list without a release.
+ */
+export const DEFAULT_MUST_FOLLOW = ['scrillaventura', 'fakerares_xcp'];
+
+export function mustFollow(): string[] {
+  const extra = (process.env.X_MUST_FOLLOW || '').split(',').map((h) => h.trim().replace(/^@/, '').toLowerCase()).filter(Boolean);
+  return [...new Set([...DEFAULT_MUST_FOLLOW, ...extra])];
+}
+
+export function isMustFollow(author: string | undefined): boolean {
+  return !!author && mustFollow().includes(author.toLowerCase());
+}
+
 export const HARVEST_QUERIES: HarvestQuery[] = [
   {
     key: 'market',
@@ -95,6 +119,18 @@ export const HARVEST_QUERIES: HarvestQuery[] = [
       '"Rare Pepe Lore Lesson" series.',
   },
 ];
+
+/** The fixed queries plus one for the must-follow accounts, by name. */
+export function harvestQueries(): HarvestQuery[] {
+  const handles = mustFollow().map((h) => `@${h}`).join(' and ');
+  return [
+    ...HARVEST_QUERIES,
+    {
+      key: 'must_follow',
+      instruction: `Search X for the most recent posts by ${handles} - their own posts, not replies to them.`,
+    },
+  ];
+}
 
 /**
  * Shared tail. Two things are load-bearing here:
@@ -480,10 +516,19 @@ export function selectForVolunteer(
   if (opts.lastVolunteerAt !== undefined && now - opts.lastVolunteerAt < config.volunteerGapMs) {
     return null;
   }
+  // Must-follow accounts first, newest first. Everyone else only when the
+  // post names a card: market chatter that merely mentions Rare Pepe in
+  // passing is what got volunteered on 23 September, and it is never worth
+  // interrupting a quiet room for.
   const candidates = (opts.posts ?? allPosts())
     .filter((p) => !p.volunteeredAt && !p.usedAt)
     .filter((p) => now - p.postedAt <= config.maxAgeMs)
-    .sort((a, b) => b.interest - a.interest || b.postedAt - a.postedAt);
+    .filter((p) => isMustFollow(p.author) || p.cards.length > 0)
+    .sort((a, b) =>
+      Number(isMustFollow(b.author)) - Number(isMustFollow(a.author)) ||
+      b.interest - a.interest ||
+      b.postedAt - a.postedAt
+    );
   return candidates[0] ?? null;
 }
 

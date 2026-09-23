@@ -16,7 +16,7 @@ import { FileRoomHistoryStore } from '../conversation/fileRoomHistoryStore';
 import { appendDayTurn } from '../conversation/dayLog';
 import { TelemetryService } from './TelemetryService';
 import {
-  HARVEST_QUERIES, RAW_POSTS_RULE, DEFAULT_HARVEST_CONFIG,
+  harvestQueries, RAW_POSTS_RULE, DEFAULT_HARVEST_CONFIG,
   parseHarvestResponse, mergePosts, selectForVolunteer, markVolunteered, roomForChat,
   formatForTelegram, readXaiSpend, lastHarvestAt, recordHarvestRun, volunteerLead,
   type HarvestedPost,
@@ -133,7 +133,7 @@ export class XHarvestService extends Service {
 
     let added = 0;
     let total = 0;
-    for (const q of HARVEST_QUERIES) {
+    for (const q of harvestQueries()) {
       try {
         const posts = await this.runQuery(q.key, q.instruction);
         const result = mergePosts(posts);

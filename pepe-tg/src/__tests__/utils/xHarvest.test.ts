@@ -14,7 +14,7 @@ import {
   scoreInterest, cardsMentioned, parseHarvestResponse, mergePosts,
   selectForVolunteer, matchForConversation, formatForTelegram, readXaiSpend,
   markVolunteered, allPosts, _resetCache,
-  lastHarvestAt, recordHarvestRun, HARVEST_QUERIES,
+  lastHarvestAt, recordHarvestRun, HARVEST_QUERIES, harvestQueries, mustFollow, isMustFollow,
   isXActivityQuestion, buildDigest, formatDigestForTelegram, volunteerLead,
   DEFAULT_HARVEST_CONFIG, type HarvestedPost,
 } from '../../utils/xHarvest';
@@ -165,9 +165,39 @@ describe('selectForVolunteer', () => {
   });
 
   it('offers the highest-interest unused post once the room is quiet', () => {
-    mergePosts([post({ id: 'dull', interest: 0.4 }), post({ id: 'good', interest: 0.9 })], NOW);
+    mergePosts([post({ id: 'dull', interest: 0.4, cards: ['FAKEASF'] }), post({ id: 'good', interest: 0.9, cards: ['FAKEASF'] })], NOW);
     const chosen = selectForVolunteer({ lastUserAt: NOW - 3 * 60 * 60 * 1000, now: NOW });
     expect(chosen?.id).toBe('good');
+  });
+
+  it('offers a must-follow account first, whatever the scores', () => {
+    // 23 September: two strangers' takes on an NFT collection passing Rare
+    // Pepe on OpenSea were volunteered while Scrilla's own anniversary post
+    // sat unshown. "There was over 500 posts about fake rare yesterday and
+    // this what u choose?"
+    mergePosts([
+      post({ id: 'stranger', author: 'sheikhakash69', interest: 0.9, cards: ['FAKEASF'], text: 'Quantum Echoes past Rare Pepe FAKEASF' }),
+      post({ id: 'scrilla', author: 'ScrillaVentura', interest: 0.5, cards: [], text: 'Dropping the special 5 year anniversary from my account today' }),
+      post({ id: 'mothership', author: 'FAKERARES_XCP', interest: 0.4, cards: [], text: 'TOMORROW IS THE FAKE RARE 5 YEAR ANNIVERSARY', postedAt: NOW - 2 * DAY }),
+    ], NOW);
+    const quiet = { lastUserAt: NOW - 3 * 60 * 60 * 1000, now: NOW };
+    expect(selectForVolunteer(quiet)?.id).toBe('scrilla');
+    markVolunteered('scrilla', NOW);
+    expect(selectForVolunteer({ ...quiet, lastVolunteerAt: NOW - 8 * 60 * 60 * 1000 })?.id).toBe('mothership');
+  });
+
+  it('never volunteers market chatter that names no card', () => {
+    mergePosts([post({ id: 'chatter', author: 'coinzys1', interest: 0.95, cards: [], text: 'Quantum Echoes just hit #10 on OpenSea. Past Rare Pepe.' })], NOW);
+    expect(selectForVolunteer({ lastUserAt: NOW - 3 * 60 * 60 * 1000, now: NOW })).toBeNull();
+  });
+
+  it('reads extra must-follow handles from the environment', () => {
+    const saved = process.env.X_MUST_FOLLOW;
+    process.env.X_MUST_FOLLOW = '@Pepenardo, subterranean_1';
+    expect(mustFollow()).toEqual(['scrillaventura', 'fakerares_xcp', 'pepenardo', 'subterranean_1']);
+    expect(isMustFollow('SubTerranean_1')).toBe(true);
+    expect(isMustFollow('someone')).toBe(false);
+    if (saved === undefined) delete process.env.X_MUST_FOLLOW; else process.env.X_MUST_FOLLOW = saved;
   });
 
   it('never volunteers into a room with no history at all', () => {
@@ -177,14 +207,14 @@ describe('selectForVolunteer', () => {
   });
 
   it('respects the gap between volunteered posts', () => {
-    mergePosts([post()], NOW);
+    mergePosts([post({ cards: ['FAKEASF'] })], NOW);
     const quiet = { lastUserAt: NOW - 3 * 60 * 60 * 1000, now: NOW };
     expect(selectForVolunteer({ ...quiet, lastVolunteerAt: NOW - 60 * 60 * 1000 })).toBeNull();
     expect(selectForVolunteer({ ...quiet, lastVolunteerAt: NOW - 8 * 60 * 60 * 1000 })).not.toBeNull();
   });
 
   it('never offers the same post twice', () => {
-    mergePosts([post()], NOW);
+    mergePosts([post({ cards: ['FAKEASF'] })], NOW);
     markVolunteered('a-1', NOW);
     expect(selectForVolunteer({ lastUserAt: NOW - 3 * 60 * 60 * 1000, now: NOW })).toBeNull();
   });
@@ -585,5 +615,12 @@ describe('harvest cadence survives a restart', () => {
 describe('HARVEST_QUERIES', () => {
   it('no longer runs the phrase query, which never produced a used post', () => {
     expect(HARVEST_QUERIES.map((q) => q.key)).toEqual(['market', 'curated']);
+  });
+
+  it('always asks for the must-follow accounts by name, their own posts not replies', () => {
+    const q = harvestQueries();
+    expect(q.map((x) => x.key)).toEqual(['market', 'curated', 'must_follow']);
+    expect(q[2].instruction).toContain('@scrillaventura and @fakerares_xcp');
+    expect(q[2].instruction).toContain('not replies');
   });
 });
