@@ -5,6 +5,22 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.15.1] - 2026-09-23
+
+### Changed
+
+- **The maintainer runs daily, and reports to the owner both ways.** The
+  digest posts once a day at 13:00 UTC instead of every six hours; the
+  proposer runs from cron twenty minutes later and DMs the owner the branch
+  it proposed, with the review and deploy commands and its own summary — or
+  says it proposed nothing. It refuses to propose the same digest twice, and
+  `--dry-run` shows what it would do without running Claude.
+
+### Fixed
+
+- The digest read every silence as `unknown`: PM2 stamps continuation lines
+  with the timestamp, and the parser took the first one for a new entry.
+
 ## [5.15.0] - 2026-09-23
 
 ### Added

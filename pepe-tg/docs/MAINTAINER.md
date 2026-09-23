@@ -30,12 +30,16 @@ It writes `src/data/maintainer/<stamp>.md` and `.json` (gitignored: they
 quote real people) and `latest.json` for the proposer. It never touches
 PGlite, so the bot keeps running.
 
-Install on the droplet (once):
+Installed on the droplet, daily at 13:00 UTC (09:00 Eastern):
 
 ```
 crontab -e
-0 */6 * * * cd /root/pepedawn-agent/pepe-tg && /root/.bun/bin/bun scripts/maintainer-digest.ts >> logs/maintainer.log 2>&1
+0 13 * * * cd /root/pepedawn-agent/pepe-tg && /root/.bun/bin/bun scripts/maintainer-digest.ts >> logs/maintainer.log 2>&1
 ```
+
+Run it by hand any time with `bun scripts/maintainer-digest.ts` (since the
+last run) or `--hours 6`; `--dry-run` prints without sending or moving the
+watermark.
 
 Variables, in the droplet's `.env`: `MAINTAINER_OWNER_CHAT_ID` (where the
 digest goes), `MAINTAINER_DIRECTIVE_IDS` (the owner's id, and anyone else who
@@ -63,8 +67,30 @@ git merge --ff-only maintainer/<date>      # on master, after reading it
 ./scripts/deploy.sh
 ```
 
-Run it by hand after a digest lands, or from cron on a machine that has the
-SSH key and Claude Code.
+When it finishes, the owner gets a DM through the local bot with the branch
+name, the review and deploy commands, and the agent's own summary. It refuses
+to propose the same digest twice, so a daily cron is safe even when the
+digest did not change.
+
+Installed on the dev machine, daily twenty minutes after the digest:
+
+```
+crontab -e
+20 9 * * * /home/nuno/projects/Fake-Rare-TG-Agent/pepe-tg/scripts/maintainer-propose.sh >> /home/nuno/projects/Fake-Rare-TG-Agent/pepe-tg/logs/maintainer-propose.log 2>&1
+```
+
+The machine has to be on; a missed day is picked up the next. Run it by
+hand any time; `--dry-run` shows what it would do without running Claude.
+
+## Your day, then
+
+- **09:00 Eastern** — the digest lands in your DMs: directives, suggestions,
+  silences, anomalies.
+- **09:20** — if there were directives, the proposer works and DMs you the
+  branch. `git log origin/master..maintainer/<date> --stat` to read it;
+  `git merge --ff-only` and `deploy.sh` if you agree.
+- Anything you want acted on that the room did not say: say it to the bot in
+  the chat, or run the proposer with a hand-written brief.
 
 ## What "directive" means
 
