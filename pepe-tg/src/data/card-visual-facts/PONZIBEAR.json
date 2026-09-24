@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "asset": "PONZIBEAR",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 33,
+  "artist": "Jose Burrito",
+  "supply": 200,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "PONZI BEAR"
+  ],
+  "memeticReferences": [
+    "The green-faced bear is a nod to the infamous Pepe meme.",
+    "References to crypto skepticism and NFT criticisms in the tweet excerpts.",
+    "The bear character itself could be a play on the term \"bear market\" in crypto lingo."
+  ],
+  "visualSummary": "The card features a bear wearing a polka dot scarf with a human face that has been colored green. The background is filled with snippets of tweets, creating a chaotic and text-heavy backdrop. The color palette includes earthy browns for the bear and bright green for the face, contrasting with the white and black text-filled background.",
+  "visualSummaryShort": "The card showcases a bear with a human face, adorned with a polka dot scarf. The chaotic background is filled with snippets of tweets, enhancing the vibrant color contrast.",
+  "visualKeywords": [
+    "bear",
+    "polka dot",
+    "green face",
+    "tweets",
+    "chaotic",
+    "earthy brown",
+    "bright green",
+    "text-filled"
+  ],
+  "textKeywords": [
+    "ponzi",
+    "bear"
+  ],
+  "keywords": [
+    "bear",
+    "polka dot",
+    "green face",
+    "tweets",
+    "chaotic",
+    "earthy brown",
+    "bright green",
+    "text-filled",
+    "ponzi"
+  ],
+  "embeddingInput": "PONZIBEAR (Fake Rares) - Series 1 Card 33\nArtist: Jose Burrito\nSupply 200 Issued October 2021\nOn-card text: PONZI BEAR\nVisual summary: The card features a bear wearing a polka dot scarf with a human face that has been colored green. The background is filled with snippets of tweets, creating a chaotic and text-heavy backdrop. The color palette includes earthy browns for the bear and bright green for the face, contrasting with the white and black text-filled background.\nMemetic references: The green-faced bear is a nod to the infamous Pepe meme.; References to crypto skepticism and NFT criticisms in the tweet excerpts.; The bear character itself could be a play on the term \"bear market\" in crypto lingo.",
+  "embeddingBlocks": [
+    {
+      "id": "PONZIBEAR#text",
+      "label": "On-card text",
+      "text": "PONZI BEAR",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PONZIBEAR#memetic",
+      "label": "Memetic references",
+      "text": "The green-faced bear is a nod to the infamous Pepe meme.\nReferences to crypto skepticism and NFT criticisms in the tweet excerpts.\nThe bear character itself could be a play on the term \"bear market\" in crypto lingo.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PONZIBEAR#visual",
+      "label": "Visual summary",
+      "text": "The card features a bear wearing a polka dot scarf with a human face that has been colored green. The background is filled with snippets of tweets, creating a chaotic and text-heavy backdrop. The color palette includes earthy browns for the bear and bright green for the face, contrasting with the white and black text-filled background.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PONZIBEAR#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPONZI BEAR\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a bear wearing a polka dot scarf with a human face that has been colored green. The background is filled with snippets of tweets, creating a chaotic and text-heavy backdrop. The color palette includes earthy browns for the bear and bright green for the face, contrasting with the white and black text-filled background.\n\n🧬 **MEMETIC DNA:**\n- The green-faced bear is a nod to the infamous Pepe meme.\n- References to crypto skepticism and NFT criticisms in the tweet excerpts.\n- The bear character itself could be a play on the term \"bear market\" in crypto lingo.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.047Z",
+  "sourceFactVersion": 1
+}

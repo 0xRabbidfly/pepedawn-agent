@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "asset": "FAKECOAT",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 21,
+  "artist": "Rare Scrilla",
+  "supply": 222,
+  "issuance": "February 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "References to high fashion and runway culture.",
+    "The character's face is a nod to the iconic Pepe meme.",
+    "UFO and desert elements hint at Area 51 and meme culture surrounding it.",
+    "The coat showcases numerous images, possibly nods to other NFTs or artworks."
+  ],
+  "visualSummary": "The card features a character in an extravagant coat covered with various images, standing confidently on a runway. The color palette is vibrant, with blues, purples, and greens dominating, while the background includes a desert landscape with a quirky audience. The artistic style is a blend of digital collage and cartoonish illustration, giving it a whimsical yet bold appearance.",
+  "visualSummaryShort": "The card showcases a character in a vibrant, extravagant coat adorned with various images, confidently posed on a runway. The background features a whimsical desert landscape with a quirky audience, enhancing the bold artistic style.",
+  "visualKeywords": [
+    "extravagant coat",
+    "runway",
+    "vibrant colors",
+    "desert landscape",
+    "quirky audience",
+    "digital collage",
+    "cartoonish",
+    "bold",
+    "whimsical"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "extravagant coat",
+    "runway",
+    "vibrant colors",
+    "desert landscape",
+    "quirky audience",
+    "digital collage",
+    "cartoonish",
+    "bold",
+    "whimsical"
+  ],
+  "embeddingInput": "FAKECOAT (Fake Rares) - Series 5 Card 21\nArtist: Rare Scrilla\nSupply 222 Issued February 2022\nOn-card text: none detected\nVisual summary: The card features a character in an extravagant coat covered with various images, standing confidently on a runway. The color palette is vibrant, with blues, purples, and greens dominating, while the background includes a desert landscape with a quirky audience. The artistic style is a blend of digital collage and cartoonish illustration, giving it a whimsical yet bold appearance.\nMemetic references: References to high fashion and runway culture.; The character's face is a nod to the iconic Pepe meme.; UFO and desert elements hint at Area 51 and meme culture surrounding it.; The coat showcases numerous images, possibly nods to other NFTs or artworks.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKECOAT#memetic",
+      "label": "Memetic references",
+      "text": "References to high fashion and runway culture.\nThe character's face is a nod to the iconic Pepe meme.\nUFO and desert elements hint at Area 51 and meme culture surrounding it.\nThe coat showcases numerous images, possibly nods to other NFTs or artworks.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKECOAT#visual",
+      "label": "Visual summary",
+      "text": "The card features a character in an extravagant coat covered with various images, standing confidently on a runway. The color palette is vibrant, with blues, purples, and greens dominating, while the background includes a desert landscape with a quirky audience. The artistic style is a blend of digital collage and cartoonish illustration, giving it a whimsical yet bold appearance.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKECOAT#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a character in an extravagant coat covered with various images, standing confidently on a runway. The color palette is vibrant, with blues, purples, and greens dominating, while the background includes a desert landscape with a quirky audience. The artistic style is a blend of digital collage and cartoonish illustration, giving it a whimsical yet bold appearance.\n\n🧬 **MEMETIC DNA:**\n- References to high fashion and runway culture.\n- The character's face is a nod to the iconic Pepe meme.\n- UFO and desert elements hint at Area 51 and meme culture surrounding it.\n- The coat showcases numerous images, possibly nods to other NFTs or artworks.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.474Z",
+  "sourceFactVersion": 1
+}

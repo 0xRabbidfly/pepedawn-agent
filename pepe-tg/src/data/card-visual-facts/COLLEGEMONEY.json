@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "asset": "COLLEGEMONEY",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 7,
+  "artist": "Britts and Stas",
+  "supply": 125,
+  "issuance": "October 2021",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a vibrant design with a focus on college-themed elements. It conveys a sense of excitement and opportunity.",
+  "visualKeywords": [
+    "college",
+    "money",
+    "vibrant",
+    "opportunity",
+    "design"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "college",
+    "money",
+    "vibrant",
+    "opportunity",
+    "design"
+  ],
+  "embeddingInput": "COLLEGEMONEY (Fake Rares) - Series 2 Card 7\nArtist: Britts and Stas\nSupply 125 Issued October 2021\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "COLLEGEMONEY#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with identifying or analyzing this image.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.362Z",
+  "sourceFactVersion": 1
+}

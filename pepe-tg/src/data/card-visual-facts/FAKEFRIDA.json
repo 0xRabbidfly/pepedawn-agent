@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "FAKEFRIDA",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 13,
+  "artist": "Chaotic Crypto",
+  "supply": 200,
+  "issuance": "October 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog styled as a cultural icon.",
+    "Reference to Frida Kahlo’s self-portraits and distinctive style.",
+    "Combines meme culture with high art references."
+  ],
+  "visualSummary": "This card features a Pepe the Frog character styled as Frida Kahlo, complete with her iconic floral headdress and traditional Mexican attire. The background is a textured, swirling teal, giving a painterly effect. The frame is ornate, enhancing the classic portrait vibe with a meme twist.",
+  "visualSummaryShort": "The card showcases a Pepe the Frog character dressed as Frida Kahlo, adorned with a floral headdress. The textured teal background and ornate frame create a classic yet whimsical portrait atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "frida kahlo",
+    "floral headdress",
+    "traditional attire",
+    "teal background",
+    "textured",
+    "ornate frame",
+    "portrait",
+    "meme",
+    "whimsical"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "frida kahlo",
+    "floral headdress",
+    "traditional attire",
+    "teal background",
+    "textured",
+    "ornate frame",
+    "portrait",
+    "meme",
+    "whimsical"
+  ],
+  "embeddingInput": "FAKEFRIDA (Fake Rares) - Series 2 Card 13\nArtist: Chaotic Crypto\nSupply 200 Issued October 2021\nOn-card text: none detected\nVisual summary: This card features a Pepe the Frog character styled as Frida Kahlo, complete with her iconic floral headdress and traditional Mexican attire. The background is a textured, swirling teal, giving a painterly effect. The frame is ornate, enhancing the classic portrait vibe with a meme twist.\nMemetic references: Pepe the Frog styled as a cultural icon.; Reference to Frida Kahlo’s self-portraits and distinctive style.; Combines meme culture with high art references.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEFRIDA#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog styled as a cultural icon.\nReference to Frida Kahlo’s self-portraits and distinctive style.\nCombines meme culture with high art references.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEFRIDA#visual",
+      "label": "Visual summary",
+      "text": "This card features a Pepe the Frog character styled as Frida Kahlo, complete with her iconic floral headdress and traditional Mexican attire. The background is a textured, swirling teal, giving a painterly effect. The frame is ornate, enhancing the classic portrait vibe with a meme twist.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEFRIDA#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a Pepe the Frog character styled as Frida Kahlo, complete with her iconic floral headdress and traditional Mexican attire. The background is a textured, swirling teal, giving a painterly effect. The frame is ornate, enhancing the classic portrait vibe with a meme twist.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog styled as a cultural icon.\n- Reference to Frida Kahlo’s self-portraits and distinctive style.\n- Combines meme culture with high art references.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.501Z",
+  "sourceFactVersion": 1
+}

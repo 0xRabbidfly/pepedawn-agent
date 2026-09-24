@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "PEPEBLITZ",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 16,
+  "artist": "ZETRA",
+  "supply": 77,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "PEPEBLITZ"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery.",
+    "Abstract art style reminiscent of glitch or distortion memes.",
+    "Use of intense color contrasts to evoke emotion."
+  ],
+  "visualSummary": "This card features a bold, abstract depiction of Pepe the Frog with an intense, blurred effect. The color palette is dominated by dark greens and reds, creating a stark contrast that emphasizes the character's large, red lips and piercing eyes. The artistic style is surreal and painterly, with a focus on creating a sense of depth and movement.",
+  "visualSummaryShort": "The card showcases a surreal, abstract representation of Pepe the Frog, characterized by a blurred effect. Dark greens and reds dominate the color palette, highlighting the character's striking features.",
+  "visualKeywords": [
+    "pepe",
+    "abstract",
+    "blurred",
+    "dark green",
+    "red",
+    "surreal",
+    "painterly",
+    "depth",
+    "movement"
+  ],
+  "textKeywords": [
+    "pepeblitz"
+  ],
+  "keywords": [
+    "pepe",
+    "abstract",
+    "blurred",
+    "dark green",
+    "red",
+    "surreal",
+    "painterly",
+    "depth",
+    "movement",
+    "pepeblitz"
+  ],
+  "embeddingInput": "PEPEBLITZ (Fake Rares) - Series 5 Card 16\nArtist: ZETRA\nSupply 77 Issued October 2021\nOn-card text: PEPEBLITZ\nVisual summary: This card features a bold, abstract depiction of Pepe the Frog with an intense, blurred effect. The color palette is dominated by dark greens and reds, creating a stark contrast that emphasizes the character's large, red lips and piercing eyes. The artistic style is surreal and painterly, with a focus on creating a sense of depth and movement.\nMemetic references: Classic Pepe the Frog imagery.; Abstract art style reminiscent of glitch or distortion memes.; Use of intense color contrasts to evoke emotion.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEBLITZ#text",
+      "label": "On-card text",
+      "text": "PEPEBLITZ",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEBLITZ#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery.\nAbstract art style reminiscent of glitch or distortion memes.\nUse of intense color contrasts to evoke emotion.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEBLITZ#visual",
+      "label": "Visual summary",
+      "text": "This card features a bold, abstract depiction of Pepe the Frog with an intense, blurred effect. The color palette is dominated by dark greens and reds, creating a stark contrast that emphasizes the character's large, red lips and piercing eyes. The artistic style is surreal and painterly, with a focus on creating a sense of depth and movement.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEBLITZ#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPEBLITZ\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a bold, abstract depiction of Pepe the Frog with an intense, blurred effect. The color palette is dominated by dark greens and reds, creating a stark contrast that emphasizes the character's large, red lips and piercing eyes. The artistic style is surreal and painterly, with a focus on creating a sense of depth and movement.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery.\n- Abstract art style reminiscent of glitch or distortion memes.\n- Use of intense color contrasts to evoke emotion.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.846Z",
+  "sourceFactVersion": 1
+}

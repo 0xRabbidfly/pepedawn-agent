@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "asset": "TUBKING",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 29,
+  "artist": "Ryan D. Anderson",
+  "supply": 69,
+  "issuance": "May 2023",
+  "textOnCard": [
+    "TUB KING"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog meme reference.",
+    "Rubber duck as a symbol of whimsy and bath time fun.",
+    "Suburban backyard setting, reminiscent of traditional Americana."
+  ],
+  "visualSummary": "The card features a classic Pepe the Frog character lounging in a wooden hot tub, wearing yellow swim trunks. The background shows a suburban setting with wooden fences and houses under a vibrant purple sky. The color palette includes rich greens and browns, with a pop of yellow from a rubber duck floating in the tub, giving the scene a nostalgic, cartoonish vibe.",
+  "visualSummaryShort": "The card depicts Pepe the Frog relaxing in a wooden hot tub, surrounded by a suburban landscape. A vibrant purple sky and a floating rubber duck add to the nostalgic, cartoonish atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "hot tub",
+    "suburban",
+    "purple sky",
+    "rubber duck",
+    "yellow swim trunks",
+    "wooden fences",
+    "cartoonish",
+    "nostalgic",
+    "green and brown palette"
+  ],
+  "textKeywords": [
+    "tub",
+    "king"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "hot tub",
+    "suburban",
+    "purple sky",
+    "rubber duck",
+    "yellow swim trunks",
+    "wooden fences",
+    "cartoonish",
+    "nostalgic",
+    "green and brown palette",
+    "tub",
+    "king"
+  ],
+  "embeddingInput": "TUBKING (Fake Rares) - Series 14 Card 29\nArtist: Ryan D. Anderson\nSupply 69 Issued May 2023\nOn-card text: TUB KING\nVisual summary: The card features a classic Pepe the Frog character lounging in a wooden hot tub, wearing yellow swim trunks. The background shows a suburban setting with wooden fences and houses under a vibrant purple sky. The color palette includes rich greens and browns, with a pop of yellow from a rubber duck floating in the tub, giving the scene a nostalgic, cartoonish vibe.\nMemetic references: Classic Pepe the Frog meme reference.; Rubber duck as a symbol of whimsy and bath time fun.; Suburban backyard setting, reminiscent of traditional Americana.",
+  "embeddingBlocks": [
+    {
+      "id": "TUBKING#text",
+      "label": "On-card text",
+      "text": "TUB KING",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "TUBKING#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog meme reference.\nRubber duck as a symbol of whimsy and bath time fun.\nSuburban backyard setting, reminiscent of traditional Americana.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "TUBKING#visual",
+      "label": "Visual summary",
+      "text": "The card features a classic Pepe the Frog character lounging in a wooden hot tub, wearing yellow swim trunks. The background shows a suburban setting with wooden fences and houses under a vibrant purple sky. The color palette includes rich greens and browns, with a pop of yellow from a rubber duck floating in the tub, giving the scene a nostalgic, cartoonish vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "TUBKING#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nTUB KING\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a classic Pepe the Frog character lounging in a wooden hot tub, wearing yellow swim trunks. The background shows a suburban setting with wooden fences and houses under a vibrant purple sky. The color palette includes rich greens and browns, with a pop of yellow from a rubber duck floating in the tub, giving the scene a nostalgic, cartoonish vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog meme reference.\n- Rubber duck as a symbol of whimsy and bath time fun.\n- Suburban backyard setting, reminiscent of traditional Americana.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.164Z",
+  "sourceFactVersion": 1
+}

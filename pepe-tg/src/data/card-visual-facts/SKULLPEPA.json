@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "asset": "SKULLPEPA",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 33,
+  "artist": "Al",
+  "supply": 113,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "RARE ALPHAS TAROT",
+    "SKULL PEPA"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog meets skeleton meme culture.",
+    "Tarot card aesthetics with a twist of crypto mysticism.",
+    "Elements of classic gothic and Victorian illustration styles."
+  ],
+  "visualSummary": "The card features a skeletal Pepe with big, expressive eyes, set against a vintage tarot card design. The color palette is dominated by sepia tones, giving it an old-world, mysterious vibe. The ornate border is filled with intricate patterns and symbols, enhancing the card's mystical allure.",
+  "visualSummaryShort": "The card showcases a skeletal Pepe with large, expressive eyes, framed by an ornate tarot card design. Its sepia tones and intricate patterns create a mysterious and mystical atmosphere.",
+  "visualKeywords": [
+    "skeletal",
+    "pepe",
+    "sepia",
+    "tarot",
+    "ornate",
+    "mystical",
+    "intricate",
+    "vintage",
+    "expressive",
+    "symbols"
+  ],
+  "textKeywords": [
+    "alphas",
+    "tarot",
+    "skull",
+    "pepa"
+  ],
+  "keywords": [
+    "skeletal",
+    "pepe",
+    "sepia",
+    "tarot",
+    "ornate",
+    "mystical",
+    "intricate",
+    "vintage",
+    "expressive",
+    "symbols",
+    "alphas",
+    "skull",
+    "pepa"
+  ],
+  "embeddingInput": "SKULLPEPA (Fake Rares) - Series 6 Card 33\nArtist: Al\nSupply 113 Issued February 2022\nOn-card text: RARE ALPHAS TAROT | SKULL PEPA\nVisual summary: The card features a skeletal Pepe with big, expressive eyes, set against a vintage tarot card design. The color palette is dominated by sepia tones, giving it an old-world, mysterious vibe. The ornate border is filled with intricate patterns and symbols, enhancing the card's mystical allure.\nMemetic references: Pepe the Frog meets skeleton meme culture.; Tarot card aesthetics with a twist of crypto mysticism.; Elements of classic gothic and Victorian illustration styles.",
+  "embeddingBlocks": [
+    {
+      "id": "SKULLPEPA#text",
+      "label": "On-card text",
+      "text": "RARE ALPHAS TAROT | SKULL PEPA",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "SKULLPEPA#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog meets skeleton meme culture.\nTarot card aesthetics with a twist of crypto mysticism.\nElements of classic gothic and Victorian illustration styles.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SKULLPEPA#visual",
+      "label": "Visual summary",
+      "text": "The card features a skeletal Pepe with big, expressive eyes, set against a vintage tarot card design. The color palette is dominated by sepia tones, giving it an old-world, mysterious vibe. The ornate border is filled with intricate patterns and symbols, enhancing the card's mystical allure.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SKULLPEPA#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nRARE ALPHAS TAROT  \nSKULL PEPA\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a skeletal Pepe with big, expressive eyes, set against a vintage tarot card design. The color palette is dominated by sepia tones, giving it an old-world, mysterious vibe. The ornate border is filled with intricate patterns and symbols, enhancing the card's mystical allure.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog meets skeleton meme culture.\n- Tarot card aesthetics with a twist of crypto mysticism.\n- Elements of classic gothic and Victorian illustration styles.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.111Z",
+  "sourceFactVersion": 1
+}

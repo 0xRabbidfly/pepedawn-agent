@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "asset": "BRRRRRRRRRRR",
+  "collection": "Fake Rares",
+  "series": 0,
+  "cardNumber": 3,
+  "artist": "JDog",
+  "supply": 100,
+  "issuance": "March 2020",
+  "textOnCard": [
+    "BRRR"
+  ],
+  "memeticReferences": [
+    "References the \"money printer go brrr\" meme.",
+    "Critiques central banking and monetary policy.",
+    "Includes elements of crypto culture with candlestick charts.",
+    "Wojak character used, common in meme culture."
+  ],
+  "visualSummary": "This animated image features a pink-faced character in a suit, aggressively turning a money printing handle at a desk emblazoned with the \"United States Federal Reserve System\" seal. The background shows a red and green candlestick chart trending downward. The color palette includes stark whites, blacks, greens, and reds, giving a satirical and cartoonish vibe.",
+  "visualSummaryShort": "The card depicts a pink-faced character in a suit turning a money printing handle at a desk with a Federal Reserve seal. The background features a downward trending candlestick chart in red and green, creating a satirical atmosphere.",
+  "visualKeywords": [
+    "pink character",
+    "suit",
+    "money printing",
+    "federal reserve",
+    "candlestick chart",
+    "red",
+    "green",
+    "cartoonish"
+  ],
+  "textKeywords": [
+    "brrr"
+  ],
+  "keywords": [
+    "pink character",
+    "suit",
+    "money printing",
+    "federal reserve",
+    "candlestick chart",
+    "red",
+    "green",
+    "cartoonish",
+    "brrr"
+  ],
+  "embeddingInput": "BRRRRRRRRRRR (Fake Rares) - Series 0 Card 3\nArtist: JDog\nSupply 100 Issued March 2020\nOn-card text: BRRR\nVisual summary: This animated image features a pink-faced character in a suit, aggressively turning a money printing handle at a desk emblazoned with the \"United States Federal Reserve System\" seal. The background shows a red and green candlestick chart trending downward. The color palette includes stark whites, blacks, greens, and reds, giving a satirical and cartoonish vibe.\nMemetic references: References the \"money printer go brrr\" meme.; Critiques central banking and monetary policy.; Includes elements of crypto culture with candlestick charts.; Wojak character used, common in meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "BRRRRRRRRRRR#text",
+      "label": "On-card text",
+      "text": "BRRR",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "BRRRRRRRRRRR#memetic",
+      "label": "Memetic references",
+      "text": "References the \"money printer go brrr\" meme.\nCritiques central banking and monetary policy.\nIncludes elements of crypto culture with candlestick charts.\nWojak character used, common in meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BRRRRRRRRRRR#visual",
+      "label": "Visual summary",
+      "text": "This animated image features a pink-faced character in a suit, aggressively turning a money printing handle at a desk emblazoned with the \"United States Federal Reserve System\" seal. The background shows a red and green candlestick chart trending downward. The color palette includes stark whites, blacks, greens, and reds, giving a satirical and cartoonish vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BRRRRRRRRRRR#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nBRRR\n\n🎨 **VISUAL BREAKDOWN:**\nThis animated image features a pink-faced character in a suit, aggressively turning a money printing handle at a desk emblazoned with the \"United States Federal Reserve System\" seal. The background shows a red and green candlestick chart trending downward. The color palette includes stark whites, blacks, greens, and reds, giving a satirical and cartoonish vibe.\n\n🧬 **MEMETIC DNA:**\n- References the \"money printer go brrr\" meme.\n- Critiques central banking and monetary policy.\n- Includes elements of crypto culture with candlestick charts.\n- Wojak character used, common in meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.330Z",
+  "sourceFactVersion": 1
+}

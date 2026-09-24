@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "asset": "PEPEBILLIONS",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 5,
+  "artist": "Shannon Code",
+  "supply": 95,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "PEPEBILLIONS",
+    "+100 Fake Points +1 Billion Dankness Points"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog characters in a high-stakes, luxurious setting.",
+    "References to wealth and success tropes with the private jet and sleek fashion.",
+    "\"FAKE\" stamp plays on the idea of authenticity in crypto culture.",
+    "Crypto lingo with \"Fake Points\" and \"Dankness Points\" for humor."
+  ],
+  "visualSummary": "The card features a group of green, humanoid figures with Pepe faces, dressed in stylish outfits, standing confidently in front of a private jet. The sky is a gradient of blue and orange, suggesting either dawn or dusk, adding a dramatic flair. A large \"CERTIFIED FAKE\" stamp looms in the background, and the overall composition has a cinematic, action-movie poster vibe.",
+  "visualSummaryShort": "The card showcases a group of green humanoid figures with Pepe faces, confidently posed in front of a private jet. The dramatic blue and orange sky enhances the cinematic feel of the scene.",
+  "visualKeywords": [
+    "pepe",
+    "humanoid",
+    "private jet",
+    "blue sky",
+    "orange sky",
+    "stylish outfits",
+    "dramatic",
+    "cinematic",
+    "confident",
+    "stamp"
+  ],
+  "textKeywords": [
+    "pepebillions",
+    "100",
+    "points",
+    "billion",
+    "dankness"
+  ],
+  "keywords": [
+    "pepe",
+    "humanoid",
+    "private jet",
+    "blue sky",
+    "orange sky",
+    "stylish outfits",
+    "dramatic",
+    "cinematic",
+    "confident",
+    "stamp",
+    "pepebillions",
+    "100",
+    "points",
+    "billion",
+    "dankness"
+  ],
+  "embeddingInput": "PEPEBILLIONS (Fake Rares) - Series 2 Card 5\nArtist: Shannon Code\nSupply 95 Issued October 2021\nOn-card text: PEPEBILLIONS | +100 Fake Points +1 Billion Dankness Points\nVisual summary: The card features a group of green, humanoid figures with Pepe faces, dressed in stylish outfits, standing confidently in front of a private jet. The sky is a gradient of blue and orange, suggesting either dawn or dusk, adding a dramatic flair. A large \"CERTIFIED FAKE\" stamp looms in the background, and the overall composition has a cinematic, action-movie poster vibe.\nMemetic references: Pepe the Frog characters in a high-stakes, luxurious setting.; References to wealth and success tropes with the private jet and sleek fashion.; \"FAKE\" stamp plays on the idea of authenticity in crypto culture.; Crypto lingo with \"Fake Points\" and \"Dankness Points\" for humor.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEBILLIONS#text",
+      "label": "On-card text",
+      "text": "PEPEBILLIONS | +100 Fake Points +1 Billion Dankness Points",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEBILLIONS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog characters in a high-stakes, luxurious setting.\nReferences to wealth and success tropes with the private jet and sleek fashion.\n\"FAKE\" stamp plays on the idea of authenticity in crypto culture.\nCrypto lingo with \"Fake Points\" and \"Dankness Points\" for humor.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEBILLIONS#visual",
+      "label": "Visual summary",
+      "text": "The card features a group of green, humanoid figures with Pepe faces, dressed in stylish outfits, standing confidently in front of a private jet. The sky is a gradient of blue and orange, suggesting either dawn or dusk, adding a dramatic flair. A large \"CERTIFIED FAKE\" stamp looms in the background, and the overall composition has a cinematic, action-movie poster vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEBILLIONS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPEBILLIONS  \n+100 Fake Points +1 Billion Dankness Points\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a group of green, humanoid figures with Pepe faces, dressed in stylish outfits, standing confidently in front of a private jet. The sky is a gradient of blue and orange, suggesting either dawn or dusk, adding a dramatic flair. A large \"CERTIFIED FAKE\" stamp looms in the background, and the overall composition has a cinematic, action-movie poster vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog characters in a high-stakes, luxurious setting.\n- References to wealth and success tropes with the private jet and sleek fashion.\n- \"FAKE\" stamp plays on the idea of authenticity in crypto culture.\n- Crypto lingo with \"Fake Points\" and \"Dankness Points\" for humor.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.845Z",
+  "sourceFactVersion": 1
+}

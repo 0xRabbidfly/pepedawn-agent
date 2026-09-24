@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "asset": "POPOPEPE",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 45,
+  "artist": "Leigha-Beth",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "Popo Pepe, Bcash, Popo Pepe"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a cultural icon.",
+    "Bitcoin references with the symbol and \"Bcash\" text.",
+    "Police theme, possibly hinting at crypto regulation or enforcement.",
+    "The jailed Pepe might symbolize suppression or control."
+  ],
+  "visualSummary": "The scene features two Pepe the Frog characters dressed as police officers, with one holding a Bitcoin symbol. The color palette is dominated by green, black, and blue hues, giving it a cartoonish yet satirical feel. The table displays items like playing cards and a green trash can, set against a police station backdrop.",
+  "visualSummaryShort": "The card depicts two Pepe the Frog characters in police uniforms, one brandishing a Bitcoin symbol. The setting includes a police station backdrop with various items on a table, creating a humorous atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "police",
+    "bitcoin",
+    "green",
+    "black",
+    "blue",
+    "cartoon",
+    "playing cards",
+    "trash can",
+    "satirical"
+  ],
+  "textKeywords": [
+    "popo",
+    "bcash"
+  ],
+  "keywords": [
+    "pepe",
+    "police",
+    "bitcoin",
+    "green",
+    "black",
+    "blue",
+    "cartoon",
+    "playing cards",
+    "trash can",
+    "satirical",
+    "popo",
+    "bcash"
+  ],
+  "embeddingInput": "POPOPEPE (Fake Rares) - Series 1 Card 45\nArtist: Leigha-Beth\nSupply 100 Issued October 2021\nOn-card text: Popo Pepe, Bcash, Popo Pepe\nVisual summary: The scene features two Pepe the Frog characters dressed as police officers, with one holding a Bitcoin symbol. The color palette is dominated by green, black, and blue hues, giving it a cartoonish yet satirical feel. The table displays items like playing cards and a green trash can, set against a police station backdrop.\nMemetic references: Pepe the Frog as a cultural icon.; Bitcoin references with the symbol and \"Bcash\" text.; Police theme, possibly hinting at crypto regulation or enforcement.; The jailed Pepe might symbolize suppression or control.",
+  "embeddingBlocks": [
+    {
+      "id": "POPOPEPE#text",
+      "label": "On-card text",
+      "text": "Popo Pepe, Bcash, Popo Pepe",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "POPOPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a cultural icon.\nBitcoin references with the symbol and \"Bcash\" text.\nPolice theme, possibly hinting at crypto regulation or enforcement.\nThe jailed Pepe might symbolize suppression or control.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "POPOPEPE#visual",
+      "label": "Visual summary",
+      "text": "The scene features two Pepe the Frog characters dressed as police officers, with one holding a Bitcoin symbol. The color palette is dominated by green, black, and blue hues, giving it a cartoonish yet satirical feel. The table displays items like playing cards and a green trash can, set against a police station backdrop.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "POPOPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPopo Pepe, Bcash, Popo Pepe\n\n🎨 **VISUAL BREAKDOWN:**\nThe scene features two Pepe the Frog characters dressed as police officers, with one holding a Bitcoin symbol. The color palette is dominated by green, black, and blue hues, giving it a cartoonish yet satirical feel. The table displays items like playing cards and a green trash can, set against a police station backdrop.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a cultural icon.\n- Bitcoin references with the symbol and \"Bcash\" text.\n- Police theme, possibly hinting at crypto regulation or enforcement.\n- The jailed Pepe might symbolize suppression or control.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.050Z",
+  "sourceFactVersion": 1
+}

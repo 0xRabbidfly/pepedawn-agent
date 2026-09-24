@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "asset": "SILKTOADPEPE",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 34,
+  "artist": "Mr. HODLPIG",
+  "supply": 120,
+  "issuance": "October 2021",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a character named Silk Toad Pepe. The visual elements are not specified.",
+  "visualKeywords": [],
+  "textKeywords": [],
+  "keywords": [],
+  "embeddingInput": "SILKTOADPEPE (Fake Rares) - Series 4 Card 34\nArtist: Mr. HODLPIG\nSupply 120 Issued October 2021\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "SILKTOADPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with this request.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.108Z",
+  "sourceFactVersion": 1
+}

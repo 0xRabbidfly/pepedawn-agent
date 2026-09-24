@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "asset": "FAKEMASTERY",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 38,
+  "artist": "LOVEBEING",
+  "supply": 99,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "MASTER THE ILLUSION",
+    "PRESS START",
+    "OR THE ILLUSION MASTERS YOU"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog as the main character.",
+    "References to retro video game aesthetics with \"PRESS START\".",
+    "Anubis and other eclectic symbols hinting at a blend of mythology and pop culture.",
+    "Glitch art elements creating a digital, matrix-like vibe."
+  ],
+  "visualSummary": "This card explodes with chaotic energy, featuring a central Pepe figure in a digital, glitch-art style. The color palette is a vibrant mix of reds, blues, and greens, creating a psychedelic atmosphere. Surrounding Pepe are various characters and symbols layered in a collage, adding to the visual complexity and depth.",
+  "visualSummaryShort": "The card showcases a central Pepe figure in a vibrant, glitch-art style, surrounded by a chaotic mix of characters and symbols. The psychedelic color palette of reds, blues, and greens enhances the dynamic energy of the composition.",
+  "visualKeywords": [
+    "pepe",
+    "glitch-art",
+    "psychedelic",
+    "collage",
+    "vibrant colors",
+    "chaotic",
+    "symbols",
+    "characters"
+  ],
+  "textKeywords": [
+    "master",
+    "illusion",
+    "press",
+    "start",
+    "masters",
+    "you"
+  ],
+  "keywords": [
+    "pepe",
+    "glitch-art",
+    "psychedelic",
+    "collage",
+    "vibrant colors",
+    "chaotic",
+    "symbols",
+    "characters",
+    "master",
+    "illusion",
+    "press",
+    "start",
+    "masters",
+    "you"
+  ],
+  "embeddingInput": "FAKEMASTERY (Fake Rares) - Series 8 Card 38\nArtist: LOVEBEING\nSupply 99 Issued July 2022\nOn-card text: MASTER THE ILLUSION | PRESS START | OR THE ILLUSION MASTERS YOU\nVisual summary: This card explodes with chaotic energy, featuring a central Pepe figure in a digital, glitch-art style. The color palette is a vibrant mix of reds, blues, and greens, creating a psychedelic atmosphere. Surrounding Pepe are various characters and symbols layered in a collage, adding to the visual complexity and depth.\nMemetic references: Classic Pepe the Frog as the main character.; References to retro video game aesthetics with \"PRESS START\".; Anubis and other eclectic symbols hinting at a blend of mythology and pop culture.; Glitch art elements creating a digital, matrix-like vibe.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEMASTERY#text",
+      "label": "On-card text",
+      "text": "MASTER THE ILLUSION | PRESS START | OR THE ILLUSION MASTERS YOU",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEMASTERY#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog as the main character.\nReferences to retro video game aesthetics with \"PRESS START\".\nAnubis and other eclectic symbols hinting at a blend of mythology and pop culture.\nGlitch art elements creating a digital, matrix-like vibe.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEMASTERY#visual",
+      "label": "Visual summary",
+      "text": "This card explodes with chaotic energy, featuring a central Pepe figure in a digital, glitch-art style. The color palette is a vibrant mix of reds, blues, and greens, creating a psychedelic atmosphere. Surrounding Pepe are various characters and symbols layered in a collage, adding to the visual complexity and depth.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEMASTERY#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nMASTER THE ILLUSION  \nPRESS START  \nOR THE ILLUSION MASTERS YOU\n\n🎨 **VISUAL BREAKDOWN:**\nThis card explodes with chaotic energy, featuring a central Pepe figure in a digital, glitch-art style. The color palette is a vibrant mix of reds, blues, and greens, creating a psychedelic atmosphere. Surrounding Pepe are various characters and symbols layered in a collage, adding to the visual complexity and depth.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog as the main character.\n- References to retro video game aesthetics with \"PRESS START\".\n- Anubis and other eclectic symbols hinting at a blend of mythology and pop culture.\n- Glitch art elements creating a digital, matrix-like vibe.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.528Z",
+  "sourceFactVersion": 1
+}

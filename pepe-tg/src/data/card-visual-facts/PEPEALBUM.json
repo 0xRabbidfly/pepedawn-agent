@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "asset": "PEPEALBUM",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 18,
+  "artist": "Davesta",
+  "supply": 50,
+  "issuance": "February 2024",
+  "textOnCard": [
+    "\"NORMA PEPE\"",
+    "\"SUICIDAL PEPENICS\""
+  ],
+  "memeticReferences": [
+    "References to iconic album covers, creatively Pepe-ified.",
+    "The green hues hint at classic Pepe meme aesthetics.",
+    "\"Suicidal Pepenics\" may play off band names, integrating Pepe into music culture."
+  ],
+  "visualSummary": "The card features a person with green-tinted skin, holding an album cover. The room is dimly lit, with vinyl records stacked around. The color palette is dominated by shades of green and black, giving it a moody and mysterious vibe.",
+  "visualSummaryShort": "The card depicts a person with green-tinted skin in a dimly lit room filled with vinyl records. The overall color palette features shades of green and black, creating a moody atmosphere.",
+  "visualKeywords": [
+    "green skin",
+    "album cover",
+    "dim lighting",
+    "vinyl records",
+    "black palette",
+    "mysterious vibe"
+  ],
+  "textKeywords": [
+    "norma",
+    "suicidal",
+    "pepenics"
+  ],
+  "keywords": [
+    "green skin",
+    "album cover",
+    "dim lighting",
+    "vinyl records",
+    "black palette",
+    "mysterious vibe",
+    "norma",
+    "suicidal",
+    "pepenics"
+  ],
+  "embeddingInput": "PEPEALBUM (Fake Rares) - Series 17 Card 18\nArtist: Davesta\nSupply 50 Issued February 2024\nOn-card text: \"NORMA PEPE\" | \"SUICIDAL PEPENICS\"\nVisual summary: The card features a person with green-tinted skin, holding an album cover. The room is dimly lit, with vinyl records stacked around. The color palette is dominated by shades of green and black, giving it a moody and mysterious vibe.\nMemetic references: References to iconic album covers, creatively Pepe-ified.; The green hues hint at classic Pepe meme aesthetics.; \"Suicidal Pepenics\" may play off band names, integrating Pepe into music culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEALBUM#text",
+      "label": "On-card text",
+      "text": "\"NORMA PEPE\" | \"SUICIDAL PEPENICS\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEALBUM#memetic",
+      "label": "Memetic references",
+      "text": "References to iconic album covers, creatively Pepe-ified.\nThe green hues hint at classic Pepe meme aesthetics.\n\"Suicidal Pepenics\" may play off band names, integrating Pepe into music culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEALBUM#visual",
+      "label": "Visual summary",
+      "text": "The card features a person with green-tinted skin, holding an album cover. The room is dimly lit, with vinyl records stacked around. The color palette is dominated by shades of green and black, giving it a moody and mysterious vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEALBUM#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- \"NORMA PEPE\"\n- \"SUICIDAL PEPENICS\"\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a person with green-tinted skin, holding an album cover. The room is dimly lit, with vinyl records stacked around. The color palette is dominated by shades of green and black, giving it a moody and mysterious vibe.\n\n🧬 **MEMETIC DNA:**\n- References to iconic album covers, creatively Pepe-ified.\n- The green hues hint at classic Pepe meme aesthetics.\n- \"Suicidal Pepenics\" may play off band names, integrating Pepe into music culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.837Z",
+  "sourceFactVersion": 1
+}

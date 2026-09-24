@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "asset": "WATCHINGPEPE",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 40,
+  "artist": "nathansonic",
+  "supply": 56,
+  "issuance": "April 2026",
+  "textOnCard": [
+    "\"ARE YOU NO...\"",
+    "\"arremme\""
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference, a staple in meme culture.",
+    "Glitch art style, nodding to digital and crypto-art aesthetics.",
+    "The phrase \"ARE YOU NO...\" suggests a twist on the famous \"Are you winning, son?\" meme."
+  ],
+  "visualSummary": "This card features a pixelated Pepe the Frog in a glitchy, retro style with a vibrant color palette of purples, greens, and yellows. The composition is layered with digital noise and ornate gold lattice patterns, giving it a chaotic yet structured appearance. The overall aesthetic is reminiscent of early internet art mixed with a psychedelic vibe.",
+  "visualSummaryShort": "The card showcases a pixelated Pepe the Frog with a vibrant color palette of purples, greens, and yellows. It features digital noise and ornate gold lattice patterns, creating a chaotic yet structured aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "pixelated",
+    "glitch",
+    "purple",
+    "green",
+    "yellow",
+    "digital noise",
+    "gold lattice",
+    "psychedelic",
+    "retro"
+  ],
+  "textKeywords": [
+    "are",
+    "you",
+    "arremme"
+  ],
+  "keywords": [
+    "pepe",
+    "pixelated",
+    "glitch",
+    "purple",
+    "green",
+    "yellow",
+    "digital noise",
+    "gold lattice",
+    "psychedelic",
+    "retro",
+    "are",
+    "you",
+    "arremme"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "WATCHINGPEPE (Fake Rares) - Series 18 Card 40\nArtist: nathansonic\nSupply 56 Issued April 2026\nOn-card text: \"ARE YOU NO...\" | \"arremme\"\nVisual summary: This card features a pixelated Pepe the Frog in a glitchy, retro style with a vibrant color palette of purples, greens, and yellows. The composition is layered with digital noise and ornate gold lattice patterns, giving it a chaotic yet structured appearance. The overall aesthetic is reminiscent of early internet art mixed with a psychedelic vibe.\nMemetic references: Classic Pepe the Frog reference, a staple in meme culture.; Glitch art style, nodding to digital and crypto-art aesthetics.; The phrase \"ARE YOU NO...\" suggests a twist on the famous \"Are you winning, son?\" meme.",
+  "embeddingBlocks": [
+    {
+      "id": "WATCHINGPEPE#text",
+      "label": "On-card text",
+      "text": "\"ARE YOU NO...\" | \"arremme\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "WATCHINGPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference, a staple in meme culture.\nGlitch art style, nodding to digital and crypto-art aesthetics.\nThe phrase \"ARE YOU NO...\" suggests a twist on the famous \"Are you winning, son?\" meme.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "WATCHINGPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a pixelated Pepe the Frog in a glitchy, retro style with a vibrant color palette of purples, greens, and yellows. The composition is layered with digital noise and ornate gold lattice patterns, giving it a chaotic yet structured appearance. The overall aesthetic is reminiscent of early internet art mixed with a psychedelic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "WATCHINGPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n\"ARE YOU NO...\"  \n\"arremme\"\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a pixelated Pepe the Frog in a glitchy, retro style with a vibrant color palette of purples, greens, and yellows. The composition is layered with digital noise and ornate gold lattice patterns, giving it a chaotic yet structured appearance. The overall aesthetic is reminiscent of early internet art mixed with a psychedelic vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference, a staple in meme culture.\n- Glitch art style, nodding to digital and crypto-art aesthetics.\n- The phrase \"ARE YOU NO...\" suggests a twist on the famous \"Are you winning, son?\" meme.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:32:12.268Z"
+}

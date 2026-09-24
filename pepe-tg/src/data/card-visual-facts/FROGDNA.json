@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "FROGDNA",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 9,
+  "artist": "MintFace",
+  "supply": 88,
+  "issuance": "September 2025",
+  "textOnCard": [
+    "FROGDNA"
+  ],
+  "memeticReferences": [
+    "References to pixel art and retro gaming aesthetics.",
+    "Possible nod to the crypto theme of \"DNA\" and digital identity.",
+    "The title \"FROGDNA\" hints at Pepe lore and the evolution of meme culture."
+  ],
+  "visualSummary": "The card features a grid of squares in various shades of green and blue, resembling a pixelated mosaic. The color palette transitions smoothly from deep forest greens to vibrant aquamarines, giving a digital and modern feel. The overall style is minimalistic yet striking, with a focus on geometric precision and color gradation.",
+  "visualSummaryShort": "The card showcases a pixelated mosaic of squares in shades of green and blue, creating a modern digital aesthetic. Its minimalistic design emphasizes geometric precision and smooth color transitions.",
+  "visualKeywords": [
+    "mosaic",
+    "green",
+    "blue",
+    "pixelated",
+    "geometric",
+    "modern",
+    "minimalistic",
+    "gradient"
+  ],
+  "textKeywords": [
+    "frogdna"
+  ],
+  "keywords": [
+    "mosaic",
+    "green",
+    "blue",
+    "pixelated",
+    "geometric",
+    "modern",
+    "minimalistic",
+    "gradient",
+    "frogdna"
+  ],
+  "embeddingInput": "FROGDNA (Fake Rares) - Series 18 Card 9\nArtist: MintFace\nSupply 88 Issued September 2025\nOn-card text: FROGDNA\nVisual summary: The card features a grid of squares in various shades of green and blue, resembling a pixelated mosaic. The color palette transitions smoothly from deep forest greens to vibrant aquamarines, giving a digital and modern feel. The overall style is minimalistic yet striking, with a focus on geometric precision and color gradation.\nMemetic references: References to pixel art and retro gaming aesthetics.; Possible nod to the crypto theme of \"DNA\" and digital identity.; The title \"FROGDNA\" hints at Pepe lore and the evolution of meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FROGDNA#text",
+      "label": "On-card text",
+      "text": "FROGDNA",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FROGDNA#memetic",
+      "label": "Memetic references",
+      "text": "References to pixel art and retro gaming aesthetics.\nPossible nod to the crypto theme of \"DNA\" and digital identity.\nThe title \"FROGDNA\" hints at Pepe lore and the evolution of meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FROGDNA#visual",
+      "label": "Visual summary",
+      "text": "The card features a grid of squares in various shades of green and blue, resembling a pixelated mosaic. The color palette transitions smoothly from deep forest greens to vibrant aquamarines, giving a digital and modern feel. The overall style is minimalistic yet striking, with a focus on geometric precision and color gradation.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FROGDNA#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFROGDNA\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a grid of squares in various shades of green and blue, resembling a pixelated mosaic. The color palette transitions smoothly from deep forest greens to vibrant aquamarines, giving a digital and modern feel. The overall style is minimalistic yet striking, with a focus on geometric precision and color gradation.\n\n🧬 **MEMETIC DNA:**\n- References to pixel art and retro gaming aesthetics.\n- Possible nod to the crypto theme of \"DNA\" and digital identity.\n- The title \"FROGDNA\" hints at Pepe lore and the evolution of meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.641Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "asset": "GRIPPED",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 7,
+  "artist": "Hafftka",
+  "supply": 69,
+  "issuance": "July 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "References to the famous artwork \"Saturn Devouring His Son\" by Goya.",
+    "Crypto culture symbolism with the dramatic and chaotic energy.",
+    "Possible nods to themes of power and consumption in the NFT space."
+  ],
+  "visualSummary": "The card features a figure holding a lifeless body with a strikingly intense orange background. The painting style is abstract and expressionistic, with rough, bold brush strokes and a limited color palette primarily consisting of orange, black, and flesh tones. The visual composition evokes a sense of urgency and drama, with the central figure's pose suggesting a moment of emotional intensity.",
+  "visualSummaryShort": "The card depicts a figure clutching a lifeless body against a vivid orange backdrop. The abstract and expressionistic style enhances the dramatic mood with bold brush strokes and a limited color palette.",
+  "visualKeywords": [
+    "orange background",
+    "abstract",
+    "expressionistic",
+    "intense",
+    "figure",
+    "lifeless body",
+    "bold brush strokes",
+    "drama",
+    "emotional intensity"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "orange background",
+    "abstract",
+    "expressionistic",
+    "intense",
+    "figure",
+    "lifeless body",
+    "bold brush strokes",
+    "drama",
+    "emotional intensity"
+  ],
+  "embeddingInput": "GRIPPED (Fake Rares) - Series 15 Card 7\nArtist: Hafftka\nSupply 69 Issued July 2023\nOn-card text: none detected\nVisual summary: The card features a figure holding a lifeless body with a strikingly intense orange background. The painting style is abstract and expressionistic, with rough, bold brush strokes and a limited color palette primarily consisting of orange, black, and flesh tones. The visual composition evokes a sense of urgency and drama, with the central figure's pose suggesting a moment of emotional intensity.\nMemetic references: References to the famous artwork \"Saturn Devouring His Son\" by Goya.; Crypto culture symbolism with the dramatic and chaotic energy.; Possible nods to themes of power and consumption in the NFT space.",
+  "embeddingBlocks": [
+    {
+      "id": "GRIPPED#memetic",
+      "label": "Memetic references",
+      "text": "References to the famous artwork \"Saturn Devouring His Son\" by Goya.\nCrypto culture symbolism with the dramatic and chaotic energy.\nPossible nods to themes of power and consumption in the NFT space.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "GRIPPED#visual",
+      "label": "Visual summary",
+      "text": "The card features a figure holding a lifeless body with a strikingly intense orange background. The painting style is abstract and expressionistic, with rough, bold brush strokes and a limited color palette primarily consisting of orange, black, and flesh tones. The visual composition evokes a sense of urgency and drama, with the central figure's pose suggesting a moment of emotional intensity.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "GRIPPED#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a figure holding a lifeless body with a strikingly intense orange background. The painting style is abstract and expressionistic, with rough, bold brush strokes and a limited color palette primarily consisting of orange, black, and flesh tones. The visual composition evokes a sense of urgency and drama, with the central figure's pose suggesting a moment of emotional intensity.\n\n🧬 **MEMETIC DNA:**\n- References to the famous artwork \"Saturn Devouring His Son\" by Goya.\n- Crypto culture symbolism with the dramatic and chaotic energy.\n- Possible nods to themes of power and consumption in the NFT space.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.670Z",
+  "sourceFactVersion": 1
+}

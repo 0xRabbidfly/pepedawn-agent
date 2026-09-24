@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "TWOFAKE",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 21,
+  "artist": "Abstract Mirror",
+  "supply": 42,
+  "issuance": "November 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "References the duality of emotions in trading: FOMO (fear of missing out) and FUD (fear, uncertainty, doubt).",
+    "Plays into the classic \"Pepe the Frog\" meme with the green half resembling the iconic character.",
+    "The glitch effect nods to the volatile and unpredictable nature of the crypto market."
+  ],
+  "visualSummary": "The card features a glitchy, pixelated depiction of a face split into two halves—one red and one green. The colors are vibrant and clash intensely, enhancing the distorted, digital vibe. The art style is reminiscent of retro video game graphics with a modern twist, set against a dark, textured background.",
+  "visualSummaryShort": "The card showcases a pixelated face split into two contrasting halves, one red and one green. The vibrant colors and retro video game aesthetic create a striking visual impact against a dark background.",
+  "visualKeywords": [
+    "pixelated",
+    "red",
+    "green",
+    "face",
+    "glitchy",
+    "vibrant",
+    "dark background",
+    "retro",
+    "digital",
+    "distorted"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pixelated",
+    "red",
+    "green",
+    "face",
+    "glitchy",
+    "vibrant",
+    "dark background",
+    "retro",
+    "digital",
+    "distorted"
+  ],
+  "embeddingInput": "TWOFAKE (Fake Rares) - Series 12 Card 21\nArtist: Abstract Mirror\nSupply 42 Issued November 2022\nOn-card text: none detected\nVisual summary: The card features a glitchy, pixelated depiction of a face split into two halves—one red and one green. The colors are vibrant and clash intensely, enhancing the distorted, digital vibe. The art style is reminiscent of retro video game graphics with a modern twist, set against a dark, textured background.\nMemetic references: References the duality of emotions in trading: FOMO (fear of missing out) and FUD (fear, uncertainty, doubt).; Plays into the classic \"Pepe the Frog\" meme with the green half resembling the iconic character.; The glitch effect nods to the volatile and unpredictable nature of the crypto market.",
+  "embeddingBlocks": [
+    {
+      "id": "TWOFAKE#memetic",
+      "label": "Memetic references",
+      "text": "References the duality of emotions in trading: FOMO (fear of missing out) and FUD (fear, uncertainty, doubt).\nPlays into the classic \"Pepe the Frog\" meme with the green half resembling the iconic character.\nThe glitch effect nods to the volatile and unpredictable nature of the crypto market.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "TWOFAKE#visual",
+      "label": "Visual summary",
+      "text": "The card features a glitchy, pixelated depiction of a face split into two halves—one red and one green. The colors are vibrant and clash intensely, enhancing the distorted, digital vibe. The art style is reminiscent of retro video game graphics with a modern twist, set against a dark, textured background.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "TWOFAKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a glitchy, pixelated depiction of a face split into two halves—one red and one green. The colors are vibrant and clash intensely, enhancing the distorted, digital vibe. The art style is reminiscent of retro video game graphics with a modern twist, set against a dark, textured background.\n\n🧬 **MEMETIC DNA:**\n- References the duality of emotions in trading: FOMO (fear of missing out) and FUD (fear, uncertainty, doubt).\n- Plays into the classic \"Pepe the Frog\" meme with the green half resembling the iconic character.\n- The glitch effect nods to the volatile and unpredictable nature of the crypto market.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.167Z",
+  "sourceFactVersion": 1
+}

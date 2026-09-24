@@ -13,10 +13,19 @@ on:
         required: false
         default: '18 19 20 21 22 23 24 25'
 
+# The run opens a pull request and merges it itself. Nobody merged these by
+# hand for a year, so production served the same index all along. The guards:
+# the sync refuses a short API response or a retirement wave, and the index
+# integrity test must pass on the file as written. A failed guard fails the
+# run visibly and merges nothing.
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   scrape-new-cards:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -34,11 +43,13 @@ jobs:
           bun install
           bunx playwright install --with-deps chromium
       
-      - name: Scrape new Fake Rares cards
+      # Pass 1 lists cards from the directory's /api/cards (the old /series-N/
+      # pages are gone); pass 2 still needs the browser for pepe.wtf.
+      - name: Add new Fake Rares cards
         working-directory: pepe-tg
         run: |
           SERIES="${{ github.event.inputs.series || '18 19 20 21 22 23 24 25' }}"
-          echo "🔍 Scraping series: $SERIES"
+          echo "🔍 Checking series: $SERIES"
           node scripts/add-new-cards.js $SERIES
 
       # The directory has the last word on artist credits, release dates and
@@ -46,64 +57,113 @@ jobs:
       # and media details. One request. Refuses to write on a suspicious diff.
       - name: Reconcile with fakeraredirectory.com
         working-directory: pepe-tg
-        run: bun scripts/sync-directory.ts
+        run: |
+          bun scripts/sync-directory.ts | tee "$RUNNER_TEMP/sync-report.txt"
+          {
+            echo '### Directory sync'
+            echo '```'
+            cat "$RUNNER_TEMP/sync-report.txt"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # Cards the vision pass has never seen get looked at - a still image,
+      # one vision call, one summary call - and their facts committed next to
+      # the index. Capped per run. Without the secret it lists and exits 0.
+      - name: Look at cards without visual facts
+        working-directory: pepe-tg
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          bun scripts/fv-backfill.ts --limit 25 | tee "$RUNNER_TEMP/fv-report.txt"
+          {
+            echo '### Visual facts'
+            echo '```'
+            tail -n 5 "$RUNNER_TEMP/fv-report.txt"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # The gate before anything is merged: the index as written is whole,
+      # every card has a slot and a media extension, no slot is shared, and
+      # every live card resolves to a URL that is not the dead old site.
+      - name: Check the index is fit to serve
+        working-directory: pepe-tg
+        run: bun test src/__tests__/utils/cardIndexIntegrity.test.ts
 
       - name: Check for changes
         id: check-changes
         run: |
-          if git diff --quiet pepe-tg/src/data/fake-rares-data.json; then
+          git add -N pepe-tg/src/data/card-visual-facts
+          if git diff --quiet -- pepe-tg/src/data/fake-rares-data.json pepe-tg/src/data/card-visual-facts pepe-tg/src/data/card-visual-traits.json pepe-tg/src/data/directory-artists.json; then
             echo "changed=false" >> $GITHUB_OUTPUT
             echo "ℹ️  No new cards found"
           else
             echo "changed=true" >> $GITHUB_OUTPUT
-            # Count unique card names in the diff (both added and modified cards)
-            # The schema key is "asset" - there is no "name" key, so the old
-            # grep matched nothing and every run reported 0 cards.
-            CHANGED=$(git diff pepe-tg/src/data/fake-rares-data.json | grep -E '^\+.*"asset":\s*"' | sed -E 's/.*"asset":\s*"([^"]+)".*/\1/' | sort -u | wc -l || echo "0")
-            CHANGED=$(echo "$CHANGED" | tr -d '\n\r ')
+            # Cards whose record differs from the committed one, plus cards
+            # that vanished. Counting '+ "asset"' lines, as before, missed
+            # every artist or release edit and reported 0.
+            git show HEAD:pepe-tg/src/data/fake-rares-data.json > "$RUNNER_TEMP/before.json"
+            CHANGED=$(bun -e '
+              const [before, after] = await Promise.all([Bun.file(process.argv[1]).json(), Bun.file(process.argv[2]).json()]);
+              const was = new Map(before.map((c) => [c.asset, JSON.stringify(c)]));
+              const now = new Set(after.map((c) => c.asset));
+              let n = 0;
+              for (const c of after) if (was.get(c.asset) !== JSON.stringify(c)) n++;
+              for (const asset of was.keys()) if (!now.has(asset)) n++;
+              console.log(n);
+            ' "$RUNNER_TEMP/before.json" pepe-tg/src/data/fake-rares-data.json)
             echo "cards_added=${CHANGED}" >> $GITHUB_OUTPUT
-            echo "✅ Found ${CHANGED} cards updated"
+            echo "✅ ${CHANGED} cards touched"
           fi
       
-      - name: Create Pull Request
+      - name: Write the pull request body
         if: steps.check-changes.outputs.changed == 'true'
-        uses: peter-evans/create-pull-request@v5
+        run: |
+          {
+            echo '## 🎴 Fake Rares index updated'
+            echo
+            echo 'Daily run: cards from fakeraredirectory.com `/api/cards` (canon), supply from pepe.wtf,'
+            echo "series checked ${{ github.event.inputs.series || '18-25' }}. Merged by the workflow once the"
+            echo 'index integrity test passed. Production picks the file up from master within a day.'
+            echo
+            echo '### Directory sync report'
+            echo '```'
+            cat "$RUNNER_TEMP/sync-report.txt"
+            echo '```'
+            echo
+            echo '### Visual facts'
+            echo '```'
+            tail -n 5 "$RUNNER_TEMP/fv-report.txt"
+            echo '```'
+          } > "$RUNNER_TEMP/pr-body.md"
+
+      - name: Create Pull Request
+        id: cpr
+        if: steps.check-changes.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: 'chore: auto-discovered ${{ steps.check-changes.outputs.cards_added }} Fake Rares card updates'
-          title: '🤖 Auto-discovered ${{ steps.check-changes.outputs.cards_added }} Fake Rares card updates'
-          body: |
-            ## 🎴 Fake Rares Cards Updated
-            
-            The automated scraper found **${{ steps.check-changes.outputs.cards_added }} card(s)** with new data on pepe.wtf!
-            
-            ### 📊 Details
-            - **Scraped from**: fakeraredirectory.com + pepe.wtf
-            - **Series checked**: ${{ github.event.inputs.series || '18-25' }}
-            - **Timestamp**: ${{ github.event.repository.updated_at }}
-            
-            ### ✅ What to do
-            1. Review the changes to `fake-rares-data.json`
-            2. Check that metadata looks correct (artist, supply, issuance)
-            3. Merge this PR to make cards available to users
-            
-            ### 🚀 After Merge
-            - Bot will auto-refresh within 1 hour (or restart to load immediately)
-            - Users can query new cards with `/f <CARD_NAME>`
-            
-            ---
-            *Automated by GitHub Actions*
+          commit-message: 'data: daily card index update (${{ steps.check-changes.outputs.cards_added }} cards touched)'
+          title: '🤖 Daily card index update (${{ steps.check-changes.outputs.cards_added }} cards touched)'
+          body-path: ${{ runner.temp }}/pr-body.md
           branch: auto-update-fake-rares
           delete-branch: true
           labels: |
             automated
             data-update
-      
+
+      # Squash so master gets one data: commit per day. If master is ever
+      # protected with a required review, this step fails and the PR stays
+      # open for a person - the old behaviour, now loud instead of silent.
+      - name: Merge the pull request
+        if: steps.cpr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr merge "${{ steps.cpr.outputs.pull-request-number }}" --squash --delete-branch --repo "${{ github.repository }}"
+
       - name: Summary
         run: |
           if [[ "${{ steps.check-changes.outputs.changed }}" == "true" ]]; then
-            echo "✅ Created PR with ${{ steps.check-changes.outputs.cards_added }} card update(s)"
+            echo "✅ Merged PR #${{ steps.cpr.outputs.pull-request-number }} with ${{ steps.check-changes.outputs.cards_added }} card update(s)"
           else
             echo "ℹ️  No card updates - no action needed"
           fi
-

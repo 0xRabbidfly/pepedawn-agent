@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "asset": "PEPSIPINUP",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 42,
+  "artist": "Darky",
+  "supply": 100,
+  "issuance": "October 2023",
+  "textOnCard": [
+    "PEPSI PIN-UP. Outfit by: Coco Chanel, Pepeville, FL. Leopard mini by: Fakewares, Greensboro, PP. Send your fake ideas to: Fake Scientists, Fake Rares HQ, Kekistan, KC 42069."
+  ],
+  "memeticReferences": [
+    "References to Pepe and Kekistan culture.",
+    "Playful nod to fashion with \"Coco Chanel\" and \"Fakewares.\"",
+    "Comic book and retro pin-up aesthetic."
+  ],
+  "visualSummary": "This card features a vibrant, retro comic book style with bold outlines and a vintage color palette of greens, reds, and oranges. It showcases a pin-up character with feline features, including leopard print attire and ears, exuding a playful and cheeky vibe. The layout is reminiscent of classic pin-up posters, with a focus on the character's dynamic poses.",
+  "visualSummaryShort": "The card displays a playful pin-up character with feline features in a vibrant, retro comic book style. The vintage color palette and dynamic poses enhance the cheeky vibe of the artwork.",
+  "visualKeywords": [
+    "pin-up",
+    "feline",
+    "leopard print",
+    "vintage",
+    "bold outlines",
+    "greens",
+    "reds",
+    "oranges",
+    "dynamic poses",
+    "comic book"
+  ],
+  "textKeywords": [
+    "pepsi",
+    "pin",
+    "outfit",
+    "coco",
+    "chanel",
+    "pepeville",
+    "leopard",
+    "mini",
+    "fakewares",
+    "greensboro",
+    "send",
+    "ideas",
+    "scientists",
+    "kekistan",
+    "42069"
+  ],
+  "keywords": [
+    "pin-up",
+    "feline",
+    "leopard print",
+    "vintage",
+    "bold outlines",
+    "greens",
+    "reds",
+    "oranges",
+    "dynamic poses",
+    "comic book",
+    "pepsi",
+    "pin",
+    "outfit",
+    "coco",
+    "chanel",
+    "pepeville",
+    "leopard",
+    "mini",
+    "fakewares",
+    "greensboro",
+    "send",
+    "ideas",
+    "scientists",
+    "kekistan",
+    "42069"
+  ],
+  "embeddingInput": "PEPSIPINUP (Fake Rares) - Series 16 Card 42\nArtist: Darky\nSupply 100 Issued October 2023\nOn-card text: PEPSI PIN-UP. Outfit by: Coco Chanel, Pepeville, FL. Leopard mini by: Fakewares, Greensboro, PP. Send your fake ideas to: Fake Scientists, Fake Rares HQ, Kekistan, KC 42069.\nVisual summary: This card features a vibrant, retro comic book style with bold outlines and a vintage color palette of greens, reds, and oranges. It showcases a pin-up character with feline features, including leopard print attire and ears, exuding a playful and cheeky vibe. The layout is reminiscent of classic pin-up posters, with a focus on the character's dynamic poses.\nMemetic references: References to Pepe and Kekistan culture.; Playful nod to fashion with \"Coco Chanel\" and \"Fakewares.\"; Comic book and retro pin-up aesthetic.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPSIPINUP#text",
+      "label": "On-card text",
+      "text": "PEPSI PIN-UP. Outfit by: Coco Chanel, Pepeville, FL. Leopard mini by: Fakewares, Greensboro, PP. Send your fake ideas to: Fake Scientists, Fake Rares HQ, Kekistan, KC 42069.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPSIPINUP#memetic",
+      "label": "Memetic references",
+      "text": "References to Pepe and Kekistan culture.\nPlayful nod to fashion with \"Coco Chanel\" and \"Fakewares.\"\nComic book and retro pin-up aesthetic.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPSIPINUP#visual",
+      "label": "Visual summary",
+      "text": "This card features a vibrant, retro comic book style with bold outlines and a vintage color palette of greens, reds, and oranges. It showcases a pin-up character with feline features, including leopard print attire and ears, exuding a playful and cheeky vibe. The layout is reminiscent of classic pin-up posters, with a focus on the character's dynamic poses.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPSIPINUP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPSI PIN-UP. Outfit by: Coco Chanel, Pepeville, FL. Leopard mini by: Fakewares, Greensboro, PP. Send your fake ideas to: Fake Scientists, Fake Rares HQ, Kekistan, KC 42069.\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a vibrant, retro comic book style with bold outlines and a vintage color palette of greens, reds, and oranges. It showcases a pin-up character with feline features, including leopard print attire and ears, exuding a playful and cheeky vibe. The layout is reminiscent of classic pin-up posters, with a focus on the character's dynamic poses.\n\n🧬 **MEMETIC DNA:**\n- References to Pepe and Kekistan culture.\n- Playful nod to fashion with \"Coco Chanel\" and \"Fakewares.\"\n- Comic book and retro pin-up aesthetic.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.027Z",
+  "sourceFactVersion": 1
+}

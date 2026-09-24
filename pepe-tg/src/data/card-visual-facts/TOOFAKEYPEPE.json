@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "TOOFAKEYPEPE",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 8,
+  "artist": "CTC",
+  "supply": 21,
+  "issuance": "August 2025",
+  "textOnCard": [
+    "Too fakey PEPE"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference, a staple in meme culture.",
+    "Play on the concept of \"fake\" or \"counterfeit\" in crypto, poking fun at authenticity.",
+    "Art mimicking art within the card reflects the recursive nature of meme culture."
+  ],
+  "visualSummary": "The card features a vibrant depiction of a green, humanoid figure painting a portrait of Pepe the Frog. The colors are bold and striking, with a mix of greens, blues, and reds. The style is playful and cartoonish, with a touch of surrealism due to the exaggerated features and humorous composition.",
+  "visualSummaryShort": "The card showcases a green humanoid figure painting a portrait of Pepe the Frog in a playful, cartoonish style. Bold colors of green, blue, and red create a vibrant and surreal atmosphere.",
+  "visualKeywords": [
+    "green figure",
+    "pepe the frog",
+    "portrait",
+    "bold colors",
+    "cartoonish",
+    "surrealism",
+    "humorous"
+  ],
+  "textKeywords": [
+    "too",
+    "fakey"
+  ],
+  "keywords": [
+    "green figure",
+    "pepe the frog",
+    "portrait",
+    "bold colors",
+    "cartoonish",
+    "surrealism",
+    "humorous",
+    "too",
+    "fakey"
+  ],
+  "embeddingInput": "TOOFAKEYPEPE (Fake Rares) - Series 18 Card 8\nArtist: CTC\nSupply 21 Issued August 2025\nOn-card text: Too fakey PEPE\nVisual summary: The card features a vibrant depiction of a green, humanoid figure painting a portrait of Pepe the Frog. The colors are bold and striking, with a mix of greens, blues, and reds. The style is playful and cartoonish, with a touch of surrealism due to the exaggerated features and humorous composition.\nMemetic references: Classic Pepe the Frog reference, a staple in meme culture.; Play on the concept of \"fake\" or \"counterfeit\" in crypto, poking fun at authenticity.; Art mimicking art within the card reflects the recursive nature of meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "TOOFAKEYPEPE#text",
+      "label": "On-card text",
+      "text": "Too fakey PEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "TOOFAKEYPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference, a staple in meme culture.\nPlay on the concept of \"fake\" or \"counterfeit\" in crypto, poking fun at authenticity.\nArt mimicking art within the card reflects the recursive nature of meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "TOOFAKEYPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant depiction of a green, humanoid figure painting a portrait of Pepe the Frog. The colors are bold and striking, with a mix of greens, blues, and reds. The style is playful and cartoonish, with a touch of surrealism due to the exaggerated features and humorous composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "TOOFAKEYPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nToo fakey PEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant depiction of a green, humanoid figure painting a portrait of Pepe the Frog. The colors are bold and striking, with a mix of greens, blues, and reds. The style is playful and cartoonish, with a touch of surrealism due to the exaggerated features and humorous composition.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference, a staple in meme culture.\n- Play on the concept of \"fake\" or \"counterfeit\" in crypto, poking fun at authenticity.\n- Art mimicking art within the card reflects the recursive nature of meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.154Z",
+  "sourceFactVersion": 1
+}

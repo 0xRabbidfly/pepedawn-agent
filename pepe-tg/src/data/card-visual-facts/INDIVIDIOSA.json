@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "INDIVIDIOSA",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 19,
+  "artist": "Claire Silver",
+  "supply": 100,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "PEPE INDIVIDIOSA"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog as the central figure.",
+    "Renaissance art style mixed with modern meme culture.",
+    "The name \"Individiosa\" suggests themes of envy or introspection, adding a layer of depth."
+  ],
+  "visualSummary": "The card features Pepe the Frog dressed in a flowing, dark blue robe, standing in a pool of water with a serene, contemplative expression. The background is a mystical, forest-like setting with dark trees and a misty atmosphere. The frame is ornate and golden, reminiscent of classical art, adding an elegant, historical vibe to the meme character.",
+  "visualSummaryShort": "The card depicts Pepe the Frog in a dark blue robe, standing in tranquil water amidst a mystical forest. The ornate golden frame enhances the elegant and historical feel of the image.",
+  "visualKeywords": [
+    "pepe the frog",
+    "dark blue robe",
+    "water",
+    "mystical forest",
+    "dark trees",
+    "misty atmosphere",
+    "golden frame",
+    "elegant",
+    "contemplative",
+    "classical art"
+  ],
+  "textKeywords": [
+    "individiosa"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "dark blue robe",
+    "water",
+    "mystical forest",
+    "dark trees",
+    "misty atmosphere",
+    "golden frame",
+    "elegant",
+    "contemplative",
+    "classical art",
+    "individiosa"
+  ],
+  "embeddingInput": "INDIVIDIOSA (Fake Rares) - Series 8 Card 19\nArtist: Claire Silver\nSupply 100 Issued March 2022\nOn-card text: PEPE INDIVIDIOSA\nVisual summary: The card features Pepe the Frog dressed in a flowing, dark blue robe, standing in a pool of water with a serene, contemplative expression. The background is a mystical, forest-like setting with dark trees and a misty atmosphere. The frame is ornate and golden, reminiscent of classical art, adding an elegant, historical vibe to the meme character.\nMemetic references: Classic Pepe the Frog as the central figure.; Renaissance art style mixed with modern meme culture.; The name \"Individiosa\" suggests themes of envy or introspection, adding a layer of depth.",
+  "embeddingBlocks": [
+    {
+      "id": "INDIVIDIOSA#text",
+      "label": "On-card text",
+      "text": "PEPE INDIVIDIOSA",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "INDIVIDIOSA#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog as the central figure.\nRenaissance art style mixed with modern meme culture.\nThe name \"Individiosa\" suggests themes of envy or introspection, adding a layer of depth.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "INDIVIDIOSA#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog dressed in a flowing, dark blue robe, standing in a pool of water with a serene, contemplative expression. The background is a mystical, forest-like setting with dark trees and a misty atmosphere. The frame is ornate and golden, reminiscent of classical art, adding an elegant, historical vibe to the meme character.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "INDIVIDIOSA#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE INDIVIDIOSA\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog dressed in a flowing, dark blue robe, standing in a pool of water with a serene, contemplative expression. The background is a mystical, forest-like setting with dark trees and a misty atmosphere. The frame is ornate and golden, reminiscent of classical art, adding an elegant, historical vibe to the meme character.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog as the central figure.\n- Renaissance art style mixed with modern meme culture.\n- The name \"Individiosa\" suggests themes of envy or introspection, adding a layer of depth.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.698Z",
+  "sourceFactVersion": 1
+}

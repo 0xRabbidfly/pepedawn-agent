@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "asset": "PEPEBRICKFKR",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 23,
+  "artist": "Mr Hansel",
+  "supply": 32,
+  "issuance": "December 2021",
+  "textOnCard": [
+    "\"MY SECOND WAS A FAKE\"",
+    "\"FALSIFIED PEPE\""
+  ],
+  "memeticReferences": [
+    "References the iconic Pepe meme with a twist on authenticity.",
+    "LEGO-like bricks evoke nostalgia and creativity.",
+    "The text \"FALSIFIED\" and \"FAKE\" play on the themes of originality and imitation in NFT culture."
+  ],
+  "visualSummary": "This card features a vibrant, blocky robot-like figure made from colorful bricks, reminiscent of LEGO structures. The color palette is bold and neon, with dominant shades of pink, yellow, and green creating a visually striking contrast. The figure's eyes are large and cartoonish, adding a playful yet surreal vibe to the composition.",
+  "visualSummaryShort": "The card showcases a vibrant, blocky robot-like figure made from colorful bricks, reminiscent of LEGO. Its bold neon colors and cartoonish eyes create a playful and surreal atmosphere.",
+  "visualKeywords": [
+    "robot",
+    "colorful",
+    "neon",
+    "pink",
+    "yellow",
+    "green",
+    "blocky",
+    "playful",
+    "surreal"
+  ],
+  "textKeywords": [
+    "second",
+    "was",
+    "falsified"
+  ],
+  "keywords": [
+    "robot",
+    "colorful",
+    "neon",
+    "pink",
+    "yellow",
+    "green",
+    "blocky",
+    "playful",
+    "surreal",
+    "second",
+    "was",
+    "falsified"
+  ],
+  "embeddingInput": "PEPEBRICKFKR (Fake Rares) - Series 5 Card 23\nArtist: Mr Hansel\nSupply 32 Issued December 2021\nOn-card text: \"MY SECOND WAS A FAKE\" | \"FALSIFIED PEPE\"\nVisual summary: This card features a vibrant, blocky robot-like figure made from colorful bricks, reminiscent of LEGO structures. The color palette is bold and neon, with dominant shades of pink, yellow, and green creating a visually striking contrast. The figure's eyes are large and cartoonish, adding a playful yet surreal vibe to the composition.\nMemetic references: References the iconic Pepe meme with a twist on authenticity.; LEGO-like bricks evoke nostalgia and creativity.; The text \"FALSIFIED\" and \"FAKE\" play on the themes of originality and imitation in NFT culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEBRICKFKR#text",
+      "label": "On-card text",
+      "text": "\"MY SECOND WAS A FAKE\" | \"FALSIFIED PEPE\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEBRICKFKR#memetic",
+      "label": "Memetic references",
+      "text": "References the iconic Pepe meme with a twist on authenticity.\nLEGO-like bricks evoke nostalgia and creativity.\nThe text \"FALSIFIED\" and \"FAKE\" play on the themes of originality and imitation in NFT culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEBRICKFKR#visual",
+      "label": "Visual summary",
+      "text": "This card features a vibrant, blocky robot-like figure made from colorful bricks, reminiscent of LEGO structures. The color palette is bold and neon, with dominant shades of pink, yellow, and green creating a visually striking contrast. The figure's eyes are large and cartoonish, adding a playful yet surreal vibe to the composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEBRICKFKR#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- \"MY SECOND WAS A FAKE\"\n- \"FALSIFIED PEPE\"\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a vibrant, blocky robot-like figure made from colorful bricks, reminiscent of LEGO structures. The color palette is bold and neon, with dominant shades of pink, yellow, and green creating a visually striking contrast. The figure's eyes are large and cartoonish, adding a playful yet surreal vibe to the composition.\n\n🧬 **MEMETIC DNA:**\n- References the iconic Pepe meme with a twist on authenticity.\n- LEGO-like bricks evoke nostalgia and creativity.\n- The text \"FALSIFIED\" and \"FAKE\" play on the themes of originality and imitation in NFT culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.848Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "asset": "RAREORANGE",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 35,
+  "artist": "Abstract Mirror",
+  "supply": 21,
+  "issuance": "June 2023",
+  "textOnCard": [
+    "RARE ORANGE",
+    "21 MILLION BITCOIN : 21 EDITIONS",
+    "THE CREATOR OF ORANGE. ONE OF THE MOST ORANGE PEPES IN EXISTENCE."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central meme figure.",
+    "Bitcoin references with \"21 Million Bitcoin\" and Bitcoin symbols.",
+    "The orange color theme plays on the \"orange pill\" concept in crypto culture.",
+    "Wojak icon in the bottom right with a Bitcoin shirt, adding to the meme lore."
+  ],
+  "visualSummary": "This card features an orange-hued Pepe the Frog dressed in a suit, exuding a professional vibe with a hint of absurdity. The background is filled with binary code and Bitcoin symbols, creating a digital and crypto-centric atmosphere. The color palette is dominated by shades of orange, brown, and black, giving it a bold and striking appearance.",
+  "visualSummaryShort": "The card showcases an orange Pepe the Frog in a suit against a backdrop of binary code and Bitcoin symbols, creating a digital atmosphere. The dominant colors are orange, brown, and black, contributing to a bold visual impact.",
+  "visualKeywords": [
+    "pepe the frog",
+    "orange",
+    "suit",
+    "binary code",
+    "bitcoin",
+    "digital",
+    "bold colors",
+    "absurdity"
+  ],
+  "textKeywords": [
+    "orange",
+    "million",
+    "bitcoin",
+    "editions",
+    "creator",
+    "one",
+    "pepes",
+    "existence"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "orange",
+    "suit",
+    "binary code",
+    "bitcoin",
+    "digital",
+    "bold colors",
+    "absurdity",
+    "million",
+    "editions",
+    "creator",
+    "one",
+    "pepes",
+    "existence"
+  ],
+  "embeddingInput": "RAREORANGE (Fake Rares) - Series 15 Card 35\nArtist: Abstract Mirror\nSupply 21 Issued June 2023\nOn-card text: RARE ORANGE | 21 MILLION BITCOIN : 21 EDITIONS | THE CREATOR OF ORANGE. ONE OF THE MOST ORANGE PEPES IN EXISTENCE.\nVisual summary: This card features an orange-hued Pepe the Frog dressed in a suit, exuding a professional vibe with a hint of absurdity. The background is filled with binary code and Bitcoin symbols, creating a digital and crypto-centric atmosphere. The color palette is dominated by shades of orange, brown, and black, giving it a bold and striking appearance.\nMemetic references: Pepe the Frog as a central meme figure.; Bitcoin references with \"21 Million Bitcoin\" and Bitcoin symbols.; The orange color theme plays on the \"orange pill\" concept in crypto culture.; Wojak icon in the bottom right with a Bitcoin shirt, adding to the meme lore.",
+  "embeddingBlocks": [
+    {
+      "id": "RAREORANGE#text",
+      "label": "On-card text",
+      "text": "RARE ORANGE | 21 MILLION BITCOIN : 21 EDITIONS | THE CREATOR OF ORANGE. ONE OF THE MOST ORANGE PEPES IN EXISTENCE.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "RAREORANGE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central meme figure.\nBitcoin references with \"21 Million Bitcoin\" and Bitcoin symbols.\nThe orange color theme plays on the \"orange pill\" concept in crypto culture.\nWojak icon in the bottom right with a Bitcoin shirt, adding to the meme lore.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RAREORANGE#visual",
+      "label": "Visual summary",
+      "text": "This card features an orange-hued Pepe the Frog dressed in a suit, exuding a professional vibe with a hint of absurdity. The background is filled with binary code and Bitcoin symbols, creating a digital and crypto-centric atmosphere. The color palette is dominated by shades of orange, brown, and black, giving it a bold and striking appearance.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RAREORANGE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nRARE ORANGE  \n21 MILLION BITCOIN : 21 EDITIONS  \nTHE CREATOR OF ORANGE. ONE OF THE MOST ORANGE PEPES IN EXISTENCE.\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features an orange-hued Pepe the Frog dressed in a suit, exuding a professional vibe with a hint of absurdity. The background is filled with binary code and Bitcoin symbols, creating a digital and crypto-centric atmosphere. The color palette is dominated by shades of orange, brown, and black, giving it a bold and striking appearance.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central meme figure.\n- Bitcoin references with \"21 Million Bitcoin\" and Bitcoin symbols.\n- The orange color theme plays on the \"orange pill\" concept in crypto culture.\n- Wojak icon in the bottom right with a Bitcoin shirt, adding to the meme lore.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.069Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "FAKESTARE",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 23,
+  "artist": "DesktopCommando",
+  "supply": 21,
+  "issuance": "August 2022",
+  "textOnCard": [
+    "If you stare into the abyss...",
+    "...Pepe stares back at you."
+  ],
+  "memeticReferences": [
+    "Reference to Pepe the Frog, a central figure in meme culture.",
+    "Plays on the famous Nietzsche quote about staring into the abyss.",
+    "Evokes the mystery and allure of the crypto space."
+  ],
+  "visualSummary": "The card features an intricate pattern of green digital noise or static, reminiscent of a pixelated texture. The text is placed at the bottom in white, contrasting with the dark green background. The overall style is minimalistic yet captivating, drawing the viewer into its enigmatic depth.",
+  "visualSummaryShort": "The card showcases a captivating pattern of green digital noise against a dark green background. The minimalistic design draws the viewer in with its intriguing depth.",
+  "visualKeywords": [
+    "green noise",
+    "static",
+    "pixelated",
+    "minimalistic",
+    "dark background",
+    "white text"
+  ],
+  "textKeywords": [
+    "you",
+    "stare",
+    "abyss",
+    "stares",
+    "back"
+  ],
+  "keywords": [
+    "green noise",
+    "static",
+    "pixelated",
+    "minimalistic",
+    "dark background",
+    "white text",
+    "you",
+    "stare",
+    "abyss",
+    "stares",
+    "back"
+  ],
+  "embeddingInput": "FAKESTARE (Fake Rares) - Series 13 Card 23\nArtist: DesktopCommando\nSupply 21 Issued August 2022\nOn-card text: If you stare into the abyss... | ...Pepe stares back at you.\nVisual summary: The card features an intricate pattern of green digital noise or static, reminiscent of a pixelated texture. The text is placed at the bottom in white, contrasting with the dark green background. The overall style is minimalistic yet captivating, drawing the viewer into its enigmatic depth.\nMemetic references: Reference to Pepe the Frog, a central figure in meme culture.; Plays on the famous Nietzsche quote about staring into the abyss.; Evokes the mystery and allure of the crypto space.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKESTARE#text",
+      "label": "On-card text",
+      "text": "If you stare into the abyss... | ...Pepe stares back at you.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKESTARE#memetic",
+      "label": "Memetic references",
+      "text": "Reference to Pepe the Frog, a central figure in meme culture.\nPlays on the famous Nietzsche quote about staring into the abyss.\nEvokes the mystery and allure of the crypto space.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKESTARE#visual",
+      "label": "Visual summary",
+      "text": "The card features an intricate pattern of green digital noise or static, reminiscent of a pixelated texture. The text is placed at the bottom in white, contrasting with the dark green background. The overall style is minimalistic yet captivating, drawing the viewer into its enigmatic depth.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKESTARE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nIf you stare into the abyss...  \n...Pepe stares back at you.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features an intricate pattern of green digital noise or static, reminiscent of a pixelated texture. The text is placed at the bottom in white, contrasting with the dark green background. The overall style is minimalistic yet captivating, drawing the viewer into its enigmatic depth.\n\n🧬 **MEMETIC DNA:**\n- Reference to Pepe the Frog, a central figure in meme culture.\n- Plays on the famous Nietzsche quote about staring into the abyss.\n- Evokes the mystery and allure of the crypto space.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.579Z",
+  "sourceFactVersion": 1
+}

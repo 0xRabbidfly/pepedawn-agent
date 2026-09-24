@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "asset": "PEPEFARTHING",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 50,
+  "artist": "Fawkek",
+  "supply": 42,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "PEPE FARTHING. THE PEPE WTF FEELS GOOD MAN."
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog character, a staple of meme culture.",
+    "References to the \"Feels Good Man\" meme.",
+    "Vintage cycling and transportation theme.",
+    "Playful nod to historical posters and designs."
+  ],
+  "visualSummary": "The card features Pepe the Frog joyfully riding a penny-farthing bicycle along a picturesque path beside a river. The color palette is vibrant, with bold greens, reds, and blues dominating the scene. The style is reminiscent of vintage posters, with intricate border details and a playful, nostalgic vibe.",
+  "visualSummaryShort": "The card depicts Pepe the Frog happily riding a penny-farthing bicycle next to a river. It features a vibrant color palette with bold greens, reds, and blues, evoking a nostalgic atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "penny-farthing",
+    "river",
+    "vibrant colors",
+    "vintage style",
+    "nostalgic",
+    "playful",
+    "intricate border"
+  ],
+  "textKeywords": [
+    "farthing",
+    "wtf",
+    "feels",
+    "good",
+    "man"
+  ],
+  "keywords": [
+    "pepe",
+    "penny-farthing",
+    "river",
+    "vibrant colors",
+    "vintage style",
+    "nostalgic",
+    "playful",
+    "intricate border",
+    "farthing",
+    "wtf",
+    "feels",
+    "good",
+    "man"
+  ],
+  "embeddingInput": "PEPEFARTHING (Fake Rares) - Series 10 Card 50\nArtist: Fawkek\nSupply 42 Issued September 2022\nOn-card text: PEPE FARTHING. THE PEPE WTF FEELS GOOD MAN.\nVisual summary: The card features Pepe the Frog joyfully riding a penny-farthing bicycle along a picturesque path beside a river. The color palette is vibrant, with bold greens, reds, and blues dominating the scene. The style is reminiscent of vintage posters, with intricate border details and a playful, nostalgic vibe.\nMemetic references: Classic Pepe the Frog character, a staple of meme culture.; References to the \"Feels Good Man\" meme.; Vintage cycling and transportation theme.; Playful nod to historical posters and designs.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEFARTHING#text",
+      "label": "On-card text",
+      "text": "PEPE FARTHING. THE PEPE WTF FEELS GOOD MAN.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEFARTHING#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog character, a staple of meme culture.\nReferences to the \"Feels Good Man\" meme.\nVintage cycling and transportation theme.\nPlayful nod to historical posters and designs.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEFARTHING#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog joyfully riding a penny-farthing bicycle along a picturesque path beside a river. The color palette is vibrant, with bold greens, reds, and blues dominating the scene. The style is reminiscent of vintage posters, with intricate border details and a playful, nostalgic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEFARTHING#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE FARTHING. THE PEPE WTF FEELS GOOD MAN.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog joyfully riding a penny-farthing bicycle along a picturesque path beside a river. The color palette is vibrant, with bold greens, reds, and blues dominating the scene. The style is reminiscent of vintage posters, with intricate border details and a playful, nostalgic vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog character, a staple of meme culture.\n- References to the \"Feels Good Man\" meme.\n- Vintage cycling and transportation theme.\n- Playful nod to historical posters and designs.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.882Z",
+  "sourceFactVersion": 1
+}

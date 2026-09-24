@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "NOFKSXINPEPE",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 38,
+  "artist": "Lord Jamie V. Shill",
+  "supply": 10000,
+  "issuance": "November 2023",
+  "textOnCard": [
+    "NOFKSXIN PEPE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog green face reference.",
+    "Political satire element with the podium and communist symbol.",
+    "Parody of a political figure's iconic pose."
+  ],
+  "visualSummary": "The card features a grayscale drawing of a figure at a podium with a prominent red and green color contrast on the face and hands. The background is minimalist, focusing on the central figure who is depicted with a green face, a nod to Pepe the Frog, and is gesturing assertively. The podium displays a large communist symbol, adding a political layer to the image.",
+  "visualSummaryShort": "The card showcases a grayscale figure at a podium with a striking red and green contrast on the face and hands. The minimalist background emphasizes the assertive gesture of the figure, reminiscent of Pepe the Frog.",
+  "visualKeywords": [
+    "grayscale",
+    "red",
+    "green",
+    "podium",
+    "communist symbol",
+    "minimalist",
+    "assertive gesture",
+    "pepe the frog"
+  ],
+  "textKeywords": [
+    "nofksxin"
+  ],
+  "keywords": [
+    "grayscale",
+    "red",
+    "green",
+    "podium",
+    "communist symbol",
+    "minimalist",
+    "assertive gesture",
+    "pepe the frog",
+    "nofksxin"
+  ],
+  "embeddingInput": "NOFKSXINPEPE (Fake Rares) - Series 16 Card 38\nArtist: Lord Jamie V. Shill\nSupply 10000 Issued November 2023\nOn-card text: NOFKSXIN PEPE\nVisual summary: The card features a grayscale drawing of a figure at a podium with a prominent red and green color contrast on the face and hands. The background is minimalist, focusing on the central figure who is depicted with a green face, a nod to Pepe the Frog, and is gesturing assertively. The podium displays a large communist symbol, adding a political layer to the image.\nMemetic references: Pepe the Frog green face reference.; Political satire element with the podium and communist symbol.; Parody of a political figure's iconic pose.",
+  "embeddingBlocks": [
+    {
+      "id": "NOFKSXINPEPE#text",
+      "label": "On-card text",
+      "text": "NOFKSXIN PEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "NOFKSXINPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog green face reference.\nPolitical satire element with the podium and communist symbol.\nParody of a political figure's iconic pose.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "NOFKSXINPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a grayscale drawing of a figure at a podium with a prominent red and green color contrast on the face and hands. The background is minimalist, focusing on the central figure who is depicted with a green face, a nod to Pepe the Frog, and is gesturing assertively. The podium displays a large communist symbol, adding a political layer to the image.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "NOFKSXINPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nNOFKSXIN PEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a grayscale drawing of a figure at a podium with a prominent red and green color contrast on the face and hands. The background is minimalist, focusing on the central figure who is depicted with a green face, a nod to Pepe the Frog, and is gesturing assertively. The podium displays a large communist symbol, adding a political layer to the image.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog green face reference.\n- Political satire element with the podium and communist symbol.\n- Parody of a political figure's iconic pose.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.798Z",
+  "sourceFactVersion": 1
+}

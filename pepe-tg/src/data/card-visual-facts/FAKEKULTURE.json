@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "asset": "FAKEKULTURE",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 12,
+  "artist": "Saed",
+  "supply": 21,
+  "issuance": "February 2023",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a vibrant and colorful design with abstract shapes. The overall mood is energetic and playful.",
+  "visualKeywords": [
+    "colorful",
+    "abstract",
+    "energetic",
+    "playful"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "colorful",
+    "abstract",
+    "energetic",
+    "playful"
+  ],
+  "embeddingInput": "FAKEKULTURE (Fake Rares) - Series 14 Card 12\nArtist: Saed\nSupply 21 Issued February 2023\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEKULTURE#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.521Z",
+  "sourceFactVersion": 1
+}

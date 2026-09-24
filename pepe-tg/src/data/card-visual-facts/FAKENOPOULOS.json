@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "FAKENOPOULOS",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 29,
+  "artist": "Yotet",
+  "supply": 21,
+  "issuance": "April 2022",
+  "textOnCard": [
+    "FAKENOPOULOS",
+    "FAKE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in a business suit, a nod to internet meme culture.",
+    "The \"FAKE\" theme plays on the concept of authenticity and counterfeits in the NFT space.",
+    "The card's tattered appearance echoes the idea of vintage or well-worn collectibles."
+  ],
+  "visualSummary": "The card features a distressed, worn-out look with a crumpled texture, emphasizing its \"fake\" nature. Pepe the Frog is depicted in a suit, smoking a cigarette, against a background of soft orange and pink hues, creating a contrast between the formal and the chaotic. The overall style blends elements of street art and trading card aesthetics, with rough, hand-drawn lines and vibrant colors.",
+  "visualSummaryShort": "The card showcases Pepe the Frog in a suit, smoking a cigarette, set against a soft orange and pink background. Its distressed texture and vibrant colors reflect a blend of street art and trading card styles.",
+  "visualKeywords": [
+    "pepe the frog",
+    "suit",
+    "cigarette",
+    "orange background",
+    "pink background",
+    "distressed texture",
+    "vibrant colors",
+    "street art",
+    "hand-drawn",
+    "chaotic"
+  ],
+  "textKeywords": [
+    "fakenopoulos"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "suit",
+    "cigarette",
+    "orange background",
+    "pink background",
+    "distressed texture",
+    "vibrant colors",
+    "street art",
+    "hand-drawn",
+    "chaotic",
+    "fakenopoulos"
+  ],
+  "embeddingInput": "FAKENOPOULOS (Fake Rares) - Series 7 Card 29\nArtist: Yotet\nSupply 21 Issued April 2022\nOn-card text: FAKENOPOULOS | FAKE\nVisual summary: The card features a distressed, worn-out look with a crumpled texture, emphasizing its \"fake\" nature. Pepe the Frog is depicted in a suit, smoking a cigarette, against a background of soft orange and pink hues, creating a contrast between the formal and the chaotic. The overall style blends elements of street art and trading card aesthetics, with rough, hand-drawn lines and vibrant colors.\nMemetic references: Pepe the Frog in a business suit, a nod to internet meme culture.; The \"FAKE\" theme plays on the concept of authenticity and counterfeits in the NFT space.; The card's tattered appearance echoes the idea of vintage or well-worn collectibles.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKENOPOULOS#text",
+      "label": "On-card text",
+      "text": "FAKENOPOULOS | FAKE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKENOPOULOS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in a business suit, a nod to internet meme culture.\nThe \"FAKE\" theme plays on the concept of authenticity and counterfeits in the NFT space.\nThe card's tattered appearance echoes the idea of vintage or well-worn collectibles.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKENOPOULOS#visual",
+      "label": "Visual summary",
+      "text": "The card features a distressed, worn-out look with a crumpled texture, emphasizing its \"fake\" nature. Pepe the Frog is depicted in a suit, smoking a cigarette, against a background of soft orange and pink hues, creating a contrast between the formal and the chaotic. The overall style blends elements of street art and trading card aesthetics, with rough, hand-drawn lines and vibrant colors.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKENOPOULOS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKENOPOULOS  \nFAKE  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a distressed, worn-out look with a crumpled texture, emphasizing its \"fake\" nature. Pepe the Frog is depicted in a suit, smoking a cigarette, against a background of soft orange and pink hues, creating a contrast between the formal and the chaotic. The overall style blends elements of street art and trading card aesthetics, with rough, hand-drawn lines and vibrant colors.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in a business suit, a nod to internet meme culture.\n- The \"FAKE\" theme plays on the concept of authenticity and counterfeits in the NFT space.\n- The card's tattered appearance echoes the idea of vintage or well-worn collectibles.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.537Z",
+  "sourceFactVersion": 1
+}

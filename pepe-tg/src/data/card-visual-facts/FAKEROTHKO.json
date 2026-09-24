@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "FAKEROTHKO",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 43,
+  "artist": "VVD",
+  "supply": 100,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "FAKEROTHKO"
+  ],
+  "memeticReferences": [
+    "Parody of Mark Rothko's iconic art style.",
+    "Plays on the concept of authenticity in the NFT space.",
+    "References the blending of high art and meme culture."
+  ],
+  "visualSummary": "The card features a minimalist composition with two rectangular blocks of color, one white and one red, set against a dark green background. The style mimics Mark Rothko’s abstract expressionism, with soft, blurred edges and a contemplative simplicity. The color palette is stark yet harmonious, creating a bold visual contrast.",
+  "visualSummaryShort": "The card showcases a minimalist design with two color blocks, one white and one red, against a dark green backdrop. The abstract style evokes a sense of contemplation through its soft edges and bold contrast.",
+  "visualKeywords": [
+    "minimalist",
+    "color blocks",
+    "white",
+    "red",
+    "dark green",
+    "abstract",
+    "soft edges",
+    "bold contrast"
+  ],
+  "textKeywords": [
+    "fakerothko"
+  ],
+  "keywords": [
+    "minimalist",
+    "color blocks",
+    "white",
+    "red",
+    "dark green",
+    "abstract",
+    "soft edges",
+    "bold contrast",
+    "fakerothko"
+  ],
+  "embeddingInput": "FAKEROTHKO (Fake Rares) - Series 6 Card 43\nArtist: VVD\nSupply 100 Issued February 2022\nOn-card text: FAKEROTHKO\nVisual summary: The card features a minimalist composition with two rectangular blocks of color, one white and one red, set against a dark green background. The style mimics Mark Rothko’s abstract expressionism, with soft, blurred edges and a contemplative simplicity. The color palette is stark yet harmonious, creating a bold visual contrast.\nMemetic references: Parody of Mark Rothko's iconic art style.; Plays on the concept of authenticity in the NFT space.; References the blending of high art and meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEROTHKO#text",
+      "label": "On-card text",
+      "text": "FAKEROTHKO",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEROTHKO#memetic",
+      "label": "Memetic references",
+      "text": "Parody of Mark Rothko's iconic art style.\nPlays on the concept of authenticity in the NFT space.\nReferences the blending of high art and meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEROTHKO#visual",
+      "label": "Visual summary",
+      "text": "The card features a minimalist composition with two rectangular blocks of color, one white and one red, set against a dark green background. The style mimics Mark Rothko’s abstract expressionism, with soft, blurred edges and a contemplative simplicity. The color palette is stark yet harmonious, creating a bold visual contrast.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEROTHKO#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKEROTHKO\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a minimalist composition with two rectangular blocks of color, one white and one red, set against a dark green background. The style mimics Mark Rothko’s abstract expressionism, with soft, blurred edges and a contemplative simplicity. The color palette is stark yet harmonious, creating a bold visual contrast.\n\n🧬 **MEMETIC DNA:**\n- Parody of Mark Rothko's iconic art style.\n- Plays on the concept of authenticity in the NFT space.\n- References the blending of high art and meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.570Z",
+  "sourceFactVersion": 1
+}

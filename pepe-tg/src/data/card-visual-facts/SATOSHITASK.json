@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "asset": "SATOSHITASK",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 12,
+  "artist": "RAHVO",
+  "supply": 125,
+  "issuance": "October 2024",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog references through the green faces.",
+    "Bitcoin symbol representing crypto culture.",
+    "Lab coats suggest a nod to the \"scientific\" or \"innovative\" nature of blockchain technology."
+  ],
+  "visualSummary": "This card features two figures with green faces, reminiscent of Pepe the Frog, standing against a textured red background. They are dressed in white lab coats, with one holding a large silver coin bearing the Bitcoin logo. The use of bold colors and cartoonish outlines gives it a playful, comic-book style.",
+  "visualSummaryShort": "The card showcases two green-faced figures in white lab coats against a textured red background. One figure holds a large silver Bitcoin coin, contributing to its playful, comic-book style.",
+  "visualKeywords": [
+    "green faces",
+    "red background",
+    "white lab coats",
+    "bitcoin",
+    "comic-book style",
+    "bold colors"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "green faces",
+    "red background",
+    "white lab coats",
+    "bitcoin",
+    "comic-book style",
+    "bold colors"
+  ],
+  "embeddingInput": "SATOSHITASK (Fake Rares) - Series 18 Card 12\nArtist: RAHVO\nSupply 125 Issued October 2024\nOn-card text: none detected\nVisual summary: This card features two figures with green faces, reminiscent of Pepe the Frog, standing against a textured red background. They are dressed in white lab coats, with one holding a large silver coin bearing the Bitcoin logo. The use of bold colors and cartoonish outlines gives it a playful, comic-book style.\nMemetic references: Pepe the Frog references through the green faces.; Bitcoin symbol representing crypto culture.; Lab coats suggest a nod to the \"scientific\" or \"innovative\" nature of blockchain technology.",
+  "embeddingBlocks": [
+    {
+      "id": "SATOSHITASK#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references through the green faces.\nBitcoin symbol representing crypto culture.\nLab coats suggest a nod to the \"scientific\" or \"innovative\" nature of blockchain technology.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SATOSHITASK#visual",
+      "label": "Visual summary",
+      "text": "This card features two figures with green faces, reminiscent of Pepe the Frog, standing against a textured red background. They are dressed in white lab coats, with one holding a large silver coin bearing the Bitcoin logo. The use of bold colors and cartoonish outlines gives it a playful, comic-book style.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SATOSHITASK#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features two figures with green faces, reminiscent of Pepe the Frog, standing against a textured red background. They are dressed in white lab coats, with one holding a large silver coin bearing the Bitcoin logo. The use of bold colors and cartoonish outlines gives it a playful, comic-book style.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references through the green faces.\n- Bitcoin symbol representing crypto culture.\n- Lab coats suggest a nod to the \"scientific\" or \"innovative\" nature of blockchain technology.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.099Z",
+  "sourceFactVersion": 1
+}

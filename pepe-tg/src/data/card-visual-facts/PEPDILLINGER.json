@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "PEPDILLINGER",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 27,
+  "artist": "Aera One",
+  "supply": 100,
+  "issuance": "December 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Bullet holes evoke classic gangster or heist imagery.",
+    "Pepe the Frog, a staple in meme culture and crypto communities.",
+    "The eye peeking through adds a playful twist to the usual Pepe lore."
+  ],
+  "visualSummary": "The card features a wooden surface with three bullet holes, one of which reveals a green Pepe eye peeking through. The color palette is earthy and muted, with browns dominating the wooden texture and a pop of green from Pepe's eye. The style is a blend of realism and cartoonish elements, creating a humorous yet slightly ominous vibe.",
+  "visualSummaryShort": "The card showcases a wooden surface marked by three bullet holes, with a green Pepe eye peeking through one of them. The earthy color palette combines browns and a vibrant green, creating a humorous yet slightly ominous atmosphere.",
+  "visualKeywords": [
+    "wooden surface",
+    "bullet holes",
+    "green eye",
+    "earthy colors",
+    "realism",
+    "cartoonish",
+    "humorous",
+    "ominous"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "wooden surface",
+    "bullet holes",
+    "green eye",
+    "earthy colors",
+    "realism",
+    "cartoonish",
+    "humorous",
+    "ominous"
+  ],
+  "embeddingInput": "PEPDILLINGER (Fake Rares) - Series 4 Card 27\nArtist: Aera One\nSupply 100 Issued December 2021\nOn-card text: none detected\nVisual summary: The card features a wooden surface with three bullet holes, one of which reveals a green Pepe eye peeking through. The color palette is earthy and muted, with browns dominating the wooden texture and a pop of green from Pepe's eye. The style is a blend of realism and cartoonish elements, creating a humorous yet slightly ominous vibe.\nMemetic references: Bullet holes evoke classic gangster or heist imagery.; Pepe the Frog, a staple in meme culture and crypto communities.; The eye peeking through adds a playful twist to the usual Pepe lore.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPDILLINGER#memetic",
+      "label": "Memetic references",
+      "text": "Bullet holes evoke classic gangster or heist imagery.\nPepe the Frog, a staple in meme culture and crypto communities.\nThe eye peeking through adds a playful twist to the usual Pepe lore.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPDILLINGER#visual",
+      "label": "Visual summary",
+      "text": "The card features a wooden surface with three bullet holes, one of which reveals a green Pepe eye peeking through. The color palette is earthy and muted, with browns dominating the wooden texture and a pop of green from Pepe's eye. The style is a blend of realism and cartoonish elements, creating a humorous yet slightly ominous vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPDILLINGER#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a wooden surface with three bullet holes, one of which reveals a green Pepe eye peeking through. The color palette is earthy and muted, with browns dominating the wooden texture and a pop of green from Pepe's eye. The style is a blend of realism and cartoonish elements, creating a humorous yet slightly ominous vibe.\n\n🧬 **MEMETIC DNA:**\n- Bullet holes evoke classic gangster or heist imagery.\n- Pepe the Frog, a staple in meme culture and crypto communities.\n- The eye peeking through adds a playful twist to the usual Pepe lore.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.835Z",
+  "sourceFactVersion": 1
+}

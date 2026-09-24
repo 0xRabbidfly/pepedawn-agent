@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "FAKEPEPCASSO",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 20,
+  "artist": "Zima Blue",
+  "supply": 100,
+  "issuance": "November 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe references with distorted faces and surreal forms.",
+    "Elements of crypto chaos, reflecting the unpredictable nature of the market.",
+    "Picasso-inspired cubism, blending traditional art with meme culture."
+  ],
+  "visualSummary": "The card features a chaotic, abstract composition with a monochrome color palette, primarily shades of black and white. The style is reminiscent of cubism, with geometric shapes and distorted figures, including an oversized eye and exaggerated facial features. The artwork is densely packed with characters and objects, creating a sense of visual overload.",
+  "visualSummaryShort": "The card showcases a chaotic abstract composition in a monochrome palette of black and white. It features geometric shapes, distorted figures, and an oversized eye, creating a visually overwhelming effect.",
+  "visualKeywords": [
+    "abstract",
+    "monochrome",
+    "cubism",
+    "geometric",
+    "distorted",
+    "eye",
+    "facial features",
+    "chaotic",
+    "characters",
+    "overload"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "abstract",
+    "monochrome",
+    "cubism",
+    "geometric",
+    "distorted",
+    "eye",
+    "facial features",
+    "chaotic",
+    "characters",
+    "overload"
+  ],
+  "embeddingInput": "FAKEPEPCASSO (Fake Rares) - Series 5 Card 20\nArtist: Zima Blue\nSupply 100 Issued November 2021\nOn-card text: none detected\nVisual summary: The card features a chaotic, abstract composition with a monochrome color palette, primarily shades of black and white. The style is reminiscent of cubism, with geometric shapes and distorted figures, including an oversized eye and exaggerated facial features. The artwork is densely packed with characters and objects, creating a sense of visual overload.\nMemetic references: Pepe references with distorted faces and surreal forms.; Elements of crypto chaos, reflecting the unpredictable nature of the market.; Picasso-inspired cubism, blending traditional art with meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEPEPCASSO#memetic",
+      "label": "Memetic references",
+      "text": "Pepe references with distorted faces and surreal forms.\nElements of crypto chaos, reflecting the unpredictable nature of the market.\nPicasso-inspired cubism, blending traditional art with meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEPEPCASSO#visual",
+      "label": "Visual summary",
+      "text": "The card features a chaotic, abstract composition with a monochrome color palette, primarily shades of black and white. The style is reminiscent of cubism, with geometric shapes and distorted figures, including an oversized eye and exaggerated facial features. The artwork is densely packed with characters and objects, creating a sense of visual overload.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEPEPCASSO#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a chaotic, abstract composition with a monochrome color palette, primarily shades of black and white. The style is reminiscent of cubism, with geometric shapes and distorted figures, including an oversized eye and exaggerated facial features. The artwork is densely packed with characters and objects, creating a sense of visual overload.\n\n🧬 **MEMETIC DNA:**\n- Pepe references with distorted faces and surreal forms.\n- Elements of crypto chaos, reflecting the unpredictable nature of the market.\n- Picasso-inspired cubism, blending traditional art with meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.549Z",
+  "sourceFactVersion": 1
+}

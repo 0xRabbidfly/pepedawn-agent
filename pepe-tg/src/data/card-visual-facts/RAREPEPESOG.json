@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "asset": "RAREPEPESOG",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 29,
+  "artist": "Jonny Johnsonson",
+  "supply": 46,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "FAKERAREPEPESOG",
+    "BE ALPHA"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a cornerstone of meme culture.",
+    "The iconic handshake meme, symbolizing unexpected alliances.",
+    "References to crypto culture with \"BE ALPHA\" embracing the competitive spirit."
+  ],
+  "visualSummary": "The card features a classic meme handshake between Pepe and another character, set against a smoky, colorful background with hues of green, purple, and brown. The foreground showcases a green heart split in half, paired with olive branches, and flanked by two stars. The artistic style blends digital painting with a meme-inspired aesthetic, creating a surreal and humorous vibe.",
+  "visualSummaryShort": "The card depicts a meme-inspired handshake between Pepe and another character, set against a vibrant, smoky background. A green heart and olive branches enhance the surreal and humorous atmosphere.",
+  "visualKeywords": [
+    "handshake",
+    "pepe",
+    "smoky background",
+    "green heart",
+    "olive branches",
+    "colorful",
+    "surreal",
+    "humorous",
+    "stars",
+    "digital painting"
+  ],
+  "textKeywords": [
+    "fakerarepepesog",
+    "alpha"
+  ],
+  "keywords": [
+    "handshake",
+    "pepe",
+    "smoky background",
+    "green heart",
+    "olive branches",
+    "colorful",
+    "surreal",
+    "humorous",
+    "stars",
+    "digital painting",
+    "fakerarepepesog",
+    "alpha"
+  ],
+  "embeddingInput": "RAREPEPESOG (Fake Rares) - Series 11 Card 29\nArtist: Jonny Johnsonson\nSupply 46 Issued September 2022\nOn-card text: FAKERAREPEPESOG | BE ALPHA\nVisual summary: The card features a classic meme handshake between Pepe and another character, set against a smoky, colorful background with hues of green, purple, and brown. The foreground showcases a green heart split in half, paired with olive branches, and flanked by two stars. The artistic style blends digital painting with a meme-inspired aesthetic, creating a surreal and humorous vibe.\nMemetic references: Pepe the Frog, a cornerstone of meme culture.; The iconic handshake meme, symbolizing unexpected alliances.; References to crypto culture with \"BE ALPHA\" embracing the competitive spirit.",
+  "embeddingBlocks": [
+    {
+      "id": "RAREPEPESOG#text",
+      "label": "On-card text",
+      "text": "FAKERAREPEPESOG | BE ALPHA",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "RAREPEPESOG#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a cornerstone of meme culture.\nThe iconic handshake meme, symbolizing unexpected alliances.\nReferences to crypto culture with \"BE ALPHA\" embracing the competitive spirit.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RAREPEPESOG#visual",
+      "label": "Visual summary",
+      "text": "The card features a classic meme handshake between Pepe and another character, set against a smoky, colorful background with hues of green, purple, and brown. The foreground showcases a green heart split in half, paired with olive branches, and flanked by two stars. The artistic style blends digital painting with a meme-inspired aesthetic, creating a surreal and humorous vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RAREPEPESOG#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKERAREPEPESOG  \nBE ALPHA\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a classic meme handshake between Pepe and another character, set against a smoky, colorful background with hues of green, purple, and brown. The foreground showcases a green heart split in half, paired with olive branches, and flanked by two stars. The artistic style blends digital painting with a meme-inspired aesthetic, creating a surreal and humorous vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a cornerstone of meme culture.\n- The iconic handshake meme, symbolizing unexpected alliances.\n- References to crypto culture with \"BE ALPHA\" embracing the competitive spirit.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.072Z",
+  "sourceFactVersion": 1
+}

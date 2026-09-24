@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "KINGOFKINGS",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 20,
+  "artist": "Kenneth B Moon",
+  "supply": 40,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "KINGOFKINGS"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog homage, elevated to royal status.",
+    "Crown symbolizes authority and meme kingdom dominance.",
+    "Possible nod to \"King of the Hill\" in meme culture."
+  ],
+  "visualSummary": "The card features a regal frog wearing a golden crown adorned with jewels, set against a dark, dramatic background. The frog's expression is calm and confident, with a slight smirk, and its skin is textured with shades of green and brown. The bold colors and painterly style give it a classic, almost royal portrait vibe.",
+  "visualSummaryShort": "The card showcases a regal frog in a golden crown against a dark background. Its calm expression and textured skin create a royal portrait effect.",
+  "visualKeywords": [
+    "frog",
+    "crown",
+    "jewels",
+    "dark background",
+    "green",
+    "brown",
+    "calm expression",
+    "royal",
+    "painterly",
+    "portrait"
+  ],
+  "textKeywords": [
+    "kingofkings"
+  ],
+  "keywords": [
+    "frog",
+    "crown",
+    "jewels",
+    "dark background",
+    "green",
+    "brown",
+    "calm expression",
+    "royal",
+    "painterly",
+    "portrait",
+    "kingofkings"
+  ],
+  "embeddingInput": "KINGOFKINGS (Fake Rares) - Series 10 Card 20\nArtist: Kenneth B Moon\nSupply 40 Issued September 2022\nOn-card text: KINGOFKINGS\nVisual summary: The card features a regal frog wearing a golden crown adorned with jewels, set against a dark, dramatic background. The frog's expression is calm and confident, with a slight smirk, and its skin is textured with shades of green and brown. The bold colors and painterly style give it a classic, almost royal portrait vibe.\nMemetic references: Pepe the Frog homage, elevated to royal status.; Crown symbolizes authority and meme kingdom dominance.; Possible nod to \"King of the Hill\" in meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "KINGOFKINGS#text",
+      "label": "On-card text",
+      "text": "KINGOFKINGS",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "KINGOFKINGS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog homage, elevated to royal status.\nCrown symbolizes authority and meme kingdom dominance.\nPossible nod to \"King of the Hill\" in meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "KINGOFKINGS#visual",
+      "label": "Visual summary",
+      "text": "The card features a regal frog wearing a golden crown adorned with jewels, set against a dark, dramatic background. The frog's expression is calm and confident, with a slight smirk, and its skin is textured with shades of green and brown. The bold colors and painterly style give it a classic, almost royal portrait vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "KINGOFKINGS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nKINGOFKINGS\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a regal frog wearing a golden crown adorned with jewels, set against a dark, dramatic background. The frog's expression is calm and confident, with a slight smirk, and its skin is textured with shades of green and brown. The bold colors and painterly style give it a classic, almost royal portrait vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog homage, elevated to royal status.\n- Crown symbolizes authority and meme kingdom dominance.\n- Possible nod to \"King of the Hill\" in meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.720Z",
+  "sourceFactVersion": 1
+}

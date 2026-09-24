@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "STUDYOFAFROG",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 6,
+  "artist": "Al",
+  "supply": 100,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "**FAKE RARES**",
+    "By: Zoltan Nagy"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple of meme culture and crypto art.",
+    "The crown symbolizes status, possibly a nod to \"King Pepe\" or high-value NFTs.",
+    "Vibrant purple often signifies rarity and luxury in digital art."
+  ],
+  "visualSummary": "The card features a portrait of Pepe the Frog with a golden crown, exuding a regal vibe. The background is a vibrant purple, contrasting with Pepe's green skin, and is adorned with subtle patterns that add depth. The overall style is cartoonish yet sophisticated, with crisp lines and a bold color palette.",
+  "visualSummaryShort": "The card showcases a cartoonish portrait of Pepe the Frog wearing a golden crown against a vibrant purple background. The design features crisp lines and a bold color palette, creating a sophisticated yet playful aesthetic.",
+  "visualKeywords": [
+    "pepe the frog",
+    "golden crown",
+    "purple background",
+    "cartoonish",
+    "bold colors",
+    "regal vibe",
+    "patterns",
+    "green skin"
+  ],
+  "textKeywords": [
+    "zoltan",
+    "nagy"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "golden crown",
+    "purple background",
+    "cartoonish",
+    "bold colors",
+    "regal vibe",
+    "patterns",
+    "green skin",
+    "zoltan",
+    "nagy"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "STUDYOFAFROG (Fake Rares) - Series 11 Card 6\nArtist: Al\nSupply 100 Issued September 2022\nOn-card text: **FAKE RARES** | By: Zoltan Nagy\nVisual summary: The card features a portrait of Pepe the Frog with a golden crown, exuding a regal vibe. The background is a vibrant purple, contrasting with Pepe's green skin, and is adorned with subtle patterns that add depth. The overall style is cartoonish yet sophisticated, with crisp lines and a bold color palette.\nMemetic references: Pepe the Frog, a staple of meme culture and crypto art.; The crown symbolizes status, possibly a nod to \"King Pepe\" or high-value NFTs.; Vibrant purple often signifies rarity and luxury in digital art.",
+  "embeddingBlocks": [
+    {
+      "id": "STUDYOFAFROG#text",
+      "label": "On-card text",
+      "text": "**FAKE RARES** | By: Zoltan Nagy",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "STUDYOFAFROG#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple of meme culture and crypto art.\nThe crown symbolizes status, possibly a nod to \"King Pepe\" or high-value NFTs.\nVibrant purple often signifies rarity and luxury in digital art.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "STUDYOFAFROG#visual",
+      "label": "Visual summary",
+      "text": "The card features a portrait of Pepe the Frog with a golden crown, exuding a regal vibe. The background is a vibrant purple, contrasting with Pepe's green skin, and is adorned with subtle patterns that add depth. The overall style is cartoonish yet sophisticated, with crisp lines and a bold color palette.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "STUDYOFAFROG#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n**FAKE RARES**  \nBy: Zoltan Nagy\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a portrait of Pepe the Frog with a golden crown, exuding a regal vibe. The background is a vibrant purple, contrasting with Pepe's green skin, and is adorned with subtle patterns that add depth. The overall style is cartoonish yet sophisticated, with crisp lines and a bold color palette.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple of meme culture and crypto art.\n- The crown symbolizes status, possibly a nod to \"King Pepe\" or high-value NFTs.\n- Vibrant purple often signifies rarity and luxury in digital art.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:30:41.467Z"
+}

@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "FPHOTOPENPEN",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 31,
+  "artist": "Tomopen",
+  "supply": 100,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "Commemorative photo"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog homage.",
+    "Marilyn Monroe's iconic dress moment.",
+    "Cute animal sidekick for added meme fuel."
+  ],
+  "visualSummary": "The card features a playful illustration of a green frog character reminiscent of Pepe, styled in a classic white dress akin to Marilyn Monroe's iconic look. The frog is accompanied by a cute penguin, adding a whimsical touch. The color palette is bright and poppy, with a neon green border framing a vibrant pink background.",
+  "visualSummaryShort": "The card showcases a playful green frog in a white dress, reminiscent of Marilyn Monroe, alongside a cute penguin. The bright color palette features a neon green border and a vibrant pink background.",
+  "visualKeywords": [
+    "frog",
+    "penguin",
+    "white dress",
+    "pink background",
+    "neon green",
+    "playful",
+    "whimsical",
+    "bright colors"
+  ],
+  "textKeywords": [
+    "commemorative",
+    "photo"
+  ],
+  "keywords": [
+    "frog",
+    "penguin",
+    "white dress",
+    "pink background",
+    "neon green",
+    "playful",
+    "whimsical",
+    "bright colors",
+    "commemorative",
+    "photo"
+  ],
+  "embeddingInput": "FPHOTOPENPEN (Fake Rares) - Series 4 Card 31\nArtist: Tomopen\nSupply 100 Issued November 2021\nOn-card text: Commemorative photo\nVisual summary: The card features a playful illustration of a green frog character reminiscent of Pepe, styled in a classic white dress akin to Marilyn Monroe's iconic look. The frog is accompanied by a cute penguin, adding a whimsical touch. The color palette is bright and poppy, with a neon green border framing a vibrant pink background.\nMemetic references: Pepe the Frog homage.; Marilyn Monroe's iconic dress moment.; Cute animal sidekick for added meme fuel.",
+  "embeddingBlocks": [
+    {
+      "id": "FPHOTOPENPEN#text",
+      "label": "On-card text",
+      "text": "Commemorative photo",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FPHOTOPENPEN#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog homage.\nMarilyn Monroe's iconic dress moment.\nCute animal sidekick for added meme fuel.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FPHOTOPENPEN#visual",
+      "label": "Visual summary",
+      "text": "The card features a playful illustration of a green frog character reminiscent of Pepe, styled in a classic white dress akin to Marilyn Monroe's iconic look. The frog is accompanied by a cute penguin, adding a whimsical touch. The color palette is bright and poppy, with a neon green border framing a vibrant pink background.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FPHOTOPENPEN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nCommemorative photo\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a playful illustration of a green frog character reminiscent of Pepe, styled in a classic white dress akin to Marilyn Monroe's iconic look. The frog is accompanied by a cute penguin, adding a whimsical touch. The color palette is bright and poppy, with a neon green border framing a vibrant pink background.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog homage.\n- Marilyn Monroe's iconic dress moment.\n- Cute animal sidekick for added meme fuel.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.638Z",
+  "sourceFactVersion": 1
+}

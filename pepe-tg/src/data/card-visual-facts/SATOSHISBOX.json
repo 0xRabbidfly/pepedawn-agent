@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "SATOSHISBOX",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 8,
+  "artist": "Alth0tas",
+  "supply": 32,
+  "issuance": "March 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog, a staple in meme culture and NFT art.",
+    "Bitcoin symbol on the chest, indicating crypto themes.",
+    "Cyberpunk aesthetics, referencing futuristic and tech-driven culture."
+  ],
+  "visualSummary": "The artwork features a Pepe the Frog character in a futuristic setting, wearing a detailed, cyberpunk-style outfit. The color palette is a mix of muted greens, browns, and purples, with sharp lines and intricate patterns that give it a comic book feel. The background is a blend of abstract, linear designs, enhancing the sci-fi vibe.",
+  "visualSummaryShort": "The card showcases a Pepe the Frog character dressed in a cyberpunk outfit within a futuristic environment. The color palette consists of muted greens, browns, and purples, complemented by abstract linear designs.",
+  "visualKeywords": [
+    "pepe the frog",
+    "cyberpunk",
+    "futuristic",
+    "muted colors",
+    "abstract",
+    "comic book",
+    "intricate patterns",
+    "sci-fi"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "cyberpunk",
+    "futuristic",
+    "muted colors",
+    "abstract",
+    "comic book",
+    "intricate patterns",
+    "sci-fi"
+  ],
+  "embeddingInput": "SATOSHISBOX (Fake Rares) - Series 14 Card 8\nArtist: Alth0tas\nSupply 32 Issued March 2023\nOn-card text: none detected\nVisual summary: The artwork features a Pepe the Frog character in a futuristic setting, wearing a detailed, cyberpunk-style outfit. The color palette is a mix of muted greens, browns, and purples, with sharp lines and intricate patterns that give it a comic book feel. The background is a blend of abstract, linear designs, enhancing the sci-fi vibe.\nMemetic references: Pepe the Frog, a staple in meme culture and NFT art.; Bitcoin symbol on the chest, indicating crypto themes.; Cyberpunk aesthetics, referencing futuristic and tech-driven culture.",
+  "embeddingBlocks": [
+    {
+      "id": "SATOSHISBOX#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple in meme culture and NFT art.\nBitcoin symbol on the chest, indicating crypto themes.\nCyberpunk aesthetics, referencing futuristic and tech-driven culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SATOSHISBOX#visual",
+      "label": "Visual summary",
+      "text": "The artwork features a Pepe the Frog character in a futuristic setting, wearing a detailed, cyberpunk-style outfit. The color palette is a mix of muted greens, browns, and purples, with sharp lines and intricate patterns that give it a comic book feel. The background is a blend of abstract, linear designs, enhancing the sci-fi vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SATOSHISBOX#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe artwork features a Pepe the Frog character in a futuristic setting, wearing a detailed, cyberpunk-style outfit. The color palette is a mix of muted greens, browns, and purples, with sharp lines and intricate patterns that give it a comic book feel. The background is a blend of abstract, linear designs, enhancing the sci-fi vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple in meme culture and NFT art.\n- Bitcoin symbol on the chest, indicating crypto themes.\n- Cyberpunk aesthetics, referencing futuristic and tech-driven culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.098Z",
+  "sourceFactVersion": 1
+}

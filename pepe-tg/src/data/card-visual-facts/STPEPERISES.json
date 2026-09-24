@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "asset": "STPEPERISES",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 28,
+  "artist": "Da'Block God",
+  "supply": 21,
+  "issuance": "August 2023",
+  "textOnCard": [
+    "SAINTPEPE RISES AGAIN",
+    "DaBlockGod"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in a spiritual context.",
+    "Bitcoin symbolism highlighting crypto culture.",
+    "Reference to rebirth or enlightenment with \"rises again.\""
+  ],
+  "visualSummary": "The card depicts a green Pepe the Frog character in a meditative pose, wearing an orange robe reminiscent of a monk. A glowing Bitcoin symbol is centered on Pepe's chest, and the background reveals a dramatic waterfall with golden hues cascading down. The color palette combines warm oranges and yellows with contrasting dark elements, creating a mystical and serene atmosphere.",
+  "visualSummaryShort": "The card features a green Pepe the Frog in a meditative pose, adorned in an orange robe with a glowing Bitcoin symbol on his chest. The background showcases a dramatic waterfall with warm golden hues, enhancing the mystical atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "meditative",
+    "orange robe",
+    "bitcoin",
+    "waterfall",
+    "golden hues",
+    "mystical",
+    "serene",
+    "warm colors",
+    "dark elements"
+  ],
+  "textKeywords": [
+    "saintpepe",
+    "rises",
+    "again",
+    "dablockgod"
+  ],
+  "keywords": [
+    "pepe",
+    "meditative",
+    "orange robe",
+    "bitcoin",
+    "waterfall",
+    "golden hues",
+    "mystical",
+    "serene",
+    "warm colors",
+    "dark elements",
+    "saintpepe",
+    "rises",
+    "again",
+    "dablockgod"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "STPEPERISES (Fake Rares) - Series 15 Card 28\nArtist: Da'Block God\nSupply 21 Issued August 2023\nOn-card text: SAINTPEPE RISES AGAIN | DaBlockGod\nVisual summary: The card depicts a green Pepe the Frog character in a meditative pose, wearing an orange robe reminiscent of a monk. A glowing Bitcoin symbol is centered on Pepe's chest, and the background reveals a dramatic waterfall with golden hues cascading down. The color palette combines warm oranges and yellows with contrasting dark elements, creating a mystical and serene atmosphere.\nMemetic references: Pepe the Frog in a spiritual context.; Bitcoin symbolism highlighting crypto culture.; Reference to rebirth or enlightenment with \"rises again.\"",
+  "embeddingBlocks": [
+    {
+      "id": "STPEPERISES#text",
+      "label": "On-card text",
+      "text": "SAINTPEPE RISES AGAIN | DaBlockGod",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "STPEPERISES#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in a spiritual context.\nBitcoin symbolism highlighting crypto culture.\nReference to rebirth or enlightenment with \"rises again.\"",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "STPEPERISES#visual",
+      "label": "Visual summary",
+      "text": "The card depicts a green Pepe the Frog character in a meditative pose, wearing an orange robe reminiscent of a monk. A glowing Bitcoin symbol is centered on Pepe's chest, and the background reveals a dramatic waterfall with golden hues cascading down. The color palette combines warm oranges and yellows with contrasting dark elements, creating a mystical and serene atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "STPEPERISES#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nSAINTPEPE RISES AGAIN  \nDaBlockGod  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card depicts a green Pepe the Frog character in a meditative pose, wearing an orange robe reminiscent of a monk. A glowing Bitcoin symbol is centered on Pepe's chest, and the background reveals a dramatic waterfall with golden hues cascading down. The color palette combines warm oranges and yellows with contrasting dark elements, creating a mystical and serene atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in a spiritual context.\n- Bitcoin symbolism highlighting crypto culture.\n- Reference to rebirth or enlightenment with \"rises again.\"",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:31:03.424Z"
+}

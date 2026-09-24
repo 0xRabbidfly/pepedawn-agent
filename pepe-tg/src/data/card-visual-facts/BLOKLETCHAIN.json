@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "asset": "BLOKLETCHAIN",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 42,
+  "artist": "Carsonated",
+  "supply": 45,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "BLOKLETCHAIN",
+    "Say it publicly and you're insane",
+    "Lose your private keys and feel the pain",
+    "*I move away from the mic to breathe in"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog references, a staple of meme culture.",
+    "Crypto culture nod with \"private keys\" mention.",
+    "Plays on the \"I move away from the mic to breathe in\" meme.",
+    "References to the blockchain and crypto community dynamics."
+  ],
+  "visualSummary": "The card features a Pepe the Frog character wearing glasses and a white shirt, standing in front of a golden microphone. The background is minimalist, focusing on the character and mic, with a neutral color palette emphasizing greens and golds. The artistic style is clean and digital, with a focus on the classic meme character.",
+  "visualSummaryShort": "The card showcases a Pepe the Frog character in glasses and a white shirt, positioned in front of a golden microphone. The minimalist background highlights the greens and golds, creating a clean digital aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "microphone",
+    "glasses",
+    "white shirt",
+    "minimalist",
+    "green",
+    "gold",
+    "digital art"
+  ],
+  "textKeywords": [
+    "blokletchain",
+    "say",
+    "publicly",
+    "you",
+    "insane",
+    "lose",
+    "private",
+    "keys",
+    "feel",
+    "pain",
+    "move",
+    "away",
+    "mic",
+    "breathe"
+  ],
+  "keywords": [
+    "pepe",
+    "microphone",
+    "glasses",
+    "white shirt",
+    "minimalist",
+    "green",
+    "gold",
+    "digital art",
+    "blokletchain",
+    "say",
+    "publicly",
+    "you",
+    "insane",
+    "lose",
+    "private",
+    "keys",
+    "feel",
+    "pain",
+    "move",
+    "away",
+    "mic",
+    "breathe"
+  ],
+  "embeddingInput": "BLOKLETCHAIN (Fake Rares) - Series 2 Card 42\nArtist: Carsonated\nSupply 45 Issued October 2021\nOn-card text: BLOKLETCHAIN | Say it publicly and you're insane | Lose your private keys and feel the pain | *I move away from the mic to breathe in\nVisual summary: The card features a Pepe the Frog character wearing glasses and a white shirt, standing in front of a golden microphone. The background is minimalist, focusing on the character and mic, with a neutral color palette emphasizing greens and golds. The artistic style is clean and digital, with a focus on the classic meme character.\nMemetic references: Pepe the Frog references, a staple of meme culture.; Crypto culture nod with \"private keys\" mention.; Plays on the \"I move away from the mic to breathe in\" meme.; References to the blockchain and crypto community dynamics.",
+  "embeddingBlocks": [
+    {
+      "id": "BLOKLETCHAIN#text",
+      "label": "On-card text",
+      "text": "BLOKLETCHAIN | Say it publicly and you're insane | Lose your private keys and feel the pain | *I move away from the mic to breathe in",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "BLOKLETCHAIN#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references, a staple of meme culture.\nCrypto culture nod with \"private keys\" mention.\nPlays on the \"I move away from the mic to breathe in\" meme.\nReferences to the blockchain and crypto community dynamics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BLOKLETCHAIN#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe the Frog character wearing glasses and a white shirt, standing in front of a golden microphone. The background is minimalist, focusing on the character and mic, with a neutral color palette emphasizing greens and golds. The artistic style is clean and digital, with a focus on the classic meme character.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BLOKLETCHAIN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nBLOKLETCHAIN  \nSay it publicly and you're insane  \nLose your private keys and feel the pain  \n*I move away from the mic to breathe in\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe the Frog character wearing glasses and a white shirt, standing in front of a golden microphone. The background is minimalist, focusing on the character and mic, with a neutral color palette emphasizing greens and golds. The artistic style is clean and digital, with a focus on the classic meme character.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references, a staple of meme culture.\n- Crypto culture nod with \"private keys\" mention.\n- Plays on the \"I move away from the mic to breathe in\" meme.\n- References to the blockchain and crypto community dynamics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.317Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "asset": "ODETOPEPE",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 23,
+  "artist": "AD_AD",
+  "supply": 69,
+  "issuance": "November 2022",
+  "textOnCard": [
+    "FLS LGDMN"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog image, a staple of meme culture.",
+    "Graffiti art style evokes street art and rebellion.",
+    "The praying pose suggests a mix of hope and irony, common in meme contexts."
+  ],
+  "visualSummary": "This card features a graffiti-style depiction of Pepe the Frog, clasping his hands together with a hopeful expression. The background is a chaotic mix of grey scribbles and colorful digital noise, adding a gritty street-art vibe. Bold red and black text is splashed across Pepe's chest, with a golden square in the bottom right corner offering a pop of contrast.",
+  "visualSummaryShort": "The card showcases a graffiti-style Pepe the Frog with a hopeful expression against a chaotic background. Bold text and a contrasting golden square enhance the street-art aesthetic.",
+  "visualKeywords": [
+    "graffiti",
+    "pepe the frog",
+    "hopeful",
+    "grey scribbles",
+    "colorful noise",
+    "red text",
+    "black text",
+    "golden square",
+    "street-art",
+    "chaotic"
+  ],
+  "textKeywords": [
+    "fls",
+    "lgdmn"
+  ],
+  "keywords": [
+    "graffiti",
+    "pepe the frog",
+    "hopeful",
+    "grey scribbles",
+    "colorful noise",
+    "red text",
+    "black text",
+    "golden square",
+    "street-art",
+    "chaotic",
+    "fls",
+    "lgdmn"
+  ],
+  "embeddingInput": "ODETOPEPE (Fake Rares) - Series 12 Card 23\nArtist: AD_AD\nSupply 69 Issued November 2022\nOn-card text: FLS LGDMN\nVisual summary: This card features a graffiti-style depiction of Pepe the Frog, clasping his hands together with a hopeful expression. The background is a chaotic mix of grey scribbles and colorful digital noise, adding a gritty street-art vibe. Bold red and black text is splashed across Pepe's chest, with a golden square in the bottom right corner offering a pop of contrast.\nMemetic references: Classic Pepe the Frog image, a staple of meme culture.; Graffiti art style evokes street art and rebellion.; The praying pose suggests a mix of hope and irony, common in meme contexts.",
+  "embeddingBlocks": [
+    {
+      "id": "ODETOPEPE#text",
+      "label": "On-card text",
+      "text": "FLS LGDMN",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "ODETOPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog image, a staple of meme culture.\nGraffiti art style evokes street art and rebellion.\nThe praying pose suggests a mix of hope and irony, common in meme contexts.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "ODETOPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a graffiti-style depiction of Pepe the Frog, clasping his hands together with a hopeful expression. The background is a chaotic mix of grey scribbles and colorful digital noise, adding a gritty street-art vibe. Bold red and black text is splashed across Pepe's chest, with a golden square in the bottom right corner offering a pop of contrast.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "ODETOPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFLS LGDMN\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a graffiti-style depiction of Pepe the Frog, clasping his hands together with a hopeful expression. The background is a chaotic mix of grey scribbles and colorful digital noise, adding a gritty street-art vibe. Bold red and black text is splashed across Pepe's chest, with a golden square in the bottom right corner offering a pop of contrast.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog image, a staple of meme culture.\n- Graffiti art style evokes street art and rebellion.\n- The praying pose suggests a mix of hope and irony, common in meme contexts.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.805Z",
+  "sourceFactVersion": 1
+}

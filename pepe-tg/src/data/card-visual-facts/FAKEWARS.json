@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "asset": "FAKEWARS",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 19,
+  "artist": "Alpha Centauri Kid",
+  "supply": 100,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "10 BILLION CREDITS",
+    "ACK",
+    "SO FUCKING RARE"
+  ],
+  "memeticReferences": [
+    "References to sci-fi and pop culture, likely inspired by \"Star Wars\" holograms.",
+    "The word \"ACK\" could be a nod to meme culture, possibly referencing a commonly used internet exclamation.",
+    "The holographic effect and platform are reminiscent of scenes from classic sci-fi movies."
+  ],
+  "visualSummary": "The card features a holographic, ghostly figure reminiscent of a sci-fi character, standing on a circular platform. The border has a gradient from yellow to red, framing the central figure with a futuristic aesthetic. The overall color palette includes blues and blacks with accents of bright red and yellow, creating a contrast that emphasizes the hologram effect.",
+  "visualSummaryShort": "The card showcases a holographic, ghostly figure on a circular platform, surrounded by a vibrant gradient border. The color palette features blues, blacks, and bright accents of red and yellow, enhancing the futuristic theme.",
+  "visualKeywords": [
+    "holographic",
+    "ghostly figure",
+    "circular platform",
+    "gradient",
+    "futuristic",
+    "blue palette",
+    "black accents",
+    "red accents",
+    "yellow accents"
+  ],
+  "textKeywords": [
+    "billion",
+    "credits",
+    "ack",
+    "fucking"
+  ],
+  "keywords": [
+    "holographic",
+    "ghostly figure",
+    "circular platform",
+    "gradient",
+    "futuristic",
+    "blue palette",
+    "black accents",
+    "red accents",
+    "yellow accents",
+    "billion",
+    "credits",
+    "ack",
+    "fucking"
+  ],
+  "embeddingInput": "FAKEWARS (Fake Rares) - Series 5 Card 19\nArtist: Alpha Centauri Kid\nSupply 100 Issued February 2022\nOn-card text: 10 BILLION CREDITS | ACK | SO FUCKING RARE\nVisual summary: The card features a holographic, ghostly figure reminiscent of a sci-fi character, standing on a circular platform. The border has a gradient from yellow to red, framing the central figure with a futuristic aesthetic. The overall color palette includes blues and blacks with accents of bright red and yellow, creating a contrast that emphasizes the hologram effect.\nMemetic references: References to sci-fi and pop culture, likely inspired by \"Star Wars\" holograms.; The word \"ACK\" could be a nod to meme culture, possibly referencing a commonly used internet exclamation.; The holographic effect and platform are reminiscent of scenes from classic sci-fi movies.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEWARS#text",
+      "label": "On-card text",
+      "text": "10 BILLION CREDITS | ACK | SO FUCKING RARE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEWARS#memetic",
+      "label": "Memetic references",
+      "text": "References to sci-fi and pop culture, likely inspired by \"Star Wars\" holograms.\nThe word \"ACK\" could be a nod to meme culture, possibly referencing a commonly used internet exclamation.\nThe holographic effect and platform are reminiscent of scenes from classic sci-fi movies.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEWARS#visual",
+      "label": "Visual summary",
+      "text": "The card features a holographic, ghostly figure reminiscent of a sci-fi character, standing on a circular platform. The border has a gradient from yellow to red, framing the central figure with a futuristic aesthetic. The overall color palette includes blues and blacks with accents of bright red and yellow, creating a contrast that emphasizes the hologram effect.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEWARS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n10 BILLION CREDITS  \nACK  \nSO FUCKING RARE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a holographic, ghostly figure reminiscent of a sci-fi character, standing on a circular platform. The border has a gradient from yellow to red, framing the central figure with a futuristic aesthetic. The overall color palette includes blues and blacks with accents of bright red and yellow, creating a contrast that emphasizes the hologram effect.\n\n🧬 **MEMETIC DNA:**\n- References to sci-fi and pop culture, likely inspired by \"Star Wars\" holograms.\n- The word \"ACK\" could be a nod to meme culture, possibly referencing a commonly used internet exclamation.\n- The holographic effect and platform are reminiscent of scenes from classic sci-fi movies.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.596Z",
+  "sourceFactVersion": 1
+}

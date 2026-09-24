@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "asset": "PEPECONMAN",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 43,
+  "artist": "thewisekhan",
+  "supply": 36,
+  "issuance": "January 2023",
+  "textOnCard": [
+    "PEPECONMAN",
+    "BITCON",
+    "Rareness: Untouchable"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as central character.",
+    "Play on Bitcoin with \"BITCON\".",
+    "References to classic \"con man\" imagery.",
+    "Crypto culture nod with the Bitcoin symbol."
+  ],
+  "visualSummary": "The card features a figure with a Pepe the Frog head, dressed in a formal suit, rejecting a drink with an outstretched hand. The color palette includes muted yellows and blues, creating a vintage, comic-style aesthetic. The background is minimal, focusing attention on the main character and his action.",
+  "visualSummaryShort": "The card showcases a character with a Pepe the Frog head in a formal suit, rejecting a drink. The muted yellow and blue color palette contributes to a vintage, comic-style look.",
+  "visualKeywords": [
+    "pepe the frog",
+    "formal suit",
+    "rejection",
+    "muted colors",
+    "vintage",
+    "comic-style",
+    "minimal background"
+  ],
+  "textKeywords": [
+    "pepeconman",
+    "bitcon",
+    "rareness",
+    "untouchable"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "formal suit",
+    "rejection",
+    "muted colors",
+    "vintage",
+    "comic-style",
+    "minimal background",
+    "pepeconman",
+    "bitcon",
+    "rareness",
+    "untouchable"
+  ],
+  "embeddingInput": "PEPECONMAN (Fake Rares) - Series 14 Card 43\nArtist: thewisekhan\nSupply 36 Issued January 2023\nOn-card text: PEPECONMAN | BITCON | Rareness: Untouchable\nVisual summary: The card features a figure with a Pepe the Frog head, dressed in a formal suit, rejecting a drink with an outstretched hand. The color palette includes muted yellows and blues, creating a vintage, comic-style aesthetic. The background is minimal, focusing attention on the main character and his action.\nMemetic references: Pepe the Frog as central character.; Play on Bitcoin with \"BITCON\".; References to classic \"con man\" imagery.; Crypto culture nod with the Bitcoin symbol.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPECONMAN#text",
+      "label": "On-card text",
+      "text": "PEPECONMAN | BITCON | Rareness: Untouchable",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPECONMAN#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as central character.\nPlay on Bitcoin with \"BITCON\".\nReferences to classic \"con man\" imagery.\nCrypto culture nod with the Bitcoin symbol.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPECONMAN#visual",
+      "label": "Visual summary",
+      "text": "The card features a figure with a Pepe the Frog head, dressed in a formal suit, rejecting a drink with an outstretched hand. The color palette includes muted yellows and blues, creating a vintage, comic-style aesthetic. The background is minimal, focusing attention on the main character and his action.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPECONMAN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPECONMAN  \nBITCON  \nRareness: Untouchable\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a figure with a Pepe the Frog head, dressed in a formal suit, rejecting a drink with an outstretched hand. The color palette includes muted yellows and blues, creating a vintage, comic-style aesthetic. The background is minimal, focusing attention on the main character and his action.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as central character.\n- Play on Bitcoin with \"BITCON\".\n- References to classic \"con man\" imagery.\n- Crypto culture nod with the Bitcoin symbol.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.859Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "asset": "PEPECREATURE",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 13,
+  "artist": "Kane Mayfield",
+  "supply": 420,
+  "issuance": "September 2025",
+  "textOnCard": [
+    "THE CREATURE FROM JEKYLL ISLAND: PEPE EDITION. Fake Rare. The Truth Behind the Federal Reserve... and the Blockchain That Ate It. CARD #0001."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure.",
+    "Bitcoin symbols prominently displayed.",
+    "References to \"The Creature from Jekyll Island,\" a classic critique of the Federal Reserve.",
+    "Fake Rares branding, nodding to the crypto art scene.",
+    "Subtle nods to the mysterious and transformative nature of blockchain technology."
+  ],
+  "visualSummary": "This card showcases a monstrous Pepe creature emerging from the water, holding a Bitcoin and a trading card featuring a meme. The color palette is vibrant, with purples and greens dominating, creating an eerie yet captivating atmosphere. Lightning bolts crackle in the background, adding drama to the retro horror movie poster aesthetic.",
+  "visualSummaryShort": "The card features a monstrous Pepe creature rising from the water, clutching a Bitcoin and a meme trading card. The vibrant purples and greens, along with dramatic lightning, create an eerie atmosphere reminiscent of retro horror.",
+  "visualKeywords": [
+    "pepe",
+    "creature",
+    "water",
+    "bitcoin",
+    "meme",
+    "purple",
+    "green",
+    "lightning",
+    "eerie",
+    "horror"
+  ],
+  "textKeywords": [
+    "creature",
+    "jekyll",
+    "island",
+    "edition",
+    "truth",
+    "behind",
+    "federal",
+    "reserve",
+    "blockchain",
+    "ate",
+    "0001"
+  ],
+  "keywords": [
+    "pepe",
+    "creature",
+    "water",
+    "bitcoin",
+    "meme",
+    "purple",
+    "green",
+    "lightning",
+    "eerie",
+    "horror",
+    "jekyll",
+    "island",
+    "edition",
+    "truth",
+    "behind",
+    "federal",
+    "reserve",
+    "blockchain",
+    "ate",
+    "0001"
+  ],
+  "embeddingInput": "PEPECREATURE (Fake Rares) - Series 18 Card 13\nArtist: Kane Mayfield\nSupply 420 Issued September 2025\nOn-card text: THE CREATURE FROM JEKYLL ISLAND: PEPE EDITION. Fake Rare. The Truth Behind the Federal Reserve... and the Blockchain That Ate It. CARD #0001.\nVisual summary: This card showcases a monstrous Pepe creature emerging from the water, holding a Bitcoin and a trading card featuring a meme. The color palette is vibrant, with purples and greens dominating, creating an eerie yet captivating atmosphere. Lightning bolts crackle in the background, adding drama to the retro horror movie poster aesthetic.\nMemetic references: Pepe the Frog as a central figure.; Bitcoin symbols prominently displayed.; References to \"The Creature from Jekyll Island,\" a classic critique of the Federal Reserve.; Fake Rares branding, nodding to the crypto art scene.; Subtle nods to the mysterious and transformative nature of blockchain technology.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPECREATURE#text",
+      "label": "On-card text",
+      "text": "THE CREATURE FROM JEKYLL ISLAND: PEPE EDITION. Fake Rare. The Truth Behind the Federal Reserve... and the Blockchain That Ate It. CARD #0001.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPECREATURE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure.\nBitcoin symbols prominently displayed.\nReferences to \"The Creature from Jekyll Island,\" a classic critique of the Federal Reserve.\nFake Rares branding, nodding to the crypto art scene.\nSubtle nods to the mysterious and transformative nature of blockchain technology.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPECREATURE#visual",
+      "label": "Visual summary",
+      "text": "This card showcases a monstrous Pepe creature emerging from the water, holding a Bitcoin and a trading card featuring a meme. The color palette is vibrant, with purples and greens dominating, creating an eerie yet captivating atmosphere. Lightning bolts crackle in the background, adding drama to the retro horror movie poster aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPECREATURE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nTHE CREATURE FROM JEKYLL ISLAND: PEPE EDITION. Fake Rare. The Truth Behind the Federal Reserve... and the Blockchain That Ate It. CARD #0001.\n\n🎨 **VISUAL BREAKDOWN:**\nThis card showcases a monstrous Pepe creature emerging from the water, holding a Bitcoin and a trading card featuring a meme. The color palette is vibrant, with purples and greens dominating, creating an eerie yet captivating atmosphere. Lightning bolts crackle in the background, adding drama to the retro horror movie poster aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure.\n- Bitcoin symbols prominently displayed.\n- References to \"The Creature from Jekyll Island,\" a classic critique of the Federal Reserve.\n- Fake Rares branding, nodding to the crypto art scene.\n- Subtle nods to the mysterious and transformative nature of blockchain technology.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.862Z",
+  "sourceFactVersion": 1
+}

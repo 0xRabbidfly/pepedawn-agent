@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "asset": "MEMECAPITAL",
+  "collection": "Fake Rares",
+  "series": 0,
+  "cardNumber": 14,
+  "artist": "1JAuET9GKg",
+  "supply": 100,
+  "issuance": "May 2017",
+  "textOnCard": [
+    "Fred Wilson",
+    "Union Square Ventures"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference with the green skin tone.",
+    "Crypto culture nod with the technological background.",
+    "VC (Venture Capital) themes tied to the text \"Union Square Ventures.\""
+  ],
+  "visualSummary": "The card features a digitally illustrated portrait of a man with a Pepe-green face, suited up in business attire. The background is a blend of circuitry patterns and faded text, giving it a techy, futuristic vibe. The color palette is dominated by greens, blues, and dark tones, creating a high-contrast and visually striking image.",
+  "visualSummaryShort": "The card showcases a digitally illustrated portrait of a man with a Pepe-green face in business attire. The background features circuitry patterns and faded text, contributing to a techy, futuristic atmosphere.",
+  "visualKeywords": [
+    "pepe-green",
+    "business attire",
+    "circuitry",
+    "futuristic",
+    "green palette",
+    "blue tones",
+    "dark tones",
+    "high-contrast"
+  ],
+  "textKeywords": [
+    "fred",
+    "wilson",
+    "union",
+    "square",
+    "ventures"
+  ],
+  "keywords": [
+    "pepe-green",
+    "business attire",
+    "circuitry",
+    "futuristic",
+    "green palette",
+    "blue tones",
+    "dark tones",
+    "high-contrast",
+    "fred",
+    "wilson",
+    "union",
+    "square",
+    "ventures"
+  ],
+  "embeddingInput": "MEMECAPITAL (Fake Rares) - Series 0 Card 14\nArtist: 1JAuET9GKg\nSupply 100 Issued May 2017\nOn-card text: Fred Wilson | Union Square Ventures\nVisual summary: The card features a digitally illustrated portrait of a man with a Pepe-green face, suited up in business attire. The background is a blend of circuitry patterns and faded text, giving it a techy, futuristic vibe. The color palette is dominated by greens, blues, and dark tones, creating a high-contrast and visually striking image.\nMemetic references: Pepe the Frog reference with the green skin tone.; Crypto culture nod with the technological background.; VC (Venture Capital) themes tied to the text \"Union Square Ventures.\"",
+  "embeddingBlocks": [
+    {
+      "id": "MEMECAPITAL#text",
+      "label": "On-card text",
+      "text": "Fred Wilson | Union Square Ventures",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MEMECAPITAL#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference with the green skin tone.\nCrypto culture nod with the technological background.\nVC (Venture Capital) themes tied to the text \"Union Square Ventures.\"",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MEMECAPITAL#visual",
+      "label": "Visual summary",
+      "text": "The card features a digitally illustrated portrait of a man with a Pepe-green face, suited up in business attire. The background is a blend of circuitry patterns and faded text, giving it a techy, futuristic vibe. The color palette is dominated by greens, blues, and dark tones, creating a high-contrast and visually striking image.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MEMECAPITAL#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFred Wilson  \nUnion Square Ventures\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a digitally illustrated portrait of a man with a Pepe-green face, suited up in business attire. The background is a blend of circuitry patterns and faded text, giving it a techy, futuristic vibe. The color palette is dominated by greens, blues, and dark tones, creating a high-contrast and visually striking image.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference with the green skin tone.\n- Crypto culture nod with the technological background.\n- VC (Venture Capital) themes tied to the text \"Union Square Ventures.\"",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.766Z",
+  "sourceFactVersion": 1
+}

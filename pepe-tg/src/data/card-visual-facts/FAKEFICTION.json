@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "asset": "FAKEFICTION",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 11,
+  "artist": "Sketch x 80sKurt Russell",
+  "supply": 99,
+  "issuance": "December 2021",
+  "textOnCard": [
+    "Fake Fiction. ALERT! This is a FAKE! Possession of this BoomBox gives you Marsellus Wallace level powers. Rareness Score: 99.99%."
+  ],
+  "memeticReferences": [
+    "Bitcoin symbols suggest crypto culture and value.",
+    "The expressive face in the boombox is reminiscent of classic Pepe meme expressions.",
+    "References to \"Marsellus Wallace\" hint at pop culture, specifically from \"Pulp Fiction.\"",
+    "The \"FAKE\" alert plays into the NFT meme culture of authenticity and value."
+  ],
+  "visualSummary": "The card features a boombox with a retro aesthetic, framed by a green and black border. The boombox is open to reveal a collection of coins with the Bitcoin symbol and a central, expressive face. The color palette is dominated by gold, green, and black, giving it a vibrant yet classic look.",
+  "visualSummaryShort": "The card showcases a retro boombox surrounded by a green and black border, revealing coins with the Bitcoin symbol. Its vibrant color palette features gold, green, and black, creating a classic yet lively appearance.",
+  "visualKeywords": [
+    "boombox",
+    "coins",
+    "bitcoin",
+    "green",
+    "black",
+    "gold",
+    "retro",
+    "vibrant",
+    "expressive",
+    "classic"
+  ],
+  "textKeywords": [
+    "fiction",
+    "alert",
+    "possession",
+    "boombox",
+    "gives",
+    "you",
+    "marsellus",
+    "wallace",
+    "level",
+    "powers",
+    "rareness",
+    "score"
+  ],
+  "keywords": [
+    "boombox",
+    "coins",
+    "bitcoin",
+    "green",
+    "black",
+    "gold",
+    "retro",
+    "vibrant",
+    "expressive",
+    "classic",
+    "fiction",
+    "alert",
+    "possession",
+    "gives",
+    "you",
+    "marsellus",
+    "wallace",
+    "level",
+    "powers",
+    "rareness",
+    "score"
+  ],
+  "embeddingInput": "FAKEFICTION (Fake Rares) - Series 5 Card 11\nArtist: Sketch x 80sKurt Russell\nSupply 99 Issued December 2021\nOn-card text: Fake Fiction. ALERT! This is a FAKE! Possession of this BoomBox gives you Marsellus Wallace level powers. Rareness Score: 99.99%.\nVisual summary: The card features a boombox with a retro aesthetic, framed by a green and black border. The boombox is open to reveal a collection of coins with the Bitcoin symbol and a central, expressive face. The color palette is dominated by gold, green, and black, giving it a vibrant yet classic look.\nMemetic references: Bitcoin symbols suggest crypto culture and value.; The expressive face in the boombox is reminiscent of classic Pepe meme expressions.; References to \"Marsellus Wallace\" hint at pop culture, specifically from \"Pulp Fiction.\"; The \"FAKE\" alert plays into the NFT meme culture of authenticity and value.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEFICTION#text",
+      "label": "On-card text",
+      "text": "Fake Fiction. ALERT! This is a FAKE! Possession of this BoomBox gives you Marsellus Wallace level powers. Rareness Score: 99.99%.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEFICTION#memetic",
+      "label": "Memetic references",
+      "text": "Bitcoin symbols suggest crypto culture and value.\nThe expressive face in the boombox is reminiscent of classic Pepe meme expressions.\nReferences to \"Marsellus Wallace\" hint at pop culture, specifically from \"Pulp Fiction.\"\nThe \"FAKE\" alert plays into the NFT meme culture of authenticity and value.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEFICTION#visual",
+      "label": "Visual summary",
+      "text": "The card features a boombox with a retro aesthetic, framed by a green and black border. The boombox is open to reveal a collection of coins with the Bitcoin symbol and a central, expressive face. The color palette is dominated by gold, green, and black, giving it a vibrant yet classic look.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEFICTION#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFake Fiction. ALERT! This is a FAKE! Possession of this BoomBox gives you Marsellus Wallace level powers. Rareness Score: 99.99%.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a boombox with a retro aesthetic, framed by a green and black border. The boombox is open to reveal a collection of coins with the Bitcoin symbol and a central, expressive face. The color palette is dominated by gold, green, and black, giving it a vibrant yet classic look.\n\n🧬 **MEMETIC DNA:**\n- Bitcoin symbols suggest crypto culture and value.\n- The expressive face in the boombox is reminiscent of classic Pepe meme expressions.\n- References to \"Marsellus Wallace\" hint at pop culture, specifically from \"Pulp Fiction.\"\n- The \"FAKE\" alert plays into the NFT meme culture of authenticity and value.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.497Z",
+  "sourceFactVersion": 1
+}

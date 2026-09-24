@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "asset": "BTCATHPEPE",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 21,
+  "artist": "The Genius",
+  "supply": 6969,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "PEPE THE BARBARIAN",
+    "BITCOIN ALL TIME HIGH PEPE",
+    "ELE = (Natural Light Beer Images)",
+    "ATK = (Chicken Images)",
+    "HE’S ALL COCK AND BALLZ",
+    "$67,820.73 Bitcoin. Someone check on Peter.",
+    "2 OF NFT"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a barbarian hero.",
+    "Reference to Bitcoin's all-time high.",
+    "\"Natural Light\" beer and rooster (cock) imagery for comedic effect.",
+    "Playful use of \"cock and ballz\" as a meme phrase."
+  ],
+  "visualSummary": "The card features Pepe the Frog with a barbarian's muscular body and a green phallic object as a weapon. The fiery background enhances the dramatic and humorous vibe. The color palette is bold with vivid reds, greens, and browns, creating a chaotic yet amusing scene.",
+  "visualSummaryShort": "The card depicts Pepe the Frog as a muscular barbarian wielding a green phallic weapon against a fiery background. The bold color palette of reds, greens, and browns creates a chaotic yet humorous atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "barbarian",
+    "muscular",
+    "green weapon",
+    "fiery background",
+    "bold colors",
+    "chaotic",
+    "humorous"
+  ],
+  "textKeywords": [
+    "barbarian",
+    "bitcoin",
+    "all",
+    "time",
+    "high",
+    "ele",
+    "natural",
+    "light",
+    "beer",
+    "images",
+    "atk",
+    "chicken",
+    "cock",
+    "ballz",
+    "820",
+    "someone",
+    "check",
+    "peter",
+    "nft"
+  ],
+  "keywords": [
+    "pepe",
+    "barbarian",
+    "muscular",
+    "green weapon",
+    "fiery background",
+    "bold colors",
+    "chaotic",
+    "humorous",
+    "bitcoin",
+    "all",
+    "time",
+    "high",
+    "ele",
+    "natural",
+    "light",
+    "beer",
+    "images",
+    "atk",
+    "chicken",
+    "cock",
+    "ballz",
+    "820",
+    "someone",
+    "check",
+    "peter",
+    "nft"
+  ],
+  "embeddingInput": "BTCATHPEPE (Fake Rares) - Series 3 Card 21\nArtist: The Genius\nSupply 6969 Issued November 2021\nOn-card text: PEPE THE BARBARIAN | BITCOIN ALL TIME HIGH PEPE | ELE = (Natural Light Beer Images) | ATK = (Chicken Images) | HE’S ALL COCK AND BALLZ | $67,820.73 Bitcoin. Someone check on Peter. | 2 OF NFT\nVisual summary: The card features Pepe the Frog with a barbarian's muscular body and a green phallic object as a weapon. The fiery background enhances the dramatic and humorous vibe. The color palette is bold with vivid reds, greens, and browns, creating a chaotic yet amusing scene.\nMemetic references: Pepe the Frog as a barbarian hero.; Reference to Bitcoin's all-time high.; \"Natural Light\" beer and rooster (cock) imagery for comedic effect.; Playful use of \"cock and ballz\" as a meme phrase.",
+  "embeddingBlocks": [
+    {
+      "id": "BTCATHPEPE#text",
+      "label": "On-card text",
+      "text": "PEPE THE BARBARIAN | BITCOIN ALL TIME HIGH PEPE | ELE = (Natural Light Beer Images) | ATK = (Chicken Images) | HE’S ALL COCK AND BALLZ | $67,820.73 Bitcoin. Someone check on Peter. | 2 OF NFT",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "BTCATHPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a barbarian hero.\nReference to Bitcoin's all-time high.\n\"Natural Light\" beer and rooster (cock) imagery for comedic effect.\nPlayful use of \"cock and ballz\" as a meme phrase.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BTCATHPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog with a barbarian's muscular body and a green phallic object as a weapon. The fiery background enhances the dramatic and humorous vibe. The color palette is bold with vivid reds, greens, and browns, creating a chaotic yet amusing scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BTCATHPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE THE BARBARIAN  \nBITCOIN ALL TIME HIGH PEPE  \nELE = (Natural Light Beer Images)  \nATK = (Chicken Images)  \nHE’S ALL COCK AND BALLZ  \n$67,820.73 Bitcoin. Someone check on Peter.  \n2 OF NFT  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog with a barbarian's muscular body and a green phallic object as a weapon. The fiery background enhances the dramatic and humorous vibe. The color palette is bold with vivid reds, greens, and browns, creating a chaotic yet amusing scene.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a barbarian hero.\n- Reference to Bitcoin's all-time high.\n- \"Natural Light\" beer and rooster (cock) imagery for comedic effect.\n- Playful use of \"cock and ballz\" as a meme phrase.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.332Z",
+  "sourceFactVersion": 1
+}

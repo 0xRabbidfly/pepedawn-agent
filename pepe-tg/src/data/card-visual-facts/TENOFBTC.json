@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "TENOFBTC",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 6,
+  "artist": "Alth0tas",
+  "supply": 21,
+  "issuance": "May 2023",
+  "textOnCard": [
+    "X"
+  ],
+  "memeticReferences": [
+    "Tarot card reference with the Roman numeral \"X\".",
+    "Multiple Bitcoin symbols, emphasizing crypto culture.",
+    "Pepe the Frog characters, a staple in meme culture.",
+    "Inscription \"DANK BANK\" on the tower, nodding to meme lingo."
+  ],
+  "visualSummary": "The card is styled like a tarot card, featuring a medieval landscape with arches and towers. The color palette is vibrant, showcasing rich blues, greens, and reds, accented by numerous golden Bitcoin symbols scattered throughout. The style blends traditional tarot imagery with modern memetic elements.",
+  "visualSummaryShort": "The card features a vibrant medieval landscape with arches and towers, styled like a tarot card. It includes rich colors and numerous golden Bitcoin symbols throughout.",
+  "visualKeywords": [
+    "tarot",
+    "medieval",
+    "arches",
+    "towers",
+    "blue",
+    "green",
+    "red",
+    "gold",
+    "bitcoin",
+    "vibrant"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "tarot",
+    "medieval",
+    "arches",
+    "towers",
+    "blue",
+    "green",
+    "red",
+    "gold",
+    "bitcoin",
+    "vibrant"
+  ],
+  "embeddingInput": "TENOFBTC (Fake Rares) - Series 17 Card 6\nArtist: Alth0tas\nSupply 21 Issued May 2023\nOn-card text: X\nVisual summary: The card is styled like a tarot card, featuring a medieval landscape with arches and towers. The color palette is vibrant, showcasing rich blues, greens, and reds, accented by numerous golden Bitcoin symbols scattered throughout. The style blends traditional tarot imagery with modern memetic elements.\nMemetic references: Tarot card reference with the Roman numeral \"X\".; Multiple Bitcoin symbols, emphasizing crypto culture.; Pepe the Frog characters, a staple in meme culture.; Inscription \"DANK BANK\" on the tower, nodding to meme lingo.",
+  "embeddingBlocks": [
+    {
+      "id": "TENOFBTC#text",
+      "label": "On-card text",
+      "text": "X",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "TENOFBTC#memetic",
+      "label": "Memetic references",
+      "text": "Tarot card reference with the Roman numeral \"X\".\nMultiple Bitcoin symbols, emphasizing crypto culture.\nPepe the Frog characters, a staple in meme culture.\nInscription \"DANK BANK\" on the tower, nodding to meme lingo.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "TENOFBTC#visual",
+      "label": "Visual summary",
+      "text": "The card is styled like a tarot card, featuring a medieval landscape with arches and towers. The color palette is vibrant, showcasing rich blues, greens, and reds, accented by numerous golden Bitcoin symbols scattered throughout. The style blends traditional tarot imagery with modern memetic elements.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "TENOFBTC#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nX\n\n🎨 **VISUAL BREAKDOWN:**\nThe card is styled like a tarot card, featuring a medieval landscape with arches and towers. The color palette is vibrant, showcasing rich blues, greens, and reds, accented by numerous golden Bitcoin symbols scattered throughout. The style blends traditional tarot imagery with modern memetic elements.\n\n🧬 **MEMETIC DNA:**\n- Tarot card reference with the Roman numeral \"X\".\n- Multiple Bitcoin symbols, emphasizing crypto culture.\n- Pepe the Frog characters, a staple in meme culture.\n- Inscription \"DANK BANK\" on the tower, nodding to meme lingo.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.139Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "PEPEAVENLY",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 8,
+  "artist": "Coit",
+  "supply": 57,
+  "issuance": "May 2022",
+  "textOnCard": [
+    "PEPEAVENLY"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as an angelic figure.",
+    "References to ascension and enlightenment.",
+    "Psychedelic and surreal art style reminiscent of crypto art culture.",
+    "The grinning sun adds a touch of cosmic humor."
+  ],
+  "visualSummary": "The card features a radiant Pepe with angel wings ascending a golden staircase, surrounded by figures in vibrant, contrasting colors. The background is a psychedelic swirl of purples and blues, with a grinning sun in the corner adding a surreal touch. The composition is bold and dynamic, with a mix of digital and abstract art styles.",
+  "visualSummaryShort": "The card showcases a vibrant Pepe with angel wings ascending a golden staircase amidst colorful figures. A psychedelic background of purples and blues enhances the surreal atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "angel wings",
+    "golden staircase",
+    "psychedelic",
+    "vibrant colors",
+    "surreal",
+    "abstract art",
+    "grinning sun",
+    "dynamic composition"
+  ],
+  "textKeywords": [
+    "pepeavenly"
+  ],
+  "keywords": [
+    "pepe",
+    "angel wings",
+    "golden staircase",
+    "psychedelic",
+    "vibrant colors",
+    "surreal",
+    "abstract art",
+    "grinning sun",
+    "dynamic composition",
+    "pepeavenly"
+  ],
+  "embeddingInput": "PEPEAVENLY (Fake Rares) - Series 8 Card 8\nArtist: Coit\nSupply 57 Issued May 2022\nOn-card text: PEPEAVENLY\nVisual summary: The card features a radiant Pepe with angel wings ascending a golden staircase, surrounded by figures in vibrant, contrasting colors. The background is a psychedelic swirl of purples and blues, with a grinning sun in the corner adding a surreal touch. The composition is bold and dynamic, with a mix of digital and abstract art styles.\nMemetic references: Pepe the Frog as an angelic figure.; References to ascension and enlightenment.; Psychedelic and surreal art style reminiscent of crypto art culture.; The grinning sun adds a touch of cosmic humor.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEAVENLY#text",
+      "label": "On-card text",
+      "text": "PEPEAVENLY",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEAVENLY#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as an angelic figure.\nReferences to ascension and enlightenment.\nPsychedelic and surreal art style reminiscent of crypto art culture.\nThe grinning sun adds a touch of cosmic humor.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEAVENLY#visual",
+      "label": "Visual summary",
+      "text": "The card features a radiant Pepe with angel wings ascending a golden staircase, surrounded by figures in vibrant, contrasting colors. The background is a psychedelic swirl of purples and blues, with a grinning sun in the corner adding a surreal touch. The composition is bold and dynamic, with a mix of digital and abstract art styles.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEAVENLY#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPEAVENLY\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a radiant Pepe with angel wings ascending a golden staircase, surrounded by figures in vibrant, contrasting colors. The background is a psychedelic swirl of purples and blues, with a grinning sun in the corner adding a surreal touch. The composition is bold and dynamic, with a mix of digital and abstract art styles.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as an angelic figure.\n- References to ascension and enlightenment.\n- Psychedelic and surreal art style reminiscent of crypto art culture.\n- The grinning sun adds a touch of cosmic humor.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.842Z",
+  "sourceFactVersion": 1
+}

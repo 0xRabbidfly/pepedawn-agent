@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "asset": "LETSPHONKWLK",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 14,
+  "artist": "Darkfarms",
+  "supply": 39,
+  "issuance": "November 2022",
+  "textOnCard": [
+    "LETSPHONKWLK"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog: Iconic meme character symbolizing internet culture.",
+    "Building on fire: Possible reference to chaos or financial collapse.",
+    "Grim Reaper: Represents dark humor, often tied to inevitability or fate.",
+    "Walking confidently: Could imply resilience or nonchalance amidst chaos."
+  ],
+  "visualSummary": "The card features two Pepe the Frog characters wearing purple and red outfits, walking confidently in front of a classical building that is engulfed in flames. The Grim Reaper can be seen lurking in the background, adding a dark twist to the scene. The color palette is vibrant with a mix of greens, purples, reds, and oranges, creating a dynamic and eye-catching composition.",
+  "visualSummaryShort": "The card depicts two Pepe the Frog characters in vibrant purple and red outfits, confidently walking in front of a classical building on fire. The presence of the Grim Reaper in the background adds a dark element to the lively scene.",
+  "visualKeywords": [
+    "pepe the frog",
+    "purple outfit",
+    "red outfit",
+    "classical building",
+    "fire",
+    "grim reaper",
+    "vibrant colors",
+    "dynamic composition"
+  ],
+  "textKeywords": [
+    "letsphonkwlk"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "purple outfit",
+    "red outfit",
+    "classical building",
+    "fire",
+    "grim reaper",
+    "vibrant colors",
+    "dynamic composition",
+    "letsphonkwlk"
+  ],
+  "embeddingInput": "LETSPHONKWLK (Fake Rares) - Series 12 Card 14\nArtist: Darkfarms\nSupply 39 Issued November 2022\nOn-card text: LETSPHONKWLK\nVisual summary: The card features two Pepe the Frog characters wearing purple and red outfits, walking confidently in front of a classical building that is engulfed in flames. The Grim Reaper can be seen lurking in the background, adding a dark twist to the scene. The color palette is vibrant with a mix of greens, purples, reds, and oranges, creating a dynamic and eye-catching composition.\nMemetic references: Pepe the Frog: Iconic meme character symbolizing internet culture.; Building on fire: Possible reference to chaos or financial collapse.; Grim Reaper: Represents dark humor, often tied to inevitability or fate.; Walking confidently: Could imply resilience or nonchalance amidst chaos.",
+  "embeddingBlocks": [
+    {
+      "id": "LETSPHONKWLK#text",
+      "label": "On-card text",
+      "text": "LETSPHONKWLK",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "LETSPHONKWLK#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog: Iconic meme character symbolizing internet culture.\nBuilding on fire: Possible reference to chaos or financial collapse.\nGrim Reaper: Represents dark humor, often tied to inevitability or fate.\nWalking confidently: Could imply resilience or nonchalance amidst chaos.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LETSPHONKWLK#visual",
+      "label": "Visual summary",
+      "text": "The card features two Pepe the Frog characters wearing purple and red outfits, walking confidently in front of a classical building that is engulfed in flames. The Grim Reaper can be seen lurking in the background, adding a dark twist to the scene. The color palette is vibrant with a mix of greens, purples, reds, and oranges, creating a dynamic and eye-catching composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LETSPHONKWLK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nLETSPHONKWLK\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features two Pepe the Frog characters wearing purple and red outfits, walking confidently in front of a classical building that is engulfed in flames. The Grim Reaper can be seen lurking in the background, adding a dark twist to the scene. The color palette is vibrant with a mix of greens, purples, reds, and oranges, creating a dynamic and eye-catching composition.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog: Iconic meme character symbolizing internet culture.\n- Building on fire: Possible reference to chaos or financial collapse.\n- Grim Reaper: Represents dark humor, often tied to inevitability or fate.\n- Walking confidently: Could imply resilience or nonchalance amidst chaos.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.739Z",
+  "sourceFactVersion": 1
+}

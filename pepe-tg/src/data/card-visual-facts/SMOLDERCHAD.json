@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "asset": "SMOLDERCHAD",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 1,
+  "artist": "Dankfarms",
+  "supply": 21,
+  "issuance": "January 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog reference with a muscular twist.",
+    "Elements of \"Chad\" meme culture, symbolizing confidence and dominance.",
+    "Crypto culture's affinity for pixel art and retro aesthetics.",
+    "Flames may symbolize the \"burn\" or \"fire\" often associated with intense market activity."
+  ],
+  "visualSummary": "The card showcases a pixel art style with a bold and vibrant color palette. Dominated by shades of green, orange, and black, it features a muscular frog character with a thick beard, set against a backdrop of flames. The composition emphasizes strength and intensity, creating a dynamic visual impact.",
+  "visualSummaryShort": "The card features a muscular frog character in a pixel art style, highlighted by a vibrant color palette of green, orange, and black. The backdrop of flames adds intensity and a dynamic feel to the composition.",
+  "visualKeywords": [
+    "pixel art",
+    "frog",
+    "beard",
+    "flames",
+    "green",
+    "orange",
+    "black",
+    "strength",
+    "intensity"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pixel art",
+    "frog",
+    "beard",
+    "flames",
+    "green",
+    "orange",
+    "black",
+    "strength",
+    "intensity"
+  ],
+  "embeddingInput": "SMOLDERCHAD (Fake Rares) - Series 13 Card 1\nArtist: Dankfarms\nSupply 21 Issued January 2023\nOn-card text: none detected\nVisual summary: The card showcases a pixel art style with a bold and vibrant color palette. Dominated by shades of green, orange, and black, it features a muscular frog character with a thick beard, set against a backdrop of flames. The composition emphasizes strength and intensity, creating a dynamic visual impact.\nMemetic references: Pepe the Frog reference with a muscular twist.; Elements of \"Chad\" meme culture, symbolizing confidence and dominance.; Crypto culture's affinity for pixel art and retro aesthetics.; Flames may symbolize the \"burn\" or \"fire\" often associated with intense market activity.",
+  "embeddingBlocks": [
+    {
+      "id": "SMOLDERCHAD#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference with a muscular twist.\nElements of \"Chad\" meme culture, symbolizing confidence and dominance.\nCrypto culture's affinity for pixel art and retro aesthetics.\nFlames may symbolize the \"burn\" or \"fire\" often associated with intense market activity.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SMOLDERCHAD#visual",
+      "label": "Visual summary",
+      "text": "The card showcases a pixel art style with a bold and vibrant color palette. Dominated by shades of green, orange, and black, it features a muscular frog character with a thick beard, set against a backdrop of flames. The composition emphasizes strength and intensity, creating a dynamic visual impact.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SMOLDERCHAD#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card showcases a pixel art style with a bold and vibrant color palette. Dominated by shades of green, orange, and black, it features a muscular frog character with a thick beard, set against a backdrop of flames. The composition emphasizes strength and intensity, creating a dynamic visual impact.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference with a muscular twist.\n- Elements of \"Chad\" meme culture, symbolizing confidence and dominance.\n- Crypto culture's affinity for pixel art and retro aesthetics.\n- Flames may symbolize the \"burn\" or \"fire\" often associated with intense market activity.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.118Z",
+  "sourceFactVersion": 1
+}

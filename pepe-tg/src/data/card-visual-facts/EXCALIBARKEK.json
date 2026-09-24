@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "asset": "EXCALIBARKEK",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 48,
+  "artist": "Cronos One",
+  "supply": 21,
+  "issuance": "December 2024",
+  "textOnCard": [
+    "EXCALIBAR KEK",
+    "Legendary artifact: +55 equipment",
+    "\"wow what fuck he did it\"",
+    "One day a king will come and the holy bar will rise again"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure, a staple in meme culture.",
+    "References to legendary artifacts and equipment typical in RPGs.",
+    "Crypto culture nods with percentage and multiplication symbols indicating market gains.",
+    "Medieval and King Arthur symbolism with the \"Excalibur\" reference."
+  ],
+  "visualSummary": "The card features a triumphant Pepe the Frog standing in a medieval battle scene, holding a glowing green bar labeled with percentages like +50% and 10x. Pepe is dressed in a blue robe, contrasting with the dark and gritty battlefield filled with soldiers in the background. The color palette mixes dark earthy tones with vibrant green, creating a striking contrast.",
+  "visualSummaryShort": "The card depicts a victorious Pepe the Frog in a medieval battle, holding a glowing green bar. The scene is set against a dark battlefield, with a color palette of earthy tones and vibrant green.",
+  "visualKeywords": [
+    "pepe",
+    "medieval",
+    "battlefield",
+    "green bar",
+    "blue robe",
+    "dark tones",
+    "triumphant",
+    "soldiers",
+    "glowing",
+    "contrast"
+  ],
+  "textKeywords": [
+    "excalibar",
+    "kek",
+    "legendary",
+    "artifact",
+    "equipment",
+    "wow",
+    "what",
+    "fuck",
+    "did",
+    "one",
+    "day",
+    "king",
+    "will",
+    "come",
+    "holy",
+    "bar",
+    "rise",
+    "again"
+  ],
+  "keywords": [
+    "pepe",
+    "medieval",
+    "battlefield",
+    "green bar",
+    "blue robe",
+    "dark tones",
+    "triumphant",
+    "soldiers",
+    "glowing",
+    "contrast",
+    "excalibar",
+    "kek",
+    "legendary",
+    "artifact",
+    "equipment",
+    "wow",
+    "what",
+    "fuck",
+    "did",
+    "one",
+    "day",
+    "king",
+    "will",
+    "come",
+    "holy",
+    "bar",
+    "rise",
+    "again"
+  ],
+  "embeddingInput": "EXCALIBARKEK (Fake Rares) - Series 17 Card 48\nArtist: Cronos One\nSupply 21 Issued December 2024\nOn-card text: EXCALIBAR KEK | Legendary artifact: +55 equipment | \"wow what fuck he did it\" | One day a king will come and the holy bar will rise again\nVisual summary: The card features a triumphant Pepe the Frog standing in a medieval battle scene, holding a glowing green bar labeled with percentages like +50% and 10x. Pepe is dressed in a blue robe, contrasting with the dark and gritty battlefield filled with soldiers in the background. The color palette mixes dark earthy tones with vibrant green, creating a striking contrast.\nMemetic references: Pepe the Frog as a central figure, a staple in meme culture.; References to legendary artifacts and equipment typical in RPGs.; Crypto culture nods with percentage and multiplication symbols indicating market gains.; Medieval and King Arthur symbolism with the \"Excalibur\" reference.",
+  "embeddingBlocks": [
+    {
+      "id": "EXCALIBARKEK#text",
+      "label": "On-card text",
+      "text": "EXCALIBAR KEK | Legendary artifact: +55 equipment | \"wow what fuck he did it\" | One day a king will come and the holy bar will rise again",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "EXCALIBARKEK#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure, a staple in meme culture.\nReferences to legendary artifacts and equipment typical in RPGs.\nCrypto culture nods with percentage and multiplication symbols indicating market gains.\nMedieval and King Arthur symbolism with the \"Excalibur\" reference.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "EXCALIBARKEK#visual",
+      "label": "Visual summary",
+      "text": "The card features a triumphant Pepe the Frog standing in a medieval battle scene, holding a glowing green bar labeled with percentages like +50% and 10x. Pepe is dressed in a blue robe, contrasting with the dark and gritty battlefield filled with soldiers in the background. The color palette mixes dark earthy tones with vibrant green, creating a striking contrast.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "EXCALIBARKEK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nEXCALIBAR KEK  \nLegendary artifact: +55 equipment  \n\"wow what fuck he did it\"  \nOne day a king will come and the holy bar will rise again\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a triumphant Pepe the Frog standing in a medieval battle scene, holding a glowing green bar labeled with percentages like +50% and 10x. Pepe is dressed in a blue robe, contrasting with the dark and gritty battlefield filled with soldiers in the background. The color palette mixes dark earthy tones with vibrant green, creating a striking contrast.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure, a staple in meme culture.\n- References to legendary artifacts and equipment typical in RPGs.\n- Crypto culture nods with percentage and multiplication symbols indicating market gains.\n- Medieval and King Arthur symbolism with the \"Excalibur\" reference.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.431Z",
+  "sourceFactVersion": 1
+}

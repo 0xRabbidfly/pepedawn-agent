@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "asset": "PEPEWINTER",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 40,
+  "artist": "HNFT Pepe",
+  "supply": 169,
+  "issuance": "August 2023",
+  "textOnCard": [
+    "PEPE WINTER",
+    "❤️ = 0.187 Atk= -69 Spd= 0 Ele= 🌐",
+    "Winter is coming… Use this card to obtain peace during a 5 month crypto winter",
+    "⭐ Rareness Score ⭐ 00"
+  ],
+  "memeticReferences": [
+    "References the iconic \"Winter is coming\" from Game of Thrones.",
+    "Pepe the Frog, a staple in meme culture and crypto communities.",
+    "Crypto winter metaphor, symbolizing bear markets and downturns."
+  ],
+  "visualSummary": "The card features a snow-covered Pepe the Frog with a distressed expression, embodying a wintery theme. The color palette is dominated by icy blues and whites, giving a chilling yet serene feel. The artistic style is reminiscent of classic trading cards, with a digital twist, blending cartoonish elements with a dramatic, frosty atmosphere.",
+  "visualSummaryShort": "The card depicts a snow-covered Pepe the Frog with a distressed expression, set against a wintery backdrop. The icy blue and white color palette creates a chilling yet serene atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "snow",
+    "blue",
+    "white",
+    "winter",
+    "distressed",
+    "frosty",
+    "cartoonish",
+    "serene"
+  ],
+  "textKeywords": [
+    "winter",
+    "187",
+    "atk",
+    "spd",
+    "ele",
+    "coming",
+    "use",
+    "obtain",
+    "peace",
+    "during",
+    "month",
+    "crypto",
+    "rareness",
+    "score"
+  ],
+  "keywords": [
+    "pepe",
+    "snow",
+    "blue",
+    "white",
+    "winter",
+    "distressed",
+    "frosty",
+    "cartoonish",
+    "serene",
+    "187",
+    "atk",
+    "spd",
+    "ele",
+    "coming",
+    "use",
+    "obtain",
+    "peace",
+    "during",
+    "month",
+    "crypto",
+    "rareness",
+    "score"
+  ],
+  "embeddingInput": "PEPEWINTER (Fake Rares) - Series 16 Card 40\nArtist: HNFT Pepe\nSupply 169 Issued August 2023\nOn-card text: PEPE WINTER | ❤️ = 0.187 Atk= -69 Spd= 0 Ele= 🌐 | Winter is coming… Use this card to obtain peace during a 5 month crypto winter | ⭐ Rareness Score ⭐ 00\nVisual summary: The card features a snow-covered Pepe the Frog with a distressed expression, embodying a wintery theme. The color palette is dominated by icy blues and whites, giving a chilling yet serene feel. The artistic style is reminiscent of classic trading cards, with a digital twist, blending cartoonish elements with a dramatic, frosty atmosphere.\nMemetic references: References the iconic \"Winter is coming\" from Game of Thrones.; Pepe the Frog, a staple in meme culture and crypto communities.; Crypto winter metaphor, symbolizing bear markets and downturns.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEWINTER#text",
+      "label": "On-card text",
+      "text": "PEPE WINTER | ❤️ = 0.187 Atk= -69 Spd= 0 Ele= 🌐 | Winter is coming… Use this card to obtain peace during a 5 month crypto winter | ⭐ Rareness Score ⭐ 00",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEWINTER#memetic",
+      "label": "Memetic references",
+      "text": "References the iconic \"Winter is coming\" from Game of Thrones.\nPepe the Frog, a staple in meme culture and crypto communities.\nCrypto winter metaphor, symbolizing bear markets and downturns.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEWINTER#visual",
+      "label": "Visual summary",
+      "text": "The card features a snow-covered Pepe the Frog with a distressed expression, embodying a wintery theme. The color palette is dominated by icy blues and whites, giving a chilling yet serene feel. The artistic style is reminiscent of classic trading cards, with a digital twist, blending cartoonish elements with a dramatic, frosty atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEWINTER#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE WINTER  \n❤️ = 0.187 Atk= -69 Spd= 0 Ele= 🌐  \nWinter is coming… Use this card to obtain peace during a 5 month crypto winter  \n⭐ Rareness Score ⭐ 00\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a snow-covered Pepe the Frog with a distressed expression, embodying a wintery theme. The color palette is dominated by icy blues and whites, giving a chilling yet serene feel. The artistic style is reminiscent of classic trading cards, with a digital twist, blending cartoonish elements with a dramatic, frosty atmosphere.\n\n🧬 **MEMETIC DNA:**\n- References the iconic \"Winter is coming\" from Game of Thrones.\n- Pepe the Frog, a staple in meme culture and crypto communities.\n- Crypto winter metaphor, symbolizing bear markets and downturns.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.011Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "asset": "MISSPEEPS",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 12,
+  "artist": "PEEPS",
+  "supply": 57,
+  "issuance": "August 2022",
+  "textOnCard": [
+    "PEEPS",
+    "THERE IS A NEW MISTRESS IN TOWN"
+  ],
+  "memeticReferences": [
+    "References to noir and vintage film aesthetics.",
+    "The green tint hints at crypto culture, possibly nodding to green candles or bullish vibes.",
+    "The femme fatale trope, reminiscent of classic film characters."
+  ],
+  "visualSummary": "The card features a retro, noir-style image with a green tint, depicting a mysterious woman holding a cigarette. The background is smoky and blurred, enhancing the enigmatic and vintage feel. The color palette is dominated by shades of green and black, with pops of red on the woman’s nails, creating a dramatic and stylish composition.",
+  "visualSummaryShort": "The card showcases a mysterious woman in a retro noir style, highlighted by a green tint and a smoky background. The dramatic color palette features shades of green and black, accented by red nails.",
+  "visualKeywords": [
+    "noir",
+    "green tint",
+    "smoky",
+    "mysterious woman",
+    "cigarette",
+    "vintage",
+    "black",
+    "red nails"
+  ],
+  "textKeywords": [
+    "peeps",
+    "new",
+    "mistress",
+    "town"
+  ],
+  "keywords": [
+    "noir",
+    "green tint",
+    "smoky",
+    "mysterious woman",
+    "cigarette",
+    "vintage",
+    "black",
+    "red nails",
+    "peeps",
+    "new",
+    "mistress",
+    "town"
+  ],
+  "embeddingInput": "MISSPEEPS (Fake Rares) - Series 11 Card 12\nArtist: PEEPS\nSupply 57 Issued August 2022\nOn-card text: PEEPS | THERE IS A NEW MISTRESS IN TOWN\nVisual summary: The card features a retro, noir-style image with a green tint, depicting a mysterious woman holding a cigarette. The background is smoky and blurred, enhancing the enigmatic and vintage feel. The color palette is dominated by shades of green and black, with pops of red on the woman’s nails, creating a dramatic and stylish composition.\nMemetic references: References to noir and vintage film aesthetics.; The green tint hints at crypto culture, possibly nodding to green candles or bullish vibes.; The femme fatale trope, reminiscent of classic film characters.",
+  "embeddingBlocks": [
+    {
+      "id": "MISSPEEPS#text",
+      "label": "On-card text",
+      "text": "PEEPS | THERE IS A NEW MISTRESS IN TOWN",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MISSPEEPS#memetic",
+      "label": "Memetic references",
+      "text": "References to noir and vintage film aesthetics.\nThe green tint hints at crypto culture, possibly nodding to green candles or bullish vibes.\nThe femme fatale trope, reminiscent of classic film characters.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MISSPEEPS#visual",
+      "label": "Visual summary",
+      "text": "The card features a retro, noir-style image with a green tint, depicting a mysterious woman holding a cigarette. The background is smoky and blurred, enhancing the enigmatic and vintage feel. The color palette is dominated by shades of green and black, with pops of red on the woman’s nails, creating a dramatic and stylish composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MISSPEEPS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEEPS  \nTHERE IS A NEW MISTRESS IN TOWN\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a retro, noir-style image with a green tint, depicting a mysterious woman holding a cigarette. The background is smoky and blurred, enhancing the enigmatic and vintage feel. The color palette is dominated by shades of green and black, with pops of red on the woman’s nails, creating a dramatic and stylish composition.\n\n🧬 **MEMETIC DNA:**\n- References to noir and vintage film aesthetics.\n- The green tint hints at crypto culture, possibly nodding to green candles or bullish vibes.\n- The femme fatale trope, reminiscent of classic film characters.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.775Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "COOGIPEPE",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 41,
+  "artist": "ROCHIGG",
+  "supply": 175,
+  "issuance": "January 2022",
+  "textOnCard": [
+    "COOGIPEPE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure in meme culture.",
+    "Coogi sweater reference, popularized by 90s hip-hop.",
+    "Bitcoin symbolism, representing crypto wealth.",
+    "Cigar as a nod to a luxurious, carefree lifestyle."
+  ],
+  "visualSummary": "This card features Pepe the Frog wearing a colorful, patterned sweater reminiscent of a Coogi design. He’s holding a stack of Bitcoin coins in his hands, with a cigar in his mouth, exuding a confident and laid-back vibe. The background is a vibrant mix of abstract, swirling patterns in reds, purples, and yellows, adding to its dynamic and eye-catching appeal.",
+  "visualSummaryShort": "The card showcases Pepe the Frog in a colorful Coogi-style sweater, confidently holding Bitcoin coins and smoking a cigar. The vibrant background features abstract swirling patterns in reds, purples, and yellows.",
+  "visualKeywords": [
+    "pepe",
+    "sweater",
+    "bitcoin",
+    "cigar",
+    "abstract",
+    "vibrant",
+    "swirling",
+    "colors",
+    "confident",
+    "laid-back"
+  ],
+  "textKeywords": [
+    "coogipepe"
+  ],
+  "keywords": [
+    "pepe",
+    "sweater",
+    "bitcoin",
+    "cigar",
+    "abstract",
+    "vibrant",
+    "swirling",
+    "colors",
+    "confident",
+    "laid-back",
+    "coogipepe"
+  ],
+  "embeddingInput": "COOGIPEPE (Fake Rares) - Series 4 Card 41\nArtist: ROCHIGG\nSupply 175 Issued January 2022\nOn-card text: COOGIPEPE\nVisual summary: This card features Pepe the Frog wearing a colorful, patterned sweater reminiscent of a Coogi design. He’s holding a stack of Bitcoin coins in his hands, with a cigar in his mouth, exuding a confident and laid-back vibe. The background is a vibrant mix of abstract, swirling patterns in reds, purples, and yellows, adding to its dynamic and eye-catching appeal.\nMemetic references: Pepe the Frog as a central figure in meme culture.; Coogi sweater reference, popularized by 90s hip-hop.; Bitcoin symbolism, representing crypto wealth.; Cigar as a nod to a luxurious, carefree lifestyle.",
+  "embeddingBlocks": [
+    {
+      "id": "COOGIPEPE#text",
+      "label": "On-card text",
+      "text": "COOGIPEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "COOGIPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure in meme culture.\nCoogi sweater reference, popularized by 90s hip-hop.\nBitcoin symbolism, representing crypto wealth.\nCigar as a nod to a luxurious, carefree lifestyle.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "COOGIPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features Pepe the Frog wearing a colorful, patterned sweater reminiscent of a Coogi design. He’s holding a stack of Bitcoin coins in his hands, with a cigar in his mouth, exuding a confident and laid-back vibe. The background is a vibrant mix of abstract, swirling patterns in reds, purples, and yellows, adding to its dynamic and eye-catching appeal.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "COOGIPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nCOOGIPEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features Pepe the Frog wearing a colorful, patterned sweater reminiscent of a Coogi design. He’s holding a stack of Bitcoin coins in his hands, with a cigar in his mouth, exuding a confident and laid-back vibe. The background is a vibrant mix of abstract, swirling patterns in reds, purples, and yellows, adding to its dynamic and eye-catching appeal.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure in meme culture.\n- Coogi sweater reference, popularized by 90s hip-hop.\n- Bitcoin symbolism, representing crypto wealth.\n- Cigar as a nod to a luxurious, carefree lifestyle.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.366Z",
+  "sourceFactVersion": 1
+}

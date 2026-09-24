@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "asset": "PEPEDROPOUT",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 14,
+  "artist": "Mr. HODLPIG",
+  "supply": 122,
+  "issuance": "April 2023",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a character with a playful expression. The background is vibrant and colorful, enhancing the cheerful mood.",
+  "visualKeywords": [
+    "playful",
+    "vibrant",
+    "colorful",
+    "character",
+    "cheerful"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "playful",
+    "vibrant",
+    "colorful",
+    "character",
+    "cheerful"
+  ],
+  "embeddingInput": "PEPEDROPOUT (Fake Rares) - Series 14 Card 14\nArtist: Mr. HODLPIG\nSupply 122 Issued April 2023\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEDROPOUT#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't help with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.874Z",
+  "sourceFactVersion": 1
+}

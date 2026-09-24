@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "asset": "FAKERUMORS",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 9,
+  "artist": "Jak",
+  "supply": 62,
+  "issuance": "June 2022",
+  "textOnCard": [
+    "RUMORS OF PEPE",
+    "RUMORS = 💯% FAKE!",
+    "There's a new Pepe in town and his name is..."
+  ],
+  "memeticReferences": [
+    "References to Pepe the Frog, a well-known meme character.",
+    "Use of the \"💯\" emoji, popular in meme culture.",
+    "Glitch art style, reflecting internet and crypto culture."
+  ],
+  "visualSummary": "The card features a vibrant, glitchy aesthetic with neon colors, blending greens, purples, and blues. A stylized mouth with a red tongue and jagged teeth is prominent, set against a distorted background that mimics digital noise. The overall design is chaotic and eye-catching, reminiscent of early internet art styles.",
+  "visualSummaryShort": "The card showcases a vibrant, glitchy design with neon colors and a stylized mouth featuring jagged teeth. The chaotic aesthetic is set against a distorted background that evokes early internet art styles.",
+  "visualKeywords": [
+    "glitch",
+    "neon colors",
+    "mouth",
+    "jagged teeth",
+    "digital noise",
+    "chaotic",
+    "vibrant",
+    "stylized",
+    "distorted",
+    "early internet"
+  ],
+  "textKeywords": [
+    "rumors",
+    "new",
+    "town",
+    "his",
+    "name"
+  ],
+  "keywords": [
+    "glitch",
+    "neon colors",
+    "mouth",
+    "jagged teeth",
+    "digital noise",
+    "chaotic",
+    "vibrant",
+    "stylized",
+    "distorted",
+    "early internet",
+    "rumors",
+    "new",
+    "town",
+    "his",
+    "name"
+  ],
+  "embeddingInput": "FAKERUMORS (Fake Rares) - Series 8 Card 9\nArtist: Jak\nSupply 62 Issued June 2022\nOn-card text: RUMORS OF PEPE | RUMORS = 💯% FAKE! | There's a new Pepe in town and his name is...\nVisual summary: The card features a vibrant, glitchy aesthetic with neon colors, blending greens, purples, and blues. A stylized mouth with a red tongue and jagged teeth is prominent, set against a distorted background that mimics digital noise. The overall design is chaotic and eye-catching, reminiscent of early internet art styles.\nMemetic references: References to Pepe the Frog, a well-known meme character.; Use of the \"💯\" emoji, popular in meme culture.; Glitch art style, reflecting internet and crypto culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKERUMORS#text",
+      "label": "On-card text",
+      "text": "RUMORS OF PEPE | RUMORS = 💯% FAKE! | There's a new Pepe in town and his name is...",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKERUMORS#memetic",
+      "label": "Memetic references",
+      "text": "References to Pepe the Frog, a well-known meme character.\nUse of the \"💯\" emoji, popular in meme culture.\nGlitch art style, reflecting internet and crypto culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKERUMORS#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant, glitchy aesthetic with neon colors, blending greens, purples, and blues. A stylized mouth with a red tongue and jagged teeth is prominent, set against a distorted background that mimics digital noise. The overall design is chaotic and eye-catching, reminiscent of early internet art styles.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKERUMORS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- RUMORS OF PEPE\n- RUMORS = 💯% FAKE!\n- There's a new Pepe in town and his name is...\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant, glitchy aesthetic with neon colors, blending greens, purples, and blues. A stylized mouth with a red tongue and jagged teeth is prominent, set against a distorted background that mimics digital noise. The overall design is chaotic and eye-catching, reminiscent of early internet art styles.\n\n🧬 **MEMETIC DNA:**\n- References to Pepe the Frog, a well-known meme character.\n- Use of the \"💯\" emoji, popular in meme culture.\n- Glitch art style, reflecting internet and crypto culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.571Z",
+  "sourceFactVersion": 1
+}

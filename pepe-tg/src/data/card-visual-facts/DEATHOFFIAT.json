@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "DEATHOFFIAT",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 18,
+  "artist": "EMBLEMATIX",
+  "supply": 121,
+  "issuance": "July 2023",
+  "textOnCard": [
+    "1",
+    "121",
+    "Emblem by X"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure.",
+    "Reference to \"The Death of Marat\" by Jacques-Louis David.",
+    "Bitcoin logo prominently featured.",
+    "Plays on themes of financial revolution and the downfall of traditional fiat currencies."
+  ],
+  "visualSummary": "The card depicts a green-skinned figure reminiscent of Pepe the Frog, lying draped over a bathtub in a pose echoing the famous painting \"The Death of Marat.\" The color palette is rich with dark browns and ochres, creating a somber and dramatic atmosphere. The figure holds a paper, and beside them is a wooden box marked with the Bitcoin logo, adding a modern twist to the classical reference.",
+  "visualSummaryShort": "The card features a green-skinned figure resembling Pepe the Frog, draped over a bathtub in a dramatic pose. The color palette includes dark browns and ochres, enhancing the somber atmosphere.",
+  "visualKeywords": [
+    "green figure",
+    "bathtub",
+    "dark browns",
+    "ochres",
+    "paper",
+    "wooden box",
+    "bitcoin logo",
+    "dramatic pose"
+  ],
+  "textKeywords": [
+    "121",
+    "emblem"
+  ],
+  "keywords": [
+    "green figure",
+    "bathtub",
+    "dark browns",
+    "ochres",
+    "paper",
+    "wooden box",
+    "bitcoin logo",
+    "dramatic pose",
+    "121",
+    "emblem"
+  ],
+  "embeddingInput": "DEATHOFFIAT (Fake Rares) - Series 15 Card 18\nArtist: EMBLEMATIX\nSupply 121 Issued July 2023\nOn-card text: 1 | 121 | Emblem by X\nVisual summary: The card depicts a green-skinned figure reminiscent of Pepe the Frog, lying draped over a bathtub in a pose echoing the famous painting \"The Death of Marat.\" The color palette is rich with dark browns and ochres, creating a somber and dramatic atmosphere. The figure holds a paper, and beside them is a wooden box marked with the Bitcoin logo, adding a modern twist to the classical reference.\nMemetic references: Pepe the Frog as a central figure.; Reference to \"The Death of Marat\" by Jacques-Louis David.; Bitcoin logo prominently featured.; Plays on themes of financial revolution and the downfall of traditional fiat currencies.",
+  "embeddingBlocks": [
+    {
+      "id": "DEATHOFFIAT#text",
+      "label": "On-card text",
+      "text": "1 | 121 | Emblem by X",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "DEATHOFFIAT#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure.\nReference to \"The Death of Marat\" by Jacques-Louis David.\nBitcoin logo prominently featured.\nPlays on themes of financial revolution and the downfall of traditional fiat currencies.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "DEATHOFFIAT#visual",
+      "label": "Visual summary",
+      "text": "The card depicts a green-skinned figure reminiscent of Pepe the Frog, lying draped over a bathtub in a pose echoing the famous painting \"The Death of Marat.\" The color palette is rich with dark browns and ochres, creating a somber and dramatic atmosphere. The figure holds a paper, and beside them is a wooden box marked with the Bitcoin logo, adding a modern twist to the classical reference.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "DEATHOFFIAT#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n1/121  \nEmblem by X\n\n🎨 **VISUAL BREAKDOWN:**\nThe card depicts a green-skinned figure reminiscent of Pepe the Frog, lying draped over a bathtub in a pose echoing the famous painting \"The Death of Marat.\" The color palette is rich with dark browns and ochres, creating a somber and dramatic atmosphere. The figure holds a paper, and beside them is a wooden box marked with the Bitcoin logo, adding a modern twist to the classical reference.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure.\n- Reference to \"The Death of Marat\" by Jacques-Louis David.\n- Bitcoin logo prominently featured.\n- Plays on themes of financial revolution and the downfall of traditional fiat currencies.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.388Z",
+  "sourceFactVersion": 1
+}

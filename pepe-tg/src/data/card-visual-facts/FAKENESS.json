@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "FAKENESS",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 25,
+  "artist": "FWD x MR",
+  "supply": 55,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "FAKENESS"
+  ],
+  "memeticReferences": [
+    "Loch Ness Monster reference.",
+    "Pepe the Frog-inspired character.",
+    "Steampunk aesthetics.",
+    "Crypto culture nod with the \"FAKENESS\" play on words."
+  ],
+  "visualSummary": "The card features a whimsical, split-level scene with a giant sea creature resembling the Loch Ness Monster emerging from a lake. Above water, a figure with a green head stands on a wooden boat holding a fishing rod, while below, two divers operate a steampunk-style submarine. The color palette is a mix of soft greens and browns, giving it a vintage, storybook feel.",
+  "visualSummaryShort": "The card depicts a whimsical scene with a giant sea creature and a figure on a boat. The color palette features soft greens and browns, creating a vintage, storybook atmosphere.",
+  "visualKeywords": [
+    "sea creature",
+    "boat",
+    "fishing rod",
+    "divers",
+    "submarine",
+    "green head",
+    "vintage",
+    "storybook",
+    "soft colors",
+    "whimsical"
+  ],
+  "textKeywords": [
+    "fakeness"
+  ],
+  "keywords": [
+    "sea creature",
+    "boat",
+    "fishing rod",
+    "divers",
+    "submarine",
+    "green head",
+    "vintage",
+    "storybook",
+    "soft colors",
+    "whimsical",
+    "fakeness"
+  ],
+  "embeddingInput": "FAKENESS (Fake Rares) - Series 9 Card 25\nArtist: FWD x MR\nSupply 55 Issued February 2022\nOn-card text: FAKENESS\nVisual summary: The card features a whimsical, split-level scene with a giant sea creature resembling the Loch Ness Monster emerging from a lake. Above water, a figure with a green head stands on a wooden boat holding a fishing rod, while below, two divers operate a steampunk-style submarine. The color palette is a mix of soft greens and browns, giving it a vintage, storybook feel.\nMemetic references: Loch Ness Monster reference.; Pepe the Frog-inspired character.; Steampunk aesthetics.; Crypto culture nod with the \"FAKENESS\" play on words.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKENESS#text",
+      "label": "On-card text",
+      "text": "FAKENESS",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKENESS#memetic",
+      "label": "Memetic references",
+      "text": "Loch Ness Monster reference.\nPepe the Frog-inspired character.\nSteampunk aesthetics.\nCrypto culture nod with the \"FAKENESS\" play on words.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKENESS#visual",
+      "label": "Visual summary",
+      "text": "The card features a whimsical, split-level scene with a giant sea creature resembling the Loch Ness Monster emerging from a lake. Above water, a figure with a green head stands on a wooden boat holding a fishing rod, while below, two divers operate a steampunk-style submarine. The color palette is a mix of soft greens and browns, giving it a vintage, storybook feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKENESS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKENESS\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a whimsical, split-level scene with a giant sea creature resembling the Loch Ness Monster emerging from a lake. Above water, a figure with a green head stands on a wooden boat holding a fishing rod, while below, two divers operate a steampunk-style submarine. The color palette is a mix of soft greens and browns, giving it a vintage, storybook feel.\n\n🧬 **MEMETIC DNA:**\n- Loch Ness Monster reference.\n- Pepe the Frog-inspired character.\n- Steampunk aesthetics.\n- Crypto culture nod with the \"FAKENESS\" play on words.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.536Z",
+  "sourceFactVersion": 1
+}

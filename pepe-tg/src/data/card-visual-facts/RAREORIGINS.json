@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "asset": "RAREORIGINS",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 23,
+  "artist": "Mallery",
+  "supply": 296,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "\"RAREORIGINS\" \"Gambler of the most rare existence\" \"Rare Satoshi\""
+  ],
+  "memeticReferences": [
+    "References to Bitcoin and crypto with symbols like the Bitcoin logo.",
+    "Pepe the Frog appears on a billboard, a nod to classic meme culture.",
+    "The phrase \"Rare Satoshi\" hints at the pseudonymous creator of Bitcoin, Satoshi Nakamoto."
+  ],
+  "visualSummary": "The card features a bustling cityscape reminiscent of Times Square at night, with bright neon signs and billboards illuminating the scene. The color palette includes deep blues and purples contrasted by vibrant neon greens and reds. The artistic style is detailed and comic-like, with various characters and elements drawing the viewer's eye across the scene.",
+  "visualSummaryShort": "The card showcases a vibrant cityscape at night, filled with neon signs and a dynamic atmosphere. The detailed comic-like style enhances the lively scene with contrasting colors.",
+  "visualKeywords": [
+    "cityscape",
+    "neon signs",
+    "night",
+    "blue palette",
+    "purple hues",
+    "comic style",
+    "vibrant colors",
+    "bustling",
+    "characters",
+    "billboards"
+  ],
+  "textKeywords": [
+    "rareorigins",
+    "gambler",
+    "existence",
+    "satoshi"
+  ],
+  "keywords": [
+    "cityscape",
+    "neon signs",
+    "night",
+    "blue palette",
+    "purple hues",
+    "comic style",
+    "vibrant colors",
+    "bustling",
+    "characters",
+    "billboards",
+    "rareorigins",
+    "gambler",
+    "existence",
+    "satoshi"
+  ],
+  "embeddingInput": "RAREORIGINS (Fake Rares) - Series 9 Card 23\nArtist: Mallery\nSupply 296 Issued July 2022\nOn-card text: \"RAREORIGINS\" \"Gambler of the most rare existence\" \"Rare Satoshi\"\nVisual summary: The card features a bustling cityscape reminiscent of Times Square at night, with bright neon signs and billboards illuminating the scene. The color palette includes deep blues and purples contrasted by vibrant neon greens and reds. The artistic style is detailed and comic-like, with various characters and elements drawing the viewer's eye across the scene.\nMemetic references: References to Bitcoin and crypto with symbols like the Bitcoin logo.; Pepe the Frog appears on a billboard, a nod to classic meme culture.; The phrase \"Rare Satoshi\" hints at the pseudonymous creator of Bitcoin, Satoshi Nakamoto.",
+  "embeddingBlocks": [
+    {
+      "id": "RAREORIGINS#text",
+      "label": "On-card text",
+      "text": "\"RAREORIGINS\" \"Gambler of the most rare existence\" \"Rare Satoshi\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "RAREORIGINS#memetic",
+      "label": "Memetic references",
+      "text": "References to Bitcoin and crypto with symbols like the Bitcoin logo.\nPepe the Frog appears on a billboard, a nod to classic meme culture.\nThe phrase \"Rare Satoshi\" hints at the pseudonymous creator of Bitcoin, Satoshi Nakamoto.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RAREORIGINS#visual",
+      "label": "Visual summary",
+      "text": "The card features a bustling cityscape reminiscent of Times Square at night, with bright neon signs and billboards illuminating the scene. The color palette includes deep blues and purples contrasted by vibrant neon greens and reds. The artistic style is detailed and comic-like, with various characters and elements drawing the viewer's eye across the scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RAREORIGINS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n\"RAREORIGINS\" \"Gambler of the most rare existence\" \"Rare Satoshi\"\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a bustling cityscape reminiscent of Times Square at night, with bright neon signs and billboards illuminating the scene. The color palette includes deep blues and purples contrasted by vibrant neon greens and reds. The artistic style is detailed and comic-like, with various characters and elements drawing the viewer's eye across the scene.\n\n🧬 **MEMETIC DNA:**\n- References to Bitcoin and crypto with symbols like the Bitcoin logo.\n- Pepe the Frog appears on a billboard, a nod to classic meme culture.\n- The phrase \"Rare Satoshi\" hints at the pseudonymous creator of Bitcoin, Satoshi Nakamoto.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.070Z",
+  "sourceFactVersion": 1
+}

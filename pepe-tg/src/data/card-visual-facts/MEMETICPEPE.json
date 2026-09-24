@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "asset": "MEMETICPEPE",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 30,
+  "artist": "Memeticx",
+  "supply": 21,
+  "issuance": "February 2024",
+  "textOnCard": [
+    "\"If your hate could be turned into dank memes, it would light up the whole world.\" -- Pepela Tesla"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple in meme culture.",
+    "References to classic memes like \"Distracted Boyfriend\" and \"Two Buttons.\"",
+    "Crypto culture nods with symbols like Bitcoin.",
+    "The \"X\" icon suggests a nod to social media or tech culture.",
+    "Tesla is humorously reimagined as \"Pepela Tesla.\""
+  ],
+  "visualSummary": "This card features a grayscale background reminiscent of a historical photo with a modern twist. A figure resembling Pepe is seated, as electric arcs dramatically spark in the scene. The colorful word cloud of popular meme references adds a splash of vibrant contrast to the otherwise monochrome setting.",
+  "visualSummaryShort": "The card showcases a grayscale background with a figure resembling Pepe seated amidst electric arcs. A vibrant word cloud of meme references contrasts sharply with the monochrome setting.",
+  "visualKeywords": [
+    "grayscale",
+    "electric arcs",
+    "pepe",
+    "word cloud",
+    "monochrome",
+    "vibrant",
+    "historical photo",
+    "meme references"
+  ],
+  "textKeywords": [
+    "hate",
+    "could",
+    "turned",
+    "dank",
+    "memes",
+    "would",
+    "light",
+    "whole",
+    "world",
+    "pepela",
+    "tesla"
+  ],
+  "keywords": [
+    "grayscale",
+    "electric arcs",
+    "pepe",
+    "word cloud",
+    "monochrome",
+    "vibrant",
+    "historical photo",
+    "meme references",
+    "hate",
+    "could",
+    "turned",
+    "dank",
+    "memes",
+    "would",
+    "light",
+    "whole",
+    "world",
+    "pepela",
+    "tesla"
+  ],
+  "embeddingInput": "MEMETICPEPE (Fake Rares) - Series 17 Card 30\nArtist: Memeticx\nSupply 21 Issued February 2024\nOn-card text: \"If your hate could be turned into dank memes, it would light up the whole world.\" -- Pepela Tesla\nVisual summary: This card features a grayscale background reminiscent of a historical photo with a modern twist. A figure resembling Pepe is seated, as electric arcs dramatically spark in the scene. The colorful word cloud of popular meme references adds a splash of vibrant contrast to the otherwise monochrome setting.\nMemetic references: Pepe the Frog, a staple in meme culture.; References to classic memes like \"Distracted Boyfriend\" and \"Two Buttons.\"; Crypto culture nods with symbols like Bitcoin.; The \"X\" icon suggests a nod to social media or tech culture.; Tesla is humorously reimagined as \"Pepela Tesla.\"",
+  "embeddingBlocks": [
+    {
+      "id": "MEMETICPEPE#text",
+      "label": "On-card text",
+      "text": "\"If your hate could be turned into dank memes, it would light up the whole world.\" -- Pepela Tesla",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MEMETICPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple in meme culture.\nReferences to classic memes like \"Distracted Boyfriend\" and \"Two Buttons.\"\nCrypto culture nods with symbols like Bitcoin.\nThe \"X\" icon suggests a nod to social media or tech culture.\nTesla is humorously reimagined as \"Pepela Tesla.\"",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MEMETICPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a grayscale background reminiscent of a historical photo with a modern twist. A figure resembling Pepe is seated, as electric arcs dramatically spark in the scene. The colorful word cloud of popular meme references adds a splash of vibrant contrast to the otherwise monochrome setting.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MEMETICPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n\"If your hate could be turned into dank memes, it would light up the whole world.\" -- Pepela Tesla\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a grayscale background reminiscent of a historical photo with a modern twist. A figure resembling Pepe is seated, as electric arcs dramatically spark in the scene. The colorful word cloud of popular meme references adds a splash of vibrant contrast to the otherwise monochrome setting.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple in meme culture.\n- References to classic memes like \"Distracted Boyfriend\" and \"Two Buttons.\"\n- Crypto culture nods with symbols like Bitcoin.\n- The \"X\" icon suggests a nod to social media or tech culture.\n- Tesla is humorously reimagined as \"Pepela Tesla.\"",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.768Z",
+  "sourceFactVersion": 1
+}

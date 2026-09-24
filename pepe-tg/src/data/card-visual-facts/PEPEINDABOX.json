@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "asset": "PEPEINDABOX",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 4,
+  "artist": "ZETRA",
+  "supply": 21,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "PEPE INDA BOX"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference.",
+    "Jack-in-the-box toy, a symbol of surprise and playfulness.",
+    "Vibrant, chaotic background reminiscent of meme culture's dynamic energy."
+  ],
+  "visualSummary": "A whimsical Pepe the Frog head pops out of a vibrant, cartoonish jack-in-the-box. The background is an explosion of colors—reds, blues, and yellows—creating a chaotic, playful atmosphere. The style is surreal with exaggerated features, lending a quirky, dreamlike quality to the scene.",
+  "visualSummaryShort": "A whimsical Pepe the Frog head emerges from a colorful jack-in-the-box, set against a vibrant, chaotic background. The scene is surreal and playful, with exaggerated features enhancing its dreamlike quality.",
+  "visualKeywords": [
+    "pepe",
+    "jack-in-the-box",
+    "colorful",
+    "surreal",
+    "playful",
+    "chaotic",
+    "exaggerated",
+    "vibrant",
+    "cartoonish",
+    "dreamlike"
+  ],
+  "textKeywords": [
+    "inda",
+    "box"
+  ],
+  "keywords": [
+    "pepe",
+    "jack-in-the-box",
+    "colorful",
+    "surreal",
+    "playful",
+    "chaotic",
+    "exaggerated",
+    "vibrant",
+    "cartoonish",
+    "dreamlike",
+    "inda",
+    "box"
+  ],
+  "embeddingInput": "PEPEINDABOX (Fake Rares) - Series 7 Card 4\nArtist: ZETRA\nSupply 21 Issued March 2022\nOn-card text: PEPE INDA BOX\nVisual summary: A whimsical Pepe the Frog head pops out of a vibrant, cartoonish jack-in-the-box. The background is an explosion of colors—reds, blues, and yellows—creating a chaotic, playful atmosphere. The style is surreal with exaggerated features, lending a quirky, dreamlike quality to the scene.\nMemetic references: Classic Pepe the Frog reference.; Jack-in-the-box toy, a symbol of surprise and playfulness.; Vibrant, chaotic background reminiscent of meme culture's dynamic energy.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEINDABOX#text",
+      "label": "On-card text",
+      "text": "PEPE INDA BOX",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEINDABOX#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference.\nJack-in-the-box toy, a symbol of surprise and playfulness.\nVibrant, chaotic background reminiscent of meme culture's dynamic energy.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEINDABOX#visual",
+      "label": "Visual summary",
+      "text": "A whimsical Pepe the Frog head pops out of a vibrant, cartoonish jack-in-the-box. The background is an explosion of colors—reds, blues, and yellows—creating a chaotic, playful atmosphere. The style is surreal with exaggerated features, lending a quirky, dreamlike quality to the scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEINDABOX#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE INDA BOX\n\n🎨 **VISUAL BREAKDOWN:**\nA whimsical Pepe the Frog head pops out of a vibrant, cartoonish jack-in-the-box. The background is an explosion of colors—reds, blues, and yellows—creating a chaotic, playful atmosphere. The style is surreal with exaggerated features, lending a quirky, dreamlike quality to the scene.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference.\n- Jack-in-the-box toy, a symbol of surprise and playfulness.\n- Vibrant, chaotic background reminiscent of meme culture's dynamic energy.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.897Z",
+  "sourceFactVersion": 1
+}

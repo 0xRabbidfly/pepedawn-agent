@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "RAREPIXELS",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 39,
+  "artist": "Easy B",
+  "supply": 100,
+  "issuance": "March 2026",
+  "textOnCard": [
+    "\"FUR 2.5B\"",
+    "\"10B\""
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central meme character.",
+    "References to the crypto world with terms like \"10B.\"",
+    "Visual nods to pop culture through varied Pepe costumes and expressions.",
+    "Pixel art style evokes early internet aesthetics and gaming culture."
+  ],
+  "visualSummary": "This card is a vibrant mosaic featuring a grid of Pepe the Frog variations, each square displaying a different expression or outfit. The color palette is bold and diverse, with bright greens, reds, and yellows dominating the scene. The artistic style is pixelated, reminiscent of retro video game graphics, adding a nostalgic touch to the overall composition.",
+  "visualSummaryShort": "The card showcases a vibrant mosaic of Pepe the Frog in various expressions and outfits, set against a bold color palette. The pixelated style evokes a nostalgic retro video game feel.",
+  "visualKeywords": [
+    "mosaic",
+    "pepe the frog",
+    "pixelated",
+    "green",
+    "red",
+    "yellow",
+    "expressions",
+    "nostalgic"
+  ],
+  "textKeywords": [
+    "fur",
+    "10b"
+  ],
+  "keywords": [
+    "mosaic",
+    "pepe the frog",
+    "pixelated",
+    "green",
+    "red",
+    "yellow",
+    "expressions",
+    "nostalgic",
+    "fur",
+    "10b"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "RAREPIXELS (Fake Rares) - Series 18 Card 39\nArtist: Easy B\nSupply 100 Issued March 2026\nOn-card text: \"FUR 2.5B\" | \"10B\"\nVisual summary: This card is a vibrant mosaic featuring a grid of Pepe the Frog variations, each square displaying a different expression or outfit. The color palette is bold and diverse, with bright greens, reds, and yellows dominating the scene. The artistic style is pixelated, reminiscent of retro video game graphics, adding a nostalgic touch to the overall composition.\nMemetic references: Pepe the Frog as a central meme character.; References to the crypto world with terms like \"10B.\"; Visual nods to pop culture through varied Pepe costumes and expressions.; Pixel art style evokes early internet aesthetics and gaming culture.",
+  "embeddingBlocks": [
+    {
+      "id": "RAREPIXELS#text",
+      "label": "On-card text",
+      "text": "\"FUR 2.5B\" | \"10B\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "RAREPIXELS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central meme character.\nReferences to the crypto world with terms like \"10B.\"\nVisual nods to pop culture through varied Pepe costumes and expressions.\nPixel art style evokes early internet aesthetics and gaming culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RAREPIXELS#visual",
+      "label": "Visual summary",
+      "text": "This card is a vibrant mosaic featuring a grid of Pepe the Frog variations, each square displaying a different expression or outfit. The color palette is bold and diverse, with bright greens, reds, and yellows dominating the scene. The artistic style is pixelated, reminiscent of retro video game graphics, adding a nostalgic touch to the overall composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RAREPIXELS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- \"FUR 2.5B\"\n- \"10B\"\n\n🎨 **VISUAL BREAKDOWN:**\nThis card is a vibrant mosaic featuring a grid of Pepe the Frog variations, each square displaying a different expression or outfit. The color palette is bold and diverse, with bright greens, reds, and yellows dominating the scene. The artistic style is pixelated, reminiscent of retro video game graphics, adding a nostalgic touch to the overall composition.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central meme character.\n- References to the crypto world with terms like \"10B.\"\n- Visual nods to pop culture through varied Pepe costumes and expressions.\n- Pixel art style evokes early internet aesthetics and gaming culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:32:07.086Z"
+}

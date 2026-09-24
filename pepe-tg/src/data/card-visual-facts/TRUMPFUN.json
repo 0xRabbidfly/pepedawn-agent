@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "asset": "TRUMPFUN",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 47,
+  "artist": "Alth0tas",
+  "supply": 47,
+  "issuance": "January 2025",
+  "textOnCard": [
+    "TRUMP.FUN",
+    "❤️ = $ SPD = -1d ELE = USA",
+    "Build Snipe - Sell Again - Melania - Making Coins",
+    "Certified Fake"
+  ],
+  "memeticReferences": [
+    "References to trading and crypto culture.",
+    "Parody of a well-known public figure with a Pepe twist.",
+    "Use of crypto slang and symbols.",
+    "Satirical take on social and economic themes."
+  ],
+  "visualSummary": "The card features a green-skinned caricature in a digital interface, reminiscent of a trading platform, with vibrant colors like blue, green, orange, and red. The top section displays a cartoonish representation with exaggerated features, while the bottom half mimics a brick wall with graffiti-style text. The overall style is satirical and bold, using thick lines and contrasting colors to draw attention.",
+  "visualSummaryShort": "The card showcases a green-skinned caricature set against a vibrant digital interface, featuring bold colors and exaggerated cartoonish elements. The bottom half resembles a graffiti-covered brick wall, enhancing the satirical mood.",
+  "visualKeywords": [
+    "green-skinned",
+    "digital interface",
+    "vibrant colors",
+    "cartoonish",
+    "graffiti",
+    "brick wall",
+    "bold",
+    "satirical"
+  ],
+  "textKeywords": [
+    "trump",
+    "fun",
+    "spd",
+    "ele",
+    "usa",
+    "build",
+    "snipe",
+    "sell",
+    "again",
+    "melania",
+    "making",
+    "coins",
+    "certified"
+  ],
+  "keywords": [
+    "green-skinned",
+    "digital interface",
+    "vibrant colors",
+    "cartoonish",
+    "graffiti",
+    "brick wall",
+    "bold",
+    "satirical",
+    "trump",
+    "fun",
+    "spd",
+    "ele",
+    "usa",
+    "build",
+    "snipe",
+    "sell",
+    "again",
+    "melania",
+    "making",
+    "coins",
+    "certified"
+  ],
+  "embeddingInput": "TRUMPFUN (Fake Rares) - Series 17 Card 47\nArtist: Alth0tas\nSupply 47 Issued January 2025\nOn-card text: TRUMP.FUN | ❤️ = $ SPD = -1d ELE = USA | Build Snipe - Sell Again - Melania - Making Coins | Certified Fake\nVisual summary: The card features a green-skinned caricature in a digital interface, reminiscent of a trading platform, with vibrant colors like blue, green, orange, and red. The top section displays a cartoonish representation with exaggerated features, while the bottom half mimics a brick wall with graffiti-style text. The overall style is satirical and bold, using thick lines and contrasting colors to draw attention.\nMemetic references: References to trading and crypto culture.; Parody of a well-known public figure with a Pepe twist.; Use of crypto slang and symbols.; Satirical take on social and economic themes.",
+  "embeddingBlocks": [
+    {
+      "id": "TRUMPFUN#text",
+      "label": "On-card text",
+      "text": "TRUMP.FUN | ❤️ = $ SPD = -1d ELE = USA | Build Snipe - Sell Again - Melania - Making Coins | Certified Fake",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "TRUMPFUN#memetic",
+      "label": "Memetic references",
+      "text": "References to trading and crypto culture.\nParody of a well-known public figure with a Pepe twist.\nUse of crypto slang and symbols.\nSatirical take on social and economic themes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "TRUMPFUN#visual",
+      "label": "Visual summary",
+      "text": "The card features a green-skinned caricature in a digital interface, reminiscent of a trading platform, with vibrant colors like blue, green, orange, and red. The top section displays a cartoonish representation with exaggerated features, while the bottom half mimics a brick wall with graffiti-style text. The overall style is satirical and bold, using thick lines and contrasting colors to draw attention.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "TRUMPFUN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nTRUMP.FUN  \n❤️ = $ SPD = -1d ELE = USA  \n- Build Snipe - Sell Again - Melania - Making Coins  \nCertified Fake\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a green-skinned caricature in a digital interface, reminiscent of a trading platform, with vibrant colors like blue, green, orange, and red. The top section displays a cartoonish representation with exaggerated features, while the bottom half mimics a brick wall with graffiti-style text. The overall style is satirical and bold, using thick lines and contrasting colors to draw attention.\n\n🧬 **MEMETIC DNA:**\n- References to trading and crypto culture.\n- Parody of a well-known public figure with a Pepe twist.\n- Use of crypto slang and symbols.\n- Satirical take on social and economic themes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.162Z",
+  "sourceFactVersion": 1
+}

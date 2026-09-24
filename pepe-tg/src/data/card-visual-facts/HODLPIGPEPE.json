@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "asset": "HODLPIGPEPE",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 22,
+  "artist": "Mr. HODLPIG",
+  "supply": 150,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "NAKAMOTO CREATES BITCOIN"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog character, iconic in meme culture.",
+    "References to Bitcoin and crypto culture.",
+    "\"White paper\" and \"call Hal\" notes nod to Bitcoin's origins and historical figures.",
+    "The setting suggests the early days of Bitcoin creation."
+  ],
+  "visualSummary": "The card showcases a cartoonish scene with a green Pepe character wearing a purple shirt and blue shorts, standing in a room. The background features a desk with a computer displaying \"BTC 31,000\" and a yellow chair, along with books and sticky notes on the wall. The color palette is earthy with greens, purples, and browns, giving it a playful, vintage vibe.",
+  "visualSummaryShort": "The card features a cartoonish green Pepe character in a room with a desk and computer. The earthy color palette and playful elements create a vintage vibe.",
+  "visualKeywords": [
+    "pepe",
+    "purple shirt",
+    "blue shorts",
+    "desk",
+    "computer",
+    "btc",
+    "yellow chair",
+    "books",
+    "sticky notes",
+    "earthy colors"
+  ],
+  "textKeywords": [
+    "nakamoto",
+    "creates",
+    "bitcoin"
+  ],
+  "keywords": [
+    "pepe",
+    "purple shirt",
+    "blue shorts",
+    "desk",
+    "computer",
+    "btc",
+    "yellow chair",
+    "books",
+    "sticky notes",
+    "earthy colors",
+    "nakamoto",
+    "creates",
+    "bitcoin"
+  ],
+  "embeddingInput": "HODLPIGPEPE (Fake Rares) - Series 1 Card 22\nArtist: Mr. HODLPIG\nSupply 150 Issued October 2021\nOn-card text: NAKAMOTO CREATES BITCOIN\nVisual summary: The card showcases a cartoonish scene with a green Pepe character wearing a purple shirt and blue shorts, standing in a room. The background features a desk with a computer displaying \"BTC 31,000\" and a yellow chair, along with books and sticky notes on the wall. The color palette is earthy with greens, purples, and browns, giving it a playful, vintage vibe.\nMemetic references: Pepe the Frog character, iconic in meme culture.; References to Bitcoin and crypto culture.; \"White paper\" and \"call Hal\" notes nod to Bitcoin's origins and historical figures.; The setting suggests the early days of Bitcoin creation.",
+  "embeddingBlocks": [
+    {
+      "id": "HODLPIGPEPE#text",
+      "label": "On-card text",
+      "text": "NAKAMOTO CREATES BITCOIN",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "HODLPIGPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog character, iconic in meme culture.\nReferences to Bitcoin and crypto culture.\n\"White paper\" and \"call Hal\" notes nod to Bitcoin's origins and historical figures.\nThe setting suggests the early days of Bitcoin creation.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "HODLPIGPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card showcases a cartoonish scene with a green Pepe character wearing a purple shirt and blue shorts, standing in a room. The background features a desk with a computer displaying \"BTC 31,000\" and a yellow chair, along with books and sticky notes on the wall. The color palette is earthy with greens, purples, and browns, giving it a playful, vintage vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "HODLPIGPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nNAKAMOTO CREATES BITCOIN\n\n🎨 **VISUAL BREAKDOWN:**\nThe card showcases a cartoonish scene with a green Pepe character wearing a purple shirt and blue shorts, standing in a room. The background features a desk with a computer displaying \"BTC 31,000\" and a yellow chair, along with books and sticky notes on the wall. The color palette is earthy with greens, purples, and browns, giving it a playful, vintage vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog character, iconic in meme culture.\n- References to Bitcoin and crypto culture.\n- \"White paper\" and \"call Hal\" notes nod to Bitcoin's origins and historical figures.\n- The setting suggests the early days of Bitcoin creation.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.687Z",
+  "sourceFactVersion": 1
+}

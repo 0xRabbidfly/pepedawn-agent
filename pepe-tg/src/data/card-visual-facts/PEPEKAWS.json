@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "PEPEKAWS",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 8,
+  "artist": "Exahash",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog reference, a staple of meme culture.",
+    "KAWS Companion influence, merging contemporary art with internet meme aesthetics.",
+    "The dissection style nods to collectible toy culture and pop art."
+  ],
+  "visualSummary": "The card features a hybrid character that combines elements of Pepe the Frog and a KAWS Companion statue. The left side is a classic green Pepe, while the right side is an anatomical dissection revealing vibrant, cartoonish organs. The color palette mixes muted greens with bright, contrasting colors for the internal anatomy, creating a striking visual contrast.",
+  "visualSummaryShort": "The card showcases a hybrid character merging Pepe the Frog with a KAWS Companion statue. It features a striking contrast between muted greens and vibrant internal anatomy colors.",
+  "visualKeywords": [
+    "hybrid character",
+    "pepe the frog",
+    "kaws companion",
+    "green",
+    "vibrant colors",
+    "anatomical dissection",
+    "cartoonish",
+    "contrast"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "hybrid character",
+    "pepe the frog",
+    "kaws companion",
+    "green",
+    "vibrant colors",
+    "anatomical dissection",
+    "cartoonish",
+    "contrast"
+  ],
+  "embeddingInput": "PEPEKAWS (Fake Rares) - Series 1 Card 8\nArtist: Exahash\nSupply 100 Issued October 2021\nOn-card text: none detected\nVisual summary: The card features a hybrid character that combines elements of Pepe the Frog and a KAWS Companion statue. The left side is a classic green Pepe, while the right side is an anatomical dissection revealing vibrant, cartoonish organs. The color palette mixes muted greens with bright, contrasting colors for the internal anatomy, creating a striking visual contrast.\nMemetic references: Pepe the Frog reference, a staple of meme culture.; KAWS Companion influence, merging contemporary art with internet meme aesthetics.; The dissection style nods to collectible toy culture and pop art.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEKAWS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference, a staple of meme culture.\nKAWS Companion influence, merging contemporary art with internet meme aesthetics.\nThe dissection style nods to collectible toy culture and pop art.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEKAWS#visual",
+      "label": "Visual summary",
+      "text": "The card features a hybrid character that combines elements of Pepe the Frog and a KAWS Companion statue. The left side is a classic green Pepe, while the right side is an anatomical dissection revealing vibrant, cartoonish organs. The color palette mixes muted greens with bright, contrasting colors for the internal anatomy, creating a striking visual contrast.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEKAWS#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a hybrid character that combines elements of Pepe the Frog and a KAWS Companion statue. The left side is a classic green Pepe, while the right side is an anatomical dissection revealing vibrant, cartoonish organs. The color palette mixes muted greens with bright, contrasting colors for the internal anatomy, creating a striking visual contrast.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference, a staple of meme culture.\n- KAWS Companion influence, merging contemporary art with internet meme aesthetics.\n- The dissection style nods to collectible toy culture and pop art.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.906Z",
+  "sourceFactVersion": 1
+}

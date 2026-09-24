@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "FAKESHION",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 11,
+  "artist": "PiFu",
+  "supply": 55,
+  "issuance": "September 2023",
+  "textOnCard": [
+    "PAЯIS. rareness score 97."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference on the cap.",
+    "Streetwear culture vibes.",
+    "Playful take on fashion and rarity in NFT culture."
+  ],
+  "visualSummary": "The card features a cartoon-style character with a green face, sitting casually. The character is wearing a multicolored cap with a Pepe emblem, a brown hoodie, and green sneakers with a winged logo. The background is a solid teal, and the text is colorful and dynamic, adding a playful vibe.",
+  "visualSummaryShort": "The card showcases a cartoon character with a green face, dressed in a brown hoodie and a multicolored cap. The solid teal background enhances the playful mood of the design.",
+  "visualKeywords": [
+    "cartoon",
+    "green face",
+    "multicolored cap",
+    "brown hoodie",
+    "green sneakers",
+    "teal background",
+    "playful"
+  ],
+  "textKeywords": [
+    "rareness",
+    "score"
+  ],
+  "keywords": [
+    "cartoon",
+    "green face",
+    "multicolored cap",
+    "brown hoodie",
+    "green sneakers",
+    "teal background",
+    "playful",
+    "rareness",
+    "score"
+  ],
+  "embeddingInput": "FAKESHION (Fake Rares) - Series 16 Card 11\nArtist: PiFu\nSupply 55 Issued September 2023\nOn-card text: PAЯIS. rareness score 97.\nVisual summary: The card features a cartoon-style character with a green face, sitting casually. The character is wearing a multicolored cap with a Pepe emblem, a brown hoodie, and green sneakers with a winged logo. The background is a solid teal, and the text is colorful and dynamic, adding a playful vibe.\nMemetic references: Pepe the Frog reference on the cap.; Streetwear culture vibes.; Playful take on fashion and rarity in NFT culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKESHION#text",
+      "label": "On-card text",
+      "text": "PAЯIS. rareness score 97.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKESHION#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference on the cap.\nStreetwear culture vibes.\nPlayful take on fashion and rarity in NFT culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKESHION#visual",
+      "label": "Visual summary",
+      "text": "The card features a cartoon-style character with a green face, sitting casually. The character is wearing a multicolored cap with a Pepe emblem, a brown hoodie, and green sneakers with a winged logo. The background is a solid teal, and the text is colorful and dynamic, adding a playful vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKESHION#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPAЯIS. rareness score 97.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a cartoon-style character with a green face, sitting casually. The character is wearing a multicolored cap with a Pepe emblem, a brown hoodie, and green sneakers with a winged logo. The background is a solid teal, and the text is colorful and dynamic, adding a playful vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference on the cap.\n- Streetwear culture vibes.\n- Playful take on fashion and rarity in NFT culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.577Z",
+  "sourceFactVersion": 1
+}

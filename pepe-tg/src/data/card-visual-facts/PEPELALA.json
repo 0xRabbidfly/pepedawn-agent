@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "PEPELALA",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 34,
+  "artist": "Lalana",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "PEPELALA"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery.",
+    "References to vintage cartoon styles, reminiscent of iconic animated characters.",
+    "Playful nod to meme culture with the fish accessory."
+  ],
+  "visualSummary": "The card features a classic Pepe the Frog character dressed in a frilly pink dress and a large, matching sunhat adorned with colorful flowers. A small, smiling fish peeks out from the brim, adding a whimsical touch. The background is a simple blue, framed with a gold border and a star at the top, giving it a vintage, fairy-tale aesthetic.",
+  "visualSummaryShort": "The card showcases Pepe the Frog in a frilly pink dress and a large sunhat with colorful flowers. A whimsical fish peeks from the hat against a simple blue background, framed by a gold border.",
+  "visualKeywords": [
+    "pepe the frog",
+    "pink dress",
+    "sunhat",
+    "flowers",
+    "fish",
+    "blue background",
+    "gold border",
+    "vintage",
+    "whimsical",
+    "fairy-tale"
+  ],
+  "textKeywords": [
+    "pepelala"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "pink dress",
+    "sunhat",
+    "flowers",
+    "fish",
+    "blue background",
+    "gold border",
+    "vintage",
+    "whimsical",
+    "fairy-tale",
+    "pepelala"
+  ],
+  "embeddingInput": "PEPELALA (Fake Rares) - Series 2 Card 34\nArtist: Lalana\nSupply 100 Issued October 2021\nOn-card text: PEPELALA\nVisual summary: The card features a classic Pepe the Frog character dressed in a frilly pink dress and a large, matching sunhat adorned with colorful flowers. A small, smiling fish peeks out from the brim, adding a whimsical touch. The background is a simple blue, framed with a gold border and a star at the top, giving it a vintage, fairy-tale aesthetic.\nMemetic references: Classic Pepe the Frog imagery.; References to vintage cartoon styles, reminiscent of iconic animated characters.; Playful nod to meme culture with the fish accessory.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPELALA#text",
+      "label": "On-card text",
+      "text": "PEPELALA",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPELALA#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery.\nReferences to vintage cartoon styles, reminiscent of iconic animated characters.\nPlayful nod to meme culture with the fish accessory.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPELALA#visual",
+      "label": "Visual summary",
+      "text": "The card features a classic Pepe the Frog character dressed in a frilly pink dress and a large, matching sunhat adorned with colorful flowers. A small, smiling fish peeks out from the brim, adding a whimsical touch. The background is a simple blue, framed with a gold border and a star at the top, giving it a vintage, fairy-tale aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPELALA#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPELALA\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a classic Pepe the Frog character dressed in a frilly pink dress and a large, matching sunhat adorned with colorful flowers. A small, smiling fish peeks out from the brim, adding a whimsical touch. The background is a simple blue, framed with a gold border and a star at the top, giving it a vintage, fairy-tale aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery.\n- References to vintage cartoon styles, reminiscent of iconic animated characters.\n- Playful nod to meme culture with the fish accessory.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.910Z",
+  "sourceFactVersion": 1
+}

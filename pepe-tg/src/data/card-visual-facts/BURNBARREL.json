@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "asset": "BURNBARREL",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 27,
+  "artist": "Ndhoz",
+  "supply": 69,
+  "issuance": "December 2022",
+  "textOnCard": [
+    "MONKEY EXCHANGE",
+    "CRIME SCENE",
+    "DEAD END",
+    "YOLO",
+    "SPARE",
+    "CHIP ABUSE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in a street art style.",
+    "References to crypto culture (e.g., \"MONKEY EXCHANGE\").",
+    "Street graffiti and urban decay elements.",
+    "Visual nods to social issues and meme culture."
+  ],
+  "visualSummary": "This card features a somber street scene with a Pepe character in a hoodie warming hands over a barrel fire. The color palette is dark and gritty, with moody lighting casting shadows across the brick walls and graffiti-laden surfaces. The background is littered with posters, tags, and debris, adding to the urban decay vibe.",
+  "visualSummaryShort": "The card depicts a somber street scene featuring a Pepe character in a hoodie warming his hands over a barrel fire. The dark and gritty color palette, along with moody lighting, enhances the urban decay atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "hoodie",
+    "barrel fire",
+    "dark palette",
+    "graffiti",
+    "urban decay",
+    "shadows",
+    "street scene"
+  ],
+  "textKeywords": [
+    "monkey",
+    "exchange",
+    "crime",
+    "scene",
+    "dead",
+    "end",
+    "yolo",
+    "spare",
+    "chip",
+    "abuse"
+  ],
+  "keywords": [
+    "pepe",
+    "hoodie",
+    "barrel fire",
+    "dark palette",
+    "graffiti",
+    "urban decay",
+    "shadows",
+    "street scene",
+    "monkey",
+    "exchange",
+    "crime",
+    "scene",
+    "dead",
+    "end",
+    "yolo",
+    "spare",
+    "chip",
+    "abuse"
+  ],
+  "embeddingInput": "BURNBARREL (Fake Rares) - Series 16 Card 27\nArtist: Ndhoz\nSupply 69 Issued December 2022\nOn-card text: MONKEY EXCHANGE | CRIME SCENE | DEAD END | YOLO | SPARE | CHIP ABUSE\nVisual summary: This card features a somber street scene with a Pepe character in a hoodie warming hands over a barrel fire. The color palette is dark and gritty, with moody lighting casting shadows across the brick walls and graffiti-laden surfaces. The background is littered with posters, tags, and debris, adding to the urban decay vibe.\nMemetic references: Pepe the Frog in a street art style.; References to crypto culture (e.g., \"MONKEY EXCHANGE\").; Street graffiti and urban decay elements.; Visual nods to social issues and meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "BURNBARREL#text",
+      "label": "On-card text",
+      "text": "MONKEY EXCHANGE | CRIME SCENE | DEAD END | YOLO | SPARE | CHIP ABUSE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "BURNBARREL#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in a street art style.\nReferences to crypto culture (e.g., \"MONKEY EXCHANGE\").\nStreet graffiti and urban decay elements.\nVisual nods to social issues and meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BURNBARREL#visual",
+      "label": "Visual summary",
+      "text": "This card features a somber street scene with a Pepe character in a hoodie warming hands over a barrel fire. The color palette is dark and gritty, with moody lighting casting shadows across the brick walls and graffiti-laden surfaces. The background is littered with posters, tags, and debris, adding to the urban decay vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BURNBARREL#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- MONKEY EXCHANGE\n- CRIME SCENE\n- DEAD END\n- YOLO\n- SPARE\n- CHIP ABUSE\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a somber street scene with a Pepe character in a hoodie warming hands over a barrel fire. The color palette is dark and gritty, with moody lighting casting shadows across the brick walls and graffiti-laden surfaces. The background is littered with posters, tags, and debris, adding to the urban decay vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in a street art style.\n- References to crypto culture (e.g., \"MONKEY EXCHANGE\").\n- Street graffiti and urban decay elements.\n- Visual nods to social issues and meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.337Z",
+  "sourceFactVersion": 1
+}

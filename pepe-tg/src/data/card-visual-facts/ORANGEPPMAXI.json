@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "asset": "ORANGEPPMAXI",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 30,
+  "artist": "PiFu",
+  "supply": 29,
+  "issuance": "August 2023",
+  "textOnCard": [
+    "PEPE VS FIAT",
+    "ORANGE PEPE MAXI"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central character.",
+    "Bitcoin symbol prominently featured.",
+    "Crypto battle theme with \"PEPE VS FIAT.\"",
+    "Reference to the crypto vs. traditional finance narrative."
+  ],
+  "visualSummary": "The card features a large, smug-looking Pepe the Frog with orange and blue camo patterning, wearing a Bitcoin medallion. The background is a dramatic fiery landscape with a shadowy figure, possibly representing fiat, surrounded by flying dollar bills. The color palette is dominated by oranges, browns, and greens, giving it an apocalyptic vibe.",
+  "visualSummaryShort": "The card showcases a smug Pepe the Frog adorned with an orange and blue camo pattern, set against a fiery, apocalyptic background. The scene includes a shadowy figure and flying dollar bills, emphasizing a dramatic mood.",
+  "visualKeywords": [
+    "pepe",
+    "camo",
+    "fiery landscape",
+    "shadowy figure",
+    "dollar bills",
+    "orange",
+    "brown",
+    "green",
+    "apocalyptic"
+  ],
+  "textKeywords": [
+    "fiat",
+    "orange",
+    "maxi"
+  ],
+  "keywords": [
+    "pepe",
+    "camo",
+    "fiery landscape",
+    "shadowy figure",
+    "dollar bills",
+    "orange",
+    "brown",
+    "green",
+    "apocalyptic",
+    "fiat",
+    "maxi"
+  ],
+  "embeddingInput": "ORANGEPPMAXI (Fake Rares) - Series 15 Card 30\nArtist: PiFu\nSupply 29 Issued August 2023\nOn-card text: PEPE VS FIAT | ORANGE PEPE MAXI\nVisual summary: The card features a large, smug-looking Pepe the Frog with orange and blue camo patterning, wearing a Bitcoin medallion. The background is a dramatic fiery landscape with a shadowy figure, possibly representing fiat, surrounded by flying dollar bills. The color palette is dominated by oranges, browns, and greens, giving it an apocalyptic vibe.\nMemetic references: Pepe the Frog as a central character.; Bitcoin symbol prominently featured.; Crypto battle theme with \"PEPE VS FIAT.\"; Reference to the crypto vs. traditional finance narrative.",
+  "embeddingBlocks": [
+    {
+      "id": "ORANGEPPMAXI#text",
+      "label": "On-card text",
+      "text": "PEPE VS FIAT | ORANGE PEPE MAXI",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "ORANGEPPMAXI#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central character.\nBitcoin symbol prominently featured.\nCrypto battle theme with \"PEPE VS FIAT.\"\nReference to the crypto vs. traditional finance narrative.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "ORANGEPPMAXI#visual",
+      "label": "Visual summary",
+      "text": "The card features a large, smug-looking Pepe the Frog with orange and blue camo patterning, wearing a Bitcoin medallion. The background is a dramatic fiery landscape with a shadowy figure, possibly representing fiat, surrounded by flying dollar bills. The color palette is dominated by oranges, browns, and greens, giving it an apocalyptic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "ORANGEPPMAXI#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE VS FIAT  \nORANGE PEPE MAXI\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a large, smug-looking Pepe the Frog with orange and blue camo patterning, wearing a Bitcoin medallion. The background is a dramatic fiery landscape with a shadowy figure, possibly representing fiat, surrounded by flying dollar bills. The color palette is dominated by oranges, browns, and greens, giving it an apocalyptic vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central character.\n- Bitcoin symbol prominently featured.\n- Crypto battle theme with \"PEPE VS FIAT.\"\n- Reference to the crypto vs. traditional finance narrative.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.814Z",
+  "sourceFactVersion": 1
+}

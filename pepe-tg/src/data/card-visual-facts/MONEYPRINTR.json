@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "asset": "MONEYPRINTR",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 29,
+  "artist": "desultor",
+  "supply": 38,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "MONEY PRINTER",
+    "☯ tap to just [REDACTED] print money",
+    "BRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR..."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure, a staple of meme culture.",
+    "Reference to the \"money printer go brrr\" meme, popular in financial and crypto communities.",
+    "Imagery of money, referencing the concept of inflation or quantitative easing."
+  ],
+  "visualSummary": "The card features Pepe the Frog dressed in a suit, confidently standing at a podium with dollar bills flying around. The color palette is vibrant, dominated by greens and yellows, with bold outlines giving it a cartoonish feel. The artistic style is reminiscent of street art, with a playful yet satirical tone.",
+  "visualSummaryShort": "The card showcases Pepe the Frog in a suit at a podium, surrounded by flying dollar bills. The vibrant green and yellow color palette enhances its cartoonish and playful street art style.",
+  "visualKeywords": [
+    "pepe the frog",
+    "suit",
+    "podium",
+    "dollar bills",
+    "green",
+    "yellow",
+    "cartoonish",
+    "street art",
+    "playful",
+    "satirical"
+  ],
+  "textKeywords": [
+    "money",
+    "printer",
+    "tap",
+    "just",
+    "redacted",
+    "print",
+    "brrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "suit",
+    "podium",
+    "dollar bills",
+    "green",
+    "yellow",
+    "cartoonish",
+    "street art",
+    "playful",
+    "satirical",
+    "money",
+    "printer",
+    "tap",
+    "just",
+    "redacted",
+    "print",
+    "brrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"
+  ],
+  "embeddingInput": "MONEYPRINTR (Fake Rares) - Series 10 Card 29\nArtist: desultor\nSupply 38 Issued September 2022\nOn-card text: MONEY PRINTER | ☯ tap to just [REDACTED] print money | BRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR...\nVisual summary: The card features Pepe the Frog dressed in a suit, confidently standing at a podium with dollar bills flying around. The color palette is vibrant, dominated by greens and yellows, with bold outlines giving it a cartoonish feel. The artistic style is reminiscent of street art, with a playful yet satirical tone.\nMemetic references: Pepe the Frog as a central figure, a staple of meme culture.; Reference to the \"money printer go brrr\" meme, popular in financial and crypto communities.; Imagery of money, referencing the concept of inflation or quantitative easing.",
+  "embeddingBlocks": [
+    {
+      "id": "MONEYPRINTR#text",
+      "label": "On-card text",
+      "text": "MONEY PRINTER | ☯ tap to just [REDACTED] print money | BRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR...",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MONEYPRINTR#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure, a staple of meme culture.\nReference to the \"money printer go brrr\" meme, popular in financial and crypto communities.\nImagery of money, referencing the concept of inflation or quantitative easing.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MONEYPRINTR#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog dressed in a suit, confidently standing at a podium with dollar bills flying around. The color palette is vibrant, dominated by greens and yellows, with bold outlines giving it a cartoonish feel. The artistic style is reminiscent of street art, with a playful yet satirical tone.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MONEYPRINTR#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nMONEY PRINTER  \n☯ tap to just [REDACTED] print money  \nBRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR...\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog dressed in a suit, confidently standing at a podium with dollar bills flying around. The color palette is vibrant, dominated by greens and yellows, with bold outlines giving it a cartoonish feel. The artistic style is reminiscent of street art, with a playful yet satirical tone.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure, a staple of meme culture.\n- Reference to the \"money printer go brrr\" meme, popular in financial and crypto communities.\n- Imagery of money, referencing the concept of inflation or quantitative easing.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.780Z",
+  "sourceFactVersion": 1
+}

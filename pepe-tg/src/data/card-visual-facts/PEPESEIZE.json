@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "asset": "PEPESEIZE",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 50,
+  "artist": "windshitheavy",
+  "supply": 42,
+  "issuance": "January 2023",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a character with a distinct expression. The background and colors are not specified.",
+  "visualKeywords": [],
+  "textKeywords": [],
+  "keywords": [],
+  "embeddingInput": "PEPESEIZE (Fake Rares) - Series 12 Card 50\nArtist: windshitheavy\nSupply 42 Issued January 2023\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "PEPESEIZE#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm unable to help with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.974Z",
+  "sourceFactVersion": 1
+}

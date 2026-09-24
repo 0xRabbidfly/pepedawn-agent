@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "FFORFAKE",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 30,
+  "artist": "Gus Grillasca",
+  "supply": 21,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "F for FAKE"
+  ],
+  "memeticReferences": [
+    "References the concept of fakery, a nod to counterfeit and authenticity themes in the NFT space.",
+    "The style and lettering may evoke classic cartoon or comic book aesthetics.",
+    "Plays on the letter \"F\" as both a grade for failure and a nod to meme culture."
+  ],
+  "visualSummary": "The card features a large, bold letter \"F\" in a drippy, gooey green texture, standing out against a pale yellow background. The design is framed with a geometric border in varying shades of green, giving it a vintage poster vibe. The color palette leans heavily into greens and yellows, creating a retro, playful aesthetic.",
+  "visualSummaryShort": "The card showcases a large, drippy green letter 'F' against a pale yellow background. Its geometric border and vibrant color palette create a vintage, playful aesthetic.",
+  "visualKeywords": [
+    "green",
+    "yellow",
+    "drippy",
+    "geometric",
+    "vintage",
+    "playful",
+    "bold",
+    "texture"
+  ],
+  "textKeywords": [
+    "for",
+    "fake"
+  ],
+  "keywords": [
+    "green",
+    "yellow",
+    "drippy",
+    "geometric",
+    "vintage",
+    "playful",
+    "bold",
+    "texture",
+    "for",
+    "fake"
+  ],
+  "embeddingInput": "FFORFAKE (Fake Rares) - Series 11 Card 30\nArtist: Gus Grillasca\nSupply 21 Issued March 2022\nOn-card text: F for FAKE\nVisual summary: The card features a large, bold letter \"F\" in a drippy, gooey green texture, standing out against a pale yellow background. The design is framed with a geometric border in varying shades of green, giving it a vintage poster vibe. The color palette leans heavily into greens and yellows, creating a retro, playful aesthetic.\nMemetic references: References the concept of fakery, a nod to counterfeit and authenticity themes in the NFT space.; The style and lettering may evoke classic cartoon or comic book aesthetics.; Plays on the letter \"F\" as both a grade for failure and a nod to meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FFORFAKE#text",
+      "label": "On-card text",
+      "text": "F for FAKE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FFORFAKE#memetic",
+      "label": "Memetic references",
+      "text": "References the concept of fakery, a nod to counterfeit and authenticity themes in the NFT space.\nThe style and lettering may evoke classic cartoon or comic book aesthetics.\nPlays on the letter \"F\" as both a grade for failure and a nod to meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FFORFAKE#visual",
+      "label": "Visual summary",
+      "text": "The card features a large, bold letter \"F\" in a drippy, gooey green texture, standing out against a pale yellow background. The design is framed with a geometric border in varying shades of green, giving it a vintage poster vibe. The color palette leans heavily into greens and yellows, creating a retro, playful aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FFORFAKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nF for FAKE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a large, bold letter \"F\" in a drippy, gooey green texture, standing out against a pale yellow background. The design is framed with a geometric border in varying shades of green, giving it a vintage poster vibe. The color palette leans heavily into greens and yellows, creating a retro, playful aesthetic.\n\n🧬 **MEMETIC DNA:**\n- References the concept of fakery, a nod to counterfeit and authenticity themes in the NFT space.\n- The style and lettering may evoke classic cartoon or comic book aesthetics.\n- Plays on the letter \"F\" as both a grade for failure and a nod to meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.614Z",
+  "sourceFactVersion": 1
+}

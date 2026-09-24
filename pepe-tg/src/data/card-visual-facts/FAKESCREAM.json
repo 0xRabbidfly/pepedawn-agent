@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "FAKESCREAM",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 31,
+  "artist": "Yog Joshi",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog in a classic art mashup.",
+    "References Edvard Munch's \"The Scream,\" a staple in art history.",
+    "Combines traditional art with meme culture, creating a humorous juxtaposition."
+  ],
+  "visualSummary": "This artwork is a playful parody of Edvard Munch's \"The Scream,\" with Pepe the Frog taking the iconic pose. The color palette is rich with swirling oranges and greens, echoing the original painting's dramatic skies and landscape. The style is a blend of classic and meme, capturing both the intensity of the original and the humor of internet culture.",
+  "visualSummaryShort": "The card features Pepe the Frog in a parody of Edvard Munch's \"The Scream,\" surrounded by swirling oranges and greens. The artwork blends classic and meme styles, creating a humorous yet intense atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "parody",
+    "orange",
+    "green",
+    "swirling",
+    "intense",
+    "humor",
+    "meme",
+    "dramatic",
+    "landscape"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "parody",
+    "orange",
+    "green",
+    "swirling",
+    "intense",
+    "humor",
+    "meme",
+    "dramatic",
+    "landscape"
+  ],
+  "embeddingInput": "FAKESCREAM (Fake Rares) - Series 1 Card 31\nArtist: Yog Joshi\nSupply 100 Issued October 2021\nOn-card text: none detected\nVisual summary: This artwork is a playful parody of Edvard Munch's \"The Scream,\" with Pepe the Frog taking the iconic pose. The color palette is rich with swirling oranges and greens, echoing the original painting's dramatic skies and landscape. The style is a blend of classic and meme, capturing both the intensity of the original and the humor of internet culture.\nMemetic references: Pepe the Frog in a classic art mashup.; References Edvard Munch's \"The Scream,\" a staple in art history.; Combines traditional art with meme culture, creating a humorous juxtaposition.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKESCREAM#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in a classic art mashup.\nReferences Edvard Munch's \"The Scream,\" a staple in art history.\nCombines traditional art with meme culture, creating a humorous juxtaposition.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKESCREAM#visual",
+      "label": "Visual summary",
+      "text": "This artwork is a playful parody of Edvard Munch's \"The Scream,\" with Pepe the Frog taking the iconic pose. The color palette is rich with swirling oranges and greens, echoing the original painting's dramatic skies and landscape. The style is a blend of classic and meme, capturing both the intensity of the original and the humor of internet culture.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKESCREAM#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis artwork is a playful parody of Edvard Munch's \"The Scream,\" with Pepe the Frog taking the iconic pose. The color palette is rich with swirling oranges and greens, echoing the original painting's dramatic skies and landscape. The style is a blend of classic and meme, capturing both the intensity of the original and the humor of internet culture.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in a classic art mashup.\n- References Edvard Munch's \"The Scream,\" a staple in art history.\n- Combines traditional art with meme culture, creating a humorous juxtaposition.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.575Z",
+  "sourceFactVersion": 1
+}

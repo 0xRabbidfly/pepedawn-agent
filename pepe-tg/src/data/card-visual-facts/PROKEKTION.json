@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "asset": "PROKEKTION",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 11,
+  "artist": "All Out Anon",
+  "supply": 300,
+  "issuance": "October 2022",
+  "textOnCard": [
+    "OUR ANSWER",
+    "ALL-OUT PRODUCTION",
+    "Memes that run on nuclear fuel will last 1000 years"
+  ],
+  "memeticReferences": [
+    "The green hand is a nod to the Hulk, symbolizing strength and power.",
+    "References to wartime propaganda posters, evoking a sense of urgency and productivity.",
+    "Nuclear fuel and longevity themes align with the eternal nature of memes in crypto culture."
+  ],
+  "visualSummary": "This card features a vibrant retro-style poster with a bold green hand, reminiscent of a Hulk fist, pointing upwards. The background is filled with vintage airplanes flying over a busy industrial scene, with crowds and factories depicted in a classic mid-20th century style. The color palette is dominated by greens, blues, and reds, giving off a nostalgic yet powerful vibe.",
+  "visualSummaryShort": "The card showcases a vibrant retro-style poster featuring a bold green hand pointing upwards against a backdrop of vintage airplanes and an industrial scene. The color palette includes greens, blues, and reds, creating a nostalgic yet powerful atmosphere.",
+  "visualKeywords": [
+    "green hand",
+    "vintage airplanes",
+    "industrial scene",
+    "crowds",
+    "factories",
+    "retro style",
+    "bold colors",
+    "nostalgic",
+    "mid-20th century",
+    "powerful vibe"
+  ],
+  "textKeywords": [
+    "our",
+    "answer",
+    "all",
+    "out",
+    "production",
+    "memes",
+    "run",
+    "nuclear",
+    "fuel",
+    "will",
+    "last",
+    "1000",
+    "years"
+  ],
+  "keywords": [
+    "green hand",
+    "vintage airplanes",
+    "industrial scene",
+    "crowds",
+    "factories",
+    "retro style",
+    "bold colors",
+    "nostalgic",
+    "mid-20th century",
+    "powerful vibe",
+    "our",
+    "answer",
+    "all",
+    "out",
+    "production",
+    "memes",
+    "run",
+    "nuclear",
+    "fuel",
+    "will",
+    "last",
+    "1000",
+    "years"
+  ],
+  "embeddingInput": "PROKEKTION (Fake Rares) - Series 11 Card 11\nArtist: All Out Anon\nSupply 300 Issued October 2022\nOn-card text: OUR ANSWER | ALL-OUT PRODUCTION | Memes that run on nuclear fuel will last 1000 years\nVisual summary: This card features a vibrant retro-style poster with a bold green hand, reminiscent of a Hulk fist, pointing upwards. The background is filled with vintage airplanes flying over a busy industrial scene, with crowds and factories depicted in a classic mid-20th century style. The color palette is dominated by greens, blues, and reds, giving off a nostalgic yet powerful vibe.\nMemetic references: The green hand is a nod to the Hulk, symbolizing strength and power.; References to wartime propaganda posters, evoking a sense of urgency and productivity.; Nuclear fuel and longevity themes align with the eternal nature of memes in crypto culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PROKEKTION#text",
+      "label": "On-card text",
+      "text": "OUR ANSWER | ALL-OUT PRODUCTION | Memes that run on nuclear fuel will last 1000 years",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PROKEKTION#memetic",
+      "label": "Memetic references",
+      "text": "The green hand is a nod to the Hulk, symbolizing strength and power.\nReferences to wartime propaganda posters, evoking a sense of urgency and productivity.\nNuclear fuel and longevity themes align with the eternal nature of memes in crypto culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PROKEKTION#visual",
+      "label": "Visual summary",
+      "text": "This card features a vibrant retro-style poster with a bold green hand, reminiscent of a Hulk fist, pointing upwards. The background is filled with vintage airplanes flying over a busy industrial scene, with crowds and factories depicted in a classic mid-20th century style. The color palette is dominated by greens, blues, and reds, giving off a nostalgic yet powerful vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PROKEKTION#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nOUR ANSWER  \nALL-OUT PRODUCTION  \nMemes that run on nuclear fuel will last 1000 years  \n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a vibrant retro-style poster with a bold green hand, reminiscent of a Hulk fist, pointing upwards. The background is filled with vintage airplanes flying over a busy industrial scene, with crowds and factories depicted in a classic mid-20th century style. The color palette is dominated by greens, blues, and reds, giving off a nostalgic yet powerful vibe.\n\n🧬 **MEMETIC DNA:**\n- The green hand is a nod to the Hulk, symbolizing strength and power.\n- References to wartime propaganda posters, evoking a sense of urgency and productivity.\n- Nuclear fuel and longevity themes align with the eternal nature of memes in crypto culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.055Z",
+  "sourceFactVersion": 1
+}

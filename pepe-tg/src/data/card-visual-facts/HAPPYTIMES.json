@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "asset": "HAPPYTIMES",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 35,
+  "artist": "Mighty Shroom",
+  "supply": 28,
+  "issuance": "May 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as a central character.",
+    "Elements of stoner culture with the bong and chill vibes.",
+    "Cartoonish, surreal elements reminiscent of classic meme aesthetics.",
+    "References to trippy, psychedelic experiences with smiling celestial bodies and exaggerated flora and fauna."
+  ],
+  "visualSummary": "The card features a colorful and whimsical scene with a large green bong personified with Pepe's face, surrounded by cartoonish flowers, stars, and a crescent moon with faces. A cheerful frog and a giraffe-like creature add to the playful chaos, with bright colors dominating the scene—vibrant greens, yellows, blues, and purples giving it a psychedelic vibe. The style is reminiscent of psychedelic art, with bold outlines and exaggerated, playful expressions.",
+  "visualSummaryShort": "The card showcases a vibrant and whimsical scene featuring a large green bong with Pepe's face, surrounded by cartoonish flowers and a crescent moon. Bright colors and playful characters create a psychedelic atmosphere.",
+  "visualKeywords": [
+    "green bong",
+    "pepe",
+    "flowers",
+    "crescent moon",
+    "frog",
+    "giraffe",
+    "psychedelic",
+    "bright colors",
+    "playful",
+    "cartoonish"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "green bong",
+    "pepe",
+    "flowers",
+    "crescent moon",
+    "frog",
+    "giraffe",
+    "psychedelic",
+    "bright colors",
+    "playful",
+    "cartoonish"
+  ],
+  "embeddingInput": "HAPPYTIMES (Fake Rares) - Series 14 Card 35\nArtist: Mighty Shroom\nSupply 28 Issued May 2023\nOn-card text: none detected\nVisual summary: The card features a colorful and whimsical scene with a large green bong personified with Pepe's face, surrounded by cartoonish flowers, stars, and a crescent moon with faces. A cheerful frog and a giraffe-like creature add to the playful chaos, with bright colors dominating the scene—vibrant greens, yellows, blues, and purples giving it a psychedelic vibe. The style is reminiscent of psychedelic art, with bold outlines and exaggerated, playful expressions.\nMemetic references: Pepe the Frog as a central character.; Elements of stoner culture with the bong and chill vibes.; Cartoonish, surreal elements reminiscent of classic meme aesthetics.; References to trippy, psychedelic experiences with smiling celestial bodies and exaggerated flora and fauna.",
+  "embeddingBlocks": [
+    {
+      "id": "HAPPYTIMES#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central character.\nElements of stoner culture with the bong and chill vibes.\nCartoonish, surreal elements reminiscent of classic meme aesthetics.\nReferences to trippy, psychedelic experiences with smiling celestial bodies and exaggerated flora and fauna.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "HAPPYTIMES#visual",
+      "label": "Visual summary",
+      "text": "The card features a colorful and whimsical scene with a large green bong personified with Pepe's face, surrounded by cartoonish flowers, stars, and a crescent moon with faces. A cheerful frog and a giraffe-like creature add to the playful chaos, with bright colors dominating the scene—vibrant greens, yellows, blues, and purples giving it a psychedelic vibe. The style is reminiscent of psychedelic art, with bold outlines and exaggerated, playful expressions.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "HAPPYTIMES#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a colorful and whimsical scene with a large green bong personified with Pepe's face, surrounded by cartoonish flowers, stars, and a crescent moon with faces. A cheerful frog and a giraffe-like creature add to the playful chaos, with bright colors dominating the scene—vibrant greens, yellows, blues, and purples giving it a psychedelic vibe. The style is reminiscent of psychedelic art, with bold outlines and exaggerated, playful expressions.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central character.\n- Elements of stoner culture with the bong and chill vibes.\n- Cartoonish, surreal elements reminiscent of classic meme aesthetics.\n- References to trippy, psychedelic experiences with smiling celestial bodies and exaggerated flora and fauna.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.674Z",
+  "sourceFactVersion": 1
+}

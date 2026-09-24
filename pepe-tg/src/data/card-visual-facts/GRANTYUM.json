@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "GRANTYUM",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 49,
+  "artist": "Alpha Centauri Kid",
+  "supply": 100,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "GRANTYUM"
+  ],
+  "memeticReferences": [
+    "References to shadow art and minimalist design.",
+    "Possible nod to crypto culture's love for green (bullish vibes).",
+    "The jumping figure could symbolize leaps in the market or a metaphor for \"going to the moon.\""
+  ],
+  "visualSummary": "The card features a shadowy silhouette of a figure jumping against a vibrant green background. The minimalistic composition emphasizes the shadow play and the stark contrast between the dark figure and the bright backdrop. The overall style is simple yet intriguing, drawing attention to the movement and energy of the central figure.",
+  "visualSummaryShort": "The card showcases a shadowy silhouette of a figure in motion against a vibrant green background. The contrast between the dark figure and the bright backdrop creates an intriguing visual dynamic.",
+  "visualKeywords": [
+    "silhouette",
+    "jumping",
+    "green background",
+    "shadow",
+    "contrast",
+    "movement",
+    "energy",
+    "minimalistic"
+  ],
+  "textKeywords": [
+    "grantyum"
+  ],
+  "keywords": [
+    "silhouette",
+    "jumping",
+    "green background",
+    "shadow",
+    "contrast",
+    "movement",
+    "energy",
+    "minimalistic",
+    "grantyum"
+  ],
+  "embeddingInput": "GRANTYUM (Fake Rares) - Series 8 Card 49\nArtist: Alpha Centauri Kid\nSupply 100 Issued July 2022\nOn-card text: GRANTYUM\nVisual summary: The card features a shadowy silhouette of a figure jumping against a vibrant green background. The minimalistic composition emphasizes the shadow play and the stark contrast between the dark figure and the bright backdrop. The overall style is simple yet intriguing, drawing attention to the movement and energy of the central figure.\nMemetic references: References to shadow art and minimalist design.; Possible nod to crypto culture's love for green (bullish vibes).; The jumping figure could symbolize leaps in the market or a metaphor for \"going to the moon.\"",
+  "embeddingBlocks": [
+    {
+      "id": "GRANTYUM#text",
+      "label": "On-card text",
+      "text": "GRANTYUM",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "GRANTYUM#memetic",
+      "label": "Memetic references",
+      "text": "References to shadow art and minimalist design.\nPossible nod to crypto culture's love for green (bullish vibes).\nThe jumping figure could symbolize leaps in the market or a metaphor for \"going to the moon.\"",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "GRANTYUM#visual",
+      "label": "Visual summary",
+      "text": "The card features a shadowy silhouette of a figure jumping against a vibrant green background. The minimalistic composition emphasizes the shadow play and the stark contrast between the dark figure and the bright backdrop. The overall style is simple yet intriguing, drawing attention to the movement and energy of the central figure.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "GRANTYUM#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nGRANTYUM\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a shadowy silhouette of a figure jumping against a vibrant green background. The minimalistic composition emphasizes the shadow play and the stark contrast between the dark figure and the bright backdrop. The overall style is simple yet intriguing, drawing attention to the movement and energy of the central figure.\n\n🧬 **MEMETIC DNA:**\n- References to shadow art and minimalist design.\n- Possible nod to crypto culture's love for green (bullish vibes).\n- The jumping figure could symbolize leaps in the market or a metaphor for \"going to the moon.\"",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.666Z",
+  "sourceFactVersion": 1
+}

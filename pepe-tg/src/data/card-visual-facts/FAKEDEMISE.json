@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "FAKEDEMISE",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 24,
+  "artist": "Coasters",
+  "supply": 187,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "FAKE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, icon of meme culture.",
+    "Bitcoin symbol, nodding to crypto culture.",
+    "Hand-drawn aesthetic reminiscent of zine art."
+  ],
+  "visualSummary": "The card features a sketch-like drawing of a Pepe character with exaggerated features, set against a distressed, grungy background. The color palette is primarily monochromatic with black and white, accented by red text that adds a striking contrast. The artistic style is raw and gritty, with rough linework that gives it an underground, rebellious vibe.",
+  "visualSummaryShort": "The card showcases a sketchy Pepe character against a grungy, distressed background. It features a monochromatic color scheme with bold red text, creating a raw and rebellious atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "sketch",
+    "grungy",
+    "monochrome",
+    "red text",
+    "rough linework",
+    "rebellious",
+    "distressed"
+  ],
+  "textKeywords": [
+    "fake"
+  ],
+  "keywords": [
+    "pepe",
+    "sketch",
+    "grungy",
+    "monochrome",
+    "red text",
+    "rough linework",
+    "rebellious",
+    "distressed",
+    "fake"
+  ],
+  "embeddingInput": "FAKEDEMISE (Fake Rares) - Series 1 Card 24\nArtist: Coasters\nSupply 187 Issued October 2021\nOn-card text: FAKE\nVisual summary: The card features a sketch-like drawing of a Pepe character with exaggerated features, set against a distressed, grungy background. The color palette is primarily monochromatic with black and white, accented by red text that adds a striking contrast. The artistic style is raw and gritty, with rough linework that gives it an underground, rebellious vibe.\nMemetic references: Pepe the Frog, icon of meme culture.; Bitcoin symbol, nodding to crypto culture.; Hand-drawn aesthetic reminiscent of zine art.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEDEMISE#text",
+      "label": "On-card text",
+      "text": "FAKE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEDEMISE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, icon of meme culture.\nBitcoin symbol, nodding to crypto culture.\nHand-drawn aesthetic reminiscent of zine art.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEDEMISE#visual",
+      "label": "Visual summary",
+      "text": "The card features a sketch-like drawing of a Pepe character with exaggerated features, set against a distressed, grungy background. The color palette is primarily monochromatic with black and white, accented by red text that adds a striking contrast. The artistic style is raw and gritty, with rough linework that gives it an underground, rebellious vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEDEMISE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a sketch-like drawing of a Pepe character with exaggerated features, set against a distressed, grungy background. The color palette is primarily monochromatic with black and white, accented by red text that adds a striking contrast. The artistic style is raw and gritty, with rough linework that gives it an underground, rebellious vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, icon of meme culture.\n- Bitcoin symbol, nodding to crypto culture.\n- Hand-drawn aesthetic reminiscent of zine art.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.476Z",
+  "sourceFactVersion": 1
+}

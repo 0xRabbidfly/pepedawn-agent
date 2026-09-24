@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "asset": "PAPAJPEPE",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 8,
+  "artist": "Mr. HODLPIG",
+  "supply": 126,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "PEPE JOHN'S PIZZA"
+  ],
+  "memeticReferences": [
+    "References to Pepe the Frog, a staple in meme culture.",
+    "\"Silk Rd\" sign nod to crypto history and the infamous online marketplace.",
+    "Bitcoin symbol on the pizza shop door, integrating crypto culture.",
+    "\"Pepe John's\" parodies a well-known pizza chain."
+  ],
+  "visualSummary": "The card features a retro-style illustration of a pizza shop named \"Pepe John's Pizza.\" The color palette includes soft blues, greens, and reds, giving off a nostalgic vibe. The scene includes a person holding a purple Pepe, a red car with a Pepe character inside, and street signs that say \"Silk Rd\" and \"Main St.\"",
+  "visualSummaryShort": "The card showcases a nostalgic pizza shop scene with a retro illustration. It features a person with a purple Pepe and a red car, set against a backdrop of street signs.",
+  "visualKeywords": [
+    "pizza shop",
+    "retro",
+    "purple pepe",
+    "red car",
+    "street signs",
+    "soft colors",
+    "nostalgic vibe"
+  ],
+  "textKeywords": [
+    "john",
+    "pizza"
+  ],
+  "keywords": [
+    "pizza shop",
+    "retro",
+    "purple pepe",
+    "red car",
+    "street signs",
+    "soft colors",
+    "nostalgic vibe",
+    "john",
+    "pizza"
+  ],
+  "embeddingInput": "PAPAJPEPE (Fake Rares) - Series 3 Card 8\nArtist: Mr. HODLPIG\nSupply 126 Issued October 2021\nOn-card text: PEPE JOHN'S PIZZA\nVisual summary: The card features a retro-style illustration of a pizza shop named \"Pepe John's Pizza.\" The color palette includes soft blues, greens, and reds, giving off a nostalgic vibe. The scene includes a person holding a purple Pepe, a red car with a Pepe character inside, and street signs that say \"Silk Rd\" and \"Main St.\"\nMemetic references: References to Pepe the Frog, a staple in meme culture.; \"Silk Rd\" sign nod to crypto history and the infamous online marketplace.; Bitcoin symbol on the pizza shop door, integrating crypto culture.; \"Pepe John's\" parodies a well-known pizza chain.",
+  "embeddingBlocks": [
+    {
+      "id": "PAPAJPEPE#text",
+      "label": "On-card text",
+      "text": "PEPE JOHN'S PIZZA",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PAPAJPEPE#memetic",
+      "label": "Memetic references",
+      "text": "References to Pepe the Frog, a staple in meme culture.\n\"Silk Rd\" sign nod to crypto history and the infamous online marketplace.\nBitcoin symbol on the pizza shop door, integrating crypto culture.\n\"Pepe John's\" parodies a well-known pizza chain.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PAPAJPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a retro-style illustration of a pizza shop named \"Pepe John's Pizza.\" The color palette includes soft blues, greens, and reds, giving off a nostalgic vibe. The scene includes a person holding a purple Pepe, a red car with a Pepe character inside, and street signs that say \"Silk Rd\" and \"Main St.\"",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PAPAJPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE JOHN'S PIZZA\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a retro-style illustration of a pizza shop named \"Pepe John's Pizza.\" The color palette includes soft blues, greens, and reds, giving off a nostalgic vibe. The scene includes a person holding a purple Pepe, a red car with a Pepe character inside, and street signs that say \"Silk Rd\" and \"Main St.\"\n\n🧬 **MEMETIC DNA:**\n- References to Pepe the Frog, a staple in meme culture.\n- \"Silk Rd\" sign nod to crypto history and the infamous online marketplace.\n- Bitcoin symbol on the pizza shop door, integrating crypto culture.\n- \"Pepe John's\" parodies a well-known pizza chain.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.822Z",
+  "sourceFactVersion": 1
+}

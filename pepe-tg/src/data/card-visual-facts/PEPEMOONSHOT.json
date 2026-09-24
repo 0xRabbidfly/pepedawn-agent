@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "PEPEMOONSHOT",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 27,
+  "artist": "Chaotic Crypto",
+  "supply": 500,
+  "issuance": "October 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as an astronaut references the popular meme character.",
+    "\"To the moon\" meme, symbolized by the rocket and moon, is a nod to crypto's dream of skyrocketing value.",
+    "Space exploration theme reflects the adventurous spirit of crypto and NFT culture."
+  ],
+  "visualSummary": "The card features a Pepe character dressed as an astronaut with a green face and red lips, gazing towards the moon. Behind Pepe, a classic red and silver rocket ship stands ready for launch, with another Pepe face visible in its window. The background is a dark, starry sky, creating a space exploration vibe.",
+  "visualSummaryShort": "The card showcases a Pepe character in an astronaut suit, looking up at the moon. A red and silver rocket ship is positioned behind him against a dark, starry sky.",
+  "visualKeywords": [
+    "pepe",
+    "astronaut",
+    "rocket",
+    "moon",
+    "starry sky",
+    "green face",
+    "red lips",
+    "space exploration"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "astronaut",
+    "rocket",
+    "moon",
+    "starry sky",
+    "green face",
+    "red lips",
+    "space exploration"
+  ],
+  "embeddingInput": "PEPEMOONSHOT (Fake Rares) - Series 3 Card 27\nArtist: Chaotic Crypto\nSupply 500 Issued October 2021\nOn-card text: none detected\nVisual summary: The card features a Pepe character dressed as an astronaut with a green face and red lips, gazing towards the moon. Behind Pepe, a classic red and silver rocket ship stands ready for launch, with another Pepe face visible in its window. The background is a dark, starry sky, creating a space exploration vibe.\nMemetic references: Pepe the Frog as an astronaut references the popular meme character.; \"To the moon\" meme, symbolized by the rocket and moon, is a nod to crypto's dream of skyrocketing value.; Space exploration theme reflects the adventurous spirit of crypto and NFT culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEMOONSHOT#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as an astronaut references the popular meme character.\n\"To the moon\" meme, symbolized by the rocket and moon, is a nod to crypto's dream of skyrocketing value.\nSpace exploration theme reflects the adventurous spirit of crypto and NFT culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEMOONSHOT#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe character dressed as an astronaut with a green face and red lips, gazing towards the moon. Behind Pepe, a classic red and silver rocket ship stands ready for launch, with another Pepe face visible in its window. The background is a dark, starry sky, creating a space exploration vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEMOONSHOT#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe character dressed as an astronaut with a green face and red lips, gazing towards the moon. Behind Pepe, a classic red and silver rocket ship stands ready for launch, with another Pepe face visible in its window. The background is a dark, starry sky, creating a space exploration vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as an astronaut references the popular meme character.\n- \"To the moon\" meme, symbolized by the rocket and moon, is a nod to crypto's dream of skyrocketing value.\n- Space exploration theme reflects the adventurous spirit of crypto and NFT culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.929Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "asset": "ORNGECEPTION",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 31,
+  "artist": "Darky",
+  "supply": 100,
+  "issuance": "July 2023",
+  "textOnCard": [
+    "ORNGECEPTION",
+    "ATK = Iterative ELE =",
+    "We need to go FAKEr"
+  ],
+  "memeticReferences": [
+    "References the \"Pepe the Frog\" meme, a staple in internet and crypto culture.",
+    "Plays on the concept of \"Inception,\" suggesting layers within layers.",
+    "Uses the term \"FAKEr,\" nodding to the Fake Rares NFT series and the playful nature of crypto art."
+  ],
+  "visualSummary": "The card features a close-up of a stylized orange Pepe face, focusing on its eye, with bold lines and minimal shading. The predominant color is orange, with accents of green and black, creating a vibrant and eye-catching design. The border of the card is orange with a pattern that complements the meme aesthetic.",
+  "visualSummaryShort": "The card showcases a close-up of a stylized orange Pepe face, emphasizing its eye with bold lines. The vibrant orange color is accented by green and black, set against an orange patterned border.",
+  "visualKeywords": [
+    "orange",
+    "pepe",
+    "eye",
+    "bold lines",
+    "green",
+    "black",
+    "pattern",
+    "vibrant",
+    "meme",
+    "close-up"
+  ],
+  "textKeywords": [
+    "orngeception",
+    "atk",
+    "iterative",
+    "ele",
+    "need",
+    "faker"
+  ],
+  "keywords": [
+    "orange",
+    "pepe",
+    "eye",
+    "bold lines",
+    "green",
+    "black",
+    "pattern",
+    "vibrant",
+    "meme",
+    "close-up",
+    "orngeception",
+    "atk",
+    "iterative",
+    "ele",
+    "need",
+    "faker"
+  ],
+  "embeddingInput": "ORNGECEPTION (Fake Rares) - Series 15 Card 31\nArtist: Darky\nSupply 100 Issued July 2023\nOn-card text: ORNGECEPTION | ATK = Iterative ELE = | We need to go FAKEr\nVisual summary: The card features a close-up of a stylized orange Pepe face, focusing on its eye, with bold lines and minimal shading. The predominant color is orange, with accents of green and black, creating a vibrant and eye-catching design. The border of the card is orange with a pattern that complements the meme aesthetic.\nMemetic references: References the \"Pepe the Frog\" meme, a staple in internet and crypto culture.; Plays on the concept of \"Inception,\" suggesting layers within layers.; Uses the term \"FAKEr,\" nodding to the Fake Rares NFT series and the playful nature of crypto art.",
+  "embeddingBlocks": [
+    {
+      "id": "ORNGECEPTION#text",
+      "label": "On-card text",
+      "text": "ORNGECEPTION | ATK = Iterative ELE = | We need to go FAKEr",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "ORNGECEPTION#memetic",
+      "label": "Memetic references",
+      "text": "References the \"Pepe the Frog\" meme, a staple in internet and crypto culture.\nPlays on the concept of \"Inception,\" suggesting layers within layers.\nUses the term \"FAKEr,\" nodding to the Fake Rares NFT series and the playful nature of crypto art.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "ORNGECEPTION#visual",
+      "label": "Visual summary",
+      "text": "The card features a close-up of a stylized orange Pepe face, focusing on its eye, with bold lines and minimal shading. The predominant color is orange, with accents of green and black, creating a vibrant and eye-catching design. The border of the card is orange with a pattern that complements the meme aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "ORNGECEPTION#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nORNGECEPTION  \nATK = Iterative  ELE =   \nWe need to go FAKEr  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a close-up of a stylized orange Pepe face, focusing on its eye, with bold lines and minimal shading. The predominant color is orange, with accents of green and black, creating a vibrant and eye-catching design. The border of the card is orange with a pattern that complements the meme aesthetic.\n\n🧬 **MEMETIC DNA:**\n- References the \"Pepe the Frog\" meme, a staple in internet and crypto culture.\n- Plays on the concept of \"Inception,\" suggesting layers within layers.\n- Uses the term \"FAKEr,\" nodding to the Fake Rares NFT series and the playful nature of crypto art.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.818Z",
+  "sourceFactVersion": 1
+}

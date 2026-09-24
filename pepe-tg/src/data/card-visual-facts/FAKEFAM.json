@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "asset": "FAKEFAM",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 13,
+  "artist": "ROCHIGG",
+  "supply": 21,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "Devs Do Sumtin"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog is front and center, a staple in meme culture.",
+    "\"Devs Do Sumtin\" is a nod to the common crypto plea for developers to take action.",
+    "The corkboard includes nods to various crypto and internet culture symbols."
+  ],
+  "visualSummary": "The card features a group of five characters seated around a table, including Pepe the Frog, who is wearing a blue jacket and green sneakers. The background has a corkboard filled with various pinned images and notes, creating a cluttered, collaborative atmosphere. The color palette is vibrant with a mix of greens, blues, and browns, giving it an energetic and dynamic feel.",
+  "visualSummaryShort": "The card depicts five characters, including Pepe the Frog in a blue jacket, gathered around a table in a cluttered environment. The vibrant color palette enhances the energetic and dynamic atmosphere.",
+  "visualKeywords": [
+    "characters",
+    "table",
+    "pepe the frog",
+    "blue jacket",
+    "corkboard",
+    "pinned images",
+    "green sneakers",
+    "vibrant colors",
+    "collaborative",
+    "cluttered"
+  ],
+  "textKeywords": [
+    "devs",
+    "sumtin"
+  ],
+  "keywords": [
+    "characters",
+    "table",
+    "pepe the frog",
+    "blue jacket",
+    "corkboard",
+    "pinned images",
+    "green sneakers",
+    "vibrant colors",
+    "collaborative",
+    "cluttered",
+    "devs",
+    "sumtin"
+  ],
+  "embeddingInput": "FAKEFAM (Fake Rares) - Series 7 Card 13\nArtist: ROCHIGG\nSupply 21 Issued March 2022\nOn-card text: Devs Do Sumtin\nVisual summary: The card features a group of five characters seated around a table, including Pepe the Frog, who is wearing a blue jacket and green sneakers. The background has a corkboard filled with various pinned images and notes, creating a cluttered, collaborative atmosphere. The color palette is vibrant with a mix of greens, blues, and browns, giving it an energetic and dynamic feel.\nMemetic references: Pepe the Frog is front and center, a staple in meme culture.; \"Devs Do Sumtin\" is a nod to the common crypto plea for developers to take action.; The corkboard includes nods to various crypto and internet culture symbols.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEFAM#text",
+      "label": "On-card text",
+      "text": "Devs Do Sumtin",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEFAM#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog is front and center, a staple in meme culture.\n\"Devs Do Sumtin\" is a nod to the common crypto plea for developers to take action.\nThe corkboard includes nods to various crypto and internet culture symbols.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEFAM#visual",
+      "label": "Visual summary",
+      "text": "The card features a group of five characters seated around a table, including Pepe the Frog, who is wearing a blue jacket and green sneakers. The background has a corkboard filled with various pinned images and notes, creating a cluttered, collaborative atmosphere. The color palette is vibrant with a mix of greens, blues, and browns, giving it an energetic and dynamic feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEFAM#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nDevs Do Sumtin\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a group of five characters seated around a table, including Pepe the Frog, who is wearing a blue jacket and green sneakers. The background has a corkboard filled with various pinned images and notes, creating a cluttered, collaborative atmosphere. The color palette is vibrant with a mix of greens, blues, and browns, giving it an energetic and dynamic feel.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog is front and center, a staple in meme culture.\n- \"Devs Do Sumtin\" is a nod to the common crypto plea for developers to take action.\n- The corkboard includes nods to various crypto and internet culture symbols.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.495Z",
+  "sourceFactVersion": 1
+}

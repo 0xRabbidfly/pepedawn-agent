@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "asset": "NNDMCP",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 6,
+  "artist": "XWAVE",
+  "supply": 21,
+  "issuance": "October 2022",
+  "textOnCard": [
+    "N,N-DimethylcryptoPepe",
+    "Time Dilation +1000",
+    "Akashic Knowledge +1000",
+    "Impossible Colors +1000"
+  ],
+  "memeticReferences": [
+    "Psychedelic art reminiscent of 1960s counterculture.",
+    "Reference to \"N,N-Dimethyltryptamine\" (DMT), a powerful psychedelic.",
+    "Classic Pepe the Frog imagery, a staple in meme culture.",
+    "Crypto and NFT culture, with references to time and knowledge as power-ups."
+  ],
+  "visualSummary": "This card showcases a psychedelic Pepe with vibrant, swirling colors that create an intense, eye-catching pattern. The head of Pepe is depicted with an array of rainbow hues and intricate lines, giving it a trippy, otherworldly feel. The background features abstract, wavy patterns that enhance the psychedelic vibe.",
+  "visualSummaryShort": "The card features a psychedelic Pepe with vibrant, swirling rainbow colors and intricate lines. The abstract background enhances the trippy, otherworldly atmosphere.",
+  "visualKeywords": [
+    "psychedelic",
+    "pepe",
+    "rainbow",
+    "swirling",
+    "abstract",
+    "vibrant",
+    "intense",
+    "wavy",
+    "colors",
+    "otherworldly"
+  ],
+  "textKeywords": [
+    "dimethylcryptopepe",
+    "time",
+    "dilation",
+    "1000",
+    "akashic",
+    "knowledge",
+    "impossible",
+    "colors"
+  ],
+  "keywords": [
+    "psychedelic",
+    "pepe",
+    "rainbow",
+    "swirling",
+    "abstract",
+    "vibrant",
+    "intense",
+    "wavy",
+    "colors",
+    "otherworldly",
+    "dimethylcryptopepe",
+    "time",
+    "dilation",
+    "1000",
+    "akashic",
+    "knowledge",
+    "impossible"
+  ],
+  "embeddingInput": "NNDMCP (Fake Rares) - Series 14 Card 6\nArtist: XWAVE\nSupply 21 Issued October 2022\nOn-card text: N,N-DimethylcryptoPepe | Time Dilation +1000 | Akashic Knowledge +1000 | Impossible Colors +1000\nVisual summary: This card showcases a psychedelic Pepe with vibrant, swirling colors that create an intense, eye-catching pattern. The head of Pepe is depicted with an array of rainbow hues and intricate lines, giving it a trippy, otherworldly feel. The background features abstract, wavy patterns that enhance the psychedelic vibe.\nMemetic references: Psychedelic art reminiscent of 1960s counterculture.; Reference to \"N,N-Dimethyltryptamine\" (DMT), a powerful psychedelic.; Classic Pepe the Frog imagery, a staple in meme culture.; Crypto and NFT culture, with references to time and knowledge as power-ups.",
+  "embeddingBlocks": [
+    {
+      "id": "NNDMCP#text",
+      "label": "On-card text",
+      "text": "N,N-DimethylcryptoPepe | Time Dilation +1000 | Akashic Knowledge +1000 | Impossible Colors +1000",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "NNDMCP#memetic",
+      "label": "Memetic references",
+      "text": "Psychedelic art reminiscent of 1960s counterculture.\nReference to \"N,N-Dimethyltryptamine\" (DMT), a powerful psychedelic.\nClassic Pepe the Frog imagery, a staple in meme culture.\nCrypto and NFT culture, with references to time and knowledge as power-ups.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "NNDMCP#visual",
+      "label": "Visual summary",
+      "text": "This card showcases a psychedelic Pepe with vibrant, swirling colors that create an intense, eye-catching pattern. The head of Pepe is depicted with an array of rainbow hues and intricate lines, giving it a trippy, otherworldly feel. The background features abstract, wavy patterns that enhance the psychedelic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "NNDMCP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nN,N-DimethylcryptoPepe  \nTime Dilation +1000  \nAkashic Knowledge +1000  \nImpossible Colors +1000  \n\n🎨 **VISUAL BREAKDOWN:**\nThis card showcases a psychedelic Pepe with vibrant, swirling colors that create an intense, eye-catching pattern. The head of Pepe is depicted with an array of rainbow hues and intricate lines, giving it a trippy, otherworldly feel. The background features abstract, wavy patterns that enhance the psychedelic vibe.\n\n🧬 **MEMETIC DNA:**\n- Psychedelic art reminiscent of 1960s counterculture.\n- Reference to \"N,N-Dimethyltryptamine\" (DMT), a powerful psychedelic.\n- Classic Pepe the Frog imagery, a staple in meme culture.\n- Crypto and NFT culture, with references to time and knowledge as power-ups.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.796Z",
+  "sourceFactVersion": 1
+}

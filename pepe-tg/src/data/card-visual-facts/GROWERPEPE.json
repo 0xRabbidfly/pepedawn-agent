@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "asset": "GROWERPEPE",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 18,
+  "artist": "Aera One",
+  "supply": 36,
+  "issuance": "August 2022",
+  "textOnCard": [
+    "CORPORATE CANNABIS UNIVERSITY"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as the central character, a staple of internet meme culture.",
+    "References to cannabis culture and the commercialization of it.",
+    "The juxtaposition of corporate and agricultural themes.",
+    "Possible nod to the idea of \"higher education\" in a non-traditional sense."
+  ],
+  "visualSummary": "The card features Pepe the Frog dressed as a farmer, holding a shovel and standing among rows of cannabis plants. In the background, there's a city skyline with a bridge and a series of greenhouses labeled \"Corporate Cannabis University.\" The color palette is vibrant with greens, blues, and earthy tones, giving it a hand-drawn, cartoonish style.",
+  "visualSummaryShort": "The card depicts Pepe the Frog as a farmer amidst rows of cannabis plants, with a city skyline and greenhouses in the background. The vibrant color palette features greens, blues, and earthy tones, enhancing its cartoonish style.",
+  "visualKeywords": [
+    "pepe the frog",
+    "farmer",
+    "cannabis plants",
+    "city skyline",
+    "greenhouses",
+    "vibrant colors",
+    "cartoonish",
+    "shovel",
+    "earthy tones"
+  ],
+  "textKeywords": [
+    "corporate",
+    "cannabis",
+    "university"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "farmer",
+    "cannabis plants",
+    "city skyline",
+    "greenhouses",
+    "vibrant colors",
+    "cartoonish",
+    "shovel",
+    "earthy tones",
+    "corporate",
+    "cannabis",
+    "university"
+  ],
+  "embeddingInput": "GROWERPEPE (Fake Rares) - Series 9 Card 18\nArtist: Aera One\nSupply 36 Issued August 2022\nOn-card text: CORPORATE CANNABIS UNIVERSITY\nVisual summary: The card features Pepe the Frog dressed as a farmer, holding a shovel and standing among rows of cannabis plants. In the background, there's a city skyline with a bridge and a series of greenhouses labeled \"Corporate Cannabis University.\" The color palette is vibrant with greens, blues, and earthy tones, giving it a hand-drawn, cartoonish style.\nMemetic references: Pepe the Frog as the central character, a staple of internet meme culture.; References to cannabis culture and the commercialization of it.; The juxtaposition of corporate and agricultural themes.; Possible nod to the idea of \"higher education\" in a non-traditional sense.",
+  "embeddingBlocks": [
+    {
+      "id": "GROWERPEPE#text",
+      "label": "On-card text",
+      "text": "CORPORATE CANNABIS UNIVERSITY",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "GROWERPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as the central character, a staple of internet meme culture.\nReferences to cannabis culture and the commercialization of it.\nThe juxtaposition of corporate and agricultural themes.\nPossible nod to the idea of \"higher education\" in a non-traditional sense.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "GROWERPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog dressed as a farmer, holding a shovel and standing among rows of cannabis plants. In the background, there's a city skyline with a bridge and a series of greenhouses labeled \"Corporate Cannabis University.\" The color palette is vibrant with greens, blues, and earthy tones, giving it a hand-drawn, cartoonish style.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "GROWERPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nCORPORATE CANNABIS UNIVERSITY\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog dressed as a farmer, holding a shovel and standing among rows of cannabis plants. In the background, there's a city skyline with a bridge and a series of greenhouses labeled \"Corporate Cannabis University.\" The color palette is vibrant with greens, blues, and earthy tones, giving it a hand-drawn, cartoonish style.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as the central character, a staple of internet meme culture.\n- References to cannabis culture and the commercialization of it.\n- The juxtaposition of corporate and agricultural themes.\n- Possible nod to the idea of \"higher education\" in a non-traditional sense.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.673Z",
+  "sourceFactVersion": 1
+}

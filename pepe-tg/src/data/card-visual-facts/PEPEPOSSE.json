@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "asset": "PEPEPOSSE",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 32,
+  "artist": "Gonkulator",
+  "supply": 23,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "Pepe Posse. PEPE THE GIANT HAS A POSSE. 6'9\", 420LB. When Pepe Posse drops break out the Beasties, White Castles and a 6 of High Life. \"My posse's in effect, and we're doin' the deuce.\" MCA. Illus. Gonkulator. 6",
+    "9."
+  ],
+  "memeticReferences": [
+    "References the \"Obey Giant\" sticker campaign and meme culture.",
+    "Nods to hip-hop culture, specifically the Beastie Boys with the MCA quote.",
+    "Incorporates stoner culture with the \"420\" reference.",
+    "Classic Pepe the Frog imagery, a staple in meme and NFT culture."
+  ],
+  "visualSummary": "The card features a bold, black-and-white image of Pepe the Frog, stylized as a giant figure. The background is a deep green, resembling a classic trading card. The artistic style is reminiscent of 90s graffiti and street art, giving it a nostalgic yet edgy vibe.",
+  "visualSummaryShort": "The card showcases a large, stylized image of Pepe the Frog against a deep green background, evoking a nostalgic street art vibe. The bold black-and-white design adds an edgy feel to the overall aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "frog",
+    "black-and-white",
+    "green background",
+    "graffiti",
+    "street art",
+    "nostalgic",
+    "edgy"
+  ],
+  "textKeywords": [
+    "posse",
+    "giant",
+    "has",
+    "420lb",
+    "when",
+    "drops",
+    "break",
+    "out",
+    "beasties",
+    "white",
+    "castles",
+    "high",
+    "life",
+    "effect",
+    "doin",
+    "deuce",
+    "mca",
+    "illus",
+    "gonkulator"
+  ],
+  "keywords": [
+    "pepe",
+    "frog",
+    "black-and-white",
+    "green background",
+    "graffiti",
+    "street art",
+    "nostalgic",
+    "edgy",
+    "posse",
+    "giant",
+    "has",
+    "420lb",
+    "when",
+    "drops",
+    "break",
+    "out",
+    "beasties",
+    "white",
+    "castles",
+    "high",
+    "life",
+    "effect",
+    "doin",
+    "deuce",
+    "mca",
+    "illus",
+    "gonkulator"
+  ],
+  "embeddingInput": "PEPEPOSSE (Fake Rares) - Series 11 Card 32\nArtist: Gonkulator\nSupply 23 Issued September 2022\nOn-card text: Pepe Posse. PEPE THE GIANT HAS A POSSE. 6'9\", 420LB. When Pepe Posse drops break out the Beasties, White Castles and a 6 of High Life. \"My posse's in effect, and we're doin' the deuce.\" MCA. Illus. Gonkulator. 6 | 9.\nVisual summary: The card features a bold, black-and-white image of Pepe the Frog, stylized as a giant figure. The background is a deep green, resembling a classic trading card. The artistic style is reminiscent of 90s graffiti and street art, giving it a nostalgic yet edgy vibe.\nMemetic references: References the \"Obey Giant\" sticker campaign and meme culture.; Nods to hip-hop culture, specifically the Beastie Boys with the MCA quote.; Incorporates stoner culture with the \"420\" reference.; Classic Pepe the Frog imagery, a staple in meme and NFT culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEPOSSE#text",
+      "label": "On-card text",
+      "text": "Pepe Posse. PEPE THE GIANT HAS A POSSE. 6'9\", 420LB. When Pepe Posse drops break out the Beasties, White Castles and a 6 of High Life. \"My posse's in effect, and we're doin' the deuce.\" MCA. Illus. Gonkulator. 6 | 9.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEPOSSE#memetic",
+      "label": "Memetic references",
+      "text": "References the \"Obey Giant\" sticker campaign and meme culture.\nNods to hip-hop culture, specifically the Beastie Boys with the MCA quote.\nIncorporates stoner culture with the \"420\" reference.\nClassic Pepe the Frog imagery, a staple in meme and NFT culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEPOSSE#visual",
+      "label": "Visual summary",
+      "text": "The card features a bold, black-and-white image of Pepe the Frog, stylized as a giant figure. The background is a deep green, resembling a classic trading card. The artistic style is reminiscent of 90s graffiti and street art, giving it a nostalgic yet edgy vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEPOSSE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPepe Posse. PEPE THE GIANT HAS A POSSE. 6'9\", 420LB. When Pepe Posse drops break out the Beasties, White Castles and a 6 of High Life. \"My posse's in effect, and we're doin' the deuce.\" MCA. Illus. Gonkulator. 6/9.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a bold, black-and-white image of Pepe the Frog, stylized as a giant figure. The background is a deep green, resembling a classic trading card. The artistic style is reminiscent of 90s graffiti and street art, giving it a nostalgic yet edgy vibe.\n\n🧬 **MEMETIC DNA:**\n- References the \"Obey Giant\" sticker campaign and meme culture.\n- Nods to hip-hop culture, specifically the Beastie Boys with the MCA quote.\n- Incorporates stoner culture with the \"420\" reference.\n- Classic Pepe the Frog imagery, a staple in meme and NFT culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.951Z",
+  "sourceFactVersion": 1
+}

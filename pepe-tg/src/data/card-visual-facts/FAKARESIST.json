@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "FAKARESIST",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 13,
+  "artist": "Mike in Space and WhoIsIt",
+  "supply": 100,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "FAKARESIST"
+  ],
+  "memeticReferences": [
+    "Strong reference to meme culture with exaggerated facial features.",
+    "The \"Miami\" cap nods to 80s synthwave aesthetics.",
+    "The glitch effect adds a touch of crypto-anarchist vibes."
+  ],
+  "visualSummary": "The card features a digitally altered image of a man with exaggerated features, wearing a cap that says \"Miami\" in neon colors. The background includes a framed sports logo, adding an urban vibe. The overall color palette combines cool blues with vibrant pinks, giving it a retro-futuristic aesthetic.",
+  "visualSummaryShort": "The card showcases a digitally altered man with exaggerated features, wearing a neon 'Miami' cap. The cool blue and vibrant pink color palette creates a retro-futuristic urban vibe.",
+  "visualKeywords": [
+    "man",
+    "cap",
+    "neon",
+    "sports logo",
+    "urban",
+    "blue",
+    "pink",
+    "retro-futuristic"
+  ],
+  "textKeywords": [
+    "fakaresist"
+  ],
+  "keywords": [
+    "man",
+    "cap",
+    "neon",
+    "sports logo",
+    "urban",
+    "blue",
+    "pink",
+    "retro-futuristic",
+    "fakaresist"
+  ],
+  "embeddingInput": "FAKARESIST (Fake Rares) - Series 4 Card 13\nArtist: Mike in Space and WhoIsIt\nSupply 100 Issued November 2021\nOn-card text: FAKARESIST\nVisual summary: The card features a digitally altered image of a man with exaggerated features, wearing a cap that says \"Miami\" in neon colors. The background includes a framed sports logo, adding an urban vibe. The overall color palette combines cool blues with vibrant pinks, giving it a retro-futuristic aesthetic.\nMemetic references: Strong reference to meme culture with exaggerated facial features.; The \"Miami\" cap nods to 80s synthwave aesthetics.; The glitch effect adds a touch of crypto-anarchist vibes.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKARESIST#text",
+      "label": "On-card text",
+      "text": "FAKARESIST",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKARESIST#memetic",
+      "label": "Memetic references",
+      "text": "Strong reference to meme culture with exaggerated facial features.\nThe \"Miami\" cap nods to 80s synthwave aesthetics.\nThe glitch effect adds a touch of crypto-anarchist vibes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKARESIST#visual",
+      "label": "Visual summary",
+      "text": "The card features a digitally altered image of a man with exaggerated features, wearing a cap that says \"Miami\" in neon colors. The background includes a framed sports logo, adding an urban vibe. The overall color palette combines cool blues with vibrant pinks, giving it a retro-futuristic aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKARESIST#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKARESIST\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a digitally altered image of a man with exaggerated features, wearing a cap that says \"Miami\" in neon colors. The background includes a framed sports logo, adding an urban vibe. The overall color palette combines cool blues with vibrant pinks, giving it a retro-futuristic aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Strong reference to meme culture with exaggerated facial features.\n- The \"Miami\" cap nods to 80s synthwave aesthetics.\n- The glitch effect adds a touch of crypto-anarchist vibes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.442Z",
+  "sourceFactVersion": 1
+}

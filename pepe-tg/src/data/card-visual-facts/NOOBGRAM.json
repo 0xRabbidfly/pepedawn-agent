@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "asset": "NOOBGRAM",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 25,
+  "artist": "FWD",
+  "supply": 21,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "slow down",
+    "21 grams of fakes",
+    "him faked fakes"
+  ],
+  "memeticReferences": [
+    "References to the \"house of cards\" concept, symbolizing fragile constructs.",
+    "Inclusion of a Pepe character, a staple in meme culture.",
+    "QR codes nod to the digital and crypto worlds.",
+    "Play on words with \"fakes\" suggests commentary on authenticity and originality in NFTs."
+  ],
+  "visualSummary": "The card features a surreal, three-dimensional house of cards with various images and QR codes on each card face, creating a complex visual maze. The palette is a mix of blues, greens, and neutral tones, with stark black and white accents. A Pepe-like character stands observing the structure, adding an element of curiosity and playfulness.",
+  "visualSummaryShort": "The card showcases a surreal house of cards filled with various images and QR codes, creating a complex visual maze. A Pepe-like character adds a playful touch to the scene, set against a palette of blues, greens, and neutral tones.",
+  "visualKeywords": [
+    "house of cards",
+    "pepe",
+    "blue palette",
+    "green tones",
+    "black and white",
+    "surreal",
+    "maze",
+    "playful"
+  ],
+  "textKeywords": [
+    "slow",
+    "down",
+    "grams",
+    "fakes",
+    "him",
+    "faked"
+  ],
+  "keywords": [
+    "house of cards",
+    "pepe",
+    "blue palette",
+    "green tones",
+    "black and white",
+    "surreal",
+    "maze",
+    "playful",
+    "slow",
+    "down",
+    "grams",
+    "fakes",
+    "him",
+    "faked"
+  ],
+  "embeddingInput": "NOOBGRAM (Fake Rares) - Series 2 Card 25\nArtist: FWD\nSupply 21 Issued October 2021\nOn-card text: slow down | 21 grams of fakes | him faked fakes\nVisual summary: The card features a surreal, three-dimensional house of cards with various images and QR codes on each card face, creating a complex visual maze. The palette is a mix of blues, greens, and neutral tones, with stark black and white accents. A Pepe-like character stands observing the structure, adding an element of curiosity and playfulness.\nMemetic references: References to the \"house of cards\" concept, symbolizing fragile constructs.; Inclusion of a Pepe character, a staple in meme culture.; QR codes nod to the digital and crypto worlds.; Play on words with \"fakes\" suggests commentary on authenticity and originality in NFTs.",
+  "embeddingBlocks": [
+    {
+      "id": "NOOBGRAM#text",
+      "label": "On-card text",
+      "text": "slow down | 21 grams of fakes | him faked fakes",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "NOOBGRAM#memetic",
+      "label": "Memetic references",
+      "text": "References to the \"house of cards\" concept, symbolizing fragile constructs.\nInclusion of a Pepe character, a staple in meme culture.\nQR codes nod to the digital and crypto worlds.\nPlay on words with \"fakes\" suggests commentary on authenticity and originality in NFTs.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "NOOBGRAM#visual",
+      "label": "Visual summary",
+      "text": "The card features a surreal, three-dimensional house of cards with various images and QR codes on each card face, creating a complex visual maze. The palette is a mix of blues, greens, and neutral tones, with stark black and white accents. A Pepe-like character stands observing the structure, adding an element of curiosity and playfulness.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "NOOBGRAM#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nslow down  \n21 grams of fakes  \nhim faked fakes  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a surreal, three-dimensional house of cards with various images and QR codes on each card face, creating a complex visual maze. The palette is a mix of blues, greens, and neutral tones, with stark black and white accents. A Pepe-like character stands observing the structure, adding an element of curiosity and playfulness.\n\n🧬 **MEMETIC DNA:**\n- References to the \"house of cards\" concept, symbolizing fragile constructs.\n- Inclusion of a Pepe character, a staple in meme culture.\n- QR codes nod to the digital and crypto worlds.\n- Play on words with \"fakes\" suggests commentary on authenticity and originality in NFTs.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.798Z",
+  "sourceFactVersion": 1
+}

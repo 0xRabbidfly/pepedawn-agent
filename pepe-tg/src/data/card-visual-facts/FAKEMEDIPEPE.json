@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "asset": "FAKEMEDIPEPE",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 22,
+  "artist": "kr",
+  "supply": 99,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "FAKEMEDIPEPE",
+    "BTFD +99 ADDICTED -30 DROWSY +10"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure, a staple of meme culture.",
+    "References to meditation and zen, blending internet culture with spiritual themes.",
+    "The acronym \"BTFD\" (Buy The F***ing Dip) is a nod to crypto trading slang.",
+    "The moon, often used in crypto memes, symbolizes aspirations of \"mooning\" or significant value rise.",
+    "Pyramid hints at mystical or esoteric lore, often tied to conspiracy memes."
+  ],
+  "visualSummary": "The card features a black-and-white illustration of Pepe the Frog in a meditative pose, reminiscent of a serene monk. Surrounding Pepe are mystical, flowing shapes resembling smoke or spirit, with a stylized moon and pyramid in the background, adding an otherworldly vibe. The simple yet dynamic lines create a sense of calm and introspection, enhanced by the monochrome palette.",
+  "visualSummaryShort": "The card showcases a black-and-white illustration of Pepe the Frog in a meditative pose, surrounded by mystical shapes and a stylized moon and pyramid. The monochrome palette and dynamic lines evoke a sense of calm and introspection.",
+  "visualKeywords": [
+    "pepe",
+    "meditative",
+    "black-and-white",
+    "mystical",
+    "moon",
+    "pyramid",
+    "smoke",
+    "calm",
+    "introspection"
+  ],
+  "textKeywords": [
+    "fakemedipepe",
+    "btfd",
+    "addicted",
+    "drowsy"
+  ],
+  "keywords": [
+    "pepe",
+    "meditative",
+    "black-and-white",
+    "mystical",
+    "moon",
+    "pyramid",
+    "smoke",
+    "calm",
+    "introspection",
+    "fakemedipepe",
+    "btfd",
+    "addicted",
+    "drowsy"
+  ],
+  "embeddingInput": "FAKEMEDIPEPE (Fake Rares) - Series 3 Card 22\nArtist: kr\nSupply 99 Issued October 2021\nOn-card text: FAKEMEDIPEPE | BTFD +99 ADDICTED -30 DROWSY +10\nVisual summary: The card features a black-and-white illustration of Pepe the Frog in a meditative pose, reminiscent of a serene monk. Surrounding Pepe are mystical, flowing shapes resembling smoke or spirit, with a stylized moon and pyramid in the background, adding an otherworldly vibe. The simple yet dynamic lines create a sense of calm and introspection, enhanced by the monochrome palette.\nMemetic references: Pepe the Frog as a central figure, a staple of meme culture.; References to meditation and zen, blending internet culture with spiritual themes.; The acronym \"BTFD\" (Buy The F***ing Dip) is a nod to crypto trading slang.; The moon, often used in crypto memes, symbolizes aspirations of \"mooning\" or significant value rise.; Pyramid hints at mystical or esoteric lore, often tied to conspiracy memes.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEMEDIPEPE#text",
+      "label": "On-card text",
+      "text": "FAKEMEDIPEPE | BTFD +99 ADDICTED -30 DROWSY +10",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEMEDIPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure, a staple of meme culture.\nReferences to meditation and zen, blending internet culture with spiritual themes.\nThe acronym \"BTFD\" (Buy The F***ing Dip) is a nod to crypto trading slang.\nThe moon, often used in crypto memes, symbolizes aspirations of \"mooning\" or significant value rise.\nPyramid hints at mystical or esoteric lore, often tied to conspiracy memes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEMEDIPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a black-and-white illustration of Pepe the Frog in a meditative pose, reminiscent of a serene monk. Surrounding Pepe are mystical, flowing shapes resembling smoke or spirit, with a stylized moon and pyramid in the background, adding an otherworldly vibe. The simple yet dynamic lines create a sense of calm and introspection, enhanced by the monochrome palette.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEMEDIPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKEMEDIPEPE  \nBTFD +99 ADDICTED -30 DROWSY +10\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a black-and-white illustration of Pepe the Frog in a meditative pose, reminiscent of a serene monk. Surrounding Pepe are mystical, flowing shapes resembling smoke or spirit, with a stylized moon and pyramid in the background, adding an otherworldly vibe. The simple yet dynamic lines create a sense of calm and introspection, enhanced by the monochrome palette.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure, a staple of meme culture.\n- References to meditation and zen, blending internet culture with spiritual themes.\n- The acronym \"BTFD\" (Buy The F***ing Dip) is a nod to crypto trading slang.\n- The moon, often used in crypto memes, symbolizes aspirations of \"mooning\" or significant value rise.\n- Pyramid hints at mystical or esoteric lore, often tied to conspiracy memes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.530Z",
+  "sourceFactVersion": 1
+}

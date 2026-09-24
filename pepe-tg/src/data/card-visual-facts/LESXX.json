@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "asset": "LESXX",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 17,
+  "artist": "Kane Mayfield",
+  "supply": 77,
+  "issuance": "February 2023",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The visual details of this card are not provided. No specific traits or elements can be identified.",
+  "visualKeywords": [],
+  "textKeywords": [],
+  "keywords": [],
+  "embeddingInput": "LESXX (Fake Rares) - Series 13 Card 17\nArtist: Kane Mayfield\nSupply 77 Issued February 2023\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "LESXX#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.737Z",
+  "sourceFactVersion": 1
+}

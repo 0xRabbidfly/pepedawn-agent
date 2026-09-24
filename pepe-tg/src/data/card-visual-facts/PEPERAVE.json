@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PEPERAVE",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 15,
+  "artist": "Crypsi",
+  "supply": 900,
+  "issuance": "February 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as central character, symbolizing meme culture.",
+    "References to rave and party culture with the nightclub setting.",
+    "Pixel art style nods to retro video games and nostalgia."
+  ],
+  "visualSummary": "The card features a lively scene with Pepe the Frog and other characters dancing in a vibrant nightclub setting. Neon lights and laser beams create a colorful and energetic atmosphere, with a palette dominated by purples, pinks, and greens. The style is pixel art, giving it a nostalgic, retro gaming vibe.",
+  "visualSummaryShort": "The card showcases Pepe the Frog and friends dancing in a vibrant nightclub filled with neon lights and laser beams. The pixel art style enhances the energetic atmosphere with a colorful palette of purples, pinks, and greens.",
+  "visualKeywords": [
+    "nightclub",
+    "dancing",
+    "neon lights",
+    "laser beams",
+    "pixel art",
+    "purple",
+    "pink",
+    "green",
+    "energetic",
+    "retro"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "nightclub",
+    "dancing",
+    "neon lights",
+    "laser beams",
+    "pixel art",
+    "purple",
+    "pink",
+    "green",
+    "energetic",
+    "retro"
+  ],
+  "embeddingInput": "PEPERAVE (Fake Rares) - Series 6 Card 15\nArtist: Crypsi\nSupply 900 Issued February 2022\nOn-card text: none detected\nVisual summary: The card features a lively scene with Pepe the Frog and other characters dancing in a vibrant nightclub setting. Neon lights and laser beams create a colorful and energetic atmosphere, with a palette dominated by purples, pinks, and greens. The style is pixel art, giving it a nostalgic, retro gaming vibe.\nMemetic references: Pepe the Frog as central character, symbolizing meme culture.; References to rave and party culture with the nightclub setting.; Pixel art style nods to retro video games and nostalgia.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPERAVE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as central character, symbolizing meme culture.\nReferences to rave and party culture with the nightclub setting.\nPixel art style nods to retro video games and nostalgia.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPERAVE#visual",
+      "label": "Visual summary",
+      "text": "The card features a lively scene with Pepe the Frog and other characters dancing in a vibrant nightclub setting. Neon lights and laser beams create a colorful and energetic atmosphere, with a palette dominated by purples, pinks, and greens. The style is pixel art, giving it a nostalgic, retro gaming vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPERAVE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a lively scene with Pepe the Frog and other characters dancing in a vibrant nightclub setting. Neon lights and laser beams create a colorful and energetic atmosphere, with a palette dominated by purples, pinks, and greens. The style is pixel art, giving it a nostalgic, retro gaming vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as central character, symbolizing meme culture.\n- References to rave and party culture with the nightclub setting.\n- Pixel art style nods to retro video games and nostalgia.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.956Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "asset": "LORDFAKA",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 35,
+  "artist": "Yotet",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "LORDFAKA RULER OF ALL fake rares. FAKEness Score: 123."
+  ],
+  "memeticReferences": [
+    "Heavy Pepe the Frog influence.",
+    "References to the \"Fake Rares\" NFT culture.",
+    "Use of royal imagery to signify authority and humor."
+  ],
+  "visualSummary": "The card showcases a regal, green figure reminiscent of Pepe, adorned with a purple crown and surrounded by smaller Pepe faces. The background is a warm, orange hue, adding a royal yet playful vibe. The card's distressed and crumpled appearance gives it a vintage, well-worn feel.",
+  "visualSummaryShort": "The card features a green figure resembling Pepe, crowned in purple and surrounded by smaller Pepe faces. The warm orange background enhances the regal yet playful atmosphere, complemented by a vintage, distressed look.",
+  "visualKeywords": [
+    "green figure",
+    "purple crown",
+    "pepe faces",
+    "orange background",
+    "vintage",
+    "distressed",
+    "royal",
+    "playful"
+  ],
+  "textKeywords": [
+    "lordfaka",
+    "ruler",
+    "all",
+    "fakeness",
+    "score",
+    "123"
+  ],
+  "keywords": [
+    "green figure",
+    "purple crown",
+    "pepe faces",
+    "orange background",
+    "vintage",
+    "distressed",
+    "royal",
+    "playful",
+    "lordfaka",
+    "ruler",
+    "all",
+    "fakeness",
+    "score",
+    "123"
+  ],
+  "embeddingInput": "LORDFAKA (Fake Rares) - Series 1 Card 35\nArtist: Yotet\nSupply 100 Issued October 2021\nOn-card text: LORDFAKA RULER OF ALL fake rares. FAKEness Score: 123.\nVisual summary: The card showcases a regal, green figure reminiscent of Pepe, adorned with a purple crown and surrounded by smaller Pepe faces. The background is a warm, orange hue, adding a royal yet playful vibe. The card's distressed and crumpled appearance gives it a vintage, well-worn feel.\nMemetic references: Heavy Pepe the Frog influence.; References to the \"Fake Rares\" NFT culture.; Use of royal imagery to signify authority and humor.",
+  "embeddingBlocks": [
+    {
+      "id": "LORDFAKA#text",
+      "label": "On-card text",
+      "text": "LORDFAKA RULER OF ALL fake rares. FAKEness Score: 123.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "LORDFAKA#memetic",
+      "label": "Memetic references",
+      "text": "Heavy Pepe the Frog influence.\nReferences to the \"Fake Rares\" NFT culture.\nUse of royal imagery to signify authority and humor.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LORDFAKA#visual",
+      "label": "Visual summary",
+      "text": "The card showcases a regal, green figure reminiscent of Pepe, adorned with a purple crown and surrounded by smaller Pepe faces. The background is a warm, orange hue, adding a royal yet playful vibe. The card's distressed and crumpled appearance gives it a vintage, well-worn feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LORDFAKA#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nLORDFAKA RULER OF ALL fake rares. FAKEness Score: 123.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card showcases a regal, green figure reminiscent of Pepe, adorned with a purple crown and surrounded by smaller Pepe faces. The background is a warm, orange hue, adding a royal yet playful vibe. The card's distressed and crumpled appearance gives it a vintage, well-worn feel.\n\n🧬 **MEMETIC DNA:**\n- Heavy Pepe the Frog influence.\n- References to the \"Fake Rares\" NFT culture.\n- Use of royal imagery to signify authority and humor.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.751Z",
+  "sourceFactVersion": 1
+}

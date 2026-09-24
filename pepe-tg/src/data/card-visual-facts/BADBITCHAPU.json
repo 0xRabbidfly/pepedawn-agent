@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "BADBITCHAPU",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 39,
+  "artist": "Darkfarms",
+  "supply": 45,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "BTC"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery.",
+    "\"BTC\" tattoo, referencing Bitcoin culture.",
+    "Bling and swag elements, highlighting a playful, baller lifestyle."
+  ],
+  "visualSummary": "This artwork features a close-up of Pepe the Frog, sporting a blue hat and flashy gold chains. Shades of green, red, and blue dominate the piece, creating a vibrant and eye-catching look. The art style is pixelated, reminiscent of retro video game graphics, adding a nostalgic flair.",
+  "visualSummaryShort": "The card showcases a close-up of Pepe the Frog wearing a blue hat and gold chains. The vibrant colors and pixelated art style evoke a nostalgic video game aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "blue hat",
+    "gold chains",
+    "pixelated",
+    "green",
+    "red",
+    "blue",
+    "vibrant",
+    "retro"
+  ],
+  "textKeywords": [
+    "btc"
+  ],
+  "keywords": [
+    "pepe",
+    "blue hat",
+    "gold chains",
+    "pixelated",
+    "green",
+    "red",
+    "blue",
+    "vibrant",
+    "retro",
+    "btc"
+  ],
+  "embeddingInput": "BADBITCHAPU (Fake Rares) - Series 5 Card 39\nArtist: Darkfarms\nSupply 45 Issued February 2022\nOn-card text: BTC\nVisual summary: This artwork features a close-up of Pepe the Frog, sporting a blue hat and flashy gold chains. Shades of green, red, and blue dominate the piece, creating a vibrant and eye-catching look. The art style is pixelated, reminiscent of retro video game graphics, adding a nostalgic flair.\nMemetic references: Classic Pepe the Frog imagery.; \"BTC\" tattoo, referencing Bitcoin culture.; Bling and swag elements, highlighting a playful, baller lifestyle.",
+  "embeddingBlocks": [
+    {
+      "id": "BADBITCHAPU#text",
+      "label": "On-card text",
+      "text": "BTC",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "BADBITCHAPU#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery.\n\"BTC\" tattoo, referencing Bitcoin culture.\nBling and swag elements, highlighting a playful, baller lifestyle.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BADBITCHAPU#visual",
+      "label": "Visual summary",
+      "text": "This artwork features a close-up of Pepe the Frog, sporting a blue hat and flashy gold chains. Shades of green, red, and blue dominate the piece, creating a vibrant and eye-catching look. The art style is pixelated, reminiscent of retro video game graphics, adding a nostalgic flair.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BADBITCHAPU#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nBTC\n\n🎨 **VISUAL BREAKDOWN:**\nThis artwork features a close-up of Pepe the Frog, sporting a blue hat and flashy gold chains. Shades of green, red, and blue dominate the piece, creating a vibrant and eye-catching look. The art style is pixelated, reminiscent of retro video game graphics, adding a nostalgic flair.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery.\n- \"BTC\" tattoo, referencing Bitcoin culture.\n- Bling and swag elements, highlighting a playful, baller lifestyle.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.287Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "THEDONPEPE",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 44,
+  "artist": "SNUXTONPACK",
+  "supply": 113,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "FEELS COUNTERFEIT MAN"
+  ],
+  "memeticReferences": [
+    "Classic \"Feels Good Man\" meme with a twist.",
+    "Play on counterfeit culture within NFTs and crypto.",
+    "Reflects the iconic Pepe meme lore with a nod to financial themes."
+  ],
+  "visualSummary": "The card features a hand-drawn Pepe the Frog in a sharp pinstripe suit, evoking a classic gangster vibe. The grayscale palette gives it a sketch-like, noir feel, with Pepe holding wads of cash in both hands and more cash scattered at his feet. The expression on Pepe’s face is contemplative, matching the altered speech bubble text.",
+  "visualSummaryShort": "The card showcases a hand-drawn Pepe the Frog dressed in a sharp pinstripe suit, embodying a classic gangster aesthetic. The grayscale color scheme enhances the sketch-like, noir atmosphere, with Pepe holding cash and a contemplative expression.",
+  "visualKeywords": [
+    "pepe",
+    "pinstripe suit",
+    "cash",
+    "grayscale",
+    "noir",
+    "gangster",
+    "contemplative",
+    "sketch"
+  ],
+  "textKeywords": [
+    "feels",
+    "counterfeit",
+    "man"
+  ],
+  "keywords": [
+    "pepe",
+    "pinstripe suit",
+    "cash",
+    "grayscale",
+    "noir",
+    "gangster",
+    "contemplative",
+    "sketch",
+    "feels",
+    "counterfeit",
+    "man"
+  ],
+  "embeddingInput": "THEDONPEPE (Fake Rares) - Series 2 Card 44\nArtist: SNUXTONPACK\nSupply 113 Issued October 2021\nOn-card text: FEELS COUNTERFEIT MAN\nVisual summary: The card features a hand-drawn Pepe the Frog in a sharp pinstripe suit, evoking a classic gangster vibe. The grayscale palette gives it a sketch-like, noir feel, with Pepe holding wads of cash in both hands and more cash scattered at his feet. The expression on Pepe’s face is contemplative, matching the altered speech bubble text.\nMemetic references: Classic \"Feels Good Man\" meme with a twist.; Play on counterfeit culture within NFTs and crypto.; Reflects the iconic Pepe meme lore with a nod to financial themes.",
+  "embeddingBlocks": [
+    {
+      "id": "THEDONPEPE#text",
+      "label": "On-card text",
+      "text": "FEELS COUNTERFEIT MAN",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "THEDONPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic \"Feels Good Man\" meme with a twist.\nPlay on counterfeit culture within NFTs and crypto.\nReflects the iconic Pepe meme lore with a nod to financial themes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "THEDONPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a hand-drawn Pepe the Frog in a sharp pinstripe suit, evoking a classic gangster vibe. The grayscale palette gives it a sketch-like, noir feel, with Pepe holding wads of cash in both hands and more cash scattered at his feet. The expression on Pepe’s face is contemplative, matching the altered speech bubble text.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "THEDONPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFEELS COUNTERFEIT MAN\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a hand-drawn Pepe the Frog in a sharp pinstripe suit, evoking a classic gangster vibe. The grayscale palette gives it a sketch-like, noir feel, with Pepe holding wads of cash in both hands and more cash scattered at his feet. The expression on Pepe’s face is contemplative, matching the altered speech bubble text.\n\n🧬 **MEMETIC DNA:**\n- Classic \"Feels Good Man\" meme with a twist.\n- Play on counterfeit culture within NFTs and crypto.\n- Reflects the iconic Pepe meme lore with a nod to financial themes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.141Z",
+  "sourceFactVersion": 1
+}

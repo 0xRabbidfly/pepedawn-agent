@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "asset": "FAKEFAKEBAN",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 49,
+  "artist": "Fake Annie",
+  "supply": 100,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "\"tastes fake madame\"",
+    "\"This fake has been removed because its content violated the Rare Pepe Trading Group’s Terms of Service. Sorry about that... can’t allow fake rares guise.\"",
+    "\"2 Pepes 1 Cupcake\""
+  ],
+  "memeticReferences": [
+    "References to the \"2 Girls 1 Cup\" meme, reimagined with Pepes.",
+    "Pepe the Frog as a central figure, a staple in meme culture.",
+    "Parody of YouTube’s interface, poking fun at viral content and digital consumption."
+  ],
+  "visualSummary": "The card features a colorful, digitally illustrated scene with two exaggerated human faces in profile, mirroring each other, with a small Pepe the Frog character in between. The background is a kaleidoscope of vibrant patterns, contributing to a psychedelic vibe. The overlay mimics a YouTube interface with view counts and subscription icons, adding a layer of satire.",
+  "visualSummaryShort": "The card showcases two exaggerated human faces in profile, with a small Pepe the Frog character between them. The vibrant, kaleidoscopic background enhances the psychedelic atmosphere.",
+  "visualKeywords": [
+    "human faces",
+    "pepe the frog",
+    "vibrant patterns",
+    "psychedelic",
+    "colorful",
+    "satire",
+    "kaleidoscope",
+    "youtube interface"
+  ],
+  "textKeywords": [
+    "tastes",
+    "madame",
+    "has",
+    "been",
+    "removed",
+    "because",
+    "its",
+    "content",
+    "violated",
+    "trading",
+    "group",
+    "terms",
+    "service",
+    "sorry",
+    "can",
+    "allow",
+    "guise",
+    "pepes",
+    "cupcake"
+  ],
+  "keywords": [
+    "human faces",
+    "pepe the frog",
+    "vibrant patterns",
+    "psychedelic",
+    "colorful",
+    "satire",
+    "kaleidoscope",
+    "youtube interface",
+    "tastes",
+    "madame",
+    "has",
+    "been",
+    "removed",
+    "because",
+    "its",
+    "content",
+    "violated",
+    "trading",
+    "group",
+    "terms",
+    "service",
+    "sorry",
+    "can",
+    "allow",
+    "guise",
+    "pepes",
+    "cupcake"
+  ],
+  "embeddingInput": "FAKEFAKEBAN (Fake Rares) - Series 9 Card 49\nArtist: Fake Annie\nSupply 100 Issued September 2022\nOn-card text: \"tastes fake madame\" | \"This fake has been removed because its content violated the Rare Pepe Trading Group’s Terms of Service. Sorry about that... can’t allow fake rares guise.\" | \"2 Pepes 1 Cupcake\"\nVisual summary: The card features a colorful, digitally illustrated scene with two exaggerated human faces in profile, mirroring each other, with a small Pepe the Frog character in between. The background is a kaleidoscope of vibrant patterns, contributing to a psychedelic vibe. The overlay mimics a YouTube interface with view counts and subscription icons, adding a layer of satire.\nMemetic references: References to the \"2 Girls 1 Cup\" meme, reimagined with Pepes.; Pepe the Frog as a central figure, a staple in meme culture.; Parody of YouTube’s interface, poking fun at viral content and digital consumption.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEFAKEBAN#text",
+      "label": "On-card text",
+      "text": "\"tastes fake madame\" | \"This fake has been removed because its content violated the Rare Pepe Trading Group’s Terms of Service. Sorry about that... can’t allow fake rares guise.\" | \"2 Pepes 1 Cupcake\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEFAKEBAN#memetic",
+      "label": "Memetic references",
+      "text": "References to the \"2 Girls 1 Cup\" meme, reimagined with Pepes.\nPepe the Frog as a central figure, a staple in meme culture.\nParody of YouTube’s interface, poking fun at viral content and digital consumption.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEFAKEBAN#visual",
+      "label": "Visual summary",
+      "text": "The card features a colorful, digitally illustrated scene with two exaggerated human faces in profile, mirroring each other, with a small Pepe the Frog character in between. The background is a kaleidoscope of vibrant patterns, contributing to a psychedelic vibe. The overlay mimics a YouTube interface with view counts and subscription icons, adding a layer of satire.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEFAKEBAN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- \"tastes fake madame\"\n- \"This fake has been removed because its content violated the Rare Pepe Trading Group’s Terms of Service. Sorry about that... can’t allow fake rares guise.\"\n- \"2 Pepes 1 Cupcake\"\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a colorful, digitally illustrated scene with two exaggerated human faces in profile, mirroring each other, with a small Pepe the Frog character in between. The background is a kaleidoscope of vibrant patterns, contributing to a psychedelic vibe. The overlay mimics a YouTube interface with view counts and subscription icons, adding a layer of satire.\n\n🧬 **MEMETIC DNA:**\n- References to the \"2 Girls 1 Cup\" meme, reimagined with Pepes.\n- Pepe the Frog as a central figure, a staple in meme culture.\n- Parody of YouTube’s interface, poking fun at viral content and digital consumption.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.492Z",
+  "sourceFactVersion": 1
+}

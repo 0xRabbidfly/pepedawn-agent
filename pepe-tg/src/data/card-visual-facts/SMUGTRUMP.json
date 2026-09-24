@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "asset": "SMUGTRUMP",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 32,
+  "artist": "Pepenardo",
+  "supply": 47,
+  "issuance": "February 2024",
+  "textOnCard": [],
+  "memeticReferences": [
+    "The green face is a nod to Pepe the Frog, a staple of meme culture.",
+    "The pose and expression suggest a \"thinking\" or \"smug\" meme face.",
+    "The overall aesthetic blends crypto",
+    "NFT culture with a touch of political commentary."
+  ],
+  "visualSummary": "The card features a figure with a green face and orange hair, dressed in a white sweater with red trim, evoking a classic preppy style. The background is a dramatic sunset with fiery orange and red hues, adding an intense, almost apocalyptic vibe. The artistic style is painterly, with smooth brushstrokes and a slightly surreal quality.",
+  "visualSummaryShort": "The card depicts a figure with a green face and orange hair in a preppy white sweater. A dramatic sunset in fiery orange and red hues creates an intense atmosphere.",
+  "visualKeywords": [
+    "green face",
+    "orange hair",
+    "white sweater",
+    "red trim",
+    "sunset",
+    "fiery colors",
+    "painterly style",
+    "surreal quality",
+    "dramatic lighting",
+    "apocalyptic vibe"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "green face",
+    "orange hair",
+    "white sweater",
+    "red trim",
+    "sunset",
+    "fiery colors",
+    "painterly style",
+    "surreal quality",
+    "dramatic lighting",
+    "apocalyptic vibe"
+  ],
+  "embeddingInput": "SMUGTRUMP (Fake Rares) - Series 17 Card 32\nArtist: Pepenardo\nSupply 47 Issued February 2024\nOn-card text: none detected\nVisual summary: The card features a figure with a green face and orange hair, dressed in a white sweater with red trim, evoking a classic preppy style. The background is a dramatic sunset with fiery orange and red hues, adding an intense, almost apocalyptic vibe. The artistic style is painterly, with smooth brushstrokes and a slightly surreal quality.\nMemetic references: The green face is a nod to Pepe the Frog, a staple of meme culture.; The pose and expression suggest a \"thinking\" or \"smug\" meme face.; The overall aesthetic blends crypto; NFT culture with a touch of political commentary.",
+  "embeddingBlocks": [
+    {
+      "id": "SMUGTRUMP#memetic",
+      "label": "Memetic references",
+      "text": "The green face is a nod to Pepe the Frog, a staple of meme culture.\nThe pose and expression suggest a \"thinking\" or \"smug\" meme face.\nThe overall aesthetic blends crypto\nNFT culture with a touch of political commentary.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SMUGTRUMP#visual",
+      "label": "Visual summary",
+      "text": "The card features a figure with a green face and orange hair, dressed in a white sweater with red trim, evoking a classic preppy style. The background is a dramatic sunset with fiery orange and red hues, adding an intense, almost apocalyptic vibe. The artistic style is painterly, with smooth brushstrokes and a slightly surreal quality.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SMUGTRUMP#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a figure with a green face and orange hair, dressed in a white sweater with red trim, evoking a classic preppy style. The background is a dramatic sunset with fiery orange and red hues, adding an intense, almost apocalyptic vibe. The artistic style is painterly, with smooth brushstrokes and a slightly surreal quality.\n\n🧬 **MEMETIC DNA:**\n- The green face is a nod to Pepe the Frog, a staple of meme culture.\n- The pose and expression suggest a \"thinking\" or \"smug\" meme face.\n- The overall aesthetic blends crypto/NFT culture with a touch of political commentary.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.119Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "asset": "FAKEAKIRA",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 40,
+  "artist": "JB",
+  "supply": 100,
+  "issuance": "January 2022",
+  "textOnCard": [
+    "AKIRA PEPE PURP",
+    "Purple Pepe = Wisdom, Intelligent, Fake AF"
+  ],
+  "memeticReferences": [
+    "References the iconic anime \"Akira\" with a Pepe twist.",
+    "Incorporates the neon, dystopian aesthetic of cyberpunk culture.",
+    "Emphasizes meme culture with the phrase \"Fake AF\" and the purple Pepe."
+  ],
+  "visualSummary": "This card features a vibrant blend of neon purples and oranges, with a distinct cyberpunk aesthetic. At the center is a purple Pepe character, styled like a futuristic biker, holding a large weapon. The background showcases a cityscape with Japanese text, enhancing the Akira-inspired vibe.",
+  "visualSummaryShort": "The card showcases a vibrant cyberpunk scene with a purple Pepe character styled as a futuristic biker. The background features a cityscape illuminated by neon colors, enhancing the overall energetic mood.",
+  "visualKeywords": [
+    "neon",
+    "purple",
+    "biker",
+    "weapon",
+    "cityscape",
+    "cyberpunk",
+    "japanese text",
+    "orange",
+    "vibrant",
+    "futuristic"
+  ],
+  "textKeywords": [
+    "akira",
+    "purp",
+    "purple",
+    "wisdom",
+    "intelligent"
+  ],
+  "keywords": [
+    "neon",
+    "purple",
+    "biker",
+    "weapon",
+    "cityscape",
+    "cyberpunk",
+    "japanese text",
+    "orange",
+    "vibrant",
+    "futuristic",
+    "akira",
+    "purp",
+    "wisdom",
+    "intelligent"
+  ],
+  "embeddingInput": "FAKEAKIRA (Fake Rares) - Series 5 Card 40\nArtist: JB\nSupply 100 Issued January 2022\nOn-card text: AKIRA PEPE PURP | Purple Pepe = Wisdom, Intelligent, Fake AF\nVisual summary: This card features a vibrant blend of neon purples and oranges, with a distinct cyberpunk aesthetic. At the center is a purple Pepe character, styled like a futuristic biker, holding a large weapon. The background showcases a cityscape with Japanese text, enhancing the Akira-inspired vibe.\nMemetic references: References the iconic anime \"Akira\" with a Pepe twist.; Incorporates the neon, dystopian aesthetic of cyberpunk culture.; Emphasizes meme culture with the phrase \"Fake AF\" and the purple Pepe.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEAKIRA#text",
+      "label": "On-card text",
+      "text": "AKIRA PEPE PURP | Purple Pepe = Wisdom, Intelligent, Fake AF",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEAKIRA#memetic",
+      "label": "Memetic references",
+      "text": "References the iconic anime \"Akira\" with a Pepe twist.\nIncorporates the neon, dystopian aesthetic of cyberpunk culture.\nEmphasizes meme culture with the phrase \"Fake AF\" and the purple Pepe.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEAKIRA#visual",
+      "label": "Visual summary",
+      "text": "This card features a vibrant blend of neon purples and oranges, with a distinct cyberpunk aesthetic. At the center is a purple Pepe character, styled like a futuristic biker, holding a large weapon. The background showcases a cityscape with Japanese text, enhancing the Akira-inspired vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEAKIRA#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nAKIRA PEPE PURP  \nPurple Pepe = Wisdom, Intelligent, Fake AF  \n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a vibrant blend of neon purples and oranges, with a distinct cyberpunk aesthetic. At the center is a purple Pepe character, styled like a futuristic biker, holding a large weapon. The background showcases a cityscape with Japanese text, enhancing the Akira-inspired vibe.\n\n🧬 **MEMETIC DNA:**\n- References the iconic anime \"Akira\" with a Pepe twist.\n- Incorporates the neon, dystopian aesthetic of cyberpunk culture.\n- Emphasizes meme culture with the phrase \"Fake AF\" and the purple Pepe.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.446Z",
+  "sourceFactVersion": 1
+}

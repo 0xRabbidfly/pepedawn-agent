@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "asset": "PARALLAXPEPE",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 17,
+  "artist": "FAR",
+  "supply": 21,
+  "issuance": "February 2024",
+  "textOnCard": [
+    "PARALLAX ISLAND PEPE",
+    "I JUST WOKE UP IN HERE",
+    "THIS IS PARADISE"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog meme character.",
+    "References to the concept of a digital utopia or metaverse.",
+    "Cosmic and futuristic elements hinting at sci-fi and crypto-futurism."
+  ],
+  "visualSummary": "The card features a surreal landscape with a cosmic backdrop, blending vibrant colors like purples, pinks, and blues. In the foreground, a pink Pepe with a contemplative expression is set against a futuristic and architectural environment, including geometric structures and a golden statue. The artistic style combines digital collage with a psychedelic flair.",
+  "visualSummaryShort": "The card showcases a surreal landscape with a cosmic backdrop and vibrant colors. A pink Pepe stands contemplatively in a futuristic environment filled with geometric structures and a golden statue.",
+  "visualKeywords": [
+    "surreal",
+    "cosmic",
+    "pink pepe",
+    "geometric",
+    "futuristic",
+    "vibrant colors",
+    "golden statue",
+    "psychedelic",
+    "architectural",
+    "collage"
+  ],
+  "textKeywords": [
+    "parallax",
+    "island",
+    "just",
+    "woke",
+    "paradise"
+  ],
+  "keywords": [
+    "surreal",
+    "cosmic",
+    "pink pepe",
+    "geometric",
+    "futuristic",
+    "vibrant colors",
+    "golden statue",
+    "psychedelic",
+    "architectural",
+    "collage",
+    "parallax",
+    "island",
+    "just",
+    "woke",
+    "paradise"
+  ],
+  "embeddingInput": "PARALLAXPEPE (Fake Rares) - Series 17 Card 17\nArtist: FAR\nSupply 21 Issued February 2024\nOn-card text: PARALLAX ISLAND PEPE | I JUST WOKE UP IN HERE | THIS IS PARADISE\nVisual summary: The card features a surreal landscape with a cosmic backdrop, blending vibrant colors like purples, pinks, and blues. In the foreground, a pink Pepe with a contemplative expression is set against a futuristic and architectural environment, including geometric structures and a golden statue. The artistic style combines digital collage with a psychedelic flair.\nMemetic references: Classic Pepe the Frog meme character.; References to the concept of a digital utopia or metaverse.; Cosmic and futuristic elements hinting at sci-fi and crypto-futurism.",
+  "embeddingBlocks": [
+    {
+      "id": "PARALLAXPEPE#text",
+      "label": "On-card text",
+      "text": "PARALLAX ISLAND PEPE | I JUST WOKE UP IN HERE | THIS IS PARADISE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PARALLAXPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog meme character.\nReferences to the concept of a digital utopia or metaverse.\nCosmic and futuristic elements hinting at sci-fi and crypto-futurism.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PARALLAXPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a surreal landscape with a cosmic backdrop, blending vibrant colors like purples, pinks, and blues. In the foreground, a pink Pepe with a contemplative expression is set against a futuristic and architectural environment, including geometric structures and a golden statue. The artistic style combines digital collage with a psychedelic flair.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PARALLAXPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPARALLAX ISLAND PEPE  \nI JUST WOKE UP IN HERE  \nTHIS IS PARADISE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a surreal landscape with a cosmic backdrop, blending vibrant colors like purples, pinks, and blues. In the foreground, a pink Pepe with a contemplative expression is set against a futuristic and architectural environment, including geometric structures and a golden statue. The artistic style combines digital collage with a psychedelic flair.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog meme character.\n- References to the concept of a digital utopia or metaverse.\n- Cosmic and futuristic elements hinting at sci-fi and crypto-futurism.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.823Z",
+  "sourceFactVersion": 1
+}

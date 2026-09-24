@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "asset": "PEPONONOKE",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 45,
+  "artist": "FWD",
+  "supply": 44,
+  "issuance": "October 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog is central, tying into classic meme culture.",
+    "References to \"Princess Mononoke\" with the forest spirit theme.",
+    "The mystical forest setting could symbolize the \"wild\" nature of crypto."
+  ],
+  "visualSummary": "The card features a forest scene with a mystical vibe, illuminated by a glowing pink moon. In the foreground, a Pepe character is dressed in a fur cloak and tribal mask, reminiscent of a forest spirit. The color palette is dominated by dark greens and blues, with pops of white from small spirit-like figures scattered throughout the scene.",
+  "visualSummaryShort": "The card depicts a mystical forest scene under a glowing pink moon. A Pepe character in a fur cloak and tribal mask adds to the enchanting atmosphere.",
+  "visualKeywords": [
+    "forest",
+    "mystical",
+    "pink moon",
+    "pepe",
+    "fur cloak",
+    "tribal mask",
+    "dark greens",
+    "blues",
+    "spirit figures"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "forest",
+    "mystical",
+    "pink moon",
+    "pepe",
+    "fur cloak",
+    "tribal mask",
+    "dark greens",
+    "blues",
+    "spirit figures"
+  ],
+  "embeddingInput": "PEPONONOKE (Fake Rares) - Series 3 Card 45\nArtist: FWD\nSupply 44 Issued October 2021\nOn-card text: none detected\nVisual summary: The card features a forest scene with a mystical vibe, illuminated by a glowing pink moon. In the foreground, a Pepe character is dressed in a fur cloak and tribal mask, reminiscent of a forest spirit. The color palette is dominated by dark greens and blues, with pops of white from small spirit-like figures scattered throughout the scene.\nMemetic references: Pepe the Frog is central, tying into classic meme culture.; References to \"Princess Mononoke\" with the forest spirit theme.; The mystical forest setting could symbolize the \"wild\" nature of crypto.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPONONOKE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog is central, tying into classic meme culture.\nReferences to \"Princess Mononoke\" with the forest spirit theme.\nThe mystical forest setting could symbolize the \"wild\" nature of crypto.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPONONOKE#visual",
+      "label": "Visual summary",
+      "text": "The card features a forest scene with a mystical vibe, illuminated by a glowing pink moon. In the foreground, a Pepe character is dressed in a fur cloak and tribal mask, reminiscent of a forest spirit. The color palette is dominated by dark greens and blues, with pops of white from small spirit-like figures scattered throughout the scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPONONOKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a forest scene with a mystical vibe, illuminated by a glowing pink moon. In the foreground, a Pepe character is dressed in a fur cloak and tribal mask, reminiscent of a forest spirit. The color palette is dominated by dark greens and blues, with pops of white from small spirit-like figures scattered throughout the scene.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog is central, tying into classic meme culture.\n- References to \"Princess Mononoke\" with the forest spirit theme.\n- The mystical forest setting could symbolize the \"wild\" nature of crypto.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.022Z",
+  "sourceFactVersion": 1
+}

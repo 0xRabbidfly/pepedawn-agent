@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "asset": "BLACKHOLEP",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 44,
+  "artist": "Danguiz",
+  "supply": 81,
+  "issuance": "August 2022",
+  "textOnCard": [
+    "BLACK HOLE PEPE",
+    "Send this card to the Burn Address to send it all to zero.",
+    "ATK: N",
+    "A DEF: N",
+    "A"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as an astronaut 🌌",
+    "Reference to crypto culture with \"Burn Address\"",
+    "Cosmic and space exploration vibes 🚀",
+    "Cat meme elements 🐱"
+  ],
+  "visualSummary": "The card features an astronaut Pepe floating through a vibrant, cosmic scene filled with swirling colors of pink, purple, and orange, reminiscent of a black hole. There's a small cat silhouette also floating in space, adding whimsy to the otherworldly setting. The overall style is a blend of digital art and pop culture, with a sci-fi twist.",
+  "visualSummaryShort": "The card depicts an astronaut Pepe floating in a vibrant cosmic scene filled with swirling pink, purple, and orange colors. A small cat silhouette adds a whimsical touch to the otherworldly environment.",
+  "visualKeywords": [
+    "astronaut",
+    "pepe",
+    "cosmic",
+    "pink",
+    "purple",
+    "orange",
+    "cat",
+    "whimsical",
+    "digital art",
+    "sci-fi"
+  ],
+  "textKeywords": [
+    "black",
+    "hole",
+    "send",
+    "burn",
+    "address",
+    "all",
+    "zero",
+    "atk",
+    "def"
+  ],
+  "keywords": [
+    "astronaut",
+    "pepe",
+    "cosmic",
+    "pink",
+    "purple",
+    "orange",
+    "cat",
+    "whimsical",
+    "digital art",
+    "sci-fi",
+    "black",
+    "hole",
+    "send",
+    "burn",
+    "address",
+    "all",
+    "zero",
+    "atk",
+    "def"
+  ],
+  "embeddingInput": "BLACKHOLEP (Fake Rares) - Series 9 Card 44\nArtist: Danguiz\nSupply 81 Issued August 2022\nOn-card text: BLACK HOLE PEPE | Send this card to the Burn Address to send it all to zero. | ATK: N | A DEF: N | A\nVisual summary: The card features an astronaut Pepe floating through a vibrant, cosmic scene filled with swirling colors of pink, purple, and orange, reminiscent of a black hole. There's a small cat silhouette also floating in space, adding whimsy to the otherworldly setting. The overall style is a blend of digital art and pop culture, with a sci-fi twist.\nMemetic references: Pepe the Frog as an astronaut 🌌; Reference to crypto culture with \"Burn Address\"; Cosmic and space exploration vibes 🚀; Cat meme elements 🐱",
+  "embeddingBlocks": [
+    {
+      "id": "BLACKHOLEP#text",
+      "label": "On-card text",
+      "text": "BLACK HOLE PEPE | Send this card to the Burn Address to send it all to zero. | ATK: N | A DEF: N | A",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "BLACKHOLEP#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as an astronaut 🌌\nReference to crypto culture with \"Burn Address\"\nCosmic and space exploration vibes 🚀\nCat meme elements 🐱",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BLACKHOLEP#visual",
+      "label": "Visual summary",
+      "text": "The card features an astronaut Pepe floating through a vibrant, cosmic scene filled with swirling colors of pink, purple, and orange, reminiscent of a black hole. There's a small cat silhouette also floating in space, adding whimsy to the otherworldly setting. The overall style is a blend of digital art and pop culture, with a sci-fi twist.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BLACKHOLEP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nBLACK HOLE PEPE  \nSend this card to the Burn Address to send it all to zero.  \nATK: N/A  DEF: N/A  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features an astronaut Pepe floating through a vibrant, cosmic scene filled with swirling colors of pink, purple, and orange, reminiscent of a black hole. There's a small cat silhouette also floating in space, adding whimsy to the otherworldly setting. The overall style is a blend of digital art and pop culture, with a sci-fi twist.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as an astronaut 🌌\n- Reference to crypto culture with \"Burn Address\"\n- Cosmic and space exploration vibes 🚀\n- Cat meme elements 🐱",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.313Z",
+  "sourceFactVersion": 1
+}

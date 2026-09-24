@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "asset": "FAKEREKT",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 47,
+  "artist": "ALIENQUEEN",
+  "supply": 69,
+  "issuance": "June 2022",
+  "textOnCard": [
+    "FEELS REKT MAN"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog with a twist of psychedelic art.",
+    "References to meme culture with exaggerated facial expressions and surreal elements.",
+    "Dripping, melting visuals reminiscent of 60s and 70s psychedelic art."
+  ],
+  "visualSummary": "This card features a vibrant and chaotic composition centered around a psychedelic Pepe the Frog. The color palette is a wild mix of neon greens, pinks, and blues, with dripping elements and surreal, melting features. The background is filled with trippy, anthropomorphic suns and mushrooms, enhancing its hallucinogenic vibe.",
+  "visualSummaryShort": "The card showcases a psychedelic Pepe the Frog amidst a vibrant and chaotic scene. Its neon color palette and surreal elements create a hallucinogenic atmosphere.",
+  "visualKeywords": [
+    "psychedelic",
+    "neon",
+    "pepe the frog",
+    "chaotic",
+    "suns",
+    "mushrooms",
+    "dripping",
+    "melting",
+    "vibrant",
+    "trippy"
+  ],
+  "textKeywords": [
+    "feels",
+    "rekt",
+    "man"
+  ],
+  "keywords": [
+    "psychedelic",
+    "neon",
+    "pepe the frog",
+    "chaotic",
+    "suns",
+    "mushrooms",
+    "dripping",
+    "melting",
+    "vibrant",
+    "trippy",
+    "feels",
+    "rekt",
+    "man"
+  ],
+  "embeddingInput": "FAKEREKT (Fake Rares) - Series 9 Card 47\nArtist: ALIENQUEEN\nSupply 69 Issued June 2022\nOn-card text: FEELS REKT MAN\nVisual summary: This card features a vibrant and chaotic composition centered around a psychedelic Pepe the Frog. The color palette is a wild mix of neon greens, pinks, and blues, with dripping elements and surreal, melting features. The background is filled with trippy, anthropomorphic suns and mushrooms, enhancing its hallucinogenic vibe.\nMemetic references: Classic Pepe the Frog with a twist of psychedelic art.; References to meme culture with exaggerated facial expressions and surreal elements.; Dripping, melting visuals reminiscent of 60s and 70s psychedelic art.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEREKT#text",
+      "label": "On-card text",
+      "text": "FEELS REKT MAN",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEREKT#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog with a twist of psychedelic art.\nReferences to meme culture with exaggerated facial expressions and surreal elements.\nDripping, melting visuals reminiscent of 60s and 70s psychedelic art.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEREKT#visual",
+      "label": "Visual summary",
+      "text": "This card features a vibrant and chaotic composition centered around a psychedelic Pepe the Frog. The color palette is a wild mix of neon greens, pinks, and blues, with dripping elements and surreal, melting features. The background is filled with trippy, anthropomorphic suns and mushrooms, enhancing its hallucinogenic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEREKT#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFEELS REKT MAN\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a vibrant and chaotic composition centered around a psychedelic Pepe the Frog. The color palette is a wild mix of neon greens, pinks, and blues, with dripping elements and surreal, melting features. The background is filled with trippy, anthropomorphic suns and mushrooms, enhancing its hallucinogenic vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog with a twist of psychedelic art.\n- References to meme culture with exaggerated facial expressions and surreal elements.\n- Dripping, melting visuals reminiscent of 60s and 70s psychedelic art.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.566Z",
+  "sourceFactVersion": 1
+}

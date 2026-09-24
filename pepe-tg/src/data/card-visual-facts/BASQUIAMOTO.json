@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "asset": "BASQUIAMOTO",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 30,
+  "artist": "Mandarinemarie",
+  "supply": 100,
+  "issuance": "August 2022",
+  "textOnCard": [
+    "BASQUIAMOTO CARD. The creator of Bitcoin; one of the most rare peps in existence. Rareness Score: 97. ❤️=15 ATK=3 SPD=1 ♨️=FIRE♨️"
+  ],
+  "memeticReferences": [
+    "Reference to Jean-Michel Basquiat’s art style.",
+    "Satoshi Nakamoto's mystery wrapped in meme culture.",
+    "Bitcoin creator homage with a blend of Pepe references.",
+    "Gaming card stats mimic traditional RPG elements."
+  ],
+  "visualSummary": "The card features a colorful, abstract portrait reminiscent of the neo-expressionist style, with bold strokes and a vibrant palette of blues, greens, reds, and yellows. A crown sits atop the figure's head, adding a regal touch. The background is a chaotic mix of graffiti-like symbols and text, enhancing the card's street-art vibe.",
+  "visualSummaryShort": "The card showcases a vibrant, abstract portrait with a crown, set against a chaotic graffiti background. The use of bold colors and street-art elements creates a dynamic visual experience.",
+  "visualKeywords": [
+    "abstract",
+    "portrait",
+    "crown",
+    "graffiti",
+    "bold colors",
+    "vibrant",
+    "chaotic",
+    "neo-expressionist",
+    "street-art",
+    "symbols"
+  ],
+  "textKeywords": [
+    "basquiamoto",
+    "creator",
+    "bitcoin",
+    "one",
+    "peps",
+    "existence",
+    "rareness",
+    "score",
+    "atk",
+    "spd",
+    "fire"
+  ],
+  "keywords": [
+    "abstract",
+    "portrait",
+    "crown",
+    "graffiti",
+    "bold colors",
+    "vibrant",
+    "chaotic",
+    "neo-expressionist",
+    "street-art",
+    "symbols",
+    "basquiamoto",
+    "creator",
+    "bitcoin",
+    "one",
+    "peps",
+    "existence",
+    "rareness",
+    "score",
+    "atk",
+    "spd",
+    "fire"
+  ],
+  "embeddingInput": "BASQUIAMOTO (Fake Rares) - Series 9 Card 30\nArtist: Mandarinemarie\nSupply 100 Issued August 2022\nOn-card text: BASQUIAMOTO CARD. The creator of Bitcoin; one of the most rare peps in existence. Rareness Score: 97. ❤️=15 ATK=3 SPD=1 ♨️=FIRE♨️\nVisual summary: The card features a colorful, abstract portrait reminiscent of the neo-expressionist style, with bold strokes and a vibrant palette of blues, greens, reds, and yellows. A crown sits atop the figure's head, adding a regal touch. The background is a chaotic mix of graffiti-like symbols and text, enhancing the card's street-art vibe.\nMemetic references: Reference to Jean-Michel Basquiat’s art style.; Satoshi Nakamoto's mystery wrapped in meme culture.; Bitcoin creator homage with a blend of Pepe references.; Gaming card stats mimic traditional RPG elements.",
+  "embeddingBlocks": [
+    {
+      "id": "BASQUIAMOTO#text",
+      "label": "On-card text",
+      "text": "BASQUIAMOTO CARD. The creator of Bitcoin; one of the most rare peps in existence. Rareness Score: 97. ❤️=15 ATK=3 SPD=1 ♨️=FIRE♨️",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "BASQUIAMOTO#memetic",
+      "label": "Memetic references",
+      "text": "Reference to Jean-Michel Basquiat’s art style.\nSatoshi Nakamoto's mystery wrapped in meme culture.\nBitcoin creator homage with a blend of Pepe references.\nGaming card stats mimic traditional RPG elements.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BASQUIAMOTO#visual",
+      "label": "Visual summary",
+      "text": "The card features a colorful, abstract portrait reminiscent of the neo-expressionist style, with bold strokes and a vibrant palette of blues, greens, reds, and yellows. A crown sits atop the figure's head, adding a regal touch. The background is a chaotic mix of graffiti-like symbols and text, enhancing the card's street-art vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BASQUIAMOTO#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nBASQUIAMOTO CARD. The creator of Bitcoin; one of the most rare peps in existence. Rareness Score: 97. ❤️=15 ATK=3 SPD=1 ♨️=FIRE♨️\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a colorful, abstract portrait reminiscent of the neo-expressionist style, with bold strokes and a vibrant palette of blues, greens, reds, and yellows. A crown sits atop the figure's head, adding a regal touch. The background is a chaotic mix of graffiti-like symbols and text, enhancing the card's street-art vibe.\n\n🧬 **MEMETIC DNA:**\n- Reference to Jean-Michel Basquiat’s art style.\n- Satoshi Nakamoto's mystery wrapped in meme culture.\n- Bitcoin creator homage with a blend of Pepe references.\n- Gaming card stats mimic traditional RPG elements.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.301Z",
+  "sourceFactVersion": 1
+}

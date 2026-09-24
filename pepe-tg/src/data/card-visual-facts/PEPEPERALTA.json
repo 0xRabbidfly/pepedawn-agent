@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "asset": "PEPEPERALTA",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 31,
+  "artist": "inn0va",
+  "supply": 100,
+  "issuance": "February 2024",
+  "textOnCard": [
+    "PEPE PERALTA, feels rad man, ❤️ = Fakie kekflip, poser lul = 0"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog mashup with a classic skateboarding brand.",
+    "\"Feels rad man\" is a clever twist on the \"Feels good man\" meme.",
+    "Skater culture references with terms like \"Fakie kekflip\" and \"poser lul.\""
+  ],
+  "visualSummary": "The card features a skeleton with a Pepe face, wearing a red bandana, emerging from a dark backdrop. The color palette is a mix of red, black, and white, with green accents for the eyes. The style is a playful homage to classic skateboard graphics, complete with a checkered border and a vintage, rough-edged aesthetic.",
+  "visualSummaryShort": "The card showcases a skeleton with a Pepe face, adorned with a red bandana against a dark background. It features a playful skateboard graphic style with a checkered border and a vintage aesthetic.",
+  "visualKeywords": [
+    "skeleton",
+    "pepe",
+    "red bandana",
+    "dark backdrop",
+    "checkered border",
+    "vintage",
+    "playful",
+    "black and white",
+    "green accents"
+  ],
+  "textKeywords": [
+    "peralta",
+    "feels",
+    "rad",
+    "man",
+    "fakie",
+    "kekflip",
+    "poser",
+    "lul"
+  ],
+  "keywords": [
+    "skeleton",
+    "pepe",
+    "red bandana",
+    "dark backdrop",
+    "checkered border",
+    "vintage",
+    "playful",
+    "black and white",
+    "green accents",
+    "peralta",
+    "feels",
+    "rad",
+    "man",
+    "fakie",
+    "kekflip",
+    "poser",
+    "lul"
+  ],
+  "embeddingInput": "PEPEPERALTA (Fake Rares) - Series 17 Card 31\nArtist: inn0va\nSupply 100 Issued February 2024\nOn-card text: PEPE PERALTA, feels rad man, ❤️ = Fakie kekflip, poser lul = 0\nVisual summary: The card features a skeleton with a Pepe face, wearing a red bandana, emerging from a dark backdrop. The color palette is a mix of red, black, and white, with green accents for the eyes. The style is a playful homage to classic skateboard graphics, complete with a checkered border and a vintage, rough-edged aesthetic.\nMemetic references: Pepe the Frog mashup with a classic skateboarding brand.; \"Feels rad man\" is a clever twist on the \"Feels good man\" meme.; Skater culture references with terms like \"Fakie kekflip\" and \"poser lul.\"",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEPERALTA#text",
+      "label": "On-card text",
+      "text": "PEPE PERALTA, feels rad man, ❤️ = Fakie kekflip, poser lul = 0",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEPERALTA#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog mashup with a classic skateboarding brand.\n\"Feels rad man\" is a clever twist on the \"Feels good man\" meme.\nSkater culture references with terms like \"Fakie kekflip\" and \"poser lul.\"",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEPERALTA#visual",
+      "label": "Visual summary",
+      "text": "The card features a skeleton with a Pepe face, wearing a red bandana, emerging from a dark backdrop. The color palette is a mix of red, black, and white, with green accents for the eyes. The style is a playful homage to classic skateboard graphics, complete with a checkered border and a vintage, rough-edged aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEPERALTA#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE PERALTA, feels rad man, ❤️ = Fakie kekflip, poser lul = 0\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a skeleton with a Pepe face, wearing a red bandana, emerging from a dark backdrop. The color palette is a mix of red, black, and white, with green accents for the eyes. The style is a playful homage to classic skateboard graphics, complete with a checkered border and a vintage, rough-edged aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog mashup with a classic skateboarding brand.\n- \"Feels rad man\" is a clever twist on the \"Feels good man\" meme.\n- Skater culture references with terms like \"Fakie kekflip\" and \"poser lul.\"",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.947Z",
+  "sourceFactVersion": 1
+}

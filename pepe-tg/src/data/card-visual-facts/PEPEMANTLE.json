@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "asset": "PEPEMANTLE",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 12,
+  "artist": "T. Wade",
+  "supply": 177,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "PEPE MANTLE",
+    "Pepe Mantle"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple of internet meme culture.",
+    "Reference to Mickey Mantle, the legendary baseball player, blending sports lore with meme culture.",
+    "\"Fake Rares\" sticker mimicking collectible sports card authenticity."
+  ],
+  "visualSummary": "The card features Pepe the Frog wearing a baseball uniform, complete with a blue cap featuring a white \"NY\" emblem, reminiscent of a Yankees cap. Pepe is holding a bat over his shoulder, set against a simple blue background, with a faux autograph at the bottom. The colors are bold and cartoonish, capturing a playful and nostalgic vibe.",
+  "visualSummaryShort": "The card showcases Pepe the Frog in a baseball uniform with a blue Yankees-style cap, holding a bat. The bold colors and simple blue background create a playful and nostalgic atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "baseball",
+    "blue cap",
+    "bat",
+    "cartoonish",
+    "nostalgic",
+    "autograph"
+  ],
+  "textKeywords": [
+    "mantle"
+  ],
+  "keywords": [
+    "pepe",
+    "baseball",
+    "blue cap",
+    "bat",
+    "cartoonish",
+    "nostalgic",
+    "autograph",
+    "mantle"
+  ],
+  "embeddingInput": "PEPEMANTLE (Fake Rares) - Series 2 Card 12\nArtist: T. Wade\nSupply 177 Issued October 2021\nOn-card text: PEPE MANTLE | Pepe Mantle\nVisual summary: The card features Pepe the Frog wearing a baseball uniform, complete with a blue cap featuring a white \"NY\" emblem, reminiscent of a Yankees cap. Pepe is holding a bat over his shoulder, set against a simple blue background, with a faux autograph at the bottom. The colors are bold and cartoonish, capturing a playful and nostalgic vibe.\nMemetic references: Pepe the Frog, a staple of internet meme culture.; Reference to Mickey Mantle, the legendary baseball player, blending sports lore with meme culture.; \"Fake Rares\" sticker mimicking collectible sports card authenticity.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEMANTLE#text",
+      "label": "On-card text",
+      "text": "PEPE MANTLE | Pepe Mantle",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEMANTLE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple of internet meme culture.\nReference to Mickey Mantle, the legendary baseball player, blending sports lore with meme culture.\n\"Fake Rares\" sticker mimicking collectible sports card authenticity.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEMANTLE#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog wearing a baseball uniform, complete with a blue cap featuring a white \"NY\" emblem, reminiscent of a Yankees cap. Pepe is holding a bat over his shoulder, set against a simple blue background, with a faux autograph at the bottom. The colors are bold and cartoonish, capturing a playful and nostalgic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEMANTLE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE MANTLE  \nPepe Mantle\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog wearing a baseball uniform, complete with a blue cap featuring a white \"NY\" emblem, reminiscent of a Yankees cap. Pepe is holding a bat over his shoulder, set against a simple blue background, with a faux autograph at the bottom. The colors are bold and cartoonish, capturing a playful and nostalgic vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple of internet meme culture.\n- Reference to Mickey Mantle, the legendary baseball player, blending sports lore with meme culture.\n- \"Fake Rares\" sticker mimicking collectible sports card authenticity.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.926Z",
+  "sourceFactVersion": 1
+}

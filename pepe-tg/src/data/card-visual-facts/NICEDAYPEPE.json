@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "NICEDAYPEPE",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 16,
+  "artist": "nicedayJULES",
+  "supply": 69,
+  "issuance": "September 2025",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference, a staple of meme culture.",
+    "The flower might symbolize peace or friendship, adding a soft touch to Pepe's usual demeanor.",
+    "Glitch art style nods to digital and crypto-native aesthetics."
+  ],
+  "visualSummary": "The card features a close-up of Pepe the Frog holding a large, vibrant purple flower. The composition has a pixelated, digital art style with a retro, glitchy vibe. The color palette is dominated by bright greens and purples, creating a striking contrast against the background.",
+  "visualSummaryShort": "The card showcases a close-up of Pepe the Frog with a large purple flower. It features a pixelated digital art style with bright greens and purples creating a vibrant contrast.",
+  "visualKeywords": [
+    "pepe",
+    "purple flower",
+    "pixelated",
+    "digital art",
+    "green",
+    "glitchy",
+    "vibrant",
+    "contrast"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "purple flower",
+    "pixelated",
+    "digital art",
+    "green",
+    "glitchy",
+    "vibrant",
+    "contrast"
+  ],
+  "embeddingInput": "NICEDAYPEPE (Fake Rares) - Series 18 Card 16\nArtist: nicedayJULES\nSupply 69 Issued September 2025\nOn-card text: none detected\nVisual summary: The card features a close-up of Pepe the Frog holding a large, vibrant purple flower. The composition has a pixelated, digital art style with a retro, glitchy vibe. The color palette is dominated by bright greens and purples, creating a striking contrast against the background.\nMemetic references: Classic Pepe the Frog reference, a staple of meme culture.; The flower might symbolize peace or friendship, adding a soft touch to Pepe's usual demeanor.; Glitch art style nods to digital and crypto-native aesthetics.",
+  "embeddingBlocks": [
+    {
+      "id": "NICEDAYPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference, a staple of meme culture.\nThe flower might symbolize peace or friendship, adding a soft touch to Pepe's usual demeanor.\nGlitch art style nods to digital and crypto-native aesthetics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "NICEDAYPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a close-up of Pepe the Frog holding a large, vibrant purple flower. The composition has a pixelated, digital art style with a retro, glitchy vibe. The color palette is dominated by bright greens and purples, creating a striking contrast against the background.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "NICEDAYPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a close-up of Pepe the Frog holding a large, vibrant purple flower. The composition has a pixelated, digital art style with a retro, glitchy vibe. The color palette is dominated by bright greens and purples, creating a striking contrast against the background.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference, a staple of meme culture.\n- The flower might symbolize peace or friendship, adding a soft touch to Pepe's usual demeanor.\n- Glitch art style nods to digital and crypto-native aesthetics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.795Z",
+  "sourceFactVersion": 1
+}

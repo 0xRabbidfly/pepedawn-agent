@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "HELLAPAPELLA",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 11,
+  "artist": "Coit",
+  "supply": 33,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "HELLAPAPELLA"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog emerging from the chaos, symbolizing resilience and adaptability.",
+    "References to psychedelic art and culture, with swirling patterns and vibrant colors.",
+    "Elements of chaos and transformation, possibly nodding to the volatile nature of crypto markets."
+  ],
+  "visualSummary": "The card features a psychedelic and chaotic composition with a vivid color palette dominated by fiery reds, oranges, and purples. A monstrous face with exaggerated features, including sharp teeth and glowing eyes, fills the frame, with a small green Pepe emerging from its mouth. The swirling patterns and intricate line work give it a trippy, almost hypnotic feel, reminiscent of visionary art styles.",
+  "visualSummaryShort": "The card showcases a chaotic and psychedelic design with a monstrous face and vibrant colors. A small green Pepe emerges from the mouth, enhancing the surreal atmosphere.",
+  "visualKeywords": [
+    "psychedelic",
+    "monstrous face",
+    "fiery colors",
+    "swirling patterns",
+    "green pepe",
+    "hypnotic",
+    "sharp teeth",
+    "glowing eyes",
+    "intricate line work",
+    "chaotic"
+  ],
+  "textKeywords": [
+    "hellapapella"
+  ],
+  "keywords": [
+    "psychedelic",
+    "monstrous face",
+    "fiery colors",
+    "swirling patterns",
+    "green pepe",
+    "hypnotic",
+    "sharp teeth",
+    "glowing eyes",
+    "intricate line work",
+    "chaotic",
+    "hellapapella"
+  ],
+  "embeddingInput": "HELLAPAPELLA (Fake Rares) - Series 4 Card 11\nArtist: Coit\nSupply 33 Issued November 2021\nOn-card text: HELLAPAPELLA\nVisual summary: The card features a psychedelic and chaotic composition with a vivid color palette dominated by fiery reds, oranges, and purples. A monstrous face with exaggerated features, including sharp teeth and glowing eyes, fills the frame, with a small green Pepe emerging from its mouth. The swirling patterns and intricate line work give it a trippy, almost hypnotic feel, reminiscent of visionary art styles.\nMemetic references: Pepe the Frog emerging from the chaos, symbolizing resilience and adaptability.; References to psychedelic art and culture, with swirling patterns and vibrant colors.; Elements of chaos and transformation, possibly nodding to the volatile nature of crypto markets.",
+  "embeddingBlocks": [
+    {
+      "id": "HELLAPAPELLA#text",
+      "label": "On-card text",
+      "text": "HELLAPAPELLA",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "HELLAPAPELLA#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog emerging from the chaos, symbolizing resilience and adaptability.\nReferences to psychedelic art and culture, with swirling patterns and vibrant colors.\nElements of chaos and transformation, possibly nodding to the volatile nature of crypto markets.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "HELLAPAPELLA#visual",
+      "label": "Visual summary",
+      "text": "The card features a psychedelic and chaotic composition with a vivid color palette dominated by fiery reds, oranges, and purples. A monstrous face with exaggerated features, including sharp teeth and glowing eyes, fills the frame, with a small green Pepe emerging from its mouth. The swirling patterns and intricate line work give it a trippy, almost hypnotic feel, reminiscent of visionary art styles.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "HELLAPAPELLA#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nHELLAPAPELLA\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a psychedelic and chaotic composition with a vivid color palette dominated by fiery reds, oranges, and purples. A monstrous face with exaggerated features, including sharp teeth and glowing eyes, fills the frame, with a small green Pepe emerging from its mouth. The swirling patterns and intricate line work give it a trippy, almost hypnotic feel, reminiscent of visionary art styles.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog emerging from the chaos, symbolizing resilience and adaptability.\n- References to psychedelic art and culture, with swirling patterns and vibrant colors.\n- Elements of chaos and transformation, possibly nodding to the volatile nature of crypto markets.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.682Z",
+  "sourceFactVersion": 1
+}

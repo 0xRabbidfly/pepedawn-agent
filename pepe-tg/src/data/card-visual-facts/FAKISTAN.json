@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "FAKISTAN",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 3,
+  "artist": "Pepenardo",
+  "supply": 125,
+  "issuance": "March 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog face on the Sphinx, a nod to the iconic internet meme.",
+    "Use of vibrant green, reminiscent of classic Pepe imagery.",
+    "Middle Eastern desert setting, adding a layer of exotic mystery and adventure."
+  ],
+  "visualSummary": "This artwork presents a surreal desert scene featuring a green camel with a rider dressed in traditional Middle Eastern attire. The camel and rider are positioned in front of a Sphinx-like monument with a Pepe the Frog face, set against a dramatic sky with swirling clouds in shades of blue, orange, and pink. The composition combines realistic and fantastical elements, blending cultural motifs with meme culture.",
+  "visualSummaryShort": "The artwork depicts a surreal desert landscape with a green camel and a rider in traditional attire. A Sphinx-like monument with a Pepe the Frog face looms in the background under a dramatic sky.",
+  "visualKeywords": [
+    "desert",
+    "green camel",
+    "rider",
+    "sphinx",
+    "pepe the frog",
+    "swirling clouds",
+    "blue",
+    "orange",
+    "pink",
+    "surreal"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "desert",
+    "green camel",
+    "rider",
+    "sphinx",
+    "pepe the frog",
+    "swirling clouds",
+    "blue",
+    "orange",
+    "pink",
+    "surreal"
+  ],
+  "embeddingInput": "FAKISTAN (Fake Rares) - Series 8 Card 3\nArtist: Pepenardo\nSupply 125 Issued March 2022\nOn-card text: none detected\nVisual summary: This artwork presents a surreal desert scene featuring a green camel with a rider dressed in traditional Middle Eastern attire. The camel and rider are positioned in front of a Sphinx-like monument with a Pepe the Frog face, set against a dramatic sky with swirling clouds in shades of blue, orange, and pink. The composition combines realistic and fantastical elements, blending cultural motifs with meme culture.\nMemetic references: Pepe the Frog face on the Sphinx, a nod to the iconic internet meme.; Use of vibrant green, reminiscent of classic Pepe imagery.; Middle Eastern desert setting, adding a layer of exotic mystery and adventure.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKISTAN#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog face on the Sphinx, a nod to the iconic internet meme.\nUse of vibrant green, reminiscent of classic Pepe imagery.\nMiddle Eastern desert setting, adding a layer of exotic mystery and adventure.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKISTAN#visual",
+      "label": "Visual summary",
+      "text": "This artwork presents a surreal desert scene featuring a green camel with a rider dressed in traditional Middle Eastern attire. The camel and rider are positioned in front of a Sphinx-like monument with a Pepe the Frog face, set against a dramatic sky with swirling clouds in shades of blue, orange, and pink. The composition combines realistic and fantastical elements, blending cultural motifs with meme culture.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKISTAN#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis artwork presents a surreal desert scene featuring a green camel with a rider dressed in traditional Middle Eastern attire. The camel and rider are positioned in front of a Sphinx-like monument with a Pepe the Frog face, set against a dramatic sky with swirling clouds in shades of blue, orange, and pink. The composition combines realistic and fantastical elements, blending cultural motifs with meme culture.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog face on the Sphinx, a nod to the iconic internet meme.\n- Use of vibrant green, reminiscent of classic Pepe imagery.\n- Middle Eastern desert setting, adding a layer of exotic mystery and adventure.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.605Z",
+  "sourceFactVersion": 1
+}

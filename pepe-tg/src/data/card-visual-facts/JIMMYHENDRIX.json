@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "asset": "JIMMYHENDRIX",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 20,
+  "artist": "Indelible",
+  "supply": 80,
+  "issuance": "November 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe-inspired character design.",
+    "References to 1960s rock culture.",
+    "Psychedelic art influences.",
+    "Possible nod to the legendary guitarist's iconic fashion."
+  ],
+  "visualSummary": "The card features a figure with green skin, styled with an afro reminiscent of a rock legend, dressed in a flamboyant red jacket with gold accents. The background is a swirling mix of blues and purples, giving a psychedelic vibe. The artistic style blends pop art with a touch of surrealism, creating a bold, eye-catching look.",
+  "visualSummaryShort": "The card showcases a figure with green skin and an afro, dressed in a vibrant red jacket with gold accents. The psychedelic background features swirling blues and purples, enhancing the bold artistic style.",
+  "visualKeywords": [
+    "green skin",
+    "afro",
+    "red jacket",
+    "gold accents",
+    "blue",
+    "purple",
+    "psychedelic",
+    "pop art",
+    "surrealism"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "green skin",
+    "afro",
+    "red jacket",
+    "gold accents",
+    "blue",
+    "purple",
+    "psychedelic",
+    "pop art",
+    "surrealism"
+  ],
+  "embeddingInput": "JIMMYHENDRIX (Fake Rares) - Series 4 Card 20\nArtist: Indelible\nSupply 80 Issued November 2021\nOn-card text: none detected\nVisual summary: The card features a figure with green skin, styled with an afro reminiscent of a rock legend, dressed in a flamboyant red jacket with gold accents. The background is a swirling mix of blues and purples, giving a psychedelic vibe. The artistic style blends pop art with a touch of surrealism, creating a bold, eye-catching look.\nMemetic references: Pepe-inspired character design.; References to 1960s rock culture.; Psychedelic art influences.; Possible nod to the legendary guitarist's iconic fashion.",
+  "embeddingBlocks": [
+    {
+      "id": "JIMMYHENDRIX#memetic",
+      "label": "Memetic references",
+      "text": "Pepe-inspired character design.\nReferences to 1960s rock culture.\nPsychedelic art influences.\nPossible nod to the legendary guitarist's iconic fashion.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "JIMMYHENDRIX#visual",
+      "label": "Visual summary",
+      "text": "The card features a figure with green skin, styled with an afro reminiscent of a rock legend, dressed in a flamboyant red jacket with gold accents. The background is a swirling mix of blues and purples, giving a psychedelic vibe. The artistic style blends pop art with a touch of surrealism, creating a bold, eye-catching look.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "JIMMYHENDRIX#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a figure with green skin, styled with an afro reminiscent of a rock legend, dressed in a flamboyant red jacket with gold accents. The background is a swirling mix of blues and purples, giving a psychedelic vibe. The artistic style blends pop art with a touch of surrealism, creating a bold, eye-catching look.\n\n🧬 **MEMETIC DNA:**\n- Pepe-inspired character design.\n- References to 1960s rock culture.\n- Psychedelic art influences.\n- Possible nod to the legendary guitarist's iconic fashion.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.704Z",
+  "sourceFactVersion": 1
+}

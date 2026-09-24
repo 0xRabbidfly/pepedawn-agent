@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "asset": "ZOMBIEPPS",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 36,
+  "artist": "Gus Grillasca",
+  "supply": 100,
+  "issuance": "April 2026",
+  "textOnCard": [
+    "ZombiePepes",
+    "Ten Years Later"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog is central, a staple of meme culture.",
+    "The zombie theme taps into pop culture's fascination with the undead.",
+    "The text \"Ten Years Later\" suggests a post-apocalyptic or future scenario.",
+    "The pyramid with \"10th\" hints at crypto culture and anniversary vibes."
+  ],
+  "visualSummary": "This card features a grotesque, zombie-like Pepe the Frog in tattered clothing, with exaggerated features and a vivid green hue. The background is a spooky graveyard scene with fog and shadowy figures, adding to the eerie atmosphere. The color palette is dominated by greens, blacks, and reds, creating a chilling and dramatic effect.",
+  "visualSummaryShort": "The card showcases a grotesque zombie Pepe the Frog in tattered clothing against a spooky graveyard backdrop. The scene is filled with fog and shadowy figures, enhancing the eerie atmosphere.",
+  "visualKeywords": [
+    "zombie",
+    "graveyard",
+    "green",
+    "fog",
+    "shadow",
+    "tattered clothing",
+    "eerie",
+    "dramatic",
+    "black",
+    "red"
+  ],
+  "textKeywords": [
+    "zombiepepes",
+    "ten",
+    "years",
+    "later"
+  ],
+  "keywords": [
+    "zombie",
+    "graveyard",
+    "green",
+    "fog",
+    "shadow",
+    "tattered clothing",
+    "eerie",
+    "dramatic",
+    "black",
+    "red",
+    "zombiepepes",
+    "ten",
+    "years",
+    "later"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "ZOMBIEPPS (Fake Rares) - Series 18 Card 36\nArtist: Gus Grillasca\nSupply 100 Issued April 2026\nOn-card text: ZombiePepes | Ten Years Later\nVisual summary: This card features a grotesque, zombie-like Pepe the Frog in tattered clothing, with exaggerated features and a vivid green hue. The background is a spooky graveyard scene with fog and shadowy figures, adding to the eerie atmosphere. The color palette is dominated by greens, blacks, and reds, creating a chilling and dramatic effect.\nMemetic references: Pepe the Frog is central, a staple of meme culture.; The zombie theme taps into pop culture's fascination with the undead.; The text \"Ten Years Later\" suggests a post-apocalyptic or future scenario.; The pyramid with \"10th\" hints at crypto culture and anniversary vibes.",
+  "embeddingBlocks": [
+    {
+      "id": "ZOMBIEPPS#text",
+      "label": "On-card text",
+      "text": "ZombiePepes | Ten Years Later",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "ZOMBIEPPS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog is central, a staple of meme culture.\nThe zombie theme taps into pop culture's fascination with the undead.\nThe text \"Ten Years Later\" suggests a post-apocalyptic or future scenario.\nThe pyramid with \"10th\" hints at crypto culture and anniversary vibes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "ZOMBIEPPS#visual",
+      "label": "Visual summary",
+      "text": "This card features a grotesque, zombie-like Pepe the Frog in tattered clothing, with exaggerated features and a vivid green hue. The background is a spooky graveyard scene with fog and shadowy figures, adding to the eerie atmosphere. The color palette is dominated by greens, blacks, and reds, creating a chilling and dramatic effect.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "ZOMBIEPPS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nZombiePepes  \nTen Years Later\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a grotesque, zombie-like Pepe the Frog in tattered clothing, with exaggerated features and a vivid green hue. The background is a spooky graveyard scene with fog and shadowy figures, adding to the eerie atmosphere. The color palette is dominated by greens, blacks, and reds, creating a chilling and dramatic effect.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog is central, a staple of meme culture.\n- The zombie theme taps into pop culture's fascination with the undead.\n- The text \"Ten Years Later\" suggests a post-apocalyptic or future scenario.\n- The pyramid with \"10th\" hints at crypto culture and anniversary vibes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:31:52.334Z"
+}

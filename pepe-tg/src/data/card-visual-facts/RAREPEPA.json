@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "asset": "RAREPEPA",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 29,
+  "artist": "Whoisit",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "GQ THE 100 SEXIEST PEPES OF THE 21ST CENTURY. MEN PUT YOUR PANTS BACK ON. FEATURING FAKE PEPA. PEPA N°1."
+  ],
+  "memeticReferences": [
+    "Parody of GQ magazine, a nod to pop culture.",
+    "Incorporation of Pepe the Frog, a staple in meme culture.",
+    "Self-referential NFT card within the card, adding layers to the crypto theme.",
+    "\"Men put your pants back on\" adds humor and irreverence."
+  ],
+  "visualSummary": "The card features a green, anthropomorphic frog resembling Pepe, posing confidently in a pink bikini while holding an NFT card. The color palette is bold with vibrant greens, pinks, and reds, reminiscent of a magazine cover. The style is cartoonish, with exaggerated features and playful, satirical elements.",
+  "visualSummaryShort": "The card showcases a confident green frog in a pink bikini, holding an NFT card. Its vibrant colors and cartoonish style create a playful and satirical mood.",
+  "visualKeywords": [
+    "frog",
+    "bikini",
+    "nft",
+    "green",
+    "pink",
+    "cartoonish",
+    "bold colors",
+    "playful",
+    "satirical"
+  ],
+  "textKeywords": [
+    "100",
+    "sexiest",
+    "pepes",
+    "21st",
+    "century",
+    "men",
+    "put",
+    "pants",
+    "back",
+    "featuring",
+    "pepa"
+  ],
+  "keywords": [
+    "frog",
+    "bikini",
+    "nft",
+    "green",
+    "pink",
+    "cartoonish",
+    "bold colors",
+    "playful",
+    "satirical",
+    "100",
+    "sexiest",
+    "pepes",
+    "21st",
+    "century",
+    "men",
+    "put",
+    "pants",
+    "back",
+    "featuring",
+    "pepa"
+  ],
+  "embeddingInput": "RAREPEPA (Fake Rares) - Series 2 Card 29\nArtist: Whoisit\nSupply 100 Issued October 2021\nOn-card text: GQ THE 100 SEXIEST PEPES OF THE 21ST CENTURY. MEN PUT YOUR PANTS BACK ON. FEATURING FAKE PEPA. PEPA N°1.\nVisual summary: The card features a green, anthropomorphic frog resembling Pepe, posing confidently in a pink bikini while holding an NFT card. The color palette is bold with vibrant greens, pinks, and reds, reminiscent of a magazine cover. The style is cartoonish, with exaggerated features and playful, satirical elements.\nMemetic references: Parody of GQ magazine, a nod to pop culture.; Incorporation of Pepe the Frog, a staple in meme culture.; Self-referential NFT card within the card, adding layers to the crypto theme.; \"Men put your pants back on\" adds humor and irreverence.",
+  "embeddingBlocks": [
+    {
+      "id": "RAREPEPA#text",
+      "label": "On-card text",
+      "text": "GQ THE 100 SEXIEST PEPES OF THE 21ST CENTURY. MEN PUT YOUR PANTS BACK ON. FEATURING FAKE PEPA. PEPA N°1.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "RAREPEPA#memetic",
+      "label": "Memetic references",
+      "text": "Parody of GQ magazine, a nod to pop culture.\nIncorporation of Pepe the Frog, a staple in meme culture.\nSelf-referential NFT card within the card, adding layers to the crypto theme.\n\"Men put your pants back on\" adds humor and irreverence.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RAREPEPA#visual",
+      "label": "Visual summary",
+      "text": "The card features a green, anthropomorphic frog resembling Pepe, posing confidently in a pink bikini while holding an NFT card. The color palette is bold with vibrant greens, pinks, and reds, reminiscent of a magazine cover. The style is cartoonish, with exaggerated features and playful, satirical elements.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RAREPEPA#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nGQ THE 100 SEXIEST PEPES OF THE 21ST CENTURY. MEN PUT YOUR PANTS BACK ON. FEATURING FAKE PEPA. PEPA N°1.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a green, anthropomorphic frog resembling Pepe, posing confidently in a pink bikini while holding an NFT card. The color palette is bold with vibrant greens, pinks, and reds, reminiscent of a magazine cover. The style is cartoonish, with exaggerated features and playful, satirical elements.\n\n🧬 **MEMETIC DNA:**\n- Parody of GQ magazine, a nod to pop culture.\n- Incorporation of Pepe the Frog, a staple in meme culture.\n- Self-referential NFT card within the card, adding layers to the crypto theme.\n- \"Men put your pants back on\" adds humor and irreverence.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.070Z",
+  "sourceFactVersion": 1
+}

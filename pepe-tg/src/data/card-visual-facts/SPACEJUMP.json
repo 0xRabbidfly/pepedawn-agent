@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "asset": "SPACEJUMP",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 35,
+  "artist": "Ndhoz_Dotule",
+  "supply": 42,
+  "issuance": "February 2026",
+  "textOnCard": [
+    "\"GM\" is visible on a blackboard in the background."
+  ],
+  "memeticReferences": [
+    "\"GM\" is a nod to the crypto community's daily greeting.",
+    "Graffiti and street art elements evoke urban and counterculture vibes.",
+    "The basketball court suggests a playful, competitive spirit."
+  ],
+  "visualSummary": "The card features a miniature 3D diorama of a fenced basketball court with graffiti-covered walls and urban decay vibes. The color palette is a mix of earthy tones with pops of bright colors from the graffiti and court markings. The style is playful yet gritty, showcasing quirky characters engaging in a basketball game with a nod to street art culture.",
+  "visualSummaryShort": "The card depicts a miniature 3D diorama of a fenced basketball court surrounded by graffiti-covered walls. It features quirky characters playing basketball, set against a backdrop of urban decay with a vibrant color palette.",
+  "visualKeywords": [
+    "basketball court",
+    "graffiti",
+    "urban decay",
+    "earthy tones",
+    "bright colors",
+    "playful",
+    "gritty",
+    "street art",
+    "characters"
+  ],
+  "textKeywords": [
+    "visible",
+    "blackboard",
+    "background"
+  ],
+  "keywords": [
+    "basketball court",
+    "graffiti",
+    "urban decay",
+    "earthy tones",
+    "bright colors",
+    "playful",
+    "gritty",
+    "street art",
+    "characters",
+    "visible",
+    "blackboard",
+    "background"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "SPACEJUMP (Fake Rares) - Series 18 Card 35\nArtist: Ndhoz_Dotule\nSupply 42 Issued February 2026\nOn-card text: \"GM\" is visible on a blackboard in the background.\nVisual summary: The card features a miniature 3D diorama of a fenced basketball court with graffiti-covered walls and urban decay vibes. The color palette is a mix of earthy tones with pops of bright colors from the graffiti and court markings. The style is playful yet gritty, showcasing quirky characters engaging in a basketball game with a nod to street art culture.\nMemetic references: \"GM\" is a nod to the crypto community's daily greeting.; Graffiti and street art elements evoke urban and counterculture vibes.; The basketball court suggests a playful, competitive spirit.",
+  "embeddingBlocks": [
+    {
+      "id": "SPACEJUMP#text",
+      "label": "On-card text",
+      "text": "\"GM\" is visible on a blackboard in the background.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "SPACEJUMP#memetic",
+      "label": "Memetic references",
+      "text": "\"GM\" is a nod to the crypto community's daily greeting.\nGraffiti and street art elements evoke urban and counterculture vibes.\nThe basketball court suggests a playful, competitive spirit.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SPACEJUMP#visual",
+      "label": "Visual summary",
+      "text": "The card features a miniature 3D diorama of a fenced basketball court with graffiti-covered walls and urban decay vibes. The color palette is a mix of earthy tones with pops of bright colors from the graffiti and court markings. The style is playful yet gritty, showcasing quirky characters engaging in a basketball game with a nod to street art culture.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SPACEJUMP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n\"GM\" is visible on a blackboard in the background.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a miniature 3D diorama of a fenced basketball court with graffiti-covered walls and urban decay vibes. The color palette is a mix of earthy tones with pops of bright colors from the graffiti and court markings. The style is playful yet gritty, showcasing quirky characters engaging in a basketball game with a nod to street art culture.\n\n🧬 **MEMETIC DNA:**\n- \"GM\" is a nod to the crypto community's daily greeting.\n- Graffiti and street art elements evoke urban and counterculture vibes.\n- The basketball court suggests a playful, competitive spirit.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:31:47.534Z"
+}

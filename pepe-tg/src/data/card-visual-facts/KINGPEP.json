@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "KINGPEP",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 16,
+  "artist": "ShakAttak",
+  "supply": 64,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "KING PEPE"
+  ],
+  "memeticReferences": [
+    "King Kong reference with a Pepe twist.",
+    "Classic Pepe the Frog imagery.",
+    "Elements of vintage movie poster aesthetics.",
+    "Crypto culture nod with the \"FR\" and artist signature."
+  ],
+  "visualSummary": "The card features a giant gorilla with a Pepe face, reminiscent of King Kong, towering over a chaotic New York City scene. The color palette is vibrant and bold, with shades of green, brown, orange, and purple creating a dramatic and eye-catching effect. The art style is a blend of pop art and cartoonish illustration, adding an epic yet playful vibe to the composition.",
+  "visualSummaryShort": "The card showcases a giant gorilla with a Pepe face dominating a chaotic New York City backdrop. Its vibrant color palette and playful art style create an epic yet whimsical atmosphere.",
+  "visualKeywords": [
+    "gorilla",
+    "pepe",
+    "new york",
+    "vibrant colors",
+    "chaos",
+    "pop art",
+    "cartoonish",
+    "dramatic",
+    "green",
+    "orange"
+  ],
+  "textKeywords": [
+    "king"
+  ],
+  "keywords": [
+    "gorilla",
+    "pepe",
+    "new york",
+    "vibrant colors",
+    "chaos",
+    "pop art",
+    "cartoonish",
+    "dramatic",
+    "green",
+    "orange",
+    "king"
+  ],
+  "embeddingInput": "KINGPEP (Fake Rares) - Series 3 Card 16\nArtist: ShakAttak\nSupply 64 Issued November 2021\nOn-card text: KING PEPE\nVisual summary: The card features a giant gorilla with a Pepe face, reminiscent of King Kong, towering over a chaotic New York City scene. The color palette is vibrant and bold, with shades of green, brown, orange, and purple creating a dramatic and eye-catching effect. The art style is a blend of pop art and cartoonish illustration, adding an epic yet playful vibe to the composition.\nMemetic references: King Kong reference with a Pepe twist.; Classic Pepe the Frog imagery.; Elements of vintage movie poster aesthetics.; Crypto culture nod with the \"FR\" and artist signature.",
+  "embeddingBlocks": [
+    {
+      "id": "KINGPEP#text",
+      "label": "On-card text",
+      "text": "KING PEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "KINGPEP#memetic",
+      "label": "Memetic references",
+      "text": "King Kong reference with a Pepe twist.\nClassic Pepe the Frog imagery.\nElements of vintage movie poster aesthetics.\nCrypto culture nod with the \"FR\" and artist signature.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "KINGPEP#visual",
+      "label": "Visual summary",
+      "text": "The card features a giant gorilla with a Pepe face, reminiscent of King Kong, towering over a chaotic New York City scene. The color palette is vibrant and bold, with shades of green, brown, orange, and purple creating a dramatic and eye-catching effect. The art style is a blend of pop art and cartoonish illustration, adding an epic yet playful vibe to the composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "KINGPEP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nKING PEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a giant gorilla with a Pepe face, reminiscent of King Kong, towering over a chaotic New York City scene. The color palette is vibrant and bold, with shades of green, brown, orange, and purple creating a dramatic and eye-catching effect. The art style is a blend of pop art and cartoonish illustration, adding an epic yet playful vibe to the composition.\n\n🧬 **MEMETIC DNA:**\n- King Kong reference with a Pepe twist.\n- Classic Pepe the Frog imagery.\n- Elements of vintage movie poster aesthetics.\n- Crypto culture nod with the \"FR\" and artist signature.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.720Z",
+  "sourceFactVersion": 1
+}

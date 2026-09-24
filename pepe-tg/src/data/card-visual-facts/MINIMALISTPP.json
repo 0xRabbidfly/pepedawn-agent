@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "MINIMALISTPP",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 48,
+  "artist": "VVD",
+  "supply": 100,
+  "issuance": "February 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Channels minimalist art vibes, reminiscent of modern art galleries.",
+    "The color scheme hints at a playful yet refined aesthetic, possibly nodding to the simplicity in crypto design.",
+    "Could be interpreted as a subtle reference to the tricolor flags or a nod to meme culture’s love for vibrant visuals."
+  ],
+  "visualSummary": "The card features a minimalist composition with three vertical stripes in bold colors: green, white, and pink. The stripes are cleanly separated by thin black lines, creating a stark contrast between the vibrant hues. The style is abstract and modern, emphasizing simplicity and color.",
+  "visualSummaryShort": "The card showcases a minimalist design with three bold vertical stripes in green, white, and pink. The clean separation by thin black lines enhances the modern and abstract aesthetic.",
+  "visualKeywords": [
+    "minimalist",
+    "stripes",
+    "green",
+    "white",
+    "pink",
+    "abstract",
+    "modern",
+    "bold",
+    "contrast",
+    "color"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "minimalist",
+    "stripes",
+    "green",
+    "white",
+    "pink",
+    "abstract",
+    "modern",
+    "bold",
+    "contrast",
+    "color"
+  ],
+  "embeddingInput": "MINIMALISTPP (Fake Rares) - Series 9 Card 48\nArtist: VVD\nSupply 100 Issued February 2022\nOn-card text: none detected\nVisual summary: The card features a minimalist composition with three vertical stripes in bold colors: green, white, and pink. The stripes are cleanly separated by thin black lines, creating a stark contrast between the vibrant hues. The style is abstract and modern, emphasizing simplicity and color.\nMemetic references: Channels minimalist art vibes, reminiscent of modern art galleries.; The color scheme hints at a playful yet refined aesthetic, possibly nodding to the simplicity in crypto design.; Could be interpreted as a subtle reference to the tricolor flags or a nod to meme culture’s love for vibrant visuals.",
+  "embeddingBlocks": [
+    {
+      "id": "MINIMALISTPP#memetic",
+      "label": "Memetic references",
+      "text": "Channels minimalist art vibes, reminiscent of modern art galleries.\nThe color scheme hints at a playful yet refined aesthetic, possibly nodding to the simplicity in crypto design.\nCould be interpreted as a subtle reference to the tricolor flags or a nod to meme culture’s love for vibrant visuals.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MINIMALISTPP#visual",
+      "label": "Visual summary",
+      "text": "The card features a minimalist composition with three vertical stripes in bold colors: green, white, and pink. The stripes are cleanly separated by thin black lines, creating a stark contrast between the vibrant hues. The style is abstract and modern, emphasizing simplicity and color.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MINIMALISTPP#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a minimalist composition with three vertical stripes in bold colors: green, white, and pink. The stripes are cleanly separated by thin black lines, creating a stark contrast between the vibrant hues. The style is abstract and modern, emphasizing simplicity and color.\n\n🧬 **MEMETIC DNA:**\n- Channels minimalist art vibes, reminiscent of modern art galleries.\n- The color scheme hints at a playful yet refined aesthetic, possibly nodding to the simplicity in crypto design.\n- Could be interpreted as a subtle reference to the tricolor flags or a nod to meme culture’s love for vibrant visuals.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.773Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "POLKKAPEPE",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 24,
+  "artist": "StrangerSolemn",
+  "supply": 69,
+  "issuance": "August 2025",
+  "textOnCard": [
+    "POLKKAPEPE"
+  ],
+  "memeticReferences": [
+    "Classic sad Pepe face, a staple in meme culture.",
+    "The attire suggests a nod to mystery or noir themes, possibly referencing famous detective or secret society aesthetics.",
+    "The cat-eared Pepe brings in a playful twist, merging different meme elements."
+  ],
+  "visualSummary": "The card features a somber Pepe figure dressed in a black cloak and wide-brimmed hat, seated against a blue background. Beside him, a smaller Pepe with cat ears appears, both sporting the iconic sad Pepe expression. The color palette is dominated by deep greens and blacks, with a pop of red in the hatband, giving it an enigmatic and moody vibe.",
+  "visualSummaryShort": "The card showcases a somber Pepe figure in a black cloak and hat, seated against a blue background. A smaller Pepe with cat ears accompanies him, both expressing a sad demeanor amidst a moody color palette.",
+  "visualKeywords": [
+    "pepe",
+    "black cloak",
+    "blue background",
+    "cat ears",
+    "sad expression",
+    "green",
+    "red",
+    "moody"
+  ],
+  "textKeywords": [
+    "polkkapepe"
+  ],
+  "keywords": [
+    "pepe",
+    "black cloak",
+    "blue background",
+    "cat ears",
+    "sad expression",
+    "green",
+    "red",
+    "moody",
+    "polkkapepe"
+  ],
+  "embeddingInput": "POLKKAPEPE (Fake Rares) - Series 18 Card 24\nArtist: StrangerSolemn\nSupply 69 Issued August 2025\nOn-card text: POLKKAPEPE\nVisual summary: The card features a somber Pepe figure dressed in a black cloak and wide-brimmed hat, seated against a blue background. Beside him, a smaller Pepe with cat ears appears, both sporting the iconic sad Pepe expression. The color palette is dominated by deep greens and blacks, with a pop of red in the hatband, giving it an enigmatic and moody vibe.\nMemetic references: Classic sad Pepe face, a staple in meme culture.; The attire suggests a nod to mystery or noir themes, possibly referencing famous detective or secret society aesthetics.; The cat-eared Pepe brings in a playful twist, merging different meme elements.",
+  "embeddingBlocks": [
+    {
+      "id": "POLKKAPEPE#text",
+      "label": "On-card text",
+      "text": "POLKKAPEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "POLKKAPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic sad Pepe face, a staple in meme culture.\nThe attire suggests a nod to mystery or noir themes, possibly referencing famous detective or secret society aesthetics.\nThe cat-eared Pepe brings in a playful twist, merging different meme elements.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "POLKKAPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a somber Pepe figure dressed in a black cloak and wide-brimmed hat, seated against a blue background. Beside him, a smaller Pepe with cat ears appears, both sporting the iconic sad Pepe expression. The color palette is dominated by deep greens and blacks, with a pop of red in the hatband, giving it an enigmatic and moody vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "POLKKAPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPOLKKAPEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a somber Pepe figure dressed in a black cloak and wide-brimmed hat, seated against a blue background. Beside him, a smaller Pepe with cat ears appears, both sporting the iconic sad Pepe expression. The color palette is dominated by deep greens and blacks, with a pop of red in the hatband, giving it an enigmatic and moody vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic sad Pepe face, a staple in meme culture.\n- The attire suggests a nod to mystery or noir themes, possibly referencing famous detective or secret society aesthetics.\n- The cat-eared Pepe brings in a playful twist, merging different meme elements.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.045Z",
+  "sourceFactVersion": 1
+}

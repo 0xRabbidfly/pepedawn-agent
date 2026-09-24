@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "asset": "FAKEVIBES",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 39,
+  "artist": "kr",
+  "supply": 89,
+  "issuance": "November 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Iconic Pepe the Frog character",
+    "Bitcoin symbol and crypto references",
+    "Psychedelic and stoner culture elements",
+    "Volcano in the background suggesting explosive energy"
+  ],
+  "visualSummary": "The card features Pepe the Frog in a laid-back pose, smoking with a massive plume of smoke swirling around. The backdrop showcases a volcanic landscape, with vibrant colors like teal, red, and purple creating a psychedelic vibe. Pepe is adorned in a teal jacket with a Bitcoin symbol, and a gold medallion, exuding a high-roller aesthetic.",
+  "visualSummaryShort": "The card depicts Pepe the Frog in a relaxed pose, surrounded by a swirling plume of smoke against a vibrant volcanic landscape. The colors are psychedelic, featuring teal, red, and purple, enhancing the high-roller aesthetic.",
+  "visualKeywords": [
+    "pepe the frog",
+    "smoke",
+    "volcanic landscape",
+    "teal jacket",
+    "bitcoin symbol",
+    "gold medallion",
+    "psychedelic",
+    "vibrant colors"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "smoke",
+    "volcanic landscape",
+    "teal jacket",
+    "bitcoin symbol",
+    "gold medallion",
+    "psychedelic",
+    "vibrant colors"
+  ],
+  "embeddingInput": "FAKEVIBES (Fake Rares) - Series 4 Card 39\nArtist: kr\nSupply 89 Issued November 2021\nOn-card text: none detected\nVisual summary: The card features Pepe the Frog in a laid-back pose, smoking with a massive plume of smoke swirling around. The backdrop showcases a volcanic landscape, with vibrant colors like teal, red, and purple creating a psychedelic vibe. Pepe is adorned in a teal jacket with a Bitcoin symbol, and a gold medallion, exuding a high-roller aesthetic.\nMemetic references: Iconic Pepe the Frog character; Bitcoin symbol and crypto references; Psychedelic and stoner culture elements; Volcano in the background suggesting explosive energy",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEVIBES#memetic",
+      "label": "Memetic references",
+      "text": "Iconic Pepe the Frog character\nBitcoin symbol and crypto references\nPsychedelic and stoner culture elements\nVolcano in the background suggesting explosive energy",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEVIBES#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog in a laid-back pose, smoking with a massive plume of smoke swirling around. The backdrop showcases a volcanic landscape, with vibrant colors like teal, red, and purple creating a psychedelic vibe. Pepe is adorned in a teal jacket with a Bitcoin symbol, and a gold medallion, exuding a high-roller aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEVIBES#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog in a laid-back pose, smoking with a massive plume of smoke swirling around. The backdrop showcases a volcanic landscape, with vibrant colors like teal, red, and purple creating a psychedelic vibe. Pepe is adorned in a teal jacket with a Bitcoin symbol, and a gold medallion, exuding a high-roller aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Iconic Pepe the Frog character\n- Bitcoin symbol and crypto references\n- Psychedelic and stoner culture elements\n- Volcano in the background suggesting explosive energy",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.594Z",
+  "sourceFactVersion": 1
+}

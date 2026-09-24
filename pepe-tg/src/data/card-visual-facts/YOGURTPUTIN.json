@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "asset": "YOGURTPUTIN",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 46,
+  "artist": "1BCQVoz",
+  "supply": 21,
+  "issuance": "June 2023",
+  "textOnCard": [
+    "YOGURT PUTIN PEPE",
+    "#6 in series of 5 putins RARE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog: Classic meme character.",
+    "Political satire: References a global leader.",
+    "Absurdity: \"Series of 5 putins\" yet it's #6, adding to the meme humor."
+  ],
+  "visualSummary": "The card features a Pepe-fied version of a well-known political figure, with a green face and a contemplative expression. He's dressed in a suit and tie, seated at a table with a yogurt and a glass of water. The color palette is mostly grayscale with the striking green of Pepe's skin creating a humorous contrast.",
+  "visualSummaryShort": "The card depicts a Pepe-inspired political figure with a green face, seated at a table with yogurt and water. The grayscale color palette is contrasted by the vibrant green skin, adding a humorous touch.",
+  "visualKeywords": [
+    "pepe",
+    "green face",
+    "suit",
+    "yogurt",
+    "water",
+    "grayscale",
+    "contemplative",
+    "table"
+  ],
+  "textKeywords": [
+    "yogurt",
+    "putin",
+    "series",
+    "putins"
+  ],
+  "keywords": [
+    "pepe",
+    "green face",
+    "suit",
+    "yogurt",
+    "water",
+    "grayscale",
+    "contemplative",
+    "table",
+    "putin",
+    "series",
+    "putins"
+  ],
+  "embeddingInput": "YOGURTPUTIN (Fake Rares) - Series 14 Card 46\nArtist: 1BCQVoz\nSupply 21 Issued June 2023\nOn-card text: YOGURT PUTIN PEPE | #6 in series of 5 putins RARE\nVisual summary: The card features a Pepe-fied version of a well-known political figure, with a green face and a contemplative expression. He's dressed in a suit and tie, seated at a table with a yogurt and a glass of water. The color palette is mostly grayscale with the striking green of Pepe's skin creating a humorous contrast.\nMemetic references: Pepe the Frog: Classic meme character.; Political satire: References a global leader.; Absurdity: \"Series of 5 putins\" yet it's #6, adding to the meme humor.",
+  "embeddingBlocks": [
+    {
+      "id": "YOGURTPUTIN#text",
+      "label": "On-card text",
+      "text": "YOGURT PUTIN PEPE | #6 in series of 5 putins RARE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "YOGURTPUTIN#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog: Classic meme character.\nPolitical satire: References a global leader.\nAbsurdity: \"Series of 5 putins\" yet it's #6, adding to the meme humor.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "YOGURTPUTIN#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe-fied version of a well-known political figure, with a green face and a contemplative expression. He's dressed in a suit and tie, seated at a table with a yogurt and a glass of water. The color palette is mostly grayscale with the striking green of Pepe's skin creating a humorous contrast.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "YOGURTPUTIN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nYOGURT PUTIN PEPE  \n#6 in series of 5 putins RARE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe-fied version of a well-known political figure, with a green face and a contemplative expression. He's dressed in a suit and tie, seated at a table with a yogurt and a glass of water. The color palette is mostly grayscale with the striking green of Pepe's skin creating a humorous contrast.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog: Classic meme character.\n- Political satire: References a global leader.\n- Absurdity: \"Series of 5 putins\" yet it's #6, adding to the meme humor.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.200Z",
+  "sourceFactVersion": 1
+}

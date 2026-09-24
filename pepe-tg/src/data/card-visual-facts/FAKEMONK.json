@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "FAKEMONK",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 1,
+  "artist": "Whalesink",
+  "supply": 41,
+  "issuance": "April 2023",
+  "textOnCard": [
+    "FAKEMONK",
+    "~~5"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference with the iconic green face.",
+    "Crypto culture nod with the \"~~5\" symbol, possibly hinting at cryptographic or blockchain elements.",
+    "The meditative pose and attire nod to spiritual or philosophical memes, blending the sacred with the memetic."
+  ],
+  "visualSummary": "The card features a Pepe-inspired figure with a green face and red lips, wearing a textured black beanie and a complex, abstract robe. The background is a deep red, filled with repeated text that adds a chaotic, layered effect. The style is a mix of digital glitch art and pixel art, creating a vibrant, psychedelic tapestry.",
+  "visualSummaryShort": "The card showcases a Pepe-inspired figure with a green face and red lips, adorned in a textured black beanie and an abstract robe. The chaotic deep red background features repeated text, enhancing the vibrant, psychedelic aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "green face",
+    "red lips",
+    "black beanie",
+    "abstract robe",
+    "deep red",
+    "glitch art",
+    "pixel art",
+    "chaotic",
+    "psychedelic"
+  ],
+  "textKeywords": [
+    "fakemonk"
+  ],
+  "keywords": [
+    "pepe",
+    "green face",
+    "red lips",
+    "black beanie",
+    "abstract robe",
+    "deep red",
+    "glitch art",
+    "pixel art",
+    "chaotic",
+    "psychedelic",
+    "fakemonk"
+  ],
+  "embeddingInput": "FAKEMONK (Fake Rares) - Series 14 Card 1\nArtist: Whalesink\nSupply 41 Issued April 2023\nOn-card text: FAKEMONK | ~~5\nVisual summary: The card features a Pepe-inspired figure with a green face and red lips, wearing a textured black beanie and a complex, abstract robe. The background is a deep red, filled with repeated text that adds a chaotic, layered effect. The style is a mix of digital glitch art and pixel art, creating a vibrant, psychedelic tapestry.\nMemetic references: Pepe the Frog reference with the iconic green face.; Crypto culture nod with the \"~~5\" symbol, possibly hinting at cryptographic or blockchain elements.; The meditative pose and attire nod to spiritual or philosophical memes, blending the sacred with the memetic.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEMONK#text",
+      "label": "On-card text",
+      "text": "FAKEMONK | ~~5",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEMONK#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference with the iconic green face.\nCrypto culture nod with the \"~~5\" symbol, possibly hinting at cryptographic or blockchain elements.\nThe meditative pose and attire nod to spiritual or philosophical memes, blending the sacred with the memetic.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEMONK#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe-inspired figure with a green face and red lips, wearing a textured black beanie and a complex, abstract robe. The background is a deep red, filled with repeated text that adds a chaotic, layered effect. The style is a mix of digital glitch art and pixel art, creating a vibrant, psychedelic tapestry.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEMONK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKEMONK  \n~~5\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe-inspired figure with a green face and red lips, wearing a textured black beanie and a complex, abstract robe. The background is a deep red, filled with repeated text that adds a chaotic, layered effect. The style is a mix of digital glitch art and pixel art, creating a vibrant, psychedelic tapestry.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference with the iconic green face.\n- Crypto culture nod with the \"~~5\" symbol, possibly hinting at cryptographic or blockchain elements.\n- The meditative pose and attire nod to spiritual or philosophical memes, blending the sacred with the memetic.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.534Z",
+  "sourceFactVersion": 1
+}

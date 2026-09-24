@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "asset": "SATNIGHTPEPE",
+  "collection": "Fake Rares",
+  "series": 0,
+  "cardNumber": 5,
+  "artist": "Roger Fliporian",
+  "supply": 50,
+  "issuance": "March 2018",
+  "textOnCard": [
+    "SATURDAY NIGHT PEPE, PERFECT!!, 221 COMBO"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as the central character.",
+    "Reference to \"Saturday Night Fever\" with the disco theme.",
+    "Dance Dance Revolution-style arrows, indicating a rhythm game influence.",
+    "\"Perfect!!\" and \"221 COMBO\" text mimics video game score displays."
+  ],
+  "visualSummary": "This card features Pepe the Frog in a disco setting, wearing a white suit reminiscent of John Travolta's iconic look from \"Saturday Night Fever.\" The background is a vibrant dance floor with multicolored arrows, capturing the essence of a dance video game like Dance Dance Revolution. The color palette is a mix of neon blues, reds, and greens, creating a lively, energetic scene.",
+  "visualSummaryShort": "The card showcases Pepe the Frog in a disco environment, dressed in a white suit that nods to classic dance culture. The vibrant dance floor features multicolored arrows and a lively neon color palette.",
+  "visualKeywords": [
+    "disco",
+    "pepe the frog",
+    "white suit",
+    "dance floor",
+    "neon colors",
+    "arrows",
+    "energetic",
+    "vibrant"
+  ],
+  "textKeywords": [
+    "saturday",
+    "night",
+    "perfect",
+    "221",
+    "combo"
+  ],
+  "keywords": [
+    "disco",
+    "pepe the frog",
+    "white suit",
+    "dance floor",
+    "neon colors",
+    "arrows",
+    "energetic",
+    "vibrant",
+    "saturday",
+    "night",
+    "perfect",
+    "221",
+    "combo"
+  ],
+  "embeddingInput": "SATNIGHTPEPE (Fake Rares) - Series 0 Card 5\nArtist: Roger Fliporian\nSupply 50 Issued March 2018\nOn-card text: SATURDAY NIGHT PEPE, PERFECT!!, 221 COMBO\nVisual summary: This card features Pepe the Frog in a disco setting, wearing a white suit reminiscent of John Travolta's iconic look from \"Saturday Night Fever.\" The background is a vibrant dance floor with multicolored arrows, capturing the essence of a dance video game like Dance Dance Revolution. The color palette is a mix of neon blues, reds, and greens, creating a lively, energetic scene.\nMemetic references: Pepe the Frog as the central character.; Reference to \"Saturday Night Fever\" with the disco theme.; Dance Dance Revolution-style arrows, indicating a rhythm game influence.; \"Perfect!!\" and \"221 COMBO\" text mimics video game score displays.",
+  "embeddingBlocks": [
+    {
+      "id": "SATNIGHTPEPE#text",
+      "label": "On-card text",
+      "text": "SATURDAY NIGHT PEPE, PERFECT!!, 221 COMBO",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "SATNIGHTPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as the central character.\nReference to \"Saturday Night Fever\" with the disco theme.\nDance Dance Revolution-style arrows, indicating a rhythm game influence.\n\"Perfect!!\" and \"221 COMBO\" text mimics video game score displays.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SATNIGHTPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features Pepe the Frog in a disco setting, wearing a white suit reminiscent of John Travolta's iconic look from \"Saturday Night Fever.\" The background is a vibrant dance floor with multicolored arrows, capturing the essence of a dance video game like Dance Dance Revolution. The color palette is a mix of neon blues, reds, and greens, creating a lively, energetic scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SATNIGHTPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nSATURDAY NIGHT PEPE, PERFECT!!, 221 COMBO\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features Pepe the Frog in a disco setting, wearing a white suit reminiscent of John Travolta's iconic look from \"Saturday Night Fever.\" The background is a vibrant dance floor with multicolored arrows, capturing the essence of a dance video game like Dance Dance Revolution. The color palette is a mix of neon blues, reds, and greens, creating a lively, energetic scene.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as the central character.\n- Reference to \"Saturday Night Fever\" with the disco theme.\n- Dance Dance Revolution-style arrows, indicating a rhythm game influence.\n- \"Perfect!!\" and \"221 COMBO\" text mimics video game score displays.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.095Z",
+  "sourceFactVersion": 1
+}

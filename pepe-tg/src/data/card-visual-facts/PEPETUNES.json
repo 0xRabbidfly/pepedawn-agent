@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "PEPETUNES",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 32,
+  "artist": "Art GarPUNKel",
+  "supply": 88,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "PEPE TUNES"
+  ],
+  "memeticReferences": [
+    "References Looney Tunes’ iconic end screen, a staple of cartoon culture.",
+    "Incorporates Pepe the Frog, a central figure in meme culture.",
+    "Plays on nostalgia for classic animation, blending it with modern meme culture."
+  ],
+  "visualSummary": "The card mimics the classic Looney Tunes closing sequence with concentric circles in red, orange, and yellow, leading to a central green circle. The text \"PEPE TUNES\" is prominently displayed at the top in a bold, cartoonish font. The overall style is nostalgic and playful, with a clean, vibrant color palette that echoes classic animation frames.",
+  "visualSummaryShort": "The card features a vibrant, nostalgic design reminiscent of classic Looney Tunes animations. It showcases concentric circles in warm colors leading to a central green circle.",
+  "visualKeywords": [
+    "concentric circles",
+    "red",
+    "orange",
+    "yellow",
+    "green",
+    "cartoonish",
+    "nostalgic",
+    "playful",
+    "vibrant",
+    "animation"
+  ],
+  "textKeywords": [
+    "tunes"
+  ],
+  "keywords": [
+    "concentric circles",
+    "red",
+    "orange",
+    "yellow",
+    "green",
+    "cartoonish",
+    "nostalgic",
+    "playful",
+    "vibrant",
+    "animation",
+    "tunes"
+  ],
+  "embeddingInput": "PEPETUNES (Fake Rares) - Series 7 Card 32\nArtist: Art GarPUNKel\nSupply 88 Issued November 2021\nOn-card text: PEPE TUNES\nVisual summary: The card mimics the classic Looney Tunes closing sequence with concentric circles in red, orange, and yellow, leading to a central green circle. The text \"PEPE TUNES\" is prominently displayed at the top in a bold, cartoonish font. The overall style is nostalgic and playful, with a clean, vibrant color palette that echoes classic animation frames.\nMemetic references: References Looney Tunes’ iconic end screen, a staple of cartoon culture.; Incorporates Pepe the Frog, a central figure in meme culture.; Plays on nostalgia for classic animation, blending it with modern meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPETUNES#text",
+      "label": "On-card text",
+      "text": "PEPE TUNES",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPETUNES#memetic",
+      "label": "Memetic references",
+      "text": "References Looney Tunes’ iconic end screen, a staple of cartoon culture.\nIncorporates Pepe the Frog, a central figure in meme culture.\nPlays on nostalgia for classic animation, blending it with modern meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPETUNES#visual",
+      "label": "Visual summary",
+      "text": "The card mimics the classic Looney Tunes closing sequence with concentric circles in red, orange, and yellow, leading to a central green circle. The text \"PEPE TUNES\" is prominently displayed at the top in a bold, cartoonish font. The overall style is nostalgic and playful, with a clean, vibrant color palette that echoes classic animation frames.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPETUNES#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE TUNES\n\n🎨 **VISUAL BREAKDOWN:**\nThe card mimics the classic Looney Tunes closing sequence with concentric circles in red, orange, and yellow, leading to a central green circle. The text \"PEPE TUNES\" is prominently displayed at the top in a bold, cartoonish font. The overall style is nostalgic and playful, with a clean, vibrant color palette that echoes classic animation frames.\n\n🧬 **MEMETIC DNA:**\n- References Looney Tunes’ iconic end screen, a staple of cartoon culture.\n- Incorporates Pepe the Frog, a central figure in meme culture.\n- Plays on nostalgia for classic animation, blending it with modern meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.003Z",
+  "sourceFactVersion": 1
+}

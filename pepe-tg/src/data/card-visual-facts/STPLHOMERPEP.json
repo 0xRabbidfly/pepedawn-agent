@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "STPLHOMERPEP",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 37,
+  "artist": "purplehat.eth",
+  "supply": 74,
+  "issuance": "August 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog reference with the green skin.",
+    "Homage to a well-known cartoon character from a famous animated TV show.",
+    "Pixel art style reminiscent of early video games and digital art culture."
+  ],
+  "visualSummary": "The card features a pixelated mosaic style combining bright and pastel colors. At the center is a fusion character with the face of a green-skinned figure reminiscent of a popular cartoon character, with large, white eyes and a familiar outline. The background is a colorful grid, creating a vibrant and chaotic visual effect.",
+  "visualSummaryShort": "The card showcases a pixelated mosaic style with a vibrant and chaotic background. A green-skinned character with large white eyes is prominently featured at the center.",
+  "visualKeywords": [
+    "pixelated",
+    "mosaic",
+    "green-skinned",
+    "large eyes",
+    "colorful grid",
+    "bright colors",
+    "pastel colors",
+    "chaotic"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pixelated",
+    "mosaic",
+    "green-skinned",
+    "large eyes",
+    "colorful grid",
+    "bright colors",
+    "pastel colors",
+    "chaotic"
+  ],
+  "embeddingInput": "STPLHOMERPEP (Fake Rares) - Series 10 Card 37\nArtist: purplehat.eth\nSupply 74 Issued August 2022\nOn-card text: none detected\nVisual summary: The card features a pixelated mosaic style combining bright and pastel colors. At the center is a fusion character with the face of a green-skinned figure reminiscent of a popular cartoon character, with large, white eyes and a familiar outline. The background is a colorful grid, creating a vibrant and chaotic visual effect.\nMemetic references: Pepe the Frog reference with the green skin.; Homage to a well-known cartoon character from a famous animated TV show.; Pixel art style reminiscent of early video games and digital art culture.",
+  "embeddingBlocks": [
+    {
+      "id": "STPLHOMERPEP#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference with the green skin.\nHomage to a well-known cartoon character from a famous animated TV show.\nPixel art style reminiscent of early video games and digital art culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "STPLHOMERPEP#visual",
+      "label": "Visual summary",
+      "text": "The card features a pixelated mosaic style combining bright and pastel colors. At the center is a fusion character with the face of a green-skinned figure reminiscent of a popular cartoon character, with large, white eyes and a familiar outline. The background is a colorful grid, creating a vibrant and chaotic visual effect.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "STPLHOMERPEP#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a pixelated mosaic style combining bright and pastel colors. At the center is a fusion character with the face of a green-skinned figure reminiscent of a popular cartoon character, with large, white eyes and a familiar outline. The background is a colorful grid, creating a vibrant and chaotic visual effect.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference with the green skin.\n- Homage to a well-known cartoon character from a famous animated TV show.\n- Pixel art style reminiscent of early video games and digital art culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.131Z",
+  "sourceFactVersion": 1
+}

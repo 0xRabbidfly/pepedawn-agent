@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "asset": "BITDONALD",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 41,
+  "artist": "Dr Pep",
+  "supply": 42,
+  "issuance": "September 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "The pink bull might symbolize the \"bull market\" in crypto.",
+    "The man's attire and the fast-food meal suggest a nod to consumer culture.",
+    "The octopus and rocket add a sense of exploration and adventure, common in crypto memes.",
+    "The skeleton dog hints at the “hodl” culture, where holding through \"death\" is celebrated."
+  ],
+  "visualSummary": "The card is a surreal and vibrant collage featuring a man in a green, fuzzy suit sitting on a bench, enjoying a meal with a \"B\" logo on the packaging. A pink bull lounges on a branch above, surrounded by whimsical elements like an octopus, a rocket, hot air balloons, and a skeleton dog. The scene is colorful and dreamlike, with a playful, cartoonish style that mixes reality with fantasy.",
+  "visualSummaryShort": "The card showcases a surreal scene with a man in a green fuzzy suit enjoying a meal on a bench. Above him, a pink bull and various whimsical elements create a colorful, dreamlike atmosphere.",
+  "visualKeywords": [
+    "green suit",
+    "pink bull",
+    "collage",
+    "octopus",
+    "rocket",
+    "hot air balloons",
+    "skeleton dog",
+    "playful",
+    "cartoonish",
+    "vibrant"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "green suit",
+    "pink bull",
+    "collage",
+    "octopus",
+    "rocket",
+    "hot air balloons",
+    "skeleton dog",
+    "playful",
+    "cartoonish",
+    "vibrant"
+  ],
+  "embeddingInput": "BITDONALD (Fake Rares) - Series 11 Card 41\nArtist: Dr Pep\nSupply 42 Issued September 2022\nOn-card text: none detected\nVisual summary: The card is a surreal and vibrant collage featuring a man in a green, fuzzy suit sitting on a bench, enjoying a meal with a \"B\" logo on the packaging. A pink bull lounges on a branch above, surrounded by whimsical elements like an octopus, a rocket, hot air balloons, and a skeleton dog. The scene is colorful and dreamlike, with a playful, cartoonish style that mixes reality with fantasy.\nMemetic references: The pink bull might symbolize the \"bull market\" in crypto.; The man's attire and the fast-food meal suggest a nod to consumer culture.; The octopus and rocket add a sense of exploration and adventure, common in crypto memes.; The skeleton dog hints at the “hodl” culture, where holding through \"death\" is celebrated.",
+  "embeddingBlocks": [
+    {
+      "id": "BITDONALD#memetic",
+      "label": "Memetic references",
+      "text": "The pink bull might symbolize the \"bull market\" in crypto.\nThe man's attire and the fast-food meal suggest a nod to consumer culture.\nThe octopus and rocket add a sense of exploration and adventure, common in crypto memes.\nThe skeleton dog hints at the “hodl” culture, where holding through \"death\" is celebrated.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BITDONALD#visual",
+      "label": "Visual summary",
+      "text": "The card is a surreal and vibrant collage featuring a man in a green, fuzzy suit sitting on a bench, enjoying a meal with a \"B\" logo on the packaging. A pink bull lounges on a branch above, surrounded by whimsical elements like an octopus, a rocket, hot air balloons, and a skeleton dog. The scene is colorful and dreamlike, with a playful, cartoonish style that mixes reality with fantasy.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BITDONALD#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card is a surreal and vibrant collage featuring a man in a green, fuzzy suit sitting on a bench, enjoying a meal with a \"B\" logo on the packaging. A pink bull lounges on a branch above, surrounded by whimsical elements like an octopus, a rocket, hot air balloons, and a skeleton dog. The scene is colorful and dreamlike, with a playful, cartoonish style that mixes reality with fantasy.\n\n🧬 **MEMETIC DNA:**\n- The pink bull might symbolize the \"bull market\" in crypto.\n- The man's attire and the fast-food meal suggest a nod to consumer culture.\n- The octopus and rocket add a sense of exploration and adventure, common in crypto memes.\n- The skeleton dog hints at the “hodl” culture, where holding through \"death\" is celebrated.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.308Z",
+  "sourceFactVersion": 1
+}

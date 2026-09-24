@@ -1,0 +1,108 @@
+{
+  "version": 1,
+  "asset": "PEPEPOYO",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 50,
+  "artist": "StoneOfJordan",
+  "supply": 52,
+  "issuance": "October 2022",
+  "textOnCard": [
+    "PEPEPOYO",
+    "Feels Cute Man",
+    "set backround color = #FFFFFF",
+    "set bestfriend = \"PATO\"",
+    "Use this card to gain +9999 cuteness"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog as the central figure.",
+    "Reference to programming with \"set\" commands, adding a techy twist.",
+    "\"Feels Cute Man\" echoes the classic \"Feels Good Man\" meme.",
+    "The card implies a playful interaction with the phrase \"Use this card to gain +9999 cuteness.\""
+  ],
+  "visualSummary": "The card features a 3D cartoonish figure of Pepe the Frog, dressed in a blue hat and outfit, giving off a playful vibe. The background is a plain white, making the character pop, and the card has a vibrant border with a pastel pink fill. The design is colorful and whimsical, with geometric shapes scattered around the text area.",
+  "visualSummaryShort": "The card showcases a playful 3D cartoon figure of Pepe the Frog in a blue outfit against a white background. It features a vibrant pastel pink border and whimsical geometric shapes, enhancing its colorful design.",
+  "visualKeywords": [
+    "pepe the frog",
+    "blue outfit",
+    "white background",
+    "pastel pink",
+    "geometric shapes",
+    "playful",
+    "whimsical",
+    "colorful"
+  ],
+  "textKeywords": [
+    "pepepoyo",
+    "feels",
+    "cute",
+    "man",
+    "set",
+    "backround",
+    "color",
+    "ffffff",
+    "bestfriend",
+    "pato",
+    "use",
+    "gain",
+    "9999",
+    "cuteness"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "blue outfit",
+    "white background",
+    "pastel pink",
+    "geometric shapes",
+    "playful",
+    "whimsical",
+    "colorful",
+    "pepepoyo",
+    "feels",
+    "cute",
+    "man",
+    "set",
+    "backround",
+    "color",
+    "ffffff",
+    "bestfriend",
+    "pato",
+    "use",
+    "gain",
+    "9999",
+    "cuteness"
+  ],
+  "embeddingInput": "PEPEPOYO (Fake Rares) - Series 11 Card 50\nArtist: StoneOfJordan\nSupply 52 Issued October 2022\nOn-card text: PEPEPOYO | Feels Cute Man | set backround color = #FFFFFF | set bestfriend = \"PATO\" | Use this card to gain +9999 cuteness\nVisual summary: The card features a 3D cartoonish figure of Pepe the Frog, dressed in a blue hat and outfit, giving off a playful vibe. The background is a plain white, making the character pop, and the card has a vibrant border with a pastel pink fill. The design is colorful and whimsical, with geometric shapes scattered around the text area.\nMemetic references: Classic Pepe the Frog as the central figure.; Reference to programming with \"set\" commands, adding a techy twist.; \"Feels Cute Man\" echoes the classic \"Feels Good Man\" meme.; The card implies a playful interaction with the phrase \"Use this card to gain +9999 cuteness.\"",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEPOYO#text",
+      "label": "On-card text",
+      "text": "PEPEPOYO | Feels Cute Man | set backround color = #FFFFFF | set bestfriend = \"PATO\" | Use this card to gain +9999 cuteness",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEPOYO#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog as the central figure.\nReference to programming with \"set\" commands, adding a techy twist.\n\"Feels Cute Man\" echoes the classic \"Feels Good Man\" meme.\nThe card implies a playful interaction with the phrase \"Use this card to gain +9999 cuteness.\"",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEPOYO#visual",
+      "label": "Visual summary",
+      "text": "The card features a 3D cartoonish figure of Pepe the Frog, dressed in a blue hat and outfit, giving off a playful vibe. The background is a plain white, making the character pop, and the card has a vibrant border with a pastel pink fill. The design is colorful and whimsical, with geometric shapes scattered around the text area.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEPOYO#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPEPOYO  \nFeels Cute Man  \nset backround color = #FFFFFF  \nset bestfriend = \"PATO\"  \nUse this card to gain +9999 cuteness\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a 3D cartoonish figure of Pepe the Frog, dressed in a blue hat and outfit, giving off a playful vibe. The background is a plain white, making the character pop, and the card has a vibrant border with a pastel pink fill. The design is colorful and whimsical, with geometric shapes scattered around the text area.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog as the central figure.\n- Reference to programming with \"set\" commands, adding a techy twist.\n- \"Feels Cute Man\" echoes the classic \"Feels Good Man\" meme.\n- The card implies a playful interaction with the phrase \"Use this card to gain +9999 cuteness.\"",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.954Z",
+  "sourceFactVersion": 1
+}

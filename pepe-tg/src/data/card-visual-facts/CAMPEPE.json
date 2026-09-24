@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "asset": "CAMPEPE",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 43,
+  "artist": "CATH Simard",
+  "supply": 111,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "51.6898° N 124.3326° W"
+  ],
+  "memeticReferences": [
+    "Northern Lights = Universal awe and wonder vibes.",
+    "Camping tent = Adventure and exploration, reminiscent of crypto's pioneering spirit.",
+    "Coordinates = Mystery and intrigue, classic treasure hunt feels."
+  ],
+  "visualSummary": "This card features an awe-inspiring view of the Northern Lights, swirling vibrantly over a rugged mountain range and a serene lake. The color palette is dominated by vivid greens and blues, creating a magical and ethereal atmosphere. In the foreground, a cozy tent glows warmly, casting a silhouette of someone inside, adding a sense of human connection to the majestic natural scene.",
+  "visualSummaryShort": "The card showcases a stunning display of the Northern Lights above a rugged mountain range and a tranquil lake. A warm glow from a tent in the foreground adds a touch of human presence to the enchanting landscape.",
+  "visualKeywords": [
+    "northern lights",
+    "mountains",
+    "lake",
+    "tent",
+    "green",
+    "blue",
+    "glow",
+    "serene",
+    "rugged",
+    "ethereal"
+  ],
+  "textKeywords": [
+    "6898",
+    "124",
+    "3326"
+  ],
+  "keywords": [
+    "northern lights",
+    "mountains",
+    "lake",
+    "tent",
+    "green",
+    "blue",
+    "glow",
+    "serene",
+    "rugged",
+    "ethereal",
+    "6898",
+    "124",
+    "3326"
+  ],
+  "embeddingInput": "CAMPEPE (Fake Rares) - Series 9 Card 43\nArtist: CATH Simard\nSupply 111 Issued September 2022\nOn-card text: 51.6898° N 124.3326° W\nVisual summary: This card features an awe-inspiring view of the Northern Lights, swirling vibrantly over a rugged mountain range and a serene lake. The color palette is dominated by vivid greens and blues, creating a magical and ethereal atmosphere. In the foreground, a cozy tent glows warmly, casting a silhouette of someone inside, adding a sense of human connection to the majestic natural scene.\nMemetic references: Northern Lights = Universal awe and wonder vibes.; Camping tent = Adventure and exploration, reminiscent of crypto's pioneering spirit.; Coordinates = Mystery and intrigue, classic treasure hunt feels.",
+  "embeddingBlocks": [
+    {
+      "id": "CAMPEPE#text",
+      "label": "On-card text",
+      "text": "51.6898° N 124.3326° W",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "CAMPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Northern Lights = Universal awe and wonder vibes.\nCamping tent = Adventure and exploration, reminiscent of crypto's pioneering spirit.\nCoordinates = Mystery and intrigue, classic treasure hunt feels.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "CAMPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features an awe-inspiring view of the Northern Lights, swirling vibrantly over a rugged mountain range and a serene lake. The color palette is dominated by vivid greens and blues, creating a magical and ethereal atmosphere. In the foreground, a cozy tent glows warmly, casting a silhouette of someone inside, adding a sense of human connection to the majestic natural scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "CAMPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n51.6898° N 124.3326° W\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features an awe-inspiring view of the Northern Lights, swirling vibrantly over a rugged mountain range and a serene lake. The color palette is dominated by vivid greens and blues, creating a magical and ethereal atmosphere. In the foreground, a cozy tent glows warmly, casting a silhouette of someone inside, adding a sense of human connection to the majestic natural scene.\n\n🧬 **MEMETIC DNA:**\n- Northern Lights = Universal awe and wonder vibes.\n- Camping tent = Adventure and exploration, reminiscent of crypto's pioneering spirit.\n- Coordinates = Mystery and intrigue, classic treasure hunt feels.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.341Z",
+  "sourceFactVersion": 1
+}

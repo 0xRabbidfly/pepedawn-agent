@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PEPEMOSES",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 26,
+  "artist": "Father John x Chaotic Crypto",
+  "supply": 27,
+  "issuance": "May 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "References the biblical story of Moses parting the Red Sea, but with a meme twist.",
+    "The crowd likely includes Pepe the Frog characters, a staple in internet meme culture.",
+    "Utilizes the iconic, surreal imagery often found in crypto and NFT art."
+  ],
+  "visualSummary": "The card features a dramatic scene with a large crowd standing at the edge of a body of water, parted to reveal a path. The color palette is warm with hues of orange and brown, giving a vintage, sepia-toned vibe. The overall style is reminiscent of an old film, with grainy texture and a nostalgic aesthetic.",
+  "visualSummaryShort": "The card depicts a large crowd at the edge of a body of water, with a path revealed through the crowd. The warm color palette and grainy texture evoke a vintage, nostalgic feel.",
+  "visualKeywords": [
+    "crowd",
+    "water",
+    "path",
+    "orange",
+    "brown",
+    "vintage",
+    "sepia",
+    "grainy",
+    "nostalgic",
+    "dramatic"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "crowd",
+    "water",
+    "path",
+    "orange",
+    "brown",
+    "vintage",
+    "sepia",
+    "grainy",
+    "nostalgic",
+    "dramatic"
+  ],
+  "embeddingInput": "PEPEMOSES (Fake Rares) - Series 10 Card 26\nArtist: Father John x Chaotic Crypto\nSupply 27 Issued May 2022\nOn-card text: none detected\nVisual summary: The card features a dramatic scene with a large crowd standing at the edge of a body of water, parted to reveal a path. The color palette is warm with hues of orange and brown, giving a vintage, sepia-toned vibe. The overall style is reminiscent of an old film, with grainy texture and a nostalgic aesthetic.\nMemetic references: References the biblical story of Moses parting the Red Sea, but with a meme twist.; The crowd likely includes Pepe the Frog characters, a staple in internet meme culture.; Utilizes the iconic, surreal imagery often found in crypto and NFT art.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEMOSES#memetic",
+      "label": "Memetic references",
+      "text": "References the biblical story of Moses parting the Red Sea, but with a meme twist.\nThe crowd likely includes Pepe the Frog characters, a staple in internet meme culture.\nUtilizes the iconic, surreal imagery often found in crypto and NFT art.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEMOSES#visual",
+      "label": "Visual summary",
+      "text": "The card features a dramatic scene with a large crowd standing at the edge of a body of water, parted to reveal a path. The color palette is warm with hues of orange and brown, giving a vintage, sepia-toned vibe. The overall style is reminiscent of an old film, with grainy texture and a nostalgic aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEMOSES#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a dramatic scene with a large crowd standing at the edge of a body of water, parted to reveal a path. The color palette is warm with hues of orange and brown, giving a vintage, sepia-toned vibe. The overall style is reminiscent of an old film, with grainy texture and a nostalgic aesthetic.\n\n🧬 **MEMETIC DNA:**\n- References the biblical story of Moses parting the Red Sea, but with a meme twist.\n- The crowd likely includes Pepe the Frog characters, a staple in internet meme culture.\n- Utilizes the iconic, surreal imagery often found in crypto and NFT art.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.932Z",
+  "sourceFactVersion": 1
+}

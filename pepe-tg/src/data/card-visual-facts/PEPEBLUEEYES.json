@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "asset": "PEPEBLUEEYES",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 18,
+  "artist": "NFTMANC",
+  "supply": 82,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "SINATRA I-82"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog influence with the green skin.",
+    "References to a famous musician, likely alluding to classic \"Rat Pack\" vibes.",
+    "\"FAKEASF\" text plays into NFT culture's humor and authenticity skepticism.",
+    "Retro and pop culture mix with the visual style."
+  ],
+  "visualSummary": "This card features a green-skinned figure with distinct facial features reminiscent of a classic crooner, set against a red background with repetitive text \"FAKEASF.\" The character wears a black suit and tie, with sharp, angular lines defining their facial structure. The color palette contrasts the green skin with red lips and a black ensemble, creating a striking visual impact.",
+  "visualSummaryShort": "The card showcases a green-skinned figure in a black suit against a vibrant red background. The character's sharp features and contrasting colors create a striking visual impact.",
+  "visualKeywords": [
+    "green-skinned",
+    "crooner",
+    "black suit",
+    "red background",
+    "sharp features",
+    "angular lines",
+    "contrasting colors",
+    "repetitive text"
+  ],
+  "textKeywords": [
+    "sinatra"
+  ],
+  "keywords": [
+    "green-skinned",
+    "crooner",
+    "black suit",
+    "red background",
+    "sharp features",
+    "angular lines",
+    "contrasting colors",
+    "repetitive text",
+    "sinatra"
+  ],
+  "embeddingInput": "PEPEBLUEEYES (Fake Rares) - Series 3 Card 18\nArtist: NFTMANC\nSupply 82 Issued October 2021\nOn-card text: SINATRA I-82\nVisual summary: This card features a green-skinned figure with distinct facial features reminiscent of a classic crooner, set against a red background with repetitive text \"FAKEASF.\" The character wears a black suit and tie, with sharp, angular lines defining their facial structure. The color palette contrasts the green skin with red lips and a black ensemble, creating a striking visual impact.\nMemetic references: Pepe the Frog influence with the green skin.; References to a famous musician, likely alluding to classic \"Rat Pack\" vibes.; \"FAKEASF\" text plays into NFT culture's humor and authenticity skepticism.; Retro and pop culture mix with the visual style.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEBLUEEYES#text",
+      "label": "On-card text",
+      "text": "SINATRA I-82",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEBLUEEYES#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog influence with the green skin.\nReferences to a famous musician, likely alluding to classic \"Rat Pack\" vibes.\n\"FAKEASF\" text plays into NFT culture's humor and authenticity skepticism.\nRetro and pop culture mix with the visual style.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEBLUEEYES#visual",
+      "label": "Visual summary",
+      "text": "This card features a green-skinned figure with distinct facial features reminiscent of a classic crooner, set against a red background with repetitive text \"FAKEASF.\" The character wears a black suit and tie, with sharp, angular lines defining their facial structure. The color palette contrasts the green skin with red lips and a black ensemble, creating a striking visual impact.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEBLUEEYES#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nSINATRA I-82\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a green-skinned figure with distinct facial features reminiscent of a classic crooner, set against a red background with repetitive text \"FAKEASF.\" The character wears a black suit and tie, with sharp, angular lines defining their facial structure. The color palette contrasts the green skin with red lips and a black ensemble, creating a striking visual impact.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog influence with the green skin.\n- References to a famous musician, likely alluding to classic \"Rat Pack\" vibes.\n- \"FAKEASF\" text plays into NFT culture's humor and authenticity skepticism.\n- Retro and pop culture mix with the visual style.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.847Z",
+  "sourceFactVersion": 1
+}

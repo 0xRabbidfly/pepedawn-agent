@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "asset": "PEPERUTH",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 5,
+  "artist": "Matt Szczur",
+  "supply": 100,
+  "issuance": "June 2022",
+  "textOnCard": [
+    "(PEPE) RUTH",
+    "BIG LEAGUE PEPE"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery.",
+    "Reference to Babe Ruth, the legendary baseball player.",
+    "Plays into the \"big league\" meme often used to describe something major or significant in a humorous way."
+  ],
+  "visualSummary": "The card features a classic Pepe the Frog character holding a baseball bat, styled like a vintage baseball player. The background is a textured blend of yellow, red, and blue, giving it a dynamic and energetic feel. The art style is bold and cartoonish, with thick black outlines and vibrant colors.",
+  "visualSummaryShort": "The card showcases a cartoonish Pepe the Frog as a vintage baseball player wielding a bat. The vibrant background features a dynamic blend of yellow, red, and blue colors.",
+  "visualKeywords": [
+    "pepe",
+    "baseball",
+    "bat",
+    "vintage",
+    "yellow",
+    "red",
+    "blue",
+    "cartoonish",
+    "bold",
+    "dynamic"
+  ],
+  "textKeywords": [
+    "ruth",
+    "big",
+    "league"
+  ],
+  "keywords": [
+    "pepe",
+    "baseball",
+    "bat",
+    "vintage",
+    "yellow",
+    "red",
+    "blue",
+    "cartoonish",
+    "bold",
+    "dynamic",
+    "ruth",
+    "big",
+    "league"
+  ],
+  "embeddingInput": "PEPERUTH (Fake Rares) - Series 8 Card 5\nArtist: Matt Szczur\nSupply 100 Issued June 2022\nOn-card text: (PEPE) RUTH | BIG LEAGUE PEPE\nVisual summary: The card features a classic Pepe the Frog character holding a baseball bat, styled like a vintage baseball player. The background is a textured blend of yellow, red, and blue, giving it a dynamic and energetic feel. The art style is bold and cartoonish, with thick black outlines and vibrant colors.\nMemetic references: Classic Pepe the Frog imagery.; Reference to Babe Ruth, the legendary baseball player.; Plays into the \"big league\" meme often used to describe something major or significant in a humorous way.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPERUTH#text",
+      "label": "On-card text",
+      "text": "(PEPE) RUTH | BIG LEAGUE PEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPERUTH#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery.\nReference to Babe Ruth, the legendary baseball player.\nPlays into the \"big league\" meme often used to describe something major or significant in a humorous way.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPERUTH#visual",
+      "label": "Visual summary",
+      "text": "The card features a classic Pepe the Frog character holding a baseball bat, styled like a vintage baseball player. The background is a textured blend of yellow, red, and blue, giving it a dynamic and energetic feel. The art style is bold and cartoonish, with thick black outlines and vibrant colors.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPERUTH#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n(PEPE) RUTH  \nBIG LEAGUE PEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a classic Pepe the Frog character holding a baseball bat, styled like a vintage baseball player. The background is a textured blend of yellow, red, and blue, giving it a dynamic and energetic feel. The art style is bold and cartoonish, with thick black outlines and vibrant colors.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery.\n- Reference to Babe Ruth, the legendary baseball player.\n- Plays into the \"big league\" meme often used to describe something major or significant in a humorous way.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.966Z",
+  "sourceFactVersion": 1
+}

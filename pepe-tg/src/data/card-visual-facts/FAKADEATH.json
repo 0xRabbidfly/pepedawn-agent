@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "asset": "FAKADEATH",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 48,
+  "artist": "VSTRVL",
+  "supply": 50,
+  "issuance": "May 2023",
+  "textOnCard": [
+    "Death Rules Everything Around Me",
+    "Fakka",
+    "All Your Memes Are Belong To Us FakaDeath",
+    "certified #rare#"
+  ],
+  "memeticReferences": [
+    "References to the meme \"All Your Base Are Belong to Us.\"",
+    "Includes a Pepe-like figure, nodding to the ubiquitous meme frog.",
+    "\"Death Rules Everything Around Me\" is a play on the Wu-Tang Clan's \"C.R.E.A.M.\"",
+    "The glitch art style ties into crypto and hacker culture."
+  ],
+  "visualSummary": "This card features a collage of ominous figures, with a dominant red and blue color scheme that adds a glitchy, cyberpunk vibe. The characters have distorted, shadowy appearances, with one wearing a bear hat and another with a sinister grin. The background is pixelated, enhancing the digital dystopia aesthetic.",
+  "visualSummaryShort": "The card showcases a collage of ominous, distorted figures in a glitchy, cyberpunk style. A dominant red and blue color scheme enhances the digital dystopia aesthetic.",
+  "visualKeywords": [
+    "cyberpunk",
+    "red and blue",
+    "distorted figures",
+    "bear hat",
+    "sinister grin",
+    "pixelated",
+    "dystopia",
+    "glitchy"
+  ],
+  "textKeywords": [
+    "death",
+    "rules",
+    "everything",
+    "around",
+    "fakka",
+    "all",
+    "memes",
+    "are",
+    "belong",
+    "fakadeath",
+    "certified"
+  ],
+  "keywords": [
+    "cyberpunk",
+    "red and blue",
+    "distorted figures",
+    "bear hat",
+    "sinister grin",
+    "pixelated",
+    "dystopia",
+    "glitchy",
+    "death",
+    "rules",
+    "everything",
+    "around",
+    "fakka",
+    "all",
+    "memes",
+    "are",
+    "belong",
+    "fakadeath",
+    "certified"
+  ],
+  "embeddingInput": "FAKADEATH (Fake Rares) - Series 14 Card 48\nArtist: VSTRVL\nSupply 50 Issued May 2023\nOn-card text: Death Rules Everything Around Me | Fakka | All Your Memes Are Belong To Us FakaDeath | certified #rare#\nVisual summary: This card features a collage of ominous figures, with a dominant red and blue color scheme that adds a glitchy, cyberpunk vibe. The characters have distorted, shadowy appearances, with one wearing a bear hat and another with a sinister grin. The background is pixelated, enhancing the digital dystopia aesthetic.\nMemetic references: References to the meme \"All Your Base Are Belong to Us.\"; Includes a Pepe-like figure, nodding to the ubiquitous meme frog.; \"Death Rules Everything Around Me\" is a play on the Wu-Tang Clan's \"C.R.E.A.M.\"; The glitch art style ties into crypto and hacker culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKADEATH#text",
+      "label": "On-card text",
+      "text": "Death Rules Everything Around Me | Fakka | All Your Memes Are Belong To Us FakaDeath | certified #rare#",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKADEATH#memetic",
+      "label": "Memetic references",
+      "text": "References to the meme \"All Your Base Are Belong to Us.\"\nIncludes a Pepe-like figure, nodding to the ubiquitous meme frog.\n\"Death Rules Everything Around Me\" is a play on the Wu-Tang Clan's \"C.R.E.A.M.\"\nThe glitch art style ties into crypto and hacker culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKADEATH#visual",
+      "label": "Visual summary",
+      "text": "This card features a collage of ominous figures, with a dominant red and blue color scheme that adds a glitchy, cyberpunk vibe. The characters have distorted, shadowy appearances, with one wearing a bear hat and another with a sinister grin. The background is pixelated, enhancing the digital dystopia aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKADEATH#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- Death Rules Everything Around Me\n- Fakka\n- All Your Memes Are Belong To Us FakaDeath\n- certified #rare#\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a collage of ominous figures, with a dominant red and blue color scheme that adds a glitchy, cyberpunk vibe. The characters have distorted, shadowy appearances, with one wearing a bear hat and another with a sinister grin. The background is pixelated, enhancing the digital dystopia aesthetic.\n\n🧬 **MEMETIC DNA:**\n- References to the meme \"All Your Base Are Belong to Us.\"\n- Includes a Pepe-like figure, nodding to the ubiquitous meme frog.\n- \"Death Rules Everything Around Me\" is a play on the Wu-Tang Clan's \"C.R.E.A.M.\"\n- The glitch art style ties into crypto and hacker culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.436Z",
+  "sourceFactVersion": 1
+}

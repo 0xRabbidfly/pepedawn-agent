@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "BLOOMERPEPE",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 19,
+  "artist": "Bryan Brinkman",
+  "supply": 69,
+  "issuance": "September 2025",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog, a staple of internet meme culture.",
+    "The mosaic style adds a new layer to the classic Pepe meme.",
+    "Vibrant colors reminiscent of psychedelic art, hinting at the \"degen\" lifestyle."
+  ],
+  "visualSummary": "The card features a pixelated Pepe the Frog with a mosaic texture, surrounded by vibrant, multicolored blobs. The color palette includes bright greens, blues, pinks, and yellows, creating a playful and eye-catching contrast. The artistic style is reminiscent of stained glass, giving it a unique, fragmented look.",
+  "visualSummaryShort": "The card showcases a pixelated Pepe the Frog with a mosaic texture amidst vibrant, multicolored blobs. Its bright color palette and stained glass style create a playful and eye-catching visual.",
+  "visualKeywords": [
+    "pepe the frog",
+    "mosaic",
+    "vibrant colors",
+    "pixelated",
+    "stained glass",
+    "blobs",
+    "bright greens",
+    "blues",
+    "pinks",
+    "yellows"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "mosaic",
+    "vibrant colors",
+    "pixelated",
+    "stained glass",
+    "blobs",
+    "bright greens",
+    "blues",
+    "pinks",
+    "yellows"
+  ],
+  "embeddingInput": "BLOOMERPEPE (Fake Rares) - Series 18 Card 19\nArtist: Bryan Brinkman\nSupply 69 Issued September 2025\nOn-card text: none detected\nVisual summary: The card features a pixelated Pepe the Frog with a mosaic texture, surrounded by vibrant, multicolored blobs. The color palette includes bright greens, blues, pinks, and yellows, creating a playful and eye-catching contrast. The artistic style is reminiscent of stained glass, giving it a unique, fragmented look.\nMemetic references: Pepe the Frog, a staple of internet meme culture.; The mosaic style adds a new layer to the classic Pepe meme.; Vibrant colors reminiscent of psychedelic art, hinting at the \"degen\" lifestyle.",
+  "embeddingBlocks": [
+    {
+      "id": "BLOOMERPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple of internet meme culture.\nThe mosaic style adds a new layer to the classic Pepe meme.\nVibrant colors reminiscent of psychedelic art, hinting at the \"degen\" lifestyle.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BLOOMERPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a pixelated Pepe the Frog with a mosaic texture, surrounded by vibrant, multicolored blobs. The color palette includes bright greens, blues, pinks, and yellows, creating a playful and eye-catching contrast. The artistic style is reminiscent of stained glass, giving it a unique, fragmented look.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BLOOMERPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a pixelated Pepe the Frog with a mosaic texture, surrounded by vibrant, multicolored blobs. The color palette includes bright greens, blues, pinks, and yellows, creating a playful and eye-catching contrast. The artistic style is reminiscent of stained glass, giving it a unique, fragmented look.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple of internet meme culture.\n- The mosaic style adds a new layer to the classic Pepe meme.\n- Vibrant colors reminiscent of psychedelic art, hinting at the \"degen\" lifestyle.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.321Z",
+  "sourceFactVersion": 1
+}

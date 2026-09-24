@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "PEPETHELOST",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 1,
+  "artist": "Yotet",
+  "supply": 21,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "PEPE21"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery.",
+    "References to cryptography or blockchain with the overlapping text.",
+    "A nod to internet culture's love for the enigmatic and obscure."
+  ],
+  "visualSummary": "The card features a distressed, vintage texture with a central figure of Pepe the Frog wearing a purple shirt. The background is a collage of cryptic, overlapping text, giving it a mysterious and weathered look. The color palette includes muted greens, purples, and browns, creating an aged, grungy vibe.",
+  "visualSummaryShort": "The card showcases a central figure of Pepe the Frog in a purple shirt against a distressed, vintage background. The overall aesthetic is mysterious and grungy with a muted color palette.",
+  "visualKeywords": [
+    "pepe",
+    "purple shirt",
+    "vintage",
+    "distressed",
+    "mysterious",
+    "grungy",
+    "overlapping text",
+    "muted colors",
+    "collage"
+  ],
+  "textKeywords": [
+    "pepe21"
+  ],
+  "keywords": [
+    "pepe",
+    "purple shirt",
+    "vintage",
+    "distressed",
+    "mysterious",
+    "grungy",
+    "overlapping text",
+    "muted colors",
+    "collage",
+    "pepe21"
+  ],
+  "embeddingInput": "PEPETHELOST (Fake Rares) - Series 3 Card 1\nArtist: Yotet\nSupply 21 Issued October 2021\nOn-card text: PEPE21\nVisual summary: The card features a distressed, vintage texture with a central figure of Pepe the Frog wearing a purple shirt. The background is a collage of cryptic, overlapping text, giving it a mysterious and weathered look. The color palette includes muted greens, purples, and browns, creating an aged, grungy vibe.\nMemetic references: Classic Pepe the Frog imagery.; References to cryptography or blockchain with the overlapping text.; A nod to internet culture's love for the enigmatic and obscure.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPETHELOST#text",
+      "label": "On-card text",
+      "text": "PEPE21",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPETHELOST#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery.\nReferences to cryptography or blockchain with the overlapping text.\nA nod to internet culture's love for the enigmatic and obscure.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPETHELOST#visual",
+      "label": "Visual summary",
+      "text": "The card features a distressed, vintage texture with a central figure of Pepe the Frog wearing a purple shirt. The background is a collage of cryptic, overlapping text, giving it a mysterious and weathered look. The color palette includes muted greens, purples, and browns, creating an aged, grungy vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPETHELOST#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE21\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a distressed, vintage texture with a central figure of Pepe the Frog wearing a purple shirt. The background is a collage of cryptic, overlapping text, giving it a mysterious and weathered look. The color palette includes muted greens, purples, and browns, creating an aged, grungy vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery.\n- References to cryptography or blockchain with the overlapping text.\n- A nod to internet culture's love for the enigmatic and obscure.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.995Z",
+  "sourceFactVersion": 1
+}

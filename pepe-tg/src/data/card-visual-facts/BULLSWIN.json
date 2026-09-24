@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "asset": "BULLSWIN",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 4,
+  "artist": "Chrome Void",
+  "supply": 23,
+  "issuance": "March 2023",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a bold and dynamic design. It likely includes vibrant colors and an energetic composition.",
+  "visualKeywords": [],
+  "textKeywords": [],
+  "keywords": [],
+  "embeddingInput": "BULLSWIN (Fake Rares) - Series 14 Card 4\nArtist: Chrome Void\nSupply 23 Issued March 2023\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "BULLSWIN#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.336Z",
+  "sourceFactVersion": 1
+}

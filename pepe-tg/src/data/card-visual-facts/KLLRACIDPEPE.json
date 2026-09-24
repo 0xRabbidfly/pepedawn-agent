@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "asset": "KLLRACIDPEPE",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 33,
+  "artist": "Killer Acid",
+  "supply": 100,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "KILLER ACID"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog is central, embodying classic internet meme culture.",
+    "Psychedelic mushrooms and smoke symbolize counterculture and altered states.",
+    "References to iconic art (e.g., \"The Thinker\" pose) add layers of humor and irony.",
+    "Crypto culture vibes with Pepe as a degen icon."
+  ],
+  "visualSummary": "The artwork is a psychedelic explosion of colors with a gradient background transitioning from blue to green. It features various Pepe the Frog characters in a chaotic yet harmonious composition, surrounded by trippy elements like rainbow mushrooms and smoke. The style is cartoonish and vibrant, reminiscent of a wild acid trip with bold outlines and exaggerated expressions.",
+  "visualSummaryShort": "The card showcases a vibrant psychedelic scene filled with various Pepe the Frog characters amidst colorful elements. The background transitions from blue to green, enhancing the chaotic yet harmonious atmosphere.",
+  "visualKeywords": [
+    "psychedelic",
+    "pepe the frog",
+    "rainbow mushrooms",
+    "smoke",
+    "cartoonish",
+    "vibrant",
+    "bold outlines",
+    "exaggerated expressions",
+    "gradient",
+    "chaotic"
+  ],
+  "textKeywords": [
+    "killer",
+    "acid"
+  ],
+  "keywords": [
+    "psychedelic",
+    "pepe the frog",
+    "rainbow mushrooms",
+    "smoke",
+    "cartoonish",
+    "vibrant",
+    "bold outlines",
+    "exaggerated expressions",
+    "gradient",
+    "chaotic",
+    "killer",
+    "acid"
+  ],
+  "embeddingInput": "KLLRACIDPEPE (Fake Rares) - Series 8 Card 33\nArtist: Killer Acid\nSupply 100 Issued July 2022\nOn-card text: KILLER ACID\nVisual summary: The artwork is a psychedelic explosion of colors with a gradient background transitioning from blue to green. It features various Pepe the Frog characters in a chaotic yet harmonious composition, surrounded by trippy elements like rainbow mushrooms and smoke. The style is cartoonish and vibrant, reminiscent of a wild acid trip with bold outlines and exaggerated expressions.\nMemetic references: Pepe the Frog is central, embodying classic internet meme culture.; Psychedelic mushrooms and smoke symbolize counterculture and altered states.; References to iconic art (e.g., \"The Thinker\" pose) add layers of humor and irony.; Crypto culture vibes with Pepe as a degen icon.",
+  "embeddingBlocks": [
+    {
+      "id": "KLLRACIDPEPE#text",
+      "label": "On-card text",
+      "text": "KILLER ACID",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "KLLRACIDPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog is central, embodying classic internet meme culture.\nPsychedelic mushrooms and smoke symbolize counterculture and altered states.\nReferences to iconic art (e.g., \"The Thinker\" pose) add layers of humor and irony.\nCrypto culture vibes with Pepe as a degen icon.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "KLLRACIDPEPE#visual",
+      "label": "Visual summary",
+      "text": "The artwork is a psychedelic explosion of colors with a gradient background transitioning from blue to green. It features various Pepe the Frog characters in a chaotic yet harmonious composition, surrounded by trippy elements like rainbow mushrooms and smoke. The style is cartoonish and vibrant, reminiscent of a wild acid trip with bold outlines and exaggerated expressions.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "KLLRACIDPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nKILLER ACID\n\n🎨 **VISUAL BREAKDOWN:**\nThe artwork is a psychedelic explosion of colors with a gradient background transitioning from blue to green. It features various Pepe the Frog characters in a chaotic yet harmonious composition, surrounded by trippy elements like rainbow mushrooms and smoke. The style is cartoonish and vibrant, reminiscent of a wild acid trip with bold outlines and exaggerated expressions.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog is central, embodying classic internet meme culture.\n- Psychedelic mushrooms and smoke symbolize counterculture and altered states.\n- References to iconic art (e.g., \"The Thinker\" pose) add layers of humor and irony.\n- Crypto culture vibes with Pepe as a degen icon.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.721Z",
+  "sourceFactVersion": 1
+}

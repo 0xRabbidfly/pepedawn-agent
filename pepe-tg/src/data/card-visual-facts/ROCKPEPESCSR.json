@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "asset": "ROCKPEPESCSR",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 28,
+  "artist": "M.BTC",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "Rock Pepe Scissors",
+    "Pepe defeats rock",
+    "This FAKE RARE causes insurmountable rage by destroying the most valuable JPEG of them all.",
+    "FAKE RARE DIRECTORY © 2021 - 2021"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple in meme culture.",
+    "Reference to the \"rock, paper, scissors\" game.",
+    "Crypto culture symbolized by the \"diamond hands\" figure.",
+    "Satirical commentary on the value and fragility of digital assets (JPEGs)."
+  ],
+  "visualSummary": "The card features a classic meme-style illustration with Pepe the Frog holding scissors next to a distressed figure resembling a diamond or rock. The background appears to showcase a series of blurred rock images. The color palette includes vibrant greens for Pepe and muted blues and grays for the rock figure, creating a contrast between the characters.",
+  "visualSummaryShort": "The card showcases Pepe the Frog wielding scissors next to a distressed rock-like figure, set against a blurred rock background. The vibrant greens of Pepe contrast with the muted blues and grays of the other character.",
+  "visualKeywords": [
+    "pepe",
+    "scissors",
+    "rock",
+    "blurred background",
+    "green",
+    "blue",
+    "gray",
+    "meme-style",
+    "distressed"
+  ],
+  "textKeywords": [
+    "rock",
+    "scissors",
+    "defeats",
+    "causes",
+    "insurmountable",
+    "rage",
+    "destroying",
+    "valuable",
+    "jpeg",
+    "all",
+    "directory",
+    "2021"
+  ],
+  "keywords": [
+    "pepe",
+    "scissors",
+    "rock",
+    "blurred background",
+    "green",
+    "blue",
+    "gray",
+    "meme-style",
+    "distressed",
+    "defeats",
+    "causes",
+    "insurmountable",
+    "rage",
+    "destroying",
+    "valuable",
+    "jpeg",
+    "all",
+    "directory",
+    "2021"
+  ],
+  "embeddingInput": "ROCKPEPESCSR (Fake Rares) - Series 1 Card 28\nArtist: M.BTC\nSupply 100 Issued October 2021\nOn-card text: Rock Pepe Scissors | Pepe defeats rock | This FAKE RARE causes insurmountable rage by destroying the most valuable JPEG of them all. | FAKE RARE DIRECTORY © 2021 - 2021\nVisual summary: The card features a classic meme-style illustration with Pepe the Frog holding scissors next to a distressed figure resembling a diamond or rock. The background appears to showcase a series of blurred rock images. The color palette includes vibrant greens for Pepe and muted blues and grays for the rock figure, creating a contrast between the characters.\nMemetic references: Pepe the Frog, a staple in meme culture.; Reference to the \"rock, paper, scissors\" game.; Crypto culture symbolized by the \"diamond hands\" figure.; Satirical commentary on the value and fragility of digital assets (JPEGs).",
+  "embeddingBlocks": [
+    {
+      "id": "ROCKPEPESCSR#text",
+      "label": "On-card text",
+      "text": "Rock Pepe Scissors | Pepe defeats rock | This FAKE RARE causes insurmountable rage by destroying the most valuable JPEG of them all. | FAKE RARE DIRECTORY © 2021 - 2021",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "ROCKPEPESCSR#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple in meme culture.\nReference to the \"rock, paper, scissors\" game.\nCrypto culture symbolized by the \"diamond hands\" figure.\nSatirical commentary on the value and fragility of digital assets (JPEGs).",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "ROCKPEPESCSR#visual",
+      "label": "Visual summary",
+      "text": "The card features a classic meme-style illustration with Pepe the Frog holding scissors next to a distressed figure resembling a diamond or rock. The background appears to showcase a series of blurred rock images. The color palette includes vibrant greens for Pepe and muted blues and grays for the rock figure, creating a contrast between the characters.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "ROCKPEPESCSR#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nRock Pepe Scissors  \nPepe defeats rock  \nThis FAKE RARE causes insurmountable rage by destroying the most valuable JPEG of them all.  \nFAKE RARE DIRECTORY © 2021 - 2021  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a classic meme-style illustration with Pepe the Frog holding scissors next to a distressed figure resembling a diamond or rock. The background appears to showcase a series of blurred rock images. The color palette includes vibrant greens for Pepe and muted blues and grays for the rock figure, creating a contrast between the characters.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple in meme culture.\n- Reference to the \"rock, paper, scissors\" game.\n- Crypto culture symbolized by the \"diamond hands\" figure.\n- Satirical commentary on the value and fragility of digital assets (JPEGs).",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.087Z",
+  "sourceFactVersion": 1
+}

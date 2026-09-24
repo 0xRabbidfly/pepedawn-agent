@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "asset": "FROLICKING",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 44,
+  "artist": "FRIENDS WITH YOU",
+  "supply": 69,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "Lv.88 Frolicking Pepe Frog",
+    "[Error404]: No Data",
+    "Appears to be unusually jolly.",
+    "Proceed with caution!",
+    "HP:???"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference.",
+    "Error 404 nods to internet culture.",
+    "Trading card game aesthetic.",
+    "Playful, carefree energy."
+  ],
+  "visualSummary": "This card features a playful, clay-like depiction of a green frog character with blue legs, set against a colorful, abstract background. The frame is a vibrant yellow, reminiscent of classic trading card designs, adding a layer of nostalgia. The overall artistic style is whimsical and childlike, emphasizing a carefree and joyful vibe.",
+  "visualSummaryShort": "The card showcases a whimsical green frog character with blue legs, surrounded by a colorful abstract background. Its vibrant yellow frame enhances the playful and nostalgic atmosphere.",
+  "visualKeywords": [
+    "frog",
+    "blue legs",
+    "abstract",
+    "colorful",
+    "yellow frame",
+    "whimsical",
+    "playful",
+    "joyful",
+    "carefree"
+  ],
+  "textKeywords": [
+    "frolicking",
+    "error404",
+    "data",
+    "appears",
+    "unusually",
+    "jolly",
+    "proceed",
+    "caution"
+  ],
+  "keywords": [
+    "frog",
+    "blue legs",
+    "abstract",
+    "colorful",
+    "yellow frame",
+    "whimsical",
+    "playful",
+    "joyful",
+    "carefree",
+    "frolicking",
+    "error404",
+    "data",
+    "appears",
+    "unusually",
+    "jolly",
+    "proceed",
+    "caution"
+  ],
+  "embeddingInput": "FROLICKING (Fake Rares) - Series 8 Card 44\nArtist: FRIENDS WITH YOU\nSupply 69 Issued July 2022\nOn-card text: Lv.88 Frolicking Pepe Frog | [Error404]: No Data | Appears to be unusually jolly. | Proceed with caution! | HP:???\nVisual summary: This card features a playful, clay-like depiction of a green frog character with blue legs, set against a colorful, abstract background. The frame is a vibrant yellow, reminiscent of classic trading card designs, adding a layer of nostalgia. The overall artistic style is whimsical and childlike, emphasizing a carefree and joyful vibe.\nMemetic references: Classic Pepe the Frog reference.; Error 404 nods to internet culture.; Trading card game aesthetic.; Playful, carefree energy.",
+  "embeddingBlocks": [
+    {
+      "id": "FROLICKING#text",
+      "label": "On-card text",
+      "text": "Lv.88 Frolicking Pepe Frog | [Error404]: No Data | Appears to be unusually jolly. | Proceed with caution! | HP:???",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FROLICKING#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference.\nError 404 nods to internet culture.\nTrading card game aesthetic.\nPlayful, carefree energy.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FROLICKING#visual",
+      "label": "Visual summary",
+      "text": "This card features a playful, clay-like depiction of a green frog character with blue legs, set against a colorful, abstract background. The frame is a vibrant yellow, reminiscent of classic trading card designs, adding a layer of nostalgia. The overall artistic style is whimsical and childlike, emphasizing a carefree and joyful vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FROLICKING#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nLv.88 Frolicking Pepe Frog  \n[Error404]: No Data  \nAppears to be unusually jolly.  \nProceed with caution!  \nHP:???\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a playful, clay-like depiction of a green frog character with blue legs, set against a colorful, abstract background. The frame is a vibrant yellow, reminiscent of classic trading card designs, adding a layer of nostalgia. The overall artistic style is whimsical and childlike, emphasizing a carefree and joyful vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference.\n- Error 404 nods to internet culture.\n- Trading card game aesthetic.\n- Playful, carefree energy.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.645Z",
+  "sourceFactVersion": 1
+}

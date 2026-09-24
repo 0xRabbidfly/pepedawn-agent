@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "asset": "PEPEBULLZORD",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 13,
+  "artist": "BasqKek",
+  "supply": 21,
+  "issuance": "July 2023",
+  "textOnCard": [
+    "PEPE BULLZORD, Pepe HODL the Defense Enforcement Secures Stability, CONTROL, BULLZORD PEPE."
+  ],
+  "memeticReferences": [
+    "Features Pepe the Frog, a staple of meme culture.",
+    "References to \"HODL,\" a term from crypto culture emphasizing holding rather than selling.",
+    "\"BULLZORD\" suggests bullish market vibes mixed with robotic or transformer-like imagery.",
+    "Incorporates Bitcoin symbol, connecting it to cryptocurrency."
+  ],
+  "visualSummary": "This card bursts with chaotic energy, featuring a collage of abstract and graffiti-style elements. The color palette is vibrant, with dominant reds, blues, and yellows clashing dynamically. The central figure resembles a robotic or armored Pepe, surrounded by cryptic symbols and text, creating an intense and layered composition.",
+  "visualSummaryShort": "The card showcases a vibrant collage of abstract and graffiti elements, dominated by reds, blues, and yellows. A robotic Pepe figure is central, surrounded by cryptic symbols, creating a chaotic yet dynamic atmosphere.",
+  "visualKeywords": [
+    "robotic pepe",
+    "graffiti",
+    "vibrant colors",
+    "abstract",
+    "chaotic",
+    "symbols",
+    "red",
+    "blue",
+    "yellow",
+    "collage"
+  ],
+  "textKeywords": [
+    "bullzord",
+    "hodl",
+    "defense",
+    "enforcement",
+    "secures",
+    "stability",
+    "control"
+  ],
+  "keywords": [
+    "robotic pepe",
+    "graffiti",
+    "vibrant colors",
+    "abstract",
+    "chaotic",
+    "symbols",
+    "red",
+    "blue",
+    "yellow",
+    "collage",
+    "bullzord",
+    "hodl",
+    "defense",
+    "enforcement",
+    "secures",
+    "stability",
+    "control"
+  ],
+  "embeddingInput": "PEPEBULLZORD (Fake Rares) - Series 15 Card 13\nArtist: BasqKek\nSupply 21 Issued July 2023\nOn-card text: PEPE BULLZORD, Pepe HODL the Defense Enforcement Secures Stability, CONTROL, BULLZORD PEPE.\nVisual summary: This card bursts with chaotic energy, featuring a collage of abstract and graffiti-style elements. The color palette is vibrant, with dominant reds, blues, and yellows clashing dynamically. The central figure resembles a robotic or armored Pepe, surrounded by cryptic symbols and text, creating an intense and layered composition.\nMemetic references: Features Pepe the Frog, a staple of meme culture.; References to \"HODL,\" a term from crypto culture emphasizing holding rather than selling.; \"BULLZORD\" suggests bullish market vibes mixed with robotic or transformer-like imagery.; Incorporates Bitcoin symbol, connecting it to cryptocurrency.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEBULLZORD#text",
+      "label": "On-card text",
+      "text": "PEPE BULLZORD, Pepe HODL the Defense Enforcement Secures Stability, CONTROL, BULLZORD PEPE.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEBULLZORD#memetic",
+      "label": "Memetic references",
+      "text": "Features Pepe the Frog, a staple of meme culture.\nReferences to \"HODL,\" a term from crypto culture emphasizing holding rather than selling.\n\"BULLZORD\" suggests bullish market vibes mixed with robotic or transformer-like imagery.\nIncorporates Bitcoin symbol, connecting it to cryptocurrency.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEBULLZORD#visual",
+      "label": "Visual summary",
+      "text": "This card bursts with chaotic energy, featuring a collage of abstract and graffiti-style elements. The color palette is vibrant, with dominant reds, blues, and yellows clashing dynamically. The central figure resembles a robotic or armored Pepe, surrounded by cryptic symbols and text, creating an intense and layered composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEBULLZORD#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE BULLZORD, Pepe HODL the Defense Enforcement Secures Stability, CONTROL, BULLZORD PEPE.\n\n🎨 **VISUAL BREAKDOWN:**\nThis card bursts with chaotic energy, featuring a collage of abstract and graffiti-style elements. The color palette is vibrant, with dominant reds, blues, and yellows clashing dynamically. The central figure resembles a robotic or armored Pepe, surrounded by cryptic symbols and text, creating an intense and layered composition.\n\n🧬 **MEMETIC DNA:**\n- Features Pepe the Frog, a staple of meme culture.\n- References to \"HODL,\" a term from crypto culture emphasizing holding rather than selling.\n- \"BULLZORD\" suggests bullish market vibes mixed with robotic or transformer-like imagery.\n- Incorporates Bitcoin symbol, connecting it to cryptocurrency.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.850Z",
+  "sourceFactVersion": 1
+}

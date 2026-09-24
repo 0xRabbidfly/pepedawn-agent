@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PADREPEPE",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 18,
+  "artist": "Andreas Preis",
+  "supply": 33,
+  "issuance": "March 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference, a staple in internet meme culture.",
+    "Stained glass art style might nod to religious or iconic imagery, elevating Pepe to a revered status.",
+    "The joyful expression and radiant aura could symbolize positivity or enlightenment within the crypto community."
+  ],
+  "visualSummary": "The card features a vibrant, stained glass style depiction of Pepe the Frog, with an intricate mosaic pattern. The color palette is dominated by rich greens, accented with earthy tones of beige, red, and yellow, giving it a warm and inviting feel. The design is symmetrical, with geometric shapes creating a radiant, sun-like aura around Pepe’s joyful expression.",
+  "visualSummaryShort": "This card showcases a vibrant stained glass depiction of Pepe the Frog, featuring a warm color palette of greens, beige, red, and yellow. The symmetrical design includes geometric shapes that create a radiant aura around Pepe's joyful expression.",
+  "visualKeywords": [
+    "stained glass",
+    "mosaic",
+    "green",
+    "beige",
+    "red",
+    "yellow",
+    "symmetrical",
+    "geometric",
+    "joyful",
+    "aura"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "stained glass",
+    "mosaic",
+    "green",
+    "beige",
+    "red",
+    "yellow",
+    "symmetrical",
+    "geometric",
+    "joyful",
+    "aura"
+  ],
+  "embeddingInput": "PADREPEPE (Fake Rares) - Series 14 Card 18\nArtist: Andreas Preis\nSupply 33 Issued March 2023\nOn-card text: none detected\nVisual summary: The card features a vibrant, stained glass style depiction of Pepe the Frog, with an intricate mosaic pattern. The color palette is dominated by rich greens, accented with earthy tones of beige, red, and yellow, giving it a warm and inviting feel. The design is symmetrical, with geometric shapes creating a radiant, sun-like aura around Pepe’s joyful expression.\nMemetic references: Classic Pepe the Frog reference, a staple in internet meme culture.; Stained glass art style might nod to religious or iconic imagery, elevating Pepe to a revered status.; The joyful expression and radiant aura could symbolize positivity or enlightenment within the crypto community.",
+  "embeddingBlocks": [
+    {
+      "id": "PADREPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference, a staple in internet meme culture.\nStained glass art style might nod to religious or iconic imagery, elevating Pepe to a revered status.\nThe joyful expression and radiant aura could symbolize positivity or enlightenment within the crypto community.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PADREPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant, stained glass style depiction of Pepe the Frog, with an intricate mosaic pattern. The color palette is dominated by rich greens, accented with earthy tones of beige, red, and yellow, giving it a warm and inviting feel. The design is symmetrical, with geometric shapes creating a radiant, sun-like aura around Pepe’s joyful expression.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PADREPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant, stained glass style depiction of Pepe the Frog, with an intricate mosaic pattern. The color palette is dominated by rich greens, accented with earthy tones of beige, red, and yellow, giving it a warm and inviting feel. The design is symmetrical, with geometric shapes creating a radiant, sun-like aura around Pepe’s joyful expression.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference, a staple in internet meme culture.\n- Stained glass art style might nod to religious or iconic imagery, elevating Pepe to a revered status.\n- The joyful expression and radiant aura could symbolize positivity or enlightenment within the crypto community.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.819Z",
+  "sourceFactVersion": 1
+}

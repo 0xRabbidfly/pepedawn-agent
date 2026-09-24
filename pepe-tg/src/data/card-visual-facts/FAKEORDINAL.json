@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "FAKEORDINAL",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 44,
+  "artist": "EMBLEMATIX",
+  "supply": 169,
+  "issuance": "January 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "The green figure is a nod to Pepe the Frog, a staple in meme culture.",
+    "The halo suggests a saintly or revered status, possibly referencing the \"Saint Pepe\" meme.",
+    "The Pepe skull on paper connects to the memento mori concept, blending classical art with meme culture."
+  ],
+  "visualSummary": "The card features a green-skinned figure with glowing eyes, sitting in a dark, shadowy environment reminiscent of classical portraiture. The figure wears a robe, with a halo-like circle around its head, and holds a paper with a Pepe skull on it. The color palette is dark with deep greens and blacks, creating a mysterious and almost sacred atmosphere.",
+  "visualSummaryShort": "The card depicts a green-skinned figure with glowing eyes in a dark, shadowy setting. It wears a robe and holds a paper featuring a Pepe skull, enhancing the mysterious atmosphere.",
+  "visualKeywords": [
+    "green-skinned",
+    "glowing eyes",
+    "dark environment",
+    "robe",
+    "halo",
+    "pepe skull",
+    "mysterious",
+    "shadowy",
+    "classical portraiture",
+    "deep colors"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "green-skinned",
+    "glowing eyes",
+    "dark environment",
+    "robe",
+    "halo",
+    "pepe skull",
+    "mysterious",
+    "shadowy",
+    "classical portraiture",
+    "deep colors"
+  ],
+  "embeddingInput": "FAKEORDINAL (Fake Rares) - Series 14 Card 44\nArtist: EMBLEMATIX\nSupply 169 Issued January 2023\nOn-card text: none detected\nVisual summary: The card features a green-skinned figure with glowing eyes, sitting in a dark, shadowy environment reminiscent of classical portraiture. The figure wears a robe, with a halo-like circle around its head, and holds a paper with a Pepe skull on it. The color palette is dark with deep greens and blacks, creating a mysterious and almost sacred atmosphere.\nMemetic references: The green figure is a nod to Pepe the Frog, a staple in meme culture.; The halo suggests a saintly or revered status, possibly referencing the \"Saint Pepe\" meme.; The Pepe skull on paper connects to the memento mori concept, blending classical art with meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEORDINAL#memetic",
+      "label": "Memetic references",
+      "text": "The green figure is a nod to Pepe the Frog, a staple in meme culture.\nThe halo suggests a saintly or revered status, possibly referencing the \"Saint Pepe\" meme.\nThe Pepe skull on paper connects to the memento mori concept, blending classical art with meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEORDINAL#visual",
+      "label": "Visual summary",
+      "text": "The card features a green-skinned figure with glowing eyes, sitting in a dark, shadowy environment reminiscent of classical portraiture. The figure wears a robe, with a halo-like circle around its head, and holds a paper with a Pepe skull on it. The color palette is dark with deep greens and blacks, creating a mysterious and almost sacred atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEORDINAL#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a green-skinned figure with glowing eyes, sitting in a dark, shadowy environment reminiscent of classical portraiture. The figure wears a robe, with a halo-like circle around its head, and holds a paper with a Pepe skull on it. The color palette is dark with deep greens and blacks, creating a mysterious and almost sacred atmosphere.\n\n🧬 **MEMETIC DNA:**\n- The green figure is a nod to Pepe the Frog, a staple in meme culture.\n- The halo suggests a saintly or revered status, possibly referencing the \"Saint Pepe\" meme.\n- The Pepe skull on paper connects to the memento mori concept, blending classical art with meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.543Z",
+  "sourceFactVersion": 1
+}

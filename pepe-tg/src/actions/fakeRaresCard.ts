@@ -30,6 +30,8 @@ import {
 import { buildSuggestionResponse } from "../utils/cardSuggestions";
 import { parseCardCommand } from "../utils/cardCommandParse";
 import { escapeTelegramMarkdown } from "../utils/telegramMarkdown";
+import { directoryMedia, preferDirectoryMedia } from "../utils/cardUrlUtils";
+import { buildCardButtons } from "../utils/directoryLinks";
 
 /**
  * Fake Rares Card Display Action
@@ -367,26 +369,14 @@ export function buildCardDisplayMessage(params: CardDisplayParams): string {
 }
 
 /**
- * Builds artist button if artist info is available
+ * The link buttons under a card: its directory page, and its artist (on
+ * the directory when it knows them, on pepe.wtf otherwise - the artist
+ * button keeps its FAKE_RARES_ARTIST_BUTTONS gate). See directoryLinks.
  */
 export function buildArtistButton(
   cardInfo: CardInfo | null,
 ): Array<{ text: string; url: string }> {
-  // Feature toggle: set FAKE_RARES_ARTIST_BUTTONS=true to enable globally
-  const isEnabled = process.env.FAKE_RARES_ARTIST_BUTTONS === "true";
-  if (!isEnabled) {
-    return [];
-  }
-  if (!cardInfo?.artist || !cardInfo?.artistSlug) {
-    return [];
-  }
-
-  return [
-    {
-      text: `👨‍🎨 ${cardInfo.artist}`,
-      url: `https://pepe.wtf/artists/${cardInfo.artistSlug}`,
-    },
-  ];
+  return buildCardButtons(cardInfo);
 }
 
 /**
@@ -555,6 +545,16 @@ export function determineCardUrl(
   cardInfo: CardInfo,
   assetName: string,
 ): CardUrlResult {
+  // The directory's CDN, only where our own source is dead or missing: the
+  // ten newest Series 18 cards whose overrides died with the old site (403),
+  // and cards only the directory knows. Not first - measured across all 918,
+  // "CDN first" would have sent 44 animated cards as stills. See
+  // utils/cardUrlUtils.preferDirectoryMedia. Cached file_ids are unaffected.
+  if (preferDirectoryMedia(cardInfo)) {
+    const fromDirectory = directoryMedia(cardInfo);
+    if (fromDirectory) return fromDirectory;
+  }
+
   // Check for special URIs (videoUri for mp4, imageUri for others)
   if (cardInfo.ext === "mp4" && cardInfo.videoUri) {
     // Skip dead domains and fallback to memeUri

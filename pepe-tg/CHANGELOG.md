@@ -5,7 +5,7 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [5.16.0] - 2026-09-23
+## [5.16.0] - 2026-09-24
 
 ### Changed
 
@@ -28,9 +28,91 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Production picks the committed index up from GitHub within a day; no
   deploy is needed for data, only for the code that reads the new fields.
 
+- **Card media falls back to the directory's CDN where ours is dead.** Paging
+  `/f c 18` on the test bot showed nothing past card 31: the ten newest
+  Series 18 cards had image URLs scraped from the old directory's HTML, and
+  those have returned 403 since the site was replaced. The directory's own
+  CDN, a public GitHub repository, carries them.
+
+  "CDN first" was tried and measured across all 918 cards before shipping:
+  44 animated cards would have been sent as stills, because the directory
+  holds only a still image for many GIF and MP4 cards, and FAKEASF's CDN video
+  is a 404. Every source already in use was checked and works. So the
+  directory steps in only for an old-site override, or a card only it knows
+  about; everything else is fetched exactly as before. Zero regressions, ten
+  fixes. Cached file_ids are unaffected.
+
+- **The daily card discovery reads the directory's API.** `add-new-cards.js`
+  pass 1 scraped `fakeraredirectory.com/series-N/`, which 404s on the new
+  site; it now lists cards from `/api/cards` in one request, no browser.
+  Pass 2 (pepe.wtf, for current supply) and the S3 extension check are
+  unchanged, and the reconcile step then applies the directory's artist and
+  release data. Verified end to end: with CAKERARE removed from the index,
+  the run re-added it from the CDN image and the sync credited "Aquatic".
+
+  Found while checking: the Action has been opening PRs that nobody merged
+  since 2025-10-24, so nothing it found ever reached master, and production
+  refreshes its index from master. **The workflow now merges its own pull
+  request** once two guards pass: the sync's own refusals (a short API
+  response, more than 20 retirements) and a new index integrity test on the
+  file as written (`cardIndexIntegrity.test.ts`: whole index, every card has
+  a slot and extension, no live slot shared, every live card resolves to an
+  https URL off the dead old site). A failed guard fails the run and merges
+  nothing. The PR body carries the sync report, and the "cards touched" count
+  now compares records instead of grepping for added `"asset"` lines, which
+  missed every artist or release edit.
+
+- **The vision pass runs itself, and its facts live in the repo.** 39 live
+  cards had never been looked at - the newest Series 18, the cards the
+  directory added, and ten MP4s that had no still to show the model - so
+  "which fake is the most red" and lore recall could not see them. The
+  by-hand five-script pipeline is now one script, `scripts/fv-backfill.ts`,
+  that looks at every live card without a fact file (an MP4 uses its scraped
+  still or the directory's), runs daily from the update workflow after the
+  sync, and commits `src/data/card-visual-facts/<ASSET>.json` plus the
+  card's keywords in `card-visual-traits.json`. The 875 facts from the first
+  pass are committed too, so the folder is the whole record.
+
+  The database is a per-environment copy of that folder: `CardFactsImportService`
+  imports at boot whatever this database lacks, checking by the same
+  deterministic ids the original import wrote, so prod's existing 875 are
+  recognised and not duplicated, and a boot with nothing new embeds nothing.
+  The nightly restart is what makes a fact committed by the daily run
+  recallable the next morning. `CARD_FACTS_IMPORT=off` skips it.
+
+- **Card replies link to the directory.** Every Fake Rares card carries a
+  "🗂 Directory" button to its page, `fakeraredirectory.com/series/S/N`. The
+  artist button (still behind `FAKE_RARES_ARTIST_BUTTONS`) goes to the
+  directory's artist page when the directory lists that artist, and to
+  pepe.wtf as before when it does not - a quarter of our credit strings
+  ("Indelible Trade x Cam") are not artist entities there, so guessing a
+  slug would have sent people to 404s. The directory's artist list, with
+  aliases, is committed as `src/data/directory-artists.json` and refreshed
+  by the daily sync.
+
 ### Added
 
+- **New fakes are announced.** When the daily refresh brings a card the bot
+  has not seen, `NewCardService` posts it to the channel once - the card,
+  "new fake just landed: X by Y, Series S, Card N", the directory button.
+  At most three an hour, so a big merge trickles. State lives in
+  `src/data/new-card-state.json`; a bot without one records every card
+  already in the index and announces nothing, so the first boot on
+  production is silent. `NEW_CARD_ANNOUNCEMENTS=false` turns it off.
+- **Daily reminders.** `src/data/reminders.json` lists broadcasts and their
+  window; `ReminderService` posts each once a day at its UTC hour, with a
+  link button, and counts the days down in the text. The first: artists
+  have until 22 October 2026 to claim their page on the new directory
+  (`/artists/submit`) and get the card waiting for them - posted daily at
+  16:00 UTC until then. `REMINDERS_ENABLED=false` turns it off.
 - `docs/TODO.md` — the open work, in priority, with why each item matters.
+- `src/data/card-visual-facts/` — one file per card the vision pass has seen.
+- `src/data/directory-artists.json` — the directory's artists and slugs.
+- `CARD_INDEX_REFRESH_URL` — where the daily index refresh downloads from.
+  Defaults to master. A branch build must point it at its own file: the
+  test bot's first announcement was MADAMEPEPE, a card master still had
+  under its old spelling, because master's file had replaced the branch's
+  index five minutes after boot.
 
 ## [5.15.1] - 2026-09-23
 

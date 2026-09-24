@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "asset": "FAKEONEPEPE",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 46,
+  "artist": "DarkFluffyRabbit x Darkfarms",
+  "supply": 299,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "ONE PEPE TO RULE THEM ALL",
+    "IN DANKNESS BIND THEM"
+  ],
+  "memeticReferences": [
+    "References to \"Lord of the Rings\" with Gollum and the iconic line reimagined with Pepe.",
+    "Pepe the Frog, a staple in meme culture.",
+    "Crypto symbols and alphanumeric gibberish hinting at blockchain geekery.",
+    "The chaotic burning castle suggests a nod to degen market conditions."
+  ],
+  "visualSummary": "The card is a vibrant tapestry of chaos and whimsy, featuring a medieval castle engulfed in flames with a smiling Pepe the Frog alongside a character resembling Gollum. The color palette is a riot of purples, reds, greens, and yellows, giving it a psychedelic and fantastical vibe. The rough, hand-drawn style adds a layer of playful absurdity.",
+  "visualSummaryShort": "The card showcases a whimsical scene with a medieval castle on fire and a smiling Pepe the Frog next to a Gollum-like character. Its vibrant color palette and hand-drawn style create a chaotic yet playful atmosphere.",
+  "visualKeywords": [
+    "castle",
+    "fire",
+    "pepe",
+    "gollum",
+    "purple",
+    "red",
+    "green",
+    "yellow",
+    "chaos",
+    "whimsy"
+  ],
+  "textKeywords": [
+    "one",
+    "rule",
+    "all",
+    "dankness",
+    "bind"
+  ],
+  "keywords": [
+    "castle",
+    "fire",
+    "pepe",
+    "gollum",
+    "purple",
+    "red",
+    "green",
+    "yellow",
+    "chaos",
+    "whimsy",
+    "one",
+    "rule",
+    "all",
+    "dankness",
+    "bind"
+  ],
+  "embeddingInput": "FAKEONEPEPE (Fake Rares) - Series 3 Card 46\nArtist: DarkFluffyRabbit x Darkfarms\nSupply 299 Issued November 2021\nOn-card text: ONE PEPE TO RULE THEM ALL | IN DANKNESS BIND THEM\nVisual summary: The card is a vibrant tapestry of chaos and whimsy, featuring a medieval castle engulfed in flames with a smiling Pepe the Frog alongside a character resembling Gollum. The color palette is a riot of purples, reds, greens, and yellows, giving it a psychedelic and fantastical vibe. The rough, hand-drawn style adds a layer of playful absurdity.\nMemetic references: References to \"Lord of the Rings\" with Gollum and the iconic line reimagined with Pepe.; Pepe the Frog, a staple in meme culture.; Crypto symbols and alphanumeric gibberish hinting at blockchain geekery.; The chaotic burning castle suggests a nod to degen market conditions.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEONEPEPE#text",
+      "label": "On-card text",
+      "text": "ONE PEPE TO RULE THEM ALL | IN DANKNESS BIND THEM",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEONEPEPE#memetic",
+      "label": "Memetic references",
+      "text": "References to \"Lord of the Rings\" with Gollum and the iconic line reimagined with Pepe.\nPepe the Frog, a staple in meme culture.\nCrypto symbols and alphanumeric gibberish hinting at blockchain geekery.\nThe chaotic burning castle suggests a nod to degen market conditions.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEONEPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card is a vibrant tapestry of chaos and whimsy, featuring a medieval castle engulfed in flames with a smiling Pepe the Frog alongside a character resembling Gollum. The color palette is a riot of purples, reds, greens, and yellows, giving it a psychedelic and fantastical vibe. The rough, hand-drawn style adds a layer of playful absurdity.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEONEPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nONE PEPE TO RULE THEM ALL  \nIN DANKNESS BIND THEM\n\n🎨 **VISUAL BREAKDOWN:**\nThe card is a vibrant tapestry of chaos and whimsy, featuring a medieval castle engulfed in flames with a smiling Pepe the Frog alongside a character resembling Gollum. The color palette is a riot of purples, reds, greens, and yellows, giving it a psychedelic and fantastical vibe. The rough, hand-drawn style adds a layer of playful absurdity.\n\n🧬 **MEMETIC DNA:**\n- References to \"Lord of the Rings\" with Gollum and the iconic line reimagined with Pepe.\n- Pepe the Frog, a staple in meme culture.\n- Crypto symbols and alphanumeric gibberish hinting at blockchain geekery.\n- The chaotic burning castle suggests a nod to degen market conditions.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.540Z",
+  "sourceFactVersion": 1
+}

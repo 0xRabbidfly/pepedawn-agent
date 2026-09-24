@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "PEPEMPERNEL",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 36,
+  "artist": "Indelible",
+  "supply": 42,
+  "issuance": "December 2021",
+  "textOnCard": [
+    "PEPEMPERNEL JONES"
+  ],
+  "memeticReferences": [
+    "References to Pepe the Frog with all characters having his iconic features.",
+    "Blaxploitation film homage, capturing the aesthetic and attitude of the era.",
+    "Crime and action movie motifs with weapons and dramatic poses."
+  ],
+  "visualSummary": "The card features a retro, comic-style illustration reminiscent of 1970s blaxploitation films. A group of characters, all with green skin and afro hairstyles, are depicted in bold, dynamic poses, wielding guns and knives. The color palette is rich with earthy browns, deep reds, and greens, adding to the vintage vibe.",
+  "visualSummaryShort": "The card showcases a retro comic-style illustration with characters featuring green skin and afro hairstyles. The dynamic poses and earthy color palette enhance the vintage blaxploitation film vibe.",
+  "visualKeywords": [
+    "green skin",
+    "afro hairstyles",
+    "guns",
+    "knives",
+    "earthy colors",
+    "vintage",
+    "comic-style",
+    "dynamic poses"
+  ],
+  "textKeywords": [
+    "pepempernel",
+    "jones"
+  ],
+  "keywords": [
+    "green skin",
+    "afro hairstyles",
+    "guns",
+    "knives",
+    "earthy colors",
+    "vintage",
+    "comic-style",
+    "dynamic poses",
+    "pepempernel",
+    "jones"
+  ],
+  "embeddingInput": "PEPEMPERNEL (Fake Rares) - Series 4 Card 36\nArtist: Indelible\nSupply 42 Issued December 2021\nOn-card text: PEPEMPERNEL JONES\nVisual summary: The card features a retro, comic-style illustration reminiscent of 1970s blaxploitation films. A group of characters, all with green skin and afro hairstyles, are depicted in bold, dynamic poses, wielding guns and knives. The color palette is rich with earthy browns, deep reds, and greens, adding to the vintage vibe.\nMemetic references: References to Pepe the Frog with all characters having his iconic features.; Blaxploitation film homage, capturing the aesthetic and attitude of the era.; Crime and action movie motifs with weapons and dramatic poses.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEMPERNEL#text",
+      "label": "On-card text",
+      "text": "PEPEMPERNEL JONES",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEMPERNEL#memetic",
+      "label": "Memetic references",
+      "text": "References to Pepe the Frog with all characters having his iconic features.\nBlaxploitation film homage, capturing the aesthetic and attitude of the era.\nCrime and action movie motifs with weapons and dramatic poses.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEMPERNEL#visual",
+      "label": "Visual summary",
+      "text": "The card features a retro, comic-style illustration reminiscent of 1970s blaxploitation films. A group of characters, all with green skin and afro hairstyles, are depicted in bold, dynamic poses, wielding guns and knives. The color palette is rich with earthy browns, deep reds, and greens, adding to the vintage vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEMPERNEL#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPEMPERNEL JONES\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a retro, comic-style illustration reminiscent of 1970s blaxploitation films. A group of characters, all with green skin and afro hairstyles, are depicted in bold, dynamic poses, wielding guns and knives. The color palette is rich with earthy browns, deep reds, and greens, adding to the vintage vibe.\n\n🧬 **MEMETIC DNA:**\n- References to Pepe the Frog with all characters having his iconic features.\n- Blaxploitation film homage, capturing the aesthetic and attitude of the era.\n- Crime and action movie motifs with weapons and dramatic poses.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.933Z",
+  "sourceFactVersion": 1
+}

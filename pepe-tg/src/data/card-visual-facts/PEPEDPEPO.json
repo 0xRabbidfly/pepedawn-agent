@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PEPEDPEPO",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 34,
+  "artist": "Spank Ink",
+  "supply": 50,
+  "issuance": "March 2026",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog vibes with a mafioso twist.",
+    "Classic gangster film references, evoking a \"Godfather\" feel.",
+    "Crypto culture nod with the Bitcoin symbol on the ring."
+  ],
+  "visualSummary": "This card features a dapper frog dressed in a classic gangster-style suit, complete with a fedora and bow tie, sitting at a restaurant table. The color palette is rich and warm, with deep greens, reds, and browns, giving a vintage, noir vibe. The frog is confidently smoking a cigar, surrounded by a cozy, dimly-lit atmosphere, with a plate of spaghetti and meatballs in front of him.",
+  "visualSummaryShort": "The card depicts a stylish frog in a gangster suit, enjoying a meal at a restaurant. The warm color palette and dim lighting create a vintage, cozy atmosphere.",
+  "visualKeywords": [
+    "frog",
+    "suit",
+    "fedora",
+    "cigar",
+    "spaghetti",
+    "meatballs",
+    "dim lighting",
+    "vintage",
+    "noir",
+    "restaurant"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "frog",
+    "suit",
+    "fedora",
+    "cigar",
+    "spaghetti",
+    "meatballs",
+    "dim lighting",
+    "vintage",
+    "noir",
+    "restaurant"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "PEPEDPEPO (Fake Rares) - Series 18 Card 34\nArtist: Spank Ink\nSupply 50 Issued March 2026\nOn-card text: none detected\nVisual summary: This card features a dapper frog dressed in a classic gangster-style suit, complete with a fedora and bow tie, sitting at a restaurant table. The color palette is rich and warm, with deep greens, reds, and browns, giving a vintage, noir vibe. The frog is confidently smoking a cigar, surrounded by a cozy, dimly-lit atmosphere, with a plate of spaghetti and meatballs in front of him.\nMemetic references: Pepe the Frog vibes with a mafioso twist.; Classic gangster film references, evoking a \"Godfather\" feel.; Crypto culture nod with the Bitcoin symbol on the ring.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEDPEPO#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog vibes with a mafioso twist.\nClassic gangster film references, evoking a \"Godfather\" feel.\nCrypto culture nod with the Bitcoin symbol on the ring.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEDPEPO#visual",
+      "label": "Visual summary",
+      "text": "This card features a dapper frog dressed in a classic gangster-style suit, complete with a fedora and bow tie, sitting at a restaurant table. The color palette is rich and warm, with deep greens, reds, and browns, giving a vintage, noir vibe. The frog is confidently smoking a cigar, surrounded by a cozy, dimly-lit atmosphere, with a plate of spaghetti and meatballs in front of him.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEDPEPO#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a dapper frog dressed in a classic gangster-style suit, complete with a fedora and bow tie, sitting at a restaurant table. The color palette is rich and warm, with deep greens, reds, and browns, giving a vintage, noir vibe. The frog is confidently smoking a cigar, surrounded by a cozy, dimly-lit atmosphere, with a plate of spaghetti and meatballs in front of him.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog vibes with a mafioso twist.\n- Classic gangster film references, evoking a \"Godfather\" feel.\n- Crypto culture nod with the Bitcoin symbol on the ring.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:31:42.428Z"
+}

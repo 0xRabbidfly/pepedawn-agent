@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "asset": "PHONEYSIMPSO",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 15,
+  "artist": "SteveWeave",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "PHONEY SIMPSON",
+    "Wait a minute, I'm most definitely not a PEPE!",
+    "RARNESS SCORE 1",
+    "100"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference.",
+    "Play on Homer Simpson's character with the name \"PHONEY SIMPSON.\"",
+    "Elements of celebration and parody, using party accessories and confetti."
+  ],
+  "visualSummary": "The card features a Pepe character wearing a colorful, polka-dotted hat and a party blower, with sunglasses obscuring its eyes. Confetti rains down in the foreground, adding to the playful and chaotic atmosphere. The color palette is bright and vivid, featuring greens, yellows, and reds which pop against a sky-like background.",
+  "visualSummaryShort": "The card showcases a Pepe character adorned with a vibrant polka-dotted hat and sunglasses, surrounded by falling confetti. The bright color palette creates a lively and festive mood.",
+  "visualKeywords": [
+    "pepe",
+    "polka-dots",
+    "sunglasses",
+    "confetti",
+    "bright colors",
+    "party",
+    "chaotic",
+    "vivid",
+    "green",
+    "red"
+  ],
+  "textKeywords": [
+    "phoney",
+    "simpson",
+    "wait",
+    "minute",
+    "definitely",
+    "not",
+    "rarness",
+    "score",
+    "100"
+  ],
+  "keywords": [
+    "pepe",
+    "polka-dots",
+    "sunglasses",
+    "confetti",
+    "bright colors",
+    "party",
+    "chaotic",
+    "vivid",
+    "green",
+    "red",
+    "phoney",
+    "simpson",
+    "wait",
+    "minute",
+    "definitely",
+    "not",
+    "rarness",
+    "score",
+    "100"
+  ],
+  "embeddingInput": "PHONEYSIMPSO (Fake Rares) - Series 1 Card 15\nArtist: SteveWeave\nSupply 100 Issued October 2021\nOn-card text: PHONEY SIMPSON | Wait a minute, I'm most definitely not a PEPE! | RARNESS SCORE 1 | 100\nVisual summary: The card features a Pepe character wearing a colorful, polka-dotted hat and a party blower, with sunglasses obscuring its eyes. Confetti rains down in the foreground, adding to the playful and chaotic atmosphere. The color palette is bright and vivid, featuring greens, yellows, and reds which pop against a sky-like background.\nMemetic references: Pepe the Frog reference.; Play on Homer Simpson's character with the name \"PHONEY SIMPSON.\"; Elements of celebration and parody, using party accessories and confetti.",
+  "embeddingBlocks": [
+    {
+      "id": "PHONEYSIMPSO#text",
+      "label": "On-card text",
+      "text": "PHONEY SIMPSON | Wait a minute, I'm most definitely not a PEPE! | RARNESS SCORE 1 | 100",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PHONEYSIMPSO#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference.\nPlay on Homer Simpson's character with the name \"PHONEY SIMPSON.\"\nElements of celebration and parody, using party accessories and confetti.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PHONEYSIMPSO#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe character wearing a colorful, polka-dotted hat and a party blower, with sunglasses obscuring its eyes. Confetti rains down in the foreground, adding to the playful and chaotic atmosphere. The color palette is bright and vivid, featuring greens, yellows, and reds which pop against a sky-like background.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PHONEYSIMPSO#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPHONEY SIMPSON  \nWait a minute, I'm most definitely not a PEPE!  \nRARNESS SCORE 1/100\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe character wearing a colorful, polka-dotted hat and a party blower, with sunglasses obscuring its eyes. Confetti rains down in the foreground, adding to the playful and chaotic atmosphere. The color palette is bright and vivid, featuring greens, yellows, and reds which pop against a sky-like background.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference.\n- Play on Homer Simpson's character with the name \"PHONEY SIMPSON.\"\n- Elements of celebration and parody, using party accessories and confetti.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.036Z",
+  "sourceFactVersion": 1
+}

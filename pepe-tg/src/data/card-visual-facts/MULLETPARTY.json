@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "asset": "MULLETPARTY",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 43,
+  "artist": "Bunzy",
+  "supply": 58,
+  "issuance": "March 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference.",
+    "Mullet hairstyle nodding to 80s",
+    "90s culture.",
+    "Retro vibes mixed with meme culture."
+  ],
+  "visualSummary": "This card features a Pepe the Frog character sporting a classic mullet hairstyle, exuding retro vibes. The color palette is simple, with a green face and dark hair, complemented by a blue shirt. The background is a textured gray, giving it a vintage feel akin to 80s and 90s aesthetics.",
+  "visualSummaryShort": "The card showcases a Pepe the Frog character with a classic mullet hairstyle, embodying retro aesthetics. It features a green face, dark hair, and a blue shirt against a textured gray background.",
+  "visualKeywords": [
+    "pepe the frog",
+    "mullet",
+    "retro",
+    "green face",
+    "dark hair",
+    "blue shirt",
+    "gray background",
+    "vintage"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "mullet",
+    "retro",
+    "green face",
+    "dark hair",
+    "blue shirt",
+    "gray background",
+    "vintage"
+  ],
+  "embeddingInput": "MULLETPARTY (Fake Rares) - Series 13 Card 43\nArtist: Bunzy\nSupply 58 Issued March 2023\nOn-card text: none detected\nVisual summary: This card features a Pepe the Frog character sporting a classic mullet hairstyle, exuding retro vibes. The color palette is simple, with a green face and dark hair, complemented by a blue shirt. The background is a textured gray, giving it a vintage feel akin to 80s and 90s aesthetics.\nMemetic references: Classic Pepe the Frog reference.; Mullet hairstyle nodding to 80s; 90s culture.; Retro vibes mixed with meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "MULLETPARTY#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference.\nMullet hairstyle nodding to 80s\n90s culture.\nRetro vibes mixed with meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MULLETPARTY#visual",
+      "label": "Visual summary",
+      "text": "This card features a Pepe the Frog character sporting a classic mullet hairstyle, exuding retro vibes. The color palette is simple, with a green face and dark hair, complemented by a blue shirt. The background is a textured gray, giving it a vintage feel akin to 80s and 90s aesthetics.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MULLETPARTY#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a Pepe the Frog character sporting a classic mullet hairstyle, exuding retro vibes. The color palette is simple, with a green face and dark hair, complemented by a blue shirt. The background is a textured gray, giving it a vintage feel akin to 80s and 90s aesthetics.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference.\n- Mullet hairstyle nodding to 80s/90s culture.\n- Retro vibes mixed with meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.784Z",
+  "sourceFactVersion": 1
+}

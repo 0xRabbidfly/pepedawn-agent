@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "THEFAKAMOTOS",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 32,
+  "artist": "PiFu",
+  "supply": 300,
+  "issuance": "April 2022",
+  "textOnCard": [
+    "#49"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog references with varied expressions and styles.",
+    "Crypto culture symbols like hoodies and sunglasses.",
+    "A nod to royalty with a crown and pharaoh headdress.",
+    "Retro and eclectic fashion elements."
+  ],
+  "visualSummary": "The card features a group of green-skinned characters with distinct personalities, all sporting Pepe the Frog-like faces. They are arranged in a circular formation, gazing towards the viewer, each with unique attire ranging from a suit and tie to casual and regal outfits. The color palette is vibrant, dominated by greens, blues, and yellows, creating a lively and energetic atmosphere.",
+  "visualSummaryShort": "The card showcases a circular arrangement of green-skinned characters with Pepe the Frog-like faces, each displaying unique attire. The vibrant color palette of greens, blues, and yellows contributes to a lively atmosphere.",
+  "visualKeywords": [
+    "green-skinned",
+    "pepe the frog",
+    "circular formation",
+    "unique attire",
+    "vibrant colors",
+    "suit",
+    "casual",
+    "regal",
+    "energetic",
+    "blue palette"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "green-skinned",
+    "pepe the frog",
+    "circular formation",
+    "unique attire",
+    "vibrant colors",
+    "suit",
+    "casual",
+    "regal",
+    "energetic",
+    "blue palette"
+  ],
+  "embeddingInput": "THEFAKAMOTOS (Fake Rares) - Series 13 Card 32\nArtist: PiFu\nSupply 300 Issued April 2022\nOn-card text: #49\nVisual summary: The card features a group of green-skinned characters with distinct personalities, all sporting Pepe the Frog-like faces. They are arranged in a circular formation, gazing towards the viewer, each with unique attire ranging from a suit and tie to casual and regal outfits. The color palette is vibrant, dominated by greens, blues, and yellows, creating a lively and energetic atmosphere.\nMemetic references: Pepe the Frog references with varied expressions and styles.; Crypto culture symbols like hoodies and sunglasses.; A nod to royalty with a crown and pharaoh headdress.; Retro and eclectic fashion elements.",
+  "embeddingBlocks": [
+    {
+      "id": "THEFAKAMOTOS#text",
+      "label": "On-card text",
+      "text": "#49",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "THEFAKAMOTOS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references with varied expressions and styles.\nCrypto culture symbols like hoodies and sunglasses.\nA nod to royalty with a crown and pharaoh headdress.\nRetro and eclectic fashion elements.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "THEFAKAMOTOS#visual",
+      "label": "Visual summary",
+      "text": "The card features a group of green-skinned characters with distinct personalities, all sporting Pepe the Frog-like faces. They are arranged in a circular formation, gazing towards the viewer, each with unique attire ranging from a suit and tie to casual and regal outfits. The color palette is vibrant, dominated by greens, blues, and yellows, creating a lively and energetic atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "THEFAKAMOTOS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n#49\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a group of green-skinned characters with distinct personalities, all sporting Pepe the Frog-like faces. They are arranged in a circular formation, gazing towards the viewer, each with unique attire ranging from a suit and tie to casual and regal outfits. The color palette is vibrant, dominated by greens, blues, and yellows, creating a lively and energetic atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references with varied expressions and styles.\n- Crypto culture symbols like hoodies and sunglasses.\n- A nod to royalty with a crown and pharaoh headdress.\n- Retro and eclectic fashion elements.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.142Z",
+  "sourceFactVersion": 1
+}

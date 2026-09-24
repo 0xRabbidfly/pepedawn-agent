@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "POISONPEPE",
+  "collection": "Fake Rares",
+  "series": 0,
+  "cardNumber": 17,
+  "artist": "ICQPEPE",
+  "supply": 1000,
+  "issuance": "August 2017",
+  "textOnCard": [],
+  "memeticReferences": [
+    "References to Pepe the Frog with multiple green faces in the background.",
+    "Use of crypto symbols like hashtags and abstract motifs.",
+    "Surrealist art style reminiscent of pop culture and meme art fusion."
+  ],
+  "visualSummary": "The card features a somber figure with exaggerated, surrealistic features, emphasizing deep shadows and stark lines. The color palette is dominated by greens and purples, creating a psychedelic, almost toxic atmosphere. In the background, distorted faces and symbols add a sense of chaos and complexity.",
+  "visualSummaryShort": "The card showcases a somber figure with surrealistic features set against a chaotic background. The dominant greens and purples create a psychedelic and toxic atmosphere.",
+  "visualKeywords": [
+    "somber figure",
+    "surrealistic",
+    "deep shadows",
+    "green palette",
+    "purple palette",
+    "distorted faces",
+    "chaos",
+    "symbols"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "somber figure",
+    "surrealistic",
+    "deep shadows",
+    "green palette",
+    "purple palette",
+    "distorted faces",
+    "chaos",
+    "symbols"
+  ],
+  "embeddingInput": "POISONPEPE (Fake Rares) - Series 0 Card 17\nArtist: ICQPEPE\nSupply 1000 Issued August 2017\nOn-card text: none detected\nVisual summary: The card features a somber figure with exaggerated, surrealistic features, emphasizing deep shadows and stark lines. The color palette is dominated by greens and purples, creating a psychedelic, almost toxic atmosphere. In the background, distorted faces and symbols add a sense of chaos and complexity.\nMemetic references: References to Pepe the Frog with multiple green faces in the background.; Use of crypto symbols like hashtags and abstract motifs.; Surrealist art style reminiscent of pop culture and meme art fusion.",
+  "embeddingBlocks": [
+    {
+      "id": "POISONPEPE#memetic",
+      "label": "Memetic references",
+      "text": "References to Pepe the Frog with multiple green faces in the background.\nUse of crypto symbols like hashtags and abstract motifs.\nSurrealist art style reminiscent of pop culture and meme art fusion.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "POISONPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a somber figure with exaggerated, surrealistic features, emphasizing deep shadows and stark lines. The color palette is dominated by greens and purples, creating a psychedelic, almost toxic atmosphere. In the background, distorted faces and symbols add a sense of chaos and complexity.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "POISONPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a somber figure with exaggerated, surrealistic features, emphasizing deep shadows and stark lines. The color palette is dominated by greens and purples, creating a psychedelic, almost toxic atmosphere. In the background, distorted faces and symbols add a sense of chaos and complexity.\n\n🧬 **MEMETIC DNA:**\n- References to Pepe the Frog with multiple green faces in the background.\n- Use of crypto symbols like hashtags and abstract motifs.\n- Surrealist art style reminiscent of pop culture and meme art fusion.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.044Z",
+  "sourceFactVersion": 1
+}

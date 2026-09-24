@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "asset": "IGGYPEP",
+  "collection": "Fake Rares",
+  "series": 0,
+  "cardNumber": 15,
+  "artist": "Mr Hansel",
+  "supply": 100,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "'Iggy Pep'",
+    "\"Worth a million in prizes\"",
+    "+10 Liquor 'n' Drugs"
+  ],
+  "memeticReferences": [
+    "References to iconic punk rock imagery.",
+    "The name \"Iggy Pep\" hints at a fusion of Pepe the Frog and Iggy Pop.",
+    "\"WORTH A MILLION IN PRIZES\" is a nod to a famous punk anthem.",
+    "KEK symbols and Pepe lore elements."
+  ],
+  "visualSummary": "The card features a striking green-toned character with exaggerated features, holding a microphone, set against a background of gold stars on a dark canvas. The style is bold and graphic, reminiscent of pop art with a psychedelic flair. The color palette combines vibrant greens with golds and dark hues, creating a vivid and dynamic visual impact.",
+  "visualSummaryShort": "The card showcases a green-toned character with exaggerated features, holding a microphone amidst gold stars on a dark background. Its bold, graphic style and vibrant color palette create a dynamic visual impact.",
+  "visualKeywords": [
+    "green character",
+    "microphone",
+    "gold stars",
+    "dark background",
+    "pop art",
+    "psychedelic",
+    "vibrant colors",
+    "bold style"
+  ],
+  "textKeywords": [
+    "iggy",
+    "pep",
+    "worth",
+    "million",
+    "prizes",
+    "liquor",
+    "drugs"
+  ],
+  "keywords": [
+    "green character",
+    "microphone",
+    "gold stars",
+    "dark background",
+    "pop art",
+    "psychedelic",
+    "vibrant colors",
+    "bold style",
+    "iggy",
+    "pep",
+    "worth",
+    "million",
+    "prizes",
+    "liquor",
+    "drugs"
+  ],
+  "embeddingInput": "IGGYPEP (Fake Rares) - Series 0 Card 15\nArtist: Mr Hansel\nSupply 100 Issued July 2022\nOn-card text: 'Iggy Pep' | \"Worth a million in prizes\" | +10 Liquor 'n' Drugs\nVisual summary: The card features a striking green-toned character with exaggerated features, holding a microphone, set against a background of gold stars on a dark canvas. The style is bold and graphic, reminiscent of pop art with a psychedelic flair. The color palette combines vibrant greens with golds and dark hues, creating a vivid and dynamic visual impact.\nMemetic references: References to iconic punk rock imagery.; The name \"Iggy Pep\" hints at a fusion of Pepe the Frog and Iggy Pop.; \"WORTH A MILLION IN PRIZES\" is a nod to a famous punk anthem.; KEK symbols and Pepe lore elements.",
+  "embeddingBlocks": [
+    {
+      "id": "IGGYPEP#text",
+      "label": "On-card text",
+      "text": "'Iggy Pep' | \"Worth a million in prizes\" | +10 Liquor 'n' Drugs",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "IGGYPEP#memetic",
+      "label": "Memetic references",
+      "text": "References to iconic punk rock imagery.\nThe name \"Iggy Pep\" hints at a fusion of Pepe the Frog and Iggy Pop.\n\"WORTH A MILLION IN PRIZES\" is a nod to a famous punk anthem.\nKEK symbols and Pepe lore elements.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "IGGYPEP#visual",
+      "label": "Visual summary",
+      "text": "The card features a striking green-toned character with exaggerated features, holding a microphone, set against a background of gold stars on a dark canvas. The style is bold and graphic, reminiscent of pop art with a psychedelic flair. The color palette combines vibrant greens with golds and dark hues, creating a vivid and dynamic visual impact.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "IGGYPEP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n'Iggy Pep'  \n\"Worth a million in prizes\"  \n+10 Liquor 'n' Drugs\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a striking green-toned character with exaggerated features, holding a microphone, set against a background of gold stars on a dark canvas. The style is bold and graphic, reminiscent of pop art with a psychedelic flair. The color palette combines vibrant greens with golds and dark hues, creating a vivid and dynamic visual impact.\n\n🧬 **MEMETIC DNA:**\n- References to iconic punk rock imagery.\n- The name \"Iggy Pep\" hints at a fusion of Pepe the Frog and Iggy Pop.\n- \"WORTH A MILLION IN PRIZES\" is a nod to a famous punk anthem.\n- KEK symbols and Pepe lore elements.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.691Z",
+  "sourceFactVersion": 1
+}

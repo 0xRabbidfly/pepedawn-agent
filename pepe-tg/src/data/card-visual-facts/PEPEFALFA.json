@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PEPEFALFA",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 21,
+  "artist": "banakin",
+  "supply": 69,
+  "issuance": "September 2025",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog is central, tapping into the iconic meme culture.",
+    "The scene resembles a classic cartoon setup, invoking nostalgic vibes.",
+    "Possible references to \"work hard, meme hard\" ethos in crypto culture."
+  ],
+  "visualSummary": "The card features a 3D-rendered scene with a Pepe character dressed in a worker’s outfit, complete with a bowler hat, sitting on a wooden structure. The background is a vibrant blue, contrasting with Pepe's green skin and the yellow of the straw-like material below. The style combines surreal and industrial elements with a playful nod to vintage machinery.",
+  "visualSummaryShort": "The card showcases a 3D-rendered Pepe character in a worker's outfit, sitting on a wooden structure against a vibrant blue background. The scene blends surreal and industrial elements with playful vintage machinery motifs.",
+  "visualKeywords": [
+    "pepe",
+    "worker's outfit",
+    "bowler hat",
+    "wooden structure",
+    "blue background",
+    "green skin",
+    "yellow straw",
+    "surreal",
+    "industrial",
+    "vintage machinery"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "worker's outfit",
+    "bowler hat",
+    "wooden structure",
+    "blue background",
+    "green skin",
+    "yellow straw",
+    "surreal",
+    "industrial",
+    "vintage machinery"
+  ],
+  "embeddingInput": "PEPEFALFA (Fake Rares) - Series 18 Card 21\nArtist: banakin\nSupply 69 Issued September 2025\nOn-card text: none detected\nVisual summary: The card features a 3D-rendered scene with a Pepe character dressed in a worker’s outfit, complete with a bowler hat, sitting on a wooden structure. The background is a vibrant blue, contrasting with Pepe's green skin and the yellow of the straw-like material below. The style combines surreal and industrial elements with a playful nod to vintage machinery.\nMemetic references: Pepe the Frog is central, tapping into the iconic meme culture.; The scene resembles a classic cartoon setup, invoking nostalgic vibes.; Possible references to \"work hard, meme hard\" ethos in crypto culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEFALFA#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog is central, tapping into the iconic meme culture.\nThe scene resembles a classic cartoon setup, invoking nostalgic vibes.\nPossible references to \"work hard, meme hard\" ethos in crypto culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEFALFA#visual",
+      "label": "Visual summary",
+      "text": "The card features a 3D-rendered scene with a Pepe character dressed in a worker’s outfit, complete with a bowler hat, sitting on a wooden structure. The background is a vibrant blue, contrasting with Pepe's green skin and the yellow of the straw-like material below. The style combines surreal and industrial elements with a playful nod to vintage machinery.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEFALFA#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a 3D-rendered scene with a Pepe character dressed in a worker’s outfit, complete with a bowler hat, sitting on a wooden structure. The background is a vibrant blue, contrasting with Pepe's green skin and the yellow of the straw-like material below. The style combines surreal and industrial elements with a playful nod to vintage machinery.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog is central, tapping into the iconic meme culture.\n- The scene resembles a classic cartoon setup, invoking nostalgic vibes.\n- Possible references to \"work hard, meme hard\" ethos in crypto culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.881Z",
+  "sourceFactVersion": 1
+}

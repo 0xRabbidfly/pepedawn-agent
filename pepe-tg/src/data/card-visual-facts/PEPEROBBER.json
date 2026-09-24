@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PEPEROBBER",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 8,
+  "artist": "ZETRA",
+  "supply": 132,
+  "issuance": "November 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference.",
+    "Minimalist art style reminiscent of modern digital art.",
+    "Use of geometric shapes to convey emotion and character."
+  ],
+  "visualSummary": "The card features a minimalist, abstract representation of Pepe the Frog on a bright blue background. The design is bold and geometric, with large, round eyes and a simple red mouth, creating a striking contrast against the black outline of the character. The overall style is modern and clean, with a focus on basic shapes and a limited color palette of blue, black, green, red, and white.",
+  "visualSummaryShort": "The card showcases a minimalist, abstract depiction of Pepe the Frog against a bright blue background. Its bold geometric design features large eyes and a simple mouth, emphasizing a modern aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "blue background",
+    "geometric",
+    "bold",
+    "minimalist",
+    "black outline",
+    "round eyes",
+    "red mouth",
+    "clean design",
+    "limited color palette"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "blue background",
+    "geometric",
+    "bold",
+    "minimalist",
+    "black outline",
+    "round eyes",
+    "red mouth",
+    "clean design",
+    "limited color palette"
+  ],
+  "embeddingInput": "PEPEROBBER (Fake Rares) - Series 12 Card 8\nArtist: ZETRA\nSupply 132 Issued November 2022\nOn-card text: none detected\nVisual summary: The card features a minimalist, abstract representation of Pepe the Frog on a bright blue background. The design is bold and geometric, with large, round eyes and a simple red mouth, creating a striking contrast against the black outline of the character. The overall style is modern and clean, with a focus on basic shapes and a limited color palette of blue, black, green, red, and white.\nMemetic references: Classic Pepe the Frog reference.; Minimalist art style reminiscent of modern digital art.; Use of geometric shapes to convey emotion and character.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEROBBER#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference.\nMinimalist art style reminiscent of modern digital art.\nUse of geometric shapes to convey emotion and character.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEROBBER#visual",
+      "label": "Visual summary",
+      "text": "The card features a minimalist, abstract representation of Pepe the Frog on a bright blue background. The design is bold and geometric, with large, round eyes and a simple red mouth, creating a striking contrast against the black outline of the character. The overall style is modern and clean, with a focus on basic shapes and a limited color palette of blue, black, green, red, and white.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEROBBER#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a minimalist, abstract representation of Pepe the Frog on a bright blue background. The design is bold and geometric, with large, round eyes and a simple red mouth, creating a striking contrast against the black outline of the character. The overall style is modern and clean, with a focus on basic shapes and a limited color palette of blue, black, green, red, and white.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference.\n- Minimalist art style reminiscent of modern digital art.\n- Use of geometric shapes to convey emotion and character.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.962Z",
+  "sourceFactVersion": 1
+}

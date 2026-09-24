@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "asset": "PEPELIOTTA",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 10,
+  "artist": "Dim Zayan",
+  "supply": 56,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "FakeFellas",
+    "PepeLiotta",
+    "Laughably fake, that pepe was never made.",
+    "\"Get the fake outta here.\""
+  ],
+  "memeticReferences": [
+    "Pepe the Frog meme.",
+    "Reference to mobster culture and iconography.",
+    "Subtle nod to the phrase \"Get the fake outta here,\" a play on classic mob movie lines."
+  ],
+  "visualSummary": "The card features a Pepe the Frog character styled with a classic slicked-back hair look, reminiscent of a mobster. The color palette is primarily green and black, with red accents highlighting the mouth. The background is minimalist, emphasizing the character's bold expression and folded arms.",
+  "visualSummaryShort": "The card showcases a Pepe the Frog character with slicked-back hair, embodying a mobster vibe. Its green and black color palette, along with red mouth accents, creates a striking visual impact against a minimalist background.",
+  "visualKeywords": [
+    "pepe",
+    "mobster",
+    "green",
+    "black",
+    "red",
+    "minimalist",
+    "bold expression",
+    "folded arms"
+  ],
+  "textKeywords": [
+    "fakefellas",
+    "pepeliotta",
+    "laughably",
+    "was",
+    "never",
+    "made",
+    "get",
+    "outta"
+  ],
+  "keywords": [
+    "pepe",
+    "mobster",
+    "green",
+    "black",
+    "red",
+    "minimalist",
+    "bold expression",
+    "folded arms",
+    "fakefellas",
+    "pepeliotta",
+    "laughably",
+    "was",
+    "never",
+    "made",
+    "get",
+    "outta"
+  ],
+  "embeddingInput": "PEPELIOTTA (Fake Rares) - Series 3 Card 10\nArtist: Dim Zayan\nSupply 56 Issued October 2021\nOn-card text: FakeFellas | PepeLiotta | Laughably fake, that pepe was never made. | \"Get the fake outta here.\"\nVisual summary: The card features a Pepe the Frog character styled with a classic slicked-back hair look, reminiscent of a mobster. The color palette is primarily green and black, with red accents highlighting the mouth. The background is minimalist, emphasizing the character's bold expression and folded arms.\nMemetic references: Pepe the Frog meme.; Reference to mobster culture and iconography.; Subtle nod to the phrase \"Get the fake outta here,\" a play on classic mob movie lines.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPELIOTTA#text",
+      "label": "On-card text",
+      "text": "FakeFellas | PepeLiotta | Laughably fake, that pepe was never made. | \"Get the fake outta here.\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPELIOTTA#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog meme.\nReference to mobster culture and iconography.\nSubtle nod to the phrase \"Get the fake outta here,\" a play on classic mob movie lines.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPELIOTTA#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe the Frog character styled with a classic slicked-back hair look, reminiscent of a mobster. The color palette is primarily green and black, with red accents highlighting the mouth. The background is minimalist, emphasizing the character's bold expression and folded arms.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPELIOTTA#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFakeFellas  \nPepeLiotta  \nLaughably fake, that pepe was never made.  \n\"Get the fake outta here.\"\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe the Frog character styled with a classic slicked-back hair look, reminiscent of a mobster. The color palette is primarily green and black, with red accents highlighting the mouth. The background is minimalist, emphasizing the character's bold expression and folded arms.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog meme.\n- Reference to mobster culture and iconography.\n- Subtle nod to the phrase \"Get the fake outta here,\" a play on classic mob movie lines.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.919Z",
+  "sourceFactVersion": 1
+}

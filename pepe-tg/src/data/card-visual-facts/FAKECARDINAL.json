@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "FAKECARDINAL",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 5,
+  "artist": "EMBLEMATIX",
+  "supply": 169,
+  "issuance": "April 2022",
+  "textOnCard": [
+    "FAKECARDINAL"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a historical figure.",
+    "Multicolored \"propeller\" cap, a nod to internet meme culture.",
+    "Classic art style juxtaposed with modern meme elements."
+  ],
+  "visualSummary": "This card features a classical portrait style with a twist, showcasing a figure dressed in historical attire with a Pepe the Frog head. The color palette includes rich reds and browns, with the figure donning a multicolored cap that adds a playful element. The overall composition blends traditional portraiture with modern meme culture, creating a visually intriguing contrast.",
+  "visualSummaryShort": "The card presents a figure in historical attire with a Pepe the Frog head, merging classical portraiture with modern meme culture. Rich reds and browns dominate the color palette, complemented by a playful multicolored cap.",
+  "visualKeywords": [
+    "portrait",
+    "historical attire",
+    "pepe the frog",
+    "red",
+    "brown",
+    "multicolored cap",
+    "meme culture",
+    "playful",
+    "contrast"
+  ],
+  "textKeywords": [
+    "fakecardinal"
+  ],
+  "keywords": [
+    "portrait",
+    "historical attire",
+    "pepe the frog",
+    "red",
+    "brown",
+    "multicolored cap",
+    "meme culture",
+    "playful",
+    "contrast",
+    "fakecardinal"
+  ],
+  "embeddingInput": "FAKECARDINAL (Fake Rares) - Series 11 Card 5\nArtist: EMBLEMATIX\nSupply 169 Issued April 2022\nOn-card text: FAKECARDINAL\nVisual summary: This card features a classical portrait style with a twist, showcasing a figure dressed in historical attire with a Pepe the Frog head. The color palette includes rich reds and browns, with the figure donning a multicolored cap that adds a playful element. The overall composition blends traditional portraiture with modern meme culture, creating a visually intriguing contrast.\nMemetic references: Pepe the Frog as a historical figure.; Multicolored \"propeller\" cap, a nod to internet meme culture.; Classic art style juxtaposed with modern meme elements.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKECARDINAL#text",
+      "label": "On-card text",
+      "text": "FAKECARDINAL",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKECARDINAL#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a historical figure.\nMulticolored \"propeller\" cap, a nod to internet meme culture.\nClassic art style juxtaposed with modern meme elements.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKECARDINAL#visual",
+      "label": "Visual summary",
+      "text": "This card features a classical portrait style with a twist, showcasing a figure dressed in historical attire with a Pepe the Frog head. The color palette includes rich reds and browns, with the figure donning a multicolored cap that adds a playful element. The overall composition blends traditional portraiture with modern meme culture, creating a visually intriguing contrast.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKECARDINAL#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKECARDINAL\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a classical portrait style with a twist, showcasing a figure dressed in historical attire with a Pepe the Frog head. The color palette includes rich reds and browns, with the figure donning a multicolored cap that adds a playful element. The overall composition blends traditional portraiture with modern meme culture, creating a visually intriguing contrast.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a historical figure.\n- Multicolored \"propeller\" cap, a nod to internet meme culture.\n- Classic art style juxtaposed with modern meme elements.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.468Z",
+  "sourceFactVersion": 1
+}

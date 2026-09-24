@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "FAKEFACES",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 34,
+  "artist": "SAHREDTOY",
+  "supply": 76,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "PRO PEPE",
+    "DEAPE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference, a staple in meme culture.",
+    "Skull imagery, commonly associated with edginess and internet humor.",
+    "Gold teeth, nodding to crypto wealth and opulence.",
+    "Minimalist style reflecting the NFT art trend."
+  ],
+  "visualSummary": "The card features a minimalist design with a central illustration of a white skull-like Pepe face, highlighted with exaggerated black eyes and a wide grin showcasing gold teeth. The background is stark black, framed in gray, emphasizing the simplicity and boldness of the artwork. The overall aesthetic is clean and graphic, with a focus on high contrast and understated details.",
+  "visualSummaryShort": "The card showcases a minimalist design featuring a white skull-like Pepe face with exaggerated black eyes and a wide grin displaying gold teeth. Set against a stark black background, the artwork emphasizes high contrast and bold simplicity.",
+  "visualKeywords": [
+    "skull",
+    "pepe",
+    "black background",
+    "gold teeth",
+    "minimalist",
+    "high contrast",
+    "graphic design"
+  ],
+  "textKeywords": [
+    "pro",
+    "deape"
+  ],
+  "keywords": [
+    "skull",
+    "pepe",
+    "black background",
+    "gold teeth",
+    "minimalist",
+    "high contrast",
+    "graphic design",
+    "pro",
+    "deape"
+  ],
+  "embeddingInput": "FAKEFACES (Fake Rares) - Series 8 Card 34\nArtist: SAHREDTOY\nSupply 76 Issued July 2022\nOn-card text: PRO PEPE | DEAPE\nVisual summary: The card features a minimalist design with a central illustration of a white skull-like Pepe face, highlighted with exaggerated black eyes and a wide grin showcasing gold teeth. The background is stark black, framed in gray, emphasizing the simplicity and boldness of the artwork. The overall aesthetic is clean and graphic, with a focus on high contrast and understated details.\nMemetic references: Pepe the Frog reference, a staple in meme culture.; Skull imagery, commonly associated with edginess and internet humor.; Gold teeth, nodding to crypto wealth and opulence.; Minimalist style reflecting the NFT art trend.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEFACES#text",
+      "label": "On-card text",
+      "text": "PRO PEPE | DEAPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEFACES#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference, a staple in meme culture.\nSkull imagery, commonly associated with edginess and internet humor.\nGold teeth, nodding to crypto wealth and opulence.\nMinimalist style reflecting the NFT art trend.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEFACES#visual",
+      "label": "Visual summary",
+      "text": "The card features a minimalist design with a central illustration of a white skull-like Pepe face, highlighted with exaggerated black eyes and a wide grin showcasing gold teeth. The background is stark black, framed in gray, emphasizing the simplicity and boldness of the artwork. The overall aesthetic is clean and graphic, with a focus on high contrast and understated details.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEFACES#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPRO PEPE  \nDEAPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a minimalist design with a central illustration of a white skull-like Pepe face, highlighted with exaggerated black eyes and a wide grin showcasing gold teeth. The background is stark black, framed in gray, emphasizing the simplicity and boldness of the artwork. The overall aesthetic is clean and graphic, with a focus on high contrast and understated details.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference, a staple in meme culture.\n- Skull imagery, commonly associated with edginess and internet humor.\n- Gold teeth, nodding to crypto wealth and opulence.\n- Minimalist style reflecting the NFT art trend.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.491Z",
+  "sourceFactVersion": 1
+}

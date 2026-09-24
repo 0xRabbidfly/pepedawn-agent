@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "FAKEANTHEM",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 30,
+  "artist": "Whoisit",
+  "supply": 333,
+  "issuance": "December 2021",
+  "textOnCard": [
+    "FAKE RARES",
+    "AN"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference with the green character.",
+    "\"FAKE RARES\" nods to the NFT and digital art culture.",
+    "Glitchy, pixelated effects give it a retro internet vibe."
+  ],
+  "visualSummary": "The card features a large, stylized letter \"F\" set against a dark background. Within the letter, there are two main sections: the top shows a green frog character in a pink shirt, reminiscent of the Pepe meme, while the bottom displays a grayscale brick wall with the words \"FAKE RARES\" and \"AN\" visible. The color palette mixes vibrant green and pink against monochrome elements, creating a striking contrast.",
+  "visualSummaryShort": "The card showcases a large stylized letter 'F' with a green frog character in a pink shirt above a grayscale brick wall. The vibrant colors contrast sharply with the monochrome background, enhancing the visual impact.",
+  "visualKeywords": [
+    "frog",
+    "pink shirt",
+    "brick wall",
+    "green",
+    "dark background",
+    "stylized letter",
+    "grayscale",
+    "contrast"
+  ],
+  "textKeywords": [
+    "fake",
+    "rares"
+  ],
+  "keywords": [
+    "frog",
+    "pink shirt",
+    "brick wall",
+    "green",
+    "dark background",
+    "stylized letter",
+    "grayscale",
+    "contrast",
+    "fake",
+    "rares"
+  ],
+  "embeddingInput": "FAKEANTHEM (Fake Rares) - Series 4 Card 30\nArtist: Whoisit\nSupply 333 Issued December 2021\nOn-card text: FAKE RARES | AN\nVisual summary: The card features a large, stylized letter \"F\" set against a dark background. Within the letter, there are two main sections: the top shows a green frog character in a pink shirt, reminiscent of the Pepe meme, while the bottom displays a grayscale brick wall with the words \"FAKE RARES\" and \"AN\" visible. The color palette mixes vibrant green and pink against monochrome elements, creating a striking contrast.\nMemetic references: Pepe the Frog reference with the green character.; \"FAKE RARES\" nods to the NFT and digital art culture.; Glitchy, pixelated effects give it a retro internet vibe.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEANTHEM#text",
+      "label": "On-card text",
+      "text": "FAKE RARES | AN",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEANTHEM#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference with the green character.\n\"FAKE RARES\" nods to the NFT and digital art culture.\nGlitchy, pixelated effects give it a retro internet vibe.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEANTHEM#visual",
+      "label": "Visual summary",
+      "text": "The card features a large, stylized letter \"F\" set against a dark background. Within the letter, there are two main sections: the top shows a green frog character in a pink shirt, reminiscent of the Pepe meme, while the bottom displays a grayscale brick wall with the words \"FAKE RARES\" and \"AN\" visible. The color palette mixes vibrant green and pink against monochrome elements, creating a striking contrast.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEANTHEM#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE RARES\nAN\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a large, stylized letter \"F\" set against a dark background. Within the letter, there are two main sections: the top shows a green frog character in a pink shirt, reminiscent of the Pepe meme, while the bottom displays a grayscale brick wall with the words \"FAKE RARES\" and \"AN\" visible. The color palette mixes vibrant green and pink against monochrome elements, creating a striking contrast.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference with the green character.\n- \"FAKE RARES\" nods to the NFT and digital art culture.\n- Glitchy, pixelated effects give it a retro internet vibe.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.448Z",
+  "sourceFactVersion": 1
+}

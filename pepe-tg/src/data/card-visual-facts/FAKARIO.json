@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "asset": "FAKARIO",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 38,
+  "artist": "Rydes",
+  "supply": 30,
+  "issuance": "October 2021",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a blank design with no visible elements. There are no objects, characters, or colors present.",
+  "visualKeywords": [],
+  "textKeywords": [],
+  "keywords": [],
+  "embeddingInput": "FAKARIO (Fake Rares) - Series 2 Card 38\nArtist: Rydes\nSupply 30 Issued October 2021\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "FAKARIO#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.442Z",
+  "sourceFactVersion": 1
+}

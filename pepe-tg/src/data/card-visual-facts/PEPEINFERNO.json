@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "PEPEINFERNO",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 21,
+  "artist": "Coit",
+  "supply": 48,
+  "issuance": "May 2022",
+  "textOnCard": [
+    "PEPEINFERNO"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple in meme culture, depicted in a hellish environment.",
+    "References to Dante's Inferno, suggesting themes of judgment or chaos.",
+    "Elements of NFT culture with its unique, collectible card format."
+  ],
+  "visualSummary": "This card features a vibrant, fiery scene with Pepe the Frog perched atop a burning pillar. The backdrop is a swirling inferno of reds, oranges, and yellows, with dramatic flames and intense, watchful eyes woven into the chaotic design. The style is bold and graphic, reminiscent of comic book art with a surreal twist, emphasizing chaos and drama.",
+  "visualSummaryShort": "The card showcases Pepe the Frog on a burning pillar amidst a vibrant inferno. The chaotic scene is filled with dramatic flames and intense colors, creating a bold and graphic aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "fire",
+    "flames",
+    "red",
+    "orange",
+    "yellow",
+    "chaos",
+    "comic style",
+    "surreal",
+    "dramatic"
+  ],
+  "textKeywords": [
+    "pepeinferno"
+  ],
+  "keywords": [
+    "pepe",
+    "fire",
+    "flames",
+    "red",
+    "orange",
+    "yellow",
+    "chaos",
+    "comic style",
+    "surreal",
+    "dramatic",
+    "pepeinferno"
+  ],
+  "embeddingInput": "PEPEINFERNO (Fake Rares) - Series 13 Card 21\nArtist: Coit\nSupply 48 Issued May 2022\nOn-card text: PEPEINFERNO\nVisual summary: This card features a vibrant, fiery scene with Pepe the Frog perched atop a burning pillar. The backdrop is a swirling inferno of reds, oranges, and yellows, with dramatic flames and intense, watchful eyes woven into the chaotic design. The style is bold and graphic, reminiscent of comic book art with a surreal twist, emphasizing chaos and drama.\nMemetic references: Pepe the Frog, a staple in meme culture, depicted in a hellish environment.; References to Dante's Inferno, suggesting themes of judgment or chaos.; Elements of NFT culture with its unique, collectible card format.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEINFERNO#text",
+      "label": "On-card text",
+      "text": "PEPEINFERNO",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEINFERNO#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple in meme culture, depicted in a hellish environment.\nReferences to Dante's Inferno, suggesting themes of judgment or chaos.\nElements of NFT culture with its unique, collectible card format.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEINFERNO#visual",
+      "label": "Visual summary",
+      "text": "This card features a vibrant, fiery scene with Pepe the Frog perched atop a burning pillar. The backdrop is a swirling inferno of reds, oranges, and yellows, with dramatic flames and intense, watchful eyes woven into the chaotic design. The style is bold and graphic, reminiscent of comic book art with a surreal twist, emphasizing chaos and drama.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEINFERNO#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPEINFERNO\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a vibrant, fiery scene with Pepe the Frog perched atop a burning pillar. The backdrop is a swirling inferno of reds, oranges, and yellows, with dramatic flames and intense, watchful eyes woven into the chaotic design. The style is bold and graphic, reminiscent of comic book art with a surreal twist, emphasizing chaos and drama.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple in meme culture, depicted in a hellish environment.\n- References to Dante's Inferno, suggesting themes of judgment or chaos.\n- Elements of NFT culture with its unique, collectible card format.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.898Z",
+  "sourceFactVersion": 1
+}

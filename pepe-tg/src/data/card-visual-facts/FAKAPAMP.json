@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "FAKAPAMP",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 12,
+  "artist": "Paper Ape",
+  "supply": 21,
+  "issuance": "March 2024",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog expression, a staple of internet culture.",
+    "The green candle represents the \"green candle\" meme in crypto trading, indicating a significant market uptrend.",
+    "Pixel art style nods to early video game graphics and nostalgic internet art."
+  ],
+  "visualSummary": "This card features a pixelated Pepe the Frog with an exaggerated expression, eyes wide open and mouth agape, conveying shock or awe. The background is a stark black, while a massive, vibrant green candle shoots upwards from Pepe's head, symbolizing a towering price surge. The stark contrast and pixel art style evoke a retro, digital aesthetic.",
+  "visualSummaryShort": "The card showcases a pixelated Pepe the Frog with a shocked expression against a black background. A large, vibrant green candle rises from his head, emphasizing a dramatic price surge.",
+  "visualKeywords": [
+    "pepe",
+    "pixelated",
+    "shock",
+    "black background",
+    "green candle",
+    "digital art",
+    "retro",
+    "expression"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "pixelated",
+    "shock",
+    "black background",
+    "green candle",
+    "digital art",
+    "retro",
+    "expression"
+  ],
+  "embeddingInput": "FAKAPAMP (Fake Rares) - Series 17 Card 12\nArtist: Paper Ape\nSupply 21 Issued March 2024\nOn-card text: none detected\nVisual summary: This card features a pixelated Pepe the Frog with an exaggerated expression, eyes wide open and mouth agape, conveying shock or awe. The background is a stark black, while a massive, vibrant green candle shoots upwards from Pepe's head, symbolizing a towering price surge. The stark contrast and pixel art style evoke a retro, digital aesthetic.\nMemetic references: Classic Pepe the Frog expression, a staple of internet culture.; The green candle represents the \"green candle\" meme in crypto trading, indicating a significant market uptrend.; Pixel art style nods to early video game graphics and nostalgic internet art.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKAPAMP#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog expression, a staple of internet culture.\nThe green candle represents the \"green candle\" meme in crypto trading, indicating a significant market uptrend.\nPixel art style nods to early video game graphics and nostalgic internet art.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKAPAMP#visual",
+      "label": "Visual summary",
+      "text": "This card features a pixelated Pepe the Frog with an exaggerated expression, eyes wide open and mouth agape, conveying shock or awe. The background is a stark black, while a massive, vibrant green candle shoots upwards from Pepe's head, symbolizing a towering price surge. The stark contrast and pixel art style evoke a retro, digital aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKAPAMP#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a pixelated Pepe the Frog with an exaggerated expression, eyes wide open and mouth agape, conveying shock or awe. The background is a stark black, while a massive, vibrant green candle shoots upwards from Pepe's head, symbolizing a towering price surge. The stark contrast and pixel art style evoke a retro, digital aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog expression, a staple of internet culture.\n- The green candle represents the \"green candle\" meme in crypto trading, indicating a significant market uptrend.\n- Pixel art style nods to early video game graphics and nostalgic internet art.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.441Z",
+  "sourceFactVersion": 1
+}

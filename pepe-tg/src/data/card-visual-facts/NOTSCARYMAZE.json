@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "asset": "NOTSCARYMAZE",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 14,
+  "artist": "Darkfarms",
+  "supply": 22,
+  "issuance": "August 2022",
+  "textOnCard": [
+    "NOT SCARYMAZE",
+    "LEVEL 3",
+    "SOLVE THE CAPTCHA, FREN",
+    "I'm not a robot, am fren"
+  ],
+  "memeticReferences": [
+    "References to classic internet mazes and CAPTCHA challenges.",
+    "Use of \"fren,\" a term popular in meme and crypto communities.",
+    "Visual nods to chaotic and playful meme art styles, reminiscent of vintage internet culture."
+  ],
+  "visualSummary": "The card features a playful and chaotic maze with a black background and colorful, childlike scribbles in red, green, blue, yellow, and purple. The text and symbols are scattered around the maze, giving it a whimsical and cryptic vibe. The border is adorned with arrows, and there's a checkbox at the bottom, reminiscent of a CAPTCHA, adding an interactive element.",
+  "visualSummaryShort": "The card showcases a vibrant and chaotic maze filled with colorful scribbles against a black background. It features whimsical elements like arrows and a CAPTCHA checkbox, enhancing its playful mood.",
+  "visualKeywords": [
+    "maze",
+    "colorful scribbles",
+    "black background",
+    "whimsical",
+    "arrows",
+    "checkbox",
+    "playful",
+    "chaotic"
+  ],
+  "textKeywords": [
+    "not",
+    "scarymaze",
+    "level",
+    "solve",
+    "captcha",
+    "fren",
+    "robot"
+  ],
+  "keywords": [
+    "maze",
+    "colorful scribbles",
+    "black background",
+    "whimsical",
+    "arrows",
+    "checkbox",
+    "playful",
+    "chaotic",
+    "not",
+    "scarymaze",
+    "level",
+    "solve",
+    "captcha",
+    "fren",
+    "robot"
+  ],
+  "embeddingInput": "NOTSCARYMAZE (Fake Rares) - Series 9 Card 14\nArtist: Darkfarms\nSupply 22 Issued August 2022\nOn-card text: NOT SCARYMAZE | LEVEL 3 | SOLVE THE CAPTCHA, FREN | I'm not a robot, am fren\nVisual summary: The card features a playful and chaotic maze with a black background and colorful, childlike scribbles in red, green, blue, yellow, and purple. The text and symbols are scattered around the maze, giving it a whimsical and cryptic vibe. The border is adorned with arrows, and there's a checkbox at the bottom, reminiscent of a CAPTCHA, adding an interactive element.\nMemetic references: References to classic internet mazes and CAPTCHA challenges.; Use of \"fren,\" a term popular in meme and crypto communities.; Visual nods to chaotic and playful meme art styles, reminiscent of vintage internet culture.",
+  "embeddingBlocks": [
+    {
+      "id": "NOTSCARYMAZE#text",
+      "label": "On-card text",
+      "text": "NOT SCARYMAZE | LEVEL 3 | SOLVE THE CAPTCHA, FREN | I'm not a robot, am fren",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "NOTSCARYMAZE#memetic",
+      "label": "Memetic references",
+      "text": "References to classic internet mazes and CAPTCHA challenges.\nUse of \"fren,\" a term popular in meme and crypto communities.\nVisual nods to chaotic and playful meme art styles, reminiscent of vintage internet culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "NOTSCARYMAZE#visual",
+      "label": "Visual summary",
+      "text": "The card features a playful and chaotic maze with a black background and colorful, childlike scribbles in red, green, blue, yellow, and purple. The text and symbols are scattered around the maze, giving it a whimsical and cryptic vibe. The border is adorned with arrows, and there's a checkbox at the bottom, reminiscent of a CAPTCHA, adding an interactive element.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "NOTSCARYMAZE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nNOT SCARYMAZE  \nLEVEL 3  \nSOLVE THE CAPTCHA, FREN  \nI'm not a robot, am fren\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a playful and chaotic maze with a black background and colorful, childlike scribbles in red, green, blue, yellow, and purple. The text and symbols are scattered around the maze, giving it a whimsical and cryptic vibe. The border is adorned with arrows, and there's a checkbox at the bottom, reminiscent of a CAPTCHA, adding an interactive element.\n\n🧬 **MEMETIC DNA:**\n- References to classic internet mazes and CAPTCHA challenges.\n- Use of \"fren,\" a term popular in meme and crypto communities.\n- Visual nods to chaotic and playful meme art styles, reminiscent of vintage internet culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.802Z",
+  "sourceFactVersion": 1
+}

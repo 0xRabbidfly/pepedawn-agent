@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "asset": "READYTOKEK",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 5,
+  "artist": "HNFT Pepe",
+  "supply": 21,
+  "issuance": "September 2025",
+  "textOnCard": [
+    "READY TO KEK"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference, a staple in meme culture.",
+    "\"Kek\" is a meme term often associated with laughter and the online gaming community.",
+    "The meditative pose suggests a Zen-like calmness amidst chaos, possibly referencing crypto market volatility."
+  ],
+  "visualSummary": "The card features a pixelated image of a humanoid figure with a Pepe-like face, seated in a meditative pose. The background shifts from a golden yellow at the bottom to a teal blue at the top, creating a warm, gradient effect. The art style is reminiscent of retro video game graphics, with a dot matrix texture adding a vintage feel.",
+  "visualSummaryShort": "The card showcases a pixelated humanoid figure with a Pepe-like face in a meditative pose. The background features a warm gradient from golden yellow to teal blue, enhancing the retro video game aesthetic.",
+  "visualKeywords": [
+    "pixelated",
+    "humanoid",
+    "meditative",
+    "pepe-like",
+    "gradient",
+    "yellow",
+    "teal",
+    "retro",
+    "dot matrix",
+    "vintage"
+  ],
+  "textKeywords": [
+    "ready",
+    "kek"
+  ],
+  "keywords": [
+    "pixelated",
+    "humanoid",
+    "meditative",
+    "pepe-like",
+    "gradient",
+    "yellow",
+    "teal",
+    "retro",
+    "dot matrix",
+    "vintage",
+    "ready",
+    "kek"
+  ],
+  "embeddingInput": "READYTOKEK (Fake Rares) - Series 18 Card 5\nArtist: HNFT Pepe\nSupply 21 Issued September 2025\nOn-card text: READY TO KEK\nVisual summary: The card features a pixelated image of a humanoid figure with a Pepe-like face, seated in a meditative pose. The background shifts from a golden yellow at the bottom to a teal blue at the top, creating a warm, gradient effect. The art style is reminiscent of retro video game graphics, with a dot matrix texture adding a vintage feel.\nMemetic references: Pepe the Frog reference, a staple in meme culture.; \"Kek\" is a meme term often associated with laughter and the online gaming community.; The meditative pose suggests a Zen-like calmness amidst chaos, possibly referencing crypto market volatility.",
+  "embeddingBlocks": [
+    {
+      "id": "READYTOKEK#text",
+      "label": "On-card text",
+      "text": "READY TO KEK",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "READYTOKEK#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference, a staple in meme culture.\n\"Kek\" is a meme term often associated with laughter and the online gaming community.\nThe meditative pose suggests a Zen-like calmness amidst chaos, possibly referencing crypto market volatility.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "READYTOKEK#visual",
+      "label": "Visual summary",
+      "text": "The card features a pixelated image of a humanoid figure with a Pepe-like face, seated in a meditative pose. The background shifts from a golden yellow at the bottom to a teal blue at the top, creating a warm, gradient effect. The art style is reminiscent of retro video game graphics, with a dot matrix texture adding a vintage feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "READYTOKEK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nREADY TO KEK\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a pixelated image of a humanoid figure with a Pepe-like face, seated in a meditative pose. The background shifts from a golden yellow at the bottom to a teal blue at the top, creating a warm, gradient effect. The art style is reminiscent of retro video game graphics, with a dot matrix texture adding a vintage feel.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference, a staple in meme culture.\n- \"Kek\" is a meme term often associated with laughter and the online gaming community.\n- The meditative pose suggests a Zen-like calmness amidst chaos, possibly referencing crypto market volatility.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.077Z",
+  "sourceFactVersion": 1
+}

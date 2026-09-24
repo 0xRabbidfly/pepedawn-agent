@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "asset": "ERNSTFAKE",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 11,
+  "artist": "SaSHA-256",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "In a decaying society, art, if it is truthful, must also reflect decay."
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery.",
+    "References to societal decay, hinting at philosophical or existential themes.",
+    "The use of Pepe aligns with crypto and NFT culture, often symbolizing the ups and downs of the market."
+  ],
+  "visualSummary": "The card features a central image of Pepe the Frog with a reflective, somber expression. The background is a stark black, which contrasts with the bright green of Pepe and the yellow text above. The artistic style leans towards a minimalist, hand-drawn aesthetic, giving it a raw and introspective vibe.",
+  "visualSummaryShort": "The card showcases Pepe the Frog with a reflective expression against a stark black background. The minimalist, hand-drawn style enhances the introspective mood.",
+  "visualKeywords": [
+    "pepe the frog",
+    "black background",
+    "green",
+    "yellow text",
+    "minimalist",
+    "hand-drawn",
+    "introspective"
+  ],
+  "textKeywords": [
+    "decaying",
+    "society",
+    "art",
+    "truthful",
+    "must",
+    "reflect",
+    "decay"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "black background",
+    "green",
+    "yellow text",
+    "minimalist",
+    "hand-drawn",
+    "introspective",
+    "decaying",
+    "society",
+    "art",
+    "truthful",
+    "must",
+    "reflect",
+    "decay"
+  ],
+  "embeddingInput": "ERNSTFAKE (Fake Rares) - Series 3 Card 11\nArtist: SaSHA-256\nSupply 100 Issued October 2021\nOn-card text: In a decaying society, art, if it is truthful, must also reflect decay.\nVisual summary: The card features a central image of Pepe the Frog with a reflective, somber expression. The background is a stark black, which contrasts with the bright green of Pepe and the yellow text above. The artistic style leans towards a minimalist, hand-drawn aesthetic, giving it a raw and introspective vibe.\nMemetic references: Classic Pepe the Frog imagery.; References to societal decay, hinting at philosophical or existential themes.; The use of Pepe aligns with crypto and NFT culture, often symbolizing the ups and downs of the market.",
+  "embeddingBlocks": [
+    {
+      "id": "ERNSTFAKE#text",
+      "label": "On-card text",
+      "text": "In a decaying society, art, if it is truthful, must also reflect decay.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "ERNSTFAKE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery.\nReferences to societal decay, hinting at philosophical or existential themes.\nThe use of Pepe aligns with crypto and NFT culture, often symbolizing the ups and downs of the market.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "ERNSTFAKE#visual",
+      "label": "Visual summary",
+      "text": "The card features a central image of Pepe the Frog with a reflective, somber expression. The background is a stark black, which contrasts with the bright green of Pepe and the yellow text above. The artistic style leans towards a minimalist, hand-drawn aesthetic, giving it a raw and introspective vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "ERNSTFAKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nIn a decaying society, art, if it is truthful, must also reflect decay.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a central image of Pepe the Frog with a reflective, somber expression. The background is a stark black, which contrasts with the bright green of Pepe and the yellow text above. The artistic style leans towards a minimalist, hand-drawn aesthetic, giving it a raw and introspective vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery.\n- References to societal decay, hinting at philosophical or existential themes.\n- The use of Pepe aligns with crypto and NFT culture, often symbolizing the ups and downs of the market.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.428Z",
+  "sourceFactVersion": 1
+}

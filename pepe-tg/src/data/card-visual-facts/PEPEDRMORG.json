@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "asset": "PEPEDRMORG",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 31,
+  "artist": "BLISSFULMORG",
+  "supply": 21,
+  "issuance": "January 2023",
+  "textOnCard": [
+    "feel healthy man!!!, Incredible, dr., signor, dank, @rareauto, rareauto, signory of dr. zombio, Grand Rare Auto"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in a humorous doctor persona.",
+    "References to health and wellness memes (\"feel healthy man!!!\").",
+    "Elements of crypto culture with @rareauto and \"Grand Rare Auto\".",
+    "Playful nod to the video game \"Grand Theft Auto\" with the title twist."
+  ],
+  "visualSummary": "The card features a Pepe the Frog character dressed in a doctor's lab coat with a tie, set against a vibrant cityscape. The color palette is a mix of bright yellows, greens, and blues with contrasting black and white elements, creating an eye-catching and dynamic composition. The style blends digital collage with pop art influences, incorporating various layers and textures.",
+  "visualSummaryShort": "The card showcases a Pepe the Frog character in a doctor's lab coat against a lively city backdrop. The vibrant color palette and dynamic composition create an engaging visual experience.",
+  "visualKeywords": [
+    "pepe the frog",
+    "doctor",
+    "cityscape",
+    "bright colors",
+    "pop art",
+    "collage",
+    "dynamic",
+    "vibrant",
+    "textures",
+    "contrast"
+  ],
+  "textKeywords": [
+    "feel",
+    "healthy",
+    "man",
+    "incredible",
+    "signor",
+    "dank",
+    "rareauto",
+    "signory",
+    "zombio",
+    "grand",
+    "auto"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "doctor",
+    "cityscape",
+    "bright colors",
+    "pop art",
+    "collage",
+    "dynamic",
+    "vibrant",
+    "textures",
+    "contrast",
+    "feel",
+    "healthy",
+    "man",
+    "incredible",
+    "signor",
+    "dank",
+    "rareauto",
+    "signory",
+    "zombio",
+    "grand",
+    "auto"
+  ],
+  "embeddingInput": "PEPEDRMORG (Fake Rares) - Series 16 Card 31\nArtist: BLISSFULMORG\nSupply 21 Issued January 2023\nOn-card text: feel healthy man!!!, Incredible, dr., signor, dank, @rareauto, rareauto, signory of dr. zombio, Grand Rare Auto\nVisual summary: The card features a Pepe the Frog character dressed in a doctor's lab coat with a tie, set against a vibrant cityscape. The color palette is a mix of bright yellows, greens, and blues with contrasting black and white elements, creating an eye-catching and dynamic composition. The style blends digital collage with pop art influences, incorporating various layers and textures.\nMemetic references: Pepe the Frog in a humorous doctor persona.; References to health and wellness memes (\"feel healthy man!!!\").; Elements of crypto culture with @rareauto and \"Grand Rare Auto\".; Playful nod to the video game \"Grand Theft Auto\" with the title twist.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEDRMORG#text",
+      "label": "On-card text",
+      "text": "feel healthy man!!!, Incredible, dr., signor, dank, @rareauto, rareauto, signory of dr. zombio, Grand Rare Auto",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEDRMORG#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in a humorous doctor persona.\nReferences to health and wellness memes (\"feel healthy man!!!\").\nElements of crypto culture with @rareauto and \"Grand Rare Auto\".\nPlayful nod to the video game \"Grand Theft Auto\" with the title twist.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEDRMORG#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe the Frog character dressed in a doctor's lab coat with a tie, set against a vibrant cityscape. The color palette is a mix of bright yellows, greens, and blues with contrasting black and white elements, creating an eye-catching and dynamic composition. The style blends digital collage with pop art influences, incorporating various layers and textures.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEDRMORG#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nfeel healthy man!!!, Incredible, dr., signor, dank, @rareauto, rareauto, signory of dr. zombio, Grand Rare Auto\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe the Frog character dressed in a doctor's lab coat with a tie, set against a vibrant cityscape. The color palette is a mix of bright yellows, greens, and blues with contrasting black and white elements, creating an eye-catching and dynamic composition. The style blends digital collage with pop art influences, incorporating various layers and textures.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in a humorous doctor persona.\n- References to health and wellness memes (\"feel healthy man!!!\").\n- Elements of crypto culture with @rareauto and \"Grand Rare Auto\".\n- Playful nod to the video game \"Grand Theft Auto\" with the title twist.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.873Z",
+  "sourceFactVersion": 1
+}

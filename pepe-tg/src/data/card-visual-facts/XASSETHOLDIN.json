@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "XASSETHOLDIN",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 8,
+  "artist": "Hammad x Doge-Style",
+  "supply": 100,
+  "issuance": "September 2015",
+  "textOnCard": [
+    "XASSETHOLDIN"
+  ],
+  "memeticReferences": [
+    "Pepe characters in a business setting.",
+    "Bitcoin and cryptocurrency charts on screens.",
+    "References to trading culture with laptops, charts, and a cigar.",
+    "The phrase \"XASSETHOLDIN\" plays on the \"HODL\" meme."
+  ],
+  "visualSummary": "The scene is a high-powered boardroom meeting with a city skyline backdrop. A diverse group of green-skinned characters, typical of Pepe lore, are gathered around a table with laptops, tablets, and charts. The color palette is vibrant, with bold greens and reds, and the central figure sports a flamboyant suit adorned with Bitcoin symbols.",
+  "visualSummaryShort": "A vibrant boardroom scene features green-skinned characters engaged in a meeting with a city skyline in the background. The central figure stands out in a flamboyant suit decorated with Bitcoin symbols.",
+  "visualKeywords": [
+    "boardroom",
+    "green-skinned",
+    "city skyline",
+    "laptops",
+    "charts",
+    "flamboyant suit",
+    "bitcoin",
+    "vibrant colors",
+    "diverse group",
+    "table"
+  ],
+  "textKeywords": [
+    "xassetholdin"
+  ],
+  "keywords": [
+    "boardroom",
+    "green-skinned",
+    "city skyline",
+    "laptops",
+    "charts",
+    "flamboyant suit",
+    "bitcoin",
+    "vibrant colors",
+    "diverse group",
+    "table",
+    "xassetholdin"
+  ],
+  "embeddingInput": "XASSETHOLDIN (Fake Rares) - Series 9 Card 8\nArtist: Hammad x Doge-Style\nSupply 100 Issued September 2015\nOn-card text: XASSETHOLDIN\nVisual summary: The scene is a high-powered boardroom meeting with a city skyline backdrop. A diverse group of green-skinned characters, typical of Pepe lore, are gathered around a table with laptops, tablets, and charts. The color palette is vibrant, with bold greens and reds, and the central figure sports a flamboyant suit adorned with Bitcoin symbols.\nMemetic references: Pepe characters in a business setting.; Bitcoin and cryptocurrency charts on screens.; References to trading culture with laptops, charts, and a cigar.; The phrase \"XASSETHOLDIN\" plays on the \"HODL\" meme.",
+  "embeddingBlocks": [
+    {
+      "id": "XASSETHOLDIN#text",
+      "label": "On-card text",
+      "text": "XASSETHOLDIN",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "XASSETHOLDIN#memetic",
+      "label": "Memetic references",
+      "text": "Pepe characters in a business setting.\nBitcoin and cryptocurrency charts on screens.\nReferences to trading culture with laptops, charts, and a cigar.\nThe phrase \"XASSETHOLDIN\" plays on the \"HODL\" meme.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "XASSETHOLDIN#visual",
+      "label": "Visual summary",
+      "text": "The scene is a high-powered boardroom meeting with a city skyline backdrop. A diverse group of green-skinned characters, typical of Pepe lore, are gathered around a table with laptops, tablets, and charts. The color palette is vibrant, with bold greens and reds, and the central figure sports a flamboyant suit adorned with Bitcoin symbols.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "XASSETHOLDIN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nXASSETHOLDIN\n\n🎨 **VISUAL BREAKDOWN:**\nThe scene is a high-powered boardroom meeting with a city skyline backdrop. A diverse group of green-skinned characters, typical of Pepe lore, are gathered around a table with laptops, tablets, and charts. The color palette is vibrant, with bold greens and reds, and the central figure sports a flamboyant suit adorned with Bitcoin symbols.\n\n🧬 **MEMETIC DNA:**\n- Pepe characters in a business setting.\n- Bitcoin and cryptocurrency charts on screens.\n- References to trading culture with laptops, charts, and a cigar.\n- The phrase \"XASSETHOLDIN\" plays on the \"HODL\" meme.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.190Z",
+  "sourceFactVersion": 1
+}

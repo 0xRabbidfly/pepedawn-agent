@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "FAKESOL",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 12,
+  "artist": "Nikolina Petolas",
+  "supply": 44,
+  "issuance": "August 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "The hooded figure might evoke the archetype of a wizard or a sage, common in fantasy lore.",
+    "The orb floating near the figure could reference mystical or magical powers, akin to the speculative nature of crypto.",
+    "The lush, overgrown setting adds a touch of mystery and exploration, resonating with the adventurous spirit of NFT culture."
+  ],
+  "visualSummary": "The artwork features a mysterious, hooded figure in a flowing red robe, standing atop a staircase surrounded by lush greenery. The scene is set in a mystical, ethereal environment, with soft, diffused lighting emanating from a bright, circular source behind the figure. The color palette is rich with greens and reds, creating a serene yet enigmatic atmosphere, while the detailed brushwork gives it a classic, painterly style.",
+  "visualSummaryShort": "A hooded figure in a flowing red robe stands on a staircase amidst lush greenery. The scene is illuminated by soft, diffused lighting, creating a mystical atmosphere.",
+  "visualKeywords": [
+    "hooded figure",
+    "red robe",
+    "staircase",
+    "greenery",
+    "ethereal",
+    "soft lighting",
+    "mystical",
+    "painterly style"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "hooded figure",
+    "red robe",
+    "staircase",
+    "greenery",
+    "ethereal",
+    "soft lighting",
+    "mystical",
+    "painterly style"
+  ],
+  "embeddingInput": "FAKESOL (Fake Rares) - Series 16 Card 12\nArtist: Nikolina Petolas\nSupply 44 Issued August 2023\nOn-card text: none detected\nVisual summary: The artwork features a mysterious, hooded figure in a flowing red robe, standing atop a staircase surrounded by lush greenery. The scene is set in a mystical, ethereal environment, with soft, diffused lighting emanating from a bright, circular source behind the figure. The color palette is rich with greens and reds, creating a serene yet enigmatic atmosphere, while the detailed brushwork gives it a classic, painterly style.\nMemetic references: The hooded figure might evoke the archetype of a wizard or a sage, common in fantasy lore.; The orb floating near the figure could reference mystical or magical powers, akin to the speculative nature of crypto.; The lush, overgrown setting adds a touch of mystery and exploration, resonating with the adventurous spirit of NFT culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKESOL#memetic",
+      "label": "Memetic references",
+      "text": "The hooded figure might evoke the archetype of a wizard or a sage, common in fantasy lore.\nThe orb floating near the figure could reference mystical or magical powers, akin to the speculative nature of crypto.\nThe lush, overgrown setting adds a touch of mystery and exploration, resonating with the adventurous spirit of NFT culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKESOL#visual",
+      "label": "Visual summary",
+      "text": "The artwork features a mysterious, hooded figure in a flowing red robe, standing atop a staircase surrounded by lush greenery. The scene is set in a mystical, ethereal environment, with soft, diffused lighting emanating from a bright, circular source behind the figure. The color palette is rich with greens and reds, creating a serene yet enigmatic atmosphere, while the detailed brushwork gives it a classic, painterly style.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKESOL#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe artwork features a mysterious, hooded figure in a flowing red robe, standing atop a staircase surrounded by lush greenery. The scene is set in a mystical, ethereal environment, with soft, diffused lighting emanating from a bright, circular source behind the figure. The color palette is rich with greens and reds, creating a serene yet enigmatic atmosphere, while the detailed brushwork gives it a classic, painterly style.\n\n🧬 **MEMETIC DNA:**\n- The hooded figure might evoke the archetype of a wizard or a sage, common in fantasy lore.\n- The orb floating near the figure could reference mystical or magical powers, akin to the speculative nature of crypto.\n- The lush, overgrown setting adds a touch of mystery and exploration, resonating with the adventurous spirit of NFT culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.578Z",
+  "sourceFactVersion": 1
+}

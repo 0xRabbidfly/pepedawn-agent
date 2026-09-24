@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "PEPEXTREME",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 5,
+  "artist": "Aera One",
+  "supply": 32,
+  "issuance": "November 2022",
+  "textOnCard": [
+    "BTCXCP, PEPEXTREME"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog is piloting the speedboat, a nod to the popular internet meme.",
+    "The use of \"BTCXCP\" connects to Bitcoin and Counterparty, reflecting the NFT culture.",
+    "The card captures the spirit of adventure and extreme sports, common in meme culture."
+  ],
+  "visualSummary": "The card features a vibrant scene of a speedboat slicing through deep blue waters with a city skyline in the background. The color palette is a mix of cool blues, purples, and a splash of warm light reflecting off the water, giving it a dynamic and energetic feel. The cityscape is rendered in a semi-abstract style, with detailed lights and reflections, while the foreground is dominated by the boat and its wake, emphasizing motion and speed.",
+  "visualSummaryShort": "The card showcases a speedboat navigating through deep blue waters with a vibrant city skyline behind it. The scene is filled with cool colors and dynamic reflections, creating an energetic atmosphere.",
+  "visualKeywords": [
+    "speedboat",
+    "blue waters",
+    "city skyline",
+    "cool colors",
+    "reflections",
+    "motion",
+    "energetic",
+    "abstract"
+  ],
+  "textKeywords": [
+    "btcxcp",
+    "pepextreme"
+  ],
+  "keywords": [
+    "speedboat",
+    "blue waters",
+    "city skyline",
+    "cool colors",
+    "reflections",
+    "motion",
+    "energetic",
+    "abstract",
+    "btcxcp",
+    "pepextreme"
+  ],
+  "embeddingInput": "PEPEXTREME (Fake Rares) - Series 12 Card 5\nArtist: Aera One\nSupply 32 Issued November 2022\nOn-card text: BTCXCP, PEPEXTREME\nVisual summary: The card features a vibrant scene of a speedboat slicing through deep blue waters with a city skyline in the background. The color palette is a mix of cool blues, purples, and a splash of warm light reflecting off the water, giving it a dynamic and energetic feel. The cityscape is rendered in a semi-abstract style, with detailed lights and reflections, while the foreground is dominated by the boat and its wake, emphasizing motion and speed.\nMemetic references: Pepe the Frog is piloting the speedboat, a nod to the popular internet meme.; The use of \"BTCXCP\" connects to Bitcoin and Counterparty, reflecting the NFT culture.; The card captures the spirit of adventure and extreme sports, common in meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEXTREME#text",
+      "label": "On-card text",
+      "text": "BTCXCP, PEPEXTREME",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEXTREME#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog is piloting the speedboat, a nod to the popular internet meme.\nThe use of \"BTCXCP\" connects to Bitcoin and Counterparty, reflecting the NFT culture.\nThe card captures the spirit of adventure and extreme sports, common in meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEXTREME#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant scene of a speedboat slicing through deep blue waters with a city skyline in the background. The color palette is a mix of cool blues, purples, and a splash of warm light reflecting off the water, giving it a dynamic and energetic feel. The cityscape is rendered in a semi-abstract style, with detailed lights and reflections, while the foreground is dominated by the boat and its wake, emphasizing motion and speed.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEXTREME#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nBTCXCP, PEPEXTREME\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant scene of a speedboat slicing through deep blue waters with a city skyline in the background. The color palette is a mix of cool blues, purples, and a splash of warm light reflecting off the water, giving it a dynamic and energetic feel. The cityscape is rendered in a semi-abstract style, with detailed lights and reflections, while the foreground is dominated by the boat and its wake, emphasizing motion and speed.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog is piloting the speedboat, a nod to the popular internet meme.\n- The use of \"BTCXCP\" connects to Bitcoin and Counterparty, reflecting the NFT culture.\n- The card captures the spirit of adventure and extreme sports, common in meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.015Z",
+  "sourceFactVersion": 1
+}

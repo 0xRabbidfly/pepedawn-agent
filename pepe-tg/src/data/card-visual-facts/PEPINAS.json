@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "PEPINAS",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 19,
+  "artist": "Luis Simo",
+  "supply": 21,
+  "issuance": "May 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as a central meme figure.",
+    "Reference to \"Las Meninas,\" a famous 17th-century Spanish painting.",
+    "Classic art meets modern meme culture, a nod to the intersection of high and low art."
+  ],
+  "visualSummary": "This NFT card features a parody of the classic painting \"Las Meninas\" by Diego Velázquez, with all characters depicted as Pepe the Frog. The composition stays true to the original, with a rich, dark color palette that highlights the ornate, historical setting. The intricate golden frame enhances the regal and timeless feel of the artwork.",
+  "visualSummaryShort": "The card showcases a parody of 'Las Meninas' with characters as Pepe the Frog, set in a rich, dark color palette. An intricate golden frame adds a regal touch to the artwork.",
+  "visualKeywords": [
+    "pepe the frog",
+    "dark palette",
+    "golden frame",
+    "historical setting",
+    "parody",
+    "ornate",
+    "regal",
+    "timeless"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "dark palette",
+    "golden frame",
+    "historical setting",
+    "parody",
+    "ornate",
+    "regal",
+    "timeless"
+  ],
+  "embeddingInput": "PEPINAS (Fake Rares) - Series 14 Card 19\nArtist: Luis Simo\nSupply 21 Issued May 2023\nOn-card text: none detected\nVisual summary: This NFT card features a parody of the classic painting \"Las Meninas\" by Diego Velázquez, with all characters depicted as Pepe the Frog. The composition stays true to the original, with a rich, dark color palette that highlights the ornate, historical setting. The intricate golden frame enhances the regal and timeless feel of the artwork.\nMemetic references: Pepe the Frog as a central meme figure.; Reference to \"Las Meninas,\" a famous 17th-century Spanish painting.; Classic art meets modern meme culture, a nod to the intersection of high and low art.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPINAS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central meme figure.\nReference to \"Las Meninas,\" a famous 17th-century Spanish painting.\nClassic art meets modern meme culture, a nod to the intersection of high and low art.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPINAS#visual",
+      "label": "Visual summary",
+      "text": "This NFT card features a parody of the classic painting \"Las Meninas\" by Diego Velázquez, with all characters depicted as Pepe the Frog. The composition stays true to the original, with a rich, dark color palette that highlights the ornate, historical setting. The intricate golden frame enhances the regal and timeless feel of the artwork.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPINAS#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis NFT card features a parody of the classic painting \"Las Meninas\" by Diego Velázquez, with all characters depicted as Pepe the Frog. The composition stays true to the original, with a rich, dark color palette that highlights the ornate, historical setting. The intricate golden frame enhances the regal and timeless feel of the artwork.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central meme figure.\n- Reference to \"Las Meninas,\" a famous 17th-century Spanish painting.\n- Classic art meets modern meme culture, a nod to the intersection of high and low art.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.019Z",
+  "sourceFactVersion": 1
+}

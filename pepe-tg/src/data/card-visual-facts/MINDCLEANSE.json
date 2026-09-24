@@ -1,0 +1,120 @@
+{
+  "version": 1,
+  "asset": "MINDCLEANSE",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 6,
+  "artist": "uttermelon",
+  "supply": 31,
+  "issuance": "September 2025",
+  "textOnCard": [
+    "Mind-Cleanse Service",
+    "\"A cleansed mind is the first step to the next bull run!\"",
+    "Guaranteed to remove FOMO, FUD and regrets.",
+    "99% of traders report feeling bullish after one wash!"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in a pseudo-professional role.",
+    "References to crypto trading emotions: FOMO (Fear of Missing Out) and FUD (Fear, Uncertainty, Doubt).",
+    "Plays on the concept of mental cleansing before a bull run, a nod to crypto market cycles."
+  ],
+  "visualSummary": "The card features a stylized depiction of Pepe the Frog in a barber-like setting, washing the head of another character. The color palette includes muted blues, greens, and whites, giving a vintage, almost tapestry-like feel. The intricate background pattern and the expressive faces add a humorous yet refined touch to the artwork.",
+  "visualSummaryShort": "The card showcases a humorous scene with Pepe the Frog in a barber-like setting, washing another character's head. The muted color palette and intricate background create a vintage, tapestry-like atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "barber",
+    "washing",
+    "muted colors",
+    "vintage",
+    "intricate background",
+    "humorous",
+    "expressive faces"
+  ],
+  "textKeywords": [
+    "mind",
+    "cleanse",
+    "service",
+    "cleansed",
+    "first",
+    "step",
+    "next",
+    "bull",
+    "run",
+    "guaranteed",
+    "remove",
+    "fomo",
+    "fud",
+    "regrets",
+    "traders",
+    "report",
+    "feeling",
+    "bullish",
+    "after",
+    "one",
+    "wash"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "barber",
+    "washing",
+    "muted colors",
+    "vintage",
+    "intricate background",
+    "humorous",
+    "expressive faces",
+    "mind",
+    "cleanse",
+    "service",
+    "cleansed",
+    "first",
+    "step",
+    "next",
+    "bull",
+    "run",
+    "guaranteed",
+    "remove",
+    "fomo",
+    "fud",
+    "regrets",
+    "traders",
+    "report",
+    "feeling",
+    "bullish",
+    "after",
+    "one",
+    "wash"
+  ],
+  "embeddingInput": "MINDCLEANSE (Fake Rares) - Series 18 Card 6\nArtist: uttermelon\nSupply 31 Issued September 2025\nOn-card text: Mind-Cleanse Service | \"A cleansed mind is the first step to the next bull run!\" | Guaranteed to remove FOMO, FUD and regrets. | 99% of traders report feeling bullish after one wash!\nVisual summary: The card features a stylized depiction of Pepe the Frog in a barber-like setting, washing the head of another character. The color palette includes muted blues, greens, and whites, giving a vintage, almost tapestry-like feel. The intricate background pattern and the expressive faces add a humorous yet refined touch to the artwork.\nMemetic references: Pepe the Frog in a pseudo-professional role.; References to crypto trading emotions: FOMO (Fear of Missing Out) and FUD (Fear, Uncertainty, Doubt).; Plays on the concept of mental cleansing before a bull run, a nod to crypto market cycles.",
+  "embeddingBlocks": [
+    {
+      "id": "MINDCLEANSE#text",
+      "label": "On-card text",
+      "text": "Mind-Cleanse Service | \"A cleansed mind is the first step to the next bull run!\" | Guaranteed to remove FOMO, FUD and regrets. | 99% of traders report feeling bullish after one wash!",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MINDCLEANSE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in a pseudo-professional role.\nReferences to crypto trading emotions: FOMO (Fear of Missing Out) and FUD (Fear, Uncertainty, Doubt).\nPlays on the concept of mental cleansing before a bull run, a nod to crypto market cycles.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MINDCLEANSE#visual",
+      "label": "Visual summary",
+      "text": "The card features a stylized depiction of Pepe the Frog in a barber-like setting, washing the head of another character. The color palette includes muted blues, greens, and whites, giving a vintage, almost tapestry-like feel. The intricate background pattern and the expressive faces add a humorous yet refined touch to the artwork.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MINDCLEANSE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nMind-Cleanse Service  \n\"A cleansed mind is the first step to the next bull run!\"  \nGuaranteed to remove FOMO, FUD and regrets.  \n99% of traders report feeling bullish after one wash!\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a stylized depiction of Pepe the Frog in a barber-like setting, washing the head of another character. The color palette includes muted blues, greens, and whites, giving a vintage, almost tapestry-like feel. The intricate background pattern and the expressive faces add a humorous yet refined touch to the artwork.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in a pseudo-professional role.\n- References to crypto trading emotions: FOMO (Fear of Missing Out) and FUD (Fear, Uncertainty, Doubt).\n- Plays on the concept of mental cleansing before a bull run, a nod to crypto market cycles.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.772Z",
+  "sourceFactVersion": 1
+}

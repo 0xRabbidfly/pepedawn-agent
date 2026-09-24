@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "asset": "FAKEMASTER",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 28,
+  "artist": "Pepenardo",
+  "supply": 100,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "Ich treibt Exepike lies."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reimagined as Beethoven.",
+    "Classical music and art references.",
+    "Combines high culture with internet meme culture."
+  ],
+  "visualSummary": "The card features a figure with Pepe's iconic green face, styled as Beethoven with wild grey hair, wearing a deep blue coat and bright orange cravat. He's holding a quill and a sheet of music, set against a dramatic, classical landscape with a vibrant sunset and mountainous background. The artwork blends classical portraiture with a surreal, meme-infused twist.",
+  "visualSummaryShort": "The card depicts a Pepe-inspired figure styled as Beethoven, complete with wild grey hair and a colorful outfit. The background features a dramatic sunset over mountains, enhancing the surreal and classical atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "beethoven",
+    "grey hair",
+    "blue coat",
+    "orange cravat",
+    "quill",
+    "music sheet",
+    "sunset",
+    "mountains",
+    "classical landscape"
+  ],
+  "textKeywords": [
+    "ich",
+    "treibt",
+    "exepike",
+    "lies"
+  ],
+  "keywords": [
+    "pepe",
+    "beethoven",
+    "grey hair",
+    "blue coat",
+    "orange cravat",
+    "quill",
+    "music sheet",
+    "sunset",
+    "mountains",
+    "classical landscape",
+    "ich",
+    "treibt",
+    "exepike",
+    "lies"
+  ],
+  "embeddingInput": "FAKEMASTER (Fake Rares) - Series 7 Card 28\nArtist: Pepenardo\nSupply 100 Issued February 2022\nOn-card text: Ich treibt Exepike lies.\nVisual summary: The card features a figure with Pepe's iconic green face, styled as Beethoven with wild grey hair, wearing a deep blue coat and bright orange cravat. He's holding a quill and a sheet of music, set against a dramatic, classical landscape with a vibrant sunset and mountainous background. The artwork blends classical portraiture with a surreal, meme-infused twist.\nMemetic references: Pepe the Frog reimagined as Beethoven.; Classical music and art references.; Combines high culture with internet meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEMASTER#text",
+      "label": "On-card text",
+      "text": "Ich treibt Exepike lies.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEMASTER#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reimagined as Beethoven.\nClassical music and art references.\nCombines high culture with internet meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEMASTER#visual",
+      "label": "Visual summary",
+      "text": "The card features a figure with Pepe's iconic green face, styled as Beethoven with wild grey hair, wearing a deep blue coat and bright orange cravat. He's holding a quill and a sheet of music, set against a dramatic, classical landscape with a vibrant sunset and mountainous background. The artwork blends classical portraiture with a surreal, meme-infused twist.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEMASTER#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nIch treibt Exepike lies.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a figure with Pepe's iconic green face, styled as Beethoven with wild grey hair, wearing a deep blue coat and bright orange cravat. He's holding a quill and a sheet of music, set against a dramatic, classical landscape with a vibrant sunset and mountainous background. The artwork blends classical portraiture with a surreal, meme-infused twist.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reimagined as Beethoven.\n- Classical music and art references.\n- Combines high culture with internet meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.528Z",
+  "sourceFactVersion": 1
+}

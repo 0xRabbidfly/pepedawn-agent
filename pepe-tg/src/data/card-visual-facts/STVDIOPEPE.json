@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "asset": "STVDIOPEPE",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 18,
+  "artist": "STVDIO NOUVEAU",
+  "supply": 47,
+  "issuance": "November 2022",
+  "textOnCard": [
+    "STVDIOPEPE"
+  ],
+  "memeticReferences": [
+    "The robotic structure channels vibes of futuristic technology and innovation.",
+    "The green palette and geometric shapes nod to crypto culture, symbolizing growth and digital transformation.",
+    "The name \"STVDIOPEPE\" hints at a sophisticated twist on the classic Pepe meme."
+  ],
+  "visualSummary": "This card features a futuristic, robotic structure with green geometric shapes reminiscent of origami. It stands within a glass display case in a stark, modern environment with a muted color palette of greens and grays. The design includes intricate gold line patterns running vertically, adding a touch of elegance to the scene.",
+  "visualSummaryShort": "The card showcases a futuristic robotic structure surrounded by green geometric shapes in a modern glass display case. The muted color palette of greens and grays, along with intricate gold line patterns, creates an elegant atmosphere.",
+  "visualKeywords": [
+    "robotic structure",
+    "green shapes",
+    "glass display",
+    "modern environment",
+    "muted colors",
+    "gold patterns"
+  ],
+  "textKeywords": [
+    "stvdiopepe"
+  ],
+  "keywords": [
+    "robotic structure",
+    "green shapes",
+    "glass display",
+    "modern environment",
+    "muted colors",
+    "gold patterns",
+    "stvdiopepe"
+  ],
+  "embeddingInput": "STVDIOPEPE (Fake Rares) - Series 12 Card 18\nArtist: STVDIO NOUVEAU\nSupply 47 Issued November 2022\nOn-card text: STVDIOPEPE\nVisual summary: This card features a futuristic, robotic structure with green geometric shapes reminiscent of origami. It stands within a glass display case in a stark, modern environment with a muted color palette of greens and grays. The design includes intricate gold line patterns running vertically, adding a touch of elegance to the scene.\nMemetic references: The robotic structure channels vibes of futuristic technology and innovation.; The green palette and geometric shapes nod to crypto culture, symbolizing growth and digital transformation.; The name \"STVDIOPEPE\" hints at a sophisticated twist on the classic Pepe meme.",
+  "embeddingBlocks": [
+    {
+      "id": "STVDIOPEPE#text",
+      "label": "On-card text",
+      "text": "STVDIOPEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "STVDIOPEPE#memetic",
+      "label": "Memetic references",
+      "text": "The robotic structure channels vibes of futuristic technology and innovation.\nThe green palette and geometric shapes nod to crypto culture, symbolizing growth and digital transformation.\nThe name \"STVDIOPEPE\" hints at a sophisticated twist on the classic Pepe meme.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "STVDIOPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a futuristic, robotic structure with green geometric shapes reminiscent of origami. It stands within a glass display case in a stark, modern environment with a muted color palette of greens and grays. The design includes intricate gold line patterns running vertically, adding a touch of elegance to the scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "STVDIOPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nSTVDIOPEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a futuristic, robotic structure with green geometric shapes reminiscent of origami. It stands within a glass display case in a stark, modern environment with a muted color palette of greens and grays. The design includes intricate gold line patterns running vertically, adding a touch of elegance to the scene.\n\n🧬 **MEMETIC DNA:**\n- The robotic structure channels vibes of futuristic technology and innovation.\n- The green palette and geometric shapes nod to crypto culture, symbolizing growth and digital transformation.\n- The name \"STVDIOPEPE\" hints at a sophisticated twist on the classic Pepe meme.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.132Z",
+  "sourceFactVersion": 1
+}

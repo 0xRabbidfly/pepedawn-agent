@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "asset": "PROZACPEPE",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 29,
+  "artist": "Fake Annie",
+  "supply": 60,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "PROZAC PEPE",
+    "IM SO FAKE",
+    "THEY SAID TAKE THE PILLS, YOU'LL BE HAPPY AND GREEN...",
+    "SO WHY DO I FEEL PURPLE?"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference, central to NFT and meme culture.",
+    "Commentary on mental health and medication, hinted by \"Prozac\" and pills.",
+    "Elements of introspection and identity crisis, seen in the mirror reflection."
+  ],
+  "visualSummary": "The card features a green-skinned character standing in front of a bathroom mirror, reflecting a distorted version of Pepe the Frog. The mirror is smeared with red paint, and the countertop is littered with pills, a spilled drink, and a knife. The color palette is bold with greens, reds, and purples, creating a surreal and edgy atmosphere.",
+  "visualSummaryShort": "The card depicts a green-skinned character in front of a bathroom mirror, showcasing a distorted reflection. The scene is chaotic with pills, a spilled drink, and a knife, set against a bold color palette of greens, reds, and purples.",
+  "visualKeywords": [
+    "green-skinned",
+    "mirror",
+    "distorted reflection",
+    "red paint",
+    "pills",
+    "spilled drink",
+    "knife",
+    "bold colors",
+    "surreal",
+    "edgy"
+  ],
+  "textKeywords": [
+    "prozac",
+    "they",
+    "said",
+    "take",
+    "pills",
+    "you",
+    "happy",
+    "green",
+    "why",
+    "feel",
+    "purple"
+  ],
+  "keywords": [
+    "green-skinned",
+    "mirror",
+    "distorted reflection",
+    "red paint",
+    "pills",
+    "spilled drink",
+    "knife",
+    "bold colors",
+    "surreal",
+    "edgy",
+    "prozac",
+    "they",
+    "said",
+    "take",
+    "you",
+    "happy",
+    "green",
+    "why",
+    "feel",
+    "purple"
+  ],
+  "embeddingInput": "PROZACPEPE (Fake Rares) - Series 6 Card 29\nArtist: Fake Annie\nSupply 60 Issued March 2022\nOn-card text: PROZAC PEPE | IM SO FAKE | THEY SAID TAKE THE PILLS, YOU'LL BE HAPPY AND GREEN... | SO WHY DO I FEEL PURPLE?\nVisual summary: The card features a green-skinned character standing in front of a bathroom mirror, reflecting a distorted version of Pepe the Frog. The mirror is smeared with red paint, and the countertop is littered with pills, a spilled drink, and a knife. The color palette is bold with greens, reds, and purples, creating a surreal and edgy atmosphere.\nMemetic references: Pepe the Frog reference, central to NFT and meme culture.; Commentary on mental health and medication, hinted by \"Prozac\" and pills.; Elements of introspection and identity crisis, seen in the mirror reflection.",
+  "embeddingBlocks": [
+    {
+      "id": "PROZACPEPE#text",
+      "label": "On-card text",
+      "text": "PROZAC PEPE | IM SO FAKE | THEY SAID TAKE THE PILLS, YOU'LL BE HAPPY AND GREEN... | SO WHY DO I FEEL PURPLE?",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PROZACPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference, central to NFT and meme culture.\nCommentary on mental health and medication, hinted by \"Prozac\" and pills.\nElements of introspection and identity crisis, seen in the mirror reflection.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PROZACPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a green-skinned character standing in front of a bathroom mirror, reflecting a distorted version of Pepe the Frog. The mirror is smeared with red paint, and the countertop is littered with pills, a spilled drink, and a knife. The color palette is bold with greens, reds, and purples, creating a surreal and edgy atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PROZACPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPROZAC PEPE  \nIM SO FAKE  \nTHEY SAID TAKE THE PILLS, YOU'LL BE HAPPY AND GREEN...  \nSO WHY DO I FEEL PURPLE?\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a green-skinned character standing in front of a bathroom mirror, reflecting a distorted version of Pepe the Frog. The mirror is smeared with red paint, and the countertop is littered with pills, a spilled drink, and a knife. The color palette is bold with greens, reds, and purples, creating a surreal and edgy atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference, central to NFT and meme culture.\n- Commentary on mental health and medication, hinted by \"Prozac\" and pills.\n- Elements of introspection and identity crisis, seen in the mirror reflection.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.056Z",
+  "sourceFactVersion": 1
+}

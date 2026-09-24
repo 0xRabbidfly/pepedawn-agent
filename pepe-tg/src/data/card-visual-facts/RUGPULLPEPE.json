@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "asset": "RUGPULLPEPE",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 49,
+  "artist": "Mr. HODLPIG",
+  "supply": 120,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "MTGOX WHERE IS OUR MONEY"
+  ],
+  "memeticReferences": [
+    "References the Mt. Gox scandal, a major event in crypto history.",
+    "Pepe the Frog characters symbolize internet culture and meme cryptocurrency communities.",
+    "The figure with money bags suggests themes of financial scandal and mismanagement."
+  ],
+  "visualSummary": "The card features a central figure in a suit, carrying large sacks of money, surrounded by a chaotic scene. Several Pepe the Frog characters are depicted in various expressions of anger and protest, one holding a sign. The color palette is earthy with greens and browns, capturing a vintage cartoon aesthetic.",
+  "visualSummaryShort": "The card showcases a central figure in a suit with large sacks of money amidst a chaotic scene featuring angry Pepe the Frog characters. The earthy color palette of greens and browns enhances the vintage cartoon aesthetic.",
+  "visualKeywords": [
+    "suit",
+    "money",
+    "pepe",
+    "chaos",
+    "anger",
+    "protest",
+    "sign",
+    "earthy colors",
+    "vintage",
+    "cartoon"
+  ],
+  "textKeywords": [
+    "mtgox",
+    "where",
+    "our",
+    "money"
+  ],
+  "keywords": [
+    "suit",
+    "money",
+    "pepe",
+    "chaos",
+    "anger",
+    "protest",
+    "sign",
+    "earthy colors",
+    "vintage",
+    "cartoon",
+    "mtgox",
+    "where",
+    "our"
+  ],
+  "embeddingInput": "RUGPULLPEPE (Fake Rares) - Series 5 Card 49\nArtist: Mr. HODLPIG\nSupply 120 Issued October 2021\nOn-card text: MTGOX WHERE IS OUR MONEY\nVisual summary: The card features a central figure in a suit, carrying large sacks of money, surrounded by a chaotic scene. Several Pepe the Frog characters are depicted in various expressions of anger and protest, one holding a sign. The color palette is earthy with greens and browns, capturing a vintage cartoon aesthetic.\nMemetic references: References the Mt. Gox scandal, a major event in crypto history.; Pepe the Frog characters symbolize internet culture and meme cryptocurrency communities.; The figure with money bags suggests themes of financial scandal and mismanagement.",
+  "embeddingBlocks": [
+    {
+      "id": "RUGPULLPEPE#text",
+      "label": "On-card text",
+      "text": "MTGOX WHERE IS OUR MONEY",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "RUGPULLPEPE#memetic",
+      "label": "Memetic references",
+      "text": "References the Mt. Gox scandal, a major event in crypto history.\nPepe the Frog characters symbolize internet culture and meme cryptocurrency communities.\nThe figure with money bags suggests themes of financial scandal and mismanagement.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RUGPULLPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a central figure in a suit, carrying large sacks of money, surrounded by a chaotic scene. Several Pepe the Frog characters are depicted in various expressions of anger and protest, one holding a sign. The color palette is earthy with greens and browns, capturing a vintage cartoon aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RUGPULLPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nMTGOX WHERE IS OUR MONEY\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a central figure in a suit, carrying large sacks of money, surrounded by a chaotic scene. Several Pepe the Frog characters are depicted in various expressions of anger and protest, one holding a sign. The color palette is earthy with greens and browns, capturing a vintage cartoon aesthetic.\n\n🧬 **MEMETIC DNA:**\n- References the Mt. Gox scandal, a major event in crypto history.\n- Pepe the Frog characters symbolize internet culture and meme cryptocurrency communities.\n- The figure with money bags suggests themes of financial scandal and mismanagement.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.091Z",
+  "sourceFactVersion": 1
+}

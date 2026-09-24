@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "asset": "GRNLINEPEPE",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 38,
+  "artist": "Alth0tas",
+  "supply": 21,
+  "issuance": "December 2022",
+  "textOnCard": [
+    "GREEN LINE PEPE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple of meme culture.",
+    "Tarot card symbolism, suggesting mysticism and fortune.",
+    "The \"green line\" reference, possibly nodding to chart analysis in trading.",
+    "Red serpent adding a layer of esoteric mystery."
+  ],
+  "visualSummary": "The card features a Pepe character dressed in a robe, seated between two pillars. The color palette includes earthy tones, black, and red, with intricate patterns and a large red serpent behind Pepe. The artistic style is reminiscent of tarot card illustrations, with detailed linework and symbolic elements.",
+  "visualSummaryShort": "The card depicts a Pepe character in a robe, surrounded by two pillars and a large red serpent. The earthy tones and intricate patterns evoke a tarot card aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "robe",
+    "pillars",
+    "serpent",
+    "earthy tones",
+    "black",
+    "red",
+    "intricate patterns",
+    "symbolic elements",
+    "tarot style"
+  ],
+  "textKeywords": [
+    "green",
+    "line"
+  ],
+  "keywords": [
+    "pepe",
+    "robe",
+    "pillars",
+    "serpent",
+    "earthy tones",
+    "black",
+    "red",
+    "intricate patterns",
+    "symbolic elements",
+    "tarot style",
+    "green",
+    "line"
+  ],
+  "embeddingInput": "GRNLINEPEPE (Fake Rares) - Series 13 Card 38\nArtist: Alth0tas\nSupply 21 Issued December 2022\nOn-card text: GREEN LINE PEPE\nVisual summary: The card features a Pepe character dressed in a robe, seated between two pillars. The color palette includes earthy tones, black, and red, with intricate patterns and a large red serpent behind Pepe. The artistic style is reminiscent of tarot card illustrations, with detailed linework and symbolic elements.\nMemetic references: Pepe the Frog, a staple of meme culture.; Tarot card symbolism, suggesting mysticism and fortune.; The \"green line\" reference, possibly nodding to chart analysis in trading.; Red serpent adding a layer of esoteric mystery.",
+  "embeddingBlocks": [
+    {
+      "id": "GRNLINEPEPE#text",
+      "label": "On-card text",
+      "text": "GREEN LINE PEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "GRNLINEPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple of meme culture.\nTarot card symbolism, suggesting mysticism and fortune.\nThe \"green line\" reference, possibly nodding to chart analysis in trading.\nRed serpent adding a layer of esoteric mystery.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "GRNLINEPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe character dressed in a robe, seated between two pillars. The color palette includes earthy tones, black, and red, with intricate patterns and a large red serpent behind Pepe. The artistic style is reminiscent of tarot card illustrations, with detailed linework and symbolic elements.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "GRNLINEPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nGREEN LINE PEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe character dressed in a robe, seated between two pillars. The color palette includes earthy tones, black, and red, with intricate patterns and a large red serpent behind Pepe. The artistic style is reminiscent of tarot card illustrations, with detailed linework and symbolic elements.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple of meme culture.\n- Tarot card symbolism, suggesting mysticism and fortune.\n- The \"green line\" reference, possibly nodding to chart analysis in trading.\n- Red serpent adding a layer of esoteric mystery.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.671Z",
+  "sourceFactVersion": 1
+}

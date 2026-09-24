@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "PEPSTEIN",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 43,
+  "artist": "realPepstein",
+  "supply": 111,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "PEPSTEIN"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in a parody of a well-known public figure.",
+    "The use of a luxurious setting and attire adds a layer of irony.",
+    "References to high-profile memes and internet culture."
+  ],
+  "visualSummary": "The card features a Pepe the Frog character with short gray hair, lounging confidently in an elegant blue dress and red high heels. The background is a cozy room with bookshelves and a window showing a bright blue sky with clouds. The overall color palette is a mix of warm earth tones and vibrant blues, creating a striking contrast.",
+  "visualSummaryShort": "The card showcases a Pepe the Frog character dressed elegantly in a blue dress and red high heels, set against a cozy room backdrop. The vibrant blue sky and warm earth tones create a striking visual contrast.",
+  "visualKeywords": [
+    "pepe the frog",
+    "blue dress",
+    "red high heels",
+    "cozy room",
+    "bookshelves",
+    "bright sky",
+    "clouds",
+    "warm tones",
+    "vibrant colors"
+  ],
+  "textKeywords": [
+    "pepstein"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "blue dress",
+    "red high heels",
+    "cozy room",
+    "bookshelves",
+    "bright sky",
+    "clouds",
+    "warm tones",
+    "vibrant colors",
+    "pepstein"
+  ],
+  "embeddingInput": "PEPSTEIN (Fake Rares) - Series 2 Card 43\nArtist: realPepstein\nSupply 111 Issued October 2021\nOn-card text: PEPSTEIN\nVisual summary: The card features a Pepe the Frog character with short gray hair, lounging confidently in an elegant blue dress and red high heels. The background is a cozy room with bookshelves and a window showing a bright blue sky with clouds. The overall color palette is a mix of warm earth tones and vibrant blues, creating a striking contrast.\nMemetic references: Pepe the Frog in a parody of a well-known public figure.; The use of a luxurious setting and attire adds a layer of irony.; References to high-profile memes and internet culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPSTEIN#text",
+      "label": "On-card text",
+      "text": "PEPSTEIN",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPSTEIN#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in a parody of a well-known public figure.\nThe use of a luxurious setting and attire adds a layer of irony.\nReferences to high-profile memes and internet culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPSTEIN#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe the Frog character with short gray hair, lounging confidently in an elegant blue dress and red high heels. The background is a cozy room with bookshelves and a window showing a bright blue sky with clouds. The overall color palette is a mix of warm earth tones and vibrant blues, creating a striking contrast.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPSTEIN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPSTEIN\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe the Frog character with short gray hair, lounging confidently in an elegant blue dress and red high heels. The background is a cozy room with bookshelves and a window showing a bright blue sky with clouds. The overall color palette is a mix of warm earth tones and vibrant blues, creating a striking contrast.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in a parody of a well-known public figure.\n- The use of a luxurious setting and attire adds a layer of irony.\n- References to high-profile memes and internet culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.028Z",
+  "sourceFactVersion": 1
+}

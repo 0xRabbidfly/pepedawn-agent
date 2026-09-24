@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "asset": "PEPETHEFAKE",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 25,
+  "artist": "VaJe",
+  "supply": 44,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "THE INTERNATIONAL FUN-MAKER. Pepe! The Fake. Dank. Normie. S.A. Felici. Pepe Toutz. El Macho. Sir Liccione."
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog meme references.",
+    "Crypto culture nods with \"Dank\" and \"Normie\" labels.",
+    "Circus theme reminiscent of historical posters, adding a layer of nostalgia.",
+    "Use of Pepe in various personas like \"El Macho\" and \"Sir Liccione\" adds humor and depth."
+  ],
+  "visualSummary": "This card is a vibrant collage with a retro circus poster vibe, featuring a central, sharply dressed Pepe the Frog with a confident grin. The background is dark with red and blue accents, highlighting various Pepe characters in classic circus roles around the central figure. The color palette is a mix of bold reds, blues, and greens, giving it a vintage yet lively feel.",
+  "visualSummaryShort": "The card showcases a vibrant collage with a retro circus theme, centered around a sharply dressed Pepe the Frog. The dark background with red and blue accents enhances the lively atmosphere of various Pepe characters in classic circus roles.",
+  "visualKeywords": [
+    "pepe",
+    "circus",
+    "vintage",
+    "bold colors",
+    "collage",
+    "dark background",
+    "confident",
+    "red accents",
+    "blue accents",
+    "green accents"
+  ],
+  "textKeywords": [
+    "international",
+    "fun",
+    "maker",
+    "dank",
+    "normie",
+    "felici",
+    "toutz",
+    "macho",
+    "sir",
+    "liccione"
+  ],
+  "keywords": [
+    "pepe",
+    "circus",
+    "vintage",
+    "bold colors",
+    "collage",
+    "dark background",
+    "confident",
+    "red accents",
+    "blue accents",
+    "green accents",
+    "international",
+    "fun",
+    "maker",
+    "dank",
+    "normie",
+    "felici",
+    "toutz",
+    "macho",
+    "sir",
+    "liccione"
+  ],
+  "embeddingInput": "PEPETHEFAKE (Fake Rares) - Series 1 Card 25\nArtist: VaJe\nSupply 44 Issued October 2021\nOn-card text: THE INTERNATIONAL FUN-MAKER. Pepe! The Fake. Dank. Normie. S.A. Felici. Pepe Toutz. El Macho. Sir Liccione.\nVisual summary: This card is a vibrant collage with a retro circus poster vibe, featuring a central, sharply dressed Pepe the Frog with a confident grin. The background is dark with red and blue accents, highlighting various Pepe characters in classic circus roles around the central figure. The color palette is a mix of bold reds, blues, and greens, giving it a vintage yet lively feel.\nMemetic references: Classic Pepe the Frog meme references.; Crypto culture nods with \"Dank\" and \"Normie\" labels.; Circus theme reminiscent of historical posters, adding a layer of nostalgia.; Use of Pepe in various personas like \"El Macho\" and \"Sir Liccione\" adds humor and depth.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPETHEFAKE#text",
+      "label": "On-card text",
+      "text": "THE INTERNATIONAL FUN-MAKER. Pepe! The Fake. Dank. Normie. S.A. Felici. Pepe Toutz. El Macho. Sir Liccione.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPETHEFAKE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog meme references.\nCrypto culture nods with \"Dank\" and \"Normie\" labels.\nCircus theme reminiscent of historical posters, adding a layer of nostalgia.\nUse of Pepe in various personas like \"El Macho\" and \"Sir Liccione\" adds humor and depth.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPETHEFAKE#visual",
+      "label": "Visual summary",
+      "text": "This card is a vibrant collage with a retro circus poster vibe, featuring a central, sharply dressed Pepe the Frog with a confident grin. The background is dark with red and blue accents, highlighting various Pepe characters in classic circus roles around the central figure. The color palette is a mix of bold reds, blues, and greens, giving it a vintage yet lively feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPETHEFAKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nTHE INTERNATIONAL FUN-MAKER. Pepe! The Fake. Dank. Normie. S.A. Felici. Pepe Toutz. El Macho. Sir Liccione.\n\n🎨 **VISUAL BREAKDOWN:**\nThis card is a vibrant collage with a retro circus poster vibe, featuring a central, sharply dressed Pepe the Frog with a confident grin. The background is dark with red and blue accents, highlighting various Pepe characters in classic circus roles around the central figure. The color palette is a mix of bold reds, blues, and greens, giving it a vintage yet lively feel.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog meme references.\n- Crypto culture nods with \"Dank\" and \"Normie\" labels.\n- Circus theme reminiscent of historical posters, adding a layer of nostalgia.\n- Use of Pepe in various personas like \"El Macho\" and \"Sir Liccione\" adds humor and depth.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.994Z",
+  "sourceFactVersion": 1
+}

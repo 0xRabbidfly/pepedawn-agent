@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "KEKGRAM",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 4,
+  "artist": "FWD x DJ Kermit",
+  "supply": 69,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "KEKGRAM"
+  ],
+  "memeticReferences": [
+    "References to Pepe lore through the name \"KEK,\" a common meme in crypto culture.",
+    "The pyramid and geometric patterns suggest cryptic and esoteric themes often found in crypto art.",
+    "The central figure’s face evokes classic meme aesthetics with a modern twist."
+  ],
+  "visualSummary": "This card features a central figure with a stylized face, set against a backdrop of geometric shapes resembling pyramids. The color palette is a mix of rich browns, golds, and iridescent hues, giving it a mystical and enigmatic vibe. The artwork blends digital and abstract styles, with intricate patterns filling the triangular elements.",
+  "visualSummaryShort": "The card showcases a central figure with a stylized face amidst geometric pyramid shapes. Its rich brown and gold color palette creates a mystical atmosphere.",
+  "visualKeywords": [
+    "stylized face",
+    "geometric shapes",
+    "pyramids",
+    "brown",
+    "gold",
+    "iridescent",
+    "abstract",
+    "intricate patterns"
+  ],
+  "textKeywords": [
+    "kekgram"
+  ],
+  "keywords": [
+    "stylized face",
+    "geometric shapes",
+    "pyramids",
+    "brown",
+    "gold",
+    "iridescent",
+    "abstract",
+    "intricate patterns",
+    "kekgram"
+  ],
+  "embeddingInput": "KEKGRAM (Fake Rares) - Series 6 Card 4\nArtist: FWD x DJ Kermit\nSupply 69 Issued November 2021\nOn-card text: KEKGRAM\nVisual summary: This card features a central figure with a stylized face, set against a backdrop of geometric shapes resembling pyramids. The color palette is a mix of rich browns, golds, and iridescent hues, giving it a mystical and enigmatic vibe. The artwork blends digital and abstract styles, with intricate patterns filling the triangular elements.\nMemetic references: References to Pepe lore through the name \"KEK,\" a common meme in crypto culture.; The pyramid and geometric patterns suggest cryptic and esoteric themes often found in crypto art.; The central figure’s face evokes classic meme aesthetics with a modern twist.",
+  "embeddingBlocks": [
+    {
+      "id": "KEKGRAM#text",
+      "label": "On-card text",
+      "text": "KEKGRAM",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "KEKGRAM#memetic",
+      "label": "Memetic references",
+      "text": "References to Pepe lore through the name \"KEK,\" a common meme in crypto culture.\nThe pyramid and geometric patterns suggest cryptic and esoteric themes often found in crypto art.\nThe central figure’s face evokes classic meme aesthetics with a modern twist.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "KEKGRAM#visual",
+      "label": "Visual summary",
+      "text": "This card features a central figure with a stylized face, set against a backdrop of geometric shapes resembling pyramids. The color palette is a mix of rich browns, golds, and iridescent hues, giving it a mystical and enigmatic vibe. The artwork blends digital and abstract styles, with intricate patterns filling the triangular elements.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "KEKGRAM#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nKEKGRAM\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a central figure with a stylized face, set against a backdrop of geometric shapes resembling pyramids. The color palette is a mix of rich browns, golds, and iridescent hues, giving it a mystical and enigmatic vibe. The artwork blends digital and abstract styles, with intricate patterns filling the triangular elements.\n\n🧬 **MEMETIC DNA:**\n- References to Pepe lore through the name \"KEK,\" a common meme in crypto culture.\n- The pyramid and geometric patterns suggest cryptic and esoteric themes often found in crypto art.\n- The central figure’s face evokes classic meme aesthetics with a modern twist.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.712Z",
+  "sourceFactVersion": 1
+}

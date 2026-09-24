@@ -678,7 +678,10 @@ describe('fakeRaresCardAction', () => {
       );
 
       const callbackArg = callback.mock.calls[0][0];
-      expect(callbackArg.attachments[0].url).toContain('pepewtf.s3.amazonaws.com');
+      // Since 5.16.0 a card the directory carries is fetched from its CDN, a
+      // public GitHub repository; S3 is the fallback for cards it lacks.
+      expect(callbackArg.attachments[0].url).toMatch(/raw\.githubusercontent\.com\/fakerares\/cdn\/|pepewtf\.s3\.amazonaws\.com/);
+      expect(callbackArg.attachments[0].url).toContain('FREEDOMKEK');
     });
   });
 

@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "asset": "THEYLIVEPEPE",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 25,
+  "artist": "ZeroG",
+  "supply": 71,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "THEY LIVE CARD. Holders can see hidden weakness. Rareness score."
+  ],
+  "memeticReferences": [
+    "References the cult classic movie \"They Live,\" known for its social commentary.",
+    "Incorporates Pepe the Frog elements with the glasses icon.",
+    "Plays on NFT culture with \"rareness score\" and hidden traits."
+  ],
+  "visualSummary": "The card features a scene from the movie \"They Live,\" with a character looking off to the side. The color palette is muted, reflecting the film's gritty aesthetic, with earthy tones and a nostalgic VHS vibe. The card is framed with a worn, retro trading card design, complete with stats and a signature at the bottom.",
+  "visualSummaryShort": "The card depicts a character from the movie 'They Live' gazing to the side, set against a muted, earthy color palette. Its retro design enhances the nostalgic VHS aesthetic.",
+  "visualKeywords": [
+    "character",
+    "earthy tones",
+    "muted colors",
+    "nostalgic",
+    "retro design",
+    "worn",
+    "gritty",
+    "vhs vibe"
+  ],
+  "textKeywords": [
+    "they",
+    "live",
+    "holders",
+    "can",
+    "see",
+    "hidden",
+    "weakness",
+    "rareness",
+    "score"
+  ],
+  "keywords": [
+    "character",
+    "earthy tones",
+    "muted colors",
+    "nostalgic",
+    "retro design",
+    "worn",
+    "gritty",
+    "vhs vibe",
+    "they",
+    "live",
+    "holders",
+    "can",
+    "see",
+    "hidden",
+    "weakness",
+    "rareness",
+    "score"
+  ],
+  "embeddingInput": "THEYLIVEPEPE (Fake Rares) - Series 11 Card 25\nArtist: ZeroG\nSupply 71 Issued March 2022\nOn-card text: THEY LIVE CARD. Holders can see hidden weakness. Rareness score.\nVisual summary: The card features a scene from the movie \"They Live,\" with a character looking off to the side. The color palette is muted, reflecting the film's gritty aesthetic, with earthy tones and a nostalgic VHS vibe. The card is framed with a worn, retro trading card design, complete with stats and a signature at the bottom.\nMemetic references: References the cult classic movie \"They Live,\" known for its social commentary.; Incorporates Pepe the Frog elements with the glasses icon.; Plays on NFT culture with \"rareness score\" and hidden traits.",
+  "embeddingBlocks": [
+    {
+      "id": "THEYLIVEPEPE#text",
+      "label": "On-card text",
+      "text": "THEY LIVE CARD. Holders can see hidden weakness. Rareness score.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "THEYLIVEPEPE#memetic",
+      "label": "Memetic references",
+      "text": "References the cult classic movie \"They Live,\" known for its social commentary.\nIncorporates Pepe the Frog elements with the glasses icon.\nPlays on NFT culture with \"rareness score\" and hidden traits.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "THEYLIVEPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a scene from the movie \"They Live,\" with a character looking off to the side. The color palette is muted, reflecting the film's gritty aesthetic, with earthy tones and a nostalgic VHS vibe. The card is framed with a worn, retro trading card design, complete with stats and a signature at the bottom.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "THEYLIVEPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nTHEY LIVE CARD. Holders can see hidden weakness. Rareness score.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a scene from the movie \"They Live,\" with a character looking off to the side. The color palette is muted, reflecting the film's gritty aesthetic, with earthy tones and a nostalgic VHS vibe. The card is framed with a worn, retro trading card design, complete with stats and a signature at the bottom.\n\n🧬 **MEMETIC DNA:**\n- References the cult classic movie \"They Live,\" known for its social commentary.\n- Incorporates Pepe the Frog elements with the glasses icon.\n- Plays on NFT culture with \"rareness score\" and hidden traits.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.152Z",
+  "sourceFactVersion": 1
+}

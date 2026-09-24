@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "asset": "PEPEWONDER",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 42,
+  "artist": "Whoisit",
+  "supply": 100,
+  "issuance": "May 2022",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a whimsical character with a playful expression. The background is colorful and vibrant, enhancing the cheerful mood.",
+  "visualKeywords": [
+    "whimsical",
+    "playful",
+    "colorful",
+    "vibrant",
+    "cheerful"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "whimsical",
+    "playful",
+    "colorful",
+    "vibrant",
+    "cheerful"
+  ],
+  "embeddingInput": "PEPEWONDER (Fake Rares) - Series 7 Card 42\nArtist: Whoisit\nSupply 100 Issued May 2022\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEWONDER#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.012Z",
+  "sourceFactVersion": 1
+}

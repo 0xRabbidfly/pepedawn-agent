@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "asset": "CHADIMIR",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 16,
+  "artist": "Django Bits",
+  "supply": 500,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "CHADIMIR",
+    "Farming invading vehicles since 2022."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central character, iconic in meme culture.",
+    "The name \"CHADIMIR\" suggests a blend of \"Chad\" (an internet archetype of confidence) and possibly \"Vladimir.\"",
+    "References to farming and vehicles hint at themes from the crypto farming world or geopolitical satire."
+  ],
+  "visualSummary": "This NFT card features a bold composition with a vibrant color palette. The top shows a confident Pepe the Frog in a casual shirt and cap, set against a green natural backdrop. Below, there's a stylized, comic-style scene of vehicles, possibly military, rendered in pop art tones, adding a layer of drama and humor.",
+  "visualSummaryShort": "The card showcases a confident Pepe the Frog in a casual shirt and cap against a green natural backdrop. Below, a comic-style scene features stylized vehicles in pop art tones, creating a dramatic yet humorous effect.",
+  "visualKeywords": [
+    "pepe the frog",
+    "green backdrop",
+    "casual shirt",
+    "comic style",
+    "vehicles",
+    "pop art",
+    "vibrant colors",
+    "humor",
+    "drama"
+  ],
+  "textKeywords": [
+    "chadimir",
+    "farming",
+    "invading",
+    "vehicles",
+    "since",
+    "2022"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "green backdrop",
+    "casual shirt",
+    "comic style",
+    "vehicles",
+    "pop art",
+    "vibrant colors",
+    "humor",
+    "drama",
+    "chadimir",
+    "farming",
+    "invading",
+    "since",
+    "2022"
+  ],
+  "embeddingInput": "CHADIMIR (Fake Rares) - Series 7 Card 16\nArtist: Django Bits\nSupply 500 Issued March 2022\nOn-card text: CHADIMIR | Farming invading vehicles since 2022.\nVisual summary: This NFT card features a bold composition with a vibrant color palette. The top shows a confident Pepe the Frog in a casual shirt and cap, set against a green natural backdrop. Below, there's a stylized, comic-style scene of vehicles, possibly military, rendered in pop art tones, adding a layer of drama and humor.\nMemetic references: Pepe the Frog as a central character, iconic in meme culture.; The name \"CHADIMIR\" suggests a blend of \"Chad\" (an internet archetype of confidence) and possibly \"Vladimir.\"; References to farming and vehicles hint at themes from the crypto farming world or geopolitical satire.",
+  "embeddingBlocks": [
+    {
+      "id": "CHADIMIR#text",
+      "label": "On-card text",
+      "text": "CHADIMIR | Farming invading vehicles since 2022.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "CHADIMIR#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central character, iconic in meme culture.\nThe name \"CHADIMIR\" suggests a blend of \"Chad\" (an internet archetype of confidence) and possibly \"Vladimir.\"\nReferences to farming and vehicles hint at themes from the crypto farming world or geopolitical satire.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "CHADIMIR#visual",
+      "label": "Visual summary",
+      "text": "This NFT card features a bold composition with a vibrant color palette. The top shows a confident Pepe the Frog in a casual shirt and cap, set against a green natural backdrop. Below, there's a stylized, comic-style scene of vehicles, possibly military, rendered in pop art tones, adding a layer of drama and humor.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "CHADIMIR#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nCHADIMIR  \nFarming invading vehicles since 2022.\n\n🎨 **VISUAL BREAKDOWN:**\nThis NFT card features a bold composition with a vibrant color palette. The top shows a confident Pepe the Frog in a casual shirt and cap, set against a green natural backdrop. Below, there's a stylized, comic-style scene of vehicles, possibly military, rendered in pop art tones, adding a layer of drama and humor.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central character, iconic in meme culture.\n- The name \"CHADIMIR\" suggests a blend of \"Chad\" (an internet archetype of confidence) and possibly \"Vladimir.\"\n- References to farming and vehicles hint at themes from the crypto farming world or geopolitical satire.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.353Z",
+  "sourceFactVersion": 1
+}

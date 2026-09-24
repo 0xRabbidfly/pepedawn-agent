@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "asset": "DUCHAMPEPE",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 38,
+  "artist": "Fabrique",
+  "supply": 33,
+  "issuance": "September 2021",
+  "textOnCard": [
+    "R. PEPE 2021"
+  ],
+  "memeticReferences": [
+    "References Marcel Duchamp’s \"Fountain,\" a pivotal piece in Dada art.",
+    "Pepe the Frog signature nods to internet meme culture.",
+    "Blends traditional art with modern meme symbolism."
+  ],
+  "visualSummary": "The card presents a black and white photograph of a urinal, reminiscent of Marcel Duchamp's famous artwork \"Fountain.\" The urinal is signed with \"R. PEPE 2021\" in a bold, handwritten style. The composition is stark and minimalist, emphasizing the object's contours against a plain background.",
+  "visualSummaryShort": "The card features a black and white photograph of a urinal, highlighting its minimalist design. The bold signature adds a personal touch to the stark composition.",
+  "visualKeywords": [
+    "urinal",
+    "black and white",
+    "minimalist",
+    "signature",
+    "bold",
+    "plain background"
+  ],
+  "textKeywords": [
+    "2021"
+  ],
+  "keywords": [
+    "urinal",
+    "black and white",
+    "minimalist",
+    "signature",
+    "bold",
+    "plain background",
+    "2021"
+  ],
+  "embeddingInput": "DUCHAMPEPE (Fake Rares) - Series 1 Card 38\nArtist: Fabrique\nSupply 33 Issued September 2021\nOn-card text: R. PEPE 2021\nVisual summary: The card presents a black and white photograph of a urinal, reminiscent of Marcel Duchamp's famous artwork \"Fountain.\" The urinal is signed with \"R. PEPE 2021\" in a bold, handwritten style. The composition is stark and minimalist, emphasizing the object's contours against a plain background.\nMemetic references: References Marcel Duchamp’s \"Fountain,\" a pivotal piece in Dada art.; Pepe the Frog signature nods to internet meme culture.; Blends traditional art with modern meme symbolism.",
+  "embeddingBlocks": [
+    {
+      "id": "DUCHAMPEPE#text",
+      "label": "On-card text",
+      "text": "R. PEPE 2021",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "DUCHAMPEPE#memetic",
+      "label": "Memetic references",
+      "text": "References Marcel Duchamp’s \"Fountain,\" a pivotal piece in Dada art.\nPepe the Frog signature nods to internet meme culture.\nBlends traditional art with modern meme symbolism.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "DUCHAMPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card presents a black and white photograph of a urinal, reminiscent of Marcel Duchamp's famous artwork \"Fountain.\" The urinal is signed with \"R. PEPE 2021\" in a bold, handwritten style. The composition is stark and minimalist, emphasizing the object's contours against a plain background.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "DUCHAMPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nR. PEPE 2021\n\n🎨 **VISUAL BREAKDOWN:**\nThe card presents a black and white photograph of a urinal, reminiscent of Marcel Duchamp's famous artwork \"Fountain.\" The urinal is signed with \"R. PEPE 2021\" in a bold, handwritten style. The composition is stark and minimalist, emphasizing the object's contours against a plain background.\n\n🧬 **MEMETIC DNA:**\n- References Marcel Duchamp’s \"Fountain,\" a pivotal piece in Dada art.\n- Pepe the Frog signature nods to internet meme culture.\n- Blends traditional art with modern meme symbolism.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.418Z",
+  "sourceFactVersion": 1
+}

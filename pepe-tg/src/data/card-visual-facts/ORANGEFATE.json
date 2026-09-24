@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "asset": "ORANGEFATE",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 2,
+  "artist": "ditacrypto",
+  "supply": 24,
+  "issuance": "July 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "References to the biblical story of Adam and Eve with a modern twist.",
+    "The oranges might symbolize temptation or knowledge, a play on the apple from the Genesis tale.",
+    "The minimalist yet impactful design evokes classic NFT and crypto art styles."
+  ],
+  "visualSummary": "This artwork features a bold and vibrant composition with a large, glowing yellow circle dominating the background, resembling a sun or moon. In the foreground, two silhouetted figures stand under a lush, green tree dotted with oranges, set against a darkened landscape. The style combines surrealism with simplicity, using stark contrasts between light and shadow to create a dramatic scene.",
+  "visualSummaryShort": "The artwork showcases a glowing yellow circle in the background, resembling a sun or moon. Two silhouetted figures stand beneath a green tree filled with oranges, creating a striking contrast against the dark landscape.",
+  "visualKeywords": [
+    "yellow circle",
+    "silhouettes",
+    "green tree",
+    "oranges",
+    "dark landscape",
+    "surrealism",
+    "light and shadow",
+    "vibrant",
+    "bold composition"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "yellow circle",
+    "silhouettes",
+    "green tree",
+    "oranges",
+    "dark landscape",
+    "surrealism",
+    "light and shadow",
+    "vibrant",
+    "bold composition"
+  ],
+  "embeddingInput": "ORANGEFATE (Fake Rares) - Series 15 Card 2\nArtist: ditacrypto\nSupply 24 Issued July 2023\nOn-card text: none detected\nVisual summary: This artwork features a bold and vibrant composition with a large, glowing yellow circle dominating the background, resembling a sun or moon. In the foreground, two silhouetted figures stand under a lush, green tree dotted with oranges, set against a darkened landscape. The style combines surrealism with simplicity, using stark contrasts between light and shadow to create a dramatic scene.\nMemetic references: References to the biblical story of Adam and Eve with a modern twist.; The oranges might symbolize temptation or knowledge, a play on the apple from the Genesis tale.; The minimalist yet impactful design evokes classic NFT and crypto art styles.",
+  "embeddingBlocks": [
+    {
+      "id": "ORANGEFATE#memetic",
+      "label": "Memetic references",
+      "text": "References to the biblical story of Adam and Eve with a modern twist.\nThe oranges might symbolize temptation or knowledge, a play on the apple from the Genesis tale.\nThe minimalist yet impactful design evokes classic NFT and crypto art styles.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "ORANGEFATE#visual",
+      "label": "Visual summary",
+      "text": "This artwork features a bold and vibrant composition with a large, glowing yellow circle dominating the background, resembling a sun or moon. In the foreground, two silhouetted figures stand under a lush, green tree dotted with oranges, set against a darkened landscape. The style combines surrealism with simplicity, using stark contrasts between light and shadow to create a dramatic scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "ORANGEFATE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis artwork features a bold and vibrant composition with a large, glowing yellow circle dominating the background, resembling a sun or moon. In the foreground, two silhouetted figures stand under a lush, green tree dotted with oranges, set against a darkened landscape. The style combines surrealism with simplicity, using stark contrasts between light and shadow to create a dramatic scene.\n\n🧬 **MEMETIC DNA:**\n- References to the biblical story of Adam and Eve with a modern twist.\n- The oranges might symbolize temptation or knowledge, a play on the apple from the Genesis tale.\n- The minimalist yet impactful design evokes classic NFT and crypto art styles.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.812Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "RAININGPEPES",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 15,
+  "artist": "bhare",
+  "supply": 69,
+  "issuance": "September 2025",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Implies a meme reference to the classic \"It's Raining Men\" but with a degen twist.",
+    "The central figure and faces resemble abstract Pepes, a nod to the beloved meme frog.",
+    "Visualizes the chaos and randomness of crypto culture, symbolized by the falling figures."
+  ],
+  "visualSummary": "The composition features a surreal scene with a central figure in a crouching position, holding an object, possibly a bottle, under a sky of raining figures. The color palette is earthy with olive greens, muted pinks, and dark blues, creating a dreamlike atmosphere. The artistic style combines abstract expressionism with a touch of psychedelic humor, emphasizing the bizarre and the whimsical.",
+  "visualSummaryShort": "The card depicts a surreal scene with a crouching figure holding an object beneath a sky of raining figures. The earthy color palette and whimsical style create a dreamlike atmosphere.",
+  "visualKeywords": [
+    "crouching figure",
+    "raining figures",
+    "earthy colors",
+    "olive green",
+    "muted pink",
+    "dark blue",
+    "surreal",
+    "abstract",
+    "psychedelic",
+    "whimsical"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "crouching figure",
+    "raining figures",
+    "earthy colors",
+    "olive green",
+    "muted pink",
+    "dark blue",
+    "surreal",
+    "abstract",
+    "psychedelic",
+    "whimsical"
+  ],
+  "embeddingInput": "RAININGPEPES (Fake Rares) - Series 18 Card 15\nArtist: bhare\nSupply 69 Issued September 2025\nOn-card text: none detected\nVisual summary: The composition features a surreal scene with a central figure in a crouching position, holding an object, possibly a bottle, under a sky of raining figures. The color palette is earthy with olive greens, muted pinks, and dark blues, creating a dreamlike atmosphere. The artistic style combines abstract expressionism with a touch of psychedelic humor, emphasizing the bizarre and the whimsical.\nMemetic references: Implies a meme reference to the classic \"It's Raining Men\" but with a degen twist.; The central figure and faces resemble abstract Pepes, a nod to the beloved meme frog.; Visualizes the chaos and randomness of crypto culture, symbolized by the falling figures.",
+  "embeddingBlocks": [
+    {
+      "id": "RAININGPEPES#memetic",
+      "label": "Memetic references",
+      "text": "Implies a meme reference to the classic \"It's Raining Men\" but with a degen twist.\nThe central figure and faces resemble abstract Pepes, a nod to the beloved meme frog.\nVisualizes the chaos and randomness of crypto culture, symbolized by the falling figures.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RAININGPEPES#visual",
+      "label": "Visual summary",
+      "text": "The composition features a surreal scene with a central figure in a crouching position, holding an object, possibly a bottle, under a sky of raining figures. The color palette is earthy with olive greens, muted pinks, and dark blues, creating a dreamlike atmosphere. The artistic style combines abstract expressionism with a touch of psychedelic humor, emphasizing the bizarre and the whimsical.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RAININGPEPES#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe composition features a surreal scene with a central figure in a crouching position, holding an object, possibly a bottle, under a sky of raining figures. The color palette is earthy with olive greens, muted pinks, and dark blues, creating a dreamlike atmosphere. The artistic style combines abstract expressionism with a touch of psychedelic humor, emphasizing the bizarre and the whimsical.\n\n🧬 **MEMETIC DNA:**\n- Implies a meme reference to the classic \"It's Raining Men\" but with a degen twist.\n- The central figure and faces resemble abstract Pepes, a nod to the beloved meme frog.\n- Visualizes the chaos and randomness of crypto culture, symbolized by the falling figures.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.061Z",
+  "sourceFactVersion": 1
+}

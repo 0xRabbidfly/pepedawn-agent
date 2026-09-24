@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "INCEPTION",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 3,
+  "artist": "EMBLEMATIX",
+  "supply": 169,
+  "issuance": "April 2015",
+  "textOnCard": [
+    "MMIX, EmblematicX"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple meme character.",
+    "Bitcoin symbol, representing crypto culture.",
+    "Renaissance art style mash-up.",
+    "Subtle homage to the timelessness of crypto."
+  ],
+  "visualSummary": "This card features a Pepe-fied figure styled in the manner of a classical portrait, reminiscent of Renaissance art. The color palette is rich and subdued, with earthy tones and a soft sky in the background, adding a touch of elegance. The figure holds a large, golden Bitcoin, wearing a chain and a black garment, blending historical and modern elements.",
+  "visualSummaryShort": "The card showcases a Pepe-inspired figure in a classical portrait style, adorned with a golden Bitcoin. The rich, earthy color palette and soft sky background create an elegant atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "portrait",
+    "bitcoin",
+    "gold",
+    "black garment",
+    "earthy tones",
+    "elegance",
+    "renaissance",
+    "soft sky"
+  ],
+  "textKeywords": [
+    "mmix",
+    "emblematicx"
+  ],
+  "keywords": [
+    "pepe",
+    "portrait",
+    "bitcoin",
+    "gold",
+    "black garment",
+    "earthy tones",
+    "elegance",
+    "renaissance",
+    "soft sky",
+    "mmix",
+    "emblematicx"
+  ],
+  "embeddingInput": "INCEPTION (Fake Rares) - Series 12 Card 3\nArtist: EMBLEMATIX\nSupply 169 Issued April 2015\nOn-card text: MMIX, EmblematicX\nVisual summary: This card features a Pepe-fied figure styled in the manner of a classical portrait, reminiscent of Renaissance art. The color palette is rich and subdued, with earthy tones and a soft sky in the background, adding a touch of elegance. The figure holds a large, golden Bitcoin, wearing a chain and a black garment, blending historical and modern elements.\nMemetic references: Pepe the Frog, a staple meme character.; Bitcoin symbol, representing crypto culture.; Renaissance art style mash-up.; Subtle homage to the timelessness of crypto.",
+  "embeddingBlocks": [
+    {
+      "id": "INCEPTION#text",
+      "label": "On-card text",
+      "text": "MMIX, EmblematicX",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "INCEPTION#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple meme character.\nBitcoin symbol, representing crypto culture.\nRenaissance art style mash-up.\nSubtle homage to the timelessness of crypto.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "INCEPTION#visual",
+      "label": "Visual summary",
+      "text": "This card features a Pepe-fied figure styled in the manner of a classical portrait, reminiscent of Renaissance art. The color palette is rich and subdued, with earthy tones and a soft sky in the background, adding a touch of elegance. The figure holds a large, golden Bitcoin, wearing a chain and a black garment, blending historical and modern elements.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "INCEPTION#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nMMIX, EmblematicX\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a Pepe-fied figure styled in the manner of a classical portrait, reminiscent of Renaissance art. The color palette is rich and subdued, with earthy tones and a soft sky in the background, adding a touch of elegance. The figure holds a large, golden Bitcoin, wearing a chain and a black garment, blending historical and modern elements.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple meme character.\n- Bitcoin symbol, representing crypto culture.\n- Renaissance art style mash-up.\n- Subtle homage to the timelessness of crypto.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.694Z",
+  "sourceFactVersion": 1
+}

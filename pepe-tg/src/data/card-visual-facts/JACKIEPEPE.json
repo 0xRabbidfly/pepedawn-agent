@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "asset": "JACKIEPEPE",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 3,
+  "artist": "T. Wade",
+  "supply": 99,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "Jackie Pepenson, outfield, BROOKLYN DANKERS"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog meets baseball legend vibes.",
+    "Parody of classic sports cards.",
+    "Reference to Brooklyn Dodgers, with a twist: \"Brooklyn Dankers.\"",
+    "Playful nod to sports nostalgia and meme culture."
+  ],
+  "visualSummary": "The card features a Pepe-faced baseball player donning a retro uniform, set against a bright yellow backdrop. The composition prominently displays a bold blue cap with a white logo, and a smaller image of the player in action, pitching. The art style is a blend of caricature and pop art, with a vivid and contrasting color palette that highlights the green Pepe face.",
+  "visualSummaryShort": "The card showcases a Pepe-faced baseball player in a retro uniform against a bright yellow background. The vivid colors and caricature art style create a lively and energetic mood.",
+  "visualKeywords": [
+    "pepe",
+    "baseball",
+    "yellow background",
+    "blue cap",
+    "retro uniform",
+    "pitching",
+    "pop art",
+    "vivid colors",
+    "caricature",
+    "green face"
+  ],
+  "textKeywords": [
+    "jackie",
+    "pepenson",
+    "outfield",
+    "brooklyn",
+    "dankers"
+  ],
+  "keywords": [
+    "pepe",
+    "baseball",
+    "yellow background",
+    "blue cap",
+    "retro uniform",
+    "pitching",
+    "pop art",
+    "vivid colors",
+    "caricature",
+    "green face",
+    "jackie",
+    "pepenson",
+    "outfield",
+    "brooklyn",
+    "dankers"
+  ],
+  "embeddingInput": "JACKIEPEPE (Fake Rares) - Series 5 Card 3\nArtist: T. Wade\nSupply 99 Issued February 2022\nOn-card text: Jackie Pepenson, outfield, BROOKLYN DANKERS\nVisual summary: The card features a Pepe-faced baseball player donning a retro uniform, set against a bright yellow backdrop. The composition prominently displays a bold blue cap with a white logo, and a smaller image of the player in action, pitching. The art style is a blend of caricature and pop art, with a vivid and contrasting color palette that highlights the green Pepe face.\nMemetic references: Pepe the Frog meets baseball legend vibes.; Parody of classic sports cards.; Reference to Brooklyn Dodgers, with a twist: \"Brooklyn Dankers.\"; Playful nod to sports nostalgia and meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "JACKIEPEPE#text",
+      "label": "On-card text",
+      "text": "Jackie Pepenson, outfield, BROOKLYN DANKERS",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "JACKIEPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog meets baseball legend vibes.\nParody of classic sports cards.\nReference to Brooklyn Dodgers, with a twist: \"Brooklyn Dankers.\"\nPlayful nod to sports nostalgia and meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "JACKIEPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe-faced baseball player donning a retro uniform, set against a bright yellow backdrop. The composition prominently displays a bold blue cap with a white logo, and a smaller image of the player in action, pitching. The art style is a blend of caricature and pop art, with a vivid and contrasting color palette that highlights the green Pepe face.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "JACKIEPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nJackie Pepenson, outfield, BROOKLYN DANKERS\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe-faced baseball player donning a retro uniform, set against a bright yellow backdrop. The composition prominently displays a bold blue cap with a white logo, and a smaller image of the player in action, pitching. The art style is a blend of caricature and pop art, with a vivid and contrasting color palette that highlights the green Pepe face.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog meets baseball legend vibes.\n- Parody of classic sports cards.\n- Reference to Brooklyn Dodgers, with a twist: \"Brooklyn Dankers.\"\n- Playful nod to sports nostalgia and meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.702Z",
+  "sourceFactVersion": 1
+}

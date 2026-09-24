@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "FAKETONY",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 2,
+  "artist": "Mr Hansel and Ghostface Killah",
+  "supply": 100,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "Get word to the DJ."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog inspiration with an urban twist.",
+    "References to hip-hop culture through attire and pose.",
+    "Graffiti elements nodding to street art aesthetics.",
+    "Subtle nods to crypto culture with abstract symbols."
+  ],
+  "visualSummary": "The card features a vibrant and surreal image of a green-skinned figure with exaggerated features, wearing a beanie and a leather jacket. The color palette is a mix of greens, blues, and browns, creating a striking contrast. The background has a textured, graffiti-like appearance with cursive text, adding to the edgy and urban vibe.",
+  "visualSummaryShort": "The card showcases a green-skinned figure in a beanie and leather jacket against a graffiti-like background. The vibrant color palette of greens, blues, and browns enhances the urban and edgy atmosphere.",
+  "visualKeywords": [
+    "green-skinned",
+    "beanie",
+    "leather jacket",
+    "graffiti",
+    "urban",
+    "vibrant",
+    "exaggerated features",
+    "textured",
+    "contrast"
+  ],
+  "textKeywords": [
+    "get",
+    "word"
+  ],
+  "keywords": [
+    "green-skinned",
+    "beanie",
+    "leather jacket",
+    "graffiti",
+    "urban",
+    "vibrant",
+    "exaggerated features",
+    "textured",
+    "contrast",
+    "get",
+    "word"
+  ],
+  "embeddingInput": "FAKETONY (Fake Rares) - Series 4 Card 2\nArtist: Mr Hansel and Ghostface Killah\nSupply 100 Issued November 2021\nOn-card text: Get word to the DJ.\nVisual summary: The card features a vibrant and surreal image of a green-skinned figure with exaggerated features, wearing a beanie and a leather jacket. The color palette is a mix of greens, blues, and browns, creating a striking contrast. The background has a textured, graffiti-like appearance with cursive text, adding to the edgy and urban vibe.\nMemetic references: Pepe the Frog inspiration with an urban twist.; References to hip-hop culture through attire and pose.; Graffiti elements nodding to street art aesthetics.; Subtle nods to crypto culture with abstract symbols.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKETONY#text",
+      "label": "On-card text",
+      "text": "Get word to the DJ.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKETONY#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog inspiration with an urban twist.\nReferences to hip-hop culture through attire and pose.\nGraffiti elements nodding to street art aesthetics.\nSubtle nods to crypto culture with abstract symbols.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKETONY#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant and surreal image of a green-skinned figure with exaggerated features, wearing a beanie and a leather jacket. The color palette is a mix of greens, blues, and browns, creating a striking contrast. The background has a textured, graffiti-like appearance with cursive text, adding to the edgy and urban vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKETONY#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nGet word to the DJ.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant and surreal image of a green-skinned figure with exaggerated features, wearing a beanie and a leather jacket. The color palette is a mix of greens, blues, and browns, creating a striking contrast. The background has a textured, graffiti-like appearance with cursive text, adding to the edgy and urban vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog inspiration with an urban twist.\n- References to hip-hop culture through attire and pose.\n- Graffiti elements nodding to street art aesthetics.\n- Subtle nods to crypto culture with abstract symbols.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.586Z",
+  "sourceFactVersion": 1
+}

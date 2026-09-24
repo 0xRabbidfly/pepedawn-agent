@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "FAKEHOLE",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 37,
+  "artist": "uttermelon",
+  "supply": 21,
+  "issuance": "January 2023",
+  "textOnCard": [
+    "FAKE HOLE"
+  ],
+  "memeticReferences": [
+    "References to the rabbit hole concept, common in crypto and Alice in Wonderland lore.",
+    "Pepe the Frog imagery, a staple in meme culture.",
+    "Classical art motifs combined with modern digital art elements.",
+    "Surreal, dreamlike composition echoing the unpredictable nature of NFT culture."
+  ],
+  "visualSummary": "This card is a vibrant collage filled with a multitude of eclectic elements, including a central figure with rabbit ears and a bow tie, surrounded by a chaotic mix of objects like carrots, classical statues, and architecture. The color palette is rich and varied, with dominant hues of orange, green, and blue, creating a surreal and dreamlike atmosphere. The artistic style is reminiscent of digital surrealism, blending pop culture references with a whimsical touch.",
+  "visualSummaryShort": "The card features a central figure with rabbit ears and a bow tie, surrounded by a chaotic mix of eclectic objects. The vibrant color palette includes dominant hues of orange, green, and blue, creating a surreal atmosphere.",
+  "visualKeywords": [
+    "rabbit ears",
+    "bow tie",
+    "carrots",
+    "classical statues",
+    "architecture",
+    "orange",
+    "green",
+    "blue",
+    "surreal",
+    "whimsical"
+  ],
+  "textKeywords": [
+    "hole"
+  ],
+  "keywords": [
+    "rabbit ears",
+    "bow tie",
+    "carrots",
+    "classical statues",
+    "architecture",
+    "orange",
+    "green",
+    "blue",
+    "surreal",
+    "whimsical",
+    "hole"
+  ],
+  "embeddingInput": "FAKEHOLE (Fake Rares) - Series 13 Card 37\nArtist: uttermelon\nSupply 21 Issued January 2023\nOn-card text: FAKE HOLE\nVisual summary: This card is a vibrant collage filled with a multitude of eclectic elements, including a central figure with rabbit ears and a bow tie, surrounded by a chaotic mix of objects like carrots, classical statues, and architecture. The color palette is rich and varied, with dominant hues of orange, green, and blue, creating a surreal and dreamlike atmosphere. The artistic style is reminiscent of digital surrealism, blending pop culture references with a whimsical touch.\nMemetic references: References to the rabbit hole concept, common in crypto and Alice in Wonderland lore.; Pepe the Frog imagery, a staple in meme culture.; Classical art motifs combined with modern digital art elements.; Surreal, dreamlike composition echoing the unpredictable nature of NFT culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEHOLE#text",
+      "label": "On-card text",
+      "text": "FAKE HOLE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEHOLE#memetic",
+      "label": "Memetic references",
+      "text": "References to the rabbit hole concept, common in crypto and Alice in Wonderland lore.\nPepe the Frog imagery, a staple in meme culture.\nClassical art motifs combined with modern digital art elements.\nSurreal, dreamlike composition echoing the unpredictable nature of NFT culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEHOLE#visual",
+      "label": "Visual summary",
+      "text": "This card is a vibrant collage filled with a multitude of eclectic elements, including a central figure with rabbit ears and a bow tie, surrounded by a chaotic mix of objects like carrots, classical statues, and architecture. The color palette is rich and varied, with dominant hues of orange, green, and blue, creating a surreal and dreamlike atmosphere. The artistic style is reminiscent of digital surrealism, blending pop culture references with a whimsical touch.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEHOLE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE HOLE\n\n🎨 **VISUAL BREAKDOWN:**\nThis card is a vibrant collage filled with a multitude of eclectic elements, including a central figure with rabbit ears and a bow tie, surrounded by a chaotic mix of objects like carrots, classical statues, and architecture. The color palette is rich and varied, with dominant hues of orange, green, and blue, creating a surreal and dreamlike atmosphere. The artistic style is reminiscent of digital surrealism, blending pop culture references with a whimsical touch.\n\n🧬 **MEMETIC DNA:**\n- References to the rabbit hole concept, common in crypto and Alice in Wonderland lore.\n- Pepe the Frog imagery, a staple in meme culture.\n- Classical art motifs combined with modern digital art elements.\n- Surreal, dreamlike composition echoing the unpredictable nature of NFT culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.513Z",
+  "sourceFactVersion": 1
+}

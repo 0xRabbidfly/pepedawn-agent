@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "asset": "SMINEMPEPEP",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 22,
+  "artist": "VVD",
+  "supply": 21,
+  "issuance": "March 2024",
+  "textOnCard": [
+    "グリーンキャンドル",
+    "反抗力",
+    "Bogdanoff's final command",
+    "pump it"
+  ],
+  "memeticReferences": [
+    "The glowing eyes reference is a classic meme trope symbolizing enlightenment or power.",
+    "\"Bogdanoff\" nods to the infamous Bogdanoff meme, involving market manipulation.",
+    "The term \"pump it\" is a common phrase in crypto culture, related to market pumps.",
+    "The green color symbolizes bullish market sentiment, also known as \"green candles\" in crypto trading."
+  ],
+  "visualSummary": "The card features a pixelated, retro-style image of a person with glowing eyes against a vibrant green background. The overall composition is reminiscent of early internet aesthetics, combining grainy textures with bright, contrasting colors. It has a vintage video game or meme poster vibe, enhanced by the deliberately low-resolution look.",
+  "visualSummaryShort": "The card showcases a pixelated figure with glowing eyes set against a vibrant green backdrop. Its retro aesthetic evokes early internet and vintage video game styles.",
+  "visualKeywords": [
+    "pixelated",
+    "glowing eyes",
+    "green background",
+    "grainy texture",
+    "bright colors",
+    "retro",
+    "low-resolution",
+    "meme",
+    "vintage"
+  ],
+  "textKeywords": [
+    "bogdanoff",
+    "final",
+    "command",
+    "pump"
+  ],
+  "keywords": [
+    "pixelated",
+    "glowing eyes",
+    "green background",
+    "grainy texture",
+    "bright colors",
+    "retro",
+    "low-resolution",
+    "meme",
+    "vintage",
+    "bogdanoff",
+    "final",
+    "command",
+    "pump"
+  ],
+  "embeddingInput": "SMINEMPEPEP (Fake Rares) - Series 17 Card 22\nArtist: VVD\nSupply 21 Issued March 2024\nOn-card text: グリーンキャンドル | 反抗力 | Bogdanoff's final command | pump it\nVisual summary: The card features a pixelated, retro-style image of a person with glowing eyes against a vibrant green background. The overall composition is reminiscent of early internet aesthetics, combining grainy textures with bright, contrasting colors. It has a vintage video game or meme poster vibe, enhanced by the deliberately low-resolution look.\nMemetic references: The glowing eyes reference is a classic meme trope symbolizing enlightenment or power.; \"Bogdanoff\" nods to the infamous Bogdanoff meme, involving market manipulation.; The term \"pump it\" is a common phrase in crypto culture, related to market pumps.; The green color symbolizes bullish market sentiment, also known as \"green candles\" in crypto trading.",
+  "embeddingBlocks": [
+    {
+      "id": "SMINEMPEPEP#text",
+      "label": "On-card text",
+      "text": "グリーンキャンドル | 反抗力 | Bogdanoff's final command | pump it",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "SMINEMPEPEP#memetic",
+      "label": "Memetic references",
+      "text": "The glowing eyes reference is a classic meme trope symbolizing enlightenment or power.\n\"Bogdanoff\" nods to the infamous Bogdanoff meme, involving market manipulation.\nThe term \"pump it\" is a common phrase in crypto culture, related to market pumps.\nThe green color symbolizes bullish market sentiment, also known as \"green candles\" in crypto trading.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SMINEMPEPEP#visual",
+      "label": "Visual summary",
+      "text": "The card features a pixelated, retro-style image of a person with glowing eyes against a vibrant green background. The overall composition is reminiscent of early internet aesthetics, combining grainy textures with bright, contrasting colors. It has a vintage video game or meme poster vibe, enhanced by the deliberately low-resolution look.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SMINEMPEPEP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- グリーンキャンドル\n- 反抗力\n- Bogdanoff's final command\n- pump it\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a pixelated, retro-style image of a person with glowing eyes against a vibrant green background. The overall composition is reminiscent of early internet aesthetics, combining grainy textures with bright, contrasting colors. It has a vintage video game or meme poster vibe, enhanced by the deliberately low-resolution look.\n\n🧬 **MEMETIC DNA:**\n- The glowing eyes reference is a classic meme trope symbolizing enlightenment or power.\n- \"Bogdanoff\" nods to the infamous Bogdanoff meme, involving market manipulation.\n- The term \"pump it\" is a common phrase in crypto culture, related to market pumps.\n- The green color symbolizes bullish market sentiment, also known as \"green candles\" in crypto trading.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.117Z",
+  "sourceFactVersion": 1
+}

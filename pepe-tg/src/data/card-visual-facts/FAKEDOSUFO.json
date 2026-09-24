@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "asset": "FAKEDOSUFO",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 49,
+  "artist": "Greencross",
+  "supply": 21,
+  "issuance": "September 2023",
+  "textOnCard": [
+    "FAKEDOSUFO"
+  ],
+  "memeticReferences": [
+    "References to retro computer aesthetics.",
+    "UFO and alien themes, common in meme culture.",
+    "Glitch art style, popular in crypto and digital art communities."
+  ],
+  "visualSummary": "The card features a pixelated UFO design reminiscent of early computer graphics. The color palette is a vibrant mix of neon green, blue, and purple, set against a black background. The composition is filled with glitchy, digital elements that give it a retro-futuristic vibe.",
+  "visualSummaryShort": "The card showcases a pixelated UFO with a vibrant neon color palette. It has a retro-futuristic feel, enhanced by glitchy digital elements against a black background.",
+  "visualKeywords": [
+    "ufo",
+    "pixelated",
+    "neon colors",
+    "black background",
+    "glitch",
+    "retro-futuristic"
+  ],
+  "textKeywords": [
+    "fakedosufo"
+  ],
+  "keywords": [
+    "ufo",
+    "pixelated",
+    "neon colors",
+    "black background",
+    "glitch",
+    "retro-futuristic",
+    "fakedosufo"
+  ],
+  "embeddingInput": "FAKEDOSUFO (Fake Rares) - Series 16 Card 49\nArtist: Greencross\nSupply 21 Issued September 2023\nOn-card text: FAKEDOSUFO\nVisual summary: The card features a pixelated UFO design reminiscent of early computer graphics. The color palette is a vibrant mix of neon green, blue, and purple, set against a black background. The composition is filled with glitchy, digital elements that give it a retro-futuristic vibe.\nMemetic references: References to retro computer aesthetics.; UFO and alien themes, common in meme culture.; Glitch art style, popular in crypto and digital art communities.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEDOSUFO#text",
+      "label": "On-card text",
+      "text": "FAKEDOSUFO",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEDOSUFO#memetic",
+      "label": "Memetic references",
+      "text": "References to retro computer aesthetics.\nUFO and alien themes, common in meme culture.\nGlitch art style, popular in crypto and digital art communities.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEDOSUFO#visual",
+      "label": "Visual summary",
+      "text": "The card features a pixelated UFO design reminiscent of early computer graphics. The color palette is a vibrant mix of neon green, blue, and purple, set against a black background. The composition is filled with glitchy, digital elements that give it a retro-futuristic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEDOSUFO#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKEDOSUFO\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a pixelated UFO design reminiscent of early computer graphics. The color palette is a vibrant mix of neon green, blue, and purple, set against a black background. The composition is filled with glitchy, digital elements that give it a retro-futuristic vibe.\n\n🧬 **MEMETIC DNA:**\n- References to retro computer aesthetics.\n- UFO and alien themes, common in meme culture.\n- Glitch art style, popular in crypto and digital art communities.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.481Z",
+  "sourceFactVersion": 1
+}

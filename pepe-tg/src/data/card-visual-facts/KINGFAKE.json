@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "asset": "KINGFAKE",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 6,
+  "artist": "Kero",
+  "supply": 58,
+  "issuance": "June 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as a central character, a staple in meme culture.",
+    "Crown symbolizes power or leadership within the crypto space.",
+    "Mining rigs represent the backbone of cryptocurrency creation and blockchain technology.",
+    "Subtle nod to the relentless grind of crypto mining and accumulation."
+  ],
+  "visualSummary": "The scene features a large Pepe the Frog character wearing an ornate crown, sitting amidst towering stacks of cryptocurrency mining rigs. The color palette is dominated by dark greens and metallic tones, with a moody, digital haze filling the air. The composition has a dystopian, cyberpunk vibe, emphasizing the fusion of meme culture with high-tech elements.",
+  "visualSummaryShort": "A large Pepe the Frog character sits on stacks of cryptocurrency mining rigs, wearing an ornate crown. The scene has a dark green and metallic color palette, creating a moody, cyberpunk atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "crown",
+    "cryptocurrency",
+    "mining rigs",
+    "dark green",
+    "metallic",
+    "digital haze",
+    "dystopian",
+    "cyberpunk"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "crown",
+    "cryptocurrency",
+    "mining rigs",
+    "dark green",
+    "metallic",
+    "digital haze",
+    "dystopian",
+    "cyberpunk"
+  ],
+  "embeddingInput": "KINGFAKE (Fake Rares) - Series 10 Card 6\nArtist: Kero\nSupply 58 Issued June 2022\nOn-card text: none detected\nVisual summary: The scene features a large Pepe the Frog character wearing an ornate crown, sitting amidst towering stacks of cryptocurrency mining rigs. The color palette is dominated by dark greens and metallic tones, with a moody, digital haze filling the air. The composition has a dystopian, cyberpunk vibe, emphasizing the fusion of meme culture with high-tech elements.\nMemetic references: Pepe the Frog as a central character, a staple in meme culture.; Crown symbolizes power or leadership within the crypto space.; Mining rigs represent the backbone of cryptocurrency creation and blockchain technology.; Subtle nod to the relentless grind of crypto mining and accumulation.",
+  "embeddingBlocks": [
+    {
+      "id": "KINGFAKE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central character, a staple in meme culture.\nCrown symbolizes power or leadership within the crypto space.\nMining rigs represent the backbone of cryptocurrency creation and blockchain technology.\nSubtle nod to the relentless grind of crypto mining and accumulation.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "KINGFAKE#visual",
+      "label": "Visual summary",
+      "text": "The scene features a large Pepe the Frog character wearing an ornate crown, sitting amidst towering stacks of cryptocurrency mining rigs. The color palette is dominated by dark greens and metallic tones, with a moody, digital haze filling the air. The composition has a dystopian, cyberpunk vibe, emphasizing the fusion of meme culture with high-tech elements.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "KINGFAKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe scene features a large Pepe the Frog character wearing an ornate crown, sitting amidst towering stacks of cryptocurrency mining rigs. The color palette is dominated by dark greens and metallic tones, with a moody, digital haze filling the air. The composition has a dystopian, cyberpunk vibe, emphasizing the fusion of meme culture with high-tech elements.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central character, a staple in meme culture.\n- Crown symbolizes power or leadership within the crypto space.\n- Mining rigs represent the backbone of cryptocurrency creation and blockchain technology.\n- Subtle nod to the relentless grind of crypto mining and accumulation.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.717Z",
+  "sourceFactVersion": 1
+}

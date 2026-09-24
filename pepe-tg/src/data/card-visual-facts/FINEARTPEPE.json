@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "FINEARTPEPE",
+  "collection": "Fake Rares",
+  "series": 0,
+  "cardNumber": 21,
+  "artist": "Gus Grillasca",
+  "supply": 150,
+  "issuance": "March 2018",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery, a staple in meme culture.",
+    "The use of art frames suggests a parody of high art, blending meme culture with classical art aesthetics.",
+    "The heart tattoo with \"Pepe\" hints at iconic body art tropes, adding a humorous twist."
+  ],
+  "visualSummary": "The card features two framed images on a wooden surface. The top image shows a black-and-white portrait of Pepe the Frog with a bandana, set in a gold ornate frame. Below, there is a black-framed painting of a muscular torso in grayscale, with a heart tattoo labeled \"Pepe\" on the hip.",
+  "visualSummaryShort": "The card showcases two framed artworks on a wooden surface. The top features a black-and-white portrait of Pepe the Frog, while the bottom displays a grayscale painting of a muscular torso with a heart tattoo.",
+  "visualKeywords": [
+    "framed images",
+    "black-and-white",
+    "gold frame",
+    "grayscale",
+    "muscular torso",
+    "heart tattoo",
+    "wooden surface",
+    "bandana"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "framed images",
+    "black-and-white",
+    "gold frame",
+    "grayscale",
+    "muscular torso",
+    "heart tattoo",
+    "wooden surface",
+    "bandana"
+  ],
+  "embeddingInput": "FINEARTPEPE (Fake Rares) - Series 0 Card 21\nArtist: Gus Grillasca\nSupply 150 Issued March 2018\nOn-card text: none detected\nVisual summary: The card features two framed images on a wooden surface. The top image shows a black-and-white portrait of Pepe the Frog with a bandana, set in a gold ornate frame. Below, there is a black-framed painting of a muscular torso in grayscale, with a heart tattoo labeled \"Pepe\" on the hip.\nMemetic references: Classic Pepe the Frog imagery, a staple in meme culture.; The use of art frames suggests a parody of high art, blending meme culture with classical art aesthetics.; The heart tattoo with \"Pepe\" hints at iconic body art tropes, adding a humorous twist.",
+  "embeddingBlocks": [
+    {
+      "id": "FINEARTPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery, a staple in meme culture.\nThe use of art frames suggests a parody of high art, blending meme culture with classical art aesthetics.\nThe heart tattoo with \"Pepe\" hints at iconic body art tropes, adding a humorous twist.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FINEARTPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features two framed images on a wooden surface. The top image shows a black-and-white portrait of Pepe the Frog with a bandana, set in a gold ornate frame. Below, there is a black-framed painting of a muscular torso in grayscale, with a heart tattoo labeled \"Pepe\" on the hip.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FINEARTPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features two framed images on a wooden surface. The top image shows a black-and-white portrait of Pepe the Frog with a bandana, set in a gold ornate frame. Below, there is a black-framed painting of a muscular torso in grayscale, with a heart tattoo labeled \"Pepe\" on the hip.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery, a staple in meme culture.\n- The use of art frames suggests a parody of high art, blending meme culture with classical art aesthetics.\n- The heart tattoo with \"Pepe\" hints at iconic body art tropes, adding a humorous twist.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.622Z",
+  "sourceFactVersion": 1
+}

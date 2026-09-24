@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "CYBORGPEPE",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 41,
+  "artist": "jah",
+  "supply": 42,
+  "issuance": "January 2022",
+  "textOnCard": [
+    "S4B, PEPES, CYBORG PEPE"
+  ],
+  "memeticReferences": [
+    "Cyberpunk aesthetics reminiscent of \"Blade Runner.\"",
+    "Pepe the Frog as a cyborg, merging meme culture with sci-fi.",
+    "References to digital and crypto culture with futuristic signage."
+  ],
+  "visualSummary": "This card features a cyberpunk-inspired scene with neon lights and a dark, futuristic cityscape. The colors are vibrant with strong purples, greens, and blues, creating a high-tech vibe. The composition includes mechanical and digital elements, giving it a sci-fi atmosphere.",
+  "visualSummaryShort": "The card showcases a cyberpunk cityscape illuminated by vibrant neon lights. It features a blend of mechanical and digital elements, emphasizing a futuristic and high-tech atmosphere.",
+  "visualKeywords": [
+    "cyberpunk",
+    "neon lights",
+    "dark cityscape",
+    "vibrant colors",
+    "mechanical",
+    "digital",
+    "sci-fi",
+    "futuristic"
+  ],
+  "textKeywords": [
+    "s4b",
+    "pepes",
+    "cyborg"
+  ],
+  "keywords": [
+    "cyberpunk",
+    "neon lights",
+    "dark cityscape",
+    "vibrant colors",
+    "mechanical",
+    "digital",
+    "sci-fi",
+    "futuristic",
+    "s4b",
+    "pepes",
+    "cyborg"
+  ],
+  "embeddingInput": "CYBORGPEPE (Fake Rares) - Series 6 Card 41\nArtist: jah\nSupply 42 Issued January 2022\nOn-card text: S4B, PEPES, CYBORG PEPE\nVisual summary: This card features a cyberpunk-inspired scene with neon lights and a dark, futuristic cityscape. The colors are vibrant with strong purples, greens, and blues, creating a high-tech vibe. The composition includes mechanical and digital elements, giving it a sci-fi atmosphere.\nMemetic references: Cyberpunk aesthetics reminiscent of \"Blade Runner.\"; Pepe the Frog as a cyborg, merging meme culture with sci-fi.; References to digital and crypto culture with futuristic signage.",
+  "embeddingBlocks": [
+    {
+      "id": "CYBORGPEPE#text",
+      "label": "On-card text",
+      "text": "S4B, PEPES, CYBORG PEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "CYBORGPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Cyberpunk aesthetics reminiscent of \"Blade Runner.\"\nPepe the Frog as a cyborg, merging meme culture with sci-fi.\nReferences to digital and crypto culture with futuristic signage.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "CYBORGPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a cyberpunk-inspired scene with neon lights and a dark, futuristic cityscape. The colors are vibrant with strong purples, greens, and blues, creating a high-tech vibe. The composition includes mechanical and digital elements, giving it a sci-fi atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "CYBORGPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nS4B, PEPES, CYBORG PEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a cyberpunk-inspired scene with neon lights and a dark, futuristic cityscape. The colors are vibrant with strong purples, greens, and blues, creating a high-tech vibe. The composition includes mechanical and digital elements, giving it a sci-fi atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Cyberpunk aesthetics reminiscent of \"Blade Runner.\"\n- Pepe the Frog as a cyborg, merging meme culture with sci-fi.\n- References to digital and crypto culture with futuristic signage.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.373Z",
+  "sourceFactVersion": 1
+}

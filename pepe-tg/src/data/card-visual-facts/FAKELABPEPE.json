@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "FAKELABPEPE",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 47,
+  "artist": "GoingPepe100",
+  "supply": 65,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "FAKELABPEPE"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog character, a staple in meme culture.",
+    "Sci-fi lab setting reminiscent of mad scientist tropes.",
+    "References to cloning or genetic experiments, common themes in futuristic memes."
+  ],
+  "visualSummary": "The card features a dark laboratory setting with two Pepe characters dressed as scientists. The color palette is dominated by greens and blues, giving it a futuristic and eerie vibe. The background shows silhouettes of creatures in green-lit tanks, adding a sci-fi element to the scene.",
+  "visualSummaryShort": "The card depicts a dark laboratory with two Pepe characters as scientists. The eerie atmosphere is enhanced by green-lit tanks containing silhouettes of creatures.",
+  "visualKeywords": [
+    "laboratory",
+    "pepe",
+    "scientists",
+    "green palette",
+    "blue palette",
+    "silhouettes",
+    "creatures",
+    "sci-fi",
+    "eerie",
+    "futuristic"
+  ],
+  "textKeywords": [
+    "fakelabpepe"
+  ],
+  "keywords": [
+    "laboratory",
+    "pepe",
+    "scientists",
+    "green palette",
+    "blue palette",
+    "silhouettes",
+    "creatures",
+    "sci-fi",
+    "eerie",
+    "futuristic",
+    "fakelabpepe"
+  ],
+  "embeddingInput": "FAKELABPEPE (Fake Rares) - Series 6 Card 47\nArtist: GoingPepe100\nSupply 65 Issued February 2022\nOn-card text: FAKELABPEPE\nVisual summary: The card features a dark laboratory setting with two Pepe characters dressed as scientists. The color palette is dominated by greens and blues, giving it a futuristic and eerie vibe. The background shows silhouettes of creatures in green-lit tanks, adding a sci-fi element to the scene.\nMemetic references: Classic Pepe the Frog character, a staple in meme culture.; Sci-fi lab setting reminiscent of mad scientist tropes.; References to cloning or genetic experiments, common themes in futuristic memes.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKELABPEPE#text",
+      "label": "On-card text",
+      "text": "FAKELABPEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKELABPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog character, a staple in meme culture.\nSci-fi lab setting reminiscent of mad scientist tropes.\nReferences to cloning or genetic experiments, common themes in futuristic memes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKELABPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a dark laboratory setting with two Pepe characters dressed as scientists. The color palette is dominated by greens and blues, giving it a futuristic and eerie vibe. The background shows silhouettes of creatures in green-lit tanks, adding a sci-fi element to the scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKELABPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKELABPEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a dark laboratory setting with two Pepe characters dressed as scientists. The color palette is dominated by greens and blues, giving it a futuristic and eerie vibe. The background shows silhouettes of creatures in green-lit tanks, adding a sci-fi element to the scene.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog character, a staple in meme culture.\n- Sci-fi lab setting reminiscent of mad scientist tropes.\n- References to cloning or genetic experiments, common themes in futuristic memes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.522Z",
+  "sourceFactVersion": 1
+}

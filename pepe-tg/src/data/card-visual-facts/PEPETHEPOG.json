@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "asset": "PEPETHEPOG",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 36,
+  "artist": "Nicolas Sierro",
+  "supply": 33,
+  "issuance": "December 2021",
+  "textOnCard": [
+    "PEPE THE POG",
+    "Spells of Genesis - Satoshi ready to play all his games?"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog references.",
+    "The face of a popular reaction meme known as \"PogChamp.\"",
+    "Crypto symbols like Bitcoin are prominent.",
+    "References to \"Spells of Genesis,\" a pioneering blockchain-based card game."
+  ],
+  "visualSummary": "The card features a figure in a hooded robe with glowing green hands, manipulating cubes with crypto symbols. The color palette is rich with deep purples and greens, creating a mystical and digital vibe. The art style combines digital illustration with a meme-like character face, blending the surreal with the humorous.",
+  "visualSummaryShort": "The card showcases a hooded figure with glowing green hands, surrounded by cubes featuring crypto symbols. The deep purple and green color palette enhances its mystical and digital atmosphere.",
+  "visualKeywords": [
+    "hooded figure",
+    "green hands",
+    "cubes",
+    "crypto symbols",
+    "purple",
+    "green",
+    "mystical",
+    "digital",
+    "surreal",
+    "humorous"
+  ],
+  "textKeywords": [
+    "pog",
+    "spells",
+    "genesis",
+    "satoshi",
+    "ready",
+    "play",
+    "all",
+    "his",
+    "games"
+  ],
+  "keywords": [
+    "hooded figure",
+    "green hands",
+    "cubes",
+    "crypto symbols",
+    "purple",
+    "green",
+    "mystical",
+    "digital",
+    "surreal",
+    "humorous",
+    "pog",
+    "spells",
+    "genesis",
+    "satoshi",
+    "ready",
+    "play",
+    "all",
+    "his",
+    "games"
+  ],
+  "embeddingInput": "PEPETHEPOG (Fake Rares) - Series 6 Card 36\nArtist: Nicolas Sierro\nSupply 33 Issued December 2021\nOn-card text: PEPE THE POG | Spells of Genesis - Satoshi ready to play all his games?\nVisual summary: The card features a figure in a hooded robe with glowing green hands, manipulating cubes with crypto symbols. The color palette is rich with deep purples and greens, creating a mystical and digital vibe. The art style combines digital illustration with a meme-like character face, blending the surreal with the humorous.\nMemetic references: Pepe the Frog references.; The face of a popular reaction meme known as \"PogChamp.\"; Crypto symbols like Bitcoin are prominent.; References to \"Spells of Genesis,\" a pioneering blockchain-based card game.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPETHEPOG#text",
+      "label": "On-card text",
+      "text": "PEPE THE POG | Spells of Genesis - Satoshi ready to play all his games?",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPETHEPOG#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references.\nThe face of a popular reaction meme known as \"PogChamp.\"\nCrypto symbols like Bitcoin are prominent.\nReferences to \"Spells of Genesis,\" a pioneering blockchain-based card game.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPETHEPOG#visual",
+      "label": "Visual summary",
+      "text": "The card features a figure in a hooded robe with glowing green hands, manipulating cubes with crypto symbols. The color palette is rich with deep purples and greens, creating a mystical and digital vibe. The art style combines digital illustration with a meme-like character face, blending the surreal with the humorous.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPETHEPOG#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE THE POG  \nSpells of Genesis - Satoshi ready to play all his games?  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a figure in a hooded robe with glowing green hands, manipulating cubes with crypto symbols. The color palette is rich with deep purples and greens, creating a mystical and digital vibe. The art style combines digital illustration with a meme-like character face, blending the surreal with the humorous.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references.\n- The face of a popular reaction meme known as \"PogChamp.\"\n- Crypto symbols like Bitcoin are prominent.\n- References to \"Spells of Genesis,\" a pioneering blockchain-based card game.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.996Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "TRITHEMIUS",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 35,
+  "artist": "TRITHEMIUSPEPE",
+  "supply": 100,
+  "issuance": "August 2024",
+  "textOnCard": [
+    "TRITHEMIUSPEPE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in a mystical, wizard-like role.",
+    "\"The Matrix\" code rain, symbolizing digital and crypto culture.",
+    "References to esoteric knowledge and cryptography, nodding to the historical figure Trithemius."
+  ],
+  "visualSummary": "The card features a Pepe the Frog character, cloaked in a monk's robe, standing in a grand, cathedral-like room filled with books and illuminated by a green digital glow reminiscent of \"The Matrix.\" The room is bathed in cascading streams of green code, enhancing the mystical and tech-savvy atmosphere. The color palette is dominated by greens and dark tones, giving it a mysterious and futuristic vibe.",
+  "visualSummaryShort": "The card depicts a Pepe the Frog character in a monk's robe within a cathedral-like room filled with books and illuminated by a green digital glow. The atmosphere is enhanced by cascading streams of green code, creating a mystical and futuristic vibe.",
+  "visualKeywords": [
+    "pepe",
+    "monk's robe",
+    "cathedral",
+    "books",
+    "green glow",
+    "digital code",
+    "mystical",
+    "futuristic",
+    "dark tones"
+  ],
+  "textKeywords": [
+    "trithemiuspepe"
+  ],
+  "keywords": [
+    "pepe",
+    "monk's robe",
+    "cathedral",
+    "books",
+    "green glow",
+    "digital code",
+    "mystical",
+    "futuristic",
+    "dark tones",
+    "trithemiuspepe"
+  ],
+  "embeddingInput": "TRITHEMIUS (Fake Rares) - Series 17 Card 35\nArtist: TRITHEMIUSPEPE\nSupply 100 Issued August 2024\nOn-card text: TRITHEMIUSPEPE\nVisual summary: The card features a Pepe the Frog character, cloaked in a monk's robe, standing in a grand, cathedral-like room filled with books and illuminated by a green digital glow reminiscent of \"The Matrix.\" The room is bathed in cascading streams of green code, enhancing the mystical and tech-savvy atmosphere. The color palette is dominated by greens and dark tones, giving it a mysterious and futuristic vibe.\nMemetic references: Pepe the Frog in a mystical, wizard-like role.; \"The Matrix\" code rain, symbolizing digital and crypto culture.; References to esoteric knowledge and cryptography, nodding to the historical figure Trithemius.",
+  "embeddingBlocks": [
+    {
+      "id": "TRITHEMIUS#text",
+      "label": "On-card text",
+      "text": "TRITHEMIUSPEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "TRITHEMIUS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in a mystical, wizard-like role.\n\"The Matrix\" code rain, symbolizing digital and crypto culture.\nReferences to esoteric knowledge and cryptography, nodding to the historical figure Trithemius.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "TRITHEMIUS#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe the Frog character, cloaked in a monk's robe, standing in a grand, cathedral-like room filled with books and illuminated by a green digital glow reminiscent of \"The Matrix.\" The room is bathed in cascading streams of green code, enhancing the mystical and tech-savvy atmosphere. The color palette is dominated by greens and dark tones, giving it a mysterious and futuristic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "TRITHEMIUS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nTRITHEMIUSPEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe the Frog character, cloaked in a monk's robe, standing in a grand, cathedral-like room filled with books and illuminated by a green digital glow reminiscent of \"The Matrix.\" The room is bathed in cascading streams of green code, enhancing the mystical and tech-savvy atmosphere. The color palette is dominated by greens and dark tones, giving it a mysterious and futuristic vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in a mystical, wizard-like role.\n- \"The Matrix\" code rain, symbolizing digital and crypto culture.\n- References to esoteric knowledge and cryptography, nodding to the historical figure Trithemius.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.158Z",
+  "sourceFactVersion": 1
+}

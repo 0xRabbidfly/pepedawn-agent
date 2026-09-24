@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "asset": "NEWPEPEDESU",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 38,
+  "artist": "ROBNESS x PEEPS",
+  "supply": 181,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "フィルスグッドマン (Feels Good Man)"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference, a staple of internet meme culture.",
+    "Japanese art influence, particularly ukiyo-e style.",
+    "\"Feels Good Man\" is a classic meme phrase associated with Pepe.",
+    "Visual pun with the box design, suggesting layers of meaning or emotions."
+  ],
+  "visualSummary": "The card features a blocky, abstract rendition of Pepe the Frog, composed of stacked green, red, and blue segments, set against a backdrop reminiscent of traditional Japanese art. The composition includes stylized waves, possibly inspired by \"The Great Wave off Kanagawa,\" and subtle, pale script in the background. The color palette is bright and contrasting, with a modern pop-art vibe blended with classic elements.",
+  "visualSummaryShort": "The card showcases a blocky, abstract version of Pepe the Frog with vibrant colors against a traditional Japanese art backdrop. It features stylized waves and a modern pop-art aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "abstract",
+    "green",
+    "red",
+    "blue",
+    "waves",
+    "japanese art",
+    "pop-art",
+    "contrasting colors",
+    "script"
+  ],
+  "textKeywords": [
+    "feels",
+    "good",
+    "man"
+  ],
+  "keywords": [
+    "pepe",
+    "abstract",
+    "green",
+    "red",
+    "blue",
+    "waves",
+    "japanese art",
+    "pop-art",
+    "contrasting colors",
+    "script",
+    "feels",
+    "good",
+    "man"
+  ],
+  "embeddingInput": "NEWPEPEDESU (Fake Rares) - Series 9 Card 38\nArtist: ROBNESS x PEEPS\nSupply 181 Issued September 2022\nOn-card text: フィルスグッドマン (Feels Good Man)\nVisual summary: The card features a blocky, abstract rendition of Pepe the Frog, composed of stacked green, red, and blue segments, set against a backdrop reminiscent of traditional Japanese art. The composition includes stylized waves, possibly inspired by \"The Great Wave off Kanagawa,\" and subtle, pale script in the background. The color palette is bright and contrasting, with a modern pop-art vibe blended with classic elements.\nMemetic references: Pepe the Frog reference, a staple of internet meme culture.; Japanese art influence, particularly ukiyo-e style.; \"Feels Good Man\" is a classic meme phrase associated with Pepe.; Visual pun with the box design, suggesting layers of meaning or emotions.",
+  "embeddingBlocks": [
+    {
+      "id": "NEWPEPEDESU#text",
+      "label": "On-card text",
+      "text": "フィルスグッドマン (Feels Good Man)",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "NEWPEPEDESU#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference, a staple of internet meme culture.\nJapanese art influence, particularly ukiyo-e style.\n\"Feels Good Man\" is a classic meme phrase associated with Pepe.\nVisual pun with the box design, suggesting layers of meaning or emotions.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "NEWPEPEDESU#visual",
+      "label": "Visual summary",
+      "text": "The card features a blocky, abstract rendition of Pepe the Frog, composed of stacked green, red, and blue segments, set against a backdrop reminiscent of traditional Japanese art. The composition includes stylized waves, possibly inspired by \"The Great Wave off Kanagawa,\" and subtle, pale script in the background. The color palette is bright and contrasting, with a modern pop-art vibe blended with classic elements.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "NEWPEPEDESU#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nフィルスグッドマン (Feels Good Man)\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a blocky, abstract rendition of Pepe the Frog, composed of stacked green, red, and blue segments, set against a backdrop reminiscent of traditional Japanese art. The composition includes stylized waves, possibly inspired by \"The Great Wave off Kanagawa,\" and subtle, pale script in the background. The color palette is bright and contrasting, with a modern pop-art vibe blended with classic elements.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference, a staple of internet meme culture.\n- Japanese art influence, particularly ukiyo-e style.\n- \"Feels Good Man\" is a classic meme phrase associated with Pepe.\n- Visual pun with the box design, suggesting layers of meaning or emotions.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.793Z",
+  "sourceFactVersion": 1
+}

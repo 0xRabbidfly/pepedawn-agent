@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "PREDICTIONS",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 41,
+  "artist": "SaSHA-256",
+  "supply": 40,
+  "issuance": "November 2022",
+  "textOnCard": [
+    "PEPE PREDICTIONS"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog, a staple of meme culture.",
+    "Bitcoin and crypto symbology, especially with the dollar sign and Bitcoin logos.",
+    "Ouroboros imagery with the snake, symbolizing cycles and continuity.",
+    "Pizza slice reference to Bitcoin Pizza Day."
+  ],
+  "visualSummary": "The card features a vivid, chaotic composition with a snake coiled around a pizza slice, forming a dollar sign. The background bursts with neon graffiti-like Bitcoin symbols and vibrant colors, including blues, greens, and purples. A classic Pepe figure is seen gazing upwards with a contemplative expression in the corner.",
+  "visualSummaryShort": "The card showcases a chaotic scene with a snake entwined around a pizza slice shaped like a dollar sign. A classic Pepe figure appears contemplatively in the corner against a vibrant, graffiti-style background filled with Bitcoin symbols.",
+  "visualKeywords": [
+    "snake",
+    "pizza",
+    "dollar sign",
+    "neon",
+    "graffiti",
+    "bitcoin",
+    "pepe",
+    "vibrant colors",
+    "chaotic",
+    "contemplative"
+  ],
+  "textKeywords": [
+    "predictions"
+  ],
+  "keywords": [
+    "snake",
+    "pizza",
+    "dollar sign",
+    "neon",
+    "graffiti",
+    "bitcoin",
+    "pepe",
+    "vibrant colors",
+    "chaotic",
+    "contemplative",
+    "predictions"
+  ],
+  "embeddingInput": "PREDICTIONS (Fake Rares) - Series 12 Card 41\nArtist: SaSHA-256\nSupply 40 Issued November 2022\nOn-card text: PEPE PREDICTIONS\nVisual summary: The card features a vivid, chaotic composition with a snake coiled around a pizza slice, forming a dollar sign. The background bursts with neon graffiti-like Bitcoin symbols and vibrant colors, including blues, greens, and purples. A classic Pepe figure is seen gazing upwards with a contemplative expression in the corner.\nMemetic references: Classic Pepe the Frog, a staple of meme culture.; Bitcoin and crypto symbology, especially with the dollar sign and Bitcoin logos.; Ouroboros imagery with the snake, symbolizing cycles and continuity.; Pizza slice reference to Bitcoin Pizza Day.",
+  "embeddingBlocks": [
+    {
+      "id": "PREDICTIONS#text",
+      "label": "On-card text",
+      "text": "PEPE PREDICTIONS",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PREDICTIONS#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog, a staple of meme culture.\nBitcoin and crypto symbology, especially with the dollar sign and Bitcoin logos.\nOuroboros imagery with the snake, symbolizing cycles and continuity.\nPizza slice reference to Bitcoin Pizza Day.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PREDICTIONS#visual",
+      "label": "Visual summary",
+      "text": "The card features a vivid, chaotic composition with a snake coiled around a pizza slice, forming a dollar sign. The background bursts with neon graffiti-like Bitcoin symbols and vibrant colors, including blues, greens, and purples. A classic Pepe figure is seen gazing upwards with a contemplative expression in the corner.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PREDICTIONS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE PREDICTIONS\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vivid, chaotic composition with a snake coiled around a pizza slice, forming a dollar sign. The background bursts with neon graffiti-like Bitcoin symbols and vibrant colors, including blues, greens, and purples. A classic Pepe figure is seen gazing upwards with a contemplative expression in the corner.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog, a staple of meme culture.\n- Bitcoin and crypto symbology, especially with the dollar sign and Bitcoin logos.\n- Ouroboros imagery with the snake, symbolizing cycles and continuity.\n- Pizza slice reference to Bitcoin Pizza Day.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.054Z",
+  "sourceFactVersion": 1
+}

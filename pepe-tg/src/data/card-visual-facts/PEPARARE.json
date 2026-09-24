@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "asset": "PEPARARE",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 8,
+  "artist": "Whoisit",
+  "supply": 30,
+  "issuance": "December 2021",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a visually striking design with no specific details provided. It invites curiosity with its unique title.",
+  "visualKeywords": [],
+  "textKeywords": [],
+  "keywords": [],
+  "embeddingInput": "PEPARARE (Fake Rares) - Series 5 Card 8\nArtist: Whoisit\nSupply 30 Issued December 2021\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "PEPARARE#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't help with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.833Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "FAKEMINGO",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 39,
+  "artist": "Nikolina Petolas",
+  "supply": 21,
+  "issuance": "April 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "The flamingo may reference the \"Fake Rares\" concept, playing on uniqueness in the NFT space.",
+    "Frog creatures nod to the classic Pepe meme, a staple in crypto culture.",
+    "The surreal jungle evokes an otherworldly vibe, reminiscent of digital art trends."
+  ],
+  "visualSummary": "The artwork features a vibrant jungle scene dominated by a teal flamingo with a red beak, surrounded by lush, twisting vines and leaves. The color palette is rich with greens and teals, giving a dreamy, almost mystical atmosphere. Playful frog-like creatures with human-like expressions are peeking out, adding a whimsical and surreal touch.",
+  "visualSummaryShort": "The card showcases a vibrant jungle scene with a teal flamingo and playful frog-like creatures. The rich greens and teals create a dreamy, mystical atmosphere.",
+  "visualKeywords": [
+    "flamingo",
+    "jungle",
+    "vines",
+    "leaves",
+    "whimsical",
+    "frogs",
+    "teal",
+    "red beak",
+    "surreal",
+    "dreamy"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "flamingo",
+    "jungle",
+    "vines",
+    "leaves",
+    "whimsical",
+    "frogs",
+    "teal",
+    "red beak",
+    "surreal",
+    "dreamy"
+  ],
+  "embeddingInput": "FAKEMINGO (Fake Rares) - Series 7 Card 39\nArtist: Nikolina Petolas\nSupply 21 Issued April 2022\nOn-card text: none detected\nVisual summary: The artwork features a vibrant jungle scene dominated by a teal flamingo with a red beak, surrounded by lush, twisting vines and leaves. The color palette is rich with greens and teals, giving a dreamy, almost mystical atmosphere. Playful frog-like creatures with human-like expressions are peeking out, adding a whimsical and surreal touch.\nMemetic references: The flamingo may reference the \"Fake Rares\" concept, playing on uniqueness in the NFT space.; Frog creatures nod to the classic Pepe meme, a staple in crypto culture.; The surreal jungle evokes an otherworldly vibe, reminiscent of digital art trends.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEMINGO#memetic",
+      "label": "Memetic references",
+      "text": "The flamingo may reference the \"Fake Rares\" concept, playing on uniqueness in the NFT space.\nFrog creatures nod to the classic Pepe meme, a staple in crypto culture.\nThe surreal jungle evokes an otherworldly vibe, reminiscent of digital art trends.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEMINGO#visual",
+      "label": "Visual summary",
+      "text": "The artwork features a vibrant jungle scene dominated by a teal flamingo with a red beak, surrounded by lush, twisting vines and leaves. The color palette is rich with greens and teals, giving a dreamy, almost mystical atmosphere. Playful frog-like creatures with human-like expressions are peeking out, adding a whimsical and surreal touch.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEMINGO#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe artwork features a vibrant jungle scene dominated by a teal flamingo with a red beak, surrounded by lush, twisting vines and leaves. The color palette is rich with greens and teals, giving a dreamy, almost mystical atmosphere. Playful frog-like creatures with human-like expressions are peeking out, adding a whimsical and surreal touch.\n\n🧬 **MEMETIC DNA:**\n- The flamingo may reference the \"Fake Rares\" concept, playing on uniqueness in the NFT space.\n- Frog creatures nod to the classic Pepe meme, a staple in crypto culture.\n- The surreal jungle evokes an otherworldly vibe, reminiscent of digital art trends.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.533Z",
+  "sourceFactVersion": 1
+}

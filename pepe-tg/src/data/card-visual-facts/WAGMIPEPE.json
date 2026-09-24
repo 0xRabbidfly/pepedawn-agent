@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "asset": "WAGMIPEPE",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 4,
+  "artist": "Lord Jamie V. Shill",
+  "supply": 83,
+  "issuance": "September 2021",
+  "textOnCard": [
+    "JPG",
+    "WAGMI",
+    "NAKAMOTO"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference.",
+    "\"WAGMI\" stands for \"We're All Gonna Make It,\" a common crypto rallying cry.",
+    "The use of “JPG” humorously nods to the NFT format and digital art.",
+    "“NAKAMOTO” references the pseudonymous creator of Bitcoin, Satoshi Nakamoto."
+  ],
+  "visualSummary": "This card showcases Pepe the Frog with a punk vibe, sporting sunglasses and a spiked mohawk. The color palette is dominated by vibrant purples and greens, giving it a lively and rebellious feel. Pepe is holding a bottle labeled “WAGMI” with bubbles floating around, adding a playful touch to the artwork.",
+  "visualSummaryShort": "The card features Pepe the Frog with a punk aesthetic, complete with sunglasses and a spiked mohawk. Its vibrant purple and green color palette, along with playful bubbles, enhances the lively and rebellious mood.",
+  "visualKeywords": [
+    "pepe",
+    "punk",
+    "sunglasses",
+    "mohawk",
+    "purple",
+    "green",
+    "bubbles",
+    "bottle",
+    "rebellious",
+    "playful"
+  ],
+  "textKeywords": [
+    "jpg",
+    "wagmi",
+    "nakamoto"
+  ],
+  "keywords": [
+    "pepe",
+    "punk",
+    "sunglasses",
+    "mohawk",
+    "purple",
+    "green",
+    "bubbles",
+    "bottle",
+    "rebellious",
+    "playful",
+    "jpg",
+    "wagmi",
+    "nakamoto"
+  ],
+  "embeddingInput": "WAGMIPEPE (Fake Rares) - Series 1 Card 4\nArtist: Lord Jamie V. Shill\nSupply 83 Issued September 2021\nOn-card text: JPG | WAGMI | NAKAMOTO\nVisual summary: This card showcases Pepe the Frog with a punk vibe, sporting sunglasses and a spiked mohawk. The color palette is dominated by vibrant purples and greens, giving it a lively and rebellious feel. Pepe is holding a bottle labeled “WAGMI” with bubbles floating around, adding a playful touch to the artwork.\nMemetic references: Classic Pepe the Frog reference.; \"WAGMI\" stands for \"We're All Gonna Make It,\" a common crypto rallying cry.; The use of “JPG” humorously nods to the NFT format and digital art.; “NAKAMOTO” references the pseudonymous creator of Bitcoin, Satoshi Nakamoto.",
+  "embeddingBlocks": [
+    {
+      "id": "WAGMIPEPE#text",
+      "label": "On-card text",
+      "text": "JPG | WAGMI | NAKAMOTO",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "WAGMIPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference.\n\"WAGMI\" stands for \"We're All Gonna Make It,\" a common crypto rallying cry.\nThe use of “JPG” humorously nods to the NFT format and digital art.\n“NAKAMOTO” references the pseudonymous creator of Bitcoin, Satoshi Nakamoto.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "WAGMIPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card showcases Pepe the Frog with a punk vibe, sporting sunglasses and a spiked mohawk. The color palette is dominated by vibrant purples and greens, giving it a lively and rebellious feel. Pepe is holding a bottle labeled “WAGMI” with bubbles floating around, adding a playful touch to the artwork.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "WAGMIPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- JPG\n- WAGMI\n- NAKAMOTO\n\n🎨 **VISUAL BREAKDOWN:**\nThis card showcases Pepe the Frog with a punk vibe, sporting sunglasses and a spiked mohawk. The color palette is dominated by vibrant purples and greens, giving it a lively and rebellious feel. Pepe is holding a bottle labeled “WAGMI” with bubbles floating around, adding a playful touch to the artwork.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference.\n- \"WAGMI\" stands for \"We're All Gonna Make It,\" a common crypto rallying cry.\n- The use of “JPG” humorously nods to the NFT format and digital art.\n- “NAKAMOTO” references the pseudonymous creator of Bitcoin, Satoshi Nakamoto.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.178Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "INDIPEPE",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 47,
+  "artist": "JB",
+  "supply": 32,
+  "issuance": "April 2023",
+  "textOnCard": [
+    "ROBERT INDIPEPE"
+  ],
+  "memeticReferences": [
+    "Homage to Robert Indiana's \"LOVE\" artwork.",
+    "Incorporates the iconic Pepe meme.",
+    "References to pop art culture."
+  ],
+  "visualSummary": "This card features a bold, abstract composition with large, overlapping letters spelling \"PEPE\" in a style reminiscent of Robert Indiana's iconic \"LOVE\" sculpture. The color palette is vibrant and primary, with bright reds, blues, and greens dominating the canvas. The design is clean and geometric, capturing a pop art aesthetic with a modern, playful twist.",
+  "visualSummaryShort": "The card showcases a vibrant, abstract design with large, overlapping letters spelling 'PEPE'. It features a bold color palette of reds, blues, and greens, embodying a playful pop art aesthetic.",
+  "visualKeywords": [
+    "abstract",
+    "overlapping letters",
+    "vibrant colors",
+    "red",
+    "blue",
+    "green",
+    "geometric",
+    "pop art",
+    "playful"
+  ],
+  "textKeywords": [
+    "robert",
+    "indipepe"
+  ],
+  "keywords": [
+    "abstract",
+    "overlapping letters",
+    "vibrant colors",
+    "red",
+    "blue",
+    "green",
+    "geometric",
+    "pop art",
+    "playful",
+    "robert",
+    "indipepe"
+  ],
+  "embeddingInput": "INDIPEPE (Fake Rares) - Series 13 Card 47\nArtist: JB\nSupply 32 Issued April 2023\nOn-card text: ROBERT INDIPEPE\nVisual summary: This card features a bold, abstract composition with large, overlapping letters spelling \"PEPE\" in a style reminiscent of Robert Indiana's iconic \"LOVE\" sculpture. The color palette is vibrant and primary, with bright reds, blues, and greens dominating the canvas. The design is clean and geometric, capturing a pop art aesthetic with a modern, playful twist.\nMemetic references: Homage to Robert Indiana's \"LOVE\" artwork.; Incorporates the iconic Pepe meme.; References to pop art culture.",
+  "embeddingBlocks": [
+    {
+      "id": "INDIPEPE#text",
+      "label": "On-card text",
+      "text": "ROBERT INDIPEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "INDIPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Homage to Robert Indiana's \"LOVE\" artwork.\nIncorporates the iconic Pepe meme.\nReferences to pop art culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "INDIPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a bold, abstract composition with large, overlapping letters spelling \"PEPE\" in a style reminiscent of Robert Indiana's iconic \"LOVE\" sculpture. The color palette is vibrant and primary, with bright reds, blues, and greens dominating the canvas. The design is clean and geometric, capturing a pop art aesthetic with a modern, playful twist.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "INDIPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nROBERT INDIPEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a bold, abstract composition with large, overlapping letters spelling \"PEPE\" in a style reminiscent of Robert Indiana's iconic \"LOVE\" sculpture. The color palette is vibrant and primary, with bright reds, blues, and greens dominating the canvas. The design is clean and geometric, capturing a pop art aesthetic with a modern, playful twist.\n\n🧬 **MEMETIC DNA:**\n- Homage to Robert Indiana's \"LOVE\" artwork.\n- Incorporates the iconic Pepe meme.\n- References to pop art culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.698Z",
+  "sourceFactVersion": 1
+}

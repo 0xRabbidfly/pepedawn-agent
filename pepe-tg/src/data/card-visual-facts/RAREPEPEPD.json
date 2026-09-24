@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "asset": "RAREPEPEPD",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 47,
+  "artist": "Indelible",
+  "supply": 250,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "RARE PEPE POLICE DEPT.",
+    "BIG RAID, BIG HAUL, BIG HAPPY",
+    "Where are the keys to the evidence locker?",
+    "If you spot fakes call: 1-800-N-O-T-R-E-A-L",
+    "*this is not a real"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as law enforcement",
+    "Parody of police culture and crime busts",
+    "References to fake NFTs and crypto scams",
+    "Comic books and cash as symbols of memetic value"
+  ],
+  "visualSummary": "The card features a group of Pepe characters dressed as police officers, proudly showcasing a table loaded with confiscated items like comics, cash, and what appears to be meat. The color palette is bold and vivid, with bright greens and blues dominating the scene. The style is a humorous photomontage with a chaotic yet organized composition, reflecting a parody of a police bust.",
+  "visualSummaryShort": "The card depicts a humorous scene with Pepe characters as police officers surrounded by confiscated items. The vibrant color palette and chaotic composition enhance the playful mood of the parody.",
+  "visualKeywords": [
+    "pepe",
+    "police",
+    "confiscated items",
+    "comics",
+    "cash",
+    "meat",
+    "green",
+    "blue",
+    "humorous",
+    "chaotic"
+  ],
+  "textKeywords": [
+    "police",
+    "dept",
+    "big",
+    "raid",
+    "haul",
+    "happy",
+    "where",
+    "are",
+    "keys",
+    "evidence",
+    "locker",
+    "you",
+    "spot",
+    "fakes",
+    "call",
+    "800",
+    "not",
+    "real"
+  ],
+  "keywords": [
+    "pepe",
+    "police",
+    "confiscated items",
+    "comics",
+    "cash",
+    "meat",
+    "green",
+    "blue",
+    "humorous",
+    "chaotic",
+    "dept",
+    "big",
+    "raid",
+    "haul",
+    "happy",
+    "where",
+    "are",
+    "keys",
+    "evidence",
+    "locker",
+    "you",
+    "spot",
+    "fakes",
+    "call",
+    "800",
+    "not",
+    "real"
+  ],
+  "embeddingInput": "RAREPEPEPD (Fake Rares) - Series 1 Card 47\nArtist: Indelible\nSupply 250 Issued October 2021\nOn-card text: RARE PEPE POLICE DEPT. | BIG RAID, BIG HAUL, BIG HAPPY | Where are the keys to the evidence locker? | If you spot fakes call: 1-800-N-O-T-R-E-A-L | *this is not a real\nVisual summary: The card features a group of Pepe characters dressed as police officers, proudly showcasing a table loaded with confiscated items like comics, cash, and what appears to be meat. The color palette is bold and vivid, with bright greens and blues dominating the scene. The style is a humorous photomontage with a chaotic yet organized composition, reflecting a parody of a police bust.\nMemetic references: Pepe the Frog as law enforcement; Parody of police culture and crime busts; References to fake NFTs and crypto scams; Comic books and cash as symbols of memetic value",
+  "embeddingBlocks": [
+    {
+      "id": "RAREPEPEPD#text",
+      "label": "On-card text",
+      "text": "RARE PEPE POLICE DEPT. | BIG RAID, BIG HAUL, BIG HAPPY | Where are the keys to the evidence locker? | If you spot fakes call: 1-800-N-O-T-R-E-A-L | *this is not a real",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "RAREPEPEPD#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as law enforcement\nParody of police culture and crime busts\nReferences to fake NFTs and crypto scams\nComic books and cash as symbols of memetic value",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RAREPEPEPD#visual",
+      "label": "Visual summary",
+      "text": "The card features a group of Pepe characters dressed as police officers, proudly showcasing a table loaded with confiscated items like comics, cash, and what appears to be meat. The color palette is bold and vivid, with bright greens and blues dominating the scene. The style is a humorous photomontage with a chaotic yet organized composition, reflecting a parody of a police bust.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RAREPEPEPD#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nRARE PEPE POLICE DEPT. / BIG RAID, BIG HAUL, BIG HAPPY / Where are the keys to the evidence locker? / If you spot fakes call: 1-800-N-O-T-R-E-A-L / *this is not a real \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a group of Pepe characters dressed as police officers, proudly showcasing a table loaded with confiscated items like comics, cash, and what appears to be meat. The color palette is bold and vivid, with bright greens and blues dominating the scene. The style is a humorous photomontage with a chaotic yet organized composition, reflecting a parody of a police bust.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as law enforcement\n- Parody of police culture and crime busts\n- References to fake NFTs and crypto scams\n- Comic books and cash as symbols of memetic value",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.071Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "FAKERARA",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 9,
+  "artist": "Dim Zayan",
+  "supply": 24,
+  "issuance": "September 2023",
+  "textOnCard": [
+    "Fakerara"
+  ],
+  "memeticReferences": [
+    "Pepe references abound, with multiple variations of the iconic frog.",
+    "The presence of a monkey hints at the ubiquitous \"ape\" culture in crypto.",
+    "Elements of surrealism echo the unpredictable nature of meme and NFT culture."
+  ],
+  "visualSummary": "The card features a surreal and chaotic composition with a vibrant color palette dominated by pinks, greens, and blues. Central to the artwork is a large Pepe face, filled with a collage of various characters and objects, including a monkey holding a crystal ball. The style is whimsical and dreamlike, blending elements of pop art with a psychedelic twist.",
+  "visualSummaryShort": "The card showcases a surreal composition with a vibrant color palette of pinks, greens, and blues. A large Pepe face is central, surrounded by a whimsical collage of characters and objects, including a monkey with a crystal ball.",
+  "visualKeywords": [
+    "surreal",
+    "vibrant",
+    "pepe",
+    "monkey",
+    "crystal ball",
+    "collage",
+    "whimsical",
+    "psychedelic",
+    "pop art",
+    "dreamlike"
+  ],
+  "textKeywords": [
+    "fakerara"
+  ],
+  "keywords": [
+    "surreal",
+    "vibrant",
+    "pepe",
+    "monkey",
+    "crystal ball",
+    "collage",
+    "whimsical",
+    "psychedelic",
+    "pop art",
+    "dreamlike",
+    "fakerara"
+  ],
+  "embeddingInput": "FAKERARA (Fake Rares) - Series 16 Card 9\nArtist: Dim Zayan\nSupply 24 Issued September 2023\nOn-card text: Fakerara\nVisual summary: The card features a surreal and chaotic composition with a vibrant color palette dominated by pinks, greens, and blues. Central to the artwork is a large Pepe face, filled with a collage of various characters and objects, including a monkey holding a crystal ball. The style is whimsical and dreamlike, blending elements of pop art with a psychedelic twist.\nMemetic references: Pepe references abound, with multiple variations of the iconic frog.; The presence of a monkey hints at the ubiquitous \"ape\" culture in crypto.; Elements of surrealism echo the unpredictable nature of meme and NFT culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKERARA#text",
+      "label": "On-card text",
+      "text": "Fakerara",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKERARA#memetic",
+      "label": "Memetic references",
+      "text": "Pepe references abound, with multiple variations of the iconic frog.\nThe presence of a monkey hints at the ubiquitous \"ape\" culture in crypto.\nElements of surrealism echo the unpredictable nature of meme and NFT culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKERARA#visual",
+      "label": "Visual summary",
+      "text": "The card features a surreal and chaotic composition with a vibrant color palette dominated by pinks, greens, and blues. Central to the artwork is a large Pepe face, filled with a collage of various characters and objects, including a monkey holding a crystal ball. The style is whimsical and dreamlike, blending elements of pop art with a psychedelic twist.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKERARA#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFakerara\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a surreal and chaotic composition with a vibrant color palette dominated by pinks, greens, and blues. Central to the artwork is a large Pepe face, filled with a collage of various characters and objects, including a monkey holding a crystal ball. The style is whimsical and dreamlike, blending elements of pop art with a psychedelic twist.\n\n🧬 **MEMETIC DNA:**\n- Pepe references abound, with multiple variations of the iconic frog.\n- The presence of a monkey hints at the ubiquitous \"ape\" culture in crypto.\n- Elements of surrealism echo the unpredictable nature of meme and NFT culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.563Z",
+  "sourceFactVersion": 1
+}

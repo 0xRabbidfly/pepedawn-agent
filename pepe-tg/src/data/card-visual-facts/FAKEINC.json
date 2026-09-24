@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "asset": "FAKEINC",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 9,
+  "artist": "PabloRicaSSo",
+  "supply": 74,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "THE PEPE INC"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog is central, a staple of meme culture.",
+    "References to \"Feels Good Man,\" a classic Pepe meme.",
+    "Crypto elements like Bitcoin and Ethereum symbols.",
+    "Monopoly game board hinting at financial and crypto games.",
+    "The presence of dice and playing cards suggests themes of luck and gambling."
+  ],
+  "visualSummary": "This card features a vibrant and chaotic scene with multiple Pepes engaged in what appears to be a high-stakes game around a table. The color palette is rich with greens and reds, creating an intense and dynamic atmosphere. The composition is packed with detail, including a boat marked \"FEELS GOOD MAN,\" various crypto symbols, and a Monopoly-esque board game setup.",
+  "visualSummaryShort": "The card showcases a lively scene with multiple Pepes playing a game around a table. The vibrant colors and detailed elements create an intense atmosphere.",
+  "visualKeywords": [
+    "pepper",
+    "game",
+    "green",
+    "red",
+    "boat",
+    "crypto",
+    "board game",
+    "chaotic",
+    "detailed",
+    "intense"
+  ],
+  "textKeywords": [
+    "inc"
+  ],
+  "keywords": [
+    "pepper",
+    "game",
+    "green",
+    "red",
+    "boat",
+    "crypto",
+    "board game",
+    "chaotic",
+    "detailed",
+    "intense",
+    "inc"
+  ],
+  "embeddingInput": "FAKEINC (Fake Rares) - Series 11 Card 9\nArtist: PabloRicaSSo\nSupply 74 Issued September 2022\nOn-card text: THE PEPE INC\nVisual summary: This card features a vibrant and chaotic scene with multiple Pepes engaged in what appears to be a high-stakes game around a table. The color palette is rich with greens and reds, creating an intense and dynamic atmosphere. The composition is packed with detail, including a boat marked \"FEELS GOOD MAN,\" various crypto symbols, and a Monopoly-esque board game setup.\nMemetic references: Pepe the Frog is central, a staple of meme culture.; References to \"Feels Good Man,\" a classic Pepe meme.; Crypto elements like Bitcoin and Ethereum symbols.; Monopoly game board hinting at financial and crypto games.; The presence of dice and playing cards suggests themes of luck and gambling.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEINC#text",
+      "label": "On-card text",
+      "text": "THE PEPE INC",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEINC#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog is central, a staple of meme culture.\nReferences to \"Feels Good Man,\" a classic Pepe meme.\nCrypto elements like Bitcoin and Ethereum symbols.\nMonopoly game board hinting at financial and crypto games.\nThe presence of dice and playing cards suggests themes of luck and gambling.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEINC#visual",
+      "label": "Visual summary",
+      "text": "This card features a vibrant and chaotic scene with multiple Pepes engaged in what appears to be a high-stakes game around a table. The color palette is rich with greens and reds, creating an intense and dynamic atmosphere. The composition is packed with detail, including a boat marked \"FEELS GOOD MAN,\" various crypto symbols, and a Monopoly-esque board game setup.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEINC#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nTHE PEPE INC\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a vibrant and chaotic scene with multiple Pepes engaged in what appears to be a high-stakes game around a table. The color palette is rich with greens and reds, creating an intense and dynamic atmosphere. The composition is packed with detail, including a boat marked \"FEELS GOOD MAN,\" various crypto symbols, and a Monopoly-esque board game setup.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog is central, a staple of meme culture.\n- References to \"Feels Good Man,\" a classic Pepe meme.\n- Crypto elements like Bitcoin and Ethereum symbols.\n- Monopoly game board hinting at financial and crypto games.\n- The presence of dice and playing cards suggests themes of luck and gambling.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.516Z",
+  "sourceFactVersion": 1
+}

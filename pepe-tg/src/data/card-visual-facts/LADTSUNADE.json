@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "LADTSUNADE",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 27,
+  "artist": "Lord Jamie V. Shill",
+  "supply": 9701,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "LADTSUNADE"
+  ],
+  "memeticReferences": [
+    "References anime and samurai lore with the character's attire and weapon.",
+    "The character's green skin hints at Pepe lore, blending cultural memes with art.",
+    "The calligraphy adds a Japanese aesthetic, linking to traditional art forms."
+  ],
+  "visualSummary": "The card features a green-skinned character donning a traditional red hat and a blue flowing cape, wielding a katana. The background showcases bold, stylized calligraphy on a white canvas, contrasted against a dark, striped backdrop. The color palette is vibrant, mixing deep reds, blues, and greens, creating a striking visual impact.",
+  "visualSummaryShort": "The card depicts a green-skinned character in a red hat and blue cape, holding a katana. The vibrant color palette and bold calligraphy create a striking visual impact.",
+  "visualKeywords": [
+    "green-skinned",
+    "red hat",
+    "blue cape",
+    "katana",
+    "calligraphy",
+    "dark background",
+    "vibrant colors",
+    "stylized"
+  ],
+  "textKeywords": [
+    "ladtsunade"
+  ],
+  "keywords": [
+    "green-skinned",
+    "red hat",
+    "blue cape",
+    "katana",
+    "calligraphy",
+    "dark background",
+    "vibrant colors",
+    "stylized",
+    "ladtsunade"
+  ],
+  "embeddingInput": "LADTSUNADE (Fake Rares) - Series 2 Card 27\nArtist: Lord Jamie V. Shill\nSupply 9701 Issued October 2021\nOn-card text: LADTSUNADE\nVisual summary: The card features a green-skinned character donning a traditional red hat and a blue flowing cape, wielding a katana. The background showcases bold, stylized calligraphy on a white canvas, contrasted against a dark, striped backdrop. The color palette is vibrant, mixing deep reds, blues, and greens, creating a striking visual impact.\nMemetic references: References anime and samurai lore with the character's attire and weapon.; The character's green skin hints at Pepe lore, blending cultural memes with art.; The calligraphy adds a Japanese aesthetic, linking to traditional art forms.",
+  "embeddingBlocks": [
+    {
+      "id": "LADTSUNADE#text",
+      "label": "On-card text",
+      "text": "LADTSUNADE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "LADTSUNADE#memetic",
+      "label": "Memetic references",
+      "text": "References anime and samurai lore with the character's attire and weapon.\nThe character's green skin hints at Pepe lore, blending cultural memes with art.\nThe calligraphy adds a Japanese aesthetic, linking to traditional art forms.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LADTSUNADE#visual",
+      "label": "Visual summary",
+      "text": "The card features a green-skinned character donning a traditional red hat and a blue flowing cape, wielding a katana. The background showcases bold, stylized calligraphy on a white canvas, contrasted against a dark, striped backdrop. The color palette is vibrant, mixing deep reds, blues, and greens, creating a striking visual impact.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LADTSUNADE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nLADTSUNADE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a green-skinned character donning a traditional red hat and a blue flowing cape, wielding a katana. The background showcases bold, stylized calligraphy on a white canvas, contrasted against a dark, striped backdrop. The color palette is vibrant, mixing deep reds, blues, and greens, creating a striking visual impact.\n\n🧬 **MEMETIC DNA:**\n- References anime and samurai lore with the character's attire and weapon.\n- The character's green skin hints at Pepe lore, blending cultural memes with art.\n- The calligraphy adds a Japanese aesthetic, linking to traditional art forms.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.724Z",
+  "sourceFactVersion": 1
+}

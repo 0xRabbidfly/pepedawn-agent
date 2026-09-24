@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "STPAULPEPE",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 34,
+  "artist": "Da'Block God",
+  "supply": 121,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "Saint Paul Pepe"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog face, a staple in meme culture.",
+    "Saintly imagery, merging religious iconography with internet culture.",
+    "Crypto symbolism with the coin held by the figure."
+  ],
+  "visualSummary": "The card features a stained glass style depiction of a saintly figure with a Pepe the Frog face. The color palette includes earthy tones, with pops of green on the frog features, and a golden halo. The background has a medieval art vibe, with a serene landscape and a celestial aura.",
+  "visualSummaryShort": "The card showcases a saintly figure with a Pepe the Frog face in a stained glass style. It features earthy tones, a golden halo, and a serene medieval landscape background.",
+  "visualKeywords": [
+    "stained glass",
+    "pepe the frog",
+    "earthy tones",
+    "golden halo",
+    "medieval art",
+    "serene landscape",
+    "celestial aura"
+  ],
+  "textKeywords": [
+    "saint",
+    "paul"
+  ],
+  "keywords": [
+    "stained glass",
+    "pepe the frog",
+    "earthy tones",
+    "golden halo",
+    "medieval art",
+    "serene landscape",
+    "celestial aura",
+    "saint",
+    "paul"
+  ],
+  "embeddingInput": "STPAULPEPE (Fake Rares) - Series 3 Card 34\nArtist: Da'Block God\nSupply 121 Issued October 2021\nOn-card text: Saint Paul Pepe\nVisual summary: The card features a stained glass style depiction of a saintly figure with a Pepe the Frog face. The color palette includes earthy tones, with pops of green on the frog features, and a golden halo. The background has a medieval art vibe, with a serene landscape and a celestial aura.\nMemetic references: Classic Pepe the Frog face, a staple in meme culture.; Saintly imagery, merging religious iconography with internet culture.; Crypto symbolism with the coin held by the figure.",
+  "embeddingBlocks": [
+    {
+      "id": "STPAULPEPE#text",
+      "label": "On-card text",
+      "text": "Saint Paul Pepe",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "STPAULPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog face, a staple in meme culture.\nSaintly imagery, merging religious iconography with internet culture.\nCrypto symbolism with the coin held by the figure.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "STPAULPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a stained glass style depiction of a saintly figure with a Pepe the Frog face. The color palette includes earthy tones, with pops of green on the frog features, and a golden halo. The background has a medieval art vibe, with a serene landscape and a celestial aura.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "STPAULPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nSaint Paul Pepe\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a stained glass style depiction of a saintly figure with a Pepe the Frog face. The color palette includes earthy tones, with pops of green on the frog features, and a golden halo. The background has a medieval art vibe, with a serene landscape and a celestial aura.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog face, a staple in meme culture.\n- Saintly imagery, merging religious iconography with internet culture.\n- Crypto symbolism with the coin held by the figure.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.128Z",
+  "sourceFactVersion": 1
+}

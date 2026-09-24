@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "asset": "FAKOMER",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 40,
+  "artist": "Yotet",
+  "supply": 50,
+  "issuance": "June 2022",
+  "textOnCard": [
+    "FAKOMER. Wait a minute, I'm a FAKE. MESS SCORE: 1",
+    "1."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference.",
+    "Parody of a well-known cartoon character.",
+    "The phrase “Wait a minute, I'm a FAKE” plays on identity and authenticity, common themes in meme culture.",
+    "The distressed look mimics a worn-out trading card, adding to the meme aesthetic."
+  ],
+  "visualSummary": "The card features a crumpled, weathered appearance with a chaotic, distressed texture. The central image is a hybrid character resembling a fusion of Pepe the Frog and a well-known cartoon dad, with red, bloodshot eyes and a cigarette in its mouth. The color palette is a mix of dull greens, yellows, and pinks, evoking a sense of chaos and parody.",
+  "visualSummaryShort": "The card showcases a hybrid character with red, bloodshot eyes and a cigarette, set against a crumpled, distressed background. The color palette features dull greens, yellows, and pinks, enhancing the chaotic mood.",
+  "visualKeywords": [
+    "hybrid character",
+    "red eyes",
+    "cigarette",
+    "distressed texture",
+    "chaotic",
+    "dull colors",
+    "parody"
+  ],
+  "textKeywords": [
+    "fakomer",
+    "wait",
+    "minute",
+    "mess",
+    "score"
+  ],
+  "keywords": [
+    "hybrid character",
+    "red eyes",
+    "cigarette",
+    "distressed texture",
+    "chaotic",
+    "dull colors",
+    "parody",
+    "fakomer",
+    "wait",
+    "minute",
+    "mess",
+    "score"
+  ],
+  "embeddingInput": "FAKOMER (Fake Rares) - Series 8 Card 40\nArtist: Yotet\nSupply 50 Issued June 2022\nOn-card text: FAKOMER. Wait a minute, I'm a FAKE. MESS SCORE: 1 | 1.\nVisual summary: The card features a crumpled, weathered appearance with a chaotic, distressed texture. The central image is a hybrid character resembling a fusion of Pepe the Frog and a well-known cartoon dad, with red, bloodshot eyes and a cigarette in its mouth. The color palette is a mix of dull greens, yellows, and pinks, evoking a sense of chaos and parody.\nMemetic references: Pepe the Frog reference.; Parody of a well-known cartoon character.; The phrase “Wait a minute, I'm a FAKE” plays on identity and authenticity, common themes in meme culture.; The distressed look mimics a worn-out trading card, adding to the meme aesthetic.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKOMER#text",
+      "label": "On-card text",
+      "text": "FAKOMER. Wait a minute, I'm a FAKE. MESS SCORE: 1 | 1.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKOMER#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference.\nParody of a well-known cartoon character.\nThe phrase “Wait a minute, I'm a FAKE” plays on identity and authenticity, common themes in meme culture.\nThe distressed look mimics a worn-out trading card, adding to the meme aesthetic.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKOMER#visual",
+      "label": "Visual summary",
+      "text": "The card features a crumpled, weathered appearance with a chaotic, distressed texture. The central image is a hybrid character resembling a fusion of Pepe the Frog and a well-known cartoon dad, with red, bloodshot eyes and a cigarette in its mouth. The color palette is a mix of dull greens, yellows, and pinks, evoking a sense of chaos and parody.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKOMER#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKOMER. Wait a minute, I'm a FAKE. MESS SCORE: 1/1.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a crumpled, weathered appearance with a chaotic, distressed texture. The central image is a hybrid character resembling a fusion of Pepe the Frog and a well-known cartoon dad, with red, bloodshot eyes and a cigarette in its mouth. The color palette is a mix of dull greens, yellows, and pinks, evoking a sense of chaos and parody.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference.\n- Parody of a well-known cartoon character.\n- The phrase “Wait a minute, I'm a FAKE” plays on identity and authenticity, common themes in meme culture.\n- The distressed look mimics a worn-out trading card, adding to the meme aesthetic.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.607Z",
+  "sourceFactVersion": 1
+}

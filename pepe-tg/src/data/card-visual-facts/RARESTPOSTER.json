@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "RARESTPOSTER",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 2,
+  "artist": "Jonny Johnsonson",
+  "supply": 50,
+  "issuance": "January 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog visuals are prominently featured, tying into meme culture.",
+    "The setting and style evoke a nostalgic, Americana vibe juxtaposed with modern meme symbolism.",
+    "Crypto cards scattered on the floor imply NFT or blockchain references."
+  ],
+  "visualSummary": "The image has a vintage, Norman Rockwell-style aesthetic featuring a man sitting in a patterned armchair with a young girl on his knee, both looking at a book. The armchair is adorned with Pepe the Frog faces, adding a modern meme twist to the classic scene. A young boy plays on the floor, interacting with cards that seem to have crypto or meme elements.",
+  "visualSummaryShort": "The card depicts a vintage scene with a man and a girl reading a book in a patterned armchair. A boy on the floor engages with cards featuring crypto or meme elements.",
+  "visualKeywords": [
+    "vintage",
+    "armchair",
+    "pepe the frog",
+    "reading",
+    "children",
+    "cards",
+    "meme",
+    "interaction"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "vintage",
+    "armchair",
+    "pepe the frog",
+    "reading",
+    "children",
+    "cards",
+    "meme",
+    "interaction"
+  ],
+  "embeddingInput": "RARESTPOSTER (Fake Rares) - Series 13 Card 2\nArtist: Jonny Johnsonson\nSupply 50 Issued January 2023\nOn-card text: none detected\nVisual summary: The image has a vintage, Norman Rockwell-style aesthetic featuring a man sitting in a patterned armchair with a young girl on his knee, both looking at a book. The armchair is adorned with Pepe the Frog faces, adding a modern meme twist to the classic scene. A young boy plays on the floor, interacting with cards that seem to have crypto or meme elements.\nMemetic references: Pepe the Frog visuals are prominently featured, tying into meme culture.; The setting and style evoke a nostalgic, Americana vibe juxtaposed with modern meme symbolism.; Crypto cards scattered on the floor imply NFT or blockchain references.",
+  "embeddingBlocks": [
+    {
+      "id": "RARESTPOSTER#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog visuals are prominently featured, tying into meme culture.\nThe setting and style evoke a nostalgic, Americana vibe juxtaposed with modern meme symbolism.\nCrypto cards scattered on the floor imply NFT or blockchain references.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RARESTPOSTER#visual",
+      "label": "Visual summary",
+      "text": "The image has a vintage, Norman Rockwell-style aesthetic featuring a man sitting in a patterned armchair with a young girl on his knee, both looking at a book. The armchair is adorned with Pepe the Frog faces, adding a modern meme twist to the classic scene. A young boy plays on the floor, interacting with cards that seem to have crypto or meme elements.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RARESTPOSTER#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe image has a vintage, Norman Rockwell-style aesthetic featuring a man sitting in a patterned armchair with a young girl on his knee, both looking at a book. The armchair is adorned with Pepe the Frog faces, adding a modern meme twist to the classic scene. A young boy plays on the floor, interacting with cards that seem to have crypto or meme elements.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog visuals are prominently featured, tying into meme culture.\n- The setting and style evoke a nostalgic, Americana vibe juxtaposed with modern meme symbolism.\n- Crypto cards scattered on the floor imply NFT or blockchain references.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.075Z",
+  "sourceFactVersion": 1
+}

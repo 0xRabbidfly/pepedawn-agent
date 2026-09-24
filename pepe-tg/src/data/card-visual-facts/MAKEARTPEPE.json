@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "asset": "MAKEARTPEPE",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 49,
+  "artist": "Jose Burrito",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "MAKE ART NOT CONTENT"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog faces, a staple in meme culture.",
+    "References to protest and counterculture movements.",
+    "Commentary on the digital age's focus on content creation over traditional art."
+  ],
+  "visualSummary": "The card features a black-and-white photograph of a protest scene, with Pepe the Frog characters superimposed onto the faces of the protestors. The central figure holds a sign with the text in bold, capturing attention. The overall aesthetic blends classic protest imagery with digital meme culture, utilizing a grayscale palette with the vibrant green of the Pepe characters standing out.",
+  "visualSummaryShort": "The card showcases a black-and-white protest scene with Pepe the Frog characters superimposed on the protestors' faces. The grayscale palette is contrasted by the vibrant green of the Pepe characters, creating a striking visual impact.",
+  "visualKeywords": [
+    "protest",
+    "pepe the frog",
+    "black-and-white",
+    "grayscale",
+    "green",
+    "sign",
+    "digital art",
+    "meme culture"
+  ],
+  "textKeywords": [
+    "make",
+    "art",
+    "not",
+    "content"
+  ],
+  "keywords": [
+    "protest",
+    "pepe the frog",
+    "black-and-white",
+    "grayscale",
+    "green",
+    "sign",
+    "digital art",
+    "meme culture",
+    "make",
+    "art",
+    "not",
+    "content"
+  ],
+  "embeddingInput": "MAKEARTPEPE (Fake Rares) - Series 1 Card 49\nArtist: Jose Burrito\nSupply 100 Issued October 2021\nOn-card text: MAKE ART NOT CONTENT\nVisual summary: The card features a black-and-white photograph of a protest scene, with Pepe the Frog characters superimposed onto the faces of the protestors. The central figure holds a sign with the text in bold, capturing attention. The overall aesthetic blends classic protest imagery with digital meme culture, utilizing a grayscale palette with the vibrant green of the Pepe characters standing out.\nMemetic references: Classic Pepe the Frog faces, a staple in meme culture.; References to protest and counterculture movements.; Commentary on the digital age's focus on content creation over traditional art.",
+  "embeddingBlocks": [
+    {
+      "id": "MAKEARTPEPE#text",
+      "label": "On-card text",
+      "text": "MAKE ART NOT CONTENT",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MAKEARTPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog faces, a staple in meme culture.\nReferences to protest and counterculture movements.\nCommentary on the digital age's focus on content creation over traditional art.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MAKEARTPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a black-and-white photograph of a protest scene, with Pepe the Frog characters superimposed onto the faces of the protestors. The central figure holds a sign with the text in bold, capturing attention. The overall aesthetic blends classic protest imagery with digital meme culture, utilizing a grayscale palette with the vibrant green of the Pepe characters standing out.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MAKEARTPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nMAKE ART NOT CONTENT\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a black-and-white photograph of a protest scene, with Pepe the Frog characters superimposed onto the faces of the protestors. The central figure holds a sign with the text in bold, capturing attention. The overall aesthetic blends classic protest imagery with digital meme culture, utilizing a grayscale palette with the vibrant green of the Pepe characters standing out.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog faces, a staple in meme culture.\n- References to protest and counterculture movements.\n- Commentary on the digital age's focus on content creation over traditional art.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.759Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "asset": "PURPLEPEPE",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 23,
+  "artist": "Rare Scrilla",
+  "supply": 65,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "PURPLE PEPE",
+    "POWER: ☓☓☓ FEEL: FAKE ASF",
+    "GM",
+    "1-800-SUE-ME",
+    "Deribibitive Art Maxi",
+    "Haters block u for existing",
+    "Store of Value w",
+    "a side of Degen",
+    "BEWARE OF FAKE RARES"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure.",
+    "References to crypto culture with phrases like \"GM\" and \"Store of Value.\"",
+    "\"Feels Fake\" sign, nodding to the meme \"Feels Good Man.\"",
+    "Play on words with \"Deribibitive Art Maxi.\""
+  ],
+  "visualSummary": "This card features a surreal, comic-style illustration with a vibrant color palette dominated by purple, yellow, and red. The scene depicts multiple anthropomorphic characters, including a purple Pepe, in a chaotic office environment. The background is filled with framed pictures, adding layers of complexity and humor to the artwork.",
+  "visualSummaryShort": "The card showcases a chaotic office scene with a vibrant color palette featuring purple, yellow, and red. It includes multiple anthropomorphic characters, prominently a purple Pepe, surrounded by framed pictures that enhance the surreal atmosphere.",
+  "visualKeywords": [
+    "purple",
+    "office",
+    "chaotic",
+    "comic-style",
+    "anthropomorphic",
+    "vibrant",
+    "framed pictures",
+    "humor"
+  ],
+  "textKeywords": [
+    "purple",
+    "power",
+    "feel",
+    "asf",
+    "800",
+    "sue",
+    "deribibitive",
+    "art",
+    "maxi",
+    "haters",
+    "block",
+    "existing",
+    "store",
+    "value",
+    "side",
+    "degen",
+    "beware"
+  ],
+  "keywords": [
+    "purple",
+    "office",
+    "chaotic",
+    "comic-style",
+    "anthropomorphic",
+    "vibrant",
+    "framed pictures",
+    "humor",
+    "power",
+    "feel",
+    "asf",
+    "800",
+    "sue",
+    "deribibitive",
+    "art",
+    "maxi",
+    "haters",
+    "block",
+    "existing",
+    "store",
+    "value",
+    "side",
+    "degen",
+    "beware"
+  ],
+  "embeddingInput": "PURPLEPEPE (Fake Rares) - Series 3 Card 23\nArtist: Rare Scrilla\nSupply 65 Issued November 2021\nOn-card text: PURPLE PEPE | POWER: ☓☓☓ FEEL: FAKE ASF | GM | 1-800-SUE-ME | Deribibitive Art Maxi | Haters block u for existing | Store of Value w | a side of Degen | BEWARE OF FAKE RARES\nVisual summary: This card features a surreal, comic-style illustration with a vibrant color palette dominated by purple, yellow, and red. The scene depicts multiple anthropomorphic characters, including a purple Pepe, in a chaotic office environment. The background is filled with framed pictures, adding layers of complexity and humor to the artwork.\nMemetic references: Pepe the Frog as a central figure.; References to crypto culture with phrases like \"GM\" and \"Store of Value.\"; \"Feels Fake\" sign, nodding to the meme \"Feels Good Man.\"; Play on words with \"Deribibitive Art Maxi.\"",
+  "embeddingBlocks": [
+    {
+      "id": "PURPLEPEPE#text",
+      "label": "On-card text",
+      "text": "PURPLE PEPE | POWER: ☓☓☓ FEEL: FAKE ASF | GM | 1-800-SUE-ME | Deribibitive Art Maxi | Haters block u for existing | Store of Value w | a side of Degen | BEWARE OF FAKE RARES",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PURPLEPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure.\nReferences to crypto culture with phrases like \"GM\" and \"Store of Value.\"\n\"Feels Fake\" sign, nodding to the meme \"Feels Good Man.\"\nPlay on words with \"Deribibitive Art Maxi.\"",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PURPLEPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a surreal, comic-style illustration with a vibrant color palette dominated by purple, yellow, and red. The scene depicts multiple anthropomorphic characters, including a purple Pepe, in a chaotic office environment. The background is filled with framed pictures, adding layers of complexity and humor to the artwork.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PURPLEPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPURPLE PEPE  \nPOWER: ☓☓☓  FEEL: FAKE ASF  \nGM  \n1-800-SUE-ME  \nDeribibitive Art Maxi  \nHaters block u for existing  \nStore of Value w/ a side of Degen  \nBEWARE OF FAKE RARES  \n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a surreal, comic-style illustration with a vibrant color palette dominated by purple, yellow, and red. The scene depicts multiple anthropomorphic characters, including a purple Pepe, in a chaotic office environment. The background is filled with framed pictures, adding layers of complexity and humor to the artwork.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure.\n- References to crypto culture with phrases like \"GM\" and \"Store of Value.\"\n- \"Feels Fake\" sign, nodding to the meme \"Feels Good Man.\"\n- Play on words with \"Deribibitive Art Maxi.\"",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.058Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "asset": "MAXXPAINPEPE",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 30,
+  "artist": "Jak",
+  "supply": 50,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "MAX PAIN PEPE",
+    "💀 = 100% Illiquid 💀 = 0 NFT SALES",
+    "BUY THE TOP. SELL THE BOTTOM. REDEEM 0 FAKE RARES FROM YOUR OPPONENT."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog is a classic meme icon, representing internet culture.",
+    "\"Buy the top, sell the bottom\" is a common crypto trading meme, highlighting poor trading decisions.",
+    "References to illiquidity and zero sales poke fun at NFT market pitfalls."
+  ],
+  "visualSummary": "The card features a pixelated Pepe the Frog with a distressed expression, highlighting his eyes and furrowed brow. The color palette is vibrant, with neon pinks, blues, and greens that create a psychedelic vibe. The card's background consists of glitchy digital patterns, enhancing its retro gaming aesthetic.",
+  "visualSummaryShort": "The card showcases a pixelated Pepe the Frog with a distressed expression against a vibrant, psychedelic background. The neon colors and glitchy patterns emphasize a retro gaming aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "pixelated",
+    "distressed",
+    "neon colors",
+    "glitch",
+    "psychedelic",
+    "retro",
+    "digital patterns"
+  ],
+  "textKeywords": [
+    "max",
+    "pain",
+    "100",
+    "illiquid",
+    "nft",
+    "sales",
+    "buy",
+    "top",
+    "sell",
+    "bottom",
+    "redeem",
+    "opponent"
+  ],
+  "keywords": [
+    "pepe",
+    "pixelated",
+    "distressed",
+    "neon colors",
+    "glitch",
+    "psychedelic",
+    "retro",
+    "digital patterns",
+    "max",
+    "pain",
+    "100",
+    "illiquid",
+    "nft",
+    "sales",
+    "buy",
+    "top",
+    "sell",
+    "bottom",
+    "redeem",
+    "opponent"
+  ],
+  "embeddingInput": "MAXXPAINPEPE (Fake Rares) - Series 6 Card 30\nArtist: Jak\nSupply 50 Issued March 2022\nOn-card text: MAX PAIN PEPE | 💀 = 100% Illiquid 💀 = 0 NFT SALES | BUY THE TOP. SELL THE BOTTOM. REDEEM 0 FAKE RARES FROM YOUR OPPONENT.\nVisual summary: The card features a pixelated Pepe the Frog with a distressed expression, highlighting his eyes and furrowed brow. The color palette is vibrant, with neon pinks, blues, and greens that create a psychedelic vibe. The card's background consists of glitchy digital patterns, enhancing its retro gaming aesthetic.\nMemetic references: Pepe the Frog is a classic meme icon, representing internet culture.; \"Buy the top, sell the bottom\" is a common crypto trading meme, highlighting poor trading decisions.; References to illiquidity and zero sales poke fun at NFT market pitfalls.",
+  "embeddingBlocks": [
+    {
+      "id": "MAXXPAINPEPE#text",
+      "label": "On-card text",
+      "text": "MAX PAIN PEPE | 💀 = 100% Illiquid 💀 = 0 NFT SALES | BUY THE TOP. SELL THE BOTTOM. REDEEM 0 FAKE RARES FROM YOUR OPPONENT.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MAXXPAINPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog is a classic meme icon, representing internet culture.\n\"Buy the top, sell the bottom\" is a common crypto trading meme, highlighting poor trading decisions.\nReferences to illiquidity and zero sales poke fun at NFT market pitfalls.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MAXXPAINPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a pixelated Pepe the Frog with a distressed expression, highlighting his eyes and furrowed brow. The color palette is vibrant, with neon pinks, blues, and greens that create a psychedelic vibe. The card's background consists of glitchy digital patterns, enhancing its retro gaming aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MAXXPAINPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nMAX PAIN PEPE  \n💀 = 100% Illiquid 💀 = 0 NFT SALES  \nBUY THE TOP. SELL THE BOTTOM. REDEEM 0 FAKE RARES FROM YOUR OPPONENT.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a pixelated Pepe the Frog with a distressed expression, highlighting his eyes and furrowed brow. The color palette is vibrant, with neon pinks, blues, and greens that create a psychedelic vibe. The card's background consists of glitchy digital patterns, enhancing its retro gaming aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog is a classic meme icon, representing internet culture.\n- \"Buy the top, sell the bottom\" is a common crypto trading meme, highlighting poor trading decisions.\n- References to illiquidity and zero sales poke fun at NFT market pitfalls.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.761Z",
+  "sourceFactVersion": 1
+}

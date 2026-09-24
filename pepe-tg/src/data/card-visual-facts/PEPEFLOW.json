@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "asset": "PEPEFLOW",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 32,
+  "artist": "HNFT Pepe",
+  "supply": 169,
+  "issuance": "November 2025",
+  "textOnCard": [
+    "PEPE FLOW",
+    "GENERATIVE ART, MLOKO"
+  ],
+  "memeticReferences": [
+    "References to Pepe, the iconic meme frog.",
+    "Generative art signals a nod to digital art culture.",
+    "The flow theme may hint at blockchain and liquidity concepts."
+  ],
+  "visualSummary": "The card features a mesmerizing display of green, luminescent strands flowing smoothly against a black background, creating a sense of depth and movement. The composition uses contrasting light and dark elements to evoke a holographic, almost digital aesthetic. The artistic style leans toward minimalism, with a focus on fluid lines and a futuristic vibe.",
+  "visualSummaryShort": "The card showcases green, luminescent strands flowing against a black background, creating depth and movement. Its minimalist design emphasizes fluid lines and a futuristic aesthetic.",
+  "visualKeywords": [
+    "green strands",
+    "black background",
+    "luminescent",
+    "depth",
+    "movement",
+    "minimalism",
+    "futuristic",
+    "contrasting light",
+    "digital aesthetic"
+  ],
+  "textKeywords": [
+    "flow",
+    "generative",
+    "art",
+    "mloko"
+  ],
+  "keywords": [
+    "green strands",
+    "black background",
+    "luminescent",
+    "depth",
+    "movement",
+    "minimalism",
+    "futuristic",
+    "contrasting light",
+    "digital aesthetic",
+    "flow",
+    "generative",
+    "art",
+    "mloko"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "PEPEFLOW (Fake Rares) - Series 18 Card 32\nArtist: HNFT Pepe\nSupply 169 Issued November 2025\nOn-card text: PEPE FLOW | GENERATIVE ART, MLOKO\nVisual summary: The card features a mesmerizing display of green, luminescent strands flowing smoothly against a black background, creating a sense of depth and movement. The composition uses contrasting light and dark elements to evoke a holographic, almost digital aesthetic. The artistic style leans toward minimalism, with a focus on fluid lines and a futuristic vibe.\nMemetic references: References to Pepe, the iconic meme frog.; Generative art signals a nod to digital art culture.; The flow theme may hint at blockchain and liquidity concepts.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEFLOW#text",
+      "label": "On-card text",
+      "text": "PEPE FLOW | GENERATIVE ART, MLOKO",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEFLOW#memetic",
+      "label": "Memetic references",
+      "text": "References to Pepe, the iconic meme frog.\nGenerative art signals a nod to digital art culture.\nThe flow theme may hint at blockchain and liquidity concepts.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEFLOW#visual",
+      "label": "Visual summary",
+      "text": "The card features a mesmerizing display of green, luminescent strands flowing smoothly against a black background, creating a sense of depth and movement. The composition uses contrasting light and dark elements to evoke a holographic, almost digital aesthetic. The artistic style leans toward minimalism, with a focus on fluid lines and a futuristic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEFLOW#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE FLOW  \nGENERATIVE ART, MLOKO\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a mesmerizing display of green, luminescent strands flowing smoothly against a black background, creating a sense of depth and movement. The composition uses contrasting light and dark elements to evoke a holographic, almost digital aesthetic. The artistic style leans toward minimalism, with a focus on fluid lines and a futuristic vibe.\n\n🧬 **MEMETIC DNA:**\n- References to Pepe, the iconic meme frog.\n- Generative art signals a nod to digital art culture.\n- The flow theme may hint at blockchain and liquidity concepts.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:34:52.221Z"
+}

@@ -4,9 +4,12 @@
  * 
  * This script performs a complete 2-pass data collection for new Fake Rares cards:
  * 
- * PASS 1: Extract asset names from fakeraredirectory.com
+ * PASS 1: Read the card list from fakeraredirectory.com's /api/cards
  *   - Gets: asset name, series, card number (required)
  *   - Gets: media URI (optional fallback for cards not yet on pepe.wtf)
+ *   - One request, no browser. The old site's /series-N/ pages this used to
+ *     scrape 404 since the directory was rebuilt (2026-09), which is how the
+ *     daily run went a year finding nothing.
  * 
  * PASS 2: Extract ALL metadata from pepe.wtf (authoritative source)
  *   - Gets: artist, artistSlug, supply, issuance
@@ -49,71 +52,45 @@ const pass1Results = [];
 const pass2Results = [];
 
 // ============================================================
-// PASS 1: Extract asset names + fallback media URIs from fakeraredirectory.com
+// PASS 1: Asset names + fallback media URIs from the directory's API
 // ============================================================
 
-async function pass1ScrapeSeries(page, seriesNum) {
-  const url = `https://fakeraredirectory.com/series-${seriesNum}/`;
-  
-  try {
-    console.log(`\n📦 PASS 1 - Series ${seriesNum}`);
-    console.log(`  Loading: ${url}`);
-    
-    await page.goto(url, { waitUntil: 'networkidle', timeout: 30000 });
-    await page.waitForTimeout(1500);
-    
-    const cards = await page.evaluate(() => {
-      const cardsData = [];
-      const figures = Array.from(document.querySelectorAll('figure'));
-      
-      figures.forEach(fig => {
-        const seriesMatch = fig.textContent?.match(/Series\s+(\d+)\s+Card\s+(\d+)/i);
-        if (!seriesMatch) return;
-        
-        const series = parseInt(seriesMatch[1]);
-        const card = parseInt(seriesMatch[2]);
-        
-        const assetLink = fig.querySelector('a[href*="asset/"]') || 
-                         fig.querySelector('a[href*="stamp/"]') ||
-                         fig.querySelector('a[href*="/s/"]');
-        if (!assetLink) return;
-        
-        const asset = assetLink.textContent?.trim();
-        if (!asset) return;
-        
-        const cardData = { asset, series, card };
-        
-        // Try to extract media URI from fakeraredirectory (fallback only)
-        // Check for video first
-        const video = fig.querySelector('video');
-        if (video) {
-          const source = video.querySelector('source');
-          if (source && source.src) {
-            cardData.fallbackMediaUri = source.src;
-          }
-        }
-        
-        // Check for image if no video found
-        if (!cardData.fallbackMediaUri) {
-          const img = fig.querySelector('img');
-          if (img && img.src) {
-            cardData.fallbackMediaUri = img.src;
-          }
-        }
-        
-        cardsData.push(cardData);
-      });
-      
-      return cardsData.sort((a, b) => a.card - b.card);
-    });
-    
-    console.log(`  ✓ Found ${cards.length} cards`);
-    return cards;
-    
-  } catch (error) {
-    console.error(`  ✗ Error: ${error.message}`);
-    return [];
+const DIRECTORY_API = process.env.DIRECTORY_API || 'https://fakeraredirectory.com/api/cards';
+
+/**
+ * Every card the directory lists, as { asset, series, card, fallbackMediaUri }.
+ * The API is the same one scripts/sync-directory.ts reconciles against; here
+ * only the identity and a media URL are taken, so a card the directory has
+ * before pepe.wtf does still lands with something to show.
+ */
+async function pass1FetchDirectory() {
+  console.log(`\n📦 PASS 1 - ${DIRECTORY_API}`);
+  const response = await fetch(DIRECTORY_API, {
+    headers: { 'User-Agent': 'pepedawn-agent add-new-cards (one request a day)' },
+  });
+  if (!response.ok) {
+    throw new Error(`${DIRECTORY_API} returned ${response.status}`);
   }
+  const listed = await response.json();
+  if (!Array.isArray(listed) || listed.length < 500) {
+    throw new Error(`the directory returned ${Array.isArray(listed) ? listed.length : 'no'} cards; expected hundreds`);
+  }
+
+  const cards = [];
+  for (const entry of listed) {
+    const series = Number(entry.series);
+    const card = Number(entry.cardNumber);
+    const asset = typeof entry.title === 'string' ? entry.title.trim() : '';
+    if (!asset || !Number.isInteger(series) || !Number.isInteger(card)) continue;
+
+    const cardData = { asset, series, card };
+    const media = entry.assets?.video || entry.assets?.image;
+    if (media) cardData.fallbackMediaUri = media;
+    cards.push(cardData);
+  }
+
+  console.log(`  ✓ ${cards.length} cards listed`);
+  return cards.sort((a, b) => a.series - b.series || a.card - b.card);
 }
 
 // ============================================================
@@ -341,21 +318,21 @@ async function pass2ScrapeCard(page, baseCard) {
 // ============================================================
 
 (async () => {
+  // ========== PASS 1 ==========
+  console.log('\n' + '='.repeat(60));
+  console.log('PASS 1: Reading the card list from fakeraredirectory');
+  console.log('='.repeat(60));
+
+  const wanted = new Set(seriesToScrape);
+  const listed = await pass1FetchDirectory();
+  pass1Results.push(...listed.filter(card => wanted.has(card.series)));
+
+  console.log(`\n✅ PASS 1 Complete: ${pass1Results.length} cards in series ${seriesToScrape.join(', ')}\n`);
+
+  // The browser is only needed for pepe.wtf, so it opens after the cheap pass.
   const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage();
   page.setDefaultTimeout(30000);
-  
-  // ========== PASS 1 ==========
-  console.log('\n' + '='.repeat(60));
-  console.log('PASS 1: Extracting asset names from fakeraredirectory');
-  console.log('='.repeat(60));
-  
-  for (const seriesNum of seriesToScrape) {
-    const seriesCards = await pass1ScrapeSeries(page, seriesNum);
-    pass1Results.push(...seriesCards);
-  }
-  
-  console.log(`\n✅ PASS 1 Complete: ${pass1Results.length} cards collected\n`);
   
   // Keep only cards we have never seen before.
   //

@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "asset": "LEGOMOTO",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 2,
+  "artist": "ciobo",
+  "supply": 21,
+  "issuance": "March 2023",
+  "textOnCard": [
+    "LEGOMOTO",
+    "0-298",
+    "🪙 X 21,000,000"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central character.",
+    "LEGO art style merges childhood nostalgia with meme culture.",
+    "Reference to cryptocurrency with the coin and large number at the bottom.",
+    "Play on the famous \"Legomoto\" meme with a LEGO twist."
+  ],
+  "visualSummary": "The card features a mosaic-style depiction of Pepe the Frog made entirely from LEGO bricks. The color palette includes greens, reds, and yellows, with a pixelated aesthetic that mimics classic video game graphics. A LEGO figure dressed in a suit and bowler hat holding a coin is positioned in the bottom right corner, adding a playful touch.",
+  "visualSummaryShort": "The card showcases a mosaic of Pepe the Frog created from LEGO bricks, featuring a vibrant color palette. A LEGO figure in a suit and bowler hat adds a whimsical element to the design.",
+  "visualKeywords": [
+    "pepe the frog",
+    "lego",
+    "mosaic",
+    "pixelated",
+    "green",
+    "red",
+    "yellow",
+    "suit",
+    "bowler hat",
+    "coin"
+  ],
+  "textKeywords": [
+    "legomoto",
+    "298",
+    "000"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "lego",
+    "mosaic",
+    "pixelated",
+    "green",
+    "red",
+    "yellow",
+    "suit",
+    "bowler hat",
+    "coin",
+    "legomoto",
+    "298",
+    "000"
+  ],
+  "embeddingInput": "LEGOMOTO (Fake Rares) - Series 14 Card 2\nArtist: ciobo\nSupply 21 Issued March 2023\nOn-card text: LEGOMOTO | 0-298 | 🪙 X 21,000,000\nVisual summary: The card features a mosaic-style depiction of Pepe the Frog made entirely from LEGO bricks. The color palette includes greens, reds, and yellows, with a pixelated aesthetic that mimics classic video game graphics. A LEGO figure dressed in a suit and bowler hat holding a coin is positioned in the bottom right corner, adding a playful touch.\nMemetic references: Pepe the Frog as a central character.; LEGO art style merges childhood nostalgia with meme culture.; Reference to cryptocurrency with the coin and large number at the bottom.; Play on the famous \"Legomoto\" meme with a LEGO twist.",
+  "embeddingBlocks": [
+    {
+      "id": "LEGOMOTO#text",
+      "label": "On-card text",
+      "text": "LEGOMOTO | 0-298 | 🪙 X 21,000,000",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "LEGOMOTO#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central character.\nLEGO art style merges childhood nostalgia with meme culture.\nReference to cryptocurrency with the coin and large number at the bottom.\nPlay on the famous \"Legomoto\" meme with a LEGO twist.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LEGOMOTO#visual",
+      "label": "Visual summary",
+      "text": "The card features a mosaic-style depiction of Pepe the Frog made entirely from LEGO bricks. The color palette includes greens, reds, and yellows, with a pixelated aesthetic that mimics classic video game graphics. A LEGO figure dressed in a suit and bowler hat holding a coin is positioned in the bottom right corner, adding a playful touch.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LEGOMOTO#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nLEGOMOTO  \n0-298  \n🪙 X 21,000,000  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a mosaic-style depiction of Pepe the Frog made entirely from LEGO bricks. The color palette includes greens, reds, and yellows, with a pixelated aesthetic that mimics classic video game graphics. A LEGO figure dressed in a suit and bowler hat holding a coin is positioned in the bottom right corner, adding a playful touch.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central character.\n- LEGO art style merges childhood nostalgia with meme culture.\n- Reference to cryptocurrency with the coin and large number at the bottom.\n- Play on the famous \"Legomoto\" meme with a LEGO twist.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.735Z",
+  "sourceFactVersion": 1
+}

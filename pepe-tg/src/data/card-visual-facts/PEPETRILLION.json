@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "asset": "PEPETRILLION",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 16,
+  "artist": "VVD",
+  "supply": 21,
+  "issuance": "October 2022",
+  "textOnCard": [
+    "PEPE TRILLIONAIRE",
+    "Denominates in $PEPE",
+    "The patrician’s choice",
+    "🧑‍💼Prefer linear wealth🧑‍💼"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a wealthy businessman",
+    "Reference to the crypto token $PEPE",
+    "“Patrician’s choice” nods to elite or refined taste",
+    "Use of “linear wealth” suggests a steady, traditional accumulation of riches"
+  ],
+  "visualSummary": "The card features a green-tinted figure in a suit, reminiscent of Pepe, seated at a table with a money counting machine nearby. The setting is a formal dining environment, with rich reds and dark tones creating a luxurious ambiance. The style merges realistic photography with meme culture, creating a humorous yet sophisticated visual.",
+  "visualSummaryShort": "The card depicts a green-tinted figure in a suit, seated at a table with a money counting machine in a luxurious dining setting. The rich reds and dark tones enhance the sophisticated yet humorous atmosphere.",
+  "visualKeywords": [
+    "green figure",
+    "suit",
+    "money machine",
+    "dining table",
+    "luxurious",
+    "red tones",
+    "dark ambiance",
+    "photography",
+    "meme culture"
+  ],
+  "textKeywords": [
+    "trillionaire",
+    "denominates",
+    "patrician",
+    "choice",
+    "prefer",
+    "linear",
+    "wealth"
+  ],
+  "keywords": [
+    "green figure",
+    "suit",
+    "money machine",
+    "dining table",
+    "luxurious",
+    "red tones",
+    "dark ambiance",
+    "photography",
+    "meme culture",
+    "trillionaire",
+    "denominates",
+    "patrician",
+    "choice",
+    "prefer",
+    "linear",
+    "wealth"
+  ],
+  "embeddingInput": "PEPETRILLION (Fake Rares) - Series 14 Card 16\nArtist: VVD\nSupply 21 Issued October 2022\nOn-card text: PEPE TRILLIONAIRE | Denominates in $PEPE | The patrician’s choice | 🧑‍💼Prefer linear wealth🧑‍💼\nVisual summary: The card features a green-tinted figure in a suit, reminiscent of Pepe, seated at a table with a money counting machine nearby. The setting is a formal dining environment, with rich reds and dark tones creating a luxurious ambiance. The style merges realistic photography with meme culture, creating a humorous yet sophisticated visual.\nMemetic references: Pepe the Frog as a wealthy businessman; Reference to the crypto token $PEPE; “Patrician’s choice” nods to elite or refined taste; Use of “linear wealth” suggests a steady, traditional accumulation of riches",
+  "embeddingBlocks": [
+    {
+      "id": "PEPETRILLION#text",
+      "label": "On-card text",
+      "text": "PEPE TRILLIONAIRE | Denominates in $PEPE | The patrician’s choice | 🧑‍💼Prefer linear wealth🧑‍💼",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPETRILLION#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a wealthy businessman\nReference to the crypto token $PEPE\n“Patrician’s choice” nods to elite or refined taste\nUse of “linear wealth” suggests a steady, traditional accumulation of riches",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPETRILLION#visual",
+      "label": "Visual summary",
+      "text": "The card features a green-tinted figure in a suit, reminiscent of Pepe, seated at a table with a money counting machine nearby. The setting is a formal dining environment, with rich reds and dark tones creating a luxurious ambiance. The style merges realistic photography with meme culture, creating a humorous yet sophisticated visual.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPETRILLION#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE TRILLIONAIRE  \nDenominates in $PEPE  \nThe patrician’s choice  \n🧑‍💼Prefer linear wealth🧑‍💼  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a green-tinted figure in a suit, reminiscent of Pepe, seated at a table with a money counting machine nearby. The setting is a formal dining environment, with rich reds and dark tones creating a luxurious ambiance. The style merges realistic photography with meme culture, creating a humorous yet sophisticated visual.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a wealthy businessman\n- Reference to the crypto token $PEPE\n- “Patrician’s choice” nods to elite or refined taste\n- Use of “linear wealth” suggests a steady, traditional accumulation of riches",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.002Z",
+  "sourceFactVersion": 1
+}

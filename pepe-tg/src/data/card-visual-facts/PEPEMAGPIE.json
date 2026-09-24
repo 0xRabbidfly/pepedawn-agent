@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "PEPEMAGPIE",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 25,
+  "artist": "Pepenardo",
+  "supply": 100,
+  "issuance": "December 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure, a staple in meme culture.",
+    "Classical art parody, reminiscent of Renaissance themes.",
+    "Humorous addition of a sheep with a human face, playing on meme absurdity."
+  ],
+  "visualSummary": "The card features a Pepe character sitting in a serene, pastoral landscape reminiscent of classical paintings. The color palette is vibrant, with Pepe's green skin contrasting against a pink shirt and blue drapery. An amusing element is a sheep with a human-like face, adding a quirky twist, all while Pepe holds a swirly pink cupcake.",
+  "visualSummaryShort": "The card showcases a Pepe character in a vibrant pastoral landscape, wearing a pink shirt and holding a swirly pink cupcake. A quirky sheep with a human-like face adds an amusing twist to the serene scene.",
+  "visualKeywords": [
+    "pepe",
+    "pastoral",
+    "vibrant",
+    "pink shirt",
+    "blue drapery",
+    "cupcake",
+    "sheep",
+    "quirky"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "pastoral",
+    "vibrant",
+    "pink shirt",
+    "blue drapery",
+    "cupcake",
+    "sheep",
+    "quirky"
+  ],
+  "embeddingInput": "PEPEMAGPIE (Fake Rares) - Series 4 Card 25\nArtist: Pepenardo\nSupply 100 Issued December 2021\nOn-card text: none detected\nVisual summary: The card features a Pepe character sitting in a serene, pastoral landscape reminiscent of classical paintings. The color palette is vibrant, with Pepe's green skin contrasting against a pink shirt and blue drapery. An amusing element is a sheep with a human-like face, adding a quirky twist, all while Pepe holds a swirly pink cupcake.\nMemetic references: Pepe the Frog as a central figure, a staple in meme culture.; Classical art parody, reminiscent of Renaissance themes.; Humorous addition of a sheep with a human face, playing on meme absurdity.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEMAGPIE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure, a staple in meme culture.\nClassical art parody, reminiscent of Renaissance themes.\nHumorous addition of a sheep with a human face, playing on meme absurdity.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEMAGPIE#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe character sitting in a serene, pastoral landscape reminiscent of classical paintings. The color palette is vibrant, with Pepe's green skin contrasting against a pink shirt and blue drapery. An amusing element is a sheep with a human-like face, adding a quirky twist, all while Pepe holds a swirly pink cupcake.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEMAGPIE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe character sitting in a serene, pastoral landscape reminiscent of classical paintings. The color palette is vibrant, with Pepe's green skin contrasting against a pink shirt and blue drapery. An amusing element is a sheep with a human-like face, adding a quirky twist, all while Pepe holds a swirly pink cupcake.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure, a staple in meme culture.\n- Classical art parody, reminiscent of Renaissance themes.\n- Humorous addition of a sheep with a human face, playing on meme absurdity.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.925Z",
+  "sourceFactVersion": 1
+}

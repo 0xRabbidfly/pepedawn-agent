@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "PEPECHECKS",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 22,
+  "artist": "Cyph3rpunk5",
+  "supply": 47,
+  "issuance": "January 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog reference through the spelled-out name.",
+    "Crypto culture nod with the use of checkmarks, suggesting verification or approval.",
+    "Visual simplicity reminiscent of pixel art, a staple in NFT aesthetics."
+  ],
+  "visualSummary": "The card features a grid of checkmarks on a black background, with a mix of green, white, and red colors. The checkmarks create a pattern that spells out \"PEPE\" in white amidst the green ones. The color palette is minimalistic yet striking, utilizing bold colors to create a playful and eye-catching design.",
+  "visualSummaryShort": "The card showcases a grid of checkmarks on a black background, prominently featuring the word 'PEPE' in white. The design uses a minimalistic color palette of green, white, and red for a playful effect.",
+  "visualKeywords": [
+    "checkmarks",
+    "black background",
+    "green",
+    "white",
+    "red",
+    "pattern",
+    "minimalistic",
+    "playful"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "checkmarks",
+    "black background",
+    "green",
+    "white",
+    "red",
+    "pattern",
+    "minimalistic",
+    "playful"
+  ],
+  "embeddingInput": "PEPECHECKS (Fake Rares) - Series 13 Card 22\nArtist: Cyph3rpunk5\nSupply 47 Issued January 2023\nOn-card text: none detected\nVisual summary: The card features a grid of checkmarks on a black background, with a mix of green, white, and red colors. The checkmarks create a pattern that spells out \"PEPE\" in white amidst the green ones. The color palette is minimalistic yet striking, utilizing bold colors to create a playful and eye-catching design.\nMemetic references: Pepe the Frog reference through the spelled-out name.; Crypto culture nod with the use of checkmarks, suggesting verification or approval.; Visual simplicity reminiscent of pixel art, a staple in NFT aesthetics.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPECHECKS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference through the spelled-out name.\nCrypto culture nod with the use of checkmarks, suggesting verification or approval.\nVisual simplicity reminiscent of pixel art, a staple in NFT aesthetics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPECHECKS#visual",
+      "label": "Visual summary",
+      "text": "The card features a grid of checkmarks on a black background, with a mix of green, white, and red colors. The checkmarks create a pattern that spells out \"PEPE\" in white amidst the green ones. The color palette is minimalistic yet striking, utilizing bold colors to create a playful and eye-catching design.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPECHECKS#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a grid of checkmarks on a black background, with a mix of green, white, and red colors. The checkmarks create a pattern that spells out \"PEPE\" in white amidst the green ones. The color palette is minimalistic yet striking, utilizing bold colors to create a playful and eye-catching design.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference through the spelled-out name.\n- Crypto culture nod with the use of checkmarks, suggesting verification or approval.\n- Visual simplicity reminiscent of pixel art, a staple in NFT aesthetics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.853Z",
+  "sourceFactVersion": 1
+}

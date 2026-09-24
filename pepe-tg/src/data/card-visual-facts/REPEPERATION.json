@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "asset": "REPEPERATION",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 42,
+  "artist": "Kaph Resh",
+  "supply": 4200,
+  "issuance": "September 2021",
+  "textOnCard": [
+    "\"REPEPERATIONS\"",
+    "\"COMING TO Toussaint Kekomoto Bank\"",
+    "\"I'm not black I'm PEPE.\"",
+    "\"TRADING PEPE\"",
+    "\"NFT GRANTS GENERATIONAL WEALTH\"",
+    "\"NFT GRANTS PROSPERITY AND ALPHA STATUS\""
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery.",
+    "References to crypto banking and financial empowerment.",
+    "Play on \"reparations\" with \"REPEPERATIONS.\"",
+    "Meme culture blending with NFT and digital asset wealth themes."
+  ],
+  "visualSummary": "The card features a vibrant collage-style composition with rich greens, purples, and earthy tones. It centers on a Pepe the Frog character in a suit, sitting behind a desk, with children reaching out with smartphones. The background includes Pepe-themed posters and currency symbols, blending elements of finance and digital culture.",
+  "visualSummaryShort": "The card showcases a colorful collage featuring Pepe the Frog in a suit at a desk, surrounded by children with smartphones. The background is filled with Pepe-themed posters and currency symbols, creating a blend of finance and digital culture.",
+  "visualKeywords": [
+    "pepe the frog",
+    "collage",
+    "green",
+    "purple",
+    "desk",
+    "children",
+    "smartphones",
+    "posters",
+    "currency",
+    "finance"
+  ],
+  "textKeywords": [
+    "repeperations",
+    "coming",
+    "toussaint",
+    "kekomoto",
+    "bank",
+    "not",
+    "black",
+    "trading",
+    "nft",
+    "grants",
+    "generational",
+    "wealth",
+    "prosperity",
+    "alpha",
+    "status"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "collage",
+    "green",
+    "purple",
+    "desk",
+    "children",
+    "smartphones",
+    "posters",
+    "currency",
+    "finance",
+    "repeperations",
+    "coming",
+    "toussaint",
+    "kekomoto",
+    "bank",
+    "not",
+    "black",
+    "trading",
+    "nft",
+    "grants",
+    "generational",
+    "wealth",
+    "prosperity",
+    "alpha",
+    "status"
+  ],
+  "embeddingInput": "REPEPERATION (Fake Rares) - Series 1 Card 42\nArtist: Kaph Resh\nSupply 4200 Issued September 2021\nOn-card text: \"REPEPERATIONS\" | \"COMING TO Toussaint Kekomoto Bank\" | \"I'm not black I'm PEPE.\" | \"TRADING PEPE\" | \"NFT GRANTS GENERATIONAL WEALTH\" | \"NFT GRANTS PROSPERITY AND ALPHA STATUS\"\nVisual summary: The card features a vibrant collage-style composition with rich greens, purples, and earthy tones. It centers on a Pepe the Frog character in a suit, sitting behind a desk, with children reaching out with smartphones. The background includes Pepe-themed posters and currency symbols, blending elements of finance and digital culture.\nMemetic references: Classic Pepe the Frog imagery.; References to crypto banking and financial empowerment.; Play on \"reparations\" with \"REPEPERATIONS.\"; Meme culture blending with NFT and digital asset wealth themes.",
+  "embeddingBlocks": [
+    {
+      "id": "REPEPERATION#text",
+      "label": "On-card text",
+      "text": "\"REPEPERATIONS\" | \"COMING TO Toussaint Kekomoto Bank\" | \"I'm not black I'm PEPE.\" | \"TRADING PEPE\" | \"NFT GRANTS GENERATIONAL WEALTH\" | \"NFT GRANTS PROSPERITY AND ALPHA STATUS\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "REPEPERATION#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery.\nReferences to crypto banking and financial empowerment.\nPlay on \"reparations\" with \"REPEPERATIONS.\"\nMeme culture blending with NFT and digital asset wealth themes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "REPEPERATION#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant collage-style composition with rich greens, purples, and earthy tones. It centers on a Pepe the Frog character in a suit, sitting behind a desk, with children reaching out with smartphones. The background includes Pepe-themed posters and currency symbols, blending elements of finance and digital culture.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "REPEPERATION#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- \"REPEPERATIONS\"\n- \"COMING TO Toussaint Kekomoto Bank\"\n- \"I'm not black I'm PEPE.\"\n- \"TRADING PEPE\"\n- \"NFT GRANTS GENERATIONAL WEALTH\"\n- \"NFT GRANTS PROSPERITY AND ALPHA STATUS\"\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant collage-style composition with rich greens, purples, and earthy tones. It centers on a Pepe the Frog character in a suit, sitting behind a desk, with children reaching out with smartphones. The background includes Pepe-themed posters and currency symbols, blending elements of finance and digital culture.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery.\n- References to crypto banking and financial empowerment.\n- Play on \"reparations\" with \"REPEPERATIONS.\"\n- Meme culture blending with NFT and digital asset wealth themes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.080Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "asset": "RYDERRIPPS.RARE_PEPE_OR_WHY_POST_INTERNET_ART_IS_STUPID",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 17,
+  "artist": "Carsonate",
+  "supply": 21,
+  "issuance": "October 2022",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a Pepe character in a surreal, abstract environment. The overall mood is playful yet thought-provoking.",
+  "visualKeywords": [
+    "pepe",
+    "abstract",
+    "surreal",
+    "playful",
+    "colorful"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "abstract",
+    "surreal",
+    "playful",
+    "colorful"
+  ],
+  "embeddingInput": "RYDERRIPPS.RARE_PEPE_OR_WHY_POST_INTERNET_ART_IS_STUPID (Fake Rares) - Series 10 Card 17\nArtist: Carsonate\nSupply 21 Issued October 2022\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "RYDERRIPPS.RARE_PEPE_OR_WHY_POST_INTERNET_ART_IS_STUPID#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.092Z",
+  "sourceFactVersion": 1
+}

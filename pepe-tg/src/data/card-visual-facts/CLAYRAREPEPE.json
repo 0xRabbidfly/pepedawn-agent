@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "CLAYRAREPEPE",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 13,
+  "artist": "Mekabu",
+  "supply": 300,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "Justmeclip"
+  ],
+  "memeticReferences": [
+    "References to DIY and craft culture through clay modeling.",
+    "The face is a nod to meme culture, possibly mimicking a well-known figure with exaggerated features.",
+    "Incorporates the playful and tactile aesthetics of childhood toys."
+  ],
+  "visualSummary": "This card features a playful and inventive depiction of a face sculpted from colorful clay strings, extruded from a red device. The face, reminiscent of a pop culture figure, combines a vibrant palette with green, gray, white, and rainbow strands. The clever use of clay creates a textured, 3D effect that is both whimsical and engaging.",
+  "visualSummaryShort": "The card showcases a whimsical face made from colorful clay strings, extruded from a red device. Its vibrant palette and textured 3D effect create an engaging visual experience.",
+  "visualKeywords": [
+    "clay",
+    "colorful",
+    "face",
+    "red device",
+    "vibrant",
+    "textured",
+    "whimsical",
+    "pop culture"
+  ],
+  "textKeywords": [
+    "justmeclip"
+  ],
+  "keywords": [
+    "clay",
+    "colorful",
+    "face",
+    "red device",
+    "vibrant",
+    "textured",
+    "whimsical",
+    "pop culture",
+    "justmeclip"
+  ],
+  "embeddingInput": "CLAYRAREPEPE (Fake Rares) - Series 10 Card 13\nArtist: Mekabu\nSupply 300 Issued September 2022\nOn-card text: Justmeclip\nVisual summary: This card features a playful and inventive depiction of a face sculpted from colorful clay strings, extruded from a red device. The face, reminiscent of a pop culture figure, combines a vibrant palette with green, gray, white, and rainbow strands. The clever use of clay creates a textured, 3D effect that is both whimsical and engaging.\nMemetic references: References to DIY and craft culture through clay modeling.; The face is a nod to meme culture, possibly mimicking a well-known figure with exaggerated features.; Incorporates the playful and tactile aesthetics of childhood toys.",
+  "embeddingBlocks": [
+    {
+      "id": "CLAYRAREPEPE#text",
+      "label": "On-card text",
+      "text": "Justmeclip",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "CLAYRAREPEPE#memetic",
+      "label": "Memetic references",
+      "text": "References to DIY and craft culture through clay modeling.\nThe face is a nod to meme culture, possibly mimicking a well-known figure with exaggerated features.\nIncorporates the playful and tactile aesthetics of childhood toys.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "CLAYRAREPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a playful and inventive depiction of a face sculpted from colorful clay strings, extruded from a red device. The face, reminiscent of a pop culture figure, combines a vibrant palette with green, gray, white, and rainbow strands. The clever use of clay creates a textured, 3D effect that is both whimsical and engaging.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "CLAYRAREPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nJustmeclip\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a playful and inventive depiction of a face sculpted from colorful clay strings, extruded from a red device. The face, reminiscent of a pop culture figure, combines a vibrant palette with green, gray, white, and rainbow strands. The clever use of clay creates a textured, 3D effect that is both whimsical and engaging.\n\n🧬 **MEMETIC DNA:**\n- References to DIY and craft culture through clay modeling.\n- The face is a nod to meme culture, possibly mimicking a well-known figure with exaggerated features.\n- Incorporates the playful and tactile aesthetics of childhood toys.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.356Z",
+  "sourceFactVersion": 1
+}

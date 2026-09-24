@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "FAKETRANCE",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 13,
+  "artist": "metadad",
+  "supply": 30,
+  "issuance": "March 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog vibes with a twist of retro futurism.",
+    "Glitch art on the TV screen, reminiscent of early internet aesthetics.",
+    "Nostalgic nod to vintage technology, capturing a lo-fi, analog essence."
+  ],
+  "visualSummary": "The scene is a dimly lit retro living room featuring a frog-like character sitting on the floor, fixated on a vintage TV with a glitchy screen. The color palette is muted with earthy tones, giving it a nostalgic, almost sepia feel. The room is cozy but slightly eerie, with vertical striped wallpaper and an old-school lamp casting a warm glow.",
+  "visualSummaryShort": "A frog-like character sits on the floor of a dimly lit retro living room, captivated by a glitchy vintage TV. The muted earthy tones and cozy yet eerie atmosphere create a nostalgic vibe.",
+  "visualKeywords": [
+    "frog",
+    "vintage tv",
+    "dim lighting",
+    "earthy tones",
+    "striped wallpaper",
+    "old lamp",
+    "cozy",
+    "eerie",
+    "retro",
+    "glitch"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "frog",
+    "vintage tv",
+    "dim lighting",
+    "earthy tones",
+    "striped wallpaper",
+    "old lamp",
+    "cozy",
+    "eerie",
+    "retro",
+    "glitch"
+  ],
+  "embeddingInput": "FAKETRANCE (Fake Rares) - Series 14 Card 13\nArtist: metadad\nSupply 30 Issued March 2023\nOn-card text: none detected\nVisual summary: The scene is a dimly lit retro living room featuring a frog-like character sitting on the floor, fixated on a vintage TV with a glitchy screen. The color palette is muted with earthy tones, giving it a nostalgic, almost sepia feel. The room is cozy but slightly eerie, with vertical striped wallpaper and an old-school lamp casting a warm glow.\nMemetic references: Classic Pepe the Frog vibes with a twist of retro futurism.; Glitch art on the TV screen, reminiscent of early internet aesthetics.; Nostalgic nod to vintage technology, capturing a lo-fi, analog essence.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKETRANCE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog vibes with a twist of retro futurism.\nGlitch art on the TV screen, reminiscent of early internet aesthetics.\nNostalgic nod to vintage technology, capturing a lo-fi, analog essence.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKETRANCE#visual",
+      "label": "Visual summary",
+      "text": "The scene is a dimly lit retro living room featuring a frog-like character sitting on the floor, fixated on a vintage TV with a glitchy screen. The color palette is muted with earthy tones, giving it a nostalgic, almost sepia feel. The room is cozy but slightly eerie, with vertical striped wallpaper and an old-school lamp casting a warm glow.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKETRANCE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe scene is a dimly lit retro living room featuring a frog-like character sitting on the floor, fixated on a vintage TV with a glitchy screen. The color palette is muted with earthy tones, giving it a nostalgic, almost sepia feel. The room is cozy but slightly eerie, with vertical striped wallpaper and an old-school lamp casting a warm glow.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog vibes with a twist of retro futurism.\n- Glitch art on the TV screen, reminiscent of early internet aesthetics.\n- Nostalgic nod to vintage technology, capturing a lo-fi, analog essence.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.588Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "asset": "WAKEMEUPEPE",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 27,
+  "artist": "Pepenardo",
+  "supply": 29,
+  "issuance": "October 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe imagery with a horror twist.",
+    "Elements of surrealism reminiscent of psychedelic art.",
+    "References to internet culture’s fascination with existential dread and absurdity.",
+    "Possible nods to the concept of \"awakening\" or \"enlightenment\" in crypto culture."
+  ],
+  "visualSummary": "The card features a surreal and nightmarish depiction of a humanoid figure with a skeletal structure, seated on a throne-like chair. The color palette is dominated by reds and greens, with intense highlights that create a dramatic and eerie atmosphere. The figure’s eyes are glowing, exuding beams that connect with a large, distorted face in the background, adding a sense of chaos and intensity.",
+  "visualSummaryShort": "The card showcases a surreal humanoid figure with a skeletal structure seated on a throne, surrounded by a chaotic atmosphere. The dominant colors of red and green, along with glowing eyes, enhance the nightmarish mood.",
+  "visualKeywords": [
+    "humanoid",
+    "skeletal",
+    "throne",
+    "red",
+    "green",
+    "glowing eyes",
+    "chaos",
+    "intense",
+    "surreal",
+    "eerie"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "humanoid",
+    "skeletal",
+    "throne",
+    "red",
+    "green",
+    "glowing eyes",
+    "chaos",
+    "intense",
+    "surreal",
+    "eerie"
+  ],
+  "embeddingInput": "WAKEMEUPEPE (Fake Rares) - Series 10 Card 27\nArtist: Pepenardo\nSupply 29 Issued October 2022\nOn-card text: none detected\nVisual summary: The card features a surreal and nightmarish depiction of a humanoid figure with a skeletal structure, seated on a throne-like chair. The color palette is dominated by reds and greens, with intense highlights that create a dramatic and eerie atmosphere. The figure’s eyes are glowing, exuding beams that connect with a large, distorted face in the background, adding a sense of chaos and intensity.\nMemetic references: Classic Pepe imagery with a horror twist.; Elements of surrealism reminiscent of psychedelic art.; References to internet culture’s fascination with existential dread and absurdity.; Possible nods to the concept of \"awakening\" or \"enlightenment\" in crypto culture.",
+  "embeddingBlocks": [
+    {
+      "id": "WAKEMEUPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe imagery with a horror twist.\nElements of surrealism reminiscent of psychedelic art.\nReferences to internet culture’s fascination with existential dread and absurdity.\nPossible nods to the concept of \"awakening\" or \"enlightenment\" in crypto culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "WAKEMEUPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a surreal and nightmarish depiction of a humanoid figure with a skeletal structure, seated on a throne-like chair. The color palette is dominated by reds and greens, with intense highlights that create a dramatic and eerie atmosphere. The figure’s eyes are glowing, exuding beams that connect with a large, distorted face in the background, adding a sense of chaos and intensity.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "WAKEMEUPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a surreal and nightmarish depiction of a humanoid figure with a skeletal structure, seated on a throne-like chair. The color palette is dominated by reds and greens, with intense highlights that create a dramatic and eerie atmosphere. The figure’s eyes are glowing, exuding beams that connect with a large, distorted face in the background, adding a sense of chaos and intensity.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe imagery with a horror twist.\n- Elements of surrealism reminiscent of psychedelic art.\n- References to internet culture’s fascination with existential dread and absurdity.\n- Possible nods to the concept of \"awakening\" or \"enlightenment\" in crypto culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.180Z",
+  "sourceFactVersion": 1
+}

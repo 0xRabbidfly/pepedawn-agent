@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "asset": "FAKEDOSZERO.DOUBLE",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 46,
+  "artist": "Greencross",
+  "supply": 21,
+  "issuance": "October 2022",
+  "textOnCard": [
+    "FAKEDOSZERO.DOUBLE"
+  ],
+  "memeticReferences": [
+    "Glitch art style, hinting at cyberpunk and hacker culture.",
+    "Retro computer graphics evoke nostalgia for early internet days.",
+    "The name suggests a play on the famous DOS operating system."
+  ],
+  "visualSummary": "The card features a chaotic, glitch-art aesthetic with a vibrant color palette of purples, oranges, and greens. The composition is filled with pixelated patterns and abstract shapes, creating a sense of digital distortion. The overall style is reminiscent of early computer graphics, adding a retro-futuristic vibe.",
+  "visualSummaryShort": "The card showcases a chaotic, glitch-art aesthetic with vibrant purples, oranges, and greens. It features pixelated patterns and abstract shapes, evoking a retro-futuristic vibe.",
+  "visualKeywords": [
+    "glitch-art",
+    "vibrant colors",
+    "pixelated",
+    "abstract shapes",
+    "digital distortion",
+    "retro-futuristic"
+  ],
+  "textKeywords": [
+    "fakedoszero",
+    "double"
+  ],
+  "keywords": [
+    "glitch-art",
+    "vibrant colors",
+    "pixelated",
+    "abstract shapes",
+    "digital distortion",
+    "retro-futuristic",
+    "fakedoszero",
+    "double"
+  ],
+  "embeddingInput": "FAKEDOSZERO.DOUBLE (Fake Rares) - Series 11 Card 46\nArtist: Greencross\nSupply 21 Issued October 2022\nOn-card text: FAKEDOSZERO.DOUBLE\nVisual summary: The card features a chaotic, glitch-art aesthetic with a vibrant color palette of purples, oranges, and greens. The composition is filled with pixelated patterns and abstract shapes, creating a sense of digital distortion. The overall style is reminiscent of early computer graphics, adding a retro-futuristic vibe.\nMemetic references: Glitch art style, hinting at cyberpunk and hacker culture.; Retro computer graphics evoke nostalgia for early internet days.; The name suggests a play on the famous DOS operating system.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEDOSZERO.DOUBLE#text",
+      "label": "On-card text",
+      "text": "FAKEDOSZERO.DOUBLE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEDOSZERO.DOUBLE#memetic",
+      "label": "Memetic references",
+      "text": "Glitch art style, hinting at cyberpunk and hacker culture.\nRetro computer graphics evoke nostalgia for early internet days.\nThe name suggests a play on the famous DOS operating system.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEDOSZERO.DOUBLE#visual",
+      "label": "Visual summary",
+      "text": "The card features a chaotic, glitch-art aesthetic with a vibrant color palette of purples, oranges, and greens. The composition is filled with pixelated patterns and abstract shapes, creating a sense of digital distortion. The overall style is reminiscent of early computer graphics, adding a retro-futuristic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEDOSZERO.DOUBLE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKEDOSZERO.DOUBLE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a chaotic, glitch-art aesthetic with a vibrant color palette of purples, oranges, and greens. The composition is filled with pixelated patterns and abstract shapes, creating a sense of digital distortion. The overall style is reminiscent of early computer graphics, adding a retro-futuristic vibe.\n\n🧬 **MEMETIC DNA:**\n- Glitch art style, hinting at cyberpunk and hacker culture.\n- Retro computer graphics evoke nostalgia for early internet days.\n- The name suggests a play on the famous DOS operating system.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.483Z",
+  "sourceFactVersion": 1
+}

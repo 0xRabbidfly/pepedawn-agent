@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "asset": "FAKEPEARL",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 25,
+  "artist": "Pepenardo",
+  "supply": 100,
+  "issuance": "January 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as the main character.",
+    "Reference to classic art with a meme twist.",
+    "Incorporates crypto culture with a computer setup in the background."
+  ],
+  "visualSummary": "This artwork is a playful parody of Vermeer's \"Girl with a Pearl Earring,\" featuring Pepe the Frog as the model. The color palette includes deep blues and reds, with a bright green skin tone for Pepe. The background is a dimly lit room, adding a mysterious vibe, while the character's expression is cheeky and mischievous.",
+  "visualSummaryShort": "The card features Pepe the Frog in a playful reinterpretation of a classic artwork, set in a dimly lit room. The color palette includes deep blues and reds, contrasting with Pepe's bright green skin tone.",
+  "visualKeywords": [
+    "pepe the frog",
+    "blue palette",
+    "red accents",
+    "dim lighting",
+    "cheeky expression",
+    "mysterious vibe"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "blue palette",
+    "red accents",
+    "dim lighting",
+    "cheeky expression",
+    "mysterious vibe"
+  ],
+  "embeddingInput": "FAKEPEARL (Fake Rares) - Series 5 Card 25\nArtist: Pepenardo\nSupply 100 Issued January 2022\nOn-card text: none detected\nVisual summary: This artwork is a playful parody of Vermeer's \"Girl with a Pearl Earring,\" featuring Pepe the Frog as the model. The color palette includes deep blues and reds, with a bright green skin tone for Pepe. The background is a dimly lit room, adding a mysterious vibe, while the character's expression is cheeky and mischievous.\nMemetic references: Pepe the Frog as the main character.; Reference to classic art with a meme twist.; Incorporates crypto culture with a computer setup in the background.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEPEARL#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as the main character.\nReference to classic art with a meme twist.\nIncorporates crypto culture with a computer setup in the background.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEPEARL#visual",
+      "label": "Visual summary",
+      "text": "This artwork is a playful parody of Vermeer's \"Girl with a Pearl Earring,\" featuring Pepe the Frog as the model. The color palette includes deep blues and reds, with a bright green skin tone for Pepe. The background is a dimly lit room, adding a mysterious vibe, while the character's expression is cheeky and mischievous.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEPEARL#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis artwork is a playful parody of Vermeer's \"Girl with a Pearl Earring,\" featuring Pepe the Frog as the model. The color palette includes deep blues and reds, with a bright green skin tone for Pepe. The background is a dimly lit room, adding a mysterious vibe, while the character's expression is cheeky and mischievous.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as the main character.\n- Reference to classic art with a meme twist.\n- Incorporates crypto culture with a computer setup in the background.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.546Z",
+  "sourceFactVersion": 1
+}

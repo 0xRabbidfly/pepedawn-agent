@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "PEPEDONTPUSH",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 12,
+  "artist": "FourLeafClover",
+  "supply": 100,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "PEPE DON'T PUSH"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a classic meme character.",
+    "The \"big red button\" trope, symbolizing a critical choice or action.",
+    "Expression of anxiety and indecision, common in meme culture."
+  ],
+  "visualSummary": "The card features a nervous Pepe the Frog poised dramatically over a large red button, clearly conflicted about pressing it. The color palette is dominated by dark reds and greens, giving it a tense and comedic vibe. The artistic style is cartoonish and bold, with exaggerated expressions and dynamic lines emphasizing Pepe's dilemma.",
+  "visualSummaryShort": "The card depicts a nervous Pepe the Frog dramatically hovering over a large red button, showcasing his internal conflict. The dark red and green color palette enhances the tense yet comedic atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "red button",
+    "nervous",
+    "dark colors",
+    "cartoonish",
+    "exaggerated expressions",
+    "tense",
+    "comedic",
+    "dynamic lines"
+  ],
+  "textKeywords": [
+    "don",
+    "push"
+  ],
+  "keywords": [
+    "pepe",
+    "red button",
+    "nervous",
+    "dark colors",
+    "cartoonish",
+    "exaggerated expressions",
+    "tense",
+    "comedic",
+    "dynamic lines",
+    "don",
+    "push"
+  ],
+  "embeddingInput": "PEPEDONTPUSH (Fake Rares) - Series 4 Card 12\nArtist: FourLeafClover\nSupply 100 Issued November 2021\nOn-card text: PEPE DON'T PUSH\nVisual summary: The card features a nervous Pepe the Frog poised dramatically over a large red button, clearly conflicted about pressing it. The color palette is dominated by dark reds and greens, giving it a tense and comedic vibe. The artistic style is cartoonish and bold, with exaggerated expressions and dynamic lines emphasizing Pepe's dilemma.\nMemetic references: Pepe the Frog, a classic meme character.; The \"big red button\" trope, symbolizing a critical choice or action.; Expression of anxiety and indecision, common in meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEDONTPUSH#text",
+      "label": "On-card text",
+      "text": "PEPE DON'T PUSH",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEDONTPUSH#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a classic meme character.\nThe \"big red button\" trope, symbolizing a critical choice or action.\nExpression of anxiety and indecision, common in meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEDONTPUSH#visual",
+      "label": "Visual summary",
+      "text": "The card features a nervous Pepe the Frog poised dramatically over a large red button, clearly conflicted about pressing it. The color palette is dominated by dark reds and greens, giving it a tense and comedic vibe. The artistic style is cartoonish and bold, with exaggerated expressions and dynamic lines emphasizing Pepe's dilemma.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEDONTPUSH#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE DON'T PUSH\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a nervous Pepe the Frog poised dramatically over a large red button, clearly conflicted about pressing it. The color palette is dominated by dark reds and greens, giving it a tense and comedic vibe. The artistic style is cartoonish and bold, with exaggerated expressions and dynamic lines emphasizing Pepe's dilemma.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a classic meme character.\n- The \"big red button\" trope, symbolizing a critical choice or action.\n- Expression of anxiety and indecision, common in meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.870Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "asset": "ORANGEPACK",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 38,
+  "artist": "FWD",
+  "supply": 21,
+  "issuance": "July 2023",
+  "textOnCard": [
+    "MENTAL FOR YOUTH PROTECTION! PEPEMINT V6. MENTAL SINCE 2022. SUGAR FREE WITH XYLITOL."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog is prominently featured, a staple in meme culture.",
+    "References to Bitcoin with the \"B\" symbol hint at crypto culture.",
+    "\"V6\" and \"mental since 2022\" add a humorous twist on branding and timelines."
+  ],
+  "visualSummary": "The card features a vibrant orange package resembling a gum box, with bold red and white text. A Pepe the Frog face is subtly integrated into the design, giving it a playful twist. The style is a mix of retro packaging aesthetics with a digital art overlay, creating a nostalgic yet modern vibe.",
+  "visualSummaryShort": "The card showcases a vibrant orange gum package with bold red and white text. A playful Pepe the Frog face is integrated into the retro design, blending nostalgia with modern digital art.",
+  "visualKeywords": [
+    "orange package",
+    "pepe the frog",
+    "retro design",
+    "bold text",
+    "digital art",
+    "playful",
+    "nostalgic",
+    "sugar free",
+    "gum box"
+  ],
+  "textKeywords": [
+    "mental",
+    "youth",
+    "protection",
+    "pepemint",
+    "since",
+    "2022",
+    "sugar",
+    "free",
+    "xylitol"
+  ],
+  "keywords": [
+    "orange package",
+    "pepe the frog",
+    "retro design",
+    "bold text",
+    "digital art",
+    "playful",
+    "nostalgic",
+    "sugar free",
+    "gum box",
+    "mental",
+    "youth",
+    "protection",
+    "pepemint",
+    "since",
+    "2022",
+    "sugar",
+    "free",
+    "xylitol"
+  ],
+  "embeddingInput": "ORANGEPACK (Fake Rares) - Series 15 Card 38\nArtist: FWD\nSupply 21 Issued July 2023\nOn-card text: MENTAL FOR YOUTH PROTECTION! PEPEMINT V6. MENTAL SINCE 2022. SUGAR FREE WITH XYLITOL.\nVisual summary: The card features a vibrant orange package resembling a gum box, with bold red and white text. A Pepe the Frog face is subtly integrated into the design, giving it a playful twist. The style is a mix of retro packaging aesthetics with a digital art overlay, creating a nostalgic yet modern vibe.\nMemetic references: Pepe the Frog is prominently featured, a staple in meme culture.; References to Bitcoin with the \"B\" symbol hint at crypto culture.; \"V6\" and \"mental since 2022\" add a humorous twist on branding and timelines.",
+  "embeddingBlocks": [
+    {
+      "id": "ORANGEPACK#text",
+      "label": "On-card text",
+      "text": "MENTAL FOR YOUTH PROTECTION! PEPEMINT V6. MENTAL SINCE 2022. SUGAR FREE WITH XYLITOL.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "ORANGEPACK#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog is prominently featured, a staple in meme culture.\nReferences to Bitcoin with the \"B\" symbol hint at crypto culture.\n\"V6\" and \"mental since 2022\" add a humorous twist on branding and timelines.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "ORANGEPACK#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant orange package resembling a gum box, with bold red and white text. A Pepe the Frog face is subtly integrated into the design, giving it a playful twist. The style is a mix of retro packaging aesthetics with a digital art overlay, creating a nostalgic yet modern vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "ORANGEPACK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nMENTAL FOR YOUTH PROTECTION! PEPEMINT V6. MENTAL SINCE 2022. SUGAR FREE WITH XYLITOL.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant orange package resembling a gum box, with bold red and white text. A Pepe the Frog face is subtly integrated into the design, giving it a playful twist. The style is a mix of retro packaging aesthetics with a digital art overlay, creating a nostalgic yet modern vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog is prominently featured, a staple in meme culture.\n- References to Bitcoin with the \"B\" symbol hint at crypto culture.\n- \"V6\" and \"mental since 2022\" add a humorous twist on branding and timelines.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.813Z",
+  "sourceFactVersion": 1
+}

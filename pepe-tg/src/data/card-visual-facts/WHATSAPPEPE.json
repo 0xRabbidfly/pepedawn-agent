@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "asset": "WHATSAPPEPE",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 14,
+  "artist": "cydr",
+  "supply": 69,
+  "issuance": "September 2025",
+  "textOnCard": [
+    "Good Morning. May your day be filled with joy, pepes and flowers."
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery.",
+    "\"Good Morning\" text, referencing wholesome meme culture.",
+    "Use of nature and flowers, symbolizing positivity and growth.",
+    "Playful nod to the \"joy, pepes and flowers\" meme style."
+  ],
+  "visualSummary": "The card features a central image of a Pepe the Frog character, presented in a natural, serene setting surrounded by vibrant flowers. The color palette is a mix of lush greens, pinks, and floral tones, creating a tranquil and uplifting atmosphere. The artistic style combines digital art with a painterly effect, giving a dreamy and slightly nostalgic vibe.",
+  "visualSummaryShort": "The card showcases a Pepe the Frog character in a serene natural setting filled with vibrant flowers. The lush green and pink color palette creates a tranquil and uplifting atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "flowers",
+    "green",
+    "pink",
+    "natural setting",
+    "dreamy",
+    "serene",
+    "vibrant",
+    "painterly",
+    "uplifting"
+  ],
+  "textKeywords": [
+    "good",
+    "morning",
+    "may",
+    "day",
+    "filled",
+    "joy",
+    "pepes",
+    "flowers"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "flowers",
+    "green",
+    "pink",
+    "natural setting",
+    "dreamy",
+    "serene",
+    "vibrant",
+    "painterly",
+    "uplifting",
+    "good",
+    "morning",
+    "may",
+    "day",
+    "filled",
+    "joy",
+    "pepes"
+  ],
+  "embeddingInput": "WHATSAPPEPE (Fake Rares) - Series 18 Card 14\nArtist: cydr\nSupply 69 Issued September 2025\nOn-card text: Good Morning. May your day be filled with joy, pepes and flowers.\nVisual summary: The card features a central image of a Pepe the Frog character, presented in a natural, serene setting surrounded by vibrant flowers. The color palette is a mix of lush greens, pinks, and floral tones, creating a tranquil and uplifting atmosphere. The artistic style combines digital art with a painterly effect, giving a dreamy and slightly nostalgic vibe.\nMemetic references: Classic Pepe the Frog imagery.; \"Good Morning\" text, referencing wholesome meme culture.; Use of nature and flowers, symbolizing positivity and growth.; Playful nod to the \"joy, pepes and flowers\" meme style.",
+  "embeddingBlocks": [
+    {
+      "id": "WHATSAPPEPE#text",
+      "label": "On-card text",
+      "text": "Good Morning. May your day be filled with joy, pepes and flowers.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "WHATSAPPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery.\n\"Good Morning\" text, referencing wholesome meme culture.\nUse of nature and flowers, symbolizing positivity and growth.\nPlayful nod to the \"joy, pepes and flowers\" meme style.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "WHATSAPPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a central image of a Pepe the Frog character, presented in a natural, serene setting surrounded by vibrant flowers. The color palette is a mix of lush greens, pinks, and floral tones, creating a tranquil and uplifting atmosphere. The artistic style combines digital art with a painterly effect, giving a dreamy and slightly nostalgic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "WHATSAPPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nGood Morning. May your day be filled with joy, pepes and flowers.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a central image of a Pepe the Frog character, presented in a natural, serene setting surrounded by vibrant flowers. The color palette is a mix of lush greens, pinks, and floral tones, creating a tranquil and uplifting atmosphere. The artistic style combines digital art with a painterly effect, giving a dreamy and slightly nostalgic vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery.\n- \"Good Morning\" text, referencing wholesome meme culture.\n- Use of nature and flowers, symbolizing positivity and growth.\n- Playful nod to the \"joy, pepes and flowers\" meme style.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.186Z",
+  "sourceFactVersion": 1
+}

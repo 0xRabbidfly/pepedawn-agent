@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "PEPEJAIL",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 14,
+  "artist": "threepanelcrimes",
+  "supply": 21,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "1-800-DENSE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple of internet meme culture.",
+    "The height chart suggests a police mugshot, adding a layer of humor.",
+    "The block with \"1-800-DENSE\" is a play on words, likely referencing hotlines and a commentary on density, both physical and metaphorical."
+  ],
+  "visualSummary": "The card features Pepe the Frog standing in front of a height chart, reminiscent of a mugshot backdrop. Pepe is wearing a blue shirt and holding a gray block with the text \"1-800-DENSE\" on it. The color palette is simple, using muted greens and blues, with a clean, cartoonish artistic style.",
+  "visualSummaryShort": "The card depicts Pepe the Frog in a mugshot-style setting, standing next to a height chart. He is dressed in a blue shirt and holding a gray block with text.",
+  "visualKeywords": [
+    "mugshot",
+    "height chart",
+    "blue shirt",
+    "gray block",
+    "cartoonish",
+    "muted colors",
+    "frog",
+    "simple design"
+  ],
+  "textKeywords": [
+    "800",
+    "dense"
+  ],
+  "keywords": [
+    "mugshot",
+    "height chart",
+    "blue shirt",
+    "gray block",
+    "cartoonish",
+    "muted colors",
+    "frog",
+    "simple design",
+    "800",
+    "dense"
+  ],
+  "embeddingInput": "PEPEJAIL (Fake Rares) - Series 11 Card 14\nArtist: threepanelcrimes\nSupply 21 Issued September 2022\nOn-card text: 1-800-DENSE\nVisual summary: The card features Pepe the Frog standing in front of a height chart, reminiscent of a mugshot backdrop. Pepe is wearing a blue shirt and holding a gray block with the text \"1-800-DENSE\" on it. The color palette is simple, using muted greens and blues, with a clean, cartoonish artistic style.\nMemetic references: Pepe the Frog, a staple of internet meme culture.; The height chart suggests a police mugshot, adding a layer of humor.; The block with \"1-800-DENSE\" is a play on words, likely referencing hotlines and a commentary on density, both physical and metaphorical.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEJAIL#text",
+      "label": "On-card text",
+      "text": "1-800-DENSE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEJAIL#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple of internet meme culture.\nThe height chart suggests a police mugshot, adding a layer of humor.\nThe block with \"1-800-DENSE\" is a play on words, likely referencing hotlines and a commentary on density, both physical and metaphorical.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEJAIL#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog standing in front of a height chart, reminiscent of a mugshot backdrop. Pepe is wearing a blue shirt and holding a gray block with the text \"1-800-DENSE\" on it. The color palette is simple, using muted greens and blues, with a clean, cartoonish artistic style.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEJAIL#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n1-800-DENSE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog standing in front of a height chart, reminiscent of a mugshot backdrop. Pepe is wearing a blue shirt and holding a gray block with the text \"1-800-DENSE\" on it. The color palette is simple, using muted greens and blues, with a clean, cartoonish artistic style.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple of internet meme culture.\n- The height chart suggests a police mugshot, adding a layer of humor.\n- The block with \"1-800-DENSE\" is a play on words, likely referencing hotlines and a commentary on density, both physical and metaphorical.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.902Z",
+  "sourceFactVersion": 1
+}

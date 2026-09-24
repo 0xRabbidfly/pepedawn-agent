@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "asset": "PEPELAW",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 25,
+  "artist": "threepanelcrimes",
+  "supply": 53,
+  "issuance": "November 2022",
+  "textOnCard": [
+    "PEPELAW",
+    "1-800-677-6969",
+    "Just because you did it, doesn't mean you're guilty"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a lawyer, adding a humorous twist to the character's versatility.",
+    "References to legal hotlines, parodying late-night TV ads.",
+    "Glitch effect nods to digital art and NFT culture."
+  ],
+  "visualSummary": "The card features Pepe the Frog dressed in a sharp suit, standing confidently in a courtroom setting. The color palette includes classic courtroom browns with Pepe's signature green, accented by red and white text bars. The style is a mix of cartoonish and realistic, with a slight glitch effect adding a modern twist.",
+  "visualSummaryShort": "The card showcases Pepe the Frog in a sharp suit within a courtroom environment, exuding confidence. The color scheme combines courtroom browns with Pepe's green, enhanced by red and white text bars.",
+  "visualKeywords": [
+    "courtroom",
+    "suit",
+    "green",
+    "brown",
+    "red",
+    "white",
+    "glitch",
+    "cartoonish",
+    "realistic"
+  ],
+  "textKeywords": [
+    "pepelaw",
+    "800",
+    "677",
+    "6969",
+    "just",
+    "because",
+    "you",
+    "did",
+    "doesn",
+    "mean",
+    "guilty"
+  ],
+  "keywords": [
+    "courtroom",
+    "suit",
+    "green",
+    "brown",
+    "red",
+    "white",
+    "glitch",
+    "cartoonish",
+    "realistic",
+    "pepelaw",
+    "800",
+    "677",
+    "6969",
+    "just",
+    "because",
+    "you",
+    "did",
+    "doesn",
+    "mean",
+    "guilty"
+  ],
+  "embeddingInput": "PEPELAW (Fake Rares) - Series 12 Card 25\nArtist: threepanelcrimes\nSupply 53 Issued November 2022\nOn-card text: PEPELAW | 1-800-677-6969 | Just because you did it, doesn't mean you're guilty\nVisual summary: The card features Pepe the Frog dressed in a sharp suit, standing confidently in a courtroom setting. The color palette includes classic courtroom browns with Pepe's signature green, accented by red and white text bars. The style is a mix of cartoonish and realistic, with a slight glitch effect adding a modern twist.\nMemetic references: Pepe the Frog as a lawyer, adding a humorous twist to the character's versatility.; References to legal hotlines, parodying late-night TV ads.; Glitch effect nods to digital art and NFT culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPELAW#text",
+      "label": "On-card text",
+      "text": "PEPELAW | 1-800-677-6969 | Just because you did it, doesn't mean you're guilty",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPELAW#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a lawyer, adding a humorous twist to the character's versatility.\nReferences to legal hotlines, parodying late-night TV ads.\nGlitch effect nods to digital art and NFT culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPELAW#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog dressed in a sharp suit, standing confidently in a courtroom setting. The color palette includes classic courtroom browns with Pepe's signature green, accented by red and white text bars. The style is a mix of cartoonish and realistic, with a slight glitch effect adding a modern twist.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPELAW#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPELAW  \n1-800-677-6969  \nJust because you did it, doesn't mean you're guilty\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog dressed in a sharp suit, standing confidently in a courtroom setting. The color palette includes classic courtroom browns with Pepe's signature green, accented by red and white text bars. The style is a mix of cartoonish and realistic, with a slight glitch effect adding a modern twist.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a lawyer, adding a humorous twist to the character's versatility.\n- References to legal hotlines, parodying late-night TV ads.\n- Glitch effect nods to digital art and NFT culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.916Z",
+  "sourceFactVersion": 1
+}

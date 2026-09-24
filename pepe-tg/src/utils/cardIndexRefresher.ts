@@ -12,7 +12,14 @@ import { logger as coreLogger } from '@elizaos/core';
 
 // Configuration
 const REFRESH_INTERVAL_MS = 24 * 60 * 60 * 1000; // 24 hours (once per day)
-const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/0xRabbidfly/pepedawn-agent/master/pepe-tg/src/data/fake-rares-data.json';
+// Master is what production runs. A build from a branch (the test bot) would
+// otherwise have its index replaced by master's older file five minutes after
+// boot - cards vanish, new fields go missing - so a branch points this at its
+// own raw URL. Found when a test announced a card master had, and this branch
+// had renamed.
+const GITHUB_RAW_URL =
+  process.env.CARD_INDEX_REFRESH_URL ||
+  'https://raw.githubusercontent.com/0xRabbidfly/pepedawn-agent/master/pepe-tg/src/data/fake-rares-data.json';
 
 // In-memory card data (updated periodically)
 let cardIndex: CardInfo[] = [];

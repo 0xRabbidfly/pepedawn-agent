@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "DAWNOFPEPE",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 12,
+  "artist": "Mr. HODLPIG",
+  "supply": 133,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "RARES ARE BORN"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference.",
+    "Astronaut imagery symbolizes exploration, often used in crypto to signify \"moon\" missions.",
+    "The seated pose evokes a sense of waiting or contemplation, common in HODL culture."
+  ],
+  "visualSummary": "The card features an astronaut in an orange suit, seated in a contemplative pose, with a small, green figure resembling Pepe sitting nearby. The background is dark, casting a moody, introspective atmosphere. The color palette is dominated by dark greens and oranges, with soft lighting highlighting the figures.",
+  "visualSummaryShort": "An astronaut in an orange suit sits contemplatively next to a small green figure resembling Pepe. The dark background and soft lighting create a moody atmosphere.",
+  "visualKeywords": [
+    "astronaut",
+    "orange suit",
+    "green figure",
+    "dark background",
+    "soft lighting",
+    "moody",
+    "introspective"
+  ],
+  "textKeywords": [
+    "are",
+    "born"
+  ],
+  "keywords": [
+    "astronaut",
+    "orange suit",
+    "green figure",
+    "dark background",
+    "soft lighting",
+    "moody",
+    "introspective",
+    "are",
+    "born"
+  ],
+  "embeddingInput": "DAWNOFPEPE (Fake Rares) - Series 10 Card 12\nArtist: Mr. HODLPIG\nSupply 133 Issued September 2022\nOn-card text: RARES ARE BORN\nVisual summary: The card features an astronaut in an orange suit, seated in a contemplative pose, with a small, green figure resembling Pepe sitting nearby. The background is dark, casting a moody, introspective atmosphere. The color palette is dominated by dark greens and oranges, with soft lighting highlighting the figures.\nMemetic references: Classic Pepe the Frog reference.; Astronaut imagery symbolizes exploration, often used in crypto to signify \"moon\" missions.; The seated pose evokes a sense of waiting or contemplation, common in HODL culture.",
+  "embeddingBlocks": [
+    {
+      "id": "DAWNOFPEPE#text",
+      "label": "On-card text",
+      "text": "RARES ARE BORN",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "DAWNOFPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference.\nAstronaut imagery symbolizes exploration, often used in crypto to signify \"moon\" missions.\nThe seated pose evokes a sense of waiting or contemplation, common in HODL culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "DAWNOFPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features an astronaut in an orange suit, seated in a contemplative pose, with a small, green figure resembling Pepe sitting nearby. The background is dark, casting a moody, introspective atmosphere. The color palette is dominated by dark greens and oranges, with soft lighting highlighting the figures.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "DAWNOFPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- RARES ARE BORN\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features an astronaut in an orange suit, seated in a contemplative pose, with a small, green figure resembling Pepe sitting nearby. The background is dark, casting a moody, introspective atmosphere. The color palette is dominated by dark greens and oranges, with soft lighting highlighting the figures.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference.\n- Astronaut imagery symbolizes exploration, often used in crypto to signify \"moon\" missions.\n- The seated pose evokes a sense of waiting or contemplation, common in HODL culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.387Z",
+  "sourceFactVersion": 1
+}

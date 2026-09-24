@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "asset": "FAKEWAX",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 51,
+  "artist": "FAKERARES",
+  "supply": 150,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "FAKEWAX. Fake Records Vol 1. So good we had to break the rules... S4 C51. Parental Advisory Fake Content."
+  ],
+  "memeticReferences": [
+    "🌐 Pepe the Frog as a central figure, a staple in meme culture.",
+    "🎨 Graffiti style evokes street art and counterculture.",
+    "📀 Parody of traditional music record covers with a nod to \"Parental Advisory\" labels.",
+    "🚀 References to breaking rules, resonating with crypto and NFT rebellion themes."
+  ],
+  "visualSummary": "The card showcases a vibrant and bold graffiti style with the word \"FAKE\" in large blue letters, overshadowed by a green Pepe character reading a newspaper. \"Records\" is written in dynamic, flowing yellow script, while \"VOL 1\" is in a cool blue at the bottom. The background features a striking pattern of black and white stripes, adding to the urban street art vibe.",
+  "visualSummaryShort": "The card features a vibrant graffiti style with bold colors and urban elements. A green Pepe character reading a newspaper adds a playful touch to the striking black and white striped background.",
+  "visualKeywords": [
+    "graffiti",
+    "blue letters",
+    "green pepe",
+    "newspaper",
+    "yellow script",
+    "black and white stripes",
+    "urban",
+    "bold colors",
+    "dynamic",
+    "playful"
+  ],
+  "textKeywords": [
+    "fakewax",
+    "records",
+    "vol",
+    "good",
+    "had",
+    "break",
+    "rules",
+    "c51",
+    "parental",
+    "advisory",
+    "content"
+  ],
+  "keywords": [
+    "graffiti",
+    "blue letters",
+    "green pepe",
+    "newspaper",
+    "yellow script",
+    "black and white stripes",
+    "urban",
+    "bold colors",
+    "dynamic",
+    "playful",
+    "fakewax",
+    "records",
+    "vol",
+    "good",
+    "had",
+    "break",
+    "rules",
+    "c51",
+    "parental",
+    "advisory",
+    "content"
+  ],
+  "embeddingInput": "FAKEWAX (Fake Rares) - Series 4 Card 51\nArtist: FAKERARES\nSupply 150 Issued February 2022\nOn-card text: FAKEWAX. Fake Records Vol 1. So good we had to break the rules... S4 C51. Parental Advisory Fake Content.\nVisual summary: The card showcases a vibrant and bold graffiti style with the word \"FAKE\" in large blue letters, overshadowed by a green Pepe character reading a newspaper. \"Records\" is written in dynamic, flowing yellow script, while \"VOL 1\" is in a cool blue at the bottom. The background features a striking pattern of black and white stripes, adding to the urban street art vibe.\nMemetic references: 🌐 Pepe the Frog as a central figure, a staple in meme culture.; 🎨 Graffiti style evokes street art and counterculture.; 📀 Parody of traditional music record covers with a nod to \"Parental Advisory\" labels.; 🚀 References to breaking rules, resonating with crypto and NFT rebellion themes.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEWAX#text",
+      "label": "On-card text",
+      "text": "FAKEWAX. Fake Records Vol 1. So good we had to break the rules... S4 C51. Parental Advisory Fake Content.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEWAX#memetic",
+      "label": "Memetic references",
+      "text": "🌐 Pepe the Frog as a central figure, a staple in meme culture.\n🎨 Graffiti style evokes street art and counterculture.\n📀 Parody of traditional music record covers with a nod to \"Parental Advisory\" labels.\n🚀 References to breaking rules, resonating with crypto and NFT rebellion themes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEWAX#visual",
+      "label": "Visual summary",
+      "text": "The card showcases a vibrant and bold graffiti style with the word \"FAKE\" in large blue letters, overshadowed by a green Pepe character reading a newspaper. \"Records\" is written in dynamic, flowing yellow script, while \"VOL 1\" is in a cool blue at the bottom. The background features a striking pattern of black and white stripes, adding to the urban street art vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEWAX#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKEWAX. Fake Records Vol 1. So good we had to break the rules... S4 C51. Parental Advisory Fake Content.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card showcases a vibrant and bold graffiti style with the word \"FAKE\" in large blue letters, overshadowed by a green Pepe character reading a newspaper. \"Records\" is written in dynamic, flowing yellow script, while \"VOL 1\" is in a cool blue at the bottom. The background features a striking pattern of black and white stripes, adding to the urban street art vibe.\n\n🧬 **MEMETIC DNA:**\n- 🌐 Pepe the Frog as a central figure, a staple in meme culture.\n- 🎨 Graffiti style evokes street art and counterculture.\n- 📀 Parody of traditional music record covers with a nod to \"Parental Advisory\" labels.\n- 🚀 References to breaking rules, resonating with crypto and NFT rebellion themes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.597Z",
+  "sourceFactVersion": 1
+}

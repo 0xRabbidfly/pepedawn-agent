@@ -1,0 +1,123 @@
+{
+  "version": 1,
+  "asset": "DJPEPEBADGER.GORILLA-GLUE-MONEY-BADGER",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 44,
+  "artist": "LE HUES",
+  "supply": 36,
+  "issuance": "July 2023",
+  "textOnCard": [
+    "\"Gorilla Glue Money Badger\" - \"Nice!\" - \"100% Gives Yer The Munchies 100%\" - \"*The Rare African* Gorilla Glue Money Badger\" - \"Ability to move through quicksand\" - \"Ability to paralyze opponent\" - \"Ability to bond virtually anything\" - \"Satisfaction Guaranteed\" - \"Ability to slow things down to 33 BPM\""
+  ],
+  "memeticReferences": [
+    "References the \"Honey Badger\" meme, known for its fearless nature.",
+    "Incorporates \"Gorilla Glue\" slang, blending stoner culture with crypto lingo.",
+    "Bitcoin symbol nods to the crypto community.",
+    "The phrase \"Satisfaction Guaranteed\" is a playful twist on marketing language."
+  ],
+  "visualSummary": "This card features a surreal collage of a money badger with a gorilla face, adorned with a bitcoin medallion, set against an orange backdrop. A woman's surprised face is juxtaposed in the background, adding a layer of comedic irony. The color palette is primarily orange and black, giving it a bold and eye-catching aesthetic.",
+  "visualSummaryShort": "The card showcases a surreal money badger with a gorilla face, highlighted by a bitcoin medallion against an orange backdrop. A surprised woman's face adds a humorous touch to the bold orange and black color scheme.",
+  "visualKeywords": [
+    "money badger",
+    "gorilla",
+    "bitcoin",
+    "orange background",
+    "surprised face",
+    "collage",
+    "bold colors",
+    "comedic irony"
+  ],
+  "textKeywords": [
+    "gorilla",
+    "glue",
+    "money",
+    "badger",
+    "nice",
+    "100",
+    "gives",
+    "yer",
+    "munchies",
+    "african",
+    "ability",
+    "move",
+    "quicksand",
+    "paralyze",
+    "opponent",
+    "bond",
+    "virtually",
+    "anything",
+    "satisfaction",
+    "guaranteed",
+    "slow",
+    "things",
+    "down",
+    "bpm"
+  ],
+  "keywords": [
+    "money badger",
+    "gorilla",
+    "bitcoin",
+    "orange background",
+    "surprised face",
+    "collage",
+    "bold colors",
+    "comedic irony",
+    "glue",
+    "money",
+    "badger",
+    "nice",
+    "100",
+    "gives",
+    "yer",
+    "munchies",
+    "african",
+    "ability",
+    "move",
+    "quicksand",
+    "paralyze",
+    "opponent",
+    "bond",
+    "virtually",
+    "anything",
+    "satisfaction",
+    "guaranteed",
+    "slow",
+    "things",
+    "down",
+    "bpm"
+  ],
+  "embeddingInput": "DJPEPEBADGER.GORILLA-GLUE-MONEY-BADGER (Fake Rares) - Series 15 Card 44\nArtist: LE HUES\nSupply 36 Issued July 2023\nOn-card text: \"Gorilla Glue Money Badger\" - \"Nice!\" - \"100% Gives Yer The Munchies 100%\" - \"*The Rare African* Gorilla Glue Money Badger\" - \"Ability to move through quicksand\" - \"Ability to paralyze opponent\" - \"Ability to bond virtually anything\" - \"Satisfaction Guaranteed\" - \"Ability to slow things down to 33 BPM\"\nVisual summary: This card features a surreal collage of a money badger with a gorilla face, adorned with a bitcoin medallion, set against an orange backdrop. A woman's surprised face is juxtaposed in the background, adding a layer of comedic irony. The color palette is primarily orange and black, giving it a bold and eye-catching aesthetic.\nMemetic references: References the \"Honey Badger\" meme, known for its fearless nature.; Incorporates \"Gorilla Glue\" slang, blending stoner culture with crypto lingo.; Bitcoin symbol nods to the crypto community.; The phrase \"Satisfaction Guaranteed\" is a playful twist on marketing language.",
+  "embeddingBlocks": [
+    {
+      "id": "DJPEPEBADGER.GORILLA-GLUE-MONEY-BADGER#text",
+      "label": "On-card text",
+      "text": "\"Gorilla Glue Money Badger\" - \"Nice!\" - \"100% Gives Yer The Munchies 100%\" - \"*The Rare African* Gorilla Glue Money Badger\" - \"Ability to move through quicksand\" - \"Ability to paralyze opponent\" - \"Ability to bond virtually anything\" - \"Satisfaction Guaranteed\" - \"Ability to slow things down to 33 BPM\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "DJPEPEBADGER.GORILLA-GLUE-MONEY-BADGER#memetic",
+      "label": "Memetic references",
+      "text": "References the \"Honey Badger\" meme, known for its fearless nature.\nIncorporates \"Gorilla Glue\" slang, blending stoner culture with crypto lingo.\nBitcoin symbol nods to the crypto community.\nThe phrase \"Satisfaction Guaranteed\" is a playful twist on marketing language.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "DJPEPEBADGER.GORILLA-GLUE-MONEY-BADGER#visual",
+      "label": "Visual summary",
+      "text": "This card features a surreal collage of a money badger with a gorilla face, adorned with a bitcoin medallion, set against an orange backdrop. A woman's surprised face is juxtaposed in the background, adding a layer of comedic irony. The color palette is primarily orange and black, giving it a bold and eye-catching aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "DJPEPEBADGER.GORILLA-GLUE-MONEY-BADGER#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n\"Gorilla Glue Money Badger\" - \"Nice!\" - \"100% Gives Yer The Munchies 100%\" - \"*The Rare African* Gorilla Glue Money Badger\" - \"Ability to move through quicksand\" - \"Ability to paralyze opponent\" - \"Ability to bond virtually anything\" - \"Satisfaction Guaranteed\" - \"Ability to slow things down to 33 BPM\"\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a surreal collage of a money badger with a gorilla face, adorned with a bitcoin medallion, set against an orange backdrop. A woman's surprised face is juxtaposed in the background, adding a layer of comedic irony. The color palette is primarily orange and black, giving it a bold and eye-catching aesthetic.\n\n🧬 **MEMETIC DNA:**\n- References the \"Honey Badger\" meme, known for its fearless nature.\n- Incorporates \"Gorilla Glue\" slang, blending stoner culture with crypto lingo.\n- Bitcoin symbol nods to the crypto community.\n- The phrase \"Satisfaction Guaranteed\" is a playful twist on marketing language.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.398Z",
+  "sourceFactVersion": 1
+}

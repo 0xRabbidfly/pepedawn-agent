@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "asset": "FAKEGRAM",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 5,
+  "artist": "FWD",
+  "supply": 89,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "FAKEGRAM",
+    "puzzled as fake as dyck",
+    "迷惑不解"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog references with the green color and frog-like shape.",
+    "Glitch art style, popular in digital and crypto art scenes.",
+    "The card name \"FAKEGRAM\" hints at a play on Instagram, suggesting themes of digital identity and authenticity.",
+    "Use of kanji (迷惑不解) adds an element of mystery and cross-cultural influence."
+  ],
+  "visualSummary": "The card features an abstract, geometric representation of a Pepe-like figure, constructed with green triangular shapes against a black and white split background. The color palette is dominated by shades of green, with accents of red for the tongue and black and white for the limbs and background. The text and images are layered with a glitchy, digital effect, adding a modern and chaotic feel.",
+  "visualSummaryShort": "The card showcases an abstract Pepe-like figure made of green triangles on a black and white background. It features a glitchy digital effect, enhancing its modern and chaotic aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "triangles",
+    "green",
+    "black and white",
+    "glitch",
+    "abstract",
+    "red tongue",
+    "digital",
+    "chaotic",
+    "geometric"
+  ],
+  "textKeywords": [
+    "fakegram",
+    "puzzled",
+    "dyck"
+  ],
+  "keywords": [
+    "pepe",
+    "triangles",
+    "green",
+    "black and white",
+    "glitch",
+    "abstract",
+    "red tongue",
+    "digital",
+    "chaotic",
+    "geometric",
+    "fakegram",
+    "puzzled",
+    "dyck"
+  ],
+  "embeddingInput": "FAKEGRAM (Fake Rares) - Series 1 Card 5\nArtist: FWD\nSupply 89 Issued October 2021\nOn-card text: FAKEGRAM | puzzled as fake as dyck | 迷惑不解\nVisual summary: The card features an abstract, geometric representation of a Pepe-like figure, constructed with green triangular shapes against a black and white split background. The color palette is dominated by shades of green, with accents of red for the tongue and black and white for the limbs and background. The text and images are layered with a glitchy, digital effect, adding a modern and chaotic feel.\nMemetic references: Pepe the Frog references with the green color and frog-like shape.; Glitch art style, popular in digital and crypto art scenes.; The card name \"FAKEGRAM\" hints at a play on Instagram, suggesting themes of digital identity and authenticity.; Use of kanji (迷惑不解) adds an element of mystery and cross-cultural influence.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEGRAM#text",
+      "label": "On-card text",
+      "text": "FAKEGRAM | puzzled as fake as dyck | 迷惑不解",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEGRAM#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references with the green color and frog-like shape.\nGlitch art style, popular in digital and crypto art scenes.\nThe card name \"FAKEGRAM\" hints at a play on Instagram, suggesting themes of digital identity and authenticity.\nUse of kanji (迷惑不解) adds an element of mystery and cross-cultural influence.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEGRAM#visual",
+      "label": "Visual summary",
+      "text": "The card features an abstract, geometric representation of a Pepe-like figure, constructed with green triangular shapes against a black and white split background. The color palette is dominated by shades of green, with accents of red for the tongue and black and white for the limbs and background. The text and images are layered with a glitchy, digital effect, adding a modern and chaotic feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEGRAM#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKEGRAM  \npuzzled as fake as dyck  \n迷惑不解  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features an abstract, geometric representation of a Pepe-like figure, constructed with green triangular shapes against a black and white split background. The color palette is dominated by shades of green, with accents of red for the tongue and black and white for the limbs and background. The text and images are layered with a glitchy, digital effect, adding a modern and chaotic feel.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references with the green color and frog-like shape.\n- Glitch art style, popular in digital and crypto art scenes.\n- The card name \"FAKEGRAM\" hints at a play on Instagram, suggesting themes of digital identity and authenticity.\n- Use of kanji (迷惑不解) adds an element of mystery and cross-cultural influence.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.510Z",
+  "sourceFactVersion": 1
+}

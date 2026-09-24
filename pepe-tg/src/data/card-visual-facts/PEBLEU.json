@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "asset": "PEBLEU",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 41,
+  "artist": "Tj0",
+  "supply": 69,
+  "issuance": "September 2022",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a visually striking design with no specific details provided. It is likely to include unique artistic elements that define its appearance.",
+  "visualKeywords": [],
+  "textKeywords": [],
+  "keywords": [],
+  "embeddingInput": "PEBLEU (Fake Rares) - Series 9 Card 41\nArtist: Tj0\nSupply 69 Issued September 2022\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "PEBLEU#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, but I can't analyze this image for you.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.827Z",
+  "sourceFactVersion": 1
+}

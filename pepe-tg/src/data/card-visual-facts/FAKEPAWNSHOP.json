@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "FAKEPAWNSHOP",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 13,
+  "artist": "Elispri",
+  "supply": 100,
+  "issuance": "January 2022",
+  "textOnCard": [
+    "Pepe Pawn Shop",
+    "HOODED PEPE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure, a staple of meme culture.",
+    "References to NFT art culture with framed crypto-themed images.",
+    "The concept of a \"pawn shop\" humorously ties into the trading and value exchange themes of NFTs."
+  ],
+  "visualSummary": "The card features a surreal pawn shop setting with a green frog character, presumably Pepe, behind a counter. The color palette is a mix of earthy tones with pops of vibrant green and red. The shop is filled with various framed artworks and collectibles, while a chicken with a peculiar expression stands on a red carpet, adding a humorous twist.",
+  "visualSummaryShort": "The card depicts a surreal pawn shop with a green frog character behind the counter. A chicken with a quirky expression adds humor to the earthy-toned environment filled with collectibles.",
+  "visualKeywords": [
+    "pawn shop",
+    "frog",
+    "chicken",
+    "earthy tones",
+    "green",
+    "red",
+    "artworks",
+    "humor"
+  ],
+  "textKeywords": [
+    "pawn",
+    "shop",
+    "hooded"
+  ],
+  "keywords": [
+    "pawn shop",
+    "frog",
+    "chicken",
+    "earthy tones",
+    "green",
+    "red",
+    "artworks",
+    "humor",
+    "pawn",
+    "shop",
+    "hooded"
+  ],
+  "embeddingInput": "FAKEPAWNSHOP (Fake Rares) - Series 6 Card 13\nArtist: Elispri\nSupply 100 Issued January 2022\nOn-card text: Pepe Pawn Shop | HOODED PEPE\nVisual summary: The card features a surreal pawn shop setting with a green frog character, presumably Pepe, behind a counter. The color palette is a mix of earthy tones with pops of vibrant green and red. The shop is filled with various framed artworks and collectibles, while a chicken with a peculiar expression stands on a red carpet, adding a humorous twist.\nMemetic references: Pepe the Frog as a central figure, a staple of meme culture.; References to NFT art culture with framed crypto-themed images.; The concept of a \"pawn shop\" humorously ties into the trading and value exchange themes of NFTs.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEPAWNSHOP#text",
+      "label": "On-card text",
+      "text": "Pepe Pawn Shop | HOODED PEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEPAWNSHOP#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure, a staple of meme culture.\nReferences to NFT art culture with framed crypto-themed images.\nThe concept of a \"pawn shop\" humorously ties into the trading and value exchange themes of NFTs.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEPAWNSHOP#visual",
+      "label": "Visual summary",
+      "text": "The card features a surreal pawn shop setting with a green frog character, presumably Pepe, behind a counter. The color palette is a mix of earthy tones with pops of vibrant green and red. The shop is filled with various framed artworks and collectibles, while a chicken with a peculiar expression stands on a red carpet, adding a humorous twist.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEPAWNSHOP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- Pepe Pawn Shop\n- HOODED PEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a surreal pawn shop setting with a green frog character, presumably Pepe, behind a counter. The color palette is a mix of earthy tones with pops of vibrant green and red. The shop is filled with various framed artworks and collectibles, while a chicken with a peculiar expression stands on a red carpet, adding a humorous twist.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure, a staple of meme culture.\n- References to NFT art culture with framed crypto-themed images.\n- The concept of a \"pawn shop\" humorously ties into the trading and value exchange themes of NFTs.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.544Z",
+  "sourceFactVersion": 1
+}

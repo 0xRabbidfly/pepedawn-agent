@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "FPEPESURF",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 28,
+  "artist": "Tizar Berandalan",
+  "supply": 71,
+  "issuance": "December 2021",
+  "textOnCard": [
+    "Life is Good"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a chill surfer dude.",
+    "Bitcoin symbol as the sun, nodding to crypto culture.",
+    "Psychedelic colors evoke the mind-expanding aesthetics often seen in meme art.",
+    "Tropical paradise scene, invoking carefree, escapist themes."
+  ],
+  "visualSummary": "This card features a laid-back Pepe character with long hair and a beard, surfing on a vibrant, colorful wave. The sky is a psychedelic mix of rainbow colors with a prominent Bitcoin symbol glowing like a sun. The frame is adorned with lush palm trees, adding a tropical vibe to the scene.",
+  "visualSummaryShort": "The card showcases a relaxed Pepe character surfing on a colorful wave under a vibrant, rainbow sky. Tropical palm trees frame the scene, enhancing the laid-back atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "surfing",
+    "rainbow",
+    "bitcoin",
+    "palm trees",
+    "vibrant",
+    "colorful",
+    "tropical",
+    "laid-back"
+  ],
+  "textKeywords": [
+    "life",
+    "good"
+  ],
+  "keywords": [
+    "pepe",
+    "surfing",
+    "rainbow",
+    "bitcoin",
+    "palm trees",
+    "vibrant",
+    "colorful",
+    "tropical",
+    "laid-back",
+    "life",
+    "good"
+  ],
+  "embeddingInput": "FPEPESURF (Fake Rares) - Series 4 Card 28\nArtist: Tizar Berandalan\nSupply 71 Issued December 2021\nOn-card text: Life is Good\nVisual summary: This card features a laid-back Pepe character with long hair and a beard, surfing on a vibrant, colorful wave. The sky is a psychedelic mix of rainbow colors with a prominent Bitcoin symbol glowing like a sun. The frame is adorned with lush palm trees, adding a tropical vibe to the scene.\nMemetic references: Pepe the Frog as a chill surfer dude.; Bitcoin symbol as the sun, nodding to crypto culture.; Psychedelic colors evoke the mind-expanding aesthetics often seen in meme art.; Tropical paradise scene, invoking carefree, escapist themes.",
+  "embeddingBlocks": [
+    {
+      "id": "FPEPESURF#text",
+      "label": "On-card text",
+      "text": "Life is Good",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FPEPESURF#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a chill surfer dude.\nBitcoin symbol as the sun, nodding to crypto culture.\nPsychedelic colors evoke the mind-expanding aesthetics often seen in meme art.\nTropical paradise scene, invoking carefree, escapist themes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FPEPESURF#visual",
+      "label": "Visual summary",
+      "text": "This card features a laid-back Pepe character with long hair and a beard, surfing on a vibrant, colorful wave. The sky is a psychedelic mix of rainbow colors with a prominent Bitcoin symbol glowing like a sun. The frame is adorned with lush palm trees, adding a tropical vibe to the scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FPEPESURF#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nLife is Good\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a laid-back Pepe character with long hair and a beard, surfing on a vibrant, colorful wave. The sky is a psychedelic mix of rainbow colors with a prominent Bitcoin symbol glowing like a sun. The frame is adorned with lush palm trees, adding a tropical vibe to the scene.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a chill surfer dude.\n- Bitcoin symbol as the sun, nodding to crypto culture.\n- Psychedelic colors evoke the mind-expanding aesthetics often seen in meme art.\n- Tropical paradise scene, invoking carefree, escapist themes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.637Z",
+  "sourceFactVersion": 1
+}

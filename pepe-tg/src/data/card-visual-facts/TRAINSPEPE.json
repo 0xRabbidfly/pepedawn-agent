@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "TRAINSPEPE",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 38,
+  "artist": "Art GarPUNKel",
+  "supply": 96,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "Choose Pepe. Choose no job. Choose to create. Choose your directory. Choose Pepe. Trainspepe."
+  ],
+  "memeticReferences": [
+    "References to \"Pepe\" tap into the iconic meme frog beloved in internet culture.",
+    "Mentions of crypto elements like \"tokens,\" \"sats,\" and \"Naka\" highlight NFT and Bitcoin culture.",
+    "The satirical style mimics the famous \"Choose Life\" monologue from \"Trainspotting,\" adding a layer of cultural parody."
+  ],
+  "visualSummary": "The card features a minimalist design with a white background and bold, black text. A large vertical green stripe on the right side contains the word \"Trainspepe\" in white. The overall layout is text-heavy, with the message taking center stage.",
+  "visualSummaryShort": "The card showcases a minimalist design with a prominent green stripe and bold text. The white background emphasizes the text-heavy layout.",
+  "visualKeywords": [
+    "minimalist",
+    "green stripe",
+    "white background",
+    "bold text",
+    "text-heavy"
+  ],
+  "textKeywords": [
+    "choose",
+    "job",
+    "create",
+    "directory",
+    "trainspepe"
+  ],
+  "keywords": [
+    "minimalist",
+    "green stripe",
+    "white background",
+    "bold text",
+    "text-heavy",
+    "choose",
+    "job",
+    "create",
+    "directory",
+    "trainspepe"
+  ],
+  "embeddingInput": "TRAINSPEPE (Fake Rares) - Series 17 Card 38\nArtist: Art GarPUNKel\nSupply 96 Issued September 2022\nOn-card text: Choose Pepe. Choose no job. Choose to create. Choose your directory. Choose Pepe. Trainspepe.\nVisual summary: The card features a minimalist design with a white background and bold, black text. A large vertical green stripe on the right side contains the word \"Trainspepe\" in white. The overall layout is text-heavy, with the message taking center stage.\nMemetic references: References to \"Pepe\" tap into the iconic meme frog beloved in internet culture.; Mentions of crypto elements like \"tokens,\" \"sats,\" and \"Naka\" highlight NFT and Bitcoin culture.; The satirical style mimics the famous \"Choose Life\" monologue from \"Trainspotting,\" adding a layer of cultural parody.",
+  "embeddingBlocks": [
+    {
+      "id": "TRAINSPEPE#text",
+      "label": "On-card text",
+      "text": "Choose Pepe. Choose no job. Choose to create. Choose your directory. Choose Pepe. Trainspepe.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "TRAINSPEPE#memetic",
+      "label": "Memetic references",
+      "text": "References to \"Pepe\" tap into the iconic meme frog beloved in internet culture.\nMentions of crypto elements like \"tokens,\" \"sats,\" and \"Naka\" highlight NFT and Bitcoin culture.\nThe satirical style mimics the famous \"Choose Life\" monologue from \"Trainspotting,\" adding a layer of cultural parody.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "TRAINSPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a minimalist design with a white background and bold, black text. A large vertical green stripe on the right side contains the word \"Trainspepe\" in white. The overall layout is text-heavy, with the message taking center stage.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "TRAINSPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nChoose Pepe. Choose no job. Choose to create. Choose your directory. Choose Pepe. Trainspepe.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a minimalist design with a white background and bold, black text. A large vertical green stripe on the right side contains the word \"Trainspepe\" in white. The overall layout is text-heavy, with the message taking center stage.\n\n🧬 **MEMETIC DNA:**\n- References to \"Pepe\" tap into the iconic meme frog beloved in internet culture.\n- Mentions of crypto elements like \"tokens,\" \"sats,\" and \"Naka\" highlight NFT and Bitcoin culture.\n- The satirical style mimics the famous \"Choose Life\" monologue from \"Trainspotting,\" adding a layer of cultural parody.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.155Z",
+  "sourceFactVersion": 1
+}

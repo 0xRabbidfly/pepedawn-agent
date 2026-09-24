@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "FAUXPROPHET",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 40,
+  "artist": "Costa Jpeg",
+  "supply": 45,
+  "issuance": "July 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "The figure has a strong resemblance to the iconic Pepe the Frog, a staple in meme and crypto culture.",
+    "The glowing orb may symbolize wisdom or hidden knowledge, common themes in crypto lore.",
+    "The overall design suggests a mix of mysticism and space exploration, tapping into the \"to the moon\" crypto meme."
+  ],
+  "visualSummary": "The card features a stylized figure resembling a robed entity, holding a glowing orb. The color palette is dominated by warm shades of orange and black, with a grainy, textured effect that gives it a vintage, sci-fi poster vibe. The composition is minimalistic, focusing on the mysterious character and the radiant sphere.",
+  "visualSummaryShort": "The card showcases a robed figure holding a glowing orb against a warm orange and black background. Its vintage, sci-fi aesthetic is enhanced by a grainy texture and minimalistic composition.",
+  "visualKeywords": [
+    "robed figure",
+    "glowing orb",
+    "orange",
+    "black",
+    "vintage",
+    "sci-fi",
+    "minimalistic",
+    "grainy texture"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "robed figure",
+    "glowing orb",
+    "orange",
+    "black",
+    "vintage",
+    "sci-fi",
+    "minimalistic",
+    "grainy texture"
+  ],
+  "embeddingInput": "FAUXPROPHET (Fake Rares) - Series 15 Card 40\nArtist: Costa Jpeg\nSupply 45 Issued July 2023\nOn-card text: none detected\nVisual summary: The card features a stylized figure resembling a robed entity, holding a glowing orb. The color palette is dominated by warm shades of orange and black, with a grainy, textured effect that gives it a vintage, sci-fi poster vibe. The composition is minimalistic, focusing on the mysterious character and the radiant sphere.\nMemetic references: The figure has a strong resemblance to the iconic Pepe the Frog, a staple in meme and crypto culture.; The glowing orb may symbolize wisdom or hidden knowledge, common themes in crypto lore.; The overall design suggests a mix of mysticism and space exploration, tapping into the \"to the moon\" crypto meme.",
+  "embeddingBlocks": [
+    {
+      "id": "FAUXPROPHET#memetic",
+      "label": "Memetic references",
+      "text": "The figure has a strong resemblance to the iconic Pepe the Frog, a staple in meme and crypto culture.\nThe glowing orb may symbolize wisdom or hidden knowledge, common themes in crypto lore.\nThe overall design suggests a mix of mysticism and space exploration, tapping into the \"to the moon\" crypto meme.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAUXPROPHET#visual",
+      "label": "Visual summary",
+      "text": "The card features a stylized figure resembling a robed entity, holding a glowing orb. The color palette is dominated by warm shades of orange and black, with a grainy, textured effect that gives it a vintage, sci-fi poster vibe. The composition is minimalistic, focusing on the mysterious character and the radiant sphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAUXPROPHET#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a stylized figure resembling a robed entity, holding a glowing orb. The color palette is dominated by warm shades of orange and black, with a grainy, textured effect that gives it a vintage, sci-fi poster vibe. The composition is minimalistic, focusing on the mysterious character and the radiant sphere.\n\n🧬 **MEMETIC DNA:**\n- The figure has a strong resemblance to the iconic Pepe the Frog, a staple in meme and crypto culture.\n- The glowing orb may symbolize wisdom or hidden knowledge, common themes in crypto lore.\n- The overall design suggests a mix of mysticism and space exploration, tapping into the \"to the moon\" crypto meme.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.609Z",
+  "sourceFactVersion": 1
+}

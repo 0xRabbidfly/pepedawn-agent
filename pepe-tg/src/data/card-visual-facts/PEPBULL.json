@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "PEPBULL",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 28,
+  "artist": "SteveWeave",
+  "supply": 50,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "PEPBULL"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog character.",
+    "Angel wings suggest a \"guardian\" or \"savior\" motif.",
+    "The phone in Pepe's hand is a nod to modern tech culture."
+  ],
+  "visualSummary": "The card features Pepe the Frog standing on a sidewalk under a clear blue sky with a bright sun. He's sporting a red and blue vest over a red shirt, gray shorts, and sneakers, and he has angel wings. The color palette is vibrant, with rich greens for Pepe and a serene blue for the background.",
+  "visualSummaryShort": "The card depicts Pepe the Frog with angel wings standing on a sidewalk under a clear blue sky. The vibrant colors include rich greens and a bright sun, creating a cheerful atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "angel wings",
+    "sidewalk",
+    "blue sky",
+    "sun",
+    "red vest",
+    "gray shorts",
+    "sneakers",
+    "vibrant colors",
+    "green"
+  ],
+  "textKeywords": [
+    "pepbull"
+  ],
+  "keywords": [
+    "pepe",
+    "angel wings",
+    "sidewalk",
+    "blue sky",
+    "sun",
+    "red vest",
+    "gray shorts",
+    "sneakers",
+    "vibrant colors",
+    "green",
+    "pepbull"
+  ],
+  "embeddingInput": "PEPBULL (Fake Rares) - Series 5 Card 28\nArtist: SteveWeave\nSupply 50 Issued November 2021\nOn-card text: PEPBULL\nVisual summary: The card features Pepe the Frog standing on a sidewalk under a clear blue sky with a bright sun. He's sporting a red and blue vest over a red shirt, gray shorts, and sneakers, and he has angel wings. The color palette is vibrant, with rich greens for Pepe and a serene blue for the background.\nMemetic references: Classic Pepe the Frog character.; Angel wings suggest a \"guardian\" or \"savior\" motif.; The phone in Pepe's hand is a nod to modern tech culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPBULL#text",
+      "label": "On-card text",
+      "text": "PEPBULL",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPBULL#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog character.\nAngel wings suggest a \"guardian\" or \"savior\" motif.\nThe phone in Pepe's hand is a nod to modern tech culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPBULL#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog standing on a sidewalk under a clear blue sky with a bright sun. He's sporting a red and blue vest over a red shirt, gray shorts, and sneakers, and he has angel wings. The color palette is vibrant, with rich greens for Pepe and a serene blue for the background.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPBULL#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPBULL\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog standing on a sidewalk under a clear blue sky with a bright sun. He's sporting a red and blue vest over a red shirt, gray shorts, and sneakers, and he has angel wings. The color palette is vibrant, with rich greens for Pepe and a serene blue for the background.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog character.\n- Angel wings suggest a \"guardian\" or \"savior\" motif.\n- The phone in Pepe's hand is a nod to modern tech culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.834Z",
+  "sourceFactVersion": 1
+}

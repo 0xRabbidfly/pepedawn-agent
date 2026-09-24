@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "PORTALPEPE",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 28,
+  "artist": "Iuri",
+  "supply": 69,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "PORTALPEPE"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog vibes with an extraterrestrial twist.",
+    "Incorporates UFO and alien culture, tapping into sci-fi memes.",
+    "Escher-like staircases evoke themes of infinity and mind-bending illusions."
+  ],
+  "visualSummary": "The card features an eerie, sci-fi inspired scene with a series of staircases winding into a green-lit, tunnel-like structure. The color palette is dominated by shades of green and blue, creating a mysterious and otherworldly atmosphere. A small UFO with a classic saucer shape hovers near the staircases, adding to the surreal, alien theme.",
+  "visualSummaryShort": "The card depicts a surreal, sci-fi scene with winding staircases leading into a green-lit tunnel. A small UFO hovers nearby, enhancing the mysterious atmosphere.",
+  "visualKeywords": [
+    "staircases",
+    "green light",
+    "blue palette",
+    "tunnel",
+    "ufo",
+    "surreal",
+    "alien",
+    "eerie"
+  ],
+  "textKeywords": [
+    "portalpepe"
+  ],
+  "keywords": [
+    "staircases",
+    "green light",
+    "blue palette",
+    "tunnel",
+    "ufo",
+    "surreal",
+    "alien",
+    "eerie",
+    "portalpepe"
+  ],
+  "embeddingInput": "PORTALPEPE (Fake Rares) - Series 10 Card 28\nArtist: Iuri\nSupply 69 Issued July 2022\nOn-card text: PORTALPEPE\nVisual summary: The card features an eerie, sci-fi inspired scene with a series of staircases winding into a green-lit, tunnel-like structure. The color palette is dominated by shades of green and blue, creating a mysterious and otherworldly atmosphere. A small UFO with a classic saucer shape hovers near the staircases, adding to the surreal, alien theme.\nMemetic references: Classic Pepe the Frog vibes with an extraterrestrial twist.; Incorporates UFO and alien culture, tapping into sci-fi memes.; Escher-like staircases evoke themes of infinity and mind-bending illusions.",
+  "embeddingBlocks": [
+    {
+      "id": "PORTALPEPE#text",
+      "label": "On-card text",
+      "text": "PORTALPEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PORTALPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog vibes with an extraterrestrial twist.\nIncorporates UFO and alien culture, tapping into sci-fi memes.\nEscher-like staircases evoke themes of infinity and mind-bending illusions.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PORTALPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features an eerie, sci-fi inspired scene with a series of staircases winding into a green-lit, tunnel-like structure. The color palette is dominated by shades of green and blue, creating a mysterious and otherworldly atmosphere. A small UFO with a classic saucer shape hovers near the staircases, adding to the surreal, alien theme.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PORTALPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPORTALPEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features an eerie, sci-fi inspired scene with a series of staircases winding into a green-lit, tunnel-like structure. The color palette is dominated by shades of green and blue, creating a mysterious and otherworldly atmosphere. A small UFO with a classic saucer shape hovers near the staircases, adding to the surreal, alien theme.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog vibes with an extraterrestrial twist.\n- Incorporates UFO and alien culture, tapping into sci-fi memes.\n- Escher-like staircases evoke themes of infinity and mind-bending illusions.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.051Z",
+  "sourceFactVersion": 1
+}

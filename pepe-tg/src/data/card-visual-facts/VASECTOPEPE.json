@@ -1,0 +1,122 @@
+{
+  "version": 1,
+  "asset": "VASECTOPEPE",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 29,
+  "artist": "Mr. and Mrs. Micon",
+  "supply": 69,
+  "issuance": "September 2021",
+  "textOnCard": [
+    "VASECTOPEPE",
+    "He's shootin' blanks! feels good man",
+    "Vas deferens = ✂️",
+    "No swimmers, hooray!",
+    "Praise to kek for alpha spray",
+    "No worries, more play",
+    "Rarity = FAKE ASF"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog meme.",
+    "References to internet culture with \"feels good man.\"",
+    "Playful take on the concept of vasectomy.",
+    "Use of \"Praise to kek,\" tying into the Kekistani meme culture."
+  ],
+  "visualSummary": "The card features Pepe the Frog lying in bed with a blonde, feminine frog character, both looking content. A heart and playful elements like a pair of scissors and snakes are used to symbolize a vasectomy. The color palette includes greens, reds, and neutrals, with a cartoonish and meme-inspired artistic style.",
+  "visualSummaryShort": "The card depicts Pepe the Frog and a feminine frog character in bed, both appearing happy. Playful elements like scissors and snakes, along with a vibrant color palette, enhance the cartoonish style.",
+  "visualKeywords": [
+    "pepe",
+    "frogs",
+    "bed",
+    "hearts",
+    "scissors",
+    "snakes",
+    "green",
+    "red",
+    "cartoonish",
+    "content"
+  ],
+  "textKeywords": [
+    "vasectopepe",
+    "shootin",
+    "blanks",
+    "feels",
+    "good",
+    "man",
+    "vas",
+    "deferens",
+    "swimmers",
+    "hooray",
+    "praise",
+    "kek",
+    "alpha",
+    "spray",
+    "worries",
+    "play",
+    "rarity",
+    "asf"
+  ],
+  "keywords": [
+    "pepe",
+    "frogs",
+    "bed",
+    "hearts",
+    "scissors",
+    "snakes",
+    "green",
+    "red",
+    "cartoonish",
+    "content",
+    "vasectopepe",
+    "shootin",
+    "blanks",
+    "feels",
+    "good",
+    "man",
+    "vas",
+    "deferens",
+    "swimmers",
+    "hooray",
+    "praise",
+    "kek",
+    "alpha",
+    "spray",
+    "worries",
+    "play",
+    "rarity",
+    "asf"
+  ],
+  "embeddingInput": "VASECTOPEPE (Fake Rares) - Series 1 Card 29\nArtist: Mr. and Mrs. Micon\nSupply 69 Issued September 2021\nOn-card text: VASECTOPEPE | He's shootin' blanks! feels good man | Vas deferens = ✂️ | No swimmers, hooray! | Praise to kek for alpha spray | No worries, more play | Rarity = FAKE ASF\nVisual summary: The card features Pepe the Frog lying in bed with a blonde, feminine frog character, both looking content. A heart and playful elements like a pair of scissors and snakes are used to symbolize a vasectomy. The color palette includes greens, reds, and neutrals, with a cartoonish and meme-inspired artistic style.\nMemetic references: Classic Pepe the Frog meme.; References to internet culture with \"feels good man.\"; Playful take on the concept of vasectomy.; Use of \"Praise to kek,\" tying into the Kekistani meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "VASECTOPEPE#text",
+      "label": "On-card text",
+      "text": "VASECTOPEPE | He's shootin' blanks! feels good man | Vas deferens = ✂️ | No swimmers, hooray! | Praise to kek for alpha spray | No worries, more play | Rarity = FAKE ASF",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "VASECTOPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog meme.\nReferences to internet culture with \"feels good man.\"\nPlayful take on the concept of vasectomy.\nUse of \"Praise to kek,\" tying into the Kekistani meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "VASECTOPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog lying in bed with a blonde, feminine frog character, both looking content. A heart and playful elements like a pair of scissors and snakes are used to symbolize a vasectomy. The color palette includes greens, reds, and neutrals, with a cartoonish and meme-inspired artistic style.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "VASECTOPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nVASECTOPEPE  \nHe's shootin' blanks! feels good man  \nVas deferens = ✂️  \nNo swimmers, hooray!  \nPraise to kek for alpha spray  \nNo worries, more play  \nRarity = FAKE ASF\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog lying in bed with a blonde, feminine frog character, both looking content. A heart and playful elements like a pair of scissors and snakes are used to symbolize a vasectomy. The color palette includes greens, reds, and neutrals, with a cartoonish and meme-inspired artistic style.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog meme.\n- References to internet culture with \"feels good man.\"\n- Playful take on the concept of vasectomy.\n- Use of \"Praise to kek,\" tying into the Kekistani meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.173Z",
+  "sourceFactVersion": 1
+}

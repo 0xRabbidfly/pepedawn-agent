@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "PEPELINO",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 26,
+  "artist": "Hitchdank",
+  "supply": 34,
+  "issuance": "August 2022",
+  "textOnCard": [
+    "PEPELINO",
+    "AUGUST, 2022"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure.",
+    "References to historical or ancient art styles, like cave paintings.",
+    "A nod to NFT culture with the use of Pepe as a meme icon."
+  ],
+  "visualSummary": "The card features a simplistic, monochromatic drawing of a figure resembling Pepe the Frog riding a horse, reminiscent of ancient cave art or petroglyphs. The bold, white lines against a black background create a stark, minimalist aesthetic. The horse and rider are drawn in a primitive, almost childlike style, adding a humorous touch.",
+  "visualSummaryShort": "The card showcases a minimalist drawing of a figure resembling Pepe the Frog riding a horse, set against a black background. The simplistic, monochromatic style evokes a humorous, primitive aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "horse",
+    "monochrome",
+    "black background",
+    "minimalist",
+    "primitive",
+    "childlike",
+    "humor"
+  ],
+  "textKeywords": [
+    "pepelino",
+    "august",
+    "2022"
+  ],
+  "keywords": [
+    "pepe",
+    "horse",
+    "monochrome",
+    "black background",
+    "minimalist",
+    "primitive",
+    "childlike",
+    "humor",
+    "pepelino",
+    "august",
+    "2022"
+  ],
+  "embeddingInput": "PEPELINO (Fake Rares) - Series 11 Card 26\nArtist: Hitchdank\nSupply 34 Issued August 2022\nOn-card text: PEPELINO | AUGUST, 2022\nVisual summary: The card features a simplistic, monochromatic drawing of a figure resembling Pepe the Frog riding a horse, reminiscent of ancient cave art or petroglyphs. The bold, white lines against a black background create a stark, minimalist aesthetic. The horse and rider are drawn in a primitive, almost childlike style, adding a humorous touch.\nMemetic references: Pepe the Frog as a central figure.; References to historical or ancient art styles, like cave paintings.; A nod to NFT culture with the use of Pepe as a meme icon.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPELINO#text",
+      "label": "On-card text",
+      "text": "PEPELINO | AUGUST, 2022",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPELINO#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure.\nReferences to historical or ancient art styles, like cave paintings.\nA nod to NFT culture with the use of Pepe as a meme icon.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPELINO#visual",
+      "label": "Visual summary",
+      "text": "The card features a simplistic, monochromatic drawing of a figure resembling Pepe the Frog riding a horse, reminiscent of ancient cave art or petroglyphs. The bold, white lines against a black background create a stark, minimalist aesthetic. The horse and rider are drawn in a primitive, almost childlike style, adding a humorous touch.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPELINO#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPELINO  \nAUGUST, 2022\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a simplistic, monochromatic drawing of a figure resembling Pepe the Frog riding a horse, reminiscent of ancient cave art or petroglyphs. The bold, white lines against a black background create a stark, minimalist aesthetic. The horse and rider are drawn in a primitive, almost childlike style, adding a humorous touch.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure.\n- References to historical or ancient art styles, like cave paintings.\n- A nod to NFT culture with the use of Pepe as a meme icon.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.918Z",
+  "sourceFactVersion": 1
+}

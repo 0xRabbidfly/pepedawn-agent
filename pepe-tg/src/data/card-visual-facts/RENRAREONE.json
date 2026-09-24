@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "RENRAREONE",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 31,
+  "artist": "Michael Naples",
+  "supply": 21,
+  "issuance": "January 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure.",
+    "Renaissance art influence, reminiscent of historical portraits.",
+    "Playful twist on historical regality with a meme icon."
+  ],
+  "visualSummary": "This card features a regal depiction of Pepe the Frog, dressed in elaborate Renaissance attire. The color palette is rich and warm, with deep reds, golds, and greens, capturing a classical oil painting style. The attention to detail in the clothing and accessories gives it an opulent and historic vibe.",
+  "visualSummaryShort": "The card showcases Pepe the Frog in ornate Renaissance clothing, embodying a regal presence. The warm color palette enhances the classical oil painting aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "renaissance",
+    "regal",
+    "red",
+    "gold",
+    "green",
+    "opulent",
+    "historic",
+    "detailed",
+    "classical"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "renaissance",
+    "regal",
+    "red",
+    "gold",
+    "green",
+    "opulent",
+    "historic",
+    "detailed",
+    "classical"
+  ],
+  "embeddingInput": "RENRAREONE (Fake Rares) - Series 6 Card 31\nArtist: Michael Naples\nSupply 21 Issued January 2022\nOn-card text: none detected\nVisual summary: This card features a regal depiction of Pepe the Frog, dressed in elaborate Renaissance attire. The color palette is rich and warm, with deep reds, golds, and greens, capturing a classical oil painting style. The attention to detail in the clothing and accessories gives it an opulent and historic vibe.\nMemetic references: Pepe the Frog as a central figure.; Renaissance art influence, reminiscent of historical portraits.; Playful twist on historical regality with a meme icon.",
+  "embeddingBlocks": [
+    {
+      "id": "RENRAREONE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure.\nRenaissance art influence, reminiscent of historical portraits.\nPlayful twist on historical regality with a meme icon.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RENRAREONE#visual",
+      "label": "Visual summary",
+      "text": "This card features a regal depiction of Pepe the Frog, dressed in elaborate Renaissance attire. The color palette is rich and warm, with deep reds, golds, and greens, capturing a classical oil painting style. The attention to detail in the clothing and accessories gives it an opulent and historic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RENRAREONE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a regal depiction of Pepe the Frog, dressed in elaborate Renaissance attire. The color palette is rich and warm, with deep reds, golds, and greens, capturing a classical oil painting style. The attention to detail in the clothing and accessories gives it an opulent and historic vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure.\n- Renaissance art influence, reminiscent of historical portraits.\n- Playful twist on historical regality with a meme icon.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.079Z",
+  "sourceFactVersion": 1
+}

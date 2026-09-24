@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "asset": "PEPEXMEME",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 39,
+  "artist": "Nimzobit",
+  "supply": 21,
+  "issuance": "January 2024",
+  "textOnCard": [
+    "X-MEME",
+    "APPREHENDED, SLAIN",
+    "ATTENTION! YOU ARE NOW LEAVING A CONTROLLED 4CHAN"
+  ],
+  "memeticReferences": [
+    "Pepe as a central figure, representing internet meme culture.",
+    "References to \"X-Men\" with the title \"X-MEME.\"",
+    "4chan culture nod with the \"controlled 4chan\" warning.",
+    "Dystopian and rebellious undertones echoing classic comic book narratives."
+  ],
+  "visualSummary": "The card features a dark, comic book-style illustration with a gritty, rebellious vibe. Two characters, one resembling Pepe, are in the foreground, evoking a sense of urgency and tension. The background is filled with posters showing various faces with labels like \"SLAIN\" and \"APPREHENDED,\" all set against a murky, shadowy backdrop.",
+  "visualSummaryShort": "The card showcases a dark, comic book-style illustration featuring two characters, one resembling Pepe, amidst a gritty backdrop. The environment is filled with posters and a shadowy atmosphere, creating a sense of urgency and tension.",
+  "visualKeywords": [
+    "dark",
+    "comic book",
+    "pepe",
+    "characters",
+    "posters",
+    "shadowy",
+    "gritty",
+    "tension",
+    "urgency"
+  ],
+  "textKeywords": [
+    "meme",
+    "apprehended",
+    "slain",
+    "attention",
+    "you",
+    "are",
+    "now",
+    "leaving",
+    "controlled",
+    "4chan"
+  ],
+  "keywords": [
+    "dark",
+    "comic book",
+    "pepe",
+    "characters",
+    "posters",
+    "shadowy",
+    "gritty",
+    "tension",
+    "urgency",
+    "meme",
+    "apprehended",
+    "slain",
+    "attention",
+    "you",
+    "are",
+    "now",
+    "leaving",
+    "controlled",
+    "4chan"
+  ],
+  "embeddingInput": "PEPEXMEME (Fake Rares) - Series 17 Card 39\nArtist: Nimzobit\nSupply 21 Issued January 2024\nOn-card text: X-MEME | APPREHENDED, SLAIN | ATTENTION! YOU ARE NOW LEAVING A CONTROLLED 4CHAN\nVisual summary: The card features a dark, comic book-style illustration with a gritty, rebellious vibe. Two characters, one resembling Pepe, are in the foreground, evoking a sense of urgency and tension. The background is filled with posters showing various faces with labels like \"SLAIN\" and \"APPREHENDED,\" all set against a murky, shadowy backdrop.\nMemetic references: Pepe as a central figure, representing internet meme culture.; References to \"X-Men\" with the title \"X-MEME.\"; 4chan culture nod with the \"controlled 4chan\" warning.; Dystopian and rebellious undertones echoing classic comic book narratives.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEXMEME#text",
+      "label": "On-card text",
+      "text": "X-MEME | APPREHENDED, SLAIN | ATTENTION! YOU ARE NOW LEAVING A CONTROLLED 4CHAN",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEXMEME#memetic",
+      "label": "Memetic references",
+      "text": "Pepe as a central figure, representing internet meme culture.\nReferences to \"X-Men\" with the title \"X-MEME.\"\n4chan culture nod with the \"controlled 4chan\" warning.\nDystopian and rebellious undertones echoing classic comic book narratives.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEXMEME#visual",
+      "label": "Visual summary",
+      "text": "The card features a dark, comic book-style illustration with a gritty, rebellious vibe. Two characters, one resembling Pepe, are in the foreground, evoking a sense of urgency and tension. The background is filled with posters showing various faces with labels like \"SLAIN\" and \"APPREHENDED,\" all set against a murky, shadowy backdrop.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEXMEME#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- X-MEME\n- APPREHENDED, SLAIN\n- ATTENTION! YOU ARE NOW LEAVING A CONTROLLED 4CHAN\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a dark, comic book-style illustration with a gritty, rebellious vibe. Two characters, one resembling Pepe, are in the foreground, evoking a sense of urgency and tension. The background is filled with posters showing various faces with labels like \"SLAIN\" and \"APPREHENDED,\" all set against a murky, shadowy backdrop.\n\n🧬 **MEMETIC DNA:**\n- Pepe as a central figure, representing internet meme culture.\n- References to \"X-Men\" with the title \"X-MEME.\"\n- 4chan culture nod with the \"controlled 4chan\" warning.\n- Dystopian and rebellious undertones echoing classic comic book narratives.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.014Z",
+  "sourceFactVersion": 1
+}

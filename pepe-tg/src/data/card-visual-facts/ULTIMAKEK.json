@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "ULTIMAKEK",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 4,
+  "artist": "Pepenardo",
+  "supply": 55,
+  "issuance": "January 2024",
+  "textOnCard": [
+    "ULTIMAKEK"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference with the green skin and face.",
+    "Crypto culture halo, possibly symbolizing blockchain or network.",
+    "Classical art remix vibes, blending traditional and modern themes."
+  ],
+  "visualSummary": "The card features a surreal, mystical scene with a green-skinned figure draped in blue robes, seated on a rocky outcrop. The background is a rugged landscape with dramatic cliffs and a serene stream, evoking a classical painting style. A radiant halo with a lattice pattern adds a divine or celestial vibe, contrasting with the earthy tones of the setting.",
+  "visualSummaryShort": "The card depicts a green-skinned figure in blue robes seated on a rocky outcrop amidst a rugged landscape. A radiant halo enhances the mystical atmosphere of the scene.",
+  "visualKeywords": [
+    "green-skinned",
+    "blue robes",
+    "rocky outcrop",
+    "rugged landscape",
+    "dramatic cliffs",
+    "serene stream",
+    "celestial",
+    "earthy tones",
+    "halo",
+    "mystical"
+  ],
+  "textKeywords": [
+    "ultimakek"
+  ],
+  "keywords": [
+    "green-skinned",
+    "blue robes",
+    "rocky outcrop",
+    "rugged landscape",
+    "dramatic cliffs",
+    "serene stream",
+    "celestial",
+    "earthy tones",
+    "halo",
+    "mystical",
+    "ultimakek"
+  ],
+  "embeddingInput": "ULTIMAKEK (Fake Rares) - Series 17 Card 4\nArtist: Pepenardo\nSupply 55 Issued January 2024\nOn-card text: ULTIMAKEK\nVisual summary: The card features a surreal, mystical scene with a green-skinned figure draped in blue robes, seated on a rocky outcrop. The background is a rugged landscape with dramatic cliffs and a serene stream, evoking a classical painting style. A radiant halo with a lattice pattern adds a divine or celestial vibe, contrasting with the earthy tones of the setting.\nMemetic references: Pepe the Frog reference with the green skin and face.; Crypto culture halo, possibly symbolizing blockchain or network.; Classical art remix vibes, blending traditional and modern themes.",
+  "embeddingBlocks": [
+    {
+      "id": "ULTIMAKEK#text",
+      "label": "On-card text",
+      "text": "ULTIMAKEK",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "ULTIMAKEK#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference with the green skin and face.\nCrypto culture halo, possibly symbolizing blockchain or network.\nClassical art remix vibes, blending traditional and modern themes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "ULTIMAKEK#visual",
+      "label": "Visual summary",
+      "text": "The card features a surreal, mystical scene with a green-skinned figure draped in blue robes, seated on a rocky outcrop. The background is a rugged landscape with dramatic cliffs and a serene stream, evoking a classical painting style. A radiant halo with a lattice pattern adds a divine or celestial vibe, contrasting with the earthy tones of the setting.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "ULTIMAKEK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nULTIMAKEK\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a surreal, mystical scene with a green-skinned figure draped in blue robes, seated on a rocky outcrop. The background is a rugged landscape with dramatic cliffs and a serene stream, evoking a classical painting style. A radiant halo with a lattice pattern adds a divine or celestial vibe, contrasting with the earthy tones of the setting.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference with the green skin and face.\n- Crypto culture halo, possibly symbolizing blockchain or network.\n- Classical art remix vibes, blending traditional and modern themes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.171Z",
+  "sourceFactVersion": 1
+}

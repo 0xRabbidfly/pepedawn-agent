@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "asset": "FAKEPOTENT",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 46,
+  "artist": "LOVEBEING",
+  "supply": 99,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "POTENTIAL PEPE"
+  ],
+  "memeticReferences": [
+    "Plays on the concept of \"Potential Pepe,\" hinting at endless possibilities within meme culture.",
+    "The rainbow bar could symbolize the diverse range of internet culture and expression.",
+    "References the iconic Pepe the Frog, a staple in meme lore and NFT culture."
+  ],
+  "visualSummary": "This card features a classic trading card layout with a transparent grid area, suggesting a placeholder for a character or design. The color palette is minimalistic, dominated by a grayscale background with a vibrant rainbow spectrum bar in the middle. The overall style is clean and structured, with a modern twist on a nostalgic format.",
+  "visualSummaryShort": "The card showcases a minimalistic grayscale background with a vibrant rainbow spectrum bar. Its clean and structured design gives a modern twist to a classic trading card layout.",
+  "visualKeywords": [
+    "grayscale",
+    "rainbow",
+    "minimalistic",
+    "structured",
+    "modern",
+    "classic",
+    "placeholder"
+  ],
+  "textKeywords": [
+    "potential"
+  ],
+  "keywords": [
+    "grayscale",
+    "rainbow",
+    "minimalistic",
+    "structured",
+    "modern",
+    "classic",
+    "placeholder",
+    "potential"
+  ],
+  "embeddingInput": "FAKEPOTENT (Fake Rares) - Series 5 Card 46\nArtist: LOVEBEING\nSupply 99 Issued February 2022\nOn-card text: POTENTIAL PEPE\nVisual summary: This card features a classic trading card layout with a transparent grid area, suggesting a placeholder for a character or design. The color palette is minimalistic, dominated by a grayscale background with a vibrant rainbow spectrum bar in the middle. The overall style is clean and structured, with a modern twist on a nostalgic format.\nMemetic references: Plays on the concept of \"Potential Pepe,\" hinting at endless possibilities within meme culture.; The rainbow bar could symbolize the diverse range of internet culture and expression.; References the iconic Pepe the Frog, a staple in meme lore and NFT culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEPOTENT#text",
+      "label": "On-card text",
+      "text": "POTENTIAL PEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEPOTENT#memetic",
+      "label": "Memetic references",
+      "text": "Plays on the concept of \"Potential Pepe,\" hinting at endless possibilities within meme culture.\nThe rainbow bar could symbolize the diverse range of internet culture and expression.\nReferences the iconic Pepe the Frog, a staple in meme lore and NFT culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEPOTENT#visual",
+      "label": "Visual summary",
+      "text": "This card features a classic trading card layout with a transparent grid area, suggesting a placeholder for a character or design. The color palette is minimalistic, dominated by a grayscale background with a vibrant rainbow spectrum bar in the middle. The overall style is clean and structured, with a modern twist on a nostalgic format.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEPOTENT#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPOTENTIAL PEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a classic trading card layout with a transparent grid area, suggesting a placeholder for a character or design. The color palette is minimalistic, dominated by a grayscale background with a vibrant rainbow spectrum bar in the middle. The overall style is clean and structured, with a modern twist on a nostalgic format.\n\n🧬 **MEMETIC DNA:**\n- Plays on the concept of \"Potential Pepe,\" hinting at endless possibilities within meme culture.\n- The rainbow bar could symbolize the diverse range of internet culture and expression.\n- References the iconic Pepe the Frog, a staple in meme lore and NFT culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.558Z",
+  "sourceFactVersion": 1
+}

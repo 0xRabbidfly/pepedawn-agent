@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "asset": "LIBERTADFIAT",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 37,
+  "artist": "Lord Jamie V. Shill",
+  "supply": 100,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "LIBERTADFIAT",
+    "Peace in Our Time"
+  ],
+  "memeticReferences": [
+    "Pepe as a hero",
+    "savior figure.",
+    "National flags representing global unity or diversity.",
+    "References to historical art and cultural icons.",
+    "Fireworks symbolizing celebration or victory."
+  ],
+  "visualSummary": "The card features a dynamic composition with a green Pepe figure in a superhero stance, draped in a colorful sash, set against a backdrop of historical and cultural imagery. The color palette is vibrant with reds, greens, and golds, complemented by digital fireworks adding a celebratory vibe. The artistic style blends digital collage with a pop-art influence, creating a rich tapestry of visual storytelling.",
+  "visualSummaryShort": "The card showcases a green Pepe figure in a superhero pose, adorned with a colorful sash amidst a vibrant backdrop. The composition features a mix of historical imagery and digital fireworks, creating a festive atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "superhero",
+    "colorful sash",
+    "vibrant colors",
+    "digital fireworks",
+    "historical imagery",
+    "pop-art",
+    "celebratory",
+    "dynamic composition"
+  ],
+  "textKeywords": [
+    "libertadfiat",
+    "peace",
+    "our",
+    "time"
+  ],
+  "keywords": [
+    "pepe",
+    "superhero",
+    "colorful sash",
+    "vibrant colors",
+    "digital fireworks",
+    "historical imagery",
+    "pop-art",
+    "celebratory",
+    "dynamic composition",
+    "libertadfiat",
+    "peace",
+    "our",
+    "time"
+  ],
+  "embeddingInput": "LIBERTADFIAT (Fake Rares) - Series 6 Card 37\nArtist: Lord Jamie V. Shill\nSupply 100 Issued November 2021\nOn-card text: LIBERTADFIAT | Peace in Our Time\nVisual summary: The card features a dynamic composition with a green Pepe figure in a superhero stance, draped in a colorful sash, set against a backdrop of historical and cultural imagery. The color palette is vibrant with reds, greens, and golds, complemented by digital fireworks adding a celebratory vibe. The artistic style blends digital collage with a pop-art influence, creating a rich tapestry of visual storytelling.\nMemetic references: Pepe as a hero; savior figure.; National flags representing global unity or diversity.; References to historical art and cultural icons.; Fireworks symbolizing celebration or victory.",
+  "embeddingBlocks": [
+    {
+      "id": "LIBERTADFIAT#text",
+      "label": "On-card text",
+      "text": "LIBERTADFIAT | Peace in Our Time",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "LIBERTADFIAT#memetic",
+      "label": "Memetic references",
+      "text": "Pepe as a hero\nsavior figure.\nNational flags representing global unity or diversity.\nReferences to historical art and cultural icons.\nFireworks symbolizing celebration or victory.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LIBERTADFIAT#visual",
+      "label": "Visual summary",
+      "text": "The card features a dynamic composition with a green Pepe figure in a superhero stance, draped in a colorful sash, set against a backdrop of historical and cultural imagery. The color palette is vibrant with reds, greens, and golds, complemented by digital fireworks adding a celebratory vibe. The artistic style blends digital collage with a pop-art influence, creating a rich tapestry of visual storytelling.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LIBERTADFIAT#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nLIBERTADFIAT  \nPeace in Our Time  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a dynamic composition with a green Pepe figure in a superhero stance, draped in a colorful sash, set against a backdrop of historical and cultural imagery. The color palette is vibrant with reds, greens, and golds, complemented by digital fireworks adding a celebratory vibe. The artistic style blends digital collage with a pop-art influence, creating a rich tapestry of visual storytelling.\n\n🧬 **MEMETIC DNA:**\n- Pepe as a hero/savior figure.\n- National flags representing global unity or diversity.\n- References to historical art and cultural icons.\n- Fireworks symbolizing celebration or victory.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.740Z",
+  "sourceFactVersion": 1
+}

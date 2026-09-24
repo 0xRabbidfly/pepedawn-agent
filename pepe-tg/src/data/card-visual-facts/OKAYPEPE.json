@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "OKAYPEPE",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 18,
+  "artist": "Olivia Pedigo",
+  "supply": 69,
+  "issuance": "September 2025",
+  "textOnCard": [
+    "MAYBE EVERYTHING WILL BE"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog face, a staple meme character.",
+    "Butterfly on the face is a nod to the \"Is this a pigeon?\" meme format.",
+    "Surreal and glossy art style reminiscent of digital art trends."
+  ],
+  "visualSummary": "The card features a close-up of Pepe the Frog with exaggerated, glossy eyes and a shiny pink tongue in a surreal style. A vibrant butterfly perches on Pepe’s head, adding a whimsical touch. The background is a soft blur of colors, primarily pastel blues and pinks, creating a dreamy atmosphere.",
+  "visualSummaryShort": "The card showcases a close-up of Pepe the Frog with glossy eyes and a shiny pink tongue, surrounded by a whimsical butterfly. The background features a dreamy blur of pastel blues and pinks.",
+  "visualKeywords": [
+    "pepe the frog",
+    "butterfly",
+    "glossy eyes",
+    "pink tongue",
+    "pastel colors",
+    "dreamy atmosphere"
+  ],
+  "textKeywords": [
+    "maybe",
+    "everything",
+    "will"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "butterfly",
+    "glossy eyes",
+    "pink tongue",
+    "pastel colors",
+    "dreamy atmosphere",
+    "maybe",
+    "everything",
+    "will"
+  ],
+  "embeddingInput": "OKAYPEPE (Fake Rares) - Series 18 Card 18\nArtist: Olivia Pedigo\nSupply 69 Issued September 2025\nOn-card text: MAYBE EVERYTHING WILL BE\nVisual summary: The card features a close-up of Pepe the Frog with exaggerated, glossy eyes and a shiny pink tongue in a surreal style. A vibrant butterfly perches on Pepe’s head, adding a whimsical touch. The background is a soft blur of colors, primarily pastel blues and pinks, creating a dreamy atmosphere.\nMemetic references: Classic Pepe the Frog face, a staple meme character.; Butterfly on the face is a nod to the \"Is this a pigeon?\" meme format.; Surreal and glossy art style reminiscent of digital art trends.",
+  "embeddingBlocks": [
+    {
+      "id": "OKAYPEPE#text",
+      "label": "On-card text",
+      "text": "MAYBE EVERYTHING WILL BE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "OKAYPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog face, a staple meme character.\nButterfly on the face is a nod to the \"Is this a pigeon?\" meme format.\nSurreal and glossy art style reminiscent of digital art trends.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "OKAYPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a close-up of Pepe the Frog with exaggerated, glossy eyes and a shiny pink tongue in a surreal style. A vibrant butterfly perches on Pepe’s head, adding a whimsical touch. The background is a soft blur of colors, primarily pastel blues and pinks, creating a dreamy atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "OKAYPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nMAYBE EVERYTHING WILL BE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a close-up of Pepe the Frog with exaggerated, glossy eyes and a shiny pink tongue in a surreal style. A vibrant butterfly perches on Pepe’s head, adding a whimsical touch. The background is a soft blur of colors, primarily pastel blues and pinks, creating a dreamy atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog face, a staple meme character.\n- Butterfly on the face is a nod to the \"Is this a pigeon?\" meme format.\n- Surreal and glossy art style reminiscent of digital art trends.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.810Z",
+  "sourceFactVersion": 1
+}

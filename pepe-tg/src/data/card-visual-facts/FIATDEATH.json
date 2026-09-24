@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "FIATDEATH",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 15,
+  "artist": "ZETRA x PurpleDrank7855",
+  "supply": 54,
+  "issuance": "September 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as the Grim Reaper, symbolizing the death of fiat.",
+    "The burning fiat money signifies crypto's rebellion against traditional finance.",
+    "A nod to the \"fiat is doomed\" narrative in crypto culture."
+  ],
+  "visualSummary": "The card features a dark, ominous figure reminiscent of the Grim Reaper, riding a menacing horse. The background is a chaotic blend of fiery reds and yellows, with flames engulfing a pile of burning fiat currency. The palette is intense, with deep blacks contrasting sharply against the vibrant fire and colorful backdrop.",
+  "visualSummaryShort": "The card depicts a dark figure resembling the Grim Reaper on a fierce horse, set against a backdrop of fiery chaos. The intense color palette features deep blacks contrasted with vibrant reds and yellows, highlighting burning fiat currency.",
+  "visualKeywords": [
+    "grim reaper",
+    "horse",
+    "fire",
+    "fiat currency",
+    "dark figure",
+    "chaotic background",
+    "red",
+    "yellow",
+    "black",
+    "intense colors"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "grim reaper",
+    "horse",
+    "fire",
+    "fiat currency",
+    "dark figure",
+    "chaotic background",
+    "red",
+    "yellow",
+    "black",
+    "intense colors"
+  ],
+  "embeddingInput": "FIATDEATH (Fake Rares) - Series 10 Card 15\nArtist: ZETRA x PurpleDrank7855\nSupply 54 Issued September 2022\nOn-card text: none detected\nVisual summary: The card features a dark, ominous figure reminiscent of the Grim Reaper, riding a menacing horse. The background is a chaotic blend of fiery reds and yellows, with flames engulfing a pile of burning fiat currency. The palette is intense, with deep blacks contrasting sharply against the vibrant fire and colorful backdrop.\nMemetic references: Pepe the Frog as the Grim Reaper, symbolizing the death of fiat.; The burning fiat money signifies crypto's rebellion against traditional finance.; A nod to the \"fiat is doomed\" narrative in crypto culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FIATDEATH#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as the Grim Reaper, symbolizing the death of fiat.\nThe burning fiat money signifies crypto's rebellion against traditional finance.\nA nod to the \"fiat is doomed\" narrative in crypto culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FIATDEATH#visual",
+      "label": "Visual summary",
+      "text": "The card features a dark, ominous figure reminiscent of the Grim Reaper, riding a menacing horse. The background is a chaotic blend of fiery reds and yellows, with flames engulfing a pile of burning fiat currency. The palette is intense, with deep blacks contrasting sharply against the vibrant fire and colorful backdrop.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FIATDEATH#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a dark, ominous figure reminiscent of the Grim Reaper, riding a menacing horse. The background is a chaotic blend of fiery reds and yellows, with flames engulfing a pile of burning fiat currency. The palette is intense, with deep blacks contrasting sharply against the vibrant fire and colorful backdrop.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as the Grim Reaper, symbolizing the death of fiat.\n- The burning fiat money signifies crypto's rebellion against traditional finance.\n- A nod to the \"fiat is doomed\" narrative in crypto culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.617Z",
+  "sourceFactVersion": 1
+}

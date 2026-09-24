@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "FAKEVITALIK",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 9,
+  "artist": "Harold Harambe",
+  "supply": 100,
+  "issuance": "February 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog characters dressed in Renaissance clothing.",
+    "Reference to \"The Anatomy Lesson of Dr. Nicolaes Tulp\" by Rembrandt.",
+    "Crypto culture nods with a surgical theme, possibly hinting at \"cutting-edge\" technology."
+  ],
+  "visualSummary": "The card is a playful twist on a classic anatomical painting, featuring Pepe the Frog characters in historical attire observing a dissection. The color palette is rich and dramatic, with deep shadows and vibrant highlights against a purple-pink sky. The scene is detailed and surreal, blending art history with meme culture.",
+  "visualSummaryShort": "The card depicts Pepe the Frog characters in historical attire observing a dissection, set against a dramatic purple-pink sky. The rich color palette and surreal details create a playful blend of art history and meme culture.",
+  "visualKeywords": [
+    "pepe the frog",
+    "historical attire",
+    "dissection",
+    "purple-pink sky",
+    "dramatic lighting",
+    "surreal",
+    "artistic",
+    "meme culture"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "historical attire",
+    "dissection",
+    "purple-pink sky",
+    "dramatic lighting",
+    "surreal",
+    "artistic",
+    "meme culture"
+  ],
+  "embeddingInput": "FAKEVITALIK (Fake Rares) - Series 6 Card 9\nArtist: Harold Harambe\nSupply 100 Issued February 2022\nOn-card text: none detected\nVisual summary: The card is a playful twist on a classic anatomical painting, featuring Pepe the Frog characters in historical attire observing a dissection. The color palette is rich and dramatic, with deep shadows and vibrant highlights against a purple-pink sky. The scene is detailed and surreal, blending art history with meme culture.\nMemetic references: Pepe the Frog characters dressed in Renaissance clothing.; Reference to \"The Anatomy Lesson of Dr. Nicolaes Tulp\" by Rembrandt.; Crypto culture nods with a surgical theme, possibly hinting at \"cutting-edge\" technology.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEVITALIK#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog characters dressed in Renaissance clothing.\nReference to \"The Anatomy Lesson of Dr. Nicolaes Tulp\" by Rembrandt.\nCrypto culture nods with a surgical theme, possibly hinting at \"cutting-edge\" technology.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEVITALIK#visual",
+      "label": "Visual summary",
+      "text": "The card is a playful twist on a classic anatomical painting, featuring Pepe the Frog characters in historical attire observing a dissection. The color palette is rich and dramatic, with deep shadows and vibrant highlights against a purple-pink sky. The scene is detailed and surreal, blending art history with meme culture.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEVITALIK#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card is a playful twist on a classic anatomical painting, featuring Pepe the Frog characters in historical attire observing a dissection. The color palette is rich and dramatic, with deep shadows and vibrant highlights against a purple-pink sky. The scene is detailed and surreal, blending art history with meme culture.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog characters dressed in Renaissance clothing.\n- Reference to \"The Anatomy Lesson of Dr. Nicolaes Tulp\" by Rembrandt.\n- Crypto culture nods with a surgical theme, possibly hinting at \"cutting-edge\" technology.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.594Z",
+  "sourceFactVersion": 1
+}

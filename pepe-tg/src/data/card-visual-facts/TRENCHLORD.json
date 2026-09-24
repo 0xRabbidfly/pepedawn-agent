@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "asset": "TRENCHLORD",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 49,
+  "artist": "VVD",
+  "supply": 21,
+  "issuance": "February 2025",
+  "textOnCard": [
+    "TRENCHLORDKEK",
+    "tweet the ticker lil n***a its time to max extract",
+    "🔵 = LIBRA 😢 = NOT IN THE CASINO"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure.",
+    "References to trading and crypto culture with \"max extract.\"",
+    "Use of flags could suggest global or geopolitical themes.",
+    "\"Libra\" and \"casino\" references hint at risk-taking and astrological signs."
+  ],
+  "visualSummary": "The card features Pepe the Frog wearing a dark jacket with white accents, seated in a formal manner. Pepe has a confident expression, with a backdrop that seems to give off an official or ceremonial vibe. The color palette is primarily dark with contrasting whites and greens, and flags of Argentina, China, North Korea, and the USA are displayed at the bottom.",
+  "visualSummaryShort": "The card showcases Pepe the Frog in a dark jacket, exuding confidence in a formal setting. The background features flags of Argentina, China, North Korea, and the USA, enhancing the ceremonial atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "dark jacket",
+    "confident expression",
+    "flags",
+    "ceremonial",
+    "dark colors",
+    "white accents",
+    "green",
+    "official"
+  ],
+  "textKeywords": [
+    "trenchlordkek",
+    "tweet",
+    "ticker",
+    "lil",
+    "its",
+    "time",
+    "max",
+    "extract",
+    "libra",
+    "not",
+    "casino"
+  ],
+  "keywords": [
+    "pepe",
+    "dark jacket",
+    "confident expression",
+    "flags",
+    "ceremonial",
+    "dark colors",
+    "white accents",
+    "green",
+    "official",
+    "trenchlordkek",
+    "tweet",
+    "ticker",
+    "lil",
+    "its",
+    "time",
+    "max",
+    "extract",
+    "libra",
+    "not",
+    "casino"
+  ],
+  "embeddingInput": "TRENCHLORD (Fake Rares) - Series 17 Card 49\nArtist: VVD\nSupply 21 Issued February 2025\nOn-card text: TRENCHLORDKEK | tweet the ticker lil n***a its time to max extract | 🔵 = LIBRA 😢 = NOT IN THE CASINO\nVisual summary: The card features Pepe the Frog wearing a dark jacket with white accents, seated in a formal manner. Pepe has a confident expression, with a backdrop that seems to give off an official or ceremonial vibe. The color palette is primarily dark with contrasting whites and greens, and flags of Argentina, China, North Korea, and the USA are displayed at the bottom.\nMemetic references: Pepe the Frog as a central figure.; References to trading and crypto culture with \"max extract.\"; Use of flags could suggest global or geopolitical themes.; \"Libra\" and \"casino\" references hint at risk-taking and astrological signs.",
+  "embeddingBlocks": [
+    {
+      "id": "TRENCHLORD#text",
+      "label": "On-card text",
+      "text": "TRENCHLORDKEK | tweet the ticker lil n***a its time to max extract | 🔵 = LIBRA 😢 = NOT IN THE CASINO",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "TRENCHLORD#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure.\nReferences to trading and crypto culture with \"max extract.\"\nUse of flags could suggest global or geopolitical themes.\n\"Libra\" and \"casino\" references hint at risk-taking and astrological signs.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "TRENCHLORD#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog wearing a dark jacket with white accents, seated in a formal manner. Pepe has a confident expression, with a backdrop that seems to give off an official or ceremonial vibe. The color palette is primarily dark with contrasting whites and greens, and flags of Argentina, China, North Korea, and the USA are displayed at the bottom.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "TRENCHLORD#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nTRENCHLORDKEK  \ntweet the ticker lil n***a its time to max extract  \n🔵 = LIBRA 😢 = NOT IN THE CASINO\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog wearing a dark jacket with white accents, seated in a formal manner. Pepe has a confident expression, with a backdrop that seems to give off an official or ceremonial vibe. The color palette is primarily dark with contrasting whites and greens, and flags of Argentina, China, North Korea, and the USA are displayed at the bottom.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure.\n- References to trading and crypto culture with \"max extract.\"\n- Use of flags could suggest global or geopolitical themes.\n- \"Libra\" and \"casino\" references hint at risk-taking and astrological signs.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.156Z",
+  "sourceFactVersion": 1
+}

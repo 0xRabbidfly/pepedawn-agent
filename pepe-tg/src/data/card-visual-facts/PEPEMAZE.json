@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "asset": "PEPEMAZE",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 19,
+  "artist": "burstMembrane",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "SATOSHIS: 0",
+    "BTC: 0.00000000"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog navigating, hinting at the struggle in crypto trading.",
+    "Bitcoin logo as a symbol of the ultimate crypto prize.",
+    "Retro video game style, evoking nostalgia for early digital culture.",
+    "References to the elusive hunt for satoshis and BTC wealth."
+  ],
+  "visualSummary": "The card features a simple, pixelated black maze with white lines forming the paths. At the bottom, a small Pepe frog is seen navigating the maze, with a Bitcoin symbol acting as a potential goal or reward. The overall aesthetic is reminiscent of retro video games, using a minimalist color palette of black, white, green, and gold.",
+  "visualSummaryShort": "The card showcases a pixelated black maze with white paths, featuring a small Pepe frog navigating through it. A Bitcoin symbol is present as a goal, creating a retro video game aesthetic with a minimalist color palette.",
+  "visualKeywords": [
+    "maze",
+    "pepe frog",
+    "bitcoin",
+    "pixelated",
+    "black and white",
+    "retro",
+    "minimalist",
+    "green",
+    "gold"
+  ],
+  "textKeywords": [
+    "satoshis",
+    "btc",
+    "00000000"
+  ],
+  "keywords": [
+    "maze",
+    "pepe frog",
+    "bitcoin",
+    "pixelated",
+    "black and white",
+    "retro",
+    "minimalist",
+    "green",
+    "gold",
+    "satoshis",
+    "btc",
+    "00000000"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "PEPEMAZE (Fake Rares) - Series 3 Card 19\nArtist: burstMembrane\nSupply 100 Issued October 2021\nOn-card text: SATOSHIS: 0 | BTC: 0.00000000\nVisual summary: The card features a simple, pixelated black maze with white lines forming the paths. At the bottom, a small Pepe frog is seen navigating the maze, with a Bitcoin symbol acting as a potential goal or reward. The overall aesthetic is reminiscent of retro video games, using a minimalist color palette of black, white, green, and gold.\nMemetic references: Classic Pepe the Frog navigating, hinting at the struggle in crypto trading.; Bitcoin logo as a symbol of the ultimate crypto prize.; Retro video game style, evoking nostalgia for early digital culture.; References to the elusive hunt for satoshis and BTC wealth.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEMAZE#text",
+      "label": "On-card text",
+      "text": "SATOSHIS: 0 | BTC: 0.00000000",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEMAZE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog navigating, hinting at the struggle in crypto trading.\nBitcoin logo as a symbol of the ultimate crypto prize.\nRetro video game style, evoking nostalgia for early digital culture.\nReferences to the elusive hunt for satoshis and BTC wealth.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEMAZE#visual",
+      "label": "Visual summary",
+      "text": "The card features a simple, pixelated black maze with white lines forming the paths. At the bottom, a small Pepe frog is seen navigating the maze, with a Bitcoin symbol acting as a potential goal or reward. The overall aesthetic is reminiscent of retro video games, using a minimalist color palette of black, white, green, and gold.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEMAZE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nSATOSHIS: 0  \nBTC: 0.00000000\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a simple, pixelated black maze with white lines forming the paths. At the bottom, a small Pepe frog is seen navigating the maze, with a Bitcoin symbol acting as a potential goal or reward. The overall aesthetic is reminiscent of retro video games, using a minimalist color palette of black, white, green, and gold.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog navigating, hinting at the struggle in crypto trading.\n- Bitcoin logo as a symbol of the ultimate crypto prize.\n- Retro video game style, evoking nostalgia for early digital culture.\n- References to the elusive hunt for satoshis and BTC wealth.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:33:42.404Z"
+}

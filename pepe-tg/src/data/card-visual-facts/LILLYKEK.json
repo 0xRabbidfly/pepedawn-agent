@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "asset": "LILLYKEK",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 30,
+  "artist": "Chris Storm",
+  "supply": 68,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "LILLYKEK, RULER OF PEPE. All Pepes worship Lily Kek's lotus flower. - Goddesshead - Rareness Score: 69"
+  ],
+  "memeticReferences": [
+    "Pepe lore intertwined with Egyptian mythology.",
+    "References to meme culture with the playful \"Rareness Score: 69.\"",
+    "Symbols like infinity and lotus flower hint at themes of eternity and enlightenment."
+  ],
+  "visualSummary": "The card features an ancient Egyptian style with two figures flanking a central, winged character that has a Pepe frog face. The color palette is earthy, with browns, beiges, and golds, lending it a vintage papyrus feel. The composition is symmetrical and balanced, emphasizing the central figure as a deity-like presence.",
+  "visualSummaryShort": "The card showcases an ancient Egyptian theme with two figures beside a central winged character featuring a Pepe frog face. The earthy color palette of browns, beiges, and golds creates a vintage feel.",
+  "visualKeywords": [
+    "ancient egyptian",
+    "winged character",
+    "pepe frog",
+    "earthy colors",
+    "symmetrical",
+    "deity",
+    "lotus flower",
+    "vintage",
+    "papyrus",
+    "balanced"
+  ],
+  "textKeywords": [
+    "lillykek",
+    "ruler",
+    "all",
+    "pepes",
+    "worship",
+    "lily",
+    "kek",
+    "lotus",
+    "flower",
+    "goddesshead",
+    "rareness",
+    "score"
+  ],
+  "keywords": [
+    "ancient egyptian",
+    "winged character",
+    "pepe frog",
+    "earthy colors",
+    "symmetrical",
+    "deity",
+    "lotus flower",
+    "vintage",
+    "papyrus",
+    "balanced",
+    "lillykek",
+    "ruler",
+    "all",
+    "pepes",
+    "worship",
+    "lily",
+    "kek",
+    "lotus",
+    "flower",
+    "goddesshead",
+    "rareness",
+    "score"
+  ],
+  "embeddingInput": "LILLYKEK (Fake Rares) - Series 3 Card 30\nArtist: Chris Storm\nSupply 68 Issued October 2021\nOn-card text: LILLYKEK, RULER OF PEPE. All Pepes worship Lily Kek's lotus flower. - Goddesshead - Rareness Score: 69\nVisual summary: The card features an ancient Egyptian style with two figures flanking a central, winged character that has a Pepe frog face. The color palette is earthy, with browns, beiges, and golds, lending it a vintage papyrus feel. The composition is symmetrical and balanced, emphasizing the central figure as a deity-like presence.\nMemetic references: Pepe lore intertwined with Egyptian mythology.; References to meme culture with the playful \"Rareness Score: 69.\"; Symbols like infinity and lotus flower hint at themes of eternity and enlightenment.",
+  "embeddingBlocks": [
+    {
+      "id": "LILLYKEK#text",
+      "label": "On-card text",
+      "text": "LILLYKEK, RULER OF PEPE. All Pepes worship Lily Kek's lotus flower. - Goddesshead - Rareness Score: 69",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "LILLYKEK#memetic",
+      "label": "Memetic references",
+      "text": "Pepe lore intertwined with Egyptian mythology.\nReferences to meme culture with the playful \"Rareness Score: 69.\"\nSymbols like infinity and lotus flower hint at themes of eternity and enlightenment.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LILLYKEK#visual",
+      "label": "Visual summary",
+      "text": "The card features an ancient Egyptian style with two figures flanking a central, winged character that has a Pepe frog face. The color palette is earthy, with browns, beiges, and golds, lending it a vintage papyrus feel. The composition is symmetrical and balanced, emphasizing the central figure as a deity-like presence.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LILLYKEK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nLILLYKEK, RULER OF PEPE. All Pepes worship Lily Kek's lotus flower. - Goddesshead - Rareness Score: 69\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features an ancient Egyptian style with two figures flanking a central, winged character that has a Pepe frog face. The color palette is earthy, with browns, beiges, and golds, lending it a vintage papyrus feel. The composition is symmetrical and balanced, emphasizing the central figure as a deity-like presence.\n\n🧬 **MEMETIC DNA:**\n- Pepe lore intertwined with Egyptian mythology.\n- References to meme culture with the playful \"Rareness Score: 69.\"\n- Symbols like infinity and lotus flower hint at themes of eternity and enlightenment.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.744Z",
+  "sourceFactVersion": 1
+}

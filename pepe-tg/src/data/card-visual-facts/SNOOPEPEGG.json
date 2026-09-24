@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "asset": "SNOOPEPEGG",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 17,
+  "artist": "RareDesigner",
+  "supply": 130,
+  "issuance": "August 2018",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog influence with a celebrity twist.",
+    "References to hip-hop culture, particularly through the styling and jewelry.",
+    "Lakers jersey signifies a nod to sports culture."
+  ],
+  "visualSummary": "This card showcases a character with a green face reminiscent of a famous meme frog, styled with cornrows and wearing sunglasses. He’s dressed in a vibrant purple and gold Lakers jacket, adorned with gold chains, standing in a neon-lit urban setting. The art style is bold and colorful, with a sharp focus on the character's iconic pose and expression.",
+  "visualSummaryShort": "The card features a character with a green face and cornrows, dressed in a purple and gold Lakers jacket. The vibrant neon-lit urban background enhances the bold and colorful art style.",
+  "visualKeywords": [
+    "green face",
+    "cornrows",
+    "sunglasses",
+    "purple jacket",
+    "gold chains",
+    "neon lights",
+    "urban setting",
+    "bold colors",
+    "iconic pose"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "green face",
+    "cornrows",
+    "sunglasses",
+    "purple jacket",
+    "gold chains",
+    "neon lights",
+    "urban setting",
+    "bold colors",
+    "iconic pose"
+  ],
+  "embeddingInput": "SNOOPEPEGG (Fake Rares) - Series 5 Card 17\nArtist: RareDesigner\nSupply 130 Issued August 2018\nOn-card text: none detected\nVisual summary: This card showcases a character with a green face reminiscent of a famous meme frog, styled with cornrows and wearing sunglasses. He’s dressed in a vibrant purple and gold Lakers jacket, adorned with gold chains, standing in a neon-lit urban setting. The art style is bold and colorful, with a sharp focus on the character's iconic pose and expression.\nMemetic references: Pepe the Frog influence with a celebrity twist.; References to hip-hop culture, particularly through the styling and jewelry.; Lakers jersey signifies a nod to sports culture.",
+  "embeddingBlocks": [
+    {
+      "id": "SNOOPEPEGG#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog influence with a celebrity twist.\nReferences to hip-hop culture, particularly through the styling and jewelry.\nLakers jersey signifies a nod to sports culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SNOOPEPEGG#visual",
+      "label": "Visual summary",
+      "text": "This card showcases a character with a green face reminiscent of a famous meme frog, styled with cornrows and wearing sunglasses. He’s dressed in a vibrant purple and gold Lakers jacket, adorned with gold chains, standing in a neon-lit urban setting. The art style is bold and colorful, with a sharp focus on the character's iconic pose and expression.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SNOOPEPEGG#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card showcases a character with a green face reminiscent of a famous meme frog, styled with cornrows and wearing sunglasses. He’s dressed in a vibrant purple and gold Lakers jacket, adorned with gold chains, standing in a neon-lit urban setting. The art style is bold and colorful, with a sharp focus on the character's iconic pose and expression.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog influence with a celebrity twist.\n- References to hip-hop culture, particularly through the styling and jewelry.\n- Lakers jersey signifies a nod to sports culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.120Z",
+  "sourceFactVersion": 1
+}

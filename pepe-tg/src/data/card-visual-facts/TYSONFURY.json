@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "asset": "TYSONFURY",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 16,
+  "artist": "olliesblog",
+  "supply": 300,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "FURY",
+    "\"ATK\"",
+    "\"ELE\"",
+    "“Accept reality and... put up or shut up.”"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog is central, a classic meme symbol.",
+    "References boxing culture with championship belts.",
+    "Crypto",
+    "NFT nods with the \"Pepecash\" belt."
+  ],
+  "visualSummary": "The card features a Pepe the Frog character dressed as a boxer, complete with championship belts. The color palette is vibrant, with greens, reds, and golds dominating the scene. The style is a mix of photorealism and meme art, combining real-life elements with the iconic Pepe aesthetic.",
+  "visualSummaryShort": "The card showcases a Pepe the Frog character in boxing attire, adorned with championship belts. It features a vibrant color palette of greens, reds, and golds, blending photorealism with meme art.",
+  "visualKeywords": [
+    "pepe the frog",
+    "boxer",
+    "championship belts",
+    "vibrant colors",
+    "photorealism",
+    "meme art"
+  ],
+  "textKeywords": [
+    "fury",
+    "atk",
+    "ele",
+    "accept",
+    "reality",
+    "put",
+    "shut"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "boxer",
+    "championship belts",
+    "vibrant colors",
+    "photorealism",
+    "meme art",
+    "fury",
+    "atk",
+    "ele",
+    "accept",
+    "reality",
+    "put",
+    "shut"
+  ],
+  "embeddingInput": "TYSONFURY (Fake Rares) - Series 2 Card 16\nArtist: olliesblog\nSupply 300 Issued October 2021\nOn-card text: FURY | \"ATK\" | \"ELE\" | “Accept reality and... put up or shut up.”\nVisual summary: The card features a Pepe the Frog character dressed as a boxer, complete with championship belts. The color palette is vibrant, with greens, reds, and golds dominating the scene. The style is a mix of photorealism and meme art, combining real-life elements with the iconic Pepe aesthetic.\nMemetic references: Pepe the Frog is central, a classic meme symbol.; References boxing culture with championship belts.; Crypto; NFT nods with the \"Pepecash\" belt.",
+  "embeddingBlocks": [
+    {
+      "id": "TYSONFURY#text",
+      "label": "On-card text",
+      "text": "FURY | \"ATK\" | \"ELE\" | “Accept reality and... put up or shut up.”",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "TYSONFURY#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog is central, a classic meme symbol.\nReferences boxing culture with championship belts.\nCrypto\nNFT nods with the \"Pepecash\" belt.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "TYSONFURY#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe the Frog character dressed as a boxer, complete with championship belts. The color palette is vibrant, with greens, reds, and golds dominating the scene. The style is a mix of photorealism and meme art, combining real-life elements with the iconic Pepe aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "TYSONFURY#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFURY  \n\"ATK\"  \n\"ELE\"  \n“Accept reality and... put up or shut up.”\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe the Frog character dressed as a boxer, complete with championship belts. The color palette is vibrant, with greens, reds, and golds dominating the scene. The style is a mix of photorealism and meme art, combining real-life elements with the iconic Pepe aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog is central, a classic meme symbol.\n- References boxing culture with championship belts.\n- Crypto/NFT nods with the \"Pepecash\" belt.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.170Z",
+  "sourceFactVersion": 1
+}

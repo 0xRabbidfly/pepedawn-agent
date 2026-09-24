@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "asset": "FAKEREBIRTH",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 25,
+  "artist": "Aquaticmane",
+  "supply": 72,
+  "issuance": "October 2025",
+  "textOnCard": [
+    "FAKEREBIRTH",
+    "INTER AQUM ET TERRAM — IBI VITA"
+  ],
+  "memeticReferences": [
+    "Classic meme reference to Adam and the concept of rebirth.",
+    "The use of Latin text adds a layer of mystique and historical nod.",
+    "Hints of Renaissance art influence in the pose and composition."
+  ],
+  "visualSummary": "The card features a monochrome photograph of a standing man with arms outstretched. He is minimally dressed, with strategically placed leaves. The frame is styled with an ancient, weathered look, using earthy greens and browns, giving it a vintage vibe.",
+  "visualSummaryShort": "The card showcases a monochrome image of a man with outstretched arms, adorned with leaves. The earthy green and brown tones create a vintage atmosphere.",
+  "visualKeywords": [
+    "monochrome",
+    "man",
+    "leaves",
+    "vintage",
+    "earthy colors",
+    "weathered",
+    "arms outstretched"
+  ],
+  "textKeywords": [
+    "fakerebirth",
+    "inter",
+    "aqum",
+    "terram",
+    "ibi",
+    "vita"
+  ],
+  "keywords": [
+    "monochrome",
+    "man",
+    "leaves",
+    "vintage",
+    "earthy colors",
+    "weathered",
+    "arms outstretched",
+    "fakerebirth",
+    "inter",
+    "aqum",
+    "terram",
+    "ibi",
+    "vita"
+  ],
+  "embeddingInput": "FAKEREBIRTH (Fake Rares) - Series 18 Card 25\nArtist: Aquaticmane\nSupply 72 Issued October 2025\nOn-card text: FAKEREBIRTH | INTER AQUM ET TERRAM — IBI VITA\nVisual summary: The card features a monochrome photograph of a standing man with arms outstretched. He is minimally dressed, with strategically placed leaves. The frame is styled with an ancient, weathered look, using earthy greens and browns, giving it a vintage vibe.\nMemetic references: Classic meme reference to Adam and the concept of rebirth.; The use of Latin text adds a layer of mystique and historical nod.; Hints of Renaissance art influence in the pose and composition.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEREBIRTH#text",
+      "label": "On-card text",
+      "text": "FAKEREBIRTH | INTER AQUM ET TERRAM — IBI VITA",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEREBIRTH#memetic",
+      "label": "Memetic references",
+      "text": "Classic meme reference to Adam and the concept of rebirth.\nThe use of Latin text adds a layer of mystique and historical nod.\nHints of Renaissance art influence in the pose and composition.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEREBIRTH#visual",
+      "label": "Visual summary",
+      "text": "The card features a monochrome photograph of a standing man with arms outstretched. He is minimally dressed, with strategically placed leaves. The frame is styled with an ancient, weathered look, using earthy greens and browns, giving it a vintage vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEREBIRTH#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKEREBIRTH  \nINTER AQUM ET TERRAM — IBI VITA\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a monochrome photograph of a standing man with arms outstretched. He is minimally dressed, with strategically placed leaves. The frame is styled with an ancient, weathered look, using earthy greens and browns, giving it a vintage vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic meme reference to Adam and the concept of rebirth.\n- The use of Latin text adds a layer of mystique and historical nod.\n- Hints of Renaissance art influence in the pose and composition.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.565Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "TICKETPEPE",
+  "collection": "Fake Rares",
+  "series": 0,
+  "cardNumber": 20,
+  "artist": "Shaban Shaame",
+  "supply": 130,
+  "issuance": "March 2018",
+  "textOnCard": [
+    "PEPE TICKET",
+    "Pepedmit one"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog, the OG meme lord.",
+    "Ticket theme suggests exclusivity or entry into something special.",
+    "\"Pepedmit one\" is a playful twist on \"admit one,\" blending meme culture with traditional ticket language."
+  ],
+  "visualSummary": "The card is designed to look like a vintage ticket stub, with a soft pink and beige color palette. On the left, bold red text contrasts against the background, while on the right, a classic Pepe the Frog image is featured, giving a cheeky grin. The dotted lines and retro fonts add to the nostalgic ticket vibe.",
+  "visualSummaryShort": "The card resembles a vintage ticket stub with a soft pink and beige color scheme. It features a classic Pepe the Frog image with a cheeky grin and bold red text.",
+  "visualKeywords": [
+    "vintage",
+    "ticket",
+    "pink",
+    "beige",
+    "pepe",
+    "red text",
+    "retro",
+    "cheeky grin"
+  ],
+  "textKeywords": [
+    "ticket",
+    "pepedmit",
+    "one"
+  ],
+  "keywords": [
+    "vintage",
+    "ticket",
+    "pink",
+    "beige",
+    "pepe",
+    "red text",
+    "retro",
+    "cheeky grin",
+    "pepedmit",
+    "one"
+  ],
+  "embeddingInput": "TICKETPEPE (Fake Rares) - Series 0 Card 20\nArtist: Shaban Shaame\nSupply 130 Issued March 2018\nOn-card text: PEPE TICKET | Pepedmit one\nVisual summary: The card is designed to look like a vintage ticket stub, with a soft pink and beige color palette. On the left, bold red text contrasts against the background, while on the right, a classic Pepe the Frog image is featured, giving a cheeky grin. The dotted lines and retro fonts add to the nostalgic ticket vibe.\nMemetic references: Classic Pepe the Frog, the OG meme lord.; Ticket theme suggests exclusivity or entry into something special.; \"Pepedmit one\" is a playful twist on \"admit one,\" blending meme culture with traditional ticket language.",
+  "embeddingBlocks": [
+    {
+      "id": "TICKETPEPE#text",
+      "label": "On-card text",
+      "text": "PEPE TICKET | Pepedmit one",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "TICKETPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog, the OG meme lord.\nTicket theme suggests exclusivity or entry into something special.\n\"Pepedmit one\" is a playful twist on \"admit one,\" blending meme culture with traditional ticket language.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "TICKETPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card is designed to look like a vintage ticket stub, with a soft pink and beige color palette. On the left, bold red text contrasts against the background, while on the right, a classic Pepe the Frog image is featured, giving a cheeky grin. The dotted lines and retro fonts add to the nostalgic ticket vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "TICKETPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE TICKET  \nPepedmit one\n\n🎨 **VISUAL BREAKDOWN:**\nThe card is designed to look like a vintage ticket stub, with a soft pink and beige color palette. On the left, bold red text contrasts against the background, while on the right, a classic Pepe the Frog image is featured, giving a cheeky grin. The dotted lines and retro fonts add to the nostalgic ticket vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog, the OG meme lord.\n- Ticket theme suggests exclusivity or entry into something special.\n- \"Pepedmit one\" is a playful twist on \"admit one,\" blending meme culture with traditional ticket language.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.153Z",
+  "sourceFactVersion": 1
+}

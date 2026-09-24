@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "asset": "VEEEUPHORIA",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 36,
+  "artist": "Indelible",
+  "supply": 99,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "Vee Euphoria. Tryhard Tadpole Vee Frees. Atk = 0 Spd = -3. In this smugness I am Euphoric."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference with a focus on smugness.",
+    "Crypto culture nod with terms like \"Tryhard Tadpole.\"",
+    "References to gaming or card stats with \"Atk\" and \"Spd\" values.",
+    "\"In this smugness I am Euphoric\" is a play on popular meme phrases."
+  ],
+  "visualSummary": "The card features a character with a Pepe the Frog-inspired face and a smug expression, set against a simple background. The color palette includes earthy greens and blues, giving it a classic meme aesthetic. The style is cartoonish with a humorous touch, featuring exaggerated features and minimalistic details.",
+  "visualSummaryShort": "The card showcases a character with a Pepe the Frog-inspired face, exuding a smug expression. The earthy green and blue color palette enhances its cartoonish and humorous style.",
+  "visualKeywords": [
+    "pepe",
+    "smug",
+    "earthy greens",
+    "blue",
+    "cartoonish",
+    "humor",
+    "exaggerated features",
+    "simple background"
+  ],
+  "textKeywords": [
+    "vee",
+    "euphoria",
+    "tryhard",
+    "tadpole",
+    "frees",
+    "atk",
+    "spd",
+    "smugness",
+    "euphoric"
+  ],
+  "keywords": [
+    "pepe",
+    "smug",
+    "earthy greens",
+    "blue",
+    "cartoonish",
+    "humor",
+    "exaggerated features",
+    "simple background",
+    "vee",
+    "euphoria",
+    "tryhard",
+    "tadpole",
+    "frees",
+    "atk",
+    "spd",
+    "smugness",
+    "euphoric"
+  ],
+  "embeddingInput": "VEEEUPHORIA (Fake Rares) - Series 5 Card 36\nArtist: Indelible\nSupply 99 Issued February 2022\nOn-card text: Vee Euphoria. Tryhard Tadpole Vee Frees. Atk = 0 Spd = -3. In this smugness I am Euphoric.\nVisual summary: The card features a character with a Pepe the Frog-inspired face and a smug expression, set against a simple background. The color palette includes earthy greens and blues, giving it a classic meme aesthetic. The style is cartoonish with a humorous touch, featuring exaggerated features and minimalistic details.\nMemetic references: Pepe the Frog reference with a focus on smugness.; Crypto culture nod with terms like \"Tryhard Tadpole.\"; References to gaming or card stats with \"Atk\" and \"Spd\" values.; \"In this smugness I am Euphoric\" is a play on popular meme phrases.",
+  "embeddingBlocks": [
+    {
+      "id": "VEEEUPHORIA#text",
+      "label": "On-card text",
+      "text": "Vee Euphoria. Tryhard Tadpole Vee Frees. Atk = 0 Spd = -3. In this smugness I am Euphoric.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "VEEEUPHORIA#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference with a focus on smugness.\nCrypto culture nod with terms like \"Tryhard Tadpole.\"\nReferences to gaming or card stats with \"Atk\" and \"Spd\" values.\n\"In this smugness I am Euphoric\" is a play on popular meme phrases.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "VEEEUPHORIA#visual",
+      "label": "Visual summary",
+      "text": "The card features a character with a Pepe the Frog-inspired face and a smug expression, set against a simple background. The color palette includes earthy greens and blues, giving it a classic meme aesthetic. The style is cartoonish with a humorous touch, featuring exaggerated features and minimalistic details.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "VEEEUPHORIA#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nVee Euphoria. Tryhard Tadpole Vee Frees. Atk = 0 Spd = -3. In this smugness I am Euphoric.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a character with a Pepe the Frog-inspired face and a smug expression, set against a simple background. The color palette includes earthy greens and blues, giving it a classic meme aesthetic. The style is cartoonish with a humorous touch, featuring exaggerated features and minimalistic details.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference with a focus on smugness.\n- Crypto culture nod with terms like \"Tryhard Tadpole.\"\n- References to gaming or card stats with \"Atk\" and \"Spd\" values.\n- \"In this smugness I am Euphoric\" is a play on popular meme phrases.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.174Z",
+  "sourceFactVersion": 1
+}

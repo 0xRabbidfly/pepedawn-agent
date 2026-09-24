@@ -64,6 +64,33 @@ if (report.retired.length > 20) {
   console.error(`Refusing to write: ${report.retired.length} cards would be retired at once.`);
   process.exit(1);
 }
+// The artist list too: card replies link an artist to the directory's page
+// only when the directory has one, and its slugs are its own. Small file,
+// one more request. A short or failed response leaves yesterday's list.
+const ARTISTS_API = API.replace(/\/api\/cards$/, '/api/artists');
+const artistsPath = join(process.cwd(), 'src', 'data', 'directory-artists.json');
+let artists: Array<{ name: string; slug: string; aliases: string[] }> | null = null;
+try {
+  const ares = await fetch(ARTISTS_API, { headers: { 'User-Agent': 'pepedawn-agent sync (one request a day)' } });
+  const body: any = ares.ok ? await ares.json() : null;
+  const list: any[] = Array.isArray(body?.artists) ? body.artists : [];
+  if (list.length >= 100) {
+    artists = list
+      .filter((a) => typeof a?.name === 'string' && typeof a?.slug === 'string')
+      .map((a) => ({ name: a.name, slug: a.slug, aliases: (a.aliases ?? []).filter((x: unknown) => typeof x === 'string') }))
+      .sort((a, b) => a.slug.localeCompare(b.slug));
+  } else {
+    console.warn(`artists: ${ARTISTS_API} returned ${list.length}; keeping the committed list`);
+  }
+} catch (error) {
+  console.warn(`artists: ${error instanceof Error ? error.message : String(error)}; keeping the committed list`);
+}
+if (artists) console.log(`artists ${artists.length} (${artists.filter((a) => a.aliases.length).length} with aliases)`);
+
 if (dryRun) { console.log('\n(dry run: not written)'); process.exit(0); }
 writeFileSync(dataPath, JSON.stringify(cards, null, 2) + '\n', 'utf8');
 console.log(`\nwrote ${cards.length} cards to ${dataPath}`);
+if (artists) {
+  writeFileSync(artistsPath, JSON.stringify({ fetchedAt: new Date().toISOString().slice(0, 10), artists }, null, 1) + '\n', 'utf8');
+  console.log(`wrote ${artists.length} artists to ${artistsPath}`);
+}

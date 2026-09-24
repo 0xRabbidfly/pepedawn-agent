@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "asset": "PEPECORAL",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 31,
+  "artist": "JohnDXB",
+  "supply": 300,
+  "issuance": "October 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery, a staple in meme culture.",
+    "The neon color scheme gives a nod to early internet aesthetics and vaporwave vibes.",
+    "The abstract, wavy lines suggest a connection to digital art and NFT culture."
+  ],
+  "visualSummary": "The card showcases a stylized, abstract depiction of the classic Pepe the Frog face. It features a neon green outline against a deep purple background, creating a glowing effect that emphasizes its iconic shape. The artistic style is minimalist and modern, with wavy lines giving a sense of motion and energy.",
+  "visualSummaryShort": "The card features a stylized, abstract depiction of Pepe the Frog with a neon green outline. It is set against a deep purple background, creating a glowing effect with a minimalist and modern artistic style.",
+  "visualKeywords": [
+    "pepe the frog",
+    "neon green",
+    "purple background",
+    "glowing effect",
+    "minimalist",
+    "abstract",
+    "wavy lines",
+    "motion",
+    "energy"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "neon green",
+    "purple background",
+    "glowing effect",
+    "minimalist",
+    "abstract",
+    "wavy lines",
+    "motion",
+    "energy"
+  ],
+  "embeddingInput": "PEPECORAL (Fake Rares) - Series 11 Card 31\nArtist: JohnDXB\nSupply 300 Issued October 2022\nOn-card text: none detected\nVisual summary: The card showcases a stylized, abstract depiction of the classic Pepe the Frog face. It features a neon green outline against a deep purple background, creating a glowing effect that emphasizes its iconic shape. The artistic style is minimalist and modern, with wavy lines giving a sense of motion and energy.\nMemetic references: Classic Pepe the Frog imagery, a staple in meme culture.; The neon color scheme gives a nod to early internet aesthetics and vaporwave vibes.; The abstract, wavy lines suggest a connection to digital art and NFT culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPECORAL#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery, a staple in meme culture.\nThe neon color scheme gives a nod to early internet aesthetics and vaporwave vibes.\nThe abstract, wavy lines suggest a connection to digital art and NFT culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPECORAL#visual",
+      "label": "Visual summary",
+      "text": "The card showcases a stylized, abstract depiction of the classic Pepe the Frog face. It features a neon green outline against a deep purple background, creating a glowing effect that emphasizes its iconic shape. The artistic style is minimalist and modern, with wavy lines giving a sense of motion and energy.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPECORAL#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card showcases a stylized, abstract depiction of the classic Pepe the Frog face. It features a neon green outline against a deep purple background, creating a glowing effect that emphasizes its iconic shape. The artistic style is minimalist and modern, with wavy lines giving a sense of motion and energy.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery, a staple in meme culture.\n- The neon color scheme gives a nod to early internet aesthetics and vaporwave vibes.\n- The abstract, wavy lines suggest a connection to digital art and NFT culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.861Z",
+  "sourceFactVersion": 1
+}

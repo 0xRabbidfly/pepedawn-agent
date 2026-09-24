@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "RONINPEPE",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 50,
+  "artist": "Chunraku",
+  "supply": 80,
+  "issuance": "December 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as a samurai, blending meme culture with historical Japanese elements.",
+    "Bitcoin symbol in the background, representing the fusion of traditional and digital economies.",
+    "Ukiyo-e art style reference, tying in cultural art history with modern crypto culture."
+  ],
+  "visualSummary": "The card features a samurai-styled Pepe the Frog, standing confidently with a traditional pipe. The backdrop is a golden sky with stylized clouds and a prominent Bitcoin symbol, adding a modern twist to the classic ukiyo-e art style. The color palette is rich with golds, blacks, and purples, evoking a sense of ancient luxury and mystery.",
+  "visualSummaryShort": "The card showcases a samurai-styled Pepe the Frog against a golden sky with stylized clouds. The rich color palette of golds, blacks, and purples creates an atmosphere of ancient luxury and mystery.",
+  "visualKeywords": [
+    "samurai",
+    "pepe",
+    "golden sky",
+    "clouds",
+    "bitcoin",
+    "luxury",
+    "mystery",
+    "traditional pipe",
+    "ukiyo-e",
+    "purple"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "samurai",
+    "pepe",
+    "golden sky",
+    "clouds",
+    "bitcoin",
+    "luxury",
+    "mystery",
+    "traditional pipe",
+    "ukiyo-e",
+    "purple"
+  ],
+  "embeddingInput": "RONINPEPE (Fake Rares) - Series 5 Card 50\nArtist: Chunraku\nSupply 80 Issued December 2021\nOn-card text: none detected\nVisual summary: The card features a samurai-styled Pepe the Frog, standing confidently with a traditional pipe. The backdrop is a golden sky with stylized clouds and a prominent Bitcoin symbol, adding a modern twist to the classic ukiyo-e art style. The color palette is rich with golds, blacks, and purples, evoking a sense of ancient luxury and mystery.\nMemetic references: Pepe the Frog as a samurai, blending meme culture with historical Japanese elements.; Bitcoin symbol in the background, representing the fusion of traditional and digital economies.; Ukiyo-e art style reference, tying in cultural art history with modern crypto culture.",
+  "embeddingBlocks": [
+    {
+      "id": "RONINPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a samurai, blending meme culture with historical Japanese elements.\nBitcoin symbol in the background, representing the fusion of traditional and digital economies.\nUkiyo-e art style reference, tying in cultural art history with modern crypto culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RONINPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a samurai-styled Pepe the Frog, standing confidently with a traditional pipe. The backdrop is a golden sky with stylized clouds and a prominent Bitcoin symbol, adding a modern twist to the classic ukiyo-e art style. The color palette is rich with golds, blacks, and purples, evoking a sense of ancient luxury and mystery.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RONINPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a samurai-styled Pepe the Frog, standing confidently with a traditional pipe. The backdrop is a golden sky with stylized clouds and a prominent Bitcoin symbol, adding a modern twist to the classic ukiyo-e art style. The color palette is rich with golds, blacks, and purples, evoking a sense of ancient luxury and mystery.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a samurai, blending meme culture with historical Japanese elements.\n- Bitcoin symbol in the background, representing the fusion of traditional and digital economies.\n- Ukiyo-e art style reference, tying in cultural art history with modern crypto culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.089Z",
+  "sourceFactVersion": 1
+}

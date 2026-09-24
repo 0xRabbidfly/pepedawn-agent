@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "asset": "GEOPEPE",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 24,
+  "artist": "Fabrique",
+  "supply": 30,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "GEOPEPE",
+    "BITCOIN",
+    "TRY IT TODAY",
+    "Adults are just kids with money"
+  ],
+  "memeticReferences": [
+    "Pepe imagery and references.",
+    "Bitcoin and crypto culture.",
+    "Retro internet and vaporwave aesthetics.",
+    "Iconic meme symbols and humor.",
+    "Elements of surrealism and dadaism."
+  ],
+  "visualSummary": "The card is an explosion of retro-futuristic chaos, mixing neon hues with dark cosmic backgrounds. A skull with a trumpet floats among dollar bills, cartoonish figures, and vintage computer graphics. The composition is a layered collage of eclectic elements, combining digital nostalgia with anarchy.",
+  "visualSummaryShort": "The card features a vibrant mix of neon colors and dark cosmic backgrounds, showcasing a skull with a trumpet amidst dollar bills and cartoonish figures. It creates a chaotic yet nostalgic atmosphere with a collage of eclectic elements.",
+  "visualKeywords": [
+    "neon",
+    "skull",
+    "trumpet",
+    "dollar bills",
+    "cartoonish",
+    "cosmic",
+    "chaos",
+    "collage",
+    "retro-futuristic",
+    "digital nostalgia"
+  ],
+  "textKeywords": [
+    "geopepe",
+    "bitcoin",
+    "try",
+    "today",
+    "adults",
+    "are",
+    "just",
+    "kids",
+    "money"
+  ],
+  "keywords": [
+    "neon",
+    "skull",
+    "trumpet",
+    "dollar bills",
+    "cartoonish",
+    "cosmic",
+    "chaos",
+    "collage",
+    "retro-futuristic",
+    "digital nostalgia",
+    "geopepe",
+    "bitcoin",
+    "try",
+    "today",
+    "adults",
+    "are",
+    "just",
+    "kids",
+    "money"
+  ],
+  "embeddingInput": "GEOPEPE (Fake Rares) - Series 7 Card 24\nArtist: Fabrique\nSupply 30 Issued March 2022\nOn-card text: GEOPEPE | BITCOIN | TRY IT TODAY | Adults are just kids with money\nVisual summary: The card is an explosion of retro-futuristic chaos, mixing neon hues with dark cosmic backgrounds. A skull with a trumpet floats among dollar bills, cartoonish figures, and vintage computer graphics. The composition is a layered collage of eclectic elements, combining digital nostalgia with anarchy.\nMemetic references: Pepe imagery and references.; Bitcoin and crypto culture.; Retro internet and vaporwave aesthetics.; Iconic meme symbols and humor.; Elements of surrealism and dadaism.",
+  "embeddingBlocks": [
+    {
+      "id": "GEOPEPE#text",
+      "label": "On-card text",
+      "text": "GEOPEPE | BITCOIN | TRY IT TODAY | Adults are just kids with money",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "GEOPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe imagery and references.\nBitcoin and crypto culture.\nRetro internet and vaporwave aesthetics.\nIconic meme symbols and humor.\nElements of surrealism and dadaism.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "GEOPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card is an explosion of retro-futuristic chaos, mixing neon hues with dark cosmic backgrounds. A skull with a trumpet floats among dollar bills, cartoonish figures, and vintage computer graphics. The composition is a layered collage of eclectic elements, combining digital nostalgia with anarchy.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "GEOPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nGEOPEPE  \nBITCOIN  \nTRY IT TODAY  \nAdults are just kids with money\n\n🎨 **VISUAL BREAKDOWN:**\nThe card is an explosion of retro-futuristic chaos, mixing neon hues with dark cosmic backgrounds. A skull with a trumpet floats among dollar bills, cartoonish figures, and vintage computer graphics. The composition is a layered collage of eclectic elements, combining digital nostalgia with anarchy.\n\n🧬 **MEMETIC DNA:**\n- Pepe imagery and references.\n- Bitcoin and crypto culture.\n- Retro internet and vaporwave aesthetics.\n- Iconic meme symbols and humor.\n- Elements of surrealism and dadaism.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.652Z",
+  "sourceFactVersion": 1
+}

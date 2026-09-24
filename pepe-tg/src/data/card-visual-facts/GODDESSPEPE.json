@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "GODDESSPEPE",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 5,
+  "artist": "Exmoor Beast",
+  "supply": 60,
+  "issuance": "June 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as Venus, a nod to both classical art and meme culture.",
+    "References to \"The Birth of Venus\" painting.",
+    "The use of Pepe integrates internet meme culture with traditional art."
+  ],
+  "visualSummary": "This card features a surreal reinterpretation of Botticelli's \"The Birth of Venus,\" with Pepe the Frog taking center stage as Venus. The color palette is soft and pastel, with greens, blues, and pinks creating a whimsical, dreamy atmosphere. The artistic style blends classical elements with cartoonish, meme-like details.",
+  "visualSummaryShort": "The card showcases a whimsical reinterpretation of a classical artwork with Pepe the Frog as the central figure. The soft pastel colors and cartoonish style create a dreamy atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "pastel colors",
+    "dreamy",
+    "surreal",
+    "classical",
+    "cartoonish",
+    "whimsical",
+    "greens",
+    "blues",
+    "pinks"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "pastel colors",
+    "dreamy",
+    "surreal",
+    "classical",
+    "cartoonish",
+    "whimsical",
+    "greens",
+    "blues",
+    "pinks"
+  ],
+  "embeddingInput": "GODDESSPEPE (Fake Rares) - Series 10 Card 5\nArtist: Exmoor Beast\nSupply 60 Issued June 2022\nOn-card text: none detected\nVisual summary: This card features a surreal reinterpretation of Botticelli's \"The Birth of Venus,\" with Pepe the Frog taking center stage as Venus. The color palette is soft and pastel, with greens, blues, and pinks creating a whimsical, dreamy atmosphere. The artistic style blends classical elements with cartoonish, meme-like details.\nMemetic references: Pepe the Frog as Venus, a nod to both classical art and meme culture.; References to \"The Birth of Venus\" painting.; The use of Pepe integrates internet meme culture with traditional art.",
+  "embeddingBlocks": [
+    {
+      "id": "GODDESSPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as Venus, a nod to both classical art and meme culture.\nReferences to \"The Birth of Venus\" painting.\nThe use of Pepe integrates internet meme culture with traditional art.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "GODDESSPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a surreal reinterpretation of Botticelli's \"The Birth of Venus,\" with Pepe the Frog taking center stage as Venus. The color palette is soft and pastel, with greens, blues, and pinks creating a whimsical, dreamy atmosphere. The artistic style blends classical elements with cartoonish, meme-like details.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "GODDESSPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a surreal reinterpretation of Botticelli's \"The Birth of Venus,\" with Pepe the Frog taking center stage as Venus. The color palette is soft and pastel, with greens, blues, and pinks creating a whimsical, dreamy atmosphere. The artistic style blends classical elements with cartoonish, meme-like details.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as Venus, a nod to both classical art and meme culture.\n- References to \"The Birth of Venus\" painting.\n- The use of Pepe integrates internet meme culture with traditional art.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.657Z",
+  "sourceFactVersion": 1
+}

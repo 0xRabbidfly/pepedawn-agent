@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "asset": "FIELDOFMEMES",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 19,
+  "artist": "T. Wade",
+  "supply": 59,
+  "issuance": "May 2022",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a vibrant and chaotic scene filled with various meme characters and elements. The overall mood is playful and humorous.",
+  "visualKeywords": [
+    "meme",
+    "colorful",
+    "chaotic",
+    "playful",
+    "characters"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "meme",
+    "colorful",
+    "chaotic",
+    "playful",
+    "characters"
+  ],
+  "embeddingInput": "FIELDOFMEMES (Fake Rares) - Series 9 Card 19\nArtist: T. Wade\nSupply 59 Issued May 2022\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "FIELDOFMEMES#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**  \nFIELDOFMEMES\n\n🎨 **VISUAL BREAKDOWN:**  \nThe card features a vibrant, animated scene with a man standing in front of a lush, green field. The color palette is dominated by rich greens and earthy browns, with a clear blue sky above. The artistic style is reminiscent of impressionism, with bold, expressive brushstrokes and a slightly surreal, dreamlike quality.\n\n🧬 **MEMETIC DNA:**  \n- References to \"Field of Dreams\" with a meme twist.\n- Incorporates elements of traditional farming imagery mixed with modern meme culture.\n- Subtle nod to classic internet meme formats by using a familiar pastoral setting.\n\n🎯 **RARITY FEELS:**  \nThis card exudes chill, nostalgic vibes with a hint of degen energy lurking in the background. Visually, it feels like a mid-tier rare; not too flashy but with a unique and engaging twist that's sure to catch the eye of meme connoisseurs.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.620Z",
+  "sourceFactVersion": 1
+}

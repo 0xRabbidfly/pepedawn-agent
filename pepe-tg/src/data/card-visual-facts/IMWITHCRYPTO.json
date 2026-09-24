@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "asset": "IMWITHCRYPTO",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 46,
+  "artist": "olliesblog",
+  "supply": 32,
+  "issuance": "March 2023",
+  "textOnCard": [
+    "I'm with crypto."
+  ],
+  "memeticReferences": [
+    "Pepe eyes on a non-Pepe character, blending traditional meme elements with new contexts.",
+    "Plays on the \"I'm with\" meme format, commonly used in political and social contexts.",
+    "References the ongoing discourse about crypto adoption and skepticism."
+  ],
+  "visualSummary": "The card features a grayscale illustration of a person with exaggerated Pepe-like eyes, set against a gradient blue background. The style is a mix of caricature and comic, capturing a humorous yet slightly satirical essence. The bold white text on the top left contrasts sharply with the background, making a clear and direct statement.",
+  "visualSummaryShort": "The card showcases a grayscale caricature of a person with exaggerated Pepe-like eyes against a gradient blue background. Bold white text adds a humorous touch to the overall design.",
+  "visualKeywords": [
+    "grayscale",
+    "caricature",
+    "pepe",
+    "blue gradient",
+    "humor",
+    "comic style",
+    "bold text"
+  ],
+  "textKeywords": [
+    "crypto"
+  ],
+  "keywords": [
+    "grayscale",
+    "caricature",
+    "pepe",
+    "blue gradient",
+    "humor",
+    "comic style",
+    "bold text",
+    "crypto"
+  ],
+  "embeddingInput": "IMWITHCRYPTO (Fake Rares) - Series 13 Card 46\nArtist: olliesblog\nSupply 32 Issued March 2023\nOn-card text: I'm with crypto.\nVisual summary: The card features a grayscale illustration of a person with exaggerated Pepe-like eyes, set against a gradient blue background. The style is a mix of caricature and comic, capturing a humorous yet slightly satirical essence. The bold white text on the top left contrasts sharply with the background, making a clear and direct statement.\nMemetic references: Pepe eyes on a non-Pepe character, blending traditional meme elements with new contexts.; Plays on the \"I'm with\" meme format, commonly used in political and social contexts.; References the ongoing discourse about crypto adoption and skepticism.",
+  "embeddingBlocks": [
+    {
+      "id": "IMWITHCRYPTO#text",
+      "label": "On-card text",
+      "text": "I'm with crypto.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "IMWITHCRYPTO#memetic",
+      "label": "Memetic references",
+      "text": "Pepe eyes on a non-Pepe character, blending traditional meme elements with new contexts.\nPlays on the \"I'm with\" meme format, commonly used in political and social contexts.\nReferences the ongoing discourse about crypto adoption and skepticism.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "IMWITHCRYPTO#visual",
+      "label": "Visual summary",
+      "text": "The card features a grayscale illustration of a person with exaggerated Pepe-like eyes, set against a gradient blue background. The style is a mix of caricature and comic, capturing a humorous yet slightly satirical essence. The bold white text on the top left contrasts sharply with the background, making a clear and direct statement.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "IMWITHCRYPTO#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nI'm with crypto.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a grayscale illustration of a person with exaggerated Pepe-like eyes, set against a gradient blue background. The style is a mix of caricature and comic, capturing a humorous yet slightly satirical essence. The bold white text on the top left contrasts sharply with the background, making a clear and direct statement.\n\n🧬 **MEMETIC DNA:**\n- Pepe eyes on a non-Pepe character, blending traditional meme elements with new contexts.\n- Plays on the \"I'm with\" meme format, commonly used in political and social contexts.\n- References the ongoing discourse about crypto adoption and skepticism.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.694Z",
+  "sourceFactVersion": 1
+}

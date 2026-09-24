@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "asset": "KEKOBRA",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 1,
+  "artist": "Darky",
+  "supply": 42,
+  "issuance": "December 2021",
+  "textOnCard": [
+    "HATE IS A DISEASE MEET THE CURE",
+    "KEKOBRA",
+    "MAZZ"
+  ],
+  "memeticReferences": [
+    "References the iconic \"Cobra\" movie poster, blending action hero tropes with Pepe culture.",
+    "The use of \"KEK\" ties into the broader meme culture around Pepe and internet slang.",
+    "The phrase \"HATE IS A DISEASE MEET THE CURE\" adds a satirical edge, riffing on classic movie taglines."
+  ],
+  "visualSummary": "The card features a gritty black-and-white illustration reminiscent of 80s action movies, with a character sporting a gun, sunglasses, and a jacket. The character has a Pepe-like face, adding a humorous twist to the intense aesthetic. The background features a city skyline, with stark contrasts and sharp lines enhancing the dramatic vibe.",
+  "visualSummaryShort": "The card showcases a gritty black-and-white illustration of a character with a Pepe-like face, wearing sunglasses and a jacket, set against a dramatic city skyline. The intense aesthetic is complemented by stark contrasts and sharp lines.",
+  "visualKeywords": [
+    "black-and-white",
+    "city skyline",
+    "gun",
+    "sunglasses",
+    "jacket",
+    "gritty",
+    "80s style",
+    "humor",
+    "dramatic",
+    "contrast"
+  ],
+  "textKeywords": [
+    "hate",
+    "disease",
+    "meet",
+    "cure",
+    "kekobra",
+    "mazz"
+  ],
+  "keywords": [
+    "black-and-white",
+    "city skyline",
+    "gun",
+    "sunglasses",
+    "jacket",
+    "gritty",
+    "80s style",
+    "humor",
+    "dramatic",
+    "contrast",
+    "hate",
+    "disease",
+    "meet",
+    "cure",
+    "kekobra",
+    "mazz"
+  ],
+  "embeddingInput": "KEKOBRA (Fake Rares) - Series 6 Card 1\nArtist: Darky\nSupply 42 Issued December 2021\nOn-card text: HATE IS A DISEASE MEET THE CURE | KEKOBRA | MAZZ\nVisual summary: The card features a gritty black-and-white illustration reminiscent of 80s action movies, with a character sporting a gun, sunglasses, and a jacket. The character has a Pepe-like face, adding a humorous twist to the intense aesthetic. The background features a city skyline, with stark contrasts and sharp lines enhancing the dramatic vibe.\nMemetic references: References the iconic \"Cobra\" movie poster, blending action hero tropes with Pepe culture.; The use of \"KEK\" ties into the broader meme culture around Pepe and internet slang.; The phrase \"HATE IS A DISEASE MEET THE CURE\" adds a satirical edge, riffing on classic movie taglines.",
+  "embeddingBlocks": [
+    {
+      "id": "KEKOBRA#text",
+      "label": "On-card text",
+      "text": "HATE IS A DISEASE MEET THE CURE | KEKOBRA | MAZZ",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "KEKOBRA#memetic",
+      "label": "Memetic references",
+      "text": "References the iconic \"Cobra\" movie poster, blending action hero tropes with Pepe culture.\nThe use of \"KEK\" ties into the broader meme culture around Pepe and internet slang.\nThe phrase \"HATE IS A DISEASE MEET THE CURE\" adds a satirical edge, riffing on classic movie taglines.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "KEKOBRA#visual",
+      "label": "Visual summary",
+      "text": "The card features a gritty black-and-white illustration reminiscent of 80s action movies, with a character sporting a gun, sunglasses, and a jacket. The character has a Pepe-like face, adding a humorous twist to the intense aesthetic. The background features a city skyline, with stark contrasts and sharp lines enhancing the dramatic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "KEKOBRA#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nHATE IS A DISEASE MEET THE CURE  \nKEKOBRA  \nMAZZ\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a gritty black-and-white illustration reminiscent of 80s action movies, with a character sporting a gun, sunglasses, and a jacket. The character has a Pepe-like face, adding a humorous twist to the intense aesthetic. The background features a city skyline, with stark contrasts and sharp lines enhancing the dramatic vibe.\n\n🧬 **MEMETIC DNA:**\n- References the iconic \"Cobra\" movie poster, blending action hero tropes with Pepe culture.\n- The use of \"KEK\" ties into the broader meme culture around Pepe and internet slang.\n- The phrase \"HATE IS A DISEASE MEET THE CURE\" adds a satirical edge, riffing on classic movie taglines.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.714Z",
+  "sourceFactVersion": 1
+}

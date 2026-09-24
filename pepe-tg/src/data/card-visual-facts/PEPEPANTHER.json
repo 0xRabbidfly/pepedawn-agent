@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "PEPEPANTHER",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 44,
+  "artist": "Darky",
+  "supply": 32,
+  "issuance": "April 2022",
+  "textOnCard": [
+    "PEPE PANTHER CLASSIC"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog references in the panther's eyes and expression.",
+    "Classic meme culture vibe with a twist of jungle ferocity.",
+    "Nostalgic elements reminiscent of vintage cartoon illustrations."
+  ],
+  "visualSummary": "This card features a stylized, cartoonish panther with Pepe the Frog characteristics, rendered in rich shades of brown and black. The panther strikes a dynamic pose against a textured background, giving it a sense of movement. The artistic style combines elements of street art and classic comic book aesthetics, with bold outlines and a playful yet fierce expression.",
+  "visualSummaryShort": "The card showcases a cartoonish panther with Pepe the Frog features, depicted in rich brown and black hues. Its dynamic pose and textured background create a lively atmosphere.",
+  "visualKeywords": [
+    "panther",
+    "pepe",
+    "brown",
+    "black",
+    "dynamic pose",
+    "textured background",
+    "street art",
+    "comic book",
+    "bold outlines",
+    "playful expression"
+  ],
+  "textKeywords": [
+    "panther",
+    "classic"
+  ],
+  "keywords": [
+    "panther",
+    "pepe",
+    "brown",
+    "black",
+    "dynamic pose",
+    "textured background",
+    "street art",
+    "comic book",
+    "bold outlines",
+    "playful expression",
+    "classic"
+  ],
+  "embeddingInput": "PEPEPANTHER (Fake Rares) - Series 7 Card 44\nArtist: Darky\nSupply 32 Issued April 2022\nOn-card text: PEPE PANTHER CLASSIC\nVisual summary: This card features a stylized, cartoonish panther with Pepe the Frog characteristics, rendered in rich shades of brown and black. The panther strikes a dynamic pose against a textured background, giving it a sense of movement. The artistic style combines elements of street art and classic comic book aesthetics, with bold outlines and a playful yet fierce expression.\nMemetic references: Pepe the Frog references in the panther's eyes and expression.; Classic meme culture vibe with a twist of jungle ferocity.; Nostalgic elements reminiscent of vintage cartoon illustrations.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEPANTHER#text",
+      "label": "On-card text",
+      "text": "PEPE PANTHER CLASSIC",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEPANTHER#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references in the panther's eyes and expression.\nClassic meme culture vibe with a twist of jungle ferocity.\nNostalgic elements reminiscent of vintage cartoon illustrations.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEPANTHER#visual",
+      "label": "Visual summary",
+      "text": "This card features a stylized, cartoonish panther with Pepe the Frog characteristics, rendered in rich shades of brown and black. The panther strikes a dynamic pose against a textured background, giving it a sense of movement. The artistic style combines elements of street art and classic comic book aesthetics, with bold outlines and a playful yet fierce expression.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEPANTHER#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE PANTHER CLASSIC\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a stylized, cartoonish panther with Pepe the Frog characteristics, rendered in rich shades of brown and black. The panther strikes a dynamic pose against a textured background, giving it a sense of movement. The artistic style combines elements of street art and classic comic book aesthetics, with bold outlines and a playful yet fierce expression.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references in the panther's eyes and expression.\n- Classic meme culture vibe with a twist of jungle ferocity.\n- Nostalgic elements reminiscent of vintage cartoon illustrations.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.945Z",
+  "sourceFactVersion": 1
+}

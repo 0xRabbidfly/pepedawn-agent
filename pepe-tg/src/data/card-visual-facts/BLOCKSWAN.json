@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "asset": "BLOCKSWAN",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 6,
+  "artist": "FWD",
+  "supply": 21,
+  "issuance": "November 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "References the \"black swan\" theory, symbolizing rare, unpredictable events.",
+    "Glitch art style may nod to the volatility and unpredictability inherent in crypto markets.",
+    "Possible allusions to classic digital art themes and cyberpunk aesthetic."
+  ],
+  "visualSummary": "The card features a distorted, glitchy depiction of a black swan with purple and blue hues dominating the background. The swan's form is abstract, with fragmented lines and a digital noise effect, adding to the chaotic vibe. A striking detail is the red streaks dripping from the swan's eye area, enhancing the dramatic impact.",
+  "visualSummaryShort": "The card showcases a glitchy black swan set against a background of purple and blue hues. Distorted lines and red streaks from the swan's eye contribute to a chaotic and dramatic atmosphere.",
+  "visualKeywords": [
+    "black swan",
+    "glitch",
+    "purple hues",
+    "blue hues",
+    "abstract",
+    "digital noise",
+    "red streaks",
+    "chaotic",
+    "dramatic"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "black swan",
+    "glitch",
+    "purple hues",
+    "blue hues",
+    "abstract",
+    "digital noise",
+    "red streaks",
+    "chaotic",
+    "dramatic"
+  ],
+  "embeddingInput": "BLOCKSWAN (Fake Rares) - Series 12 Card 6\nArtist: FWD\nSupply 21 Issued November 2022\nOn-card text: none detected\nVisual summary: The card features a distorted, glitchy depiction of a black swan with purple and blue hues dominating the background. The swan's form is abstract, with fragmented lines and a digital noise effect, adding to the chaotic vibe. A striking detail is the red streaks dripping from the swan's eye area, enhancing the dramatic impact.\nMemetic references: References the \"black swan\" theory, symbolizing rare, unpredictable events.; Glitch art style may nod to the volatility and unpredictability inherent in crypto markets.; Possible allusions to classic digital art themes and cyberpunk aesthetic.",
+  "embeddingBlocks": [
+    {
+      "id": "BLOCKSWAN#memetic",
+      "label": "Memetic references",
+      "text": "References the \"black swan\" theory, symbolizing rare, unpredictable events.\nGlitch art style may nod to the volatility and unpredictability inherent in crypto markets.\nPossible allusions to classic digital art themes and cyberpunk aesthetic.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BLOCKSWAN#visual",
+      "label": "Visual summary",
+      "text": "The card features a distorted, glitchy depiction of a black swan with purple and blue hues dominating the background. The swan's form is abstract, with fragmented lines and a digital noise effect, adding to the chaotic vibe. A striking detail is the red streaks dripping from the swan's eye area, enhancing the dramatic impact.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BLOCKSWAN#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a distorted, glitchy depiction of a black swan with purple and blue hues dominating the background. The swan's form is abstract, with fragmented lines and a digital noise effect, adding to the chaotic vibe. A striking detail is the red streaks dripping from the swan's eye area, enhancing the dramatic impact.\n\n🧬 **MEMETIC DNA:**\n- References the \"black swan\" theory, symbolizing rare, unpredictable events.\n- Glitch art style may nod to the volatility and unpredictability inherent in crypto markets.\n- Possible allusions to classic digital art themes and cyberpunk aesthetic.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.316Z",
+  "sourceFactVersion": 1
+}

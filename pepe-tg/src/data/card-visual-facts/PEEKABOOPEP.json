@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "asset": "PEEKABOOPEP",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 3,
+  "artist": "VVD",
+  "supply": 21,
+  "issuance": "September 2025",
+  "textOnCard": [
+    "PEEKABOOPEPE"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference.",
+    "Playful \"peekaboo\" theme, common in meme culture.",
+    "Minimalist design reminiscent of early internet memes."
+  ],
+  "visualSummary": "The card features a minimalist design with a bright blue background. At the bottom, Pepe the Frog peeks over the edge with a mischievous expression, his eyes directed toward the viewer. The simplicity and clean lines emphasize the playful nature of the artwork.",
+  "visualSummaryShort": "The card showcases a minimalist design with a bright blue background. Pepe the Frog peeks over the edge with a playful expression, creating a lighthearted mood.",
+  "visualKeywords": [
+    "blue background",
+    "minimalist",
+    "pepe the frog",
+    "playful",
+    "mischievous",
+    "clean lines"
+  ],
+  "textKeywords": [
+    "peekaboopepe"
+  ],
+  "keywords": [
+    "blue background",
+    "minimalist",
+    "pepe the frog",
+    "playful",
+    "mischievous",
+    "clean lines",
+    "peekaboopepe"
+  ],
+  "embeddingInput": "PEEKABOOPEP (Fake Rares) - Series 18 Card 3\nArtist: VVD\nSupply 21 Issued September 2025\nOn-card text: PEEKABOOPEPE\nVisual summary: The card features a minimalist design with a bright blue background. At the bottom, Pepe the Frog peeks over the edge with a mischievous expression, his eyes directed toward the viewer. The simplicity and clean lines emphasize the playful nature of the artwork.\nMemetic references: Classic Pepe the Frog reference.; Playful \"peekaboo\" theme, common in meme culture.; Minimalist design reminiscent of early internet memes.",
+  "embeddingBlocks": [
+    {
+      "id": "PEEKABOOPEP#text",
+      "label": "On-card text",
+      "text": "PEEKABOOPEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEEKABOOPEP#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference.\nPlayful \"peekaboo\" theme, common in meme culture.\nMinimalist design reminiscent of early internet memes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEEKABOOPEP#visual",
+      "label": "Visual summary",
+      "text": "The card features a minimalist design with a bright blue background. At the bottom, Pepe the Frog peeks over the edge with a mischievous expression, his eyes directed toward the viewer. The simplicity and clean lines emphasize the playful nature of the artwork.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEEKABOOPEP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEEKABOOPEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a minimalist design with a bright blue background. At the bottom, Pepe the Frog peeks over the edge with a mischievous expression, his eyes directed toward the viewer. The simplicity and clean lines emphasize the playful nature of the artwork.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference.\n- Playful \"peekaboo\" theme, common in meme culture.\n- Minimalist design reminiscent of early internet memes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.829Z",
+  "sourceFactVersion": 1
+}

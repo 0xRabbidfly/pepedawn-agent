@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "asset": "RETARDPEPE",
+  "collection": "Fake Rares",
+  "series": 0,
+  "cardNumber": 23,
+  "artist": "JP Jannsen",
+  "supply": null,
+  "issuance": "June 2017",
+  "textOnCard": [
+    "RETARD PEPE",
+    "Stupid is as stupid does"
+  ],
+  "memeticReferences": [
+    "References to Pepe the Frog, a classic meme character.",
+    "Plays on the \"Forrest Gump\" quote, integrating it into meme culture.",
+    "Emphasizes lowbrow humor, a staple in meme communities."
+  ],
+  "visualSummary": "The card features a crudely drawn Pepe the Frog with exaggerated facial features, including a wide mouth and large eyes. The color palette is simple, using flat tones of green, blue, and brown. The style is intentionally rough and cartoonish, adding to the comedic effect.",
+  "visualSummaryShort": "The card showcases a crudely drawn Pepe the Frog with exaggerated features, emphasizing a comedic style. The color palette consists of flat tones of green, blue, and brown.",
+  "visualKeywords": [
+    "pepe",
+    "cartoonish",
+    "exaggerated",
+    "green",
+    "blue",
+    "brown",
+    "comedic",
+    "simple",
+    "rough"
+  ],
+  "textKeywords": [
+    "retard",
+    "stupid",
+    "does"
+  ],
+  "keywords": [
+    "pepe",
+    "cartoonish",
+    "exaggerated",
+    "green",
+    "blue",
+    "brown",
+    "comedic",
+    "simple",
+    "rough",
+    "retard",
+    "stupid",
+    "does"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "RETARDPEPE (Fake Rares) - Series 0 Card 23\nArtist: JP Jannsen\nIssued June 2017\nOn-card text: RETARD PEPE | Stupid is as stupid does\nVisual summary: The card features a crudely drawn Pepe the Frog with exaggerated facial features, including a wide mouth and large eyes. The color palette is simple, using flat tones of green, blue, and brown. The style is intentionally rough and cartoonish, adding to the comedic effect.\nMemetic references: References to Pepe the Frog, a classic meme character.; Plays on the \"Forrest Gump\" quote, integrating it into meme culture.; Emphasizes lowbrow humor, a staple in meme communities.",
+  "embeddingBlocks": [
+    {
+      "id": "RETARDPEPE#text",
+      "label": "On-card text",
+      "text": "RETARD PEPE | Stupid is as stupid does",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "RETARDPEPE#memetic",
+      "label": "Memetic references",
+      "text": "References to Pepe the Frog, a classic meme character.\nPlays on the \"Forrest Gump\" quote, integrating it into meme culture.\nEmphasizes lowbrow humor, a staple in meme communities.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RETARDPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a crudely drawn Pepe the Frog with exaggerated facial features, including a wide mouth and large eyes. The color palette is simple, using flat tones of green, blue, and brown. The style is intentionally rough and cartoonish, adding to the comedic effect.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RETARDPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nRETARD PEPE  \nStupid is as stupid does\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a crudely drawn Pepe the Frog with exaggerated facial features, including a wide mouth and large eyes. The color palette is simple, using flat tones of green, blue, and brown. The style is intentionally rough and cartoonish, adding to the comedic effect.\n\n🧬 **MEMETIC DNA:**\n- References to Pepe the Frog, a classic meme character.\n- Plays on the \"Forrest Gump\" quote, integrating it into meme culture.\n- Emphasizes lowbrow humor, a staple in meme communities.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:33:36.587Z"
+}

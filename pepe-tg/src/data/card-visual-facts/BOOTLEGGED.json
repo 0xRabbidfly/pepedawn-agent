@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "BOOTLEGGED",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 17,
+  "artist": "SeerLight",
+  "supply": 100,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "PEEP"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple in meme culture.",
+    "Retro gaming and vaporwave aesthetics.",
+    "Crypto",
+    "NFT trading card homage."
+  ],
+  "visualSummary": "The card features a neon-hued Pepe the Frog with exaggerated, glowing eyes and a massive grin, set against a starry grid background. The color palette is vibrant, utilizing electric blues, pinks, and oranges to create a retro-futuristic vibe. The card design is reminiscent of vintage trading cards, complete with heart and moon icons and cryptic symbols.",
+  "visualSummaryShort": "The card showcases a neon-colored Pepe the Frog with glowing eyes and a large grin, set against a starry grid background. The vibrant color palette includes electric blues, pinks, and oranges, enhancing its retro-futuristic aesthetic.",
+  "visualKeywords": [
+    "neon",
+    "pepe the frog",
+    "glowing eyes",
+    "starry grid",
+    "vibrant colors",
+    "retro-futuristic",
+    "heart icon",
+    "moon icon",
+    "cryptic symbols"
+  ],
+  "textKeywords": [
+    "peep"
+  ],
+  "keywords": [
+    "neon",
+    "pepe the frog",
+    "glowing eyes",
+    "starry grid",
+    "vibrant colors",
+    "retro-futuristic",
+    "heart icon",
+    "moon icon",
+    "cryptic symbols",
+    "peep"
+  ],
+  "embeddingInput": "BOOTLEGGED (Fake Rares) - Series 8 Card 17\nArtist: SeerLight\nSupply 100 Issued July 2022\nOn-card text: PEEP\nVisual summary: The card features a neon-hued Pepe the Frog with exaggerated, glowing eyes and a massive grin, set against a starry grid background. The color palette is vibrant, utilizing electric blues, pinks, and oranges to create a retro-futuristic vibe. The card design is reminiscent of vintage trading cards, complete with heart and moon icons and cryptic symbols.\nMemetic references: Pepe the Frog, a staple in meme culture.; Retro gaming and vaporwave aesthetics.; Crypto; NFT trading card homage.",
+  "embeddingBlocks": [
+    {
+      "id": "BOOTLEGGED#text",
+      "label": "On-card text",
+      "text": "PEEP",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "BOOTLEGGED#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple in meme culture.\nRetro gaming and vaporwave aesthetics.\nCrypto\nNFT trading card homage.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BOOTLEGGED#visual",
+      "label": "Visual summary",
+      "text": "The card features a neon-hued Pepe the Frog with exaggerated, glowing eyes and a massive grin, set against a starry grid background. The color palette is vibrant, utilizing electric blues, pinks, and oranges to create a retro-futuristic vibe. The card design is reminiscent of vintage trading cards, complete with heart and moon icons and cryptic symbols.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BOOTLEGGED#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEEP\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a neon-hued Pepe the Frog with exaggerated, glowing eyes and a massive grin, set against a starry grid background. The color palette is vibrant, utilizing electric blues, pinks, and oranges to create a retro-futuristic vibe. The card design is reminiscent of vintage trading cards, complete with heart and moon icons and cryptic symbols.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple in meme culture.\n- Retro gaming and vaporwave aesthetics.\n- Crypto/NFT trading card homage.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.324Z",
+  "sourceFactVersion": 1
+}

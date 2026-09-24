@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "asset": "WAGMIWORLD",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 43,
+  "artist": "SuperTrip64",
+  "supply": 100,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "WAGMI WORLD",
+    "PER ASPERA AD ASTRA"
+  ],
+  "memeticReferences": [
+    "References to crypto slang \"WAGMI\" (We’re All Gonna Make It).",
+    "The crowned frog head is reminiscent of Pepe the Frog, a staple in meme culture.",
+    "\"Per Aspera Ad Astra\" suggests an aspirational journey, common in crypto narratives.",
+    "Carnival and fairground imagery reflects the wild, unpredictable nature of the crypto space."
+  ],
+  "visualSummary": "The card features a vibrant and bustling carnival scene with neon lights and a large, crowned frog head as the central entrance. The color palette is electric, dominated by bright blues, greens, and pops of pink and yellow. The style is playful and surreal, with cartoonish elements and a futuristic, digital aesthetic.",
+  "visualSummaryShort": "The card showcases a lively carnival scene highlighted by a large crowned frog head entrance. Its vibrant color palette includes bright blues, greens, pinks, and yellows, creating a playful and surreal atmosphere.",
+  "visualKeywords": [
+    "carnival",
+    "neon lights",
+    "frog head",
+    "bright colors",
+    "surreal",
+    "playful",
+    "cartoonish",
+    "futuristic",
+    "electric",
+    "digital"
+  ],
+  "textKeywords": [
+    "wagmi",
+    "world",
+    "per",
+    "aspera",
+    "astra"
+  ],
+  "keywords": [
+    "carnival",
+    "neon lights",
+    "frog head",
+    "bright colors",
+    "surreal",
+    "playful",
+    "cartoonish",
+    "futuristic",
+    "electric",
+    "digital",
+    "wagmi",
+    "world",
+    "per",
+    "aspera",
+    "astra"
+  ],
+  "embeddingInput": "WAGMIWORLD (Fake Rares) - Series 8 Card 43\nArtist: SuperTrip64\nSupply 100 Issued July 2022\nOn-card text: WAGMI WORLD | PER ASPERA AD ASTRA\nVisual summary: The card features a vibrant and bustling carnival scene with neon lights and a large, crowned frog head as the central entrance. The color palette is electric, dominated by bright blues, greens, and pops of pink and yellow. The style is playful and surreal, with cartoonish elements and a futuristic, digital aesthetic.\nMemetic references: References to crypto slang \"WAGMI\" (We’re All Gonna Make It).; The crowned frog head is reminiscent of Pepe the Frog, a staple in meme culture.; \"Per Aspera Ad Astra\" suggests an aspirational journey, common in crypto narratives.; Carnival and fairground imagery reflects the wild, unpredictable nature of the crypto space.",
+  "embeddingBlocks": [
+    {
+      "id": "WAGMIWORLD#text",
+      "label": "On-card text",
+      "text": "WAGMI WORLD | PER ASPERA AD ASTRA",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "WAGMIWORLD#memetic",
+      "label": "Memetic references",
+      "text": "References to crypto slang \"WAGMI\" (We’re All Gonna Make It).\nThe crowned frog head is reminiscent of Pepe the Frog, a staple in meme culture.\n\"Per Aspera Ad Astra\" suggests an aspirational journey, common in crypto narratives.\nCarnival and fairground imagery reflects the wild, unpredictable nature of the crypto space.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "WAGMIWORLD#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant and bustling carnival scene with neon lights and a large, crowned frog head as the central entrance. The color palette is electric, dominated by bright blues, greens, and pops of pink and yellow. The style is playful and surreal, with cartoonish elements and a futuristic, digital aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "WAGMIWORLD#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nWAGMI WORLD  \nPER ASPERA AD ASTRA\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant and bustling carnival scene with neon lights and a large, crowned frog head as the central entrance. The color palette is electric, dominated by bright blues, greens, and pops of pink and yellow. The style is playful and surreal, with cartoonish elements and a futuristic, digital aesthetic.\n\n🧬 **MEMETIC DNA:**\n- References to crypto slang \"WAGMI\" (We’re All Gonna Make It).\n- The crowned frog head is reminiscent of Pepe the Frog, a staple in meme culture.\n- \"Per Aspera Ad Astra\" suggests an aspirational journey, common in crypto narratives.\n- Carnival and fairground imagery reflects the wild, unpredictable nature of the crypto space.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.179Z",
+  "sourceFactVersion": 1
+}

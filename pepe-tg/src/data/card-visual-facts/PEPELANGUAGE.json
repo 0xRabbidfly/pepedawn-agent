@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "asset": "PEPELANGUAGE",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 38,
+  "artist": "GISELX",
+  "supply": 69,
+  "issuance": "June 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as a coin, blending meme culture with cryptocurrency.",
+    "Cosmic and abstract design elements suggestive of the limitless potential of NFTs.",
+    "The use of neon evokes classic retro-futurism, linking past memes to future tech."
+  ],
+  "visualSummary": "The card features a minimalist design with a cosmic vibe, dominated by dark green and black hues. A Pepe-faced coin floats in the void, with neon green and white lines forming an abstract figure beneath it. The lines give a sense of motion, as if the figure is reaching or floating towards the Pepe coin.",
+  "visualSummaryShort": "The card showcases a minimalist cosmic design with dark green and black colors. A Pepe-faced coin hovers in a void, accompanied by neon green and white lines suggesting motion.",
+  "visualKeywords": [
+    "cosmic",
+    "dark green",
+    "black",
+    "pepe",
+    "coin",
+    "neon",
+    "abstract",
+    "motion",
+    "floating"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "cosmic",
+    "dark green",
+    "black",
+    "pepe",
+    "coin",
+    "neon",
+    "abstract",
+    "motion",
+    "floating"
+  ],
+  "embeddingInput": "PEPELANGUAGE (Fake Rares) - Series 14 Card 38\nArtist: GISELX\nSupply 69 Issued June 2023\nOn-card text: none detected\nVisual summary: The card features a minimalist design with a cosmic vibe, dominated by dark green and black hues. A Pepe-faced coin floats in the void, with neon green and white lines forming an abstract figure beneath it. The lines give a sense of motion, as if the figure is reaching or floating towards the Pepe coin.\nMemetic references: Pepe the Frog as a coin, blending meme culture with cryptocurrency.; Cosmic and abstract design elements suggestive of the limitless potential of NFTs.; The use of neon evokes classic retro-futurism, linking past memes to future tech.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPELANGUAGE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a coin, blending meme culture with cryptocurrency.\nCosmic and abstract design elements suggestive of the limitless potential of NFTs.\nThe use of neon evokes classic retro-futurism, linking past memes to future tech.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPELANGUAGE#visual",
+      "label": "Visual summary",
+      "text": "The card features a minimalist design with a cosmic vibe, dominated by dark green and black hues. A Pepe-faced coin floats in the void, with neon green and white lines forming an abstract figure beneath it. The lines give a sense of motion, as if the figure is reaching or floating towards the Pepe coin.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPELANGUAGE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a minimalist design with a cosmic vibe, dominated by dark green and black hues. A Pepe-faced coin floats in the void, with neon green and white lines forming an abstract figure beneath it. The lines give a sense of motion, as if the figure is reaching or floating towards the Pepe coin.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a coin, blending meme culture with cryptocurrency.\n- Cosmic and abstract design elements suggestive of the limitless potential of NFTs.\n- The use of neon evokes classic retro-futurism, linking past memes to future tech.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.912Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "asset": "RCSAPEPE",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 46,
+  "artist": "netidx",
+  "supply": 1774,
+  "issuance": "October 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pixelated Pepe elements.",
+    "Internet and tech nostalgia with the binary code.",
+    "References to early computer cursors and graphics."
+  ],
+  "visualSummary": "This card features a pixelated green cursor with Pepe-like eyes and a wide mouth, set against a background of binary code. The color palette is simple, with greens dominating the cursor and black and white making up the code. The style is retro, reminiscent of early computer graphics and classic internet memes.",
+  "visualSummaryShort": "The card showcases a pixelated green cursor with Pepe-like eyes and a wide mouth, surrounded by binary code. Its retro style and simple color palette evoke early computer graphics and internet memes.",
+  "visualKeywords": [
+    "cursor",
+    "pepe",
+    "binary code",
+    "green",
+    "retro",
+    "pixelated",
+    "black and white"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "cursor",
+    "pepe",
+    "binary code",
+    "green",
+    "retro",
+    "pixelated",
+    "black and white"
+  ],
+  "embeddingInput": "RCSAPEPE (Fake Rares) - Series 7 Card 46\nArtist: netidx\nSupply 1774 Issued October 2021\nOn-card text: none detected\nVisual summary: This card features a pixelated green cursor with Pepe-like eyes and a wide mouth, set against a background of binary code. The color palette is simple, with greens dominating the cursor and black and white making up the code. The style is retro, reminiscent of early computer graphics and classic internet memes.\nMemetic references: Pixelated Pepe elements.; Internet and tech nostalgia with the binary code.; References to early computer cursors and graphics.",
+  "embeddingBlocks": [
+    {
+      "id": "RCSAPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pixelated Pepe elements.\nInternet and tech nostalgia with the binary code.\nReferences to early computer cursors and graphics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RCSAPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a pixelated green cursor with Pepe-like eyes and a wide mouth, set against a background of binary code. The color palette is simple, with greens dominating the cursor and black and white making up the code. The style is retro, reminiscent of early computer graphics and classic internet memes.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RCSAPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a pixelated green cursor with Pepe-like eyes and a wide mouth, set against a background of binary code. The color palette is simple, with greens dominating the cursor and black and white making up the code. The style is retro, reminiscent of early computer graphics and classic internet memes.\n\n🧬 **MEMETIC DNA:**\n- Pixelated Pepe elements.\n- Internet and tech nostalgia with the binary code.\n- References to early computer cursors and graphics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.076Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "BELLOWSABOVE",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 15,
+  "artist": "Alth0tas",
+  "supply": 67,
+  "issuance": "June 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "The creature resembles a Pepe-inspired character, which is central to meme culture.",
+    "The device with a \"B\" hints at Bitcoin, a nod to crypto culture.",
+    "The overall style evokes a mix of classic comic art and modern meme aesthetics."
+  ],
+  "visualSummary": "The card features a surreal, comic-style illustration of a humanoid creature with an orange hue, crouching while holding a peculiar device. The background is a textured, light lavender, with a wavy purple line adding a dynamic element. The creature’s exaggerated eyes and mischievous grin contribute to the artwork's quirky and whimsical vibe.",
+  "visualSummaryShort": "The card showcases a surreal humanoid creature with an orange hue, crouching and holding a unique device. The whimsical vibe is enhanced by the light lavender background and dynamic purple line.",
+  "visualKeywords": [
+    "humanoid",
+    "orange",
+    "lavender",
+    "purple",
+    "quirky",
+    "whimsical",
+    "comic-style",
+    "crouching",
+    "device",
+    "exaggerated eyes"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "humanoid",
+    "orange",
+    "lavender",
+    "purple",
+    "quirky",
+    "whimsical",
+    "comic-style",
+    "crouching",
+    "device",
+    "exaggerated eyes"
+  ],
+  "embeddingInput": "BELLOWSABOVE (Fake Rares) - Series 15 Card 15\nArtist: Alth0tas\nSupply 67 Issued June 2023\nOn-card text: none detected\nVisual summary: The card features a surreal, comic-style illustration of a humanoid creature with an orange hue, crouching while holding a peculiar device. The background is a textured, light lavender, with a wavy purple line adding a dynamic element. The creature’s exaggerated eyes and mischievous grin contribute to the artwork's quirky and whimsical vibe.\nMemetic references: The creature resembles a Pepe-inspired character, which is central to meme culture.; The device with a \"B\" hints at Bitcoin, a nod to crypto culture.; The overall style evokes a mix of classic comic art and modern meme aesthetics.",
+  "embeddingBlocks": [
+    {
+      "id": "BELLOWSABOVE#memetic",
+      "label": "Memetic references",
+      "text": "The creature resembles a Pepe-inspired character, which is central to meme culture.\nThe device with a \"B\" hints at Bitcoin, a nod to crypto culture.\nThe overall style evokes a mix of classic comic art and modern meme aesthetics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BELLOWSABOVE#visual",
+      "label": "Visual summary",
+      "text": "The card features a surreal, comic-style illustration of a humanoid creature with an orange hue, crouching while holding a peculiar device. The background is a textured, light lavender, with a wavy purple line adding a dynamic element. The creature’s exaggerated eyes and mischievous grin contribute to the artwork's quirky and whimsical vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BELLOWSABOVE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a surreal, comic-style illustration of a humanoid creature with an orange hue, crouching while holding a peculiar device. The background is a textured, light lavender, with a wavy purple line adding a dynamic element. The creature’s exaggerated eyes and mischievous grin contribute to the artwork's quirky and whimsical vibe.\n\n🧬 **MEMETIC DNA:**\n- The creature resembles a Pepe-inspired character, which is central to meme culture.\n- The device with a \"B\" hints at Bitcoin, a nod to crypto culture.\n- The overall style evokes a mix of classic comic art and modern meme aesthetics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.302Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "asset": "BONAPEPE",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 23,
+  "artist": "Pepe Capitol",
+  "supply": 55,
+  "issuance": "November 2023",
+  "textOnCard": [
+    "Javier BonaPepe",
+    "Bitcoin is A dealer of hope"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference, a staple in meme culture.",
+    "A nod to the iconic \"Hope\" poster style, merged with crypto themes.",
+    "Bitcoin mention ties it to the crypto community's ethos and optimism."
+  ],
+  "visualSummary": "The card features a vibrant, psychedelic portrait of a Pepe-inspired figure sitting on a chair, reminiscent of a classic art pose. The color palette is intense, with electric greens, blues, reds, and yellows swirling together, creating a trippy, almost chaotic atmosphere. The artistic style mixes digital painting with a surreal twist, emphasizing bold lines and exaggerated features.",
+  "visualSummaryShort": "The card showcases a psychedelic portrait of a Pepe-inspired figure in a classic pose, surrounded by a vibrant and chaotic color palette. The intense colors and surreal artistic style create a trippy atmosphere.",
+  "visualKeywords": [
+    "psychedelic",
+    "portrait",
+    "vibrant colors",
+    "electric green",
+    "surreal",
+    "bold lines",
+    "exaggerated features",
+    "chaotic",
+    "digital painting",
+    "trippy"
+  ],
+  "textKeywords": [
+    "javier",
+    "bonapepe",
+    "bitcoin",
+    "dealer",
+    "hope"
+  ],
+  "keywords": [
+    "psychedelic",
+    "portrait",
+    "vibrant colors",
+    "electric green",
+    "surreal",
+    "bold lines",
+    "exaggerated features",
+    "chaotic",
+    "digital painting",
+    "trippy",
+    "javier",
+    "bonapepe",
+    "bitcoin",
+    "dealer",
+    "hope"
+  ],
+  "embeddingInput": "BONAPEPE (Fake Rares) - Series 17 Card 23\nArtist: Pepe Capitol\nSupply 55 Issued November 2023\nOn-card text: Javier BonaPepe | Bitcoin is A dealer of hope\nVisual summary: The card features a vibrant, psychedelic portrait of a Pepe-inspired figure sitting on a chair, reminiscent of a classic art pose. The color palette is intense, with electric greens, blues, reds, and yellows swirling together, creating a trippy, almost chaotic atmosphere. The artistic style mixes digital painting with a surreal twist, emphasizing bold lines and exaggerated features.\nMemetic references: Pepe the Frog reference, a staple in meme culture.; A nod to the iconic \"Hope\" poster style, merged with crypto themes.; Bitcoin mention ties it to the crypto community's ethos and optimism.",
+  "embeddingBlocks": [
+    {
+      "id": "BONAPEPE#text",
+      "label": "On-card text",
+      "text": "Javier BonaPepe | Bitcoin is A dealer of hope",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "BONAPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference, a staple in meme culture.\nA nod to the iconic \"Hope\" poster style, merged with crypto themes.\nBitcoin mention ties it to the crypto community's ethos and optimism.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BONAPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant, psychedelic portrait of a Pepe-inspired figure sitting on a chair, reminiscent of a classic art pose. The color palette is intense, with electric greens, blues, reds, and yellows swirling together, creating a trippy, almost chaotic atmosphere. The artistic style mixes digital painting with a surreal twist, emphasizing bold lines and exaggerated features.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BONAPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nJavier BonaPepe  \nBitcoin is A dealer of hope\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant, psychedelic portrait of a Pepe-inspired figure sitting on a chair, reminiscent of a classic art pose. The color palette is intense, with electric greens, blues, reds, and yellows swirling together, creating a trippy, almost chaotic atmosphere. The artistic style mixes digital painting with a surreal twist, emphasizing bold lines and exaggerated features.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference, a staple in meme culture.\n- A nod to the iconic \"Hope\" poster style, merged with crypto themes.\n- Bitcoin mention ties it to the crypto community's ethos and optimism.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.322Z",
+  "sourceFactVersion": 1
+}

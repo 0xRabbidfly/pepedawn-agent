@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "asset": "PEPEPOLEON",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 10,
+  "artist": "Luis Simo",
+  "supply": 21,
+  "issuance": "September 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog meets Napoleon Bonaparte.",
+    "Bitcoin symbol indicating crypto influence.",
+    "Nike swoosh and Adidas stripes for a modern twist."
+  ],
+  "visualSummary": "The card features a portrait of Napoleon with a Pepe twist, sporting a vibrant green face. The military uniform is detailed with gold epaulettes, a Bitcoin medallion, and a Nike swoosh, blending historical and modern symbols. The color palette is rich with deep blues and whites contrasted by the bright green face.",
+  "visualSummaryShort": "The card showcases a Pepe-inspired portrait of Napoleon with a vibrant green face and a detailed military uniform. It combines historical elements with modern symbols, featuring a rich color palette of deep blues and whites.",
+  "visualKeywords": [
+    "napoleon",
+    "pepe",
+    "green face",
+    "military uniform",
+    "gold epaulettes",
+    "bitcoin",
+    "nike",
+    "blue palette",
+    "white accents"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "napoleon",
+    "pepe",
+    "green face",
+    "military uniform",
+    "gold epaulettes",
+    "bitcoin",
+    "nike",
+    "blue palette",
+    "white accents"
+  ],
+  "embeddingInput": "PEPEPOLEON (Fake Rares) - Series 16 Card 10\nArtist: Luis Simo\nSupply 21 Issued September 2023\nOn-card text: none detected\nVisual summary: The card features a portrait of Napoleon with a Pepe twist, sporting a vibrant green face. The military uniform is detailed with gold epaulettes, a Bitcoin medallion, and a Nike swoosh, blending historical and modern symbols. The color palette is rich with deep blues and whites contrasted by the bright green face.\nMemetic references: Pepe the Frog meets Napoleon Bonaparte.; Bitcoin symbol indicating crypto influence.; Nike swoosh and Adidas stripes for a modern twist.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEPOLEON#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog meets Napoleon Bonaparte.\nBitcoin symbol indicating crypto influence.\nNike swoosh and Adidas stripes for a modern twist.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEPOLEON#visual",
+      "label": "Visual summary",
+      "text": "The card features a portrait of Napoleon with a Pepe twist, sporting a vibrant green face. The military uniform is detailed with gold epaulettes, a Bitcoin medallion, and a Nike swoosh, blending historical and modern symbols. The color palette is rich with deep blues and whites contrasted by the bright green face.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEPOLEON#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a portrait of Napoleon with a Pepe twist, sporting a vibrant green face. The military uniform is detailed with gold epaulettes, a Bitcoin medallion, and a Nike swoosh, blending historical and modern symbols. The color palette is rich with deep blues and whites contrasted by the bright green face.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog meets Napoleon Bonaparte.\n- Bitcoin symbol indicating crypto influence.\n- Nike swoosh and Adidas stripes for a modern twist.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.950Z",
+  "sourceFactVersion": 1
+}

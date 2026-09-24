@@ -1,0 +1,106 @@
+{
+  "version": 1,
+  "asset": "VOTEFORPEPE",
+  "collection": "Fake Rares",
+  "series": 0,
+  "cardNumber": 10,
+  "artist": "Looney",
+  "supply": 2006,
+  "issuance": "September 2016",
+  "textOnCard": [
+    "Vote for Pepe",
+    "❤️ = 0 Atk = 24 Spd = 5 Ele = Murica",
+    "Make Memes Great Again",
+    "⭐ Rareness Score ⭐",
+    "15"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as Uncle Sam",
+    "\"Make Memes Great Again\" nods to the \"Make America Great Again\" slogan",
+    "Crypto culture stats like Atk, Spd, and Ele",
+    "Patriotic American symbolism"
+  ],
+  "visualSummary": "This card features a classic Uncle Sam poster with a Pepe twist. Uncle Sam's iconic face is replaced with Pepe the Frog, set against a waving American flag background. The color palette is a patriotic mix of red, white, and blue, with bold text adding to the vintage propaganda feel.",
+  "visualSummaryShort": "The card showcases a Pepe the Frog version of the classic Uncle Sam poster, set against a waving American flag. The color scheme features patriotic red, white, and blue, enhancing the vintage propaganda aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "uncle sam",
+    "american flag",
+    "red",
+    "white",
+    "blue",
+    "vintage",
+    "propaganda",
+    "bold text",
+    "patriotic"
+  ],
+  "textKeywords": [
+    "vote",
+    "atk",
+    "spd",
+    "ele",
+    "murica",
+    "make",
+    "memes",
+    "great",
+    "again",
+    "rareness",
+    "score"
+  ],
+  "keywords": [
+    "pepe",
+    "uncle sam",
+    "american flag",
+    "red",
+    "white",
+    "blue",
+    "vintage",
+    "propaganda",
+    "bold text",
+    "patriotic",
+    "vote",
+    "atk",
+    "spd",
+    "ele",
+    "murica",
+    "make",
+    "memes",
+    "great",
+    "again",
+    "rareness",
+    "score"
+  ],
+  "embeddingInput": "VOTEFORPEPE (Fake Rares) - Series 0 Card 10\nArtist: Looney\nSupply 2006 Issued September 2016\nOn-card text: Vote for Pepe | ❤️ = 0 Atk = 24 Spd = 5 Ele = Murica | Make Memes Great Again | ⭐ Rareness Score ⭐ | 15\nVisual summary: This card features a classic Uncle Sam poster with a Pepe twist. Uncle Sam's iconic face is replaced with Pepe the Frog, set against a waving American flag background. The color palette is a patriotic mix of red, white, and blue, with bold text adding to the vintage propaganda feel.\nMemetic references: Pepe the Frog as Uncle Sam; \"Make Memes Great Again\" nods to the \"Make America Great Again\" slogan; Crypto culture stats like Atk, Spd, and Ele; Patriotic American symbolism",
+  "embeddingBlocks": [
+    {
+      "id": "VOTEFORPEPE#text",
+      "label": "On-card text",
+      "text": "Vote for Pepe | ❤️ = 0 Atk = 24 Spd = 5 Ele = Murica | Make Memes Great Again | ⭐ Rareness Score ⭐ | 15",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "VOTEFORPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as Uncle Sam\n\"Make Memes Great Again\" nods to the \"Make America Great Again\" slogan\nCrypto culture stats like Atk, Spd, and Ele\nPatriotic American symbolism",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "VOTEFORPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a classic Uncle Sam poster with a Pepe twist. Uncle Sam's iconic face is replaced with Pepe the Frog, set against a waving American flag background. The color palette is a patriotic mix of red, white, and blue, with bold text adding to the vintage propaganda feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "VOTEFORPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nVote for Pepe  \n❤️ = 0  Atk = 24  Spd = 5  Ele = Murica  \nMake Memes Great Again  \n⭐ Rareness Score ⭐  \n15  \n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a classic Uncle Sam poster with a Pepe twist. Uncle Sam's iconic face is replaced with Pepe the Frog, set against a waving American flag background. The color palette is a patriotic mix of red, white, and blue, with bold text adding to the vintage propaganda feel.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as Uncle Sam\n- \"Make Memes Great Again\" nods to the \"Make America Great Again\" slogan\n- Crypto culture stats like Atk, Spd, and Ele\n- Patriotic American symbolism",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.175Z",
+  "sourceFactVersion": 1
+}

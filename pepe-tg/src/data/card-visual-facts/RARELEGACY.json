@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "asset": "RARELEGACY",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 3,
+  "artist": "Lord Jamie V. Shill",
+  "supply": 35,
+  "issuance": "July 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog, a staple in meme culture and crypto lore.",
+    "Guy Fawkes mask, symbolizing anonymity, rebellion, and hacker culture.",
+    "References to Anonymous and possibly Occupy movements, hinting at anti-establishment themes."
+  ],
+  "visualSummary": "The card features a Pepe the Frog character cloaked in a black hoodie, holding a Guy Fawkes mask, reminiscent of the Anonymous iconography. The background is a deep, dark purple, adding a sense of mystery and intrigue. The Pepe's expression is thoughtful and enigmatic, contributing to the card's cryptic vibe.",
+  "visualSummaryShort": "The card showcases a Pepe the Frog character in a black hoodie, holding a Guy Fawkes mask against a dark purple background. The overall mood is mysterious and intriguing, with an enigmatic expression on Pepe's face.",
+  "visualKeywords": [
+    "pepe",
+    "hoodie",
+    "guy fawkes",
+    "purple",
+    "mystery",
+    "enigmatic"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "hoodie",
+    "guy fawkes",
+    "purple",
+    "mystery",
+    "enigmatic"
+  ],
+  "embeddingInput": "RARELEGACY (Fake Rares) - Series 15 Card 3\nArtist: Lord Jamie V. Shill\nSupply 35 Issued July 2023\nOn-card text: none detected\nVisual summary: The card features a Pepe the Frog character cloaked in a black hoodie, holding a Guy Fawkes mask, reminiscent of the Anonymous iconography. The background is a deep, dark purple, adding a sense of mystery and intrigue. The Pepe's expression is thoughtful and enigmatic, contributing to the card's cryptic vibe.\nMemetic references: Pepe the Frog, a staple in meme culture and crypto lore.; Guy Fawkes mask, symbolizing anonymity, rebellion, and hacker culture.; References to Anonymous and possibly Occupy movements, hinting at anti-establishment themes.",
+  "embeddingBlocks": [
+    {
+      "id": "RARELEGACY#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple in meme culture and crypto lore.\nGuy Fawkes mask, symbolizing anonymity, rebellion, and hacker culture.\nReferences to Anonymous and possibly Occupy movements, hinting at anti-establishment themes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RARELEGACY#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe the Frog character cloaked in a black hoodie, holding a Guy Fawkes mask, reminiscent of the Anonymous iconography. The background is a deep, dark purple, adding a sense of mystery and intrigue. The Pepe's expression is thoughtful and enigmatic, contributing to the card's cryptic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RARELEGACY#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe the Frog character cloaked in a black hoodie, holding a Guy Fawkes mask, reminiscent of the Anonymous iconography. The background is a deep, dark purple, adding a sense of mystery and intrigue. The Pepe's expression is thoughtful and enigmatic, contributing to the card's cryptic vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple in meme culture and crypto lore.\n- Guy Fawkes mask, symbolizing anonymity, rebellion, and hacker culture.\n- References to Anonymous and possibly Occupy movements, hinting at anti-establishment themes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.068Z",
+  "sourceFactVersion": 1
+}

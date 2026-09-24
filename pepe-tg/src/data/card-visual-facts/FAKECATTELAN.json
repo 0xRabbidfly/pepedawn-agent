@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "asset": "FAKECATTELAN",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 1,
+  "artist": "NNIA",
+  "supply": 21,
+  "issuance": "November 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Reference to the famous \"Comedian\" banana taped to a wall by Maurizio Cattelan.",
+    "Pepe the Frog cultural remix, a staple in meme and NFT culture.",
+    "Playful nod to contemporary art and its sometimes absurd values."
+  ],
+  "visualSummary": "This card features a vibrant yellow frog-like figure, reminiscent of Pepe, taped to a white wall with a wide strip of silver duct tape. The composition is simple yet striking, using a minimalist style that highlights the frog's relaxed pose and the bold color contrast between the yellow figure and the white background.",
+  "visualSummaryShort": "The card showcases a bright yellow frog-like figure taped to a white wall, creating a bold visual contrast. Its minimalist design emphasizes the relaxed pose of the figure against the simple background.",
+  "visualKeywords": [
+    "yellow frog",
+    "white wall",
+    "duct tape",
+    "minimalist",
+    "relaxed pose",
+    "bold contrast"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "yellow frog",
+    "white wall",
+    "duct tape",
+    "minimalist",
+    "relaxed pose",
+    "bold contrast"
+  ],
+  "embeddingInput": "FAKECATTELAN (Fake Rares) - Series 12 Card 1\nArtist: NNIA\nSupply 21 Issued November 2022\nOn-card text: none detected\nVisual summary: This card features a vibrant yellow frog-like figure, reminiscent of Pepe, taped to a white wall with a wide strip of silver duct tape. The composition is simple yet striking, using a minimalist style that highlights the frog's relaxed pose and the bold color contrast between the yellow figure and the white background.\nMemetic references: Reference to the famous \"Comedian\" banana taped to a wall by Maurizio Cattelan.; Pepe the Frog cultural remix, a staple in meme and NFT culture.; Playful nod to contemporary art and its sometimes absurd values.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKECATTELAN#memetic",
+      "label": "Memetic references",
+      "text": "Reference to the famous \"Comedian\" banana taped to a wall by Maurizio Cattelan.\nPepe the Frog cultural remix, a staple in meme and NFT culture.\nPlayful nod to contemporary art and its sometimes absurd values.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKECATTELAN#visual",
+      "label": "Visual summary",
+      "text": "This card features a vibrant yellow frog-like figure, reminiscent of Pepe, taped to a white wall with a wide strip of silver duct tape. The composition is simple yet striking, using a minimalist style that highlights the frog's relaxed pose and the bold color contrast between the yellow figure and the white background.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKECATTELAN#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a vibrant yellow frog-like figure, reminiscent of Pepe, taped to a white wall with a wide strip of silver duct tape. The composition is simple yet striking, using a minimalist style that highlights the frog's relaxed pose and the bold color contrast between the yellow figure and the white background.\n\n🧬 **MEMETIC DNA:**\n- Reference to the famous \"Comedian\" banana taped to a wall by Maurizio Cattelan.\n- Pepe the Frog cultural remix, a staple in meme and NFT culture.\n- Playful nod to contemporary art and its sometimes absurd values.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.469Z",
+  "sourceFactVersion": 1
+}

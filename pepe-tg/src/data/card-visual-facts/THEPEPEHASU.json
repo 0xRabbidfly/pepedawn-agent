@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "asset": "THEPEPEHASU",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 28,
+  "artist": "LE HUES",
+  "supply": 31,
+  "issuance": "May 2023",
+  "textOnCard": [
+    "THE $PEPE HAS YOU",
+    "\"I'm trying to free your mind, froggie. But I can only show you the door. You're the one that has to walk through it.",
+    "Morpheus, The Matrix\""
+  ],
+  "memeticReferences": [
+    "Pepe as Morpheus from \"The Matrix.\"",
+    "Reference to the red pill",
+    "blue pill meme culture.",
+    "Crypto token imagery with the Pepe logo."
+  ],
+  "visualSummary": "This card features a Pepe character styled as Morpheus from \"The Matrix,\" complete with iconic sunglasses and a serious expression. The color palette is dominated by dark greens and blacks, creating a mysterious and intense atmosphere. The composition is bold, with Pepe holding a small token featuring another Pepe face, adding a layer of depth and intrigue.",
+  "visualSummaryShort": "The card showcases a Pepe character resembling Morpheus from 'The Matrix,' wearing sunglasses and exuding a serious demeanor. The dark green and black color scheme enhances the mysterious atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "morpheus",
+    "sunglasses",
+    "dark colors",
+    "serious expression",
+    "token",
+    "mysterious",
+    "intense"
+  ],
+  "textKeywords": [
+    "has",
+    "you",
+    "trying",
+    "free",
+    "mind",
+    "froggie",
+    "but",
+    "can",
+    "only",
+    "show",
+    "door",
+    "one",
+    "walk",
+    "morpheus",
+    "matrix"
+  ],
+  "keywords": [
+    "pepe",
+    "morpheus",
+    "sunglasses",
+    "dark colors",
+    "serious expression",
+    "token",
+    "mysterious",
+    "intense",
+    "has",
+    "you",
+    "trying",
+    "free",
+    "mind",
+    "froggie",
+    "but",
+    "can",
+    "only",
+    "show",
+    "door",
+    "one",
+    "walk",
+    "matrix"
+  ],
+  "embeddingInput": "THEPEPEHASU (Fake Rares) - Series 14 Card 28\nArtist: LE HUES\nSupply 31 Issued May 2023\nOn-card text: THE $PEPE HAS YOU | \"I'm trying to free your mind, froggie. But I can only show you the door. You're the one that has to walk through it. | Morpheus, The Matrix\"\nVisual summary: This card features a Pepe character styled as Morpheus from \"The Matrix,\" complete with iconic sunglasses and a serious expression. The color palette is dominated by dark greens and blacks, creating a mysterious and intense atmosphere. The composition is bold, with Pepe holding a small token featuring another Pepe face, adding a layer of depth and intrigue.\nMemetic references: Pepe as Morpheus from \"The Matrix.\"; Reference to the red pill; blue pill meme culture.; Crypto token imagery with the Pepe logo.",
+  "embeddingBlocks": [
+    {
+      "id": "THEPEPEHASU#text",
+      "label": "On-card text",
+      "text": "THE $PEPE HAS YOU | \"I'm trying to free your mind, froggie. But I can only show you the door. You're the one that has to walk through it. | Morpheus, The Matrix\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "THEPEPEHASU#memetic",
+      "label": "Memetic references",
+      "text": "Pepe as Morpheus from \"The Matrix.\"\nReference to the red pill\nblue pill meme culture.\nCrypto token imagery with the Pepe logo.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "THEPEPEHASU#visual",
+      "label": "Visual summary",
+      "text": "This card features a Pepe character styled as Morpheus from \"The Matrix,\" complete with iconic sunglasses and a serious expression. The color palette is dominated by dark greens and blacks, creating a mysterious and intense atmosphere. The composition is bold, with Pepe holding a small token featuring another Pepe face, adding a layer of depth and intrigue.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "THEPEPEHASU#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nTHE $PEPE HAS YOU  \n\"I'm trying to free your mind, froggie. But I can only show you the door. You're the one that has to walk through it.  \nMorpheus, The Matrix\"\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a Pepe character styled as Morpheus from \"The Matrix,\" complete with iconic sunglasses and a serious expression. The color palette is dominated by dark greens and blacks, creating a mysterious and intense atmosphere. The composition is bold, with Pepe holding a small token featuring another Pepe face, adding a layer of depth and intrigue.\n\n🧬 **MEMETIC DNA:**\n- Pepe as Morpheus from \"The Matrix.\"\n- Reference to the red pill/blue pill meme culture.\n- Crypto token imagery with the Pepe logo.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.148Z",
+  "sourceFactVersion": 1
+}

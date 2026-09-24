@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "asset": "TEMPLEKNIGHT",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 6,
+  "artist": "Darkknight",
+  "supply": 47,
+  "issuance": "April 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure, a staple in meme culture.",
+    "Bitcoin logo representing crypto culture.",
+    "Illuminati symbol referencing conspiracy lore.",
+    "The knight motif adds a fantasy and mystical vibe."
+  ],
+  "visualSummary": "The card features a Pepe character dressed as a medieval knight, holding a glowing orb with the Bitcoin logo. Above Pepe's head, there's an Illuminati-style eye within a triangle, radiating mystical energy. The color palette is dominated by warm, golden tones, giving it an ancient, ethereal feel.",
+  "visualSummaryShort": "The card depicts a Pepe character as a medieval knight, holding a glowing orb with the Bitcoin logo. An Illuminati-style eye radiates mystical energy above, set against warm, golden tones.",
+  "visualKeywords": [
+    "pepe",
+    "knight",
+    "glowing orb",
+    "bitcoin logo",
+    "illuminati eye",
+    "triangle",
+    "mystical energy",
+    "golden tones",
+    "ancient",
+    "ethereal"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "knight",
+    "glowing orb",
+    "bitcoin logo",
+    "illuminati eye",
+    "triangle",
+    "mystical energy",
+    "golden tones",
+    "ancient",
+    "ethereal"
+  ],
+  "embeddingInput": "TEMPLEKNIGHT (Fake Rares) - Series 9 Card 6\nArtist: Darkknight\nSupply 47 Issued April 2022\nOn-card text: none detected\nVisual summary: The card features a Pepe character dressed as a medieval knight, holding a glowing orb with the Bitcoin logo. Above Pepe's head, there's an Illuminati-style eye within a triangle, radiating mystical energy. The color palette is dominated by warm, golden tones, giving it an ancient, ethereal feel.\nMemetic references: Pepe the Frog as a central figure, a staple in meme culture.; Bitcoin logo representing crypto culture.; Illuminati symbol referencing conspiracy lore.; The knight motif adds a fantasy and mystical vibe.",
+  "embeddingBlocks": [
+    {
+      "id": "TEMPLEKNIGHT#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure, a staple in meme culture.\nBitcoin logo representing crypto culture.\nIlluminati symbol referencing conspiracy lore.\nThe knight motif adds a fantasy and mystical vibe.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "TEMPLEKNIGHT#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe character dressed as a medieval knight, holding a glowing orb with the Bitcoin logo. Above Pepe's head, there's an Illuminati-style eye within a triangle, radiating mystical energy. The color palette is dominated by warm, golden tones, giving it an ancient, ethereal feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "TEMPLEKNIGHT#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe character dressed as a medieval knight, holding a glowing orb with the Bitcoin logo. Above Pepe's head, there's an Illuminati-style eye within a triangle, radiating mystical energy. The color palette is dominated by warm, golden tones, giving it an ancient, ethereal feel.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure, a staple in meme culture.\n- Bitcoin logo representing crypto culture.\n- Illuminati symbol referencing conspiracy lore.\n- The knight motif adds a fantasy and mystical vibe.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.138Z",
+  "sourceFactVersion": 1
+}

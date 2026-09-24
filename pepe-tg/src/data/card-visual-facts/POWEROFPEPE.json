@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "asset": "POWEROFPEPE",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 28,
+  "artist": "Chris Granneberg",
+  "supply": 42,
+  "issuance": "October 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery, a staple in meme culture.",
+    "Laser eyes reference, often used in crypto to signify power or bullish sentiment.",
+    "Pixel art evokes nostalgia for early video games."
+  ],
+  "visualSummary": "This card features a pixelated Pepe the Frog with intense laser beams shooting from his eyes. The color palette is dominated by vibrant reds, blues, and yellows, giving it a striking and dynamic appearance. The pixel art style adds a retro, arcade-like feel to the design.",
+  "visualSummaryShort": "The card showcases a pixelated Pepe the Frog with laser beams emanating from his eyes. Its vibrant color palette and retro pixel art style create a dynamic and striking visual impact.",
+  "visualKeywords": [
+    "pepe",
+    "laser beams",
+    "pixel art",
+    "red",
+    "blue",
+    "yellow",
+    "dynamic",
+    "retro",
+    "arcade"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "laser beams",
+    "pixel art",
+    "red",
+    "blue",
+    "yellow",
+    "dynamic",
+    "retro",
+    "arcade"
+  ],
+  "embeddingInput": "POWEROFPEPE (Fake Rares) - Series 16 Card 28\nArtist: Chris Granneberg\nSupply 42 Issued October 2023\nOn-card text: none detected\nVisual summary: This card features a pixelated Pepe the Frog with intense laser beams shooting from his eyes. The color palette is dominated by vibrant reds, blues, and yellows, giving it a striking and dynamic appearance. The pixel art style adds a retro, arcade-like feel to the design.\nMemetic references: Classic Pepe the Frog imagery, a staple in meme culture.; Laser eyes reference, often used in crypto to signify power or bullish sentiment.; Pixel art evokes nostalgia for early video games.",
+  "embeddingBlocks": [
+    {
+      "id": "POWEROFPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery, a staple in meme culture.\nLaser eyes reference, often used in crypto to signify power or bullish sentiment.\nPixel art evokes nostalgia for early video games.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "POWEROFPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a pixelated Pepe the Frog with intense laser beams shooting from his eyes. The color palette is dominated by vibrant reds, blues, and yellows, giving it a striking and dynamic appearance. The pixel art style adds a retro, arcade-like feel to the design.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "POWEROFPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a pixelated Pepe the Frog with intense laser beams shooting from his eyes. The color palette is dominated by vibrant reds, blues, and yellows, giving it a striking and dynamic appearance. The pixel art style adds a retro, arcade-like feel to the design.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery, a staple in meme culture.\n- Laser eyes reference, often used in crypto to signify power or bullish sentiment.\n- Pixel art evokes nostalgia for early video games.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.051Z",
+  "sourceFactVersion": 1
+}

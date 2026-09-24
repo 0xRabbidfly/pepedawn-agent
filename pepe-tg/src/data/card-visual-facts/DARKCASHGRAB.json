@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "asset": "DARKCASHGRAB",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 17,
+  "artist": "Carsonated",
+  "supply": 29,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "dark cash grab",
+    "Petty Hate Machine"
+  ],
+  "memeticReferences": [
+    "References to \"The Matrix\" with the pill choice.",
+    "Pepe the Frog influence with the green skin tone.",
+    "Plays on the notion of cash grabs and NFT culture with satirical undertones."
+  ],
+  "visualSummary": "The card features a green-tinted, edited photograph of a man with a wild hairstyle and intense expression. Below, two hands are extended, each holding different colored pills against an orange background. The overall style is a mix of digital manipulation and meme art, using bold, contrasting colors.",
+  "visualSummaryShort": "The card showcases a green-tinted image of a man with a wild hairstyle and an intense expression. Below, hands hold colorful pills against a vibrant orange background.",
+  "visualKeywords": [
+    "green tint",
+    "wild hairstyle",
+    "intense expression",
+    "colorful pills",
+    "orange background",
+    "digital manipulation",
+    "meme art",
+    "bold colors"
+  ],
+  "textKeywords": [
+    "dark",
+    "cash",
+    "grab",
+    "petty",
+    "hate",
+    "machine"
+  ],
+  "keywords": [
+    "green tint",
+    "wild hairstyle",
+    "intense expression",
+    "colorful pills",
+    "orange background",
+    "digital manipulation",
+    "meme art",
+    "bold colors",
+    "dark",
+    "cash",
+    "grab",
+    "petty",
+    "hate",
+    "machine"
+  ],
+  "embeddingInput": "DARKCASHGRAB (Fake Rares) - Series 1 Card 17\nArtist: Carsonated\nSupply 29 Issued October 2021\nOn-card text: dark cash grab | Petty Hate Machine\nVisual summary: The card features a green-tinted, edited photograph of a man with a wild hairstyle and intense expression. Below, two hands are extended, each holding different colored pills against an orange background. The overall style is a mix of digital manipulation and meme art, using bold, contrasting colors.\nMemetic references: References to \"The Matrix\" with the pill choice.; Pepe the Frog influence with the green skin tone.; Plays on the notion of cash grabs and NFT culture with satirical undertones.",
+  "embeddingBlocks": [
+    {
+      "id": "DARKCASHGRAB#text",
+      "label": "On-card text",
+      "text": "dark cash grab | Petty Hate Machine",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "DARKCASHGRAB#memetic",
+      "label": "Memetic references",
+      "text": "References to \"The Matrix\" with the pill choice.\nPepe the Frog influence with the green skin tone.\nPlays on the notion of cash grabs and NFT culture with satirical undertones.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "DARKCASHGRAB#visual",
+      "label": "Visual summary",
+      "text": "The card features a green-tinted, edited photograph of a man with a wild hairstyle and intense expression. Below, two hands are extended, each holding different colored pills against an orange background. The overall style is a mix of digital manipulation and meme art, using bold, contrasting colors.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "DARKCASHGRAB#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\ndark cash grab  \nPetty Hate Machine\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a green-tinted, edited photograph of a man with a wild hairstyle and intense expression. Below, two hands are extended, each holding different colored pills against an orange background. The overall style is a mix of digital manipulation and meme art, using bold, contrasting colors.\n\n🧬 **MEMETIC DNA:**\n- References to \"The Matrix\" with the pill choice.\n- Pepe the Frog influence with the green skin tone.\n- Plays on the notion of cash grabs and NFT culture with satirical undertones.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.385Z",
+  "sourceFactVersion": 1
+}

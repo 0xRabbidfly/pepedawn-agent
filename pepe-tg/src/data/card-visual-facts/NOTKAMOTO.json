@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "asset": "NOTKAMOTO",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 1,
+  "artist": "Matt Kane",
+  "supply": 298,
+  "issuance": "June 2022",
+  "textOnCard": [
+    "Notkamoto Card. \"A FAKE CHAPTER IN RARE HISTORY\" Wait a minute, I'm NOT the creator of Bitcoin. ★ Rareness Score ★ null."
+  ],
+  "memeticReferences": [
+    "Reference to the mystery of Satoshi Nakamoto, the pseudonymous creator of Bitcoin.",
+    "Elements of crypto culture through the humorous declaration of not being the creator.",
+    "Visual style mimics banknotes, adding a layer of irony to the crypto theme."
+  ],
+  "visualSummary": "The card features a pixelated, vibrant portrait of a man with exaggerated, colorful features reminiscent of pop art. The color palette is a psychedelic mix of blues, greens, pinks, and oranges, creating a visually striking and chaotic composition. Ornate patterns and decorative elements surround the central figure, giving it an antique currency feel.",
+  "visualSummaryShort": "The card showcases a vibrant, pixelated portrait of a man with exaggerated features in a psychedelic color palette. Ornate patterns and decorative elements enhance the chaotic and visually striking composition.",
+  "visualKeywords": [
+    "pixelated",
+    "portrait",
+    "vibrant",
+    "psychedelic",
+    "blue",
+    "green",
+    "pink",
+    "orange",
+    "ornate",
+    "chaotic"
+  ],
+  "textKeywords": [
+    "notkamoto",
+    "chapter",
+    "history",
+    "wait",
+    "minute",
+    "not",
+    "creator",
+    "bitcoin",
+    "rareness",
+    "score",
+    "null"
+  ],
+  "keywords": [
+    "pixelated",
+    "portrait",
+    "vibrant",
+    "psychedelic",
+    "blue",
+    "green",
+    "pink",
+    "orange",
+    "ornate",
+    "chaotic",
+    "notkamoto",
+    "chapter",
+    "history",
+    "wait",
+    "minute",
+    "not",
+    "creator",
+    "bitcoin",
+    "rareness",
+    "score",
+    "null"
+  ],
+  "embeddingInput": "NOTKAMOTO (Fake Rares) - Series 8 Card 1\nArtist: Matt Kane\nSupply 298 Issued June 2022\nOn-card text: Notkamoto Card. \"A FAKE CHAPTER IN RARE HISTORY\" Wait a minute, I'm NOT the creator of Bitcoin. ★ Rareness Score ★ null.\nVisual summary: The card features a pixelated, vibrant portrait of a man with exaggerated, colorful features reminiscent of pop art. The color palette is a psychedelic mix of blues, greens, pinks, and oranges, creating a visually striking and chaotic composition. Ornate patterns and decorative elements surround the central figure, giving it an antique currency feel.\nMemetic references: Reference to the mystery of Satoshi Nakamoto, the pseudonymous creator of Bitcoin.; Elements of crypto culture through the humorous declaration of not being the creator.; Visual style mimics banknotes, adding a layer of irony to the crypto theme.",
+  "embeddingBlocks": [
+    {
+      "id": "NOTKAMOTO#text",
+      "label": "On-card text",
+      "text": "Notkamoto Card. \"A FAKE CHAPTER IN RARE HISTORY\" Wait a minute, I'm NOT the creator of Bitcoin. ★ Rareness Score ★ null.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "NOTKAMOTO#memetic",
+      "label": "Memetic references",
+      "text": "Reference to the mystery of Satoshi Nakamoto, the pseudonymous creator of Bitcoin.\nElements of crypto culture through the humorous declaration of not being the creator.\nVisual style mimics banknotes, adding a layer of irony to the crypto theme.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "NOTKAMOTO#visual",
+      "label": "Visual summary",
+      "text": "The card features a pixelated, vibrant portrait of a man with exaggerated, colorful features reminiscent of pop art. The color palette is a psychedelic mix of blues, greens, pinks, and oranges, creating a visually striking and chaotic composition. Ornate patterns and decorative elements surround the central figure, giving it an antique currency feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "NOTKAMOTO#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nNotkamoto Card. \"A FAKE CHAPTER IN RARE HISTORY\" Wait a minute, I'm NOT the creator of Bitcoin. ★ Rareness Score ★ null.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a pixelated, vibrant portrait of a man with exaggerated, colorful features reminiscent of pop art. The color palette is a psychedelic mix of blues, greens, pinks, and oranges, creating a visually striking and chaotic composition. Ornate patterns and decorative elements surround the central figure, giving it an antique currency feel.\n\n🧬 **MEMETIC DNA:**\n- Reference to the mystery of Satoshi Nakamoto, the pseudonymous creator of Bitcoin.\n- Elements of crypto culture through the humorous declaration of not being the creator.\n- Visual style mimics banknotes, adding a layer of irony to the crypto theme.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.801Z",
+  "sourceFactVersion": 1
+}

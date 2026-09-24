@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "asset": "SCRILLACARD",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 35,
+  "artist": "NORMANCOMICS",
+  "supply": 100,
+  "issuance": "May 2022",
+  "textOnCard": [
+    "Skrillex Scratch Garff",
+    "Feels Fake Man",
+    "RARE SCRILLA PEPE",
+    "Fake Rares Series 7",
+    "Rare Pepe Inscrillaation"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure, a staple of meme culture.",
+    "References to Skrillex and DJ culture.",
+    "\"Feels Fake Man\" is a twist on the classic \"Feels Bad Man\" meme.",
+    "Incorporation of crypto and NFT culture with \"Rare\" and \"Fake Rares\" themes."
+  ],
+  "visualSummary": "The card boasts a vibrant, chaotic composition filled with iconic Pepe the Frog characters engaging in DJ and music culture activities. The color palette is an electric mix of neon greens, pinks, blues, and purples, creating a lively and intense visual experience. The artistic style combines elements of street art and digital collage, with a heavy emphasis on bold outlines and graffiti-like text.",
+  "visualSummaryShort": "The card features a vibrant and chaotic scene with Pepe the Frog characters immersed in DJ culture. Its electric color palette and street art style create an intense visual experience.",
+  "visualKeywords": [
+    "pepe",
+    "dj",
+    "neon colors",
+    "graffiti",
+    "chaotic",
+    "street art",
+    "music",
+    "digital collage",
+    "bold outlines",
+    "intense"
+  ],
+  "textKeywords": [
+    "skrillex",
+    "scratch",
+    "garff",
+    "feels",
+    "man",
+    "scrilla",
+    "series",
+    "inscrillaation"
+  ],
+  "keywords": [
+    "pepe",
+    "dj",
+    "neon colors",
+    "graffiti",
+    "chaotic",
+    "street art",
+    "music",
+    "digital collage",
+    "bold outlines",
+    "intense",
+    "skrillex",
+    "scratch",
+    "garff",
+    "feels",
+    "man",
+    "scrilla",
+    "series",
+    "inscrillaation"
+  ],
+  "embeddingInput": "SCRILLACARD (Fake Rares) - Series 7 Card 35\nArtist: NORMANCOMICS\nSupply 100 Issued May 2022\nOn-card text: Skrillex Scratch Garff | Feels Fake Man | RARE SCRILLA PEPE | Fake Rares Series 7 | Rare Pepe Inscrillaation\nVisual summary: The card boasts a vibrant, chaotic composition filled with iconic Pepe the Frog characters engaging in DJ and music culture activities. The color palette is an electric mix of neon greens, pinks, blues, and purples, creating a lively and intense visual experience. The artistic style combines elements of street art and digital collage, with a heavy emphasis on bold outlines and graffiti-like text.\nMemetic references: Pepe the Frog as a central figure, a staple of meme culture.; References to Skrillex and DJ culture.; \"Feels Fake Man\" is a twist on the classic \"Feels Bad Man\" meme.; Incorporation of crypto and NFT culture with \"Rare\" and \"Fake Rares\" themes.",
+  "embeddingBlocks": [
+    {
+      "id": "SCRILLACARD#text",
+      "label": "On-card text",
+      "text": "Skrillex Scratch Garff | Feels Fake Man | RARE SCRILLA PEPE | Fake Rares Series 7 | Rare Pepe Inscrillaation",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "SCRILLACARD#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure, a staple of meme culture.\nReferences to Skrillex and DJ culture.\n\"Feels Fake Man\" is a twist on the classic \"Feels Bad Man\" meme.\nIncorporation of crypto and NFT culture with \"Rare\" and \"Fake Rares\" themes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SCRILLACARD#visual",
+      "label": "Visual summary",
+      "text": "The card boasts a vibrant, chaotic composition filled with iconic Pepe the Frog characters engaging in DJ and music culture activities. The color palette is an electric mix of neon greens, pinks, blues, and purples, creating a lively and intense visual experience. The artistic style combines elements of street art and digital collage, with a heavy emphasis on bold outlines and graffiti-like text.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SCRILLACARD#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- Skrillex Scratch Garff\n- Feels Fake Man\n- RARE SCRILLA PEPE\n- Fake Rares Series 7\n- Rare Pepe Inscrillaation\n\n🎨 **VISUAL BREAKDOWN:**\nThe card boasts a vibrant, chaotic composition filled with iconic Pepe the Frog characters engaging in DJ and music culture activities. The color palette is an electric mix of neon greens, pinks, blues, and purples, creating a lively and intense visual experience. The artistic style combines elements of street art and digital collage, with a heavy emphasis on bold outlines and graffiti-like text.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure, a staple of meme culture.\n- References to Skrillex and DJ culture.\n- \"Feels Fake Man\" is a twist on the classic \"Feels Bad Man\" meme.\n- Incorporation of crypto and NFT culture with \"Rare\" and \"Fake Rares\" themes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.101Z",
+  "sourceFactVersion": 1
+}

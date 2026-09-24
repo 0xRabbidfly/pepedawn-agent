@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "UCANTSEEMEME",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 49,
+  "artist": "Easy B",
+  "supply": 100,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "UC MEME, FAKE RARE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog face, a staple in meme culture.",
+    "Reference to a famous wrestler, known for the catchphrase \"You can't see me.\"",
+    "\"Fake Rare\" text, nodding to the NFT culture of unique, collectible digital art."
+  ],
+  "visualSummary": "This card features a muscular, green-skinned figure striking a pose reminiscent of a famous wrestler, with Pepe the Frog's iconic face. The color palette is dominated by vibrant greens and deep blacks, giving it a comic book vibe. The artistic style is bold and graphic, with a strong emphasis on shading and contrast.",
+  "visualSummaryShort": "The card showcases a muscular green-skinned figure with Pepe the Frog's face, posed dramatically. It features a vibrant color palette of greens and blacks, emphasizing a bold comic book style.",
+  "visualKeywords": [
+    "muscular",
+    "green",
+    "pepe the frog",
+    "comic book",
+    "vibrant colors",
+    "bold",
+    "graphic",
+    "shading",
+    "contrast"
+  ],
+  "textKeywords": [
+    "meme"
+  ],
+  "keywords": [
+    "muscular",
+    "green",
+    "pepe the frog",
+    "comic book",
+    "vibrant colors",
+    "bold",
+    "graphic",
+    "shading",
+    "contrast",
+    "meme"
+  ],
+  "embeddingInput": "UCANTSEEMEME (Fake Rares) - Series 11 Card 49\nArtist: Easy B\nSupply 100 Issued September 2022\nOn-card text: UC MEME, FAKE RARE\nVisual summary: This card features a muscular, green-skinned figure striking a pose reminiscent of a famous wrestler, with Pepe the Frog's iconic face. The color palette is dominated by vibrant greens and deep blacks, giving it a comic book vibe. The artistic style is bold and graphic, with a strong emphasis on shading and contrast.\nMemetic references: Pepe the Frog face, a staple in meme culture.; Reference to a famous wrestler, known for the catchphrase \"You can't see me.\"; \"Fake Rare\" text, nodding to the NFT culture of unique, collectible digital art.",
+  "embeddingBlocks": [
+    {
+      "id": "UCANTSEEMEME#text",
+      "label": "On-card text",
+      "text": "UC MEME, FAKE RARE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "UCANTSEEMEME#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog face, a staple in meme culture.\nReference to a famous wrestler, known for the catchphrase \"You can't see me.\"\n\"Fake Rare\" text, nodding to the NFT culture of unique, collectible digital art.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "UCANTSEEMEME#visual",
+      "label": "Visual summary",
+      "text": "This card features a muscular, green-skinned figure striking a pose reminiscent of a famous wrestler, with Pepe the Frog's iconic face. The color palette is dominated by vibrant greens and deep blacks, giving it a comic book vibe. The artistic style is bold and graphic, with a strong emphasis on shading and contrast.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "UCANTSEEMEME#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nUC MEME, FAKE RARE\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a muscular, green-skinned figure striking a pose reminiscent of a famous wrestler, with Pepe the Frog's iconic face. The color palette is dominated by vibrant greens and deep blacks, giving it a comic book vibe. The artistic style is bold and graphic, with a strong emphasis on shading and contrast.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog face, a staple in meme culture.\n- Reference to a famous wrestler, known for the catchphrase \"You can't see me.\"\n- \"Fake Rare\" text, nodding to the NFT culture of unique, collectible digital art.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.170Z",
+  "sourceFactVersion": 1
+}

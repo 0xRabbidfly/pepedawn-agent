@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "asset": "DRAWMEFRENCH",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 11,
+  "artist": "dark0",
+  "supply": 69,
+  "issuance": "September 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog reference, a staple in meme culture.",
+    "Classical art homage, possibly referencing famous reclining nude paintings.",
+    "Crypto culture nod with the luxurious necklace, symbolizing wealth."
+  ],
+  "visualSummary": "The card features a reclining green frog character with long hair, reminiscent of classical art styles. The background is rich with deep blues and golds, adding a luxurious feel, while the brushstrokes give it a painted texture. The character wears a golden necklace, adding a touch of opulence to the relaxed pose.",
+  "visualSummaryShort": "The card showcases a reclining green frog with long hair, set against a backdrop of deep blues and golds. The luxurious atmosphere is enhanced by the character's golden necklace and the painted texture of the artwork.",
+  "visualKeywords": [
+    "frog",
+    "long hair",
+    "blue",
+    "gold",
+    "luxurious",
+    "painted texture",
+    "necklace",
+    "reclining",
+    "classical art"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "frog",
+    "long hair",
+    "blue",
+    "gold",
+    "luxurious",
+    "painted texture",
+    "necklace",
+    "reclining",
+    "classical art"
+  ],
+  "embeddingInput": "DRAWMEFRENCH (Fake Rares) - Series 18 Card 11\nArtist: dark0\nSupply 69 Issued September 2023\nOn-card text: none detected\nVisual summary: The card features a reclining green frog character with long hair, reminiscent of classical art styles. The background is rich with deep blues and golds, adding a luxurious feel, while the brushstrokes give it a painted texture. The character wears a golden necklace, adding a touch of opulence to the relaxed pose.\nMemetic references: Pepe the Frog reference, a staple in meme culture.; Classical art homage, possibly referencing famous reclining nude paintings.; Crypto culture nod with the luxurious necklace, symbolizing wealth.",
+  "embeddingBlocks": [
+    {
+      "id": "DRAWMEFRENCH#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference, a staple in meme culture.\nClassical art homage, possibly referencing famous reclining nude paintings.\nCrypto culture nod with the luxurious necklace, symbolizing wealth.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "DRAWMEFRENCH#visual",
+      "label": "Visual summary",
+      "text": "The card features a reclining green frog character with long hair, reminiscent of classical art styles. The background is rich with deep blues and golds, adding a luxurious feel, while the brushstrokes give it a painted texture. The character wears a golden necklace, adding a touch of opulence to the relaxed pose.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "DRAWMEFRENCH#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a reclining green frog character with long hair, reminiscent of classical art styles. The background is rich with deep blues and golds, adding a luxurious feel, while the brushstrokes give it a painted texture. The character wears a golden necklace, adding a touch of opulence to the relaxed pose.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference, a staple in meme culture.\n- Classical art homage, possibly referencing famous reclining nude paintings.\n- Crypto culture nod with the luxurious necklace, symbolizing wealth.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.414Z",
+  "sourceFactVersion": 1
+}

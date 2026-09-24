@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "asset": "PPTAROTXVIII",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 8,
+  "artist": "SHEWOLF",
+  "supply": 21,
+  "issuance": "July 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog face, a staple in meme culture.",
+    "Tarot card reference, specifically \"The Moon\" (XVIII), suggesting mystery and intuition.",
+    "Sun imagery, often associated with enlightenment and energy.",
+    "Crypto art aesthetics with vibrant and surreal visuals."
+  ],
+  "visualSummary": "The card features a celestial Pepe face with a sly smile, embedded in a sun-like orb. The background is a dreamy, surreal landscape with golden hues and a glowing aura, evoking a mystical and otherworldly vibe. The artistic style blends elements of digital art with a touch of whimsical fantasy.",
+  "visualSummaryShort": "The card showcases a celestial Pepe face within a sun-like orb, surrounded by a dreamy landscape. The golden hues and glowing aura create a mystical and otherworldly atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "sun",
+    "golden",
+    "dreamy",
+    "surreal",
+    "mystical",
+    "whimsical",
+    "fantasy",
+    "aura"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "sun",
+    "golden",
+    "dreamy",
+    "surreal",
+    "mystical",
+    "whimsical",
+    "fantasy",
+    "aura"
+  ],
+  "embeddingInput": "PPTAROTXVIII (Fake Rares) - Series 15 Card 8\nArtist: SHEWOLF\nSupply 21 Issued July 2023\nOn-card text: none detected\nVisual summary: The card features a celestial Pepe face with a sly smile, embedded in a sun-like orb. The background is a dreamy, surreal landscape with golden hues and a glowing aura, evoking a mystical and otherworldly vibe. The artistic style blends elements of digital art with a touch of whimsical fantasy.\nMemetic references: Pepe the Frog face, a staple in meme culture.; Tarot card reference, specifically \"The Moon\" (XVIII), suggesting mystery and intuition.; Sun imagery, often associated with enlightenment and energy.; Crypto art aesthetics with vibrant and surreal visuals.",
+  "embeddingBlocks": [
+    {
+      "id": "PPTAROTXVIII#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog face, a staple in meme culture.\nTarot card reference, specifically \"The Moon\" (XVIII), suggesting mystery and intuition.\nSun imagery, often associated with enlightenment and energy.\nCrypto art aesthetics with vibrant and surreal visuals.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PPTAROTXVIII#visual",
+      "label": "Visual summary",
+      "text": "The card features a celestial Pepe face with a sly smile, embedded in a sun-like orb. The background is a dreamy, surreal landscape with golden hues and a glowing aura, evoking a mystical and otherworldly vibe. The artistic style blends elements of digital art with a touch of whimsical fantasy.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PPTAROTXVIII#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a celestial Pepe face with a sly smile, embedded in a sun-like orb. The background is a dreamy, surreal landscape with golden hues and a glowing aura, evoking a mystical and otherworldly vibe. The artistic style blends elements of digital art with a touch of whimsical fantasy.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog face, a staple in meme culture.\n- Tarot card reference, specifically \"The Moon\" (XVIII), suggesting mystery and intuition.\n- Sun imagery, often associated with enlightenment and energy.\n- Crypto art aesthetics with vibrant and surreal visuals.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.053Z",
+  "sourceFactVersion": 1
+}

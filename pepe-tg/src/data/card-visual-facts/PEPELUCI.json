@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "asset": "PEPELUCI",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 41,
+  "artist": "Lord Jamie V Shill x Dita Crypto",
+  "supply": 54,
+  "issuance": "September 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "The smiley face is reminiscent of classic emoji culture.",
+    "The exaggerated features and style are reminiscent of internet art and meme aesthetics.",
+    "The surreal, tactile quality hints at a digital interpretation of traditional art forms."
+  ],
+  "visualSummary": "The card features a surreal couple with textured, clay-like skin, holding an orange smiley face with big, googly eyes. The background is a warm, solid orange, complementing the whimsical and eerie style. The figures have exaggerated features, with one sporting bright red lips, giving the piece a dreamlike and slightly unsettling vibe.",
+  "visualSummaryShort": "The card showcases a surreal couple with textured, clay-like skin, holding an orange smiley face. The warm orange background enhances the whimsical and eerie atmosphere.",
+  "visualKeywords": [
+    "surreal",
+    "clay-like",
+    "orange",
+    "googly eyes",
+    "exaggerated features",
+    "dreamlike",
+    "unsettling"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "surreal",
+    "clay-like",
+    "orange",
+    "googly eyes",
+    "exaggerated features",
+    "dreamlike",
+    "unsettling"
+  ],
+  "embeddingInput": "PEPELUCI (Fake Rares) - Series 15 Card 41\nArtist: Lord Jamie V Shill x Dita Crypto\nSupply 54 Issued September 2023\nOn-card text: none detected\nVisual summary: The card features a surreal couple with textured, clay-like skin, holding an orange smiley face with big, googly eyes. The background is a warm, solid orange, complementing the whimsical and eerie style. The figures have exaggerated features, with one sporting bright red lips, giving the piece a dreamlike and slightly unsettling vibe.\nMemetic references: The smiley face is reminiscent of classic emoji culture.; The exaggerated features and style are reminiscent of internet art and meme aesthetics.; The surreal, tactile quality hints at a digital interpretation of traditional art forms.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPELUCI#memetic",
+      "label": "Memetic references",
+      "text": "The smiley face is reminiscent of classic emoji culture.\nThe exaggerated features and style are reminiscent of internet art and meme aesthetics.\nThe surreal, tactile quality hints at a digital interpretation of traditional art forms.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPELUCI#visual",
+      "label": "Visual summary",
+      "text": "The card features a surreal couple with textured, clay-like skin, holding an orange smiley face with big, googly eyes. The background is a warm, solid orange, complementing the whimsical and eerie style. The figures have exaggerated features, with one sporting bright red lips, giving the piece a dreamlike and slightly unsettling vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPELUCI#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a surreal couple with textured, clay-like skin, holding an orange smiley face with big, googly eyes. The background is a warm, solid orange, complementing the whimsical and eerie style. The figures have exaggerated features, with one sporting bright red lips, giving the piece a dreamlike and slightly unsettling vibe.\n\n🧬 **MEMETIC DNA:**\n- The smiley face is reminiscent of classic emoji culture.\n- The exaggerated features and style are reminiscent of internet art and meme aesthetics.\n- The surreal, tactile quality hints at a digital interpretation of traditional art forms.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.920Z",
+  "sourceFactVersion": 1
+}

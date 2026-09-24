@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "asset": "WHITEPEPER",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 22,
+  "artist": "netidx",
+  "supply": 256,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "DEFEND OUR FREEDOM"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog, a staple in meme culture.",
+    "References to vintage propaganda posters.",
+    "Themes of freedom and introspection, common in crypto narratives."
+  ],
+  "visualSummary": "The card features a classic Pepe character sitting pensively at a desk, deep in thought. The background includes a poster with bold text and a vintage propaganda style. The color palette is muted, with greens, purples, and blacks dominating the scene, creating a serious yet nostalgic atmosphere.",
+  "visualSummaryShort": "The card depicts a classic Pepe character sitting at a desk, lost in thought. The muted color palette and vintage propaganda poster create a serious and nostalgic mood.",
+  "visualKeywords": [
+    "pepe",
+    "desk",
+    "poster",
+    "propaganda",
+    "muted colors",
+    "greens",
+    "purples",
+    "blacks",
+    "thoughtful",
+    "nostalgic"
+  ],
+  "textKeywords": [
+    "defend",
+    "our",
+    "freedom"
+  ],
+  "keywords": [
+    "pepe",
+    "desk",
+    "poster",
+    "propaganda",
+    "muted colors",
+    "greens",
+    "purples",
+    "blacks",
+    "thoughtful",
+    "nostalgic",
+    "defend",
+    "our",
+    "freedom"
+  ],
+  "embeddingInput": "WHITEPEPER (Fake Rares) - Series 10 Card 22\nArtist: netidx\nSupply 256 Issued February 2022\nOn-card text: DEFEND OUR FREEDOM\nVisual summary: The card features a classic Pepe character sitting pensively at a desk, deep in thought. The background includes a poster with bold text and a vintage propaganda style. The color palette is muted, with greens, purples, and blacks dominating the scene, creating a serious yet nostalgic atmosphere.\nMemetic references: Classic Pepe the Frog, a staple in meme culture.; References to vintage propaganda posters.; Themes of freedom and introspection, common in crypto narratives.",
+  "embeddingBlocks": [
+    {
+      "id": "WHITEPEPER#text",
+      "label": "On-card text",
+      "text": "DEFEND OUR FREEDOM",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "WHITEPEPER#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog, a staple in meme culture.\nReferences to vintage propaganda posters.\nThemes of freedom and introspection, common in crypto narratives.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "WHITEPEPER#visual",
+      "label": "Visual summary",
+      "text": "The card features a classic Pepe character sitting pensively at a desk, deep in thought. The background includes a poster with bold text and a vintage propaganda style. The color palette is muted, with greens, purples, and blacks dominating the scene, creating a serious yet nostalgic atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "WHITEPEPER#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nDEFEND OUR FREEDOM\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a classic Pepe character sitting pensively at a desk, deep in thought. The background includes a poster with bold text and a vintage propaganda style. The color palette is muted, with greens, purples, and blacks dominating the scene, creating a serious yet nostalgic atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog, a staple in meme culture.\n- References to vintage propaganda posters.\n- Themes of freedom and introspection, common in crypto narratives.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.187Z",
+  "sourceFactVersion": 1
+}

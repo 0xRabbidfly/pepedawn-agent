@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "FAKEBASQPEPE",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 6,
+  "artist": "Zima Blue",
+  "supply": 67,
+  "issuance": "November 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as a warrior, a nod to the meme’s versatility.",
+    "Basquiat-inspired style, merging high art with meme culture.",
+    "The sword signifies strength and defiance, common themes in crypto culture."
+  ],
+  "visualSummary": "This card features a vibrant, chaotic mix of colors, primarily yellows, blues, and greens, with a skeletal figure resembling Pepe holding a sword. The art style channels a raw, graffiti-like aesthetic reminiscent of Jean-Michel Basquiat, with sketchy lines and abstract forms creating a sense of dynamic motion. The background is a whirlwind of abstract brushstrokes, giving the piece an energetic and rebellious vibe.",
+  "visualSummaryShort": "The card showcases a skeletal figure resembling Pepe wielding a sword amidst a vibrant mix of yellows, blues, and greens. The graffiti-like art style and chaotic background create a dynamic and rebellious atmosphere.",
+  "visualKeywords": [
+    "skeletal figure",
+    "sword",
+    "graffiti",
+    "abstract",
+    "vibrant colors",
+    "dynamic motion",
+    "chaotic",
+    "energetic",
+    "rebellious",
+    "brushstrokes"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "skeletal figure",
+    "sword",
+    "graffiti",
+    "abstract",
+    "vibrant colors",
+    "dynamic motion",
+    "chaotic",
+    "energetic",
+    "rebellious",
+    "brushstrokes"
+  ],
+  "embeddingInput": "FAKEBASQPEPE (Fake Rares) - Series 7 Card 6\nArtist: Zima Blue\nSupply 67 Issued November 2021\nOn-card text: none detected\nVisual summary: This card features a vibrant, chaotic mix of colors, primarily yellows, blues, and greens, with a skeletal figure resembling Pepe holding a sword. The art style channels a raw, graffiti-like aesthetic reminiscent of Jean-Michel Basquiat, with sketchy lines and abstract forms creating a sense of dynamic motion. The background is a whirlwind of abstract brushstrokes, giving the piece an energetic and rebellious vibe.\nMemetic references: Pepe the Frog as a warrior, a nod to the meme’s versatility.; Basquiat-inspired style, merging high art with meme culture.; The sword signifies strength and defiance, common themes in crypto culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEBASQPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a warrior, a nod to the meme’s versatility.\nBasquiat-inspired style, merging high art with meme culture.\nThe sword signifies strength and defiance, common themes in crypto culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEBASQPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a vibrant, chaotic mix of colors, primarily yellows, blues, and greens, with a skeletal figure resembling Pepe holding a sword. The art style channels a raw, graffiti-like aesthetic reminiscent of Jean-Michel Basquiat, with sketchy lines and abstract forms creating a sense of dynamic motion. The background is a whirlwind of abstract brushstrokes, giving the piece an energetic and rebellious vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEBASQPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a vibrant, chaotic mix of colors, primarily yellows, blues, and greens, with a skeletal figure resembling Pepe holding a sword. The art style channels a raw, graffiti-like aesthetic reminiscent of Jean-Michel Basquiat, with sketchy lines and abstract forms creating a sense of dynamic motion. The background is a whirlwind of abstract brushstrokes, giving the piece an energetic and rebellious vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a warrior, a nod to the meme’s versatility.\n- Basquiat-inspired style, merging high art with meme culture.\n- The sword signifies strength and defiance, common themes in crypto culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.461Z",
+  "sourceFactVersion": 1
+}

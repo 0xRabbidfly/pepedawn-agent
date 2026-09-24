@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "asset": "XHOPE",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 20,
+  "artist": "Jaen",
+  "supply": 61,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "FAKE",
+    "XCOPY"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog hugging a skeleton, blending meme culture with dark humor.",
+    "References to XCOPY's iconic glitch art style.",
+    "Elements of crypto art culture with a nod to the macabre."
+  ],
+  "visualSummary": "The card features a dark, edgy composition with a skeletal figure reminiscent of a grim reaper, adorned in a jester's hat. The color palette is primarily black and white with neon pink and green accents, creating a striking contrast. The art style is glitchy and chaotic, with animated elements that add to the card's dynamic feel.",
+  "visualSummaryShort": "The card showcases a skeletal figure in a jester's hat against a dark, edgy background. Its black and white palette is enhanced with neon pink and green accents, contributing to a chaotic and dynamic atmosphere.",
+  "visualKeywords": [
+    "skeleton",
+    "jester",
+    "black and white",
+    "neon pink",
+    "neon green",
+    "glitchy",
+    "chaotic",
+    "dynamic"
+  ],
+  "textKeywords": [
+    "xcopy"
+  ],
+  "keywords": [
+    "skeleton",
+    "jester",
+    "black and white",
+    "neon pink",
+    "neon green",
+    "glitchy",
+    "chaotic",
+    "dynamic",
+    "xcopy"
+  ],
+  "embeddingInput": "XHOPE (Fake Rares) - Series 11 Card 20\nArtist: Jaen\nSupply 61 Issued September 2022\nOn-card text: FAKE | XCOPY\nVisual summary: The card features a dark, edgy composition with a skeletal figure reminiscent of a grim reaper, adorned in a jester's hat. The color palette is primarily black and white with neon pink and green accents, creating a striking contrast. The art style is glitchy and chaotic, with animated elements that add to the card's dynamic feel.\nMemetic references: Pepe the Frog hugging a skeleton, blending meme culture with dark humor.; References to XCOPY's iconic glitch art style.; Elements of crypto art culture with a nod to the macabre.",
+  "embeddingBlocks": [
+    {
+      "id": "XHOPE#text",
+      "label": "On-card text",
+      "text": "FAKE | XCOPY",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "XHOPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog hugging a skeleton, blending meme culture with dark humor.\nReferences to XCOPY's iconic glitch art style.\nElements of crypto art culture with a nod to the macabre.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "XHOPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a dark, edgy composition with a skeletal figure reminiscent of a grim reaper, adorned in a jester's hat. The color palette is primarily black and white with neon pink and green accents, creating a striking contrast. The art style is glitchy and chaotic, with animated elements that add to the card's dynamic feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "XHOPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE  \nXCOPY\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a dark, edgy composition with a skeletal figure reminiscent of a grim reaper, adorned in a jester's hat. The color palette is primarily black and white with neon pink and green accents, creating a striking contrast. The art style is glitchy and chaotic, with animated elements that add to the card's dynamic feel.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog hugging a skeleton, blending meme culture with dark humor.\n- References to XCOPY's iconic glitch art style.\n- Elements of crypto art culture with a nod to the macabre.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.192Z",
+  "sourceFactVersion": 1
+}

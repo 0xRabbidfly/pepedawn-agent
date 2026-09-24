@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "MAGICTRICK",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 33,
+  "artist": "Tomopen",
+  "supply": 50,
+  "issuance": "December 2021",
+  "textOnCard": [
+    "magic trick"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog meme reference.",
+    "Playful nod to everyday magic tricks and surprises.",
+    "Reflects NFT culture’s love for humor and whimsy."
+  ],
+  "visualSummary": "The card features a Pepe the Frog character with glistening eyes, dressed in a blue shirt and orange shorts, opening a red can. The background is plain white, framed by a teal border, giving the card a clean and minimalist look. The style is cartoonish with bold outlines and a playful expression.",
+  "visualSummaryShort": "The card showcases a cartoonish Pepe the Frog character with glistening eyes, wearing a blue shirt and orange shorts while opening a red can. The minimalist white background and teal border enhance the playful and clean aesthetic.",
+  "visualKeywords": [
+    "pepe the frog",
+    "blue shirt",
+    "orange shorts",
+    "red can",
+    "white background",
+    "teal border",
+    "cartoonish",
+    "bold outlines",
+    "playful expression"
+  ],
+  "textKeywords": [
+    "magic",
+    "trick"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "blue shirt",
+    "orange shorts",
+    "red can",
+    "white background",
+    "teal border",
+    "cartoonish",
+    "bold outlines",
+    "playful expression",
+    "magic",
+    "trick"
+  ],
+  "embeddingInput": "MAGICTRICK (Fake Rares) - Series 5 Card 33\nArtist: Tomopen\nSupply 50 Issued December 2021\nOn-card text: magic trick\nVisual summary: The card features a Pepe the Frog character with glistening eyes, dressed in a blue shirt and orange shorts, opening a red can. The background is plain white, framed by a teal border, giving the card a clean and minimalist look. The style is cartoonish with bold outlines and a playful expression.\nMemetic references: Classic Pepe the Frog meme reference.; Playful nod to everyday magic tricks and surprises.; Reflects NFT culture’s love for humor and whimsy.",
+  "embeddingBlocks": [
+    {
+      "id": "MAGICTRICK#text",
+      "label": "On-card text",
+      "text": "magic trick",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MAGICTRICK#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog meme reference.\nPlayful nod to everyday magic tricks and surprises.\nReflects NFT culture’s love for humor and whimsy.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MAGICTRICK#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe the Frog character with glistening eyes, dressed in a blue shirt and orange shorts, opening a red can. The background is plain white, framed by a teal border, giving the card a clean and minimalist look. The style is cartoonish with bold outlines and a playful expression.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MAGICTRICK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nmagic trick\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe the Frog character with glistening eyes, dressed in a blue shirt and orange shorts, opening a red can. The background is plain white, framed by a teal border, giving the card a clean and minimalist look. The style is cartoonish with bold outlines and a playful expression.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog meme reference.\n- Playful nod to everyday magic tricks and surprises.\n- Reflects NFT culture’s love for humor and whimsy.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.758Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "asset": "XPEPEX",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 22,
+  "artist": "Coit",
+  "supply": 36,
+  "issuance": "April 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as a king, tapping into classic internet meme culture.",
+    "Psychedelic art style reminiscent of 60s and 70s counterculture.",
+    "References to royalty and power dynamics, common in crypto culture.",
+    "Surreal elements evoke a sense of the absurd, aligning with meme aesthetics."
+  ],
+  "visualSummary": "The card features a regal Pepe the Frog seated on a throne, adorned with a golden crown and a lavish fur cloak, exuding an air of authority. The color palette is vibrant with purples, blues, and reds, creating a psychedelic and surreal atmosphere. The background is adorned with abstract, swirling patterns and mystical figures with elongated limbs, adding to the card's otherworldly vibe.",
+  "visualSummaryShort": "The card showcases a regal Pepe the Frog on a throne, wearing a golden crown and a fur cloak. The vibrant color palette and abstract background create a surreal atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "throne",
+    "crown",
+    "fur cloak",
+    "purple",
+    "blue",
+    "red",
+    "abstract patterns",
+    "mystical figures",
+    "surreal"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "throne",
+    "crown",
+    "fur cloak",
+    "purple",
+    "blue",
+    "red",
+    "abstract patterns",
+    "mystical figures",
+    "surreal"
+  ],
+  "embeddingInput": "XPEPEX (Fake Rares) - Series 14 Card 22\nArtist: Coit\nSupply 36 Issued April 2023\nOn-card text: none detected\nVisual summary: The card features a regal Pepe the Frog seated on a throne, adorned with a golden crown and a lavish fur cloak, exuding an air of authority. The color palette is vibrant with purples, blues, and reds, creating a psychedelic and surreal atmosphere. The background is adorned with abstract, swirling patterns and mystical figures with elongated limbs, adding to the card's otherworldly vibe.\nMemetic references: Pepe the Frog as a king, tapping into classic internet meme culture.; Psychedelic art style reminiscent of 60s and 70s counterculture.; References to royalty and power dynamics, common in crypto culture.; Surreal elements evoke a sense of the absurd, aligning with meme aesthetics.",
+  "embeddingBlocks": [
+    {
+      "id": "XPEPEX#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a king, tapping into classic internet meme culture.\nPsychedelic art style reminiscent of 60s and 70s counterculture.\nReferences to royalty and power dynamics, common in crypto culture.\nSurreal elements evoke a sense of the absurd, aligning with meme aesthetics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "XPEPEX#visual",
+      "label": "Visual summary",
+      "text": "The card features a regal Pepe the Frog seated on a throne, adorned with a golden crown and a lavish fur cloak, exuding an air of authority. The color palette is vibrant with purples, blues, and reds, creating a psychedelic and surreal atmosphere. The background is adorned with abstract, swirling patterns and mystical figures with elongated limbs, adding to the card's otherworldly vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "XPEPEX#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a regal Pepe the Frog seated on a throne, adorned with a golden crown and a lavish fur cloak, exuding an air of authority. The color palette is vibrant with purples, blues, and reds, creating a psychedelic and surreal atmosphere. The background is adorned with abstract, swirling patterns and mystical figures with elongated limbs, adding to the card's otherworldly vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a king, tapping into classic internet meme culture.\n- Psychedelic art style reminiscent of 60s and 70s counterculture.\n- References to royalty and power dynamics, common in crypto culture.\n- Surreal elements evoke a sense of the absurd, aligning with meme aesthetics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.197Z",
+  "sourceFactVersion": 1
+}

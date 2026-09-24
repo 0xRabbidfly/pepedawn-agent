@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "LILYPAD",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 50,
+  "artist": "VVD",
+  "supply": 100,
+  "issuance": "April 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "🐸 Frog symbolism, often linked to Pepe and crypto culture.",
+    "🌿 Nature elements, possibly referencing environmental themes in blockchain discussions.",
+    "🌌 The vast blue space may symbolize the expansive and sometimes isolating world of NFTs and crypto."
+  ],
+  "visualSummary": "The card features a minimalist design with a single green lilypad centered on a deep blue background. The lilypad has intricate white vein patterns, and a small frog sits poised in the middle. The simplicity of the composition contrasts with the detailed textures, creating a serene, aquatic vibe.",
+  "visualSummaryShort": "The card showcases a single green lilypad on a deep blue background, highlighted by intricate white vein patterns. A small frog is perched on the lilypad, enhancing the serene, aquatic atmosphere.",
+  "visualKeywords": [
+    "lilypad",
+    "frog",
+    "blue background",
+    "white veins",
+    "minimalist",
+    "serene",
+    "aquatic",
+    "detailed textures"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "lilypad",
+    "frog",
+    "blue background",
+    "white veins",
+    "minimalist",
+    "serene",
+    "aquatic",
+    "detailed textures"
+  ],
+  "embeddingInput": "LILYPAD (Fake Rares) - Series 8 Card 50\nArtist: VVD\nSupply 100 Issued April 2022\nOn-card text: none detected\nVisual summary: The card features a minimalist design with a single green lilypad centered on a deep blue background. The lilypad has intricate white vein patterns, and a small frog sits poised in the middle. The simplicity of the composition contrasts with the detailed textures, creating a serene, aquatic vibe.\nMemetic references: 🐸 Frog symbolism, often linked to Pepe and crypto culture.; 🌿 Nature elements, possibly referencing environmental themes in blockchain discussions.; 🌌 The vast blue space may symbolize the expansive and sometimes isolating world of NFTs and crypto.",
+  "embeddingBlocks": [
+    {
+      "id": "LILYPAD#memetic",
+      "label": "Memetic references",
+      "text": "🐸 Frog symbolism, often linked to Pepe and crypto culture.\n🌿 Nature elements, possibly referencing environmental themes in blockchain discussions.\n🌌 The vast blue space may symbolize the expansive and sometimes isolating world of NFTs and crypto.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LILYPAD#visual",
+      "label": "Visual summary",
+      "text": "The card features a minimalist design with a single green lilypad centered on a deep blue background. The lilypad has intricate white vein patterns, and a small frog sits poised in the middle. The simplicity of the composition contrasts with the detailed textures, creating a serene, aquatic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LILYPAD#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a minimalist design with a single green lilypad centered on a deep blue background. The lilypad has intricate white vein patterns, and a small frog sits poised in the middle. The simplicity of the composition contrasts with the detailed textures, creating a serene, aquatic vibe.\n\n🧬 **MEMETIC DNA:**\n- 🐸 Frog symbolism, often linked to Pepe and crypto culture.\n- 🌿 Nature elements, possibly referencing environmental themes in blockchain discussions.\n- 🌌 The vast blue space may symbolize the expansive and sometimes isolating world of NFTs and crypto.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.747Z",
+  "sourceFactVersion": 1
+}

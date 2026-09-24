@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "asset": "FAKEGHOST",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 4,
+  "artist": "Indelible and Ghostface Killah",
+  "supply": 500,
+  "issuance": "November 2021",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a ghostly figure in a misty environment. The overall mood is eerie and mysterious.",
+  "visualKeywords": [
+    "ghost",
+    "mist",
+    "eerie",
+    "mysterious",
+    "translucent",
+    "dark colors"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "ghost",
+    "mist",
+    "eerie",
+    "mysterious",
+    "translucent",
+    "dark colors"
+  ],
+  "embeddingInput": "FAKEGHOST (Fake Rares) - Series 4 Card 4\nArtist: Indelible and Ghostface Killah\nSupply 500 Issued November 2021\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEGHOST#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, but I can't identify or describe this person.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.508Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "asset": "TUBBSPEPE",
+  "collection": "Fake Rares",
+  "series": 0,
+  "cardNumber": 13,
+  "artist": "Obxium",
+  "supply": 111,
+  "issuance": "March 2018",
+  "textOnCard": [
+    "TUBBS PEPE",
+    "Spends all of your cash"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central character.",
+    "Reference to the \"fat cat\" meme, combining with crypto elements.",
+    "Bitcoin symbols on the coins, linking to crypto culture.",
+    "Nods to meme culture with the indulgent and humorous theme."
+  ],
+  "visualSummary": "This card features a relaxed, green Pepe character lounging on a pile of golden coins, reminiscent of a wealthy cat. The background is a cozy, indoor setting with a warm color palette, blending yellows and browns. The style is cartoonish and playful, with clean lines and a focus on the humorous depiction of wealth and laziness.",
+  "visualSummaryShort": "The card showcases a relaxed green Pepe character lounging on golden coins in a cozy indoor setting. The warm color palette and cartoonish style enhance the playful mood of wealth and laziness.",
+  "visualKeywords": [
+    "pepe",
+    "gold coins",
+    "indoor",
+    "warm colors",
+    "cartoonish",
+    "relaxed",
+    "wealth",
+    "cozy",
+    "humorous"
+  ],
+  "textKeywords": [
+    "tubbs",
+    "spends",
+    "all",
+    "cash"
+  ],
+  "keywords": [
+    "pepe",
+    "gold coins",
+    "indoor",
+    "warm colors",
+    "cartoonish",
+    "relaxed",
+    "wealth",
+    "cozy",
+    "humorous",
+    "tubbs",
+    "spends",
+    "all",
+    "cash"
+  ],
+  "embeddingInput": "TUBBSPEPE (Fake Rares) - Series 0 Card 13\nArtist: Obxium\nSupply 111 Issued March 2018\nOn-card text: TUBBS PEPE | Spends all of your cash\nVisual summary: This card features a relaxed, green Pepe character lounging on a pile of golden coins, reminiscent of a wealthy cat. The background is a cozy, indoor setting with a warm color palette, blending yellows and browns. The style is cartoonish and playful, with clean lines and a focus on the humorous depiction of wealth and laziness.\nMemetic references: Pepe the Frog as a central character.; Reference to the \"fat cat\" meme, combining with crypto elements.; Bitcoin symbols on the coins, linking to crypto culture.; Nods to meme culture with the indulgent and humorous theme.",
+  "embeddingBlocks": [
+    {
+      "id": "TUBBSPEPE#text",
+      "label": "On-card text",
+      "text": "TUBBS PEPE | Spends all of your cash",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "TUBBSPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central character.\nReference to the \"fat cat\" meme, combining with crypto elements.\nBitcoin symbols on the coins, linking to crypto culture.\nNods to meme culture with the indulgent and humorous theme.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "TUBBSPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a relaxed, green Pepe character lounging on a pile of golden coins, reminiscent of a wealthy cat. The background is a cozy, indoor setting with a warm color palette, blending yellows and browns. The style is cartoonish and playful, with clean lines and a focus on the humorous depiction of wealth and laziness.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "TUBBSPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- TUBBS PEPE\n- Spends all of your cash\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a relaxed, green Pepe character lounging on a pile of golden coins, reminiscent of a wealthy cat. The background is a cozy, indoor setting with a warm color palette, blending yellows and browns. The style is cartoonish and playful, with clean lines and a focus on the humorous depiction of wealth and laziness.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central character.\n- Reference to the \"fat cat\" meme, combining with crypto elements.\n- Bitcoin symbols on the coins, linking to crypto culture.\n- Nods to meme culture with the indulgent and humorous theme.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.163Z",
+  "sourceFactVersion": 1
+}

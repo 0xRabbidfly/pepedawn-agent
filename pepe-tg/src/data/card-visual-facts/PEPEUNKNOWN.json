@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "asset": "PEPEUNKNOWN",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 18,
+  "artist": "AbstractUnknown",
+  "supply": 100,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "[Look for any text on the card, such as the name \"PEPEUNKNOWN\" or any other visible writing.]"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple of meme culture, is central to the design.",
+    "The glitch effect nods to crypto and digital art themes.",
+    "The \"unknown\" aspect hints at the enigmatic nature of some NFTs."
+  ],
+  "visualSummary": "The card features a glitchy, digital aesthetic with a predominantly dark color palette, punctuated by neon hues. The composition includes a stylized Pepe with a mysterious aura, surrounded by fragmented, pixelated elements that suggest a cyberpunk influence.",
+  "visualSummaryShort": "The card showcases a glitchy, digital aesthetic with a dark color palette and neon accents. A stylized Pepe character is surrounded by fragmented, pixelated elements, evoking a cyberpunk vibe.",
+  "visualKeywords": [
+    "glitch",
+    "dark palette",
+    "neon",
+    "pepe",
+    "pixelated",
+    "cyberpunk",
+    "fragmented",
+    "mysterious",
+    "digital",
+    "stylized"
+  ],
+  "textKeywords": [
+    "look",
+    "any",
+    "text",
+    "name",
+    "pepeunknown",
+    "other",
+    "visible",
+    "writing"
+  ],
+  "keywords": [
+    "glitch",
+    "dark palette",
+    "neon",
+    "pepe",
+    "pixelated",
+    "cyberpunk",
+    "fragmented",
+    "mysterious",
+    "digital",
+    "stylized",
+    "look",
+    "any",
+    "text",
+    "name",
+    "pepeunknown",
+    "other",
+    "visible",
+    "writing"
+  ],
+  "embeddingInput": "PEPEUNKNOWN (Fake Rares) - Series 4 Card 18\nArtist: AbstractUnknown\nSupply 100 Issued November 2021\nOn-card text: [Look for any text on the card, such as the name \"PEPEUNKNOWN\" or any other visible writing.]\nVisual summary: The card features a glitchy, digital aesthetic with a predominantly dark color palette, punctuated by neon hues. The composition includes a stylized Pepe with a mysterious aura, surrounded by fragmented, pixelated elements that suggest a cyberpunk influence.\nMemetic references: Pepe the Frog, a staple of meme culture, is central to the design.; The glitch effect nods to crypto and digital art themes.; The \"unknown\" aspect hints at the enigmatic nature of some NFTs.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEUNKNOWN#text",
+      "label": "On-card text",
+      "text": "[Look for any text on the card, such as the name \"PEPEUNKNOWN\" or any other visible writing.]",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEUNKNOWN#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple of meme culture, is central to the design.\nThe glitch effect nods to crypto and digital art themes.\nThe \"unknown\" aspect hints at the enigmatic nature of some NFTs.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEUNKNOWN#visual",
+      "label": "Visual summary",
+      "text": "The card features a glitchy, digital aesthetic with a predominantly dark color palette, punctuated by neon hues. The composition includes a stylized Pepe with a mysterious aura, surrounded by fragmented, pixelated elements that suggest a cyberpunk influence.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEUNKNOWN#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm unable to transcribe or analyze this image directly. However, I can guide you on how to approach it! Here's how you could analyze a card like this:\n\n📝 **TEXT ON CARD:**\n[Look for any text on the card, such as the name \"PEPEUNKNOWN\" or any other visible writing.]\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a glitchy, digital aesthetic with a predominantly dark color palette, punctuated by neon hues. The composition includes a stylized Pepe with a mysterious aura, surrounded by fragmented, pixelated elements that suggest a cyberpunk influence.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple of meme culture, is central to the design.\n- The glitch effect nods to crypto and digital art themes.\n- The \"unknown\" aspect hints at the enigmatic nature of some NFTs.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.004Z",
+  "sourceFactVersion": 1
+}

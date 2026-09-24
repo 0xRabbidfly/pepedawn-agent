@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "PEPEMOONWALK",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 30,
+  "artist": "kr",
+  "supply": 59,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "PEPEMOONWALK"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as the iconic meme character.",
+    "References to Michael Jackson's moonwalk dance move.",
+    "Neon cityscape reminiscent of 80s retro aesthetics.",
+    "Full moon symbolizing \"to the moon\" crypto lingo."
+  ],
+  "visualSummary": "The card features Pepe the Frog mid-moonwalk against a vibrant city skyline backdrop illuminated by a full moon. The color palette is a mix of dark purples, blues, and neon pinks, creating a retro-futuristic vibe. Pepe is dressed in a blue sweater and black pants, with glowing sneakers that add an electric touch to the scene.",
+  "visualSummaryShort": "The card showcases Pepe the Frog performing a moonwalk against a vibrant city skyline under a full moon. The retro-futuristic color palette features dark purples, blues, and neon pinks, enhancing the electric atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "moonwalk",
+    "city skyline",
+    "full moon",
+    "purple",
+    "blue",
+    "neon pink",
+    "sweater",
+    "glowing sneakers"
+  ],
+  "textKeywords": [
+    "pepemoonwalk"
+  ],
+  "keywords": [
+    "pepe",
+    "moonwalk",
+    "city skyline",
+    "full moon",
+    "purple",
+    "blue",
+    "neon pink",
+    "sweater",
+    "glowing sneakers",
+    "pepemoonwalk"
+  ],
+  "embeddingInput": "PEPEMOONWALK (Fake Rares) - Series 13 Card 30\nArtist: kr\nSupply 59 Issued September 2022\nOn-card text: PEPEMOONWALK\nVisual summary: The card features Pepe the Frog mid-moonwalk against a vibrant city skyline backdrop illuminated by a full moon. The color palette is a mix of dark purples, blues, and neon pinks, creating a retro-futuristic vibe. Pepe is dressed in a blue sweater and black pants, with glowing sneakers that add an electric touch to the scene.\nMemetic references: Pepe the Frog as the iconic meme character.; References to Michael Jackson's moonwalk dance move.; Neon cityscape reminiscent of 80s retro aesthetics.; Full moon symbolizing \"to the moon\" crypto lingo.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEMOONWALK#text",
+      "label": "On-card text",
+      "text": "PEPEMOONWALK",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEMOONWALK#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as the iconic meme character.\nReferences to Michael Jackson's moonwalk dance move.\nNeon cityscape reminiscent of 80s retro aesthetics.\nFull moon symbolizing \"to the moon\" crypto lingo.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEMOONWALK#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog mid-moonwalk against a vibrant city skyline backdrop illuminated by a full moon. The color palette is a mix of dark purples, blues, and neon pinks, creating a retro-futuristic vibe. Pepe is dressed in a blue sweater and black pants, with glowing sneakers that add an electric touch to the scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEMOONWALK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPEMOONWALK\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog mid-moonwalk against a vibrant city skyline backdrop illuminated by a full moon. The color palette is a mix of dark purples, blues, and neon pinks, creating a retro-futuristic vibe. Pepe is dressed in a blue sweater and black pants, with glowing sneakers that add an electric touch to the scene.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as the iconic meme character.\n- References to Michael Jackson's moonwalk dance move.\n- Neon cityscape reminiscent of 80s retro aesthetics.\n- Full moon symbolizing \"to the moon\" crypto lingo.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.929Z",
+  "sourceFactVersion": 1
+}

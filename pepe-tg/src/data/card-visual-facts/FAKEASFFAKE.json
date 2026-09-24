@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "asset": "FAKEASFFAKE",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 5,
+  "artist": "threepanelcrimes",
+  "supply": 21,
+  "issuance": "December 2022",
+  "textOnCard": [
+    "\"BUY PAWN SELL\"",
+    "\"FAKE\"",
+    "\"UR BEING FILMED\""
+  ],
+  "memeticReferences": [
+    "Pepe the Frog culture.",
+    "Crypto",
+    "NFT trading references.",
+    "Pawn Stars meme energy.",
+    "Retro video game aesthetics.",
+    "Surveillance culture nod."
+  ],
+  "visualSummary": "This card is a pixel art masterpiece featuring a pawn shop scene with a green character, reminiscent of Pepe, behind the counter. The color palette is rich with earthy tones, complemented by pops of neon from various gadgets and a security camera. The scene is detailed, with items like watches and cards, creating a nostalgic video game vibe.",
+  "visualSummaryShort": "The card depicts a pixel art pawn shop scene with a green character behind the counter. The environment features earthy tones and neon accents, filled with various items that evoke a nostalgic video game feel.",
+  "visualKeywords": [
+    "pawn shop",
+    "green character",
+    "pixel art",
+    "earthy tones",
+    "neon gadgets",
+    "security camera",
+    "watches",
+    "cards",
+    "nostalgic",
+    "detailed"
+  ],
+  "textKeywords": [
+    "buy",
+    "pawn",
+    "sell",
+    "filmed"
+  ],
+  "keywords": [
+    "pawn shop",
+    "green character",
+    "pixel art",
+    "earthy tones",
+    "neon gadgets",
+    "security camera",
+    "watches",
+    "cards",
+    "nostalgic",
+    "detailed",
+    "buy",
+    "pawn",
+    "sell",
+    "filmed"
+  ],
+  "embeddingInput": "FAKEASFFAKE (Fake Rares) - Series 13 Card 5\nArtist: threepanelcrimes\nSupply 21 Issued December 2022\nOn-card text: \"BUY PAWN SELL\" | \"FAKE\" | \"UR BEING FILMED\"\nVisual summary: This card is a pixel art masterpiece featuring a pawn shop scene with a green character, reminiscent of Pepe, behind the counter. The color palette is rich with earthy tones, complemented by pops of neon from various gadgets and a security camera. The scene is detailed, with items like watches and cards, creating a nostalgic video game vibe.\nMemetic references: Pepe the Frog culture.; Crypto; NFT trading references.; Pawn Stars meme energy.; Retro video game aesthetics.; Surveillance culture nod.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEASFFAKE#text",
+      "label": "On-card text",
+      "text": "\"BUY PAWN SELL\" | \"FAKE\" | \"UR BEING FILMED\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEASFFAKE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog culture.\nCrypto\nNFT trading references.\nPawn Stars meme energy.\nRetro video game aesthetics.\nSurveillance culture nod.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEASFFAKE#visual",
+      "label": "Visual summary",
+      "text": "This card is a pixel art masterpiece featuring a pawn shop scene with a green character, reminiscent of Pepe, behind the counter. The color palette is rich with earthy tones, complemented by pops of neon from various gadgets and a security camera. The scene is detailed, with items like watches and cards, creating a nostalgic video game vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEASFFAKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- \"BUY PAWN SELL\"\n- \"FAKE\"\n- \"UR BEING FILMED\"\n\n🎨 **VISUAL BREAKDOWN:**\nThis card is a pixel art masterpiece featuring a pawn shop scene with a green character, reminiscent of Pepe, behind the counter. The color palette is rich with earthy tones, complemented by pops of neon from various gadgets and a security camera. The scene is detailed, with items like watches and cards, creating a nostalgic video game vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog culture.\n- Crypto/NFT trading references.\n- Pawn Stars meme energy.\n- Retro video game aesthetics.\n- Surveillance culture nod.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.452Z",
+  "sourceFactVersion": 1
+}

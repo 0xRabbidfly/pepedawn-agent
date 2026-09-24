@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "asset": "FAKEGENESIS",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 19,
+  "artist": "Pepenardo",
+  "supply": 125,
+  "issuance": "January 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "References to classic art with a modern twist.",
+    "The masked figure hints at pop culture influences, possibly nodding to anonymity in crypto culture.",
+    "The green horse could symbolize financial gains or \"green candles\" in trading."
+  ],
+  "visualSummary": "The card showcases a dramatic scene with a figure resembling a masked rapper on a dynamic, rearing green horse. The background is a swirling mix of clouds and cliffs, painted in a classical, almost Renaissance style. The color palette is vivid with rich greens, blues, and earthy tones, giving a sense of epic adventure.",
+  "visualSummaryShort": "The card features a masked figure on a rearing green horse against a dramatic background of swirling clouds and cliffs. The vivid color palette includes rich greens, blues, and earthy tones, evoking a sense of epic adventure.",
+  "visualKeywords": [
+    "masked figure",
+    "green horse",
+    "swirling clouds",
+    "cliffs",
+    "vivid colors",
+    "epic adventure"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "masked figure",
+    "green horse",
+    "swirling clouds",
+    "cliffs",
+    "vivid colors",
+    "epic adventure"
+  ],
+  "embeddingInput": "FAKEGENESIS (Fake Rares) - Series 6 Card 19\nArtist: Pepenardo\nSupply 125 Issued January 2022\nOn-card text: none detected\nVisual summary: The card showcases a dramatic scene with a figure resembling a masked rapper on a dynamic, rearing green horse. The background is a swirling mix of clouds and cliffs, painted in a classical, almost Renaissance style. The color palette is vivid with rich greens, blues, and earthy tones, giving a sense of epic adventure.\nMemetic references: References to classic art with a modern twist.; The masked figure hints at pop culture influences, possibly nodding to anonymity in crypto culture.; The green horse could symbolize financial gains or \"green candles\" in trading.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEGENESIS#memetic",
+      "label": "Memetic references",
+      "text": "References to classic art with a modern twist.\nThe masked figure hints at pop culture influences, possibly nodding to anonymity in crypto culture.\nThe green horse could symbolize financial gains or \"green candles\" in trading.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEGENESIS#visual",
+      "label": "Visual summary",
+      "text": "The card showcases a dramatic scene with a figure resembling a masked rapper on a dynamic, rearing green horse. The background is a swirling mix of clouds and cliffs, painted in a classical, almost Renaissance style. The color palette is vivid with rich greens, blues, and earthy tones, giving a sense of epic adventure.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEGENESIS#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card showcases a dramatic scene with a figure resembling a masked rapper on a dynamic, rearing green horse. The background is a swirling mix of clouds and cliffs, painted in a classical, almost Renaissance style. The color palette is vivid with rich greens, blues, and earthy tones, giving a sense of epic adventure.\n\n🧬 **MEMETIC DNA:**\n- References to classic art with a modern twist.\n- The masked figure hints at pop culture influences, possibly nodding to anonymity in crypto culture.\n- The green horse could symbolize financial gains or \"green candles\" in trading.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.506Z",
+  "sourceFactVersion": 1
+}

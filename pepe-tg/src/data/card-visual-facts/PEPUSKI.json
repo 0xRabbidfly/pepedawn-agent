@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "asset": "PEPUSKI",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 11,
+  "artist": "FISTSOFFURY",
+  "supply": 56,
+  "issuance": "March 2023",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The visual details of the card are not provided. No specific elements or traits can be identified.",
+  "visualKeywords": [],
+  "textKeywords": [],
+  "keywords": [],
+  "embeddingInput": "PEPUSKI (Fake Rares) - Series 14 Card 11\nArtist: FISTSOFFURY\nSupply 56 Issued March 2023\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "PEPUSKI#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.031Z",
+  "sourceFactVersion": 1
+}

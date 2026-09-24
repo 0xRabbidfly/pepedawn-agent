@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "asset": "FIUTIN",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 48,
+  "artist": "VeryRareFren",
+  "supply": 100,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "VERY RARE PEPE"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog depiction, a staple in meme culture.",
+    "Satirical and humorous take on power dynamics.",
+    "Rainbow and fire elements suggest a mix of chaos and hope.",
+    "Fighter jets add a layer of geopolitical satire."
+  ],
+  "visualSummary": "The image features a giant green Pepe the Frog standing over a smaller figure with a distressed expression, who appears to be drenched in a brown liquid. The background is vibrant with a rainbow, a small house on fire, and two fighter jets in the sky, conveying a chaotic yet colorful scene. The overall artistic style is cartoonish and exaggerated, with bold outlines and a bright color palette that enhances the absurdity of the situation.",
+  "visualSummaryShort": "The card depicts a giant green Pepe the Frog towering over a smaller, distressed figure covered in brown liquid. The chaotic scene is set against a vibrant rainbow, a burning house, and fighter jets, all rendered in a cartoonish style.",
+  "visualKeywords": [
+    "pepe",
+    "distressed figure",
+    "brown liquid",
+    "rainbow",
+    "burning house",
+    "fighter jets",
+    "cartoonish",
+    "bright colors",
+    "chaotic",
+    "exaggerated"
+  ],
+  "textKeywords": [
+    "very",
+    "rare",
+    "pepe"
+  ],
+  "keywords": [
+    "pepe",
+    "distressed figure",
+    "brown liquid",
+    "rainbow",
+    "burning house",
+    "fighter jets",
+    "cartoonish",
+    "bright colors",
+    "chaotic",
+    "exaggerated",
+    "very",
+    "rare"
+  ],
+  "embeddingInput": "FIUTIN (Fake Rares) - Series 8 Card 48\nArtist: VeryRareFren\nSupply 100 Issued July 2022\nOn-card text: VERY RARE PEPE\nVisual summary: The image features a giant green Pepe the Frog standing over a smaller figure with a distressed expression, who appears to be drenched in a brown liquid. The background is vibrant with a rainbow, a small house on fire, and two fighter jets in the sky, conveying a chaotic yet colorful scene. The overall artistic style is cartoonish and exaggerated, with bold outlines and a bright color palette that enhances the absurdity of the situation.\nMemetic references: Classic Pepe the Frog depiction, a staple in meme culture.; Satirical and humorous take on power dynamics.; Rainbow and fire elements suggest a mix of chaos and hope.; Fighter jets add a layer of geopolitical satire.",
+  "embeddingBlocks": [
+    {
+      "id": "FIUTIN#text",
+      "label": "On-card text",
+      "text": "VERY RARE PEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FIUTIN#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog depiction, a staple in meme culture.\nSatirical and humorous take on power dynamics.\nRainbow and fire elements suggest a mix of chaos and hope.\nFighter jets add a layer of geopolitical satire.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FIUTIN#visual",
+      "label": "Visual summary",
+      "text": "The image features a giant green Pepe the Frog standing over a smaller figure with a distressed expression, who appears to be drenched in a brown liquid. The background is vibrant with a rainbow, a small house on fire, and two fighter jets in the sky, conveying a chaotic yet colorful scene. The overall artistic style is cartoonish and exaggerated, with bold outlines and a bright color palette that enhances the absurdity of the situation.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FIUTIN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nVERY RARE PEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe image features a giant green Pepe the Frog standing over a smaller figure with a distressed expression, who appears to be drenched in a brown liquid. The background is vibrant with a rainbow, a small house on fire, and two fighter jets in the sky, conveying a chaotic yet colorful scene. The overall artistic style is cartoonish and exaggerated, with bold outlines and a bright color palette that enhances the absurdity of the situation.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog depiction, a staple in meme culture.\n- Satirical and humorous take on power dynamics.\n- Rainbow and fire elements suggest a mix of chaos and hope.\n- Fighter jets add a layer of geopolitical satire.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.624Z",
+  "sourceFactVersion": 1
+}

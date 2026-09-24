@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "PEPECLOUD",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 7,
+  "artist": "MLOdotArt",
+  "supply": 210,
+  "issuance": "June 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog: Iconic internet meme character.",
+    "Cloud imagery: Could symbolize cloud computing or weathering a storm, possibly a nod to crypto market volatility.",
+    "Grid design: Suggests pixel art or blockchain structure."
+  ],
+  "visualSummary": "The card features a stylized depiction of Pepe the Frog with an umbrella, composed of a cloud-like texture. The color palette is predominantly blue and white, giving it a dreamy, ethereal vibe. The image is segmented into grid-like sections, adding a digital, pixelated feel to the artwork.",
+  "visualSummaryShort": "The card showcases a stylized Pepe the Frog holding an umbrella, rendered in a cloud-like texture. The blue and white color palette creates a dreamy, ethereal atmosphere with a pixelated, grid-like design.",
+  "visualKeywords": [
+    "pepe",
+    "umbrella",
+    "cloud",
+    "blue palette",
+    "white",
+    "dreamy",
+    "pixelated",
+    "grid"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "umbrella",
+    "cloud",
+    "blue palette",
+    "white",
+    "dreamy",
+    "pixelated",
+    "grid"
+  ],
+  "embeddingInput": "PEPECLOUD (Fake Rares) - Series 14 Card 7\nArtist: MLOdotArt\nSupply 210 Issued June 2022\nOn-card text: none detected\nVisual summary: The card features a stylized depiction of Pepe the Frog with an umbrella, composed of a cloud-like texture. The color palette is predominantly blue and white, giving it a dreamy, ethereal vibe. The image is segmented into grid-like sections, adding a digital, pixelated feel to the artwork.\nMemetic references: Pepe the Frog: Iconic internet meme character.; Cloud imagery: Could symbolize cloud computing or weathering a storm, possibly a nod to crypto market volatility.; Grid design: Suggests pixel art or blockchain structure.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPECLOUD#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog: Iconic internet meme character.\nCloud imagery: Could symbolize cloud computing or weathering a storm, possibly a nod to crypto market volatility.\nGrid design: Suggests pixel art or blockchain structure.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPECLOUD#visual",
+      "label": "Visual summary",
+      "text": "The card features a stylized depiction of Pepe the Frog with an umbrella, composed of a cloud-like texture. The color palette is predominantly blue and white, giving it a dreamy, ethereal vibe. The image is segmented into grid-like sections, adding a digital, pixelated feel to the artwork.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPECLOUD#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a stylized depiction of Pepe the Frog with an umbrella, composed of a cloud-like texture. The color palette is predominantly blue and white, giving it a dreamy, ethereal vibe. The image is segmented into grid-like sections, adding a digital, pixelated feel to the artwork.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog: Iconic internet meme character.\n- Cloud imagery: Could symbolize cloud computing or weathering a storm, possibly a nod to crypto market volatility.\n- Grid design: Suggests pixel art or blockchain structure.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.855Z",
+  "sourceFactVersion": 1
+}

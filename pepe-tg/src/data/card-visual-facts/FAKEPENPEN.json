@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "asset": "FAKEPENPEN",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 24,
+  "artist": "Tomopen",
+  "supply": 100,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "FAKE PEPE AND PENPEN",
+    "The mask wearers are well made these days. See….."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference with the green face.",
+    "Possible nod to Japanese culture with the bonsai and mountain, reminiscent of Mount Fuji.",
+    "Play on masks, suggesting themes of identity and disguise."
+  ],
+  "visualSummary": "This card features a character in a suit with a green face, standing confidently against a backdrop of a stylized mountain and bonsai tree. The color palette is vibrant, with bright blues, yellows, and greens dominating the scene. The style is a playful blend of anime and comic art, with bold outlines and exaggerated features.",
+  "visualSummaryShort": "The card showcases a character in a suit with a green face, set against a colorful mountain and bonsai tree backdrop. The vibrant color palette and playful art style create a lively atmosphere.",
+  "visualKeywords": [
+    "green face",
+    "suit",
+    "mountain",
+    "bonsai tree",
+    "blue",
+    "yellow",
+    "green",
+    "anime",
+    "comic art",
+    "bold outlines"
+  ],
+  "textKeywords": [
+    "penpen",
+    "mask",
+    "wearers",
+    "are",
+    "well",
+    "made",
+    "these",
+    "days",
+    "see"
+  ],
+  "keywords": [
+    "green face",
+    "suit",
+    "mountain",
+    "bonsai tree",
+    "blue",
+    "yellow",
+    "green",
+    "anime",
+    "comic art",
+    "bold outlines",
+    "penpen",
+    "mask",
+    "wearers",
+    "are",
+    "well",
+    "made",
+    "these",
+    "days",
+    "see"
+  ],
+  "embeddingInput": "FAKEPENPEN (Fake Rares) - Series 3 Card 24\nArtist: Tomopen\nSupply 100 Issued November 2021\nOn-card text: FAKE PEPE AND PENPEN | The mask wearers are well made these days. See…..\nVisual summary: This card features a character in a suit with a green face, standing confidently against a backdrop of a stylized mountain and bonsai tree. The color palette is vibrant, with bright blues, yellows, and greens dominating the scene. The style is a playful blend of anime and comic art, with bold outlines and exaggerated features.\nMemetic references: Pepe the Frog reference with the green face.; Possible nod to Japanese culture with the bonsai and mountain, reminiscent of Mount Fuji.; Play on masks, suggesting themes of identity and disguise.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEPENPEN#text",
+      "label": "On-card text",
+      "text": "FAKE PEPE AND PENPEN | The mask wearers are well made these days. See…..",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEPENPEN#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference with the green face.\nPossible nod to Japanese culture with the bonsai and mountain, reminiscent of Mount Fuji.\nPlay on masks, suggesting themes of identity and disguise.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEPENPEN#visual",
+      "label": "Visual summary",
+      "text": "This card features a character in a suit with a green face, standing confidently against a backdrop of a stylized mountain and bonsai tree. The color palette is vibrant, with bright blues, yellows, and greens dominating the scene. The style is a playful blend of anime and comic art, with bold outlines and exaggerated features.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEPENPEN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE PEPE AND PENPEN  \nThe mask wearers are well made these days. See…..\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a character in a suit with a green face, standing confidently against a backdrop of a stylized mountain and bonsai tree. The color palette is vibrant, with bright blues, yellows, and greens dominating the scene. The style is a playful blend of anime and comic art, with bold outlines and exaggerated features.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference with the green face.\n- Possible nod to Japanese culture with the bonsai and mountain, reminiscent of Mount Fuji.\n- Play on masks, suggesting themes of identity and disguise.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.547Z",
+  "sourceFactVersion": 1
+}

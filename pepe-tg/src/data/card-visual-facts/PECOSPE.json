@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "PECOSPE",
+  "collection": "Fake Rares",
+  "series": 0,
+  "cardNumber": 11,
+  "artist": "mr spree",
+  "supply": 60,
+  "issuance": "September 2016",
+  "textOnCard": [
+    "THE PECOSPE SHOW"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog meme integration.",
+    "Reference to a classic TV show.",
+    "Nostalgic elements from 90s sitcoms."
+  ],
+  "visualSummary": "The card features a humorous mashup of a well-known TV personality with Pepe the Frog's face, blending pop culture with meme culture. The background shows a patterned sweater typical of a vintage sitcom era. The color palette is earthy, with the green of Pepe's face contrasting against the muted tones of the sweater and backdrop.",
+  "visualSummaryShort": "The card showcases a humorous blend of a TV personality and Pepe the Frog's face, set against a vintage sitcom-style background. The earthy color palette highlights the contrast between Pepe's green face and the muted tones of the sweater.",
+  "visualKeywords": [
+    "pepe",
+    "tv personality",
+    "vintage",
+    "sweater",
+    "earthy colors",
+    "humor",
+    "meme culture"
+  ],
+  "textKeywords": [
+    "pecospe",
+    "show"
+  ],
+  "keywords": [
+    "pepe",
+    "tv personality",
+    "vintage",
+    "sweater",
+    "earthy colors",
+    "humor",
+    "meme culture",
+    "pecospe",
+    "show"
+  ],
+  "embeddingInput": "PECOSPE (Fake Rares) - Series 0 Card 11\nArtist: mr spree\nSupply 60 Issued September 2016\nOn-card text: THE PECOSPE SHOW\nVisual summary: The card features a humorous mashup of a well-known TV personality with Pepe the Frog's face, blending pop culture with meme culture. The background shows a patterned sweater typical of a vintage sitcom era. The color palette is earthy, with the green of Pepe's face contrasting against the muted tones of the sweater and backdrop.\nMemetic references: Pepe the Frog meme integration.; Reference to a classic TV show.; Nostalgic elements from 90s sitcoms.",
+  "embeddingBlocks": [
+    {
+      "id": "PECOSPE#text",
+      "label": "On-card text",
+      "text": "THE PECOSPE SHOW",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PECOSPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog meme integration.\nReference to a classic TV show.\nNostalgic elements from 90s sitcoms.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PECOSPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a humorous mashup of a well-known TV personality with Pepe the Frog's face, blending pop culture with meme culture. The background shows a patterned sweater typical of a vintage sitcom era. The color palette is earthy, with the green of Pepe's face contrasting against the muted tones of the sweater and backdrop.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PECOSPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nTHE PECOSPE SHOW\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a humorous mashup of a well-known TV personality with Pepe the Frog's face, blending pop culture with meme culture. The background shows a patterned sweater typical of a vintage sitcom era. The color palette is earthy, with the green of Pepe's face contrasting against the muted tones of the sweater and backdrop.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog meme integration.\n- Reference to a classic TV show.\n- Nostalgic elements from 90s sitcoms.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.828Z",
+  "sourceFactVersion": 1
+}

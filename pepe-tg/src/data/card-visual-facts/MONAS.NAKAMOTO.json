@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "asset": "MONAS.NAKAMOTO",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 30,
+  "artist": "Arwyn",
+  "supply": 888,
+  "issuance": "October 2022",
+  "textOnCard": [
+    "NakaMONAS Card",
+    "The creator of Bitcoin. There is only one PEPE, and that is ALL OF US.",
+    "❤️ =15 Atk = 3 Spd = 1 Ele = Fire",
+    "⭐Rareness Score ⭐",
+    "SINGULARITY"
+  ],
+  "memeticReferences": [
+    "Classic art remix with a crypto twist.",
+    "References to Bitcoin and Satoshi Nakamoto.",
+    "Pepe lore suggesting a communal identity.",
+    "Elements of RPG-style gaming."
+  ],
+  "visualSummary": "This card features a renaissance-style portrait with a green-skinned figure resembling a famous painting, dressed in period attire with pearls. The color palette is rich and classical, dominated by greens and earthy tones. The frame is styled like a trading card with heart, attack, speed, and element stats, adding a playful RPG twist.",
+  "visualSummaryShort": "The card showcases a renaissance-style portrait of a green-skinned figure in period attire, adorned with pearls. The rich color palette features greens and earthy tones, complemented by playful RPG-style stats.",
+  "visualKeywords": [
+    "portrait",
+    "green skin",
+    "pearls",
+    "renaissance",
+    "earthy tones",
+    "rich colors",
+    "rpg stats",
+    "period attire",
+    "playful",
+    "classical"
+  ],
+  "textKeywords": [
+    "nakamonas",
+    "creator",
+    "bitcoin",
+    "only",
+    "one",
+    "all",
+    "atk",
+    "spd",
+    "ele",
+    "fire",
+    "rareness",
+    "score",
+    "singularity"
+  ],
+  "keywords": [
+    "portrait",
+    "green skin",
+    "pearls",
+    "renaissance",
+    "earthy tones",
+    "rich colors",
+    "rpg stats",
+    "period attire",
+    "playful",
+    "classical",
+    "nakamonas",
+    "creator",
+    "bitcoin",
+    "only",
+    "one",
+    "all",
+    "atk",
+    "spd",
+    "ele",
+    "fire",
+    "rareness",
+    "score",
+    "singularity"
+  ],
+  "embeddingInput": "MONAS.NAKAMOTO (Fake Rares) - Series 16 Card 30\nArtist: Arwyn\nSupply 888 Issued October 2022\nOn-card text: NakaMONAS Card | The creator of Bitcoin. There is only one PEPE, and that is ALL OF US. | ❤️ =15 Atk = 3 Spd = 1 Ele = Fire | ⭐Rareness Score ⭐ | SINGULARITY\nVisual summary: This card features a renaissance-style portrait with a green-skinned figure resembling a famous painting, dressed in period attire with pearls. The color palette is rich and classical, dominated by greens and earthy tones. The frame is styled like a trading card with heart, attack, speed, and element stats, adding a playful RPG twist.\nMemetic references: Classic art remix with a crypto twist.; References to Bitcoin and Satoshi Nakamoto.; Pepe lore suggesting a communal identity.; Elements of RPG-style gaming.",
+  "embeddingBlocks": [
+    {
+      "id": "MONAS.NAKAMOTO#text",
+      "label": "On-card text",
+      "text": "NakaMONAS Card | The creator of Bitcoin. There is only one PEPE, and that is ALL OF US. | ❤️ =15 Atk = 3 Spd = 1 Ele = Fire | ⭐Rareness Score ⭐ | SINGULARITY",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MONAS.NAKAMOTO#memetic",
+      "label": "Memetic references",
+      "text": "Classic art remix with a crypto twist.\nReferences to Bitcoin and Satoshi Nakamoto.\nPepe lore suggesting a communal identity.\nElements of RPG-style gaming.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MONAS.NAKAMOTO#visual",
+      "label": "Visual summary",
+      "text": "This card features a renaissance-style portrait with a green-skinned figure resembling a famous painting, dressed in period attire with pearls. The color palette is rich and classical, dominated by greens and earthy tones. The frame is styled like a trading card with heart, attack, speed, and element stats, adding a playful RPG twist.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MONAS.NAKAMOTO#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nNakaMONAS Card  \nThe creator of Bitcoin. There is only one PEPE, and that is ALL OF US.  \n❤️ =15  Atk = 3  Spd = 1  Ele = Fire  \n⭐Rareness Score ⭐  \nSINGULARITY\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a renaissance-style portrait with a green-skinned figure resembling a famous painting, dressed in period attire with pearls. The color palette is rich and classical, dominated by greens and earthy tones. The frame is styled like a trading card with heart, attack, speed, and element stats, adding a playful RPG twist.\n\n🧬 **MEMETIC DNA:**\n- Classic art remix with a crypto twist.\n- References to Bitcoin and Satoshi Nakamoto.\n- Pepe lore suggesting a communal identity.\n- Elements of RPG-style gaming.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.778Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "asset": "FAKETORCH",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 2,
+  "artist": "Community Created",
+  "supply": 1,
+  "issuance": "September 2021",
+  "textOnCard": [
+    "FAKETORCH. This torch 2 fake man. This torch grants holder access to add 1 FΞPE dank to the fake rare directory."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in various forms.",
+    "References to ancient Egyptian themes with a pharaoh-like Pepe.",
+    "Crypto culture nod with \"FΞPE\" symbol, combining Ethereum's \"Ξ\".",
+    "Torch as a symbol of enlightenment or knowledge in meme culture."
+  ],
+  "visualSummary": "The card features a collage of Pepe the Frog characters, each with distinct costumes and expressions, layered over a grayscale background. The central figure is holding a torch, emitting a blue glow, which adds a mystical vibe. The color palette mixes muted tones with vibrant blues and greens, creating a chaotic yet intriguing composition.",
+  "visualSummaryShort": "The card showcases a collage of Pepe the Frog characters in various costumes against a grayscale backdrop. A central figure holding a glowing blue torch adds a mystical element to the chaotic composition.",
+  "visualKeywords": [
+    "pepe the frog",
+    "torch",
+    "blue glow",
+    "grayscale",
+    "costumes",
+    "expressions",
+    "muted tones",
+    "vibrant colors",
+    "chaotic",
+    "mystical"
+  ],
+  "textKeywords": [
+    "faketorch",
+    "torch",
+    "man",
+    "grants",
+    "holder",
+    "access",
+    "add",
+    "dank",
+    "directory"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "torch",
+    "blue glow",
+    "grayscale",
+    "costumes",
+    "expressions",
+    "muted tones",
+    "vibrant colors",
+    "chaotic",
+    "mystical",
+    "faketorch",
+    "man",
+    "grants",
+    "holder",
+    "access",
+    "add",
+    "dank",
+    "directory"
+  ],
+  "embeddingInput": "FAKETORCH (Fake Rares) - Series 1 Card 2\nArtist: Community Created\nSupply 1 Issued September 2021\nOn-card text: FAKETORCH. This torch 2 fake man. This torch grants holder access to add 1 FΞPE dank to the fake rare directory.\nVisual summary: The card features a collage of Pepe the Frog characters, each with distinct costumes and expressions, layered over a grayscale background. The central figure is holding a torch, emitting a blue glow, which adds a mystical vibe. The color palette mixes muted tones with vibrant blues and greens, creating a chaotic yet intriguing composition.\nMemetic references: Pepe the Frog in various forms.; References to ancient Egyptian themes with a pharaoh-like Pepe.; Crypto culture nod with \"FΞPE\" symbol, combining Ethereum's \"Ξ\".; Torch as a symbol of enlightenment or knowledge in meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKETORCH#text",
+      "label": "On-card text",
+      "text": "FAKETORCH. This torch 2 fake man. This torch grants holder access to add 1 FΞPE dank to the fake rare directory.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKETORCH#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in various forms.\nReferences to ancient Egyptian themes with a pharaoh-like Pepe.\nCrypto culture nod with \"FΞPE\" symbol, combining Ethereum's \"Ξ\".\nTorch as a symbol of enlightenment or knowledge in meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKETORCH#visual",
+      "label": "Visual summary",
+      "text": "The card features a collage of Pepe the Frog characters, each with distinct costumes and expressions, layered over a grayscale background. The central figure is holding a torch, emitting a blue glow, which adds a mystical vibe. The color palette mixes muted tones with vibrant blues and greens, creating a chaotic yet intriguing composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKETORCH#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKETORCH. This torch 2 fake man. This torch grants holder access to add 1 FΞPE dank to the fake rare directory.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a collage of Pepe the Frog characters, each with distinct costumes and expressions, layered over a grayscale background. The central figure is holding a torch, emitting a blue glow, which adds a mystical vibe. The color palette mixes muted tones with vibrant blues and greens, creating a chaotic yet intriguing composition.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in various forms.\n- References to ancient Egyptian themes with a pharaoh-like Pepe.\n- Crypto culture nod with \"FΞPE\" symbol, combining Ethereum's \"Ξ\".\n- Torch as a symbol of enlightenment or knowledge in meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.587Z",
+  "sourceFactVersion": 1
+}

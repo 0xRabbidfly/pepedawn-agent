@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "asset": "MRPEPEVERSE",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 19,
+  "artist": "CryptoAli",
+  "supply": 69,
+  "issuance": "December 2021",
+  "textOnCard": [
+    "MR PEPEVERSE"
+  ],
+  "memeticReferences": [
+    "Plays on the concept of the \"metaverse\" with a Pepe twist.",
+    "References the ubiquitous Pepe meme culture.",
+    "Possible nod to the matrix or virtual worlds with the sleek, digital aesthetic."
+  ],
+  "visualSummary": "The card features a minimalist design with a sleek, futuristic font. The text \"MR PEPEVERSE\" is centered on a dark background, creating a dramatic contrast. The color palette is primarily dark with subtle blue gradients, giving it a mysterious and modern feel.",
+  "visualSummaryShort": "The card showcases a minimalist design with a dark background and sleek font. It features subtle blue gradients that enhance its modern and mysterious atmosphere.",
+  "visualKeywords": [
+    "minimalist",
+    "dark background",
+    "blue gradients",
+    "futuristic",
+    "modern",
+    "dramatic contrast"
+  ],
+  "textKeywords": [
+    "pepeverse"
+  ],
+  "keywords": [
+    "minimalist",
+    "dark background",
+    "blue gradients",
+    "futuristic",
+    "modern",
+    "dramatic contrast",
+    "pepeverse"
+  ],
+  "embeddingInput": "MRPEPEVERSE (Fake Rares) - Series 7 Card 19\nArtist: CryptoAli\nSupply 69 Issued December 2021\nOn-card text: MR PEPEVERSE\nVisual summary: The card features a minimalist design with a sleek, futuristic font. The text \"MR PEPEVERSE\" is centered on a dark background, creating a dramatic contrast. The color palette is primarily dark with subtle blue gradients, giving it a mysterious and modern feel.\nMemetic references: Plays on the concept of the \"metaverse\" with a Pepe twist.; References the ubiquitous Pepe meme culture.; Possible nod to the matrix or virtual worlds with the sleek, digital aesthetic.",
+  "embeddingBlocks": [
+    {
+      "id": "MRPEPEVERSE#text",
+      "label": "On-card text",
+      "text": "MR PEPEVERSE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MRPEPEVERSE#memetic",
+      "label": "Memetic references",
+      "text": "Plays on the concept of the \"metaverse\" with a Pepe twist.\nReferences the ubiquitous Pepe meme culture.\nPossible nod to the matrix or virtual worlds with the sleek, digital aesthetic.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MRPEPEVERSE#visual",
+      "label": "Visual summary",
+      "text": "The card features a minimalist design with a sleek, futuristic font. The text \"MR PEPEVERSE\" is centered on a dark background, creating a dramatic contrast. The color palette is primarily dark with subtle blue gradients, giving it a mysterious and modern feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MRPEPEVERSE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nMR PEPEVERSE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a minimalist design with a sleek, futuristic font. The text \"MR PEPEVERSE\" is centered on a dark background, creating a dramatic contrast. The color palette is primarily dark with subtle blue gradients, giving it a mysterious and modern feel.\n\n🧬 **MEMETIC DNA:**\n- Plays on the concept of the \"metaverse\" with a Pepe twist.\n- References the ubiquitous Pepe meme culture.\n- Possible nod to the matrix or virtual worlds with the sleek, digital aesthetic.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.781Z",
+  "sourceFactVersion": 1
+}

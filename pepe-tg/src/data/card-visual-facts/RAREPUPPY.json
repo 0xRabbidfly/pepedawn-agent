@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "asset": "RAREPUPPY",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 28,
+  "artist": "Looney",
+  "supply": 300,
+  "issuance": "February 2017",
+  "textOnCard": [
+    "Nakamutto Card. The creator of Bitecoin. One of the most rare Puppies in existence. Rareness Score 77."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference.",
+    "Satoshi Nakamoto parody with \"Nakamutto.\"",
+    "\"Bitecoin\" as a play on Bitcoin.",
+    "Elements of collectible card games with stats and scores."
+  ],
+  "visualSummary": "This card features a Pepe-inspired character with a green face and a dog-like tongue out. The character is styled with Einstein-like wild gray hair, glasses, and a tie, set against a green, electric background. The design is cartoonish with a playful mix of digital and hand-drawn elements.",
+  "visualSummaryShort": "The card showcases a Pepe-inspired character with a green face and a playful expression. It features wild gray hair and glasses, set against a vibrant green background.",
+  "visualKeywords": [
+    "pepe",
+    "green face",
+    "dog tongue",
+    "wild hair",
+    "glasses",
+    "tie",
+    "electric background",
+    "cartoonish",
+    "playful",
+    "digital art"
+  ],
+  "textKeywords": [
+    "nakamutto",
+    "creator",
+    "bitecoin",
+    "one",
+    "puppies",
+    "existence",
+    "rareness",
+    "score"
+  ],
+  "keywords": [
+    "pepe",
+    "green face",
+    "dog tongue",
+    "wild hair",
+    "glasses",
+    "tie",
+    "electric background",
+    "cartoonish",
+    "playful",
+    "digital art",
+    "nakamutto",
+    "creator",
+    "bitecoin",
+    "one",
+    "puppies",
+    "existence",
+    "rareness",
+    "score"
+  ],
+  "embeddingInput": "RAREPUPPY (Fake Rares) - Series 8 Card 28\nArtist: Looney\nSupply 300 Issued February 2017\nOn-card text: Nakamutto Card. The creator of Bitecoin. One of the most rare Puppies in existence. Rareness Score 77.\nVisual summary: This card features a Pepe-inspired character with a green face and a dog-like tongue out. The character is styled with Einstein-like wild gray hair, glasses, and a tie, set against a green, electric background. The design is cartoonish with a playful mix of digital and hand-drawn elements.\nMemetic references: Pepe the Frog reference.; Satoshi Nakamoto parody with \"Nakamutto.\"; \"Bitecoin\" as a play on Bitcoin.; Elements of collectible card games with stats and scores.",
+  "embeddingBlocks": [
+    {
+      "id": "RAREPUPPY#text",
+      "label": "On-card text",
+      "text": "Nakamutto Card. The creator of Bitecoin. One of the most rare Puppies in existence. Rareness Score 77.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "RAREPUPPY#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference.\nSatoshi Nakamoto parody with \"Nakamutto.\"\n\"Bitecoin\" as a play on Bitcoin.\nElements of collectible card games with stats and scores.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RAREPUPPY#visual",
+      "label": "Visual summary",
+      "text": "This card features a Pepe-inspired character with a green face and a dog-like tongue out. The character is styled with Einstein-like wild gray hair, glasses, and a tie, set against a green, electric background. The design is cartoonish with a playful mix of digital and hand-drawn elements.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RAREPUPPY#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nNakamutto Card. The creator of Bitecoin. One of the most rare Puppies in existence. Rareness Score 77.\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a Pepe-inspired character with a green face and a dog-like tongue out. The character is styled with Einstein-like wild gray hair, glasses, and a tie, set against a green, electric background. The design is cartoonish with a playful mix of digital and hand-drawn elements.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference.\n- Satoshi Nakamoto parody with \"Nakamutto.\"\n- \"Bitecoin\" as a play on Bitcoin.\n- Elements of collectible card games with stats and scores.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.073Z",
+  "sourceFactVersion": 1
+}

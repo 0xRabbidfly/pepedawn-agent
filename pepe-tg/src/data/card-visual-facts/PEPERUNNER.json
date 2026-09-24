@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "PEPERUNNER",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 33,
+  "artist": "FourLeafClover",
+  "supply": 60,
+  "issuance": "December 2021",
+  "textOnCard": [
+    "PEPE RUN"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as the central character.",
+    "Dinosaur chase reminiscent of classic video games or Jurassic Park references.",
+    "Cartoon style similar to popular animated series."
+  ],
+  "visualSummary": "The card features a cartoonish, dynamic scene with Pepe the Frog at the center, running in terror. He's pursued by a fierce, roaring dinosaur, with more prehistoric creatures in the background. The color palette is vibrant, with lush greens and earthy tones, giving it a lively and adventurous vibe.",
+  "visualSummaryShort": "The card depicts a cartoonish scene of Pepe the Frog running in fear from a roaring dinosaur. The vibrant colors and lush background create an adventurous atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "dinosaur",
+    "running",
+    "vibrant colors",
+    "lush greens",
+    "earthy tones",
+    "prehistoric creatures",
+    "dynamic scene",
+    "terror",
+    "adventurous vibe"
+  ],
+  "textKeywords": [
+    "run"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "dinosaur",
+    "running",
+    "vibrant colors",
+    "lush greens",
+    "earthy tones",
+    "prehistoric creatures",
+    "dynamic scene",
+    "terror",
+    "adventurous vibe",
+    "run"
+  ],
+  "embeddingInput": "PEPERUNNER (Fake Rares) - Series 10 Card 33\nArtist: FourLeafClover\nSupply 60 Issued December 2021\nOn-card text: PEPE RUN\nVisual summary: The card features a cartoonish, dynamic scene with Pepe the Frog at the center, running in terror. He's pursued by a fierce, roaring dinosaur, with more prehistoric creatures in the background. The color palette is vibrant, with lush greens and earthy tones, giving it a lively and adventurous vibe.\nMemetic references: Pepe the Frog as the central character.; Dinosaur chase reminiscent of classic video games or Jurassic Park references.; Cartoon style similar to popular animated series.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPERUNNER#text",
+      "label": "On-card text",
+      "text": "PEPE RUN",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPERUNNER#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as the central character.\nDinosaur chase reminiscent of classic video games or Jurassic Park references.\nCartoon style similar to popular animated series.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPERUNNER#visual",
+      "label": "Visual summary",
+      "text": "The card features a cartoonish, dynamic scene with Pepe the Frog at the center, running in terror. He's pursued by a fierce, roaring dinosaur, with more prehistoric creatures in the background. The color palette is vibrant, with lush greens and earthy tones, giving it a lively and adventurous vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPERUNNER#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE RUN\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a cartoonish, dynamic scene with Pepe the Frog at the center, running in terror. He's pursued by a fierce, roaring dinosaur, with more prehistoric creatures in the background. The color palette is vibrant, with lush greens and earthy tones, giving it a lively and adventurous vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as the central character.\n- Dinosaur chase reminiscent of classic video games or Jurassic Park references.\n- Cartoon style similar to popular animated series.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.965Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "asset": "MADAMMAXWELL",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 20,
+  "artist": "realPepstein",
+  "supply": 97,
+  "issuance": "December 2021",
+  "textOnCard": [
+    "Madam Maxwell",
+    "Gives +6 to any attempted Fake Rare cash grab. +9 to blackpill a royal family or to traffic a Pepe via dispenser."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference with the green-faced character.",
+    "Courtroom setting possibly referencing high-profile legal cases.",
+    "\"Madam Maxwell\" could hint at cultural or infamous figures involved in scandals.",
+    "Crypto jargon like \"Fake Rare\" and \"blackpill\" connects to NFT and meme culture."
+  ],
+  "visualSummary": "The card features a courtroom scene with three figures, one of whom has a prominent green face, reminiscent of Pepe the Frog. The style is sketch-like, with rough brush strokes and a muted color palette dominated by browns, greens, and blues. The background includes a framed painting and large windows, adding depth to the setting.",
+  "visualSummaryShort": "The card depicts a courtroom scene with three figures, including one with a green face. The sketch-like style features a muted color palette and a detailed background with large windows.",
+  "visualKeywords": [
+    "courtroom",
+    "green face",
+    "sketch",
+    "muted colors",
+    "browns",
+    "blues",
+    "figures",
+    "painting",
+    "windows"
+  ],
+  "textKeywords": [
+    "madam",
+    "maxwell",
+    "gives",
+    "any",
+    "attempted",
+    "cash",
+    "grab",
+    "blackpill",
+    "royal",
+    "family",
+    "traffic",
+    "via",
+    "dispenser"
+  ],
+  "keywords": [
+    "courtroom",
+    "green face",
+    "sketch",
+    "muted colors",
+    "browns",
+    "blues",
+    "figures",
+    "painting",
+    "windows",
+    "madam",
+    "maxwell",
+    "gives",
+    "any",
+    "attempted",
+    "cash",
+    "grab",
+    "blackpill",
+    "royal",
+    "family",
+    "traffic",
+    "via",
+    "dispenser"
+  ],
+  "embeddingInput": "MADAMMAXWELL (Fake Rares) - Series 6 Card 20\nArtist: realPepstein\nSupply 97 Issued December 2021\nOn-card text: Madam Maxwell | Gives +6 to any attempted Fake Rare cash grab. +9 to blackpill a royal family or to traffic a Pepe via dispenser.\nVisual summary: The card features a courtroom scene with three figures, one of whom has a prominent green face, reminiscent of Pepe the Frog. The style is sketch-like, with rough brush strokes and a muted color palette dominated by browns, greens, and blues. The background includes a framed painting and large windows, adding depth to the setting.\nMemetic references: Pepe the Frog reference with the green-faced character.; Courtroom setting possibly referencing high-profile legal cases.; \"Madam Maxwell\" could hint at cultural or infamous figures involved in scandals.; Crypto jargon like \"Fake Rare\" and \"blackpill\" connects to NFT and meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "MADAMMAXWELL#text",
+      "label": "On-card text",
+      "text": "Madam Maxwell | Gives +6 to any attempted Fake Rare cash grab. +9 to blackpill a royal family or to traffic a Pepe via dispenser.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MADAMMAXWELL#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference with the green-faced character.\nCourtroom setting possibly referencing high-profile legal cases.\n\"Madam Maxwell\" could hint at cultural or infamous figures involved in scandals.\nCrypto jargon like \"Fake Rare\" and \"blackpill\" connects to NFT and meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MADAMMAXWELL#visual",
+      "label": "Visual summary",
+      "text": "The card features a courtroom scene with three figures, one of whom has a prominent green face, reminiscent of Pepe the Frog. The style is sketch-like, with rough brush strokes and a muted color palette dominated by browns, greens, and blues. The background includes a framed painting and large windows, adding depth to the setting.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MADAMMAXWELL#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nMadam Maxwell  \nGives +6 to any attempted Fake Rare cash grab. +9 to blackpill a royal family or to traffic a Pepe via dispenser.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a courtroom scene with three figures, one of whom has a prominent green face, reminiscent of Pepe the Frog. The style is sketch-like, with rough brush strokes and a muted color palette dominated by browns, greens, and blues. The background includes a framed painting and large windows, adding depth to the setting.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference with the green-faced character.\n- Courtroom setting possibly referencing high-profile legal cases.\n- \"Madam Maxwell\" could hint at cultural or infamous figures involved in scandals.\n- Crypto jargon like \"Fake Rare\" and \"blackpill\" connects to NFT and meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.757Z",
+  "sourceFactVersion": 1
+}

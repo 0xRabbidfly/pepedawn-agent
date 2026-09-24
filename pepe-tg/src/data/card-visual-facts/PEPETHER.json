@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "asset": "PEPETHER",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 13,
+  "artist": "The Mule",
+  "supply": 150,
+  "issuance": "September 2021",
+  "textOnCard": [
+    "PEPETHER",
+    "Next level: Pepe 2.0",
+    "SMART PEPE PLATFORM BASED ON PROOF OF PEPE",
+    "Rareness score: 97 Pepether"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference",
+    "Ethereum logo",
+    "Synthwave aesthetic",
+    "\"Proof of Pepe\" play on crypto terminology"
+  ],
+  "visualSummary": "The card features a green-faced figure with a Pepe-like expression superimposed on a human body, wearing a shirt with the Ethereum logo. The background is a retro-futuristic grid with a setting sun, evoking nostalgic 80s synthwave vibes. The color palette is a mix of neon pinks, purples, and blues against a dark starry sky.",
+  "visualSummaryShort": "The card showcases a green-faced figure resembling Pepe, dressed in an Ethereum logo shirt, set against a retro-futuristic grid and a vibrant sunset. The color scheme features neon pinks, purples, and blues, creating a nostalgic synthwave atmosphere.",
+  "visualKeywords": [
+    "green face",
+    "pepe",
+    "ethereum",
+    "retro-futuristic",
+    "grid",
+    "sunset",
+    "neon colors",
+    "synthwave",
+    "starry sky"
+  ],
+  "textKeywords": [
+    "pepether",
+    "next",
+    "level",
+    "smart",
+    "platform",
+    "based",
+    "proof",
+    "rareness",
+    "score"
+  ],
+  "keywords": [
+    "green face",
+    "pepe",
+    "ethereum",
+    "retro-futuristic",
+    "grid",
+    "sunset",
+    "neon colors",
+    "synthwave",
+    "starry sky",
+    "pepether",
+    "next",
+    "level",
+    "smart",
+    "platform",
+    "based",
+    "proof",
+    "rareness",
+    "score"
+  ],
+  "embeddingInput": "PEPETHER (Fake Rares) - Series 1 Card 13\nArtist: The Mule\nSupply 150 Issued September 2021\nOn-card text: PEPETHER | Next level: Pepe 2.0 | SMART PEPE PLATFORM BASED ON PROOF OF PEPE | Rareness score: 97 Pepether\nVisual summary: The card features a green-faced figure with a Pepe-like expression superimposed on a human body, wearing a shirt with the Ethereum logo. The background is a retro-futuristic grid with a setting sun, evoking nostalgic 80s synthwave vibes. The color palette is a mix of neon pinks, purples, and blues against a dark starry sky.\nMemetic references: Pepe the Frog reference; Ethereum logo; Synthwave aesthetic; \"Proof of Pepe\" play on crypto terminology",
+  "embeddingBlocks": [
+    {
+      "id": "PEPETHER#text",
+      "label": "On-card text",
+      "text": "PEPETHER | Next level: Pepe 2.0 | SMART PEPE PLATFORM BASED ON PROOF OF PEPE | Rareness score: 97 Pepether",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPETHER#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference\nEthereum logo\nSynthwave aesthetic\n\"Proof of Pepe\" play on crypto terminology",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPETHER#visual",
+      "label": "Visual summary",
+      "text": "The card features a green-faced figure with a Pepe-like expression superimposed on a human body, wearing a shirt with the Ethereum logo. The background is a retro-futuristic grid with a setting sun, evoking nostalgic 80s synthwave vibes. The color palette is a mix of neon pinks, purples, and blues against a dark starry sky.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPETHER#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPETHER  \nNext level: Pepe 2.0  \nSMART PEPE PLATFORM BASED ON PROOF OF PEPE  \nRareness score: 97 Pepether\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a green-faced figure with a Pepe-like expression superimposed on a human body, wearing a shirt with the Ethereum logo. The background is a retro-futuristic grid with a setting sun, evoking nostalgic 80s synthwave vibes. The color palette is a mix of neon pinks, purples, and blues against a dark starry sky.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference\n- Ethereum logo\n- Synthwave aesthetic\n- \"Proof of Pepe\" play on crypto terminology",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.997Z",
+  "sourceFactVersion": 1
+}

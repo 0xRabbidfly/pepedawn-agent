@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "asset": "RAMPEPLIN",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 28,
+  "artist": "PopWonder",
+  "supply": 100,
+  "issuance": "August 2022",
+  "textOnCard": [
+    "One-way ticket. Admit one for a journey of your choice. No refunds."
+  ],
+  "memeticReferences": [
+    "Hypnotic spiral eyes reference classic psychedelic art.",
+    "Pepe the Frog, a staple of internet meme culture.",
+    "The one-way ticket theme suggests a journey into the unknown, resonating with crypto adventure vibes.",
+    "Elements of 1960s counterculture and psychedelic motifs."
+  ],
+  "visualSummary": "The card showcases a psychedelic Pepe with hypnotic spiral eyes, draped in a purple robe, holding a bowl of colorful orbs. The background is a vibrant landscape with surreal mountains, flowers, and a sunset, using a bold color palette of neon greens, pinks, and blues. The style is a fusion of comic book and pop-art, with a playful and trippy vibe.",
+  "visualSummaryShort": "The card features a psychedelic Pepe with spiral eyes, wearing a purple robe and holding colorful orbs. The vibrant background includes surreal mountains and flowers, creating a playful and trippy atmosphere.",
+  "visualKeywords": [
+    "psychedelic",
+    "pepe",
+    "purple robe",
+    "colorful orbs",
+    "surreal mountains",
+    "flowers",
+    "sunset",
+    "neon colors",
+    "comic book style",
+    "trippy vibe"
+  ],
+  "textKeywords": [
+    "one",
+    "way",
+    "ticket",
+    "admit",
+    "journey",
+    "choice",
+    "refunds"
+  ],
+  "keywords": [
+    "psychedelic",
+    "pepe",
+    "purple robe",
+    "colorful orbs",
+    "surreal mountains",
+    "flowers",
+    "sunset",
+    "neon colors",
+    "comic book style",
+    "trippy vibe",
+    "one",
+    "way",
+    "ticket",
+    "admit",
+    "journey",
+    "choice",
+    "refunds"
+  ],
+  "embeddingInput": "RAMPEPLIN (Fake Rares) - Series 9 Card 28\nArtist: PopWonder\nSupply 100 Issued August 2022\nOn-card text: One-way ticket. Admit one for a journey of your choice. No refunds.\nVisual summary: The card showcases a psychedelic Pepe with hypnotic spiral eyes, draped in a purple robe, holding a bowl of colorful orbs. The background is a vibrant landscape with surreal mountains, flowers, and a sunset, using a bold color palette of neon greens, pinks, and blues. The style is a fusion of comic book and pop-art, with a playful and trippy vibe.\nMemetic references: Hypnotic spiral eyes reference classic psychedelic art.; Pepe the Frog, a staple of internet meme culture.; The one-way ticket theme suggests a journey into the unknown, resonating with crypto adventure vibes.; Elements of 1960s counterculture and psychedelic motifs.",
+  "embeddingBlocks": [
+    {
+      "id": "RAMPEPLIN#text",
+      "label": "On-card text",
+      "text": "One-way ticket. Admit one for a journey of your choice. No refunds.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "RAMPEPLIN#memetic",
+      "label": "Memetic references",
+      "text": "Hypnotic spiral eyes reference classic psychedelic art.\nPepe the Frog, a staple of internet meme culture.\nThe one-way ticket theme suggests a journey into the unknown, resonating with crypto adventure vibes.\nElements of 1960s counterculture and psychedelic motifs.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RAMPEPLIN#visual",
+      "label": "Visual summary",
+      "text": "The card showcases a psychedelic Pepe with hypnotic spiral eyes, draped in a purple robe, holding a bowl of colorful orbs. The background is a vibrant landscape with surreal mountains, flowers, and a sunset, using a bold color palette of neon greens, pinks, and blues. The style is a fusion of comic book and pop-art, with a playful and trippy vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RAMPEPLIN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nOne-way ticket. Admit one for a journey of your choice. No refunds.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card showcases a psychedelic Pepe with hypnotic spiral eyes, draped in a purple robe, holding a bowl of colorful orbs. The background is a vibrant landscape with surreal mountains, flowers, and a sunset, using a bold color palette of neon greens, pinks, and blues. The style is a fusion of comic book and pop-art, with a playful and trippy vibe.\n\n🧬 **MEMETIC DNA:**\n- Hypnotic spiral eyes reference classic psychedelic art.\n- Pepe the Frog, a staple of internet meme culture.\n- The one-way ticket theme suggests a journey into the unknown, resonating with crypto adventure vibes.\n- Elements of 1960s counterculture and psychedelic motifs.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.063Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "PITCHNPUTTPP",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 34,
+  "artist": "Darky",
+  "supply": 23,
+  "issuance": "November 2022",
+  "textOnCard": [
+    "420"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as the golfer, a staple of internet meme culture.",
+    "The number \"420\" references cannabis culture, adding a layer of counterculture humor.",
+    "The surreal and humorous combination of golf and meme elements speaks to NFT and crypto-centric humor."
+  ],
+  "visualSummary": "The card features a vivid, surreal scene with a large eye as the focal point, its iris transformed into a mini golf course. A Pepe character dressed in plaid pants and a cap stands poised with a golf club, aiming towards a hole marked with a small flag displaying \"420\". The color palette is dominated by purples, greens, and reds, creating a psychedelic vibe with playful elements.",
+  "visualSummaryShort": "The card showcases a surreal scene with a large eye as the centerpiece, featuring a mini golf course within its iris. A Pepe character in plaid pants is ready to putt towards a hole marked with a flag.",
+  "visualKeywords": [
+    "eye",
+    "mini golf",
+    "pepe",
+    "plaid",
+    "purple",
+    "green",
+    "red",
+    "psychedelic",
+    "flag",
+    "golf club"
+  ],
+  "textKeywords": [
+    "420"
+  ],
+  "keywords": [
+    "eye",
+    "mini golf",
+    "pepe",
+    "plaid",
+    "purple",
+    "green",
+    "red",
+    "psychedelic",
+    "flag",
+    "golf club",
+    "420"
+  ],
+  "embeddingInput": "PITCHNPUTTPP (Fake Rares) - Series 12 Card 34\nArtist: Darky\nSupply 23 Issued November 2022\nOn-card text: 420\nVisual summary: The card features a vivid, surreal scene with a large eye as the focal point, its iris transformed into a mini golf course. A Pepe character dressed in plaid pants and a cap stands poised with a golf club, aiming towards a hole marked with a small flag displaying \"420\". The color palette is dominated by purples, greens, and reds, creating a psychedelic vibe with playful elements.\nMemetic references: Pepe the Frog as the golfer, a staple of internet meme culture.; The number \"420\" references cannabis culture, adding a layer of counterculture humor.; The surreal and humorous combination of golf and meme elements speaks to NFT and crypto-centric humor.",
+  "embeddingBlocks": [
+    {
+      "id": "PITCHNPUTTPP#text",
+      "label": "On-card text",
+      "text": "420",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PITCHNPUTTPP#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as the golfer, a staple of internet meme culture.\nThe number \"420\" references cannabis culture, adding a layer of counterculture humor.\nThe surreal and humorous combination of golf and meme elements speaks to NFT and crypto-centric humor.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PITCHNPUTTPP#visual",
+      "label": "Visual summary",
+      "text": "The card features a vivid, surreal scene with a large eye as the focal point, its iris transformed into a mini golf course. A Pepe character dressed in plaid pants and a cap stands poised with a golf club, aiming towards a hole marked with a small flag displaying \"420\". The color palette is dominated by purples, greens, and reds, creating a psychedelic vibe with playful elements.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PITCHNPUTTPP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n420\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vivid, surreal scene with a large eye as the focal point, its iris transformed into a mini golf course. A Pepe character dressed in plaid pants and a cap stands poised with a golf club, aiming towards a hole marked with a small flag displaying \"420\". The color palette is dominated by purples, greens, and reds, creating a psychedelic vibe with playful elements.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as the golfer, a staple of internet meme culture.\n- The number \"420\" references cannabis culture, adding a layer of counterculture humor.\n- The surreal and humorous combination of golf and meme elements speaks to NFT and crypto-centric humor.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.037Z",
+  "sourceFactVersion": 1
+}

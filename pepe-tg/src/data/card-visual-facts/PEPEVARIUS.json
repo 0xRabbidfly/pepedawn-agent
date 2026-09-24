@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PEPEVARIUS",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 16,
+  "artist": "Ksenia Buridanova",
+  "supply": 42,
+  "issuance": "September 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery.",
+    "References to historical European portraiture.",
+    "Symbolism of wealth and wisdom through regal attire and chalice."
+  ],
+  "visualSummary": "The card features a dignified, human-like Pepe frog dressed in ornate, renaissance-style attire with a rich blue and gold color palette. The background is dark, highlighting the detailed textures of Pepe’s robe and the golden chalice he holds. The lighting accentuates the solemn expression, giving a regal and timeless feel to the artwork.",
+  "visualSummaryShort": "The card showcases a dignified Pepe frog in ornate renaissance attire, emphasizing a rich blue and gold color scheme. The dark background and focused lighting enhance the regal and timeless atmosphere of the artwork.",
+  "visualKeywords": [
+    "pepe frog",
+    "renaissance",
+    "blue and gold",
+    "dark background",
+    "chalice",
+    "regal",
+    "solemn expression",
+    "ornate attire",
+    "detailed textures",
+    "timeless"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe frog",
+    "renaissance",
+    "blue and gold",
+    "dark background",
+    "chalice",
+    "regal",
+    "solemn expression",
+    "ornate attire",
+    "detailed textures",
+    "timeless"
+  ],
+  "embeddingInput": "PEPEVARIUS (Fake Rares) - Series 16 Card 16\nArtist: Ksenia Buridanova\nSupply 42 Issued September 2023\nOn-card text: none detected\nVisual summary: The card features a dignified, human-like Pepe frog dressed in ornate, renaissance-style attire with a rich blue and gold color palette. The background is dark, highlighting the detailed textures of Pepe’s robe and the golden chalice he holds. The lighting accentuates the solemn expression, giving a regal and timeless feel to the artwork.\nMemetic references: Classic Pepe the Frog imagery.; References to historical European portraiture.; Symbolism of wealth and wisdom through regal attire and chalice.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEVARIUS#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery.\nReferences to historical European portraiture.\nSymbolism of wealth and wisdom through regal attire and chalice.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEVARIUS#visual",
+      "label": "Visual summary",
+      "text": "The card features a dignified, human-like Pepe frog dressed in ornate, renaissance-style attire with a rich blue and gold color palette. The background is dark, highlighting the detailed textures of Pepe’s robe and the golden chalice he holds. The lighting accentuates the solemn expression, giving a regal and timeless feel to the artwork.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEVARIUS#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a dignified, human-like Pepe frog dressed in ornate, renaissance-style attire with a rich blue and gold color palette. The background is dark, highlighting the detailed textures of Pepe’s robe and the golden chalice he holds. The lighting accentuates the solemn expression, giving a regal and timeless feel to the artwork.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery.\n- References to historical European portraiture.\n- Symbolism of wealth and wisdom through regal attire and chalice.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.007Z",
+  "sourceFactVersion": 1
+}

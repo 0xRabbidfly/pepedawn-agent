@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "asset": "STARWARSFAKE",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 37,
+  "artist": "GoingPepe100",
+  "supply": 33,
+  "issuance": "December 2021",
+  "textOnCard": [
+    "STAR WARS FAKE 1",
+    "RARITY 1",
+    "33",
+    "© 2021 GoingPepe100 X Conceptuel"
+  ],
+  "memeticReferences": [
+    "Play on \"Star Wars\" name, merging pop culture with NFT culture.",
+    "The use of \"Fake\" hints at the playful, ironic nature common in meme culture.",
+    "Collaboration of artists GoingPepe100 and Conceptuel adds layers of NFT community involvement."
+  ],
+  "visualSummary": "The card features a cosmic background with shades of purple and blue, creating a galactic atmosphere. The text is styled reminiscent of the iconic \"Star Wars\" font, giving it a nostalgic sci-fi vibe. The central black rectangle suggests space for a visual yet-to-be-added, surrounded by a mystical starry field.",
+  "visualSummaryShort": "The card showcases a cosmic background in purple and blue, evoking a galactic atmosphere. A central black rectangle hints at a future visual, surrounded by a mystical starry field.",
+  "visualKeywords": [
+    "cosmic",
+    "purple",
+    "blue",
+    "galaxy",
+    "starry",
+    "mystical",
+    "sci-fi",
+    "rectangle"
+  ],
+  "textKeywords": [
+    "star",
+    "wars",
+    "rarity",
+    "2021",
+    "goingpepe100",
+    "conceptuel"
+  ],
+  "keywords": [
+    "cosmic",
+    "purple",
+    "blue",
+    "galaxy",
+    "starry",
+    "mystical",
+    "sci-fi",
+    "rectangle",
+    "star",
+    "wars",
+    "rarity",
+    "2021",
+    "goingpepe100",
+    "conceptuel"
+  ],
+  "embeddingInput": "STARWARSFAKE (Fake Rares) - Series 4 Card 37\nArtist: GoingPepe100\nSupply 33 Issued December 2021\nOn-card text: STAR WARS FAKE 1 | RARITY 1 | 33 | © 2021 GoingPepe100 X Conceptuel\nVisual summary: The card features a cosmic background with shades of purple and blue, creating a galactic atmosphere. The text is styled reminiscent of the iconic \"Star Wars\" font, giving it a nostalgic sci-fi vibe. The central black rectangle suggests space for a visual yet-to-be-added, surrounded by a mystical starry field.\nMemetic references: Play on \"Star Wars\" name, merging pop culture with NFT culture.; The use of \"Fake\" hints at the playful, ironic nature common in meme culture.; Collaboration of artists GoingPepe100 and Conceptuel adds layers of NFT community involvement.",
+  "embeddingBlocks": [
+    {
+      "id": "STARWARSFAKE#text",
+      "label": "On-card text",
+      "text": "STAR WARS FAKE 1 | RARITY 1 | 33 | © 2021 GoingPepe100 X Conceptuel",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "STARWARSFAKE#memetic",
+      "label": "Memetic references",
+      "text": "Play on \"Star Wars\" name, merging pop culture with NFT culture.\nThe use of \"Fake\" hints at the playful, ironic nature common in meme culture.\nCollaboration of artists GoingPepe100 and Conceptuel adds layers of NFT community involvement.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "STARWARSFAKE#visual",
+      "label": "Visual summary",
+      "text": "The card features a cosmic background with shades of purple and blue, creating a galactic atmosphere. The text is styled reminiscent of the iconic \"Star Wars\" font, giving it a nostalgic sci-fi vibe. The central black rectangle suggests space for a visual yet-to-be-added, surrounded by a mystical starry field.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "STARWARSFAKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nSTAR WARS FAKE 1  \nRARITY 1/33  \n© 2021 GoingPepe100 X Conceptuel  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a cosmic background with shades of purple and blue, creating a galactic atmosphere. The text is styled reminiscent of the iconic \"Star Wars\" font, giving it a nostalgic sci-fi vibe. The central black rectangle suggests space for a visual yet-to-be-added, surrounded by a mystical starry field.\n\n🧬 **MEMETIC DNA:**\n- Play on \"Star Wars\" name, merging pop culture with NFT culture.\n- The use of \"Fake\" hints at the playful, ironic nature common in meme culture.\n- Collaboration of artists GoingPepe100 and Conceptuel adds layers of NFT community involvement.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.123Z",
+  "sourceFactVersion": 1
+}

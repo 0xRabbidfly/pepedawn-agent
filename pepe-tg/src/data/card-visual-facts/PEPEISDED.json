@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "PEPEISDED",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 38,
+  "artist": "Sir Barry Gibb and Maya",
+  "supply": 187,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "FAKE",
+    "PEPE IS DED"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central meme character.",
+    "References to punk culture with the concert and electric guitar.",
+    "The word \"FAKE\" stamped, playing on NFT culture themes."
+  ],
+  "visualSummary": "The card features a black-and-white image with a punk rock concert vibe, where all the characters have Pepe the Frog heads. The central figure is playing an electric guitar, with a fiery, screaming Pepe face. The bold, green text stands out against the monochrome background, adding a rebellious touch.",
+  "visualSummaryShort": "The card showcases a punk rock concert scene with characters featuring Pepe the Frog heads. A central figure passionately plays an electric guitar, highlighted by bold green text against a black-and-white backdrop.",
+  "visualKeywords": [
+    "punk rock",
+    "pepe the frog",
+    "electric guitar",
+    "black-and-white",
+    "fiery",
+    "screaming",
+    "rebellious",
+    "monochrome",
+    "bold text"
+  ],
+  "textKeywords": [
+    "ded"
+  ],
+  "keywords": [
+    "punk rock",
+    "pepe the frog",
+    "electric guitar",
+    "black-and-white",
+    "fiery",
+    "screaming",
+    "rebellious",
+    "monochrome",
+    "bold text",
+    "ded"
+  ],
+  "embeddingInput": "PEPEISDED (Fake Rares) - Series 3 Card 38\nArtist: Sir Barry Gibb and Maya\nSupply 187 Issued October 2021\nOn-card text: FAKE | PEPE IS DED\nVisual summary: The card features a black-and-white image with a punk rock concert vibe, where all the characters have Pepe the Frog heads. The central figure is playing an electric guitar, with a fiery, screaming Pepe face. The bold, green text stands out against the monochrome background, adding a rebellious touch.\nMemetic references: Pepe the Frog as a central meme character.; References to punk culture with the concert and electric guitar.; The word \"FAKE\" stamped, playing on NFT culture themes.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEISDED#text",
+      "label": "On-card text",
+      "text": "FAKE | PEPE IS DED",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEISDED#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central meme character.\nReferences to punk culture with the concert and electric guitar.\nThe word \"FAKE\" stamped, playing on NFT culture themes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEISDED#visual",
+      "label": "Visual summary",
+      "text": "The card features a black-and-white image with a punk rock concert vibe, where all the characters have Pepe the Frog heads. The central figure is playing an electric guitar, with a fiery, screaming Pepe face. The bold, green text stands out against the monochrome background, adding a rebellious touch.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEISDED#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE  \nPEPE IS DED\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a black-and-white image with a punk rock concert vibe, where all the characters have Pepe the Frog heads. The central figure is playing an electric guitar, with a fiery, screaming Pepe face. The bold, green text stands out against the monochrome background, adding a rebellious touch.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central meme character.\n- References to punk culture with the concert and electric guitar.\n- The word \"FAKE\" stamped, playing on NFT culture themes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.901Z",
+  "sourceFactVersion": 1
+}

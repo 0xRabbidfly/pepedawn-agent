@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "FAKEFEW",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 1,
+  "artist": "Tommy Marcheschi",
+  "supply": 999,
+  "issuance": "January 2022",
+  "textOnCard": [
+    "few"
+  ],
+  "memeticReferences": [
+    "Classic smiley face reference reminiscent of 90s rave and acid house culture.",
+    "The word \"few\" is a nod to crypto slang, possibly hinting at scarcity or exclusivity.",
+    "Tie-dye background taps into retro and counterculture aesthetics."
+  ],
+  "visualSummary": "The card features a large, yellow smiley face with the word \"few\" written on it, centered against a vibrant, tie-dye background. The color palette is a psychedelic mix of purples, pinks, blues, and greens, giving off a retro, groovy vibe. The artistic style is simple yet bold, with a playful nod to 90s rave culture.",
+  "visualSummaryShort": "The card showcases a large yellow smiley face against a vibrant tie-dye background. The psychedelic color palette creates a retro, groovy atmosphere.",
+  "visualKeywords": [
+    "smiley face",
+    "tie-dye",
+    "yellow",
+    "psychedelic",
+    "retro",
+    "groovy",
+    "bold",
+    "90s",
+    "colors",
+    "playful"
+  ],
+  "textKeywords": [
+    "few"
+  ],
+  "keywords": [
+    "smiley face",
+    "tie-dye",
+    "yellow",
+    "psychedelic",
+    "retro",
+    "groovy",
+    "bold",
+    "90s",
+    "colors",
+    "playful",
+    "few"
+  ],
+  "embeddingInput": "FAKEFEW (Fake Rares) - Series 5 Card 1\nArtist: Tommy Marcheschi\nSupply 999 Issued January 2022\nOn-card text: few\nVisual summary: The card features a large, yellow smiley face with the word \"few\" written on it, centered against a vibrant, tie-dye background. The color palette is a psychedelic mix of purples, pinks, blues, and greens, giving off a retro, groovy vibe. The artistic style is simple yet bold, with a playful nod to 90s rave culture.\nMemetic references: Classic smiley face reference reminiscent of 90s rave and acid house culture.; The word \"few\" is a nod to crypto slang, possibly hinting at scarcity or exclusivity.; Tie-dye background taps into retro and counterculture aesthetics.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEFEW#text",
+      "label": "On-card text",
+      "text": "few",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEFEW#memetic",
+      "label": "Memetic references",
+      "text": "Classic smiley face reference reminiscent of 90s rave and acid house culture.\nThe word \"few\" is a nod to crypto slang, possibly hinting at scarcity or exclusivity.\nTie-dye background taps into retro and counterculture aesthetics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEFEW#visual",
+      "label": "Visual summary",
+      "text": "The card features a large, yellow smiley face with the word \"few\" written on it, centered against a vibrant, tie-dye background. The color palette is a psychedelic mix of purples, pinks, blues, and greens, giving off a retro, groovy vibe. The artistic style is simple yet bold, with a playful nod to 90s rave culture.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEFEW#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nfew\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a large, yellow smiley face with the word \"few\" written on it, centered against a vibrant, tie-dye background. The color palette is a psychedelic mix of purples, pinks, blues, and greens, giving off a retro, groovy vibe. The artistic style is simple yet bold, with a playful nod to 90s rave culture.\n\n🧬 **MEMETIC DNA:**\n- Classic smiley face reference reminiscent of 90s rave and acid house culture.\n- The word \"few\" is a nod to crypto slang, possibly hinting at scarcity or exclusivity.\n- Tie-dye background taps into retro and counterculture aesthetics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.496Z",
+  "sourceFactVersion": 1
+}

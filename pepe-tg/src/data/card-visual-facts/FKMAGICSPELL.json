@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "FKMAGICSPELL",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 48,
+  "artist": "MIGRATING LINES",
+  "supply": 52,
+  "issuance": "October 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Multi-eyed Pepe suggests a nod to the omniscient meme lord.",
+    "Melting creatures channel classic internet absurdity.",
+    "Rainbow and nature motifs hint at a utopian, decentralized future."
+  ],
+  "visualSummary": "This card bursts with psychedelic colors and symmetrical composition, featuring a kaleidoscope of pastel pinks, greens, and oranges. The central figure is a multi-eyed Pepe, surrounded by surreal elements like melting creatures and rainbow arcs. The style is trippy and abstract, blending cartoonish elements with a dreamlike quality.",
+  "visualSummaryShort": "The card showcases a vibrant and surreal composition with a multi-eyed Pepe at its center. It features a kaleidoscope of pastel colors and abstract, dreamlike elements.",
+  "visualKeywords": [
+    "psychedelic",
+    "multi-eyed",
+    "pastel colors",
+    "surreal",
+    "kaleidoscope",
+    "melting creatures",
+    "rainbow arcs",
+    "abstract",
+    "trippy",
+    "cartoonish"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "psychedelic",
+    "multi-eyed",
+    "pastel colors",
+    "surreal",
+    "kaleidoscope",
+    "melting creatures",
+    "rainbow arcs",
+    "abstract",
+    "trippy",
+    "cartoonish"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "FKMAGICSPELL (Fake Rares) - Series 11 Card 48\nArtist: MIGRATING LINES\nSupply 52 Issued October 2022\nOn-card text: none detected\nVisual summary: This card bursts with psychedelic colors and symmetrical composition, featuring a kaleidoscope of pastel pinks, greens, and oranges. The central figure is a multi-eyed Pepe, surrounded by surreal elements like melting creatures and rainbow arcs. The style is trippy and abstract, blending cartoonish elements with a dreamlike quality.\nMemetic references: Multi-eyed Pepe suggests a nod to the omniscient meme lord.; Melting creatures channel classic internet absurdity.; Rainbow and nature motifs hint at a utopian, decentralized future.",
+  "embeddingBlocks": [
+    {
+      "id": "FKMAGICSPELL#memetic",
+      "label": "Memetic references",
+      "text": "Multi-eyed Pepe suggests a nod to the omniscient meme lord.\nMelting creatures channel classic internet absurdity.\nRainbow and nature motifs hint at a utopian, decentralized future.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FKMAGICSPELL#visual",
+      "label": "Visual summary",
+      "text": "This card bursts with psychedelic colors and symmetrical composition, featuring a kaleidoscope of pastel pinks, greens, and oranges. The central figure is a multi-eyed Pepe, surrounded by surreal elements like melting creatures and rainbow arcs. The style is trippy and abstract, blending cartoonish elements with a dreamlike quality.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FKMAGICSPELL#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card bursts with psychedelic colors and symmetrical composition, featuring a kaleidoscope of pastel pinks, greens, and oranges. The central figure is a multi-eyed Pepe, surrounded by surreal elements like melting creatures and rainbow arcs. The style is trippy and abstract, blending cartoonish elements with a dreamlike quality.\n\n🧬 **MEMETIC DNA:**\n- Multi-eyed Pepe suggests a nod to the omniscient meme lord.\n- Melting creatures channel classic internet absurdity.\n- Rainbow and nature motifs hint at a utopian, decentralized future.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:34:21.608Z"
+}

@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "asset": "PEPETAROTX",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 12,
+  "artist": "SHEWOLF",
+  "supply": 100,
+  "issuance": "May 2022",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The visual details of the card are not provided. Therefore, no specific traits can be summarized.",
+  "visualKeywords": [],
+  "textKeywords": [],
+  "keywords": [],
+  "embeddingInput": "PEPETAROTX (Fake Rares) - Series 9 Card 12\nArtist: SHEWOLF\nSupply 100 Issued May 2022\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "PEPETAROTX#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't help with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.990Z",
+  "sourceFactVersion": 1
+}

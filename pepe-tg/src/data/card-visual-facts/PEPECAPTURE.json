@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "PEPECAPTURE",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 42,
+  "artist": "Tomopen",
+  "supply": 22,
+  "issuance": "January 2023",
+  "textOnCard": [
+    "Pepe Capture"
+  ],
+  "memeticReferences": [
+    "References the iconic Pepe the Frog, a staple in meme culture.",
+    "The detective imagery plays on noir and mystery themes.",
+    "The night setting and moon add an air of intrigue and secrecy."
+  ],
+  "visualSummary": "The card features a night scene with a starry sky and a crescent moon. Two trench-coated figures, reminiscent of detectives, flank a small, cartoonish frog character dressed in a blue shirt and orange shorts. The color palette is dominated by blues and greens, creating a mysterious yet playful vibe.",
+  "visualSummaryShort": "The card depicts a night scene with a starry sky and a crescent moon, featuring two trench-coated figures alongside a cartoonish frog. The color palette of blues and greens enhances the mysterious yet playful atmosphere.",
+  "visualKeywords": [
+    "night scene",
+    "starry sky",
+    "crescent moon",
+    "trench coat",
+    "frog",
+    "blue shirt",
+    "orange shorts",
+    "mysterious",
+    "playful"
+  ],
+  "textKeywords": [
+    "capture"
+  ],
+  "keywords": [
+    "night scene",
+    "starry sky",
+    "crescent moon",
+    "trench coat",
+    "frog",
+    "blue shirt",
+    "orange shorts",
+    "mysterious",
+    "playful",
+    "capture"
+  ],
+  "embeddingInput": "PEPECAPTURE (Fake Rares) - Series 13 Card 42\nArtist: Tomopen\nSupply 22 Issued January 2023\nOn-card text: Pepe Capture\nVisual summary: The card features a night scene with a starry sky and a crescent moon. Two trench-coated figures, reminiscent of detectives, flank a small, cartoonish frog character dressed in a blue shirt and orange shorts. The color palette is dominated by blues and greens, creating a mysterious yet playful vibe.\nMemetic references: References the iconic Pepe the Frog, a staple in meme culture.; The detective imagery plays on noir and mystery themes.; The night setting and moon add an air of intrigue and secrecy.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPECAPTURE#text",
+      "label": "On-card text",
+      "text": "Pepe Capture",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPECAPTURE#memetic",
+      "label": "Memetic references",
+      "text": "References the iconic Pepe the Frog, a staple in meme culture.\nThe detective imagery plays on noir and mystery themes.\nThe night setting and moon add an air of intrigue and secrecy.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPECAPTURE#visual",
+      "label": "Visual summary",
+      "text": "The card features a night scene with a starry sky and a crescent moon. Two trench-coated figures, reminiscent of detectives, flank a small, cartoonish frog character dressed in a blue shirt and orange shorts. The color palette is dominated by blues and greens, creating a mysterious yet playful vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPECAPTURE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPepe Capture\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a night scene with a starry sky and a crescent moon. Two trench-coated figures, reminiscent of detectives, flank a small, cartoonish frog character dressed in a blue shirt and orange shorts. The color palette is dominated by blues and greens, creating a mysterious yet playful vibe.\n\n🧬 **MEMETIC DNA:**\n- References the iconic Pepe the Frog, a staple in meme culture.\n- The detective imagery plays on noir and mystery themes.\n- The night setting and moon add an air of intrigue and secrecy.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.852Z",
+  "sourceFactVersion": 1
+}

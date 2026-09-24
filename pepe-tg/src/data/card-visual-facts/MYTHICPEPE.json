@@ -1,0 +1,108 @@
+{
+  "version": 1,
+  "asset": "MYTHICPEPE",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 43,
+  "artist": "Cronos One",
+  "supply": 21,
+  "issuance": "October 2023",
+  "textOnCard": [
+    "MYTHIC PEPE",
+    "神話のぺぺ",
+    "Kek lvl =333",
+    "+6969 GOD candle",
+    "A mythical rare Pepe emerges from the darkest depths of the memetic abyss,,,"
+  ],
+  "memeticReferences": [
+    "References to Pepe the Frog, an iconic meme character.",
+    "\"Kek\" level and \"GOD candle\" relate to meme and crypto jargon.",
+    "The mystical setting hints at mythical and fantasy lore."
+  ],
+  "visualSummary": "The card features a blue, mythical version of Pepe the Frog seated on a rock amidst a dark, mystical forest scene. The color palette is rich with deep blues, purples, and hints of green, creating an ethereal, otherworldly atmosphere. The artistic style blends fantasy illustration with a touch of the surreal, capturing a sense of ancient mystery.",
+  "visualSummaryShort": "The card showcases a blue, mythical Pepe the Frog seated in a dark, mystical forest. The rich color palette and surreal artistic style evoke an ethereal atmosphere filled with ancient mystery.",
+  "visualKeywords": [
+    "mythical",
+    "blue",
+    "forest",
+    "dark",
+    "surreal",
+    "ethereal",
+    "mystery",
+    "rock",
+    "purple",
+    "green"
+  ],
+  "textKeywords": [
+    "mythic",
+    "kek",
+    "lvl",
+    "333",
+    "6969",
+    "god",
+    "candle",
+    "mythical",
+    "emerges",
+    "darkest",
+    "depths",
+    "memetic",
+    "abyss"
+  ],
+  "keywords": [
+    "mythical",
+    "blue",
+    "forest",
+    "dark",
+    "surreal",
+    "ethereal",
+    "mystery",
+    "rock",
+    "purple",
+    "green",
+    "mythic",
+    "kek",
+    "lvl",
+    "333",
+    "6969",
+    "god",
+    "candle",
+    "emerges",
+    "darkest",
+    "depths",
+    "memetic",
+    "abyss"
+  ],
+  "embeddingInput": "MYTHICPEPE (Fake Rares) - Series 16 Card 43\nArtist: Cronos One\nSupply 21 Issued October 2023\nOn-card text: MYTHIC PEPE | 神話のぺぺ | Kek lvl =333 | +6969 GOD candle | A mythical rare Pepe emerges from the darkest depths of the memetic abyss,,,\nVisual summary: The card features a blue, mythical version of Pepe the Frog seated on a rock amidst a dark, mystical forest scene. The color palette is rich with deep blues, purples, and hints of green, creating an ethereal, otherworldly atmosphere. The artistic style blends fantasy illustration with a touch of the surreal, capturing a sense of ancient mystery.\nMemetic references: References to Pepe the Frog, an iconic meme character.; \"Kek\" level and \"GOD candle\" relate to meme and crypto jargon.; The mystical setting hints at mythical and fantasy lore.",
+  "embeddingBlocks": [
+    {
+      "id": "MYTHICPEPE#text",
+      "label": "On-card text",
+      "text": "MYTHIC PEPE | 神話のぺぺ | Kek lvl =333 | +6969 GOD candle | A mythical rare Pepe emerges from the darkest depths of the memetic abyss,,,",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MYTHICPEPE#memetic",
+      "label": "Memetic references",
+      "text": "References to Pepe the Frog, an iconic meme character.\n\"Kek\" level and \"GOD candle\" relate to meme and crypto jargon.\nThe mystical setting hints at mythical and fantasy lore.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MYTHICPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a blue, mythical version of Pepe the Frog seated on a rock amidst a dark, mystical forest scene. The color palette is rich with deep blues, purples, and hints of green, creating an ethereal, otherworldly atmosphere. The artistic style blends fantasy illustration with a touch of the surreal, capturing a sense of ancient mystery.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MYTHICPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nMYTHIC PEPE  \n神話のぺぺ  \nKek lvl =333   \n+6969 GOD candle  \nA mythical rare Pepe emerges from the darkest depths of the memetic abyss,,,\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a blue, mythical version of Pepe the Frog seated on a rock amidst a dark, mystical forest scene. The color palette is rich with deep blues, purples, and hints of green, creating an ethereal, otherworldly atmosphere. The artistic style blends fantasy illustration with a touch of the surreal, capturing a sense of ancient mystery.\n\n🧬 **MEMETIC DNA:**\n- References to Pepe the Frog, an iconic meme character.\n- \"Kek\" level and \"GOD candle\" relate to meme and crypto jargon.\n- The mystical setting hints at mythical and fantasy lore.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.786Z",
+  "sourceFactVersion": 1
+}

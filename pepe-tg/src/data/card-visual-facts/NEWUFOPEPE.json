@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "asset": "NEWUFOPEPE",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 6,
+  "artist": "MIKEYCORTEZ",
+  "supply": 47,
+  "issuance": "January 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog is a classic meme icon, deeply embedded in internet culture.",
+    "The UFO represents otherworldly exploration, a nod to crypto enthusiasts’ love for out-of-this-world concepts and moon missions.",
+    "The starry background evokes a sense of limitless possibilities often associated with the crypto space."
+  ],
+  "visualSummary": "The card features Pepe the Frog piloting a small, retro-style UFO through a starry night sky. The color palette is mainly dark blues and blacks, with contrasting bright green for Pepe and vibrant reds and blues on the UFO. The artistic style is cartoonish and playful, capturing a whimsical, interstellar vibe.",
+  "visualSummaryShort": "Pepe the Frog is depicted piloting a retro UFO in a starry night sky. The card features a cartoonish style with a dark blue and black color palette, accented by bright green and vibrant colors on the UFO.",
+  "visualKeywords": [
+    "pepe",
+    "ufo",
+    "starry sky",
+    "dark blue",
+    "cartoonish",
+    "whimsical",
+    "green",
+    "red",
+    "blue"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "ufo",
+    "starry sky",
+    "dark blue",
+    "cartoonish",
+    "whimsical",
+    "green",
+    "red",
+    "blue"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "NEWUFOPEPE (Fake Rares) - Series 13 Card 6\nArtist: MIKEYCORTEZ\nSupply 47 Issued January 2023\nOn-card text: none detected\nVisual summary: The card features Pepe the Frog piloting a small, retro-style UFO through a starry night sky. The color palette is mainly dark blues and blacks, with contrasting bright green for Pepe and vibrant reds and blues on the UFO. The artistic style is cartoonish and playful, capturing a whimsical, interstellar vibe.\nMemetic references: Pepe the Frog is a classic meme icon, deeply embedded in internet culture.; The UFO represents otherworldly exploration, a nod to crypto enthusiasts’ love for out-of-this-world concepts and moon missions.; The starry background evokes a sense of limitless possibilities often associated with the crypto space.",
+  "embeddingBlocks": [
+    {
+      "id": "NEWUFOPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog is a classic meme icon, deeply embedded in internet culture.\nThe UFO represents otherworldly exploration, a nod to crypto enthusiasts’ love for out-of-this-world concepts and moon missions.\nThe starry background evokes a sense of limitless possibilities often associated with the crypto space.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "NEWUFOPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog piloting a small, retro-style UFO through a starry night sky. The color palette is mainly dark blues and blacks, with contrasting bright green for Pepe and vibrant reds and blues on the UFO. The artistic style is cartoonish and playful, capturing a whimsical, interstellar vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "NEWUFOPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog piloting a small, retro-style UFO through a starry night sky. The color palette is mainly dark blues and blacks, with contrasting bright green for Pepe and vibrant reds and blues on the UFO. The artistic style is cartoonish and playful, capturing a whimsical, interstellar vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog is a classic meme icon, deeply embedded in internet culture.\n- The UFO represents otherworldly exploration, a nod to crypto enthusiasts’ love for out-of-this-world concepts and moon missions.\n- The starry background evokes a sense of limitless possibilities often associated with the crypto space.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:34:34.127Z"
+}

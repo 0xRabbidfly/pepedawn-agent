@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "STDIMASPEPE",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 37,
+  "artist": "Da'Block God",
+  "supply": 49,
+  "issuance": "May 2022",
+  "textOnCard": [
+    "SAINT DIMAS PEPE",
+    "PATRON SAINT OF LOST CAUSES"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference, embodying ironic and humorous elements.",
+    "\"Patron Saint of Lost Causes\" taps into the crypto culture of resilience and humor in the face of adversity.",
+    "The framing and arch mimic a religious icon, adding layers of cultural and meme irony."
+  ],
+  "visualSummary": "The card features a framed image with a tall arch shape in the center. The background is a soothing pink with a contrasting deep green at the bottom, creating a minimalist yet striking composition. The ornate gold frame adds a touch of classical elegance to the overall aesthetic.",
+  "visualSummaryShort": "The card showcases a tall arch shape framed in an ornate gold design against a soothing pink background. The deep green at the bottom enhances the minimalist yet elegant composition.",
+  "visualKeywords": [
+    "arch",
+    "gold frame",
+    "pink background",
+    "green",
+    "minimalist",
+    "elegant"
+  ],
+  "textKeywords": [
+    "saint",
+    "dimas",
+    "patron",
+    "lost",
+    "causes"
+  ],
+  "keywords": [
+    "arch",
+    "gold frame",
+    "pink background",
+    "green",
+    "minimalist",
+    "elegant",
+    "saint",
+    "dimas",
+    "patron",
+    "lost",
+    "causes"
+  ],
+  "embeddingInput": "STDIMASPEPE (Fake Rares) - Series 11 Card 37\nArtist: Da'Block God\nSupply 49 Issued May 2022\nOn-card text: SAINT DIMAS PEPE | PATRON SAINT OF LOST CAUSES\nVisual summary: The card features a framed image with a tall arch shape in the center. The background is a soothing pink with a contrasting deep green at the bottom, creating a minimalist yet striking composition. The ornate gold frame adds a touch of classical elegance to the overall aesthetic.\nMemetic references: Pepe the Frog reference, embodying ironic and humorous elements.; \"Patron Saint of Lost Causes\" taps into the crypto culture of resilience and humor in the face of adversity.; The framing and arch mimic a religious icon, adding layers of cultural and meme irony.",
+  "embeddingBlocks": [
+    {
+      "id": "STDIMASPEPE#text",
+      "label": "On-card text",
+      "text": "SAINT DIMAS PEPE | PATRON SAINT OF LOST CAUSES",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "STDIMASPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference, embodying ironic and humorous elements.\n\"Patron Saint of Lost Causes\" taps into the crypto culture of resilience and humor in the face of adversity.\nThe framing and arch mimic a religious icon, adding layers of cultural and meme irony.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "STDIMASPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a framed image with a tall arch shape in the center. The background is a soothing pink with a contrasting deep green at the bottom, creating a minimalist yet striking composition. The ornate gold frame adds a touch of classical elegance to the overall aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "STDIMASPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nSAINT DIMAS PEPE  \nPATRON SAINT OF LOST CAUSES\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a framed image with a tall arch shape in the center. The background is a soothing pink with a contrasting deep green at the bottom, creating a minimalist yet striking composition. The ornate gold frame adds a touch of classical elegance to the overall aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference, embodying ironic and humorous elements.\n- \"Patron Saint of Lost Causes\" taps into the crypto culture of resilience and humor in the face of adversity.\n- The framing and arch mimic a religious icon, adding layers of cultural and meme irony.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.124Z",
+  "sourceFactVersion": 1
+}

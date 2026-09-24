@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "asset": "NIGHTPEPES",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 42,
+  "artist": "PepEdward Hopper",
+  "supply": 150,
+  "issuance": "September 2021",
+  "textOnCard": [
+    "NIGHT PEPES",
+    "P. HOPPER"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog references",
+    "Parody of Edward Hopper's \"Nighthawks\"",
+    "Crypto culture nod with Pepecoin symbolism",
+    "Vintage Americana diner vibes"
+  ],
+  "visualSummary": "This card is a playful homage to Edward Hopper's \"Nighthawks,\" featuring a nighttime diner scene with a distinct Pepe twist. The color palette is composed of deep blues and warm yellows, creating a somber yet inviting atmosphere. The composition includes Pepecoin characters dressed in mid-20th-century attire, capturing a blend of nostalgia and meme culture.",
+  "visualSummaryShort": "The card depicts a nighttime diner scene with Pepe characters in vintage attire, inspired by Edward Hopper's artwork. The color palette features deep blues and warm yellows, creating a nostalgic and inviting mood.",
+  "visualKeywords": [
+    "diner",
+    "nighttime",
+    "pepe",
+    "blue palette",
+    "yellow accents",
+    "vintage attire",
+    "nostalgia",
+    "meme culture"
+  ],
+  "textKeywords": [
+    "night",
+    "pepes",
+    "hopper"
+  ],
+  "keywords": [
+    "diner",
+    "nighttime",
+    "pepe",
+    "blue palette",
+    "yellow accents",
+    "vintage attire",
+    "nostalgia",
+    "meme culture",
+    "night",
+    "pepes",
+    "hopper"
+  ],
+  "embeddingInput": "NIGHTPEPES (Fake Rares) - Series 3 Card 42\nArtist: PepEdward Hopper\nSupply 150 Issued September 2021\nOn-card text: NIGHT PEPES | P. HOPPER\nVisual summary: This card is a playful homage to Edward Hopper's \"Nighthawks,\" featuring a nighttime diner scene with a distinct Pepe twist. The color palette is composed of deep blues and warm yellows, creating a somber yet inviting atmosphere. The composition includes Pepecoin characters dressed in mid-20th-century attire, capturing a blend of nostalgia and meme culture.\nMemetic references: Pepe the Frog references; Parody of Edward Hopper's \"Nighthawks\"; Crypto culture nod with Pepecoin symbolism; Vintage Americana diner vibes",
+  "embeddingBlocks": [
+    {
+      "id": "NIGHTPEPES#text",
+      "label": "On-card text",
+      "text": "NIGHT PEPES | P. HOPPER",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "NIGHTPEPES#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references\nParody of Edward Hopper's \"Nighthawks\"\nCrypto culture nod with Pepecoin symbolism\nVintage Americana diner vibes",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "NIGHTPEPES#visual",
+      "label": "Visual summary",
+      "text": "This card is a playful homage to Edward Hopper's \"Nighthawks,\" featuring a nighttime diner scene with a distinct Pepe twist. The color palette is composed of deep blues and warm yellows, creating a somber yet inviting atmosphere. The composition includes Pepecoin characters dressed in mid-20th-century attire, capturing a blend of nostalgia and meme culture.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "NIGHTPEPES#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nNIGHT PEPES  \nP. HOPPER\n\n🎨 **VISUAL BREAKDOWN:**\nThis card is a playful homage to Edward Hopper's \"Nighthawks,\" featuring a nighttime diner scene with a distinct Pepe twist. The color palette is composed of deep blues and warm yellows, creating a somber yet inviting atmosphere. The composition includes Pepecoin characters dressed in mid-20th-century attire, capturing a blend of nostalgia and meme culture.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references\n- Parody of Edward Hopper's \"Nighthawks\"\n- Crypto culture nod with Pepecoin symbolism\n- Vintage Americana diner vibes",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.795Z",
+  "sourceFactVersion": 1
+}

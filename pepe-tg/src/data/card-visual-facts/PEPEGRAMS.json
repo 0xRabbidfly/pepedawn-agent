@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "PEPEGRAMS",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 17,
+  "artist": "Mr. HODLPIG",
+  "supply": 123,
+  "issuance": "October 2022",
+  "textOnCard": [
+    "PEPEGRAMS"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery.",
+    "Reference to postal services, hinting at communication or delivery themes.",
+    "Psychedelic color scheme often associated with internet culture.",
+    "Potential nod to the telegram",
+    "communication aspect of crypto trading."
+  ],
+  "visualSummary": "The card features a vibrant and colorful design with a prominent image of Pepe the Frog wearing a postal service uniform. The background is a stylized, psychedelic swirl of colors including pink, blue, and green. The overall aesthetic is a mix of retro and modern digital art styles, creating an eye-catching and dynamic composition.",
+  "visualSummaryShort": "The card showcases Pepe the Frog in a postal service uniform against a psychedelic swirl of vibrant colors. The design blends retro and modern digital art styles for a dynamic look.",
+  "visualKeywords": [
+    "pepe the frog",
+    "postal uniform",
+    "psychedelic",
+    "colorful",
+    "swirl",
+    "retro",
+    "digital art"
+  ],
+  "textKeywords": [
+    "pepegrams"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "postal uniform",
+    "psychedelic",
+    "colorful",
+    "swirl",
+    "retro",
+    "digital art",
+    "pepegrams"
+  ],
+  "embeddingInput": "PEPEGRAMS (Fake Rares) - Series 12 Card 17\nArtist: Mr. HODLPIG\nSupply 123 Issued October 2022\nOn-card text: PEPEGRAMS\nVisual summary: The card features a vibrant and colorful design with a prominent image of Pepe the Frog wearing a postal service uniform. The background is a stylized, psychedelic swirl of colors including pink, blue, and green. The overall aesthetic is a mix of retro and modern digital art styles, creating an eye-catching and dynamic composition.\nMemetic references: Classic Pepe the Frog imagery.; Reference to postal services, hinting at communication or delivery themes.; Psychedelic color scheme often associated with internet culture.; Potential nod to the telegram; communication aspect of crypto trading.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEGRAMS#text",
+      "label": "On-card text",
+      "text": "PEPEGRAMS",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEGRAMS#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery.\nReference to postal services, hinting at communication or delivery themes.\nPsychedelic color scheme often associated with internet culture.\nPotential nod to the telegram\ncommunication aspect of crypto trading.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEGRAMS#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant and colorful design with a prominent image of Pepe the Frog wearing a postal service uniform. The background is a stylized, psychedelic swirl of colors including pink, blue, and green. The overall aesthetic is a mix of retro and modern digital art styles, creating an eye-catching and dynamic composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEGRAMS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPEGRAMS\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant and colorful design with a prominent image of Pepe the Frog wearing a postal service uniform. The background is a stylized, psychedelic swirl of colors including pink, blue, and green. The overall aesthetic is a mix of retro and modern digital art styles, creating an eye-catching and dynamic composition.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery.\n- Reference to postal services, hinting at communication or delivery themes.\n- Psychedelic color scheme often associated with internet culture.\n- Potential nod to the telegram/communication aspect of crypto trading.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.890Z",
+  "sourceFactVersion": 1
+}

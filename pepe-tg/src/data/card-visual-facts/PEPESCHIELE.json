@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "asset": "PEPESCHIELE",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 42,
+  "artist": "Nimzobit",
+  "supply": 21,
+  "issuance": "July 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog reference with the green face.",
+    "Homage to Egon Schiele’s distinctive artistic style.",
+    "Expression of introspection and existentialism, common in meme culture.",
+    "Vibrant orange coat symbolizes boldness and attention-grabbing energy."
+  ],
+  "visualSummary": "The card features a character with a green, frog-like face, reminiscent of Pepe, wearing a vibrant orange coat. The artistic style is sketch-like and angular, similar to Egon Schiele’s expressionism, with a muted background that emphasizes the bold colors and contorted pose of the figure. The use of exaggerated features and the tilted pose gives it a dramatic and introspective vibe.",
+  "visualSummaryShort": "The card showcases a character with a green, frog-like face in a vibrant orange coat. The sketch-like style and muted background create a dramatic and introspective atmosphere.",
+  "visualKeywords": [
+    "frog",
+    "orange coat",
+    "sketch",
+    "angular",
+    "muted background",
+    "dramatic",
+    "introspective",
+    "exaggerated features",
+    "tilted pose"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "frog",
+    "orange coat",
+    "sketch",
+    "angular",
+    "muted background",
+    "dramatic",
+    "introspective",
+    "exaggerated features",
+    "tilted pose"
+  ],
+  "embeddingInput": "PEPESCHIELE (Fake Rares) - Series 15 Card 42\nArtist: Nimzobit\nSupply 21 Issued July 2023\nOn-card text: none detected\nVisual summary: The card features a character with a green, frog-like face, reminiscent of Pepe, wearing a vibrant orange coat. The artistic style is sketch-like and angular, similar to Egon Schiele’s expressionism, with a muted background that emphasizes the bold colors and contorted pose of the figure. The use of exaggerated features and the tilted pose gives it a dramatic and introspective vibe.\nMemetic references: Pepe the Frog reference with the green face.; Homage to Egon Schiele’s distinctive artistic style.; Expression of introspection and existentialism, common in meme culture.; Vibrant orange coat symbolizes boldness and attention-grabbing energy.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPESCHIELE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference with the green face.\nHomage to Egon Schiele’s distinctive artistic style.\nExpression of introspection and existentialism, common in meme culture.\nVibrant orange coat symbolizes boldness and attention-grabbing energy.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPESCHIELE#visual",
+      "label": "Visual summary",
+      "text": "The card features a character with a green, frog-like face, reminiscent of Pepe, wearing a vibrant orange coat. The artistic style is sketch-like and angular, similar to Egon Schiele’s expressionism, with a muted background that emphasizes the bold colors and contorted pose of the figure. The use of exaggerated features and the tilted pose gives it a dramatic and introspective vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPESCHIELE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a character with a green, frog-like face, reminiscent of Pepe, wearing a vibrant orange coat. The artistic style is sketch-like and angular, similar to Egon Schiele’s expressionism, with a muted background that emphasizes the bold colors and contorted pose of the figure. The use of exaggerated features and the tilted pose gives it a dramatic and introspective vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference with the green face.\n- Homage to Egon Schiele’s distinctive artistic style.\n- Expression of introspection and existentialism, common in meme culture.\n- Vibrant orange coat symbolizes boldness and attention-grabbing energy.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.970Z",
+  "sourceFactVersion": 1
+}

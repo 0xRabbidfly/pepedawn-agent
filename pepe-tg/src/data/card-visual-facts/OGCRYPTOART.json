@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "asset": "OGCRYPTOART",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 45,
+  "artist": "Tasha",
+  "supply": 69,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "WEI CARD TEST",
+    "COKE"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog making an appearance, a staple of crypto meme culture.",
+    "Pixel art characters nod to the retro gaming aesthetic.",
+    "Crypto symbols and references like Bitcoin and Dogecoin.",
+    "Cultural symbols like a cat resembling the Nyan Cat meme.",
+    "A nod to the \"Test\" sticker, possibly referencing early crypto testing phases."
+  ],
+  "visualSummary": "The card is a vibrant collage blending warm yellows, cool blues, and hot reds in a gradient that energizes the scene. It features a detailed assembly of various crypto-related characters and symbols, layered in a chaotic yet harmonious manner. The artistic style is eclectic with a mix of cartoonish and pixel art elements, creating a dense tapestry of visual intrigue.",
+  "visualSummaryShort": "The card showcases a vibrant collage of warm yellows, cool blues, and hot reds, creating an energizing gradient. It features a chaotic yet harmonious assembly of crypto-related characters and symbols in an eclectic artistic style.",
+  "visualKeywords": [
+    "collage",
+    "gradient",
+    "crypto",
+    "characters",
+    "symbols",
+    "cartoonish",
+    "pixel art",
+    "vibrant",
+    "chaotic",
+    "eclectic"
+  ],
+  "textKeywords": [
+    "wei",
+    "test",
+    "coke"
+  ],
+  "keywords": [
+    "collage",
+    "gradient",
+    "crypto",
+    "characters",
+    "symbols",
+    "cartoonish",
+    "pixel art",
+    "vibrant",
+    "chaotic",
+    "eclectic",
+    "wei",
+    "test",
+    "coke"
+  ],
+  "embeddingInput": "OGCRYPTOART (Fake Rares) - Series 5 Card 45\nArtist: Tasha\nSupply 69 Issued February 2022\nOn-card text: WEI CARD TEST | COKE\nVisual summary: The card is a vibrant collage blending warm yellows, cool blues, and hot reds in a gradient that energizes the scene. It features a detailed assembly of various crypto-related characters and symbols, layered in a chaotic yet harmonious manner. The artistic style is eclectic with a mix of cartoonish and pixel art elements, creating a dense tapestry of visual intrigue.\nMemetic references: Classic Pepe the Frog making an appearance, a staple of crypto meme culture.; Pixel art characters nod to the retro gaming aesthetic.; Crypto symbols and references like Bitcoin and Dogecoin.; Cultural symbols like a cat resembling the Nyan Cat meme.; A nod to the \"Test\" sticker, possibly referencing early crypto testing phases.",
+  "embeddingBlocks": [
+    {
+      "id": "OGCRYPTOART#text",
+      "label": "On-card text",
+      "text": "WEI CARD TEST | COKE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "OGCRYPTOART#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog making an appearance, a staple of crypto meme culture.\nPixel art characters nod to the retro gaming aesthetic.\nCrypto symbols and references like Bitcoin and Dogecoin.\nCultural symbols like a cat resembling the Nyan Cat meme.\nA nod to the \"Test\" sticker, possibly referencing early crypto testing phases.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "OGCRYPTOART#visual",
+      "label": "Visual summary",
+      "text": "The card is a vibrant collage blending warm yellows, cool blues, and hot reds in a gradient that energizes the scene. It features a detailed assembly of various crypto-related characters and symbols, layered in a chaotic yet harmonious manner. The artistic style is eclectic with a mix of cartoonish and pixel art elements, creating a dense tapestry of visual intrigue.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "OGCRYPTOART#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- WEI CARD TEST\n- COKE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card is a vibrant collage blending warm yellows, cool blues, and hot reds in a gradient that energizes the scene. It features a detailed assembly of various crypto-related characters and symbols, layered in a chaotic yet harmonious manner. The artistic style is eclectic with a mix of cartoonish and pixel art elements, creating a dense tapestry of visual intrigue.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog making an appearance, a staple of crypto meme culture.\n- Pixel art characters nod to the retro gaming aesthetic.\n- Crypto symbols and references like Bitcoin and Dogecoin.\n- Cultural symbols like a cat resembling the Nyan Cat meme.\n- A nod to the \"Test\" sticker, possibly referencing early crypto testing phases.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.805Z",
+  "sourceFactVersion": 1
+}

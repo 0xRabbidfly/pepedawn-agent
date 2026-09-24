@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "asset": "FORKROAD",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 44,
+  "artist": "LycosFreak",
+  "supply": 100,
+  "issuance": "December 2024",
+  "textOnCard": [
+    "FORK IN THE ROAD DINER. DOGEVERSE."
+  ],
+  "memeticReferences": [
+    "Stick figure meme references.",
+    "Doge imagery with \"DOGEVERSE\" sign.",
+    "Crypto culture nod with directional choices symbolizing decision-making in investments.",
+    "A mix of digital and real-life visuals, creating a meme-world crossover."
+  ],
+  "visualSummary": "The card features a surreal roadside scene with a vintage diner sign reading \"FORK IN THE ROAD DINER.\" Two stick-figure characters are humorously pointing at different direction signs, while two real-life people stand nearby. The color palette is earthy and muted, conveying a nostalgic, rural vibe with a touch of digital absurdity.",
+  "visualSummaryShort": "The card depicts a surreal roadside scene with a vintage diner sign and stick-figure characters humorously pointing at direction signs. The earthy and muted color palette enhances the nostalgic, rural vibe.",
+  "visualKeywords": [
+    "diner",
+    "stick-figures",
+    "direction signs",
+    "earthy colors",
+    "nostalgic",
+    "rural",
+    "surreal",
+    "humor",
+    "digital absurdity"
+  ],
+  "textKeywords": [
+    "fork",
+    "road",
+    "diner",
+    "dogeverse"
+  ],
+  "keywords": [
+    "diner",
+    "stick-figures",
+    "direction signs",
+    "earthy colors",
+    "nostalgic",
+    "rural",
+    "surreal",
+    "humor",
+    "digital absurdity",
+    "fork",
+    "road",
+    "dogeverse"
+  ],
+  "embeddingInput": "FORKROAD (Fake Rares) - Series 17 Card 44\nArtist: LycosFreak\nSupply 100 Issued December 2024\nOn-card text: FORK IN THE ROAD DINER. DOGEVERSE.\nVisual summary: The card features a surreal roadside scene with a vintage diner sign reading \"FORK IN THE ROAD DINER.\" Two stick-figure characters are humorously pointing at different direction signs, while two real-life people stand nearby. The color palette is earthy and muted, conveying a nostalgic, rural vibe with a touch of digital absurdity.\nMemetic references: Stick figure meme references.; Doge imagery with \"DOGEVERSE\" sign.; Crypto culture nod with directional choices symbolizing decision-making in investments.; A mix of digital and real-life visuals, creating a meme-world crossover.",
+  "embeddingBlocks": [
+    {
+      "id": "FORKROAD#text",
+      "label": "On-card text",
+      "text": "FORK IN THE ROAD DINER. DOGEVERSE.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FORKROAD#memetic",
+      "label": "Memetic references",
+      "text": "Stick figure meme references.\nDoge imagery with \"DOGEVERSE\" sign.\nCrypto culture nod with directional choices symbolizing decision-making in investments.\nA mix of digital and real-life visuals, creating a meme-world crossover.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FORKROAD#visual",
+      "label": "Visual summary",
+      "text": "The card features a surreal roadside scene with a vintage diner sign reading \"FORK IN THE ROAD DINER.\" Two stick-figure characters are humorously pointing at different direction signs, while two real-life people stand nearby. The color palette is earthy and muted, conveying a nostalgic, rural vibe with a touch of digital absurdity.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FORKROAD#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFORK IN THE ROAD DINER. DOGEVERSE.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a surreal roadside scene with a vintage diner sign reading \"FORK IN THE ROAD DINER.\" Two stick-figure characters are humorously pointing at different direction signs, while two real-life people stand nearby. The color palette is earthy and muted, conveying a nostalgic, rural vibe with a touch of digital absurdity.\n\n🧬 **MEMETIC DNA:**\n- Stick figure meme references.\n- Doge imagery with \"DOGEVERSE\" sign.\n- Crypto culture nod with directional choices symbolizing decision-making in investments.\n- A mix of digital and real-life visuals, creating a meme-world crossover.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.635Z",
+  "sourceFactVersion": 1
+}

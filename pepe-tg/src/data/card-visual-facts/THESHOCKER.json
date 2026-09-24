@@ -1,0 +1,108 @@
+{
+  "version": 1,
+  "asset": "THESHOCKER",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 14,
+  "artist": "mellow",
+  "supply": 52,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "the shocker",
+    "stimulate yo mind",
+    "It ain't my fault if you ain't doing yer own research",
+    "Rareness Score 100% 7RAU"
+  ],
+  "memeticReferences": [
+    "Parental Advisory label suggesting edgy content.",
+    "References to DYOR (Do Your Own Research), a common crypto mantra.",
+    "Retro technology and glitch art elements."
+  ],
+  "visualSummary": "The card features a central figure with a greenish hue, wearing a beanie and sunglasses, appearing in front of a retro TV. The background is a swirl of purples and pinks, adding to the psychedelic vibe. The overall style blends digital collage with a gritty, vintage aesthetic.",
+  "visualSummaryShort": "The card showcases a central figure with a greenish hue, dressed in a beanie and sunglasses, set against a vibrant swirl of purples and pinks. The design combines elements of digital collage with a gritty, vintage feel.",
+  "visualKeywords": [
+    "greenish figure",
+    "beanie",
+    "sunglasses",
+    "retro tv",
+    "purple swirl",
+    "pink swirl",
+    "psychedelic",
+    "digital collage",
+    "vintage aesthetic"
+  ],
+  "textKeywords": [
+    "shocker",
+    "stimulate",
+    "mind",
+    "ain",
+    "fault",
+    "you",
+    "doing",
+    "yer",
+    "own",
+    "research",
+    "rareness",
+    "score",
+    "100",
+    "7rau"
+  ],
+  "keywords": [
+    "greenish figure",
+    "beanie",
+    "sunglasses",
+    "retro tv",
+    "purple swirl",
+    "pink swirl",
+    "psychedelic",
+    "digital collage",
+    "vintage aesthetic",
+    "shocker",
+    "stimulate",
+    "mind",
+    "ain",
+    "fault",
+    "you",
+    "doing",
+    "yer",
+    "own",
+    "research",
+    "rareness",
+    "score",
+    "100",
+    "7rau"
+  ],
+  "embeddingInput": "THESHOCKER (Fake Rares) - Series 10 Card 14\nArtist: mellow\nSupply 52 Issued September 2022\nOn-card text: the shocker | stimulate yo mind | It ain't my fault if you ain't doing yer own research | Rareness Score 100% 7RAU\nVisual summary: The card features a central figure with a greenish hue, wearing a beanie and sunglasses, appearing in front of a retro TV. The background is a swirl of purples and pinks, adding to the psychedelic vibe. The overall style blends digital collage with a gritty, vintage aesthetic.\nMemetic references: Parental Advisory label suggesting edgy content.; References to DYOR (Do Your Own Research), a common crypto mantra.; Retro technology and glitch art elements.",
+  "embeddingBlocks": [
+    {
+      "id": "THESHOCKER#text",
+      "label": "On-card text",
+      "text": "the shocker | stimulate yo mind | It ain't my fault if you ain't doing yer own research | Rareness Score 100% 7RAU",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "THESHOCKER#memetic",
+      "label": "Memetic references",
+      "text": "Parental Advisory label suggesting edgy content.\nReferences to DYOR (Do Your Own Research), a common crypto mantra.\nRetro technology and glitch art elements.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "THESHOCKER#visual",
+      "label": "Visual summary",
+      "text": "The card features a central figure with a greenish hue, wearing a beanie and sunglasses, appearing in front of a retro TV. The background is a swirl of purples and pinks, adding to the psychedelic vibe. The overall style blends digital collage with a gritty, vintage aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "THESHOCKER#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nthe shocker  \nstimulate yo mind  \nIt ain't my fault if you ain't doing yer own research  \nRareness Score 100% 7RAU  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a central figure with a greenish hue, wearing a beanie and sunglasses, appearing in front of a retro TV. The background is a swirl of purples and pinks, adding to the psychedelic vibe. The overall style blends digital collage with a gritty, vintage aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Parental Advisory label suggesting edgy content.\n- References to DYOR (Do Your Own Research), a common crypto mantra.\n- Retro technology and glitch art elements.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.151Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "SAINTPEPE",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 8,
+  "artist": "Da'Block God",
+  "supply": 131,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "Saint Pepe. Patron Saint of Rational Shitcoinery."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a religious figure.",
+    "Commentary on crypto culture, specifically the \"shitcoin\" phenomenon.",
+    "Use of religious symbolism to satirize the crypto market."
+  ],
+  "visualSummary": "The card features a saintly figure with the iconic Pepe the Frog face, draped in traditional religious robes. The color palette mixes earthy tones with a striking green for Pepe's face and hands, set against a background of ethereal flames. The artistic style blends classical religious iconography with digital meme aesthetics, creating a humorous yet reverent vibe.",
+  "visualSummaryShort": "The card depicts a saintly figure resembling Pepe the Frog, adorned in traditional robes with a backdrop of ethereal flames. The color palette features earthy tones contrasted by the vibrant green of Pepe's face and hands.",
+  "visualKeywords": [
+    "saint",
+    "pepe",
+    "flames",
+    "earthy tones",
+    "green",
+    "robes",
+    "humorous",
+    "iconography"
+  ],
+  "textKeywords": [
+    "saint",
+    "patron",
+    "rational",
+    "shitcoinery"
+  ],
+  "keywords": [
+    "saint",
+    "pepe",
+    "flames",
+    "earthy tones",
+    "green",
+    "robes",
+    "humorous",
+    "iconography",
+    "patron",
+    "rational",
+    "shitcoinery"
+  ],
+  "embeddingInput": "SAINTPEPE (Fake Rares) - Series 2 Card 8\nArtist: Da'Block God\nSupply 131 Issued October 2021\nOn-card text: Saint Pepe. Patron Saint of Rational Shitcoinery.\nVisual summary: The card features a saintly figure with the iconic Pepe the Frog face, draped in traditional religious robes. The color palette mixes earthy tones with a striking green for Pepe's face and hands, set against a background of ethereal flames. The artistic style blends classical religious iconography with digital meme aesthetics, creating a humorous yet reverent vibe.\nMemetic references: Pepe the Frog as a religious figure.; Commentary on crypto culture, specifically the \"shitcoin\" phenomenon.; Use of religious symbolism to satirize the crypto market.",
+  "embeddingBlocks": [
+    {
+      "id": "SAINTPEPE#text",
+      "label": "On-card text",
+      "text": "Saint Pepe. Patron Saint of Rational Shitcoinery.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "SAINTPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a religious figure.\nCommentary on crypto culture, specifically the \"shitcoin\" phenomenon.\nUse of religious symbolism to satirize the crypto market.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SAINTPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a saintly figure with the iconic Pepe the Frog face, draped in traditional religious robes. The color palette mixes earthy tones with a striking green for Pepe's face and hands, set against a background of ethereal flames. The artistic style blends classical religious iconography with digital meme aesthetics, creating a humorous yet reverent vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SAINTPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nSaint Pepe. Patron Saint of Rational Shitcoinery.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a saintly figure with the iconic Pepe the Frog face, draped in traditional religious robes. The color palette mixes earthy tones with a striking green for Pepe's face and hands, set against a background of ethereal flames. The artistic style blends classical religious iconography with digital meme aesthetics, creating a humorous yet reverent vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a religious figure.\n- Commentary on crypto culture, specifically the \"shitcoin\" phenomenon.\n- Use of religious symbolism to satirize the crypto market.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.094Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "asset": "GENTL",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 38,
+  "artist": "Hitomi Matsui",
+  "supply": 200,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "旦那はん！ うちはビットコインオンリーどすえー！"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure.",
+    "Bitcoin symbol prominently displayed on the fan.",
+    "References to Japanese culture with the kimono and styling.",
+    "Text in Japanese adds a layer of cultural fusion."
+  ],
+  "visualSummary": "This card features a felt-like texture with a vibrant and playful color palette of pink, blue, green, and yellow. A Pepe character is dressed in traditional Japanese attire, complete with a kimono and fan, set against a pastel background. The artistic style is a mix of kawaii and traditional Japanese aesthetics, with bold outlines and expressive features.",
+  "visualSummaryShort": "The card showcases a Pepe character in traditional Japanese attire against a pastel background. It features a vibrant color palette with a playful and kawaii artistic style.",
+  "visualKeywords": [
+    "pepe",
+    "kimono",
+    "fan",
+    "pastel",
+    "vibrant colors",
+    "kawaii",
+    "bold outlines",
+    "expressive features"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "kimono",
+    "fan",
+    "pastel",
+    "vibrant colors",
+    "kawaii",
+    "bold outlines",
+    "expressive features"
+  ],
+  "embeddingInput": "GENTL (Fake Rares) - Series 11 Card 38\nArtist: Hitomi Matsui\nSupply 200 Issued July 2022\nOn-card text: 旦那はん！ うちはビットコインオンリーどすえー！\nVisual summary: This card features a felt-like texture with a vibrant and playful color palette of pink, blue, green, and yellow. A Pepe character is dressed in traditional Japanese attire, complete with a kimono and fan, set against a pastel background. The artistic style is a mix of kawaii and traditional Japanese aesthetics, with bold outlines and expressive features.\nMemetic references: Pepe the Frog as a central figure.; Bitcoin symbol prominently displayed on the fan.; References to Japanese culture with the kimono and styling.; Text in Japanese adds a layer of cultural fusion.",
+  "embeddingBlocks": [
+    {
+      "id": "GENTL#text",
+      "label": "On-card text",
+      "text": "旦那はん！ うちはビットコインオンリーどすえー！",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "GENTL#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure.\nBitcoin symbol prominently displayed on the fan.\nReferences to Japanese culture with the kimono and styling.\nText in Japanese adds a layer of cultural fusion.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "GENTL#visual",
+      "label": "Visual summary",
+      "text": "This card features a felt-like texture with a vibrant and playful color palette of pink, blue, green, and yellow. A Pepe character is dressed in traditional Japanese attire, complete with a kimono and fan, set against a pastel background. The artistic style is a mix of kawaii and traditional Japanese aesthetics, with bold outlines and expressive features.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "GENTL#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n旦那はん！ うちはビットコインオンリーどすえー！\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a felt-like texture with a vibrant and playful color palette of pink, blue, green, and yellow. A Pepe character is dressed in traditional Japanese attire, complete with a kimono and fan, set against a pastel background. The artistic style is a mix of kawaii and traditional Japanese aesthetics, with bold outlines and expressive features.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure.\n- Bitcoin symbol prominently displayed on the fan.\n- References to Japanese culture with the kimono and styling.\n- Text in Japanese adds a layer of cultural fusion.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.652Z",
+  "sourceFactVersion": 1
+}

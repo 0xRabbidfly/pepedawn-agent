@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "PEPEMAGRITTE",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 17,
+  "artist": "FakeBuddha",
+  "supply": 100,
+  "issuance": "September 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog face integrated into a Magritte-inspired piece.",
+    "Reference to surrealism, blending high art with meme culture.",
+    "Plays on the classic \"The Son of Man\" by Magritte, adding a whimsical crypto twist."
+  ],
+  "visualSummary": "This card features a surreal composition reminiscent of René Magritte's style. It depicts a headless suit with a large green sphere where the head should be, featuring the iconic Pepe face. The background showcases a serene mountain landscape under a soft blue sky, combining elements of both surrealism and internet culture.",
+  "visualSummaryShort": "The card presents a surreal scene with a headless suit and a large green sphere featuring the Pepe face. The serene mountain landscape and soft blue sky enhance the dreamlike quality of the artwork.",
+  "visualKeywords": [
+    "surrealism",
+    "headless suit",
+    "green sphere",
+    "pepe face",
+    "mountain landscape",
+    "blue sky",
+    "dreamlike",
+    "internet culture"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "surrealism",
+    "headless suit",
+    "green sphere",
+    "pepe face",
+    "mountain landscape",
+    "blue sky",
+    "dreamlike",
+    "internet culture"
+  ],
+  "embeddingInput": "PEPEMAGRITTE (Fake Rares) - Series 3 Card 17\nArtist: FakeBuddha\nSupply 100 Issued September 2021\nOn-card text: none detected\nVisual summary: This card features a surreal composition reminiscent of René Magritte's style. It depicts a headless suit with a large green sphere where the head should be, featuring the iconic Pepe face. The background showcases a serene mountain landscape under a soft blue sky, combining elements of both surrealism and internet culture.\nMemetic references: Pepe the Frog face integrated into a Magritte-inspired piece.; Reference to surrealism, blending high art with meme culture.; Plays on the classic \"The Son of Man\" by Magritte, adding a whimsical crypto twist.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEMAGRITTE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog face integrated into a Magritte-inspired piece.\nReference to surrealism, blending high art with meme culture.\nPlays on the classic \"The Son of Man\" by Magritte, adding a whimsical crypto twist.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEMAGRITTE#visual",
+      "label": "Visual summary",
+      "text": "This card features a surreal composition reminiscent of René Magritte's style. It depicts a headless suit with a large green sphere where the head should be, featuring the iconic Pepe face. The background showcases a serene mountain landscape under a soft blue sky, combining elements of both surrealism and internet culture.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEMAGRITTE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a surreal composition reminiscent of René Magritte's style. It depicts a headless suit with a large green sphere where the head should be, featuring the iconic Pepe face. The background showcases a serene mountain landscape under a soft blue sky, combining elements of both surrealism and internet culture.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog face integrated into a Magritte-inspired piece.\n- Reference to surrealism, blending high art with meme culture.\n- Plays on the classic \"The Son of Man\" by Magritte, adding a whimsical crypto twist.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.925Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "asset": "FAKEELDERMEN",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 20,
+  "artist": "Afonso Caravagio X Aisha Venus",
+  "supply": 69,
+  "issuance": "June 2022",
+  "textOnCard": [
+    "FakeEldermen",
+    "Grants wisdom against FOMO and FUD to the holder",
+    "Rareness Score: 69"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog references, a staple in meme culture.",
+    "Medieval manuscript aesthetic, adding a historical twist.",
+    "References to crypto terms like FOMO (Fear Of Missing Out) and FUD (Fear, Uncertainty, Doubt).",
+    "The number 69, a meme-worthy number in internet culture."
+  ],
+  "visualSummary": "The card features a medieval-style illustration with three robed frog figures resembling monks, set within an ornate frame adorned with green and gold decorative elements. The backdrop is a vibrant green, contrasting with the white robes and deep red surrounding arch. The visual style mimics an illuminated manuscript, rich in detail and color.",
+  "visualSummaryShort": "The card showcases three robed frog figures in a medieval style, surrounded by an ornate green and gold frame. The vibrant green backdrop contrasts with their white robes and deep red arch, resembling an illuminated manuscript.",
+  "visualKeywords": [
+    "frogs",
+    "robes",
+    "green",
+    "gold",
+    "medieval",
+    "ornate",
+    "vibrant",
+    "illuminated",
+    "red",
+    "detailed"
+  ],
+  "textKeywords": [
+    "fakeeldermen",
+    "grants",
+    "wisdom",
+    "against",
+    "fomo",
+    "fud",
+    "holder",
+    "rareness",
+    "score"
+  ],
+  "keywords": [
+    "frogs",
+    "robes",
+    "green",
+    "gold",
+    "medieval",
+    "ornate",
+    "vibrant",
+    "illuminated",
+    "red",
+    "detailed",
+    "fakeeldermen",
+    "grants",
+    "wisdom",
+    "against",
+    "fomo",
+    "fud",
+    "holder",
+    "rareness",
+    "score"
+  ],
+  "embeddingInput": "FAKEELDERMEN (Fake Rares) - Series 8 Card 20\nArtist: Afonso Caravagio X Aisha Venus\nSupply 69 Issued June 2022\nOn-card text: FakeEldermen | Grants wisdom against FOMO and FUD to the holder | Rareness Score: 69\nVisual summary: The card features a medieval-style illustration with three robed frog figures resembling monks, set within an ornate frame adorned with green and gold decorative elements. The backdrop is a vibrant green, contrasting with the white robes and deep red surrounding arch. The visual style mimics an illuminated manuscript, rich in detail and color.\nMemetic references: Pepe the Frog references, a staple in meme culture.; Medieval manuscript aesthetic, adding a historical twist.; References to crypto terms like FOMO (Fear Of Missing Out) and FUD (Fear, Uncertainty, Doubt).; The number 69, a meme-worthy number in internet culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEELDERMEN#text",
+      "label": "On-card text",
+      "text": "FakeEldermen | Grants wisdom against FOMO and FUD to the holder | Rareness Score: 69",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEELDERMEN#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references, a staple in meme culture.\nMedieval manuscript aesthetic, adding a historical twist.\nReferences to crypto terms like FOMO (Fear Of Missing Out) and FUD (Fear, Uncertainty, Doubt).\nThe number 69, a meme-worthy number in internet culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEELDERMEN#visual",
+      "label": "Visual summary",
+      "text": "The card features a medieval-style illustration with three robed frog figures resembling monks, set within an ornate frame adorned with green and gold decorative elements. The backdrop is a vibrant green, contrasting with the white robes and deep red surrounding arch. The visual style mimics an illuminated manuscript, rich in detail and color.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEELDERMEN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFakeEldermen  \nGrants wisdom against FOMO and FUD to the holder  \nRareness Score: 69  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a medieval-style illustration with three robed frog figures resembling monks, set within an ornate frame adorned with green and gold decorative elements. The backdrop is a vibrant green, contrasting with the white robes and deep red surrounding arch. The visual style mimics an illuminated manuscript, rich in detail and color.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references, a staple in meme culture.\n- Medieval manuscript aesthetic, adding a historical twist.\n- References to crypto terms like FOMO (Fear Of Missing Out) and FUD (Fear, Uncertainty, Doubt).\n- The number 69, a meme-worthy number in internet culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.489Z",
+  "sourceFactVersion": 1
+}

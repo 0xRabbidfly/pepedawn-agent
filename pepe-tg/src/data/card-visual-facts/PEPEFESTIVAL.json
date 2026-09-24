@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "asset": "PEPEFESTIVAL",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 40,
+  "artist": "Isaac O",
+  "supply": 21,
+  "issuance": "December 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as central characters, embodying the meme culture.",
+    "Festival and party vibes with festive attire and interactions.",
+    "Elements of surrealism giving a nod to the absurdity often found in meme art."
+  ],
+  "visualSummary": "This card features a vibrant and whimsical composition with three anthropomorphic frog characters, reminiscent of Pepe the Frog, engaged in a festive scene. The color palette is bold and eclectic, with dominant blues, greens, and reds. The style is cartoonish with exaggerated features, incorporating elements of surrealism and a playful, almost chaotic energy.",
+  "visualSummaryShort": "The card showcases three anthropomorphic frog characters in a lively festival setting. Its bold and eclectic color palette enhances the whimsical and surreal atmosphere.",
+  "visualKeywords": [
+    "frogs",
+    "festival",
+    "blue",
+    "green",
+    "red",
+    "cartoonish",
+    "surrealism",
+    "playful",
+    "chaotic"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "frogs",
+    "festival",
+    "blue",
+    "green",
+    "red",
+    "cartoonish",
+    "surrealism",
+    "playful",
+    "chaotic"
+  ],
+  "embeddingInput": "PEPEFESTIVAL (Fake Rares) - Series 14 Card 40\nArtist: Isaac O\nSupply 21 Issued December 2022\nOn-card text: none detected\nVisual summary: This card features a vibrant and whimsical composition with three anthropomorphic frog characters, reminiscent of Pepe the Frog, engaged in a festive scene. The color palette is bold and eclectic, with dominant blues, greens, and reds. The style is cartoonish with exaggerated features, incorporating elements of surrealism and a playful, almost chaotic energy.\nMemetic references: Pepe the Frog as central characters, embodying the meme culture.; Festival and party vibes with festive attire and interactions.; Elements of surrealism giving a nod to the absurdity often found in meme art.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEFESTIVAL#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as central characters, embodying the meme culture.\nFestival and party vibes with festive attire and interactions.\nElements of surrealism giving a nod to the absurdity often found in meme art.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEFESTIVAL#visual",
+      "label": "Visual summary",
+      "text": "This card features a vibrant and whimsical composition with three anthropomorphic frog characters, reminiscent of Pepe the Frog, engaged in a festive scene. The color palette is bold and eclectic, with dominant blues, greens, and reds. The style is cartoonish with exaggerated features, incorporating elements of surrealism and a playful, almost chaotic energy.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEFESTIVAL#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a vibrant and whimsical composition with three anthropomorphic frog characters, reminiscent of Pepe the Frog, engaged in a festive scene. The color palette is bold and eclectic, with dominant blues, greens, and reds. The style is cartoonish with exaggerated features, incorporating elements of surrealism and a playful, almost chaotic energy.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as central characters, embodying the meme culture.\n- Festival and party vibes with festive attire and interactions.\n- Elements of surrealism giving a nod to the absurdity often found in meme art.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.882Z",
+  "sourceFactVersion": 1
+}

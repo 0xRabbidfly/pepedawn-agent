@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "asset": "POINTBREAKCD",
+  "collection": "Fake Rares",
+  "series": 0,
+  "cardNumber": 6,
+  "artist": "OE",
+  "supply": 100,
+  "issuance": "September 2016",
+  "textOnCard": [
+    "POINTBREAKCD (Lords of Surftown)",
+    "Lords Keanu and Swayze Ripping up the surf spots all across the Askian coast."
+  ],
+  "memeticReferences": [
+    "References to the cult classic film \"Point Break.\"",
+    "Playful nod to collectible card games like Hearthstone.",
+    "Crown and fez add a layer of absurdity and humor.",
+    "Taps into the nostalgia of 90s surf culture."
+  ],
+  "visualSummary": "The card features a duo reminiscent of iconic surf movie characters, with one donning a fez and the other wearing a crown. The background is a wave-filled ocean scene, capturing an adventurous vibe. The color palette is a mix of cool blues and earthy tones, framed in a style reminiscent of collectible card games.",
+  "visualSummaryShort": "The card showcases two characters in a vibrant ocean setting, evoking a sense of adventure. The color scheme combines cool blues with earthy tones, enhancing the surf theme.",
+  "visualKeywords": [
+    "surf",
+    "ocean",
+    "blue",
+    "earthy",
+    "adventure",
+    "fez",
+    "crown",
+    "waves",
+    "collectible",
+    "characters"
+  ],
+  "textKeywords": [
+    "pointbreakcd",
+    "lords",
+    "surftown",
+    "keanu",
+    "swayze",
+    "ripping",
+    "surf",
+    "spots",
+    "all",
+    "across",
+    "askian",
+    "coast"
+  ],
+  "keywords": [
+    "surf",
+    "ocean",
+    "blue",
+    "earthy",
+    "adventure",
+    "fez",
+    "crown",
+    "waves",
+    "collectible",
+    "characters",
+    "pointbreakcd",
+    "lords",
+    "surftown",
+    "keanu",
+    "swayze",
+    "ripping",
+    "spots",
+    "all",
+    "across",
+    "askian",
+    "coast"
+  ],
+  "embeddingInput": "POINTBREAKCD (Fake Rares) - Series 0 Card 6\nArtist: OE\nSupply 100 Issued September 2016\nOn-card text: POINTBREAKCD (Lords of Surftown) | Lords Keanu and Swayze Ripping up the surf spots all across the Askian coast.\nVisual summary: The card features a duo reminiscent of iconic surf movie characters, with one donning a fez and the other wearing a crown. The background is a wave-filled ocean scene, capturing an adventurous vibe. The color palette is a mix of cool blues and earthy tones, framed in a style reminiscent of collectible card games.\nMemetic references: References to the cult classic film \"Point Break.\"; Playful nod to collectible card games like Hearthstone.; Crown and fez add a layer of absurdity and humor.; Taps into the nostalgia of 90s surf culture.",
+  "embeddingBlocks": [
+    {
+      "id": "POINTBREAKCD#text",
+      "label": "On-card text",
+      "text": "POINTBREAKCD (Lords of Surftown) | Lords Keanu and Swayze Ripping up the surf spots all across the Askian coast.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "POINTBREAKCD#memetic",
+      "label": "Memetic references",
+      "text": "References to the cult classic film \"Point Break.\"\nPlayful nod to collectible card games like Hearthstone.\nCrown and fez add a layer of absurdity and humor.\nTaps into the nostalgia of 90s surf culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "POINTBREAKCD#visual",
+      "label": "Visual summary",
+      "text": "The card features a duo reminiscent of iconic surf movie characters, with one donning a fez and the other wearing a crown. The background is a wave-filled ocean scene, capturing an adventurous vibe. The color palette is a mix of cool blues and earthy tones, framed in a style reminiscent of collectible card games.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "POINTBREAKCD#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPOINTBREAKCD (Lords of Surftown)  \nLords Keanu and Swayze Ripping up the surf spots all across the Askian coast.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a duo reminiscent of iconic surf movie characters, with one donning a fez and the other wearing a crown. The background is a wave-filled ocean scene, capturing an adventurous vibe. The color palette is a mix of cool blues and earthy tones, framed in a style reminiscent of collectible card games.\n\n🧬 **MEMETIC DNA:**\n- References to the cult classic film \"Point Break.\"\n- Playful nod to collectible card games like Hearthstone.\n- Crown and fez add a layer of absurdity and humor.\n- Taps into the nostalgia of 90s surf culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.042Z",
+  "sourceFactVersion": 1
+}

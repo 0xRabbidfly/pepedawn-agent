@@ -7,15 +7,28 @@ looks like. Dated when it was written; strike through or delete when done.
 
 - [x] **1. Canonical card index from `/api/cards`** — reconcile daily, artist
       credits, release dates/blocks/tx, added and retired cards. *(5.16.0)*
-- [ ] **2. Images from the GitHub CDN** (`github.com/fakerares/cdn`), S3 as
-      fallback. Ends send failures like FAKEMASTERY's on the birthday; webp
-      `small` for fast sends. Prefer `card.directory.small`/`image` in
-      `determineCardUrl`; keep the file_id cache.
-- [ ] **3. Link replies to the directory** — `card.directory.url` or
-      `/series/S/N` as the canonical page instead of pepe.wtf / xcp.io.
-- [ ] **4. New-card announcements** — the daily sync's `added` list becomes a
-      scheduled post: "new fake: X by Y, series S". Constitution V.24 applies:
-      a room-visible change gets a what's-new.
+- [x] **2. Images from the GitHub CDN** (`github.com/fakerares/cdn`), old
+      overrides and S3 as fallback. Found the hard way: the ten newest Series
+      18 cards had 403 image URLs from the old site. *(on the branch)*
+- [x] **The vision pass runs itself.** 39 live cards had never been looked
+      at (newest Series 18, directory additions, ten MP4s with no still).
+      `scripts/fv-backfill.ts` looks at whatever lacks a fact file, daily from
+      the workflow; facts are committed in `src/data/card-visual-facts/` and
+      `CardFactsImportService` imports what the database lacks at boot.
+      *(on the branch)* Needs `OPENAI_API_KEY` as a repository secret for the
+      daily run; until then the step lists and skips. Three cards the model
+      will not describe (ELEVVTED, WUPEPE: refused even on the thumbnail;
+      BURNDJPEPE: every copy is over OpenAI's 20MB limit) are retried each
+      run - three cheap calls a day. Cap or hand-write them if that grates.
+- [x] **3. Link replies to the directory** — every Fake Rares card reply
+      carries a "🗂 Directory" button to `/series/S/N`; the artist button
+      goes to `/artists/<slug>` when the directory lists that artist (its
+      slug list is committed as `directory-artists.json`, refreshed by the
+      sync), pepe.wtf otherwise. *(on the branch)*
+- [x] **4. New-card announcements** — `NewCardService` watches the
+      hot-reloaded index hourly and posts each card it has not seen, with
+      the directory button; state seeded on first boot so nothing old is
+      announced. *(on the branch)* The what's-new for 5.16.0 covers it.
 - [ ] **5. Ingest the directory's prose into RAG** with real provenance:
       submission rules (`/submit`), events (`/api/events`), the history
       timeline (client-rendered; needs Playwright), artist bios as they fill
@@ -34,8 +47,18 @@ looks like. Dated when it was written; strike through or delete when done.
 - [ ] **Ask Scrilla** whether `/api/` is meant to be used and stable
       (`robots.txt` disallows it; one request a day). And whether he wants
       the `/fr` lore ledger flowing back to the directory.
-- [ ] **Retire `add-new-cards.js`'s Playwright pass 1** once the sync has run
-      clean for a week; the API replaces the HTML scrape.
+- [x] **`add-new-cards.js` pass 1 reads `/api/cards`** instead of scraping
+      `/series-N/`, which 404s on the new site. Pass 2 (pepe.wtf, for supply)
+      still needs Playwright. *(on the branch)*
+- [x] **The daily action never reached prod.** It opened PRs nobody merged
+      since 2025-10-24. It now merges its own PR once the sync's refusals and
+      `cardIndexIntegrity.test.ts` pass. *(on the branch)* Watch the first
+      few merged runs; if master ever gets a required review, the merge step
+      fails loudly and the PR waits for a person.
+- [ ] **TRIPLEMIKE** — the old scrape found it on 2026-09-21 as Series 18
+      card 42; it is a real locked asset on chain, but the directory has
+      CAKERARE at 18/42 and no TRIPLEMIKE at all. Ask Scrilla which is right
+      before the next sync silently retires either.
 
 ## The maintainer loop
 

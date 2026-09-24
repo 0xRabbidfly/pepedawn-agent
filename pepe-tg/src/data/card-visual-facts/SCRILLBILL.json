@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "SCRILLBILL",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 14,
+  "artist": "Ill Bill x VIVALAVANDAL x Rare Scrilla",
+  "supply": 69,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "ONE LOVE"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog character, a staple of meme culture.",
+    "Graffiti art style invoking urban street culture.",
+    "Boombox and gold chain referencing 80s and 90s hip-hop culture.",
+    "\"ONE LOVE\" nods to unity and possibly Bob Marley."
+  ],
+  "visualSummary": "The card features a vibrant street scene with a red brick building as the backdrop. A green Pepe character, decked out with a gold chain and holding a boombox, is chilling in a window. Below, a hooded figure is spray painting \"ONE LOVE\" in bright yellow and red graffiti on the building wall. The color palette is bold with reds, greens, and yellows dominating the scene.",
+  "visualSummaryShort": "The card showcases a lively street scene with a green Pepe character in a window and a hooded figure spray painting graffiti. The vibrant colors of red, green, and yellow create a bold atmosphere.",
+  "visualKeywords": [
+    "street scene",
+    "green pepe",
+    "boombox",
+    "graffiti",
+    "red brick",
+    "hooded figure",
+    "gold chain",
+    "bold colors",
+    "one love"
+  ],
+  "textKeywords": [
+    "one",
+    "love"
+  ],
+  "keywords": [
+    "street scene",
+    "green pepe",
+    "boombox",
+    "graffiti",
+    "red brick",
+    "hooded figure",
+    "gold chain",
+    "bold colors",
+    "one love",
+    "one",
+    "love"
+  ],
+  "embeddingInput": "SCRILLBILL (Fake Rares) - Series 4 Card 14\nArtist: Ill Bill x VIVALAVANDAL x Rare Scrilla\nSupply 69 Issued November 2021\nOn-card text: ONE LOVE\nVisual summary: The card features a vibrant street scene with a red brick building as the backdrop. A green Pepe character, decked out with a gold chain and holding a boombox, is chilling in a window. Below, a hooded figure is spray painting \"ONE LOVE\" in bright yellow and red graffiti on the building wall. The color palette is bold with reds, greens, and yellows dominating the scene.\nMemetic references: Classic Pepe the Frog character, a staple of meme culture.; Graffiti art style invoking urban street culture.; Boombox and gold chain referencing 80s and 90s hip-hop culture.; \"ONE LOVE\" nods to unity and possibly Bob Marley.",
+  "embeddingBlocks": [
+    {
+      "id": "SCRILLBILL#text",
+      "label": "On-card text",
+      "text": "ONE LOVE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "SCRILLBILL#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog character, a staple of meme culture.\nGraffiti art style invoking urban street culture.\nBoombox and gold chain referencing 80s and 90s hip-hop culture.\n\"ONE LOVE\" nods to unity and possibly Bob Marley.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SCRILLBILL#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant street scene with a red brick building as the backdrop. A green Pepe character, decked out with a gold chain and holding a boombox, is chilling in a window. Below, a hooded figure is spray painting \"ONE LOVE\" in bright yellow and red graffiti on the building wall. The color palette is bold with reds, greens, and yellows dominating the scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SCRILLBILL#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nONE LOVE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant street scene with a red brick building as the backdrop. A green Pepe character, decked out with a gold chain and holding a boombox, is chilling in a window. Below, a hooded figure is spray painting \"ONE LOVE\" in bright yellow and red graffiti on the building wall. The color palette is bold with reds, greens, and yellows dominating the scene.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog character, a staple of meme culture.\n- Graffiti art style invoking urban street culture.\n- Boombox and gold chain referencing 80s and 90s hip-hop culture.\n- \"ONE LOVE\" nods to unity and possibly Bob Marley.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.102Z",
+  "sourceFactVersion": 1
+}

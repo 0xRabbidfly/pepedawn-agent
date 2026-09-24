@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "asset": "PEPEANDTV",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 15,
+  "artist": "BasqKek",
+  "supply": 29,
+  "issuance": "October 2022",
+  "textOnCard": [
+    "PEPE AND TV. Sociability is hard enough 4 mE, KEK."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure.",
+    "\"KEK\" references the meme culture and cryptosphere.",
+    "The TV represents themes of isolation and media consumption.",
+    "Coffee cup humorously labeled as \"COBBEE\" adds a touch of absurdity."
+  ],
+  "visualSummary": "The card features a stylized Pepe character as a TV set, with a vibrant and chaotic background. The color palette is bold with blues, greens, and reds, reminiscent of abstract and pop art styles. The composition includes a coffee cup labeled \"COBBEE\" and various scribbles and textures that add to the card's energetic vibe.",
+  "visualSummaryShort": "The card showcases a stylized Pepe character designed as a TV set against a vibrant, chaotic background. Bold colors like blue, green, and red enhance the energetic and abstract feel of the artwork.",
+  "visualKeywords": [
+    "pepe",
+    "tv",
+    "abstract",
+    "bold colors",
+    "coffee cup",
+    "scribbles",
+    "chaotic",
+    "pop art",
+    "energetic",
+    "textures"
+  ],
+  "textKeywords": [
+    "sociability",
+    "hard",
+    "enough",
+    "kek"
+  ],
+  "keywords": [
+    "pepe",
+    "tv",
+    "abstract",
+    "bold colors",
+    "coffee cup",
+    "scribbles",
+    "chaotic",
+    "pop art",
+    "energetic",
+    "textures",
+    "sociability",
+    "hard",
+    "enough",
+    "kek"
+  ],
+  "embeddingInput": "PEPEANDTV (Fake Rares) - Series 13 Card 15\nArtist: BasqKek\nSupply 29 Issued October 2022\nOn-card text: PEPE AND TV. Sociability is hard enough 4 mE, KEK.\nVisual summary: The card features a stylized Pepe character as a TV set, with a vibrant and chaotic background. The color palette is bold with blues, greens, and reds, reminiscent of abstract and pop art styles. The composition includes a coffee cup labeled \"COBBEE\" and various scribbles and textures that add to the card's energetic vibe.\nMemetic references: Pepe the Frog as a central figure.; \"KEK\" references the meme culture and cryptosphere.; The TV represents themes of isolation and media consumption.; Coffee cup humorously labeled as \"COBBEE\" adds a touch of absurdity.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEANDTV#text",
+      "label": "On-card text",
+      "text": "PEPE AND TV. Sociability is hard enough 4 mE, KEK.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEANDTV#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure.\n\"KEK\" references the meme culture and cryptosphere.\nThe TV represents themes of isolation and media consumption.\nCoffee cup humorously labeled as \"COBBEE\" adds a touch of absurdity.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEANDTV#visual",
+      "label": "Visual summary",
+      "text": "The card features a stylized Pepe character as a TV set, with a vibrant and chaotic background. The color palette is bold with blues, greens, and reds, reminiscent of abstract and pop art styles. The composition includes a coffee cup labeled \"COBBEE\" and various scribbles and textures that add to the card's energetic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEANDTV#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE AND TV. Sociability is hard enough 4 mE, KEK.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a stylized Pepe character as a TV set, with a vibrant and chaotic background. The color palette is bold with blues, greens, and reds, reminiscent of abstract and pop art styles. The composition includes a coffee cup labeled \"COBBEE\" and various scribbles and textures that add to the card's energetic vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure.\n- \"KEK\" references the meme culture and cryptosphere.\n- The TV represents themes of isolation and media consumption.\n- Coffee cup humorously labeled as \"COBBEE\" adds a touch of absurdity.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.838Z",
+  "sourceFactVersion": 1
+}

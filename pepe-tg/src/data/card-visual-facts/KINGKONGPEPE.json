@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "KINGKONGPEPE",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 31,
+  "artist": "Mr. Million Miles Away",
+  "supply": 78,
+  "issuance": "November 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog parodying King Kong.",
+    "Elements of classic cinema with planes attacking the giant figure.",
+    "Crypto culture reference through the integration of Pepe as a central figure."
+  ],
+  "visualSummary": "The card features a gigantic Pepe the Frog as King Kong, towering over a cityscape under a full moon. The color palette includes deep blues for the night sky, bright greens for Pepe, and highlights of pink and gray for the city and aircraft. The style is cartoonish with bold outlines, capturing a playful parody of the classic King Kong scene.",
+  "visualSummaryShort": "The card depicts a giant Pepe the Frog as King Kong, looming over a city under a full moon. The vibrant colors and cartoonish style create a playful atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "king kong",
+    "cityscape",
+    "full moon",
+    "blue palette",
+    "green",
+    "cartoonish",
+    "aircraft",
+    "bold outlines",
+    "parody"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "king kong",
+    "cityscape",
+    "full moon",
+    "blue palette",
+    "green",
+    "cartoonish",
+    "aircraft",
+    "bold outlines",
+    "parody"
+  ],
+  "embeddingInput": "KINGKONGPEPE (Fake Rares) - Series 5 Card 31\nArtist: Mr. Million Miles Away\nSupply 78 Issued November 2021\nOn-card text: none detected\nVisual summary: The card features a gigantic Pepe the Frog as King Kong, towering over a cityscape under a full moon. The color palette includes deep blues for the night sky, bright greens for Pepe, and highlights of pink and gray for the city and aircraft. The style is cartoonish with bold outlines, capturing a playful parody of the classic King Kong scene.\nMemetic references: Pepe the Frog parodying King Kong.; Elements of classic cinema with planes attacking the giant figure.; Crypto culture reference through the integration of Pepe as a central figure.",
+  "embeddingBlocks": [
+    {
+      "id": "KINGKONGPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog parodying King Kong.\nElements of classic cinema with planes attacking the giant figure.\nCrypto culture reference through the integration of Pepe as a central figure.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "KINGKONGPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a gigantic Pepe the Frog as King Kong, towering over a cityscape under a full moon. The color palette includes deep blues for the night sky, bright greens for Pepe, and highlights of pink and gray for the city and aircraft. The style is cartoonish with bold outlines, capturing a playful parody of the classic King Kong scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "KINGKONGPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a gigantic Pepe the Frog as King Kong, towering over a cityscape under a full moon. The color palette includes deep blues for the night sky, bright greens for Pepe, and highlights of pink and gray for the city and aircraft. The style is cartoonish with bold outlines, capturing a playful parody of the classic King Kong scene.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog parodying King Kong.\n- Elements of classic cinema with planes attacking the giant figure.\n- Crypto culture reference through the integration of Pepe as a central figure.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.718Z",
+  "sourceFactVersion": 1
+}

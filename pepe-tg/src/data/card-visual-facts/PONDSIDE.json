@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PONDSIDE",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 19,
+  "artist": "VVD",
+  "supply": 69,
+  "issuance": "October 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog vibes with the pond setting, a classic meme habitat.",
+    "Impressionist art style gives it a cultured twist, merging high art with meme culture.",
+    "Nature and tranquility juxtaposed with the chaos of crypto life."
+  ],
+  "visualSummary": "This card features a vibrant, impressionistic landscape with lush greenery and a serene pond. The color palette is dominated by rich greens, blues, and hints of pink and orange, suggesting a lively and natural scene. The brushstrokes are loose and expressive, adding a dreamlike quality to the environment, with frogs subtly blending into the colorful surroundings.",
+  "visualSummaryShort": "The card depicts a vibrant, impressionistic landscape featuring lush greenery and a serene pond. Rich greens and blues dominate the color palette, creating a lively and dreamlike atmosphere.",
+  "visualKeywords": [
+    "landscape",
+    "pond",
+    "greenery",
+    "impressionistic",
+    "frogs",
+    "blue palette",
+    "dreamlike",
+    "colorful",
+    "expressive brushstrokes",
+    "natural"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "landscape",
+    "pond",
+    "greenery",
+    "impressionistic",
+    "frogs",
+    "blue palette",
+    "dreamlike",
+    "colorful",
+    "expressive brushstrokes",
+    "natural"
+  ],
+  "embeddingInput": "PONDSIDE (Fake Rares) - Series 12 Card 19\nArtist: VVD\nSupply 69 Issued October 2022\nOn-card text: none detected\nVisual summary: This card features a vibrant, impressionistic landscape with lush greenery and a serene pond. The color palette is dominated by rich greens, blues, and hints of pink and orange, suggesting a lively and natural scene. The brushstrokes are loose and expressive, adding a dreamlike quality to the environment, with frogs subtly blending into the colorful surroundings.\nMemetic references: Pepe the Frog vibes with the pond setting, a classic meme habitat.; Impressionist art style gives it a cultured twist, merging high art with meme culture.; Nature and tranquility juxtaposed with the chaos of crypto life.",
+  "embeddingBlocks": [
+    {
+      "id": "PONDSIDE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog vibes with the pond setting, a classic meme habitat.\nImpressionist art style gives it a cultured twist, merging high art with meme culture.\nNature and tranquility juxtaposed with the chaos of crypto life.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PONDSIDE#visual",
+      "label": "Visual summary",
+      "text": "This card features a vibrant, impressionistic landscape with lush greenery and a serene pond. The color palette is dominated by rich greens, blues, and hints of pink and orange, suggesting a lively and natural scene. The brushstrokes are loose and expressive, adding a dreamlike quality to the environment, with frogs subtly blending into the colorful surroundings.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PONDSIDE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a vibrant, impressionistic landscape with lush greenery and a serene pond. The color palette is dominated by rich greens, blues, and hints of pink and orange, suggesting a lively and natural scene. The brushstrokes are loose and expressive, adding a dreamlike quality to the environment, with frogs subtly blending into the colorful surroundings.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog vibes with the pond setting, a classic meme habitat.\n- Impressionist art style gives it a cultured twist, merging high art with meme culture.\n- Nature and tranquility juxtaposed with the chaos of crypto life.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.047Z",
+  "sourceFactVersion": 1
+}

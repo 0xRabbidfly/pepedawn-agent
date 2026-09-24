@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "asset": "RETROKEK",
+  "collection": "Fake Rares",
+  "series": 0,
+  "cardNumber": 18,
+  "artist": "Robness",
+  "supply": 100,
+  "issuance": "April 2017",
+  "textOnCard": [
+    "RETROKEK",
+    "私は現在のためにここにいない",
+    "私は永遠のためにここにいる"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in Pharaoh attire",
+    "Vaporwave elements with a retro-futuristic vibe",
+    "Japanese text, often associated with vaporwave culture",
+    "80s synthwave car and digital sunset"
+  ],
+  "visualSummary": "The card features a vibrant vaporwave aesthetic with a neon color palette dominated by pinks, purples, and blues. In the foreground, a Pepe figure dons a Pharaoh headdress and sunglasses, exuding an air of retro coolness. The background is rich with 80s nostalgia, showcasing palm trees, a futuristic car, and a digital sun setting on a grid-like horizon.",
+  "visualSummaryShort": "The card showcases a vibrant vaporwave aesthetic with a neon color palette featuring pinks, purples, and blues. A Pepe figure in a Pharaoh headdress stands against a nostalgic 80s backdrop of palm trees and a futuristic car.",
+  "visualKeywords": [
+    "vaporwave",
+    "neon colors",
+    "pepe",
+    "pharaoh headdress",
+    "sunglasses",
+    "palm trees",
+    "futuristic car",
+    "digital sun",
+    "grid horizon",
+    "retro coolness"
+  ],
+  "textKeywords": [
+    "retrokek"
+  ],
+  "keywords": [
+    "vaporwave",
+    "neon colors",
+    "pepe",
+    "pharaoh headdress",
+    "sunglasses",
+    "palm trees",
+    "futuristic car",
+    "digital sun",
+    "grid horizon",
+    "retro coolness",
+    "retrokek"
+  ],
+  "embeddingInput": "RETROKEK (Fake Rares) - Series 0 Card 18\nArtist: Robness\nSupply 100 Issued April 2017\nOn-card text: RETROKEK | 私は現在のためにここにいない | 私は永遠のためにここにいる\nVisual summary: The card features a vibrant vaporwave aesthetic with a neon color palette dominated by pinks, purples, and blues. In the foreground, a Pepe figure dons a Pharaoh headdress and sunglasses, exuding an air of retro coolness. The background is rich with 80s nostalgia, showcasing palm trees, a futuristic car, and a digital sun setting on a grid-like horizon.\nMemetic references: Pepe the Frog in Pharaoh attire; Vaporwave elements with a retro-futuristic vibe; Japanese text, often associated with vaporwave culture; 80s synthwave car and digital sunset",
+  "embeddingBlocks": [
+    {
+      "id": "RETROKEK#text",
+      "label": "On-card text",
+      "text": "RETROKEK | 私は現在のためにここにいない | 私は永遠のためにここにいる",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "RETROKEK#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in Pharaoh attire\nVaporwave elements with a retro-futuristic vibe\nJapanese text, often associated with vaporwave culture\n80s synthwave car and digital sunset",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RETROKEK#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant vaporwave aesthetic with a neon color palette dominated by pinks, purples, and blues. In the foreground, a Pepe figure dons a Pharaoh headdress and sunglasses, exuding an air of retro coolness. The background is rich with 80s nostalgia, showcasing palm trees, a futuristic car, and a digital sun setting on a grid-like horizon.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RETROKEK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nRETROKEK  \n私は現在のためにここにいない  \n私は永遠のためにここにいる\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant vaporwave aesthetic with a neon color palette dominated by pinks, purples, and blues. In the foreground, a Pepe figure dons a Pharaoh headdress and sunglasses, exuding an air of retro coolness. The background is rich with 80s nostalgia, showcasing palm trees, a futuristic car, and a digital sun setting on a grid-like horizon.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in Pharaoh attire\n- Vaporwave elements with a retro-futuristic vibe\n- Japanese text, often associated with vaporwave culture\n- 80s synthwave car and digital sunset",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.084Z",
+  "sourceFactVersion": 1
+}

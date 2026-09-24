@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "GOLDORANGE",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 24,
+  "artist": "DCOT",
+  "supply": 120,
+  "issuance": "July 2023",
+  "textOnCard": [
+    "RARE SCORE"
+  ],
+  "memeticReferences": [
+    "Bitcoin symbol floating above the figure, nodding to crypto culture. 🪙",
+    "The meditative pose suggests a blend of zen vibes with degen energy.",
+    "Pixel art style invokes nostalgia for old-school gaming."
+  ],
+  "visualSummary": "The card features a pixelated orange figure resembling a Buddha-like statue, seated in a meditative pose. It is surrounded by a digital grid room, with warm orange and gold tones dominating the scene. The Bitcoin symbol hovers above, adding a cosmic touch, while the overall aesthetic is retro-futuristic and reminiscent of early video game graphics.",
+  "visualSummaryShort": "The card showcases a pixelated orange figure in a meditative pose, set against a warm orange and gold digital grid room. A Bitcoin symbol hovers above, enhancing the retro-futuristic vibe.",
+  "visualKeywords": [
+    "orange figure",
+    "buddha",
+    "meditative pose",
+    "digital grid",
+    "warm tones",
+    "bitcoin",
+    "retro-futuristic",
+    "pixelated",
+    "cosmic"
+  ],
+  "textKeywords": [
+    "score"
+  ],
+  "keywords": [
+    "orange figure",
+    "buddha",
+    "meditative pose",
+    "digital grid",
+    "warm tones",
+    "bitcoin",
+    "retro-futuristic",
+    "pixelated",
+    "cosmic",
+    "score"
+  ],
+  "embeddingInput": "GOLDORANGE (Fake Rares) - Series 16 Card 24\nArtist: DCOT\nSupply 120 Issued July 2023\nOn-card text: RARE SCORE\nVisual summary: The card features a pixelated orange figure resembling a Buddha-like statue, seated in a meditative pose. It is surrounded by a digital grid room, with warm orange and gold tones dominating the scene. The Bitcoin symbol hovers above, adding a cosmic touch, while the overall aesthetic is retro-futuristic and reminiscent of early video game graphics.\nMemetic references: Bitcoin symbol floating above the figure, nodding to crypto culture. 🪙; The meditative pose suggests a blend of zen vibes with degen energy.; Pixel art style invokes nostalgia for old-school gaming.",
+  "embeddingBlocks": [
+    {
+      "id": "GOLDORANGE#text",
+      "label": "On-card text",
+      "text": "RARE SCORE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "GOLDORANGE#memetic",
+      "label": "Memetic references",
+      "text": "Bitcoin symbol floating above the figure, nodding to crypto culture. 🪙\nThe meditative pose suggests a blend of zen vibes with degen energy.\nPixel art style invokes nostalgia for old-school gaming.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "GOLDORANGE#visual",
+      "label": "Visual summary",
+      "text": "The card features a pixelated orange figure resembling a Buddha-like statue, seated in a meditative pose. It is surrounded by a digital grid room, with warm orange and gold tones dominating the scene. The Bitcoin symbol hovers above, adding a cosmic touch, while the overall aesthetic is retro-futuristic and reminiscent of early video game graphics.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "GOLDORANGE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nRARE SCORE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a pixelated orange figure resembling a Buddha-like statue, seated in a meditative pose. It is surrounded by a digital grid room, with warm orange and gold tones dominating the scene. The Bitcoin symbol hovers above, adding a cosmic touch, while the overall aesthetic is retro-futuristic and reminiscent of early video game graphics.\n\n🧬 **MEMETIC DNA:**\n- Bitcoin symbol floating above the figure, nodding to crypto culture. 🪙\n- The meditative pose suggests a blend of zen vibes with degen energy.\n- Pixel art style invokes nostalgia for old-school gaming.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.657Z",
+  "sourceFactVersion": 1
+}

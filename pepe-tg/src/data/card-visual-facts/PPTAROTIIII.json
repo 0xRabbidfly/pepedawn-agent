@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "asset": "PPTAROTIIII",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 25,
+  "artist": "SHEWOLF",
+  "supply": 70,
+  "issuance": "April 2022",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a blank design with no visible elements. It lacks any identifiable objects, characters, or colors.",
+  "visualKeywords": [],
+  "textKeywords": [],
+  "keywords": [],
+  "embeddingInput": "PPTAROTIIII (Fake Rares) - Series 7 Card 25\nArtist: SHEWOLF\nSupply 70 Issued April 2022\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "PPTAROTIIII#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.052Z",
+  "sourceFactVersion": 1
+}

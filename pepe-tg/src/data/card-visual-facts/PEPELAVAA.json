@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "asset": "PEPELAVAA",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 4,
+  "artist": "LavaaGang",
+  "supply": 27,
+  "issuance": "July 2023",
+  "textOnCard": [
+    "PEPELAVAA",
+    "AT THE TIME YOU MADE IT OBVIOUSLY"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery, iconic in meme culture.",
+    "References to chaotic and surreal scenarios, typical of meme evolution.",
+    "Crypto culture nods, potentially symbolizing the volatility and unexpected turns in the market."
+  ],
+  "visualSummary": "The card bursts with vibrant colors, featuring a large central Pepe the Frog character, coated in a gooey, lava-like substance. Surrounding this main figure are numerous smaller Pepe scenes, each illustrating different humorous or chaotic scenarios. The artwork is dense with detail, utilizing a rich palette of greens, oranges, and purples, with a style reminiscent of psychedelic art combined with pop culture references.",
+  "visualSummaryShort": "The card showcases a large Pepe the Frog character covered in a lava-like substance, surrounded by various smaller Pepe scenes. The vibrant colors and detailed artwork create a chaotic and humorous atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "lava",
+    "vibrant colors",
+    "psychedelic",
+    "humor",
+    "chaotic",
+    "green",
+    "orange",
+    "purple",
+    "detailed"
+  ],
+  "textKeywords": [
+    "pepelavaa",
+    "time",
+    "you",
+    "made",
+    "obviously"
+  ],
+  "keywords": [
+    "pepe",
+    "lava",
+    "vibrant colors",
+    "psychedelic",
+    "humor",
+    "chaotic",
+    "green",
+    "orange",
+    "purple",
+    "detailed",
+    "pepelavaa",
+    "time",
+    "you",
+    "made",
+    "obviously"
+  ],
+  "embeddingInput": "PEPELAVAA (Fake Rares) - Series 15 Card 4\nArtist: LavaaGang\nSupply 27 Issued July 2023\nOn-card text: PEPELAVAA | AT THE TIME YOU MADE IT OBVIOUSLY\nVisual summary: The card bursts with vibrant colors, featuring a large central Pepe the Frog character, coated in a gooey, lava-like substance. Surrounding this main figure are numerous smaller Pepe scenes, each illustrating different humorous or chaotic scenarios. The artwork is dense with detail, utilizing a rich palette of greens, oranges, and purples, with a style reminiscent of psychedelic art combined with pop culture references.\nMemetic references: Classic Pepe the Frog imagery, iconic in meme culture.; References to chaotic and surreal scenarios, typical of meme evolution.; Crypto culture nods, potentially symbolizing the volatility and unexpected turns in the market.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPELAVAA#text",
+      "label": "On-card text",
+      "text": "PEPELAVAA | AT THE TIME YOU MADE IT OBVIOUSLY",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPELAVAA#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery, iconic in meme culture.\nReferences to chaotic and surreal scenarios, typical of meme evolution.\nCrypto culture nods, potentially symbolizing the volatility and unexpected turns in the market.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPELAVAA#visual",
+      "label": "Visual summary",
+      "text": "The card bursts with vibrant colors, featuring a large central Pepe the Frog character, coated in a gooey, lava-like substance. Surrounding this main figure are numerous smaller Pepe scenes, each illustrating different humorous or chaotic scenarios. The artwork is dense with detail, utilizing a rich palette of greens, oranges, and purples, with a style reminiscent of psychedelic art combined with pop culture references.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPELAVAA#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPELAVAA  \nAT THE TIME YOU MADE IT OBVIOUSLY\n\n🎨 **VISUAL BREAKDOWN:**\nThe card bursts with vibrant colors, featuring a large central Pepe the Frog character, coated in a gooey, lava-like substance. Surrounding this main figure are numerous smaller Pepe scenes, each illustrating different humorous or chaotic scenarios. The artwork is dense with detail, utilizing a rich palette of greens, oranges, and purples, with a style reminiscent of psychedelic art combined with pop culture references.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery, iconic in meme culture.\n- References to chaotic and surreal scenarios, typical of meme evolution.\n- Crypto culture nods, potentially symbolizing the volatility and unexpected turns in the market.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.913Z",
+  "sourceFactVersion": 1
+}

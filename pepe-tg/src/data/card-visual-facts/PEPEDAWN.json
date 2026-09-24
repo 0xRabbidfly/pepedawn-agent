@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "PEPEDAWN",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 22,
+  "artist": "rabbidfly",
+  "supply": 133,
+  "issuance": "May 2024",
+  "textOnCard": [
+    "PEPEDAWN"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference with the green figure.",
+    "Apocalyptic cityscape reminiscent of dystopian themes.",
+    "The raven could symbolize foreboding or transformation, aligning with crypto market volatility."
+  ],
+  "visualSummary": "The card features a large black bird, possibly a raven, soaring over a chaotic cityscape engulfed in flames and smoke. The bird clutches a small, green Pepe figure in its beak, contrasting sharply against the fiery background. The color palette is a mix of vibrant blues, purples, and fiery oranges, creating a dramatic and intense atmosphere.",
+  "visualSummaryShort": "A large black bird, possibly a raven, soars over a chaotic city engulfed in flames and smoke. The bird holds a small green Pepe figure, creating a striking contrast against the vibrant, fiery background.",
+  "visualKeywords": [
+    "black bird",
+    "cityscape",
+    "flames",
+    "smoke",
+    "green figure",
+    "blue palette",
+    "purple hues",
+    "orange tones",
+    "dramatic atmosphere"
+  ],
+  "textKeywords": [
+    "pepedawn"
+  ],
+  "keywords": [
+    "black bird",
+    "cityscape",
+    "flames",
+    "smoke",
+    "green figure",
+    "blue palette",
+    "purple hues",
+    "orange tones",
+    "dramatic atmosphere",
+    "pepedawn"
+  ],
+  "embeddingInput": "PEPEDAWN (Fake Rares) - Series 18 Card 22\nArtist: rabbidfly\nSupply 133 Issued May 2024\nOn-card text: PEPEDAWN\nVisual summary: The card features a large black bird, possibly a raven, soaring over a chaotic cityscape engulfed in flames and smoke. The bird clutches a small, green Pepe figure in its beak, contrasting sharply against the fiery background. The color palette is a mix of vibrant blues, purples, and fiery oranges, creating a dramatic and intense atmosphere.\nMemetic references: Pepe the Frog reference with the green figure.; Apocalyptic cityscape reminiscent of dystopian themes.; The raven could symbolize foreboding or transformation, aligning with crypto market volatility.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEDAWN#text",
+      "label": "On-card text",
+      "text": "PEPEDAWN",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEDAWN#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference with the green figure.\nApocalyptic cityscape reminiscent of dystopian themes.\nThe raven could symbolize foreboding or transformation, aligning with crypto market volatility.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEDAWN#visual",
+      "label": "Visual summary",
+      "text": "The card features a large black bird, possibly a raven, soaring over a chaotic cityscape engulfed in flames and smoke. The bird clutches a small, green Pepe figure in its beak, contrasting sharply against the fiery background. The color palette is a mix of vibrant blues, purples, and fiery oranges, creating a dramatic and intense atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEDAWN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPEDAWN\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a large black bird, possibly a raven, soaring over a chaotic cityscape engulfed in flames and smoke. The bird clutches a small, green Pepe figure in its beak, contrasting sharply against the fiery background. The color palette is a mix of vibrant blues, purples, and fiery oranges, creating a dramatic and intense atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference with the green figure.\n- Apocalyptic cityscape reminiscent of dystopian themes.\n- The raven could symbolize foreboding or transformation, aligning with crypto market volatility.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.866Z",
+  "sourceFactVersion": 1
+}

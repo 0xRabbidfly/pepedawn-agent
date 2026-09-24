@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "GAZEOFFROGS",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 5,
+  "artist": "Chaotic Crypto",
+  "supply": 32,
+  "issuance": "July 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "References to \"The Last Supper\" give it a historical meme remix.",
+    "Frogs are an iconic symbol in meme culture, particularly linked to Pepe.",
+    "The formal setting with frogs adds a layer of absurdity and humor, typical of crypto art."
+  ],
+  "visualSummary": "The card features a surreal scene with anthropomorphic frogs gathered around a table, reminiscent of \"The Last Supper.\" The color palette is dominated by warm oranges and yellows, contrasting against a dark background, which gives the frogs a vivid, almost glowing presence. The detailed rendering and ornate frame create a classical art vibe with a modern twist.",
+  "visualSummaryShort": "The card depicts anthropomorphic frogs in a surreal gathering around a table, evoking a modern interpretation of a classic scene. The warm color palette of oranges and yellows contrasts with a dark background, enhancing the frogs' vivid appearance.",
+  "visualKeywords": [
+    "frogs",
+    "table",
+    "surreal",
+    "orange",
+    "yellow",
+    "dark background",
+    "classical",
+    "glowing",
+    "gathering",
+    "ornate frame"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "frogs",
+    "table",
+    "surreal",
+    "orange",
+    "yellow",
+    "dark background",
+    "classical",
+    "glowing",
+    "gathering",
+    "ornate frame"
+  ],
+  "embeddingInput": "GAZEOFFROGS (Fake Rares) - Series 15 Card 5\nArtist: Chaotic Crypto\nSupply 32 Issued July 2023\nOn-card text: none detected\nVisual summary: The card features a surreal scene with anthropomorphic frogs gathered around a table, reminiscent of \"The Last Supper.\" The color palette is dominated by warm oranges and yellows, contrasting against a dark background, which gives the frogs a vivid, almost glowing presence. The detailed rendering and ornate frame create a classical art vibe with a modern twist.\nMemetic references: References to \"The Last Supper\" give it a historical meme remix.; Frogs are an iconic symbol in meme culture, particularly linked to Pepe.; The formal setting with frogs adds a layer of absurdity and humor, typical of crypto art.",
+  "embeddingBlocks": [
+    {
+      "id": "GAZEOFFROGS#memetic",
+      "label": "Memetic references",
+      "text": "References to \"The Last Supper\" give it a historical meme remix.\nFrogs are an iconic symbol in meme culture, particularly linked to Pepe.\nThe formal setting with frogs adds a layer of absurdity and humor, typical of crypto art.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "GAZEOFFROGS#visual",
+      "label": "Visual summary",
+      "text": "The card features a surreal scene with anthropomorphic frogs gathered around a table, reminiscent of \"The Last Supper.\" The color palette is dominated by warm oranges and yellows, contrasting against a dark background, which gives the frogs a vivid, almost glowing presence. The detailed rendering and ornate frame create a classical art vibe with a modern twist.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "GAZEOFFROGS#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a surreal scene with anthropomorphic frogs gathered around a table, reminiscent of \"The Last Supper.\" The color palette is dominated by warm oranges and yellows, contrasting against a dark background, which gives the frogs a vivid, almost glowing presence. The detailed rendering and ornate frame create a classical art vibe with a modern twist.\n\n🧬 **MEMETIC DNA:**\n- References to \"The Last Supper\" give it a historical meme remix.\n- Frogs are an iconic symbol in meme culture, particularly linked to Pepe.\n- The formal setting with frogs adds a layer of absurdity and humor, typical of crypto art.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.649Z",
+  "sourceFactVersion": 1
+}

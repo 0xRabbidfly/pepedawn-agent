@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "LORDKEKPEPE",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 34,
+  "artist": "Lord Jamie V. Shill",
+  "supply": 21,
+  "issuance": "October 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure, a nod to its iconic status in meme culture.",
+    "Egyptian motifs, possibly referencing deities like Ra or Horus, adding a layer of historical meme fusion.",
+    "Crypto and NFT culture vibes, with an emphasis on rarity and uniqueness."
+  ],
+  "visualSummary": "This card features a dynamic depiction of a multi-armed, green Pepe figure with an Egyptian aesthetic. Vibrant colors dominate, with striking blues, oranges, and golds that highlight wings and hieroglyphic elements. The style is a blend of digital surrealism and ancient Egyptian art, creating a visually arresting and mystical vibe.",
+  "visualSummaryShort": "The card showcases a multi-armed green Pepe figure inspired by ancient Egyptian aesthetics. It features vibrant colors like blue, orange, and gold, enhancing its surreal and mystical appearance.",
+  "visualKeywords": [
+    "green pepe",
+    "multi-armed",
+    "egyptian",
+    "vibrant colors",
+    "wings",
+    "hieroglyphics",
+    "surrealism",
+    "mystical"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "green pepe",
+    "multi-armed",
+    "egyptian",
+    "vibrant colors",
+    "wings",
+    "hieroglyphics",
+    "surrealism",
+    "mystical"
+  ],
+  "embeddingInput": "LORDKEKPEPE (Fake Rares) - Series 1 Card 34\nArtist: Lord Jamie V. Shill\nSupply 21 Issued October 2021\nOn-card text: none detected\nVisual summary: This card features a dynamic depiction of a multi-armed, green Pepe figure with an Egyptian aesthetic. Vibrant colors dominate, with striking blues, oranges, and golds that highlight wings and hieroglyphic elements. The style is a blend of digital surrealism and ancient Egyptian art, creating a visually arresting and mystical vibe.\nMemetic references: Pepe the Frog as a central figure, a nod to its iconic status in meme culture.; Egyptian motifs, possibly referencing deities like Ra or Horus, adding a layer of historical meme fusion.; Crypto and NFT culture vibes, with an emphasis on rarity and uniqueness.",
+  "embeddingBlocks": [
+    {
+      "id": "LORDKEKPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure, a nod to its iconic status in meme culture.\nEgyptian motifs, possibly referencing deities like Ra or Horus, adding a layer of historical meme fusion.\nCrypto and NFT culture vibes, with an emphasis on rarity and uniqueness.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LORDKEKPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a dynamic depiction of a multi-armed, green Pepe figure with an Egyptian aesthetic. Vibrant colors dominate, with striking blues, oranges, and golds that highlight wings and hieroglyphic elements. The style is a blend of digital surrealism and ancient Egyptian art, creating a visually arresting and mystical vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LORDKEKPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a dynamic depiction of a multi-armed, green Pepe figure with an Egyptian aesthetic. Vibrant colors dominate, with striking blues, oranges, and golds that highlight wings and hieroglyphic elements. The style is a blend of digital surrealism and ancient Egyptian art, creating a visually arresting and mystical vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure, a nod to its iconic status in meme culture.\n- Egyptian motifs, possibly referencing deities like Ra or Horus, adding a layer of historical meme fusion.\n- Crypto and NFT culture vibes, with an emphasis on rarity and uniqueness.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.752Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "asset": "GETPEPEODT",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 5,
+  "artist": "Holden L.",
+  "supply": 450,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "Get Pepe Or Die Trying",
+    "NAKAMOTO SAN"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure.",
+    "Bitcoin tattoo symbolizing crypto culture.",
+    "\"Get Rich or Die Tryin’\" reference from 50 Cent, adapted to Pepe.",
+    "Nakamoto reference nodding to Satoshi Nakamoto, Bitcoin's creator."
+  ],
+  "visualSummary": "This card features a muscular Pepe the Frog aiming a gun directly at the viewer, creating an intense and confrontational vibe. The color palette is dominated by shades of green, with Pepe sporting a Bitcoin tattoo on his chest and wearing a chain with a cross. The background is abstract with faint, colorful shapes, giving it a modern, edgy feel.",
+  "visualSummaryShort": "The card showcases a muscular Pepe the Frog aiming a gun, exuding an intense and confrontational mood. The dominant green color palette is complemented by abstract colorful shapes in the background.",
+  "visualKeywords": [
+    "pepe",
+    "gun",
+    "green",
+    "bitcoin tattoo",
+    "cross",
+    "abstract",
+    "colorful",
+    "intense",
+    "muscular"
+  ],
+  "textKeywords": [
+    "get",
+    "die",
+    "trying",
+    "nakamoto",
+    "san"
+  ],
+  "keywords": [
+    "pepe",
+    "gun",
+    "green",
+    "bitcoin tattoo",
+    "cross",
+    "abstract",
+    "colorful",
+    "intense",
+    "muscular",
+    "get",
+    "die",
+    "trying",
+    "nakamoto",
+    "san"
+  ],
+  "embeddingInput": "GETPEPEODT (Fake Rares) - Series 3 Card 5\nArtist: Holden L.\nSupply 450 Issued October 2021\nOn-card text: Get Pepe Or Die Trying | NAKAMOTO SAN\nVisual summary: This card features a muscular Pepe the Frog aiming a gun directly at the viewer, creating an intense and confrontational vibe. The color palette is dominated by shades of green, with Pepe sporting a Bitcoin tattoo on his chest and wearing a chain with a cross. The background is abstract with faint, colorful shapes, giving it a modern, edgy feel.\nMemetic references: Pepe the Frog as a central figure.; Bitcoin tattoo symbolizing crypto culture.; \"Get Rich or Die Tryin’\" reference from 50 Cent, adapted to Pepe.; Nakamoto reference nodding to Satoshi Nakamoto, Bitcoin's creator.",
+  "embeddingBlocks": [
+    {
+      "id": "GETPEPEODT#text",
+      "label": "On-card text",
+      "text": "Get Pepe Or Die Trying | NAKAMOTO SAN",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "GETPEPEODT#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure.\nBitcoin tattoo symbolizing crypto culture.\n\"Get Rich or Die Tryin’\" reference from 50 Cent, adapted to Pepe.\nNakamoto reference nodding to Satoshi Nakamoto, Bitcoin's creator.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "GETPEPEODT#visual",
+      "label": "Visual summary",
+      "text": "This card features a muscular Pepe the Frog aiming a gun directly at the viewer, creating an intense and confrontational vibe. The color palette is dominated by shades of green, with Pepe sporting a Bitcoin tattoo on his chest and wearing a chain with a cross. The background is abstract with faint, colorful shapes, giving it a modern, edgy feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "GETPEPEODT#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nGet Pepe Or Die Trying  \nNAKAMOTO SAN\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a muscular Pepe the Frog aiming a gun directly at the viewer, creating an intense and confrontational vibe. The color palette is dominated by shades of green, with Pepe sporting a Bitcoin tattoo on his chest and wearing a chain with a cross. The background is abstract with faint, colorful shapes, giving it a modern, edgy feel.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure.\n- Bitcoin tattoo symbolizing crypto culture.\n- \"Get Rich or Die Tryin’\" reference from 50 Cent, adapted to Pepe.\n- Nakamoto reference nodding to Satoshi Nakamoto, Bitcoin's creator.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.654Z",
+  "sourceFactVersion": 1
+}

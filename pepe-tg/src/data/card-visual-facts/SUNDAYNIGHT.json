@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "asset": "SUNDAYNIGHT",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 26,
+  "artist": "Ndhoz",
+  "supply": 43,
+  "issuance": "November 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog, a staple of meme culture.",
+    "References to crypto culture, including Bitcoin and NFTs.",
+    "Graffiti tags and posters referencing internet culture and memes.",
+    "An overall vibe of internet chaos and degen lifestyle."
+  ],
+  "visualSummary": "The card depicts an exhausted Pepe the Frog standing in a grungy, graffiti-covered bathroom. The color palette features muted greens and browns, evoking a dingy, late-night vibe. The artistic style is detailed and slightly surreal, with a focus on the cluttered and chaotic environment.",
+  "visualSummaryShort": "The card features an exhausted Pepe the Frog in a grungy bathroom filled with graffiti. The muted green and brown colors create a dingy, late-night atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "graffiti",
+    "bathroom",
+    "muted colors",
+    "exhausted",
+    "chaotic",
+    "surreal",
+    "cluttered"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "graffiti",
+    "bathroom",
+    "muted colors",
+    "exhausted",
+    "chaotic",
+    "surreal",
+    "cluttered"
+  ],
+  "embeddingInput": "SUNDAYNIGHT (Fake Rares) - Series 12 Card 26\nArtist: Ndhoz\nSupply 43 Issued November 2022\nOn-card text: none detected\nVisual summary: The card depicts an exhausted Pepe the Frog standing in a grungy, graffiti-covered bathroom. The color palette features muted greens and browns, evoking a dingy, late-night vibe. The artistic style is detailed and slightly surreal, with a focus on the cluttered and chaotic environment.\nMemetic references: Pepe the Frog, a staple of meme culture.; References to crypto culture, including Bitcoin and NFTs.; Graffiti tags and posters referencing internet culture and memes.; An overall vibe of internet chaos and degen lifestyle.",
+  "embeddingBlocks": [
+    {
+      "id": "SUNDAYNIGHT#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple of meme culture.\nReferences to crypto culture, including Bitcoin and NFTs.\nGraffiti tags and posters referencing internet culture and memes.\nAn overall vibe of internet chaos and degen lifestyle.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SUNDAYNIGHT#visual",
+      "label": "Visual summary",
+      "text": "The card depicts an exhausted Pepe the Frog standing in a grungy, graffiti-covered bathroom. The color palette features muted greens and browns, evoking a dingy, late-night vibe. The artistic style is detailed and slightly surreal, with a focus on the cluttered and chaotic environment.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SUNDAYNIGHT#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card depicts an exhausted Pepe the Frog standing in a grungy, graffiti-covered bathroom. The color palette features muted greens and browns, evoking a dingy, late-night vibe. The artistic style is detailed and slightly surreal, with a focus on the cluttered and chaotic environment.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple of meme culture.\n- References to crypto culture, including Bitcoin and NFTs.\n- Graffiti tags and posters referencing internet culture and memes.\n- An overall vibe of internet chaos and degen lifestyle.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.133Z",
+  "sourceFactVersion": 1
+}

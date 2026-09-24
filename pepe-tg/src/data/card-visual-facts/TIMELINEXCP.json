@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "asset": "TIMELINEXCP",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 43,
+  "artist": "davesta x Le Hues",
+  "supply": 150,
+  "issuance": "October 2023",
+  "textOnCard": [
+    "*TIMELINEXCP*"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as the central character, a staple in meme culture.",
+    "References to crypto culture, including terms like \"XCP,\" \"DOGE,\" and \"BITCOIN.\"",
+    "Visual nods to conspiracy theories with the detective-style board setup.",
+    "Inclusion of notable crypto figures and events in the collage."
+  ],
+  "visualSummary": "The card features a Pepe the Frog character in the foreground, facing a complex collage of images and notes pinned on a wall, reminiscent of a detective's board. The color palette is dominated by shades of green and gray, with neon green highlights emphasizing certain elements. The style is a blend of digital collage and illustration, giving a chaotic yet intriguing detective vibe.",
+  "visualSummaryShort": "The card showcases a Pepe the Frog character in front of a chaotic detective's board filled with images and notes. The color scheme features green and gray tones with neon green highlights, creating an intriguing atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "collage",
+    "detective board",
+    "green palette",
+    "gray tones",
+    "neon highlights",
+    "chaotic",
+    "illustration"
+  ],
+  "textKeywords": [
+    "timelinexcp"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "collage",
+    "detective board",
+    "green palette",
+    "gray tones",
+    "neon highlights",
+    "chaotic",
+    "illustration",
+    "timelinexcp"
+  ],
+  "embeddingInput": "TIMELINEXCP (Fake Rares) - Series 17 Card 43\nArtist: davesta x Le Hues\nSupply 150 Issued October 2023\nOn-card text: *TIMELINEXCP*\nVisual summary: The card features a Pepe the Frog character in the foreground, facing a complex collage of images and notes pinned on a wall, reminiscent of a detective's board. The color palette is dominated by shades of green and gray, with neon green highlights emphasizing certain elements. The style is a blend of digital collage and illustration, giving a chaotic yet intriguing detective vibe.\nMemetic references: Pepe the Frog as the central character, a staple in meme culture.; References to crypto culture, including terms like \"XCP,\" \"DOGE,\" and \"BITCOIN.\"; Visual nods to conspiracy theories with the detective-style board setup.; Inclusion of notable crypto figures and events in the collage.",
+  "embeddingBlocks": [
+    {
+      "id": "TIMELINEXCP#text",
+      "label": "On-card text",
+      "text": "*TIMELINEXCP*",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "TIMELINEXCP#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as the central character, a staple in meme culture.\nReferences to crypto culture, including terms like \"XCP,\" \"DOGE,\" and \"BITCOIN.\"\nVisual nods to conspiracy theories with the detective-style board setup.\nInclusion of notable crypto figures and events in the collage.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "TIMELINEXCP#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe the Frog character in the foreground, facing a complex collage of images and notes pinned on a wall, reminiscent of a detective's board. The color palette is dominated by shades of green and gray, with neon green highlights emphasizing certain elements. The style is a blend of digital collage and illustration, giving a chaotic yet intriguing detective vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "TIMELINEXCP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n*TIMELINEXCP*\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe the Frog character in the foreground, facing a complex collage of images and notes pinned on a wall, reminiscent of a detective's board. The color palette is dominated by shades of green and gray, with neon green highlights emphasizing certain elements. The style is a blend of digital collage and illustration, giving a chaotic yet intriguing detective vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as the central character, a staple in meme culture.\n- References to crypto culture, including terms like \"XCP,\" \"DOGE,\" and \"BITCOIN.\"\n- Visual nods to conspiracy theories with the detective-style board setup.\n- Inclusion of notable crypto figures and events in the collage.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.153Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "asset": "ORIGAMIPEPE",
+  "collection": "Fake Rares",
+  "series": 0,
+  "cardNumber": 16,
+  "artist": "Easy B",
+  "supply": 100,
+  "issuance": "February 2018",
+  "textOnCard": [
+    "ORIGAMI PEPE"
+  ],
+  "memeticReferences": [
+    "References the iconic Pepe the Frog meme.",
+    "Incorporates origami, blending traditional craft with meme culture.",
+    "Vibrant colors and geometric shapes hint at a playful, trippy vibe."
+  ],
+  "visualSummary": "The card features an origami rendition of Pepe the Frog, crafted from patterned paper with a green and pink palette. The background is a psychedelic burst of bright multicolored geometric shapes, creating a vibrant and chaotic atmosphere. The words \"ORIGAMI PEPE\" are spelled out using paper cutouts that match the origami theme, adding a playful touch.",
+  "visualSummaryShort": "The card showcases an origami version of Pepe the Frog made from patterned paper in green and pink. A vibrant, psychedelic background filled with multicolored geometric shapes enhances the playful atmosphere.",
+  "visualKeywords": [
+    "origami",
+    "pepe the frog",
+    "green",
+    "pink",
+    "psychedelic",
+    "geometric",
+    "multicolored",
+    "chaotic",
+    "playful"
+  ],
+  "textKeywords": [
+    "origami"
+  ],
+  "keywords": [
+    "origami",
+    "pepe the frog",
+    "green",
+    "pink",
+    "psychedelic",
+    "geometric",
+    "multicolored",
+    "chaotic",
+    "playful"
+  ],
+  "embeddingInput": "ORIGAMIPEPE (Fake Rares) - Series 0 Card 16\nArtist: Easy B\nSupply 100 Issued February 2018\nOn-card text: ORIGAMI PEPE\nVisual summary: The card features an origami rendition of Pepe the Frog, crafted from patterned paper with a green and pink palette. The background is a psychedelic burst of bright multicolored geometric shapes, creating a vibrant and chaotic atmosphere. The words \"ORIGAMI PEPE\" are spelled out using paper cutouts that match the origami theme, adding a playful touch.\nMemetic references: References the iconic Pepe the Frog meme.; Incorporates origami, blending traditional craft with meme culture.; Vibrant colors and geometric shapes hint at a playful, trippy vibe.",
+  "embeddingBlocks": [
+    {
+      "id": "ORIGAMIPEPE#text",
+      "label": "On-card text",
+      "text": "ORIGAMI PEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "ORIGAMIPEPE#memetic",
+      "label": "Memetic references",
+      "text": "References the iconic Pepe the Frog meme.\nIncorporates origami, blending traditional craft with meme culture.\nVibrant colors and geometric shapes hint at a playful, trippy vibe.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "ORIGAMIPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features an origami rendition of Pepe the Frog, crafted from patterned paper with a green and pink palette. The background is a psychedelic burst of bright multicolored geometric shapes, creating a vibrant and chaotic atmosphere. The words \"ORIGAMI PEPE\" are spelled out using paper cutouts that match the origami theme, adding a playful touch.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "ORIGAMIPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nORIGAMI PEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features an origami rendition of Pepe the Frog, crafted from patterned paper with a green and pink palette. The background is a psychedelic burst of bright multicolored geometric shapes, creating a vibrant and chaotic atmosphere. The words \"ORIGAMI PEPE\" are spelled out using paper cutouts that match the origami theme, adding a playful touch.\n\n🧬 **MEMETIC DNA:**\n- References the iconic Pepe the Frog meme.\n- Incorporates origami, blending traditional craft with meme culture.\n- Vibrant colors and geometric shapes hint at a playful, trippy vibe.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.818Z",
+  "sourceFactVersion": 1
+}

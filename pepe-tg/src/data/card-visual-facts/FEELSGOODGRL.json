@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "asset": "FEELSGOODGRL",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 11,
+  "artist": "GoingPepe100",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "Maddie Furie xoxo"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as the central figure, a staple in meme culture.",
+    "Tropical, jungle vibes reminiscent of classic nature scenes.",
+    "The playful use of a feminine Pepe adds a humorous twist."
+  ],
+  "visualSummary": "The card features a vibrant scene with a Pepe character, styled with a bob haircut and pink bikini, lounging in a lush jungle setting. A waterfall cascades in the background, surrounded by large green leaves and pink flowers. The color palette is rich with greens, pinks, and blues, giving a tropical and serene vibe.",
+  "visualSummaryShort": "The card showcases a Pepe character in a pink bikini, relaxing in a vibrant jungle with a waterfall. The lush environment is filled with green leaves and pink flowers, creating a tropical atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "pink bikini",
+    "jungle",
+    "waterfall",
+    "green leaves",
+    "pink flowers",
+    "tropical",
+    "serene",
+    "vibrant",
+    "blue palette"
+  ],
+  "textKeywords": [
+    "maddie",
+    "furie",
+    "xoxo"
+  ],
+  "keywords": [
+    "pepe",
+    "pink bikini",
+    "jungle",
+    "waterfall",
+    "green leaves",
+    "pink flowers",
+    "tropical",
+    "serene",
+    "vibrant",
+    "blue palette",
+    "maddie",
+    "furie",
+    "xoxo"
+  ],
+  "embeddingInput": "FEELSGOODGRL (Fake Rares) - Series 2 Card 11\nArtist: GoingPepe100\nSupply 100 Issued October 2021\nOn-card text: Maddie Furie xoxo\nVisual summary: The card features a vibrant scene with a Pepe character, styled with a bob haircut and pink bikini, lounging in a lush jungle setting. A waterfall cascades in the background, surrounded by large green leaves and pink flowers. The color palette is rich with greens, pinks, and blues, giving a tropical and serene vibe.\nMemetic references: Pepe the Frog as the central figure, a staple in meme culture.; Tropical, jungle vibes reminiscent of classic nature scenes.; The playful use of a feminine Pepe adds a humorous twist.",
+  "embeddingBlocks": [
+    {
+      "id": "FEELSGOODGRL#text",
+      "label": "On-card text",
+      "text": "Maddie Furie xoxo",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FEELSGOODGRL#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as the central figure, a staple in meme culture.\nTropical, jungle vibes reminiscent of classic nature scenes.\nThe playful use of a feminine Pepe adds a humorous twist.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FEELSGOODGRL#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant scene with a Pepe character, styled with a bob haircut and pink bikini, lounging in a lush jungle setting. A waterfall cascades in the background, surrounded by large green leaves and pink flowers. The color palette is rich with greens, pinks, and blues, giving a tropical and serene vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FEELSGOODGRL#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nMaddie Furie xoxo\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant scene with a Pepe character, styled with a bob haircut and pink bikini, lounging in a lush jungle setting. A waterfall cascades in the background, surrounded by large green leaves and pink flowers. The color palette is rich with greens, pinks, and blues, giving a tropical and serene vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as the central figure, a staple in meme culture.\n- Tropical, jungle vibes reminiscent of classic nature scenes.\n- The playful use of a feminine Pepe adds a humorous twist.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.611Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "asset": "BALLOONPEPE",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 12,
+  "artist": "Dr. Greedy",
+  "supply": 100,
+  "issuance": "November 2021",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a character resembling a frog holding a balloon. The overall mood is playful and whimsical.",
+  "visualKeywords": [
+    "frog",
+    "balloon",
+    "playful",
+    "whimsical"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "frog",
+    "balloon",
+    "playful",
+    "whimsical"
+  ],
+  "embeddingInput": "BALLOONPEPE (Fake Rares) - Series 3 Card 12\nArtist: Dr. Greedy\nSupply 100 Issued November 2021\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "BALLOONPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, but I can't identify or provide information about specific people or cards in images.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.298Z",
+  "sourceFactVersion": 1
+}

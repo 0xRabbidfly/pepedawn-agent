@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "asset": "FAKEBEEPLE",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 16,
+  "artist": "DesktopCommando",
+  "supply": 150,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "FAKE BEEPLE",
+    "feels good man"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure, a classic meme icon.",
+    "\"Feels good man\" speech bubble, referencing a famous Pepe meme.",
+    "Faces of recognizable personalities placed on the frog and surroundings, adding a layer of humor.",
+    "Parody of Beeple's style, a nod to NFT culture."
+  ],
+  "visualSummary": "The card features a colossal Pepe the Frog, depicted as a prehistoric creature in a vibrant landscape. The color palette includes lush greens, blues, and earthy tones, blending surrealism with a hint of satire. The composition is dynamic, with smaller human faces humorously integrated into the scene.",
+  "visualSummaryShort": "The card showcases a giant Pepe the Frog in a vivid prehistoric setting, surrounded by smaller human faces. The vibrant color palette features lush greens and earthy tones, creating a surreal yet humorous atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "prehistoric",
+    "vibrant landscape",
+    "green",
+    "blue",
+    "earthy tones",
+    "surrealism",
+    "humor"
+  ],
+  "textKeywords": [
+    "beeple",
+    "feels",
+    "good",
+    "man"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "prehistoric",
+    "vibrant landscape",
+    "green",
+    "blue",
+    "earthy tones",
+    "surrealism",
+    "humor",
+    "beeple",
+    "feels",
+    "good",
+    "man"
+  ],
+  "embeddingInput": "FAKEBEEPLE (Fake Rares) - Series 1 Card 16\nArtist: DesktopCommando\nSupply 150 Issued October 2021\nOn-card text: FAKE BEEPLE | feels good man\nVisual summary: The card features a colossal Pepe the Frog, depicted as a prehistoric creature in a vibrant landscape. The color palette includes lush greens, blues, and earthy tones, blending surrealism with a hint of satire. The composition is dynamic, with smaller human faces humorously integrated into the scene.\nMemetic references: Pepe the Frog as a central figure, a classic meme icon.; \"Feels good man\" speech bubble, referencing a famous Pepe meme.; Faces of recognizable personalities placed on the frog and surroundings, adding a layer of humor.; Parody of Beeple's style, a nod to NFT culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEBEEPLE#text",
+      "label": "On-card text",
+      "text": "FAKE BEEPLE | feels good man",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEBEEPLE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure, a classic meme icon.\n\"Feels good man\" speech bubble, referencing a famous Pepe meme.\nFaces of recognizable personalities placed on the frog and surroundings, adding a layer of humor.\nParody of Beeple's style, a nod to NFT culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEBEEPLE#visual",
+      "label": "Visual summary",
+      "text": "The card features a colossal Pepe the Frog, depicted as a prehistoric creature in a vibrant landscape. The color palette includes lush greens, blues, and earthy tones, blending surrealism with a hint of satire. The composition is dynamic, with smaller human faces humorously integrated into the scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEBEEPLE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE BEEPLE  \nfeels good man\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a colossal Pepe the Frog, depicted as a prehistoric creature in a vibrant landscape. The color palette includes lush greens, blues, and earthy tones, blending surrealism with a hint of satire. The composition is dynamic, with smaller human faces humorously integrated into the scene.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure, a classic meme icon.\n- \"Feels good man\" speech bubble, referencing a famous Pepe meme.\n- Faces of recognizable personalities placed on the frog and surroundings, adding a layer of humor.\n- Parody of Beeple's style, a nod to NFT culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.463Z",
+  "sourceFactVersion": 1
+}

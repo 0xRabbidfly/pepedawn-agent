@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PEPEEUPHORIA",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 26,
+  "artist": "Prateek Dhiman",
+  "supply": 23,
+  "issuance": "July 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "References to wealth and crypto culture, highlighted by the abundance of gold and coins.",
+    "The main character's facial expression and attire evoke classic \"Pepe\" meme vibes.",
+    "Symbolism with eyes and pyramids, hinting at secret societies or conspiracy theories common in meme lore."
+  ],
+  "visualSummary": "The card features a vibrant and chaotic scene filled with gold coins and an orange figure wearing a lavish robe and a crown. The color palette is a psychedelic explosion of neon pinks, blues, and oranges, reminiscent of a wild dreamscape. The composition is packed with details like a statue, treasure chest, and various symbols, creating a rich tapestry of visual elements.",
+  "visualSummaryShort": "The card showcases a vibrant scene with an orange figure in a lavish robe and crown surrounded by gold coins. The psychedelic color palette features neon pinks, blues, and oranges, creating a chaotic dreamlike atmosphere.",
+  "visualKeywords": [
+    "orange figure",
+    "lavish robe",
+    "crown",
+    "gold coins",
+    "neon colors",
+    "psychedelic",
+    "treasure chest",
+    "statue",
+    "chaotic",
+    "symbols"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "orange figure",
+    "lavish robe",
+    "crown",
+    "gold coins",
+    "neon colors",
+    "psychedelic",
+    "treasure chest",
+    "statue",
+    "chaotic",
+    "symbols"
+  ],
+  "embeddingInput": "PEPEEUPHORIA (Fake Rares) - Series 15 Card 26\nArtist: Prateek Dhiman\nSupply 23 Issued July 2023\nOn-card text: none detected\nVisual summary: The card features a vibrant and chaotic scene filled with gold coins and an orange figure wearing a lavish robe and a crown. The color palette is a psychedelic explosion of neon pinks, blues, and oranges, reminiscent of a wild dreamscape. The composition is packed with details like a statue, treasure chest, and various symbols, creating a rich tapestry of visual elements.\nMemetic references: References to wealth and crypto culture, highlighted by the abundance of gold and coins.; The main character's facial expression and attire evoke classic \"Pepe\" meme vibes.; Symbolism with eyes and pyramids, hinting at secret societies or conspiracy theories common in meme lore.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEEUPHORIA#memetic",
+      "label": "Memetic references",
+      "text": "References to wealth and crypto culture, highlighted by the abundance of gold and coins.\nThe main character's facial expression and attire evoke classic \"Pepe\" meme vibes.\nSymbolism with eyes and pyramids, hinting at secret societies or conspiracy theories common in meme lore.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEEUPHORIA#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant and chaotic scene filled with gold coins and an orange figure wearing a lavish robe and a crown. The color palette is a psychedelic explosion of neon pinks, blues, and oranges, reminiscent of a wild dreamscape. The composition is packed with details like a statue, treasure chest, and various symbols, creating a rich tapestry of visual elements.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEEUPHORIA#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant and chaotic scene filled with gold coins and an orange figure wearing a lavish robe and a crown. The color palette is a psychedelic explosion of neon pinks, blues, and oranges, reminiscent of a wild dreamscape. The composition is packed with details like a statue, treasure chest, and various symbols, creating a rich tapestry of visual elements.\n\n🧬 **MEMETIC DNA:**\n- References to wealth and crypto culture, highlighted by the abundance of gold and coins.\n- The main character's facial expression and attire evoke classic \"Pepe\" meme vibes.\n- Symbolism with eyes and pyramids, hinting at secret societies or conspiracy theories common in meme lore.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.878Z",
+  "sourceFactVersion": 1
+}

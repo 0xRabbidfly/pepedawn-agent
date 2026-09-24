@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "asset": "MEMETICTRUMP",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 2,
+  "artist": "Memeticx",
+  "supply": 47,
+  "issuance": "September 2025",
+  "textOnCard": [
+    "MEMETICTRUMP",
+    "EVERYTHING'S COMPUTER!",
+    "Rareness Score 45-47"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog references with a distinct hairstyle.",
+    "Space exploration elements, possibly nodding to SpaceX.",
+    "The phrase \"EVERYTHING'S COMPUTER!\" hints at a tech-centric meme.",
+    "Political undertones with the White House in the background."
+  ],
+  "visualSummary": "The card features a green, Pepe-inspired figure with a golden hairstyle, set against a backdrop of rockets and the White House. A red planet and a space station float in the sky, adding a space exploration vibe. The color palette is bold with greens, reds, blues, and yellows, creating a vibrant and eye-catching design.",
+  "visualSummaryShort": "The card showcases a green, Pepe-inspired character with a golden hairstyle amidst rockets and the White House. The vibrant color palette includes greens, reds, blues, and yellows, enhancing the space exploration theme.",
+  "visualKeywords": [
+    "pepe",
+    "rockets",
+    "white house",
+    "space",
+    "green",
+    "gold",
+    "vibrant",
+    "red planet",
+    "space station",
+    "bold colors"
+  ],
+  "textKeywords": [
+    "memetictrump",
+    "everything",
+    "computer",
+    "rareness",
+    "score"
+  ],
+  "keywords": [
+    "pepe",
+    "rockets",
+    "white house",
+    "space",
+    "green",
+    "gold",
+    "vibrant",
+    "red planet",
+    "space station",
+    "bold colors",
+    "memetictrump",
+    "everything",
+    "computer",
+    "rareness",
+    "score"
+  ],
+  "embeddingInput": "MEMETICTRUMP (Fake Rares) - Series 18 Card 2\nArtist: Memeticx\nSupply 47 Issued September 2025\nOn-card text: MEMETICTRUMP | EVERYTHING'S COMPUTER! | Rareness Score 45-47\nVisual summary: The card features a green, Pepe-inspired figure with a golden hairstyle, set against a backdrop of rockets and the White House. A red planet and a space station float in the sky, adding a space exploration vibe. The color palette is bold with greens, reds, blues, and yellows, creating a vibrant and eye-catching design.\nMemetic references: Pepe the Frog references with a distinct hairstyle.; Space exploration elements, possibly nodding to SpaceX.; The phrase \"EVERYTHING'S COMPUTER!\" hints at a tech-centric meme.; Political undertones with the White House in the background.",
+  "embeddingBlocks": [
+    {
+      "id": "MEMETICTRUMP#text",
+      "label": "On-card text",
+      "text": "MEMETICTRUMP | EVERYTHING'S COMPUTER! | Rareness Score 45-47",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MEMETICTRUMP#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references with a distinct hairstyle.\nSpace exploration elements, possibly nodding to SpaceX.\nThe phrase \"EVERYTHING'S COMPUTER!\" hints at a tech-centric meme.\nPolitical undertones with the White House in the background.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MEMETICTRUMP#visual",
+      "label": "Visual summary",
+      "text": "The card features a green, Pepe-inspired figure with a golden hairstyle, set against a backdrop of rockets and the White House. A red planet and a space station float in the sky, adding a space exploration vibe. The color palette is bold with greens, reds, blues, and yellows, creating a vibrant and eye-catching design.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MEMETICTRUMP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nMEMETICTRUMP  \nEVERYTHING'S COMPUTER!  \nRareness Score 45-47  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a green, Pepe-inspired figure with a golden hairstyle, set against a backdrop of rockets and the White House. A red planet and a space station float in the sky, adding a space exploration vibe. The color palette is bold with greens, reds, blues, and yellows, creating a vibrant and eye-catching design.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references with a distinct hairstyle.\n- Space exploration elements, possibly nodding to SpaceX.\n- The phrase \"EVERYTHING'S COMPUTER!\" hints at a tech-centric meme.\n- Political undertones with the White House in the background.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.769Z",
+  "sourceFactVersion": 1
+}

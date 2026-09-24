@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "FAKEAMAZON",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 49,
+  "artist": "Michael Naples",
+  "supply": 50,
+  "issuance": "April 2022",
+  "textOnCard": [
+    "fake"
+  ],
+  "memeticReferences": [
+    "Parody of Amazon's branding, poking fun at consumer culture.",
+    "The use of \"fake\" taps into themes of authenticity and deception in the NFT space.",
+    "Echoes of \"fake it till you make it\" meme culture."
+  ],
+  "visualSummary": "This card features a stack of cardboard boxes painted with an impressionistic touch. The largest box has a red smile reminiscent of the Amazon logo, with two smaller boxes on top labeled \"fake.\" The background is a textured green, adding a playful contrast to the earthy tones of the boxes.",
+  "visualSummaryShort": "The card showcases a stack of impressionistically painted cardboard boxes, with a prominent red smile on the largest box. The textured green background enhances the playful mood of the scene.",
+  "visualKeywords": [
+    "cardboard boxes",
+    "red smile",
+    "green background",
+    "impressionistic",
+    "playful",
+    "earthy tones",
+    "stacked",
+    "labeled"
+  ],
+  "textKeywords": [
+    "fake"
+  ],
+  "keywords": [
+    "cardboard boxes",
+    "red smile",
+    "green background",
+    "impressionistic",
+    "playful",
+    "earthy tones",
+    "stacked",
+    "labeled",
+    "fake"
+  ],
+  "embeddingInput": "FAKEAMAZON (Fake Rares) - Series 7 Card 49\nArtist: Michael Naples\nSupply 50 Issued April 2022\nOn-card text: fake\nVisual summary: This card features a stack of cardboard boxes painted with an impressionistic touch. The largest box has a red smile reminiscent of the Amazon logo, with two smaller boxes on top labeled \"fake.\" The background is a textured green, adding a playful contrast to the earthy tones of the boxes.\nMemetic references: Parody of Amazon's branding, poking fun at consumer culture.; The use of \"fake\" taps into themes of authenticity and deception in the NFT space.; Echoes of \"fake it till you make it\" meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEAMAZON#text",
+      "label": "On-card text",
+      "text": "fake",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEAMAZON#memetic",
+      "label": "Memetic references",
+      "text": "Parody of Amazon's branding, poking fun at consumer culture.\nThe use of \"fake\" taps into themes of authenticity and deception in the NFT space.\nEchoes of \"fake it till you make it\" meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEAMAZON#visual",
+      "label": "Visual summary",
+      "text": "This card features a stack of cardboard boxes painted with an impressionistic touch. The largest box has a red smile reminiscent of the Amazon logo, with two smaller boxes on top labeled \"fake.\" The background is a textured green, adding a playful contrast to the earthy tones of the boxes.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEAMAZON#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nfake\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a stack of cardboard boxes painted with an impressionistic touch. The largest box has a red smile reminiscent of the Amazon logo, with two smaller boxes on top labeled \"fake.\" The background is a textured green, adding a playful contrast to the earthy tones of the boxes.\n\n🧬 **MEMETIC DNA:**\n- Parody of Amazon's branding, poking fun at consumer culture.\n- The use of \"fake\" taps into themes of authenticity and deception in the NFT space.\n- Echoes of \"fake it till you make it\" meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.447Z",
+  "sourceFactVersion": 1
+}

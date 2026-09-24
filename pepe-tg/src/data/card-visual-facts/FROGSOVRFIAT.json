@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "FROGSOVRFIAT",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 9,
+  "artist": "Aroe",
+  "supply": 100,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "FROGS OVER FIAT"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog iconography, symbolizing crypto counterculture.",
+    "\"Fiat\" references traditional currency, contrasted with crypto ideals.",
+    "Graffiti style nods to rebellious street art movements.",
+    "Halo could represent the \"savior\" aspect of crypto."
+  ],
+  "visualSummary": "The card bursts with a vibrant mix of neon colors, including bright yellows, pinks, and blues, reminiscent of a street art mural. The background is layered with dollar bills, while the bold text \"FROGS OVER FIAT\" stands prominently. A halo effect and abstract graffiti elements give it a chaotic yet artistic flair.",
+  "visualSummaryShort": "The card features a vibrant mix of neon colors, including bright yellows, pinks, and blues, set against a backdrop of dollar bills. Bold text and abstract graffiti elements create a chaotic yet artistic atmosphere.",
+  "visualKeywords": [
+    "neon colors",
+    "dollar bills",
+    "graffiti",
+    "chaotic",
+    "bright",
+    "abstract",
+    "halo effect",
+    "street art"
+  ],
+  "textKeywords": [
+    "frogs",
+    "fiat"
+  ],
+  "keywords": [
+    "neon colors",
+    "dollar bills",
+    "graffiti",
+    "chaotic",
+    "bright",
+    "abstract",
+    "halo effect",
+    "street art",
+    "frogs",
+    "fiat"
+  ],
+  "embeddingInput": "FROGSOVRFIAT (Fake Rares) - Series 7 Card 9\nArtist: Aroe\nSupply 100 Issued March 2022\nOn-card text: FROGS OVER FIAT\nVisual summary: The card bursts with a vibrant mix of neon colors, including bright yellows, pinks, and blues, reminiscent of a street art mural. The background is layered with dollar bills, while the bold text \"FROGS OVER FIAT\" stands prominently. A halo effect and abstract graffiti elements give it a chaotic yet artistic flair.\nMemetic references: Pepe the Frog iconography, symbolizing crypto counterculture.; \"Fiat\" references traditional currency, contrasted with crypto ideals.; Graffiti style nods to rebellious street art movements.; Halo could represent the \"savior\" aspect of crypto.",
+  "embeddingBlocks": [
+    {
+      "id": "FROGSOVRFIAT#text",
+      "label": "On-card text",
+      "text": "FROGS OVER FIAT",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FROGSOVRFIAT#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog iconography, symbolizing crypto counterculture.\n\"Fiat\" references traditional currency, contrasted with crypto ideals.\nGraffiti style nods to rebellious street art movements.\nHalo could represent the \"savior\" aspect of crypto.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FROGSOVRFIAT#visual",
+      "label": "Visual summary",
+      "text": "The card bursts with a vibrant mix of neon colors, including bright yellows, pinks, and blues, reminiscent of a street art mural. The background is layered with dollar bills, while the bold text \"FROGS OVER FIAT\" stands prominently. A halo effect and abstract graffiti elements give it a chaotic yet artistic flair.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FROGSOVRFIAT#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFROGS OVER FIAT\n\n🎨 **VISUAL BREAKDOWN:**\nThe card bursts with a vibrant mix of neon colors, including bright yellows, pinks, and blues, reminiscent of a street art mural. The background is layered with dollar bills, while the bold text \"FROGS OVER FIAT\" stands prominently. A halo effect and abstract graffiti elements give it a chaotic yet artistic flair.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog iconography, symbolizing crypto counterculture.\n- \"Fiat\" references traditional currency, contrasted with crypto ideals.\n- Graffiti style nods to rebellious street art movements.\n- Halo could represent the \"savior\" aspect of crypto.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.643Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "asset": "THEBURNCARD",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 26,
+  "artist": "80sKurtRussell x Sketch",
+  "supply": 55,
+  "issuance": "December 2021",
+  "textOnCard": [
+    "PEPE, KEK"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, an iconic meme and symbol in NFT culture.",
+    "\"KEK\" is a nod to internet culture and the cryptosphere.",
+    "The flaming head suggests \"burning\" or high energy, possibly referencing the concept of burning tokens or assets."
+  ],
+  "visualSummary": "The card features a classic Pepe the Frog character, wearing a blue hoodie with the word \"PEPE\" emblazoned on it. The frog is smiling slyly, with a golden cross necklace and a flame hovering over its head. The background includes a stylized $100 bill, adding a touch of financial flair to the composition.",
+  "visualSummaryShort": "The card showcases a smiling Pepe the Frog in a blue hoodie with a golden cross necklace and a flame above its head. The background features a stylized $100 bill, enhancing the financial theme.",
+  "visualKeywords": [
+    "pepe",
+    "blue hoodie",
+    "golden cross",
+    "flame",
+    "hundred dollar bill"
+  ],
+  "textKeywords": [
+    "kek"
+  ],
+  "keywords": [
+    "pepe",
+    "blue hoodie",
+    "golden cross",
+    "flame",
+    "hundred dollar bill",
+    "kek"
+  ],
+  "embeddingInput": "THEBURNCARD (Fake Rares) - Series 4 Card 26\nArtist: 80sKurtRussell x Sketch\nSupply 55 Issued December 2021\nOn-card text: PEPE, KEK\nVisual summary: The card features a classic Pepe the Frog character, wearing a blue hoodie with the word \"PEPE\" emblazoned on it. The frog is smiling slyly, with a golden cross necklace and a flame hovering over its head. The background includes a stylized $100 bill, adding a touch of financial flair to the composition.\nMemetic references: Pepe the Frog, an iconic meme and symbol in NFT culture.; \"KEK\" is a nod to internet culture and the cryptosphere.; The flaming head suggests \"burning\" or high energy, possibly referencing the concept of burning tokens or assets.",
+  "embeddingBlocks": [
+    {
+      "id": "THEBURNCARD#text",
+      "label": "On-card text",
+      "text": "PEPE, KEK",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "THEBURNCARD#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, an iconic meme and symbol in NFT culture.\n\"KEK\" is a nod to internet culture and the cryptosphere.\nThe flaming head suggests \"burning\" or high energy, possibly referencing the concept of burning tokens or assets.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "THEBURNCARD#visual",
+      "label": "Visual summary",
+      "text": "The card features a classic Pepe the Frog character, wearing a blue hoodie with the word \"PEPE\" emblazoned on it. The frog is smiling slyly, with a golden cross necklace and a flame hovering over its head. The background includes a stylized $100 bill, adding a touch of financial flair to the composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "THEBURNCARD#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE, KEK\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a classic Pepe the Frog character, wearing a blue hoodie with the word \"PEPE\" emblazoned on it. The frog is smiling slyly, with a golden cross necklace and a flame hovering over its head. The background includes a stylized $100 bill, adding a touch of financial flair to the composition.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, an iconic meme and symbol in NFT culture.\n- \"KEK\" is a nod to internet culture and the cryptosphere.\n- The flaming head suggests \"burning\" or high energy, possibly referencing the concept of burning tokens or assets.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.140Z",
+  "sourceFactVersion": 1
+}

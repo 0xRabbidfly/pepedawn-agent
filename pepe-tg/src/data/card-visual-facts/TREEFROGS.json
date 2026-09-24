@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "TREEFROGS",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 27,
+  "artist": "VVD",
+  "supply": 69,
+  "issuance": "December 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "The frogs may reference Pepe culture, with treefrogs being a nod to the amphibious origins.",
+    "The snowy setting with ornaments brings in holiday vibes, possibly a play on \"Christmas\" memes.",
+    "The scene could symbolize the \"hodl\" mindset, waiting patiently in a crypto winter."
+  ],
+  "visualSummary": "This card features two treefrogs in a snowy landscape, gazing at a snow-covered tree adorned with red ornaments. The color palette is a mix of soft whites, greens, and reds, giving it a serene wintery feel. The artistic style is painterly and impressionistic, with a focus on texture and color blending.",
+  "visualSummaryShort": "The card depicts two treefrogs in a snowy landscape, observing a snow-covered tree with red ornaments. The soft color palette creates a serene winter atmosphere.",
+  "visualKeywords": [
+    "treefrogs",
+    "snow",
+    "red ornaments",
+    "green",
+    "white",
+    "winter",
+    "painterly",
+    "impressionistic",
+    "texture",
+    "color blending"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "treefrogs",
+    "snow",
+    "red ornaments",
+    "green",
+    "white",
+    "winter",
+    "painterly",
+    "impressionistic",
+    "texture",
+    "color blending"
+  ],
+  "embeddingInput": "TREEFROGS (Fake Rares) - Series 12 Card 27\nArtist: VVD\nSupply 69 Issued December 2022\nOn-card text: none detected\nVisual summary: This card features two treefrogs in a snowy landscape, gazing at a snow-covered tree adorned with red ornaments. The color palette is a mix of soft whites, greens, and reds, giving it a serene wintery feel. The artistic style is painterly and impressionistic, with a focus on texture and color blending.\nMemetic references: The frogs may reference Pepe culture, with treefrogs being a nod to the amphibious origins.; The snowy setting with ornaments brings in holiday vibes, possibly a play on \"Christmas\" memes.; The scene could symbolize the \"hodl\" mindset, waiting patiently in a crypto winter.",
+  "embeddingBlocks": [
+    {
+      "id": "TREEFROGS#memetic",
+      "label": "Memetic references",
+      "text": "The frogs may reference Pepe culture, with treefrogs being a nod to the amphibious origins.\nThe snowy setting with ornaments brings in holiday vibes, possibly a play on \"Christmas\" memes.\nThe scene could symbolize the \"hodl\" mindset, waiting patiently in a crypto winter.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "TREEFROGS#visual",
+      "label": "Visual summary",
+      "text": "This card features two treefrogs in a snowy landscape, gazing at a snow-covered tree adorned with red ornaments. The color palette is a mix of soft whites, greens, and reds, giving it a serene wintery feel. The artistic style is painterly and impressionistic, with a focus on texture and color blending.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "TREEFROGS#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features two treefrogs in a snowy landscape, gazing at a snow-covered tree adorned with red ornaments. The color palette is a mix of soft whites, greens, and reds, giving it a serene wintery feel. The artistic style is painterly and impressionistic, with a focus on texture and color blending.\n\n🧬 **MEMETIC DNA:**\n- The frogs may reference Pepe culture, with treefrogs being a nod to the amphibious origins.\n- The snowy setting with ornaments brings in holiday vibes, possibly a play on \"Christmas\" memes.\n- The scene could symbolize the \"hodl\" mindset, waiting patiently in a crypto winter.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.156Z",
+  "sourceFactVersion": 1
+}

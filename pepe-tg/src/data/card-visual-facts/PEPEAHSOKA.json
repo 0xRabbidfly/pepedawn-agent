@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "PEPEAHSOKA",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 47,
+  "artist": "DJ QBert",
+  "supply": 21,
+  "issuance": "September 2023",
+  "textOnCard": [
+    "A Sucka Pepe",
+    "COMING SOON"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog meme culture.",
+    "Reference to Ahsoka Tano from Star Wars.",
+    "Play on words with \"A Sucka Pepe,\" blending meme and pop culture."
+  ],
+  "visualSummary": "The card features a stylized Pepe the Frog wearing a headpiece reminiscent of Ahsoka Tano's from Star Wars, set against a solid green background. The color palette includes vibrant oranges, blues, and whites, giving it a bold and eye-catching look. The overall artistic style is cartoonish with a playful twist on familiar pop culture imagery.",
+  "visualSummaryShort": "The card showcases a cartoonish Pepe the Frog adorned with a headpiece similar to Ahsoka Tano's, against a solid green backdrop. The vibrant color palette of oranges, blues, and whites adds a playful and bold aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "ahsoka",
+    "green background",
+    "vibrant colors",
+    "cartoonish",
+    "playful",
+    "pop culture"
+  ],
+  "textKeywords": [
+    "sucka",
+    "coming",
+    "soon"
+  ],
+  "keywords": [
+    "pepe",
+    "ahsoka",
+    "green background",
+    "vibrant colors",
+    "cartoonish",
+    "playful",
+    "pop culture",
+    "sucka",
+    "coming",
+    "soon"
+  ],
+  "embeddingInput": "PEPEAHSOKA (Fake Rares) - Series 15 Card 47\nArtist: DJ QBert\nSupply 21 Issued September 2023\nOn-card text: A Sucka Pepe | COMING SOON\nVisual summary: The card features a stylized Pepe the Frog wearing a headpiece reminiscent of Ahsoka Tano's from Star Wars, set against a solid green background. The color palette includes vibrant oranges, blues, and whites, giving it a bold and eye-catching look. The overall artistic style is cartoonish with a playful twist on familiar pop culture imagery.\nMemetic references: Pepe the Frog meme culture.; Reference to Ahsoka Tano from Star Wars.; Play on words with \"A Sucka Pepe,\" blending meme and pop culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEAHSOKA#text",
+      "label": "On-card text",
+      "text": "A Sucka Pepe | COMING SOON",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEAHSOKA#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog meme culture.\nReference to Ahsoka Tano from Star Wars.\nPlay on words with \"A Sucka Pepe,\" blending meme and pop culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEAHSOKA#visual",
+      "label": "Visual summary",
+      "text": "The card features a stylized Pepe the Frog wearing a headpiece reminiscent of Ahsoka Tano's from Star Wars, set against a solid green background. The color palette includes vibrant oranges, blues, and whites, giving it a bold and eye-catching look. The overall artistic style is cartoonish with a playful twist on familiar pop culture imagery.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEAHSOKA#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nA Sucka Pepe  \nCOMING SOON\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a stylized Pepe the Frog wearing a headpiece reminiscent of Ahsoka Tano's from Star Wars, set against a solid green background. The color palette includes vibrant oranges, blues, and whites, giving it a bold and eye-catching look. The overall artistic style is cartoonish with a playful twist on familiar pop culture imagery.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog meme culture.\n- Reference to Ahsoka Tano from Star Wars.\n- Play on words with \"A Sucka Pepe,\" blending meme and pop culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.836Z",
+  "sourceFactVersion": 1
+}

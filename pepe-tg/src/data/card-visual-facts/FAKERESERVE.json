@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "asset": "FAKERESERVE",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 44,
+  "artist": "BIGTOX",
+  "supply": 483,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "BRAISE RPB",
+    "REPUBLIC OF FAKEMEMES",
+    "BRRR"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog character in business attire.",
+    "\"Money printer go brrr\" meme reference.",
+    "Rising candlestick chart symbolizes crypto market volatility.",
+    "\"REPUBLIC OF FAKEMEMES\" crest adds a layer of mock sovereignty."
+  ],
+  "visualSummary": "The card features a Pepe-inspired figure in a suit operating a money printer with \"BRRR\" sound effect. The color palette is simple with greens, reds, and grays dominating, highlighting the satirical nature. The background includes a rising candlestick chart and an emblem marked \"REPUBLIC OF FAKEMEMES\" at the bottom, adding to the parody of financial and governmental themes.",
+  "visualSummaryShort": "The card showcases a Pepe-inspired figure in a suit using a money printer, surrounded by a satirical financial theme. The color palette features greens, reds, and grays, with a background of a rising candlestick chart.",
+  "visualKeywords": [
+    "pepe",
+    "money printer",
+    "suit",
+    "candlestick chart",
+    "greens",
+    "reds",
+    "grays",
+    "satire",
+    "emblem",
+    "financial"
+  ],
+  "textKeywords": [
+    "braise",
+    "rpb",
+    "republic",
+    "fakememes",
+    "brrr"
+  ],
+  "keywords": [
+    "pepe",
+    "money printer",
+    "suit",
+    "candlestick chart",
+    "greens",
+    "reds",
+    "grays",
+    "satire",
+    "emblem",
+    "financial",
+    "braise",
+    "rpb",
+    "republic",
+    "fakememes",
+    "brrr"
+  ],
+  "embeddingInput": "FAKERESERVE (Fake Rares) - Series 3 Card 44\nArtist: BIGTOX\nSupply 483 Issued November 2021\nOn-card text: BRAISE RPB | REPUBLIC OF FAKEMEMES | BRRR\nVisual summary: The card features a Pepe-inspired figure in a suit operating a money printer with \"BRRR\" sound effect. The color palette is simple with greens, reds, and grays dominating, highlighting the satirical nature. The background includes a rising candlestick chart and an emblem marked \"REPUBLIC OF FAKEMEMES\" at the bottom, adding to the parody of financial and governmental themes.\nMemetic references: Pepe the Frog character in business attire.; \"Money printer go brrr\" meme reference.; Rising candlestick chart symbolizes crypto market volatility.; \"REPUBLIC OF FAKEMEMES\" crest adds a layer of mock sovereignty.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKERESERVE#text",
+      "label": "On-card text",
+      "text": "BRAISE RPB | REPUBLIC OF FAKEMEMES | BRRR",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKERESERVE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog character in business attire.\n\"Money printer go brrr\" meme reference.\nRising candlestick chart symbolizes crypto market volatility.\n\"REPUBLIC OF FAKEMEMES\" crest adds a layer of mock sovereignty.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKERESERVE#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe-inspired figure in a suit operating a money printer with \"BRRR\" sound effect. The color palette is simple with greens, reds, and grays dominating, highlighting the satirical nature. The background includes a rising candlestick chart and an emblem marked \"REPUBLIC OF FAKEMEMES\" at the bottom, adding to the parody of financial and governmental themes.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKERESERVE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nBRAISE RPB  \nREPUBLIC OF FAKEMEMES  \nBRRR  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe-inspired figure in a suit operating a money printer with \"BRRR\" sound effect. The color palette is simple with greens, reds, and grays dominating, highlighting the satirical nature. The background includes a rising candlestick chart and an emblem marked \"REPUBLIC OF FAKEMEMES\" at the bottom, adding to the parody of financial and governmental themes.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog character in business attire.\n- \"Money printer go brrr\" meme reference.\n- Rising candlestick chart symbolizes crypto market volatility.\n- \"REPUBLIC OF FAKEMEMES\" crest adds a layer of mock sovereignty.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.568Z",
+  "sourceFactVersion": 1
+}

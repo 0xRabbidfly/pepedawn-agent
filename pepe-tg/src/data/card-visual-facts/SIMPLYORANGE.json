@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "asset": "SIMPLYORANGE",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 32,
+  "artist": "Aera One",
+  "supply": 37,
+  "issuance": "August 2023",
+  "textOnCard": [
+    "Rich in Vitamin BTC. Hate Free. Simply Orange."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as an orange, combining meme culture with product parody.",
+    "Reference to Bitcoin with \"Rich in Vitamin BTC,\" blending crypto lingo with nutritional claims.",
+    "\"Hate Free\" nods to inclusivity, a common theme in crypto communities."
+  ],
+  "visualSummary": "The card features a bottle of orange juice with a playful twist, showcasing a Pepe the Frog character as an orange on the label. The background is a vibrant mix of orange hues, creating a warm and energetic atmosphere. The artistic style is bold and cartoonish, emphasizing the humor and meme culture.",
+  "visualSummaryShort": "The card showcases a bottle of orange juice with a cartoonish Pepe the Frog character as an orange on the label. The vibrant orange background creates a warm and energetic atmosphere.",
+  "visualKeywords": [
+    "orange juice",
+    "pepe the frog",
+    "cartoonish",
+    "vibrant",
+    "warm hues",
+    "playful",
+    "humor",
+    "meme culture"
+  ],
+  "textKeywords": [
+    "rich",
+    "vitamin",
+    "btc",
+    "hate",
+    "free",
+    "simply",
+    "orange"
+  ],
+  "keywords": [
+    "orange juice",
+    "pepe the frog",
+    "cartoonish",
+    "vibrant",
+    "warm hues",
+    "playful",
+    "humor",
+    "meme culture",
+    "rich",
+    "vitamin",
+    "btc",
+    "hate",
+    "free",
+    "simply",
+    "orange"
+  ],
+  "embeddingInput": "SIMPLYORANGE (Fake Rares) - Series 15 Card 32\nArtist: Aera One\nSupply 37 Issued August 2023\nOn-card text: Rich in Vitamin BTC. Hate Free. Simply Orange.\nVisual summary: The card features a bottle of orange juice with a playful twist, showcasing a Pepe the Frog character as an orange on the label. The background is a vibrant mix of orange hues, creating a warm and energetic atmosphere. The artistic style is bold and cartoonish, emphasizing the humor and meme culture.\nMemetic references: Pepe the Frog as an orange, combining meme culture with product parody.; Reference to Bitcoin with \"Rich in Vitamin BTC,\" blending crypto lingo with nutritional claims.; \"Hate Free\" nods to inclusivity, a common theme in crypto communities.",
+  "embeddingBlocks": [
+    {
+      "id": "SIMPLYORANGE#text",
+      "label": "On-card text",
+      "text": "Rich in Vitamin BTC. Hate Free. Simply Orange.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "SIMPLYORANGE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as an orange, combining meme culture with product parody.\nReference to Bitcoin with \"Rich in Vitamin BTC,\" blending crypto lingo with nutritional claims.\n\"Hate Free\" nods to inclusivity, a common theme in crypto communities.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SIMPLYORANGE#visual",
+      "label": "Visual summary",
+      "text": "The card features a bottle of orange juice with a playful twist, showcasing a Pepe the Frog character as an orange on the label. The background is a vibrant mix of orange hues, creating a warm and energetic atmosphere. The artistic style is bold and cartoonish, emphasizing the humor and meme culture.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SIMPLYORANGE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nRich in Vitamin BTC. Hate Free. Simply Orange.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a bottle of orange juice with a playful twist, showcasing a Pepe the Frog character as an orange on the label. The background is a vibrant mix of orange hues, creating a warm and energetic atmosphere. The artistic style is bold and cartoonish, emphasizing the humor and meme culture.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as an orange, combining meme culture with product parody.\n- Reference to Bitcoin with \"Rich in Vitamin BTC,\" blending crypto lingo with nutritional claims.\n- \"Hate Free\" nods to inclusivity, a common theme in crypto communities.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.109Z",
+  "sourceFactVersion": 1
+}

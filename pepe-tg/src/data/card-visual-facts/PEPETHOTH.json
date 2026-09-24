@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "asset": "PEPETHOTH",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 36,
+  "artist": "PEPETHOTH",
+  "supply": 13,
+  "issuance": "May 2022",
+  "textOnCard": [
+    "\"FAKE!\"",
+    "\"PEPETHOTH\"",
+    "\"keep it rare\"",
+    "\"Atk: Rare Def: MOBA Ele:\""
+  ],
+  "memeticReferences": [
+    "References to Bitcoin with the logo prominently displayed.",
+    "Pepe the Frog imagery is central, tapping into the iconic meme culture.",
+    "The inclusion of famous artworks with a Pepe twist adds a layer of humor.",
+    "\"FAKE!\" and \"keep it rare\" nod to NFT and crypto culture."
+  ],
+  "visualSummary": "The card features a room filled with Pepe-themed art, giving it a gallery-like feel. Dominated by warm tones of orange and brown, the room is detailed with various paintings, a red couch, and a character in a hoodie. The overall style is illustrative with a mix of 2D and 3D elements, creating a lively, chaotic atmosphere.",
+  "visualSummaryShort": "The card depicts a vibrant room filled with Pepe-themed artwork, featuring a red couch and a character in a hoodie. The warm orange and brown tones contribute to a lively and chaotic atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "art",
+    "orange",
+    "brown",
+    "couch",
+    "hoodie",
+    "illustrative",
+    "chaotic",
+    "gallery",
+    "room"
+  ],
+  "textKeywords": [
+    "pepethoth",
+    "keep",
+    "atk",
+    "def",
+    "moba",
+    "ele"
+  ],
+  "keywords": [
+    "pepe",
+    "art",
+    "orange",
+    "brown",
+    "couch",
+    "hoodie",
+    "illustrative",
+    "chaotic",
+    "gallery",
+    "room",
+    "pepethoth",
+    "keep",
+    "atk",
+    "def",
+    "moba",
+    "ele"
+  ],
+  "embeddingInput": "PEPETHOTH (Fake Rares) - Series 15 Card 36\nArtist: PEPETHOTH\nSupply 13 Issued May 2022\nOn-card text: \"FAKE!\" | \"PEPETHOTH\" | \"keep it rare\" | \"Atk: Rare Def: MOBA Ele:\"\nVisual summary: The card features a room filled with Pepe-themed art, giving it a gallery-like feel. Dominated by warm tones of orange and brown, the room is detailed with various paintings, a red couch, and a character in a hoodie. The overall style is illustrative with a mix of 2D and 3D elements, creating a lively, chaotic atmosphere.\nMemetic references: References to Bitcoin with the logo prominently displayed.; Pepe the Frog imagery is central, tapping into the iconic meme culture.; The inclusion of famous artworks with a Pepe twist adds a layer of humor.; \"FAKE!\" and \"keep it rare\" nod to NFT and crypto culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPETHOTH#text",
+      "label": "On-card text",
+      "text": "\"FAKE!\" | \"PEPETHOTH\" | \"keep it rare\" | \"Atk: Rare Def: MOBA Ele:\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPETHOTH#memetic",
+      "label": "Memetic references",
+      "text": "References to Bitcoin with the logo prominently displayed.\nPepe the Frog imagery is central, tapping into the iconic meme culture.\nThe inclusion of famous artworks with a Pepe twist adds a layer of humor.\n\"FAKE!\" and \"keep it rare\" nod to NFT and crypto culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPETHOTH#visual",
+      "label": "Visual summary",
+      "text": "The card features a room filled with Pepe-themed art, giving it a gallery-like feel. Dominated by warm tones of orange and brown, the room is detailed with various paintings, a red couch, and a character in a hoodie. The overall style is illustrative with a mix of 2D and 3D elements, creating a lively, chaotic atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPETHOTH#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- \"FAKE!\"\n- \"PEPETHOTH\"\n- \"keep it rare\"\n- \"Atk: Rare   Def: MOBA   Ele:\"\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a room filled with Pepe-themed art, giving it a gallery-like feel. Dominated by warm tones of orange and brown, the room is detailed with various paintings, a red couch, and a character in a hoodie. The overall style is illustrative with a mix of 2D and 3D elements, creating a lively, chaotic atmosphere.\n\n🧬 **MEMETIC DNA:**\n- References to Bitcoin with the logo prominently displayed.\n- Pepe the Frog imagery is central, tapping into the iconic meme culture.\n- The inclusion of famous artworks with a Pepe twist adds a layer of humor.\n- \"FAKE!\" and \"keep it rare\" nod to NFT and crypto culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.998Z",
+  "sourceFactVersion": 1
+}

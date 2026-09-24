@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "asset": "FAKEDUST",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 44,
+  "artist": "Kane Mayfield",
+  "supply": 420,
+  "issuance": "November 2023",
+  "textOnCard": [
+    "\"Pepe John’s\"",
+    "\"Boss Only\"",
+    "\"Kool Kreat Kulture\""
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as the central figure.",
+    "References to popular culture and meme brands like \"Pepe John’s.\"",
+    "Crypto symbols and nods to NFT culture scattered throughout the room.",
+    "The presence of a question-mark-headed figure suggesting mystery or anonymity."
+  ],
+  "visualSummary": "The card features a Pepe character in a detailed room filled with crypto and meme references. The color palette is vibrant, with greens, purples, and reds dominating the scene. The art style is a blend of digital collage with a touch of humor, creating a cluttered yet cozy atmosphere filled with posters, gadgets, and iconic meme symbols.",
+  "visualSummaryShort": "The card showcases a Pepe character in a vibrant, cluttered room filled with crypto and meme references. The atmosphere is cozy and humorous, highlighted by a colorful palette of greens, purples, and reds.",
+  "visualKeywords": [
+    "pepe",
+    "crypto",
+    "meme",
+    "vibrant",
+    "cluttered",
+    "posters",
+    "gadgets",
+    "humor",
+    "cozy",
+    "digital collage"
+  ],
+  "textKeywords": [
+    "john",
+    "boss",
+    "only",
+    "kool",
+    "kreat",
+    "kulture"
+  ],
+  "keywords": [
+    "pepe",
+    "crypto",
+    "meme",
+    "vibrant",
+    "cluttered",
+    "posters",
+    "gadgets",
+    "humor",
+    "cozy",
+    "digital collage",
+    "john",
+    "boss",
+    "only",
+    "kool",
+    "kreat",
+    "kulture"
+  ],
+  "embeddingInput": "FAKEDUST (Fake Rares) - Series 16 Card 44\nArtist: Kane Mayfield\nSupply 420 Issued November 2023\nOn-card text: \"Pepe John’s\" | \"Boss Only\" | \"Kool Kreat Kulture\"\nVisual summary: The card features a Pepe character in a detailed room filled with crypto and meme references. The color palette is vibrant, with greens, purples, and reds dominating the scene. The art style is a blend of digital collage with a touch of humor, creating a cluttered yet cozy atmosphere filled with posters, gadgets, and iconic meme symbols.\nMemetic references: Pepe the Frog as the central figure.; References to popular culture and meme brands like \"Pepe John’s.\"; Crypto symbols and nods to NFT culture scattered throughout the room.; The presence of a question-mark-headed figure suggesting mystery or anonymity.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEDUST#text",
+      "label": "On-card text",
+      "text": "\"Pepe John’s\" | \"Boss Only\" | \"Kool Kreat Kulture\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEDUST#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as the central figure.\nReferences to popular culture and meme brands like \"Pepe John’s.\"\nCrypto symbols and nods to NFT culture scattered throughout the room.\nThe presence of a question-mark-headed figure suggesting mystery or anonymity.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEDUST#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe character in a detailed room filled with crypto and meme references. The color palette is vibrant, with greens, purples, and reds dominating the scene. The art style is a blend of digital collage with a touch of humor, creating a cluttered yet cozy atmosphere filled with posters, gadgets, and iconic meme symbols.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEDUST#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- \"Pepe John’s\"\n- \"Boss Only\"\n- \"Kool Kreat Kulture\"\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe character in a detailed room filled with crypto and meme references. The color palette is vibrant, with greens, purples, and reds dominating the scene. The art style is a blend of digital collage with a touch of humor, creating a cluttered yet cozy atmosphere filled with posters, gadgets, and iconic meme symbols.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as the central figure.\n- References to popular culture and meme brands like \"Pepe John’s.\"\n- Crypto symbols and nods to NFT culture scattered throughout the room.\n- The presence of a question-mark-headed figure suggesting mystery or anonymity.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.486Z",
+  "sourceFactVersion": 1
+}

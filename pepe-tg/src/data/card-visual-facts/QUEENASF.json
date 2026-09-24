@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "asset": "QUEENASF",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 1,
+  "artist": "Community Created",
+  "supply": 95,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "QUEENASF",
+    "\"THE SUN NEVER SETS ON THE FROG EMPIRE\""
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in various forms and costumes.",
+    "References to British culture with Big Ben and royal themes.",
+    "Crypto culture nods, including futuristic elements and trading motifs.",
+    "Meme culture elements, including iconic internet faces and symbols."
+  ],
+  "visualSummary": "This card is a chaotic collage of various images featuring Pepe the Frog in different outfits and scenarios, with a dominant green color palette. The artistic style is a mix of digital art and meme culture, incorporating iconic landmarks like Big Ben and a futuristic cityscape. The composition is dense, with layered images and vibrant, contrasting colors creating a sense of depth and movement.",
+  "visualSummaryShort": "The card features a chaotic collage of Pepe the Frog in various outfits against a vibrant green backdrop. It includes iconic landmarks and a futuristic cityscape, creating a dynamic and layered visual experience.",
+  "visualKeywords": [
+    "pepe",
+    "green palette",
+    "collage",
+    "big ben",
+    "futuristic",
+    "digital art",
+    "meme culture",
+    "vibrant colors",
+    "depth",
+    "movement"
+  ],
+  "textKeywords": [
+    "queenasf",
+    "sun",
+    "never",
+    "sets",
+    "empire"
+  ],
+  "keywords": [
+    "pepe",
+    "green palette",
+    "collage",
+    "big ben",
+    "futuristic",
+    "digital art",
+    "meme culture",
+    "vibrant colors",
+    "depth",
+    "movement",
+    "queenasf",
+    "sun",
+    "never",
+    "sets",
+    "empire"
+  ],
+  "embeddingInput": "QUEENASF (Fake Rares) - Series 10 Card 1\nArtist: Community Created\nSupply 95 Issued September 2022\nOn-card text: QUEENASF | \"THE SUN NEVER SETS ON THE FROG EMPIRE\"\nVisual summary: This card is a chaotic collage of various images featuring Pepe the Frog in different outfits and scenarios, with a dominant green color palette. The artistic style is a mix of digital art and meme culture, incorporating iconic landmarks like Big Ben and a futuristic cityscape. The composition is dense, with layered images and vibrant, contrasting colors creating a sense of depth and movement.\nMemetic references: Pepe the Frog in various forms and costumes.; References to British culture with Big Ben and royal themes.; Crypto culture nods, including futuristic elements and trading motifs.; Meme culture elements, including iconic internet faces and symbols.",
+  "embeddingBlocks": [
+    {
+      "id": "QUEENASF#text",
+      "label": "On-card text",
+      "text": "QUEENASF | \"THE SUN NEVER SETS ON THE FROG EMPIRE\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "QUEENASF#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in various forms and costumes.\nReferences to British culture with Big Ben and royal themes.\nCrypto culture nods, including futuristic elements and trading motifs.\nMeme culture elements, including iconic internet faces and symbols.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "QUEENASF#visual",
+      "label": "Visual summary",
+      "text": "This card is a chaotic collage of various images featuring Pepe the Frog in different outfits and scenarios, with a dominant green color palette. The artistic style is a mix of digital art and meme culture, incorporating iconic landmarks like Big Ben and a futuristic cityscape. The composition is dense, with layered images and vibrant, contrasting colors creating a sense of depth and movement.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "QUEENASF#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nQUEENASF  \n\"THE SUN NEVER SETS ON THE FROG EMPIRE\"\n\n🎨 **VISUAL BREAKDOWN:**\nThis card is a chaotic collage of various images featuring Pepe the Frog in different outfits and scenarios, with a dominant green color palette. The artistic style is a mix of digital art and meme culture, incorporating iconic landmarks like Big Ben and a futuristic cityscape. The composition is dense, with layered images and vibrant, contrasting colors creating a sense of depth and movement.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in various forms and costumes.\n- References to British culture with Big Ben and royal themes.\n- Crypto culture nods, including futuristic elements and trading motifs.\n- Meme culture elements, including iconic internet faces and symbols.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.059Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "SQUIGGLEPEPE",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 45,
+  "artist": "nathan sonic",
+  "supply": 108,
+  "issuance": "October 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "References Pepe the Frog with the green color.",
+    "Echoes the playful, abstract style of generative art popular in NFT culture.",
+    "The squiggle could be a nod to market volatility, embodying the ups and downs of crypto trading."
+  ],
+  "visualSummary": "The card showcases a dynamic, looping squiggle that appears to be continuously morphing. The color palette is dominated by earthy browns and greens, reminiscent of military camouflage. The artistic style is minimalistic yet hypnotic, with smooth transitions and a 3D effect that draws the eye along the squiggle's path.",
+  "visualSummaryShort": "The card features a dynamic, looping squiggle that continuously morphs. Its color palette includes earthy browns and greens, creating a minimalistic yet hypnotic effect.",
+  "visualKeywords": [
+    "squiggle",
+    "earthy colors",
+    "green",
+    "brown",
+    "minimalistic",
+    "3d effect",
+    "hypnotic",
+    "dynamic",
+    "looping",
+    "camouflage"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "squiggle",
+    "earthy colors",
+    "green",
+    "brown",
+    "minimalistic",
+    "3d effect",
+    "hypnotic",
+    "dynamic",
+    "looping",
+    "camouflage"
+  ],
+  "embeddingInput": "SQUIGGLEPEPE (Fake Rares) - Series 2 Card 45\nArtist: nathan sonic\nSupply 108 Issued October 2021\nOn-card text: none detected\nVisual summary: The card showcases a dynamic, looping squiggle that appears to be continuously morphing. The color palette is dominated by earthy browns and greens, reminiscent of military camouflage. The artistic style is minimalistic yet hypnotic, with smooth transitions and a 3D effect that draws the eye along the squiggle's path.\nMemetic references: References Pepe the Frog with the green color.; Echoes the playful, abstract style of generative art popular in NFT culture.; The squiggle could be a nod to market volatility, embodying the ups and downs of crypto trading.",
+  "embeddingBlocks": [
+    {
+      "id": "SQUIGGLEPEPE#memetic",
+      "label": "Memetic references",
+      "text": "References Pepe the Frog with the green color.\nEchoes the playful, abstract style of generative art popular in NFT culture.\nThe squiggle could be a nod to market volatility, embodying the ups and downs of crypto trading.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SQUIGGLEPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card showcases a dynamic, looping squiggle that appears to be continuously morphing. The color palette is dominated by earthy browns and greens, reminiscent of military camouflage. The artistic style is minimalistic yet hypnotic, with smooth transitions and a 3D effect that draws the eye along the squiggle's path.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SQUIGGLEPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card showcases a dynamic, looping squiggle that appears to be continuously morphing. The color palette is dominated by earthy browns and greens, reminiscent of military camouflage. The artistic style is minimalistic yet hypnotic, with smooth transitions and a 3D effect that draws the eye along the squiggle's path.\n\n🧬 **MEMETIC DNA:**\n- References Pepe the Frog with the green color.\n- Echoes the playful, abstract style of generative art popular in NFT culture.\n- The squiggle could be a nod to market volatility, embodying the ups and downs of crypto trading.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.121Z",
+  "sourceFactVersion": 1
+}

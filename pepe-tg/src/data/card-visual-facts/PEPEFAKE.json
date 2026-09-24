@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "asset": "PEPEFAKE",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 24,
+  "artist": "Yotet",
+  "supply": 37,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "PEPEFAKE"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog inspiration with a twist.",
+    "Elements of meme culture with exaggerated facial expressions.",
+    "References to the \"fake\" or \"distorted\" meme variants."
+  ],
+  "visualSummary": "The card features a vivid, textured green background that resembles crumpled paper, with distressed and torn areas adding a gritty feel. The central figure is a stylized face with oversized, bloodshot eyes and a mischievous grin, featuring bright red lips and a tongue sticking out. The artistic style is bold and chaotic, with a mix of sharp lines and splashes of color creating a raw, punk vibe.",
+  "visualSummaryShort": "The card showcases a vibrant green background with a crumpled texture, enhancing its gritty aesthetic. A stylized face with exaggerated features and a chaotic artistic style embodies a raw, punk vibe.",
+  "visualKeywords": [
+    "green background",
+    "crumpled texture",
+    "bloodshot eyes",
+    "mischievous grin",
+    "red lips",
+    "punk style",
+    "chaotic art"
+  ],
+  "textKeywords": [
+    "pepefake"
+  ],
+  "keywords": [
+    "green background",
+    "crumpled texture",
+    "bloodshot eyes",
+    "mischievous grin",
+    "red lips",
+    "punk style",
+    "chaotic art",
+    "pepefake"
+  ],
+  "embeddingInput": "PEPEFAKE (Fake Rares) - Series 14 Card 24\nArtist: Yotet\nSupply 37 Issued February 2022\nOn-card text: PEPEFAKE\nVisual summary: The card features a vivid, textured green background that resembles crumpled paper, with distressed and torn areas adding a gritty feel. The central figure is a stylized face with oversized, bloodshot eyes and a mischievous grin, featuring bright red lips and a tongue sticking out. The artistic style is bold and chaotic, with a mix of sharp lines and splashes of color creating a raw, punk vibe.\nMemetic references: Classic Pepe the Frog inspiration with a twist.; Elements of meme culture with exaggerated facial expressions.; References to the \"fake\" or \"distorted\" meme variants.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEFAKE#text",
+      "label": "On-card text",
+      "text": "PEPEFAKE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEFAKE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog inspiration with a twist.\nElements of meme culture with exaggerated facial expressions.\nReferences to the \"fake\" or \"distorted\" meme variants.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEFAKE#visual",
+      "label": "Visual summary",
+      "text": "The card features a vivid, textured green background that resembles crumpled paper, with distressed and torn areas adding a gritty feel. The central figure is a stylized face with oversized, bloodshot eyes and a mischievous grin, featuring bright red lips and a tongue sticking out. The artistic style is bold and chaotic, with a mix of sharp lines and splashes of color creating a raw, punk vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEFAKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPEFAKE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vivid, textured green background that resembles crumpled paper, with distressed and torn areas adding a gritty feel. The central figure is a stylized face with oversized, bloodshot eyes and a mischievous grin, featuring bright red lips and a tongue sticking out. The artistic style is bold and chaotic, with a mix of sharp lines and splashes of color creating a raw, punk vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog inspiration with a twist.\n- Elements of meme culture with exaggerated facial expressions.\n- References to the \"fake\" or \"distorted\" meme variants.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.879Z",
+  "sourceFactVersion": 1
+}

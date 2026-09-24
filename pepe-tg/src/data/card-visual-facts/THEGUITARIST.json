@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "asset": "THEGUITARIST",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 18,
+  "artist": "Darkknight",
+  "supply": 67,
+  "issuance": "March 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog is a classic meme character, often used to convey a range of emotions.",
+    "The guitar-playing suggests themes of introspection or artistic struggle, common in meme culture.",
+    "The overall vibe resonates with the \"feels\" meme, highlighting a sense of melancholy or existential pondering."
+  ],
+  "visualSummary": "The composition features a Pepe the Frog character in a melancholic pose, playing a guitar. The color palette includes muted greens and browns, with a focus on the character's expressive, drooping eyes. The style is painterly, with soft brushstrokes that add to the somber, introspective mood.",
+  "visualSummaryShort": "A Pepe the Frog character is depicted in a melancholic pose while playing a guitar. The muted greens and browns create a somber, introspective atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "guitar",
+    "muted colors",
+    "melancholic",
+    "soft brushstrokes",
+    "introspective",
+    "expressive eyes"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "guitar",
+    "muted colors",
+    "melancholic",
+    "soft brushstrokes",
+    "introspective",
+    "expressive eyes"
+  ],
+  "embeddingInput": "THEGUITARIST (Fake Rares) - Series 7 Card 18\nArtist: Darkknight\nSupply 67 Issued March 2022\nOn-card text: none detected\nVisual summary: The composition features a Pepe the Frog character in a melancholic pose, playing a guitar. The color palette includes muted greens and browns, with a focus on the character's expressive, drooping eyes. The style is painterly, with soft brushstrokes that add to the somber, introspective mood.\nMemetic references: Pepe the Frog is a classic meme character, often used to convey a range of emotions.; The guitar-playing suggests themes of introspection or artistic struggle, common in meme culture.; The overall vibe resonates with the \"feels\" meme, highlighting a sense of melancholy or existential pondering.",
+  "embeddingBlocks": [
+    {
+      "id": "THEGUITARIST#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog is a classic meme character, often used to convey a range of emotions.\nThe guitar-playing suggests themes of introspection or artistic struggle, common in meme culture.\nThe overall vibe resonates with the \"feels\" meme, highlighting a sense of melancholy or existential pondering.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "THEGUITARIST#visual",
+      "label": "Visual summary",
+      "text": "The composition features a Pepe the Frog character in a melancholic pose, playing a guitar. The color palette includes muted greens and browns, with a focus on the character's expressive, drooping eyes. The style is painterly, with soft brushstrokes that add to the somber, introspective mood.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "THEGUITARIST#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe composition features a Pepe the Frog character in a melancholic pose, playing a guitar. The color palette includes muted greens and browns, with a focus on the character's expressive, drooping eyes. The style is painterly, with soft brushstrokes that add to the somber, introspective mood.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog is a classic meme character, often used to convey a range of emotions.\n- The guitar-playing suggests themes of introspection or artistic struggle, common in meme culture.\n- The overall vibe resonates with the \"feels\" meme, highlighting a sense of melancholy or existential pondering.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.144Z",
+  "sourceFactVersion": 1
+}

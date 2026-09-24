@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "asset": "FAKEZERO",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 11,
+  "artist": "0010",
+  "supply": 100,
+  "issuance": "September 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog references, a staple of meme culture.",
+    "Cosmic and abstract art styles, hinting at the mysterious and otherworldly.",
+    "Echoes of crypto and NFT culture's love for unique, eye-catching visuals."
+  ],
+  "visualSummary": "The artwork features a surreal depiction of two Pepe-like figures with exaggerated, abstract forms. The color palette is muted, dominated by earthy greens and reds, with a dark, starry background adding a cosmic vibe. The style blends elements of cubism with modern digital art, creating a visually striking and slightly eerie composition.",
+  "visualSummaryShort": "The card showcases two surreal, Pepe-like figures in abstract forms against a dark, starry background. The muted color palette features earthy greens and reds, contributing to an eerie cosmic atmosphere.",
+  "visualKeywords": [
+    "surreal",
+    "pepe",
+    "abstract",
+    "earthy colors",
+    "dark background",
+    "cosmic",
+    "cubism",
+    "digital art",
+    "eerie"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "surreal",
+    "pepe",
+    "abstract",
+    "earthy colors",
+    "dark background",
+    "cosmic",
+    "cubism",
+    "digital art",
+    "eerie"
+  ],
+  "embeddingInput": "FAKEZERO (Fake Rares) - Series 10 Card 11\nArtist: 0010\nSupply 100 Issued September 2022\nOn-card text: none detected\nVisual summary: The artwork features a surreal depiction of two Pepe-like figures with exaggerated, abstract forms. The color palette is muted, dominated by earthy greens and reds, with a dark, starry background adding a cosmic vibe. The style blends elements of cubism with modern digital art, creating a visually striking and slightly eerie composition.\nMemetic references: Pepe the Frog references, a staple of meme culture.; Cosmic and abstract art styles, hinting at the mysterious and otherworldly.; Echoes of crypto and NFT culture's love for unique, eye-catching visuals.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEZERO#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references, a staple of meme culture.\nCosmic and abstract art styles, hinting at the mysterious and otherworldly.\nEchoes of crypto and NFT culture's love for unique, eye-catching visuals.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEZERO#visual",
+      "label": "Visual summary",
+      "text": "The artwork features a surreal depiction of two Pepe-like figures with exaggerated, abstract forms. The color palette is muted, dominated by earthy greens and reds, with a dark, starry background adding a cosmic vibe. The style blends elements of cubism with modern digital art, creating a visually striking and slightly eerie composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEZERO#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe artwork features a surreal depiction of two Pepe-like figures with exaggerated, abstract forms. The color palette is muted, dominated by earthy greens and reds, with a dark, starry background adding a cosmic vibe. The style blends elements of cubism with modern digital art, creating a visually striking and slightly eerie composition.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references, a staple of meme culture.\n- Cosmic and abstract art styles, hinting at the mysterious and otherworldly.\n- Echoes of crypto and NFT culture's love for unique, eye-catching visuals.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.605Z",
+  "sourceFactVersion": 1
+}

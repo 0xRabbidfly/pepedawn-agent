@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "PEPEISDEAD",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 50,
+  "artist": "Costa Jpeg",
+  "supply": 100,
+  "issuance": "December 2021",
+  "textOnCard": [
+    "PEPEISDEAD"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference, a staple of internet meme culture.",
+    "The X's over the eyes are a universal sign for \"dead\" in cartoons.",
+    "Reflects the cyclical nature of meme life and death in crypto culture."
+  ],
+  "visualSummary": "The card features a somber depiction of Pepe the Frog, with X's over his eyes, symbolizing a lifeless state. The color palette is muted and earthy, with greens, browns, and a touch of red on Pepe's lips. The background has a rough, sketchy texture, enhancing the card’s gritty and melancholic vibe.",
+  "visualSummaryShort": "The card presents a somber Pepe the Frog with X's over his eyes, indicating a lifeless state. The muted earthy color palette and rough background texture contribute to its gritty and melancholic mood.",
+  "visualKeywords": [
+    "pepe",
+    "x's",
+    "earthy colors",
+    "green",
+    "brown",
+    "red lips",
+    "sketchy texture",
+    "melancholic",
+    "gritty"
+  ],
+  "textKeywords": [
+    "pepeisdead"
+  ],
+  "keywords": [
+    "pepe",
+    "x's",
+    "earthy colors",
+    "green",
+    "brown",
+    "red lips",
+    "sketchy texture",
+    "melancholic",
+    "gritty",
+    "pepeisdead"
+  ],
+  "embeddingInput": "PEPEISDEAD (Fake Rares) - Series 4 Card 50\nArtist: Costa Jpeg\nSupply 100 Issued December 2021\nOn-card text: PEPEISDEAD\nVisual summary: The card features a somber depiction of Pepe the Frog, with X's over his eyes, symbolizing a lifeless state. The color palette is muted and earthy, with greens, browns, and a touch of red on Pepe's lips. The background has a rough, sketchy texture, enhancing the card’s gritty and melancholic vibe.\nMemetic references: Classic Pepe the Frog reference, a staple of internet meme culture.; The X's over the eyes are a universal sign for \"dead\" in cartoons.; Reflects the cyclical nature of meme life and death in crypto culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEISDEAD#text",
+      "label": "On-card text",
+      "text": "PEPEISDEAD",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEISDEAD#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference, a staple of internet meme culture.\nThe X's over the eyes are a universal sign for \"dead\" in cartoons.\nReflects the cyclical nature of meme life and death in crypto culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEISDEAD#visual",
+      "label": "Visual summary",
+      "text": "The card features a somber depiction of Pepe the Frog, with X's over his eyes, symbolizing a lifeless state. The color palette is muted and earthy, with greens, browns, and a touch of red on Pepe's lips. The background has a rough, sketchy texture, enhancing the card’s gritty and melancholic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEISDEAD#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPEISDEAD\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a somber depiction of Pepe the Frog, with X's over his eyes, symbolizing a lifeless state. The color palette is muted and earthy, with greens, browns, and a touch of red on Pepe's lips. The background has a rough, sketchy texture, enhancing the card’s gritty and melancholic vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference, a staple of internet meme culture.\n- The X's over the eyes are a universal sign for \"dead\" in cartoons.\n- Reflects the cyclical nature of meme life and death in crypto culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.901Z",
+  "sourceFactVersion": 1
+}

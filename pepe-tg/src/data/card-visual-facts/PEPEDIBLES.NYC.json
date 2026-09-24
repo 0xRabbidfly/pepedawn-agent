@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "asset": "PEPEDIBLES.NYC",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 13,
+  "artist": "Darky",
+  "supply": 100,
+  "issuance": "February 2024",
+  "textOnCard": [
+    "PEPEDIBLES, THC PEPERE, FAKE RARES, 100% FAKE, NYC EDITION, 69% REAL, 420G, HAND MADE NYC FAKE RARES."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog references.",
+    "NYC and Statue of Liberty symbolism.",
+    "Edible and cannabis culture nods.",
+    "Fake Rares NFT culture."
+  ],
+  "visualSummary": "The card features a turquoise gummy bear with a Pepe face, dressed as the Statue of Liberty, holding a torch. The background is a collage of similar images with vibrant red, blue, and green hues, creating a chaotic yet cohesive aesthetic. Bold text and explosive graphic elements give it a playful and rebellious vibe.",
+  "visualSummaryShort": "The card showcases a turquoise gummy bear resembling Pepe the Frog, styled as the Statue of Liberty while holding a torch. The vibrant background features a chaotic collage of colors, enhancing its playful and rebellious aesthetic.",
+  "visualKeywords": [
+    "gummy bear",
+    "pepe",
+    "statue of liberty",
+    "torch",
+    "turquoise",
+    "collage",
+    "red",
+    "blue",
+    "green",
+    "playful"
+  ],
+  "textKeywords": [
+    "pepedibles",
+    "thc",
+    "pepere",
+    "100",
+    "nyc",
+    "edition",
+    "real",
+    "420g",
+    "hand",
+    "made"
+  ],
+  "keywords": [
+    "gummy bear",
+    "pepe",
+    "statue of liberty",
+    "torch",
+    "turquoise",
+    "collage",
+    "red",
+    "blue",
+    "green",
+    "playful",
+    "pepedibles",
+    "thc",
+    "pepere",
+    "100",
+    "nyc",
+    "edition",
+    "real",
+    "420g",
+    "hand",
+    "made"
+  ],
+  "embeddingInput": "PEPEDIBLES.NYC (Fake Rares) - Series 17 Card 13\nArtist: Darky\nSupply 100 Issued February 2024\nOn-card text: PEPEDIBLES, THC PEPERE, FAKE RARES, 100% FAKE, NYC EDITION, 69% REAL, 420G, HAND MADE NYC FAKE RARES.\nVisual summary: The card features a turquoise gummy bear with a Pepe face, dressed as the Statue of Liberty, holding a torch. The background is a collage of similar images with vibrant red, blue, and green hues, creating a chaotic yet cohesive aesthetic. Bold text and explosive graphic elements give it a playful and rebellious vibe.\nMemetic references: Pepe the Frog references.; NYC and Statue of Liberty symbolism.; Edible and cannabis culture nods.; Fake Rares NFT culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEDIBLES.NYC#text",
+      "label": "On-card text",
+      "text": "PEPEDIBLES, THC PEPERE, FAKE RARES, 100% FAKE, NYC EDITION, 69% REAL, 420G, HAND MADE NYC FAKE RARES.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEDIBLES.NYC#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references.\nNYC and Statue of Liberty symbolism.\nEdible and cannabis culture nods.\nFake Rares NFT culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEDIBLES.NYC#visual",
+      "label": "Visual summary",
+      "text": "The card features a turquoise gummy bear with a Pepe face, dressed as the Statue of Liberty, holding a torch. The background is a collage of similar images with vibrant red, blue, and green hues, creating a chaotic yet cohesive aesthetic. Bold text and explosive graphic elements give it a playful and rebellious vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEDIBLES.NYC#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPEDIBLES, THC PEPERE, FAKE RARES, 100% FAKE, NYC EDITION, 69% REAL, 420G, HAND MADE NYC FAKE RARES.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a turquoise gummy bear with a Pepe face, dressed as the Statue of Liberty, holding a torch. The background is a collage of similar images with vibrant red, blue, and green hues, creating a chaotic yet cohesive aesthetic. Bold text and explosive graphic elements give it a playful and rebellious vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references.\n- NYC and Statue of Liberty symbolism.\n- Edible and cannabis culture nods.\n- Fake Rares NFT culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.869Z",
+  "sourceFactVersion": 1
+}

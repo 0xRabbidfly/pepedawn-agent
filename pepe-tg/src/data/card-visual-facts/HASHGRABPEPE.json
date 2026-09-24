@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "asset": "HASHGRABPEPE",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 26,
+  "artist": "Mr. HODLPIG",
+  "supply": 108,
+  "issuance": "April 2022",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a character with a playful expression. The background is vibrant and colorful, enhancing the lively mood.",
+  "visualKeywords": [
+    "playful",
+    "vibrant",
+    "colorful",
+    "character"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "playful",
+    "vibrant",
+    "colorful",
+    "character"
+  ],
+  "embeddingInput": "HASHGRABPEPE (Fake Rares) - Series 7 Card 26\nArtist: Mr. HODLPIG\nSupply 108 Issued April 2022\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "HASHGRABPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.676Z",
+  "sourceFactVersion": 1
+}

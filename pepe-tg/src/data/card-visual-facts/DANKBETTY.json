@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "asset": "DANKBETTY",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 38,
+  "artist": "NFTMANC x VIVA LA VANDAL",
+  "supply": 78,
+  "issuance": "December 2021",
+  "textOnCard": [
+    "I don't know who the person in the text is, but the card shows \"TRUMP\" and \"HUSSL\"."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central character, a staple of internet meme culture.",
+    "Reference to wealth and success with stacks of cash and collectible cards.",
+    "Possible nods to pop culture and political figures."
+  ],
+  "visualSummary": "The card features two Pepe characters, reminiscent of classic cartoon style, clinking glasses in a celebratory toast. The color palette is dominated by shades of green, brown, and beige, giving it a warm, friendly vibe. There’s a stack of money and some cards in a bag, adding layers of intrigue and success.",
+  "visualSummaryShort": "The card showcases two Pepe characters toasting with glasses in a warm, cartoonish style. The scene includes a stack of money and cards, enhancing the celebratory mood.",
+  "visualKeywords": [
+    "pepe",
+    "toast",
+    "green",
+    "brown",
+    "beige",
+    "money",
+    "cards",
+    "cartoon",
+    "celebration"
+  ],
+  "textKeywords": [
+    "don",
+    "know",
+    "who",
+    "person",
+    "text",
+    "but",
+    "shows",
+    "trump",
+    "hussl"
+  ],
+  "keywords": [
+    "pepe",
+    "toast",
+    "green",
+    "brown",
+    "beige",
+    "money",
+    "cards",
+    "cartoon",
+    "celebration",
+    "don",
+    "know",
+    "who",
+    "person",
+    "text",
+    "but",
+    "shows",
+    "trump",
+    "hussl"
+  ],
+  "embeddingInput": "DANKBETTY (Fake Rares) - Series 4 Card 38\nArtist: NFTMANC x VIVA LA VANDAL\nSupply 78 Issued December 2021\nOn-card text: I don't know who the person in the text is, but the card shows \"TRUMP\" and \"HUSSL\".\nVisual summary: The card features two Pepe characters, reminiscent of classic cartoon style, clinking glasses in a celebratory toast. The color palette is dominated by shades of green, brown, and beige, giving it a warm, friendly vibe. There’s a stack of money and some cards in a bag, adding layers of intrigue and success.\nMemetic references: Pepe the Frog as a central character, a staple of internet meme culture.; Reference to wealth and success with stacks of cash and collectible cards.; Possible nods to pop culture and political figures.",
+  "embeddingBlocks": [
+    {
+      "id": "DANKBETTY#text",
+      "label": "On-card text",
+      "text": "I don't know who the person in the text is, but the card shows \"TRUMP\" and \"HUSSL\".",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "DANKBETTY#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central character, a staple of internet meme culture.\nReference to wealth and success with stacks of cash and collectible cards.\nPossible nods to pop culture and political figures.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "DANKBETTY#visual",
+      "label": "Visual summary",
+      "text": "The card features two Pepe characters, reminiscent of classic cartoon style, clinking glasses in a celebratory toast. The color palette is dominated by shades of green, brown, and beige, giving it a warm, friendly vibe. There’s a stack of money and some cards in a bag, adding layers of intrigue and success.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "DANKBETTY#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nI don't know who the person in the text is, but the card shows \"TRUMP\" and \"HUSSL\".\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features two Pepe characters, reminiscent of classic cartoon style, clinking glasses in a celebratory toast. The color palette is dominated by shades of green, brown, and beige, giving it a warm, friendly vibe. There’s a stack of money and some cards in a bag, adding layers of intrigue and success.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central character, a staple of internet meme culture.\n- Reference to wealth and success with stacks of cash and collectible cards.\n- Possible nods to pop culture and political figures.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.379Z",
+  "sourceFactVersion": 1
+}

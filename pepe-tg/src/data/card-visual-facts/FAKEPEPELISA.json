@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "asset": "FAKEPEPELISA",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 41,
+  "artist": "Pepenardo",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog face, central to meme culture.",
+    "Parody of the Mona Lisa, a timeless cultural symbol.",
+    "Combines traditional art with modern meme aesthetics."
+  ],
+  "visualSummary": "This card features an iconic reinterpretation of the Mona Lisa with a Pepe twist. The figure has a green face and classic Pepe features, set against the traditional background of Da Vinci’s masterpiece. The colors blend the earthy tones of the original with the vibrant green of Pepe, creating a humorous yet striking contrast.",
+  "visualSummaryShort": "The card showcases a Pepe-themed version of the Mona Lisa, featuring a green-faced character against a classic background. The color palette combines earthy tones with vibrant green, creating a humorous contrast.",
+  "visualKeywords": [
+    "pepe",
+    "mona lisa",
+    "green face",
+    "earthy tones",
+    "vibrant",
+    "humorous",
+    "classic background"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "mona lisa",
+    "green face",
+    "earthy tones",
+    "vibrant",
+    "humorous",
+    "classic background"
+  ],
+  "embeddingInput": "FAKEPEPELISA (Fake Rares) - Series 1 Card 41\nArtist: Pepenardo\nSupply 100 Issued October 2021\nOn-card text: none detected\nVisual summary: This card features an iconic reinterpretation of the Mona Lisa with a Pepe twist. The figure has a green face and classic Pepe features, set against the traditional background of Da Vinci’s masterpiece. The colors blend the earthy tones of the original with the vibrant green of Pepe, creating a humorous yet striking contrast.\nMemetic references: Classic Pepe the Frog face, central to meme culture.; Parody of the Mona Lisa, a timeless cultural symbol.; Combines traditional art with modern meme aesthetics.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEPEPELISA#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog face, central to meme culture.\nParody of the Mona Lisa, a timeless cultural symbol.\nCombines traditional art with modern meme aesthetics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEPEPELISA#visual",
+      "label": "Visual summary",
+      "text": "This card features an iconic reinterpretation of the Mona Lisa with a Pepe twist. The figure has a green face and classic Pepe features, set against the traditional background of Da Vinci’s masterpiece. The colors blend the earthy tones of the original with the vibrant green of Pepe, creating a humorous yet striking contrast.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEPEPELISA#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features an iconic reinterpretation of the Mona Lisa with a Pepe twist. The figure has a green face and classic Pepe features, set against the traditional background of Da Vinci’s masterpiece. The colors blend the earthy tones of the original with the vibrant green of Pepe, creating a humorous yet striking contrast.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog face, central to meme culture.\n- Parody of the Mona Lisa, a timeless cultural symbol.\n- Combines traditional art with modern meme aesthetics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.554Z",
+  "sourceFactVersion": 1
+}

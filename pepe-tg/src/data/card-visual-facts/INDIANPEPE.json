@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "INDIANPEPE",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 25,
+  "artist": "Pepe Inside",
+  "supply": 54,
+  "issuance": "March 2023",
+  "textOnCard": [
+    "card: INDIANPEPE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central character.",
+    "References to Native American culture through attire and accessories.",
+    "The chaotic background reflects crypto's volatile nature."
+  ],
+  "visualSummary": "The card features Pepe the Frog dressed in Native American attire, complete with a feathered headdress and traditional clothing. The background is a vibrant mix of red, blue, black, and white, creating an abstract, chaotic feel. The style is bold and painterly, with strong lines and a dynamic color palette that emphasizes Pepe's prominent features.",
+  "visualSummaryShort": "The card showcases Pepe the Frog in Native American attire, adorned with a feathered headdress. The background is a vibrant, abstract mix of colors, enhancing the bold and dynamic style.",
+  "visualKeywords": [
+    "pepe",
+    "native american",
+    "feathered headdress",
+    "abstract",
+    "vibrant colors",
+    "bold style",
+    "chaotic",
+    "painterly"
+  ],
+  "textKeywords": [
+    "indianpepe"
+  ],
+  "keywords": [
+    "pepe",
+    "native american",
+    "feathered headdress",
+    "abstract",
+    "vibrant colors",
+    "bold style",
+    "chaotic",
+    "painterly",
+    "indianpepe"
+  ],
+  "embeddingInput": "INDIANPEPE (Fake Rares) - Series 16 Card 25\nArtist: Pepe Inside\nSupply 54 Issued March 2023\nOn-card text: card: INDIANPEPE\nVisual summary: The card features Pepe the Frog dressed in Native American attire, complete with a feathered headdress and traditional clothing. The background is a vibrant mix of red, blue, black, and white, creating an abstract, chaotic feel. The style is bold and painterly, with strong lines and a dynamic color palette that emphasizes Pepe's prominent features.\nMemetic references: Pepe the Frog as a central character.; References to Native American culture through attire and accessories.; The chaotic background reflects crypto's volatile nature.",
+  "embeddingBlocks": [
+    {
+      "id": "INDIANPEPE#text",
+      "label": "On-card text",
+      "text": "card: INDIANPEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "INDIANPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central character.\nReferences to Native American culture through attire and accessories.\nThe chaotic background reflects crypto's volatile nature.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "INDIANPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog dressed in Native American attire, complete with a feathered headdress and traditional clothing. The background is a vibrant mix of red, blue, black, and white, creating an abstract, chaotic feel. The style is bold and painterly, with strong lines and a dynamic color palette that emphasizes Pepe's prominent features.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "INDIANPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\ncard: INDIANPEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog dressed in Native American attire, complete with a feathered headdress and traditional clothing. The background is a vibrant mix of red, blue, black, and white, creating an abstract, chaotic feel. The style is bold and painterly, with strong lines and a dynamic color palette that emphasizes Pepe's prominent features.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central character.\n- References to Native American culture through attire and accessories.\n- The chaotic background reflects crypto's volatile nature.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.696Z",
+  "sourceFactVersion": 1
+}

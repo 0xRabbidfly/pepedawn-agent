@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "FAKEDOC",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 5,
+  "artist": "Dr Suss",
+  "supply": 41,
+  "issuance": "April 2023",
+  "textOnCard": [
+    "F+KEDOC"
+  ],
+  "memeticReferences": [
+    "References to luxury brands, hinting at opulence in the crypto space.",
+    "The inclusion of \"PEPE\" on a pill bottle ties into the iconic Pepe meme, a staple in NFT culture.",
+    "Syringes and pills nod to the \"hopium\" and \"meds\" memes often used to describe the emotional rollercoaster of crypto trading."
+  ],
+  "visualSummary": "This card displays an array of items meticulously organized on a flat surface, including a stethoscope, syringes, pills, and a designer pouch with \"F+KEDOC\" emblazoned on it. The color palette is earthy and muted, with splashes of vibrant green and tropical prints. The composition feels like a luxury survival kit, blending medical and fashion elements with a playful twist.",
+  "visualSummaryShort": "The card features a collection of medical items arranged on a flat surface, including a stethoscope and syringes, alongside a designer pouch. The earthy color palette is accented by vibrant green and tropical prints, creating a unique blend of luxury and playfulness.",
+  "visualKeywords": [
+    "stethoscope",
+    "syringes",
+    "pills",
+    "designer pouch",
+    "earthy colors",
+    "vibrant green",
+    "tropical prints",
+    "luxury",
+    "playful",
+    "organized"
+  ],
+  "textKeywords": [
+    "kedoc"
+  ],
+  "keywords": [
+    "stethoscope",
+    "syringes",
+    "pills",
+    "designer pouch",
+    "earthy colors",
+    "vibrant green",
+    "tropical prints",
+    "luxury",
+    "playful",
+    "organized",
+    "kedoc"
+  ],
+  "embeddingInput": "FAKEDOC (Fake Rares) - Series 14 Card 5\nArtist: Dr Suss\nSupply 41 Issued April 2023\nOn-card text: F+KEDOC\nVisual summary: This card displays an array of items meticulously organized on a flat surface, including a stethoscope, syringes, pills, and a designer pouch with \"F+KEDOC\" emblazoned on it. The color palette is earthy and muted, with splashes of vibrant green and tropical prints. The composition feels like a luxury survival kit, blending medical and fashion elements with a playful twist.\nMemetic references: References to luxury brands, hinting at opulence in the crypto space.; The inclusion of \"PEPE\" on a pill bottle ties into the iconic Pepe meme, a staple in NFT culture.; Syringes and pills nod to the \"hopium\" and \"meds\" memes often used to describe the emotional rollercoaster of crypto trading.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEDOC#text",
+      "label": "On-card text",
+      "text": "F+KEDOC",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEDOC#memetic",
+      "label": "Memetic references",
+      "text": "References to luxury brands, hinting at opulence in the crypto space.\nThe inclusion of \"PEPE\" on a pill bottle ties into the iconic Pepe meme, a staple in NFT culture.\nSyringes and pills nod to the \"hopium\" and \"meds\" memes often used to describe the emotional rollercoaster of crypto trading.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEDOC#visual",
+      "label": "Visual summary",
+      "text": "This card displays an array of items meticulously organized on a flat surface, including a stethoscope, syringes, pills, and a designer pouch with \"F+KEDOC\" emblazoned on it. The color palette is earthy and muted, with splashes of vibrant green and tropical prints. The composition feels like a luxury survival kit, blending medical and fashion elements with a playful twist.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEDOC#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nF+KEDOC\n\n🎨 **VISUAL BREAKDOWN:**\nThis card displays an array of items meticulously organized on a flat surface, including a stethoscope, syringes, pills, and a designer pouch with \"F+KEDOC\" emblazoned on it. The color palette is earthy and muted, with splashes of vibrant green and tropical prints. The composition feels like a luxury survival kit, blending medical and fashion elements with a playful twist.\n\n🧬 **MEMETIC DNA:**\n- References to luxury brands, hinting at opulence in the crypto space.\n- The inclusion of \"PEPE\" on a pill bottle ties into the iconic Pepe meme, a staple in NFT culture.\n- Syringes and pills nod to the \"hopium\" and \"meds\" memes often used to describe the emotional rollercoaster of crypto trading.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.479Z",
+  "sourceFactVersion": 1
+}

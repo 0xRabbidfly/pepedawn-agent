@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "asset": "ILLUMINATIP",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 34,
+  "artist": "JB",
+  "supply": 69,
+  "issuance": "April 2022",
+  "textOnCard": [
+    "DARK ILLUMINATI PEPE",
+    "WHAT YOU THINK IS REAL MOST CERTAINLY IS FAKE"
+  ],
+  "memeticReferences": [
+    "References to Pepe the Frog, a staple in meme culture.",
+    "Illuminati symbolism with the three-eyed Pepe and pyramid-like elements.",
+    "Plays on conspiracy theory aesthetics with the headless suit and mysterious text.",
+    "Crypto culture nod with the “everything is fake” message, resonating with blockchain skeptics."
+  ],
+  "visualSummary": "The card features a Pepe the Frog character with three eyes, rendered in a golden, textured style, giving it an opulent and mysterious aura. The background is a golden, ornate design reminiscent of currency or secret society iconography, with a headless suit below Pepe’s head. The color palette is dominated by gold and black, adding to the card's dark and enigmatic vibe.",
+  "visualSummaryShort": "The card showcases a three-eyed Pepe the Frog in a golden, textured style against an ornate background. The dominant colors are gold and black, enhancing its mysterious and opulent feel.",
+  "visualKeywords": [
+    "pepe",
+    "three eyes",
+    "gold",
+    "black",
+    "ornate",
+    "suit",
+    "mysterious",
+    "textured",
+    "currency",
+    "iconography"
+  ],
+  "textKeywords": [
+    "dark",
+    "illuminati",
+    "what",
+    "you",
+    "think",
+    "real",
+    "certainly"
+  ],
+  "keywords": [
+    "pepe",
+    "three eyes",
+    "gold",
+    "black",
+    "ornate",
+    "suit",
+    "mysterious",
+    "textured",
+    "currency",
+    "iconography",
+    "dark",
+    "illuminati",
+    "what",
+    "you",
+    "think",
+    "real",
+    "certainly"
+  ],
+  "embeddingInput": "ILLUMINATIP (Fake Rares) - Series 7 Card 34\nArtist: JB\nSupply 69 Issued April 2022\nOn-card text: DARK ILLUMINATI PEPE | WHAT YOU THINK IS REAL MOST CERTAINLY IS FAKE\nVisual summary: The card features a Pepe the Frog character with three eyes, rendered in a golden, textured style, giving it an opulent and mysterious aura. The background is a golden, ornate design reminiscent of currency or secret society iconography, with a headless suit below Pepe’s head. The color palette is dominated by gold and black, adding to the card's dark and enigmatic vibe.\nMemetic references: References to Pepe the Frog, a staple in meme culture.; Illuminati symbolism with the three-eyed Pepe and pyramid-like elements.; Plays on conspiracy theory aesthetics with the headless suit and mysterious text.; Crypto culture nod with the “everything is fake” message, resonating with blockchain skeptics.",
+  "embeddingBlocks": [
+    {
+      "id": "ILLUMINATIP#text",
+      "label": "On-card text",
+      "text": "DARK ILLUMINATI PEPE | WHAT YOU THINK IS REAL MOST CERTAINLY IS FAKE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "ILLUMINATIP#memetic",
+      "label": "Memetic references",
+      "text": "References to Pepe the Frog, a staple in meme culture.\nIlluminati symbolism with the three-eyed Pepe and pyramid-like elements.\nPlays on conspiracy theory aesthetics with the headless suit and mysterious text.\nCrypto culture nod with the “everything is fake” message, resonating with blockchain skeptics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "ILLUMINATIP#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe the Frog character with three eyes, rendered in a golden, textured style, giving it an opulent and mysterious aura. The background is a golden, ornate design reminiscent of currency or secret society iconography, with a headless suit below Pepe’s head. The color palette is dominated by gold and black, adding to the card's dark and enigmatic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "ILLUMINATIP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nDARK ILLUMINATI PEPE  \nWHAT YOU THINK IS REAL MOST CERTAINLY IS FAKE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe the Frog character with three eyes, rendered in a golden, textured style, giving it an opulent and mysterious aura. The background is a golden, ornate design reminiscent of currency or secret society iconography, with a headless suit below Pepe’s head. The color palette is dominated by gold and black, adding to the card's dark and enigmatic vibe.\n\n🧬 **MEMETIC DNA:**\n- References to Pepe the Frog, a staple in meme culture.\n- Illuminati symbolism with the three-eyed Pepe and pyramid-like elements.\n- Plays on conspiracy theory aesthetics with the headless suit and mysterious text.\n- Crypto culture nod with the “everything is fake” message, resonating with blockchain skeptics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.693Z",
+  "sourceFactVersion": 1
+}

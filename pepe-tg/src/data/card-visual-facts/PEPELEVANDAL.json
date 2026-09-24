@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "PEPELEVANDAL",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 7,
+  "artist": "VIVALAVANDAL x ShowerShoes",
+  "supply": 101,
+  "issuance": "December 2021",
+  "textOnCard": [
+    "PEPE"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference, a staple of internet meme culture.",
+    "Graffiti art, symbolizing counterculture and urban expression.",
+    "Possible nod to San Francisco with the iconic bridge in the background."
+  ],
+  "visualSummary": "This card features a cartoon-style depiction of a hooded figure spray-painting \"PEPE\" in bold, graffiti-style letters on a rooftop wall. The color palette is vibrant, with the graffiti in bright yellow and red, contrasting against the muted tones of the cityscape in the background. The scene includes a view of a bridge and distant hills under a clear blue sky.",
+  "visualSummaryShort": "The card showcases a hooded figure spray-painting the word 'PEPE' in bright graffiti colors on a rooftop. The vibrant colors contrast with a muted cityscape and a clear blue sky in the background.",
+  "visualKeywords": [
+    "graffiti",
+    "hooded figure",
+    "yellow",
+    "red",
+    "cityscape",
+    "bridge",
+    "blue sky",
+    "vibrant colors",
+    "rooftop",
+    "hills"
+  ],
+  "textKeywords": [
+    "pepe"
+  ],
+  "keywords": [
+    "graffiti",
+    "hooded figure",
+    "yellow",
+    "red",
+    "cityscape",
+    "bridge",
+    "blue sky",
+    "vibrant colors",
+    "rooftop",
+    "hills",
+    "pepe"
+  ],
+  "embeddingInput": "PEPELEVANDAL (Fake Rares) - Series 4 Card 7\nArtist: VIVALAVANDAL x ShowerShoes\nSupply 101 Issued December 2021\nOn-card text: PEPE\nVisual summary: This card features a cartoon-style depiction of a hooded figure spray-painting \"PEPE\" in bold, graffiti-style letters on a rooftop wall. The color palette is vibrant, with the graffiti in bright yellow and red, contrasting against the muted tones of the cityscape in the background. The scene includes a view of a bridge and distant hills under a clear blue sky.\nMemetic references: Classic Pepe the Frog reference, a staple of internet meme culture.; Graffiti art, symbolizing counterculture and urban expression.; Possible nod to San Francisco with the iconic bridge in the background.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPELEVANDAL#text",
+      "label": "On-card text",
+      "text": "PEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPELEVANDAL#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference, a staple of internet meme culture.\nGraffiti art, symbolizing counterculture and urban expression.\nPossible nod to San Francisco with the iconic bridge in the background.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPELEVANDAL#visual",
+      "label": "Visual summary",
+      "text": "This card features a cartoon-style depiction of a hooded figure spray-painting \"PEPE\" in bold, graffiti-style letters on a rooftop wall. The color palette is vibrant, with the graffiti in bright yellow and red, contrasting against the muted tones of the cityscape in the background. The scene includes a view of a bridge and distant hills under a clear blue sky.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPELEVANDAL#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a cartoon-style depiction of a hooded figure spray-painting \"PEPE\" in bold, graffiti-style letters on a rooftop wall. The color palette is vibrant, with the graffiti in bright yellow and red, contrasting against the muted tones of the cityscape in the background. The scene includes a view of a bridge and distant hills under a clear blue sky.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference, a staple of internet meme culture.\n- Graffiti art, symbolizing counterculture and urban expression.\n- Possible nod to San Francisco with the iconic bridge in the background.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.917Z",
+  "sourceFactVersion": 1
+}

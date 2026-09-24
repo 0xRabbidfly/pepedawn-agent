@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "asset": "FAKEJEEZY",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 33,
+  "artist": "Roger Fliporian",
+  "supply": 40,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "YOUNG PEPEY",
+    "PARENTAL ADVISORY FAKE CONTENT",
+    "Let's Get It: Thug MotifakEtion"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure.",
+    "References to hip-hop and rap culture.",
+    "\"Parental Advisory\" parody, reminiscent of music album covers.",
+    "\"FAKE RARES\" plays on NFT and crypto culture."
+  ],
+  "visualSummary": "The card features Pepe the Frog styled as a rapper, sitting confidently among stacks of cardboard boxes labeled \"FAKE RARES.\" He sports a shiny silver hoodie and a dollar sign chain, giving off a streetwise vibe. The color palette includes earthy tones with pops of red and metallic silver, adding to the urban aesthetic.",
+  "visualSummaryShort": "The card depicts Pepe the Frog as a rapper, exuding confidence amidst cardboard boxes labeled 'FAKE RARES.' The color scheme features earthy tones with striking red and metallic silver accents, enhancing the urban feel.",
+  "visualKeywords": [
+    "pepe the frog",
+    "rapper",
+    "cardboard boxes",
+    "silver hoodie",
+    "dollar sign chain",
+    "earthy tones",
+    "red accents",
+    "urban aesthetic"
+  ],
+  "textKeywords": [
+    "young",
+    "pepey",
+    "parental",
+    "advisory",
+    "content",
+    "let",
+    "get",
+    "thug",
+    "motifaketion"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "rapper",
+    "cardboard boxes",
+    "silver hoodie",
+    "dollar sign chain",
+    "earthy tones",
+    "red accents",
+    "urban aesthetic",
+    "young",
+    "pepey",
+    "parental",
+    "advisory",
+    "content",
+    "let",
+    "get",
+    "thug",
+    "motifaketion"
+  ],
+  "embeddingInput": "FAKEJEEZY (Fake Rares) - Series 2 Card 33\nArtist: Roger Fliporian\nSupply 40 Issued October 2021\nOn-card text: YOUNG PEPEY | PARENTAL ADVISORY FAKE CONTENT | Let's Get It: Thug MotifakEtion\nVisual summary: The card features Pepe the Frog styled as a rapper, sitting confidently among stacks of cardboard boxes labeled \"FAKE RARES.\" He sports a shiny silver hoodie and a dollar sign chain, giving off a streetwise vibe. The color palette includes earthy tones with pops of red and metallic silver, adding to the urban aesthetic.\nMemetic references: Pepe the Frog as a central figure.; References to hip-hop and rap culture.; \"Parental Advisory\" parody, reminiscent of music album covers.; \"FAKE RARES\" plays on NFT and crypto culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEJEEZY#text",
+      "label": "On-card text",
+      "text": "YOUNG PEPEY | PARENTAL ADVISORY FAKE CONTENT | Let's Get It: Thug MotifakEtion",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEJEEZY#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure.\nReferences to hip-hop and rap culture.\n\"Parental Advisory\" parody, reminiscent of music album covers.\n\"FAKE RARES\" plays on NFT and crypto culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEJEEZY#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog styled as a rapper, sitting confidently among stacks of cardboard boxes labeled \"FAKE RARES.\" He sports a shiny silver hoodie and a dollar sign chain, giving off a streetwise vibe. The color palette includes earthy tones with pops of red and metallic silver, adding to the urban aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEJEEZY#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nYOUNG PEPEY  \nPARENTAL ADVISORY FAKE CONTENT  \nLet's Get It: Thug MotifakEtion  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog styled as a rapper, sitting confidently among stacks of cardboard boxes labeled \"FAKE RARES.\" He sports a shiny silver hoodie and a dollar sign chain, giving off a streetwise vibe. The color palette includes earthy tones with pops of red and metallic silver, adding to the urban aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure.\n- References to hip-hop and rap culture.\n- \"Parental Advisory\" parody, reminiscent of music album covers.\n- \"FAKE RARES\" plays on NFT and crypto culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.518Z",
+  "sourceFactVersion": 1
+}

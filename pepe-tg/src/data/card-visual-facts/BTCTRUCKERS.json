@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "asset": "BTCTRUCKERS",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 15,
+  "artist": "GMONEY",
+  "supply": 57,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "BITCOIN FOR TRUCKERS. STRENGTH THROUGH UNITY. We support your FREEDOM FREN! Here is some Bitcoin. WOW thank you FREN! FREEDOM RULES! #FREEDOMCONVOY2022"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog characters symbolizing meme culture.",
+    "Bitcoin logos representing crypto culture.",
+    "Canadian flag indicating a cultural or political statement.",
+    "References to the Freedom Convoy 2022 event."
+  ],
+  "visualSummary": "The card features a snowy cityscape with large trucks adorned with Canadian flags. In front, several Pepe the Frog characters are wearing Bitcoin-themed shirts. The lower section includes a world map with Bitcoin symbols and two Pepes exchanging dialogue. The colors are bold with reds, blues, and greens dominating the palette.",
+  "visualSummaryShort": "The card showcases a snowy cityscape filled with large trucks and Pepe the Frog characters. Bold colors of red, blue, and green dominate the scene, highlighting themes of unity and freedom.",
+  "visualKeywords": [
+    "snowy cityscape",
+    "trucks",
+    "canadian flags",
+    "pepe the frog",
+    "bitcoin shirts",
+    "world map",
+    "dialogue",
+    "bold colors",
+    "red",
+    "blue"
+  ],
+  "textKeywords": [
+    "bitcoin",
+    "truckers",
+    "strength",
+    "unity",
+    "support",
+    "freedom",
+    "fren",
+    "wow",
+    "thank",
+    "you",
+    "rules",
+    "freedomconvoy2022"
+  ],
+  "keywords": [
+    "snowy cityscape",
+    "trucks",
+    "canadian flags",
+    "pepe the frog",
+    "bitcoin shirts",
+    "world map",
+    "dialogue",
+    "bold colors",
+    "red",
+    "blue",
+    "bitcoin",
+    "truckers",
+    "strength",
+    "unity",
+    "support",
+    "freedom",
+    "fren",
+    "wow",
+    "thank",
+    "you",
+    "rules",
+    "freedomconvoy2022"
+  ],
+  "embeddingInput": "BTCTRUCKERS (Fake Rares) - Series 5 Card 15\nArtist: GMONEY\nSupply 57 Issued February 2022\nOn-card text: BITCOIN FOR TRUCKERS. STRENGTH THROUGH UNITY. We support your FREEDOM FREN! Here is some Bitcoin. WOW thank you FREN! FREEDOM RULES! #FREEDOMCONVOY2022\nVisual summary: The card features a snowy cityscape with large trucks adorned with Canadian flags. In front, several Pepe the Frog characters are wearing Bitcoin-themed shirts. The lower section includes a world map with Bitcoin symbols and two Pepes exchanging dialogue. The colors are bold with reds, blues, and greens dominating the palette.\nMemetic references: Pepe the Frog characters symbolizing meme culture.; Bitcoin logos representing crypto culture.; Canadian flag indicating a cultural or political statement.; References to the Freedom Convoy 2022 event.",
+  "embeddingBlocks": [
+    {
+      "id": "BTCTRUCKERS#text",
+      "label": "On-card text",
+      "text": "BITCOIN FOR TRUCKERS. STRENGTH THROUGH UNITY. We support your FREEDOM FREN! Here is some Bitcoin. WOW thank you FREN! FREEDOM RULES! #FREEDOMCONVOY2022",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "BTCTRUCKERS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog characters symbolizing meme culture.\nBitcoin logos representing crypto culture.\nCanadian flag indicating a cultural or political statement.\nReferences to the Freedom Convoy 2022 event.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BTCTRUCKERS#visual",
+      "label": "Visual summary",
+      "text": "The card features a snowy cityscape with large trucks adorned with Canadian flags. In front, several Pepe the Frog characters are wearing Bitcoin-themed shirts. The lower section includes a world map with Bitcoin symbols and two Pepes exchanging dialogue. The colors are bold with reds, blues, and greens dominating the palette.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BTCTRUCKERS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nBITCOIN FOR TRUCKERS. STRENGTH THROUGH UNITY. We support your FREEDOM FREN! Here is some Bitcoin. WOW thank you FREN! FREEDOM RULES! #FREEDOMCONVOY2022\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a snowy cityscape with large trucks adorned with Canadian flags. In front, several Pepe the Frog characters are wearing Bitcoin-themed shirts. The lower section includes a world map with Bitcoin symbols and two Pepes exchanging dialogue. The colors are bold with reds, blues, and greens dominating the palette.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog characters symbolizing meme culture.\n- Bitcoin logos representing crypto culture.\n- Canadian flag indicating a cultural or political statement.\n- References to the Freedom Convoy 2022 event.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.335Z",
+  "sourceFactVersion": 1
+}

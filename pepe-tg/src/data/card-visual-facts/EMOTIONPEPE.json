@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "asset": "EMOTIONPEPE",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 40,
+  "artist": "TKY",
+  "supply": 54,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "emotion pepe, angry, glad, anxious, sad, pepe, surprised"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery.",
+    "Meme references to the diverse range of emotions often depicted in social media culture.",
+    "Playful take on mood charts and emotional expression."
+  ],
+  "visualSummary": "The card features a grid of six different Pepe faces, each expressing a distinct emotion. The background is a muted brown, giving it an aged, vintage feel, while the Pepes are drawn in simple lines with a pastel color palette. Each face has unique features like blushing cheeks or tear drops, emphasizing the emotion depicted.",
+  "visualSummaryShort": "The card showcases a grid of six Pepe faces, each illustrating a different emotion. The muted brown background and pastel colors create a vintage aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "emotions",
+    "pastel",
+    "vintage",
+    "brown",
+    "faces",
+    "blushing",
+    "tears",
+    "grid",
+    "simple lines"
+  ],
+  "textKeywords": [
+    "emotion",
+    "angry",
+    "glad",
+    "anxious",
+    "sad",
+    "surprised"
+  ],
+  "keywords": [
+    "pepe",
+    "emotions",
+    "pastel",
+    "vintage",
+    "brown",
+    "faces",
+    "blushing",
+    "tears",
+    "grid",
+    "simple lines",
+    "emotion",
+    "angry",
+    "glad",
+    "anxious",
+    "sad",
+    "surprised"
+  ],
+  "embeddingInput": "EMOTIONPEPE (Fake Rares) - Series 10 Card 40\nArtist: TKY\nSupply 54 Issued March 2022\nOn-card text: emotion pepe, angry, glad, anxious, sad, pepe, surprised\nVisual summary: The card features a grid of six different Pepe faces, each expressing a distinct emotion. The background is a muted brown, giving it an aged, vintage feel, while the Pepes are drawn in simple lines with a pastel color palette. Each face has unique features like blushing cheeks or tear drops, emphasizing the emotion depicted.\nMemetic references: Classic Pepe the Frog imagery.; Meme references to the diverse range of emotions often depicted in social media culture.; Playful take on mood charts and emotional expression.",
+  "embeddingBlocks": [
+    {
+      "id": "EMOTIONPEPE#text",
+      "label": "On-card text",
+      "text": "emotion pepe, angry, glad, anxious, sad, pepe, surprised",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "EMOTIONPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery.\nMeme references to the diverse range of emotions often depicted in social media culture.\nPlayful take on mood charts and emotional expression.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "EMOTIONPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a grid of six different Pepe faces, each expressing a distinct emotion. The background is a muted brown, giving it an aged, vintage feel, while the Pepes are drawn in simple lines with a pastel color palette. Each face has unique features like blushing cheeks or tear drops, emphasizing the emotion depicted.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "EMOTIONPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nemotion pepe, angry, glad, anxious, sad, pepe, surprised\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a grid of six different Pepe faces, each expressing a distinct emotion. The background is a muted brown, giving it an aged, vintage feel, while the Pepes are drawn in simple lines with a pastel color palette. Each face has unique features like blushing cheeks or tear drops, emphasizing the emotion depicted.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery.\n- Meme references to the diverse range of emotions often depicted in social media culture.\n- Playful take on mood charts and emotional expression.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.426Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "asset": "BERTRANDRAP",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 50,
+  "artist": "Theo Goodman x MC Fanny",
+  "supply": 100,
+  "issuance": "December 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog inspiration with a playful twist.",
+    "Crypto culture nod with the smartphone necklace, hinting at constant connection to the digital world.",
+    "The flashy jacket and chain give off a luxurious, degen vibe."
+  ],
+  "visualSummary": "The card features a green frog-like character with an exaggerated, cartoonish expression, complete with wide eyes and a protruding tongue. This character is adorned in a vibrant red, patterned jacket and is wearing a gold chain with a smartphone pendant. The background is a dreamy, pastel sky with soft pink and blue clouds, adding a whimsical vibe.",
+  "visualSummaryShort": "The card showcases a green frog-like character with a cartoonish expression, dressed in a vibrant red jacket and gold chain. The whimsical background features a pastel sky with soft pink and blue clouds.",
+  "visualKeywords": [
+    "frog",
+    "cartoonish",
+    "red jacket",
+    "gold chain",
+    "smartphone",
+    "pastel sky",
+    "pink clouds",
+    "blue clouds",
+    "whimsical"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "frog",
+    "cartoonish",
+    "red jacket",
+    "gold chain",
+    "smartphone",
+    "pastel sky",
+    "pink clouds",
+    "blue clouds",
+    "whimsical"
+  ],
+  "embeddingInput": "BERTRANDRAP (Fake Rares) - Series 14 Card 50\nArtist: Theo Goodman x MC Fanny\nSupply 100 Issued December 2022\nOn-card text: none detected\nVisual summary: The card features a green frog-like character with an exaggerated, cartoonish expression, complete with wide eyes and a protruding tongue. This character is adorned in a vibrant red, patterned jacket and is wearing a gold chain with a smartphone pendant. The background is a dreamy, pastel sky with soft pink and blue clouds, adding a whimsical vibe.\nMemetic references: Pepe the Frog inspiration with a playful twist.; Crypto culture nod with the smartphone necklace, hinting at constant connection to the digital world.; The flashy jacket and chain give off a luxurious, degen vibe.",
+  "embeddingBlocks": [
+    {
+      "id": "BERTRANDRAP#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog inspiration with a playful twist.\nCrypto culture nod with the smartphone necklace, hinting at constant connection to the digital world.\nThe flashy jacket and chain give off a luxurious, degen vibe.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BERTRANDRAP#visual",
+      "label": "Visual summary",
+      "text": "The card features a green frog-like character with an exaggerated, cartoonish expression, complete with wide eyes and a protruding tongue. This character is adorned in a vibrant red, patterned jacket and is wearing a gold chain with a smartphone pendant. The background is a dreamy, pastel sky with soft pink and blue clouds, adding a whimsical vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BERTRANDRAP#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a green frog-like character with an exaggerated, cartoonish expression, complete with wide eyes and a protruding tongue. This character is adorned in a vibrant red, patterned jacket and is wearing a gold chain with a smartphone pendant. The background is a dreamy, pastel sky with soft pink and blue clouds, adding a whimsical vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog inspiration with a playful twist.\n- Crypto culture nod with the smartphone necklace, hinting at constant connection to the digital world.\n- The flashy jacket and chain give off a luxurious, degen vibe.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.304Z",
+  "sourceFactVersion": 1
+}

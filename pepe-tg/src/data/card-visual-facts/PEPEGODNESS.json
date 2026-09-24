@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "PEPEGODNESS",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 48,
+  "artist": "FourLeafClover",
+  "supply": 21,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "PEPE GODNESS"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a deity, a classic meme character elevated to godhood.",
+    "Caveman attire nods to meme culture's playful anachronism.",
+    "Torches and toga suggest a mix of ancient and meme symbolism."
+  ],
+  "visualSummary": "The card features a cartoonish scene with Pepe the Frog sitting regally on a stone throne, wearing a white toga. He's flanked by two torches, adding a ceremonial vibe, while a bearded caveman in animal skin kneels in reverence. The background is lush with palm trees and a distant volcano under a bright blue sky.",
+  "visualSummaryShort": "The card depicts Pepe the Frog seated on a stone throne in a vibrant, cartoonish setting. The scene is enhanced by palm trees, a volcano, and a kneeling caveman, creating a ceremonial atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "throne",
+    "toga",
+    "torches",
+    "caveman",
+    "palm trees",
+    "volcano",
+    "blue sky",
+    "ceremonial",
+    "cartoonish"
+  ],
+  "textKeywords": [
+    "godness"
+  ],
+  "keywords": [
+    "pepe",
+    "throne",
+    "toga",
+    "torches",
+    "caveman",
+    "palm trees",
+    "volcano",
+    "blue sky",
+    "ceremonial",
+    "cartoonish",
+    "godness"
+  ],
+  "embeddingInput": "PEPEGODNESS (Fake Rares) - Series 7 Card 48\nArtist: FourLeafClover\nSupply 21 Issued November 2021\nOn-card text: PEPE GODNESS\nVisual summary: The card features a cartoonish scene with Pepe the Frog sitting regally on a stone throne, wearing a white toga. He's flanked by two torches, adding a ceremonial vibe, while a bearded caveman in animal skin kneels in reverence. The background is lush with palm trees and a distant volcano under a bright blue sky.\nMemetic references: Pepe the Frog as a deity, a classic meme character elevated to godhood.; Caveman attire nods to meme culture's playful anachronism.; Torches and toga suggest a mix of ancient and meme symbolism.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEGODNESS#text",
+      "label": "On-card text",
+      "text": "PEPE GODNESS",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEGODNESS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a deity, a classic meme character elevated to godhood.\nCaveman attire nods to meme culture's playful anachronism.\nTorches and toga suggest a mix of ancient and meme symbolism.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEGODNESS#visual",
+      "label": "Visual summary",
+      "text": "The card features a cartoonish scene with Pepe the Frog sitting regally on a stone throne, wearing a white toga. He's flanked by two torches, adding a ceremonial vibe, while a bearded caveman in animal skin kneels in reverence. The background is lush with palm trees and a distant volcano under a bright blue sky.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEGODNESS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE GODNESS\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a cartoonish scene with Pepe the Frog sitting regally on a stone throne, wearing a white toga. He's flanked by two torches, adding a ceremonial vibe, while a bearded caveman in animal skin kneels in reverence. The background is lush with palm trees and a distant volcano under a bright blue sky.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a deity, a classic meme character elevated to godhood.\n- Caveman attire nods to meme culture's playful anachronism.\n- Torches and toga suggest a mix of ancient and meme symbolism.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.887Z",
+  "sourceFactVersion": 1
+}

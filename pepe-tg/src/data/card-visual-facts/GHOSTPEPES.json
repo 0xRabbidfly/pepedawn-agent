@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "asset": "GHOSTPEPES",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 30,
+  "artist": "OSF",
+  "supply": 69,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "ghost pep HOT SAUCE",
+    "\"guaranteed one burn\""
+  ],
+  "memeticReferences": [
+    "Pepe the Frog appears prominently on the label, linking it to classic meme culture.",
+    "The term \"ghost pep\" is a humorous twist on \"ghost pepper,\" known for its extreme heat.",
+    "The phrase “guaranteed one burn” plays on spicy food memes and crypto’s love for risk-taking."
+  ],
+  "visualSummary": "The card features a vibrant bottle of hot sauce with a whimsical, cartoonish label. The background is a fiery blend of reds and oranges, enhancing the spicy theme. The artistic style is playful and bold, with energetic brushstrokes and a focus on the central hot sauce bottle.",
+  "visualSummaryShort": "The card showcases a colorful hot sauce bottle with a fun, cartoonish design. The fiery red and orange background emphasizes the spicy theme.",
+  "visualKeywords": [
+    "hot sauce",
+    "cartoonish",
+    "red",
+    "orange",
+    "playful",
+    "bold",
+    "fiery",
+    "bottle",
+    "whimsical",
+    "energetic"
+  ],
+  "textKeywords": [
+    "ghost",
+    "pep",
+    "hot",
+    "sauce",
+    "guaranteed",
+    "one",
+    "burn"
+  ],
+  "keywords": [
+    "hot sauce",
+    "cartoonish",
+    "red",
+    "orange",
+    "playful",
+    "bold",
+    "fiery",
+    "bottle",
+    "whimsical",
+    "energetic",
+    "ghost",
+    "pep",
+    "hot",
+    "sauce",
+    "guaranteed",
+    "one",
+    "burn"
+  ],
+  "embeddingInput": "GHOSTPEPES (Fake Rares) - Series 10 Card 30\nArtist: OSF\nSupply 69 Issued September 2022\nOn-card text: ghost pep HOT SAUCE | \"guaranteed one burn\"\nVisual summary: The card features a vibrant bottle of hot sauce with a whimsical, cartoonish label. The background is a fiery blend of reds and oranges, enhancing the spicy theme. The artistic style is playful and bold, with energetic brushstrokes and a focus on the central hot sauce bottle.\nMemetic references: Pepe the Frog appears prominently on the label, linking it to classic meme culture.; The term \"ghost pep\" is a humorous twist on \"ghost pepper,\" known for its extreme heat.; The phrase “guaranteed one burn” plays on spicy food memes and crypto’s love for risk-taking.",
+  "embeddingBlocks": [
+    {
+      "id": "GHOSTPEPES#text",
+      "label": "On-card text",
+      "text": "ghost pep HOT SAUCE | \"guaranteed one burn\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "GHOSTPEPES#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog appears prominently on the label, linking it to classic meme culture.\nThe term \"ghost pep\" is a humorous twist on \"ghost pepper,\" known for its extreme heat.\nThe phrase “guaranteed one burn” plays on spicy food memes and crypto’s love for risk-taking.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "GHOSTPEPES#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant bottle of hot sauce with a whimsical, cartoonish label. The background is a fiery blend of reds and oranges, enhancing the spicy theme. The artistic style is playful and bold, with energetic brushstrokes and a focus on the central hot sauce bottle.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "GHOSTPEPES#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nghost pep HOT SAUCE  \n\"guaranteed one burn\"\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant bottle of hot sauce with a whimsical, cartoonish label. The background is a fiery blend of reds and oranges, enhancing the spicy theme. The artistic style is playful and bold, with energetic brushstrokes and a focus on the central hot sauce bottle.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog appears prominently on the label, linking it to classic meme culture.\n- The term \"ghost pep\" is a humorous twist on \"ghost pepper,\" known for its extreme heat.\n- The phrase “guaranteed one burn” plays on spicy food memes and crypto’s love for risk-taking.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.655Z",
+  "sourceFactVersion": 1
+}

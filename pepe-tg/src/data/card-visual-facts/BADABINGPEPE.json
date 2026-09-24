@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "asset": "BADABINGPEPE",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 28,
+  "artist": "Aera One",
+  "supply": 51,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "PEPE SOPRANO",
+    "BADA BING"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog with a twist, styled as a famous TV mob boss.",
+    "Reference to \"The Sopranos\" with \"Bada Bing,\" a nod to the show's iconic strip club.",
+    "Classic Pepe expression, capturing the meme's inherent absurdity."
+  ],
+  "visualSummary": "The card features a hand-drawn style with bold outlines and a vibrant color palette dominated by greens and blues. The central figure is a Pepe-faced character resembling a well-known mob boss, set against a backdrop of a club sign. The composition is simple yet humorous, with a focus on the character's expressive face.",
+  "visualSummaryShort": "The card showcases a hand-drawn Pepe-faced character styled as a mob boss, highlighted by bold outlines and a vibrant green and blue color palette. The humorous composition features a club sign backdrop, emphasizing the character's expressive face.",
+  "visualKeywords": [
+    "pepe",
+    "mob boss",
+    "club sign",
+    "hand-drawn",
+    "bold outlines",
+    "green",
+    "blue",
+    "humorous",
+    "expressive face"
+  ],
+  "textKeywords": [
+    "soprano",
+    "bada",
+    "bing"
+  ],
+  "keywords": [
+    "pepe",
+    "mob boss",
+    "club sign",
+    "hand-drawn",
+    "bold outlines",
+    "green",
+    "blue",
+    "humorous",
+    "expressive face",
+    "soprano",
+    "bada",
+    "bing"
+  ],
+  "embeddingInput": "BADABINGPEPE (Fake Rares) - Series 3 Card 28\nArtist: Aera One\nSupply 51 Issued November 2021\nOn-card text: PEPE SOPRANO | BADA BING\nVisual summary: The card features a hand-drawn style with bold outlines and a vibrant color palette dominated by greens and blues. The central figure is a Pepe-faced character resembling a well-known mob boss, set against a backdrop of a club sign. The composition is simple yet humorous, with a focus on the character's expressive face.\nMemetic references: Pepe the Frog with a twist, styled as a famous TV mob boss.; Reference to \"The Sopranos\" with \"Bada Bing,\" a nod to the show's iconic strip club.; Classic Pepe expression, capturing the meme's inherent absurdity.",
+  "embeddingBlocks": [
+    {
+      "id": "BADABINGPEPE#text",
+      "label": "On-card text",
+      "text": "PEPE SOPRANO | BADA BING",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "BADABINGPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog with a twist, styled as a famous TV mob boss.\nReference to \"The Sopranos\" with \"Bada Bing,\" a nod to the show's iconic strip club.\nClassic Pepe expression, capturing the meme's inherent absurdity.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BADABINGPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a hand-drawn style with bold outlines and a vibrant color palette dominated by greens and blues. The central figure is a Pepe-faced character resembling a well-known mob boss, set against a backdrop of a club sign. The composition is simple yet humorous, with a focus on the character's expressive face.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BADABINGPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE SOPRANO  \nBADA BING\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a hand-drawn style with bold outlines and a vibrant color palette dominated by greens and blues. The central figure is a Pepe-faced character resembling a well-known mob boss, set against a backdrop of a club sign. The composition is simple yet humorous, with a focus on the character's expressive face.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog with a twist, styled as a famous TV mob boss.\n- Reference to \"The Sopranos\" with \"Bada Bing,\" a nod to the show's iconic strip club.\n- Classic Pepe expression, capturing the meme's inherent absurdity.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.286Z",
+  "sourceFactVersion": 1
+}

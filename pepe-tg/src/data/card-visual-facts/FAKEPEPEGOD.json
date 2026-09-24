@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "FAKEPEPEGOD",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 41,
+  "artist": "DeeKay",
+  "supply": 100,
+  "issuance": "July 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "References the iconic Pepe the Frog meme.",
+    "Combines elements of playfulness and divinity, hinting at a \"Pepe as a deity\" theme.",
+    "Possible nod to the playful chaos of crypto culture."
+  ],
+  "visualSummary": "The card features a large, godlike Pepe the Frog figure with a serene expression, standing behind a playground slide. The color palette is vibrant with blues, greens, and oranges, giving it a playful and surreal vibe. The style is cartoonish and whimsical, with bold outlines and simple shapes.",
+  "visualSummaryShort": "The card showcases a large, serene Pepe the Frog figure in a vibrant playground setting. The cartoonish style and bright colors create a playful and whimsical atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "playground",
+    "slide",
+    "vibrant colors",
+    "cartoonish",
+    "whimsical",
+    "bold outlines",
+    "surreal"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "playground",
+    "slide",
+    "vibrant colors",
+    "cartoonish",
+    "whimsical",
+    "bold outlines",
+    "surreal"
+  ],
+  "embeddingInput": "FAKEPEPEGOD (Fake Rares) - Series 8 Card 41\nArtist: DeeKay\nSupply 100 Issued July 2022\nOn-card text: none detected\nVisual summary: The card features a large, godlike Pepe the Frog figure with a serene expression, standing behind a playground slide. The color palette is vibrant with blues, greens, and oranges, giving it a playful and surreal vibe. The style is cartoonish and whimsical, with bold outlines and simple shapes.\nMemetic references: References the iconic Pepe the Frog meme.; Combines elements of playfulness and divinity, hinting at a \"Pepe as a deity\" theme.; Possible nod to the playful chaos of crypto culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEPEPEGOD#memetic",
+      "label": "Memetic references",
+      "text": "References the iconic Pepe the Frog meme.\nCombines elements of playfulness and divinity, hinting at a \"Pepe as a deity\" theme.\nPossible nod to the playful chaos of crypto culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEPEPEGOD#visual",
+      "label": "Visual summary",
+      "text": "The card features a large, godlike Pepe the Frog figure with a serene expression, standing behind a playground slide. The color palette is vibrant with blues, greens, and oranges, giving it a playful and surreal vibe. The style is cartoonish and whimsical, with bold outlines and simple shapes.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEPEPEGOD#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a large, godlike Pepe the Frog figure with a serene expression, standing behind a playground slide. The color palette is vibrant with blues, greens, and oranges, giving it a playful and surreal vibe. The style is cartoonish and whimsical, with bold outlines and simple shapes.\n\n🧬 **MEMETIC DNA:**\n- References the iconic Pepe the Frog meme.\n- Combines elements of playfulness and divinity, hinting at a \"Pepe as a deity\" theme.\n- Possible nod to the playful chaos of crypto culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.553Z",
+  "sourceFactVersion": 1
+}

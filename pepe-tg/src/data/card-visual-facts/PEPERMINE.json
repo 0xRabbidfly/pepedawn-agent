@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "PEPERMINE",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 2,
+  "artist": "Pepenardo",
+  "supply": 150,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "PEPENARDO"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a Renaissance figure.",
+    "References to historical art and the famous \"Lady with an Ermine\" painting.",
+    "Crypto culture with gold jewelry, possibly hinting at wealth or status."
+  ],
+  "visualSummary": "This card features a classic Renaissance-style portrait with a Pepe twist. The main figure is a frog character, reminiscent of Pepe, dressed in elaborate historical clothing and adorned with gold jewelry. The background includes a serene landscape with trees and a river, all enclosed in a detailed golden frame.",
+  "visualSummaryShort": "The card showcases a Renaissance-style portrait of a frog character in historical attire, embellished with gold jewelry. A serene landscape with trees and a river serves as the backdrop, all framed in intricate gold.",
+  "visualKeywords": [
+    "frog",
+    "renaissance",
+    "historical clothing",
+    "gold jewelry",
+    "landscape",
+    "trees",
+    "river",
+    "gold frame"
+  ],
+  "textKeywords": [
+    "pepenardo"
+  ],
+  "keywords": [
+    "frog",
+    "renaissance",
+    "historical clothing",
+    "gold jewelry",
+    "landscape",
+    "trees",
+    "river",
+    "gold frame",
+    "pepenardo"
+  ],
+  "embeddingInput": "PEPERMINE (Fake Rares) - Series 3 Card 2\nArtist: Pepenardo\nSupply 150 Issued October 2021\nOn-card text: PEPENARDO\nVisual summary: This card features a classic Renaissance-style portrait with a Pepe twist. The main figure is a frog character, reminiscent of Pepe, dressed in elaborate historical clothing and adorned with gold jewelry. The background includes a serene landscape with trees and a river, all enclosed in a detailed golden frame.\nMemetic references: Pepe the Frog as a Renaissance figure.; References to historical art and the famous \"Lady with an Ermine\" painting.; Crypto culture with gold jewelry, possibly hinting at wealth or status.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPERMINE#text",
+      "label": "On-card text",
+      "text": "PEPENARDO",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPERMINE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a Renaissance figure.\nReferences to historical art and the famous \"Lady with an Ermine\" painting.\nCrypto culture with gold jewelry, possibly hinting at wealth or status.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPERMINE#visual",
+      "label": "Visual summary",
+      "text": "This card features a classic Renaissance-style portrait with a Pepe twist. The main figure is a frog character, reminiscent of Pepe, dressed in elaborate historical clothing and adorned with gold jewelry. The background includes a serene landscape with trees and a river, all enclosed in a detailed golden frame.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPERMINE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPENARDO\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a classic Renaissance-style portrait with a Pepe twist. The main figure is a frog character, reminiscent of Pepe, dressed in elaborate historical clothing and adorned with gold jewelry. The background includes a serene landscape with trees and a river, all enclosed in a detailed golden frame.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a Renaissance figure.\n- References to historical art and the famous \"Lady with an Ermine\" painting.\n- Crypto culture with gold jewelry, possibly hinting at wealth or status.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.960Z",
+  "sourceFactVersion": 1
+}

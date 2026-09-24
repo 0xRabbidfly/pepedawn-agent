@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "asset": "ELGOAT",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 13,
+  "artist": "Pepe Capitol",
+  "supply": 77,
+  "issuance": "January 2023",
+  "textOnCard": [
+    "P 10",
+    "EL GOAT"
+  ],
+  "memeticReferences": [
+    "Pepe-inspired green face, a nod to crypto meme culture.",
+    "Bitcoin medallion symbolizes crypto wealth and status.",
+    "\"EL GOAT\" hints at the \"Greatest of All Time\" meme, often used in sports and crypto circles."
+  ],
+  "visualSummary": "The card features a portrait with a green-tinted face, wearing a blue and white striped jersey reminiscent of a soccer kit. A prominent gold Bitcoin medallion hangs around the neck, adding a bling factor. The background is a stark black, emphasizing the central figure, with bold white text framing the image.",
+  "visualSummaryShort": "The card showcases a portrait of a figure with a green-tinted face, dressed in a blue and white striped jersey. A gold Bitcoin medallion adds a flashy element against a stark black background.",
+  "visualKeywords": [
+    "portrait",
+    "green face",
+    "blue jersey",
+    "gold medallion",
+    "black background",
+    "white text"
+  ],
+  "textKeywords": [
+    "goat"
+  ],
+  "keywords": [
+    "portrait",
+    "green face",
+    "blue jersey",
+    "gold medallion",
+    "black background",
+    "white text",
+    "goat"
+  ],
+  "embeddingInput": "ELGOAT (Fake Rares) - Series 16 Card 13\nArtist: Pepe Capitol\nSupply 77 Issued January 2023\nOn-card text: P 10 | EL GOAT\nVisual summary: The card features a portrait with a green-tinted face, wearing a blue and white striped jersey reminiscent of a soccer kit. A prominent gold Bitcoin medallion hangs around the neck, adding a bling factor. The background is a stark black, emphasizing the central figure, with bold white text framing the image.\nMemetic references: Pepe-inspired green face, a nod to crypto meme culture.; Bitcoin medallion symbolizes crypto wealth and status.; \"EL GOAT\" hints at the \"Greatest of All Time\" meme, often used in sports and crypto circles.",
+  "embeddingBlocks": [
+    {
+      "id": "ELGOAT#text",
+      "label": "On-card text",
+      "text": "P 10 | EL GOAT",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "ELGOAT#memetic",
+      "label": "Memetic references",
+      "text": "Pepe-inspired green face, a nod to crypto meme culture.\nBitcoin medallion symbolizes crypto wealth and status.\n\"EL GOAT\" hints at the \"Greatest of All Time\" meme, often used in sports and crypto circles.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "ELGOAT#visual",
+      "label": "Visual summary",
+      "text": "The card features a portrait with a green-tinted face, wearing a blue and white striped jersey reminiscent of a soccer kit. A prominent gold Bitcoin medallion hangs around the neck, adding a bling factor. The background is a stark black, emphasizing the central figure, with bold white text framing the image.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "ELGOAT#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nP 10  \nEL GOAT\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a portrait with a green-tinted face, wearing a blue and white striped jersey reminiscent of a soccer kit. A prominent gold Bitcoin medallion hangs around the neck, adding a bling factor. The background is a stark black, emphasizing the central figure, with bold white text framing the image.\n\n🧬 **MEMETIC DNA:**\n- Pepe-inspired green face, a nod to crypto meme culture.\n- Bitcoin medallion symbolizes crypto wealth and status.\n- \"EL GOAT\" hints at the \"Greatest of All Time\" meme, often used in sports and crypto circles.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.421Z",
+  "sourceFactVersion": 1
+}

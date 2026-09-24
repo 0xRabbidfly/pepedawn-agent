@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "PEPIO",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 2,
+  "artist": "Viva La Vandal x ShowerShoes",
+  "supply": 33,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "VIVA LA RARE"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog references.",
+    "Noir detective or gangster theme.",
+    "\"Viva La Rare\" taps into the NFT and crypto culture celebrating rarity and uniqueness.",
+    "Street art and graffiti elements."
+  ],
+  "visualSummary": "The card features a group of Pepe the Frog characters in an urban alleyway. The main Pepe, wearing a fedora and trench coat, is smoking while engaging with three others dressed in hats and jackets, creating a noir, clandestine vibe. The color palette is earthy and muted, with emphasis on shadows and highlights to enhance the gritty, underground atmosphere.",
+  "visualSummaryShort": "The card depicts a group of Pepe the Frog characters in a shadowy urban alleyway, creating a noir atmosphere. The main character, dressed in a fedora and trench coat, adds to the clandestine vibe.",
+  "visualKeywords": [
+    "urban",
+    "noir",
+    "shadows",
+    "fedora",
+    "trench coat",
+    "earthy colors",
+    "clandestine",
+    "characters",
+    "alleyway",
+    "smoking"
+  ],
+  "textKeywords": [
+    "viva"
+  ],
+  "keywords": [
+    "urban",
+    "noir",
+    "shadows",
+    "fedora",
+    "trench coat",
+    "earthy colors",
+    "clandestine",
+    "characters",
+    "alleyway",
+    "smoking",
+    "viva"
+  ],
+  "embeddingInput": "PEPIO (Fake Rares) - Series 7 Card 2\nArtist: Viva La Vandal x ShowerShoes\nSupply 33 Issued March 2022\nOn-card text: VIVA LA RARE\nVisual summary: The card features a group of Pepe the Frog characters in an urban alleyway. The main Pepe, wearing a fedora and trench coat, is smoking while engaging with three others dressed in hats and jackets, creating a noir, clandestine vibe. The color palette is earthy and muted, with emphasis on shadows and highlights to enhance the gritty, underground atmosphere.\nMemetic references: Classic Pepe the Frog references.; Noir detective or gangster theme.; \"Viva La Rare\" taps into the NFT and crypto culture celebrating rarity and uniqueness.; Street art and graffiti elements.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPIO#text",
+      "label": "On-card text",
+      "text": "VIVA LA RARE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPIO#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog references.\nNoir detective or gangster theme.\n\"Viva La Rare\" taps into the NFT and crypto culture celebrating rarity and uniqueness.\nStreet art and graffiti elements.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPIO#visual",
+      "label": "Visual summary",
+      "text": "The card features a group of Pepe the Frog characters in an urban alleyway. The main Pepe, wearing a fedora and trench coat, is smoking while engaging with three others dressed in hats and jackets, creating a noir, clandestine vibe. The color palette is earthy and muted, with emphasis on shadows and highlights to enhance the gritty, underground atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPIO#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nVIVA LA RARE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a group of Pepe the Frog characters in an urban alleyway. The main Pepe, wearing a fedora and trench coat, is smoking while engaging with three others dressed in hats and jackets, creating a noir, clandestine vibe. The color palette is earthy and muted, with emphasis on shadows and highlights to enhance the gritty, underground atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog references.\n- Noir detective or gangster theme.\n- \"Viva La Rare\" taps into the NFT and crypto culture celebrating rarity and uniqueness.\n- Street art and graffiti elements.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.020Z",
+  "sourceFactVersion": 1
+}

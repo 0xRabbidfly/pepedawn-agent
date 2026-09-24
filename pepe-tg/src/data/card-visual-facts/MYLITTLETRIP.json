@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "asset": "MYLITTLETRIP",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 14,
+  "artist": "Yotet",
+  "supply": 42,
+  "issuance": "February 2024",
+  "textOnCard": [
+    "My Little TRIP",
+    "everything is RARE",
+    "am i pepe now?",
+    "wait, where did everyone go?",
+    "45 ATK 90 SPD 100 LEGEND",
+    "Score 1",
+    "1"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central character.",
+    "References to rarity and exclusivity in NFT culture.",
+    "Fantasy and adventure vibes, like a twisted version of a children’s story.",
+    "Playful nods to RPG game stats."
+  ],
+  "visualSummary": "The card features a chaotic, hand-drawn style with a mix of vibrant colors like green, pink, and blue. A Pepe-like frog character rides a green amphibian creature, reminiscent of a fantasy scene. The background is a patchwork of color, and the card appears weathered and worn, adding to its vintage, gritty charm.",
+  "visualSummaryShort": "The card showcases a chaotic, hand-drawn style with vibrant colors and a Pepe-like frog character riding a green amphibian. The background features a patchwork of colors, contributing to a vintage and gritty atmosphere.",
+  "visualKeywords": [
+    "chaotic",
+    "vibrant colors",
+    "frog",
+    "amphibian",
+    "patchwork",
+    "weathered",
+    "fantasy",
+    "gritty",
+    "hand-drawn"
+  ],
+  "textKeywords": [
+    "little",
+    "trip",
+    "everything",
+    "now",
+    "wait",
+    "where",
+    "did",
+    "everyone",
+    "atk",
+    "spd",
+    "100",
+    "legend",
+    "score"
+  ],
+  "keywords": [
+    "chaotic",
+    "vibrant colors",
+    "frog",
+    "amphibian",
+    "patchwork",
+    "weathered",
+    "fantasy",
+    "gritty",
+    "hand-drawn",
+    "little",
+    "trip",
+    "everything",
+    "now",
+    "wait",
+    "where",
+    "did",
+    "everyone",
+    "atk",
+    "spd",
+    "100",
+    "legend",
+    "score"
+  ],
+  "embeddingInput": "MYLITTLETRIP (Fake Rares) - Series 17 Card 14\nArtist: Yotet\nSupply 42 Issued February 2024\nOn-card text: My Little TRIP | everything is RARE | am i pepe now? | wait, where did everyone go? | 45 ATK 90 SPD 100 LEGEND | Score 1 | 1\nVisual summary: The card features a chaotic, hand-drawn style with a mix of vibrant colors like green, pink, and blue. A Pepe-like frog character rides a green amphibian creature, reminiscent of a fantasy scene. The background is a patchwork of color, and the card appears weathered and worn, adding to its vintage, gritty charm.\nMemetic references: Pepe the Frog as a central character.; References to rarity and exclusivity in NFT culture.; Fantasy and adventure vibes, like a twisted version of a children’s story.; Playful nods to RPG game stats.",
+  "embeddingBlocks": [
+    {
+      "id": "MYLITTLETRIP#text",
+      "label": "On-card text",
+      "text": "My Little TRIP | everything is RARE | am i pepe now? | wait, where did everyone go? | 45 ATK 90 SPD 100 LEGEND | Score 1 | 1",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MYLITTLETRIP#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central character.\nReferences to rarity and exclusivity in NFT culture.\nFantasy and adventure vibes, like a twisted version of a children’s story.\nPlayful nods to RPG game stats.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MYLITTLETRIP#visual",
+      "label": "Visual summary",
+      "text": "The card features a chaotic, hand-drawn style with a mix of vibrant colors like green, pink, and blue. A Pepe-like frog character rides a green amphibian creature, reminiscent of a fantasy scene. The background is a patchwork of color, and the card appears weathered and worn, adding to its vintage, gritty charm.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MYLITTLETRIP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nMy Little TRIP  \neverything is RARE  \nam i pepe now?  \nwait, where did everyone go?  \n45 ATK 90 SPD 100 LEGEND  \nScore 1/1\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a chaotic, hand-drawn style with a mix of vibrant colors like green, pink, and blue. A Pepe-like frog character rides a green amphibian creature, reminiscent of a fantasy scene. The background is a patchwork of color, and the card appears weathered and worn, adding to its vintage, gritty charm.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central character.\n- References to rarity and exclusivity in NFT culture.\n- Fantasy and adventure vibes, like a twisted version of a children’s story.\n- Playful nods to RPG game stats.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.785Z",
+  "sourceFactVersion": 1
+}

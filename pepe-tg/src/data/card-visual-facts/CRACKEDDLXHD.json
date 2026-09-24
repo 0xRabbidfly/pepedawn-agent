@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "asset": "CRACKEDDLXHD",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 20,
+  "artist": "ParisianForge",
+  "supply": 209,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "DELUXE LIMITED. SENTIENT BEING 100. PARISIANFORGE®. 1",
+    "351."
+  ],
+  "memeticReferences": [
+    "Classic Pepe meme referenced with the familiar face.",
+    "Use of \"Sentient Being\" hints at AI or consciousness themes.",
+    "The cracked appearance could symbolize market volatility or NFT fragility."
+  ],
+  "visualSummary": "The card features a cracked, gold-plated surface with bright yellow lightning-like cracks disrupting the image of a Pepe face. The background is a deep, textured red, with the gold and yellow providing a stark contrast. The style is bold and metallic, giving it a premium, industrial vibe.",
+  "visualSummaryShort": "The card showcases a cracked, gold-plated surface with bright yellow lightning-like cracks over a Pepe face. The deep red background enhances the bold and metallic style, creating a striking visual contrast.",
+  "visualKeywords": [
+    "cracked",
+    "gold",
+    "yellow",
+    "lightning",
+    "pepe",
+    "red",
+    "metallic",
+    "bold",
+    "premium",
+    "industrial"
+  ],
+  "textKeywords": [
+    "deluxe",
+    "limited",
+    "sentient",
+    "100",
+    "parisianforge",
+    "351"
+  ],
+  "keywords": [
+    "cracked",
+    "gold",
+    "yellow",
+    "lightning",
+    "pepe",
+    "red",
+    "metallic",
+    "bold",
+    "premium",
+    "industrial",
+    "deluxe",
+    "limited",
+    "sentient",
+    "100",
+    "parisianforge",
+    "351"
+  ],
+  "embeddingInput": "CRACKEDDLXHD (Fake Rares) - Series 3 Card 20\nArtist: ParisianForge\nSupply 209 Issued October 2021\nOn-card text: DELUXE LIMITED. SENTIENT BEING 100. PARISIANFORGE®. 1 | 351.\nVisual summary: The card features a cracked, gold-plated surface with bright yellow lightning-like cracks disrupting the image of a Pepe face. The background is a deep, textured red, with the gold and yellow providing a stark contrast. The style is bold and metallic, giving it a premium, industrial vibe.\nMemetic references: Classic Pepe meme referenced with the familiar face.; Use of \"Sentient Being\" hints at AI or consciousness themes.; The cracked appearance could symbolize market volatility or NFT fragility.",
+  "embeddingBlocks": [
+    {
+      "id": "CRACKEDDLXHD#text",
+      "label": "On-card text",
+      "text": "DELUXE LIMITED. SENTIENT BEING 100. PARISIANFORGE®. 1 | 351.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "CRACKEDDLXHD#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe meme referenced with the familiar face.\nUse of \"Sentient Being\" hints at AI or consciousness themes.\nThe cracked appearance could symbolize market volatility or NFT fragility.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "CRACKEDDLXHD#visual",
+      "label": "Visual summary",
+      "text": "The card features a cracked, gold-plated surface with bright yellow lightning-like cracks disrupting the image of a Pepe face. The background is a deep, textured red, with the gold and yellow providing a stark contrast. The style is bold and metallic, giving it a premium, industrial vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "CRACKEDDLXHD#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nDELUXE LIMITED. SENTIENT BEING 100. PARISIANFORGE®. 1 / 351.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a cracked, gold-plated surface with bright yellow lightning-like cracks disrupting the image of a Pepe face. The background is a deep, textured red, with the gold and yellow providing a stark contrast. The style is bold and metallic, giving it a premium, industrial vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe meme referenced with the familiar face.\n- Use of \"Sentient Being\" hints at AI or consciousness themes.\n- The cracked appearance could symbolize market volatility or NFT fragility.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.368Z",
+  "sourceFactVersion": 1
+}

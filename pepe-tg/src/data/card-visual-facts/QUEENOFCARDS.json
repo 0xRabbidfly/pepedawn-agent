@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "asset": "QUEENOFCARDS",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 24,
+  "artist": "Dino x Rydes",
+  "supply": 100,
+  "issuance": "November 2021",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a regal queen surrounded by ornate decorations. The color palette is rich and vibrant, enhancing the royal theme.",
+  "visualKeywords": [
+    "queen",
+    "ornate",
+    "vibrant",
+    "regal",
+    "decorations"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "queen",
+    "ornate",
+    "vibrant",
+    "regal",
+    "decorations"
+  ],
+  "embeddingInput": "QUEENOFCARDS (Fake Rares) - Series 4 Card 24\nArtist: Dino x Rydes\nSupply 100 Issued November 2021\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "QUEENOFCARDS#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.060Z",
+  "sourceFactVersion": 1
+}

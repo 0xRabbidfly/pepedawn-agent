@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "asset": "PEPEBRO",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 4,
+  "artist": "Dim Zayan",
+  "supply": 86,
+  "issuance": "June 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as the central figure, tapping into classic internet meme culture.",
+    "Fishing rod and frog, hinting at the \"catching\" or \"hodling\" themes common in crypto.",
+    "The phone displaying Pepe adds a meta layer, referencing digital culture and NFTs."
+  ],
+  "visualSummary": "In this playful scene, a Pepe character is depicted wearing denim overalls with a red tie, sitting casually with a fishing rod. The color palette is vibrant, featuring shades of green, blue, and pink, creating a whimsical and surreal atmosphere. The character holds a phone displaying another Pepe, adding a layer of self-referential humor.",
+  "visualSummaryShort": "A Pepe character in denim overalls and a red tie sits with a fishing rod, surrounded by a vibrant color palette. The whimsical scene features shades of green, blue, and pink, enhancing its surreal atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "denim",
+    "fishing rod",
+    "vibrant",
+    "green",
+    "blue",
+    "pink",
+    "whimsical",
+    "surreal"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "denim",
+    "fishing rod",
+    "vibrant",
+    "green",
+    "blue",
+    "pink",
+    "whimsical",
+    "surreal"
+  ],
+  "embeddingInput": "PEPEBRO (Fake Rares) - Series 8 Card 4\nArtist: Dim Zayan\nSupply 86 Issued June 2022\nOn-card text: none detected\nVisual summary: In this playful scene, a Pepe character is depicted wearing denim overalls with a red tie, sitting casually with a fishing rod. The color palette is vibrant, featuring shades of green, blue, and pink, creating a whimsical and surreal atmosphere. The character holds a phone displaying another Pepe, adding a layer of self-referential humor.\nMemetic references: Pepe the Frog as the central figure, tapping into classic internet meme culture.; Fishing rod and frog, hinting at the \"catching\" or \"hodling\" themes common in crypto.; The phone displaying Pepe adds a meta layer, referencing digital culture and NFTs.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEBRO#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as the central figure, tapping into classic internet meme culture.\nFishing rod and frog, hinting at the \"catching\" or \"hodling\" themes common in crypto.\nThe phone displaying Pepe adds a meta layer, referencing digital culture and NFTs.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEBRO#visual",
+      "label": "Visual summary",
+      "text": "In this playful scene, a Pepe character is depicted wearing denim overalls with a red tie, sitting casually with a fishing rod. The color palette is vibrant, featuring shades of green, blue, and pink, creating a whimsical and surreal atmosphere. The character holds a phone displaying another Pepe, adding a layer of self-referential humor.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEBRO#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nIn this playful scene, a Pepe character is depicted wearing denim overalls with a red tie, sitting casually with a fishing rod. The color palette is vibrant, featuring shades of green, blue, and pink, creating a whimsical and surreal atmosphere. The character holds a phone displaying another Pepe, adding a layer of self-referential humor.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as the central figure, tapping into classic internet meme culture.\n- Fishing rod and frog, hinting at the \"catching\" or \"hodling\" themes common in crypto.\n- The phone displaying Pepe adds a meta layer, referencing digital culture and NFTs.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.849Z",
+  "sourceFactVersion": 1
+}

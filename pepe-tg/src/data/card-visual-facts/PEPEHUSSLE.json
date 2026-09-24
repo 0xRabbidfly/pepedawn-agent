@@ -1,0 +1,118 @@
+{
+  "version": 1,
+  "asset": "PEPEHUSSLE",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 41,
+  "artist": "JB",
+  "supply": 33,
+  "issuance": "December 2021",
+  "textOnCard": [
+    "WE LIVE THIS PEPETHON LIFE",
+    "PEPEHUSSLE",
+    "PARENTAL ADVISORY EXPLICIT FAKE RARE",
+    "PEPE PLAYIN NO GAMES",
+    "INSTANT HUSSLE CARD!",
+    "PEPE prolific, so gifted PEPE the type that's gon' go get it, no kidding...",
+    "FAKE RARE RECORDS"
+  ],
+  "memeticReferences": [
+    "References to hustle culture and the grind mindset.",
+    "Integration of the iconic Pepe the Frog in a unique context.",
+    "Parental Advisory label mimicking classic hip-hop album covers.",
+    "Playful nod to the NFT and crypto scene with \"Fake Rare Records.\""
+  ],
+  "visualSummary": "This card features a green-toned figure styled with a luxurious beard and a vibrant red jacket, embodying a sense of hustle and confidence. The background includes a faded image of another figure, adding layers of depth and activity. The overall color palette blends rich greens and reds, with a hint of urban flair, giving it a striking and bold presence.",
+  "visualSummaryShort": "The card showcases a green-toned figure with a luxurious beard in a vibrant red jacket, exuding hustle and confidence. The background features a faded image of another figure, enhancing the card's dynamic urban vibe.",
+  "visualKeywords": [
+    "green figure",
+    "red jacket",
+    "urban",
+    "confidence",
+    "depth",
+    "bold presence",
+    "hustle",
+    "luxurious beard"
+  ],
+  "textKeywords": [
+    "live",
+    "pepethon",
+    "life",
+    "pepehussle",
+    "parental",
+    "advisory",
+    "explicit",
+    "playin",
+    "games",
+    "instant",
+    "hussle",
+    "prolific",
+    "gifted",
+    "type",
+    "gon",
+    "get",
+    "kidding",
+    "records"
+  ],
+  "keywords": [
+    "green figure",
+    "red jacket",
+    "urban",
+    "confidence",
+    "depth",
+    "bold presence",
+    "hustle",
+    "luxurious beard",
+    "live",
+    "pepethon",
+    "life",
+    "pepehussle",
+    "parental",
+    "advisory",
+    "explicit",
+    "playin",
+    "games",
+    "instant",
+    "hussle",
+    "prolific",
+    "gifted",
+    "type",
+    "gon",
+    "get",
+    "kidding",
+    "records"
+  ],
+  "embeddingInput": "PEPEHUSSLE (Fake Rares) - Series 14 Card 41\nArtist: JB\nSupply 33 Issued December 2021\nOn-card text: WE LIVE THIS PEPETHON LIFE | PEPEHUSSLE | PARENTAL ADVISORY EXPLICIT FAKE RARE | PEPE PLAYIN NO GAMES | INSTANT HUSSLE CARD! | PEPE prolific, so gifted PEPE the type that's gon' go get it, no kidding... | FAKE RARE RECORDS\nVisual summary: This card features a green-toned figure styled with a luxurious beard and a vibrant red jacket, embodying a sense of hustle and confidence. The background includes a faded image of another figure, adding layers of depth and activity. The overall color palette blends rich greens and reds, with a hint of urban flair, giving it a striking and bold presence.\nMemetic references: References to hustle culture and the grind mindset.; Integration of the iconic Pepe the Frog in a unique context.; Parental Advisory label mimicking classic hip-hop album covers.; Playful nod to the NFT and crypto scene with \"Fake Rare Records.\"",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEHUSSLE#text",
+      "label": "On-card text",
+      "text": "WE LIVE THIS PEPETHON LIFE | PEPEHUSSLE | PARENTAL ADVISORY EXPLICIT FAKE RARE | PEPE PLAYIN NO GAMES | INSTANT HUSSLE CARD! | PEPE prolific, so gifted PEPE the type that's gon' go get it, no kidding... | FAKE RARE RECORDS",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEHUSSLE#memetic",
+      "label": "Memetic references",
+      "text": "References to hustle culture and the grind mindset.\nIntegration of the iconic Pepe the Frog in a unique context.\nParental Advisory label mimicking classic hip-hop album covers.\nPlayful nod to the NFT and crypto scene with \"Fake Rare Records.\"",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEHUSSLE#visual",
+      "label": "Visual summary",
+      "text": "This card features a green-toned figure styled with a luxurious beard and a vibrant red jacket, embodying a sense of hustle and confidence. The background includes a faded image of another figure, adding layers of depth and activity. The overall color palette blends rich greens and reds, with a hint of urban flair, giving it a striking and bold presence.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEHUSSLE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- WE LIVE THIS PEPETHON LIFE\n- PEPEHUSSLE\n- PARENTAL ADVISORY EXPLICIT FAKE RARE\n- PEPE PLAYIN NO GAMES\n- INSTANT HUSSLE CARD!\n- PEPE prolific, so gifted PEPE the type that's gon' go get it, no kidding...\n- FAKE RARE RECORDS\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a green-toned figure styled with a luxurious beard and a vibrant red jacket, embodying a sense of hustle and confidence. The background includes a faded image of another figure, adding layers of depth and activity. The overall color palette blends rich greens and reds, with a hint of urban flair, giving it a striking and bold presence.\n\n🧬 **MEMETIC DNA:**\n- References to hustle culture and the grind mindset.\n- Integration of the iconic Pepe the Frog in a unique context.\n- Parental Advisory label mimicking classic hip-hop album covers.\n- Playful nod to the NFT and crypto scene with \"Fake Rare Records.\"",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.894Z",
+  "sourceFactVersion": 1
+}

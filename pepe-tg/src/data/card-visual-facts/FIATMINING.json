@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "FIATMINING",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 33,
+  "artist": "Regan",
+  "supply": 22,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "FIATMINING"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as the central figure, a meme staple.",
+    "The \"9 to 5 grind\" meme, depicting the drudgery of fiat jobs.",
+    "Cigarette as a symbol of stress and coping mechanism.",
+    "The family portrait suggests a nod to personal responsibilities and motivations."
+  ],
+  "visualSummary": "The card features a pixel art style with a muted, pastel color palette. A sad Pepe sits at a desk, typing away on a keyboard with a cigarette in its mouth, embodying a sense of monotonous routine. In the background, a clock reads 12:00, and a family portrait of Pepes hangs on the wall, adding a touch of personal backstory.",
+  "visualSummaryShort": "The card showcases a pixel art style with a muted pastel color palette. A sad Pepe character is depicted at a desk, emphasizing a sense of monotonous routine.",
+  "visualKeywords": [
+    "pixel art",
+    "pastel colors",
+    "sad pepe",
+    "desk",
+    "keyboard",
+    "cigarette",
+    "clock",
+    "family portrait",
+    "monotony"
+  ],
+  "textKeywords": [
+    "fiatmining"
+  ],
+  "keywords": [
+    "pixel art",
+    "pastel colors",
+    "sad pepe",
+    "desk",
+    "keyboard",
+    "cigarette",
+    "clock",
+    "family portrait",
+    "monotony",
+    "fiatmining"
+  ],
+  "embeddingInput": "FIATMINING (Fake Rares) - Series 14 Card 33\nArtist: Regan\nSupply 22 Issued February 2022\nOn-card text: FIATMINING\nVisual summary: The card features a pixel art style with a muted, pastel color palette. A sad Pepe sits at a desk, typing away on a keyboard with a cigarette in its mouth, embodying a sense of monotonous routine. In the background, a clock reads 12:00, and a family portrait of Pepes hangs on the wall, adding a touch of personal backstory.\nMemetic references: Pepe the Frog as the central figure, a meme staple.; The \"9 to 5 grind\" meme, depicting the drudgery of fiat jobs.; Cigarette as a symbol of stress and coping mechanism.; The family portrait suggests a nod to personal responsibilities and motivations.",
+  "embeddingBlocks": [
+    {
+      "id": "FIATMINING#text",
+      "label": "On-card text",
+      "text": "FIATMINING",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FIATMINING#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as the central figure, a meme staple.\nThe \"9 to 5 grind\" meme, depicting the drudgery of fiat jobs.\nCigarette as a symbol of stress and coping mechanism.\nThe family portrait suggests a nod to personal responsibilities and motivations.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FIATMINING#visual",
+      "label": "Visual summary",
+      "text": "The card features a pixel art style with a muted, pastel color palette. A sad Pepe sits at a desk, typing away on a keyboard with a cigarette in its mouth, embodying a sense of monotonous routine. In the background, a clock reads 12:00, and a family portrait of Pepes hangs on the wall, adding a touch of personal backstory.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FIATMINING#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFIATMINING\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a pixel art style with a muted, pastel color palette. A sad Pepe sits at a desk, typing away on a keyboard with a cigarette in its mouth, embodying a sense of monotonous routine. In the background, a clock reads 12:00, and a family portrait of Pepes hangs on the wall, adding a touch of personal backstory.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as the central figure, a meme staple.\n- The \"9 to 5 grind\" meme, depicting the drudgery of fiat jobs.\n- Cigarette as a symbol of stress and coping mechanism.\n- The family portrait suggests a nod to personal responsibilities and motivations.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.619Z",
+  "sourceFactVersion": 1
+}

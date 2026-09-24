@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "asset": "KEKMAXXING",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 37,
+  "artist": "Mr Hansel",
+  "supply": 100,
+  "issuance": "April 2026",
+  "textOnCard": [
+    "=KEKMAXXING=",
+    "*Card activates peak Pepe mode 💯"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as the central figure, tapping into deep meme lore.",
+    "\"Kek\" references, a nod to internet culture and meme magic.",
+    "Symbolism with brains, eyes, and infinity, suggesting enlightenment or higher knowledge.",
+    "Pyramid with an eye and \"10th\" hinting at conspiracy or esoteric themes."
+  ],
+  "visualSummary": "The card features a stylized, muscular Pepe the Frog wielding a club with \"💯\" on his chest, against a deep purple and black background. The color palette is bold with neon greens and purples, giving it a psychedelic, almost tribal feel. The border is decorated with various symbols, including brains, eyes, and infinity signs, adding to its enigmatic vibe.",
+  "visualSummaryShort": "The card showcases a muscular Pepe the Frog holding a club, set against a vibrant purple and black background. Its bold neon colors and intricate border symbols create a psychedelic and tribal atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "muscular",
+    "club",
+    "purple",
+    "neon",
+    "tribal",
+    "symbols",
+    "psychedelic",
+    "bold",
+    "black"
+  ],
+  "textKeywords": [
+    "kekmaxxing",
+    "activates",
+    "peak",
+    "mode"
+  ],
+  "keywords": [
+    "pepe",
+    "muscular",
+    "club",
+    "purple",
+    "neon",
+    "tribal",
+    "symbols",
+    "psychedelic",
+    "bold",
+    "black",
+    "kekmaxxing",
+    "activates",
+    "peak",
+    "mode"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "KEKMAXXING (Fake Rares) - Series 18 Card 37\nArtist: Mr Hansel\nSupply 100 Issued April 2026\nOn-card text: =KEKMAXXING= | *Card activates peak Pepe mode 💯\nVisual summary: The card features a stylized, muscular Pepe the Frog wielding a club with \"💯\" on his chest, against a deep purple and black background. The color palette is bold with neon greens and purples, giving it a psychedelic, almost tribal feel. The border is decorated with various symbols, including brains, eyes, and infinity signs, adding to its enigmatic vibe.\nMemetic references: Pepe the Frog as the central figure, tapping into deep meme lore.; \"Kek\" references, a nod to internet culture and meme magic.; Symbolism with brains, eyes, and infinity, suggesting enlightenment or higher knowledge.; Pyramid with an eye and \"10th\" hinting at conspiracy or esoteric themes.",
+  "embeddingBlocks": [
+    {
+      "id": "KEKMAXXING#text",
+      "label": "On-card text",
+      "text": "=KEKMAXXING= | *Card activates peak Pepe mode 💯",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "KEKMAXXING#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as the central figure, tapping into deep meme lore.\n\"Kek\" references, a nod to internet culture and meme magic.\nSymbolism with brains, eyes, and infinity, suggesting enlightenment or higher knowledge.\nPyramid with an eye and \"10th\" hinting at conspiracy or esoteric themes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "KEKMAXXING#visual",
+      "label": "Visual summary",
+      "text": "The card features a stylized, muscular Pepe the Frog wielding a club with \"💯\" on his chest, against a deep purple and black background. The color palette is bold with neon greens and purples, giving it a psychedelic, almost tribal feel. The border is decorated with various symbols, including brains, eyes, and infinity signs, adding to its enigmatic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "KEKMAXXING#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- =KEKMAXXING=\n- *Card activates peak Pepe mode 💯\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a stylized, muscular Pepe the Frog wielding a club with \"💯\" on his chest, against a deep purple and black background. The color palette is bold with neon greens and purples, giving it a psychedelic, almost tribal feel. The border is decorated with various symbols, including brains, eyes, and infinity signs, adding to its enigmatic vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as the central figure, tapping into deep meme lore.\n- \"Kek\" references, a nod to internet culture and meme magic.\n- Symbolism with brains, eyes, and infinity, suggesting enlightenment or higher knowledge.\n- Pyramid with an eye and \"10th\" hinting at conspiracy or esoteric themes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:31:56.969Z"
+}

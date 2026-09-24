@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "FAKABUKIPEPE",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 29,
+  "artist": "TKY",
+  "supply": 99,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "FAKABUKI PEPE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in a Kabuki theater setting, blending meme culture with traditional Japanese art.",
+    "The use of \"FAKE\" prominently suggests a playful nod to the fake rares NFT culture.",
+    "The dramatic expression captures the exaggerated emotions typical in Kabuki performance."
+  ],
+  "visualSummary": "This card features a bold and colorful depiction of Pepe in a Kabuki-inspired style, complete with dramatic facial makeup and traditional attire. The background is a vibrant mix of orange, green, and black vertical stripes, adding a theatrical flair. The overall composition is vivid with high contrast, making the character pop against the striking backdrop.",
+  "visualSummaryShort": "The card showcases a vibrant Kabuki-inspired Pepe with dramatic facial makeup and traditional attire. The background features bold vertical stripes in orange, green, and black, enhancing the theatrical effect.",
+  "visualKeywords": [
+    "pepe",
+    "kabuki",
+    "colorful",
+    "makeup",
+    "traditional attire",
+    "vertical stripes",
+    "high contrast",
+    "theatrical",
+    "vivid",
+    "orange green black"
+  ],
+  "textKeywords": [
+    "fakabuki"
+  ],
+  "keywords": [
+    "pepe",
+    "kabuki",
+    "colorful",
+    "makeup",
+    "traditional attire",
+    "vertical stripes",
+    "high contrast",
+    "theatrical",
+    "vivid",
+    "orange green black",
+    "fakabuki"
+  ],
+  "embeddingInput": "FAKABUKIPEPE (Fake Rares) - Series 3 Card 29\nArtist: TKY\nSupply 99 Issued October 2021\nOn-card text: FAKABUKI PEPE\nVisual summary: This card features a bold and colorful depiction of Pepe in a Kabuki-inspired style, complete with dramatic facial makeup and traditional attire. The background is a vibrant mix of orange, green, and black vertical stripes, adding a theatrical flair. The overall composition is vivid with high contrast, making the character pop against the striking backdrop.\nMemetic references: Pepe the Frog in a Kabuki theater setting, blending meme culture with traditional Japanese art.; The use of \"FAKE\" prominently suggests a playful nod to the fake rares NFT culture.; The dramatic expression captures the exaggerated emotions typical in Kabuki performance.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKABUKIPEPE#text",
+      "label": "On-card text",
+      "text": "FAKABUKI PEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKABUKIPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in a Kabuki theater setting, blending meme culture with traditional Japanese art.\nThe use of \"FAKE\" prominently suggests a playful nod to the fake rares NFT culture.\nThe dramatic expression captures the exaggerated emotions typical in Kabuki performance.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKABUKIPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a bold and colorful depiction of Pepe in a Kabuki-inspired style, complete with dramatic facial makeup and traditional attire. The background is a vibrant mix of orange, green, and black vertical stripes, adding a theatrical flair. The overall composition is vivid with high contrast, making the character pop against the striking backdrop.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKABUKIPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKABUKI PEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a bold and colorful depiction of Pepe in a Kabuki-inspired style, complete with dramatic facial makeup and traditional attire. The background is a vibrant mix of orange, green, and black vertical stripes, adding a theatrical flair. The overall composition is vivid with high contrast, making the character pop against the striking backdrop.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in a Kabuki theater setting, blending meme culture with traditional Japanese art.\n- The use of \"FAKE\" prominently suggests a playful nod to the fake rares NFT culture.\n- The dramatic expression captures the exaggerated emotions typical in Kabuki performance.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.435Z",
+  "sourceFactVersion": 1
+}

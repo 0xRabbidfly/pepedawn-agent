@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "asset": "FAKENUTMEG",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 5,
+  "artist": "Rare Scrilla and Ghostface Killah",
+  "supply": 1000,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "STRAFFEK SOLD HERE",
+    "PORTFOLIO LOOKIN FANCY IN THE PANTRY"
+  ],
+  "memeticReferences": [
+    "Multiple Pepe the Frog characters in various outfits and poses.",
+    "Bitcoin and crypto references, including a large Bitcoin logo.",
+    "Internet meme aesthetics with chaotic, overlapping elements.",
+    "References to crypto trading and degen culture."
+  ],
+  "visualSummary": "This card is a vibrant explosion of color and chaos, featuring a variety of Pepe the Frog variations intermingled with crypto symbols. The palette is a bold mix of greens, reds, purples, and yellows, creating a collage-like effect. The style is cartoonish and heavily detailed, with each element vying for attention in a busy, surreal scene.",
+  "visualSummaryShort": "The card showcases a chaotic collage of colorful Pepe the Frog variations alongside crypto symbols. Its cartoonish style features a vibrant mix of greens, reds, purples, and yellows in a surreal environment.",
+  "visualKeywords": [
+    "pepe the frog",
+    "crypto symbols",
+    "colorful",
+    "collage",
+    "cartoonish",
+    "chaotic",
+    "vibrant",
+    "surreal"
+  ],
+  "textKeywords": [
+    "straffek",
+    "sold",
+    "portfolio",
+    "lookin",
+    "fancy",
+    "pantry"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "crypto symbols",
+    "colorful",
+    "collage",
+    "cartoonish",
+    "chaotic",
+    "vibrant",
+    "surreal",
+    "straffek",
+    "sold",
+    "portfolio",
+    "lookin",
+    "fancy",
+    "pantry"
+  ],
+  "embeddingInput": "FAKENUTMEG (Fake Rares) - Series 4 Card 5\nArtist: Rare Scrilla and Ghostface Killah\nSupply 1000 Issued November 2021\nOn-card text: STRAFFEK SOLD HERE | PORTFOLIO LOOKIN FANCY IN THE PANTRY\nVisual summary: This card is a vibrant explosion of color and chaos, featuring a variety of Pepe the Frog variations intermingled with crypto symbols. The palette is a bold mix of greens, reds, purples, and yellows, creating a collage-like effect. The style is cartoonish and heavily detailed, with each element vying for attention in a busy, surreal scene.\nMemetic references: Multiple Pepe the Frog characters in various outfits and poses.; Bitcoin and crypto references, including a large Bitcoin logo.; Internet meme aesthetics with chaotic, overlapping elements.; References to crypto trading and degen culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKENUTMEG#text",
+      "label": "On-card text",
+      "text": "STRAFFEK SOLD HERE | PORTFOLIO LOOKIN FANCY IN THE PANTRY",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKENUTMEG#memetic",
+      "label": "Memetic references",
+      "text": "Multiple Pepe the Frog characters in various outfits and poses.\nBitcoin and crypto references, including a large Bitcoin logo.\nInternet meme aesthetics with chaotic, overlapping elements.\nReferences to crypto trading and degen culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKENUTMEG#visual",
+      "label": "Visual summary",
+      "text": "This card is a vibrant explosion of color and chaos, featuring a variety of Pepe the Frog variations intermingled with crypto symbols. The palette is a bold mix of greens, reds, purples, and yellows, creating a collage-like effect. The style is cartoonish and heavily detailed, with each element vying for attention in a busy, surreal scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKENUTMEG#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- STRAFFEK SOLD HERE\n- PORTFOLIO LOOKIN FANCY IN THE PANTRY\n\n🎨 **VISUAL BREAKDOWN:**\nThis card is a vibrant explosion of color and chaos, featuring a variety of Pepe the Frog variations intermingled with crypto symbols. The palette is a bold mix of greens, reds, purples, and yellows, creating a collage-like effect. The style is cartoonish and heavily detailed, with each element vying for attention in a busy, surreal scene.\n\n🧬 **MEMETIC DNA:**\n- Multiple Pepe the Frog characters in various outfits and poses.\n- Bitcoin and crypto references, including a large Bitcoin logo.\n- Internet meme aesthetics with chaotic, overlapping elements.\n- References to crypto trading and degen culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.539Z",
+  "sourceFactVersion": 1
+}

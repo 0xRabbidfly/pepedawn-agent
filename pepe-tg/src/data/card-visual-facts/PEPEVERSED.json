@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "PEPEVERSED",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 40,
+  "artist": "Finest Rares",
+  "supply": 103,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "finestrares"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure, a staple in meme culture.",
+    "VR headset representing the metaverse and digital escapism.",
+    "Diamond hands symbolizing the resolve to hold onto crypto investments despite volatility.",
+    "UFO and beam reference classic sci-fi memes and abductions, adding an otherworldly vibe."
+  ],
+  "visualSummary": "The card features Pepe the Frog wearing a VR headset, sitting pensively with diamond hands, indicative of holding onto investments. The background is a surreal, digital landscape with a UFO beaming up silhouetted figures, adding a sci-fi element. The color palette is a mix of dark tones with vibrant, holographic rainbows reflecting off water, creating a contrast between the futuristic and the natural.",
+  "visualSummaryShort": "The card depicts Pepe the Frog in a VR headset, surrounded by a surreal digital landscape. The scene combines dark tones with vibrant holographic rainbows and a sci-fi atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "vr headset",
+    "diamond hands",
+    "surreal landscape",
+    "ufo",
+    "silhouettes",
+    "dark tones",
+    "holographic",
+    "rainbows",
+    "water"
+  ],
+  "textKeywords": [
+    "finestrares"
+  ],
+  "keywords": [
+    "pepe",
+    "vr headset",
+    "diamond hands",
+    "surreal landscape",
+    "ufo",
+    "silhouettes",
+    "dark tones",
+    "holographic",
+    "rainbows",
+    "water",
+    "finestrares"
+  ],
+  "embeddingInput": "PEPEVERSED (Fake Rares) - Series 9 Card 40\nArtist: Finest Rares\nSupply 103 Issued September 2022\nOn-card text: finestrares\nVisual summary: The card features Pepe the Frog wearing a VR headset, sitting pensively with diamond hands, indicative of holding onto investments. The background is a surreal, digital landscape with a UFO beaming up silhouetted figures, adding a sci-fi element. The color palette is a mix of dark tones with vibrant, holographic rainbows reflecting off water, creating a contrast between the futuristic and the natural.\nMemetic references: Pepe the Frog as a central figure, a staple in meme culture.; VR headset representing the metaverse and digital escapism.; Diamond hands symbolizing the resolve to hold onto crypto investments despite volatility.; UFO and beam reference classic sci-fi memes and abductions, adding an otherworldly vibe.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEVERSED#text",
+      "label": "On-card text",
+      "text": "finestrares",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEVERSED#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure, a staple in meme culture.\nVR headset representing the metaverse and digital escapism.\nDiamond hands symbolizing the resolve to hold onto crypto investments despite volatility.\nUFO and beam reference classic sci-fi memes and abductions, adding an otherworldly vibe.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEVERSED#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog wearing a VR headset, sitting pensively with diamond hands, indicative of holding onto investments. The background is a surreal, digital landscape with a UFO beaming up silhouetted figures, adding a sci-fi element. The color palette is a mix of dark tones with vibrant, holographic rainbows reflecting off water, creating a contrast between the futuristic and the natural.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEVERSED#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nfinestrares\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog wearing a VR headset, sitting pensively with diamond hands, indicative of holding onto investments. The background is a surreal, digital landscape with a UFO beaming up silhouetted figures, adding a sci-fi element. The color palette is a mix of dark tones with vibrant, holographic rainbows reflecting off water, creating a contrast between the futuristic and the natural.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure, a staple in meme culture.\n- VR headset representing the metaverse and digital escapism.\n- Diamond hands symbolizing the resolve to hold onto crypto investments despite volatility.\n- UFO and beam reference classic sci-fi memes and abductions, adding an otherworldly vibe.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.008Z",
+  "sourceFactVersion": 1
+}

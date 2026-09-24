@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "asset": "FAKEHOURY",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 48,
+  "artist": "Chaotic Crypto",
+  "supply": 270,
+  "issuance": "October 2021",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a vibrant and dynamic design with abstract shapes and colors. The overall mood is energetic and playful.",
+  "visualKeywords": [
+    "abstract",
+    "vibrant",
+    "dynamic",
+    "colorful",
+    "playful"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "abstract",
+    "vibrant",
+    "dynamic",
+    "colorful",
+    "playful"
+  ],
+  "embeddingInput": "FAKEHOURY (Fake Rares) - Series 1 Card 48\nArtist: Chaotic Crypto\nSupply 270 Issued October 2021\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEHOURY#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't help with this request.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.514Z",
+  "sourceFactVersion": 1
+}

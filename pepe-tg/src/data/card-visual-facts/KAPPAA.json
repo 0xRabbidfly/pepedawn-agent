@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "KAPPAA",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 12,
+  "artist": "Cgknight",
+  "supply": 30,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "RARE ART"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog, embodying introspective vibes.",
+    "Retro technology with CRT monitors, nodding to internet culture.",
+    "References to crypto art with pixelated graphics on screens.",
+    "Elements of rare internet art culture with \"RARE ART\" text."
+  ],
+  "visualSummary": "The card features a 3D sculptural depiction of Pepe the Frog, sitting thoughtfully on a rock while holding a smartphone. The scene is set in a vivid, glowing environment with a neon blue water effect, surrounded by retro computer monitors displaying pixelated art. The color palette is a mix of greens, blues, and neon hues, creating a cyberpunk meets nature vibe.",
+  "visualSummaryShort": "The card showcases a 3D Pepe the Frog sculpture sitting on a rock with a smartphone in a vibrant, glowing environment. The scene combines elements of nature and retro technology with a striking color palette of greens, blues, and neon hues.",
+  "visualKeywords": [
+    "pepe the frog",
+    "smartphone",
+    "rock",
+    "neon blue",
+    "retro monitors",
+    "pixelated art",
+    "cyberpunk",
+    "nature",
+    "vivid colors"
+  ],
+  "textKeywords": [
+    "art"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "smartphone",
+    "rock",
+    "neon blue",
+    "retro monitors",
+    "pixelated art",
+    "cyberpunk",
+    "nature",
+    "vivid colors",
+    "art"
+  ],
+  "embeddingInput": "KAPPAA (Fake Rares) - Series 6 Card 12\nArtist: Cgknight\nSupply 30 Issued February 2022\nOn-card text: RARE ART\nVisual summary: The card features a 3D sculptural depiction of Pepe the Frog, sitting thoughtfully on a rock while holding a smartphone. The scene is set in a vivid, glowing environment with a neon blue water effect, surrounded by retro computer monitors displaying pixelated art. The color palette is a mix of greens, blues, and neon hues, creating a cyberpunk meets nature vibe.\nMemetic references: Classic Pepe the Frog, embodying introspective vibes.; Retro technology with CRT monitors, nodding to internet culture.; References to crypto art with pixelated graphics on screens.; Elements of rare internet art culture with \"RARE ART\" text.",
+  "embeddingBlocks": [
+    {
+      "id": "KAPPAA#text",
+      "label": "On-card text",
+      "text": "RARE ART",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "KAPPAA#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog, embodying introspective vibes.\nRetro technology with CRT monitors, nodding to internet culture.\nReferences to crypto art with pixelated graphics on screens.\nElements of rare internet art culture with \"RARE ART\" text.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "KAPPAA#visual",
+      "label": "Visual summary",
+      "text": "The card features a 3D sculptural depiction of Pepe the Frog, sitting thoughtfully on a rock while holding a smartphone. The scene is set in a vivid, glowing environment with a neon blue water effect, surrounded by retro computer monitors displaying pixelated art. The color palette is a mix of greens, blues, and neon hues, creating a cyberpunk meets nature vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "KAPPAA#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nRARE ART\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a 3D sculptural depiction of Pepe the Frog, sitting thoughtfully on a rock while holding a smartphone. The scene is set in a vivid, glowing environment with a neon blue water effect, surrounded by retro computer monitors displaying pixelated art. The color palette is a mix of greens, blues, and neon hues, creating a cyberpunk meets nature vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog, embodying introspective vibes.\n- Retro technology with CRT monitors, nodding to internet culture.\n- References to crypto art with pixelated graphics on screens.\n- Elements of rare internet art culture with \"RARE ART\" text.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.706Z",
+  "sourceFactVersion": 1
+}

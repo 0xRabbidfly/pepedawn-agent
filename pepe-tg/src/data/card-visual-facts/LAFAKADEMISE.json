@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "asset": "LAFAKADEMISE",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 50,
+  "artist": "Elispri",
+  "supply": 65,
+  "issuance": "June 2022",
+  "textOnCard": [
+    "Shit got Real. Come back soon."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog imagery is dominant, a staple of meme culture.",
+    "References to NFT art and the \"fake rare\" concept.",
+    "The masked figure hints at anonymity, a nod to crypto culture."
+  ],
+  "visualSummary": "The card features a dark, mysterious figure with a blindfold and a tuxedo covered in various NFT designs. There's a creepy mask with \"FAKE\" written on it, and the background is filled with framed Pepe images. The color palette is moody with greens, blacks, and reds, enhancing the cryptic vibe.",
+  "visualSummaryShort": "The card showcases a dark figure in a tuxedo adorned with NFT designs, complemented by a creepy mask. The moody color palette of greens, blacks, and reds, along with framed Pepe images in the background, adds to the mysterious atmosphere.",
+  "visualKeywords": [
+    "dark figure",
+    "blindfold",
+    "tuxedo",
+    "creepy mask",
+    "pepe images",
+    "moody colors",
+    "green",
+    "black",
+    "red"
+  ],
+  "textKeywords": [
+    "shit",
+    "got",
+    "real",
+    "come",
+    "back",
+    "soon"
+  ],
+  "keywords": [
+    "dark figure",
+    "blindfold",
+    "tuxedo",
+    "creepy mask",
+    "pepe images",
+    "moody colors",
+    "green",
+    "black",
+    "red",
+    "shit",
+    "got",
+    "real",
+    "come",
+    "back",
+    "soon"
+  ],
+  "embeddingInput": "LAFAKADEMISE (Fake Rares) - Series 7 Card 50\nArtist: Elispri\nSupply 65 Issued June 2022\nOn-card text: Shit got Real. Come back soon.\nVisual summary: The card features a dark, mysterious figure with a blindfold and a tuxedo covered in various NFT designs. There's a creepy mask with \"FAKE\" written on it, and the background is filled with framed Pepe images. The color palette is moody with greens, blacks, and reds, enhancing the cryptic vibe.\nMemetic references: Pepe the Frog imagery is dominant, a staple of meme culture.; References to NFT art and the \"fake rare\" concept.; The masked figure hints at anonymity, a nod to crypto culture.",
+  "embeddingBlocks": [
+    {
+      "id": "LAFAKADEMISE#text",
+      "label": "On-card text",
+      "text": "Shit got Real. Come back soon.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "LAFAKADEMISE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog imagery is dominant, a staple of meme culture.\nReferences to NFT art and the \"fake rare\" concept.\nThe masked figure hints at anonymity, a nod to crypto culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LAFAKADEMISE#visual",
+      "label": "Visual summary",
+      "text": "The card features a dark, mysterious figure with a blindfold and a tuxedo covered in various NFT designs. There's a creepy mask with \"FAKE\" written on it, and the background is filled with framed Pepe images. The color palette is moody with greens, blacks, and reds, enhancing the cryptic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LAFAKADEMISE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nShit got Real. Come back soon.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a dark, mysterious figure with a blindfold and a tuxedo covered in various NFT designs. There's a creepy mask with \"FAKE\" written on it, and the background is filled with framed Pepe images. The color palette is moody with greens, blacks, and reds, enhancing the cryptic vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog imagery is dominant, a staple of meme culture.\n- References to NFT art and the \"fake rare\" concept.\n- The masked figure hints at anonymity, a nod to crypto culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.725Z",
+  "sourceFactVersion": 1
+}

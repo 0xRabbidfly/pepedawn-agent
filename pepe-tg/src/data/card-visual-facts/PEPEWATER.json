@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "asset": "PEPEWATER",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 4,
+  "artist": "Abstract Mirror",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a character named Pepe in a water-themed setting. The overall mood is playful and vibrant.",
+  "visualKeywords": [
+    "water",
+    "pepe",
+    "playful",
+    "vibrant"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "water",
+    "pepe",
+    "playful",
+    "vibrant"
+  ],
+  "embeddingInput": "PEPEWATER (Fake Rares) - Series 3 Card 4\nArtist: Abstract Mirror\nSupply 100 Issued October 2021\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEWATER#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, but I can't assist with that request.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.010Z",
+  "sourceFactVersion": 1
+}

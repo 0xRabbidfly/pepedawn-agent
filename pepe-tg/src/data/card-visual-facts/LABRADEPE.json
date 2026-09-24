@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "asset": "LABRADEPE",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 7,
+  "artist": "Kaph Resh",
+  "supply": 163,
+  "issuance": "September 2021",
+  "textOnCard": [
+    "LABRADEPE"
+  ],
+  "memeticReferences": [
+    "Heavy use of Pepe the Frog, a classic meme character.",
+    "References to trading cards, adding a nostalgic and collectible vibe.",
+    "Incorporates elements of crypto culture, such as pixel art and gaming references.",
+    "Visual nods to meme culture with exaggerated and humorous expressions."
+  ],
+  "visualSummary": "This card has an eclectic mix of visuals featuring a prominent Pepe character with a halo and various other Pepes in different situations. The color palette is vibrant with greens, yellows, and reds, set against a blurred background that adds depth. The style is chaotic and collage-like, giving it an animated and lively appearance.",
+  "visualSummaryShort": "The card features a prominent Pepe character with a halo surrounded by various other Pepes in different situations. The vibrant color palette includes greens, yellows, and reds, creating a lively and chaotic atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "halo",
+    "vibrant colors",
+    "collage",
+    "chaotic",
+    "animated",
+    "blurred background"
+  ],
+  "textKeywords": [
+    "labradepe"
+  ],
+  "keywords": [
+    "pepe",
+    "halo",
+    "vibrant colors",
+    "collage",
+    "chaotic",
+    "animated",
+    "blurred background",
+    "labradepe"
+  ],
+  "embeddingInput": "LABRADEPE (Fake Rares) - Series 1 Card 7\nArtist: Kaph Resh\nSupply 163 Issued September 2021\nOn-card text: LABRADEPE\nVisual summary: This card has an eclectic mix of visuals featuring a prominent Pepe character with a halo and various other Pepes in different situations. The color palette is vibrant with greens, yellows, and reds, set against a blurred background that adds depth. The style is chaotic and collage-like, giving it an animated and lively appearance.\nMemetic references: Heavy use of Pepe the Frog, a classic meme character.; References to trading cards, adding a nostalgic and collectible vibe.; Incorporates elements of crypto culture, such as pixel art and gaming references.; Visual nods to meme culture with exaggerated and humorous expressions.",
+  "embeddingBlocks": [
+    {
+      "id": "LABRADEPE#text",
+      "label": "On-card text",
+      "text": "LABRADEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "LABRADEPE#memetic",
+      "label": "Memetic references",
+      "text": "Heavy use of Pepe the Frog, a classic meme character.\nReferences to trading cards, adding a nostalgic and collectible vibe.\nIncorporates elements of crypto culture, such as pixel art and gaming references.\nVisual nods to meme culture with exaggerated and humorous expressions.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LABRADEPE#visual",
+      "label": "Visual summary",
+      "text": "This card has an eclectic mix of visuals featuring a prominent Pepe character with a halo and various other Pepes in different situations. The color palette is vibrant with greens, yellows, and reds, set against a blurred background that adds depth. The style is chaotic and collage-like, giving it an animated and lively appearance.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LABRADEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nLABRADEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThis card has an eclectic mix of visuals featuring a prominent Pepe character with a halo and various other Pepes in different situations. The color palette is vibrant with greens, yellows, and reds, set against a blurred background that adds depth. The style is chaotic and collage-like, giving it an animated and lively appearance.\n\n🧬 **MEMETIC DNA:**\n- Heavy use of Pepe the Frog, a classic meme character.\n- References to trading cards, adding a nostalgic and collectible vibe.\n- Incorporates elements of crypto culture, such as pixel art and gaming references.\n- Visual nods to meme culture with exaggerated and humorous expressions.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.723Z",
+  "sourceFactVersion": 1
+}
