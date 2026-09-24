@@ -52,7 +52,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
   Found while checking: the Action has been opening PRs that nobody merged
   since 2025-10-24, so nothing it found ever reached master, and production
-  refreshes its index from master. The merge gap is still open (TODO).
+  refreshes its index from master. **The workflow now merges its own pull
+  request** once two guards pass: the sync's own refusals (a short API
+  response, more than 20 retirements) and a new index integrity test on the
+  file as written (`cardIndexIntegrity.test.ts`: whole index, every card has
+  a slot and extension, no live slot shared, every live card resolves to an
+  https URL off the dead old site). A failed guard fails the run and merges
+  nothing. The PR body carries the sync report, and the "cards touched" count
+  now compares records instead of grepping for added `"asset"` lines, which
+  missed every artist or release edit.
 
 ### Added
 

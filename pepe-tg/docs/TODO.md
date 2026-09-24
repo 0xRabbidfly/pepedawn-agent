@@ -36,11 +36,11 @@ looks like. Dated when it was written; strike through or delete when done.
 - [x] **`add-new-cards.js` pass 1 reads `/api/cards`** instead of scraping
       `/series-N/`, which 404s on the new site. Pass 2 (pepe.wtf, for supply)
       still needs Playwright. *(on the branch)*
-- [ ] **The daily action never reached prod.** It pushes to
-      `auto-update-fake-rares` and opens a PR; nothing from it has been merged
-      since 2025-10-24, so prod's daily JSON refresh (from master) has served
-      the same file for a year. Either auto-merge the PR when the sync's
-      guards pass, or have the bot fetch `/api/cards` itself.
+- [x] **The daily action never reached prod.** It opened PRs nobody merged
+      since 2025-10-24. It now merges its own PR once the sync's refusals and
+      `cardIndexIntegrity.test.ts` pass. *(on the branch)* Watch the first
+      few merged runs; if master ever gets a required review, the merge step
+      fails loudly and the PR waits for a person.
 - [ ] **TRIPLEMIKE** — the old scrape found it on 2026-09-21 as Series 18
       card 42; it is a real locked asset on chain, but the directory has
       CAKERARE at 18/42 and no TRIPLEMIKE at all. Ask Scrilla which is right
