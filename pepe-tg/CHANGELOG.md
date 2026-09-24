@@ -5,6 +5,18 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.17.1] - 2026-09-24
+
+### Fixed
+
+- **It reacts to messages it answers, too.** "That's fire 🔥 pepedawn!! Slap
+  me some emojis to demonstrate your new superpower" got a reply full of
+  emoji text and no reaction: reactions only fired on posts nobody aimed at
+  the bot. Now a reaction rides on any plan. A message the bot is about to
+  answer gets one when it is worth a look, and always when it asks for one -
+  with the emoji the person used, when it is one Telegram lets a bot set.
+  The reaction goes out before the reply.
+
 ## [5.17.0] - 2026-09-24
 
 ### Added

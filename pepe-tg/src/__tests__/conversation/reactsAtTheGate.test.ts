@@ -14,7 +14,7 @@ import type { IAgentRuntime } from '@elizaos/core';
 import { SmartRouterService } from '../../services/SmartRouterService';
 import * as modelGateway from '../../utils/modelGateway';
 import {
-  REACTION_BUCKETS, REACTION_COOLDOWN_MS, REACTION_EMOJI, bucketFor, reactionAllowed, reactionFor, reactionScore, resetReactionCooldowns,
+  REACTION_BUCKETS, REACTION_COOLDOWN_MS, REACTION_EMOJI, bucketFor, reactionAllowed, reactionFor, reactionForAddressed, reactionScore, resetReactionCooldowns,
 } from '../../utils/reactions';
 
 const CRYPSI = '111';
@@ -103,6 +103,17 @@ describe('the router reacts at the gate', () => {
     expect(plan.kind).toBe('NORESPONSE');
     expect(plan.reason).toBe('unaddressed_question_not_exact_react');
     expect(plan.reaction).toBeDefined();
+  });
+
+  it('addressed and asked for one, it reacts to the message - with the emoji they used', async () => {
+    const { service, spy } = router();
+    const plan = await service.planRouting("That's fire 🔥 pepedawn!! Slap me some emojis to demonstrate your new superpower.", 'room-react-4', true, CRYPSI);
+    spy.mockRestore();
+    expect(plan.kind).toBe('CHAT');
+    expect(plan.reaction).toBe('🔥');
+    expect(reactionForAddressed('dawn react to this', false, () => 0)).toBe('👀');
+    expect(reactionForAddressed('dawn what is the supply of FREEDOMKEK?', true)).toBeDefined(); // names a card: worth a look
+    expect(reactionForAddressed('dawn how are you', false)).toBeUndefined();
   });
 
   it('chatter is silence, not a reaction', async () => {

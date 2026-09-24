@@ -10,7 +10,7 @@ import {
   type RetrieveCandidatesOptions,
 } from '../router/retrieveCandidates';
 import { detectCardFastPath } from '../router/cardFastPath';
-import { reactionAllowed, reactionFor, reactionScore } from '../utils/reactions';
+import { reactionAllowed, reactionFor, reactionForAddressed, reactionScore } from '../utils/reactions';
 import { BOT_NAME_ALT, namesTheBot } from '../utils/botName';
 import { characterFor, characterNote, type Character } from '../conversation/characters';
 import { KnowledgeOrchestratorService } from './KnowledgeOrchestratorService';
@@ -1268,6 +1268,23 @@ Say briefly why it is worth a look — something true about the art, the artist 
     /** True when the message @mentioned the bot, replied to it, or is a DM. */
     addressedConversationally = false,
     /** The sender's numeric Telegram id, when known. Used only to look up the character roster. */
+    speakerTelegramId?: string,
+  ): Promise<SmartRoutingPlan> {
+    const plan = await this.planRoutingInner(text, roomId, addressedConversationally, speakerTelegramId);
+    // Any plan that answers was invited. Answering a message worth a look
+    // - or one that asks for an emoji - reacts to it as well: silent, and
+    // the thing the room was told the bot could do.
+    if (plan.kind !== 'NORESPONSE' && plan.kind !== 'CMDROUTE' && !plan.reaction) {
+      const reaction = reactionForAddressed(text.trim(), !!this.detectMentionedCard(text.trim()));
+      if (reaction) plan.reaction = reaction;
+    }
+    return plan;
+  }
+
+  private async planRoutingInner(
+    text: string,
+    roomId: string,
+    addressedConversationally = false,
     speakerTelegramId?: string,
   ): Promise<SmartRoutingPlan> {
     const trimmed = text.trim();

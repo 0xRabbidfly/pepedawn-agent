@@ -522,6 +522,15 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
 
   const sendTelemetryLoreFlag = plan.intent === 'FACTS' || plan.intent === 'LORE';
 
+  // A reaction rides on any plan: the silent acknowledgement of a post
+  // nobody aimed at the bot, or the extra face on a message it is about to
+  // answer. Sent first, so it lands before the reply does.
+  if (plan.reaction) {
+    const token = (runtime.getSetting('TELEGRAM_BOT_TOKEN') as string) || '';
+    const reacted = await sendReaction(token, telegramChatId(params), params?.ctx?.message?.message_id, plan.reaction);
+    logger.info(`[SmartRouter] Reacted ${plan.reaction} (${reacted ? 'sent' : 'not sent'}) on a ${plan.kind} plan.`);
+  }
+
   try {
     switch (plan.kind) {
       case 'FAST_PATH_CARD': {
@@ -635,19 +644,9 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
 
       case 'NORESPONSE': {
         markHandled();
-        // Only set when retrieval came back empty for a post nobody aimed at the
-        // bot. Ordinary silence stays silent: reacting to every "gm" and "lol"
-        // the classifier waves through would be its own kind of noise.
-        if (plan.reaction) {
-          const token = (runtime.getSetting('TELEGRAM_BOT_TOKEN') as string) || '';
-          const reacted = await sendReaction(
-            token,
-            telegramChatId(params),
-            params?.ctx?.message?.message_id,
-            plan.reaction
-          );
-          logger.info(`[SmartRouter] Unaddressed post with no answer: reacted ${plan.reaction} (${reacted ? 'sent' : 'not sent'}).`);
-        }
+        // The reaction, when the gate set one, went out above. Ordinary
+        // silence stays silent: reacting to every "gm" and "lol" would be
+        // its own kind of noise.
         await sendTelemetry({ logLore: false });
         await logDecision('handled');
         if (!plan.reaction) logger.info('[SmartRouter] NORESPONSE plan acknowledged silently (no emoji).');

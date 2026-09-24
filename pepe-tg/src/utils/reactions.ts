@@ -87,6 +87,24 @@ export function worthAReaction(text: string, namesCard: boolean): boolean {
   return reactionScore(text, namesCard) >= 1;
 }
 
+const ASKS_FOR_ONE = /\b(react|reaction|emoji|emojis|slap me)\b/i;
+
+/**
+ * A message addressed to the bot, which it is about to answer: react to it
+ * as well when it is worth a look, and always when it asks for one - "slap
+ * me some emojis" got a reply full of emoji text and no reaction, which is
+ * not the superpower that was promised. When they used an emoji the bot
+ * may set, it gets that one back.
+ */
+export function reactionForAddressed(text: string, namesCard: boolean, rng: () => number = Math.random): ReactionEmoji | undefined {
+  const t = text || '';
+  if (ASKS_FOR_ONE.test(t)) {
+    const mirrored = REACTION_EMOJI.find((e) => t.includes(e));
+    return mirrored ?? reactionFor(t, rng);
+  }
+  return reactionScore(t, namesCard) >= 1 ? reactionFor(t, rng) : undefined;
+}
+
 /** Ordinary worthy posts share this per-room cooldown; really good ones do not wait. */
 export const REACTION_COOLDOWN_MS = 5 * 60 * 1000;
 const lastReactionAt = new Map<string, number>();
