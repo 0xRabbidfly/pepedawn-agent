@@ -17,6 +17,8 @@ import { SocialMemoryService } from '../services/SocialMemoryService';
 import { ReleaseNoteService } from '../services/ReleaseNoteService';
 import { AnniversaryService } from '../services/AnniversaryService';
 import { CardFactsImportService } from '../services/CardFactsImportService';
+import { NewCardService } from '../services/NewCardService';
+import { ReminderService } from '../services/ReminderService';
 import { noteScrillaMention } from '../conversation/anniversaryRuntime';
 import { noteShown, recentlyShown } from '../utils/cardShowCooldown';
 import { findRepeat } from '../utils/repeatGuard';
@@ -801,7 +803,7 @@ export const fakeRaresPlugin: Plugin = {
   // gates were built to close. If it is ever wanted, route it through
   // gateSubmission first.
   evaluators: [],
-  services: [KnowledgeOrchestratorService, MemoryStorageService, TelemetryService, CardDisplayService, SmartRouterService, XHarvestService, RecapService, SocialMemoryService, ReleaseNoteService, AnniversaryService, CardFactsImportService],
+  services: [KnowledgeOrchestratorService, MemoryStorageService, TelemetryService, CardDisplayService, SmartRouterService, XHarvestService, RecapService, SocialMemoryService, ReleaseNoteService, AnniversaryService, CardFactsImportService, NewCardService, ReminderService],
   
   events: {
     MESSAGE_RECEIVED: [

@@ -24,9 +24,8 @@ import {
 import { appendDayTurn } from '../conversation/dayLog';
 import { roomsForChat } from '../conversation/roomMap';
 import { FULL_CARD_INDEX, type CardInfo } from '../data/fullCardIndex';
-import { determineCardUrl } from '../utils/cardUrlUtils';
-import { extractFileId, fileIdKind, getTelegramFileId, saveTelegramFileId } from '../utils/telegramFileIdCache';
-import { editMessageText, sendMedia, sendTextMessage } from '../utils/telegramSend';
+import { sendCardToChat } from '../utils/sendCardToChat';
+import { editMessageText, sendTextMessage } from '../utils/telegramSend';
 
 export const TICK_MS = 20_000;
 
@@ -182,31 +181,9 @@ export class AnniversaryService extends Service {
     return true;
   }
 
-  /**
-   * A card, by cached file_id when there is one, otherwise by URL.
-   *
-   * Documents are skipped: the channel refuses them. A GIF goes out as an
-   * animation by URL, which is the path that does not produce the zero-second
-   * video the carousel once did. Anything Telegram rejects is reported false
-   * and the engine picks another card.
-   */
+  /** A card by cached file_id or URL; false when Telegram rejects it and the engine picks another. */
   private async sendCard(chatId: string, card: CardInfo, caption: string): Promise<boolean> {
-    const token = this.token();
-    const cached = getTelegramFileId(card.asset);
-    const kind = fileIdKind(cached);
-    if (cached && kind && kind !== 'document') {
-      const message = await sendMedia(token, chatId, kind, cached, caption);
-      if (message) return true;
-      logger.warn(`[Anniversary] cached file_id for ${card.asset} rejected; trying the URL`);
-    }
-
-    const { url, extension } = determineCardUrl(card, card.asset);
-    const byUrl = extension === 'mp4' ? 'video' : extension === 'gif' ? 'animation' : 'photo';
-    const message = await sendMedia(token, chatId, byUrl, url, caption);
-    if (!message) return false;
-    const fileId = extractFileId(message);
-    if (fileId) saveTelegramFileId(card.asset, fileId);
-    return true;
+    return sendCardToChat(this.token(), chatId, card, caption, undefined, (line) => logger.warn(`[Anniversary] ${line}`));
   }
 
   static async start(runtime: IAgentRuntime): Promise<AnniversaryService> {

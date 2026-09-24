@@ -20,11 +20,15 @@ looks like. Dated when it was written; strike through or delete when done.
       will not describe (ELEVVTED, WUPEPE: refused even on the thumbnail;
       BURNDJPEPE: every copy is over OpenAI's 20MB limit) are retried each
       run - three cheap calls a day. Cap or hand-write them if that grates.
-- [ ] **3. Link replies to the directory** — `card.directory.url` or
-      `/series/S/N` as the canonical page instead of pepe.wtf / xcp.io.
-- [ ] **4. New-card announcements** — the daily sync's `added` list becomes a
-      scheduled post: "new fake: X by Y, series S". Constitution V.24 applies:
-      a room-visible change gets a what's-new.
+- [x] **3. Link replies to the directory** — every Fake Rares card reply
+      carries a "🗂 Directory" button to `/series/S/N`; the artist button
+      goes to `/artists/<slug>` when the directory lists that artist (its
+      slug list is committed as `directory-artists.json`, refreshed by the
+      sync), pepe.wtf otherwise. *(on the branch)*
+- [x] **4. New-card announcements** — `NewCardService` watches the
+      hot-reloaded index hourly and posts each card it has not seen, with
+      the directory button; state seeded on first boot so nothing old is
+      announced. *(on the branch)* The what's-new for 5.16.0 covers it.
 - [ ] **5. Ingest the directory's prose into RAG** with real provenance:
       submission rules (`/submit`), events (`/api/events`), the history
       timeline (client-rendered; needs Playwright), artist bios as they fill

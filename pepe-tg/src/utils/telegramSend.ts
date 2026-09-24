@@ -71,13 +71,14 @@ export async function editMessageText(token: string, chatId: string, messageId: 
 
 export type MediaKind = 'photo' | 'video' | 'animation';
 
-/** A photo, video or animation by file_id or URL, with a plain caption. Returns the sent message. */
+/** A photo, video or animation by file_id or URL, with a plain caption and optional inline keyboard. Returns the sent message. */
 export async function sendMedia(
   token: string,
   chatId: string,
   kind: MediaKind,
   fileIdOrUrl: string,
-  caption: string
+  caption: string,
+  replyMarkup?: Record<string, unknown>
 ): Promise<any | null> {
   const method = kind === 'photo' ? 'sendPhoto' : kind === 'video' ? 'sendVideo' : 'sendAnimation';
   return call(token, method, {
@@ -85,5 +86,6 @@ export async function sendMedia(
     [kind]: fileIdOrUrl,
     caption: caption.slice(0, MAX_CAPTION_CHARS),
     ...(kind === 'video' ? { supports_streaming: true } : {}),
+    ...(replyMarkup ? { reply_markup: replyMarkup } : {}),
   });
 }

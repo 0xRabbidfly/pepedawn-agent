@@ -1,0 +1,13 @@
+{
+  "_comment": "Scheduled broadcasts to the channel. One post per reminder per UTC day, at or after hourUtc, between from and until inclusive. {daysLeft} is the days until `until`. Plain text: no parse_mode. See src/utils/reminders.ts.",
+  "reminders": [
+    {
+      "id": "artist-claim-2026",
+      "from": "2026-09-24",
+      "until": "2026-10-22",
+      "hourUtc": 16,
+      "text": "🎨 Artists: your card is waiting.\n\nIf you made a fake, claim your artist page on the new directory. Bio, links, and the wallet it should go to. Every artist in the directory has a card coming.\n\n⏳ {daysLeft} left. Closes 22 October.\nhttps://fakeraredirectory.com/artists/submit",
+      "button": { "text": "[ CLAIM YOUR CARD ] →", "url": "https://fakeraredirectory.com/artists/submit" }
+    }
+  ]
+}

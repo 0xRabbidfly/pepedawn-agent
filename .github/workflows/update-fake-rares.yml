@@ -93,7 +93,7 @@ jobs:
         id: check-changes
         run: |
           git add -N pepe-tg/src/data/card-visual-facts
-          if git diff --quiet -- pepe-tg/src/data/fake-rares-data.json pepe-tg/src/data/card-visual-facts pepe-tg/src/data/card-visual-traits.json; then
+          if git diff --quiet -- pepe-tg/src/data/fake-rares-data.json pepe-tg/src/data/card-visual-facts pepe-tg/src/data/card-visual-traits.json pepe-tg/src/data/directory-artists.json; then
             echo "changed=false" >> $GITHUB_OUTPUT
             echo "ℹ️  No new cards found"
           else

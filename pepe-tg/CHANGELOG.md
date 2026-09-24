@@ -80,10 +80,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   The nightly restart is what makes a fact committed by the daily run
   recallable the next morning. `CARD_FACTS_IMPORT=off` skips it.
 
+- **Card replies link to the directory.** Every Fake Rares card carries a
+  "🗂 Directory" button to its page, `fakeraredirectory.com/series/S/N`. The
+  artist button (still behind `FAKE_RARES_ARTIST_BUTTONS`) goes to the
+  directory's artist page when the directory lists that artist, and to
+  pepe.wtf as before when it does not - a quarter of our credit strings
+  ("Indelible Trade x Cam") are not artist entities there, so guessing a
+  slug would have sent people to 404s. The directory's artist list, with
+  aliases, is committed as `src/data/directory-artists.json` and refreshed
+  by the daily sync.
+
 ### Added
 
+- **New fakes are announced.** When the daily refresh brings a card the bot
+  has not seen, `NewCardService` posts it to the channel once - the card,
+  "new fake just landed: X by Y, Series S, Card N", the directory button.
+  At most three an hour, so a big merge trickles. State lives in
+  `src/data/new-card-state.json`; a bot without one records every card
+  already in the index and announces nothing, so the first boot on
+  production is silent. `NEW_CARD_ANNOUNCEMENTS=false` turns it off.
+- **Daily reminders.** `src/data/reminders.json` lists broadcasts and their
+  window; `ReminderService` posts each once a day at its UTC hour, with a
+  link button, and counts the days down in the text. The first: artists
+  have until 22 October 2026 to claim their page on the new directory
+  (`/artists/submit`) and get the card waiting for them - posted daily at
+  16:00 UTC until then. `REMINDERS_ENABLED=false` turns it off.
 - `docs/TODO.md` — the open work, in priority, with why each item matters.
 - `src/data/card-visual-facts/` — one file per card the vision pass has seen.
+- `src/data/directory-artists.json` — the directory's artists and slugs.
+- `CARD_INDEX_REFRESH_URL` — where the daily index refresh downloads from.
+  Defaults to master. A branch build must point it at its own file: the
+  test bot's first announcement was MADAMEPEPE, a card master still had
+  under its old spelling, because master's file had replaced the branch's
+  index five minutes after boot.
 
 ## [5.15.1] - 2026-09-23
 

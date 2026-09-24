@@ -1,0 +1,2100 @@
+{
+ "fetchedAt": "2026-09-24",
+ "artists": [
+  {
+   "name": "0010",
+   "slug": "0010",
+   "aliases": []
+  },
+  {
+   "name": "0xAlik",
+   "slug": "0xalik",
+   "aliases": []
+  },
+  {
+   "name": "1BCQVoz",
+   "slug": "1bcqvoz",
+   "aliases": []
+  },
+  {
+   "name": "4LC",
+   "slug": "4lc",
+   "aliases": []
+  },
+  {
+   "name": "6529er",
+   "slug": "6529er",
+   "aliases": []
+  },
+  {
+   "name": "80sKurt",
+   "slug": "80skurt",
+   "aliases": []
+  },
+  {
+   "name": "9272",
+   "slug": "9272",
+   "aliases": []
+  },
+  {
+   "name": "Abstract Mirror",
+   "slug": "abstract-mirror",
+   "aliases": []
+  },
+  {
+   "name": "AbstractUnknown",
+   "slug": "abstractunknown",
+   "aliases": []
+  },
+  {
+   "name": "ACK",
+   "slug": "ack",
+   "aliases": [
+    "Alpha Centauri Kid"
+   ]
+  },
+  {
+   "name": "AD_AD",
+   "slug": "ad-ad",
+   "aliases": []
+  },
+  {
+   "name": "AERAONE",
+   "slug": "aeraone",
+   "aliases": [
+    "AERA"
+   ]
+  },
+  {
+   "name": "Afonso Caravagio",
+   "slug": "afonso-caravagio",
+   "aliases": []
+  },
+  {
+   "name": "Aisha Venus",
+   "slug": "aisha-venus",
+   "aliases": []
+  },
+  {
+   "name": "Al",
+   "slug": "al",
+   "aliases": []
+  },
+  {
+   "name": "ALIENQUEEN",
+   "slug": "alienqueen",
+   "aliases": []
+  },
+  {
+   "name": "All Out Anon",
+   "slug": "all-out-anon",
+   "aliases": []
+  },
+  {
+   "name": "Alondre",
+   "slug": "alondre",
+   "aliases": []
+  },
+  {
+   "name": "Alth0tas",
+   "slug": "alth0tas",
+   "aliases": []
+  },
+  {
+   "name": "Andrea Chiampo",
+   "slug": "andrea-chiampo",
+   "aliases": []
+  },
+  {
+   "name": "Andreas Preis",
+   "slug": "andreas-preis",
+   "aliases": []
+  },
+  {
+   "name": "Apocalypse",
+   "slug": "apocalypse",
+   "aliases": []
+  },
+  {
+   "name": "Aquatic",
+   "slug": "aquatic",
+   "aliases": []
+  },
+  {
+   "name": "Aravan",
+   "slug": "aravan",
+   "aliases": []
+  },
+  {
+   "name": "Archan Nair",
+   "slug": "archan-nair",
+   "aliases": []
+  },
+  {
+   "name": "AROE",
+   "slug": "aroe",
+   "aliases": []
+  },
+  {
+   "name": "Art Bat",
+   "slug": "art-bat",
+   "aliases": []
+  },
+  {
+   "name": "Art GarPUNKel",
+   "slug": "art-garpunkel",
+   "aliases": []
+  },
+  {
+   "name": "Arwyn",
+   "slug": "arwyn",
+   "aliases": []
+  },
+  {
+   "name": "AWRALPH",
+   "slug": "awralph",
+   "aliases": []
+  },
+  {
+   "name": "Baldopg",
+   "slug": "baldopg",
+   "aliases": []
+  },
+  {
+   "name": "banakin",
+   "slug": "banakin",
+   "aliases": []
+  },
+  {
+   "name": "BasqKek",
+   "slug": "basqkek",
+   "aliases": [
+    "Basqkek"
+   ]
+  },
+  {
+   "name": "batzdu",
+   "slug": "batzdu",
+   "aliases": []
+  },
+  {
+   "name": "Ben Strauss",
+   "slug": "ben-strauss",
+   "aliases": []
+  },
+  {
+   "name": "bhare",
+   "slug": "bhare",
+   "aliases": []
+  },
+  {
+   "name": "BIGTOX",
+   "slug": "bigtox",
+   "aliases": []
+  },
+  {
+   "name": "Bitcoin Audio",
+   "slug": "bitcoin-audio",
+   "aliases": []
+  },
+  {
+   "name": "Bitstradamus",
+   "slug": "bitstradamus",
+   "aliases": []
+  },
+  {
+   "name": "BLISSFULMORG",
+   "slug": "blissfulmorg",
+   "aliases": []
+  },
+  {
+   "name": "Booo Urns",
+   "slug": "booo-urns",
+   "aliases": []
+  },
+  {
+   "name": "Britts",
+   "slug": "britts",
+   "aliases": []
+  },
+  {
+   "name": "brocciu",
+   "slug": "brocciu",
+   "aliases": []
+  },
+  {
+   "name": "Bryan Brinkman",
+   "slug": "bryan-brinkman",
+   "aliases": []
+  },
+  {
+   "name": "BTCblaze",
+   "slug": "btcblaze",
+   "aliases": []
+  },
+  {
+   "name": "Bunzy",
+   "slug": "bunzy",
+   "aliases": []
+  },
+  {
+   "name": "BurstMembrane",
+   "slug": "burstmembrane",
+   "aliases": []
+  },
+  {
+   "name": "C3",
+   "slug": "c3",
+   "aliases": []
+  },
+  {
+   "name": "cadmonkey",
+   "slug": "cadmonkey",
+   "aliases": []
+  },
+  {
+   "name": "calboy99",
+   "slug": "calboy99",
+   "aliases": [
+    "Calboy99"
+   ]
+  },
+  {
+   "name": "Cam",
+   "slug": "cam",
+   "aliases": []
+  },
+  {
+   "name": "cana",
+   "slug": "cana",
+   "aliases": []
+  },
+  {
+   "name": "carsonated",
+   "slug": "carsonated",
+   "aliases": []
+  },
+  {
+   "name": "Cath Simard",
+   "slug": "cath-simard",
+   "aliases": []
+  },
+  {
+   "name": "CES",
+   "slug": "ces",
+   "aliases": []
+  },
+  {
+   "name": "cgknight",
+   "slug": "cgknight",
+   "aliases": []
+  },
+  {
+   "name": "Chainleft",
+   "slug": "chainleft",
+   "aliases": []
+  },
+  {
+   "name": "Chaotic Crypto",
+   "slug": "chaotic-crypto",
+   "aliases": []
+  },
+  {
+   "name": "Chris Granneberg",
+   "slug": "chris-granneberg",
+   "aliases": []
+  },
+  {
+   "name": "Chris Storm",
+   "slug": "chris-storm",
+   "aliases": []
+  },
+  {
+   "name": "Chrome Void",
+   "slug": "chrome-void",
+   "aliases": []
+  },
+  {
+   "name": "Chunri",
+   "slug": "chunri",
+   "aliases": []
+  },
+  {
+   "name": "Ciobo",
+   "slug": "ciobo",
+   "aliases": [
+    "Ciobo Bocio"
+   ]
+  },
+  {
+   "name": "Claire Silver",
+   "slug": "claire-silver",
+   "aliases": []
+  },
+  {
+   "name": "Coasters",
+   "slug": "coasters",
+   "aliases": []
+  },
+  {
+   "name": "Coit",
+   "slug": "coit",
+   "aliases": []
+  },
+  {
+   "name": "Coldie",
+   "slug": "coldie",
+   "aliases": []
+  },
+  {
+   "name": "Community Created",
+   "slug": "community-created",
+   "aliases": []
+  },
+  {
+   "name": "coriot",
+   "slug": "coriot",
+   "aliases": []
+  },
+  {
+   "name": "Cornholio the Great",
+   "slug": "cornholio-the-great",
+   "aliases": []
+  },
+  {
+   "name": "COSTA",
+   "slug": "costa",
+   "aliases": [
+    "Costa Jpeg"
+   ]
+  },
+  {
+   "name": "CRIME BREAKFAST",
+   "slug": "crime-breakfast",
+   "aliases": []
+  },
+  {
+   "name": "Crimson Rider",
+   "slug": "crimson-rider",
+   "aliases": []
+  },
+  {
+   "name": "Cronos One",
+   "slug": "cronos-one",
+   "aliases": []
+  },
+  {
+   "name": "Crypsi",
+   "slug": "crypsi",
+   "aliases": []
+  },
+  {
+   "name": "Crypto Ali",
+   "slug": "crypto-ali",
+   "aliases": []
+  },
+  {
+   "name": "CryptoChainer",
+   "slug": "cryptochainer",
+   "aliases": []
+  },
+  {
+   "name": "Cryptograffiti",
+   "slug": "cryptograffiti",
+   "aliases": []
+  },
+  {
+   "name": "CRYPTOPHOBIA",
+   "slug": "cryptophobia",
+   "aliases": []
+  },
+  {
+   "name": "CTC",
+   "slug": "ctc",
+   "aliases": []
+  },
+  {
+   "name": "Cullen Colors",
+   "slug": "cullen-colors",
+   "aliases": []
+  },
+  {
+   "name": "Cydr",
+   "slug": "cydr",
+   "aliases": []
+  },
+  {
+   "name": "Cyph3rpunk5",
+   "slug": "cyph3rpunk5",
+   "aliases": []
+  },
+  {
+   "name": "D Shorty",
+   "slug": "d-shorty",
+   "aliases": []
+  },
+  {
+   "name": "Da'Block God",
+   "slug": "da-block-god",
+   "aliases": []
+  },
+  {
+   "name": "Da Kernel",
+   "slug": "da-kernel",
+   "aliases": []
+  },
+  {
+   "name": "Dalek",
+   "slug": "dalek",
+   "aliases": []
+  },
+  {
+   "name": "DanDarkPool",
+   "slug": "dandarkpool",
+   "aliases": []
+  },
+  {
+   "name": "Dangiuz",
+   "slug": "dangiuz",
+   "aliases": [
+    "Danguiz"
+   ]
+  },
+  {
+   "name": "dark0",
+   "slug": "dark0",
+   "aliases": []
+  },
+  {
+   "name": "Darkfarms",
+   "slug": "darkfarms",
+   "aliases": [
+    "Darkfarms1"
+   ]
+  },
+  {
+   "name": "DarkFluffyRabbit",
+   "slug": "darkfluffyrabbit",
+   "aliases": []
+  },
+  {
+   "name": "Darkknight",
+   "slug": "darkknight",
+   "aliases": []
+  },
+  {
+   "name": "Darky",
+   "slug": "darky",
+   "aliases": []
+  },
+  {
+   "name": "davesta",
+   "slug": "davesta",
+   "aliases": []
+  },
+  {
+   "name": "DCOT",
+   "slug": "dcot",
+   "aliases": []
+  },
+  {
+   "name": "DeeKay",
+   "slug": "deekay",
+   "aliases": []
+  },
+  {
+   "name": "Deep Honey",
+   "slug": "deep-honey",
+   "aliases": []
+  },
+  {
+   "name": "DEFSTALKR",
+   "slug": "defstalkr",
+   "aliases": []
+  },
+  {
+   "name": "Desktop Commando",
+   "slug": "desktop-commando",
+   "aliases": [
+    "DesktopCommando"
+   ]
+  },
+  {
+   "name": "desultor",
+   "slug": "desultor",
+   "aliases": []
+  },
+  {
+   "name": "Digital Ape",
+   "slug": "digital-ape",
+   "aliases": []
+  },
+  {
+   "name": "diid",
+   "slug": "diid",
+   "aliases": []
+  },
+  {
+   "name": "Dim Zayan",
+   "slug": "dim-zayan",
+   "aliases": []
+  },
+  {
+   "name": "Dino",
+   "slug": "dino",
+   "aliases": []
+  },
+  {
+   "name": "DITACRYPTO",
+   "slug": "ditacrypto",
+   "aliases": [
+    "Dita"
+   ]
+  },
+  {
+   "name": "DJ Kermit",
+   "slug": "dj-kermit",
+   "aliases": []
+  },
+  {
+   "name": "DJ Q-Bert",
+   "slug": "dj-q-bert",
+   "aliases": []
+  },
+  {
+   "name": "Django Bits",
+   "slug": "django-bits",
+   "aliases": []
+  },
+  {
+   "name": "Dmitri Cherniak",
+   "slug": "dmitri-cherniak",
+   "aliases": []
+  },
+  {
+   "name": "Doctor Phoenix",
+   "slug": "doctor-phoenix",
+   "aliases": []
+  },
+  {
+   "name": "Doge-Style",
+   "slug": "doge-style",
+   "aliases": []
+  },
+  {
+   "name": "Dom",
+   "slug": "dom",
+   "aliases": []
+  },
+  {
+   "name": "Dr. Greedy",
+   "slug": "dr-greedy",
+   "aliases": []
+  },
+  {
+   "name": "Dr. Pep",
+   "slug": "dr-pep",
+   "aliases": []
+  },
+  {
+   "name": "Dr. $uss",
+   "slug": "dr-uss",
+   "aliases": []
+  },
+  {
+   "name": "Early Bird",
+   "slug": "early-bird",
+   "aliases": []
+  },
+  {
+   "name": "Easy B",
+   "slug": "easy-b",
+   "aliases": [
+    "easyB"
+   ]
+  },
+  {
+   "name": "EclecticMethod",
+   "slug": "eclecticmethod",
+   "aliases": []
+  },
+  {
+   "name": "El Cholo Pepe",
+   "slug": "el-cholo-pepe",
+   "aliases": []
+  },
+  {
+   "name": "Elekt1",
+   "slug": "elekt1",
+   "aliases": []
+  },
+  {
+   "name": "Elispri",
+   "slug": "elispri",
+   "aliases": []
+  },
+  {
+   "name": "Elvis Dead",
+   "slug": "elvis-dead",
+   "aliases": []
+  },
+  {
+   "name": "EmblematiX",
+   "slug": "emblematix",
+   "aliases": [
+    "EMBLEMATIX"
+   ]
+  },
+  {
+   "name": "Exahash",
+   "slug": "exahash",
+   "aliases": []
+  },
+  {
+   "name": "Exmoor Beast",
+   "slug": "exmoor-beast",
+   "aliases": []
+  },
+  {
+   "name": "Fabrique",
+   "slug": "fabrique",
+   "aliases": []
+  },
+  {
+   "name": "Fake Annie",
+   "slug": "fake-annie",
+   "aliases": []
+  },
+  {
+   "name": "Fake Sketch",
+   "slug": "fake-sketch",
+   "aliases": []
+  },
+  {
+   "name": "FakeBuddha",
+   "slug": "fakebuddha",
+   "aliases": []
+  },
+  {
+   "name": "faketrashbin",
+   "slug": "faketrashbin",
+   "aliases": []
+  },
+  {
+   "name": "FAR",
+   "slug": "far",
+   "aliases": []
+  },
+  {
+   "name": "Father John",
+   "slug": "father-john",
+   "aliases": []
+  },
+  {
+   "name": "Fawkek",
+   "slug": "fawkek",
+   "aliases": []
+  },
+  {
+   "name": "Ffmad",
+   "slug": "ffmad",
+   "aliases": []
+  },
+  {
+   "name": "Finestrares",
+   "slug": "finestrares",
+   "aliases": []
+  },
+  {
+   "name": "fishbrain",
+   "slug": "fishbrain",
+   "aliases": []
+  },
+  {
+   "name": "FISTSOFFURY",
+   "slug": "fistsoffury",
+   "aliases": []
+  },
+  {
+   "name": "FORD",
+   "slug": "ford",
+   "aliases": []
+  },
+  {
+   "name": "FourLeafClover",
+   "slug": "fourleafclover",
+   "aliases": []
+  },
+  {
+   "name": "FRIENDS WITH YOU",
+   "slug": "friends-with-you",
+   "aliases": []
+  },
+  {
+   "name": "FWD",
+   "slug": "fwd",
+   "aliases": []
+  },
+  {
+   "name": "Gary Cartlidge",
+   "slug": "gary-cartlidge",
+   "aliases": []
+  },
+  {
+   "name": "Ghostface Killah",
+   "slug": "ghostface-killah",
+   "aliases": []
+  },
+  {
+   "name": "GISELX",
+   "slug": "giselx",
+   "aliases": []
+  },
+  {
+   "name": "glen",
+   "slug": "glen",
+   "aliases": []
+  },
+  {
+   "name": "GMONEY",
+   "slug": "gmoney",
+   "aliases": []
+  },
+  {
+   "name": "GoingPepe100",
+   "slug": "goingpepe100",
+   "aliases": []
+  },
+  {
+   "name": "Gonkulator",
+   "slug": "gonkulator",
+   "aliases": []
+  },
+  {
+   "name": "GonkX",
+   "slug": "gonkx",
+   "aliases": []
+  },
+  {
+   "name": "Grant Riven Yun",
+   "slug": "grant-riven-yun",
+   "aliases": []
+  },
+  {
+   "name": "Greencross",
+   "slug": "greencross",
+   "aliases": []
+  },
+  {
+   "name": "GRNQRTR",
+   "slug": "grnqrtr",
+   "aliases": []
+  },
+  {
+   "name": "Gus Grillasca",
+   "slug": "gus-grillasca",
+   "aliases": []
+  },
+  {
+   "name": "Gustavo",
+   "slug": "gustavo",
+   "aliases": []
+  },
+  {
+   "name": "Guzman",
+   "slug": "guzman",
+   "aliases": []
+  },
+  {
+   "name": "Hafftka",
+   "slug": "hafftka",
+   "aliases": []
+  },
+  {
+   "name": "Hammad",
+   "slug": "hammad",
+   "aliases": []
+  },
+  {
+   "name": "Harold Harambe",
+   "slug": "harold-harambe",
+   "aliases": []
+  },
+  {
+   "name": "Hitchdank",
+   "slug": "hitchdank",
+   "aliases": []
+  },
+  {
+   "name": "Hitomi Matsui",
+   "slug": "hitomi-matsui",
+   "aliases": []
+  },
+  {
+   "name": "HNFT Pepe",
+   "slug": "hnft-pepe",
+   "aliases": []
+  },
+  {
+   "name": "Holden L.",
+   "slug": "holden-l",
+   "aliases": []
+  },
+  {
+   "name": "HollywoodMeta",
+   "slug": "hollywoodmeta",
+   "aliases": []
+  },
+  {
+   "name": "ICQ",
+   "slug": "icq",
+   "aliases": []
+  },
+  {
+   "name": "Ill Bill",
+   "slug": "ill-bill",
+   "aliases": []
+  },
+  {
+   "name": "Indelible Trade",
+   "slug": "indelible-trade",
+   "aliases": [
+    "Indelible"
+   ]
+  },
+  {
+   "name": "inn0va",
+   "slug": "inn0va",
+   "aliases": []
+  },
+  {
+   "name": "IPUTSA",
+   "slug": "iputsa",
+   "aliases": []
+  },
+  {
+   "name": "Irem Bozatak",
+   "slug": "irem-bozatak",
+   "aliases": []
+  },
+  {
+   "name": "Isaac O",
+   "slug": "isaac-o",
+   "aliases": []
+  },
+  {
+   "name": "Iuri",
+   "slug": "iuri",
+   "aliases": []
+  },
+  {
+   "name": "Jack Kaido",
+   "slug": "jack-kaido",
+   "aliases": [
+    "Jack Kaido"
+   ]
+  },
+  {
+   "name": "Jaen",
+   "slug": "jaen",
+   "aliases": []
+  },
+  {
+   "name": "JAH",
+   "slug": "jah",
+   "aliases": []
+  },
+  {
+   "name": "Jak",
+   "slug": "jak",
+   "aliases": []
+  },
+  {
+   "name": "JAKE",
+   "slug": "jake",
+   "aliases": []
+  },
+  {
+   "name": "Jake Fried",
+   "slug": "jake-fried",
+   "aliases": []
+  },
+  {
+   "name": "JAMEX",
+   "slug": "jamex",
+   "aliases": [
+    "JameX"
+   ]
+  },
+  {
+   "name": "JB",
+   "slug": "jb",
+   "aliases": []
+  },
+  {
+   "name": "JDog",
+   "slug": "jdog",
+   "aliases": []
+  },
+  {
+   "name": "Jeremy Booth",
+   "slug": "jeremy-booth",
+   "aliases": []
+  },
+  {
+   "name": "Joe Atang",
+   "slug": "joe-atang",
+   "aliases": []
+  },
+  {
+   "name": "Joe Looney",
+   "slug": "joe-looney",
+   "aliases": [
+    "Looney"
+   ]
+  },
+  {
+   "name": "Joe Pease",
+   "slug": "joe-pease",
+   "aliases": []
+  },
+  {
+   "name": "JohnDXB",
+   "slug": "johndxb",
+   "aliases": []
+  },
+  {
+   "name": "Johnny Dollar",
+   "slug": "johnny-dollar",
+   "aliases": []
+  },
+  {
+   "name": "Jonny Johnson",
+   "slug": "jonny-johnson",
+   "aliases": []
+  },
+  {
+   "name": "Jose Burro",
+   "slug": "jose-burro",
+   "aliases": [
+    "Jose Burrito"
+   ]
+  },
+  {
+   "name": "JP Jannsen",
+   "slug": "jp-jannsen",
+   "aliases": []
+  },
+  {
+   "name": "JULES",
+   "slug": "jules",
+   "aliases": []
+  },
+  {
+   "name": "Jum Napat",
+   "slug": "jum-napat",
+   "aliases": []
+  },
+  {
+   "name": "Kane Mayfield",
+   "slug": "kane-mayfield",
+   "aliases": []
+  },
+  {
+   "name": "Kaph",
+   "slug": "kaph",
+   "aliases": []
+  },
+  {
+   "name": "Katerine Escobar",
+   "slug": "katerine-escobar",
+   "aliases": []
+  },
+  {
+   "name": "Kenneth B. Moon",
+   "slug": "kenneth-b-moon",
+   "aliases": []
+  },
+  {
+   "name": "KERO",
+   "slug": "kero",
+   "aliases": []
+  },
+  {
+   "name": "Kibo",
+   "slug": "kibo",
+   "aliases": []
+  },
+  {
+   "name": "Killer Acid",
+   "slug": "killer-acid",
+   "aliases": []
+  },
+  {
+   "name": "Killian Moore",
+   "slug": "killian-moore",
+   "aliases": []
+  },
+  {
+   "name": "kr",
+   "slug": "kr",
+   "aliases": []
+  },
+  {
+   "name": "KristyGlas",
+   "slug": "kristyglas",
+   "aliases": []
+  },
+  {
+   "name": "Ksenia Buridanova",
+   "slug": "ksenia-buridanova",
+   "aliases": []
+  },
+  {
+   "name": "Lalana",
+   "slug": "lalana",
+   "aliases": []
+  },
+  {
+   "name": "LavaaGang",
+   "slug": "lavaagang",
+   "aliases": []
+  },
+  {
+   "name": "Leigha-Beth",
+   "slug": "leigha-beth",
+   "aliases": []
+  },
+  {
+   "name": "Lenny",
+   "slug": "lenny",
+   "aliases": []
+  },
+  {
+   "name": "Limbo Mask",
+   "slug": "limbo-mask",
+   "aliases": []
+  },
+  {
+   "name": "Logik",
+   "slug": "logik",
+   "aliases": []
+  },
+  {
+   "name": "looks rare",
+   "slug": "looks-rare",
+   "aliases": []
+  },
+  {
+   "name": "Lord Jaime V. Shill",
+   "slug": "lord-jaime-v-shill",
+   "aliases": [
+    "Lord Jamie V Shill"
+   ]
+  },
+  {
+   "name": "Love Being",
+   "slug": "love-being",
+   "aliases": [
+    "LOVEBEING"
+   ]
+  },
+  {
+   "name": "Luis Simo",
+   "slug": "luis-simo",
+   "aliases": []
+  },
+  {
+   "name": "Lun Kazuki",
+   "slug": "lun-kazuki",
+   "aliases": []
+  },
+  {
+   "name": "Luna",
+   "slug": "luna",
+   "aliases": []
+  },
+  {
+   "name": "LycosFreak",
+   "slug": "lycosfreak",
+   "aliases": []
+  },
+  {
+   "name": "M.BTC",
+   "slug": "m-btc",
+   "aliases": []
+  },
+  {
+   "name": "Mallery",
+   "slug": "mallery",
+   "aliases": []
+  },
+  {
+   "name": "Mandarine Marie",
+   "slug": "mandarine-marie",
+   "aliases": [
+    "Mandarin Marie"
+   ]
+  },
+  {
+   "name": "Marcus Connor",
+   "slug": "marcus-connor",
+   "aliases": []
+  },
+  {
+   "name": "Matt Kane",
+   "slug": "matt-kane",
+   "aliases": []
+  },
+  {
+   "name": "Matt Szczur",
+   "slug": "matt-szczur",
+   "aliases": []
+  },
+  {
+   "name": "MAX CAPACITY",
+   "slug": "max-capacity",
+   "aliases": []
+  },
+  {
+   "name": "Maya",
+   "slug": "maya",
+   "aliases": []
+  },
+  {
+   "name": "MC Fanny",
+   "slug": "mc-fanny",
+   "aliases": []
+  },
+  {
+   "name": "Megatron",
+   "slug": "megatron",
+   "aliases": []
+  },
+  {
+   "name": "mekabu",
+   "slug": "mekabu",
+   "aliases": []
+  },
+  {
+   "name": "Melih Polat",
+   "slug": "melih-polat",
+   "aliases": []
+  },
+  {
+   "name": "mellow mining",
+   "slug": "mellow-mining",
+   "aliases": []
+  },
+  {
+   "name": "Meme Conscious",
+   "slug": "meme-conscious",
+   "aliases": []
+  },
+  {
+   "name": "Memeticx",
+   "slug": "memeticx",
+   "aliases": []
+  },
+  {
+   "name": "mera.ki",
+   "slug": "mera-ki",
+   "aliases": []
+  },
+  {
+   "name": "metadad",
+   "slug": "metadad",
+   "aliases": []
+  },
+  {
+   "name": "METAVOXELZ",
+   "slug": "metavoxelz",
+   "aliases": []
+  },
+  {
+   "name": "Michael Naples",
+   "slug": "michael-naples",
+   "aliases": [
+    "Mike Naples"
+   ]
+  },
+  {
+   "name": "Mighty Shroom",
+   "slug": "mighty-shroom",
+   "aliases": []
+  },
+  {
+   "name": "Migrating Lines",
+   "slug": "migrating-lines",
+   "aliases": []
+  },
+  {
+   "name": "Mike in Space",
+   "slug": "mike-in-space",
+   "aliases": []
+  },
+  {
+   "name": "Mike Three",
+   "slug": "mike-three",
+   "aliases": []
+  },
+  {
+   "name": "MIKEYCORTEZ",
+   "slug": "mikeycortez",
+   "aliases": []
+  },
+  {
+   "name": "MintFace",
+   "slug": "mintface",
+   "aliases": []
+  },
+  {
+   "name": "MLOdotArt",
+   "slug": "mlodotart",
+   "aliases": []
+  },
+  {
+   "name": "Moxarras",
+   "slug": "moxarras",
+   "aliases": []
+  },
+  {
+   "name": "MR",
+   "slug": "mr",
+   "aliases": []
+  },
+  {
+   "name": "Mr. Enrique Fajaque",
+   "slug": "mr-enrique-fajaque",
+   "aliases": []
+  },
+  {
+   "name": "Mr. Hansel",
+   "slug": "mr-hansel",
+   "aliases": []
+  },
+  {
+   "name": "Mr. HODLPIG",
+   "slug": "mr-hodlpig",
+   "aliases": []
+  },
+  {
+   "name": "Mr. Million Miles Away",
+   "slug": "mr-million-miles-away",
+   "aliases": []
+  },
+  {
+   "name": "Mr. & Mrs. Micon",
+   "slug": "mr-mrs-micon",
+   "aliases": []
+  },
+  {
+   "name": "Mr. P",
+   "slug": "mr-p",
+   "aliases": []
+  },
+  {
+   "name": "Mr. Spree",
+   "slug": "mr-spree",
+   "aliases": []
+  },
+  {
+   "name": "Mrs. Micon",
+   "slug": "mrs-micon",
+   "aliases": []
+  },
+  {
+   "name": "MT",
+   "slug": "mt",
+   "aliases": []
+  },
+  {
+   "name": "Mumbling Bearded Freak",
+   "slug": "mumbling-bearded-freak",
+   "aliases": []
+  },
+  {
+   "name": "nathansonic",
+   "slug": "nathansonic",
+   "aliases": []
+  },
+  {
+   "name": "Nay",
+   "slug": "nay",
+   "aliases": []
+  },
+  {
+   "name": "Ndhoz",
+   "slug": "ndhoz",
+   "aliases": []
+  },
+  {
+   "name": "Ness Graphics",
+   "slug": "ness-graphics",
+   "aliases": []
+  },
+  {
+   "name": "netidx",
+   "slug": "netidx",
+   "aliases": [
+    "Netidx"
+   ]
+  },
+  {
+   "name": "NFTMANC",
+   "slug": "nftmanc",
+   "aliases": []
+  },
+  {
+   "name": "Nicolas Sierro",
+   "slug": "nicolas-sierro",
+   "aliases": [
+    "Nicholas Sierro"
+   ]
+  },
+  {
+   "name": "Nikolina Petolas",
+   "slug": "nikolina-petolas",
+   "aliases": []
+  },
+  {
+   "name": "Nimzobit",
+   "slug": "nimzobit",
+   "aliases": []
+  },
+  {
+   "name": "Nipdog",
+   "slug": "nipdog",
+   "aliases": []
+  },
+  {
+   "name": "NNIA",
+   "slug": "nnia",
+   "aliases": []
+  },
+  {
+   "name": "Norman Comics",
+   "slug": "norman-comics",
+   "aliases": []
+  },
+  {
+   "name": "Obxium",
+   "slug": "obxium",
+   "aliases": []
+  },
+  {
+   "name": "Odious",
+   "slug": "odious",
+   "aliases": []
+  },
+  {
+   "name": "OE",
+   "slug": "oe",
+   "aliases": [
+    "O E"
+   ]
+  },
+  {
+   "name": "OJB NFT",
+   "slug": "ojb-nft",
+   "aliases": []
+  },
+  {
+   "name": "Oliver Morris",
+   "slug": "oliver-morris",
+   "aliases": []
+  },
+  {
+   "name": "Olivia Pedigo",
+   "slug": "olivia-pedigo",
+   "aliases": []
+  },
+  {
+   "name": "olliesblog",
+   "slug": "olliesblog",
+   "aliases": []
+  },
+  {
+   "name": "Onigiri",
+   "slug": "onigiri",
+   "aliases": []
+  },
+  {
+   "name": "OoakosiMo",
+   "slug": "ooakosimo",
+   "aliases": []
+  },
+  {
+   "name": "Optimist",
+   "slug": "optimist",
+   "aliases": []
+  },
+  {
+   "name": "OSF",
+   "slug": "osf",
+   "aliases": []
+  },
+  {
+   "name": "Other World",
+   "slug": "otherworld",
+   "aliases": []
+  },
+  {
+   "name": "Our Everyday Earth",
+   "slug": "our-everyday-earth",
+   "aliases": []
+  },
+  {
+   "name": "PabloRica$$o",
+   "slug": "pablorica-o",
+   "aliases": []
+  },
+  {
+   "name": "Paper Ape",
+   "slug": "paper-ape",
+   "aliases": []
+  },
+  {
+   "name": "ParisianForge",
+   "slug": "parisianforge",
+   "aliases": []
+  },
+  {
+   "name": "PEEPS",
+   "slug": "peeps",
+   "aliases": []
+  },
+  {
+   "name": "Pepe",
+   "slug": "pepe",
+   "aliases": []
+  },
+  {
+   "name": "Pepe Flyers",
+   "slug": "pepe-flyers",
+   "aliases": []
+  },
+  {
+   "name": "Pepe Inside",
+   "slug": "pepe-inside",
+   "aliases": []
+  },
+  {
+   "name": "Pepe Le Hues",
+   "slug": "pepe-le-hues",
+   "aliases": []
+  },
+  {
+   "name": "Pepe Picasso",
+   "slug": "pepe-picasso",
+   "aliases": []
+  },
+  {
+   "name": "Pepecapitol",
+   "slug": "pepecapitol",
+   "aliases": []
+  },
+  {
+   "name": "PepEdward Hopper",
+   "slug": "pepedward-hopper",
+   "aliases": []
+  },
+  {
+   "name": "Pepenardo",
+   "slug": "pepenardo",
+   "aliases": []
+  },
+  {
+   "name": "PEPETHOTH",
+   "slug": "pepethoth",
+   "aliases": []
+  },
+  {
+   "name": "PEPSIKOALA",
+   "slug": "pepsikoala",
+   "aliases": []
+  },
+  {
+   "name": "Pifu",
+   "slug": "pifu",
+   "aliases": []
+  },
+  {
+   "name": "Pimpernel Jones",
+   "slug": "pimpernel-jones",
+   "aliases": []
+  },
+  {
+   "name": "pinocchio",
+   "slug": "pinocchio",
+   "aliases": []
+  },
+  {
+   "name": "PopWonder",
+   "slug": "popwonder",
+   "aliases": []
+  },
+  {
+   "name": "Porkchop",
+   "slug": "porkchop",
+   "aliases": []
+  },
+  {
+   "name": "Prateek Dhiman",
+   "slug": "prateek-dhiman",
+   "aliases": []
+  },
+  {
+   "name": "Prefer Wealth",
+   "slug": "prefer-wealth",
+   "aliases": []
+  },
+  {
+   "name": "Prez1",
+   "slug": "prez1",
+   "aliases": []
+  },
+  {
+   "name": "Prorok",
+   "slug": "prorok",
+   "aliases": []
+  },
+  {
+   "name": "PUR",
+   "slug": "pur",
+   "aliases": []
+  },
+  {
+   "name": "PurpleDrank7855",
+   "slug": "purpledrank7855",
+   "aliases": []
+  },
+  {
+   "name": "purplehat.eth",
+   "slug": "purplehat-eth",
+   "aliases": []
+  },
+  {
+   "name": "rabbidfly",
+   "slug": "rabbidfly",
+   "aliases": []
+  },
+  {
+   "name": "Raf Grassetti",
+   "slug": "raf-grassetti",
+   "aliases": []
+  },
+  {
+   "name": "RAHVO",
+   "slug": "rahvo",
+   "aliases": []
+  },
+  {
+   "name": "Rare Designer",
+   "slug": "rare-designer",
+   "aliases": []
+  },
+  {
+   "name": "Rare Junior",
+   "slug": "rare-junior",
+   "aliases": []
+  },
+  {
+   "name": "Rare Scrilla",
+   "slug": "rare-scrilla",
+   "aliases": []
+  },
+  {
+   "name": "Rarejay",
+   "slug": "rarejay",
+   "aliases": []
+  },
+  {
+   "name": "RC",
+   "slug": "rc",
+   "aliases": []
+  },
+  {
+   "name": "realPepstein",
+   "slug": "realpepstein",
+   "aliases": []
+  },
+  {
+   "name": "RebelMoney",
+   "slug": "rebelmoney",
+   "aliases": []
+  },
+  {
+   "name": "Regan",
+   "slug": "regan",
+   "aliases": [
+    "regan"
+   ]
+  },
+  {
+   "name": "REMSTER",
+   "slug": "remster",
+   "aliases": []
+  },
+  {
+   "name": "RΞY",
+   "slug": "reylarsdam",
+   "aliases": [
+    "REY"
+   ]
+  },
+  {
+   "name": "Rik Oostenbroek",
+   "slug": "rik-oostenbroek",
+   "aliases": []
+  },
+  {
+   "name": "Riven",
+   "slug": "riven",
+   "aliases": []
+  },
+  {
+   "name": "ROBNESS",
+   "slug": "robness",
+   "aliases": [
+    "ROBNESS V2"
+   ]
+  },
+  {
+   "name": "rochigg",
+   "slug": "rochigg",
+   "aliases": []
+  },
+  {
+   "name": "Rodro",
+   "slug": "rodro",
+   "aliases": []
+  },
+  {
+   "name": "Roger Fliporian",
+   "slug": "roger-fliporian",
+   "aliases": []
+  },
+  {
+   "name": "Rollah",
+   "slug": "rollah",
+   "aliases": []
+  },
+  {
+   "name": "RubenBigQ",
+   "slug": "rubenbigq",
+   "aliases": []
+  },
+  {
+   "name": "Rutger van der Tas",
+   "slug": "rutger-van-der-tas",
+   "aliases": []
+  },
+  {
+   "name": "Ry",
+   "slug": "ry",
+   "aliases": []
+  },
+  {
+   "name": "Ryan D. Anderson",
+   "slug": "ryan-d-anderson",
+   "aliases": []
+  },
+  {
+   "name": "Ryan Koopmans",
+   "slug": "ryan-koopmans",
+   "aliases": []
+  },
+  {
+   "name": "Rydes",
+   "slug": "rydes",
+   "aliases": []
+  },
+  {
+   "name": "ryr",
+   "slug": "ryr",
+   "aliases": []
+  },
+  {
+   "name": "Saed",
+   "slug": "saed",
+   "aliases": []
+  },
+  {
+   "name": "SAHREDTOY",
+   "slug": "sahredtoy",
+   "aliases": []
+  },
+  {
+   "name": "SaSHA-256",
+   "slug": "sasha-256",
+   "aliases": []
+  },
+  {
+   "name": "Sasha Chudo",
+   "slug": "sasha-chudo",
+   "aliases": []
+  },
+  {
+   "name": "Scorch Beats",
+   "slug": "scorch-beats",
+   "aliases": []
+  },
+  {
+   "name": "Seerlight",
+   "slug": "seerlight",
+   "aliases": [
+    "Seerlight"
+   ]
+  },
+  {
+   "name": "Shaban Shaame",
+   "slug": "shaban-shaame",
+   "aliases": []
+  },
+  {
+   "name": "ShakAttak",
+   "slug": "shakattak",
+   "aliases": []
+  },
+  {
+   "name": "Shannon Code",
+   "slug": "shannon-code",
+   "aliases": []
+  },
+  {
+   "name": "Shawn Leary",
+   "slug": "shawn-leary",
+   "aliases": []
+  },
+  {
+   "name": "SHEWOLF",
+   "slug": "shewolf",
+   "aliases": []
+  },
+  {
+   "name": "ShowerShoes",
+   "slug": "showershoes",
+   "aliases": []
+  },
+  {
+   "name": "Sir Barry Gibb",
+   "slug": "sir-barry-gibb",
+   "aliases": []
+  },
+  {
+   "name": "Skife",
+   "slug": "skife",
+   "aliases": []
+  },
+  {
+   "name": "Snuxton Pack",
+   "slug": "snuxton-pack",
+   "aliases": []
+  },
+  {
+   "name": "Spank Ink",
+   "slug": "spank-ink",
+   "aliases": []
+  },
+  {
+   "name": "StackItUp",
+   "slug": "stackitup",
+   "aliases": []
+  },
+  {
+   "name": "Stas",
+   "slug": "stas",
+   "aliases": []
+  },
+  {
+   "name": "Steve Weave",
+   "slug": "steve-weave",
+   "aliases": []
+  },
+  {
+   "name": "StoneOfJordan",
+   "slug": "stoneofjordan",
+   "aliases": []
+  },
+  {
+   "name": "StrangerSolemn",
+   "slug": "strangersolemn",
+   "aliases": []
+  },
+  {
+   "name": "STVDIO NOUVEAU",
+   "slug": "stvdio-nouveau",
+   "aliases": []
+  },
+  {
+   "name": "SuperTrip64",
+   "slug": "supertrip",
+   "aliases": []
+  },
+  {
+   "name": "T. Wade",
+   "slug": "t-wade",
+   "aliases": []
+  },
+  {
+   "name": "Tall Greg Art",
+   "slug": "tall-greg-art",
+   "aliases": []
+  },
+  {
+   "name": "Tasha Moon",
+   "slug": "tasha-moon",
+   "aliases": []
+  },
+  {
+   "name": "Tek",
+   "slug": "tek",
+   "aliases": []
+  },
+  {
+   "name": "teymthebeast",
+   "slug": "teymthebeast",
+   "aliases": []
+  },
+  {
+   "name": "The Genius",
+   "slug": "the-genius",
+   "aliases": []
+  },
+  {
+   "name": "the mule",
+   "slug": "the-mule",
+   "aliases": [
+    "The Mule"
+   ]
+  },
+  {
+   "name": "The Park",
+   "slug": "the-park",
+   "aliases": []
+  },
+  {
+   "name": "Theo Goodman",
+   "slug": "theo-goodman",
+   "aliases": []
+  },
+  {
+   "name": "thewisekhan",
+   "slug": "thewisekhan",
+   "aliases": []
+  },
+  {
+   "name": "threepanelcrimes",
+   "slug": "threepanelcrimes",
+   "aliases": []
+  },
+  {
+   "name": "Tizar Berandalan",
+   "slug": "tizar-berandalan",
+   "aliases": []
+  },
+  {
+   "name": "Tjo",
+   "slug": "tjo",
+   "aliases": []
+  },
+  {
+   "name": "TKY",
+   "slug": "tky",
+   "aliases": []
+  },
+  {
+   "name": "Tommy",
+   "slug": "tommy",
+   "aliases": []
+  },
+  {
+   "name": "Tommy Wilson",
+   "slug": "tommy-wilson",
+   "aliases": []
+  },
+  {
+   "name": "Tomopen",
+   "slug": "tomopen",
+   "aliases": []
+  },
+  {
+   "name": "TRITHEMIUSPEPE",
+   "slug": "trithemiuspepe",
+   "aliases": []
+  },
+  {
+   "name": "UNO8",
+   "slug": "uno8",
+   "aliases": []
+  },
+  {
+   "name": "Uttermelon",
+   "slug": "uttermelon",
+   "aliases": []
+  },
+  {
+   "name": "VaJE",
+   "slug": "vaje",
+   "aliases": [
+    "VaJe"
+   ]
+  },
+  {
+   "name": "VeryRareFren",
+   "slug": "veryrarefren",
+   "aliases": []
+  },
+  {
+   "name": "Vexx",
+   "slug": "vexx",
+   "aliases": []
+  },
+  {
+   "name": "Virtual Alaska",
+   "slug": "virtual-alaska",
+   "aliases": []
+  },
+  {
+   "name": "Viva La Vandal",
+   "slug": "viva-la-vandal",
+   "aliases": []
+  },
+  {
+   "name": "Vlad Costea",
+   "slug": "vlad-costea",
+   "aliases": []
+  },
+  {
+   "name": "VSTRVL",
+   "slug": "vstrvl",
+   "aliases": []
+  },
+  {
+   "name": "VVD",
+   "slug": "vvd",
+   "aliases": []
+  },
+  {
+   "name": "Wazzu",
+   "slug": "wazzu",
+   "aliases": []
+  },
+  {
+   "name": "Wes Henry",
+   "slug": "wes-henry",
+   "aliases": []
+  },
+  {
+   "name": "WetPotatoBrain",
+   "slug": "wetpotatobrain",
+   "aliases": []
+  },
+  {
+   "name": "Whalesink",
+   "slug": "whalesink",
+   "aliases": []
+  },
+  {
+   "name": "Whoisit",
+   "slug": "whoisit",
+   "aliases": []
+  },
+  {
+   "name": "Willie Waze",
+   "slug": "willie-waze",
+   "aliases": []
+  },
+  {
+   "name": "windshitheavy",
+   "slug": "windshitheavy",
+   "aliases": []
+  },
+  {
+   "name": "Winnie",
+   "slug": "winnie",
+   "aliases": []
+  },
+  {
+   "name": "Wizard X",
+   "slug": "wizard-x",
+   "aliases": []
+  },
+  {
+   "name": "WomanNFT",
+   "slug": "womannft",
+   "aliases": []
+  },
+  {
+   "name": "Worm",
+   "slug": "worm",
+   "aliases": []
+  },
+  {
+   "name": "XWAVE",
+   "slug": "xwave",
+   "aliases": []
+  },
+  {
+   "name": "Yog Joshi",
+   "slug": "yog-joshi",
+   "aliases": []
+  },
+  {
+   "name": "Yoni",
+   "slug": "yoni",
+   "aliases": []
+  },
+  {
+   "name": "YOTET",
+   "slug": "yotet",
+   "aliases": []
+  },
+  {
+   "name": "YoulDesign",
+   "slug": "youldesign",
+   "aliases": []
+  },
+  {
+   "name": "YT",
+   "slug": "yt",
+   "aliases": []
+  },
+  {
+   "name": "Zaid Kirdsey",
+   "slug": "zaid-kirdsey",
+   "aliases": []
+  },
+  {
+   "name": "ZED",
+   "slug": "zed",
+   "aliases": []
+  },
+  {
+   "name": "ZeroG",
+   "slug": "zerog",
+   "aliases": []
+  },
+  {
+   "name": "ZETRA",
+   "slug": "zetra",
+   "aliases": []
+  },
+  {
+   "name": "Zima Blue",
+   "slug": "zima-blue",
+   "aliases": []
+  },
+  {
+   "name": "Zoku",
+   "slug": "zoku",
+   "aliases": []
+  },
+  {
+   "name": "ZOOMO",
+   "slug": "zoomo",
+   "aliases": []
+  }
+ ]
+}

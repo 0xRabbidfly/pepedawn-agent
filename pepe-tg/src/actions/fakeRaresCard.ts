@@ -31,6 +31,7 @@ import { buildSuggestionResponse } from "../utils/cardSuggestions";
 import { parseCardCommand } from "../utils/cardCommandParse";
 import { escapeTelegramMarkdown } from "../utils/telegramMarkdown";
 import { directoryMedia, preferDirectoryMedia } from "../utils/cardUrlUtils";
+import { buildCardButtons } from "../utils/directoryLinks";
 
 /**
  * Fake Rares Card Display Action
@@ -368,26 +369,14 @@ export function buildCardDisplayMessage(params: CardDisplayParams): string {
 }
 
 /**
- * Builds artist button if artist info is available
+ * The link buttons under a card: its directory page, and its artist (on
+ * the directory when it knows them, on pepe.wtf otherwise - the artist
+ * button keeps its FAKE_RARES_ARTIST_BUTTONS gate). See directoryLinks.
  */
 export function buildArtistButton(
   cardInfo: CardInfo | null,
 ): Array<{ text: string; url: string }> {
-  // Feature toggle: set FAKE_RARES_ARTIST_BUTTONS=true to enable globally
-  const isEnabled = process.env.FAKE_RARES_ARTIST_BUTTONS === "true";
-  if (!isEnabled) {
-    return [];
-  }
-  if (!cardInfo?.artist || !cardInfo?.artistSlug) {
-    return [];
-  }
-
-  return [
-    {
-      text: `👨‍🎨 ${cardInfo.artist}`,
-      url: `https://pepe.wtf/artists/${cardInfo.artistSlug}`,
-    },
-  ];
+  return buildCardButtons(cardInfo);
 }
 
 /**
