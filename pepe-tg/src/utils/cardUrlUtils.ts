@@ -30,6 +30,36 @@ export function getFakeRaresImageUrl(
   return `${FAKE_RARES_BASE_URL}/${seriesNumber}/${encodedAssetName}.${extension}`;
 }
 
+/**
+ * A media URL scraped from the old directory site. That site was replaced on
+ * 23 September 2026 and every one of these returns 403; they were the only
+ * source for the ten newest Series 18 cards, which is why the carousel showed
+ * nothing past card 31. Same host as the new site, different path.
+ */
+export function isOldSiteUrl(url: string | null | undefined): boolean {
+  return !!url && /fakeraredirectory\.com\/wp-content\//i.test(url);
+}
+
+/**
+ * Should this card be fetched from the directory's CDN rather than our own
+ * sources? Only when ours are dead or missing.
+ *
+ * "CDN first" was tried and measured across all 918 cards: 44 animated cards
+ * would have been sent as stills, because the directory holds only a still
+ * image for many GIF and MP4 cards, and FAKEASF's CDN video is a 404. Every
+ * source we already use was checked and works. So the directory is the
+ * fallback, not the default: it steps in for an old-site override, a missing
+ * S3 object for a card only it knows about, or a card with no source at all.
+ */
+export function preferDirectoryMedia(cardInfo: CardInfo): boolean {
+  if (!cardInfo.directory) return false;
+  const own = cardInfo.ext === 'mp4' ? cardInfo.videoUri : cardInfo.imageUri;
+  if (own) return isOldSiteUrl(own);
+  // No override: S3 serves everything pepe.wtf knew. A card the directory
+  // added is not on S3, and is marked as such at sync time.
+  return (cardInfo.issues ?? []).includes('from_directory');
+}
+
 /** The directory's video or full image for a card, with the extension read off the URL. */
 export function directoryMedia(cardInfo: CardInfo): CardUrlResult | null {
   const d = cardInfo.directory;
@@ -51,13 +81,12 @@ export function directoryMedia(cardInfo: CardInfo): CardUrlResult | null {
  * 3. Constructed S3 URL from series + extension
  */
 export function determineCardUrl(cardInfo: CardInfo, assetName: string): CardUrlResult {
-  // The directory's own media first. It is the canonical source and its CDN
-  // (a public GitHub repo) carries every card, including the ten newest in
-  // Series 18 whose only other URLs were scraped from the old site and have
-  // returned 403 since it was replaced. Sent by file_id once cached, so this
-  // only decides where a card is fetched from the first time.
-  const fromDirectory = directoryMedia(cardInfo);
-  if (fromDirectory) return fromDirectory;
+  // The directory's CDN, only where our own source is dead or missing. See
+  // preferDirectoryMedia for why it is not simply first.
+  if (preferDirectoryMedia(cardInfo)) {
+    const fromDirectory = directoryMedia(cardInfo);
+    if (fromDirectory) return fromDirectory;
+  }
 
   // Check for special URIs (videoUri for mp4, imageUri for others)
   if (cardInfo.ext === 'mp4' && cardInfo.videoUri) {

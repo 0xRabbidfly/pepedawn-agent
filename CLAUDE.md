@@ -84,6 +84,17 @@ can also be pulled down as a last resort.
 
 ## Environment gotchas
 
+- **The Telegram plugin bundles its own copy of parts of `src/`.** Its build
+  (`packages/plugin-telegram-fakerares`, tsup) inlines the modules it reaches
+  by dynamic import — `fakeRaresCarousel`, `fakeRaresCard`,
+  `gifConversionHelper`, `anniversaryRuntime`, the file-id cache — into
+  `dist/fakeRaresCarousel-*.js` and friends. Two consequences: a change to
+  any of those does nothing for carousel navigation or trivia taps until the
+  plugin is rebuilt (`cd packages/plugin-telegram-fakerares && bun run build`;
+  `deploy.sh` does this, `run-testbot.sh` does not — a whole evening was lost
+  to a fix that "didn't work" on the test bot); and the plugin's copy has its
+  own module state, which is why the anniversary state file merges on write.
+
 - **ElizaOS resolves `.env` from its working directory**, and
   `scripts/start-bot.sh` does `cd "$(dirname "$0")/.."` — forcing cwd back to
   `pepe-tg`. Shell `export`/`unset` are therefore **ignored**. Any config change

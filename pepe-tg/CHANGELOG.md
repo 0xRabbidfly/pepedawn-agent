@@ -28,13 +28,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Production picks the committed index up from GitHub within a day; no
   deploy is needed for data, only for the code that reads the new fields.
 
-- **Card media comes from the directory's CDN first.** Paging `/f c 18` on
-  the test bot showed nothing past card 31: the ten newest Series 18 cards
-  had image URLs scraped from the old directory's HTML, and those have
-  returned 403 since the site was replaced. The directory's own CDN, a public
-  GitHub repository, carries every card. `determineCardUrl` now takes the
-  directory's video or image when the card has one, then the old overrides,
-  then S3. Cached file_ids are unaffected.
+- **Card media falls back to the directory's CDN where ours is dead.** Paging
+  `/f c 18` on the test bot showed nothing past card 31: the ten newest
+  Series 18 cards had image URLs scraped from the old directory's HTML, and
+  those have returned 403 since the site was replaced. The directory's own
+  CDN, a public GitHub repository, carries them.
+
+  "CDN first" was tried and measured across all 918 cards before shipping:
+  44 animated cards would have been sent as stills, because the directory
+  holds only a still image for many GIF and MP4 cards, and FAKEASF's CDN video
+  is a 404. Every source already in use was checked and works. So the
+  directory steps in only for an old-site override, or a card only it knows
+  about; everything else is fetched exactly as before. Zero regressions, ten
+  fixes. Cached file_ids are unaffected.
 
 ### Added
 

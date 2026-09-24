@@ -30,7 +30,7 @@ import {
 import { buildSuggestionResponse } from "../utils/cardSuggestions";
 import { parseCardCommand } from "../utils/cardCommandParse";
 import { escapeTelegramMarkdown } from "../utils/telegramMarkdown";
-import { directoryMedia } from "../utils/cardUrlUtils";
+import { directoryMedia, preferDirectoryMedia } from "../utils/cardUrlUtils";
 
 /**
  * Fake Rares Card Display Action
@@ -556,11 +556,15 @@ export function determineCardUrl(
   cardInfo: CardInfo,
   assetName: string,
 ): CardUrlResult {
-  // The directory's own CDN first: canonical, and it carries the ten newest
-  // Series 18 cards whose only other URLs died with the old site (403). See
-  // utils/cardUrlUtils.directoryMedia. Cached file_ids are unaffected.
-  const fromDirectory = directoryMedia(cardInfo);
-  if (fromDirectory) return fromDirectory;
+  // The directory's CDN, only where our own source is dead or missing: the
+  // ten newest Series 18 cards whose overrides died with the old site (403),
+  // and cards only the directory knows. Not first - measured across all 918,
+  // "CDN first" would have sent 44 animated cards as stills. See
+  // utils/cardUrlUtils.preferDirectoryMedia. Cached file_ids are unaffected.
+  if (preferDirectoryMedia(cardInfo)) {
+    const fromDirectory = directoryMedia(cardInfo);
+    if (fromDirectory) return fromDirectory;
+  }
 
   // Check for special URIs (videoUri for mp4, imageUri for others)
   if (cardInfo.ext === "mp4" && cardInfo.videoUri) {
