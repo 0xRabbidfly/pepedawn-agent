@@ -30,6 +30,7 @@ import {
 import { buildSuggestionResponse } from "../utils/cardSuggestions";
 import { parseCardCommand } from "../utils/cardCommandParse";
 import { escapeTelegramMarkdown } from "../utils/telegramMarkdown";
+import { directoryMedia } from "../utils/cardUrlUtils";
 
 /**
  * Fake Rares Card Display Action
@@ -555,6 +556,12 @@ export function determineCardUrl(
   cardInfo: CardInfo,
   assetName: string,
 ): CardUrlResult {
+  // The directory's own CDN first: canonical, and it carries the ten newest
+  // Series 18 cards whose only other URLs died with the old site (403). See
+  // utils/cardUrlUtils.directoryMedia. Cached file_ids are unaffected.
+  const fromDirectory = directoryMedia(cardInfo);
+  if (fromDirectory) return fromDirectory;
+
   // Check for special URIs (videoUri for mp4, imageUri for others)
   if (cardInfo.ext === "mp4" && cardInfo.videoUri) {
     // Skip dead domains and fallback to memeUri

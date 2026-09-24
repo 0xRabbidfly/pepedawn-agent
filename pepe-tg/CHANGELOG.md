@@ -28,6 +28,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Production picks the committed index up from GitHub within a day; no
   deploy is needed for data, only for the code that reads the new fields.
 
+- **Card media comes from the directory's CDN first.** Paging `/f c 18` on
+  the test bot showed nothing past card 31: the ten newest Series 18 cards
+  had image URLs scraped from the old directory's HTML, and those have
+  returned 403 since the site was replaced. The directory's own CDN, a public
+  GitHub repository, carries every card. `determineCardUrl` now takes the
+  directory's video or image when the card has one, then the old overrides,
+  then S3. Cached file_ids are unaffected.
+
 ### Added
 
 - `docs/TODO.md` — the open work, in priority, with why each item matters.

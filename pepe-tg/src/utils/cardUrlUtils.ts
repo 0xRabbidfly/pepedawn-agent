@@ -30,6 +30,18 @@ export function getFakeRaresImageUrl(
   return `${FAKE_RARES_BASE_URL}/${seriesNumber}/${encodedAssetName}.${extension}`;
 }
 
+/** The directory's video or full image for a card, with the extension read off the URL. */
+export function directoryMedia(cardInfo: CardInfo): CardUrlResult | null {
+  const d = cardInfo.directory;
+  if (!d) return null;
+  const url = d.video || d.image;
+  if (!url) return null;
+  const ext = url.split('?')[0].split('.').pop()?.toLowerCase();
+  const known: MediaExtension[] = ['mp4', 'gif', 'jpeg', 'jpg', 'png', 'webp'];
+  if (!ext || !known.includes(ext as MediaExtension)) return null;
+  return { url, extension: ext as MediaExtension };
+}
+
 /**
  * Determines the best URL for a card, prioritizing special URIs over constructed URLs
  * 
@@ -39,6 +51,14 @@ export function getFakeRaresImageUrl(
  * 3. Constructed S3 URL from series + extension
  */
 export function determineCardUrl(cardInfo: CardInfo, assetName: string): CardUrlResult {
+  // The directory's own media first. It is the canonical source and its CDN
+  // (a public GitHub repo) carries every card, including the ten newest in
+  // Series 18 whose only other URLs were scraped from the old site and have
+  // returned 403 since it was replaced. Sent by file_id once cached, so this
+  // only decides where a card is fetched from the first time.
+  const fromDirectory = directoryMedia(cardInfo);
+  if (fromDirectory) return fromDirectory;
+
   // Check for special URIs (videoUri for mp4, imageUri for others)
   if (cardInfo.ext === 'mp4' && cardInfo.videoUri) {
     return { url: cardInfo.videoUri, extension: 'mp4' };

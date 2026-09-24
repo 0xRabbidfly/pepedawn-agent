@@ -7,10 +7,9 @@ looks like. Dated when it was written; strike through or delete when done.
 
 - [x] **1. Canonical card index from `/api/cards`** — reconcile daily, artist
       credits, release dates/blocks/tx, added and retired cards. *(5.16.0)*
-- [ ] **2. Images from the GitHub CDN** (`github.com/fakerares/cdn`), S3 as
-      fallback. Ends send failures like FAKEMASTERY's on the birthday; webp
-      `small` for fast sends. Prefer `card.directory.small`/`image` in
-      `determineCardUrl`; keep the file_id cache.
+- [x] **2. Images from the GitHub CDN** (`github.com/fakerares/cdn`), old
+      overrides and S3 as fallback. Found the hard way: the ten newest Series
+      18 cards had 403 image URLs from the old site. *(on the branch)*
 - [ ] **3. Link replies to the directory** — `card.directory.url` or
       `/series/S/N` as the canonical page instead of pepe.wtf / xcp.io.
 - [ ] **4. New-card announcements** — the daily sync's `added` list becomes a
