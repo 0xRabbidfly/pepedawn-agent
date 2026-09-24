@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [5.16.2] - 2026-09-24
 
+### Changed
+
+- **"dawn" is the bot's name too.** Say "dawn" and it is addressed, the
+  same as "pepedawn" or an @mention: answered in a quiet room, the name
+  stripped from what the model sees, counted as talking to it by the
+  conversation rules and the maintainer digest. The time of day is left
+  alone: "at dawn", "the crack of dawn", "dawn of the fakes" do not summon
+  it. "dawn" is never the card.
+
 ### Fixed
 
 - **PEPEDAWN reacts.** It had never once put an emoji on a message in

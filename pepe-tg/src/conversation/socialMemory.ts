@@ -213,7 +213,7 @@ const STOPWORDS = new Set([
   'going', 'have', 'here', 'into', 'just', 'know', 'like', 'make', 'more', 'much', 'only', 'over',
   'really', 'said', 'some', 'still', 'than', 'that', 'thats', 'their', 'them', 'then', 'there',
   'these', 'they', 'thing', 'think', 'this', 'what', 'when', 'where', 'which', 'with', 'would',
-  'your', 'youre', 'pepedawn',
+  'your', 'youre', 'pepedawn', 'dawn',
 ]);
 
 function words(text: string): Set<string> {

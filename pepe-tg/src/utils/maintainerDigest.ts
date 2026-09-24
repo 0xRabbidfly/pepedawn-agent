@@ -59,7 +59,7 @@ export interface Stats {
   errors: number;
 }
 
-const NAMES_BOT = /\bpepedawn\b|@pepedawn_bot/i;
+const NAMES_BOT = /\bpepedawn\b|@pepedawn_bot|\bdawn\b/i;
 /** A bot turn this soon after a user turn is taken as a reply to it. */
 const REPLY_WINDOW_MS = 90_000;
 

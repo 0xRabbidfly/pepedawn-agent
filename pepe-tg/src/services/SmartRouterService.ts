@@ -11,6 +11,7 @@ import {
 } from '../router/retrieveCandidates';
 import { detectCardFastPath } from '../router/cardFastPath';
 import { reactionAllowed, reactionFor, reactionScore } from '../utils/reactions';
+import { BOT_NAME_ALT, namesTheBot } from '../utils/botName';
 import { characterFor, characterNote, type Character } from '../conversation/characters';
 import { KnowledgeOrchestratorService } from './KnowledgeOrchestratorService';
 import { callTextModel } from '../utils/modelGateway';
@@ -753,7 +754,9 @@ export class SmartRouterService extends Service {
    */
   private addressesTheBot(text: string, addressedConversationally: boolean): boolean {
     if (addressedConversationally) return true;
-    if (!/\bpepedawn\b/i.test(text)) return false;
+    if (!namesTheBot(text)) return false;
+    // "dawn" is never the card; only the full name can mean it.
+    if (!/\bpepedawn\b/i.test(text)) return true;
     return !this.pepedawnMeansTheCard({ role: 'user', text });
   }
 
@@ -975,12 +978,13 @@ export class SmartRouterService extends Service {
     
     // Case-insensitive regex to match PEPEDAWN with various punctuation/context
     // Order matters: more specific patterns first
+    // "dawn" too, since 5.16.2 - the short name is stripped the same way.
     const patterns = [
-      /\bhey\s+pepedawn\s*[,:—-]?\s*/gi,  // "hey pepedawn, " or "hey pepedawn - "
-      /\bpepedawn\s*[,:—-]\s*/gi,          // "pepedawn, " or "pepedawn - " (with punctuation)
-      /^\s*pepedawn\s*[,:—-]?\s*/gi,       // "pepedawn, " at start
-      /\bpepedawn\s+$/gi,                  // "pepedawn " at end (with space)
-      /\bpepedawn\s+/gi,                   // "pepedawn " in middle (with space after)
+      new RegExp(`\\bhey\\s+${BOT_NAME_ALT}\\s*[,:—-]?\\s*`, 'gi'),  // "hey pepedawn, " or "hey dawn - "
+      new RegExp(`\\b${BOT_NAME_ALT}\\s*[,:—-]\\s*`, 'gi'),          // "pepedawn, " (with punctuation)
+      new RegExp(`^\\s*${BOT_NAME_ALT}\\s*[,:—-]?\\s*`, 'gi'),       // at start
+      new RegExp(`\\b${BOT_NAME_ALT}\\s+$`, 'gi'),                   // at end (with space)
+      new RegExp(`\\b${BOT_NAME_ALT}\\s+`, 'gi'),                    // in middle (with space after)
     ];
     
     let cleaned = text;
@@ -1301,7 +1305,7 @@ Say briefly why it is worth a look — something true about the art, the artist 
         at: t.timestamp,
         // A typed command is talking to the bot, as much as a mention is.
         addressedBot:
-          t.role === 'user' && (!!t.addressedBot || /\bpepedawn\b/i.test(said) || /^\/\w/.test(said)),
+          t.role === 'user' && (!!t.addressedBot || namesTheBot(said) || /^\/\w/.test(said)),
       };
     });
     const now = Date.now();
