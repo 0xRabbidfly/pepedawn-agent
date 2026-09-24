@@ -34,7 +34,17 @@ looks like. Dated when it was written; strike through or delete when done.
       (`robots.txt` disallows it; one request a day). And whether he wants
       the `/fr` lore ledger flowing back to the directory.
 - [ ] **Retire `add-new-cards.js`'s Playwright pass 1** once the sync has run
-      clean for a week; the API replaces the HTML scrape.
+      clean for a week; the API replaces the HTML scrape. It is already dead:
+      it scrapes `/series-N/`, which 404s on the new site.
+- [ ] **The daily action never reached prod.** It pushes to
+      `auto-update-fake-rares` and opens a PR; nothing from it has been merged
+      since 2025-10-24, so prod's daily JSON refresh (from master) has served
+      the same file for a year. Either auto-merge the PR when the sync's
+      guards pass, or have the bot fetch `/api/cards` itself.
+- [ ] **TRIPLEMIKE** — the old scrape found it on 2026-09-21 as Series 18
+      card 42; it is a real locked asset on chain, but the directory has
+      CAKERARE at 18/42 and no TRIPLEMIKE at all. Ask Scrilla which is right
+      before the next sync silently retires either.
 
 ## The maintainer loop
 
