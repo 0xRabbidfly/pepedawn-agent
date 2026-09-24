@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "asset": "WENPEPEPAMP",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 49,
+  "artist": "GonkX",
+  "supply": 21,
+  "issuance": "June 2023",
+  "textOnCard": [
+    "WenPepePamp",
+    "May Or May Not...",
+    "Summon Pepes",
+    "Illus. Gonx",
+    "0x69"
+  ],
+  "memeticReferences": [
+    "References the \"Wen Moon\" meme, a common crypto joke about waiting for prices to rise.",
+    "Pepe the Frog is prominently featured, a staple in meme culture.",
+    "The belt design is a nod to wrestling championship aesthetics, adding to the hype and anticipation."
+  ],
+  "visualSummary": "The card features a bold, eye-catching composition with a central figure wearing a red crop top and a large, flashy belt. The color palette is dominated by vibrant greens and reds, reminiscent of classic comic book art. The style is a mix of surrealism and pop art, with a playful and cheeky vibe.",
+  "visualSummaryShort": "The card showcases a central figure in a red crop top and flashy belt, set against a vibrant green and red background. Its style blends surrealism and pop art, creating a playful atmosphere.",
+  "visualKeywords": [
+    "red crop top",
+    "flashy belt",
+    "green",
+    "red",
+    "comic book",
+    "surrealism",
+    "pop art",
+    "playful",
+    "cheeky"
+  ],
+  "textKeywords": [
+    "wenpepepamp",
+    "may",
+    "not",
+    "summon",
+    "pepes",
+    "illus",
+    "gonx",
+    "0x69"
+  ],
+  "keywords": [
+    "red crop top",
+    "flashy belt",
+    "green",
+    "red",
+    "comic book",
+    "surrealism",
+    "pop art",
+    "playful",
+    "cheeky",
+    "wenpepepamp",
+    "may",
+    "not",
+    "summon",
+    "pepes",
+    "illus",
+    "gonx",
+    "0x69"
+  ],
+  "embeddingInput": "WENPEPEPAMP (Fake Rares) - Series 14 Card 49\nArtist: GonkX\nSupply 21 Issued June 2023\nOn-card text: WenPepePamp | May Or May Not... | Summon Pepes | Illus. Gonx | 0x69\nVisual summary: The card features a bold, eye-catching composition with a central figure wearing a red crop top and a large, flashy belt. The color palette is dominated by vibrant greens and reds, reminiscent of classic comic book art. The style is a mix of surrealism and pop art, with a playful and cheeky vibe.\nMemetic references: References the \"Wen Moon\" meme, a common crypto joke about waiting for prices to rise.; Pepe the Frog is prominently featured, a staple in meme culture.; The belt design is a nod to wrestling championship aesthetics, adding to the hype and anticipation.",
+  "embeddingBlocks": [
+    {
+      "id": "WENPEPEPAMP#text",
+      "label": "On-card text",
+      "text": "WenPepePamp | May Or May Not... | Summon Pepes | Illus. Gonx | 0x69",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "WENPEPEPAMP#memetic",
+      "label": "Memetic references",
+      "text": "References the \"Wen Moon\" meme, a common crypto joke about waiting for prices to rise.\nPepe the Frog is prominently featured, a staple in meme culture.\nThe belt design is a nod to wrestling championship aesthetics, adding to the hype and anticipation.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "WENPEPEPAMP#visual",
+      "label": "Visual summary",
+      "text": "The card features a bold, eye-catching composition with a central figure wearing a red crop top and a large, flashy belt. The color palette is dominated by vibrant greens and reds, reminiscent of classic comic book art. The style is a mix of surrealism and pop art, with a playful and cheeky vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "WENPEPEPAMP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nWenPepePamp  \nMay Or May Not...  \nSummon Pepes  \nIllus. Gonx  \n0x69\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a bold, eye-catching composition with a central figure wearing a red crop top and a large, flashy belt. The color palette is dominated by vibrant greens and reds, reminiscent of classic comic book art. The style is a mix of surrealism and pop art, with a playful and cheeky vibe.\n\n🧬 **MEMETIC DNA:**\n- References the \"Wen Moon\" meme, a common crypto joke about waiting for prices to rise.\n- Pepe the Frog is prominently featured, a staple in meme culture.\n- The belt design is a nod to wrestling championship aesthetics, adding to the hype and anticipation.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.183Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "asset": "PEPESHINICHI",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 29,
+  "artist": "Robness",
+  "supply": 98,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "PEPESHINICHI"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference as the central character.",
+    "Bitcoin symbol prominently displayed on the book, nodding to crypto culture.",
+    "Mathematical symbols suggest a blend of intellectual and crypto-savvy themes.",
+    "The attire and pose mimic classic religious or scholarly portraits."
+  ],
+  "visualSummary": "The card features a green-skinned figure reminiscent of the iconic Pepe the Frog, dressed in robes that echo classical art styles. The background is a warm, textured gold with mathematical symbols faintly visible, adding an intellectual vibe. The color palette is rich with deep reds, blacks, and greens, giving it a vintage, renaissance feel.",
+  "visualSummaryShort": "The card showcases a green-skinned figure in classical robes against a warm gold background. The rich color palette and faint mathematical symbols create a vintage, intellectual atmosphere.",
+  "visualKeywords": [
+    "green figure",
+    "robes",
+    "gold background",
+    "mathematical symbols",
+    "red",
+    "black",
+    "vintage",
+    "renaissance"
+  ],
+  "textKeywords": [
+    "pepeshinichi"
+  ],
+  "keywords": [
+    "green figure",
+    "robes",
+    "gold background",
+    "mathematical symbols",
+    "red",
+    "black",
+    "vintage",
+    "renaissance",
+    "pepeshinichi"
+  ],
+  "embeddingInput": "PEPESHINICHI (Fake Rares) - Series 8 Card 29\nArtist: Robness\nSupply 98 Issued July 2022\nOn-card text: PEPESHINICHI\nVisual summary: The card features a green-skinned figure reminiscent of the iconic Pepe the Frog, dressed in robes that echo classical art styles. The background is a warm, textured gold with mathematical symbols faintly visible, adding an intellectual vibe. The color palette is rich with deep reds, blacks, and greens, giving it a vintage, renaissance feel.\nMemetic references: Pepe the Frog reference as the central character.; Bitcoin symbol prominently displayed on the book, nodding to crypto culture.; Mathematical symbols suggest a blend of intellectual and crypto-savvy themes.; The attire and pose mimic classic religious or scholarly portraits.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPESHINICHI#text",
+      "label": "On-card text",
+      "text": "PEPESHINICHI",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPESHINICHI#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference as the central character.\nBitcoin symbol prominently displayed on the book, nodding to crypto culture.\nMathematical symbols suggest a blend of intellectual and crypto-savvy themes.\nThe attire and pose mimic classic religious or scholarly portraits.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPESHINICHI#visual",
+      "label": "Visual summary",
+      "text": "The card features a green-skinned figure reminiscent of the iconic Pepe the Frog, dressed in robes that echo classical art styles. The background is a warm, textured gold with mathematical symbols faintly visible, adding an intellectual vibe. The color palette is rich with deep reds, blacks, and greens, giving it a vintage, renaissance feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPESHINICHI#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPESHINICHI\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a green-skinned figure reminiscent of the iconic Pepe the Frog, dressed in robes that echo classical art styles. The background is a warm, textured gold with mathematical symbols faintly visible, adding an intellectual vibe. The color palette is rich with deep reds, blacks, and greens, giving it a vintage, renaissance feel.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference as the central character.\n- Bitcoin symbol prominently displayed on the book, nodding to crypto culture.\n- Mathematical symbols suggest a blend of intellectual and crypto-savvy themes.\n- The attire and pose mimic classic religious or scholarly portraits.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.976Z",
+  "sourceFactVersion": 1
+}

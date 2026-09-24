@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "PEPEMILK",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 16,
+  "artist": "FourLeafClover",
+  "supply": 88,
+  "issuance": "December 2021",
+  "textOnCard": [
+    "PEPE MILK"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog's iconic face.",
+    "Play on words with \"PeMilk\" referencing Pepe and possibly meme culture.",
+    "Elements of farm and rural life blended with meme humor."
+  ],
+  "visualSummary": "The card features a cartoon-style barn scene with a cow that has Pepe the Frog's face being milked by a person in a straw hat. The colors are bright and playful, with a rustic barn setting complete with hay and a milk canister labeled \"PeMilk\". The overall style is reminiscent of anime with bold lines and a clean aesthetic.",
+  "visualSummaryShort": "The card showcases a whimsical barn scene with a cow featuring Pepe the Frog's face. Bright colors and an anime-inspired style enhance the playful atmosphere.",
+  "visualKeywords": [
+    "barn",
+    "cow",
+    "pepe the frog",
+    "straw hat",
+    "hay",
+    "milk canister",
+    "bright colors",
+    "anime style",
+    "playful",
+    "rustic"
+  ],
+  "textKeywords": [
+    "milk"
+  ],
+  "keywords": [
+    "barn",
+    "cow",
+    "pepe the frog",
+    "straw hat",
+    "hay",
+    "milk canister",
+    "bright colors",
+    "anime style",
+    "playful",
+    "rustic",
+    "milk"
+  ],
+  "embeddingInput": "PEPEMILK (Fake Rares) - Series 8 Card 16\nArtist: FourLeafClover\nSupply 88 Issued December 2021\nOn-card text: PEPE MILK\nVisual summary: The card features a cartoon-style barn scene with a cow that has Pepe the Frog's face being milked by a person in a straw hat. The colors are bright and playful, with a rustic barn setting complete with hay and a milk canister labeled \"PeMilk\". The overall style is reminiscent of anime with bold lines and a clean aesthetic.\nMemetic references: Pepe the Frog's iconic face.; Play on words with \"PeMilk\" referencing Pepe and possibly meme culture.; Elements of farm and rural life blended with meme humor.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEMILK#text",
+      "label": "On-card text",
+      "text": "PEPE MILK",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEMILK#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog's iconic face.\nPlay on words with \"PeMilk\" referencing Pepe and possibly meme culture.\nElements of farm and rural life blended with meme humor.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEMILK#visual",
+      "label": "Visual summary",
+      "text": "The card features a cartoon-style barn scene with a cow that has Pepe the Frog's face being milked by a person in a straw hat. The colors are bright and playful, with a rustic barn setting complete with hay and a milk canister labeled \"PeMilk\". The overall style is reminiscent of anime with bold lines and a clean aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEMILK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE MILK\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a cartoon-style barn scene with a cow that has Pepe the Frog's face being milked by a person in a straw hat. The colors are bright and playful, with a rustic barn setting complete with hay and a milk canister labeled \"PeMilk\". The overall style is reminiscent of anime with bold lines and a clean aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog's iconic face.\n- Play on words with \"PeMilk\" referencing Pepe and possibly meme culture.\n- Elements of farm and rural life blended with meme humor.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.928Z",
+  "sourceFactVersion": 1
+}

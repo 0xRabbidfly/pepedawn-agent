@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "asset": "DEVELOPEPER",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 27,
+  "artist": "Luna x Al x Pepe",
+  "supply": 21,
+  "issuance": "October 2022",
+  "textOnCard": [
+    "DEVELOPER",
+    "カエルの開発者",
+    "このペペアートの世界において、あなたのソフトウェアが優秀であることが認められました。そこで、あなたを優れた開発者として、その栄誉をたたえます。",
+    "Dev. Satoshi Nakamoto"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference, a staple in meme culture.",
+    "Bitcoin logo signifies crypto culture.",
+    "The name \"Satoshi Nakamoto\" nods to Bitcoin's mysterious creator.",
+    "Developer theme with a programmer vibe."
+  ],
+  "visualSummary": "The card features a Pepe the Frog character, dressed in a hoodie, working intently on a laptop with a glowing Bitcoin logo on the screen. The background is a gradient of dark to light gray, adding a techy vibe. The color palette is predominantly green and gray, with a hint of neon blue from the laptop screen.",
+  "visualSummaryShort": "The card showcases a Pepe the Frog character in a hoodie, focused on a laptop displaying a glowing Bitcoin logo. The color scheme features green and gray tones with a neon blue accent from the screen.",
+  "visualKeywords": [
+    "pepe",
+    "hoodie",
+    "laptop",
+    "bitcoin",
+    "gray gradient",
+    "green",
+    "neon blue",
+    "techy vibe"
+  ],
+  "textKeywords": [
+    "developer",
+    "dev",
+    "satoshi",
+    "nakamoto"
+  ],
+  "keywords": [
+    "pepe",
+    "hoodie",
+    "laptop",
+    "bitcoin",
+    "gray gradient",
+    "green",
+    "neon blue",
+    "techy vibe",
+    "developer",
+    "dev",
+    "satoshi",
+    "nakamoto"
+  ],
+  "embeddingInput": "DEVELOPEPER (Fake Rares) - Series 11 Card 27\nArtist: Luna x Al x Pepe\nSupply 21 Issued October 2022\nOn-card text: DEVELOPER | カエルの開発者 | このペペアートの世界において、あなたのソフトウェアが優秀であることが認められました。そこで、あなたを優れた開発者として、その栄誉をたたえます。 | Dev. Satoshi Nakamoto\nVisual summary: The card features a Pepe the Frog character, dressed in a hoodie, working intently on a laptop with a glowing Bitcoin logo on the screen. The background is a gradient of dark to light gray, adding a techy vibe. The color palette is predominantly green and gray, with a hint of neon blue from the laptop screen.\nMemetic references: Classic Pepe the Frog reference, a staple in meme culture.; Bitcoin logo signifies crypto culture.; The name \"Satoshi Nakamoto\" nods to Bitcoin's mysterious creator.; Developer theme with a programmer vibe.",
+  "embeddingBlocks": [
+    {
+      "id": "DEVELOPEPER#text",
+      "label": "On-card text",
+      "text": "DEVELOPER | カエルの開発者 | このペペアートの世界において、あなたのソフトウェアが優秀であることが認められました。そこで、あなたを優れた開発者として、その栄誉をたたえます。 | Dev. Satoshi Nakamoto",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "DEVELOPEPER#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference, a staple in meme culture.\nBitcoin logo signifies crypto culture.\nThe name \"Satoshi Nakamoto\" nods to Bitcoin's mysterious creator.\nDeveloper theme with a programmer vibe.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "DEVELOPEPER#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe the Frog character, dressed in a hoodie, working intently on a laptop with a glowing Bitcoin logo on the screen. The background is a gradient of dark to light gray, adding a techy vibe. The color palette is predominantly green and gray, with a hint of neon blue from the laptop screen.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "DEVELOPEPER#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nDEVELOPER  \nカエルの開発者  \nこのペペアートの世界において、あなたのソフトウェアが優秀であることが認められました。そこで、あなたを優れた開発者として、その栄誉をたたえます。  \nDev. Satoshi Nakamoto\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe the Frog character, dressed in a hoodie, working intently on a laptop with a glowing Bitcoin logo on the screen. The background is a gradient of dark to light gray, adding a techy vibe. The color palette is predominantly green and gray, with a hint of neon blue from the laptop screen.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference, a staple in meme culture.\n- Bitcoin logo signifies crypto culture.\n- The name \"Satoshi Nakamoto\" nods to Bitcoin's mysterious creator.\n- Developer theme with a programmer vibe.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.390Z",
+  "sourceFactVersion": 1
+}

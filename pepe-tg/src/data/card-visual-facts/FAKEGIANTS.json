@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "FAKEGIANTS",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 31,
+  "artist": "EMBLEMATIX",
+  "supply": 169,
+  "issuance": "February 2026",
+  "textOnCard": [
+    "Emblem Vault"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in a classical art pose.",
+    "Bitcoin necklace, a nod to crypto culture.",
+    "Pixelated figure resembling a CryptoPunk, a staple in NFT culture.",
+    "A mashup of digital and traditional art styles."
+  ],
+  "visualSummary": "The card features a classical painting style with a Pepe the Frog character posed dramatically, reminiscent of historical art. The color palette is dark and moody, with earthy tones and strong contrasts. A pixelated figure resembling a CryptoPunk is superimposed, creating a blend of traditional and digital art styles.",
+  "visualSummaryShort": "The card showcases a classical painting style featuring a dramatic Pepe the Frog character. It combines dark, moody colors with a pixelated CryptoPunk figure, merging traditional and digital art elements.",
+  "visualKeywords": [
+    "pepe the frog",
+    "classical painting",
+    "dark colors",
+    "earthy tones",
+    "pixelated",
+    "cryptopunk",
+    "dramatic pose",
+    "strong contrasts"
+  ],
+  "textKeywords": [
+    "emblem",
+    "vault"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "classical painting",
+    "dark colors",
+    "earthy tones",
+    "pixelated",
+    "cryptopunk",
+    "dramatic pose",
+    "strong contrasts",
+    "emblem",
+    "vault"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "FAKEGIANTS (Fake Rares) - Series 18 Card 31\nArtist: EMBLEMATIX\nSupply 169 Issued February 2026\nOn-card text: Emblem Vault\nVisual summary: The card features a classical painting style with a Pepe the Frog character posed dramatically, reminiscent of historical art. The color palette is dark and moody, with earthy tones and strong contrasts. A pixelated figure resembling a CryptoPunk is superimposed, creating a blend of traditional and digital art styles.\nMemetic references: Pepe the Frog in a classical art pose.; Bitcoin necklace, a nod to crypto culture.; Pixelated figure resembling a CryptoPunk, a staple in NFT culture.; A mashup of digital and traditional art styles.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEGIANTS#text",
+      "label": "On-card text",
+      "text": "Emblem Vault",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEGIANTS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in a classical art pose.\nBitcoin necklace, a nod to crypto culture.\nPixelated figure resembling a CryptoPunk, a staple in NFT culture.\nA mashup of digital and traditional art styles.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEGIANTS#visual",
+      "label": "Visual summary",
+      "text": "The card features a classical painting style with a Pepe the Frog character posed dramatically, reminiscent of historical art. The color palette is dark and moody, with earthy tones and strong contrasts. A pixelated figure resembling a CryptoPunk is superimposed, creating a blend of traditional and digital art styles.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEGIANTS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nEmblem Vault\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a classical painting style with a Pepe the Frog character posed dramatically, reminiscent of historical art. The color palette is dark and moody, with earthy tones and strong contrasts. A pixelated figure resembling a CryptoPunk is superimposed, creating a blend of traditional and digital art styles.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in a classical art pose.\n- Bitcoin necklace, a nod to crypto culture.\n- Pixelated figure resembling a CryptoPunk, a staple in NFT culture.\n- A mashup of digital and traditional art styles.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:31:31.485Z"
+}

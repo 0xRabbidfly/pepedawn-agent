@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "FAKETUPAC",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 17,
+  "artist": "Lord Jamie V. Shill",
+  "supply": 48,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "FAKETUPAC"
+  ],
+  "memeticReferences": [
+    "References to the legendary cultural icon with a twist.",
+    "Illuminati-inspired eye symbol, common in conspiracy memes.",
+    "Retro-futuristic grid, reminiscent of 80s sci-fi aesthetics."
+  ],
+  "visualSummary": "This card features a stylized, green-skinned figure with exaggerated features, set against a grid-like, neon purple and black background. The composition includes a central triangular symbol with an eye, evoking a mystical or conspiratorial vibe. The color palette is dominated by vibrant greens and purples, lending a surreal and otherworldly feel to the piece.",
+  "visualSummaryShort": "The card showcases a green-skinned figure with exaggerated features against a neon purple and black grid background. It includes a central triangular symbol with an eye, creating a mystical atmosphere.",
+  "visualKeywords": [
+    "green figure",
+    "neon purple",
+    "black background",
+    "triangular symbol",
+    "eye",
+    "surreal",
+    "vibrant colors",
+    "exaggerated features",
+    "mystical",
+    "grid pattern"
+  ],
+  "textKeywords": [
+    "faketupac"
+  ],
+  "keywords": [
+    "green figure",
+    "neon purple",
+    "black background",
+    "triangular symbol",
+    "eye",
+    "surreal",
+    "vibrant colors",
+    "exaggerated features",
+    "mystical",
+    "grid pattern",
+    "faketupac"
+  ],
+  "embeddingInput": "FAKETUPAC (Fake Rares) - Series 4 Card 17\nArtist: Lord Jamie V. Shill\nSupply 48 Issued October 2021\nOn-card text: FAKETUPAC\nVisual summary: This card features a stylized, green-skinned figure with exaggerated features, set against a grid-like, neon purple and black background. The composition includes a central triangular symbol with an eye, evoking a mystical or conspiratorial vibe. The color palette is dominated by vibrant greens and purples, lending a surreal and otherworldly feel to the piece.\nMemetic references: References to the legendary cultural icon with a twist.; Illuminati-inspired eye symbol, common in conspiracy memes.; Retro-futuristic grid, reminiscent of 80s sci-fi aesthetics.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKETUPAC#text",
+      "label": "On-card text",
+      "text": "FAKETUPAC",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKETUPAC#memetic",
+      "label": "Memetic references",
+      "text": "References to the legendary cultural icon with a twist.\nIlluminati-inspired eye symbol, common in conspiracy memes.\nRetro-futuristic grid, reminiscent of 80s sci-fi aesthetics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKETUPAC#visual",
+      "label": "Visual summary",
+      "text": "This card features a stylized, green-skinned figure with exaggerated features, set against a grid-like, neon purple and black background. The composition includes a central triangular symbol with an eye, evoking a mystical or conspiratorial vibe. The color palette is dominated by vibrant greens and purples, lending a surreal and otherworldly feel to the piece.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKETUPAC#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKETUPAC\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a stylized, green-skinned figure with exaggerated features, set against a grid-like, neon purple and black background. The composition includes a central triangular symbol with an eye, evoking a mystical or conspiratorial vibe. The color palette is dominated by vibrant greens and purples, lending a surreal and otherworldly feel to the piece.\n\n🧬 **MEMETIC DNA:**\n- References to the legendary cultural icon with a twist.\n- Illuminati-inspired eye symbol, common in conspiracy memes.\n- Retro-futuristic grid, reminiscent of 80s sci-fi aesthetics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.589Z",
+  "sourceFactVersion": 1
+}

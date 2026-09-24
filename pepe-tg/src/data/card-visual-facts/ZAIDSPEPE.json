@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "ZAIDSPEPE",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 23,
+  "artist": "Zaid Kirdsey",
+  "supply": 100,
+  "issuance": "June 2022",
+  "textOnCard": [
+    "ZAIDSPEPE"
+  ],
+  "memeticReferences": [
+    "Pepe-inspired character with exaggerated, cartoonish features.",
+    "Psychedelic art style, evoking a sense of altered reality.",
+    "Elements of surrealism and abstraction."
+  ],
+  "visualSummary": "This card is an explosion of psychedelic chaos, featuring a dazzling array of colors like neon greens, pinks, yellows, and blues. The composition is surreal with fluid, melting forms and wide-eyed, cartoonish creatures that seem to drip and blend into each other. The style is reminiscent of a trippy, abstract cartoon with a playful yet chaotic vibe.",
+  "visualSummaryShort": "The card showcases a vibrant explosion of psychedelic colors with surreal, melting forms. Cartoonish creatures with wide eyes blend into a chaotic yet playful composition.",
+  "visualKeywords": [
+    "psychedelic",
+    "neon colors",
+    "melting forms",
+    "cartoonish",
+    "chaotic",
+    "surreal",
+    "abstract",
+    "playful",
+    "dazzling",
+    "fluid"
+  ],
+  "textKeywords": [
+    "zaidspepe"
+  ],
+  "keywords": [
+    "psychedelic",
+    "neon colors",
+    "melting forms",
+    "cartoonish",
+    "chaotic",
+    "surreal",
+    "abstract",
+    "playful",
+    "dazzling",
+    "fluid",
+    "zaidspepe"
+  ],
+  "embeddingInput": "ZAIDSPEPE (Fake Rares) - Series 8 Card 23\nArtist: Zaid Kirdsey\nSupply 100 Issued June 2022\nOn-card text: ZAIDSPEPE\nVisual summary: This card is an explosion of psychedelic chaos, featuring a dazzling array of colors like neon greens, pinks, yellows, and blues. The composition is surreal with fluid, melting forms and wide-eyed, cartoonish creatures that seem to drip and blend into each other. The style is reminiscent of a trippy, abstract cartoon with a playful yet chaotic vibe.\nMemetic references: Pepe-inspired character with exaggerated, cartoonish features.; Psychedelic art style, evoking a sense of altered reality.; Elements of surrealism and abstraction.",
+  "embeddingBlocks": [
+    {
+      "id": "ZAIDSPEPE#text",
+      "label": "On-card text",
+      "text": "ZAIDSPEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "ZAIDSPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe-inspired character with exaggerated, cartoonish features.\nPsychedelic art style, evoking a sense of altered reality.\nElements of surrealism and abstraction.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "ZAIDSPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card is an explosion of psychedelic chaos, featuring a dazzling array of colors like neon greens, pinks, yellows, and blues. The composition is surreal with fluid, melting forms and wide-eyed, cartoonish creatures that seem to drip and blend into each other. The style is reminiscent of a trippy, abstract cartoon with a playful yet chaotic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "ZAIDSPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nZAIDSPEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThis card is an explosion of psychedelic chaos, featuring a dazzling array of colors like neon greens, pinks, yellows, and blues. The composition is surreal with fluid, melting forms and wide-eyed, cartoonish creatures that seem to drip and blend into each other. The style is reminiscent of a trippy, abstract cartoon with a playful yet chaotic vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe-inspired character with exaggerated, cartoonish features.\n- Psychedelic art style, evoking a sense of altered reality.\n- Elements of surrealism and abstraction.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.203Z",
+  "sourceFactVersion": 1
+}

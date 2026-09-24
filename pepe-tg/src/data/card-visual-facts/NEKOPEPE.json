@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "asset": "NEKOPEPE",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 23,
+  "artist": "coriot",
+  "supply": 33,
+  "issuance": "August 2023",
+  "textOnCard": [
+    "佩佩"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple of meme culture.",
+    "Maneki-neko, a symbol of good luck and fortune in Japanese culture.",
+    "Gold color symbolizes wealth and success, common themes in crypto culture.",
+    "Chinese characters evoke traditional Asian prosperity symbols."
+  ],
+  "visualSummary": "The card features a gold statue of Pepe the Frog in the style of a traditional Maneki-neko (beckoning cat). The color palette is dominated by rich golds and reds, highlighting wealth and prosperity motifs. The statue strikes a dynamic pose, with raised arm and a collection of gold coins featuring Chinese characters, set against a dark background to emphasize its shiny texture.",
+  "visualSummaryShort": "The card showcases a gold statue of Pepe the Frog designed as a Maneki-neko, symbolizing wealth and prosperity. It features a rich color palette of golds and reds, set against a dark background that enhances its shiny texture.",
+  "visualKeywords": [
+    "gold statue",
+    "maneki-neko",
+    "red",
+    "coins",
+    "dark background",
+    "wealth",
+    "prosperity"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "gold statue",
+    "maneki-neko",
+    "red",
+    "coins",
+    "dark background",
+    "wealth",
+    "prosperity"
+  ],
+  "embeddingInput": "NEKOPEPE (Fake Rares) - Series 16 Card 23\nArtist: coriot\nSupply 33 Issued August 2023\nOn-card text: 佩佩\nVisual summary: The card features a gold statue of Pepe the Frog in the style of a traditional Maneki-neko (beckoning cat). The color palette is dominated by rich golds and reds, highlighting wealth and prosperity motifs. The statue strikes a dynamic pose, with raised arm and a collection of gold coins featuring Chinese characters, set against a dark background to emphasize its shiny texture.\nMemetic references: Pepe the Frog, a staple of meme culture.; Maneki-neko, a symbol of good luck and fortune in Japanese culture.; Gold color symbolizes wealth and success, common themes in crypto culture.; Chinese characters evoke traditional Asian prosperity symbols.",
+  "embeddingBlocks": [
+    {
+      "id": "NEKOPEPE#text",
+      "label": "On-card text",
+      "text": "佩佩",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "NEKOPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple of meme culture.\nManeki-neko, a symbol of good luck and fortune in Japanese culture.\nGold color symbolizes wealth and success, common themes in crypto culture.\nChinese characters evoke traditional Asian prosperity symbols.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "NEKOPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a gold statue of Pepe the Frog in the style of a traditional Maneki-neko (beckoning cat). The color palette is dominated by rich golds and reds, highlighting wealth and prosperity motifs. The statue strikes a dynamic pose, with raised arm and a collection of gold coins featuring Chinese characters, set against a dark background to emphasize its shiny texture.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "NEKOPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n佩佩\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a gold statue of Pepe the Frog in the style of a traditional Maneki-neko (beckoning cat). The color palette is dominated by rich golds and reds, highlighting wealth and prosperity motifs. The statue strikes a dynamic pose, with raised arm and a collection of gold coins featuring Chinese characters, set against a dark background to emphasize its shiny texture.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple of meme culture.\n- Maneki-neko, a symbol of good luck and fortune in Japanese culture.\n- Gold color symbolizes wealth and success, common themes in crypto culture.\n- Chinese characters evoke traditional Asian prosperity symbols.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.790Z",
+  "sourceFactVersion": 1
+}

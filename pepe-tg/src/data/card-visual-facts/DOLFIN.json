@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "asset": "DOLFIN",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 47,
+  "artist": "Worm",
+  "supply": 24,
+  "issuance": "January 2022",
+  "textOnCard": [
+    "GM SHOP",
+    "FAKE STOP",
+    "COUPONS ACCEPTED"
+  ],
+  "memeticReferences": [
+    "**Pepe the Frog**: Iconic meme character eyes in the foreground.",
+    "**Dolphin Wojak**: A blend of Wojak and a dolphin sitting on the bench.",
+    "**Crypto Culture**: \"GM\" shop sign, a nod to crypto slang for \"good morning.\"",
+    "**Fake Rares**: \"FAKE STOP\" sign, referencing the NFT series.",
+    "**Coupons Accepted**: Playful take on crypto exchanges and acceptance."
+  ],
+  "visualSummary": "The card features a surreal street scene with a humanoid dolphin sitting on a bench outside a shop. The color palette is muted with grays, greens, and earth tones, giving it a slightly dystopian feel. The shop window displays various meme-related elements, and the foreground features a large pair of Pepe the Frog eyes peeking up from the ground.",
+  "visualSummaryShort": "The card depicts a surreal street scene with a humanoid dolphin on a bench outside a shop. The muted color palette and meme elements contribute to a slightly dystopian atmosphere.",
+  "visualKeywords": [
+    "dolphin",
+    "bench",
+    "shop",
+    "meme",
+    "gray",
+    "green",
+    "earth tones",
+    "dystopian",
+    "eyes",
+    "coupons"
+  ],
+  "textKeywords": [
+    "shop",
+    "stop",
+    "coupons",
+    "accepted"
+  ],
+  "keywords": [
+    "dolphin",
+    "bench",
+    "shop",
+    "meme",
+    "gray",
+    "green",
+    "earth tones",
+    "dystopian",
+    "eyes",
+    "coupons",
+    "stop",
+    "accepted"
+  ],
+  "embeddingInput": "DOLFIN (Fake Rares) - Series 4 Card 47\nArtist: Worm\nSupply 24 Issued January 2022\nOn-card text: GM SHOP | FAKE STOP | COUPONS ACCEPTED\nVisual summary: The card features a surreal street scene with a humanoid dolphin sitting on a bench outside a shop. The color palette is muted with grays, greens, and earth tones, giving it a slightly dystopian feel. The shop window displays various meme-related elements, and the foreground features a large pair of Pepe the Frog eyes peeking up from the ground.\nMemetic references: **Pepe the Frog**: Iconic meme character eyes in the foreground.; **Dolphin Wojak**: A blend of Wojak and a dolphin sitting on the bench.; **Crypto Culture**: \"GM\" shop sign, a nod to crypto slang for \"good morning.\"; **Fake Rares**: \"FAKE STOP\" sign, referencing the NFT series.; **Coupons Accepted**: Playful take on crypto exchanges and acceptance.",
+  "embeddingBlocks": [
+    {
+      "id": "DOLFIN#text",
+      "label": "On-card text",
+      "text": "GM SHOP | FAKE STOP | COUPONS ACCEPTED",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "DOLFIN#memetic",
+      "label": "Memetic references",
+      "text": "**Pepe the Frog**: Iconic meme character eyes in the foreground.\n**Dolphin Wojak**: A blend of Wojak and a dolphin sitting on the bench.\n**Crypto Culture**: \"GM\" shop sign, a nod to crypto slang for \"good morning.\"\n**Fake Rares**: \"FAKE STOP\" sign, referencing the NFT series.\n**Coupons Accepted**: Playful take on crypto exchanges and acceptance.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "DOLFIN#visual",
+      "label": "Visual summary",
+      "text": "The card features a surreal street scene with a humanoid dolphin sitting on a bench outside a shop. The color palette is muted with grays, greens, and earth tones, giving it a slightly dystopian feel. The shop window displays various meme-related elements, and the foreground features a large pair of Pepe the Frog eyes peeking up from the ground.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "DOLFIN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- GM SHOP\n- FAKE STOP\n- COUPONS ACCEPTED\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a surreal street scene with a humanoid dolphin sitting on a bench outside a shop. The color palette is muted with grays, greens, and earth tones, giving it a slightly dystopian feel. The shop window displays various meme-related elements, and the foreground features a large pair of Pepe the Frog eyes peeking up from the ground.\n\n🧬 **MEMETIC DNA:**\n- **Pepe the Frog**: Iconic meme character eyes in the foreground.\n- **Dolphin Wojak**: A blend of Wojak and a dolphin sitting on the bench.\n- **Crypto Culture**: \"GM\" shop sign, a nod to crypto slang for \"good morning.\"\n- **Fake Rares**: \"FAKE STOP\" sign, referencing the NFT series.\n- **Coupons Accepted**: Playful take on crypto exchanges and acceptance.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.404Z",
+  "sourceFactVersion": 1
+}

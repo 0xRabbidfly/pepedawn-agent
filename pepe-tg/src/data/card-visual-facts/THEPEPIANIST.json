@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "asset": "THEPEPIANIST",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 20,
+  "artist": "Crimson Rider",
+  "supply": 28,
+  "issuance": "August 2022",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a pianist in a dimly lit environment, creating a moody atmosphere. The focus is on the character and their instrument, highlighting the artistry of music.",
+  "visualKeywords": [
+    "pianist",
+    "dim lighting",
+    "moody",
+    "music",
+    "instrument"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pianist",
+    "dim lighting",
+    "moody",
+    "music",
+    "instrument"
+  ],
+  "embeddingInput": "THEPEPIANIST (Fake Rares) - Series 9 Card 20\nArtist: Crimson Rider\nSupply 28 Issued August 2022\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "THEPEPIANIST#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.149Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "SLAMDUNKPEPE",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 13,
+  "artist": "GoingPepe100",
+  "supply": 33,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "Galaxy Dunk"
+  ],
+  "memeticReferences": [
+    "Pepe as a basketball star, merging sports with meme culture.",
+    "Cosmic setting reflects the limitless potential of the crypto universe.",
+    "Number 23 on Pepe’s jersey, a nod to iconic basketball legends."
+  ],
+  "visualSummary": "This card features Pepe in a dynamic slam dunk pose, set against a cosmic backdrop filled with planets and stars. The color palette is vibrant, with bright greens, purples, and reds, creating a lively, otherworldly vibe. The neon green border adds an electrifying touch, enhancing the card's energetic feel.",
+  "visualSummaryShort": "The card showcases Pepe performing a slam dunk against a cosmic backdrop of planets and stars. Its vibrant color palette and neon green border contribute to an energetic and lively atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "slam dunk",
+    "cosmic",
+    "planets",
+    "stars",
+    "vibrant colors",
+    "neon green",
+    "energetic",
+    "otherworldly"
+  ],
+  "textKeywords": [
+    "galaxy",
+    "dunk"
+  ],
+  "keywords": [
+    "pepe",
+    "slam dunk",
+    "cosmic",
+    "planets",
+    "stars",
+    "vibrant colors",
+    "neon green",
+    "energetic",
+    "otherworldly",
+    "galaxy",
+    "dunk"
+  ],
+  "embeddingInput": "SLAMDUNKPEPE (Fake Rares) - Series 3 Card 13\nArtist: GoingPepe100\nSupply 33 Issued October 2021\nOn-card text: Galaxy Dunk\nVisual summary: This card features Pepe in a dynamic slam dunk pose, set against a cosmic backdrop filled with planets and stars. The color palette is vibrant, with bright greens, purples, and reds, creating a lively, otherworldly vibe. The neon green border adds an electrifying touch, enhancing the card's energetic feel.\nMemetic references: Pepe as a basketball star, merging sports with meme culture.; Cosmic setting reflects the limitless potential of the crypto universe.; Number 23 on Pepe’s jersey, a nod to iconic basketball legends.",
+  "embeddingBlocks": [
+    {
+      "id": "SLAMDUNKPEPE#text",
+      "label": "On-card text",
+      "text": "Galaxy Dunk",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "SLAMDUNKPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe as a basketball star, merging sports with meme culture.\nCosmic setting reflects the limitless potential of the crypto universe.\nNumber 23 on Pepe’s jersey, a nod to iconic basketball legends.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SLAMDUNKPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features Pepe in a dynamic slam dunk pose, set against a cosmic backdrop filled with planets and stars. The color palette is vibrant, with bright greens, purples, and reds, creating a lively, otherworldly vibe. The neon green border adds an electrifying touch, enhancing the card's energetic feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SLAMDUNKPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nGalaxy Dunk\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features Pepe in a dynamic slam dunk pose, set against a cosmic backdrop filled with planets and stars. The color palette is vibrant, with bright greens, purples, and reds, creating a lively, otherworldly vibe. The neon green border adds an electrifying touch, enhancing the card's energetic feel.\n\n🧬 **MEMETIC DNA:**\n- Pepe as a basketball star, merging sports with meme culture.\n- Cosmic setting reflects the limitless potential of the crypto universe.\n- Number 23 on Pepe’s jersey, a nod to iconic basketball legends.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.115Z",
+  "sourceFactVersion": 1
+}

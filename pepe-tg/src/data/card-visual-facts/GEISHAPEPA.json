@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "asset": "GEISHAPEPA",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 31,
+  "artist": "Pepe Capitol",
+  "supply": 77,
+  "issuance": "July 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog reference with the green skin tone.",
+    "Traditional Japanese geisha imagery.",
+    "Fusion of classic art style with meme culture."
+  ],
+  "visualSummary": "The card features a stylized depiction of a geisha with a vivid green complexion, reminiscent of Pepe the Frog. Her hair is elegantly styled in a traditional updo, and she wears a striking red garment. The background is a textured mix of neutral tones, giving it an abstract, modern feel.",
+  "visualSummaryShort": "The card showcases a geisha with a vivid green complexion and a traditional updo, dressed in a striking red garment. The abstract background features a mix of neutral tones, enhancing the modern aesthetic.",
+  "visualKeywords": [
+    "geisha",
+    "green",
+    "red",
+    "updo",
+    "abstract",
+    "neutral tones"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "geisha",
+    "green",
+    "red",
+    "updo",
+    "abstract",
+    "neutral tones"
+  ],
+  "embeddingInput": "GEISHAPEPA (Fake Rares) - Series 9 Card 31\nArtist: Pepe Capitol\nSupply 77 Issued July 2022\nOn-card text: none detected\nVisual summary: The card features a stylized depiction of a geisha with a vivid green complexion, reminiscent of Pepe the Frog. Her hair is elegantly styled in a traditional updo, and she wears a striking red garment. The background is a textured mix of neutral tones, giving it an abstract, modern feel.\nMemetic references: Pepe the Frog reference with the green skin tone.; Traditional Japanese geisha imagery.; Fusion of classic art style with meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "GEISHAPEPA#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference with the green skin tone.\nTraditional Japanese geisha imagery.\nFusion of classic art style with meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "GEISHAPEPA#visual",
+      "label": "Visual summary",
+      "text": "The card features a stylized depiction of a geisha with a vivid green complexion, reminiscent of Pepe the Frog. Her hair is elegantly styled in a traditional updo, and she wears a striking red garment. The background is a textured mix of neutral tones, giving it an abstract, modern feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "GEISHAPEPA#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a stylized depiction of a geisha with a vivid green complexion, reminiscent of Pepe the Frog. Her hair is elegantly styled in a traditional updo, and she wears a striking red garment. The background is a textured mix of neutral tones, giving it an abstract, modern feel.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference with the green skin tone.\n- Traditional Japanese geisha imagery.\n- Fusion of classic art style with meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.651Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "MIAMIFAKES",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 8,
+  "artist": "Easy B",
+  "supply": 84,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "MIAMI FAKES"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in Miami Vice attire.",
+    "Reference to '80s pop culture and aesthetic.",
+    "Crypto culture’s playful take on luxury and style."
+  ],
+  "visualSummary": "The card features a vibrant Miami Vice-inspired scene with a sunset backdrop in pastel pinks and oranges. A green character in a white suit and a purple-suited figure stand confidently beside a sleek black car. The style is bold and comic-like, with heavy outlines and a retro, neon color palette.",
+  "visualSummaryShort": "The card showcases a vibrant Miami Vice-inspired scene with a sunset in pastel colors. Two characters in stylish suits stand next to a sleek black car, all depicted in a bold, comic-like style.",
+  "visualKeywords": [
+    "sunset",
+    "pastel colors",
+    "green character",
+    "white suit",
+    "purple suit",
+    "black car",
+    "neon palette",
+    "comic style"
+  ],
+  "textKeywords": [
+    "miami",
+    "fakes"
+  ],
+  "keywords": [
+    "sunset",
+    "pastel colors",
+    "green character",
+    "white suit",
+    "purple suit",
+    "black car",
+    "neon palette",
+    "comic style",
+    "miami",
+    "fakes"
+  ],
+  "embeddingInput": "MIAMIFAKES (Fake Rares) - Series 7 Card 8\nArtist: Easy B\nSupply 84 Issued March 2022\nOn-card text: MIAMI FAKES\nVisual summary: The card features a vibrant Miami Vice-inspired scene with a sunset backdrop in pastel pinks and oranges. A green character in a white suit and a purple-suited figure stand confidently beside a sleek black car. The style is bold and comic-like, with heavy outlines and a retro, neon color palette.\nMemetic references: Pepe the Frog in Miami Vice attire.; Reference to '80s pop culture and aesthetic.; Crypto culture’s playful take on luxury and style.",
+  "embeddingBlocks": [
+    {
+      "id": "MIAMIFAKES#text",
+      "label": "On-card text",
+      "text": "MIAMI FAKES",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MIAMIFAKES#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in Miami Vice attire.\nReference to '80s pop culture and aesthetic.\nCrypto culture’s playful take on luxury and style.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MIAMIFAKES#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant Miami Vice-inspired scene with a sunset backdrop in pastel pinks and oranges. A green character in a white suit and a purple-suited figure stand confidently beside a sleek black car. The style is bold and comic-like, with heavy outlines and a retro, neon color palette.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MIAMIFAKES#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nMIAMI FAKES\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant Miami Vice-inspired scene with a sunset backdrop in pastel pinks and oranges. A green character in a white suit and a purple-suited figure stand confidently beside a sleek black car. The style is bold and comic-like, with heavy outlines and a retro, neon color palette.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in Miami Vice attire.\n- Reference to '80s pop culture and aesthetic.\n- Crypto culture’s playful take on luxury and style.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.771Z",
+  "sourceFactVersion": 1
+}

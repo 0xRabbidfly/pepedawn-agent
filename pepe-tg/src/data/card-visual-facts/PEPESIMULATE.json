@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "PEPESIMULATE",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 5,
+  "artist": "Crimson Rider",
+  "supply": 50,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "PEPESIMULATE"
+  ],
+  "memeticReferences": [
+    "References to simulation theory and virtual reality.",
+    "Classic Pepe the Frog character, a staple of meme culture.",
+    "Cyberpunk aesthetics commonly found in NFT art.",
+    "Possible nod to gaming culture with the cockpit setting."
+  ],
+  "visualSummary": "The card features a detailed illustration of Pepe the Frog seated in a futuristic cockpit, reminiscent of a simulation or control room. The color palette is dominated by vibrant blues and greens with neon accents, creating a high-tech, cyberpunk atmosphere. The art style is a mix of digital realism and cartoonish elements, giving it a unique, engaging look.",
+  "visualSummaryShort": "The card showcases Pepe the Frog in a futuristic cockpit, surrounded by a vibrant blue and green color palette with neon accents. The art combines digital realism with cartoonish elements, enhancing its cyberpunk vibe.",
+  "visualKeywords": [
+    "pepe",
+    "cockpit",
+    "futuristic",
+    "blue",
+    "green",
+    "neon",
+    "cyberpunk",
+    "digital",
+    "cartoonish",
+    "vibrant"
+  ],
+  "textKeywords": [
+    "pepesimulate"
+  ],
+  "keywords": [
+    "pepe",
+    "cockpit",
+    "futuristic",
+    "blue",
+    "green",
+    "neon",
+    "cyberpunk",
+    "digital",
+    "cartoonish",
+    "vibrant",
+    "pepesimulate"
+  ],
+  "embeddingInput": "PEPESIMULATE (Fake Rares) - Series 6 Card 5\nArtist: Crimson Rider\nSupply 50 Issued February 2022\nOn-card text: PEPESIMULATE\nVisual summary: The card features a detailed illustration of Pepe the Frog seated in a futuristic cockpit, reminiscent of a simulation or control room. The color palette is dominated by vibrant blues and greens with neon accents, creating a high-tech, cyberpunk atmosphere. The art style is a mix of digital realism and cartoonish elements, giving it a unique, engaging look.\nMemetic references: References to simulation theory and virtual reality.; Classic Pepe the Frog character, a staple of meme culture.; Cyberpunk aesthetics commonly found in NFT art.; Possible nod to gaming culture with the cockpit setting.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPESIMULATE#text",
+      "label": "On-card text",
+      "text": "PEPESIMULATE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPESIMULATE#memetic",
+      "label": "Memetic references",
+      "text": "References to simulation theory and virtual reality.\nClassic Pepe the Frog character, a staple of meme culture.\nCyberpunk aesthetics commonly found in NFT art.\nPossible nod to gaming culture with the cockpit setting.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPESIMULATE#visual",
+      "label": "Visual summary",
+      "text": "The card features a detailed illustration of Pepe the Frog seated in a futuristic cockpit, reminiscent of a simulation or control room. The color palette is dominated by vibrant blues and greens with neon accents, creating a high-tech, cyberpunk atmosphere. The art style is a mix of digital realism and cartoonish elements, giving it a unique, engaging look.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPESIMULATE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPESIMULATE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a detailed illustration of Pepe the Frog seated in a futuristic cockpit, reminiscent of a simulation or control room. The color palette is dominated by vibrant blues and greens with neon accents, creating a high-tech, cyberpunk atmosphere. The art style is a mix of digital realism and cartoonish elements, giving it a unique, engaging look.\n\n🧬 **MEMETIC DNA:**\n- References to simulation theory and virtual reality.\n- Classic Pepe the Frog character, a staple of meme culture.\n- Cyberpunk aesthetics commonly found in NFT art.\n- Possible nod to gaming culture with the cockpit setting.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.978Z",
+  "sourceFactVersion": 1
+}

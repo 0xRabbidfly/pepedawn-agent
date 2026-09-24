@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "asset": "PENNYKEK",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 48,
+  "artist": "RebelMoney",
+  "supply": 21,
+  "issuance": "August 2023",
+  "textOnCard": [
+    "1ST"
+  ],
+  "memeticReferences": [
+    "Pepe-inspired green skin, nodding to the iconic meme character.",
+    "Crown suggests themes of royalty and authority, possibly a nod to \"king of memes.\"",
+    "Stamp motif could reference the idea of \"first class\" or elite status in the NFT space."
+  ],
+  "visualSummary": "The card features a profile of a green-skinned figure resembling a traditional portrait, wearing a golden crown. The background is a textured, rich green, enhancing the regal theme. The entire image is framed with a perforated edge, mimicking a vintage postage stamp style.",
+  "visualSummaryShort": "The card showcases a green-skinned figure in profile, adorned with a golden crown against a rich green background. The vintage postage stamp style adds a unique framing to the regal portrait.",
+  "visualKeywords": [
+    "green-skinned",
+    "golden crown",
+    "regal",
+    "vintage",
+    "postage stamp",
+    "textured background"
+  ],
+  "textKeywords": [
+    "1st"
+  ],
+  "keywords": [
+    "green-skinned",
+    "golden crown",
+    "regal",
+    "vintage",
+    "postage stamp",
+    "textured background",
+    "1st"
+  ],
+  "embeddingInput": "PENNYKEK (Fake Rares) - Series 16 Card 48\nArtist: RebelMoney\nSupply 21 Issued August 2023\nOn-card text: 1ST\nVisual summary: The card features a profile of a green-skinned figure resembling a traditional portrait, wearing a golden crown. The background is a textured, rich green, enhancing the regal theme. The entire image is framed with a perforated edge, mimicking a vintage postage stamp style.\nMemetic references: Pepe-inspired green skin, nodding to the iconic meme character.; Crown suggests themes of royalty and authority, possibly a nod to \"king of memes.\"; Stamp motif could reference the idea of \"first class\" or elite status in the NFT space.",
+  "embeddingBlocks": [
+    {
+      "id": "PENNYKEK#text",
+      "label": "On-card text",
+      "text": "1ST",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PENNYKEK#memetic",
+      "label": "Memetic references",
+      "text": "Pepe-inspired green skin, nodding to the iconic meme character.\nCrown suggests themes of royalty and authority, possibly a nod to \"king of memes.\"\nStamp motif could reference the idea of \"first class\" or elite status in the NFT space.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PENNYKEK#visual",
+      "label": "Visual summary",
+      "text": "The card features a profile of a green-skinned figure resembling a traditional portrait, wearing a golden crown. The background is a textured, rich green, enhancing the regal theme. The entire image is framed with a perforated edge, mimicking a vintage postage stamp style.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PENNYKEK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n1ST\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a profile of a green-skinned figure resembling a traditional portrait, wearing a golden crown. The background is a textured, rich green, enhancing the regal theme. The entire image is framed with a perforated edge, mimicking a vintage postage stamp style.\n\n🧬 **MEMETIC DNA:**\n- Pepe-inspired green skin, nodding to the iconic meme character.\n- Crown suggests themes of royalty and authority, possibly a nod to \"king of memes.\"\n- Stamp motif could reference the idea of \"first class\" or elite status in the NFT space.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.830Z",
+  "sourceFactVersion": 1
+}

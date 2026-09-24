@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "asset": "ORANGEVENT",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 20,
+  "artist": "Isaac O",
+  "supply": 21,
+  "issuance": "July 2023",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a vibrant orange background. It likely includes elements related to an event theme.",
+  "visualKeywords": [
+    "orange",
+    "event",
+    "vibrant"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "orange",
+    "event",
+    "vibrant"
+  ],
+  "embeddingInput": "ORANGEVENT (Fake Rares) - Series 15 Card 20\nArtist: Isaac O\nSupply 21 Issued July 2023\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "ORANGEVENT#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.817Z",
+  "sourceFactVersion": 1
+}

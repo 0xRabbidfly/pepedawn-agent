@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "asset": "FAKEPCPENPEN",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 18,
+  "artist": "Tomopen",
+  "supply": 50,
+  "issuance": "June 2022",
+  "textOnCard": [
+    "FakePC"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog vibes.",
+    "Trading and crypto culture represented by stock charts on the monitors.",
+    "Reference to the \"trading degen\" lifestyle.",
+    "Cute animal sidekick, reminiscent of various internet memes."
+  ],
+  "visualSummary": "The card features a green character, likely Pepe, seated at a desk with multiple monitors displaying stock charts. The color palette is soft with pastels and neutrals, creating a calm environment. A small penguin-like creature sits on the floor, looking up at the screen, adding a whimsical touch to the scene.",
+  "visualSummaryShort": "The card depicts a green character, possibly Pepe, at a desk surrounded by stock charts on multiple monitors. A whimsical penguin-like creature adds charm to the calm pastel environment.",
+  "visualKeywords": [
+    "green character",
+    "desk",
+    "monitors",
+    "stock charts",
+    "penguin-like creature",
+    "pastel colors",
+    "calm environment",
+    "whimsical"
+  ],
+  "textKeywords": [
+    "fakepc"
+  ],
+  "keywords": [
+    "green character",
+    "desk",
+    "monitors",
+    "stock charts",
+    "penguin-like creature",
+    "pastel colors",
+    "calm environment",
+    "whimsical",
+    "fakepc"
+  ],
+  "embeddingInput": "FAKEPCPENPEN (Fake Rares) - Series 8 Card 18\nArtist: Tomopen\nSupply 50 Issued June 2022\nOn-card text: FakePC\nVisual summary: The card features a green character, likely Pepe, seated at a desk with multiple monitors displaying stock charts. The color palette is soft with pastels and neutrals, creating a calm environment. A small penguin-like creature sits on the floor, looking up at the screen, adding a whimsical touch to the scene.\nMemetic references: Classic Pepe the Frog vibes.; Trading and crypto culture represented by stock charts on the monitors.; Reference to the \"trading degen\" lifestyle.; Cute animal sidekick, reminiscent of various internet memes.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEPCPENPEN#text",
+      "label": "On-card text",
+      "text": "FakePC",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEPCPENPEN#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog vibes.\nTrading and crypto culture represented by stock charts on the monitors.\nReference to the \"trading degen\" lifestyle.\nCute animal sidekick, reminiscent of various internet memes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEPCPENPEN#visual",
+      "label": "Visual summary",
+      "text": "The card features a green character, likely Pepe, seated at a desk with multiple monitors displaying stock charts. The color palette is soft with pastels and neutrals, creating a calm environment. A small penguin-like creature sits on the floor, looking up at the screen, adding a whimsical touch to the scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEPCPENPEN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFakePC\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a green character, likely Pepe, seated at a desk with multiple monitors displaying stock charts. The color palette is soft with pastels and neutrals, creating a calm environment. A small penguin-like creature sits on the floor, looking up at the screen, adding a whimsical touch to the scene.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog vibes.\n- Trading and crypto culture represented by stock charts on the monitors.\n- Reference to the \"trading degen\" lifestyle.\n- Cute animal sidekick, reminiscent of various internet memes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.545Z",
+  "sourceFactVersion": 1
+}

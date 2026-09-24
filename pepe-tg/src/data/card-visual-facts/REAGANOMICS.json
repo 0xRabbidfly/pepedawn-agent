@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "REAGANOMICS",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 49,
+  "artist": "Kane Mayfield",
+  "supply": 81,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "REAGANOMICS"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in sunglasses",
+    "Glitch art style",
+    "Reference to \"Reaganomics,\" an economic policy theme",
+    "Retro-futuristic vibes"
+  ],
+  "visualSummary": "This artwork features a glitchy, digital rendition of a well-known political figure with a focus on neon and high-contrast colors. The subject wears glasses reflecting an image of Pepe the Frog, adding a layer of meme culture to the piece. The style is reminiscent of digital art with a retro-futuristic twist, using distorted lines and vivid hues to create a sense of movement and disruption.",
+  "visualSummaryShort": "The card showcases a glitchy digital artwork of a political figure with neon colors and high contrast. The glasses reflect an image of Pepe the Frog, blending meme culture with a retro-futuristic style.",
+  "visualKeywords": [
+    "glitch",
+    "neon",
+    "high-contrast",
+    "digital art",
+    "retro-futuristic",
+    "distorted lines",
+    "movement",
+    "meme culture",
+    "glasses",
+    "pepe the frog"
+  ],
+  "textKeywords": [
+    "reaganomics"
+  ],
+  "keywords": [
+    "glitch",
+    "neon",
+    "high-contrast",
+    "digital art",
+    "retro-futuristic",
+    "distorted lines",
+    "movement",
+    "meme culture",
+    "glasses",
+    "pepe the frog",
+    "reaganomics"
+  ],
+  "embeddingInput": "REAGANOMICS (Fake Rares) - Series 10 Card 49\nArtist: Kane Mayfield\nSupply 81 Issued March 2022\nOn-card text: REAGANOMICS\nVisual summary: This artwork features a glitchy, digital rendition of a well-known political figure with a focus on neon and high-contrast colors. The subject wears glasses reflecting an image of Pepe the Frog, adding a layer of meme culture to the piece. The style is reminiscent of digital art with a retro-futuristic twist, using distorted lines and vivid hues to create a sense of movement and disruption.\nMemetic references: Pepe the Frog in sunglasses; Glitch art style; Reference to \"Reaganomics,\" an economic policy theme; Retro-futuristic vibes",
+  "embeddingBlocks": [
+    {
+      "id": "REAGANOMICS#text",
+      "label": "On-card text",
+      "text": "REAGANOMICS",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "REAGANOMICS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in sunglasses\nGlitch art style\nReference to \"Reaganomics,\" an economic policy theme\nRetro-futuristic vibes",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "REAGANOMICS#visual",
+      "label": "Visual summary",
+      "text": "This artwork features a glitchy, digital rendition of a well-known political figure with a focus on neon and high-contrast colors. The subject wears glasses reflecting an image of Pepe the Frog, adding a layer of meme culture to the piece. The style is reminiscent of digital art with a retro-futuristic twist, using distorted lines and vivid hues to create a sense of movement and disruption.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "REAGANOMICS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nREAGANOMICS\n\n🎨 **VISUAL BREAKDOWN:**\nThis artwork features a glitchy, digital rendition of a well-known political figure with a focus on neon and high-contrast colors. The subject wears glasses reflecting an image of Pepe the Frog, adding a layer of meme culture to the piece. The style is reminiscent of digital art with a retro-futuristic twist, using distorted lines and vivid hues to create a sense of movement and disruption.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in sunglasses\n- Glitch art style\n- Reference to \"Reaganomics,\" an economic policy theme\n- Retro-futuristic vibes",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.077Z",
+  "sourceFactVersion": 1
+}

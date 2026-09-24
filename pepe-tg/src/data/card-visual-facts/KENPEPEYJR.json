@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "asset": "KENPEPEYJR",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 18,
+  "artist": "mr spree",
+  "supply": 34,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "FAKE2, PEPE, MAJOR LEAGUE FAKEBALL, SUPER NINPEPEO, FREE INSIDE! Collector Fakeball Pepe."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in a baseball outfit, channeling meme culture.",
+    "Parody of classic video game branding, specifically hinting at Nintendo.",
+    "Play on words with \"FAKEBALL,\" tying into the Fake Rares theme."
+  ],
+  "visualSummary": "The card features a retro-style design reminiscent of vintage video game covers, with a bold, colorful layout. It has a pixelated aesthetic with vibrant reds, blues, and yellows, and a prominent image of Pepe the Frog dressed in a baseball uniform. The overall look combines elements of nostalgia with a playful twist on classic sports imagery.",
+  "visualSummaryShort": "The card showcases a retro design with a pixelated aesthetic featuring Pepe the Frog in a baseball uniform. Its vibrant colors and nostalgic elements create a playful sports-themed image.",
+  "visualKeywords": [
+    "retro",
+    "pixelated",
+    "baseball",
+    "colorful",
+    "vibrant",
+    "nostalgia",
+    "playful",
+    "frog",
+    "sports",
+    "uniform"
+  ],
+  "textKeywords": [
+    "fake2",
+    "major",
+    "league",
+    "fakeball",
+    "super",
+    "ninpepeo",
+    "free",
+    "inside",
+    "collector"
+  ],
+  "keywords": [
+    "retro",
+    "pixelated",
+    "baseball",
+    "colorful",
+    "vibrant",
+    "nostalgia",
+    "playful",
+    "frog",
+    "sports",
+    "uniform",
+    "fake2",
+    "major",
+    "league",
+    "fakeball",
+    "super",
+    "ninpepeo",
+    "free",
+    "inside",
+    "collector"
+  ],
+  "embeddingInput": "KENPEPEYJR (Fake Rares) - Series 10 Card 18\nArtist: mr spree\nSupply 34 Issued July 2022\nOn-card text: FAKE2, PEPE, MAJOR LEAGUE FAKEBALL, SUPER NINPEPEO, FREE INSIDE! Collector Fakeball Pepe.\nVisual summary: The card features a retro-style design reminiscent of vintage video game covers, with a bold, colorful layout. It has a pixelated aesthetic with vibrant reds, blues, and yellows, and a prominent image of Pepe the Frog dressed in a baseball uniform. The overall look combines elements of nostalgia with a playful twist on classic sports imagery.\nMemetic references: Pepe the Frog in a baseball outfit, channeling meme culture.; Parody of classic video game branding, specifically hinting at Nintendo.; Play on words with \"FAKEBALL,\" tying into the Fake Rares theme.",
+  "embeddingBlocks": [
+    {
+      "id": "KENPEPEYJR#text",
+      "label": "On-card text",
+      "text": "FAKE2, PEPE, MAJOR LEAGUE FAKEBALL, SUPER NINPEPEO, FREE INSIDE! Collector Fakeball Pepe.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "KENPEPEYJR#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in a baseball outfit, channeling meme culture.\nParody of classic video game branding, specifically hinting at Nintendo.\nPlay on words with \"FAKEBALL,\" tying into the Fake Rares theme.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "KENPEPEYJR#visual",
+      "label": "Visual summary",
+      "text": "The card features a retro-style design reminiscent of vintage video game covers, with a bold, colorful layout. It has a pixelated aesthetic with vibrant reds, blues, and yellows, and a prominent image of Pepe the Frog dressed in a baseball uniform. The overall look combines elements of nostalgia with a playful twist on classic sports imagery.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "KENPEPEYJR#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE2, PEPE, MAJOR LEAGUE FAKEBALL, SUPER NINPEPEO, FREE INSIDE! Collector Fakeball Pepe.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a retro-style design reminiscent of vintage video game covers, with a bold, colorful layout. It has a pixelated aesthetic with vibrant reds, blues, and yellows, and a prominent image of Pepe the Frog dressed in a baseball uniform. The overall look combines elements of nostalgia with a playful twist on classic sports imagery.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in a baseball outfit, channeling meme culture.\n- Parody of classic video game branding, specifically hinting at Nintendo.\n- Play on words with \"FAKEBALL,\" tying into the Fake Rares theme.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.715Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "asset": "FAKEPEPIOUS",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 34,
+  "artist": "Odious",
+  "supply": 100,
+  "issuance": "September 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as the central figure.",
+    "References to psychedelic art and surrealism.",
+    "Crypto and NFT culture elements with abstract and digital motifs.",
+    "Chaos and randomness akin to meme culture."
+  ],
+  "visualSummary": "The card features a surreal, vibrant scene with a Pepe figure sitting on a blue cube. The color palette is bold and psychedelic, with a mix of bright blues, pinks, greens, and purples. The background is a chaotic sky filled with abstract shapes, stars, and a rainbow, creating a whimsical and dreamlike atmosphere.",
+  "visualSummaryShort": "The card showcases a surreal Pepe figure on a blue cube against a vibrant, chaotic sky. The scene is filled with abstract shapes, stars, and a rainbow, creating a whimsical atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "blue cube",
+    "psychedelic",
+    "bright colors",
+    "abstract shapes",
+    "stars",
+    "rainbow",
+    "whimsical",
+    "dreamlike"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "blue cube",
+    "psychedelic",
+    "bright colors",
+    "abstract shapes",
+    "stars",
+    "rainbow",
+    "whimsical",
+    "dreamlike"
+  ],
+  "embeddingInput": "FAKEPEPIOUS (Fake Rares) - Series 10 Card 34\nArtist: Odious\nSupply 100 Issued September 2022\nOn-card text: none detected\nVisual summary: The card features a surreal, vibrant scene with a Pepe figure sitting on a blue cube. The color palette is bold and psychedelic, with a mix of bright blues, pinks, greens, and purples. The background is a chaotic sky filled with abstract shapes, stars, and a rainbow, creating a whimsical and dreamlike atmosphere.\nMemetic references: Pepe the Frog as the central figure.; References to psychedelic art and surrealism.; Crypto and NFT culture elements with abstract and digital motifs.; Chaos and randomness akin to meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEPEPIOUS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as the central figure.\nReferences to psychedelic art and surrealism.\nCrypto and NFT culture elements with abstract and digital motifs.\nChaos and randomness akin to meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEPEPIOUS#visual",
+      "label": "Visual summary",
+      "text": "The card features a surreal, vibrant scene with a Pepe figure sitting on a blue cube. The color palette is bold and psychedelic, with a mix of bright blues, pinks, greens, and purples. The background is a chaotic sky filled with abstract shapes, stars, and a rainbow, creating a whimsical and dreamlike atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEPEPIOUS#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a surreal, vibrant scene with a Pepe figure sitting on a blue cube. The color palette is bold and psychedelic, with a mix of bright blues, pinks, greens, and purples. The background is a chaotic sky filled with abstract shapes, stars, and a rainbow, creating a whimsical and dreamlike atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as the central figure.\n- References to psychedelic art and surrealism.\n- Crypto and NFT culture elements with abstract and digital motifs.\n- Chaos and randomness akin to meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.556Z",
+  "sourceFactVersion": 1
+}

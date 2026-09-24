@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "asset": "LAFAKANOSTRA",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 36,
+  "artist": "Mr. Enrique Fajaque",
+  "supply": 443,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "La Faka Nostra"
+  ],
+  "memeticReferences": [
+    "References to the infamous La Cosa Nostra, mixing mafia vibes with crypto culture.",
+    "The playful twist on words hints at the humor often found in NFT communities.",
+    "Neon and graffiti elements nod to urban culture and underground art scenes."
+  ],
+  "visualSummary": "The card features a dark background with vibrant, neon-like text in the center. The script is ornate and flowing, resembling classic graffiti or street art styles. Hints of purple and blue add to the mysterious and edgy aesthetic.",
+  "visualSummaryShort": "The card showcases vibrant, neon-like text against a dark background, creating a mysterious and edgy aesthetic. Ornate and flowing script elements resemble classic graffiti or street art styles.",
+  "visualKeywords": [
+    "dark background",
+    "neon text",
+    "purple",
+    "blue",
+    "graffiti",
+    "street art"
+  ],
+  "textKeywords": [
+    "faka",
+    "nostra"
+  ],
+  "keywords": [
+    "dark background",
+    "neon text",
+    "purple",
+    "blue",
+    "graffiti",
+    "street art",
+    "faka",
+    "nostra"
+  ],
+  "embeddingInput": "LAFAKANOSTRA (Fake Rares) - Series 2 Card 36\nArtist: Mr. Enrique Fajaque\nSupply 443 Issued October 2021\nOn-card text: La Faka Nostra\nVisual summary: The card features a dark background with vibrant, neon-like text in the center. The script is ornate and flowing, resembling classic graffiti or street art styles. Hints of purple and blue add to the mysterious and edgy aesthetic.\nMemetic references: References to the infamous La Cosa Nostra, mixing mafia vibes with crypto culture.; The playful twist on words hints at the humor often found in NFT communities.; Neon and graffiti elements nod to urban culture and underground art scenes.",
+  "embeddingBlocks": [
+    {
+      "id": "LAFAKANOSTRA#text",
+      "label": "On-card text",
+      "text": "La Faka Nostra",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "LAFAKANOSTRA#memetic",
+      "label": "Memetic references",
+      "text": "References to the infamous La Cosa Nostra, mixing mafia vibes with crypto culture.\nThe playful twist on words hints at the humor often found in NFT communities.\nNeon and graffiti elements nod to urban culture and underground art scenes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LAFAKANOSTRA#visual",
+      "label": "Visual summary",
+      "text": "The card features a dark background with vibrant, neon-like text in the center. The script is ornate and flowing, resembling classic graffiti or street art styles. Hints of purple and blue add to the mysterious and edgy aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LAFAKANOSTRA#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nLa Faka Nostra\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a dark background with vibrant, neon-like text in the center. The script is ornate and flowing, resembling classic graffiti or street art styles. Hints of purple and blue add to the mysterious and edgy aesthetic.\n\n🧬 **MEMETIC DNA:**\n- References to the infamous La Cosa Nostra, mixing mafia vibes with crypto culture.\n- The playful twist on words hints at the humor often found in NFT communities.\n- Neon and graffiti elements nod to urban culture and underground art scenes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.726Z",
+  "sourceFactVersion": 1
+}

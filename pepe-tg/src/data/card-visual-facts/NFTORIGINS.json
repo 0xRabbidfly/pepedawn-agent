@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "asset": "NFTORIGINS",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 23,
+  "artist": "ROCHIGG",
+  "supply": 70,
+  "issuance": "December 2021",
+  "textOnCard": [
+    "\"The Origin Digital Antiquities Market v1.4 2014 – 2017\"",
+    "\"TEST \"TESTER\" JAN 13 2014\""
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in a suit, symbolizing the intersection of meme culture and professionalism.",
+    "Bitcoin symbol held by a character, highlighting crypto culture.",
+    "Pixelated characters referencing early digital art and gaming.",
+    "A nod to CryptoKitties, a classic NFT reference."
+  ],
+  "visualSummary": "The card depicts a group of characters around a conference table, each with a distinct and colorful appearance. There's a mix of cartoonish and pixelated styles, with vibrant colors like blues, greens, and reds dominating the scene. The background showcases a chart and cityscape, adding a sense of depth and complexity to the composition.",
+  "visualSummaryShort": "The card features a vibrant group of characters gathered around a conference table, showcasing a mix of cartoonish and pixelated styles. The background includes a chart and cityscape, enhancing the overall complexity of the scene.",
+  "visualKeywords": [
+    "conference table",
+    "colorful characters",
+    "cartoonish",
+    "pixelated",
+    "blue",
+    "green",
+    "red",
+    "chart",
+    "cityscape",
+    "vibrant"
+  ],
+  "textKeywords": [
+    "origin",
+    "digital",
+    "antiquities",
+    "market",
+    "2014",
+    "2017",
+    "test",
+    "tester",
+    "jan"
+  ],
+  "keywords": [
+    "conference table",
+    "colorful characters",
+    "cartoonish",
+    "pixelated",
+    "blue",
+    "green",
+    "red",
+    "chart",
+    "cityscape",
+    "vibrant",
+    "origin",
+    "digital",
+    "antiquities",
+    "market",
+    "2014",
+    "2017",
+    "test",
+    "tester",
+    "jan"
+  ],
+  "embeddingInput": "NFTORIGINS (Fake Rares) - Series 4 Card 23\nArtist: ROCHIGG\nSupply 70 Issued December 2021\nOn-card text: \"The Origin Digital Antiquities Market v1.4 2014 – 2017\" | \"TEST \"TESTER\" JAN 13 2014\"\nVisual summary: The card depicts a group of characters around a conference table, each with a distinct and colorful appearance. There's a mix of cartoonish and pixelated styles, with vibrant colors like blues, greens, and reds dominating the scene. The background showcases a chart and cityscape, adding a sense of depth and complexity to the composition.\nMemetic references: Pepe the Frog in a suit, symbolizing the intersection of meme culture and professionalism.; Bitcoin symbol held by a character, highlighting crypto culture.; Pixelated characters referencing early digital art and gaming.; A nod to CryptoKitties, a classic NFT reference.",
+  "embeddingBlocks": [
+    {
+      "id": "NFTORIGINS#text",
+      "label": "On-card text",
+      "text": "\"The Origin Digital Antiquities Market v1.4 2014 – 2017\" | \"TEST \"TESTER\" JAN 13 2014\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "NFTORIGINS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in a suit, symbolizing the intersection of meme culture and professionalism.\nBitcoin symbol held by a character, highlighting crypto culture.\nPixelated characters referencing early digital art and gaming.\nA nod to CryptoKitties, a classic NFT reference.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "NFTORIGINS#visual",
+      "label": "Visual summary",
+      "text": "The card depicts a group of characters around a conference table, each with a distinct and colorful appearance. There's a mix of cartoonish and pixelated styles, with vibrant colors like blues, greens, and reds dominating the scene. The background showcases a chart and cityscape, adding a sense of depth and complexity to the composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "NFTORIGINS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- \"The Origin Digital Antiquities Market v1.4 2014 – 2017\"\n- \"TEST \"TESTER\" JAN 13 2014\"\n\n🎨 **VISUAL BREAKDOWN:**\nThe card depicts a group of characters around a conference table, each with a distinct and colorful appearance. There's a mix of cartoonish and pixelated styles, with vibrant colors like blues, greens, and reds dominating the scene. The background showcases a chart and cityscape, adding a sense of depth and complexity to the composition.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in a suit, symbolizing the intersection of meme culture and professionalism.\n- Bitcoin symbol held by a character, highlighting crypto culture.\n- Pixelated characters referencing early digital art and gaming.\n- A nod to CryptoKitties, a classic NFT reference.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.794Z",
+  "sourceFactVersion": 1
+}

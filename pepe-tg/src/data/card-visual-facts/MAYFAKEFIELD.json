@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "asset": "MAYFAKEFIELD",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 35,
+  "artist": "Kane Mayfield",
+  "supply": 35,
+  "issuance": "December 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog reference with the frog character.",
+    "Crown symbolizes royalty, possibly a nod to \"King Pepe.\"",
+    "Glitch art style reflects crypto and NFT digital aesthetics.",
+    "Fly could symbolize the ever-present distractions or nuisances in the crypto world."
+  ],
+  "visualSummary": "The card features a regal frog character wearing a crown, exuding an air of authority. The color palette is rich with deep greens, golds, and hints of blue and purple, giving it a royal and mystical vibe. A fly buzzing nearby and a futuristic, glitchy texture add layers of intrigue and digital chaos.",
+  "visualSummaryShort": "The card showcases a regal frog character adorned with a crown, set against a rich color palette of deep greens and golds. A fly buzzes nearby, enhancing the mystical and chaotic atmosphere.",
+  "visualKeywords": [
+    "frog",
+    "crown",
+    "green",
+    "gold",
+    "blue",
+    "purple",
+    "fly",
+    "futuristic",
+    "glitch",
+    "mystical"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "frog",
+    "crown",
+    "green",
+    "gold",
+    "blue",
+    "purple",
+    "fly",
+    "futuristic",
+    "glitch",
+    "mystical"
+  ],
+  "embeddingInput": "MAYFAKEFIELD (Fake Rares) - Series 4 Card 35\nArtist: Kane Mayfield\nSupply 35 Issued December 2021\nOn-card text: none detected\nVisual summary: The card features a regal frog character wearing a crown, exuding an air of authority. The color palette is rich with deep greens, golds, and hints of blue and purple, giving it a royal and mystical vibe. A fly buzzing nearby and a futuristic, glitchy texture add layers of intrigue and digital chaos.\nMemetic references: Pepe the Frog reference with the frog character.; Crown symbolizes royalty, possibly a nod to \"King Pepe.\"; Glitch art style reflects crypto and NFT digital aesthetics.; Fly could symbolize the ever-present distractions or nuisances in the crypto world.",
+  "embeddingBlocks": [
+    {
+      "id": "MAYFAKEFIELD#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference with the frog character.\nCrown symbolizes royalty, possibly a nod to \"King Pepe.\"\nGlitch art style reflects crypto and NFT digital aesthetics.\nFly could symbolize the ever-present distractions or nuisances in the crypto world.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MAYFAKEFIELD#visual",
+      "label": "Visual summary",
+      "text": "The card features a regal frog character wearing a crown, exuding an air of authority. The color palette is rich with deep greens, golds, and hints of blue and purple, giving it a royal and mystical vibe. A fly buzzing nearby and a futuristic, glitchy texture add layers of intrigue and digital chaos.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MAYFAKEFIELD#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a regal frog character wearing a crown, exuding an air of authority. The color palette is rich with deep greens, golds, and hints of blue and purple, giving it a royal and mystical vibe. A fly buzzing nearby and a futuristic, glitchy texture add layers of intrigue and digital chaos.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference with the frog character.\n- Crown symbolizes royalty, possibly a nod to \"King Pepe.\"\n- Glitch art style reflects crypto and NFT digital aesthetics.\n- Fly could symbolize the ever-present distractions or nuisances in the crypto world.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.762Z",
+  "sourceFactVersion": 1
+}

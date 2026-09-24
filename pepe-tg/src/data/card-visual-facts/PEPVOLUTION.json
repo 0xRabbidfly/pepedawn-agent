@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "asset": "PEPVOLUTION",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 39,
+  "artist": "Baldopg",
+  "supply": 21,
+  "issuance": "March 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Evolution parody featuring frogs, aligning with Pepe lore.",
+    "Humanoid frog holding a smartphone, symbolizing modern tech culture.",
+    "The imagery nods to the \"evolution\" meme genre, with a crypto twist."
+  ],
+  "visualSummary": "The card features a humorous evolutionary journey of a frog transforming into a humanoid figure, reminiscent of the classic \"evolution of man\" illustration. The background is minimalistic with a dark setting, highlighting the green tones of the characters. The humanoid figure is holding a phone, adding a modern twist to the evolution narrative.",
+  "visualSummaryShort": "The card humorously depicts a frog evolving into a humanoid figure in a dark, minimalistic setting. The green tones of the characters stand out, with the humanoid holding a phone for a modern touch.",
+  "visualKeywords": [
+    "frog",
+    "humanoid",
+    "evolution",
+    "dark background",
+    "green tones",
+    "phone",
+    "minimalistic"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "frog",
+    "humanoid",
+    "evolution",
+    "dark background",
+    "green tones",
+    "phone",
+    "minimalistic"
+  ],
+  "embeddingInput": "PEPVOLUTION (Fake Rares) - Series 14 Card 39\nArtist: Baldopg\nSupply 21 Issued March 2023\nOn-card text: none detected\nVisual summary: The card features a humorous evolutionary journey of a frog transforming into a humanoid figure, reminiscent of the classic \"evolution of man\" illustration. The background is minimalistic with a dark setting, highlighting the green tones of the characters. The humanoid figure is holding a phone, adding a modern twist to the evolution narrative.\nMemetic references: Evolution parody featuring frogs, aligning with Pepe lore.; Humanoid frog holding a smartphone, symbolizing modern tech culture.; The imagery nods to the \"evolution\" meme genre, with a crypto twist.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPVOLUTION#memetic",
+      "label": "Memetic references",
+      "text": "Evolution parody featuring frogs, aligning with Pepe lore.\nHumanoid frog holding a smartphone, symbolizing modern tech culture.\nThe imagery nods to the \"evolution\" meme genre, with a crypto twist.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPVOLUTION#visual",
+      "label": "Visual summary",
+      "text": "The card features a humorous evolutionary journey of a frog transforming into a humanoid figure, reminiscent of the classic \"evolution of man\" illustration. The background is minimalistic with a dark setting, highlighting the green tones of the characters. The humanoid figure is holding a phone, adding a modern twist to the evolution narrative.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPVOLUTION#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a humorous evolutionary journey of a frog transforming into a humanoid figure, reminiscent of the classic \"evolution of man\" illustration. The background is minimalistic with a dark setting, highlighting the green tones of the characters. The humanoid figure is holding a phone, adding a modern twist to the evolution narrative.\n\n🧬 **MEMETIC DNA:**\n- Evolution parody featuring frogs, aligning with Pepe lore.\n- Humanoid frog holding a smartphone, symbolizing modern tech culture.\n- The imagery nods to the \"evolution\" meme genre, with a crypto twist.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.034Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "asset": "PEPENGMILMBO",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 29,
+  "artist": "Moxarra Gonzalez",
+  "supply": 40,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "PEPE INSIDE, LAMBORNGMINI, LAMBO:0",
+    "NO"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure, a staple in meme culture.",
+    "Play on the Lamborghini logo, a nod to crypto wealth aspirations.",
+    "\"PEPE INSIDE\" echoes the \"Intel Inside\" slogan, adding a tech twist.",
+    "The contrast of \"LAMBO:0",
+    "NO\" humorously touches on the elusive dream of crypto riches."
+  ],
+  "visualSummary": "The card features a shield-shaped emblem with a drooling Pepe the Frog, draped in a Superman-style cape, set against a black background. The color palette includes vibrant greens, reds, blues, and yellows, creating a playful yet bold aesthetic. The background pattern consists of repeated \"GN\" text, adding a textured layer to the overall design.",
+  "visualSummaryShort": "The card showcases a shield-shaped emblem featuring a drooling Pepe the Frog in a Superman-style cape against a black background. Its vibrant color palette and repeated text pattern create a playful and bold aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "shield",
+    "cape",
+    "black background",
+    "vibrant colors",
+    "text pattern",
+    "playful",
+    "bold"
+  ],
+  "textKeywords": [
+    "inside",
+    "lamborngmini",
+    "lambo"
+  ],
+  "keywords": [
+    "pepe",
+    "shield",
+    "cape",
+    "black background",
+    "vibrant colors",
+    "text pattern",
+    "playful",
+    "bold",
+    "inside",
+    "lamborngmini",
+    "lambo"
+  ],
+  "embeddingInput": "PEPENGMILMBO (Fake Rares) - Series 5 Card 29\nArtist: Moxarra Gonzalez\nSupply 40 Issued February 2022\nOn-card text: PEPE INSIDE, LAMBORNGMINI, LAMBO:0 | NO\nVisual summary: The card features a shield-shaped emblem with a drooling Pepe the Frog, draped in a Superman-style cape, set against a black background. The color palette includes vibrant greens, reds, blues, and yellows, creating a playful yet bold aesthetic. The background pattern consists of repeated \"GN\" text, adding a textured layer to the overall design.\nMemetic references: Pepe the Frog as a central figure, a staple in meme culture.; Play on the Lamborghini logo, a nod to crypto wealth aspirations.; \"PEPE INSIDE\" echoes the \"Intel Inside\" slogan, adding a tech twist.; The contrast of \"LAMBO:0; NO\" humorously touches on the elusive dream of crypto riches.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPENGMILMBO#text",
+      "label": "On-card text",
+      "text": "PEPE INSIDE, LAMBORNGMINI, LAMBO:0 | NO",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPENGMILMBO#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure, a staple in meme culture.\nPlay on the Lamborghini logo, a nod to crypto wealth aspirations.\n\"PEPE INSIDE\" echoes the \"Intel Inside\" slogan, adding a tech twist.\nThe contrast of \"LAMBO:0\nNO\" humorously touches on the elusive dream of crypto riches.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPENGMILMBO#visual",
+      "label": "Visual summary",
+      "text": "The card features a shield-shaped emblem with a drooling Pepe the Frog, draped in a Superman-style cape, set against a black background. The color palette includes vibrant greens, reds, blues, and yellows, creating a playful yet bold aesthetic. The background pattern consists of repeated \"GN\" text, adding a textured layer to the overall design.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPENGMILMBO#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE INSIDE, LAMBORNGMINI, LAMBO:0 / NO\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a shield-shaped emblem with a drooling Pepe the Frog, draped in a Superman-style cape, set against a black background. The color palette includes vibrant greens, reds, blues, and yellows, creating a playful yet bold aesthetic. The background pattern consists of repeated \"GN\" text, adding a textured layer to the overall design.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure, a staple in meme culture.\n- Play on the Lamborghini logo, a nod to crypto wealth aspirations.\n- \"PEPE INSIDE\" echoes the \"Intel Inside\" slogan, adding a tech twist.\n- The contrast of \"LAMBO:0 / NO\" humorously touches on the elusive dream of crypto riches.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.937Z",
+  "sourceFactVersion": 1
+}

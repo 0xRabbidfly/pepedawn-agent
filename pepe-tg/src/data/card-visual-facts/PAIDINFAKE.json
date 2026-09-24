@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "asset": "PAIDINFAKE",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 35,
+  "artist": "Abstract Mirror",
+  "supply": 21,
+  "issuance": "December 2022",
+  "textOnCard": [
+    "PAID IN FAKE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog references with green-skinned characters.",
+    "Streetwear culture, hinting at modern fashion trends.",
+    "Crypto culture nod with the \"PAID IN FAKE\" text, playing on the idea of digital currency and NFTs."
+  ],
+  "visualSummary": "The card features three figures with green skin, reminiscent of classic Pepe the Frog imagery. They are styled in modern streetwear, with one wearing a blue sweater, another in a red and black jacket, and the third in a simple black shirt. The color palette is vibrant, with bold greens, reds, and blues, creating a striking contrast against the white background.",
+  "visualSummaryShort": "The card showcases three green-skinned figures in modern streetwear against a white background. The vibrant color palette features bold greens, reds, and blues.",
+  "visualKeywords": [
+    "green skin",
+    "streetwear",
+    "blue sweater",
+    "red jacket",
+    "black shirt",
+    "vibrant colors",
+    "white background"
+  ],
+  "textKeywords": [
+    "paid"
+  ],
+  "keywords": [
+    "green skin",
+    "streetwear",
+    "blue sweater",
+    "red jacket",
+    "black shirt",
+    "vibrant colors",
+    "white background",
+    "paid"
+  ],
+  "embeddingInput": "PAIDINFAKE (Fake Rares) - Series 13 Card 35\nArtist: Abstract Mirror\nSupply 21 Issued December 2022\nOn-card text: PAID IN FAKE\nVisual summary: The card features three figures with green skin, reminiscent of classic Pepe the Frog imagery. They are styled in modern streetwear, with one wearing a blue sweater, another in a red and black jacket, and the third in a simple black shirt. The color palette is vibrant, with bold greens, reds, and blues, creating a striking contrast against the white background.\nMemetic references: Pepe the Frog references with green-skinned characters.; Streetwear culture, hinting at modern fashion trends.; Crypto culture nod with the \"PAID IN FAKE\" text, playing on the idea of digital currency and NFTs.",
+  "embeddingBlocks": [
+    {
+      "id": "PAIDINFAKE#text",
+      "label": "On-card text",
+      "text": "PAID IN FAKE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PAIDINFAKE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references with green-skinned characters.\nStreetwear culture, hinting at modern fashion trends.\nCrypto culture nod with the \"PAID IN FAKE\" text, playing on the idea of digital currency and NFTs.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PAIDINFAKE#visual",
+      "label": "Visual summary",
+      "text": "The card features three figures with green skin, reminiscent of classic Pepe the Frog imagery. They are styled in modern streetwear, with one wearing a blue sweater, another in a red and black jacket, and the third in a simple black shirt. The color palette is vibrant, with bold greens, reds, and blues, creating a striking contrast against the white background.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PAIDINFAKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPAID IN FAKE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features three figures with green skin, reminiscent of classic Pepe the Frog imagery. They are styled in modern streetwear, with one wearing a blue sweater, another in a red and black jacket, and the third in a simple black shirt. The color palette is vibrant, with bold greens, reds, and blues, creating a striking contrast against the white background.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references with green-skinned characters.\n- Streetwear culture, hinting at modern fashion trends.\n- Crypto culture nod with the \"PAID IN FAKE\" text, playing on the idea of digital currency and NFTs.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.821Z",
+  "sourceFactVersion": 1
+}

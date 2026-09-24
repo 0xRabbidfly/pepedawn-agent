@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "SUNSHINEPEPE",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 34,
+  "artist": "kr",
+  "supply": 51,
+  "issuance": "September 2023",
+  "textOnCard": [
+    "SUNSHINEPEPE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog is central, iconic in meme culture.",
+    "Beach and sun themes evoke classic \"summer vibes.\"",
+    "Checkered patterns hint at retro or vaporwave aesthetics.",
+    "Crypto culture nod with the drink and relaxed lifestyle."
+  ],
+  "visualSummary": "This card features Pepe the Frog enjoying a sunny day at the beach, with a large sun sporting Pepe's face shining brightly in the sky. The background is a mix of checkered patterns and waves, giving a surreal, retro vibe. The color palette is primarily black and white with simple, bold lines, creating a graphic novel style.",
+  "visualSummaryShort": "The card depicts Pepe the Frog at the beach under a sun with his face. The design features a retro vibe with checkered patterns and a bold black and white color palette.",
+  "visualKeywords": [
+    "pepe",
+    "beach",
+    "sun",
+    "checkered",
+    "waves",
+    "black and white",
+    "graphic style",
+    "retro",
+    "bold lines"
+  ],
+  "textKeywords": [
+    "sunshinepepe"
+  ],
+  "keywords": [
+    "pepe",
+    "beach",
+    "sun",
+    "checkered",
+    "waves",
+    "black and white",
+    "graphic style",
+    "retro",
+    "bold lines",
+    "sunshinepepe"
+  ],
+  "embeddingInput": "SUNSHINEPEPE (Fake Rares) - Series 16 Card 34\nArtist: kr\nSupply 51 Issued September 2023\nOn-card text: SUNSHINEPEPE\nVisual summary: This card features Pepe the Frog enjoying a sunny day at the beach, with a large sun sporting Pepe's face shining brightly in the sky. The background is a mix of checkered patterns and waves, giving a surreal, retro vibe. The color palette is primarily black and white with simple, bold lines, creating a graphic novel style.\nMemetic references: Pepe the Frog is central, iconic in meme culture.; Beach and sun themes evoke classic \"summer vibes.\"; Checkered patterns hint at retro or vaporwave aesthetics.; Crypto culture nod with the drink and relaxed lifestyle.",
+  "embeddingBlocks": [
+    {
+      "id": "SUNSHINEPEPE#text",
+      "label": "On-card text",
+      "text": "SUNSHINEPEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "SUNSHINEPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog is central, iconic in meme culture.\nBeach and sun themes evoke classic \"summer vibes.\"\nCheckered patterns hint at retro or vaporwave aesthetics.\nCrypto culture nod with the drink and relaxed lifestyle.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SUNSHINEPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features Pepe the Frog enjoying a sunny day at the beach, with a large sun sporting Pepe's face shining brightly in the sky. The background is a mix of checkered patterns and waves, giving a surreal, retro vibe. The color palette is primarily black and white with simple, bold lines, creating a graphic novel style.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SUNSHINEPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nSUNSHINEPEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features Pepe the Frog enjoying a sunny day at the beach, with a large sun sporting Pepe's face shining brightly in the sky. The background is a mix of checkered patterns and waves, giving a surreal, retro vibe. The color palette is primarily black and white with simple, bold lines, creating a graphic novel style.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog is central, iconic in meme culture.\n- Beach and sun themes evoke classic \"summer vibes.\"\n- Checkered patterns hint at retro or vaporwave aesthetics.\n- Crypto culture nod with the drink and relaxed lifestyle.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.135Z",
+  "sourceFactVersion": 1
+}

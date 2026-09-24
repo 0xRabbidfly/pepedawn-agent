@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "PEPESPLASH",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 47,
+  "artist": "FourLeafClover",
+  "supply": 100,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "Pepesplash"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog meme reference.",
+    "Summer and relaxation vibes with the drink and floatie.",
+    "Urban setting suggests a blend of nature and city life."
+  ],
+  "visualSummary": "The card features Pepe the Frog, lounging on a red and white inflatable ring in a body of water, sipping a drink with a lemon slice garnish. The background depicts a cityscape with skyscrapers under a bright, blue sky. The color palette is vibrant with blues, greens, and reds, creating a cheerful and sunny atmosphere.",
+  "visualSummaryShort": "The card showcases Pepe the Frog relaxing on a red and white inflatable ring in a bright blue body of water. The vibrant cityscape in the background enhances the cheerful and sunny mood.",
+  "visualKeywords": [
+    "pepe",
+    "inflatable ring",
+    "cityscape",
+    "blue sky",
+    "vibrant colors",
+    "drink",
+    "lemon slice",
+    "water",
+    "skyscrapers",
+    "cheerful"
+  ],
+  "textKeywords": [
+    "pepesplash"
+  ],
+  "keywords": [
+    "pepe",
+    "inflatable ring",
+    "cityscape",
+    "blue sky",
+    "vibrant colors",
+    "drink",
+    "lemon slice",
+    "water",
+    "skyscrapers",
+    "cheerful",
+    "pepesplash"
+  ],
+  "embeddingInput": "PEPESPLASH (Fake Rares) - Series 3 Card 47\nArtist: FourLeafClover\nSupply 100 Issued November 2021\nOn-card text: Pepesplash\nVisual summary: The card features Pepe the Frog, lounging on a red and white inflatable ring in a body of water, sipping a drink with a lemon slice garnish. The background depicts a cityscape with skyscrapers under a bright, blue sky. The color palette is vibrant with blues, greens, and reds, creating a cheerful and sunny atmosphere.\nMemetic references: Classic Pepe the Frog meme reference.; Summer and relaxation vibes with the drink and floatie.; Urban setting suggests a blend of nature and city life.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPESPLASH#text",
+      "label": "On-card text",
+      "text": "Pepesplash",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPESPLASH#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog meme reference.\nSummer and relaxation vibes with the drink and floatie.\nUrban setting suggests a blend of nature and city life.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPESPLASH#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog, lounging on a red and white inflatable ring in a body of water, sipping a drink with a lemon slice garnish. The background depicts a cityscape with skyscrapers under a bright, blue sky. The color palette is vibrant with blues, greens, and reds, creating a cheerful and sunny atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPESPLASH#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPepesplash\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog, lounging on a red and white inflatable ring in a body of water, sipping a drink with a lemon slice garnish. The background depicts a cityscape with skyscrapers under a bright, blue sky. The color palette is vibrant with blues, greens, and reds, creating a cheerful and sunny atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog meme reference.\n- Summer and relaxation vibes with the drink and floatie.\n- Urban setting suggests a blend of nature and city life.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.981Z",
+  "sourceFactVersion": 1
+}

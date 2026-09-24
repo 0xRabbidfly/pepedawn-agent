@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "asset": "SPAMTRIBUNAL",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 38,
+  "artist": "Rare Scrilla",
+  "supply": 42,
+  "issuance": "May 2026",
+  "textOnCard": [
+    "THE MEMEPOOL, THE SPAM TRIBUNAL, RARESRILLA 2020."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure.",
+    "References to crypto culture, such as Bitcoin caps and trading screens.",
+    "Depictions of well-known meme personalities and internet culture.",
+    "Use of symbols like the \"X\" and meme icons."
+  ],
+  "visualSummary": "The card is divided into two sections with vibrant, hand-drawn illustrations. The top half showcases a courtroom scene with a Pepe the Frog judge and various characters representing historical and modern figures, all engaged in animated debate. The bottom half features a wrestling match with meme characters, using a bold color palette of reds, purples, and greens, adding to the chaotic yet humorous tone.",
+  "visualSummaryShort": "The card features a vibrant courtroom scene with a Pepe the Frog judge and various characters in animated debate above, while a wrestling match with meme characters unfolds below. The bold color palette of reds, purples, and greens enhances the chaotic and humorous atmosphere.",
+  "visualKeywords": [
+    "courtroom",
+    "pepe the frog",
+    "wrestling",
+    "meme characters",
+    "vibrant colors",
+    "animated debate",
+    "chaotic",
+    "humorous"
+  ],
+  "textKeywords": [
+    "memepool",
+    "spam",
+    "tribunal",
+    "raresrilla",
+    "2020"
+  ],
+  "keywords": [
+    "courtroom",
+    "pepe the frog",
+    "wrestling",
+    "meme characters",
+    "vibrant colors",
+    "animated debate",
+    "chaotic",
+    "humorous",
+    "memepool",
+    "spam",
+    "tribunal",
+    "raresrilla",
+    "2020"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "SPAMTRIBUNAL (Fake Rares) - Series 18 Card 38\nArtist: Rare Scrilla\nSupply 42 Issued May 2026\nOn-card text: THE MEMEPOOL, THE SPAM TRIBUNAL, RARESRILLA 2020.\nVisual summary: The card is divided into two sections with vibrant, hand-drawn illustrations. The top half showcases a courtroom scene with a Pepe the Frog judge and various characters representing historical and modern figures, all engaged in animated debate. The bottom half features a wrestling match with meme characters, using a bold color palette of reds, purples, and greens, adding to the chaotic yet humorous tone.\nMemetic references: Pepe the Frog as a central figure.; References to crypto culture, such as Bitcoin caps and trading screens.; Depictions of well-known meme personalities and internet culture.; Use of symbols like the \"X\" and meme icons.",
+  "embeddingBlocks": [
+    {
+      "id": "SPAMTRIBUNAL#text",
+      "label": "On-card text",
+      "text": "THE MEMEPOOL, THE SPAM TRIBUNAL, RARESRILLA 2020.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "SPAMTRIBUNAL#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure.\nReferences to crypto culture, such as Bitcoin caps and trading screens.\nDepictions of well-known meme personalities and internet culture.\nUse of symbols like the \"X\" and meme icons.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SPAMTRIBUNAL#visual",
+      "label": "Visual summary",
+      "text": "The card is divided into two sections with vibrant, hand-drawn illustrations. The top half showcases a courtroom scene with a Pepe the Frog judge and various characters representing historical and modern figures, all engaged in animated debate. The bottom half features a wrestling match with meme characters, using a bold color palette of reds, purples, and greens, adding to the chaotic yet humorous tone.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SPAMTRIBUNAL#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nTHE MEMEPOOL, THE SPAM TRIBUNAL, RARESRILLA 2020.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card is divided into two sections with vibrant, hand-drawn illustrations. The top half showcases a courtroom scene with a Pepe the Frog judge and various characters representing historical and modern figures, all engaged in animated debate. The bottom half features a wrestling match with meme characters, using a bold color palette of reds, purples, and greens, adding to the chaotic yet humorous tone.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure.\n- References to crypto culture, such as Bitcoin caps and trading screens.\n- Depictions of well-known meme personalities and internet culture.\n- Use of symbols like the \"X\" and meme icons.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:32:02.904Z"
+}

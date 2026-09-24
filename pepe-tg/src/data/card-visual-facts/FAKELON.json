@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "asset": "FAKELON",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 10,
+  "artist": "Wazzu",
+  "supply": 21,
+  "issuance": "April 2022",
+  "textOnCard": [
+    "FAKE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference.",
+    "Smoking meme culture.",
+    "Podcast or radio host vibe with the headphones and microphone.",
+    "\"FAKE\" as a nod to fake news or skepticism in crypto."
+  ],
+  "visualSummary": "This card features a green humanoid figure, resembling Pepe, wearing headphones and holding a smoking joint. The background is a cosmic blue with stars, and the figure is wearing a black shirt with the word \"FAKE\" in bold white letters. The art style is clean and polished, with a focus on the smug expression of the character.",
+  "visualSummaryShort": "The card showcases a green humanoid figure with headphones, holding a smoking joint against a cosmic blue background filled with stars. The character's smug expression and bold black shirt with the word 'FAKE' add to the polished art style.",
+  "visualKeywords": [
+    "green figure",
+    "headphones",
+    "smoking joint",
+    "cosmic blue",
+    "stars",
+    "black shirt",
+    "smug expression",
+    "bold text"
+  ],
+  "textKeywords": [
+    "fake"
+  ],
+  "keywords": [
+    "green figure",
+    "headphones",
+    "smoking joint",
+    "cosmic blue",
+    "stars",
+    "black shirt",
+    "smug expression",
+    "bold text",
+    "fake"
+  ],
+  "embeddingInput": "FAKELON (Fake Rares) - Series 11 Card 10\nArtist: Wazzu\nSupply 21 Issued April 2022\nOn-card text: FAKE\nVisual summary: This card features a green humanoid figure, resembling Pepe, wearing headphones and holding a smoking joint. The background is a cosmic blue with stars, and the figure is wearing a black shirt with the word \"FAKE\" in bold white letters. The art style is clean and polished, with a focus on the smug expression of the character.\nMemetic references: Pepe the Frog reference.; Smoking meme culture.; Podcast or radio host vibe with the headphones and microphone.; \"FAKE\" as a nod to fake news or skepticism in crypto.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKELON#text",
+      "label": "On-card text",
+      "text": "FAKE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKELON#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference.\nSmoking meme culture.\nPodcast or radio host vibe with the headphones and microphone.\n\"FAKE\" as a nod to fake news or skepticism in crypto.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKELON#visual",
+      "label": "Visual summary",
+      "text": "This card features a green humanoid figure, resembling Pepe, wearing headphones and holding a smoking joint. The background is a cosmic blue with stars, and the figure is wearing a black shirt with the word \"FAKE\" in bold white letters. The art style is clean and polished, with a focus on the smug expression of the character.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKELON#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a green humanoid figure, resembling Pepe, wearing headphones and holding a smoking joint. The background is a cosmic blue with stars, and the figure is wearing a black shirt with the word \"FAKE\" in bold white letters. The art style is clean and polished, with a focus on the smug expression of the character.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference.\n- Smoking meme culture.\n- Podcast or radio host vibe with the headphones and microphone.\n- \"FAKE\" as a nod to fake news or skepticism in crypto.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.525Z",
+  "sourceFactVersion": 1
+}

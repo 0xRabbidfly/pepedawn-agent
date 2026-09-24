@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "PEPEREIGN",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 41,
+  "artist": "BLISSFULMORG",
+  "supply": 36,
+  "issuance": "October 2024",
+  "textOnCard": [
+    "PEPEREIGN"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a royal figure.",
+    "Bitcoin symbol prominently displayed, referencing crypto culture.",
+    "Illuminati imagery adds a layer of conspiracy meme culture.",
+    "The regal theme nods to the \"King\" meme archetype."
+  ],
+  "visualSummary": "The card features Pepe the Frog dressed in regal attire, complete with a grand crown adorned with jewels. The background is rich with intricate details, including a faint depiction of the Illuminati symbol and Bitcoin motifs. The color palette is a mix of royal reds, greens, and golds, giving it a majestic yet satirical feel.",
+  "visualSummaryShort": "The card showcases Pepe the Frog in royal attire with a jewel-encrusted crown. The background features intricate details, including the Illuminati symbol and Bitcoin motifs, all in a rich color palette of reds, greens, and golds.",
+  "visualKeywords": [
+    "pepe the frog",
+    "crown",
+    "illuminati",
+    "bitcoin",
+    "red",
+    "green",
+    "gold",
+    "regal",
+    "intricate",
+    "satirical"
+  ],
+  "textKeywords": [
+    "pepereign"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "crown",
+    "illuminati",
+    "bitcoin",
+    "red",
+    "green",
+    "gold",
+    "regal",
+    "intricate",
+    "satirical",
+    "pepereign"
+  ],
+  "embeddingInput": "PEPEREIGN (Fake Rares) - Series 17 Card 41\nArtist: BLISSFULMORG\nSupply 36 Issued October 2024\nOn-card text: PEPEREIGN\nVisual summary: The card features Pepe the Frog dressed in regal attire, complete with a grand crown adorned with jewels. The background is rich with intricate details, including a faint depiction of the Illuminati symbol and Bitcoin motifs. The color palette is a mix of royal reds, greens, and golds, giving it a majestic yet satirical feel.\nMemetic references: Pepe the Frog as a royal figure.; Bitcoin symbol prominently displayed, referencing crypto culture.; Illuminati imagery adds a layer of conspiracy meme culture.; The regal theme nods to the \"King\" meme archetype.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEREIGN#text",
+      "label": "On-card text",
+      "text": "PEPEREIGN",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEREIGN#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a royal figure.\nBitcoin symbol prominently displayed, referencing crypto culture.\nIlluminati imagery adds a layer of conspiracy meme culture.\nThe regal theme nods to the \"King\" meme archetype.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEREIGN#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog dressed in regal attire, complete with a grand crown adorned with jewels. The background is rich with intricate details, including a faint depiction of the Illuminati symbol and Bitcoin motifs. The color palette is a mix of royal reds, greens, and golds, giving it a majestic yet satirical feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEREIGN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPEREIGN\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog dressed in regal attire, complete with a grand crown adorned with jewels. The background is rich with intricate details, including a faint depiction of the Illuminati symbol and Bitcoin motifs. The color palette is a mix of royal reds, greens, and golds, giving it a majestic yet satirical feel.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a royal figure.\n- Bitcoin symbol prominently displayed, referencing crypto culture.\n- Illuminati imagery adds a layer of conspiracy meme culture.\n- The regal theme nods to the \"King\" meme archetype.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.958Z",
+  "sourceFactVersion": 1
+}

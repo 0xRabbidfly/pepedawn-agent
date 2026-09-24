@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "asset": "PEPSMOKE",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 50,
+  "artist": "JB",
+  "supply": 69,
+  "issuance": "December 2023",
+  "textOnCard": [
+    "WELCOME TO THE PEPE PEPESMOKE",
+    "PEPE WE MADE IT, WE MADE IT",
+    "INSTANT SMOKE CARD!",
+    "PEPE like the way that I dance PEPE like the way that I move PEPE like the way that I rock PEPE like the way that I woo...",
+    "PARENTAL ADVISORY EXPLICIT FAKE RARE",
+    "FAKE RARE RECORDS"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a cultural icon.",
+    "References to a well-known rapper blended with Pepe aesthetics.",
+    "\"FAKE RARE\" and \"FAKE RARE RECORDS\" nod to NFT culture and parody.",
+    "\"Parental Advisory\" mimics classic album covers."
+  ],
+  "visualSummary": "The card features a green-tinted character resembling a famous rapper with Pepe the Frog's features, adorned with sunglasses and a thick gold chain. The background is a collage of similar images, giving it a layered, textured look. The color palette is dominated by shades of green, gold, and black, with bold red and white text adding contrast.",
+  "visualSummaryShort": "The card showcases a green-tinted character with Pepe the Frog features, wearing sunglasses and a gold chain. The background is a textured collage, primarily in green, gold, and black, with contrasting red and white text.",
+  "visualKeywords": [
+    "green",
+    "pepe",
+    "sunglasses",
+    "gold chain",
+    "collage",
+    "textured",
+    "black",
+    "red",
+    "white"
+  ],
+  "textKeywords": [
+    "welcome",
+    "pepesmoke",
+    "made",
+    "instant",
+    "smoke",
+    "like",
+    "way",
+    "dance",
+    "move",
+    "rock",
+    "woo",
+    "parental",
+    "advisory",
+    "explicit",
+    "records"
+  ],
+  "keywords": [
+    "green",
+    "pepe",
+    "sunglasses",
+    "gold chain",
+    "collage",
+    "textured",
+    "black",
+    "red",
+    "white",
+    "welcome",
+    "pepesmoke",
+    "made",
+    "instant",
+    "smoke",
+    "like",
+    "way",
+    "dance",
+    "move",
+    "rock",
+    "woo",
+    "parental",
+    "advisory",
+    "explicit",
+    "records"
+  ],
+  "embeddingInput": "PEPSMOKE (Fake Rares) - Series 16 Card 50\nArtist: JB\nSupply 69 Issued December 2023\nOn-card text: WELCOME TO THE PEPE PEPESMOKE | PEPE WE MADE IT, WE MADE IT | INSTANT SMOKE CARD! | PEPE like the way that I dance PEPE like the way that I move PEPE like the way that I rock PEPE like the way that I woo... | PARENTAL ADVISORY EXPLICIT FAKE RARE | FAKE RARE RECORDS\nVisual summary: The card features a green-tinted character resembling a famous rapper with Pepe the Frog's features, adorned with sunglasses and a thick gold chain. The background is a collage of similar images, giving it a layered, textured look. The color palette is dominated by shades of green, gold, and black, with bold red and white text adding contrast.\nMemetic references: Pepe the Frog as a cultural icon.; References to a well-known rapper blended with Pepe aesthetics.; \"FAKE RARE\" and \"FAKE RARE RECORDS\" nod to NFT culture and parody.; \"Parental Advisory\" mimics classic album covers.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPSMOKE#text",
+      "label": "On-card text",
+      "text": "WELCOME TO THE PEPE PEPESMOKE | PEPE WE MADE IT, WE MADE IT | INSTANT SMOKE CARD! | PEPE like the way that I dance PEPE like the way that I move PEPE like the way that I rock PEPE like the way that I woo... | PARENTAL ADVISORY EXPLICIT FAKE RARE | FAKE RARE RECORDS",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPSMOKE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a cultural icon.\nReferences to a well-known rapper blended with Pepe aesthetics.\n\"FAKE RARE\" and \"FAKE RARE RECORDS\" nod to NFT culture and parody.\n\"Parental Advisory\" mimics classic album covers.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPSMOKE#visual",
+      "label": "Visual summary",
+      "text": "The card features a green-tinted character resembling a famous rapper with Pepe the Frog's features, adorned with sunglasses and a thick gold chain. The background is a collage of similar images, giving it a layered, textured look. The color palette is dominated by shades of green, gold, and black, with bold red and white text adding contrast.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPSMOKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nWELCOME TO THE PEPE PEPESMOKE  \nPEPE WE MADE IT, WE MADE IT  \nINSTANT SMOKE CARD!  \nPEPE like the way that I dance PEPE like the way that I move PEPE like the way that I rock PEPE like the way that I woo...  \nPARENTAL ADVISORY EXPLICIT FAKE RARE  \nFAKE RARE RECORDS\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a green-tinted character resembling a famous rapper with Pepe the Frog's features, adorned with sunglasses and a thick gold chain. The background is a collage of similar images, giving it a layered, textured look. The color palette is dominated by shades of green, gold, and black, with bold red and white text adding contrast.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a cultural icon.\n- References to a well-known rapper blended with Pepe aesthetics.\n- \"FAKE RARE\" and \"FAKE RARE RECORDS\" nod to NFT culture and parody.\n- \"Parental Advisory\" mimics classic album covers.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.027Z",
+  "sourceFactVersion": 1
+}

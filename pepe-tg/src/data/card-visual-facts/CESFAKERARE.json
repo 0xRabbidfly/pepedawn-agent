@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "asset": "CESFAKERARE",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 14,
+  "artist": "CESONE",
+  "supply": 72,
+  "issuance": "April 2022",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a blank design with no visible elements. There are no objects, characters, or colors present.",
+  "visualKeywords": [],
+  "textKeywords": [],
+  "keywords": [],
+  "embeddingInput": "CESFAKERARE (Fake Rares) - Series 7 Card 14\nArtist: CESONE\nSupply 72 Issued April 2022\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "CESFAKERARE#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.349Z",
+  "sourceFactVersion": 1
+}

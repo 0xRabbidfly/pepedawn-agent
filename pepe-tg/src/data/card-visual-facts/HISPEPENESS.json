@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "HISPEPENESS",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 9,
+  "artist": "T. Wade",
+  "supply": 150,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "HIS PEPENESS"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a classic meme character.",
+    "Basketball reference, possibly nodding to a legendary player.",
+    "Retro sports card aesthetic, tapping into nostalgia.",
+    "\"FabRIP\" logo, possibly a play on collectible brands."
+  ],
+  "visualSummary": "The card features Pepe the Frog in a basketball jersey, soaring through the air for a slam dunk. The color palette is vibrant with bold reds, blues, and greens, reminiscent of a classic sports card. The style is a blend of cartoonish and impressionistic, capturing the dynamic action of the scene.",
+  "visualSummaryShort": "The card showcases Pepe the Frog in a basketball jersey performing a slam dunk. It features a vibrant color palette with bold reds, blues, and greens, creating a dynamic sports scene.",
+  "visualKeywords": [
+    "pepe the frog",
+    "basketball jersey",
+    "slam dunk",
+    "vibrant colors",
+    "cartoonish",
+    "impressionistic",
+    "action",
+    "bold"
+  ],
+  "textKeywords": [
+    "his",
+    "pepeness"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "basketball jersey",
+    "slam dunk",
+    "vibrant colors",
+    "cartoonish",
+    "impressionistic",
+    "action",
+    "bold",
+    "his",
+    "pepeness"
+  ],
+  "embeddingInput": "HISPEPENESS (Fake Rares) - Series 3 Card 9\nArtist: T. Wade\nSupply 150 Issued October 2021\nOn-card text: HIS PEPENESS\nVisual summary: The card features Pepe the Frog in a basketball jersey, soaring through the air for a slam dunk. The color palette is vibrant with bold reds, blues, and greens, reminiscent of a classic sports card. The style is a blend of cartoonish and impressionistic, capturing the dynamic action of the scene.\nMemetic references: Pepe the Frog, a classic meme character.; Basketball reference, possibly nodding to a legendary player.; Retro sports card aesthetic, tapping into nostalgia.; \"FabRIP\" logo, possibly a play on collectible brands.",
+  "embeddingBlocks": [
+    {
+      "id": "HISPEPENESS#text",
+      "label": "On-card text",
+      "text": "HIS PEPENESS",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "HISPEPENESS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a classic meme character.\nBasketball reference, possibly nodding to a legendary player.\nRetro sports card aesthetic, tapping into nostalgia.\n\"FabRIP\" logo, possibly a play on collectible brands.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "HISPEPENESS#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog in a basketball jersey, soaring through the air for a slam dunk. The color palette is vibrant with bold reds, blues, and greens, reminiscent of a classic sports card. The style is a blend of cartoonish and impressionistic, capturing the dynamic action of the scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "HISPEPENESS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nHIS PEPENESS\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog in a basketball jersey, soaring through the air for a slam dunk. The color palette is vibrant with bold reds, blues, and greens, reminiscent of a classic sports card. The style is a blend of cartoonish and impressionistic, capturing the dynamic action of the scene.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a classic meme character.\n- Basketball reference, possibly nodding to a legendary player.\n- Retro sports card aesthetic, tapping into nostalgia.\n- \"FabRIP\" logo, possibly a play on collectible brands.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.685Z",
+  "sourceFactVersion": 1
+}

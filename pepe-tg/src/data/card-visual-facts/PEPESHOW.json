@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "asset": "PEPESHOW",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 14,
+  "artist": "SNUXTONPACK",
+  "supply": 113,
+  "issuance": "January 2022",
+  "textOnCard": [
+    "Pepe Show"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery.",
+    "Retro vibes with the font style.",
+    "Plays on the concept of a \"show,\" implying entertainment or spectacle."
+  ],
+  "visualSummary": "The card features a minimalist design with a black background and a simple line drawing of Pepe the Frog in white. The text \"Pepe Show\" is prominently displayed at the top in a bold, retro font. The overall style is clean and straightforward, focusing on the iconic outline of Pepe.",
+  "visualSummaryShort": "The card showcases a minimalist design with a black background and a white line drawing of Pepe the Frog. The bold text 'Pepe Show' adds a retro touch to the clean aesthetic.",
+  "visualKeywords": [
+    "black background",
+    "white line drawing",
+    "pepe the frog",
+    "bold text",
+    "retro font",
+    "minimalist design"
+  ],
+  "textKeywords": [
+    "show"
+  ],
+  "keywords": [
+    "black background",
+    "white line drawing",
+    "pepe the frog",
+    "bold text",
+    "retro font",
+    "minimalist design",
+    "show"
+  ],
+  "embeddingInput": "PEPESHOW (Fake Rares) - Series 6 Card 14\nArtist: SNUXTONPACK\nSupply 113 Issued January 2022\nOn-card text: Pepe Show\nVisual summary: The card features a minimalist design with a black background and a simple line drawing of Pepe the Frog in white. The text \"Pepe Show\" is prominently displayed at the top in a bold, retro font. The overall style is clean and straightforward, focusing on the iconic outline of Pepe.\nMemetic references: Classic Pepe the Frog imagery.; Retro vibes with the font style.; Plays on the concept of a \"show,\" implying entertainment or spectacle.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPESHOW#text",
+      "label": "On-card text",
+      "text": "Pepe Show",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPESHOW#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery.\nRetro vibes with the font style.\nPlays on the concept of a \"show,\" implying entertainment or spectacle.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPESHOW#visual",
+      "label": "Visual summary",
+      "text": "The card features a minimalist design with a black background and a simple line drawing of Pepe the Frog in white. The text \"Pepe Show\" is prominently displayed at the top in a bold, retro font. The overall style is clean and straightforward, focusing on the iconic outline of Pepe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPESHOW#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPepe Show\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a minimalist design with a black background and a simple line drawing of Pepe the Frog in white. The text \"Pepe Show\" is prominently displayed at the top in a bold, retro font. The overall style is clean and straightforward, focusing on the iconic outline of Pepe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery.\n- Retro vibes with the font style.\n- Plays on the concept of a \"show,\" implying entertainment or spectacle.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.977Z",
+  "sourceFactVersion": 1
+}

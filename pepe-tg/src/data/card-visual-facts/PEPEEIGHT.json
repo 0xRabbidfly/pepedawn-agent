@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "asset": "PEPEEIGHT",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 16,
+  "artist": "DEFSTALKR",
+  "supply": 53,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "PEPE808",
+    "BASS 100",
+    "COWBELL 80"
+  ],
+  "memeticReferences": [
+    "References the iconic Roland TR-808 drum machine, a staple in music production.",
+    "Plays on the \"more cowbell\" meme, a nod to the famous SNL sketch.",
+    "Incorporates Pepe the Frog, a staple of internet meme culture."
+  ],
+  "visualSummary": "The card features a glitchy, retro-futuristic design with a prominent image of an 808 drum machine in neon colors. The color palette includes electric blues, reds, and purples against a black background, creating a vivid and dynamic appearance. The overall aesthetic is a mix of vaporwave and digital distortion, giving it an edgy, nostalgic vibe.",
+  "visualSummaryShort": "The card showcases a glitchy, retro-futuristic design featuring an 808 drum machine in vibrant neon colors. Its electric blue, red, and purple palette against a black background evokes a nostalgic vaporwave aesthetic.",
+  "visualKeywords": [
+    "808 drum machine",
+    "neon colors",
+    "glitch",
+    "vaporwave",
+    "black background",
+    "electric blue",
+    "red",
+    "purple",
+    "digital distortion",
+    "nostalgic"
+  ],
+  "textKeywords": [
+    "pepe808",
+    "bass",
+    "100",
+    "cowbell"
+  ],
+  "keywords": [
+    "808 drum machine",
+    "neon colors",
+    "glitch",
+    "vaporwave",
+    "black background",
+    "electric blue",
+    "red",
+    "purple",
+    "digital distortion",
+    "nostalgic",
+    "pepe808",
+    "bass",
+    "100",
+    "cowbell"
+  ],
+  "embeddingInput": "PEPEEIGHT (Fake Rares) - Series 9 Card 16\nArtist: DEFSTALKR\nSupply 53 Issued March 2022\nOn-card text: PEPE808 | BASS 100 | COWBELL 80\nVisual summary: The card features a glitchy, retro-futuristic design with a prominent image of an 808 drum machine in neon colors. The color palette includes electric blues, reds, and purples against a black background, creating a vivid and dynamic appearance. The overall aesthetic is a mix of vaporwave and digital distortion, giving it an edgy, nostalgic vibe.\nMemetic references: References the iconic Roland TR-808 drum machine, a staple in music production.; Plays on the \"more cowbell\" meme, a nod to the famous SNL sketch.; Incorporates Pepe the Frog, a staple of internet meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEEIGHT#text",
+      "label": "On-card text",
+      "text": "PEPE808 | BASS 100 | COWBELL 80",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEEIGHT#memetic",
+      "label": "Memetic references",
+      "text": "References the iconic Roland TR-808 drum machine, a staple in music production.\nPlays on the \"more cowbell\" meme, a nod to the famous SNL sketch.\nIncorporates Pepe the Frog, a staple of internet meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEEIGHT#visual",
+      "label": "Visual summary",
+      "text": "The card features a glitchy, retro-futuristic design with a prominent image of an 808 drum machine in neon colors. The color palette includes electric blues, reds, and purples against a black background, creating a vivid and dynamic appearance. The overall aesthetic is a mix of vaporwave and digital distortion, giving it an edgy, nostalgic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEEIGHT#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE808  \nBASS 100  \nCOWBELL 80  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a glitchy, retro-futuristic design with a prominent image of an 808 drum machine in neon colors. The color palette includes electric blues, reds, and purples against a black background, creating a vivid and dynamic appearance. The overall aesthetic is a mix of vaporwave and digital distortion, giving it an edgy, nostalgic vibe.\n\n🧬 **MEMETIC DNA:**\n- References the iconic Roland TR-808 drum machine, a staple in music production.\n- Plays on the \"more cowbell\" meme, a nod to the famous SNL sketch.\n- Incorporates Pepe the Frog, a staple of internet meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.877Z",
+  "sourceFactVersion": 1
+}

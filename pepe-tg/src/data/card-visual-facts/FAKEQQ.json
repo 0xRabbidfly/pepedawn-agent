@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "asset": "FAKEQQ",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 24,
+  "artist": "Tommy Wilson",
+  "supply": 100,
+  "issuance": "November 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery.",
+    "Cyberpunk aesthetics reminiscent of sci-fi classics.",
+    "Illuminated digital art suggesting blockchain or tech themes."
+  ],
+  "visualSummary": "The artwork features a towering cityscape with an illuminated silhouette of Pepe the Frog composed of vibrant green and yellow circles. The atmosphere is cyberpunk, with a dark, misty background contrasting against the bright, digital lights. A lone figure stands on a rooftop, gazing up at the spectacle, adding a sense of scale and mystery.",
+  "visualSummaryShort": "The card showcases a vibrant cyberpunk cityscape highlighted by a silhouette of Pepe the Frog made of colorful circles. A lone figure on a rooftop adds depth to the scene, enhancing the mysterious atmosphere.",
+  "visualKeywords": [
+    "cityscape",
+    "pepe the frog",
+    "green circles",
+    "yellow circles",
+    "cyberpunk",
+    "dark background",
+    "digital lights",
+    "rooftop",
+    "mystery"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "cityscape",
+    "pepe the frog",
+    "green circles",
+    "yellow circles",
+    "cyberpunk",
+    "dark background",
+    "digital lights",
+    "rooftop",
+    "mystery"
+  ],
+  "embeddingInput": "FAKEQQ (Fake Rares) - Series 11 Card 24\nArtist: Tommy Wilson\nSupply 100 Issued November 2022\nOn-card text: none detected\nVisual summary: The artwork features a towering cityscape with an illuminated silhouette of Pepe the Frog composed of vibrant green and yellow circles. The atmosphere is cyberpunk, with a dark, misty background contrasting against the bright, digital lights. A lone figure stands on a rooftop, gazing up at the spectacle, adding a sense of scale and mystery.\nMemetic references: Classic Pepe the Frog imagery.; Cyberpunk aesthetics reminiscent of sci-fi classics.; Illuminated digital art suggesting blockchain or tech themes.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEQQ#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery.\nCyberpunk aesthetics reminiscent of sci-fi classics.\nIlluminated digital art suggesting blockchain or tech themes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEQQ#visual",
+      "label": "Visual summary",
+      "text": "The artwork features a towering cityscape with an illuminated silhouette of Pepe the Frog composed of vibrant green and yellow circles. The atmosphere is cyberpunk, with a dark, misty background contrasting against the bright, digital lights. A lone figure stands on a rooftop, gazing up at the spectacle, adding a sense of scale and mystery.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEQQ#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe artwork features a towering cityscape with an illuminated silhouette of Pepe the Frog composed of vibrant green and yellow circles. The atmosphere is cyberpunk, with a dark, misty background contrasting against the bright, digital lights. A lone figure stands on a rooftop, gazing up at the spectacle, adding a sense of scale and mystery.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery.\n- Cyberpunk aesthetics reminiscent of sci-fi classics.\n- Illuminated digital art suggesting blockchain or tech themes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.561Z",
+  "sourceFactVersion": 1
+}

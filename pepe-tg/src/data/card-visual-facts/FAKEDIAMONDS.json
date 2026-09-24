@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "asset": "FAKEDIAMONDS",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 49,
+  "artist": "Yotet",
+  "supply": 133,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "FAKE DIAMOND. Obtain for pure diamond hand abilities."
+  ],
+  "memeticReferences": [
+    "References \"diamond hands\" from crypto culture, symbolizing holding assets despite volatility.",
+    "Green hands possibly reference Pepe the Frog, a staple in meme culture.",
+    "The phrase \"fake diamond\" plays on the idea of fake versus real value in NFTs and crypto."
+  ],
+  "visualSummary": "The card features a diamond held by two green hands, set against a textured, colorful background with hues of yellow, blue, and red. The artistic style is rough and sketchy, giving it a raw, hand-drawn appearance. The composition is framed like a trading card, adding to its collectible vibe.",
+  "visualSummaryShort": "The card showcases a diamond grasped by two green hands against a vibrant, textured background. The rough, sketchy style enhances its artistic and collectible feel.",
+  "visualKeywords": [
+    "diamond",
+    "green hands",
+    "textured background",
+    "yellow",
+    "blue",
+    "red",
+    "sketchy",
+    "artistic",
+    "collectible"
+  ],
+  "textKeywords": [
+    "diamond",
+    "obtain",
+    "pure",
+    "hand",
+    "abilities"
+  ],
+  "keywords": [
+    "diamond",
+    "green hands",
+    "textured background",
+    "yellow",
+    "blue",
+    "red",
+    "sketchy",
+    "artistic",
+    "collectible",
+    "obtain",
+    "pure",
+    "hand",
+    "abilities"
+  ],
+  "embeddingInput": "FAKEDIAMONDS (Fake Rares) - Series 6 Card 49\nArtist: Yotet\nSupply 133 Issued February 2022\nOn-card text: FAKE DIAMOND. Obtain for pure diamond hand abilities.\nVisual summary: The card features a diamond held by two green hands, set against a textured, colorful background with hues of yellow, blue, and red. The artistic style is rough and sketchy, giving it a raw, hand-drawn appearance. The composition is framed like a trading card, adding to its collectible vibe.\nMemetic references: References \"diamond hands\" from crypto culture, symbolizing holding assets despite volatility.; Green hands possibly reference Pepe the Frog, a staple in meme culture.; The phrase \"fake diamond\" plays on the idea of fake versus real value in NFTs and crypto.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEDIAMONDS#text",
+      "label": "On-card text",
+      "text": "FAKE DIAMOND. Obtain for pure diamond hand abilities.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEDIAMONDS#memetic",
+      "label": "Memetic references",
+      "text": "References \"diamond hands\" from crypto culture, symbolizing holding assets despite volatility.\nGreen hands possibly reference Pepe the Frog, a staple in meme culture.\nThe phrase \"fake diamond\" plays on the idea of fake versus real value in NFTs and crypto.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEDIAMONDS#visual",
+      "label": "Visual summary",
+      "text": "The card features a diamond held by two green hands, set against a textured, colorful background with hues of yellow, blue, and red. The artistic style is rough and sketchy, giving it a raw, hand-drawn appearance. The composition is framed like a trading card, adding to its collectible vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEDIAMONDS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE DIAMOND. Obtain for pure diamond hand abilities.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a diamond held by two green hands, set against a textured, colorful background with hues of yellow, blue, and red. The artistic style is rough and sketchy, giving it a raw, hand-drawn appearance. The composition is framed like a trading card, adding to its collectible vibe.\n\n🧬 **MEMETIC DNA:**\n- References \"diamond hands\" from crypto culture, symbolizing holding assets despite volatility.\n- Green hands possibly reference Pepe the Frog, a staple in meme culture.\n- The phrase \"fake diamond\" plays on the idea of fake versus real value in NFTs and crypto.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.477Z",
+  "sourceFactVersion": 1
+}

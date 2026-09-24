@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "asset": "FAKEBIGGIE",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 6,
+  "artist": "Lord Jamie V. Shill",
+  "supply": 69,
+  "issuance": "March 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "References to classic hip-hop and rap culture.",
+    "Neon cyberpunk aesthetics reminiscent of the 80s retro-wave style.",
+    "Illuminati symbolism with the all-seeing eye inside a triangle.",
+    "Pepe-like green skin, tapping into the broader meme universe."
+  ],
+  "visualSummary": "This card features a vibrant, neon-soaked portrait of a figure reminiscent of a classic rapper, depicted with green skin. The background is a futuristic, retro-wave grid with glowing neon colors of purple, pink, and blue. A prominent triangle with an eye at the center adds an extra layer of mystique, while the overall vibe is a fusion of hip-hop culture and cyberpunk aesthetics.",
+  "visualSummaryShort": "The card showcases a neon-colored portrait of a rapper-like figure with green skin against a retro-wave grid background. The vibrant colors and mystical triangle create a fusion of hip-hop and cyberpunk aesthetics.",
+  "visualKeywords": [
+    "neon",
+    "green skin",
+    "retro-wave",
+    "purple",
+    "pink",
+    "blue",
+    "triangle",
+    "eye",
+    "cyberpunk",
+    "hip-hop"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "neon",
+    "green skin",
+    "retro-wave",
+    "purple",
+    "pink",
+    "blue",
+    "triangle",
+    "eye",
+    "cyberpunk",
+    "hip-hop"
+  ],
+  "embeddingInput": "FAKEBIGGIE (Fake Rares) - Series 8 Card 6\nArtist: Lord Jamie V. Shill\nSupply 69 Issued March 2022\nOn-card text: none detected\nVisual summary: This card features a vibrant, neon-soaked portrait of a figure reminiscent of a classic rapper, depicted with green skin. The background is a futuristic, retro-wave grid with glowing neon colors of purple, pink, and blue. A prominent triangle with an eye at the center adds an extra layer of mystique, while the overall vibe is a fusion of hip-hop culture and cyberpunk aesthetics.\nMemetic references: References to classic hip-hop and rap culture.; Neon cyberpunk aesthetics reminiscent of the 80s retro-wave style.; Illuminati symbolism with the all-seeing eye inside a triangle.; Pepe-like green skin, tapping into the broader meme universe.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEBIGGIE#memetic",
+      "label": "Memetic references",
+      "text": "References to classic hip-hop and rap culture.\nNeon cyberpunk aesthetics reminiscent of the 80s retro-wave style.\nIlluminati symbolism with the all-seeing eye inside a triangle.\nPepe-like green skin, tapping into the broader meme universe.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEBIGGIE#visual",
+      "label": "Visual summary",
+      "text": "This card features a vibrant, neon-soaked portrait of a figure reminiscent of a classic rapper, depicted with green skin. The background is a futuristic, retro-wave grid with glowing neon colors of purple, pink, and blue. A prominent triangle with an eye at the center adds an extra layer of mystique, while the overall vibe is a fusion of hip-hop culture and cyberpunk aesthetics.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEBIGGIE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a vibrant, neon-soaked portrait of a figure reminiscent of a classic rapper, depicted with green skin. The background is a futuristic, retro-wave grid with glowing neon colors of purple, pink, and blue. A prominent triangle with an eye at the center adds an extra layer of mystique, while the overall vibe is a fusion of hip-hop culture and cyberpunk aesthetics.\n\n🧬 **MEMETIC DNA:**\n- References to classic hip-hop and rap culture.\n- Neon cyberpunk aesthetics reminiscent of the 80s retro-wave style.\n- Illuminati symbolism with the all-seeing eye inside a triangle.\n- Pepe-like green skin, tapping into the broader meme universe.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.464Z",
+  "sourceFactVersion": 1
+}

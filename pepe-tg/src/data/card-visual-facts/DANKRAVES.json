@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "DANKRAVES",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 24,
+  "artist": "Skife",
+  "supply": 101,
+  "issuance": "April 2022",
+  "textOnCard": [
+    "DANKRAVE • DANKRAVE • DANKRAVE • DANKRAVE • DANKRAVE • DANKRAVE • DANKRAVE • DANKRAVE •"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog iconography.",
+    "Rave and psychedelic culture vibes.",
+    "Smiley faces reminiscent of early internet and acid house culture."
+  ],
+  "visualSummary": "This card features a bold, central Pepe face in vibrant neon green with oversized, simplified eyes and a wide grin. The background is a trippy mix of bright magenta and red with repeating smiley faces, creating a vivid, psychedelic effect. The edges are lined with the word \"DANKRAVE\" in a continuous loop, adding to the rave-like energy.",
+  "visualSummaryShort": "The card showcases a vibrant neon green Pepe face with oversized eyes and a wide grin. The psychedelic background features bright magenta and red colors with repeating smiley faces.",
+  "visualKeywords": [
+    "pepe",
+    "neon green",
+    "smiley faces",
+    "magenta",
+    "red",
+    "psychedelic",
+    "bold",
+    "grin",
+    "rave",
+    "loop"
+  ],
+  "textKeywords": [
+    "dankrave"
+  ],
+  "keywords": [
+    "pepe",
+    "neon green",
+    "smiley faces",
+    "magenta",
+    "red",
+    "psychedelic",
+    "bold",
+    "grin",
+    "rave",
+    "loop",
+    "dankrave"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "DANKRAVES (Fake Rares) - Series 8 Card 24\nArtist: Skife\nSupply 101 Issued April 2022\nOn-card text: DANKRAVE • DANKRAVE • DANKRAVE • DANKRAVE • DANKRAVE • DANKRAVE • DANKRAVE • DANKRAVE •\nVisual summary: This card features a bold, central Pepe face in vibrant neon green with oversized, simplified eyes and a wide grin. The background is a trippy mix of bright magenta and red with repeating smiley faces, creating a vivid, psychedelic effect. The edges are lined with the word \"DANKRAVE\" in a continuous loop, adding to the rave-like energy.\nMemetic references: Classic Pepe the Frog iconography.; Rave and psychedelic culture vibes.; Smiley faces reminiscent of early internet and acid house culture.",
+  "embeddingBlocks": [
+    {
+      "id": "DANKRAVES#text",
+      "label": "On-card text",
+      "text": "DANKRAVE • DANKRAVE • DANKRAVE • DANKRAVE • DANKRAVE • DANKRAVE • DANKRAVE • DANKRAVE •",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "DANKRAVES#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog iconography.\nRave and psychedelic culture vibes.\nSmiley faces reminiscent of early internet and acid house culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "DANKRAVES#visual",
+      "label": "Visual summary",
+      "text": "This card features a bold, central Pepe face in vibrant neon green with oversized, simplified eyes and a wide grin. The background is a trippy mix of bright magenta and red with repeating smiley faces, creating a vivid, psychedelic effect. The edges are lined with the word \"DANKRAVE\" in a continuous loop, adding to the rave-like energy.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "DANKRAVES#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nDANKRAVE • DANKRAVE • DANKRAVE • DANKRAVE • DANKRAVE • DANKRAVE • DANKRAVE • DANKRAVE •\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a bold, central Pepe face in vibrant neon green with oversized, simplified eyes and a wide grin. The background is a trippy mix of bright magenta and red with repeating smiley faces, creating a vivid, psychedelic effect. The edges are lined with the word \"DANKRAVE\" in a continuous loop, adding to the rave-like energy.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog iconography.\n- Rave and psychedelic culture vibes.\n- Smiley faces reminiscent of early internet and acid house culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:34:09.009Z"
+}

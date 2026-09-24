@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "asset": "PEPETOTER",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 19,
+  "artist": "Easy B",
+  "supply": 64,
+  "issuance": "September 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog face, a staple in meme culture.",
+    "Trash can motif, possibly symbolizing discarded or undervalued assets.",
+    "References the idea of \"trash\" in investment or crypto slang."
+  ],
+  "visualSummary": "The image features a green trash bin with the face of Pepe the Frog, complete with his signature sad eyes and red lips. The color palette is primarily green, with subtle shading to give depth to the trash bin. The artistic style is simple yet effective, blending humor with the iconic Pepe expression.",
+  "visualSummaryShort": "The card depicts a green trash bin styled with the face of Pepe the Frog, showcasing his sad eyes and red lips. The overall color palette is green, enhanced by subtle shading for depth.",
+  "visualKeywords": [
+    "green trash bin",
+    "pepe the frog",
+    "sad eyes",
+    "red lips",
+    "simple style",
+    "humor",
+    "depth"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "green trash bin",
+    "pepe the frog",
+    "sad eyes",
+    "red lips",
+    "simple style",
+    "humor",
+    "depth"
+  ],
+  "embeddingInput": "PEPETOTER (Fake Rares) - Series 1 Card 19\nArtist: Easy B\nSupply 64 Issued September 2021\nOn-card text: none detected\nVisual summary: The image features a green trash bin with the face of Pepe the Frog, complete with his signature sad eyes and red lips. The color palette is primarily green, with subtle shading to give depth to the trash bin. The artistic style is simple yet effective, blending humor with the iconic Pepe expression.\nMemetic references: Pepe the Frog face, a staple in meme culture.; Trash can motif, possibly symbolizing discarded or undervalued assets.; References the idea of \"trash\" in investment or crypto slang.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPETOTER#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog face, a staple in meme culture.\nTrash can motif, possibly symbolizing discarded or undervalued assets.\nReferences the idea of \"trash\" in investment or crypto slang.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPETOTER#visual",
+      "label": "Visual summary",
+      "text": "The image features a green trash bin with the face of Pepe the Frog, complete with his signature sad eyes and red lips. The color palette is primarily green, with subtle shading to give depth to the trash bin. The artistic style is simple yet effective, blending humor with the iconic Pepe expression.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPETOTER#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe image features a green trash bin with the face of Pepe the Frog, complete with his signature sad eyes and red lips. The color palette is primarily green, with subtle shading to give depth to the trash bin. The artistic style is simple yet effective, blending humor with the iconic Pepe expression.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog face, a staple in meme culture.\n- Trash can motif, possibly symbolizing discarded or undervalued assets.\n- References the idea of \"trash\" in investment or crypto slang.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.001Z",
+  "sourceFactVersion": 1
+}

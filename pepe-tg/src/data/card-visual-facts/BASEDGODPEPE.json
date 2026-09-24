@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "asset": "BASEDGODPEPE",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 50,
+  "artist": "Fake Annie",
+  "supply": 69,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "LIL PEPE",
+    "BASED GOD",
+    "PARENTAL ADVISORY EXPLICIT CONTENT"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog references are central, with multiple Pepe-like characters.",
+    "\"Based God\" is a nod to Lil B, a rapper known for his \"based\" philosophy.",
+    "Parental advisory logo adds a humorous touch, tying to music culture.",
+    "Crypto references with dollar signs and a belt resembling the Gucci logo.",
+    "Angelic and devilish Pepes symbolize duality and chaos."
+  ],
+  "visualSummary": "The card features a vibrant, cartoon-like composition with a central figure styled like a rapper surrounded by green-skinned characters. The color palette is bold and saturated, with lots of pinks, greens, and purples creating a psychedelic vibe. The background features a sunset with dollar signs and flames, adding an edgy, chaotic feel.",
+  "visualSummaryShort": "The card showcases a vibrant, cartoonish rapper surrounded by green-skinned characters against a psychedelic sunset backdrop. Bold colors like pink, green, and purple enhance the edgy and chaotic atmosphere.",
+  "visualKeywords": [
+    "rapper",
+    "green-skinned",
+    "sunset",
+    "dollar signs",
+    "flames",
+    "psychedelic",
+    "bold colors",
+    "chaotic",
+    "cartoonish"
+  ],
+  "textKeywords": [
+    "lil",
+    "based",
+    "god",
+    "parental",
+    "advisory",
+    "explicit",
+    "content"
+  ],
+  "keywords": [
+    "rapper",
+    "green-skinned",
+    "sunset",
+    "dollar signs",
+    "flames",
+    "psychedelic",
+    "bold colors",
+    "chaotic",
+    "cartoonish",
+    "lil",
+    "based",
+    "god",
+    "parental",
+    "advisory",
+    "explicit",
+    "content"
+  ],
+  "embeddingInput": "BASEDGODPEPE (Fake Rares) - Series 2 Card 50\nArtist: Fake Annie\nSupply 69 Issued October 2021\nOn-card text: LIL PEPE | BASED GOD | PARENTAL ADVISORY EXPLICIT CONTENT\nVisual summary: The card features a vibrant, cartoon-like composition with a central figure styled like a rapper surrounded by green-skinned characters. The color palette is bold and saturated, with lots of pinks, greens, and purples creating a psychedelic vibe. The background features a sunset with dollar signs and flames, adding an edgy, chaotic feel.\nMemetic references: Pepe the Frog references are central, with multiple Pepe-like characters.; \"Based God\" is a nod to Lil B, a rapper known for his \"based\" philosophy.; Parental advisory logo adds a humorous touch, tying to music culture.; Crypto references with dollar signs and a belt resembling the Gucci logo.; Angelic and devilish Pepes symbolize duality and chaos.",
+  "embeddingBlocks": [
+    {
+      "id": "BASEDGODPEPE#text",
+      "label": "On-card text",
+      "text": "LIL PEPE | BASED GOD | PARENTAL ADVISORY EXPLICIT CONTENT",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "BASEDGODPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references are central, with multiple Pepe-like characters.\n\"Based God\" is a nod to Lil B, a rapper known for his \"based\" philosophy.\nParental advisory logo adds a humorous touch, tying to music culture.\nCrypto references with dollar signs and a belt resembling the Gucci logo.\nAngelic and devilish Pepes symbolize duality and chaos.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BASEDGODPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant, cartoon-like composition with a central figure styled like a rapper surrounded by green-skinned characters. The color palette is bold and saturated, with lots of pinks, greens, and purples creating a psychedelic vibe. The background features a sunset with dollar signs and flames, adding an edgy, chaotic feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BASEDGODPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nLIL PEPE  \nBASED GOD  \nPARENTAL ADVISORY EXPLICIT CONTENT\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant, cartoon-like composition with a central figure styled like a rapper surrounded by green-skinned characters. The color palette is bold and saturated, with lots of pinks, greens, and purples creating a psychedelic vibe. The background features a sunset with dollar signs and flames, adding an edgy, chaotic feel.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references are central, with multiple Pepe-like characters.\n- \"Based God\" is a nod to Lil B, a rapper known for his \"based\" philosophy.\n- Parental advisory logo adds a humorous touch, tying to music culture.\n- Crypto references with dollar signs and a belt resembling the Gucci logo.\n- Angelic and devilish Pepes symbolize duality and chaos.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.300Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "asset": "DONTBUYTRUMP",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 9,
+  "artist": "Yotet",
+  "supply": 59,
+  "issuance": "December 2022",
+  "textOnCard": [
+    "Don't Buy Trump Cards"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog on the championship belt.",
+    "Superhero parody with a satirical twist.",
+    "Reference to Trump cards, playing on political and trading card themes."
+  ],
+  "visualSummary": "The card features a chaotic, textured background with a mix of dark reds, grays, and blues, giving it a grungy, distressed look. At the center, a figure in a red superhero-like suit with a prominent \"F\" emblem and a championship belt stands confidently. The belt showcases a Pepe the Frog face, adding a humorous touch to the otherwise serious pose, with a cigar sticking out of the figure's mouth.",
+  "visualSummaryShort": "The card showcases a figure in a red superhero suit with a championship belt featuring a Pepe the Frog face. The chaotic background combines dark reds, grays, and blues, creating a grungy atmosphere.",
+  "visualKeywords": [
+    "superhero",
+    "red suit",
+    "championship belt",
+    "pepe the frog",
+    "cigar",
+    "chaotic background",
+    "grungy",
+    "dark colors",
+    "confident pose",
+    "textured"
+  ],
+  "textKeywords": [
+    "don",
+    "buy",
+    "trump"
+  ],
+  "keywords": [
+    "superhero",
+    "red suit",
+    "championship belt",
+    "pepe the frog",
+    "cigar",
+    "chaotic background",
+    "grungy",
+    "dark colors",
+    "confident pose",
+    "textured",
+    "don",
+    "buy",
+    "trump"
+  ],
+  "embeddingInput": "DONTBUYTRUMP (Fake Rares) - Series 12 Card 9\nArtist: Yotet\nSupply 59 Issued December 2022\nOn-card text: Don't Buy Trump Cards\nVisual summary: The card features a chaotic, textured background with a mix of dark reds, grays, and blues, giving it a grungy, distressed look. At the center, a figure in a red superhero-like suit with a prominent \"F\" emblem and a championship belt stands confidently. The belt showcases a Pepe the Frog face, adding a humorous touch to the otherwise serious pose, with a cigar sticking out of the figure's mouth.\nMemetic references: Pepe the Frog on the championship belt.; Superhero parody with a satirical twist.; Reference to Trump cards, playing on political and trading card themes.",
+  "embeddingBlocks": [
+    {
+      "id": "DONTBUYTRUMP#text",
+      "label": "On-card text",
+      "text": "Don't Buy Trump Cards",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "DONTBUYTRUMP#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog on the championship belt.\nSuperhero parody with a satirical twist.\nReference to Trump cards, playing on political and trading card themes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "DONTBUYTRUMP#visual",
+      "label": "Visual summary",
+      "text": "The card features a chaotic, textured background with a mix of dark reds, grays, and blues, giving it a grungy, distressed look. At the center, a figure in a red superhero-like suit with a prominent \"F\" emblem and a championship belt stands confidently. The belt showcases a Pepe the Frog face, adding a humorous touch to the otherwise serious pose, with a cigar sticking out of the figure's mouth.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "DONTBUYTRUMP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nDon't Buy Trump Cards\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a chaotic, textured background with a mix of dark reds, grays, and blues, giving it a grungy, distressed look. At the center, a figure in a red superhero-like suit with a prominent \"F\" emblem and a championship belt stands confidently. The belt showcases a Pepe the Frog face, adding a humorous touch to the otherwise serious pose, with a cigar sticking out of the figure's mouth.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog on the championship belt.\n- Superhero parody with a satirical twist.\n- Reference to Trump cards, playing on political and trading card themes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.411Z",
+  "sourceFactVersion": 1
+}

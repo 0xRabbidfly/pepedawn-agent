@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "asset": "PEPEHISTORY",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 35,
+  "artist": "Rare Scrilla",
+  "supply": 111,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "PEPE HISTORY. OPP = CNN FREN = POWER = 5."
+  ],
+  "memeticReferences": [
+    "References to mainstream media with \"CNN\" as an opponent.",
+    "Classic Pepe the Frog imagery and variations.",
+    "Meme culture nods like \"DO NOT STEAL\" and \"FEELS RARE MAN.\"",
+    "Crypto culture references with \"gm\" and Bitcoin imagery."
+  ],
+  "visualSummary": "The card is a vibrant collage featuring a magenta-colored Pepe in a shirt and tie, pointing at a chaotic bulletin board filled with various Pepe memes and internet culture references. The color palette is a mix of bright pastels and bold primary colors, creating an eye-catching and busy visual experience. The style is reminiscent of a conspiracy theory board, with images and text connected by red strings, capturing the essence of meme culture’s depth and complexity.",
+  "visualSummaryShort": "The card showcases a vibrant magenta Pepe in a shirt and tie, surrounded by a chaotic bulletin board filled with memes and internet culture references. The bright pastel and bold primary colors create a busy and eye-catching visual experience.",
+  "visualKeywords": [
+    "magenta",
+    "pepe",
+    "shirt and tie",
+    "bulletin board",
+    "memes",
+    "pastel colors",
+    "primary colors",
+    "chaotic",
+    "internet culture",
+    "red strings"
+  ],
+  "textKeywords": [
+    "history",
+    "opp",
+    "cnn",
+    "fren",
+    "power"
+  ],
+  "keywords": [
+    "magenta",
+    "pepe",
+    "shirt and tie",
+    "bulletin board",
+    "memes",
+    "pastel colors",
+    "primary colors",
+    "chaotic",
+    "internet culture",
+    "red strings",
+    "history",
+    "opp",
+    "cnn",
+    "fren",
+    "power"
+  ],
+  "embeddingInput": "PEPEHISTORY (Fake Rares) - Series 8 Card 35\nArtist: Rare Scrilla\nSupply 111 Issued July 2022\nOn-card text: PEPE HISTORY. OPP = CNN FREN = POWER = 5.\nVisual summary: The card is a vibrant collage featuring a magenta-colored Pepe in a shirt and tie, pointing at a chaotic bulletin board filled with various Pepe memes and internet culture references. The color palette is a mix of bright pastels and bold primary colors, creating an eye-catching and busy visual experience. The style is reminiscent of a conspiracy theory board, with images and text connected by red strings, capturing the essence of meme culture’s depth and complexity.\nMemetic references: References to mainstream media with \"CNN\" as an opponent.; Classic Pepe the Frog imagery and variations.; Meme culture nods like \"DO NOT STEAL\" and \"FEELS RARE MAN.\"; Crypto culture references with \"gm\" and Bitcoin imagery.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEHISTORY#text",
+      "label": "On-card text",
+      "text": "PEPE HISTORY. OPP = CNN FREN = POWER = 5.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEHISTORY#memetic",
+      "label": "Memetic references",
+      "text": "References to mainstream media with \"CNN\" as an opponent.\nClassic Pepe the Frog imagery and variations.\nMeme culture nods like \"DO NOT STEAL\" and \"FEELS RARE MAN.\"\nCrypto culture references with \"gm\" and Bitcoin imagery.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEHISTORY#visual",
+      "label": "Visual summary",
+      "text": "The card is a vibrant collage featuring a magenta-colored Pepe in a shirt and tie, pointing at a chaotic bulletin board filled with various Pepe memes and internet culture references. The color palette is a mix of bright pastels and bold primary colors, creating an eye-catching and busy visual experience. The style is reminiscent of a conspiracy theory board, with images and text connected by red strings, capturing the essence of meme culture’s depth and complexity.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEHISTORY#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE HISTORY. OPP = CNN FREN = POWER = 5.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card is a vibrant collage featuring a magenta-colored Pepe in a shirt and tie, pointing at a chaotic bulletin board filled with various Pepe memes and internet culture references. The color palette is a mix of bright pastels and bold primary colors, creating an eye-catching and busy visual experience. The style is reminiscent of a conspiracy theory board, with images and text connected by red strings, capturing the essence of meme culture’s depth and complexity.\n\n🧬 **MEMETIC DNA:**\n- References to mainstream media with \"CNN\" as an opponent.\n- Classic Pepe the Frog imagery and variations.\n- Meme culture nods like \"DO NOT STEAL\" and \"FEELS RARE MAN.\"\n- Crypto culture references with \"gm\" and Bitcoin imagery.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.892Z",
+  "sourceFactVersion": 1
+}

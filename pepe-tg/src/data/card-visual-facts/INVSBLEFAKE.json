@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "asset": "INVSBLEFAKE",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 31,
+  "artist": "calboy99",
+  "supply": 99,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "invisible fake",
+    "fake = 99 ROI = ∞",
+    "“The magic man - now you see me, now you don’t”"
+  ],
+  "memeticReferences": [
+    "Classic Pepe-inspired character.",
+    "Reference to crypto trading with the Bitcoin book.",
+    "The phrase \"now you see me, now you don't\" hints at the elusive nature of crypto gains and scams."
+  ],
+  "visualSummary": "The card features a cartoon frog character dressed in a trench coat, sneakers, and a turtleneck, with a small hat and glasses. The color palette is pastel with pinks, greens, and browns, giving a playful and lighthearted vibe. The character is holding a book with a Bitcoin symbol and has a mischievous, confident stride.",
+  "visualSummaryShort": "The card showcases a cartoon frog in a trench coat and glasses, exuding a playful and confident demeanor. The pastel color palette enhances the lighthearted mood of the illustration.",
+  "visualKeywords": [
+    "frog",
+    "trench coat",
+    "pastel colors",
+    "sneakers",
+    "glasses",
+    "book",
+    "bitcoin",
+    "playful",
+    "mischievous",
+    "lighthearted"
+  ],
+  "textKeywords": [
+    "invisible",
+    "roi",
+    "magic",
+    "man",
+    "now",
+    "you",
+    "see",
+    "don"
+  ],
+  "keywords": [
+    "frog",
+    "trench coat",
+    "pastel colors",
+    "sneakers",
+    "glasses",
+    "book",
+    "bitcoin",
+    "playful",
+    "mischievous",
+    "lighthearted",
+    "invisible",
+    "roi",
+    "magic",
+    "man",
+    "now",
+    "you",
+    "see",
+    "don"
+  ],
+  "embeddingInput": "INVSBLEFAKE (Fake Rares) - Series 7 Card 31\nArtist: calboy99\nSupply 99 Issued March 2022\nOn-card text: invisible fake | fake = 99 ROI = ∞ | “The magic man - now you see me, now you don’t”\nVisual summary: The card features a cartoon frog character dressed in a trench coat, sneakers, and a turtleneck, with a small hat and glasses. The color palette is pastel with pinks, greens, and browns, giving a playful and lighthearted vibe. The character is holding a book with a Bitcoin symbol and has a mischievous, confident stride.\nMemetic references: Classic Pepe-inspired character.; Reference to crypto trading with the Bitcoin book.; The phrase \"now you see me, now you don't\" hints at the elusive nature of crypto gains and scams.",
+  "embeddingBlocks": [
+    {
+      "id": "INVSBLEFAKE#text",
+      "label": "On-card text",
+      "text": "invisible fake | fake = 99 ROI = ∞ | “The magic man - now you see me, now you don’t”",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "INVSBLEFAKE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe-inspired character.\nReference to crypto trading with the Bitcoin book.\nThe phrase \"now you see me, now you don't\" hints at the elusive nature of crypto gains and scams.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "INVSBLEFAKE#visual",
+      "label": "Visual summary",
+      "text": "The card features a cartoon frog character dressed in a trench coat, sneakers, and a turtleneck, with a small hat and glasses. The color palette is pastel with pinks, greens, and browns, giving a playful and lighthearted vibe. The character is holding a book with a Bitcoin symbol and has a mischievous, confident stride.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "INVSBLEFAKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\ninvisible fake  \nfake = 99 ROI = ∞  \n“The magic man - now you see me, now you don’t”\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a cartoon frog character dressed in a trench coat, sneakers, and a turtleneck, with a small hat and glasses. The color palette is pastel with pinks, greens, and browns, giving a playful and lighthearted vibe. The character is holding a book with a Bitcoin symbol and has a mischievous, confident stride.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe-inspired character.\n- Reference to crypto trading with the Bitcoin book.\n- The phrase \"now you see me, now you don't\" hints at the elusive nature of crypto gains and scams.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.700Z",
+  "sourceFactVersion": 1
+}

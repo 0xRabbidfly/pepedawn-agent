@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "asset": "PEPEREAPER",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 7,
+  "artist": "Other World",
+  "supply": 100,
+  "issuance": "April 2022",
+  "textOnCard": [
+    "PEPE REAPER",
+    "Attack 1 - Burn Your Opponent’s Village",
+    "Attack 2 - Take Your Opponent’s Soul",
+    "Defense - Teleport To An Other World"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as the Grim Reaper is a play on the \"Pepe as everything\" meme tradition.",
+    "References to classic art mixed with crypto-culture chaos.",
+    "The use of X eyes is a common cartoon symbol for death or unconsciousness.",
+    "The card's text mimics the style of trading card games, adding a layer of gamification."
+  ],
+  "visualSummary": "The card features Pepe the Frog dressed as the Grim Reaper, with a glowing red halo and X eyes symbolizing death. The background is a chaotic blend of classical art and dystopian imagery, with burning villages and angelic figures. The color palette is dominated by dark tones with splashes of fiery reds, creating a dramatic and intense atmosphere.",
+  "visualSummaryShort": "The card depicts Pepe the Frog as the Grim Reaper, surrounded by a chaotic background of burning villages and angelic figures. The dark color palette with fiery reds enhances the dramatic atmosphere.",
+  "visualKeywords": [
+    "grim reaper",
+    "pepe the frog",
+    "red halo",
+    "burning villages",
+    "dark tones",
+    "chaotic background",
+    "dystopian imagery",
+    "intense atmosphere",
+    "angelic figures"
+  ],
+  "textKeywords": [
+    "reaper",
+    "attack",
+    "burn",
+    "opponent",
+    "village",
+    "take",
+    "soul",
+    "defense",
+    "teleport",
+    "other",
+    "world"
+  ],
+  "keywords": [
+    "grim reaper",
+    "pepe the frog",
+    "red halo",
+    "burning villages",
+    "dark tones",
+    "chaotic background",
+    "dystopian imagery",
+    "intense atmosphere",
+    "angelic figures",
+    "reaper",
+    "attack",
+    "burn",
+    "opponent",
+    "village",
+    "take",
+    "soul",
+    "defense",
+    "teleport",
+    "other",
+    "world"
+  ],
+  "embeddingInput": "PEPEREAPER (Fake Rares) - Series 8 Card 7\nArtist: Other World\nSupply 100 Issued April 2022\nOn-card text: PEPE REAPER | Attack 1 - Burn Your Opponent’s Village | Attack 2 - Take Your Opponent’s Soul | Defense - Teleport To An Other World\nVisual summary: The card features Pepe the Frog dressed as the Grim Reaper, with a glowing red halo and X eyes symbolizing death. The background is a chaotic blend of classical art and dystopian imagery, with burning villages and angelic figures. The color palette is dominated by dark tones with splashes of fiery reds, creating a dramatic and intense atmosphere.\nMemetic references: Pepe the Frog as the Grim Reaper is a play on the \"Pepe as everything\" meme tradition.; References to classic art mixed with crypto-culture chaos.; The use of X eyes is a common cartoon symbol for death or unconsciousness.; The card's text mimics the style of trading card games, adding a layer of gamification.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEREAPER#text",
+      "label": "On-card text",
+      "text": "PEPE REAPER | Attack 1 - Burn Your Opponent’s Village | Attack 2 - Take Your Opponent’s Soul | Defense - Teleport To An Other World",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEREAPER#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as the Grim Reaper is a play on the \"Pepe as everything\" meme tradition.\nReferences to classic art mixed with crypto-culture chaos.\nThe use of X eyes is a common cartoon symbol for death or unconsciousness.\nThe card's text mimics the style of trading card games, adding a layer of gamification.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEREAPER#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog dressed as the Grim Reaper, with a glowing red halo and X eyes symbolizing death. The background is a chaotic blend of classical art and dystopian imagery, with burning villages and angelic figures. The color palette is dominated by dark tones with splashes of fiery reds, creating a dramatic and intense atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEREAPER#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE REAPER  \nAttack 1 - Burn Your Opponent’s Village  \nAttack 2 - Take Your Opponent’s Soul  \nDefense - Teleport To An Other World\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog dressed as the Grim Reaper, with a glowing red halo and X eyes symbolizing death. The background is a chaotic blend of classical art and dystopian imagery, with burning villages and angelic figures. The color palette is dominated by dark tones with splashes of fiery reds, creating a dramatic and intense atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as the Grim Reaper is a play on the \"Pepe as everything\" meme tradition.\n- References to classic art mixed with crypto-culture chaos.\n- The use of X eyes is a common cartoon symbol for death or unconsciousness.\n- The card's text mimics the style of trading card games, adding a layer of gamification.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.957Z",
+  "sourceFactVersion": 1
+}

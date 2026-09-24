@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "CLIMBINGFUJI",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 4,
+  "artist": "Tomopen",
+  "supply": 37,
+  "issuance": "August 2022",
+  "textOnCard": [
+    "Climbing Mt Fuji"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog emblem, a staple of meme culture.",
+    "Reference to the iconic Mt. Fuji, blending cultural landmarks with meme culture.",
+    "The climbing theme could symbolize the uphill battles or journeys often referenced in crypto and NFT communities."
+  ],
+  "visualSummary": "The card features a vibrant and stylized image of a person wearing a yellow hat with a Pepe face emblem on it. The background includes green foliage and a clear blue sky, suggesting an outdoor setting, possibly on a mountain. The color palette is bright, with dominant greens and yellows, creating a lively and energetic vibe.",
+  "visualSummaryShort": "The card showcases a person in a yellow hat adorned with a Pepe face emblem against a backdrop of green foliage and a clear blue sky. The bright color palette evokes a lively and energetic outdoor atmosphere.",
+  "visualKeywords": [
+    "yellow hat",
+    "pepe",
+    "green foliage",
+    "blue sky",
+    "outdoor",
+    "mountain",
+    "vibrant",
+    "energetic"
+  ],
+  "textKeywords": [
+    "climbing",
+    "fuji"
+  ],
+  "keywords": [
+    "yellow hat",
+    "pepe",
+    "green foliage",
+    "blue sky",
+    "outdoor",
+    "mountain",
+    "vibrant",
+    "energetic",
+    "climbing",
+    "fuji"
+  ],
+  "embeddingInput": "CLIMBINGFUJI (Fake Rares) - Series 10 Card 4\nArtist: Tomopen\nSupply 37 Issued August 2022\nOn-card text: Climbing Mt Fuji\nVisual summary: The card features a vibrant and stylized image of a person wearing a yellow hat with a Pepe face emblem on it. The background includes green foliage and a clear blue sky, suggesting an outdoor setting, possibly on a mountain. The color palette is bright, with dominant greens and yellows, creating a lively and energetic vibe.\nMemetic references: Pepe the Frog emblem, a staple of meme culture.; Reference to the iconic Mt. Fuji, blending cultural landmarks with meme culture.; The climbing theme could symbolize the uphill battles or journeys often referenced in crypto and NFT communities.",
+  "embeddingBlocks": [
+    {
+      "id": "CLIMBINGFUJI#text",
+      "label": "On-card text",
+      "text": "Climbing Mt Fuji",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "CLIMBINGFUJI#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog emblem, a staple of meme culture.\nReference to the iconic Mt. Fuji, blending cultural landmarks with meme culture.\nThe climbing theme could symbolize the uphill battles or journeys often referenced in crypto and NFT communities.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "CLIMBINGFUJI#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant and stylized image of a person wearing a yellow hat with a Pepe face emblem on it. The background includes green foliage and a clear blue sky, suggesting an outdoor setting, possibly on a mountain. The color palette is bright, with dominant greens and yellows, creating a lively and energetic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "CLIMBINGFUJI#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nClimbing Mt Fuji\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant and stylized image of a person wearing a yellow hat with a Pepe face emblem on it. The background includes green foliage and a clear blue sky, suggesting an outdoor setting, possibly on a mountain. The color palette is bright, with dominant greens and yellows, creating a lively and energetic vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog emblem, a staple of meme culture.\n- Reference to the iconic Mt. Fuji, blending cultural landmarks with meme culture.\n- The climbing theme could symbolize the uphill battles or journeys often referenced in crypto and NFT communities.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.357Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "asset": "BRINGBACKFR",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 2,
+  "artist": "Nimzobit",
+  "supply": 100,
+  "issuance": "February 2024",
+  "textOnCard": [
+    "LET'S BRING BACK THAT FAKE RARES ENERGY FROM 2021"
+  ],
+  "memeticReferences": [
+    "Classic chalkboard punishment meme, reminiscent of Bart Simpson.",
+    "Pepe the Frog, a staple in meme and crypto culture.",
+    "Nod to nostalgia for the 2021 crypto",
+    "NFT boom."
+  ],
+  "visualSummary": "The card features a Pepe character in a classroom setting, writing repeatedly on a chalkboard. The color palette is bold and simple, primarily green, purple, and yellow, giving it a cartoonish vibe. The setting includes a portrait on the wall and a trash bin filled with crumpled paper, adding to the schoolroom atmosphere.",
+  "visualSummaryShort": "The card depicts a Pepe character in a vibrant classroom, actively writing on a chalkboard. The bold color palette enhances the cartoonish feel, complemented by classroom elements like a portrait and a trash bin.",
+  "visualKeywords": [
+    "pepe",
+    "classroom",
+    "chalkboard",
+    "green",
+    "purple",
+    "yellow",
+    "portrait",
+    "trash bin",
+    "cartoonish"
+  ],
+  "textKeywords": [
+    "let",
+    "bring",
+    "back",
+    "energy",
+    "2021"
+  ],
+  "keywords": [
+    "pepe",
+    "classroom",
+    "chalkboard",
+    "green",
+    "purple",
+    "yellow",
+    "portrait",
+    "trash bin",
+    "cartoonish",
+    "let",
+    "bring",
+    "back",
+    "energy",
+    "2021"
+  ],
+  "embeddingInput": "BRINGBACKFR (Fake Rares) - Series 17 Card 2\nArtist: Nimzobit\nSupply 100 Issued February 2024\nOn-card text: LET'S BRING BACK THAT FAKE RARES ENERGY FROM 2021\nVisual summary: The card features a Pepe character in a classroom setting, writing repeatedly on a chalkboard. The color palette is bold and simple, primarily green, purple, and yellow, giving it a cartoonish vibe. The setting includes a portrait on the wall and a trash bin filled with crumpled paper, adding to the schoolroom atmosphere.\nMemetic references: Classic chalkboard punishment meme, reminiscent of Bart Simpson.; Pepe the Frog, a staple in meme and crypto culture.; Nod to nostalgia for the 2021 crypto; NFT boom.",
+  "embeddingBlocks": [
+    {
+      "id": "BRINGBACKFR#text",
+      "label": "On-card text",
+      "text": "LET'S BRING BACK THAT FAKE RARES ENERGY FROM 2021",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "BRINGBACKFR#memetic",
+      "label": "Memetic references",
+      "text": "Classic chalkboard punishment meme, reminiscent of Bart Simpson.\nPepe the Frog, a staple in meme and crypto culture.\nNod to nostalgia for the 2021 crypto\nNFT boom.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BRINGBACKFR#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe character in a classroom setting, writing repeatedly on a chalkboard. The color palette is bold and simple, primarily green, purple, and yellow, giving it a cartoonish vibe. The setting includes a portrait on the wall and a trash bin filled with crumpled paper, adding to the schoolroom atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BRINGBACKFR#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nLET'S BRING BACK THAT FAKE RARES ENERGY FROM 2021\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe character in a classroom setting, writing repeatedly on a chalkboard. The color palette is bold and simple, primarily green, purple, and yellow, giving it a cartoonish vibe. The setting includes a portrait on the wall and a trash bin filled with crumpled paper, adding to the schoolroom atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Classic chalkboard punishment meme, reminiscent of Bart Simpson.\n- Pepe the Frog, a staple in meme and crypto culture.\n- Nod to nostalgia for the 2021 crypto/NFT boom.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.329Z",
+  "sourceFactVersion": 1
+}

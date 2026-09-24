@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "asset": "FAKEDREAMZ",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 1,
+  "artist": "Viva La Vandal x 80sKurt Russell x Sketch",
+  "supply": 55,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "\"PEPE PAWN SHOP\"",
+    "\"FAKE NEWS\""
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery.",
+    "Reference to \"Fake News,\" a common phrase in meme and media culture.",
+    "The \"PEPE PAWN SHOP\" suggests a humorous take on crypto trading and NFT speculation."
+  ],
+  "visualSummary": "The card features a relaxed Pepe the Frog lounging on an orange couch, engrossed in a magazine with a stack of newspapers and a smartphone nearby. The background is a vibrant mix of orange and white, adding a lively contrast. The art style blends cartoonish elements with bold outlines and bright, flat colors, creating a playful yet satirical scene.",
+  "visualSummaryShort": "The card depicts a relaxed Pepe the Frog lounging on an orange couch, absorbed in a magazine. The vibrant orange and white background enhances the playful atmosphere of the scene.",
+  "visualKeywords": [
+    "pepe the frog",
+    "orange couch",
+    "magazine",
+    "newspapers",
+    "smartphone",
+    "cartoonish",
+    "bold outlines",
+    "bright colors",
+    "playful",
+    "satirical"
+  ],
+  "textKeywords": [
+    "pawn",
+    "shop",
+    "news"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "orange couch",
+    "magazine",
+    "newspapers",
+    "smartphone",
+    "cartoonish",
+    "bold outlines",
+    "bright colors",
+    "playful",
+    "satirical",
+    "pawn",
+    "shop",
+    "news"
+  ],
+  "embeddingInput": "FAKEDREAMZ (Fake Rares) - Series 9 Card 1\nArtist: Viva La Vandal x 80sKurt Russell x Sketch\nSupply 55 Issued July 2022\nOn-card text: \"PEPE PAWN SHOP\" | \"FAKE NEWS\"\nVisual summary: The card features a relaxed Pepe the Frog lounging on an orange couch, engrossed in a magazine with a stack of newspapers and a smartphone nearby. The background is a vibrant mix of orange and white, adding a lively contrast. The art style blends cartoonish elements with bold outlines and bright, flat colors, creating a playful yet satirical scene.\nMemetic references: Classic Pepe the Frog imagery.; Reference to \"Fake News,\" a common phrase in meme and media culture.; The \"PEPE PAWN SHOP\" suggests a humorous take on crypto trading and NFT speculation.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEDREAMZ#text",
+      "label": "On-card text",
+      "text": "\"PEPE PAWN SHOP\" | \"FAKE NEWS\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEDREAMZ#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery.\nReference to \"Fake News,\" a common phrase in meme and media culture.\nThe \"PEPE PAWN SHOP\" suggests a humorous take on crypto trading and NFT speculation.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEDREAMZ#visual",
+      "label": "Visual summary",
+      "text": "The card features a relaxed Pepe the Frog lounging on an orange couch, engrossed in a magazine with a stack of newspapers and a smartphone nearby. The background is a vibrant mix of orange and white, adding a lively contrast. The art style blends cartoonish elements with bold outlines and bright, flat colors, creating a playful yet satirical scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEDREAMZ#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- \"PEPE PAWN SHOP\"\n- \"FAKE NEWS\"\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a relaxed Pepe the Frog lounging on an orange couch, engrossed in a magazine with a stack of newspapers and a smartphone nearby. The background is a vibrant mix of orange and white, adding a lively contrast. The art style blends cartoonish elements with bold outlines and bright, flat colors, creating a playful yet satirical scene.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery.\n- Reference to \"Fake News,\" a common phrase in meme and media culture.\n- The \"PEPE PAWN SHOP\" suggests a humorous take on crypto trading and NFT speculation.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.485Z",
+  "sourceFactVersion": 1
+}

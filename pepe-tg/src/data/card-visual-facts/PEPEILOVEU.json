@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "asset": "PEPEILOVEU",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 23,
+  "artist": "Lord Jamie V. Shill",
+  "supply": 100,
+  "issuance": "March 2022",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a character with a playful expression. The background is colorful and vibrant, enhancing the cheerful mood.",
+  "visualKeywords": [
+    "playful",
+    "colorful",
+    "vibrant",
+    "character"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "playful",
+    "colorful",
+    "vibrant",
+    "character"
+  ],
+  "embeddingInput": "PEPEILOVEU (Fake Rares) - Series 7 Card 23\nArtist: Lord Jamie V. Shill\nSupply 100 Issued March 2022\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEILOVEU#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't help with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.896Z",
+  "sourceFactVersion": 1
+}

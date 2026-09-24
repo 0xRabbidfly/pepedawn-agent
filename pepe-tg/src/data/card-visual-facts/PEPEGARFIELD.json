@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "asset": "PEPEGARFIELD",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 48,
+  "artist": "Lenny",
+  "supply": 21,
+  "issuance": "August 2023",
+  "textOnCard": [
+    "PEPE GARFIELD",
+    "I HATE MONDAYS",
+    "LENNY"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog merged with Garfield, referencing both meme culture and classic comic strips.",
+    "\"I hate Mondays\" is a classic Garfield catchphrase, blending traditional comic lore with modern meme humor.",
+    "The coffee cup with a Pepe face adds a layer of self-referential humor to the meme."
+  ],
+  "visualSummary": "This card features a fusion of Pepe the Frog and Garfield the Cat, combining iconic elements from both characters. The color palette is bright and simple, dominated by orange, blue, and green. The style is cartoonish, capturing the laid-back, slightly grumpy vibe of both characters with exaggerated expressions and a humorous touch.",
+  "visualSummaryShort": "The card showcases a humorous fusion of Pepe the Frog and Garfield the Cat, characterized by bright colors and cartoonish style. It captures a laid-back yet grumpy mood with exaggerated expressions.",
+  "visualKeywords": [
+    "fusion",
+    "orange",
+    "blue",
+    "green",
+    "cartoonish",
+    "grumpy",
+    "humor",
+    "expressions"
+  ],
+  "textKeywords": [
+    "garfield",
+    "hate",
+    "mondays",
+    "lenny"
+  ],
+  "keywords": [
+    "fusion",
+    "orange",
+    "blue",
+    "green",
+    "cartoonish",
+    "grumpy",
+    "humor",
+    "expressions",
+    "garfield",
+    "hate",
+    "mondays",
+    "lenny"
+  ],
+  "embeddingInput": "PEPEGARFIELD (Fake Rares) - Series 15 Card 48\nArtist: Lenny\nSupply 21 Issued August 2023\nOn-card text: PEPE GARFIELD | I HATE MONDAYS | LENNY\nVisual summary: This card features a fusion of Pepe the Frog and Garfield the Cat, combining iconic elements from both characters. The color palette is bright and simple, dominated by orange, blue, and green. The style is cartoonish, capturing the laid-back, slightly grumpy vibe of both characters with exaggerated expressions and a humorous touch.\nMemetic references: Pepe the Frog merged with Garfield, referencing both meme culture and classic comic strips.; \"I hate Mondays\" is a classic Garfield catchphrase, blending traditional comic lore with modern meme humor.; The coffee cup with a Pepe face adds a layer of self-referential humor to the meme.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEGARFIELD#text",
+      "label": "On-card text",
+      "text": "PEPE GARFIELD | I HATE MONDAYS | LENNY",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEGARFIELD#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog merged with Garfield, referencing both meme culture and classic comic strips.\n\"I hate Mondays\" is a classic Garfield catchphrase, blending traditional comic lore with modern meme humor.\nThe coffee cup with a Pepe face adds a layer of self-referential humor to the meme.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEGARFIELD#visual",
+      "label": "Visual summary",
+      "text": "This card features a fusion of Pepe the Frog and Garfield the Cat, combining iconic elements from both characters. The color palette is bright and simple, dominated by orange, blue, and green. The style is cartoonish, capturing the laid-back, slightly grumpy vibe of both characters with exaggerated expressions and a humorous touch.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEGARFIELD#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE GARFIELD  \nI HATE MONDAYS  \nLENNY\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a fusion of Pepe the Frog and Garfield the Cat, combining iconic elements from both characters. The color palette is bright and simple, dominated by orange, blue, and green. The style is cartoonish, capturing the laid-back, slightly grumpy vibe of both characters with exaggerated expressions and a humorous touch.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog merged with Garfield, referencing both meme culture and classic comic strips.\n- \"I hate Mondays\" is a classic Garfield catchphrase, blending traditional comic lore with modern meme humor.\n- The coffee cup with a Pepe face adds a layer of self-referential humor to the meme.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.886Z",
+  "sourceFactVersion": 1
+}

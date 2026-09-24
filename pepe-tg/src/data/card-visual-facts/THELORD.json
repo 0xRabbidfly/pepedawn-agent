@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "THELORD",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 1,
+  "artist": "Michael Naples",
+  "supply": 21,
+  "issuance": "June 2022",
+  "textOnCard": [
+    "THE LORD"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure, a staple in meme culture.",
+    "References to royalty and leadership, possibly nodding to the \"God Emperor\" meme.",
+    "Elements like the parrot and giraffe add a surreal and humorous twist.",
+    "Possible nods to crypto culture with items on the table."
+  ],
+  "visualSummary": "The artwork depicts a regal Pepe the Frog sitting confidently on a throne, wearing casual clothes but exuding authority. The color palette is rich with golds and browns, accentuating the opulence of the throne room. Surrounding Pepe are various elements like a parrot, a can of something, and a giraffe, adding a whimsical touch to the scene.",
+  "visualSummaryShort": "The card features a regal Pepe the Frog seated on a throne, surrounded by whimsical elements like a parrot and a giraffe. The rich gold and brown color palette enhances the opulent atmosphere of the throne room.",
+  "visualKeywords": [
+    "pepe",
+    "throne",
+    "parrot",
+    "giraffe",
+    "gold",
+    "brown",
+    "whimsical",
+    "casual clothes",
+    "authority",
+    "opulence"
+  ],
+  "textKeywords": [
+    "lord"
+  ],
+  "keywords": [
+    "pepe",
+    "throne",
+    "parrot",
+    "giraffe",
+    "gold",
+    "brown",
+    "whimsical",
+    "casual clothes",
+    "authority",
+    "opulence",
+    "lord"
+  ],
+  "embeddingInput": "THELORD (Fake Rares) - Series 11 Card 1\nArtist: Michael Naples\nSupply 21 Issued June 2022\nOn-card text: THE LORD\nVisual summary: The artwork depicts a regal Pepe the Frog sitting confidently on a throne, wearing casual clothes but exuding authority. The color palette is rich with golds and browns, accentuating the opulence of the throne room. Surrounding Pepe are various elements like a parrot, a can of something, and a giraffe, adding a whimsical touch to the scene.\nMemetic references: Pepe the Frog as a central figure, a staple in meme culture.; References to royalty and leadership, possibly nodding to the \"God Emperor\" meme.; Elements like the parrot and giraffe add a surreal and humorous twist.; Possible nods to crypto culture with items on the table.",
+  "embeddingBlocks": [
+    {
+      "id": "THELORD#text",
+      "label": "On-card text",
+      "text": "THE LORD",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "THELORD#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure, a staple in meme culture.\nReferences to royalty and leadership, possibly nodding to the \"God Emperor\" meme.\nElements like the parrot and giraffe add a surreal and humorous twist.\nPossible nods to crypto culture with items on the table.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "THELORD#visual",
+      "label": "Visual summary",
+      "text": "The artwork depicts a regal Pepe the Frog sitting confidently on a throne, wearing casual clothes but exuding authority. The color palette is rich with golds and browns, accentuating the opulence of the throne room. Surrounding Pepe are various elements like a parrot, a can of something, and a giraffe, adding a whimsical touch to the scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "THELORD#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nTHE LORD\n\n🎨 **VISUAL BREAKDOWN:**\nThe artwork depicts a regal Pepe the Frog sitting confidently on a throne, wearing casual clothes but exuding authority. The color palette is rich with golds and browns, accentuating the opulence of the throne room. Surrounding Pepe are various elements like a parrot, a can of something, and a giraffe, adding a whimsical touch to the scene.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure, a staple in meme culture.\n- References to royalty and leadership, possibly nodding to the \"God Emperor\" meme.\n- Elements like the parrot and giraffe add a surreal and humorous twist.\n- Possible nods to crypto culture with items on the table.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.147Z",
+  "sourceFactVersion": 1
+}

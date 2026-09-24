@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "asset": "YOURBASEPEPE",
+  "collection": "Fake Rares",
+  "series": 0,
+  "cardNumber": 2,
+  "artist": "Indelible",
+  "supply": 100,
+  "issuance": "March 2017",
+  "textOnCard": [
+    "ALL YOUR BASE ARE BELONG TO PEPE!"
+  ],
+  "memeticReferences": [
+    "Reference to the classic internet meme \"All Your Base Are Belong to Us.\"",
+    "Incorporation of Pepe the Frog, a staple in meme and crypto culture.",
+    "Pixel art style nods to retro gaming and internet nostalgia."
+  ],
+  "visualSummary": "The card features a pixel art style reminiscent of classic video games, with a cybernetic character at the center. The color palette includes deep purples, greens, and grays, giving it a retro sci-fi vibe. The cybernetic details and dramatic lighting enhance the futuristic and dystopian aesthetic.",
+  "visualSummaryShort": "The card showcases a pixel art style with a cybernetic character surrounded by a retro sci-fi color palette. Dramatic lighting and dystopian elements enhance the overall futuristic mood.",
+  "visualKeywords": [
+    "pixel art",
+    "cybernetic",
+    "purple",
+    "green",
+    "gray",
+    "dramatic lighting",
+    "sci-fi",
+    "dystopian"
+  ],
+  "textKeywords": [
+    "all",
+    "base",
+    "are",
+    "belong"
+  ],
+  "keywords": [
+    "pixel art",
+    "cybernetic",
+    "purple",
+    "green",
+    "gray",
+    "dramatic lighting",
+    "sci-fi",
+    "dystopian",
+    "all",
+    "base",
+    "are",
+    "belong"
+  ],
+  "embeddingInput": "YOURBASEPEPE (Fake Rares) - Series 0 Card 2\nArtist: Indelible\nSupply 100 Issued March 2017\nOn-card text: ALL YOUR BASE ARE BELONG TO PEPE!\nVisual summary: The card features a pixel art style reminiscent of classic video games, with a cybernetic character at the center. The color palette includes deep purples, greens, and grays, giving it a retro sci-fi vibe. The cybernetic details and dramatic lighting enhance the futuristic and dystopian aesthetic.\nMemetic references: Reference to the classic internet meme \"All Your Base Are Belong to Us.\"; Incorporation of Pepe the Frog, a staple in meme and crypto culture.; Pixel art style nods to retro gaming and internet nostalgia.",
+  "embeddingBlocks": [
+    {
+      "id": "YOURBASEPEPE#text",
+      "label": "On-card text",
+      "text": "ALL YOUR BASE ARE BELONG TO PEPE!",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "YOURBASEPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Reference to the classic internet meme \"All Your Base Are Belong to Us.\"\nIncorporation of Pepe the Frog, a staple in meme and crypto culture.\nPixel art style nods to retro gaming and internet nostalgia.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "YOURBASEPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a pixel art style reminiscent of classic video games, with a cybernetic character at the center. The color palette includes deep purples, greens, and grays, giving it a retro sci-fi vibe. The cybernetic details and dramatic lighting enhance the futuristic and dystopian aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "YOURBASEPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nALL YOUR BASE ARE BELONG TO PEPE!\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a pixel art style reminiscent of classic video games, with a cybernetic character at the center. The color palette includes deep purples, greens, and grays, giving it a retro sci-fi vibe. The cybernetic details and dramatic lighting enhance the futuristic and dystopian aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Reference to the classic internet meme \"All Your Base Are Belong to Us.\"\n- Incorporation of Pepe the Frog, a staple in meme and crypto culture.\n- Pixel art style nods to retro gaming and internet nostalgia.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.202Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,118 @@
+{
+  "version": 1,
+  "asset": "BIBLICALKEK",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 22,
+  "artist": "Cronos One",
+  "supply": 21,
+  "issuance": "August 2023",
+  "textOnCard": [
+    "BIBLICALLY ACCURATE KEK",
+    "Oh holy shit",
+    "Kek, the Radiant Seraph, cascades cosmic power, illuminating realms with a cataclysmic surge of dank.",
+    "Rareness Score: Unfathomable"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog references",
+    "Angelic and biblical motifs",
+    "Surreal and psychedelic art style",
+    "\"Dank\" meme culture"
+  ],
+  "visualSummary": "The card features a surreal and chaotic scene with vibrant purples and reds dominating the palette. A distorted, multi-eyed Pepe figure with wings appears to be mid-dance, surrounded by swirling cosmic elements and abstract forms. The style is psychedelic and exaggerated, reminiscent of both biblical angelic imagery and internet meme art.",
+  "visualSummaryShort": "The card showcases a surreal scene dominated by vibrant purples and reds, featuring a multi-eyed Pepe figure with wings in a chaotic dance. Surrounding it are swirling cosmic elements and abstract forms, creating a psychedelic atmosphere.",
+  "visualKeywords": [
+    "surreal",
+    "vibrant colors",
+    "multi-eyed",
+    "wings",
+    "cosmic",
+    "abstract",
+    "psychedelic",
+    "chaotic",
+    "dance",
+    "internet meme"
+  ],
+  "textKeywords": [
+    "biblically",
+    "accurate",
+    "kek",
+    "holy",
+    "shit",
+    "radiant",
+    "seraph",
+    "cascades",
+    "cosmic",
+    "power",
+    "illuminating",
+    "realms",
+    "cataclysmic",
+    "surge",
+    "dank",
+    "rareness",
+    "score",
+    "unfathomable"
+  ],
+  "keywords": [
+    "surreal",
+    "vibrant colors",
+    "multi-eyed",
+    "wings",
+    "cosmic",
+    "abstract",
+    "psychedelic",
+    "chaotic",
+    "dance",
+    "internet meme",
+    "biblically",
+    "accurate",
+    "kek",
+    "holy",
+    "shit",
+    "radiant",
+    "seraph",
+    "cascades",
+    "power",
+    "illuminating",
+    "realms",
+    "cataclysmic",
+    "surge",
+    "dank",
+    "rareness",
+    "score",
+    "unfathomable"
+  ],
+  "embeddingInput": "BIBLICALKEK (Fake Rares) - Series 16 Card 22\nArtist: Cronos One\nSupply 21 Issued August 2023\nOn-card text: BIBLICALLY ACCURATE KEK | Oh holy shit | Kek, the Radiant Seraph, cascades cosmic power, illuminating realms with a cataclysmic surge of dank. | Rareness Score: Unfathomable\nVisual summary: The card features a surreal and chaotic scene with vibrant purples and reds dominating the palette. A distorted, multi-eyed Pepe figure with wings appears to be mid-dance, surrounded by swirling cosmic elements and abstract forms. The style is psychedelic and exaggerated, reminiscent of both biblical angelic imagery and internet meme art.\nMemetic references: Pepe the Frog references; Angelic and biblical motifs; Surreal and psychedelic art style; \"Dank\" meme culture",
+  "embeddingBlocks": [
+    {
+      "id": "BIBLICALKEK#text",
+      "label": "On-card text",
+      "text": "BIBLICALLY ACCURATE KEK | Oh holy shit | Kek, the Radiant Seraph, cascades cosmic power, illuminating realms with a cataclysmic surge of dank. | Rareness Score: Unfathomable",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "BIBLICALKEK#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references\nAngelic and biblical motifs\nSurreal and psychedelic art style\n\"Dank\" meme culture",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BIBLICALKEK#visual",
+      "label": "Visual summary",
+      "text": "The card features a surreal and chaotic scene with vibrant purples and reds dominating the palette. A distorted, multi-eyed Pepe figure with wings appears to be mid-dance, surrounded by swirling cosmic elements and abstract forms. The style is psychedelic and exaggerated, reminiscent of both biblical angelic imagery and internet meme art.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BIBLICALKEK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nBIBLICALLY ACCURATE KEK  \nOh holy shit  \nKek, the Radiant Seraph, cascades cosmic power, illuminating realms with a cataclysmic surge of dank.  \nRareness Score: Unfathomable\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a surreal and chaotic scene with vibrant purples and reds dominating the palette. A distorted, multi-eyed Pepe figure with wings appears to be mid-dance, surrounded by swirling cosmic elements and abstract forms. The style is psychedelic and exaggerated, reminiscent of both biblical angelic imagery and internet meme art.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references\n- Angelic and biblical motifs\n- Surreal and psychedelic art style\n- \"Dank\" meme culture",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.305Z",
+  "sourceFactVersion": 1
+}

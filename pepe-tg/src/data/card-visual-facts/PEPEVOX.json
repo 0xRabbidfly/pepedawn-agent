@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "asset": "PEPEVOX",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 10,
+  "artist": "EclecticMethod",
+  "supply": 113,
+  "issuance": "June 2022",
+  "textOnCard": [
+    "P"
+  ],
+  "memeticReferences": [
+    "The letter \"P\" might hint at \"Pepe,\" a central figure in meme culture.",
+    "Minimalism is often associated with high art and NFTs, suggesting exclusivity.",
+    "Black and white color scheme is reminiscent of classic meme formats."
+  ],
+  "visualSummary": "This card features a stark and minimalist design with a bold black background and a single large white letter \"P\" on the left side. The simplicity of the composition draws attention to the letter itself, standing out with its clean and uncomplicated style. The monochrome color palette emphasizes the contrast and highlights the text.",
+  "visualSummaryShort": "The card showcases a minimalist design with a bold black background and a prominent white letter 'P'. The stark contrast and simplicity create a striking visual impact.",
+  "visualKeywords": [
+    "black background",
+    "white letter",
+    "minimalist",
+    "monochrome",
+    "contrast"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "black background",
+    "white letter",
+    "minimalist",
+    "monochrome",
+    "contrast"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "PEPEVOX (Fake Rares) - Series 8 Card 10\nArtist: EclecticMethod\nSupply 113 Issued June 2022\nOn-card text: P\nVisual summary: This card features a stark and minimalist design with a bold black background and a single large white letter \"P\" on the left side. The simplicity of the composition draws attention to the letter itself, standing out with its clean and uncomplicated style. The monochrome color palette emphasizes the contrast and highlights the text.\nMemetic references: The letter \"P\" might hint at \"Pepe,\" a central figure in meme culture.; Minimalism is often associated with high art and NFTs, suggesting exclusivity.; Black and white color scheme is reminiscent of classic meme formats.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEVOX#text",
+      "label": "On-card text",
+      "text": "P",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEVOX#memetic",
+      "label": "Memetic references",
+      "text": "The letter \"P\" might hint at \"Pepe,\" a central figure in meme culture.\nMinimalism is often associated with high art and NFTs, suggesting exclusivity.\nBlack and white color scheme is reminiscent of classic meme formats.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEVOX#visual",
+      "label": "Visual summary",
+      "text": "This card features a stark and minimalist design with a bold black background and a single large white letter \"P\" on the left side. The simplicity of the composition draws attention to the letter itself, standing out with its clean and uncomplicated style. The monochrome color palette emphasizes the contrast and highlights the text.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEVOX#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nP\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a stark and minimalist design with a bold black background and a single large white letter \"P\" on the left side. The simplicity of the composition draws attention to the letter itself, standing out with its clean and uncomplicated style. The monochrome color palette emphasizes the contrast and highlights the text.\n\n🧬 **MEMETIC DNA:**\n- The letter \"P\" might hint at \"Pepe,\" a central figure in meme culture.\n- Minimalism is often associated with high art and NFTs, suggesting exclusivity.\n- Black and white color scheme is reminiscent of classic meme formats.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:33:55.241Z"
+}

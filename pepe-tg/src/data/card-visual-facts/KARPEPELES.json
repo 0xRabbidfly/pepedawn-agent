@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "asset": "KARPEPELES",
+  "collection": "Fake Rares",
+  "series": 0,
+  "cardNumber": 4,
+  "artist": "Django Bits",
+  "supply": 650,
+  "issuance": "September 2016",
+  "textOnCard": [
+    "Karpeles Card",
+    "We had weaknesses in our system and our bitcoins vanished."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure, a staple in meme culture.",
+    "References to a financial chart indicating a market crash or scam.",
+    "The \"meh\" expression captures a sense of apathy or resignation.",
+    "Frappuccino might hint at tech",
+    "startup culture or indulgence.",
+    "Nods to crypto history and infamous failures."
+  ],
+  "visualSummary": "This card features a Pepe the Frog character styled as a businessman with a green face and slicked-back hair, wearing a blue suit and red tie. The background displays a red and green bar chart with a declining trend, accompanied by the word \"meh\" and a frappuccino. The color palette is vibrant with blues, greens, and reds, giving it a retro trading card vibe.",
+  "visualSummaryShort": "The card showcases a Pepe the Frog character as a businessman, dressed in a blue suit and red tie against a vibrant background. The scene includes a declining bar chart and a frappuccino, creating a retro trading card aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "businessman",
+    "blue suit",
+    "red tie",
+    "bar chart",
+    "frappuccino",
+    "vibrant colors",
+    "retro"
+  ],
+  "textKeywords": [
+    "karpeles",
+    "had",
+    "weaknesses",
+    "our",
+    "system",
+    "bitcoins",
+    "vanished"
+  ],
+  "keywords": [
+    "pepe",
+    "businessman",
+    "blue suit",
+    "red tie",
+    "bar chart",
+    "frappuccino",
+    "vibrant colors",
+    "retro",
+    "karpeles",
+    "had",
+    "weaknesses",
+    "our",
+    "system",
+    "bitcoins",
+    "vanished"
+  ],
+  "embeddingInput": "KARPEPELES (Fake Rares) - Series 0 Card 4\nArtist: Django Bits\nSupply 650 Issued September 2016\nOn-card text: Karpeles Card | We had weaknesses in our system and our bitcoins vanished.\nVisual summary: This card features a Pepe the Frog character styled as a businessman with a green face and slicked-back hair, wearing a blue suit and red tie. The background displays a red and green bar chart with a declining trend, accompanied by the word \"meh\" and a frappuccino. The color palette is vibrant with blues, greens, and reds, giving it a retro trading card vibe.\nMemetic references: Pepe the Frog as a central figure, a staple in meme culture.; References to a financial chart indicating a market crash or scam.; The \"meh\" expression captures a sense of apathy or resignation.; Frappuccino might hint at tech; startup culture or indulgence.; Nods to crypto history and infamous failures.",
+  "embeddingBlocks": [
+    {
+      "id": "KARPEPELES#text",
+      "label": "On-card text",
+      "text": "Karpeles Card | We had weaknesses in our system and our bitcoins vanished.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "KARPEPELES#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure, a staple in meme culture.\nReferences to a financial chart indicating a market crash or scam.\nThe \"meh\" expression captures a sense of apathy or resignation.\nFrappuccino might hint at tech\nstartup culture or indulgence.\nNods to crypto history and infamous failures.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "KARPEPELES#visual",
+      "label": "Visual summary",
+      "text": "This card features a Pepe the Frog character styled as a businessman with a green face and slicked-back hair, wearing a blue suit and red tie. The background displays a red and green bar chart with a declining trend, accompanied by the word \"meh\" and a frappuccino. The color palette is vibrant with blues, greens, and reds, giving it a retro trading card vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "KARPEPELES#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nKarpeles Card  \nWe had weaknesses in our system and our bitcoins vanished.\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a Pepe the Frog character styled as a businessman with a green face and slicked-back hair, wearing a blue suit and red tie. The background displays a red and green bar chart with a declining trend, accompanied by the word \"meh\" and a frappuccino. The color palette is vibrant with blues, greens, and reds, giving it a retro trading card vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure, a staple in meme culture.\n- References to a financial chart indicating a market crash or scam.\n- The \"meh\" expression captures a sense of apathy or resignation.\n- Frappuccino might hint at tech/startup culture or indulgence.\n- Nods to crypto history and infamous failures.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.708Z",
+  "sourceFactVersion": 1
+}

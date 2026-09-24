@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "asset": "BIGTIMEWOW",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 31,
+  "artist": "desultor",
+  "supply": 39,
+  "issuance": "November 2022",
+  "textOnCard": [
+    "BIG TIME",
+    "everything up only like so hard",
+    "“den dey sed, much wow”"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in business attire.",
+    "\"GM\" (Good Morning) sticker, a nod to crypto daily greetings.",
+    "\"CLASSIFIED\" red stamp, implying secrecy or insider knowledge.",
+    "References to \"up only\" and \"much wow\", common phrases in crypto culture."
+  ],
+  "visualSummary": "The card features two Pepe the Frog characters in suits, engaged in intense work, set against a chaotic, colorful background. The palette is dominated by greens and purples, with elements of yellow and orange adding vibrancy. The art style is cartoonish and exaggerated, with a mixture of digital and hand-drawn aesthetics, creating a dynamic and humorous scene.",
+  "visualSummaryShort": "The card showcases two Pepe the Frog characters in suits, surrounded by a vibrant and chaotic background. The colors are predominantly green and purple, with bright accents of yellow and orange, contributing to a humorous and dynamic atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "suits",
+    "chaotic background",
+    "green",
+    "purple",
+    "yellow",
+    "orange",
+    "cartoonish",
+    "humorous",
+    "dynamic"
+  ],
+  "textKeywords": [
+    "big",
+    "time",
+    "everything",
+    "only",
+    "like",
+    "hard",
+    "den",
+    "dey",
+    "sed",
+    "wow"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "suits",
+    "chaotic background",
+    "green",
+    "purple",
+    "yellow",
+    "orange",
+    "cartoonish",
+    "humorous",
+    "dynamic",
+    "big",
+    "time",
+    "everything",
+    "only",
+    "like",
+    "hard",
+    "den",
+    "dey",
+    "sed",
+    "wow"
+  ],
+  "embeddingInput": "BIGTIMEWOW (Fake Rares) - Series 12 Card 31\nArtist: desultor\nSupply 39 Issued November 2022\nOn-card text: BIG TIME | everything up only like so hard | “den dey sed, much wow”\nVisual summary: The card features two Pepe the Frog characters in suits, engaged in intense work, set against a chaotic, colorful background. The palette is dominated by greens and purples, with elements of yellow and orange adding vibrancy. The art style is cartoonish and exaggerated, with a mixture of digital and hand-drawn aesthetics, creating a dynamic and humorous scene.\nMemetic references: Pepe the Frog in business attire.; \"GM\" (Good Morning) sticker, a nod to crypto daily greetings.; \"CLASSIFIED\" red stamp, implying secrecy or insider knowledge.; References to \"up only\" and \"much wow\", common phrases in crypto culture.",
+  "embeddingBlocks": [
+    {
+      "id": "BIGTIMEWOW#text",
+      "label": "On-card text",
+      "text": "BIG TIME | everything up only like so hard | “den dey sed, much wow”",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "BIGTIMEWOW#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in business attire.\n\"GM\" (Good Morning) sticker, a nod to crypto daily greetings.\n\"CLASSIFIED\" red stamp, implying secrecy or insider knowledge.\nReferences to \"up only\" and \"much wow\", common phrases in crypto culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BIGTIMEWOW#visual",
+      "label": "Visual summary",
+      "text": "The card features two Pepe the Frog characters in suits, engaged in intense work, set against a chaotic, colorful background. The palette is dominated by greens and purples, with elements of yellow and orange adding vibrancy. The art style is cartoonish and exaggerated, with a mixture of digital and hand-drawn aesthetics, creating a dynamic and humorous scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BIGTIMEWOW#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nBIG TIME  \neverything up only like so hard  \n“den dey sed, much wow”\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features two Pepe the Frog characters in suits, engaged in intense work, set against a chaotic, colorful background. The palette is dominated by greens and purples, with elements of yellow and orange adding vibrancy. The art style is cartoonish and exaggerated, with a mixture of digital and hand-drawn aesthetics, creating a dynamic and humorous scene.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in business attire.\n- \"GM\" (Good Morning) sticker, a nod to crypto daily greetings.\n- \"CLASSIFIED\" red stamp, implying secrecy or insider knowledge.\n- References to \"up only\" and \"much wow\", common phrases in crypto culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.306Z",
+  "sourceFactVersion": 1
+}

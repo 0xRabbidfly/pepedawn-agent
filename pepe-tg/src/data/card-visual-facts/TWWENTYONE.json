@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "asset": "TWWENTYONE",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 25,
+  "artist": "FORD",
+  "supply": 21,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "ONLY21PEPE",
+    "Fake Rarest Pepe only 21"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog: Central meme figure in NFT culture.",
+    "Wojak: Another iconic meme character representing existential themes.",
+    "Sports team lineup: Suggestive of exclusivity and rarity.",
+    "Sequential numbering: Plays on scarcity and uniqueness in crypto."
+  ],
+  "visualSummary": "The card features a lineup of Pepecash-themed characters wearing jerseys numbered sequentially, with the focal point being Pepe number 21, who is interacting with a suited Wojak. The color palette is dominated by greens and whites, with the jerseys adding a classic sports vibe. The style is cartoonish and humorous, capturing the essence of internet meme culture.",
+  "visualSummaryShort": "The card showcases Pepecash-themed characters in sports jerseys, with Pepe number 21 prominently interacting with a suited Wojak. The cartoonish style and green and white color palette emphasize a humorous and meme-inspired atmosphere.",
+  "visualKeywords": [
+    "pepecash",
+    "jerseys",
+    "green",
+    "white",
+    "cartoonish",
+    "humor",
+    "sports",
+    "characters",
+    "internet",
+    "meme"
+  ],
+  "textKeywords": [
+    "only21pepe",
+    "rarest",
+    "only"
+  ],
+  "keywords": [
+    "pepecash",
+    "jerseys",
+    "green",
+    "white",
+    "cartoonish",
+    "humor",
+    "sports",
+    "characters",
+    "internet",
+    "meme",
+    "only21pepe",
+    "rarest",
+    "only"
+  ],
+  "embeddingInput": "TWWENTYONE (Fake Rares) - Series 3 Card 25\nArtist: FORD\nSupply 21 Issued October 2021\nOn-card text: ONLY21PEPE | Fake Rarest Pepe only 21\nVisual summary: The card features a lineup of Pepecash-themed characters wearing jerseys numbered sequentially, with the focal point being Pepe number 21, who is interacting with a suited Wojak. The color palette is dominated by greens and whites, with the jerseys adding a classic sports vibe. The style is cartoonish and humorous, capturing the essence of internet meme culture.\nMemetic references: Pepe the Frog: Central meme figure in NFT culture.; Wojak: Another iconic meme character representing existential themes.; Sports team lineup: Suggestive of exclusivity and rarity.; Sequential numbering: Plays on scarcity and uniqueness in crypto.",
+  "embeddingBlocks": [
+    {
+      "id": "TWWENTYONE#text",
+      "label": "On-card text",
+      "text": "ONLY21PEPE | Fake Rarest Pepe only 21",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "TWWENTYONE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog: Central meme figure in NFT culture.\nWojak: Another iconic meme character representing existential themes.\nSports team lineup: Suggestive of exclusivity and rarity.\nSequential numbering: Plays on scarcity and uniqueness in crypto.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "TWWENTYONE#visual",
+      "label": "Visual summary",
+      "text": "The card features a lineup of Pepecash-themed characters wearing jerseys numbered sequentially, with the focal point being Pepe number 21, who is interacting with a suited Wojak. The color palette is dominated by greens and whites, with the jerseys adding a classic sports vibe. The style is cartoonish and humorous, capturing the essence of internet meme culture.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "TWWENTYONE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nONLY21PEPE  \nFake Rarest Pepe only 21\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a lineup of Pepecash-themed characters wearing jerseys numbered sequentially, with the focal point being Pepe number 21, who is interacting with a suited Wojak. The color palette is dominated by greens and whites, with the jerseys adding a classic sports vibe. The style is cartoonish and humorous, capturing the essence of internet meme culture.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog: Central meme figure in NFT culture.\n- Wojak: Another iconic meme character representing existential themes.\n- Sports team lineup: Suggestive of exclusivity and rarity.\n- Sequential numbering: Plays on scarcity and uniqueness in crypto.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.169Z",
+  "sourceFactVersion": 1
+}

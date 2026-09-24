@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "THEBIGDEGEN",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 50,
+  "artist": "ZeroG",
+  "supply": 21,
+  "issuance": "February 2025",
+  "textOnCard": [
+    "Pipolandia"
+  ],
+  "memeticReferences": [
+    "Classic detective film noir aesthetic.",
+    "Pepe the Frog as a central figure, embodying the mysterious detective trope.",
+    "Possible nods to NFT",
+    "crypto culture with inclusion of simplistic cartoon faces."
+  ],
+  "visualSummary": "The card features a noir-inspired scene with a dramatic, shadowy cityscape in the background. The foreground showcases a green Pepe-like character in a trench coat and fedora, exuding a detective vibe, while a female character clings to him. The color palette is moody with deep blues, yellows, and greens, adding to the vintage detective story atmosphere.",
+  "visualSummaryShort": "The card depicts a noir-inspired scene featuring a green Pepe-like character in a trench coat and fedora alongside a female character. The moody color palette of deep blues, yellows, and greens enhances the vintage detective story atmosphere.",
+  "visualKeywords": [
+    "noir",
+    "cityscape",
+    "green character",
+    "trench coat",
+    "fedora",
+    "female character",
+    "moody colors",
+    "vintage",
+    "detective",
+    "shadowy"
+  ],
+  "textKeywords": [
+    "pipolandia"
+  ],
+  "keywords": [
+    "noir",
+    "cityscape",
+    "green character",
+    "trench coat",
+    "fedora",
+    "female character",
+    "moody colors",
+    "vintage",
+    "detective",
+    "shadowy",
+    "pipolandia"
+  ],
+  "embeddingInput": "THEBIGDEGEN (Fake Rares) - Series 17 Card 50\nArtist: ZeroG\nSupply 21 Issued February 2025\nOn-card text: Pipolandia\nVisual summary: The card features a noir-inspired scene with a dramatic, shadowy cityscape in the background. The foreground showcases a green Pepe-like character in a trench coat and fedora, exuding a detective vibe, while a female character clings to him. The color palette is moody with deep blues, yellows, and greens, adding to the vintage detective story atmosphere.\nMemetic references: Classic detective film noir aesthetic.; Pepe the Frog as a central figure, embodying the mysterious detective trope.; Possible nods to NFT; crypto culture with inclusion of simplistic cartoon faces.",
+  "embeddingBlocks": [
+    {
+      "id": "THEBIGDEGEN#text",
+      "label": "On-card text",
+      "text": "Pipolandia",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "THEBIGDEGEN#memetic",
+      "label": "Memetic references",
+      "text": "Classic detective film noir aesthetic.\nPepe the Frog as a central figure, embodying the mysterious detective trope.\nPossible nods to NFT\ncrypto culture with inclusion of simplistic cartoon faces.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "THEBIGDEGEN#visual",
+      "label": "Visual summary",
+      "text": "The card features a noir-inspired scene with a dramatic, shadowy cityscape in the background. The foreground showcases a green Pepe-like character in a trench coat and fedora, exuding a detective vibe, while a female character clings to him. The color palette is moody with deep blues, yellows, and greens, adding to the vintage detective story atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "THEBIGDEGEN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPipolandia\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a noir-inspired scene with a dramatic, shadowy cityscape in the background. The foreground showcases a green Pepe-like character in a trench coat and fedora, exuding a detective vibe, while a female character clings to him. The color palette is moody with deep blues, yellows, and greens, adding to the vintage detective story atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Classic detective film noir aesthetic.\n- Pepe the Frog as a central figure, embodying the mysterious detective trope.\n- Possible nods to NFT/crypto culture with inclusion of simplistic cartoon faces.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.139Z",
+  "sourceFactVersion": 1
+}

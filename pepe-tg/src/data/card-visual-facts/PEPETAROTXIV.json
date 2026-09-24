@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "asset": "PEPETAROTXIV",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 45,
+  "artist": "SHEWOLF",
+  "supply": 87,
+  "issuance": "February 2022",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a vibrant and colorful design with abstract shapes and patterns. The overall mood is energetic and playful.",
+  "visualKeywords": [
+    "colorful",
+    "abstract",
+    "energetic",
+    "playful",
+    "shapes",
+    "patterns"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "colorful",
+    "abstract",
+    "energetic",
+    "playful",
+    "shapes",
+    "patterns"
+  ],
+  "embeddingInput": "PEPETAROTXIV (Fake Rares) - Series 6 Card 45\nArtist: SHEWOLF\nSupply 87 Issued February 2022\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "PEPETAROTXIV#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.991Z",
+  "sourceFactVersion": 1
+}

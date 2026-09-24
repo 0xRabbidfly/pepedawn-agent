@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "asset": "KEKCHAMBERS",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 24,
+  "artist": "Jak",
+  "supply": 69,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "69 CHAMBERS OF KEK",
+    "LIVE FREE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure.",
+    "Graffiti elements evoke a rebellious, underground aesthetic.",
+    "References to “69” and “KEK” are classic meme culture nods.",
+    "The phrase “LIVE FREE” hints at libertarian or anti-establishment themes."
+  ],
+  "visualSummary": "This card features a bold, graffiti-style composition with a vibrant blue and green color palette. A large Pepe the Frog character is central, wearing a red cap and holding a book, with another smaller Pepe in the foreground. The background is splattered with neon paint, adding to the urban street art vibe.",
+  "visualSummaryShort": "The card showcases a vibrant graffiti-style design with a prominent Pepe the Frog character. The background features splashes of neon paint, enhancing the urban street art aesthetic.",
+  "visualKeywords": [
+    "graffiti",
+    "pepe the frog",
+    "blue and green",
+    "red cap",
+    "neon paint",
+    "urban",
+    "book",
+    "street art"
+  ],
+  "textKeywords": [
+    "chambers",
+    "kek",
+    "live",
+    "free"
+  ],
+  "keywords": [
+    "graffiti",
+    "pepe the frog",
+    "blue and green",
+    "red cap",
+    "neon paint",
+    "urban",
+    "book",
+    "street art",
+    "chambers",
+    "kek",
+    "live",
+    "free"
+  ],
+  "embeddingInput": "KEKCHAMBERS (Fake Rares) - Series 5 Card 24\nArtist: Jak\nSupply 69 Issued February 2022\nOn-card text: 69 CHAMBERS OF KEK | LIVE FREE\nVisual summary: This card features a bold, graffiti-style composition with a vibrant blue and green color palette. A large Pepe the Frog character is central, wearing a red cap and holding a book, with another smaller Pepe in the foreground. The background is splattered with neon paint, adding to the urban street art vibe.\nMemetic references: Pepe the Frog as a central figure.; Graffiti elements evoke a rebellious, underground aesthetic.; References to “69” and “KEK” are classic meme culture nods.; The phrase “LIVE FREE” hints at libertarian or anti-establishment themes.",
+  "embeddingBlocks": [
+    {
+      "id": "KEKCHAMBERS#text",
+      "label": "On-card text",
+      "text": "69 CHAMBERS OF KEK | LIVE FREE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "KEKCHAMBERS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure.\nGraffiti elements evoke a rebellious, underground aesthetic.\nReferences to “69” and “KEK” are classic meme culture nods.\nThe phrase “LIVE FREE” hints at libertarian or anti-establishment themes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "KEKCHAMBERS#visual",
+      "label": "Visual summary",
+      "text": "This card features a bold, graffiti-style composition with a vibrant blue and green color palette. A large Pepe the Frog character is central, wearing a red cap and holding a book, with another smaller Pepe in the foreground. The background is splattered with neon paint, adding to the urban street art vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "KEKCHAMBERS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n69 CHAMBERS OF KEK  \nLIVE FREE  \n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a bold, graffiti-style composition with a vibrant blue and green color palette. A large Pepe the Frog character is central, wearing a red cap and holding a book, with another smaller Pepe in the foreground. The background is splattered with neon paint, adding to the urban street art vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure.\n- Graffiti elements evoke a rebellious, underground aesthetic.\n- References to “69” and “KEK” are classic meme culture nods.\n- The phrase “LIVE FREE” hints at libertarian or anti-establishment themes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.709Z",
+  "sourceFactVersion": 1
+}

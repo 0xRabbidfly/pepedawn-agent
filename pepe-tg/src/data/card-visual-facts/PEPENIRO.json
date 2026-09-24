@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "asset": "PEPENIRO",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 10,
+  "artist": "Dim Zayan",
+  "supply": 50,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "PepeNiro",
+    "He's not buying it.",
+    "What's the faking matter with you, do you want me to pay for this shit?"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a cultural meme staple.",
+    "Reference to mobster or gangster films, possibly nodding to iconic actors.",
+    "Plays on the concept of negotiation and skepticism common in crypto trading."
+  ],
+  "visualSummary": "The card features Pepe the Frog styled as a classic mobster character, reminiscent of film noir with slicked-back hair and a suit. The color palette is dark and muted, using greens and purples to highlight Pepe’s skin and attire. A subtle smoke effect adds to the gritty, mysterious vibe of the composition.",
+  "visualSummaryShort": "The card depicts Pepe the Frog as a classic mobster in a film noir style, featuring slicked-back hair and a suit. The dark and muted color palette, along with a subtle smoke effect, enhances the gritty atmosphere.",
+  "visualKeywords": [
+    "mobster",
+    "film noir",
+    "dark colors",
+    "green",
+    "purple",
+    "smoke",
+    "suit",
+    "slicked-back hair",
+    "gritty",
+    "mysterious"
+  ],
+  "textKeywords": [
+    "pepeniro",
+    "not",
+    "buying",
+    "what",
+    "faking",
+    "matter",
+    "you",
+    "want",
+    "pay",
+    "shit"
+  ],
+  "keywords": [
+    "mobster",
+    "film noir",
+    "dark colors",
+    "green",
+    "purple",
+    "smoke",
+    "suit",
+    "slicked-back hair",
+    "gritty",
+    "mysterious",
+    "pepeniro",
+    "not",
+    "buying",
+    "what",
+    "faking",
+    "matter",
+    "you",
+    "want",
+    "pay",
+    "shit"
+  ],
+  "embeddingInput": "PEPENIRO (Fake Rares) - Series 2 Card 10\nArtist: Dim Zayan\nSupply 50 Issued October 2021\nOn-card text: PepeNiro | He's not buying it. | What's the faking matter with you, do you want me to pay for this shit?\nVisual summary: The card features Pepe the Frog styled as a classic mobster character, reminiscent of film noir with slicked-back hair and a suit. The color palette is dark and muted, using greens and purples to highlight Pepe’s skin and attire. A subtle smoke effect adds to the gritty, mysterious vibe of the composition.\nMemetic references: Pepe the Frog as a cultural meme staple.; Reference to mobster or gangster films, possibly nodding to iconic actors.; Plays on the concept of negotiation and skepticism common in crypto trading.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPENIRO#text",
+      "label": "On-card text",
+      "text": "PepeNiro | He's not buying it. | What's the faking matter with you, do you want me to pay for this shit?",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPENIRO#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a cultural meme staple.\nReference to mobster or gangster films, possibly nodding to iconic actors.\nPlays on the concept of negotiation and skepticism common in crypto trading.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPENIRO#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog styled as a classic mobster character, reminiscent of film noir with slicked-back hair and a suit. The color palette is dark and muted, using greens and purples to highlight Pepe’s skin and attire. A subtle smoke effect adds to the gritty, mysterious vibe of the composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPENIRO#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPepeNiro  \nHe's not buying it.  \nWhat's the faking matter with you, do you want me to pay for this shit?\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog styled as a classic mobster character, reminiscent of film noir with slicked-back hair and a suit. The color palette is dark and muted, using greens and purples to highlight Pepe’s skin and attire. A subtle smoke effect adds to the gritty, mysterious vibe of the composition.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a cultural meme staple.\n- Reference to mobster or gangster films, possibly nodding to iconic actors.\n- Plays on the concept of negotiation and skepticism common in crypto trading.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.940Z",
+  "sourceFactVersion": 1
+}

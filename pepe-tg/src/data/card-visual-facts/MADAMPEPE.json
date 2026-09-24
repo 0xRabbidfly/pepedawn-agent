@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "asset": "MADAMPEPE",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 22,
+  "artist": "SNUXTONPACK",
+  "supply": 31,
+  "issuance": "June 2022",
+  "textOnCard": [
+    "THE NEW NUMBER #1 BESTSELLER MADAME PEPE by SNUXTON PACK"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a mystical fortune teller.",
+    "References to classic book covers and bestseller culture.",
+    "Crypto culture nod with the crystal ball symbolizing future predictions."
+  ],
+  "visualSummary": "The card features a fortune teller Pepe with a crystal ball, set against a warm, vintage-style background. The color palette is dominated by earthy browns and greens, giving it an old paperback novel vibe. The artistic style is a blend of comic and retro, with a slightly worn-out texture adding to its nostalgic appeal.",
+  "visualSummaryShort": "The card depicts a fortune teller Pepe with a crystal ball, surrounded by a warm, vintage-style background. The earthy color palette and worn texture enhance its nostalgic comic and retro aesthetic.",
+  "visualKeywords": [
+    "fortune teller",
+    "crystal ball",
+    "vintage",
+    "earthy colors",
+    "retro",
+    "comic style",
+    "warm lighting",
+    "nostalgic",
+    "worn texture"
+  ],
+  "textKeywords": [
+    "new",
+    "number",
+    "bestseller",
+    "madame",
+    "snuxton",
+    "pack"
+  ],
+  "keywords": [
+    "fortune teller",
+    "crystal ball",
+    "vintage",
+    "earthy colors",
+    "retro",
+    "comic style",
+    "warm lighting",
+    "nostalgic",
+    "worn texture",
+    "new",
+    "number",
+    "bestseller",
+    "madame",
+    "snuxton",
+    "pack"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "MADAMPEPE (Fake Rares) - Series 11 Card 22\nArtist: SNUXTONPACK\nSupply 31 Issued June 2022\nOn-card text: THE NEW NUMBER #1 BESTSELLER MADAME PEPE by SNUXTON PACK\nVisual summary: The card features a fortune teller Pepe with a crystal ball, set against a warm, vintage-style background. The color palette is dominated by earthy browns and greens, giving it an old paperback novel vibe. The artistic style is a blend of comic and retro, with a slightly worn-out texture adding to its nostalgic appeal.\nMemetic references: Pepe the Frog as a mystical fortune teller.; References to classic book covers and bestseller culture.; Crypto culture nod with the crystal ball symbolizing future predictions.",
+  "embeddingBlocks": [
+    {
+      "id": "MADAMPEPE#text",
+      "label": "On-card text",
+      "text": "THE NEW NUMBER #1 BESTSELLER MADAME PEPE by SNUXTON PACK",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MADAMPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a mystical fortune teller.\nReferences to classic book covers and bestseller culture.\nCrypto culture nod with the crystal ball symbolizing future predictions.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MADAMPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a fortune teller Pepe with a crystal ball, set against a warm, vintage-style background. The color palette is dominated by earthy browns and greens, giving it an old paperback novel vibe. The artistic style is a blend of comic and retro, with a slightly worn-out texture adding to its nostalgic appeal.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MADAMPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nTHE NEW NUMBER #1 BESTSELLER MADAME PEPE by SNUXTON PACK\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a fortune teller Pepe with a crystal ball, set against a warm, vintage-style background. The color palette is dominated by earthy browns and greens, giving it an old paperback novel vibe. The artistic style is a blend of comic and retro, with a slightly worn-out texture adding to its nostalgic appeal.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a mystical fortune teller.\n- References to classic book covers and bestseller culture.\n- Crypto culture nod with the crystal ball symbolizing future predictions.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:30:45.789Z"
+}

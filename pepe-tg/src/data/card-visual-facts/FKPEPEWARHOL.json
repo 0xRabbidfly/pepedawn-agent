@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "FKPEPEWARHOL",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 48,
+  "artist": "Lord Jamie V. Shill",
+  "supply": 67,
+  "issuance": "August 2022",
+  "textOnCard": [
+    "PEPE WARHOL SELF PORTRAIT"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog with an Andy Warhol twist",
+    "Pop art influence",
+    "Self-portrait parody",
+    "References to art and meme culture"
+  ],
+  "visualSummary": "The card features a stylized portrait of Pepe the Frog with a distinct Andy Warhol vibe, showcasing a combination of pop art aesthetics and digital art techniques. The color palette includes muted green for Pepe's skin, contrasted with a grayscale background, and vibrant green text. The texture resembles a canvas, giving it an authentic art gallery feel.",
+  "visualSummaryShort": "The card showcases a stylized portrait of Pepe the Frog in a pop art style reminiscent of Andy Warhol. It features a muted green color palette against a grayscale background, with vibrant green text.",
+  "visualKeywords": [
+    "pepe",
+    "pop art",
+    "green",
+    "grayscale",
+    "canvas",
+    "portrait",
+    "vibrant text"
+  ],
+  "textKeywords": [
+    "warhol",
+    "self",
+    "portrait"
+  ],
+  "keywords": [
+    "pepe",
+    "pop art",
+    "green",
+    "grayscale",
+    "canvas",
+    "portrait",
+    "vibrant text",
+    "warhol",
+    "self"
+  ],
+  "embeddingInput": "FKPEPEWARHOL (Fake Rares) - Series 10 Card 48\nArtist: Lord Jamie V. Shill\nSupply 67 Issued August 2022\nOn-card text: PEPE WARHOL SELF PORTRAIT\nVisual summary: The card features a stylized portrait of Pepe the Frog with a distinct Andy Warhol vibe, showcasing a combination of pop art aesthetics and digital art techniques. The color palette includes muted green for Pepe's skin, contrasted with a grayscale background, and vibrant green text. The texture resembles a canvas, giving it an authentic art gallery feel.\nMemetic references: Pepe the Frog with an Andy Warhol twist; Pop art influence; Self-portrait parody; References to art and meme culture",
+  "embeddingBlocks": [
+    {
+      "id": "FKPEPEWARHOL#text",
+      "label": "On-card text",
+      "text": "PEPE WARHOL SELF PORTRAIT",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FKPEPEWARHOL#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog with an Andy Warhol twist\nPop art influence\nSelf-portrait parody\nReferences to art and meme culture",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FKPEPEWARHOL#visual",
+      "label": "Visual summary",
+      "text": "The card features a stylized portrait of Pepe the Frog with a distinct Andy Warhol vibe, showcasing a combination of pop art aesthetics and digital art techniques. The color palette includes muted green for Pepe's skin, contrasted with a grayscale background, and vibrant green text. The texture resembles a canvas, giving it an authentic art gallery feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FKPEPEWARHOL#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE WARHOL SELF PORTRAIT\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a stylized portrait of Pepe the Frog with a distinct Andy Warhol vibe, showcasing a combination of pop art aesthetics and digital art techniques. The color palette includes muted green for Pepe's skin, contrasted with a grayscale background, and vibrant green text. The texture resembles a canvas, giving it an authentic art gallery feel.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog with an Andy Warhol twist\n- Pop art influence\n- Self-portrait parody\n- References to art and meme culture",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.628Z",
+  "sourceFactVersion": 1
+}

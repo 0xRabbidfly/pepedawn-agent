@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "asset": "BTCPAYSOFF",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 27,
+  "artist": "Mike Three",
+  "supply": 69,
+  "issuance": "February 2023",
+  "textOnCard": [
+    "FAKE, MARKET VALUE, ESTIMATED VALUE, BTC PAYS OFF, RARE ©, BTCPAYSOFF, 2023"
+  ],
+  "memeticReferences": [
+    "References to Basquiat's art style.",
+    "Pepe the Frog as a central figure.",
+    "Commentary on market value versus perceived value.",
+    "Crypto culture nod with \"BTC PAYS OFF.\""
+  ],
+  "visualSummary": "The card features a chaotic, abstract composition reminiscent of Basquiat's style, with a dominant orange and black color palette. A roughly drawn graph and crown suggest themes of value and royalty, while a sketched Pepe face adds a playful touch. The textures and rough lines give it an edgy, raw aesthetic.",
+  "visualSummaryShort": "The card showcases a chaotic, abstract design with a dominant orange and black color scheme. It features a sketched Pepe face, a crown, and a graph, all contributing to its edgy and raw aesthetic.",
+  "visualKeywords": [
+    "abstract",
+    "orange",
+    "black",
+    "crown",
+    "graph",
+    "pepe",
+    "chaotic",
+    "raw",
+    "edgy",
+    "textures"
+  ],
+  "textKeywords": [
+    "market",
+    "value",
+    "estimated",
+    "btc",
+    "pays",
+    "off",
+    "btcpaysoff",
+    "2023"
+  ],
+  "keywords": [
+    "abstract",
+    "orange",
+    "black",
+    "crown",
+    "graph",
+    "pepe",
+    "chaotic",
+    "raw",
+    "edgy",
+    "textures",
+    "market",
+    "value",
+    "estimated",
+    "btc",
+    "pays",
+    "off",
+    "btcpaysoff",
+    "2023"
+  ],
+  "embeddingInput": "BTCPAYSOFF (Fake Rares) - Series 13 Card 27\nArtist: Mike Three\nSupply 69 Issued February 2023\nOn-card text: FAKE, MARKET VALUE, ESTIMATED VALUE, BTC PAYS OFF, RARE ©, BTCPAYSOFF, 2023\nVisual summary: The card features a chaotic, abstract composition reminiscent of Basquiat's style, with a dominant orange and black color palette. A roughly drawn graph and crown suggest themes of value and royalty, while a sketched Pepe face adds a playful touch. The textures and rough lines give it an edgy, raw aesthetic.\nMemetic references: References to Basquiat's art style.; Pepe the Frog as a central figure.; Commentary on market value versus perceived value.; Crypto culture nod with \"BTC PAYS OFF.\"",
+  "embeddingBlocks": [
+    {
+      "id": "BTCPAYSOFF#text",
+      "label": "On-card text",
+      "text": "FAKE, MARKET VALUE, ESTIMATED VALUE, BTC PAYS OFF, RARE ©, BTCPAYSOFF, 2023",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "BTCPAYSOFF#memetic",
+      "label": "Memetic references",
+      "text": "References to Basquiat's art style.\nPepe the Frog as a central figure.\nCommentary on market value versus perceived value.\nCrypto culture nod with \"BTC PAYS OFF.\"",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BTCPAYSOFF#visual",
+      "label": "Visual summary",
+      "text": "The card features a chaotic, abstract composition reminiscent of Basquiat's style, with a dominant orange and black color palette. A roughly drawn graph and crown suggest themes of value and royalty, while a sketched Pepe face adds a playful touch. The textures and rough lines give it an edgy, raw aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BTCPAYSOFF#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE, MARKET VALUE, ESTIMATED VALUE, BTC PAYS OFF, RARE ©, BTCPAYSOFF, 2023\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a chaotic, abstract composition reminiscent of Basquiat's style, with a dominant orange and black color palette. A roughly drawn graph and crown suggest themes of value and royalty, while a sketched Pepe face adds a playful touch. The textures and rough lines give it an edgy, raw aesthetic.\n\n🧬 **MEMETIC DNA:**\n- References to Basquiat's art style.\n- Pepe the Frog as a central figure.\n- Commentary on market value versus perceived value.\n- Crypto culture nod with \"BTC PAYS OFF.\"",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.334Z",
+  "sourceFactVersion": 1
+}

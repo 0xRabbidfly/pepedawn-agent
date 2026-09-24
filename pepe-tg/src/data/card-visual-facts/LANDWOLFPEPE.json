@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "asset": "LANDWOLFPEPE",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 9,
+  "artist": "CryptoChainer",
+  "supply": 111,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "LANDWOLFPEPE",
+    "BASIC IS, AS BASIC DOES",
+    "Can’t get much more plain than this now can ya?",
+    "THIS IS A CARD 1",
+    "111"
+  ],
+  "memeticReferences": [
+    "References the \"Pepe the Frog\" meme, with a twist of a wolf-like appearance.",
+    "Reflects the \"basic\" meme culture, humorously pointing out simplicity.",
+    "The use of red sunglasses might nod to the \"deal with it\" meme vibe."
+  ],
+  "visualSummary": "The card features a cartoonish figure with a furry, brown texture, wearing red sunglasses. The character's expression is simplistic and comical, set against a plain white background. The overall aesthetic is minimalistic with a focus on bold lines and flat colors.",
+  "visualSummaryShort": "The card showcases a cartoonish figure with a furry brown texture and red sunglasses, exuding a simplistic and comical expression. It features a minimalistic aesthetic with bold lines against a plain white background.",
+  "visualKeywords": [
+    "cartoon",
+    "brown",
+    "sunglasses",
+    "minimalistic",
+    "bold lines",
+    "flat colors",
+    "white background"
+  ],
+  "textKeywords": [
+    "landwolfpepe",
+    "basic",
+    "does",
+    "can",
+    "get",
+    "plain",
+    "than",
+    "now",
+    "111"
+  ],
+  "keywords": [
+    "cartoon",
+    "brown",
+    "sunglasses",
+    "minimalistic",
+    "bold lines",
+    "flat colors",
+    "white background",
+    "landwolfpepe",
+    "basic",
+    "does",
+    "can",
+    "get",
+    "plain",
+    "than",
+    "now",
+    "111"
+  ],
+  "embeddingInput": "LANDWOLFPEPE (Fake Rares) - Series 2 Card 9\nArtist: CryptoChainer\nSupply 111 Issued October 2021\nOn-card text: LANDWOLFPEPE | BASIC IS, AS BASIC DOES | Can’t get much more plain than this now can ya? | THIS IS A CARD 1 | 111\nVisual summary: The card features a cartoonish figure with a furry, brown texture, wearing red sunglasses. The character's expression is simplistic and comical, set against a plain white background. The overall aesthetic is minimalistic with a focus on bold lines and flat colors.\nMemetic references: References the \"Pepe the Frog\" meme, with a twist of a wolf-like appearance.; Reflects the \"basic\" meme culture, humorously pointing out simplicity.; The use of red sunglasses might nod to the \"deal with it\" meme vibe.",
+  "embeddingBlocks": [
+    {
+      "id": "LANDWOLFPEPE#text",
+      "label": "On-card text",
+      "text": "LANDWOLFPEPE | BASIC IS, AS BASIC DOES | Can’t get much more plain than this now can ya? | THIS IS A CARD 1 | 111",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "LANDWOLFPEPE#memetic",
+      "label": "Memetic references",
+      "text": "References the \"Pepe the Frog\" meme, with a twist of a wolf-like appearance.\nReflects the \"basic\" meme culture, humorously pointing out simplicity.\nThe use of red sunglasses might nod to the \"deal with it\" meme vibe.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LANDWOLFPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a cartoonish figure with a furry, brown texture, wearing red sunglasses. The character's expression is simplistic and comical, set against a plain white background. The overall aesthetic is minimalistic with a focus on bold lines and flat colors.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LANDWOLFPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nLANDWOLFPEPE  \nBASIC IS, AS BASIC DOES  \nCan’t get much more plain than this now can ya?  \nTHIS IS A CARD 1/111\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a cartoonish figure with a furry, brown texture, wearing red sunglasses. The character's expression is simplistic and comical, set against a plain white background. The overall aesthetic is minimalistic with a focus on bold lines and flat colors.\n\n🧬 **MEMETIC DNA:**\n- References the \"Pepe the Frog\" meme, with a twist of a wolf-like appearance.\n- Reflects the \"basic\" meme culture, humorously pointing out simplicity.\n- The use of red sunglasses might nod to the \"deal with it\" meme vibe.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.731Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "asset": "HYPERBENPEPE",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 46,
+  "artist": "GRNQRTR",
+  "supply": 36,
+  "issuance": "January 2022",
+  "textOnCard": [
+    "EXTRA FAKE RARE RESERVE NOTE, BUY BITCOIN, THIS NOTE IS ABSOLUTELY WORTHLESS, Benjamin Tape Faklin, 100 TRILLION DOLLARS."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog blended with Benjamin Franklin.",
+    "\"BUY BITCOIN\" references crypto culture and investment advice memes.",
+    "The phrase \"THIS NOTE IS ABSOLUTELY WORTHLESS\" mocks fiat currency's perceived instability.",
+    "\"100 TRILLION DOLLARS\" alludes to hyperinflation jokes."
+  ],
+  "visualSummary": "This card features a dollar bill design with a Pepe-faced Benjamin Franklin in the center. The palette includes greens, reds, and grayscale, enhancing the satirical money theme. \"BUY BITCOIN\" is stamped in red multiple times, adding a playful, rebellious vibe.",
+  "visualSummaryShort": "The card showcases a dollar bill design with a Pepe-faced Benjamin Franklin at its center, surrounded by a palette of greens, reds, and grayscale. The repeated phrase 'BUY BITCOIN' in red adds a playful and rebellious touch.",
+  "visualKeywords": [
+    "dollar bill",
+    "pepe",
+    "green",
+    "red",
+    "grayscale",
+    "satirical",
+    "money",
+    "playful",
+    "rebellious"
+  ],
+  "textKeywords": [
+    "extra",
+    "reserve",
+    "note",
+    "buy",
+    "bitcoin",
+    "absolutely",
+    "worthless",
+    "benjamin",
+    "tape",
+    "faklin",
+    "100",
+    "trillion",
+    "dollars"
+  ],
+  "keywords": [
+    "dollar bill",
+    "pepe",
+    "green",
+    "red",
+    "grayscale",
+    "satirical",
+    "money",
+    "playful",
+    "rebellious",
+    "extra",
+    "reserve",
+    "note",
+    "buy",
+    "bitcoin",
+    "absolutely",
+    "worthless",
+    "benjamin",
+    "tape",
+    "faklin",
+    "100",
+    "trillion",
+    "dollars"
+  ],
+  "embeddingInput": "HYPERBENPEPE (Fake Rares) - Series 10 Card 46\nArtist: GRNQRTR\nSupply 36 Issued January 2022\nOn-card text: EXTRA FAKE RARE RESERVE NOTE, BUY BITCOIN, THIS NOTE IS ABSOLUTELY WORTHLESS, Benjamin Tape Faklin, 100 TRILLION DOLLARS.\nVisual summary: This card features a dollar bill design with a Pepe-faced Benjamin Franklin in the center. The palette includes greens, reds, and grayscale, enhancing the satirical money theme. \"BUY BITCOIN\" is stamped in red multiple times, adding a playful, rebellious vibe.\nMemetic references: Pepe the Frog blended with Benjamin Franklin.; \"BUY BITCOIN\" references crypto culture and investment advice memes.; The phrase \"THIS NOTE IS ABSOLUTELY WORTHLESS\" mocks fiat currency's perceived instability.; \"100 TRILLION DOLLARS\" alludes to hyperinflation jokes.",
+  "embeddingBlocks": [
+    {
+      "id": "HYPERBENPEPE#text",
+      "label": "On-card text",
+      "text": "EXTRA FAKE RARE RESERVE NOTE, BUY BITCOIN, THIS NOTE IS ABSOLUTELY WORTHLESS, Benjamin Tape Faklin, 100 TRILLION DOLLARS.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "HYPERBENPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog blended with Benjamin Franklin.\n\"BUY BITCOIN\" references crypto culture and investment advice memes.\nThe phrase \"THIS NOTE IS ABSOLUTELY WORTHLESS\" mocks fiat currency's perceived instability.\n\"100 TRILLION DOLLARS\" alludes to hyperinflation jokes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "HYPERBENPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a dollar bill design with a Pepe-faced Benjamin Franklin in the center. The palette includes greens, reds, and grayscale, enhancing the satirical money theme. \"BUY BITCOIN\" is stamped in red multiple times, adding a playful, rebellious vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "HYPERBENPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nEXTRA FAKE RARE RESERVE NOTE, BUY BITCOIN, THIS NOTE IS ABSOLUTELY WORTHLESS, Benjamin Tape Faklin, 100 TRILLION DOLLARS.\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a dollar bill design with a Pepe-faced Benjamin Franklin in the center. The palette includes greens, reds, and grayscale, enhancing the satirical money theme. \"BUY BITCOIN\" is stamped in red multiple times, adding a playful, rebellious vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog blended with Benjamin Franklin.\n- \"BUY BITCOIN\" references crypto culture and investment advice memes.\n- The phrase \"THIS NOTE IS ABSOLUTELY WORTHLESS\" mocks fiat currency's perceived instability.\n- \"100 TRILLION DOLLARS\" alludes to hyperinflation jokes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.690Z",
+  "sourceFactVersion": 1
+}

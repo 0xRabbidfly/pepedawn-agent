@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "asset": "FEELSGM",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 38,
+  "artist": "Marcus Connor",
+  "supply": 100,
+  "issuance": "May 2022",
+  "textOnCard": [
+    "FEELS GOOD MORNING"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog vibes.",
+    "\"Feels Good Man\" reference, but with a morning twist.",
+    "Playful nod to the concept of \"gm\" (good morning) in crypto culture."
+  ],
+  "visualSummary": "This card features a cartoonish Pepe the Frog standing on a large lily pad, holding a bouquet of flowers. The backdrop is a serene sunrise over a lake, with pink and purple hues dominating the sky and water, creating a tranquil and whimsical atmosphere. The art style is simplistic and playful, with bold outlines and a vibrant color palette.",
+  "visualSummaryShort": "The card depicts a cartoonish Pepe the Frog on a lily pad, holding flowers against a serene sunrise backdrop. The scene is whimsical with vibrant pink and purple hues, creating a tranquil mood.",
+  "visualKeywords": [
+    "pepe the frog",
+    "lily pad",
+    "flowers",
+    "sunrise",
+    "pink hues",
+    "purple hues",
+    "whimsical",
+    "tranquil",
+    "cartoonish",
+    "vibrant colors"
+  ],
+  "textKeywords": [
+    "feels",
+    "good",
+    "morning"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "lily pad",
+    "flowers",
+    "sunrise",
+    "pink hues",
+    "purple hues",
+    "whimsical",
+    "tranquil",
+    "cartoonish",
+    "vibrant colors",
+    "feels",
+    "good",
+    "morning"
+  ],
+  "embeddingInput": "FEELSGM (Fake Rares) - Series 10 Card 38\nArtist: Marcus Connor\nSupply 100 Issued May 2022\nOn-card text: FEELS GOOD MORNING\nVisual summary: This card features a cartoonish Pepe the Frog standing on a large lily pad, holding a bouquet of flowers. The backdrop is a serene sunrise over a lake, with pink and purple hues dominating the sky and water, creating a tranquil and whimsical atmosphere. The art style is simplistic and playful, with bold outlines and a vibrant color palette.\nMemetic references: Classic Pepe the Frog vibes.; \"Feels Good Man\" reference, but with a morning twist.; Playful nod to the concept of \"gm\" (good morning) in crypto culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FEELSGM#text",
+      "label": "On-card text",
+      "text": "FEELS GOOD MORNING",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FEELSGM#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog vibes.\n\"Feels Good Man\" reference, but with a morning twist.\nPlayful nod to the concept of \"gm\" (good morning) in crypto culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FEELSGM#visual",
+      "label": "Visual summary",
+      "text": "This card features a cartoonish Pepe the Frog standing on a large lily pad, holding a bouquet of flowers. The backdrop is a serene sunrise over a lake, with pink and purple hues dominating the sky and water, creating a tranquil and whimsical atmosphere. The art style is simplistic and playful, with bold outlines and a vibrant color palette.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FEELSGM#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFEELS GOOD MORNING\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a cartoonish Pepe the Frog standing on a large lily pad, holding a bouquet of flowers. The backdrop is a serene sunrise over a lake, with pink and purple hues dominating the sky and water, creating a tranquil and whimsical atmosphere. The art style is simplistic and playful, with bold outlines and a vibrant color palette.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog vibes.\n- \"Feels Good Man\" reference, but with a morning twist.\n- Playful nod to the concept of \"gm\" (good morning) in crypto culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.611Z",
+  "sourceFactVersion": 1
+}

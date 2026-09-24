@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "asset": "FAKERAREWARS",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 11,
+  "artist": "Megatron",
+  "supply": 55,
+  "issuance": "May 2022",
+  "textOnCard": [
+    "FAKERARE WARS"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure, a staple in meme culture.",
+    "References to iconic sci-fi and space themes, perhaps nodding to Star Wars.",
+    "Pixel art style reminiscent of retro video games, a beloved aesthetic in NFT circles."
+  ],
+  "visualSummary": "The card features a pixel art style with a dark, moody color palette dominated by blues and purples. Central to the composition is a muscular, anthropomorphic Pepe figure, evoking a sense of power and intensity. Surrounding Pepe are various characters and elements, including a spaceman and a robot, contributing to a sci-fi, cosmic battle theme.",
+  "visualSummaryShort": "The card showcases a muscular, anthropomorphic Pepe figure in a dark, moody pixel art style. The sci-fi theme is enhanced by the presence of a spaceman and a robot, set against a blue and purple color palette.",
+  "visualKeywords": [
+    "pixel art",
+    "pepe",
+    "muscular",
+    "spaceman",
+    "robot",
+    "dark palette",
+    "cosmic",
+    "battle",
+    "blue",
+    "purple"
+  ],
+  "textKeywords": [
+    "fakerare",
+    "wars"
+  ],
+  "keywords": [
+    "pixel art",
+    "pepe",
+    "muscular",
+    "spaceman",
+    "robot",
+    "dark palette",
+    "cosmic",
+    "battle",
+    "blue",
+    "purple",
+    "fakerare",
+    "wars"
+  ],
+  "embeddingInput": "FAKERAREWARS (Fake Rares) - Series 9 Card 11\nArtist: Megatron\nSupply 55 Issued May 2022\nOn-card text: FAKERARE WARS\nVisual summary: The card features a pixel art style with a dark, moody color palette dominated by blues and purples. Central to the composition is a muscular, anthropomorphic Pepe figure, evoking a sense of power and intensity. Surrounding Pepe are various characters and elements, including a spaceman and a robot, contributing to a sci-fi, cosmic battle theme.\nMemetic references: Pepe the Frog as a central figure, a staple in meme culture.; References to iconic sci-fi and space themes, perhaps nodding to Star Wars.; Pixel art style reminiscent of retro video games, a beloved aesthetic in NFT circles.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKERAREWARS#text",
+      "label": "On-card text",
+      "text": "FAKERARE WARS",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKERAREWARS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure, a staple in meme culture.\nReferences to iconic sci-fi and space themes, perhaps nodding to Star Wars.\nPixel art style reminiscent of retro video games, a beloved aesthetic in NFT circles.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKERAREWARS#visual",
+      "label": "Visual summary",
+      "text": "The card features a pixel art style with a dark, moody color palette dominated by blues and purples. Central to the composition is a muscular, anthropomorphic Pepe figure, evoking a sense of power and intensity. Surrounding Pepe are various characters and elements, including a spaceman and a robot, contributing to a sci-fi, cosmic battle theme.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKERAREWARS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKERARE WARS\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a pixel art style with a dark, moody color palette dominated by blues and purples. Central to the composition is a muscular, anthropomorphic Pepe figure, evoking a sense of power and intensity. Surrounding Pepe are various characters and elements, including a spaceman and a robot, contributing to a sci-fi, cosmic battle theme.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure, a staple in meme culture.\n- References to iconic sci-fi and space themes, perhaps nodding to Star Wars.\n- Pixel art style reminiscent of retro video games, a beloved aesthetic in NFT circles.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.564Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "FAKALIFE",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 43,
+  "artist": "GrantYun",
+  "supply": 100,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "FAKALIFE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple of internet culture and meme history.",
+    "Surreal, minimalistic art reminiscent of classic paintings.",
+    "The word \"FAKALIFE\" with a strikethrough suggests a playful critique of superficiality."
+  ],
+  "visualSummary": "The card features a relaxed Pepe the Frog lying on a black and white checkered floor, reminiscent of an M.C. Escher painting. The background shows a minimalist landscape with abstract trees and a distant sea, framed by architectural arches. The color palette is muted and pastel, giving a surreal and dreamy vibe.",
+  "visualSummaryShort": "The card depicts a relaxed Pepe the Frog on a black and white checkered floor, surrounded by a minimalist landscape. The muted pastel colors and abstract elements create a surreal and dreamy atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "checkered floor",
+    "minimalist landscape",
+    "abstract trees",
+    "distant sea",
+    "architectural arches",
+    "muted colors",
+    "pastel palette",
+    "surreal",
+    "dreamy"
+  ],
+  "textKeywords": [
+    "fakalife"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "checkered floor",
+    "minimalist landscape",
+    "abstract trees",
+    "distant sea",
+    "architectural arches",
+    "muted colors",
+    "pastel palette",
+    "surreal",
+    "dreamy",
+    "fakalife"
+  ],
+  "embeddingInput": "FAKALIFE (Fake Rares) - Series 7 Card 43\nArtist: GrantYun\nSupply 100 Issued March 2022\nOn-card text: FAKALIFE\nVisual summary: The card features a relaxed Pepe the Frog lying on a black and white checkered floor, reminiscent of an M.C. Escher painting. The background shows a minimalist landscape with abstract trees and a distant sea, framed by architectural arches. The color palette is muted and pastel, giving a surreal and dreamy vibe.\nMemetic references: Pepe the Frog, a staple of internet culture and meme history.; Surreal, minimalistic art reminiscent of classic paintings.; The word \"FAKALIFE\" with a strikethrough suggests a playful critique of superficiality.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKALIFE#text",
+      "label": "On-card text",
+      "text": "FAKALIFE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKALIFE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple of internet culture and meme history.\nSurreal, minimalistic art reminiscent of classic paintings.\nThe word \"FAKALIFE\" with a strikethrough suggests a playful critique of superficiality.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKALIFE#visual",
+      "label": "Visual summary",
+      "text": "The card features a relaxed Pepe the Frog lying on a black and white checkered floor, reminiscent of an M.C. Escher painting. The background shows a minimalist landscape with abstract trees and a distant sea, framed by architectural arches. The color palette is muted and pastel, giving a surreal and dreamy vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKALIFE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKALIFE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a relaxed Pepe the Frog lying on a black and white checkered floor, reminiscent of an M.C. Escher painting. The background shows a minimalist landscape with abstract trees and a distant sea, framed by architectural arches. The color palette is muted and pastel, giving a surreal and dreamy vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple of internet culture and meme history.\n- Surreal, minimalistic art reminiscent of classic paintings.\n- The word \"FAKALIFE\" with a strikethrough suggests a playful critique of superficiality.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.436Z",
+  "sourceFactVersion": 1
+}

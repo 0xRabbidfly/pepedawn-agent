@@ -1,0 +1,114 @@
+{
+  "version": 1,
+  "asset": "TWOLIVEPEPE",
+  "collection": "Fake Rares",
+  "series": 0,
+  "cardNumber": 8,
+  "artist": "Rare Scrilla",
+  "supply": 112,
+  "issuance": "October 2016",
+  "textOnCard": [
+    "2 LIVE PEPE",
+    "#1 Smash",
+    "Toad So Horny",
+    "Mood=HORNY",
+    "Ban(ne)d In The U S A",
+    "Ultimate Froggy Style",
+    "PULL OUT MY BLACKBOOK 4 A FREAK 2 CALL"
+  ],
+  "memeticReferences": [
+    "References the iconic 2 Live Crew album \"As Nasty As They Wanna Be,\" known for its controversy.",
+    "Pepe the Frog, a staple of meme culture.",
+    "Plays on the phrase \"Banned in the USA,\" hinting at censorship and cultural rebellion.",
+    "Viagra and horniness, hinting at adult humor and meme degeneracy."
+  ],
+  "visualSummary": "The card features a group of women posing on a beach, with two Pepe characters humorously inserted among them. The color palette is vibrant, dominated by skin tones, blues, and greens, giving it a tropical vibe. The style is a playful blend of photorealism and cartoonish elements, using bold outlines and flat colors for the Pepe figures.",
+  "visualSummaryShort": "The card showcases a lively beach scene with women and cartoonish Pepe characters. The vibrant color palette enhances the tropical atmosphere, blending photorealism with playful elements.",
+  "visualKeywords": [
+    "beach",
+    "women",
+    "pepe",
+    "tropical",
+    "vibrant colors",
+    "photorealism",
+    "cartoonish",
+    "blue",
+    "green",
+    "playful"
+  ],
+  "textKeywords": [
+    "live",
+    "smash",
+    "toad",
+    "horny",
+    "mood",
+    "ban",
+    "ultimate",
+    "froggy",
+    "style",
+    "pull",
+    "out",
+    "blackbook",
+    "freak",
+    "call"
+  ],
+  "keywords": [
+    "beach",
+    "women",
+    "pepe",
+    "tropical",
+    "vibrant colors",
+    "photorealism",
+    "cartoonish",
+    "blue",
+    "green",
+    "playful",
+    "live",
+    "smash",
+    "toad",
+    "horny",
+    "mood",
+    "ban",
+    "ultimate",
+    "froggy",
+    "style",
+    "pull",
+    "out",
+    "blackbook",
+    "freak",
+    "call"
+  ],
+  "embeddingInput": "TWOLIVEPEPE (Fake Rares) - Series 0 Card 8\nArtist: Rare Scrilla\nSupply 112 Issued October 2016\nOn-card text: 2 LIVE PEPE | #1 Smash | Toad So Horny | Mood=HORNY | Ban(ne)d In The U S A | Ultimate Froggy Style | PULL OUT MY BLACKBOOK 4 A FREAK 2 CALL\nVisual summary: The card features a group of women posing on a beach, with two Pepe characters humorously inserted among them. The color palette is vibrant, dominated by skin tones, blues, and greens, giving it a tropical vibe. The style is a playful blend of photorealism and cartoonish elements, using bold outlines and flat colors for the Pepe figures.\nMemetic references: References the iconic 2 Live Crew album \"As Nasty As They Wanna Be,\" known for its controversy.; Pepe the Frog, a staple of meme culture.; Plays on the phrase \"Banned in the USA,\" hinting at censorship and cultural rebellion.; Viagra and horniness, hinting at adult humor and meme degeneracy.",
+  "embeddingBlocks": [
+    {
+      "id": "TWOLIVEPEPE#text",
+      "label": "On-card text",
+      "text": "2 LIVE PEPE | #1 Smash | Toad So Horny | Mood=HORNY | Ban(ne)d In The U S A | Ultimate Froggy Style | PULL OUT MY BLACKBOOK 4 A FREAK 2 CALL",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "TWOLIVEPEPE#memetic",
+      "label": "Memetic references",
+      "text": "References the iconic 2 Live Crew album \"As Nasty As They Wanna Be,\" known for its controversy.\nPepe the Frog, a staple of meme culture.\nPlays on the phrase \"Banned in the USA,\" hinting at censorship and cultural rebellion.\nViagra and horniness, hinting at adult humor and meme degeneracy.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "TWOLIVEPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a group of women posing on a beach, with two Pepe characters humorously inserted among them. The color palette is vibrant, dominated by skin tones, blues, and greens, giving it a tropical vibe. The style is a playful blend of photorealism and cartoonish elements, using bold outlines and flat colors for the Pepe figures.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "TWOLIVEPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n2 LIVE PEPE  \n#1 Smash  \nToad So Horny  \nMood=HORNY  \n-Ban(ne)d In The U S A  \n-Ultimate Froggy Style  \nPULL OUT MY BLACKBOOK 4 A FREAK 2 CALL\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a group of women posing on a beach, with two Pepe characters humorously inserted among them. The color palette is vibrant, dominated by skin tones, blues, and greens, giving it a tropical vibe. The style is a playful blend of photorealism and cartoonish elements, using bold outlines and flat colors for the Pepe figures.\n\n🧬 **MEMETIC DNA:**\n- References the iconic 2 Live Crew album \"As Nasty As They Wanna Be,\" known for its controversy.\n- Pepe the Frog, a staple of meme culture.\n- Plays on the phrase \"Banned in the USA,\" hinting at censorship and cultural rebellion.\n- Viagra and horniness, hinting at adult humor and meme degeneracy.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.168Z",
+  "sourceFactVersion": 1
+}

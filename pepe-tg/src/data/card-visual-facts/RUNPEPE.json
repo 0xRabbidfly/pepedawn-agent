@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "RUNPEPE",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 26,
+  "artist": "RubenBigQ",
+  "supply": 100,
+  "issuance": "August 2022",
+  "textOnCard": [
+    "RUNPEPE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a classic internet meme character.",
+    "Psychedelic and hippie elements, reminiscent of 60s counterculture.",
+    "References to vibrant NFT art styles."
+  ],
+  "visualSummary": "The card features a vibrant depiction of Pepe the Frog energetically running toward the viewer, set against a psychedelic landscape with a cheerful sun and a pastel sky. Pepe is adorned with colorful flowers and wearing purple shorts, adding a playful and whimsical touch. The color palette is bold with greens, purples, and pinks dominating, enhancing the card’s lively and dynamic feel.",
+  "visualSummaryShort": "The card showcases Pepe the Frog running energetically in a vibrant, psychedelic landscape. The scene is filled with bold colors and whimsical elements, creating a lively atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "running",
+    "psychedelic",
+    "sun",
+    "pastel sky",
+    "flowers",
+    "purple shorts",
+    "bold colors",
+    "whimsical",
+    "dynamic"
+  ],
+  "textKeywords": [
+    "runpepe"
+  ],
+  "keywords": [
+    "pepe",
+    "running",
+    "psychedelic",
+    "sun",
+    "pastel sky",
+    "flowers",
+    "purple shorts",
+    "bold colors",
+    "whimsical",
+    "dynamic",
+    "runpepe"
+  ],
+  "embeddingInput": "RUNPEPE (Fake Rares) - Series 9 Card 26\nArtist: RubenBigQ\nSupply 100 Issued August 2022\nOn-card text: RUNPEPE\nVisual summary: The card features a vibrant depiction of Pepe the Frog energetically running toward the viewer, set against a psychedelic landscape with a cheerful sun and a pastel sky. Pepe is adorned with colorful flowers and wearing purple shorts, adding a playful and whimsical touch. The color palette is bold with greens, purples, and pinks dominating, enhancing the card’s lively and dynamic feel.\nMemetic references: Pepe the Frog, a classic internet meme character.; Psychedelic and hippie elements, reminiscent of 60s counterculture.; References to vibrant NFT art styles.",
+  "embeddingBlocks": [
+    {
+      "id": "RUNPEPE#text",
+      "label": "On-card text",
+      "text": "RUNPEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "RUNPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a classic internet meme character.\nPsychedelic and hippie elements, reminiscent of 60s counterculture.\nReferences to vibrant NFT art styles.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RUNPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant depiction of Pepe the Frog energetically running toward the viewer, set against a psychedelic landscape with a cheerful sun and a pastel sky. Pepe is adorned with colorful flowers and wearing purple shorts, adding a playful and whimsical touch. The color palette is bold with greens, purples, and pinks dominating, enhancing the card’s lively and dynamic feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RUNPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nRUNPEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant depiction of Pepe the Frog energetically running toward the viewer, set against a psychedelic landscape with a cheerful sun and a pastel sky. Pepe is adorned with colorful flowers and wearing purple shorts, adding a playful and whimsical touch. The color palette is bold with greens, purples, and pinks dominating, enhancing the card’s lively and dynamic feel.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a classic internet meme character.\n- Psychedelic and hippie elements, reminiscent of 60s counterculture.\n- References to vibrant NFT art styles.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.092Z",
+  "sourceFactVersion": 1
+}

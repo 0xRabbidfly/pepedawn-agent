@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "SIGNINGPEPE",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 45,
+  "artist": "Memeticx",
+  "supply": 55,
+  "issuance": "December 2024",
+  "textOnCard": [
+    "SIGNINGPEPE"
+  ],
+  "memeticReferences": [
+    "References to the iconic Pepe the Frog meme with green hands.",
+    "Incorporates ASL (American Sign Language) as a unique twist.",
+    "Crypto culture nod with the use of \"FAKE\" and \"DANK\" highlighting meme economy."
+  ],
+  "visualSummary": "The card is divided into a grid of hand-drawn hands, each forming a letter in sign language. The color palette is vibrant with each section featuring a different background color, creating a patchwork effect. The artistic style is cartoonish, with bold outlines and simple shading emphasizing the hands' positions.",
+  "visualSummaryShort": "The card features a grid of colorful, hand-drawn hands forming letters in sign language. The cartoonish style and bold outlines create a vibrant, patchwork effect.",
+  "visualKeywords": [
+    "hands",
+    "sign language",
+    "colorful",
+    "cartoonish",
+    "bold outlines",
+    "patchwork",
+    "vibrant",
+    "artistic style"
+  ],
+  "textKeywords": [
+    "signingpepe"
+  ],
+  "keywords": [
+    "hands",
+    "sign language",
+    "colorful",
+    "cartoonish",
+    "bold outlines",
+    "patchwork",
+    "vibrant",
+    "artistic style",
+    "signingpepe"
+  ],
+  "embeddingInput": "SIGNINGPEPE (Fake Rares) - Series 17 Card 45\nArtist: Memeticx\nSupply 55 Issued December 2024\nOn-card text: SIGNINGPEPE\nVisual summary: The card is divided into a grid of hand-drawn hands, each forming a letter in sign language. The color palette is vibrant with each section featuring a different background color, creating a patchwork effect. The artistic style is cartoonish, with bold outlines and simple shading emphasizing the hands' positions.\nMemetic references: References to the iconic Pepe the Frog meme with green hands.; Incorporates ASL (American Sign Language) as a unique twist.; Crypto culture nod with the use of \"FAKE\" and \"DANK\" highlighting meme economy.",
+  "embeddingBlocks": [
+    {
+      "id": "SIGNINGPEPE#text",
+      "label": "On-card text",
+      "text": "SIGNINGPEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "SIGNINGPEPE#memetic",
+      "label": "Memetic references",
+      "text": "References to the iconic Pepe the Frog meme with green hands.\nIncorporates ASL (American Sign Language) as a unique twist.\nCrypto culture nod with the use of \"FAKE\" and \"DANK\" highlighting meme economy.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SIGNINGPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card is divided into a grid of hand-drawn hands, each forming a letter in sign language. The color palette is vibrant with each section featuring a different background color, creating a patchwork effect. The artistic style is cartoonish, with bold outlines and simple shading emphasizing the hands' positions.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SIGNINGPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nSIGNINGPEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card is divided into a grid of hand-drawn hands, each forming a letter in sign language. The color palette is vibrant with each section featuring a different background color, creating a patchwork effect. The artistic style is cartoonish, with bold outlines and simple shading emphasizing the hands' positions.\n\n🧬 **MEMETIC DNA:**\n- References to the iconic Pepe the Frog meme with green hands.\n- Incorporates ASL (American Sign Language) as a unique twist.\n- Crypto culture nod with the use of \"FAKE\" and \"DANK\" highlighting meme economy.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.107Z",
+  "sourceFactVersion": 1
+}

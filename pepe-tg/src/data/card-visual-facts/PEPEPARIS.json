@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PEPEPARIS",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 1,
+  "artist": "ditacrypto",
+  "supply": 41,
+  "issuance": "September 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog swimming represents classic meme culture.",
+    "The Eiffel Tower symbolizes Paris, blending global landmarks with meme aesthetics.",
+    "The French flag theme ties Pepe into a cultural context, suggesting a playful take on nationalism."
+  ],
+  "visualSummary": "The card features a minimalistic design with the French flag colors: blue, white, and red, arranged vertically. A small, pixelated Pepe the Frog is swimming in the blue section, and the iconic Eiffel Tower is positioned in the red section. The artistic style is simple and clean, utilizing a bold color palette and playful elements.",
+  "visualSummaryShort": "The card showcases a minimalistic design with the colors of the French flag. It features a pixelated Pepe the Frog swimming and the Eiffel Tower, creating a playful atmosphere.",
+  "visualKeywords": [
+    "french flag",
+    "blue",
+    "white",
+    "red",
+    "pepe the frog",
+    "eiffel tower",
+    "minimalistic",
+    "pixelated",
+    "playful",
+    "bold colors"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "french flag",
+    "blue",
+    "white",
+    "red",
+    "pepe the frog",
+    "eiffel tower",
+    "minimalistic",
+    "pixelated",
+    "playful",
+    "bold colors"
+  ],
+  "embeddingInput": "PEPEPARIS (Fake Rares) - Series 16 Card 1\nArtist: ditacrypto\nSupply 41 Issued September 2023\nOn-card text: none detected\nVisual summary: The card features a minimalistic design with the French flag colors: blue, white, and red, arranged vertically. A small, pixelated Pepe the Frog is swimming in the blue section, and the iconic Eiffel Tower is positioned in the red section. The artistic style is simple and clean, utilizing a bold color palette and playful elements.\nMemetic references: Pepe the Frog swimming represents classic meme culture.; The Eiffel Tower symbolizes Paris, blending global landmarks with meme aesthetics.; The French flag theme ties Pepe into a cultural context, suggesting a playful take on nationalism.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEPARIS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog swimming represents classic meme culture.\nThe Eiffel Tower symbolizes Paris, blending global landmarks with meme aesthetics.\nThe French flag theme ties Pepe into a cultural context, suggesting a playful take on nationalism.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEPARIS#visual",
+      "label": "Visual summary",
+      "text": "The card features a minimalistic design with the French flag colors: blue, white, and red, arranged vertically. A small, pixelated Pepe the Frog is swimming in the blue section, and the iconic Eiffel Tower is positioned in the red section. The artistic style is simple and clean, utilizing a bold color palette and playful elements.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEPARIS#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a minimalistic design with the French flag colors: blue, white, and red, arranged vertically. A small, pixelated Pepe the Frog is swimming in the blue section, and the iconic Eiffel Tower is positioned in the red section. The artistic style is simple and clean, utilizing a bold color palette and playful elements.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog swimming represents classic meme culture.\n- The Eiffel Tower symbolizes Paris, blending global landmarks with meme aesthetics.\n- The French flag theme ties Pepe into a cultural context, suggesting a playful take on nationalism.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.946Z",
+  "sourceFactVersion": 1
+}

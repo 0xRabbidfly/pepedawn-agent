@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "asset": "PEPEVOYEUR",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 7,
+  "artist": "ZETRA",
+  "supply": 69,
+  "issuance": "November 2022",
+  "textOnCard": [
+    "PEPEVOYEUR"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference with the green eye.",
+    "Voyeuristic theme, possibly hinting at the sneaky nature of crypto surveillance.",
+    "Minimalist art style reminiscent of early internet memes."
+  ],
+  "visualSummary": "The card features a bold, minimalist design with a single large eye in the center. The eye is green with a black pupil, set on a bright magenta background, giving it a striking contrast. The simplicity of the composition draws immediate attention to the eye, creating an intense focal point.",
+  "visualSummaryShort": "The card showcases a large green eye against a bright magenta background, creating a striking visual contrast. Its minimalist design emphasizes the eye as the central focal point.",
+  "visualKeywords": [
+    "eye",
+    "green",
+    "magenta",
+    "minimalist",
+    "bold",
+    "contrast"
+  ],
+  "textKeywords": [
+    "pepevoyeur"
+  ],
+  "keywords": [
+    "eye",
+    "green",
+    "magenta",
+    "minimalist",
+    "bold",
+    "contrast",
+    "pepevoyeur"
+  ],
+  "embeddingInput": "PEPEVOYEUR (Fake Rares) - Series 12 Card 7\nArtist: ZETRA\nSupply 69 Issued November 2022\nOn-card text: PEPEVOYEUR\nVisual summary: The card features a bold, minimalist design with a single large eye in the center. The eye is green with a black pupil, set on a bright magenta background, giving it a striking contrast. The simplicity of the composition draws immediate attention to the eye, creating an intense focal point.\nMemetic references: Pepe the Frog reference with the green eye.; Voyeuristic theme, possibly hinting at the sneaky nature of crypto surveillance.; Minimalist art style reminiscent of early internet memes.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEVOYEUR#text",
+      "label": "On-card text",
+      "text": "PEPEVOYEUR",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEVOYEUR#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference with the green eye.\nVoyeuristic theme, possibly hinting at the sneaky nature of crypto surveillance.\nMinimalist art style reminiscent of early internet memes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEVOYEUR#visual",
+      "label": "Visual summary",
+      "text": "The card features a bold, minimalist design with a single large eye in the center. The eye is green with a black pupil, set on a bright magenta background, giving it a striking contrast. The simplicity of the composition draws immediate attention to the eye, creating an intense focal point.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEVOYEUR#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPEVOYEUR\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a bold, minimalist design with a single large eye in the center. The eye is green with a black pupil, set on a bright magenta background, giving it a striking contrast. The simplicity of the composition draws immediate attention to the eye, creating an intense focal point.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference with the green eye.\n- Voyeuristic theme, possibly hinting at the sneaky nature of crypto surveillance.\n- Minimalist art style reminiscent of early internet memes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.009Z",
+  "sourceFactVersion": 1
+}

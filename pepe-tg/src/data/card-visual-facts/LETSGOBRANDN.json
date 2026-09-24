@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "asset": "LETSGOBRANDN",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 6,
+  "artist": "CryptoChainer",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "“LETS GO BRANDON!”",
+    "LET’S GO BRANDON! clap clap, clap clap clap",
+    "Sir, that is not what they’re saying!"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog imagery.",
+    "\"Let's Go Brandon\" meme reference.",
+    "Political and cultural satire.",
+    "Crowd scenes referencing sports or rally events."
+  ],
+  "visualSummary": "The card features a two-panel composition. The top panel shows a prominent figure with a Pepe the Frog face, wearing a suit against a backdrop of American flags. The bottom panel depicts a crowd of Pepe-faced characters in a stadium, with vibrant greens, blues, and reds dominating the scene.",
+  "visualSummaryShort": "The card showcases a prominent figure with a Pepe the Frog face in a suit, set against American flags. Below, a crowd of Pepe-faced characters fills a vibrant stadium scene.",
+  "visualKeywords": [
+    "pepe",
+    "suit",
+    "american flags",
+    "crowd",
+    "stadium",
+    "vibrant colors",
+    "greens",
+    "blues",
+    "reds"
+  ],
+  "textKeywords": [
+    "lets",
+    "brandon",
+    "let",
+    "clap",
+    "sir",
+    "not",
+    "what",
+    "they",
+    "saying"
+  ],
+  "keywords": [
+    "pepe",
+    "suit",
+    "american flags",
+    "crowd",
+    "stadium",
+    "vibrant colors",
+    "greens",
+    "blues",
+    "reds",
+    "lets",
+    "brandon",
+    "let",
+    "clap",
+    "sir",
+    "not",
+    "what",
+    "they",
+    "saying"
+  ],
+  "embeddingInput": "LETSGOBRANDN (Fake Rares) - Series 5 Card 6\nArtist: CryptoChainer\nSupply 100 Issued October 2021\nOn-card text: “LETS GO BRANDON!” | LET’S GO BRANDON! clap clap, clap clap clap | Sir, that is not what they’re saying!\nVisual summary: The card features a two-panel composition. The top panel shows a prominent figure with a Pepe the Frog face, wearing a suit against a backdrop of American flags. The bottom panel depicts a crowd of Pepe-faced characters in a stadium, with vibrant greens, blues, and reds dominating the scene.\nMemetic references: Pepe the Frog imagery.; \"Let's Go Brandon\" meme reference.; Political and cultural satire.; Crowd scenes referencing sports or rally events.",
+  "embeddingBlocks": [
+    {
+      "id": "LETSGOBRANDN#text",
+      "label": "On-card text",
+      "text": "“LETS GO BRANDON!” | LET’S GO BRANDON! clap clap, clap clap clap | Sir, that is not what they’re saying!",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "LETSGOBRANDN#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog imagery.\n\"Let's Go Brandon\" meme reference.\nPolitical and cultural satire.\nCrowd scenes referencing sports or rally events.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LETSGOBRANDN#visual",
+      "label": "Visual summary",
+      "text": "The card features a two-panel composition. The top panel shows a prominent figure with a Pepe the Frog face, wearing a suit against a backdrop of American flags. The bottom panel depicts a crowd of Pepe-faced characters in a stadium, with vibrant greens, blues, and reds dominating the scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LETSGOBRANDN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n“LETS GO BRANDON!”  \nLET’S GO BRANDON! clap clap, clap clap clap  \nSir, that is not what they’re saying!\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a two-panel composition. The top panel shows a prominent figure with a Pepe the Frog face, wearing a suit against a backdrop of American flags. The bottom panel depicts a crowd of Pepe-faced characters in a stadium, with vibrant greens, blues, and reds dominating the scene.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog imagery.\n- \"Let's Go Brandon\" meme reference.\n- Political and cultural satire.\n- Crowd scenes referencing sports or rally events.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.738Z",
+  "sourceFactVersion": 1
+}

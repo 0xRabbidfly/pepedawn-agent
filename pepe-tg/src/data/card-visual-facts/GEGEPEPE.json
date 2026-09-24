@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "GEGEPEPE",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 39,
+  "artist": "Lord Jamie V. Shill",
+  "supply": 35,
+  "issuance": "November 2023",
+  "textOnCard": [
+    "GEGE PEPE",
+    "#5 in series of 5 Xi JinPing RARE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference with green skin.",
+    "Possible nod to political figures or historical imagery.",
+    "Plays on the concept of \"rare\" in NFT and crypto culture."
+  ],
+  "visualSummary": "The card features a black-and-white illustration of two children with green faces, set against a simple, minimalistic background. The older child wears a military-style uniform, while the younger one is dressed in a padded jacket and pants. The color palette is stark with grayscale tones, accented by the bright green skin and minimal red and yellow text at the bottom.",
+  "visualSummaryShort": "The card showcases a black-and-white illustration of two children with striking green faces. The older child is in a military uniform, while the younger one wears a padded jacket, all set against a minimalistic background.",
+  "visualKeywords": [
+    "black-and-white",
+    "green faces",
+    "military uniform",
+    "padded jacket",
+    "minimalistic",
+    "grayscale",
+    "red text",
+    "yellow text"
+  ],
+  "textKeywords": [
+    "gege",
+    "series",
+    "jinping"
+  ],
+  "keywords": [
+    "black-and-white",
+    "green faces",
+    "military uniform",
+    "padded jacket",
+    "minimalistic",
+    "grayscale",
+    "red text",
+    "yellow text",
+    "gege",
+    "series",
+    "jinping"
+  ],
+  "embeddingInput": "GEGEPEPE (Fake Rares) - Series 16 Card 39\nArtist: Lord Jamie V. Shill\nSupply 35 Issued November 2023\nOn-card text: GEGE PEPE | #5 in series of 5 Xi JinPing RARE\nVisual summary: The card features a black-and-white illustration of two children with green faces, set against a simple, minimalistic background. The older child wears a military-style uniform, while the younger one is dressed in a padded jacket and pants. The color palette is stark with grayscale tones, accented by the bright green skin and minimal red and yellow text at the bottom.\nMemetic references: Pepe the Frog reference with green skin.; Possible nod to political figures or historical imagery.; Plays on the concept of \"rare\" in NFT and crypto culture.",
+  "embeddingBlocks": [
+    {
+      "id": "GEGEPEPE#text",
+      "label": "On-card text",
+      "text": "GEGE PEPE | #5 in series of 5 Xi JinPing RARE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "GEGEPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference with green skin.\nPossible nod to political figures or historical imagery.\nPlays on the concept of \"rare\" in NFT and crypto culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "GEGEPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a black-and-white illustration of two children with green faces, set against a simple, minimalistic background. The older child wears a military-style uniform, while the younger one is dressed in a padded jacket and pants. The color palette is stark with grayscale tones, accented by the bright green skin and minimal red and yellow text at the bottom.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "GEGEPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nGEGE PEPE  \n#5 in series of 5 Xi JinPing RARE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a black-and-white illustration of two children with green faces, set against a simple, minimalistic background. The older child wears a military-style uniform, while the younger one is dressed in a padded jacket and pants. The color palette is stark with grayscale tones, accented by the bright green skin and minimal red and yellow text at the bottom.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference with green skin.\n- Possible nod to political figures or historical imagery.\n- Plays on the concept of \"rare\" in NFT and crypto culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.650Z",
+  "sourceFactVersion": 1
+}

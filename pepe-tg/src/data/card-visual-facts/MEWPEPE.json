@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "asset": "MEWPEPE",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 15,
+  "artist": "Lenny",
+  "supply": 21,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "A PEPE SO RARE IT IS SAID TO BE A MIRAGE BY MANY SCIENTISTS.",
+    "LENNY ©"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog references.",
+    "Crypto culture nods with cryptic symbols.",
+    "Visual homage to vaporwave and psychedelic art styles.",
+    "The cat-like body may hint at meme culture's love for cats."
+  ],
+  "visualSummary": "The card features a psychedelic swirl of vibrant colors, primarily neon yellows, pinks, blues, and greens, creating a trippy background. A cartoonish figure resembling a fusion of Pepe the Frog and a cat floats in the center, surrounded by cryptic symbols. The overall style is chaotic and eye-catching, reminiscent of 90s rave posters with a modern digital twist.",
+  "visualSummaryShort": "The card showcases a vibrant psychedelic swirl of neon colors with a cartoonish figure at its center. The chaotic design is reminiscent of 90s rave aesthetics, enhanced by cryptic symbols.",
+  "visualKeywords": [
+    "psychedelic",
+    "neon colors",
+    "cartoonish figure",
+    "chaotic",
+    "symbols",
+    "trippy",
+    "90s style",
+    "digital art"
+  ],
+  "textKeywords": [
+    "said",
+    "mirage",
+    "scientists",
+    "lenny"
+  ],
+  "keywords": [
+    "psychedelic",
+    "neon colors",
+    "cartoonish figure",
+    "chaotic",
+    "symbols",
+    "trippy",
+    "90s style",
+    "digital art",
+    "said",
+    "mirage",
+    "scientists",
+    "lenny"
+  ],
+  "embeddingInput": "MEWPEPE (Fake Rares) - Series 7 Card 15\nArtist: Lenny\nSupply 21 Issued February 2022\nOn-card text: A PEPE SO RARE IT IS SAID TO BE A MIRAGE BY MANY SCIENTISTS. | LENNY ©\nVisual summary: The card features a psychedelic swirl of vibrant colors, primarily neon yellows, pinks, blues, and greens, creating a trippy background. A cartoonish figure resembling a fusion of Pepe the Frog and a cat floats in the center, surrounded by cryptic symbols. The overall style is chaotic and eye-catching, reminiscent of 90s rave posters with a modern digital twist.\nMemetic references: Pepe the Frog references.; Crypto culture nods with cryptic symbols.; Visual homage to vaporwave and psychedelic art styles.; The cat-like body may hint at meme culture's love for cats.",
+  "embeddingBlocks": [
+    {
+      "id": "MEWPEPE#text",
+      "label": "On-card text",
+      "text": "A PEPE SO RARE IT IS SAID TO BE A MIRAGE BY MANY SCIENTISTS. | LENNY ©",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MEWPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references.\nCrypto culture nods with cryptic symbols.\nVisual homage to vaporwave and psychedelic art styles.\nThe cat-like body may hint at meme culture's love for cats.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MEWPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a psychedelic swirl of vibrant colors, primarily neon yellows, pinks, blues, and greens, creating a trippy background. A cartoonish figure resembling a fusion of Pepe the Frog and a cat floats in the center, surrounded by cryptic symbols. The overall style is chaotic and eye-catching, reminiscent of 90s rave posters with a modern digital twist.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MEWPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nA PEPE SO RARE IT IS SAID TO BE A MIRAGE BY MANY SCIENTISTS.  \nLENNY ©\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a psychedelic swirl of vibrant colors, primarily neon yellows, pinks, blues, and greens, creating a trippy background. A cartoonish figure resembling a fusion of Pepe the Frog and a cat floats in the center, surrounded by cryptic symbols. The overall style is chaotic and eye-catching, reminiscent of 90s rave posters with a modern digital twist.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references.\n- Crypto culture nods with cryptic symbols.\n- Visual homage to vaporwave and psychedelic art styles.\n- The cat-like body may hint at meme culture's love for cats.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.770Z",
+  "sourceFactVersion": 1
+}

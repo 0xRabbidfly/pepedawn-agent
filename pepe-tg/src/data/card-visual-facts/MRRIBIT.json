@@ -1,0 +1,108 @@
+{
+  "version": 1,
+  "asset": "MRRIBIT",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 27,
+  "artist": "Darkfarms",
+  "supply": 22,
+  "issuance": "January 2022",
+  "textOnCard": [
+    "MR. RIBIT",
+    "Computer Rappin with a fam!",
+    "TO P3P3RIN ART ©",
+    "DMX",
+    "BANKLVR",
+    "M3TW4L",
+    "DISCO MOR4"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog face, a staple in meme culture.",
+    "References to retro computing and gaming culture.",
+    "Use of neon colors and pixel art style, reminiscent of early digital art.",
+    "Crypto-native slang and references like \"BANKLVR\" and \"P3P3RIN\"."
+  ],
+  "visualSummary": "The card features a pixelated, retro computer screen displaying a Pepe the Frog face in the center with a vibrant purple background. The keyboard is colorful, resembling a rainbow with neon shades, and the entire design evokes an 80s arcade aesthetic. The art style is playful and nostalgic, with a touch of cyberpunk flair, highlighted by bright, contrasting colors.",
+  "visualSummaryShort": "The card showcases a pixelated computer screen featuring a Pepe the Frog face against a vibrant purple background. It has a colorful rainbow keyboard and an overall playful, retro arcade aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "purple",
+    "pixelated",
+    "rainbow",
+    "80s arcade",
+    "cyberpunk",
+    "colorful",
+    "nostalgic",
+    "bright",
+    "contrasting"
+  ],
+  "textKeywords": [
+    "ribit",
+    "computer",
+    "rappin",
+    "fam",
+    "p3p3rin",
+    "art",
+    "dmx",
+    "banklvr",
+    "m3tw4l",
+    "disco",
+    "mor4"
+  ],
+  "keywords": [
+    "pepe",
+    "purple",
+    "pixelated",
+    "rainbow",
+    "80s arcade",
+    "cyberpunk",
+    "colorful",
+    "nostalgic",
+    "bright",
+    "contrasting",
+    "ribit",
+    "computer",
+    "rappin",
+    "fam",
+    "p3p3rin",
+    "art",
+    "dmx",
+    "banklvr",
+    "m3tw4l",
+    "disco",
+    "mor4"
+  ],
+  "embeddingInput": "MRRIBIT (Fake Rares) - Series 6 Card 27\nArtist: Darkfarms\nSupply 22 Issued January 2022\nOn-card text: MR. RIBIT | Computer Rappin with a fam! | TO P3P3RIN ART © | DMX | BANKLVR | M3TW4L | DISCO MOR4\nVisual summary: The card features a pixelated, retro computer screen displaying a Pepe the Frog face in the center with a vibrant purple background. The keyboard is colorful, resembling a rainbow with neon shades, and the entire design evokes an 80s arcade aesthetic. The art style is playful and nostalgic, with a touch of cyberpunk flair, highlighted by bright, contrasting colors.\nMemetic references: Classic Pepe the Frog face, a staple in meme culture.; References to retro computing and gaming culture.; Use of neon colors and pixel art style, reminiscent of early digital art.; Crypto-native slang and references like \"BANKLVR\" and \"P3P3RIN\".",
+  "embeddingBlocks": [
+    {
+      "id": "MRRIBIT#text",
+      "label": "On-card text",
+      "text": "MR. RIBIT | Computer Rappin with a fam! | TO P3P3RIN ART © | DMX | BANKLVR | M3TW4L | DISCO MOR4",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MRRIBIT#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog face, a staple in meme culture.\nReferences to retro computing and gaming culture.\nUse of neon colors and pixel art style, reminiscent of early digital art.\nCrypto-native slang and references like \"BANKLVR\" and \"P3P3RIN\".",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MRRIBIT#visual",
+      "label": "Visual summary",
+      "text": "The card features a pixelated, retro computer screen displaying a Pepe the Frog face in the center with a vibrant purple background. The keyboard is colorful, resembling a rainbow with neon shades, and the entire design evokes an 80s arcade aesthetic. The art style is playful and nostalgic, with a touch of cyberpunk flair, highlighted by bright, contrasting colors.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MRRIBIT#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nMR. RIBIT  \nComputer Rappin with a fam!  \nTO P3P3RIN ART ©  \nDMX  \nBANKLVR  \nM3TW4L  \nDISCO MOR4\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a pixelated, retro computer screen displaying a Pepe the Frog face in the center with a vibrant purple background. The keyboard is colorful, resembling a rainbow with neon shades, and the entire design evokes an 80s arcade aesthetic. The art style is playful and nostalgic, with a touch of cyberpunk flair, highlighted by bright, contrasting colors.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog face, a staple in meme culture.\n- References to retro computing and gaming culture.\n- Use of neon colors and pixel art style, reminiscent of early digital art.\n- Crypto-native slang and references like \"BANKLVR\" and \"P3P3RIN\".",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.782Z",
+  "sourceFactVersion": 1
+}

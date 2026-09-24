@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "asset": "PLUSHIESMOL",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 20,
+  "artist": "Darkfarms",
+  "supply": 99,
+  "issuance": "August 2023",
+  "textOnCard": [
+    "FRXSTY, PLUSHIESMOL, MP3 18"
+  ],
+  "memeticReferences": [
+    "Classic Pepe characters with expressive faces.",
+    "References to NFT culture through graffiti tags.",
+    "The chaotic vibe hints at a playful nod to the crypto hustle."
+  ],
+  "visualSummary": "The card is a vibrant assembly of Pepe characters surrounded by boxes with colorful graffiti. The color palette is a mix of purples, greens, and yellows, with a pixelated texture that adds a retro feel. The artistic style is chaotic and expressive, capturing the bustling energy of a playful heist or adventure.",
+  "visualSummaryShort": "The card features a lively collection of Pepe characters amidst colorful graffiti-covered boxes. Its vibrant color palette and pixelated texture evoke a sense of playful chaos and adventure.",
+  "visualKeywords": [
+    "pepe",
+    "graffiti",
+    "purple",
+    "green",
+    "yellow",
+    "pixelated",
+    "chaotic",
+    "expressive",
+    "boxes",
+    "adventure"
+  ],
+  "textKeywords": [
+    "frxsty",
+    "plushiesmol",
+    "mp3"
+  ],
+  "keywords": [
+    "pepe",
+    "graffiti",
+    "purple",
+    "green",
+    "yellow",
+    "pixelated",
+    "chaotic",
+    "expressive",
+    "boxes",
+    "adventure",
+    "frxsty",
+    "plushiesmol",
+    "mp3"
+  ],
+  "embeddingInput": "PLUSHIESMOL (Fake Rares) - Series 16 Card 20\nArtist: Darkfarms\nSupply 99 Issued August 2023\nOn-card text: FRXSTY, PLUSHIESMOL, MP3 18\nVisual summary: The card is a vibrant assembly of Pepe characters surrounded by boxes with colorful graffiti. The color palette is a mix of purples, greens, and yellows, with a pixelated texture that adds a retro feel. The artistic style is chaotic and expressive, capturing the bustling energy of a playful heist or adventure.\nMemetic references: Classic Pepe characters with expressive faces.; References to NFT culture through graffiti tags.; The chaotic vibe hints at a playful nod to the crypto hustle.",
+  "embeddingBlocks": [
+    {
+      "id": "PLUSHIESMOL#text",
+      "label": "On-card text",
+      "text": "FRXSTY, PLUSHIESMOL, MP3 18",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PLUSHIESMOL#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe characters with expressive faces.\nReferences to NFT culture through graffiti tags.\nThe chaotic vibe hints at a playful nod to the crypto hustle.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PLUSHIESMOL#visual",
+      "label": "Visual summary",
+      "text": "The card is a vibrant assembly of Pepe characters surrounded by boxes with colorful graffiti. The color palette is a mix of purples, greens, and yellows, with a pixelated texture that adds a retro feel. The artistic style is chaotic and expressive, capturing the bustling energy of a playful heist or adventure.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PLUSHIESMOL#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFRXSTY, PLUSHIESMOL, MP3 18\n\n🎨 **VISUAL BREAKDOWN:**\nThe card is a vibrant assembly of Pepe characters surrounded by boxes with colorful graffiti. The color palette is a mix of purples, greens, and yellows, with a pixelated texture that adds a retro feel. The artistic style is chaotic and expressive, capturing the bustling energy of a playful heist or adventure.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe characters with expressive faces.\n- References to NFT culture through graffiti tags.\n- The chaotic vibe hints at a playful nod to the crypto hustle.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.040Z",
+  "sourceFactVersion": 1
+}

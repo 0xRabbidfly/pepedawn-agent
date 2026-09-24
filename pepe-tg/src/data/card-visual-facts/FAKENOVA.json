@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "asset": "FAKENOVA",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 9,
+  "artist": "Nikolina Petolas",
+  "supply": 21,
+  "issuance": "July 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "The figure's appearance could be inspired by classic sci-fi or fantasy characters, hinting at a secretive, ancient wisdom.",
+    "The lush greenery and mystical aura nod to the intersection of nature and technology often seen in NFT art.",
+    "The small frog in the foreground might be a subtle nod to Pepe culture, blending humor with the card's enigmatic theme."
+  ],
+  "visualSummary": "The card features a mysterious figure in a long, green robe with an ornate, alien-like headpiece, standing in an opulent doorway surrounded by lush, overgrown vegetation. The color palette is a rich blend of earthy greens and warm golds, evoking a sense of mystique and otherworldliness. The style is reminiscent of classical fantasy art, with intricate details and a surreal atmosphere.",
+  "visualSummaryShort": "The card depicts a mysterious figure in a green robe with an ornate headpiece, set against an opulent doorway. The lush vegetation and rich color palette create a surreal and mystical atmosphere.",
+  "visualKeywords": [
+    "mysterious figure",
+    "green robe",
+    "ornate headpiece",
+    "opulent doorway",
+    "lush vegetation",
+    "earthy greens",
+    "warm golds",
+    "fantasy art",
+    "surreal atmosphere"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "mysterious figure",
+    "green robe",
+    "ornate headpiece",
+    "opulent doorway",
+    "lush vegetation",
+    "earthy greens",
+    "warm golds",
+    "fantasy art",
+    "surreal atmosphere"
+  ],
+  "embeddingInput": "FAKENOVA (Fake Rares) - Series 15 Card 9\nArtist: Nikolina Petolas\nSupply 21 Issued July 2023\nOn-card text: none detected\nVisual summary: The card features a mysterious figure in a long, green robe with an ornate, alien-like headpiece, standing in an opulent doorway surrounded by lush, overgrown vegetation. The color palette is a rich blend of earthy greens and warm golds, evoking a sense of mystique and otherworldliness. The style is reminiscent of classical fantasy art, with intricate details and a surreal atmosphere.\nMemetic references: The figure's appearance could be inspired by classic sci-fi or fantasy characters, hinting at a secretive, ancient wisdom.; The lush greenery and mystical aura nod to the intersection of nature and technology often seen in NFT art.; The small frog in the foreground might be a subtle nod to Pepe culture, blending humor with the card's enigmatic theme.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKENOVA#memetic",
+      "label": "Memetic references",
+      "text": "The figure's appearance could be inspired by classic sci-fi or fantasy characters, hinting at a secretive, ancient wisdom.\nThe lush greenery and mystical aura nod to the intersection of nature and technology often seen in NFT art.\nThe small frog in the foreground might be a subtle nod to Pepe culture, blending humor with the card's enigmatic theme.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKENOVA#visual",
+      "label": "Visual summary",
+      "text": "The card features a mysterious figure in a long, green robe with an ornate, alien-like headpiece, standing in an opulent doorway surrounded by lush, overgrown vegetation. The color palette is a rich blend of earthy greens and warm golds, evoking a sense of mystique and otherworldliness. The style is reminiscent of classical fantasy art, with intricate details and a surreal atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKENOVA#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a mysterious figure in a long, green robe with an ornate, alien-like headpiece, standing in an opulent doorway surrounded by lush, overgrown vegetation. The color palette is a rich blend of earthy greens and warm golds, evoking a sense of mystique and otherworldliness. The style is reminiscent of classical fantasy art, with intricate details and a surreal atmosphere.\n\n🧬 **MEMETIC DNA:**\n- The figure's appearance could be inspired by classic sci-fi or fantasy characters, hinting at a secretive, ancient wisdom.\n- The lush greenery and mystical aura nod to the intersection of nature and technology often seen in NFT art.\n- The small frog in the foreground might be a subtle nod to Pepe culture, blending humor with the card's enigmatic theme.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.538Z",
+  "sourceFactVersion": 1
+}

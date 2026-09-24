@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "FAKEANGELS",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 41,
+  "artist": "Dim Zayan",
+  "supply": 26,
+  "issuance": "May 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog character with angelic symbolism (halo).",
+    "Crypto culture elements like Bitcoin and Ethereum logos on the helmet.",
+    "References to internet culture through the whimsical and irreverent style."
+  ],
+  "visualSummary": "The card features a whimsical scene of a person riding a small motorcycle with a Pepe the Frog character, who sports a halo and goggles. The background is a muted green, while the bike is vivid red, creating a playful contrast. The art style is cartoonish with hand-drawn textures, and the rider's helmet is decorated with various crypto logos.",
+  "visualSummaryShort": "The card depicts a whimsical scene with a person on a small red motorcycle alongside a Pepe the Frog character wearing a halo and goggles. The muted green background enhances the playful cartoonish style of the artwork.",
+  "visualKeywords": [
+    "motorcycle",
+    "pepe the frog",
+    "halo",
+    "goggles",
+    "red",
+    "green",
+    "cartoonish",
+    "crypto logos"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "motorcycle",
+    "pepe the frog",
+    "halo",
+    "goggles",
+    "red",
+    "green",
+    "cartoonish",
+    "crypto logos"
+  ],
+  "embeddingInput": "FAKEANGELS (Fake Rares) - Series 7 Card 41\nArtist: Dim Zayan\nSupply 26 Issued May 2022\nOn-card text: none detected\nVisual summary: The card features a whimsical scene of a person riding a small motorcycle with a Pepe the Frog character, who sports a halo and goggles. The background is a muted green, while the bike is vivid red, creating a playful contrast. The art style is cartoonish with hand-drawn textures, and the rider's helmet is decorated with various crypto logos.\nMemetic references: Pepe the Frog character with angelic symbolism (halo).; Crypto culture elements like Bitcoin and Ethereum logos on the helmet.; References to internet culture through the whimsical and irreverent style.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEANGELS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog character with angelic symbolism (halo).\nCrypto culture elements like Bitcoin and Ethereum logos on the helmet.\nReferences to internet culture through the whimsical and irreverent style.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEANGELS#visual",
+      "label": "Visual summary",
+      "text": "The card features a whimsical scene of a person riding a small motorcycle with a Pepe the Frog character, who sports a halo and goggles. The background is a muted green, while the bike is vivid red, creating a playful contrast. The art style is cartoonish with hand-drawn textures, and the rider's helmet is decorated with various crypto logos.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEANGELS#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a whimsical scene of a person riding a small motorcycle with a Pepe the Frog character, who sports a halo and goggles. The background is a muted green, while the bike is vivid red, creating a playful contrast. The art style is cartoonish with hand-drawn textures, and the rider's helmet is decorated with various crypto logos.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog character with angelic symbolism (halo).\n- Crypto culture elements like Bitcoin and Ethereum logos on the helmet.\n- References to internet culture through the whimsical and irreverent style.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.447Z",
+  "sourceFactVersion": 1
+}

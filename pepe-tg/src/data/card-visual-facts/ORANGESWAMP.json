@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "ORANGESWAMP",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 33,
+  "artist": "Kero",
+  "supply": 21,
+  "issuance": "August 2023",
+  "textOnCard": [
+    "ORANGESWAMP"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference, a staple in meme culture.",
+    "Bitcoin symbol representing crypto culture.",
+    "The chain could symbolize blockchain technology or a nod to the \"chains\" of financial systems.",
+    "The suited frog might reference the \"trader\" meme archetype."
+  ],
+  "visualSummary": "The card features a sepia-toned composition with two anthropomorphic characters, one resembling a frog in a suit and another with a wrapped head, connected by a chain. The background prominently displays a distressed Bitcoin symbol, adding to the gritty, underground vibe. The color palette is dominated by shades of orange and brown, giving it an old-school, vintage feel.",
+  "visualSummaryShort": "The card showcases two anthropomorphic characters, one a suited frog and the other with a wrapped head, linked by a chain. The sepia-toned background features a distressed Bitcoin symbol, creating a gritty, vintage atmosphere.",
+  "visualKeywords": [
+    "frog",
+    "suit",
+    "wrapped head",
+    "chain",
+    "bitcoin",
+    "sepia",
+    "orange",
+    "brown",
+    "vintage",
+    "gritty"
+  ],
+  "textKeywords": [
+    "orangeswamp"
+  ],
+  "keywords": [
+    "frog",
+    "suit",
+    "wrapped head",
+    "chain",
+    "bitcoin",
+    "sepia",
+    "orange",
+    "brown",
+    "vintage",
+    "gritty",
+    "orangeswamp"
+  ],
+  "embeddingInput": "ORANGESWAMP (Fake Rares) - Series 15 Card 33\nArtist: Kero\nSupply 21 Issued August 2023\nOn-card text: ORANGESWAMP\nVisual summary: The card features a sepia-toned composition with two anthropomorphic characters, one resembling a frog in a suit and another with a wrapped head, connected by a chain. The background prominently displays a distressed Bitcoin symbol, adding to the gritty, underground vibe. The color palette is dominated by shades of orange and brown, giving it an old-school, vintage feel.\nMemetic references: Pepe the Frog reference, a staple in meme culture.; Bitcoin symbol representing crypto culture.; The chain could symbolize blockchain technology or a nod to the \"chains\" of financial systems.; The suited frog might reference the \"trader\" meme archetype.",
+  "embeddingBlocks": [
+    {
+      "id": "ORANGESWAMP#text",
+      "label": "On-card text",
+      "text": "ORANGESWAMP",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "ORANGESWAMP#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference, a staple in meme culture.\nBitcoin symbol representing crypto culture.\nThe chain could symbolize blockchain technology or a nod to the \"chains\" of financial systems.\nThe suited frog might reference the \"trader\" meme archetype.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "ORANGESWAMP#visual",
+      "label": "Visual summary",
+      "text": "The card features a sepia-toned composition with two anthropomorphic characters, one resembling a frog in a suit and another with a wrapped head, connected by a chain. The background prominently displays a distressed Bitcoin symbol, adding to the gritty, underground vibe. The color palette is dominated by shades of orange and brown, giving it an old-school, vintage feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "ORANGESWAMP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nORANGESWAMP\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a sepia-toned composition with two anthropomorphic characters, one resembling a frog in a suit and another with a wrapped head, connected by a chain. The background prominently displays a distressed Bitcoin symbol, adding to the gritty, underground vibe. The color palette is dominated by shades of orange and brown, giving it an old-school, vintage feel.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference, a staple in meme culture.\n- Bitcoin symbol representing crypto culture.\n- The chain could symbolize blockchain technology or a nod to the \"chains\" of financial systems.\n- The suited frog might reference the \"trader\" meme archetype.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.814Z",
+  "sourceFactVersion": 1
+}

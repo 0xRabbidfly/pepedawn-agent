@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "asset": "FAKEASCIIART",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 7,
+  "artist": "TKY",
+  "supply": 100,
+  "issuance": "September 2025",
+  "textOnCard": [
+    "FAKE ASCIIART"
+  ],
+  "memeticReferences": [
+    "References to ASCII art, a form of digital art using characters.",
+    "Plays on the theme of \"fake\" within NFT culture, hinting at meta-commentary on digital art authenticity.",
+    "Minimalist design, echoing early internet and coding culture."
+  ],
+  "visualSummary": "The card features a minimalist design with subtle colors, primarily a light gray background and soft gray text. The text is styled in a blocky, geometric font reminiscent of early digital typography. The overall aesthetic is simple yet modern, emphasizing the textual element against a plain backdrop.",
+  "visualSummaryShort": "The card showcases a minimalist design with a light gray background and soft gray text. The blocky, geometric font adds a modern touch to the overall aesthetic.",
+  "visualKeywords": [
+    "minimalist",
+    "gray background",
+    "blocky font",
+    "geometric",
+    "modern",
+    "simple",
+    "textual element"
+  ],
+  "textKeywords": [
+    "asciiart"
+  ],
+  "keywords": [
+    "minimalist",
+    "gray background",
+    "blocky font",
+    "geometric",
+    "modern",
+    "simple",
+    "textual element",
+    "asciiart"
+  ],
+  "embeddingInput": "FAKEASCIIART (Fake Rares) - Series 18 Card 7\nArtist: TKY\nSupply 100 Issued September 2025\nOn-card text: FAKE ASCIIART\nVisual summary: The card features a minimalist design with subtle colors, primarily a light gray background and soft gray text. The text is styled in a blocky, geometric font reminiscent of early digital typography. The overall aesthetic is simple yet modern, emphasizing the textual element against a plain backdrop.\nMemetic references: References to ASCII art, a form of digital art using characters.; Plays on the theme of \"fake\" within NFT culture, hinting at meta-commentary on digital art authenticity.; Minimalist design, echoing early internet and coding culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEASCIIART#text",
+      "label": "On-card text",
+      "text": "FAKE ASCIIART",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEASCIIART#memetic",
+      "label": "Memetic references",
+      "text": "References to ASCII art, a form of digital art using characters.\nPlays on the theme of \"fake\" within NFT culture, hinting at meta-commentary on digital art authenticity.\nMinimalist design, echoing early internet and coding culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEASCIIART#visual",
+      "label": "Visual summary",
+      "text": "The card features a minimalist design with subtle colors, primarily a light gray background and soft gray text. The text is styled in a blocky, geometric font reminiscent of early digital typography. The overall aesthetic is simple yet modern, emphasizing the textual element against a plain backdrop.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEASCIIART#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE ASCIIART\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a minimalist design with subtle colors, primarily a light gray background and soft gray text. The text is styled in a blocky, geometric font reminiscent of early digital typography. The overall aesthetic is simple yet modern, emphasizing the textual element against a plain backdrop.\n\n🧬 **MEMETIC DNA:**\n- References to ASCII art, a form of digital art using characters.\n- Plays on the theme of \"fake\" within NFT culture, hinting at meta-commentary on digital art authenticity.\n- Minimalist design, echoing early internet and coding culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.450Z",
+  "sourceFactVersion": 1
+}

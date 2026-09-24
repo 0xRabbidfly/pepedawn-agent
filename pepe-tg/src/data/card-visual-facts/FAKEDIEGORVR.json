@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "asset": "FAKEDIEGORVR",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 35,
+  "artist": "Lord Jamie V. Shill",
+  "supply": 50,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "None"
+  ],
+  "memeticReferences": [
+    "Pepe-inspired green face.",
+    "Sunflowers could nod to Van Gogh's famous paintings.",
+    "Polygonal background hints at digital art and crypto culture."
+  ],
+  "visualSummary": "The card features a formal portrait with a classic gold frame. The background showcases a field of sunflowers under a polygonal orange sunset sky. The central figure has a green face reminiscent of Pepe, dressed in a tuxedo, blending traditional portrait style with digital surrealism.",
+  "visualSummaryShort": "The card displays a formal portrait within a classic gold frame, featuring a green-faced figure in a tuxedo against a backdrop of sunflowers and an orange sunset. This blend of traditional and digital surrealism creates a striking visual contrast.",
+  "visualKeywords": [
+    "portrait",
+    "gold frame",
+    "sunflowers",
+    "orange sunset",
+    "green face",
+    "tuxedo",
+    "surrealism"
+  ],
+  "textKeywords": [
+    "none"
+  ],
+  "keywords": [
+    "portrait",
+    "gold frame",
+    "sunflowers",
+    "orange sunset",
+    "green face",
+    "tuxedo",
+    "surrealism",
+    "none"
+  ],
+  "embeddingInput": "FAKEDIEGORVR (Fake Rares) - Series 3 Card 35\nArtist: Lord Jamie V. Shill\nSupply 50 Issued November 2021\nOn-card text: None\nVisual summary: The card features a formal portrait with a classic gold frame. The background showcases a field of sunflowers under a polygonal orange sunset sky. The central figure has a green face reminiscent of Pepe, dressed in a tuxedo, blending traditional portrait style with digital surrealism.\nMemetic references: Pepe-inspired green face.; Sunflowers could nod to Van Gogh's famous paintings.; Polygonal background hints at digital art and crypto culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEDIEGORVR#text",
+      "label": "On-card text",
+      "text": "None",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEDIEGORVR#memetic",
+      "label": "Memetic references",
+      "text": "Pepe-inspired green face.\nSunflowers could nod to Van Gogh's famous paintings.\nPolygonal background hints at digital art and crypto culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEDIEGORVR#visual",
+      "label": "Visual summary",
+      "text": "The card features a formal portrait with a classic gold frame. The background showcases a field of sunflowers under a polygonal orange sunset sky. The central figure has a green face reminiscent of Pepe, dressed in a tuxedo, blending traditional portrait style with digital surrealism.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEDIEGORVR#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nNone\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a formal portrait with a classic gold frame. The background showcases a field of sunflowers under a polygonal orange sunset sky. The central figure has a green face reminiscent of Pepe, dressed in a tuxedo, blending traditional portrait style with digital surrealism.\n\n🧬 **MEMETIC DNA:**\n- Pepe-inspired green face.\n- Sunflowers could nod to Van Gogh's famous paintings.\n- Polygonal background hints at digital art and crypto culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.478Z",
+  "sourceFactVersion": 1
+}

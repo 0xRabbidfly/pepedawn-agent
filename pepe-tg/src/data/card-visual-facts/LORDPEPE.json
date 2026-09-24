@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "LORDPEPE",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 39,
+  "artist": "Michael Naples",
+  "supply": 100,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "NINAPLES"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central meme figure.",
+    "Crown and scepter signify royalty and power.",
+    "Bitcoin symbol on the necklace ties into crypto culture.",
+    "Scepter topped with a smaller, smiling Pepe face, adding layers of meme within a meme."
+  ],
+  "visualSummary": "The card features a regal Pepe the Frog wearing an opulent crown and lavish fur-trimmed robe, reminiscent of classical royal portraiture. The color palette is rich and luxurious, dominated by deep reds, golds, and greens. The art style blends traditional oil painting techniques with a playful, surreal twist, embodying both grandeur and humor.",
+  "visualSummaryShort": "The card showcases a regal Pepe the Frog adorned with a crown and a fur-trimmed robe, set against a rich color palette of deep reds, golds, and greens. The art style combines classical portraiture with a playful, surreal twist.",
+  "visualKeywords": [
+    "pepe the frog",
+    "crown",
+    "fur-trimmed robe",
+    "red",
+    "gold",
+    "green",
+    "opulent",
+    "surreal",
+    "portraiture",
+    "lavish"
+  ],
+  "textKeywords": [
+    "ninaples"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "crown",
+    "fur-trimmed robe",
+    "red",
+    "gold",
+    "green",
+    "opulent",
+    "surreal",
+    "portraiture",
+    "lavish",
+    "ninaples"
+  ],
+  "embeddingInput": "LORDPEPE (Fake Rares) - Series 13 Card 39\nArtist: Michael Naples\nSupply 100 Issued February 2022\nOn-card text: NINAPLES\nVisual summary: The card features a regal Pepe the Frog wearing an opulent crown and lavish fur-trimmed robe, reminiscent of classical royal portraiture. The color palette is rich and luxurious, dominated by deep reds, golds, and greens. The art style blends traditional oil painting techniques with a playful, surreal twist, embodying both grandeur and humor.\nMemetic references: Pepe the Frog as a central meme figure.; Crown and scepter signify royalty and power.; Bitcoin symbol on the necklace ties into crypto culture.; Scepter topped with a smaller, smiling Pepe face, adding layers of meme within a meme.",
+  "embeddingBlocks": [
+    {
+      "id": "LORDPEPE#text",
+      "label": "On-card text",
+      "text": "NINAPLES",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "LORDPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central meme figure.\nCrown and scepter signify royalty and power.\nBitcoin symbol on the necklace ties into crypto culture.\nScepter topped with a smaller, smiling Pepe face, adding layers of meme within a meme.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LORDPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a regal Pepe the Frog wearing an opulent crown and lavish fur-trimmed robe, reminiscent of classical royal portraiture. The color palette is rich and luxurious, dominated by deep reds, golds, and greens. The art style blends traditional oil painting techniques with a playful, surreal twist, embodying both grandeur and humor.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LORDPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nNINAPLES\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a regal Pepe the Frog wearing an opulent crown and lavish fur-trimmed robe, reminiscent of classical royal portraiture. The color palette is rich and luxurious, dominated by deep reds, golds, and greens. The art style blends traditional oil painting techniques with a playful, surreal twist, embodying both grandeur and humor.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central meme figure.\n- Crown and scepter signify royalty and power.\n- Bitcoin symbol on the necklace ties into crypto culture.\n- Scepter topped with a smaller, smiling Pepe face, adding layers of meme within a meme.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.753Z",
+  "sourceFactVersion": 1
+}

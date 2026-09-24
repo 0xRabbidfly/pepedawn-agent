@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "asset": "FAKEPICKACHU",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 39,
+  "artist": "Rare Junior",
+  "supply": 125,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "PICKACHU PEPE",
+    "HP=100 ATK=60 Spd=200 Ele=Pokeballs",
+    "Pakeman need to be found in the world of Pepe.",
+    "Rarity 10",
+    "101"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog references",
+    "Pikachu and Pokémon elements",
+    "Ash Ketchum parody",
+    "Crypto culture with card game aesthetics"
+  ],
+  "visualSummary": "The card features a hand-drawn style with vibrant colors, predominantly yellow for Pikachu and green for Pepe the Frog. A character resembling Ash Ketchum is wearing a cap with Pepe’s face on it, and there are other humorous characters in the background. The border is a playful pink, contrasting with the green text box for a whimsical feel.",
+  "visualSummaryShort": "The card showcases a hand-drawn Pikachu with vibrant yellow colors alongside a green Pepe the Frog. A character resembling Ash Ketchum adds humor, set against a playful pink border.",
+  "visualKeywords": [
+    "pikachu",
+    "pepe",
+    "yellow",
+    "green",
+    "hand-drawn",
+    "playful",
+    "whimsical",
+    "characters",
+    "pink border",
+    "cap"
+  ],
+  "textKeywords": [
+    "pickachu",
+    "100",
+    "atk",
+    "spd",
+    "200",
+    "ele",
+    "pokeballs",
+    "pakeman",
+    "need",
+    "found",
+    "world",
+    "rarity",
+    "101"
+  ],
+  "keywords": [
+    "pikachu",
+    "pepe",
+    "yellow",
+    "green",
+    "hand-drawn",
+    "playful",
+    "whimsical",
+    "characters",
+    "pink border",
+    "cap",
+    "pickachu",
+    "100",
+    "atk",
+    "spd",
+    "200",
+    "ele",
+    "pokeballs",
+    "pakeman",
+    "need",
+    "found",
+    "world",
+    "rarity",
+    "101"
+  ],
+  "embeddingInput": "FAKEPICKACHU (Fake Rares) - Series 3 Card 39\nArtist: Rare Junior\nSupply 125 Issued October 2021\nOn-card text: PICKACHU PEPE | HP=100 ATK=60 Spd=200 Ele=Pokeballs | Pakeman need to be found in the world of Pepe. | Rarity 10 | 101\nVisual summary: The card features a hand-drawn style with vibrant colors, predominantly yellow for Pikachu and green for Pepe the Frog. A character resembling Ash Ketchum is wearing a cap with Pepe’s face on it, and there are other humorous characters in the background. The border is a playful pink, contrasting with the green text box for a whimsical feel.\nMemetic references: Pepe the Frog references; Pikachu and Pokémon elements; Ash Ketchum parody; Crypto culture with card game aesthetics",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEPICKACHU#text",
+      "label": "On-card text",
+      "text": "PICKACHU PEPE | HP=100 ATK=60 Spd=200 Ele=Pokeballs | Pakeman need to be found in the world of Pepe. | Rarity 10 | 101",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEPICKACHU#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references\nPikachu and Pokémon elements\nAsh Ketchum parody\nCrypto culture with card game aesthetics",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEPICKACHU#visual",
+      "label": "Visual summary",
+      "text": "The card features a hand-drawn style with vibrant colors, predominantly yellow for Pikachu and green for Pepe the Frog. A character resembling Ash Ketchum is wearing a cap with Pepe’s face on it, and there are other humorous characters in the background. The border is a playful pink, contrasting with the green text box for a whimsical feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEPICKACHU#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPICKACHU PEPE  \nHP=100  ATK=60  Spd=200  Ele=Pokeballs  \nPakeman need to be found in the world of Pepe.  \nRarity 10/101\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a hand-drawn style with vibrant colors, predominantly yellow for Pikachu and green for Pepe the Frog. A character resembling Ash Ketchum is wearing a cap with Pepe’s face on it, and there are other humorous characters in the background. The border is a playful pink, contrasting with the green text box for a whimsical feel.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references\n- Pikachu and Pokémon elements\n- Ash Ketchum parody\n- Crypto culture with card game aesthetics",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.557Z",
+  "sourceFactVersion": 1
+}

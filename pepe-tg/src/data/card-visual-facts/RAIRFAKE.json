@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "asset": "RAIRFAKE",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 45,
+  "artist": "Pepe Flyers",
+  "supply": 100,
+  "issuance": "December 2023",
+  "textOnCard": [
+    "RAIRFAKE",
+    "THE FAKE SNEAKER OF RAIR PEPE NAKAMOTO",
+    "Combine with VELCRO PATCHES To Unlock FLYENESS"
+  ],
+  "memeticReferences": [
+    "References to Pepe the Frog, a staple in meme culture.",
+    "Play on \"Satoshi Nakamoto\" with \"Rair Pepe Nakamoto,\" blending crypto and meme lore.",
+    "Nod to sneaker culture and customization with \"Velcro patches.\""
+  ],
+  "visualSummary": "The card features a sneaker with a green and black color scheme, prominently displayed in the center. The sneaker has a winged Pepe logo on the ankle, adding a playful element. The overall design is sleek with a modern aesthetic, using a minimalistic yet bold color palette.",
+  "visualSummaryShort": "The card showcases a modern sneaker in green and black, featuring a winged Pepe logo. Its sleek design emphasizes a minimalistic yet bold aesthetic.",
+  "visualKeywords": [
+    "sneaker",
+    "green",
+    "black",
+    "winged logo",
+    "modern",
+    "minimalistic",
+    "bold",
+    "playful"
+  ],
+  "textKeywords": [
+    "rairfake",
+    "sneaker",
+    "rair",
+    "nakamoto",
+    "combine",
+    "velcro",
+    "patches",
+    "unlock",
+    "flyeness"
+  ],
+  "keywords": [
+    "sneaker",
+    "green",
+    "black",
+    "winged logo",
+    "modern",
+    "minimalistic",
+    "bold",
+    "playful",
+    "rairfake",
+    "rair",
+    "nakamoto",
+    "combine",
+    "velcro",
+    "patches",
+    "unlock",
+    "flyeness"
+  ],
+  "embeddingInput": "RAIRFAKE (Fake Rares) - Series 16 Card 45\nArtist: Pepe Flyers\nSupply 100 Issued December 2023\nOn-card text: RAIRFAKE | THE FAKE SNEAKER OF RAIR PEPE NAKAMOTO | Combine with VELCRO PATCHES To Unlock FLYENESS\nVisual summary: The card features a sneaker with a green and black color scheme, prominently displayed in the center. The sneaker has a winged Pepe logo on the ankle, adding a playful element. The overall design is sleek with a modern aesthetic, using a minimalistic yet bold color palette.\nMemetic references: References to Pepe the Frog, a staple in meme culture.; Play on \"Satoshi Nakamoto\" with \"Rair Pepe Nakamoto,\" blending crypto and meme lore.; Nod to sneaker culture and customization with \"Velcro patches.\"",
+  "embeddingBlocks": [
+    {
+      "id": "RAIRFAKE#text",
+      "label": "On-card text",
+      "text": "RAIRFAKE | THE FAKE SNEAKER OF RAIR PEPE NAKAMOTO | Combine with VELCRO PATCHES To Unlock FLYENESS",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "RAIRFAKE#memetic",
+      "label": "Memetic references",
+      "text": "References to Pepe the Frog, a staple in meme culture.\nPlay on \"Satoshi Nakamoto\" with \"Rair Pepe Nakamoto,\" blending crypto and meme lore.\nNod to sneaker culture and customization with \"Velcro patches.\"",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RAIRFAKE#visual",
+      "label": "Visual summary",
+      "text": "The card features a sneaker with a green and black color scheme, prominently displayed in the center. The sneaker has a winged Pepe logo on the ankle, adding a playful element. The overall design is sleek with a modern aesthetic, using a minimalistic yet bold color palette.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RAIRFAKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nRAIRFAKE  \nTHE FAKE SNEAKER OF RAIR PEPE NAKAMOTO  \nCombine with VELCRO PATCHES To Unlock FLYENESS\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a sneaker with a green and black color scheme, prominently displayed in the center. The sneaker has a winged Pepe logo on the ankle, adding a playful element. The overall design is sleek with a modern aesthetic, using a minimalistic yet bold color palette.\n\n🧬 **MEMETIC DNA:**\n- References to Pepe the Frog, a staple in meme culture.\n- Play on \"Satoshi Nakamoto\" with \"Rair Pepe Nakamoto,\" blending crypto and meme lore.\n- Nod to sneaker culture and customization with \"Velcro patches.\"",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.062Z",
+  "sourceFactVersion": 1
+}

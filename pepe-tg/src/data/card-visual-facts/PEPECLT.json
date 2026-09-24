@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "asset": "PEPECLT",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 21,
+  "artist": "Limbo Mask",
+  "supply": 34,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "PEPECLT",
+    "LORRY"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery.",
+    "References to crypto culture with the Bitcoin logo.",
+    "Visual commentary on wealth and excess with burning money.",
+    "Possible nod to modern art themes with the framed Pepe painting."
+  ],
+  "visualSummary": "This card features a green Pepe character with a distinctive bowl haircut, dressed in a rich maroon suit adorned with a Bitcoin logo. The background is a lavish setting with a stack of burning cash on a cabinet, a framed painting of another Pepe, and lush greenery. The color palette is a mix of dark greens, reds, and golds, giving it a luxurious yet chaotic vibe.",
+  "visualSummaryShort": "The card showcases a green Pepe character in a maroon suit with a Bitcoin logo, set against a lavish background. The scene includes burning cash, a framed Pepe painting, and lush greenery, creating a luxurious yet chaotic atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "maroon suit",
+    "bitcoin",
+    "burning cash",
+    "greenery",
+    "luxurious",
+    "chaotic",
+    "gold",
+    "dark green",
+    "painting"
+  ],
+  "textKeywords": [
+    "pepeclt",
+    "lorry"
+  ],
+  "keywords": [
+    "pepe",
+    "maroon suit",
+    "bitcoin",
+    "burning cash",
+    "greenery",
+    "luxurious",
+    "chaotic",
+    "gold",
+    "dark green",
+    "painting",
+    "pepeclt",
+    "lorry"
+  ],
+  "embeddingInput": "PEPECLT (Fake Rares) - Series 11 Card 21\nArtist: Limbo Mask\nSupply 34 Issued September 2022\nOn-card text: PEPECLT | LORRY\nVisual summary: This card features a green Pepe character with a distinctive bowl haircut, dressed in a rich maroon suit adorned with a Bitcoin logo. The background is a lavish setting with a stack of burning cash on a cabinet, a framed painting of another Pepe, and lush greenery. The color palette is a mix of dark greens, reds, and golds, giving it a luxurious yet chaotic vibe.\nMemetic references: Classic Pepe the Frog imagery.; References to crypto culture with the Bitcoin logo.; Visual commentary on wealth and excess with burning money.; Possible nod to modern art themes with the framed Pepe painting.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPECLT#text",
+      "label": "On-card text",
+      "text": "PEPECLT | LORRY",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPECLT#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery.\nReferences to crypto culture with the Bitcoin logo.\nVisual commentary on wealth and excess with burning money.\nPossible nod to modern art themes with the framed Pepe painting.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPECLT#visual",
+      "label": "Visual summary",
+      "text": "This card features a green Pepe character with a distinctive bowl haircut, dressed in a rich maroon suit adorned with a Bitcoin logo. The background is a lavish setting with a stack of burning cash on a cabinet, a framed painting of another Pepe, and lush greenery. The color palette is a mix of dark greens, reds, and golds, giving it a luxurious yet chaotic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPECLT#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- PEPECLT\n- LORRY\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a green Pepe character with a distinctive bowl haircut, dressed in a rich maroon suit adorned with a Bitcoin logo. The background is a lavish setting with a stack of burning cash on a cabinet, a framed painting of another Pepe, and lush greenery. The color palette is a mix of dark greens, reds, and golds, giving it a luxurious yet chaotic vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery.\n- References to crypto culture with the Bitcoin logo.\n- Visual commentary on wealth and excess with burning money.\n- Possible nod to modern art themes with the framed Pepe painting.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.858Z",
+  "sourceFactVersion": 1
+}

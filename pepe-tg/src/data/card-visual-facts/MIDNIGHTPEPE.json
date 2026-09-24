@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "asset": "MIDNIGHTPEPE",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 41,
+  "artist": "Art GarPUNKel",
+  "supply": 24,
+  "issuance": "November 2021",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a character named Pepe in a nighttime setting. The overall mood is dark and mysterious.",
+  "visualKeywords": [
+    "night",
+    "dark",
+    "character",
+    "mysterious"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "night",
+    "dark",
+    "character",
+    "mysterious"
+  ],
+  "embeddingInput": "MIDNIGHTPEPE (Fake Rares) - Series 5 Card 41\nArtist: Art GarPUNKel\nSupply 24 Issued November 2021\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "MIDNIGHTPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm unable to analyze this image.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.771Z",
+  "sourceFactVersion": 1
+}

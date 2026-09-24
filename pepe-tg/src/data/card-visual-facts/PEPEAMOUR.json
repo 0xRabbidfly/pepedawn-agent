@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "asset": "PEPEAMOUR",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 4,
+  "artist": "ZETRA",
+  "supply": 50,
+  "issuance": "December 2022",
+  "textOnCard": [
+    "pepeamour"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog meme reference.",
+    "Heart symbol suggests themes of love and positivity.",
+    "Geometric art style adds a modern twist to the traditional Pepe lore."
+  ],
+  "visualSummary": "The card features a vibrant and abstract rendering of Pepe the Frog, composed of geometric shapes and bold colors. The color palette includes bright greens, reds, blues, and yellows, reminiscent of a modern art piece. A heart symbol floats near Pepe’s head, adding a playful and affectionate touch to the composition.",
+  "visualSummaryShort": "The card showcases a colorful and abstract depiction of Pepe the Frog, created with geometric shapes. A heart symbol adds a playful element to the vibrant composition.",
+  "visualKeywords": [
+    "pepe",
+    "abstract",
+    "geometric",
+    "bright colors",
+    "heart",
+    "playful"
+  ],
+  "textKeywords": [
+    "pepeamour"
+  ],
+  "keywords": [
+    "pepe",
+    "abstract",
+    "geometric",
+    "bright colors",
+    "heart",
+    "playful",
+    "pepeamour"
+  ],
+  "embeddingInput": "PEPEAMOUR (Fake Rares) - Series 16 Card 4\nArtist: ZETRA\nSupply 50 Issued December 2022\nOn-card text: pepeamour\nVisual summary: The card features a vibrant and abstract rendering of Pepe the Frog, composed of geometric shapes and bold colors. The color palette includes bright greens, reds, blues, and yellows, reminiscent of a modern art piece. A heart symbol floats near Pepe’s head, adding a playful and affectionate touch to the composition.\nMemetic references: Classic Pepe the Frog meme reference.; Heart symbol suggests themes of love and positivity.; Geometric art style adds a modern twist to the traditional Pepe lore.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEAMOUR#text",
+      "label": "On-card text",
+      "text": "pepeamour",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEAMOUR#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog meme reference.\nHeart symbol suggests themes of love and positivity.\nGeometric art style adds a modern twist to the traditional Pepe lore.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEAMOUR#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant and abstract rendering of Pepe the Frog, composed of geometric shapes and bold colors. The color palette includes bright greens, reds, blues, and yellows, reminiscent of a modern art piece. A heart symbol floats near Pepe’s head, adding a playful and affectionate touch to the composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEAMOUR#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\npepeamour\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant and abstract rendering of Pepe the Frog, composed of geometric shapes and bold colors. The color palette includes bright greens, reds, blues, and yellows, reminiscent of a modern art piece. A heart symbol floats near Pepe’s head, adding a playful and affectionate touch to the composition.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog meme reference.\n- Heart symbol suggests themes of love and positivity.\n- Geometric art style adds a modern twist to the traditional Pepe lore.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.837Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "PEPETHEFAKE.GUCHIFAKE",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 8,
+  "artist": "VaJe",
+  "supply": 100,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "GUCHI, FAKE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog references.",
+    "Play on luxury brand \"Gucci\" with \"Guchi\".",
+    "Commentary on authenticity and value in the NFT space.",
+    "Streetwear and high-fashion parody."
+  ],
+  "visualSummary": "This card showcases a Pepe the Frog character styled with a high-fashion twist, donning a sleek black suit and white shorts. The color palette is rich with dark tones and pops of green and red, which complement the Guchi theme. The background features a pixelated pattern, adding a digital and retro vibe to the card.",
+  "visualSummaryShort": "The card features a Pepe the Frog character in a stylish black suit and white shorts, set against a pixelated background. The color palette includes dark tones with vibrant green and red accents, enhancing the high-fashion theme.",
+  "visualKeywords": [
+    "pepe the frog",
+    "black suit",
+    "white shorts",
+    "pixelated background",
+    "dark tones",
+    "green accents",
+    "red accents",
+    "high-fashion",
+    "digital",
+    "retro"
+  ],
+  "textKeywords": [
+    "guchi"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "black suit",
+    "white shorts",
+    "pixelated background",
+    "dark tones",
+    "green accents",
+    "red accents",
+    "high-fashion",
+    "digital",
+    "retro",
+    "guchi"
+  ],
+  "embeddingInput": "PEPETHEFAKE.GUCHIFAKE (Fake Rares) - Series 4 Card 8\nArtist: VaJe\nSupply 100 Issued November 2021\nOn-card text: GUCHI, FAKE\nVisual summary: This card showcases a Pepe the Frog character styled with a high-fashion twist, donning a sleek black suit and white shorts. The color palette is rich with dark tones and pops of green and red, which complement the Guchi theme. The background features a pixelated pattern, adding a digital and retro vibe to the card.\nMemetic references: Pepe the Frog references.; Play on luxury brand \"Gucci\" with \"Guchi\".; Commentary on authenticity and value in the NFT space.; Streetwear and high-fashion parody.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPETHEFAKE.GUCHIFAKE#text",
+      "label": "On-card text",
+      "text": "GUCHI, FAKE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPETHEFAKE.GUCHIFAKE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references.\nPlay on luxury brand \"Gucci\" with \"Guchi\".\nCommentary on authenticity and value in the NFT space.\nStreetwear and high-fashion parody.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPETHEFAKE.GUCHIFAKE#visual",
+      "label": "Visual summary",
+      "text": "This card showcases a Pepe the Frog character styled with a high-fashion twist, donning a sleek black suit and white shorts. The color palette is rich with dark tones and pops of green and red, which complement the Guchi theme. The background features a pixelated pattern, adding a digital and retro vibe to the card.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPETHEFAKE.GUCHIFAKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nGUCHI, FAKE\n\n🎨 **VISUAL BREAKDOWN:**\nThis card showcases a Pepe the Frog character styled with a high-fashion twist, donning a sleek black suit and white shorts. The color palette is rich with dark tones and pops of green and red, which complement the Guchi theme. The background features a pixelated pattern, adding a digital and retro vibe to the card.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references.\n- Play on luxury brand \"Gucci\" with \"Guchi\".\n- Commentary on authenticity and value in the NFT space.\n- Streetwear and high-fashion parody.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.995Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "asset": "RAREGOLFPEPE",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 41,
+  "artist": "Shawn Leary <p class=\"wp-block-p",
+  "supply": 100,
+  "issuance": "April 2026",
+  "textOnCard": [
+    "RAREGOLFPEPE",
+    "2026 @shawnleary"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple of meme culture.",
+    "Golf references, including the iconic green jacket and leaderboard.",
+    "Crypto-culture nod with \"RARE\" on the golf ball.",
+    "Playful nod to collectible card aesthetics."
+  ],
+  "visualSummary": "This card features Pepe the Frog dressed in a green golf jacket and cap, standing on a vibrant golf course. The background includes a leaderboard and lush trees, with a bright blue sky overhead. The color palette is fresh and lively, with greens, blues, and pops of floral pinks and purples.",
+  "visualSummaryShort": "The card showcases Pepe the Frog in a green golf jacket on a lively golf course. The scene is bright with a blue sky, lush trees, and colorful floral elements.",
+  "visualKeywords": [
+    "pepe the frog",
+    "golf jacket",
+    "golf course",
+    "blue sky",
+    "lush trees",
+    "floral colors",
+    "vibrant",
+    "leaderboard"
+  ],
+  "textKeywords": [
+    "raregolfpepe",
+    "2026",
+    "shawnleary"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "golf jacket",
+    "golf course",
+    "blue sky",
+    "lush trees",
+    "floral colors",
+    "vibrant",
+    "leaderboard",
+    "raregolfpepe",
+    "2026",
+    "shawnleary"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "RAREGOLFPEPE (Fake Rares) - Series 18 Card 41\nArtist: Shawn Leary <p class=\"wp-block-p\nSupply 100 Issued April 2026\nOn-card text: RAREGOLFPEPE | 2026 @shawnleary\nVisual summary: This card features Pepe the Frog dressed in a green golf jacket and cap, standing on a vibrant golf course. The background includes a leaderboard and lush trees, with a bright blue sky overhead. The color palette is fresh and lively, with greens, blues, and pops of floral pinks and purples.\nMemetic references: Pepe the Frog, a staple of meme culture.; Golf references, including the iconic green jacket and leaderboard.; Crypto-culture nod with \"RARE\" on the golf ball.; Playful nod to collectible card aesthetics.",
+  "embeddingBlocks": [
+    {
+      "id": "RAREGOLFPEPE#text",
+      "label": "On-card text",
+      "text": "RAREGOLFPEPE | 2026 @shawnleary",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "RAREGOLFPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple of meme culture.\nGolf references, including the iconic green jacket and leaderboard.\nCrypto-culture nod with \"RARE\" on the golf ball.\nPlayful nod to collectible card aesthetics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RAREGOLFPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features Pepe the Frog dressed in a green golf jacket and cap, standing on a vibrant golf course. The background includes a leaderboard and lush trees, with a bright blue sky overhead. The color palette is fresh and lively, with greens, blues, and pops of floral pinks and purples.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RAREGOLFPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nRAREGOLFPEPE  \n2026 @shawnleary\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features Pepe the Frog dressed in a green golf jacket and cap, standing on a vibrant golf course. The background includes a leaderboard and lush trees, with a bright blue sky overhead. The color palette is fresh and lively, with greens, blues, and pops of floral pinks and purples.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple of meme culture.\n- Golf references, including the iconic green jacket and leaderboard.\n- Crypto-culture nod with \"RARE\" on the golf ball.\n- Playful nod to collectible card aesthetics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:32:16.247Z"
+}

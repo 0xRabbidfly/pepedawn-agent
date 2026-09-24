@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "asset": "LILPEPEVERT",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 6,
+  "artist": "AWRALPH x Rare Scrilla",
+  "supply": 44,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "Lil Pepe Vert",
+    "₿itcoin Llif3"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure.",
+    "Reference to the rapper Lil Uzi Vert through the play on words \"Lil Pepe Vert.\"",
+    "Crypto culture nod with \"₿itcoin Llif3.\"",
+    "Classic stoner imagery with the joint and relaxed demeanor."
+  ],
+  "visualSummary": "The card showcases Pepe the Frog, depicted with a laid-back expression, driving a car while holding a lit joint. The background features vibrant, neon pink and purple stripes, suggesting a nighttime cityscape vibe. The overall color palette combines dark blues with bright highlights, giving it a retro-futuristic feel.",
+  "visualSummaryShort": "The card features Pepe the Frog driving a car with a relaxed expression while holding a lit joint. The vibrant neon pink and purple stripes in the background create a retro-futuristic nighttime cityscape vibe.",
+  "visualKeywords": [
+    "pepe",
+    "car",
+    "joint",
+    "neon",
+    "pink",
+    "purple",
+    "nighttime",
+    "retro",
+    "cityscape",
+    "blue"
+  ],
+  "textKeywords": [
+    "lil",
+    "vert",
+    "itcoin",
+    "llif3"
+  ],
+  "keywords": [
+    "pepe",
+    "car",
+    "joint",
+    "neon",
+    "pink",
+    "purple",
+    "nighttime",
+    "retro",
+    "cityscape",
+    "blue",
+    "lil",
+    "vert",
+    "itcoin",
+    "llif3"
+  ],
+  "embeddingInput": "LILPEPEVERT (Fake Rares) - Series 4 Card 6\nArtist: AWRALPH x Rare Scrilla\nSupply 44 Issued November 2021\nOn-card text: Lil Pepe Vert | ₿itcoin Llif3\nVisual summary: The card showcases Pepe the Frog, depicted with a laid-back expression, driving a car while holding a lit joint. The background features vibrant, neon pink and purple stripes, suggesting a nighttime cityscape vibe. The overall color palette combines dark blues with bright highlights, giving it a retro-futuristic feel.\nMemetic references: Pepe the Frog as a central figure.; Reference to the rapper Lil Uzi Vert through the play on words \"Lil Pepe Vert.\"; Crypto culture nod with \"₿itcoin Llif3.\"; Classic stoner imagery with the joint and relaxed demeanor.",
+  "embeddingBlocks": [
+    {
+      "id": "LILPEPEVERT#text",
+      "label": "On-card text",
+      "text": "Lil Pepe Vert | ₿itcoin Llif3",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "LILPEPEVERT#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure.\nReference to the rapper Lil Uzi Vert through the play on words \"Lil Pepe Vert.\"\nCrypto culture nod with \"₿itcoin Llif3.\"\nClassic stoner imagery with the joint and relaxed demeanor.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LILPEPEVERT#visual",
+      "label": "Visual summary",
+      "text": "The card showcases Pepe the Frog, depicted with a laid-back expression, driving a car while holding a lit joint. The background features vibrant, neon pink and purple stripes, suggesting a nighttime cityscape vibe. The overall color palette combines dark blues with bright highlights, giving it a retro-futuristic feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LILPEPEVERT#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nLil Pepe Vert  \n₿itcoin Llif3\n\n🎨 **VISUAL BREAKDOWN:**\nThe card showcases Pepe the Frog, depicted with a laid-back expression, driving a car while holding a lit joint. The background features vibrant, neon pink and purple stripes, suggesting a nighttime cityscape vibe. The overall color palette combines dark blues with bright highlights, giving it a retro-futuristic feel.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure.\n- Reference to the rapper Lil Uzi Vert through the play on words \"Lil Pepe Vert.\"\n- Crypto culture nod with \"₿itcoin Llif3.\"\n- Classic stoner imagery with the joint and relaxed demeanor.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.746Z",
+  "sourceFactVersion": 1
+}

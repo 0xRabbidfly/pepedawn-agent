@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "asset": "PEPETAROTXVI",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 4,
+  "artist": "SHEWOLF",
+  "supply": 40,
+  "issuance": "October 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference, a staple of meme culture.",
+    "The swirling patterns evoke a sense of mystery and chaos often found in meme art.",
+    "The Matrix-style code on the borders suggests themes of digital reality and crypto culture."
+  ],
+  "visualSummary": "The card features a central Pepe the Frog with a contemplative expression, surrounded by intricate, swirling patterns in green and orange hues. The design has a symmetrical, almost psychedelic quality, reminiscent of vintage playing card backs. The color palette mixes earthy tones with vibrant greens, creating a visually striking contrast.",
+  "visualSummaryShort": "The card showcases a central Pepe the Frog with a thoughtful look, surrounded by intricate swirling patterns. The vibrant green and orange hues create a striking contrast against the earthy tones.",
+  "visualKeywords": [
+    "pepe the frog",
+    "contemplative",
+    "swirling patterns",
+    "green",
+    "orange",
+    "psychedelic",
+    "symmetrical",
+    "earthy tones",
+    "vibrant contrast"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "contemplative",
+    "swirling patterns",
+    "green",
+    "orange",
+    "psychedelic",
+    "symmetrical",
+    "earthy tones",
+    "vibrant contrast"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "PEPETAROTXVI (Fake Rares) - Series 11 Card 4\nArtist: SHEWOLF\nSupply 40 Issued October 2022\nOn-card text: none detected\nVisual summary: The card features a central Pepe the Frog with a contemplative expression, surrounded by intricate, swirling patterns in green and orange hues. The design has a symmetrical, almost psychedelic quality, reminiscent of vintage playing card backs. The color palette mixes earthy tones with vibrant greens, creating a visually striking contrast.\nMemetic references: Classic Pepe the Frog reference, a staple of meme culture.; The swirling patterns evoke a sense of mystery and chaos often found in meme art.; The Matrix-style code on the borders suggests themes of digital reality and crypto culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPETAROTXVI#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference, a staple of meme culture.\nThe swirling patterns evoke a sense of mystery and chaos often found in meme art.\nThe Matrix-style code on the borders suggests themes of digital reality and crypto culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPETAROTXVI#visual",
+      "label": "Visual summary",
+      "text": "The card features a central Pepe the Frog with a contemplative expression, surrounded by intricate, swirling patterns in green and orange hues. The design has a symmetrical, almost psychedelic quality, reminiscent of vintage playing card backs. The color palette mixes earthy tones with vibrant greens, creating a visually striking contrast.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPETAROTXVI#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a central Pepe the Frog with a contemplative expression, surrounded by intricate, swirling patterns in green and orange hues. The design has a symmetrical, almost psychedelic quality, reminiscent of vintage playing card backs. The color palette mixes earthy tones with vibrant greens, creating a visually striking contrast.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference, a staple of meme culture.\n- The swirling patterns evoke a sense of mystery and chaos often found in meme art.\n- The Matrix-style code on the borders suggests themes of digital reality and crypto culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:34:15.630Z"
+}

@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "asset": "PEPEVAGGIOFK",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 44,
+  "artist": "Luis Simo",
+  "supply": 22,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "CONTENT ADVISORY: Please flip this painting to enjoy in full fakeness."
+  ],
+  "memeticReferences": [
+    "Classic art parody with Pepe the Frog as a central figure.",
+    "Memento mori symbol with the skull, nodding to historical art themes.",
+    "\"Content Advisory\" text adds a layer of meme humor, breaking the fourth wall."
+  ],
+  "visualSummary": "The card features a classical-style painting with a surreal twist. A green Pepe figure, resembling a saint, is depicted in a red robe, writing in a book from an upside-down perspective. The dark background and dramatic lighting enhance the Baroque-inspired aesthetic, with a skull adding a touch of memento mori.",
+  "visualSummaryShort": "The card showcases a surreal classical painting featuring a green Pepe figure in a red robe, writing in a book from an upside-down perspective. The dark background and dramatic lighting create a Baroque-inspired atmosphere, complemented by a skull for a memento mori effect.",
+  "visualKeywords": [
+    "green pepe",
+    "red robe",
+    "upside-down",
+    "dark background",
+    "dramatic lighting",
+    "skull",
+    "baroque",
+    "surreal",
+    "painting"
+  ],
+  "textKeywords": [
+    "content",
+    "advisory",
+    "please",
+    "flip",
+    "painting",
+    "enjoy",
+    "full",
+    "fakeness"
+  ],
+  "keywords": [
+    "green pepe",
+    "red robe",
+    "upside-down",
+    "dark background",
+    "dramatic lighting",
+    "skull",
+    "baroque",
+    "surreal",
+    "painting",
+    "content",
+    "advisory",
+    "please",
+    "flip",
+    "enjoy",
+    "full",
+    "fakeness"
+  ],
+  "embeddingInput": "PEPEVAGGIOFK (Fake Rares) - Series 6 Card 44\nArtist: Luis Simo\nSupply 22 Issued March 2022\nOn-card text: CONTENT ADVISORY: Please flip this painting to enjoy in full fakeness.\nVisual summary: The card features a classical-style painting with a surreal twist. A green Pepe figure, resembling a saint, is depicted in a red robe, writing in a book from an upside-down perspective. The dark background and dramatic lighting enhance the Baroque-inspired aesthetic, with a skull adding a touch of memento mori.\nMemetic references: Classic art parody with Pepe the Frog as a central figure.; Memento mori symbol with the skull, nodding to historical art themes.; \"Content Advisory\" text adds a layer of meme humor, breaking the fourth wall.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEVAGGIOFK#text",
+      "label": "On-card text",
+      "text": "CONTENT ADVISORY: Please flip this painting to enjoy in full fakeness.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEVAGGIOFK#memetic",
+      "label": "Memetic references",
+      "text": "Classic art parody with Pepe the Frog as a central figure.\nMemento mori symbol with the skull, nodding to historical art themes.\n\"Content Advisory\" text adds a layer of meme humor, breaking the fourth wall.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEVAGGIOFK#visual",
+      "label": "Visual summary",
+      "text": "The card features a classical-style painting with a surreal twist. A green Pepe figure, resembling a saint, is depicted in a red robe, writing in a book from an upside-down perspective. The dark background and dramatic lighting enhance the Baroque-inspired aesthetic, with a skull adding a touch of memento mori.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEVAGGIOFK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nCONTENT ADVISORY: Please flip this painting to enjoy in full fakeness.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a classical-style painting with a surreal twist. A green Pepe figure, resembling a saint, is depicted in a red robe, writing in a book from an upside-down perspective. The dark background and dramatic lighting enhance the Baroque-inspired aesthetic, with a skull adding a touch of memento mori.\n\n🧬 **MEMETIC DNA:**\n- Classic art parody with Pepe the Frog as a central figure.\n- Memento mori symbol with the skull, nodding to historical art themes.\n- \"Content Advisory\" text adds a layer of meme humor, breaking the fourth wall.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.005Z",
+  "sourceFactVersion": 1
+}

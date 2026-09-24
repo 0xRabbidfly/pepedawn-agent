@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "asset": "SCHIFFPEPE",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 37,
+  "artist": "Coasters",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure, a staple in meme culture.",
+    "Bitcoin references, highlighting crypto culture.",
+    "The baby's hat with a Bitcoin logo, symbolizing the next generation of crypto enthusiasts.",
+    "The eggplant pin on the suit, a nod to internet meme culture."
+  ],
+  "visualSummary": "The card features a large Pepe character in a suit, holding a baby Pepe dressed in a Bitcoin-themed outfit. The background is a bright orange with repeating Bitcoin symbols, creating a vibrant and eye-catching contrast. The artistic style is cartoonish with bold lines and a playful, satirical vibe.",
+  "visualSummaryShort": "The card showcases a large Pepe character in a suit, cradling a baby Pepe in a Bitcoin-themed outfit. The bright orange background with repeating Bitcoin symbols adds a vibrant and playful touch.",
+  "visualKeywords": [
+    "pepe",
+    "suit",
+    "baby pepe",
+    "bitcoin",
+    "orange background",
+    "cartoonish",
+    "bold lines",
+    "playful",
+    "satirical"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "suit",
+    "baby pepe",
+    "bitcoin",
+    "orange background",
+    "cartoonish",
+    "bold lines",
+    "playful",
+    "satirical"
+  ],
+  "embeddingInput": "SCHIFFPEPE (Fake Rares) - Series 2 Card 37\nArtist: Coasters\nSupply 100 Issued October 2021\nOn-card text: none detected\nVisual summary: The card features a large Pepe character in a suit, holding a baby Pepe dressed in a Bitcoin-themed outfit. The background is a bright orange with repeating Bitcoin symbols, creating a vibrant and eye-catching contrast. The artistic style is cartoonish with bold lines and a playful, satirical vibe.\nMemetic references: Pepe the Frog as a central figure, a staple in meme culture.; Bitcoin references, highlighting crypto culture.; The baby's hat with a Bitcoin logo, symbolizing the next generation of crypto enthusiasts.; The eggplant pin on the suit, a nod to internet meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "SCHIFFPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure, a staple in meme culture.\nBitcoin references, highlighting crypto culture.\nThe baby's hat with a Bitcoin logo, symbolizing the next generation of crypto enthusiasts.\nThe eggplant pin on the suit, a nod to internet meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SCHIFFPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a large Pepe character in a suit, holding a baby Pepe dressed in a Bitcoin-themed outfit. The background is a bright orange with repeating Bitcoin symbols, creating a vibrant and eye-catching contrast. The artistic style is cartoonish with bold lines and a playful, satirical vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SCHIFFPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a large Pepe character in a suit, holding a baby Pepe dressed in a Bitcoin-themed outfit. The background is a bright orange with repeating Bitcoin symbols, creating a vibrant and eye-catching contrast. The artistic style is cartoonish with bold lines and a playful, satirical vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure, a staple in meme culture.\n- Bitcoin references, highlighting crypto culture.\n- The baby's hat with a Bitcoin logo, symbolizing the next generation of crypto enthusiasts.\n- The eggplant pin on the suit, a nod to internet meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.100Z",
+  "sourceFactVersion": 1
+}

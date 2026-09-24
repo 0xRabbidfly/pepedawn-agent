@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PEPEZION",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 23,
+  "artist": "Coit",
+  "supply": 26,
+  "issuance": "September 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "References to Pepe the Frog with a surreal twist.",
+    "Crypto-symbolism with an eye and pyramid motif, hinting at hidden knowledge or enlightenment.",
+    "Elements of absurdism reflecting the chaotic and unpredictable nature of the crypto world."
+  ],
+  "visualSummary": "The card features a surreal landscape with vivid pink and red tones, creating a dreamlike atmosphere. At the center, a distorted, cartoonish figure resembling Pepe is wiping its brow with a handkerchief, surrounded by whimsical and bizarre elements like floating eyes, grinning mouths, and abstract shapes. The style is chaotic and abstract, with bold lines and a playful, psychedelic vibe.",
+  "visualSummaryShort": "The card showcases a surreal landscape filled with vivid pink and red tones, creating a dreamlike atmosphere. A cartoonish figure resembling Pepe is at the center, surrounded by whimsical elements like floating eyes and abstract shapes.",
+  "visualKeywords": [
+    "surreal",
+    "pink",
+    "red",
+    "cartoonish",
+    "whimsical",
+    "abstract",
+    "chaotic",
+    "psychedelic",
+    "floating eyes",
+    "bold lines"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "surreal",
+    "pink",
+    "red",
+    "cartoonish",
+    "whimsical",
+    "abstract",
+    "chaotic",
+    "psychedelic",
+    "floating eyes",
+    "bold lines"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "PEPEZION (Fake Rares) - Series 15 Card 23\nArtist: Coit\nSupply 26 Issued September 2022\nOn-card text: none detected\nVisual summary: The card features a surreal landscape with vivid pink and red tones, creating a dreamlike atmosphere. At the center, a distorted, cartoonish figure resembling Pepe is wiping its brow with a handkerchief, surrounded by whimsical and bizarre elements like floating eyes, grinning mouths, and abstract shapes. The style is chaotic and abstract, with bold lines and a playful, psychedelic vibe.\nMemetic references: References to Pepe the Frog with a surreal twist.; Crypto-symbolism with an eye and pyramid motif, hinting at hidden knowledge or enlightenment.; Elements of absurdism reflecting the chaotic and unpredictable nature of the crypto world.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEZION#memetic",
+      "label": "Memetic references",
+      "text": "References to Pepe the Frog with a surreal twist.\nCrypto-symbolism with an eye and pyramid motif, hinting at hidden knowledge or enlightenment.\nElements of absurdism reflecting the chaotic and unpredictable nature of the crypto world.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEZION#visual",
+      "label": "Visual summary",
+      "text": "The card features a surreal landscape with vivid pink and red tones, creating a dreamlike atmosphere. At the center, a distorted, cartoonish figure resembling Pepe is wiping its brow with a handkerchief, surrounded by whimsical and bizarre elements like floating eyes, grinning mouths, and abstract shapes. The style is chaotic and abstract, with bold lines and a playful, psychedelic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEZION#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a surreal landscape with vivid pink and red tones, creating a dreamlike atmosphere. At the center, a distorted, cartoonish figure resembling Pepe is wiping its brow with a handkerchief, surrounded by whimsical and bizarre elements like floating eyes, grinning mouths, and abstract shapes. The style is chaotic and abstract, with bold lines and a playful, psychedelic vibe.\n\n🧬 **MEMETIC DNA:**\n- References to Pepe the Frog with a surreal twist.\n- Crypto-symbolism with an eye and pyramid motif, hinting at hidden knowledge or enlightenment.\n- Elements of absurdism reflecting the chaotic and unpredictable nature of the crypto world.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:34:39.944Z"
+}

@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "DOODLEPEPE",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 47,
+  "artist": "Vexx",
+  "supply": 100,
+  "issuance": "September 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog as the central figure.",
+    "Psychedelic and surreal elements echoing 1960s pop art vibes.",
+    "References to internet culture and meme chaos with abstract and exaggerated facial expressions."
+  ],
+  "visualSummary": "This card is a vibrant explosion of color and chaos, featuring a central Pepe the Frog amidst a psychedelic backdrop. The composition is packed with abstract shapes, flowers, and surreal characters, all in a kaleidoscope of neon pinks, blues, and greens. The artistic style is reminiscent of pop art with a modern twist, blending street art elements with digital aesthetics.",
+  "visualSummaryShort": "The card showcases a colorful and chaotic scene centered around Pepe the Frog, surrounded by abstract shapes and surreal characters. The vibrant palette includes neon pinks, blues, and greens, creating a pop art-inspired aesthetic.",
+  "visualKeywords": [
+    "pepe the frog",
+    "psychedelic",
+    "abstract shapes",
+    "flowers",
+    "surreal characters",
+    "neon colors",
+    "pop art",
+    "chaos",
+    "digital art",
+    "vibrant"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "psychedelic",
+    "abstract shapes",
+    "flowers",
+    "surreal characters",
+    "neon colors",
+    "pop art",
+    "chaos",
+    "digital art",
+    "vibrant"
+  ],
+  "embeddingInput": "DOODLEPEPE (Fake Rares) - Series 11 Card 47\nArtist: Vexx\nSupply 100 Issued September 2022\nOn-card text: none detected\nVisual summary: This card is a vibrant explosion of color and chaos, featuring a central Pepe the Frog amidst a psychedelic backdrop. The composition is packed with abstract shapes, flowers, and surreal characters, all in a kaleidoscope of neon pinks, blues, and greens. The artistic style is reminiscent of pop art with a modern twist, blending street art elements with digital aesthetics.\nMemetic references: Classic Pepe the Frog as the central figure.; Psychedelic and surreal elements echoing 1960s pop art vibes.; References to internet culture and meme chaos with abstract and exaggerated facial expressions.",
+  "embeddingBlocks": [
+    {
+      "id": "DOODLEPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog as the central figure.\nPsychedelic and surreal elements echoing 1960s pop art vibes.\nReferences to internet culture and meme chaos with abstract and exaggerated facial expressions.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "DOODLEPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card is a vibrant explosion of color and chaos, featuring a central Pepe the Frog amidst a psychedelic backdrop. The composition is packed with abstract shapes, flowers, and surreal characters, all in a kaleidoscope of neon pinks, blues, and greens. The artistic style is reminiscent of pop art with a modern twist, blending street art elements with digital aesthetics.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "DOODLEPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card is a vibrant explosion of color and chaos, featuring a central Pepe the Frog amidst a psychedelic backdrop. The composition is packed with abstract shapes, flowers, and surreal characters, all in a kaleidoscope of neon pinks, blues, and greens. The artistic style is reminiscent of pop art with a modern twist, blending street art elements with digital aesthetics.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog as the central figure.\n- Psychedelic and surreal elements echoing 1960s pop art vibes.\n- References to internet culture and meme chaos with abstract and exaggerated facial expressions.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.412Z",
+  "sourceFactVersion": 1
+}

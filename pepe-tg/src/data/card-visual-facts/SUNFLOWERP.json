@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "asset": "SUNFLOWERP",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 44,
+  "artist": "JB",
+  "supply": 29,
+  "issuance": "October 2022",
+  "textOnCard": [
+    "SUNFLOWER PEPE",
+    "Pepe"
+  ],
+  "memeticReferences": [
+    "Van Gogh tribute with a Pepe twist",
+    "Classic Pepe the Frog reference",
+    "Art history meets meme culture"
+  ],
+  "visualSummary": "This card features a parody of Van Gogh's \"Sunflowers,\" with a twist of Pepe the Frog replacing the usual flowers. The color palette is predominantly green, with various shades creating a textured, painted look. The style mimics impressionist art, focusing on brush strokes and earthy tones.",
+  "visualSummaryShort": "The card showcases a parody of Van Gogh's \"Sunflowers\" with Pepe the Frog as the central figure. The artwork features a green color palette and an impressionist style with textured brush strokes.",
+  "visualKeywords": [
+    "pepe",
+    "sunflowers",
+    "green palette",
+    "impressionist",
+    "brush strokes",
+    "earthy tones"
+  ],
+  "textKeywords": [
+    "sunflower"
+  ],
+  "keywords": [
+    "pepe",
+    "sunflowers",
+    "green palette",
+    "impressionist",
+    "brush strokes",
+    "earthy tones",
+    "sunflower"
+  ],
+  "embeddingInput": "SUNFLOWERP (Fake Rares) - Series 10 Card 44\nArtist: JB\nSupply 29 Issued October 2022\nOn-card text: SUNFLOWER PEPE | Pepe\nVisual summary: This card features a parody of Van Gogh's \"Sunflowers,\" with a twist of Pepe the Frog replacing the usual flowers. The color palette is predominantly green, with various shades creating a textured, painted look. The style mimics impressionist art, focusing on brush strokes and earthy tones.\nMemetic references: Van Gogh tribute with a Pepe twist; Classic Pepe the Frog reference; Art history meets meme culture",
+  "embeddingBlocks": [
+    {
+      "id": "SUNFLOWERP#text",
+      "label": "On-card text",
+      "text": "SUNFLOWER PEPE | Pepe",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "SUNFLOWERP#memetic",
+      "label": "Memetic references",
+      "text": "Van Gogh tribute with a Pepe twist\nClassic Pepe the Frog reference\nArt history meets meme culture",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SUNFLOWERP#visual",
+      "label": "Visual summary",
+      "text": "This card features a parody of Van Gogh's \"Sunflowers,\" with a twist of Pepe the Frog replacing the usual flowers. The color palette is predominantly green, with various shades creating a textured, painted look. The style mimics impressionist art, focusing on brush strokes and earthy tones.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SUNFLOWERP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nSUNFLOWER PEPE  \nPepe\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a parody of Van Gogh's \"Sunflowers,\" with a twist of Pepe the Frog replacing the usual flowers. The color palette is predominantly green, with various shades creating a textured, painted look. The style mimics impressionist art, focusing on brush strokes and earthy tones.\n\n🧬 **MEMETIC DNA:**\n- Van Gogh tribute with a Pepe twist\n- Classic Pepe the Frog reference\n- Art history meets meme culture",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.134Z",
+  "sourceFactVersion": 1
+}

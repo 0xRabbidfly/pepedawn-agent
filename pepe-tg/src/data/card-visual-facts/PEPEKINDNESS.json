@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "PEPEKINDNESS",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 23,
+  "artist": "FourLeafClover",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "PEPEKINDNESS"
+  ],
+  "memeticReferences": [
+    "The use of a monkey character might reference the \"monkey\" meme often used in crypto culture to signify playful or adventurous trading.",
+    "Vending machines symbolize choice and variety, possibly hinting at diverse opportunities or investments in the NFT space.",
+    "The banana on the monkey's shirt could be a nod to classic meme humor, associating the character with mischief and fun."
+  ],
+  "visualSummary": "The card features a vending machine filled with colorful drinks, each organized by rows of red, orange, blue, green, and purple. A cartoonish monkey character stands to the right, inserting a coin into the machine. The color palette is vibrant, with bold primary and secondary colors, and the style is playful and simplistic, reminiscent of classic animated cartoons.",
+  "visualSummaryShort": "The card showcases a vibrant vending machine filled with colorful drinks and a cartoonish monkey inserting a coin. The playful style and bold colors create a cheerful atmosphere.",
+  "visualKeywords": [
+    "vending machine",
+    "colorful drinks",
+    "monkey",
+    "playful",
+    "bold colors",
+    "cartoonish",
+    "primary colors",
+    "secondary colors"
+  ],
+  "textKeywords": [
+    "pepekindness"
+  ],
+  "keywords": [
+    "vending machine",
+    "colorful drinks",
+    "monkey",
+    "playful",
+    "bold colors",
+    "cartoonish",
+    "primary colors",
+    "secondary colors",
+    "pepekindness"
+  ],
+  "embeddingInput": "PEPEKINDNESS (Fake Rares) - Series 2 Card 23\nArtist: FourLeafClover\nSupply 100 Issued October 2021\nOn-card text: PEPEKINDNESS\nVisual summary: The card features a vending machine filled with colorful drinks, each organized by rows of red, orange, blue, green, and purple. A cartoonish monkey character stands to the right, inserting a coin into the machine. The color palette is vibrant, with bold primary and secondary colors, and the style is playful and simplistic, reminiscent of classic animated cartoons.\nMemetic references: The use of a monkey character might reference the \"monkey\" meme often used in crypto culture to signify playful or adventurous trading.; Vending machines symbolize choice and variety, possibly hinting at diverse opportunities or investments in the NFT space.; The banana on the monkey's shirt could be a nod to classic meme humor, associating the character with mischief and fun.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEKINDNESS#text",
+      "label": "On-card text",
+      "text": "PEPEKINDNESS",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEKINDNESS#memetic",
+      "label": "Memetic references",
+      "text": "The use of a monkey character might reference the \"monkey\" meme often used in crypto culture to signify playful or adventurous trading.\nVending machines symbolize choice and variety, possibly hinting at diverse opportunities or investments in the NFT space.\nThe banana on the monkey's shirt could be a nod to classic meme humor, associating the character with mischief and fun.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEKINDNESS#visual",
+      "label": "Visual summary",
+      "text": "The card features a vending machine filled with colorful drinks, each organized by rows of red, orange, blue, green, and purple. A cartoonish monkey character stands to the right, inserting a coin into the machine. The color palette is vibrant, with bold primary and secondary colors, and the style is playful and simplistic, reminiscent of classic animated cartoons.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEKINDNESS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPEKINDNESS\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vending machine filled with colorful drinks, each organized by rows of red, orange, blue, green, and purple. A cartoonish monkey character stands to the right, inserting a coin into the machine. The color palette is vibrant, with bold primary and secondary colors, and the style is playful and simplistic, reminiscent of classic animated cartoons.\n\n🧬 **MEMETIC DNA:**\n- The use of a monkey character might reference the \"monkey\" meme often used in crypto culture to signify playful or adventurous trading.\n- Vending machines symbolize choice and variety, possibly hinting at diverse opportunities or investments in the NFT space.\n- The banana on the monkey's shirt could be a nod to classic meme humor, associating the character with mischief and fun.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.907Z",
+  "sourceFactVersion": 1
+}

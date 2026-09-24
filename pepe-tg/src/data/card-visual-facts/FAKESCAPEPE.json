@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "asset": "FAKESCAPEPE",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 31,
+  "artist": "IPUTSA",
+  "supply": 100,
+  "issuance": "June 2022",
+  "textOnCard": [
+    "NO WAY TO ESCAPE",
+    "PEPE"
+  ],
+  "memeticReferences": [
+    "Numerous Pepe the Frog references, showcasing its iconic status in meme culture.",
+    "The hall of frames symbolizes the endless variations and adaptations of Pepe.",
+    "\"Feel Good\" written on one frame adds a layer of irony typical in meme culture."
+  ],
+  "visualSummary": "This card features a dynamic scene of a woman in a flowing dress running through an art gallery with a starry sky visible through a glass ceiling. The walls are adorned with an eclectic mix of framed Pepe the Frog artworks in various styles and expressions. The color palette is warm with rich browns and teals, creating a sense of depth and movement as the woman seems to flee from the overwhelming presence of Pepe.",
+  "visualSummaryShort": "The card depicts a woman in a flowing dress running through an art gallery under a starry sky. The walls are filled with various Pepe the Frog artworks, creating a vibrant and dynamic atmosphere.",
+  "visualKeywords": [
+    "art gallery",
+    "starry sky",
+    "woman",
+    "flowing dress",
+    "pepe",
+    "warm colors",
+    "brown",
+    "teal",
+    "movement",
+    "framed artworks"
+  ],
+  "textKeywords": [
+    "way",
+    "escape"
+  ],
+  "keywords": [
+    "art gallery",
+    "starry sky",
+    "woman",
+    "flowing dress",
+    "pepe",
+    "warm colors",
+    "brown",
+    "teal",
+    "movement",
+    "framed artworks",
+    "way",
+    "escape"
+  ],
+  "embeddingInput": "FAKESCAPEPE (Fake Rares) - Series 8 Card 31\nArtist: IPUTSA\nSupply 100 Issued June 2022\nOn-card text: NO WAY TO ESCAPE | PEPE\nVisual summary: This card features a dynamic scene of a woman in a flowing dress running through an art gallery with a starry sky visible through a glass ceiling. The walls are adorned with an eclectic mix of framed Pepe the Frog artworks in various styles and expressions. The color palette is warm with rich browns and teals, creating a sense of depth and movement as the woman seems to flee from the overwhelming presence of Pepe.\nMemetic references: Numerous Pepe the Frog references, showcasing its iconic status in meme culture.; The hall of frames symbolizes the endless variations and adaptations of Pepe.; \"Feel Good\" written on one frame adds a layer of irony typical in meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKESCAPEPE#text",
+      "label": "On-card text",
+      "text": "NO WAY TO ESCAPE | PEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKESCAPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Numerous Pepe the Frog references, showcasing its iconic status in meme culture.\nThe hall of frames symbolizes the endless variations and adaptations of Pepe.\n\"Feel Good\" written on one frame adds a layer of irony typical in meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKESCAPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a dynamic scene of a woman in a flowing dress running through an art gallery with a starry sky visible through a glass ceiling. The walls are adorned with an eclectic mix of framed Pepe the Frog artworks in various styles and expressions. The color palette is warm with rich browns and teals, creating a sense of depth and movement as the woman seems to flee from the overwhelming presence of Pepe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKESCAPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nNO WAY TO ESCAPE  \nPEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a dynamic scene of a woman in a flowing dress running through an art gallery with a starry sky visible through a glass ceiling. The walls are adorned with an eclectic mix of framed Pepe the Frog artworks in various styles and expressions. The color palette is warm with rich browns and teals, creating a sense of depth and movement as the woman seems to flee from the overwhelming presence of Pepe.\n\n🧬 **MEMETIC DNA:**\n- Numerous Pepe the Frog references, showcasing its iconic status in meme culture.\n- The hall of frames symbolizes the endless variations and adaptations of Pepe.\n- \"Feel Good\" written on one frame adds a layer of irony typical in meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.573Z",
+  "sourceFactVersion": 1
+}

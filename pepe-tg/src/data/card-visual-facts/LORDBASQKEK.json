@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "asset": "LORDBASQKEK",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 13,
+  "artist": "BasqKek",
+  "supply": 42,
+  "issuance": "May 2022",
+  "textOnCard": [
+    "FAKE LORDBASQKEK. All keks worship Lord Basqkek as the kekest, most powerful kek in existence — Fake Godhead. Rareness Score = 25 38 420."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure, a staple in meme culture.",
+    "References to Egyptian themes, suggesting a god-like status.",
+    "Use of \"kek\" and \"FAKE\" taps into crypto and meme culture.",
+    "The eye of providence, a nod to conspiracy memes and symbolism.",
+    "Numbers like 420, often associated with internet culture and humor."
+  ],
+  "visualSummary": "The card features a chaotic, vibrant composition with a central figure that resembles a Pepe frog adorned in Egyptian-style regalia, sitting on a throne. The color palette is bold and eclectic, with bright reds, greens, blues, and yellows, reminiscent of street art or graffiti. The style is a mix of abstract and surreal, with tribal and ancient Egyptian influences merged with modern meme art.",
+  "visualSummaryShort": "The card showcases a vibrant, chaotic scene featuring a Pepe frog in Egyptian regalia on a throne. Its bold color palette and surreal style blend ancient influences with modern meme art.",
+  "visualKeywords": [
+    "pepe frog",
+    "throne",
+    "egyptian regalia",
+    "vibrant colors",
+    "abstract",
+    "surreal",
+    "tribal",
+    "graffiti",
+    "chaotic",
+    "bold"
+  ],
+  "textKeywords": [
+    "lordbasqkek",
+    "all",
+    "keks",
+    "worship",
+    "lord",
+    "basqkek",
+    "kekest",
+    "powerful",
+    "kek",
+    "existence",
+    "godhead",
+    "rareness",
+    "score",
+    "420"
+  ],
+  "keywords": [
+    "pepe frog",
+    "throne",
+    "egyptian regalia",
+    "vibrant colors",
+    "abstract",
+    "surreal",
+    "tribal",
+    "graffiti",
+    "chaotic",
+    "bold",
+    "lordbasqkek",
+    "all",
+    "keks",
+    "worship",
+    "lord",
+    "basqkek",
+    "kekest",
+    "powerful",
+    "kek",
+    "existence",
+    "godhead",
+    "rareness",
+    "score",
+    "420"
+  ],
+  "embeddingInput": "LORDBASQKEK (Fake Rares) - Series 11 Card 13\nArtist: BasqKek\nSupply 42 Issued May 2022\nOn-card text: FAKE LORDBASQKEK. All keks worship Lord Basqkek as the kekest, most powerful kek in existence — Fake Godhead. Rareness Score = 25 38 420.\nVisual summary: The card features a chaotic, vibrant composition with a central figure that resembles a Pepe frog adorned in Egyptian-style regalia, sitting on a throne. The color palette is bold and eclectic, with bright reds, greens, blues, and yellows, reminiscent of street art or graffiti. The style is a mix of abstract and surreal, with tribal and ancient Egyptian influences merged with modern meme art.\nMemetic references: Pepe the Frog as a central figure, a staple in meme culture.; References to Egyptian themes, suggesting a god-like status.; Use of \"kek\" and \"FAKE\" taps into crypto and meme culture.; The eye of providence, a nod to conspiracy memes and symbolism.; Numbers like 420, often associated with internet culture and humor.",
+  "embeddingBlocks": [
+    {
+      "id": "LORDBASQKEK#text",
+      "label": "On-card text",
+      "text": "FAKE LORDBASQKEK. All keks worship Lord Basqkek as the kekest, most powerful kek in existence — Fake Godhead. Rareness Score = 25 38 420.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "LORDBASQKEK#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure, a staple in meme culture.\nReferences to Egyptian themes, suggesting a god-like status.\nUse of \"kek\" and \"FAKE\" taps into crypto and meme culture.\nThe eye of providence, a nod to conspiracy memes and symbolism.\nNumbers like 420, often associated with internet culture and humor.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LORDBASQKEK#visual",
+      "label": "Visual summary",
+      "text": "The card features a chaotic, vibrant composition with a central figure that resembles a Pepe frog adorned in Egyptian-style regalia, sitting on a throne. The color palette is bold and eclectic, with bright reds, greens, blues, and yellows, reminiscent of street art or graffiti. The style is a mix of abstract and surreal, with tribal and ancient Egyptian influences merged with modern meme art.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LORDBASQKEK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE LORDBASQKEK. All keks worship Lord Basqkek as the kekest, most powerful kek in existence — Fake Godhead. Rareness Score = 25 38 420.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a chaotic, vibrant composition with a central figure that resembles a Pepe frog adorned in Egyptian-style regalia, sitting on a throne. The color palette is bold and eclectic, with bright reds, greens, blues, and yellows, reminiscent of street art or graffiti. The style is a mix of abstract and surreal, with tribal and ancient Egyptian influences merged with modern meme art.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure, a staple in meme culture.\n- References to Egyptian themes, suggesting a god-like status.\n- Use of \"kek\" and \"FAKE\" taps into crypto and meme culture.\n- The eye of providence, a nod to conspiracy memes and symbolism.\n- Numbers like 420, often associated with internet culture and humor.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.750Z",
+  "sourceFactVersion": 1
+}

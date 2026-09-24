@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "asset": "FAKECALLS",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 39,
+  "artist": "80sKurtRussel",
+  "supply": 81,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "As long as we stay above PEPE we're Bullish. For more trading tip and incredible price analysis become a member of the FAKEPEPECALLS Trading Empire on Telegram."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central meme figure.",
+    "Crypto trading culture with chart aesthetics.",
+    "Reference to trading signals and analysis.",
+    "Play on words with \"FAKEPEPECALLS\" mimicking crypto call groups."
+  ],
+  "visualSummary": "The card features a chart backdrop with a green, cartoonish Pepe the Frog face prominently centered. The chart shows a bullish trend with vibrant green candles climbing upwards. The color palette is dominated by green and red, evoking the classic trading visuals.",
+  "visualSummaryShort": "The card showcases a cartoonish Pepe the Frog face against a chart backdrop indicating a bullish trend. The vibrant green and red colors highlight the trading theme.",
+  "visualKeywords": [
+    "pepe",
+    "chart",
+    "bullish",
+    "green",
+    "red",
+    "candles",
+    "cartoonish",
+    "trading",
+    "vibrant"
+  ],
+  "textKeywords": [
+    "long",
+    "stay",
+    "above",
+    "bullish",
+    "trading",
+    "tip",
+    "incredible",
+    "price",
+    "analysis",
+    "become",
+    "member",
+    "fakepepecalls",
+    "empire",
+    "telegram"
+  ],
+  "keywords": [
+    "pepe",
+    "chart",
+    "bullish",
+    "green",
+    "red",
+    "candles",
+    "cartoonish",
+    "trading",
+    "vibrant",
+    "long",
+    "stay",
+    "above",
+    "tip",
+    "incredible",
+    "price",
+    "analysis",
+    "become",
+    "member",
+    "fakepepecalls",
+    "empire",
+    "telegram"
+  ],
+  "embeddingInput": "FAKECALLS (Fake Rares) - Series 1 Card 39\nArtist: 80sKurtRussel\nSupply 81 Issued October 2021\nOn-card text: As long as we stay above PEPE we're Bullish. For more trading tip and incredible price analysis become a member of the FAKEPEPECALLS Trading Empire on Telegram.\nVisual summary: The card features a chart backdrop with a green, cartoonish Pepe the Frog face prominently centered. The chart shows a bullish trend with vibrant green candles climbing upwards. The color palette is dominated by green and red, evoking the classic trading visuals.\nMemetic references: Pepe the Frog as a central meme figure.; Crypto trading culture with chart aesthetics.; Reference to trading signals and analysis.; Play on words with \"FAKEPEPECALLS\" mimicking crypto call groups.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKECALLS#text",
+      "label": "On-card text",
+      "text": "As long as we stay above PEPE we're Bullish. For more trading tip and incredible price analysis become a member of the FAKEPEPECALLS Trading Empire on Telegram.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKECALLS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central meme figure.\nCrypto trading culture with chart aesthetics.\nReference to trading signals and analysis.\nPlay on words with \"FAKEPEPECALLS\" mimicking crypto call groups.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKECALLS#visual",
+      "label": "Visual summary",
+      "text": "The card features a chart backdrop with a green, cartoonish Pepe the Frog face prominently centered. The chart shows a bullish trend with vibrant green candles climbing upwards. The color palette is dominated by green and red, evoking the classic trading visuals.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKECALLS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nAs long as we stay above PEPE we're Bullish. For more trading tip and incredible price analysis become a member of the FAKEPEPECALLS Trading Empire on Telegram.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a chart backdrop with a green, cartoonish Pepe the Frog face prominently centered. The chart shows a bullish trend with vibrant green candles climbing upwards. The color palette is dominated by green and red, evoking the classic trading visuals.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central meme figure.\n- Crypto trading culture with chart aesthetics.\n- Reference to trading signals and analysis.\n- Play on words with \"FAKEPEPECALLS\" mimicking crypto call groups.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.467Z",
+  "sourceFactVersion": 1
+}

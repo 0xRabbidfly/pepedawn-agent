@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "PEPAAGOTCHI",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 46,
+  "artist": "Master Yin and Master Yang",
+  "supply": 121,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "Pepaagotchi"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple in meme culture.",
+    "Reference to Tamagotchi, the iconic 90s digital pet.",
+    "Crypto culture nod with a pixelated Ethereum logo on the pet.",
+    "Gamer nostalgia vibes with pixel art style."
+  ],
+  "visualSummary": "The card showcases a pixelated Pepe the Frog character dressed in a plaid shirt, holding an axe and a small digital pet. The background is a pixelated purple gradient, with vibrant colored orbs and a mountain-like shape. The overall style is retro and nostalgic, reminiscent of early video game graphics.",
+  "visualSummaryShort": "The card features a pixelated Pepe the Frog character in a plaid shirt, wielding an axe and accompanied by a small digital pet. The background consists of a purple gradient with vibrant orbs and a mountain-like shape, evoking a retro video game aesthetic.",
+  "visualKeywords": [
+    "pixelated",
+    "plaid",
+    "axe",
+    "digital pet",
+    "purple gradient",
+    "orbs",
+    "mountain",
+    "retro",
+    "nostalgic"
+  ],
+  "textKeywords": [
+    "pepaagotchi"
+  ],
+  "keywords": [
+    "pixelated",
+    "plaid",
+    "axe",
+    "digital pet",
+    "purple gradient",
+    "orbs",
+    "mountain",
+    "retro",
+    "nostalgic",
+    "pepaagotchi"
+  ],
+  "embeddingInput": "PEPAAGOTCHI (Fake Rares) - Series 4 Card 46\nArtist: Master Yin and Master Yang\nSupply 121 Issued November 2021\nOn-card text: Pepaagotchi\nVisual summary: The card showcases a pixelated Pepe the Frog character dressed in a plaid shirt, holding an axe and a small digital pet. The background is a pixelated purple gradient, with vibrant colored orbs and a mountain-like shape. The overall style is retro and nostalgic, reminiscent of early video game graphics.\nMemetic references: Pepe the Frog, a staple in meme culture.; Reference to Tamagotchi, the iconic 90s digital pet.; Crypto culture nod with a pixelated Ethereum logo on the pet.; Gamer nostalgia vibes with pixel art style.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPAAGOTCHI#text",
+      "label": "On-card text",
+      "text": "Pepaagotchi",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPAAGOTCHI#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple in meme culture.\nReference to Tamagotchi, the iconic 90s digital pet.\nCrypto culture nod with a pixelated Ethereum logo on the pet.\nGamer nostalgia vibes with pixel art style.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPAAGOTCHI#visual",
+      "label": "Visual summary",
+      "text": "The card showcases a pixelated Pepe the Frog character dressed in a plaid shirt, holding an axe and a small digital pet. The background is a pixelated purple gradient, with vibrant colored orbs and a mountain-like shape. The overall style is retro and nostalgic, reminiscent of early video game graphics.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPAAGOTCHI#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPepaagotchi\n\n🎨 **VISUAL BREAKDOWN:**\nThe card showcases a pixelated Pepe the Frog character dressed in a plaid shirt, holding an axe and a small digital pet. The background is a pixelated purple gradient, with vibrant colored orbs and a mountain-like shape. The overall style is retro and nostalgic, reminiscent of early video game graphics.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple in meme culture.\n- Reference to Tamagotchi, the iconic 90s digital pet.\n- Crypto culture nod with a pixelated Ethereum logo on the pet.\n- Gamer nostalgia vibes with pixel art style.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.830Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "RARECIPHER",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 29,
+  "artist": "Hues",
+  "supply": 21,
+  "issuance": "February 2026",
+  "textOnCard": [],
+  "memeticReferences": [
+    "References to the \"Matrix\" with the digital rain effect.",
+    "Bitcoin symbols highlight crypto culture.",
+    "The character's expression suggests a nod to the \"tired of this\" meme."
+  ],
+  "visualSummary": "The card features a cartoonish character with a skeptical expression, clad in a lab coat against a digital Matrix-like backdrop. The color palette is dominated by neon green and black, with glowing Bitcoin symbols scattered throughout. The art style blends elements of caricature with a cyberpunk vibe, creating a striking visual contrast.",
+  "visualSummaryShort": "The card showcases a cartoonish character in a lab coat with a skeptical expression, set against a digital Matrix-like background. The neon green and black color palette, along with glowing Bitcoin symbols, enhances the cyberpunk aesthetic.",
+  "visualKeywords": [
+    "cartoonish",
+    "lab coat",
+    "skeptical expression",
+    "neon green",
+    "black",
+    "digital backdrop",
+    "bitcoin symbols",
+    "cyberpunk",
+    "glowing",
+    "caricature"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "cartoonish",
+    "lab coat",
+    "skeptical expression",
+    "neon green",
+    "black",
+    "digital backdrop",
+    "bitcoin symbols",
+    "cyberpunk",
+    "glowing",
+    "caricature"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "RARECIPHER (Fake Rares) - Series 18 Card 29\nArtist: Hues\nSupply 21 Issued February 2026\nOn-card text: none detected\nVisual summary: The card features a cartoonish character with a skeptical expression, clad in a lab coat against a digital Matrix-like backdrop. The color palette is dominated by neon green and black, with glowing Bitcoin symbols scattered throughout. The art style blends elements of caricature with a cyberpunk vibe, creating a striking visual contrast.\nMemetic references: References to the \"Matrix\" with the digital rain effect.; Bitcoin symbols highlight crypto culture.; The character's expression suggests a nod to the \"tired of this\" meme.",
+  "embeddingBlocks": [
+    {
+      "id": "RARECIPHER#memetic",
+      "label": "Memetic references",
+      "text": "References to the \"Matrix\" with the digital rain effect.\nBitcoin symbols highlight crypto culture.\nThe character's expression suggests a nod to the \"tired of this\" meme.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RARECIPHER#visual",
+      "label": "Visual summary",
+      "text": "The card features a cartoonish character with a skeptical expression, clad in a lab coat against a digital Matrix-like backdrop. The color palette is dominated by neon green and black, with glowing Bitcoin symbols scattered throughout. The art style blends elements of caricature with a cyberpunk vibe, creating a striking visual contrast.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RARECIPHER#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a cartoonish character with a skeptical expression, clad in a lab coat against a digital Matrix-like backdrop. The color palette is dominated by neon green and black, with glowing Bitcoin symbols scattered throughout. The art style blends elements of caricature with a cyberpunk vibe, creating a striking visual contrast.\n\n🧬 **MEMETIC DNA:**\n- References to the \"Matrix\" with the digital rain effect.\n- Bitcoin symbols highlight crypto culture.\n- The character's expression suggests a nod to the \"tired of this\" meme.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:31:23.936Z"
+}

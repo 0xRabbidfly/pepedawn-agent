@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "asset": "SMOLSTAMP",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 23,
+  "artist": "Dankfarms",
+  "supply": 21,
+  "issuance": "April 2023",
+  "textOnCard": [
+    "POSTAGE",
+    "ONE PENNY"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as royalty, which is a nod to internet meme culture.",
+    "Stamp design evokes the rarity and collectible nature of NFTs.",
+    "The crown and robe reference traditional symbols of power and status."
+  ],
+  "visualSummary": "The card mimics a vintage postage stamp with a purple background. At its center is Pepe the Frog, depicted as a regal figure wearing a crown and a red robe with a white fur collar. The border has a classic stamp-like design, adding to the nostalgic aesthetic.",
+  "visualSummaryShort": "The card features Pepe the Frog as a regal figure in a vintage postage stamp design. It has a purple background and a classic border, enhancing its nostalgic feel.",
+  "visualKeywords": [
+    "pepe the frog",
+    "crown",
+    "red robe",
+    "white fur",
+    "purple background",
+    "vintage",
+    "postage stamp",
+    "nostalgic",
+    "classic border"
+  ],
+  "textKeywords": [
+    "postage",
+    "one",
+    "penny"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "crown",
+    "red robe",
+    "white fur",
+    "purple background",
+    "vintage",
+    "postage stamp",
+    "nostalgic",
+    "classic border",
+    "postage",
+    "one",
+    "penny"
+  ],
+  "embeddingInput": "SMOLSTAMP (Fake Rares) - Series 14 Card 23\nArtist: Dankfarms\nSupply 21 Issued April 2023\nOn-card text: POSTAGE | ONE PENNY\nVisual summary: The card mimics a vintage postage stamp with a purple background. At its center is Pepe the Frog, depicted as a regal figure wearing a crown and a red robe with a white fur collar. The border has a classic stamp-like design, adding to the nostalgic aesthetic.\nMemetic references: Pepe the Frog as royalty, which is a nod to internet meme culture.; Stamp design evokes the rarity and collectible nature of NFTs.; The crown and robe reference traditional symbols of power and status.",
+  "embeddingBlocks": [
+    {
+      "id": "SMOLSTAMP#text",
+      "label": "On-card text",
+      "text": "POSTAGE | ONE PENNY",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "SMOLSTAMP#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as royalty, which is a nod to internet meme culture.\nStamp design evokes the rarity and collectible nature of NFTs.\nThe crown and robe reference traditional symbols of power and status.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SMOLSTAMP#visual",
+      "label": "Visual summary",
+      "text": "The card mimics a vintage postage stamp with a purple background. At its center is Pepe the Frog, depicted as a regal figure wearing a crown and a red robe with a white fur collar. The border has a classic stamp-like design, adding to the nostalgic aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SMOLSTAMP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPOSTAGE  \nONE PENNY\n\n🎨 **VISUAL BREAKDOWN:**\nThe card mimics a vintage postage stamp with a purple background. At its center is Pepe the Frog, depicted as a regal figure wearing a crown and a red robe with a white fur collar. The border has a classic stamp-like design, adding to the nostalgic aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as royalty, which is a nod to internet meme culture.\n- Stamp design evokes the rarity and collectible nature of NFTs.\n- The crown and robe reference traditional symbols of power and status.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.119Z",
+  "sourceFactVersion": 1
+}

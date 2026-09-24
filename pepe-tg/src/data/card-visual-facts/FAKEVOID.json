@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "asset": "FAKEVOID",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 23,
+  "artist": "ZOOMO",
+  "supply": 100,
+  "issuance": "October 2025",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a void-like appearance with a dark, empty space. It evokes a sense of mystery and absence.",
+  "visualKeywords": [
+    "void",
+    "darkness",
+    "mystery",
+    "absence"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "void",
+    "darkness",
+    "mystery",
+    "absence"
+  ],
+  "embeddingInput": "FAKEVOID (Fake Rares) - Series 18 Card 23\nArtist: ZOOMO\nSupply 100 Issued October 2025\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEVOID#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**  \nFAKEVOID\n\n🎨 **VISUAL BREAKDOWN:**  \nThe card features a frog character sitting on a red couch in a vibrant, chaotic room. The color palette is bold and saturated, with intense greens, reds, and blues dominating the scene. The American flag hangs on the wall behind the frog, adding to the eclectic mix of elements, while the overall style is a mix of pop art and comic book aesthetics.\n\n🧬 **MEMETIC DNA:**  \n- Pepe the Frog reference, a staple in meme culture.\n- American flag, symbolizing a blend of internet and cultural elements.\n- Retro gaming vibe from the joystick and TV setup.\n- NY cap, hinting at pop culture or sports references.\n\n🎯 **RARITY FEELS:**  \nThis card radiates \"degen energy\" with its chaotic and nostalgic 90s gamer room vibe. Visually, it feels rare due to its unique blend of vibrant colors and cultural symbols, making it a standout piece in any collection.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.595Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "FAKEFOREST",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 5,
+  "artist": "Nikolina Petolas",
+  "supply": 59,
+  "issuance": "July 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "The multi-eyed creature evokes a fusion of Pepe and nature, with a mystical vibe.",
+    "Elements of fantasy and enchantment, like the moonlit forest and hovering dragonfly.",
+    "The scene feels like a nod to the interconnectedness of life and crypto ecosystems."
+  ],
+  "visualSummary": "This card features a surreal, mythical creature resembling a tree with multiple eyes, blending seamlessly with a lush forest setting. The color palette is a mix of earthy greens and browns, with pops of pink from flowers and a flamingo, set against a twilight blue sky. The style is whimsical and slightly eerie, with intricate details in the foliage and creature.",
+  "visualSummaryShort": "The card showcases a mythical tree-like creature with multiple eyes in a vibrant forest. The scene is enriched with earthy greens, browns, and hints of pink, all under a twilight blue sky.",
+  "visualKeywords": [
+    "mythical creature",
+    "tree",
+    "multiple eyes",
+    "forest",
+    "earthy colors",
+    "pink flowers",
+    "flamingo",
+    "twilight",
+    "whimsical",
+    "eerie"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "mythical creature",
+    "tree",
+    "multiple eyes",
+    "forest",
+    "earthy colors",
+    "pink flowers",
+    "flamingo",
+    "twilight",
+    "whimsical",
+    "eerie"
+  ],
+  "embeddingInput": "FAKEFOREST (Fake Rares) - Series 9 Card 5\nArtist: Nikolina Petolas\nSupply 59 Issued July 2022\nOn-card text: none detected\nVisual summary: This card features a surreal, mythical creature resembling a tree with multiple eyes, blending seamlessly with a lush forest setting. The color palette is a mix of earthy greens and browns, with pops of pink from flowers and a flamingo, set against a twilight blue sky. The style is whimsical and slightly eerie, with intricate details in the foliage and creature.\nMemetic references: The multi-eyed creature evokes a fusion of Pepe and nature, with a mystical vibe.; Elements of fantasy and enchantment, like the moonlit forest and hovering dragonfly.; The scene feels like a nod to the interconnectedness of life and crypto ecosystems.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEFOREST#memetic",
+      "label": "Memetic references",
+      "text": "The multi-eyed creature evokes a fusion of Pepe and nature, with a mystical vibe.\nElements of fantasy and enchantment, like the moonlit forest and hovering dragonfly.\nThe scene feels like a nod to the interconnectedness of life and crypto ecosystems.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEFOREST#visual",
+      "label": "Visual summary",
+      "text": "This card features a surreal, mythical creature resembling a tree with multiple eyes, blending seamlessly with a lush forest setting. The color palette is a mix of earthy greens and browns, with pops of pink from flowers and a flamingo, set against a twilight blue sky. The style is whimsical and slightly eerie, with intricate details in the foliage and creature.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEFOREST#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a surreal, mythical creature resembling a tree with multiple eyes, blending seamlessly with a lush forest setting. The color palette is a mix of earthy greens and browns, with pops of pink from flowers and a flamingo, set against a twilight blue sky. The style is whimsical and slightly eerie, with intricate details in the foliage and creature.\n\n🧬 **MEMETIC DNA:**\n- The multi-eyed creature evokes a fusion of Pepe and nature, with a mystical vibe.\n- Elements of fantasy and enchantment, like the moonlit forest and hovering dragonfly.\n- The scene feels like a nod to the interconnectedness of life and crypto ecosystems.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.500Z",
+  "sourceFactVersion": 1
+}

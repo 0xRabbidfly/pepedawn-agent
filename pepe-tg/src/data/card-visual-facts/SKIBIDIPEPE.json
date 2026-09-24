@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "asset": "SKIBIDIPEPE",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 27,
+  "artist": "FWD",
+  "supply": 42,
+  "issuance": "February 2024",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog meme reference.",
+    "Skibidi meme vibes, with its toilet humor and absurdity.",
+    "Elements of crypto culture's love for the bizarre and unexpected.",
+    "Playful nod to internet culture's embrace of the weird and wonderful."
+  ],
+  "visualSummary": "The card features a Pepe the Frog character emerging from a toilet bowl, with a cheeky grin on its face. The setting is a bathroom with a tiled floor and striped wallpaper in a muted, almost vintage color palette with shades of green, blue, and white. The artistic style is reminiscent of surreal, humorous internet art, combining absurdity with a touch of nostalgia.",
+  "visualSummaryShort": "The card depicts a Pepe the Frog character with a cheeky grin emerging from a toilet bowl in a bathroom setting. The muted color palette and vintage-style wallpaper add to the surreal and humorous atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "toilet",
+    "bathroom",
+    "cheeky grin",
+    "tiled floor",
+    "striped wallpaper",
+    "vintage colors",
+    "surreal art",
+    "humor",
+    "absurdity"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "toilet",
+    "bathroom",
+    "cheeky grin",
+    "tiled floor",
+    "striped wallpaper",
+    "vintage colors",
+    "surreal art",
+    "humor",
+    "absurdity"
+  ],
+  "embeddingInput": "SKIBIDIPEPE (Fake Rares) - Series 17 Card 27\nArtist: FWD\nSupply 42 Issued February 2024\nOn-card text: none detected\nVisual summary: The card features a Pepe the Frog character emerging from a toilet bowl, with a cheeky grin on its face. The setting is a bathroom with a tiled floor and striped wallpaper in a muted, almost vintage color palette with shades of green, blue, and white. The artistic style is reminiscent of surreal, humorous internet art, combining absurdity with a touch of nostalgia.\nMemetic references: Classic Pepe the Frog meme reference.; Skibidi meme vibes, with its toilet humor and absurdity.; Elements of crypto culture's love for the bizarre and unexpected.; Playful nod to internet culture's embrace of the weird and wonderful.",
+  "embeddingBlocks": [
+    {
+      "id": "SKIBIDIPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog meme reference.\nSkibidi meme vibes, with its toilet humor and absurdity.\nElements of crypto culture's love for the bizarre and unexpected.\nPlayful nod to internet culture's embrace of the weird and wonderful.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SKIBIDIPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe the Frog character emerging from a toilet bowl, with a cheeky grin on its face. The setting is a bathroom with a tiled floor and striped wallpaper in a muted, almost vintage color palette with shades of green, blue, and white. The artistic style is reminiscent of surreal, humorous internet art, combining absurdity with a touch of nostalgia.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SKIBIDIPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe the Frog character emerging from a toilet bowl, with a cheeky grin on its face. The setting is a bathroom with a tiled floor and striped wallpaper in a muted, almost vintage color palette with shades of green, blue, and white. The artistic style is reminiscent of surreal, humorous internet art, combining absurdity with a touch of nostalgia.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog meme reference.\n- Skibidi meme vibes, with its toilet humor and absurdity.\n- Elements of crypto culture's love for the bizarre and unexpected.\n- Playful nod to internet culture's embrace of the weird and wonderful.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.111Z",
+  "sourceFactVersion": 1
+}

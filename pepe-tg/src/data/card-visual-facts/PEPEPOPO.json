@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "asset": "PEPEPOPO",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 32,
+  "artist": "SeerLight",
+  "supply": 21,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "P3P3 POPO",
+    "CONSUME コンスーム"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog character.",
+    "Cyberpunk and Matrix-inspired elements.",
+    "Retro gaming aesthetics.",
+    "References to Japanese culture with the text \"コンスーム.\""
+  ],
+  "visualSummary": "The card features a digital artwork of Pepe the Frog with a cybernetic twist, adorned with cables plugged into his head against a starry, grid-like background. The color palette is a retro-futuristic mix of blues, purples, and pinks, with a neon glow effect. The composition includes pixelated graphics and retro gaming elements, enhancing its nostalgic yet futuristic vibe.",
+  "visualSummaryShort": "The card showcases Pepe the Frog with cybernetic enhancements set against a starry, grid-like background. Its retro-futuristic color palette features blues, purples, and pinks, complemented by pixelated graphics.",
+  "visualKeywords": [
+    "pepe the frog",
+    "cybernetic",
+    "starry background",
+    "grid pattern",
+    "neon glow",
+    "retro-futuristic",
+    "pixelated",
+    "gaming elements",
+    "blue palette",
+    "purple accents"
+  ],
+  "textKeywords": [
+    "p3p3",
+    "popo",
+    "consume"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "cybernetic",
+    "starry background",
+    "grid pattern",
+    "neon glow",
+    "retro-futuristic",
+    "pixelated",
+    "gaming elements",
+    "blue palette",
+    "purple accents",
+    "p3p3",
+    "popo",
+    "consume"
+  ],
+  "embeddingInput": "PEPEPOPO (Fake Rares) - Series 3 Card 32\nArtist: SeerLight\nSupply 21 Issued November 2021\nOn-card text: P3P3 POPO | CONSUME コンスーム\nVisual summary: The card features a digital artwork of Pepe the Frog with a cybernetic twist, adorned with cables plugged into his head against a starry, grid-like background. The color palette is a retro-futuristic mix of blues, purples, and pinks, with a neon glow effect. The composition includes pixelated graphics and retro gaming elements, enhancing its nostalgic yet futuristic vibe.\nMemetic references: Classic Pepe the Frog character.; Cyberpunk and Matrix-inspired elements.; Retro gaming aesthetics.; References to Japanese culture with the text \"コンスーム.\"",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEPOPO#text",
+      "label": "On-card text",
+      "text": "P3P3 POPO | CONSUME コンスーム",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEPOPO#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog character.\nCyberpunk and Matrix-inspired elements.\nRetro gaming aesthetics.\nReferences to Japanese culture with the text \"コンスーム.\"",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEPOPO#visual",
+      "label": "Visual summary",
+      "text": "The card features a digital artwork of Pepe the Frog with a cybernetic twist, adorned with cables plugged into his head against a starry, grid-like background. The color palette is a retro-futuristic mix of blues, purples, and pinks, with a neon glow effect. The composition includes pixelated graphics and retro gaming elements, enhancing its nostalgic yet futuristic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEPOPO#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nP3P3 POPO  \nCONSUME コンスーム\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a digital artwork of Pepe the Frog with a cybernetic twist, adorned with cables plugged into his head against a starry, grid-like background. The color palette is a retro-futuristic mix of blues, purples, and pinks, with a neon glow effect. The composition includes pixelated graphics and retro gaming elements, enhancing its nostalgic yet futuristic vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog character.\n- Cyberpunk and Matrix-inspired elements.\n- Retro gaming aesthetics.\n- References to Japanese culture with the text \"コンスーム.\"",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.951Z",
+  "sourceFactVersion": 1
+}

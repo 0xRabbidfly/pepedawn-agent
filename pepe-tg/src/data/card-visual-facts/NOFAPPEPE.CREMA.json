@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "asset": "NOFAPPEPE.CREMA",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 10,
+  "artist": "Indelible and Cam",
+  "supply": 30,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "NOFAPPEPE. Heals party to full."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple in meme culture.",
+    "Reference to \"No Fap,\" a movement promoting abstinence from certain online behaviors, common in internet culture.",
+    "Retro video game aesthetics reflected in the pixelation and layout.",
+    "Healing and RPG game elements with \"Heals party to full.\""
+  ],
+  "visualSummary": "The card features Pepe the Frog with a serene expression, sitting at a computer. His hands are in a praying position, facing a glowing screen, suggesting focus and contemplation. The color palette includes vibrant yellows, reds, and greens, with a glitchy, pixelated overlay adding a retro digital vibe.",
+  "visualSummaryShort": "The card depicts Pepe the Frog in a serene pose at a computer, suggesting focus and contemplation. The vibrant color palette and glitchy overlay create a retro digital atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "computer",
+    "praying hands",
+    "glowing screen",
+    "vibrant colors",
+    "glitch",
+    "pixelated",
+    "serene",
+    "retro",
+    "contemplation"
+  ],
+  "textKeywords": [
+    "nofappepe",
+    "heals",
+    "party",
+    "full"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "computer",
+    "praying hands",
+    "glowing screen",
+    "vibrant colors",
+    "glitch",
+    "pixelated",
+    "serene",
+    "retro",
+    "contemplation",
+    "nofappepe",
+    "heals",
+    "party",
+    "full"
+  ],
+  "embeddingInput": "NOFAPPEPE.CREMA (Fake Rares) - Series 1 Card 10\nArtist: Indelible and Cam\nSupply 30 Issued October 2021\nOn-card text: NOFAPPEPE. Heals party to full.\nVisual summary: The card features Pepe the Frog with a serene expression, sitting at a computer. His hands are in a praying position, facing a glowing screen, suggesting focus and contemplation. The color palette includes vibrant yellows, reds, and greens, with a glitchy, pixelated overlay adding a retro digital vibe.\nMemetic references: Pepe the Frog, a staple in meme culture.; Reference to \"No Fap,\" a movement promoting abstinence from certain online behaviors, common in internet culture.; Retro video game aesthetics reflected in the pixelation and layout.; Healing and RPG game elements with \"Heals party to full.\"",
+  "embeddingBlocks": [
+    {
+      "id": "NOFAPPEPE.CREMA#text",
+      "label": "On-card text",
+      "text": "NOFAPPEPE. Heals party to full.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "NOFAPPEPE.CREMA#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple in meme culture.\nReference to \"No Fap,\" a movement promoting abstinence from certain online behaviors, common in internet culture.\nRetro video game aesthetics reflected in the pixelation and layout.\nHealing and RPG game elements with \"Heals party to full.\"",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "NOFAPPEPE.CREMA#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog with a serene expression, sitting at a computer. His hands are in a praying position, facing a glowing screen, suggesting focus and contemplation. The color palette includes vibrant yellows, reds, and greens, with a glitchy, pixelated overlay adding a retro digital vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "NOFAPPEPE.CREMA#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nNOFAPPEPE. Heals party to full.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog with a serene expression, sitting at a computer. His hands are in a praying position, facing a glowing screen, suggesting focus and contemplation. The color palette includes vibrant yellows, reds, and greens, with a glitchy, pixelated overlay adding a retro digital vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple in meme culture.\n- Reference to \"No Fap,\" a movement promoting abstinence from certain online behaviors, common in internet culture.\n- Retro video game aesthetics reflected in the pixelation and layout.\n- Healing and RPG game elements with \"Heals party to full.\"",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.797Z",
+  "sourceFactVersion": 1
+}

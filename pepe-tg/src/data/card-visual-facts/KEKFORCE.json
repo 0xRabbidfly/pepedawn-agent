@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "asset": "KEKFORCE",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 22,
+  "artist": "NORMANCOMICS",
+  "supply": 187,
+  "issuance": "August 2023",
+  "textOnCard": [
+    "KEKFORCE, VETERAN OF DECEPTION, JOIN KEKFORCE TODAY, feels fake man, TSA CLEAR."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in multiple roles and disguises.",
+    "References to conspiracy theories and cryptic symbols.",
+    "Crypto culture nods, including Bitcoin and TSA jokes.",
+    "\"Feels fake man\" is a twist on the classic \"feels bad man\" meme.",
+    "Military and espionage themes with a humorous twist."
+  ],
+  "visualSummary": "The card is a vibrant collage with a predominantly red and green color palette, featuring various Pepe the Frog characters in different guises and scenarios. The artistic style is a chaotic blend of comic and surreal elements, with a mix of pop culture references and cryptic symbols. The composition is dense, filled with overlapping images and text, creating a sense of visual overload.",
+  "visualSummaryShort": "The card showcases a vibrant collage dominated by red and green hues, featuring various Pepe the Frog characters in chaotic and surreal scenarios. The dense composition is filled with overlapping images and pop culture references, creating a visually overwhelming effect.",
+  "visualKeywords": [
+    "collage",
+    "red",
+    "green",
+    "pepe the frog",
+    "chaotic",
+    "surreal",
+    "pop culture",
+    "overlapping",
+    "symbols",
+    "comic"
+  ],
+  "textKeywords": [
+    "kekforce",
+    "veteran",
+    "deception",
+    "join",
+    "today",
+    "feels",
+    "man",
+    "tsa",
+    "clear"
+  ],
+  "keywords": [
+    "collage",
+    "red",
+    "green",
+    "pepe the frog",
+    "chaotic",
+    "surreal",
+    "pop culture",
+    "overlapping",
+    "symbols",
+    "comic",
+    "kekforce",
+    "veteran",
+    "deception",
+    "join",
+    "today",
+    "feels",
+    "man",
+    "tsa",
+    "clear"
+  ],
+  "embeddingInput": "KEKFORCE (Fake Rares) - Series 15 Card 22\nArtist: NORMANCOMICS\nSupply 187 Issued August 2023\nOn-card text: KEKFORCE, VETERAN OF DECEPTION, JOIN KEKFORCE TODAY, feels fake man, TSA CLEAR.\nVisual summary: The card is a vibrant collage with a predominantly red and green color palette, featuring various Pepe the Frog characters in different guises and scenarios. The artistic style is a chaotic blend of comic and surreal elements, with a mix of pop culture references and cryptic symbols. The composition is dense, filled with overlapping images and text, creating a sense of visual overload.\nMemetic references: Pepe the Frog in multiple roles and disguises.; References to conspiracy theories and cryptic symbols.; Crypto culture nods, including Bitcoin and TSA jokes.; \"Feels fake man\" is a twist on the classic \"feels bad man\" meme.; Military and espionage themes with a humorous twist.",
+  "embeddingBlocks": [
+    {
+      "id": "KEKFORCE#text",
+      "label": "On-card text",
+      "text": "KEKFORCE, VETERAN OF DECEPTION, JOIN KEKFORCE TODAY, feels fake man, TSA CLEAR.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "KEKFORCE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in multiple roles and disguises.\nReferences to conspiracy theories and cryptic symbols.\nCrypto culture nods, including Bitcoin and TSA jokes.\n\"Feels fake man\" is a twist on the classic \"feels bad man\" meme.\nMilitary and espionage themes with a humorous twist.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "KEKFORCE#visual",
+      "label": "Visual summary",
+      "text": "The card is a vibrant collage with a predominantly red and green color palette, featuring various Pepe the Frog characters in different guises and scenarios. The artistic style is a chaotic blend of comic and surreal elements, with a mix of pop culture references and cryptic symbols. The composition is dense, filled with overlapping images and text, creating a sense of visual overload.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "KEKFORCE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nKEKFORCE, VETERAN OF DECEPTION, JOIN KEKFORCE TODAY, feels fake man, TSA CLEAR.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card is a vibrant collage with a predominantly red and green color palette, featuring various Pepe the Frog characters in different guises and scenarios. The artistic style is a chaotic blend of comic and surreal elements, with a mix of pop culture references and cryptic symbols. The composition is dense, filled with overlapping images and text, creating a sense of visual overload.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in multiple roles and disguises.\n- References to conspiracy theories and cryptic symbols.\n- Crypto culture nods, including Bitcoin and TSA jokes.\n- \"Feels fake man\" is a twist on the classic \"feels bad man\" meme.\n- Military and espionage themes with a humorous twist.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.710Z",
+  "sourceFactVersion": 1
+}

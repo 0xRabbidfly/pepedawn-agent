@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "asset": "PLAINGRAB",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 8,
+  "artist": "JAMEX",
+  "supply": 35,
+  "issuance": "December 2022",
+  "textOnCard": [
+    "PLAIN CASHGRAB",
+    "PETTY SEX MACHINE",
+    "Did",
+    "Caribbean"
+  ],
+  "memeticReferences": [
+    "References to the FTX crypto exchange, indicated by the logos.",
+    "The pills are reminiscent of the \"red pill\" meme, symbolizing a choice or awakening.",
+    "The character's exaggerated features and green skin are a nod to Pepe the Frog lore."
+  ],
+  "visualSummary": "This card features a green-skinned character with exaggerated facial features and wild hair, set against a textured background. The color palette includes muted greens and reds, with bold highlights in red and blue. Below the character are two hands offering pills labeled \"Did\" and \"Caribbean,\" adding a surreal and chaotic vibe.",
+  "visualSummaryShort": "The card showcases a green-skinned character with wild hair and exaggerated features against a textured backdrop. It has a surreal vibe with hands offering pills labeled 'Did' and 'Caribbean'.",
+  "visualKeywords": [
+    "green character",
+    "wild hair",
+    "textured background",
+    "muted colors",
+    "surreal",
+    "hands",
+    "pills",
+    "chaotic",
+    "red highlights",
+    "blue highlights"
+  ],
+  "textKeywords": [
+    "plain",
+    "cashgrab",
+    "petty",
+    "sex",
+    "machine",
+    "did",
+    "caribbean"
+  ],
+  "keywords": [
+    "green character",
+    "wild hair",
+    "textured background",
+    "muted colors",
+    "surreal",
+    "hands",
+    "pills",
+    "chaotic",
+    "red highlights",
+    "blue highlights",
+    "plain",
+    "cashgrab",
+    "petty",
+    "sex",
+    "machine",
+    "did",
+    "caribbean"
+  ],
+  "embeddingInput": "PLAINGRAB (Fake Rares) - Series 13 Card 8\nArtist: JAMEX\nSupply 35 Issued December 2022\nOn-card text: PLAIN CASHGRAB | PETTY SEX MACHINE | Did | Caribbean\nVisual summary: This card features a green-skinned character with exaggerated facial features and wild hair, set against a textured background. The color palette includes muted greens and reds, with bold highlights in red and blue. Below the character are two hands offering pills labeled \"Did\" and \"Caribbean,\" adding a surreal and chaotic vibe.\nMemetic references: References to the FTX crypto exchange, indicated by the logos.; The pills are reminiscent of the \"red pill\" meme, symbolizing a choice or awakening.; The character's exaggerated features and green skin are a nod to Pepe the Frog lore.",
+  "embeddingBlocks": [
+    {
+      "id": "PLAINGRAB#text",
+      "label": "On-card text",
+      "text": "PLAIN CASHGRAB | PETTY SEX MACHINE | Did | Caribbean",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PLAINGRAB#memetic",
+      "label": "Memetic references",
+      "text": "References to the FTX crypto exchange, indicated by the logos.\nThe pills are reminiscent of the \"red pill\" meme, symbolizing a choice or awakening.\nThe character's exaggerated features and green skin are a nod to Pepe the Frog lore.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PLAINGRAB#visual",
+      "label": "Visual summary",
+      "text": "This card features a green-skinned character with exaggerated facial features and wild hair, set against a textured background. The color palette includes muted greens and reds, with bold highlights in red and blue. Below the character are two hands offering pills labeled \"Did\" and \"Caribbean,\" adding a surreal and chaotic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PLAINGRAB#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPLAIN CASHGRAB  \nPETTY SEX MACHINE  \nDid  \nCaribbean  \n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a green-skinned character with exaggerated facial features and wild hair, set against a textured background. The color palette includes muted greens and reds, with bold highlights in red and blue. Below the character are two hands offering pills labeled \"Did\" and \"Caribbean,\" adding a surreal and chaotic vibe.\n\n🧬 **MEMETIC DNA:**\n- References to the FTX crypto exchange, indicated by the logos.\n- The pills are reminiscent of the \"red pill\" meme, symbolizing a choice or awakening.\n- The character's exaggerated features and green skin are a nod to Pepe the Frog lore.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.038Z",
+  "sourceFactVersion": 1
+}

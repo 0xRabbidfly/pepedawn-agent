@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "asset": "PEPANDEMIC",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 21,
+  "artist": "SteveWeave",
+  "supply": 81,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "PEPE RECORDS",
+    "Sorry, We're CLOSED",
+    "19"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a classic meme character.",
+    "COVID-19 pandemic reference with the mask and the number \"19.\"",
+    "Nostalgic nod to record stores, blending pop culture and meme culture."
+  ],
+  "visualSummary": "The card features a storefront labeled \"PEPE RECORDS\" with a \"Sorry, We're CLOSED\" sign hanging on the door. The background displays posters of popular music figures on the windows, while the foreground shows a masked Pepe the Frog wearing a blue shirt with the number \"19.\" The color palette is urban and gritty, dominated by muted blues, grays, and yellows.",
+  "visualSummaryShort": "The card depicts a storefront named 'PEPE RECORDS' with a closed sign and music posters in the background. A masked Pepe the Frog in a blue shirt with the number '19' stands in the foreground against a gritty urban color palette.",
+  "visualKeywords": [
+    "storefront",
+    "closed sign",
+    "posters",
+    "masked character",
+    "blue shirt",
+    "urban",
+    "gritty",
+    "muted colors"
+  ],
+  "textKeywords": [
+    "records",
+    "sorry",
+    "closed"
+  ],
+  "keywords": [
+    "storefront",
+    "closed sign",
+    "posters",
+    "masked character",
+    "blue shirt",
+    "urban",
+    "gritty",
+    "muted colors",
+    "records",
+    "sorry",
+    "closed"
+  ],
+  "embeddingInput": "PEPANDEMIC (Fake Rares) - Series 2 Card 21\nArtist: SteveWeave\nSupply 81 Issued October 2021\nOn-card text: PEPE RECORDS | Sorry, We're CLOSED | 19\nVisual summary: The card features a storefront labeled \"PEPE RECORDS\" with a \"Sorry, We're CLOSED\" sign hanging on the door. The background displays posters of popular music figures on the windows, while the foreground shows a masked Pepe the Frog wearing a blue shirt with the number \"19.\" The color palette is urban and gritty, dominated by muted blues, grays, and yellows.\nMemetic references: Pepe the Frog, a classic meme character.; COVID-19 pandemic reference with the mask and the number \"19.\"; Nostalgic nod to record stores, blending pop culture and meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPANDEMIC#text",
+      "label": "On-card text",
+      "text": "PEPE RECORDS | Sorry, We're CLOSED | 19",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPANDEMIC#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a classic meme character.\nCOVID-19 pandemic reference with the mask and the number \"19.\"\nNostalgic nod to record stores, blending pop culture and meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPANDEMIC#visual",
+      "label": "Visual summary",
+      "text": "The card features a storefront labeled \"PEPE RECORDS\" with a \"Sorry, We're CLOSED\" sign hanging on the door. The background displays posters of popular music figures on the windows, while the foreground shows a masked Pepe the Frog wearing a blue shirt with the number \"19.\" The color palette is urban and gritty, dominated by muted blues, grays, and yellows.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPANDEMIC#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE RECORDS  \nSorry, We're CLOSED  \n19\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a storefront labeled \"PEPE RECORDS\" with a \"Sorry, We're CLOSED\" sign hanging on the door. The background displays posters of popular music figures on the windows, while the foreground shows a masked Pepe the Frog wearing a blue shirt with the number \"19.\" The color palette is urban and gritty, dominated by muted blues, grays, and yellows.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a classic meme character.\n- COVID-19 pandemic reference with the mask and the number \"19.\"\n- Nostalgic nod to record stores, blending pop culture and meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.832Z",
+  "sourceFactVersion": 1
+}

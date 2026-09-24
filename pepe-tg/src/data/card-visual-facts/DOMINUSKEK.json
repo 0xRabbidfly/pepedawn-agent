@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "asset": "DOMINUSKEK",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 35,
+  "artist": "shorty",
+  "supply": 54,
+  "issuance": "June 2022",
+  "textOnCard": [
+    "DOMINUS KEKUIT (Lord Kek)"
+  ],
+  "memeticReferences": [
+    "References to Pepe the Frog as a deity.",
+    "Egyptian mythology elements, suggesting divine status.",
+    "Eye of Providence symbol, common in conspiracy memes.",
+    "Winged symbolism, often associated with majesty or divinity in memes."
+  ],
+  "visualSummary": "The card features a digitally rendered desert scene with a central frog figure adorned in Egyptian-style regalia, including a striped headdress and golden wings. Flanking the frog are two dark statues resembling ancient Egyptian deities, holding a disk with an eye symbol. The color palette is rich with desert tones, golds, and deep blues, creating a mystical and regal atmosphere.",
+  "visualSummaryShort": "The card showcases a mystical desert scene with a central frog figure in Egyptian regalia. Dark statues resembling ancient deities flank the frog, enhancing the regal atmosphere.",
+  "visualKeywords": [
+    "desert",
+    "frog",
+    "egyptian",
+    "statues",
+    "gold",
+    "blue",
+    "mystical",
+    "regal"
+  ],
+  "textKeywords": [
+    "dominus",
+    "kekuit",
+    "lord",
+    "kek"
+  ],
+  "keywords": [
+    "desert",
+    "frog",
+    "egyptian",
+    "statues",
+    "gold",
+    "blue",
+    "mystical",
+    "regal",
+    "dominus",
+    "kekuit",
+    "lord",
+    "kek"
+  ],
+  "embeddingInput": "DOMINUSKEK (Fake Rares) - Series 11 Card 35\nArtist: shorty\nSupply 54 Issued June 2022\nOn-card text: DOMINUS KEKUIT (Lord Kek)\nVisual summary: The card features a digitally rendered desert scene with a central frog figure adorned in Egyptian-style regalia, including a striped headdress and golden wings. Flanking the frog are two dark statues resembling ancient Egyptian deities, holding a disk with an eye symbol. The color palette is rich with desert tones, golds, and deep blues, creating a mystical and regal atmosphere.\nMemetic references: References to Pepe the Frog as a deity.; Egyptian mythology elements, suggesting divine status.; Eye of Providence symbol, common in conspiracy memes.; Winged symbolism, often associated with majesty or divinity in memes.",
+  "embeddingBlocks": [
+    {
+      "id": "DOMINUSKEK#text",
+      "label": "On-card text",
+      "text": "DOMINUS KEKUIT (Lord Kek)",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "DOMINUSKEK#memetic",
+      "label": "Memetic references",
+      "text": "References to Pepe the Frog as a deity.\nEgyptian mythology elements, suggesting divine status.\nEye of Providence symbol, common in conspiracy memes.\nWinged symbolism, often associated with majesty or divinity in memes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "DOMINUSKEK#visual",
+      "label": "Visual summary",
+      "text": "The card features a digitally rendered desert scene with a central frog figure adorned in Egyptian-style regalia, including a striped headdress and golden wings. Flanking the frog are two dark statues resembling ancient Egyptian deities, holding a disk with an eye symbol. The color palette is rich with desert tones, golds, and deep blues, creating a mystical and regal atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "DOMINUSKEK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nDOMINUS KEKUIT (Lord Kek)\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a digitally rendered desert scene with a central frog figure adorned in Egyptian-style regalia, including a striped headdress and golden wings. Flanking the frog are two dark statues resembling ancient Egyptian deities, holding a disk with an eye symbol. The color palette is rich with desert tones, golds, and deep blues, creating a mystical and regal atmosphere.\n\n🧬 **MEMETIC DNA:**\n- References to Pepe the Frog as a deity.\n- Egyptian mythology elements, suggesting divine status.\n- Eye of Providence symbol, common in conspiracy memes.\n- Winged symbolism, often associated with majesty or divinity in memes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.406Z",
+  "sourceFactVersion": 1
+}

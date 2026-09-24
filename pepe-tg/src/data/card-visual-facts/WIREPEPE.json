@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "WIREPEPE",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 7,
+  "artist": "JohnDXB",
+  "supply": 300,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "WIREPEPE"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference.",
+    "Wireframe art style nods to digital and tech elements.",
+    "Play on \"wire\" in the context of crypto transactions."
+  ],
+  "visualSummary": "The card features a chaotic, scribble-style sketch of Pepe the Frog, composed of overlapping black lines that create a wireframe effect. The background is stark white, enhancing the contrast with the intricate linework. This piece has an abstract, hand-drawn aesthetic, giving it a raw and unfinished vibe.",
+  "visualSummaryShort": "The card showcases a chaotic, wireframe sketch of Pepe the Frog against a stark white background. Its abstract, hand-drawn style contributes to a raw and unfinished aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "wireframe",
+    "black lines",
+    "white background",
+    "abstract",
+    "hand-drawn",
+    "chaotic",
+    "sketch",
+    "intricate",
+    "raw"
+  ],
+  "textKeywords": [
+    "wirepepe"
+  ],
+  "keywords": [
+    "pepe",
+    "wireframe",
+    "black lines",
+    "white background",
+    "abstract",
+    "hand-drawn",
+    "chaotic",
+    "sketch",
+    "intricate",
+    "raw",
+    "wirepepe"
+  ],
+  "embeddingInput": "WIREPEPE (Fake Rares) - Series 6 Card 7\nArtist: JohnDXB\nSupply 300 Issued February 2022\nOn-card text: WIREPEPE\nVisual summary: The card features a chaotic, scribble-style sketch of Pepe the Frog, composed of overlapping black lines that create a wireframe effect. The background is stark white, enhancing the contrast with the intricate linework. This piece has an abstract, hand-drawn aesthetic, giving it a raw and unfinished vibe.\nMemetic references: Classic Pepe the Frog reference.; Wireframe art style nods to digital and tech elements.; Play on \"wire\" in the context of crypto transactions.",
+  "embeddingBlocks": [
+    {
+      "id": "WIREPEPE#text",
+      "label": "On-card text",
+      "text": "WIREPEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "WIREPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference.\nWireframe art style nods to digital and tech elements.\nPlay on \"wire\" in the context of crypto transactions.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "WIREPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a chaotic, scribble-style sketch of Pepe the Frog, composed of overlapping black lines that create a wireframe effect. The background is stark white, enhancing the contrast with the intricate linework. This piece has an abstract, hand-drawn aesthetic, giving it a raw and unfinished vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "WIREPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nWIREPEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a chaotic, scribble-style sketch of Pepe the Frog, composed of overlapping black lines that create a wireframe effect. The background is stark white, enhancing the contrast with the intricate linework. This piece has an abstract, hand-drawn aesthetic, giving it a raw and unfinished vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference.\n- Wireframe art style nods to digital and tech elements.\n- Play on \"wire\" in the context of crypto transactions.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.189Z",
+  "sourceFactVersion": 1
+}

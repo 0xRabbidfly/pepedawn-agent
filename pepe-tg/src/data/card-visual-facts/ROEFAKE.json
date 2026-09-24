@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "ROEFAKE",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 50,
+  "artist": "Alondre Crypto",
+  "supply": 62,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "There is no visible text on the card."
+  ],
+  "memeticReferences": [
+    "Warhol-inspired pop art vibes.",
+    "Pepe the Frog as the central meme character.",
+    "Pixel art style nodding to early internet graphics."
+  ],
+  "visualSummary": "This card features a 3x3 grid of Pepe the Frog heads, each with a different color scheme reminiscent of Andy Warhol's pop art style. The color palette is bold and varied, with vibrant hues like pink, orange, yellow, and green dominating the composition. The pixelated aesthetic gives it a retro, digital feel, combining classic art with modern meme culture.",
+  "visualSummaryShort": "The card showcases a 3x3 grid of Pepe the Frog heads in various vibrant colors, inspired by pop art. Its pixelated design merges classic art with contemporary meme culture.",
+  "visualKeywords": [
+    "pepe the frog",
+    "pop art",
+    "vibrant colors",
+    "pixelated",
+    "retro",
+    "grid",
+    "bold hues",
+    "digital",
+    "meme culture"
+  ],
+  "textKeywords": [
+    "visible",
+    "text"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "pop art",
+    "vibrant colors",
+    "pixelated",
+    "retro",
+    "grid",
+    "bold hues",
+    "digital",
+    "meme culture",
+    "visible",
+    "text"
+  ],
+  "embeddingInput": "ROEFAKE (Fake Rares) - Series 1 Card 50\nArtist: Alondre Crypto\nSupply 62 Issued October 2021\nOn-card text: There is no visible text on the card.\nVisual summary: This card features a 3x3 grid of Pepe the Frog heads, each with a different color scheme reminiscent of Andy Warhol's pop art style. The color palette is bold and varied, with vibrant hues like pink, orange, yellow, and green dominating the composition. The pixelated aesthetic gives it a retro, digital feel, combining classic art with modern meme culture.\nMemetic references: Warhol-inspired pop art vibes.; Pepe the Frog as the central meme character.; Pixel art style nodding to early internet graphics.",
+  "embeddingBlocks": [
+    {
+      "id": "ROEFAKE#text",
+      "label": "On-card text",
+      "text": "There is no visible text on the card.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "ROEFAKE#memetic",
+      "label": "Memetic references",
+      "text": "Warhol-inspired pop art vibes.\nPepe the Frog as the central meme character.\nPixel art style nodding to early internet graphics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "ROEFAKE#visual",
+      "label": "Visual summary",
+      "text": "This card features a 3x3 grid of Pepe the Frog heads, each with a different color scheme reminiscent of Andy Warhol's pop art style. The color palette is bold and varied, with vibrant hues like pink, orange, yellow, and green dominating the composition. The pixelated aesthetic gives it a retro, digital feel, combining classic art with modern meme culture.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "ROEFAKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nThere is no visible text on the card.\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a 3x3 grid of Pepe the Frog heads, each with a different color scheme reminiscent of Andy Warhol's pop art style. The color palette is bold and varied, with vibrant hues like pink, orange, yellow, and green dominating the composition. The pixelated aesthetic gives it a retro, digital feel, combining classic art with modern meme culture.\n\n🧬 **MEMETIC DNA:**\n- Warhol-inspired pop art vibes.\n- Pepe the Frog as the central meme character.\n- Pixel art style nodding to early internet graphics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.088Z",
+  "sourceFactVersion": 1
+}

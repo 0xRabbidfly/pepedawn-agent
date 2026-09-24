@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "SMARTFAKE",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 17,
+  "artist": "Elvisdear",
+  "supply": 258,
+  "issuance": "September 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog reference with a thoughtful pose.",
+    "The character's expression echoes the \"Feels Good Man\" meme.",
+    "Subtle nod to introspection in the crypto space with the thinking pose."
+  ],
+  "visualSummary": "The card features a character with a Pepe-like face, sitting pensively on a wooden stool in a room with light green walls. The character is wearing a yellow hoodie and gray sweatpants, with a window showing a simple cityscape outside. The color palette is soft and muted, creating a calm and contemplative atmosphere.",
+  "visualSummaryShort": "The card depicts a character resembling Pepe, seated on a wooden stool in a softly colored room. The muted color palette and cityscape view contribute to a calm and contemplative mood.",
+  "visualKeywords": [
+    "pepe-like",
+    "wooden stool",
+    "light green walls",
+    "yellow hoodie",
+    "gray sweatpants",
+    "cityscape",
+    "soft colors",
+    "calm atmosphere"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe-like",
+    "wooden stool",
+    "light green walls",
+    "yellow hoodie",
+    "gray sweatpants",
+    "cityscape",
+    "soft colors",
+    "calm atmosphere"
+  ],
+  "embeddingInput": "SMARTFAKE (Fake Rares) - Series 11 Card 17\nArtist: Elvisdear\nSupply 258 Issued September 2022\nOn-card text: none detected\nVisual summary: The card features a character with a Pepe-like face, sitting pensively on a wooden stool in a room with light green walls. The character is wearing a yellow hoodie and gray sweatpants, with a window showing a simple cityscape outside. The color palette is soft and muted, creating a calm and contemplative atmosphere.\nMemetic references: Pepe the Frog reference with a thoughtful pose.; The character's expression echoes the \"Feels Good Man\" meme.; Subtle nod to introspection in the crypto space with the thinking pose.",
+  "embeddingBlocks": [
+    {
+      "id": "SMARTFAKE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference with a thoughtful pose.\nThe character's expression echoes the \"Feels Good Man\" meme.\nSubtle nod to introspection in the crypto space with the thinking pose.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SMARTFAKE#visual",
+      "label": "Visual summary",
+      "text": "The card features a character with a Pepe-like face, sitting pensively on a wooden stool in a room with light green walls. The character is wearing a yellow hoodie and gray sweatpants, with a window showing a simple cityscape outside. The color palette is soft and muted, creating a calm and contemplative atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SMARTFAKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a character with a Pepe-like face, sitting pensively on a wooden stool in a room with light green walls. The character is wearing a yellow hoodie and gray sweatpants, with a window showing a simple cityscape outside. The color palette is soft and muted, creating a calm and contemplative atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference with a thoughtful pose.\n- The character's expression echoes the \"Feels Good Man\" meme.\n- Subtle nod to introspection in the crypto space with the thinking pose.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.117Z",
+  "sourceFactVersion": 1
+}

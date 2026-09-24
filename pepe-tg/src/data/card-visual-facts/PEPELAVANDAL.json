@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "asset": "PEPELAVANDAL",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 50,
+  "artist": "VIVALAVANDAL x ShowerShoes",
+  "supply": 101,
+  "issuance": "November 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog reference, a staple in meme culture.",
+    "Bolt cutters suggest themes of rebellion or breaking free.",
+    "Train and shipping containers hint at underground or transient lifestyles."
+  ],
+  "visualSummary": "The card features a character with a green face, wearing a blue hoodie, gripping bolt cutters. The background shows a train and shipping containers, with a chain-link fence in the foreground. The color palette is vibrant, with purples and reds contrasting against the green character.",
+  "visualSummaryShort": "The card depicts a character with a green face in a blue hoodie, holding bolt cutters. The vibrant background includes a train, shipping containers, and a chain-link fence.",
+  "visualKeywords": [
+    "green face",
+    "blue hoodie",
+    "bolt cutters",
+    "train",
+    "shipping containers",
+    "chain-link fence",
+    "vibrant colors",
+    "purple",
+    "red"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "green face",
+    "blue hoodie",
+    "bolt cutters",
+    "train",
+    "shipping containers",
+    "chain-link fence",
+    "vibrant colors",
+    "purple",
+    "red"
+  ],
+  "embeddingInput": "PEPELAVANDAL (Fake Rares) - Series 3 Card 50\nArtist: VIVALAVANDAL x ShowerShoes\nSupply 101 Issued November 2021\nOn-card text: none detected\nVisual summary: The card features a character with a green face, wearing a blue hoodie, gripping bolt cutters. The background shows a train and shipping containers, with a chain-link fence in the foreground. The color palette is vibrant, with purples and reds contrasting against the green character.\nMemetic references: Pepe the Frog reference, a staple in meme culture.; Bolt cutters suggest themes of rebellion or breaking free.; Train and shipping containers hint at underground or transient lifestyles.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPELAVANDAL#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference, a staple in meme culture.\nBolt cutters suggest themes of rebellion or breaking free.\nTrain and shipping containers hint at underground or transient lifestyles.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPELAVANDAL#visual",
+      "label": "Visual summary",
+      "text": "The card features a character with a green face, wearing a blue hoodie, gripping bolt cutters. The background shows a train and shipping containers, with a chain-link fence in the foreground. The color palette is vibrant, with purples and reds contrasting against the green character.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPELAVANDAL#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a character with a green face, wearing a blue hoodie, gripping bolt cutters. The background shows a train and shipping containers, with a chain-link fence in the foreground. The color palette is vibrant, with purples and reds contrasting against the green character.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference, a staple in meme culture.\n- Bolt cutters suggest themes of rebellion or breaking free.\n- Train and shipping containers hint at underground or transient lifestyles.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.915Z",
+  "sourceFactVersion": 1
+}

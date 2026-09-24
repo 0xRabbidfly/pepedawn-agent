@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "asset": "CASHGRABHLTN",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 17,
+  "artist": "JB",
+  "supply": 29,
+  "issuance": "August 2023",
+  "textOnCard": [
+    "cash grab hilton",
+    "Celebrity Hate Machine"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog influence with the green skin tone.",
+    "Celebrity culture parody.",
+    "Hand gesture mimics popular internet meme signals."
+  ],
+  "visualSummary": "This card features a vibrant mash-up of pop culture and meme art, with a central figure who has a green face and platinum blonde hair. The color palette is dominated by greens and oranges, creating a bold contrast. The bottom section shows green hands making a gesture, set against a textured orange background.",
+  "visualSummaryShort": "The card showcases a central figure with a green face and platinum blonde hair, surrounded by a vibrant mix of pop culture elements. The bold color palette of greens and oranges enhances the dynamic visual impact.",
+  "visualKeywords": [
+    "green face",
+    "platinum blonde",
+    "orange background",
+    "pop culture",
+    "meme art",
+    "green hands",
+    "bold colors"
+  ],
+  "textKeywords": [
+    "cash",
+    "grab",
+    "hilton",
+    "celebrity",
+    "hate",
+    "machine"
+  ],
+  "keywords": [
+    "green face",
+    "platinum blonde",
+    "orange background",
+    "pop culture",
+    "meme art",
+    "green hands",
+    "bold colors",
+    "cash",
+    "grab",
+    "hilton",
+    "celebrity",
+    "hate",
+    "machine"
+  ],
+  "embeddingInput": "CASHGRABHLTN (Fake Rares) - Series 15 Card 17\nArtist: JB\nSupply 29 Issued August 2023\nOn-card text: cash grab hilton | Celebrity Hate Machine\nVisual summary: This card features a vibrant mash-up of pop culture and meme art, with a central figure who has a green face and platinum blonde hair. The color palette is dominated by greens and oranges, creating a bold contrast. The bottom section shows green hands making a gesture, set against a textured orange background.\nMemetic references: Pepe the Frog influence with the green skin tone.; Celebrity culture parody.; Hand gesture mimics popular internet meme signals.",
+  "embeddingBlocks": [
+    {
+      "id": "CASHGRABHLTN#text",
+      "label": "On-card text",
+      "text": "cash grab hilton | Celebrity Hate Machine",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "CASHGRABHLTN#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog influence with the green skin tone.\nCelebrity culture parody.\nHand gesture mimics popular internet meme signals.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "CASHGRABHLTN#visual",
+      "label": "Visual summary",
+      "text": "This card features a vibrant mash-up of pop culture and meme art, with a central figure who has a green face and platinum blonde hair. The color palette is dominated by greens and oranges, creating a bold contrast. The bottom section shows green hands making a gesture, set against a textured orange background.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "CASHGRABHLTN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\ncash grab hilton  \nCelebrity Hate Machine\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a vibrant mash-up of pop culture and meme art, with a central figure who has a green face and platinum blonde hair. The color palette is dominated by greens and oranges, creating a bold contrast. The bottom section shows green hands making a gesture, set against a textured orange background.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog influence with the green skin tone.\n- Celebrity culture parody.\n- Hand gesture mimics popular internet meme signals.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.346Z",
+  "sourceFactVersion": 1
+}

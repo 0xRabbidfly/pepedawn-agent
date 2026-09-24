@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "asset": "DANKHEISTT",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 47,
+  "artist": "Sketch x 80sKurt x Early Bird",
+  "supply": 45,
+  "issuance": "October 2022",
+  "textOnCard": [
+    "The Pepe Post. Breaking News: Major Bitcoin Exchange Hack."
+  ],
+  "memeticReferences": [
+    "References the iconic Pepe the Frog meme.",
+    "Plays on crypto culture with the Bitcoin exchange hack theme.",
+    "The character resembles a classic \"hacker\" trope, with a stylish twist."
+  ],
+  "visualSummary": "This card features a newspaper headline style, with a prominent \"The Pepe Post\" masthead. Below it, a cartoonish depiction of a Pepe frog character with slicked-back blond hair, wearing sunglasses and a suit, holding a gun that resembles a futuristic weapon. The color palette is a mix of muted greys for the newspaper and vibrant greens and yellows for the Pepe figure.",
+  "visualSummaryShort": "The card showcases a cartoonish Pepe frog character in a newspaper headline format. It features a mix of muted greys and vibrant greens and yellows, creating a striking visual contrast.",
+  "visualKeywords": [
+    "newspaper",
+    "pepe frog",
+    "sunglasses",
+    "suit",
+    "gun",
+    "futuristic",
+    "grey",
+    "green",
+    "yellow",
+    "cartoonish"
+  ],
+  "textKeywords": [
+    "post",
+    "breaking",
+    "news",
+    "major",
+    "bitcoin",
+    "exchange",
+    "hack"
+  ],
+  "keywords": [
+    "newspaper",
+    "pepe frog",
+    "sunglasses",
+    "suit",
+    "gun",
+    "futuristic",
+    "grey",
+    "green",
+    "yellow",
+    "cartoonish",
+    "post",
+    "breaking",
+    "news",
+    "major",
+    "bitcoin",
+    "exchange",
+    "hack"
+  ],
+  "embeddingInput": "DANKHEISTT (Fake Rares) - Series 10 Card 47\nArtist: Sketch x 80sKurt x Early Bird\nSupply 45 Issued October 2022\nOn-card text: The Pepe Post. Breaking News: Major Bitcoin Exchange Hack.\nVisual summary: This card features a newspaper headline style, with a prominent \"The Pepe Post\" masthead. Below it, a cartoonish depiction of a Pepe frog character with slicked-back blond hair, wearing sunglasses and a suit, holding a gun that resembles a futuristic weapon. The color palette is a mix of muted greys for the newspaper and vibrant greens and yellows for the Pepe figure.\nMemetic references: References the iconic Pepe the Frog meme.; Plays on crypto culture with the Bitcoin exchange hack theme.; The character resembles a classic \"hacker\" trope, with a stylish twist.",
+  "embeddingBlocks": [
+    {
+      "id": "DANKHEISTT#text",
+      "label": "On-card text",
+      "text": "The Pepe Post. Breaking News: Major Bitcoin Exchange Hack.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "DANKHEISTT#memetic",
+      "label": "Memetic references",
+      "text": "References the iconic Pepe the Frog meme.\nPlays on crypto culture with the Bitcoin exchange hack theme.\nThe character resembles a classic \"hacker\" trope, with a stylish twist.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "DANKHEISTT#visual",
+      "label": "Visual summary",
+      "text": "This card features a newspaper headline style, with a prominent \"The Pepe Post\" masthead. Below it, a cartoonish depiction of a Pepe frog character with slicked-back blond hair, wearing sunglasses and a suit, holding a gun that resembles a futuristic weapon. The color palette is a mix of muted greys for the newspaper and vibrant greens and yellows for the Pepe figure.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "DANKHEISTT#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nThe Pepe Post. Breaking News: Major Bitcoin Exchange Hack.\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a newspaper headline style, with a prominent \"The Pepe Post\" masthead. Below it, a cartoonish depiction of a Pepe frog character with slicked-back blond hair, wearing sunglasses and a suit, holding a gun that resembles a futuristic weapon. The color palette is a mix of muted greys for the newspaper and vibrant greens and yellows for the Pepe figure.\n\n🧬 **MEMETIC DNA:**\n- References the iconic Pepe the Frog meme.\n- Plays on crypto culture with the Bitcoin exchange hack theme.\n- The character resembles a classic \"hacker\" trope, with a stylish twist.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.381Z",
+  "sourceFactVersion": 1
+}

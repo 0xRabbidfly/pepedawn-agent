@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "asset": "FAKESUBMIT",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 40,
+  "artist": "mr spree",
+  "supply": 37,
+  "issuance": "October 2022",
+  "textOnCard": [
+    "FAKESUBMIT",
+    "REDEEM FOR ONE (1) RESPONSE AT FAKE LABORATORY",
+    "See reverse for Fake submission instructions",
+    "If found please return to 12e8GGjozV1bSA9NzqHyp2rosRVpa7gts3"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog, a staple character in meme culture.",
+    "References to crypto culture with the “FAKESUBMIT” title and mention of a \"Fake Laboratory.\"",
+    "Plays on the concept of fake submissions, adding a layer of humor.",
+    "Includes a cryptographic address, typical in NFT and crypto art."
+  ],
+  "visualSummary": "The card features a textured, distressed green background with a large image of the classic Pepe the Frog in the center. Pepe has a somber expression, adding to the card's meme aesthetic. The text is in a bold, black font, creating a contrast against the green backdrop, and the card has a grungy, worn-out look that gives it a vintage feel.",
+  "visualSummaryShort": "The card showcases a distressed green background with a prominent image of Pepe the Frog, who has a somber expression. The overall aesthetic is grungy and vintage, enhanced by bold black text.",
+  "visualKeywords": [
+    "pepe the frog",
+    "green background",
+    "somber expression",
+    "grungy",
+    "vintage",
+    "textured",
+    "distressed",
+    "bold font"
+  ],
+  "textKeywords": [
+    "fakesubmit",
+    "redeem",
+    "one",
+    "response",
+    "laboratory",
+    "see",
+    "reverse",
+    "submission",
+    "instructions",
+    "found",
+    "please",
+    "return",
+    "12e8ggjozv1bsa9nzqhyp2rosrvpa7gts3"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "green background",
+    "somber expression",
+    "grungy",
+    "vintage",
+    "textured",
+    "distressed",
+    "bold font",
+    "fakesubmit",
+    "redeem",
+    "one",
+    "response",
+    "laboratory",
+    "see",
+    "reverse",
+    "submission",
+    "instructions",
+    "found",
+    "please",
+    "return",
+    "12e8ggjozv1bsa9nzqhyp2rosrvpa7gts3"
+  ],
+  "embeddingInput": "FAKESUBMIT (Fake Rares) - Series 12 Card 40\nArtist: mr spree\nSupply 37 Issued October 2022\nOn-card text: FAKESUBMIT | REDEEM FOR ONE (1) RESPONSE AT FAKE LABORATORY | See reverse for Fake submission instructions | If found please return to 12e8GGjozV1bSA9NzqHyp2rosRVpa7gts3\nVisual summary: The card features a textured, distressed green background with a large image of the classic Pepe the Frog in the center. Pepe has a somber expression, adding to the card's meme aesthetic. The text is in a bold, black font, creating a contrast against the green backdrop, and the card has a grungy, worn-out look that gives it a vintage feel.\nMemetic references: Classic Pepe the Frog, a staple character in meme culture.; References to crypto culture with the “FAKESUBMIT” title and mention of a \"Fake Laboratory.\"; Plays on the concept of fake submissions, adding a layer of humor.; Includes a cryptographic address, typical in NFT and crypto art.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKESUBMIT#text",
+      "label": "On-card text",
+      "text": "FAKESUBMIT | REDEEM FOR ONE (1) RESPONSE AT FAKE LABORATORY | See reverse for Fake submission instructions | If found please return to 12e8GGjozV1bSA9NzqHyp2rosRVpa7gts3",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKESUBMIT#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog, a staple character in meme culture.\nReferences to crypto culture with the “FAKESUBMIT” title and mention of a \"Fake Laboratory.\"\nPlays on the concept of fake submissions, adding a layer of humor.\nIncludes a cryptographic address, typical in NFT and crypto art.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKESUBMIT#visual",
+      "label": "Visual summary",
+      "text": "The card features a textured, distressed green background with a large image of the classic Pepe the Frog in the center. Pepe has a somber expression, adding to the card's meme aesthetic. The text is in a bold, black font, creating a contrast against the green backdrop, and the card has a grungy, worn-out look that gives it a vintage feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKESUBMIT#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKESUBMIT  \nREDEEM FOR ONE (1) RESPONSE AT FAKE LABORATORY  \nSee reverse for Fake submission instructions  \nIf found please return to 12e8GGjozV1bSA9NzqHyp2rosRVpa7gts3\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a textured, distressed green background with a large image of the classic Pepe the Frog in the center. Pepe has a somber expression, adding to the card's meme aesthetic. The text is in a bold, black font, creating a contrast against the green backdrop, and the card has a grungy, worn-out look that gives it a vintage feel.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog, a staple character in meme culture.\n- References to crypto culture with the “FAKESUBMIT” title and mention of a \"Fake Laboratory.\"\n- Plays on the concept of fake submissions, adding a layer of humor.\n- Includes a cryptographic address, typical in NFT and crypto art.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.581Z",
+  "sourceFactVersion": 1
+}

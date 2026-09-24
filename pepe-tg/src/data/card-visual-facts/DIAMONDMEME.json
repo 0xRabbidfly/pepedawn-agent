@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "DIAMONDMEME",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 12,
+  "artist": "FWD",
+  "supply": 35,
+  "issuance": "December 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "References to the iconic \"Pepe the Frog\" are subtly embedded in the triangular panels.",
+    "The diamond shape hints at the \"diamond hands\" meme, symbolizing strong holding power in crypto culture.",
+    "The collage-like arrangement reflects NFT and meme culture’s penchant for remixing and juxtaposing different elements."
+  ],
+  "visualSummary": "The card features a stylized fist shaped like a diamond, composed of multiple triangular panels. Each panel contains various images, primarily in shades of blue and white, giving a reflective and multifaceted appearance. The overall style is digital and contemporary, with a clean and dynamic composition.",
+  "visualSummaryShort": "The card showcases a diamond-shaped fist made of triangular panels in blue and white. Its digital and contemporary style creates a reflective and dynamic visual effect.",
+  "visualKeywords": [
+    "diamond",
+    "fist",
+    "triangular",
+    "blue",
+    "white",
+    "reflective",
+    "digital",
+    "contemporary",
+    "clean",
+    "dynamic"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "diamond",
+    "fist",
+    "triangular",
+    "blue",
+    "white",
+    "reflective",
+    "digital",
+    "contemporary",
+    "clean",
+    "dynamic"
+  ],
+  "embeddingInput": "DIAMONDMEME (Fake Rares) - Series 13 Card 12\nArtist: FWD\nSupply 35 Issued December 2022\nOn-card text: none detected\nVisual summary: The card features a stylized fist shaped like a diamond, composed of multiple triangular panels. Each panel contains various images, primarily in shades of blue and white, giving a reflective and multifaceted appearance. The overall style is digital and contemporary, with a clean and dynamic composition.\nMemetic references: References to the iconic \"Pepe the Frog\" are subtly embedded in the triangular panels.; The diamond shape hints at the \"diamond hands\" meme, symbolizing strong holding power in crypto culture.; The collage-like arrangement reflects NFT and meme culture’s penchant for remixing and juxtaposing different elements.",
+  "embeddingBlocks": [
+    {
+      "id": "DIAMONDMEME#memetic",
+      "label": "Memetic references",
+      "text": "References to the iconic \"Pepe the Frog\" are subtly embedded in the triangular panels.\nThe diamond shape hints at the \"diamond hands\" meme, symbolizing strong holding power in crypto culture.\nThe collage-like arrangement reflects NFT and meme culture’s penchant for remixing and juxtaposing different elements.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "DIAMONDMEME#visual",
+      "label": "Visual summary",
+      "text": "The card features a stylized fist shaped like a diamond, composed of multiple triangular panels. Each panel contains various images, primarily in shades of blue and white, giving a reflective and multifaceted appearance. The overall style is digital and contemporary, with a clean and dynamic composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "DIAMONDMEME#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a stylized fist shaped like a diamond, composed of multiple triangular panels. Each panel contains various images, primarily in shades of blue and white, giving a reflective and multifaceted appearance. The overall style is digital and contemporary, with a clean and dynamic composition.\n\n🧬 **MEMETIC DNA:**\n- References to the iconic \"Pepe the Frog\" are subtly embedded in the triangular panels.\n- The diamond shape hints at the \"diamond hands\" meme, symbolizing strong holding power in crypto culture.\n- The collage-like arrangement reflects NFT and meme culture’s penchant for remixing and juxtaposing different elements.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.394Z",
+  "sourceFactVersion": 1
+}

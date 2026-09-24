@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "SEAOFFROG",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 14,
+  "artist": "RC",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "*ribbit* *ribbit* *ribbit* *ribbit*"
+  ],
+  "memeticReferences": [
+    "References to the iconic \"Wanderer above the Sea of Fog\" with a Pepe twist.",
+    "\"Ribbit\" text nods to Pepe the Frog lore.",
+    "Classic art meets meme culture, blending high art with internet humor."
+  ],
+  "visualSummary": "The card features a classic painting style reminiscent of Caspar David Friedrich, depicting a lone figure standing on a rocky precipice, gazing over a misty green landscape. The color palette is dominated by shades of green, creating a serene yet mysterious atmosphere. The figure's stance is contemplative, adding a dramatic and introspective vibe to the scene.",
+  "visualSummaryShort": "The card showcases a lone figure on a rocky precipice, overlooking a misty green landscape. The serene atmosphere is enhanced by a classic painting style and a contemplative mood.",
+  "visualKeywords": [
+    "figure",
+    "rocky precipice",
+    "misty",
+    "green landscape",
+    "contemplative",
+    "dramatic",
+    "serene",
+    "classic style"
+  ],
+  "textKeywords": [
+    "ribbit"
+  ],
+  "keywords": [
+    "figure",
+    "rocky precipice",
+    "misty",
+    "green landscape",
+    "contemplative",
+    "dramatic",
+    "serene",
+    "classic style",
+    "ribbit"
+  ],
+  "embeddingInput": "SEAOFFROG (Fake Rares) - Series 1 Card 14\nArtist: RC\nSupply 100 Issued October 2021\nOn-card text: *ribbit* *ribbit* *ribbit* *ribbit*\nVisual summary: The card features a classic painting style reminiscent of Caspar David Friedrich, depicting a lone figure standing on a rocky precipice, gazing over a misty green landscape. The color palette is dominated by shades of green, creating a serene yet mysterious atmosphere. The figure's stance is contemplative, adding a dramatic and introspective vibe to the scene.\nMemetic references: References to the iconic \"Wanderer above the Sea of Fog\" with a Pepe twist.; \"Ribbit\" text nods to Pepe the Frog lore.; Classic art meets meme culture, blending high art with internet humor.",
+  "embeddingBlocks": [
+    {
+      "id": "SEAOFFROG#text",
+      "label": "On-card text",
+      "text": "*ribbit* *ribbit* *ribbit* *ribbit*",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "SEAOFFROG#memetic",
+      "label": "Memetic references",
+      "text": "References to the iconic \"Wanderer above the Sea of Fog\" with a Pepe twist.\n\"Ribbit\" text nods to Pepe the Frog lore.\nClassic art meets meme culture, blending high art with internet humor.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SEAOFFROG#visual",
+      "label": "Visual summary",
+      "text": "The card features a classic painting style reminiscent of Caspar David Friedrich, depicting a lone figure standing on a rocky precipice, gazing over a misty green landscape. The color palette is dominated by shades of green, creating a serene yet mysterious atmosphere. The figure's stance is contemplative, adding a dramatic and introspective vibe to the scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SEAOFFROG#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n*ribbit* *ribbit* *ribbit* *ribbit*\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a classic painting style reminiscent of Caspar David Friedrich, depicting a lone figure standing on a rocky precipice, gazing over a misty green landscape. The color palette is dominated by shades of green, creating a serene yet mysterious atmosphere. The figure's stance is contemplative, adding a dramatic and introspective vibe to the scene.\n\n🧬 **MEMETIC DNA:**\n- References to the iconic \"Wanderer above the Sea of Fog\" with a Pepe twist.\n- \"Ribbit\" text nods to Pepe the Frog lore.\n- Classic art meets meme culture, blending high art with internet humor.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.103Z",
+  "sourceFactVersion": 1
+}

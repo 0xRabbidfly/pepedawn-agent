@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "asset": "SILKROADPEPE",
+  "collection": "Fake Rares",
+  "series": 0,
+  "cardNumber": 22,
+  "artist": "Dom",
+  "supply": null,
+  "issuance": "September 2016",
+  "textOnCard": [
+    "SILKROAD PEPE",
+    "❤️ = 15 SPD = $2",
+    "gr CRK = $5",
+    "rock",
+    "When this card is depleted of HP it spawns 7 more SILKROADPEPE cards during the game. 2x card bonus if the other player holds a PEPELEO or FBIPEPE or AGENTPEPE card.",
+    "RARENESS SCORE 9"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as the central figure.",
+    "References to Silk Road, the notorious online black market.",
+    "Crypto and NFT culture elements with terms like \"SPD\" and \"CRK.\"",
+    "Nods to other Pepe variations like PEPELEO and FBIPEPE."
+  ],
+  "visualSummary": "This card features a vibrant green Pepe riding a camel, merging the iconic frog with a Middle Eastern landscape vibe. The color palette is dominated by bold greens with a stark black outline, giving it a cartoonish, pop-art style. The composition is simple yet striking, focusing mainly on the central figure of Pepe on the camel.",
+  "visualSummaryShort": "The card showcases a vibrant green Pepe riding a camel against a Middle Eastern landscape. Its bold colors and cartoonish style create a striking visual impact.",
+  "visualKeywords": [
+    "pepe",
+    "camel",
+    "green",
+    "middle eastern",
+    "cartoonish",
+    "pop-art",
+    "bold colors",
+    "black outline"
+  ],
+  "textKeywords": [
+    "silkroad",
+    "spd",
+    "crk",
+    "rock",
+    "when",
+    "depleted",
+    "spawns",
+    "silkroadpepe",
+    "during",
+    "game",
+    "bonus",
+    "other",
+    "player",
+    "holds",
+    "pepeleo",
+    "fbipepe",
+    "agentpepe",
+    "rareness",
+    "score"
+  ],
+  "keywords": [
+    "pepe",
+    "camel",
+    "green",
+    "middle eastern",
+    "cartoonish",
+    "pop-art",
+    "bold colors",
+    "black outline",
+    "silkroad",
+    "spd",
+    "crk",
+    "rock",
+    "when",
+    "depleted",
+    "spawns",
+    "silkroadpepe",
+    "during",
+    "game",
+    "bonus",
+    "other",
+    "player",
+    "holds",
+    "pepeleo",
+    "fbipepe",
+    "agentpepe",
+    "rareness",
+    "score"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "SILKROADPEPE (Fake Rares) - Series 0 Card 22\nArtist: Dom\nIssued September 2016\nOn-card text: SILKROAD PEPE | ❤️ = 15 SPD = $2 | gr CRK = $5 | rock | When this card is depleted of HP it spawns 7 more SILKROADPEPE cards during the game. 2x card bonus if the other player holds a PEPELEO or FBIPEPE or AGENTPEPE card. | RARENESS SCORE 9\nVisual summary: This card features a vibrant green Pepe riding a camel, merging the iconic frog with a Middle Eastern landscape vibe. The color palette is dominated by bold greens with a stark black outline, giving it a cartoonish, pop-art style. The composition is simple yet striking, focusing mainly on the central figure of Pepe on the camel.\nMemetic references: Pepe the Frog as the central figure.; References to Silk Road, the notorious online black market.; Crypto and NFT culture elements with terms like \"SPD\" and \"CRK.\"; Nods to other Pepe variations like PEPELEO and FBIPEPE.",
+  "embeddingBlocks": [
+    {
+      "id": "SILKROADPEPE#text",
+      "label": "On-card text",
+      "text": "SILKROAD PEPE | ❤️ = 15 SPD = $2 | gr CRK = $5 | rock | When this card is depleted of HP it spawns 7 more SILKROADPEPE cards during the game. 2x card bonus if the other player holds a PEPELEO or FBIPEPE or AGENTPEPE card. | RARENESS SCORE 9",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "SILKROADPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as the central figure.\nReferences to Silk Road, the notorious online black market.\nCrypto and NFT culture elements with terms like \"SPD\" and \"CRK.\"\nNods to other Pepe variations like PEPELEO and FBIPEPE.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SILKROADPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a vibrant green Pepe riding a camel, merging the iconic frog with a Middle Eastern landscape vibe. The color palette is dominated by bold greens with a stark black outline, giving it a cartoonish, pop-art style. The composition is simple yet striking, focusing mainly on the central figure of Pepe on the camel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SILKROADPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nSILKROAD PEPE  \n❤️ = 15 SPD = $2/gr CRK = $5/rock  \nWhen this card is depleted of HP it spawns 7 more SILKROADPEPE cards during the game. 2x card bonus if the other player holds a PEPELEO or FBIPEPE or AGENTPEPE card.  \nRARENESS SCORE 9\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a vibrant green Pepe riding a camel, merging the iconic frog with a Middle Eastern landscape vibe. The color palette is dominated by bold greens with a stark black outline, giving it a cartoonish, pop-art style. The composition is simple yet striking, focusing mainly on the central figure of Pepe on the camel.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as the central figure.\n- References to Silk Road, the notorious online black market.\n- Crypto and NFT culture elements with terms like \"SPD\" and \"CRK.\"\n- Nods to other Pepe variations like PEPELEO and FBIPEPE.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:29:52.781Z"
+}

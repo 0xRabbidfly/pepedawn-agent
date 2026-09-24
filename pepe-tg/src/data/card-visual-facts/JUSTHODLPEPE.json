@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "asset": "JUSTHODLPEPE",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 37,
+  "artist": "Basqkek x HODLPIG",
+  "supply": 62,
+  "issuance": "May 2022",
+  "textOnCard": [
+    "MARGIN CALLING, The BEARISH, HODL, UNREALIZED REKT, BUY, SELL"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in distress mode, classic crypto culture.",
+    "\"HODL\" references the infamous crypto mantra.",
+    "\"MARGIN CALLING\" and \"REKT\" are nods to trading woes.",
+    "Lightning and storm clouds symbolize volatility."
+  ],
+  "visualSummary": "The card is a chaotic mix of vibrant colors, primarily reds, greens, and blues. It features a distressed Pepe holding onto a dipping chart with abstract, graffiti-like scribbles. The style is raw and expressive, with a blend of digital and street art influences.",
+  "visualSummaryShort": "The card showcases a distressed Pepe amidst a chaotic blend of vibrant colors, including reds, greens, and blues. It features abstract graffiti-like elements, creating a raw and expressive street art vibe.",
+  "visualKeywords": [
+    "pepe",
+    "vibrant colors",
+    "graffiti",
+    "abstract",
+    "distressed",
+    "chart",
+    "chaotic",
+    "digital art",
+    "street art"
+  ],
+  "textKeywords": [
+    "margin",
+    "calling",
+    "bearish",
+    "hodl",
+    "unrealized",
+    "rekt",
+    "buy",
+    "sell"
+  ],
+  "keywords": [
+    "pepe",
+    "vibrant colors",
+    "graffiti",
+    "abstract",
+    "distressed",
+    "chart",
+    "chaotic",
+    "digital art",
+    "street art",
+    "margin",
+    "calling",
+    "bearish",
+    "hodl",
+    "unrealized",
+    "rekt",
+    "buy",
+    "sell"
+  ],
+  "embeddingInput": "JUSTHODLPEPE (Fake Rares) - Series 7 Card 37\nArtist: Basqkek x HODLPIG\nSupply 62 Issued May 2022\nOn-card text: MARGIN CALLING, The BEARISH, HODL, UNREALIZED REKT, BUY, SELL\nVisual summary: The card is a chaotic mix of vibrant colors, primarily reds, greens, and blues. It features a distressed Pepe holding onto a dipping chart with abstract, graffiti-like scribbles. The style is raw and expressive, with a blend of digital and street art influences.\nMemetic references: Pepe the Frog in distress mode, classic crypto culture.; \"HODL\" references the infamous crypto mantra.; \"MARGIN CALLING\" and \"REKT\" are nods to trading woes.; Lightning and storm clouds symbolize volatility.",
+  "embeddingBlocks": [
+    {
+      "id": "JUSTHODLPEPE#text",
+      "label": "On-card text",
+      "text": "MARGIN CALLING, The BEARISH, HODL, UNREALIZED REKT, BUY, SELL",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "JUSTHODLPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in distress mode, classic crypto culture.\n\"HODL\" references the infamous crypto mantra.\n\"MARGIN CALLING\" and \"REKT\" are nods to trading woes.\nLightning and storm clouds symbolize volatility.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "JUSTHODLPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card is a chaotic mix of vibrant colors, primarily reds, greens, and blues. It features a distressed Pepe holding onto a dipping chart with abstract, graffiti-like scribbles. The style is raw and expressive, with a blend of digital and street art influences.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "JUSTHODLPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nMARGIN CALLING, The BEARISH, HODL, UNREALIZED REKT, BUY, SELL\n\n🎨 **VISUAL BREAKDOWN:**\nThe card is a chaotic mix of vibrant colors, primarily reds, greens, and blues. It features a distressed Pepe holding onto a dipping chart with abstract, graffiti-like scribbles. The style is raw and expressive, with a blend of digital and street art influences.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in distress mode, classic crypto culture.\n- \"HODL\" references the infamous crypto mantra.\n- \"MARGIN CALLING\" and \"REKT\" are nods to trading woes.\n- Lightning and storm clouds symbolize volatility.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.706Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "asset": "FLOONEYBIN",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 10,
+  "artist": "Booo_Urns",
+  "supply": 70,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "FAKE JOE LOONEY BIN LADEN, Wallet Masseuse, Capt. Ahab, LONG, The token is the fake, Rare?, Loonish"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference through the green figure.",
+    "Plays on crypto culture with terms like \"Wallet Masseuse\" and \"Loonish.\"",
+    "References to Joe Looney, a known figure in the NFT space.",
+    "\"The token is the fake\" hints at the playful nature of fake rares."
+  ],
+  "visualSummary": "The card features a green, muscular figure with a red and white checkered headscarf, humorously placed in a desert setting among traditionally dressed figures. The color palette is a mix of vibrant green and earth tones, contrasting modern digital art with a satirical twist. The style blends photorealism with absurdism, emphasizing the comedic and surreal elements.",
+  "visualSummaryShort": "The card showcases a green, muscular figure in a red and white checkered headscarf set in a desert among traditionally dressed characters. The vibrant color palette and blend of photorealism with absurdism create a comedic and surreal atmosphere.",
+  "visualKeywords": [
+    "green figure",
+    "desert",
+    "checkered scarf",
+    "vibrant colors",
+    "traditional dress",
+    "absurdism",
+    "photorealism",
+    "comedic",
+    "surreal"
+  ],
+  "textKeywords": [
+    "joe",
+    "looney",
+    "bin",
+    "laden",
+    "wallet",
+    "masseuse",
+    "capt",
+    "ahab",
+    "long",
+    "token",
+    "loonish"
+  ],
+  "keywords": [
+    "green figure",
+    "desert",
+    "checkered scarf",
+    "vibrant colors",
+    "traditional dress",
+    "absurdism",
+    "photorealism",
+    "comedic",
+    "surreal",
+    "joe",
+    "looney",
+    "bin",
+    "laden",
+    "wallet",
+    "masseuse",
+    "capt",
+    "ahab",
+    "long",
+    "token",
+    "loonish"
+  ],
+  "embeddingInput": "FLOONEYBIN (Fake Rares) - Series 6 Card 10\nArtist: Booo_Urns\nSupply 70 Issued November 2021\nOn-card text: FAKE JOE LOONEY BIN LADEN, Wallet Masseuse, Capt. Ahab, LONG, The token is the fake, Rare?, Loonish\nVisual summary: The card features a green, muscular figure with a red and white checkered headscarf, humorously placed in a desert setting among traditionally dressed figures. The color palette is a mix of vibrant green and earth tones, contrasting modern digital art with a satirical twist. The style blends photorealism with absurdism, emphasizing the comedic and surreal elements.\nMemetic references: Pepe the Frog reference through the green figure.; Plays on crypto culture with terms like \"Wallet Masseuse\" and \"Loonish.\"; References to Joe Looney, a known figure in the NFT space.; \"The token is the fake\" hints at the playful nature of fake rares.",
+  "embeddingBlocks": [
+    {
+      "id": "FLOONEYBIN#text",
+      "label": "On-card text",
+      "text": "FAKE JOE LOONEY BIN LADEN, Wallet Masseuse, Capt. Ahab, LONG, The token is the fake, Rare?, Loonish",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FLOONEYBIN#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference through the green figure.\nPlays on crypto culture with terms like \"Wallet Masseuse\" and \"Loonish.\"\nReferences to Joe Looney, a known figure in the NFT space.\n\"The token is the fake\" hints at the playful nature of fake rares.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FLOONEYBIN#visual",
+      "label": "Visual summary",
+      "text": "The card features a green, muscular figure with a red and white checkered headscarf, humorously placed in a desert setting among traditionally dressed figures. The color palette is a mix of vibrant green and earth tones, contrasting modern digital art with a satirical twist. The style blends photorealism with absurdism, emphasizing the comedic and surreal elements.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FLOONEYBIN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE JOE LOONEY BIN LADEN, Wallet Masseuse, Capt. Ahab, LONG, The token is the fake, Rare?, Loonish\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a green, muscular figure with a red and white checkered headscarf, humorously placed in a desert setting among traditionally dressed figures. The color palette is a mix of vibrant green and earth tones, contrasting modern digital art with a satirical twist. The style blends photorealism with absurdism, emphasizing the comedic and surreal elements.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference through the green figure.\n- Plays on crypto culture with terms like \"Wallet Masseuse\" and \"Loonish.\"\n- References to Joe Looney, a known figure in the NFT space.\n- \"The token is the fake\" hints at the playful nature of fake rares.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.630Z",
+  "sourceFactVersion": 1
+}

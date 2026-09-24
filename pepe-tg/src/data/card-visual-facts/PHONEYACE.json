@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "asset": "PHONEYACE",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 48,
+  "artist": "Maya",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "RAREst PEPE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference with the iconic eye.",
+    "Playing card theme with the Ace of Diamonds.",
+    "\"Rare Pepe\" nod to the classic meme and NFT culture."
+  ],
+  "visualSummary": "The card features a classic playing card design with a bold red diamond at the center. Inside the diamond is a single eye with a green eyelid, reminiscent of the iconic Pepe look. The color palette is dominated by red and white, with the eye adding a splash of green, giving it a minimalist yet striking appearance.",
+  "visualSummaryShort": "The card showcases a classic playing card design with a prominent red diamond featuring a single eye. The color scheme is primarily red and white, accented by a green eyelid, creating a minimalist yet eye-catching look.",
+  "visualKeywords": [
+    "playing card",
+    "red diamond",
+    "eye",
+    "green eyelid",
+    "minimalist",
+    "bold colors"
+  ],
+  "textKeywords": [
+    "rarest"
+  ],
+  "keywords": [
+    "playing card",
+    "red diamond",
+    "eye",
+    "green eyelid",
+    "minimalist",
+    "bold colors",
+    "rarest"
+  ],
+  "embeddingInput": "PHONEYACE (Fake Rares) - Series 4 Card 48\nArtist: Maya\nSupply 100 Issued October 2021\nOn-card text: RAREst PEPE\nVisual summary: The card features a classic playing card design with a bold red diamond at the center. Inside the diamond is a single eye with a green eyelid, reminiscent of the iconic Pepe look. The color palette is dominated by red and white, with the eye adding a splash of green, giving it a minimalist yet striking appearance.\nMemetic references: Pepe the Frog reference with the iconic eye.; Playing card theme with the Ace of Diamonds.; \"Rare Pepe\" nod to the classic meme and NFT culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PHONEYACE#text",
+      "label": "On-card text",
+      "text": "RAREst PEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PHONEYACE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference with the iconic eye.\nPlaying card theme with the Ace of Diamonds.\n\"Rare Pepe\" nod to the classic meme and NFT culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PHONEYACE#visual",
+      "label": "Visual summary",
+      "text": "The card features a classic playing card design with a bold red diamond at the center. Inside the diamond is a single eye with a green eyelid, reminiscent of the iconic Pepe look. The color palette is dominated by red and white, with the eye adding a splash of green, giving it a minimalist yet striking appearance.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PHONEYACE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nRAREst PEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a classic playing card design with a bold red diamond at the center. Inside the diamond is a single eye with a green eyelid, reminiscent of the iconic Pepe look. The color palette is dominated by red and white, with the eye adding a splash of green, giving it a minimalist yet striking appearance.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference with the iconic eye.\n- Playing card theme with the Ace of Diamonds.\n- \"Rare Pepe\" nod to the classic meme and NFT culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.035Z",
+  "sourceFactVersion": 1
+}

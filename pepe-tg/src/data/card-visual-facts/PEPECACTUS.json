@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "asset": "PEPECACTUS",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 7,
+  "artist": "Luis Simo",
+  "supply": 41,
+  "issuance": "March 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog face on cacti, blending meme culture with natural elements.",
+    "Desert vibe aligns with crypto's often barren, yet hopeful market landscape.",
+    "Playful twist on the \"cactus\" meme, symbolizing resilience and humor."
+  ],
+  "visualSummary": "The card features two cacti with Pepe faces, set against a clear blue sky. The tall cactus stands upright with yellow flowers blooming at the tips, while the round cactus sits on the ground with a cheerful grin. The color palette is vibrant with greens and blues, and a splash of yellow, creating a whimsical desert scene.",
+  "visualSummaryShort": "The card showcases two cacti with Pepe faces under a bright blue sky. The scene is colorful and whimsical, featuring vibrant greens, blues, and yellow flowers.",
+  "visualKeywords": [
+    "cacti",
+    "pepe",
+    "blue sky",
+    "yellow flowers",
+    "green",
+    "whimsical",
+    "desert"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "cacti",
+    "pepe",
+    "blue sky",
+    "yellow flowers",
+    "green",
+    "whimsical",
+    "desert"
+  ],
+  "embeddingInput": "PEPECACTUS (Fake Rares) - Series 7 Card 7\nArtist: Luis Simo\nSupply 41 Issued March 2022\nOn-card text: none detected\nVisual summary: The card features two cacti with Pepe faces, set against a clear blue sky. The tall cactus stands upright with yellow flowers blooming at the tips, while the round cactus sits on the ground with a cheerful grin. The color palette is vibrant with greens and blues, and a splash of yellow, creating a whimsical desert scene.\nMemetic references: Pepe the Frog face on cacti, blending meme culture with natural elements.; Desert vibe aligns with crypto's often barren, yet hopeful market landscape.; Playful twist on the \"cactus\" meme, symbolizing resilience and humor.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPECACTUS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog face on cacti, blending meme culture with natural elements.\nDesert vibe aligns with crypto's often barren, yet hopeful market landscape.\nPlayful twist on the \"cactus\" meme, symbolizing resilience and humor.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPECACTUS#visual",
+      "label": "Visual summary",
+      "text": "The card features two cacti with Pepe faces, set against a clear blue sky. The tall cactus stands upright with yellow flowers blooming at the tips, while the round cactus sits on the ground with a cheerful grin. The color palette is vibrant with greens and blues, and a splash of yellow, creating a whimsical desert scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPECACTUS#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features two cacti with Pepe faces, set against a clear blue sky. The tall cactus stands upright with yellow flowers blooming at the tips, while the round cactus sits on the ground with a cheerful grin. The color palette is vibrant with greens and blues, and a splash of yellow, creating a whimsical desert scene.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog face on cacti, blending meme culture with natural elements.\n- Desert vibe aligns with crypto's often barren, yet hopeful market landscape.\n- Playful twist on the \"cactus\" meme, symbolizing resilience and humor.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.851Z",
+  "sourceFactVersion": 1
+}

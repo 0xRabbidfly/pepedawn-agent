@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "asset": "FAKAMOTO",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 3,
+  "artist": "Yotet",
+  "supply": 100,
+  "issuance": "September 2021",
+  "textOnCard": [
+    "Fakamoto Card",
+    "The creator of Bitcoin. One of the most rare Pepes in existence. FAKE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference through the green face.",
+    "Satoshi Nakamoto parody in the name \"Fakamoto.\"",
+    "Joint symbolizes \"degen\" culture and crypto chill vibes.",
+    "The use of \"FAKE\" humorously mocks the authenticity of NFTs."
+  ],
+  "visualSummary": "The card features a hand-painted, slightly abstract depiction of a green-faced figure with purple hair, smoking a joint. The background is a mix of rough brush strokes in pink and green, giving it a raw and grungy feel. The overall artistic style is reminiscent of street art with a playful and irreverent twist.",
+  "visualSummaryShort": "The card showcases a green-faced figure with purple hair, smoking a joint against a vibrant pink and green background. Its artistic style evokes a playful, street art vibe with a raw, grungy feel.",
+  "visualKeywords": [
+    "green face",
+    "purple hair",
+    "smoking",
+    "pink background",
+    "green background",
+    "abstract",
+    "street art",
+    "grungy",
+    "playful"
+  ],
+  "textKeywords": [
+    "fakamoto",
+    "creator",
+    "bitcoin",
+    "one",
+    "pepes",
+    "existence"
+  ],
+  "keywords": [
+    "green face",
+    "purple hair",
+    "smoking",
+    "pink background",
+    "green background",
+    "abstract",
+    "street art",
+    "grungy",
+    "playful",
+    "fakamoto",
+    "creator",
+    "bitcoin",
+    "one",
+    "pepes",
+    "existence"
+  ],
+  "embeddingInput": "FAKAMOTO (Fake Rares) - Series 1 Card 3\nArtist: Yotet\nSupply 100 Issued September 2021\nOn-card text: Fakamoto Card | The creator of Bitcoin. One of the most rare Pepes in existence. FAKE\nVisual summary: The card features a hand-painted, slightly abstract depiction of a green-faced figure with purple hair, smoking a joint. The background is a mix of rough brush strokes in pink and green, giving it a raw and grungy feel. The overall artistic style is reminiscent of street art with a playful and irreverent twist.\nMemetic references: Pepe the Frog reference through the green face.; Satoshi Nakamoto parody in the name \"Fakamoto.\"; Joint symbolizes \"degen\" culture and crypto chill vibes.; The use of \"FAKE\" humorously mocks the authenticity of NFTs.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKAMOTO#text",
+      "label": "On-card text",
+      "text": "Fakamoto Card | The creator of Bitcoin. One of the most rare Pepes in existence. FAKE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKAMOTO#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference through the green face.\nSatoshi Nakamoto parody in the name \"Fakamoto.\"\nJoint symbolizes \"degen\" culture and crypto chill vibes.\nThe use of \"FAKE\" humorously mocks the authenticity of NFTs.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKAMOTO#visual",
+      "label": "Visual summary",
+      "text": "The card features a hand-painted, slightly abstract depiction of a green-faced figure with purple hair, smoking a joint. The background is a mix of rough brush strokes in pink and green, giving it a raw and grungy feel. The overall artistic style is reminiscent of street art with a playful and irreverent twist.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKAMOTO#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- Fakamoto Card\n- The creator of Bitcoin. One of the most rare Pepes in existence. FAKE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a hand-painted, slightly abstract depiction of a green-faced figure with purple hair, smoking a joint. The background is a mix of rough brush strokes in pink and green, giving it a raw and grungy feel. The overall artistic style is reminiscent of street art with a playful and irreverent twist.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference through the green face.\n- Satoshi Nakamoto parody in the name \"Fakamoto.\"\n- Joint symbolizes \"degen\" culture and crypto chill vibes.\n- The use of \"FAKE\" humorously mocks the authenticity of NFTs.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.438Z",
+  "sourceFactVersion": 1
+}

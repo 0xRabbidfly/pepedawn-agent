@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "asset": "UNTITLEDFROG",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 3,
+  "artist": "nicedayJULES",
+  "supply": 33,
+  "issuance": "April 2023",
+  "textOnCard": [
+    "RARE PEPE",
+    "DANK PEPE",
+    "ALL NFTS ARE PEPE",
+    "FAKE COMMON PEPE",
+    "NOTABLE PEPE",
+    "PURE PEPE",
+    "FAKE RARE PEPE",
+    "PEPE"
+  ],
+  "memeticReferences": [
+    "References to the legendary \"Rare Pepe\" meme.",
+    "Plays on the notorious NFT culture of rarity and authenticity.",
+    "Emphasizes the ubiquity of Pepe in meme culture.",
+    "Satirical take on the commodification of memes."
+  ],
+  "visualSummary": "The card features a chaotic, scribbled style with text in bold, vibrant colors like red, green, blue, and orange. Each instance of \"PEPE\" is crossed out with a rough, hand-drawn line, except for the final \"PEPE\" which is circled. The background is stark white, accentuating the raw, crayon-like strokes and doodles.",
+  "visualSummaryShort": "The card showcases a chaotic, scribbled design with bold colors and a stark white background. The repeated instances of 'PEPE' are crossed out, creating a striking visual contrast.",
+  "visualKeywords": [
+    "chaotic",
+    "scribbled",
+    "bold colors",
+    "white background",
+    "crayon-like",
+    "doodles",
+    "crossed out",
+    "circled",
+    "vibrant",
+    "raw"
+  ],
+  "textKeywords": [
+    "dank",
+    "all",
+    "nfts",
+    "are",
+    "common",
+    "notable",
+    "pure"
+  ],
+  "keywords": [
+    "chaotic",
+    "scribbled",
+    "bold colors",
+    "white background",
+    "crayon-like",
+    "doodles",
+    "crossed out",
+    "circled",
+    "vibrant",
+    "raw",
+    "dank",
+    "all",
+    "nfts",
+    "are",
+    "common",
+    "notable",
+    "pure"
+  ],
+  "embeddingInput": "UNTITLEDFROG (Fake Rares) - Series 14 Card 3\nArtist: nicedayJULES\nSupply 33 Issued April 2023\nOn-card text: RARE PEPE | DANK PEPE | ALL NFTS ARE PEPE | FAKE COMMON PEPE | NOTABLE PEPE | PURE PEPE | FAKE RARE PEPE | PEPE\nVisual summary: The card features a chaotic, scribbled style with text in bold, vibrant colors like red, green, blue, and orange. Each instance of \"PEPE\" is crossed out with a rough, hand-drawn line, except for the final \"PEPE\" which is circled. The background is stark white, accentuating the raw, crayon-like strokes and doodles.\nMemetic references: References to the legendary \"Rare Pepe\" meme.; Plays on the notorious NFT culture of rarity and authenticity.; Emphasizes the ubiquity of Pepe in meme culture.; Satirical take on the commodification of memes.",
+  "embeddingBlocks": [
+    {
+      "id": "UNTITLEDFROG#text",
+      "label": "On-card text",
+      "text": "RARE PEPE | DANK PEPE | ALL NFTS ARE PEPE | FAKE COMMON PEPE | NOTABLE PEPE | PURE PEPE | FAKE RARE PEPE | PEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "UNTITLEDFROG#memetic",
+      "label": "Memetic references",
+      "text": "References to the legendary \"Rare Pepe\" meme.\nPlays on the notorious NFT culture of rarity and authenticity.\nEmphasizes the ubiquity of Pepe in meme culture.\nSatirical take on the commodification of memes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "UNTITLEDFROG#visual",
+      "label": "Visual summary",
+      "text": "The card features a chaotic, scribbled style with text in bold, vibrant colors like red, green, blue, and orange. Each instance of \"PEPE\" is crossed out with a rough, hand-drawn line, except for the final \"PEPE\" which is circled. The background is stark white, accentuating the raw, crayon-like strokes and doodles.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "UNTITLEDFROG#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- RARE PEPE\n- DANK PEPE\n- ALL NFTS ARE PEPE\n- FAKE COMMON PEPE\n- NOTABLE PEPE\n- PURE PEPE\n- FAKE RARE PEPE\n- PEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a chaotic, scribbled style with text in bold, vibrant colors like red, green, blue, and orange. Each instance of \"PEPE\" is crossed out with a rough, hand-drawn line, except for the final \"PEPE\" which is circled. The background is stark white, accentuating the raw, crayon-like strokes and doodles.\n\n🧬 **MEMETIC DNA:**\n- References to the legendary \"Rare Pepe\" meme.\n- Plays on the notorious NFT culture of rarity and authenticity.\n- Emphasizes the ubiquity of Pepe in meme culture.\n- Satirical take on the commodification of memes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.172Z",
+  "sourceFactVersion": 1
+}

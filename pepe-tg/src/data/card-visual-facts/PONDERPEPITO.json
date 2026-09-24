@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "asset": "PONDERPEPITO",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 20,
+  "artist": "Wes Henry",
+  "supply": 32,
+  "issuance": "February 2023",
+  "textOnCard": [
+    "Pepe"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery, a staple in meme culture.",
+    "Reptilian texture adds a unique twist, possibly referencing evolution or transformation.",
+    "The contemplative expression is a nod to the introspective and often philosophical side of meme lore."
+  ],
+  "visualSummary": "The card features a close-up of Pepe the Frog with a textured, almost reptilian skin pattern. The color palette is dominated by rich greens with contrasting orange hues on Pepe’s lips. The artistic style is bold and expressive, with thick black outlines and a watercolor-like finish giving it a dynamic and textured look.",
+  "visualSummaryShort": "The card showcases a close-up of Pepe the Frog with a textured reptilian skin pattern. It features a rich green color palette accented by orange hues on Pepe's lips.",
+  "visualKeywords": [
+    "pepe",
+    "green",
+    "orange",
+    "textured",
+    "reptilian",
+    "bold",
+    "watercolor",
+    "dynamic"
+  ],
+  "textKeywords": [
+    "pepe"
+  ],
+  "keywords": [
+    "pepe",
+    "green",
+    "orange",
+    "textured",
+    "reptilian",
+    "bold",
+    "watercolor",
+    "dynamic"
+  ],
+  "embeddingInput": "PONDERPEPITO (Fake Rares) - Series 13 Card 20\nArtist: Wes Henry\nSupply 32 Issued February 2023\nOn-card text: Pepe\nVisual summary: The card features a close-up of Pepe the Frog with a textured, almost reptilian skin pattern. The color palette is dominated by rich greens with contrasting orange hues on Pepe’s lips. The artistic style is bold and expressive, with thick black outlines and a watercolor-like finish giving it a dynamic and textured look.\nMemetic references: Classic Pepe the Frog imagery, a staple in meme culture.; Reptilian texture adds a unique twist, possibly referencing evolution or transformation.; The contemplative expression is a nod to the introspective and often philosophical side of meme lore.",
+  "embeddingBlocks": [
+    {
+      "id": "PONDERPEPITO#text",
+      "label": "On-card text",
+      "text": "Pepe",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PONDERPEPITO#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery, a staple in meme culture.\nReptilian texture adds a unique twist, possibly referencing evolution or transformation.\nThe contemplative expression is a nod to the introspective and often philosophical side of meme lore.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PONDERPEPITO#visual",
+      "label": "Visual summary",
+      "text": "The card features a close-up of Pepe the Frog with a textured, almost reptilian skin pattern. The color palette is dominated by rich greens with contrasting orange hues on Pepe’s lips. The artistic style is bold and expressive, with thick black outlines and a watercolor-like finish giving it a dynamic and textured look.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PONDERPEPITO#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPepe\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a close-up of Pepe the Frog with a textured, almost reptilian skin pattern. The color palette is dominated by rich greens with contrasting orange hues on Pepe’s lips. The artistic style is bold and expressive, with thick black outlines and a watercolor-like finish giving it a dynamic and textured look.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery, a staple in meme culture.\n- Reptilian texture adds a unique twist, possibly referencing evolution or transformation.\n- The contemplative expression is a nod to the introspective and often philosophical side of meme lore.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.046Z",
+  "sourceFactVersion": 1
+}

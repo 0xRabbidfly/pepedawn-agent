@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "asset": "RAMENPEPE",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 40,
+  "artist": "SteveWeave",
+  "supply": 150,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "性交として偽物"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure, a staple in meme culture.",
+    "Reference to \"The Great Wave off Kanagawa\" by Hokusai.",
+    "Japanese cultural elements like the kimono and torii gate.",
+    "Ramen as a symbol of comfort and indulgence."
+  ],
+  "visualSummary": "This card features Pepe the Frog lounging luxuriously in a bowl of ramen, clad in a traditional Japanese kimono. The color palette is rich with blues, reds, and greens, creating a vibrant and engaging scene. A wave, reminiscent of Hokusai's \"The Great Wave,\" adds a dynamic element, while a red torii gate frames the composition, enhancing its cultural depth.",
+  "visualSummaryShort": "The card depicts Pepe the Frog relaxing in a bowl of ramen, dressed in a traditional kimono. The vibrant colors and cultural elements create a lively and engaging atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "ramen",
+    "kimono",
+    "blue palette",
+    "red torii",
+    "wave",
+    "vibrant",
+    "cultural"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "ramen",
+    "kimono",
+    "blue palette",
+    "red torii",
+    "wave",
+    "vibrant",
+    "cultural"
+  ],
+  "embeddingInput": "RAMENPEPE (Fake Rares) - Series 3 Card 40\nArtist: SteveWeave\nSupply 150 Issued November 2021\nOn-card text: 性交として偽物\nVisual summary: This card features Pepe the Frog lounging luxuriously in a bowl of ramen, clad in a traditional Japanese kimono. The color palette is rich with blues, reds, and greens, creating a vibrant and engaging scene. A wave, reminiscent of Hokusai's \"The Great Wave,\" adds a dynamic element, while a red torii gate frames the composition, enhancing its cultural depth.\nMemetic references: Pepe the Frog as a central figure, a staple in meme culture.; Reference to \"The Great Wave off Kanagawa\" by Hokusai.; Japanese cultural elements like the kimono and torii gate.; Ramen as a symbol of comfort and indulgence.",
+  "embeddingBlocks": [
+    {
+      "id": "RAMENPEPE#text",
+      "label": "On-card text",
+      "text": "性交として偽物",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "RAMENPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure, a staple in meme culture.\nReference to \"The Great Wave off Kanagawa\" by Hokusai.\nJapanese cultural elements like the kimono and torii gate.\nRamen as a symbol of comfort and indulgence.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RAMENPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features Pepe the Frog lounging luxuriously in a bowl of ramen, clad in a traditional Japanese kimono. The color palette is rich with blues, reds, and greens, creating a vibrant and engaging scene. A wave, reminiscent of Hokusai's \"The Great Wave,\" adds a dynamic element, while a red torii gate frames the composition, enhancing its cultural depth.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RAMENPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n性交として偽物\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features Pepe the Frog lounging luxuriously in a bowl of ramen, clad in a traditional Japanese kimono. The color palette is rich with blues, reds, and greens, creating a vibrant and engaging scene. A wave, reminiscent of Hokusai's \"The Great Wave,\" adds a dynamic element, while a red torii gate frames the composition, enhancing its cultural depth.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure, a staple in meme culture.\n- Reference to \"The Great Wave off Kanagawa\" by Hokusai.\n- Japanese cultural elements like the kimono and torii gate.\n- Ramen as a symbol of comfort and indulgence.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.062Z",
+  "sourceFactVersion": 1
+}

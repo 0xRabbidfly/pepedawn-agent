@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "NAKAMOTOASF",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 12,
+  "artist": "EMBLEMATIX",
+  "supply": 169,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "1",
+    "169",
+    "Emblematix"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog",
+    "Satoshi Nakamoto reference",
+    "The Matrix code aesthetic",
+    "Burning card motif (likely a nod to NFT and crypto culture)"
+  ],
+  "visualSummary": "This card features a green, Pepe-fied version of Satoshi Nakamoto set against a backdrop of cascading Matrix-style code. The central figure is holding a burning card, adding a dynamic flame element to the composition. The overall color palette is dominated by shades of green and black, with the flames providing a stark contrast.",
+  "visualSummaryShort": "The card showcases a green, Pepe-inspired Satoshi Nakamoto amidst a backdrop of flowing Matrix code. A burning card in his hand introduces a dynamic flame element against a predominantly green and black color palette.",
+  "visualKeywords": [
+    "pepe",
+    "satoshi nakamoto",
+    "matrix code",
+    "green",
+    "black",
+    "flames",
+    "burning card"
+  ],
+  "textKeywords": [
+    "169",
+    "emblematix"
+  ],
+  "keywords": [
+    "pepe",
+    "satoshi nakamoto",
+    "matrix code",
+    "green",
+    "black",
+    "flames",
+    "burning card",
+    "169",
+    "emblematix"
+  ],
+  "embeddingInput": "NAKAMOTOASF (Fake Rares) - Series 7 Card 12\nArtist: EMBLEMATIX\nSupply 169 Issued March 2022\nOn-card text: 1 | 169 | Emblematix\nVisual summary: This card features a green, Pepe-fied version of Satoshi Nakamoto set against a backdrop of cascading Matrix-style code. The central figure is holding a burning card, adding a dynamic flame element to the composition. The overall color palette is dominated by shades of green and black, with the flames providing a stark contrast.\nMemetic references: Pepe the Frog; Satoshi Nakamoto reference; The Matrix code aesthetic; Burning card motif (likely a nod to NFT and crypto culture)",
+  "embeddingBlocks": [
+    {
+      "id": "NAKAMOTOASF#text",
+      "label": "On-card text",
+      "text": "1 | 169 | Emblematix",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "NAKAMOTOASF#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog\nSatoshi Nakamoto reference\nThe Matrix code aesthetic\nBurning card motif (likely a nod to NFT and crypto culture)",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "NAKAMOTOASF#visual",
+      "label": "Visual summary",
+      "text": "This card features a green, Pepe-fied version of Satoshi Nakamoto set against a backdrop of cascading Matrix-style code. The central figure is holding a burning card, adding a dynamic flame element to the composition. The overall color palette is dominated by shades of green and black, with the flames providing a stark contrast.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "NAKAMOTOASF#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n1/169  \nEmblematix\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a green, Pepe-fied version of Satoshi Nakamoto set against a backdrop of cascading Matrix-style code. The central figure is holding a burning card, adding a dynamic flame element to the composition. The overall color palette is dominated by shades of green and black, with the flames providing a stark contrast.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog\n- Satoshi Nakamoto reference\n- The Matrix code aesthetic\n- Burning card motif (likely a nod to NFT and crypto culture)",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.787Z",
+  "sourceFactVersion": 1
+}

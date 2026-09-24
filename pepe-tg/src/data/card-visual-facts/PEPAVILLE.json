@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "PEPAVILLE",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 14,
+  "artist": "Whoisit",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "PEPAVILLE"
+  ],
+  "memeticReferences": [
+    "References to Pepe the Frog, a staple in meme culture.",
+    "Urban and nightlife vibes with elements like the taxi and clock tower.",
+    "Playful nods to vintage comics and pop art aesthetics.",
+    "Possible homage to the \"Pepe Lives\" meme narrative."
+  ],
+  "visualSummary": "The card depicts a vibrant, chaotic cityscape with a mix of retro and pop art styles. Predominantly featuring green hues, it showcases various characters resembling the iconic Pepe the Frog in dynamic poses against a backdrop of urban elements like a clock tower and a taxi. The scene is infused with pink and purple tones, adding to its surreal, comic-like atmosphere.",
+  "visualSummaryShort": "The card features a vibrant cityscape filled with characters resembling Pepe the Frog in dynamic poses. The scene is characterized by a mix of green, pink, and purple hues, creating a surreal, comic-like atmosphere.",
+  "visualKeywords": [
+    "cityscape",
+    "pepe",
+    "green hues",
+    "pink tones",
+    "purple tones",
+    "retro style",
+    "pop art",
+    "urban elements",
+    "dynamic poses",
+    "chaotic"
+  ],
+  "textKeywords": [
+    "pepaville"
+  ],
+  "keywords": [
+    "cityscape",
+    "pepe",
+    "green hues",
+    "pink tones",
+    "purple tones",
+    "retro style",
+    "pop art",
+    "urban elements",
+    "dynamic poses",
+    "chaotic",
+    "pepaville"
+  ],
+  "embeddingInput": "PEPAVILLE (Fake Rares) - Series 3 Card 14\nArtist: Whoisit\nSupply 100 Issued October 2021\nOn-card text: PEPAVILLE\nVisual summary: The card depicts a vibrant, chaotic cityscape with a mix of retro and pop art styles. Predominantly featuring green hues, it showcases various characters resembling the iconic Pepe the Frog in dynamic poses against a backdrop of urban elements like a clock tower and a taxi. The scene is infused with pink and purple tones, adding to its surreal, comic-like atmosphere.\nMemetic references: References to Pepe the Frog, a staple in meme culture.; Urban and nightlife vibes with elements like the taxi and clock tower.; Playful nods to vintage comics and pop art aesthetics.; Possible homage to the \"Pepe Lives\" meme narrative.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPAVILLE#text",
+      "label": "On-card text",
+      "text": "PEPAVILLE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPAVILLE#memetic",
+      "label": "Memetic references",
+      "text": "References to Pepe the Frog, a staple in meme culture.\nUrban and nightlife vibes with elements like the taxi and clock tower.\nPlayful nods to vintage comics and pop art aesthetics.\nPossible homage to the \"Pepe Lives\" meme narrative.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPAVILLE#visual",
+      "label": "Visual summary",
+      "text": "The card depicts a vibrant, chaotic cityscape with a mix of retro and pop art styles. Predominantly featuring green hues, it showcases various characters resembling the iconic Pepe the Frog in dynamic poses against a backdrop of urban elements like a clock tower and a taxi. The scene is infused with pink and purple tones, adding to its surreal, comic-like atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPAVILLE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPAVILLE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card depicts a vibrant, chaotic cityscape with a mix of retro and pop art styles. Predominantly featuring green hues, it showcases various characters resembling the iconic Pepe the Frog in dynamic poses against a backdrop of urban elements like a clock tower and a taxi. The scene is infused with pink and purple tones, adding to its surreal, comic-like atmosphere.\n\n🧬 **MEMETIC DNA:**\n- References to Pepe the Frog, a staple in meme culture.\n- Urban and nightlife vibes with elements like the taxi and clock tower.\n- Playful nods to vintage comics and pop art aesthetics.\n- Possible homage to the \"Pepe Lives\" meme narrative.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.834Z",
+  "sourceFactVersion": 1
+}

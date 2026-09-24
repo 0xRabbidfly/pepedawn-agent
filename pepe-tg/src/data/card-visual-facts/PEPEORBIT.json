@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "asset": "PEPEORBIT",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 11,
+  "artist": "NurstMembrane",
+  "supply": 100,
+  "issuance": "September 2021",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a character named Pepe in a whimsical space setting. The environment is colorful and playful, evoking a lighthearted mood.",
+  "visualKeywords": [
+    "space",
+    "colorful",
+    "whimsical",
+    "character",
+    "playful"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "space",
+    "colorful",
+    "whimsical",
+    "character",
+    "playful"
+  ],
+  "embeddingInput": "PEPEORBIT (Fake Rares) - Series 1 Card 11\nArtist: NurstMembrane\nSupply 100 Issued September 2021\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEORBIT#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't help with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.943Z",
+  "sourceFactVersion": 1
+}

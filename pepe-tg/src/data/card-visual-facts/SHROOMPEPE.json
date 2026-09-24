@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "SHROOMPEPE",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 35,
+  "artist": "Gus Grillasca",
+  "supply": 44,
+  "issuance": "February 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic psychedelic art influence, reminiscent of 60s counterculture.",
+    "The mushroom likely nods to the \"magic mushrooms\" trope, common in meme and psychedelic culture.",
+    "Geometric patterns in the background add a layer of depth, connecting to visual hallucination themes."
+  ],
+  "visualSummary": "The card features a vibrant, psychedelic mushroom with a green and red color scheme, set against a geometric, trippy background of interlocking cubes. The mushroom’s cap is dotted with red spots, and the gills underneath are intricately detailed with bold lines. The overall style is bold and eye-catching, blending cartoonish elements with a psychedelic vibe.",
+  "visualSummaryShort": "The card showcases a vibrant, psychedelic mushroom with a striking green and red color scheme. It is set against a geometric background of interlocking cubes, creating a bold and eye-catching visual.",
+  "visualKeywords": [
+    "mushroom",
+    "psychedelic",
+    "green",
+    "red",
+    "geometric",
+    "cubes",
+    "cartoonish",
+    "bold",
+    "dotted",
+    "intricate"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "mushroom",
+    "psychedelic",
+    "green",
+    "red",
+    "geometric",
+    "cubes",
+    "cartoonish",
+    "bold",
+    "dotted",
+    "intricate"
+  ],
+  "embeddingInput": "SHROOMPEPE (Fake Rares) - Series 6 Card 35\nArtist: Gus Grillasca\nSupply 44 Issued February 2022\nOn-card text: none detected\nVisual summary: The card features a vibrant, psychedelic mushroom with a green and red color scheme, set against a geometric, trippy background of interlocking cubes. The mushroom’s cap is dotted with red spots, and the gills underneath are intricately detailed with bold lines. The overall style is bold and eye-catching, blending cartoonish elements with a psychedelic vibe.\nMemetic references: Classic psychedelic art influence, reminiscent of 60s counterculture.; The mushroom likely nods to the \"magic mushrooms\" trope, common in meme and psychedelic culture.; Geometric patterns in the background add a layer of depth, connecting to visual hallucination themes.",
+  "embeddingBlocks": [
+    {
+      "id": "SHROOMPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic psychedelic art influence, reminiscent of 60s counterculture.\nThe mushroom likely nods to the \"magic mushrooms\" trope, common in meme and psychedelic culture.\nGeometric patterns in the background add a layer of depth, connecting to visual hallucination themes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SHROOMPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant, psychedelic mushroom with a green and red color scheme, set against a geometric, trippy background of interlocking cubes. The mushroom’s cap is dotted with red spots, and the gills underneath are intricately detailed with bold lines. The overall style is bold and eye-catching, blending cartoonish elements with a psychedelic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SHROOMPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant, psychedelic mushroom with a green and red color scheme, set against a geometric, trippy background of interlocking cubes. The mushroom’s cap is dotted with red spots, and the gills underneath are intricately detailed with bold lines. The overall style is bold and eye-catching, blending cartoonish elements with a psychedelic vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic psychedelic art influence, reminiscent of 60s counterculture.\n- The mushroom likely nods to the \"magic mushrooms\" trope, common in meme and psychedelic culture.\n- Geometric patterns in the background add a layer of depth, connecting to visual hallucination themes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.106Z",
+  "sourceFactVersion": 1
+}

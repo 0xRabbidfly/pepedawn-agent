@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PEPEFLOCK",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 20,
+  "artist": "JAMEX",
+  "supply": 79,
+  "issuance": "February 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "References to the iconic Pepe the Frog meme.",
+    "Elements of crypto culture with the chaotic, free-spirited nature.",
+    "The concept of \"flocking\" alludes to community and collective movement, common in crypto spaces."
+  ],
+  "visualSummary": "The card features a dynamic and colorful depiction of multiple Pepe figures soaring through the sky, reminiscent of a flock of birds. The palette is vibrant with blues, greens, and reds, creating a sense of movement and freedom. The style is whimsical and cartoonish, with each Pepe sporting unique accessories like sunglasses and hats, enhancing the playful vibe.",
+  "visualSummaryShort": "The card showcases a lively array of Pepe figures flying through a bright sky. Each character is adorned with playful accessories, contributing to a whimsical atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "sky",
+    "colorful",
+    "vibrant",
+    "accessories",
+    "sunglasses",
+    "hats",
+    "movement",
+    "whimsical",
+    "cartoonish"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "sky",
+    "colorful",
+    "vibrant",
+    "accessories",
+    "sunglasses",
+    "hats",
+    "movement",
+    "whimsical",
+    "cartoonish"
+  ],
+  "embeddingInput": "PEPEFLOCK (Fake Rares) - Series 7 Card 20\nArtist: JAMEX\nSupply 79 Issued February 2022\nOn-card text: none detected\nVisual summary: The card features a dynamic and colorful depiction of multiple Pepe figures soaring through the sky, reminiscent of a flock of birds. The palette is vibrant with blues, greens, and reds, creating a sense of movement and freedom. The style is whimsical and cartoonish, with each Pepe sporting unique accessories like sunglasses and hats, enhancing the playful vibe.\nMemetic references: References to the iconic Pepe the Frog meme.; Elements of crypto culture with the chaotic, free-spirited nature.; The concept of \"flocking\" alludes to community and collective movement, common in crypto spaces.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEFLOCK#memetic",
+      "label": "Memetic references",
+      "text": "References to the iconic Pepe the Frog meme.\nElements of crypto culture with the chaotic, free-spirited nature.\nThe concept of \"flocking\" alludes to community and collective movement, common in crypto spaces.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEFLOCK#visual",
+      "label": "Visual summary",
+      "text": "The card features a dynamic and colorful depiction of multiple Pepe figures soaring through the sky, reminiscent of a flock of birds. The palette is vibrant with blues, greens, and reds, creating a sense of movement and freedom. The style is whimsical and cartoonish, with each Pepe sporting unique accessories like sunglasses and hats, enhancing the playful vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEFLOCK#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a dynamic and colorful depiction of multiple Pepe figures soaring through the sky, reminiscent of a flock of birds. The palette is vibrant with blues, greens, and reds, creating a sense of movement and freedom. The style is whimsical and cartoonish, with each Pepe sporting unique accessories like sunglasses and hats, enhancing the playful vibe.\n\n🧬 **MEMETIC DNA:**\n- References to the iconic Pepe the Frog meme.\n- Elements of crypto culture with the chaotic, free-spirited nature.\n- The concept of \"flocking\" alludes to community and collective movement, common in crypto spaces.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.886Z",
+  "sourceFactVersion": 1
+}

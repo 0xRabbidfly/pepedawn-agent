@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "PEPAMONROE",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 24,
+  "artist": "Lord Jamie V. Shill",
+  "supply": 54,
+  "issuance": "May 2022",
+  "textOnCard": [
+    "PEPAMONROE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog meets classic Hollywood glamour.",
+    "References to pop culture icons and timeless beauty.",
+    "Surreal color palette typical of meme art."
+  ],
+  "visualSummary": "This card features an iconic portrait styled with a vibrant twist. The subject has lime green hair, vivid green eyes, and a purple-hued face, set against a sparkling bokeh background in shades of green and blue. The artistic style blends pop art with a playful, surreal touch, making it both eye-catching and nostalgic.",
+  "visualSummaryShort": "The card showcases a vibrant portrait with lime green hair and a purple-hued face. It features a sparkling bokeh background in green and blue, creating a playful and surreal atmosphere.",
+  "visualKeywords": [
+    "lime green hair",
+    "purple face",
+    "green eyes",
+    "bokeh",
+    "pop art",
+    "surreal",
+    "vivid colors",
+    "playful",
+    "sparkling",
+    "nostalgic"
+  ],
+  "textKeywords": [
+    "pepamonroe"
+  ],
+  "keywords": [
+    "lime green hair",
+    "purple face",
+    "green eyes",
+    "bokeh",
+    "pop art",
+    "surreal",
+    "vivid colors",
+    "playful",
+    "sparkling",
+    "nostalgic",
+    "pepamonroe"
+  ],
+  "embeddingInput": "PEPAMONROE (Fake Rares) - Series 9 Card 24\nArtist: Lord Jamie V. Shill\nSupply 54 Issued May 2022\nOn-card text: PEPAMONROE\nVisual summary: This card features an iconic portrait styled with a vibrant twist. The subject has lime green hair, vivid green eyes, and a purple-hued face, set against a sparkling bokeh background in shades of green and blue. The artistic style blends pop art with a playful, surreal touch, making it both eye-catching and nostalgic.\nMemetic references: Pepe the Frog meets classic Hollywood glamour.; References to pop culture icons and timeless beauty.; Surreal color palette typical of meme art.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPAMONROE#text",
+      "label": "On-card text",
+      "text": "PEPAMONROE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPAMONROE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog meets classic Hollywood glamour.\nReferences to pop culture icons and timeless beauty.\nSurreal color palette typical of meme art.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPAMONROE#visual",
+      "label": "Visual summary",
+      "text": "This card features an iconic portrait styled with a vibrant twist. The subject has lime green hair, vivid green eyes, and a purple-hued face, set against a sparkling bokeh background in shades of green and blue. The artistic style blends pop art with a playful, surreal touch, making it both eye-catching and nostalgic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPAMONROE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPAMONROE\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features an iconic portrait styled with a vibrant twist. The subject has lime green hair, vivid green eyes, and a purple-hued face, set against a sparkling bokeh background in shades of green and blue. The artistic style blends pop art with a playful, surreal touch, making it both eye-catching and nostalgic.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog meets classic Hollywood glamour.\n- References to pop culture icons and timeless beauty.\n- Surreal color palette typical of meme art.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.831Z",
+  "sourceFactVersion": 1
+}

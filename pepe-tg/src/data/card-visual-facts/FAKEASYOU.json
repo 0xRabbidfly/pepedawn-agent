@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "asset": "FAKEASYOU",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 25,
+  "artist": "BLISSFULMORG",
+  "supply": 27,
+  "issuance": "February 2024",
+  "textOnCard": [
+    "wake up and feel green man"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog references with multiple Pepes in different roles.",
+    "Crypto culture nod with Ethereum symbol imagery.",
+    "Hospital and medical themes play on the \"degen\" lifestyle and market volatility."
+  ],
+  "visualSummary": "The composition is a chaotic blend of various Pepe characters in a hospital setting, with a vibrant and clashing color palette. The style is a mix of digital collage and surrealism, featuring exaggerated expressions and distorted figures. The background includes medical equipment and a surreal, dreamlike atmosphere.",
+  "visualSummaryShort": "The card features a chaotic blend of Pepe characters in a hospital setting with a vibrant color palette. The surreal atmosphere is enhanced by exaggerated expressions and distorted figures among medical equipment.",
+  "visualKeywords": [
+    "pepe",
+    "hospital",
+    "vibrant colors",
+    "surrealism",
+    "exaggerated expressions",
+    "medical equipment",
+    "dreamlike",
+    "chaotic",
+    "digital collage"
+  ],
+  "textKeywords": [
+    "wake",
+    "feel",
+    "green",
+    "man"
+  ],
+  "keywords": [
+    "pepe",
+    "hospital",
+    "vibrant colors",
+    "surrealism",
+    "exaggerated expressions",
+    "medical equipment",
+    "dreamlike",
+    "chaotic",
+    "digital collage",
+    "wake",
+    "feel",
+    "green",
+    "man"
+  ],
+  "embeddingInput": "FAKEASYOU (Fake Rares) - Series 17 Card 25\nArtist: BLISSFULMORG\nSupply 27 Issued February 2024\nOn-card text: wake up and feel green man\nVisual summary: The composition is a chaotic blend of various Pepe characters in a hospital setting, with a vibrant and clashing color palette. The style is a mix of digital collage and surrealism, featuring exaggerated expressions and distorted figures. The background includes medical equipment and a surreal, dreamlike atmosphere.\nMemetic references: Classic Pepe the Frog references with multiple Pepes in different roles.; Crypto culture nod with Ethereum symbol imagery.; Hospital and medical themes play on the \"degen\" lifestyle and market volatility.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEASYOU#text",
+      "label": "On-card text",
+      "text": "wake up and feel green man",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEASYOU#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog references with multiple Pepes in different roles.\nCrypto culture nod with Ethereum symbol imagery.\nHospital and medical themes play on the \"degen\" lifestyle and market volatility.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEASYOU#visual",
+      "label": "Visual summary",
+      "text": "The composition is a chaotic blend of various Pepe characters in a hospital setting, with a vibrant and clashing color palette. The style is a mix of digital collage and surrealism, featuring exaggerated expressions and distorted figures. The background includes medical equipment and a surreal, dreamlike atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEASYOU#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nwake up and feel green man\n\n🎨 **VISUAL BREAKDOWN:**\nThe composition is a chaotic blend of various Pepe characters in a hospital setting, with a vibrant and clashing color palette. The style is a mix of digital collage and surrealism, featuring exaggerated expressions and distorted figures. The background includes medical equipment and a surreal, dreamlike atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog references with multiple Pepes in different roles.\n- Crypto culture nod with Ethereum symbol imagery.\n- Hospital and medical themes play on the \"degen\" lifestyle and market volatility.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.453Z",
+  "sourceFactVersion": 1
+}

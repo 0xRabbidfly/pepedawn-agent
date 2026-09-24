@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "asset": "FAKEROCK",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 22,
+  "artist": "Yotet",
+  "supply": 10000,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "FAKE ROCK. Use to obtain other Fake Rares."
+  ],
+  "memeticReferences": [
+    "References the \"Pet Rock\" meme with a crypto twist.",
+    "Plays on the concept of NFTs being digital collectibles.",
+    "The idea of using a \"fake\" item to unlock others nods to gaming mechanics."
+  ],
+  "visualSummary": "The card features a central image of a rock with a rough, textured appearance. The color palette is earthy with greens and browns, giving a natural vibe. The card background looks intentionally worn out and aged, with hand-drawn text adding a DIY aesthetic.",
+  "visualSummaryShort": "The card showcases a rough, textured rock in earthy greens and browns, set against a worn-out background. The hand-drawn text enhances its DIY aesthetic.",
+  "visualKeywords": [
+    "rock",
+    "earthy colors",
+    "textured",
+    "worn background",
+    "hand-drawn",
+    "natural vibe"
+  ],
+  "textKeywords": [
+    "rock",
+    "use",
+    "obtain",
+    "other"
+  ],
+  "keywords": [
+    "rock",
+    "earthy colors",
+    "textured",
+    "worn background",
+    "hand-drawn",
+    "natural vibe",
+    "use",
+    "obtain",
+    "other"
+  ],
+  "embeddingInput": "FAKEROCK (Fake Rares) - Series 2 Card 22\nArtist: Yotet\nSupply 10000 Issued October 2021\nOn-card text: FAKE ROCK. Use to obtain other Fake Rares.\nVisual summary: The card features a central image of a rock with a rough, textured appearance. The color palette is earthy with greens and browns, giving a natural vibe. The card background looks intentionally worn out and aged, with hand-drawn text adding a DIY aesthetic.\nMemetic references: References the \"Pet Rock\" meme with a crypto twist.; Plays on the concept of NFTs being digital collectibles.; The idea of using a \"fake\" item to unlock others nods to gaming mechanics.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEROCK#text",
+      "label": "On-card text",
+      "text": "FAKE ROCK. Use to obtain other Fake Rares.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEROCK#memetic",
+      "label": "Memetic references",
+      "text": "References the \"Pet Rock\" meme with a crypto twist.\nPlays on the concept of NFTs being digital collectibles.\nThe idea of using a \"fake\" item to unlock others nods to gaming mechanics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEROCK#visual",
+      "label": "Visual summary",
+      "text": "The card features a central image of a rock with a rough, textured appearance. The color palette is earthy with greens and browns, giving a natural vibe. The card background looks intentionally worn out and aged, with hand-drawn text adding a DIY aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEROCK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE ROCK. Use to obtain other Fake Rares.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a central image of a rock with a rough, textured appearance. The color palette is earthy with greens and browns, giving a natural vibe. The card background looks intentionally worn out and aged, with hand-drawn text adding a DIY aesthetic.\n\n🧬 **MEMETIC DNA:**\n- References the \"Pet Rock\" meme with a crypto twist.\n- Plays on the concept of NFTs being digital collectibles.\n- The idea of using a \"fake\" item to unlock others nods to gaming mechanics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.569Z",
+  "sourceFactVersion": 1
+}

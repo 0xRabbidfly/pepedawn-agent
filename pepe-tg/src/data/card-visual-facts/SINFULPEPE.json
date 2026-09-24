@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "SINFULPEPE",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 10,
+  "artist": "Katerine Escobar",
+  "supply": 22,
+  "issuance": "July 2023",
+  "textOnCard": [
+    "BE A"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in a business suit, a nod to its ubiquitous presence in meme culture.",
+    "Bitcoin symbol, representing the crypto world.",
+    "Candlestick chart symbolizing market dynamics.",
+    "The orange, possibly a reference to \"orange-pilling\" or Bitcoin evangelism."
+  ],
+  "visualSummary": "This card features a grayscale portrait of a woman with striking red eyes, set against a vibrant backdrop of green foliage and white flowers. She holds an orange in one hand, which is tattooed with the words \"BE A,\" and a small Pepe the Frog figure dressed in a green suit and red tie in the other. Above her head floats a Bitcoin symbol, while a heart and candlestick chart adorn her red dress, adding a touch of crypto symbolism.",
+  "visualSummaryShort": "The card showcases a grayscale portrait of a woman with red eyes amidst green foliage and white flowers. She holds an orange and a small Pepe the Frog figure, with a Bitcoin symbol above her head and crypto-themed designs on her dress.",
+  "visualKeywords": [
+    "grayscale",
+    "red eyes",
+    "green foliage",
+    "white flowers",
+    "orange",
+    "pepe the frog",
+    "bitcoin",
+    "heart",
+    "candlestick chart",
+    "red dress"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "grayscale",
+    "red eyes",
+    "green foliage",
+    "white flowers",
+    "orange",
+    "pepe the frog",
+    "bitcoin",
+    "heart",
+    "candlestick chart",
+    "red dress"
+  ],
+  "embeddingInput": "SINFULPEPE (Fake Rares) - Series 15 Card 10\nArtist: Katerine Escobar\nSupply 22 Issued July 2023\nOn-card text: BE A\nVisual summary: This card features a grayscale portrait of a woman with striking red eyes, set against a vibrant backdrop of green foliage and white flowers. She holds an orange in one hand, which is tattooed with the words \"BE A,\" and a small Pepe the Frog figure dressed in a green suit and red tie in the other. Above her head floats a Bitcoin symbol, while a heart and candlestick chart adorn her red dress, adding a touch of crypto symbolism.\nMemetic references: Pepe the Frog in a business suit, a nod to its ubiquitous presence in meme culture.; Bitcoin symbol, representing the crypto world.; Candlestick chart symbolizing market dynamics.; The orange, possibly a reference to \"orange-pilling\" or Bitcoin evangelism.",
+  "embeddingBlocks": [
+    {
+      "id": "SINFULPEPE#text",
+      "label": "On-card text",
+      "text": "BE A",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "SINFULPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in a business suit, a nod to its ubiquitous presence in meme culture.\nBitcoin symbol, representing the crypto world.\nCandlestick chart symbolizing market dynamics.\nThe orange, possibly a reference to \"orange-pilling\" or Bitcoin evangelism.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SINFULPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a grayscale portrait of a woman with striking red eyes, set against a vibrant backdrop of green foliage and white flowers. She holds an orange in one hand, which is tattooed with the words \"BE A,\" and a small Pepe the Frog figure dressed in a green suit and red tie in the other. Above her head floats a Bitcoin symbol, while a heart and candlestick chart adorn her red dress, adding a touch of crypto symbolism.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SINFULPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nBE A\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a grayscale portrait of a woman with striking red eyes, set against a vibrant backdrop of green foliage and white flowers. She holds an orange in one hand, which is tattooed with the words \"BE A,\" and a small Pepe the Frog figure dressed in a green suit and red tie in the other. Above her head floats a Bitcoin symbol, while a heart and candlestick chart adorn her red dress, adding a touch of crypto symbolism.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in a business suit, a nod to its ubiquitous presence in meme culture.\n- Bitcoin symbol, representing the crypto world.\n- Candlestick chart symbolizing market dynamics.\n- The orange, possibly a reference to \"orange-pilling\" or Bitcoin evangelism.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.110Z",
+  "sourceFactVersion": 1
+}

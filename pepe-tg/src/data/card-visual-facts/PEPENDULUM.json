@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "PEPENDULUM",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 48,
+  "artist": "Ben Strauss",
+  "supply": 100,
+  "issuance": "December 2022",
+  "textOnCard": [
+    "PEPENDULUM"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog references through the card's name.",
+    "Trippy, psychedelic art style reminiscent of hypnotic visuals.",
+    "Crypto culture nod with the pendulum, symbolizing market swings."
+  ],
+  "visualSummary": "The card features an abstract face composed of spiraling neon lines. The eyes are crafted from green and blue elliptical loops, while the mouth is a wide, red arc. Set against a black background, the vibrant colors pop and give off a trippy, hypnotic vibe.",
+  "visualSummaryShort": "The card showcases an abstract face made of spiraling neon lines with vibrant colors. It features green and blue eyes and a wide red mouth, all set against a black background.",
+  "visualKeywords": [
+    "abstract",
+    "neon",
+    "spirals",
+    "green",
+    "blue",
+    "red",
+    "black",
+    "hypnotic",
+    "vibrant",
+    "face"
+  ],
+  "textKeywords": [
+    "pependulum"
+  ],
+  "keywords": [
+    "abstract",
+    "neon",
+    "spirals",
+    "green",
+    "blue",
+    "red",
+    "black",
+    "hypnotic",
+    "vibrant",
+    "face",
+    "pependulum"
+  ],
+  "embeddingInput": "PEPENDULUM (Fake Rares) - Series 12 Card 48\nArtist: Ben Strauss\nSupply 100 Issued December 2022\nOn-card text: PEPENDULUM\nVisual summary: The card features an abstract face composed of spiraling neon lines. The eyes are crafted from green and blue elliptical loops, while the mouth is a wide, red arc. Set against a black background, the vibrant colors pop and give off a trippy, hypnotic vibe.\nMemetic references: Pepe the Frog references through the card's name.; Trippy, psychedelic art style reminiscent of hypnotic visuals.; Crypto culture nod with the pendulum, symbolizing market swings.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPENDULUM#text",
+      "label": "On-card text",
+      "text": "PEPENDULUM",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPENDULUM#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references through the card's name.\nTrippy, psychedelic art style reminiscent of hypnotic visuals.\nCrypto culture nod with the pendulum, symbolizing market swings.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPENDULUM#visual",
+      "label": "Visual summary",
+      "text": "The card features an abstract face composed of spiraling neon lines. The eyes are crafted from green and blue elliptical loops, while the mouth is a wide, red arc. Set against a black background, the vibrant colors pop and give off a trippy, hypnotic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPENDULUM#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPENDULUM\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features an abstract face composed of spiraling neon lines. The eyes are crafted from green and blue elliptical loops, while the mouth is a wide, red arc. Set against a black background, the vibrant colors pop and give off a trippy, hypnotic vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references through the card's name.\n- Trippy, psychedelic art style reminiscent of hypnotic visuals.\n- Crypto culture nod with the pendulum, symbolizing market swings.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.935Z",
+  "sourceFactVersion": 1
+}

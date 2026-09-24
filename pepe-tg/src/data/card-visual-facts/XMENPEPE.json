@@ -1,0 +1,108 @@
+{
+  "version": 1,
+  "asset": "XMENPEPE",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 5,
+  "artist": "DJ QBert",
+  "supply": 21,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "GIANT-SIZE X-PEPES",
+    "SENSES SHATTERING 1ST ISSUE!",
+    "WARPEL COMICS GROUP",
+    "NEW! DEADLY PEPESIS!",
+    "69 BIG PAGES"
+  ],
+  "memeticReferences": [
+    "Parody of X-Men comic book covers.",
+    "Pepe the Frog characters styled as superheroes.",
+    "References to meme culture with tongue-in-cheek text like \"69 BIG PAGES.\"",
+    "Use of \"Warpel\" as a play on \"Marvel.\""
+  ],
+  "visualSummary": "This card features a vibrant comic book cover style with bold, primary colors—reds, blues, yellows, and greens—dominating the palette. The composition is dynamic, with a group of superhero Pepeco characters in action-packed poses, reminiscent of classic comic book teams. The art style is retro, echoing the feel of vintage superhero comics with thick outlines and exaggerated expressions.",
+  "visualSummaryShort": "The card showcases a dynamic comic book cover featuring superhero Pepeco characters in vibrant, action-packed poses. The bold primary colors and retro art style evoke a classic comic book feel.",
+  "visualKeywords": [
+    "comic book",
+    "superheroes",
+    "vibrant colors",
+    "action poses",
+    "retro style",
+    "bold outlines",
+    "exaggerated expressions"
+  ],
+  "textKeywords": [
+    "giant",
+    "size",
+    "pepes",
+    "senses",
+    "shattering",
+    "1st",
+    "issue",
+    "warpel",
+    "comics",
+    "group",
+    "new",
+    "deadly",
+    "pepesis",
+    "big",
+    "pages"
+  ],
+  "keywords": [
+    "comic book",
+    "superheroes",
+    "vibrant colors",
+    "action poses",
+    "retro style",
+    "bold outlines",
+    "exaggerated expressions",
+    "giant",
+    "size",
+    "pepes",
+    "senses",
+    "shattering",
+    "1st",
+    "issue",
+    "warpel",
+    "comics",
+    "group",
+    "new",
+    "deadly",
+    "pepesis",
+    "big",
+    "pages"
+  ],
+  "embeddingInput": "XMENPEPE (Fake Rares) - Series 7 Card 5\nArtist: DJ QBert\nSupply 21 Issued March 2022\nOn-card text: GIANT-SIZE X-PEPES | SENSES SHATTERING 1ST ISSUE! | WARPEL COMICS GROUP | NEW! DEADLY PEPESIS! | 69 BIG PAGES\nVisual summary: This card features a vibrant comic book cover style with bold, primary colors—reds, blues, yellows, and greens—dominating the palette. The composition is dynamic, with a group of superhero Pepeco characters in action-packed poses, reminiscent of classic comic book teams. The art style is retro, echoing the feel of vintage superhero comics with thick outlines and exaggerated expressions.\nMemetic references: Parody of X-Men comic book covers.; Pepe the Frog characters styled as superheroes.; References to meme culture with tongue-in-cheek text like \"69 BIG PAGES.\"; Use of \"Warpel\" as a play on \"Marvel.\"",
+  "embeddingBlocks": [
+    {
+      "id": "XMENPEPE#text",
+      "label": "On-card text",
+      "text": "GIANT-SIZE X-PEPES | SENSES SHATTERING 1ST ISSUE! | WARPEL COMICS GROUP | NEW! DEADLY PEPESIS! | 69 BIG PAGES",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "XMENPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Parody of X-Men comic book covers.\nPepe the Frog characters styled as superheroes.\nReferences to meme culture with tongue-in-cheek text like \"69 BIG PAGES.\"\nUse of \"Warpel\" as a play on \"Marvel.\"",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "XMENPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a vibrant comic book cover style with bold, primary colors—reds, blues, yellows, and greens—dominating the palette. The composition is dynamic, with a group of superhero Pepeco characters in action-packed poses, reminiscent of classic comic book teams. The art style is retro, echoing the feel of vintage superhero comics with thick outlines and exaggerated expressions.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "XMENPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- GIANT-SIZE X-PEPES\n- SENSES SHATTERING 1ST ISSUE!\n- WARPEL COMICS GROUP\n- NEW! DEADLY PEPESIS!\n- 69 BIG PAGES\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a vibrant comic book cover style with bold, primary colors—reds, blues, yellows, and greens—dominating the palette. The composition is dynamic, with a group of superhero Pepeco characters in action-packed poses, reminiscent of classic comic book teams. The art style is retro, echoing the feel of vintage superhero comics with thick outlines and exaggerated expressions.\n\n🧬 **MEMETIC DNA:**\n- Parody of X-Men comic book covers.\n- Pepe the Frog characters styled as superheroes.\n- References to meme culture with tongue-in-cheek text like \"69 BIG PAGES.\"\n- Use of \"Warpel\" as a play on \"Marvel.\"",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.196Z",
+  "sourceFactVersion": 1
+}

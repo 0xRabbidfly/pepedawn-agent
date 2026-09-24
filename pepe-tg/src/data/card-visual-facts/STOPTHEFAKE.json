@@ -1,0 +1,116 @@
+{
+  "version": 1,
+  "asset": "STOPTHEFAKE",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 32,
+  "artist": "Mumbling Bearded Freak and Kaph Resh",
+  "supply": 162,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "STOPTHEFAKE",
+    "ATTACK 45 DEFENSE 0 ELEMENT 69",
+    "PRESERVE THE DANKNESS",
+    "PROTECT THE RARES",
+    "SQUASH THE CASH GRAB",
+    "STOP THE FAKES",
+    "FAKENESS SCORE = 45",
+    "FAKEASF"
+  ],
+  "memeticReferences": [
+    "Pepe-inspired green skin, a nod to the iconic meme.",
+    "\"Stop the Fake\" references anti-scam sentiment in crypto culture.",
+    "Uses gaming card-style stats to evoke collectible card games."
+  ],
+  "visualSummary": "The card features a green-tinted figure with a megaphone, reminiscent of a protest scene, with a cityscape background. The color palette includes vibrant greens and reds, adding to the intensity. The style mixes realism with memetic elements, giving it a bold and striking appearance.",
+  "visualSummaryShort": "The card depicts a green-tinted figure holding a megaphone against a cityscape backdrop, creating a protest-like atmosphere. The vibrant color palette of greens and reds enhances the bold and striking visual style.",
+  "visualKeywords": [
+    "green figure",
+    "megaphone",
+    "cityscape",
+    "vibrant colors",
+    "protest",
+    "realism",
+    "memetic",
+    "intense",
+    "bold",
+    "striking"
+  ],
+  "textKeywords": [
+    "stopthefake",
+    "attack",
+    "defense",
+    "element",
+    "preserve",
+    "dankness",
+    "protect",
+    "squash",
+    "cash",
+    "grab",
+    "stop",
+    "fakes",
+    "fakeness",
+    "score",
+    "fakeasf"
+  ],
+  "keywords": [
+    "green figure",
+    "megaphone",
+    "cityscape",
+    "vibrant colors",
+    "protest",
+    "realism",
+    "memetic",
+    "intense",
+    "bold",
+    "striking",
+    "stopthefake",
+    "attack",
+    "defense",
+    "element",
+    "preserve",
+    "dankness",
+    "protect",
+    "squash",
+    "cash",
+    "grab",
+    "stop",
+    "fakes",
+    "fakeness",
+    "score",
+    "fakeasf"
+  ],
+  "embeddingInput": "STOPTHEFAKE (Fake Rares) - Series 5 Card 32\nArtist: Mumbling Bearded Freak and Kaph Resh\nSupply 162 Issued October 2021\nOn-card text: STOPTHEFAKE | ATTACK 45 DEFENSE 0 ELEMENT 69 | PRESERVE THE DANKNESS | PROTECT THE RARES | SQUASH THE CASH GRAB | STOP THE FAKES | FAKENESS SCORE = 45 | FAKEASF\nVisual summary: The card features a green-tinted figure with a megaphone, reminiscent of a protest scene, with a cityscape background. The color palette includes vibrant greens and reds, adding to the intensity. The style mixes realism with memetic elements, giving it a bold and striking appearance.\nMemetic references: Pepe-inspired green skin, a nod to the iconic meme.; \"Stop the Fake\" references anti-scam sentiment in crypto culture.; Uses gaming card-style stats to evoke collectible card games.",
+  "embeddingBlocks": [
+    {
+      "id": "STOPTHEFAKE#text",
+      "label": "On-card text",
+      "text": "STOPTHEFAKE | ATTACK 45 DEFENSE 0 ELEMENT 69 | PRESERVE THE DANKNESS | PROTECT THE RARES | SQUASH THE CASH GRAB | STOP THE FAKES | FAKENESS SCORE = 45 | FAKEASF",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "STOPTHEFAKE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe-inspired green skin, a nod to the iconic meme.\n\"Stop the Fake\" references anti-scam sentiment in crypto culture.\nUses gaming card-style stats to evoke collectible card games.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "STOPTHEFAKE#visual",
+      "label": "Visual summary",
+      "text": "The card features a green-tinted figure with a megaphone, reminiscent of a protest scene, with a cityscape background. The color palette includes vibrant greens and reds, adding to the intensity. The style mixes realism with memetic elements, giving it a bold and striking appearance.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "STOPTHEFAKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nSTOPTHEFAKE  \nATTACK 45 DEFENSE 0 ELEMENT 69  \nPRESERVE THE DANKNESS  \nPROTECT THE RARES  \nSQUASH THE CASH GRAB  \nSTOP THE FAKES  \nFAKENESS SCORE = 45  \nFAKEASF\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a green-tinted figure with a megaphone, reminiscent of a protest scene, with a cityscape background. The color palette includes vibrant greens and reds, adding to the intensity. The style mixes realism with memetic elements, giving it a bold and striking appearance.\n\n🧬 **MEMETIC DNA:**\n- Pepe-inspired green skin, a nod to the iconic meme.\n- \"Stop the Fake\" references anti-scam sentiment in crypto culture.\n- Uses gaming card-style stats to evoke collectible card games.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.127Z",
+  "sourceFactVersion": 1
+}

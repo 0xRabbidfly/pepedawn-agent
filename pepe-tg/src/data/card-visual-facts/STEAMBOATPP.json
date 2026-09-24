@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "asset": "STEAMBOATPP",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 25,
+  "artist": "CRIME BREAKFAST",
+  "supply": 44,
+  "issuance": "September 2022",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a steamboat, likely set on a river or lake. The overall mood is adventurous and nostalgic.",
+  "visualKeywords": [
+    "steamboat",
+    "river",
+    "adventure",
+    "nostalgia"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "steamboat",
+    "river",
+    "adventure",
+    "nostalgia"
+  ],
+  "embeddingInput": "STEAMBOATPP (Fake Rares) - Series 10 Card 25\nArtist: CRIME BREAKFAST\nSupply 44 Issued September 2022\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "STEAMBOATPP#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with this.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.125Z",
+  "sourceFactVersion": 1
+}

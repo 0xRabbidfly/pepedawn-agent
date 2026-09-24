@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "asset": "FAKEPEPERUG",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 15,
+  "artist": "Mike Three",
+  "supply": 56,
+  "issuance": "April 2023",
+  "textOnCard": [
+    "\"PEPE\"",
+    "Fake Rare Collection 2023"
+  ],
+  "memeticReferences": [
+    "References to the iconic Pepe the Frog meme.",
+    "Plays on the idea of high art with a crypto twist.",
+    "Incorporates a traditional rug motif, a nod to cultural symbols of wealth and tradition."
+  ],
+  "visualSummary": "The card features an intricate design resembling a luxurious Persian rug in a deep green hue. The central focus is the word \"PEPE\" in bold, white uppercase letters, contrasted dramatically against the detailed pattern. The overall style combines opulence with a touch of digital artistry, creating a visually captivating piece.",
+  "visualSummaryShort": "The card showcases a luxurious Persian rug design in deep green, with the word 'PEPE' prominently displayed in bold white letters. The intricate patterns and digital artistry create a captivating visual effect.",
+  "visualKeywords": [
+    "persian rug",
+    "green",
+    "bold text",
+    "intricate patterns",
+    "digital art",
+    "opulence"
+  ],
+  "textKeywords": [
+    "collection",
+    "2023"
+  ],
+  "keywords": [
+    "persian rug",
+    "green",
+    "bold text",
+    "intricate patterns",
+    "digital art",
+    "opulence",
+    "collection",
+    "2023"
+  ],
+  "embeddingInput": "FAKEPEPERUG (Fake Rares) - Series 14 Card 15\nArtist: Mike Three\nSupply 56 Issued April 2023\nOn-card text: \"PEPE\" | Fake Rare Collection 2023\nVisual summary: The card features an intricate design resembling a luxurious Persian rug in a deep green hue. The central focus is the word \"PEPE\" in bold, white uppercase letters, contrasted dramatically against the detailed pattern. The overall style combines opulence with a touch of digital artistry, creating a visually captivating piece.\nMemetic references: References to the iconic Pepe the Frog meme.; Plays on the idea of high art with a crypto twist.; Incorporates a traditional rug motif, a nod to cultural symbols of wealth and tradition.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEPEPERUG#text",
+      "label": "On-card text",
+      "text": "\"PEPE\" | Fake Rare Collection 2023",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEPEPERUG#memetic",
+      "label": "Memetic references",
+      "text": "References to the iconic Pepe the Frog meme.\nPlays on the idea of high art with a crypto twist.\nIncorporates a traditional rug motif, a nod to cultural symbols of wealth and tradition.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEPEPERUG#visual",
+      "label": "Visual summary",
+      "text": "The card features an intricate design resembling a luxurious Persian rug in a deep green hue. The central focus is the word \"PEPE\" in bold, white uppercase letters, contrasted dramatically against the detailed pattern. The overall style combines opulence with a touch of digital artistry, creating a visually captivating piece.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEPEPERUG#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n\"PEPE\"  \nFake Rare Collection 2023\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features an intricate design resembling a luxurious Persian rug in a deep green hue. The central focus is the word \"PEPE\" in bold, white uppercase letters, contrasted dramatically against the detailed pattern. The overall style combines opulence with a touch of digital artistry, creating a visually captivating piece.\n\n🧬 **MEMETIC DNA:**\n- References to the iconic Pepe the Frog meme.\n- Plays on the idea of high art with a crypto twist.\n- Incorporates a traditional rug motif, a nod to cultural symbols of wealth and tradition.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.555Z",
+  "sourceFactVersion": 1
+}

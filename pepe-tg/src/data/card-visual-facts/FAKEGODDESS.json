@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "asset": "FAKEGODDESS",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 27,
+  "artist": "Tasha",
+  "supply": 99,
+  "issuance": "August 2022",
+  "textOnCard": [
+    "Tsasha Moore 2023"
+  ],
+  "memeticReferences": [
+    "The figure’s green skin is a nod to Pepe culture, blending the iconic meme frog with divine imagery.",
+    "The lotus flowers and Earth suggest themes of growth, enlightenment, and global awareness.",
+    "The moon and waves evoke a sense of cosmic connection and fluidity, often seen in crypto and NFT art."
+  ],
+  "visualSummary": "The card features a serene, goddess-like figure with green skin, wearing a flowing purple robe adorned with large lotus flowers. She is surrounded by swirling ocean waves and holds a small Earth in her hand, with a bright moon and clouds in the background. The color palette is a harmonious blend of blues, purples, and yellows, giving off a calming and mystical vibe.",
+  "visualSummaryShort": "The card depicts a serene goddess-like figure with green skin, dressed in a flowing purple robe. She is surrounded by ocean waves and holds a small Earth, set against a backdrop of a bright moon and clouds.",
+  "visualKeywords": [
+    "goddess",
+    "green skin",
+    "purple robe",
+    "lotus flowers",
+    "ocean waves",
+    "earth",
+    "moon",
+    "clouds",
+    "blue palette",
+    "mystical vibe"
+  ],
+  "textKeywords": [
+    "tsasha",
+    "moore",
+    "2023"
+  ],
+  "keywords": [
+    "goddess",
+    "green skin",
+    "purple robe",
+    "lotus flowers",
+    "ocean waves",
+    "earth",
+    "moon",
+    "clouds",
+    "blue palette",
+    "mystical vibe",
+    "tsasha",
+    "moore",
+    "2023"
+  ],
+  "embeddingInput": "FAKEGODDESS (Fake Rares) - Series 9 Card 27\nArtist: Tasha\nSupply 99 Issued August 2022\nOn-card text: Tsasha Moore 2023\nVisual summary: The card features a serene, goddess-like figure with green skin, wearing a flowing purple robe adorned with large lotus flowers. She is surrounded by swirling ocean waves and holds a small Earth in her hand, with a bright moon and clouds in the background. The color palette is a harmonious blend of blues, purples, and yellows, giving off a calming and mystical vibe.\nMemetic references: The figure’s green skin is a nod to Pepe culture, blending the iconic meme frog with divine imagery.; The lotus flowers and Earth suggest themes of growth, enlightenment, and global awareness.; The moon and waves evoke a sense of cosmic connection and fluidity, often seen in crypto and NFT art.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEGODDESS#text",
+      "label": "On-card text",
+      "text": "Tsasha Moore 2023",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEGODDESS#memetic",
+      "label": "Memetic references",
+      "text": "The figure’s green skin is a nod to Pepe culture, blending the iconic meme frog with divine imagery.\nThe lotus flowers and Earth suggest themes of growth, enlightenment, and global awareness.\nThe moon and waves evoke a sense of cosmic connection and fluidity, often seen in crypto and NFT art.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEGODDESS#visual",
+      "label": "Visual summary",
+      "text": "The card features a serene, goddess-like figure with green skin, wearing a flowing purple robe adorned with large lotus flowers. She is surrounded by swirling ocean waves and holds a small Earth in her hand, with a bright moon and clouds in the background. The color palette is a harmonious blend of blues, purples, and yellows, giving off a calming and mystical vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEGODDESS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nTsasha Moore 2023\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a serene, goddess-like figure with green skin, wearing a flowing purple robe adorned with large lotus flowers. She is surrounded by swirling ocean waves and holds a small Earth in her hand, with a bright moon and clouds in the background. The color palette is a harmonious blend of blues, purples, and yellows, giving off a calming and mystical vibe.\n\n🧬 **MEMETIC DNA:**\n- The figure’s green skin is a nod to Pepe culture, blending the iconic meme frog with divine imagery.\n- The lotus flowers and Earth suggest themes of growth, enlightenment, and global awareness.\n- The moon and waves evoke a sense of cosmic connection and fluidity, often seen in crypto and NFT art.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.509Z",
+  "sourceFactVersion": 1
+}

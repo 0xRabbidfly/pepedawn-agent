@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "asset": "TWOCHAINZPEP",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 6,
+  "artist": "JB",
+  "supply": 100,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "Two Chainz P.E.P.E",
+    "Because Two Chainz Are Better Than One",
+    "Rareness Score 69,420",
+    "WARNING: This card will make you rich"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in helmet: Classic Pepe lore.",
+    "Two Chainz reference: Playful nod to the rapper.",
+    "Crypto lingo: \"Rareness Score\" and \"This card will make you rich.\"",
+    "420 reference: Ties to cannabis culture."
+  ],
+  "visualSummary": "The card features a bold and chaotic design with a central cartoonish figure wearing a helmet, inside which is a Pepe the Frog image. The background bursts with vibrant pink and red geometric patterns, enhancing the dynamic and surreal vibe. The color palette is a mix of bright, eye-catching hues, adding to the card's intense visual appeal.",
+  "visualSummaryShort": "The card showcases a chaotic design featuring a cartoonish figure with a helmet containing a Pepe the Frog image. The vibrant pink and red geometric patterns create a dynamic and surreal atmosphere.",
+  "visualKeywords": [
+    "cartoonish figure",
+    "pepe the frog",
+    "geometric patterns",
+    "vibrant colors",
+    "chaotic design",
+    "bold",
+    "surreal",
+    "intense",
+    "helmet",
+    "pink and red"
+  ],
+  "textKeywords": [
+    "two",
+    "chainz",
+    "because",
+    "are",
+    "better",
+    "than",
+    "one",
+    "rareness",
+    "score",
+    "420",
+    "warning",
+    "will",
+    "make",
+    "you",
+    "rich"
+  ],
+  "keywords": [
+    "cartoonish figure",
+    "pepe the frog",
+    "geometric patterns",
+    "vibrant colors",
+    "chaotic design",
+    "bold",
+    "surreal",
+    "intense",
+    "helmet",
+    "pink and red",
+    "two",
+    "chainz",
+    "because",
+    "are",
+    "better",
+    "than",
+    "one",
+    "rareness",
+    "score",
+    "420",
+    "warning",
+    "will",
+    "make",
+    "you",
+    "rich"
+  ],
+  "embeddingInput": "TWOCHAINZPEP (Fake Rares) - Series 3 Card 6\nArtist: JB\nSupply 100 Issued November 2021\nOn-card text: Two Chainz P.E.P.E | Because Two Chainz Are Better Than One | Rareness Score 69,420 | WARNING: This card will make you rich\nVisual summary: The card features a bold and chaotic design with a central cartoonish figure wearing a helmet, inside which is a Pepe the Frog image. The background bursts with vibrant pink and red geometric patterns, enhancing the dynamic and surreal vibe. The color palette is a mix of bright, eye-catching hues, adding to the card's intense visual appeal.\nMemetic references: Pepe the Frog in helmet: Classic Pepe lore.; Two Chainz reference: Playful nod to the rapper.; Crypto lingo: \"Rareness Score\" and \"This card will make you rich.\"; 420 reference: Ties to cannabis culture.",
+  "embeddingBlocks": [
+    {
+      "id": "TWOCHAINZPEP#text",
+      "label": "On-card text",
+      "text": "Two Chainz P.E.P.E | Because Two Chainz Are Better Than One | Rareness Score 69,420 | WARNING: This card will make you rich",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "TWOCHAINZPEP#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in helmet: Classic Pepe lore.\nTwo Chainz reference: Playful nod to the rapper.\nCrypto lingo: \"Rareness Score\" and \"This card will make you rich.\"\n420 reference: Ties to cannabis culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "TWOCHAINZPEP#visual",
+      "label": "Visual summary",
+      "text": "The card features a bold and chaotic design with a central cartoonish figure wearing a helmet, inside which is a Pepe the Frog image. The background bursts with vibrant pink and red geometric patterns, enhancing the dynamic and surreal vibe. The color palette is a mix of bright, eye-catching hues, adding to the card's intense visual appeal.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "TWOCHAINZPEP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nTwo Chainz P.E.P.E  \nBecause Two Chainz Are Better Than One  \nRareness Score 69,420  \nWARNING: This card will make you rich\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a bold and chaotic design with a central cartoonish figure wearing a helmet, inside which is a Pepe the Frog image. The background bursts with vibrant pink and red geometric patterns, enhancing the dynamic and surreal vibe. The color palette is a mix of bright, eye-catching hues, adding to the card's intense visual appeal.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in helmet: Classic Pepe lore.\n- Two Chainz reference: Playful nod to the rapper.\n- Crypto lingo: \"Rareness Score\" and \"This card will make you rich.\"\n- 420 reference: Ties to cannabis culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.166Z",
+  "sourceFactVersion": 1
+}

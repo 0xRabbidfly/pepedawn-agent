@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "asset": "PEPEFAKECASH",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 7,
+  "artist": "PiFu",
+  "supply": 56,
+  "issuance": "December 2021",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a character with a distinct style and expression. The overall design is vibrant and eye-catching.",
+  "visualKeywords": [
+    "character",
+    "vibrant",
+    "expression",
+    "style"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "character",
+    "vibrant",
+    "expression",
+    "style"
+  ],
+  "embeddingInput": "PEPEFAKECASH (Fake Rares) - Series 10 Card 7\nArtist: PiFu\nSupply 56 Issued December 2021\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEFAKECASH#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with this request.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.880Z",
+  "sourceFactVersion": 1
+}

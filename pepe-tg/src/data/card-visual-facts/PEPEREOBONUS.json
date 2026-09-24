@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PEPEREOBONUS",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 36,
+  "artist": "Andrea Chiampo",
+  "supply": 101,
+  "issuance": "September 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference.",
+    "Skeleton imagery taps into themes of mortality and existential memes.",
+    "The noir style adds a layer of depth and drama, possibly referencing the darker side of meme culture."
+  ],
+  "visualSummary": "The card features a monochromatic, high-contrast image of a skeletal Pepe lying down, with a dramatic shadow cast across its face. The style is reminiscent of noir film, adding a mysterious and slightly ominous vibe. The texture is grainy, giving it a vintage or gritty aesthetic.",
+  "visualSummaryShort": "The card showcases a high-contrast, monochromatic image of a skeletal Pepe, evoking a noir film style. The dramatic shadows and grainy texture contribute to a mysterious and gritty atmosphere.",
+  "visualKeywords": [
+    "skeletal",
+    "monochrome",
+    "high-contrast",
+    "shadow",
+    "noir",
+    "vintage",
+    "grainy",
+    "ominous",
+    "dramatic",
+    "mysterious"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "skeletal",
+    "monochrome",
+    "high-contrast",
+    "shadow",
+    "noir",
+    "vintage",
+    "grainy",
+    "ominous",
+    "dramatic",
+    "mysterious"
+  ],
+  "embeddingInput": "PEPEREOBONUS (Fake Rares) - Series 9 Card 36\nArtist: Andrea Chiampo\nSupply 101 Issued September 2022\nOn-card text: none detected\nVisual summary: The card features a monochromatic, high-contrast image of a skeletal Pepe lying down, with a dramatic shadow cast across its face. The style is reminiscent of noir film, adding a mysterious and slightly ominous vibe. The texture is grainy, giving it a vintage or gritty aesthetic.\nMemetic references: Classic Pepe the Frog reference.; Skeleton imagery taps into themes of mortality and existential memes.; The noir style adds a layer of depth and drama, possibly referencing the darker side of meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEREOBONUS#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference.\nSkeleton imagery taps into themes of mortality and existential memes.\nThe noir style adds a layer of depth and drama, possibly referencing the darker side of meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEREOBONUS#visual",
+      "label": "Visual summary",
+      "text": "The card features a monochromatic, high-contrast image of a skeletal Pepe lying down, with a dramatic shadow cast across its face. The style is reminiscent of noir film, adding a mysterious and slightly ominous vibe. The texture is grainy, giving it a vintage or gritty aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEREOBONUS#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a monochromatic, high-contrast image of a skeletal Pepe lying down, with a dramatic shadow cast across its face. The style is reminiscent of noir film, adding a mysterious and slightly ominous vibe. The texture is grainy, giving it a vintage or gritty aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference.\n- Skeleton imagery taps into themes of mortality and existential memes.\n- The noir style adds a layer of depth and drama, possibly referencing the darker side of meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.958Z",
+  "sourceFactVersion": 1
+}

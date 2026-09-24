@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "asset": "FAKERARECASH",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 32,
+  "artist": "RYR",
+  "supply": 45,
+  "issuance": "September 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery, a staple in meme culture.",
+    "The cash motif is a nod to crypto wealth and the digital gold rush mentality.",
+    "Mosaic style suggests the interconnectedness of the crypto community and the multitude of small gains that build fortunes."
+  ],
+  "visualSummary": "This card features a mosaic-style depiction of Pepe the Frog, composed entirely of overlapping cash bills. The color palette is dominated by shades of green, with hints of orange and black, creating a rich texture. The artistic style is both chaotic and structured, capturing the essence of digital wealth.",
+  "visualSummaryShort": "The card showcases a mosaic-style image of Pepe the Frog made from overlapping cash bills. It features a green color palette with accents of orange and black, creating a textured and dynamic appearance.",
+  "visualKeywords": [
+    "pepe the frog",
+    "mosaic",
+    "cash bills",
+    "green palette",
+    "orange accents",
+    "black details",
+    "chaotic",
+    "structured",
+    "digital wealth"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "mosaic",
+    "cash bills",
+    "green palette",
+    "orange accents",
+    "black details",
+    "chaotic",
+    "structured",
+    "digital wealth"
+  ],
+  "embeddingInput": "FAKERARECASH (Fake Rares) - Series 16 Card 32\nArtist: RYR\nSupply 45 Issued September 2023\nOn-card text: none detected\nVisual summary: This card features a mosaic-style depiction of Pepe the Frog, composed entirely of overlapping cash bills. The color palette is dominated by shades of green, with hints of orange and black, creating a rich texture. The artistic style is both chaotic and structured, capturing the essence of digital wealth.\nMemetic references: Classic Pepe the Frog imagery, a staple in meme culture.; The cash motif is a nod to crypto wealth and the digital gold rush mentality.; Mosaic style suggests the interconnectedness of the crypto community and the multitude of small gains that build fortunes.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKERARECASH#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery, a staple in meme culture.\nThe cash motif is a nod to crypto wealth and the digital gold rush mentality.\nMosaic style suggests the interconnectedness of the crypto community and the multitude of small gains that build fortunes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKERARECASH#visual",
+      "label": "Visual summary",
+      "text": "This card features a mosaic-style depiction of Pepe the Frog, composed entirely of overlapping cash bills. The color palette is dominated by shades of green, with hints of orange and black, creating a rich texture. The artistic style is both chaotic and structured, capturing the essence of digital wealth.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKERARECASH#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a mosaic-style depiction of Pepe the Frog, composed entirely of overlapping cash bills. The color palette is dominated by shades of green, with hints of orange and black, creating a rich texture. The artistic style is both chaotic and structured, capturing the essence of digital wealth.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery, a staple in meme culture.\n- The cash motif is a nod to crypto wealth and the digital gold rush mentality.\n- Mosaic style suggests the interconnectedness of the crypto community and the multitude of small gains that build fortunes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.563Z",
+  "sourceFactVersion": 1
+}

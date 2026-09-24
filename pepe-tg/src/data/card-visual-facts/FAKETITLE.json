@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "FAKETITLE",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 33,
+  "artist": "LOVEBEING",
+  "supply": 44,
+  "issuance": "August 2022",
+  "textOnCard": [
+    "UNTITLED"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference, a staple in meme culture.",
+    "Cubism art style nods to iconic artists like Picasso.",
+    "The use of distortion and bold colors aligns with vaporwave aesthetics."
+  ],
+  "visualSummary": "This card features an abstract rendition of Pepe the Frog, characterized by a cubist style with fragmented geometric shapes. The color palette is bold and striking, predominantly using green, orange, and black, creating a visually jarring yet captivating effect. The background is a solid orange, providing contrast to the colorful, distorted figure of Pepe wearing a black hat and a sharp triangular collar.",
+  "visualSummaryShort": "The card showcases an abstract cubist interpretation of Pepe the Frog, using bold geometric shapes. The vibrant color palette of green, orange, and black creates a striking visual impact against a solid orange background.",
+  "visualKeywords": [
+    "pepe",
+    "cubist",
+    "geometric",
+    "green",
+    "orange",
+    "black",
+    "hat",
+    "collar"
+  ],
+  "textKeywords": [
+    "untitled"
+  ],
+  "keywords": [
+    "pepe",
+    "cubist",
+    "geometric",
+    "green",
+    "orange",
+    "black",
+    "hat",
+    "collar",
+    "untitled"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "FAKETITLE (Fake Rares) - Series 9 Card 33\nArtist: LOVEBEING\nSupply 44 Issued August 2022\nOn-card text: UNTITLED\nVisual summary: This card features an abstract rendition of Pepe the Frog, characterized by a cubist style with fragmented geometric shapes. The color palette is bold and striking, predominantly using green, orange, and black, creating a visually jarring yet captivating effect. The background is a solid orange, providing contrast to the colorful, distorted figure of Pepe wearing a black hat and a sharp triangular collar.\nMemetic references: Classic Pepe the Frog reference, a staple in meme culture.; Cubism art style nods to iconic artists like Picasso.; The use of distortion and bold colors aligns with vaporwave aesthetics.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKETITLE#text",
+      "label": "On-card text",
+      "text": "UNTITLED",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKETITLE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference, a staple in meme culture.\nCubism art style nods to iconic artists like Picasso.\nThe use of distortion and bold colors aligns with vaporwave aesthetics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKETITLE#visual",
+      "label": "Visual summary",
+      "text": "This card features an abstract rendition of Pepe the Frog, characterized by a cubist style with fragmented geometric shapes. The color palette is bold and striking, predominantly using green, orange, and black, creating a visually jarring yet captivating effect. The background is a solid orange, providing contrast to the colorful, distorted figure of Pepe wearing a black hat and a sharp triangular collar.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKETITLE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nUNTITLED\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features an abstract rendition of Pepe the Frog, characterized by a cubist style with fragmented geometric shapes. The color palette is bold and striking, predominantly using green, orange, and black, creating a visually jarring yet captivating effect. The background is a solid orange, providing contrast to the colorful, distorted figure of Pepe wearing a black hat and a sharp triangular collar.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference, a staple in meme culture.\n- Cubism art style nods to iconic artists like Picasso.\n- The use of distortion and bold colors aligns with vaporwave aesthetics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:30:35.137Z"
+}

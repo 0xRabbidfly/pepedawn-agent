@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "CHADG",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 39,
+  "artist": "Raf Grassetti",
+  "supply": 111,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "Hello there. Feels good man."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog homage with a muscular twist.",
+    "\"Feels good man\" is a classic Pepe meme phrase.",
+    "Bodybuilder aesthetic, blending meme culture with fitness vibes."
+  ],
+  "visualSummary": "This card features a hyper-realistic, muscular green figure with a frog-like face, sporting a thick beard and confident smirk. The character's skin is textured, adding depth and a lifelike quality. The background is a simple dark gradient, emphasizing the central figure.",
+  "visualSummaryShort": "The card showcases a muscular green figure with a frog-like face and a thick beard, exuding confidence. The dark gradient background highlights the character's lifelike texture and features.",
+  "visualKeywords": [
+    "green figure",
+    "frog-like face",
+    "muscular",
+    "beard",
+    "dark gradient",
+    "confident",
+    "textured"
+  ],
+  "textKeywords": [
+    "hello",
+    "feels",
+    "good",
+    "man"
+  ],
+  "keywords": [
+    "green figure",
+    "frog-like face",
+    "muscular",
+    "beard",
+    "dark gradient",
+    "confident",
+    "textured",
+    "hello",
+    "feels",
+    "good",
+    "man"
+  ],
+  "embeddingInput": "CHADG (Fake Rares) - Series 8 Card 39\nArtist: Raf Grassetti\nSupply 111 Issued July 2022\nOn-card text: Hello there. Feels good man.\nVisual summary: This card features a hyper-realistic, muscular green figure with a frog-like face, sporting a thick beard and confident smirk. The character's skin is textured, adding depth and a lifelike quality. The background is a simple dark gradient, emphasizing the central figure.\nMemetic references: Pepe the Frog homage with a muscular twist.; \"Feels good man\" is a classic Pepe meme phrase.; Bodybuilder aesthetic, blending meme culture with fitness vibes.",
+  "embeddingBlocks": [
+    {
+      "id": "CHADG#text",
+      "label": "On-card text",
+      "text": "Hello there. Feels good man.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "CHADG#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog homage with a muscular twist.\n\"Feels good man\" is a classic Pepe meme phrase.\nBodybuilder aesthetic, blending meme culture with fitness vibes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "CHADG#visual",
+      "label": "Visual summary",
+      "text": "This card features a hyper-realistic, muscular green figure with a frog-like face, sporting a thick beard and confident smirk. The character's skin is textured, adding depth and a lifelike quality. The background is a simple dark gradient, emphasizing the central figure.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "CHADG#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nHello there. Feels good man.\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a hyper-realistic, muscular green figure with a frog-like face, sporting a thick beard and confident smirk. The character's skin is textured, adding depth and a lifelike quality. The background is a simple dark gradient, emphasizing the central figure.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog homage with a muscular twist.\n- \"Feels good man\" is a classic Pepe meme phrase.\n- Bodybuilder aesthetic, blending meme culture with fitness vibes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.352Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "LIGHTREADING",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 10,
+  "artist": "Art Bat",
+  "supply": 40,
+  "issuance": "January 2022",
+  "textOnCard": [
+    "WHO AM I?",
+    "2021 AB"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple in meme culture.",
+    "The phrase \"WHO AM I?\" adds an existential, introspective layer to the meme.",
+    "References to identity crisis, a common crypto and NFT theme.",
+    "Signature \"2021 AB\" suggests creator acknowledgment, adding a personal touch."
+  ],
+  "visualSummary": "This card features a classic Pepe the Frog with a contemplative expression, dressed in a simple blue shirt against a solid brown background. The artwork uses a clean, minimalist style with bold outlines and flat colors, emphasizing Pepe's iconic features. The overall composition is reminiscent of a framed portrait, adding a sense of introspection.",
+  "visualSummaryShort": "The card showcases a contemplative Pepe the Frog in a blue shirt against a solid brown background. The minimalist style highlights his iconic features with bold outlines and flat colors.",
+  "visualKeywords": [
+    "pepe the frog",
+    "blue shirt",
+    "brown background",
+    "minimalist",
+    "bold outlines",
+    "contemplative",
+    "portrait",
+    "introspection"
+  ],
+  "textKeywords": [
+    "who",
+    "2021"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "blue shirt",
+    "brown background",
+    "minimalist",
+    "bold outlines",
+    "contemplative",
+    "portrait",
+    "introspection",
+    "who",
+    "2021"
+  ],
+  "embeddingInput": "LIGHTREADING (Fake Rares) - Series 5 Card 10\nArtist: Art Bat\nSupply 40 Issued January 2022\nOn-card text: WHO AM I? | 2021 AB\nVisual summary: This card features a classic Pepe the Frog with a contemplative expression, dressed in a simple blue shirt against a solid brown background. The artwork uses a clean, minimalist style with bold outlines and flat colors, emphasizing Pepe's iconic features. The overall composition is reminiscent of a framed portrait, adding a sense of introspection.\nMemetic references: Pepe the Frog, a staple in meme culture.; The phrase \"WHO AM I?\" adds an existential, introspective layer to the meme.; References to identity crisis, a common crypto and NFT theme.; Signature \"2021 AB\" suggests creator acknowledgment, adding a personal touch.",
+  "embeddingBlocks": [
+    {
+      "id": "LIGHTREADING#text",
+      "label": "On-card text",
+      "text": "WHO AM I? | 2021 AB",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "LIGHTREADING#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple in meme culture.\nThe phrase \"WHO AM I?\" adds an existential, introspective layer to the meme.\nReferences to identity crisis, a common crypto and NFT theme.\nSignature \"2021 AB\" suggests creator acknowledgment, adding a personal touch.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LIGHTREADING#visual",
+      "label": "Visual summary",
+      "text": "This card features a classic Pepe the Frog with a contemplative expression, dressed in a simple blue shirt against a solid brown background. The artwork uses a clean, minimalist style with bold outlines and flat colors, emphasizing Pepe's iconic features. The overall composition is reminiscent of a framed portrait, adding a sense of introspection.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LIGHTREADING#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nWHO AM I?  \n2021 AB\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a classic Pepe the Frog with a contemplative expression, dressed in a simple blue shirt against a solid brown background. The artwork uses a clean, minimalist style with bold outlines and flat colors, emphasizing Pepe's iconic features. The overall composition is reminiscent of a framed portrait, adding a sense of introspection.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple in meme culture.\n- The phrase \"WHO AM I?\" adds an existential, introspective layer to the meme.\n- References to identity crisis, a common crypto and NFT theme.\n- Signature \"2021 AB\" suggests creator acknowledgment, adding a personal touch.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.742Z",
+  "sourceFactVersion": 1
+}

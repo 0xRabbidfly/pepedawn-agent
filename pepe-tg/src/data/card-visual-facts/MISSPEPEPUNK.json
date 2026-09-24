@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "asset": "MISSPEPEPUNK",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 43,
+  "artist": "Ffmad",
+  "supply": 100,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "FAKE",
+    "# 100",
+    "FLOOR",
+    "GM",
+    "PFP",
+    "PEPE"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog references.",
+    "Crypto slang like \"FLOOR,\" \"GM\" (good morning), and \"PFP\" (profile picture).",
+    "A nod to trading charts and NFT culture with the graph."
+  ],
+  "visualSummary": "The card showcases a pixel art style, featuring a green-skinned character with blonde hair pointing at a blackboard. The board displays a red upward-trending graph with various Pepe figures labeled \"FLOOR,\" \"GM,\" \"PFP,\" and \"PEPE.\" The color palette is dominated by greens, blacks, and reds, giving it a retro, nostalgic vibe.",
+  "visualSummaryShort": "The card features a pixel art character with green skin and blonde hair, pointing at a blackboard with a red graph. The color palette includes greens, blacks, and reds, creating a retro feel.",
+  "visualKeywords": [
+    "pixel art",
+    "green character",
+    "blonde hair",
+    "blackboard",
+    "red graph",
+    "retro",
+    "nostalgic",
+    "pepe"
+  ],
+  "textKeywords": [
+    "100",
+    "floor",
+    "pfp"
+  ],
+  "keywords": [
+    "pixel art",
+    "green character",
+    "blonde hair",
+    "blackboard",
+    "red graph",
+    "retro",
+    "nostalgic",
+    "pepe",
+    "100",
+    "floor",
+    "pfp"
+  ],
+  "embeddingInput": "MISSPEPEPUNK (Fake Rares) - Series 3 Card 43\nArtist: Ffmad\nSupply 100 Issued November 2021\nOn-card text: FAKE | # 100 | FLOOR | GM | PFP | PEPE\nVisual summary: The card showcases a pixel art style, featuring a green-skinned character with blonde hair pointing at a blackboard. The board displays a red upward-trending graph with various Pepe figures labeled \"FLOOR,\" \"GM,\" \"PFP,\" and \"PEPE.\" The color palette is dominated by greens, blacks, and reds, giving it a retro, nostalgic vibe.\nMemetic references: Classic Pepe the Frog references.; Crypto slang like \"FLOOR,\" \"GM\" (good morning), and \"PFP\" (profile picture).; A nod to trading charts and NFT culture with the graph.",
+  "embeddingBlocks": [
+    {
+      "id": "MISSPEPEPUNK#text",
+      "label": "On-card text",
+      "text": "FAKE | # 100 | FLOOR | GM | PFP | PEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MISSPEPEPUNK#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog references.\nCrypto slang like \"FLOOR,\" \"GM\" (good morning), and \"PFP\" (profile picture).\nA nod to trading charts and NFT culture with the graph.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MISSPEPEPUNK#visual",
+      "label": "Visual summary",
+      "text": "The card showcases a pixel art style, featuring a green-skinned character with blonde hair pointing at a blackboard. The board displays a red upward-trending graph with various Pepe figures labeled \"FLOOR,\" \"GM,\" \"PFP,\" and \"PEPE.\" The color palette is dominated by greens, blacks, and reds, giving it a retro, nostalgic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MISSPEPEPUNK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE  \n# 100  \nFLOOR  \nGM  \nPFP  \nPEPE  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card showcases a pixel art style, featuring a green-skinned character with blonde hair pointing at a blackboard. The board displays a red upward-trending graph with various Pepe figures labeled \"FLOOR,\" \"GM,\" \"PFP,\" and \"PEPE.\" The color palette is dominated by greens, blacks, and reds, giving it a retro, nostalgic vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog references.\n- Crypto slang like \"FLOOR,\" \"GM\" (good morning), and \"PFP\" (profile picture).\n- A nod to trading charts and NFT culture with the graph.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.777Z",
+  "sourceFactVersion": 1
+}

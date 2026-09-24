@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "OBSOLETEPEPE",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 8,
+  "artist": "Zima Blue",
+  "supply": 50,
+  "issuance": "August 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "References to digital media with CDs and vinyl.",
+    "Elements of consumer culture with currency and tickets.",
+    "Surreal, abstract art style reminiscent of DIY and punk aesthetics."
+  ],
+  "visualSummary": "The card features a vibrant collage of various elements forming a stylized side profile of a bird-like creature. The composition includes a CD, vinyl record, currency notes, pill packs, and colorful tickets, all arranged on a pink background. The color palette is bold and eclectic, with bright greens, blues, reds, and metallics creating a dynamic and playful visual.",
+  "visualSummaryShort": "The card showcases a colorful collage forming a bird-like creature's profile against a pink background. It includes various objects like a CD, vinyl record, and currency notes, creating a vibrant and playful atmosphere.",
+  "visualKeywords": [
+    "collage",
+    "bird-like",
+    "pink background",
+    "cd",
+    "vinyl",
+    "currency",
+    "pill packs",
+    "colorful tickets",
+    "bold colors",
+    "playful"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "collage",
+    "bird-like",
+    "pink background",
+    "cd",
+    "vinyl",
+    "currency",
+    "pill packs",
+    "colorful tickets",
+    "bold colors",
+    "playful"
+  ],
+  "embeddingInput": "OBSOLETEPEPE (Fake Rares) - Series 16 Card 8\nArtist: Zima Blue\nSupply 50 Issued August 2023\nOn-card text: none detected\nVisual summary: The card features a vibrant collage of various elements forming a stylized side profile of a bird-like creature. The composition includes a CD, vinyl record, currency notes, pill packs, and colorful tickets, all arranged on a pink background. The color palette is bold and eclectic, with bright greens, blues, reds, and metallics creating a dynamic and playful visual.\nMemetic references: References to digital media with CDs and vinyl.; Elements of consumer culture with currency and tickets.; Surreal, abstract art style reminiscent of DIY and punk aesthetics.",
+  "embeddingBlocks": [
+    {
+      "id": "OBSOLETEPEPE#memetic",
+      "label": "Memetic references",
+      "text": "References to digital media with CDs and vinyl.\nElements of consumer culture with currency and tickets.\nSurreal, abstract art style reminiscent of DIY and punk aesthetics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "OBSOLETEPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant collage of various elements forming a stylized side profile of a bird-like creature. The composition includes a CD, vinyl record, currency notes, pill packs, and colorful tickets, all arranged on a pink background. The color palette is bold and eclectic, with bright greens, blues, reds, and metallics creating a dynamic and playful visual.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "OBSOLETEPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant collage of various elements forming a stylized side profile of a bird-like creature. The composition includes a CD, vinyl record, currency notes, pill packs, and colorful tickets, all arranged on a pink background. The color palette is bold and eclectic, with bright greens, blues, reds, and metallics creating a dynamic and playful visual.\n\n🧬 **MEMETIC DNA:**\n- References to digital media with CDs and vinyl.\n- Elements of consumer culture with currency and tickets.\n- Surreal, abstract art style reminiscent of DIY and punk aesthetics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.804Z",
+  "sourceFactVersion": 1
+}

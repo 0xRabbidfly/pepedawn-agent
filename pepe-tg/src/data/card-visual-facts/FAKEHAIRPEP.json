@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "asset": "FAKEHAIRPEP",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 20,
+  "artist": "FakeBuddha",
+  "supply": 100,
+  "issuance": "September 2021",
+  "textOnCard": [
+    "FAKE HAIR Pep",
+    "HAIRPEPES SISTER",
+    "has fear of scissors",
+    "boy fogrs go: RrrrrriBbbiTt!!",
+    "old lady fogr go:"
+  ],
+  "memeticReferences": [
+    "References to \"Pepe\" and the iconic frog meme.",
+    "Playful nod to hair care and fear of haircuts.",
+    "Use of frog imagery and humorous text capturing meme culture."
+  ],
+  "visualSummary": "The card features a figure with long, glossy black hair and green arms, standing with their back to the viewer. The background is a blurred indoor scene, adding depth and mystery. The color palette is dominated by dark and muted tones, with splashes of bright green and red from the frogs, giving it a surreal and whimsical vibe.",
+  "visualSummaryShort": "The card showcases a figure with long black hair and green arms, set against a blurred indoor background. The color palette features dark tones with vibrant green and red accents, creating a whimsical atmosphere.",
+  "visualKeywords": [
+    "black hair",
+    "green arms",
+    "blurred background",
+    "dark tones",
+    "whimsical",
+    "frogs",
+    "surreal"
+  ],
+  "textKeywords": [
+    "hair",
+    "pep",
+    "hairpepes",
+    "sister",
+    "has",
+    "fear",
+    "scissors",
+    "boy",
+    "fogrs",
+    "rrrrrribbbitt",
+    "old",
+    "lady",
+    "fogr"
+  ],
+  "keywords": [
+    "black hair",
+    "green arms",
+    "blurred background",
+    "dark tones",
+    "whimsical",
+    "frogs",
+    "surreal",
+    "hair",
+    "pep",
+    "hairpepes",
+    "sister",
+    "has",
+    "fear",
+    "scissors",
+    "boy",
+    "fogrs",
+    "rrrrrribbbitt",
+    "old",
+    "lady",
+    "fogr"
+  ],
+  "embeddingInput": "FAKEHAIRPEP (Fake Rares) - Series 1 Card 20\nArtist: FakeBuddha\nSupply 100 Issued September 2021\nOn-card text: FAKE HAIR Pep | HAIRPEPES SISTER | has fear of scissors | boy fogrs go: RrrrrriBbbiTt!! | old lady fogr go:\nVisual summary: The card features a figure with long, glossy black hair and green arms, standing with their back to the viewer. The background is a blurred indoor scene, adding depth and mystery. The color palette is dominated by dark and muted tones, with splashes of bright green and red from the frogs, giving it a surreal and whimsical vibe.\nMemetic references: References to \"Pepe\" and the iconic frog meme.; Playful nod to hair care and fear of haircuts.; Use of frog imagery and humorous text capturing meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEHAIRPEP#text",
+      "label": "On-card text",
+      "text": "FAKE HAIR Pep | HAIRPEPES SISTER | has fear of scissors | boy fogrs go: RrrrrriBbbiTt!! | old lady fogr go:",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEHAIRPEP#memetic",
+      "label": "Memetic references",
+      "text": "References to \"Pepe\" and the iconic frog meme.\nPlayful nod to hair care and fear of haircuts.\nUse of frog imagery and humorous text capturing meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEHAIRPEP#visual",
+      "label": "Visual summary",
+      "text": "The card features a figure with long, glossy black hair and green arms, standing with their back to the viewer. The background is a blurred indoor scene, adding depth and mystery. The color palette is dominated by dark and muted tones, with splashes of bright green and red from the frogs, giving it a surreal and whimsical vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEHAIRPEP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE HAIR Pep  \nHAIRPEPES SISTER  \nhas fear of scissors  \nboy fogrs go: RrrrrriBbbiTt!!  \nold lady fogr go:  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a figure with long, glossy black hair and green arms, standing with their back to the viewer. The background is a blurred indoor scene, adding depth and mystery. The color palette is dominated by dark and muted tones, with splashes of bright green and red from the frogs, giving it a surreal and whimsical vibe.\n\n🧬 **MEMETIC DNA:**\n- References to \"Pepe\" and the iconic frog meme.\n- Playful nod to hair care and fear of haircuts.\n- Use of frog imagery and humorous text capturing meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.512Z",
+  "sourceFactVersion": 1
+}

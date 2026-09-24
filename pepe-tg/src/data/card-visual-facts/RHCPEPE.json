@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "asset": "RHCPEPE",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 34,
+  "artist": "El Cholo Pepe",
+  "supply": 100,
+  "issuance": "December 2022",
+  "textOnCard": [
+    "\"Red Hot Green Pepes\"",
+    "\"Look Around\"",
+    "\"Beach on the Highest Ground\""
+  ],
+  "memeticReferences": [
+    "References to Pepe as a rock band member, blending meme culture with music.",
+    "Play on the band name \"Red Hot Chili Peppers\" with \"Red Hot Green Pepes.\"",
+    "Psychedelic and counterculture vibes, reminiscent of classic rock and 90s aesthetics."
+  ],
+  "visualSummary": "The card bursts with vibrant colors, featuring a psychedelic mix of greens, blues, and reds. It showcases Pepe the Frog characters styled in a rock band setting, echoing iconic album art with a playful twist. The composition is chaotic yet harmonious, blending musical elements with surreal, cartoonish details.",
+  "visualSummaryShort": "The card features a vibrant and chaotic mix of colors, showcasing Pepe the Frog characters in a rock band setting. The design blends musical elements with surreal and cartoonish details.",
+  "visualKeywords": [
+    "vibrant colors",
+    "pepe the frog",
+    "rock band",
+    "psychedelic",
+    "musical elements",
+    "surreal",
+    "cartoonish",
+    "chaotic",
+    "album art"
+  ],
+  "textKeywords": [
+    "red",
+    "hot",
+    "green",
+    "pepes",
+    "look",
+    "around",
+    "beach",
+    "highest",
+    "ground"
+  ],
+  "keywords": [
+    "vibrant colors",
+    "pepe the frog",
+    "rock band",
+    "psychedelic",
+    "musical elements",
+    "surreal",
+    "cartoonish",
+    "chaotic",
+    "album art",
+    "red",
+    "hot",
+    "green",
+    "pepes",
+    "look",
+    "around",
+    "beach",
+    "highest",
+    "ground"
+  ],
+  "embeddingInput": "RHCPEPE (Fake Rares) - Series 13 Card 34\nArtist: El Cholo Pepe\nSupply 100 Issued December 2022\nOn-card text: \"Red Hot Green Pepes\" | \"Look Around\" | \"Beach on the Highest Ground\"\nVisual summary: The card bursts with vibrant colors, featuring a psychedelic mix of greens, blues, and reds. It showcases Pepe the Frog characters styled in a rock band setting, echoing iconic album art with a playful twist. The composition is chaotic yet harmonious, blending musical elements with surreal, cartoonish details.\nMemetic references: References to Pepe as a rock band member, blending meme culture with music.; Play on the band name \"Red Hot Chili Peppers\" with \"Red Hot Green Pepes.\"; Psychedelic and counterculture vibes, reminiscent of classic rock and 90s aesthetics.",
+  "embeddingBlocks": [
+    {
+      "id": "RHCPEPE#text",
+      "label": "On-card text",
+      "text": "\"Red Hot Green Pepes\" | \"Look Around\" | \"Beach on the Highest Ground\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "RHCPEPE#memetic",
+      "label": "Memetic references",
+      "text": "References to Pepe as a rock band member, blending meme culture with music.\nPlay on the band name \"Red Hot Chili Peppers\" with \"Red Hot Green Pepes.\"\nPsychedelic and counterculture vibes, reminiscent of classic rock and 90s aesthetics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RHCPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card bursts with vibrant colors, featuring a psychedelic mix of greens, blues, and reds. It showcases Pepe the Frog characters styled in a rock band setting, echoing iconic album art with a playful twist. The composition is chaotic yet harmonious, blending musical elements with surreal, cartoonish details.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RHCPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- \"Red Hot Green Pepes\"\n- \"Look Around\"\n- \"Beach on the Highest Ground\"\n\n🎨 **VISUAL BREAKDOWN:**\nThe card bursts with vibrant colors, featuring a psychedelic mix of greens, blues, and reds. It showcases Pepe the Frog characters styled in a rock band setting, echoing iconic album art with a playful twist. The composition is chaotic yet harmonious, blending musical elements with surreal, cartoonish details.\n\n🧬 **MEMETIC DNA:**\n- References to Pepe as a rock band member, blending meme culture with music.\n- Play on the band name \"Red Hot Chili Peppers\" with \"Red Hot Green Pepes.\"\n- Psychedelic and counterculture vibes, reminiscent of classic rock and 90s aesthetics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.085Z",
+  "sourceFactVersion": 1
+}

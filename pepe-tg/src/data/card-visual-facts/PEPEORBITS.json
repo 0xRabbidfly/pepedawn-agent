@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "asset": "PEPEORBITS",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 33,
+  "artist": "Indelible and WetPotatoBrain",
+  "supply": 100,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "PepeOrbits by WetPotatoBrain - Digital 2022"
+  ],
+  "memeticReferences": [
+    "References the iconic Pepe the Frog meme.",
+    "Plays on the theme of art appreciation with a humorous twist.",
+    "Reflects crypto culture’s love for blending high art with internet meme culture."
+  ],
+  "visualSummary": "The card depicts three green-skinned, humanoid figures, reminiscent of children, gazing at an abstract artwork featuring a stylized Pepe the Frog face. The color palette is a mix of earthy tones with vibrant pops of color, particularly in the clothing of the figures. The style is a blend of surrealism and cartoonish elements, creating a playful yet sophisticated composition.",
+  "visualSummaryShort": "The card features three green-skinned humanoid figures admiring an abstract artwork of Pepe the Frog. The composition combines earthy tones with vibrant clothing, creating a playful and surreal atmosphere.",
+  "visualKeywords": [
+    "green-skinned",
+    "humanoids",
+    "abstract artwork",
+    "pepe the frog",
+    "earthy tones",
+    "vibrant clothing",
+    "surrealism",
+    "cartoonish",
+    "playful",
+    "sophisticated"
+  ],
+  "textKeywords": [
+    "pepeorbits",
+    "wetpotatobrain",
+    "digital",
+    "2022"
+  ],
+  "keywords": [
+    "green-skinned",
+    "humanoids",
+    "abstract artwork",
+    "pepe the frog",
+    "earthy tones",
+    "vibrant clothing",
+    "surrealism",
+    "cartoonish",
+    "playful",
+    "sophisticated",
+    "pepeorbits",
+    "wetpotatobrain",
+    "digital",
+    "2022"
+  ],
+  "embeddingInput": "PEPEORBITS (Fake Rares) - Series 11 Card 33\nArtist: Indelible and WetPotatoBrain\nSupply 100 Issued July 2022\nOn-card text: PepeOrbits by WetPotatoBrain - Digital 2022\nVisual summary: The card depicts three green-skinned, humanoid figures, reminiscent of children, gazing at an abstract artwork featuring a stylized Pepe the Frog face. The color palette is a mix of earthy tones with vibrant pops of color, particularly in the clothing of the figures. The style is a blend of surrealism and cartoonish elements, creating a playful yet sophisticated composition.\nMemetic references: References the iconic Pepe the Frog meme.; Plays on the theme of art appreciation with a humorous twist.; Reflects crypto culture’s love for blending high art with internet meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEORBITS#text",
+      "label": "On-card text",
+      "text": "PepeOrbits by WetPotatoBrain - Digital 2022",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEORBITS#memetic",
+      "label": "Memetic references",
+      "text": "References the iconic Pepe the Frog meme.\nPlays on the theme of art appreciation with a humorous twist.\nReflects crypto culture’s love for blending high art with internet meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEORBITS#visual",
+      "label": "Visual summary",
+      "text": "The card depicts three green-skinned, humanoid figures, reminiscent of children, gazing at an abstract artwork featuring a stylized Pepe the Frog face. The color palette is a mix of earthy tones with vibrant pops of color, particularly in the clothing of the figures. The style is a blend of surrealism and cartoonish elements, creating a playful yet sophisticated composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEORBITS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPepeOrbits by WetPotatoBrain - Digital 2022\n\n🎨 **VISUAL BREAKDOWN:**\nThe card depicts three green-skinned, humanoid figures, reminiscent of children, gazing at an abstract artwork featuring a stylized Pepe the Frog face. The color palette is a mix of earthy tones with vibrant pops of color, particularly in the clothing of the figures. The style is a blend of surrealism and cartoonish elements, creating a playful yet sophisticated composition.\n\n🧬 **MEMETIC DNA:**\n- References the iconic Pepe the Frog meme.\n- Plays on the theme of art appreciation with a humorous twist.\n- Reflects crypto culture’s love for blending high art with internet meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.944Z",
+  "sourceFactVersion": 1
+}

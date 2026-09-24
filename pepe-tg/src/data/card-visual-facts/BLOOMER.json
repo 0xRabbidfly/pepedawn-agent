@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "asset": "BLOOMER",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 43,
+  "artist": "Art Bat",
+  "supply": 40,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "Late Bloomer",
+    "2021 AB"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference, a staple in meme culture.",
+    "The term \"Late Bloomer\" humorously suggests personal growth or delayed success, resonating with crypto late adopters.",
+    "The simplistic art style echoes early internet meme aesthetics."
+  ],
+  "visualSummary": "This card features a simple, hand-drawn line art of a Pepe the Frog character with its characteristic sad and reflective expression. The background is plain white, emphasizing the minimalist style and black outlines. The composition is straightforward and clean, giving it an understated yet poignant appearance.",
+  "visualSummaryShort": "The card showcases a hand-drawn line art of a sad Pepe the Frog character against a plain white background. Its minimalist style and clean composition create a poignant visual impact.",
+  "visualKeywords": [
+    "pepe the frog",
+    "line art",
+    "minimalist",
+    "black outlines",
+    "white background",
+    "sad expression"
+  ],
+  "textKeywords": [
+    "late",
+    "bloomer",
+    "2021"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "line art",
+    "minimalist",
+    "black outlines",
+    "white background",
+    "sad expression",
+    "late",
+    "bloomer",
+    "2021"
+  ],
+  "embeddingInput": "BLOOMER (Fake Rares) - Series 1 Card 43\nArtist: Art Bat\nSupply 40 Issued October 2021\nOn-card text: Late Bloomer | 2021 AB\nVisual summary: This card features a simple, hand-drawn line art of a Pepe the Frog character with its characteristic sad and reflective expression. The background is plain white, emphasizing the minimalist style and black outlines. The composition is straightforward and clean, giving it an understated yet poignant appearance.\nMemetic references: Classic Pepe the Frog reference, a staple in meme culture.; The term \"Late Bloomer\" humorously suggests personal growth or delayed success, resonating with crypto late adopters.; The simplistic art style echoes early internet meme aesthetics.",
+  "embeddingBlocks": [
+    {
+      "id": "BLOOMER#text",
+      "label": "On-card text",
+      "text": "Late Bloomer | 2021 AB",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "BLOOMER#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference, a staple in meme culture.\nThe term \"Late Bloomer\" humorously suggests personal growth or delayed success, resonating with crypto late adopters.\nThe simplistic art style echoes early internet meme aesthetics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BLOOMER#visual",
+      "label": "Visual summary",
+      "text": "This card features a simple, hand-drawn line art of a Pepe the Frog character with its characteristic sad and reflective expression. The background is plain white, emphasizing the minimalist style and black outlines. The composition is straightforward and clean, giving it an understated yet poignant appearance.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BLOOMER#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nLate Bloomer  \n2021 AB\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a simple, hand-drawn line art of a Pepe the Frog character with its characteristic sad and reflective expression. The background is plain white, emphasizing the minimalist style and black outlines. The composition is straightforward and clean, giving it an understated yet poignant appearance.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference, a staple in meme culture.\n- The term \"Late Bloomer\" humorously suggests personal growth or delayed success, resonating with crypto late adopters.\n- The simplistic art style echoes early internet meme aesthetics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.320Z",
+  "sourceFactVersion": 1
+}

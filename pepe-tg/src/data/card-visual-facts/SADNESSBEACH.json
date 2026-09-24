@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "asset": "SADNESSBEACH",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 38,
+  "artist": "Darkknight",
+  "supply": 36,
+  "issuance": "November 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Iconic Pepe the Frog imagery, a staple of meme culture.",
+    "The crying stone face is reminiscent of classic Pepe sadness memes.",
+    "The campfire is a nod to introspective, late-night crypto chats.",
+    "Celestial elements like the moon and shooting star evoke cosmic vibes tied to the crypto universe."
+  ],
+  "visualSummary": "The card features a Pepe the Frog character sitting pensively by a campfire in a rocky, desert-like landscape. In the background, a grand stone formation resembling a face is \"crying\" waterfalls under a starry sky with a bright moon and shooting star. The color palette blends warm earth tones with the cool blues and purples of the night sky, creating a serene yet melancholic atmosphere.",
+  "visualSummaryShort": "The card depicts a Pepe the Frog character sitting by a campfire in a rocky desert landscape. A stone formation resembling a crying face is set against a starry sky, creating a serene yet melancholic mood.",
+  "visualKeywords": [
+    "pepe the frog",
+    "campfire",
+    "rocky landscape",
+    "crying face",
+    "waterfalls",
+    "starry sky",
+    "moon",
+    "shooting star",
+    "earth tones",
+    "blue palette"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "campfire",
+    "rocky landscape",
+    "crying face",
+    "waterfalls",
+    "starry sky",
+    "moon",
+    "shooting star",
+    "earth tones",
+    "blue palette"
+  ],
+  "embeddingInput": "SADNESSBEACH (Fake Rares) - Series 12 Card 38\nArtist: Darkknight\nSupply 36 Issued November 2022\nOn-card text: none detected\nVisual summary: The card features a Pepe the Frog character sitting pensively by a campfire in a rocky, desert-like landscape. In the background, a grand stone formation resembling a face is \"crying\" waterfalls under a starry sky with a bright moon and shooting star. The color palette blends warm earth tones with the cool blues and purples of the night sky, creating a serene yet melancholic atmosphere.\nMemetic references: Iconic Pepe the Frog imagery, a staple of meme culture.; The crying stone face is reminiscent of classic Pepe sadness memes.; The campfire is a nod to introspective, late-night crypto chats.; Celestial elements like the moon and shooting star evoke cosmic vibes tied to the crypto universe.",
+  "embeddingBlocks": [
+    {
+      "id": "SADNESSBEACH#memetic",
+      "label": "Memetic references",
+      "text": "Iconic Pepe the Frog imagery, a staple of meme culture.\nThe crying stone face is reminiscent of classic Pepe sadness memes.\nThe campfire is a nod to introspective, late-night crypto chats.\nCelestial elements like the moon and shooting star evoke cosmic vibes tied to the crypto universe.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SADNESSBEACH#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe the Frog character sitting pensively by a campfire in a rocky, desert-like landscape. In the background, a grand stone formation resembling a face is \"crying\" waterfalls under a starry sky with a bright moon and shooting star. The color palette blends warm earth tones with the cool blues and purples of the night sky, creating a serene yet melancholic atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SADNESSBEACH#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe the Frog character sitting pensively by a campfire in a rocky, desert-like landscape. In the background, a grand stone formation resembling a face is \"crying\" waterfalls under a starry sky with a bright moon and shooting star. The color palette blends warm earth tones with the cool blues and purples of the night sky, creating a serene yet melancholic atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Iconic Pepe the Frog imagery, a staple of meme culture.\n- The crying stone face is reminiscent of classic Pepe sadness memes.\n- The campfire is a nod to introspective, late-night crypto chats.\n- Celestial elements like the moon and shooting star evoke cosmic vibes tied to the crypto universe.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.093Z",
+  "sourceFactVersion": 1
+}

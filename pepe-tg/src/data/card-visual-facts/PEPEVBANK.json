@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "asset": "PEPEVBANK",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 26,
+  "artist": "JOE ATANG",
+  "supply": 36,
+  "issuance": "March 2023",
+  "textOnCard": [
+    "PEPEVALLEYBANK",
+    "EST 2016, IN PEPE WE TRUST",
+    "Welcome to SILICON VALLEY, CALIFORNIA"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog iconography.",
+    "Reference to Silicon Valley, hinting at tech and financial culture.",
+    "\"In Pepe We Trust\" plays on \"In God We Trust,\" merging financial themes with meme culture.",
+    "Crypto and NFT culture nod with bank and trust elements."
+  ],
+  "visualSummary": "The card features a green, frog-themed safe with a wide-eyed, open-mouthed Pepe face. A \"Welcome to Silicon Valley\" sign is being devoured by the safe. The background is a vibrant mix of pink and green stripes, with images of the card repeated on top.",
+  "visualSummaryShort": "The card showcases a green frog-themed safe with a Pepe face, set against a vibrant pink and green striped background. A sign reading 'Welcome to Silicon Valley' is being consumed by the safe.",
+  "visualKeywords": [
+    "frog",
+    "safe",
+    "pepe",
+    "pink stripes",
+    "green stripes",
+    "sign",
+    "vibrant",
+    "wide-eyed",
+    "open-mouthed"
+  ],
+  "textKeywords": [
+    "pepevalleybank",
+    "est",
+    "2016",
+    "trust",
+    "welcome",
+    "silicon",
+    "valley",
+    "california"
+  ],
+  "keywords": [
+    "frog",
+    "safe",
+    "pepe",
+    "pink stripes",
+    "green stripes",
+    "sign",
+    "vibrant",
+    "wide-eyed",
+    "open-mouthed",
+    "pepevalleybank",
+    "est",
+    "2016",
+    "trust",
+    "welcome",
+    "silicon",
+    "valley",
+    "california"
+  ],
+  "embeddingInput": "PEPEVBANK (Fake Rares) - Series 14 Card 26\nArtist: JOE ATANG\nSupply 36 Issued March 2023\nOn-card text: PEPEVALLEYBANK | EST 2016, IN PEPE WE TRUST | Welcome to SILICON VALLEY, CALIFORNIA\nVisual summary: The card features a green, frog-themed safe with a wide-eyed, open-mouthed Pepe face. A \"Welcome to Silicon Valley\" sign is being devoured by the safe. The background is a vibrant mix of pink and green stripes, with images of the card repeated on top.\nMemetic references: Pepe the Frog iconography.; Reference to Silicon Valley, hinting at tech and financial culture.; \"In Pepe We Trust\" plays on \"In God We Trust,\" merging financial themes with meme culture.; Crypto and NFT culture nod with bank and trust elements.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEVBANK#text",
+      "label": "On-card text",
+      "text": "PEPEVALLEYBANK | EST 2016, IN PEPE WE TRUST | Welcome to SILICON VALLEY, CALIFORNIA",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEVBANK#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog iconography.\nReference to Silicon Valley, hinting at tech and financial culture.\n\"In Pepe We Trust\" plays on \"In God We Trust,\" merging financial themes with meme culture.\nCrypto and NFT culture nod with bank and trust elements.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEVBANK#visual",
+      "label": "Visual summary",
+      "text": "The card features a green, frog-themed safe with a wide-eyed, open-mouthed Pepe face. A \"Welcome to Silicon Valley\" sign is being devoured by the safe. The background is a vibrant mix of pink and green stripes, with images of the card repeated on top.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEVBANK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- PEPEVALLEYBANK\n- EST 2016, IN PEPE WE TRUST\n- Welcome to SILICON VALLEY, CALIFORNIA\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a green, frog-themed safe with a wide-eyed, open-mouthed Pepe face. A \"Welcome to Silicon Valley\" sign is being devoured by the safe. The background is a vibrant mix of pink and green stripes, with images of the card repeated on top.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog iconography.\n- Reference to Silicon Valley, hinting at tech and financial culture.\n- \"In Pepe We Trust\" plays on \"In God We Trust,\" merging financial themes with meme culture.\n- Crypto and NFT culture nod with bank and trust elements.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.008Z",
+  "sourceFactVersion": 1
+}

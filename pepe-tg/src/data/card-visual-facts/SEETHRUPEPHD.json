@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "asset": "SEETHRUPEPHD",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 6,
+  "artist": "ParisianForge",
+  "supply": 101,
+  "issuance": "September 2021",
+  "textOnCard": [
+    "SEETHRUPEPE HD",
+    "PEPE IS SEE THRU",
+    "PEPE SEES THRU ALL",
+    "RARITY 1",
+    "101",
+    "PARISIANFORGE© 2018-2021"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference.",
+    "\"See-thru\" concept plays on transparency and insight, common themes in crypto culture.",
+    "Use of holographic visuals references collectible card games and rare trading cards.",
+    "The phrase \"Pepe sees thru all\" hints at Pepe's omnipresence in meme culture."
+  ],
+  "visualSummary": "The card features a holographic effect with a central image of Pepe the Frog rendered in a transparent, almost ghostly style. The color palette is dominated by greens and whites, with a reflective sheen that gives it a high-definition, digital appearance. The card's border and text sections have a metallic, futuristic look, enhancing the overall sci-fi vibe.",
+  "visualSummaryShort": "The card showcases a holographic Pepe the Frog in a ghostly style, surrounded by a green and white color palette. Its metallic border and text contribute to a futuristic, sci-fi aesthetic.",
+  "visualKeywords": [
+    "holographic",
+    "pepe the frog",
+    "green",
+    "white",
+    "reflective",
+    "metallic",
+    "futuristic",
+    "digital",
+    "transparent",
+    "ghostly"
+  ],
+  "textKeywords": [
+    "seethrupepe",
+    "see",
+    "thru",
+    "sees",
+    "all",
+    "rarity",
+    "101",
+    "parisianforge",
+    "2018",
+    "2021"
+  ],
+  "keywords": [
+    "holographic",
+    "pepe the frog",
+    "green",
+    "white",
+    "reflective",
+    "metallic",
+    "futuristic",
+    "digital",
+    "transparent",
+    "ghostly",
+    "seethrupepe",
+    "see",
+    "thru",
+    "sees",
+    "all",
+    "rarity",
+    "101",
+    "parisianforge",
+    "2018",
+    "2021"
+  ],
+  "embeddingInput": "SEETHRUPEPHD (Fake Rares) - Series 1 Card 6\nArtist: ParisianForge\nSupply 101 Issued September 2021\nOn-card text: SEETHRUPEPE HD | PEPE IS SEE THRU | PEPE SEES THRU ALL | RARITY 1 | 101 | PARISIANFORGE© 2018-2021\nVisual summary: The card features a holographic effect with a central image of Pepe the Frog rendered in a transparent, almost ghostly style. The color palette is dominated by greens and whites, with a reflective sheen that gives it a high-definition, digital appearance. The card's border and text sections have a metallic, futuristic look, enhancing the overall sci-fi vibe.\nMemetic references: Classic Pepe the Frog reference.; \"See-thru\" concept plays on transparency and insight, common themes in crypto culture.; Use of holographic visuals references collectible card games and rare trading cards.; The phrase \"Pepe sees thru all\" hints at Pepe's omnipresence in meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "SEETHRUPEPHD#text",
+      "label": "On-card text",
+      "text": "SEETHRUPEPE HD | PEPE IS SEE THRU | PEPE SEES THRU ALL | RARITY 1 | 101 | PARISIANFORGE© 2018-2021",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "SEETHRUPEPHD#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference.\n\"See-thru\" concept plays on transparency and insight, common themes in crypto culture.\nUse of holographic visuals references collectible card games and rare trading cards.\nThe phrase \"Pepe sees thru all\" hints at Pepe's omnipresence in meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SEETHRUPEPHD#visual",
+      "label": "Visual summary",
+      "text": "The card features a holographic effect with a central image of Pepe the Frog rendered in a transparent, almost ghostly style. The color palette is dominated by greens and whites, with a reflective sheen that gives it a high-definition, digital appearance. The card's border and text sections have a metallic, futuristic look, enhancing the overall sci-fi vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SEETHRUPEPHD#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nSEETHRUPEPE HD  \nPEPE IS SEE THRU  \nPEPE SEES THRU ALL  \nRARITY 1/101  \nPARISIANFORGE© 2018-2021\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a holographic effect with a central image of Pepe the Frog rendered in a transparent, almost ghostly style. The color palette is dominated by greens and whites, with a reflective sheen that gives it a high-definition, digital appearance. The card's border and text sections have a metallic, futuristic look, enhancing the overall sci-fi vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference.\n- \"See-thru\" concept plays on transparency and insight, common themes in crypto culture.\n- Use of holographic visuals references collectible card games and rare trading cards.\n- The phrase \"Pepe sees thru all\" hints at Pepe's omnipresence in meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.105Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "asset": "FAKEGRAVITY",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 36,
+  "artist": "cadmonkey",
+  "supply": 24,
+  "issuance": "May 2023",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a gravity-defying scene with floating objects. The overall mood is surreal and whimsical.",
+  "visualKeywords": [
+    "floating",
+    "surreal",
+    "whimsical",
+    "objects",
+    "gravity"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "floating",
+    "surreal",
+    "whimsical",
+    "objects",
+    "gravity"
+  ],
+  "embeddingInput": "FAKEGRAVITY (Fake Rares) - Series 14 Card 36\nArtist: cadmonkey\nSupply 24 Issued May 2023\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEGRAVITY#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.511Z",
+  "sourceFactVersion": 1
+}

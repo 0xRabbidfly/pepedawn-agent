@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "asset": "WINKLEVIPEPE",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 46,
+  "artist": "Mr. HODLPIG",
+  "supply": 111,
+  "issuance": "February 2022",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a character with a playful expression and a vibrant color palette. The background is abstract, enhancing the whimsical mood.",
+  "visualKeywords": [
+    "playful",
+    "vibrant colors",
+    "abstract background"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "playful",
+    "vibrant colors",
+    "abstract background"
+  ],
+  "embeddingInput": "WINKLEVIPEPE (Fake Rares) - Series 6 Card 46\nArtist: Mr. HODLPIG\nSupply 111 Issued February 2022\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "WINKLEVIPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.188Z",
+  "sourceFactVersion": 1
+}

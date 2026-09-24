@@ -1,0 +1,120 @@
+{
+  "version": 1,
+  "asset": "WETHEPEPE",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 21,
+  "artist": "GMONEY",
+  "supply": 111,
+  "issuance": "April 2022",
+  "textOnCard": [
+    "WE THE PEPE",
+    "UNITED FROGS OF PEPE",
+    "Establish KEK's",
+    "Insure PEPE dankness",
+    "Form a more perfect PEPE",
+    "Provide for common defence of PEPE",
+    "Promote the general welfare of PEPE",
+    "Secure the blessings of liberty for PEPE"
+  ],
+  "memeticReferences": [
+    "References to Pepe the Frog, a staple in meme culture.",
+    "\"We the Pepe\" plays on the U.S. Constitution's \"We the People\" preamble.",
+    "Mention of \"KEK,\" a nod to the online culture and meme magic.",
+    "Historical American Revolution imagery fused with crypto-meme culture."
+  ],
+  "visualSummary": "The card features a group of frog-like figures dressed in historical military uniforms, reminiscent of American Revolutionary War soldiers. The color palette includes earthy tones with greens and browns dominating the scene. The style is a playful twist on historical paintings, blending classic imagery with the iconic Pepe the Frog character.",
+  "visualSummaryShort": "The card showcases frog-like figures in historical military attire, set against an earthy color palette. The playful blend of classic imagery with Pepe the Frog creates a whimsical atmosphere.",
+  "visualKeywords": [
+    "frogs",
+    "military",
+    "historical",
+    "earthy tones",
+    "green",
+    "brown",
+    "playful",
+    "uniforms",
+    "iconic",
+    "scene"
+  ],
+  "textKeywords": [
+    "united",
+    "frogs",
+    "establish",
+    "kek",
+    "insure",
+    "dankness",
+    "form",
+    "perfect",
+    "provide",
+    "common",
+    "defence",
+    "promote",
+    "general",
+    "welfare",
+    "secure",
+    "blessings",
+    "liberty"
+  ],
+  "keywords": [
+    "frogs",
+    "military",
+    "historical",
+    "earthy tones",
+    "green",
+    "brown",
+    "playful",
+    "uniforms",
+    "iconic",
+    "scene",
+    "united",
+    "establish",
+    "kek",
+    "insure",
+    "dankness",
+    "form",
+    "perfect",
+    "provide",
+    "common",
+    "defence",
+    "promote",
+    "general",
+    "welfare",
+    "secure",
+    "blessings",
+    "liberty"
+  ],
+  "embeddingInput": "WETHEPEPE (Fake Rares) - Series 10 Card 21\nArtist: GMONEY\nSupply 111 Issued April 2022\nOn-card text: WE THE PEPE | UNITED FROGS OF PEPE | Establish KEK's | Insure PEPE dankness | Form a more perfect PEPE | Provide for common defence of PEPE | Promote the general welfare of PEPE | Secure the blessings of liberty for PEPE\nVisual summary: The card features a group of frog-like figures dressed in historical military uniforms, reminiscent of American Revolutionary War soldiers. The color palette includes earthy tones with greens and browns dominating the scene. The style is a playful twist on historical paintings, blending classic imagery with the iconic Pepe the Frog character.\nMemetic references: References to Pepe the Frog, a staple in meme culture.; \"We the Pepe\" plays on the U.S. Constitution's \"We the People\" preamble.; Mention of \"KEK,\" a nod to the online culture and meme magic.; Historical American Revolution imagery fused with crypto-meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "WETHEPEPE#text",
+      "label": "On-card text",
+      "text": "WE THE PEPE | UNITED FROGS OF PEPE | Establish KEK's | Insure PEPE dankness | Form a more perfect PEPE | Provide for common defence of PEPE | Promote the general welfare of PEPE | Secure the blessings of liberty for PEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "WETHEPEPE#memetic",
+      "label": "Memetic references",
+      "text": "References to Pepe the Frog, a staple in meme culture.\n\"We the Pepe\" plays on the U.S. Constitution's \"We the People\" preamble.\nMention of \"KEK,\" a nod to the online culture and meme magic.\nHistorical American Revolution imagery fused with crypto-meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "WETHEPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a group of frog-like figures dressed in historical military uniforms, reminiscent of American Revolutionary War soldiers. The color palette includes earthy tones with greens and browns dominating the scene. The style is a playful twist on historical paintings, blending classic imagery with the iconic Pepe the Frog character.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "WETHEPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nWE THE PEPE  \nUNITED FROGS OF PEPE  \nEstablish KEK's  \nInsure PEPE dankness  \nForm a more perfect PEPE  \nProvide for common defence of PEPE  \nPromote the general welfare of PEPE  \nSecure the blessings of liberty for PEPE  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a group of frog-like figures dressed in historical military uniforms, reminiscent of American Revolutionary War soldiers. The color palette includes earthy tones with greens and browns dominating the scene. The style is a playful twist on historical paintings, blending classic imagery with the iconic Pepe the Frog character.\n\n🧬 **MEMETIC DNA:**\n- References to Pepe the Frog, a staple in meme culture.\n- \"We the Pepe\" plays on the U.S. Constitution's \"We the People\" preamble.\n- Mention of \"KEK,\" a nod to the online culture and meme magic.\n- Historical American Revolution imagery fused with crypto-meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.184Z",
+  "sourceFactVersion": 1
+}

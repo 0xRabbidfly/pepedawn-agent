@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "asset": "PEPEMORPHER",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 40,
+  "artist": "Crypsi",
+  "supply": 44,
+  "issuance": "February 2023",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a character with a unique morphing design. The visual elements suggest a playful and whimsical atmosphere.",
+  "visualKeywords": [
+    "morphing",
+    "character",
+    "playful",
+    "whimsical"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "morphing",
+    "character",
+    "playful",
+    "whimsical"
+  ],
+  "embeddingInput": "PEPEMORPHER (Fake Rares) - Series 13 Card 40\nArtist: Crypsi\nSupply 44 Issued February 2023\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEMORPHER#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with this request.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.930Z",
+  "sourceFactVersion": 1
+}

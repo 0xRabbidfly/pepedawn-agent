@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "asset": "MCAMOTO",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 11,
+  "artist": "Mr Hansel",
+  "supply": 100,
+  "issuance": "January 2023",
+  "textOnCard": [
+    "MC amoto Card. Activate Bear Market contingency plan. HODL to next Bull Run. Resilience Score 9.7."
+  ],
+  "memeticReferences": [
+    "Ronald McDonald as a crypto trader.",
+    "References to HODL culture and bear market strategies.",
+    "\"C'est la Vie\" nods to acceptance and resilience in market downturns.",
+    "Crypto math humor with \"BTC = ATL\" and infinite burger symbols."
+  ],
+  "visualSummary": "This card features a caricature of Ronald McDonald with a serious expression, donning a red wig and glasses. The background shows a McDonald's-style logo with \"C'est la Vie\" written beneath it, blending fast-food imagery with a muted grayscale cityscape. The card uses a mix of bold reds, yellows, and whites, creating a retro-futuristic vibe.",
+  "visualSummaryShort": "The card showcases a caricature of Ronald McDonald with a serious expression against a muted cityscape. It features bold colors and a retro-futuristic vibe, blending fast-food imagery with urban elements.",
+  "visualKeywords": [
+    "ronald mcdonald",
+    "serious expression",
+    "red wig",
+    "glasses",
+    "grayscale",
+    "cityscape",
+    "bold colors",
+    "retro-futuristic",
+    "fast-food",
+    "logo"
+  ],
+  "textKeywords": [
+    "amoto",
+    "activate",
+    "bear",
+    "market",
+    "contingency",
+    "plan",
+    "hodl",
+    "next",
+    "bull",
+    "run",
+    "resilience",
+    "score"
+  ],
+  "keywords": [
+    "ronald mcdonald",
+    "serious expression",
+    "red wig",
+    "glasses",
+    "grayscale",
+    "cityscape",
+    "bold colors",
+    "retro-futuristic",
+    "fast-food",
+    "logo",
+    "amoto",
+    "activate",
+    "bear",
+    "market",
+    "contingency",
+    "plan",
+    "hodl",
+    "next",
+    "bull",
+    "run",
+    "resilience",
+    "score"
+  ],
+  "embeddingInput": "MCAMOTO (Fake Rares) - Series 13 Card 11\nArtist: Mr Hansel\nSupply 100 Issued January 2023\nOn-card text: MC amoto Card. Activate Bear Market contingency plan. HODL to next Bull Run. Resilience Score 9.7.\nVisual summary: This card features a caricature of Ronald McDonald with a serious expression, donning a red wig and glasses. The background shows a McDonald's-style logo with \"C'est la Vie\" written beneath it, blending fast-food imagery with a muted grayscale cityscape. The card uses a mix of bold reds, yellows, and whites, creating a retro-futuristic vibe.\nMemetic references: Ronald McDonald as a crypto trader.; References to HODL culture and bear market strategies.; \"C'est la Vie\" nods to acceptance and resilience in market downturns.; Crypto math humor with \"BTC = ATL\" and infinite burger symbols.",
+  "embeddingBlocks": [
+    {
+      "id": "MCAMOTO#text",
+      "label": "On-card text",
+      "text": "MC amoto Card. Activate Bear Market contingency plan. HODL to next Bull Run. Resilience Score 9.7.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MCAMOTO#memetic",
+      "label": "Memetic references",
+      "text": "Ronald McDonald as a crypto trader.\nReferences to HODL culture and bear market strategies.\n\"C'est la Vie\" nods to acceptance and resilience in market downturns.\nCrypto math humor with \"BTC = ATL\" and infinite burger symbols.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MCAMOTO#visual",
+      "label": "Visual summary",
+      "text": "This card features a caricature of Ronald McDonald with a serious expression, donning a red wig and glasses. The background shows a McDonald's-style logo with \"C'est la Vie\" written beneath it, blending fast-food imagery with a muted grayscale cityscape. The card uses a mix of bold reds, yellows, and whites, creating a retro-futuristic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MCAMOTO#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nMC amoto Card. Activate Bear Market contingency plan. HODL to next Bull Run. Resilience Score 9.7.\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a caricature of Ronald McDonald with a serious expression, donning a red wig and glasses. The background shows a McDonald's-style logo with \"C'est la Vie\" written beneath it, blending fast-food imagery with a muted grayscale cityscape. The card uses a mix of bold reds, yellows, and whites, creating a retro-futuristic vibe.\n\n🧬 **MEMETIC DNA:**\n- Ronald McDonald as a crypto trader.\n- References to HODL culture and bear market strategies.\n- \"C'est la Vie\" nods to acceptance and resilience in market downturns.\n- Crypto math humor with \"BTC = ATL\" and infinite burger symbols.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.764Z",
+  "sourceFactVersion": 1
+}

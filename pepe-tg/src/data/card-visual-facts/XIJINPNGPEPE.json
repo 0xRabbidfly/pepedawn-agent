@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "asset": "XIJINPNGPEPE",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 35,
+  "artist": "Lord Jamie V. Shill",
+  "supply": 35,
+  "issuance": "October 2023",
+  "textOnCard": [
+    "XIJINPNGPEPE",
+    "#1 in series of 5 Xi JinPing RARE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog meme reference.",
+    "Cultural nod to political figures.",
+    "Plays on the iconic seated portrait style.",
+    "Mix of serious and absurd elements typical in meme culture."
+  ],
+  "visualSummary": "The card features a grayscale, formal portrait of a suited figure sitting on an ornate chair, with distinct green skin and Pepe-like facial features. The composition combines realistic elements with cartoonish aspects, highlighting the contrast between the serious attire and the meme-inspired face. The color palette is mostly black and white, with striking green and red accents drawing attention to the Pepe transformation.",
+  "visualSummaryShort": "The card showcases a grayscale portrait of a suited figure with green skin and Pepe-like features, seated on an ornate chair. The contrast between the formal attire and cartoonish face is emphasized by a black and white palette with green and red accents.",
+  "visualKeywords": [
+    "grayscale",
+    "suit",
+    "green skin",
+    "pepe",
+    "ornate chair",
+    "black and white",
+    "red accents",
+    "formal",
+    "cartoonish",
+    "portrait"
+  ],
+  "textKeywords": [
+    "xijinpngpepe",
+    "series",
+    "jinping"
+  ],
+  "keywords": [
+    "grayscale",
+    "suit",
+    "green skin",
+    "pepe",
+    "ornate chair",
+    "black and white",
+    "red accents",
+    "formal",
+    "cartoonish",
+    "portrait",
+    "xijinpngpepe",
+    "series",
+    "jinping"
+  ],
+  "embeddingInput": "XIJINPNGPEPE (Fake Rares) - Series 16 Card 35\nArtist: Lord Jamie V. Shill\nSupply 35 Issued October 2023\nOn-card text: XIJINPNGPEPE | #1 in series of 5 Xi JinPing RARE\nVisual summary: The card features a grayscale, formal portrait of a suited figure sitting on an ornate chair, with distinct green skin and Pepe-like facial features. The composition combines realistic elements with cartoonish aspects, highlighting the contrast between the serious attire and the meme-inspired face. The color palette is mostly black and white, with striking green and red accents drawing attention to the Pepe transformation.\nMemetic references: Pepe the Frog meme reference.; Cultural nod to political figures.; Plays on the iconic seated portrait style.; Mix of serious and absurd elements typical in meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "XIJINPNGPEPE#text",
+      "label": "On-card text",
+      "text": "XIJINPNGPEPE | #1 in series of 5 Xi JinPing RARE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "XIJINPNGPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog meme reference.\nCultural nod to political figures.\nPlays on the iconic seated portrait style.\nMix of serious and absurd elements typical in meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "XIJINPNGPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a grayscale, formal portrait of a suited figure sitting on an ornate chair, with distinct green skin and Pepe-like facial features. The composition combines realistic elements with cartoonish aspects, highlighting the contrast between the serious attire and the meme-inspired face. The color palette is mostly black and white, with striking green and red accents drawing attention to the Pepe transformation.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "XIJINPNGPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nXIJINPNGPEPE  \n#1 in series of 5 Xi JinPing RARE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a grayscale, formal portrait of a suited figure sitting on an ornate chair, with distinct green skin and Pepe-like facial features. The composition combines realistic elements with cartoonish aspects, highlighting the contrast between the serious attire and the meme-inspired face. The color palette is mostly black and white, with striking green and red accents drawing attention to the Pepe transformation.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog meme reference.\n- Cultural nod to political figures.\n- Plays on the iconic seated portrait style.\n- Mix of serious and absurd elements typical in meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.194Z",
+  "sourceFactVersion": 1
+}

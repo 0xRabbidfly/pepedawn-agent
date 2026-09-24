@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "DGAPEPE",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 23,
+  "artist": "Digital Ape",
+  "supply": 78,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "P.T. THE EXTRA-TERRESTRIAL",
+    "PEPE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a cultural meme icon.",
+    "Reference to the classic \"E.T. the Extra-Terrestrial\" film.",
+    "Playful twist on pop culture by integrating meme culture with cinema."
+  ],
+  "visualSummary": "This card features a parody of the iconic \"E.T. the Extra-Terrestrial\" movie poster, with Pepe the Frog replacing both E.T. and the child. The color palette includes blues and reds, with a grainy, vintage filter that mimics an old movie poster. The style is humorous and nostalgic, leveraging the classic 80s film vibe.",
+  "visualSummaryShort": "The card parodies the classic 'E.T. the Extra-Terrestrial' movie poster, featuring Pepe the Frog in place of the original characters. It has a grainy, vintage look with a color palette of blues and reds, evoking a humorous and nostalgic 80s vibe.",
+  "visualKeywords": [
+    "pepe",
+    "parody",
+    "vintage",
+    "blue",
+    "red",
+    "humorous",
+    "80s",
+    "movie poster"
+  ],
+  "textKeywords": [
+    "extra",
+    "terrestrial"
+  ],
+  "keywords": [
+    "pepe",
+    "parody",
+    "vintage",
+    "blue",
+    "red",
+    "humorous",
+    "80s",
+    "movie poster",
+    "extra",
+    "terrestrial"
+  ],
+  "embeddingInput": "DGAPEPE (Fake Rares) - Series 6 Card 23\nArtist: Digital Ape\nSupply 78 Issued February 2022\nOn-card text: P.T. THE EXTRA-TERRESTRIAL | PEPE\nVisual summary: This card features a parody of the iconic \"E.T. the Extra-Terrestrial\" movie poster, with Pepe the Frog replacing both E.T. and the child. The color palette includes blues and reds, with a grainy, vintage filter that mimics an old movie poster. The style is humorous and nostalgic, leveraging the classic 80s film vibe.\nMemetic references: Pepe the Frog as a cultural meme icon.; Reference to the classic \"E.T. the Extra-Terrestrial\" film.; Playful twist on pop culture by integrating meme culture with cinema.",
+  "embeddingBlocks": [
+    {
+      "id": "DGAPEPE#text",
+      "label": "On-card text",
+      "text": "P.T. THE EXTRA-TERRESTRIAL | PEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "DGAPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a cultural meme icon.\nReference to the classic \"E.T. the Extra-Terrestrial\" film.\nPlayful twist on pop culture by integrating meme culture with cinema.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "DGAPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a parody of the iconic \"E.T. the Extra-Terrestrial\" movie poster, with Pepe the Frog replacing both E.T. and the child. The color palette includes blues and reds, with a grainy, vintage filter that mimics an old movie poster. The style is humorous and nostalgic, leveraging the classic 80s film vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "DGAPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nP.T. THE EXTRA-TERRESTRIAL  \nPEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a parody of the iconic \"E.T. the Extra-Terrestrial\" movie poster, with Pepe the Frog replacing both E.T. and the child. The color palette includes blues and reds, with a grainy, vintage filter that mimics an old movie poster. The style is humorous and nostalgic, leveraging the classic 80s film vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a cultural meme icon.\n- Reference to the classic \"E.T. the Extra-Terrestrial\" film.\n- Playful twist on pop culture by integrating meme culture with cinema.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.393Z",
+  "sourceFactVersion": 1
+}

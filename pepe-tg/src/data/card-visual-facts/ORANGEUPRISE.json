@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "asset": "ORANGEUPRISE",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 50,
+  "artist": "Pepenardo",
+  "supply": 45,
+  "issuance": "September 2023",
+  "textOnCard": [
+    "ORANGEUPRISE"
+  ],
+  "memeticReferences": [
+    "Guy Fawkes mask, symbolizing anonymity and hacktivism.",
+    "Pepe the Frog subtly integrated as a symbol of internet culture.",
+    "Revolutionary imagery hinting at themes of uprising and change.",
+    "Reference to Anonymous and crypto-libertarian ideals."
+  ],
+  "visualSummary": "The card features a figure in an orange suit and a Guy Fawkes mask, seated on a luxurious chair. The background includes a classic painting with revolutionary imagery, draped with rich red curtains. A subtle, muted color palette with pops of orange and green adds to the dramatic and mysterious atmosphere.",
+  "visualSummaryShort": "The card depicts a figure in an orange suit and a Guy Fawkes mask, seated on an opulent chair. The background features a classic painting and rich red curtains, creating a dramatic atmosphere.",
+  "visualKeywords": [
+    "orange suit",
+    "guy fawkes mask",
+    "luxurious chair",
+    "classic painting",
+    "red curtains",
+    "muted colors",
+    "dramatic",
+    "mysterious"
+  ],
+  "textKeywords": [
+    "orangeuprise"
+  ],
+  "keywords": [
+    "orange suit",
+    "guy fawkes mask",
+    "luxurious chair",
+    "classic painting",
+    "red curtains",
+    "muted colors",
+    "dramatic",
+    "mysterious",
+    "orangeuprise"
+  ],
+  "embeddingInput": "ORANGEUPRISE (Fake Rares) - Series 15 Card 50\nArtist: Pepenardo\nSupply 45 Issued September 2023\nOn-card text: ORANGEUPRISE\nVisual summary: The card features a figure in an orange suit and a Guy Fawkes mask, seated on a luxurious chair. The background includes a classic painting with revolutionary imagery, draped with rich red curtains. A subtle, muted color palette with pops of orange and green adds to the dramatic and mysterious atmosphere.\nMemetic references: Guy Fawkes mask, symbolizing anonymity and hacktivism.; Pepe the Frog subtly integrated as a symbol of internet culture.; Revolutionary imagery hinting at themes of uprising and change.; Reference to Anonymous and crypto-libertarian ideals.",
+  "embeddingBlocks": [
+    {
+      "id": "ORANGEUPRISE#text",
+      "label": "On-card text",
+      "text": "ORANGEUPRISE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "ORANGEUPRISE#memetic",
+      "label": "Memetic references",
+      "text": "Guy Fawkes mask, symbolizing anonymity and hacktivism.\nPepe the Frog subtly integrated as a symbol of internet culture.\nRevolutionary imagery hinting at themes of uprising and change.\nReference to Anonymous and crypto-libertarian ideals.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "ORANGEUPRISE#visual",
+      "label": "Visual summary",
+      "text": "The card features a figure in an orange suit and a Guy Fawkes mask, seated on a luxurious chair. The background includes a classic painting with revolutionary imagery, draped with rich red curtains. A subtle, muted color palette with pops of orange and green adds to the dramatic and mysterious atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "ORANGEUPRISE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nORANGEUPRISE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a figure in an orange suit and a Guy Fawkes mask, seated on a luxurious chair. The background includes a classic painting with revolutionary imagery, draped with rich red curtains. A subtle, muted color palette with pops of orange and green adds to the dramatic and mysterious atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Guy Fawkes mask, symbolizing anonymity and hacktivism.\n- Pepe the Frog subtly integrated as a symbol of internet culture.\n- Revolutionary imagery hinting at themes of uprising and change.\n- Reference to Anonymous and crypto-libertarian ideals.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.816Z",
+  "sourceFactVersion": 1
+}

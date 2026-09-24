@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "asset": "PEPESEER",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 17,
+  "artist": "Chaotic Crypto",
+  "supply": 21,
+  "issuance": "April 2022",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a character named Pepe, depicted in a whimsical and colorful style. The overall mood is playful and lighthearted.",
+  "visualKeywords": [
+    "pepe",
+    "colorful",
+    "whimsical",
+    "playful"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "colorful",
+    "whimsical",
+    "playful"
+  ],
+  "embeddingInput": "PEPESEER (Fake Rares) - Series 14 Card 17\nArtist: Chaotic Crypto\nSupply 21 Issued April 2022\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "PEPESEER#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't help with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.972Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "asset": "EMERGINGPEPE",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 14,
+  "artist": "Michael Naples",
+  "supply": 50,
+  "issuance": "July 2023",
+  "textOnCard": [
+    "NAPLES"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference.",
+    "Breaking through the surface symbolizes emergence or revelation.",
+    "The eye suggests vigilance or curiosity."
+  ],
+  "visualSummary": "The artwork features Pepe the Frog peeking through a torn orange surface, with his eye and fingers visible. The color palette is vibrant, with the bold green of Pepe contrasting sharply against the bright orange background. The style is painterly, with textured brushstrokes giving a sense of dimensionality and depth.",
+  "visualSummaryShort": "The card showcases Pepe the Frog peeking through a vibrant torn orange surface. The bold green of Pepe contrasts with the bright background, creating a striking visual effect.",
+  "visualKeywords": [
+    "pepe the frog",
+    "orange",
+    "green",
+    "textured",
+    "vibrant",
+    "dimensionality",
+    "painterly"
+  ],
+  "textKeywords": [
+    "naples"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "orange",
+    "green",
+    "textured",
+    "vibrant",
+    "dimensionality",
+    "painterly",
+    "naples"
+  ],
+  "embeddingInput": "EMERGINGPEPE (Fake Rares) - Series 15 Card 14\nArtist: Michael Naples\nSupply 50 Issued July 2023\nOn-card text: NAPLES\nVisual summary: The artwork features Pepe the Frog peeking through a torn orange surface, with his eye and fingers visible. The color palette is vibrant, with the bold green of Pepe contrasting sharply against the bright orange background. The style is painterly, with textured brushstrokes giving a sense of dimensionality and depth.\nMemetic references: Classic Pepe the Frog reference.; Breaking through the surface symbolizes emergence or revelation.; The eye suggests vigilance or curiosity.",
+  "embeddingBlocks": [
+    {
+      "id": "EMERGINGPEPE#text",
+      "label": "On-card text",
+      "text": "NAPLES",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "EMERGINGPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference.\nBreaking through the surface symbolizes emergence or revelation.\nThe eye suggests vigilance or curiosity.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "EMERGINGPEPE#visual",
+      "label": "Visual summary",
+      "text": "The artwork features Pepe the Frog peeking through a torn orange surface, with his eye and fingers visible. The color palette is vibrant, with the bold green of Pepe contrasting sharply against the bright orange background. The style is painterly, with textured brushstrokes giving a sense of dimensionality and depth.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "EMERGINGPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nNAPLES\n\n🎨 **VISUAL BREAKDOWN:**\nThe artwork features Pepe the Frog peeking through a torn orange surface, with his eye and fingers visible. The color palette is vibrant, with the bold green of Pepe contrasting sharply against the bright orange background. The style is painterly, with textured brushstrokes giving a sense of dimensionality and depth.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference.\n- Breaking through the surface symbolizes emergence or revelation.\n- The eye suggests vigilance or curiosity.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.425Z",
+  "sourceFactVersion": 1
+}

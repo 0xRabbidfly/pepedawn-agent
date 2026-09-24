@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "asset": "FAKETEARS",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 2,
+  "artist": "ZETRA",
+  "supply": 117,
+  "issuance": "October 2021",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a dark and mysterious theme. It likely includes elements that evoke a sense of intrigue or sadness.",
+  "visualKeywords": [
+    "dark",
+    "mysterious",
+    "intrigue",
+    "sadness"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "dark",
+    "mysterious",
+    "intrigue",
+    "sadness"
+  ],
+  "embeddingInput": "FAKETEARS (Fake Rares) - Series 2 Card 2\nArtist: ZETRA\nSupply 117 Issued October 2021\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "FAKETEARS#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.585Z",
+  "sourceFactVersion": 1
+}

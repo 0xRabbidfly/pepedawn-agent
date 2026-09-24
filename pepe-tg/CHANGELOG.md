@@ -62,9 +62,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   now compares records instead of grepping for added `"asset"` lines, which
   missed every artist or release edit.
 
+- **The vision pass runs itself, and its facts live in the repo.** 39 live
+  cards had never been looked at - the newest Series 18, the cards the
+  directory added, and ten MP4s that had no still to show the model - so
+  "which fake is the most red" and lore recall could not see them. The
+  by-hand five-script pipeline is now one script, `scripts/fv-backfill.ts`,
+  that looks at every live card without a fact file (an MP4 uses its scraped
+  still or the directory's), runs daily from the update workflow after the
+  sync, and commits `src/data/card-visual-facts/<ASSET>.json` plus the
+  card's keywords in `card-visual-traits.json`. The 875 facts from the first
+  pass are committed too, so the folder is the whole record.
+
+  The database is a per-environment copy of that folder: `CardFactsImportService`
+  imports at boot whatever this database lacks, checking by the same
+  deterministic ids the original import wrote, so prod's existing 875 are
+  recognised and not duplicated, and a boot with nothing new embeds nothing.
+  The nightly restart is what makes a fact committed by the daily run
+  recallable the next morning. `CARD_FACTS_IMPORT=off` skips it.
+
 ### Added
 
 - `docs/TODO.md` — the open work, in priority, with why each item matters.
+- `src/data/card-visual-facts/` — one file per card the vision pass has seen.
 
 ## [5.15.1] - 2026-09-23
 

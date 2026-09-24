@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "FAKESTREETS",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 22,
+  "artist": "ThePark x 80sKurtRussell",
+  "supply": 200,
+  "issuance": "December 2021",
+  "textOnCard": [
+    "F IS FOR FASHION"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog is the animated graffiti, nodding to his iconic status in meme culture.",
+    "The phrase “F IS FOR FASHION” parodies both the traditional fashion world and the irreverent nature of crypto culture.",
+    "References to urban street art culture, blending seamlessly with NFT aesthetics."
+  ],
+  "visualSummary": "This card features a stylized urban building facade with a classic New York vibe, complete with a fire escape and intricate window designs. The color palette is muted, featuring browns and grays that evoke a nighttime city scene. A graffiti-like animation on the building's roller door adds a dynamic element, and a subtle streetlight glow enhances the nocturnal atmosphere.",
+  "visualSummaryShort": "The card showcases a stylized urban building facade with a classic New York vibe, featuring a fire escape and intricate window designs. The muted color palette and subtle streetlight glow create a nighttime city atmosphere.",
+  "visualKeywords": [
+    "urban",
+    "building",
+    "fire escape",
+    "graffiti",
+    "nighttime",
+    "brown",
+    "gray",
+    "streetlight",
+    "facade",
+    "window"
+  ],
+  "textKeywords": [
+    "fashion"
+  ],
+  "keywords": [
+    "urban",
+    "building",
+    "fire escape",
+    "graffiti",
+    "nighttime",
+    "brown",
+    "gray",
+    "streetlight",
+    "facade",
+    "window",
+    "fashion"
+  ],
+  "embeddingInput": "FAKESTREETS (Fake Rares) - Series 5 Card 22\nArtist: ThePark x 80sKurtRussell\nSupply 200 Issued December 2021\nOn-card text: F IS FOR FASHION\nVisual summary: This card features a stylized urban building facade with a classic New York vibe, complete with a fire escape and intricate window designs. The color palette is muted, featuring browns and grays that evoke a nighttime city scene. A graffiti-like animation on the building's roller door adds a dynamic element, and a subtle streetlight glow enhances the nocturnal atmosphere.\nMemetic references: Pepe the Frog is the animated graffiti, nodding to his iconic status in meme culture.; The phrase “F IS FOR FASHION” parodies both the traditional fashion world and the irreverent nature of crypto culture.; References to urban street art culture, blending seamlessly with NFT aesthetics.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKESTREETS#text",
+      "label": "On-card text",
+      "text": "F IS FOR FASHION",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKESTREETS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog is the animated graffiti, nodding to his iconic status in meme culture.\nThe phrase “F IS FOR FASHION” parodies both the traditional fashion world and the irreverent nature of crypto culture.\nReferences to urban street art culture, blending seamlessly with NFT aesthetics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKESTREETS#visual",
+      "label": "Visual summary",
+      "text": "This card features a stylized urban building facade with a classic New York vibe, complete with a fire escape and intricate window designs. The color palette is muted, featuring browns and grays that evoke a nighttime city scene. A graffiti-like animation on the building's roller door adds a dynamic element, and a subtle streetlight glow enhances the nocturnal atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKESTREETS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nF IS FOR FASHION\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a stylized urban building facade with a classic New York vibe, complete with a fire escape and intricate window designs. The color palette is muted, featuring browns and grays that evoke a nighttime city scene. A graffiti-like animation on the building's roller door adds a dynamic element, and a subtle streetlight glow enhances the nocturnal atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog is the animated graffiti, nodding to his iconic status in meme culture.\n- The phrase “F IS FOR FASHION” parodies both the traditional fashion world and the irreverent nature of crypto culture.\n- References to urban street art culture, blending seamlessly with NFT aesthetics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.580Z",
+  "sourceFactVersion": 1
+}

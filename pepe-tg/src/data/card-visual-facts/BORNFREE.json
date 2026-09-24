@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "BORNFREE",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 20,
+  "artist": "MIKEYCORTEZ",
+  "supply": 21,
+  "issuance": "October 2022",
+  "textOnCard": [
+    "BORN FREE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as the central figure, a staple in meme culture.",
+    "The motorcycle and desert setting channel the spirit of freedom and rebellion, reminiscent of classic biker culture.",
+    "\"BORN FREE\" text evokes themes of liberty and adventure."
+  ],
+  "visualSummary": "The card features a Pepe the Frog character riding a motorcycle down an open highway. The background showcases a desert landscape with iconic mesas under a clear blue sky. The color palette is earthy with muted browns, greens, and blues, giving it a classic Americana vibe.",
+  "visualSummaryShort": "The card depicts a Pepe the Frog character riding a motorcycle through a desert landscape. The scene is set under a clear blue sky, emphasizing a classic Americana vibe.",
+  "visualKeywords": [
+    "motorcycle",
+    "desert",
+    "mesa",
+    "blue sky",
+    "earthy colors",
+    "pepe the frog",
+    "open highway",
+    "americana"
+  ],
+  "textKeywords": [
+    "born",
+    "free"
+  ],
+  "keywords": [
+    "motorcycle",
+    "desert",
+    "mesa",
+    "blue sky",
+    "earthy colors",
+    "pepe the frog",
+    "open highway",
+    "americana",
+    "born",
+    "free"
+  ],
+  "embeddingInput": "BORNFREE (Fake Rares) - Series 14 Card 20\nArtist: MIKEYCORTEZ\nSupply 21 Issued October 2022\nOn-card text: BORN FREE\nVisual summary: The card features a Pepe the Frog character riding a motorcycle down an open highway. The background showcases a desert landscape with iconic mesas under a clear blue sky. The color palette is earthy with muted browns, greens, and blues, giving it a classic Americana vibe.\nMemetic references: Pepe the Frog as the central figure, a staple in meme culture.; The motorcycle and desert setting channel the spirit of freedom and rebellion, reminiscent of classic biker culture.; \"BORN FREE\" text evokes themes of liberty and adventure.",
+  "embeddingBlocks": [
+    {
+      "id": "BORNFREE#text",
+      "label": "On-card text",
+      "text": "BORN FREE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "BORNFREE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as the central figure, a staple in meme culture.\nThe motorcycle and desert setting channel the spirit of freedom and rebellion, reminiscent of classic biker culture.\n\"BORN FREE\" text evokes themes of liberty and adventure.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BORNFREE#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe the Frog character riding a motorcycle down an open highway. The background showcases a desert landscape with iconic mesas under a clear blue sky. The color palette is earthy with muted browns, greens, and blues, giving it a classic Americana vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BORNFREE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nBORN FREE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe the Frog character riding a motorcycle down an open highway. The background showcases a desert landscape with iconic mesas under a clear blue sky. The color palette is earthy with muted browns, greens, and blues, giving it a classic Americana vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as the central figure, a staple in meme culture.\n- The motorcycle and desert setting channel the spirit of freedom and rebellion, reminiscent of classic biker culture.\n- \"BORN FREE\" text evokes themes of liberty and adventure.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.325Z",
+  "sourceFactVersion": 1
+}

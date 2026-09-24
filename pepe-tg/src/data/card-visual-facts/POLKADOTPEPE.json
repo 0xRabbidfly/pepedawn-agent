@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "POLKADOTPEPE",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 43,
+  "artist": "Dr. Greedy",
+  "supply": 34,
+  "issuance": "December 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog face, a staple of internet meme culture.",
+    "Polka dots as a nod to the playful randomness often embraced in meme art.",
+    "Surrealism reminiscent of crypto's unpredictable and often bizarre market dynamics."
+  ],
+  "visualSummary": "This card features a surreal, polka-dotted room with a series of green, gourd-like objects embodying the iconic Pepe face. The color palette is primarily composed of various shades of green, creating a cohesive yet otherworldly atmosphere. The artistic style blends elements of pop art and 3D modeling, adding depth and whimsy to the scene.",
+  "visualSummaryShort": "The card showcases a surreal room filled with green, gourd-like objects resembling the Pepe face. The polka-dotted environment and vibrant green hues create a whimsical and otherworldly mood.",
+  "visualKeywords": [
+    "polka-dots",
+    "green",
+    "gourd",
+    "pepe",
+    "surreal",
+    "whimsical",
+    "pop art",
+    "3d modeling",
+    "atmosphere",
+    "depth"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "polka-dots",
+    "green",
+    "gourd",
+    "pepe",
+    "surreal",
+    "whimsical",
+    "pop art",
+    "3d modeling",
+    "atmosphere",
+    "depth"
+  ],
+  "embeddingInput": "POLKADOTPEPE (Fake Rares) - Series 12 Card 43\nArtist: Dr. Greedy\nSupply 34 Issued December 2022\nOn-card text: none detected\nVisual summary: This card features a surreal, polka-dotted room with a series of green, gourd-like objects embodying the iconic Pepe face. The color palette is primarily composed of various shades of green, creating a cohesive yet otherworldly atmosphere. The artistic style blends elements of pop art and 3D modeling, adding depth and whimsy to the scene.\nMemetic references: Classic Pepe the Frog face, a staple of internet meme culture.; Polka dots as a nod to the playful randomness often embraced in meme art.; Surrealism reminiscent of crypto's unpredictable and often bizarre market dynamics.",
+  "embeddingBlocks": [
+    {
+      "id": "POLKADOTPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog face, a staple of internet meme culture.\nPolka dots as a nod to the playful randomness often embraced in meme art.\nSurrealism reminiscent of crypto's unpredictable and often bizarre market dynamics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "POLKADOTPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a surreal, polka-dotted room with a series of green, gourd-like objects embodying the iconic Pepe face. The color palette is primarily composed of various shades of green, creating a cohesive yet otherworldly atmosphere. The artistic style blends elements of pop art and 3D modeling, adding depth and whimsy to the scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "POLKADOTPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a surreal, polka-dotted room with a series of green, gourd-like objects embodying the iconic Pepe face. The color palette is primarily composed of various shades of green, creating a cohesive yet otherworldly atmosphere. The artistic style blends elements of pop art and 3D modeling, adding depth and whimsy to the scene.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog face, a staple of internet meme culture.\n- Polka dots as a nod to the playful randomness often embraced in meme art.\n- Surrealism reminiscent of crypto's unpredictable and often bizarre market dynamics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.044Z",
+  "sourceFactVersion": 1
+}

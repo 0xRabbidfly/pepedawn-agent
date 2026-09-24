@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "asset": "BOKCULTIST",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 32,
+  "artist": "PabloRicaSSo",
+  "supply": 420,
+  "issuance": "August 2022",
+  "textOnCard": [
+    "Book of Kek Contributor - In Rares We Trust"
+  ],
+  "memeticReferences": [
+    "References to the \"Book of Kek,\" a nod to the esoteric and meme culture.",
+    "The Wikipedia globe hints at knowledge and decentralized information.",
+    "The eye-in-hand gesture could be a play on the \"all-seeing eye\" meme.",
+    "Cosmic and cryptic symbols enhance the mystique and crypto-lore."
+  ],
+  "visualSummary": "The card features a monochrome, vintage-style illustration with two robed figures at the bottom, each forming a triangle with their hands over their eyes. Above them, a celestial scene unfolds with clouds and a large globe resembling the Wikipedia logo but with cryptic symbols. The color palette is sepia-toned, giving it an ancient, mystical vibe.",
+  "visualSummaryShort": "The card showcases a vintage-style illustration of two robed figures forming a triangle with their hands over their eyes. Above them, a celestial scene with clouds and a globe filled with cryptic symbols creates an ancient, mystical atmosphere.",
+  "visualKeywords": [
+    "monochrome",
+    "robed figures",
+    "triangle",
+    "celestial",
+    "clouds",
+    "globe",
+    "cryptic symbols",
+    "sepia",
+    "mystical"
+  ],
+  "textKeywords": [
+    "book",
+    "kek",
+    "contributor",
+    "trust"
+  ],
+  "keywords": [
+    "monochrome",
+    "robed figures",
+    "triangle",
+    "celestial",
+    "clouds",
+    "globe",
+    "cryptic symbols",
+    "sepia",
+    "mystical",
+    "book",
+    "kek",
+    "contributor",
+    "trust"
+  ],
+  "embeddingInput": "BOKCULTIST (Fake Rares) - Series 9 Card 32\nArtist: PabloRicaSSo\nSupply 420 Issued August 2022\nOn-card text: Book of Kek Contributor - In Rares We Trust\nVisual summary: The card features a monochrome, vintage-style illustration with two robed figures at the bottom, each forming a triangle with their hands over their eyes. Above them, a celestial scene unfolds with clouds and a large globe resembling the Wikipedia logo but with cryptic symbols. The color palette is sepia-toned, giving it an ancient, mystical vibe.\nMemetic references: References to the \"Book of Kek,\" a nod to the esoteric and meme culture.; The Wikipedia globe hints at knowledge and decentralized information.; The eye-in-hand gesture could be a play on the \"all-seeing eye\" meme.; Cosmic and cryptic symbols enhance the mystique and crypto-lore.",
+  "embeddingBlocks": [
+    {
+      "id": "BOKCULTIST#text",
+      "label": "On-card text",
+      "text": "Book of Kek Contributor - In Rares We Trust",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "BOKCULTIST#memetic",
+      "label": "Memetic references",
+      "text": "References to the \"Book of Kek,\" a nod to the esoteric and meme culture.\nThe Wikipedia globe hints at knowledge and decentralized information.\nThe eye-in-hand gesture could be a play on the \"all-seeing eye\" meme.\nCosmic and cryptic symbols enhance the mystique and crypto-lore.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BOKCULTIST#visual",
+      "label": "Visual summary",
+      "text": "The card features a monochrome, vintage-style illustration with two robed figures at the bottom, each forming a triangle with their hands over their eyes. Above them, a celestial scene unfolds with clouds and a large globe resembling the Wikipedia logo but with cryptic symbols. The color palette is sepia-toned, giving it an ancient, mystical vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BOKCULTIST#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nBook of Kek Contributor - In Rares We Trust\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a monochrome, vintage-style illustration with two robed figures at the bottom, each forming a triangle with their hands over their eyes. Above them, a celestial scene unfolds with clouds and a large globe resembling the Wikipedia logo but with cryptic symbols. The color palette is sepia-toned, giving it an ancient, mystical vibe.\n\n🧬 **MEMETIC DNA:**\n- References to the \"Book of Kek,\" a nod to the esoteric and meme culture.\n- The Wikipedia globe hints at knowledge and decentralized information.\n- The eye-in-hand gesture could be a play on the \"all-seeing eye\" meme.\n- Cosmic and cryptic symbols enhance the mystique and crypto-lore.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.321Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "asset": "JSONPEPE",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 4,
+  "artist": "RYR",
+  "supply": 111,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "Pepe Fake",
+    "London"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference with green skin.",
+    "A nod to vintage or classic photography aesthetics.",
+    "Crypto culture hint with the \"Fake\" branding, playing on authenticity themes."
+  ],
+  "visualSummary": "The card features a black-and-white photograph with the central figure's face and hands colored in Pepe green, adding a surreal touch. The background is a soft pink, contrasting with the monochrome clothing of the figures. The artistic style blends classic photography with pop-art elements, creating a striking visual juxtaposition.",
+  "visualSummaryShort": "The card showcases a black-and-white photograph with a central figure's face and hands in vibrant Pepe green against a soft pink background. This blend of classic photography and pop-art elements creates a striking visual contrast.",
+  "visualKeywords": [
+    "black-and-white",
+    "pepe green",
+    "soft pink",
+    "photography",
+    "pop-art",
+    "surreal",
+    "contrast"
+  ],
+  "textKeywords": [
+    "london"
+  ],
+  "keywords": [
+    "black-and-white",
+    "pepe green",
+    "soft pink",
+    "photography",
+    "pop-art",
+    "surreal",
+    "contrast",
+    "london"
+  ],
+  "embeddingInput": "JSONPEPE (Fake Rares) - Series 2 Card 4\nArtist: RYR\nSupply 111 Issued October 2021\nOn-card text: Pepe Fake | London\nVisual summary: The card features a black-and-white photograph with the central figure's face and hands colored in Pepe green, adding a surreal touch. The background is a soft pink, contrasting with the monochrome clothing of the figures. The artistic style blends classic photography with pop-art elements, creating a striking visual juxtaposition.\nMemetic references: Pepe the Frog reference with green skin.; A nod to vintage or classic photography aesthetics.; Crypto culture hint with the \"Fake\" branding, playing on authenticity themes.",
+  "embeddingBlocks": [
+    {
+      "id": "JSONPEPE#text",
+      "label": "On-card text",
+      "text": "Pepe Fake | London",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "JSONPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference with green skin.\nA nod to vintage or classic photography aesthetics.\nCrypto culture hint with the \"Fake\" branding, playing on authenticity themes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "JSONPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a black-and-white photograph with the central figure's face and hands colored in Pepe green, adding a surreal touch. The background is a soft pink, contrasting with the monochrome clothing of the figures. The artistic style blends classic photography with pop-art elements, creating a striking visual juxtaposition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "JSONPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPepe Fake  \nLondon\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a black-and-white photograph with the central figure's face and hands colored in Pepe green, adding a surreal touch. The background is a soft pink, contrasting with the monochrome clothing of the figures. The artistic style blends classic photography with pop-art elements, creating a striking visual juxtaposition.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference with green skin.\n- A nod to vintage or classic photography aesthetics.\n- Crypto culture hint with the \"Fake\" branding, playing on authenticity themes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.705Z",
+  "sourceFactVersion": 1
+}

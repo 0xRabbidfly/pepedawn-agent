@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "asset": "PEPESUBLIME",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 36,
+  "artist": "El Cholo Pepe x Arwyn",
+  "supply": 44,
+  "issuance": "November 2022",
+  "textOnCard": [
+    "SUBLIME, FAKE RARE DUB ALLSTARS, Smoke 2 Joints, FAHW HOP, Sangha, Fake Fake."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog references throughout.",
+    "Bitcoin logo indicating crypto culture.",
+    "\"Smoke 2 Joints\" nods to reggae and stoner culture.",
+    "The chaotic collage style reminiscent of zine art."
+  ],
+  "visualSummary": "The card bursts with vibrant, clashing colors, dominated by purples, greens, and oranges. It features an eclectic mix of characters and objects, like a masked figure, a bottle with a Bitcoin logo, and various Pepe the Frog iterations. The style is chaotic and graffiti-like, evoking a sense of rebellious street art.",
+  "visualSummaryShort": "The card showcases a chaotic blend of vibrant colors and eclectic characters, including a masked figure and a Bitcoin bottle. Its graffiti-like style conveys a rebellious street art vibe.",
+  "visualKeywords": [
+    "vibrant colors",
+    "masked figure",
+    "bitcoin",
+    "pepe the frog",
+    "graffiti",
+    "chaotic",
+    "rebellious",
+    "street art"
+  ],
+  "textKeywords": [
+    "sublime",
+    "dub",
+    "allstars",
+    "smoke",
+    "joints",
+    "fahw",
+    "hop",
+    "sangha"
+  ],
+  "keywords": [
+    "vibrant colors",
+    "masked figure",
+    "bitcoin",
+    "pepe the frog",
+    "graffiti",
+    "chaotic",
+    "rebellious",
+    "street art",
+    "sublime",
+    "dub",
+    "allstars",
+    "smoke",
+    "joints",
+    "fahw",
+    "hop",
+    "sangha"
+  ],
+  "embeddingInput": "PEPESUBLIME (Fake Rares) - Series 12 Card 36\nArtist: El Cholo Pepe x Arwyn\nSupply 44 Issued November 2022\nOn-card text: SUBLIME, FAKE RARE DUB ALLSTARS, Smoke 2 Joints, FAHW HOP, Sangha, Fake Fake.\nVisual summary: The card bursts with vibrant, clashing colors, dominated by purples, greens, and oranges. It features an eclectic mix of characters and objects, like a masked figure, a bottle with a Bitcoin logo, and various Pepe the Frog iterations. The style is chaotic and graffiti-like, evoking a sense of rebellious street art.\nMemetic references: Pepe the Frog references throughout.; Bitcoin logo indicating crypto culture.; \"Smoke 2 Joints\" nods to reggae and stoner culture.; The chaotic collage style reminiscent of zine art.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPESUBLIME#text",
+      "label": "On-card text",
+      "text": "SUBLIME, FAKE RARE DUB ALLSTARS, Smoke 2 Joints, FAHW HOP, Sangha, Fake Fake.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPESUBLIME#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references throughout.\nBitcoin logo indicating crypto culture.\n\"Smoke 2 Joints\" nods to reggae and stoner culture.\nThe chaotic collage style reminiscent of zine art.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPESUBLIME#visual",
+      "label": "Visual summary",
+      "text": "The card bursts with vibrant, clashing colors, dominated by purples, greens, and oranges. It features an eclectic mix of characters and objects, like a masked figure, a bottle with a Bitcoin logo, and various Pepe the Frog iterations. The style is chaotic and graffiti-like, evoking a sense of rebellious street art.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPESUBLIME#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nSUBLIME, FAKE RARE DUB ALLSTARS, Smoke 2 Joints, FAHW HOP, Sangha, Fake Fake.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card bursts with vibrant, clashing colors, dominated by purples, greens, and oranges. It features an eclectic mix of characters and objects, like a masked figure, a bottle with a Bitcoin logo, and various Pepe the Frog iterations. The style is chaotic and graffiti-like, evoking a sense of rebellious street art.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references throughout.\n- Bitcoin logo indicating crypto culture.\n- \"Smoke 2 Joints\" nods to reggae and stoner culture.\n- The chaotic collage style reminiscent of zine art.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.984Z",
+  "sourceFactVersion": 1
+}

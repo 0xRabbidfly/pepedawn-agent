@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "PEPEARTEFACT",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 15,
+  "artist": "PabloRicaSSo",
+  "supply": 21,
+  "issuance": "February 2024",
+  "textOnCard": [
+    "PEPEARTEFACT"
+  ],
+  "memeticReferences": [
+    "Pepe character as a cultural relic, tapping into the timelessness of memes.",
+    "References to ancient artifacts and possibly the Indiana Jones adventure trope.",
+    "Subtle nods to crypto culture with the treasure-hunting theme."
+  ],
+  "visualSummary": "The card features a vibrant and dynamic depiction of a Pepe character, styled as an ancient artifact with a mystical aura. The color palette is a mix of deep golds and browns, giving it an aged, treasure-like appearance. Intricate patterns and hieroglyphic-like symbols surround the character, enhancing its archaeological vibe.",
+  "visualSummaryShort": "The card showcases a Pepe character designed as an ancient artifact, surrounded by intricate patterns and symbols. Its vibrant colors of deep golds and browns create a mystical and treasure-like atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "ancient artifact",
+    "gold",
+    "brown",
+    "mystical",
+    "patterns",
+    "symbols",
+    "treasure",
+    "vibrant",
+    "archaeological"
+  ],
+  "textKeywords": [
+    "pepeartefact"
+  ],
+  "keywords": [
+    "pepe",
+    "ancient artifact",
+    "gold",
+    "brown",
+    "mystical",
+    "patterns",
+    "symbols",
+    "treasure",
+    "vibrant",
+    "archaeological",
+    "pepeartefact"
+  ],
+  "embeddingInput": "PEPEARTEFACT (Fake Rares) - Series 17 Card 15\nArtist: PabloRicaSSo\nSupply 21 Issued February 2024\nOn-card text: PEPEARTEFACT\nVisual summary: The card features a vibrant and dynamic depiction of a Pepe character, styled as an ancient artifact with a mystical aura. The color palette is a mix of deep golds and browns, giving it an aged, treasure-like appearance. Intricate patterns and hieroglyphic-like symbols surround the character, enhancing its archaeological vibe.\nMemetic references: Pepe character as a cultural relic, tapping into the timelessness of memes.; References to ancient artifacts and possibly the Indiana Jones adventure trope.; Subtle nods to crypto culture with the treasure-hunting theme.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEARTEFACT#text",
+      "label": "On-card text",
+      "text": "PEPEARTEFACT",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEARTEFACT#memetic",
+      "label": "Memetic references",
+      "text": "Pepe character as a cultural relic, tapping into the timelessness of memes.\nReferences to ancient artifacts and possibly the Indiana Jones adventure trope.\nSubtle nods to crypto culture with the treasure-hunting theme.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEARTEFACT#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant and dynamic depiction of a Pepe character, styled as an ancient artifact with a mystical aura. The color palette is a mix of deep golds and browns, giving it an aged, treasure-like appearance. Intricate patterns and hieroglyphic-like symbols surround the character, enhancing its archaeological vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEARTEFACT#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPEARTEFACT\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant and dynamic depiction of a Pepe character, styled as an ancient artifact with a mystical aura. The color palette is a mix of deep golds and browns, giving it an aged, treasure-like appearance. Intricate patterns and hieroglyphic-like symbols surround the character, enhancing its archaeological vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe character as a cultural relic, tapping into the timelessness of memes.\n- References to ancient artifacts and possibly the Indiana Jones adventure trope.\n- Subtle nods to crypto culture with the treasure-hunting theme.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.841Z",
+  "sourceFactVersion": 1
+}

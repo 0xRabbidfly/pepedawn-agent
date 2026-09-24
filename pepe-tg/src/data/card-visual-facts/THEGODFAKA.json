@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "THEGODFAKA",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 22,
+  "artist": "80sKurt Russell x Early Bird",
+  "supply": 69,
+  "issuance": "November 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog reference with the green face.",
+    "Play on classic cinema settings juxtaposed with meme culture.",
+    "Elements of absurdity and humor in the simplistic drawing style."
+  ],
+  "visualSummary": "The card features a monochrome theater setting with an empty audience, focusing on a screen displaying a simplistic drawing. The drawing depicts a green-faced figure in bed, evoking an artistic style that's raw and child-like. The overall mood is a mix of surrealism and minimalism, with a muted color palette emphasizing the figure's green face.",
+  "visualSummaryShort": "The card showcases a monochrome theater with an empty audience and a screen displaying a simplistic drawing of a green-faced figure in bed. The mood is surreal and minimalistic, highlighted by a muted color palette.",
+  "visualKeywords": [
+    "theater",
+    "monochrome",
+    "green face",
+    "drawing",
+    "empty audience",
+    "surrealism",
+    "minimalism",
+    "muted colors"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "theater",
+    "monochrome",
+    "green face",
+    "drawing",
+    "empty audience",
+    "surrealism",
+    "minimalism",
+    "muted colors"
+  ],
+  "embeddingInput": "THEGODFAKA (Fake Rares) - Series 6 Card 22\nArtist: 80sKurt Russell x Early Bird\nSupply 69 Issued November 2021\nOn-card text: none detected\nVisual summary: The card features a monochrome theater setting with an empty audience, focusing on a screen displaying a simplistic drawing. The drawing depicts a green-faced figure in bed, evoking an artistic style that's raw and child-like. The overall mood is a mix of surrealism and minimalism, with a muted color palette emphasizing the figure's green face.\nMemetic references: Pepe the Frog reference with the green face.; Play on classic cinema settings juxtaposed with meme culture.; Elements of absurdity and humor in the simplistic drawing style.",
+  "embeddingBlocks": [
+    {
+      "id": "THEGODFAKA#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference with the green face.\nPlay on classic cinema settings juxtaposed with meme culture.\nElements of absurdity and humor in the simplistic drawing style.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "THEGODFAKA#visual",
+      "label": "Visual summary",
+      "text": "The card features a monochrome theater setting with an empty audience, focusing on a screen displaying a simplistic drawing. The drawing depicts a green-faced figure in bed, evoking an artistic style that's raw and child-like. The overall mood is a mix of surrealism and minimalism, with a muted color palette emphasizing the figure's green face.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "THEGODFAKA#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a monochrome theater setting with an empty audience, focusing on a screen displaying a simplistic drawing. The drawing depicts a green-faced figure in bed, evoking an artistic style that's raw and child-like. The overall mood is a mix of surrealism and minimalism, with a muted color palette emphasizing the figure's green face.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference with the green face.\n- Play on classic cinema settings juxtaposed with meme culture.\n- Elements of absurdity and humor in the simplistic drawing style.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.143Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "asset": "DELAPEPE",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 31,
+  "artist": "T. Wade",
+  "supply": 21,
+  "issuance": "January 2023",
+  "textOnCard": [
+    "DELAPEPE",
+    "3 FEET HIGH AND FAKING"
+  ],
+  "memeticReferences": [
+    "References the classic rap album \"3 Feet High and Rising\" by De La Soul.",
+    "Pepe the Frog imagery with a twist of pop culture.",
+    "Psychedelic and retro flower power elements."
+  ],
+  "visualSummary": "The card features three green-faced figures with black hair, reminiscent of Pepe, set against a vibrant yellow background. Brightly colored flowers in red, blue, and green are scattered around, adding a playful and psychedelic vibe. The style is bold and cartoonish, with a nod to retro album art.",
+  "visualSummaryShort": "The card showcases three green-faced figures with black hair on a vibrant yellow background. Brightly colored flowers enhance the playful and psychedelic atmosphere.",
+  "visualKeywords": [
+    "green faces",
+    "black hair",
+    "yellow background",
+    "flowers",
+    "red",
+    "blue",
+    "green",
+    "cartoonish",
+    "psychedelic",
+    "bold style"
+  ],
+  "textKeywords": [
+    "delapepe",
+    "feet",
+    "high",
+    "faking"
+  ],
+  "keywords": [
+    "green faces",
+    "black hair",
+    "yellow background",
+    "flowers",
+    "red",
+    "blue",
+    "green",
+    "cartoonish",
+    "psychedelic",
+    "bold style",
+    "delapepe",
+    "feet",
+    "high",
+    "faking"
+  ],
+  "embeddingInput": "DELAPEPE (Fake Rares) - Series 13 Card 31\nArtist: T. Wade\nSupply 21 Issued January 2023\nOn-card text: DELAPEPE | 3 FEET HIGH AND FAKING\nVisual summary: The card features three green-faced figures with black hair, reminiscent of Pepe, set against a vibrant yellow background. Brightly colored flowers in red, blue, and green are scattered around, adding a playful and psychedelic vibe. The style is bold and cartoonish, with a nod to retro album art.\nMemetic references: References the classic rap album \"3 Feet High and Rising\" by De La Soul.; Pepe the Frog imagery with a twist of pop culture.; Psychedelic and retro flower power elements.",
+  "embeddingBlocks": [
+    {
+      "id": "DELAPEPE#text",
+      "label": "On-card text",
+      "text": "DELAPEPE | 3 FEET HIGH AND FAKING",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "DELAPEPE#memetic",
+      "label": "Memetic references",
+      "text": "References the classic rap album \"3 Feet High and Rising\" by De La Soul.\nPepe the Frog imagery with a twist of pop culture.\nPsychedelic and retro flower power elements.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "DELAPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features three green-faced figures with black hair, reminiscent of Pepe, set against a vibrant yellow background. Brightly colored flowers in red, blue, and green are scattered around, adding a playful and psychedelic vibe. The style is bold and cartoonish, with a nod to retro album art.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "DELAPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nDELAPEPE  \n3 FEET HIGH AND FAKING\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features three green-faced figures with black hair, reminiscent of Pepe, set against a vibrant yellow background. Brightly colored flowers in red, blue, and green are scattered around, adding a playful and psychedelic vibe. The style is bold and cartoonish, with a nod to retro album art.\n\n🧬 **MEMETIC DNA:**\n- References the classic rap album \"3 Feet High and Rising\" by De La Soul.\n- Pepe the Frog imagery with a twist of pop culture.\n- Psychedelic and retro flower power elements.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.389Z",
+  "sourceFactVersion": 1
+}

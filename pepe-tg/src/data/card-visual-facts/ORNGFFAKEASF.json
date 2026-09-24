@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "asset": "ORNGFFAKEASF",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 19,
+  "artist": "ThreePanelCrimes",
+  "supply": 28,
+  "issuance": "August 2023",
+  "textOnCard": [
+    "Buy Pawn Sell",
+    "U R BEING FILMED",
+    "FAKE"
+  ],
+  "memeticReferences": [
+    "References to crypto culture and the concept of \"fake\" NFTs.",
+    "Nostalgic pixel art style evokes classic gaming aesthetics.",
+    "The character resembles a well-known cartoon cat, adding a layer of meme familiarity."
+  ],
+  "visualSummary": "This card features a retro pixel art style with a warm, sepia-toned color palette reminiscent of old video games. The composition showcases a character behind a pawn shop counter, holding a small item, with shelves of goods behind him. The scene is filled with details like a \"FAKE\" box and a \"U R BEING FILMED\" sign, adding layers of intrigue and humor.",
+  "visualSummaryShort": "The card depicts a character at a pawn shop counter in a retro pixel art style with warm sepia tones. It includes humorous details like a 'FAKE' box and a 'U R BEING FILMED' sign.",
+  "visualKeywords": [
+    "pawn shop",
+    "pixel art",
+    "sepia",
+    "counter",
+    "shelves",
+    "humor",
+    "sign",
+    "character",
+    "item",
+    "details"
+  ],
+  "textKeywords": [
+    "buy",
+    "pawn",
+    "sell",
+    "filmed"
+  ],
+  "keywords": [
+    "pawn shop",
+    "pixel art",
+    "sepia",
+    "counter",
+    "shelves",
+    "humor",
+    "sign",
+    "character",
+    "item",
+    "details",
+    "buy",
+    "pawn",
+    "sell",
+    "filmed"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "ORNGFFAKEASF (Fake Rares) - Series 15 Card 19\nArtist: ThreePanelCrimes\nSupply 28 Issued August 2023\nOn-card text: Buy Pawn Sell | U R BEING FILMED | FAKE\nVisual summary: This card features a retro pixel art style with a warm, sepia-toned color palette reminiscent of old video games. The composition showcases a character behind a pawn shop counter, holding a small item, with shelves of goods behind him. The scene is filled with details like a \"FAKE\" box and a \"U R BEING FILMED\" sign, adding layers of intrigue and humor.\nMemetic references: References to crypto culture and the concept of \"fake\" NFTs.; Nostalgic pixel art style evokes classic gaming aesthetics.; The character resembles a well-known cartoon cat, adding a layer of meme familiarity.",
+  "embeddingBlocks": [
+    {
+      "id": "ORNGFFAKEASF#text",
+      "label": "On-card text",
+      "text": "Buy Pawn Sell | U R BEING FILMED | FAKE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "ORNGFFAKEASF#memetic",
+      "label": "Memetic references",
+      "text": "References to crypto culture and the concept of \"fake\" NFTs.\nNostalgic pixel art style evokes classic gaming aesthetics.\nThe character resembles a well-known cartoon cat, adding a layer of meme familiarity.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "ORNGFFAKEASF#visual",
+      "label": "Visual summary",
+      "text": "This card features a retro pixel art style with a warm, sepia-toned color palette reminiscent of old video games. The composition showcases a character behind a pawn shop counter, holding a small item, with shelves of goods behind him. The scene is filled with details like a \"FAKE\" box and a \"U R BEING FILMED\" sign, adding layers of intrigue and humor.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "ORNGFFAKEASF#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nBuy Pawn Sell  \nU R BEING FILMED  \nFAKE  \n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a retro pixel art style with a warm, sepia-toned color palette reminiscent of old video games. The composition showcases a character behind a pawn shop counter, holding a small item, with shelves of goods behind him. The scene is filled with details like a \"FAKE\" box and a \"U R BEING FILMED\" sign, adding layers of intrigue and humor.\n\n🧬 **MEMETIC DNA:**\n- References to crypto culture and the concept of \"fake\" NFTs.\n- Nostalgic pixel art style evokes classic gaming aesthetics.\n- The character resembles a well-known cartoon cat, adding a layer of meme familiarity.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:30:53.608Z"
+}

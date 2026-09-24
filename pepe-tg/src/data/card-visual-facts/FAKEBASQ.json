@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "FAKEBASQ",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 11,
+  "artist": "Mandarinemarie",
+  "supply": 50,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "FAKE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog references.",
+    "Street art and graffiti culture.",
+    "Crown symbolizing royalty or dominance.",
+    "Crypto culture nod with the word \"FAKE\", suggesting awareness of NFT authenticity debates."
+  ],
+  "visualSummary": "This card features a graffiti-style depiction of a green, skeletal Pepe figure with exaggerated features like a wide, toothy grin and a crown. The background is a vibrant blend of colors—blue, yellow, and pink—giving a chaotic, street-art vibe. The entire scene is framed by a brick wall, enhancing the urban aesthetic.",
+  "visualSummaryShort": "The card showcases a graffiti-style green skeletal Pepe with a wide grin and a crown against a colorful, chaotic background. The urban aesthetic is emphasized by the brick wall framing the scene.",
+  "visualKeywords": [
+    "graffiti",
+    "green",
+    "skeletal",
+    "toothy grin",
+    "crown",
+    "blue",
+    "yellow",
+    "pink",
+    "brick wall",
+    "urban"
+  ],
+  "textKeywords": [
+    "fake"
+  ],
+  "keywords": [
+    "graffiti",
+    "green",
+    "skeletal",
+    "toothy grin",
+    "crown",
+    "blue",
+    "yellow",
+    "pink",
+    "brick wall",
+    "urban",
+    "fake"
+  ],
+  "embeddingInput": "FAKEBASQ (Fake Rares) - Series 6 Card 11\nArtist: Mandarinemarie\nSupply 50 Issued February 2022\nOn-card text: FAKE\nVisual summary: This card features a graffiti-style depiction of a green, skeletal Pepe figure with exaggerated features like a wide, toothy grin and a crown. The background is a vibrant blend of colors—blue, yellow, and pink—giving a chaotic, street-art vibe. The entire scene is framed by a brick wall, enhancing the urban aesthetic.\nMemetic references: Pepe the Frog references.; Street art and graffiti culture.; Crown symbolizing royalty or dominance.; Crypto culture nod with the word \"FAKE\", suggesting awareness of NFT authenticity debates.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEBASQ#text",
+      "label": "On-card text",
+      "text": "FAKE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEBASQ#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references.\nStreet art and graffiti culture.\nCrown symbolizing royalty or dominance.\nCrypto culture nod with the word \"FAKE\", suggesting awareness of NFT authenticity debates.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEBASQ#visual",
+      "label": "Visual summary",
+      "text": "This card features a graffiti-style depiction of a green, skeletal Pepe figure with exaggerated features like a wide, toothy grin and a crown. The background is a vibrant blend of colors—blue, yellow, and pink—giving a chaotic, street-art vibe. The entire scene is framed by a brick wall, enhancing the urban aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEBASQ#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a graffiti-style depiction of a green, skeletal Pepe figure with exaggerated features like a wide, toothy grin and a crown. The background is a vibrant blend of colors—blue, yellow, and pink—giving a chaotic, street-art vibe. The entire scene is framed by a brick wall, enhancing the urban aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references.\n- Street art and graffiti culture.\n- Crown symbolizing royalty or dominance.\n- Crypto culture nod with the word \"FAKE\", suggesting awareness of NFT authenticity debates.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.460Z",
+  "sourceFactVersion": 1
+}

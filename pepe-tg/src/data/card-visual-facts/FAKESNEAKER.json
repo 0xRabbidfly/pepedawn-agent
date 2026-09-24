@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "FAKESNEAKER",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 44,
+  "artist": "OJB.NFT",
+  "supply": 47,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "FAKE RARE PEPE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure.",
+    "References to sneaker culture and hypebeast aesthetics.",
+    "Play on \"fake\" memes within the NFT and crypto spaces."
+  ],
+  "visualSummary": "The card features a vibrant green color palette, with a large sneaker dominating the composition. A small, muscular Pepe character is holding up the sneaker, showcasing his strength. The sneaker is worn by a foot with a sock featuring Pepe's face, creating a playful and surreal visual.",
+  "visualSummaryShort": "The card showcases a vibrant green color palette with a large sneaker at the center. A muscular Pepe character holds the sneaker, adding a playful and surreal touch to the composition.",
+  "visualKeywords": [
+    "green palette",
+    "sneaker",
+    "pepe",
+    "muscular",
+    "playful",
+    "surreal",
+    "sock",
+    "foot"
+  ],
+  "textKeywords": [
+    "fake",
+    "rare",
+    "pepe"
+  ],
+  "keywords": [
+    "green palette",
+    "sneaker",
+    "pepe",
+    "muscular",
+    "playful",
+    "surreal",
+    "sock",
+    "foot",
+    "fake",
+    "rare"
+  ],
+  "embeddingInput": "FAKESNEAKER (Fake Rares) - Series 5 Card 44\nArtist: OJB.NFT\nSupply 47 Issued February 2022\nOn-card text: FAKE RARE PEPE\nVisual summary: The card features a vibrant green color palette, with a large sneaker dominating the composition. A small, muscular Pepe character is holding up the sneaker, showcasing his strength. The sneaker is worn by a foot with a sock featuring Pepe's face, creating a playful and surreal visual.\nMemetic references: Pepe the Frog as a central figure.; References to sneaker culture and hypebeast aesthetics.; Play on \"fake\" memes within the NFT and crypto spaces.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKESNEAKER#text",
+      "label": "On-card text",
+      "text": "FAKE RARE PEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKESNEAKER#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure.\nReferences to sneaker culture and hypebeast aesthetics.\nPlay on \"fake\" memes within the NFT and crypto spaces.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKESNEAKER#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant green color palette, with a large sneaker dominating the composition. A small, muscular Pepe character is holding up the sneaker, showcasing his strength. The sneaker is worn by a foot with a sock featuring Pepe's face, creating a playful and surreal visual.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKESNEAKER#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE RARE PEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant green color palette, with a large sneaker dominating the composition. A small, muscular Pepe character is holding up the sneaker, showcasing his strength. The sneaker is worn by a foot with a sock featuring Pepe's face, creating a playful and surreal visual.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure.\n- References to sneaker culture and hypebeast aesthetics.\n- Play on \"fake\" memes within the NFT and crypto spaces.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.578Z",
+  "sourceFactVersion": 1
+}

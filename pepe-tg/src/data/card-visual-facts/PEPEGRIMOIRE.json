@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "PEPEGRIMOIRE",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 26,
+  "artist": "Da'Block God",
+  "supply": 70,
+  "issuance": "April 2022",
+  "textOnCard": [
+    "PEPEGRIMOIRE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog imagery, a staple in meme culture.",
+    "References to mystical and magical themes, suggesting a grimoire or spellbook connection.",
+    "Cosmic elements hinting at the infinite possibilities of the crypto universe."
+  ],
+  "visualSummary": "The card features a mystical, amphibian-like creature with a Pepe the Frog face, draped in ethereal, glowing robes. The background is a swirling vortex of cosmic colors, predominantly purples, greens, and blues, with a smattering of golden sparks to add a magical flair. The artistic style blends digital painting with a touch of surrealism, giving it a dreamlike atmosphere.",
+  "visualSummaryShort": "The card showcases a mystical amphibian creature with a Pepe the Frog face, adorned in glowing robes. The background features a vibrant cosmic vortex in purples, greens, and blues, creating a dreamlike atmosphere.",
+  "visualKeywords": [
+    "amphibian",
+    "pepe the frog",
+    "glowing robes",
+    "cosmic vortex",
+    "purple",
+    "green",
+    "blue",
+    "surrealism",
+    "magical",
+    "dreamlike"
+  ],
+  "textKeywords": [
+    "pepegrimoire"
+  ],
+  "keywords": [
+    "amphibian",
+    "pepe the frog",
+    "glowing robes",
+    "cosmic vortex",
+    "purple",
+    "green",
+    "blue",
+    "surrealism",
+    "magical",
+    "dreamlike",
+    "pepegrimoire"
+  ],
+  "embeddingInput": "PEPEGRIMOIRE (Fake Rares) - Series 8 Card 26\nArtist: Da'Block God\nSupply 70 Issued April 2022\nOn-card text: PEPEGRIMOIRE\nVisual summary: The card features a mystical, amphibian-like creature with a Pepe the Frog face, draped in ethereal, glowing robes. The background is a swirling vortex of cosmic colors, predominantly purples, greens, and blues, with a smattering of golden sparks to add a magical flair. The artistic style blends digital painting with a touch of surrealism, giving it a dreamlike atmosphere.\nMemetic references: Pepe the Frog imagery, a staple in meme culture.; References to mystical and magical themes, suggesting a grimoire or spellbook connection.; Cosmic elements hinting at the infinite possibilities of the crypto universe.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEGRIMOIRE#text",
+      "label": "On-card text",
+      "text": "PEPEGRIMOIRE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEGRIMOIRE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog imagery, a staple in meme culture.\nReferences to mystical and magical themes, suggesting a grimoire or spellbook connection.\nCosmic elements hinting at the infinite possibilities of the crypto universe.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEGRIMOIRE#visual",
+      "label": "Visual summary",
+      "text": "The card features a mystical, amphibian-like creature with a Pepe the Frog face, draped in ethereal, glowing robes. The background is a swirling vortex of cosmic colors, predominantly purples, greens, and blues, with a smattering of golden sparks to add a magical flair. The artistic style blends digital painting with a touch of surrealism, giving it a dreamlike atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEGRIMOIRE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPEGRIMOIRE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a mystical, amphibian-like creature with a Pepe the Frog face, draped in ethereal, glowing robes. The background is a swirling vortex of cosmic colors, predominantly purples, greens, and blues, with a smattering of golden sparks to add a magical flair. The artistic style blends digital painting with a touch of surrealism, giving it a dreamlike atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog imagery, a staple in meme culture.\n- References to mystical and magical themes, suggesting a grimoire or spellbook connection.\n- Cosmic elements hinting at the infinite possibilities of the crypto universe.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.891Z",
+  "sourceFactVersion": 1
+}

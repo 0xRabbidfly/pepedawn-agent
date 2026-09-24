@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "asset": "FREEZERBURN",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 29,
+  "artist": "Art Bat",
+  "supply": 35,
+  "issuance": "August 2022",
+  "textOnCard": [
+    "Brain Freeze",
+    "2022 AB"
+  ],
+  "memeticReferences": [
+    "References the term \"brain freeze,\" commonly associated with sudden headaches from cold food or drinks.",
+    "Minimalist design evokes modern meme culture's love for simplicity and irony.",
+    "Could be a nod to the sometimes overwhelming and paralyzing nature of crypto markets."
+  ],
+  "visualSummary": "The card features a simplistic and abstract design with a soft lavender square dominating the center. The minimalist style, combined with the white background, gives an airy and open feel. The text at the bottom is handwritten, adding a personal touch to the otherwise stark composition.",
+  "visualSummaryShort": "The card showcases a minimalist design with a soft lavender square on a white background. Handwritten text adds a personal touch to the airy composition.",
+  "visualKeywords": [
+    "lavender",
+    "minimalist",
+    "white background",
+    "handwritten",
+    "abstract"
+  ],
+  "textKeywords": [
+    "brain",
+    "freeze",
+    "2022"
+  ],
+  "keywords": [
+    "lavender",
+    "minimalist",
+    "white background",
+    "handwritten",
+    "abstract",
+    "brain",
+    "freeze",
+    "2022"
+  ],
+  "embeddingInput": "FREEZERBURN (Fake Rares) - Series 9 Card 29\nArtist: Art Bat\nSupply 35 Issued August 2022\nOn-card text: Brain Freeze | 2022 AB\nVisual summary: The card features a simplistic and abstract design with a soft lavender square dominating the center. The minimalist style, combined with the white background, gives an airy and open feel. The text at the bottom is handwritten, adding a personal touch to the otherwise stark composition.\nMemetic references: References the term \"brain freeze,\" commonly associated with sudden headaches from cold food or drinks.; Minimalist design evokes modern meme culture's love for simplicity and irony.; Could be a nod to the sometimes overwhelming and paralyzing nature of crypto markets.",
+  "embeddingBlocks": [
+    {
+      "id": "FREEZERBURN#text",
+      "label": "On-card text",
+      "text": "Brain Freeze | 2022 AB",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FREEZERBURN#memetic",
+      "label": "Memetic references",
+      "text": "References the term \"brain freeze,\" commonly associated with sudden headaches from cold food or drinks.\nMinimalist design evokes modern meme culture's love for simplicity and irony.\nCould be a nod to the sometimes overwhelming and paralyzing nature of crypto markets.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FREEZERBURN#visual",
+      "label": "Visual summary",
+      "text": "The card features a simplistic and abstract design with a soft lavender square dominating the center. The minimalist style, combined with the white background, gives an airy and open feel. The text at the bottom is handwritten, adding a personal touch to the otherwise stark composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FREEZERBURN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nBrain Freeze  \n2022 AB\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a simplistic and abstract design with a soft lavender square dominating the center. The minimalist style, combined with the white background, gives an airy and open feel. The text at the bottom is handwritten, adding a personal touch to the otherwise stark composition.\n\n🧬 **MEMETIC DNA:**\n- References the term \"brain freeze,\" commonly associated with sudden headaches from cold food or drinks.\n- Minimalist design evokes modern meme culture's love for simplicity and irony.\n- Could be a nod to the sometimes overwhelming and paralyzing nature of crypto markets.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.640Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "asset": "PEPEDENZA",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 49,
+  "artist": "Indelible and WetPotatoBrain",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "WetPotatoBrain",
+    "Internet 2021- to present",
+    "‘Pepedenza’",
+    "Digital 2021",
+    "Acquired via metaverse markets"
+  ],
+  "memeticReferences": [
+    "Classic art gallery setting, reminiscent of high art but with a meme twist.",
+    "Abstract design echoes the chaotic yet iconic aesthetics of Pepe memes.",
+    "The title “Pepedenza” suggests a fusion of Pepe and perhaps “decadence” or “dance.”"
+  ],
+  "visualSummary": "The card features a large, ornate gold-framed painting in a museum setting, with children sitting on a bench, gazing intently at it. The artwork within the frame is a swirling, abstract composition of green, white, and pink tones that form an intricate, hypnotic pattern. The surrounding border of the card mirrors this pattern, creating a cohesive and immersive visual experience.",
+  "visualSummaryShort": "The card showcases a large, ornate painting in a museum with children observing it. The artwork features a swirling abstract pattern in green, white, and pink tones.",
+  "visualKeywords": [
+    "museum",
+    "children",
+    "gold-frame",
+    "abstract",
+    "green",
+    "white",
+    "pink",
+    "swirling",
+    "pattern",
+    "intricate"
+  ],
+  "textKeywords": [
+    "wetpotatobrain",
+    "internet",
+    "2021",
+    "present",
+    "pepedenza",
+    "digital",
+    "acquired",
+    "via",
+    "metaverse",
+    "markets"
+  ],
+  "keywords": [
+    "museum",
+    "children",
+    "gold-frame",
+    "abstract",
+    "green",
+    "white",
+    "pink",
+    "swirling",
+    "pattern",
+    "intricate",
+    "wetpotatobrain",
+    "internet",
+    "2021",
+    "present",
+    "pepedenza",
+    "digital",
+    "acquired",
+    "via",
+    "metaverse",
+    "markets"
+  ],
+  "embeddingInput": "PEPEDENZA (Fake Rares) - Series 2 Card 49\nArtist: Indelible and WetPotatoBrain\nSupply 100 Issued October 2021\nOn-card text: WetPotatoBrain | Internet 2021- to present | ‘Pepedenza’ | Digital 2021 | Acquired via metaverse markets\nVisual summary: The card features a large, ornate gold-framed painting in a museum setting, with children sitting on a bench, gazing intently at it. The artwork within the frame is a swirling, abstract composition of green, white, and pink tones that form an intricate, hypnotic pattern. The surrounding border of the card mirrors this pattern, creating a cohesive and immersive visual experience.\nMemetic references: Classic art gallery setting, reminiscent of high art but with a meme twist.; Abstract design echoes the chaotic yet iconic aesthetics of Pepe memes.; The title “Pepedenza” suggests a fusion of Pepe and perhaps “decadence” or “dance.”",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEDENZA#text",
+      "label": "On-card text",
+      "text": "WetPotatoBrain | Internet 2021- to present | ‘Pepedenza’ | Digital 2021 | Acquired via metaverse markets",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEDENZA#memetic",
+      "label": "Memetic references",
+      "text": "Classic art gallery setting, reminiscent of high art but with a meme twist.\nAbstract design echoes the chaotic yet iconic aesthetics of Pepe memes.\nThe title “Pepedenza” suggests a fusion of Pepe and perhaps “decadence” or “dance.”",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEDENZA#visual",
+      "label": "Visual summary",
+      "text": "The card features a large, ornate gold-framed painting in a museum setting, with children sitting on a bench, gazing intently at it. The artwork within the frame is a swirling, abstract composition of green, white, and pink tones that form an intricate, hypnotic pattern. The surrounding border of the card mirrors this pattern, creating a cohesive and immersive visual experience.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEDENZA#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nWetPotatoBrain  \nInternet 2021- to present  \n‘Pepedenza’  \nDigital 2021  \nAcquired via metaverse markets\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a large, ornate gold-framed painting in a museum setting, with children sitting on a bench, gazing intently at it. The artwork within the frame is a swirling, abstract composition of green, white, and pink tones that form an intricate, hypnotic pattern. The surrounding border of the card mirrors this pattern, creating a cohesive and immersive visual experience.\n\n🧬 **MEMETIC DNA:**\n- Classic art gallery setting, reminiscent of high art but with a meme twist.\n- Abstract design echoes the chaotic yet iconic aesthetics of Pepe memes.\n- The title “Pepedenza” suggests a fusion of Pepe and perhaps “decadence” or “dance.”",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.867Z",
+  "sourceFactVersion": 1
+}

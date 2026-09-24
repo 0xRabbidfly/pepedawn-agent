@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "asset": "HOMERPEPMOVI",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 41,
+  "artist": "METAVOXELZ",
+  "supply": 58,
+  "issuance": "January 2023",
+  "textOnCard": [
+    "HOMERPEPMOVI",
+    "WAIT A MINUTE, I'M IN THE METAVERSE!",
+    "99",
+    "99",
+    "UNKNOWN SPO IMMOBILIZED ELE"
+  ],
+  "memeticReferences": [
+    "References to the Metaverse, a popular concept in crypto and tech culture.",
+    "A nod to Homer Simpson and Pepe the Frog, iconic in meme culture.",
+    "Sci-fi and cyberpunk elements evoke classic internet and gaming nostalgia."
+  ],
+  "visualSummary": "The card features a digital, retro-futuristic aesthetic with a holographic screen displaying a scene from a virtual world. The color palette is dominated by neon greens and blues, with circuit-like patterns framing the central image. The design is reminiscent of early 2000s cyberpunk, mixing pixel art with 3D graphics.",
+  "visualSummaryShort": "The card showcases a retro-futuristic design with a holographic screen depicting a virtual world. It features a vibrant color palette of neon greens and blues, accented by circuit-like patterns.",
+  "visualKeywords": [
+    "holographic",
+    "neon greens",
+    "neon blues",
+    "cyberpunk",
+    "pixel art",
+    "3d graphics",
+    "circuit patterns",
+    "virtual world"
+  ],
+  "textKeywords": [
+    "homerpepmovi",
+    "wait",
+    "minute",
+    "metaverse",
+    "unknown",
+    "spo",
+    "immobilized",
+    "ele"
+  ],
+  "keywords": [
+    "holographic",
+    "neon greens",
+    "neon blues",
+    "cyberpunk",
+    "pixel art",
+    "3d graphics",
+    "circuit patterns",
+    "virtual world",
+    "homerpepmovi",
+    "wait",
+    "minute",
+    "metaverse",
+    "unknown",
+    "spo",
+    "immobilized",
+    "ele"
+  ],
+  "embeddingInput": "HOMERPEPMOVI (Fake Rares) - Series 13 Card 41\nArtist: METAVOXELZ\nSupply 58 Issued January 2023\nOn-card text: HOMERPEPMOVI | WAIT A MINUTE, I'M IN THE METAVERSE! | 99 | 99 | UNKNOWN SPO IMMOBILIZED ELE\nVisual summary: The card features a digital, retro-futuristic aesthetic with a holographic screen displaying a scene from a virtual world. The color palette is dominated by neon greens and blues, with circuit-like patterns framing the central image. The design is reminiscent of early 2000s cyberpunk, mixing pixel art with 3D graphics.\nMemetic references: References to the Metaverse, a popular concept in crypto and tech culture.; A nod to Homer Simpson and Pepe the Frog, iconic in meme culture.; Sci-fi and cyberpunk elements evoke classic internet and gaming nostalgia.",
+  "embeddingBlocks": [
+    {
+      "id": "HOMERPEPMOVI#text",
+      "label": "On-card text",
+      "text": "HOMERPEPMOVI | WAIT A MINUTE, I'M IN THE METAVERSE! | 99 | 99 | UNKNOWN SPO IMMOBILIZED ELE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "HOMERPEPMOVI#memetic",
+      "label": "Memetic references",
+      "text": "References to the Metaverse, a popular concept in crypto and tech culture.\nA nod to Homer Simpson and Pepe the Frog, iconic in meme culture.\nSci-fi and cyberpunk elements evoke classic internet and gaming nostalgia.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "HOMERPEPMOVI#visual",
+      "label": "Visual summary",
+      "text": "The card features a digital, retro-futuristic aesthetic with a holographic screen displaying a scene from a virtual world. The color palette is dominated by neon greens and blues, with circuit-like patterns framing the central image. The design is reminiscent of early 2000s cyberpunk, mixing pixel art with 3D graphics.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "HOMERPEPMOVI#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nHOMERPEPMOVI  \nWAIT A MINUTE, I'M IN THE METAVERSE!  \n99/99  \nUNKNOWN SPO IMMOBILIZED ELE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a digital, retro-futuristic aesthetic with a holographic screen displaying a scene from a virtual world. The color palette is dominated by neon greens and blues, with circuit-like patterns framing the central image. The design is reminiscent of early 2000s cyberpunk, mixing pixel art with 3D graphics.\n\n🧬 **MEMETIC DNA:**\n- References to the Metaverse, a popular concept in crypto and tech culture.\n- A nod to Homer Simpson and Pepe the Frog, iconic in meme culture.\n- Sci-fi and cyberpunk elements evoke classic internet and gaming nostalgia.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.689Z",
+  "sourceFactVersion": 1
+}

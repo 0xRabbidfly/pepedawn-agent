@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "asset": "PEPPIEPAGE",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 29,
+  "artist": "PEPSIKOALA",
+  "supply": 100,
+  "issuance": "September 2023",
+  "textOnCard": [
+    "PEPPIE PAGE. Terrifying tales of mutation and horror! 69¢. Once bitten, never shy... When pin-up vs panther... Bettie becomes... PEPPIE!"
+  ],
+  "memeticReferences": [
+    "References to vintage horror and pin-up culture.",
+    "Pepe the Frog elements with the humanoid panther face.",
+    "Plays on transformation and retro comic book themes."
+  ],
+  "visualSummary": "The card features a stylized pin-up girl with green skin, reminiscent of classic monster or alien aesthetics, standing in front of a full moon. She has a confident pose, wearing a black leotard and stockings, and is accompanied by a green panther with a humanoid face. The color palette is dominated by shades of green, black, and white, creating a spooky yet glamorous vibe.",
+  "visualSummaryShort": "The card showcases a green-skinned pin-up girl in a black leotard, confidently posed in front of a full moon. Accompanied by a humanoid-faced green panther, the color palette emphasizes green, black, and white for a spooky yet glamorous atmosphere.",
+  "visualKeywords": [
+    "pin-up girl",
+    "green skin",
+    "full moon",
+    "black leotard",
+    "green panther",
+    "humanoid face",
+    "spooky",
+    "glamorous",
+    "black and white",
+    "confident pose"
+  ],
+  "textKeywords": [
+    "peppie",
+    "page",
+    "terrifying",
+    "tales",
+    "mutation",
+    "horror",
+    "once",
+    "bitten",
+    "never",
+    "shy",
+    "when",
+    "pin",
+    "panther",
+    "bettie",
+    "becomes"
+  ],
+  "keywords": [
+    "pin-up girl",
+    "green skin",
+    "full moon",
+    "black leotard",
+    "green panther",
+    "humanoid face",
+    "spooky",
+    "glamorous",
+    "black and white",
+    "confident pose",
+    "peppie",
+    "page",
+    "terrifying",
+    "tales",
+    "mutation",
+    "horror",
+    "once",
+    "bitten",
+    "never",
+    "shy",
+    "when",
+    "pin",
+    "panther",
+    "bettie",
+    "becomes"
+  ],
+  "embeddingInput": "PEPPIEPAGE (Fake Rares) - Series 16 Card 29\nArtist: PEPSIKOALA\nSupply 100 Issued September 2023\nOn-card text: PEPPIE PAGE. Terrifying tales of mutation and horror! 69¢. Once bitten, never shy... When pin-up vs panther... Bettie becomes... PEPPIE!\nVisual summary: The card features a stylized pin-up girl with green skin, reminiscent of classic monster or alien aesthetics, standing in front of a full moon. She has a confident pose, wearing a black leotard and stockings, and is accompanied by a green panther with a humanoid face. The color palette is dominated by shades of green, black, and white, creating a spooky yet glamorous vibe.\nMemetic references: References to vintage horror and pin-up culture.; Pepe the Frog elements with the humanoid panther face.; Plays on transformation and retro comic book themes.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPPIEPAGE#text",
+      "label": "On-card text",
+      "text": "PEPPIE PAGE. Terrifying tales of mutation and horror! 69¢. Once bitten, never shy... When pin-up vs panther... Bettie becomes... PEPPIE!",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPPIEPAGE#memetic",
+      "label": "Memetic references",
+      "text": "References to vintage horror and pin-up culture.\nPepe the Frog elements with the humanoid panther face.\nPlays on transformation and retro comic book themes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPPIEPAGE#visual",
+      "label": "Visual summary",
+      "text": "The card features a stylized pin-up girl with green skin, reminiscent of classic monster or alien aesthetics, standing in front of a full moon. She has a confident pose, wearing a black leotard and stockings, and is accompanied by a green panther with a humanoid face. The color palette is dominated by shades of green, black, and white, creating a spooky yet glamorous vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPPIEPAGE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPPIE PAGE. Terrifying tales of mutation and horror! 69¢. Once bitten, never shy... When pin-up vs panther... Bettie becomes... PEPPIE!\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a stylized pin-up girl with green skin, reminiscent of classic monster or alien aesthetics, standing in front of a full moon. She has a confident pose, wearing a black leotard and stockings, and is accompanied by a green panther with a humanoid face. The color palette is dominated by shades of green, black, and white, creating a spooky yet glamorous vibe.\n\n🧬 **MEMETIC DNA:**\n- References to vintage horror and pin-up culture.\n- Pepe the Frog elements with the humanoid panther face.\n- Plays on transformation and retro comic book themes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.025Z",
+  "sourceFactVersion": 1
+}

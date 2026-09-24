@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PAGGAGECLAIM",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 10,
+  "artist": "Joe Pease",
+  "supply": 75,
+  "issuance": "August 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog characters are central, serving as a crypto and meme culture staple.",
+    "The chaotic airport scene symbolizes the unpredictability and hustle of the crypto world.",
+    "The use of Pepe in various roles adds to the humor and meme reference."
+  ],
+  "visualSummary": "The image features an airport baggage claim scene bustling with Pepe the Frog characters, humorously integrated into the setting. The color palette is a mix of realistic airport tones with bright green Pepes, creating a playful contrast. The artistic style combines real-life imagery with cartoonish elements, making the Pepes stand out in the otherwise ordinary airport backdrop.",
+  "visualSummaryShort": "The card depicts a lively airport baggage claim scene filled with Pepe the Frog characters. The bright green Pepes contrast with the realistic airport tones, blending humor with a typical travel environment.",
+  "visualKeywords": [
+    "airport",
+    "baggage claim",
+    "pepe the frog",
+    "green",
+    "cartoonish",
+    "humor",
+    "realistic",
+    "bustling",
+    "playful",
+    "contrast"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "airport",
+    "baggage claim",
+    "pepe the frog",
+    "green",
+    "cartoonish",
+    "humor",
+    "realistic",
+    "bustling",
+    "playful",
+    "contrast"
+  ],
+  "embeddingInput": "PAGGAGECLAIM (Fake Rares) - Series 9 Card 10\nArtist: Joe Pease\nSupply 75 Issued August 2022\nOn-card text: none detected\nVisual summary: The image features an airport baggage claim scene bustling with Pepe the Frog characters, humorously integrated into the setting. The color palette is a mix of realistic airport tones with bright green Pepes, creating a playful contrast. The artistic style combines real-life imagery with cartoonish elements, making the Pepes stand out in the otherwise ordinary airport backdrop.\nMemetic references: Pepe the Frog characters are central, serving as a crypto and meme culture staple.; The chaotic airport scene symbolizes the unpredictability and hustle of the crypto world.; The use of Pepe in various roles adds to the humor and meme reference.",
+  "embeddingBlocks": [
+    {
+      "id": "PAGGAGECLAIM#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog characters are central, serving as a crypto and meme culture staple.\nThe chaotic airport scene symbolizes the unpredictability and hustle of the crypto world.\nThe use of Pepe in various roles adds to the humor and meme reference.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PAGGAGECLAIM#visual",
+      "label": "Visual summary",
+      "text": "The image features an airport baggage claim scene bustling with Pepe the Frog characters, humorously integrated into the setting. The color palette is a mix of realistic airport tones with bright green Pepes, creating a playful contrast. The artistic style combines real-life imagery with cartoonish elements, making the Pepes stand out in the otherwise ordinary airport backdrop.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PAGGAGECLAIM#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe image features an airport baggage claim scene bustling with Pepe the Frog characters, humorously integrated into the setting. The color palette is a mix of realistic airport tones with bright green Pepes, creating a playful contrast. The artistic style combines real-life imagery with cartoonish elements, making the Pepes stand out in the otherwise ordinary airport backdrop.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog characters are central, serving as a crypto and meme culture staple.\n- The chaotic airport scene symbolizes the unpredictability and hustle of the crypto world.\n- The use of Pepe in various roles adds to the humor and meme reference.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.820Z",
+  "sourceFactVersion": 1
+}

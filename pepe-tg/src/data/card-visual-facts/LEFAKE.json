@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "asset": "LEFAKE",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 37,
+  "artist": "Rarejay",
+  "supply": 50,
+  "issuance": "February 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe-inspired character with a twist.",
+    "Bitcoin symbols subtly integrated into the wallpaper.",
+    "Echoes of famous art with a crypto meme overlay."
+  ],
+  "visualSummary": "The card features a green-skinned figure lounging in a red armchair, reminiscent of classic art styles. The background boasts a patterned wallpaper with Bitcoin symbols, adding a modern twist. The color palette is vibrant with greens, reds, and blues, giving it a pop-art feel.",
+  "visualSummaryShort": "A green-skinned figure relaxes in a red armchair against a patterned wallpaper featuring Bitcoin symbols. The vibrant color palette of greens, reds, and blues creates a pop-art aesthetic.",
+  "visualKeywords": [
+    "green figure",
+    "red armchair",
+    "patterned wallpaper",
+    "bitcoin symbols",
+    "vibrant colors",
+    "pop-art",
+    "classic art style"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "green figure",
+    "red armchair",
+    "patterned wallpaper",
+    "bitcoin symbols",
+    "vibrant colors",
+    "pop-art",
+    "classic art style"
+  ],
+  "embeddingInput": "LEFAKE (Fake Rares) - Series 9 Card 37\nArtist: Rarejay\nSupply 50 Issued February 2022\nOn-card text: none detected\nVisual summary: The card features a green-skinned figure lounging in a red armchair, reminiscent of classic art styles. The background boasts a patterned wallpaper with Bitcoin symbols, adding a modern twist. The color palette is vibrant with greens, reds, and blues, giving it a pop-art feel.\nMemetic references: Pepe-inspired character with a twist.; Bitcoin symbols subtly integrated into the wallpaper.; Echoes of famous art with a crypto meme overlay.",
+  "embeddingBlocks": [
+    {
+      "id": "LEFAKE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe-inspired character with a twist.\nBitcoin symbols subtly integrated into the wallpaper.\nEchoes of famous art with a crypto meme overlay.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LEFAKE#visual",
+      "label": "Visual summary",
+      "text": "The card features a green-skinned figure lounging in a red armchair, reminiscent of classic art styles. The background boasts a patterned wallpaper with Bitcoin symbols, adding a modern twist. The color palette is vibrant with greens, reds, and blues, giving it a pop-art feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LEFAKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a green-skinned figure lounging in a red armchair, reminiscent of classic art styles. The background boasts a patterned wallpaper with Bitcoin symbols, adding a modern twist. The color palette is vibrant with greens, reds, and blues, giving it a pop-art feel.\n\n🧬 **MEMETIC DNA:**\n- Pepe-inspired character with a twist.\n- Bitcoin symbols subtly integrated into the wallpaper.\n- Echoes of famous art with a crypto meme overlay.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.734Z",
+  "sourceFactVersion": 1
+}

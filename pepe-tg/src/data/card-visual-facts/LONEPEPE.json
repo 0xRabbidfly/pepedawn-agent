@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "asset": "LONEPEPE",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 18,
+  "artist": "DJ QBert",
+  "supply": 21,
+  "issuance": "September 2023",
+  "textOnCard": [
+    "Shogun Assassin Pepe",
+    "Lone Pepe and Tadpole",
+    "Death of Fiat",
+    "Attack: 33.3 Hitpoints: 45",
+    "78 Bonus: 180g"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a samurai warrior references both the meme and Japanese culture.",
+    "The \"Death of Fiat\" text plays on crypto's rebellion against traditional currencies.",
+    "The card game aesthetic with attack and hitpoints stats hints at RPG and gaming culture."
+  ],
+  "visualSummary": "The card features a samurai-style Pepe the Frog standing on a pile of fiat currency, holding a sword. A sunset backdrop silhouettes a traditional Japanese building, enhancing the dramatic samurai theme. The color palette is rich with oranges and blacks, creating a contrast between the serene sky and the intense action below.",
+  "visualSummaryShort": "The card depicts a samurai-style Pepe the Frog poised on a mound of fiat currency, wielding a sword against a sunset backdrop. The scene is enriched by a traditional Japanese building silhouette, with a vibrant color palette of oranges and blacks.",
+  "visualKeywords": [
+    "samurai",
+    "pepe",
+    "sword",
+    "fiat currency",
+    "sunset",
+    "japanese building",
+    "orange palette",
+    "black contrast",
+    "dramatic",
+    "silhouette"
+  ],
+  "textKeywords": [
+    "shogun",
+    "assassin",
+    "lone",
+    "tadpole",
+    "death",
+    "fiat",
+    "attack",
+    "hitpoints",
+    "bonus",
+    "180g"
+  ],
+  "keywords": [
+    "samurai",
+    "pepe",
+    "sword",
+    "fiat currency",
+    "sunset",
+    "japanese building",
+    "orange palette",
+    "black contrast",
+    "dramatic",
+    "silhouette",
+    "shogun",
+    "assassin",
+    "lone",
+    "tadpole",
+    "death",
+    "fiat",
+    "attack",
+    "hitpoints",
+    "bonus",
+    "180g"
+  ],
+  "embeddingInput": "LONEPEPE (Fake Rares) - Series 16 Card 18\nArtist: DJ QBert\nSupply 21 Issued September 2023\nOn-card text: Shogun Assassin Pepe | Lone Pepe and Tadpole | Death of Fiat | Attack: 33.3 Hitpoints: 45 | 78 Bonus: 180g\nVisual summary: The card features a samurai-style Pepe the Frog standing on a pile of fiat currency, holding a sword. A sunset backdrop silhouettes a traditional Japanese building, enhancing the dramatic samurai theme. The color palette is rich with oranges and blacks, creating a contrast between the serene sky and the intense action below.\nMemetic references: Pepe the Frog as a samurai warrior references both the meme and Japanese culture.; The \"Death of Fiat\" text plays on crypto's rebellion against traditional currencies.; The card game aesthetic with attack and hitpoints stats hints at RPG and gaming culture.",
+  "embeddingBlocks": [
+    {
+      "id": "LONEPEPE#text",
+      "label": "On-card text",
+      "text": "Shogun Assassin Pepe | Lone Pepe and Tadpole | Death of Fiat | Attack: 33.3 Hitpoints: 45 | 78 Bonus: 180g",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "LONEPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a samurai warrior references both the meme and Japanese culture.\nThe \"Death of Fiat\" text plays on crypto's rebellion against traditional currencies.\nThe card game aesthetic with attack and hitpoints stats hints at RPG and gaming culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LONEPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a samurai-style Pepe the Frog standing on a pile of fiat currency, holding a sword. A sunset backdrop silhouettes a traditional Japanese building, enhancing the dramatic samurai theme. The color palette is rich with oranges and blacks, creating a contrast between the serene sky and the intense action below.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LONEPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nShogun Assassin Pepe  \nLone Pepe and Tadpole  \nDeath of Fiat  \nAttack: 33.3 Hitpoints: 45/78 Bonus: 180g\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a samurai-style Pepe the Frog standing on a pile of fiat currency, holding a sword. A sunset backdrop silhouettes a traditional Japanese building, enhancing the dramatic samurai theme. The color palette is rich with oranges and blacks, creating a contrast between the serene sky and the intense action below.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a samurai warrior references both the meme and Japanese culture.\n- The \"Death of Fiat\" text plays on crypto's rebellion against traditional currencies.\n- The card game aesthetic with attack and hitpoints stats hints at RPG and gaming culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.749Z",
+  "sourceFactVersion": 1
+}

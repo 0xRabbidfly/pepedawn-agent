@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "DOCTOREVILP",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 10,
+  "artist": "Aera One",
+  "supply": 100,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "DR. EVIL PEPE",
+    "ONE MILLION BITCOIN!"
+  ],
+  "memeticReferences": [
+    "References Dr. Evil from the Austin Powers movies, known for his iconic pose and \"one million dollars\" line.",
+    "Pepe the Frog is a staple of internet meme culture and a symbol in NFT communities.",
+    "The speech bubble changes the classic movie demand to \"ONE MILLION BITCOIN!\", blending meme culture with crypto humor."
+  ],
+  "visualSummary": "The card features a vibrant illustration of Dr. Evil styled as Pepe the Frog. The color palette is dominated by bright greens for Pepe's face, contrasting with purple for his clothing and background, and black outlines for definition. The style is reminiscent of classic comic book art with bold lines and exaggerated expressions.",
+  "visualSummaryShort": "The card showcases a colorful depiction of Dr. Evil as Pepe the Frog, with a bright green face and purple attire. The comic book style emphasizes bold lines and exaggerated features.",
+  "visualKeywords": [
+    "pepe",
+    "green",
+    "purple",
+    "comic style",
+    "bold lines",
+    "exaggerated expressions"
+  ],
+  "textKeywords": [
+    "evil",
+    "one",
+    "million",
+    "bitcoin"
+  ],
+  "keywords": [
+    "pepe",
+    "green",
+    "purple",
+    "comic style",
+    "bold lines",
+    "exaggerated expressions",
+    "evil",
+    "one",
+    "million",
+    "bitcoin"
+  ],
+  "embeddingInput": "DOCTOREVILP (Fake Rares) - Series 7 Card 10\nArtist: Aera One\nSupply 100 Issued March 2022\nOn-card text: DR. EVIL PEPE | ONE MILLION BITCOIN!\nVisual summary: The card features a vibrant illustration of Dr. Evil styled as Pepe the Frog. The color palette is dominated by bright greens for Pepe's face, contrasting with purple for his clothing and background, and black outlines for definition. The style is reminiscent of classic comic book art with bold lines and exaggerated expressions.\nMemetic references: References Dr. Evil from the Austin Powers movies, known for his iconic pose and \"one million dollars\" line.; Pepe the Frog is a staple of internet meme culture and a symbol in NFT communities.; The speech bubble changes the classic movie demand to \"ONE MILLION BITCOIN!\", blending meme culture with crypto humor.",
+  "embeddingBlocks": [
+    {
+      "id": "DOCTOREVILP#text",
+      "label": "On-card text",
+      "text": "DR. EVIL PEPE | ONE MILLION BITCOIN!",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "DOCTOREVILP#memetic",
+      "label": "Memetic references",
+      "text": "References Dr. Evil from the Austin Powers movies, known for his iconic pose and \"one million dollars\" line.\nPepe the Frog is a staple of internet meme culture and a symbol in NFT communities.\nThe speech bubble changes the classic movie demand to \"ONE MILLION BITCOIN!\", blending meme culture with crypto humor.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "DOCTOREVILP#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant illustration of Dr. Evil styled as Pepe the Frog. The color palette is dominated by bright greens for Pepe's face, contrasting with purple for his clothing and background, and black outlines for definition. The style is reminiscent of classic comic book art with bold lines and exaggerated expressions.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "DOCTOREVILP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nDR. EVIL PEPE  \nONE MILLION BITCOIN!\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant illustration of Dr. Evil styled as Pepe the Frog. The color palette is dominated by bright greens for Pepe's face, contrasting with purple for his clothing and background, and black outlines for definition. The style is reminiscent of classic comic book art with bold lines and exaggerated expressions.\n\n🧬 **MEMETIC DNA:**\n- References Dr. Evil from the Austin Powers movies, known for his iconic pose and \"one million dollars\" line.\n- Pepe the Frog is a staple of internet meme culture and a symbol in NFT communities.\n- The speech bubble changes the classic movie demand to \"ONE MILLION BITCOIN!\", blending meme culture with crypto humor.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.403Z",
+  "sourceFactVersion": 1
+}

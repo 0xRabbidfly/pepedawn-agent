@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PEPEXTASIS",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 28,
+  "artist": "CrimsonRider x Rey",
+  "supply": 36,
+  "issuance": "January 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Alien and third-eye symbology suggestive of enlightenment or higher consciousness.",
+    "Smoking motif aligns with counterculture and chill vibes.",
+    "Psychedelic background evokes classic 60s and 70s pop art influences."
+  ],
+  "visualSummary": "The card features a green alien-like figure with a single red, eye-shaped marking on its forehead, reminiscent of a third eye. The character is smoking, with a relaxed expression, in front of a vibrant background with alternating pink and yellow stripes, giving it a psychedelic vibe. The style is sketchy and raw, with bold outlines and a grainy texture that adds to the retro feel.",
+  "visualSummaryShort": "The card showcases a green alien figure with a prominent red eye marking, exuding a relaxed demeanor while smoking. The vibrant pink and yellow striped background enhances the psychedelic atmosphere.",
+  "visualKeywords": [
+    "alien",
+    "red eye",
+    "smoking",
+    "pink stripes",
+    "yellow stripes",
+    "psychedelic",
+    "sketchy",
+    "bold outlines",
+    "grainy texture",
+    "retro"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "alien",
+    "red eye",
+    "smoking",
+    "pink stripes",
+    "yellow stripes",
+    "psychedelic",
+    "sketchy",
+    "bold outlines",
+    "grainy texture",
+    "retro"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "PEPEXTASIS (Fake Rares) - Series 12 Card 28\nArtist: CrimsonRider x Rey\nSupply 36 Issued January 2023\nOn-card text: none detected\nVisual summary: The card features a green alien-like figure with a single red, eye-shaped marking on its forehead, reminiscent of a third eye. The character is smoking, with a relaxed expression, in front of a vibrant background with alternating pink and yellow stripes, giving it a psychedelic vibe. The style is sketchy and raw, with bold outlines and a grainy texture that adds to the retro feel.\nMemetic references: Alien and third-eye symbology suggestive of enlightenment or higher consciousness.; Smoking motif aligns with counterculture and chill vibes.; Psychedelic background evokes classic 60s and 70s pop art influences.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEXTASIS#memetic",
+      "label": "Memetic references",
+      "text": "Alien and third-eye symbology suggestive of enlightenment or higher consciousness.\nSmoking motif aligns with counterculture and chill vibes.\nPsychedelic background evokes classic 60s and 70s pop art influences.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEXTASIS#visual",
+      "label": "Visual summary",
+      "text": "The card features a green alien-like figure with a single red, eye-shaped marking on its forehead, reminiscent of a third eye. The character is smoking, with a relaxed expression, in front of a vibrant background with alternating pink and yellow stripes, giving it a psychedelic vibe. The style is sketchy and raw, with bold outlines and a grainy texture that adds to the retro feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEXTASIS#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a green alien-like figure with a single red, eye-shaped marking on its forehead, reminiscent of a third eye. The character is smoking, with a relaxed expression, in front of a vibrant background with alternating pink and yellow stripes, giving it a psychedelic vibe. The style is sketchy and raw, with bold outlines and a grainy texture that adds to the retro feel.\n\n🧬 **MEMETIC DNA:**\n- Alien and third-eye symbology suggestive of enlightenment or higher consciousness.\n- Smoking motif aligns with counterculture and chill vibes.\n- Psychedelic background evokes classic 60s and 70s pop art influences.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:34:28.156Z"
+}

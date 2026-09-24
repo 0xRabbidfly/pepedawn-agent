@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "asset": "PARANOIDPEPE",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 24,
+  "artist": "MIKEYCORTEZ",
+  "supply": 50,
+  "issuance": "October 2022",
+  "textOnCard": [
+    "Paranoid Pepe",
+    "The feds are otw.",
+    "Wanted: ⭐⭐⭐⭐⭐"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery.",
+    "References to paranoia and surveillance culture.",
+    "\"The feds are otw\" taps into crypto-anxiety and fear of regulation."
+  ],
+  "visualSummary": "Pepe is peeking nervously through window blinds, his expression filled with anxiety. The color palette is muted with shades of green and gray, creating a tense atmosphere. The style is cartoonish with bold outlines, emphasizing Pepe's iconic wide eyes and worried expression.",
+  "visualSummaryShort": "Pepe is nervously peeking through window blinds, showcasing a worried expression. The muted green and gray color palette enhances the tense atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "window blinds",
+    "anxiety",
+    "muted colors",
+    "cartoonish",
+    "bold outlines",
+    "wide eyes",
+    "tense atmosphere"
+  ],
+  "textKeywords": [
+    "paranoid",
+    "feds",
+    "are",
+    "otw",
+    "wanted"
+  ],
+  "keywords": [
+    "pepe",
+    "window blinds",
+    "anxiety",
+    "muted colors",
+    "cartoonish",
+    "bold outlines",
+    "wide eyes",
+    "tense atmosphere",
+    "paranoid",
+    "feds",
+    "are",
+    "otw",
+    "wanted"
+  ],
+  "embeddingInput": "PARANOIDPEPE (Fake Rares) - Series 12 Card 24\nArtist: MIKEYCORTEZ\nSupply 50 Issued October 2022\nOn-card text: Paranoid Pepe | The feds are otw. | Wanted: ⭐⭐⭐⭐⭐\nVisual summary: Pepe is peeking nervously through window blinds, his expression filled with anxiety. The color palette is muted with shades of green and gray, creating a tense atmosphere. The style is cartoonish with bold outlines, emphasizing Pepe's iconic wide eyes and worried expression.\nMemetic references: Classic Pepe the Frog imagery.; References to paranoia and surveillance culture.; \"The feds are otw\" taps into crypto-anxiety and fear of regulation.",
+  "embeddingBlocks": [
+    {
+      "id": "PARANOIDPEPE#text",
+      "label": "On-card text",
+      "text": "Paranoid Pepe | The feds are otw. | Wanted: ⭐⭐⭐⭐⭐",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PARANOIDPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery.\nReferences to paranoia and surveillance culture.\n\"The feds are otw\" taps into crypto-anxiety and fear of regulation.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PARANOIDPEPE#visual",
+      "label": "Visual summary",
+      "text": "Pepe is peeking nervously through window blinds, his expression filled with anxiety. The color palette is muted with shades of green and gray, creating a tense atmosphere. The style is cartoonish with bold outlines, emphasizing Pepe's iconic wide eyes and worried expression.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PARANOIDPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nParanoid Pepe  \nThe feds are otw.  \nWanted: ⭐⭐⭐⭐⭐\n\n🎨 **VISUAL BREAKDOWN:**\nPepe is peeking nervously through window blinds, his expression filled with anxiety. The color palette is muted with shades of green and gray, creating a tense atmosphere. The style is cartoonish with bold outlines, emphasizing Pepe's iconic wide eyes and worried expression.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery.\n- References to paranoia and surveillance culture.\n- \"The feds are otw\" taps into crypto-anxiety and fear of regulation.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.825Z",
+  "sourceFactVersion": 1
+}

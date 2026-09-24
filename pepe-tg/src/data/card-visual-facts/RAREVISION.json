@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "RAREVISION",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 24,
+  "artist": "Dim Zayan",
+  "supply": 88,
+  "issuance": "March 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery, a staple in meme culture.",
+    "The chaotic layering hints at the wild, unpredictable nature of crypto markets.",
+    "Neon green suggests a connection to digital and crypto aesthetics."
+  ],
+  "visualSummary": "The card features an animated, chaotic composition of Pepe the Frog sketches in neon green against a dark background. The frogs are loosely drawn and layered, creating a sense of movement and depth. The color palette is dominated by green hues, giving it an energized and lively vibe.",
+  "visualSummaryShort": "The card showcases a dynamic arrangement of loosely drawn Pepe the Frog sketches in vibrant neon green. The dark background enhances the lively energy of the green hues, creating a sense of movement.",
+  "visualKeywords": [
+    "pepe the frog",
+    "neon green",
+    "dark background",
+    "chaotic composition",
+    "animated",
+    "movement",
+    "depth",
+    "vibrant",
+    "sketches",
+    "green hues"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "neon green",
+    "dark background",
+    "chaotic composition",
+    "animated",
+    "movement",
+    "depth",
+    "vibrant",
+    "sketches",
+    "green hues"
+  ],
+  "embeddingInput": "RAREVISION (Fake Rares) - Series 6 Card 24\nArtist: Dim Zayan\nSupply 88 Issued March 2022\nOn-card text: none detected\nVisual summary: The card features an animated, chaotic composition of Pepe the Frog sketches in neon green against a dark background. The frogs are loosely drawn and layered, creating a sense of movement and depth. The color palette is dominated by green hues, giving it an energized and lively vibe.\nMemetic references: Classic Pepe the Frog imagery, a staple in meme culture.; The chaotic layering hints at the wild, unpredictable nature of crypto markets.; Neon green suggests a connection to digital and crypto aesthetics.",
+  "embeddingBlocks": [
+    {
+      "id": "RAREVISION#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery, a staple in meme culture.\nThe chaotic layering hints at the wild, unpredictable nature of crypto markets.\nNeon green suggests a connection to digital and crypto aesthetics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RAREVISION#visual",
+      "label": "Visual summary",
+      "text": "The card features an animated, chaotic composition of Pepe the Frog sketches in neon green against a dark background. The frogs are loosely drawn and layered, creating a sense of movement and depth. The color palette is dominated by green hues, giving it an energized and lively vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RAREVISION#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features an animated, chaotic composition of Pepe the Frog sketches in neon green against a dark background. The frogs are loosely drawn and layered, creating a sense of movement and depth. The color palette is dominated by green hues, giving it an energized and lively vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery, a staple in meme culture.\n- The chaotic layering hints at the wild, unpredictable nature of crypto markets.\n- Neon green suggests a connection to digital and crypto aesthetics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.075Z",
+  "sourceFactVersion": 1
+}

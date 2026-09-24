@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "CAKERARE",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 42,
+  "artist": "Aquatic",
+  "supply": null,
+  "issuance": "September 2026",
+  "textOnCard": [
+    "FAKE RARE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as the central figure, a staple in meme culture.",
+    "References to the Illuminati with the all-seeing eye symbol.",
+    "\"Fake Rare\" text playing on the NFT culture of rarity and value.",
+    "Elements of fire symbolizing chaos and transformation."
+  ],
+  "visualSummary": "This card features a Pepe the Frog character wearing a \"FAKE RARE\" hoodie, exuding a cool, collected vibe amidst a fiery background. The color palette is intense, with dominant reds, greens, and whites, giving it a vibrant yet ominous feel. Surrounding Pepe are mythical creatures like a dragon and a white tiger, adding an exotic and powerful aura to the composition.",
+  "visualSummaryShort": "The card showcases a Pepe the Frog character in a \"FAKE RARE\" hoodie against a fiery background. It features mythical creatures like a dragon and a white tiger, creating an intense and exotic atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "hoodie",
+    "fire",
+    "dragon",
+    "tiger",
+    "red",
+    "green",
+    "white",
+    "mythical",
+    "vibrant"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "hoodie",
+    "fire",
+    "dragon",
+    "tiger",
+    "red",
+    "green",
+    "white",
+    "mythical",
+    "vibrant"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "CAKERARE (Fake Rares) - Series 18 Card 42\nArtist: Aquatic\nIssued September 2026\nOn-card text: FAKE RARE\nVisual summary: This card features a Pepe the Frog character wearing a \"FAKE RARE\" hoodie, exuding a cool, collected vibe amidst a fiery background. The color palette is intense, with dominant reds, greens, and whites, giving it a vibrant yet ominous feel. Surrounding Pepe are mythical creatures like a dragon and a white tiger, adding an exotic and powerful aura to the composition.\nMemetic references: Pepe the Frog as the central figure, a staple in meme culture.; References to the Illuminati with the all-seeing eye symbol.; \"Fake Rare\" text playing on the NFT culture of rarity and value.; Elements of fire symbolizing chaos and transformation.",
+  "embeddingBlocks": [
+    {
+      "id": "CAKERARE#text",
+      "label": "On-card text",
+      "text": "FAKE RARE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "CAKERARE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as the central figure, a staple in meme culture.\nReferences to the Illuminati with the all-seeing eye symbol.\n\"Fake Rare\" text playing on the NFT culture of rarity and value.\nElements of fire symbolizing chaos and transformation.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "CAKERARE#visual",
+      "label": "Visual summary",
+      "text": "This card features a Pepe the Frog character wearing a \"FAKE RARE\" hoodie, exuding a cool, collected vibe amidst a fiery background. The color palette is intense, with dominant reds, greens, and whites, giving it a vibrant yet ominous feel. Surrounding Pepe are mythical creatures like a dragon and a white tiger, adding an exotic and powerful aura to the composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "CAKERARE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE RARE\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a Pepe the Frog character wearing a \"FAKE RARE\" hoodie, exuding a cool, collected vibe amidst a fiery background. The color palette is intense, with dominant reds, greens, and whites, giving it a vibrant yet ominous feel. Surrounding Pepe are mythical creatures like a dragon and a white tiger, adding an exotic and powerful aura to the composition.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as the central figure, a staple in meme culture.\n- References to the Illuminati with the all-seeing eye symbol.\n- \"Fake Rare\" text playing on the NFT culture of rarity and value.\n- Elements of fire symbolizing chaos and transformation.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:34:57.539Z"
+}

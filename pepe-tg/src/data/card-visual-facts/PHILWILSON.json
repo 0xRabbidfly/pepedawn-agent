@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "asset": "PHILWILSON",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 27,
+  "artist": "Mr. HODLPIG",
+  "supply": 121,
+  "issuance": "August 2023",
+  "textOnCard": [
+    "WHO IS PHIL WILSON?"
+  ],
+  "memeticReferences": [
+    "The question \"Who is Phil Wilson?\" evokes curiosity and mystery, reminiscent of viral internet mysteries or unsolved crypto puzzles.",
+    "The color scheme and text style are reminiscent of classic meme formats that use bold colors and straightforward questions to provoke engagement.",
+    "The card’s minimalist design mimics the ethos of crypto culture where simplicity often masks complex underlying ideas."
+  ],
+  "visualSummary": "The card features a bold, minimalist design with a bright orange background and white text centered in the middle. The text is in a simple, sans-serif font, creating a clean and straightforward aesthetic. The overall look is modern and eye-catching, focusing entirely on the question posed.",
+  "visualSummaryShort": "The card showcases a bright orange background with white text in a minimalist design. It emphasizes a modern and clean aesthetic, drawing attention to the central question.",
+  "visualKeywords": [
+    "orange background",
+    "white text",
+    "minimalist",
+    "modern",
+    "bold design"
+  ],
+  "textKeywords": [
+    "who",
+    "phil",
+    "wilson"
+  ],
+  "keywords": [
+    "orange background",
+    "white text",
+    "minimalist",
+    "modern",
+    "bold design",
+    "who",
+    "phil",
+    "wilson"
+  ],
+  "embeddingInput": "PHILWILSON (Fake Rares) - Series 15 Card 27\nArtist: Mr. HODLPIG\nSupply 121 Issued August 2023\nOn-card text: WHO IS PHIL WILSON?\nVisual summary: The card features a bold, minimalist design with a bright orange background and white text centered in the middle. The text is in a simple, sans-serif font, creating a clean and straightforward aesthetic. The overall look is modern and eye-catching, focusing entirely on the question posed.\nMemetic references: The question \"Who is Phil Wilson?\" evokes curiosity and mystery, reminiscent of viral internet mysteries or unsolved crypto puzzles.; The color scheme and text style are reminiscent of classic meme formats that use bold colors and straightforward questions to provoke engagement.; The card’s minimalist design mimics the ethos of crypto culture where simplicity often masks complex underlying ideas.",
+  "embeddingBlocks": [
+    {
+      "id": "PHILWILSON#text",
+      "label": "On-card text",
+      "text": "WHO IS PHIL WILSON?",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PHILWILSON#memetic",
+      "label": "Memetic references",
+      "text": "The question \"Who is Phil Wilson?\" evokes curiosity and mystery, reminiscent of viral internet mysteries or unsolved crypto puzzles.\nThe color scheme and text style are reminiscent of classic meme formats that use bold colors and straightforward questions to provoke engagement.\nThe card’s minimalist design mimics the ethos of crypto culture where simplicity often masks complex underlying ideas.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PHILWILSON#visual",
+      "label": "Visual summary",
+      "text": "The card features a bold, minimalist design with a bright orange background and white text centered in the middle. The text is in a simple, sans-serif font, creating a clean and straightforward aesthetic. The overall look is modern and eye-catching, focusing entirely on the question posed.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PHILWILSON#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nWHO IS PHIL WILSON?\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a bold, minimalist design with a bright orange background and white text centered in the middle. The text is in a simple, sans-serif font, creating a clean and straightforward aesthetic. The overall look is modern and eye-catching, focusing entirely on the question posed.\n\n🧬 **MEMETIC DNA:**\n- The question \"Who is Phil Wilson?\" evokes curiosity and mystery, reminiscent of viral internet mysteries or unsolved crypto puzzles.\n- The color scheme and text style are reminiscent of classic meme formats that use bold colors and straightforward questions to provoke engagement.\n- The card’s minimalist design mimics the ethos of crypto culture where simplicity often masks complex underlying ideas.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.035Z",
+  "sourceFactVersion": 1
+}

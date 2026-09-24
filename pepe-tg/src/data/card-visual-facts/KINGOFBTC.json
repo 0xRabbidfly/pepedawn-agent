@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "asset": "KINGOFBTC",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 40,
+  "artist": "Alth0tas",
+  "supply": 21,
+  "issuance": "May 2023",
+  "textOnCard": [
+    "KING OF BTC"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a king, a nod to his iconic status in meme culture.",
+    "Bitcoin symbol prominently displayed, connecting to crypto culture.",
+    "The throne and crown symbolize power and authority, common themes in both memes and crypto narratives.",
+    "The bull on the throne's armrest hints at a bullish market sentiment."
+  ],
+  "visualSummary": "The card features a regal Pepe the Frog sitting on a throne, adorned with a golden crown and holding a scepter. The color palette is rich and vibrant, combining deep greens, reds, and golds with intricate patterns. The background includes elements of a medieval kingdom, complete with a castle and lush greenery, evoking a sense of royalty and grandeur.",
+  "visualSummaryShort": "The card showcases a regal Pepe the Frog on a throne, wearing a golden crown and holding a scepter. The vibrant color palette and medieval kingdom background enhance the royal atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "throne",
+    "crown",
+    "scepter",
+    "medieval",
+    "castle",
+    "greenery",
+    "rich colors",
+    "royalty",
+    "grand"
+  ],
+  "textKeywords": [
+    "king",
+    "btc"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "throne",
+    "crown",
+    "scepter",
+    "medieval",
+    "castle",
+    "greenery",
+    "rich colors",
+    "royalty",
+    "grand",
+    "king",
+    "btc"
+  ],
+  "embeddingInput": "KINGOFBTC (Fake Rares) - Series 17 Card 40\nArtist: Alth0tas\nSupply 21 Issued May 2023\nOn-card text: KING OF BTC\nVisual summary: The card features a regal Pepe the Frog sitting on a throne, adorned with a golden crown and holding a scepter. The color palette is rich and vibrant, combining deep greens, reds, and golds with intricate patterns. The background includes elements of a medieval kingdom, complete with a castle and lush greenery, evoking a sense of royalty and grandeur.\nMemetic references: Pepe the Frog as a king, a nod to his iconic status in meme culture.; Bitcoin symbol prominently displayed, connecting to crypto culture.; The throne and crown symbolize power and authority, common themes in both memes and crypto narratives.; The bull on the throne's armrest hints at a bullish market sentiment.",
+  "embeddingBlocks": [
+    {
+      "id": "KINGOFBTC#text",
+      "label": "On-card text",
+      "text": "KING OF BTC",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "KINGOFBTC#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a king, a nod to his iconic status in meme culture.\nBitcoin symbol prominently displayed, connecting to crypto culture.\nThe throne and crown symbolize power and authority, common themes in both memes and crypto narratives.\nThe bull on the throne's armrest hints at a bullish market sentiment.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "KINGOFBTC#visual",
+      "label": "Visual summary",
+      "text": "The card features a regal Pepe the Frog sitting on a throne, adorned with a golden crown and holding a scepter. The color palette is rich and vibrant, combining deep greens, reds, and golds with intricate patterns. The background includes elements of a medieval kingdom, complete with a castle and lush greenery, evoking a sense of royalty and grandeur.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "KINGOFBTC#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nKING OF BTC\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a regal Pepe the Frog sitting on a throne, adorned with a golden crown and holding a scepter. The color palette is rich and vibrant, combining deep greens, reds, and golds with intricate patterns. The background includes elements of a medieval kingdom, complete with a castle and lush greenery, evoking a sense of royalty and grandeur.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a king, a nod to his iconic status in meme culture.\n- Bitcoin symbol prominently displayed, connecting to crypto culture.\n- The throne and crown symbolize power and authority, common themes in both memes and crypto narratives.\n- The bull on the throne's armrest hints at a bullish market sentiment.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.719Z",
+  "sourceFactVersion": 1
+}

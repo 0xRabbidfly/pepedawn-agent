@@ -66,6 +66,22 @@ jobs:
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 
+      # Cards the vision pass has never seen get looked at - a still image,
+      # one vision call, one summary call - and their facts committed next to
+      # the index. Capped per run. Without the secret it lists and exits 0.
+      - name: Look at cards without visual facts
+        working-directory: pepe-tg
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          bun scripts/fv-backfill.ts --limit 25 | tee "$RUNNER_TEMP/fv-report.txt"
+          {
+            echo '### Visual facts'
+            echo '```'
+            tail -n 5 "$RUNNER_TEMP/fv-report.txt"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
       # The gate before anything is merged: the index as written is whole,
       # every card has a slot and a media extension, no slot is shared, and
       # every live card resolves to a URL that is not the dead old site.
@@ -76,7 +92,8 @@ jobs:
       - name: Check for changes
         id: check-changes
         run: |
-          if git diff --quiet pepe-tg/src/data/fake-rares-data.json; then
+          git add -N pepe-tg/src/data/card-visual-facts
+          if git diff --quiet -- pepe-tg/src/data/fake-rares-data.json pepe-tg/src/data/card-visual-facts pepe-tg/src/data/card-visual-traits.json; then
             echo "changed=false" >> $GITHUB_OUTPUT
             echo "ℹ️  No new cards found"
           else
@@ -111,6 +128,11 @@ jobs:
             echo '### Directory sync report'
             echo '```'
             cat "$RUNNER_TEMP/sync-report.txt"
+            echo '```'
+            echo
+            echo '### Visual facts'
+            echo '```'
+            tail -n 5 "$RUNNER_TEMP/fv-report.txt"
             echo '```'
           } > "$RUNNER_TEMP/pr-body.md"
 

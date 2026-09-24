@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "LSDDOCPEPE",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 8,
+  "artist": "Kaph Resh",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "LSDDOCPEPE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog references.",
+    "Psychedelic art style, evoking a sense of '60s counterculture.",
+    "Baseball and sports nostalgia.",
+    "Playful nod to \"LSD\" culture."
+  ],
+  "visualSummary": "The card features a central figure in a vintage baseball uniform with \"PIRATES\" and the number 17, set against a psychedelic, tie-dye background. Three green, Pepe-like faces are visible, each with comically long tongues and a playful expression. The border is vibrant with orange and yellow tones, featuring stars and bold typography.",
+  "visualSummaryShort": "The card showcases a vintage baseball player in a colorful tie-dye background, surrounded by playful green faces. The vibrant border adds to the psychedelic mood with its bright orange and yellow tones.",
+  "visualKeywords": [
+    "baseball",
+    "tie-dye",
+    "green faces",
+    "psychedelic",
+    "vintage",
+    "orange",
+    "yellow",
+    "playful",
+    "stars",
+    "bold typography"
+  ],
+  "textKeywords": [
+    "lsddocpepe"
+  ],
+  "keywords": [
+    "baseball",
+    "tie-dye",
+    "green faces",
+    "psychedelic",
+    "vintage",
+    "orange",
+    "yellow",
+    "playful",
+    "stars",
+    "bold typography",
+    "lsddocpepe"
+  ],
+  "embeddingInput": "LSDDOCPEPE (Fake Rares) - Series 6 Card 8\nArtist: Kaph Resh\nSupply 100 Issued October 2021\nOn-card text: LSDDOCPEPE\nVisual summary: The card features a central figure in a vintage baseball uniform with \"PIRATES\" and the number 17, set against a psychedelic, tie-dye background. Three green, Pepe-like faces are visible, each with comically long tongues and a playful expression. The border is vibrant with orange and yellow tones, featuring stars and bold typography.\nMemetic references: Pepe the Frog references.; Psychedelic art style, evoking a sense of '60s counterculture.; Baseball and sports nostalgia.; Playful nod to \"LSD\" culture.",
+  "embeddingBlocks": [
+    {
+      "id": "LSDDOCPEPE#text",
+      "label": "On-card text",
+      "text": "LSDDOCPEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "LSDDOCPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references.\nPsychedelic art style, evoking a sense of '60s counterculture.\nBaseball and sports nostalgia.\nPlayful nod to \"LSD\" culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LSDDOCPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a central figure in a vintage baseball uniform with \"PIRATES\" and the number 17, set against a psychedelic, tie-dye background. Three green, Pepe-like faces are visible, each with comically long tongues and a playful expression. The border is vibrant with orange and yellow tones, featuring stars and bold typography.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LSDDOCPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nLSDDOCPEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a central figure in a vintage baseball uniform with \"PIRATES\" and the number 17, set against a psychedelic, tie-dye background. Three green, Pepe-like faces are visible, each with comically long tongues and a playful expression. The border is vibrant with orange and yellow tones, featuring stars and bold typography.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references.\n- Psychedelic art style, evoking a sense of '60s counterculture.\n- Baseball and sports nostalgia.\n- Playful nod to \"LSD\" culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.756Z",
+  "sourceFactVersion": 1
+}

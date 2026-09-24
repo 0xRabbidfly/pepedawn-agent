@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "asset": "PEPTANGCLAN",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 40,
+  "artist": "Crypsi",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "Rawkus Pepe, FAKE ASS PEPE, ENTER THE PEP-TANG, 21 MILLION CHAMBERS, FAKE ASS PEPE'S AIN'T NUTHIN' TO FRRRK WITH, This card slices and dices all other Pepe's, Rareness Score: HELLA 💪"
+  ],
+  "memeticReferences": [
+    "Parody of the iconic Wu-Tang Clan album \"Enter the Wu-Tang (36 Chambers).\"",
+    "References to crypto culture with \"21 MILLION CHAMBERS,\" nodding to Bitcoin’s supply cap.",
+    "Pepe the Frog, a staple of meme culture and NFTs.",
+    "Humorous take on the phrase \"ain't nuthin' to frack with,\" echoing Wu-Tang’s original slogan."
+  ],
+  "visualSummary": "The card features a parody of a famous hip-hop album cover with several Pepe faces superimposed on shadowy figures. The color palette is dark with green highlights, capturing a gritty, urban vibe. At the bottom, there's a cartoonish depiction of a Pepe worm with a knife, surrounded by humorous text elements.",
+  "visualSummaryShort": "The card showcases a parody of a hip-hop album cover featuring Pepe faces among shadowy figures. It has a dark color palette with green highlights, creating a gritty urban atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "shadowy figures",
+    "dark palette",
+    "green highlights",
+    "urban vibe",
+    "cartoonish",
+    "knife",
+    "humorous"
+  ],
+  "textKeywords": [
+    "rawkus",
+    "ass",
+    "enter",
+    "pep",
+    "tang",
+    "million",
+    "chambers",
+    "ain",
+    "nuthin",
+    "frrrk",
+    "slices",
+    "dices",
+    "all",
+    "other",
+    "rareness",
+    "score",
+    "hella"
+  ],
+  "keywords": [
+    "pepe",
+    "shadowy figures",
+    "dark palette",
+    "green highlights",
+    "urban vibe",
+    "cartoonish",
+    "knife",
+    "humorous",
+    "rawkus",
+    "ass",
+    "enter",
+    "pep",
+    "tang",
+    "million",
+    "chambers",
+    "ain",
+    "nuthin",
+    "frrrk",
+    "slices",
+    "dices",
+    "all",
+    "other",
+    "rareness",
+    "score",
+    "hella"
+  ],
+  "embeddingInput": "PEPTANGCLAN (Fake Rares) - Series 1 Card 40\nArtist: Crypsi\nSupply 100 Issued October 2021\nOn-card text: Rawkus Pepe, FAKE ASS PEPE, ENTER THE PEP-TANG, 21 MILLION CHAMBERS, FAKE ASS PEPE'S AIN'T NUTHIN' TO FRRRK WITH, This card slices and dices all other Pepe's, Rareness Score: HELLA 💪\nVisual summary: The card features a parody of a famous hip-hop album cover with several Pepe faces superimposed on shadowy figures. The color palette is dark with green highlights, capturing a gritty, urban vibe. At the bottom, there's a cartoonish depiction of a Pepe worm with a knife, surrounded by humorous text elements.\nMemetic references: Parody of the iconic Wu-Tang Clan album \"Enter the Wu-Tang (36 Chambers).\"; References to crypto culture with \"21 MILLION CHAMBERS,\" nodding to Bitcoin’s supply cap.; Pepe the Frog, a staple of meme culture and NFTs.; Humorous take on the phrase \"ain't nuthin' to frack with,\" echoing Wu-Tang’s original slogan.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPTANGCLAN#text",
+      "label": "On-card text",
+      "text": "Rawkus Pepe, FAKE ASS PEPE, ENTER THE PEP-TANG, 21 MILLION CHAMBERS, FAKE ASS PEPE'S AIN'T NUTHIN' TO FRRRK WITH, This card slices and dices all other Pepe's, Rareness Score: HELLA 💪",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPTANGCLAN#memetic",
+      "label": "Memetic references",
+      "text": "Parody of the iconic Wu-Tang Clan album \"Enter the Wu-Tang (36 Chambers).\"\nReferences to crypto culture with \"21 MILLION CHAMBERS,\" nodding to Bitcoin’s supply cap.\nPepe the Frog, a staple of meme culture and NFTs.\nHumorous take on the phrase \"ain't nuthin' to frack with,\" echoing Wu-Tang’s original slogan.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPTANGCLAN#visual",
+      "label": "Visual summary",
+      "text": "The card features a parody of a famous hip-hop album cover with several Pepe faces superimposed on shadowy figures. The color palette is dark with green highlights, capturing a gritty, urban vibe. At the bottom, there's a cartoonish depiction of a Pepe worm with a knife, surrounded by humorous text elements.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPTANGCLAN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nRawkus Pepe, FAKE ASS PEPE, ENTER THE PEP-TANG, 21 MILLION CHAMBERS, FAKE ASS PEPE'S AIN'T NUTHIN' TO FRRRK WITH, This card slices and dices all other Pepe's, Rareness Score: HELLA 💪\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a parody of a famous hip-hop album cover with several Pepe faces superimposed on shadowy figures. The color palette is dark with green highlights, capturing a gritty, urban vibe. At the bottom, there's a cartoonish depiction of a Pepe worm with a knife, surrounded by humorous text elements.\n\n🧬 **MEMETIC DNA:**\n- Parody of the iconic Wu-Tang Clan album \"Enter the Wu-Tang (36 Chambers).\"\n- References to crypto culture with \"21 MILLION CHAMBERS,\" nodding to Bitcoin’s supply cap.\n- Pepe the Frog, a staple of meme culture and NFTs.\n- Humorous take on the phrase \"ain't nuthin' to frack with,\" echoing Wu-Tang’s original slogan.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.029Z",
+  "sourceFactVersion": 1
+}

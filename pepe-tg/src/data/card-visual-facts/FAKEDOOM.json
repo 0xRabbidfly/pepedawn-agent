@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "FAKEDOOM",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 32,
+  "artist": "DesktopCommando",
+  "supply": 250,
+  "issuance": "May 2023",
+  "textOnCard": [
+    "FAKE DOOM"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog's iconic face as an armored warrior.",
+    "References to \"Doom,\" a legendary video game series.",
+    "Apocalyptic and cyberpunk vibes with the fiery background and weaponry."
+  ],
+  "visualSummary": "The card features a muscular, armored figure with the head of Pepe the Frog, standing heroically against a fiery, apocalyptic backdrop. The color palette is dominated by dark tones with striking red and orange highlights, especially on the glowing sword. The style is a gritty, high-definition digital art reminiscent of classic video game aesthetics.",
+  "visualSummaryShort": "The card showcases a muscular, armored figure with a Pepe the Frog head, set against a fiery apocalyptic background. The dark color palette is accented by bright red and orange highlights, particularly on the glowing sword.",
+  "visualKeywords": [
+    "muscular figure",
+    "pepe the frog",
+    "fiery backdrop",
+    "dark tones",
+    "red highlights",
+    "orange highlights",
+    "glowing sword",
+    "digital art",
+    "apocalyptic",
+    "heroic"
+  ],
+  "textKeywords": [
+    "doom"
+  ],
+  "keywords": [
+    "muscular figure",
+    "pepe the frog",
+    "fiery backdrop",
+    "dark tones",
+    "red highlights",
+    "orange highlights",
+    "glowing sword",
+    "digital art",
+    "apocalyptic",
+    "heroic",
+    "doom"
+  ],
+  "embeddingInput": "FAKEDOOM (Fake Rares) - Series 14 Card 32\nArtist: DesktopCommando\nSupply 250 Issued May 2023\nOn-card text: FAKE DOOM\nVisual summary: The card features a muscular, armored figure with the head of Pepe the Frog, standing heroically against a fiery, apocalyptic backdrop. The color palette is dominated by dark tones with striking red and orange highlights, especially on the glowing sword. The style is a gritty, high-definition digital art reminiscent of classic video game aesthetics.\nMemetic references: Pepe the Frog's iconic face as an armored warrior.; References to \"Doom,\" a legendary video game series.; Apocalyptic and cyberpunk vibes with the fiery background and weaponry.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEDOOM#text",
+      "label": "On-card text",
+      "text": "FAKE DOOM",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEDOOM#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog's iconic face as an armored warrior.\nReferences to \"Doom,\" a legendary video game series.\nApocalyptic and cyberpunk vibes with the fiery background and weaponry.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEDOOM#visual",
+      "label": "Visual summary",
+      "text": "The card features a muscular, armored figure with the head of Pepe the Frog, standing heroically against a fiery, apocalyptic backdrop. The color palette is dominated by dark tones with striking red and orange highlights, especially on the glowing sword. The style is a gritty, high-definition digital art reminiscent of classic video game aesthetics.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEDOOM#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE DOOM\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a muscular, armored figure with the head of Pepe the Frog, standing heroically against a fiery, apocalyptic backdrop. The color palette is dominated by dark tones with striking red and orange highlights, especially on the glowing sword. The style is a gritty, high-definition digital art reminiscent of classic video game aesthetics.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog's iconic face as an armored warrior.\n- References to \"Doom,\" a legendary video game series.\n- Apocalyptic and cyberpunk vibes with the fiery background and weaponry.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.480Z",
+  "sourceFactVersion": 1
+}

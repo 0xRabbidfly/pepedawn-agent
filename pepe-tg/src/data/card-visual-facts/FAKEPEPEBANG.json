@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "asset": "FAKEPEPEBANG",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 48,
+  "artist": "Irem Bozatak",
+  "supply": 60,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "FAKE PEPEBANG",
+    "BANG!"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple of meme culture.",
+    "Cartoon explosion with \"BANG!\" reminiscent of comic book action.",
+    "Psychedelic color scheme, nodding to retro and trippy aesthetics."
+  ],
+  "visualSummary": "This card is a vibrant explosion of colors with a psychedelic swirl background in yellow, blue, pink, and purple. The central figure is a stylized Pepe the Frog with exaggerated, cartoonish features, including bulging eyes and a comical expression of surprise. The head appears to explode with green goo and eyeballs, adding a chaotic and humorous twist.",
+  "visualSummaryShort": "The card features a colorful psychedelic background with a stylized Pepe the Frog at its center. The character displays exaggerated features and a humorous expression, surrounded by green goo and eyeballs.",
+  "visualKeywords": [
+    "psychedelic",
+    "pepe the frog",
+    "colorful",
+    "cartoonish",
+    "surprise",
+    "green goo",
+    "eyeballs",
+    "chaotic",
+    "vibrant",
+    "explosion"
+  ],
+  "textKeywords": [
+    "pepebang",
+    "bang"
+  ],
+  "keywords": [
+    "psychedelic",
+    "pepe the frog",
+    "colorful",
+    "cartoonish",
+    "surprise",
+    "green goo",
+    "eyeballs",
+    "chaotic",
+    "vibrant",
+    "explosion",
+    "pepebang",
+    "bang"
+  ],
+  "embeddingInput": "FAKEPEPEBANG (Fake Rares) - Series 3 Card 48\nArtist: Irem Bozatak\nSupply 60 Issued November 2021\nOn-card text: FAKE PEPEBANG | BANG!\nVisual summary: This card is a vibrant explosion of colors with a psychedelic swirl background in yellow, blue, pink, and purple. The central figure is a stylized Pepe the Frog with exaggerated, cartoonish features, including bulging eyes and a comical expression of surprise. The head appears to explode with green goo and eyeballs, adding a chaotic and humorous twist.\nMemetic references: Pepe the Frog, a staple of meme culture.; Cartoon explosion with \"BANG!\" reminiscent of comic book action.; Psychedelic color scheme, nodding to retro and trippy aesthetics.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEPEPEBANG#text",
+      "label": "On-card text",
+      "text": "FAKE PEPEBANG | BANG!",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEPEPEBANG#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple of meme culture.\nCartoon explosion with \"BANG!\" reminiscent of comic book action.\nPsychedelic color scheme, nodding to retro and trippy aesthetics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEPEPEBANG#visual",
+      "label": "Visual summary",
+      "text": "This card is a vibrant explosion of colors with a psychedelic swirl background in yellow, blue, pink, and purple. The central figure is a stylized Pepe the Frog with exaggerated, cartoonish features, including bulging eyes and a comical expression of surprise. The head appears to explode with green goo and eyeballs, adding a chaotic and humorous twist.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEPEPEBANG#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE PEPEBANG  \nBANG!\n\n🎨 **VISUAL BREAKDOWN:**\nThis card is a vibrant explosion of colors with a psychedelic swirl background in yellow, blue, pink, and purple. The central figure is a stylized Pepe the Frog with exaggerated, cartoonish features, including bulging eyes and a comical expression of surprise. The head appears to explode with green goo and eyeballs, adding a chaotic and humorous twist.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple of meme culture.\n- Cartoon explosion with \"BANG!\" reminiscent of comic book action.\n- Psychedelic color scheme, nodding to retro and trippy aesthetics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.550Z",
+  "sourceFactVersion": 1
+}

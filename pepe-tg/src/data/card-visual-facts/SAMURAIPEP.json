@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "asset": "SAMURAIPEP",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 25,
+  "artist": "Dangiuz",
+  "supply": 100,
+  "issuance": "June 2022",
+  "textOnCard": [
+    "SAMURAI PEPE",
+    "If “Mecha Pepe” is destroyed, summon “Samurai Pepe”. This card gains 500 ATK for every unique Fake Rare in your wallet.",
+    "ATK: ?",
+    "DEF: 0"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a cyber-samurai warrior.",
+    "References to cyberpunk and sci-fi culture.",
+    "Playful nod to collectible card games with attack and defense stats."
+  ],
+  "visualSummary": "The card showcases a futuristic, robotic samurai with a Pepe-like face, wielding a katana. The background is a dazzling cyberpunk cityscape, drenched in neon blues and greens, adding a vibrant glow to the scene. The style blends traditional samurai aesthetics with a high-tech, sci-fi twist.",
+  "visualSummaryShort": "The card features a futuristic robotic samurai with a Pepe-like face, brandishing a katana against a neon-lit cyberpunk cityscape. The vibrant colors and high-tech design create a striking visual contrast.",
+  "visualKeywords": [
+    "robotic samurai",
+    "katana",
+    "cyberpunk",
+    "neon blues",
+    "neon greens",
+    "futuristic",
+    "vibrant glow",
+    "high-tech",
+    "cityscape"
+  ],
+  "textKeywords": [
+    "samurai",
+    "mecha",
+    "destroyed",
+    "summon",
+    "gains",
+    "500",
+    "atk",
+    "every",
+    "unique",
+    "wallet",
+    "def"
+  ],
+  "keywords": [
+    "robotic samurai",
+    "katana",
+    "cyberpunk",
+    "neon blues",
+    "neon greens",
+    "futuristic",
+    "vibrant glow",
+    "high-tech",
+    "cityscape",
+    "samurai",
+    "mecha",
+    "destroyed",
+    "summon",
+    "gains",
+    "500",
+    "atk",
+    "every",
+    "unique",
+    "wallet",
+    "def"
+  ],
+  "embeddingInput": "SAMURAIPEP (Fake Rares) - Series 8 Card 25\nArtist: Dangiuz\nSupply 100 Issued June 2022\nOn-card text: SAMURAI PEPE | If “Mecha Pepe” is destroyed, summon “Samurai Pepe”. This card gains 500 ATK for every unique Fake Rare in your wallet. | ATK: ? | DEF: 0\nVisual summary: The card showcases a futuristic, robotic samurai with a Pepe-like face, wielding a katana. The background is a dazzling cyberpunk cityscape, drenched in neon blues and greens, adding a vibrant glow to the scene. The style blends traditional samurai aesthetics with a high-tech, sci-fi twist.\nMemetic references: Pepe the Frog as a cyber-samurai warrior.; References to cyberpunk and sci-fi culture.; Playful nod to collectible card games with attack and defense stats.",
+  "embeddingBlocks": [
+    {
+      "id": "SAMURAIPEP#text",
+      "label": "On-card text",
+      "text": "SAMURAI PEPE | If “Mecha Pepe” is destroyed, summon “Samurai Pepe”. This card gains 500 ATK for every unique Fake Rare in your wallet. | ATK: ? | DEF: 0",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "SAMURAIPEP#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a cyber-samurai warrior.\nReferences to cyberpunk and sci-fi culture.\nPlayful nod to collectible card games with attack and defense stats.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SAMURAIPEP#visual",
+      "label": "Visual summary",
+      "text": "The card showcases a futuristic, robotic samurai with a Pepe-like face, wielding a katana. The background is a dazzling cyberpunk cityscape, drenched in neon blues and greens, adding a vibrant glow to the scene. The style blends traditional samurai aesthetics with a high-tech, sci-fi twist.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SAMURAIPEP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nSAMURAI PEPE  \nIf “Mecha Pepe” is destroyed, summon “Samurai Pepe”. This card gains 500 ATK for every unique Fake Rare in your wallet.  \nATK: ?  \nDEF: 0  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card showcases a futuristic, robotic samurai with a Pepe-like face, wielding a katana. The background is a dazzling cyberpunk cityscape, drenched in neon blues and greens, adding a vibrant glow to the scene. The style blends traditional samurai aesthetics with a high-tech, sci-fi twist.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a cyber-samurai warrior.\n- References to cyberpunk and sci-fi culture.\n- Playful nod to collectible card games with attack and defense stats.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.095Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "NOUNISHPEPE",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 19,
+  "artist": "Rodro",
+  "supply": 56,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "UNO"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog character.",
+    "References to the \"UNO\" card game.",
+    "Halloween and magical themes with a skeleton witch and mystical creatures.",
+    "Cartoonish style reminiscent of indie comic art."
+  ],
+  "visualSummary": "The card features a central Pepe the Frog with a nonchalant expression, a cigarette hanging from its mouth. The color palette is vibrant, with a mix of greens, purples, and yellows, creating a whimsical forest scene. Surrounding Pepe are quirky characters like owls, a black cat, and a skeleton witch, adding a playful and surreal vibe.",
+  "visualSummaryShort": "The card showcases a relaxed Pepe the Frog with a cigarette, surrounded by whimsical characters in a vibrant forest. The scene is playful and surreal, featuring a mix of greens, purples, and yellows.",
+  "visualKeywords": [
+    "pepe",
+    "cigarette",
+    "forest",
+    "owls",
+    "black cat",
+    "skeleton",
+    "whimsical",
+    "vibrant",
+    "surreal"
+  ],
+  "textKeywords": [
+    "uno"
+  ],
+  "keywords": [
+    "pepe",
+    "cigarette",
+    "forest",
+    "owls",
+    "black cat",
+    "skeleton",
+    "whimsical",
+    "vibrant",
+    "surreal",
+    "uno"
+  ],
+  "embeddingInput": "NOUNISHPEPE (Fake Rares) - Series 11 Card 19\nArtist: Rodro\nSupply 56 Issued September 2022\nOn-card text: UNO\nVisual summary: The card features a central Pepe the Frog with a nonchalant expression, a cigarette hanging from its mouth. The color palette is vibrant, with a mix of greens, purples, and yellows, creating a whimsical forest scene. Surrounding Pepe are quirky characters like owls, a black cat, and a skeleton witch, adding a playful and surreal vibe.\nMemetic references: Classic Pepe the Frog character.; References to the \"UNO\" card game.; Halloween and magical themes with a skeleton witch and mystical creatures.; Cartoonish style reminiscent of indie comic art.",
+  "embeddingBlocks": [
+    {
+      "id": "NOUNISHPEPE#text",
+      "label": "On-card text",
+      "text": "UNO",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "NOUNISHPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog character.\nReferences to the \"UNO\" card game.\nHalloween and magical themes with a skeleton witch and mystical creatures.\nCartoonish style reminiscent of indie comic art.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "NOUNISHPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a central Pepe the Frog with a nonchalant expression, a cigarette hanging from its mouth. The color palette is vibrant, with a mix of greens, purples, and yellows, creating a whimsical forest scene. Surrounding Pepe are quirky characters like owls, a black cat, and a skeleton witch, adding a playful and surreal vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "NOUNISHPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nUNO\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a central Pepe the Frog with a nonchalant expression, a cigarette hanging from its mouth. The color palette is vibrant, with a mix of greens, purples, and yellows, creating a whimsical forest scene. Surrounding Pepe are quirky characters like owls, a black cat, and a skeleton witch, adding a playful and surreal vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog character.\n- References to the \"UNO\" card game.\n- Halloween and magical themes with a skeleton witch and mystical creatures.\n- Cartoonish style reminiscent of indie comic art.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.802Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "asset": "PEPSIPEPE",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 36,
+  "artist": "Coit",
+  "supply": 133,
+  "issuance": "September 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog, a staple of internet meme culture.",
+    "Psychedelic art references, reminiscent of 60s",
+    "70s counterculture.",
+    "Eye motifs and swirling patterns evoke a sense of altered reality."
+  ],
+  "visualSummary": "This card features Pepe the Frog in a psychedelic environment, with swirling, vibrant colors of orange, yellow, and purple. The background is filled with eye patterns and swirling motifs, creating a trippy, kaleidoscopic effect. Pepe stands in the foreground with a bewildered expression, surrounded by abstract plant-like shapes.",
+  "visualSummaryShort": "The card showcases Pepe the Frog in a vibrant, psychedelic setting filled with swirling colors and abstract motifs. The bewildered expression on Pepe contrasts with the trippy background, enhancing the surreal atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "psychedelic",
+    "vibrant colors",
+    "swirling patterns",
+    "bewildered expression",
+    "abstract shapes",
+    "kaleidoscopic",
+    "orange",
+    "yellow",
+    "purple"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "psychedelic",
+    "vibrant colors",
+    "swirling patterns",
+    "bewildered expression",
+    "abstract shapes",
+    "kaleidoscopic",
+    "orange",
+    "yellow",
+    "purple"
+  ],
+  "embeddingInput": "PEPSIPEPE (Fake Rares) - Series 1 Card 36\nArtist: Coit\nSupply 133 Issued September 2021\nOn-card text: none detected\nVisual summary: This card features Pepe the Frog in a psychedelic environment, with swirling, vibrant colors of orange, yellow, and purple. The background is filled with eye patterns and swirling motifs, creating a trippy, kaleidoscopic effect. Pepe stands in the foreground with a bewildered expression, surrounded by abstract plant-like shapes.\nMemetic references: Classic Pepe the Frog, a staple of internet meme culture.; Psychedelic art references, reminiscent of 60s; 70s counterculture.; Eye motifs and swirling patterns evoke a sense of altered reality.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPSIPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog, a staple of internet meme culture.\nPsychedelic art references, reminiscent of 60s\n70s counterculture.\nEye motifs and swirling patterns evoke a sense of altered reality.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPSIPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features Pepe the Frog in a psychedelic environment, with swirling, vibrant colors of orange, yellow, and purple. The background is filled with eye patterns and swirling motifs, creating a trippy, kaleidoscopic effect. Pepe stands in the foreground with a bewildered expression, surrounded by abstract plant-like shapes.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPSIPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features Pepe the Frog in a psychedelic environment, with swirling, vibrant colors of orange, yellow, and purple. The background is filled with eye patterns and swirling motifs, creating a trippy, kaleidoscopic effect. Pepe stands in the foreground with a bewildered expression, surrounded by abstract plant-like shapes.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog, a staple of internet meme culture.\n- Psychedelic art references, reminiscent of 60s/70s counterculture.\n- Eye motifs and swirling patterns evoke a sense of altered reality.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.026Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,108 @@
+{
+  "version": 1,
+  "asset": "A1619006396900464164",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 24,
+  "artist": "HNFT Pepe",
+  "supply": 299,
+  "issuance": "March 2024",
+  "textOnCard": [
+    "Cubemoto Card",
+    "The creator of abstract art on Bitcoin. One of the most rare cubed Pepes in existence.",
+    "❤️ = 24 Atk = 3 Spd = 1 Ele = art",
+    "Rareness Score 96"
+  ],
+  "memeticReferences": [
+    "Cubist art style referencing classic artists.",
+    "Pepe the Frog as a central figure.",
+    "References to Bitcoin and NFT culture.",
+    "Gaming card elements with stats and rarity score."
+  ],
+  "visualSummary": "This card features a cubist-style rendition of Pepe, with geometric shapes forming his face, creating an abstract and angular appearance. The background is a matrix-like pattern with subtle green tones, complementing the dark green and red of Pepe's features. The style is reminiscent of Picasso, blending classic art with meme culture.",
+  "visualSummaryShort": "The card showcases a cubist-style Pepe with an abstract and angular design. The background features a matrix-like pattern in subtle green tones, enhancing the overall artistic vibe.",
+  "visualKeywords": [
+    "cubist",
+    "abstract",
+    "geometric",
+    "green tones",
+    "matrix pattern",
+    "pepe",
+    "angular",
+    "artistic",
+    "meme culture"
+  ],
+  "textKeywords": [
+    "cubemoto",
+    "creator",
+    "abstract",
+    "art",
+    "bitcoin",
+    "one",
+    "cubed",
+    "pepes",
+    "existence",
+    "atk",
+    "spd",
+    "ele",
+    "rareness",
+    "score"
+  ],
+  "keywords": [
+    "cubist",
+    "abstract",
+    "geometric",
+    "green tones",
+    "matrix pattern",
+    "pepe",
+    "angular",
+    "artistic",
+    "meme culture",
+    "cubemoto",
+    "creator",
+    "art",
+    "bitcoin",
+    "one",
+    "cubed",
+    "pepes",
+    "existence",
+    "atk",
+    "spd",
+    "ele",
+    "rareness",
+    "score"
+  ],
+  "embeddingInput": "A1619006396900464164 (Fake Rares) - Series 17 Card 24\nArtist: HNFT Pepe\nSupply 299 Issued March 2024\nOn-card text: Cubemoto Card | The creator of abstract art on Bitcoin. One of the most rare cubed Pepes in existence. | ❤️ = 24 Atk = 3 Spd = 1 Ele = art | Rareness Score 96\nVisual summary: This card features a cubist-style rendition of Pepe, with geometric shapes forming his face, creating an abstract and angular appearance. The background is a matrix-like pattern with subtle green tones, complementing the dark green and red of Pepe's features. The style is reminiscent of Picasso, blending classic art with meme culture.\nMemetic references: Cubist art style referencing classic artists.; Pepe the Frog as a central figure.; References to Bitcoin and NFT culture.; Gaming card elements with stats and rarity score.",
+  "embeddingBlocks": [
+    {
+      "id": "A1619006396900464164#text",
+      "label": "On-card text",
+      "text": "Cubemoto Card | The creator of abstract art on Bitcoin. One of the most rare cubed Pepes in existence. | ❤️ = 24 Atk = 3 Spd = 1 Ele = art | Rareness Score 96",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "A1619006396900464164#memetic",
+      "label": "Memetic references",
+      "text": "Cubist art style referencing classic artists.\nPepe the Frog as a central figure.\nReferences to Bitcoin and NFT culture.\nGaming card elements with stats and rarity score.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "A1619006396900464164#visual",
+      "label": "Visual summary",
+      "text": "This card features a cubist-style rendition of Pepe, with geometric shapes forming his face, creating an abstract and angular appearance. The background is a matrix-like pattern with subtle green tones, complementing the dark green and red of Pepe's features. The style is reminiscent of Picasso, blending classic art with meme culture.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "A1619006396900464164#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nCubemoto Card  \nThe creator of abstract art on Bitcoin. One of the most rare cubed Pepes in existence.  \n❤️ = 24 Atk = 3 Spd = 1 Ele = art  \nRareness Score 96\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a cubist-style rendition of Pepe, with geometric shapes forming his face, creating an abstract and angular appearance. The background is a matrix-like pattern with subtle green tones, complementing the dark green and red of Pepe's features. The style is reminiscent of Picasso, blending classic art with meme culture.\n\n🧬 **MEMETIC DNA:**\n- Cubist art style referencing classic artists.\n- Pepe the Frog as a central figure.\n- References to Bitcoin and NFT culture.\n- Gaming card elements with stats and rarity score.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.275Z",
+  "sourceFactVersion": 1
+}

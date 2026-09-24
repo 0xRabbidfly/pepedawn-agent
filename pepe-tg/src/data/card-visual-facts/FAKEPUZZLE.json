@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "asset": "FAKEPUZZLE",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 7,
+  "artist": "DesktopCommando",
+  "supply": 21,
+  "issuance": "October 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog, a staple of meme culture.",
+    "Puzzle motif, symbolizing the complexity and interconnectedness of crypto communities.",
+    "References to game-like elements, emphasizing the playful nature of NFTs."
+  ],
+  "visualSummary": "The card features a digital jigsaw puzzle with scattered pieces against a gray background. Each piece depicts parts of Pepe the Frog, with one complete image of Pepe in the bottom left. The color palette is dominated by green, blue, and neutral tones, creating a classic puzzle vibe.",
+  "visualSummaryShort": "The card showcases a digital jigsaw puzzle with scattered pieces against a gray backdrop. It prominently features Pepe the Frog in various colors, primarily green and blue.",
+  "visualKeywords": [
+    "jigsaw puzzle",
+    "pepe the frog",
+    "gray background",
+    "scattered pieces",
+    "green",
+    "blue",
+    "neutral tones"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "jigsaw puzzle",
+    "pepe the frog",
+    "gray background",
+    "scattered pieces",
+    "green",
+    "blue",
+    "neutral tones"
+  ],
+  "embeddingInput": "FAKEPUZZLE (Fake Rares) - Series 3 Card 7\nArtist: DesktopCommando\nSupply 21 Issued October 2021\nOn-card text: none detected\nVisual summary: The card features a digital jigsaw puzzle with scattered pieces against a gray background. Each piece depicts parts of Pepe the Frog, with one complete image of Pepe in the bottom left. The color palette is dominated by green, blue, and neutral tones, creating a classic puzzle vibe.\nMemetic references: Pepe the Frog, a staple of meme culture.; Puzzle motif, symbolizing the complexity and interconnectedness of crypto communities.; References to game-like elements, emphasizing the playful nature of NFTs.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEPUZZLE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple of meme culture.\nPuzzle motif, symbolizing the complexity and interconnectedness of crypto communities.\nReferences to game-like elements, emphasizing the playful nature of NFTs.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEPUZZLE#visual",
+      "label": "Visual summary",
+      "text": "The card features a digital jigsaw puzzle with scattered pieces against a gray background. Each piece depicts parts of Pepe the Frog, with one complete image of Pepe in the bottom left. The color palette is dominated by green, blue, and neutral tones, creating a classic puzzle vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEPUZZLE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a digital jigsaw puzzle with scattered pieces against a gray background. Each piece depicts parts of Pepe the Frog, with one complete image of Pepe in the bottom left. The color palette is dominated by green, blue, and neutral tones, creating a classic puzzle vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple of meme culture.\n- Puzzle motif, symbolizing the complexity and interconnectedness of crypto communities.\n- References to game-like elements, emphasizing the playful nature of NFTs.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.560Z",
+  "sourceFactVersion": 1
+}

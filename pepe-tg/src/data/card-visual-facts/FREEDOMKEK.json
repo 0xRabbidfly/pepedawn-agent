@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "asset": "FREEDOMKEK",
+  "collection": "Fake Rares",
+  "series": 0,
+  "cardNumber": 1,
+  "artist": "Rare Scrilla",
+  "supply": 298,
+  "issuance": "October 2017",
+  "textOnCard": [
+    "\"DADDY helps build them\"",
+    "\"TO PROTECT OUR FREEDOM\""
+  ],
+  "memeticReferences": [
+    "References to vintage propaganda posters.",
+    "Inclusion of recognizable NFT cards featuring Pepe the Frog.",
+    "Subtle nods to crypto culture with the \"Satoshi Nakamoto\" mention."
+  ],
+  "visualSummary": "The card features a retro-style illustration reminiscent of mid-20th-century propaganda posters. A boy and girl are pointing towards the sky, where a collection of NFT cards float among fluffy clouds. The color palette is warm and nostalgic, with a focus on pastel blues, reds, and yellows.",
+  "visualSummaryShort": "The card showcases a retro illustration of a boy and girl pointing at floating NFT cards in a sky filled with fluffy clouds. The warm, nostalgic color palette features pastel blues, reds, and yellows.",
+  "visualKeywords": [
+    "retro",
+    "children",
+    "sky",
+    "clouds",
+    "nft cards",
+    "pastel colors",
+    "warm tones"
+  ],
+  "textKeywords": [
+    "daddy",
+    "helps",
+    "build",
+    "protect",
+    "our",
+    "freedom"
+  ],
+  "keywords": [
+    "retro",
+    "children",
+    "sky",
+    "clouds",
+    "nft cards",
+    "pastel colors",
+    "warm tones",
+    "daddy",
+    "helps",
+    "build",
+    "protect",
+    "our",
+    "freedom"
+  ],
+  "embeddingInput": "FREEDOMKEK (Fake Rares) - Series 0 Card 1\nArtist: Rare Scrilla\nSupply 298 Issued October 2017\nOn-card text: \"DADDY helps build them\" | \"TO PROTECT OUR FREEDOM\"\nVisual summary: The card features a retro-style illustration reminiscent of mid-20th-century propaganda posters. A boy and girl are pointing towards the sky, where a collection of NFT cards float among fluffy clouds. The color palette is warm and nostalgic, with a focus on pastel blues, reds, and yellows.\nMemetic references: References to vintage propaganda posters.; Inclusion of recognizable NFT cards featuring Pepe the Frog.; Subtle nods to crypto culture with the \"Satoshi Nakamoto\" mention.",
+  "embeddingBlocks": [
+    {
+      "id": "FREEDOMKEK#text",
+      "label": "On-card text",
+      "text": "\"DADDY helps build them\" | \"TO PROTECT OUR FREEDOM\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FREEDOMKEK#memetic",
+      "label": "Memetic references",
+      "text": "References to vintage propaganda posters.\nInclusion of recognizable NFT cards featuring Pepe the Frog.\nSubtle nods to crypto culture with the \"Satoshi Nakamoto\" mention.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FREEDOMKEK#visual",
+      "label": "Visual summary",
+      "text": "The card features a retro-style illustration reminiscent of mid-20th-century propaganda posters. A boy and girl are pointing towards the sky, where a collection of NFT cards float among fluffy clouds. The color palette is warm and nostalgic, with a focus on pastel blues, reds, and yellows.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FREEDOMKEK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n\"DADDY helps build them\"  \n\"TO PROTECT OUR FREEDOM\"\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a retro-style illustration reminiscent of mid-20th-century propaganda posters. A boy and girl are pointing towards the sky, where a collection of NFT cards float among fluffy clouds. The color palette is warm and nostalgic, with a focus on pastel blues, reds, and yellows.\n\n🧬 **MEMETIC DNA:**\n- References to vintage propaganda posters.\n- Inclusion of recognizable NFT cards featuring Pepe the Frog.\n- Subtle nods to crypto culture with the \"Satoshi Nakamoto\" mention.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.639Z",
+  "sourceFactVersion": 1
+}

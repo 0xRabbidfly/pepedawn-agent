@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "asset": "PEPESADILLA",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 34,
+  "artist": "REY",
+  "supply": 100,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "MATT FURIE'S NIGHTMARE. This card is forbidden, bootleg to the bone... only for true degen virtuosos. Good times included!! Straight from the pawnshop... no take, only H4KE!!"
+  ],
+  "memeticReferences": [
+    "References to Pepe lore with the inclusion of the phrase \"Matt Furie's Nightmare.\"",
+    "Crypto culture nods with terms like \"degen\" and \"bootleg.\"",
+    "The surreal, dream-like quality reminiscent of meme aesthetics."
+  ],
+  "visualSummary": "The card features a bright and chaotic composition with a coffin containing a sleeping figure, set against a textured, multicolored background. A prominent easel stands to the left, adding an artsy vibe to the scene. The color palette is vivid, with reds, purples, and greens dominating, while the text is styled in a bold, graffiti-like font.",
+  "visualSummaryShort": "The card showcases a vivid and chaotic scene featuring a coffin with a sleeping figure against a multicolored background. An easel on the left enhances the artsy atmosphere, with a bold color palette of reds, purples, and greens.",
+  "visualKeywords": [
+    "coffin",
+    "sleeping figure",
+    "easel",
+    "multicolored",
+    "vivid colors",
+    "graffiti font",
+    "chaotic",
+    "artsy",
+    "red",
+    "purple"
+  ],
+  "textKeywords": [
+    "matt",
+    "furie",
+    "nightmare",
+    "forbidden",
+    "bootleg",
+    "bone",
+    "only",
+    "true",
+    "degen",
+    "virtuosos",
+    "good",
+    "times",
+    "included",
+    "straight",
+    "pawnshop",
+    "take",
+    "h4ke"
+  ],
+  "keywords": [
+    "coffin",
+    "sleeping figure",
+    "easel",
+    "multicolored",
+    "vivid colors",
+    "graffiti font",
+    "chaotic",
+    "artsy",
+    "red",
+    "purple",
+    "matt",
+    "furie",
+    "nightmare",
+    "forbidden",
+    "bootleg",
+    "bone",
+    "only",
+    "true",
+    "degen",
+    "virtuosos",
+    "good",
+    "times",
+    "included",
+    "straight",
+    "pawnshop",
+    "take",
+    "h4ke"
+  ],
+  "embeddingInput": "PEPESADILLA (Fake Rares) - Series 6 Card 34\nArtist: REY\nSupply 100 Issued March 2022\nOn-card text: MATT FURIE'S NIGHTMARE. This card is forbidden, bootleg to the bone... only for true degen virtuosos. Good times included!! Straight from the pawnshop... no take, only H4KE!!\nVisual summary: The card features a bright and chaotic composition with a coffin containing a sleeping figure, set against a textured, multicolored background. A prominent easel stands to the left, adding an artsy vibe to the scene. The color palette is vivid, with reds, purples, and greens dominating, while the text is styled in a bold, graffiti-like font.\nMemetic references: References to Pepe lore with the inclusion of the phrase \"Matt Furie's Nightmare.\"; Crypto culture nods with terms like \"degen\" and \"bootleg.\"; The surreal, dream-like quality reminiscent of meme aesthetics.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPESADILLA#text",
+      "label": "On-card text",
+      "text": "MATT FURIE'S NIGHTMARE. This card is forbidden, bootleg to the bone... only for true degen virtuosos. Good times included!! Straight from the pawnshop... no take, only H4KE!!",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPESADILLA#memetic",
+      "label": "Memetic references",
+      "text": "References to Pepe lore with the inclusion of the phrase \"Matt Furie's Nightmare.\"\nCrypto culture nods with terms like \"degen\" and \"bootleg.\"\nThe surreal, dream-like quality reminiscent of meme aesthetics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPESADILLA#visual",
+      "label": "Visual summary",
+      "text": "The card features a bright and chaotic composition with a coffin containing a sleeping figure, set against a textured, multicolored background. A prominent easel stands to the left, adding an artsy vibe to the scene. The color palette is vivid, with reds, purples, and greens dominating, while the text is styled in a bold, graffiti-like font.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPESADILLA#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nMATT FURIE'S NIGHTMARE. This card is forbidden, bootleg to the bone... only for true degen virtuosos. Good times included!! Straight from the pawnshop... no take, only H4KE!!\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a bright and chaotic composition with a coffin containing a sleeping figure, set against a textured, multicolored background. A prominent easel stands to the left, adding an artsy vibe to the scene. The color palette is vivid, with reds, purples, and greens dominating, while the text is styled in a bold, graffiti-like font.\n\n🧬 **MEMETIC DNA:**\n- References to Pepe lore with the inclusion of the phrase \"Matt Furie's Nightmare.\"\n- Crypto culture nods with terms like \"degen\" and \"bootleg.\"\n- The surreal, dream-like quality reminiscent of meme aesthetics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.967Z",
+  "sourceFactVersion": 1
+}

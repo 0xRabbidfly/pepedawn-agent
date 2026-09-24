@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "PEPETERNAL",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 35,
+  "artist": "Coit",
+  "supply": 49,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "PEPETERNAL"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure, embodying internet meme culture.",
+    "Apocalyptic city setting, reminiscent of classic disaster movies.",
+    "Vibrant, surreal colors giving off a psychedelic vibe."
+  ],
+  "visualSummary": "The artwork depicts a chaotic cityscape with buildings collapsing and vibrant, colorful explosions of smoke in the background. A Pepe character is seen walking in the foreground amidst traffic and destruction, wearing a casual outfit and sunglasses. The color palette is intense and saturated, featuring neon pinks, blues, and purples against a dark, apocalyptic backdrop.",
+  "visualSummaryShort": "The card features a chaotic cityscape with collapsing buildings and colorful explosions of smoke. A Pepe character walks through the destruction, dressed casually and wearing sunglasses.",
+  "visualKeywords": [
+    "cityscape",
+    "collapsing buildings",
+    "explosions",
+    "pepe",
+    "casual outfit",
+    "sunglasses",
+    "neon colors",
+    "apocalyptic",
+    "dark backdrop"
+  ],
+  "textKeywords": [
+    "pepeternal"
+  ],
+  "keywords": [
+    "cityscape",
+    "collapsing buildings",
+    "explosions",
+    "pepe",
+    "casual outfit",
+    "sunglasses",
+    "neon colors",
+    "apocalyptic",
+    "dark backdrop",
+    "pepeternal"
+  ],
+  "embeddingInput": "PEPETERNAL (Fake Rares) - Series 10 Card 35\nArtist: Coit\nSupply 49 Issued September 2022\nOn-card text: PEPETERNAL\nVisual summary: The artwork depicts a chaotic cityscape with buildings collapsing and vibrant, colorful explosions of smoke in the background. A Pepe character is seen walking in the foreground amidst traffic and destruction, wearing a casual outfit and sunglasses. The color palette is intense and saturated, featuring neon pinks, blues, and purples against a dark, apocalyptic backdrop.\nMemetic references: Pepe the Frog as a central figure, embodying internet meme culture.; Apocalyptic city setting, reminiscent of classic disaster movies.; Vibrant, surreal colors giving off a psychedelic vibe.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPETERNAL#text",
+      "label": "On-card text",
+      "text": "PEPETERNAL",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPETERNAL#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure, embodying internet meme culture.\nApocalyptic city setting, reminiscent of classic disaster movies.\nVibrant, surreal colors giving off a psychedelic vibe.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPETERNAL#visual",
+      "label": "Visual summary",
+      "text": "The artwork depicts a chaotic cityscape with buildings collapsing and vibrant, colorful explosions of smoke in the background. A Pepe character is seen walking in the foreground amidst traffic and destruction, wearing a casual outfit and sunglasses. The color palette is intense and saturated, featuring neon pinks, blues, and purples against a dark, apocalyptic backdrop.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPETERNAL#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPETERNAL\n\n🎨 **VISUAL BREAKDOWN:**\nThe artwork depicts a chaotic cityscape with buildings collapsing and vibrant, colorful explosions of smoke in the background. A Pepe character is seen walking in the foreground amidst traffic and destruction, wearing a casual outfit and sunglasses. The color palette is intense and saturated, featuring neon pinks, blues, and purples against a dark, apocalyptic backdrop.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure, embodying internet meme culture.\n- Apocalyptic city setting, reminiscent of classic disaster movies.\n- Vibrant, surreal colors giving off a psychedelic vibe.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.992Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "asset": "EVILCYBERPEP",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 26,
+  "artist": "Dangiuz",
+  "supply": 100,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "EVIL CYBER PEPE",
+    "If \"Cyber Pepe\" is destroyed, summon Evil Cyber Pepe. During this phase, take control of your opponent's hot wallet and burn up to 10 of their NFTs. Send Evil Cyber Pepe to the burn address at the end of the turn. ATK: ∞ DEF: ∞"
+  ],
+  "memeticReferences": [
+    "Giant Pepe symbolizing meme supremacy.",
+    "Cyberpunk aesthetic with digital dystopia elements.",
+    "Reference to NFT culture with wallet and burn address mechanics.",
+    "Infinite attack and defense stats mimicking overpowered trading card tropes."
+  ],
+  "visualSummary": "The card showcases a massive, robotic Pepe figure towering over a cyberpunk cityscape, with vibrant neon blues and pinks lighting up the scene. Helicopters and skyscrapers form a dramatic backdrop, while sparks of light and digital glitches add to the chaotic atmosphere. The Pepe has a menacingly cool design with glowing eyes, and a crown of wires, embodying a techno-dystopian vibe.",
+  "visualSummaryShort": "The card features a towering robotic Pepe figure set against a vibrant cyberpunk cityscape. Neon blues and pinks illuminate the scene, creating a chaotic and techno-dystopian atmosphere.",
+  "visualKeywords": [
+    "robotic",
+    "cyberpunk",
+    "neon",
+    "cityscape",
+    "skyscrapers",
+    "helicopters",
+    "glowing",
+    "chaotic",
+    "dystopian",
+    "wires"
+  ],
+  "textKeywords": [
+    "evil",
+    "cyber",
+    "destroyed",
+    "summon",
+    "during",
+    "phase",
+    "take",
+    "control",
+    "opponent",
+    "hot",
+    "wallet",
+    "burn",
+    "nfts",
+    "send",
+    "address",
+    "end",
+    "turn",
+    "atk",
+    "def"
+  ],
+  "keywords": [
+    "robotic",
+    "cyberpunk",
+    "neon",
+    "cityscape",
+    "skyscrapers",
+    "helicopters",
+    "glowing",
+    "chaotic",
+    "dystopian",
+    "wires",
+    "evil",
+    "cyber",
+    "destroyed",
+    "summon",
+    "during",
+    "phase",
+    "take",
+    "control",
+    "opponent",
+    "hot",
+    "wallet",
+    "burn",
+    "nfts",
+    "send",
+    "address",
+    "end",
+    "turn",
+    "atk",
+    "def"
+  ],
+  "embeddingInput": "EVILCYBERPEP (Fake Rares) - Series 6 Card 26\nArtist: Dangiuz\nSupply 100 Issued March 2022\nOn-card text: EVIL CYBER PEPE | If \"Cyber Pepe\" is destroyed, summon Evil Cyber Pepe. During this phase, take control of your opponent's hot wallet and burn up to 10 of their NFTs. Send Evil Cyber Pepe to the burn address at the end of the turn. ATK: ∞ DEF: ∞\nVisual summary: The card showcases a massive, robotic Pepe figure towering over a cyberpunk cityscape, with vibrant neon blues and pinks lighting up the scene. Helicopters and skyscrapers form a dramatic backdrop, while sparks of light and digital glitches add to the chaotic atmosphere. The Pepe has a menacingly cool design with glowing eyes, and a crown of wires, embodying a techno-dystopian vibe.\nMemetic references: Giant Pepe symbolizing meme supremacy.; Cyberpunk aesthetic with digital dystopia elements.; Reference to NFT culture with wallet and burn address mechanics.; Infinite attack and defense stats mimicking overpowered trading card tropes.",
+  "embeddingBlocks": [
+    {
+      "id": "EVILCYBERPEP#text",
+      "label": "On-card text",
+      "text": "EVIL CYBER PEPE | If \"Cyber Pepe\" is destroyed, summon Evil Cyber Pepe. During this phase, take control of your opponent's hot wallet and burn up to 10 of their NFTs. Send Evil Cyber Pepe to the burn address at the end of the turn. ATK: ∞ DEF: ∞",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "EVILCYBERPEP#memetic",
+      "label": "Memetic references",
+      "text": "Giant Pepe symbolizing meme supremacy.\nCyberpunk aesthetic with digital dystopia elements.\nReference to NFT culture with wallet and burn address mechanics.\nInfinite attack and defense stats mimicking overpowered trading card tropes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "EVILCYBERPEP#visual",
+      "label": "Visual summary",
+      "text": "The card showcases a massive, robotic Pepe figure towering over a cyberpunk cityscape, with vibrant neon blues and pinks lighting up the scene. Helicopters and skyscrapers form a dramatic backdrop, while sparks of light and digital glitches add to the chaotic atmosphere. The Pepe has a menacingly cool design with glowing eyes, and a crown of wires, embodying a techno-dystopian vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "EVILCYBERPEP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nEVIL CYBER PEPE  \nIf \"Cyber Pepe\" is destroyed, summon Evil Cyber Pepe. During this phase, take control of your opponent's hot wallet and burn up to 10 of their NFTs. Send Evil Cyber Pepe to the burn address at the end of the turn. ATK: ∞ DEF: ∞\n\n🎨 **VISUAL BREAKDOWN:**\nThe card showcases a massive, robotic Pepe figure towering over a cyberpunk cityscape, with vibrant neon blues and pinks lighting up the scene. Helicopters and skyscrapers form a dramatic backdrop, while sparks of light and digital glitches add to the chaotic atmosphere. The Pepe has a menacingly cool design with glowing eyes, and a crown of wires, embodying a techno-dystopian vibe.\n\n🧬 **MEMETIC DNA:**\n- Giant Pepe symbolizing meme supremacy.\n- Cyberpunk aesthetic with digital dystopia elements.\n- Reference to NFT culture with wallet and burn address mechanics.\n- Infinite attack and defense stats mimicking overpowered trading card tropes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.430Z",
+  "sourceFactVersion": 1
+}

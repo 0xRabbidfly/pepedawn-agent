@@ -1,0 +1,123 @@
+{
+  "version": 1,
+  "asset": "TUCKERPEPE",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 18,
+  "artist": "Tommy Marcheschi",
+  "supply": 65,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "TUCKERPEPE",
+    "❤️ = 12 Atk= 9 Spd = 6 Ele = Nicotine",
+    "Play this card to officially move any topic into the overton window.",
+    "(cannot be played with 420-related Pepes)",
+    "⭐ Rareness Score ⭐"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central meme figure.",
+    "Parody of a mainstream news anchor.",
+    "References to the \"Overton window\" concept.",
+    "Crypto culture humor with \"420-related Pepes.\"",
+    "Fake Rares NFT card format."
+  ],
+  "visualSummary": "The card features a Pepe the Frog character styled as a well-known TV host, complete with a suit and tie. The background includes iconic architecture, suggesting a political or news setting, and the color palette is a mix of blues, greens, and reds, typical of news graphics. The layout mimics a TV news segment with stats and a scrolling text bar, adding to the parody.",
+  "visualSummaryShort": "The card showcases a Pepe the Frog character dressed as a TV host in a news-like setting. The color palette features blues, greens, and reds, enhancing the parody theme.",
+  "visualKeywords": [
+    "pepe",
+    "suit",
+    "news",
+    "architecture",
+    "blue palette",
+    "green palette",
+    "red palette",
+    "stats",
+    "scrolling text",
+    "parody"
+  ],
+  "textKeywords": [
+    "tuckerpepe",
+    "atk",
+    "spd",
+    "ele",
+    "nicotine",
+    "play",
+    "officially",
+    "move",
+    "any",
+    "topic",
+    "overton",
+    "window",
+    "cannot",
+    "played",
+    "420",
+    "related",
+    "pepes",
+    "rareness",
+    "score"
+  ],
+  "keywords": [
+    "pepe",
+    "suit",
+    "news",
+    "architecture",
+    "blue palette",
+    "green palette",
+    "red palette",
+    "stats",
+    "scrolling text",
+    "parody",
+    "tuckerpepe",
+    "atk",
+    "spd",
+    "ele",
+    "nicotine",
+    "play",
+    "officially",
+    "move",
+    "any",
+    "topic",
+    "overton",
+    "window",
+    "cannot",
+    "played",
+    "420",
+    "related",
+    "pepes",
+    "rareness",
+    "score"
+  ],
+  "embeddingInput": "TUCKERPEPE (Fake Rares) - Series 13 Card 18\nArtist: Tommy Marcheschi\nSupply 65 Issued February 2022\nOn-card text: TUCKERPEPE | ❤️ = 12 Atk= 9 Spd = 6 Ele = Nicotine | Play this card to officially move any topic into the overton window. | (cannot be played with 420-related Pepes) | ⭐ Rareness Score ⭐\nVisual summary: The card features a Pepe the Frog character styled as a well-known TV host, complete with a suit and tie. The background includes iconic architecture, suggesting a political or news setting, and the color palette is a mix of blues, greens, and reds, typical of news graphics. The layout mimics a TV news segment with stats and a scrolling text bar, adding to the parody.\nMemetic references: Pepe the Frog as a central meme figure.; Parody of a mainstream news anchor.; References to the \"Overton window\" concept.; Crypto culture humor with \"420-related Pepes.\"; Fake Rares NFT card format.",
+  "embeddingBlocks": [
+    {
+      "id": "TUCKERPEPE#text",
+      "label": "On-card text",
+      "text": "TUCKERPEPE | ❤️ = 12 Atk= 9 Spd = 6 Ele = Nicotine | Play this card to officially move any topic into the overton window. | (cannot be played with 420-related Pepes) | ⭐ Rareness Score ⭐",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "TUCKERPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central meme figure.\nParody of a mainstream news anchor.\nReferences to the \"Overton window\" concept.\nCrypto culture humor with \"420-related Pepes.\"\nFake Rares NFT card format.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "TUCKERPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe the Frog character styled as a well-known TV host, complete with a suit and tie. The background includes iconic architecture, suggesting a political or news setting, and the color palette is a mix of blues, greens, and reds, typical of news graphics. The layout mimics a TV news segment with stats and a scrolling text bar, adding to the parody.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "TUCKERPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nTUCKERPEPE  \n❤️ = 12  Atk= 9  Spd = 6  Ele = Nicotine  \nPlay this card to officially move any topic into the overton window.  \n(cannot be played with 420-related Pepes)  \n⭐ Rareness Score ⭐\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe the Frog character styled as a well-known TV host, complete with a suit and tie. The background includes iconic architecture, suggesting a political or news setting, and the color palette is a mix of blues, greens, and reds, typical of news graphics. The layout mimics a TV news segment with stats and a scrolling text bar, adding to the parody.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central meme figure.\n- Parody of a mainstream news anchor.\n- References to the \"Overton window\" concept.\n- Crypto culture humor with \"420-related Pepes.\"\n- Fake Rares NFT card format.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.165Z",
+  "sourceFactVersion": 1
+}

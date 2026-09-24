@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "asset": "ELETEREOPEPE",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 40,
+  "artist": "Da'Block God",
+  "supply": 64,
+  "issuance": "April 2022",
+  "textOnCard": [
+    "Demon Pepe III",
+    "El Etéreo",
+    "Encourages bad decisions",
+    "Creates confusion with euphoric melody"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure.",
+    "References to demon lore with a playful twist.",
+    "Psychedelic and surreal art reminiscent of 70s album covers.",
+    "Crypto and NFT culture nod with the “bad decisions” and “euphoric melody” themes."
+  ],
+  "visualSummary": "The card features a symmetrical, abstract representation of Pepe with a demon-like face and vibrant, psychedelic colors. The background is a blend of neon greens, blues, and yellows, creating a trippy, kaleidoscopic effect. The artistic style is surreal and digital, with a focus on bold contrasts and fluid shapes.",
+  "visualSummaryShort": "The card showcases a symmetrical, abstract depiction of Pepe with a demon-like visage, surrounded by vibrant psychedelic colors. The background features a kaleidoscopic blend of neon greens, blues, and yellows, enhancing the surreal and digital artistic style.",
+  "visualKeywords": [
+    "pepe",
+    "demon",
+    "psychedelic",
+    "neon",
+    "abstract",
+    "kaleidoscopic",
+    "surreal",
+    "vibrant",
+    "fluid shapes",
+    "bold contrasts"
+  ],
+  "textKeywords": [
+    "demon",
+    "iii",
+    "reo",
+    "encourages",
+    "bad",
+    "decisions",
+    "creates",
+    "confusion",
+    "euphoric",
+    "melody"
+  ],
+  "keywords": [
+    "pepe",
+    "demon",
+    "psychedelic",
+    "neon",
+    "abstract",
+    "kaleidoscopic",
+    "surreal",
+    "vibrant",
+    "fluid shapes",
+    "bold contrasts",
+    "iii",
+    "reo",
+    "encourages",
+    "bad",
+    "decisions",
+    "creates",
+    "confusion",
+    "euphoric",
+    "melody"
+  ],
+  "embeddingInput": "ELETEREOPEPE (Fake Rares) - Series 7 Card 40\nArtist: Da'Block God\nSupply 64 Issued April 2022\nOn-card text: Demon Pepe III | El Etéreo | Encourages bad decisions | Creates confusion with euphoric melody\nVisual summary: The card features a symmetrical, abstract representation of Pepe with a demon-like face and vibrant, psychedelic colors. The background is a blend of neon greens, blues, and yellows, creating a trippy, kaleidoscopic effect. The artistic style is surreal and digital, with a focus on bold contrasts and fluid shapes.\nMemetic references: Pepe the Frog as a central figure.; References to demon lore with a playful twist.; Psychedelic and surreal art reminiscent of 70s album covers.; Crypto and NFT culture nod with the “bad decisions” and “euphoric melody” themes.",
+  "embeddingBlocks": [
+    {
+      "id": "ELETEREOPEPE#text",
+      "label": "On-card text",
+      "text": "Demon Pepe III | El Etéreo | Encourages bad decisions | Creates confusion with euphoric melody",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "ELETEREOPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure.\nReferences to demon lore with a playful twist.\nPsychedelic and surreal art reminiscent of 70s album covers.\nCrypto and NFT culture nod with the “bad decisions” and “euphoric melody” themes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "ELETEREOPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a symmetrical, abstract representation of Pepe with a demon-like face and vibrant, psychedelic colors. The background is a blend of neon greens, blues, and yellows, creating a trippy, kaleidoscopic effect. The artistic style is surreal and digital, with a focus on bold contrasts and fluid shapes.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "ELETEREOPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nDemon Pepe III  \nEl Etéreo  \nEncourages bad decisions  \nCreates confusion with euphoric melody\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a symmetrical, abstract representation of Pepe with a demon-like face and vibrant, psychedelic colors. The background is a blend of neon greens, blues, and yellows, creating a trippy, kaleidoscopic effect. The artistic style is surreal and digital, with a focus on bold contrasts and fluid shapes.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure.\n- References to demon lore with a playful twist.\n- Psychedelic and surreal art reminiscent of 70s album covers.\n- Crypto and NFT culture nod with the “bad decisions” and “euphoric melody” themes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.420Z",
+  "sourceFactVersion": 1
+}

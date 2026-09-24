@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "FALSEACE",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 26,
+  "artist": "Maya",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "RAREst PEPE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog's eyes, a staple in meme culture.",
+    "Playing card aesthetics, merging traditional games with modern meme art.",
+    "\"RAREst PEPE\" hints at the collectible nature of NFTs."
+  ],
+  "visualSummary": "The card features a large heart with Pepe the Frog's iconic eyes peeking over a mask or bandana that reads \"RAREst PEPE.\" The color palette is dominated by red, black, and white, giving it a bold, graphic look. Positioned like a playing card, the heart is flanked by the Ace of Hearts symbols in the top left and bottom right corners.",
+  "visualSummaryShort": "The card showcases a large heart with Pepe the Frog's eyes visible above a mask, set against a striking red, black, and white color scheme. It is styled like a playing card, featuring Ace of Hearts symbols in the corners.",
+  "visualKeywords": [
+    "heart",
+    "pepe the frog",
+    "mask",
+    "red",
+    "black",
+    "white",
+    "graphic",
+    "playing card",
+    "bold",
+    "ace of hearts"
+  ],
+  "textKeywords": [
+    "rarest"
+  ],
+  "keywords": [
+    "heart",
+    "pepe the frog",
+    "mask",
+    "red",
+    "black",
+    "white",
+    "graphic",
+    "playing card",
+    "bold",
+    "ace of hearts",
+    "rarest"
+  ],
+  "embeddingInput": "FALSEACE (Fake Rares) - Series 3 Card 26\nArtist: Maya\nSupply 100 Issued October 2021\nOn-card text: RAREst PEPE\nVisual summary: The card features a large heart with Pepe the Frog's iconic eyes peeking over a mask or bandana that reads \"RAREst PEPE.\" The color palette is dominated by red, black, and white, giving it a bold, graphic look. Positioned like a playing card, the heart is flanked by the Ace of Hearts symbols in the top left and bottom right corners.\nMemetic references: Pepe the Frog's eyes, a staple in meme culture.; Playing card aesthetics, merging traditional games with modern meme art.; \"RAREst PEPE\" hints at the collectible nature of NFTs.",
+  "embeddingBlocks": [
+    {
+      "id": "FALSEACE#text",
+      "label": "On-card text",
+      "text": "RAREst PEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FALSEACE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog's eyes, a staple in meme culture.\nPlaying card aesthetics, merging traditional games with modern meme art.\n\"RAREst PEPE\" hints at the collectible nature of NFTs.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FALSEACE#visual",
+      "label": "Visual summary",
+      "text": "The card features a large heart with Pepe the Frog's iconic eyes peeking over a mask or bandana that reads \"RAREst PEPE.\" The color palette is dominated by red, black, and white, giving it a bold, graphic look. Positioned like a playing card, the heart is flanked by the Ace of Hearts symbols in the top left and bottom right corners.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FALSEACE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nRAREst PEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a large heart with Pepe the Frog's iconic eyes peeking over a mask or bandana that reads \"RAREst PEPE.\" The color palette is dominated by red, black, and white, giving it a bold, graphic look. Positioned like a playing card, the heart is flanked by the Ace of Hearts symbols in the top left and bottom right corners.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog's eyes, a staple in meme culture.\n- Playing card aesthetics, merging traditional games with modern meme art.\n- \"RAREst PEPE\" hints at the collectible nature of NFTs.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.608Z",
+  "sourceFactVersion": 1
+}

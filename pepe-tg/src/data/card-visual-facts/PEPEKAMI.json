@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "PEPEKAMI",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 46,
+  "artist": "Melih Polat",
+  "supply": 100,
+  "issuance": "August 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog is front and center, a staple of meme culture.",
+    "The use of bright, chaotic colors echoes the psychedelic aesthetic often found in crypto art.",
+    "The geometric fragmentation hints at the digital and decentralized nature of NFTs."
+  ],
+  "visualSummary": "This card features a vibrant, abstract portrayal of Pepe the Frog, rendered with a kaleidoscope of bold colors and geometric shapes. The background explodes with splashes of bright pink, yellow, blue, and green, creating a dynamic and energetic feel. The style is reminiscent of pop art with a modern twist, using thick black lines to define the fragmented sections of Pepe's face.",
+  "visualSummaryShort": "The card showcases a vibrant, abstract depiction of Pepe the Frog with bold colors and geometric shapes. The dynamic background features bright splashes of pink, yellow, blue, and green, enhancing the energetic mood.",
+  "visualKeywords": [
+    "pepe the frog",
+    "abstract",
+    "bold colors",
+    "geometric shapes",
+    "pop art",
+    "bright background",
+    "dynamic",
+    "thick lines"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "abstract",
+    "bold colors",
+    "geometric shapes",
+    "pop art",
+    "bright background",
+    "dynamic",
+    "thick lines"
+  ],
+  "embeddingInput": "PEPEKAMI (Fake Rares) - Series 9 Card 46\nArtist: Melih Polat\nSupply 100 Issued August 2022\nOn-card text: none detected\nVisual summary: This card features a vibrant, abstract portrayal of Pepe the Frog, rendered with a kaleidoscope of bold colors and geometric shapes. The background explodes with splashes of bright pink, yellow, blue, and green, creating a dynamic and energetic feel. The style is reminiscent of pop art with a modern twist, using thick black lines to define the fragmented sections of Pepe's face.\nMemetic references: Pepe the Frog is front and center, a staple of meme culture.; The use of bright, chaotic colors echoes the psychedelic aesthetic often found in crypto art.; The geometric fragmentation hints at the digital and decentralized nature of NFTs.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEKAMI#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog is front and center, a staple of meme culture.\nThe use of bright, chaotic colors echoes the psychedelic aesthetic often found in crypto art.\nThe geometric fragmentation hints at the digital and decentralized nature of NFTs.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEKAMI#visual",
+      "label": "Visual summary",
+      "text": "This card features a vibrant, abstract portrayal of Pepe the Frog, rendered with a kaleidoscope of bold colors and geometric shapes. The background explodes with splashes of bright pink, yellow, blue, and green, creating a dynamic and energetic feel. The style is reminiscent of pop art with a modern twist, using thick black lines to define the fragmented sections of Pepe's face.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEKAMI#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a vibrant, abstract portrayal of Pepe the Frog, rendered with a kaleidoscope of bold colors and geometric shapes. The background explodes with splashes of bright pink, yellow, blue, and green, creating a dynamic and energetic feel. The style is reminiscent of pop art with a modern twist, using thick black lines to define the fragmented sections of Pepe's face.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog is front and center, a staple of meme culture.\n- The use of bright, chaotic colors echoes the psychedelic aesthetic often found in crypto art.\n- The geometric fragmentation hints at the digital and decentralized nature of NFTs.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.903Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "HCIENTOSHI",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 5,
+  "artist": "Isaac O",
+  "supply": 21,
+  "issuance": "October 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Bitcoin symbol prominently featured, nodding to crypto culture.",
+    "Abstract, Picasso-esque style with a dash of tribal art, blending modern and traditional.",
+    "Elements of surrealism, reflecting the often bizarre and unpredictable nature of the crypto world."
+  ],
+  "visualSummary": "The card features a vibrant, abstract composition with a kaleidoscope of colors including blues, oranges, and greens. The central figure is a stylized humanoid with exaggerated eyes and a trumpet-like object, surrounded by various geometric and tribal patterns. The artwork is framed by a border of intricate carvings, adding a sense of depth and complexity.",
+  "visualSummaryShort": "The card showcases a vibrant abstract design with a stylized humanoid figure and a trumpet-like object. Surrounding geometric and tribal patterns enhance the colorful composition.",
+  "visualKeywords": [
+    "abstract",
+    "humanoid",
+    "trumpet",
+    "geometric",
+    "tribal",
+    "vibrant",
+    "colors",
+    "intricate",
+    "patterns",
+    "kaleidoscope"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "abstract",
+    "humanoid",
+    "trumpet",
+    "geometric",
+    "tribal",
+    "vibrant",
+    "colors",
+    "intricate",
+    "patterns",
+    "kaleidoscope"
+  ],
+  "embeddingInput": "HCIENTOSHI (Fake Rares) - Series 17 Card 5\nArtist: Isaac O\nSupply 21 Issued October 2023\nOn-card text: none detected\nVisual summary: The card features a vibrant, abstract composition with a kaleidoscope of colors including blues, oranges, and greens. The central figure is a stylized humanoid with exaggerated eyes and a trumpet-like object, surrounded by various geometric and tribal patterns. The artwork is framed by a border of intricate carvings, adding a sense of depth and complexity.\nMemetic references: Bitcoin symbol prominently featured, nodding to crypto culture.; Abstract, Picasso-esque style with a dash of tribal art, blending modern and traditional.; Elements of surrealism, reflecting the often bizarre and unpredictable nature of the crypto world.",
+  "embeddingBlocks": [
+    {
+      "id": "HCIENTOSHI#memetic",
+      "label": "Memetic references",
+      "text": "Bitcoin symbol prominently featured, nodding to crypto culture.\nAbstract, Picasso-esque style with a dash of tribal art, blending modern and traditional.\nElements of surrealism, reflecting the often bizarre and unpredictable nature of the crypto world.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "HCIENTOSHI#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant, abstract composition with a kaleidoscope of colors including blues, oranges, and greens. The central figure is a stylized humanoid with exaggerated eyes and a trumpet-like object, surrounded by various geometric and tribal patterns. The artwork is framed by a border of intricate carvings, adding a sense of depth and complexity.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "HCIENTOSHI#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant, abstract composition with a kaleidoscope of colors including blues, oranges, and greens. The central figure is a stylized humanoid with exaggerated eyes and a trumpet-like object, surrounded by various geometric and tribal patterns. The artwork is framed by a border of intricate carvings, adding a sense of depth and complexity.\n\n🧬 **MEMETIC DNA:**\n- Bitcoin symbol prominently featured, nodding to crypto culture.\n- Abstract, Picasso-esque style with a dash of tribal art, blending modern and traditional.\n- Elements of surrealism, reflecting the often bizarre and unpredictable nature of the crypto world.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.678Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "asset": "LEPEPENOIR",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 9,
+  "artist": "Fabrique",
+  "supply": 21,
+  "issuance": "September 2021",
+  "textOnCard": [
+    "Prochainement. Tournée du Pepe Noir de Rodolphe Salis."
+  ],
+  "memeticReferences": [
+    "References the famous \"Le Chat Noir\" poster, a staple of French art culture.",
+    "Pepe the Frog, a well-known meme character, is central to the design.",
+    "Plays on the blending of high art and meme culture, typical of NFT creations."
+  ],
+  "visualSummary": "The card features a Pepe the Frog dressed as a black cat, reminiscent of vintage French cabaret posters. The color palette is a blend of muted red, black, and beige, giving it an antiquated, artistic feel. The composition includes ornate and stylized text, with Pepe the Frog sitting majestically, wearing glasses and a halo-like design behind his head.",
+  "visualSummaryShort": "The card showcases Pepe the Frog as a black cat, styled like vintage French cabaret art. It features a muted color palette with ornate text and a halo design behind Pepe's head.",
+  "visualKeywords": [
+    "pepe the frog",
+    "black cat",
+    "vintage",
+    "cabaret",
+    "muted colors",
+    "ornate text",
+    "glasses",
+    "halo",
+    "artistic",
+    "beige"
+  ],
+  "textKeywords": [
+    "prochainement",
+    "tourn",
+    "noir",
+    "rodolphe",
+    "salis"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "black cat",
+    "vintage",
+    "cabaret",
+    "muted colors",
+    "ornate text",
+    "glasses",
+    "halo",
+    "artistic",
+    "beige",
+    "prochainement",
+    "tourn",
+    "noir",
+    "rodolphe",
+    "salis"
+  ],
+  "embeddingInput": "LEPEPENOIR (Fake Rares) - Series 1 Card 9\nArtist: Fabrique\nSupply 21 Issued September 2021\nOn-card text: Prochainement. Tournée du Pepe Noir de Rodolphe Salis.\nVisual summary: The card features a Pepe the Frog dressed as a black cat, reminiscent of vintage French cabaret posters. The color palette is a blend of muted red, black, and beige, giving it an antiquated, artistic feel. The composition includes ornate and stylized text, with Pepe the Frog sitting majestically, wearing glasses and a halo-like design behind his head.\nMemetic references: References the famous \"Le Chat Noir\" poster, a staple of French art culture.; Pepe the Frog, a well-known meme character, is central to the design.; Plays on the blending of high art and meme culture, typical of NFT creations.",
+  "embeddingBlocks": [
+    {
+      "id": "LEPEPENOIR#text",
+      "label": "On-card text",
+      "text": "Prochainement. Tournée du Pepe Noir de Rodolphe Salis.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "LEPEPENOIR#memetic",
+      "label": "Memetic references",
+      "text": "References the famous \"Le Chat Noir\" poster, a staple of French art culture.\nPepe the Frog, a well-known meme character, is central to the design.\nPlays on the blending of high art and meme culture, typical of NFT creations.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LEPEPENOIR#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe the Frog dressed as a black cat, reminiscent of vintage French cabaret posters. The color palette is a blend of muted red, black, and beige, giving it an antiquated, artistic feel. The composition includes ornate and stylized text, with Pepe the Frog sitting majestically, wearing glasses and a halo-like design behind his head.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LEPEPENOIR#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nProchainement. Tournée du Pepe Noir de Rodolphe Salis.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe the Frog dressed as a black cat, reminiscent of vintage French cabaret posters. The color palette is a blend of muted red, black, and beige, giving it an antiquated, artistic feel. The composition includes ornate and stylized text, with Pepe the Frog sitting majestically, wearing glasses and a halo-like design behind his head.\n\n🧬 **MEMETIC DNA:**\n- References the famous \"Le Chat Noir\" poster, a staple of French art culture.\n- Pepe the Frog, a well-known meme character, is central to the design.\n- Plays on the blending of high art and meme culture, typical of NFT creations.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.736Z",
+  "sourceFactVersion": 1
+}

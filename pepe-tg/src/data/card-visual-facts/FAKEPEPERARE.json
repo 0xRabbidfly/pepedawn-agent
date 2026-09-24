@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "FAKEPEPERARE",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 7,
+  "artist": "Shawn Leary",
+  "supply": 21,
+  "issuance": "January 2022",
+  "textOnCard": [
+    "FAKAMOTO"
+  ],
+  "memeticReferences": [
+    "Pepe-inspired green skin.",
+    "Bitcoin symbol, a nod to crypto culture.",
+    "Parody of a well-known public figure.",
+    "Japanese characters for a global meme flair."
+  ],
+  "visualSummary": "This card features a green-skinned figure with white hair, reminiscent of a popular political figure, holding a glowing Bitcoin symbol in their palm. The background is a vibrant mix of purple and pink hues, with bold text and stylized Japanese characters adding to the dynamic composition. The figure has red hearts on the cheeks and is holding a large, rolled cigarette, adding a playful twist.",
+  "visualSummaryShort": "The card showcases a green-skinned figure with white hair, holding a glowing Bitcoin symbol. The vibrant purple and pink background, along with red hearts on the figure's cheeks, creates a playful and dynamic atmosphere.",
+  "visualKeywords": [
+    "green figure",
+    "white hair",
+    "bitcoin",
+    "purple background",
+    "pink background",
+    "hearts",
+    "cigarette",
+    "bold text",
+    "japanese characters"
+  ],
+  "textKeywords": [
+    "fakamoto"
+  ],
+  "keywords": [
+    "green figure",
+    "white hair",
+    "bitcoin",
+    "purple background",
+    "pink background",
+    "hearts",
+    "cigarette",
+    "bold text",
+    "japanese characters",
+    "fakamoto"
+  ],
+  "embeddingInput": "FAKEPEPERARE (Fake Rares) - Series 5 Card 7\nArtist: Shawn Leary\nSupply 21 Issued January 2022\nOn-card text: FAKAMOTO\nVisual summary: This card features a green-skinned figure with white hair, reminiscent of a popular political figure, holding a glowing Bitcoin symbol in their palm. The background is a vibrant mix of purple and pink hues, with bold text and stylized Japanese characters adding to the dynamic composition. The figure has red hearts on the cheeks and is holding a large, rolled cigarette, adding a playful twist.\nMemetic references: Pepe-inspired green skin.; Bitcoin symbol, a nod to crypto culture.; Parody of a well-known public figure.; Japanese characters for a global meme flair.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEPEPERARE#text",
+      "label": "On-card text",
+      "text": "FAKAMOTO",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEPEPERARE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe-inspired green skin.\nBitcoin symbol, a nod to crypto culture.\nParody of a well-known public figure.\nJapanese characters for a global meme flair.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEPEPERARE#visual",
+      "label": "Visual summary",
+      "text": "This card features a green-skinned figure with white hair, reminiscent of a popular political figure, holding a glowing Bitcoin symbol in their palm. The background is a vibrant mix of purple and pink hues, with bold text and stylized Japanese characters adding to the dynamic composition. The figure has red hearts on the cheeks and is holding a large, rolled cigarette, adding a playful twist.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEPEPERARE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKAMOTO\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a green-skinned figure with white hair, reminiscent of a popular political figure, holding a glowing Bitcoin symbol in their palm. The background is a vibrant mix of purple and pink hues, with bold text and stylized Japanese characters adding to the dynamic composition. The figure has red hearts on the cheeks and is holding a large, rolled cigarette, adding a playful twist.\n\n🧬 **MEMETIC DNA:**\n- Pepe-inspired green skin.\n- Bitcoin symbol, a nod to crypto culture.\n- Parody of a well-known public figure.\n- Japanese characters for a global meme flair.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.555Z",
+  "sourceFactVersion": 1
+}

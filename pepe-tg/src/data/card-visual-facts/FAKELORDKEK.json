@@ -1,0 +1,112 @@
+{
+  "version": 1,
+  "asset": "FAKELORDKEK",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 46,
+  "artist": "Mumbling Bearded Freak and Deep Honey",
+  "supply": 69,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "FAKE LORD KEK, RULER OF ALL FAKES",
+    "SHILL=69 BRIBE=69 COERSION=69",
+    "ALL FAKES WORSHIP FAKE LORD KEK AS THE FAKEST FAKE IN EXISTENCE.",
+    "GODFAKE-",
+    "FAKENESS SCORE: ∞ ∞ ∞ ∞ ∞"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as an Egyptian pharaoh, tapping into classic meme culture.",
+    "References to Egyptian mythology, with figures resembling Anubis and Horus.",
+    "Crypto lingo with terms like \"SHILL\" and \"BRIBE\" set to the meme-favorite number 69.",
+    "Infinity symbol and \"FAKENESS SCORE\" playing on the absurdity of meme culture."
+  ],
+  "visualSummary": "The card features a central figure, a frog dressed as an Egyptian pharaoh, seated on a golden throne with a vibrant, multicolored headdress. Flanking the figure are two stylized, mythological Egyptian figures in red, set against a vivid pink background. The image has a bold, cartoonish style with a psychedelic color palette, emphasizing purples, greens, and golds.",
+  "visualSummaryShort": "The card showcases a frog dressed as an Egyptian pharaoh on a golden throne, surrounded by mythological figures against a vibrant pink background. The bold, cartoonish style features a psychedelic color palette with purples, greens, and golds.",
+  "visualKeywords": [
+    "frog",
+    "pharaoh",
+    "throne",
+    "mythological figures",
+    "pink background",
+    "cartoonish",
+    "psychedelic",
+    "vibrant colors",
+    "gold",
+    "stylized"
+  ],
+  "textKeywords": [
+    "lord",
+    "kek",
+    "ruler",
+    "all",
+    "fakes",
+    "shill",
+    "bribe",
+    "coersion",
+    "worship",
+    "fakest",
+    "existence",
+    "godfake",
+    "fakeness",
+    "score"
+  ],
+  "keywords": [
+    "frog",
+    "pharaoh",
+    "throne",
+    "mythological figures",
+    "pink background",
+    "cartoonish",
+    "psychedelic",
+    "vibrant colors",
+    "gold",
+    "stylized",
+    "lord",
+    "kek",
+    "ruler",
+    "all",
+    "fakes",
+    "shill",
+    "bribe",
+    "coersion",
+    "worship",
+    "fakest",
+    "existence",
+    "godfake",
+    "fakeness",
+    "score"
+  ],
+  "embeddingInput": "FAKELORDKEK (Fake Rares) - Series 2 Card 46\nArtist: Mumbling Bearded Freak and Deep Honey\nSupply 69 Issued October 2021\nOn-card text: FAKE LORD KEK, RULER OF ALL FAKES | SHILL=69 BRIBE=69 COERSION=69 | ALL FAKES WORSHIP FAKE LORD KEK AS THE FAKEST FAKE IN EXISTENCE. | GODFAKE- | FAKENESS SCORE: ∞ ∞ ∞ ∞ ∞\nVisual summary: The card features a central figure, a frog dressed as an Egyptian pharaoh, seated on a golden throne with a vibrant, multicolored headdress. Flanking the figure are two stylized, mythological Egyptian figures in red, set against a vivid pink background. The image has a bold, cartoonish style with a psychedelic color palette, emphasizing purples, greens, and golds.\nMemetic references: Pepe the Frog as an Egyptian pharaoh, tapping into classic meme culture.; References to Egyptian mythology, with figures resembling Anubis and Horus.; Crypto lingo with terms like \"SHILL\" and \"BRIBE\" set to the meme-favorite number 69.; Infinity symbol and \"FAKENESS SCORE\" playing on the absurdity of meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKELORDKEK#text",
+      "label": "On-card text",
+      "text": "FAKE LORD KEK, RULER OF ALL FAKES | SHILL=69 BRIBE=69 COERSION=69 | ALL FAKES WORSHIP FAKE LORD KEK AS THE FAKEST FAKE IN EXISTENCE. | GODFAKE- | FAKENESS SCORE: ∞ ∞ ∞ ∞ ∞",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKELORDKEK#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as an Egyptian pharaoh, tapping into classic meme culture.\nReferences to Egyptian mythology, with figures resembling Anubis and Horus.\nCrypto lingo with terms like \"SHILL\" and \"BRIBE\" set to the meme-favorite number 69.\nInfinity symbol and \"FAKENESS SCORE\" playing on the absurdity of meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKELORDKEK#visual",
+      "label": "Visual summary",
+      "text": "The card features a central figure, a frog dressed as an Egyptian pharaoh, seated on a golden throne with a vibrant, multicolored headdress. Flanking the figure are two stylized, mythological Egyptian figures in red, set against a vivid pink background. The image has a bold, cartoonish style with a psychedelic color palette, emphasizing purples, greens, and golds.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKELORDKEK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE LORD KEK, RULER OF ALL FAKES  \nSHILL=69 BRIBE=69 COERSION=69  \nALL FAKES WORSHIP FAKE LORD KEK AS THE FAKEST FAKE IN EXISTENCE.  \n-GODFAKE-  \nFAKENESS SCORE: ∞ ∞ ∞ ∞ ∞\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a central figure, a frog dressed as an Egyptian pharaoh, seated on a golden throne with a vibrant, multicolored headdress. Flanking the figure are two stylized, mythological Egyptian figures in red, set against a vivid pink background. The image has a bold, cartoonish style with a psychedelic color palette, emphasizing purples, greens, and golds.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as an Egyptian pharaoh, tapping into classic meme culture.\n- References to Egyptian mythology, with figures resembling Anubis and Horus.\n- Crypto lingo with terms like \"SHILL\" and \"BRIBE\" set to the meme-favorite number 69.\n- Infinity symbol and \"FAKENESS SCORE\" playing on the absurdity of meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.525Z",
+  "sourceFactVersion": 1
+}

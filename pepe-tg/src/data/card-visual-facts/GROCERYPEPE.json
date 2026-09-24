@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "GROCERYPEPE",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 25,
+  "artist": "Michael Naples",
+  "supply": 48,
+  "issuance": "January 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog face echoed in the arrangement.",
+    "Playful nod to still life art with a meme twist.",
+    "Represents the blend of everyday objects with iconic meme culture."
+  ],
+  "visualSummary": "The card features a creative arrangement of fruits and eggs forming the face of Pepe the Frog. The green background mimics Pepe’s face, with two eggs for eyes and a curved banana as the mouth. The composition is surrounded by a white cloth, with additional fruits and a knife adding depth and detail, painted in a realistic style with soft, natural colors.",
+  "visualSummaryShort": "The card showcases a whimsical depiction of Pepe the Frog's face made from fruits and eggs. The green background and realistic details create a vibrant and playful atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "fruits",
+    "eggs",
+    "banana",
+    "green background",
+    "white cloth",
+    "knife",
+    "realistic",
+    "natural colors",
+    "playful"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "fruits",
+    "eggs",
+    "banana",
+    "green background",
+    "white cloth",
+    "knife",
+    "realistic",
+    "natural colors",
+    "playful"
+  ],
+  "embeddingInput": "GROCERYPEPE (Fake Rares) - Series 13 Card 25\nArtist: Michael Naples\nSupply 48 Issued January 2023\nOn-card text: none detected\nVisual summary: The card features a creative arrangement of fruits and eggs forming the face of Pepe the Frog. The green background mimics Pepe’s face, with two eggs for eyes and a curved banana as the mouth. The composition is surrounded by a white cloth, with additional fruits and a knife adding depth and detail, painted in a realistic style with soft, natural colors.\nMemetic references: Classic Pepe the Frog face echoed in the arrangement.; Playful nod to still life art with a meme twist.; Represents the blend of everyday objects with iconic meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "GROCERYPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog face echoed in the arrangement.\nPlayful nod to still life art with a meme twist.\nRepresents the blend of everyday objects with iconic meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "GROCERYPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a creative arrangement of fruits and eggs forming the face of Pepe the Frog. The green background mimics Pepe’s face, with two eggs for eyes and a curved banana as the mouth. The composition is surrounded by a white cloth, with additional fruits and a knife adding depth and detail, painted in a realistic style with soft, natural colors.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "GROCERYPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a creative arrangement of fruits and eggs forming the face of Pepe the Frog. The green background mimics Pepe’s face, with two eggs for eyes and a curved banana as the mouth. The composition is surrounded by a white cloth, with additional fruits and a knife adding depth and detail, painted in a realistic style with soft, natural colors.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog face echoed in the arrangement.\n- Playful nod to still life art with a meme twist.\n- Represents the blend of everyday objects with iconic meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.672Z",
+  "sourceFactVersion": 1
+}

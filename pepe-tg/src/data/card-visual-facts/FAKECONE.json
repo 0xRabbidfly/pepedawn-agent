@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "asset": "FAKECONE",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 16,
+  "artist": "GaryCartlidge",
+  "supply": 27,
+  "issuance": "July 2023",
+  "textOnCard": [
+    "Feeling Like a cone"
+  ],
+  "memeticReferences": [
+    "Traffic cone as a symbol of feeling out of place or stuck.",
+    "References to internet meme culture where inanimate objects are given human-like emotions.",
+    "The handwritten text adds a personal, relatable touch often seen in meme formats."
+  ],
+  "visualSummary": "The card features a vibrant orange traffic cone with a simple face drawn on it, set against a plain white background. The text below the cone is handwritten in a playful green, adding a casual, DIY aesthetic. The overall style is minimalist, focusing on the humorous juxtaposition of the mundane object and the expressive face.",
+  "visualSummaryShort": "The card showcases a bright orange traffic cone with a whimsical face, set against a clean white background. The playful green handwritten text adds to the card's lighthearted and minimalist design.",
+  "visualKeywords": [
+    "orange cone",
+    "face",
+    "white background",
+    "handwritten text",
+    "playful",
+    "minimalist",
+    "casual",
+    "diy",
+    "humor"
+  ],
+  "textKeywords": [
+    "feeling",
+    "like",
+    "cone"
+  ],
+  "keywords": [
+    "orange cone",
+    "face",
+    "white background",
+    "handwritten text",
+    "playful",
+    "minimalist",
+    "casual",
+    "diy",
+    "humor",
+    "feeling",
+    "like",
+    "cone"
+  ],
+  "embeddingInput": "FAKECONE (Fake Rares) - Series 15 Card 16\nArtist: GaryCartlidge\nSupply 27 Issued July 2023\nOn-card text: Feeling Like a cone\nVisual summary: The card features a vibrant orange traffic cone with a simple face drawn on it, set against a plain white background. The text below the cone is handwritten in a playful green, adding a casual, DIY aesthetic. The overall style is minimalist, focusing on the humorous juxtaposition of the mundane object and the expressive face.\nMemetic references: Traffic cone as a symbol of feeling out of place or stuck.; References to internet meme culture where inanimate objects are given human-like emotions.; The handwritten text adds a personal, relatable touch often seen in meme formats.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKECONE#text",
+      "label": "On-card text",
+      "text": "Feeling Like a cone",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKECONE#memetic",
+      "label": "Memetic references",
+      "text": "Traffic cone as a symbol of feeling out of place or stuck.\nReferences to internet meme culture where inanimate objects are given human-like emotions.\nThe handwritten text adds a personal, relatable touch often seen in meme formats.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKECONE#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant orange traffic cone with a simple face drawn on it, set against a plain white background. The text below the cone is handwritten in a playful green, adding a casual, DIY aesthetic. The overall style is minimalist, focusing on the humorous juxtaposition of the mundane object and the expressive face.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKECONE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFeeling Like a cone\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant orange traffic cone with a simple face drawn on it, set against a plain white background. The text below the cone is handwritten in a playful green, adding a casual, DIY aesthetic. The overall style is minimalist, focusing on the humorous juxtaposition of the mundane object and the expressive face.\n\n🧬 **MEMETIC DNA:**\n- Traffic cone as a symbol of feeling out of place or stuck.\n- References to internet meme culture where inanimate objects are given human-like emotions.\n- The handwritten text adds a personal, relatable touch often seen in meme formats.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.475Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "RIKTHEFROG",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 9,
+  "artist": "Rik Oostenbroek",
+  "supply": 89,
+  "issuance": "September 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog visage, a staple of meme culture.",
+    "Abstract art style gives a nod to modern artistic expressions, blending traditional meme imagery with contemporary aesthetics.",
+    "Use of vibrant colors aligns with the playful and often chaotic nature of meme culture."
+  ],
+  "visualSummary": "This card features a stylized, abstract version of Pepe the Frog, composed of bold, fluid shapes interlocking like puzzle pieces. The color palette is a mix of greens, oranges, purples, and blues, giving it a vibrant yet harmonious feel. The overall artistic style is reminiscent of modern abstract art, with smooth curves and dynamic lines creating a sense of movement.",
+  "visualSummaryShort": "The card showcases an abstract representation of Pepe the Frog, with interlocking shapes and a vibrant color palette. The design features smooth curves and dynamic lines, evoking a sense of movement.",
+  "visualKeywords": [
+    "abstract",
+    "pepe the frog",
+    "green",
+    "orange",
+    "purple",
+    "blue",
+    "fluid shapes",
+    "dynamic lines",
+    "modern art",
+    "vibrant"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "abstract",
+    "pepe the frog",
+    "green",
+    "orange",
+    "purple",
+    "blue",
+    "fluid shapes",
+    "dynamic lines",
+    "modern art",
+    "vibrant"
+  ],
+  "embeddingInput": "RIKTHEFROG (Fake Rares) - Series 10 Card 9\nArtist: Rik Oostenbroek\nSupply 89 Issued September 2022\nOn-card text: none detected\nVisual summary: This card features a stylized, abstract version of Pepe the Frog, composed of bold, fluid shapes interlocking like puzzle pieces. The color palette is a mix of greens, oranges, purples, and blues, giving it a vibrant yet harmonious feel. The overall artistic style is reminiscent of modern abstract art, with smooth curves and dynamic lines creating a sense of movement.\nMemetic references: Classic Pepe the Frog visage, a staple of meme culture.; Abstract art style gives a nod to modern artistic expressions, blending traditional meme imagery with contemporary aesthetics.; Use of vibrant colors aligns with the playful and often chaotic nature of meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "RIKTHEFROG#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog visage, a staple of meme culture.\nAbstract art style gives a nod to modern artistic expressions, blending traditional meme imagery with contemporary aesthetics.\nUse of vibrant colors aligns with the playful and often chaotic nature of meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RIKTHEFROG#visual",
+      "label": "Visual summary",
+      "text": "This card features a stylized, abstract version of Pepe the Frog, composed of bold, fluid shapes interlocking like puzzle pieces. The color palette is a mix of greens, oranges, purples, and blues, giving it a vibrant yet harmonious feel. The overall artistic style is reminiscent of modern abstract art, with smooth curves and dynamic lines creating a sense of movement.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RIKTHEFROG#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a stylized, abstract version of Pepe the Frog, composed of bold, fluid shapes interlocking like puzzle pieces. The color palette is a mix of greens, oranges, purples, and blues, giving it a vibrant yet harmonious feel. The overall artistic style is reminiscent of modern abstract art, with smooth curves and dynamic lines creating a sense of movement.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog visage, a staple of meme culture.\n- Abstract art style gives a nod to modern artistic expressions, blending traditional meme imagery with contemporary aesthetics.\n- Use of vibrant colors aligns with the playful and often chaotic nature of meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.086Z",
+  "sourceFactVersion": 1
+}

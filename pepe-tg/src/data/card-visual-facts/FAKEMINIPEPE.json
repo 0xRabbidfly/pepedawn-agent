@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "asset": "FAKEMINIPEPE",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 40,
+  "artist": "Lun Kazuki",
+  "supply": 69,
+  "issuance": "October 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Giant Pepe statue as a central symbol.",
+    "References to gaming culture with voxel",
+    "block-like terrain.",
+    "Classic Pepe expressions and activities.",
+    "Elements of exploration and community building."
+  ],
+  "visualSummary": "The artwork features a blocky, pixelated landscape with a giant stone Pepe statue at the top, surrounded by smaller Pepes exploring, farming, and climbing. The color palette is earthy with greens, browns, and grays, complemented by white fluffy clouds. The artistic style is reminiscent of voxel art, evoking a playful and nostalgic gaming vibe.",
+  "visualSummaryShort": "The card depicts a pixelated landscape featuring a large stone Pepe statue surrounded by smaller Pepes engaged in various activities. The earthy color palette and voxel art style create a playful and nostalgic atmosphere.",
+  "visualKeywords": [
+    "pixelated",
+    "landscape",
+    "pepe",
+    "statue",
+    "earthy colors",
+    "clouds",
+    "voxel art",
+    "playful",
+    "nostalgic",
+    "exploration"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pixelated",
+    "landscape",
+    "pepe",
+    "statue",
+    "earthy colors",
+    "clouds",
+    "voxel art",
+    "playful",
+    "nostalgic",
+    "exploration"
+  ],
+  "embeddingInput": "FAKEMINIPEPE (Fake Rares) - Series 11 Card 40\nArtist: Lun Kazuki\nSupply 69 Issued October 2022\nOn-card text: none detected\nVisual summary: The artwork features a blocky, pixelated landscape with a giant stone Pepe statue at the top, surrounded by smaller Pepes exploring, farming, and climbing. The color palette is earthy with greens, browns, and grays, complemented by white fluffy clouds. The artistic style is reminiscent of voxel art, evoking a playful and nostalgic gaming vibe.\nMemetic references: Giant Pepe statue as a central symbol.; References to gaming culture with voxel; block-like terrain.; Classic Pepe expressions and activities.; Elements of exploration and community building.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEMINIPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Giant Pepe statue as a central symbol.\nReferences to gaming culture with voxel\nblock-like terrain.\nClassic Pepe expressions and activities.\nElements of exploration and community building.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEMINIPEPE#visual",
+      "label": "Visual summary",
+      "text": "The artwork features a blocky, pixelated landscape with a giant stone Pepe statue at the top, surrounded by smaller Pepes exploring, farming, and climbing. The color palette is earthy with greens, browns, and grays, complemented by white fluffy clouds. The artistic style is reminiscent of voxel art, evoking a playful and nostalgic gaming vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEMINIPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe artwork features a blocky, pixelated landscape with a giant stone Pepe statue at the top, surrounded by smaller Pepes exploring, farming, and climbing. The color palette is earthy with greens, browns, and grays, complemented by white fluffy clouds. The artistic style is reminiscent of voxel art, evoking a playful and nostalgic gaming vibe.\n\n🧬 **MEMETIC DNA:**\n- Giant Pepe statue as a central symbol.\n- References to gaming culture with voxel/block-like terrain.\n- Classic Pepe expressions and activities.\n- Elements of exploration and community building.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.533Z",
+  "sourceFactVersion": 1
+}

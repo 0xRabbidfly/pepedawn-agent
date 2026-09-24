@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "asset": "CYBERPEPUNK",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 14,
+  "artist": "RareDesigner",
+  "supply": 150,
+  "issuance": "February 2018",
+  "textOnCard": [
+    "CYBER PEPE PUNK"
+  ],
+  "memeticReferences": [
+    "Cyberpunk aesthetic with a nod to classic sci-fi.",
+    "Pepe the Frog as the central figure, integrating internet meme culture.",
+    "References to futuristic technology and dystopian themes.",
+    "Possible homage to iconic cyberpunk media like \"Blade Runner\" or \"Cyberpunk 2077.\""
+  ],
+  "visualSummary": "This card features a cyberpunk-styled Pepe with a slick, futuristic vibe. The color palette is a mix of dark shades with neon highlights, capturing the essence of a dystopian, high-tech world. Pepe is depicted with cybernetic enhancements, sporting a high-tech outfit and wielding glowing, sci-fi weapons, set against a blurred cityscape of vibrant lights.",
+  "visualSummaryShort": "The card showcases a cyberpunk-styled Pepe with cybernetic enhancements and a high-tech outfit. The vibrant neon highlights against a dark cityscape create a futuristic and dystopian atmosphere.",
+  "visualKeywords": [
+    "cyberpunk",
+    "neon",
+    "dark shades",
+    "cityscape",
+    "sci-fi weapons",
+    "futuristic",
+    "vibrant lights",
+    "cybernetic",
+    "high-tech",
+    "pepe"
+  ],
+  "textKeywords": [
+    "cyber",
+    "punk"
+  ],
+  "keywords": [
+    "cyberpunk",
+    "neon",
+    "dark shades",
+    "cityscape",
+    "sci-fi weapons",
+    "futuristic",
+    "vibrant lights",
+    "cybernetic",
+    "high-tech",
+    "pepe",
+    "cyber",
+    "punk"
+  ],
+  "embeddingInput": "CYBERPEPUNK (Fake Rares) - Series 2 Card 14\nArtist: RareDesigner\nSupply 150 Issued February 2018\nOn-card text: CYBER PEPE PUNK\nVisual summary: This card features a cyberpunk-styled Pepe with a slick, futuristic vibe. The color palette is a mix of dark shades with neon highlights, capturing the essence of a dystopian, high-tech world. Pepe is depicted with cybernetic enhancements, sporting a high-tech outfit and wielding glowing, sci-fi weapons, set against a blurred cityscape of vibrant lights.\nMemetic references: Cyberpunk aesthetic with a nod to classic sci-fi.; Pepe the Frog as the central figure, integrating internet meme culture.; References to futuristic technology and dystopian themes.; Possible homage to iconic cyberpunk media like \"Blade Runner\" or \"Cyberpunk 2077.\"",
+  "embeddingBlocks": [
+    {
+      "id": "CYBERPEPUNK#text",
+      "label": "On-card text",
+      "text": "CYBER PEPE PUNK",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "CYBERPEPUNK#memetic",
+      "label": "Memetic references",
+      "text": "Cyberpunk aesthetic with a nod to classic sci-fi.\nPepe the Frog as the central figure, integrating internet meme culture.\nReferences to futuristic technology and dystopian themes.\nPossible homage to iconic cyberpunk media like \"Blade Runner\" or \"Cyberpunk 2077.\"",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "CYBERPEPUNK#visual",
+      "label": "Visual summary",
+      "text": "This card features a cyberpunk-styled Pepe with a slick, futuristic vibe. The color palette is a mix of dark shades with neon highlights, capturing the essence of a dystopian, high-tech world. Pepe is depicted with cybernetic enhancements, sporting a high-tech outfit and wielding glowing, sci-fi weapons, set against a blurred cityscape of vibrant lights.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "CYBERPEPUNK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nCYBER PEPE PUNK\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a cyberpunk-styled Pepe with a slick, futuristic vibe. The color palette is a mix of dark shades with neon highlights, capturing the essence of a dystopian, high-tech world. Pepe is depicted with cybernetic enhancements, sporting a high-tech outfit and wielding glowing, sci-fi weapons, set against a blurred cityscape of vibrant lights.\n\n🧬 **MEMETIC DNA:**\n- Cyberpunk aesthetic with a nod to classic sci-fi.\n- Pepe the Frog as the central figure, integrating internet meme culture.\n- References to futuristic technology and dystopian themes.\n- Possible homage to iconic cyberpunk media like \"Blade Runner\" or \"Cyberpunk 2077.\"",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.372Z",
+  "sourceFactVersion": 1
+}

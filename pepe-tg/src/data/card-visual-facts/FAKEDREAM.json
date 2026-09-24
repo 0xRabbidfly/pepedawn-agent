@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "asset": "FAKEDREAM",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 8,
+  "artist": "LOVEBEING",
+  "supply": 23,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "HAVE YOU SEEN THIS PEPE IN YOUR DREAMS?",
+    "SHARE YOUR PEPE DREAMS PLEASE CALL TOLL FREE 818-697-0092"
+  ],
+  "memeticReferences": [
+    "Reference to the \"This Man\" phenomenon, a meme about a face seen in dreams.",
+    "Combines crypto culture with a dream-like twist on Pepe.",
+    "Plays on the surreal and uncanny aspects of meme culture."
+  ],
+  "visualSummary": "The card features a stylized green face that blends human and Pepe features, set against a plain white background. The composition is simple, with the face centrally placed, surrounded by black text. The artistic style is reminiscent of surreal dream imagery, with a slight pixelated effect that adds a retro vibe.",
+  "visualSummaryShort": "The card showcases a stylized green face that merges human and Pepe characteristics against a plain white background. The design features a pixelated effect, contributing to a surreal and retro aesthetic.",
+  "visualKeywords": [
+    "green face",
+    "pepe",
+    "white background",
+    "surreal",
+    "pixelated",
+    "simple composition",
+    "black text"
+  ],
+  "textKeywords": [
+    "you",
+    "seen",
+    "dreams",
+    "share",
+    "please",
+    "call",
+    "toll",
+    "free",
+    "818",
+    "697",
+    "0092"
+  ],
+  "keywords": [
+    "green face",
+    "pepe",
+    "white background",
+    "surreal",
+    "pixelated",
+    "simple composition",
+    "black text",
+    "you",
+    "seen",
+    "dreams",
+    "share",
+    "please",
+    "call",
+    "toll",
+    "free",
+    "818",
+    "697",
+    "0092"
+  ],
+  "embeddingInput": "FAKEDREAM (Fake Rares) - Series 11 Card 8\nArtist: LOVEBEING\nSupply 23 Issued September 2022\nOn-card text: HAVE YOU SEEN THIS PEPE IN YOUR DREAMS? | SHARE YOUR PEPE DREAMS PLEASE CALL TOLL FREE 818-697-0092\nVisual summary: The card features a stylized green face that blends human and Pepe features, set against a plain white background. The composition is simple, with the face centrally placed, surrounded by black text. The artistic style is reminiscent of surreal dream imagery, with a slight pixelated effect that adds a retro vibe.\nMemetic references: Reference to the \"This Man\" phenomenon, a meme about a face seen in dreams.; Combines crypto culture with a dream-like twist on Pepe.; Plays on the surreal and uncanny aspects of meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEDREAM#text",
+      "label": "On-card text",
+      "text": "HAVE YOU SEEN THIS PEPE IN YOUR DREAMS? | SHARE YOUR PEPE DREAMS PLEASE CALL TOLL FREE 818-697-0092",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEDREAM#memetic",
+      "label": "Memetic references",
+      "text": "Reference to the \"This Man\" phenomenon, a meme about a face seen in dreams.\nCombines crypto culture with a dream-like twist on Pepe.\nPlays on the surreal and uncanny aspects of meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEDREAM#visual",
+      "label": "Visual summary",
+      "text": "The card features a stylized green face that blends human and Pepe features, set against a plain white background. The composition is simple, with the face centrally placed, surrounded by black text. The artistic style is reminiscent of surreal dream imagery, with a slight pixelated effect that adds a retro vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEDREAM#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nHAVE YOU SEEN THIS PEPE IN YOUR DREAMS?  \nSHARE YOUR PEPE DREAMS PLEASE CALL TOLL FREE 818-697-0092\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a stylized green face that blends human and Pepe features, set against a plain white background. The composition is simple, with the face centrally placed, surrounded by black text. The artistic style is reminiscent of surreal dream imagery, with a slight pixelated effect that adds a retro vibe.\n\n🧬 **MEMETIC DNA:**\n- Reference to the \"This Man\" phenomenon, a meme about a face seen in dreams.\n- Combines crypto culture with a dream-like twist on Pepe.\n- Plays on the surreal and uncanny aspects of meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.484Z",
+  "sourceFactVersion": 1
+}

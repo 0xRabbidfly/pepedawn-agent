@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "asset": "FAKAVISION",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 15,
+  "artist": "VSTRVL",
+  "supply": 69,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "FAKA VISION",
+    "FAKENAVOX PP-HD69"
+  ],
+  "memeticReferences": [
+    "Retro VHS and analog TV references.",
+    "Classic Pepe the Frog imagery with a glitch art twist.",
+    "Crypto-culture nods with \"FAKENAVOX\" branding.",
+    "Nostalgia for 80s",
+    "90s tech and aesthetics."
+  ],
+  "visualSummary": "The artwork features a vibrant, glitchy VHS-style aesthetic with a retro television set displaying a garbled image of a Pepe-like creature. The color palette is a mix of neon blues, greens, and purples, creating a nostalgic yet chaotic vibe. The composition is busy with multiple visual elements, including a character watching the screen with an amused expression, adding to the surreal experience.",
+  "visualSummaryShort": "The card showcases a vibrant, glitchy VHS aesthetic with a retro television displaying a Pepe-like creature. A character watches the screen with an amused expression, surrounded by a chaotic mix of neon colors.",
+  "visualKeywords": [
+    "glitch",
+    "vhs",
+    "neon",
+    "retro television",
+    "pepe-like",
+    "amused character",
+    "chaotic",
+    "surreal",
+    "busy composition",
+    "colorful"
+  ],
+  "textKeywords": [
+    "faka",
+    "vision",
+    "fakenavox",
+    "hd69"
+  ],
+  "keywords": [
+    "glitch",
+    "vhs",
+    "neon",
+    "retro television",
+    "pepe-like",
+    "amused character",
+    "chaotic",
+    "surreal",
+    "busy composition",
+    "colorful",
+    "faka",
+    "vision",
+    "fakenavox",
+    "hd69"
+  ],
+  "embeddingInput": "FAKAVISION (Fake Rares) - Series 11 Card 15\nArtist: VSTRVL\nSupply 69 Issued September 2022\nOn-card text: FAKA VISION | FAKENAVOX PP-HD69\nVisual summary: The artwork features a vibrant, glitchy VHS-style aesthetic with a retro television set displaying a garbled image of a Pepe-like creature. The color palette is a mix of neon blues, greens, and purples, creating a nostalgic yet chaotic vibe. The composition is busy with multiple visual elements, including a character watching the screen with an amused expression, adding to the surreal experience.\nMemetic references: Retro VHS and analog TV references.; Classic Pepe the Frog imagery with a glitch art twist.; Crypto-culture nods with \"FAKENAVOX\" branding.; Nostalgia for 80s; 90s tech and aesthetics.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKAVISION#text",
+      "label": "On-card text",
+      "text": "FAKA VISION | FAKENAVOX PP-HD69",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKAVISION#memetic",
+      "label": "Memetic references",
+      "text": "Retro VHS and analog TV references.\nClassic Pepe the Frog imagery with a glitch art twist.\nCrypto-culture nods with \"FAKENAVOX\" branding.\nNostalgia for 80s\n90s tech and aesthetics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKAVISION#visual",
+      "label": "Visual summary",
+      "text": "The artwork features a vibrant, glitchy VHS-style aesthetic with a retro television set displaying a garbled image of a Pepe-like creature. The color palette is a mix of neon blues, greens, and purples, creating a nostalgic yet chaotic vibe. The composition is busy with multiple visual elements, including a character watching the screen with an amused expression, adding to the surreal experience.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKAVISION#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKA VISION  \nFAKENAVOX PP-HD69  \n\n🎨 **VISUAL BREAKDOWN:**\nThe artwork features a vibrant, glitchy VHS-style aesthetic with a retro television set displaying a garbled image of a Pepe-like creature. The color palette is a mix of neon blues, greens, and purples, creating a nostalgic yet chaotic vibe. The composition is busy with multiple visual elements, including a character watching the screen with an amused expression, adding to the surreal experience.\n\n🧬 **MEMETIC DNA:**\n- Retro VHS and analog TV references.\n- Classic Pepe the Frog imagery with a glitch art twist.\n- Crypto-culture nods with \"FAKENAVOX\" branding.\n- Nostalgia for 80s/90s tech and aesthetics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.443Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "asset": "PEPERULES",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 13,
+  "artist": "YT",
+  "supply": 100,
+  "issuance": "August 2022",
+  "textOnCard": [
+    "EVERY NFT IS A RARE PEPE",
+    "CONFIRMED"
+  ],
+  "memeticReferences": [
+    "References the iconic \"Rare Pepe\" meme.",
+    "Plays on the concept of NFT authenticity and value.",
+    "Includes classic Pepe the Frog imagery.",
+    "\"CONFIRMED\" taps into crypto lingo for validation."
+  ],
+  "visualSummary": "The card features a stark black background with vibrant text in neon green and purple, creating a striking contrast. The words are layered and slightly misaligned, giving a glitchy, digital aesthetic. At the bottom right, a classic Pepe face peeks out, adding a playful touch to the otherwise minimalist design.",
+  "visualSummaryShort": "The card showcases a minimalist design with a stark black background and vibrant neon green and purple text. A classic Pepe face adds a playful element to the glitchy, digital aesthetic.",
+  "visualKeywords": [
+    "black background",
+    "neon green",
+    "neon purple",
+    "glitchy",
+    "minimalist",
+    "pepe face",
+    "playful",
+    "digital aesthetic"
+  ],
+  "textKeywords": [
+    "every",
+    "nft",
+    "confirmed"
+  ],
+  "keywords": [
+    "black background",
+    "neon green",
+    "neon purple",
+    "glitchy",
+    "minimalist",
+    "pepe face",
+    "playful",
+    "digital aesthetic",
+    "every",
+    "nft",
+    "confirmed"
+  ],
+  "embeddingInput": "PEPERULES (Fake Rares) - Series 9 Card 13\nArtist: YT\nSupply 100 Issued August 2022\nOn-card text: EVERY NFT IS A RARE PEPE | CONFIRMED\nVisual summary: The card features a stark black background with vibrant text in neon green and purple, creating a striking contrast. The words are layered and slightly misaligned, giving a glitchy, digital aesthetic. At the bottom right, a classic Pepe face peeks out, adding a playful touch to the otherwise minimalist design.\nMemetic references: References the iconic \"Rare Pepe\" meme.; Plays on the concept of NFT authenticity and value.; Includes classic Pepe the Frog imagery.; \"CONFIRMED\" taps into crypto lingo for validation.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPERULES#text",
+      "label": "On-card text",
+      "text": "EVERY NFT IS A RARE PEPE | CONFIRMED",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPERULES#memetic",
+      "label": "Memetic references",
+      "text": "References the iconic \"Rare Pepe\" meme.\nPlays on the concept of NFT authenticity and value.\nIncludes classic Pepe the Frog imagery.\n\"CONFIRMED\" taps into crypto lingo for validation.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPERULES#visual",
+      "label": "Visual summary",
+      "text": "The card features a stark black background with vibrant text in neon green and purple, creating a striking contrast. The words are layered and slightly misaligned, giving a glitchy, digital aesthetic. At the bottom right, a classic Pepe face peeks out, adding a playful touch to the otherwise minimalist design.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPERULES#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nEVERY NFT IS A RARE PEPE  \nCONFIRMED\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a stark black background with vibrant text in neon green and purple, creating a striking contrast. The words are layered and slightly misaligned, giving a glitchy, digital aesthetic. At the bottom right, a classic Pepe face peeks out, adding a playful touch to the otherwise minimalist design.\n\n🧬 **MEMETIC DNA:**\n- References the iconic \"Rare Pepe\" meme.\n- Plays on the concept of NFT authenticity and value.\n- Includes classic Pepe the Frog imagery.\n- \"CONFIRMED\" taps into crypto lingo for validation.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.964Z",
+  "sourceFactVersion": 1
+}

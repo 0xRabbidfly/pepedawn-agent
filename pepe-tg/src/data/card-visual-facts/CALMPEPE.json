@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "CALMPEPE",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 36,
+  "artist": "GrantYun",
+  "supply": 100,
+  "issuance": "June 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog chill vibes.",
+    "Reference to introspective and zen-like memes.",
+    "Elements of crypto culture's love for serene, mindful moments."
+  ],
+  "visualSummary": "The card features a relaxed Pepe the Frog sitting in a modern, sleek chair, gazing out at a serene landscape through a large window. The color palette is soft and earthy, with muted greens, browns, and blues, creating a calming atmosphere. The artistic style is minimalist and clean, with smooth lines and a focus on tranquility.",
+  "visualSummaryShort": "The card depicts a relaxed Pepe the Frog in a modern chair, looking out at a serene landscape. The soft and earthy color palette enhances the calming atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "modern chair",
+    "serene landscape",
+    "soft colors",
+    "earthy tones",
+    "minimalist",
+    "calm",
+    "tranquility"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "modern chair",
+    "serene landscape",
+    "soft colors",
+    "earthy tones",
+    "minimalist",
+    "calm",
+    "tranquility"
+  ],
+  "embeddingInput": "CALMPEPE (Fake Rares) - Series 8 Card 36\nArtist: GrantYun\nSupply 100 Issued June 2022\nOn-card text: none detected\nVisual summary: The card features a relaxed Pepe the Frog sitting in a modern, sleek chair, gazing out at a serene landscape through a large window. The color palette is soft and earthy, with muted greens, browns, and blues, creating a calming atmosphere. The artistic style is minimalist and clean, with smooth lines and a focus on tranquility.\nMemetic references: Classic Pepe the Frog chill vibes.; Reference to introspective and zen-like memes.; Elements of crypto culture's love for serene, mindful moments.",
+  "embeddingBlocks": [
+    {
+      "id": "CALMPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog chill vibes.\nReference to introspective and zen-like memes.\nElements of crypto culture's love for serene, mindful moments.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "CALMPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a relaxed Pepe the Frog sitting in a modern, sleek chair, gazing out at a serene landscape through a large window. The color palette is soft and earthy, with muted greens, browns, and blues, creating a calming atmosphere. The artistic style is minimalist and clean, with smooth lines and a focus on tranquility.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "CALMPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a relaxed Pepe the Frog sitting in a modern, sleek chair, gazing out at a serene landscape through a large window. The color palette is soft and earthy, with muted greens, browns, and blues, creating a calming atmosphere. The artistic style is minimalist and clean, with smooth lines and a focus on tranquility.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog chill vibes.\n- Reference to introspective and zen-like memes.\n- Elements of crypto culture's love for serene, mindful moments.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.340Z",
+  "sourceFactVersion": 1
+}

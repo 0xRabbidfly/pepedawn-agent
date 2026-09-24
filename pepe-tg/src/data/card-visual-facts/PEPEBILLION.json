@@ -1,0 +1,111 @@
+{
+  "version": 1,
+  "asset": "PEPEBILLION",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 21,
+  "artist": "JB",
+  "supply": 21,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "PEPE RULS EVERYTHING AROUND ME",
+    "PEPEBILLION",
+    "PEPE IS FOR THE CHILDREN",
+    "INSTANT BILLIONAIRE CARD!",
+    "If you wana look good and not be bummy, PEPE you better give me that money Aoow..."
+  ],
+  "memeticReferences": [
+    "References to the popular meme “C.R.E.A.M” (Cash Rules Everything Around Me) with a Pepe twist.",
+    "Pepe the Frog is prominently featured, a staple in meme culture.",
+    "The parody of a classic hip-hop vibe with \"fake rare records\" adds a humorous, nostalgic touch."
+  ],
+  "visualSummary": "The card features a green-tinted portrait of a person with a serious expression, overlaid with Pepe the Frog's image giving a thumbs up. The background contains a faded group photo, creating a layered effect. The color palette is dominated by green and red, with a mix of black and white, giving it a bold and striking appearance.",
+  "visualSummaryShort": "The card showcases a green-tinted portrait with a serious expression, layered with Pepe the Frog giving a thumbs up. The bold color palette features green and red, set against a faded group photo background.",
+  "visualKeywords": [
+    "green tint",
+    "portrait",
+    "pepe the frog",
+    "thumbs up",
+    "faded photo",
+    "bold colors",
+    "serious expression"
+  ],
+  "textKeywords": [
+    "ruls",
+    "everything",
+    "around",
+    "pepebillion",
+    "children",
+    "instant",
+    "billionaire",
+    "you",
+    "wana",
+    "look",
+    "good",
+    "not",
+    "bummy",
+    "better",
+    "give",
+    "money",
+    "aoow"
+  ],
+  "keywords": [
+    "green tint",
+    "portrait",
+    "pepe the frog",
+    "thumbs up",
+    "faded photo",
+    "bold colors",
+    "serious expression",
+    "ruls",
+    "everything",
+    "around",
+    "pepebillion",
+    "children",
+    "instant",
+    "billionaire",
+    "you",
+    "wana",
+    "look",
+    "good",
+    "not",
+    "bummy",
+    "better",
+    "give",
+    "money",
+    "aoow"
+  ],
+  "embeddingInput": "PEPEBILLION (Fake Rares) - Series 4 Card 21\nArtist: JB\nSupply 21 Issued November 2021\nOn-card text: PEPE RULS EVERYTHING AROUND ME | PEPEBILLION | PEPE IS FOR THE CHILDREN | INSTANT BILLIONAIRE CARD! | If you wana look good and not be bummy, PEPE you better give me that money Aoow...\nVisual summary: The card features a green-tinted portrait of a person with a serious expression, overlaid with Pepe the Frog's image giving a thumbs up. The background contains a faded group photo, creating a layered effect. The color palette is dominated by green and red, with a mix of black and white, giving it a bold and striking appearance.\nMemetic references: References to the popular meme “C.R.E.A.M” (Cash Rules Everything Around Me) with a Pepe twist.; Pepe the Frog is prominently featured, a staple in meme culture.; The parody of a classic hip-hop vibe with \"fake rare records\" adds a humorous, nostalgic touch.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEBILLION#text",
+      "label": "On-card text",
+      "text": "PEPE RULS EVERYTHING AROUND ME | PEPEBILLION | PEPE IS FOR THE CHILDREN | INSTANT BILLIONAIRE CARD! | If you wana look good and not be bummy, PEPE you better give me that money Aoow...",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEBILLION#memetic",
+      "label": "Memetic references",
+      "text": "References to the popular meme “C.R.E.A.M” (Cash Rules Everything Around Me) with a Pepe twist.\nPepe the Frog is prominently featured, a staple in meme culture.\nThe parody of a classic hip-hop vibe with \"fake rare records\" adds a humorous, nostalgic touch.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEBILLION#visual",
+      "label": "Visual summary",
+      "text": "The card features a green-tinted portrait of a person with a serious expression, overlaid with Pepe the Frog's image giving a thumbs up. The background contains a faded group photo, creating a layered effect. The color palette is dominated by green and red, with a mix of black and white, giving it a bold and striking appearance.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEBILLION#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE RULS EVERYTHING AROUND ME  \nPEPEBILLION  \nPEPE IS FOR THE CHILDREN  \nINSTANT BILLIONAIRE CARD!  \nIf you wana look good and not be bummy, PEPE you better give me that money Aoow...\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a green-tinted portrait of a person with a serious expression, overlaid with Pepe the Frog's image giving a thumbs up. The background contains a faded group photo, creating a layered effect. The color palette is dominated by green and red, with a mix of black and white, giving it a bold and striking appearance.\n\n🧬 **MEMETIC DNA:**\n- References to the popular meme “C.R.E.A.M” (Cash Rules Everything Around Me) with a Pepe twist.\n- Pepe the Frog is prominently featured, a staple in meme culture.\n- The parody of a classic hip-hop vibe with \"fake rare records\" adds a humorous, nostalgic touch.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.844Z",
+  "sourceFactVersion": 1
+}

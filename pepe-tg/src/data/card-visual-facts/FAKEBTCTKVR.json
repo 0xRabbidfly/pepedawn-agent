@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "asset": "FAKEBTCTKVR",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 11,
+  "artist": "Rare Scrilla x VLAD COSTEA",
+  "supply": 41,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "BTC TKVR, Freedom of Speech"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference",
+    "Bitcoin symbol on the book",
+    "\"Freedom of Speech\" nod to crypto's libertarian values"
+  ],
+  "visualSummary": "The card features a green humanoid figure with a prominent tongue and gold chain, holding a book. The background is a mosaic of pink and purple geometric shapes, adding a vibrant and chaotic energy. The figure's clothes are casual, with blue pants and sneakers, bringing a modern and relatable touch.",
+  "visualSummaryShort": "The card showcases a green humanoid figure with a prominent tongue, adorned with a gold chain and holding a book. The vibrant background consists of pink and purple geometric shapes, enhancing the chaotic energy of the scene.",
+  "visualKeywords": [
+    "humanoid",
+    "green",
+    "tongue",
+    "gold chain",
+    "book",
+    "pink",
+    "purple",
+    "geometric",
+    "casual",
+    "sneakers"
+  ],
+  "textKeywords": [
+    "btc",
+    "tkvr",
+    "freedom",
+    "speech"
+  ],
+  "keywords": [
+    "humanoid",
+    "green",
+    "tongue",
+    "gold chain",
+    "book",
+    "pink",
+    "purple",
+    "geometric",
+    "casual",
+    "sneakers",
+    "btc",
+    "tkvr",
+    "freedom",
+    "speech"
+  ],
+  "embeddingInput": "FAKEBTCTKVR (Fake Rares) - Series 7 Card 11\nArtist: Rare Scrilla x VLAD COSTEA\nSupply 41 Issued February 2022\nOn-card text: BTC TKVR, Freedom of Speech\nVisual summary: The card features a green humanoid figure with a prominent tongue and gold chain, holding a book. The background is a mosaic of pink and purple geometric shapes, adding a vibrant and chaotic energy. The figure's clothes are casual, with blue pants and sneakers, bringing a modern and relatable touch.\nMemetic references: Pepe the Frog reference; Bitcoin symbol on the book; \"Freedom of Speech\" nod to crypto's libertarian values",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEBTCTKVR#text",
+      "label": "On-card text",
+      "text": "BTC TKVR, Freedom of Speech",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEBTCTKVR#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference\nBitcoin symbol on the book\n\"Freedom of Speech\" nod to crypto's libertarian values",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEBTCTKVR#visual",
+      "label": "Visual summary",
+      "text": "The card features a green humanoid figure with a prominent tongue and gold chain, holding a book. The background is a mosaic of pink and purple geometric shapes, adding a vibrant and chaotic energy. The figure's clothes are casual, with blue pants and sneakers, bringing a modern and relatable touch.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEBTCTKVR#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nBTC TKVR, Freedom of Speech\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a green humanoid figure with a prominent tongue and gold chain, holding a book. The background is a mosaic of pink and purple geometric shapes, adding a vibrant and chaotic energy. The figure's clothes are casual, with blue pants and sneakers, bringing a modern and relatable touch.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference\n- Bitcoin symbol on the book\n- \"Freedom of Speech\" nod to crypto's libertarian values",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.466Z",
+  "sourceFactVersion": 1
+}

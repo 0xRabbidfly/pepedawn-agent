@@ -1,0 +1,118 @@
+{
+  "version": 1,
+  "asset": "DREAMTEAM",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 47,
+  "artist": "Kaph Resh and Prefer Wealth",
+  "supply": 300,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "Greatest sports NFT ever assembled",
+    "Blow out any sport NFT by an average of 44 basis points",
+    "HODLERS have museum hands and Alpha status forever"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as iconic athletes",
+    "References to Olympic symbols (rings)",
+    "Crypto culture with terms like \"HODLERS\" and \"Alpha status\"",
+    "Play on historical \"Dream Team\" concept in sports"
+  ],
+  "visualSummary": "The card features five anthropomorphic green frogs, resembling Pepe, dressed in classic basketball uniforms with \"USA\" emblazoned on them. They are each holding or interacting with colorful Olympic rings, set against a dark, vibrant background with radial light effects. The composition uses a bold color palette, combining bright reds, blues, and greens to evoke a sense of energy and nostalgia.",
+  "visualSummaryShort": "The card showcases five anthropomorphic green frogs in basketball uniforms, engaging with colorful Olympic rings. The vibrant background and bold color palette create an energetic and nostalgic atmosphere.",
+  "visualKeywords": [
+    "frogs",
+    "basketball",
+    "olympic rings",
+    "dark background",
+    "radial light",
+    "red",
+    "blue",
+    "green",
+    "energy",
+    "nostalgia"
+  ],
+  "textKeywords": [
+    "greatest",
+    "sports",
+    "nft",
+    "ever",
+    "assembled",
+    "blow",
+    "out",
+    "any",
+    "sport",
+    "average",
+    "basis",
+    "points",
+    "hodlers",
+    "museum",
+    "hands",
+    "alpha",
+    "status",
+    "forever"
+  ],
+  "keywords": [
+    "frogs",
+    "basketball",
+    "olympic rings",
+    "dark background",
+    "radial light",
+    "red",
+    "blue",
+    "green",
+    "energy",
+    "nostalgia",
+    "greatest",
+    "sports",
+    "nft",
+    "ever",
+    "assembled",
+    "blow",
+    "out",
+    "any",
+    "sport",
+    "average",
+    "basis",
+    "points",
+    "hodlers",
+    "museum",
+    "hands",
+    "alpha",
+    "status",
+    "forever"
+  ],
+  "embeddingInput": "DREAMTEAM (Fake Rares) - Series 2 Card 47\nArtist: Kaph Resh and Prefer Wealth\nSupply 300 Issued October 2021\nOn-card text: Greatest sports NFT ever assembled | Blow out any sport NFT by an average of 44 basis points | HODLERS have museum hands and Alpha status forever\nVisual summary: The card features five anthropomorphic green frogs, resembling Pepe, dressed in classic basketball uniforms with \"USA\" emblazoned on them. They are each holding or interacting with colorful Olympic rings, set against a dark, vibrant background with radial light effects. The composition uses a bold color palette, combining bright reds, blues, and greens to evoke a sense of energy and nostalgia.\nMemetic references: Pepe the Frog as iconic athletes; References to Olympic symbols (rings); Crypto culture with terms like \"HODLERS\" and \"Alpha status\"; Play on historical \"Dream Team\" concept in sports",
+  "embeddingBlocks": [
+    {
+      "id": "DREAMTEAM#text",
+      "label": "On-card text",
+      "text": "Greatest sports NFT ever assembled | Blow out any sport NFT by an average of 44 basis points | HODLERS have museum hands and Alpha status forever",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "DREAMTEAM#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as iconic athletes\nReferences to Olympic symbols (rings)\nCrypto culture with terms like \"HODLERS\" and \"Alpha status\"\nPlay on historical \"Dream Team\" concept in sports",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "DREAMTEAM#visual",
+      "label": "Visual summary",
+      "text": "The card features five anthropomorphic green frogs, resembling Pepe, dressed in classic basketball uniforms with \"USA\" emblazoned on them. They are each holding or interacting with colorful Olympic rings, set against a dark, vibrant background with radial light effects. The composition uses a bold color palette, combining bright reds, blues, and greens to evoke a sense of energy and nostalgia.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "DREAMTEAM#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- Greatest sports NFT ever assembled\n- Blow out any sport NFT by an average of 44 basis points\n- HODLERS have museum hands and Alpha status forever\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features five anthropomorphic green frogs, resembling Pepe, dressed in classic basketball uniforms with \"USA\" emblazoned on them. They are each holding or interacting with colorful Olympic rings, set against a dark, vibrant background with radial light effects. The composition uses a bold color palette, combining bright reds, blues, and greens to evoke a sense of energy and nostalgia.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as iconic athletes\n- References to Olympic symbols (rings)\n- Crypto culture with terms like \"HODLERS\" and \"Alpha status\"\n- Play on historical \"Dream Team\" concept in sports",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.415Z",
+  "sourceFactVersion": 1
+}

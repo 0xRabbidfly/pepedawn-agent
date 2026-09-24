@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "MONEYISOVER",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 6,
+  "artist": "RYR",
+  "supply": 50,
+  "issuance": "January 2022",
+  "textOnCard": [
+    "MONEY IS OVER IF YOU WANT IT. PEPE & YOKO"
+  ],
+  "memeticReferences": [
+    "Parody of the iconic \"War is Over\" message by John Lennon and Yoko Ono.",
+    "Pepe the Frog, a staple in meme culture, is referenced.",
+    "Commentary on money and consumerism, blending counterculture with crypto satire."
+  ],
+  "visualSummary": "The card features a retro-style photograph of two figures on a staircase, with a massive stack of cartoonish money bills in bright green dominating the foreground. The color palette is a mix of muted pastels with the vibrant green stack, creating a surreal, pop-art vibe. The figures are dressed in vintage clothing, adding to the nostalgic aesthetic.",
+  "visualSummaryShort": "The card showcases a retro photograph of two figures on a staircase, highlighted by a large stack of bright green money. The muted pastel colors combined with the vibrant green create a surreal, pop-art atmosphere.",
+  "visualKeywords": [
+    "staircase",
+    "money",
+    "green",
+    "vintage",
+    "pastel",
+    "surreal",
+    "pop-art",
+    "figures"
+  ],
+  "textKeywords": [
+    "money",
+    "you",
+    "want",
+    "yoko"
+  ],
+  "keywords": [
+    "staircase",
+    "money",
+    "green",
+    "vintage",
+    "pastel",
+    "surreal",
+    "pop-art",
+    "figures",
+    "you",
+    "want",
+    "yoko"
+  ],
+  "embeddingInput": "MONEYISOVER (Fake Rares) - Series 6 Card 6\nArtist: RYR\nSupply 50 Issued January 2022\nOn-card text: MONEY IS OVER IF YOU WANT IT. PEPE & YOKO\nVisual summary: The card features a retro-style photograph of two figures on a staircase, with a massive stack of cartoonish money bills in bright green dominating the foreground. The color palette is a mix of muted pastels with the vibrant green stack, creating a surreal, pop-art vibe. The figures are dressed in vintage clothing, adding to the nostalgic aesthetic.\nMemetic references: Parody of the iconic \"War is Over\" message by John Lennon and Yoko Ono.; Pepe the Frog, a staple in meme culture, is referenced.; Commentary on money and consumerism, blending counterculture with crypto satire.",
+  "embeddingBlocks": [
+    {
+      "id": "MONEYISOVER#text",
+      "label": "On-card text",
+      "text": "MONEY IS OVER IF YOU WANT IT. PEPE & YOKO",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MONEYISOVER#memetic",
+      "label": "Memetic references",
+      "text": "Parody of the iconic \"War is Over\" message by John Lennon and Yoko Ono.\nPepe the Frog, a staple in meme culture, is referenced.\nCommentary on money and consumerism, blending counterculture with crypto satire.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MONEYISOVER#visual",
+      "label": "Visual summary",
+      "text": "The card features a retro-style photograph of two figures on a staircase, with a massive stack of cartoonish money bills in bright green dominating the foreground. The color palette is a mix of muted pastels with the vibrant green stack, creating a surreal, pop-art vibe. The figures are dressed in vintage clothing, adding to the nostalgic aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MONEYISOVER#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nMONEY IS OVER IF YOU WANT IT. PEPE & YOKO\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a retro-style photograph of two figures on a staircase, with a massive stack of cartoonish money bills in bright green dominating the foreground. The color palette is a mix of muted pastels with the vibrant green stack, creating a surreal, pop-art vibe. The figures are dressed in vintage clothing, adding to the nostalgic aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Parody of the iconic \"War is Over\" message by John Lennon and Yoko Ono.\n- Pepe the Frog, a staple in meme culture, is referenced.\n- Commentary on money and consumerism, blending counterculture with crypto satire.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.779Z",
+  "sourceFactVersion": 1
+}

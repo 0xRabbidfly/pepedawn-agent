@@ -1,0 +1,111 @@
+{
+  "version": 1,
+  "asset": "BLADEEPEPE",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 37,
+  "artist": "Cronos One",
+  "supply": 21,
+  "issuance": "June 2023",
+  "textOnCard": [
+    "ブレードペペ",
+    "Very Fake rare Bladee pepe",
+    "BTC on USB Increases the players defense by +42 exp ppts.",
+    "Absolute with Ice Powerful hammer attack dealing +50 damage"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure.",
+    "References to Bladee, a known figure in internet and music culture.",
+    "Crypto references with \"BTC on USB.\"",
+    "RPG-style attack and defense stats."
+  ],
+  "visualSummary": "The card features a character with a Pepe the Frog face, wearing a hoodie and a cap, striking a double peace sign pose. The background is a digital, fiery orange-red pattern, giving it a cyberpunk vibe. The color palette includes bright oranges, reds, and greens, contrasting sharply with the black hoodie for a streetwear aesthetic.",
+  "visualSummaryShort": "The card showcases a character with a Pepe the Frog face in a vibrant, fiery background. The color palette features bright oranges, reds, and greens, creating a striking cyberpunk aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "hoodie",
+    "cap",
+    "peace sign",
+    "orange-red",
+    "cyberpunk",
+    "streetwear",
+    "bright colors",
+    "digital pattern"
+  ],
+  "textKeywords": [
+    "bladee",
+    "btc",
+    "usb",
+    "increases",
+    "players",
+    "defense",
+    "exp",
+    "ppts",
+    "absolute",
+    "ice",
+    "powerful",
+    "hammer",
+    "attack",
+    "dealing",
+    "damage"
+  ],
+  "keywords": [
+    "pepe",
+    "hoodie",
+    "cap",
+    "peace sign",
+    "orange-red",
+    "cyberpunk",
+    "streetwear",
+    "bright colors",
+    "digital pattern",
+    "bladee",
+    "btc",
+    "usb",
+    "increases",
+    "players",
+    "defense",
+    "exp",
+    "ppts",
+    "absolute",
+    "ice",
+    "powerful",
+    "hammer",
+    "attack",
+    "dealing",
+    "damage"
+  ],
+  "embeddingInput": "BLADEEPEPE (Fake Rares) - Series 15 Card 37\nArtist: Cronos One\nSupply 21 Issued June 2023\nOn-card text: ブレードペペ | Very Fake rare Bladee pepe | BTC on USB Increases the players defense by +42 exp ppts. | Absolute with Ice Powerful hammer attack dealing +50 damage\nVisual summary: The card features a character with a Pepe the Frog face, wearing a hoodie and a cap, striking a double peace sign pose. The background is a digital, fiery orange-red pattern, giving it a cyberpunk vibe. The color palette includes bright oranges, reds, and greens, contrasting sharply with the black hoodie for a streetwear aesthetic.\nMemetic references: Pepe the Frog as a central figure.; References to Bladee, a known figure in internet and music culture.; Crypto references with \"BTC on USB.\"; RPG-style attack and defense stats.",
+  "embeddingBlocks": [
+    {
+      "id": "BLADEEPEPE#text",
+      "label": "On-card text",
+      "text": "ブレードペペ | Very Fake rare Bladee pepe | BTC on USB Increases the players defense by +42 exp ppts. | Absolute with Ice Powerful hammer attack dealing +50 damage",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "BLADEEPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure.\nReferences to Bladee, a known figure in internet and music culture.\nCrypto references with \"BTC on USB.\"\nRPG-style attack and defense stats.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BLADEEPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a character with a Pepe the Frog face, wearing a hoodie and a cap, striking a double peace sign pose. The background is a digital, fiery orange-red pattern, giving it a cyberpunk vibe. The color palette includes bright oranges, reds, and greens, contrasting sharply with the black hoodie for a streetwear aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BLADEEPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nブレードペペ  \nVery Fake rare Bladee pepe  \nBTC on USB Increases the players defense by +42 exp ppts.  \nAbsolute with Ice Powerful hammer attack dealing +50 damage  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a character with a Pepe the Frog face, wearing a hoodie and a cap, striking a double peace sign pose. The background is a digital, fiery orange-red pattern, giving it a cyberpunk vibe. The color palette includes bright oranges, reds, and greens, contrasting sharply with the black hoodie for a streetwear aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure.\n- References to Bladee, a known figure in internet and music culture.\n- Crypto references with \"BTC on USB.\"\n- RPG-style attack and defense stats.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.314Z",
+  "sourceFactVersion": 1
+}

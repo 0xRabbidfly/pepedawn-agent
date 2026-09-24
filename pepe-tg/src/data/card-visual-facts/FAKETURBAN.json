@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "asset": "FAKETURBAN",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 4,
+  "artist": "EMBLEMATIX",
+  "supply": 169,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "FAKETURBAN"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central meme figure.",
+    "References to classic art styles, possibly echoing the \"Portrait of a Man in a Turban.\"",
+    "Miniature cards referencing NFT or crypto culture.",
+    "The golden chain and medallion enhance the crypto bling vibe."
+  ],
+  "visualSummary": "The card features a Pepe the Frog character donned in a luxurious blue turban against a dark background, reminiscent of a classic oil painting. The color palette is rich and deep, with the vibrant blue turban contrasting the green of Pepe's face. The lower part of the card showcases a collection of miniatures, including art pieces and a golden chain with a Pepe medallion, adding layers of detail and intrigue.",
+  "visualSummaryShort": "The card showcases a Pepe the Frog character wearing a luxurious blue turban against a dark, oil painting-like background. It features rich colors and detailed miniatures, including art pieces and a golden chain with a Pepe medallion.",
+  "visualKeywords": [
+    "pepe",
+    "turban",
+    "blue",
+    "dark background",
+    "oil painting",
+    "miniatures",
+    "golden chain",
+    "medallion"
+  ],
+  "textKeywords": [
+    "faketurban"
+  ],
+  "keywords": [
+    "pepe",
+    "turban",
+    "blue",
+    "dark background",
+    "oil painting",
+    "miniatures",
+    "golden chain",
+    "medallion",
+    "faketurban"
+  ],
+  "embeddingInput": "FAKETURBAN (Fake Rares) - Series 9 Card 4\nArtist: EMBLEMATIX\nSupply 169 Issued March 2022\nOn-card text: FAKETURBAN\nVisual summary: The card features a Pepe the Frog character donned in a luxurious blue turban against a dark background, reminiscent of a classic oil painting. The color palette is rich and deep, with the vibrant blue turban contrasting the green of Pepe's face. The lower part of the card showcases a collection of miniatures, including art pieces and a golden chain with a Pepe medallion, adding layers of detail and intrigue.\nMemetic references: Pepe the Frog as a central meme figure.; References to classic art styles, possibly echoing the \"Portrait of a Man in a Turban.\"; Miniature cards referencing NFT or crypto culture.; The golden chain and medallion enhance the crypto bling vibe.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKETURBAN#text",
+      "label": "On-card text",
+      "text": "FAKETURBAN",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKETURBAN#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central meme figure.\nReferences to classic art styles, possibly echoing the \"Portrait of a Man in a Turban.\"\nMiniature cards referencing NFT or crypto culture.\nThe golden chain and medallion enhance the crypto bling vibe.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKETURBAN#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe the Frog character donned in a luxurious blue turban against a dark background, reminiscent of a classic oil painting. The color palette is rich and deep, with the vibrant blue turban contrasting the green of Pepe's face. The lower part of the card showcases a collection of miniatures, including art pieces and a golden chain with a Pepe medallion, adding layers of detail and intrigue.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKETURBAN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKETURBAN\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe the Frog character donned in a luxurious blue turban against a dark background, reminiscent of a classic oil painting. The color palette is rich and deep, with the vibrant blue turban contrasting the green of Pepe's face. The lower part of the card showcases a collection of miniatures, including art pieces and a golden chain with a Pepe medallion, adding layers of detail and intrigue.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central meme figure.\n- References to classic art styles, possibly echoing the \"Portrait of a Man in a Turban.\"\n- Miniature cards referencing NFT or crypto culture.\n- The golden chain and medallion enhance the crypto bling vibe.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.590Z",
+  "sourceFactVersion": 1
+}

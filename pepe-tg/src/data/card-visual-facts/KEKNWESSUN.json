@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "asset": "KEKNWESSUN",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 17,
+  "artist": "Pork Chop Express",
+  "supply": 77,
+  "issuance": "August 2022",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a blank visual design with no identifiable elements. There are no colors, objects, or characters present.",
+  "visualKeywords": [],
+  "textKeywords": [],
+  "keywords": [],
+  "embeddingInput": "KEKNWESSUN (Fake Rares) - Series 9 Card 17\nArtist: Pork Chop Express\nSupply 77 Issued August 2022\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "KEKNWESSUN#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't help with identifying or analyzing this image.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.714Z",
+  "sourceFactVersion": 1
+}

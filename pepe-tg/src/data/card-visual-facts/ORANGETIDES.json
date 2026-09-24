@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "ORANGETIDES",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 12,
+  "artist": "Mighty Shroom",
+  "supply": 21,
+  "issuance": "July 2023",
+  "textOnCard": [
+    "ORANGE TIDES"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple in meme culture.",
+    "Bitcoin symbols, representing crypto wealth and success.",
+    "Surfing imagery, symbolizing riding the waves of market volatility."
+  ],
+  "visualSummary": "The card features a cartoonish Pepe the Frog surfing on a wave made of Bitcoin symbols. The color palette is dominated by vibrant oranges and yellows, giving off a sunny, energetic vibe. The style is playful and comic-like, capturing a carefree, beachy atmosphere.",
+  "visualSummaryShort": "The card showcases a cartoonish Pepe the Frog surfing on a wave of Bitcoin symbols. Its vibrant orange and yellow colors create a sunny and energetic beach vibe.",
+  "visualKeywords": [
+    "pepe the frog",
+    "surfing",
+    "bitcoin",
+    "orange",
+    "yellow",
+    "playful",
+    "comic",
+    "wave",
+    "beach",
+    "carefree"
+  ],
+  "textKeywords": [
+    "orange",
+    "tides"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "surfing",
+    "bitcoin",
+    "orange",
+    "yellow",
+    "playful",
+    "comic",
+    "wave",
+    "beach",
+    "carefree",
+    "tides"
+  ],
+  "embeddingInput": "ORANGETIDES (Fake Rares) - Series 15 Card 12\nArtist: Mighty Shroom\nSupply 21 Issued July 2023\nOn-card text: ORANGE TIDES\nVisual summary: The card features a cartoonish Pepe the Frog surfing on a wave made of Bitcoin symbols. The color palette is dominated by vibrant oranges and yellows, giving off a sunny, energetic vibe. The style is playful and comic-like, capturing a carefree, beachy atmosphere.\nMemetic references: Pepe the Frog, a staple in meme culture.; Bitcoin symbols, representing crypto wealth and success.; Surfing imagery, symbolizing riding the waves of market volatility.",
+  "embeddingBlocks": [
+    {
+      "id": "ORANGETIDES#text",
+      "label": "On-card text",
+      "text": "ORANGE TIDES",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "ORANGETIDES#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple in meme culture.\nBitcoin symbols, representing crypto wealth and success.\nSurfing imagery, symbolizing riding the waves of market volatility.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "ORANGETIDES#visual",
+      "label": "Visual summary",
+      "text": "The card features a cartoonish Pepe the Frog surfing on a wave made of Bitcoin symbols. The color palette is dominated by vibrant oranges and yellows, giving off a sunny, energetic vibe. The style is playful and comic-like, capturing a carefree, beachy atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "ORANGETIDES#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nORANGE TIDES\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a cartoonish Pepe the Frog surfing on a wave made of Bitcoin symbols. The color palette is dominated by vibrant oranges and yellows, giving off a sunny, energetic vibe. The style is playful and comic-like, capturing a carefree, beachy atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple in meme culture.\n- Bitcoin symbols, representing crypto wealth and success.\n- Surfing imagery, symbolizing riding the waves of market volatility.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.815Z",
+  "sourceFactVersion": 1
+}

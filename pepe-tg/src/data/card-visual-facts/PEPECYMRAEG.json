@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "asset": "PEPECYMRAEG",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 29,
+  "artist": "RebelMoney",
+  "supply": 58,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "PEPE CYMRAEG",
+    "WELSH PEPE",
+    "\"Teimlo’n dda buttie!\"",
+    "❤️ = Canu Atk = 🏉 Spd = 🐑",
+    "⭐ Sgor Prin Pepe ⭐ 100"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog face on the Welsh dragon, combining internet meme culture with national symbolism.",
+    "Rugby ball icon for attack, a nod to Welsh cultural passion for rugby.",
+    "Sheep icon for speed, referencing Wales' famous sheep population.",
+    "Use of Welsh language adds regional flavor."
+  ],
+  "visualSummary": "The card features a red dragon with Pepe the Frog's face, set against a green and white background. The dragon is cartoonish and vibrant, with a bold red color dominating the scene, contrasted by Pepe's green face and the white backdrop. The border is adorned with small flowers, adding a playful touch to the overall aesthetic.",
+  "visualSummaryShort": "The card showcases a vibrant red dragon featuring Pepe the Frog's face, set against a green and white background. The playful design is enhanced by small flowers along the border.",
+  "visualKeywords": [
+    "red dragon",
+    "pepe the frog",
+    "green background",
+    "white backdrop",
+    "cartoonish",
+    "flowers",
+    "vibrant",
+    "playful"
+  ],
+  "textKeywords": [
+    "cymraeg",
+    "welsh",
+    "teimlo",
+    "dda",
+    "buttie",
+    "canu",
+    "atk",
+    "spd",
+    "sgor",
+    "prin",
+    "100"
+  ],
+  "keywords": [
+    "red dragon",
+    "pepe the frog",
+    "green background",
+    "white backdrop",
+    "cartoonish",
+    "flowers",
+    "vibrant",
+    "playful",
+    "cymraeg",
+    "welsh",
+    "teimlo",
+    "dda",
+    "buttie",
+    "canu",
+    "atk",
+    "spd",
+    "sgor",
+    "prin",
+    "100"
+  ],
+  "embeddingInput": "PEPECYMRAEG (Fake Rares) - Series 4 Card 29\nArtist: RebelMoney\nSupply 58 Issued November 2021\nOn-card text: PEPE CYMRAEG | WELSH PEPE | \"Teimlo’n dda buttie!\" | ❤️ = Canu Atk = 🏉 Spd = 🐑 | ⭐ Sgor Prin Pepe ⭐ 100\nVisual summary: The card features a red dragon with Pepe the Frog's face, set against a green and white background. The dragon is cartoonish and vibrant, with a bold red color dominating the scene, contrasted by Pepe's green face and the white backdrop. The border is adorned with small flowers, adding a playful touch to the overall aesthetic.\nMemetic references: Pepe the Frog face on the Welsh dragon, combining internet meme culture with national symbolism.; Rugby ball icon for attack, a nod to Welsh cultural passion for rugby.; Sheep icon for speed, referencing Wales' famous sheep population.; Use of Welsh language adds regional flavor.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPECYMRAEG#text",
+      "label": "On-card text",
+      "text": "PEPE CYMRAEG | WELSH PEPE | \"Teimlo’n dda buttie!\" | ❤️ = Canu Atk = 🏉 Spd = 🐑 | ⭐ Sgor Prin Pepe ⭐ 100",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPECYMRAEG#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog face on the Welsh dragon, combining internet meme culture with national symbolism.\nRugby ball icon for attack, a nod to Welsh cultural passion for rugby.\nSheep icon for speed, referencing Wales' famous sheep population.\nUse of Welsh language adds regional flavor.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPECYMRAEG#visual",
+      "label": "Visual summary",
+      "text": "The card features a red dragon with Pepe the Frog's face, set against a green and white background. The dragon is cartoonish and vibrant, with a bold red color dominating the scene, contrasted by Pepe's green face and the white backdrop. The border is adorned with small flowers, adding a playful touch to the overall aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPECYMRAEG#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE CYMRAEG / WELSH PEPE  \n\"Teimlo’n dda buttie!\"  \n❤️ = Canu  Atk = 🏉  Spd = 🐑  \n⭐ Sgor Prin Pepe ⭐ 100\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a red dragon with Pepe the Frog's face, set against a green and white background. The dragon is cartoonish and vibrant, with a bold red color dominating the scene, contrasted by Pepe's green face and the white backdrop. The border is adorned with small flowers, adding a playful touch to the overall aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog face on the Welsh dragon, combining internet meme culture with national symbolism.\n- Rugby ball icon for attack, a nod to Welsh cultural passion for rugby.\n- Sheep icon for speed, referencing Wales' famous sheep population.\n- Use of Welsh language adds regional flavor.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.865Z",
+  "sourceFactVersion": 1
+}

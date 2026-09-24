@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "asset": "THELONEPEPE",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 13,
+  "artist": "Jeremy Booth",
+  "supply": 100,
+  "issuance": "December 2022",
+  "textOnCard": [
+    "the Lone Pepe"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as the main character.",
+    "References to the Lone Ranger with the cowboy theme and mask.",
+    "Comic book and pop art style elements.",
+    "Play on classic Western motifs."
+  ],
+  "visualSummary": "This card features a stylized depiction of Pepe the Frog as a cowboy, wearing a blue outfit, black mask, and a wide-brimmed hat. The color palette is bold and striking, with dominant reds, blues, and blacks, giving it a comic book vibe. The design is clean and graphic, reminiscent of pop art with a touch of western flair.",
+  "visualSummaryShort": "The card showcases a stylized Pepe the Frog as a cowboy, dressed in a blue outfit and wide-brimmed hat. Its bold color palette of reds, blues, and blacks creates a striking comic book aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "cowboy",
+    "blue outfit",
+    "wide-brimmed hat",
+    "bold colors",
+    "comic book",
+    "pop art",
+    "western flair"
+  ],
+  "textKeywords": [
+    "lone"
+  ],
+  "keywords": [
+    "pepe",
+    "cowboy",
+    "blue outfit",
+    "wide-brimmed hat",
+    "bold colors",
+    "comic book",
+    "pop art",
+    "western flair",
+    "lone"
+  ],
+  "embeddingInput": "THELONEPEPE (Fake Rares) - Series 12 Card 13\nArtist: Jeremy Booth\nSupply 100 Issued December 2022\nOn-card text: the Lone Pepe\nVisual summary: This card features a stylized depiction of Pepe the Frog as a cowboy, wearing a blue outfit, black mask, and a wide-brimmed hat. The color palette is bold and striking, with dominant reds, blues, and blacks, giving it a comic book vibe. The design is clean and graphic, reminiscent of pop art with a touch of western flair.\nMemetic references: Pepe the Frog as the main character.; References to the Lone Ranger with the cowboy theme and mask.; Comic book and pop art style elements.; Play on classic Western motifs.",
+  "embeddingBlocks": [
+    {
+      "id": "THELONEPEPE#text",
+      "label": "On-card text",
+      "text": "the Lone Pepe",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "THELONEPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as the main character.\nReferences to the Lone Ranger with the cowboy theme and mask.\nComic book and pop art style elements.\nPlay on classic Western motifs.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "THELONEPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a stylized depiction of Pepe the Frog as a cowboy, wearing a blue outfit, black mask, and a wide-brimmed hat. The color palette is bold and striking, with dominant reds, blues, and blacks, giving it a comic book vibe. The design is clean and graphic, reminiscent of pop art with a touch of western flair.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "THELONEPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nthe Lone Pepe\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a stylized depiction of Pepe the Frog as a cowboy, wearing a blue outfit, black mask, and a wide-brimmed hat. The color palette is bold and striking, with dominant reds, blues, and blacks, giving it a comic book vibe. The design is clean and graphic, reminiscent of pop art with a touch of western flair.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as the main character.\n- References to the Lone Ranger with the cowboy theme and mask.\n- Comic book and pop art style elements.\n- Play on classic Western motifs.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.147Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,108 @@
+{
+  "version": 1,
+  "asset": "ENTERTAINED",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 50,
+  "artist": "Rare Scrilla",
+  "supply": 49,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "MANiiIFESTING, #MANED21, WELCOME TO PLANET EARTH, ARE YOU NOT ENTERTAINED, DADDY BUILDS THEM TO PROTEKT OUR FREEDOM."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog references.",
+    "Crypto elements like Bitcoin symbols.",
+    "References to internet culture with phrases like \"ARE YOU NOT ENTERTAINED\".",
+    "Surreal and dadaist art influences."
+  ],
+  "visualSummary": "The card features a chaotic and vibrant composition, dominated by red, black, and pink hues. The central figures are reminiscent of Pepe the Frog, drawn in a graffiti style, surrounded by abstract elements like eyes, dice, and cryptic symbols. The bottom section has a vintage illustration of children with bold text, creating a stark contrast with the upper chaotic scene.",
+  "visualSummaryShort": "The card showcases a chaotic and vibrant design with graffiti-style figures and abstract elements. It contrasts a vintage illustration of children with bold text at the bottom.",
+  "visualKeywords": [
+    "chaotic",
+    "graffiti",
+    "red",
+    "black",
+    "pink",
+    "eyes",
+    "dice",
+    "symbols",
+    "children",
+    "vintage"
+  ],
+  "textKeywords": [
+    "maniiifesting",
+    "maned21",
+    "welcome",
+    "planet",
+    "earth",
+    "are",
+    "you",
+    "not",
+    "entertained",
+    "daddy",
+    "builds",
+    "protekt",
+    "our",
+    "freedom"
+  ],
+  "keywords": [
+    "chaotic",
+    "graffiti",
+    "red",
+    "black",
+    "pink",
+    "eyes",
+    "dice",
+    "symbols",
+    "children",
+    "vintage",
+    "maniiifesting",
+    "maned21",
+    "welcome",
+    "planet",
+    "earth",
+    "are",
+    "you",
+    "not",
+    "entertained",
+    "daddy",
+    "builds",
+    "protekt",
+    "our",
+    "freedom"
+  ],
+  "embeddingInput": "ENTERTAINED (Fake Rares) - Series 9 Card 50\nArtist: Rare Scrilla\nSupply 49 Issued September 2022\nOn-card text: MANiiIFESTING, #MANED21, WELCOME TO PLANET EARTH, ARE YOU NOT ENTERTAINED, DADDY BUILDS THEM TO PROTEKT OUR FREEDOM.\nVisual summary: The card features a chaotic and vibrant composition, dominated by red, black, and pink hues. The central figures are reminiscent of Pepe the Frog, drawn in a graffiti style, surrounded by abstract elements like eyes, dice, and cryptic symbols. The bottom section has a vintage illustration of children with bold text, creating a stark contrast with the upper chaotic scene.\nMemetic references: Pepe the Frog references.; Crypto elements like Bitcoin symbols.; References to internet culture with phrases like \"ARE YOU NOT ENTERTAINED\".; Surreal and dadaist art influences.",
+  "embeddingBlocks": [
+    {
+      "id": "ENTERTAINED#text",
+      "label": "On-card text",
+      "text": "MANiiIFESTING, #MANED21, WELCOME TO PLANET EARTH, ARE YOU NOT ENTERTAINED, DADDY BUILDS THEM TO PROTEKT OUR FREEDOM.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "ENTERTAINED#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references.\nCrypto elements like Bitcoin symbols.\nReferences to internet culture with phrases like \"ARE YOU NOT ENTERTAINED\".\nSurreal and dadaist art influences.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "ENTERTAINED#visual",
+      "label": "Visual summary",
+      "text": "The card features a chaotic and vibrant composition, dominated by red, black, and pink hues. The central figures are reminiscent of Pepe the Frog, drawn in a graffiti style, surrounded by abstract elements like eyes, dice, and cryptic symbols. The bottom section has a vintage illustration of children with bold text, creating a stark contrast with the upper chaotic scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "ENTERTAINED#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nMANiiIFESTING, #MANED21, WELCOME TO PLANET EARTH, ARE YOU NOT ENTERTAINED, DADDY BUILDS THEM TO PROTEKT OUR FREEDOM.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a chaotic and vibrant composition, dominated by red, black, and pink hues. The central figures are reminiscent of Pepe the Frog, drawn in a graffiti style, surrounded by abstract elements like eyes, dice, and cryptic symbols. The bottom section has a vintage illustration of children with bold text, creating a stark contrast with the upper chaotic scene.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references.\n- Crypto elements like Bitcoin symbols.\n- References to internet culture with phrases like \"ARE YOU NOT ENTERTAINED\".\n- Surreal and dadaist art influences.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.427Z",
+  "sourceFactVersion": 1
+}

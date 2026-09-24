@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "asset": "OPTIMISTPEPE",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 31,
+  "artist": "Optimist",
+  "supply": 100,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "THE GLASS IS HALF FULL"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a classic internet meme symbolizing various emotions.",
+    "The smiley face on the hat harkens back to classic positivity icons.",
+    "\"The glass is half full\" phrase represents optimistic vibes in meme culture.",
+    "The chaotic background reflects the unpredictable nature of the crypto and NFT spaces."
+  ],
+  "visualSummary": "The card features Pepe the Frog wearing a blue t-shirt with the text \"THE GLASS IS HALF FULL\" and a red cap with a yellow smiley face. The background is a vibrant collage of geometric patterns and abstract shapes in bright colors like pink, blue, and orange. The overall style combines street art with pop culture, creating a dynamic and eye-catching composition.",
+  "visualSummaryShort": "The card showcases Pepe the Frog in a blue t-shirt and a red cap adorned with a smiley face. The background is a lively mix of geometric patterns and bright colors, creating a vibrant and dynamic atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "blue t-shirt",
+    "red cap",
+    "smiley face",
+    "geometric patterns",
+    "bright colors",
+    "abstract shapes",
+    "street art",
+    "pop culture",
+    "dynamic composition"
+  ],
+  "textKeywords": [
+    "glass",
+    "half",
+    "full"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "blue t-shirt",
+    "red cap",
+    "smiley face",
+    "geometric patterns",
+    "bright colors",
+    "abstract shapes",
+    "street art",
+    "pop culture",
+    "dynamic composition",
+    "glass",
+    "half",
+    "full"
+  ],
+  "embeddingInput": "OPTIMISTPEPE (Fake Rares) - Series 3 Card 31\nArtist: Optimist\nSupply 100 Issued November 2021\nOn-card text: THE GLASS IS HALF FULL\nVisual summary: The card features Pepe the Frog wearing a blue t-shirt with the text \"THE GLASS IS HALF FULL\" and a red cap with a yellow smiley face. The background is a vibrant collage of geometric patterns and abstract shapes in bright colors like pink, blue, and orange. The overall style combines street art with pop culture, creating a dynamic and eye-catching composition.\nMemetic references: Pepe the Frog, a classic internet meme symbolizing various emotions.; The smiley face on the hat harkens back to classic positivity icons.; \"The glass is half full\" phrase represents optimistic vibes in meme culture.; The chaotic background reflects the unpredictable nature of the crypto and NFT spaces.",
+  "embeddingBlocks": [
+    {
+      "id": "OPTIMISTPEPE#text",
+      "label": "On-card text",
+      "text": "THE GLASS IS HALF FULL",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "OPTIMISTPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a classic internet meme symbolizing various emotions.\nThe smiley face on the hat harkens back to classic positivity icons.\n\"The glass is half full\" phrase represents optimistic vibes in meme culture.\nThe chaotic background reflects the unpredictable nature of the crypto and NFT spaces.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "OPTIMISTPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog wearing a blue t-shirt with the text \"THE GLASS IS HALF FULL\" and a red cap with a yellow smiley face. The background is a vibrant collage of geometric patterns and abstract shapes in bright colors like pink, blue, and orange. The overall style combines street art with pop culture, creating a dynamic and eye-catching composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "OPTIMISTPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nTHE GLASS IS HALF FULL\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog wearing a blue t-shirt with the text \"THE GLASS IS HALF FULL\" and a red cap with a yellow smiley face. The background is a vibrant collage of geometric patterns and abstract shapes in bright colors like pink, blue, and orange. The overall style combines street art with pop culture, creating a dynamic and eye-catching composition.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a classic internet meme symbolizing various emotions.\n- The smiley face on the hat harkens back to classic positivity icons.\n- \"The glass is half full\" phrase represents optimistic vibes in meme culture.\n- The chaotic background reflects the unpredictable nature of the crypto and NFT spaces.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.811Z",
+  "sourceFactVersion": 1
+}

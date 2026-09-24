@@ -1,0 +1,111 @@
+{
+  "version": 1,
+  "asset": "PEPERTOY",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 2,
+  "artist": "Nimzobit",
+  "supply": 21,
+  "issuance": "March 2023",
+  "textOnCard": [
+    "PEPERTOY",
+    "Ref: PEPEFROG",
+    "Printable Papercraft Model. Build it by cutting and folding paper. Use glue to hold the edges together."
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference.",
+    "DIY papercraft culture.",
+    "Playful nod to hands-on creativity in the digital NFT space.",
+    "Echoes of nostalgic crafting in a memeified format."
+  ],
+  "visualSummary": "The card features a papercraft template of Pepe the Frog in a blocky, geometric style. The color palette includes green for Pepe, blue for limbs, and yellow for the base, with instructions written in black. The design is straightforward, resembling a DIY cut-and-paste project with marked glue areas.",
+  "visualSummaryShort": "The card showcases a papercraft template of Pepe the Frog in a geometric style. It features a green frog with blue limbs and a yellow base, designed for a DIY project.",
+  "visualKeywords": [
+    "papercraft",
+    "pepe the frog",
+    "green",
+    "blue",
+    "yellow",
+    "geometric",
+    "template",
+    "diy",
+    "instructions",
+    "glue areas"
+  ],
+  "textKeywords": [
+    "pepertoy",
+    "ref",
+    "pepefrog",
+    "printable",
+    "papercraft",
+    "model",
+    "build",
+    "cutting",
+    "folding",
+    "paper",
+    "use",
+    "glue",
+    "hold",
+    "edges",
+    "together"
+  ],
+  "keywords": [
+    "papercraft",
+    "pepe the frog",
+    "green",
+    "blue",
+    "yellow",
+    "geometric",
+    "template",
+    "diy",
+    "instructions",
+    "glue areas",
+    "pepertoy",
+    "ref",
+    "pepefrog",
+    "printable",
+    "model",
+    "build",
+    "cutting",
+    "folding",
+    "paper",
+    "use",
+    "glue",
+    "hold",
+    "edges",
+    "together"
+  ],
+  "embeddingInput": "PEPERTOY (Fake Rares) - Series 16 Card 2\nArtist: Nimzobit\nSupply 21 Issued March 2023\nOn-card text: PEPERTOY | Ref: PEPEFROG | Printable Papercraft Model. Build it by cutting and folding paper. Use glue to hold the edges together.\nVisual summary: The card features a papercraft template of Pepe the Frog in a blocky, geometric style. The color palette includes green for Pepe, blue for limbs, and yellow for the base, with instructions written in black. The design is straightforward, resembling a DIY cut-and-paste project with marked glue areas.\nMemetic references: Classic Pepe the Frog reference.; DIY papercraft culture.; Playful nod to hands-on creativity in the digital NFT space.; Echoes of nostalgic crafting in a memeified format.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPERTOY#text",
+      "label": "On-card text",
+      "text": "PEPERTOY | Ref: PEPEFROG | Printable Papercraft Model. Build it by cutting and folding paper. Use glue to hold the edges together.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPERTOY#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference.\nDIY papercraft culture.\nPlayful nod to hands-on creativity in the digital NFT space.\nEchoes of nostalgic crafting in a memeified format.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPERTOY#visual",
+      "label": "Visual summary",
+      "text": "The card features a papercraft template of Pepe the Frog in a blocky, geometric style. The color palette includes green for Pepe, blue for limbs, and yellow for the base, with instructions written in black. The design is straightforward, resembling a DIY cut-and-paste project with marked glue areas.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPERTOY#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPERTOY  \nRef: PEPEFROG  \nPrintable Papercraft Model. Build it by cutting and folding paper. Use glue to hold the edges together.  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a papercraft template of Pepe the Frog in a blocky, geometric style. The color palette includes green for Pepe, blue for limbs, and yellow for the base, with instructions written in black. The design is straightforward, resembling a DIY cut-and-paste project with marked glue areas.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference.\n- DIY papercraft culture.\n- Playful nod to hands-on creativity in the digital NFT space.\n- Echoes of nostalgic crafting in a memeified format.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.963Z",
+  "sourceFactVersion": 1
+}

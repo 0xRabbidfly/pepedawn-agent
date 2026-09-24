@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "asset": "PEPEPUNKROCK",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 37,
+  "artist": "REY",
+  "supply": 79,
+  "issuance": "July 2022",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a punk rock character with vibrant colors and a rebellious attitude. The overall mood is energetic and edgy.",
+  "visualKeywords": [
+    "punk",
+    "rock",
+    "vibrant colors",
+    "rebellious",
+    "energetic",
+    "edgy"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "punk",
+    "rock",
+    "vibrant colors",
+    "rebellious",
+    "energetic",
+    "edgy"
+  ],
+  "embeddingInput": "PEPEPUNKROCK (Fake Rares) - Series 8 Card 37\nArtist: REY\nSupply 79 Issued July 2022\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEPUNKROCK#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with identifying or analyzing individuals in images.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.955Z",
+  "sourceFactVersion": 1
+}

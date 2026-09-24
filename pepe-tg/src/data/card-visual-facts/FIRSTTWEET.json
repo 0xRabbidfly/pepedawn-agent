@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "asset": "FIRSTTWEET",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 39,
+  "artist": "DesktopCommando",
+  "supply": 150,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "We came, We saw, We faked it. FAKE."
+  ],
+  "memeticReferences": [
+    "References to fake news and meme culture.",
+    "Pixel art style, reminiscent of early internet and gaming.",
+    "UFO and alien elements nod to conspiracy memes.",
+    "Pepe-like character in a suit, blending crypto culture with meme lore."
+  ],
+  "visualSummary": "The card features a collage of vibrant and contrasting elements, including a pixelated character in a yellow hat and blue suit, reminiscent of retro gaming aesthetics. A UFO and a green creature add a touch of sci-fi absurdity. The background is a chaotic mix of patterns and colors, giving it a vintage, pop-art feel.",
+  "visualSummaryShort": "The card showcases a vibrant collage with a pixelated character in a yellow hat and blue suit, surrounded by a UFO and a green creature. The chaotic background features a mix of patterns and colors, evoking a vintage pop-art style.",
+  "visualKeywords": [
+    "pixelated",
+    "yellow hat",
+    "blue suit",
+    "ufo",
+    "green creature",
+    "chaotic",
+    "patterns",
+    "vintage",
+    "pop-art",
+    "sci-fi"
+  ],
+  "textKeywords": [
+    "came",
+    "saw",
+    "faked"
+  ],
+  "keywords": [
+    "pixelated",
+    "yellow hat",
+    "blue suit",
+    "ufo",
+    "green creature",
+    "chaotic",
+    "patterns",
+    "vintage",
+    "pop-art",
+    "sci-fi",
+    "came",
+    "saw",
+    "faked"
+  ],
+  "embeddingInput": "FIRSTTWEET (Fake Rares) - Series 2 Card 39\nArtist: DesktopCommando\nSupply 150 Issued October 2021\nOn-card text: We came, We saw, We faked it. FAKE.\nVisual summary: The card features a collage of vibrant and contrasting elements, including a pixelated character in a yellow hat and blue suit, reminiscent of retro gaming aesthetics. A UFO and a green creature add a touch of sci-fi absurdity. The background is a chaotic mix of patterns and colors, giving it a vintage, pop-art feel.\nMemetic references: References to fake news and meme culture.; Pixel art style, reminiscent of early internet and gaming.; UFO and alien elements nod to conspiracy memes.; Pepe-like character in a suit, blending crypto culture with meme lore.",
+  "embeddingBlocks": [
+    {
+      "id": "FIRSTTWEET#text",
+      "label": "On-card text",
+      "text": "We came, We saw, We faked it. FAKE.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FIRSTTWEET#memetic",
+      "label": "Memetic references",
+      "text": "References to fake news and meme culture.\nPixel art style, reminiscent of early internet and gaming.\nUFO and alien elements nod to conspiracy memes.\nPepe-like character in a suit, blending crypto culture with meme lore.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FIRSTTWEET#visual",
+      "label": "Visual summary",
+      "text": "The card features a collage of vibrant and contrasting elements, including a pixelated character in a yellow hat and blue suit, reminiscent of retro gaming aesthetics. A UFO and a green creature add a touch of sci-fi absurdity. The background is a chaotic mix of patterns and colors, giving it a vintage, pop-art feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FIRSTTWEET#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nWe came, We saw, We faked it. FAKE.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a collage of vibrant and contrasting elements, including a pixelated character in a yellow hat and blue suit, reminiscent of retro gaming aesthetics. A UFO and a green creature add a touch of sci-fi absurdity. The background is a chaotic mix of patterns and colors, giving it a vintage, pop-art feel.\n\n🧬 **MEMETIC DNA:**\n- References to fake news and meme culture.\n- Pixel art style, reminiscent of early internet and gaming.\n- UFO and alien elements nod to conspiracy memes.\n- Pepe-like character in a suit, blending crypto culture with meme lore.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.623Z",
+  "sourceFactVersion": 1
+}

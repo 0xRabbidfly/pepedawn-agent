@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "asset": "DRPEPEMUMULV",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 21,
+  "artist": "HNFT Pepe",
+  "supply": 69,
+  "issuance": "February 2024",
+  "textOnCard": [
+    "DOCTOR PEPE & MUMU LOVER. KEK UP OFF ME! PARENTAL ADVISORY. MIXTAPE."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog iconography.",
+    "Reference to \"kek,\" a term rooted in internet and gaming culture.",
+    "Mixtape and streetwear aesthetics.",
+    "Bull character, possibly a nod to \"bull market\" in crypto slang."
+  ],
+  "visualSummary": "The card features a bold and colorful illustration of a Pepe frog and a bull character, both dressed in streetwear with sunglasses. The bull is holding a massive shotgun, adding a humorous yet menacing touch. The background is a vibrant blue, while the lower cassette tape design has a camouflage pattern in pastel colors, giving it a retro, mixtape vibe.",
+  "visualSummaryShort": "The card showcases a colorful illustration of a Pepe frog and a bull in streetwear, with the bull wielding a shotgun. The vibrant blue background and pastel camouflage cassette tape design enhance the retro mixtape aesthetic.",
+  "visualKeywords": [
+    "pepe frog",
+    "bull",
+    "streetwear",
+    "shotgun",
+    "blue background",
+    "camouflage",
+    "pastel colors",
+    "retro",
+    "mixtape",
+    "sunglasses"
+  ],
+  "textKeywords": [
+    "doctor",
+    "mumu",
+    "lover",
+    "kek",
+    "off",
+    "parental",
+    "advisory",
+    "mixtape"
+  ],
+  "keywords": [
+    "pepe frog",
+    "bull",
+    "streetwear",
+    "shotgun",
+    "blue background",
+    "camouflage",
+    "pastel colors",
+    "retro",
+    "mixtape",
+    "sunglasses",
+    "doctor",
+    "mumu",
+    "lover",
+    "kek",
+    "off",
+    "parental",
+    "advisory"
+  ],
+  "embeddingInput": "DRPEPEMUMULV (Fake Rares) - Series 17 Card 21\nArtist: HNFT Pepe\nSupply 69 Issued February 2024\nOn-card text: DOCTOR PEPE & MUMU LOVER. KEK UP OFF ME! PARENTAL ADVISORY. MIXTAPE.\nVisual summary: The card features a bold and colorful illustration of a Pepe frog and a bull character, both dressed in streetwear with sunglasses. The bull is holding a massive shotgun, adding a humorous yet menacing touch. The background is a vibrant blue, while the lower cassette tape design has a camouflage pattern in pastel colors, giving it a retro, mixtape vibe.\nMemetic references: Pepe the Frog iconography.; Reference to \"kek,\" a term rooted in internet and gaming culture.; Mixtape and streetwear aesthetics.; Bull character, possibly a nod to \"bull market\" in crypto slang.",
+  "embeddingBlocks": [
+    {
+      "id": "DRPEPEMUMULV#text",
+      "label": "On-card text",
+      "text": "DOCTOR PEPE & MUMU LOVER. KEK UP OFF ME! PARENTAL ADVISORY. MIXTAPE.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "DRPEPEMUMULV#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog iconography.\nReference to \"kek,\" a term rooted in internet and gaming culture.\nMixtape and streetwear aesthetics.\nBull character, possibly a nod to \"bull market\" in crypto slang.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "DRPEPEMUMULV#visual",
+      "label": "Visual summary",
+      "text": "The card features a bold and colorful illustration of a Pepe frog and a bull character, both dressed in streetwear with sunglasses. The bull is holding a massive shotgun, adding a humorous yet menacing touch. The background is a vibrant blue, while the lower cassette tape design has a camouflage pattern in pastel colors, giving it a retro, mixtape vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "DRPEPEMUMULV#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nDOCTOR PEPE & MUMU LOVER. KEK UP OFF ME! PARENTAL ADVISORY. MIXTAPE.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a bold and colorful illustration of a Pepe frog and a bull character, both dressed in streetwear with sunglasses. The bull is holding a massive shotgun, adding a humorous yet menacing touch. The background is a vibrant blue, while the lower cassette tape design has a camouflage pattern in pastel colors, giving it a retro, mixtape vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog iconography.\n- Reference to \"kek,\" a term rooted in internet and gaming culture.\n- Mixtape and streetwear aesthetics.\n- Bull character, possibly a nod to \"bull market\" in crypto slang.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.417Z",
+  "sourceFactVersion": 1
+}

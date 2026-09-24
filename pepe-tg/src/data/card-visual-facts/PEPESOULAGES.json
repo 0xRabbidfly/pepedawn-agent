@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "asset": "PEPESOULAGES",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 32,
+  "artist": "Brocciu",
+  "supply": 48,
+  "issuance": "October 2022",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features an abstract design with a focus on vibrant colors and dynamic shapes. The overall mood is energetic and modern.",
+  "visualKeywords": [
+    "abstract",
+    "vibrant colors",
+    "dynamic shapes",
+    "modern",
+    "energetic"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "abstract",
+    "vibrant colors",
+    "dynamic shapes",
+    "modern",
+    "energetic"
+  ],
+  "embeddingInput": "PEPESOULAGES (Fake Rares) - Series 12 Card 32\nArtist: Brocciu\nSupply 48 Issued October 2022\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "PEPESOULAGES#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, but I can't provide a comprehensive analysis of this image.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.980Z",
+  "sourceFactVersion": 1
+}

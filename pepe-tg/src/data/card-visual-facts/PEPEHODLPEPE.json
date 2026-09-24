@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "asset": "PEPEHODLPEPE",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 27,
+  "artist": "BTCblaze",
+  "supply": 124,
+  "issuance": "October 2021",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a stylized depiction of a frog character. The overall design is vibrant and playful.",
+  "visualKeywords": [
+    "frog",
+    "vibrant",
+    "playful",
+    "cartoonish"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "frog",
+    "vibrant",
+    "playful",
+    "cartoonish"
+  ],
+  "embeddingInput": "PEPEHODLPEPE (Fake Rares) - Series 1 Card 27\nArtist: BTCblaze\nSupply 124 Issued October 2021\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEHODLPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**  \npepeHODLpepe  \nNever JPG'd, never will  \nHODL LVL = 99  \nForesight LVL = 32  \nKEK LVL = 0  \nsiempre HODL  \nHODL or stay broke, bro. TINA  \n\n🎨 **VISUAL BREAKDOWN:**  \nPepe, wearing a stylish jacket and orange reflective goggles, stands confidently against a backdrop of snow-covered mountains. The color palette is a mix of green, orange, and earthy tones, with a hint of digital aesthetic suggested by the repeated \"JPG\" text in the background. The overall style combines elements of digital collage and meme art, creating a humorous yet impactful visual.\n\n🧬 **MEMETIC DNA:**  \n- Classic Pepe the Frog reference.  \n- Crypto culture with \"HODL\" and \"Foresight\" levels.  \n- \"KEK\" as a nod to meme culture.  \n- \"TINA\" (There Is No Alternative) phrase used in financial contexts.  \n- Snow-capped mountains symbolizing challenges or \"mountains to climb\" in crypto.  \n- \"Never JPG'd\" as a play on the permanence and authenticity of NFTs.\n\n🎯 **RARITY FEELS:**  \nThis card emanates strong \"degen energy\" with a hint of \"hopium\" for the HODL faithful. The mix of humor, cultural references, and digital art style gives it a vibe of feeling rare and exclusive, perfect for any true meme connoisseur.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.893Z",
+  "sourceFactVersion": 1
+}

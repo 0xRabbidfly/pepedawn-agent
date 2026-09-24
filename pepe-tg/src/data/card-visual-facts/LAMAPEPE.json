@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "LAMAPEPE",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 9,
+  "artist": "Tasha",
+  "supply": 99,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "LAMAPEPE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure, a staple in meme culture.",
+    "References to Eastern spirituality and Buddhist iconography.",
+    "The fusion of traditional art with modern meme culture."
+  ],
+  "visualSummary": "This card features a Pepe the Frog character reimagined as a serene, spiritual figure similar to a Buddhist deity. The color palette includes rich golds, deep blues, and earthy greens, giving it a sacred and timeless feel. The composition is intricate, with detailed patterns on the robe and a radiant halo behind Pepe's head, creating a sense of enlightenment.",
+  "visualSummaryShort": "The card depicts a Pepe the Frog character styled as a serene spiritual figure with a radiant halo. The rich golds, deep blues, and earthy greens contribute to its sacred and timeless atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "buddhist",
+    "gold",
+    "blue",
+    "green",
+    "halo",
+    "intricate",
+    "spiritual",
+    "enlightenment"
+  ],
+  "textKeywords": [
+    "lamapepe"
+  ],
+  "keywords": [
+    "pepe",
+    "buddhist",
+    "gold",
+    "blue",
+    "green",
+    "halo",
+    "intricate",
+    "spiritual",
+    "enlightenment",
+    "lamapepe"
+  ],
+  "embeddingInput": "LAMAPEPE (Fake Rares) - Series 4 Card 9\nArtist: Tasha\nSupply 99 Issued November 2021\nOn-card text: LAMAPEPE\nVisual summary: This card features a Pepe the Frog character reimagined as a serene, spiritual figure similar to a Buddhist deity. The color palette includes rich golds, deep blues, and earthy greens, giving it a sacred and timeless feel. The composition is intricate, with detailed patterns on the robe and a radiant halo behind Pepe's head, creating a sense of enlightenment.\nMemetic references: Pepe the Frog as a central figure, a staple in meme culture.; References to Eastern spirituality and Buddhist iconography.; The fusion of traditional art with modern meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "LAMAPEPE#text",
+      "label": "On-card text",
+      "text": "LAMAPEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "LAMAPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure, a staple in meme culture.\nReferences to Eastern spirituality and Buddhist iconography.\nThe fusion of traditional art with modern meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LAMAPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a Pepe the Frog character reimagined as a serene, spiritual figure similar to a Buddhist deity. The color palette includes rich golds, deep blues, and earthy greens, giving it a sacred and timeless feel. The composition is intricate, with detailed patterns on the robe and a radiant halo behind Pepe's head, creating a sense of enlightenment.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LAMAPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nLAMAPEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a Pepe the Frog character reimagined as a serene, spiritual figure similar to a Buddhist deity. The color palette includes rich golds, deep blues, and earthy greens, giving it a sacred and timeless feel. The composition is intricate, with detailed patterns on the robe and a radiant halo behind Pepe's head, creating a sense of enlightenment.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure, a staple in meme culture.\n- References to Eastern spirituality and Buddhist iconography.\n- The fusion of traditional art with modern meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.729Z",
+  "sourceFactVersion": 1
+}

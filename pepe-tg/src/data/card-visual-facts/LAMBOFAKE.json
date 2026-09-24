@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "asset": "LAMBOFAKE",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 5,
+  "artist": "Chris Storm",
+  "supply": 169,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "LAMBO FAKE",
+    "FAKE DMCA",
+    "FAKE RARES",
+    "MOTO > LAMBO"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in streetwear, a classic internet meme.",
+    "Wrecked Lamborghini, referencing crypto culture's obsession with wealth.",
+    "\"FAKE\" themes, playing on the irony and humor of NFT culture.",
+    "\"Moto > Lambo\" suggests a preference for motorcycles over luxury cars."
+  ],
+  "visualSummary": "The card features a dark, gritty scene with a Pepe character in a hoodie squatting next to a wrecked Lamborghini. The color palette is dominated by purple hues, giving it a surreal, almost dystopian vibe. The style blends digital art with meme culture, using pixelation and glitch effects to enhance its edgy aesthetic.",
+  "visualSummaryShort": "The card depicts a Pepe character in a hoodie squatting beside a wrecked Lamborghini in a dark, gritty environment. The dominant purple hues and glitch effects create a surreal, dystopian atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "hoodie",
+    "wrecked car",
+    "purple hues",
+    "dystopian",
+    "glitch",
+    "digital art",
+    "meme culture"
+  ],
+  "textKeywords": [
+    "lambo",
+    "dmca",
+    "moto"
+  ],
+  "keywords": [
+    "pepe",
+    "hoodie",
+    "wrecked car",
+    "purple hues",
+    "dystopian",
+    "glitch",
+    "digital art",
+    "meme culture",
+    "lambo",
+    "dmca",
+    "moto"
+  ],
+  "embeddingInput": "LAMBOFAKE (Fake Rares) - Series 5 Card 5\nArtist: Chris Storm\nSupply 169 Issued February 2022\nOn-card text: LAMBO FAKE | FAKE DMCA | FAKE RARES | MOTO > LAMBO\nVisual summary: The card features a dark, gritty scene with a Pepe character in a hoodie squatting next to a wrecked Lamborghini. The color palette is dominated by purple hues, giving it a surreal, almost dystopian vibe. The style blends digital art with meme culture, using pixelation and glitch effects to enhance its edgy aesthetic.\nMemetic references: Pepe the Frog in streetwear, a classic internet meme.; Wrecked Lamborghini, referencing crypto culture's obsession with wealth.; \"FAKE\" themes, playing on the irony and humor of NFT culture.; \"Moto > Lambo\" suggests a preference for motorcycles over luxury cars.",
+  "embeddingBlocks": [
+    {
+      "id": "LAMBOFAKE#text",
+      "label": "On-card text",
+      "text": "LAMBO FAKE | FAKE DMCA | FAKE RARES | MOTO > LAMBO",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "LAMBOFAKE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in streetwear, a classic internet meme.\nWrecked Lamborghini, referencing crypto culture's obsession with wealth.\n\"FAKE\" themes, playing on the irony and humor of NFT culture.\n\"Moto > Lambo\" suggests a preference for motorcycles over luxury cars.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LAMBOFAKE#visual",
+      "label": "Visual summary",
+      "text": "The card features a dark, gritty scene with a Pepe character in a hoodie squatting next to a wrecked Lamborghini. The color palette is dominated by purple hues, giving it a surreal, almost dystopian vibe. The style blends digital art with meme culture, using pixelation and glitch effects to enhance its edgy aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LAMBOFAKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nLAMBO FAKE  \nFAKE DMCA  \nFAKE RARES  \nMOTO > LAMBO\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a dark, gritty scene with a Pepe character in a hoodie squatting next to a wrecked Lamborghini. The color palette is dominated by purple hues, giving it a surreal, almost dystopian vibe. The style blends digital art with meme culture, using pixelation and glitch effects to enhance its edgy aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in streetwear, a classic internet meme.\n- Wrecked Lamborghini, referencing crypto culture's obsession with wealth.\n- \"FAKE\" themes, playing on the irony and humor of NFT culture.\n- \"Moto > Lambo\" suggests a preference for motorcycles over luxury cars.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.730Z",
+  "sourceFactVersion": 1
+}

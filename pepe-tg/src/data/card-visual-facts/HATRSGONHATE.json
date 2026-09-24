@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "asset": "HATRSGONHATE",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 1,
+  "artist": "Logik",
+  "supply": 69,
+  "issuance": "September 2025",
+  "textOnCard": [
+    "\"ARE YOU NOT ENTERTAINED?\"",
+    "\"SAKAMOTO 650,606,969.69\"",
+    "\"PEPE SPINS\""
+  ],
+  "memeticReferences": [
+    "Pepe the Frog is central to the scene, a staple of internet meme culture.",
+    "Wojak's presence adds a layer of existential meme commentary.",
+    "The slot machine references \"Sakamoto,\" a nod to Satoshi Nakamoto and crypto culture."
+  ],
+  "visualSummary": "The card features a vibrant scene with a Pepe the Frog character in a suit, enthusiastically playing a slot machine. The color palette is rich with neon greens, reds, and blues, creating a lively casino atmosphere. A Wojak character looks on in the background, adding a humorous touch to the scene.",
+  "visualSummaryShort": "The card showcases a lively casino scene with Pepe the Frog in a suit playing a slot machine. A Wojak character adds humor to the vibrant atmosphere filled with neon colors.",
+  "visualKeywords": [
+    "pepe",
+    "suit",
+    "slot machine",
+    "neon colors",
+    "casino",
+    "wojak",
+    "humor",
+    "vibrant",
+    "entertainment"
+  ],
+  "textKeywords": [
+    "are",
+    "you",
+    "not",
+    "entertained",
+    "sakamoto",
+    "650",
+    "606",
+    "969",
+    "spins"
+  ],
+  "keywords": [
+    "pepe",
+    "suit",
+    "slot machine",
+    "neon colors",
+    "casino",
+    "wojak",
+    "humor",
+    "vibrant",
+    "entertainment",
+    "are",
+    "you",
+    "not",
+    "entertained",
+    "sakamoto",
+    "650",
+    "606",
+    "969",
+    "spins"
+  ],
+  "embeddingInput": "HATRSGONHATE (Fake Rares) - Series 18 Card 1\nArtist: Logik\nSupply 69 Issued September 2025\nOn-card text: \"ARE YOU NOT ENTERTAINED?\" | \"SAKAMOTO 650,606,969.69\" | \"PEPE SPINS\"\nVisual summary: The card features a vibrant scene with a Pepe the Frog character in a suit, enthusiastically playing a slot machine. The color palette is rich with neon greens, reds, and blues, creating a lively casino atmosphere. A Wojak character looks on in the background, adding a humorous touch to the scene.\nMemetic references: Pepe the Frog is central to the scene, a staple of internet meme culture.; Wojak's presence adds a layer of existential meme commentary.; The slot machine references \"Sakamoto,\" a nod to Satoshi Nakamoto and crypto culture.",
+  "embeddingBlocks": [
+    {
+      "id": "HATRSGONHATE#text",
+      "label": "On-card text",
+      "text": "\"ARE YOU NOT ENTERTAINED?\" | \"SAKAMOTO 650,606,969.69\" | \"PEPE SPINS\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "HATRSGONHATE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog is central to the scene, a staple of internet meme culture.\nWojak's presence adds a layer of existential meme commentary.\nThe slot machine references \"Sakamoto,\" a nod to Satoshi Nakamoto and crypto culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "HATRSGONHATE#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant scene with a Pepe the Frog character in a suit, enthusiastically playing a slot machine. The color palette is rich with neon greens, reds, and blues, creating a lively casino atmosphere. A Wojak character looks on in the background, adding a humorous touch to the scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "HATRSGONHATE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- \"ARE YOU NOT ENTERTAINED?\"\n- \"SAKAMOTO 650,606,969.69\"\n- \"PEPE SPINS\"\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant scene with a Pepe the Frog character in a suit, enthusiastically playing a slot machine. The color palette is rich with neon greens, reds, and blues, creating a lively casino atmosphere. A Wojak character looks on in the background, adding a humorous touch to the scene.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog is central to the scene, a staple of internet meme culture.\n- Wojak's presence adds a layer of existential meme commentary.\n- The slot machine references \"Sakamoto,\" a nod to Satoshi Nakamoto and crypto culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.677Z",
+  "sourceFactVersion": 1
+}

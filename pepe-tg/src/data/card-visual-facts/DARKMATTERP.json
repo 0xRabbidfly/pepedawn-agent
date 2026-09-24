@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "asset": "DARKMATTERP",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 14,
+  "artist": "JB",
+  "supply": 69,
+  "issuance": "April 2022",
+  "textOnCard": [
+    "DARK MATTER PEPE",
+    "PRESENT = FAKE PAST = RARE FUTURE = PEPE"
+  ],
+  "memeticReferences": [
+    "Cosmic Pepe references the vastness and mystery of dark matter.",
+    "Pepe's face with dice eyes nods to the randomness and chance in crypto markets.",
+    "The use of a hooded cloak gives off mysterious, almost Sith-like vibes."
+  ],
+  "visualSummary": "The card features a cosmic-themed Pepe, cloaked in a swirling nebula of purple and black hues. The face of Pepe is a galaxy-like blend of deep purples and blues, with starry eyes that add a mystical vibe. The background is a star-filled space, enhancing the card's otherworldly atmosphere.",
+  "visualSummaryShort": "The card showcases a cosmic-themed Pepe surrounded by a swirling nebula of purple and black. Its galaxy-like face and starry eyes contribute to the mystical, otherworldly atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "nebula",
+    "purple",
+    "black",
+    "galaxy",
+    "starry",
+    "space",
+    "cosmic",
+    "mystical"
+  ],
+  "textKeywords": [
+    "dark",
+    "matter",
+    "present",
+    "past",
+    "future"
+  ],
+  "keywords": [
+    "pepe",
+    "nebula",
+    "purple",
+    "black",
+    "galaxy",
+    "starry",
+    "space",
+    "cosmic",
+    "mystical",
+    "dark",
+    "matter",
+    "present",
+    "past",
+    "future"
+  ],
+  "embeddingInput": "DARKMATTERP (Fake Rares) - Series 8 Card 14\nArtist: JB\nSupply 69 Issued April 2022\nOn-card text: DARK MATTER PEPE | PRESENT = FAKE PAST = RARE FUTURE = PEPE\nVisual summary: The card features a cosmic-themed Pepe, cloaked in a swirling nebula of purple and black hues. The face of Pepe is a galaxy-like blend of deep purples and blues, with starry eyes that add a mystical vibe. The background is a star-filled space, enhancing the card's otherworldly atmosphere.\nMemetic references: Cosmic Pepe references the vastness and mystery of dark matter.; Pepe's face with dice eyes nods to the randomness and chance in crypto markets.; The use of a hooded cloak gives off mysterious, almost Sith-like vibes.",
+  "embeddingBlocks": [
+    {
+      "id": "DARKMATTERP#text",
+      "label": "On-card text",
+      "text": "DARK MATTER PEPE | PRESENT = FAKE PAST = RARE FUTURE = PEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "DARKMATTERP#memetic",
+      "label": "Memetic references",
+      "text": "Cosmic Pepe references the vastness and mystery of dark matter.\nPepe's face with dice eyes nods to the randomness and chance in crypto markets.\nThe use of a hooded cloak gives off mysterious, almost Sith-like vibes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "DARKMATTERP#visual",
+      "label": "Visual summary",
+      "text": "The card features a cosmic-themed Pepe, cloaked in a swirling nebula of purple and black hues. The face of Pepe is a galaxy-like blend of deep purples and blues, with starry eyes that add a mystical vibe. The background is a star-filled space, enhancing the card's otherworldly atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "DARKMATTERP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nDARK MATTER PEPE  \nPRESENT = FAKE  PAST = RARE  FUTURE = PEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a cosmic-themed Pepe, cloaked in a swirling nebula of purple and black hues. The face of Pepe is a galaxy-like blend of deep purples and blues, with starry eyes that add a mystical vibe. The background is a star-filled space, enhancing the card's otherworldly atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Cosmic Pepe references the vastness and mystery of dark matter.\n- Pepe's face with dice eyes nods to the randomness and chance in crypto markets.\n- The use of a hooded cloak gives off mysterious, almost Sith-like vibes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.386Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PEPEMETABOLY",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 47,
+  "artist": "Chaotic Crypto",
+  "supply": 50,
+  "issuance": "November 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog face, a staple in meme culture.",
+    "References to the psychedelic \"hypnotoad\" vibe.",
+    "Plays on metamorphosis and transformation themes, common in crypto and NFT narratives."
+  ],
+  "visualSummary": "The card features a humanoid figure with a Pepe the Frog face and green, dreadlock-like hair. The figure is holding a vibrant, realistic frog in its hand against a dark background. The color palette is dominated by greens, with highlights of black and a touch of natural frog colors, emphasizing a surreal and slightly eerie atmosphere.",
+  "visualSummaryShort": "The card showcases a humanoid figure with a Pepe the Frog face and green dreadlock-like hair, holding a realistic frog. The dark background and green color palette create a surreal and eerie mood.",
+  "visualKeywords": [
+    "pepe",
+    "humanoid",
+    "frog",
+    "green",
+    "dreadlocks",
+    "dark background",
+    "surreal",
+    "eerie",
+    "vibrant",
+    "natural colors"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "humanoid",
+    "frog",
+    "green",
+    "dreadlocks",
+    "dark background",
+    "surreal",
+    "eerie",
+    "vibrant",
+    "natural colors"
+  ],
+  "embeddingInput": "PEPEMETABOLY (Fake Rares) - Series 5 Card 47\nArtist: Chaotic Crypto\nSupply 50 Issued November 2021\nOn-card text: none detected\nVisual summary: The card features a humanoid figure with a Pepe the Frog face and green, dreadlock-like hair. The figure is holding a vibrant, realistic frog in its hand against a dark background. The color palette is dominated by greens, with highlights of black and a touch of natural frog colors, emphasizing a surreal and slightly eerie atmosphere.\nMemetic references: Classic Pepe the Frog face, a staple in meme culture.; References to the psychedelic \"hypnotoad\" vibe.; Plays on metamorphosis and transformation themes, common in crypto and NFT narratives.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEMETABOLY#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog face, a staple in meme culture.\nReferences to the psychedelic \"hypnotoad\" vibe.\nPlays on metamorphosis and transformation themes, common in crypto and NFT narratives.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEMETABOLY#visual",
+      "label": "Visual summary",
+      "text": "The card features a humanoid figure with a Pepe the Frog face and green, dreadlock-like hair. The figure is holding a vibrant, realistic frog in its hand against a dark background. The color palette is dominated by greens, with highlights of black and a touch of natural frog colors, emphasizing a surreal and slightly eerie atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEMETABOLY#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a humanoid figure with a Pepe the Frog face and green, dreadlock-like hair. The figure is holding a vibrant, realistic frog in its hand against a dark background. The color palette is dominated by greens, with highlights of black and a touch of natural frog colors, emphasizing a surreal and slightly eerie atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog face, a staple in meme culture.\n- References to the psychedelic \"hypnotoad\" vibe.\n- Plays on metamorphosis and transformation themes, common in crypto and NFT narratives.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.927Z",
+  "sourceFactVersion": 1
+}

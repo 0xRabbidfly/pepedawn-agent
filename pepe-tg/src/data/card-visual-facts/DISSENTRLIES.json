@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "asset": "DISSENTRLIES",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 1,
+  "artist": "Shak Attak",
+  "supply": 93,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "I DISSENT"
+  ],
+  "memeticReferences": [
+    "Pepe-inspired aesthetics with the green skin.",
+    "References to dissent in both legal and cultural contexts.",
+    "The colorful text mimics a meme format, blending humor with a message."
+  ],
+  "visualSummary": "The card features a stylized green figure with a distinct collar that resembles a lace jabot, set against a dual-toned background of orange and gray. The figure's glasses and expression are bold, and the artistic style is a mix of pop art and digital illustration. The text \"I DISSENT\" is colorful, with each letter in a different hue, adding a vibrant touch to the composition.",
+  "visualSummaryShort": "The card showcases a green figure with a lace jabot collar against an orange and gray background. The bold expression and colorful text add a vibrant pop art feel to the design.",
+  "visualKeywords": [
+    "green figure",
+    "lace collar",
+    "orange background",
+    "gray background",
+    "bold expression",
+    "pop art",
+    "colorful text"
+  ],
+  "textKeywords": [
+    "dissent"
+  ],
+  "keywords": [
+    "green figure",
+    "lace collar",
+    "orange background",
+    "gray background",
+    "bold expression",
+    "pop art",
+    "colorful text",
+    "dissent"
+  ],
+  "embeddingInput": "DISSENTRLIES (Fake Rares) - Series 7 Card 1\nArtist: Shak Attak\nSupply 93 Issued March 2022\nOn-card text: I DISSENT\nVisual summary: The card features a stylized green figure with a distinct collar that resembles a lace jabot, set against a dual-toned background of orange and gray. The figure's glasses and expression are bold, and the artistic style is a mix of pop art and digital illustration. The text \"I DISSENT\" is colorful, with each letter in a different hue, adding a vibrant touch to the composition.\nMemetic references: Pepe-inspired aesthetics with the green skin.; References to dissent in both legal and cultural contexts.; The colorful text mimics a meme format, blending humor with a message.",
+  "embeddingBlocks": [
+    {
+      "id": "DISSENTRLIES#text",
+      "label": "On-card text",
+      "text": "I DISSENT",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "DISSENTRLIES#memetic",
+      "label": "Memetic references",
+      "text": "Pepe-inspired aesthetics with the green skin.\nReferences to dissent in both legal and cultural contexts.\nThe colorful text mimics a meme format, blending humor with a message.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "DISSENTRLIES#visual",
+      "label": "Visual summary",
+      "text": "The card features a stylized green figure with a distinct collar that resembles a lace jabot, set against a dual-toned background of orange and gray. The figure's glasses and expression are bold, and the artistic style is a mix of pop art and digital illustration. The text \"I DISSENT\" is colorful, with each letter in a different hue, adding a vibrant touch to the composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "DISSENTRLIES#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nI DISSENT\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a stylized green figure with a distinct collar that resembles a lace jabot, set against a dual-toned background of orange and gray. The figure's glasses and expression are bold, and the artistic style is a mix of pop art and digital illustration. The text \"I DISSENT\" is colorful, with each letter in a different hue, adding a vibrant touch to the composition.\n\n🧬 **MEMETIC DNA:**\n- Pepe-inspired aesthetics with the green skin.\n- References to dissent in both legal and cultural contexts.\n- The colorful text mimics a meme format, blending humor with a message.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.396Z",
+  "sourceFactVersion": 1
+}

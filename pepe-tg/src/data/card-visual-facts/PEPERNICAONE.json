@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "asset": "PEPERNICAONE",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 7,
+  "artist": "Luis Simo",
+  "supply": 63,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "PEPERNICA"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple of meme culture.",
+    "Reference to iconic historical art.",
+    "Fast food fries as a nod to meme culture's love for junk food.",
+    "Playful twist on a classic artwork."
+  ],
+  "visualSummary": "This card features Pepe the Frog as a character resembling a famous cultural artwork, complete with a helmet and a pipe. The color palette is dominated by deep blues, greens, and bold outlines, reminiscent of pop art. A spilled box of fries with a recognizable \"M\" logo adds a humorous touch to the scene.",
+  "visualSummaryShort": "The card showcases Pepe the Frog styled after a famous artwork, wearing a helmet and holding a pipe. The scene includes a spilled box of fries, enhancing the humorous vibe with a pop art aesthetic.",
+  "visualKeywords": [
+    "pepe the frog",
+    "helmet",
+    "pipe",
+    "fries",
+    "blue palette",
+    "green palette",
+    "bold outlines",
+    "pop art"
+  ],
+  "textKeywords": [
+    "pepernica"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "helmet",
+    "pipe",
+    "fries",
+    "blue palette",
+    "green palette",
+    "bold outlines",
+    "pop art",
+    "pepernica"
+  ],
+  "embeddingInput": "PEPERNICAONE (Fake Rares) - Series 9 Card 7\nArtist: Luis Simo\nSupply 63 Issued July 2022\nOn-card text: PEPERNICA\nVisual summary: This card features Pepe the Frog as a character resembling a famous cultural artwork, complete with a helmet and a pipe. The color palette is dominated by deep blues, greens, and bold outlines, reminiscent of pop art. A spilled box of fries with a recognizable \"M\" logo adds a humorous touch to the scene.\nMemetic references: Pepe the Frog, a staple of meme culture.; Reference to iconic historical art.; Fast food fries as a nod to meme culture's love for junk food.; Playful twist on a classic artwork.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPERNICAONE#text",
+      "label": "On-card text",
+      "text": "PEPERNICA",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPERNICAONE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple of meme culture.\nReference to iconic historical art.\nFast food fries as a nod to meme culture's love for junk food.\nPlayful twist on a classic artwork.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPERNICAONE#visual",
+      "label": "Visual summary",
+      "text": "This card features Pepe the Frog as a character resembling a famous cultural artwork, complete with a helmet and a pipe. The color palette is dominated by deep blues, greens, and bold outlines, reminiscent of pop art. A spilled box of fries with a recognizable \"M\" logo adds a humorous touch to the scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPERNICAONE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPERNICA\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features Pepe the Frog as a character resembling a famous cultural artwork, complete with a helmet and a pipe. The color palette is dominated by deep blues, greens, and bold outlines, reminiscent of pop art. A spilled box of fries with a recognizable \"M\" logo adds a humorous touch to the scene.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple of meme culture.\n- Reference to iconic historical art.\n- Fast food fries as a nod to meme culture's love for junk food.\n- Playful twist on a classic artwork.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.960Z",
+  "sourceFactVersion": 1
+}

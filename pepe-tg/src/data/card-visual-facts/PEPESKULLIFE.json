@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "PEPESKULLIFE",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 16,
+  "artist": "Lord Jamie V. Shill",
+  "supply": 25,
+  "issuance": "February 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe references through the neon heart shape on the ribcage.",
+    "Crypto culture vibes from the neon glow, reminiscent of digital art and NFT aesthetics.",
+    "Classic coolness with sunglasses and cigarette, nodding to rebellion memes."
+  ],
+  "visualSummary": "The card features a skeleton with a glowing neon aesthetic. It wears vibrant sunglasses with pink and green lenses, and a cigarette dangles from its mouth. The neon colors contrast sharply with the dark background, creating a striking, edgy vibe.",
+  "visualSummaryShort": "The card showcases a skeleton with a vibrant neon aesthetic, highlighted by its colorful sunglasses and cigarette. The contrast between the neon colors and the dark background enhances the edgy vibe.",
+  "visualKeywords": [
+    "skeleton",
+    "neon",
+    "sunglasses",
+    "cigarette",
+    "dark background",
+    "vibrant colors",
+    "edgy",
+    "glowing"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "skeleton",
+    "neon",
+    "sunglasses",
+    "cigarette",
+    "dark background",
+    "vibrant colors",
+    "edgy",
+    "glowing"
+  ],
+  "embeddingInput": "PEPESKULLIFE (Fake Rares) - Series 13 Card 16\nArtist: Lord Jamie V. Shill\nSupply 25 Issued February 2023\nOn-card text: none detected\nVisual summary: The card features a skeleton with a glowing neon aesthetic. It wears vibrant sunglasses with pink and green lenses, and a cigarette dangles from its mouth. The neon colors contrast sharply with the dark background, creating a striking, edgy vibe.\nMemetic references: Pepe references through the neon heart shape on the ribcage.; Crypto culture vibes from the neon glow, reminiscent of digital art and NFT aesthetics.; Classic coolness with sunglasses and cigarette, nodding to rebellion memes.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPESKULLIFE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe references through the neon heart shape on the ribcage.\nCrypto culture vibes from the neon glow, reminiscent of digital art and NFT aesthetics.\nClassic coolness with sunglasses and cigarette, nodding to rebellion memes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPESKULLIFE#visual",
+      "label": "Visual summary",
+      "text": "The card features a skeleton with a glowing neon aesthetic. It wears vibrant sunglasses with pink and green lenses, and a cigarette dangles from its mouth. The neon colors contrast sharply with the dark background, creating a striking, edgy vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPESKULLIFE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a skeleton with a glowing neon aesthetic. It wears vibrant sunglasses with pink and green lenses, and a cigarette dangles from its mouth. The neon colors contrast sharply with the dark background, creating a striking, edgy vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe references through the neon heart shape on the ribcage.\n- Crypto culture vibes from the neon glow, reminiscent of digital art and NFT aesthetics.\n- Classic coolness with sunglasses and cigarette, nodding to rebellion memes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.979Z",
+  "sourceFactVersion": 1
+}

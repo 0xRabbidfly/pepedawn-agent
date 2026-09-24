@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "HOCKEKNEY",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 46,
+  "artist": "9272",
+  "supply": 72,
+  "issuance": "January 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "The submerged character resembles Pepe, a central figure in meme culture.",
+    "The box-headed figure might reference anonymity or crypto culture’s fascination with identity and pseudonyms.",
+    "The setting and style nod to David Hockney's iconic pool paintings, merging fine art with meme culture."
+  ],
+  "visualSummary": "The card features a surreal poolside scene with a character wearing a box over their head, standing next to a swimming pool. The pool contains another figure, seemingly a Pepe, submerged in water. The background showcases a lush landscape with rolling hills and greenery, painted in a blend of soft greens, blues, and earthy tones, reminiscent of a classic painting style.",
+  "visualSummaryShort": "The card depicts a surreal poolside scene with a character wearing a box on their head beside a swimming pool. A submerged figure resembling Pepe adds to the whimsical atmosphere against a lush, painterly background.",
+  "visualKeywords": [
+    "poolside",
+    "box head",
+    "pepe",
+    "lush landscape",
+    "rolling hills",
+    "greenery",
+    "soft colors",
+    "surreal",
+    "swimming pool",
+    "earthy tones"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "poolside",
+    "box head",
+    "pepe",
+    "lush landscape",
+    "rolling hills",
+    "greenery",
+    "soft colors",
+    "surreal",
+    "swimming pool",
+    "earthy tones"
+  ],
+  "embeddingInput": "HOCKEKNEY (Fake Rares) - Series 12 Card 46\nArtist: 9272\nSupply 72 Issued January 2023\nOn-card text: none detected\nVisual summary: The card features a surreal poolside scene with a character wearing a box over their head, standing next to a swimming pool. The pool contains another figure, seemingly a Pepe, submerged in water. The background showcases a lush landscape with rolling hills and greenery, painted in a blend of soft greens, blues, and earthy tones, reminiscent of a classic painting style.\nMemetic references: The submerged character resembles Pepe, a central figure in meme culture.; The box-headed figure might reference anonymity or crypto culture’s fascination with identity and pseudonyms.; The setting and style nod to David Hockney's iconic pool paintings, merging fine art with meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "HOCKEKNEY#memetic",
+      "label": "Memetic references",
+      "text": "The submerged character resembles Pepe, a central figure in meme culture.\nThe box-headed figure might reference anonymity or crypto culture’s fascination with identity and pseudonyms.\nThe setting and style nod to David Hockney's iconic pool paintings, merging fine art with meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "HOCKEKNEY#visual",
+      "label": "Visual summary",
+      "text": "The card features a surreal poolside scene with a character wearing a box over their head, standing next to a swimming pool. The pool contains another figure, seemingly a Pepe, submerged in water. The background showcases a lush landscape with rolling hills and greenery, painted in a blend of soft greens, blues, and earthy tones, reminiscent of a classic painting style.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "HOCKEKNEY#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a surreal poolside scene with a character wearing a box over their head, standing next to a swimming pool. The pool contains another figure, seemingly a Pepe, submerged in water. The background showcases a lush landscape with rolling hills and greenery, painted in a blend of soft greens, blues, and earthy tones, reminiscent of a classic painting style.\n\n🧬 **MEMETIC DNA:**\n- The submerged character resembles Pepe, a central figure in meme culture.\n- The box-headed figure might reference anonymity or crypto culture’s fascination with identity and pseudonyms.\n- The setting and style nod to David Hockney's iconic pool paintings, merging fine art with meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.685Z",
+  "sourceFactVersion": 1
+}

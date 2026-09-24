@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "asset": "FAKEWYOMING",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 28,
+  "artist": "Carsonated",
+  "supply": 44,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "WYOMING DOESN'T EXIST. As I have gone alone in there And with my treasures bold, I can keep my secret where, And hint of riches new and old."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple of meme culture, chilling on the card.",
+    "\"Wyoming doesn’t exist\" is a nod to the humorous conspiracy theory often joked about online.",
+    "The treasure map-like text alludes to hidden secrets and crypto treasure hunts."
+  ],
+  "visualSummary": "The card is divided into three sections: a colorful, abstract map-like area at the top, a Pepe the Frog character on the right, and a serene mountain landscape with a cabin at the bottom. The color palette is vibrant, with blues, yellows, and pinks dominating the map area, while the bottom section features natural earthy tones. The artistic style mixes digital abstraction with traditional landscape imagery, creating a playful yet mysterious vibe.",
+  "visualSummaryShort": "The card features a vibrant, abstract map-like area alongside a Pepe the Frog character and a serene mountain landscape with a cabin. The color palette combines bright hues with earthy tones, creating a playful yet mysterious atmosphere.",
+  "visualKeywords": [
+    "abstract",
+    "pepe the frog",
+    "mountains",
+    "cabin",
+    "vibrant colors",
+    "earthy tones",
+    "digital art",
+    "landscape",
+    "playful",
+    "mysterious"
+  ],
+  "textKeywords": [
+    "wyoming",
+    "doesn",
+    "exist",
+    "gone",
+    "alone",
+    "treasures",
+    "bold",
+    "can",
+    "keep",
+    "secret",
+    "where",
+    "hint",
+    "riches",
+    "new",
+    "old"
+  ],
+  "keywords": [
+    "abstract",
+    "pepe the frog",
+    "mountains",
+    "cabin",
+    "vibrant colors",
+    "earthy tones",
+    "digital art",
+    "landscape",
+    "playful",
+    "mysterious",
+    "wyoming",
+    "doesn",
+    "exist",
+    "gone",
+    "alone",
+    "treasures",
+    "bold",
+    "can",
+    "keep",
+    "secret",
+    "where",
+    "hint",
+    "riches",
+    "new",
+    "old"
+  ],
+  "embeddingInput": "FAKEWYOMING (Fake Rares) - Series 2 Card 28\nArtist: Carsonated\nSupply 44 Issued October 2021\nOn-card text: WYOMING DOESN'T EXIST. As I have gone alone in there And with my treasures bold, I can keep my secret where, And hint of riches new and old.\nVisual summary: The card is divided into three sections: a colorful, abstract map-like area at the top, a Pepe the Frog character on the right, and a serene mountain landscape with a cabin at the bottom. The color palette is vibrant, with blues, yellows, and pinks dominating the map area, while the bottom section features natural earthy tones. The artistic style mixes digital abstraction with traditional landscape imagery, creating a playful yet mysterious vibe.\nMemetic references: Pepe the Frog, a staple of meme culture, chilling on the card.; \"Wyoming doesn’t exist\" is a nod to the humorous conspiracy theory often joked about online.; The treasure map-like text alludes to hidden secrets and crypto treasure hunts.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEWYOMING#text",
+      "label": "On-card text",
+      "text": "WYOMING DOESN'T EXIST. As I have gone alone in there And with my treasures bold, I can keep my secret where, And hint of riches new and old.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEWYOMING#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple of meme culture, chilling on the card.\n\"Wyoming doesn’t exist\" is a nod to the humorous conspiracy theory often joked about online.\nThe treasure map-like text alludes to hidden secrets and crypto treasure hunts.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEWYOMING#visual",
+      "label": "Visual summary",
+      "text": "The card is divided into three sections: a colorful, abstract map-like area at the top, a Pepe the Frog character on the right, and a serene mountain landscape with a cabin at the bottom. The color palette is vibrant, with blues, yellows, and pinks dominating the map area, while the bottom section features natural earthy tones. The artistic style mixes digital abstraction with traditional landscape imagery, creating a playful yet mysterious vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEWYOMING#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nWYOMING DOESN'T EXIST. As I have gone alone in there And with my treasures bold, I can keep my secret where, And hint of riches new and old.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card is divided into three sections: a colorful, abstract map-like area at the top, a Pepe the Frog character on the right, and a serene mountain landscape with a cabin at the bottom. The color palette is vibrant, with blues, yellows, and pinks dominating the map area, while the bottom section features natural earthy tones. The artistic style mixes digital abstraction with traditional landscape imagery, creating a playful yet mysterious vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple of meme culture, chilling on the card.\n- \"Wyoming doesn’t exist\" is a nod to the humorous conspiracy theory often joked about online.\n- The treasure map-like text alludes to hidden secrets and crypto treasure hunts.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.601Z",
+  "sourceFactVersion": 1
+}

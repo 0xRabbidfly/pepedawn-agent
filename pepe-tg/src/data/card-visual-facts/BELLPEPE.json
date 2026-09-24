@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "BELLPEPE",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 20,
+  "artist": "Art Bat",
+  "supply": 40,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "Bell Pepe",
+    "2021 AB"
+  ],
+  "memeticReferences": [
+    "A clever play on words with \"Bell Pepe,\" merging the iconic Pepe meme with a bell pepper.",
+    "References to meme culture through the use of Pepe, a staple in internet humor.",
+    "The year \"2021\" nods to the NFT boom and crypto art explosion."
+  ],
+  "visualSummary": "The card features a simple illustration of a green bell pepper centered on a white background. The style is minimalistic and cartoonish, with clean lines and a limited color palette focusing on shades of green. The text below adds a playful touch with casual handwriting.",
+  "visualSummaryShort": "The card showcases a cartoonish green bell pepper against a white background. Its minimalistic design features clean lines and a playful handwritten text below.",
+  "visualKeywords": [
+    "bell pepper",
+    "green",
+    "white background",
+    "minimalistic",
+    "cartoonish",
+    "clean lines",
+    "playful",
+    "handwritten"
+  ],
+  "textKeywords": [
+    "bell",
+    "2021"
+  ],
+  "keywords": [
+    "bell pepper",
+    "green",
+    "white background",
+    "minimalistic",
+    "cartoonish",
+    "clean lines",
+    "playful",
+    "handwritten",
+    "bell",
+    "2021"
+  ],
+  "embeddingInput": "BELLPEPE (Fake Rares) - Series 2 Card 20\nArtist: Art Bat\nSupply 40 Issued October 2021\nOn-card text: Bell Pepe | 2021 AB\nVisual summary: The card features a simple illustration of a green bell pepper centered on a white background. The style is minimalistic and cartoonish, with clean lines and a limited color palette focusing on shades of green. The text below adds a playful touch with casual handwriting.\nMemetic references: A clever play on words with \"Bell Pepe,\" merging the iconic Pepe meme with a bell pepper.; References to meme culture through the use of Pepe, a staple in internet humor.; The year \"2021\" nods to the NFT boom and crypto art explosion.",
+  "embeddingBlocks": [
+    {
+      "id": "BELLPEPE#text",
+      "label": "On-card text",
+      "text": "Bell Pepe | 2021 AB",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "BELLPEPE#memetic",
+      "label": "Memetic references",
+      "text": "A clever play on words with \"Bell Pepe,\" merging the iconic Pepe meme with a bell pepper.\nReferences to meme culture through the use of Pepe, a staple in internet humor.\nThe year \"2021\" nods to the NFT boom and crypto art explosion.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BELLPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a simple illustration of a green bell pepper centered on a white background. The style is minimalistic and cartoonish, with clean lines and a limited color palette focusing on shades of green. The text below adds a playful touch with casual handwriting.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BELLPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nBell Pepe  \n2021 AB\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a simple illustration of a green bell pepper centered on a white background. The style is minimalistic and cartoonish, with clean lines and a limited color palette focusing on shades of green. The text below adds a playful touch with casual handwriting.\n\n🧬 **MEMETIC DNA:**\n- A clever play on words with \"Bell Pepe,\" merging the iconic Pepe meme with a bell pepper.\n- References to meme culture through the use of Pepe, a staple in internet humor.\n- The year \"2021\" nods to the NFT boom and crypto art explosion.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.304Z",
+  "sourceFactVersion": 1
+}

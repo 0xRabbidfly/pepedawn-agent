@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "asset": "PEPEMOTION",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 28,
+  "artist": "Zoku",
+  "supply": 97,
+  "issuance": "January 2022",
+  "textOnCard": [
+    "Wait a minute, I'm a historical NFT!"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple of internet meme culture.",
+    "Reference to Eadweard Muybridge’s historical photographic work.",
+    "Plays on the idea of NFTs as historical artifacts."
+  ],
+  "visualSummary": "The card features a black-and-white sequence of a horse and rider, reminiscent of Eadweard Muybridge's motion studies, with Pepe the Frog's face humorously superimposed on the rider. The style is vintage, with muted tones and a classic sepia filter. The speech bubble adds a modern twist, introducing an element of surprise and humor.",
+  "visualSummaryShort": "The card showcases a vintage black-and-white motion study of a horse and rider, humorously featuring Pepe the Frog's face on the rider. The muted tones and classic sepia filter create a nostalgic atmosphere, enhanced by a modern speech bubble.",
+  "visualKeywords": [
+    "horse",
+    "rider",
+    "pepe the frog",
+    "black-and-white",
+    "vintage",
+    "sepia",
+    "humor",
+    "motion",
+    "speech bubble"
+  ],
+  "textKeywords": [
+    "wait",
+    "minute",
+    "historical",
+    "nft"
+  ],
+  "keywords": [
+    "horse",
+    "rider",
+    "pepe the frog",
+    "black-and-white",
+    "vintage",
+    "sepia",
+    "humor",
+    "motion",
+    "speech bubble",
+    "wait",
+    "minute",
+    "historical",
+    "nft"
+  ],
+  "embeddingInput": "PEPEMOTION (Fake Rares) - Series 11 Card 28\nArtist: Zoku\nSupply 97 Issued January 2022\nOn-card text: Wait a minute, I'm a historical NFT!\nVisual summary: The card features a black-and-white sequence of a horse and rider, reminiscent of Eadweard Muybridge's motion studies, with Pepe the Frog's face humorously superimposed on the rider. The style is vintage, with muted tones and a classic sepia filter. The speech bubble adds a modern twist, introducing an element of surprise and humor.\nMemetic references: Pepe the Frog, a staple of internet meme culture.; Reference to Eadweard Muybridge’s historical photographic work.; Plays on the idea of NFTs as historical artifacts.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEMOTION#text",
+      "label": "On-card text",
+      "text": "Wait a minute, I'm a historical NFT!",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEMOTION#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple of internet meme culture.\nReference to Eadweard Muybridge’s historical photographic work.\nPlays on the idea of NFTs as historical artifacts.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEMOTION#visual",
+      "label": "Visual summary",
+      "text": "The card features a black-and-white sequence of a horse and rider, reminiscent of Eadweard Muybridge's motion studies, with Pepe the Frog's face humorously superimposed on the rider. The style is vintage, with muted tones and a classic sepia filter. The speech bubble adds a modern twist, introducing an element of surprise and humor.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEMOTION#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nWait a minute, I'm a historical NFT!\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a black-and-white sequence of a horse and rider, reminiscent of Eadweard Muybridge's motion studies, with Pepe the Frog's face humorously superimposed on the rider. The style is vintage, with muted tones and a classic sepia filter. The speech bubble adds a modern twist, introducing an element of surprise and humor.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple of internet meme culture.\n- Reference to Eadweard Muybridge’s historical photographic work.\n- Plays on the idea of NFTs as historical artifacts.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.932Z",
+  "sourceFactVersion": 1
+}

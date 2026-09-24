@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "asset": "BADBURGERDAY",
+  "collection": "Fake Rares",
+  "series": 0,
+  "cardNumber": 7,
+  "artist": "Indelible",
+  "supply": 831,
+  "issuance": "August 2021",
+  "textOnCard": [
+    "Bad Burger Day Aug 31st 2021",
+    "VOAT Burgers 1 Hair Patty $3 Dbl Hair Patty $5 Exta clog Free"
+  ],
+  "memeticReferences": [
+    "Pepe-inspired green skin and exaggerated eyes.",
+    "Retro diner aesthetic reminiscent of 1950s Americana.",
+    "Play on the infamous \"Hair Burger\" meme.",
+    "VOAT reference nods to internet culture."
+  ],
+  "visualSummary": "The card presents a retro diner scene with a green-skinned character eating a burger filled with hair. The aesthetic is a mix of vintage diner vibes and surreal elements, with a bold red and teal color palette. The background features another green character in a 1950s-style outfit, adding to the quirky, nostalgic atmosphere.",
+  "visualSummaryShort": "The card depicts a retro diner scene with a green-skinned character enjoying a bizarre burger. The vibrant red and teal colors enhance the quirky, nostalgic atmosphere.",
+  "visualKeywords": [
+    "diner",
+    "green character",
+    "burger",
+    "hair",
+    "vintage",
+    "red",
+    "teal",
+    "quirky",
+    "nostalgic",
+    "surreal"
+  ],
+  "textKeywords": [
+    "bad",
+    "burger",
+    "day",
+    "aug",
+    "31st",
+    "2021",
+    "voat",
+    "burgers",
+    "hair",
+    "patty",
+    "dbl",
+    "exta",
+    "clog",
+    "free"
+  ],
+  "keywords": [
+    "diner",
+    "green character",
+    "burger",
+    "hair",
+    "vintage",
+    "red",
+    "teal",
+    "quirky",
+    "nostalgic",
+    "surreal",
+    "bad",
+    "day",
+    "aug",
+    "31st",
+    "2021",
+    "voat",
+    "burgers",
+    "patty",
+    "dbl",
+    "exta",
+    "clog",
+    "free"
+  ],
+  "embeddingInput": "BADBURGERDAY (Fake Rares) - Series 0 Card 7\nArtist: Indelible\nSupply 831 Issued August 2021\nOn-card text: Bad Burger Day Aug 31st 2021 | VOAT Burgers 1 Hair Patty $3 Dbl Hair Patty $5 Exta clog Free\nVisual summary: The card presents a retro diner scene with a green-skinned character eating a burger filled with hair. The aesthetic is a mix of vintage diner vibes and surreal elements, with a bold red and teal color palette. The background features another green character in a 1950s-style outfit, adding to the quirky, nostalgic atmosphere.\nMemetic references: Pepe-inspired green skin and exaggerated eyes.; Retro diner aesthetic reminiscent of 1950s Americana.; Play on the infamous \"Hair Burger\" meme.; VOAT reference nods to internet culture.",
+  "embeddingBlocks": [
+    {
+      "id": "BADBURGERDAY#text",
+      "label": "On-card text",
+      "text": "Bad Burger Day Aug 31st 2021 | VOAT Burgers 1 Hair Patty $3 Dbl Hair Patty $5 Exta clog Free",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "BADBURGERDAY#memetic",
+      "label": "Memetic references",
+      "text": "Pepe-inspired green skin and exaggerated eyes.\nRetro diner aesthetic reminiscent of 1950s Americana.\nPlay on the infamous \"Hair Burger\" meme.\nVOAT reference nods to internet culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BADBURGERDAY#visual",
+      "label": "Visual summary",
+      "text": "The card presents a retro diner scene with a green-skinned character eating a burger filled with hair. The aesthetic is a mix of vintage diner vibes and surreal elements, with a bold red and teal color palette. The background features another green character in a 1950s-style outfit, adding to the quirky, nostalgic atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BADBURGERDAY#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nBad Burger Day Aug 31st 2021  \nVOAT Burgers 1 Hair Patty $3 Dbl Hair Patty $5 Exta clog Free\n\n🎨 **VISUAL BREAKDOWN:**\nThe card presents a retro diner scene with a green-skinned character eating a burger filled with hair. The aesthetic is a mix of vintage diner vibes and surreal elements, with a bold red and teal color palette. The background features another green character in a 1950s-style outfit, adding to the quirky, nostalgic atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Pepe-inspired green skin and exaggerated eyes.\n- Retro diner aesthetic reminiscent of 1950s Americana.\n- Play on the infamous \"Hair Burger\" meme.\n- VOAT reference nods to internet culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.289Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "SELFISHMEME",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 26,
+  "artist": "Memeticx",
+  "supply": 76,
+  "issuance": "June 2025",
+  "textOnCard": [
+    "The Selfish Meme"
+  ],
+  "memeticReferences": [
+    "Parody of Twitter's iconic bird logo.",
+    "Commentary on social media culture and attention-seeking behavior.",
+    "Possible nod to \"feeding the trolls\" meme."
+  ],
+  "visualSummary": "The card features a vibrant scene with blue birds resembling a certain social media icon, perched among lush green leaves on an orange background. The largest bird, holding a worm, is positioned above three smaller, open-mouthed birds. The composition uses bold, contrasting colors and a cartoonish style that feels playful yet satirical.",
+  "visualSummaryShort": "The card showcases vibrant blue birds in a playful, cartoonish style, set against an orange background with lush green leaves. The largest bird holds a worm above three smaller birds, creating a lively and satirical scene.",
+  "visualKeywords": [
+    "blue birds",
+    "orange background",
+    "green leaves",
+    "cartoonish",
+    "playful",
+    "satirical",
+    "bold colors",
+    "worm",
+    "open mouths"
+  ],
+  "textKeywords": [
+    "selfish",
+    "meme"
+  ],
+  "keywords": [
+    "blue birds",
+    "orange background",
+    "green leaves",
+    "cartoonish",
+    "playful",
+    "satirical",
+    "bold colors",
+    "worm",
+    "open mouths",
+    "selfish",
+    "meme"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "SELFISHMEME (Fake Rares) - Series 18 Card 26\nArtist: Memeticx\nSupply 76 Issued June 2025\nOn-card text: The Selfish Meme\nVisual summary: The card features a vibrant scene with blue birds resembling a certain social media icon, perched among lush green leaves on an orange background. The largest bird, holding a worm, is positioned above three smaller, open-mouthed birds. The composition uses bold, contrasting colors and a cartoonish style that feels playful yet satirical.\nMemetic references: Parody of Twitter's iconic bird logo.; Commentary on social media culture and attention-seeking behavior.; Possible nod to \"feeding the trolls\" meme.",
+  "embeddingBlocks": [
+    {
+      "id": "SELFISHMEME#text",
+      "label": "On-card text",
+      "text": "The Selfish Meme",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "SELFISHMEME#memetic",
+      "label": "Memetic references",
+      "text": "Parody of Twitter's iconic bird logo.\nCommentary on social media culture and attention-seeking behavior.\nPossible nod to \"feeding the trolls\" meme.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SELFISHMEME#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant scene with blue birds resembling a certain social media icon, perched among lush green leaves on an orange background. The largest bird, holding a worm, is positioned above three smaller, open-mouthed birds. The composition uses bold, contrasting colors and a cartoonish style that feels playful yet satirical.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SELFISHMEME#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nThe Selfish Meme\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant scene with blue birds resembling a certain social media icon, perched among lush green leaves on an orange background. The largest bird, holding a worm, is positioned above three smaller, open-mouthed birds. The composition uses bold, contrasting colors and a cartoonish style that feels playful yet satirical.\n\n🧬 **MEMETIC DNA:**\n- Parody of Twitter's iconic bird logo.\n- Commentary on social media culture and attention-seeking behavior.\n- Possible nod to \"feeding the trolls\" meme.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:31:11.167Z"
+}

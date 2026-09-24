@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PUMPKINPATCH",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 26,
+  "artist": "VVD",
+  "supply": 69,
+  "issuance": "February 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe imagery with frogs in human-like roles.",
+    "Echoes of crypto culture through playful, surreal representation.",
+    "Pastoral and autumnal elements nodding to nostalgia and harvest themes."
+  ],
+  "visualSummary": "This card features a vibrant, impressionistic style reminiscent of classic art, with a rich color palette of blues, oranges, and greens. Two anthropomorphic frogs, dressed in quaint outfits, are depicted engaging in a pumpkin patch scene. The textured brushstrokes give it a lively and dynamic feel, evoking a whimsical and pastoral vibe.",
+  "visualSummaryShort": "The card showcases two anthropomorphic frogs in a colorful pumpkin patch, dressed in charming outfits. The impressionistic style and vibrant colors create a whimsical and pastoral atmosphere.",
+  "visualKeywords": [
+    "frogs",
+    "pumpkin patch",
+    "impressionistic",
+    "blue",
+    "orange",
+    "green",
+    "whimsical",
+    "pastoral",
+    "textured",
+    "dynamic"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "frogs",
+    "pumpkin patch",
+    "impressionistic",
+    "blue",
+    "orange",
+    "green",
+    "whimsical",
+    "pastoral",
+    "textured",
+    "dynamic"
+  ],
+  "embeddingInput": "PUMPKINPATCH (Fake Rares) - Series 13 Card 26\nArtist: VVD\nSupply 69 Issued February 2023\nOn-card text: none detected\nVisual summary: This card features a vibrant, impressionistic style reminiscent of classic art, with a rich color palette of blues, oranges, and greens. Two anthropomorphic frogs, dressed in quaint outfits, are depicted engaging in a pumpkin patch scene. The textured brushstrokes give it a lively and dynamic feel, evoking a whimsical and pastoral vibe.\nMemetic references: Classic Pepe imagery with frogs in human-like roles.; Echoes of crypto culture through playful, surreal representation.; Pastoral and autumnal elements nodding to nostalgia and harvest themes.",
+  "embeddingBlocks": [
+    {
+      "id": "PUMPKINPATCH#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe imagery with frogs in human-like roles.\nEchoes of crypto culture through playful, surreal representation.\nPastoral and autumnal elements nodding to nostalgia and harvest themes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PUMPKINPATCH#visual",
+      "label": "Visual summary",
+      "text": "This card features a vibrant, impressionistic style reminiscent of classic art, with a rich color palette of blues, oranges, and greens. Two anthropomorphic frogs, dressed in quaint outfits, are depicted engaging in a pumpkin patch scene. The textured brushstrokes give it a lively and dynamic feel, evoking a whimsical and pastoral vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PUMPKINPATCH#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a vibrant, impressionistic style reminiscent of classic art, with a rich color palette of blues, oranges, and greens. Two anthropomorphic frogs, dressed in quaint outfits, are depicted engaging in a pumpkin patch scene. The textured brushstrokes give it a lively and dynamic feel, evoking a whimsical and pastoral vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe imagery with frogs in human-like roles.\n- Echoes of crypto culture through playful, surreal representation.\n- Pastoral and autumnal elements nodding to nostalgia and harvest themes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.058Z",
+  "sourceFactVersion": 1
+}

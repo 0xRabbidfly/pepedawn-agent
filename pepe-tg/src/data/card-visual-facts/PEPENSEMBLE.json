@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PEPENSEMBLE",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 10,
+  "artist": "Looks Rare",
+  "supply": 68,
+  "issuance": "March 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "References to Pepe the Frog, a staple in meme culture.",
+    "A nod to Georges Seurat's \"A Sunday Afternoon on the Island of La Grande Jatte\" in the window art.",
+    "Crypto culture elements, like a laptop suggesting meme trading or degen activities."
+  ],
+  "visualSummary": "This card features a surreal room scene with a mix of classic and meme-inspired art. The color palette includes earthy tones and vibrant greens, with a nod to impressionist paintings visible on the wall. The characters are depicted in a cartoonish style, each with distinct yet humorous features, engaging in a casual setting.",
+  "visualSummaryShort": "The card showcases a surreal room filled with a blend of classic and meme-inspired art. Cartoonish characters with humorous features are depicted in a casual environment with earthy tones and vibrant greens.",
+  "visualKeywords": [
+    "surreal",
+    "cartoonish",
+    "earthy tones",
+    "vibrant greens",
+    "impressionist",
+    "humorous",
+    "casual setting",
+    "art",
+    "room scene",
+    "characters"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "surreal",
+    "cartoonish",
+    "earthy tones",
+    "vibrant greens",
+    "impressionist",
+    "humorous",
+    "casual setting",
+    "art",
+    "room scene",
+    "characters"
+  ],
+  "embeddingInput": "PEPENSEMBLE (Fake Rares) - Series 14 Card 10\nArtist: Looks Rare\nSupply 68 Issued March 2023\nOn-card text: none detected\nVisual summary: This card features a surreal room scene with a mix of classic and meme-inspired art. The color palette includes earthy tones and vibrant greens, with a nod to impressionist paintings visible on the wall. The characters are depicted in a cartoonish style, each with distinct yet humorous features, engaging in a casual setting.\nMemetic references: References to Pepe the Frog, a staple in meme culture.; A nod to Georges Seurat's \"A Sunday Afternoon on the Island of La Grande Jatte\" in the window art.; Crypto culture elements, like a laptop suggesting meme trading or degen activities.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPENSEMBLE#memetic",
+      "label": "Memetic references",
+      "text": "References to Pepe the Frog, a staple in meme culture.\nA nod to Georges Seurat's \"A Sunday Afternoon on the Island of La Grande Jatte\" in the window art.\nCrypto culture elements, like a laptop suggesting meme trading or degen activities.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPENSEMBLE#visual",
+      "label": "Visual summary",
+      "text": "This card features a surreal room scene with a mix of classic and meme-inspired art. The color palette includes earthy tones and vibrant greens, with a nod to impressionist paintings visible on the wall. The characters are depicted in a cartoonish style, each with distinct yet humorous features, engaging in a casual setting.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPENSEMBLE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a surreal room scene with a mix of classic and meme-inspired art. The color palette includes earthy tones and vibrant greens, with a nod to impressionist paintings visible on the wall. The characters are depicted in a cartoonish style, each with distinct yet humorous features, engaging in a casual setting.\n\n🧬 **MEMETIC DNA:**\n- References to Pepe the Frog, a staple in meme culture.\n- A nod to Georges Seurat's \"A Sunday Afternoon on the Island of La Grande Jatte\" in the window art.\n- Crypto culture elements, like a laptop suggesting meme trading or degen activities.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.942Z",
+  "sourceFactVersion": 1
+}

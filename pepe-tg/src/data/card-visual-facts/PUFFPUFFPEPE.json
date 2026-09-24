@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "asset": "PUFFPUFFPEPE",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 42,
+  "artist": "Fake Annie",
+  "supply": 93,
+  "issuance": "December 2021",
+  "textOnCard": [
+    "PUFF PUFF PEPE. WHY MUST I PUFF DAT PASS? WHY MUST I CHASE DAT ASS? NUTTIN BUT DA FROGG IN ME!!! PEPE IS ON TOP OF ALL TINGS! PARENTAL ADVISORY EXPLICIT FAKE RARE. PUPE FROGGY FROGG."
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery.",
+    "References to cannabis culture with \"puff puff\" phrases.",
+    "Hip-hop and street art influences.",
+    "Parody of parental advisory warnings.",
+    "Playful take on pop culture phrases and attitudes."
+  ],
+  "visualSummary": "The card is a vibrant explosion of neon colors with a psychedelic vibe, featuring a mix of green, pink, and purple hues. It depicts two anthropomorphic frog figures in hip-hop style clothing, striking dynamic poses. The background includes a row of classic Pepe faces, adding layers to the chaotic and lively composition.",
+  "visualSummaryShort": "The card features two anthropomorphic frogs in hip-hop attire against a vibrant, neon background. The composition is lively and chaotic, enhanced by a row of classic Pepe faces.",
+  "visualKeywords": [
+    "neon colors",
+    "frogs",
+    "hip-hop",
+    "dynamic poses",
+    "psychedelic",
+    "green",
+    "pink",
+    "purple",
+    "chaotic",
+    "pepe faces"
+  ],
+  "textKeywords": [
+    "puff",
+    "why",
+    "must",
+    "dat",
+    "pass",
+    "chase",
+    "ass",
+    "nuttin",
+    "but",
+    "frogg",
+    "top",
+    "all",
+    "tings",
+    "parental",
+    "advisory",
+    "explicit",
+    "pupe",
+    "froggy"
+  ],
+  "keywords": [
+    "neon colors",
+    "frogs",
+    "hip-hop",
+    "dynamic poses",
+    "psychedelic",
+    "green",
+    "pink",
+    "purple",
+    "chaotic",
+    "pepe faces",
+    "puff",
+    "why",
+    "must",
+    "dat",
+    "pass",
+    "chase",
+    "ass",
+    "nuttin",
+    "but",
+    "frogg",
+    "top",
+    "all",
+    "tings",
+    "parental",
+    "advisory",
+    "explicit",
+    "pupe",
+    "froggy"
+  ],
+  "embeddingInput": "PUFFPUFFPEPE (Fake Rares) - Series 4 Card 42\nArtist: Fake Annie\nSupply 93 Issued December 2021\nOn-card text: PUFF PUFF PEPE. WHY MUST I PUFF DAT PASS? WHY MUST I CHASE DAT ASS? NUTTIN BUT DA FROGG IN ME!!! PEPE IS ON TOP OF ALL TINGS! PARENTAL ADVISORY EXPLICIT FAKE RARE. PUPE FROGGY FROGG.\nVisual summary: The card is a vibrant explosion of neon colors with a psychedelic vibe, featuring a mix of green, pink, and purple hues. It depicts two anthropomorphic frog figures in hip-hop style clothing, striking dynamic poses. The background includes a row of classic Pepe faces, adding layers to the chaotic and lively composition.\nMemetic references: Classic Pepe the Frog imagery.; References to cannabis culture with \"puff puff\" phrases.; Hip-hop and street art influences.; Parody of parental advisory warnings.; Playful take on pop culture phrases and attitudes.",
+  "embeddingBlocks": [
+    {
+      "id": "PUFFPUFFPEPE#text",
+      "label": "On-card text",
+      "text": "PUFF PUFF PEPE. WHY MUST I PUFF DAT PASS? WHY MUST I CHASE DAT ASS? NUTTIN BUT DA FROGG IN ME!!! PEPE IS ON TOP OF ALL TINGS! PARENTAL ADVISORY EXPLICIT FAKE RARE. PUPE FROGGY FROGG.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PUFFPUFFPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery.\nReferences to cannabis culture with \"puff puff\" phrases.\nHip-hop and street art influences.\nParody of parental advisory warnings.\nPlayful take on pop culture phrases and attitudes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PUFFPUFFPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card is a vibrant explosion of neon colors with a psychedelic vibe, featuring a mix of green, pink, and purple hues. It depicts two anthropomorphic frog figures in hip-hop style clothing, striking dynamic poses. The background includes a row of classic Pepe faces, adding layers to the chaotic and lively composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PUFFPUFFPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPUFF PUFF PEPE. WHY MUST I PUFF DAT PASS? WHY MUST I CHASE DAT ASS? NUTTIN BUT DA FROGG IN ME!!! PEPE IS ON TOP OF ALL TINGS! PARENTAL ADVISORY EXPLICIT FAKE RARE. PUPE FROGGY FROGG.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card is a vibrant explosion of neon colors with a psychedelic vibe, featuring a mix of green, pink, and purple hues. It depicts two anthropomorphic frog figures in hip-hop style clothing, striking dynamic poses. The background includes a row of classic Pepe faces, adding layers to the chaotic and lively composition.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery.\n- References to cannabis culture with \"puff puff\" phrases.\n- Hip-hop and street art influences.\n- Parody of parental advisory warnings.\n- Playful take on pop culture phrases and attitudes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.057Z",
+  "sourceFactVersion": 1
+}

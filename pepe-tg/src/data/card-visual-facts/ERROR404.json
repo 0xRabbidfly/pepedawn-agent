@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "asset": "ERROR404",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 29,
+  "artist": "unknown",
+  "supply": 0,
+  "issuance": "November 2022",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card image is not available. No visual traits can be summarized.",
+  "visualKeywords": [],
+  "textKeywords": [],
+  "keywords": [],
+  "embeddingInput": "ERROR404 (Fake Rares) - Series 12 Card 29\nArtist: unknown\nSupply 0 Issued November 2022\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "ERROR404#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.429Z",
+  "sourceFactVersion": 1
+}

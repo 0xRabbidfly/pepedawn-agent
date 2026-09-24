@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "PEPEWOK",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 6,
+  "artist": "Easy B",
+  "supply": 21,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "Pepewok"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple meme character, central to the design.",
+    "Reference to Ewoks from Star Wars, blending pop culture with meme culture.",
+    "The \"Fake Rares\" branding, nodding to the NFT and crypto art scene."
+  ],
+  "visualSummary": "The card features a green Pepe the Frog character dressed as an Ewok, standing in a forest setting reminiscent of the Endor moon from Star Wars. The color palette is dominated by greens and browns, with a hint of metallic sheen on the card's border. The art style is a blend of comic and digital illustration, giving it a playful yet polished look.",
+  "visualSummaryShort": "The card showcases a green Pepe the Frog character dressed as an Ewok in a forest reminiscent of Endor. The color palette features greens and browns, complemented by a metallic sheen on the border.",
+  "visualKeywords": [
+    "pepe",
+    "ewok",
+    "forest",
+    "greens",
+    "browns",
+    "metallic",
+    "comic style",
+    "digital illustration"
+  ],
+  "textKeywords": [
+    "pepewok"
+  ],
+  "keywords": [
+    "pepe",
+    "ewok",
+    "forest",
+    "greens",
+    "browns",
+    "metallic",
+    "comic style",
+    "digital illustration",
+    "pepewok"
+  ],
+  "embeddingInput": "PEPEWOK (Fake Rares) - Series 16 Card 6\nArtist: Easy B\nSupply 21 Issued September 2022\nOn-card text: Pepewok\nVisual summary: The card features a green Pepe the Frog character dressed as an Ewok, standing in a forest setting reminiscent of the Endor moon from Star Wars. The color palette is dominated by greens and browns, with a hint of metallic sheen on the card's border. The art style is a blend of comic and digital illustration, giving it a playful yet polished look.\nMemetic references: Pepe the Frog, a staple meme character, central to the design.; Reference to Ewoks from Star Wars, blending pop culture with meme culture.; The \"Fake Rares\" branding, nodding to the NFT and crypto art scene.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEWOK#text",
+      "label": "On-card text",
+      "text": "Pepewok",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEWOK#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple meme character, central to the design.\nReference to Ewoks from Star Wars, blending pop culture with meme culture.\nThe \"Fake Rares\" branding, nodding to the NFT and crypto art scene.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEWOK#visual",
+      "label": "Visual summary",
+      "text": "The card features a green Pepe the Frog character dressed as an Ewok, standing in a forest setting reminiscent of the Endor moon from Star Wars. The color palette is dominated by greens and browns, with a hint of metallic sheen on the card's border. The art style is a blend of comic and digital illustration, giving it a playful yet polished look.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEWOK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPepewok\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a green Pepe the Frog character dressed as an Ewok, standing in a forest setting reminiscent of the Endor moon from Star Wars. The color palette is dominated by greens and browns, with a hint of metallic sheen on the card's border. The art style is a blend of comic and digital illustration, giving it a playful yet polished look.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple meme character, central to the design.\n- Reference to Ewoks from Star Wars, blending pop culture with meme culture.\n- The \"Fake Rares\" branding, nodding to the NFT and crypto art scene.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.012Z",
+  "sourceFactVersion": 1
+}

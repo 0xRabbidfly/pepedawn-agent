@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "LEAPOFFAKE",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 41,
+  "artist": "Alth0tas",
+  "supply": 33,
+  "issuance": "October 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog, a staple of meme culture.",
+    "Bull symbolizes bullish market sentiment in crypto.",
+    "The pole vault represents overcoming challenges or \"leaping\" past obstacles in the market."
+  ],
+  "visualSummary": "The card features Pepe the Frog performing a daring pole vault over a charging bull. The color palette is earthy, with muted greens, browns, and reds that give it a textured, sketch-like appearance. The style is a blend of surrealism and traditional illustration, capturing movement and drama.",
+  "visualSummaryShort": "The card depicts Pepe the Frog pole vaulting over a charging bull in a dramatic scene. The earthy color palette and sketch-like style enhance the surreal and dynamic atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "pole vault",
+    "charging bull",
+    "earthy colors",
+    "muted greens",
+    "browns",
+    "reds",
+    "surrealism",
+    "movement",
+    "drama"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "pole vault",
+    "charging bull",
+    "earthy colors",
+    "muted greens",
+    "browns",
+    "reds",
+    "surrealism",
+    "movement",
+    "drama"
+  ],
+  "embeddingInput": "LEAPOFFAKE (Fake Rares) - Series 16 Card 41\nArtist: Alth0tas\nSupply 33 Issued October 2023\nOn-card text: none detected\nVisual summary: The card features Pepe the Frog performing a daring pole vault over a charging bull. The color palette is earthy, with muted greens, browns, and reds that give it a textured, sketch-like appearance. The style is a blend of surrealism and traditional illustration, capturing movement and drama.\nMemetic references: Pepe the Frog, a staple of meme culture.; Bull symbolizes bullish market sentiment in crypto.; The pole vault represents overcoming challenges or \"leaping\" past obstacles in the market.",
+  "embeddingBlocks": [
+    {
+      "id": "LEAPOFFAKE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple of meme culture.\nBull symbolizes bullish market sentiment in crypto.\nThe pole vault represents overcoming challenges or \"leaping\" past obstacles in the market.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LEAPOFFAKE#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog performing a daring pole vault over a charging bull. The color palette is earthy, with muted greens, browns, and reds that give it a textured, sketch-like appearance. The style is a blend of surrealism and traditional illustration, capturing movement and drama.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LEAPOFFAKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog performing a daring pole vault over a charging bull. The color palette is earthy, with muted greens, browns, and reds that give it a textured, sketch-like appearance. The style is a blend of surrealism and traditional illustration, capturing movement and drama.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple of meme culture.\n- Bull symbolizes bullish market sentiment in crypto.\n- The pole vault represents overcoming challenges or \"leaping\" past obstacles in the market.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.732Z",
+  "sourceFactVersion": 1
+}

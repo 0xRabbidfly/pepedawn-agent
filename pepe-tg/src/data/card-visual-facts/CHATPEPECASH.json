@@ -1,0 +1,106 @@
+{
+  "version": 1,
+  "asset": "CHATPEPECASH",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 36,
+  "artist": "Exahash",
+  "supply": 100,
+  "issuance": "July 2024",
+  "textOnCard": [
+    "ChatPEPE Cash",
+    "❤️ less",
+    "Scam Fakeman",
+    "Playing the not-for-profit card is useful for buying cars, fast cars and more fast cars."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog with a humorous twist, referencing meme culture.",
+    "Satirical take on wealth and extravagance, common in NFT and crypto spaces.",
+    "References to get-rich-quick schemes, parodying the crypto hustle."
+  ],
+  "visualSummary": "This card features a green Pepe-faced character with exaggerated eyes and a slick hairstyle, standing in front of a luxurious mansion. There's a lineup of flashy sports cars in vivid red, white, and yellow colors parked in the driveway, creating a bold contrast against the neutral tones of the mansion. The background is filled with dollar bills, emphasizing the theme of wealth and excess.",
+  "visualSummaryShort": "The card showcases a green Pepe-faced character in front of a luxurious mansion, surrounded by flashy sports cars. The background filled with dollar bills highlights a theme of wealth and excess.",
+  "visualKeywords": [
+    "pepe",
+    "mansion",
+    "sports cars",
+    "dollar bills",
+    "green",
+    "exaggerated eyes",
+    "luxury",
+    "wealth",
+    "vivid colors",
+    "contrast"
+  ],
+  "textKeywords": [
+    "chatpepe",
+    "cash",
+    "less",
+    "scam",
+    "fakeman",
+    "playing",
+    "not",
+    "profit",
+    "useful",
+    "buying",
+    "cars",
+    "fast"
+  ],
+  "keywords": [
+    "pepe",
+    "mansion",
+    "sports cars",
+    "dollar bills",
+    "green",
+    "exaggerated eyes",
+    "luxury",
+    "wealth",
+    "vivid colors",
+    "contrast",
+    "chatpepe",
+    "cash",
+    "less",
+    "scam",
+    "fakeman",
+    "playing",
+    "not",
+    "profit",
+    "useful",
+    "buying",
+    "cars",
+    "fast"
+  ],
+  "embeddingInput": "CHATPEPECASH (Fake Rares) - Series 17 Card 36\nArtist: Exahash\nSupply 100 Issued July 2024\nOn-card text: ChatPEPE Cash | ❤️ less | Scam Fakeman | Playing the not-for-profit card is useful for buying cars, fast cars and more fast cars.\nVisual summary: This card features a green Pepe-faced character with exaggerated eyes and a slick hairstyle, standing in front of a luxurious mansion. There's a lineup of flashy sports cars in vivid red, white, and yellow colors parked in the driveway, creating a bold contrast against the neutral tones of the mansion. The background is filled with dollar bills, emphasizing the theme of wealth and excess.\nMemetic references: Pepe the Frog with a humorous twist, referencing meme culture.; Satirical take on wealth and extravagance, common in NFT and crypto spaces.; References to get-rich-quick schemes, parodying the crypto hustle.",
+  "embeddingBlocks": [
+    {
+      "id": "CHATPEPECASH#text",
+      "label": "On-card text",
+      "text": "ChatPEPE Cash | ❤️ less | Scam Fakeman | Playing the not-for-profit card is useful for buying cars, fast cars and more fast cars.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "CHATPEPECASH#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog with a humorous twist, referencing meme culture.\nSatirical take on wealth and extravagance, common in NFT and crypto spaces.\nReferences to get-rich-quick schemes, parodying the crypto hustle.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "CHATPEPECASH#visual",
+      "label": "Visual summary",
+      "text": "This card features a green Pepe-faced character with exaggerated eyes and a slick hairstyle, standing in front of a luxurious mansion. There's a lineup of flashy sports cars in vivid red, white, and yellow colors parked in the driveway, creating a bold contrast against the neutral tones of the mansion. The background is filled with dollar bills, emphasizing the theme of wealth and excess.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "CHATPEPECASH#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nChatPEPE Cash  \n❤️ less  \nScam Fakeman  \nPlaying the not-for-profit card is useful for buying cars, fast cars and more fast cars.\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a green Pepe-faced character with exaggerated eyes and a slick hairstyle, standing in front of a luxurious mansion. There's a lineup of flashy sports cars in vivid red, white, and yellow colors parked in the driveway, creating a bold contrast against the neutral tones of the mansion. The background is filled with dollar bills, emphasizing the theme of wealth and excess.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog with a humorous twist, referencing meme culture.\n- Satirical take on wealth and extravagance, common in NFT and crypto spaces.\n- References to get-rich-quick schemes, parodying the crypto hustle.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.354Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "GONEPHISHIN",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 42,
+  "artist": "MIKEYCORTEZ",
+  "supply": 49,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "GONE PHISHIN'"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog is a central meme figure, symbolizing internet culture and meme history.",
+    "The fishing theme plays on the concept of \"phishing,\" a common term in crypto for fraudulent schemes.",
+    "The isolated island represents the solitude often associated with deep crypto dives."
+  ],
+  "visualSummary": "The card features a classic Pepe the Frog sitting on a small sandy island, fishing in the ocean. The color palette includes calming blues and greens with a touch of sandy beige, creating a serene and laid-back vibe. The artwork is cartoonish with clean lines, emphasizing a playful and light-hearted aesthetic.",
+  "visualSummaryShort": "The card depicts a cartoonish Pepe the Frog relaxing on a sandy island while fishing in the ocean. The calming color palette of blues and greens enhances the serene and playful atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "sandy island",
+    "fishing",
+    "ocean",
+    "blue palette",
+    "green palette",
+    "cartoonish",
+    "serene",
+    "light-hearted"
+  ],
+  "textKeywords": [
+    "gone",
+    "phishin"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "sandy island",
+    "fishing",
+    "ocean",
+    "blue palette",
+    "green palette",
+    "cartoonish",
+    "serene",
+    "light-hearted",
+    "gone",
+    "phishin"
+  ],
+  "embeddingInput": "GONEPHISHIN (Fake Rares) - Series 10 Card 42\nArtist: MIKEYCORTEZ\nSupply 49 Issued September 2022\nOn-card text: GONE PHISHIN'\nVisual summary: The card features a classic Pepe the Frog sitting on a small sandy island, fishing in the ocean. The color palette includes calming blues and greens with a touch of sandy beige, creating a serene and laid-back vibe. The artwork is cartoonish with clean lines, emphasizing a playful and light-hearted aesthetic.\nMemetic references: Pepe the Frog is a central meme figure, symbolizing internet culture and meme history.; The fishing theme plays on the concept of \"phishing,\" a common term in crypto for fraudulent schemes.; The isolated island represents the solitude often associated with deep crypto dives.",
+  "embeddingBlocks": [
+    {
+      "id": "GONEPHISHIN#text",
+      "label": "On-card text",
+      "text": "GONE PHISHIN'",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "GONEPHISHIN#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog is a central meme figure, symbolizing internet culture and meme history.\nThe fishing theme plays on the concept of \"phishing,\" a common term in crypto for fraudulent schemes.\nThe isolated island represents the solitude often associated with deep crypto dives.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "GONEPHISHIN#visual",
+      "label": "Visual summary",
+      "text": "The card features a classic Pepe the Frog sitting on a small sandy island, fishing in the ocean. The color palette includes calming blues and greens with a touch of sandy beige, creating a serene and laid-back vibe. The artwork is cartoonish with clean lines, emphasizing a playful and light-hearted aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "GONEPHISHIN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nGONE PHISHIN'\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a classic Pepe the Frog sitting on a small sandy island, fishing in the ocean. The color palette includes calming blues and greens with a touch of sandy beige, creating a serene and laid-back vibe. The artwork is cartoonish with clean lines, emphasizing a playful and light-hearted aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog is a central meme figure, symbolizing internet culture and meme history.\n- The fishing theme plays on the concept of \"phishing,\" a common term in crypto for fraudulent schemes.\n- The isolated island represents the solitude often associated with deep crypto dives.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.658Z",
+  "sourceFactVersion": 1
+}

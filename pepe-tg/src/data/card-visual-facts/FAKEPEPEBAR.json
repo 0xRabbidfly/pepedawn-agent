@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "asset": "FAKEPEPEBAR",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 7,
+  "artist": "Memeticx",
+  "supply": 99,
+  "issuance": "October 2023",
+  "textOnCard": [
+    "PEPE BAR. ENERGY BAR. SUSTAINED DANKNESS. CHOCOLATE FLIES. NET WT 4.20 OZ (69g)."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple of meme culture.",
+    "\"Sustained Dankness\" plays on the meme term \"dank\" for high-quality memes.",
+    "\"Chocolate Flies\" humorously references energy bar flavors while nodding to crypto lingo with \"flies.\""
+  ],
+  "visualSummary": "The card resembles a quirky energy bar package with a teal color scheme. It features Pepe the Frog in climbing gear scaling a cliff, set against a rugged mountain landscape. The design combines a playful outdoor adventure vibe with a classic snack bar aesthetic.",
+  "visualSummaryShort": "The card showcases a whimsical energy bar package with a teal color scheme. Pepe the Frog is depicted in climbing gear against a rugged mountain backdrop, creating a playful outdoor adventure theme.",
+  "visualKeywords": [
+    "teal",
+    "pepe the frog",
+    "climbing gear",
+    "mountain",
+    "rugged",
+    "energy bar",
+    "outdoor",
+    "playful",
+    "snack",
+    "adventure"
+  ],
+  "textKeywords": [
+    "bar",
+    "energy",
+    "sustained",
+    "dankness",
+    "chocolate",
+    "flies",
+    "net",
+    "69g"
+  ],
+  "keywords": [
+    "teal",
+    "pepe the frog",
+    "climbing gear",
+    "mountain",
+    "rugged",
+    "energy bar",
+    "outdoor",
+    "playful",
+    "snack",
+    "adventure",
+    "bar",
+    "energy",
+    "sustained",
+    "dankness",
+    "chocolate",
+    "flies",
+    "net",
+    "69g"
+  ],
+  "embeddingInput": "FAKEPEPEBAR (Fake Rares) - Series 17 Card 7\nArtist: Memeticx\nSupply 99 Issued October 2023\nOn-card text: PEPE BAR. ENERGY BAR. SUSTAINED DANKNESS. CHOCOLATE FLIES. NET WT 4.20 OZ (69g).\nVisual summary: The card resembles a quirky energy bar package with a teal color scheme. It features Pepe the Frog in climbing gear scaling a cliff, set against a rugged mountain landscape. The design combines a playful outdoor adventure vibe with a classic snack bar aesthetic.\nMemetic references: Pepe the Frog, a staple of meme culture.; \"Sustained Dankness\" plays on the meme term \"dank\" for high-quality memes.; \"Chocolate Flies\" humorously references energy bar flavors while nodding to crypto lingo with \"flies.\"",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEPEPEBAR#text",
+      "label": "On-card text",
+      "text": "PEPE BAR. ENERGY BAR. SUSTAINED DANKNESS. CHOCOLATE FLIES. NET WT 4.20 OZ (69g).",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEPEPEBAR#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple of meme culture.\n\"Sustained Dankness\" plays on the meme term \"dank\" for high-quality memes.\n\"Chocolate Flies\" humorously references energy bar flavors while nodding to crypto lingo with \"flies.\"",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEPEPEBAR#visual",
+      "label": "Visual summary",
+      "text": "The card resembles a quirky energy bar package with a teal color scheme. It features Pepe the Frog in climbing gear scaling a cliff, set against a rugged mountain landscape. The design combines a playful outdoor adventure vibe with a classic snack bar aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEPEPEBAR#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE BAR. ENERGY BAR. SUSTAINED DANKNESS. CHOCOLATE FLIES. NET WT 4.20 OZ (69g).\n\n🎨 **VISUAL BREAKDOWN:**\nThe card resembles a quirky energy bar package with a teal color scheme. It features Pepe the Frog in climbing gear scaling a cliff, set against a rugged mountain landscape. The design combines a playful outdoor adventure vibe with a classic snack bar aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple of meme culture.\n- \"Sustained Dankness\" plays on the meme term \"dank\" for high-quality memes.\n- \"Chocolate Flies\" humorously references energy bar flavors while nodding to crypto lingo with \"flies.\"",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.552Z",
+  "sourceFactVersion": 1
+}

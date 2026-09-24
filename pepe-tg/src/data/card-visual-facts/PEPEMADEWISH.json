@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "asset": "PEPEMADEWISH",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 29,
+  "artist": "Chaotic Crypto",
+  "supply": 50,
+  "issuance": "February 2024",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference with a twist in style.",
+    "Dandelions symbolize wishes, tying into the card name.",
+    "The peaceful and contemplative vibe connects to the introspective side of meme culture."
+  ],
+  "visualSummary": "This card features a green-faced figure reminiscent of Pepe, wearing a purple headscarf and a pink sweater over a white shirt. The character is surrounded by dandelions, with one held in their hand, set against a warm-toned, dreamy background. The style is clean and cartoonish, capturing a serene and thoughtful moment.",
+  "visualSummaryShort": "The card depicts a green-faced figure resembling Pepe, adorned in a purple headscarf and a pink sweater. Surrounded by dandelions in a warm-toned, dreamy background, it conveys a serene and thoughtful mood.",
+  "visualKeywords": [
+    "pepe",
+    "green face",
+    "purple headscarf",
+    "pink sweater",
+    "dandelions",
+    "dreamy background",
+    "cartoonish",
+    "serene",
+    "thoughtful"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "green face",
+    "purple headscarf",
+    "pink sweater",
+    "dandelions",
+    "dreamy background",
+    "cartoonish",
+    "serene",
+    "thoughtful"
+  ],
+  "embeddingInput": "PEPEMADEWISH (Fake Rares) - Series 17 Card 29\nArtist: Chaotic Crypto\nSupply 50 Issued February 2024\nOn-card text: none detected\nVisual summary: This card features a green-faced figure reminiscent of Pepe, wearing a purple headscarf and a pink sweater over a white shirt. The character is surrounded by dandelions, with one held in their hand, set against a warm-toned, dreamy background. The style is clean and cartoonish, capturing a serene and thoughtful moment.\nMemetic references: Classic Pepe the Frog reference with a twist in style.; Dandelions symbolize wishes, tying into the card name.; The peaceful and contemplative vibe connects to the introspective side of meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEMADEWISH#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference with a twist in style.\nDandelions symbolize wishes, tying into the card name.\nThe peaceful and contemplative vibe connects to the introspective side of meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEMADEWISH#visual",
+      "label": "Visual summary",
+      "text": "This card features a green-faced figure reminiscent of Pepe, wearing a purple headscarf and a pink sweater over a white shirt. The character is surrounded by dandelions, with one held in their hand, set against a warm-toned, dreamy background. The style is clean and cartoonish, capturing a serene and thoughtful moment.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEMADEWISH#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a green-faced figure reminiscent of Pepe, wearing a purple headscarf and a pink sweater over a white shirt. The character is surrounded by dandelions, with one held in their hand, set against a warm-toned, dreamy background. The style is clean and cartoonish, capturing a serene and thoughtful moment.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference with a twist in style.\n- Dandelions symbolize wishes, tying into the card name.\n- The peaceful and contemplative vibe connects to the introspective side of meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.922Z",
+  "sourceFactVersion": 1
+}

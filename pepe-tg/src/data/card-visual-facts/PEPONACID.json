@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "asset": "PEPONACID",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 16,
+  "artist": "Prateek Dhiman",
+  "supply": 30,
+  "issuance": "December 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as the central figure.",
+    "Psychedelic art style reminiscent of 60s and 70s counterculture.",
+    "Elements of surrealism with abstract, mirrored patterns."
+  ],
+  "visualSummary": "The card features a kaleidoscopic design with vibrant, psychedelic colors, dominated by a central image of Pepe the Frog with an exaggerated tongue. Surrounding Pepe are symmetrical, colorful patterns, including flowers and abstract shapes, creating a sense of visual overload. The color palette includes bright rainbow hues, giving the card a trippy, eye-catching appearance.",
+  "visualSummaryShort": "The card showcases a kaleidoscopic design with vibrant, psychedelic colors centered around Pepe the Frog. Surrounding him are symmetrical patterns and abstract shapes, creating a visually overwhelming effect.",
+  "visualKeywords": [
+    "kaleidoscopic",
+    "psychedelic",
+    "pepe the frog",
+    "symmetrical patterns",
+    "bright colors",
+    "rainbow",
+    "flowers",
+    "abstract shapes",
+    "visual overload"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "kaleidoscopic",
+    "psychedelic",
+    "pepe the frog",
+    "symmetrical patterns",
+    "bright colors",
+    "rainbow",
+    "flowers",
+    "abstract shapes",
+    "visual overload"
+  ],
+  "embeddingInput": "PEPONACID (Fake Rares) - Series 4 Card 16\nArtist: Prateek Dhiman\nSupply 30 Issued December 2021\nOn-card text: none detected\nVisual summary: The card features a kaleidoscopic design with vibrant, psychedelic colors, dominated by a central image of Pepe the Frog with an exaggerated tongue. Surrounding Pepe are symmetrical, colorful patterns, including flowers and abstract shapes, creating a sense of visual overload. The color palette includes bright rainbow hues, giving the card a trippy, eye-catching appearance.\nMemetic references: Pepe the Frog as the central figure.; Psychedelic art style reminiscent of 60s and 70s counterculture.; Elements of surrealism with abstract, mirrored patterns.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPONACID#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as the central figure.\nPsychedelic art style reminiscent of 60s and 70s counterculture.\nElements of surrealism with abstract, mirrored patterns.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPONACID#visual",
+      "label": "Visual summary",
+      "text": "The card features a kaleidoscopic design with vibrant, psychedelic colors, dominated by a central image of Pepe the Frog with an exaggerated tongue. Surrounding Pepe are symmetrical, colorful patterns, including flowers and abstract shapes, creating a sense of visual overload. The color palette includes bright rainbow hues, giving the card a trippy, eye-catching appearance.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPONACID#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a kaleidoscopic design with vibrant, psychedelic colors, dominated by a central image of Pepe the Frog with an exaggerated tongue. Surrounding Pepe are symmetrical, colorful patterns, including flowers and abstract shapes, creating a sense of visual overload. The color palette includes bright rainbow hues, giving the card a trippy, eye-catching appearance.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as the central figure.\n- Psychedelic art style reminiscent of 60s and 70s counterculture.\n- Elements of surrealism with abstract, mirrored patterns.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.021Z",
+  "sourceFactVersion": 1
+}

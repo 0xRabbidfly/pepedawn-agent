@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "asset": "PEPHONEHOME",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 15,
+  "artist": "Coit",
+  "supply": 57,
+  "issuance": "October 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as the central figure, a staple in meme culture.",
+    "UFO abduction reference, popular in both meme and pop culture.",
+    "Psychedelic art style reminiscent of 60s-70s retro vibes.",
+    "Cosmic and surreal elements, aligning with crypto's love for the bizarre."
+  ],
+  "visualSummary": "The card features a psychedelic scene with a UFO beaming up a Pepe character. The background is a swirl of vibrant colors like purples, blues, and greens, creating a trippy, surreal atmosphere. A large eye and a giant hand add to the otherworldly vibe, while a starburst pattern adds emphasis.",
+  "visualSummaryShort": "The card depicts a psychedelic scene with a UFO beaming up a Pepe character amidst vibrant swirling colors. The atmosphere is trippy and surreal, enhanced by a large eye and a giant hand.",
+  "visualKeywords": [
+    "ufo",
+    "pepe",
+    "psychedelic",
+    "vibrant colors",
+    "swirl",
+    "eye",
+    "hand",
+    "surreal",
+    "starburst",
+    "trippy"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "ufo",
+    "pepe",
+    "psychedelic",
+    "vibrant colors",
+    "swirl",
+    "eye",
+    "hand",
+    "surreal",
+    "starburst",
+    "trippy"
+  ],
+  "embeddingInput": "PEPHONEHOME (Fake Rares) - Series 3 Card 15\nArtist: Coit\nSupply 57 Issued October 2021\nOn-card text: none detected\nVisual summary: The card features a psychedelic scene with a UFO beaming up a Pepe character. The background is a swirl of vibrant colors like purples, blues, and greens, creating a trippy, surreal atmosphere. A large eye and a giant hand add to the otherworldly vibe, while a starburst pattern adds emphasis.\nMemetic references: Pepe the Frog as the central figure, a staple in meme culture.; UFO abduction reference, popular in both meme and pop culture.; Psychedelic art style reminiscent of 60s-70s retro vibes.; Cosmic and surreal elements, aligning with crypto's love for the bizarre.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPHONEHOME#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as the central figure, a staple in meme culture.\nUFO abduction reference, popular in both meme and pop culture.\nPsychedelic art style reminiscent of 60s-70s retro vibes.\nCosmic and surreal elements, aligning with crypto's love for the bizarre.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPHONEHOME#visual",
+      "label": "Visual summary",
+      "text": "The card features a psychedelic scene with a UFO beaming up a Pepe character. The background is a swirl of vibrant colors like purples, blues, and greens, creating a trippy, surreal atmosphere. A large eye and a giant hand add to the otherworldly vibe, while a starburst pattern adds emphasis.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPHONEHOME#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a psychedelic scene with a UFO beaming up a Pepe character. The background is a swirl of vibrant colors like purples, blues, and greens, creating a trippy, surreal atmosphere. A large eye and a giant hand add to the otherworldly vibe, while a starburst pattern adds emphasis.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as the central figure, a staple in meme culture.\n- UFO abduction reference, popular in both meme and pop culture.\n- Psychedelic art style reminiscent of 60s-70s retro vibes.\n- Cosmic and surreal elements, aligning with crypto's love for the bizarre.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.018Z",
+  "sourceFactVersion": 1
+}

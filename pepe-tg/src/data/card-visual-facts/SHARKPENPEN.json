@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "SHARKPENPEN",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 15,
+  "artist": "Tomopen",
+  "supply": 50,
+  "issuance": "October 2022",
+  "textOnCard": [
+    "Shark PEPE"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog character, an iconic meme figure.",
+    "Shark fin referencing \"shark in the water\" meme themes.",
+    "Inflatable ring suggests a humorous take on survival or unpreparedness."
+  ],
+  "visualSummary": "The card features a cartoonish scene with Pepe the Frog swimming in an ocean, wearing a yellow inflatable ring. A small island with a lighthouse and a red sailboat is visible in the background, while a shark fin ominously approaches. The color palette is bright and vibrant, dominated by blues and greens, with a playful, comic-style art approach.",
+  "visualSummaryShort": "The card depicts a cartoonish Pepe the Frog swimming in a vibrant ocean scene. A shark fin approaches ominously, while a small island and a red sailboat are visible in the background.",
+  "visualKeywords": [
+    "pepe",
+    "ocean",
+    "shark fin",
+    "island",
+    "lighthouse",
+    "sailboat",
+    "yellow ring",
+    "bright colors",
+    "comic style",
+    "playful"
+  ],
+  "textKeywords": [
+    "shark"
+  ],
+  "keywords": [
+    "pepe",
+    "ocean",
+    "shark fin",
+    "island",
+    "lighthouse",
+    "sailboat",
+    "yellow ring",
+    "bright colors",
+    "comic style",
+    "playful",
+    "shark"
+  ],
+  "embeddingInput": "SHARKPENPEN (Fake Rares) - Series 12 Card 15\nArtist: Tomopen\nSupply 50 Issued October 2022\nOn-card text: Shark PEPE\nVisual summary: The card features a cartoonish scene with Pepe the Frog swimming in an ocean, wearing a yellow inflatable ring. A small island with a lighthouse and a red sailboat is visible in the background, while a shark fin ominously approaches. The color palette is bright and vibrant, dominated by blues and greens, with a playful, comic-style art approach.\nMemetic references: Classic Pepe the Frog character, an iconic meme figure.; Shark fin referencing \"shark in the water\" meme themes.; Inflatable ring suggests a humorous take on survival or unpreparedness.",
+  "embeddingBlocks": [
+    {
+      "id": "SHARKPENPEN#text",
+      "label": "On-card text",
+      "text": "Shark PEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "SHARKPENPEN#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog character, an iconic meme figure.\nShark fin referencing \"shark in the water\" meme themes.\nInflatable ring suggests a humorous take on survival or unpreparedness.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SHARKPENPEN#visual",
+      "label": "Visual summary",
+      "text": "The card features a cartoonish scene with Pepe the Frog swimming in an ocean, wearing a yellow inflatable ring. A small island with a lighthouse and a red sailboat is visible in the background, while a shark fin ominously approaches. The color palette is bright and vibrant, dominated by blues and greens, with a playful, comic-style art approach.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SHARKPENPEN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nShark PEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a cartoonish scene with Pepe the Frog swimming in an ocean, wearing a yellow inflatable ring. A small island with a lighthouse and a red sailboat is visible in the background, while a shark fin ominously approaches. The color palette is bright and vibrant, dominated by blues and greens, with a playful, comic-style art approach.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog character, an iconic meme figure.\n- Shark fin referencing \"shark in the water\" meme themes.\n- Inflatable ring suggests a humorous take on survival or unpreparedness.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.106Z",
+  "sourceFactVersion": 1
+}

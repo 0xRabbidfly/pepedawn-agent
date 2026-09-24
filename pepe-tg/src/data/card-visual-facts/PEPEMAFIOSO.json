@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "PEPEMAFIOSO",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 3,
+  "artist": "Rodro",
+  "supply": 37,
+  "issuance": "January 2023",
+  "textOnCard": [
+    "PEPEMAFIOSO"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in mobster attire, blending meme culture with classic mafia themes.",
+    "References to noir films with the dramatic lighting and shadowy cityscape.",
+    "Crypto culture symbolized by the letter exchange, hinting at clandestine transactions."
+  ],
+  "visualSummary": "The card showcases a noir-style scene with a dark, moody atmosphere. A Pepe character dressed in a classic mobster suit and hat holds a letter while a person kneels before him under a full moon, with a city skyline in the background. The color palette is dominated by deep blues and grays, creating a dramatic and suspenseful vibe.",
+  "visualSummaryShort": "The card features a noir-style scene with a Pepe character in a mobster suit under a full moon. The dark color palette of deep blues and grays enhances the dramatic atmosphere.",
+  "visualKeywords": [
+    "noir",
+    "mobster",
+    "moon",
+    "city skyline",
+    "dark",
+    "blue palette",
+    "suspenseful",
+    "letter",
+    "kneeling",
+    "atmosphere"
+  ],
+  "textKeywords": [
+    "pepemafioso"
+  ],
+  "keywords": [
+    "noir",
+    "mobster",
+    "moon",
+    "city skyline",
+    "dark",
+    "blue palette",
+    "suspenseful",
+    "letter",
+    "kneeling",
+    "atmosphere",
+    "pepemafioso"
+  ],
+  "embeddingInput": "PEPEMAFIOSO (Fake Rares) - Series 13 Card 3\nArtist: Rodro\nSupply 37 Issued January 2023\nOn-card text: PEPEMAFIOSO\nVisual summary: The card showcases a noir-style scene with a dark, moody atmosphere. A Pepe character dressed in a classic mobster suit and hat holds a letter while a person kneels before him under a full moon, with a city skyline in the background. The color palette is dominated by deep blues and grays, creating a dramatic and suspenseful vibe.\nMemetic references: Pepe the Frog in mobster attire, blending meme culture with classic mafia themes.; References to noir films with the dramatic lighting and shadowy cityscape.; Crypto culture symbolized by the letter exchange, hinting at clandestine transactions.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEMAFIOSO#text",
+      "label": "On-card text",
+      "text": "PEPEMAFIOSO",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEMAFIOSO#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in mobster attire, blending meme culture with classic mafia themes.\nReferences to noir films with the dramatic lighting and shadowy cityscape.\nCrypto culture symbolized by the letter exchange, hinting at clandestine transactions.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEMAFIOSO#visual",
+      "label": "Visual summary",
+      "text": "The card showcases a noir-style scene with a dark, moody atmosphere. A Pepe character dressed in a classic mobster suit and hat holds a letter while a person kneels before him under a full moon, with a city skyline in the background. The color palette is dominated by deep blues and grays, creating a dramatic and suspenseful vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEMAFIOSO#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPEMAFIOSO\n\n🎨 **VISUAL BREAKDOWN:**\nThe card showcases a noir-style scene with a dark, moody atmosphere. A Pepe character dressed in a classic mobster suit and hat holds a letter while a person kneels before him under a full moon, with a city skyline in the background. The color palette is dominated by deep blues and grays, creating a dramatic and suspenseful vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in mobster attire, blending meme culture with classic mafia themes.\n- References to noir films with the dramatic lighting and shadowy cityscape.\n- Crypto culture symbolized by the letter exchange, hinting at clandestine transactions.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.923Z",
+  "sourceFactVersion": 1
+}

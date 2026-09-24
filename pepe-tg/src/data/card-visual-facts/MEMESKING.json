@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "asset": "MEMESKING",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 28,
+  "artist": "PiFu",
+  "supply": 69,
+  "issuance": "February 2024",
+  "textOnCard": [
+    "KING OF MEMES"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as the central figure, a staple in meme culture.",
+    "The \"King of Memes\" title nodding to his legendary status.",
+    "Anthropomorphic audience resembling characters from animated series, adding a meta layer of pop culture."
+  ],
+  "visualSummary": "The card features a gallery setting with anthropomorphic animals and a human viewing a framed portrait of Pepe the Frog dressed in a tuxedo, holding a drink. The color palette is muted with soft pastels and earth tones, creating a sophisticated yet quirky atmosphere. The style is cartoonish, reminiscent of classic animated shows, with clean lines and simple shading.",
+  "visualSummaryShort": "The card depicts a gallery scene with anthropomorphic animals and a human admiring a portrait of Pepe the Frog in a tuxedo. The muted color palette and cartoonish style create a quirky yet sophisticated atmosphere.",
+  "visualKeywords": [
+    "gallery",
+    "animals",
+    "human",
+    "pepe the frog",
+    "tuxedo",
+    "drink",
+    "pastels",
+    "earth tones",
+    "cartoonish",
+    "portrait"
+  ],
+  "textKeywords": [
+    "king",
+    "memes"
+  ],
+  "keywords": [
+    "gallery",
+    "animals",
+    "human",
+    "pepe the frog",
+    "tuxedo",
+    "drink",
+    "pastels",
+    "earth tones",
+    "cartoonish",
+    "portrait",
+    "king",
+    "memes"
+  ],
+  "embeddingInput": "MEMESKING (Fake Rares) - Series 17 Card 28\nArtist: PiFu\nSupply 69 Issued February 2024\nOn-card text: KING OF MEMES\nVisual summary: The card features a gallery setting with anthropomorphic animals and a human viewing a framed portrait of Pepe the Frog dressed in a tuxedo, holding a drink. The color palette is muted with soft pastels and earth tones, creating a sophisticated yet quirky atmosphere. The style is cartoonish, reminiscent of classic animated shows, with clean lines and simple shading.\nMemetic references: Pepe the Frog as the central figure, a staple in meme culture.; The \"King of Memes\" title nodding to his legendary status.; Anthropomorphic audience resembling characters from animated series, adding a meta layer of pop culture.",
+  "embeddingBlocks": [
+    {
+      "id": "MEMESKING#text",
+      "label": "On-card text",
+      "text": "KING OF MEMES",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MEMESKING#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as the central figure, a staple in meme culture.\nThe \"King of Memes\" title nodding to his legendary status.\nAnthropomorphic audience resembling characters from animated series, adding a meta layer of pop culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MEMESKING#visual",
+      "label": "Visual summary",
+      "text": "The card features a gallery setting with anthropomorphic animals and a human viewing a framed portrait of Pepe the Frog dressed in a tuxedo, holding a drink. The color palette is muted with soft pastels and earth tones, creating a sophisticated yet quirky atmosphere. The style is cartoonish, reminiscent of classic animated shows, with clean lines and simple shading.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MEMESKING#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nKING OF MEMES\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a gallery setting with anthropomorphic animals and a human viewing a framed portrait of Pepe the Frog dressed in a tuxedo, holding a drink. The color palette is muted with soft pastels and earth tones, creating a sophisticated yet quirky atmosphere. The style is cartoonish, reminiscent of classic animated shows, with clean lines and simple shading.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as the central figure, a staple in meme culture.\n- The \"King of Memes\" title nodding to his legendary status.\n- Anthropomorphic audience resembling characters from animated series, adding a meta layer of pop culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.767Z",
+  "sourceFactVersion": 1
+}

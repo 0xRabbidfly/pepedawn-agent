@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "asset": "LILPEPA",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 44,
+  "artist": "mera.ki",
+  "supply": 117,
+  "issuance": "December 2021",
+  "textOnCard": [
+    "LILPEPA"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog homage with a luxury twist.",
+    "Reference to high-end fashion and designer logos.",
+    "Playful nod to celebrity culture and meme fusion."
+  ],
+  "visualSummary": "The card features a green-skinned figure with a striking resemblance to a fashion icon, adorned with a pattern reminiscent of a luxury brand logo. The background is a soft gradient of warm tones, highlighting the central figure. The artistic style is bold and smooth, combining pop art with elements of high fashion.",
+  "visualSummaryShort": "The card showcases a green-skinned figure resembling a fashion icon, set against a warm gradient background. The design blends pop art with high fashion elements, emphasizing bold and smooth artistry.",
+  "visualKeywords": [
+    "green figure",
+    "fashion icon",
+    "luxury pattern",
+    "warm gradient",
+    "pop art",
+    "high fashion",
+    "bold style"
+  ],
+  "textKeywords": [
+    "lilpepa"
+  ],
+  "keywords": [
+    "green figure",
+    "fashion icon",
+    "luxury pattern",
+    "warm gradient",
+    "pop art",
+    "high fashion",
+    "bold style",
+    "lilpepa"
+  ],
+  "embeddingInput": "LILPEPA (Fake Rares) - Series 4 Card 44\nArtist: mera.ki\nSupply 117 Issued December 2021\nOn-card text: LILPEPA\nVisual summary: The card features a green-skinned figure with a striking resemblance to a fashion icon, adorned with a pattern reminiscent of a luxury brand logo. The background is a soft gradient of warm tones, highlighting the central figure. The artistic style is bold and smooth, combining pop art with elements of high fashion.\nMemetic references: Pepe the Frog homage with a luxury twist.; Reference to high-end fashion and designer logos.; Playful nod to celebrity culture and meme fusion.",
+  "embeddingBlocks": [
+    {
+      "id": "LILPEPA#text",
+      "label": "On-card text",
+      "text": "LILPEPA",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "LILPEPA#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog homage with a luxury twist.\nReference to high-end fashion and designer logos.\nPlayful nod to celebrity culture and meme fusion.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LILPEPA#visual",
+      "label": "Visual summary",
+      "text": "The card features a green-skinned figure with a striking resemblance to a fashion icon, adorned with a pattern reminiscent of a luxury brand logo. The background is a soft gradient of warm tones, highlighting the central figure. The artistic style is bold and smooth, combining pop art with elements of high fashion.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LILPEPA#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nLILPEPA\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a green-skinned figure with a striking resemblance to a fashion icon, adorned with a pattern reminiscent of a luxury brand logo. The background is a soft gradient of warm tones, highlighting the central figure. The artistic style is bold and smooth, combining pop art with elements of high fashion.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog homage with a luxury twist.\n- Reference to high-end fashion and designer logos.\n- Playful nod to celebrity culture and meme fusion.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.746Z",
+  "sourceFactVersion": 1
+}

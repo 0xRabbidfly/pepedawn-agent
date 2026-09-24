@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "asset": "PEPEYOUNGCHP",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 12,
+  "artist": "Mr Hansel",
+  "supply": 100,
+  "issuance": "May 2022",
+  "textOnCard": [
+    "HOW DO YOU DO, FELLOW FROGLETS?",
+    "BAD MEME"
+  ],
+  "memeticReferences": [
+    "References the \"How do you do, fellow kids?\" meme.",
+    "Incorporates Pepe the Frog with a twist on hipster",
+    "skater culture.",
+    "Plays with the concept of being \"out of touch\" in a humorous way.",
+    "Skateboard culture elements."
+  ],
+  "visualSummary": "This card features a frog character dressed like a skater with a red cap, glasses, and a mustache, exuding a playful and youthful vibe. The background is a muted cream, allowing the character to pop with its vibrant colors. The skateboard he holds displays a colorful cartoon graphic, adding to the dynamic and lively composition.",
+  "visualSummaryShort": "The card showcases a playful frog character dressed as a skater, complete with a red cap and glasses. The vibrant colors of the character contrast against a muted cream background, enhancing the lively atmosphere.",
+  "visualKeywords": [
+    "frog",
+    "skater",
+    "red cap",
+    "glasses",
+    "mustache",
+    "skateboard",
+    "cartoon graphic",
+    "cream background",
+    "playful",
+    "vibrant colors"
+  ],
+  "textKeywords": [
+    "how",
+    "you",
+    "fellow",
+    "froglets",
+    "bad",
+    "meme"
+  ],
+  "keywords": [
+    "frog",
+    "skater",
+    "red cap",
+    "glasses",
+    "mustache",
+    "skateboard",
+    "cartoon graphic",
+    "cream background",
+    "playful",
+    "vibrant colors",
+    "how",
+    "you",
+    "fellow",
+    "froglets",
+    "bad",
+    "meme"
+  ],
+  "embeddingInput": "PEPEYOUNGCHP (Fake Rares) - Series 8 Card 12\nArtist: Mr Hansel\nSupply 100 Issued May 2022\nOn-card text: HOW DO YOU DO, FELLOW FROGLETS? | BAD MEME\nVisual summary: This card features a frog character dressed like a skater with a red cap, glasses, and a mustache, exuding a playful and youthful vibe. The background is a muted cream, allowing the character to pop with its vibrant colors. The skateboard he holds displays a colorful cartoon graphic, adding to the dynamic and lively composition.\nMemetic references: References the \"How do you do, fellow kids?\" meme.; Incorporates Pepe the Frog with a twist on hipster; skater culture.; Plays with the concept of being \"out of touch\" in a humorous way.; Skateboard culture elements.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEYOUNGCHP#text",
+      "label": "On-card text",
+      "text": "HOW DO YOU DO, FELLOW FROGLETS? | BAD MEME",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEYOUNGCHP#memetic",
+      "label": "Memetic references",
+      "text": "References the \"How do you do, fellow kids?\" meme.\nIncorporates Pepe the Frog with a twist on hipster\nskater culture.\nPlays with the concept of being \"out of touch\" in a humorous way.\nSkateboard culture elements.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEYOUNGCHP#visual",
+      "label": "Visual summary",
+      "text": "This card features a frog character dressed like a skater with a red cap, glasses, and a mustache, exuding a playful and youthful vibe. The background is a muted cream, allowing the character to pop with its vibrant colors. The skateboard he holds displays a colorful cartoon graphic, adding to the dynamic and lively composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEYOUNGCHP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nHOW DO YOU DO, FELLOW FROGLETS?  \nBAD MEME\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a frog character dressed like a skater with a red cap, glasses, and a mustache, exuding a playful and youthful vibe. The background is a muted cream, allowing the character to pop with its vibrant colors. The skateboard he holds displays a colorful cartoon graphic, adding to the dynamic and lively composition.\n\n🧬 **MEMETIC DNA:**\n- References the \"How do you do, fellow kids?\" meme.\n- Incorporates Pepe the Frog with a twist on hipster/skater culture.\n- Plays with the concept of being \"out of touch\" in a humorous way.\n- Skateboard culture elements.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.016Z",
+  "sourceFactVersion": 1
+}

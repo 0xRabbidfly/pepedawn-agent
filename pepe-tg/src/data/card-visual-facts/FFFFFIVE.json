@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "asset": "FFFFFIVE",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 40,
+  "artist": "LOVEBEING",
+  "supply": 93,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "FFFFFIVE",
+    "80",
+    "U CAN RUN..."
+  ],
+  "memeticReferences": [
+    "References the classic \"U CAN RUN...\" meme, suggesting an ominous chase.",
+    "Cyberpunk aesthetic with a glitchy digital backdrop.",
+    "Echoes of horror and thriller genres, reminiscent of iconic villains."
+  ],
+  "visualSummary": "The card features a dark, menacing figure with glowing eyes and a skeletal hand reaching out, all rendered in a neon blue and green color scheme. The background is filled with digital static, giving it a glitchy, cyberpunk vibe. The overall style is intense and gritty, combining elements of horror and digital art.",
+  "visualSummaryShort": "The card showcases a dark figure with glowing eyes and a skeletal hand, set against a backdrop of digital static. Its neon blue and green color scheme enhances the cyberpunk and horror aesthetic.",
+  "visualKeywords": [
+    "dark figure",
+    "glowing eyes",
+    "skeletal hand",
+    "neon colors",
+    "digital static",
+    "cyberpunk",
+    "horror",
+    "glitchy",
+    "intense",
+    "gritty"
+  ],
+  "textKeywords": [
+    "fffffive",
+    "can",
+    "run"
+  ],
+  "keywords": [
+    "dark figure",
+    "glowing eyes",
+    "skeletal hand",
+    "neon colors",
+    "digital static",
+    "cyberpunk",
+    "horror",
+    "glitchy",
+    "intense",
+    "gritty",
+    "fffffive",
+    "can",
+    "run"
+  ],
+  "embeddingInput": "FFFFFIVE (Fake Rares) - Series 6 Card 40\nArtist: LOVEBEING\nSupply 93 Issued March 2022\nOn-card text: FFFFFIVE | 80 | U CAN RUN...\nVisual summary: The card features a dark, menacing figure with glowing eyes and a skeletal hand reaching out, all rendered in a neon blue and green color scheme. The background is filled with digital static, giving it a glitchy, cyberpunk vibe. The overall style is intense and gritty, combining elements of horror and digital art.\nMemetic references: References the classic \"U CAN RUN...\" meme, suggesting an ominous chase.; Cyberpunk aesthetic with a glitchy digital backdrop.; Echoes of horror and thriller genres, reminiscent of iconic villains.",
+  "embeddingBlocks": [
+    {
+      "id": "FFFFFIVE#text",
+      "label": "On-card text",
+      "text": "FFFFFIVE | 80 | U CAN RUN...",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FFFFFIVE#memetic",
+      "label": "Memetic references",
+      "text": "References the classic \"U CAN RUN...\" meme, suggesting an ominous chase.\nCyberpunk aesthetic with a glitchy digital backdrop.\nEchoes of horror and thriller genres, reminiscent of iconic villains.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FFFFFIVE#visual",
+      "label": "Visual summary",
+      "text": "The card features a dark, menacing figure with glowing eyes and a skeletal hand reaching out, all rendered in a neon blue and green color scheme. The background is filled with digital static, giving it a glitchy, cyberpunk vibe. The overall style is intense and gritty, combining elements of horror and digital art.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FFFFFIVE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFFFFFIVE / 80  \nU CAN RUN...\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a dark, menacing figure with glowing eyes and a skeletal hand reaching out, all rendered in a neon blue and green color scheme. The background is filled with digital static, giving it a glitchy, cyberpunk vibe. The overall style is intense and gritty, combining elements of horror and digital art.\n\n🧬 **MEMETIC DNA:**\n- References the classic \"U CAN RUN...\" meme, suggesting an ominous chase.\n- Cyberpunk aesthetic with a glitchy digital backdrop.\n- Echoes of horror and thriller genres, reminiscent of iconic villains.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.613Z",
+  "sourceFactVersion": 1
+}

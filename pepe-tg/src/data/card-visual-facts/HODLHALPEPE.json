@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "HODLHALPEPE",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 18,
+  "artist": "Mr. HODLPIG",
+  "supply": 134,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "Pepe John"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference with the green-skinned character.",
+    "Crypto culture nod with the digital screen showing code.",
+    "\"Pepe John\" sticker plays on familiar brand themes, adding humor."
+  ],
+  "visualSummary": "The card features a green-skinned character at a desk, focused on a digital screen filled with a code-like interface. Behind him, a casually dressed person with a purple creature on their lap sits on a couch. The room has warm, muted colors with a fridge in the background displaying stickers, including one that reads \"Pepe John.\"",
+  "visualSummaryShort": "The card depicts a green-skinned character at a desk, intently looking at a digital screen. A casually dressed person with a purple creature is seated on a couch in a warmly colored room filled with stickers.",
+  "visualKeywords": [
+    "green-skinned",
+    "desk",
+    "digital screen",
+    "purple creature",
+    "couch",
+    "warm colors",
+    "stickers",
+    "fridge"
+  ],
+  "textKeywords": [
+    "john"
+  ],
+  "keywords": [
+    "green-skinned",
+    "desk",
+    "digital screen",
+    "purple creature",
+    "couch",
+    "warm colors",
+    "stickers",
+    "fridge",
+    "john"
+  ],
+  "embeddingInput": "HODLHALPEPE (Fake Rares) - Series 2 Card 18\nArtist: Mr. HODLPIG\nSupply 134 Issued October 2021\nOn-card text: Pepe John\nVisual summary: The card features a green-skinned character at a desk, focused on a digital screen filled with a code-like interface. Behind him, a casually dressed person with a purple creature on their lap sits on a couch. The room has warm, muted colors with a fridge in the background displaying stickers, including one that reads \"Pepe John.\"\nMemetic references: Pepe the Frog reference with the green-skinned character.; Crypto culture nod with the digital screen showing code.; \"Pepe John\" sticker plays on familiar brand themes, adding humor.",
+  "embeddingBlocks": [
+    {
+      "id": "HODLHALPEPE#text",
+      "label": "On-card text",
+      "text": "Pepe John",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "HODLHALPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference with the green-skinned character.\nCrypto culture nod with the digital screen showing code.\n\"Pepe John\" sticker plays on familiar brand themes, adding humor.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "HODLHALPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a green-skinned character at a desk, focused on a digital screen filled with a code-like interface. Behind him, a casually dressed person with a purple creature on their lap sits on a couch. The room has warm, muted colors with a fridge in the background displaying stickers, including one that reads \"Pepe John.\"",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "HODLHALPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPepe John\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a green-skinned character at a desk, focused on a digital screen filled with a code-like interface. Behind him, a casually dressed person with a purple creature on their lap sits on a couch. The room has warm, muted colors with a fridge in the background displaying stickers, including one that reads \"Pepe John.\"\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference with the green-skinned character.\n- Crypto culture nod with the digital screen showing code.\n- \"Pepe John\" sticker plays on familiar brand themes, adding humor.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.687Z",
+  "sourceFactVersion": 1
+}

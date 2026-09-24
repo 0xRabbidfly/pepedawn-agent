@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "PEPEIFFEL",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 12,
+  "artist": "Coit",
+  "supply": 83,
+  "issuance": "January 2022",
+  "textOnCard": [
+    "65"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog meme reference.",
+    "Psychedelic art style reminiscent of counterculture visuals.",
+    "Eiffel Tower symbolizes a cultural landmark, adding a surreal twist.",
+    "Third-eye motif and alien-like figures suggest conspiracy or cosmic themes."
+  ],
+  "visualSummary": "The card features a melancholic Pepe the Frog sitting at a table, wearing a red jersey with the number 65. The background is a psychedelic Parisian scene with a pink and purple Eiffel Tower, surrounded by surreal, dream-like clouds and peculiar creatures. The color palette is vibrant and trippy, with neon hues dominating the artwork.",
+  "visualSummaryShort": "The card depicts a melancholic Pepe the Frog in a vibrant, psychedelic Parisian setting. The background features a surreal Eiffel Tower and dream-like clouds, creating a trippy atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "eiffel tower",
+    "psychedelic",
+    "pink",
+    "purple",
+    "neon",
+    "surreal",
+    "clouds",
+    "table",
+    "jersey"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "eiffel tower",
+    "psychedelic",
+    "pink",
+    "purple",
+    "neon",
+    "surreal",
+    "clouds",
+    "table",
+    "jersey"
+  ],
+  "embeddingInput": "PEPEIFFEL (Fake Rares) - Series 5 Card 12\nArtist: Coit\nSupply 83 Issued January 2022\nOn-card text: 65\nVisual summary: The card features a melancholic Pepe the Frog sitting at a table, wearing a red jersey with the number 65. The background is a psychedelic Parisian scene with a pink and purple Eiffel Tower, surrounded by surreal, dream-like clouds and peculiar creatures. The color palette is vibrant and trippy, with neon hues dominating the artwork.\nMemetic references: Classic Pepe the Frog meme reference.; Psychedelic art style reminiscent of counterculture visuals.; Eiffel Tower symbolizes a cultural landmark, adding a surreal twist.; Third-eye motif and alien-like figures suggest conspiracy or cosmic themes.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEIFFEL#text",
+      "label": "On-card text",
+      "text": "65",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEIFFEL#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog meme reference.\nPsychedelic art style reminiscent of counterculture visuals.\nEiffel Tower symbolizes a cultural landmark, adding a surreal twist.\nThird-eye motif and alien-like figures suggest conspiracy or cosmic themes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEIFFEL#visual",
+      "label": "Visual summary",
+      "text": "The card features a melancholic Pepe the Frog sitting at a table, wearing a red jersey with the number 65. The background is a psychedelic Parisian scene with a pink and purple Eiffel Tower, surrounded by surreal, dream-like clouds and peculiar creatures. The color palette is vibrant and trippy, with neon hues dominating the artwork.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEIFFEL#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n65\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a melancholic Pepe the Frog sitting at a table, wearing a red jersey with the number 65. The background is a psychedelic Parisian scene with a pink and purple Eiffel Tower, surrounded by surreal, dream-like clouds and peculiar creatures. The color palette is vibrant and trippy, with neon hues dominating the artwork.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog meme reference.\n- Psychedelic art style reminiscent of counterculture visuals.\n- Eiffel Tower symbolizes a cultural landmark, adding a surreal twist.\n- Third-eye motif and alien-like figures suggest conspiracy or cosmic themes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.895Z",
+  "sourceFactVersion": 1
+}

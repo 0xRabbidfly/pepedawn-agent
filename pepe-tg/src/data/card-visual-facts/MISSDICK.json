@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "asset": "MISSDICK",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 5,
+  "artist": "Isaac O",
+  "supply": 21,
+  "issuance": "June 2023",
+  "textOnCard": [
+    "ISACC '23"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference with a surreal twist.",
+    "Crypto-art influences in the abstract portrayal.",
+    "Possible nods to Picasso's cubism with the fragmented style."
+  ],
+  "visualSummary": "This card features a bold, abstract composition with a dominant green figure resembling a side profile. The color palette is vibrant, incorporating rich greens, yellows, reds, and blues. The style is reminiscent of expressionist art with thick textures and dynamic lines, giving the piece a lively and chaotic feel.",
+  "visualSummaryShort": "The card showcases a vibrant abstract composition centered around a green figure in profile. Its expressionist style features dynamic lines and a rich color palette of greens, yellows, reds, and blues.",
+  "visualKeywords": [
+    "abstract",
+    "green figure",
+    "expressionist",
+    "dynamic lines",
+    "vibrant colors",
+    "chaotic",
+    "thick textures"
+  ],
+  "textKeywords": [
+    "isacc"
+  ],
+  "keywords": [
+    "abstract",
+    "green figure",
+    "expressionist",
+    "dynamic lines",
+    "vibrant colors",
+    "chaotic",
+    "thick textures",
+    "isacc"
+  ],
+  "embeddingInput": "MISSDICK (Fake Rares) - Series 16 Card 5\nArtist: Isaac O\nSupply 21 Issued June 2023\nOn-card text: ISACC '23\nVisual summary: This card features a bold, abstract composition with a dominant green figure resembling a side profile. The color palette is vibrant, incorporating rich greens, yellows, reds, and blues. The style is reminiscent of expressionist art with thick textures and dynamic lines, giving the piece a lively and chaotic feel.\nMemetic references: Pepe the Frog reference with a surreal twist.; Crypto-art influences in the abstract portrayal.; Possible nods to Picasso's cubism with the fragmented style.",
+  "embeddingBlocks": [
+    {
+      "id": "MISSDICK#text",
+      "label": "On-card text",
+      "text": "ISACC '23",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MISSDICK#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference with a surreal twist.\nCrypto-art influences in the abstract portrayal.\nPossible nods to Picasso's cubism with the fragmented style.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MISSDICK#visual",
+      "label": "Visual summary",
+      "text": "This card features a bold, abstract composition with a dominant green figure resembling a side profile. The color palette is vibrant, incorporating rich greens, yellows, reds, and blues. The style is reminiscent of expressionist art with thick textures and dynamic lines, giving the piece a lively and chaotic feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MISSDICK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nISACC '23\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a bold, abstract composition with a dominant green figure resembling a side profile. The color palette is vibrant, incorporating rich greens, yellows, reds, and blues. The style is reminiscent of expressionist art with thick textures and dynamic lines, giving the piece a lively and chaotic feel.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference with a surreal twist.\n- Crypto-art influences in the abstract portrayal.\n- Possible nods to Picasso's cubism with the fragmented style.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.774Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PEPEANDLILY",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 30,
+  "artist": "Chris Storm",
+  "supply": 121,
+  "issuance": "October 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog aesthetic with a romantic twist.",
+    "Reference to Claude Monet's Water Lilies, blending fine art with meme culture.",
+    "Anthropomorphic frogs nod to internet meme culture and NFT artistry."
+  ],
+  "visualSummary": "The card features two anthropomorphic frogs, dressed in vintage attire, sitting on a swing. They are suspended over a pond filled with water lilies, reminiscent of Monet's iconic style. The color palette is rich with blues, greens, and pinks, capturing an impressionistic essence with a playful twist.",
+  "visualSummaryShort": "The card depicts two anthropomorphic frogs in vintage clothing on a swing above a pond with water lilies. The rich color palette of blues, greens, and pinks creates an impressionistic and playful atmosphere.",
+  "visualKeywords": [
+    "frogs",
+    "swing",
+    "pond",
+    "water lilies",
+    "vintage attire",
+    "blue palette",
+    "green palette",
+    "pink accents",
+    "impressionistic",
+    "playful"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "frogs",
+    "swing",
+    "pond",
+    "water lilies",
+    "vintage attire",
+    "blue palette",
+    "green palette",
+    "pink accents",
+    "impressionistic",
+    "playful"
+  ],
+  "embeddingInput": "PEPEANDLILY (Fake Rares) - Series 1 Card 30\nArtist: Chris Storm\nSupply 121 Issued October 2021\nOn-card text: none detected\nVisual summary: The card features two anthropomorphic frogs, dressed in vintage attire, sitting on a swing. They are suspended over a pond filled with water lilies, reminiscent of Monet's iconic style. The color palette is rich with blues, greens, and pinks, capturing an impressionistic essence with a playful twist.\nMemetic references: Classic Pepe the Frog aesthetic with a romantic twist.; Reference to Claude Monet's Water Lilies, blending fine art with meme culture.; Anthropomorphic frogs nod to internet meme culture and NFT artistry.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEANDLILY#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog aesthetic with a romantic twist.\nReference to Claude Monet's Water Lilies, blending fine art with meme culture.\nAnthropomorphic frogs nod to internet meme culture and NFT artistry.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEANDLILY#visual",
+      "label": "Visual summary",
+      "text": "The card features two anthropomorphic frogs, dressed in vintage attire, sitting on a swing. They are suspended over a pond filled with water lilies, reminiscent of Monet's iconic style. The color palette is rich with blues, greens, and pinks, capturing an impressionistic essence with a playful twist.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEANDLILY#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features two anthropomorphic frogs, dressed in vintage attire, sitting on a swing. They are suspended over a pond filled with water lilies, reminiscent of Monet's iconic style. The color palette is rich with blues, greens, and pinks, capturing an impressionistic essence with a playful twist.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog aesthetic with a romantic twist.\n- Reference to Claude Monet's Water Lilies, blending fine art with meme culture.\n- Anthropomorphic frogs nod to internet meme culture and NFT artistry.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.838Z",
+  "sourceFactVersion": 1
+}

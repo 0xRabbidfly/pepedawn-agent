@@ -41,8 +41,11 @@ type CLIOptions = {
   mergedDir: string;
 };
 
-const DEFAULT_SOURCE = path.resolve(__dirname, '../tmp/fv-merged');
-const DEFAULT_MERGED_DIR = path.resolve(__dirname, '../tmp/fv-merged');
+// The committed facts (src/utils/cardVisualFacts.ts) are the source of truth
+// now; the bot imports them itself at boot. This stays as the by-hand tool
+// for a stopped bot, and writes the same ids.
+const DEFAULT_SOURCE = path.resolve(__dirname, '../src/data/card-visual-facts');
+const DEFAULT_MERGED_DIR = DEFAULT_SOURCE;
 const UUID_NAMESPACE = '8dd9f06f-59a9-4fed-9cb4-5cb9184160a3';
 
 function parseArgs(): CLIOptions {

@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "asset": "RESERVED FOR CRYPTOGRAFFITI",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 21,
+  "artist": "cryptograffiti",
+  "supply": 0,
+  "issuance": "future",
+  "textOnCard": [
+    "Reserved for cryptograffiti"
+  ],
+  "memeticReferences": [
+    "Graffiti style evokes themes of rebellion and underground culture, common in crypto art.",
+    "The concept of \"reservation\" hints at exclusivity and ownership, key aspects of NFT culture.",
+    "Brick wall background suggests a foundation or permanence, resonating with blockchain technology."
+  ],
+  "visualSummary": "The card features a simple yet striking design with text on a white brick wall background. The words \"Reserved for\" are in a classic, serif font, while \"cryptograffiti\" is styled in a bold, dripping graffiti font, adding a street art vibe. The color palette is monochromatic, emphasizing the contrast between the text and the brick texture.",
+  "visualSummaryShort": "The card showcases a white brick wall with striking text. The design combines classic serif and bold graffiti fonts, creating a strong street art aesthetic.",
+  "visualKeywords": [
+    "white brick",
+    "graffiti",
+    "serif font",
+    "dripping",
+    "monochromatic",
+    "contrast",
+    "street art"
+  ],
+  "textKeywords": [
+    "reserved",
+    "cryptograffiti"
+  ],
+  "keywords": [
+    "white brick",
+    "graffiti",
+    "serif font",
+    "dripping",
+    "monochromatic",
+    "contrast",
+    "street art",
+    "reserved",
+    "cryptograffiti"
+  ],
+  "embeddingInput": "RESERVED FOR CRYPTOGRAFFITI (Fake Rares) - Series 1 Card 21\nArtist: cryptograffiti\nSupply 0 Issued future\nOn-card text: Reserved for cryptograffiti\nVisual summary: The card features a simple yet striking design with text on a white brick wall background. The words \"Reserved for\" are in a classic, serif font, while \"cryptograffiti\" is styled in a bold, dripping graffiti font, adding a street art vibe. The color palette is monochromatic, emphasizing the contrast between the text and the brick texture.\nMemetic references: Graffiti style evokes themes of rebellion and underground culture, common in crypto art.; The concept of \"reservation\" hints at exclusivity and ownership, key aspects of NFT culture.; Brick wall background suggests a foundation or permanence, resonating with blockchain technology.",
+  "embeddingBlocks": [
+    {
+      "id": "RESERVED FOR CRYPTOGRAFFITI#text",
+      "label": "On-card text",
+      "text": "Reserved for cryptograffiti",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "RESERVED FOR CRYPTOGRAFFITI#memetic",
+      "label": "Memetic references",
+      "text": "Graffiti style evokes themes of rebellion and underground culture, common in crypto art.\nThe concept of \"reservation\" hints at exclusivity and ownership, key aspects of NFT culture.\nBrick wall background suggests a foundation or permanence, resonating with blockchain technology.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RESERVED FOR CRYPTOGRAFFITI#visual",
+      "label": "Visual summary",
+      "text": "The card features a simple yet striking design with text on a white brick wall background. The words \"Reserved for\" are in a classic, serif font, while \"cryptograffiti\" is styled in a bold, dripping graffiti font, adding a street art vibe. The color palette is monochromatic, emphasizing the contrast between the text and the brick texture.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RESERVED FOR CRYPTOGRAFFITI#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nReserved for cryptograffiti\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a simple yet striking design with text on a white brick wall background. The words \"Reserved for\" are in a classic, serif font, while \"cryptograffiti\" is styled in a bold, dripping graffiti font, adding a street art vibe. The color palette is monochromatic, emphasizing the contrast between the text and the brick texture.\n\n🧬 **MEMETIC DNA:**\n- Graffiti style evokes themes of rebellion and underground culture, common in crypto art.\n- The concept of \"reservation\" hints at exclusivity and ownership, key aspects of NFT culture.\n- Brick wall background suggests a foundation or permanence, resonating with blockchain technology.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.083Z",
+  "sourceFactVersion": 1
+}

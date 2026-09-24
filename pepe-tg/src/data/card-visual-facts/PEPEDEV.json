@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "PEPEDEV",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 8,
+  "artist": "JAMEX",
+  "supply": 50,
+  "issuance": "April 2022",
+  "textOnCard": [
+    "= IT voodoo +10"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure.",
+    "References to tech culture with circuit boards and wiring.",
+    "Possible nod to the concept of \"brain-computer interfaces\" or \"cyberpunk\" themes.",
+    "\"IT voodoo\" as a playful jab at tech specialists' mysterious skills."
+  ],
+  "visualSummary": "The card features a Pepe character with a retro-futuristic aesthetic, donning a striped shirt and a vest. Above his head, there are multiple circuit boards connected to wires, giving off a tech-savvy vibe. The color palette is a mix of greens, purples, and reds, with a glowing, digital ambiance that feels both surreal and cybernetic.",
+  "visualSummaryShort": "The card showcases a Pepe character in a retro-futuristic style, wearing a striped shirt and vest. The vibrant color palette of greens, purples, and reds, combined with glowing circuit boards, creates a surreal, tech-savvy atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "retro-futuristic",
+    "striped shirt",
+    "circuit boards",
+    "green",
+    "purple",
+    "red",
+    "glowing",
+    "digital",
+    "surreal"
+  ],
+  "textKeywords": [
+    "voodoo"
+  ],
+  "keywords": [
+    "pepe",
+    "retro-futuristic",
+    "striped shirt",
+    "circuit boards",
+    "green",
+    "purple",
+    "red",
+    "glowing",
+    "digital",
+    "surreal",
+    "voodoo"
+  ],
+  "embeddingInput": "PEPEDEV (Fake Rares) - Series 10 Card 8\nArtist: JAMEX\nSupply 50 Issued April 2022\nOn-card text: = IT voodoo +10\nVisual summary: The card features a Pepe character with a retro-futuristic aesthetic, donning a striped shirt and a vest. Above his head, there are multiple circuit boards connected to wires, giving off a tech-savvy vibe. The color palette is a mix of greens, purples, and reds, with a glowing, digital ambiance that feels both surreal and cybernetic.\nMemetic references: Pepe the Frog as a central figure.; References to tech culture with circuit boards and wiring.; Possible nod to the concept of \"brain-computer interfaces\" or \"cyberpunk\" themes.; \"IT voodoo\" as a playful jab at tech specialists' mysterious skills.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEDEV#text",
+      "label": "On-card text",
+      "text": "= IT voodoo +10",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEDEV#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure.\nReferences to tech culture with circuit boards and wiring.\nPossible nod to the concept of \"brain-computer interfaces\" or \"cyberpunk\" themes.\n\"IT voodoo\" as a playful jab at tech specialists' mysterious skills.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEDEV#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe character with a retro-futuristic aesthetic, donning a striped shirt and a vest. Above his head, there are multiple circuit boards connected to wires, giving off a tech-savvy vibe. The color palette is a mix of greens, purples, and reds, with a glowing, digital ambiance that feels both surreal and cybernetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEDEV#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n= IT voodoo +10\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe character with a retro-futuristic aesthetic, donning a striped shirt and a vest. Above his head, there are multiple circuit boards connected to wires, giving off a tech-savvy vibe. The color palette is a mix of greens, purples, and reds, with a glowing, digital ambiance that feels both surreal and cybernetic.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure.\n- References to tech culture with circuit boards and wiring.\n- Possible nod to the concept of \"brain-computer interfaces\" or \"cyberpunk\" themes.\n- \"IT voodoo\" as a playful jab at tech specialists' mysterious skills.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.869Z",
+  "sourceFactVersion": 1
+}

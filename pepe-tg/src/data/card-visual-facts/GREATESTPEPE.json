@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "asset": "GREATESTPEPE",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 38,
+  "artist": "Johnny Dollar",
+  "supply": 21,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "PEPE ALI",
+    "\"I'm the Greatest Meme of all times\""
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as Muhammad Ali, referencing the iconic boxing moment between Ali and Sonny Liston.",
+    "Meme culture nod with the phrase \"the Greatest Meme of all times.\"",
+    "Pixel art echoes early internet aesthetics."
+  ],
+  "visualSummary": "This card features a dynamic scene in a boxing ring with Pepe the Frog standing victoriously over a fallen opponent. The color palette is predominantly green and pink, with a sketch-like, pixelated art style that gives it a retro, digital feel. The background shows a crowd, adding depth and context to the scene.",
+  "visualSummaryShort": "The card depicts Pepe the Frog triumphantly standing in a boxing ring over a defeated opponent. The scene is vibrant with a green and pink color palette, enhanced by a retro, pixelated art style.",
+  "visualKeywords": [
+    "boxing ring",
+    "pepe the frog",
+    "victorious",
+    "green",
+    "pink",
+    "crowd",
+    "pixelated",
+    "retro"
+  ],
+  "textKeywords": [
+    "ali",
+    "greatest",
+    "meme",
+    "all",
+    "times"
+  ],
+  "keywords": [
+    "boxing ring",
+    "pepe the frog",
+    "victorious",
+    "green",
+    "pink",
+    "crowd",
+    "pixelated",
+    "retro",
+    "ali",
+    "greatest",
+    "meme",
+    "all",
+    "times"
+  ],
+  "embeddingInput": "GREATESTPEPE (Fake Rares) - Series 7 Card 38\nArtist: Johnny Dollar\nSupply 21 Issued February 2022\nOn-card text: PEPE ALI | \"I'm the Greatest Meme of all times\"\nVisual summary: This card features a dynamic scene in a boxing ring with Pepe the Frog standing victoriously over a fallen opponent. The color palette is predominantly green and pink, with a sketch-like, pixelated art style that gives it a retro, digital feel. The background shows a crowd, adding depth and context to the scene.\nMemetic references: Pepe the Frog as Muhammad Ali, referencing the iconic boxing moment between Ali and Sonny Liston.; Meme culture nod with the phrase \"the Greatest Meme of all times.\"; Pixel art echoes early internet aesthetics.",
+  "embeddingBlocks": [
+    {
+      "id": "GREATESTPEPE#text",
+      "label": "On-card text",
+      "text": "PEPE ALI | \"I'm the Greatest Meme of all times\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "GREATESTPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as Muhammad Ali, referencing the iconic boxing moment between Ali and Sonny Liston.\nMeme culture nod with the phrase \"the Greatest Meme of all times.\"\nPixel art echoes early internet aesthetics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "GREATESTPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a dynamic scene in a boxing ring with Pepe the Frog standing victoriously over a fallen opponent. The color palette is predominantly green and pink, with a sketch-like, pixelated art style that gives it a retro, digital feel. The background shows a crowd, adding depth and context to the scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "GREATESTPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE ALI  \n\"I'm the Greatest Meme of all times\"\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a dynamic scene in a boxing ring with Pepe the Frog standing victoriously over a fallen opponent. The color palette is predominantly green and pink, with a sketch-like, pixelated art style that gives it a retro, digital feel. The background shows a crowd, adding depth and context to the scene.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as Muhammad Ali, referencing the iconic boxing moment between Ali and Sonny Liston.\n- Meme culture nod with the phrase \"the Greatest Meme of all times.\"\n- Pixel art echoes early internet aesthetics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.667Z",
+  "sourceFactVersion": 1
+}

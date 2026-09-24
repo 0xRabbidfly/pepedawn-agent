@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "asset": "ELONSINK",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 34,
+  "artist": "Mandarinemarie",
+  "supply": 21,
+  "issuance": "October 2022",
+  "textOnCard": [
+    "Let that sink in..."
+  ],
+  "memeticReferences": [
+    "References the popular \"let that sink in\" meme.",
+    "Incorporates a Pepe character, a staple in meme culture.",
+    "Features a bird reminiscent of the Twitter logo, hinting at social media themes."
+  ],
+  "visualSummary": "The card features a green Pepe-fied figure holding a white sink. The background is a blend of dark blues and greens, creating a mysterious and comedic vibe. A small bird resembling a particular social media logo is flying nearby, adding a whimsical touch.",
+  "visualSummaryShort": "The card showcases a green Pepe-like character holding a white sink against a dark blue and green background. A whimsical bird resembling a social media logo adds to the comedic atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "sink",
+    "dark blue",
+    "green",
+    "whimsical",
+    "bird",
+    "comedic",
+    "mysterious"
+  ],
+  "textKeywords": [
+    "let",
+    "sink"
+  ],
+  "keywords": [
+    "pepe",
+    "sink",
+    "dark blue",
+    "green",
+    "whimsical",
+    "bird",
+    "comedic",
+    "mysterious",
+    "let"
+  ],
+  "embeddingInput": "ELONSINK (Fake Rares) - Series 14 Card 34\nArtist: Mandarinemarie\nSupply 21 Issued October 2022\nOn-card text: Let that sink in...\nVisual summary: The card features a green Pepe-fied figure holding a white sink. The background is a blend of dark blues and greens, creating a mysterious and comedic vibe. A small bird resembling a particular social media logo is flying nearby, adding a whimsical touch.\nMemetic references: References the popular \"let that sink in\" meme.; Incorporates a Pepe character, a staple in meme culture.; Features a bird reminiscent of the Twitter logo, hinting at social media themes.",
+  "embeddingBlocks": [
+    {
+      "id": "ELONSINK#text",
+      "label": "On-card text",
+      "text": "Let that sink in...",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "ELONSINK#memetic",
+      "label": "Memetic references",
+      "text": "References the popular \"let that sink in\" meme.\nIncorporates a Pepe character, a staple in meme culture.\nFeatures a bird reminiscent of the Twitter logo, hinting at social media themes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "ELONSINK#visual",
+      "label": "Visual summary",
+      "text": "The card features a green Pepe-fied figure holding a white sink. The background is a blend of dark blues and greens, creating a mysterious and comedic vibe. A small bird resembling a particular social media logo is flying nearby, adding a whimsical touch.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "ELONSINK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nLet that sink in...\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a green Pepe-fied figure holding a white sink. The background is a blend of dark blues and greens, creating a mysterious and comedic vibe. A small bird resembling a particular social media logo is flying nearby, adding a whimsical touch.\n\n🧬 **MEMETIC DNA:**\n- References the popular \"let that sink in\" meme.\n- Incorporates a Pepe character, a staple in meme culture.\n- Features a bird reminiscent of the Twitter logo, hinting at social media themes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.421Z",
+  "sourceFactVersion": 1
+}

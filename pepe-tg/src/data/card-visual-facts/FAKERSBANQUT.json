@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "asset": "FAKERSBANQUT",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 39,
+  "artist": "Pork Chop Express",
+  "supply": 53,
+  "issuance": "August 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog graffiti and stickers.",
+    "Bitcoin symbol subtly integrated into the background.",
+    "References to punk and street art culture.",
+    "Visual nods to classic bathroom wall graffiti memes."
+  ],
+  "visualSummary": "The card depicts a gritty, dimly lit bathroom scene with a grunge aesthetic. The color palette is dominated by earthy browns and muted greens, capturing a raw, underground vibe. Graffiti covers the walls, with various stickers and Pepe references adding layers of visual intrigue.",
+  "visualSummaryShort": "The card features a gritty bathroom scene with a grunge aesthetic, highlighted by earthy browns and muted greens. Graffiti and stickers, including Pepe references, enhance the underground vibe.",
+  "visualKeywords": [
+    "bathroom",
+    "graffiti",
+    "earthy colors",
+    "grunge",
+    "stickers",
+    "pepe",
+    "dim lighting",
+    "underground",
+    "muted greens",
+    "raw"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "bathroom",
+    "graffiti",
+    "earthy colors",
+    "grunge",
+    "stickers",
+    "pepe",
+    "dim lighting",
+    "underground",
+    "muted greens",
+    "raw"
+  ],
+  "embeddingInput": "FAKERSBANQUT (Fake Rares) - Series 11 Card 39\nArtist: Pork Chop Express\nSupply 53 Issued August 2022\nOn-card text: none detected\nVisual summary: The card depicts a gritty, dimly lit bathroom scene with a grunge aesthetic. The color palette is dominated by earthy browns and muted greens, capturing a raw, underground vibe. Graffiti covers the walls, with various stickers and Pepe references adding layers of visual intrigue.\nMemetic references: Pepe the Frog graffiti and stickers.; Bitcoin symbol subtly integrated into the background.; References to punk and street art culture.; Visual nods to classic bathroom wall graffiti memes.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKERSBANQUT#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog graffiti and stickers.\nBitcoin symbol subtly integrated into the background.\nReferences to punk and street art culture.\nVisual nods to classic bathroom wall graffiti memes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKERSBANQUT#visual",
+      "label": "Visual summary",
+      "text": "The card depicts a gritty, dimly lit bathroom scene with a grunge aesthetic. The color palette is dominated by earthy browns and muted greens, capturing a raw, underground vibe. Graffiti covers the walls, with various stickers and Pepe references adding layers of visual intrigue.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKERSBANQUT#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card depicts a gritty, dimly lit bathroom scene with a grunge aesthetic. The color palette is dominated by earthy browns and muted greens, capturing a raw, underground vibe. Graffiti covers the walls, with various stickers and Pepe references adding layers of visual intrigue.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog graffiti and stickers.\n- Bitcoin symbol subtly integrated into the background.\n- References to punk and street art culture.\n- Visual nods to classic bathroom wall graffiti memes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.570Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "asset": "PEPTOUCHGRAS",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 42,
+  "artist": "Hafftka",
+  "supply": 69,
+  "issuance": "October 2022",
+  "textOnCard": [
+    "PEPE, IT FEELS GOOD, It feels good."
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery with a twist.",
+    "References the iconic \"Feels Good Man\" meme.",
+    "Incorporates abstract art influences, adding a high-brow twist to meme culture."
+  ],
+  "visualSummary": "The card features an abstract, mixed-media portrait of Pepe the Frog, rendered in a chaotic yet expressive style. The color palette is vibrant and varied, with splashes of greens, blues, and yellows, accented by bold red text. The composition feels raw and energetic, with brushstrokes and textures giving it a dynamic, almost frenetic vibe.",
+  "visualSummaryShort": "The card showcases an abstract portrait of Pepe the Frog in a vibrant and chaotic style. Its energetic composition features a mix of greens, blues, and yellows, with bold red text adding to the dynamic feel.",
+  "visualKeywords": [
+    "abstract",
+    "portrait",
+    "vibrant",
+    "chaotic",
+    "green",
+    "blue",
+    "yellow",
+    "red text",
+    "energetic",
+    "brushstrokes"
+  ],
+  "textKeywords": [
+    "feels",
+    "good"
+  ],
+  "keywords": [
+    "abstract",
+    "portrait",
+    "vibrant",
+    "chaotic",
+    "green",
+    "blue",
+    "yellow",
+    "red text",
+    "energetic",
+    "brushstrokes",
+    "feels",
+    "good"
+  ],
+  "embeddingInput": "PEPTOUCHGRAS (Fake Rares) - Series 11 Card 42\nArtist: Hafftka\nSupply 69 Issued October 2022\nOn-card text: PEPE, IT FEELS GOOD, It feels good.\nVisual summary: The card features an abstract, mixed-media portrait of Pepe the Frog, rendered in a chaotic yet expressive style. The color palette is vibrant and varied, with splashes of greens, blues, and yellows, accented by bold red text. The composition feels raw and energetic, with brushstrokes and textures giving it a dynamic, almost frenetic vibe.\nMemetic references: Classic Pepe the Frog imagery with a twist.; References the iconic \"Feels Good Man\" meme.; Incorporates abstract art influences, adding a high-brow twist to meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPTOUCHGRAS#text",
+      "label": "On-card text",
+      "text": "PEPE, IT FEELS GOOD, It feels good.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPTOUCHGRAS#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery with a twist.\nReferences the iconic \"Feels Good Man\" meme.\nIncorporates abstract art influences, adding a high-brow twist to meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPTOUCHGRAS#visual",
+      "label": "Visual summary",
+      "text": "The card features an abstract, mixed-media portrait of Pepe the Frog, rendered in a chaotic yet expressive style. The color palette is vibrant and varied, with splashes of greens, blues, and yellows, accented by bold red text. The composition feels raw and energetic, with brushstrokes and textures giving it a dynamic, almost frenetic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPTOUCHGRAS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE, IT FEELS GOOD, It feels good.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features an abstract, mixed-media portrait of Pepe the Frog, rendered in a chaotic yet expressive style. The color palette is vibrant and varied, with splashes of greens, blues, and yellows, accented by bold red text. The composition feels raw and energetic, with brushstrokes and textures giving it a dynamic, almost frenetic vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery with a twist.\n- References the iconic \"Feels Good Man\" meme.\n- Incorporates abstract art influences, adding a high-brow twist to meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.030Z",
+  "sourceFactVersion": 1
+}

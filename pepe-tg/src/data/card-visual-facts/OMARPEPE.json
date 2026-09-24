@@ -1,0 +1,106 @@
+{
+  "version": 1,
+  "asset": "OMARPEPE",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 23,
+  "artist": "Nay and Ry",
+  "supply": 54,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "OMARPEPE",
+    "ALL IN THE GAME, YO",
+    "When holding this Pepe, you might find yourself suddenly living by a code... cause a Pepe's got to have a code."
+  ],
+  "memeticReferences": [
+    "References to the character Omar Little from \"The Wire.\"",
+    "Classic Pepe the Frog imagery with a twist.",
+    "Elements of street culture and vigilante justice.",
+    "Crypto culture nods to the idea of codes and honor among traders."
+  ],
+  "visualSummary": "The card features a green, cartoon-like figure with a wide, mischievous grin superimposed onto a dark, moody background. The color palette is dominated by deep greens and browns, creating a gritty, urban vibe. A shotgun and a trash bag are depicted at the bottom, adding a touch of suspense and intrigue.",
+  "visualSummaryShort": "The card showcases a green, cartoonish figure with a playful grin against a dark, moody backdrop. The scene includes a shotgun and a trash bag, enhancing the urban and gritty atmosphere.",
+  "visualKeywords": [
+    "green figure",
+    "dark background",
+    "shotgun",
+    "trash bag",
+    "gritty",
+    "urban",
+    "mischievous grin",
+    "deep colors"
+  ],
+  "textKeywords": [
+    "omarpepe",
+    "all",
+    "game",
+    "when",
+    "holding",
+    "you",
+    "might",
+    "find",
+    "yourself",
+    "suddenly",
+    "living",
+    "code",
+    "cause",
+    "got"
+  ],
+  "keywords": [
+    "green figure",
+    "dark background",
+    "shotgun",
+    "trash bag",
+    "gritty",
+    "urban",
+    "mischievous grin",
+    "deep colors",
+    "omarpepe",
+    "all",
+    "game",
+    "when",
+    "holding",
+    "you",
+    "might",
+    "find",
+    "yourself",
+    "suddenly",
+    "living",
+    "code",
+    "cause",
+    "got"
+  ],
+  "embeddingInput": "OMARPEPE (Fake Rares) - Series 1 Card 23\nArtist: Nay and Ry\nSupply 54 Issued October 2021\nOn-card text: OMARPEPE | ALL IN THE GAME, YO | When holding this Pepe, you might find yourself suddenly living by a code... cause a Pepe's got to have a code.\nVisual summary: The card features a green, cartoon-like figure with a wide, mischievous grin superimposed onto a dark, moody background. The color palette is dominated by deep greens and browns, creating a gritty, urban vibe. A shotgun and a trash bag are depicted at the bottom, adding a touch of suspense and intrigue.\nMemetic references: References to the character Omar Little from \"The Wire.\"; Classic Pepe the Frog imagery with a twist.; Elements of street culture and vigilante justice.; Crypto culture nods to the idea of codes and honor among traders.",
+  "embeddingBlocks": [
+    {
+      "id": "OMARPEPE#text",
+      "label": "On-card text",
+      "text": "OMARPEPE | ALL IN THE GAME, YO | When holding this Pepe, you might find yourself suddenly living by a code... cause a Pepe's got to have a code.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "OMARPEPE#memetic",
+      "label": "Memetic references",
+      "text": "References to the character Omar Little from \"The Wire.\"\nClassic Pepe the Frog imagery with a twist.\nElements of street culture and vigilante justice.\nCrypto culture nods to the idea of codes and honor among traders.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "OMARPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a green, cartoon-like figure with a wide, mischievous grin superimposed onto a dark, moody background. The color palette is dominated by deep greens and browns, creating a gritty, urban vibe. A shotgun and a trash bag are depicted at the bottom, adding a touch of suspense and intrigue.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "OMARPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nOMARPEPE  \nALL IN THE GAME, YO  \nWhen holding this Pepe, you might find yourself suddenly living by a code... cause a Pepe's got to have a code.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a green, cartoon-like figure with a wide, mischievous grin superimposed onto a dark, moody background. The color palette is dominated by deep greens and browns, creating a gritty, urban vibe. A shotgun and a trash bag are depicted at the bottom, adding a touch of suspense and intrigue.\n\n🧬 **MEMETIC DNA:**\n- References to the character Omar Little from \"The Wire.\"\n- Classic Pepe the Frog imagery with a twist.\n- Elements of street culture and vigilante justice.\n- Crypto culture nods to the idea of codes and honor among traders.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.810Z",
+  "sourceFactVersion": 1
+}

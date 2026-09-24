@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "asset": "KINDOFGREEN",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 39,
+  "artist": "Whoisit",
+  "supply": 100,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "BEATDOWN",
+    "Jazz, Blues & Beyond",
+    "KIND OF GREEN",
+    "PEPEDAVIS 1967"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as legendary jazz musicians.",
+    "A nod to Miles Davis' iconic \"Kind of Blue\" album.",
+    "Retro jazz culture mixed with meme aesthetics."
+  ],
+  "visualSummary": "The card features a trio of characters with green faces, reminiscent of the Pepe meme, engaged in a jazz session. The color palette is rich with earthy tones, including deep blues, browns, and a striking yellow trumpet. The style is a playful homage to classic jazz album covers, capturing a vintage vibe with a humorous twist.",
+  "visualSummaryShort": "The card showcases three characters with green faces playing jazz instruments, set against a backdrop of earthy tones. The vibrant yellow trumpet adds a playful touch to the vintage jazz album aesthetic.",
+  "visualKeywords": [
+    "green faces",
+    "jazz session",
+    "earthy tones",
+    "yellow trumpet",
+    "vintage",
+    "humorous",
+    "deep blue",
+    "brown palette"
+  ],
+  "textKeywords": [
+    "beatdown",
+    "jazz",
+    "blues",
+    "beyond",
+    "kind",
+    "green",
+    "pepedavis",
+    "1967"
+  ],
+  "keywords": [
+    "green faces",
+    "jazz session",
+    "earthy tones",
+    "yellow trumpet",
+    "vintage",
+    "humorous",
+    "deep blue",
+    "brown palette",
+    "beatdown",
+    "jazz",
+    "blues",
+    "beyond",
+    "kind",
+    "green",
+    "pepedavis",
+    "1967"
+  ],
+  "embeddingInput": "KINDOFGREEN (Fake Rares) - Series 6 Card 39\nArtist: Whoisit\nSupply 100 Issued March 2022\nOn-card text: BEATDOWN | Jazz, Blues & Beyond | KIND OF GREEN | PEPEDAVIS 1967\nVisual summary: The card features a trio of characters with green faces, reminiscent of the Pepe meme, engaged in a jazz session. The color palette is rich with earthy tones, including deep blues, browns, and a striking yellow trumpet. The style is a playful homage to classic jazz album covers, capturing a vintage vibe with a humorous twist.\nMemetic references: Pepe the Frog as legendary jazz musicians.; A nod to Miles Davis' iconic \"Kind of Blue\" album.; Retro jazz culture mixed with meme aesthetics.",
+  "embeddingBlocks": [
+    {
+      "id": "KINDOFGREEN#text",
+      "label": "On-card text",
+      "text": "BEATDOWN | Jazz, Blues & Beyond | KIND OF GREEN | PEPEDAVIS 1967",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "KINDOFGREEN#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as legendary jazz musicians.\nA nod to Miles Davis' iconic \"Kind of Blue\" album.\nRetro jazz culture mixed with meme aesthetics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "KINDOFGREEN#visual",
+      "label": "Visual summary",
+      "text": "The card features a trio of characters with green faces, reminiscent of the Pepe meme, engaged in a jazz session. The color palette is rich with earthy tones, including deep blues, browns, and a striking yellow trumpet. The style is a playful homage to classic jazz album covers, capturing a vintage vibe with a humorous twist.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "KINDOFGREEN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nBEATDOWN  \nJazz, Blues & Beyond  \nKIND OF GREEN  \nPEPEDAVIS 1967  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a trio of characters with green faces, reminiscent of the Pepe meme, engaged in a jazz session. The color palette is rich with earthy tones, including deep blues, browns, and a striking yellow trumpet. The style is a playful homage to classic jazz album covers, capturing a vintage vibe with a humorous twist.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as legendary jazz musicians.\n- A nod to Miles Davis' iconic \"Kind of Blue\" album.\n- Retro jazz culture mixed with meme aesthetics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.717Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "FAKENOBLE",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 12,
+  "artist": "Dr Pep",
+  "supply": 39,
+  "issuance": "October 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure is a nod to meme culture.",
+    "The whimsical airships and hot air balloons evoke a sense of exploration and adventure.",
+    "Skulls and fantastical creatures add a layer of mystery and fantasy."
+  ],
+  "visualSummary": "This card showcases a vibrant and surreal scene with a Pepe character riding a fantastical bird-like creature adorned with a colorful, feathery cloak. The sky is a dreamy mix of pinks and purples, setting a whimsical tone. Surrounding elements include floating ships, hot air balloons, and peculiar plants, all creating a rich tapestry of imagination.",
+  "visualSummaryShort": "The card features a Pepe character riding a colorful bird-like creature against a dreamy pink and purple sky. Surrounding elements include floating ships, hot air balloons, and peculiar plants, enhancing the whimsical atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "bird",
+    "colorful",
+    "pink sky",
+    "purple sky",
+    "floating ships",
+    "hot air balloons",
+    "peculiar plants",
+    "whimsical",
+    "surreal"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "bird",
+    "colorful",
+    "pink sky",
+    "purple sky",
+    "floating ships",
+    "hot air balloons",
+    "peculiar plants",
+    "whimsical",
+    "surreal"
+  ],
+  "embeddingInput": "FAKENOBLE (Fake Rares) - Series 12 Card 12\nArtist: Dr Pep\nSupply 39 Issued October 2022\nOn-card text: none detected\nVisual summary: This card showcases a vibrant and surreal scene with a Pepe character riding a fantastical bird-like creature adorned with a colorful, feathery cloak. The sky is a dreamy mix of pinks and purples, setting a whimsical tone. Surrounding elements include floating ships, hot air balloons, and peculiar plants, all creating a rich tapestry of imagination.\nMemetic references: Pepe the Frog as a central figure is a nod to meme culture.; The whimsical airships and hot air balloons evoke a sense of exploration and adventure.; Skulls and fantastical creatures add a layer of mystery and fantasy.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKENOBLE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure is a nod to meme culture.\nThe whimsical airships and hot air balloons evoke a sense of exploration and adventure.\nSkulls and fantastical creatures add a layer of mystery and fantasy.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKENOBLE#visual",
+      "label": "Visual summary",
+      "text": "This card showcases a vibrant and surreal scene with a Pepe character riding a fantastical bird-like creature adorned with a colorful, feathery cloak. The sky is a dreamy mix of pinks and purples, setting a whimsical tone. Surrounding elements include floating ships, hot air balloons, and peculiar plants, all creating a rich tapestry of imagination.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKENOBLE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card showcases a vibrant and surreal scene with a Pepe character riding a fantastical bird-like creature adorned with a colorful, feathery cloak. The sky is a dreamy mix of pinks and purples, setting a whimsical tone. Surrounding elements include floating ships, hot air balloons, and peculiar plants, all creating a rich tapestry of imagination.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure is a nod to meme culture.\n- The whimsical airships and hot air balloons evoke a sense of exploration and adventure.\n- Skulls and fantastical creatures add a layer of mystery and fantasy.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.537Z",
+  "sourceFactVersion": 1
+}

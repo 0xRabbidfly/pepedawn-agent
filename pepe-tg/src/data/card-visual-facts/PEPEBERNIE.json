@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "asset": "PEPEBERNIE",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 21,
+  "artist": "mera.ki",
+  "supply": 55,
+  "issuance": "February 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog vibes with its green color and whimsical nature.",
+    "Classic \"smoking skeleton\" trope, a nod to both existential and carefree attitudes.",
+    "Possible reference to crypto culture's love of rebellion and counterculture symbols."
+  ],
+  "visualSummary": "The card features a vibrant green skeleton smoking a cigarette, set against a stark black background. The brushstrokes are bold and painterly, giving it an expressive, almost Van Gogh-esque vibe. The use of green adds an eerie yet whimsical touch, making it pop against the dark backdrop.",
+  "visualSummaryShort": "The card showcases a vibrant green skeleton smoking a cigarette against a stark black background. The bold brushstrokes create an expressive and whimsical atmosphere.",
+  "visualKeywords": [
+    "skeleton",
+    "green",
+    "cigarette",
+    "black background",
+    "bold brushstrokes",
+    "whimsical",
+    "expressive"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "skeleton",
+    "green",
+    "cigarette",
+    "black background",
+    "bold brushstrokes",
+    "whimsical",
+    "expressive"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "PEPEBERNIE (Fake Rares) - Series 6 Card 21\nArtist: mera.ki\nSupply 55 Issued February 2022\nOn-card text: none detected\nVisual summary: The card features a vibrant green skeleton smoking a cigarette, set against a stark black background. The brushstrokes are bold and painterly, giving it an expressive, almost Van Gogh-esque vibe. The use of green adds an eerie yet whimsical touch, making it pop against the dark backdrop.\nMemetic references: Pepe the Frog vibes with its green color and whimsical nature.; Classic \"smoking skeleton\" trope, a nod to both existential and carefree attitudes.; Possible reference to crypto culture's love of rebellion and counterculture symbols.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEBERNIE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog vibes with its green color and whimsical nature.\nClassic \"smoking skeleton\" trope, a nod to both existential and carefree attitudes.\nPossible reference to crypto culture's love of rebellion and counterculture symbols.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEBERNIE#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant green skeleton smoking a cigarette, set against a stark black background. The brushstrokes are bold and painterly, giving it an expressive, almost Van Gogh-esque vibe. The use of green adds an eerie yet whimsical touch, making it pop against the dark backdrop.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEBERNIE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant green skeleton smoking a cigarette, set against a stark black background. The brushstrokes are bold and painterly, giving it an expressive, almost Van Gogh-esque vibe. The use of green adds an eerie yet whimsical touch, making it pop against the dark backdrop.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog vibes with its green color and whimsical nature.\n- Classic \"smoking skeleton\" trope, a nod to both existential and carefree attitudes.\n- Possible reference to crypto culture's love of rebellion and counterculture symbols.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:30:17.321Z"
+}

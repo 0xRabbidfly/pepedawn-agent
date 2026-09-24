@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "UNTAMED",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 48,
+  "artist": "Nikolina Petolas",
+  "supply": 24,
+  "issuance": "February 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Enormous frog evokes the beloved Pepe meme.",
+    "Garden setting nods to the flourishing growth of crypto culture.",
+    "The figure's leafy attire hints at nature-themed metamorphosis, symbolizing the evolving NFT scene."
+  ],
+  "visualSummary": "In a lush, verdant scene, a figure draped in foliage stands regally, holding the leash of a massive, armored frog. The setting is a surreal garden, with topiary arches and intricate stone paths, painted in a rich palette of greens and earthy tones. The style is reminiscent of a fantastical, dreamlike landscape with a hint of classical influence.",
+  "visualSummaryShort": "A regal figure in foliage holds a leash attached to a massive armored frog in a lush garden. The scene features topiary arches and intricate stone paths, creating a dreamlike atmosphere.",
+  "visualKeywords": [
+    "foliage",
+    "frog",
+    "garden",
+    "topiary",
+    "stone paths",
+    "greens",
+    "earthy tones",
+    "fantastical",
+    "dreamlike",
+    "regal"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "foliage",
+    "frog",
+    "garden",
+    "topiary",
+    "stone paths",
+    "greens",
+    "earthy tones",
+    "fantastical",
+    "dreamlike",
+    "regal"
+  ],
+  "embeddingInput": "UNTAMED (Fake Rares) - Series 13 Card 48\nArtist: Nikolina Petolas\nSupply 24 Issued February 2023\nOn-card text: none detected\nVisual summary: In a lush, verdant scene, a figure draped in foliage stands regally, holding the leash of a massive, armored frog. The setting is a surreal garden, with topiary arches and intricate stone paths, painted in a rich palette of greens and earthy tones. The style is reminiscent of a fantastical, dreamlike landscape with a hint of classical influence.\nMemetic references: Enormous frog evokes the beloved Pepe meme.; Garden setting nods to the flourishing growth of crypto culture.; The figure's leafy attire hints at nature-themed metamorphosis, symbolizing the evolving NFT scene.",
+  "embeddingBlocks": [
+    {
+      "id": "UNTAMED#memetic",
+      "label": "Memetic references",
+      "text": "Enormous frog evokes the beloved Pepe meme.\nGarden setting nods to the flourishing growth of crypto culture.\nThe figure's leafy attire hints at nature-themed metamorphosis, symbolizing the evolving NFT scene.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "UNTAMED#visual",
+      "label": "Visual summary",
+      "text": "In a lush, verdant scene, a figure draped in foliage stands regally, holding the leash of a massive, armored frog. The setting is a surreal garden, with topiary arches and intricate stone paths, painted in a rich palette of greens and earthy tones. The style is reminiscent of a fantastical, dreamlike landscape with a hint of classical influence.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "UNTAMED#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nIn a lush, verdant scene, a figure draped in foliage stands regally, holding the leash of a massive, armored frog. The setting is a surreal garden, with topiary arches and intricate stone paths, painted in a rich palette of greens and earthy tones. The style is reminiscent of a fantastical, dreamlike landscape with a hint of classical influence.\n\n🧬 **MEMETIC DNA:**\n- Enormous frog evokes the beloved Pepe meme.\n- Garden setting nods to the flourishing growth of crypto culture.\n- The figure's leafy attire hints at nature-themed metamorphosis, symbolizing the evolving NFT scene.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.172Z",
+  "sourceFactVersion": 1
+}

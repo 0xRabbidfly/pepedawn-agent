@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "LEDGERDEATH",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 31,
+  "artist": "Rodro",
+  "supply": 28,
+  "issuance": "May 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog: A staple of meme culture, often associated with crypto.",
+    "Ledger Wallets: Symbolizing secure crypto storage, here turned into grave markers, possibly hinting at lost or inaccessible crypto.",
+    "Graveyard Setting: Could imply \"dead\" or lost crypto assets, a nod to the risks in crypto investing."
+  ],
+  "visualSummary": "The scene features Pepe the Frog characters in a graveyard setting, with oversized Ledger hardware wallets serving as gravestones. The color palette includes earthy greens, browns, and the warm hues of a sunset, giving the artwork a somber yet whimsical tone. The style is cartoonish with clear outlines and expressive faces, capturing a mix of humor and melancholy.",
+  "visualSummaryShort": "The artwork depicts Pepe the Frog characters in a graveyard with oversized Ledger wallets as gravestones. The color palette features earthy greens and warm sunset hues, creating a whimsical yet somber atmosphere.",
+  "visualKeywords": [
+    "graveyard",
+    "pepe the frog",
+    "ledger wallets",
+    "earthy colors",
+    "sunset",
+    "cartoonish",
+    "whimsical",
+    "melancholy"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "graveyard",
+    "pepe the frog",
+    "ledger wallets",
+    "earthy colors",
+    "sunset",
+    "cartoonish",
+    "whimsical",
+    "melancholy"
+  ],
+  "embeddingInput": "LEDGERDEATH (Fake Rares) - Series 14 Card 31\nArtist: Rodro\nSupply 28 Issued May 2023\nOn-card text: none detected\nVisual summary: The scene features Pepe the Frog characters in a graveyard setting, with oversized Ledger hardware wallets serving as gravestones. The color palette includes earthy greens, browns, and the warm hues of a sunset, giving the artwork a somber yet whimsical tone. The style is cartoonish with clear outlines and expressive faces, capturing a mix of humor and melancholy.\nMemetic references: Pepe the Frog: A staple of meme culture, often associated with crypto.; Ledger Wallets: Symbolizing secure crypto storage, here turned into grave markers, possibly hinting at lost or inaccessible crypto.; Graveyard Setting: Could imply \"dead\" or lost crypto assets, a nod to the risks in crypto investing.",
+  "embeddingBlocks": [
+    {
+      "id": "LEDGERDEATH#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog: A staple of meme culture, often associated with crypto.\nLedger Wallets: Symbolizing secure crypto storage, here turned into grave markers, possibly hinting at lost or inaccessible crypto.\nGraveyard Setting: Could imply \"dead\" or lost crypto assets, a nod to the risks in crypto investing.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LEDGERDEATH#visual",
+      "label": "Visual summary",
+      "text": "The scene features Pepe the Frog characters in a graveyard setting, with oversized Ledger hardware wallets serving as gravestones. The color palette includes earthy greens, browns, and the warm hues of a sunset, giving the artwork a somber yet whimsical tone. The style is cartoonish with clear outlines and expressive faces, capturing a mix of humor and melancholy.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LEDGERDEATH#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe scene features Pepe the Frog characters in a graveyard setting, with oversized Ledger hardware wallets serving as gravestones. The color palette includes earthy greens, browns, and the warm hues of a sunset, giving the artwork a somber yet whimsical tone. The style is cartoonish with clear outlines and expressive faces, capturing a mix of humor and melancholy.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog: A staple of meme culture, often associated with crypto.\n- Ledger Wallets: Symbolizing secure crypto storage, here turned into grave markers, possibly hinting at lost or inaccessible crypto.\n- Graveyard Setting: Could imply \"dead\" or lost crypto assets, a nod to the risks in crypto investing.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.733Z",
+  "sourceFactVersion": 1
+}

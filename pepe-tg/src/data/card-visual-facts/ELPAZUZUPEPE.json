@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "asset": "ELPAZUZUPEPE",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 38,
+  "artist": "Da'Block God",
+  "supply": 69,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "Extract and transcribe any visible text like the card name, messages, artist signatures, etc. If there's no visible text, skip this section."
+  ],
+  "memeticReferences": [
+    "Highlight meme references or internet culture nods.",
+    "Mention any crypto-related elements, like symbols or terminology.",
+    "Identify any Pepe lore or cultural symbols present."
+  ],
+  "visualSummary": "- Describe the general composition of the card, such as figures, symbols, or central elements.\n- Note the color palette used, mentioning dominant colors and any contrasts or patterns.\n- Describe the artistic style, whether it's surreal, abstract, cartoonish, etc., and mention any notable techniques or textures.",
+  "visualSummaryShort": "The card features a vibrant composition with abstract shapes and figures that create a dynamic visual experience. The color palette is dominated by bold hues, creating striking contrasts and an energetic mood.",
+  "visualKeywords": [
+    "abstract",
+    "bold colors",
+    "dynamic shapes",
+    "vibrant",
+    "contrast",
+    "energetic",
+    "figures",
+    "patterns",
+    "textures",
+    "composition"
+  ],
+  "textKeywords": [
+    "extract",
+    "transcribe",
+    "any",
+    "visible",
+    "text",
+    "like",
+    "name",
+    "messages",
+    "artist",
+    "signatures",
+    "etc",
+    "skip",
+    "section"
+  ],
+  "keywords": [
+    "abstract",
+    "bold colors",
+    "dynamic shapes",
+    "vibrant",
+    "contrast",
+    "energetic",
+    "figures",
+    "patterns",
+    "textures",
+    "composition",
+    "extract",
+    "transcribe",
+    "any",
+    "visible",
+    "text",
+    "like",
+    "name",
+    "messages",
+    "artist",
+    "signatures",
+    "etc",
+    "skip",
+    "section"
+  ],
+  "embeddingInput": "ELPAZUZUPEPE (Fake Rares) - Series 5 Card 38\nArtist: Da'Block God\nSupply 69 Issued February 2022\nOn-card text: Extract and transcribe any visible text like the card name, messages, artist signatures, etc. If there's no visible text, skip this section.\nVisual summary: - Describe the general composition of the card, such as figures, symbols, or central elements.\n- Note the color palette used, mentioning dominant colors and any contrasts or patterns.\n- Describe the artistic style, whether it's surreal, abstract, cartoonish, etc., and mention any notable techniques or textures.\nMemetic references: Highlight meme references or internet culture nods.; Mention any crypto-related elements, like symbols or terminology.; Identify any Pepe lore or cultural symbols present.",
+  "embeddingBlocks": [
+    {
+      "id": "ELPAZUZUPEPE#text",
+      "label": "On-card text",
+      "text": "Extract and transcribe any visible text like the card name, messages, artist signatures, etc. If there's no visible text, skip this section.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "ELPAZUZUPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Highlight meme references or internet culture nods.\nMention any crypto-related elements, like symbols or terminology.\nIdentify any Pepe lore or cultural symbols present.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "ELPAZUZUPEPE#visual",
+      "label": "Visual summary",
+      "text": "- Describe the general composition of the card, such as figures, symbols, or central elements.\n- Note the color palette used, mentioning dominant colors and any contrasts or patterns.\n- Describe the artistic style, whether it's surreal, abstract, cartoonish, etc., and mention any notable techniques or textures.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "ELPAZUZUPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm unable to analyze this specific image directly, but I can guide you on how to analyze it yourself. Here's a template you can use:\n\n---\n\n📝 **TEXT ON CARD:**\n- Extract and transcribe any visible text like the card name, messages, artist signatures, etc. If there's no visible text, skip this section.\n\n🎨 **VISUAL BREAKDOWN:**\n- Describe the general composition of the card, such as figures, symbols, or central elements.\n- Note the color palette used, mentioning dominant colors and any contrasts or patterns.\n- Describe the artistic style, whether it's surreal, abstract, cartoonish, etc., and mention any notable techniques or textures.\n\n🧬 **MEMETIC DNA:**\n- Highlight meme references or internet culture nods.\n- Mention any crypto-related elements, like symbols or terminology.\n- Identify any Pepe lore or cultural symbols present.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.422Z",
+  "sourceFactVersion": 1
+}

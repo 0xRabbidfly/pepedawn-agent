@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "THELADY",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 2,
+  "artist": "Michael Naples",
+  "supply": 21,
+  "issuance": "June 2022",
+  "textOnCard": [
+    "THE LADY"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in a sophisticated, aristocratic setting.",
+    "Parody of historical portraits, mixing high culture with meme culture.",
+    "The seated figures and magazine hint at an audience or following, possibly referencing NFT collectors or crypto enthusiasts."
+  ],
+  "visualSummary": "The card features a regal Pepe the Frog character lounging on a luxurious throne, embodying a satirical take on classic European aristocracy portraits. The color palette is rich with golds and browns, giving it an opulent and vintage feel. The background includes a bust sculpture and a gathering of hooded figures, one of whom holds a magazine, adding layers of mystery and intrigue.",
+  "visualSummaryShort": "The card depicts a regal Pepe the Frog character on a luxurious throne, surrounded by a vintage-inspired setting. The rich color palette and mysterious background elements enhance the opulent atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "throne",
+    "gold",
+    "brown",
+    "bust",
+    "hooded figures",
+    "magazine",
+    "opulent",
+    "vintage",
+    "mystery"
+  ],
+  "textKeywords": [
+    "lady"
+  ],
+  "keywords": [
+    "pepe",
+    "throne",
+    "gold",
+    "brown",
+    "bust",
+    "hooded figures",
+    "magazine",
+    "opulent",
+    "vintage",
+    "mystery",
+    "lady"
+  ],
+  "embeddingInput": "THELADY (Fake Rares) - Series 11 Card 2\nArtist: Michael Naples\nSupply 21 Issued June 2022\nOn-card text: THE LADY\nVisual summary: The card features a regal Pepe the Frog character lounging on a luxurious throne, embodying a satirical take on classic European aristocracy portraits. The color palette is rich with golds and browns, giving it an opulent and vintage feel. The background includes a bust sculpture and a gathering of hooded figures, one of whom holds a magazine, adding layers of mystery and intrigue.\nMemetic references: Pepe the Frog in a sophisticated, aristocratic setting.; Parody of historical portraits, mixing high culture with meme culture.; The seated figures and magazine hint at an audience or following, possibly referencing NFT collectors or crypto enthusiasts.",
+  "embeddingBlocks": [
+    {
+      "id": "THELADY#text",
+      "label": "On-card text",
+      "text": "THE LADY",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "THELADY#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in a sophisticated, aristocratic setting.\nParody of historical portraits, mixing high culture with meme culture.\nThe seated figures and magazine hint at an audience or following, possibly referencing NFT collectors or crypto enthusiasts.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "THELADY#visual",
+      "label": "Visual summary",
+      "text": "The card features a regal Pepe the Frog character lounging on a luxurious throne, embodying a satirical take on classic European aristocracy portraits. The color palette is rich with golds and browns, giving it an opulent and vintage feel. The background includes a bust sculpture and a gathering of hooded figures, one of whom holds a magazine, adding layers of mystery and intrigue.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "THELADY#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nTHE LADY\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a regal Pepe the Frog character lounging on a luxurious throne, embodying a satirical take on classic European aristocracy portraits. The color palette is rich with golds and browns, giving it an opulent and vintage feel. The background includes a bust sculpture and a gathering of hooded figures, one of whom holds a magazine, adding layers of mystery and intrigue.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in a sophisticated, aristocratic setting.\n- Parody of historical portraits, mixing high culture with meme culture.\n- The seated figures and magazine hint at an audience or following, possibly referencing NFT collectors or crypto enthusiasts.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.146Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "JESICARIBBIT",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 39,
+  "artist": "WomanNFT",
+  "supply": 69,
+  "issuance": "August 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "The green skin and background full of Pepe faces are clear nods to the iconic meme character, Pepe the Frog.",
+    "The pin-up style is reminiscent of classic Hollywood glamour, adding a vintage twist to the memetic theme.",
+    "The seductive pose and attire may reference crypto culture's playful and irreverent nature."
+  ],
+  "visualSummary": "The card features a green-skinned, glamorous figure in a striking red dress, with flowing black hair and bold red lips, exuding a classic pin-up vibe. The background is a chaotic collage of Pepe faces in various expressions, rendered in a monochrome, sketch-like style. The contrast between the vivid foreground character and the grayscale background creates a dynamic and eye-catching composition.",
+  "visualSummaryShort": "The card showcases a glamorous green-skinned figure in a vibrant red dress against a chaotic monochrome background of Pepe faces. This striking contrast creates a dynamic visual appeal.",
+  "visualKeywords": [
+    "green skin",
+    "red dress",
+    "black hair",
+    "bold lips",
+    "pin-up",
+    "pepe faces",
+    "monochrome",
+    "sketch",
+    "chaotic",
+    "contrast"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "green skin",
+    "red dress",
+    "black hair",
+    "bold lips",
+    "pin-up",
+    "pepe faces",
+    "monochrome",
+    "sketch",
+    "chaotic",
+    "contrast"
+  ],
+  "embeddingInput": "JESICARIBBIT (Fake Rares) - Series 9 Card 39\nArtist: WomanNFT\nSupply 69 Issued August 2022\nOn-card text: none detected\nVisual summary: The card features a green-skinned, glamorous figure in a striking red dress, with flowing black hair and bold red lips, exuding a classic pin-up vibe. The background is a chaotic collage of Pepe faces in various expressions, rendered in a monochrome, sketch-like style. The contrast between the vivid foreground character and the grayscale background creates a dynamic and eye-catching composition.\nMemetic references: The green skin and background full of Pepe faces are clear nods to the iconic meme character, Pepe the Frog.; The pin-up style is reminiscent of classic Hollywood glamour, adding a vintage twist to the memetic theme.; The seductive pose and attire may reference crypto culture's playful and irreverent nature.",
+  "embeddingBlocks": [
+    {
+      "id": "JESICARIBBIT#memetic",
+      "label": "Memetic references",
+      "text": "The green skin and background full of Pepe faces are clear nods to the iconic meme character, Pepe the Frog.\nThe pin-up style is reminiscent of classic Hollywood glamour, adding a vintage twist to the memetic theme.\nThe seductive pose and attire may reference crypto culture's playful and irreverent nature.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "JESICARIBBIT#visual",
+      "label": "Visual summary",
+      "text": "The card features a green-skinned, glamorous figure in a striking red dress, with flowing black hair and bold red lips, exuding a classic pin-up vibe. The background is a chaotic collage of Pepe faces in various expressions, rendered in a monochrome, sketch-like style. The contrast between the vivid foreground character and the grayscale background creates a dynamic and eye-catching composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "JESICARIBBIT#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a green-skinned, glamorous figure in a striking red dress, with flowing black hair and bold red lips, exuding a classic pin-up vibe. The background is a chaotic collage of Pepe faces in various expressions, rendered in a monochrome, sketch-like style. The contrast between the vivid foreground character and the grayscale background creates a dynamic and eye-catching composition.\n\n🧬 **MEMETIC DNA:**\n- The green skin and background full of Pepe faces are clear nods to the iconic meme character, Pepe the Frog.\n- The pin-up style is reminiscent of classic Hollywood glamour, adding a vintage twist to the memetic theme.\n- The seductive pose and attire may reference crypto culture's playful and irreverent nature.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.703Z",
+  "sourceFactVersion": 1
+}

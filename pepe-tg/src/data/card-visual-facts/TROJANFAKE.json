@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "asset": "TROJANFAKE",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 10,
+  "artist": "Rare Scrilla",
+  "supply": 69,
+  "issuance": "February 2023",
+  "textOnCard": [
+    "TROJANFAKE",
+    "Fake Memes",
+    "FAKE RARES & RARE PEPES",
+    "Fake Rare CREATORS",
+    "ETH Collectors",
+    "Any thoughts, Killa?",
+    "Fake Commons bussin too!",
+    "feels fake man"
+  ],
+  "memeticReferences": [
+    "Trojan horse as a metaphor for sneaking NFTs into mainstream culture.",
+    "References to \"Fake Rares\" and \"Rare Pepes,\" integral to crypto meme culture.",
+    "\"Feels fake man\" is a twist on the classic \"Feels bad man\" meme with Pepe the Frog.",
+    "References to \"Fake Commons\" and \"ETH Collectors\" touch on crypto-collecting communities."
+  ],
+  "visualSummary": "The card features a cartoonish depiction of a Trojan horse filled with NFT-related characters. The color palette is vibrant with earthy tones, primarily browns and greens, enhancing the wooden Trojan horse and surrounding landscape. The style is reminiscent of classic comic strips, with bold outlines and humorous character expressions.",
+  "visualSummaryShort": "The card showcases a vibrant cartoonish Trojan horse filled with NFT-themed characters, set against an earthy landscape. Its comic strip style features bold outlines and humorous expressions, creating a playful mood.",
+  "visualKeywords": [
+    "trojan horse",
+    "nft characters",
+    "earthy tones",
+    "comic style",
+    "bold outlines",
+    "humorous expressions",
+    "vibrant colors",
+    "wooden texture",
+    "landscape",
+    "playful mood"
+  ],
+  "textKeywords": [
+    "trojanfake",
+    "memes",
+    "pepes",
+    "creators",
+    "eth",
+    "collectors",
+    "any",
+    "thoughts",
+    "killa",
+    "commons",
+    "bussin",
+    "too",
+    "feels",
+    "man"
+  ],
+  "keywords": [
+    "trojan horse",
+    "nft characters",
+    "earthy tones",
+    "comic style",
+    "bold outlines",
+    "humorous expressions",
+    "vibrant colors",
+    "wooden texture",
+    "landscape",
+    "playful mood",
+    "trojanfake",
+    "memes",
+    "pepes",
+    "creators",
+    "eth",
+    "collectors",
+    "any",
+    "thoughts",
+    "killa",
+    "commons",
+    "bussin",
+    "too",
+    "feels",
+    "man"
+  ],
+  "embeddingInput": "TROJANFAKE (Fake Rares) - Series 13 Card 10\nArtist: Rare Scrilla\nSupply 69 Issued February 2023\nOn-card text: TROJANFAKE | Fake Memes | FAKE RARES & RARE PEPES | Fake Rare CREATORS | ETH Collectors | Any thoughts, Killa? | Fake Commons bussin too! | feels fake man\nVisual summary: The card features a cartoonish depiction of a Trojan horse filled with NFT-related characters. The color palette is vibrant with earthy tones, primarily browns and greens, enhancing the wooden Trojan horse and surrounding landscape. The style is reminiscent of classic comic strips, with bold outlines and humorous character expressions.\nMemetic references: Trojan horse as a metaphor for sneaking NFTs into mainstream culture.; References to \"Fake Rares\" and \"Rare Pepes,\" integral to crypto meme culture.; \"Feels fake man\" is a twist on the classic \"Feels bad man\" meme with Pepe the Frog.; References to \"Fake Commons\" and \"ETH Collectors\" touch on crypto-collecting communities.",
+  "embeddingBlocks": [
+    {
+      "id": "TROJANFAKE#text",
+      "label": "On-card text",
+      "text": "TROJANFAKE | Fake Memes | FAKE RARES & RARE PEPES | Fake Rare CREATORS | ETH Collectors | Any thoughts, Killa? | Fake Commons bussin too! | feels fake man",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "TROJANFAKE#memetic",
+      "label": "Memetic references",
+      "text": "Trojan horse as a metaphor for sneaking NFTs into mainstream culture.\nReferences to \"Fake Rares\" and \"Rare Pepes,\" integral to crypto meme culture.\n\"Feels fake man\" is a twist on the classic \"Feels bad man\" meme with Pepe the Frog.\nReferences to \"Fake Commons\" and \"ETH Collectors\" touch on crypto-collecting communities.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "TROJANFAKE#visual",
+      "label": "Visual summary",
+      "text": "The card features a cartoonish depiction of a Trojan horse filled with NFT-related characters. The color palette is vibrant with earthy tones, primarily browns and greens, enhancing the wooden Trojan horse and surrounding landscape. The style is reminiscent of classic comic strips, with bold outlines and humorous character expressions.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "TROJANFAKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- TROJANFAKE\n- Fake Memes\n- FAKE RARES & RARE PEPES\n- Fake Rare CREATORS\n- ETH Collectors\n- Any thoughts, Killa?\n- Fake Commons bussin too!\n- feels fake man\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a cartoonish depiction of a Trojan horse filled with NFT-related characters. The color palette is vibrant with earthy tones, primarily browns and greens, enhancing the wooden Trojan horse and surrounding landscape. The style is reminiscent of classic comic strips, with bold outlines and humorous character expressions.\n\n🧬 **MEMETIC DNA:**\n- Trojan horse as a metaphor for sneaking NFTs into mainstream culture.\n- References to \"Fake Rares\" and \"Rare Pepes,\" integral to crypto meme culture.\n- \"Feels fake man\" is a twist on the classic \"Feels bad man\" meme with Pepe the Frog.\n- References to \"Fake Commons\" and \"ETH Collectors\" touch on crypto-collecting communities.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.158Z",
+  "sourceFactVersion": 1
+}

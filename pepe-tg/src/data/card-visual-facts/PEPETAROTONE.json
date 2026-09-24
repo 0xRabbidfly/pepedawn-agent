@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PEPETAROTONE",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 35,
+  "artist": "SHEWOLF",
+  "supply": 74,
+  "issuance": "February 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog with a contemplative face.",
+    "Resembles tarot card aesthetics, blending meme culture with mystical symbolism.",
+    "Intricate patterns evoke a sense of mystery and complexity, often seen in NFT art."
+  ],
+  "visualSummary": "The card features a central image of Pepe the Frog with a sly, knowing expression, set against an intricate, swirling background of green and brown. The design is symmetrical and ornate, resembling a vintage tapestry or wallpaper. The color palette of earthy tones adds a classic, almost regal vibe to the piece.",
+  "visualSummaryShort": "The card showcases Pepe the Frog with a sly expression, surrounded by an ornate, swirling background. The earthy color palette enhances its vintage and regal appearance.",
+  "visualKeywords": [
+    "pepe the frog",
+    "sly expression",
+    "green",
+    "brown",
+    "ornate",
+    "symmetrical",
+    "vintage",
+    "tapestry",
+    "earthy tones",
+    "regal"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "sly expression",
+    "green",
+    "brown",
+    "ornate",
+    "symmetrical",
+    "vintage",
+    "tapestry",
+    "earthy tones",
+    "regal"
+  ],
+  "embeddingInput": "PEPETAROTONE (Fake Rares) - Series 5 Card 35\nArtist: SHEWOLF\nSupply 74 Issued February 2022\nOn-card text: none detected\nVisual summary: The card features a central image of Pepe the Frog with a sly, knowing expression, set against an intricate, swirling background of green and brown. The design is symmetrical and ornate, resembling a vintage tapestry or wallpaper. The color palette of earthy tones adds a classic, almost regal vibe to the piece.\nMemetic references: Classic Pepe the Frog with a contemplative face.; Resembles tarot card aesthetics, blending meme culture with mystical symbolism.; Intricate patterns evoke a sense of mystery and complexity, often seen in NFT art.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPETAROTONE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog with a contemplative face.\nResembles tarot card aesthetics, blending meme culture with mystical symbolism.\nIntricate patterns evoke a sense of mystery and complexity, often seen in NFT art.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPETAROTONE#visual",
+      "label": "Visual summary",
+      "text": "The card features a central image of Pepe the Frog with a sly, knowing expression, set against an intricate, swirling background of green and brown. The design is symmetrical and ornate, resembling a vintage tapestry or wallpaper. The color palette of earthy tones adds a classic, almost regal vibe to the piece.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPETAROTONE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a central image of Pepe the Frog with a sly, knowing expression, set against an intricate, swirling background of green and brown. The design is symmetrical and ornate, resembling a vintage tapestry or wallpaper. The color palette of earthy tones adds a classic, almost regal vibe to the piece.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog with a contemplative face.\n- Resembles tarot card aesthetics, blending meme culture with mystical symbolism.\n- Intricate patterns evoke a sense of mystery and complexity, often seen in NFT art.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.987Z",
+  "sourceFactVersion": 1
+}

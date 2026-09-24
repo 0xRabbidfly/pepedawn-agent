@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "FAKEIJUANA",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 21,
+  "artist": "Porkchop",
+  "supply": 77,
+  "issuance": "August 2023",
+  "textOnCard": [
+    "\"PEPE'S HARVEST\"",
+    "\"RAREIJUANA\""
+  ],
+  "memeticReferences": [
+    "References to Pepe lore, with Pepe as a focal character.",
+    "\"Rareijuna\" playing on the cannabis culture and rarity in NFT space.",
+    "Elements of crypto culture: BTC, P2P, and sovereignty."
+  ],
+  "visualSummary": "The card features a retro comic book style with a bold color palette of orange, green, and white. It showcases a vintage pin-up style character interacting with a large joint labeled \"RAREIJUANA,\" emitting smoke that contains text. The composition is dynamic, with text and images layered to create a playful, chaotic vibe.",
+  "visualSummaryShort": "The card displays a retro comic book style with vibrant colors and a vintage pin-up character. It features a large joint emitting smoke, creating a playful and chaotic atmosphere.",
+  "visualKeywords": [
+    "retro",
+    "comic book",
+    "pin-up",
+    "orange",
+    "green",
+    "smoke",
+    "chaotic",
+    "vintage"
+  ],
+  "textKeywords": [
+    "harvest",
+    "rareijuana"
+  ],
+  "keywords": [
+    "retro",
+    "comic book",
+    "pin-up",
+    "orange",
+    "green",
+    "smoke",
+    "chaotic",
+    "vintage",
+    "harvest",
+    "rareijuana"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "FAKEIJUANA (Fake Rares) - Series 15 Card 21\nArtist: Porkchop\nSupply 77 Issued August 2023\nOn-card text: \"PEPE'S HARVEST\" | \"RAREIJUANA\"\nVisual summary: The card features a retro comic book style with a bold color palette of orange, green, and white. It showcases a vintage pin-up style character interacting with a large joint labeled \"RAREIJUANA,\" emitting smoke that contains text. The composition is dynamic, with text and images layered to create a playful, chaotic vibe.\nMemetic references: References to Pepe lore, with Pepe as a focal character.; \"Rareijuna\" playing on the cannabis culture and rarity in NFT space.; Elements of crypto culture: BTC, P2P, and sovereignty.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEIJUANA#text",
+      "label": "On-card text",
+      "text": "\"PEPE'S HARVEST\" | \"RAREIJUANA\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEIJUANA#memetic",
+      "label": "Memetic references",
+      "text": "References to Pepe lore, with Pepe as a focal character.\n\"Rareijuna\" playing on the cannabis culture and rarity in NFT space.\nElements of crypto culture: BTC, P2P, and sovereignty.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEIJUANA#visual",
+      "label": "Visual summary",
+      "text": "The card features a retro comic book style with a bold color palette of orange, green, and white. It showcases a vintage pin-up style character interacting with a large joint labeled \"RAREIJUANA,\" emitting smoke that contains text. The composition is dynamic, with text and images layered to create a playful, chaotic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEIJUANA#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n\"PEPE'S HARVEST\"  \n\"RAREIJUANA\"\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a retro comic book style with a bold color palette of orange, green, and white. It showcases a vintage pin-up style character interacting with a large joint labeled \"RAREIJUANA,\" emitting smoke that contains text. The composition is dynamic, with text and images layered to create a playful, chaotic vibe.\n\n🧬 **MEMETIC DNA:**\n- References to Pepe lore, with Pepe as a focal character.\n- \"Rareijuna\" playing on the cannabis culture and rarity in NFT space.\n- Elements of crypto culture: BTC, P2P, and sovereignty.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:30:57.866Z"
+}

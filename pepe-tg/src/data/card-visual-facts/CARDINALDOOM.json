@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "asset": "CARDINALDOOM",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 28,
+  "artist": "Hues",
+  "supply": 21,
+  "issuance": "February 2026",
+  "textOnCard": [
+    "MF, FAKE"
+  ],
+  "memeticReferences": [
+    "References to MF DOOM, the iconic masked rapper.",
+    "Pepe the Frog influence with the green skin tone.",
+    "The word \"FAKE\" plays on NFT culture and authenticity debates."
+  ],
+  "visualSummary": "The card presents a stylized, abstract portrait with a dark, moody background. A green figure wears a blue helmet reminiscent of a famous mask, with bold, expressive eyes peering through. The color palette is dominated by dark reds, browns, and flashes of green and blue, creating a dramatic contrast.",
+  "visualSummaryShort": "The card features a stylized portrait of a green figure in a blue helmet against a dark, moody background. The color palette includes dark reds, browns, and vibrant flashes of green and blue.",
+  "visualKeywords": [
+    "portrait",
+    "green figure",
+    "blue helmet",
+    "dark background",
+    "expressive eyes",
+    "red",
+    "brown",
+    "dramatic contrast"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "portrait",
+    "green figure",
+    "blue helmet",
+    "dark background",
+    "expressive eyes",
+    "red",
+    "brown",
+    "dramatic contrast"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "CARDINALDOOM (Fake Rares) - Series 18 Card 28\nArtist: Hues\nSupply 21 Issued February 2026\nOn-card text: MF, FAKE\nVisual summary: The card presents a stylized, abstract portrait with a dark, moody background. A green figure wears a blue helmet reminiscent of a famous mask, with bold, expressive eyes peering through. The color palette is dominated by dark reds, browns, and flashes of green and blue, creating a dramatic contrast.\nMemetic references: References to MF DOOM, the iconic masked rapper.; Pepe the Frog influence with the green skin tone.; The word \"FAKE\" plays on NFT culture and authenticity debates.",
+  "embeddingBlocks": [
+    {
+      "id": "CARDINALDOOM#text",
+      "label": "On-card text",
+      "text": "MF, FAKE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "CARDINALDOOM#memetic",
+      "label": "Memetic references",
+      "text": "References to MF DOOM, the iconic masked rapper.\nPepe the Frog influence with the green skin tone.\nThe word \"FAKE\" plays on NFT culture and authenticity debates.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "CARDINALDOOM#visual",
+      "label": "Visual summary",
+      "text": "The card presents a stylized, abstract portrait with a dark, moody background. A green figure wears a blue helmet reminiscent of a famous mask, with bold, expressive eyes peering through. The color palette is dominated by dark reds, browns, and flashes of green and blue, creating a dramatic contrast.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "CARDINALDOOM#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nMF, FAKE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card presents a stylized, abstract portrait with a dark, moody background. A green figure wears a blue helmet reminiscent of a famous mask, with bold, expressive eyes peering through. The color palette is dominated by dark reds, browns, and flashes of green and blue, creating a dramatic contrast.\n\n🧬 **MEMETIC DNA:**\n- References to MF DOOM, the iconic masked rapper.\n- Pepe the Frog influence with the green skin tone.\n- The word \"FAKE\" plays on NFT culture and authenticity debates.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:31:19.622Z"
+}

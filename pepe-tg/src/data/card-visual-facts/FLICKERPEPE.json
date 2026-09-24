@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "FLICKERPEPE",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 36,
+  "artist": "Bryan Brinkman",
+  "supply": 100,
+  "issuance": "August 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery, a staple in meme culture.",
+    "Neon aesthetic reminiscent of cyberpunk and synthwave styles.",
+    "Evokes feelings of internet nostalgia and crypto nightlife."
+  ],
+  "visualSummary": "This card features a neon-lit Pepe the Frog, glowing in vibrant shades of green and pink against a dark background. The neon lines are bold and fluid, creating a striking contrast and giving the artwork a retro-futuristic vibe. The glowing eyes and lips add a dynamic, almost hypnotic element to the composition.",
+  "visualSummaryShort": "The card showcases a neon-lit Pepe the Frog in vibrant green and pink hues. Its bold, fluid lines and glowing features create a striking retro-futuristic atmosphere.",
+  "visualKeywords": [
+    "neon",
+    "pepe the frog",
+    "green",
+    "pink",
+    "dark background",
+    "glowing",
+    "retro-futuristic",
+    "hypnotic",
+    "bold lines",
+    "fluid"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "neon",
+    "pepe the frog",
+    "green",
+    "pink",
+    "dark background",
+    "glowing",
+    "retro-futuristic",
+    "hypnotic",
+    "bold lines",
+    "fluid"
+  ],
+  "embeddingInput": "FLICKERPEPE (Fake Rares) - Series 10 Card 36\nArtist: Bryan Brinkman\nSupply 100 Issued August 2022\nOn-card text: none detected\nVisual summary: This card features a neon-lit Pepe the Frog, glowing in vibrant shades of green and pink against a dark background. The neon lines are bold and fluid, creating a striking contrast and giving the artwork a retro-futuristic vibe. The glowing eyes and lips add a dynamic, almost hypnotic element to the composition.\nMemetic references: Classic Pepe the Frog imagery, a staple in meme culture.; Neon aesthetic reminiscent of cyberpunk and synthwave styles.; Evokes feelings of internet nostalgia and crypto nightlife.",
+  "embeddingBlocks": [
+    {
+      "id": "FLICKERPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery, a staple in meme culture.\nNeon aesthetic reminiscent of cyberpunk and synthwave styles.\nEvokes feelings of internet nostalgia and crypto nightlife.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FLICKERPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a neon-lit Pepe the Frog, glowing in vibrant shades of green and pink against a dark background. The neon lines are bold and fluid, creating a striking contrast and giving the artwork a retro-futuristic vibe. The glowing eyes and lips add a dynamic, almost hypnotic element to the composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FLICKERPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a neon-lit Pepe the Frog, glowing in vibrant shades of green and pink against a dark background. The neon lines are bold and fluid, creating a striking contrast and giving the artwork a retro-futuristic vibe. The glowing eyes and lips add a dynamic, almost hypnotic element to the composition.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery, a staple in meme culture.\n- Neon aesthetic reminiscent of cyberpunk and synthwave styles.\n- Evokes feelings of internet nostalgia and crypto nightlife.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.629Z",
+  "sourceFactVersion": 1
+}

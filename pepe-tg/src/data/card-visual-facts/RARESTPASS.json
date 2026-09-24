@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "RARESTPASS",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 44,
+  "artist": "ROBNESS V2 x PEEPS",
+  "supply": 58,
+  "issuance": "January 2023",
+  "textOnCard": [
+    "The Rarest Pass"
+  ],
+  "memeticReferences": [
+    "Pixel art reminiscent of classic video games.",
+    "References to stoner culture with the joint.",
+    "Pepe the Frog's iconic smile and sunglasses, a nod to internet meme culture."
+  ],
+  "visualSummary": "The card features a minimalist design with a green background reminiscent of a digital screen. A pixelated face with sunglasses and a mischievous smile is accentuated by a lit joint, exuding a chill vibe. The gothic font of the text at the bottom contrasts with the otherwise modern, sleek design.",
+  "visualSummaryShort": "The card showcases a minimalist design with a green digital screen background and a pixelated face wearing sunglasses. The overall vibe is chill, highlighted by a lit joint and contrasting gothic font.",
+  "visualKeywords": [
+    "green background",
+    "pixelated face",
+    "sunglasses",
+    "mischievous smile",
+    "lit joint",
+    "gothic font",
+    "minimalist design",
+    "chill vibe"
+  ],
+  "textKeywords": [
+    "rarest",
+    "pass"
+  ],
+  "keywords": [
+    "green background",
+    "pixelated face",
+    "sunglasses",
+    "mischievous smile",
+    "lit joint",
+    "gothic font",
+    "minimalist design",
+    "chill vibe",
+    "rarest",
+    "pass"
+  ],
+  "embeddingInput": "RARESTPASS (Fake Rares) - Series 12 Card 44\nArtist: ROBNESS V2 x PEEPS\nSupply 58 Issued January 2023\nOn-card text: The Rarest Pass\nVisual summary: The card features a minimalist design with a green background reminiscent of a digital screen. A pixelated face with sunglasses and a mischievous smile is accentuated by a lit joint, exuding a chill vibe. The gothic font of the text at the bottom contrasts with the otherwise modern, sleek design.\nMemetic references: Pixel art reminiscent of classic video games.; References to stoner culture with the joint.; Pepe the Frog's iconic smile and sunglasses, a nod to internet meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "RARESTPASS#text",
+      "label": "On-card text",
+      "text": "The Rarest Pass",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "RARESTPASS#memetic",
+      "label": "Memetic references",
+      "text": "Pixel art reminiscent of classic video games.\nReferences to stoner culture with the joint.\nPepe the Frog's iconic smile and sunglasses, a nod to internet meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RARESTPASS#visual",
+      "label": "Visual summary",
+      "text": "The card features a minimalist design with a green background reminiscent of a digital screen. A pixelated face with sunglasses and a mischievous smile is accentuated by a lit joint, exuding a chill vibe. The gothic font of the text at the bottom contrasts with the otherwise modern, sleek design.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RARESTPASS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nThe Rarest Pass\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a minimalist design with a green background reminiscent of a digital screen. A pixelated face with sunglasses and a mischievous smile is accentuated by a lit joint, exuding a chill vibe. The gothic font of the text at the bottom contrasts with the otherwise modern, sleek design.\n\n🧬 **MEMETIC DNA:**\n- Pixel art reminiscent of classic video games.\n- References to stoner culture with the joint.\n- Pepe the Frog's iconic smile and sunglasses, a nod to internet meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.074Z",
+  "sourceFactVersion": 1
+}

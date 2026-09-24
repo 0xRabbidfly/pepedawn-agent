@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "asset": "KREMLINPEPE",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 23,
+  "artist": "Pepe Inside x Hammad",
+  "supply": 21,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "KREMLINPEPE",
+    "HARMONY = ∞",
+    "Peace is not absence of conflict, it is the ability to handle conflict by peaceful means",
+    "PEPE REGAN"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as central characters, a staple in meme culture.",
+    "References to geopolitical themes, possibly hinting at diplomacy or conflict resolution.",
+    "The phrase \"PEPE REGAN\" suggests a nod to historical political figures, possibly Ronald Reagan."
+  ],
+  "visualSummary": "The card features a chaotic scene with Pepe characters engaging in a paper exchange in front of military trucks, set against a dark, gritty urban backdrop. The color palette leans heavily on dark greens and grays, giving a somber, tense vibe. The artistic style is a mix of cartoonish and realistic elements, emphasizing the surreal nature of the scene.",
+  "visualSummaryShort": "The card depicts a chaotic scene with Pepe characters involved in a paper exchange amidst military trucks in a dark urban setting. The color scheme features dark greens and grays, contributing to a tense atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "military trucks",
+    "urban",
+    "dark colors",
+    "chaotic",
+    "surreal",
+    "gritty",
+    "cartoonish",
+    "realistic",
+    "tense"
+  ],
+  "textKeywords": [
+    "kremlinpepe",
+    "harmony",
+    "peace",
+    "not",
+    "absence",
+    "conflict",
+    "ability",
+    "handle",
+    "peaceful",
+    "means",
+    "regan"
+  ],
+  "keywords": [
+    "pepe",
+    "military trucks",
+    "urban",
+    "dark colors",
+    "chaotic",
+    "surreal",
+    "gritty",
+    "cartoonish",
+    "realistic",
+    "tense",
+    "kremlinpepe",
+    "harmony",
+    "peace",
+    "not",
+    "absence",
+    "conflict",
+    "ability",
+    "handle",
+    "peaceful",
+    "means",
+    "regan"
+  ],
+  "embeddingInput": "KREMLINPEPE (Fake Rares) - Series 10 Card 23\nArtist: Pepe Inside x Hammad\nSupply 21 Issued February 2022\nOn-card text: KREMLINPEPE | HARMONY = ∞ | Peace is not absence of conflict, it is the ability to handle conflict by peaceful means | PEPE REGAN\nVisual summary: The card features a chaotic scene with Pepe characters engaging in a paper exchange in front of military trucks, set against a dark, gritty urban backdrop. The color palette leans heavily on dark greens and grays, giving a somber, tense vibe. The artistic style is a mix of cartoonish and realistic elements, emphasizing the surreal nature of the scene.\nMemetic references: Pepe the Frog as central characters, a staple in meme culture.; References to geopolitical themes, possibly hinting at diplomacy or conflict resolution.; The phrase \"PEPE REGAN\" suggests a nod to historical political figures, possibly Ronald Reagan.",
+  "embeddingBlocks": [
+    {
+      "id": "KREMLINPEPE#text",
+      "label": "On-card text",
+      "text": "KREMLINPEPE | HARMONY = ∞ | Peace is not absence of conflict, it is the ability to handle conflict by peaceful means | PEPE REGAN",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "KREMLINPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as central characters, a staple in meme culture.\nReferences to geopolitical themes, possibly hinting at diplomacy or conflict resolution.\nThe phrase \"PEPE REGAN\" suggests a nod to historical political figures, possibly Ronald Reagan.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "KREMLINPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a chaotic scene with Pepe characters engaging in a paper exchange in front of military trucks, set against a dark, gritty urban backdrop. The color palette leans heavily on dark greens and grays, giving a somber, tense vibe. The artistic style is a mix of cartoonish and realistic elements, emphasizing the surreal nature of the scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "KREMLINPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nKREMLINPEPE  \nHARMONY = ∞  \nPeace is not absence of conflict, it is the ability to handle conflict by peaceful means  \nPEPE REGAN\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a chaotic scene with Pepe characters engaging in a paper exchange in front of military trucks, set against a dark, gritty urban backdrop. The color palette leans heavily on dark greens and grays, giving a somber, tense vibe. The artistic style is a mix of cartoonish and realistic elements, emphasizing the surreal nature of the scene.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as central characters, a staple in meme culture.\n- References to geopolitical themes, possibly hinting at diplomacy or conflict resolution.\n- The phrase \"PEPE REGAN\" suggests a nod to historical political figures, possibly Ronald Reagan.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.722Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "asset": "EYEOFTIGER",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 21,
+  "artist": "OOAKOSIMO",
+  "supply": 28,
+  "issuance": "April 2023",
+  "textOnCard": [
+    "EYE OF TIGER",
+    "SURF UP WITH FAKE PEPE",
+    "FAKE PEPE AIMS FOR THE EYE OF THE TIGER",
+    "FOR BEAUTY IS IN THE EYE OF THE TIGER"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple of meme culture.",
+    "References to the song \"Eye of the Tiger,\" adding a layer of motivational parody.",
+    "Surreal elements that are common in crypto art, enhancing the absurdity."
+  ],
+  "visualSummary": "The card features a surreal scene with a green Pepe the Frog surfing on a red board, surrounded by golden leaf-like structures. The background is a seascape with a vibrant blue sky and a dynamic wave pattern. The artistic style is a blend of digital collage and surrealism, with a playful and chaotic color palette dominated by blues, greens, and golds.",
+  "visualSummaryShort": "The card depicts a surreal scene of a green Pepe the Frog surfing on a red board amidst golden leaf-like structures. The vibrant blue sky and dynamic wave pattern create a playful and chaotic atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "surfing",
+    "red board",
+    "gold leaves",
+    "blue sky",
+    "waves",
+    "surreal",
+    "chaotic",
+    "digital collage",
+    "vibrant colors"
+  ],
+  "textKeywords": [
+    "eye",
+    "tiger",
+    "surf",
+    "aims",
+    "beauty"
+  ],
+  "keywords": [
+    "pepe",
+    "surfing",
+    "red board",
+    "gold leaves",
+    "blue sky",
+    "waves",
+    "surreal",
+    "chaotic",
+    "digital collage",
+    "vibrant colors",
+    "eye",
+    "tiger",
+    "surf",
+    "aims",
+    "beauty"
+  ],
+  "embeddingInput": "EYEOFTIGER (Fake Rares) - Series 14 Card 21\nArtist: OOAKOSIMO\nSupply 28 Issued April 2023\nOn-card text: EYE OF TIGER | SURF UP WITH FAKE PEPE | FAKE PEPE AIMS FOR THE EYE OF THE TIGER | FOR BEAUTY IS IN THE EYE OF THE TIGER\nVisual summary: The card features a surreal scene with a green Pepe the Frog surfing on a red board, surrounded by golden leaf-like structures. The background is a seascape with a vibrant blue sky and a dynamic wave pattern. The artistic style is a blend of digital collage and surrealism, with a playful and chaotic color palette dominated by blues, greens, and golds.\nMemetic references: Pepe the Frog, a staple of meme culture.; References to the song \"Eye of the Tiger,\" adding a layer of motivational parody.; Surreal elements that are common in crypto art, enhancing the absurdity.",
+  "embeddingBlocks": [
+    {
+      "id": "EYEOFTIGER#text",
+      "label": "On-card text",
+      "text": "EYE OF TIGER | SURF UP WITH FAKE PEPE | FAKE PEPE AIMS FOR THE EYE OF THE TIGER | FOR BEAUTY IS IN THE EYE OF THE TIGER",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "EYEOFTIGER#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple of meme culture.\nReferences to the song \"Eye of the Tiger,\" adding a layer of motivational parody.\nSurreal elements that are common in crypto art, enhancing the absurdity.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "EYEOFTIGER#visual",
+      "label": "Visual summary",
+      "text": "The card features a surreal scene with a green Pepe the Frog surfing on a red board, surrounded by golden leaf-like structures. The background is a seascape with a vibrant blue sky and a dynamic wave pattern. The artistic style is a blend of digital collage and surrealism, with a playful and chaotic color palette dominated by blues, greens, and golds.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "EYEOFTIGER#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nEYE OF TIGER  \nSURF UP WITH FAKE PEPE  \nFAKE PEPE AIMS FOR THE EYE OF THE TIGER  \nFOR BEAUTY IS IN THE EYE OF THE TIGER\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a surreal scene with a green Pepe the Frog surfing on a red board, surrounded by golden leaf-like structures. The background is a seascape with a vibrant blue sky and a dynamic wave pattern. The artistic style is a blend of digital collage and surrealism, with a playful and chaotic color palette dominated by blues, greens, and golds.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple of meme culture.\n- References to the song \"Eye of the Tiger,\" adding a layer of motivational parody.\n- Surreal elements that are common in crypto art, enhancing the absurdity.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.432Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "PEPERNINTEEN",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 16,
+  "artist": "Luis Simo",
+  "supply": 22,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "PEPERNICA",
+    "FAKENESS"
+  ],
+  "memeticReferences": [
+    "References to Pepe the Frog in the style and character design.",
+    "Crypto culture symbol with the emblem in the sun.",
+    "Parody of Picasso's \"Guernica,\" blending classic art with meme culture.",
+    "The word \"FAKENESS\" suggests commentary on authenticity and digital culture."
+  ],
+  "visualSummary": "This card features a bold, cartoonish depiction of a green, open-mouthed creature reminiscent of classic Pepe memes, set against a dark, abstract background. The top of the image shows a yellow, sun-like symbol with a crypto emblem, projecting rays downwards. The overall color palette is dominated by dark blues and greens, with sharp lines and a pop art style that evokes a sense of chaos and satire.",
+  "visualSummaryShort": "The card showcases a cartoonish green creature with an open mouth against a dark, abstract background. A yellow sun-like symbol with a crypto emblem adds a striking contrast to the overall dark color palette.",
+  "visualKeywords": [
+    "green creature",
+    "dark background",
+    "yellow symbol",
+    "pop art",
+    "chaos",
+    "abstract",
+    "blue palette",
+    "sharp lines"
+  ],
+  "textKeywords": [
+    "pepernica",
+    "fakeness"
+  ],
+  "keywords": [
+    "green creature",
+    "dark background",
+    "yellow symbol",
+    "pop art",
+    "chaos",
+    "abstract",
+    "blue palette",
+    "sharp lines",
+    "pepernica",
+    "fakeness"
+  ],
+  "embeddingInput": "PEPERNINTEEN (Fake Rares) - Series 10 Card 16\nArtist: Luis Simo\nSupply 22 Issued September 2022\nOn-card text: PEPERNICA | FAKENESS\nVisual summary: This card features a bold, cartoonish depiction of a green, open-mouthed creature reminiscent of classic Pepe memes, set against a dark, abstract background. The top of the image shows a yellow, sun-like symbol with a crypto emblem, projecting rays downwards. The overall color palette is dominated by dark blues and greens, with sharp lines and a pop art style that evokes a sense of chaos and satire.\nMemetic references: References to Pepe the Frog in the style and character design.; Crypto culture symbol with the emblem in the sun.; Parody of Picasso's \"Guernica,\" blending classic art with meme culture.; The word \"FAKENESS\" suggests commentary on authenticity and digital culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPERNINTEEN#text",
+      "label": "On-card text",
+      "text": "PEPERNICA | FAKENESS",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPERNINTEEN#memetic",
+      "label": "Memetic references",
+      "text": "References to Pepe the Frog in the style and character design.\nCrypto culture symbol with the emblem in the sun.\nParody of Picasso's \"Guernica,\" blending classic art with meme culture.\nThe word \"FAKENESS\" suggests commentary on authenticity and digital culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPERNINTEEN#visual",
+      "label": "Visual summary",
+      "text": "This card features a bold, cartoonish depiction of a green, open-mouthed creature reminiscent of classic Pepe memes, set against a dark, abstract background. The top of the image shows a yellow, sun-like symbol with a crypto emblem, projecting rays downwards. The overall color palette is dominated by dark blues and greens, with sharp lines and a pop art style that evokes a sense of chaos and satire.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPERNINTEEN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPERNICA  \nFAKENESS\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a bold, cartoonish depiction of a green, open-mouthed creature reminiscent of classic Pepe memes, set against a dark, abstract background. The top of the image shows a yellow, sun-like symbol with a crypto emblem, projecting rays downwards. The overall color palette is dominated by dark blues and greens, with sharp lines and a pop art style that evokes a sense of chaos and satire.\n\n🧬 **MEMETIC DNA:**\n- References to Pepe the Frog in the style and character design.\n- Crypto culture symbol with the emblem in the sun.\n- Parody of Picasso's \"Guernica,\" blending classic art with meme culture.\n- The word \"FAKENESS\" suggests commentary on authenticity and digital culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.961Z",
+  "sourceFactVersion": 1
+}

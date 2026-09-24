@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "RUGGEDROTHKO",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 34,
+  "artist": "Skife",
+  "supply": 74,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "FAKEA",
+    "RUGGEDRÖTHKÖ"
+  ],
+  "memeticReferences": [
+    "Parody of IKEA branding, a nod to DIY culture.",
+    "Reference to crypto slang \"rugged,\" implying unexpected loss or failure.",
+    "Potential connection to Pepe culture through the green figure."
+  ],
+  "visualSummary": "The card features a wooden floor background with a dynamic shadow cast across it, suggesting a minimalist interior scene. In the center, there's a logo inspired by a well-known furniture brand, but humorously altered to \"FAKEA.\" A small green figure lies on the floor, possibly a nod to a playful take on an assembly mishap.",
+  "visualSummaryShort": "The card showcases a minimalist interior with a wooden floor and a dynamic shadow. A small green figure and a humorously altered logo add a playful touch to the scene.",
+  "visualKeywords": [
+    "wooden floor",
+    "shadow",
+    "green figure",
+    "minimalist",
+    "logo",
+    "interior",
+    "playful"
+  ],
+  "textKeywords": [
+    "fakea",
+    "ruggedr",
+    "thk"
+  ],
+  "keywords": [
+    "wooden floor",
+    "shadow",
+    "green figure",
+    "minimalist",
+    "logo",
+    "interior",
+    "playful",
+    "fakea",
+    "ruggedr",
+    "thk"
+  ],
+  "embeddingInput": "RUGGEDROTHKO (Fake Rares) - Series 9 Card 34\nArtist: Skife\nSupply 74 Issued March 2022\nOn-card text: FAKEA | RUGGEDRÖTHKÖ\nVisual summary: The card features a wooden floor background with a dynamic shadow cast across it, suggesting a minimalist interior scene. In the center, there's a logo inspired by a well-known furniture brand, but humorously altered to \"FAKEA.\" A small green figure lies on the floor, possibly a nod to a playful take on an assembly mishap.\nMemetic references: Parody of IKEA branding, a nod to DIY culture.; Reference to crypto slang \"rugged,\" implying unexpected loss or failure.; Potential connection to Pepe culture through the green figure.",
+  "embeddingBlocks": [
+    {
+      "id": "RUGGEDROTHKO#text",
+      "label": "On-card text",
+      "text": "FAKEA | RUGGEDRÖTHKÖ",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "RUGGEDROTHKO#memetic",
+      "label": "Memetic references",
+      "text": "Parody of IKEA branding, a nod to DIY culture.\nReference to crypto slang \"rugged,\" implying unexpected loss or failure.\nPotential connection to Pepe culture through the green figure.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RUGGEDROTHKO#visual",
+      "label": "Visual summary",
+      "text": "The card features a wooden floor background with a dynamic shadow cast across it, suggesting a minimalist interior scene. In the center, there's a logo inspired by a well-known furniture brand, but humorously altered to \"FAKEA.\" A small green figure lies on the floor, possibly a nod to a playful take on an assembly mishap.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RUGGEDROTHKO#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKEA  \nRUGGEDRÖTHKÖ\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a wooden floor background with a dynamic shadow cast across it, suggesting a minimalist interior scene. In the center, there's a logo inspired by a well-known furniture brand, but humorously altered to \"FAKEA.\" A small green figure lies on the floor, possibly a nod to a playful take on an assembly mishap.\n\n🧬 **MEMETIC DNA:**\n- Parody of IKEA branding, a nod to DIY culture.\n- Reference to crypto slang \"rugged,\" implying unexpected loss or failure.\n- Potential connection to Pepe culture through the green figure.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.090Z",
+  "sourceFactVersion": 1
+}

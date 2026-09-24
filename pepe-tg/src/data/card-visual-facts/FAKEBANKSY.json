@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "asset": "FAKEBANKSY",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 1,
+  "artist": "Wizard X",
+  "supply": 64,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "FAKEBANKSY",
+    "On a long enough timeline, every shitcoin gets shredded.",
+    "Rareness Score 98"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog meets a famous public figure, blending meme culture with pop art.",
+    "References to the volatility and transient nature of cryptocurrencies.",
+    "Digital, matrix-style background evokes themes of hacking and cyberculture.",
+    "Playing card elements like \"Atk\", \"Spd\", and \"Ele\" add a gamified feel."
+  ],
+  "visualSummary": "The card features a Pepe-fied version of a famous public figure in a pixelated style, set against a matrix-like digital background. The color palette includes shades of green, grey, and red, creating a cyberpunk aesthetic. The card is framed in an ornate gold frame, adding a touch of irony and sophistication.",
+  "visualSummaryShort": "The card showcases a pixelated Pepe version of a well-known figure against a matrix-like digital backdrop. It features a green, grey, and red color palette with an ornate gold frame, enhancing its cyberpunk vibe.",
+  "visualKeywords": [
+    "pepe",
+    "pixelated",
+    "digital",
+    "green",
+    "grey",
+    "red",
+    "cyberpunk",
+    "gold frame",
+    "irony",
+    "sophistication"
+  ],
+  "textKeywords": [
+    "fakebanksy",
+    "long",
+    "enough",
+    "timeline",
+    "every",
+    "shitcoin",
+    "gets",
+    "shredded",
+    "rareness",
+    "score"
+  ],
+  "keywords": [
+    "pepe",
+    "pixelated",
+    "digital",
+    "green",
+    "grey",
+    "red",
+    "cyberpunk",
+    "gold frame",
+    "irony",
+    "sophistication",
+    "fakebanksy",
+    "long",
+    "enough",
+    "timeline",
+    "every",
+    "shitcoin",
+    "gets",
+    "shredded",
+    "rareness",
+    "score"
+  ],
+  "embeddingInput": "FAKEBANKSY (Fake Rares) - Series 2 Card 1\nArtist: Wizard X\nSupply 64 Issued October 2021\nOn-card text: FAKEBANKSY | On a long enough timeline, every shitcoin gets shredded. | Rareness Score 98\nVisual summary: The card features a Pepe-fied version of a famous public figure in a pixelated style, set against a matrix-like digital background. The color palette includes shades of green, grey, and red, creating a cyberpunk aesthetic. The card is framed in an ornate gold frame, adding a touch of irony and sophistication.\nMemetic references: Pepe the Frog meets a famous public figure, blending meme culture with pop art.; References to the volatility and transient nature of cryptocurrencies.; Digital, matrix-style background evokes themes of hacking and cyberculture.; Playing card elements like \"Atk\", \"Spd\", and \"Ele\" add a gamified feel.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEBANKSY#text",
+      "label": "On-card text",
+      "text": "FAKEBANKSY | On a long enough timeline, every shitcoin gets shredded. | Rareness Score 98",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEBANKSY#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog meets a famous public figure, blending meme culture with pop art.\nReferences to the volatility and transient nature of cryptocurrencies.\nDigital, matrix-style background evokes themes of hacking and cyberculture.\nPlaying card elements like \"Atk\", \"Spd\", and \"Ele\" add a gamified feel.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEBANKSY#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe-fied version of a famous public figure in a pixelated style, set against a matrix-like digital background. The color palette includes shades of green, grey, and red, creating a cyberpunk aesthetic. The card is framed in an ornate gold frame, adding a touch of irony and sophistication.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEBANKSY#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKEBANKSY  \nOn a long enough timeline, every shitcoin gets shredded.  \nRareness Score 98\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe-fied version of a famous public figure in a pixelated style, set against a matrix-like digital background. The color palette includes shades of green, grey, and red, creating a cyberpunk aesthetic. The card is framed in an ornate gold frame, adding a touch of irony and sophistication.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog meets a famous public figure, blending meme culture with pop art.\n- References to the volatility and transient nature of cryptocurrencies.\n- Digital, matrix-style background evokes themes of hacking and cyberculture.\n- Playing card elements like \"Atk\", \"Spd\", and \"Ele\" add a gamified feel.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.459Z",
+  "sourceFactVersion": 1
+}

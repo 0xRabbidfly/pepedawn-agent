@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "asset": "MAZEPEPE",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 24,
+  "artist": "SASHA CHUDO",
+  "supply": 88,
+  "issuance": "July 2023",
+  "textOnCard": [
+    "FAKE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure, a staple in meme culture.",
+    "Bitcoin symbols in the eyes, representing the crypto world.",
+    "The word \"FAKE\" suggests a playful nod to the NFT and crypto art scene.",
+    "Maze design symbolizes the complexity and adventure of navigating the crypto space."
+  ],
+  "visualSummary": "The card features an intricate maze designed in the shape of Pepe the Frog, set against a vivid orange background. The maze is cleverly constructed with bold lines, creating a three-dimensional effect, and the eyes of Pepe are styled with Bitcoin symbols. The background is patterned with repeated Bitcoin logos, reinforcing the crypto theme.",
+  "visualSummaryShort": "The card showcases a maze shaped like Pepe the Frog on a bright orange background. It features bold lines and Bitcoin symbols in Pepe's eyes, with a pattern of Bitcoin logos in the background.",
+  "visualKeywords": [
+    "maze",
+    "pepe",
+    "orange",
+    "bitcoin",
+    "bold lines",
+    "pattern",
+    "crypto theme"
+  ],
+  "textKeywords": [
+    "fake"
+  ],
+  "keywords": [
+    "maze",
+    "pepe",
+    "orange",
+    "bitcoin",
+    "bold lines",
+    "pattern",
+    "crypto theme",
+    "fake"
+  ],
+  "embeddingInput": "MAZEPEPE (Fake Rares) - Series 15 Card 24\nArtist: SASHA CHUDO\nSupply 88 Issued July 2023\nOn-card text: FAKE\nVisual summary: The card features an intricate maze designed in the shape of Pepe the Frog, set against a vivid orange background. The maze is cleverly constructed with bold lines, creating a three-dimensional effect, and the eyes of Pepe are styled with Bitcoin symbols. The background is patterned with repeated Bitcoin logos, reinforcing the crypto theme.\nMemetic references: Pepe the Frog as a central figure, a staple in meme culture.; Bitcoin symbols in the eyes, representing the crypto world.; The word \"FAKE\" suggests a playful nod to the NFT and crypto art scene.; Maze design symbolizes the complexity and adventure of navigating the crypto space.",
+  "embeddingBlocks": [
+    {
+      "id": "MAZEPEPE#text",
+      "label": "On-card text",
+      "text": "FAKE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MAZEPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure, a staple in meme culture.\nBitcoin symbols in the eyes, representing the crypto world.\nThe word \"FAKE\" suggests a playful nod to the NFT and crypto art scene.\nMaze design symbolizes the complexity and adventure of navigating the crypto space.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MAZEPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features an intricate maze designed in the shape of Pepe the Frog, set against a vivid orange background. The maze is cleverly constructed with bold lines, creating a three-dimensional effect, and the eyes of Pepe are styled with Bitcoin symbols. The background is patterned with repeated Bitcoin logos, reinforcing the crypto theme.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MAZEPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features an intricate maze designed in the shape of Pepe the Frog, set against a vivid orange background. The maze is cleverly constructed with bold lines, creating a three-dimensional effect, and the eyes of Pepe are styled with Bitcoin symbols. The background is patterned with repeated Bitcoin logos, reinforcing the crypto theme.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure, a staple in meme culture.\n- Bitcoin symbols in the eyes, representing the crypto world.\n- The word \"FAKE\" suggests a playful nod to the NFT and crypto art scene.\n- Maze design symbolizes the complexity and adventure of navigating the crypto space.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.763Z",
+  "sourceFactVersion": 1
+}

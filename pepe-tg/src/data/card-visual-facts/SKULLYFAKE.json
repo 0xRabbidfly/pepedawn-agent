@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "asset": "SKULLYFAKE",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 29,
+  "artist": "Cullen Colors",
+  "supply": 75,
+  "issuance": "February 2023",
+  "textOnCard": [
+    "Rare Pepe, Feels, she loves me NOT, RIP Bozolli (Rest in Pieces)."
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery with exaggerated emotional expression.",
+    "References to heartbreak and unrequited love, playing on the \"feels\" meme.",
+    "Crypto culture nod with the Ethereum symbol and NFT elements.",
+    "\"RIP Bozolli\" adds an inside joke or homage vibe."
+  ],
+  "visualSummary": "This card is a psychedelic collage with vibrant colors—greens, pinks, reds, and blues dominate the scene. A teary-eyed Pepe with a heartbroken expression is front and center, surrounded by swirling abstract patterns and eyeball motifs. The background is a chaotic mix of textures, featuring brick walls, flowers, and various cryptic symbols.",
+  "visualSummaryShort": "The card features a teary-eyed Pepe amidst a vibrant psychedelic collage of colors and abstract patterns. The chaotic background includes brick walls, flowers, and cryptic symbols, enhancing the emotional mood.",
+  "visualKeywords": [
+    "pepe",
+    "psychedelic",
+    "vibrant colors",
+    "abstract patterns",
+    "eyeballs",
+    "brick wall",
+    "flowers",
+    "chaotic",
+    "heartbroken",
+    "textures"
+  ],
+  "textKeywords": [
+    "feels",
+    "she",
+    "loves",
+    "not",
+    "rip",
+    "bozolli",
+    "rest",
+    "pieces"
+  ],
+  "keywords": [
+    "pepe",
+    "psychedelic",
+    "vibrant colors",
+    "abstract patterns",
+    "eyeballs",
+    "brick wall",
+    "flowers",
+    "chaotic",
+    "heartbroken",
+    "textures",
+    "feels",
+    "she",
+    "loves",
+    "not",
+    "rip",
+    "bozolli",
+    "rest",
+    "pieces"
+  ],
+  "embeddingInput": "SKULLYFAKE (Fake Rares) - Series 13 Card 29\nArtist: Cullen Colors\nSupply 75 Issued February 2023\nOn-card text: Rare Pepe, Feels, she loves me NOT, RIP Bozolli (Rest in Pieces).\nVisual summary: This card is a psychedelic collage with vibrant colors—greens, pinks, reds, and blues dominate the scene. A teary-eyed Pepe with a heartbroken expression is front and center, surrounded by swirling abstract patterns and eyeball motifs. The background is a chaotic mix of textures, featuring brick walls, flowers, and various cryptic symbols.\nMemetic references: Classic Pepe the Frog imagery with exaggerated emotional expression.; References to heartbreak and unrequited love, playing on the \"feels\" meme.; Crypto culture nod with the Ethereum symbol and NFT elements.; \"RIP Bozolli\" adds an inside joke or homage vibe.",
+  "embeddingBlocks": [
+    {
+      "id": "SKULLYFAKE#text",
+      "label": "On-card text",
+      "text": "Rare Pepe, Feels, she loves me NOT, RIP Bozolli (Rest in Pieces).",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "SKULLYFAKE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery with exaggerated emotional expression.\nReferences to heartbreak and unrequited love, playing on the \"feels\" meme.\nCrypto culture nod with the Ethereum symbol and NFT elements.\n\"RIP Bozolli\" adds an inside joke or homage vibe.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SKULLYFAKE#visual",
+      "label": "Visual summary",
+      "text": "This card is a psychedelic collage with vibrant colors—greens, pinks, reds, and blues dominate the scene. A teary-eyed Pepe with a heartbroken expression is front and center, surrounded by swirling abstract patterns and eyeball motifs. The background is a chaotic mix of textures, featuring brick walls, flowers, and various cryptic symbols.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SKULLYFAKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nRare Pepe, Feels, she loves me NOT, RIP Bozolli (Rest in Pieces).\n\n🎨 **VISUAL BREAKDOWN:**\nThis card is a psychedelic collage with vibrant colors—greens, pinks, reds, and blues dominate the scene. A teary-eyed Pepe with a heartbroken expression is front and center, surrounded by swirling abstract patterns and eyeball motifs. The background is a chaotic mix of textures, featuring brick walls, flowers, and various cryptic symbols.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery with exaggerated emotional expression.\n- References to heartbreak and unrequited love, playing on the \"feels\" meme.\n- Crypto culture nod with the Ethereum symbol and NFT elements.\n- \"RIP Bozolli\" adds an inside joke or homage vibe.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.112Z",
+  "sourceFactVersion": 1
+}

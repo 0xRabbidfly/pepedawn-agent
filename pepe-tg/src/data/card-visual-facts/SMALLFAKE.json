@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "asset": "SMALLFAKE",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 4,
+  "artist": "Easy B",
+  "supply": 75,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "Smallamoto Card",
+    "Size = 25% Fke = 100",
+    "One of the most small fakes in existence.",
+    "⭐ Smallness Score ⭐",
+    "97",
+    "4"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference with a twist.",
+    "Plays on the concept of \"smallness\" as a humorous trait.",
+    "References to fake cards and crypto culture."
+  ],
+  "visualSummary": "The card features a pixelated image of a green Pepe character with gray hair and glasses, set against a gray background. The color palette is simple, focusing on greens and grays, with a touch of white and black for details. The style is reminiscent of early internet graphics, with a nostalgic, lo-fi vibe.",
+  "visualSummaryShort": "The card showcases a pixelated green Pepe character with gray hair and glasses against a gray background. Its simple color palette and lo-fi style evoke a nostalgic early internet aesthetic.",
+  "visualKeywords": [
+    "pixelated",
+    "green pepe",
+    "gray background",
+    "nostalgic",
+    "lo-fi",
+    "glasses",
+    "simple palette"
+  ],
+  "textKeywords": [
+    "smallamoto",
+    "size",
+    "fke",
+    "100",
+    "one",
+    "small",
+    "fakes",
+    "existence",
+    "smallness",
+    "score"
+  ],
+  "keywords": [
+    "pixelated",
+    "green pepe",
+    "gray background",
+    "nostalgic",
+    "lo-fi",
+    "glasses",
+    "simple palette",
+    "smallamoto",
+    "size",
+    "fke",
+    "100",
+    "one",
+    "small",
+    "fakes",
+    "existence",
+    "smallness",
+    "score"
+  ],
+  "embeddingInput": "SMALLFAKE (Fake Rares) - Series 5 Card 4\nArtist: Easy B\nSupply 75 Issued November 2021\nOn-card text: Smallamoto Card | Size = 25% Fke = 100 | One of the most small fakes in existence. | ⭐ Smallness Score ⭐ | 97 | 4\nVisual summary: The card features a pixelated image of a green Pepe character with gray hair and glasses, set against a gray background. The color palette is simple, focusing on greens and grays, with a touch of white and black for details. The style is reminiscent of early internet graphics, with a nostalgic, lo-fi vibe.\nMemetic references: Pepe the Frog reference with a twist.; Plays on the concept of \"smallness\" as a humorous trait.; References to fake cards and crypto culture.",
+  "embeddingBlocks": [
+    {
+      "id": "SMALLFAKE#text",
+      "label": "On-card text",
+      "text": "Smallamoto Card | Size = 25% Fke = 100 | One of the most small fakes in existence. | ⭐ Smallness Score ⭐ | 97 | 4",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "SMALLFAKE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference with a twist.\nPlays on the concept of \"smallness\" as a humorous trait.\nReferences to fake cards and crypto culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SMALLFAKE#visual",
+      "label": "Visual summary",
+      "text": "The card features a pixelated image of a green Pepe character with gray hair and glasses, set against a gray background. The color palette is simple, focusing on greens and grays, with a touch of white and black for details. The style is reminiscent of early internet graphics, with a nostalgic, lo-fi vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SMALLFAKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nSmallamoto Card  \nSize = 25%  Fke = 100  \nOne of the most small fakes in existence.  \n⭐ Smallness Score ⭐  \n97/4  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a pixelated image of a green Pepe character with gray hair and glasses, set against a gray background. The color palette is simple, focusing on greens and grays, with a touch of white and black for details. The style is reminiscent of early internet graphics, with a nostalgic, lo-fi vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference with a twist.\n- Plays on the concept of \"smallness\" as a humorous trait.\n- References to fake cards and crypto culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.116Z",
+  "sourceFactVersion": 1
+}

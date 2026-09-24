@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "FREEDOMWAR",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 49,
+  "artist": "Pepenardo",
+  "supply": 100,
+  "issuance": "December 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Guy Fawkes mask reference, a symbol of rebellion and anonymity.",
+    "Bitcoin logo on the flag, signifying crypto revolution.",
+    "Pepe the Frog, a staple of meme culture, reimagined as a historical figure."
+  ],
+  "visualSummary": "The card features a figure reminiscent of a classic painting, standing proudly with an orange flag bearing the Bitcoin logo. The character has a green face, suggesting a Pepe-like homage, and wears a blue vest and historical attire. The background is a dramatic sky with clouds, adding to the grandeur and revolutionary vibe.",
+  "visualSummaryShort": "The card depicts a figure with a green face, dressed in historical attire and holding an orange flag with the Bitcoin logo. The dramatic sky and clouds enhance the revolutionary atmosphere.",
+  "visualKeywords": [
+    "figure",
+    "orange flag",
+    "bitcoin logo",
+    "green face",
+    "blue vest",
+    "historical attire",
+    "dramatic sky",
+    "clouds",
+    "revolutionary",
+    "grandeur"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "figure",
+    "orange flag",
+    "bitcoin logo",
+    "green face",
+    "blue vest",
+    "historical attire",
+    "dramatic sky",
+    "clouds",
+    "revolutionary",
+    "grandeur"
+  ],
+  "embeddingInput": "FREEDOMWAR (Fake Rares) - Series 13 Card 49\nArtist: Pepenardo\nSupply 100 Issued December 2022\nOn-card text: none detected\nVisual summary: The card features a figure reminiscent of a classic painting, standing proudly with an orange flag bearing the Bitcoin logo. The character has a green face, suggesting a Pepe-like homage, and wears a blue vest and historical attire. The background is a dramatic sky with clouds, adding to the grandeur and revolutionary vibe.\nMemetic references: Guy Fawkes mask reference, a symbol of rebellion and anonymity.; Bitcoin logo on the flag, signifying crypto revolution.; Pepe the Frog, a staple of meme culture, reimagined as a historical figure.",
+  "embeddingBlocks": [
+    {
+      "id": "FREEDOMWAR#memetic",
+      "label": "Memetic references",
+      "text": "Guy Fawkes mask reference, a symbol of rebellion and anonymity.\nBitcoin logo on the flag, signifying crypto revolution.\nPepe the Frog, a staple of meme culture, reimagined as a historical figure.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FREEDOMWAR#visual",
+      "label": "Visual summary",
+      "text": "The card features a figure reminiscent of a classic painting, standing proudly with an orange flag bearing the Bitcoin logo. The character has a green face, suggesting a Pepe-like homage, and wears a blue vest and historical attire. The background is a dramatic sky with clouds, adding to the grandeur and revolutionary vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FREEDOMWAR#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a figure reminiscent of a classic painting, standing proudly with an orange flag bearing the Bitcoin logo. The character has a green face, suggesting a Pepe-like homage, and wears a blue vest and historical attire. The background is a dramatic sky with clouds, adding to the grandeur and revolutionary vibe.\n\n🧬 **MEMETIC DNA:**\n- Guy Fawkes mask reference, a symbol of rebellion and anonymity.\n- Bitcoin logo on the flag, signifying crypto revolution.\n- Pepe the Frog, a staple of meme culture, reimagined as a historical figure.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.639Z",
+  "sourceFactVersion": 1
+}

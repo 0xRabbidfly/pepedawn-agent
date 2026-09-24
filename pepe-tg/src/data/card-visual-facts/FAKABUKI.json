@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "asset": "FAKABUKI",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 34,
+  "artist": "Melih Polat",
+  "supply": 55,
+  "issuance": "September 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "References to Japanese folklore with the demon mask.",
+    "The exaggerated eyes on the mask nod to Pepe meme culture.",
+    "Samurai and warrior symbolism blend with crypto-anarchist vibes."
+  ],
+  "visualSummary": "The card features a vibrant depiction of a figure in traditional Japanese attire wielding a sword. The character wears a striking red demon mask with exaggerated features and bulging eyes, adding a surreal twist. The color palette is rich and varied, incorporating bright greens, reds, and intricate patterns that mimic traditional Japanese textile designs.",
+  "visualSummaryShort": "The card showcases a figure in traditional Japanese attire holding a sword, adorned with a vivid red demon mask. The vibrant color palette includes bright greens and reds, complemented by intricate patterns reminiscent of Japanese textiles.",
+  "visualKeywords": [
+    "japanese attire",
+    "sword",
+    "demon mask",
+    "red",
+    "green",
+    "intricate patterns",
+    "vibrant colors"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "japanese attire",
+    "sword",
+    "demon mask",
+    "red",
+    "green",
+    "intricate patterns",
+    "vibrant colors"
+  ],
+  "embeddingInput": "FAKABUKI (Fake Rares) - Series 11 Card 34\nArtist: Melih Polat\nSupply 55 Issued September 2022\nOn-card text: none detected\nVisual summary: The card features a vibrant depiction of a figure in traditional Japanese attire wielding a sword. The character wears a striking red demon mask with exaggerated features and bulging eyes, adding a surreal twist. The color palette is rich and varied, incorporating bright greens, reds, and intricate patterns that mimic traditional Japanese textile designs.\nMemetic references: References to Japanese folklore with the demon mask.; The exaggerated eyes on the mask nod to Pepe meme culture.; Samurai and warrior symbolism blend with crypto-anarchist vibes.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKABUKI#memetic",
+      "label": "Memetic references",
+      "text": "References to Japanese folklore with the demon mask.\nThe exaggerated eyes on the mask nod to Pepe meme culture.\nSamurai and warrior symbolism blend with crypto-anarchist vibes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKABUKI#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant depiction of a figure in traditional Japanese attire wielding a sword. The character wears a striking red demon mask with exaggerated features and bulging eyes, adding a surreal twist. The color palette is rich and varied, incorporating bright greens, reds, and intricate patterns that mimic traditional Japanese textile designs.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKABUKI#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant depiction of a figure in traditional Japanese attire wielding a sword. The character wears a striking red demon mask with exaggerated features and bulging eyes, adding a surreal twist. The color palette is rich and varied, incorporating bright greens, reds, and intricate patterns that mimic traditional Japanese textile designs.\n\n🧬 **MEMETIC DNA:**\n- References to Japanese folklore with the demon mask.\n- The exaggerated eyes on the mask nod to Pepe meme culture.\n- Samurai and warrior symbolism blend with crypto-anarchist vibes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.434Z",
+  "sourceFactVersion": 1
+}

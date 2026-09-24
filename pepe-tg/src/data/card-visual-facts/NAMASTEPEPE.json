@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "NAMASTEPEPE",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 3,
+  "artist": "Optimist",
+  "supply": 114,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "PROGB FIAT"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog meme, a staple of internet culture.",
+    "Reference to meditation and Eastern spirituality with the lotus and posture.",
+    "\"PROGB FIAT\" on the hat, a twist on the anti-fiat sentiment in crypto culture.",
+    "Flying carpet adds a touch of fantasy and magic."
+  ],
+  "visualSummary": "This card features Pepe the Frog, depicted in a meditative pose on a flying carpet with a serene expression. The background is a dark, textured green, providing a contrast to Pepe's bright green skin and the vivid red of the carpet. The artistic style is cartoonish and playful, with a mix of Eastern and Western elements, including a stylized lotus in the background.",
+  "visualSummaryShort": "The card showcases Pepe the Frog in a meditative pose on a vibrant red flying carpet against a dark green background. The playful cartoonish style incorporates Eastern elements like a stylized lotus.",
+  "visualKeywords": [
+    "pepe",
+    "meditative",
+    "flying carpet",
+    "green background",
+    "red carpet",
+    "lotus",
+    "cartoonish",
+    "playful"
+  ],
+  "textKeywords": [
+    "progb",
+    "fiat"
+  ],
+  "keywords": [
+    "pepe",
+    "meditative",
+    "flying carpet",
+    "green background",
+    "red carpet",
+    "lotus",
+    "cartoonish",
+    "playful",
+    "progb",
+    "fiat"
+  ],
+  "embeddingInput": "NAMASTEPEPE (Fake Rares) - Series 7 Card 3\nArtist: Optimist\nSupply 114 Issued March 2022\nOn-card text: PROGB FIAT\nVisual summary: This card features Pepe the Frog, depicted in a meditative pose on a flying carpet with a serene expression. The background is a dark, textured green, providing a contrast to Pepe's bright green skin and the vivid red of the carpet. The artistic style is cartoonish and playful, with a mix of Eastern and Western elements, including a stylized lotus in the background.\nMemetic references: Pepe the Frog meme, a staple of internet culture.; Reference to meditation and Eastern spirituality with the lotus and posture.; \"PROGB FIAT\" on the hat, a twist on the anti-fiat sentiment in crypto culture.; Flying carpet adds a touch of fantasy and magic.",
+  "embeddingBlocks": [
+    {
+      "id": "NAMASTEPEPE#text",
+      "label": "On-card text",
+      "text": "PROGB FIAT",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "NAMASTEPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog meme, a staple of internet culture.\nReference to meditation and Eastern spirituality with the lotus and posture.\n\"PROGB FIAT\" on the hat, a twist on the anti-fiat sentiment in crypto culture.\nFlying carpet adds a touch of fantasy and magic.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "NAMASTEPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features Pepe the Frog, depicted in a meditative pose on a flying carpet with a serene expression. The background is a dark, textured green, providing a contrast to Pepe's bright green skin and the vivid red of the carpet. The artistic style is cartoonish and playful, with a mix of Eastern and Western elements, including a stylized lotus in the background.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "NAMASTEPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPROGB FIAT\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features Pepe the Frog, depicted in a meditative pose on a flying carpet with a serene expression. The background is a dark, textured green, providing a contrast to Pepe's bright green skin and the vivid red of the carpet. The artistic style is cartoonish and playful, with a mix of Eastern and Western elements, including a stylized lotus in the background.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog meme, a staple of internet culture.\n- Reference to meditation and Eastern spirituality with the lotus and posture.\n- \"PROGB FIAT\" on the hat, a twist on the anti-fiat sentiment in crypto culture.\n- Flying carpet adds a touch of fantasy and magic.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.788Z",
+  "sourceFactVersion": 1
+}

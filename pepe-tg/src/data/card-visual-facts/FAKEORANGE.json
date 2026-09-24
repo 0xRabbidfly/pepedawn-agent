@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "asset": "FAKEORANGE",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 25,
+  "artist": "Rare Scrilla",
+  "supply": 138,
+  "issuance": "August 2022",
+  "textOnCard": [
+    "FAKE ORANGE, DETOUR AHEAD."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog influence with the green hat.",
+    "Bitcoin symbol prominently displayed.",
+    "References to classic cartoons like Garfield.",
+    "Basketball scene reminiscent of iconic sports moments.",
+    "\"Detour Ahead\" sign hinting at meme culture's unpredictability."
+  ],
+  "visualSummary": "The card features a vibrant, chaotic composition with a mix of pop culture and meme elements. The color palette is bold, with oranges, greens, and purples dominating the scene, creating an eye-catching contrast. The artistic style is cartoonish and eclectic, with a central figure wearing a Bitcoin necklace and a green frog hat, surrounded by various characters and symbols.",
+  "visualSummaryShort": "The card showcases a vibrant and chaotic design filled with pop culture references. A central figure adorned with a Bitcoin necklace and a green frog hat is surrounded by eclectic characters and symbols.",
+  "visualKeywords": [
+    "vibrant",
+    "chaotic",
+    "cartoonish",
+    "bitcoin",
+    "frog hat",
+    "pop culture",
+    "bold colors",
+    "green",
+    "orange",
+    "purple"
+  ],
+  "textKeywords": [
+    "orange",
+    "detour",
+    "ahead"
+  ],
+  "keywords": [
+    "vibrant",
+    "chaotic",
+    "cartoonish",
+    "bitcoin",
+    "frog hat",
+    "pop culture",
+    "bold colors",
+    "green",
+    "orange",
+    "purple",
+    "detour",
+    "ahead"
+  ],
+  "embeddingInput": "FAKEORANGE (Fake Rares) - Series 15 Card 25\nArtist: Rare Scrilla\nSupply 138 Issued August 2022\nOn-card text: FAKE ORANGE, DETOUR AHEAD.\nVisual summary: The card features a vibrant, chaotic composition with a mix of pop culture and meme elements. The color palette is bold, with oranges, greens, and purples dominating the scene, creating an eye-catching contrast. The artistic style is cartoonish and eclectic, with a central figure wearing a Bitcoin necklace and a green frog hat, surrounded by various characters and symbols.\nMemetic references: Pepe the Frog influence with the green hat.; Bitcoin symbol prominently displayed.; References to classic cartoons like Garfield.; Basketball scene reminiscent of iconic sports moments.; \"Detour Ahead\" sign hinting at meme culture's unpredictability.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEORANGE#text",
+      "label": "On-card text",
+      "text": "FAKE ORANGE, DETOUR AHEAD.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEORANGE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog influence with the green hat.\nBitcoin symbol prominently displayed.\nReferences to classic cartoons like Garfield.\nBasketball scene reminiscent of iconic sports moments.\n\"Detour Ahead\" sign hinting at meme culture's unpredictability.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEORANGE#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant, chaotic composition with a mix of pop culture and meme elements. The color palette is bold, with oranges, greens, and purples dominating the scene, creating an eye-catching contrast. The artistic style is cartoonish and eclectic, with a central figure wearing a Bitcoin necklace and a green frog hat, surrounded by various characters and symbols.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEORANGE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE ORANGE, DETOUR AHEAD.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant, chaotic composition with a mix of pop culture and meme elements. The color palette is bold, with oranges, greens, and purples dominating the scene, creating an eye-catching contrast. The artistic style is cartoonish and eclectic, with a central figure wearing a Bitcoin necklace and a green frog hat, surrounded by various characters and symbols.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog influence with the green hat.\n- Bitcoin symbol prominently displayed.\n- References to classic cartoons like Garfield.\n- Basketball scene reminiscent of iconic sports moments.\n- \"Detour Ahead\" sign hinting at meme culture's unpredictability.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.542Z",
+  "sourceFactVersion": 1
+}

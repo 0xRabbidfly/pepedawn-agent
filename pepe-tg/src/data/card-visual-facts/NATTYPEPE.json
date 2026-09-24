@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "asset": "NATTYPEPE",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 32,
+  "artist": "The Genius",
+  "supply": 150,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "NATTY PEPE",
+    "GET NATTY. STAY NATTY",
+    "No PEDs used in the creation of the Pepe."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a legendary meme character.",
+    "References to \"natty\" culture, implying natural or clean living.",
+    "Parrots and stacks of cash symbolize opulence and a carefree lifestyle.",
+    "The \"Explicit Content\" label parodies music or media warnings."
+  ],
+  "visualSummary": "The card features a vibrant, chaotic scene with Pepe the Frog sitting on a couch surrounded by stacks of cash. The background includes bold yellow and black patterns reminiscent of pop art, while parrots and a human figure with sunglasses add a humorous touch. The color palette is loud and lively, dominated by greens, yellows, and reds, creating an eye-catching and playful composition.",
+  "visualSummaryShort": "The card showcases a lively scene with Pepe the Frog lounging on a couch amidst piles of cash. The vibrant colors and playful elements create a humorous and chaotic atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "couch",
+    "cash",
+    "yellow",
+    "black",
+    "parrots",
+    "sunglasses",
+    "playful",
+    "chaotic",
+    "vibrant"
+  ],
+  "textKeywords": [
+    "natty",
+    "get",
+    "stay",
+    "peds",
+    "used",
+    "creation"
+  ],
+  "keywords": [
+    "pepe",
+    "couch",
+    "cash",
+    "yellow",
+    "black",
+    "parrots",
+    "sunglasses",
+    "playful",
+    "chaotic",
+    "vibrant",
+    "natty",
+    "get",
+    "stay",
+    "peds",
+    "used",
+    "creation"
+  ],
+  "embeddingInput": "NATTYPEPE (Fake Rares) - Series 1 Card 32\nArtist: The Genius\nSupply 150 Issued October 2021\nOn-card text: NATTY PEPE | GET NATTY. STAY NATTY | No PEDs used in the creation of the Pepe.\nVisual summary: The card features a vibrant, chaotic scene with Pepe the Frog sitting on a couch surrounded by stacks of cash. The background includes bold yellow and black patterns reminiscent of pop art, while parrots and a human figure with sunglasses add a humorous touch. The color palette is loud and lively, dominated by greens, yellows, and reds, creating an eye-catching and playful composition.\nMemetic references: Pepe the Frog, a legendary meme character.; References to \"natty\" culture, implying natural or clean living.; Parrots and stacks of cash symbolize opulence and a carefree lifestyle.; The \"Explicit Content\" label parodies music or media warnings.",
+  "embeddingBlocks": [
+    {
+      "id": "NATTYPEPE#text",
+      "label": "On-card text",
+      "text": "NATTY PEPE | GET NATTY. STAY NATTY | No PEDs used in the creation of the Pepe.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "NATTYPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a legendary meme character.\nReferences to \"natty\" culture, implying natural or clean living.\nParrots and stacks of cash symbolize opulence and a carefree lifestyle.\nThe \"Explicit Content\" label parodies music or media warnings.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "NATTYPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant, chaotic scene with Pepe the Frog sitting on a couch surrounded by stacks of cash. The background includes bold yellow and black patterns reminiscent of pop art, while parrots and a human figure with sunglasses add a humorous touch. The color palette is loud and lively, dominated by greens, yellows, and reds, creating an eye-catching and playful composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "NATTYPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nNATTY PEPE  \nGET NATTY. STAY NATTY  \nNo PEDs used in the creation of the Pepe.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant, chaotic scene with Pepe the Frog sitting on a couch surrounded by stacks of cash. The background includes bold yellow and black patterns reminiscent of pop art, while parrots and a human figure with sunglasses add a humorous touch. The color palette is loud and lively, dominated by greens, yellows, and reds, creating an eye-catching and playful composition.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a legendary meme character.\n- References to \"natty\" culture, implying natural or clean living.\n- Parrots and stacks of cash symbolize opulence and a carefree lifestyle.\n- The \"Explicit Content\" label parodies music or media warnings.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.789Z",
+  "sourceFactVersion": 1
+}

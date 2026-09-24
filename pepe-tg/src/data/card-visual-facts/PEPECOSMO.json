@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PEPECOSMO",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 3,
+  "artist": "Chaotic Crypto",
+  "supply": 100,
+  "issuance": "July 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog influence with a twist of abstract artistry.",
+    "References to pop culture with a cocktail, hinting at nightlife vibes.",
+    "Geometric abstraction akin to modernist art movements."
+  ],
+  "visualSummary": "This piece features a stylized, abstract figure with a green face and red lips, reminiscent of Pepe the Frog. The background is divided into bold, geometric sections of red, purple, black, and orange. A prominent white circle with a red dot resembling a cocktail glass adds to the modern, minimalist aesthetic.",
+  "visualSummaryShort": "The card showcases a stylized figure with a green face and red lips against a vibrant, geometric background. The design features bold colors and a minimalist aesthetic with a cocktail glass motif.",
+  "visualKeywords": [
+    "green face",
+    "red lips",
+    "geometric",
+    "bold colors",
+    "minimalist",
+    "cocktail glass",
+    "abstract",
+    "purple",
+    "black",
+    "orange"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "green face",
+    "red lips",
+    "geometric",
+    "bold colors",
+    "minimalist",
+    "cocktail glass",
+    "abstract",
+    "purple",
+    "black",
+    "orange"
+  ],
+  "embeddingInput": "PEPECOSMO (Fake Rares) - Series 9 Card 3\nArtist: Chaotic Crypto\nSupply 100 Issued July 2022\nOn-card text: none detected\nVisual summary: This piece features a stylized, abstract figure with a green face and red lips, reminiscent of Pepe the Frog. The background is divided into bold, geometric sections of red, purple, black, and orange. A prominent white circle with a red dot resembling a cocktail glass adds to the modern, minimalist aesthetic.\nMemetic references: Pepe the Frog influence with a twist of abstract artistry.; References to pop culture with a cocktail, hinting at nightlife vibes.; Geometric abstraction akin to modernist art movements.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPECOSMO#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog influence with a twist of abstract artistry.\nReferences to pop culture with a cocktail, hinting at nightlife vibes.\nGeometric abstraction akin to modernist art movements.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPECOSMO#visual",
+      "label": "Visual summary",
+      "text": "This piece features a stylized, abstract figure with a green face and red lips, reminiscent of Pepe the Frog. The background is divided into bold, geometric sections of red, purple, black, and orange. A prominent white circle with a red dot resembling a cocktail glass adds to the modern, minimalist aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPECOSMO#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis piece features a stylized, abstract figure with a green face and red lips, reminiscent of Pepe the Frog. The background is divided into bold, geometric sections of red, purple, black, and orange. A prominent white circle with a red dot resembling a cocktail glass adds to the modern, minimalist aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog influence with a twist of abstract artistry.\n- References to pop culture with a cocktail, hinting at nightlife vibes.\n- Geometric abstraction akin to modernist art movements.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.862Z",
+  "sourceFactVersion": 1
+}

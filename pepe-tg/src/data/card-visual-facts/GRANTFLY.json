@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "GRANTFLY",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 41,
+  "artist": "ditacrypto",
+  "supply": 61,
+  "issuance": "September 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog is a central element, tapping into deep meme roots.",
+    "The fly motif is a nod to transformation or evolution, common in crypto narratives.",
+    "Pixel art style connects to early internet and gaming culture."
+  ],
+  "visualSummary": "The card features a pixel art style with a simplistic, vibrant color palette. A green Pepe character is depicted as a fly, complete with wings and antennae, hovering against a clear blue sky. The background includes a few stylized buildings and trees, adding a whimsical, urban vibe.",
+  "visualSummaryShort": "The card showcases a pixel art style with a vibrant color palette. A green Pepe character as a fly hovers against a clear blue sky, surrounded by whimsical urban elements.",
+  "visualKeywords": [
+    "pixel art",
+    "green pepe",
+    "fly",
+    "blue sky",
+    "whimsical",
+    "urban",
+    "buildings",
+    "trees"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pixel art",
+    "green pepe",
+    "fly",
+    "blue sky",
+    "whimsical",
+    "urban",
+    "buildings",
+    "trees"
+  ],
+  "embeddingInput": "GRANTFLY (Fake Rares) - Series 10 Card 41\nArtist: ditacrypto\nSupply 61 Issued September 2022\nOn-card text: none detected\nVisual summary: The card features a pixel art style with a simplistic, vibrant color palette. A green Pepe character is depicted as a fly, complete with wings and antennae, hovering against a clear blue sky. The background includes a few stylized buildings and trees, adding a whimsical, urban vibe.\nMemetic references: Pepe the Frog is a central element, tapping into deep meme roots.; The fly motif is a nod to transformation or evolution, common in crypto narratives.; Pixel art style connects to early internet and gaming culture.",
+  "embeddingBlocks": [
+    {
+      "id": "GRANTFLY#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog is a central element, tapping into deep meme roots.\nThe fly motif is a nod to transformation or evolution, common in crypto narratives.\nPixel art style connects to early internet and gaming culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "GRANTFLY#visual",
+      "label": "Visual summary",
+      "text": "The card features a pixel art style with a simplistic, vibrant color palette. A green Pepe character is depicted as a fly, complete with wings and antennae, hovering against a clear blue sky. The background includes a few stylized buildings and trees, adding a whimsical, urban vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "GRANTFLY#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a pixel art style with a simplistic, vibrant color palette. A green Pepe character is depicted as a fly, complete with wings and antennae, hovering against a clear blue sky. The background includes a few stylized buildings and trees, adding a whimsical, urban vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog is a central element, tapping into deep meme roots.\n- The fly motif is a nod to transformation or evolution, common in crypto narratives.\n- Pixel art style connects to early internet and gaming culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.663Z",
+  "sourceFactVersion": 1
+}

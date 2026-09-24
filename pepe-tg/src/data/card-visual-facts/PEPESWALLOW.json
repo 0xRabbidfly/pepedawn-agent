@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "PEPESWALLOW",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 9,
+  "artist": "Darky",
+  "supply": 42,
+  "issuance": "April 2022",
+  "textOnCard": [
+    "SWALLOW PEPE, COLLECTION CLASSIC"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple of meme culture.",
+    "Swallow birds referencing classic tattoo designs.",
+    "Vintage aesthetic reminiscent of old-school memes."
+  ],
+  "visualSummary": "The card features two swallows with Pepe the Frog's face, soaring through a sepia-toned sky. The palette is earthy, with shades of brown and beige creating a vintage, retro vibe. The art style is cartoonish with a bold outline, giving it a playful yet classic feel.",
+  "visualSummaryShort": "The card showcases two cartoonish swallows with Pepe the Frog's face against a sepia-toned sky. The earthy color palette and bold outlines contribute to a vintage, playful atmosphere.",
+  "visualKeywords": [
+    "swallows",
+    "pepe the frog",
+    "sepia",
+    "earthy colors",
+    "vintage",
+    "cartoonish",
+    "bold outline",
+    "retro"
+  ],
+  "textKeywords": [
+    "swallow",
+    "collection",
+    "classic"
+  ],
+  "keywords": [
+    "swallows",
+    "pepe the frog",
+    "sepia",
+    "earthy colors",
+    "vintage",
+    "cartoonish",
+    "bold outline",
+    "retro",
+    "swallow",
+    "collection",
+    "classic"
+  ],
+  "embeddingInput": "PEPESWALLOW (Fake Rares) - Series 9 Card 9\nArtist: Darky\nSupply 42 Issued April 2022\nOn-card text: SWALLOW PEPE, COLLECTION CLASSIC\nVisual summary: The card features two swallows with Pepe the Frog's face, soaring through a sepia-toned sky. The palette is earthy, with shades of brown and beige creating a vintage, retro vibe. The art style is cartoonish with a bold outline, giving it a playful yet classic feel.\nMemetic references: Pepe the Frog, a staple of meme culture.; Swallow birds referencing classic tattoo designs.; Vintage aesthetic reminiscent of old-school memes.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPESWALLOW#text",
+      "label": "On-card text",
+      "text": "SWALLOW PEPE, COLLECTION CLASSIC",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPESWALLOW#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple of meme culture.\nSwallow birds referencing classic tattoo designs.\nVintage aesthetic reminiscent of old-school memes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPESWALLOW#visual",
+      "label": "Visual summary",
+      "text": "The card features two swallows with Pepe the Frog's face, soaring through a sepia-toned sky. The palette is earthy, with shades of brown and beige creating a vintage, retro vibe. The art style is cartoonish with a bold outline, giving it a playful yet classic feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPESWALLOW#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nSWALLOW PEPE, COLLECTION CLASSIC\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features two swallows with Pepe the Frog's face, soaring through a sepia-toned sky. The palette is earthy, with shades of brown and beige creating a vintage, retro vibe. The art style is cartoonish with a bold outline, giving it a playful yet classic feel.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple of meme culture.\n- Swallow birds referencing classic tattoo designs.\n- Vintage aesthetic reminiscent of old-school memes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.986Z",
+  "sourceFactVersion": 1
+}

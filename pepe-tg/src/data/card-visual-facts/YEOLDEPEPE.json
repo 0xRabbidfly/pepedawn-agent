@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "asset": "YEOLDEPEPE",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 15,
+  "artist": "NessGraphics",
+  "supply": 100,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "PEPE PAWN SHOP"
+  ],
+  "memeticReferences": [
+    "Classic Pepe reference with the \"PEPE PAWN SHOP\" sign.",
+    "Vintage Americana with the Coca-Cola advertisement.",
+    "Desert setting reminiscent of post-apocalyptic or Western themes."
+  ],
+  "visualSummary": "The card depicts a dusty, rustic pawn shop set in a desert-like environment. The color palette is dominated by warm, earthy tones like browns and yellows, with splashes of color from a vintage Coca-Cola sign and a rainbow-painted facade. The scene exudes a nostalgic Wild West vibe, with a rundown charm and scattered debris enhancing the gritty atmosphere.",
+  "visualSummaryShort": "The card features a rustic pawn shop in a desert setting, highlighted by warm earthy tones and a vintage Coca-Cola sign. The overall mood is nostalgic and gritty, reminiscent of the Wild West.",
+  "visualKeywords": [
+    "pawn shop",
+    "desert",
+    "earthy tones",
+    "vintage sign",
+    "rustic",
+    "nostalgic",
+    "gritty",
+    "debris",
+    "warm colors",
+    "wild west"
+  ],
+  "textKeywords": [
+    "pawn",
+    "shop"
+  ],
+  "keywords": [
+    "pawn shop",
+    "desert",
+    "earthy tones",
+    "vintage sign",
+    "rustic",
+    "nostalgic",
+    "gritty",
+    "debris",
+    "warm colors",
+    "wild west",
+    "pawn",
+    "shop"
+  ],
+  "embeddingInput": "YEOLDEPEPE (Fake Rares) - Series 8 Card 15\nArtist: NessGraphics\nSupply 100 Issued July 2022\nOn-card text: PEPE PAWN SHOP\nVisual summary: The card depicts a dusty, rustic pawn shop set in a desert-like environment. The color palette is dominated by warm, earthy tones like browns and yellows, with splashes of color from a vintage Coca-Cola sign and a rainbow-painted facade. The scene exudes a nostalgic Wild West vibe, with a rundown charm and scattered debris enhancing the gritty atmosphere.\nMemetic references: Classic Pepe reference with the \"PEPE PAWN SHOP\" sign.; Vintage Americana with the Coca-Cola advertisement.; Desert setting reminiscent of post-apocalyptic or Western themes.",
+  "embeddingBlocks": [
+    {
+      "id": "YEOLDEPEPE#text",
+      "label": "On-card text",
+      "text": "PEPE PAWN SHOP",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "YEOLDEPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe reference with the \"PEPE PAWN SHOP\" sign.\nVintage Americana with the Coca-Cola advertisement.\nDesert setting reminiscent of post-apocalyptic or Western themes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "YEOLDEPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card depicts a dusty, rustic pawn shop set in a desert-like environment. The color palette is dominated by warm, earthy tones like browns and yellows, with splashes of color from a vintage Coca-Cola sign and a rainbow-painted facade. The scene exudes a nostalgic Wild West vibe, with a rundown charm and scattered debris enhancing the gritty atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "YEOLDEPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE PAWN SHOP\n\n🎨 **VISUAL BREAKDOWN:**\nThe card depicts a dusty, rustic pawn shop set in a desert-like environment. The color palette is dominated by warm, earthy tones like browns and yellows, with splashes of color from a vintage Coca-Cola sign and a rainbow-painted facade. The scene exudes a nostalgic Wild West vibe, with a rundown charm and scattered debris enhancing the gritty atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe reference with the \"PEPE PAWN SHOP\" sign.\n- Vintage Americana with the Coca-Cola advertisement.\n- Desert setting reminiscent of post-apocalyptic or Western themes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.200Z",
+  "sourceFactVersion": 1
+}

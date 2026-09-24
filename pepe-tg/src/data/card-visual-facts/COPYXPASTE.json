@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "COPYXPASTE",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 15,
+  "artist": "D Shorty",
+  "supply": 100,
+  "issuance": "May 2022",
+  "textOnCard": [
+    "feels good man"
+  ],
+  "memeticReferences": [
+    "Classic \"Feels Good Man\" meme reference.",
+    "Neon aesthetic reminiscent of retro-futuristic or cyberpunk themes.",
+    "Pepe the Frog, a staple character in meme culture and NFT communities."
+  ],
+  "visualSummary": "This card features a neon-style Pepe the Frog with vibrant, fluorescent colors. His hair is depicted as a bright pink flame, and his eyes are lit up with fiery green flames, giving the image a chaotic and intense vibe. The background is stark black, which makes the neon elements pop, creating a striking contrast.",
+  "visualSummaryShort": "The card showcases a neon-style Pepe the Frog with vibrant fluorescent colors against a black background. His bright pink flame hair and fiery green eyes contribute to a chaotic and intense atmosphere.",
+  "visualKeywords": [
+    "neon",
+    "pepe the frog",
+    "pink flame",
+    "green flames",
+    "black background",
+    "vibrant colors",
+    "chaotic",
+    "intense"
+  ],
+  "textKeywords": [
+    "feels",
+    "good",
+    "man"
+  ],
+  "keywords": [
+    "neon",
+    "pepe the frog",
+    "pink flame",
+    "green flames",
+    "black background",
+    "vibrant colors",
+    "chaotic",
+    "intense",
+    "feels",
+    "good",
+    "man"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "COPYXPASTE (Fake Rares) - Series 9 Card 15\nArtist: D Shorty\nSupply 100 Issued May 2022\nOn-card text: feels good man\nVisual summary: This card features a neon-style Pepe the Frog with vibrant, fluorescent colors. His hair is depicted as a bright pink flame, and his eyes are lit up with fiery green flames, giving the image a chaotic and intense vibe. The background is stark black, which makes the neon elements pop, creating a striking contrast.\nMemetic references: Classic \"Feels Good Man\" meme reference.; Neon aesthetic reminiscent of retro-futuristic or cyberpunk themes.; Pepe the Frog, a staple character in meme culture and NFT communities.",
+  "embeddingBlocks": [
+    {
+      "id": "COPYXPASTE#text",
+      "label": "On-card text",
+      "text": "feels good man",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "COPYXPASTE#memetic",
+      "label": "Memetic references",
+      "text": "Classic \"Feels Good Man\" meme reference.\nNeon aesthetic reminiscent of retro-futuristic or cyberpunk themes.\nPepe the Frog, a staple character in meme culture and NFT communities.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "COPYXPASTE#visual",
+      "label": "Visual summary",
+      "text": "This card features a neon-style Pepe the Frog with vibrant, fluorescent colors. His hair is depicted as a bright pink flame, and his eyes are lit up with fiery green flames, giving the image a chaotic and intense vibe. The background is stark black, which makes the neon elements pop, creating a striking contrast.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "COPYXPASTE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nfeels good man\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a neon-style Pepe the Frog with vibrant, fluorescent colors. His hair is depicted as a bright pink flame, and his eyes are lit up with fiery green flames, giving the image a chaotic and intense vibe. The background is stark black, which makes the neon elements pop, creating a striking contrast.\n\n🧬 **MEMETIC DNA:**\n- Classic \"Feels Good Man\" meme reference.\n- Neon aesthetic reminiscent of retro-futuristic or cyberpunk themes.\n- Pepe the Frog, a staple character in meme culture and NFT communities.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:30:28.465Z"
+}

@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "GOODVIBEPEPE",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 26,
+  "artist": "Apocalypse",
+  "supply": 69,
+  "issuance": "February 2024",
+  "textOnCard": [
+    "GOODVIBEPEPE"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery, tapping into internet meme culture.",
+    "Graffiti elements nod to street art and counterculture.",
+    "Halo suggests an ironic take on sainthood or enlightenment."
+  ],
+  "visualSummary": "The card showcases a hooded Pepe the Frog with a radiant, halo-like circle behind his head, giving off a saintly vibe. The background is a chaotic mix of graffiti-style text and bold yellow stripes, creating a dynamic urban feel. The color palette is dominated by black, yellow, and Pepe’s iconic green, with a gritty, worn texture overlaying the image.",
+  "visualSummaryShort": "The card features a hooded Pepe the Frog with a glowing halo, set against a vibrant urban backdrop. The chaotic mix of graffiti and bold yellow stripes enhances the dynamic atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "hooded",
+    "halo",
+    "graffiti",
+    "yellow stripes",
+    "urban",
+    "black",
+    "green",
+    "chaotic",
+    "worn texture"
+  ],
+  "textKeywords": [
+    "goodvibepepe"
+  ],
+  "keywords": [
+    "pepe",
+    "hooded",
+    "halo",
+    "graffiti",
+    "yellow stripes",
+    "urban",
+    "black",
+    "green",
+    "chaotic",
+    "worn texture",
+    "goodvibepepe"
+  ],
+  "embeddingInput": "GOODVIBEPEPE (Fake Rares) - Series 17 Card 26\nArtist: Apocalypse\nSupply 69 Issued February 2024\nOn-card text: GOODVIBEPEPE\nVisual summary: The card showcases a hooded Pepe the Frog with a radiant, halo-like circle behind his head, giving off a saintly vibe. The background is a chaotic mix of graffiti-style text and bold yellow stripes, creating a dynamic urban feel. The color palette is dominated by black, yellow, and Pepe’s iconic green, with a gritty, worn texture overlaying the image.\nMemetic references: Classic Pepe the Frog imagery, tapping into internet meme culture.; Graffiti elements nod to street art and counterculture.; Halo suggests an ironic take on sainthood or enlightenment.",
+  "embeddingBlocks": [
+    {
+      "id": "GOODVIBEPEPE#text",
+      "label": "On-card text",
+      "text": "GOODVIBEPEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "GOODVIBEPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery, tapping into internet meme culture.\nGraffiti elements nod to street art and counterculture.\nHalo suggests an ironic take on sainthood or enlightenment.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "GOODVIBEPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card showcases a hooded Pepe the Frog with a radiant, halo-like circle behind his head, giving off a saintly vibe. The background is a chaotic mix of graffiti-style text and bold yellow stripes, creating a dynamic urban feel. The color palette is dominated by black, yellow, and Pepe’s iconic green, with a gritty, worn texture overlaying the image.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "GOODVIBEPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nGOODVIBEPEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card showcases a hooded Pepe the Frog with a radiant, halo-like circle behind his head, giving off a saintly vibe. The background is a chaotic mix of graffiti-style text and bold yellow stripes, creating a dynamic urban feel. The color palette is dominated by black, yellow, and Pepe’s iconic green, with a gritty, worn texture overlaying the image.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery, tapping into internet meme culture.\n- Graffiti elements nod to street art and counterculture.\n- Halo suggests an ironic take on sainthood or enlightenment.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.660Z",
+  "sourceFactVersion": 1
+}

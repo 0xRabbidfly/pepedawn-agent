@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "asset": "RAREDJPEPE",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 17,
+  "artist": "EMBLEMATIX",
+  "supply": 169,
+  "issuance": "August 2023",
+  "textOnCard": [
+    "DJ HERO"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a cultural icon.",
+    "Hip-hop elements with the cap and hoodie.",
+    "DJ references, hinting at music and party culture.",
+    "Plays on traditional portrait art styles."
+  ],
+  "visualSummary": "This card features a Pepe character styled as a hip-hop DJ, complete with a white hoodie and a tilted baseball cap. The color palette is earthy and subdued, with a focus on greens and browns, giving it a classic portrait vibe. The painting style is reminiscent of Renaissance portraiture, adding an amusingly regal touch to the meme culture.",
+  "visualSummaryShort": "The card showcases a Pepe character as a hip-hop DJ, dressed in a white hoodie and a tilted baseball cap. The earthy color palette and Renaissance portrait style create a unique blend of humor and classic art.",
+  "visualKeywords": [
+    "pepe",
+    "dj",
+    "hoodie",
+    "baseball cap",
+    "earthy colors",
+    "portrait",
+    "regal",
+    "meme culture"
+  ],
+  "textKeywords": [
+    "hero"
+  ],
+  "keywords": [
+    "pepe",
+    "dj",
+    "hoodie",
+    "baseball cap",
+    "earthy colors",
+    "portrait",
+    "regal",
+    "meme culture",
+    "hero"
+  ],
+  "embeddingInput": "RAREDJPEPE (Fake Rares) - Series 16 Card 17\nArtist: EMBLEMATIX\nSupply 169 Issued August 2023\nOn-card text: DJ HERO\nVisual summary: This card features a Pepe character styled as a hip-hop DJ, complete with a white hoodie and a tilted baseball cap. The color palette is earthy and subdued, with a focus on greens and browns, giving it a classic portrait vibe. The painting style is reminiscent of Renaissance portraiture, adding an amusingly regal touch to the meme culture.\nMemetic references: Pepe the Frog as a cultural icon.; Hip-hop elements with the cap and hoodie.; DJ references, hinting at music and party culture.; Plays on traditional portrait art styles.",
+  "embeddingBlocks": [
+    {
+      "id": "RAREDJPEPE#text",
+      "label": "On-card text",
+      "text": "DJ HERO",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "RAREDJPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a cultural icon.\nHip-hop elements with the cap and hoodie.\nDJ references, hinting at music and party culture.\nPlays on traditional portrait art styles.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RAREDJPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a Pepe character styled as a hip-hop DJ, complete with a white hoodie and a tilted baseball cap. The color palette is earthy and subdued, with a focus on greens and browns, giving it a classic portrait vibe. The painting style is reminiscent of Renaissance portraiture, adding an amusingly regal touch to the meme culture.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RAREDJPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nDJ HERO\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a Pepe character styled as a hip-hop DJ, complete with a white hoodie and a tilted baseball cap. The color palette is earthy and subdued, with a focus on greens and browns, giving it a classic portrait vibe. The painting style is reminiscent of Renaissance portraiture, adding an amusingly regal touch to the meme culture.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a cultural icon.\n- Hip-hop elements with the cap and hoodie.\n- DJ references, hinting at music and party culture.\n- Plays on traditional portrait art styles.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.068Z",
+  "sourceFactVersion": 1
+}

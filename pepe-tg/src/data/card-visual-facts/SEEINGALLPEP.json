@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "asset": "SEEINGALLPEP",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 13,
+  "artist": "KristyGlas",
+  "supply": 69,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "DOX8, PEPE, DESU, MDMB."
+  ],
+  "memeticReferences": [
+    "Three-eyed Pepe is a nod to the \"all-seeing\" meme, symbolizing awareness or enlightenment.",
+    "Cyberpunk elements reflect digital and crypto culture aesthetics.",
+    "Graffiti-style text adds an urban, rebellious flair, common in NFT art."
+  ],
+  "visualSummary": "The card features a purple Pepe with three eyes, set against a cyberpunk-inspired background filled with geometric patterns and graffiti-like text. The color palette is a mix of vibrant purples and blues, giving it a neon, futuristic vibe. The border resembles a digital interface with circuit-like designs and floating symbols.",
+  "visualSummaryShort": "The card showcases a purple Pepe with three eyes in a vibrant cyberpunk setting. The background is filled with geometric patterns and graffiti, enhancing its neon, futuristic aesthetic.",
+  "visualKeywords": [
+    "purple pepe",
+    "three eyes",
+    "cyberpunk",
+    "geometric patterns",
+    "graffiti",
+    "neon",
+    "futuristic",
+    "digital interface",
+    "circuit designs",
+    "floating symbols"
+  ],
+  "textKeywords": [
+    "dox8",
+    "desu",
+    "mdmb"
+  ],
+  "keywords": [
+    "purple pepe",
+    "three eyes",
+    "cyberpunk",
+    "geometric patterns",
+    "graffiti",
+    "neon",
+    "futuristic",
+    "digital interface",
+    "circuit designs",
+    "floating symbols",
+    "dox8",
+    "desu",
+    "mdmb"
+  ],
+  "embeddingInput": "SEEINGALLPEP (Fake Rares) - Series 8 Card 13\nArtist: KristyGlas\nSupply 69 Issued July 2022\nOn-card text: DOX8, PEPE, DESU, MDMB.\nVisual summary: The card features a purple Pepe with three eyes, set against a cyberpunk-inspired background filled with geometric patterns and graffiti-like text. The color palette is a mix of vibrant purples and blues, giving it a neon, futuristic vibe. The border resembles a digital interface with circuit-like designs and floating symbols.\nMemetic references: Three-eyed Pepe is a nod to the \"all-seeing\" meme, symbolizing awareness or enlightenment.; Cyberpunk elements reflect digital and crypto culture aesthetics.; Graffiti-style text adds an urban, rebellious flair, common in NFT art.",
+  "embeddingBlocks": [
+    {
+      "id": "SEEINGALLPEP#text",
+      "label": "On-card text",
+      "text": "DOX8, PEPE, DESU, MDMB.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "SEEINGALLPEP#memetic",
+      "label": "Memetic references",
+      "text": "Three-eyed Pepe is a nod to the \"all-seeing\" meme, symbolizing awareness or enlightenment.\nCyberpunk elements reflect digital and crypto culture aesthetics.\nGraffiti-style text adds an urban, rebellious flair, common in NFT art.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SEEINGALLPEP#visual",
+      "label": "Visual summary",
+      "text": "The card features a purple Pepe with three eyes, set against a cyberpunk-inspired background filled with geometric patterns and graffiti-like text. The color palette is a mix of vibrant purples and blues, giving it a neon, futuristic vibe. The border resembles a digital interface with circuit-like designs and floating symbols.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SEEINGALLPEP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nDOX8, PEPE, DESU, MDMB.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a purple Pepe with three eyes, set against a cyberpunk-inspired background filled with geometric patterns and graffiti-like text. The color palette is a mix of vibrant purples and blues, giving it a neon, futuristic vibe. The border resembles a digital interface with circuit-like designs and floating symbols.\n\n🧬 **MEMETIC DNA:**\n- Three-eyed Pepe is a nod to the \"all-seeing\" meme, symbolizing awareness or enlightenment.\n- Cyberpunk elements reflect digital and crypto culture aesthetics.\n- Graffiti-style text adds an urban, rebellious flair, common in NFT art.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.104Z",
+  "sourceFactVersion": 1
+}

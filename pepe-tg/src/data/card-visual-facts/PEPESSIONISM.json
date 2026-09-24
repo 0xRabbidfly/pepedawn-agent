@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PEPESSIONISM",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 45,
+  "artist": "The Mule",
+  "supply": 50,
+  "issuance": "November 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Abstract art reminiscent of street art and graffiti culture.",
+    "Use of bold colors and dynamic lines could symbolize the volatility and energy of crypto markets.",
+    "The chaotic pattern may reflect the unpredictable nature of NFT trading and the degen lifestyle."
+  ],
+  "visualSummary": "The card features an abstract composition with dynamic, swirling brushstrokes in a bold color palette of teal, red, black, and white. The design has an energetic flow, reminiscent of graffiti art, with sharp edges and curving forms that create a sense of motion and intensity. The overall style is expressive and chaotic, capturing a sense of movement and spontaneity.",
+  "visualSummaryShort": "The card showcases an abstract design with swirling brushstrokes in vibrant colors. Its energetic flow and chaotic style evoke a sense of movement and intensity.",
+  "visualKeywords": [
+    "abstract",
+    "swirling",
+    "teal",
+    "red",
+    "black",
+    "white",
+    "graffiti",
+    "motion",
+    "chaotic",
+    "expressive"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "abstract",
+    "swirling",
+    "teal",
+    "red",
+    "black",
+    "white",
+    "graffiti",
+    "motion",
+    "chaotic",
+    "expressive"
+  ],
+  "embeddingInput": "PEPESSIONISM (Fake Rares) - Series 12 Card 45\nArtist: The Mule\nSupply 50 Issued November 2022\nOn-card text: none detected\nVisual summary: The card features an abstract composition with dynamic, swirling brushstrokes in a bold color palette of teal, red, black, and white. The design has an energetic flow, reminiscent of graffiti art, with sharp edges and curving forms that create a sense of motion and intensity. The overall style is expressive and chaotic, capturing a sense of movement and spontaneity.\nMemetic references: Abstract art reminiscent of street art and graffiti culture.; Use of bold colors and dynamic lines could symbolize the volatility and energy of crypto markets.; The chaotic pattern may reflect the unpredictable nature of NFT trading and the degen lifestyle.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPESSIONISM#memetic",
+      "label": "Memetic references",
+      "text": "Abstract art reminiscent of street art and graffiti culture.\nUse of bold colors and dynamic lines could symbolize the volatility and energy of crypto markets.\nThe chaotic pattern may reflect the unpredictable nature of NFT trading and the degen lifestyle.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPESSIONISM#visual",
+      "label": "Visual summary",
+      "text": "The card features an abstract composition with dynamic, swirling brushstrokes in a bold color palette of teal, red, black, and white. The design has an energetic flow, reminiscent of graffiti art, with sharp edges and curving forms that create a sense of motion and intensity. The overall style is expressive and chaotic, capturing a sense of movement and spontaneity.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPESSIONISM#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features an abstract composition with dynamic, swirling brushstrokes in a bold color palette of teal, red, black, and white. The design has an energetic flow, reminiscent of graffiti art, with sharp edges and curving forms that create a sense of motion and intensity. The overall style is expressive and chaotic, capturing a sense of movement and spontaneity.\n\n🧬 **MEMETIC DNA:**\n- Abstract art reminiscent of street art and graffiti culture.\n- Use of bold colors and dynamic lines could symbolize the volatility and energy of crypto markets.\n- The chaotic pattern may reflect the unpredictable nature of NFT trading and the degen lifestyle.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.982Z",
+  "sourceFactVersion": 1
+}

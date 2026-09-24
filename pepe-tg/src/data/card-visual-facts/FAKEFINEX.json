@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "asset": "FAKEFINEX",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 27,
+  "artist": "Chris Storm",
+  "supply": 121,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "FAKEFINEX",
+    "$3,600,000,000",
+    "PEPECASH SEIZURE",
+    "FAKE HACK"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in a police uniform, a nod to meme culture.",
+    "References to crypto scams and hacks, playing on the Bitfinex hack narrative.",
+    "\"FAKEFINEX\" as a parody of Bitfinex, a well-known crypto exchange.",
+    "“Pepecash” is a nod to the Rare Pepe trading cards, a staple in NFT culture."
+  ],
+  "visualSummary": "The card features a vibrant, glitchy border with rainbow hues, enclosing a scene dominated by deep reds and shadowy figures. In the foreground, a Pepe the Frog character, dressed as a police officer, humorously holds a donut. The composition includes a key floating on clouds at the bottom, adding to the surreal and chaotic vibe.",
+  "visualSummaryShort": "The card showcases a vibrant, glitchy border with rainbow hues surrounding a scene of deep reds and shadowy figures. A Pepe the Frog character dressed as a police officer humorously holds a donut, with a key floating on clouds below, enhancing the surreal atmosphere.",
+  "visualKeywords": [
+    "glitchy border",
+    "rainbow",
+    "deep red",
+    "shadowy figures",
+    "pepe the frog",
+    "police officer",
+    "donut",
+    "floating key",
+    "clouds",
+    "surreal"
+  ],
+  "textKeywords": [
+    "fakefinex",
+    "600",
+    "000",
+    "pepecash",
+    "seizure",
+    "hack"
+  ],
+  "keywords": [
+    "glitchy border",
+    "rainbow",
+    "deep red",
+    "shadowy figures",
+    "pepe the frog",
+    "police officer",
+    "donut",
+    "floating key",
+    "clouds",
+    "surreal",
+    "fakefinex",
+    "600",
+    "000",
+    "pepecash",
+    "seizure",
+    "hack"
+  ],
+  "embeddingInput": "FAKEFINEX (Fake Rares) - Series 5 Card 27\nArtist: Chris Storm\nSupply 121 Issued February 2022\nOn-card text: FAKEFINEX | $3,600,000,000 | PEPECASH SEIZURE | FAKE HACK\nVisual summary: The card features a vibrant, glitchy border with rainbow hues, enclosing a scene dominated by deep reds and shadowy figures. In the foreground, a Pepe the Frog character, dressed as a police officer, humorously holds a donut. The composition includes a key floating on clouds at the bottom, adding to the surreal and chaotic vibe.\nMemetic references: Pepe the Frog in a police uniform, a nod to meme culture.; References to crypto scams and hacks, playing on the Bitfinex hack narrative.; \"FAKEFINEX\" as a parody of Bitfinex, a well-known crypto exchange.; “Pepecash” is a nod to the Rare Pepe trading cards, a staple in NFT culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEFINEX#text",
+      "label": "On-card text",
+      "text": "FAKEFINEX | $3,600,000,000 | PEPECASH SEIZURE | FAKE HACK",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEFINEX#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in a police uniform, a nod to meme culture.\nReferences to crypto scams and hacks, playing on the Bitfinex hack narrative.\n\"FAKEFINEX\" as a parody of Bitfinex, a well-known crypto exchange.\n“Pepecash” is a nod to the Rare Pepe trading cards, a staple in NFT culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEFINEX#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant, glitchy border with rainbow hues, enclosing a scene dominated by deep reds and shadowy figures. In the foreground, a Pepe the Frog character, dressed as a police officer, humorously holds a donut. The composition includes a key floating on clouds at the bottom, adding to the surreal and chaotic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEFINEX#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKEFINEX  \n$3,600,000,000  \nPEPECASH SEIZURE  \nFAKE HACK\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant, glitchy border with rainbow hues, enclosing a scene dominated by deep reds and shadowy figures. In the foreground, a Pepe the Frog character, dressed as a police officer, humorously holds a donut. The composition includes a key floating on clouds at the bottom, adding to the surreal and chaotic vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in a police uniform, a nod to meme culture.\n- References to crypto scams and hacks, playing on the Bitfinex hack narrative.\n- \"FAKEFINEX\" as a parody of Bitfinex, a well-known crypto exchange.\n- “Pepecash” is a nod to the Rare Pepe trading cards, a staple in NFT culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.498Z",
+  "sourceFactVersion": 1
+}

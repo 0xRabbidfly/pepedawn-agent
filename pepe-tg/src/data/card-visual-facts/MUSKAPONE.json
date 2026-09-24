@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "asset": "MUSKAPONE",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 14,
+  "artist": "Rutger van der Tas",
+  "supply": 111,
+  "issuance": "September 2023",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a character named Muskapon, depicted in a vibrant and dynamic pose. The background is likely colorful and engaging, enhancing the overall visual appeal.",
+  "visualKeywords": [
+    "character",
+    "vibrant",
+    "dynamic",
+    "colorful"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "character",
+    "vibrant",
+    "dynamic",
+    "colorful"
+  ],
+  "embeddingInput": "MUSKAPONE (Fake Rares) - Series 16 Card 14\nArtist: Rutger van der Tas\nSupply 111 Issued September 2023\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "MUSKAPONE#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't help with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.785Z",
+  "sourceFactVersion": 1
+}

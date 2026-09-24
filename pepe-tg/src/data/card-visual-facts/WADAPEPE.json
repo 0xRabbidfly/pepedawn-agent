@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "asset": "WADAPEPE",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 45,
+  "artist": "Oni Giri",
+  "supply": 100,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "知田ぺぺ魔長"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reimagined in a traditional Japanese ukiyo-e style.",
+    "Samurai and mythological elements.",
+    "Snake could symbolize danger or chaos, common in both memes and folklore."
+  ],
+  "visualSummary": "This card features a dynamic scene with a green-skinned character reminiscent of traditional Japanese art, entangled with a large, menacing serpent. The color palette combines bold purples, pinks, and blues, creating a vibrant contrast against the greens of the character’s skin. The composition is intricate, with detailed textures and a fluid motion that conveys action and tension.",
+  "visualSummaryShort": "The card showcases a green-skinned character engaged in a dynamic struggle with a large serpent. The vibrant color palette of purples, pinks, and blues enhances the action-packed scene.",
+  "visualKeywords": [
+    "green-skinned",
+    "serpent",
+    "purple",
+    "pink",
+    "blue",
+    "dynamic",
+    "traditional",
+    "intricate",
+    "action",
+    "tension"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "green-skinned",
+    "serpent",
+    "purple",
+    "pink",
+    "blue",
+    "dynamic",
+    "traditional",
+    "intricate",
+    "action",
+    "tension"
+  ],
+  "embeddingInput": "WADAPEPE (Fake Rares) - Series 9 Card 45\nArtist: Oni Giri\nSupply 100 Issued November 2021\nOn-card text: 知田ぺぺ魔長\nVisual summary: This card features a dynamic scene with a green-skinned character reminiscent of traditional Japanese art, entangled with a large, menacing serpent. The color palette combines bold purples, pinks, and blues, creating a vibrant contrast against the greens of the character’s skin. The composition is intricate, with detailed textures and a fluid motion that conveys action and tension.\nMemetic references: Pepe the Frog reimagined in a traditional Japanese ukiyo-e style.; Samurai and mythological elements.; Snake could symbolize danger or chaos, common in both memes and folklore.",
+  "embeddingBlocks": [
+    {
+      "id": "WADAPEPE#text",
+      "label": "On-card text",
+      "text": "知田ぺぺ魔長",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "WADAPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reimagined in a traditional Japanese ukiyo-e style.\nSamurai and mythological elements.\nSnake could symbolize danger or chaos, common in both memes and folklore.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "WADAPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a dynamic scene with a green-skinned character reminiscent of traditional Japanese art, entangled with a large, menacing serpent. The color palette combines bold purples, pinks, and blues, creating a vibrant contrast against the greens of the character’s skin. The composition is intricate, with detailed textures and a fluid motion that conveys action and tension.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "WADAPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n知田ぺぺ魔長\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a dynamic scene with a green-skinned character reminiscent of traditional Japanese art, entangled with a large, menacing serpent. The color palette combines bold purples, pinks, and blues, creating a vibrant contrast against the greens of the character’s skin. The composition is intricate, with detailed textures and a fluid motion that conveys action and tension.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reimagined in a traditional Japanese ukiyo-e style.\n- Samurai and mythological elements.\n- Snake could symbolize danger or chaos, common in both memes and folklore.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.176Z",
+  "sourceFactVersion": 1
+}

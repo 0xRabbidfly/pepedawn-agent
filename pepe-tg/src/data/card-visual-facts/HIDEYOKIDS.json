@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "HIDEYOKIDS",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 10,
+  "artist": "realPepstein x Rare Designer",
+  "supply": 99,
+  "issuance": "December 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe characters in various roles, embodying the meme's versatility.",
+    "References to high society or formal gatherings with humorous undertones.",
+    "Elements of crypto culture through the use of Pepe, a staple in the NFT and meme world."
+  ],
+  "visualSummary": "The card features three Pepe characters dressed in formal and eccentric attire, standing outdoors in a lush, green setting. The color palette is vibrant, with deep greens, whites, and pops of pink and red, creating a lively and engaging scene. The artistic style is detailed and polished, blending realism with the whimsical nature of the Pepe meme.",
+  "visualSummaryShort": "The card showcases three Pepe characters in formal and eccentric outfits amidst a vibrant green outdoor setting. The scene is lively, highlighted by deep greens and accents of pink and red.",
+  "visualKeywords": [
+    "pepe",
+    "formal attire",
+    "eccentric",
+    "green setting",
+    "vibrant colors",
+    "whimsical",
+    "detailed",
+    "outdoors"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "formal attire",
+    "eccentric",
+    "green setting",
+    "vibrant colors",
+    "whimsical",
+    "detailed",
+    "outdoors"
+  ],
+  "embeddingInput": "HIDEYOKIDS (Fake Rares) - Series 17 Card 10\nArtist: realPepstein x Rare Designer\nSupply 99 Issued December 2021\nOn-card text: none detected\nVisual summary: The card features three Pepe characters dressed in formal and eccentric attire, standing outdoors in a lush, green setting. The color palette is vibrant, with deep greens, whites, and pops of pink and red, creating a lively and engaging scene. The artistic style is detailed and polished, blending realism with the whimsical nature of the Pepe meme.\nMemetic references: Pepe characters in various roles, embodying the meme's versatility.; References to high society or formal gatherings with humorous undertones.; Elements of crypto culture through the use of Pepe, a staple in the NFT and meme world.",
+  "embeddingBlocks": [
+    {
+      "id": "HIDEYOKIDS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe characters in various roles, embodying the meme's versatility.\nReferences to high society or formal gatherings with humorous undertones.\nElements of crypto culture through the use of Pepe, a staple in the NFT and meme world.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "HIDEYOKIDS#visual",
+      "label": "Visual summary",
+      "text": "The card features three Pepe characters dressed in formal and eccentric attire, standing outdoors in a lush, green setting. The color palette is vibrant, with deep greens, whites, and pops of pink and red, creating a lively and engaging scene. The artistic style is detailed and polished, blending realism with the whimsical nature of the Pepe meme.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "HIDEYOKIDS#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features three Pepe characters dressed in formal and eccentric attire, standing outdoors in a lush, green setting. The color palette is vibrant, with deep greens, whites, and pops of pink and red, creating a lively and engaging scene. The artistic style is detailed and polished, blending realism with the whimsical nature of the Pepe meme.\n\n🧬 **MEMETIC DNA:**\n- Pepe characters in various roles, embodying the meme's versatility.\n- References to high society or formal gatherings with humorous undertones.\n- Elements of crypto culture through the use of Pepe, a staple in the NFT and meme world.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.684Z",
+  "sourceFactVersion": 1
+}

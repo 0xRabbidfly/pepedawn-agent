@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "asset": "FKDOTS",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 11,
+  "artist": "Killian Moore",
+  "supply": 35,
+  "issuance": "June 2023",
+  "textOnCard": [
+    "Fake Dots"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference, a staple in meme culture.",
+    "Pixel art style reminiscent of early computer graphics and NFTs.",
+    "\"Fake Dots\" plays on the idea of originality and authenticity in the NFT space."
+  ],
+  "visualSummary": "The card features a pixelated image of Pepe the Frog rendered in a mosaic of colorful dots against a dark green background. The dots vary in shades of yellow, orange, and red, creating a vibrant and eye-catching contrast. The composition is simple yet effective, leveraging a minimalistic style with a digital, retro vibe.",
+  "visualSummaryShort": "The card showcases a pixelated Pepe the Frog made up of colorful dots on a dark green background. The vibrant shades of yellow, orange, and red create a striking visual contrast.",
+  "visualKeywords": [
+    "pepe",
+    "pixelated",
+    "dots",
+    "green background",
+    "colorful",
+    "mosaic",
+    "retro",
+    "minimalistic"
+  ],
+  "textKeywords": [
+    "dots"
+  ],
+  "keywords": [
+    "pepe",
+    "pixelated",
+    "dots",
+    "green background",
+    "colorful",
+    "mosaic",
+    "retro",
+    "minimalistic"
+  ],
+  "embeddingInput": "FKDOTS (Fake Rares) - Series 15 Card 11\nArtist: Killian Moore\nSupply 35 Issued June 2023\nOn-card text: Fake Dots\nVisual summary: The card features a pixelated image of Pepe the Frog rendered in a mosaic of colorful dots against a dark green background. The dots vary in shades of yellow, orange, and red, creating a vibrant and eye-catching contrast. The composition is simple yet effective, leveraging a minimalistic style with a digital, retro vibe.\nMemetic references: Classic Pepe the Frog reference, a staple in meme culture.; Pixel art style reminiscent of early computer graphics and NFTs.; \"Fake Dots\" plays on the idea of originality and authenticity in the NFT space.",
+  "embeddingBlocks": [
+    {
+      "id": "FKDOTS#text",
+      "label": "On-card text",
+      "text": "Fake Dots",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FKDOTS#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference, a staple in meme culture.\nPixel art style reminiscent of early computer graphics and NFTs.\n\"Fake Dots\" plays on the idea of originality and authenticity in the NFT space.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FKDOTS#visual",
+      "label": "Visual summary",
+      "text": "The card features a pixelated image of Pepe the Frog rendered in a mosaic of colorful dots against a dark green background. The dots vary in shades of yellow, orange, and red, creating a vibrant and eye-catching contrast. The composition is simple yet effective, leveraging a minimalistic style with a digital, retro vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FKDOTS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFake Dots\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a pixelated image of Pepe the Frog rendered in a mosaic of colorful dots against a dark green background. The dots vary in shades of yellow, orange, and red, creating a vibrant and eye-catching contrast. The composition is simple yet effective, leveraging a minimalistic style with a digital, retro vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference, a staple in meme culture.\n- Pixel art style reminiscent of early computer graphics and NFTs.\n- \"Fake Dots\" plays on the idea of originality and authenticity in the NFT space.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.626Z",
+  "sourceFactVersion": 1
+}

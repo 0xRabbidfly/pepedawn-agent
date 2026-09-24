@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "asset": "PEPENCOUNTER",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 35,
+  "artist": "C3",
+  "supply": 75,
+  "issuance": "August 2022",
+  "textOnCard": [
+    "PEPENCOUNTER"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference with the green face.",
+    "The red pyramid could symbolize wealth or hierarchy, a common theme in crypto culture.",
+    "The green scribble might represent chaotic market movements or the unpredictability of crypto."
+  ],
+  "visualSummary": "This card features a stark, minimalist design with a bold red triangle occupying the left side, resembling a pyramid. A white, silhouetted figure with a green Pepe-like face is placed at the apex, looking at a green, chaotic scribble in the black sky. The contrast between the bright red and black creates a dramatic, eye-catching effect.",
+  "visualSummaryShort": "The card showcases a minimalist design with a bold red triangle and a white silhouetted figure with a green face. The dramatic contrast against a black sky filled with chaotic scribbles enhances its striking visual appeal.",
+  "visualKeywords": [
+    "red triangle",
+    "silhouette",
+    "green face",
+    "black sky",
+    "chaotic scribble"
+  ],
+  "textKeywords": [
+    "pepencounter"
+  ],
+  "keywords": [
+    "red triangle",
+    "silhouette",
+    "green face",
+    "black sky",
+    "chaotic scribble",
+    "pepencounter"
+  ],
+  "embeddingInput": "PEPENCOUNTER (Fake Rares) - Series 9 Card 35\nArtist: C3\nSupply 75 Issued August 2022\nOn-card text: PEPENCOUNTER\nVisual summary: This card features a stark, minimalist design with a bold red triangle occupying the left side, resembling a pyramid. A white, silhouetted figure with a green Pepe-like face is placed at the apex, looking at a green, chaotic scribble in the black sky. The contrast between the bright red and black creates a dramatic, eye-catching effect.\nMemetic references: Pepe the Frog reference with the green face.; The red pyramid could symbolize wealth or hierarchy, a common theme in crypto culture.; The green scribble might represent chaotic market movements or the unpredictability of crypto.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPENCOUNTER#text",
+      "label": "On-card text",
+      "text": "PEPENCOUNTER",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPENCOUNTER#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference with the green face.\nThe red pyramid could symbolize wealth or hierarchy, a common theme in crypto culture.\nThe green scribble might represent chaotic market movements or the unpredictability of crypto.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPENCOUNTER#visual",
+      "label": "Visual summary",
+      "text": "This card features a stark, minimalist design with a bold red triangle occupying the left side, resembling a pyramid. A white, silhouetted figure with a green Pepe-like face is placed at the apex, looking at a green, chaotic scribble in the black sky. The contrast between the bright red and black creates a dramatic, eye-catching effect.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPENCOUNTER#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPENCOUNTER\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a stark, minimalist design with a bold red triangle occupying the left side, resembling a pyramid. A white, silhouetted figure with a green Pepe-like face is placed at the apex, looking at a green, chaotic scribble in the black sky. The contrast between the bright red and black creates a dramatic, eye-catching effect.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference with the green face.\n- The red pyramid could symbolize wealth or hierarchy, a common theme in crypto culture.\n- The green scribble might represent chaotic market movements or the unpredictability of crypto.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.935Z",
+  "sourceFactVersion": 1
+}

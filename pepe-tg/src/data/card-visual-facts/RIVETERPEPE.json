@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "asset": "RIVETERPEPE",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 3,
+  "artist": "ShakAttak",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "We Can Fake It!"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog face, a staple in meme culture.",
+    "Parody of the \"We Can Do It!\" Rosie the Riveter poster.",
+    "Flower crown as a nod to internet meme aesthetics."
+  ],
+  "visualSummary": "This card features a parody of the iconic \"We Can Do It!\" WWII poster, replacing the original character with a Pepe the Frog face. Pepe is adorned with a flower crown, adding a whimsical touch. The color palette consists of bold blues and yellows, maintaining the vintage propaganda feel.",
+  "visualSummaryShort": "The card showcases a Pepe the Frog character styled after the classic WWII propaganda poster, complete with a flower crown. It features a vibrant color palette of bold blues and yellows, enhancing its whimsical yet vintage aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "flower crown",
+    "blue",
+    "yellow",
+    "propaganda",
+    "whimsical"
+  ],
+  "textKeywords": [
+    "can"
+  ],
+  "keywords": [
+    "pepe",
+    "flower crown",
+    "blue",
+    "yellow",
+    "propaganda",
+    "whimsical",
+    "can"
+  ],
+  "embeddingInput": "RIVETERPEPE (Fake Rares) - Series 2 Card 3\nArtist: ShakAttak\nSupply 100 Issued October 2021\nOn-card text: We Can Fake It!\nVisual summary: This card features a parody of the iconic \"We Can Do It!\" WWII poster, replacing the original character with a Pepe the Frog face. Pepe is adorned with a flower crown, adding a whimsical touch. The color palette consists of bold blues and yellows, maintaining the vintage propaganda feel.\nMemetic references: Pepe the Frog face, a staple in meme culture.; Parody of the \"We Can Do It!\" Rosie the Riveter poster.; Flower crown as a nod to internet meme aesthetics.",
+  "embeddingBlocks": [
+    {
+      "id": "RIVETERPEPE#text",
+      "label": "On-card text",
+      "text": "We Can Fake It!",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "RIVETERPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog face, a staple in meme culture.\nParody of the \"We Can Do It!\" Rosie the Riveter poster.\nFlower crown as a nod to internet meme aesthetics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RIVETERPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a parody of the iconic \"We Can Do It!\" WWII poster, replacing the original character with a Pepe the Frog face. Pepe is adorned with a flower crown, adding a whimsical touch. The color palette consists of bold blues and yellows, maintaining the vintage propaganda feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RIVETERPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nWe Can Fake It!\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a parody of the iconic \"We Can Do It!\" WWII poster, replacing the original character with a Pepe the Frog face. Pepe is adorned with a flower crown, adding a whimsical touch. The color palette consists of bold blues and yellows, maintaining the vintage propaganda feel.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog face, a staple in meme culture.\n- Parody of the \"We Can Do It!\" Rosie the Riveter poster.\n- Flower crown as a nod to internet meme aesthetics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.087Z",
+  "sourceFactVersion": 1
+}

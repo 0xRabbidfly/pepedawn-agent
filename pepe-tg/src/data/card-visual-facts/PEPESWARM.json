@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PEPESWARM",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 42,
+  "artist": "burstMembrane",
+  "supply": 100,
+  "issuance": "December 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog is a classic and versatile meme icon.",
+    "The cosmic background hints at the vastness and mystery of the crypto universe.",
+    "The repetition of Pepe faces suggests viral spread, much like memes in internet culture."
+  ],
+  "visualSummary": "The card features a swarm of Pepe the Frog faces floating in a cosmic void, giving a sense of infinite replication. The color palette is primarily green and black, with a stark contrast that enhances the floating effect of the Pepes. The artistic style is pixelated and nostalgic, reminiscent of retro video game graphics.",
+  "visualSummaryShort": "The card showcases a swarm of Pepe the Frog faces in a cosmic void, creating an impression of infinite replication. The pixelated style and green-black color palette evoke a nostalgic retro video game feel.",
+  "visualKeywords": [
+    "pepe",
+    "cosmic",
+    "green",
+    "black",
+    "pixelated",
+    "floating",
+    "void",
+    "nostalgic",
+    "retro",
+    "swarm"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "cosmic",
+    "green",
+    "black",
+    "pixelated",
+    "floating",
+    "void",
+    "nostalgic",
+    "retro",
+    "swarm"
+  ],
+  "embeddingInput": "PEPESWARM (Fake Rares) - Series 5 Card 42\nArtist: burstMembrane\nSupply 100 Issued December 2021\nOn-card text: none detected\nVisual summary: The card features a swarm of Pepe the Frog faces floating in a cosmic void, giving a sense of infinite replication. The color palette is primarily green and black, with a stark contrast that enhances the floating effect of the Pepes. The artistic style is pixelated and nostalgic, reminiscent of retro video game graphics.\nMemetic references: Pepe the Frog is a classic and versatile meme icon.; The cosmic background hints at the vastness and mystery of the crypto universe.; The repetition of Pepe faces suggests viral spread, much like memes in internet culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPESWARM#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog is a classic and versatile meme icon.\nThe cosmic background hints at the vastness and mystery of the crypto universe.\nThe repetition of Pepe faces suggests viral spread, much like memes in internet culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPESWARM#visual",
+      "label": "Visual summary",
+      "text": "The card features a swarm of Pepe the Frog faces floating in a cosmic void, giving a sense of infinite replication. The color palette is primarily green and black, with a stark contrast that enhances the floating effect of the Pepes. The artistic style is pixelated and nostalgic, reminiscent of retro video game graphics.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPESWARM#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a swarm of Pepe the Frog faces floating in a cosmic void, giving a sense of infinite replication. The color palette is primarily green and black, with a stark contrast that enhances the floating effect of the Pepes. The artistic style is pixelated and nostalgic, reminiscent of retro video game graphics.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog is a classic and versatile meme icon.\n- The cosmic background hints at the vastness and mystery of the crypto universe.\n- The repetition of Pepe faces suggests viral spread, much like memes in internet culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.987Z",
+  "sourceFactVersion": 1
+}

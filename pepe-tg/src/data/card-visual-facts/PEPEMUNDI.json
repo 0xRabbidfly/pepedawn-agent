@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "asset": "PEPEMUNDI",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 17,
+  "artist": "Pepenardo",
+  "supply": 45,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "PEPENARDO"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a cultural icon.",
+    "Reference to \"Salvator Mundi,\" blending classical art with meme culture.",
+    "Cosmic imagery hints at the infinite possibilities of the crypto universe."
+  ],
+  "visualSummary": "The card features a Pepe the Frog character styled like Leonardo da Vinci's \"Salvator Mundi.\" The background is a cosmic scene with swirling galaxies, adding a mystical vibe. The color palette includes rich blues and golds, with Pepe sporting a serene expression and holding a crystal globe.",
+  "visualSummaryShort": "The card showcases a Pepe the Frog character resembling Leonardo da Vinci's \"Salvator Mundi\" against a cosmic background. Rich blues and golds dominate the color palette, enhancing the mystical atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "cosmic",
+    "galaxies",
+    "blue",
+    "gold",
+    "serene",
+    "globe"
+  ],
+  "textKeywords": [
+    "pepenardo"
+  ],
+  "keywords": [
+    "pepe",
+    "cosmic",
+    "galaxies",
+    "blue",
+    "gold",
+    "serene",
+    "globe",
+    "pepenardo"
+  ],
+  "embeddingInput": "PEPEMUNDI (Fake Rares) - Series 2 Card 17\nArtist: Pepenardo\nSupply 45 Issued October 2021\nOn-card text: PEPENARDO\nVisual summary: The card features a Pepe the Frog character styled like Leonardo da Vinci's \"Salvator Mundi.\" The background is a cosmic scene with swirling galaxies, adding a mystical vibe. The color palette includes rich blues and golds, with Pepe sporting a serene expression and holding a crystal globe.\nMemetic references: Pepe the Frog as a cultural icon.; Reference to \"Salvator Mundi,\" blending classical art with meme culture.; Cosmic imagery hints at the infinite possibilities of the crypto universe.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEMUNDI#text",
+      "label": "On-card text",
+      "text": "PEPENARDO",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEMUNDI#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a cultural icon.\nReference to \"Salvator Mundi,\" blending classical art with meme culture.\nCosmic imagery hints at the infinite possibilities of the crypto universe.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEMUNDI#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe the Frog character styled like Leonardo da Vinci's \"Salvator Mundi.\" The background is a cosmic scene with swirling galaxies, adding a mystical vibe. The color palette includes rich blues and golds, with Pepe sporting a serene expression and holding a crystal globe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEMUNDI#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPENARDO\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe the Frog character styled like Leonardo da Vinci's \"Salvator Mundi.\" The background is a cosmic scene with swirling galaxies, adding a mystical vibe. The color palette includes rich blues and golds, with Pepe sporting a serene expression and holding a crystal globe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a cultural icon.\n- Reference to \"Salvator Mundi,\" blending classical art with meme culture.\n- Cosmic imagery hints at the infinite possibilities of the crypto universe.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.934Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "GORILLAGLUE",
+  "collection": "Fake Rares",
+  "series": 0,
+  "cardNumber": 12,
+  "artist": "Rare Scrilla",
+  "supply": 115,
+  "issuance": "October 2016",
+  "textOnCard": [
+    "DJ J-SCRILLA",
+    "GORILLA GLUE"
+  ],
+  "memeticReferences": [
+    "Gorilla imagery often symbolizes strength and resilience in meme culture.",
+    "The cigar adds a touch of classic \"boss\" or \"don\" vibes, reminiscent of mafia or powerful figures.",
+    "The intensity of the eyes can be seen as a nod to determination or focus—common traits in crypto trading lore."
+  ],
+  "visualSummary": "The card features a detailed, almost menacing close-up of a gorilla with intense, fiery red eyes and a cigar clamped in its mouth. The color palette is dark with heavy use of blacks and grays, accented by vibrant reds and subtle blues. The artistic style is sketch-like and gritty, with a focus on texture and shadow.",
+  "visualSummaryShort": "The card showcases a menacing close-up of a gorilla with fiery red eyes and a cigar. The dark color palette is accented by vibrant reds and subtle blues, creating a gritty atmosphere.",
+  "visualKeywords": [
+    "gorilla",
+    "red eyes",
+    "cigar",
+    "dark palette",
+    "sketch-like",
+    "texture",
+    "shadow"
+  ],
+  "textKeywords": [
+    "scrilla",
+    "gorilla",
+    "glue"
+  ],
+  "keywords": [
+    "gorilla",
+    "red eyes",
+    "cigar",
+    "dark palette",
+    "sketch-like",
+    "texture",
+    "shadow",
+    "scrilla",
+    "glue"
+  ],
+  "embeddingInput": "GORILLAGLUE (Fake Rares) - Series 0 Card 12\nArtist: Rare Scrilla\nSupply 115 Issued October 2016\nOn-card text: DJ J-SCRILLA | GORILLA GLUE\nVisual summary: The card features a detailed, almost menacing close-up of a gorilla with intense, fiery red eyes and a cigar clamped in its mouth. The color palette is dark with heavy use of blacks and grays, accented by vibrant reds and subtle blues. The artistic style is sketch-like and gritty, with a focus on texture and shadow.\nMemetic references: Gorilla imagery often symbolizes strength and resilience in meme culture.; The cigar adds a touch of classic \"boss\" or \"don\" vibes, reminiscent of mafia or powerful figures.; The intensity of the eyes can be seen as a nod to determination or focus—common traits in crypto trading lore.",
+  "embeddingBlocks": [
+    {
+      "id": "GORILLAGLUE#text",
+      "label": "On-card text",
+      "text": "DJ J-SCRILLA | GORILLA GLUE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "GORILLAGLUE#memetic",
+      "label": "Memetic references",
+      "text": "Gorilla imagery often symbolizes strength and resilience in meme culture.\nThe cigar adds a touch of classic \"boss\" or \"don\" vibes, reminiscent of mafia or powerful figures.\nThe intensity of the eyes can be seen as a nod to determination or focus—common traits in crypto trading lore.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "GORILLAGLUE#visual",
+      "label": "Visual summary",
+      "text": "The card features a detailed, almost menacing close-up of a gorilla with intense, fiery red eyes and a cigar clamped in its mouth. The color palette is dark with heavy use of blacks and grays, accented by vibrant reds and subtle blues. The artistic style is sketch-like and gritty, with a focus on texture and shadow.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "GORILLAGLUE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nDJ J-SCRILLA  \nGORILLA GLUE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a detailed, almost menacing close-up of a gorilla with intense, fiery red eyes and a cigar clamped in its mouth. The color palette is dark with heavy use of blacks and grays, accented by vibrant reds and subtle blues. The artistic style is sketch-like and gritty, with a focus on texture and shadow.\n\n🧬 **MEMETIC DNA:**\n- Gorilla imagery often symbolizes strength and resilience in meme culture.\n- The cigar adds a touch of classic \"boss\" or \"don\" vibes, reminiscent of mafia or powerful figures.\n- The intensity of the eyes can be seen as a nod to determination or focus—common traits in crypto trading lore.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.662Z",
+  "sourceFactVersion": 1
+}

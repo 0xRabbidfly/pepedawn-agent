@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "asset": "CHILLPEPROSS",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 24,
+  "artist": "JB",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "CHILL PEPE ROSS",
+    "Ever make mistakes in life? Let's make them Pepes. Yeah, they're Pepes now.",
+    "RARNESS SCORE",
+    "100% FAKE AS FUCK"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog is central, a staple in meme culture.",
+    "Bob Ross reference, blending art and chill vibes.",
+    "Crypto circuit board background, nodding to digital culture.",
+    "\"REKT M.D.\" on the coat, playing into crypto slang."
+  ],
+  "visualSummary": "The card features a Pepe character dressed as Bob Ross, complete with an afro and artist's palette, painting another Pepe on a canvas. The background is a circuit board pattern in green, giving it a digital, techy vibe. The style is cartoonish and playful, with a mix of humor and nostalgia.",
+  "visualSummaryShort": "The card showcases a Pepe character styled as Bob Ross, complete with an afro and an artist's palette. The background features a green circuit board pattern, enhancing its digital and playful aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "bob ross",
+    "afro",
+    "palette",
+    "circuit board",
+    "green",
+    "cartoonish",
+    "playful",
+    "digital",
+    "humor"
+  ],
+  "textKeywords": [
+    "chill",
+    "ross",
+    "ever",
+    "make",
+    "mistakes",
+    "life",
+    "let",
+    "pepes",
+    "yeah",
+    "they",
+    "now",
+    "rarness",
+    "score",
+    "100",
+    "fuck"
+  ],
+  "keywords": [
+    "pepe",
+    "bob ross",
+    "afro",
+    "palette",
+    "circuit board",
+    "green",
+    "cartoonish",
+    "playful",
+    "digital",
+    "humor",
+    "chill",
+    "ross",
+    "ever",
+    "make",
+    "mistakes",
+    "life",
+    "let",
+    "pepes",
+    "yeah",
+    "they",
+    "now",
+    "rarness",
+    "score",
+    "100",
+    "fuck"
+  ],
+  "embeddingInput": "CHILLPEPROSS (Fake Rares) - Series 2 Card 24\nArtist: JB\nSupply 100 Issued October 2021\nOn-card text: CHILL PEPE ROSS | Ever make mistakes in life? Let's make them Pepes. Yeah, they're Pepes now. | RARNESS SCORE | 100% FAKE AS FUCK\nVisual summary: The card features a Pepe character dressed as Bob Ross, complete with an afro and artist's palette, painting another Pepe on a canvas. The background is a circuit board pattern in green, giving it a digital, techy vibe. The style is cartoonish and playful, with a mix of humor and nostalgia.\nMemetic references: Pepe the Frog is central, a staple in meme culture.; Bob Ross reference, blending art and chill vibes.; Crypto circuit board background, nodding to digital culture.; \"REKT M.D.\" on the coat, playing into crypto slang.",
+  "embeddingBlocks": [
+    {
+      "id": "CHILLPEPROSS#text",
+      "label": "On-card text",
+      "text": "CHILL PEPE ROSS | Ever make mistakes in life? Let's make them Pepes. Yeah, they're Pepes now. | RARNESS SCORE | 100% FAKE AS FUCK",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "CHILLPEPROSS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog is central, a staple in meme culture.\nBob Ross reference, blending art and chill vibes.\nCrypto circuit board background, nodding to digital culture.\n\"REKT M.D.\" on the coat, playing into crypto slang.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "CHILLPEPROSS#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe character dressed as Bob Ross, complete with an afro and artist's palette, painting another Pepe on a canvas. The background is a circuit board pattern in green, giving it a digital, techy vibe. The style is cartoonish and playful, with a mix of humor and nostalgia.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "CHILLPEPROSS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nCHILL PEPE ROSS  \nEver make mistakes in life? Let's make them Pepes. Yeah, they're Pepes now.  \nRARNESS SCORE  \n100% FAKE AS FUCK\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe character dressed as Bob Ross, complete with an afro and artist's palette, painting another Pepe on a canvas. The background is a circuit board pattern in green, giving it a digital, techy vibe. The style is cartoonish and playful, with a mix of humor and nostalgia.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog is central, a staple in meme culture.\n- Bob Ross reference, blending art and chill vibes.\n- Crypto circuit board background, nodding to digital culture.\n- \"REKT M.D.\" on the coat, playing into crypto slang.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.355Z",
+  "sourceFactVersion": 1
+}

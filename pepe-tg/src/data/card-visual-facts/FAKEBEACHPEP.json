@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "FAKEBEACHPEP",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 17,
+  "artist": "Prez1 x Kane Mayfield",
+  "supply": 93,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "FAKEBEACHPEP"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central character.",
+    "Beach and vacation themes, reminiscent of classic summer memes.",
+    "Elements of crypto culture with a nod to the laid-back, \"chill\" ethos."
+  ],
+  "visualSummary": "This card features a whimsical scene with Pepe the Frog lounging on a beach. The color palette is vibrant and tropical, with shades of blue, green, and sandy tones dominating the composition. The artistic style is cartoonish and playful, capturing a carefree beach vibe with palm trees and a sunny sky.",
+  "visualSummaryShort": "The card depicts Pepe the Frog relaxing on a vibrant beach, surrounded by palm trees and a sunny sky. The colors are bright and tropical, enhancing the playful atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "beach",
+    "palm trees",
+    "sunny sky",
+    "vibrant colors",
+    "cartoonish",
+    "tropical",
+    "carefree",
+    "sandy tones"
+  ],
+  "textKeywords": [
+    "fakebeachpep"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "beach",
+    "palm trees",
+    "sunny sky",
+    "vibrant colors",
+    "cartoonish",
+    "tropical",
+    "carefree",
+    "sandy tones",
+    "fakebeachpep"
+  ],
+  "embeddingInput": "FAKEBEACHPEP (Fake Rares) - Series 7 Card 17\nArtist: Prez1 x Kane Mayfield\nSupply 93 Issued March 2022\nOn-card text: FAKEBEACHPEP\nVisual summary: This card features a whimsical scene with Pepe the Frog lounging on a beach. The color palette is vibrant and tropical, with shades of blue, green, and sandy tones dominating the composition. The artistic style is cartoonish and playful, capturing a carefree beach vibe with palm trees and a sunny sky.\nMemetic references: Pepe the Frog as a central character.; Beach and vacation themes, reminiscent of classic summer memes.; Elements of crypto culture with a nod to the laid-back, \"chill\" ethos.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEBEACHPEP#text",
+      "label": "On-card text",
+      "text": "FAKEBEACHPEP",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEBEACHPEP#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central character.\nBeach and vacation themes, reminiscent of classic summer memes.\nElements of crypto culture with a nod to the laid-back, \"chill\" ethos.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEBEACHPEP#visual",
+      "label": "Visual summary",
+      "text": "This card features a whimsical scene with Pepe the Frog lounging on a beach. The color palette is vibrant and tropical, with shades of blue, green, and sandy tones dominating the composition. The artistic style is cartoonish and playful, capturing a carefree beach vibe with palm trees and a sunny sky.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEBEACHPEP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKEBEACHPEP\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a whimsical scene with Pepe the Frog lounging on a beach. The color palette is vibrant and tropical, with shades of blue, green, and sandy tones dominating the composition. The artistic style is cartoonish and playful, capturing a carefree beach vibe with palm trees and a sunny sky.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central character.\n- Beach and vacation themes, reminiscent of classic summer memes.\n- Elements of crypto culture with a nod to the laid-back, \"chill\" ethos.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.463Z",
+  "sourceFactVersion": 1
+}

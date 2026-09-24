@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "LOVEBIRDS",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 39,
+  "artist": "VVD",
+  "supply": 69,
+  "issuance": "September 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Frog characters nod to Pepe the Frog iconography.",
+    "The swing and serene setting hint at themes of love and tranquility.",
+    "The impressionistic style adds a touch of classic art vibes to the meme culture."
+  ],
+  "visualSummary": "The card showcases a pair of frogs sitting lovingly on a swing in a lush, magical forest setting. The color palette is vibrant, with deep greens, soft blues, and hints of purple and red, giving it an impressionist feel. The scene is dreamy and whimsical, evoking a sense of peace and harmony with nature.",
+  "visualSummaryShort": "The card features a pair of frogs on a swing in a vibrant, magical forest. The scene is dreamy and whimsical, filled with lush greenery and soft colors.",
+  "visualKeywords": [
+    "frogs",
+    "swing",
+    "forest",
+    "green",
+    "blue",
+    "purple",
+    "red",
+    "whimsical",
+    "dreamy",
+    "nature"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "frogs",
+    "swing",
+    "forest",
+    "green",
+    "blue",
+    "purple",
+    "red",
+    "whimsical",
+    "dreamy",
+    "nature"
+  ],
+  "embeddingInput": "LOVEBIRDS (Fake Rares) - Series 10 Card 39\nArtist: VVD\nSupply 69 Issued September 2022\nOn-card text: none detected\nVisual summary: The card showcases a pair of frogs sitting lovingly on a swing in a lush, magical forest setting. The color palette is vibrant, with deep greens, soft blues, and hints of purple and red, giving it an impressionist feel. The scene is dreamy and whimsical, evoking a sense of peace and harmony with nature.\nMemetic references: Frog characters nod to Pepe the Frog iconography.; The swing and serene setting hint at themes of love and tranquility.; The impressionistic style adds a touch of classic art vibes to the meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "LOVEBIRDS#memetic",
+      "label": "Memetic references",
+      "text": "Frog characters nod to Pepe the Frog iconography.\nThe swing and serene setting hint at themes of love and tranquility.\nThe impressionistic style adds a touch of classic art vibes to the meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LOVEBIRDS#visual",
+      "label": "Visual summary",
+      "text": "The card showcases a pair of frogs sitting lovingly on a swing in a lush, magical forest setting. The color palette is vibrant, with deep greens, soft blues, and hints of purple and red, giving it an impressionist feel. The scene is dreamy and whimsical, evoking a sense of peace and harmony with nature.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LOVEBIRDS#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card showcases a pair of frogs sitting lovingly on a swing in a lush, magical forest setting. The color palette is vibrant, with deep greens, soft blues, and hints of purple and red, giving it an impressionist feel. The scene is dreamy and whimsical, evoking a sense of peace and harmony with nature.\n\n🧬 **MEMETIC DNA:**\n- Frog characters nod to Pepe the Frog iconography.\n- The swing and serene setting hint at themes of love and tranquility.\n- The impressionistic style adds a touch of classic art vibes to the meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.755Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "asset": "XINUERPEPE",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 36,
+  "artist": "Lord Jamie V. Shill",
+  "supply": 100,
+  "issuance": "November 2023",
+  "textOnCard": [
+    "XINUER PEPE",
+    "#2 in series of 5 Xi JinPing RARE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a well-known internet meme, is referenced through the green skin.",
+    "The figures appear to resemble Xi Jinping, connecting to political meme culture.",
+    "The use of a bicycle may symbolize simplicity or traditional imagery, adding a layer of irony."
+  ],
+  "visualSummary": "The card features a grayscale drawing of two figures with green faces and hands, riding a bicycle. The color palette is minimalistic, using mostly black, white, and green. The artistic style is simple and line-based, focusing on the central figures and creating a stark contrast with the green highlights.",
+  "visualSummaryShort": "The card showcases a grayscale illustration of two figures with green faces and hands on a bicycle. The minimalistic color palette emphasizes the contrast between black, white, and green highlights.",
+  "visualKeywords": [
+    "grayscale",
+    "green faces",
+    "bicycle",
+    "minimalistic",
+    "line art",
+    "contrast"
+  ],
+  "textKeywords": [
+    "xinuer",
+    "series",
+    "jinping"
+  ],
+  "keywords": [
+    "grayscale",
+    "green faces",
+    "bicycle",
+    "minimalistic",
+    "line art",
+    "contrast",
+    "xinuer",
+    "series",
+    "jinping"
+  ],
+  "embeddingInput": "XINUERPEPE (Fake Rares) - Series 16 Card 36\nArtist: Lord Jamie V. Shill\nSupply 100 Issued November 2023\nOn-card text: XINUER PEPE | #2 in series of 5 Xi JinPing RARE\nVisual summary: The card features a grayscale drawing of two figures with green faces and hands, riding a bicycle. The color palette is minimalistic, using mostly black, white, and green. The artistic style is simple and line-based, focusing on the central figures and creating a stark contrast with the green highlights.\nMemetic references: Pepe the Frog, a well-known internet meme, is referenced through the green skin.; The figures appear to resemble Xi Jinping, connecting to political meme culture.; The use of a bicycle may symbolize simplicity or traditional imagery, adding a layer of irony.",
+  "embeddingBlocks": [
+    {
+      "id": "XINUERPEPE#text",
+      "label": "On-card text",
+      "text": "XINUER PEPE | #2 in series of 5 Xi JinPing RARE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "XINUERPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a well-known internet meme, is referenced through the green skin.\nThe figures appear to resemble Xi Jinping, connecting to political meme culture.\nThe use of a bicycle may symbolize simplicity or traditional imagery, adding a layer of irony.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "XINUERPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a grayscale drawing of two figures with green faces and hands, riding a bicycle. The color palette is minimalistic, using mostly black, white, and green. The artistic style is simple and line-based, focusing on the central figures and creating a stark contrast with the green highlights.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "XINUERPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nXINUER PEPE  \n#2 in series of 5 Xi JinPing RARE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a grayscale drawing of two figures with green faces and hands, riding a bicycle. The color palette is minimalistic, using mostly black, white, and green. The artistic style is simple and line-based, focusing on the central figures and creating a stark contrast with the green highlights.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a well-known internet meme, is referenced through the green skin.\n- The figures appear to resemble Xi Jinping, connecting to political meme culture.\n- The use of a bicycle may symbolize simplicity or traditional imagery, adding a layer of irony.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.195Z",
+  "sourceFactVersion": 1
+}

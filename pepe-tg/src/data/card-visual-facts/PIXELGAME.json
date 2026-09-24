@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PIXELGAME",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 1,
+  "artist": "Tomopen",
+  "supply": 21,
+  "issuance": "July 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure, a staple in meme culture.",
+    "Retro gaming references with the pixelated Mario-like figure on the screen.",
+    "Classic gamer snacks and drinks, enhancing the nostalgic gaming atmosphere."
+  ],
+  "visualSummary": "The card features a comedic scene of Pepe the Frog, an iconic meme character, playing video games with a penguin. The colors are bright and vibrant, with a retro pixelated game displayed on the TV screen. The setting is cozy and slightly cluttered with snacks and drinks, capturing a laid-back gaming vibe.",
+  "visualSummaryShort": "The card depicts a humorous scene of Pepe the Frog gaming with a penguin in a cozy environment. Bright colors and a retro pixelated game enhance the laid-back atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "penguin",
+    "video games",
+    "bright colors",
+    "cozy",
+    "snacks",
+    "drinks",
+    "pixelated",
+    "cluttered",
+    "laid-back"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "penguin",
+    "video games",
+    "bright colors",
+    "cozy",
+    "snacks",
+    "drinks",
+    "pixelated",
+    "cluttered",
+    "laid-back"
+  ],
+  "embeddingInput": "PIXELGAME (Fake Rares) - Series 15 Card 1\nArtist: Tomopen\nSupply 21 Issued July 2023\nOn-card text: none detected\nVisual summary: The card features a comedic scene of Pepe the Frog, an iconic meme character, playing video games with a penguin. The colors are bright and vibrant, with a retro pixelated game displayed on the TV screen. The setting is cozy and slightly cluttered with snacks and drinks, capturing a laid-back gaming vibe.\nMemetic references: Pepe the Frog as a central figure, a staple in meme culture.; Retro gaming references with the pixelated Mario-like figure on the screen.; Classic gamer snacks and drinks, enhancing the nostalgic gaming atmosphere.",
+  "embeddingBlocks": [
+    {
+      "id": "PIXELGAME#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure, a staple in meme culture.\nRetro gaming references with the pixelated Mario-like figure on the screen.\nClassic gamer snacks and drinks, enhancing the nostalgic gaming atmosphere.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PIXELGAME#visual",
+      "label": "Visual summary",
+      "text": "The card features a comedic scene of Pepe the Frog, an iconic meme character, playing video games with a penguin. The colors are bright and vibrant, with a retro pixelated game displayed on the TV screen. The setting is cozy and slightly cluttered with snacks and drinks, capturing a laid-back gaming vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PIXELGAME#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a comedic scene of Pepe the Frog, an iconic meme character, playing video games with a penguin. The colors are bright and vibrant, with a retro pixelated game displayed on the TV screen. The setting is cozy and slightly cluttered with snacks and drinks, capturing a laid-back gaming vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure, a staple in meme culture.\n- Retro gaming references with the pixelated Mario-like figure on the screen.\n- Classic gamer snacks and drinks, enhancing the nostalgic gaming atmosphere.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.038Z",
+  "sourceFactVersion": 1
+}

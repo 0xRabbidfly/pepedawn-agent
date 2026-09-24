@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "asset": "GAMEOFDRONES",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 46,
+  "artist": "Rare Scrilla",
+  "supply": 21,
+  "issuance": "January 2025",
+  "textOnCard": [
+    "GAME OF DRONES",
+    "RESIDENTS UNEASY OVER SWARMS OF MYSTERY DRONES"
+  ],
+  "memeticReferences": [
+    "References to conspiracy and meme culture with UFO",
+    "drones.",
+    "Pepe the Frog influence with the green lips.",
+    "\"Breaking\" and \"The Joe Rogan\" suggest commentary on media and podcast culture."
+  ],
+  "visualSummary": "The card features a caricature of a well-known figure with a vibrant purple face, wearing a suit and gesturing expressively. The background is a night sky with mysterious flying objects, possibly drones. The style is cartoonish with bold lines and a playful use of color, capturing a surreal and humorous tone.",
+  "visualSummaryShort": "The card showcases a caricatured figure with a vibrant purple face in a suit, set against a night sky filled with mysterious flying objects. The cartoonish style and bold colors create a surreal and humorous atmosphere.",
+  "visualKeywords": [
+    "caricature",
+    "purple face",
+    "suit",
+    "night sky",
+    "drones",
+    "cartoonish",
+    "bold lines",
+    "playful colors",
+    "surreal",
+    "humorous"
+  ],
+  "textKeywords": [
+    "game",
+    "drones",
+    "residents",
+    "uneasy",
+    "swarms",
+    "mystery"
+  ],
+  "keywords": [
+    "caricature",
+    "purple face",
+    "suit",
+    "night sky",
+    "drones",
+    "cartoonish",
+    "bold lines",
+    "playful colors",
+    "surreal",
+    "humorous",
+    "game",
+    "residents",
+    "uneasy",
+    "swarms",
+    "mystery"
+  ],
+  "embeddingInput": "GAMEOFDRONES (Fake Rares) - Series 17 Card 46\nArtist: Rare Scrilla\nSupply 21 Issued January 2025\nOn-card text: GAME OF DRONES | RESIDENTS UNEASY OVER SWARMS OF MYSTERY DRONES\nVisual summary: The card features a caricature of a well-known figure with a vibrant purple face, wearing a suit and gesturing expressively. The background is a night sky with mysterious flying objects, possibly drones. The style is cartoonish with bold lines and a playful use of color, capturing a surreal and humorous tone.\nMemetic references: References to conspiracy and meme culture with UFO; drones.; Pepe the Frog influence with the green lips.; \"Breaking\" and \"The Joe Rogan\" suggest commentary on media and podcast culture.",
+  "embeddingBlocks": [
+    {
+      "id": "GAMEOFDRONES#text",
+      "label": "On-card text",
+      "text": "GAME OF DRONES | RESIDENTS UNEASY OVER SWARMS OF MYSTERY DRONES",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "GAMEOFDRONES#memetic",
+      "label": "Memetic references",
+      "text": "References to conspiracy and meme culture with UFO\ndrones.\nPepe the Frog influence with the green lips.\n\"Breaking\" and \"The Joe Rogan\" suggest commentary on media and podcast culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "GAMEOFDRONES#visual",
+      "label": "Visual summary",
+      "text": "The card features a caricature of a well-known figure with a vibrant purple face, wearing a suit and gesturing expressively. The background is a night sky with mysterious flying objects, possibly drones. The style is cartoonish with bold lines and a playful use of color, capturing a surreal and humorous tone.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "GAMEOFDRONES#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nGAME OF DRONES  \nRESIDENTS UNEASY OVER SWARMS OF MYSTERY DRONES  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a caricature of a well-known figure with a vibrant purple face, wearing a suit and gesturing expressively. The background is a night sky with mysterious flying objects, possibly drones. The style is cartoonish with bold lines and a playful use of color, capturing a surreal and humorous tone.\n\n🧬 **MEMETIC DNA:**\n- References to conspiracy and meme culture with UFO/drones.\n- Pepe the Frog influence with the green lips.\n- \"Breaking\" and \"The Joe Rogan\" suggest commentary on media and podcast culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.648Z",
+  "sourceFactVersion": 1
+}

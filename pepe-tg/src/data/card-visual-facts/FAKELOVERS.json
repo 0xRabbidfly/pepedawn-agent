@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "FAKELOVERS",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 9,
+  "artist": "Lord Jamie V. Shill",
+  "supply": 21,
+  "issuance": "April 2023",
+  "textOnCard": [
+    "LoveJunkie #FAKELOVERS"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog influence with the green skin.",
+    "Vibrant colors reminiscent of pop art.",
+    "Elements of street art culture, like the spray can.",
+    "The \"X\" sunglasses are a nod to meme aesthetics."
+  ],
+  "visualSummary": "The card showcases two figures with bright green skin against a vibrant purple background. Both characters have exaggerated grins and wear large, colorful sunglasses with \"X\" patterns on the lenses. The male figure holds a pink flower, while the female figure sports spiky hair and holds a spray can, adding a playful, rebellious vibe.",
+  "visualSummaryShort": "The card features two figures with bright green skin and exaggerated grins, set against a vibrant purple background. One holds a pink flower while the other has spiky hair and a spray can, creating a playful and rebellious atmosphere.",
+  "visualKeywords": [
+    "green skin",
+    "purple background",
+    "sunglasses",
+    "pink flower",
+    "spiky hair",
+    "spray can",
+    "playful",
+    "rebellious"
+  ],
+  "textKeywords": [
+    "lovejunkie",
+    "fakelovers"
+  ],
+  "keywords": [
+    "green skin",
+    "purple background",
+    "sunglasses",
+    "pink flower",
+    "spiky hair",
+    "spray can",
+    "playful",
+    "rebellious",
+    "lovejunkie",
+    "fakelovers"
+  ],
+  "embeddingInput": "FAKELOVERS (Fake Rares) - Series 14 Card 9\nArtist: Lord Jamie V. Shill\nSupply 21 Issued April 2023\nOn-card text: LoveJunkie #FAKELOVERS\nVisual summary: The card showcases two figures with bright green skin against a vibrant purple background. Both characters have exaggerated grins and wear large, colorful sunglasses with \"X\" patterns on the lenses. The male figure holds a pink flower, while the female figure sports spiky hair and holds a spray can, adding a playful, rebellious vibe.\nMemetic references: Pepe the Frog influence with the green skin.; Vibrant colors reminiscent of pop art.; Elements of street art culture, like the spray can.; The \"X\" sunglasses are a nod to meme aesthetics.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKELOVERS#text",
+      "label": "On-card text",
+      "text": "LoveJunkie #FAKELOVERS",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKELOVERS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog influence with the green skin.\nVibrant colors reminiscent of pop art.\nElements of street art culture, like the spray can.\nThe \"X\" sunglasses are a nod to meme aesthetics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKELOVERS#visual",
+      "label": "Visual summary",
+      "text": "The card showcases two figures with bright green skin against a vibrant purple background. Both characters have exaggerated grins and wear large, colorful sunglasses with \"X\" patterns on the lenses. The male figure holds a pink flower, while the female figure sports spiky hair and holds a spray can, adding a playful, rebellious vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKELOVERS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nLoveJunkie #FAKELOVERS\n\n🎨 **VISUAL BREAKDOWN:**\nThe card showcases two figures with bright green skin against a vibrant purple background. Both characters have exaggerated grins and wear large, colorful sunglasses with \"X\" patterns on the lenses. The male figure holds a pink flower, while the female figure sports spiky hair and holds a spray can, adding a playful, rebellious vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog influence with the green skin.\n- Vibrant colors reminiscent of pop art.\n- Elements of street art culture, like the spray can.\n- The \"X\" sunglasses are a nod to meme aesthetics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.527Z",
+  "sourceFactVersion": 1
+}

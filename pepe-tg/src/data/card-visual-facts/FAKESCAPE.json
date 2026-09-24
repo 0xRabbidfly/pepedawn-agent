@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "FAKESCAPE",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 12,
+  "artist": "Alondre Crypto",
+  "supply": 97,
+  "issuance": "October 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog, a staple in meme culture and beloved in crypto spaces.",
+    "Cryptopunk references, nodding to the OG NFT collectibles.",
+    "Banksy-style street art, merging traditional art with digital culture."
+  ],
+  "visualSummary": "The card features a parody of a famous street art piece by Banksy, showing an altered version with a pixelated, crypto art twist. The figures leaning out of the window have pixelated faces, reminiscent of Cryptopunks, while the figure hanging below has the head of Pepe the Frog. The color palette is muted with earthy tones, typical of Banksy's stenciled murals, contrasted by the bright, pixelated faces.",
+  "visualSummaryShort": "The card showcases a parody of a well-known street art piece, featuring pixelated characters and a muted earthy color palette. The figures include a Pepe the Frog and pixelated faces, creating a unique blend of styles.",
+  "visualKeywords": [
+    "street art",
+    "pixelated",
+    "pepe the frog",
+    "earthy tones",
+    "crypto art",
+    "stenciled",
+    "figures",
+    "mural"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "street art",
+    "pixelated",
+    "pepe the frog",
+    "earthy tones",
+    "crypto art",
+    "stenciled",
+    "figures",
+    "mural"
+  ],
+  "embeddingInput": "FAKESCAPE (Fake Rares) - Series 1 Card 12\nArtist: Alondre Crypto\nSupply 97 Issued October 2021\nOn-card text: none detected\nVisual summary: The card features a parody of a famous street art piece by Banksy, showing an altered version with a pixelated, crypto art twist. The figures leaning out of the window have pixelated faces, reminiscent of Cryptopunks, while the figure hanging below has the head of Pepe the Frog. The color palette is muted with earthy tones, typical of Banksy's stenciled murals, contrasted by the bright, pixelated faces.\nMemetic references: Pepe the Frog, a staple in meme culture and beloved in crypto spaces.; Cryptopunk references, nodding to the OG NFT collectibles.; Banksy-style street art, merging traditional art with digital culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKESCAPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple in meme culture and beloved in crypto spaces.\nCryptopunk references, nodding to the OG NFT collectibles.\nBanksy-style street art, merging traditional art with digital culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKESCAPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a parody of a famous street art piece by Banksy, showing an altered version with a pixelated, crypto art twist. The figures leaning out of the window have pixelated faces, reminiscent of Cryptopunks, while the figure hanging below has the head of Pepe the Frog. The color palette is muted with earthy tones, typical of Banksy's stenciled murals, contrasted by the bright, pixelated faces.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKESCAPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a parody of a famous street art piece by Banksy, showing an altered version with a pixelated, crypto art twist. The figures leaning out of the window have pixelated faces, reminiscent of Cryptopunks, while the figure hanging below has the head of Pepe the Frog. The color palette is muted with earthy tones, typical of Banksy's stenciled murals, contrasted by the bright, pixelated faces.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple in meme culture and beloved in crypto spaces.\n- Cryptopunk references, nodding to the OG NFT collectibles.\n- Banksy-style street art, merging traditional art with digital culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.572Z",
+  "sourceFactVersion": 1
+}

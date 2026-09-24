@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "asset": "PEPEBELFROG",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 37,
+  "artist": "coriot",
+  "supply": 69,
+  "issuance": "March 2024",
+  "textOnCard": [
+    "THE FROG OF WALL STREET",
+    "BASED ON A DANK STORY",
+    "ART BY MARTIN SCORPEPE"
+  ],
+  "memeticReferences": [
+    "References to \"The Wolf of Wall Street\" movie, a nod to financial ambition and excess.",
+    "Pepe the Frog, a staple of internet meme culture, is featured prominently.",
+    "Plays on the themes of money, power, and internet humor."
+  ],
+  "visualSummary": "The card mimics the design of a U.S. hundred-dollar bill, featuring a portrait of a frog with a smug expression in the center. The color palette is dominated by green and white, typical of currency. The artistic style blends classic banknote engraving with meme culture, giving it a satirical edge.",
+  "visualSummaryShort": "The card features a smug frog portrait at the center, designed to resemble a U.S. hundred-dollar bill. The color scheme is primarily green and white, combining classic banknote elements with a humorous twist.",
+  "visualKeywords": [
+    "frog",
+    "green",
+    "white",
+    "currency",
+    "satirical",
+    "portrait",
+    "meme",
+    "engraving"
+  ],
+  "textKeywords": [
+    "wall",
+    "street",
+    "based",
+    "dank",
+    "story",
+    "art",
+    "martin",
+    "scorpepe"
+  ],
+  "keywords": [
+    "frog",
+    "green",
+    "white",
+    "currency",
+    "satirical",
+    "portrait",
+    "meme",
+    "engraving",
+    "wall",
+    "street",
+    "based",
+    "dank",
+    "story",
+    "art",
+    "martin",
+    "scorpepe"
+  ],
+  "embeddingInput": "PEPEBELFROG (Fake Rares) - Series 17 Card 37\nArtist: coriot\nSupply 69 Issued March 2024\nOn-card text: THE FROG OF WALL STREET | BASED ON A DANK STORY | ART BY MARTIN SCORPEPE\nVisual summary: The card mimics the design of a U.S. hundred-dollar bill, featuring a portrait of a frog with a smug expression in the center. The color palette is dominated by green and white, typical of currency. The artistic style blends classic banknote engraving with meme culture, giving it a satirical edge.\nMemetic references: References to \"The Wolf of Wall Street\" movie, a nod to financial ambition and excess.; Pepe the Frog, a staple of internet meme culture, is featured prominently.; Plays on the themes of money, power, and internet humor.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEBELFROG#text",
+      "label": "On-card text",
+      "text": "THE FROG OF WALL STREET | BASED ON A DANK STORY | ART BY MARTIN SCORPEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEBELFROG#memetic",
+      "label": "Memetic references",
+      "text": "References to \"The Wolf of Wall Street\" movie, a nod to financial ambition and excess.\nPepe the Frog, a staple of internet meme culture, is featured prominently.\nPlays on the themes of money, power, and internet humor.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEBELFROG#visual",
+      "label": "Visual summary",
+      "text": "The card mimics the design of a U.S. hundred-dollar bill, featuring a portrait of a frog with a smug expression in the center. The color palette is dominated by green and white, typical of currency. The artistic style blends classic banknote engraving with meme culture, giving it a satirical edge.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEBELFROG#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nTHE FROG OF WALL STREET  \nBASED ON A DANK STORY  \nART BY MARTIN SCORPEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card mimics the design of a U.S. hundred-dollar bill, featuring a portrait of a frog with a smug expression in the center. The color palette is dominated by green and white, typical of currency. The artistic style blends classic banknote engraving with meme culture, giving it a satirical edge.\n\n🧬 **MEMETIC DNA:**\n- References to \"The Wolf of Wall Street\" movie, a nod to financial ambition and excess.\n- Pepe the Frog, a staple of internet meme culture, is featured prominently.\n- Plays on the themes of money, power, and internet humor.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.843Z",
+  "sourceFactVersion": 1
+}

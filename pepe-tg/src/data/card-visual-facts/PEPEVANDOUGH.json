@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "PEPEVANDOUGH",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 37,
+  "artist": "SHEWOLF",
+  "supply": 122,
+  "issuance": "November 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as a timeless meme icon.",
+    "References to Vincent van Gogh's \"Self-Portrait.\"",
+    "Classic art meets meme culture."
+  ],
+  "visualSummary": "The card features a Pepe the Frog character dressed in a suit, capturing a photo with an old-school camera. The background and style mimic the iconic swirling brushstrokes of Vincent van Gogh, with a palette dominated by blues, greens, and soft whites, giving it a classic, painterly feel.",
+  "visualSummaryShort": "The card showcases a Pepe the Frog character in a suit, using an old-school camera. The background features swirling brushstrokes reminiscent of Van Gogh, with a color palette of blues, greens, and soft whites.",
+  "visualKeywords": [
+    "pepe the frog",
+    "suit",
+    "old-school camera",
+    "swirling brushstrokes",
+    "van gogh style",
+    "blue palette",
+    "green accents",
+    "soft whites"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "suit",
+    "old-school camera",
+    "swirling brushstrokes",
+    "van gogh style",
+    "blue palette",
+    "green accents",
+    "soft whites"
+  ],
+  "embeddingInput": "PEPEVANDOUGH (Fake Rares) - Series 3 Card 37\nArtist: SHEWOLF\nSupply 122 Issued November 2021\nOn-card text: none detected\nVisual summary: The card features a Pepe the Frog character dressed in a suit, capturing a photo with an old-school camera. The background and style mimic the iconic swirling brushstrokes of Vincent van Gogh, with a palette dominated by blues, greens, and soft whites, giving it a classic, painterly feel.\nMemetic references: Pepe the Frog as a timeless meme icon.; References to Vincent van Gogh's \"Self-Portrait.\"; Classic art meets meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEVANDOUGH#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a timeless meme icon.\nReferences to Vincent van Gogh's \"Self-Portrait.\"\nClassic art meets meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEVANDOUGH#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe the Frog character dressed in a suit, capturing a photo with an old-school camera. The background and style mimic the iconic swirling brushstrokes of Vincent van Gogh, with a palette dominated by blues, greens, and soft whites, giving it a classic, painterly feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEVANDOUGH#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe the Frog character dressed in a suit, capturing a photo with an old-school camera. The background and style mimic the iconic swirling brushstrokes of Vincent van Gogh, with a palette dominated by blues, greens, and soft whites, giving it a classic, painterly feel.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a timeless meme icon.\n- References to Vincent van Gogh's \"Self-Portrait.\"\n- Classic art meets meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.006Z",
+  "sourceFactVersion": 1
+}

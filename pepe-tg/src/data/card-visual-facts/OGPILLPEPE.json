@@ -1,0 +1,112 @@
+{
+  "version": 1,
+  "asset": "OGPILLPEPE",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 39,
+  "artist": "El Cholo Pepe",
+  "supply": 100,
+  "issuance": "July 2023",
+  "textOnCard": [
+    "CHILLIN LIKE A VILLAIN!",
+    "TAKE THE ORANGE PILL",
+    "Verifiably scarce. Cryptographically secure.",
+    "The separation of money & state is here. Stay fake. Choose bitcoin."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central character.",
+    "References to Bitcoin with the \"orange pill.\"",
+    "Comic book elements like \"POW\" and \"BAM\" styles.",
+    "Nods to the classic \"villain\" trope with a playful twist."
+  ],
+  "visualSummary": "This card is a vibrant collage of chaos and humor, with a dominant orange and yellow color scheme. The central figure is a Pepe character, styled as a villain, holding a Bitcoin pill, surrounded by various pop culture and crypto references. The style is a blend of comic book art and meme culture, with exaggerated expressions and dynamic action.",
+  "visualSummaryShort": "The card features a Pepe character styled as a villain, prominently displaying a Bitcoin pill. Its vibrant orange and yellow color scheme enhances the chaotic and humorous atmosphere, blending comic book art with meme culture.",
+  "visualKeywords": [
+    "pepe",
+    "bitcoin",
+    "orange",
+    "yellow",
+    "villain",
+    "comic",
+    "chaos",
+    "humor",
+    "pop culture",
+    "meme"
+  ],
+  "textKeywords": [
+    "chillin",
+    "like",
+    "villain",
+    "take",
+    "orange",
+    "pill",
+    "verifiably",
+    "scarce",
+    "cryptographically",
+    "secure",
+    "separation",
+    "money",
+    "state",
+    "stay",
+    "choose",
+    "bitcoin"
+  ],
+  "keywords": [
+    "pepe",
+    "bitcoin",
+    "orange",
+    "yellow",
+    "villain",
+    "comic",
+    "chaos",
+    "humor",
+    "pop culture",
+    "meme",
+    "chillin",
+    "like",
+    "take",
+    "pill",
+    "verifiably",
+    "scarce",
+    "cryptographically",
+    "secure",
+    "separation",
+    "money",
+    "state",
+    "stay",
+    "choose"
+  ],
+  "embeddingInput": "OGPILLPEPE (Fake Rares) - Series 15 Card 39\nArtist: El Cholo Pepe\nSupply 100 Issued July 2023\nOn-card text: CHILLIN LIKE A VILLAIN! | TAKE THE ORANGE PILL | Verifiably scarce. Cryptographically secure. | The separation of money & state is here. Stay fake. Choose bitcoin.\nVisual summary: This card is a vibrant collage of chaos and humor, with a dominant orange and yellow color scheme. The central figure is a Pepe character, styled as a villain, holding a Bitcoin pill, surrounded by various pop culture and crypto references. The style is a blend of comic book art and meme culture, with exaggerated expressions and dynamic action.\nMemetic references: Pepe the Frog as a central character.; References to Bitcoin with the \"orange pill.\"; Comic book elements like \"POW\" and \"BAM\" styles.; Nods to the classic \"villain\" trope with a playful twist.",
+  "embeddingBlocks": [
+    {
+      "id": "OGPILLPEPE#text",
+      "label": "On-card text",
+      "text": "CHILLIN LIKE A VILLAIN! | TAKE THE ORANGE PILL | Verifiably scarce. Cryptographically secure. | The separation of money & state is here. Stay fake. Choose bitcoin.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "OGPILLPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central character.\nReferences to Bitcoin with the \"orange pill.\"\nComic book elements like \"POW\" and \"BAM\" styles.\nNods to the classic \"villain\" trope with a playful twist.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "OGPILLPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card is a vibrant collage of chaos and humor, with a dominant orange and yellow color scheme. The central figure is a Pepe character, styled as a villain, holding a Bitcoin pill, surrounded by various pop culture and crypto references. The style is a blend of comic book art and meme culture, with exaggerated expressions and dynamic action.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "OGPILLPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- CHILLIN LIKE A VILLAIN!\n- TAKE THE ORANGE PILL\n- Verifiably scarce. Cryptographically secure.\n- The separation of money & state is here. Stay fake. Choose bitcoin.\n\n🎨 **VISUAL BREAKDOWN:**\nThis card is a vibrant collage of chaos and humor, with a dominant orange and yellow color scheme. The central figure is a Pepe character, styled as a villain, holding a Bitcoin pill, surrounded by various pop culture and crypto references. The style is a blend of comic book art and meme culture, with exaggerated expressions and dynamic action.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central character.\n- References to Bitcoin with the \"orange pill.\"\n- Comic book elements like \"POW\" and \"BAM\" styles.\n- Nods to the classic \"villain\" trope with a playful twist.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.806Z",
+  "sourceFactVersion": 1
+}

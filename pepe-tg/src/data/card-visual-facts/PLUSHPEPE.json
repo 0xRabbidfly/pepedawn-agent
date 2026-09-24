@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PLUSHPEPE",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 42,
+  "artist": "Dr. Greedy x FWD",
+  "supply": 22,
+  "issuance": "December 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference, a staple in meme culture.",
+    "Cartoon characters reminiscent of popular internet meme styles.",
+    "The comic artwork in the background suggests a nod to traditional comic strip humor."
+  ],
+  "visualSummary": "The image features a giant plush Pepe the Frog lounging on a couch, surrounded by cartoonish characters with exaggerated expressions. The color palette is vibrant, dominated by greens, blues, and yellows, creating a playful and surreal atmosphere. In the background, a black-and-white comic-style artwork is framed on the wall, adding an extra layer of visual interest.",
+  "visualSummaryShort": "The card showcases a giant plush Pepe the Frog relaxing on a couch, surrounded by whimsical characters. The vibrant color palette and comic-style background contribute to a playful and surreal mood.",
+  "visualKeywords": [
+    "plush",
+    "green",
+    "couch",
+    "cartoonish",
+    "vibrant",
+    "comic",
+    "surreal",
+    "blue",
+    "yellow",
+    "exaggerated"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "plush",
+    "green",
+    "couch",
+    "cartoonish",
+    "vibrant",
+    "comic",
+    "surreal",
+    "blue",
+    "yellow",
+    "exaggerated"
+  ],
+  "embeddingInput": "PLUSHPEPE (Fake Rares) - Series 14 Card 42\nArtist: Dr. Greedy x FWD\nSupply 22 Issued December 2022\nOn-card text: none detected\nVisual summary: The image features a giant plush Pepe the Frog lounging on a couch, surrounded by cartoonish characters with exaggerated expressions. The color palette is vibrant, dominated by greens, blues, and yellows, creating a playful and surreal atmosphere. In the background, a black-and-white comic-style artwork is framed on the wall, adding an extra layer of visual interest.\nMemetic references: Classic Pepe the Frog reference, a staple in meme culture.; Cartoon characters reminiscent of popular internet meme styles.; The comic artwork in the background suggests a nod to traditional comic strip humor.",
+  "embeddingBlocks": [
+    {
+      "id": "PLUSHPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference, a staple in meme culture.\nCartoon characters reminiscent of popular internet meme styles.\nThe comic artwork in the background suggests a nod to traditional comic strip humor.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PLUSHPEPE#visual",
+      "label": "Visual summary",
+      "text": "The image features a giant plush Pepe the Frog lounging on a couch, surrounded by cartoonish characters with exaggerated expressions. The color palette is vibrant, dominated by greens, blues, and yellows, creating a playful and surreal atmosphere. In the background, a black-and-white comic-style artwork is framed on the wall, adding an extra layer of visual interest.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PLUSHPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe image features a giant plush Pepe the Frog lounging on a couch, surrounded by cartoonish characters with exaggerated expressions. The color palette is vibrant, dominated by greens, blues, and yellows, creating a playful and surreal atmosphere. In the background, a black-and-white comic-style artwork is framed on the wall, adding an extra layer of visual interest.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference, a staple in meme culture.\n- Cartoon characters reminiscent of popular internet meme styles.\n- The comic artwork in the background suggests a nod to traditional comic strip humor.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.041Z",
+  "sourceFactVersion": 1
+}

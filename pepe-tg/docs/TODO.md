@@ -10,6 +10,16 @@ looks like. Dated when it was written; strike through or delete when done.
 - [x] **2. Images from the GitHub CDN** (`github.com/fakerares/cdn`), old
       overrides and S3 as fallback. Found the hard way: the ten newest Series
       18 cards had 403 image URLs from the old site. *(on the branch)*
+- [x] **The vision pass runs itself.** 39 live cards had never been looked
+      at (newest Series 18, directory additions, ten MP4s with no still).
+      `scripts/fv-backfill.ts` looks at whatever lacks a fact file, daily from
+      the workflow; facts are committed in `src/data/card-visual-facts/` and
+      `CardFactsImportService` imports what the database lacks at boot.
+      *(on the branch)* Needs `OPENAI_API_KEY` as a repository secret for the
+      daily run; until then the step lists and skips. Three cards the model
+      will not describe (ELEVVTED, WUPEPE: refused even on the thumbnail;
+      BURNDJPEPE: every copy is over OpenAI's 20MB limit) are retried each
+      run - three cheap calls a day. Cap or hand-write them if that grates.
 - [ ] **3. Link replies to the directory** — `card.directory.url` or
       `/series/S/N` as the canonical page instead of pepe.wtf / xcp.io.
 - [ ] **4. New-card announcements** — the daily sync's `added` list becomes a

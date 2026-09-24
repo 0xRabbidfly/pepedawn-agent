@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "asset": "FAKEFAKEWAX",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 52,
+  "artist": "Pepenardo",
+  "supply": 50,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "FAKEWAX",
+    "FRAAKREE series4",
+    "volume1",
+    "PARENTAL ADVISORY EXPLICIT FAKE RARE",
+    "MIGHT AS WELL BREAK THE RULES TWICE... S4 C52."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog references.",
+    "Play on classical art with modern meme culture.",
+    "Crypto and NFT culture parody through the \"FAKEWAX\" and \"FAKE RARE\" labels."
+  ],
+  "visualSummary": "The card features a classical-style painting with a twist, showcasing a green-skinned figure in a pink top and blue robe, holding a cupcake and sitting near a tree. A sheep with a Pepe face lingers beside them, adding a humorous element. The color palette is vibrant, with lush greens, blues, and pinks contrasting against the natural background.",
+  "visualSummaryShort": "The card depicts a whimsical scene with a green-skinned figure in vibrant attire, humorously accompanied by a sheep with a Pepe face. The lush colors and natural setting create a lively atmosphere.",
+  "visualKeywords": [
+    "green-skinned",
+    "cupcake",
+    "sheep",
+    "pink top",
+    "blue robe",
+    "tree",
+    "vibrant colors",
+    "humor",
+    "natural background"
+  ],
+  "textKeywords": [
+    "fakewax",
+    "fraakree",
+    "series4",
+    "volume1",
+    "parental",
+    "advisory",
+    "explicit",
+    "might",
+    "well",
+    "break",
+    "rules",
+    "twice",
+    "c52"
+  ],
+  "keywords": [
+    "green-skinned",
+    "cupcake",
+    "sheep",
+    "pink top",
+    "blue robe",
+    "tree",
+    "vibrant colors",
+    "humor",
+    "natural background",
+    "fakewax",
+    "fraakree",
+    "series4",
+    "volume1",
+    "parental",
+    "advisory",
+    "explicit",
+    "might",
+    "well",
+    "break",
+    "rules",
+    "twice",
+    "c52"
+  ],
+  "embeddingInput": "FAKEFAKEWAX (Fake Rares) - Series 4 Card 52\nArtist: Pepenardo\nSupply 50 Issued July 2022\nOn-card text: FAKEWAX | FRAAKREE series4 | volume1 | PARENTAL ADVISORY EXPLICIT FAKE RARE | MIGHT AS WELL BREAK THE RULES TWICE... S4 C52.\nVisual summary: The card features a classical-style painting with a twist, showcasing a green-skinned figure in a pink top and blue robe, holding a cupcake and sitting near a tree. A sheep with a Pepe face lingers beside them, adding a humorous element. The color palette is vibrant, with lush greens, blues, and pinks contrasting against the natural background.\nMemetic references: Pepe the Frog references.; Play on classical art with modern meme culture.; Crypto and NFT culture parody through the \"FAKEWAX\" and \"FAKE RARE\" labels.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEFAKEWAX#text",
+      "label": "On-card text",
+      "text": "FAKEWAX | FRAAKREE series4 | volume1 | PARENTAL ADVISORY EXPLICIT FAKE RARE | MIGHT AS WELL BREAK THE RULES TWICE... S4 C52.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEFAKEWAX#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references.\nPlay on classical art with modern meme culture.\nCrypto and NFT culture parody through the \"FAKEWAX\" and \"FAKE RARE\" labels.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEFAKEWAX#visual",
+      "label": "Visual summary",
+      "text": "The card features a classical-style painting with a twist, showcasing a green-skinned figure in a pink top and blue robe, holding a cupcake and sitting near a tree. A sheep with a Pepe face lingers beside them, adding a humorous element. The color palette is vibrant, with lush greens, blues, and pinks contrasting against the natural background.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEFAKEWAX#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKEWAX  \nFRAAKREE series4  \nvolume1  \nPARENTAL ADVISORY EXPLICIT FAKE RARE  \nMIGHT AS WELL BREAK THE RULES TWICE... S4 C52.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a classical-style painting with a twist, showcasing a green-skinned figure in a pink top and blue robe, holding a cupcake and sitting near a tree. A sheep with a Pepe face lingers beside them, adding a humorous element. The color palette is vibrant, with lush greens, blues, and pinks contrasting against the natural background.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references.\n- Play on classical art with modern meme culture.\n- Crypto and NFT culture parody through the \"FAKEWAX\" and \"FAKE RARE\" labels.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.494Z",
+  "sourceFactVersion": 1
+}

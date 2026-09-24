@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "asset": "CALLNOWPEPE",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 9,
+  "artist": "cydr",
+  "supply": 42,
+  "issuance": "March 2024",
+  "textOnCard": [
+    "CALL 1-800-4-PEPE. Trying to hold back tears. LA. CLICK HERE 4 Pepe."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in classic meme form.",
+    "References to old-school infomercials with the \"CALL 1-800\" format.",
+    "Glitch art style, popular in digital and NFT art scenes.",
+    "The phrase \"CLICK HERE\" nods to early internet clickbait culture."
+  ],
+  "visualSummary": "This card features a pixelated and glitchy aesthetic with a vivid color palette dominated by greens and blues, offset by pops of red and yellow. Pepe the Frog is dressed in a suit, set against a distorted background that enhances the card's chaotic and digital vibe. The overall style is reminiscent of a vintage computer screen, invoking a sense of retro internet culture.",
+  "visualSummaryShort": "The card showcases a pixelated Pepe the Frog in a suit, surrounded by a chaotic, distorted background. The vivid color palette features greens, blues, and bright accents of red and yellow, evoking a retro internet aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "pixelated",
+    "glitchy",
+    "green",
+    "blue",
+    "red",
+    "yellow",
+    "suit",
+    "distorted",
+    "retro"
+  ],
+  "textKeywords": [
+    "call",
+    "800",
+    "trying",
+    "hold",
+    "back",
+    "tears",
+    "click"
+  ],
+  "keywords": [
+    "pepe",
+    "pixelated",
+    "glitchy",
+    "green",
+    "blue",
+    "red",
+    "yellow",
+    "suit",
+    "distorted",
+    "retro",
+    "call",
+    "800",
+    "trying",
+    "hold",
+    "back",
+    "tears",
+    "click"
+  ],
+  "embeddingInput": "CALLNOWPEPE (Fake Rares) - Series 17 Card 9\nArtist: cydr\nSupply 42 Issued March 2024\nOn-card text: CALL 1-800-4-PEPE. Trying to hold back tears. LA. CLICK HERE 4 Pepe.\nVisual summary: This card features a pixelated and glitchy aesthetic with a vivid color palette dominated by greens and blues, offset by pops of red and yellow. Pepe the Frog is dressed in a suit, set against a distorted background that enhances the card's chaotic and digital vibe. The overall style is reminiscent of a vintage computer screen, invoking a sense of retro internet culture.\nMemetic references: Pepe the Frog in classic meme form.; References to old-school infomercials with the \"CALL 1-800\" format.; Glitch art style, popular in digital and NFT art scenes.; The phrase \"CLICK HERE\" nods to early internet clickbait culture.",
+  "embeddingBlocks": [
+    {
+      "id": "CALLNOWPEPE#text",
+      "label": "On-card text",
+      "text": "CALL 1-800-4-PEPE. Trying to hold back tears. LA. CLICK HERE 4 Pepe.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "CALLNOWPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in classic meme form.\nReferences to old-school infomercials with the \"CALL 1-800\" format.\nGlitch art style, popular in digital and NFT art scenes.\nThe phrase \"CLICK HERE\" nods to early internet clickbait culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "CALLNOWPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a pixelated and glitchy aesthetic with a vivid color palette dominated by greens and blues, offset by pops of red and yellow. Pepe the Frog is dressed in a suit, set against a distorted background that enhances the card's chaotic and digital vibe. The overall style is reminiscent of a vintage computer screen, invoking a sense of retro internet culture.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "CALLNOWPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nCALL 1-800-4-PEPE. Trying to hold back tears. LA. CLICK HERE 4 Pepe.\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a pixelated and glitchy aesthetic with a vivid color palette dominated by greens and blues, offset by pops of red and yellow. Pepe the Frog is dressed in a suit, set against a distorted background that enhances the card's chaotic and digital vibe. The overall style is reminiscent of a vintage computer screen, invoking a sense of retro internet culture.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in classic meme form.\n- References to old-school infomercials with the \"CALL 1-800\" format.\n- Glitch art style, popular in digital and NFT art scenes.\n- The phrase \"CLICK HERE\" nods to early internet clickbait culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.339Z",
+  "sourceFactVersion": 1
+}

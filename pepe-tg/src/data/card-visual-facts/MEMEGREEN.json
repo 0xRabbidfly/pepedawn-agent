@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "asset": "MEMEGREEN",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 27,
+  "artist": "Memeticx",
+  "supply": 33,
+  "issuance": "December 2025",
+  "textOnCard": [
+    "RARE MEME GREEN. WARNING may cause dankness. NAKA FOUNDER. Rare Quality Frogments #069420."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference, a staple in meme culture.",
+    "\"NAKA\" potentially nodding to Satoshi Nakamoto, the enigmatic Bitcoin founder.",
+    "Use of meme language like \"dankness\" and \"frogments\" adds to the crypto-native humor."
+  ],
+  "visualSummary": "The card features a vibrant green background with a decorative border of alternating black and yellow checkers. At the center is a portrait of a Pepe-fied figure in a suit, framed by intricate gold and black patterns. The design is embellished with floral motifs and small, stylized frogs, creating an elaborate and playful aesthetic.",
+  "visualSummaryShort": "The card showcases a vibrant green background with a Pepe-inspired figure in a suit, surrounded by intricate gold and black patterns. Decorative floral motifs and small frogs enhance the playful and elaborate design.",
+  "visualKeywords": [
+    "green background",
+    "pepe",
+    "suit",
+    "gold patterns",
+    "black patterns",
+    "floral motifs",
+    "frogs",
+    "checkered border"
+  ],
+  "textKeywords": [
+    "meme",
+    "green",
+    "warning",
+    "may",
+    "cause",
+    "dankness",
+    "naka",
+    "founder",
+    "quality",
+    "frogments",
+    "069420"
+  ],
+  "keywords": [
+    "green background",
+    "pepe",
+    "suit",
+    "gold patterns",
+    "black patterns",
+    "floral motifs",
+    "frogs",
+    "checkered border",
+    "meme",
+    "green",
+    "warning",
+    "may",
+    "cause",
+    "dankness",
+    "naka",
+    "founder",
+    "quality",
+    "frogments",
+    "069420"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "MEMEGREEN (Fake Rares) - Series 18 Card 27\nArtist: Memeticx\nSupply 33 Issued December 2025\nOn-card text: RARE MEME GREEN. WARNING may cause dankness. NAKA FOUNDER. Rare Quality Frogments #069420.\nVisual summary: The card features a vibrant green background with a decorative border of alternating black and yellow checkers. At the center is a portrait of a Pepe-fied figure in a suit, framed by intricate gold and black patterns. The design is embellished with floral motifs and small, stylized frogs, creating an elaborate and playful aesthetic.\nMemetic references: Pepe the Frog reference, a staple in meme culture.; \"NAKA\" potentially nodding to Satoshi Nakamoto, the enigmatic Bitcoin founder.; Use of meme language like \"dankness\" and \"frogments\" adds to the crypto-native humor.",
+  "embeddingBlocks": [
+    {
+      "id": "MEMEGREEN#text",
+      "label": "On-card text",
+      "text": "RARE MEME GREEN. WARNING may cause dankness. NAKA FOUNDER. Rare Quality Frogments #069420.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MEMEGREEN#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference, a staple in meme culture.\n\"NAKA\" potentially nodding to Satoshi Nakamoto, the enigmatic Bitcoin founder.\nUse of meme language like \"dankness\" and \"frogments\" adds to the crypto-native humor.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MEMEGREEN#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant green background with a decorative border of alternating black and yellow checkers. At the center is a portrait of a Pepe-fied figure in a suit, framed by intricate gold and black patterns. The design is embellished with floral motifs and small, stylized frogs, creating an elaborate and playful aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MEMEGREEN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nRARE MEME GREEN. WARNING may cause dankness. NAKA FOUNDER. Rare Quality Frogments #069420.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant green background with a decorative border of alternating black and yellow checkers. At the center is a portrait of a Pepe-fied figure in a suit, framed by intricate gold and black patterns. The design is embellished with floral motifs and small, stylized frogs, creating an elaborate and playful aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference, a staple in meme culture.\n- \"NAKA\" potentially nodding to Satoshi Nakamoto, the enigmatic Bitcoin founder.\n- Use of meme language like \"dankness\" and \"frogments\" adds to the crypto-native humor.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:31:15.404Z"
+}

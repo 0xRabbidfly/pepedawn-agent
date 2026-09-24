@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "asset": "BLOBPEPE",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 3,
+  "artist": "Alth0tas",
+  "supply": 21,
+  "issuance": "September 2023",
+  "textOnCard": [
+    "Blob Pepe",
+    "zzzZzzzzzZzzzzZzzz",
+    "Too blob to move",
+    "Skill: Slep",
+    "Rareness score: 69% blub",
+    "Blob card ever"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog, a staple meme character, is central to the composition.",
+    "The \"blob\" concept references a state of laziness or doing nothing.",
+    "\"Slep\" is a playful internet misspelling commonly used in meme culture.",
+    "The \"Rareness score: 69% blub\" humorously nods to meme numerology."
+  ],
+  "visualSummary": "The card features a minimalist design with Pepe the Frog depicted as a green, blob-like figure lying flat. The color palette is simple, dominated by green and a hint of shadow, emphasizing its laid-back and sleepy demeanor. The artistic style is clean and cartoonish, with a focus on humor and simplicity.",
+  "visualSummaryShort": "The card showcases a cartoonish green blob-like figure of Pepe the Frog in a relaxed position. Its minimalist design and simple color palette create a humorous and laid-back mood.",
+  "visualKeywords": [
+    "pepe",
+    "blob",
+    "green",
+    "cartoonish",
+    "minimalist",
+    "humor",
+    "sleepy",
+    "simple",
+    "shadow"
+  ],
+  "textKeywords": [
+    "blob",
+    "zzzzzzzzzzzzzzzzzz",
+    "too",
+    "move",
+    "skill",
+    "slep",
+    "rareness",
+    "score",
+    "blub",
+    "ever"
+  ],
+  "keywords": [
+    "pepe",
+    "blob",
+    "green",
+    "cartoonish",
+    "minimalist",
+    "humor",
+    "sleepy",
+    "simple",
+    "shadow",
+    "zzzzzzzzzzzzzzzzzz",
+    "too",
+    "move",
+    "skill",
+    "slep",
+    "rareness",
+    "score",
+    "blub",
+    "ever"
+  ],
+  "embeddingInput": "BLOBPEPE (Fake Rares) - Series 16 Card 3\nArtist: Alth0tas\nSupply 21 Issued September 2023\nOn-card text: Blob Pepe | zzzZzzzzzZzzzzZzzz | Too blob to move | Skill: Slep | Rareness score: 69% blub | Blob card ever\nVisual summary: The card features a minimalist design with Pepe the Frog depicted as a green, blob-like figure lying flat. The color palette is simple, dominated by green and a hint of shadow, emphasizing its laid-back and sleepy demeanor. The artistic style is clean and cartoonish, with a focus on humor and simplicity.\nMemetic references: Pepe the Frog, a staple meme character, is central to the composition.; The \"blob\" concept references a state of laziness or doing nothing.; \"Slep\" is a playful internet misspelling commonly used in meme culture.; The \"Rareness score: 69% blub\" humorously nods to meme numerology.",
+  "embeddingBlocks": [
+    {
+      "id": "BLOBPEPE#text",
+      "label": "On-card text",
+      "text": "Blob Pepe | zzzZzzzzzZzzzzZzzz | Too blob to move | Skill: Slep | Rareness score: 69% blub | Blob card ever",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "BLOBPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple meme character, is central to the composition.\nThe \"blob\" concept references a state of laziness or doing nothing.\n\"Slep\" is a playful internet misspelling commonly used in meme culture.\nThe \"Rareness score: 69% blub\" humorously nods to meme numerology.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BLOBPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a minimalist design with Pepe the Frog depicted as a green, blob-like figure lying flat. The color palette is simple, dominated by green and a hint of shadow, emphasizing its laid-back and sleepy demeanor. The artistic style is clean and cartoonish, with a focus on humor and simplicity.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BLOBPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nBlob Pepe  \nzzzZzzzzzZzzzzZzzz  \nToo blob to move  \nSkill: Slep  \nRareness score: 69% blub  \nBlob card ever\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a minimalist design with Pepe the Frog depicted as a green, blob-like figure lying flat. The color palette is simple, dominated by green and a hint of shadow, emphasizing its laid-back and sleepy demeanor. The artistic style is clean and cartoonish, with a focus on humor and simplicity.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple meme character, is central to the composition.\n- The \"blob\" concept references a state of laziness or doing nothing.\n- \"Slep\" is a playful internet misspelling commonly used in meme culture.\n- The \"Rareness score: 69% blub\" humorously nods to meme numerology.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.315Z",
+  "sourceFactVersion": 1
+}

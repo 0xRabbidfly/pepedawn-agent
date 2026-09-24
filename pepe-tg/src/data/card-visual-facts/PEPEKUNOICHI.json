@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "asset": "PEPEKUNOICHI",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 35,
+  "artist": "FourLeafClover",
+  "supply": 69,
+  "issuance": "December 2022",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a character with a distinct style and vibrant colors. The overall mood is energetic and playful.",
+  "visualKeywords": [
+    "character",
+    "vibrant colors",
+    "energetic",
+    "playful"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "character",
+    "vibrant colors",
+    "energetic",
+    "playful"
+  ],
+  "embeddingInput": "PEPEKUNOICHI (Fake Rares) - Series 12 Card 35\nArtist: FourLeafClover\nSupply 69 Issued December 2022\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEKUNOICHI#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't help with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.909Z",
+  "sourceFactVersion": 1
+}

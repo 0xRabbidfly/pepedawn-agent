@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "ILLIQUID",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 30,
+  "artist": "Dalek",
+  "supply": 37,
+  "issuance": "May 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Multiple Pepe the Frog references, a staple in meme and crypto culture.",
+    "Surreal, abstract art reminiscent of psychedelic and pop art styles.",
+    "Balloon elements and teardrop motifs suggest themes of hope and despair."
+  ],
+  "visualSummary": "The card is a vibrant explosion of color featuring various Pepe the Frog characters in a kaleidoscopic scene. The palette includes bright greens, pinks, blues, and yellows with strong, bold outlines and a cartoonish style. The background is filled with geometric patterns and swirling shapes that add to the chaotic yet mesmerizing vibe.",
+  "visualSummaryShort": "The card showcases a vibrant and chaotic scene filled with various Pepe the Frog characters. It features a colorful palette with geometric patterns and swirling shapes that enhance the cartoonish style.",
+  "visualKeywords": [
+    "pepe the frog",
+    "vibrant colors",
+    "geometric patterns",
+    "kaleidoscopic",
+    "cartoonish",
+    "chaotic",
+    "swirling shapes",
+    "bold outlines"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "vibrant colors",
+    "geometric patterns",
+    "kaleidoscopic",
+    "cartoonish",
+    "chaotic",
+    "swirling shapes",
+    "bold outlines"
+  ],
+  "embeddingInput": "ILLIQUID (Fake Rares) - Series 14 Card 30\nArtist: Dalek\nSupply 37 Issued May 2023\nOn-card text: none detected\nVisual summary: The card is a vibrant explosion of color featuring various Pepe the Frog characters in a kaleidoscopic scene. The palette includes bright greens, pinks, blues, and yellows with strong, bold outlines and a cartoonish style. The background is filled with geometric patterns and swirling shapes that add to the chaotic yet mesmerizing vibe.\nMemetic references: Multiple Pepe the Frog references, a staple in meme and crypto culture.; Surreal, abstract art reminiscent of psychedelic and pop art styles.; Balloon elements and teardrop motifs suggest themes of hope and despair.",
+  "embeddingBlocks": [
+    {
+      "id": "ILLIQUID#memetic",
+      "label": "Memetic references",
+      "text": "Multiple Pepe the Frog references, a staple in meme and crypto culture.\nSurreal, abstract art reminiscent of psychedelic and pop art styles.\nBalloon elements and teardrop motifs suggest themes of hope and despair.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "ILLIQUID#visual",
+      "label": "Visual summary",
+      "text": "The card is a vibrant explosion of color featuring various Pepe the Frog characters in a kaleidoscopic scene. The palette includes bright greens, pinks, blues, and yellows with strong, bold outlines and a cartoonish style. The background is filled with geometric patterns and swirling shapes that add to the chaotic yet mesmerizing vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "ILLIQUID#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card is a vibrant explosion of color featuring various Pepe the Frog characters in a kaleidoscopic scene. The palette includes bright greens, pinks, blues, and yellows with strong, bold outlines and a cartoonish style. The background is filled with geometric patterns and swirling shapes that add to the chaotic yet mesmerizing vibe.\n\n🧬 **MEMETIC DNA:**\n- Multiple Pepe the Frog references, a staple in meme and crypto culture.\n- Surreal, abstract art reminiscent of psychedelic and pop art styles.\n- Balloon elements and teardrop motifs suggest themes of hope and despair.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.692Z",
+  "sourceFactVersion": 1
+}

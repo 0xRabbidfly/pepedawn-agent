@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "asset": "PEPEESCOBAR",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 15,
+  "artist": "Aera One",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "PEPE ESCOBAR",
+    "CARCEL OTTO JUDICIAL MEDELLIN",
+    "128482"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a notorious historical figure.",
+    "References to infamous criminal culture.",
+    "Mugshot parody blending meme and infamous iconography."
+  ],
+  "visualSummary": "The card features a green Pepe character styled as a notorious figure with a mugshot vibe. The background is a vibrant teal with dripping elements reminiscent of graffiti. The color palette includes bold greens, reds, and yellows, with a hand-drawn, comic-like aesthetic.",
+  "visualSummaryShort": "The card showcases a green Pepe character in a mugshot style against a vibrant teal background. It features a bold color palette with graffiti-like elements and a comic aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "mugshot",
+    "teal",
+    "graffiti",
+    "green",
+    "red",
+    "yellow",
+    "comic",
+    "dripping"
+  ],
+  "textKeywords": [
+    "escobar",
+    "carcel",
+    "otto",
+    "judicial",
+    "medellin",
+    "128482"
+  ],
+  "keywords": [
+    "pepe",
+    "mugshot",
+    "teal",
+    "graffiti",
+    "green",
+    "red",
+    "yellow",
+    "comic",
+    "dripping",
+    "escobar",
+    "carcel",
+    "otto",
+    "judicial",
+    "medellin",
+    "128482"
+  ],
+  "embeddingInput": "PEPEESCOBAR (Fake Rares) - Series 2 Card 15\nArtist: Aera One\nSupply 100 Issued October 2021\nOn-card text: PEPE ESCOBAR | CARCEL OTTO JUDICIAL MEDELLIN | 128482\nVisual summary: The card features a green Pepe character styled as a notorious figure with a mugshot vibe. The background is a vibrant teal with dripping elements reminiscent of graffiti. The color palette includes bold greens, reds, and yellows, with a hand-drawn, comic-like aesthetic.\nMemetic references: Pepe the Frog as a notorious historical figure.; References to infamous criminal culture.; Mugshot parody blending meme and infamous iconography.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEESCOBAR#text",
+      "label": "On-card text",
+      "text": "PEPE ESCOBAR | CARCEL OTTO JUDICIAL MEDELLIN | 128482",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEESCOBAR#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a notorious historical figure.\nReferences to infamous criminal culture.\nMugshot parody blending meme and infamous iconography.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEESCOBAR#visual",
+      "label": "Visual summary",
+      "text": "The card features a green Pepe character styled as a notorious figure with a mugshot vibe. The background is a vibrant teal with dripping elements reminiscent of graffiti. The color palette includes bold greens, reds, and yellows, with a hand-drawn, comic-like aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEESCOBAR#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE ESCOBAR  \nCARCEL OTTO JUDICIAL MEDELLIN  \n128482\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a green Pepe character styled as a notorious figure with a mugshot vibe. The background is a vibrant teal with dripping elements reminiscent of graffiti. The color palette includes bold greens, reds, and yellows, with a hand-drawn, comic-like aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a notorious historical figure.\n- References to infamous criminal culture.\n- Mugshot parody blending meme and infamous iconography.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.878Z",
+  "sourceFactVersion": 1
+}

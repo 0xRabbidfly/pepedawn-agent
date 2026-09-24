@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "asset": "YOUL.LASTPEPESUPPER",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 4,
+  "artist": "YoulDesign",
+  "supply": 110,
+  "issuance": "September 2025",
+  "textOnCard": [
+    "The Last Pepe Supper",
+    "One Pepe to rule them all",
+    "“And you all know my name is the Law”"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure.",
+    "References to \"The Last Supper\" painting.",
+    "Crypto culture embedded with \"one to rule them all\" phrase, hinting at dominance in the meme world.",
+    "QR code, possibly linking to more NFT or crypto content."
+  ],
+  "visualSummary": "The card features a reimagining of Leonardo da Vinci's \"The Last Supper,\" with Pepe the Frog characters taking the place of the apostles. The color palette is rich, with earthy tones and a golden frame that adds a touch of extravagance. The composition mirrors the original painting, creating a humorous yet iconic twist with Pepe's expressive faces.",
+  "visualSummaryShort": "This card creatively reinterprets Leonardo da Vinci's \"The Last Supper\" with Pepe the Frog characters as the apostles. The rich earthy tones and golden frame enhance its extravagant and humorous appeal.",
+  "visualKeywords": [
+    "pepe",
+    "last supper",
+    "earthy tones",
+    "golden frame",
+    "humor",
+    "expressive faces",
+    "iconic",
+    "reimagining"
+  ],
+  "textKeywords": [
+    "last",
+    "supper",
+    "one",
+    "rule",
+    "all",
+    "you",
+    "know",
+    "name",
+    "law"
+  ],
+  "keywords": [
+    "pepe",
+    "last supper",
+    "earthy tones",
+    "golden frame",
+    "humor",
+    "expressive faces",
+    "iconic",
+    "reimagining",
+    "last",
+    "supper",
+    "one",
+    "rule",
+    "all",
+    "you",
+    "know",
+    "name",
+    "law"
+  ],
+  "embeddingInput": "YOUL.LASTPEPESUPPER (Fake Rares) - Series 18 Card 4\nArtist: YoulDesign\nSupply 110 Issued September 2025\nOn-card text: The Last Pepe Supper | One Pepe to rule them all | “And you all know my name is the Law”\nVisual summary: The card features a reimagining of Leonardo da Vinci's \"The Last Supper,\" with Pepe the Frog characters taking the place of the apostles. The color palette is rich, with earthy tones and a golden frame that adds a touch of extravagance. The composition mirrors the original painting, creating a humorous yet iconic twist with Pepe's expressive faces.\nMemetic references: Pepe the Frog as a central figure.; References to \"The Last Supper\" painting.; Crypto culture embedded with \"one to rule them all\" phrase, hinting at dominance in the meme world.; QR code, possibly linking to more NFT or crypto content.",
+  "embeddingBlocks": [
+    {
+      "id": "YOUL.LASTPEPESUPPER#text",
+      "label": "On-card text",
+      "text": "The Last Pepe Supper | One Pepe to rule them all | “And you all know my name is the Law”",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "YOUL.LASTPEPESUPPER#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure.\nReferences to \"The Last Supper\" painting.\nCrypto culture embedded with \"one to rule them all\" phrase, hinting at dominance in the meme world.\nQR code, possibly linking to more NFT or crypto content.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "YOUL.LASTPEPESUPPER#visual",
+      "label": "Visual summary",
+      "text": "The card features a reimagining of Leonardo da Vinci's \"The Last Supper,\" with Pepe the Frog characters taking the place of the apostles. The color palette is rich, with earthy tones and a golden frame that adds a touch of extravagance. The composition mirrors the original painting, creating a humorous yet iconic twist with Pepe's expressive faces.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "YOUL.LASTPEPESUPPER#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nThe Last Pepe Supper  \nOne Pepe to rule them all  \n“And you all know my name is the Law”\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a reimagining of Leonardo da Vinci's \"The Last Supper,\" with Pepe the Frog characters taking the place of the apostles. The color palette is rich, with earthy tones and a golden frame that adds a touch of extravagance. The composition mirrors the original painting, creating a humorous yet iconic twist with Pepe's expressive faces.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure.\n- References to \"The Last Supper\" painting.\n- Crypto culture embedded with \"one to rule them all\" phrase, hinting at dominance in the meme world.\n- QR code, possibly linking to more NFT or crypto content.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.201Z",
+  "sourceFactVersion": 1
+}

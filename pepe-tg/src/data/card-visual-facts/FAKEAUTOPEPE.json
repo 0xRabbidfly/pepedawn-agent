@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "asset": "FAKEAUTOPEPE",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 47,
+  "artist": "Dmitri Cherniak",
+  "supply": 300,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "Automated Pepe",
+    "❤️=0 Atk=-jobs Spd=∞ Ele=∅",
+    "while (rare) {",
+    "&nbsp;&nbsp;&nbsp;&nbsp;makeMemes();",
+    "&nbsp;&nbsp;&nbsp;&nbsp;makeArt();",
+    "&nbsp;&nbsp;&nbsp;&nbsp;feelsGoodMan();",
+    "}"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog is the central figure, a staple in meme culture.",
+    "The text \"feelsGoodMan\" references a classic Pepe meme.",
+    "The coding language format appeals to tech-savvy crypto enthusiasts.",
+    "The anti-establishment phrase in the border aligns with crypto's rebellious spirit."
+  ],
+  "visualSummary": "The card features a colorful collage of various Pepe the Frog expressions, each with different colors and styles, creating a chaotic yet vibrant background. The central area contains a white box with code-like text, enhancing the tech and meme vibe. The border is black with the repeated phrase \"F*CK NAZIS,\" adding an edgy and rebellious touch.",
+  "visualSummaryShort": "The card showcases a vibrant collage of Pepe the Frog expressions against a chaotic background. It features a black border with an edgy phrase, enhancing its rebellious aesthetic.",
+  "visualKeywords": [
+    "pepe",
+    "collage",
+    "colorful",
+    "chaotic",
+    "black border",
+    "edgy",
+    "tech vibe",
+    "meme"
+  ],
+  "textKeywords": [
+    "automated",
+    "atk",
+    "jobs",
+    "spd",
+    "ele",
+    "while",
+    "nbsp",
+    "makememes",
+    "makeart",
+    "feelsgoodman"
+  ],
+  "keywords": [
+    "pepe",
+    "collage",
+    "colorful",
+    "chaotic",
+    "black border",
+    "edgy",
+    "tech vibe",
+    "meme",
+    "automated",
+    "atk",
+    "jobs",
+    "spd",
+    "ele",
+    "while",
+    "nbsp",
+    "makememes",
+    "makeart",
+    "feelsgoodman"
+  ],
+  "embeddingInput": "FAKEAUTOPEPE (Fake Rares) - Series 8 Card 47\nArtist: Dmitri Cherniak\nSupply 300 Issued July 2022\nOn-card text: Automated Pepe | ❤️=0 Atk=-jobs Spd=∞ Ele=∅ | while (rare) { | &nbsp;&nbsp;&nbsp;&nbsp;makeMemes(); | &nbsp;&nbsp;&nbsp;&nbsp;makeArt(); | &nbsp;&nbsp;&nbsp;&nbsp;feelsGoodMan(); | }\nVisual summary: The card features a colorful collage of various Pepe the Frog expressions, each with different colors and styles, creating a chaotic yet vibrant background. The central area contains a white box with code-like text, enhancing the tech and meme vibe. The border is black with the repeated phrase \"F*CK NAZIS,\" adding an edgy and rebellious touch.\nMemetic references: Pepe the Frog is the central figure, a staple in meme culture.; The text \"feelsGoodMan\" references a classic Pepe meme.; The coding language format appeals to tech-savvy crypto enthusiasts.; The anti-establishment phrase in the border aligns with crypto's rebellious spirit.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEAUTOPEPE#text",
+      "label": "On-card text",
+      "text": "Automated Pepe | ❤️=0 Atk=-jobs Spd=∞ Ele=∅ | while (rare) { | &nbsp;&nbsp;&nbsp;&nbsp;makeMemes(); | &nbsp;&nbsp;&nbsp;&nbsp;makeArt(); | &nbsp;&nbsp;&nbsp;&nbsp;feelsGoodMan(); | }",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEAUTOPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog is the central figure, a staple in meme culture.\nThe text \"feelsGoodMan\" references a classic Pepe meme.\nThe coding language format appeals to tech-savvy crypto enthusiasts.\nThe anti-establishment phrase in the border aligns with crypto's rebellious spirit.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEAUTOPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a colorful collage of various Pepe the Frog expressions, each with different colors and styles, creating a chaotic yet vibrant background. The central area contains a white box with code-like text, enhancing the tech and meme vibe. The border is black with the repeated phrase \"F*CK NAZIS,\" adding an edgy and rebellious touch.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEAUTOPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nAutomated Pepe  \n❤️=0 Atk=-jobs Spd=∞ Ele=∅  \nwhile (rare) {  \n&nbsp;&nbsp;&nbsp;&nbsp;makeMemes();  \n&nbsp;&nbsp;&nbsp;&nbsp;makeArt();  \n&nbsp;&nbsp;&nbsp;&nbsp;feelsGoodMan();  \n}\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a colorful collage of various Pepe the Frog expressions, each with different colors and styles, creating a chaotic yet vibrant background. The central area contains a white box with code-like text, enhancing the tech and meme vibe. The border is black with the repeated phrase \"F*CK NAZIS,\" adding an edgy and rebellious touch.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog is the central figure, a staple in meme culture.\n- The text \"feelsGoodMan\" references a classic Pepe meme.\n- The coding language format appeals to tech-savvy crypto enthusiasts.\n- The anti-establishment phrase in the border aligns with crypto's rebellious spirit.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.454Z",
+  "sourceFactVersion": 1
+}

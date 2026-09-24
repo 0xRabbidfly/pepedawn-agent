@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "asset": "PEPEDWARDFK",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 44,
+  "artist": "Guzman",
+  "supply": 110,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "PepedwardFK",
+    "Counterparty"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog meets Edward Scissorhands, blending meme culture with classic film iconography.",
+    "References to Counterparty, a platform known in the crypto",
+    "NFT space.",
+    "QR code, a nod to crypto's tech-savvy culture."
+  ],
+  "visualSummary": "This card features a 3D figure with a Pepe the Frog face, styled in a manner reminiscent of Edward Scissorhands, complete with dark, tousled hair and metallic, scissor-like hands. The figure is encased in a display box with a deep maroon backdrop, highlighting the character's unique design. The color palette is dominated by dark shades with metallic highlights, giving it a mysterious and slightly eerie vibe.",
+  "visualSummaryShort": "The card showcases a 3D figure combining Pepe the Frog and Edward Scissorhands, featuring dark hair and metallic scissor hands. It is set against a deep maroon backdrop, enhancing its mysterious and eerie atmosphere.",
+  "visualKeywords": [
+    "3d figure",
+    "pepe the frog",
+    "edward scissorhands",
+    "dark hair",
+    "metallic hands",
+    "maroon backdrop",
+    "mysterious",
+    "eerie",
+    "dark shades",
+    "highlights"
+  ],
+  "textKeywords": [
+    "pepedwardfk",
+    "counterparty"
+  ],
+  "keywords": [
+    "3d figure",
+    "pepe the frog",
+    "edward scissorhands",
+    "dark hair",
+    "metallic hands",
+    "maroon backdrop",
+    "mysterious",
+    "eerie",
+    "dark shades",
+    "highlights",
+    "pepedwardfk",
+    "counterparty"
+  ],
+  "embeddingInput": "PEPEDWARDFK (Fake Rares) - Series 1 Card 44\nArtist: Guzman\nSupply 110 Issued October 2021\nOn-card text: PepedwardFK | Counterparty\nVisual summary: This card features a 3D figure with a Pepe the Frog face, styled in a manner reminiscent of Edward Scissorhands, complete with dark, tousled hair and metallic, scissor-like hands. The figure is encased in a display box with a deep maroon backdrop, highlighting the character's unique design. The color palette is dominated by dark shades with metallic highlights, giving it a mysterious and slightly eerie vibe.\nMemetic references: Pepe the Frog meets Edward Scissorhands, blending meme culture with classic film iconography.; References to Counterparty, a platform known in the crypto; NFT space.; QR code, a nod to crypto's tech-savvy culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEDWARDFK#text",
+      "label": "On-card text",
+      "text": "PepedwardFK | Counterparty",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEDWARDFK#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog meets Edward Scissorhands, blending meme culture with classic film iconography.\nReferences to Counterparty, a platform known in the crypto\nNFT space.\nQR code, a nod to crypto's tech-savvy culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEDWARDFK#visual",
+      "label": "Visual summary",
+      "text": "This card features a 3D figure with a Pepe the Frog face, styled in a manner reminiscent of Edward Scissorhands, complete with dark, tousled hair and metallic, scissor-like hands. The figure is encased in a display box with a deep maroon backdrop, highlighting the character's unique design. The color palette is dominated by dark shades with metallic highlights, giving it a mysterious and slightly eerie vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEDWARDFK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPepedwardFK  \nCounterparty  \n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a 3D figure with a Pepe the Frog face, styled in a manner reminiscent of Edward Scissorhands, complete with dark, tousled hair and metallic, scissor-like hands. The figure is encased in a display box with a deep maroon backdrop, highlighting the character's unique design. The color palette is dominated by dark shades with metallic highlights, giving it a mysterious and slightly eerie vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog meets Edward Scissorhands, blending meme culture with classic film iconography.\n- References to Counterparty, a platform known in the crypto/NFT space.\n- QR code, a nod to crypto's tech-savvy culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.876Z",
+  "sourceFactVersion": 1
+}

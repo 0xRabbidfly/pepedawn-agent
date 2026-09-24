@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "STJOHNPEPE",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 19,
+  "artist": "Da'Block God",
+  "supply": 121,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "STJOHNPEPE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a religious figure references both meme culture and historical art.",
+    "The lightning bolt could symbolize power or enlightenment, common in both memes and mythologies.",
+    "Cosmic background adds a touch of the infinite, hinting at the expansive nature of meme culture."
+  ],
+  "visualSummary": "This card features a Pepe the Frog character depicted as a classical saint, adorned in flowing purple robes. The character stands amidst ancient ruins, holding a book and a lightning bolt, with a cosmic sky overhead. The color palette is a rich blend of purples, blues, and greens, giving the card a mystical and otherworldly vibe.",
+  "visualSummaryShort": "The card showcases a Pepe the Frog character styled as a classical saint in flowing purple robes, set against ancient ruins. A cosmic sky enhances the mystical atmosphere with a rich color palette of purples, blues, and greens.",
+  "visualKeywords": [
+    "pepe the frog",
+    "purple robes",
+    "ancient ruins",
+    "book",
+    "lightning bolt",
+    "cosmic sky",
+    "mystical",
+    "blue palette",
+    "green accents"
+  ],
+  "textKeywords": [
+    "stjohnpepe"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "purple robes",
+    "ancient ruins",
+    "book",
+    "lightning bolt",
+    "cosmic sky",
+    "mystical",
+    "blue palette",
+    "green accents",
+    "stjohnpepe"
+  ],
+  "embeddingInput": "STJOHNPEPE (Fake Rares) - Series 4 Card 19\nArtist: Da'Block God\nSupply 121 Issued October 2021\nOn-card text: STJOHNPEPE\nVisual summary: This card features a Pepe the Frog character depicted as a classical saint, adorned in flowing purple robes. The character stands amidst ancient ruins, holding a book and a lightning bolt, with a cosmic sky overhead. The color palette is a rich blend of purples, blues, and greens, giving the card a mystical and otherworldly vibe.\nMemetic references: Pepe the Frog as a religious figure references both meme culture and historical art.; The lightning bolt could symbolize power or enlightenment, common in both memes and mythologies.; Cosmic background adds a touch of the infinite, hinting at the expansive nature of meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "STJOHNPEPE#text",
+      "label": "On-card text",
+      "text": "STJOHNPEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "STJOHNPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a religious figure references both meme culture and historical art.\nThe lightning bolt could symbolize power or enlightenment, common in both memes and mythologies.\nCosmic background adds a touch of the infinite, hinting at the expansive nature of meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "STJOHNPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a Pepe the Frog character depicted as a classical saint, adorned in flowing purple robes. The character stands amidst ancient ruins, holding a book and a lightning bolt, with a cosmic sky overhead. The color palette is a rich blend of purples, blues, and greens, giving the card a mystical and otherworldly vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "STJOHNPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nSTJOHNPEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a Pepe the Frog character depicted as a classical saint, adorned in flowing purple robes. The character stands amidst ancient ruins, holding a book and a lightning bolt, with a cosmic sky overhead. The color palette is a rich blend of purples, blues, and greens, giving the card a mystical and otherworldly vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a religious figure references both meme culture and historical art.\n- The lightning bolt could symbolize power or enlightenment, common in both memes and mythologies.\n- Cosmic background adds a touch of the infinite, hinting at the expansive nature of meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.126Z",
+  "sourceFactVersion": 1
+}

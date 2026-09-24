@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "PEPEDUSA",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 4,
+  "artist": "EMBLEMATIX",
+  "supply": 69,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "FAKE RARE",
+    "PEPEDUSA"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog with a Medusa twist, blending classic mythology with internet culture.",
+    "The pocket watch adds a steampunk or vintage vibe.",
+    "Blood and horror elements amplify the dark meme energy."
+  ],
+  "visualSummary": "The card features a pocket watch with a chilling depiction of Medusa with a Pepe twist, her face green and snake hair animated. Blood drips from the base of the watch, adding a dark, ominous tone. The background and frame are dark, which contrasts with the vibrant green of the Pepe Medusa, creating a striking visual impact.",
+  "visualSummaryShort": "The card showcases a pocket watch featuring a green Pepe Medusa with animated snake hair. Blood drips from the watch, set against a dark background that enhances the vibrant colors.",
+  "visualKeywords": [
+    "pocket watch",
+    "medusa",
+    "green",
+    "snakes",
+    "blood",
+    "dark background",
+    "ominous",
+    "vibrant",
+    "animated"
+  ],
+  "textKeywords": [
+    "pepedusa"
+  ],
+  "keywords": [
+    "pocket watch",
+    "medusa",
+    "green",
+    "snakes",
+    "blood",
+    "dark background",
+    "ominous",
+    "vibrant",
+    "animated",
+    "pepedusa"
+  ],
+  "embeddingInput": "PEPEDUSA (Fake Rares) - Series 13 Card 4\nArtist: EMBLEMATIX\nSupply 69 Issued March 2022\nOn-card text: FAKE RARE | PEPEDUSA\nVisual summary: The card features a pocket watch with a chilling depiction of Medusa with a Pepe twist, her face green and snake hair animated. Blood drips from the base of the watch, adding a dark, ominous tone. The background and frame are dark, which contrasts with the vibrant green of the Pepe Medusa, creating a striking visual impact.\nMemetic references: Pepe the Frog with a Medusa twist, blending classic mythology with internet culture.; The pocket watch adds a steampunk or vintage vibe.; Blood and horror elements amplify the dark meme energy.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEDUSA#text",
+      "label": "On-card text",
+      "text": "FAKE RARE | PEPEDUSA",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEDUSA#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog with a Medusa twist, blending classic mythology with internet culture.\nThe pocket watch adds a steampunk or vintage vibe.\nBlood and horror elements amplify the dark meme energy.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEDUSA#visual",
+      "label": "Visual summary",
+      "text": "The card features a pocket watch with a chilling depiction of Medusa with a Pepe twist, her face green and snake hair animated. Blood drips from the base of the watch, adding a dark, ominous tone. The background and frame are dark, which contrasts with the vibrant green of the Pepe Medusa, creating a striking visual impact.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEDUSA#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE RARE  \nPEPEDUSA\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a pocket watch with a chilling depiction of Medusa with a Pepe twist, her face green and snake hair animated. Blood drips from the base of the watch, adding a dark, ominous tone. The background and frame are dark, which contrasts with the vibrant green of the Pepe Medusa, creating a striking visual impact.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog with a Medusa twist, blending classic mythology with internet culture.\n- The pocket watch adds a steampunk or vintage vibe.\n- Blood and horror elements amplify the dark meme energy.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.875Z",
+  "sourceFactVersion": 1
+}

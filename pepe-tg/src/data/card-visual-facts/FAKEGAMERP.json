@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "asset": "FAKEGAMERP",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 48,
+  "artist": "faketrashbin",
+  "supply": 500,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "FAKE, DANK, PEPES"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in a gamer setting.",
+    "References to classic gaming culture with the CRT TV and retro game console.",
+    "\"DANK\" and \"FAKE\" stickers nod to meme culture and the Fake Rares NFT series.",
+    "Nostalgic throwback to 80s and 90s gaming."
+  ],
+  "visualSummary": "The card features a 3D-rendered scene of a green anthropomorphic frog character playing a retro video game on an old CRT television. The color palette is dominated by greens and yellows, creating a nostalgic and slightly surreal atmosphere. The room is sparsely decorated, with a poster on the wall and snacks on the floor, adding to the vintage gamer vibe.",
+  "visualSummaryShort": "The card depicts a green anthropomorphic frog character engrossed in a retro video game on a CRT television. The nostalgic atmosphere is enhanced by the yellow and green color palette and sparse room decor.",
+  "visualKeywords": [
+    "frog",
+    "video game",
+    "crt television",
+    "green palette",
+    "yellow accents",
+    "poster",
+    "snacks",
+    "vintage",
+    "surreal",
+    "gamer vibe"
+  ],
+  "textKeywords": [
+    "dank",
+    "pepes"
+  ],
+  "keywords": [
+    "frog",
+    "video game",
+    "crt television",
+    "green palette",
+    "yellow accents",
+    "poster",
+    "snacks",
+    "vintage",
+    "surreal",
+    "gamer vibe",
+    "dank",
+    "pepes"
+  ],
+  "embeddingInput": "FAKEGAMERP (Fake Rares) - Series 2 Card 48\nArtist: faketrashbin\nSupply 500 Issued November 2021\nOn-card text: FAKE, DANK, PEPES\nVisual summary: The card features a 3D-rendered scene of a green anthropomorphic frog character playing a retro video game on an old CRT television. The color palette is dominated by greens and yellows, creating a nostalgic and slightly surreal atmosphere. The room is sparsely decorated, with a poster on the wall and snacks on the floor, adding to the vintage gamer vibe.\nMemetic references: Pepe the Frog in a gamer setting.; References to classic gaming culture with the CRT TV and retro game console.; \"DANK\" and \"FAKE\" stickers nod to meme culture and the Fake Rares NFT series.; Nostalgic throwback to 80s and 90s gaming.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEGAMERP#text",
+      "label": "On-card text",
+      "text": "FAKE, DANK, PEPES",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEGAMERP#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in a gamer setting.\nReferences to classic gaming culture with the CRT TV and retro game console.\n\"DANK\" and \"FAKE\" stickers nod to meme culture and the Fake Rares NFT series.\nNostalgic throwback to 80s and 90s gaming.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEGAMERP#visual",
+      "label": "Visual summary",
+      "text": "The card features a 3D-rendered scene of a green anthropomorphic frog character playing a retro video game on an old CRT television. The color palette is dominated by greens and yellows, creating a nostalgic and slightly surreal atmosphere. The room is sparsely decorated, with a poster on the wall and snacks on the floor, adding to the vintage gamer vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEGAMERP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE, DANK, PEPES\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a 3D-rendered scene of a green anthropomorphic frog character playing a retro video game on an old CRT television. The color palette is dominated by greens and yellows, creating a nostalgic and slightly surreal atmosphere. The room is sparsely decorated, with a poster on the wall and snacks on the floor, adding to the vintage gamer vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in a gamer setting.\n- References to classic gaming culture with the CRT TV and retro game console.\n- \"DANK\" and \"FAKE\" stickers nod to meme culture and the Fake Rares NFT series.\n- Nostalgic throwback to 80s and 90s gaming.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.505Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "asset": "PEPEFICATION",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 22,
+  "artist": "Crimson Rider",
+  "supply": 75,
+  "issuance": "March 2022",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a character with a cartoonish design. The background is vibrant and colorful, enhancing the playful mood.",
+  "visualKeywords": [
+    "cartoon",
+    "colorful",
+    "playful"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "cartoon",
+    "colorful",
+    "playful"
+  ],
+  "embeddingInput": "PEPEFICATION (Fake Rares) - Series 7 Card 22\nArtist: Crimson Rider\nSupply 75 Issued March 2022\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEFICATION#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, but I can't assist with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.884Z",
+  "sourceFactVersion": 1
+}

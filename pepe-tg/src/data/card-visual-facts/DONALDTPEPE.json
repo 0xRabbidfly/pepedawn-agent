@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "asset": "DONALDTPEPE",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 10,
+  "artist": "Rodro",
+  "supply": 43,
+  "issuance": "December 2022",
+  "textOnCard": [
+    "DONALDPEPE",
+    "Buy my awesome nft card",
+    "DONALDPEPE will make crypto great again! Praise to get enough of this card ★ Rareness Score 92 ★",
+    "I PROMISE I WILL RUG YOU"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure",
+    "References to a well-known political figure",
+    "Crypto lingo with phrases like \"make crypto great again\" and \"I WILL RUG YOU\"",
+    "Use of star symbols and patriotic colors"
+  ],
+  "visualSummary": "The card features a Pepe the Frog character styled as a prominent political figure, with a distinct green face and iconic hairstyle. The background is vibrant with red and yellow geometric patterns, enhancing the bold and satirical theme. The character wears a suit with a badge, adding a humorous official vibe to the overall composition.",
+  "visualSummaryShort": "The card showcases a Pepe the Frog character in a suit against a vibrant red and yellow geometric background. The design emphasizes a humorous and satirical political theme.",
+  "visualKeywords": [
+    "pepe",
+    "green face",
+    "suit",
+    "badge",
+    "red patterns",
+    "yellow patterns",
+    "geometric",
+    "satirical",
+    "humorous"
+  ],
+  "textKeywords": [
+    "donaldpepe",
+    "buy",
+    "awesome",
+    "nft",
+    "will",
+    "make",
+    "crypto",
+    "great",
+    "again",
+    "praise",
+    "get",
+    "enough",
+    "rareness",
+    "score",
+    "promise",
+    "rug",
+    "you"
+  ],
+  "keywords": [
+    "pepe",
+    "green face",
+    "suit",
+    "badge",
+    "red patterns",
+    "yellow patterns",
+    "geometric",
+    "satirical",
+    "humorous",
+    "donaldpepe",
+    "buy",
+    "awesome",
+    "nft",
+    "will",
+    "make",
+    "crypto",
+    "great",
+    "again",
+    "praise",
+    "get",
+    "enough",
+    "rareness",
+    "score",
+    "promise",
+    "rug",
+    "you"
+  ],
+  "embeddingInput": "DONALDTPEPE (Fake Rares) - Series 12 Card 10\nArtist: Rodro\nSupply 43 Issued December 2022\nOn-card text: DONALDPEPE | Buy my awesome nft card | DONALDPEPE will make crypto great again! Praise to get enough of this card ★ Rareness Score 92 ★ | I PROMISE I WILL RUG YOU\nVisual summary: The card features a Pepe the Frog character styled as a prominent political figure, with a distinct green face and iconic hairstyle. The background is vibrant with red and yellow geometric patterns, enhancing the bold and satirical theme. The character wears a suit with a badge, adding a humorous official vibe to the overall composition.\nMemetic references: Pepe the Frog as a central figure; References to a well-known political figure; Crypto lingo with phrases like \"make crypto great again\" and \"I WILL RUG YOU\"; Use of star symbols and patriotic colors",
+  "embeddingBlocks": [
+    {
+      "id": "DONALDTPEPE#text",
+      "label": "On-card text",
+      "text": "DONALDPEPE | Buy my awesome nft card | DONALDPEPE will make crypto great again! Praise to get enough of this card ★ Rareness Score 92 ★ | I PROMISE I WILL RUG YOU",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "DONALDTPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure\nReferences to a well-known political figure\nCrypto lingo with phrases like \"make crypto great again\" and \"I WILL RUG YOU\"\nUse of star symbols and patriotic colors",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "DONALDTPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe the Frog character styled as a prominent political figure, with a distinct green face and iconic hairstyle. The background is vibrant with red and yellow geometric patterns, enhancing the bold and satirical theme. The character wears a suit with a badge, adding a humorous official vibe to the overall composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "DONALDTPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- DONALDPEPE\n- Buy my awesome nft card\n- DONALDPEPE will make crypto great again! Praise to get enough of this card ★ Rareness Score 92 ★\n- I PROMISE I WILL RUG YOU\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe the Frog character styled as a prominent political figure, with a distinct green face and iconic hairstyle. The background is vibrant with red and yellow geometric patterns, enhancing the bold and satirical theme. The character wears a suit with a badge, adding a humorous official vibe to the overall composition.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure\n- References to a well-known political figure\n- Crypto lingo with phrases like \"make crypto great again\" and \"I WILL RUG YOU\"\n- Use of star symbols and patriotic colors",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.410Z",
+  "sourceFactVersion": 1
+}

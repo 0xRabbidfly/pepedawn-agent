@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "asset": "BITEMEPEPE",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 49,
+  "artist": "Fake Annie",
+  "supply": 69,
+  "issuance": "May 2022",
+  "textOnCard": [
+    "\"I'm not sleeping mommy\"",
+    "\"Save me\"",
+    "\"I thought you was diffy\""
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in a submissive position, nodding to its versatile meme history.",
+    "BDSM and bondage imagery add an unexpected twist.",
+    "Graffiti-style text mimicking internet meme language and dark humor."
+  ],
+  "visualSummary": "The card depicts a provocative scene in a tiled room with a woman in a latex outfit, bunny mask, and high heels, standing over a kneeling Pepe. The color palette is dominated by black, white, and orange tones, creating a stark contrast. The artistic style is edgy and surreal, with elements like chains, graffiti, and expressive characters adding to the intense atmosphere.",
+  "visualSummaryShort": "The card features a provocative scene in a tiled room with a woman in a latex outfit and a bunny mask standing over a kneeling Pepe. The color palette is primarily black, white, and orange, contributing to an edgy and surreal atmosphere.",
+  "visualKeywords": [
+    "latex",
+    "bunny mask",
+    "kneeling",
+    "black and white",
+    "orange tones",
+    "chains",
+    "graffiti",
+    "surreal",
+    "intense",
+    "provocative"
+  ],
+  "textKeywords": [
+    "not",
+    "sleeping",
+    "mommy",
+    "save",
+    "thought",
+    "you",
+    "was",
+    "diffy"
+  ],
+  "keywords": [
+    "latex",
+    "bunny mask",
+    "kneeling",
+    "black and white",
+    "orange tones",
+    "chains",
+    "graffiti",
+    "surreal",
+    "intense",
+    "provocative",
+    "not",
+    "sleeping",
+    "mommy",
+    "save",
+    "thought",
+    "you",
+    "was",
+    "diffy"
+  ],
+  "embeddingInput": "BITEMEPEPE (Fake Rares) - Series 15 Card 49\nArtist: Fake Annie\nSupply 69 Issued May 2022\nOn-card text: \"I'm not sleeping mommy\" | \"Save me\" | \"I thought you was diffy\"\nVisual summary: The card depicts a provocative scene in a tiled room with a woman in a latex outfit, bunny mask, and high heels, standing over a kneeling Pepe. The color palette is dominated by black, white, and orange tones, creating a stark contrast. The artistic style is edgy and surreal, with elements like chains, graffiti, and expressive characters adding to the intense atmosphere.\nMemetic references: Pepe the Frog in a submissive position, nodding to its versatile meme history.; BDSM and bondage imagery add an unexpected twist.; Graffiti-style text mimicking internet meme language and dark humor.",
+  "embeddingBlocks": [
+    {
+      "id": "BITEMEPEPE#text",
+      "label": "On-card text",
+      "text": "\"I'm not sleeping mommy\" | \"Save me\" | \"I thought you was diffy\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "BITEMEPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in a submissive position, nodding to its versatile meme history.\nBDSM and bondage imagery add an unexpected twist.\nGraffiti-style text mimicking internet meme language and dark humor.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BITEMEPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card depicts a provocative scene in a tiled room with a woman in a latex outfit, bunny mask, and high heels, standing over a kneeling Pepe. The color palette is dominated by black, white, and orange tones, creating a stark contrast. The artistic style is edgy and surreal, with elements like chains, graffiti, and expressive characters adding to the intense atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BITEMEPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- \"I'm not sleeping mommy\"\n- \"Save me\"\n- \"I thought you was diffy\"\n\n🎨 **VISUAL BREAKDOWN:**\nThe card depicts a provocative scene in a tiled room with a woman in a latex outfit, bunny mask, and high heels, standing over a kneeling Pepe. The color palette is dominated by black, white, and orange tones, creating a stark contrast. The artistic style is edgy and surreal, with elements like chains, graffiti, and expressive characters adding to the intense atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in a submissive position, nodding to its versatile meme history.\n- BDSM and bondage imagery add an unexpected twist.\n- Graffiti-style text mimicking internet meme language and dark humor.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.309Z",
+  "sourceFactVersion": 1
+}

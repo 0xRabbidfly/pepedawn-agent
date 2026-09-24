@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "CONTESSAPEPA",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 45,
+  "artist": "Nikolina Petolas",
+  "supply": 61,
+  "issuance": "September 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe-inspired character with a sophisticated twist.",
+    "Classical art parody, blending meme culture with traditional portraiture.",
+    "Elements of nature and fantasy, reminiscent of whimsical gardens."
+  ],
+  "visualSummary": "This card features a lush, surreal landscape with a green, anthropomorphic figure resembling a classical portrait. The character is adorned with foliage and flowers, blending seamlessly into the garden-like background. The color palette is rich with greens, blues, and earthy tones, creating a harmonious and dreamy atmosphere.",
+  "visualSummaryShort": "The card showcases a vibrant, surreal landscape with a green, anthropomorphic figure that resembles a classical portrait. The character is surrounded by lush foliage and flowers, contributing to a dreamy and harmonious atmosphere.",
+  "visualKeywords": [
+    "surreal landscape",
+    "green figure",
+    "foliage",
+    "flowers",
+    "dreamy atmosphere",
+    "earthy tones",
+    "classical portrait",
+    "garden",
+    "blues",
+    "rich colors"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "surreal landscape",
+    "green figure",
+    "foliage",
+    "flowers",
+    "dreamy atmosphere",
+    "earthy tones",
+    "classical portrait",
+    "garden",
+    "blues",
+    "rich colors"
+  ],
+  "embeddingInput": "CONTESSAPEPA (Fake Rares) - Series 11 Card 45\nArtist: Nikolina Petolas\nSupply 61 Issued September 2022\nOn-card text: none detected\nVisual summary: This card features a lush, surreal landscape with a green, anthropomorphic figure resembling a classical portrait. The character is adorned with foliage and flowers, blending seamlessly into the garden-like background. The color palette is rich with greens, blues, and earthy tones, creating a harmonious and dreamy atmosphere.\nMemetic references: Pepe-inspired character with a sophisticated twist.; Classical art parody, blending meme culture with traditional portraiture.; Elements of nature and fantasy, reminiscent of whimsical gardens.",
+  "embeddingBlocks": [
+    {
+      "id": "CONTESSAPEPA#memetic",
+      "label": "Memetic references",
+      "text": "Pepe-inspired character with a sophisticated twist.\nClassical art parody, blending meme culture with traditional portraiture.\nElements of nature and fantasy, reminiscent of whimsical gardens.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "CONTESSAPEPA#visual",
+      "label": "Visual summary",
+      "text": "This card features a lush, surreal landscape with a green, anthropomorphic figure resembling a classical portrait. The character is adorned with foliage and flowers, blending seamlessly into the garden-like background. The color palette is rich with greens, blues, and earthy tones, creating a harmonious and dreamy atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "CONTESSAPEPA#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a lush, surreal landscape with a green, anthropomorphic figure resembling a classical portrait. The character is adorned with foliage and flowers, blending seamlessly into the garden-like background. The color palette is rich with greens, blues, and earthy tones, creating a harmonious and dreamy atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Pepe-inspired character with a sophisticated twist.\n- Classical art parody, blending meme culture with traditional portraiture.\n- Elements of nature and fantasy, reminiscent of whimsical gardens.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.365Z",
+  "sourceFactVersion": 1
+}

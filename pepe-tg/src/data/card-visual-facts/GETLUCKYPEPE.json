@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "asset": "GETLUCKYPEPE",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 13,
+  "artist": "Fake Annie",
+  "supply": 31,
+  "issuance": "January 2023",
+  "textOnCard": [
+    "GET LUCKY PEPE",
+    "1-800-CAT-PLAY",
+    "ONLY FOR FRENEMIES"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog references with a twist.",
+    "BDSM and cat play themes for a cheeky nod to counterculture.",
+    "Hotline number for playful mystery and allure."
+  ],
+  "visualSummary": "The card features a striking image of a green-skinned figure in a leather cat mask, set against a swirling, dark background with a full moon. The color palette is dominated by deep greens, purples, and blacks, creating a mysterious and edgy vibe. The artwork combines elements of comic-style illustration with a touch of surrealism.",
+  "visualSummaryShort": "The card showcases a green-skinned figure wearing a leather cat mask against a dark, swirling background with a full moon. The color palette features deep greens, purples, and blacks, enhancing the mysterious and edgy atmosphere.",
+  "visualKeywords": [
+    "green figure",
+    "cat mask",
+    "full moon",
+    "dark background",
+    "comic style",
+    "surrealism",
+    "deep colors",
+    "mysterious",
+    "edgy"
+  ],
+  "textKeywords": [
+    "get",
+    "lucky",
+    "800",
+    "cat",
+    "play",
+    "only",
+    "frenemies"
+  ],
+  "keywords": [
+    "green figure",
+    "cat mask",
+    "full moon",
+    "dark background",
+    "comic style",
+    "surrealism",
+    "deep colors",
+    "mysterious",
+    "edgy",
+    "get",
+    "lucky",
+    "800",
+    "cat",
+    "play",
+    "only",
+    "frenemies"
+  ],
+  "embeddingInput": "GETLUCKYPEPE (Fake Rares) - Series 13 Card 13\nArtist: Fake Annie\nSupply 31 Issued January 2023\nOn-card text: GET LUCKY PEPE | 1-800-CAT-PLAY | ONLY FOR FRENEMIES\nVisual summary: The card features a striking image of a green-skinned figure in a leather cat mask, set against a swirling, dark background with a full moon. The color palette is dominated by deep greens, purples, and blacks, creating a mysterious and edgy vibe. The artwork combines elements of comic-style illustration with a touch of surrealism.\nMemetic references: Pepe the Frog references with a twist.; BDSM and cat play themes for a cheeky nod to counterculture.; Hotline number for playful mystery and allure.",
+  "embeddingBlocks": [
+    {
+      "id": "GETLUCKYPEPE#text",
+      "label": "On-card text",
+      "text": "GET LUCKY PEPE | 1-800-CAT-PLAY | ONLY FOR FRENEMIES",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "GETLUCKYPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references with a twist.\nBDSM and cat play themes for a cheeky nod to counterculture.\nHotline number for playful mystery and allure.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "GETLUCKYPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a striking image of a green-skinned figure in a leather cat mask, set against a swirling, dark background with a full moon. The color palette is dominated by deep greens, purples, and blacks, creating a mysterious and edgy vibe. The artwork combines elements of comic-style illustration with a touch of surrealism.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "GETLUCKYPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nGET LUCKY PEPE  \n1-800-CAT-PLAY  \nONLY FOR FRENEMIES\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a striking image of a green-skinned figure in a leather cat mask, set against a swirling, dark background with a full moon. The color palette is dominated by deep greens, purples, and blacks, creating a mysterious and edgy vibe. The artwork combines elements of comic-style illustration with a touch of surrealism.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references with a twist.\n- BDSM and cat play themes for a cheeky nod to counterculture.\n- Hotline number for playful mystery and allure.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.653Z",
+  "sourceFactVersion": 1
+}

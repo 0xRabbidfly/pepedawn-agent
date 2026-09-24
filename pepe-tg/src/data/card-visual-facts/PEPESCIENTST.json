@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "asset": "PEPESCIENTST",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 14,
+  "artist": "desultor",
+  "supply": 50,
+  "issuance": "December 2022",
+  "textOnCard": [
+    "PEPE SCIENTIST",
+    "LEDGENDURY",
+    "VIGILANCE",
+    "☢ Measure target darkness",
+    "\"Guardians of Pepe authenticity\""
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure, a staple in meme culture.",
+    "References to meme science with \"dark matter\" and \"authenticity\".",
+    "The chalkboard includes meme references and esoteric symbols.",
+    "Retro, pixel art style nods to early internet culture."
+  ],
+  "visualSummary": "The card features a jubilant Pepe the Frog in a scientist's lab coat, surrounded by colorful beakers and flasks against a chaotic chalkboard backdrop. The use of vibrant colors like green, orange, and purple gives a psychedelic feel, with an explosion of hues highlighting the scientific chaos. The artistic style is pixelated, reminiscent of retro video games, adding a nostalgic layer to the card.",
+  "visualSummaryShort": "The card showcases a joyful Pepe the Frog dressed as a scientist, surrounded by colorful lab equipment against a chaotic chalkboard. Its vibrant colors and pixelated style evoke a nostalgic, psychedelic atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "scientist",
+    "colorful beakers",
+    "chaotic chalkboard",
+    "vibrant colors",
+    "pixelated",
+    "nostalgic",
+    "psychedelic",
+    "lab coat",
+    "explosion of hues"
+  ],
+  "textKeywords": [
+    "scientist",
+    "ledgendury",
+    "vigilance",
+    "measure",
+    "target",
+    "darkness",
+    "guardians",
+    "authenticity"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "scientist",
+    "colorful beakers",
+    "chaotic chalkboard",
+    "vibrant colors",
+    "pixelated",
+    "nostalgic",
+    "psychedelic",
+    "lab coat",
+    "explosion of hues",
+    "ledgendury",
+    "vigilance",
+    "measure",
+    "target",
+    "darkness",
+    "guardians",
+    "authenticity"
+  ],
+  "embeddingInput": "PEPESCIENTST (Fake Rares) - Series 13 Card 14\nArtist: desultor\nSupply 50 Issued December 2022\nOn-card text: PEPE SCIENTIST | LEDGENDURY | VIGILANCE | ☢ Measure target darkness | \"Guardians of Pepe authenticity\"\nVisual summary: The card features a jubilant Pepe the Frog in a scientist's lab coat, surrounded by colorful beakers and flasks against a chaotic chalkboard backdrop. The use of vibrant colors like green, orange, and purple gives a psychedelic feel, with an explosion of hues highlighting the scientific chaos. The artistic style is pixelated, reminiscent of retro video games, adding a nostalgic layer to the card.\nMemetic references: Pepe the Frog as a central figure, a staple in meme culture.; References to meme science with \"dark matter\" and \"authenticity\".; The chalkboard includes meme references and esoteric symbols.; Retro, pixel art style nods to early internet culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPESCIENTST#text",
+      "label": "On-card text",
+      "text": "PEPE SCIENTIST | LEDGENDURY | VIGILANCE | ☢ Measure target darkness | \"Guardians of Pepe authenticity\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPESCIENTST#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure, a staple in meme culture.\nReferences to meme science with \"dark matter\" and \"authenticity\".\nThe chalkboard includes meme references and esoteric symbols.\nRetro, pixel art style nods to early internet culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPESCIENTST#visual",
+      "label": "Visual summary",
+      "text": "The card features a jubilant Pepe the Frog in a scientist's lab coat, surrounded by colorful beakers and flasks against a chaotic chalkboard backdrop. The use of vibrant colors like green, orange, and purple gives a psychedelic feel, with an explosion of hues highlighting the scientific chaos. The artistic style is pixelated, reminiscent of retro video games, adding a nostalgic layer to the card.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPESCIENTST#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE SCIENTIST  \nLEDGENDURY  \nVIGILANCE  \n☢ Measure target darkness  \n\"Guardians of Pepe authenticity\"\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a jubilant Pepe the Frog in a scientist's lab coat, surrounded by colorful beakers and flasks against a chaotic chalkboard backdrop. The use of vibrant colors like green, orange, and purple gives a psychedelic feel, with an explosion of hues highlighting the scientific chaos. The artistic style is pixelated, reminiscent of retro video games, adding a nostalgic layer to the card.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure, a staple in meme culture.\n- References to meme science with \"dark matter\" and \"authenticity\".\n- The chalkboard includes meme references and esoteric symbols.\n- Retro, pixel art style nods to early internet culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.971Z",
+  "sourceFactVersion": 1
+}

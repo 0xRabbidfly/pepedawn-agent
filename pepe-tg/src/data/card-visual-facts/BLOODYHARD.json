@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "asset": "BLOODYHARD",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 27,
+  "artist": "LOVEBEING",
+  "supply": 21,
+  "issuance": "April 2023",
+  "textOnCard": [
+    "PEPEMEME, PEPE SYSTEM, Soft Magic, POV YOU ARE THE MEME, Knowing Is Half the Battle, The Meeting of the Dream Team of Numbers."
+  ],
+  "memeticReferences": [
+    "References to Pepe the Frog and meme culture.",
+    "Glitch aesthetics reminiscent of early internet and digital art.",
+    "Comic-style speech bubbles hinting at meme dialogues and crypto insider jokes."
+  ],
+  "visualSummary": "The card features a trippy, glitch-art style with a vibrant, psychedelic color palette dominated by greens, purples, and reds. Text and imagery are layered with intentional distortion, creating a retro-futuristic digital aesthetic. The overall composition is chaotic yet intriguing, with a blend of abstract forms and text bubbles resembling a comic strip.",
+  "visualSummaryShort": "The card showcases a chaotic, glitch-art style with a vibrant psychedelic color palette. It features abstract forms and text bubbles, creating a retro-futuristic digital aesthetic.",
+  "visualKeywords": [
+    "glitch-art",
+    "psychedelic",
+    "abstract",
+    "vibrant colors",
+    "distortion",
+    "comic strip",
+    "chaotic",
+    "retro-futuristic",
+    "text bubbles",
+    "digital aesthetic"
+  ],
+  "textKeywords": [
+    "pepememe",
+    "system",
+    "soft",
+    "magic",
+    "pov",
+    "you",
+    "are",
+    "meme",
+    "knowing",
+    "half",
+    "battle",
+    "meeting",
+    "dream",
+    "team",
+    "numbers"
+  ],
+  "keywords": [
+    "glitch-art",
+    "psychedelic",
+    "abstract",
+    "vibrant colors",
+    "distortion",
+    "comic strip",
+    "chaotic",
+    "retro-futuristic",
+    "text bubbles",
+    "digital aesthetic",
+    "pepememe",
+    "system",
+    "soft",
+    "magic",
+    "pov",
+    "you",
+    "are",
+    "meme",
+    "knowing",
+    "half",
+    "battle",
+    "meeting",
+    "dream",
+    "team",
+    "numbers"
+  ],
+  "embeddingInput": "BLOODYHARD (Fake Rares) - Series 14 Card 27\nArtist: LOVEBEING\nSupply 21 Issued April 2023\nOn-card text: PEPEMEME, PEPE SYSTEM, Soft Magic, POV YOU ARE THE MEME, Knowing Is Half the Battle, The Meeting of the Dream Team of Numbers.\nVisual summary: The card features a trippy, glitch-art style with a vibrant, psychedelic color palette dominated by greens, purples, and reds. Text and imagery are layered with intentional distortion, creating a retro-futuristic digital aesthetic. The overall composition is chaotic yet intriguing, with a blend of abstract forms and text bubbles resembling a comic strip.\nMemetic references: References to Pepe the Frog and meme culture.; Glitch aesthetics reminiscent of early internet and digital art.; Comic-style speech bubbles hinting at meme dialogues and crypto insider jokes.",
+  "embeddingBlocks": [
+    {
+      "id": "BLOODYHARD#text",
+      "label": "On-card text",
+      "text": "PEPEMEME, PEPE SYSTEM, Soft Magic, POV YOU ARE THE MEME, Knowing Is Half the Battle, The Meeting of the Dream Team of Numbers.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "BLOODYHARD#memetic",
+      "label": "Memetic references",
+      "text": "References to Pepe the Frog and meme culture.\nGlitch aesthetics reminiscent of early internet and digital art.\nComic-style speech bubbles hinting at meme dialogues and crypto insider jokes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BLOODYHARD#visual",
+      "label": "Visual summary",
+      "text": "The card features a trippy, glitch-art style with a vibrant, psychedelic color palette dominated by greens, purples, and reds. Text and imagery are layered with intentional distortion, creating a retro-futuristic digital aesthetic. The overall composition is chaotic yet intriguing, with a blend of abstract forms and text bubbles resembling a comic strip.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BLOODYHARD#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPEMEME, PEPE SYSTEM, Soft Magic, POV YOU ARE THE MEME, Knowing Is Half the Battle, The Meeting of the Dream Team of Numbers.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a trippy, glitch-art style with a vibrant, psychedelic color palette dominated by greens, purples, and reds. Text and imagery are layered with intentional distortion, creating a retro-futuristic digital aesthetic. The overall composition is chaotic yet intriguing, with a blend of abstract forms and text bubbles resembling a comic strip.\n\n🧬 **MEMETIC DNA:**\n- References to Pepe the Frog and meme culture.\n- Glitch aesthetics reminiscent of early internet and digital art.\n- Comic-style speech bubbles hinting at meme dialogues and crypto insider jokes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.319Z",
+  "sourceFactVersion": 1
+}

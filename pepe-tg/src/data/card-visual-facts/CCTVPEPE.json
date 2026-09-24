@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "CCTVPEPE",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 42,
+  "artist": "FWD",
+  "supply": 42,
+  "issuance": "August 2024",
+  "textOnCard": [],
+  "memeticReferences": [
+    "The CCTV camera head is a nod to surveillance culture and privacy concerns, common themes in crypto discussions.",
+    "The formal suit could symbolize anonymity and the faceless nature of power or authority.",
+    "The Pepe logo on the camera adds a layer of meme culture, linking to the iconic Pepe the Frog in a modern, dystopian twist."
+  ],
+  "visualSummary": "The card features a surreal scene with a figure in a formal suit, but instead of a head, it has a CCTV camera. The background is a textured, abstract space with vertical lines that resemble rain or digital interference, creating a sense of motion. The color palette is mostly dark blues and purples, with a stark contrast in the white and grey of the CCTV camera.",
+  "visualSummaryShort": "The card depicts a figure in a formal suit with a CCTV camera for a head, set against an abstract background. The dark blue and purple color palette enhances the surreal and dynamic atmosphere.",
+  "visualKeywords": [
+    "cctv",
+    "suit",
+    "abstract",
+    "dark blue",
+    "purple",
+    "vertical lines",
+    "motion",
+    "surreal"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "cctv",
+    "suit",
+    "abstract",
+    "dark blue",
+    "purple",
+    "vertical lines",
+    "motion",
+    "surreal"
+  ],
+  "embeddingInput": "CCTVPEPE (Fake Rares) - Series 17 Card 42\nArtist: FWD\nSupply 42 Issued August 2024\nOn-card text: none detected\nVisual summary: The card features a surreal scene with a figure in a formal suit, but instead of a head, it has a CCTV camera. The background is a textured, abstract space with vertical lines that resemble rain or digital interference, creating a sense of motion. The color palette is mostly dark blues and purples, with a stark contrast in the white and grey of the CCTV camera.\nMemetic references: The CCTV camera head is a nod to surveillance culture and privacy concerns, common themes in crypto discussions.; The formal suit could symbolize anonymity and the faceless nature of power or authority.; The Pepe logo on the camera adds a layer of meme culture, linking to the iconic Pepe the Frog in a modern, dystopian twist.",
+  "embeddingBlocks": [
+    {
+      "id": "CCTVPEPE#memetic",
+      "label": "Memetic references",
+      "text": "The CCTV camera head is a nod to surveillance culture and privacy concerns, common themes in crypto discussions.\nThe formal suit could symbolize anonymity and the faceless nature of power or authority.\nThe Pepe logo on the camera adds a layer of meme culture, linking to the iconic Pepe the Frog in a modern, dystopian twist.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "CCTVPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a surreal scene with a figure in a formal suit, but instead of a head, it has a CCTV camera. The background is a textured, abstract space with vertical lines that resemble rain or digital interference, creating a sense of motion. The color palette is mostly dark blues and purples, with a stark contrast in the white and grey of the CCTV camera.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "CCTVPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a surreal scene with a figure in a formal suit, but instead of a head, it has a CCTV camera. The background is a textured, abstract space with vertical lines that resemble rain or digital interference, creating a sense of motion. The color palette is mostly dark blues and purples, with a stark contrast in the white and grey of the CCTV camera.\n\n🧬 **MEMETIC DNA:**\n- The CCTV camera head is a nod to surveillance culture and privacy concerns, common themes in crypto discussions.\n- The formal suit could symbolize anonymity and the faceless nature of power or authority.\n- The Pepe logo on the camera adds a layer of meme culture, linking to the iconic Pepe the Frog in a modern, dystopian twist.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.347Z",
+  "sourceFactVersion": 1
+}

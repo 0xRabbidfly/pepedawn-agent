@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "asset": "PEPETWODOPE",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 7,
+  "artist": "ZeroG",
+  "supply": 50,
+  "issuance": "April 2022",
+  "textOnCard": [
+    "PEPE 2 DOPE"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery",
+    "References to action figure aesthetics",
+    "Retro comic book vibes",
+    "Pop culture elements with an urban twist"
+  ],
+  "visualSummary": "The card features a colorful and vibrant design with a dominant green hue, reflecting Pepe's iconic color. The artwork portrays a muscular Pepe in a white tank top and jeans, standing confidently in front of a cityscape backdrop. The style is reminiscent of comic art and action figure packaging, with dynamic poses and bold outlines.",
+  "visualSummaryShort": "The card showcases a muscular Pepe in a white tank top and jeans against a vibrant green cityscape. The comic art style features dynamic poses and bold outlines.",
+  "visualKeywords": [
+    "pepe",
+    "green",
+    "cityscape",
+    "muscular",
+    "tank top",
+    "jeans",
+    "comic art",
+    "dynamic poses"
+  ],
+  "textKeywords": [
+    "dope"
+  ],
+  "keywords": [
+    "pepe",
+    "green",
+    "cityscape",
+    "muscular",
+    "tank top",
+    "jeans",
+    "comic art",
+    "dynamic poses",
+    "dope"
+  ],
+  "embeddingInput": "PEPETWODOPE (Fake Rares) - Series 16 Card 7\nArtist: ZeroG\nSupply 50 Issued April 2022\nOn-card text: PEPE 2 DOPE\nVisual summary: The card features a colorful and vibrant design with a dominant green hue, reflecting Pepe's iconic color. The artwork portrays a muscular Pepe in a white tank top and jeans, standing confidently in front of a cityscape backdrop. The style is reminiscent of comic art and action figure packaging, with dynamic poses and bold outlines.\nMemetic references: Classic Pepe the Frog imagery; References to action figure aesthetics; Retro comic book vibes; Pop culture elements with an urban twist",
+  "embeddingBlocks": [
+    {
+      "id": "PEPETWODOPE#text",
+      "label": "On-card text",
+      "text": "PEPE 2 DOPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPETWODOPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery\nReferences to action figure aesthetics\nRetro comic book vibes\nPop culture elements with an urban twist",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPETWODOPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a colorful and vibrant design with a dominant green hue, reflecting Pepe's iconic color. The artwork portrays a muscular Pepe in a white tank top and jeans, standing confidently in front of a cityscape backdrop. The style is reminiscent of comic art and action figure packaging, with dynamic poses and bold outlines.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPETWODOPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE 2 DOPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a colorful and vibrant design with a dominant green hue, reflecting Pepe's iconic color. The artwork portrays a muscular Pepe in a white tank top and jeans, standing confidently in front of a cityscape backdrop. The style is reminiscent of comic art and action figure packaging, with dynamic poses and bold outlines.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery\n- References to action figure aesthetics\n- Retro comic book vibes\n- Pop culture elements with an urban twist",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.004Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "MOONFROG",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 3,
+  "artist": "Easy B",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Strong reference to Pepe the Frog, a staple of internet meme culture.",
+    "Classic pixel art style nods to early video game aesthetics.",
+    "The frog's expression captures a playful, innocent vibe that's common in meme humor."
+  ],
+  "visualSummary": "The card features a pixelated frog character reminiscent of classic 8-bit video games. It has a bright green body with large white eyes and a red smile, set against a dark background with a subtle green glow. The art style is minimalist and nostalgic, evoking retro gaming vibes.",
+  "visualSummaryShort": "The card showcases a pixelated frog character with a bright green body and large white eyes. It is set against a dark background with a subtle green glow, creating a nostalgic retro gaming atmosphere.",
+  "visualKeywords": [
+    "pixelated",
+    "frog",
+    "green",
+    "white",
+    "dark background",
+    "glow",
+    "nostalgic",
+    "minimalist",
+    "8-bit",
+    "retro"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pixelated",
+    "frog",
+    "green",
+    "white",
+    "dark background",
+    "glow",
+    "nostalgic",
+    "minimalist",
+    "8-bit",
+    "retro"
+  ],
+  "embeddingInput": "MOONFROG (Fake Rares) - Series 3 Card 3\nArtist: Easy B\nSupply 100 Issued October 2021\nOn-card text: none detected\nVisual summary: The card features a pixelated frog character reminiscent of classic 8-bit video games. It has a bright green body with large white eyes and a red smile, set against a dark background with a subtle green glow. The art style is minimalist and nostalgic, evoking retro gaming vibes.\nMemetic references: Strong reference to Pepe the Frog, a staple of internet meme culture.; Classic pixel art style nods to early video game aesthetics.; The frog's expression captures a playful, innocent vibe that's common in meme humor.",
+  "embeddingBlocks": [
+    {
+      "id": "MOONFROG#memetic",
+      "label": "Memetic references",
+      "text": "Strong reference to Pepe the Frog, a staple of internet meme culture.\nClassic pixel art style nods to early video game aesthetics.\nThe frog's expression captures a playful, innocent vibe that's common in meme humor.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MOONFROG#visual",
+      "label": "Visual summary",
+      "text": "The card features a pixelated frog character reminiscent of classic 8-bit video games. It has a bright green body with large white eyes and a red smile, set against a dark background with a subtle green glow. The art style is minimalist and nostalgic, evoking retro gaming vibes.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MOONFROG#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a pixelated frog character reminiscent of classic 8-bit video games. It has a bright green body with large white eyes and a red smile, set against a dark background with a subtle green glow. The art style is minimalist and nostalgic, evoking retro gaming vibes.\n\n🧬 **MEMETIC DNA:**\n- Strong reference to Pepe the Frog, a staple of internet meme culture.\n- Classic pixel art style nods to early video game aesthetics.\n- The frog's expression captures a playful, innocent vibe that's common in meme humor.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.781Z",
+  "sourceFactVersion": 1
+}

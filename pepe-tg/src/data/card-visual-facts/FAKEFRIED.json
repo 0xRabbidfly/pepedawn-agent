@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "FAKEFRIED",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 21,
+  "artist": "Jake Fried",
+  "supply": 100,
+  "issuance": "August 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog expression.",
+    "References to classic internet meme culture.",
+    "Nostalgic aesthetic harkening back to early meme history."
+  ],
+  "visualSummary": "This image features a close-up of a well-known frog with a large contemplative expression. The color palette is dominated by shades of green and brown, with a textured, almost grainy finish. The artistic style is reminiscent of a comic book or retro print, giving it a vintage vibe.",
+  "visualSummaryShort": "The card showcases a close-up of a frog with a thoughtful expression. It features a green and brown color palette with a vintage comic book style.",
+  "visualKeywords": [
+    "frog",
+    "green",
+    "brown",
+    "contemplative",
+    "vintage",
+    "comic style",
+    "textured",
+    "grainy"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "frog",
+    "green",
+    "brown",
+    "contemplative",
+    "vintage",
+    "comic style",
+    "textured",
+    "grainy"
+  ],
+  "embeddingInput": "FAKEFRIED (Fake Rares) - Series 9 Card 21\nArtist: Jake Fried\nSupply 100 Issued August 2022\nOn-card text: none detected\nVisual summary: This image features a close-up of a well-known frog with a large contemplative expression. The color palette is dominated by shades of green and brown, with a textured, almost grainy finish. The artistic style is reminiscent of a comic book or retro print, giving it a vintage vibe.\nMemetic references: Classic Pepe the Frog expression.; References to classic internet meme culture.; Nostalgic aesthetic harkening back to early meme history.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEFRIED#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog expression.\nReferences to classic internet meme culture.\nNostalgic aesthetic harkening back to early meme history.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEFRIED#visual",
+      "label": "Visual summary",
+      "text": "This image features a close-up of a well-known frog with a large contemplative expression. The color palette is dominated by shades of green and brown, with a textured, almost grainy finish. The artistic style is reminiscent of a comic book or retro print, giving it a vintage vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEFRIED#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis image features a close-up of a well-known frog with a large contemplative expression. The color palette is dominated by shades of green and brown, with a textured, almost grainy finish. The artistic style is reminiscent of a comic book or retro print, giving it a vintage vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog expression.\n- References to classic internet meme culture.\n- Nostalgic aesthetic harkening back to early meme history.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.502Z",
+  "sourceFactVersion": 1
+}

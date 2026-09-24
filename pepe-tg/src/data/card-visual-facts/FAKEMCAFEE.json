@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "FAKEMCAFEE",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 2,
+  "artist": "Pepenardo",
+  "supply": 75,
+  "issuance": "January 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe-inspired skin tone gives off major meme vibes.",
+    "Cannabis leaves nod to counterculture and rebelliousness.",
+    "The figure's expression exudes a mysterious, almost sage-like wisdom typical of legendary internet personalities."
+  ],
+  "visualSummary": "The card showcases a green-skinned figure draped in a vibrant blue robe with an orange collar, set against a lush, mountainous background. The detailed foliage includes cannabis leaves, adding a layer of intrigue. The style is reminiscent of classic portraiture, with a surreal twist due to the unusual skin tone and setting.",
+  "visualSummaryShort": "The card features a green-skinned figure in a blue robe with an orange collar, surrounded by a lush mountainous landscape. Cannabis leaves are prominently displayed in the detailed foliage, enhancing the surreal atmosphere.",
+  "visualKeywords": [
+    "green skin",
+    "blue robe",
+    "orange collar",
+    "mountains",
+    "foliage",
+    "cannabis leaves",
+    "portraiture",
+    "surreal"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "green skin",
+    "blue robe",
+    "orange collar",
+    "mountains",
+    "foliage",
+    "cannabis leaves",
+    "portraiture",
+    "surreal"
+  ],
+  "embeddingInput": "FAKEMCAFEE (Fake Rares) - Series 12 Card 2\nArtist: Pepenardo\nSupply 75 Issued January 2022\nOn-card text: none detected\nVisual summary: The card showcases a green-skinned figure draped in a vibrant blue robe with an orange collar, set against a lush, mountainous background. The detailed foliage includes cannabis leaves, adding a layer of intrigue. The style is reminiscent of classic portraiture, with a surreal twist due to the unusual skin tone and setting.\nMemetic references: Pepe-inspired skin tone gives off major meme vibes.; Cannabis leaves nod to counterculture and rebelliousness.; The figure's expression exudes a mysterious, almost sage-like wisdom typical of legendary internet personalities.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEMCAFEE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe-inspired skin tone gives off major meme vibes.\nCannabis leaves nod to counterculture and rebelliousness.\nThe figure's expression exudes a mysterious, almost sage-like wisdom typical of legendary internet personalities.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEMCAFEE#visual",
+      "label": "Visual summary",
+      "text": "The card showcases a green-skinned figure draped in a vibrant blue robe with an orange collar, set against a lush, mountainous background. The detailed foliage includes cannabis leaves, adding a layer of intrigue. The style is reminiscent of classic portraiture, with a surreal twist due to the unusual skin tone and setting.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEMCAFEE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card showcases a green-skinned figure draped in a vibrant blue robe with an orange collar, set against a lush, mountainous background. The detailed foliage includes cannabis leaves, adding a layer of intrigue. The style is reminiscent of classic portraiture, with a surreal twist due to the unusual skin tone and setting.\n\n🧬 **MEMETIC DNA:**\n- Pepe-inspired skin tone gives off major meme vibes.\n- Cannabis leaves nod to counterculture and rebelliousness.\n- The figure's expression exudes a mysterious, almost sage-like wisdom typical of legendary internet personalities.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.529Z",
+  "sourceFactVersion": 1
+}

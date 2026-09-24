@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "asset": "FROGLIFE",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 2,
+  "artist": "FakeAzul",
+  "supply": 100,
+  "issuance": "February 2022",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a vibrant green frog in a lush environment. The overall mood is lively and natural.",
+  "visualKeywords": [
+    "frog",
+    "green",
+    "nature",
+    "lush",
+    "vibrant"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "frog",
+    "green",
+    "nature",
+    "lush",
+    "vibrant"
+  ],
+  "embeddingInput": "FROGLIFE (Fake Rares) - Series 6 Card 2\nArtist: FakeAzul\nSupply 100 Issued February 2022\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "FROGLIFE#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't display or analyze specific NFT cards.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.642Z",
+  "sourceFactVersion": 1
+}

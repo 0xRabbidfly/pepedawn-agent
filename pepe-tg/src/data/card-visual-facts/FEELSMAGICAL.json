@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "asset": "FEELSMAGICAL",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 42,
+  "artist": "MIGRATING LINES",
+  "supply": 100,
+  "issuance": "June 2022",
+  "textOnCard": [
+    "FEELS GOOD"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference.",
+    "Psychedelic art style reminiscent of 1960s",
+    "70s counterculture.",
+    "References to \"Feels Good\" meme, a twist on the \"Feels Bad Man\" meme.",
+    "Rainbow motifs symbolize inclusivity and diversity, common in NFT culture."
+  ],
+  "visualSummary": "The card features a vibrant, psychedelic Pepe the Frog with rainbow eyes and a wide, goofy grin. The background is a swirling rainbow pattern, creating a trippy atmosphere. On the sides, winged, sunglasses-wearing, fuzzy creatures and rainbow-liquid pouring from top hats add to the whimsical vibe.",
+  "visualSummaryShort": "This card showcases a colorful, psychedelic Pepe the Frog with rainbow eyes and a playful grin. The whimsical background features swirling rainbow patterns and quirky creatures, enhancing the trippy atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "rainbow",
+    "psychedelic",
+    "whimsical",
+    "creatures",
+    "top hats",
+    "colorful",
+    "swirling",
+    "goofy grin",
+    "liquid"
+  ],
+  "textKeywords": [
+    "feels",
+    "good"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "rainbow",
+    "psychedelic",
+    "whimsical",
+    "creatures",
+    "top hats",
+    "colorful",
+    "swirling",
+    "goofy grin",
+    "liquid",
+    "feels",
+    "good"
+  ],
+  "embeddingInput": "FEELSMAGICAL (Fake Rares) - Series 8 Card 42\nArtist: MIGRATING LINES\nSupply 100 Issued June 2022\nOn-card text: FEELS GOOD\nVisual summary: The card features a vibrant, psychedelic Pepe the Frog with rainbow eyes and a wide, goofy grin. The background is a swirling rainbow pattern, creating a trippy atmosphere. On the sides, winged, sunglasses-wearing, fuzzy creatures and rainbow-liquid pouring from top hats add to the whimsical vibe.\nMemetic references: Classic Pepe the Frog reference.; Psychedelic art style reminiscent of 1960s; 70s counterculture.; References to \"Feels Good\" meme, a twist on the \"Feels Bad Man\" meme.; Rainbow motifs symbolize inclusivity and diversity, common in NFT culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FEELSMAGICAL#text",
+      "label": "On-card text",
+      "text": "FEELS GOOD",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FEELSMAGICAL#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference.\nPsychedelic art style reminiscent of 1960s\n70s counterculture.\nReferences to \"Feels Good\" meme, a twist on the \"Feels Bad Man\" meme.\nRainbow motifs symbolize inclusivity and diversity, common in NFT culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FEELSMAGICAL#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant, psychedelic Pepe the Frog with rainbow eyes and a wide, goofy grin. The background is a swirling rainbow pattern, creating a trippy atmosphere. On the sides, winged, sunglasses-wearing, fuzzy creatures and rainbow-liquid pouring from top hats add to the whimsical vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FEELSMAGICAL#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFEELS GOOD\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant, psychedelic Pepe the Frog with rainbow eyes and a wide, goofy grin. The background is a swirling rainbow pattern, creating a trippy atmosphere. On the sides, winged, sunglasses-wearing, fuzzy creatures and rainbow-liquid pouring from top hats add to the whimsical vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference.\n- Psychedelic art style reminiscent of 1960s/70s counterculture.\n- References to \"Feels Good\" meme, a twist on the \"Feels Bad Man\" meme.\n- Rainbow motifs symbolize inclusivity and diversity, common in NFT culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.612Z",
+  "sourceFactVersion": 1
+}

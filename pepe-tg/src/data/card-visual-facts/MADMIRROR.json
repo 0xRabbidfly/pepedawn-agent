@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "asset": "MADMIRROR",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 30,
+  "artist": "Hues",
+  "supply": 21,
+  "issuance": "February 2026",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Multiple Pepe figures appear, a staple in meme culture.",
+    "References to the classic \"red pill vs. blue pill\" meme.",
+    "Incorporation of Bitcoin symbolism with the \"₿\" sign.",
+    "Elements of internet and crypto culture chaos visually represented."
+  ],
+  "visualSummary": "The card features a surreal and fragmented composition, dominated by grayscale tones with pops of red and blue. It showcases distorted human-like eyes, hands, and Pepe figures intertwined with abstract shapes. The artistic style is a blend of abstract and expressionist, creating a chaotic yet intriguing visual experience.",
+  "visualSummaryShort": "The card presents a surreal and fragmented composition with grayscale tones accented by red and blue. Distorted human-like eyes, hands, and Pepe figures are intertwined with abstract shapes, creating a chaotic visual experience.",
+  "visualKeywords": [
+    "surreal",
+    "grayscale",
+    "red",
+    "blue",
+    "distorted",
+    "abstract",
+    "expressionist",
+    "chaotic",
+    "human-like",
+    "pepe"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "surreal",
+    "grayscale",
+    "red",
+    "blue",
+    "distorted",
+    "abstract",
+    "expressionist",
+    "chaotic",
+    "human-like",
+    "pepe"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "MADMIRROR (Fake Rares) - Series 18 Card 30\nArtist: Hues\nSupply 21 Issued February 2026\nOn-card text: none detected\nVisual summary: The card features a surreal and fragmented composition, dominated by grayscale tones with pops of red and blue. It showcases distorted human-like eyes, hands, and Pepe figures intertwined with abstract shapes. The artistic style is a blend of abstract and expressionist, creating a chaotic yet intriguing visual experience.\nMemetic references: Multiple Pepe figures appear, a staple in meme culture.; References to the classic \"red pill vs. blue pill\" meme.; Incorporation of Bitcoin symbolism with the \"₿\" sign.; Elements of internet and crypto culture chaos visually represented.",
+  "embeddingBlocks": [
+    {
+      "id": "MADMIRROR#memetic",
+      "label": "Memetic references",
+      "text": "Multiple Pepe figures appear, a staple in meme culture.\nReferences to the classic \"red pill vs. blue pill\" meme.\nIncorporation of Bitcoin symbolism with the \"₿\" sign.\nElements of internet and crypto culture chaos visually represented.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MADMIRROR#visual",
+      "label": "Visual summary",
+      "text": "The card features a surreal and fragmented composition, dominated by grayscale tones with pops of red and blue. It showcases distorted human-like eyes, hands, and Pepe figures intertwined with abstract shapes. The artistic style is a blend of abstract and expressionist, creating a chaotic yet intriguing visual experience.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MADMIRROR#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a surreal and fragmented composition, dominated by grayscale tones with pops of red and blue. It showcases distorted human-like eyes, hands, and Pepe figures intertwined with abstract shapes. The artistic style is a blend of abstract and expressionist, creating a chaotic yet intriguing visual experience.\n\n🧬 **MEMETIC DNA:**\n- Multiple Pepe figures appear, a staple in meme culture.\n- References to the classic \"red pill vs. blue pill\" meme.\n- Incorporation of Bitcoin symbolism with the \"₿\" sign.\n- Elements of internet and crypto culture chaos visually represented.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:31:27.869Z"
+}

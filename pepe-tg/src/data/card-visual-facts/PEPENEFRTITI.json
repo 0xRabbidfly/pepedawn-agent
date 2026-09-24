@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "PEPENEFRTITI",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 34,
+  "artist": "OOAKOSIMO",
+  "supply": 48,
+  "issuance": "September 2023",
+  "textOnCard": [
+    "PEPENEFRTITI"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog iconography",
+    "References to Nefertiti, an iconic symbol of ancient Egypt",
+    "Spaghetti meme culture",
+    "Digital glitch art style"
+  ],
+  "visualSummary": "This card features a vibrant and surreal depiction of a Pepe figure styled as the Egyptian Queen Nefertiti, donning a headdress made of spaghetti. The color palette is a striking mix of oranges, purples, and blues, with digital glitch effects adding a modern twist. The composition is a chaotic blend of ancient and contemporary elements, giving it a unique, eclectic vibe.",
+  "visualSummaryShort": "The card showcases a surreal Pepe figure as Nefertiti, adorned with a spaghetti headdress. Its vibrant colors and digital glitch effects create a unique blend of ancient and modern aesthetics.",
+  "visualKeywords": [
+    "pepe",
+    "nefertiti",
+    "spaghetti",
+    "orange",
+    "purple",
+    "blue",
+    "glitch",
+    "surreal",
+    "chaotic",
+    "eclectic"
+  ],
+  "textKeywords": [
+    "pepenefrtiti"
+  ],
+  "keywords": [
+    "pepe",
+    "nefertiti",
+    "spaghetti",
+    "orange",
+    "purple",
+    "blue",
+    "glitch",
+    "surreal",
+    "chaotic",
+    "eclectic",
+    "pepenefrtiti"
+  ],
+  "embeddingInput": "PEPENEFRTITI (Fake Rares) - Series 15 Card 34\nArtist: OOAKOSIMO\nSupply 48 Issued September 2023\nOn-card text: PEPENEFRTITI\nVisual summary: This card features a vibrant and surreal depiction of a Pepe figure styled as the Egyptian Queen Nefertiti, donning a headdress made of spaghetti. The color palette is a striking mix of oranges, purples, and blues, with digital glitch effects adding a modern twist. The composition is a chaotic blend of ancient and contemporary elements, giving it a unique, eclectic vibe.\nMemetic references: Pepe the Frog iconography; References to Nefertiti, an iconic symbol of ancient Egypt; Spaghetti meme culture; Digital glitch art style",
+  "embeddingBlocks": [
+    {
+      "id": "PEPENEFRTITI#text",
+      "label": "On-card text",
+      "text": "PEPENEFRTITI",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPENEFRTITI#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog iconography\nReferences to Nefertiti, an iconic symbol of ancient Egypt\nSpaghetti meme culture\nDigital glitch art style",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPENEFRTITI#visual",
+      "label": "Visual summary",
+      "text": "This card features a vibrant and surreal depiction of a Pepe figure styled as the Egyptian Queen Nefertiti, donning a headdress made of spaghetti. The color palette is a striking mix of oranges, purples, and blues, with digital glitch effects adding a modern twist. The composition is a chaotic blend of ancient and contemporary elements, giving it a unique, eclectic vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPENEFRTITI#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPENEFRTITI\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a vibrant and surreal depiction of a Pepe figure styled as the Egyptian Queen Nefertiti, donning a headdress made of spaghetti. The color palette is a striking mix of oranges, purples, and blues, with digital glitch effects adding a modern twist. The composition is a chaotic blend of ancient and contemporary elements, giving it a unique, eclectic vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog iconography\n- References to Nefertiti, an iconic symbol of ancient Egypt\n- Spaghetti meme culture\n- Digital glitch art style",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.936Z",
+  "sourceFactVersion": 1
+}

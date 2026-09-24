@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "asset": "A8008135800813580085",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 45,
+  "artist": "Alth0tas x Regan",
+  "supply": 21,
+  "issuance": "March 2025",
+  "textOnCard": [
+    "STAMPER PEPE",
+    "\"encoding\": \"multisig\"",
+    "Stamp: RmVlbHMgZmFrZSBtYW4="
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as the central character, a staple in meme culture.",
+    "References to famous artworks and crypto culture, like the Mona Lisa and pixel art.",
+    "\"FEELS\" and \"FAKE RARE\" motifs, tapping into meme and NFT vernacular."
+  ],
+  "visualSummary": "The card features a pixelated Pepe the Frog standing in an art gallery, adorned with various framed artworks. The color palette is predominantly earthy with greens, browns, and blues, reflecting a retro, digital art style. The gallery walls are filled with iconic images and Pepe variations, creating a nostalgic yet chaotic atmosphere.",
+  "visualSummaryShort": "The card showcases a pixelated Pepe the Frog in an art gallery filled with various artworks. The earthy color palette and retro style create a nostalgic and chaotic atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "art gallery",
+    "pixelated",
+    "earthy colors",
+    "framed artworks",
+    "nostalgic",
+    "chaotic",
+    "digital art",
+    "green",
+    "blue"
+  ],
+  "textKeywords": [
+    "stamper",
+    "encoding",
+    "multisig",
+    "stamp",
+    "rmvlbhmgzmfrzsbtyw4"
+  ],
+  "keywords": [
+    "pepe",
+    "art gallery",
+    "pixelated",
+    "earthy colors",
+    "framed artworks",
+    "nostalgic",
+    "chaotic",
+    "digital art",
+    "green",
+    "blue",
+    "stamper",
+    "encoding",
+    "multisig",
+    "stamp",
+    "rmvlbhmgzmfrzsbtyw4"
+  ],
+  "embeddingInput": "A8008135800813580085 (Fake Rares) - Series 13 Card 45\nArtist: Alth0tas x Regan\nSupply 21 Issued March 2025\nOn-card text: STAMPER PEPE | \"encoding\": \"multisig\" | Stamp: RmVlbHMgZmFrZSBtYW4=\nVisual summary: The card features a pixelated Pepe the Frog standing in an art gallery, adorned with various framed artworks. The color palette is predominantly earthy with greens, browns, and blues, reflecting a retro, digital art style. The gallery walls are filled with iconic images and Pepe variations, creating a nostalgic yet chaotic atmosphere.\nMemetic references: Pepe the Frog as the central character, a staple in meme culture.; References to famous artworks and crypto culture, like the Mona Lisa and pixel art.; \"FEELS\" and \"FAKE RARE\" motifs, tapping into meme and NFT vernacular.",
+  "embeddingBlocks": [
+    {
+      "id": "A8008135800813580085#text",
+      "label": "On-card text",
+      "text": "STAMPER PEPE | \"encoding\": \"multisig\" | Stamp: RmVlbHMgZmFrZSBtYW4=",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "A8008135800813580085#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as the central character, a staple in meme culture.\nReferences to famous artworks and crypto culture, like the Mona Lisa and pixel art.\n\"FEELS\" and \"FAKE RARE\" motifs, tapping into meme and NFT vernacular.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "A8008135800813580085#visual",
+      "label": "Visual summary",
+      "text": "The card features a pixelated Pepe the Frog standing in an art gallery, adorned with various framed artworks. The color palette is predominantly earthy with greens, browns, and blues, reflecting a retro, digital art style. The gallery walls are filled with iconic images and Pepe variations, creating a nostalgic yet chaotic atmosphere.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "A8008135800813580085#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nSTAMPER PEPE  \n\"encoding\": \"multisig\"  \nStamp: RmVlbHMgZmFrZSBtYW4=\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a pixelated Pepe the Frog standing in an art gallery, adorned with various framed artworks. The color palette is predominantly earthy with greens, browns, and blues, reflecting a retro, digital art style. The gallery walls are filled with iconic images and Pepe variations, creating a nostalgic yet chaotic atmosphere.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as the central character, a staple in meme culture.\n- References to famous artworks and crypto culture, like the Mona Lisa and pixel art.\n- \"FEELS\" and \"FAKE RARE\" motifs, tapping into meme and NFT vernacular.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.283Z",
+  "sourceFactVersion": 1
+}

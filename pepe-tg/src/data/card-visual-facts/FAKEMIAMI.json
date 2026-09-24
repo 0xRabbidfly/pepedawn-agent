@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "asset": "FAKEMIAMI",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 4,
+  "artist": "Community Created",
+  "supply": 1000,
+  "issuance": "January 2022",
+  "textOnCard": [
+    "FAKEMIAMI, Miami, Bahamas"
+  ],
+  "memeticReferences": [
+    "Multiple Pepe the Frog references.",
+    "Miami Vice and retro 80s aesthetics.",
+    "Crypto culture nods with symbolic imagery.",
+    "References to tropical and vacation themes.",
+    "Elements of chaos and humor with a collage style."
+  ],
+  "visualSummary": "This card is a vibrant collage bursting with chaotic energy, blending pastel and neon hues reminiscent of Miami Vice aesthetics. The scene is packed with various Pepe the Frog characters, each dressed in tropical or retro attire, layered over a backdrop of palm trees and cityscapes. The borders are decorated with eclectic symbols and mini Peppes, creating a visually dense and playful composition.",
+  "visualSummaryShort": "The card features a vibrant collage filled with Pepe the Frog characters in tropical attire against a backdrop of palm trees and cityscapes. The use of pastel and neon hues creates a chaotic yet playful atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "tropical",
+    "neon",
+    "palm trees",
+    "cityscape",
+    "collage",
+    "retro",
+    "chaotic",
+    "playful",
+    "pastel"
+  ],
+  "textKeywords": [
+    "fakemiami",
+    "miami",
+    "bahamas"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "tropical",
+    "neon",
+    "palm trees",
+    "cityscape",
+    "collage",
+    "retro",
+    "chaotic",
+    "playful",
+    "pastel",
+    "fakemiami",
+    "miami",
+    "bahamas"
+  ],
+  "embeddingInput": "FAKEMIAMI (Fake Rares) - Series 12 Card 4\nArtist: Community Created\nSupply 1000 Issued January 2022\nOn-card text: FAKEMIAMI, Miami, Bahamas\nVisual summary: This card is a vibrant collage bursting with chaotic energy, blending pastel and neon hues reminiscent of Miami Vice aesthetics. The scene is packed with various Pepe the Frog characters, each dressed in tropical or retro attire, layered over a backdrop of palm trees and cityscapes. The borders are decorated with eclectic symbols and mini Peppes, creating a visually dense and playful composition.\nMemetic references: Multiple Pepe the Frog references.; Miami Vice and retro 80s aesthetics.; Crypto culture nods with symbolic imagery.; References to tropical and vacation themes.; Elements of chaos and humor with a collage style.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEMIAMI#text",
+      "label": "On-card text",
+      "text": "FAKEMIAMI, Miami, Bahamas",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEMIAMI#memetic",
+      "label": "Memetic references",
+      "text": "Multiple Pepe the Frog references.\nMiami Vice and retro 80s aesthetics.\nCrypto culture nods with symbolic imagery.\nReferences to tropical and vacation themes.\nElements of chaos and humor with a collage style.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEMIAMI#visual",
+      "label": "Visual summary",
+      "text": "This card is a vibrant collage bursting with chaotic energy, blending pastel and neon hues reminiscent of Miami Vice aesthetics. The scene is packed with various Pepe the Frog characters, each dressed in tropical or retro attire, layered over a backdrop of palm trees and cityscapes. The borders are decorated with eclectic symbols and mini Peppes, creating a visually dense and playful composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEMIAMI#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKEMIAMI, Miami, Bahamas\n\n🎨 **VISUAL BREAKDOWN:**\nThis card is a vibrant collage bursting with chaotic energy, blending pastel and neon hues reminiscent of Miami Vice aesthetics. The scene is packed with various Pepe the Frog characters, each dressed in tropical or retro attire, layered over a backdrop of palm trees and cityscapes. The borders are decorated with eclectic symbols and mini Peppes, creating a visually dense and playful composition.\n\n🧬 **MEMETIC DNA:**\n- Multiple Pepe the Frog references.\n- Miami Vice and retro 80s aesthetics.\n- Crypto culture nods with symbolic imagery.\n- References to tropical and vacation themes.\n- Elements of chaos and humor with a collage style.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.532Z",
+  "sourceFactVersion": 1
+}

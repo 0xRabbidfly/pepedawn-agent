@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "asset": "PEPEWRAPTURE",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 22,
+  "artist": "WetPotatoBrain",
+  "supply": 100,
+  "issuance": "November 2022",
+  "textOnCard": [
+    "PEPEWRAPTURE",
+    "DON'T BREAK THE RULES"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference, a staple in meme culture.",
+    "A nod to rule-breaking, common in crypto and NFT spaces.",
+    "The card's style echoes the collectible card game format, tapping into nostalgia."
+  ],
+  "visualSummary": "The card features an intricate pattern of black and white lines creating a mesmerizing, wave-like effect in the central square, reminiscent of op art. The background is a gradient wash of green and red, giving it a vintage, distressed look. The layout is clean, with text elements framed neatly at the top and bottom, adding to the card's structured aesthetic.",
+  "visualSummaryShort": "The card showcases a mesmerizing wave-like pattern of black and white lines against a vintage green and red gradient background. The clean layout enhances its structured aesthetic with neatly framed text elements.",
+  "visualKeywords": [
+    "wave pattern",
+    "black and white",
+    "gradient",
+    "green",
+    "red",
+    "vintage",
+    "structured",
+    "op art"
+  ],
+  "textKeywords": [
+    "pepewrapture",
+    "don",
+    "break",
+    "rules"
+  ],
+  "keywords": [
+    "wave pattern",
+    "black and white",
+    "gradient",
+    "green",
+    "red",
+    "vintage",
+    "structured",
+    "op art",
+    "pepewrapture",
+    "don",
+    "break",
+    "rules"
+  ],
+  "embeddingInput": "PEPEWRAPTURE (Fake Rares) - Series 12 Card 22\nArtist: WetPotatoBrain\nSupply 100 Issued November 2022\nOn-card text: PEPEWRAPTURE | DON'T BREAK THE RULES\nVisual summary: The card features an intricate pattern of black and white lines creating a mesmerizing, wave-like effect in the central square, reminiscent of op art. The background is a gradient wash of green and red, giving it a vintage, distressed look. The layout is clean, with text elements framed neatly at the top and bottom, adding to the card's structured aesthetic.\nMemetic references: Pepe the Frog reference, a staple in meme culture.; A nod to rule-breaking, common in crypto and NFT spaces.; The card's style echoes the collectible card game format, tapping into nostalgia.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEWRAPTURE#text",
+      "label": "On-card text",
+      "text": "PEPEWRAPTURE | DON'T BREAK THE RULES",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEWRAPTURE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference, a staple in meme culture.\nA nod to rule-breaking, common in crypto and NFT spaces.\nThe card's style echoes the collectible card game format, tapping into nostalgia.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEWRAPTURE#visual",
+      "label": "Visual summary",
+      "text": "The card features an intricate pattern of black and white lines creating a mesmerizing, wave-like effect in the central square, reminiscent of op art. The background is a gradient wash of green and red, giving it a vintage, distressed look. The layout is clean, with text elements framed neatly at the top and bottom, adding to the card's structured aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEWRAPTURE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPEWRAPTURE  \nDON'T BREAK THE RULES\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features an intricate pattern of black and white lines creating a mesmerizing, wave-like effect in the central square, reminiscent of op art. The background is a gradient wash of green and red, giving it a vintage, distressed look. The layout is clean, with text elements framed neatly at the top and bottom, adding to the card's structured aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference, a staple in meme culture.\n- A nod to rule-breaking, common in crypto and NFT spaces.\n- The card's style echoes the collectible card game format, tapping into nostalgia.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.013Z",
+  "sourceFactVersion": 1
+}

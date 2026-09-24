@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "asset": "FAKEVIAGRAA",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 40,
+  "artist": "calboy99",
+  "supply": 100,
+  "issuance": "December 2021",
+  "textOnCard": [
+    "fakeviagra, ancient herbal remedy, ❤️=14 atk=109 sp=32, Ele=vital feel, 64 dose use rare"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog references",
+    "Play on pharmaceutical branding (Viagra)",
+    "RPG-style stats and abilities"
+  ],
+  "visualSummary": "The card features a bold, cartoonish style with a bright color palette. A man in a robe is walking a snake-like creature with a Pepe face on a leash, set against a cloudy sky. The lower section of the card has a faded background with another Pepe face.",
+  "visualSummaryShort": "The card showcases a cartoonish man in a robe walking a snake-like creature with a Pepe face. The bright colors and cloudy sky create a whimsical atmosphere.",
+  "visualKeywords": [
+    "cartoonish",
+    "man in robe",
+    "snake-like creature",
+    "pepe face",
+    "cloudy sky",
+    "bright colors",
+    "faded background"
+  ],
+  "textKeywords": [
+    "fakeviagra",
+    "ancient",
+    "herbal",
+    "remedy",
+    "atk",
+    "109",
+    "ele",
+    "vital",
+    "feel",
+    "dose",
+    "use"
+  ],
+  "keywords": [
+    "cartoonish",
+    "man in robe",
+    "snake-like creature",
+    "pepe face",
+    "cloudy sky",
+    "bright colors",
+    "faded background",
+    "fakeviagra",
+    "ancient",
+    "herbal",
+    "remedy",
+    "atk",
+    "109",
+    "ele",
+    "vital",
+    "feel",
+    "dose",
+    "use"
+  ],
+  "embeddingInput": "FAKEVIAGRAA (Fake Rares) - Series 4 Card 40\nArtist: calboy99\nSupply 100 Issued December 2021\nOn-card text: fakeviagra, ancient herbal remedy, ❤️=14 atk=109 sp=32, Ele=vital feel, 64 dose use rare\nVisual summary: The card features a bold, cartoonish style with a bright color palette. A man in a robe is walking a snake-like creature with a Pepe face on a leash, set against a cloudy sky. The lower section of the card has a faded background with another Pepe face.\nMemetic references: Pepe the Frog references; Play on pharmaceutical branding (Viagra); RPG-style stats and abilities",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEVIAGRAA#text",
+      "label": "On-card text",
+      "text": "fakeviagra, ancient herbal remedy, ❤️=14 atk=109 sp=32, Ele=vital feel, 64 dose use rare",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEVIAGRAA#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references\nPlay on pharmaceutical branding (Viagra)\nRPG-style stats and abilities",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEVIAGRAA#visual",
+      "label": "Visual summary",
+      "text": "The card features a bold, cartoonish style with a bright color palette. A man in a robe is walking a snake-like creature with a Pepe face on a leash, set against a cloudy sky. The lower section of the card has a faded background with another Pepe face.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEVIAGRAA#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nfakeviagra, ancient herbal remedy, ❤️=14 atk=109 sp=32, Ele=vital feel, 64 dose use rare\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a bold, cartoonish style with a bright color palette. A man in a robe is walking a snake-like creature with a Pepe face on a leash, set against a cloudy sky. The lower section of the card has a faded background with another Pepe face.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references\n- Play on pharmaceutical branding (Viagra)\n- RPG-style stats and abilities",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.593Z",
+  "sourceFactVersion": 1
+}

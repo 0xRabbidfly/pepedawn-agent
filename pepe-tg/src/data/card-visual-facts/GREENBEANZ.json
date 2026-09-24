@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "GREENBEANZ",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 21,
+  "artist": "VVD",
+  "supply": 66,
+  "issuance": "April 2022",
+  "textOnCard": [
+    "GREENBEANZ"
+  ],
+  "memeticReferences": [
+    "Strong Pepe energy with the green color and facial expression.",
+    "Minimalist aesthetic reminiscent of meme simplicity.",
+    "Cartoonish features evoke classic internet meme characters."
+  ],
+  "visualSummary": "This card features a minimalist design with a solid green background and a simplistic, cartoonish face. The face is composed of bold black eyebrows, large, round eyes, and a straight pink mouth, giving off a stern expression. The style is flat and graphic, with a focus on geometric shapes and contrasting colors.",
+  "visualSummaryShort": "The card showcases a minimalist design with a solid green background and a cartoonish face. The face features bold black eyebrows, large round eyes, and a straight pink mouth, creating a stern expression.",
+  "visualKeywords": [
+    "green background",
+    "cartoonish face",
+    "black eyebrows",
+    "round eyes",
+    "pink mouth",
+    "minimalist design",
+    "geometric shapes",
+    "flat style",
+    "contrasting colors"
+  ],
+  "textKeywords": [
+    "greenbeanz"
+  ],
+  "keywords": [
+    "green background",
+    "cartoonish face",
+    "black eyebrows",
+    "round eyes",
+    "pink mouth",
+    "minimalist design",
+    "geometric shapes",
+    "flat style",
+    "contrasting colors",
+    "greenbeanz"
+  ],
+  "embeddingInput": "GREENBEANZ (Fake Rares) - Series 7 Card 21\nArtist: VVD\nSupply 66 Issued April 2022\nOn-card text: GREENBEANZ\nVisual summary: This card features a minimalist design with a solid green background and a simplistic, cartoonish face. The face is composed of bold black eyebrows, large, round eyes, and a straight pink mouth, giving off a stern expression. The style is flat and graphic, with a focus on geometric shapes and contrasting colors.\nMemetic references: Strong Pepe energy with the green color and facial expression.; Minimalist aesthetic reminiscent of meme simplicity.; Cartoonish features evoke classic internet meme characters.",
+  "embeddingBlocks": [
+    {
+      "id": "GREENBEANZ#text",
+      "label": "On-card text",
+      "text": "GREENBEANZ",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "GREENBEANZ#memetic",
+      "label": "Memetic references",
+      "text": "Strong Pepe energy with the green color and facial expression.\nMinimalist aesthetic reminiscent of meme simplicity.\nCartoonish features evoke classic internet meme characters.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "GREENBEANZ#visual",
+      "label": "Visual summary",
+      "text": "This card features a minimalist design with a solid green background and a simplistic, cartoonish face. The face is composed of bold black eyebrows, large, round eyes, and a straight pink mouth, giving off a stern expression. The style is flat and graphic, with a focus on geometric shapes and contrasting colors.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "GREENBEANZ#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nGREENBEANZ\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a minimalist design with a solid green background and a simplistic, cartoonish face. The face is composed of bold black eyebrows, large, round eyes, and a straight pink mouth, giving off a stern expression. The style is flat and graphic, with a focus on geometric shapes and contrasting colors.\n\n🧬 **MEMETIC DNA:**\n- Strong Pepe energy with the green color and facial expression.\n- Minimalist aesthetic reminiscent of meme simplicity.\n- Cartoonish features evoke classic internet meme characters.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.669Z",
+  "sourceFactVersion": 1
+}

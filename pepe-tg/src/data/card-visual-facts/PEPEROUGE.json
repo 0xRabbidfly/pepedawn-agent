@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "PEPEROUGE",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 15,
+  "artist": "WomanNFT",
+  "supply": 33,
+  "issuance": "September 2023",
+  "textOnCard": [
+    "PEPE ROUGE",
+    "MOULIN"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog dressed as cabaret performers.",
+    "Reference to the iconic Moulin Rouge in Paris.",
+    "Playful parody of nightlife and entertainment culture."
+  ],
+  "visualSummary": "The card features a vibrant street scene with a building resembling the famous Moulin Rouge, complete with a red windmill. The color palette is dominated by reds, greens, and yellows, giving it a lively and playful vibe. Three figures resembling Pepe are dressed in flashy outfits, displayed in a window, adding a cheeky twist to the iconic setting.",
+  "visualSummaryShort": "The card showcases a lively street scene featuring a building inspired by the Moulin Rouge, highlighted by a red windmill. Three Pepe figures in flashy outfits add a playful touch to the vibrant color palette of reds, greens, and yellows.",
+  "visualKeywords": [
+    "moulin rouge",
+    "red windmill",
+    "street scene",
+    "pepe",
+    "flashy outfits",
+    "vibrant colors",
+    "playful vibe",
+    "figures",
+    "window"
+  ],
+  "textKeywords": [
+    "rouge",
+    "moulin"
+  ],
+  "keywords": [
+    "moulin rouge",
+    "red windmill",
+    "street scene",
+    "pepe",
+    "flashy outfits",
+    "vibrant colors",
+    "playful vibe",
+    "figures",
+    "window",
+    "rouge",
+    "moulin"
+  ],
+  "embeddingInput": "PEPEROUGE (Fake Rares) - Series 16 Card 15\nArtist: WomanNFT\nSupply 33 Issued September 2023\nOn-card text: PEPE ROUGE | MOULIN\nVisual summary: The card features a vibrant street scene with a building resembling the famous Moulin Rouge, complete with a red windmill. The color palette is dominated by reds, greens, and yellows, giving it a lively and playful vibe. Three figures resembling Pepe are dressed in flashy outfits, displayed in a window, adding a cheeky twist to the iconic setting.\nMemetic references: Pepe the Frog dressed as cabaret performers.; Reference to the iconic Moulin Rouge in Paris.; Playful parody of nightlife and entertainment culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEROUGE#text",
+      "label": "On-card text",
+      "text": "PEPE ROUGE | MOULIN",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEROUGE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog dressed as cabaret performers.\nReference to the iconic Moulin Rouge in Paris.\nPlayful parody of nightlife and entertainment culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEROUGE#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant street scene with a building resembling the famous Moulin Rouge, complete with a red windmill. The color palette is dominated by reds, greens, and yellows, giving it a lively and playful vibe. Three figures resembling Pepe are dressed in flashy outfits, displayed in a window, adding a cheeky twist to the iconic setting.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEROUGE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE ROUGE  \nMOULIN\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant street scene with a building resembling the famous Moulin Rouge, complete with a red windmill. The color palette is dominated by reds, greens, and yellows, giving it a lively and playful vibe. Three figures resembling Pepe are dressed in flashy outfits, displayed in a window, adding a cheeky twist to the iconic setting.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog dressed as cabaret performers.\n- Reference to the iconic Moulin Rouge in Paris.\n- Playful parody of nightlife and entertainment culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.963Z",
+  "sourceFactVersion": 1
+}

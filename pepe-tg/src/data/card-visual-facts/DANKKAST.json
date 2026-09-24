@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "asset": "DANKKAST",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 46,
+  "artist": "HNFT Pepe",
+  "supply": 69,
+  "issuance": "September 2023",
+  "textOnCard": [
+    "DANKKAST, KEKliens"
+  ],
+  "memeticReferences": [
+    "Strong reference to Pepe the Frog with the alien \"KEKliens\" theme.",
+    "The name \"DANKKAST\" hints at a podcast or broadcast, playing on \"dank\" meme culture.",
+    "Sci-fi and retro comic book aesthetics, reminiscent of 80s and 90s pop culture."
+  ],
+  "visualSummary": "This NFT card features a dynamic, comic book-style illustration with a dark, moody color palette dominated by blues, greens, and reds. The central figure is a humanoid character in a red jacket, surrounded by various alien-like creatures with exaggerated, cartoonish features. The composition has a retro sci-fi vibe, with bold, neon text adding a futuristic touch.",
+  "visualSummaryShort": "The card showcases a comic book-style illustration with a central humanoid character in a red jacket surrounded by cartoonish alien creatures. The dark, moody color palette features blues, greens, and reds, enhanced by bold neon text.",
+  "visualKeywords": [
+    "humanoid",
+    "red jacket",
+    "alien creatures",
+    "comic book",
+    "dark palette",
+    "neon text",
+    "sci-fi",
+    "cartoonish",
+    "blue tones",
+    "green tones"
+  ],
+  "textKeywords": [
+    "dankkast",
+    "kekliens"
+  ],
+  "keywords": [
+    "humanoid",
+    "red jacket",
+    "alien creatures",
+    "comic book",
+    "dark palette",
+    "neon text",
+    "sci-fi",
+    "cartoonish",
+    "blue tones",
+    "green tones",
+    "dankkast",
+    "kekliens"
+  ],
+  "embeddingInput": "DANKKAST (Fake Rares) - Series 16 Card 46\nArtist: HNFT Pepe\nSupply 69 Issued September 2023\nOn-card text: DANKKAST, KEKliens\nVisual summary: This NFT card features a dynamic, comic book-style illustration with a dark, moody color palette dominated by blues, greens, and reds. The central figure is a humanoid character in a red jacket, surrounded by various alien-like creatures with exaggerated, cartoonish features. The composition has a retro sci-fi vibe, with bold, neon text adding a futuristic touch.\nMemetic references: Strong reference to Pepe the Frog with the alien \"KEKliens\" theme.; The name \"DANKKAST\" hints at a podcast or broadcast, playing on \"dank\" meme culture.; Sci-fi and retro comic book aesthetics, reminiscent of 80s and 90s pop culture.",
+  "embeddingBlocks": [
+    {
+      "id": "DANKKAST#text",
+      "label": "On-card text",
+      "text": "DANKKAST, KEKliens",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "DANKKAST#memetic",
+      "label": "Memetic references",
+      "text": "Strong reference to Pepe the Frog with the alien \"KEKliens\" theme.\nThe name \"DANKKAST\" hints at a podcast or broadcast, playing on \"dank\" meme culture.\nSci-fi and retro comic book aesthetics, reminiscent of 80s and 90s pop culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "DANKKAST#visual",
+      "label": "Visual summary",
+      "text": "This NFT card features a dynamic, comic book-style illustration with a dark, moody color palette dominated by blues, greens, and reds. The central figure is a humanoid character in a red jacket, surrounded by various alien-like creatures with exaggerated, cartoonish features. The composition has a retro sci-fi vibe, with bold, neon text adding a futuristic touch.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "DANKKAST#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nDANKKAST, KEKliens\n\n🎨 **VISUAL BREAKDOWN:**\nThis NFT card features a dynamic, comic book-style illustration with a dark, moody color palette dominated by blues, greens, and reds. The central figure is a humanoid character in a red jacket, surrounded by various alien-like creatures with exaggerated, cartoonish features. The composition has a retro sci-fi vibe, with bold, neon text adding a futuristic touch.\n\n🧬 **MEMETIC DNA:**\n- Strong reference to Pepe the Frog with the alien \"KEKliens\" theme.\n- The name \"DANKKAST\" hints at a podcast or broadcast, playing on \"dank\" meme culture.\n- Sci-fi and retro comic book aesthetics, reminiscent of 80s and 90s pop culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.383Z",
+  "sourceFactVersion": 1
+}

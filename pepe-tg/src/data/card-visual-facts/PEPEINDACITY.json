@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "PEPEINDACITY",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 33,
+  "artist": "ZETRA",
+  "supply": 50,
+  "issuance": "November 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog, the iconic meme character, is central to the design.",
+    "Graffiti and street art vibes blend with the chaotic energy of meme culture.",
+    "The use of bright, clashing colors echoes the visual language of internet memes."
+  ],
+  "visualSummary": "The card bursts with a kaleidoscope of vibrant colors, with splashes of red, yellow, blue, and pink creating an intense, psychedelic backdrop. In the center, Pepe the Frog peeks through the chaos with wide, expressive eyes and a cheeky smile, painted in a graffiti style. The artistic style is bold and energetic, reminiscent of street art with a touch of abstract expressionism.",
+  "visualSummaryShort": "The card features a vibrant, psychedelic backdrop filled with splashes of red, yellow, blue, and pink. Pepe the Frog, depicted in a graffiti style, has wide eyes and a cheeky smile, embodying a bold and energetic artistic vibe.",
+  "visualKeywords": [
+    "pepe the frog",
+    "graffiti",
+    "psychedelic",
+    "vibrant colors",
+    "abstract",
+    "expressive eyes",
+    "bold style",
+    "street art"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "graffiti",
+    "psychedelic",
+    "vibrant colors",
+    "abstract",
+    "expressive eyes",
+    "bold style",
+    "street art"
+  ],
+  "embeddingInput": "PEPEINDACITY (Fake Rares) - Series 3 Card 33\nArtist: ZETRA\nSupply 50 Issued November 2021\nOn-card text: none detected\nVisual summary: The card bursts with a kaleidoscope of vibrant colors, with splashes of red, yellow, blue, and pink creating an intense, psychedelic backdrop. In the center, Pepe the Frog peeks through the chaos with wide, expressive eyes and a cheeky smile, painted in a graffiti style. The artistic style is bold and energetic, reminiscent of street art with a touch of abstract expressionism.\nMemetic references: Pepe the Frog, the iconic meme character, is central to the design.; Graffiti and street art vibes blend with the chaotic energy of meme culture.; The use of bright, clashing colors echoes the visual language of internet memes.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEINDACITY#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, the iconic meme character, is central to the design.\nGraffiti and street art vibes blend with the chaotic energy of meme culture.\nThe use of bright, clashing colors echoes the visual language of internet memes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEINDACITY#visual",
+      "label": "Visual summary",
+      "text": "The card bursts with a kaleidoscope of vibrant colors, with splashes of red, yellow, blue, and pink creating an intense, psychedelic backdrop. In the center, Pepe the Frog peeks through the chaos with wide, expressive eyes and a cheeky smile, painted in a graffiti style. The artistic style is bold and energetic, reminiscent of street art with a touch of abstract expressionism.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEINDACITY#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card bursts with a kaleidoscope of vibrant colors, with splashes of red, yellow, blue, and pink creating an intense, psychedelic backdrop. In the center, Pepe the Frog peeks through the chaos with wide, expressive eyes and a cheeky smile, painted in a graffiti style. The artistic style is bold and energetic, reminiscent of street art with a touch of abstract expressionism.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, the iconic meme character, is central to the design.\n- Graffiti and street art vibes blend with the chaotic energy of meme culture.\n- The use of bright, clashing colors echoes the visual language of internet memes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.897Z",
+  "sourceFactVersion": 1
+}

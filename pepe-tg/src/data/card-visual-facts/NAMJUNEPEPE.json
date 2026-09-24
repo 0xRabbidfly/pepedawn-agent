@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "asset": "NAMJUNEPEPE",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 31,
+  "artist": "Chrome Void",
+  "supply": 69,
+  "issuance": "September 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "References to Nam June Paik, the pioneer of video art.",
+    "Classic Pepe the Frog face subtly embedded in the static, nodding to meme culture.",
+    "Use of CRT TVs evokes a lo-fi, analog vibe, popular in crypto art.",
+    "Glitch art style is reminiscent of early internet aesthetics."
+  ],
+  "visualSummary": "The card features a grid of old-school CRT televisions stacked in a 5x5 arrangement. Each screen displays static noise in varying colors, including green, red, blue, and grayscale, creating a retro, glitchy aesthetic. The overall palette is vibrant yet chaotic, capturing a sense of digital nostalgia.",
+  "visualSummaryShort": "The card showcases a grid of CRT televisions displaying colorful static noise. The vibrant and chaotic palette evokes a sense of digital nostalgia.",
+  "visualKeywords": [
+    "crt televisions",
+    "static noise",
+    "green",
+    "red",
+    "blue",
+    "grayscale",
+    "retro",
+    "glitchy",
+    "vibrant",
+    "chaotic"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "crt televisions",
+    "static noise",
+    "green",
+    "red",
+    "blue",
+    "grayscale",
+    "retro",
+    "glitchy",
+    "vibrant",
+    "chaotic"
+  ],
+  "embeddingInput": "NAMJUNEPEPE (Fake Rares) - Series 10 Card 31\nArtist: Chrome Void\nSupply 69 Issued September 2022\nOn-card text: none detected\nVisual summary: The card features a grid of old-school CRT televisions stacked in a 5x5 arrangement. Each screen displays static noise in varying colors, including green, red, blue, and grayscale, creating a retro, glitchy aesthetic. The overall palette is vibrant yet chaotic, capturing a sense of digital nostalgia.\nMemetic references: References to Nam June Paik, the pioneer of video art.; Classic Pepe the Frog face subtly embedded in the static, nodding to meme culture.; Use of CRT TVs evokes a lo-fi, analog vibe, popular in crypto art.; Glitch art style is reminiscent of early internet aesthetics.",
+  "embeddingBlocks": [
+    {
+      "id": "NAMJUNEPEPE#memetic",
+      "label": "Memetic references",
+      "text": "References to Nam June Paik, the pioneer of video art.\nClassic Pepe the Frog face subtly embedded in the static, nodding to meme culture.\nUse of CRT TVs evokes a lo-fi, analog vibe, popular in crypto art.\nGlitch art style is reminiscent of early internet aesthetics.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "NAMJUNEPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a grid of old-school CRT televisions stacked in a 5x5 arrangement. Each screen displays static noise in varying colors, including green, red, blue, and grayscale, creating a retro, glitchy aesthetic. The overall palette is vibrant yet chaotic, capturing a sense of digital nostalgia.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "NAMJUNEPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a grid of old-school CRT televisions stacked in a 5x5 arrangement. Each screen displays static noise in varying colors, including green, red, blue, and grayscale, creating a retro, glitchy aesthetic. The overall palette is vibrant yet chaotic, capturing a sense of digital nostalgia.\n\n🧬 **MEMETIC DNA:**\n- References to Nam June Paik, the pioneer of video art.\n- Classic Pepe the Frog face subtly embedded in the static, nodding to meme culture.\n- Use of CRT TVs evokes a lo-fi, analog vibe, popular in crypto art.\n- Glitch art style is reminiscent of early internet aesthetics.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.789Z",
+  "sourceFactVersion": 1
+}

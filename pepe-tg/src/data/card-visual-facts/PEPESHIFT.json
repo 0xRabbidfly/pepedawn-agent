@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "asset": "PEPESHIFT",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 35,
+  "artist": "OE",
+  "supply": 100,
+  "issuance": "October 2016",
+  "textOnCard": [
+    "PEPESHIFT",
+    "Shift from rare to fake rare back to dark Pepe to rare",
+    "HOT! HOT! HOT!",
+    "?Most Pepe's listed...?",
+    "KYC-0 AML-0"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog references, a staple of meme culture.",
+    "Crypto trading card parody, nodding to NFT culture.",
+    "\"Shift\" and \"HOT!\" text plays on market volatility and hype cycles.",
+    "\"KYC-0 AML-0\" references the decentralized, anonymous ethos of crypto."
+  ],
+  "visualSummary": "The card features a classic trading card layout with a pink border and a central image depicting three Pepe faces on different bodies against a cityscape background. The color palette is vibrant, mixing greens of the Pepe faces with the gray city skyline. The artistic style is a playful collage, merging meme aesthetics with trading card elements.",
+  "visualSummaryShort": "The card showcases three Pepe faces in a vibrant collage against a cityscape backdrop. The playful design features a pink border and a mix of green and gray tones.",
+  "visualKeywords": [
+    "pepe",
+    "cityscape",
+    "collage",
+    "pink border",
+    "green",
+    "gray",
+    "vibrant",
+    "playful"
+  ],
+  "textKeywords": [
+    "pepeshift",
+    "shift",
+    "back",
+    "dark",
+    "hot",
+    "listed",
+    "kyc",
+    "aml"
+  ],
+  "keywords": [
+    "pepe",
+    "cityscape",
+    "collage",
+    "pink border",
+    "green",
+    "gray",
+    "vibrant",
+    "playful",
+    "pepeshift",
+    "shift",
+    "back",
+    "dark",
+    "hot",
+    "listed",
+    "kyc",
+    "aml"
+  ],
+  "embeddingInput": "PEPESHIFT (Fake Rares) - Series 2 Card 35\nArtist: OE\nSupply 100 Issued October 2016\nOn-card text: PEPESHIFT | Shift from rare to fake rare back to dark Pepe to rare | HOT! HOT! HOT! | ?Most Pepe's listed...? | KYC-0 AML-0\nVisual summary: The card features a classic trading card layout with a pink border and a central image depicting three Pepe faces on different bodies against a cityscape background. The color palette is vibrant, mixing greens of the Pepe faces with the gray city skyline. The artistic style is a playful collage, merging meme aesthetics with trading card elements.\nMemetic references: Pepe the Frog references, a staple of meme culture.; Crypto trading card parody, nodding to NFT culture.; \"Shift\" and \"HOT!\" text plays on market volatility and hype cycles.; \"KYC-0 AML-0\" references the decentralized, anonymous ethos of crypto.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPESHIFT#text",
+      "label": "On-card text",
+      "text": "PEPESHIFT | Shift from rare to fake rare back to dark Pepe to rare | HOT! HOT! HOT! | ?Most Pepe's listed...? | KYC-0 AML-0",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPESHIFT#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog references, a staple of meme culture.\nCrypto trading card parody, nodding to NFT culture.\n\"Shift\" and \"HOT!\" text plays on market volatility and hype cycles.\n\"KYC-0 AML-0\" references the decentralized, anonymous ethos of crypto.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPESHIFT#visual",
+      "label": "Visual summary",
+      "text": "The card features a classic trading card layout with a pink border and a central image depicting three Pepe faces on different bodies against a cityscape background. The color palette is vibrant, mixing greens of the Pepe faces with the gray city skyline. The artistic style is a playful collage, merging meme aesthetics with trading card elements.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPESHIFT#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPESHIFT  \nShift from rare to fake rare back to dark Pepe to rare  \nHOT! HOT! HOT!  \n?Most Pepe's listed...?  \nKYC-0 AML-0  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a classic trading card layout with a pink border and a central image depicting three Pepe faces on different bodies against a cityscape background. The color palette is vibrant, mixing greens of the Pepe faces with the gray city skyline. The artistic style is a playful collage, merging meme aesthetics with trading card elements.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog references, a staple of meme culture.\n- Crypto trading card parody, nodding to NFT culture.\n- \"Shift\" and \"HOT!\" text plays on market volatility and hype cycles.\n- \"KYC-0 AML-0\" references the decentralized, anonymous ethos of crypto.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.976Z",
+  "sourceFactVersion": 1
+}

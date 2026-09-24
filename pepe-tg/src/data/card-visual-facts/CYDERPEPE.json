@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "asset": "CYDERPEPE",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 50,
+  "artist": "Mr Hansel",
+  "supply": 100,
+  "issuance": "December 2021",
+  "textOnCard": [
+    "Feels lush mate!",
+    "GOOD FOR WHAT AILS YOU AND FOR DRUNKENESS",
+    "NEO TAUNTON CYDERDRUNK"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference with a leafy twist.",
+    "Cider culture and drinking humor.",
+    "Playful nod to traditional cider branding and slogans.",
+    "Visual pun on \"lush\" both in greenery and intoxication."
+  ],
+  "visualSummary": "This card features a character with a leafy, tree-like head reminiscent of Pepe, wearing a green jumpsuit. The character holds a large bottle of cider, with liquid humorously pouring out in an exaggerated arc. The color palette is earthy with greens, browns, and yellows, giving a natural and playful vibe.",
+  "visualSummaryShort": "The card showcases a character with a leafy head in a green jumpsuit, humorously pouring cider from a large bottle. The earthy color palette enhances the playful and natural vibe.",
+  "visualKeywords": [
+    "leafy head",
+    "green jumpsuit",
+    "cider",
+    "earthy colors",
+    "playful",
+    "natural",
+    "exaggerated arc"
+  ],
+  "textKeywords": [
+    "feels",
+    "lush",
+    "mate",
+    "good",
+    "what",
+    "ails",
+    "you",
+    "drunkeness",
+    "neo",
+    "taunton",
+    "cyderdrunk"
+  ],
+  "keywords": [
+    "leafy head",
+    "green jumpsuit",
+    "cider",
+    "earthy colors",
+    "playful",
+    "natural",
+    "exaggerated arc",
+    "feels",
+    "lush",
+    "mate",
+    "good",
+    "what",
+    "ails",
+    "you",
+    "drunkeness",
+    "neo",
+    "taunton",
+    "cyderdrunk"
+  ],
+  "embeddingInput": "CYDERPEPE (Fake Rares) - Series 6 Card 50\nArtist: Mr Hansel\nSupply 100 Issued December 2021\nOn-card text: Feels lush mate! | GOOD FOR WHAT AILS YOU AND FOR DRUNKENESS | NEO TAUNTON CYDERDRUNK\nVisual summary: This card features a character with a leafy, tree-like head reminiscent of Pepe, wearing a green jumpsuit. The character holds a large bottle of cider, with liquid humorously pouring out in an exaggerated arc. The color palette is earthy with greens, browns, and yellows, giving a natural and playful vibe.\nMemetic references: Pepe the Frog reference with a leafy twist.; Cider culture and drinking humor.; Playful nod to traditional cider branding and slogans.; Visual pun on \"lush\" both in greenery and intoxication.",
+  "embeddingBlocks": [
+    {
+      "id": "CYDERPEPE#text",
+      "label": "On-card text",
+      "text": "Feels lush mate! | GOOD FOR WHAT AILS YOU AND FOR DRUNKENESS | NEO TAUNTON CYDERDRUNK",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "CYDERPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference with a leafy twist.\nCider culture and drinking humor.\nPlayful nod to traditional cider branding and slogans.\nVisual pun on \"lush\" both in greenery and intoxication.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "CYDERPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a character with a leafy, tree-like head reminiscent of Pepe, wearing a green jumpsuit. The character holds a large bottle of cider, with liquid humorously pouring out in an exaggerated arc. The color palette is earthy with greens, browns, and yellows, giving a natural and playful vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "CYDERPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- Feels lush mate!\n- GOOD FOR WHAT AILS YOU AND FOR DRUNKENESS\n- NEO TAUNTON CYDERDRUNK\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a character with a leafy, tree-like head reminiscent of Pepe, wearing a green jumpsuit. The character holds a large bottle of cider, with liquid humorously pouring out in an exaggerated arc. The color palette is earthy with greens, browns, and yellows, giving a natural and playful vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference with a leafy twist.\n- Cider culture and drinking humor.\n- Playful nod to traditional cider branding and slogans.\n- Visual pun on \"lush\" both in greenery and intoxication.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.378Z",
+  "sourceFactVersion": 1
+}

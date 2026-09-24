@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "asset": "FAKECEZANNE",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 48,
+  "artist": "Mr. P x Stack",
+  "supply": 150,
+  "issuance": "December 2021",
+  "textOnCard": [
+    "Mr.P"
+  ],
+  "memeticReferences": [
+    "References to classic art styles, blending traditional painting with digital media.",
+    "Possible nod to the blending of high art with meme culture.",
+    "The signature \"Mr.P\" adds a mysterious, playful twist."
+  ],
+  "visualSummary": "This NFT card features an animated portrait inspired by Post-Impressionist art, reminiscent of Cézanne's style. The color palette is earthy with shades of green, blue, and brown, highlighting the subject's beard and clothing. The subject wears a white hat, and the brush strokes give the portrait a textured, painterly feel.",
+  "visualSummaryShort": "The card showcases an animated portrait with a textured, painterly style inspired by Post-Impressionism. The earthy color palette emphasizes the subject's white hat and beard.",
+  "visualKeywords": [
+    "portrait",
+    "earthy colors",
+    "green",
+    "blue",
+    "brown",
+    "white hat",
+    "textured",
+    "painterly",
+    "brush strokes",
+    "beard"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "portrait",
+    "earthy colors",
+    "green",
+    "blue",
+    "brown",
+    "white hat",
+    "textured",
+    "painterly",
+    "brush strokes",
+    "beard"
+  ],
+  "embeddingInput": "FAKECEZANNE (Fake Rares) - Series 5 Card 48\nArtist: Mr. P x Stack\nSupply 150 Issued December 2021\nOn-card text: Mr.P\nVisual summary: This NFT card features an animated portrait inspired by Post-Impressionist art, reminiscent of Cézanne's style. The color palette is earthy with shades of green, blue, and brown, highlighting the subject's beard and clothing. The subject wears a white hat, and the brush strokes give the portrait a textured, painterly feel.\nMemetic references: References to classic art styles, blending traditional painting with digital media.; Possible nod to the blending of high art with meme culture.; The signature \"Mr.P\" adds a mysterious, playful twist.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKECEZANNE#text",
+      "label": "On-card text",
+      "text": "Mr.P",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKECEZANNE#memetic",
+      "label": "Memetic references",
+      "text": "References to classic art styles, blending traditional painting with digital media.\nPossible nod to the blending of high art with meme culture.\nThe signature \"Mr.P\" adds a mysterious, playful twist.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKECEZANNE#visual",
+      "label": "Visual summary",
+      "text": "This NFT card features an animated portrait inspired by Post-Impressionist art, reminiscent of Cézanne's style. The color palette is earthy with shades of green, blue, and brown, highlighting the subject's beard and clothing. The subject wears a white hat, and the brush strokes give the portrait a textured, painterly feel.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKECEZANNE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nMr.P\n\n🎨 **VISUAL BREAKDOWN:**\nThis NFT card features an animated portrait inspired by Post-Impressionist art, reminiscent of Cézanne's style. The color palette is earthy with shades of green, blue, and brown, highlighting the subject's beard and clothing. The subject wears a white hat, and the brush strokes give the portrait a textured, painterly feel.\n\n🧬 **MEMETIC DNA:**\n- References to classic art styles, blending traditional painting with digital media.\n- Possible nod to the blending of high art with meme culture.\n- The signature \"Mr.P\" adds a mysterious, playful twist.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.470Z",
+  "sourceFactVersion": 1
+}

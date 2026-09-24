@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "FAKEQUEEN",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 6,
+  "artist": "Maya",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "RAREst PEPE"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery",
+    "Playing card motif with a royal twist",
+    "References to the \"Rare Pepe\" meme"
+  ],
+  "visualSummary": "This NFT card features a Pepe the Frog character styled as a queen on a playing card. The background is white, with red diamond suits and the letter \"Q\" in the corners, reminiscent of a traditional playing card. The color palette is vibrant, with Pepe’s iconic green skin, purple hair adorned with flowers, and a red and black outfit.",
+  "visualSummaryShort": "The card showcases a Pepe the Frog character designed as a queen, set against a white background with red diamond suits. The vibrant colors include green skin, purple hair with flowers, and a striking red and black outfit.",
+  "visualKeywords": [
+    "pepe",
+    "queen",
+    "playing card",
+    "red diamonds",
+    "green",
+    "purple",
+    "flowers",
+    "vibrant",
+    "outfit"
+  ],
+  "textKeywords": [
+    "rarest"
+  ],
+  "keywords": [
+    "pepe",
+    "queen",
+    "playing card",
+    "red diamonds",
+    "green",
+    "purple",
+    "flowers",
+    "vibrant",
+    "outfit",
+    "rarest"
+  ],
+  "embeddingInput": "FAKEQUEEN (Fake Rares) - Series 2 Card 6\nArtist: Maya\nSupply 100 Issued October 2021\nOn-card text: RAREst PEPE\nVisual summary: This NFT card features a Pepe the Frog character styled as a queen on a playing card. The background is white, with red diamond suits and the letter \"Q\" in the corners, reminiscent of a traditional playing card. The color palette is vibrant, with Pepe’s iconic green skin, purple hair adorned with flowers, and a red and black outfit.\nMemetic references: Classic Pepe the Frog imagery; Playing card motif with a royal twist; References to the \"Rare Pepe\" meme",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEQUEEN#text",
+      "label": "On-card text",
+      "text": "RAREst PEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEQUEEN#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery\nPlaying card motif with a royal twist\nReferences to the \"Rare Pepe\" meme",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEQUEEN#visual",
+      "label": "Visual summary",
+      "text": "This NFT card features a Pepe the Frog character styled as a queen on a playing card. The background is white, with red diamond suits and the letter \"Q\" in the corners, reminiscent of a traditional playing card. The color palette is vibrant, with Pepe’s iconic green skin, purple hair adorned with flowers, and a red and black outfit.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEQUEEN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nRAREst PEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThis NFT card features a Pepe the Frog character styled as a queen on a playing card. The background is white, with red diamond suits and the letter \"Q\" in the corners, reminiscent of a traditional playing card. The color palette is vibrant, with Pepe’s iconic green skin, purple hair adorned with flowers, and a red and black outfit.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery\n- Playing card motif with a royal twist\n- References to the \"Rare Pepe\" meme",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.562Z",
+  "sourceFactVersion": 1
+}

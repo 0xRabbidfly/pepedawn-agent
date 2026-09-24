@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "asset": "ELDUENDEPEPE",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 42,
+  "artist": "Da'Block God",
+  "supply": 86,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "Demon Pepe II",
+    "El Duende",
+    "Diminishes your Saints power by half",
+    "Converts 50% of your BTC into XRP"
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog features with a demonic twist.",
+    "References to crypto culture and market volatility (BTC to XRP conversion).",
+    "Mythical elements with \"El Duende\" nodding to folklore."
+  ],
+  "visualSummary": "The card features a menacing, goblin-like figure with glowing green eyes and exaggerated ears, set against a stormy, electric blue sky. The creature has a mischievous grin, with lightning bolts adding dramatic flair. The color palette mixes eerie greens with dark blues and purples, enhancing the supernatural vibe.",
+  "visualSummaryShort": "The card showcases a goblin-like creature with glowing green eyes and a mischievous grin, surrounded by a stormy blue sky. Lightning bolts and a dark color palette create a supernatural and dramatic atmosphere.",
+  "visualKeywords": [
+    "goblin",
+    "green eyes",
+    "stormy sky",
+    "lightning",
+    "dark blue",
+    "purple",
+    "mischievous",
+    "supernatural"
+  ],
+  "textKeywords": [
+    "demon",
+    "duende",
+    "diminishes",
+    "saints",
+    "power",
+    "half",
+    "converts",
+    "btc",
+    "xrp"
+  ],
+  "keywords": [
+    "goblin",
+    "green eyes",
+    "stormy sky",
+    "lightning",
+    "dark blue",
+    "purple",
+    "mischievous",
+    "supernatural",
+    "demon",
+    "duende",
+    "diminishes",
+    "saints",
+    "power",
+    "half",
+    "converts",
+    "btc",
+    "xrp"
+  ],
+  "embeddingInput": "ELDUENDEPEPE (Fake Rares) - Series 6 Card 42\nArtist: Da'Block God\nSupply 86 Issued February 2022\nOn-card text: Demon Pepe II | El Duende | Diminishes your Saints power by half | Converts 50% of your BTC into XRP\nVisual summary: The card features a menacing, goblin-like figure with glowing green eyes and exaggerated ears, set against a stormy, electric blue sky. The creature has a mischievous grin, with lightning bolts adding dramatic flair. The color palette mixes eerie greens with dark blues and purples, enhancing the supernatural vibe.\nMemetic references: Classic Pepe the Frog features with a demonic twist.; References to crypto culture and market volatility (BTC to XRP conversion).; Mythical elements with \"El Duende\" nodding to folklore.",
+  "embeddingBlocks": [
+    {
+      "id": "ELDUENDEPEPE#text",
+      "label": "On-card text",
+      "text": "Demon Pepe II | El Duende | Diminishes your Saints power by half | Converts 50% of your BTC into XRP",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "ELDUENDEPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog features with a demonic twist.\nReferences to crypto culture and market volatility (BTC to XRP conversion).\nMythical elements with \"El Duende\" nodding to folklore.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "ELDUENDEPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a menacing, goblin-like figure with glowing green eyes and exaggerated ears, set against a stormy, electric blue sky. The creature has a mischievous grin, with lightning bolts adding dramatic flair. The color palette mixes eerie greens with dark blues and purples, enhancing the supernatural vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "ELDUENDEPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nDemon Pepe II  \nEl Duende  \nDiminishes your Saints power by half  \nConverts 50% of your BTC into XRP\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a menacing, goblin-like figure with glowing green eyes and exaggerated ears, set against a stormy, electric blue sky. The creature has a mischievous grin, with lightning bolts adding dramatic flair. The color palette mixes eerie greens with dark blues and purples, enhancing the supernatural vibe.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog features with a demonic twist.\n- References to crypto culture and market volatility (BTC to XRP conversion).\n- Mythical elements with \"El Duende\" nodding to folklore.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.419Z",
+  "sourceFactVersion": 1
+}

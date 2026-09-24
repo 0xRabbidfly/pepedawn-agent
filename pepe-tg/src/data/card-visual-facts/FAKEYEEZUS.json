@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "asset": "FAKEYEEZUS",
+  "collection": "Fake Rares",
+  "series": 9,
+  "cardNumber": 42,
+  "artist": "JB",
+  "supply": 51,
+  "issuance": "August 2022",
+  "textOnCard": [
+    "PEPE YE",
+    "I MISS THE OLD PEPE STRAIGHT FROM THE GO PEPE SET ON HIS GOALS PEPE CHOP UP THE SOUL PEPE"
+  ],
+  "memeticReferences": [
+    "References to Kanye West's style, particularly his masked look.",
+    "Pepe the Frog as a central figure, blending crypto meme culture with mainstream music influences.",
+    "The heavy metal font nods to iconic band logos, adding a musical meme crossover."
+  ],
+  "visualSummary": "The card features a figure styled in a manner similar to a famous artist, wearing a mask and pointing upwards. The color palette is dominated by deep blues with sharp contrasts in black and red, giving it a bold, striking appearance. The text is styled in a heavy metal font, adding an edgy, rebellious vibe to the overall composition.",
+  "visualSummaryShort": "The card showcases a masked figure pointing upwards, set against a bold color palette of deep blues, blacks, and reds. The heavy metal font adds an edgy vibe to the striking composition.",
+  "visualKeywords": [
+    "masked figure",
+    "blue palette",
+    "black",
+    "red",
+    "bold",
+    "edgy",
+    "heavy metal font"
+  ],
+  "textKeywords": [
+    "miss",
+    "old",
+    "straight",
+    "set",
+    "his",
+    "goals",
+    "chop",
+    "soul"
+  ],
+  "keywords": [
+    "masked figure",
+    "blue palette",
+    "black",
+    "red",
+    "bold",
+    "edgy",
+    "heavy metal font",
+    "miss",
+    "old",
+    "straight",
+    "set",
+    "his",
+    "goals",
+    "chop",
+    "soul"
+  ],
+  "embeddingInput": "FAKEYEEZUS (Fake Rares) - Series 9 Card 42\nArtist: JB\nSupply 51 Issued August 2022\nOn-card text: PEPE YE | I MISS THE OLD PEPE STRAIGHT FROM THE GO PEPE SET ON HIS GOALS PEPE CHOP UP THE SOUL PEPE\nVisual summary: The card features a figure styled in a manner similar to a famous artist, wearing a mask and pointing upwards. The color palette is dominated by deep blues with sharp contrasts in black and red, giving it a bold, striking appearance. The text is styled in a heavy metal font, adding an edgy, rebellious vibe to the overall composition.\nMemetic references: References to Kanye West's style, particularly his masked look.; Pepe the Frog as a central figure, blending crypto meme culture with mainstream music influences.; The heavy metal font nods to iconic band logos, adding a musical meme crossover.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEYEEZUS#text",
+      "label": "On-card text",
+      "text": "PEPE YE | I MISS THE OLD PEPE STRAIGHT FROM THE GO PEPE SET ON HIS GOALS PEPE CHOP UP THE SOUL PEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEYEEZUS#memetic",
+      "label": "Memetic references",
+      "text": "References to Kanye West's style, particularly his masked look.\nPepe the Frog as a central figure, blending crypto meme culture with mainstream music influences.\nThe heavy metal font nods to iconic band logos, adding a musical meme crossover.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEYEEZUS#visual",
+      "label": "Visual summary",
+      "text": "The card features a figure styled in a manner similar to a famous artist, wearing a mask and pointing upwards. The color palette is dominated by deep blues with sharp contrasts in black and red, giving it a bold, striking appearance. The text is styled in a heavy metal font, adding an edgy, rebellious vibe to the overall composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEYEEZUS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE YE  \nI MISS THE OLD PEPE STRAIGHT FROM THE GO PEPE SET ON HIS GOALS PEPE CHOP UP THE SOUL PEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a figure styled in a manner similar to a famous artist, wearing a mask and pointing upwards. The color palette is dominated by deep blues with sharp contrasts in black and red, giving it a bold, striking appearance. The text is styled in a heavy metal font, adding an edgy, rebellious vibe to the overall composition.\n\n🧬 **MEMETIC DNA:**\n- References to Kanye West's style, particularly his masked look.\n- Pepe the Frog as a central figure, blending crypto meme culture with mainstream music influences.\n- The heavy metal font nods to iconic band logos, adding a musical meme crossover.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.603Z",
+  "sourceFactVersion": 1
+}

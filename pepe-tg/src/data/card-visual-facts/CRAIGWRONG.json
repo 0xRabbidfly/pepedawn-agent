@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "asset": "CRAIGWRONG",
+  "collection": "Fake Rares",
+  "series": 15,
+  "cardNumber": 46,
+  "artist": "Carsonated",
+  "supply": 298,
+  "issuance": "August 2022",
+  "textOnCard": [
+    "Orangeness Score 144. The creator of 22,000 addresses. One of the most rare cryptographers in existence? Zk = '95 NSA = ? PKE = Min. Okamoto Card."
+  ],
+  "memeticReferences": [
+    "References to cryptography and address creation.",
+    "Plays on the mysterious nature of cryptographers, akin to the enigma surrounding crypto pioneers.",
+    "\"Orangeness Score\" humorously nods to gaming or scoring systems but with a playful twist."
+  ],
+  "visualSummary": "The card features an illustration of an older man with gray hair and glasses, set against a vibrant orange background. The art style is cartoonish with bold outlines, focusing on a simplistic yet expressive depiction. The color palette is dominated by various shades of orange, adding a sense of warmth and intensity.",
+  "visualSummaryShort": "The card showcases a cartoonish older man with gray hair and glasses against a vibrant orange background. The warm color palette and bold outlines create an expressive and intense visual effect.",
+  "visualKeywords": [
+    "older man",
+    "gray hair",
+    "glasses",
+    "orange background",
+    "cartoonish",
+    "bold outlines",
+    "warm colors"
+  ],
+  "textKeywords": [
+    "orangeness",
+    "score",
+    "144",
+    "creator",
+    "000",
+    "addresses",
+    "one",
+    "cryptographers",
+    "existence",
+    "nsa",
+    "pke",
+    "min",
+    "okamoto"
+  ],
+  "keywords": [
+    "older man",
+    "gray hair",
+    "glasses",
+    "orange background",
+    "cartoonish",
+    "bold outlines",
+    "warm colors",
+    "orangeness",
+    "score",
+    "144",
+    "creator",
+    "000",
+    "addresses",
+    "one",
+    "cryptographers",
+    "existence",
+    "nsa",
+    "pke",
+    "min",
+    "okamoto"
+  ],
+  "embeddingInput": "CRAIGWRONG (Fake Rares) - Series 15 Card 46\nArtist: Carsonated\nSupply 298 Issued August 2022\nOn-card text: Orangeness Score 144. The creator of 22,000 addresses. One of the most rare cryptographers in existence? Zk = '95 NSA = ? PKE = Min. Okamoto Card.\nVisual summary: The card features an illustration of an older man with gray hair and glasses, set against a vibrant orange background. The art style is cartoonish with bold outlines, focusing on a simplistic yet expressive depiction. The color palette is dominated by various shades of orange, adding a sense of warmth and intensity.\nMemetic references: References to cryptography and address creation.; Plays on the mysterious nature of cryptographers, akin to the enigma surrounding crypto pioneers.; \"Orangeness Score\" humorously nods to gaming or scoring systems but with a playful twist.",
+  "embeddingBlocks": [
+    {
+      "id": "CRAIGWRONG#text",
+      "label": "On-card text",
+      "text": "Orangeness Score 144. The creator of 22,000 addresses. One of the most rare cryptographers in existence? Zk = '95 NSA = ? PKE = Min. Okamoto Card.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "CRAIGWRONG#memetic",
+      "label": "Memetic references",
+      "text": "References to cryptography and address creation.\nPlays on the mysterious nature of cryptographers, akin to the enigma surrounding crypto pioneers.\n\"Orangeness Score\" humorously nods to gaming or scoring systems but with a playful twist.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "CRAIGWRONG#visual",
+      "label": "Visual summary",
+      "text": "The card features an illustration of an older man with gray hair and glasses, set against a vibrant orange background. The art style is cartoonish with bold outlines, focusing on a simplistic yet expressive depiction. The color palette is dominated by various shades of orange, adding a sense of warmth and intensity.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "CRAIGWRONG#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nOrangeness Score 144. The creator of 22,000 addresses. One of the most rare cryptographers in existence? Zk = '95 NSA = ? PKE = Min. Okamoto Card.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features an illustration of an older man with gray hair and glasses, set against a vibrant orange background. The art style is cartoonish with bold outlines, focusing on a simplistic yet expressive depiction. The color palette is dominated by various shades of orange, adding a sense of warmth and intensity.\n\n🧬 **MEMETIC DNA:**\n- References to cryptography and address creation.\n- Plays on the mysterious nature of cryptographers, akin to the enigma surrounding crypto pioneers.\n- \"Orangeness Score\" humorously nods to gaming or scoring systems but with a playful twist.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.369Z",
+  "sourceFactVersion": 1
+}

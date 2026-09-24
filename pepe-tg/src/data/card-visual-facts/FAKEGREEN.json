@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "FAKEGREEN",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 49,
+  "artist": "Jum Napat",
+  "supply": 100,
+  "issuance": "November 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Possible nod to the \"this is fine\" meme, with the flames symbolizing calm chaos.",
+    "The use of green ties into themes of eco-friendliness or \"green energy.\"",
+    "The character’s expression might reference cheeky or mischievous meme faces."
+  ],
+  "visualSummary": "The card features a playful, cartoonish green flame character with big, expressive eyes and a cheeky smile. It's surrounded by similar green fire elements and set against a vibrant green background, creating a harmonious yet whimsical visual. The artistic style is bold and simple, with clean lines and a minimalist color palette centered around various shades of green.",
+  "visualSummaryShort": "The card showcases a cartoonish green flame character with expressive eyes and a cheeky smile. It is set against a vibrant green background, surrounded by playful green fire elements.",
+  "visualKeywords": [
+    "green flame",
+    "cartoonish",
+    "expressive eyes",
+    "cheeky smile",
+    "vibrant background",
+    "whimsical",
+    "bold style",
+    "minimalist",
+    "clean lines",
+    "green shades"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "green flame",
+    "cartoonish",
+    "expressive eyes",
+    "cheeky smile",
+    "vibrant background",
+    "whimsical",
+    "bold style",
+    "minimalist",
+    "clean lines",
+    "green shades"
+  ],
+  "embeddingInput": "FAKEGREEN (Fake Rares) - Series 3 Card 49\nArtist: Jum Napat\nSupply 100 Issued November 2021\nOn-card text: none detected\nVisual summary: The card features a playful, cartoonish green flame character with big, expressive eyes and a cheeky smile. It's surrounded by similar green fire elements and set against a vibrant green background, creating a harmonious yet whimsical visual. The artistic style is bold and simple, with clean lines and a minimalist color palette centered around various shades of green.\nMemetic references: Possible nod to the \"this is fine\" meme, with the flames symbolizing calm chaos.; The use of green ties into themes of eco-friendliness or \"green energy.\"; The character’s expression might reference cheeky or mischievous meme faces.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEGREEN#memetic",
+      "label": "Memetic references",
+      "text": "Possible nod to the \"this is fine\" meme, with the flames symbolizing calm chaos.\nThe use of green ties into themes of eco-friendliness or \"green energy.\"\nThe character’s expression might reference cheeky or mischievous meme faces.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEGREEN#visual",
+      "label": "Visual summary",
+      "text": "The card features a playful, cartoonish green flame character with big, expressive eyes and a cheeky smile. It's surrounded by similar green fire elements and set against a vibrant green background, creating a harmonious yet whimsical visual. The artistic style is bold and simple, with clean lines and a minimalist color palette centered around various shades of green.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEGREEN#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a playful, cartoonish green flame character with big, expressive eyes and a cheeky smile. It's surrounded by similar green fire elements and set against a vibrant green background, creating a harmonious yet whimsical visual. The artistic style is bold and simple, with clean lines and a minimalist color palette centered around various shades of green.\n\n🧬 **MEMETIC DNA:**\n- Possible nod to the \"this is fine\" meme, with the flames symbolizing calm chaos.\n- The use of green ties into themes of eco-friendliness or \"green energy.\"\n- The character’s expression might reference cheeky or mischievous meme faces.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.511Z",
+  "sourceFactVersion": 1
+}

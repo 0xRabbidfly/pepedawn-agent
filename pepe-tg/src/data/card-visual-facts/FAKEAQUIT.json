@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "asset": "FAKEAQUIT",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 16,
+  "artist": "VVD",
+  "supply": 32,
+  "issuance": "February 2024",
+  "textOnCard": [
+    "FAKE ACQUITTAL",
+    "ATK = 0 SPD = 100 EVADE = 100",
+    "If the gloves are green he cant be mean"
+  ],
+  "memeticReferences": [
+    "Reference to the famous \"If it doesn't fit, you must acquit\" trial moment.",
+    "Pepe the Frog color nod with the green gloves.",
+    "A play on courtroom drama with a humorous twist."
+  ],
+  "visualSummary": "The card features a man in a suit trying on a pair of oversized green gloves, set in what looks like a courtroom. The gloves are cartoonishly large and bright green, contrasting with the formal setting. The color palette is mostly neutral, with the green gloves providing a pop of color, and the style is a humorous edit of a serious photograph.",
+  "visualSummaryShort": "The card depicts a man in a suit humorously trying on oversized green gloves in a courtroom setting. The bright green gloves stand out against the neutral color palette, adding a whimsical touch to the serious environment.",
+  "visualKeywords": [
+    "courtroom",
+    "suit",
+    "green gloves",
+    "humor",
+    "neutral colors",
+    "cartoonish",
+    "contrast",
+    "formal",
+    "whimsical"
+  ],
+  "textKeywords": [
+    "acquittal",
+    "atk",
+    "spd",
+    "100",
+    "evade",
+    "gloves",
+    "are",
+    "green",
+    "cant",
+    "mean"
+  ],
+  "keywords": [
+    "courtroom",
+    "suit",
+    "green gloves",
+    "humor",
+    "neutral colors",
+    "cartoonish",
+    "contrast",
+    "formal",
+    "whimsical",
+    "acquittal",
+    "atk",
+    "spd",
+    "100",
+    "evade",
+    "gloves",
+    "are",
+    "green",
+    "cant",
+    "mean"
+  ],
+  "embeddingInput": "FAKEAQUIT (Fake Rares) - Series 17 Card 16\nArtist: VVD\nSupply 32 Issued February 2024\nOn-card text: FAKE ACQUITTAL | ATK = 0 SPD = 100 EVADE = 100 | If the gloves are green he cant be mean\nVisual summary: The card features a man in a suit trying on a pair of oversized green gloves, set in what looks like a courtroom. The gloves are cartoonishly large and bright green, contrasting with the formal setting. The color palette is mostly neutral, with the green gloves providing a pop of color, and the style is a humorous edit of a serious photograph.\nMemetic references: Reference to the famous \"If it doesn't fit, you must acquit\" trial moment.; Pepe the Frog color nod with the green gloves.; A play on courtroom drama with a humorous twist.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEAQUIT#text",
+      "label": "On-card text",
+      "text": "FAKE ACQUITTAL | ATK = 0 SPD = 100 EVADE = 100 | If the gloves are green he cant be mean",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEAQUIT#memetic",
+      "label": "Memetic references",
+      "text": "Reference to the famous \"If it doesn't fit, you must acquit\" trial moment.\nPepe the Frog color nod with the green gloves.\nA play on courtroom drama with a humorous twist.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEAQUIT#visual",
+      "label": "Visual summary",
+      "text": "The card features a man in a suit trying on a pair of oversized green gloves, set in what looks like a courtroom. The gloves are cartoonishly large and bright green, contrasting with the formal setting. The color palette is mostly neutral, with the green gloves providing a pop of color, and the style is a humorous edit of a serious photograph.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEAQUIT#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE ACQUITTAL  \nATK = 0 SPD = 100 EVADE = 100  \nIf the gloves are green he cant be mean\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a man in a suit trying on a pair of oversized green gloves, set in what looks like a courtroom. The gloves are cartoonishly large and bright green, contrasting with the formal setting. The color palette is mostly neutral, with the green gloves providing a pop of color, and the style is a humorous edit of a serious photograph.\n\n🧬 **MEMETIC DNA:**\n- Reference to the famous \"If it doesn't fit, you must acquit\" trial moment.\n- Pepe the Frog color nod with the green gloves.\n- A play on courtroom drama with a humorous twist.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.449Z",
+  "sourceFactVersion": 1
+}

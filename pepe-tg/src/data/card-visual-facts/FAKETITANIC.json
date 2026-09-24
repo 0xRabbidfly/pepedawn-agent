@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "asset": "FAKETITANIC",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 18,
+  "artist": "ACK",
+  "supply": 100,
+  "issuance": "February 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog sitting calmly evokes classic meme culture.",
+    "Titanic reference symbolizes epic fails or market crashes.",
+    "NFT art present on the raft connects to crypto culture.",
+    "The lone figure with a computer hints at the solitary crypto trader or hodler."
+  ],
+  "visualSummary": "The scene depicts a dramatic night with a large ship, reminiscent of the Titanic, sinking into the ocean. A lone figure, resembling Pepe the Frog, sits on a wooden raft, accompanied by a computer and what appears to be NFT art, under a starry sky. The color palette includes dark blues, blacks, and browns, contrasting with the bright lights of the sinking ship.",
+  "visualSummaryShort": "A dramatic night scene shows a large ship sinking into the ocean, with a lone figure resembling Pepe the Frog on a raft. The color palette features dark blues and blacks, illuminated by the bright lights of the ship.",
+  "visualKeywords": [
+    "sinking ship",
+    "pepe the frog",
+    "raft",
+    "starry sky",
+    "dark blues",
+    "ocean",
+    "nft art",
+    "night",
+    "contrast",
+    "dramatic"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "sinking ship",
+    "pepe the frog",
+    "raft",
+    "starry sky",
+    "dark blues",
+    "ocean",
+    "nft art",
+    "night",
+    "contrast",
+    "dramatic"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "FAKETITANIC (Fake Rares) - Series 6 Card 18\nArtist: ACK\nSupply 100 Issued February 2022\nOn-card text: none detected\nVisual summary: The scene depicts a dramatic night with a large ship, reminiscent of the Titanic, sinking into the ocean. A lone figure, resembling Pepe the Frog, sits on a wooden raft, accompanied by a computer and what appears to be NFT art, under a starry sky. The color palette includes dark blues, blacks, and browns, contrasting with the bright lights of the sinking ship.\nMemetic references: Pepe the Frog sitting calmly evokes classic meme culture.; Titanic reference symbolizes epic fails or market crashes.; NFT art present on the raft connects to crypto culture.; The lone figure with a computer hints at the solitary crypto trader or hodler.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKETITANIC#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog sitting calmly evokes classic meme culture.\nTitanic reference symbolizes epic fails or market crashes.\nNFT art present on the raft connects to crypto culture.\nThe lone figure with a computer hints at the solitary crypto trader or hodler.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKETITANIC#visual",
+      "label": "Visual summary",
+      "text": "The scene depicts a dramatic night with a large ship, reminiscent of the Titanic, sinking into the ocean. A lone figure, resembling Pepe the Frog, sits on a wooden raft, accompanied by a computer and what appears to be NFT art, under a starry sky. The color palette includes dark blues, blacks, and browns, contrasting with the bright lights of the sinking ship.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKETITANIC#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe scene depicts a dramatic night with a large ship, reminiscent of the Titanic, sinking into the ocean. A lone figure, resembling Pepe the Frog, sits on a wooden raft, accompanied by a computer and what appears to be NFT art, under a starry sky. The color palette includes dark blues, blacks, and browns, contrasting with the bright lights of the sinking ship.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog sitting calmly evokes classic meme culture.\n- Titanic reference symbolizes epic fails or market crashes.\n- NFT art present on the raft connects to crypto culture.\n- The lone figure with a computer hints at the solitary crypto trader or hodler.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:30:12.816Z"
+}

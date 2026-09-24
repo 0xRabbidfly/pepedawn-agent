@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "asset": "FAIKUPEPE",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 41,
+  "artist": "TKY",
+  "supply": 99,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "FAIKU PEPE",
+    "Odl pnod",
+    "Peeps jmupde im",
+    "Suond ov wtaer."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference, a staple in meme culture.",
+    "The haiku text parody adds a clever twist, referencing poetic forms.",
+    "Censor bars play on themes of anonymity and privacy in crypto culture.",
+    "The distorted text humorously mimics typos often seen in online memes."
+  ],
+  "visualSummary": "The card features a cartoonish depiction of a figure with a distorted face, covered by black censor bars, wearing a pinkish uniform against a backdrop of a blue wave pattern. A green silhouette of Pepe appears in the water, adding a whimsical touch. The color palette is bold with blues, greens, and pinks creating a vibrant, surreal scene.",
+  "visualSummaryShort": "The card showcases a cartoonish figure with a distorted face obscured by black censor bars, dressed in a pinkish uniform. A whimsical green silhouette of Pepe is set against a vibrant blue wave pattern, creating a surreal atmosphere.",
+  "visualKeywords": [
+    "cartoonish",
+    "distorted face",
+    "censor bars",
+    "pink uniform",
+    "blue waves",
+    "green silhouette",
+    "vibrant",
+    "whimsical"
+  ],
+  "textKeywords": [
+    "faiku",
+    "odl",
+    "pnod",
+    "peeps",
+    "jmupde",
+    "suond",
+    "wtaer"
+  ],
+  "keywords": [
+    "cartoonish",
+    "distorted face",
+    "censor bars",
+    "pink uniform",
+    "blue waves",
+    "green silhouette",
+    "vibrant",
+    "whimsical",
+    "faiku",
+    "odl",
+    "pnod",
+    "peeps",
+    "jmupde",
+    "suond",
+    "wtaer"
+  ],
+  "embeddingInput": "FAIKUPEPE (Fake Rares) - Series 2 Card 41\nArtist: TKY\nSupply 99 Issued October 2021\nOn-card text: FAIKU PEPE | Odl pnod | Peeps jmupde im | Suond ov wtaer.\nVisual summary: The card features a cartoonish depiction of a figure with a distorted face, covered by black censor bars, wearing a pinkish uniform against a backdrop of a blue wave pattern. A green silhouette of Pepe appears in the water, adding a whimsical touch. The color palette is bold with blues, greens, and pinks creating a vibrant, surreal scene.\nMemetic references: Pepe the Frog reference, a staple in meme culture.; The haiku text parody adds a clever twist, referencing poetic forms.; Censor bars play on themes of anonymity and privacy in crypto culture.; The distorted text humorously mimics typos often seen in online memes.",
+  "embeddingBlocks": [
+    {
+      "id": "FAIKUPEPE#text",
+      "label": "On-card text",
+      "text": "FAIKU PEPE | Odl pnod | Peeps jmupde im | Suond ov wtaer.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAIKUPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference, a staple in meme culture.\nThe haiku text parody adds a clever twist, referencing poetic forms.\nCensor bars play on themes of anonymity and privacy in crypto culture.\nThe distorted text humorously mimics typos often seen in online memes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAIKUPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a cartoonish depiction of a figure with a distorted face, covered by black censor bars, wearing a pinkish uniform against a backdrop of a blue wave pattern. A green silhouette of Pepe appears in the water, adding a whimsical touch. The color palette is bold with blues, greens, and pinks creating a vibrant, surreal scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAIKUPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAIKU PEPE  \nOdl pnod  \nPeeps jmupde im  \nSuond ov wtaer.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a cartoonish depiction of a figure with a distorted face, covered by black censor bars, wearing a pinkish uniform against a backdrop of a blue wave pattern. A green silhouette of Pepe appears in the water, adding a whimsical touch. The color palette is bold with blues, greens, and pinks creating a vibrant, surreal scene.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference, a staple in meme culture.\n- The haiku text parody adds a clever twist, referencing poetic forms.\n- Censor bars play on themes of anonymity and privacy in crypto culture.\n- The distorted text humorously mimics typos often seen in online memes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.433Z",
+  "sourceFactVersion": 1
+}

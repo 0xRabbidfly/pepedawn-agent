@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "asset": "GHOSTFAKE",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 1,
+  "artist": "Rare Scrilla and Ghostface Killah",
+  "supply": 21,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "GHOSTFAKE. SPEED 🥾 ATTACK 360° POWER."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in a luxurious setting.",
+    "References to laundering money with the washing machine.",
+    "80s",
+    "90s retro party scene vibes.",
+    "Elements of street and hip-hop culture."
+  ],
+  "visualSummary": "The card features a vibrant, cartoonish scene with Pepe the Frog in a lavish robe, exchanging bills with a female character seated on a washing machine. The color palette is bright, with blues, greens, and purples dominating. The bottom section showcases three figures in a fluorescent, psychedelic style, exuding a party vibe.",
+  "visualSummaryShort": "The card depicts a colorful, cartoonish scene featuring Pepe the Frog in a robe, interacting with a female character on a washing machine. The vibrant colors and psychedelic figures create a lively party atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "lavish robe",
+    "washing machine",
+    "bright colors",
+    "party vibe",
+    "fluorescent",
+    "psychedelic",
+    "blue",
+    "green",
+    "purple"
+  ],
+  "textKeywords": [
+    "ghostfake",
+    "speed",
+    "attack",
+    "360",
+    "power"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "lavish robe",
+    "washing machine",
+    "bright colors",
+    "party vibe",
+    "fluorescent",
+    "psychedelic",
+    "blue",
+    "green",
+    "purple",
+    "ghostfake",
+    "speed",
+    "attack",
+    "360",
+    "power"
+  ],
+  "embeddingInput": "GHOSTFAKE (Fake Rares) - Series 4 Card 1\nArtist: Rare Scrilla and Ghostface Killah\nSupply 21 Issued November 2021\nOn-card text: GHOSTFAKE. SPEED 🥾 ATTACK 360° POWER.\nVisual summary: The card features a vibrant, cartoonish scene with Pepe the Frog in a lavish robe, exchanging bills with a female character seated on a washing machine. The color palette is bright, with blues, greens, and purples dominating. The bottom section showcases three figures in a fluorescent, psychedelic style, exuding a party vibe.\nMemetic references: Pepe the Frog in a luxurious setting.; References to laundering money with the washing machine.; 80s; 90s retro party scene vibes.; Elements of street and hip-hop culture.",
+  "embeddingBlocks": [
+    {
+      "id": "GHOSTFAKE#text",
+      "label": "On-card text",
+      "text": "GHOSTFAKE. SPEED 🥾 ATTACK 360° POWER.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "GHOSTFAKE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in a luxurious setting.\nReferences to laundering money with the washing machine.\n80s\n90s retro party scene vibes.\nElements of street and hip-hop culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "GHOSTFAKE#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant, cartoonish scene with Pepe the Frog in a lavish robe, exchanging bills with a female character seated on a washing machine. The color palette is bright, with blues, greens, and purples dominating. The bottom section showcases three figures in a fluorescent, psychedelic style, exuding a party vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "GHOSTFAKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nGHOSTFAKE. SPEED 🥾 ATTACK 360° POWER.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant, cartoonish scene with Pepe the Frog in a lavish robe, exchanging bills with a female character seated on a washing machine. The color palette is bright, with blues, greens, and purples dominating. The bottom section showcases three figures in a fluorescent, psychedelic style, exuding a party vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in a luxurious setting.\n- References to laundering money with the washing machine.\n- 80s/90s retro party scene vibes.\n- Elements of street and hip-hop culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.655Z",
+  "sourceFactVersion": 1
+}

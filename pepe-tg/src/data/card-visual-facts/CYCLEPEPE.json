@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "asset": "CYCLEPEPE",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 11,
+  "artist": "Bitstradamus",
+  "supply": 100,
+  "issuance": "November 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog: Iconic meme character.",
+    "Diamond Hands: Crypto slang for holding assets through volatility.",
+    "UFO: Reference to out-of-this-world gains or losses.",
+    "Sports Car: Symbol of wealth and success in crypto culture.",
+    "Stock Chart: Represents market fluctuations.",
+    "Pineapple: Random meme element, possibly referencing internet culture."
+  ],
+  "visualSummary": "The card features a classic Pepe the Frog character crying while holding diamond hands, symbolizing strong holding in crypto terms. Above him, a UFO beams up a green sports car, suggesting an abduction. The background is a starry night sky with a jagged red line resembling a stock chart, along with a pineapple on the ground, adding a quirky touch.",
+  "visualSummaryShort": "The card depicts a crying Pepe the Frog character with diamond hands, set against a starry night sky. A UFO is beaming up a green sports car, while a pineapple adds a quirky element to the scene.",
+  "visualKeywords": [
+    "pepe the frog",
+    "ufo",
+    "green sports car",
+    "starry night",
+    "diamond hands",
+    "pineapple",
+    "red line",
+    "abduction"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "ufo",
+    "green sports car",
+    "starry night",
+    "diamond hands",
+    "pineapple",
+    "red line",
+    "abduction"
+  ],
+  "embeddingInput": "CYCLEPEPE (Fake Rares) - Series 12 Card 11\nArtist: Bitstradamus\nSupply 100 Issued November 2022\nOn-card text: none detected\nVisual summary: The card features a classic Pepe the Frog character crying while holding diamond hands, symbolizing strong holding in crypto terms. Above him, a UFO beams up a green sports car, suggesting an abduction. The background is a starry night sky with a jagged red line resembling a stock chart, along with a pineapple on the ground, adding a quirky touch.\nMemetic references: Pepe the Frog: Iconic meme character.; Diamond Hands: Crypto slang for holding assets through volatility.; UFO: Reference to out-of-this-world gains or losses.; Sports Car: Symbol of wealth and success in crypto culture.; Stock Chart: Represents market fluctuations.; Pineapple: Random meme element, possibly referencing internet culture.",
+  "embeddingBlocks": [
+    {
+      "id": "CYCLEPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog: Iconic meme character.\nDiamond Hands: Crypto slang for holding assets through volatility.\nUFO: Reference to out-of-this-world gains or losses.\nSports Car: Symbol of wealth and success in crypto culture.\nStock Chart: Represents market fluctuations.\nPineapple: Random meme element, possibly referencing internet culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "CYCLEPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a classic Pepe the Frog character crying while holding diamond hands, symbolizing strong holding in crypto terms. Above him, a UFO beams up a green sports car, suggesting an abduction. The background is a starry night sky with a jagged red line resembling a stock chart, along with a pineapple on the ground, adding a quirky touch.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "CYCLEPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a classic Pepe the Frog character crying while holding diamond hands, symbolizing strong holding in crypto terms. Above him, a UFO beams up a green sports car, suggesting an abduction. The background is a starry night sky with a jagged red line resembling a stock chart, along with a pineapple on the ground, adding a quirky touch.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog: Iconic meme character.\n- Diamond Hands: Crypto slang for holding assets through volatility.\n- UFO: Reference to out-of-this-world gains or losses.\n- Sports Car: Symbol of wealth and success in crypto culture.\n- Stock Chart: Represents market fluctuations.\n- Pineapple: Random meme element, possibly referencing internet culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.374Z",
+  "sourceFactVersion": 1
+}

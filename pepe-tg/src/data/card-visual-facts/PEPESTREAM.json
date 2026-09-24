@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "PEPESTREAM",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 30,
+  "artist": "burstMembrane",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog imagery, a staple of internet culture.",
+    "Visual nods to meme overload and the frenetic energy of online spaces.",
+    "Reflects the fluid and ever-changing nature of memes in crypto and NFT culture."
+  ],
+  "visualSummary": "The card features a dynamic and chaotic cascade of Pepe faces, each layered over the other in a psychedelic waterfall effect. The color palette is predominantly green with black shading, enhancing the trippy, animated flow. The overall style feels digital and hypnotic, capturing the essence of Pepe in a swirl of motion.",
+  "visualSummaryShort": "The card showcases a vibrant cascade of Pepe faces in a psychedelic waterfall effect. The dominant green color palette, combined with black shading, creates a hypnotic and dynamic visual experience.",
+  "visualKeywords": [
+    "pepe",
+    "waterfall",
+    "green",
+    "black",
+    "psychedelic",
+    "chaotic",
+    "digital",
+    "motion"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "waterfall",
+    "green",
+    "black",
+    "psychedelic",
+    "chaotic",
+    "digital",
+    "motion"
+  ],
+  "embeddingInput": "PEPESTREAM (Fake Rares) - Series 2 Card 30\nArtist: burstMembrane\nSupply 100 Issued October 2021\nOn-card text: none detected\nVisual summary: The card features a dynamic and chaotic cascade of Pepe faces, each layered over the other in a psychedelic waterfall effect. The color palette is predominantly green with black shading, enhancing the trippy, animated flow. The overall style feels digital and hypnotic, capturing the essence of Pepe in a swirl of motion.\nMemetic references: Classic Pepe the Frog imagery, a staple of internet culture.; Visual nods to meme overload and the frenetic energy of online spaces.; Reflects the fluid and ever-changing nature of memes in crypto and NFT culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPESTREAM#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog imagery, a staple of internet culture.\nVisual nods to meme overload and the frenetic energy of online spaces.\nReflects the fluid and ever-changing nature of memes in crypto and NFT culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPESTREAM#visual",
+      "label": "Visual summary",
+      "text": "The card features a dynamic and chaotic cascade of Pepe faces, each layered over the other in a psychedelic waterfall effect. The color palette is predominantly green with black shading, enhancing the trippy, animated flow. The overall style feels digital and hypnotic, capturing the essence of Pepe in a swirl of motion.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPESTREAM#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a dynamic and chaotic cascade of Pepe faces, each layered over the other in a psychedelic waterfall effect. The color palette is predominantly green with black shading, enhancing the trippy, animated flow. The overall style feels digital and hypnotic, capturing the essence of Pepe in a swirl of motion.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog imagery, a staple of internet culture.\n- Visual nods to meme overload and the frenetic energy of online spaces.\n- Reflects the fluid and ever-changing nature of memes in crypto and NFT culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.983Z",
+  "sourceFactVersion": 1
+}

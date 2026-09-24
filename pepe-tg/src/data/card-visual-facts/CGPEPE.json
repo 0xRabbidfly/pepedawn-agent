@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "CGPEPE",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 19,
+  "artist": "kr",
+  "supply": 100,
+  "issuance": "August 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog, a staple of meme culture.",
+    "Nighttime setting evokes a mystical, introspective mood.",
+    "Moonlit scene could reference \"moon\" in crypto lingo, symbolizing reaching new heights."
+  ],
+  "visualSummary": "The card features Pepe the Frog leaning against a tree under a bright, full moon. The scene is set at night with a dreamy, almost mystical vibe, using a palette of blues and greens. The artistic style combines whimsical and surreal elements, with intricate patterns on the tree and a serene landscape in the background.",
+  "visualSummaryShort": "The card depicts Pepe the Frog leaning against a tree under a bright full moon at night. The scene has a dreamy, mystical vibe with a palette of blues and greens.",
+  "visualKeywords": [
+    "pepe the frog",
+    "tree",
+    "full moon",
+    "night",
+    "dreamy",
+    "mystical",
+    "blue palette",
+    "green palette",
+    "surreal",
+    "intricate patterns"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "tree",
+    "full moon",
+    "night",
+    "dreamy",
+    "mystical",
+    "blue palette",
+    "green palette",
+    "surreal",
+    "intricate patterns"
+  ],
+  "embeddingInput": "CGPEPE (Fake Rares) - Series 10 Card 19\nArtist: kr\nSupply 100 Issued August 2022\nOn-card text: none detected\nVisual summary: The card features Pepe the Frog leaning against a tree under a bright, full moon. The scene is set at night with a dreamy, almost mystical vibe, using a palette of blues and greens. The artistic style combines whimsical and surreal elements, with intricate patterns on the tree and a serene landscape in the background.\nMemetic references: Pepe the Frog, a staple of meme culture.; Nighttime setting evokes a mystical, introspective mood.; Moonlit scene could reference \"moon\" in crypto lingo, symbolizing reaching new heights.",
+  "embeddingBlocks": [
+    {
+      "id": "CGPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, a staple of meme culture.\nNighttime setting evokes a mystical, introspective mood.\nMoonlit scene could reference \"moon\" in crypto lingo, symbolizing reaching new heights.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "CGPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog leaning against a tree under a bright, full moon. The scene is set at night with a dreamy, almost mystical vibe, using a palette of blues and greens. The artistic style combines whimsical and surreal elements, with intricate patterns on the tree and a serene landscape in the background.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "CGPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog leaning against a tree under a bright, full moon. The scene is set at night with a dreamy, almost mystical vibe, using a palette of blues and greens. The artistic style combines whimsical and surreal elements, with intricate patterns on the tree and a serene landscape in the background.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, a staple of meme culture.\n- Nighttime setting evokes a mystical, introspective mood.\n- Moonlit scene could reference \"moon\" in crypto lingo, symbolizing reaching new heights.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.351Z",
+  "sourceFactVersion": 1
+}

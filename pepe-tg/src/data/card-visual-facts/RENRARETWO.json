@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "asset": "RENRARETWO",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 32,
+  "artist": "Michael Naples",
+  "supply": 21,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "RENRARETWO"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure, a classic meme icon.",
+    "Renaissance art style nods to high culture and sophistication.",
+    "Combines meme culture with historical art, creating a humorous juxtaposition."
+  ],
+  "visualSummary": "The card features Pepe the Frog dressed in a richly detailed Renaissance-style outfit, complete with ornate patterns and a high collar. The color palette is dominated by dark, muted tones with deep greens, blacks, and golds, giving it a classic and sophisticated look. The artistic style mimics oil painting, adding a touch of historical elegance to the meme figure.",
+  "visualSummaryShort": "The card showcases Pepe the Frog in an elaborate Renaissance outfit with intricate patterns. The dark, muted color palette and oil painting style create a classic and sophisticated atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "renaissance outfit",
+    "ornate patterns",
+    "dark tones",
+    "oil painting",
+    "historical elegance"
+  ],
+  "textKeywords": [
+    "renraretwo"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "renaissance outfit",
+    "ornate patterns",
+    "dark tones",
+    "oil painting",
+    "historical elegance",
+    "renraretwo"
+  ],
+  "embeddingInput": "RENRARETWO (Fake Rares) - Series 6 Card 32\nArtist: Michael Naples\nSupply 21 Issued February 2022\nOn-card text: RENRARETWO\nVisual summary: The card features Pepe the Frog dressed in a richly detailed Renaissance-style outfit, complete with ornate patterns and a high collar. The color palette is dominated by dark, muted tones with deep greens, blacks, and golds, giving it a classic and sophisticated look. The artistic style mimics oil painting, adding a touch of historical elegance to the meme figure.\nMemetic references: Pepe the Frog as a central figure, a classic meme icon.; Renaissance art style nods to high culture and sophistication.; Combines meme culture with historical art, creating a humorous juxtaposition.",
+  "embeddingBlocks": [
+    {
+      "id": "RENRARETWO#text",
+      "label": "On-card text",
+      "text": "RENRARETWO",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "RENRARETWO#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure, a classic meme icon.\nRenaissance art style nods to high culture and sophistication.\nCombines meme culture with historical art, creating a humorous juxtaposition.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "RENRARETWO#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog dressed in a richly detailed Renaissance-style outfit, complete with ornate patterns and a high collar. The color palette is dominated by dark, muted tones with deep greens, blacks, and golds, giving it a classic and sophisticated look. The artistic style mimics oil painting, adding a touch of historical elegance to the meme figure.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "RENRARETWO#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nRENRARETWO\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog dressed in a richly detailed Renaissance-style outfit, complete with ornate patterns and a high collar. The color palette is dominated by dark, muted tones with deep greens, blacks, and golds, giving it a classic and sophisticated look. The artistic style mimics oil painting, adding a touch of historical elegance to the meme figure.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure, a classic meme icon.\n- Renaissance art style nods to high culture and sophistication.\n- Combines meme culture with historical art, creating a humorous juxtaposition.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.079Z",
+  "sourceFactVersion": 1
+}

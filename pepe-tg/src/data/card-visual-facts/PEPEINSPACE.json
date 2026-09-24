@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PEPEINSPACE",
+  "collection": "Fake Rares",
+  "series": 2,
+  "cardNumber": 31,
+  "artist": "Mr. Million Miles Away",
+  "supply": 100,
+  "issuance": "October 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Classic Pepe the Frog character, a staple of internet meme culture.",
+    "Cosmic theme reminiscent of space exploration and sci-fi vibes.",
+    "Lightning bolts suggest a nod to powerful energy or \"lightning network\" in crypto culture."
+  ],
+  "visualSummary": "The card features a muscular Pepe the Frog striking a dramatic pose against a cosmic backdrop. The color palette is vibrant, with purples, blues, and greens dominating the space theme, while Pepe is dressed in stylish shorts, a sleeveless vest, and sneakers. Lightning bolts crackle in the starry sky, adding an electrifying energy to the scene.",
+  "visualSummaryShort": "The card showcases a muscular Pepe the Frog in a dynamic pose set against a vibrant cosmic backdrop. The scene is filled with electric lightning bolts and a rich color palette of purples, blues, and greens.",
+  "visualKeywords": [
+    "pepe the frog",
+    "cosmic",
+    "lightning",
+    "vibrant colors",
+    "muscular",
+    "dramatic pose",
+    "shorts",
+    "sneakers",
+    "starry sky",
+    "electric energy"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe the frog",
+    "cosmic",
+    "lightning",
+    "vibrant colors",
+    "muscular",
+    "dramatic pose",
+    "shorts",
+    "sneakers",
+    "starry sky",
+    "electric energy"
+  ],
+  "embeddingInput": "PEPEINSPACE (Fake Rares) - Series 2 Card 31\nArtist: Mr. Million Miles Away\nSupply 100 Issued October 2021\nOn-card text: none detected\nVisual summary: The card features a muscular Pepe the Frog striking a dramatic pose against a cosmic backdrop. The color palette is vibrant, with purples, blues, and greens dominating the space theme, while Pepe is dressed in stylish shorts, a sleeveless vest, and sneakers. Lightning bolts crackle in the starry sky, adding an electrifying energy to the scene.\nMemetic references: Classic Pepe the Frog character, a staple of internet meme culture.; Cosmic theme reminiscent of space exploration and sci-fi vibes.; Lightning bolts suggest a nod to powerful energy or \"lightning network\" in crypto culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEINSPACE#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog character, a staple of internet meme culture.\nCosmic theme reminiscent of space exploration and sci-fi vibes.\nLightning bolts suggest a nod to powerful energy or \"lightning network\" in crypto culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEINSPACE#visual",
+      "label": "Visual summary",
+      "text": "The card features a muscular Pepe the Frog striking a dramatic pose against a cosmic backdrop. The color palette is vibrant, with purples, blues, and greens dominating the space theme, while Pepe is dressed in stylish shorts, a sleeveless vest, and sneakers. Lightning bolts crackle in the starry sky, adding an electrifying energy to the scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEINSPACE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a muscular Pepe the Frog striking a dramatic pose against a cosmic backdrop. The color palette is vibrant, with purples, blues, and greens dominating the space theme, while Pepe is dressed in stylish shorts, a sleeveless vest, and sneakers. Lightning bolts crackle in the starry sky, adding an electrifying energy to the scene.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog character, a staple of internet meme culture.\n- Cosmic theme reminiscent of space exploration and sci-fi vibes.\n- Lightning bolts suggest a nod to powerful energy or \"lightning network\" in crypto culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.900Z",
+  "sourceFactVersion": 1
+}

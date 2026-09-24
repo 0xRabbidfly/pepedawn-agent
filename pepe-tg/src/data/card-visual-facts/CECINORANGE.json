@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "asset": "CECINORANGE",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 24,
+  "artist": "ciobo",
+  "supply": 42,
+  "issuance": "January 2023",
+  "textOnCard": [
+    "Ceci n'est pas une orange"
+  ],
+  "memeticReferences": [
+    "References René Magritte’s famous painting \"The Treachery of Images\" (\"Ceci n'est pas une pipe\").",
+    "Classic Pepe the Frog meme character.",
+    "Plays on the theme of visual perception and reality, common in meme culture.",
+    "Tongue-in-cheek humor typical in the NFT space."
+  ],
+  "visualSummary": "The card features a classic Pepe the Frog holding an orange with a green leaf attached. The background is a minimalist beige, drawing inspiration from René Magritte's surrealist style. The overall color palette is earthy with greens and oranges, emphasizing the humorous twist on a famous art piece.",
+  "visualSummaryShort": "The card showcases Pepe the Frog humorously holding an orange with a green leaf. The minimalist beige background and earthy color palette evoke a surrealist art style.",
+  "visualKeywords": [
+    "pepe the frog",
+    "orange",
+    "green leaf",
+    "beige background",
+    "earthy colors",
+    "surrealism",
+    "humor"
+  ],
+  "textKeywords": [
+    "ceci",
+    "est",
+    "pas",
+    "une",
+    "orange"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "orange",
+    "green leaf",
+    "beige background",
+    "earthy colors",
+    "surrealism",
+    "humor",
+    "ceci",
+    "est",
+    "pas",
+    "une"
+  ],
+  "embeddingInput": "CECINORANGE (Fake Rares) - Series 13 Card 24\nArtist: ciobo\nSupply 42 Issued January 2023\nOn-card text: Ceci n'est pas une orange\nVisual summary: The card features a classic Pepe the Frog holding an orange with a green leaf attached. The background is a minimalist beige, drawing inspiration from René Magritte's surrealist style. The overall color palette is earthy with greens and oranges, emphasizing the humorous twist on a famous art piece.\nMemetic references: References René Magritte’s famous painting \"The Treachery of Images\" (\"Ceci n'est pas une pipe\").; Classic Pepe the Frog meme character.; Plays on the theme of visual perception and reality, common in meme culture.; Tongue-in-cheek humor typical in the NFT space.",
+  "embeddingBlocks": [
+    {
+      "id": "CECINORANGE#text",
+      "label": "On-card text",
+      "text": "Ceci n'est pas une orange",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "CECINORANGE#memetic",
+      "label": "Memetic references",
+      "text": "References René Magritte’s famous painting \"The Treachery of Images\" (\"Ceci n'est pas une pipe\").\nClassic Pepe the Frog meme character.\nPlays on the theme of visual perception and reality, common in meme culture.\nTongue-in-cheek humor typical in the NFT space.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "CECINORANGE#visual",
+      "label": "Visual summary",
+      "text": "The card features a classic Pepe the Frog holding an orange with a green leaf attached. The background is a minimalist beige, drawing inspiration from René Magritte's surrealist style. The overall color palette is earthy with greens and oranges, emphasizing the humorous twist on a famous art piece.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "CECINORANGE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nCeci n'est pas une orange\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a classic Pepe the Frog holding an orange with a green leaf attached. The background is a minimalist beige, drawing inspiration from René Magritte's surrealist style. The overall color palette is earthy with greens and oranges, emphasizing the humorous twist on a famous art piece.\n\n🧬 **MEMETIC DNA:**\n- References René Magritte’s famous painting \"The Treachery of Images\" (\"Ceci n'est pas une pipe\").\n- Classic Pepe the Frog meme character.\n- Plays on the theme of visual perception and reality, common in meme culture.\n- Tongue-in-cheek humor typical in the NFT space.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.348Z",
+  "sourceFactVersion": 1
+}

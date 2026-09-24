@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "asset": "PEPEDRE",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 45,
+  "artist": "mellow",
+  "supply": 100,
+  "issuance": "November 2021",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The visual details of the card are not provided. Therefore, no specific traits or keywords can be identified.",
+  "visualKeywords": [],
+  "textKeywords": [],
+  "keywords": [],
+  "embeddingInput": "PEPEDRE (Fake Rares) - Series 4 Card 45\nArtist: mellow\nSupply 100 Issued November 2021\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEDRE#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with identifying or analyzing this image.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.871Z",
+  "sourceFactVersion": 1
+}

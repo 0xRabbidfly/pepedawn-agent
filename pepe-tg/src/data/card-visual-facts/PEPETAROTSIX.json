@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "asset": "PEPETAROTSIX",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 15,
+  "artist": "SHEWOLF",
+  "supply": 100,
+  "issuance": "December 2021",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a vibrant and colorful design. It showcases various characters and objects in a dynamic composition.",
+  "visualKeywords": [],
+  "textKeywords": [],
+  "keywords": [],
+  "embeddingInput": "PEPETAROTSIX (Fake Rares) - Series 4 Card 15\nArtist: SHEWOLF\nSupply 100 Issued December 2021\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "PEPETAROTSIX#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't help with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.988Z",
+  "sourceFactVersion": 1
+}

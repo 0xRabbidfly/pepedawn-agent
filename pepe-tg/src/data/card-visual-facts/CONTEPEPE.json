@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "CONTEPEPE",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 44,
+  "artist": "Nikolina Petolas",
+  "supply": 61,
+  "issuance": "September 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as a central character, a staple in meme culture.",
+    "Elements reminiscent of Alice in Wonderland, with a fantastical garden and whimsical creatures.",
+    "References to nature and environmental motifs, blending the organic with the surreal."
+  ],
+  "visualSummary": "This card features a surreal landscape with a humanoid figure that has a Pepe frog face, adorned with a lush, green afro made of foliage. The setting is whimsical, combining elements of nature and fantasy, with vibrant pink flamingos and candy-like structures. The color palette is rich with greens and blues, evoking a mystical garden scene.",
+  "visualSummaryShort": "The card showcases a surreal landscape with a humanoid figure featuring a Pepe frog face and a green afro made of foliage. The whimsical setting includes vibrant pink flamingos and candy-like structures, creating a mystical garden atmosphere.",
+  "visualKeywords": [
+    "surreal",
+    "humanoid",
+    "pepe frog",
+    "green afro",
+    "flamingos",
+    "candy structures",
+    "nature",
+    "fantasy",
+    "vibrant colors",
+    "mystical garden"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "surreal",
+    "humanoid",
+    "pepe frog",
+    "green afro",
+    "flamingos",
+    "candy structures",
+    "nature",
+    "fantasy",
+    "vibrant colors",
+    "mystical garden"
+  ],
+  "embeddingInput": "CONTEPEPE (Fake Rares) - Series 11 Card 44\nArtist: Nikolina Petolas\nSupply 61 Issued September 2022\nOn-card text: none detected\nVisual summary: This card features a surreal landscape with a humanoid figure that has a Pepe frog face, adorned with a lush, green afro made of foliage. The setting is whimsical, combining elements of nature and fantasy, with vibrant pink flamingos and candy-like structures. The color palette is rich with greens and blues, evoking a mystical garden scene.\nMemetic references: Pepe the Frog as a central character, a staple in meme culture.; Elements reminiscent of Alice in Wonderland, with a fantastical garden and whimsical creatures.; References to nature and environmental motifs, blending the organic with the surreal.",
+  "embeddingBlocks": [
+    {
+      "id": "CONTEPEPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central character, a staple in meme culture.\nElements reminiscent of Alice in Wonderland, with a fantastical garden and whimsical creatures.\nReferences to nature and environmental motifs, blending the organic with the surreal.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "CONTEPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card features a surreal landscape with a humanoid figure that has a Pepe frog face, adorned with a lush, green afro made of foliage. The setting is whimsical, combining elements of nature and fantasy, with vibrant pink flamingos and candy-like structures. The color palette is rich with greens and blues, evoking a mystical garden scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "CONTEPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a surreal landscape with a humanoid figure that has a Pepe frog face, adorned with a lush, green afro made of foliage. The setting is whimsical, combining elements of nature and fantasy, with vibrant pink flamingos and candy-like structures. The color palette is rich with greens and blues, evoking a mystical garden scene.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central character, a staple in meme culture.\n- Elements reminiscent of Alice in Wonderland, with a fantastical garden and whimsical creatures.\n- References to nature and environmental motifs, blending the organic with the surreal.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.364Z",
+  "sourceFactVersion": 1
+}

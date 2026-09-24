@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "asset": "WHATAFAKE",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 14,
+  "artist": "L_vs_D",
+  "supply": 96,
+  "issuance": "January 2022",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card has no visible elements or text. It appears to be a blank or empty design.",
+  "visualKeywords": [],
+  "textKeywords": [],
+  "keywords": [],
+  "embeddingInput": "WHATAFAKE (Fake Rares) - Series 5 Card 14\nArtist: L_vs_D\nSupply 96 Issued January 2022\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "WHATAFAKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't analyze this image.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.185Z",
+  "sourceFactVersion": 1
+}

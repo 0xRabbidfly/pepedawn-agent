@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "asset": "FAKEASF",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 1,
+  "artist": "Community Created",
+  "supply": 1030,
+  "issuance": "September 2021",
+  "textOnCard": [
+    "FAKE ASF. We came, we saw, we faked it."
+  ],
+  "memeticReferences": [
+    "Pixelated Pepe as \"The Mask\"",
+    "Bitcoin symbols",
+    "McAfee antivirus reference",
+    "Illuminati eye symbol",
+    "Multiple meme faces and heads"
+  ],
+  "visualSummary": "This card is a chaotic blend of vibrant colors, featuring a pixelated Pepe dressed as the iconic \"The Mask\" character in a yellow suit. The background is a mix of Bitcoin symbols and cosmic swirls, with various meme heads and objects like a McAfee protection box scattered around. The composition is a collage of absurdity and retro pixel art, creating a playful yet chaotic aesthetic.",
+  "visualSummaryShort": "The card showcases a pixelated Pepe in a yellow suit reminiscent of 'The Mask', surrounded by a chaotic mix of Bitcoin symbols and cosmic swirls. The vibrant colors and absurd objects create a playful and retro aesthetic.",
+  "visualKeywords": [
+    "pixelated",
+    "yellow suit",
+    "bitcoin",
+    "cosmic",
+    "meme heads",
+    "chaotic",
+    "retro",
+    "collage",
+    "absurdity",
+    "vibrant colors"
+  ],
+  "textKeywords": [
+    "asf",
+    "came",
+    "saw",
+    "faked"
+  ],
+  "keywords": [
+    "pixelated",
+    "yellow suit",
+    "bitcoin",
+    "cosmic",
+    "meme heads",
+    "chaotic",
+    "retro",
+    "collage",
+    "absurdity",
+    "vibrant colors",
+    "asf",
+    "came",
+    "saw",
+    "faked"
+  ],
+  "embeddingInput": "FAKEASF (Fake Rares) - Series 1 Card 1\nArtist: Community Created\nSupply 1030 Issued September 2021\nOn-card text: FAKE ASF. We came, we saw, we faked it.\nVisual summary: This card is a chaotic blend of vibrant colors, featuring a pixelated Pepe dressed as the iconic \"The Mask\" character in a yellow suit. The background is a mix of Bitcoin symbols and cosmic swirls, with various meme heads and objects like a McAfee protection box scattered around. The composition is a collage of absurdity and retro pixel art, creating a playful yet chaotic aesthetic.\nMemetic references: Pixelated Pepe as \"The Mask\"; Bitcoin symbols; McAfee antivirus reference; Illuminati eye symbol; Multiple meme faces and heads",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEASF#text",
+      "label": "On-card text",
+      "text": "FAKE ASF. We came, we saw, we faked it.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEASF#memetic",
+      "label": "Memetic references",
+      "text": "Pixelated Pepe as \"The Mask\"\nBitcoin symbols\nMcAfee antivirus reference\nIlluminati eye symbol\nMultiple meme faces and heads",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEASF#visual",
+      "label": "Visual summary",
+      "text": "This card is a chaotic blend of vibrant colors, featuring a pixelated Pepe dressed as the iconic \"The Mask\" character in a yellow suit. The background is a mix of Bitcoin symbols and cosmic swirls, with various meme heads and objects like a McAfee protection box scattered around. The composition is a collage of absurdity and retro pixel art, creating a playful yet chaotic aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEASF#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE ASF. We came, we saw, we faked it.\n\n🎨 **VISUAL BREAKDOWN:**\nThis card is a chaotic blend of vibrant colors, featuring a pixelated Pepe dressed as the iconic \"The Mask\" character in a yellow suit. The background is a mix of Bitcoin symbols and cosmic swirls, with various meme heads and objects like a McAfee protection box scattered around. The composition is a collage of absurdity and retro pixel art, creating a playful yet chaotic aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Pixelated Pepe as \"The Mask\"\n- Bitcoin symbols\n- McAfee antivirus reference\n- Illuminati eye symbol\n- Multiple meme faces and heads",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.451Z",
+  "sourceFactVersion": 1
+}

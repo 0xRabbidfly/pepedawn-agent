@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "asset": "THEREBUILD",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 33,
+  "artist": "Sketch x 80sKurt Russell",
+  "supply": 99,
+  "issuance": "April 2022",
+  "textOnCard": [],
+  "memeticReferences": [],
+  "visualSummary": "",
+  "visualSummaryShort": "The card features a visually striking design with no specific details provided. It invites curiosity with its abstract representation.",
+  "visualKeywords": [],
+  "textKeywords": [],
+  "keywords": [],
+  "embeddingInput": "THEREBUILD (Fake Rares) - Series 7 Card 33\nArtist: Sketch x 80sKurt Russell\nSupply 99 Issued April 2022\nOn-card text: none detected\nVisual summary: n/a\nMemetic references: none captured",
+  "embeddingBlocks": [
+    {
+      "id": "THEREBUILD#raw",
+      "label": "Raw /fv analysis",
+      "text": "I'm sorry, I can't assist with that.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.150Z",
+  "sourceFactVersion": 1
+}

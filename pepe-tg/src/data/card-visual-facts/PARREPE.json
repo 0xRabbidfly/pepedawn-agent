@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "asset": "PARREPE",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 37,
+  "artist": "Rollah",
+  "supply": 615,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "PARREPE",
+    "Status: Just Arrived",
+    "Knowledge: Infinite"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a parrot references meme culture, blending internet humor with NFT artistry.",
+    "\"FAKE FAKE FAKE\" text plays on the concept of authenticity in the crypto space.",
+    "Symbols like the piggy bank and DCA note nod to financial strategies and crypto investment culture."
+  ],
+  "visualSummary": "The card features a colorful Pepe the Frog dressed as a parrot, sitting inside a vintage-style birdcage. The background is a textured, sepia-toned pattern, lending an antique feel to the piece. Scattered around are icons like a DCA (Dollar Cost Averaging) note, a broken piggy bank, and a carton labeled \"SCRAM!\", all in a comic book style with a mix of vibrant and muted tones.",
+  "visualSummaryShort": "The card showcases a colorful Pepe the Frog as a parrot inside a vintage birdcage, set against a sepia-toned background. Comic-style icons like a DCA note and a broken piggy bank add to the vibrant yet muted aesthetic.",
+  "visualKeywords": [
+    "pepe the frog",
+    "parrot",
+    "birdcage",
+    "sepia",
+    "comic style",
+    "vintage",
+    "icons",
+    "colorful",
+    "muted tones",
+    "antique"
+  ],
+  "textKeywords": [
+    "parrepe",
+    "status",
+    "just",
+    "arrived",
+    "knowledge",
+    "infinite"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "parrot",
+    "birdcage",
+    "sepia",
+    "comic style",
+    "vintage",
+    "icons",
+    "colorful",
+    "muted tones",
+    "antique",
+    "parrepe",
+    "status",
+    "just",
+    "arrived",
+    "knowledge",
+    "infinite"
+  ],
+  "embeddingInput": "PARREPE (Fake Rares) - Series 1 Card 37\nArtist: Rollah\nSupply 615 Issued October 2021\nOn-card text: PARREPE | Status: Just Arrived | Knowledge: Infinite\nVisual summary: The card features a colorful Pepe the Frog dressed as a parrot, sitting inside a vintage-style birdcage. The background is a textured, sepia-toned pattern, lending an antique feel to the piece. Scattered around are icons like a DCA (Dollar Cost Averaging) note, a broken piggy bank, and a carton labeled \"SCRAM!\", all in a comic book style with a mix of vibrant and muted tones.\nMemetic references: Pepe the Frog as a parrot references meme culture, blending internet humor with NFT artistry.; \"FAKE FAKE FAKE\" text plays on the concept of authenticity in the crypto space.; Symbols like the piggy bank and DCA note nod to financial strategies and crypto investment culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PARREPE#text",
+      "label": "On-card text",
+      "text": "PARREPE | Status: Just Arrived | Knowledge: Infinite",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PARREPE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a parrot references meme culture, blending internet humor with NFT artistry.\n\"FAKE FAKE FAKE\" text plays on the concept of authenticity in the crypto space.\nSymbols like the piggy bank and DCA note nod to financial strategies and crypto investment culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PARREPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a colorful Pepe the Frog dressed as a parrot, sitting inside a vintage-style birdcage. The background is a textured, sepia-toned pattern, lending an antique feel to the piece. Scattered around are icons like a DCA (Dollar Cost Averaging) note, a broken piggy bank, and a carton labeled \"SCRAM!\", all in a comic book style with a mix of vibrant and muted tones.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PARREPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPARREPE  \nStatus: Just Arrived  \nKnowledge: Infinite  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a colorful Pepe the Frog dressed as a parrot, sitting inside a vintage-style birdcage. The background is a textured, sepia-toned pattern, lending an antique feel to the piece. Scattered around are icons like a DCA (Dollar Cost Averaging) note, a broken piggy bank, and a carton labeled \"SCRAM!\", all in a comic book style with a mix of vibrant and muted tones.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a parrot references meme culture, blending internet humor with NFT artistry.\n- \"FAKE FAKE FAKE\" text plays on the concept of authenticity in the crypto space.\n- Symbols like the piggy bank and DCA note nod to financial strategies and crypto investment culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.826Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "asset": "FAKESHARK",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 49,
+  "artist": "Crypsi",
+  "supply": 75,
+  "issuance": "November 2021",
+  "textOnCard": [
+    "FAKE SHARK",
+    "Dankmien Hirst",
+    "The Physical Impossibility of a FAKE in the Mind of Someone Living"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog taking center stage as a meme icon.",
+    "Reference to Damien Hirst’s \"The Physical Impossibility of Death in the Mind of Someone Living.\"",
+    "Crypto-art vibes with a nod to the concept of “fake” within the NFT space.",
+    "Dank meme aesthetics with a humorous twist on high art."
+  ],
+  "visualSummary": "The card features a digital collage with a famous art piece parody, showcasing Pepe the Frog in a glass tank, mimicking Damien Hirst’s shark artwork. The background is a chaotic floral pattern, adding a vibrant contrast to the minimalist tank. The overall color palette is bold with greens and blues dominating, and the frame adorned with neon green text enhances the playful absurdity.",
+  "visualSummaryShort": "The card showcases a digital collage featuring Pepe the Frog in a glass tank, parodying a famous art piece. The vibrant floral background and bold color palette create a playful and absurd atmosphere.",
+  "visualKeywords": [
+    "pepe the frog",
+    "glass tank",
+    "floral pattern",
+    "bold colors",
+    "neon text",
+    "digital collage",
+    "art parody"
+  ],
+  "textKeywords": [
+    "shark",
+    "dankmien",
+    "hirst",
+    "physical",
+    "impossibility",
+    "mind",
+    "someone",
+    "living"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "glass tank",
+    "floral pattern",
+    "bold colors",
+    "neon text",
+    "digital collage",
+    "art parody",
+    "shark",
+    "dankmien",
+    "hirst",
+    "physical",
+    "impossibility",
+    "mind",
+    "someone",
+    "living"
+  ],
+  "embeddingInput": "FAKESHARK (Fake Rares) - Series 4 Card 49\nArtist: Crypsi\nSupply 75 Issued November 2021\nOn-card text: FAKE SHARK | Dankmien Hirst | The Physical Impossibility of a FAKE in the Mind of Someone Living\nVisual summary: The card features a digital collage with a famous art piece parody, showcasing Pepe the Frog in a glass tank, mimicking Damien Hirst’s shark artwork. The background is a chaotic floral pattern, adding a vibrant contrast to the minimalist tank. The overall color palette is bold with greens and blues dominating, and the frame adorned with neon green text enhances the playful absurdity.\nMemetic references: Pepe the Frog taking center stage as a meme icon.; Reference to Damien Hirst’s \"The Physical Impossibility of Death in the Mind of Someone Living.\"; Crypto-art vibes with a nod to the concept of “fake” within the NFT space.; Dank meme aesthetics with a humorous twist on high art.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKESHARK#text",
+      "label": "On-card text",
+      "text": "FAKE SHARK | Dankmien Hirst | The Physical Impossibility of a FAKE in the Mind of Someone Living",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKESHARK#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog taking center stage as a meme icon.\nReference to Damien Hirst’s \"The Physical Impossibility of Death in the Mind of Someone Living.\"\nCrypto-art vibes with a nod to the concept of “fake” within the NFT space.\nDank meme aesthetics with a humorous twist on high art.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKESHARK#visual",
+      "label": "Visual summary",
+      "text": "The card features a digital collage with a famous art piece parody, showcasing Pepe the Frog in a glass tank, mimicking Damien Hirst’s shark artwork. The background is a chaotic floral pattern, adding a vibrant contrast to the minimalist tank. The overall color palette is bold with greens and blues dominating, and the frame adorned with neon green text enhances the playful absurdity.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKESHARK#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE SHARK  \nDankmien Hirst  \nThe Physical Impossibility of a FAKE in the Mind of Someone Living\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a digital collage with a famous art piece parody, showcasing Pepe the Frog in a glass tank, mimicking Damien Hirst’s shark artwork. The background is a chaotic floral pattern, adding a vibrant contrast to the minimalist tank. The overall color palette is bold with greens and blues dominating, and the frame adorned with neon green text enhances the playful absurdity.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog taking center stage as a meme icon.\n- Reference to Damien Hirst’s \"The Physical Impossibility of Death in the Mind of Someone Living.\"\n- Crypto-art vibes with a nod to the concept of “fake” within the NFT space.\n- Dank meme aesthetics with a humorous twist on high art.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.576Z",
+  "sourceFactVersion": 1
+}

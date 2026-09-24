@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "asset": "MECHAPEP",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 47,
+  "artist": "Dangiuz",
+  "supply": 72,
+  "issuance": "April 2022",
+  "textOnCard": [
+    "MECHA PEPE. This card gains 1 ATK and 1 DEF for every follower you have on Twitter. ATK: 0 DEF: 0"
+  ],
+  "memeticReferences": [
+    "References to Pepe the Frog, a staple in meme culture.",
+    "Cyberpunk aesthetics, reminiscent of futuristic sci-fi worlds.",
+    "Mention of \"followers on Twitter\" ties into social media and influencer culture.",
+    "The presence of \"Tungsten Labs\" sign hints at crypto culture (tungsten cubes are a meme)."
+  ],
+  "visualSummary": "The card features a futuristic, cybernetic depiction of Pepe the Frog, known as \"Mecha Pepe.\" This robotic version of Pepe is encased in a metallic exoskeleton with neon green highlights and glowing elements, creating a sci-fi atmosphere. The background is dark and industrial, with cables and sparks adding to the dystopian vibe.",
+  "visualSummaryShort": "The card showcases a cybernetic version of Pepe the Frog, encased in a metallic exoskeleton with neon green accents. The dark, industrial background enhances the sci-fi and dystopian mood.",
+  "visualKeywords": [
+    "cybernetic",
+    "metallic",
+    "neon green",
+    "dark background",
+    "industrial",
+    "cables",
+    "sparks",
+    "dystopian",
+    "futuristic",
+    "robotic"
+  ],
+  "textKeywords": [
+    "mecha",
+    "gains",
+    "atk",
+    "def",
+    "every",
+    "follower",
+    "you",
+    "twitter"
+  ],
+  "keywords": [
+    "cybernetic",
+    "metallic",
+    "neon green",
+    "dark background",
+    "industrial",
+    "cables",
+    "sparks",
+    "dystopian",
+    "futuristic",
+    "robotic",
+    "mecha",
+    "gains",
+    "atk",
+    "def",
+    "every",
+    "follower",
+    "you",
+    "twitter"
+  ],
+  "embeddingInput": "MECHAPEP (Fake Rares) - Series 7 Card 47\nArtist: Dangiuz\nSupply 72 Issued April 2022\nOn-card text: MECHA PEPE. This card gains 1 ATK and 1 DEF for every follower you have on Twitter. ATK: 0 DEF: 0\nVisual summary: The card features a futuristic, cybernetic depiction of Pepe the Frog, known as \"Mecha Pepe.\" This robotic version of Pepe is encased in a metallic exoskeleton with neon green highlights and glowing elements, creating a sci-fi atmosphere. The background is dark and industrial, with cables and sparks adding to the dystopian vibe.\nMemetic references: References to Pepe the Frog, a staple in meme culture.; Cyberpunk aesthetics, reminiscent of futuristic sci-fi worlds.; Mention of \"followers on Twitter\" ties into social media and influencer culture.; The presence of \"Tungsten Labs\" sign hints at crypto culture (tungsten cubes are a meme).",
+  "embeddingBlocks": [
+    {
+      "id": "MECHAPEP#text",
+      "label": "On-card text",
+      "text": "MECHA PEPE. This card gains 1 ATK and 1 DEF for every follower you have on Twitter. ATK: 0 DEF: 0",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "MECHAPEP#memetic",
+      "label": "Memetic references",
+      "text": "References to Pepe the Frog, a staple in meme culture.\nCyberpunk aesthetics, reminiscent of futuristic sci-fi worlds.\nMention of \"followers on Twitter\" ties into social media and influencer culture.\nThe presence of \"Tungsten Labs\" sign hints at crypto culture (tungsten cubes are a meme).",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "MECHAPEP#visual",
+      "label": "Visual summary",
+      "text": "The card features a futuristic, cybernetic depiction of Pepe the Frog, known as \"Mecha Pepe.\" This robotic version of Pepe is encased in a metallic exoskeleton with neon green highlights and glowing elements, creating a sci-fi atmosphere. The background is dark and industrial, with cables and sparks adding to the dystopian vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "MECHAPEP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nMECHA PEPE. This card gains 1 ATK and 1 DEF for every follower you have on Twitter. ATK: 0 DEF: 0\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a futuristic, cybernetic depiction of Pepe the Frog, known as \"Mecha Pepe.\" This robotic version of Pepe is encased in a metallic exoskeleton with neon green highlights and glowing elements, creating a sci-fi atmosphere. The background is dark and industrial, with cables and sparks adding to the dystopian vibe.\n\n🧬 **MEMETIC DNA:**\n- References to Pepe the Frog, a staple in meme culture.\n- Cyberpunk aesthetics, reminiscent of futuristic sci-fi worlds.\n- Mention of \"followers on Twitter\" ties into social media and influencer culture.\n- The presence of \"Tungsten Labs\" sign hints at crypto culture (tungsten cubes are a meme).",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.765Z",
+  "sourceFactVersion": 1
+}

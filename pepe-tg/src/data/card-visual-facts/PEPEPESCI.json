@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "asset": "PEPEPESCI",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 22,
+  "artist": "Dim Zayan",
+  "supply": 37,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "PepePesci",
+    "He's a phony guy.",
+    "\"Phony how? What the fake you looking at?\""
+  ],
+  "memeticReferences": [
+    "Pepe the Frog in a mobster persona.",
+    "References to mafia movie culture.",
+    "The play on the name suggests a blend of Pepe and a well-known actor."
+  ],
+  "visualSummary": "The card features a Pepe the Frog character styled as a famous mobster, dressed in a black suit with a visible hand gesture. The color palette is dark and muted, with a focus on green and black, highlighting the Pepe face. The design has a minimalist, cartoon-like style with smooth lines and bold colors.",
+  "visualSummaryShort": "The card showcases a Pepe the Frog character depicted as a mobster in a black suit, emphasizing a dark and muted color palette. The minimalist design features smooth lines and bold colors, primarily focusing on green and black.",
+  "visualKeywords": [
+    "mobster",
+    "black suit",
+    "green",
+    "dark palette",
+    "cartoon",
+    "minimalist",
+    "bold colors"
+  ],
+  "textKeywords": [
+    "pepepesci",
+    "phony",
+    "guy",
+    "how",
+    "what",
+    "you",
+    "looking"
+  ],
+  "keywords": [
+    "mobster",
+    "black suit",
+    "green",
+    "dark palette",
+    "cartoon",
+    "minimalist",
+    "bold colors",
+    "pepepesci",
+    "phony",
+    "guy",
+    "how",
+    "what",
+    "you",
+    "looking"
+  ],
+  "embeddingInput": "PEPEPESCI (Fake Rares) - Series 4 Card 22\nArtist: Dim Zayan\nSupply 37 Issued October 2021\nOn-card text: PepePesci | He's a phony guy. | \"Phony how? What the fake you looking at?\"\nVisual summary: The card features a Pepe the Frog character styled as a famous mobster, dressed in a black suit with a visible hand gesture. The color palette is dark and muted, with a focus on green and black, highlighting the Pepe face. The design has a minimalist, cartoon-like style with smooth lines and bold colors.\nMemetic references: Pepe the Frog in a mobster persona.; References to mafia movie culture.; The play on the name suggests a blend of Pepe and a well-known actor.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPEPESCI#text",
+      "label": "On-card text",
+      "text": "PepePesci | He's a phony guy. | \"Phony how? What the fake you looking at?\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPEPESCI#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in a mobster persona.\nReferences to mafia movie culture.\nThe play on the name suggests a blend of Pepe and a well-known actor.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPEPESCI#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe the Frog character styled as a famous mobster, dressed in a black suit with a visible hand gesture. The color palette is dark and muted, with a focus on green and black, highlighting the Pepe face. The design has a minimalist, cartoon-like style with smooth lines and bold colors.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPEPESCI#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPepePesci  \nHe's a phony guy.  \n\"Phony how? What the fake you looking at?\"\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe the Frog character styled as a famous mobster, dressed in a black suit with a visible hand gesture. The color palette is dark and muted, with a focus on green and black, highlighting the Pepe face. The design has a minimalist, cartoon-like style with smooth lines and bold colors.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in a mobster persona.\n- References to mafia movie culture.\n- The play on the name suggests a blend of Pepe and a well-known actor.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.948Z",
+  "sourceFactVersion": 1
+}

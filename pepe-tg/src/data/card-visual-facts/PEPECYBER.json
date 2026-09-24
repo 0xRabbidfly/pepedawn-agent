@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "asset": "PEPECYBER",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 37,
+  "artist": "Dangiuz",
+  "supply": 150,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "CYBER PEPE",
+    "Discard 1 NFT from your wallet to the Burn Address to summon Cyber Pepe. Upon summoning Cyber Pepe, end the Bear Market and start the Bull Market."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure.",
+    "References to crypto culture with terms like \"Burn Address\" and \"Bull",
+    "Bear Market.\"",
+    "Cyberpunk influences with the mechanical and neon design elements."
+  ],
+  "visualSummary": "The card features a cybernetic rendition of Pepe the Frog with glowing blue eyes and a mechanical setup on his head, reminiscent of a sci-fi dystopia. The color palette is dominated by dark reds and greens, with bright neon highlights that give it a futuristic vibe. The background is cluttered with wires and tech elements, enhancing the cyberpunk aesthetic.",
+  "visualSummaryShort": "The card showcases a cybernetic Pepe the Frog with glowing blue eyes and a mechanical head, set against a dark, tech-filled background. The color scheme features dark reds and greens with bright neon accents, creating a striking futuristic atmosphere.",
+  "visualKeywords": [
+    "cybernetic",
+    "blue eyes",
+    "mechanical",
+    "dark reds",
+    "greens",
+    "neon",
+    "tech",
+    "cyberpunk",
+    "dystopia"
+  ],
+  "textKeywords": [
+    "cyber",
+    "discard",
+    "nft",
+    "wallet",
+    "burn",
+    "address",
+    "summon",
+    "upon",
+    "summoning",
+    "end",
+    "bear",
+    "market",
+    "start",
+    "bull"
+  ],
+  "keywords": [
+    "cybernetic",
+    "blue eyes",
+    "mechanical",
+    "dark reds",
+    "greens",
+    "neon",
+    "tech",
+    "cyberpunk",
+    "dystopia",
+    "cyber",
+    "discard",
+    "nft",
+    "wallet",
+    "burn",
+    "address",
+    "summon",
+    "upon",
+    "summoning",
+    "end",
+    "bear",
+    "market",
+    "start",
+    "bull"
+  ],
+  "embeddingInput": "PEPECYBER (Fake Rares) - Series 5 Card 37\nArtist: Dangiuz\nSupply 150 Issued February 2022\nOn-card text: CYBER PEPE | Discard 1 NFT from your wallet to the Burn Address to summon Cyber Pepe. Upon summoning Cyber Pepe, end the Bear Market and start the Bull Market.\nVisual summary: The card features a cybernetic rendition of Pepe the Frog with glowing blue eyes and a mechanical setup on his head, reminiscent of a sci-fi dystopia. The color palette is dominated by dark reds and greens, with bright neon highlights that give it a futuristic vibe. The background is cluttered with wires and tech elements, enhancing the cyberpunk aesthetic.\nMemetic references: Pepe the Frog as a central figure.; References to crypto culture with terms like \"Burn Address\" and \"Bull; Bear Market.\"; Cyberpunk influences with the mechanical and neon design elements.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPECYBER#text",
+      "label": "On-card text",
+      "text": "CYBER PEPE | Discard 1 NFT from your wallet to the Burn Address to summon Cyber Pepe. Upon summoning Cyber Pepe, end the Bear Market and start the Bull Market.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPECYBER#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure.\nReferences to crypto culture with terms like \"Burn Address\" and \"Bull\nBear Market.\"\nCyberpunk influences with the mechanical and neon design elements.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPECYBER#visual",
+      "label": "Visual summary",
+      "text": "The card features a cybernetic rendition of Pepe the Frog with glowing blue eyes and a mechanical setup on his head, reminiscent of a sci-fi dystopia. The color palette is dominated by dark reds and greens, with bright neon highlights that give it a futuristic vibe. The background is cluttered with wires and tech elements, enhancing the cyberpunk aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPECYBER#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nCYBER PEPE  \nDiscard 1 NFT from your wallet to the Burn Address to summon Cyber Pepe. Upon summoning Cyber Pepe, end the Bear Market and start the Bull Market.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a cybernetic rendition of Pepe the Frog with glowing blue eyes and a mechanical setup on his head, reminiscent of a sci-fi dystopia. The color palette is dominated by dark reds and greens, with bright neon highlights that give it a futuristic vibe. The background is cluttered with wires and tech elements, enhancing the cyberpunk aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure.\n- References to crypto culture with terms like \"Burn Address\" and \"Bull/Bear Market.\"\n- Cyberpunk influences with the mechanical and neon design elements.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.864Z",
+  "sourceFactVersion": 1
+}

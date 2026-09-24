@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "asset": "FAKELIBRARY",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 36,
+  "artist": "Pinocchio",
+  "supply": 231,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "FAKE RARE DIRECTORY",
+    "Charisma",
+    "The fakest Pepe collection",
+    "RARENESS SCORE :"
+  ],
+  "memeticReferences": [
+    "Classic library setting juxtaposed with Pepe figures.",
+    "Reference to \"Charisma,\" hinting at personality traits often meme-associated.",
+    "\"The fakest Pepe collection\" nods to the meta nature of Fake Rares."
+  ],
+  "visualSummary": "The card features an opulent library interior with ornate ceilings and vast shelves filled with books, creating a sense of grandeur. The color palette is rich and warm, with gold and blues dominating the ceiling's artwork. Two Pepe figures are subtly placed within the library, adding a playful element to the otherwise classical scene.",
+  "visualSummaryShort": "The card depicts an opulent library interior with ornate ceilings and extensive bookshelves, exuding grandeur. Two Pepe figures add a playful touch to the rich and warm color palette of gold and blue.",
+  "visualKeywords": [
+    "library",
+    "ornate",
+    "books",
+    "gold",
+    "blue",
+    "pepe",
+    "interior",
+    "grand",
+    "playful"
+  ],
+  "textKeywords": [
+    "directory",
+    "charisma",
+    "fakest",
+    "collection",
+    "rareness",
+    "score"
+  ],
+  "keywords": [
+    "library",
+    "ornate",
+    "books",
+    "gold",
+    "blue",
+    "pepe",
+    "interior",
+    "grand",
+    "playful",
+    "directory",
+    "charisma",
+    "fakest",
+    "collection",
+    "rareness",
+    "score"
+  ],
+  "embeddingInput": "FAKELIBRARY (Fake Rares) - Series 11 Card 36\nArtist: Pinocchio\nSupply 231 Issued July 2022\nOn-card text: FAKE RARE DIRECTORY | Charisma | The fakest Pepe collection | RARENESS SCORE :\nVisual summary: The card features an opulent library interior with ornate ceilings and vast shelves filled with books, creating a sense of grandeur. The color palette is rich and warm, with gold and blues dominating the ceiling's artwork. Two Pepe figures are subtly placed within the library, adding a playful element to the otherwise classical scene.\nMemetic references: Classic library setting juxtaposed with Pepe figures.; Reference to \"Charisma,\" hinting at personality traits often meme-associated.; \"The fakest Pepe collection\" nods to the meta nature of Fake Rares.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKELIBRARY#text",
+      "label": "On-card text",
+      "text": "FAKE RARE DIRECTORY | Charisma | The fakest Pepe collection | RARENESS SCORE :",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKELIBRARY#memetic",
+      "label": "Memetic references",
+      "text": "Classic library setting juxtaposed with Pepe figures.\nReference to \"Charisma,\" hinting at personality traits often meme-associated.\n\"The fakest Pepe collection\" nods to the meta nature of Fake Rares.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKELIBRARY#visual",
+      "label": "Visual summary",
+      "text": "The card features an opulent library interior with ornate ceilings and vast shelves filled with books, creating a sense of grandeur. The color palette is rich and warm, with gold and blues dominating the ceiling's artwork. Two Pepe figures are subtly placed within the library, adding a playful element to the otherwise classical scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKELIBRARY#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE RARE DIRECTORY  \nCharisma  \nThe fakest Pepe collection  \nRARENESS SCORE :  \n\n🎨 **VISUAL BREAKDOWN:**\nThe card features an opulent library interior with ornate ceilings and vast shelves filled with books, creating a sense of grandeur. The color palette is rich and warm, with gold and blues dominating the ceiling's artwork. Two Pepe figures are subtly placed within the library, adding a playful element to the otherwise classical scene.\n\n🧬 **MEMETIC DNA:**\n- Classic library setting juxtaposed with Pepe figures.\n- Reference to \"Charisma,\" hinting at personality traits often meme-associated.\n- \"The fakest Pepe collection\" nods to the meta nature of Fake Rares.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.524Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "VLADPEPETIN",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 21,
+  "artist": "ARCHAN NAIR",
+  "supply": 69,
+  "issuance": "July 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog's mischievous grin reimagined as a vampire.",
+    "Santa hat suggests holiday-themed mischief, blending Christmas vibes with spooky aesthetics.",
+    "Combines elements of classic horror with meme culture."
+  ],
+  "visualSummary": "The card features a green-faced character with a mischievous grin, sporting vampire fangs and a Santa hat topped with pearls and a star. The color palette is dark and moody, with deep reds, greens, and browns creating a mysterious, almost eerie vibe. The painting style is surreal and textured, adding a layer of complexity to the composition.",
+  "visualSummaryShort": "The card showcases a green-faced character with a playful expression, adorned with vampire fangs and a festive Santa hat. The dark color palette enhances the eerie and mysterious atmosphere of the artwork.",
+  "visualKeywords": [
+    "green face",
+    "vampire fangs",
+    "santa hat",
+    "dark palette",
+    "moody",
+    "surreal",
+    "textured",
+    "deep reds",
+    "greens",
+    "browns"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "green face",
+    "vampire fangs",
+    "santa hat",
+    "dark palette",
+    "moody",
+    "surreal",
+    "textured",
+    "deep reds",
+    "greens",
+    "browns"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "VLADPEPETIN (Fake Rares) - Series 8 Card 21\nArtist: ARCHAN NAIR\nSupply 69 Issued July 2022\nOn-card text: none detected\nVisual summary: The card features a green-faced character with a mischievous grin, sporting vampire fangs and a Santa hat topped with pearls and a star. The color palette is dark and moody, with deep reds, greens, and browns creating a mysterious, almost eerie vibe. The painting style is surreal and textured, adding a layer of complexity to the composition.\nMemetic references: Pepe the Frog's mischievous grin reimagined as a vampire.; Santa hat suggests holiday-themed mischief, blending Christmas vibes with spooky aesthetics.; Combines elements of classic horror with meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "VLADPEPETIN#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog's mischievous grin reimagined as a vampire.\nSanta hat suggests holiday-themed mischief, blending Christmas vibes with spooky aesthetics.\nCombines elements of classic horror with meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "VLADPEPETIN#visual",
+      "label": "Visual summary",
+      "text": "The card features a green-faced character with a mischievous grin, sporting vampire fangs and a Santa hat topped with pearls and a star. The color palette is dark and moody, with deep reds, greens, and browns creating a mysterious, almost eerie vibe. The painting style is surreal and textured, adding a layer of complexity to the composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "VLADPEPETIN#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a green-faced character with a mischievous grin, sporting vampire fangs and a Santa hat topped with pearls and a star. The color palette is dark and moody, with deep reds, greens, and browns creating a mysterious, almost eerie vibe. The painting style is surreal and textured, adding a layer of complexity to the composition.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog's mischievous grin reimagined as a vampire.\n- Santa hat suggests holiday-themed mischief, blending Christmas vibes with spooky aesthetics.\n- Combines elements of classic horror with meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:34:03.203Z"
+}

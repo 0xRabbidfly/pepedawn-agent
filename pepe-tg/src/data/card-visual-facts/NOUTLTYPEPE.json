@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "asset": "NOUTLTYPEPE",
+  "collection": "Fake Rares",
+  "series": 11,
+  "cardNumber": 43,
+  "artist": "Viva La Vandal",
+  "supply": 500,
+  "issuance": "November 2022",
+  "textOnCard": [
+    "THE AMAZING NO UTILITY PEPE. I CAN'T FLIP THIS! DO SOMETHING. WHERE’S THE MERCH? PUT HIM IN AN EMBLEM VAULT, I’M SELLING!"
+  ],
+  "memeticReferences": [
+    "References to the \"No Utility\" aspect common in NFT humor.",
+    "Comic book style parody, similar to \"The Amazing Spider-Man\".",
+    "Crypto culture jokes about flipping and utility.",
+    "Pepe the Frog as a central meme icon."
+  ],
+  "visualSummary": "The card features a central figure, Pepe, in a bathrobe holding a coffee mug with a bored expression, surrounded by a group of people. The color palette is vibrant, with a mix of pink, green, and blue tones, giving it a playful comic book vibe. The style is cartoonish, reminiscent of classic comic strips with bold outlines and exaggerated expressions.",
+  "visualSummaryShort": "The card showcases Pepe in a bathrobe with a bored expression, surrounded by a lively group of people. The vibrant color palette and cartoonish style create a playful comic book atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "bathrobe",
+    "coffee mug",
+    "bored expression",
+    "vibrant colors",
+    "comic book",
+    "cartoonish",
+    "bold outlines",
+    "playful",
+    "group"
+  ],
+  "textKeywords": [
+    "amazing",
+    "utility",
+    "can",
+    "flip",
+    "something",
+    "where",
+    "merch",
+    "put",
+    "him",
+    "emblem",
+    "vault",
+    "selling"
+  ],
+  "keywords": [
+    "pepe",
+    "bathrobe",
+    "coffee mug",
+    "bored expression",
+    "vibrant colors",
+    "comic book",
+    "cartoonish",
+    "bold outlines",
+    "playful",
+    "group",
+    "amazing",
+    "utility",
+    "can",
+    "flip",
+    "something",
+    "where",
+    "merch",
+    "put",
+    "him",
+    "emblem",
+    "vault",
+    "selling"
+  ],
+  "embeddingInput": "NOUTLTYPEPE (Fake Rares) - Series 11 Card 43\nArtist: Viva La Vandal\nSupply 500 Issued November 2022\nOn-card text: THE AMAZING NO UTILITY PEPE. I CAN'T FLIP THIS! DO SOMETHING. WHERE’S THE MERCH? PUT HIM IN AN EMBLEM VAULT, I’M SELLING!\nVisual summary: The card features a central figure, Pepe, in a bathrobe holding a coffee mug with a bored expression, surrounded by a group of people. The color palette is vibrant, with a mix of pink, green, and blue tones, giving it a playful comic book vibe. The style is cartoonish, reminiscent of classic comic strips with bold outlines and exaggerated expressions.\nMemetic references: References to the \"No Utility\" aspect common in NFT humor.; Comic book style parody, similar to \"The Amazing Spider-Man\".; Crypto culture jokes about flipping and utility.; Pepe the Frog as a central meme icon.",
+  "embeddingBlocks": [
+    {
+      "id": "NOUTLTYPEPE#text",
+      "label": "On-card text",
+      "text": "THE AMAZING NO UTILITY PEPE. I CAN'T FLIP THIS! DO SOMETHING. WHERE’S THE MERCH? PUT HIM IN AN EMBLEM VAULT, I’M SELLING!",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "NOUTLTYPEPE#memetic",
+      "label": "Memetic references",
+      "text": "References to the \"No Utility\" aspect common in NFT humor.\nComic book style parody, similar to \"The Amazing Spider-Man\".\nCrypto culture jokes about flipping and utility.\nPepe the Frog as a central meme icon.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "NOUTLTYPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a central figure, Pepe, in a bathrobe holding a coffee mug with a bored expression, surrounded by a group of people. The color palette is vibrant, with a mix of pink, green, and blue tones, giving it a playful comic book vibe. The style is cartoonish, reminiscent of classic comic strips with bold outlines and exaggerated expressions.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "NOUTLTYPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nTHE AMAZING NO UTILITY PEPE. I CAN'T FLIP THIS! DO SOMETHING. WHERE’S THE MERCH? PUT HIM IN AN EMBLEM VAULT, I’M SELLING!\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a central figure, Pepe, in a bathrobe holding a coffee mug with a bored expression, surrounded by a group of people. The color palette is vibrant, with a mix of pink, green, and blue tones, giving it a playful comic book vibe. The style is cartoonish, reminiscent of classic comic strips with bold outlines and exaggerated expressions.\n\n🧬 **MEMETIC DNA:**\n- References to the \"No Utility\" aspect common in NFT humor.\n- Comic book style parody, similar to \"The Amazing Spider-Man\".\n- Crypto culture jokes about flipping and utility.\n- Pepe the Frog as a central meme icon.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.803Z",
+  "sourceFactVersion": 1
+}

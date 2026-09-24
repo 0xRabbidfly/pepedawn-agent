@@ -1,0 +1,111 @@
+{
+  "version": 1,
+  "asset": "PEPESEGAL",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 9,
+  "artist": "NORMANCOMICS",
+  "supply": 49,
+  "issuance": "February 2023",
+  "textOnCard": [
+    "\"Were you a delinquent in life?\"",
+    "\"But then you discovered the blockchain!\"",
+    "\"You are on the path of enlightenment.\"",
+    "\"feels fake man\"",
+    "\"Pepe Segal\"",
+    "\"Segwit\""
+  ],
+  "memeticReferences": [
+    "References to the famous \"feels good man\" meme with a twist.",
+    "Crypto elements like \"blockchain\" and \"Segwit\" hint at Bitcoin culture.",
+    "Pop culture nods with a sword-wielding Pepe reminiscent of a samurai.",
+    "Speech bubbles give it a comic book vibe."
+  ],
+  "visualSummary": "The card bursts with chaotic, comic-style illustrations featuring Pepe the Frog in various scenarios. The color palette is vibrant, with greens, blacks, and reds dominating the scene. The layout feels like a collage, blending text and imagery with a retro, pixelated backdrop, creating a dynamic and engaging visual experience.",
+  "visualSummaryShort": "The card features chaotic, comic-style illustrations of Pepe the Frog in vibrant greens, blacks, and reds. Its collage layout combines retro pixelation with dynamic imagery, creating an engaging visual experience.",
+  "visualKeywords": [
+    "pepe the frog",
+    "comic-style",
+    "vibrant colors",
+    "collage",
+    "pixelated",
+    "chaotic",
+    "dynamic",
+    "retro"
+  ],
+  "textKeywords": [
+    "were",
+    "you",
+    "delinquent",
+    "life",
+    "but",
+    "then",
+    "discovered",
+    "blockchain",
+    "are",
+    "path",
+    "enlightenment",
+    "feels",
+    "man",
+    "segal",
+    "segwit"
+  ],
+  "keywords": [
+    "pepe the frog",
+    "comic-style",
+    "vibrant colors",
+    "collage",
+    "pixelated",
+    "chaotic",
+    "dynamic",
+    "retro",
+    "were",
+    "you",
+    "delinquent",
+    "life",
+    "but",
+    "then",
+    "discovered",
+    "blockchain",
+    "are",
+    "path",
+    "enlightenment",
+    "feels",
+    "man",
+    "segal",
+    "segwit"
+  ],
+  "embeddingInput": "PEPESEGAL (Fake Rares) - Series 13 Card 9\nArtist: NORMANCOMICS\nSupply 49 Issued February 2023\nOn-card text: \"Were you a delinquent in life?\" | \"But then you discovered the blockchain!\" | \"You are on the path of enlightenment.\" | \"feels fake man\" | \"Pepe Segal\" | \"Segwit\"\nVisual summary: The card bursts with chaotic, comic-style illustrations featuring Pepe the Frog in various scenarios. The color palette is vibrant, with greens, blacks, and reds dominating the scene. The layout feels like a collage, blending text and imagery with a retro, pixelated backdrop, creating a dynamic and engaging visual experience.\nMemetic references: References to the famous \"feels good man\" meme with a twist.; Crypto elements like \"blockchain\" and \"Segwit\" hint at Bitcoin culture.; Pop culture nods with a sword-wielding Pepe reminiscent of a samurai.; Speech bubbles give it a comic book vibe.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPESEGAL#text",
+      "label": "On-card text",
+      "text": "\"Were you a delinquent in life?\" | \"But then you discovered the blockchain!\" | \"You are on the path of enlightenment.\" | \"feels fake man\" | \"Pepe Segal\" | \"Segwit\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPESEGAL#memetic",
+      "label": "Memetic references",
+      "text": "References to the famous \"feels good man\" meme with a twist.\nCrypto elements like \"blockchain\" and \"Segwit\" hint at Bitcoin culture.\nPop culture nods with a sword-wielding Pepe reminiscent of a samurai.\nSpeech bubbles give it a comic book vibe.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPESEGAL#visual",
+      "label": "Visual summary",
+      "text": "The card bursts with chaotic, comic-style illustrations featuring Pepe the Frog in various scenarios. The color palette is vibrant, with greens, blacks, and reds dominating the scene. The layout feels like a collage, blending text and imagery with a retro, pixelated backdrop, creating a dynamic and engaging visual experience.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPESEGAL#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- \"Were you a delinquent in life?\"\n- \"But then you discovered the blockchain!\"\n- \"You are on the path of enlightenment.\"\n- \"feels fake man\"\n- \"Pepe Segal\"\n- \"Segwit\"\n\n🎨 **VISUAL BREAKDOWN:**\nThe card bursts with chaotic, comic-style illustrations featuring Pepe the Frog in various scenarios. The color palette is vibrant, with greens, blacks, and reds dominating the scene. The layout feels like a collage, blending text and imagery with a retro, pixelated backdrop, creating a dynamic and engaging visual experience.\n\n🧬 **MEMETIC DNA:**\n- References to the famous \"feels good man\" meme with a twist.\n- Crypto elements like \"blockchain\" and \"Segwit\" hint at Bitcoin culture.\n- Pop culture nods with a sword-wielding Pepe reminiscent of a samurai.\n- Speech bubbles give it a comic book vibe.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.973Z",
+  "sourceFactVersion": 1
+}

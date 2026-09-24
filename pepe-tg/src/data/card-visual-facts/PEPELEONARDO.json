@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "asset": "PEPELEONARDO",
+  "collection": "Fake Rares",
+  "series": 0,
+  "cardNumber": 24,
+  "artist": "Ciobo",
+  "supply": null,
+  "issuance": null,
+  "textOnCard": [
+    "I have always felt it is my destiny to build a machine that would allow Pepe to fly."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a visionary inventor.",
+    "Bitcoin symbols referencing crypto culture.",
+    "Da Vinci-inspired flying contraption.",
+    "Steampunk elements for extra flair."
+  ],
+  "visualSummary": "The artwork features a detailed, sepia-toned illustration resembling a Leonardo da Vinci-style flying machine, piloted by a frog with wings. The intricate line work and mechanical elements create a steampunk vibe, while Bitcoin symbols on flying fish add a crypto twist. The overall aesthetic combines historical and fantastical elements with a whimsical touch.",
+  "visualSummaryShort": "The card showcases a sepia-toned illustration of a flying machine piloted by a frog with wings, embodying a steampunk aesthetic. Intricate mechanical elements and Bitcoin symbols on flying fish add a whimsical and fantastical touch.",
+  "visualKeywords": [
+    "frog",
+    "flying machine",
+    "steampunk",
+    "sepia",
+    "mechanical",
+    "whimsical",
+    "bitcoin",
+    "fish"
+  ],
+  "textKeywords": [
+    "always",
+    "felt",
+    "destiny",
+    "build",
+    "machine",
+    "would",
+    "allow",
+    "fly"
+  ],
+  "keywords": [
+    "frog",
+    "flying machine",
+    "steampunk",
+    "sepia",
+    "mechanical",
+    "whimsical",
+    "bitcoin",
+    "fish",
+    "always",
+    "felt",
+    "destiny",
+    "build",
+    "machine",
+    "would",
+    "allow",
+    "fly"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "PEPELEONARDO (Fake Rares) - Series 0 Card 24\nArtist: Ciobo\nOn-card text: I have always felt it is my destiny to build a machine that would allow Pepe to fly.\nVisual summary: The artwork features a detailed, sepia-toned illustration resembling a Leonardo da Vinci-style flying machine, piloted by a frog with wings. The intricate line work and mechanical elements create a steampunk vibe, while Bitcoin symbols on flying fish add a crypto twist. The overall aesthetic combines historical and fantastical elements with a whimsical touch.\nMemetic references: Pepe the Frog as a visionary inventor.; Bitcoin symbols referencing crypto culture.; Da Vinci-inspired flying contraption.; Steampunk elements for extra flair.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPELEONARDO#text",
+      "label": "On-card text",
+      "text": "I have always felt it is my destiny to build a machine that would allow Pepe to fly.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPELEONARDO#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a visionary inventor.\nBitcoin symbols referencing crypto culture.\nDa Vinci-inspired flying contraption.\nSteampunk elements for extra flair.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPELEONARDO#visual",
+      "label": "Visual summary",
+      "text": "The artwork features a detailed, sepia-toned illustration resembling a Leonardo da Vinci-style flying machine, piloted by a frog with wings. The intricate line work and mechanical elements create a steampunk vibe, while Bitcoin symbols on flying fish add a crypto twist. The overall aesthetic combines historical and fantastical elements with a whimsical touch.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPELEONARDO#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nI have always felt it is my destiny to build a machine that would allow Pepe to fly.\n\n🎨 **VISUAL BREAKDOWN:**\nThe artwork features a detailed, sepia-toned illustration resembling a Leonardo da Vinci-style flying machine, piloted by a frog with wings. The intricate line work and mechanical elements create a steampunk vibe, while Bitcoin symbols on flying fish add a crypto twist. The overall aesthetic combines historical and fantastical elements with a whimsical touch.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a visionary inventor.\n- Bitcoin symbols referencing crypto culture.\n- Da Vinci-inspired flying contraption.\n- Steampunk elements for extra flair.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:29:59.001Z"
+}

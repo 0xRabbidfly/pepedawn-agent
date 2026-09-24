@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "asset": "PEPELALALAND",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 37,
+  "artist": "Coit",
+  "supply": 48,
+  "issuance": "May 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as the central character, a staple in meme culture.",
+    "Psychedelic art style reminiscent of '60s counterculture.",
+    "Possible nods to \"Alice in Wonderland\" with the surreal and dreamlike elements.",
+    "Elements of NFT culture with the trippy, unique art style."
+  ],
+  "visualSummary": "This card features a wild, psychedelic landscape with vivid, swirling colors that create a sense of movement and chaos. A small Pepe character, dressed in red, sits contemplatively on a vibrant, wavy ground, while a large, twisted tree with menacing green eyes looms over him. The background is a kaleidoscope of purples, reds, and blues, with abstract floral designs adding to the dreamlike quality.",
+  "visualSummaryShort": "The card showcases a psychedelic landscape filled with vibrant colors and abstract designs. A small Pepe character in red sits on a wavy ground beneath a large, twisted tree with green eyes.",
+  "visualKeywords": [
+    "psychedelic",
+    "vivid colors",
+    "pepe",
+    "twisted tree",
+    "abstract",
+    "floral designs",
+    "dreamlike",
+    "movement",
+    "chaos",
+    "wavy ground"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "psychedelic",
+    "vivid colors",
+    "pepe",
+    "twisted tree",
+    "abstract",
+    "floral designs",
+    "dreamlike",
+    "movement",
+    "chaos",
+    "wavy ground"
+  ],
+  "embeddingInput": "PEPELALALAND (Fake Rares) - Series 12 Card 37\nArtist: Coit\nSupply 48 Issued May 2022\nOn-card text: none detected\nVisual summary: This card features a wild, psychedelic landscape with vivid, swirling colors that create a sense of movement and chaos. A small Pepe character, dressed in red, sits contemplatively on a vibrant, wavy ground, while a large, twisted tree with menacing green eyes looms over him. The background is a kaleidoscope of purples, reds, and blues, with abstract floral designs adding to the dreamlike quality.\nMemetic references: Pepe the Frog as the central character, a staple in meme culture.; Psychedelic art style reminiscent of '60s counterculture.; Possible nods to \"Alice in Wonderland\" with the surreal and dreamlike elements.; Elements of NFT culture with the trippy, unique art style.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPELALALAND#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as the central character, a staple in meme culture.\nPsychedelic art style reminiscent of '60s counterculture.\nPossible nods to \"Alice in Wonderland\" with the surreal and dreamlike elements.\nElements of NFT culture with the trippy, unique art style.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPELALALAND#visual",
+      "label": "Visual summary",
+      "text": "This card features a wild, psychedelic landscape with vivid, swirling colors that create a sense of movement and chaos. A small Pepe character, dressed in red, sits contemplatively on a vibrant, wavy ground, while a large, twisted tree with menacing green eyes looms over him. The background is a kaleidoscope of purples, reds, and blues, with abstract floral designs adding to the dreamlike quality.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPELALALAND#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a wild, psychedelic landscape with vivid, swirling colors that create a sense of movement and chaos. A small Pepe character, dressed in red, sits contemplatively on a vibrant, wavy ground, while a large, twisted tree with menacing green eyes looms over him. The background is a kaleidoscope of purples, reds, and blues, with abstract floral designs adding to the dreamlike quality.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as the central character, a staple in meme culture.\n- Psychedelic art style reminiscent of '60s counterculture.\n- Possible nods to \"Alice in Wonderland\" with the surreal and dreamlike elements.\n- Elements of NFT culture with the trippy, unique art style.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.911Z",
+  "sourceFactVersion": 1
+}

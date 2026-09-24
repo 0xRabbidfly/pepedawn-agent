@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "asset": "PEPESUPREM",
+  "collection": "Fake Rares",
+  "series": 3,
+  "cardNumber": 41,
+  "artist": "GrantYun",
+  "supply": 16,
+  "issuance": "October 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Abstract interpretation of Pepe the Frog, a staple of meme culture.",
+    "Geometric, modern art style, reminiscent of abstract and cubist movements.",
+    "Plays on the iconic facial features of Pepe using minimalist design."
+  ],
+  "visualSummary": "The card features a minimalistic and abstract depiction of Pepe the Frog, rendered using geometric shapes like circles, triangles, and rectangles. The color palette is muted, with shades of green, pink, black, and beige, creating a modernist, almost Bauhaus style. The composition is clean and balanced, focusing on form and simplicity.",
+  "visualSummaryShort": "The card showcases an abstract representation of Pepe the Frog using geometric shapes. Its muted color palette and modernist style emphasize simplicity and balance.",
+  "visualKeywords": [
+    "pepe",
+    "geometric",
+    "abstract",
+    "muted colors",
+    "modernist",
+    "shapes",
+    "clean",
+    "balanced"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "geometric",
+    "abstract",
+    "muted colors",
+    "modernist",
+    "shapes",
+    "clean",
+    "balanced"
+  ],
+  "embeddingInput": "PEPESUPREM (Fake Rares) - Series 3 Card 41\nArtist: GrantYun\nSupply 16 Issued October 2021\nOn-card text: none detected\nVisual summary: The card features a minimalistic and abstract depiction of Pepe the Frog, rendered using geometric shapes like circles, triangles, and rectangles. The color palette is muted, with shades of green, pink, black, and beige, creating a modernist, almost Bauhaus style. The composition is clean and balanced, focusing on form and simplicity.\nMemetic references: Abstract interpretation of Pepe the Frog, a staple of meme culture.; Geometric, modern art style, reminiscent of abstract and cubist movements.; Plays on the iconic facial features of Pepe using minimalist design.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPESUPREM#memetic",
+      "label": "Memetic references",
+      "text": "Abstract interpretation of Pepe the Frog, a staple of meme culture.\nGeometric, modern art style, reminiscent of abstract and cubist movements.\nPlays on the iconic facial features of Pepe using minimalist design.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPESUPREM#visual",
+      "label": "Visual summary",
+      "text": "The card features a minimalistic and abstract depiction of Pepe the Frog, rendered using geometric shapes like circles, triangles, and rectangles. The color palette is muted, with shades of green, pink, black, and beige, creating a modernist, almost Bauhaus style. The composition is clean and balanced, focusing on form and simplicity.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPESUPREM#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a minimalistic and abstract depiction of Pepe the Frog, rendered using geometric shapes like circles, triangles, and rectangles. The color palette is muted, with shades of green, pink, black, and beige, creating a modernist, almost Bauhaus style. The composition is clean and balanced, focusing on form and simplicity.\n\n🧬 **MEMETIC DNA:**\n- Abstract interpretation of Pepe the Frog, a staple of meme culture.\n- Geometric, modern art style, reminiscent of abstract and cubist movements.\n- Plays on the iconic facial features of Pepe using minimalist design.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.985Z",
+  "sourceFactVersion": 1
+}

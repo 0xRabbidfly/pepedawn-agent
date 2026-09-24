@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "asset": "PEPECHEETOS",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 50,
+  "artist": "Tall Greg Art",
+  "supply": 33,
+  "issuance": "April 2023",
+  "textOnCard": [
+    "PEPECHEETOS, 2023",
+    "The most beautiful meme on the most beautiful snack."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog: Classic internet meme character.",
+    "Cheetos: Popular snack, humorously reimagined.",
+    "The spicy theme complements the \"hot\" meme culture."
+  ],
+  "visualSummary": "The artwork depicts a bag of Cheetos, creatively rebranded as \"Pepe Hot\" with an image of Pepe the Frog on it. The scene is painted with rich, warm colors, predominantly reds and oranges, capturing the spicy theme. The composition includes a few scattered Cheetos on a napkin, adding a playful and cheeky vibe.",
+  "visualSummaryShort": "The card features a bag of Cheetos rebranded as \"Pepe Hot\" with Pepe the Frog's image. The warm color palette of reds and oranges enhances the spicy theme, complemented by scattered Cheetos on a napkin.",
+  "visualKeywords": [
+    "cheetos",
+    "pepe the frog",
+    "red",
+    "orange",
+    "snack",
+    "playful",
+    "warm colors",
+    "scattered",
+    "cheeky"
+  ],
+  "textKeywords": [
+    "pepecheetos",
+    "2023",
+    "beautiful",
+    "meme",
+    "snack"
+  ],
+  "keywords": [
+    "cheetos",
+    "pepe the frog",
+    "red",
+    "orange",
+    "snack",
+    "playful",
+    "warm colors",
+    "scattered",
+    "cheeky",
+    "pepecheetos",
+    "2023",
+    "beautiful",
+    "meme"
+  ],
+  "embeddingInput": "PEPECHEETOS (Fake Rares) - Series 13 Card 50\nArtist: Tall Greg Art\nSupply 33 Issued April 2023\nOn-card text: PEPECHEETOS, 2023 | The most beautiful meme on the most beautiful snack.\nVisual summary: The artwork depicts a bag of Cheetos, creatively rebranded as \"Pepe Hot\" with an image of Pepe the Frog on it. The scene is painted with rich, warm colors, predominantly reds and oranges, capturing the spicy theme. The composition includes a few scattered Cheetos on a napkin, adding a playful and cheeky vibe.\nMemetic references: Pepe the Frog: Classic internet meme character.; Cheetos: Popular snack, humorously reimagined.; The spicy theme complements the \"hot\" meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPECHEETOS#text",
+      "label": "On-card text",
+      "text": "PEPECHEETOS, 2023 | The most beautiful meme on the most beautiful snack.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPECHEETOS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog: Classic internet meme character.\nCheetos: Popular snack, humorously reimagined.\nThe spicy theme complements the \"hot\" meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPECHEETOS#visual",
+      "label": "Visual summary",
+      "text": "The artwork depicts a bag of Cheetos, creatively rebranded as \"Pepe Hot\" with an image of Pepe the Frog on it. The scene is painted with rich, warm colors, predominantly reds and oranges, capturing the spicy theme. The composition includes a few scattered Cheetos on a napkin, adding a playful and cheeky vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPECHEETOS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPECHEETOS, 2023  \nThe most beautiful meme on the most beautiful snack.\n\n🎨 **VISUAL BREAKDOWN:**\nThe artwork depicts a bag of Cheetos, creatively rebranded as \"Pepe Hot\" with an image of Pepe the Frog on it. The scene is painted with rich, warm colors, predominantly reds and oranges, capturing the spicy theme. The composition includes a few scattered Cheetos on a napkin, adding a playful and cheeky vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog: Classic internet meme character.\n- Cheetos: Popular snack, humorously reimagined.\n- The spicy theme complements the \"hot\" meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.854Z",
+  "sourceFactVersion": 1
+}

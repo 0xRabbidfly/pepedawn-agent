@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "asset": "FORKEDPEPE",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 22,
+  "artist": "Mr. HODLPIG",
+  "supply": 137,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "Bitcoin Cash Amusement Park. Forked Zone."
+  ],
+  "memeticReferences": [
+    "References to Bitcoin Cash as an amusement park suggest the wild ride of crypto markets.",
+    "The concept of a \"forked zone\" nods to blockchain forks and the resulting chaos.",
+    "Neon lights and amusement imagery evoke a sense of nostalgia mixed with crypto chaos."
+  ],
+  "visualSummary": "This card presents a night scene of an amusement park with neon signs. The color palette is dominated by dark blues and greens, creating a mysterious and slightly eerie atmosphere. The art style is detailed and digital, with elements like a Ferris wheel and ticket booths adding to the theme park vibe.",
+  "visualSummaryShort": "The card depicts a night scene at an amusement park illuminated by neon signs. Dark blues and greens dominate the color palette, enhancing the mysterious atmosphere.",
+  "visualKeywords": [
+    "amusement park",
+    "neon signs",
+    "dark blues",
+    "greens",
+    "ferris wheel",
+    "ticket booths",
+    "night scene",
+    "eerie",
+    "digital art",
+    "mysterious"
+  ],
+  "textKeywords": [
+    "bitcoin",
+    "cash",
+    "amusement",
+    "park",
+    "forked",
+    "zone"
+  ],
+  "keywords": [
+    "amusement park",
+    "neon signs",
+    "dark blues",
+    "greens",
+    "ferris wheel",
+    "ticket booths",
+    "night scene",
+    "eerie",
+    "digital art",
+    "mysterious",
+    "bitcoin",
+    "cash",
+    "amusement",
+    "park",
+    "forked",
+    "zone"
+  ],
+  "embeddingInput": "FORKEDPEPE (Fake Rares) - Series 8 Card 22\nArtist: Mr. HODLPIG\nSupply 137 Issued October 2021\nOn-card text: Bitcoin Cash Amusement Park. Forked Zone.\nVisual summary: This card presents a night scene of an amusement park with neon signs. The color palette is dominated by dark blues and greens, creating a mysterious and slightly eerie atmosphere. The art style is detailed and digital, with elements like a Ferris wheel and ticket booths adding to the theme park vibe.\nMemetic references: References to Bitcoin Cash as an amusement park suggest the wild ride of crypto markets.; The concept of a \"forked zone\" nods to blockchain forks and the resulting chaos.; Neon lights and amusement imagery evoke a sense of nostalgia mixed with crypto chaos.",
+  "embeddingBlocks": [
+    {
+      "id": "FORKEDPEPE#text",
+      "label": "On-card text",
+      "text": "Bitcoin Cash Amusement Park. Forked Zone.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FORKEDPEPE#memetic",
+      "label": "Memetic references",
+      "text": "References to Bitcoin Cash as an amusement park suggest the wild ride of crypto markets.\nThe concept of a \"forked zone\" nods to blockchain forks and the resulting chaos.\nNeon lights and amusement imagery evoke a sense of nostalgia mixed with crypto chaos.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FORKEDPEPE#visual",
+      "label": "Visual summary",
+      "text": "This card presents a night scene of an amusement park with neon signs. The color palette is dominated by dark blues and greens, creating a mysterious and slightly eerie atmosphere. The art style is detailed and digital, with elements like a Ferris wheel and ticket booths adding to the theme park vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FORKEDPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nBitcoin Cash Amusement Park. Forked Zone.\n\n🎨 **VISUAL BREAKDOWN:**\nThis card presents a night scene of an amusement park with neon signs. The color palette is dominated by dark blues and greens, creating a mysterious and slightly eerie atmosphere. The art style is detailed and digital, with elements like a Ferris wheel and ticket booths adding to the theme park vibe.\n\n🧬 **MEMETIC DNA:**\n- References to Bitcoin Cash as an amusement park suggest the wild ride of crypto markets.\n- The concept of a \"forked zone\" nods to blockchain forks and the resulting chaos.\n- Neon lights and amusement imagery evoke a sense of nostalgia mixed with crypto chaos.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.634Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,111 @@
+{
+  "version": 1,
+  "asset": "TROMPEPE",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 45,
+  "artist": "Coldie",
+  "supply": 121,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "Trompepe l'oeil",
+    "Fool Pepe once, shame on Pepe.",
+    "Fool Pepe twice, eternal shame on you.",
+    "When Pepe fools you, you know you had it coming.",
+    "How dare you EVER try to fool Pepe."
+  ],
+  "memeticReferences": [
+    "References the art technique \"Trompe l'oeil\" (trick of the eye), playing on visual deception.",
+    "Classic Pepe the Frog, a staple of internet meme culture.",
+    "Utilizes comic book aesthetics, connecting to retro and pop art styles."
+  ],
+  "visualSummary": "The card features a close-up of Pepe the Frog's eyes, rendered in a dot matrix style reminiscent of vintage comic art. The background is a vibrant green, typical of Pepe, with a bold red tongue peeking through. The composition is clean and focused, with heavy use of black outlines to accentuate the features.",
+  "visualSummaryShort": "The card showcases a close-up of Pepe the Frog's expressive eyes in a vintage comic dot matrix style. A vibrant green background and a bold red tongue enhance the striking visual impact.",
+  "visualKeywords": [
+    "pepe",
+    "eyes",
+    "green",
+    "red tongue",
+    "dot matrix",
+    "comic art",
+    "black outlines"
+  ],
+  "textKeywords": [
+    "trompepe",
+    "oeil",
+    "fool",
+    "once",
+    "shame",
+    "twice",
+    "eternal",
+    "you",
+    "when",
+    "fools",
+    "know",
+    "had",
+    "coming",
+    "how",
+    "dare",
+    "ever",
+    "try"
+  ],
+  "keywords": [
+    "pepe",
+    "eyes",
+    "green",
+    "red tongue",
+    "dot matrix",
+    "comic art",
+    "black outlines",
+    "trompepe",
+    "oeil",
+    "fool",
+    "once",
+    "shame",
+    "twice",
+    "eternal",
+    "you",
+    "when",
+    "fools",
+    "know",
+    "had",
+    "coming",
+    "how",
+    "dare",
+    "ever",
+    "try"
+  ],
+  "embeddingInput": "TROMPEPE (Fake Rares) - Series 8 Card 45\nArtist: Coldie\nSupply 121 Issued July 2022\nOn-card text: Trompepe l'oeil | Fool Pepe once, shame on Pepe. | Fool Pepe twice, eternal shame on you. | When Pepe fools you, you know you had it coming. | How dare you EVER try to fool Pepe.\nVisual summary: The card features a close-up of Pepe the Frog's eyes, rendered in a dot matrix style reminiscent of vintage comic art. The background is a vibrant green, typical of Pepe, with a bold red tongue peeking through. The composition is clean and focused, with heavy use of black outlines to accentuate the features.\nMemetic references: References the art technique \"Trompe l'oeil\" (trick of the eye), playing on visual deception.; Classic Pepe the Frog, a staple of internet meme culture.; Utilizes comic book aesthetics, connecting to retro and pop art styles.",
+  "embeddingBlocks": [
+    {
+      "id": "TROMPEPE#text",
+      "label": "On-card text",
+      "text": "Trompepe l'oeil | Fool Pepe once, shame on Pepe. | Fool Pepe twice, eternal shame on you. | When Pepe fools you, you know you had it coming. | How dare you EVER try to fool Pepe.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "TROMPEPE#memetic",
+      "label": "Memetic references",
+      "text": "References the art technique \"Trompe l'oeil\" (trick of the eye), playing on visual deception.\nClassic Pepe the Frog, a staple of internet meme culture.\nUtilizes comic book aesthetics, connecting to retro and pop art styles.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "TROMPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a close-up of Pepe the Frog's eyes, rendered in a dot matrix style reminiscent of vintage comic art. The background is a vibrant green, typical of Pepe, with a bold red tongue peeking through. The composition is clean and focused, with heavy use of black outlines to accentuate the features.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "TROMPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nTrompepe l'oeil  \nFool Pepe once, shame on Pepe.  \nFool Pepe twice, eternal shame on you.  \nWhen Pepe fools you, you know you had it coming.  \nHow dare you EVER try to fool Pepe.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a close-up of Pepe the Frog's eyes, rendered in a dot matrix style reminiscent of vintage comic art. The background is a vibrant green, typical of Pepe, with a bold red tongue peeking through. The composition is clean and focused, with heavy use of black outlines to accentuate the features.\n\n🧬 **MEMETIC DNA:**\n- References the art technique \"Trompe l'oeil\" (trick of the eye), playing on visual deception.\n- Classic Pepe the Frog, a staple of internet meme culture.\n- Utilizes comic book aesthetics, connecting to retro and pop art styles.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.159Z",
+  "sourceFactVersion": 1
+}

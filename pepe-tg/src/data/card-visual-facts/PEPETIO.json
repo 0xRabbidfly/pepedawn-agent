@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "asset": "PEPETIO",
+  "collection": "Fake Rares",
+  "series": 13,
+  "cardNumber": 7,
+  "artist": "Aravan",
+  "supply": 46,
+  "issuance": "September 2022",
+  "textOnCard": [
+    "TIO PEPE",
+    "PUMP OR DUMP",
+    "ALWAYS CUP OF WINE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog is front and center, merging with the iconic \"Tío Pepe\" wine branding.",
+    "Bitcoin logo subtly incorporated into the wine bottle label.",
+    "References to Spanish culture with flamenco and bullfighting elements."
+  ],
+  "visualSummary": "The card features a Pepe character styled as a wine bottle, wearing a red flamenco hat and jacket, exuding Spanish flair. The background is a lively Spanish street scene with a bullfight, flamenco dancers, and traditional architecture. The color palette includes deep reds, earthy browns, and vibrant yellows, giving it a warm and festive vibe.",
+  "visualSummaryShort": "The card showcases a Pepe character designed as a wine bottle, adorned with a red flamenco hat and jacket. The lively background features a Spanish street scene with bullfighting and flamenco dancers, creating a warm and festive atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "wine bottle",
+    "flamenco",
+    "bullfight",
+    "dancers",
+    "red",
+    "yellow",
+    "street",
+    "traditional",
+    "festive"
+  ],
+  "textKeywords": [
+    "tio",
+    "pump",
+    "dump",
+    "always",
+    "cup",
+    "wine"
+  ],
+  "keywords": [
+    "pepe",
+    "wine bottle",
+    "flamenco",
+    "bullfight",
+    "dancers",
+    "red",
+    "yellow",
+    "street",
+    "traditional",
+    "festive",
+    "tio",
+    "pump",
+    "dump",
+    "always",
+    "cup",
+    "wine"
+  ],
+  "embeddingInput": "PEPETIO (Fake Rares) - Series 13 Card 7\nArtist: Aravan\nSupply 46 Issued September 2022\nOn-card text: TIO PEPE | PUMP OR DUMP | ALWAYS CUP OF WINE\nVisual summary: The card features a Pepe character styled as a wine bottle, wearing a red flamenco hat and jacket, exuding Spanish flair. The background is a lively Spanish street scene with a bullfight, flamenco dancers, and traditional architecture. The color palette includes deep reds, earthy browns, and vibrant yellows, giving it a warm and festive vibe.\nMemetic references: Pepe the Frog is front and center, merging with the iconic \"Tío Pepe\" wine branding.; Bitcoin logo subtly incorporated into the wine bottle label.; References to Spanish culture with flamenco and bullfighting elements.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPETIO#text",
+      "label": "On-card text",
+      "text": "TIO PEPE | PUMP OR DUMP | ALWAYS CUP OF WINE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPETIO#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog is front and center, merging with the iconic \"Tío Pepe\" wine branding.\nBitcoin logo subtly incorporated into the wine bottle label.\nReferences to Spanish culture with flamenco and bullfighting elements.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPETIO#visual",
+      "label": "Visual summary",
+      "text": "The card features a Pepe character styled as a wine bottle, wearing a red flamenco hat and jacket, exuding Spanish flair. The background is a lively Spanish street scene with a bullfight, flamenco dancers, and traditional architecture. The color palette includes deep reds, earthy browns, and vibrant yellows, giving it a warm and festive vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPETIO#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nTIO PEPE  \nPUMP OR DUMP  \nALWAYS CUP OF WINE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a Pepe character styled as a wine bottle, wearing a red flamenco hat and jacket, exuding Spanish flair. The background is a lively Spanish street scene with a bullfight, flamenco dancers, and traditional architecture. The color palette includes deep reds, earthy browns, and vibrant yellows, giving it a warm and festive vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog is front and center, merging with the iconic \"Tío Pepe\" wine branding.\n- Bitcoin logo subtly incorporated into the wine bottle label.\n- References to Spanish culture with flamenco and bullfighting elements.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.999Z",
+  "sourceFactVersion": 1
+}

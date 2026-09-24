@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "asset": "BOYSCLUBFAKE",
+  "collection": "Fake Rares",
+  "series": 10,
+  "cardNumber": 10,
+  "artist": "ROCHIGG",
+  "supply": 100,
+  "issuance": "July 2022",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog in various forms, a staple of meme culture.",
+    "References to crypto nightlife and party vibes.",
+    "Skaters and dancers add a retro, carefree feel.",
+    "Rainbow beams shooting from windows, symbolizing diverse energy and creativity."
+  ],
+  "visualSummary": "This card features a vibrant house party scene with a classic American-style house as the backdrop. The color palette is electric, with neon pinks, blues, greens, and yellows highlighting the energetic atmosphere. Pepe characters are scattered across the image, engaging in various activities like skateboarding, dancing, and chilling, all under a sky filled with swirling, cosmic patterns.",
+  "visualSummaryShort": "The card depicts a lively house party with a classic American-style house and vibrant colors. Pepe characters are seen skateboarding, dancing, and relaxing under a cosmic sky.",
+  "visualKeywords": [
+    "house party",
+    "neon colors",
+    "pepe characters",
+    "skateboarding",
+    "dancing",
+    "cosmic sky",
+    "energetic atmosphere",
+    "classic house",
+    "chilling"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "house party",
+    "neon colors",
+    "pepe characters",
+    "skateboarding",
+    "dancing",
+    "cosmic sky",
+    "energetic atmosphere",
+    "classic house",
+    "chilling"
+  ],
+  "embeddingInput": "BOYSCLUBFAKE (Fake Rares) - Series 10 Card 10\nArtist: ROCHIGG\nSupply 100 Issued July 2022\nOn-card text: none detected\nVisual summary: This card features a vibrant house party scene with a classic American-style house as the backdrop. The color palette is electric, with neon pinks, blues, greens, and yellows highlighting the energetic atmosphere. Pepe characters are scattered across the image, engaging in various activities like skateboarding, dancing, and chilling, all under a sky filled with swirling, cosmic patterns.\nMemetic references: Pepe the Frog in various forms, a staple of meme culture.; References to crypto nightlife and party vibes.; Skaters and dancers add a retro, carefree feel.; Rainbow beams shooting from windows, symbolizing diverse energy and creativity.",
+  "embeddingBlocks": [
+    {
+      "id": "BOYSCLUBFAKE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog in various forms, a staple of meme culture.\nReferences to crypto nightlife and party vibes.\nSkaters and dancers add a retro, carefree feel.\nRainbow beams shooting from windows, symbolizing diverse energy and creativity.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "BOYSCLUBFAKE#visual",
+      "label": "Visual summary",
+      "text": "This card features a vibrant house party scene with a classic American-style house as the backdrop. The color palette is electric, with neon pinks, blues, greens, and yellows highlighting the energetic atmosphere. Pepe characters are scattered across the image, engaging in various activities like skateboarding, dancing, and chilling, all under a sky filled with swirling, cosmic patterns.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "BOYSCLUBFAKE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a vibrant house party scene with a classic American-style house as the backdrop. The color palette is electric, with neon pinks, blues, greens, and yellows highlighting the energetic atmosphere. Pepe characters are scattered across the image, engaging in various activities like skateboarding, dancing, and chilling, all under a sky filled with swirling, cosmic patterns.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog in various forms, a staple of meme culture.\n- References to crypto nightlife and party vibes.\n- Skaters and dancers add a retro, carefree feel.\n- Rainbow beams shooting from windows, symbolizing diverse energy and creativity.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.326Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "asset": "FAKEVERSE",
+  "collection": "Fake Rares",
+  "series": 8,
+  "cardNumber": 32,
+  "artist": "Al",
+  "supply": 100,
+  "issuance": "June 2022",
+  "textOnCard": [
+    "FAKEVERSE",
+    "WE ALL STAND TOGETHER"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference with the green planet face.",
+    "Cosmic and space motifs, common in crypto art for representing vastness and exploration.",
+    "Unity theme with \"WE ALL STAND TOGETHER,\" reflecting community vibes."
+  ],
+  "visualSummary": "This card features a cosmic scene with a central green planet, which has a Pepe face subtly embedded in it. The background is a starry night sky, with two smaller celestial bodies orbiting the main planet. The color palette is predominantly dark with bright greens and yellows, giving it a digital, pixelated aesthetic.",
+  "visualSummaryShort": "The card showcases a cosmic scene with a central green planet featuring a Pepe face. The dark background is filled with stars and two smaller celestial bodies, creating a digital, pixelated aesthetic.",
+  "visualKeywords": [
+    "cosmic",
+    "green planet",
+    "pepe",
+    "starry sky",
+    "celestial bodies",
+    "dark palette",
+    "pixelated",
+    "bright colors"
+  ],
+  "textKeywords": [
+    "fakeverse",
+    "all",
+    "stand",
+    "together"
+  ],
+  "keywords": [
+    "cosmic",
+    "green planet",
+    "pepe",
+    "starry sky",
+    "celestial bodies",
+    "dark palette",
+    "pixelated",
+    "bright colors",
+    "fakeverse",
+    "all",
+    "stand",
+    "together"
+  ],
+  "embeddingInput": "FAKEVERSE (Fake Rares) - Series 8 Card 32\nArtist: Al\nSupply 100 Issued June 2022\nOn-card text: FAKEVERSE | WE ALL STAND TOGETHER\nVisual summary: This card features a cosmic scene with a central green planet, which has a Pepe face subtly embedded in it. The background is a starry night sky, with two smaller celestial bodies orbiting the main planet. The color palette is predominantly dark with bright greens and yellows, giving it a digital, pixelated aesthetic.\nMemetic references: Pepe the Frog reference with the green planet face.; Cosmic and space motifs, common in crypto art for representing vastness and exploration.; Unity theme with \"WE ALL STAND TOGETHER,\" reflecting community vibes.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEVERSE#text",
+      "label": "On-card text",
+      "text": "FAKEVERSE | WE ALL STAND TOGETHER",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEVERSE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference with the green planet face.\nCosmic and space motifs, common in crypto art for representing vastness and exploration.\nUnity theme with \"WE ALL STAND TOGETHER,\" reflecting community vibes.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEVERSE#visual",
+      "label": "Visual summary",
+      "text": "This card features a cosmic scene with a central green planet, which has a Pepe face subtly embedded in it. The background is a starry night sky, with two smaller celestial bodies orbiting the main planet. The color palette is predominantly dark with bright greens and yellows, giving it a digital, pixelated aesthetic.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEVERSE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKEVERSE  \nWE ALL STAND TOGETHER\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features a cosmic scene with a central green planet, which has a Pepe face subtly embedded in it. The background is a starry night sky, with two smaller celestial bodies orbiting the main planet. The color palette is predominantly dark with bright greens and yellows, giving it a digital, pixelated aesthetic.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference with the green planet face.\n- Cosmic and space motifs, common in crypto art for representing vastness and exploration.\n- Unity theme with \"WE ALL STAND TOGETHER,\" reflecting community vibes.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.592Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "asset": "PEPENYC",
+  "collection": "Fake Rares",
+  "series": 17,
+  "cardNumber": 19,
+  "artist": "ditacrypto",
+  "supply": 100,
+  "issuance": "February 2024",
+  "textOnCard": [
+    "PEPENYC",
+    "Another rendition of Frogs Fiat approaching in NYC",
+    "Rareness Score 99"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as the central character.",
+    "Reference to NYC landmarks like the Statue of Liberty.",
+    "Plays on the concept of \"fiat\" currency, a nod to crypto culture.",
+    "Subtle NYC homage blended with meme culture."
+  ],
+  "visualSummary": "The card features Pepe the Frog standing against a backdrop of the New York City skyline, including the Statue of Liberty silhouetted against an orange sunset. The color palette is a mix of muted greens and oranges, giving the scene a twilight feel. The style is digital with a textured, almost canvas-like overlay, adding a vintage vibe to the modern meme culture.",
+  "visualSummaryShort": "The card depicts Pepe the Frog in front of the New York City skyline at sunset, with the Statue of Liberty visible. The color palette features muted greens and oranges, creating a twilight atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "new york city",
+    "sunset",
+    "statue of liberty",
+    "muted colors",
+    "twilight",
+    "digital art",
+    "vintage vibe"
+  ],
+  "textKeywords": [
+    "pepenyc",
+    "another",
+    "rendition",
+    "frogs",
+    "fiat",
+    "approaching",
+    "nyc",
+    "rareness",
+    "score"
+  ],
+  "keywords": [
+    "pepe",
+    "new york city",
+    "sunset",
+    "statue of liberty",
+    "muted colors",
+    "twilight",
+    "digital art",
+    "vintage vibe",
+    "pepenyc",
+    "another",
+    "rendition",
+    "frogs",
+    "fiat",
+    "approaching",
+    "nyc",
+    "rareness",
+    "score"
+  ],
+  "embeddingInput": "PEPENYC (Fake Rares) - Series 17 Card 19\nArtist: ditacrypto\nSupply 100 Issued February 2024\nOn-card text: PEPENYC | Another rendition of Frogs Fiat approaching in NYC | Rareness Score 99\nVisual summary: The card features Pepe the Frog standing against a backdrop of the New York City skyline, including the Statue of Liberty silhouetted against an orange sunset. The color palette is a mix of muted greens and oranges, giving the scene a twilight feel. The style is digital with a textured, almost canvas-like overlay, adding a vintage vibe to the modern meme culture.\nMemetic references: Pepe the Frog as the central character.; Reference to NYC landmarks like the Statue of Liberty.; Plays on the concept of \"fiat\" currency, a nod to crypto culture.; Subtle NYC homage blended with meme culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPENYC#text",
+      "label": "On-card text",
+      "text": "PEPENYC | Another rendition of Frogs Fiat approaching in NYC | Rareness Score 99",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPENYC#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as the central character.\nReference to NYC landmarks like the Statue of Liberty.\nPlays on the concept of \"fiat\" currency, a nod to crypto culture.\nSubtle NYC homage blended with meme culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPENYC#visual",
+      "label": "Visual summary",
+      "text": "The card features Pepe the Frog standing against a backdrop of the New York City skyline, including the Statue of Liberty silhouetted against an orange sunset. The color palette is a mix of muted greens and oranges, giving the scene a twilight feel. The style is digital with a textured, almost canvas-like overlay, adding a vintage vibe to the modern meme culture.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPENYC#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPENYC  \nAnother rendition of Frogs Fiat approaching in NYC  \nRareness Score 99\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features Pepe the Frog standing against a backdrop of the New York City skyline, including the Statue of Liberty silhouetted against an orange sunset. The color palette is a mix of muted greens and oranges, giving the scene a twilight feel. The style is digital with a textured, almost canvas-like overlay, adding a vintage vibe to the modern meme culture.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as the central character.\n- Reference to NYC landmarks like the Statue of Liberty.\n- Plays on the concept of \"fiat\" currency, a nod to crypto culture.\n- Subtle NYC homage blended with meme culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.942Z",
+  "sourceFactVersion": 1
+}

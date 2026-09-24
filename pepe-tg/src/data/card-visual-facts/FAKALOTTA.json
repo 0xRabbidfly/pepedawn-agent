@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "asset": "FAKALOTTA",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 28,
+  "artist": "PiFu",
+  "supply": 160,
+  "issuance": "March 2022",
+  "textOnCard": [
+    "\"FAKALOTTA\"",
+    "\"NOT FOR SALE\""
+  ],
+  "memeticReferences": [
+    "Classic Pepe the Frog reference.",
+    "Bitcoin logo signifies crypto culture.",
+    "\"NOT FOR SALE\" adds a layer of exclusivity and humor.",
+    "Multi-eyed character nods to meme surrealism."
+  ],
+  "visualSummary": "The card features a multi-eyed Pepe character, dressed in a sharp suit and bowler hat, exuding a mix of sophistication and absurdity. The color palette is rich with purples, greens, and metallic accents, creating a night scene with glowing city lights in the background. Elements like an oversized pencil, a Bitcoin logo, and a glass of wine add to the surreal and eclectic composition.",
+  "visualSummaryShort": "The card showcases a multi-eyed Pepe character in a stylish suit and bowler hat against a vibrant night city backdrop. Surreal elements like an oversized pencil and a Bitcoin logo enhance the eclectic atmosphere.",
+  "visualKeywords": [
+    "multi-eyed",
+    "pepe",
+    "suit",
+    "bowler hat",
+    "purple",
+    "green",
+    "city lights",
+    "surreal",
+    "bitcoin",
+    "wine"
+  ],
+  "textKeywords": [
+    "fakalotta",
+    "not",
+    "sale"
+  ],
+  "keywords": [
+    "multi-eyed",
+    "pepe",
+    "suit",
+    "bowler hat",
+    "purple",
+    "green",
+    "city lights",
+    "surreal",
+    "bitcoin",
+    "wine",
+    "fakalotta",
+    "not",
+    "sale"
+  ],
+  "embeddingInput": "FAKALOTTA (Fake Rares) - Series 6 Card 28\nArtist: PiFu\nSupply 160 Issued March 2022\nOn-card text: \"FAKALOTTA\" | \"NOT FOR SALE\"\nVisual summary: The card features a multi-eyed Pepe character, dressed in a sharp suit and bowler hat, exuding a mix of sophistication and absurdity. The color palette is rich with purples, greens, and metallic accents, creating a night scene with glowing city lights in the background. Elements like an oversized pencil, a Bitcoin logo, and a glass of wine add to the surreal and eclectic composition.\nMemetic references: Classic Pepe the Frog reference.; Bitcoin logo signifies crypto culture.; \"NOT FOR SALE\" adds a layer of exclusivity and humor.; Multi-eyed character nods to meme surrealism.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKALOTTA#text",
+      "label": "On-card text",
+      "text": "\"FAKALOTTA\" | \"NOT FOR SALE\"",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKALOTTA#memetic",
+      "label": "Memetic references",
+      "text": "Classic Pepe the Frog reference.\nBitcoin logo signifies crypto culture.\n\"NOT FOR SALE\" adds a layer of exclusivity and humor.\nMulti-eyed character nods to meme surrealism.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKALOTTA#visual",
+      "label": "Visual summary",
+      "text": "The card features a multi-eyed Pepe character, dressed in a sharp suit and bowler hat, exuding a mix of sophistication and absurdity. The color palette is rich with purples, greens, and metallic accents, creating a night scene with glowing city lights in the background. Elements like an oversized pencil, a Bitcoin logo, and a glass of wine add to the surreal and eclectic composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKALOTTA#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\n- \"FAKALOTTA\"\n- \"NOT FOR SALE\"\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a multi-eyed Pepe character, dressed in a sharp suit and bowler hat, exuding a mix of sophistication and absurdity. The color palette is rich with purples, greens, and metallic accents, creating a night scene with glowing city lights in the background. Elements like an oversized pencil, a Bitcoin logo, and a glass of wine add to the surreal and eclectic composition.\n\n🧬 **MEMETIC DNA:**\n- Classic Pepe the Frog reference.\n- Bitcoin logo signifies crypto culture.\n- \"NOT FOR SALE\" adds a layer of exclusivity and humor.\n- Multi-eyed character nods to meme surrealism.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.437Z",
+  "sourceFactVersion": 1
+}

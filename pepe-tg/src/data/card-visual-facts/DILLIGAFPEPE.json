@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "asset": "DILLIGAFPEPE",
+  "collection": "Fake Rares",
+  "series": 7,
+  "cardNumber": 36,
+  "artist": "Indelible",
+  "supply": 100,
+  "issuance": "February 2022",
+  "textOnCard": [
+    "Elonath Muskpepe"
+  ],
+  "memeticReferences": [
+    "References to Pepe lore as a cultural icon.",
+    "Crypto culture nod with “Elonath Muskpepe,” blending a well-known tech figure with meme culture.",
+    "The honey badger, associated with resilience and fearlessness, reinforces crypto's \"don't care\" attitude."
+  ],
+  "visualSummary": "The card features a regal Pepe the Frog wearing a golden crown, standing triumphantly against a backdrop of intense flames. The color palette is dominated by fiery reds and oranges, contrasted with Pepe's iconic green and the dark tones of the creature beneath him. The artistic style is digital with a painterly touch, capturing a bold and dramatic scene.",
+  "visualSummaryShort": "The card showcases a triumphant Pepe the Frog adorned with a golden crown, set against a backdrop of intense flames. The vibrant color palette features fiery reds and oranges, contrasting with Pepe's green hue.",
+  "visualKeywords": [
+    "pepe",
+    "crown",
+    "flames",
+    "red",
+    "orange",
+    "green",
+    "digital art",
+    "dramatic",
+    "bold"
+  ],
+  "textKeywords": [
+    "elonath",
+    "muskpepe"
+  ],
+  "keywords": [
+    "pepe",
+    "crown",
+    "flames",
+    "red",
+    "orange",
+    "green",
+    "digital art",
+    "dramatic",
+    "bold",
+    "elonath",
+    "muskpepe"
+  ],
+  "embeddingInput": "DILLIGAFPEPE (Fake Rares) - Series 7 Card 36\nArtist: Indelible\nSupply 100 Issued February 2022\nOn-card text: Elonath Muskpepe\nVisual summary: The card features a regal Pepe the Frog wearing a golden crown, standing triumphantly against a backdrop of intense flames. The color palette is dominated by fiery reds and oranges, contrasted with Pepe's iconic green and the dark tones of the creature beneath him. The artistic style is digital with a painterly touch, capturing a bold and dramatic scene.\nMemetic references: References to Pepe lore as a cultural icon.; Crypto culture nod with “Elonath Muskpepe,” blending a well-known tech figure with meme culture.; The honey badger, associated with resilience and fearlessness, reinforces crypto's \"don't care\" attitude.",
+  "embeddingBlocks": [
+    {
+      "id": "DILLIGAFPEPE#text",
+      "label": "On-card text",
+      "text": "Elonath Muskpepe",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "DILLIGAFPEPE#memetic",
+      "label": "Memetic references",
+      "text": "References to Pepe lore as a cultural icon.\nCrypto culture nod with “Elonath Muskpepe,” blending a well-known tech figure with meme culture.\nThe honey badger, associated with resilience and fearlessness, reinforces crypto's \"don't care\" attitude.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "DILLIGAFPEPE#visual",
+      "label": "Visual summary",
+      "text": "The card features a regal Pepe the Frog wearing a golden crown, standing triumphantly against a backdrop of intense flames. The color palette is dominated by fiery reds and oranges, contrasted with Pepe's iconic green and the dark tones of the creature beneath him. The artistic style is digital with a painterly touch, capturing a bold and dramatic scene.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "DILLIGAFPEPE#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nElonath Muskpepe\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a regal Pepe the Frog wearing a golden crown, standing triumphantly against a backdrop of intense flames. The color palette is dominated by fiery reds and oranges, contrasted with Pepe's iconic green and the dark tones of the creature beneath him. The artistic style is digital with a painterly touch, capturing a bold and dramatic scene.\n\n🧬 **MEMETIC DNA:**\n- References to Pepe lore as a cultural icon.\n- Crypto culture nod with “Elonath Muskpepe,” blending a well-known tech figure with meme culture.\n- The honey badger, associated with resilience and fearlessness, reinforces crypto's \"don't care\" attitude.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.395Z",
+  "sourceFactVersion": 1
+}

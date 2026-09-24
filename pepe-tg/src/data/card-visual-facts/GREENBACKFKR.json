@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "asset": "GREENBACKFKR",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 21,
+  "artist": "Mr Hansel",
+  "supply": 21,
+  "issuance": "September 2023",
+  "textOnCard": [
+    "GREENBACK GREENBACK GREENBACK GREENBACK GREENBACK GREENBACK GREENBACK GREENBACK"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog influence, a staple of meme culture.",
+    "References to currency with the term \"GREENBACK\" and the overall design motif.",
+    "The eyes’ resemblance to zeros may hint at crypto market volatility or zero-sum games."
+  ],
+  "visualSummary": "The card features a stylized frog with intricate patterns, sitting prominently in the center. Its eyes resemble zeros, giving a quirky, hypnotic stare. The background is a blend of green and orange tones, with a rich texture that resembles currency design, framed by repeating text.",
+  "visualSummaryShort": "The card showcases a stylized frog with intricate patterns and quirky zero-shaped eyes. The background features a textured blend of green and orange tones, reminiscent of currency design.",
+  "visualKeywords": [
+    "frog",
+    "intricate patterns",
+    "green",
+    "orange",
+    "currency design",
+    "textured",
+    "quirky",
+    "hypnotic",
+    "repeating text"
+  ],
+  "textKeywords": [
+    "greenback"
+  ],
+  "keywords": [
+    "frog",
+    "intricate patterns",
+    "green",
+    "orange",
+    "currency design",
+    "textured",
+    "quirky",
+    "hypnotic",
+    "repeating text",
+    "greenback"
+  ],
+  "embeddingInput": "GREENBACKFKR (Fake Rares) - Series 16 Card 21\nArtist: Mr Hansel\nSupply 21 Issued September 2023\nOn-card text: GREENBACK GREENBACK GREENBACK GREENBACK GREENBACK GREENBACK GREENBACK GREENBACK\nVisual summary: The card features a stylized frog with intricate patterns, sitting prominently in the center. Its eyes resemble zeros, giving a quirky, hypnotic stare. The background is a blend of green and orange tones, with a rich texture that resembles currency design, framed by repeating text.\nMemetic references: Pepe the Frog influence, a staple of meme culture.; References to currency with the term \"GREENBACK\" and the overall design motif.; The eyes’ resemblance to zeros may hint at crypto market volatility or zero-sum games.",
+  "embeddingBlocks": [
+    {
+      "id": "GREENBACKFKR#text",
+      "label": "On-card text",
+      "text": "GREENBACK GREENBACK GREENBACK GREENBACK GREENBACK GREENBACK GREENBACK GREENBACK",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "GREENBACKFKR#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog influence, a staple of meme culture.\nReferences to currency with the term \"GREENBACK\" and the overall design motif.\nThe eyes’ resemblance to zeros may hint at crypto market volatility or zero-sum games.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "GREENBACKFKR#visual",
+      "label": "Visual summary",
+      "text": "The card features a stylized frog with intricate patterns, sitting prominently in the center. Its eyes resemble zeros, giving a quirky, hypnotic stare. The background is a blend of green and orange tones, with a rich texture that resembles currency design, framed by repeating text.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "GREENBACKFKR#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nGREENBACK GREENBACK GREENBACK GREENBACK GREENBACK GREENBACK GREENBACK GREENBACK\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a stylized frog with intricate patterns, sitting prominently in the center. Its eyes resemble zeros, giving a quirky, hypnotic stare. The background is a blend of green and orange tones, with a rich texture that resembles currency design, framed by repeating text.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog influence, a staple of meme culture.\n- References to currency with the term \"GREENBACK\" and the overall design motif.\n- The eyes’ resemblance to zeros may hint at crypto market volatility or zero-sum games.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.668Z",
+  "sourceFactVersion": 1
+}

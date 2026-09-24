@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "asset": "FAKEBALLS",
+  "collection": "Fake Rares",
+  "series": 1,
+  "cardNumber": 18,
+  "artist": "NFTMANC",
+  "supply": 500,
+  "issuance": "October 2021",
+  "textOnCard": [
+    "SHILL. May the fakeness be with you... Starring... NAGMI Fake. FAKEBALLS. Get one fake movie pass with each card."
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure.",
+    "\"May the fakeness be with you...\" references Star Wars.",
+    "\"SHILL\" nods to crypto culture and promotion.",
+    "Appearance of \"NAGMI\" plays on \"WAGMI\" (We Are Gonna Make It).",
+    "Darth Vader Pepe combines crypto and pop culture."
+  ],
+  "visualSummary": "The card is a vibrant collage with a cosmic theme. It features a large Pepe face, a UFO, and a space backdrop sprinkled with stars, alongside smaller Pepegas and a Darth Vader-esque Pepe. The color palette is a mix of greens, blues, and yellows, giving it a playful and surreal vibe.",
+  "visualSummaryShort": "The card showcases a vibrant cosmic collage featuring a large Pepe face and a UFO against a starry space backdrop. The playful color palette includes greens, blues, and yellows, enhancing the surreal atmosphere.",
+  "visualKeywords": [
+    "pepe",
+    "ufo",
+    "space",
+    "stars",
+    "green",
+    "blue",
+    "yellow",
+    "collage",
+    "surreal",
+    "playful"
+  ],
+  "textKeywords": [
+    "shill",
+    "may",
+    "fakeness",
+    "you",
+    "starring",
+    "nagmi",
+    "fakeballs",
+    "get",
+    "one",
+    "movie",
+    "pass",
+    "each"
+  ],
+  "keywords": [
+    "pepe",
+    "ufo",
+    "space",
+    "stars",
+    "green",
+    "blue",
+    "yellow",
+    "collage",
+    "surreal",
+    "playful",
+    "shill",
+    "may",
+    "fakeness",
+    "you",
+    "starring",
+    "nagmi",
+    "fakeballs",
+    "get",
+    "one",
+    "movie",
+    "pass",
+    "each"
+  ],
+  "embeddingInput": "FAKEBALLS (Fake Rares) - Series 1 Card 18\nArtist: NFTMANC\nSupply 500 Issued October 2021\nOn-card text: SHILL. May the fakeness be with you... Starring... NAGMI Fake. FAKEBALLS. Get one fake movie pass with each card.\nVisual summary: The card is a vibrant collage with a cosmic theme. It features a large Pepe face, a UFO, and a space backdrop sprinkled with stars, alongside smaller Pepegas and a Darth Vader-esque Pepe. The color palette is a mix of greens, blues, and yellows, giving it a playful and surreal vibe.\nMemetic references: Pepe the Frog as a central figure.; \"May the fakeness be with you...\" references Star Wars.; \"SHILL\" nods to crypto culture and promotion.; Appearance of \"NAGMI\" plays on \"WAGMI\" (We Are Gonna Make It).; Darth Vader Pepe combines crypto and pop culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEBALLS#text",
+      "label": "On-card text",
+      "text": "SHILL. May the fakeness be with you... Starring... NAGMI Fake. FAKEBALLS. Get one fake movie pass with each card.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEBALLS#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure.\n\"May the fakeness be with you...\" references Star Wars.\n\"SHILL\" nods to crypto culture and promotion.\nAppearance of \"NAGMI\" plays on \"WAGMI\" (We Are Gonna Make It).\nDarth Vader Pepe combines crypto and pop culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEBALLS#visual",
+      "label": "Visual summary",
+      "text": "The card is a vibrant collage with a cosmic theme. It features a large Pepe face, a UFO, and a space backdrop sprinkled with stars, alongside smaller Pepegas and a Darth Vader-esque Pepe. The color palette is a mix of greens, blues, and yellows, giving it a playful and surreal vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEBALLS#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nSHILL. May the fakeness be with you... Starring... NAGMI Fake. FAKEBALLS. Get one fake movie pass with each card.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card is a vibrant collage with a cosmic theme. It features a large Pepe face, a UFO, and a space backdrop sprinkled with stars, alongside smaller Pepegas and a Darth Vader-esque Pepe. The color palette is a mix of greens, blues, and yellows, giving it a playful and surreal vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure.\n- \"May the fakeness be with you...\" references Star Wars.\n- \"SHILL\" nods to crypto culture and promotion.\n- Appearance of \"NAGMI\" plays on \"WAGMI\" (We Are Gonna Make It).\n- Darth Vader Pepe combines crypto and pop culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.458Z",
+  "sourceFactVersion": 1
+}

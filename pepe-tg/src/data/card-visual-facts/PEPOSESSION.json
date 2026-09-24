@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "PEPOSESSION",
+  "collection": "Fake Rares",
+  "series": 6,
+  "cardNumber": 38,
+  "artist": "Yog Joshi",
+  "supply": 100,
+  "issuance": "November 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog, the quintessential meme character.",
+    "Hypnotic eyes suggesting a journey into the depths of crypto rabbit holes.",
+    "Classic internet meme aesthetic with a twist of NFT culture."
+  ],
+  "visualSummary": "The card features a classic Pepe the Frog with a mind-bending twist—his eyes are swirling in a hypnotic pattern, suggesting a state of deep contemplation or existential crisis. The color palette is simple, with the iconic green skin, red lips, and a blue shirt against a black background. The style is reminiscent of hand-drawn animation with a touch of psychedelic flair.",
+  "visualSummaryShort": "The card showcases Pepe the Frog with swirling eyes, evoking a sense of deep contemplation. The color palette includes iconic green skin, red lips, and a blue shirt set against a black background.",
+  "visualKeywords": [
+    "pepe",
+    "hypnotic",
+    "green",
+    "red",
+    "blue",
+    "black",
+    "psychedelic",
+    "hand-drawn",
+    "contemplation",
+    "animation"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "pepe",
+    "hypnotic",
+    "green",
+    "red",
+    "blue",
+    "black",
+    "psychedelic",
+    "hand-drawn",
+    "contemplation",
+    "animation"
+  ],
+  "embeddingInput": "PEPOSESSION (Fake Rares) - Series 6 Card 38\nArtist: Yog Joshi\nSupply 100 Issued November 2021\nOn-card text: none detected\nVisual summary: The card features a classic Pepe the Frog with a mind-bending twist—his eyes are swirling in a hypnotic pattern, suggesting a state of deep contemplation or existential crisis. The color palette is simple, with the iconic green skin, red lips, and a blue shirt against a black background. The style is reminiscent of hand-drawn animation with a touch of psychedelic flair.\nMemetic references: Pepe the Frog, the quintessential meme character.; Hypnotic eyes suggesting a journey into the depths of crypto rabbit holes.; Classic internet meme aesthetic with a twist of NFT culture.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPOSESSION#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog, the quintessential meme character.\nHypnotic eyes suggesting a journey into the depths of crypto rabbit holes.\nClassic internet meme aesthetic with a twist of NFT culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPOSESSION#visual",
+      "label": "Visual summary",
+      "text": "The card features a classic Pepe the Frog with a mind-bending twist—his eyes are swirling in a hypnotic pattern, suggesting a state of deep contemplation or existential crisis. The color palette is simple, with the iconic green skin, red lips, and a blue shirt against a black background. The style is reminiscent of hand-drawn animation with a touch of psychedelic flair.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPOSESSION#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a classic Pepe the Frog with a mind-bending twist—his eyes are swirling in a hypnotic pattern, suggesting a state of deep contemplation or existential crisis. The color palette is simple, with the iconic green skin, red lips, and a blue shirt against a black background. The style is reminiscent of hand-drawn animation with a touch of psychedelic flair.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog, the quintessential meme character.\n- Hypnotic eyes suggesting a journey into the depths of crypto rabbit holes.\n- Classic internet meme aesthetic with a twist of NFT culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.024Z",
+  "sourceFactVersion": 1
+}

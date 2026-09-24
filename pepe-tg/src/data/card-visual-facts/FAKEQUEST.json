@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "asset": "FAKEQUEST",
+  "collection": "Fake Rares",
+  "series": 18,
+  "cardNumber": 33,
+  "artist": "HNFT Pepe",
+  "supply": 81,
+  "issuance": "February 2026",
+  "textOnCard": [
+    "PEPE'S FAKE QUEST. COLLECT ALL 5 FAKE PEPE'S BECOME THE ULTIMATE COLLECTOR."
+  ],
+  "memeticReferences": [
+    "References to classic gaming with the pixelated text and play button.",
+    "Pepe the Frog as a recurring icon in NFT culture.",
+    "The concept of collecting resonates with both gaming and NFT hoarding culture."
+  ],
+  "visualSummary": "The card features a neon-infused aesthetic with a dominant purple and pink color scheme. At the center, there's a large, glowing play button that draws attention, set against a dark background. The upper section showcases a digital display with pixelated text, adding a retro-futuristic vibe to the composition.",
+  "visualSummaryShort": "The card showcases a neon-infused aesthetic with a vibrant purple and pink color scheme. A large, glowing play button is prominently featured against a dark background, complemented by pixelated text that enhances the retro-futuristic vibe.",
+  "visualKeywords": [
+    "neon",
+    "purple",
+    "pink",
+    "play button",
+    "dark background",
+    "pixelated",
+    "retro-futuristic"
+  ],
+  "textKeywords": [
+    "quest",
+    "collect",
+    "all",
+    "become",
+    "ultimate",
+    "collector"
+  ],
+  "keywords": [
+    "neon",
+    "purple",
+    "pink",
+    "play button",
+    "dark background",
+    "pixelated",
+    "retro-futuristic",
+    "quest",
+    "collect",
+    "all",
+    "become",
+    "ultimate",
+    "collector"
+  ],
+  "sourceFactVersion": 1,
+  "embeddingInput": "FAKEQUEST (Fake Rares) - Series 18 Card 33\nArtist: HNFT Pepe\nSupply 81 Issued February 2026\nOn-card text: PEPE'S FAKE QUEST. COLLECT ALL 5 FAKE PEPE'S BECOME THE ULTIMATE COLLECTOR.\nVisual summary: The card features a neon-infused aesthetic with a dominant purple and pink color scheme. At the center, there's a large, glowing play button that draws attention, set against a dark background. The upper section showcases a digital display with pixelated text, adding a retro-futuristic vibe to the composition.\nMemetic references: References to classic gaming with the pixelated text and play button.; Pepe the Frog as a recurring icon in NFT culture.; The concept of collecting resonates with both gaming and NFT hoarding culture.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEQUEST#text",
+      "label": "On-card text",
+      "text": "PEPE'S FAKE QUEST. COLLECT ALL 5 FAKE PEPE'S BECOME THE ULTIMATE COLLECTOR.",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEQUEST#memetic",
+      "label": "Memetic references",
+      "text": "References to classic gaming with the pixelated text and play button.\nPepe the Frog as a recurring icon in NFT culture.\nThe concept of collecting resonates with both gaming and NFT hoarding culture.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEQUEST#visual",
+      "label": "Visual summary",
+      "text": "The card features a neon-infused aesthetic with a dominant purple and pink color scheme. At the center, there's a large, glowing play button that draws attention, set against a dark background. The upper section showcases a digital display with pixelated text, adding a retro-futuristic vibe to the composition.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEQUEST#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nPEPE'S FAKE QUEST. COLLECT ALL 5 FAKE PEPE'S BECOME THE ULTIMATE COLLECTOR.\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a neon-infused aesthetic with a dominant purple and pink color scheme. At the center, there's a large, glowing play button that draws attention, set against a dark background. The upper section showcases a digital display with pixelated text, adding a retro-futuristic vibe to the composition.\n\n🧬 **MEMETIC DNA:**\n- References to classic gaming with the pixelated text and play button.\n- Pepe the Frog as a recurring icon in NFT culture.\n- The concept of collecting resonates with both gaming and NFT hoarding culture.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2026-09-24T11:31:37.660Z"
+}

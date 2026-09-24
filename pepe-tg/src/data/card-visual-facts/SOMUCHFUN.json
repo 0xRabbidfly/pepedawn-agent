@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "asset": "SOMUCHFUN",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 47,
+  "artist": "Scorch Beats",
+  "supply": 26,
+  "issuance": "February 2023",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure, embodying internet meme culture.",
+    "Cyberpunk and digital aesthetics reminiscent of the NFT and crypto world.",
+    "Holographic figures and digital check marks nod to blockchain verification and the digital realm."
+  ],
+  "visualSummary": "The card features a vibrant, neon-lit scene with a 3D-rendered Pepe character, dressed in a red varsity jacket and sunglasses, dancing energetically. The background is a cyberpunk cityscape with holographic figures and digital symbols floating above, creating a futuristic, party-like atmosphere. The color palette is dominated by electric blues, greens, and oranges, enhancing the dynamic and lively vibe.",
+  "visualSummaryShort": "The card showcases a neon-lit cyberpunk scene with a dancing Pepe character in a red varsity jacket. The vibrant colors and futuristic elements create a lively party atmosphere.",
+  "visualKeywords": [
+    "neon",
+    "cyberpunk",
+    "pepe",
+    "dancing",
+    "red jacket",
+    "holograms",
+    "cityscape",
+    "electric blue",
+    "green",
+    "orange"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "neon",
+    "cyberpunk",
+    "pepe",
+    "dancing",
+    "red jacket",
+    "holograms",
+    "cityscape",
+    "electric blue",
+    "green",
+    "orange"
+  ],
+  "embeddingInput": "SOMUCHFUN (Fake Rares) - Series 14 Card 47\nArtist: Scorch Beats\nSupply 26 Issued February 2023\nOn-card text: none detected\nVisual summary: The card features a vibrant, neon-lit scene with a 3D-rendered Pepe character, dressed in a red varsity jacket and sunglasses, dancing energetically. The background is a cyberpunk cityscape with holographic figures and digital symbols floating above, creating a futuristic, party-like atmosphere. The color palette is dominated by electric blues, greens, and oranges, enhancing the dynamic and lively vibe.\nMemetic references: Pepe the Frog as a central figure, embodying internet meme culture.; Cyberpunk and digital aesthetics reminiscent of the NFT and crypto world.; Holographic figures and digital check marks nod to blockchain verification and the digital realm.",
+  "embeddingBlocks": [
+    {
+      "id": "SOMUCHFUN#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure, embodying internet meme culture.\nCyberpunk and digital aesthetics reminiscent of the NFT and crypto world.\nHolographic figures and digital check marks nod to blockchain verification and the digital realm.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "SOMUCHFUN#visual",
+      "label": "Visual summary",
+      "text": "The card features a vibrant, neon-lit scene with a 3D-rendered Pepe character, dressed in a red varsity jacket and sunglasses, dancing energetically. The background is a cyberpunk cityscape with holographic figures and digital symbols floating above, creating a futuristic, party-like atmosphere. The color palette is dominated by electric blues, greens, and oranges, enhancing the dynamic and lively vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "SOMUCHFUN#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThe card features a vibrant, neon-lit scene with a 3D-rendered Pepe character, dressed in a red varsity jacket and sunglasses, dancing energetically. The background is a cyberpunk cityscape with holographic figures and digital symbols floating above, creating a futuristic, party-like atmosphere. The color palette is dominated by electric blues, greens, and oranges, enhancing the dynamic and lively vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure, embodying internet meme culture.\n- Cyberpunk and digital aesthetics reminiscent of the NFT and crypto world.\n- Holographic figures and digital check marks nod to blockchain verification and the digital realm.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:38.121Z",
+  "sourceFactVersion": 1
+}

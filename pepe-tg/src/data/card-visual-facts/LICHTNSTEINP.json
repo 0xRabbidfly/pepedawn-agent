@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "asset": "LICHTNSTEINP",
+  "collection": "Fake Rares",
+  "series": 12,
+  "cardNumber": 47,
+  "artist": "JB",
+  "supply": 34,
+  "issuance": "January 2023",
+  "textOnCard": [
+    "LICHTENSTEIN PEPE",
+    "RARE PEPE HISTORY OF ART SERIES No.10 of 24"
+  ],
+  "memeticReferences": [
+    "Homage to Roy Lichtenstein and Pablo Picasso.",
+    "Classic Pepe the Frog imagery, a staple of meme culture.",
+    "Incorporates pop art and cubism styles.",
+    "References to art history with a crypto twist."
+  ],
+  "visualSummary": "The card features a bold, pop-art style reminiscent of Roy Lichtenstein, with a cubist twist. Pepe the Frog is reimagined in abstract shapes and vibrant colors—green, blue, yellow, red, and black—with dotted textures and thick outlines. The composition is both chaotic and harmonious, blending elements of classic art with meme culture.",
+  "visualSummaryShort": "The card showcases a vibrant, pop-art style featuring an abstract representation of Pepe the Frog. It combines bold colors and dotted textures, creating a dynamic visual experience.",
+  "visualKeywords": [
+    "pop-art",
+    "abstract",
+    "pepe the frog",
+    "vibrant colors",
+    "dotted textures",
+    "chaotic",
+    "cubist",
+    "thick outlines",
+    "meme culture",
+    "bold"
+  ],
+  "textKeywords": [
+    "lichtenstein",
+    "history",
+    "art",
+    "series"
+  ],
+  "keywords": [
+    "pop-art",
+    "abstract",
+    "pepe the frog",
+    "vibrant colors",
+    "dotted textures",
+    "chaotic",
+    "cubist",
+    "thick outlines",
+    "meme culture",
+    "bold",
+    "lichtenstein",
+    "history",
+    "art",
+    "series"
+  ],
+  "embeddingInput": "LICHTNSTEINP (Fake Rares) - Series 12 Card 47\nArtist: JB\nSupply 34 Issued January 2023\nOn-card text: LICHTENSTEIN PEPE | RARE PEPE HISTORY OF ART SERIES No.10 of 24\nVisual summary: The card features a bold, pop-art style reminiscent of Roy Lichtenstein, with a cubist twist. Pepe the Frog is reimagined in abstract shapes and vibrant colors—green, blue, yellow, red, and black—with dotted textures and thick outlines. The composition is both chaotic and harmonious, blending elements of classic art with meme culture.\nMemetic references: Homage to Roy Lichtenstein and Pablo Picasso.; Classic Pepe the Frog imagery, a staple of meme culture.; Incorporates pop art and cubism styles.; References to art history with a crypto twist.",
+  "embeddingBlocks": [
+    {
+      "id": "LICHTNSTEINP#text",
+      "label": "On-card text",
+      "text": "LICHTENSTEIN PEPE | RARE PEPE HISTORY OF ART SERIES No.10 of 24",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "LICHTNSTEINP#memetic",
+      "label": "Memetic references",
+      "text": "Homage to Roy Lichtenstein and Pablo Picasso.\nClassic Pepe the Frog imagery, a staple of meme culture.\nIncorporates pop art and cubism styles.\nReferences to art history with a crypto twist.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "LICHTNSTEINP#visual",
+      "label": "Visual summary",
+      "text": "The card features a bold, pop-art style reminiscent of Roy Lichtenstein, with a cubist twist. Pepe the Frog is reimagined in abstract shapes and vibrant colors—green, blue, yellow, red, and black—with dotted textures and thick outlines. The composition is both chaotic and harmonious, blending elements of classic art with meme culture.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "LICHTNSTEINP#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nLICHTENSTEIN PEPE  \nRARE PEPE HISTORY OF ART SERIES No.10 of 24\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a bold, pop-art style reminiscent of Roy Lichtenstein, with a cubist twist. Pepe the Frog is reimagined in abstract shapes and vibrant colors—green, blue, yellow, red, and black—with dotted textures and thick outlines. The composition is both chaotic and harmonious, blending elements of classic art with meme culture.\n\n🧬 **MEMETIC DNA:**\n- Homage to Roy Lichtenstein and Pablo Picasso.\n- Classic Pepe the Frog imagery, a staple of meme culture.\n- Incorporates pop art and cubism styles.\n- References to art history with a crypto twist.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.741Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "asset": "PEPESFUTURE",
+  "collection": "Fake Rares",
+  "series": 5,
+  "cardNumber": 18,
+  "artist": "Scorch",
+  "supply": 37,
+  "issuance": "December 2021",
+  "textOnCard": [],
+  "memeticReferences": [
+    "Pepe the Frog as a central character.",
+    "References to crypto culture with neon and futuristic aesthetics.",
+    "Retro-futurism with the DeLorean, evoking \"Back to the Future\" vibes.",
+    "Ethereal, giant Pepe suggests themes of transcendence and meme godhood."
+  ],
+  "visualSummary": "This card features a futuristic cityscape with neon lights and glowing palm trees lining the street. A shiny, retro-futuristic car, likely a DeLorean, is parked in the foreground with a smaller Pepe figure dancing on its hood. In the background, a giant, translucent Pepe looms over the city, adding a surreal and otherworldly vibe.",
+  "visualSummaryShort": "The card showcases a vibrant futuristic cityscape illuminated by neon lights and glowing palm trees. A retro-futuristic car is prominently displayed with a dancing Pepe figure on its hood, while a giant translucent Pepe adds a surreal touch in the background.",
+  "visualKeywords": [
+    "futuristic",
+    "cityscape",
+    "neon lights",
+    "palm trees",
+    "retro car",
+    "dancing",
+    "translucent",
+    "surreal",
+    "glowing",
+    "urban"
+  ],
+  "textKeywords": [],
+  "keywords": [
+    "futuristic",
+    "cityscape",
+    "neon lights",
+    "palm trees",
+    "retro car",
+    "dancing",
+    "translucent",
+    "surreal",
+    "glowing",
+    "urban"
+  ],
+  "embeddingInput": "PEPESFUTURE (Fake Rares) - Series 5 Card 18\nArtist: Scorch\nSupply 37 Issued December 2021\nOn-card text: none detected\nVisual summary: This card features a futuristic cityscape with neon lights and glowing palm trees lining the street. A shiny, retro-futuristic car, likely a DeLorean, is parked in the foreground with a smaller Pepe figure dancing on its hood. In the background, a giant, translucent Pepe looms over the city, adding a surreal and otherworldly vibe.\nMemetic references: Pepe the Frog as a central character.; References to crypto culture with neon and futuristic aesthetics.; Retro-futurism with the DeLorean, evoking \"Back to the Future\" vibes.; Ethereal, giant Pepe suggests themes of transcendence and meme godhood.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPESFUTURE#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central character.\nReferences to crypto culture with neon and futuristic aesthetics.\nRetro-futurism with the DeLorean, evoking \"Back to the Future\" vibes.\nEthereal, giant Pepe suggests themes of transcendence and meme godhood.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPESFUTURE#visual",
+      "label": "Visual summary",
+      "text": "This card features a futuristic cityscape with neon lights and glowing palm trees lining the street. A shiny, retro-futuristic car, likely a DeLorean, is parked in the foreground with a smaller Pepe figure dancing on its hood. In the background, a giant, translucent Pepe looms over the city, adding a surreal and otherworldly vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPESFUTURE#raw",
+      "label": "Raw /fv analysis",
+      "text": "🎨 **VISUAL BREAKDOWN:**\nThis card features a futuristic cityscape with neon lights and glowing palm trees lining the street. A shiny, retro-futuristic car, likely a DeLorean, is parked in the foreground with a smaller Pepe figure dancing on its hood. In the background, a giant, translucent Pepe looms over the city, adding a surreal and otherworldly vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central character.\n- References to crypto culture with neon and futuristic aesthetics.\n- Retro-futurism with the DeLorean, evoking \"Back to the Future\" vibes.\n- Ethereal, giant Pepe suggests themes of transcendence and meme godhood.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.975Z",
+  "sourceFactVersion": 1
+}

@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "asset": "FAKEBRAIN",
+  "collection": "Fake Rares",
+  "series": 4,
+  "cardNumber": 43,
+  "artist": "Fishbrain, Luifex, Viva La Vandal",
+  "supply": 404,
+  "issuance": "January 2022",
+  "textOnCard": [
+    "FISHBRAIN PEPE"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog reference, a staple in meme culture.",
+    "Axolotl elements, known for its quirky and cute appearance.",
+    "The striped background nods to retro and psychedelic aesthetics.",
+    "Visual pun with “FISHBRAIN,” playing on the character's design."
+  ],
+  "visualSummary": "The card features a hybrid character, combining features of Pepe the Frog and an axolotl, with a distinctive head frill. The color palette includes soft pastels with a focus on pinks and purples, set against a bold black-and-white striped background. The style is cartoonish with a glossy finish, giving it a playful yet surreal vibe.",
+  "visualSummaryShort": "The card showcases a whimsical hybrid character that merges elements of Pepe the Frog and an axolotl. It features a pastel color palette with a striking black-and-white striped background, creating a playful and surreal atmosphere.",
+  "visualKeywords": [
+    "hybrid character",
+    "pepe",
+    "axolotl",
+    "pastel colors",
+    "pink",
+    "purple",
+    "black-and-white stripes",
+    "cartoonish",
+    "glossy",
+    "playful"
+  ],
+  "textKeywords": [
+    "fishbrain"
+  ],
+  "keywords": [
+    "hybrid character",
+    "pepe",
+    "axolotl",
+    "pastel colors",
+    "pink",
+    "purple",
+    "black-and-white stripes",
+    "cartoonish",
+    "glossy",
+    "playful",
+    "fishbrain"
+  ],
+  "embeddingInput": "FAKEBRAIN (Fake Rares) - Series 4 Card 43\nArtist: Fishbrain, Luifex, Viva La Vandal\nSupply 404 Issued January 2022\nOn-card text: FISHBRAIN PEPE\nVisual summary: The card features a hybrid character, combining features of Pepe the Frog and an axolotl, with a distinctive head frill. The color palette includes soft pastels with a focus on pinks and purples, set against a bold black-and-white striped background. The style is cartoonish with a glossy finish, giving it a playful yet surreal vibe.\nMemetic references: Pepe the Frog reference, a staple in meme culture.; Axolotl elements, known for its quirky and cute appearance.; The striped background nods to retro and psychedelic aesthetics.; Visual pun with “FISHBRAIN,” playing on the character's design.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEBRAIN#text",
+      "label": "On-card text",
+      "text": "FISHBRAIN PEPE",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEBRAIN#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog reference, a staple in meme culture.\nAxolotl elements, known for its quirky and cute appearance.\nThe striped background nods to retro and psychedelic aesthetics.\nVisual pun with “FISHBRAIN,” playing on the character's design.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEBRAIN#visual",
+      "label": "Visual summary",
+      "text": "The card features a hybrid character, combining features of Pepe the Frog and an axolotl, with a distinctive head frill. The color palette includes soft pastels with a focus on pinks and purples, set against a bold black-and-white striped background. The style is cartoonish with a glossy finish, giving it a playful yet surreal vibe.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEBRAIN#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFISHBRAIN PEPE\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a hybrid character, combining features of Pepe the Frog and an axolotl, with a distinctive head frill. The color palette includes soft pastels with a focus on pinks and purples, set against a bold black-and-white striped background. The style is cartoonish with a glossy finish, giving it a playful yet surreal vibe.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog reference, a staple in meme culture.\n- Axolotl elements, known for its quirky and cute appearance.\n- The striped background nods to retro and psychedelic aesthetics.\n- Visual pun with “FISHBRAIN,” playing on the character's design.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.465Z",
+  "sourceFactVersion": 1
+}

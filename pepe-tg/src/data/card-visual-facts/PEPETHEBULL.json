@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "asset": "PEPETHEBULL",
+  "collection": "Fake Rares",
+  "series": 16,
+  "cardNumber": 19,
+  "artist": "Michael Naples",
+  "supply": 42,
+  "issuance": "July 2022",
+  "textOnCard": [
+    "NAPLES"
+  ],
+  "memeticReferences": [
+    "Pepe the Frog as a central figure, a staple in meme culture.",
+    "The bull horns reference the \"bull market\" in crypto, symbolizing optimism and upward trends.",
+    "The golden halo adds a layer of irony, mixing religious iconography with meme culture.",
+    "Luxurious fur cloak could hint at wealth, opulence, and the crypto elite."
+  ],
+  "visualSummary": "This card features Pepe the Frog adorned with a Viking-style helmet with large bull horns, set against a vibrant purple background. The composition includes a glowing golden halo behind Pepe, giving a saintly yet comedic aura. His attire is a luxurious fur cloak, and the painting style is reminiscent of classical portraiture with rich textures and deep colors.",
+  "visualSummaryShort": "The card showcases Pepe the Frog wearing a Viking helmet with bull horns against a vibrant purple backdrop. A glowing golden halo adds a comedic yet saintly touch to the luxurious fur-cloaked character.",
+  "visualKeywords": [
+    "pepe",
+    "viking helmet",
+    "bull horns",
+    "purple background",
+    "golden halo",
+    "fur cloak",
+    "classical portraiture",
+    "rich textures",
+    "deep colors"
+  ],
+  "textKeywords": [
+    "naples"
+  ],
+  "keywords": [
+    "pepe",
+    "viking helmet",
+    "bull horns",
+    "purple background",
+    "golden halo",
+    "fur cloak",
+    "classical portraiture",
+    "rich textures",
+    "deep colors",
+    "naples"
+  ],
+  "embeddingInput": "PEPETHEBULL (Fake Rares) - Series 16 Card 19\nArtist: Michael Naples\nSupply 42 Issued July 2022\nOn-card text: NAPLES\nVisual summary: This card features Pepe the Frog adorned with a Viking-style helmet with large bull horns, set against a vibrant purple background. The composition includes a glowing golden halo behind Pepe, giving a saintly yet comedic aura. His attire is a luxurious fur cloak, and the painting style is reminiscent of classical portraiture with rich textures and deep colors.\nMemetic references: Pepe the Frog as a central figure, a staple in meme culture.; The bull horns reference the \"bull market\" in crypto, symbolizing optimism and upward trends.; The golden halo adds a layer of irony, mixing religious iconography with meme culture.; Luxurious fur cloak could hint at wealth, opulence, and the crypto elite.",
+  "embeddingBlocks": [
+    {
+      "id": "PEPETHEBULL#text",
+      "label": "On-card text",
+      "text": "NAPLES",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "PEPETHEBULL#memetic",
+      "label": "Memetic references",
+      "text": "Pepe the Frog as a central figure, a staple in meme culture.\nThe bull horns reference the \"bull market\" in crypto, symbolizing optimism and upward trends.\nThe golden halo adds a layer of irony, mixing religious iconography with meme culture.\nLuxurious fur cloak could hint at wealth, opulence, and the crypto elite.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "PEPETHEBULL#visual",
+      "label": "Visual summary",
+      "text": "This card features Pepe the Frog adorned with a Viking-style helmet with large bull horns, set against a vibrant purple background. The composition includes a glowing golden halo behind Pepe, giving a saintly yet comedic aura. His attire is a luxurious fur cloak, and the painting style is reminiscent of classical portraiture with rich textures and deep colors.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "PEPETHEBULL#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nNAPLES\n\n🎨 **VISUAL BREAKDOWN:**\nThis card features Pepe the Frog adorned with a Viking-style helmet with large bull horns, set against a vibrant purple background. The composition includes a glowing golden halo behind Pepe, giving a saintly yet comedic aura. His attire is a luxurious fur cloak, and the painting style is reminiscent of classical portraiture with rich textures and deep colors.\n\n🧬 **MEMETIC DNA:**\n- Pepe the Frog as a central figure, a staple in meme culture.\n- The bull horns reference the \"bull market\" in crypto, symbolizing optimism and upward trends.\n- The golden halo adds a layer of irony, mixing religious iconography with meme culture.\n- Luxurious fur cloak could hint at wealth, opulence, and the crypto elite.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.993Z",
+  "sourceFactVersion": 1
+}

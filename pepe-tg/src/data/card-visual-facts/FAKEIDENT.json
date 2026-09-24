@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "asset": "FAKEIDENT",
+  "collection": "Fake Rares",
+  "series": 14,
+  "cardNumber": 25,
+  "artist": "OE",
+  "supply": 43,
+  "issuance": "April 2023",
+  "textOnCard": [
+    "FAKE IDENTITY",
+    "OUR EVERYDAY EARTH"
+  ],
+  "memeticReferences": [
+    "References the classic \"see no evil, hear no evil, speak no evil\" meme.",
+    "Psychedelic color scheme nods to crypto's wild and imaginative culture.",
+    "Implications of identity and anonymity resonate with NFT and crypto communities."
+  ],
+  "visualSummary": "The card features a four-panel grid of a bearded man making various hand gestures over his face, reminiscent of \"see no evil, hear no evil, speak no evil\" poses. The color palette is a vibrant mix of turquoise, purple, and yellow gradients, creating a psychedelic and surreal vibe. Diagonal white lines cut through the images, adding an element of disconnection and modernity.",
+  "visualSummaryShort": "The card showcases a bearded man in a four-panel grid making expressive hand gestures. The vibrant color palette of turquoise, purple, and yellow enhances its psychedelic and surreal atmosphere.",
+  "visualKeywords": [
+    "bearded man",
+    "hand gestures",
+    "turquoise",
+    "purple",
+    "yellow",
+    "psychedelic",
+    "surreal",
+    "diagonal lines",
+    "grid",
+    "modernity"
+  ],
+  "textKeywords": [
+    "identity",
+    "our",
+    "everyday",
+    "earth"
+  ],
+  "keywords": [
+    "bearded man",
+    "hand gestures",
+    "turquoise",
+    "purple",
+    "yellow",
+    "psychedelic",
+    "surreal",
+    "diagonal lines",
+    "grid",
+    "modernity",
+    "identity",
+    "our",
+    "everyday",
+    "earth"
+  ],
+  "embeddingInput": "FAKEIDENT (Fake Rares) - Series 14 Card 25\nArtist: OE\nSupply 43 Issued April 2023\nOn-card text: FAKE IDENTITY | OUR EVERYDAY EARTH\nVisual summary: The card features a four-panel grid of a bearded man making various hand gestures over his face, reminiscent of \"see no evil, hear no evil, speak no evil\" poses. The color palette is a vibrant mix of turquoise, purple, and yellow gradients, creating a psychedelic and surreal vibe. Diagonal white lines cut through the images, adding an element of disconnection and modernity.\nMemetic references: References the classic \"see no evil, hear no evil, speak no evil\" meme.; Psychedelic color scheme nods to crypto's wild and imaginative culture.; Implications of identity and anonymity resonate with NFT and crypto communities.",
+  "embeddingBlocks": [
+    {
+      "id": "FAKEIDENT#text",
+      "label": "On-card text",
+      "text": "FAKE IDENTITY | OUR EVERYDAY EARTH",
+      "priority": 100,
+      "type": "text"
+    },
+    {
+      "id": "FAKEIDENT#memetic",
+      "label": "Memetic references",
+      "text": "References the classic \"see no evil, hear no evil, speak no evil\" meme.\nPsychedelic color scheme nods to crypto's wild and imaginative culture.\nImplications of identity and anonymity resonate with NFT and crypto communities.",
+      "priority": 80,
+      "type": "memetic"
+    },
+    {
+      "id": "FAKEIDENT#visual",
+      "label": "Visual summary",
+      "text": "The card features a four-panel grid of a bearded man making various hand gestures over his face, reminiscent of \"see no evil, hear no evil, speak no evil\" poses. The color palette is a vibrant mix of turquoise, purple, and yellow gradients, creating a psychedelic and surreal vibe. Diagonal white lines cut through the images, adding an element of disconnection and modernity.",
+      "priority": 60,
+      "type": "visual"
+    },
+    {
+      "id": "FAKEIDENT#raw",
+      "label": "Raw /fv analysis",
+      "text": "📝 **TEXT ON CARD:**\nFAKE IDENTITY  \nOUR EVERYDAY EARTH\n\n🎨 **VISUAL BREAKDOWN:**\nThe card features a four-panel grid of a bearded man making various hand gestures over his face, reminiscent of \"see no evil, hear no evil, speak no evil\" poses. The color palette is a vibrant mix of turquoise, purple, and yellow gradients, creating a psychedelic and surreal vibe. Diagonal white lines cut through the images, adding an element of disconnection and modernity.\n\n🧬 **MEMETIC DNA:**\n- References the classic \"see no evil, hear no evil, speak no evil\" meme.\n- Psychedelic color scheme nods to crypto's wild and imaginative culture.\n- Implications of identity and anonymity resonate with NFT and crypto communities.",
+      "priority": 40,
+      "type": "raw"
+    }
+  ],
+  "generatedAt": "2025-11-11T12:59:37.515Z",
+  "sourceFactVersion": 1
+}
