@@ -487,7 +487,7 @@ export function formatLeaderboard(list: Standing[], limit: number, empty: string
 
 /** Cards the bot can actually send. Documents are refused by the channel; those are handled at send time. */
 export function sendableCards(cards: CardInfo[]): CardInfo[] {
-  return cards.filter((c) => c.series >= 0 && ['jpeg', 'jpg', 'png', 'gif', 'mp4'].includes(c.ext));
+  return cards.filter((c) => c.series >= 0 && !c.retired && ['jpeg', 'jpg', 'png', 'gif', 'mp4'].includes(c.ext));
 }
 
 /**
