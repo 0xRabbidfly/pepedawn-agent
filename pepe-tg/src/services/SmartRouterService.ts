@@ -35,6 +35,7 @@ import { matchForConversation, markUsed } from '../utils/xHarvest';
 import { recordTurn, recentTurns } from '../conversation/shadow';
 import { recallForSpeaker, settleRecall } from '../conversation/socialMemoryRuntime';
 import { anniversaryContext, anniversaryFact } from '../conversation/anniversaryRuntime';
+import { directoryEditFact, isActionRequest, isDirectoryEditRequest } from '../utils/directoryHelp';
 import { isInFullIndex } from '../data/fullCardIndex';
 
 export type ConversationIntent = 'LORE' | 'FACTS' | 'CHAT' | 'NORESPONSE' | 'CMDROUTE';
@@ -1339,6 +1340,16 @@ Say briefly why it is worth a look — something true about the art, the artist 
       return this.buildChatPlanAs(speaker, trimmed, roomId, null, undefined, { knownFact: birthdayFact });
     }
 
+    // "can you fix my artist name on the site" is a request the bot cannot
+    // carry out, not a question about a card. It went to retrieval once and
+    // came back as FAKEFAKEBAN with a raw knowledge block. The true answer is
+    // the directory's claim form, stated exactly.
+    if (isDirectoryEditRequest(trimmed)) {
+      if (!invited) return silent('unaddressed_site_request');
+      logger.info({ query: trimmed.slice(0, 80) }, '[SmartRouter] Directory edit request -> claim form');
+      return this.buildChatPlanAs(speaker, trimmed, roomId, null, undefined, { knownFact: directoryEditFact() });
+    }
+
     if (this.isTasteQuestion(trimmed)) {
       // An opinion is not an exact fact. Uninvited, it is butting in.
       if (!invited) return silent('unaddressed_taste');
@@ -1605,7 +1616,8 @@ Say briefly why it is worth a look — something true about the art, the artist 
       // Skip fast path and card discovery when a card is explicitly mentioned.
       // When a card is mentioned, we want to fetch facts about that specific card,
       // not discover/recommend other cards.
-      if (!mentionedCard && retrieval) {
+      // A request for the bot to do something is never answered with a card.
+      if (!mentionedCard && retrieval && !isActionRequest(trimmed)) {
         const fastPath = detectCardFastPath(retrieval.candidates, retrieval.metrics);
         const fastCard = fastPath.primaryCandidate?.card_asset;
         const queryNamesCard = fastCard ? this.queryExplicitlyNamesCard(trimmed, fastCard) : false;

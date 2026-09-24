@@ -5,6 +5,22 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.16.1] - 2026-09-24
+
+### Fixed
+
+- **A request to fix your name on the site gets the claim form, not a card.**
+  "can you fix my artist name on the site its wrong" was classified FACTS,
+  retrieval found one card fragment, and the fast path answered with
+  FAKEFAKEBAN and a raw knowledge block ("CARD:FAKEFAKEBAN CARD_FACT:ON-CARD
+  TEXT Collection: …") as the explanation. Three changes: a request to fix,
+  update or change one's name, credit, bio, links or wallet on the directory
+  is answered exactly - the bot cannot edit the site; artists do it on
+  `fakeraredirectory.com/artists/submit`; anything else, tell rabbidfly or
+  Scrilla; a request for the bot to *do* something is never answered with a
+  card; and the fast-path line no longer quotes the passage at all, since a
+  passage is a knowledge block and not prose.
+
 ## [5.16.0] - 2026-09-24
 
 ### Changed

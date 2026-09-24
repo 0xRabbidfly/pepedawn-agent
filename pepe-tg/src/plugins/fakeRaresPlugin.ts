@@ -530,14 +530,10 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
           return false;
         }
 
-        const preview =
-          candidate.text_preview?.replace(/\s+/g, ' ').trim() ||
-          candidate.full_text?.replace(/\s+/g, ' ').trim() ||
-          '';
-        const explanation =
-          preview.length > 0
-            ? `Pulling up ${candidate.card_asset} — ${preview.slice(0, 200)}${preview.length > 200 ? '…' : ''}`
-            : `Pulling up ${candidate.card_asset} for you.`;
+        // No quote from the passage: it is a raw knowledge block ("[CARD:X]
+        // [CARD_FACT:ON-CARD TEXT] Collection: ..."), and the room saw one
+        // verbatim. The card that follows carries its own caption.
+        const explanation = `Pulling up ${candidate.card_asset}.`;
 
         if (actionCallback) {
           await actionCallback({
