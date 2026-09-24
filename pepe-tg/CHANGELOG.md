@@ -5,7 +5,30 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [5.16.2] - 2026-09-24
+## [5.17.0] - 2026-09-24
+
+### Added
+
+- **`/pb <an idea, or a bug>` — the room's door into the maintainer loop.**
+  The maintainer acts only on directives from the owner or an admin;
+  everyone else's wishes reached the digest as suggestions, heard and not
+  built. `/pb` logs a request, numbered, three per person a day, into
+  `src/data/maintainer/build-requests.jsonl` (gitignored), and the daily
+  digest carries them under their own heading. The proposer's prompt now
+  says what to do with them: build each one that is small, specified,
+  within the constitution and off protected paths as its own commit
+  (`Requested-By: /pb #n`), and write up the rest. The owner reviews the
+  PR. `/pb list` shows the latest - admins see who asked. In `/help` and
+  the periodic tips.
+- **`/fc` says what is left on the accounts.** Neither OpenAI nor xAI
+  exposes a balance to an API key, so the owner sets what was loaded and
+  when (`OPENAI_CREDIT_USD` + `_SINCE`, `XAI_CREDIT_USD` + `_SINCE`) and
+  `/fc` subtracts the ledger's spend on that provider's models since: "~$62
+  of $100 left (63%)", flagged at 15% and at zero. Also new: a per-provider
+  line (OpenAI for chat, vision and embeddings; xAI for the X harvest, which
+  turned out to be the largest line), models sorted by cost, and a note on
+  what the ledger cannot see - the vision backfill in GitHub Actions and the
+  maintainer digest's daily classification.
 
 ### Changed
 

@@ -21,15 +21,15 @@ Rules for writing one, learned the hard way:
 
 <!-- Sections are ## [x.y.z], matching CHANGELOG.md. Newest first. -->
 
-## [5.16.2]
+## [5.17.0]
 
-👀 PEPEDAWN — v5.16.2
+🛠 PEPEDAWN — v5.17.0
 
-Small one. When you post something worth a look and nobody asked me anything - a link, a listing, a burn, a card, a piece of art - I will react with an emoji instead of saying nothing. 🔥 for the market, 🤩 for the art, 🤣 when it is funny, 😢 when it is not, 👀 for the rest. No replies, no noise.
+🛠 New: /pb. Want me to do something I don't do yet, or fix something I do badly? /pb <the idea, or the bug>. It goes to rabbidfly every day; the ones I can build come back as a pull request for him to review, and you'll hear about it here. Three a day each. /pb list shows the latest.
 
-Turns out I had never managed to do this once. Fixed.
+👀 When you post something worth a look and nobody asked me anything - a link, a listing, a burn, a card, a piece of art - I react with an emoji instead of saying nothing. 🔥 for the market, 🤩 for the art, 🤣 when it is funny, 😢 when it is not, 👀 for the rest. No replies, no noise. Turns out I had never managed to do this once. Fixed.
 
-🌅 Also: you can just call me dawn.
+🌅 And you can just call me dawn.
 
 ## [5.16.0]
 

@@ -6,6 +6,7 @@ import {
   type State,
 } from "@elizaos/core";
 import type { TelemetryService } from "../services/TelemetryService";
+import { creditConfig, creditsLines, spendByProvider } from "../utils/apiCredits";
 
 /**
  * /fc Command - Token usage and cost tracking (admin-only)
@@ -112,10 +113,11 @@ async function getLast12Months(
   return result;
 }
 
-function formatCostReport(
+export function formatCostReport(
   stats: Awaited<ReturnType<TelemetryService["getCostReport"]>>,
   period: string,
   chart?: string,
+  credits?: string[],
 ): string {
   if (stats.callCount === 0) {
     return `📊 No token usage recorded for ${period}.`;
@@ -133,10 +135,23 @@ function formatCostReport(
     report += `📚 Lore Queries: ${stats.loreQueryCount}\n`;
   }
 
-  // Breakdown by model
+  // What is left, by the ledger. Above the breakdowns: it is the number the
+  // owner opens /fc for.
+  if (credits && credits.length > 0) {
+    report += `\n${credits.join('\n')}\n`;
+  }
+
+  // Breakdown by provider, then by model. Two accounts pay for this bot:
+  // OpenAI for chat, vision and embeddings, xAI (grok) for the X harvest.
+  const byProvider = spendByProvider(stats.byModel);
+  if (byProvider.openai > 0 || byProvider.xai > 0) {
+    report += `\n**By Provider:**\n`;
+    if (byProvider.openai > 0) report += `• OpenAI: $${byProvider.openai.toFixed(4)}\n`;
+    if (byProvider.xai > 0) report += `• xAI: $${byProvider.xai.toFixed(4)}\n`;
+  }
   if (Object.keys(stats.byModel).length > 0) {
     report += `\n**By Model:**\n`;
-    for (const [model, data] of Object.entries(stats.byModel)) {
+    for (const [model, data] of Object.entries(stats.byModel).sort(([, a], [, b]) => b.cost - a.cost)) {
       report += `• ${model}: $${data.cost.toFixed(4)} [${data.calls}]\n`;
     }
   }
@@ -172,6 +187,9 @@ function formatCostReport(
   if (chart) {
     report += chart;
   }
+
+  // Spend this process never sees, so the owner knows the ledger's edges.
+  report += `\n\n_Not counted: the daily vision backfill (GitHub Actions) and the maintainer digest (droplet cron) - both call OpenAI outside this process._`;
 
   return report.trim();
 }
@@ -273,7 +291,20 @@ export const costCommand: Action = {
 
     // Get cost report and format
     const stats = await telemetry.getCostReport(startDate);
-    const report = formatCostReport(stats, period, chart);
+
+    // Credits left, per provider, from what was loaded minus the ledger since.
+    const config = creditConfig();
+    const sinceReports = new Map<string, Awaited<ReturnType<TelemetryService["getCostReport"]>>>();
+    for (const c of Object.values(config)) {
+      const key = c.since.toISOString();
+      if (!sinceReports.has(key)) sinceReports.set(key, await telemetry.getCostReport(c.since));
+    }
+    const credits = creditsLines(config, (provider, since) => {
+      const r = sinceReports.get(since.toISOString());
+      return r ? spendByProvider(r.byModel)[provider] : 0;
+    });
+
+    const report = formatCostReport(stats, period, chart, credits);
 
     // Send response to DM
     if (callback) {

@@ -19,6 +19,7 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { readDayTurns } from '../src/conversation/dayLog';
+import { buildRequestsBetween } from '../src/utils/buildRequests';
 import { allChats, roomsForChat } from '../src/conversation/roomMap';
 import { getParticipant } from '../src/utils/participants';
 import { callTextModel } from '../src/utils/modelGateway';
@@ -109,12 +110,19 @@ const notes: string[] = [];
 if (directiveIds.length === 0) notes.push('No directive ids configured (TELEGRAM_ADMIN_IDS / MAINTAINER_DIRECTIVE_IDS): nothing can be a directive.');
 if (!process.env.OPENAI_API_KEY) notes.push('No OPENAI_API_KEY: messages were triaged by heuristics only.');
 
+// The room's /pb submissions in the window, by name where the roster has one.
+const buildRequests = buildRequestsBetween(from, to).map((r) => ({
+  id: r.id, at: r.at, text: r.text,
+  who: nameOf(r.sender.id, r.sender.name || r.sender.username),
+}));
+
 const parts: DigestParts = {
   from, to,
   stats: stats(turns, decisions, extra),
   directives, suggestions,
   anomalies: anomalies(turns),
   notes,
+  buildRequests,
 };
 const markdown = renderDigest(parts);
 

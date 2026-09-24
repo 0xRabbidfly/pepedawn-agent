@@ -218,6 +218,8 @@ export interface DigestParts {
   suggestions: TriagedItem[];
   anomalies: string[];
   notes?: string[];
+  /** /pb submissions in the window: the room's build requests, for the proposer. */
+  buildRequests?: Array<{ id: number; at: number; who: string; text: string }>;
 }
 
 export function renderDigest(d: DigestParts): string {
@@ -238,6 +240,11 @@ export function renderDigest(d: DigestParts): string {
   lines.push('', d.suggestions.length ? `🟡 Suggestions and complaints from the room (${d.suggestions.length})` : '🟡 Suggestions: none');
   for (const it of d.suggestions.slice(0, 12)) lines.push(...item(it));
   if (d.suggestions.length > 12) lines.push(`  …and ${d.suggestions.length - 12} more.`);
+
+  const pb = d.buildRequests ?? [];
+  lines.push('', pb.length ? `📬 BUILD REQUESTS — /pb from the room (${pb.length}); build the ones that fit, as PRs` : '📬 Build requests (/pb): none');
+  for (const r of pb.slice(0, 12)) lines.push(`  • #${r.id} ${hhmm(r.at)} ${r.who} — ${one(r.text).slice(0, 200)}`);
+  if (pb.length > 12) lines.push(`  …and ${pb.length - 12} more.`);
 
   lines.push('', d.anomalies.length ? `⚠️ Worth a look (${d.anomalies.length})` : '⚠️ Anomalies: none');
   for (const a of d.anomalies.slice(0, 10)) lines.push(`  • ${a}`);

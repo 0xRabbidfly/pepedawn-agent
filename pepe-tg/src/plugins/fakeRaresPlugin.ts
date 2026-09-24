@@ -25,6 +25,7 @@ import { findRepeat } from '../utils/repeatGuard';
 import { recentTurns } from '../conversation/shadow';
 import { runRecap } from '../actions/recapCommand';
 import { runMemoryCommand } from '../actions/memoryCommands';
+import { runBuildRequest } from '../utils/buildRequests';
 import { sendRecapVideo, stripHtml } from '../utils/recapSend';
 import { rememberRoom } from '../conversation/roomMap';
 import { sendReaction } from '../utils/reactions';
@@ -954,7 +955,7 @@ export const fakeRaresPlugin: Plugin = {
             addressedBot: !!(isReplyToBot || triggers.hasBotMention || isDirectMessage),
           });
 
-          const { isHelp, isStart, isF, isFCarousel, isC, isP, isFr, isVouch, isFm, isFc, isXcp, isRecap, isAboutMe, isForget } = commands;
+          const { isHelp, isStart, isF, isFCarousel, isC, isP, isFr, isVouch, isFm, isFc, isXcp, isRecap, isAboutMe, isForget, isPb } = commands;
           
           // Log routing factors
           logger.info(`   Triggers: reply=${!!isReplyToBot} | card=${isFakeRareCard} | @mention=${hasBotMention}`);
@@ -1133,6 +1134,23 @@ export const fakeRaresPlugin: Plugin = {
           // Answered through the bare callback rather than the recording one: a
           // list of someone's memories is not conversation, and written to room
           // history it would reach the day log, the recap and capture itself.
+          // /pb: a build request for the maintainer loop - logged, numbered,
+          // in the daily digest; the proposer may build it and the owner
+          // reviews the PR. Answered through the bare callback: a receipt
+          // is not conversation.
+          if (isPb) {
+            message.metadata = message.metadata || {};
+            (message.metadata as any).__handledByCustom = true;
+            const from = params.ctx?.message?.from;
+            const reply = runBuildRequest({
+              text,
+              sender: { id: from?.id?.toString(), name: getDisplayName(params, message), username: from?.username },
+              chatId: tgChatId,
+            });
+            if (reply) await baseCallback?.({ text: reply, source: 'telegram' });
+            return;
+          }
+
           if (isAboutMe || isForget) {
             message.metadata = message.metadata || {};
             (message.metadata as any).__handledByCustom = true;

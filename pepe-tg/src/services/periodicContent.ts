@@ -65,6 +65,10 @@ const HELPFUL_TIPS = [
     text: "Know the story behind a card? `/fr CARDNAME <the story>`. If you're the artist it lands straight away; otherwise two regulars need to `/vouch` for it. Check `/vouch` to see what's waiting.",
   },
   {
+    title: "🛠 Build Requests",
+    text: "Want me to do something I don't do yet, or fix something I do badly? `/pb <the idea, or the bug>`. It goes to rabbidfly daily; the ones I can build come back as a PR for him to review.",
+  },
+  {
     title: "📚 Lore & History",
     text: "Ask me about any card, artist or era and I'll tell you what I know - no command needed. Try \"tell me about Rare Scrilla\" or \"what happened in series 1?\"",
   },

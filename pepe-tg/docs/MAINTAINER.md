@@ -24,6 +24,12 @@ owner a digest:
   small model call classified as a directive, complaint or request. Each with
   the two turns before it and what PEPEDAWN replied.
 - **🟡 Suggestions** — the same from everyone else. Heard, not acted on.
+- **📬 Build requests** — what the room typed after `/pb` (5.17.0). The one
+  community channel the proposer *does* act on: each request that is small,
+  specified, within the constitution and off protected paths becomes its own
+  commit on the branch (`Requested-By: /pb #n`); the rest are written up in
+  `MAINTAINER_NOTES.md`. The owner reviews the PR. Stored in
+  `src/data/maintainer/build-requests.jsonl`, three per person a day.
 - **⚠️ Anomalies** — the same reply twice, bursts, non-answers.
 
 It writes `src/data/maintainer/<stamp>.md` and `.json` (gitignored: they

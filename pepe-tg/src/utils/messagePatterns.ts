@@ -37,6 +37,7 @@ export interface MessagePatterns {
     /** Unlisted: not in /help. See src/actions/memoryCommands.ts */
     isAboutMe: boolean;
     isForget: boolean;
+    isPb: boolean;                 // /pb <idea or bug> - a build request for the maintainer
   };
   
   // Triggers for routing
@@ -81,6 +82,7 @@ export function detectMessagePatterns(
     isRecap: /^(?:@[A-Za-z0-9_]+\s+)?\/recap(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
     isAboutMe: /^(?:@[A-Za-z0-9_]+\s+)?\/aboutme(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
     isForget: /^(?:@[A-Za-z0-9_]+\s+)?\/forget(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
+    isPb: /^(?:@[A-Za-z0-9_]+\s+)?\/pb(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
   };
   
   // Routing triggers
