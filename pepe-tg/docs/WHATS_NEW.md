@@ -25,7 +25,9 @@ Rules for writing one, learned the hard way:
 
 🗂 PEPEDAWN — v5.16.0
 
-fakeraredirectory.com is now my source of truth for the fakes. Scrilla's site, his numbers.
+fakeraredirectory.com is now my source of truth for the fakes. The community's directory, its numbers.
+<!-- The posted version said "Scrilla's site, his numbers." He corrected it in the room the same hour: it is not his site, he is "just a vessel for meme distribution". Never credit the directory to him. -->
+
 
 🃏 Every card, every artist credit and every issue date comes from the directory, checked daily. Three cards the directory retired are gone from my index; five it lists that I never had are in.
 
