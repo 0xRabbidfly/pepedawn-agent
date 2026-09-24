@@ -42,6 +42,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   about; everything else is fetched exactly as before. Zero regressions, ten
   fixes. Cached file_ids are unaffected.
 
+- **The daily card discovery reads the directory's API.** `add-new-cards.js`
+  pass 1 scraped `fakeraredirectory.com/series-N/`, which 404s on the new
+  site; it now lists cards from `/api/cards` in one request, no browser.
+  Pass 2 (pepe.wtf, for current supply) and the S3 extension check are
+  unchanged, and the reconcile step then applies the directory's artist and
+  release data. Verified end to end: with CAKERARE removed from the index,
+  the run re-added it from the CDN image and the sync credited "Aquatic".
+
+  Found while checking: the Action has been opening PRs that nobody merged
+  since 2025-10-24, so nothing it found ever reached master, and production
+  refreshes its index from master. The merge gap is still open (TODO).
+
 ### Added
 
 - `docs/TODO.md` — the open work, in priority, with why each item matters.

@@ -34,11 +34,13 @@ jobs:
           bun install
           bunx playwright install --with-deps chromium
       
-      - name: Scrape new Fake Rares cards
+      # Pass 1 lists cards from the directory's /api/cards (the old /series-N/
+      # pages are gone); pass 2 still needs the browser for pepe.wtf.
+      - name: Add new Fake Rares cards
         working-directory: pepe-tg
         run: |
           SERIES="${{ github.event.inputs.series || '18 19 20 21 22 23 24 25' }}"
-          echo "🔍 Scraping series: $SERIES"
+          echo "🔍 Checking series: $SERIES"
           node scripts/add-new-cards.js $SERIES
 
       # The directory has the last word on artist credits, release dates and
@@ -75,10 +77,10 @@ jobs:
           body: |
             ## 🎴 Fake Rares Cards Updated
             
-            The automated scraper found **${{ steps.check-changes.outputs.cards_added }} card(s)** with new data on pepe.wtf!
-            
+            The daily sync found **${{ steps.check-changes.outputs.cards_added }} card(s)** with new data.
+
             ### 📊 Details
-            - **Scraped from**: fakeraredirectory.com + pepe.wtf
+            - **Sources**: fakeraredirectory.com `/api/cards` (canon) + pepe.wtf (supply)
             - **Series checked**: ${{ github.event.inputs.series || '18-25' }}
             - **Timestamp**: ${{ github.event.repository.updated_at }}
             

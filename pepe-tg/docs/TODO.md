@@ -33,9 +33,9 @@ looks like. Dated when it was written; strike through or delete when done.
 - [ ] **Ask Scrilla** whether `/api/` is meant to be used and stable
       (`robots.txt` disallows it; one request a day). And whether he wants
       the `/fr` lore ledger flowing back to the directory.
-- [ ] **Retire `add-new-cards.js`'s Playwright pass 1** once the sync has run
-      clean for a week; the API replaces the HTML scrape. It is already dead:
-      it scrapes `/series-N/`, which 404s on the new site.
+- [x] **`add-new-cards.js` pass 1 reads `/api/cards`** instead of scraping
+      `/series-N/`, which 404s on the new site. Pass 2 (pepe.wtf, for supply)
+      still needs Playwright. *(on the branch)*
 - [ ] **The daily action never reached prod.** It pushes to
       `auto-update-fake-rares` and opens a PR; nothing from it has been merged
       since 2025-10-24, so prod's daily JSON refresh (from master) has served
