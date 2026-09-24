@@ -144,9 +144,13 @@ describe('what happens to a non-answer', () => {
 
 describe('reactions', () => {
   it('fires on market activity and looks at everything else', () => {
-    expect(reactionFor('24-HOUR BURN AUCTION — opening bid 500,000')).toBe('🔥');
-    expect(reactionFor('For those wanting to collect TRIPLEMIKE I just opened a dex order.')).toBe('🔥');
-    expect(reactionFor('look at this https://x.com/someone/status/1')).toBe('👀');
+    // rng pinned to the first of each bucket: its canonical face.
+    const first = () => 0;
+    expect(reactionFor('24-HOUR BURN AUCTION — opening bid 500,000', first)).toBe('🔥');
+    expect(reactionFor('For those wanting to collect TRIPLEMIKE I just opened a dex order.', first)).toBe('🔥');
+    expect(reactionFor('look at this https://x.com/someone/status/1', first)).toBe('👀');
+    // And varies within the bucket otherwise.
+    expect(reactionFor('24-HOUR BURN AUCTION', () => 0.99)).not.toBe('🔥');
   });
 
   it('only ever picks a reaction Telegram accepts', () => {

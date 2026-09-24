@@ -10,23 +10,97 @@
  *
  * A reaction acknowledges the post without talking over it: no notification,
  * no message in the scroll, nothing for anyone to reply to.
+ *
+ * It had never once happened in production: the only branch that asked for
+ * a reaction sat behind retrieval, and since 5.14.0 every unaddressed post
+ * is silenced before retrieval runs - 0 reactions in 1,524 silences. The
+ * decision now sits at the gate (SmartRouterService), scored here.
  */
 
 import { logger } from '@elizaos/core';
 
 /**
  * Bot API reactions are a fixed set — anything outside it is rejected with a
- * 400 — so the picker only ever returns from this list. No frog: 🐸 is not a
- * permitted reaction.
+ * 400 — so the picker only ever returns from these buckets, every one of
+ * which is in that set. No frog: 🐸 is not a permitted reaction.
  */
-export const REACTION_EMOJI = ['👀', '🔥', '🏆', '💯', '🤝'] as const;
-export type ReactionEmoji = (typeof REACTION_EMOJI)[number];
+export const REACTION_BUCKETS = {
+  market: ['🔥', '⚡', '🍾', '💯'],
+  art: ['🤩', '😍', '🎉', '🏆', '👏', '🫡'],
+  funny: ['🤣', '😁', '🤡'],
+  sad: ['😢', '💔', '🙏', '😭'],
+  mind: ['🤯', '😱', '👀', '🤔'],
+  look: ['👀', '👌', '🤝', '🫡', '👍', '🤔'],
+} as const;
 
-const HOT = /\b(auction|burn(ed|ing)?|bid|drop(ped|ping)?|mint(ed|ing)?|listed|listing|dispenser|dex order|for sale|sold)\b/i;
+export const REACTION_EMOJI: readonly string[] = [...new Set(Object.values(REACTION_BUCKETS).flat())];
+export type ReactionEmoji = string;
 
-/** 🔥 for something happening on the market, 👀 for everything else worth a look. */
-export function reactionFor(text: string): ReactionEmoji {
-  return HOT.test(text || '') ? '🔥' : '👀';
+const HOT = /\b(auction|burn(ed|ing)?|bid|drop(ped|ping)?|mint(ed|ing)?|listed|listing|dispenser|dex order|for sale|sold|floor|sweep|bought|swap)\b/i;
+const ART = /\b(new (fake|card|piece|drop|art)|artwork|just (made|finished|minted)|series \d+|submission|fresh|wip|sketch|collab)\b/i;
+const FUNNY = /\b(lmao|lmfao|lol|haha+|rofl|kek)\b|😂|🤣|💀/i;
+const SAD = /\b(rip|rest in peace|lost|scammed|hacked|rug(ged)?|sorry for your|condolences|passed away|down bad)\b|😢|😭|💔/i;
+const MIND = /\b(insane|unreal|wtf|holy|no way|wow|omg|crazy|wild)\b|🤯|😱/i;
+const LINK = /https?:\/\/\S+|\bt\.me\/|\bx\.com\/|\btwitter\.com\//i;
+
+type Bucket = keyof typeof REACTION_BUCKETS;
+
+export function bucketFor(text: string): Bucket {
+  const t = text || '';
+  if (SAD.test(t)) return 'sad';
+  if (FUNNY.test(t)) return 'funny';
+  if (HOT.test(t)) return 'market';
+  if (ART.test(t)) return 'art';
+  if (MIND.test(t)) return 'mind';
+  return 'look';
+}
+
+/**
+ * An emoji that fits the post, varied within its bucket so the same post
+ * does not always get the same face. `rng` is injectable for tests; the
+ * first of each bucket is its canonical one (🔥 for the market, 👀 to look).
+ */
+export function reactionFor(text: string, rng: () => number = Math.random): ReactionEmoji {
+  const pool = REACTION_BUCKETS[bucketFor(text)] as readonly string[];
+  return pool[Math.min(pool.length - 1, Math.floor(rng() * pool.length))];
+}
+
+/**
+ * How much a post deserves a reaction. 0 is chatter ("gm", "lol", a
+ * one-liner); 1 is worth a look; 2 or more is a really good post - a card
+ * with a link, a market move with a card, a long announcement with a link -
+ * and those always get one, cooldown or not.
+ */
+export function reactionScore(text: string, namesCard: boolean): number {
+  const t = (text || '').trim();
+  if (!t || t.startsWith('/')) return 0;
+  let score = 0;
+  if (LINK.test(t)) score += 1;
+  if (HOT.test(t) || ART.test(t)) score += 1;
+  if (namesCard) score += 1;
+  if (t.length >= 140) score += 1;
+  if (SAD.test(t) || MIND.test(t)) score += 1;
+  return score;
+}
+
+export function worthAReaction(text: string, namesCard: boolean): boolean {
+  return reactionScore(text, namesCard) >= 1;
+}
+
+/** Ordinary worthy posts share this per-room cooldown; really good ones do not wait. */
+export const REACTION_COOLDOWN_MS = 5 * 60 * 1000;
+const lastReactionAt = new Map<string, number>();
+
+/** May the room get a reaction now? Records the grant when it may. */
+export function reactionAllowed(roomId: string, score: number, now = Date.now(), cooldownMs = REACTION_COOLDOWN_MS): boolean {
+  const last = lastReactionAt.get(roomId) ?? 0;
+  if (score < 2 && now - last < cooldownMs) return false;
+  lastReactionAt.set(roomId, now);
+  return true;
+}
+
+export function resetReactionCooldowns(): void {
+  lastReactionAt.clear();
 }
 
 /**

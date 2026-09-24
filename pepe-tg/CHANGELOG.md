@@ -5,6 +5,25 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.16.2] - 2026-09-24
+
+### Fixed
+
+- **PEPEDAWN reacts.** It had never once put an emoji on a message in
+  production: the only branch that asked for one sat behind retrieval, and
+  since 5.14.0 every unaddressed post is silenced before retrieval runs -
+  0 reactions in 1,524 silences. The decision now sits at the gate, in
+  both silent branches ("dispenser is live <link>" reads as a question
+  there, since "is" is a question word): a post worth a look - a link, a
+  market move, a card named, an announcement - gets an emoji that fits it,
+  drawn from a bucket (market 🔥⚡🍾💯, art 🤩😍🎉🏆👏🫡, funny 🤣😁🤡,
+  sad 😢💔🙏😭, mind 🤯😱, look 👀👌🤝🫡👍🤔), varied so the same post does
+  not always get the same face. "gm" and "lol" stay silent. A really good
+  post - two or more of link, market or art, a card, length, feeling -
+  always gets one; ordinary ones share a five-minute per-room cooldown.
+  Confirmed the API call itself works (setMessageReaction, test bot, 👀
+  landed).
+
 ## [5.16.1] - 2026-09-24
 
 ### Fixed

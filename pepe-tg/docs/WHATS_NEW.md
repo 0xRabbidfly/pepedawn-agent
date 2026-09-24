@@ -21,6 +21,14 @@ Rules for writing one, learned the hard way:
 
 <!-- Sections are ## [x.y.z], matching CHANGELOG.md. Newest first. -->
 
+## [5.16.2]
+
+👀 PEPEDAWN — v5.16.2
+
+Small one. When you post something worth a look and nobody asked me anything - a link, a listing, a burn, a card, a piece of art - I will react with an emoji instead of saying nothing. 🔥 for the market, 🤩 for the art, 🤣 when it is funny, 😢 when it is not, 👀 for the rest. No replies, no noise.
+
+Turns out I had never managed to do this once. Fixed.
+
 ## [5.16.0]
 
 🗂 PEPEDAWN — v5.16.0

@@ -10,7 +10,7 @@ import {
   type RetrieveCandidatesOptions,
 } from '../router/retrieveCandidates';
 import { detectCardFastPath } from '../router/cardFastPath';
-import { reactionFor } from '../utils/reactions';
+import { reactionAllowed, reactionFor, reactionScore } from '../utils/reactions';
 import { characterFor, characterNote, type Character } from '../conversation/characters';
 import { KnowledgeOrchestratorService } from './KnowledgeOrchestratorService';
 import { callTextModel } from '../utils/modelGateway';
@@ -1313,7 +1313,20 @@ Say briefly why it is worth a look — something true about the art, the artist 
       logger.info({ query: trimmed.slice(0, 80), reason }, '[SmartRouter] Not invited; staying out');
       return { kind: 'NORESPONSE', intent: 'NORESPONSE', reason, retrieval: null };
     };
-    if (!invited && trimmed && !isQuestion) return silent('unaddressed_statement');
+    // Silent, but a post worth a look gets an emoji instead of nothing - a
+    // link, a market move, a card named, an announcement. No notification,
+    // nothing in the scroll. A really good post always gets one; ordinary
+    // ones share a short per-room cooldown; chatter gets nothing.
+    const silentOrReact = (reason: string): SmartRoutingPlan => {
+      const score = reactionScore(trimmed, !!this.detectMentionedCard(trimmed));
+      if (score >= 1 && reactionAllowed(roomId, score)) {
+        const reaction = reactionFor(trimmed);
+        logger.info({ query: trimmed.slice(0, 80), reaction, score }, '[SmartRouter] Not invited; reacting instead');
+        return { kind: 'NORESPONSE', intent: 'NORESPONSE', reason: `${reason}_react`, retrieval: null, reaction };
+      }
+      return silent(reason);
+    };
+    if (!invited && trimmed && !isQuestion) return silentOrReact('unaddressed_statement');
     if (!named && !engaged && othersMidConversation(recent, { id: speakerTelegramId }, now)) {
       return silent('others_mid_conversation');
     }
@@ -1419,7 +1432,9 @@ Say briefly why it is worth a look — something true about the art, the artist 
     // composed - by retrieval or by the model - and an uninvited question gets
     // neither. "If you were a contributor to a community created card can you
     // still claim?" was answered "Yes" from here; the right answer was silence.
-    if (!invited && trimmed) return silent('unaddressed_question_not_exact');
+    // "dispenser is live https://..." lands here: "is" reads as a question
+    // word. A link is still a link.
+    if (!invited && trimmed) return silentOrReact('unaddressed_question_not_exact');
 
     let mentionedCard = this.detectMentionedCard(trimmed);
     if (!trimmed) {
