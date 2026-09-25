@@ -1,11 +1,12 @@
 {
-  "_comment": "Copy to characters.json on the server. characters.json is gitignored: never commit real ids or descriptions of real people, because this repository is public. One entry per person PEPEDAWN should treat differently. telegramIds are numeric Telegram user ids as strings, and they are the ONLY thing that identifies someone: display names and usernames are ignored, because anyone can change theirs. guidance is plain language added to the reply prompt whenever that person is the one talking. memory is optional and overrides how much social memory keeps about them: cap (most memories held), perDay (most new ones a day), capture (false keeps nothing new). The file is re-read when it changes, so no restart is needed.",
+  "_comment": "Copy to characters.json on the server. characters.json is gitignored: never commit real ids or descriptions of real people, because this repository is public. One entry per person PEPEDAWN should treat differently. telegramIds are numeric Telegram user ids as strings, and they are the ONLY thing that identifies someone: display names and usernames are ignored, because anyone can change theirs. guidance is plain language added to the reply prompt whenever that person is the one talking. memory is optional and overrides how much social memory keeps about them: cap (most memories held), perDay (most new ones a day), capture (false keeps nothing new). gif is optional too: rate (0-1) is how often an invited reply to them becomes a GIF, vibe is the register the GIF takes with them. The file is re-read when it changes, so no restart is needed.",
   "characters": [
     {
       "name": "Example Regular",
       "telegramIds": ["123456789"],
       "guidance": "A long-time collector who loves a debate. Match their energy, rib them gently, and never be dismissive.",
-      "memory": { "cap": 10, "perDay": 1 }
+      "memory": { "cap": 10, "perDay": 1 },
+      "gif": { "rate": 0.3, "vibe": "Loves a bit. Match it with deadpan, never mean." }
     }
   ]
 }

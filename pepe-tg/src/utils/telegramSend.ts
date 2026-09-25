@@ -89,3 +89,40 @@ export async function sendMedia(
     ...(replyMarkup ? { reply_markup: replyMarkup } : {}),
   });
 }
+
+/**
+ * An MP4 uploaded as an animation - Telegram shows it like a GIF, looping
+ * and silent, at a tenth of a GIF's size. Optionally a reply, with a plain
+ * caption. Returns the sent message.
+ */
+export async function sendAnimationFile(
+  token: string,
+  chatId: string,
+  mp4: Uint8Array,
+  opts: { caption?: string | null; replyTo?: number } = {},
+): Promise<any | null> {
+  if (!token || !chatId) return null;
+  try {
+    const form = new FormData();
+    form.append('chat_id', chatId);
+    const buf = mp4.buffer.slice(mp4.byteOffset, mp4.byteOffset + mp4.byteLength) as ArrayBuffer;
+    form.append('animation', new Blob([buf], { type: 'video/mp4' }), 'pepedawn.mp4');
+    if (opts.caption) form.append('caption', opts.caption.slice(0, MAX_CAPTION_CHARS));
+    if (opts.replyTo) form.append('reply_parameters', JSON.stringify({ message_id: opts.replyTo, allow_sending_without_reply: true }));
+    const res = await fetch(`https://api.telegram.org/bot${token}/sendAnimation`, { method: 'POST', body: form });
+    const body: any = await res.json().catch(() => null);
+    if (!res.ok || !body?.ok) {
+      logger.warn(`[TelegramSend] sendAnimation ${chatId}: ${res.status} ${JSON.stringify(body?.description ?? '').slice(0, 200)}`);
+      return null;
+    }
+    return body.result;
+  } catch (error) {
+    logger.warn({ error }, '[TelegramSend] sendAnimation failed');
+    return null;
+  }
+}
+
+/** "sending a video…" in the chat header while something slow is made. Telegram clears it after five seconds. */
+export async function sendChatAction(token: string, chatId: string, action: 'upload_video' | 'typing' | 'record_voice'): Promise<void> {
+  await call(token, 'sendChatAction', { chat_id: chatId, action });
+}

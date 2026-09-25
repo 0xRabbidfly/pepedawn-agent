@@ -42,6 +42,19 @@ export interface Character {
    * anything new being remembered.
    */
   memory?: { cap?: number; perDay?: number; capture?: boolean };
+  /**
+   * How PEPEDAWN's GIF replies treat them: `rate` overrides GIF_RATE (0-1)
+   * when they invite a reply, `vibe` tells the concept model the register
+   * ("heavy deadpan STFU energy"). Lives only in the droplet's roster.
+   */
+  gif?: { rate?: number; vibe?: string };
+}
+
+function gifOverride(value: any): Character['gif'] {
+  if (!value || typeof value !== 'object') return undefined;
+  const rate = typeof value.rate === 'number' && value.rate >= 0 && value.rate <= 1 ? value.rate : undefined;
+  const vibe = typeof value.vibe === 'string' && value.vibe.trim() ? value.vibe.trim().slice(0, 600) : undefined;
+  return rate !== undefined || vibe !== undefined ? { rate, vibe } : undefined;
 }
 
 function memoryOverride(value: any): Character['memory'] {
@@ -94,6 +107,7 @@ function roster(): Map<string, Character> {
         telegramIds: ids,
         guidance: entry.guidance.trim(),
         memory: memoryOverride(entry.memory),
+        gif: gifOverride(entry.gif),
       };
       for (const id of ids) byId.set(id, character);
     }

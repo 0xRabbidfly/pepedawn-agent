@@ -27,6 +27,10 @@ import { recentTurns } from '../conversation/shadow';
 import { runRecap } from '../actions/recapCommand';
 import { runMemoryCommand } from '../actions/memoryCommands';
 import { runBuildRequest, titlePrompt } from '../utils/buildRequests';
+import { describeGif, fgifAllowance, gifConfig, markGifPosted, mayOfferGif, parseFgif, recordFgif } from '../utils/memeGif';
+import { makeMemeGif } from '../utils/memeGifMaker';
+import { sendAnimationFile, sendChatAction } from '../utils/telegramSend';
+import { characterFor } from '../conversation/characters';
 import { sendVoiceMessage, shouldSpeak, synthesizeVoice, voiceConfig, voiceCostUsd } from '../utils/voice';
 import { callTextModel } from '../utils/modelGateway';
 import { sendRecapVideo, stripHtml } from '../utils/recapSend';
@@ -521,6 +525,7 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
   // Talk or type. The reply is written either way; this decides whether it
   // goes out as a voice bubble, and does so. False means "type it".
   const speakIfChosen = async (reply: string): Promise<boolean> => {
+    if (plan.exactAnswer) return false;
     const cfg = voiceConfig();
     if (!shouldSpeak(text, reply, message.roomId, cfg)) return false;
     const token = (runtime.getSetting('TELEGRAM_BOT_TOKEN') as string) || '';
@@ -544,6 +549,40 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
       });
     } catch {}
     return true;
+  };
+
+  // Draw or type. Now and then an invited conversational reply becomes a
+  // Pepe meme GIF instead of words: the dice and the room's cooldown first
+  // (free), then the concept model, which may decline a moment that is not
+  // funny. Per-person rate and register come from the roster. Exact answers
+  // are never drawn. False means "answer in words as usual".
+  const gifIfChosen = async (reply: string): Promise<boolean> => {
+    if (plan.exactAnswer) return false;
+    const cfg = gifConfig();
+    const speakerId = params?.ctx?.message?.from?.id?.toString();
+    const character = characterFor(speakerId);
+    if (!mayOfferGif(message.roomId, { ...cfg, rate: character?.gif?.rate ?? cfg.rate })) return false;
+    const token = (runtime.getSetting('TELEGRAM_BOT_TOKEN') as string) || '';
+    const chatId = telegramChatId(params);
+    if (!token || !chatId) return false;
+    void sendChatAction(token, chatId, 'upload_video');
+    const keepAlive = setInterval(() => void sendChatAction(token, chatId, 'upload_video'), 4500);
+    try {
+      const made = await makeMemeGif(
+        runtime,
+        { mode: 'choice', ask: text, draftReply: reply, turns: recentTurns(message.roomId, 12), speakerNote: character?.gif?.vibe },
+        cfg,
+      );
+      if (!made) return false;
+      const sent = await sendAnimationFile(token, chatId, made.mp4, { caption: made.concept.caption, replyTo: params?.ctx?.message?.message_id });
+      if (!sent) return false;
+      markGifPosted(message.roomId);
+      await recordBotTurn(describeGif(made.concept));
+      logger.info(`[GIF] drew instead of typing: ${describeGif(made.concept)} (${made.ms}ms, $${made.costUsd.toFixed(3)})`);
+      return true;
+    } finally {
+      clearInterval(keepAlive);
+    }
   };
 
   const fallbackCandidates =
@@ -659,7 +698,7 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
           return false;
         }
 
-        if (actionCallback) {
+        if (actionCallback && !(await gifIfChosen(response))) {
           if (!(await speakIfChosen(response))) {
             await actionCallback({
               text: response,
@@ -989,7 +1028,7 @@ export const fakeRaresPlugin: Plugin = {
             addressedBot: !!(isReplyToBot || triggers.hasBotMention || isDirectMessage),
           });
 
-          const { isHelp, isStart, isF, isFCarousel, isC, isP, isFr, isVouch, isFm, isFc, isXcp, isRecap, isAboutMe, isForget, isPb } = commands;
+          const { isHelp, isStart, isF, isFCarousel, isC, isP, isFr, isVouch, isFm, isFc, isXcp, isRecap, isAboutMe, isForget, isPb, isFgif } = commands;
           
           // Log routing factors
           logger.info(`   Triggers: reply=${!!isReplyToBot} | card=${isFakeRareCard} | @mention=${hasBotMention}`);
@@ -1173,6 +1212,48 @@ export const fakeRaresPlugin: Plugin = {
           // the PR and moves the ticket. Answered through the bare callback:
           // a receipt is not conversation. The title is one small model
           // call; without a key the first words stand in.
+          // /fgif <an idea>: a Pepe meme GIF about the idea and the
+          // conversation. Three a day each, admins uncapped; the upload
+          // indicator runs while it is drawn (about twenty seconds).
+          if (isFgif) {
+            message.metadata = message.metadata || {};
+            (message.metadata as any).__handledByCustom = true;
+            const from = params.ctx?.message?.from;
+            const senderId = from?.id?.toString();
+            const cfg = gifConfig();
+            if (!cfg.enabled || !tgChatId) {
+              await baseCallback?.({ text: 'The frog studio is closed.', source: 'telegram' });
+              return;
+            }
+            if (fgifAllowance({ id: senderId, username: from?.username }, cfg) <= 0) {
+              await baseCallback?.({ text: `That's your ${cfg.perPersonPerDay} for today. The frog is resting his wrist.`, source: 'telegram' });
+              return;
+            }
+            const token = (runtime.getSetting('TELEGRAM_BOT_TOKEN') as string) || '';
+            void sendChatAction(token, tgChatId, 'upload_video');
+            const keepAlive = setInterval(() => void sendChatAction(token, tgChatId, 'upload_video'), 4500);
+            try {
+              const made = await makeMemeGif(
+                runtime,
+                { mode: 'command', ask: parseFgif(text)?.idea ?? '', turns: recentTurns(message.roomId, 12), speakerNote: characterFor(senderId)?.gif?.vibe },
+                cfg,
+              );
+              const sent = made
+                ? await sendAnimationFile(token, tgChatId, made.mp4, { caption: made.concept.caption, replyTo: params.ctx?.message?.message_id })
+                : null;
+              if (!made || !sent) {
+                await baseCallback?.({ text: 'The frog studio jammed. Try again in a minute.', source: 'telegram' });
+                return;
+              }
+              if (senderId) recordFgif(senderId);
+              smartRouter?.recordBotTurn(message.roomId, describeGif(made.concept));
+              logger.info(`[GIF] /fgif for ${senderId}: ${describeGif(made.concept)} (${made.ms}ms, $${made.costUsd.toFixed(3)})`);
+            } finally {
+              clearInterval(keepAlive);
+            }
+            return;
+          }
+
           if (isPb) {
             message.metadata = message.metadata || {};
             (message.metadata as any).__handledByCustom = true;

@@ -5,6 +5,43 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.20.0] - 2026-09-25
+
+### Added
+
+- **PEPEDAWN draws.** `/fgif <an idea>` makes a Pepe meme GIF about the idea
+  and about what the chat is on right now, three a day each (admins
+  uncapped). And when it has been invited to talk, PEPEDAWN now and then
+  answers with one instead of words: one invited reply in ten, never twice
+  in a room inside half an hour, and only if the concept model finds the
+  moment genuinely funny - it may decline, and then it types as usual.
+  How it is made: a concept model (`gpt-5.6-terra`, about a cent) reads the
+  last dozen turns and the room's culture and writes a scene, a classic
+  top/bottom caption, a motion, and up to two real cards to paste in as
+  stickers when a card is the punchline; `gpt-image-1` draws the frame
+  (Pepe by description - the recipe that won three trials; about four
+  cents); sharp pastes the cards; ffmpeg adds the motion and the captions in
+  Anton (bundled, OFL). It goes out as a 480px looping MP4, about 100KB,
+  after roughly twenty seconds under Telegram's "sending a video"
+  indicator. Exact answers are never drawn. The roster can give a person a
+  GIF `rate` and `vibe` - how often, and in what register.
+  Built for the droplet's 2GB: a single still in and 45 frames out, never
+  `-loop` or `palettegen` (the recipe that took the dev machine down on 24
+  September), ffmpeg under a 1.5GB address-space cap, a 60-second timeout
+  and two malloc arenas, card images refused over 8MB and fetched from the
+  smallest copy first, sharp loaded lazily.
+
+### Fixed
+
+- **No facts answer to real-world scandal bait.** "pepedawn did we get
+  funded by Epstein ?" went down the facts path and came back as a
+  paragraph naming Jeffrey Epstein next to Rare Pepe's history; seven
+  minutes later the owner typed /ban. A message tying the room to a
+  real-world criminal or scandal now gets one flat line ("No.", "Pass.",
+  "Wrong frog.") when asked, and nothing - not even a reaction - when not.
+  No retrieval, no model, never the name back. Ahead of every other path.
+- Voice no longer speaks an exact answer; exact answers get no reaction.
+
 ## [5.19.1] - 2026-09-25
 
 ### Fixed

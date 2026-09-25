@@ -12,6 +12,7 @@ import {
 import { detectCardFastPath } from '../router/cardFastPath';
 import { reactionAllowed, reactionFor, reactionForAddressed, reactionScore } from '../utils/reactions';
 import { BOT_NAME_ALT, namesTheBot } from '../utils/botName';
+import { scandalDeflection, touchesRealScandal } from '../utils/scandalGuard';
 import { characterFor, characterNote, type Character } from '../conversation/characters';
 import { KnowledgeOrchestratorService } from './KnowledgeOrchestratorService';
 import { callTextModel } from '../utils/modelGateway';
@@ -102,6 +103,12 @@ export interface SmartRoutingPlan {
   isNonAnswer?: boolean;
   /** React to the message with this emoji instead of replying. */
   reaction?: string;
+  /**
+   * The reply states something exact (a card fact, the claim form, the
+   * birthday count) or deflects on purpose. It goes out as written words:
+   * never swapped for a GIF or a voice note, never decorated with a reaction.
+   */
+  exactAnswer?: boolean;
   metadata?: {
     classifierRaw?: string;
   };
@@ -1237,6 +1244,7 @@ Say briefly why it is worth a look — something true about the art, the artist 
         retrieval,
         selectedCandidates: this.selectTopCandidates(retrieval, 3),
         chatResponse: finalText,
+        exactAnswer: !!options?.knownFact,
         metadata: { classifierRaw },
       };
     } catch (error) {
@@ -1274,7 +1282,7 @@ Say briefly why it is worth a look — something true about the art, the artist 
     // Any plan that answers was invited. Answering a message worth a look
     // - or one that asks for an emoji - reacts to it as well: silent, and
     // the thing the room was told the bot could do.
-    if (plan.kind !== 'NORESPONSE' && plan.kind !== 'CMDROUTE' && !plan.reaction) {
+    if (plan.kind !== 'NORESPONSE' && plan.kind !== 'CMDROUTE' && !plan.reaction && !plan.exactAnswer) {
       const reaction = reactionForAddressed(text.trim(), !!this.detectMentionedCard(text.trim()));
       if (reaction) plan.reaction = reaction;
     }
@@ -1334,6 +1342,16 @@ Say briefly why it is worth a look — something true about the art, the artist 
       logger.info({ query: trimmed.slice(0, 80), reason }, '[SmartRouter] Not invited; staying out');
       return { kind: 'NORESPONSE', intent: 'NORESPONSE', reason, retrieval: null };
     };
+
+    // Real-world criminals and scandals: a flat line or nothing, ahead of
+    // every other path, the statement gate included, so bait is never
+    // reacted to either. See utils/scandalGuard.ts for the 25 September reply
+    // that made this necessary.
+    if (touchesRealScandal(trimmed)) {
+      if (!invited) return silent('unaddressed_scandal');
+      logger.info({ query: trimmed.slice(0, 80) }, '[SmartRouter] Real-world scandal -> deflect');
+      return { kind: 'CHAT', intent: 'CHAT', reason: 'scandal_deflect', retrieval: null, chatResponse: scandalDeflection(), exactAnswer: true };
+    }
     // Silent, but a post worth a look gets an emoji instead of nothing - a
     // link, a market move, a card named, an announcement. No notification,
     // nothing in the scroll. A really good post always gets one; ordinary

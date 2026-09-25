@@ -65,6 +65,10 @@ const HELPFUL_TIPS = [
     text: "Know the story behind a card? `/fr CARDNAME <the story>`. If you're the artist it lands straight away; otherwise two regulars need to `/vouch` for it. Check `/vouch` to see what's waiting.",
   },
   {
+    title: "🎨 Pepe GIFs",
+    text: "`/fgif <an idea>` and I'll draw a Pepe meme about it - and about whatever this chat is arguing over. Three a day each.",
+  },
+  {
     title: "🎫 Fake Backlog",
     text: "Want me to do something I don't do yet, or fix something I do badly? `/fb <the idea, or the bug>` opens a ticket. `/fb` alone shows the top ten and where they stand. rabbidfly reviews it daily; what I can build comes back as a PR for him.",
   },

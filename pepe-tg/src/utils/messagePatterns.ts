@@ -38,6 +38,7 @@ export interface MessagePatterns {
     isAboutMe: boolean;
     isForget: boolean;
     isPb: boolean;                 // /fb - a ticket on the fake backlog, for the maintainer
+    isFgif: boolean;               // /fgif <idea> - a Pepe meme GIF
   };
   
   // Triggers for routing
@@ -83,6 +84,7 @@ export function detectMessagePatterns(
     isAboutMe: /^(?:@[A-Za-z0-9_]+\s+)?\/aboutme(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
     isForget: /^(?:@[A-Za-z0-9_]+\s+)?\/forget(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
     isPb: /^(?:@[A-Za-z0-9_]+\s+)?\/fb(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
+    isFgif: /^(?:@[A-Za-z0-9_]+\s+)?\/fgif(?:@[A-Za-z0-9_]+)?(?:\s|$)/i.test(text),
   };
   
   // Routing triggers

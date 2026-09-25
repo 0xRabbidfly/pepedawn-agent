@@ -104,6 +104,10 @@ export const helpCommand: Action = {
 _Artists' lore lands straight away. Anyone else's needs 2 vouches from regulars first._
 _Admins: \`/fr!\` stores it even if the quality screen disagrees._
 
+**Pepe GIFs:** 🎨
+\`/fgif <an idea>\` - I draw a Pepe meme about it, and about what the chat is on
+_Three a day each._
+
 **Fake backlog:** 🎫
 \`/fb <an idea, or a bug>\` - Open a ticket: ask me to build or fix something
 \`/fb\` - The top ten tickets and where they stand
