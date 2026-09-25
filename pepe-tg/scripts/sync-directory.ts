@@ -69,7 +69,7 @@ if (report.retired.length > 20) {
 // one more request. A short or failed response leaves yesterday's list.
 const ARTISTS_API = API.replace(/\/api\/cards$/, '/api/artists');
 const artistsPath = join(process.cwd(), 'src', 'data', 'directory-artists.json');
-let artists: Array<{ name: string; slug: string; aliases: string[] }> | null = null;
+let artists: Array<{ name: string; slug: string; aliases: string[]; hasProfile: boolean }> | null = null;
 try {
   const ares = await fetch(ARTISTS_API, { headers: { 'User-Agent': 'pepedawn-agent sync (one request a day)' } });
   const body: any = ares.ok ? await ares.json() : null;
@@ -77,7 +77,14 @@ try {
   if (list.length >= 100) {
     artists = list
       .filter((a) => typeof a?.name === 'string' && typeof a?.slug === 'string')
-      .map((a) => ({ name: a.name, slug: a.slug, aliases: (a.aliases ?? []).filter((x: unknown) => typeof x === 'string') }))
+      .map((a) => ({
+        name: a.name,
+        slug: a.slug,
+        aliases: (a.aliases ?? []).filter((x: unknown) => typeof x === 'string'),
+        // A bio or any link means the page has been filled in; the artist
+        // spotlight prods only the bare ones while the claim window is open.
+        hasProfile: !!(a.bio && String(a.bio).trim()) || Object.values(a.links ?? {}).some(Boolean),
+      }))
       .sort((a, b) => a.slug.localeCompare(b.slug));
   } else {
     console.warn(`artists: ${ARTISTS_API} returned ${list.length}; keeping the committed list`);

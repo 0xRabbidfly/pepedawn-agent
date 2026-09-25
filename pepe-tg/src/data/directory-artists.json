@@ -1,2100 +1,2507 @@
 {
- "fetchedAt": "2026-09-24",
+ "fetchedAt": "2026-09-25",
  "artists": [
   {
    "name": "0010",
    "slug": "0010",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "0xAlik",
    "slug": "0xalik",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "1BCQVoz",
    "slug": "1bcqvoz",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "4LC",
    "slug": "4lc",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "6529er",
    "slug": "6529er",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "80sKurt",
    "slug": "80skurt",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "9272",
    "slug": "9272",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Abstract Mirror",
    "slug": "abstract-mirror",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "AbstractUnknown",
    "slug": "abstractunknown",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "ACK",
    "slug": "ack",
    "aliases": [
     "Alpha Centauri Kid"
-   ]
+   ],
+   "hasProfile": true
   },
   {
    "name": "AD_AD",
    "slug": "ad-ad",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "AERAONE",
    "slug": "aeraone",
    "aliases": [
     "AERA"
-   ]
+   ],
+   "hasProfile": false
   },
   {
    "name": "Afonso Caravagio",
    "slug": "afonso-caravagio",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Aisha Venus",
    "slug": "aisha-venus",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Al",
    "slug": "al",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "ALIENQUEEN",
    "slug": "alienqueen",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "All Out Anon",
    "slug": "all-out-anon",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Alondre",
    "slug": "alondre",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Alth0tas",
    "slug": "alth0tas",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Andrea Chiampo",
    "slug": "andrea-chiampo",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "Andreas Preis",
    "slug": "andreas-preis",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Apocalypse",
    "slug": "apocalypse",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Aquatic",
    "slug": "aquatic",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Aravan",
    "slug": "aravan",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Archan Nair",
    "slug": "archan-nair",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "AROE",
    "slug": "aroe",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Art Bat",
    "slug": "art-bat",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Art GarPUNKel",
    "slug": "art-garpunkel",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Arwyn",
    "slug": "arwyn",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "AWRALPH",
    "slug": "awralph",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Baldopg",
    "slug": "baldopg",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "banakin",
    "slug": "banakin",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "BasqKek",
    "slug": "basqkek",
    "aliases": [
     "Basqkek"
-   ]
+   ],
+   "hasProfile": false
   },
   {
    "name": "batzdu",
    "slug": "batzdu",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "Ben Strauss",
    "slug": "ben-strauss",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "bhare",
    "slug": "bhare",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "BIGTOX",
    "slug": "bigtox",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Bitcoin Audio",
    "slug": "bitcoin-audio",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Bitstradamus",
    "slug": "bitstradamus",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "BLISSFULMORG",
    "slug": "blissfulmorg",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Booo Urns",
    "slug": "booo-urns",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Britts",
    "slug": "britts",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "brocciu",
    "slug": "brocciu",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Bryan Brinkman",
    "slug": "bryan-brinkman",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "BTCblaze",
    "slug": "btcblaze",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Bunzy",
    "slug": "bunzy",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "BurstMembrane",
    "slug": "burstmembrane",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "C3",
    "slug": "c3",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "cadmonkey",
    "slug": "cadmonkey",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "calboy99",
    "slug": "calboy99",
    "aliases": [
     "Calboy99"
-   ]
+   ],
+   "hasProfile": false
   },
   {
    "name": "Cam",
    "slug": "cam",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "cana",
    "slug": "cana",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "carsonated",
    "slug": "carsonated",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Cath Simard",
    "slug": "cath-simard",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "CES",
    "slug": "ces",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "cgknight",
    "slug": "cgknight",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Chainleft",
    "slug": "chainleft",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Chaotic Crypto",
    "slug": "chaotic-crypto",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Chris Granneberg",
    "slug": "chris-granneberg",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Chris Storm",
    "slug": "chris-storm",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Chrome Void",
    "slug": "chrome-void",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Chunri",
    "slug": "chunri",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Ciobo",
    "slug": "ciobo",
    "aliases": [
     "Ciobo Bocio"
-   ]
+   ],
+   "hasProfile": false
   },
   {
    "name": "Claire Silver",
    "slug": "claire-silver",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "Coasters",
    "slug": "coasters",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Coit",
    "slug": "coit",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Coldie",
    "slug": "coldie",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Community Created",
    "slug": "community-created",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "coriot",
    "slug": "coriot",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Cornholio the Great",
    "slug": "cornholio-the-great",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "COSTA",
    "slug": "costa",
    "aliases": [
     "Costa Jpeg"
-   ]
+   ],
+   "hasProfile": false
   },
   {
    "name": "CRIME BREAKFAST",
    "slug": "crime-breakfast",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Crimson Rider",
    "slug": "crimson-rider",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Cronos One",
    "slug": "cronos-one",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Crypsi",
    "slug": "crypsi",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Crypto Ali",
    "slug": "crypto-ali",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "CryptoChainer",
    "slug": "cryptochainer",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Cryptograffiti",
    "slug": "cryptograffiti",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "CRYPTOPHOBIA",
    "slug": "cryptophobia",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "CTC",
    "slug": "ctc",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Cullen Colors",
    "slug": "cullen-colors",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Cydr",
    "slug": "cydr",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "Cyph3rpunk5",
    "slug": "cyph3rpunk5",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "D Shorty",
    "slug": "d-shorty",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Da'Block God",
    "slug": "da-block-god",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Da Kernel",
    "slug": "da-kernel",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Dalek",
    "slug": "dalek",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "DanDarkPool",
    "slug": "dandarkpool",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Dangiuz",
    "slug": "dangiuz",
    "aliases": [
     "Danguiz"
-   ]
+   ],
+   "hasProfile": true
   },
   {
    "name": "dark0",
    "slug": "dark0",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Darkfarms",
    "slug": "darkfarms",
    "aliases": [
     "Darkfarms1"
-   ]
+   ],
+   "hasProfile": true
   },
   {
    "name": "DarkFluffyRabbit",
    "slug": "darkfluffyrabbit",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Darkknight",
    "slug": "darkknight",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Darky",
    "slug": "darky",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "davesta",
    "slug": "davesta",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "DCOT",
    "slug": "dcot",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "DeeKay",
    "slug": "deekay",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "Deep Honey",
    "slug": "deep-honey",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "DEFSTALKR",
    "slug": "defstalkr",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Desktop Commando",
    "slug": "desktop-commando",
    "aliases": [
     "DesktopCommando"
-   ]
+   ],
+   "hasProfile": false
   },
   {
    "name": "desultor",
    "slug": "desultor",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Digital Ape",
    "slug": "digital-ape",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "diid",
    "slug": "diid",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Dim Zayan",
    "slug": "dim-zayan",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Dino",
    "slug": "dino",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "DITACRYPTO",
    "slug": "ditacrypto",
    "aliases": [
     "Dita"
-   ]
+   ],
+   "hasProfile": false
   },
   {
    "name": "DJ Kermit",
    "slug": "dj-kermit",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "DJ Q-Bert",
    "slug": "dj-q-bert",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Django Bits",
    "slug": "django-bits",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Dmitri Cherniak",
    "slug": "dmitri-cherniak",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "Doctor Phoenix",
    "slug": "doctor-phoenix",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Doge-Style",
    "slug": "doge-style",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Dom",
    "slug": "dom",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Dr. Greedy",
    "slug": "dr-greedy",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Dr. Pep",
    "slug": "dr-pep",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Dr. $uss",
    "slug": "dr-uss",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Early Bird",
    "slug": "early-bird",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Easy B",
    "slug": "easy-b",
    "aliases": [
     "easyB"
-   ]
+   ],
+   "hasProfile": false
   },
   {
    "name": "EclecticMethod",
    "slug": "eclecticmethod",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "El Cholo Pepe",
    "slug": "el-cholo-pepe",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Elekt1",
    "slug": "elekt1",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Elispri",
    "slug": "elispri",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Elvis Dead",
    "slug": "elvis-dead",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "EmblematiX",
    "slug": "emblematix",
    "aliases": [
     "EMBLEMATIX"
-   ]
+   ],
+   "hasProfile": false
   },
   {
    "name": "Exahash",
    "slug": "exahash",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Exmoor Beast",
    "slug": "exmoor-beast",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Fabrique",
    "slug": "fabrique",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Fake Annie",
    "slug": "fake-annie",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Fake Sketch",
    "slug": "fake-sketch",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "FakeBuddha",
    "slug": "fakebuddha",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "faketrashbin",
    "slug": "faketrashbin",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "FAR",
    "slug": "far",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Father John",
    "slug": "father-john",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Fawkek",
    "slug": "fawkek",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Ffmad",
    "slug": "ffmad",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Finestrares",
    "slug": "finestrares",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "fishbrain",
    "slug": "fishbrain",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "FISTSOFFURY",
    "slug": "fistsoffury",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "FORD",
    "slug": "ford",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "FourLeafClover",
    "slug": "fourleafclover",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "FRIENDS WITH YOU",
    "slug": "friends-with-you",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "FWD",
    "slug": "fwd",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Gary Cartlidge",
    "slug": "gary-cartlidge",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Ghostface Killah",
    "slug": "ghostface-killah",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "GISELX",
    "slug": "giselx",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "glen",
    "slug": "glen",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "GMONEY",
    "slug": "gmoney",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "GoingPepe100",
    "slug": "goingpepe100",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Gonkulator",
    "slug": "gonkulator",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "GonkX",
    "slug": "gonkx",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Grant Riven Yun",
    "slug": "grant-riven-yun",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "Greencross",
    "slug": "greencross",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "GRNQRTR",
    "slug": "grnqrtr",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Gus Grillasca",
    "slug": "gus-grillasca",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Gustavo",
    "slug": "gustavo",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Guzman",
    "slug": "guzman",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Hafftka",
    "slug": "hafftka",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Hammad",
    "slug": "hammad",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Harold Harambe",
    "slug": "harold-harambe",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Hitchdank",
    "slug": "hitchdank",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Hitomi Matsui",
    "slug": "hitomi-matsui",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "HNFT Pepe",
    "slug": "hnft-pepe",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Holden L.",
    "slug": "holden-l",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "HollywoodMeta",
    "slug": "hollywoodmeta",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "ICQ",
    "slug": "icq",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Ill Bill",
    "slug": "ill-bill",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Indelible Trade",
    "slug": "indelible-trade",
    "aliases": [
     "Indelible"
-   ]
+   ],
+   "hasProfile": false
   },
   {
    "name": "inn0va",
    "slug": "inn0va",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "IPUTSA",
    "slug": "iputsa",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Irem Bozatak",
    "slug": "irem-bozatak",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Isaac O",
    "slug": "isaac-o",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Iuri",
    "slug": "iuri",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Jack Kaido",
    "slug": "jack-kaido",
    "aliases": [
     "Jack Kaido"
-   ]
+   ],
+   "hasProfile": true
   },
   {
    "name": "Jaen",
    "slug": "jaen",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "JAH",
    "slug": "jah",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Jak",
    "slug": "jak",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "JAKE",
    "slug": "jake",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Jake Fried",
    "slug": "jake-fried",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "JAMEX",
    "slug": "jamex",
    "aliases": [
     "JameX"
-   ]
+   ],
+   "hasProfile": false
   },
   {
    "name": "JB",
    "slug": "jb",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "JDog",
    "slug": "jdog",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Jeremy Booth",
    "slug": "jeremy-booth",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Joe Atang",
    "slug": "joe-atang",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Joe Looney",
    "slug": "joe-looney",
    "aliases": [
     "Looney"
-   ]
+   ],
+   "hasProfile": false
   },
   {
    "name": "Joe Pease",
    "slug": "joe-pease",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "JohnDXB",
    "slug": "johndxb",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Johnny Dollar",
    "slug": "johnny-dollar",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Jonny Johnson",
    "slug": "jonny-johnson",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Jose Burro",
    "slug": "jose-burro",
    "aliases": [
     "Jose Burrito"
-   ]
+   ],
+   "hasProfile": false
   },
   {
    "name": "JP Jannsen",
    "slug": "jp-jannsen",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "JULES",
    "slug": "jules",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "Jum Napat",
    "slug": "jum-napat",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Kane Mayfield",
    "slug": "kane-mayfield",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Kaph",
    "slug": "kaph",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Katerine Escobar",
    "slug": "katerine-escobar",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Kenneth B. Moon",
    "slug": "kenneth-b-moon",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "KERO",
    "slug": "kero",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Kibo",
    "slug": "kibo",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Killer Acid",
    "slug": "killer-acid",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "Killian Moore",
    "slug": "killian-moore",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "kr",
    "slug": "kr",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "KristyGlas",
    "slug": "kristyglas",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Ksenia Buridanova",
    "slug": "ksenia-buridanova",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Lalana",
    "slug": "lalana",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "LavaaGang",
    "slug": "lavaagang",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Leigha-Beth",
    "slug": "leigha-beth",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Lenny",
    "slug": "lenny",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Limbo Mask",
    "slug": "limbo-mask",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Logik",
    "slug": "logik",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "looks rare",
    "slug": "looks-rare",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Lord Jaime V. Shill",
    "slug": "lord-jaime-v-shill",
    "aliases": [
     "Lord Jamie V Shill"
-   ]
+   ],
+   "hasProfile": false
   },
   {
    "name": "Love Being",
    "slug": "love-being",
    "aliases": [
     "LOVEBEING"
-   ]
+   ],
+   "hasProfile": false
   },
   {
    "name": "Luis Simo",
    "slug": "luis-simo",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Lun Kazuki",
    "slug": "lun-kazuki",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Luna",
    "slug": "luna",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "LycosFreak",
    "slug": "lycosfreak",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "M.BTC",
    "slug": "m-btc",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Mallery",
    "slug": "mallery",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Mandarine Marie",
    "slug": "mandarine-marie",
    "aliases": [
     "Mandarin Marie"
-   ]
+   ],
+   "hasProfile": false
   },
   {
    "name": "Marcus Connor",
    "slug": "marcus-connor",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Matt Kane",
    "slug": "matt-kane",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Matt Szczur",
    "slug": "matt-szczur",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "MAX CAPACITY",
    "slug": "max-capacity",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Maya",
    "slug": "maya",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "MC Fanny",
    "slug": "mc-fanny",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Megatron",
    "slug": "megatron",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "mekabu",
    "slug": "mekabu",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Melih Polat",
    "slug": "melih-polat",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "mellow mining",
    "slug": "mellow-mining",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Meme Conscious",
    "slug": "meme-conscious",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Memeticx",
    "slug": "memeticx",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "mera.ki",
    "slug": "mera-ki",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "metadad",
    "slug": "metadad",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "METAVOXELZ",
    "slug": "metavoxelz",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Michael Naples",
    "slug": "michael-naples",
    "aliases": [
     "Mike Naples"
-   ]
+   ],
+   "hasProfile": false
   },
   {
    "name": "Mighty Shroom",
    "slug": "mighty-shroom",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Migrating Lines",
    "slug": "migrating-lines",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Mike in Space",
    "slug": "mike-in-space",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Mike Three",
    "slug": "mike-three",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "MIKEYCORTEZ",
    "slug": "mikeycortez",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "MintFace",
    "slug": "mintface",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "MLOdotArt",
    "slug": "mlodotart",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Moxarras",
    "slug": "moxarras",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "MR",
    "slug": "mr",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Mr. Enrique Fajaque",
    "slug": "mr-enrique-fajaque",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Mr. Hansel",
    "slug": "mr-hansel",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Mr. HODLPIG",
    "slug": "mr-hodlpig",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Mr. Million Miles Away",
    "slug": "mr-million-miles-away",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Mr. & Mrs. Micon",
    "slug": "mr-mrs-micon",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Mr. P",
    "slug": "mr-p",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Mr. Spree",
    "slug": "mr-spree",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Mrs. Micon",
    "slug": "mrs-micon",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "MT",
    "slug": "mt",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Mumbling Bearded Freak",
    "slug": "mumbling-bearded-freak",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "nathansonic",
    "slug": "nathansonic",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Nay",
    "slug": "nay",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Ndhoz",
    "slug": "ndhoz",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Ness Graphics",
    "slug": "ness-graphics",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "netidx",
    "slug": "netidx",
    "aliases": [
     "Netidx"
-   ]
+   ],
+   "hasProfile": false
   },
   {
    "name": "NFTMANC",
    "slug": "nftmanc",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Nicolas Sierro",
    "slug": "nicolas-sierro",
    "aliases": [
     "Nicholas Sierro"
-   ]
+   ],
+   "hasProfile": false
   },
   {
    "name": "Nikolina Petolas",
    "slug": "nikolina-petolas",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Nimzobit",
    "slug": "nimzobit",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Nipdog",
    "slug": "nipdog",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "NNIA",
    "slug": "nnia",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Norman Comics",
    "slug": "norman-comics",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Obxium",
    "slug": "obxium",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Odious",
    "slug": "odious",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "OE",
    "slug": "oe",
    "aliases": [
     "O E"
-   ]
+   ],
+   "hasProfile": false
   },
   {
    "name": "OJB NFT",
    "slug": "ojb-nft",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Oliver Morris",
    "slug": "oliver-morris",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Olivia Pedigo",
    "slug": "olivia-pedigo",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "olliesblog",
    "slug": "olliesblog",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Onigiri",
    "slug": "onigiri",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "OoakosiMo",
    "slug": "ooakosimo",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Optimist",
    "slug": "optimist",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "OSF",
    "slug": "osf",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Other World",
    "slug": "otherworld",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "Our Everyday Earth",
    "slug": "our-everyday-earth",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "PabloRica$$o",
    "slug": "pablorica-o",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Paper Ape",
    "slug": "paper-ape",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "ParisianForge",
    "slug": "parisianforge",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "PEEPS",
    "slug": "peeps",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Pepe",
    "slug": "pepe",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Pepe Flyers",
    "slug": "pepe-flyers",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Pepe Inside",
    "slug": "pepe-inside",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Pepe Le Hues",
    "slug": "pepe-le-hues",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Pepe Picasso",
    "slug": "pepe-picasso",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Pepecapitol",
    "slug": "pepecapitol",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "PepEdward Hopper",
    "slug": "pepedward-hopper",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Pepenardo",
    "slug": "pepenardo",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "PEPETHOTH",
    "slug": "pepethoth",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "PEPSIKOALA",
    "slug": "pepsikoala",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Pifu",
    "slug": "pifu",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Pimpernel Jones",
    "slug": "pimpernel-jones",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "pinocchio",
    "slug": "pinocchio",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "PopWonder",
    "slug": "popwonder",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Porkchop",
    "slug": "porkchop",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Prateek Dhiman",
    "slug": "prateek-dhiman",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Prefer Wealth",
    "slug": "prefer-wealth",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Prez1",
    "slug": "prez1",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Prorok",
    "slug": "prorok",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "PUR",
    "slug": "pur",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "PurpleDrank7855",
    "slug": "purpledrank7855",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "purplehat.eth",
    "slug": "purplehat-eth",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "rabbidfly",
    "slug": "rabbidfly",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Raf Grassetti",
    "slug": "raf-grassetti",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "RAHVO",
    "slug": "rahvo",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Rare Designer",
    "slug": "rare-designer",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Rare Junior",
    "slug": "rare-junior",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Rare Scrilla",
    "slug": "rare-scrilla",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "Rarejay",
    "slug": "rarejay",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "RC",
    "slug": "rc",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "realPepstein",
    "slug": "realpepstein",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "RebelMoney",
    "slug": "rebelmoney",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Regan",
    "slug": "regan",
    "aliases": [
     "regan"
-   ]
+   ],
+   "hasProfile": false
   },
   {
    "name": "REMSTER",
    "slug": "remster",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "RΞY",
    "slug": "reylarsdam",
    "aliases": [
     "REY"
-   ]
+   ],
+   "hasProfile": true
   },
   {
    "name": "Rik Oostenbroek",
    "slug": "rik-oostenbroek",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "Riven",
    "slug": "riven",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "ROBNESS",
    "slug": "robness",
    "aliases": [
     "ROBNESS V2"
-   ]
+   ],
+   "hasProfile": true
   },
   {
    "name": "rochigg",
    "slug": "rochigg",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Rodro",
    "slug": "rodro",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Roger Fliporian",
    "slug": "roger-fliporian",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Rollah",
    "slug": "rollah",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "RubenBigQ",
    "slug": "rubenbigq",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Rutger van der Tas",
    "slug": "rutger-van-der-tas",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Ry",
    "slug": "ry",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Ryan D. Anderson",
    "slug": "ryan-d-anderson",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Ryan Koopmans",
    "slug": "ryan-koopmans",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "Rydes",
    "slug": "rydes",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "ryr",
    "slug": "ryr",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Saed",
    "slug": "saed",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "SAHREDTOY",
    "slug": "sahredtoy",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "SaSHA-256",
    "slug": "sasha-256",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Sasha Chudo",
    "slug": "sasha-chudo",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Scorch Beats",
    "slug": "scorch-beats",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Seerlight",
    "slug": "seerlight",
    "aliases": [
     "Seerlight"
-   ]
+   ],
+   "hasProfile": true
   },
   {
    "name": "Shaban Shaame",
    "slug": "shaban-shaame",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "ShakAttak",
    "slug": "shakattak",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Shannon Code",
    "slug": "shannon-code",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Shawn Leary",
    "slug": "shawn-leary",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "SHEWOLF",
    "slug": "shewolf",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "ShowerShoes",
    "slug": "showershoes",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Sir Barry Gibb",
    "slug": "sir-barry-gibb",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Skife",
    "slug": "skife",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Snuxton Pack",
    "slug": "snuxton-pack",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Spank Ink",
    "slug": "spank-ink",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "StackItUp",
    "slug": "stackitup",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Stas",
    "slug": "stas",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Steve Weave",
    "slug": "steve-weave",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "StoneOfJordan",
    "slug": "stoneofjordan",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "StrangerSolemn",
    "slug": "strangersolemn",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "STVDIO NOUVEAU",
    "slug": "stvdio-nouveau",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "SuperTrip64",
    "slug": "supertrip",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "T. Wade",
    "slug": "t-wade",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Tall Greg Art",
    "slug": "tall-greg-art",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Tasha Moon",
    "slug": "tasha-moon",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Tek",
    "slug": "tek",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "teymthebeast",
    "slug": "teymthebeast",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "The Genius",
    "slug": "the-genius",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "the mule",
    "slug": "the-mule",
    "aliases": [
     "The Mule"
-   ]
+   ],
+   "hasProfile": false
   },
   {
    "name": "The Park",
    "slug": "the-park",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Theo Goodman",
    "slug": "theo-goodman",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "thewisekhan",
    "slug": "thewisekhan",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "threepanelcrimes",
    "slug": "threepanelcrimes",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Tizar Berandalan",
    "slug": "tizar-berandalan",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Tjo",
    "slug": "tjo",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "TKY",
    "slug": "tky",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Tommy",
    "slug": "tommy",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Tommy Wilson",
    "slug": "tommy-wilson",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Tomopen",
    "slug": "tomopen",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "TRITHEMIUSPEPE",
    "slug": "trithemiuspepe",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "UNO8",
    "slug": "uno8",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Uttermelon",
    "slug": "uttermelon",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "VaJE",
    "slug": "vaje",
    "aliases": [
     "VaJe"
-   ]
+   ],
+   "hasProfile": false
   },
   {
    "name": "VeryRareFren",
    "slug": "veryrarefren",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Vexx",
    "slug": "vexx",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Virtual Alaska",
    "slug": "virtual-alaska",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Viva La Vandal",
    "slug": "viva-la-vandal",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Vlad Costea",
    "slug": "vlad-costea",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "VSTRVL",
    "slug": "vstrvl",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "VVD",
    "slug": "vvd",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Wazzu",
    "slug": "wazzu",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Wes Henry",
    "slug": "wes-henry",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "WetPotatoBrain",
    "slug": "wetpotatobrain",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Whalesink",
    "slug": "whalesink",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Whoisit",
    "slug": "whoisit",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Willie Waze",
    "slug": "willie-waze",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "windshitheavy",
    "slug": "windshitheavy",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Winnie",
    "slug": "winnie",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Wizard X",
    "slug": "wizard-x",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "WomanNFT",
    "slug": "womannft",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Worm",
    "slug": "worm",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "XWAVE",
    "slug": "xwave",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Yog Joshi",
    "slug": "yog-joshi",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Yoni",
    "slug": "yoni",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "YOTET",
    "slug": "yotet",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "YoulDesign",
    "slug": "youldesign",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "YT",
    "slug": "yt",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Zaid Kirdsey",
    "slug": "zaid-kirdsey",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": true
   },
   {
    "name": "ZED",
    "slug": "zed",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "ZeroG",
    "slug": "zerog",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "ZETRA",
    "slug": "zetra",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Zima Blue",
    "slug": "zima-blue",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Zoku",
    "slug": "zoku",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "ZOOMO",
    "slug": "zoomo",
-   "aliases": []
+   "aliases": [],
+   "hasProfile": false
   }
  ]
 }

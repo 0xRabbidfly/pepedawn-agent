@@ -5,6 +5,27 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.21.0] - 2026-09-25
+
+### Added
+
+- **The daily artist spotlight (KEK-001, the first ticket on the fake
+  backlog).** One artist from the directory each UTC day; one of their cards
+  at 15:00, 19:00 and 23:00 UTC (up to three, never two within two hours,
+  no burst after downtime), each with a haiku written from what the vision
+  pass recorded on that card. While the claim window is open (until 22
+  October) it favours artists whose directory page is still bare and adds a
+  low-voltage prod - one rotating line and a "⚡ Claim your page" button;
+  after that, a button to their artist page. It prefers artists with two or
+  more cards, so the day is more than one post, and does not repeat an artist
+  within sixty days. Tagging is only what is known: a Telegram @ when
+  `artist-aliases.json` maps one, an X profile as an x.com link from
+  pepe.wtf's curated handles, never a bare "@handle" (Telegram would give it
+  to whoever owns that name there). Pool on 25 September: 332 artists with
+  cards, 305 with bare pages, 150 with a curated X handle. The daily sync now
+  records `hasProfile` (a bio or any link) in `directory-artists.json`.
+  `SPOTLIGHT_ENABLED=false` turns it off.
+
 ## [5.20.0] - 2026-09-25
 
 ### Added

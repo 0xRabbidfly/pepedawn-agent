@@ -19,6 +19,8 @@ export interface DirectoryArtist {
   name: string;
   slug: string;
   aliases: string[];
+  /** Bio or links filled in on the directory, as of the last sync. */
+  hasProfile?: boolean;
 }
 
 export interface CardButton {
