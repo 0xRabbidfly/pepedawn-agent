@@ -152,6 +152,12 @@ export class PeriodicContentService extends Service {
 
     try {
       this.isRunning = true;
+      // Treat the reboot itself as the last post. It anchors both guards
+      // below: the interval has to elapse from here, and only a message sent
+      // after this moment counts as the room being awake. Without it a fresh
+      // process has lastContentPostTime 0, which read as "first post, always
+      // allowed" and skipped the activity check altogether.
+      this.lastContentPostTime = Date.now();
       this.startPolling();
       logger.info(`PeriodicContentService started (interval: ${(this.intervalMs / 60000).toFixed(0)}min)`);
     } catch (error) {
@@ -168,16 +174,12 @@ export class PeriodicContentService extends Service {
       clearInterval(this.pollingInterval);
     }
 
-    // Delay first post by 30 seconds to ensure Telegram service is fully initialized
-    logger.info('PeriodicContentService: First post will occur after 30s initialization delay');
-    setTimeout(() => {
-      if (this.isRunning) {
-        this.tryPostContent().catch((error) => {
-          logger.error({ error }, 'Error in initial periodic content post');
-        });
-      }
-    }, 30000); // 30 second startup delay
-
+    // No post on the way up. There was a 30s timer here that fired one on
+    // every boot, and with the nightly 02:00 cron_restart and a pm2 delete on
+    // every deploy that is a showcase into a dead channel most days, half a
+    // minute after the bot wakes. The room reads it as the bot talking to
+    // itself. Nothing goes out now until the interval comes round *and* a
+    // person has spoken since the reboot.
     this.pollingInterval = setInterval(() => {
       if (this.isRunning) {
         this.tryPostContent().catch((error) => {
@@ -243,9 +245,10 @@ export class PeriodicContentService extends Service {
     // received. It must NOT call getUpdates: that consumes the bot's own
     // update queue, and a queued user message has been lost that way before.
     // See CLAUDE.md "Never call getUpdates by hand".
-    if (this.lastContentPostTime === 0) {
-      return true; // first post of the process
-    }
+    // No "first post of the process" exemption: that is exactly what let a
+    // reboot post into a silent room. A fresh process is anchored at its boot
+    // time by start(), so what follows is the only question that matters -
+    // has anyone said anything since?
     for (const channelId of this.channelIds) {
       try {
         const turns = await this.history.load(channelId);

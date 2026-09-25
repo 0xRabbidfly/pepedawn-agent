@@ -5,6 +5,60 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.22.0] - 2026-09-25
+
+### Added
+
+- **Stickers, used the way the bot uses emoji.** `src/utils/stickers.ts`.
+  `reactions.ts` has always carried the limitation this answers: Bot API
+  reactions are a fixed set, and 🐸 is not in it, so PEPEDAWN could never react
+  as itself. A sticker can be any picture at all. Now and then an invited
+  conversational reply goes out as a sticker from the community pack instead of
+  as words - the third swap alongside the meme GIF and the voice note, and the
+  hardest gated of the three, because a sticker is a *message*: a notification
+  and a place in the scroll, where a reaction is silent. Both the dice
+  (`STICKER_RATE`, default 0.06) and a per-room cooldown (`STICKER_COOLDOWN_MIN`,
+  default 90) have to agree, an exact answer is never swapped for one, and it
+  goes out instead of the reply, never as well as it. The pack is read from
+  Telegram rather than listed in code, so a sticker added with
+  `scripts/make-sticker.ts` is in PEPEDAWN's mouth within six hours; the emoji
+  the pack files each sticker under is what the room's words are matched
+  against. `STICKER_PACK` defaults to `fakerares_by_pepedawn_bot` rather than
+  being required, because `.env` is not deployed and a required variable would
+  have left the feature off on the droplet while WHATS_NEW announced it.
+- **`scripts/make-sticker.ts`** - converts an image or a short animation to
+  Telegram's sticker spec (static WEBP, long side 512, under 512KB; or VP9 WEBM,
+  at most 3s and 30fps, under 256KB) and creates or appends to a pack the bot
+  owns. ffmpeg cannot decode animated WEBP, so frames are cut with sharp and
+  handed over as a PNG sequence. Nothing is sent without `--pack` and `--yes`,
+  and it prints which bot it authenticated as first: a pack's short name
+  permanently ends in that bot's username.
+
+### Changed
+
+- **Nothing posts on the way up any more.** `PeriodicContentService` fired a
+  showcase 30 seconds after every boot, and a fresh process was exempt from the
+  "has anyone spoken since?" check because `lastContentPostTime` started at 0
+  and read as "first post, always allowed". With the nightly 02:00
+  `cron_restart` and a `pm2 delete` on every deploy, that was a post into a
+  dead channel most days, half a minute after the bot woke - the room reads it
+  as the bot talking to itself. The startup timer is gone and the reboot now
+  anchors the cadence: content waits for the interval *and* for a person to
+  have said something since the restart. No release note ships with this
+  version either, so 5.22.0 goes out silently.
+
+- **A meme GIF is drawn for the message it answers, rather than recalled.**
+  Two causes, both fixed. The image prompt opened with "the classic sad-frog
+  internet meme character [...] crude MS Paint meme style" and only then said
+  what the scene was, which matched the pictures the image model already held
+  better than anything happening in the room - it returned the brainlet at a
+  computer desk over a message that had nothing to do with computers. The scene
+  now leads, and the known compositions are refused by name. And the concept
+  model was given twelve turns of scrollback, enough for the joke to land on
+  whatever the room argued about ten minutes ago instead of on the message
+  being answered; it now gets four (`CONCEPT_TURNS`), labelled as background
+  for that one message.
+
 ## [5.21.0] - 2026-09-25
 
 ### Added
