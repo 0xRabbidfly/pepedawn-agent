@@ -47,7 +47,7 @@ import {
   anniversaryFact,
   handleTriviaTap,
   loadSchedule,
-  mergeState,
+  anniversaryStore,
   noteScrillaMention,
 } from '../../conversation/anniversaryRuntime';
 import type { CardInfo } from '../../data/fullCardIndex';
@@ -483,17 +483,6 @@ describe('the lore contest', () => {
     expect(handleFor({ name: 'Coit', username: '@coitart' })).toBe('@coitart');
   });
 
-  it('merges entries from two writers and renumbers them in arrival order', () => {
-    const a = emptyState();
-    const b = emptyState();
-    enterLore(a, WITH_CONTEST, ['-100'], entry(2));
-    enterLore(b, WITH_CONTEST, ['-100'], entry(1, { submitterId: 'u2', name: 'Coit' }));
-    mergeState(a, b);
-    expect(a.lore.entries.map((e) => [e.number, e.name])).toEqual([[1, 'Coit'], [2, 'Crypsi']]);
-    mergeState(a, b);
-    expect(a.lore.entries).toHaveLength(2);
-  });
-
   it('the real schedule carries a contest that opens before it closes and announces after', () => {
     const real = loadSchedule(join(process.cwd(), 'src', 'data', 'fakerares5-schedule.json'))!;
     const lc = real.lore_contest!;
@@ -572,15 +561,34 @@ describe('in the running bot', () => {
     expect(onDisk.trivia['trivia-0'].answers['7']).toMatchObject({ opt: 1, correct: true, name: 'Crypsi' });
   });
 
-  it('keeps taps taken by a second copy of the state, and shows them in the reveal', async () => {
-    // The engine (main process) and the tap handler (the Telegram plugin's own
-    // module copy) each hold their own in-memory state over one file.
-    const engineStore = new FileAnniversaryStore(process.env.ANNIVERSARY_STATE_PATH!);
+  it('hands a second copy of this module the same store', async () => {
+    // The plugin loads anniversaryRuntime as its own copy through a dynamic
+    // import, so this is the real arrangement, not a hypothetical: a query
+    // string makes the loader build a genuinely separate module object, the
+    // way the plugin's bundled copy is separate. They must still share one
+    // store — when they did not, taps went into the plugin's copy, the engine
+    // saved the app's, and a day of "Locked in" ended in "Nobody played".
+    const spec = '../../conversation/anniversaryRuntime';
+    const one = await import(spec);
+    const two = await import(`${spec}?copy=2`);
+    expect(one).not.toBe(two);
+    expect(one.anniversaryStore()).toBe(two.anniversaryStore());
+
+    one.anniversaryStore().data().cardsUsed.push('SHAREDPROOF');
+    expect(two.anniversaryStore().data().cardsUsed).toContain('SHAREDPROOF');
+  });
+
+  it('keeps taps taken through the plugin, and shows them in the reveal', async () => {
+    // The engine runs in the app and the taps arrive in the Telegram plugin,
+    // which holds its own copy of the module. Both reach the one store through
+    // anniversaryStore(), exactly as AnniversaryService wires it, so a tap and
+    // an engine save cannot clobber each other.
+    const engineStore = anniversaryStore();
     const { effects, edits, sent } = fakeEffects();
     const engine = new AnniversaryEngine({ schedule: loadSchedule()!, store: engineStore, cards: CARDS, effects, chatIds: ['-100'] });
     await engine.tick(at('10:30'));
 
-    // Taps through the runtime's separate instance.
+    // Taps through the plugin's copy of the module.
     expect(handleTriviaTap('fr5:t:trivia-0:1', { id: 7, first_name: 'Crypsi' }, at('10:31'))).toContain('Locked in');
     expect(handleTriviaTap('fr5:t:trivia-0:0', { id: 8, first_name: 'Coit' }, at('10:32'))).toContain('Locked in');
 
@@ -615,7 +623,7 @@ describe('in the running bot', () => {
 
     // The leaderboard, once a question has been asked and answered.
     const { effects } = fakeEffects();
-    const engine = new AnniversaryEngine({ schedule: loadSchedule()!, store: new FileAnniversaryStore(process.env.ANNIVERSARY_STATE_PATH!), cards: CARDS, effects, chatIds: ['-100'] });
+    const engine = new AnniversaryEngine({ schedule: loadSchedule()!, store: anniversaryStore(), cards: CARDS, effects, chatIds: ['-100'] });
     await engine.tick(at('10:30'));
     handleTriviaTap('fr5:t:trivia-0:1', { id: 7, first_name: 'Crypsi' }, at('10:31'));
     _resetAnniversary();

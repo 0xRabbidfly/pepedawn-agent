@@ -52,17 +52,38 @@ export function statePath(): string {
   return process.env.ANNIVERSARY_STATE_PATH || join(process.cwd(), 'src', 'data', 'anniversary-state.json');
 }
 
-let scheduleCache: { path: string; mtimeMs: number; schedule: Schedule | null } | null = null;
+/**
+ * One instance per process, not one per copy of this module.
+ *
+ * The Telegram plugin loads this file as its own copy through a dynamic
+ * import (see packages/plugin-telegram-fakerares/src/messageManager.ts), so a
+ * module-scope `let` here hands the app and the plugin one each and they
+ * drift. Trivia taps landed in the plugin's copy, the engine saved the app's,
+ * and the taps were gone: a full day of "Locked in ✅" once ended in "Nobody
+ * played". The store carried a merge-on-every-write to survive that.
+ *
+ * globalThis is the one thing the two copies genuinely share. `Symbol.for` is
+ * load-bearing — a plain `Symbol()` would be duplicated along with the module
+ * and defeat the whole point.
+ */
+function sharedSlot<T>(name: string): { value: T | null } {
+  const key = Symbol.for(`pepedawn.anniversary.${name}`);
+  const host = globalThis as unknown as Record<symbol, { value: T | null } | undefined>;
+  return (host[key] ??= { value: null });
+}
+
+type ScheduleCache = { path: string; mtimeMs: number; schedule: Schedule | null };
 
 /** The schedule, or null when the file is missing or invalid (logged once per change). */
 export function loadSchedule(path = schedulePath()): Schedule | null {
+  const cache = sharedSlot<ScheduleCache>('schedule');
   let mtimeMs = 0;
   try {
     if (existsSync(path)) mtimeMs = statSync(path).mtimeMs;
   } catch {
     // Racing a rewrite; the next call reads it.
   }
-  if (scheduleCache && scheduleCache.path === path && scheduleCache.mtimeMs === mtimeMs) return scheduleCache.schedule;
+  if (cache.value && cache.value.path === path && cache.value.mtimeMs === mtimeMs) return cache.value.schedule;
 
   let schedule: Schedule | null = null;
   if (mtimeMs) {
@@ -72,71 +93,24 @@ export function loadSchedule(path = schedulePath()): Schedule | null {
       logger.error({ error, path }, '[Anniversary] schedule unreadable; nothing will be posted until it is fixed');
     }
   }
-  scheduleCache = { path, mtimeMs, schedule };
+  cache.value = { path, mtimeMs, schedule };
   return schedule;
 }
 
 /**
- * Fold what another writer put on disk into this state, in place.
+ * The state file. Read once, write whole.
  *
- * Everything here is append-mostly, so a union is the right merge: a post sent
- * by either side stays sent, an answer recorded by either side stays recorded
- * (first tap wins, so an existing answer is never replaced), a reveal by either
- * side sticks, and the count takes the larger figure. In place, because the
- * engine holds a reference across a tick and must not be handed a new object.
- */
-export function mergeState(target: AnniversaryStateData, source: AnniversaryStateData): void {
-  for (const [id, rec] of Object.entries(source.sent ?? {})) if (!target.sent[id]) target.sent[id] = rec;
-  for (const asset of source.cardsUsed ?? []) if (!target.cardsUsed.includes(asset)) target.cardsUsed.push(asset);
-  if (source.scrilla) {
-    if (!target.scrilla.date) target.scrilla = { ...source.scrilla };
-    else if (source.scrilla.date === target.scrilla.date) {
-      target.scrilla.count = Math.max(target.scrilla.count, source.scrilla.count);
-    }
-  }
-  for (const [qid, rec] of Object.entries(source.trivia ?? {})) {
-    const mine = target.trivia[qid];
-    if (!mine) {
-      target.trivia[qid] = { ...rec, answers: { ...rec.answers } };
-      continue;
-    }
-    for (const [userId, a] of Object.entries(rec.answers ?? {})) if (!mine.answers[userId]) mine.answers[userId] = a;
-    if (rec.revealed) mine.revealed = true;
-  }
-  if (source.lore) {
-    if (!target.lore) target.lore = { entries: [] };
-    for (const e of source.lore.entries ?? []) {
-      const mine = target.lore.entries.find((m) => m.id === e.id);
-      if (!mine) target.lore.entries.push(e);
-      else if (mine.score === undefined && e.score !== undefined) {
-        mine.score = e.score;
-        mine.scoreReason = e.scoreReason;
-      }
-    }
-    // Numbers are positions in arrival order; renumber after a union so two
-    // writers cannot both have handed out "#4".
-    target.lore.entries.sort((a, b) => a.at - b.at || a.id.localeCompare(b.id));
-    target.lore.entries.forEach((e, i) => { e.number = i + 1; });
-    if (!target.lore.winner && source.lore.winner) target.lore.winner = source.lore.winner;
-    else if (target.lore.winner && source.lore.winner?.stored) target.lore.winner.stored = true;
-    if (source.lore.judgeFailed) target.lore.judgeFailed = true;
-  }
-}
-
-/**
- * The state file, safe for more than one writer.
+ * It used to re-read and merge on every write, because the engine and the
+ * Telegram plugin each held their own copy of this module and so their own
+ * state. `anniversaryStore()` now hands both the same instance, so there is
+ * one writer again and the merge has gone with it.
  *
- * There are two. The engine runs in the main process; trivia taps arrive in
- * the Telegram plugin, which loads this module as its own copy through a
- * dynamic import and so has its own in-memory state. A plain read-once,
- * write-whole store loses every tap the moment the engine next saves — the
- * fast-forward preview showed a full day of "Locked in ✅" ending in "Nobody
- * played". So: re-read when the file has changed, and merge what is on disk
- * into memory before every write.
+ * The consequence worth knowing: a hand-edit of the state file mid-run is no
+ * longer picked up, because nothing re-reads it. During an incident, edit it
+ * and restart.
  */
 export class FileAnniversaryStore implements AnniversaryStore {
   private cache: AnniversaryStateData | null = null;
-  private mtimeMs = -1;
 
   constructor(readonly path: string) {}
 
@@ -151,49 +125,29 @@ export class FileAnniversaryStore implements AnniversaryStore {
     }
   }
 
-  private currentMtime(): number {
-    try {
-      return existsSync(this.path) ? statSync(this.path).mtimeMs : 0;
-    } catch {
-      return this.mtimeMs;
-    }
-  }
-
   data(): AnniversaryStateData {
-    const mtime = this.currentMtime();
-    if (!this.cache) {
-      this.cache = this.readDisk() ?? emptyState();
-      this.mtimeMs = mtime;
-    } else if (mtime !== this.mtimeMs) {
-      const disk = this.readDisk();
-      if (disk) mergeState(this.cache, disk);
-      this.mtimeMs = mtime;
-    }
+    if (!this.cache) this.cache = this.readDisk() ?? emptyState();
     return this.cache;
   }
 
   save(): void {
     if (!this.cache) return;
     try {
-      const disk = this.readDisk();
-      if (disk) mergeState(this.cache, disk);
       mkdirSync(dirname(this.path), { recursive: true });
       const tmp = `${this.path}.tmp`;
       writeFileSync(tmp, JSON.stringify(this.cache, null, 1), 'utf8');
       renameSync(tmp, this.path);
-      this.mtimeMs = this.currentMtime();
     } catch (error) {
       logger.warn({ error, path: this.path }, '[Anniversary] could not persist state');
     }
   }
 }
 
-let store: FileAnniversaryStore | null = null;
-
 export function anniversaryStore(): FileAnniversaryStore {
   const path = statePath();
-  if (!store || store.path !== path) store = new FileAnniversaryStore(path);
-  return store;
+  const slot = sharedSlot<FileAnniversaryStore>('store');
+  if (!slot.value || slot.value.path !== path) slot.value = new FileAnniversaryStore(path);
+  return slot.value;
 }
 
 /**
@@ -503,6 +457,6 @@ export function anniversaryContext(now = Date.now()): string {
 }
 
 export function _resetAnniversary(): void {
-  scheduleCache = null;
-  store = null;
+  sharedSlot<ScheduleCache>('schedule').value = null;
+  sharedSlot<FileAnniversaryStore>('store').value = null;
 }

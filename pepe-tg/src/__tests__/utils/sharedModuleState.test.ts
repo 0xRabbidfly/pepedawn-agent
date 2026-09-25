@@ -11,16 +11,17 @@
  *
  * It has already happened twice:
  *
- *  - `anniversaryRuntime` — trivia taps arrive in the plugin, the engine runs
+ *  - `anniversaryRuntime` — trivia taps arrived in the plugin, the engine ran
  *    in the app, and a read-once/write-whole store lost every tap the moment
  *    the engine next saved. A full day of "Locked in ✅" ended in "Nobody
- *    played". `FileAnniversaryStore` re-reads and merges on every write to
- *    paper over it.
+ *    played". Fixed: `anniversaryStore()` now keeps the one instance on
+ *    globalThis, so both copies share it, and the merge-on-write is gone.
  *  - `telegramFileIdCache` — `memoryCache` and `cacheLoaded`, behind a loader
  *    that tries four candidate paths and keeps whichever imports first, so
- *    which copy you get depends on the working directory.
+ *    which copy you get depends on the working directory. Still split; a lost
+ *    entry only costs one re-upload.
  *
- * Both are recorded below rather than fixed here. This test is a ratchet: it
+ * What is left is recorded below rather than fixed here. This test is a ratchet: it
  * derives the shared module list from the plugin source, so a *new* dynamic
  * import into a stateful module fails the build with an explanation, and a
  * known one that gets fixed fails too, so the list can only shrink.
@@ -42,7 +43,6 @@ const PLUGIN_SRC = join(APP_SRC, '..', 'packages', 'plugin-telegram-fakerares', 
  * removing from it is the reward for giving a module one owner.
  */
 const KNOWN_SPLIT_STATE: Record<string, string> = {
-  'anniversaryRuntime.ts': 'FileAnniversaryStore merges disk into memory on every read and write',
   'telegramFileIdCache.ts': 'the file_id cache is a disk-backed hint; a lost entry costs one re-upload',
 };
 
