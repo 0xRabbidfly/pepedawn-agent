@@ -8,7 +8,7 @@ import { mkdtempSync, rmSync } from 'fs';
 import { tmpdir } from 'os';
 import { join } from 'path';
 import {
-  PER_PERSON_PER_DAY, USAGE, fallbackTitle, parseBuildRequest, readTickets, renderBacklog, runBuildRequest, setTicketStatus, ticketId, ticketsBetween, ticketsInCommitMessages,
+  PER_PERSON_PER_DAY, USAGE, fallbackTitle, parseBuildRequest, readTickets, renderBacklog, runBuildRequest, setTicketStatus, ticketId, ticketsBetween, ticketsInTrailerValues,
 } from '../../utils/buildRequests';
 
 let dir: string;
@@ -89,10 +89,14 @@ describe('/fb', () => {
     expect(USAGE).toContain('/fb');
   });
 
-  it('status follows the work: "review" from the proposer, "shipped" from the commits a deploy brings', () => {
-    const log = 'feature: daily artist spotlight\n\nTicket: KEK-001\nProposed-By: maintainer\n\nbug: something else\n\nticket: kek-7\n\nTicket: KEK-001\n';
-    expect(ticketsInCommitMessages(log)).toEqual(['KEK-001', 'KEK-007']);
-    expect(ticketsInCommitMessages('no trailers here')).toEqual([]);
+  it('shipped comes only from real trailers, as git prints their values - not from prose that mentions a ticket', () => {
+    // What `git log --format=%(trailers:key=Ticket,valueonly)` prints: one value per line, blank for commits without one.
+    expect(ticketsInTrailerValues('KEK-001\n\n\nkek-7\n\nKEK-001\n')).toEqual(['KEK-001', 'KEK-007']);
+    expect(ticketsInTrailerValues('')).toEqual([]);
+    // The line that fooled the first version was a wrapped sentence in a
+    // commit body; git does not print it as a trailer, and even fed in raw
+    // it is not a bare id.
+    expect(ticketsInTrailerValues('ticket: KEK-001, a short title from one small model call, a status. /fb')).toEqual([]);
   });
 
   it('hands the digest the tickets opened in its window, with titles and status', async () => {

@@ -5,6 +5,20 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.18.1] - 2026-09-25
+
+### Fixed
+
+- **KEK-001 was announced shipped two minutes after it was opened.** The
+  boot scan for `Ticket: KEK-nnn` grepped whole commit messages, and the
+  5.18.0 release commit's wrapped body put "ticket: KEK-001, a short title"
+  at the start of a line. The bot read its own release notes as a trailer,
+  marked the ticket shipped, and told the room. Corrected in the room, the
+  ticket reopened. Now git parses the trailer block itself
+  (`%(trailers:key=Ticket,valueonly)`), so prose never counts; and only a
+  ticket already in review or building can ship - an open ticket named in
+  a commit is logged as a mistake, not announced as a release.
+
 ## [5.18.0] - 2026-09-24
 
 ### Changed

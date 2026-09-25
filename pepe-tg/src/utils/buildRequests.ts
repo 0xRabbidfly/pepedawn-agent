@@ -101,10 +101,18 @@ export function setTicketStatus(id: string, status: Status, by: string, path = b
   return { ...t, status };
 }
 
-/** Ticket ids named by "Ticket: KEK-nnn" trailers in commit messages, deduplicated, in order. */
-export function ticketsInCommitMessages(messages: string): string[] {
+/**
+ * Ticket ids from the values of "Ticket:" trailers, one per line, as
+ * `git log --format=%(trailers:key=Ticket,valueonly)` prints them.
+ * Deduplicated, in order. Only git decides what is a trailer: grepping
+ * message bodies once matched a wrapped sentence in a release commit and
+ * shipped a ticket that had not been touched.
+ */
+export function ticketsInTrailerValues(values: string): string[] {
   const out: string[] = [];
-  for (const m of messages.matchAll(/^\s*Ticket:\s*(KEK-\d{1,4})\b/gim)) {
+  for (const line of values.split('\n')) {
+    const m = /^\s*(KEK-\d{1,4})\s*$/i.exec(line);
+    if (!m) continue;
     const id = ticketId(parseInt(m[1].slice(4), 10));
     if (!out.includes(id)) out.push(id);
   }

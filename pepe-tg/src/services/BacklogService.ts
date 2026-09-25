@@ -13,16 +13,27 @@
 
 import { Service, logger, type IAgentRuntime } from '@elizaos/core';
 import { execFileSync } from 'child_process';
-import { STATUS_MARK, readTickets, setTicketStatus, ticketsInCommitMessages } from '../utils/buildRequests';
+import { STATUS_MARK, readTickets, setTicketStatus, ticketsInTrailerValues } from '../utils/buildRequests';
 import { sendTextMessage } from '../utils/telegramSend';
 
 export const BACKLOG_SETTLE_MS = 2 * 60 * 1000;
 
-/** Ticket ids in the last `depth` commits of this checkout; empty when git is not there. */
+/**
+ * Ticket ids named by real "Ticket:" trailers in the last `depth` commits
+ * of this checkout; empty when git is not there.
+ *
+ * Git parses the trailer block itself. The first version grepped whole
+ * commit messages for lines starting "ticket: KEK-", and the release
+ * commit for 5.18.0 - whose wrapped body put "ticket: KEK-001, a short
+ * title" at the start of a line - marked KEK-001 shipped in the room
+ * before anything was built.
+ */
 export function shippedTicketIds(depth = 300): string[] {
   try {
-    const log = execFileSync('git', ['log', `-n`, String(depth), '--format=%B'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] });
-    return ticketsInCommitMessages(log);
+    const values = execFileSync('git', ['log', '-n', String(depth), '--format=%(trailers:key=Ticket,valueonly,separator=%x0A)'], {
+      encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'],
+    });
+    return ticketsInTrailerValues(values);
   } catch {
     return [];
   }
@@ -58,7 +69,15 @@ export class BacklogService extends Service {
   async run(): Promise<string[]> {
     const shipped = shippedTicketIds();
     if (shipped.length === 0) return [];
-    const open = new Map(readTickets().filter((t) => t.status !== 'shipped' && t.status !== 'declined').map((t) => [t.id, t]));
+    // Only a ticket the proposer already moved to review (or that is being
+    // built) can ship: status follows the work in order, and an open ticket
+    // named in a commit is a mistake to log, not a release to announce.
+    const all = readTickets();
+    const open = new Map(all.filter((t) => t.status === 'review' || t.status === 'building').map((t) => [t.id, t]));
+    for (const id of shipped) {
+      const t = all.find((x) => x.id === id);
+      if (t && t.status === 'open') logger.warn(`[Backlog] ${id} is named in a commit but was never in review; leaving it open`);
+    }
     const token = (this.runtime.getSetting('TELEGRAM_BOT_TOKEN') as string) || '';
     const announced: string[] = [];
     for (const id of shipped) {
