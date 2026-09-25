@@ -20,7 +20,8 @@ import { CardFactsImportService } from '../services/CardFactsImportService';
 import { NewCardService } from '../services/NewCardService';
 import { ReminderService } from '../services/ReminderService';
 import { BacklogService } from '../services/BacklogService';
-import { ArtistSpotlightService } from '../services/ArtistSpotlightService';
+import { ArtistSpotlightService, readSpotlightState } from '../services/ArtistSpotlightService';
+import { handleLesson, recordArtistTelegram } from '../utils/artistTelegram';
 import { noteScrillaMention } from '../conversation/anniversaryRuntime';
 import { noteShown, recentlyShown } from '../utils/cardShowCooldown';
 import { findRepeat } from '../utils/repeatGuard';
@@ -55,7 +56,7 @@ import { detectMessagePatterns, hasAnyCommand } from '../utils/messagePatterns';
 import { commandArgumentIn } from '../utils/cardCommandParse';
 import { executeCommand, executeCommandAlways, type CommandHandlerParams } from '../utils/commandHandler';
 import { checkRateLimit, DEFAULT_RATE_LIMIT } from '../utils/rateLimiter';
-import { isRateLimitExempt } from '../utils/admins';
+import { isAdminUser, isRateLimitExempt } from '../utils/admins';
 import { noteParticipant } from '../utils/participants';
 import { runWithAction } from '../utils/actionContext';
 import { stripCardNamePrefix } from '../utils/cardNamePrefixSanitizer';
@@ -1128,6 +1129,31 @@ export const fakeRaresPlugin: Plugin = {
             // seconds after the 02:00 restart, before any message has arrived
             // to teach the in-memory map what room this chat is.
             rememberRoom(tgChatId, message.roomId.toString());
+          }
+
+          // An admin telling the bot today's spotlight artist's Telegram
+          // handle: a bare @handle as a reply to a spotlight post, or just
+          // after one. Stored server-side, confirmed with a 👍, and nothing
+          // else is said - the @ itself already pinged the artist.
+          {
+            const from = params.ctx?.message?.from;
+            const replied = params.ctx?.message?.reply_to_message;
+            const lesson = handleLesson({
+              isAdmin: isAdminUser(from?.id?.toString(), from?.username),
+              text,
+              repliedToBotText: replied?.from?.is_bot ? (replied.caption ?? replied.text ?? null) : null,
+              spotlight: readSpotlightState(),
+              now: Date.now(),
+            });
+            if (lesson) {
+              recordArtistTelegram(lesson.artist, lesson.handle, from?.id?.toString());
+              logger.info(`[Spotlight] learned ${lesson.artist} = ${lesson.handle}`);
+              const token = (runtime.getSetting('TELEGRAM_BOT_TOKEN') as string) || '';
+              await sendReaction(token, tgChatId, params.ctx?.message?.message_id, '👍');
+              message.metadata = message.metadata || {};
+              (message.metadata as any).__handledByCustom = true;
+              return;
+            }
           }
 
           if (isXActivityQuestion(text) && !recentlyDigested(message.roomId?.toString() ?? '')) {

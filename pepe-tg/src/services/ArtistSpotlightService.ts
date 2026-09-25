@@ -18,6 +18,7 @@ import type { DirectoryArtist } from '../utils/directoryLinks';
 import { getFullCardIndex } from '../utils/cardIndexRefresher';
 import { callTextModel } from '../utils/modelGateway';
 import { sendCardToChat } from '../utils/sendCardToChat';
+import { learnedHandleFor } from '../utils/artistTelegram';
 import {
   buildHaikuPrompt, composeCaption, emptyState, nextDue, parseHaiku, planDay, readCardLook, spotlightButtons,
   spotlightConfig, telegramHandleFor, utcDay, xHandleFor, type SpotlightState,
@@ -30,7 +31,7 @@ export function spotlightStatePath(): string {
   return process.env.SPOTLIGHT_STATE_PATH || join(process.cwd(), 'src', 'data', 'spotlight-state.json');
 }
 
-function readState(path = spotlightStatePath()): SpotlightState {
+export function readSpotlightState(path = spotlightStatePath()): SpotlightState {
   try {
     if (!existsSync(path)) return emptyState();
     const s = JSON.parse(readFileSync(path, 'utf8')) as SpotlightState;
@@ -97,7 +98,7 @@ export class ArtistSpotlightService extends Service {
     const artists = (directoryArtistsJson as { artists: DirectoryArtist[] }).artists;
     const index = this.index();
 
-    let state = readState();
+    let state = readSpotlightState();
     if (state.day !== utcDay(now)) {
       state = planDay(state, artists, index, now, cfg);
       writeState(state);
@@ -141,7 +142,8 @@ export class ArtistSpotlightService extends Service {
       index: position,
       total: state.cards.length,
       haiku,
-      telegramHandle: telegramHandleFor(state.artist, artistAliasesJson as Record<string, unknown>),
+      // Learned from an admin first (server-only), then the committed alias file.
+      telegramHandle: learnedHandleFor(state.artist) ?? telegramHandleFor(state.artist, artistAliasesJson as Record<string, unknown>),
       xHandle: xHandleFor(state.artist, handles),
       prod,
       prodUntil: cfg.prodUntil,

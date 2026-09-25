@@ -5,6 +5,21 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.23.0] - 2026-09-25
+
+### Added
+
+- **The spotlight tags artists it has been told about.** The first live
+  spotlight (Gus Grillasca) went out untagged and rabbidfly typed
+  "@GusGrillasca" under it by hand: nothing the bot has maps a directory
+  artist to a Telegram account, and it will not guess (an X handle printed
+  as "@" pings whoever owns that name on Telegram). Now an admin teaches
+  it: a bare @handle as a reply to a spotlight post, or within 45 minutes of
+  one, is saved as today's artist's handle and confirmed with a 👍; later
+  spotlights for that artist tag them. Stored only on the server in
+  `src/data/artist-telegram.json` (gitignored - it ties people to
+  accounts), read before the committed alias file.
+
 ## [5.22.0] - 2026-09-25
 
 ### Added

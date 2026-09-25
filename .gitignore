@@ -98,6 +98,9 @@ pepe-tg/src/data/new-card-state.json
 pepe-tg/src/data/reminder-state.json
 pepe-tg/src/data/gif-state.json
 pepe-tg/src/data/spotlight-state.json
+# Which Telegram account is which artist, taught by the admins. Ties real people
+# to accounts: server only, never in this public repo.
+pepe-tg/src/data/artist-telegram.json
 pepe-tg/src/data/maintainer/
 .worktrees/
 # Learned pairing of Telegram chat -> ElizaOS room. Untracked and NOT ignored
