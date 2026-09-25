@@ -5,6 +5,17 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.19.1] - 2026-09-25
+
+### Fixed
+
+- **Voice goes out as an audio file where voice notes are forbidden.** The
+  FAKERARE group does not let members send voice notes (it does allow audio
+  files), so the first spoken reply there was refused and would have fallen
+  back to text every time. Now a refusal for voice notes is remembered per
+  chat and the same audio is sent as a titled MP3 through `sendAudio`. The
+  proper fix is the owner turning Voice Messages on for members.
+
 ## [5.19.0] - 2026-09-25
 
 ### Added

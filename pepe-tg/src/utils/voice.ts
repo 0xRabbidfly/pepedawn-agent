@@ -185,31 +185,74 @@ export async function synthesizeVoice(text: string, config: VoiceConfig): Promis
   }
 }
 
-/** A voice bubble in the chat, optionally as a reply. The Telegram message, or null. */
+/** Opus to MP3 through ffmpeg, for chats that allow audio files but not voice notes. Null when it cannot. */
+export async function toMp3(audio: Uint8Array): Promise<Uint8Array | null> {
+  try {
+    const { spawn } = await import('child_process');
+    return await new Promise<Uint8Array | null>((resolve) => {
+      const p = spawn('ffmpeg', ['-loglevel', 'error', '-i', 'pipe:0', '-c:a', 'libmp3lame', '-b:a', '64k', '-f', 'mp3', 'pipe:1'], {
+        stdio: ['pipe', 'pipe', 'ignore'],
+      });
+      const chunks: Buffer[] = [];
+      p.stdout.on('data', (c: Buffer) => chunks.push(c));
+      p.on('error', () => resolve(null));
+      p.on('close', (code) => resolve(code === 0 && chunks.length ? new Uint8Array(Buffer.concat(chunks)) : null));
+      p.stdin.end(Buffer.from(audio));
+    });
+  } catch {
+    return null;
+  }
+}
+
+/** Rooms known to refuse voice notes, so the audio-file form goes first there next time. */
+const voiceNotesRefused = new Set<string>();
+
+/**
+ * A voice bubble in the chat, optionally as a reply. Where the group does
+ * not let members send voice notes - the FAKERARE room does not, as of
+ * 25 September 2026, though it allows audio files - the same audio goes out
+ * as an audio file instead, titled. The Telegram message, or null.
+ */
 export async function sendVoiceMessage(
   token: string,
   chatId: string,
   audio: Uint8Array,
   replyToMessageId?: number,
+  title = 'PEPEDAWN',
 ): Promise<any | null> {
   if (!token || !chatId) return null;
-  try {
-    const form = new FormData();
-    form.append('chat_id', chatId);
-    const bytes = audio.buffer.slice(audio.byteOffset, audio.byteOffset + audio.byteLength) as ArrayBuffer;
-    form.append('voice', new Blob([bytes], { type: 'audio/ogg' }), 'pepedawn.ogg');
-    if (replyToMessageId) form.append('reply_parameters', JSON.stringify({ message_id: replyToMessageId, allow_sending_without_reply: true }));
-    const res = await fetch(`https://api.telegram.org/bot${token}/sendVoice`, { method: 'POST', body: form });
-    const body: any = await res.json().catch(() => null);
-    if (!res.ok || !body?.ok) {
-      logger.warn(`[Voice] sendVoice ${chatId}: ${res.status} ${JSON.stringify(body?.description ?? '').slice(0, 160)}`);
+  const reply = replyToMessageId ? JSON.stringify({ message_id: replyToMessageId, allow_sending_without_reply: true }) : null;
+  const post = async (method: 'sendVoice' | 'sendAudio', bytes: Uint8Array, mime: string, name: string): Promise<{ ok: boolean; result?: any; description?: string }> => {
+    try {
+      const form = new FormData();
+      form.append('chat_id', chatId);
+      const buf = bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength) as ArrayBuffer;
+      form.append(method === 'sendVoice' ? 'voice' : 'audio', new Blob([buf], { type: mime }), name);
+      if (method === 'sendAudio') { form.append('title', title); form.append('performer', 'PEPEDAWN'); }
+      if (reply) form.append('reply_parameters', reply);
+      const res = await fetch(`https://api.telegram.org/bot${token}/${method}`, { method: 'POST', body: form });
+      const body: any = await res.json().catch(() => null);
+      return { ok: !!(res.ok && body?.ok), result: body?.result, description: body?.description };
+    } catch (error) {
+      return { ok: false, description: error instanceof Error ? error.message : String(error) };
+    }
+  };
+
+  if (!voiceNotesRefused.has(chatId)) {
+    const asVoice = await post('sendVoice', audio, 'audio/ogg', 'pepedawn.ogg');
+    if (asVoice.ok) return asVoice.result;
+    if (!/voice notes/i.test(asVoice.description ?? '')) {
+      logger.warn(`[Voice] sendVoice ${chatId}: ${asVoice.description?.slice(0, 160)}`);
       return null;
     }
-    return body.result;
-  } catch (error) {
-    logger.warn({ error }, '[Voice] sendVoice failed');
-    return null;
+    voiceNotesRefused.add(chatId);
+    logger.info(`[Voice] ${chatId} does not allow voice notes; sending as an audio file from now on`);
   }
+  const mp3 = await toMp3(audio);
+  if (!mp3) return null;
+  const asAudio = await post('sendAudio', mp3, 'audio/mpeg', 'pepedawn.mp3');
+  if (!asAudio.ok) logger.warn(`[Voice] sendAudio ${chatId}: ${asAudio.description?.slice(0, 160)}`);
+  return asAudio.ok ? asAudio.result : null;
 }
 
 /** gpt-4o-mini-tts is billed per input character: $0.60 per million. */
