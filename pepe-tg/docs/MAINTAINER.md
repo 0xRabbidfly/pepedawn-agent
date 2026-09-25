@@ -24,11 +24,16 @@ owner a digest:
   small model call classified as a directive, complaint or request. Each with
   the two turns before it and what PEPEDAWN replied.
 - **🟡 Suggestions** — the same from everyone else. Heard, not acted on.
-- **📬 Build requests** — what the room typed after `/pb` (5.17.0). The one
-  community channel the proposer *does* act on: each request that is small,
-  specified, within the constitution and off protected paths becomes its own
-  commit on the branch (`Requested-By: /pb #n`); the rest are written up in
-  `MAINTAINER_NOTES.md`. The owner reviews the PR. Stored in
+- **🎫 Fake backlog** — tickets the room opened with `/fb` (5.18.0). The
+  one community channel the proposer *does* act on:
+  each ticket that is small, specified, within the constitution and off
+  protected paths becomes its own commit on the branch (`Ticket: KEK-nnn`);
+  the rest are written up in `MAINTAINER_NOTES.md`. Status follows the
+  work, never a hand: the proposer marks a ticket **review** when it pushes
+  the branch (`scripts/backlog-status.ts KEK-001 review maintainer`, on the
+  droplet over ssh), and the bot marks it **shipped** and tells the room
+  when a deploy brings the commit. To decline one, run the script with
+  `declined`. `/fb` alone shows the top ten. Stored as a log in
   `src/data/maintainer/build-requests.jsonl`, three per person a day.
 - **⚠️ Anomalies** — the same reply twice, bursts, non-answers.
 

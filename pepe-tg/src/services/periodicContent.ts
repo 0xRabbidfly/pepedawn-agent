@@ -65,8 +65,8 @@ const HELPFUL_TIPS = [
     text: "Know the story behind a card? `/fr CARDNAME <the story>`. If you're the artist it lands straight away; otherwise two regulars need to `/vouch` for it. Check `/vouch` to see what's waiting.",
   },
   {
-    title: "🛠 Build Requests",
-    text: "Want me to do something I don't do yet, or fix something I do badly? `/pb <the idea, or the bug>`. It goes to rabbidfly daily; the ones I can build come back as a PR for him to review.",
+    title: "🎫 Fake Backlog",
+    text: "Want me to do something I don't do yet, or fix something I do badly? `/fb <the idea, or the bug>` opens a ticket. `/fb` alone shows the top ten and where they stand. rabbidfly reviews it daily; what I can build comes back as a PR for him.",
   },
   {
     title: "📚 Lore & History",

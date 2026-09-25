@@ -5,6 +5,25 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.18.0] - 2026-09-24
+
+### Changed
+
+- **`/pb` is `/fb`, the fake backlog, and it hands out tickets.** Every
+  command here starts with `/f`; `/pb` was a typo in the ask, so it is gone
+  after a day, not aliased. A request is now a ticket - `KEK-001`, a four-to-six
+  word title from one small model call (the first words when there is no
+  key), a status - and the reply is its row. `/fb` alone shows the top ten,
+  one row each, working tickets first; `/fb KEK-001` shows one in full.
+  Nobody moves a ticket by hand: status follows the work. The proposer's
+  commits carry `Ticket: KEK-nnn`; when it pushes a branch, it marks those
+  tickets **in review** on the droplet (`scripts/backlog-status.ts`, over
+  ssh); when a deploy brings the commit, `BacklogService` reads the git log
+  at boot, marks them **shipped**, and tells the room, once. Status changes
+  append to the same log, so the file is the history. The digest lists new
+  tickets with their ids and titles. `BACKLOG_ANNOUNCEMENTS=false` silences
+  the shipped posts.
+
 ## [5.17.1] - 2026-09-24
 
 ### Fixed

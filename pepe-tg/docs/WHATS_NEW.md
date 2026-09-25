@@ -21,6 +21,12 @@ Rules for writing one, learned the hard way:
 
 <!-- Sections are ## [x.y.z], matching CHANGELOG.md. Newest first. -->
 
+## [5.18.0]
+
+🎫 PEPEDAWN — v5.18.0
+
+The fake backlog has tickets now. /fb <the idea, or the bug> opens one - you get a number like KEK-001 and a short title back. /fb on its own shows the top ten and where each stands: open, in review, shipped. /fb KEK-001 shows one in full. Tickets move when the work does: in review when there is a branch, shipped when it is live - and I say so in here.
+
 ## [5.17.0]
 
 🛠 PEPEDAWN — v5.17.0

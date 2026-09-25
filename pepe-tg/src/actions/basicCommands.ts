@@ -104,10 +104,11 @@ export const helpCommand: Action = {
 _Artists' lore lands straight away. Anyone else's needs 2 vouches from regulars first._
 _Admins: \`/fr!\` stores it even if the quality screen disagrees._
 
-**Build requests:** 🛠
-\`/pb <an idea, or a bug>\` - Ask me to build or fix something
-\`/pb list\` - The latest requests
-_rabbidfly sees these daily; the ones I can build come back as a PR for him to review._
+**Fake backlog:** 🎫
+\`/fb <an idea, or a bug>\` - Open a ticket: ask me to build or fix something
+\`/fb\` - The top ten tickets and where they stand
+\`/fb KEK-001\` - One ticket in full
+_rabbidfly reviews the backlog daily; what I can build comes back as a PR for him._
 
 **Just talk to me:** 💬
 Ask about any card, its lore, what it looks like, or who made it —

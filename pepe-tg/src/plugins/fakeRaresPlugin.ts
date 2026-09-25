@@ -19,13 +19,15 @@ import { AnniversaryService } from '../services/AnniversaryService';
 import { CardFactsImportService } from '../services/CardFactsImportService';
 import { NewCardService } from '../services/NewCardService';
 import { ReminderService } from '../services/ReminderService';
+import { BacklogService } from '../services/BacklogService';
 import { noteScrillaMention } from '../conversation/anniversaryRuntime';
 import { noteShown, recentlyShown } from '../utils/cardShowCooldown';
 import { findRepeat } from '../utils/repeatGuard';
 import { recentTurns } from '../conversation/shadow';
 import { runRecap } from '../actions/recapCommand';
 import { runMemoryCommand } from '../actions/memoryCommands';
-import { runBuildRequest } from '../utils/buildRequests';
+import { runBuildRequest, titlePrompt } from '../utils/buildRequests';
+import { callTextModel } from '../utils/modelGateway';
 import { sendRecapVideo, stripHtml } from '../utils/recapSend';
 import { rememberRoom } from '../conversation/roomMap';
 import { sendReaction } from '../utils/reactions';
@@ -799,7 +801,7 @@ export const fakeRaresPlugin: Plugin = {
   // gates were built to close. If it is ever wanted, route it through
   // gateSubmission first.
   evaluators: [],
-  services: [KnowledgeOrchestratorService, MemoryStorageService, TelemetryService, CardDisplayService, SmartRouterService, XHarvestService, RecapService, SocialMemoryService, ReleaseNoteService, AnniversaryService, CardFactsImportService, NewCardService, ReminderService],
+  services: [KnowledgeOrchestratorService, MemoryStorageService, TelemetryService, CardDisplayService, SmartRouterService, XHarvestService, RecapService, SocialMemoryService, ReleaseNoteService, AnniversaryService, CardFactsImportService, NewCardService, ReminderService, BacklogService],
   
   events: {
     MESSAGE_RECEIVED: [
@@ -1133,18 +1135,30 @@ export const fakeRaresPlugin: Plugin = {
           // Answered through the bare callback rather than the recording one: a
           // list of someone's memories is not conversation, and written to room
           // history it would reach the day log, the recap and capture itself.
-          // /pb: a build request for the maintainer loop - logged, numbered,
-          // in the daily digest; the proposer may build it and the owner
-          // reviews the PR. Answered through the bare callback: a receipt
-          // is not conversation.
+          // /fb: the fake backlog - a ticket for the maintainer loop, in the
+          // daily digest; the proposer may build it and the owner reviews
+          // the PR and moves the ticket. Answered through the bare callback:
+          // a receipt is not conversation. The title is one small model
+          // call; without a key the first words stand in.
           if (isPb) {
             message.metadata = message.metadata || {};
             (message.metadata as any).__handledByCustom = true;
             const from = params.ctx?.message?.from;
-            const reply = runBuildRequest({
+            const reply = await runBuildRequest({
               text,
               sender: { id: from?.id?.toString(), name: getDisplayName(params, message), username: from?.username },
               chatId: tgChatId,
+              titleFor: async (request) => {
+                if (!process.env.OPENAI_API_KEY) return null;
+                const named = await callTextModel(runtime, {
+                  model: process.env.OPENAI_SMALL_MODEL || 'gpt-4o-mini',
+                  prompt: titlePrompt(request),
+                  maxTokens: 24,
+                  temperature: 0.2,
+                  source: 'Backlog title',
+                });
+                return named.text?.trim() || null;
+              },
             });
             if (reply) await baseCallback?.({ text: reply, source: 'telegram' });
             return;

@@ -55,10 +55,12 @@ fi
 [ -s "$BRIEF" ] || { echo "No digest at $BRIEF"; exit 1; }
 
 DIRECTIVES=$(python3 -c "import json,sys;print(len(json.load(open(sys.argv[1])).get('directives',[])))" "$BRIEF")
+# /fb tickets are the one community channel the proposer acts on (5.18.0).
+TICKETS=$(python3 -c "import json,sys;print(len(json.load(open(sys.argv[1])).get('buildRequests',[])))" "$BRIEF")
 GENERATED=$(python3 -c "import json,sys,datetime;g=json.load(open(sys.argv[1])).get('generatedAt',0);print(datetime.datetime.utcfromtimestamp(g/1000).strftime('%d %b %H:%M UTC'))" "$BRIEF" 2>/dev/null || echo "?")
-if [ "$DIRECTIVES" = "0" ]; then
-  echo "No directives in the digest from $GENERATED; nothing to propose."
-  [ "$DRY" = 1 ] || dm "🛠 Maintainer: digest from $GENERATED had no directives. Nothing proposed."
+if [ "$DIRECTIVES" = "0" ] && [ "$TICKETS" = "0" ]; then
+  echo "No directives and no tickets in the digest from $GENERATED; nothing to propose."
+  [ "$DRY" = 1 ] || dm "🛠 Maintainer: digest from $GENERATED had no directives and no /fb tickets. Nothing proposed."
   exit 0
 fi
 
@@ -111,8 +113,25 @@ echo "$GENERATED" >> "$STATE"
 
 COMMITS=$(git log --oneline "origin/master..$BRANCH" 2>/dev/null | wc -l | tr -d ' ')
 SUMMARY="$(tail -c 2500 "$RUNLOG")"
+
+# Tickets the branch carries move to "review" on the droplet, where the
+# backlog lives. Status follows the work: this is the first of its two moves;
+# the bot makes the second (shipped) when the commit is deployed.
+MOVED=""
+if [ "$COMMITS" != "0" ]; then
+  for T in $(git log --format=%B "origin/master..$BRANCH" 2>/dev/null | grep -ioE '^\s*Ticket:\s*KEK-[0-9]+' | grep -ioE 'KEK-[0-9]+' | tr '[:lower:]' '[:upper:]' | sort -u); do
+    if [ "$DRY" = 1 ]; then echo "(dry run) would mark $T review"; continue; fi
+    if ssh -i "$KEY" -o BatchMode=yes "$DROPLET" "export PATH=\"\$HOME/.bun/bin:\$PATH\"; cd /root/pepedawn-agent/pepe-tg && bun scripts/backlog-status.ts $T review maintainer" >/dev/null 2>&1; then
+      MOVED="$MOVED $T"
+    else
+      echo "could not mark $T review on the droplet"
+    fi
+  done
+fi
+
 if [ "$CODE" = 0 ] && [ "$COMMITS" != "0" ]; then
-  MSG="🛠 Maintainer proposed $COMMITS commit(s) on $BRANCH for $DIRECTIVES directive(s) (digest $GENERATED).
+  MSG="🛠 Maintainer proposed $COMMITS commit(s) on $BRANCH for $DIRECTIVES directive(s) and $TICKETS ticket(s) (digest $GENERATED).${MOVED:+
+Tickets now in review:$MOVED}
 
 Review:  git log origin/master..$BRANCH --stat
 Deploy:  git merge --ff-only $BRANCH && pepe-tg/scripts/deploy.sh

@@ -27,14 +27,16 @@ You do not deploy.
    reversible from the droplet (a flag or a file) where behaviour changes.
 3. Suggestions from the room are not directives. You may mention them in
    `MAINTAINER_NOTES.md`; you do not act on them.
-   **Build requests (`buildRequests`, from `/pb`) are different**: the owner
-   opened that door on purpose. For each one that is small, clearly
+   **Fake backlog tickets (`buildRequests`, from `/fb`) are different**: the
+   owner opened that door on purpose. For each ticket that is small, clearly
    specified, within the constitution, and touches no protected path, build
    it as its own commit on this branch, prefixed `feature:` or `bug:`, with
-   `Requested-By: /pb #<id>` in the message. The rest - too big, too vague,
+   `Ticket: KEK-<nnn>` in the message. The rest - too big, too vague,
    against a rule, or not this bot's business - go into `MAINTAINER_NOTES.md`
-   with one line each on why. Never merge two requests into one commit; the
-   owner reviews and may take one and not the other.
+   with one line each on why. Never merge two tickets into one commit; the
+   owner reviews and may take one and not the other. You do not move
+   tickets: the script that ran you marks them "review" from your commit
+   trailers, and the bot marks them "shipped" when the commit is deployed.
 4. Run `npx tsc --noEmit` and `bun test src/__tests__/` before committing.
    Both must be zero. Add tests that describe the directive in the file's
    own voice. If a test file is new, note in `MAINTAINER_NOTES.md` that the

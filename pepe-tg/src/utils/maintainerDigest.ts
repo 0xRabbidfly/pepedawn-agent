@@ -218,8 +218,8 @@ export interface DigestParts {
   suggestions: TriagedItem[];
   anomalies: string[];
   notes?: string[];
-  /** /pb submissions in the window: the room's build requests, for the proposer. */
-  buildRequests?: Array<{ id: number; at: number; who: string; text: string }>;
+  /** /fb tickets opened in the window: the room's build requests, for the proposer. */
+  buildRequests?: Array<{ id: string; at: number; who: string; title: string; text: string; status: string }>;
 }
 
 export function renderDigest(d: DigestParts): string {
@@ -242,8 +242,8 @@ export function renderDigest(d: DigestParts): string {
   if (d.suggestions.length > 12) lines.push(`  …and ${d.suggestions.length - 12} more.`);
 
   const pb = d.buildRequests ?? [];
-  lines.push('', pb.length ? `📬 BUILD REQUESTS — /pb from the room (${pb.length}); build the ones that fit, as PRs` : '📬 Build requests (/pb): none');
-  for (const r of pb.slice(0, 12)) lines.push(`  • #${r.id} ${hhmm(r.at)} ${r.who} — ${one(r.text).slice(0, 200)}`);
+  lines.push('', pb.length ? `🎫 FAKE BACKLOG — /fb tickets from the room (${pb.length}); build the ones that fit, one commit each` : '🎫 Fake backlog (/fb): no new tickets');
+  for (const r of pb.slice(0, 12)) lines.push(`  • ${r.id} [${r.status}] ${hhmm(r.at)} ${r.who} — ${r.title}`, `      "${one(r.text).slice(0, 200)}"`);
   if (pb.length > 12) lines.push(`  …and ${pb.length - 12} more.`);
 
   lines.push('', d.anomalies.length ? `⚠️ Worth a look (${d.anomalies.length})` : '⚠️ Anomalies: none');
