@@ -111,8 +111,8 @@ const lastReactionAt = new Map<string, number>();
 
 /** May the room get a reaction now? Records the grant when it may. */
 export function reactionAllowed(roomId: string, score: number, now = Date.now(), cooldownMs = REACTION_COOLDOWN_MS): boolean {
-  const last = lastReactionAt.get(roomId) ?? 0;
-  if (score < 2 && now - last < cooldownMs) return false;
+  const last = lastReactionAt.get(roomId);
+  if (score < 2 && last !== undefined && now - last < cooldownMs) return false;
   lastReactionAt.set(roomId, now);
   return true;
 }

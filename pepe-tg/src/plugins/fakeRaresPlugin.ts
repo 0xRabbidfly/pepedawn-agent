@@ -27,6 +27,7 @@ import { recentTurns } from '../conversation/shadow';
 import { runRecap } from '../actions/recapCommand';
 import { runMemoryCommand } from '../actions/memoryCommands';
 import { runBuildRequest, titlePrompt } from '../utils/buildRequests';
+import { sendVoiceMessage, shouldSpeak, synthesizeVoice, voiceConfig, voiceCostUsd } from '../utils/voice';
 import { callTextModel } from '../utils/modelGateway';
 import { sendRecapVideo, stripHtml } from '../utils/recapSend';
 import { rememberRoom } from '../conversation/roomMap';
@@ -517,6 +518,34 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
     void observeBotMessage({ roomId: message.roomId, text: trimmed });
   };
 
+  // Talk or type. The reply is written either way; this decides whether it
+  // goes out as a voice bubble, and does so. False means "type it".
+  const speakIfChosen = async (reply: string): Promise<boolean> => {
+    const cfg = voiceConfig();
+    if (!shouldSpeak(text, reply, message.roomId, cfg)) return false;
+    const token = (runtime.getSetting('TELEGRAM_BOT_TOKEN') as string) || '';
+    const chatId = telegramChatId(params);
+    if (!token || !chatId) return false;
+    const started = Date.now();
+    const out = await synthesizeVoice(reply, cfg);
+    if (!out) return false;
+    const sent = await sendVoiceMessage(token, chatId, out.audio, params?.ctx?.message?.message_id);
+    if (!sent) return false;
+    logger.info(`[Voice] spoke ${out.chars} chars (${sent.voice?.duration ?? '?'}s) in ${Date.now() - started}ms`);
+    try {
+      await telemetry?.logModelUsage({
+        timestamp: new Date().toISOString(),
+        model: process.env.VOICE_MODEL || 'gpt-4o-mini-tts',
+        tokensIn: out.chars,
+        tokensOut: 0,
+        cost: voiceCostUsd(out.chars),
+        source: 'Voice',
+        duration: Date.now() - started,
+      });
+    } catch {}
+    return true;
+  };
+
   const fallbackCandidates =
     plan.selectedCandidates && plan.selectedCandidates.length > 0
       ? plan.selectedCandidates
@@ -596,10 +625,12 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
         }
 
         if (actionCallback) {
-          await actionCallback({
-            text: story,
-            __fromAction: plan.kind === 'FACTS' ? 'smart_router_facts' : 'smart_router_lore',
-          });
+          if (!(await speakIfChosen(story))) {
+            await actionCallback({
+              text: story,
+              __fromAction: plan.kind === 'FACTS' ? 'smart_router_facts' : 'smart_router_lore',
+            });
+          }
           await recordBotTurn(story);
           await showCardForAnswer(context, plan.primaryCardAsset, story, actionCallback, userAskedAboutCards(context));
           // The sources line ("Sources: mem:FREEDO 2025-11-01 by:Unknown") leaks
@@ -629,10 +660,12 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
         }
 
         if (actionCallback) {
-          await actionCallback({
-            text: response,
-            __fromAction: 'smart_router_chat',
-          });
+          if (!(await speakIfChosen(response))) {
+            await actionCallback({
+              text: response,
+              __fromAction: 'smart_router_chat',
+            });
+          }
           await recordBotTurn(response);
           await showCardForAnswer(context, plan.primaryCardAsset, response, actionCallback, userAskedAboutCards(context));
         }

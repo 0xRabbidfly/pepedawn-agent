@@ -5,6 +5,25 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.19.0] - 2026-09-25
+
+### Added
+
+- **PEPEDAWN talks, sometimes.** A conversational reply - written by the
+  chat model exactly as before, which is where the personality lives - is
+  spoken as a Telegram voice bubble instead of typed, through OpenAI
+  text-to-speech in a deliberately odd voice: a raven that has read every
+  Counterparty block, slow, raspy, deadpan, a croak on the odd word. One
+  reply in four (`VOICE_RATE`), only when short and plain (no links, lists
+  or card tags), never twice in a room inside ten minutes. "say it", "out
+  loud", "voice" in the ask forces speech; "write it", "in text" forces
+  text. The spoken words are still recorded as the bot's turn, so memory,
+  the day log and the recap read the same either way. Any failure - no
+  key, a refused synthesis, Telegram rejecting the file - falls back to
+  typing. `VOICE_NAME` and `VOICE_STYLE` change the throat without a
+  deploy; `VOICE_ENABLED=false` silences it. Cost is logged to the ledger
+  as `gpt-4o-mini-tts` under "Voice", so `/fc` sees it.
+
 ## [5.18.1] - 2026-09-25
 
 ### Fixed
