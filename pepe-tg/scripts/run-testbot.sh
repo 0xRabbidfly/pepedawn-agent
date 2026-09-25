@@ -47,6 +47,21 @@ if enforce:
 open('.env', 'w').write(s)
 PY
 
+# The plugin bundles its own copy of the modules it reaches by dynamic import
+# — fakeRaresCarousel, fakeRaresCard, gifConversionHelper, anniversaryRuntime —
+# inlined into packages/plugin-telegram-fakerares/dist. Editing src/ therefore
+# does nothing for carousel navigation or trivia taps until the plugin is
+# rebuilt, and nothing says so: the bot boots, the old code runs, and the fix
+# "didn't work". deploy.sh has always rebuilt; this script did not, and an
+# evening went into that gap. Four seconds a run is the cheaper side of the
+# trade. node_modules/@elizaos/plugin-telegram is a symlink to the package, so
+# a rebuild is picked up with no relink.
+echo "🔨 Rebuilding the Telegram plugin (it inlines parts of src/)..."
+( cd packages/plugin-telegram-fakerares && bun run build >/dev/null ) \
+  || { echo "❌ Plugin build failed — fix it before testing, or you are testing stale code."; exit 1; }
+echo "   done."
+echo
+
 echo "🧪 PEPEDAWN test bot — @${WHO}"
 echo "   mode:            $([ "$ENFORCE" = true ] && echo 'ENFORCE — v5 gates replies' || echo 'SHADOW — observe only')"
 echo "   periodic content: disabled"
