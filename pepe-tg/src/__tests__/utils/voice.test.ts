@@ -43,3 +43,14 @@ describe('talk or type', () => {
     expect(voiceCostUsd(1_000_000)).toBe(0.6);
   });
 });
+
+describe('the knobs that are off', () => {
+  it('slur is deterministic and light; warp with no chain returns the audio untouched', async () => {
+    const { slur, warpVoice } = await import('../../utils/voice');
+    const a = slur('The directory is the community\'s. Fine.');
+    expect(slur('The directory is the community\'s. Fine.')).toBe(a);
+    expect(a.replace(/hic|\.\.\.|([a-z])\1/gi, '').length).toBeGreaterThan(20);
+    const bytes = new Uint8Array([1, 2, 3]);
+    expect(await warpVoice(bytes, '')).toBe(bytes);
+  });
+});

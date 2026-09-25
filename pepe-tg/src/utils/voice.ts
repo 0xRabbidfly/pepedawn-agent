@@ -4,9 +4,9 @@
  * Sometimes it talks instead of typing: the reply is written by the chat
  * model exactly as before - that is where the personality lives - and then
  * spoken, through OpenAI's text-to-speech, as a Telegram voice bubble. The
- * voice is meant to be odd: a raven that has read too much Counterparty
- * history, raspy, slow, deadpan, with a croak in it. VOICE_STYLE and
- * VOICE_NAME change it without a deploy.
+ * voice is meant to be odd: a swamp frog that learned to talk from crypto
+ * Telegram, drunk at 3am - sample E of the takes the owner heard. VOICE_STYLE
+ * and VOICE_NAME change it without a deploy; it ships unannounced.
  *
  * When it speaks: a conversational reply, short enough to listen to, at a
  * rate (VOICE_RATE, default one in four), not twice in a room inside the
@@ -100,11 +100,65 @@ export function speakable(text: string): string {
     .trim();
 }
 
-/** Opus audio of the text, from OpenAI. Null when it cannot be had. */
+/**
+ * The words, slurred, for the synthesizer to read as written. The style
+ * line alone barely moves the model - "drunk" comes out as a clean read -
+ * so the drunkenness goes into the text: stretched vowels here and there,
+ * an s that has become sh, a hic. Light, and deterministic per sentence
+ * so the same line slurs the same way. Off unless VOICE_SLUR=true.
+ */
+export function slur(text: string, seed = 7): string {
+  let n = seed;
+  const rnd = () => ((n = (n * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff);
+  const words = text.split(' ');
+  const out = words.map((w, i) => {
+    let r = w;
+    if (r.length > 3 && rnd() < 0.22) r = r.replace(/([aeiou])/i, (m) => m + m.toLowerCase());
+    if (rnd() < 0.18) r = r.replace(/s(?=[aeiou])/i, 'sh');
+    if (i > 0 && i % 9 === 0 && rnd() < 0.5) r = r + '...';
+    return r;
+  });
+  const joined = out.join(' ');
+  return joined.replace(/\. /g, (m) => (rnd() < 0.3 ? '... hic. ' : m));
+}
+
+/**
+ * Warp the audio with ffmpeg: a little lower and slower, with a wobble in
+ * pitch and volume, and a touch of echo - the voice of something that is
+ * not entirely upright. VOICE_WARP holds the filter chain ("default" for
+ * this one); unset means the clean audio, which is what ships.
+ * When ffmpeg is missing or fails, the clean audio goes out instead.
+ */
+export const DEFAULT_WARP =
+  'asetrate=48000*0.9,aresample=48000,atempo=0.94,vibrato=f=3.5:d=0.35,tremolo=f=5:d=0.25,aecho=0.8:0.6:40:0.25';
+
+export async function warpVoice(audio: Uint8Array, chain: string): Promise<Uint8Array> {
+  if (!chain) return audio;
+  try {
+    const { spawn } = await import('child_process');
+    return await new Promise<Uint8Array>((resolve) => {
+      const p = spawn('ffmpeg', ['-loglevel', 'error', '-i', 'pipe:0', '-af', chain, '-c:a', 'libopus', '-b:a', '48k', '-f', 'ogg', 'pipe:1'], {
+        stdio: ['pipe', 'pipe', 'ignore'],
+      });
+      const chunks: Buffer[] = [];
+      p.stdout.on('data', (c: Buffer) => chunks.push(c));
+      p.on('error', () => resolve(audio));
+      p.on('close', (code) => resolve(code === 0 && chunks.length ? new Uint8Array(Buffer.concat(chunks)) : audio));
+      p.stdin.end(Buffer.from(audio));
+    });
+  } catch {
+    return audio;
+  }
+}
+
+/** Opus audio of the text, from OpenAI, warped. Null when it cannot be had. */
 export async function synthesizeVoice(text: string, config: VoiceConfig): Promise<{ audio: Uint8Array; chars: number } | null> {
   const key = process.env.OPENAI_API_KEY;
   if (!key) return null;
-  const input = speakable(text);
+  const clean = speakable(text);
+  // Both off by default: the owner chose the plain read (sample E) over the
+  // slurred and warped takes. VOICE_SLUR=true and VOICE_WARP=<chain> turn them on.
+  const input = process.env.VOICE_SLUR === 'true' ? slur(clean) : clean;
   if (!input) return null;
   try {
     const res = await fetch('https://api.openai.com/v1/audio/speech', {
@@ -122,7 +176,9 @@ export async function synthesizeVoice(text: string, config: VoiceConfig): Promis
       logger.warn(`[Voice] synthesis refused: ${res.status} ${(await res.text()).slice(0, 160)}`);
       return null;
     }
-    return { audio: new Uint8Array(await res.arrayBuffer()), chars: input.length };
+    const raw = new Uint8Array(await res.arrayBuffer());
+    const warp = process.env.VOICE_WARP === 'default' ? DEFAULT_WARP : (process.env.VOICE_WARP || '');
+    return { audio: await warpVoice(raw, warp), chars: input.length };
   } catch (error) {
     logger.warn({ error }, '[Voice] synthesis failed');
     return null;
