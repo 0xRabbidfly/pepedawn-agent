@@ -10,6 +10,7 @@ import { tmpdir } from 'os';
 import { join } from 'path';
 import {
   FRAMES, OUT_SIZE, SLOTS, STILL_SIZE,
+  CONCEPT_TURNS,
   buildConceptPrompt, buildFfmpegArgs, buildImagePrompt, captionFontSize, describeGif, fgifAllowance, gifConfig,
   imageCostUsd, markGifPosted, mayOfferGif, parseConcept, parseFgif, recordFgif, resetGifCooldowns, slotPosition, wrapCaption,
 } from '../../utils/memeGif';
@@ -65,12 +66,33 @@ describe('the concept', () => {
     expect(p).toContain('heavy deadpan STFU energy');
     expect(p).toContain('DJPEPEBADGER (S15 C6, x): a badger');
     expect(p).toContain('silence beats a lame meme');
+    expect(p).toContain('background only');
+    expect(p).toContain('never reach back past them for an older topic');
+  });
+
+  it('carries only the last few turns, so the joke cannot wander off onto an older topic', () => {
+    const turns = Array.from({ length: 12 }, (_, i) => ({ role: 'user' as const, author: 'someone', text: `turn ${i}` }));
+    const p = buildConceptPrompt({ mode: 'choice', ask: 'the message being answered', turns, menu: [] });
+    expect(CONCEPT_TURNS).toBe(4);
+    expect(p).toContain('turn 11');
+    expect(p).toContain('turn 8');
+    expect(p).not.toContain('turn 7');
+    expect(p).not.toContain('turn 0');
   });
 
   it('asks for Pepe by description, framed with room for captions, and no text in the picture', () => {
     const p = buildImagePrompt('He stamps a form.');
     for (const bit of ['heavy half-closed eyelids', 'thick red-brown lips', 'He stamps a form.', 'MS Paint', 'Medium-wide shot', 'No text']) expect(p).toContain(bit);
     expect(p).not.toMatch(/pepe the frog/i);
+  });
+
+  it('leads with the scene and refuses the memes it already knows', () => {
+    const p = buildImagePrompt('He stamps a form.');
+    // The moment comes before the frog, or the model matches on the frog.
+    expect(p.indexOf('He stamps a form.')).toBeLessThan(p.indexOf('half-closed eyelids'));
+    expect(p).toContain('invented fresh for this description alone');
+    expect(p).toContain('Do not reproduce, redraw or compose this like any meme, template or picture you already know');
+    expect(p).toContain('no computer desk');
   });
 });
 

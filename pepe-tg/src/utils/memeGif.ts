@@ -166,6 +166,16 @@ export interface CardMenuItem {
   look?: string;
 }
 
+/**
+ * How many turns of room go to the concept model. It was twelve, and twelve
+ * turns is enough scrollback for the joke to wander off the message it is
+ * answering and land on whatever the room was arguing about ten minutes ago -
+ * a reply to "pepedawn you reckon fakes would grow under my reign" came back
+ * about a rap scene, because a rap scene was in the window. The message being
+ * answered is the subject; these are only what makes it legible.
+ */
+export const CONCEPT_TURNS = 4;
+
 export interface ConceptInput {
   mode: 'choice' | 'command';
   /** The message being answered, or the /fgif idea. */
@@ -181,7 +191,7 @@ export interface ConceptInput {
 
 export function buildConceptPrompt(input: ConceptInput): string {
   const convo = input.turns
-    .slice(-12)
+    .slice(-CONCEPT_TURNS)
     .map((t) => `${t.role === 'bot' ? 'PEPEDAWN' : t.author || 'someone'}: ${t.text.replace(/\s+/g, ' ').slice(0, 280)}`)
     .join('\n');
   const menu = input.menu
@@ -197,7 +207,7 @@ export function buildConceptPrompt(input: ConceptInput): string {
 What you know about the room:
 ${FAKE_CULTURE}
 
-The conversation right now (oldest first):
+The few messages just before it, oldest first - background only:
 ${convo || '(quiet)'}
 
 ${job}
@@ -208,7 +218,7 @@ Craft:
 - Formats that work when they fit: "NOBODY: / ...", a flat one-word verdict, a fake headline, a calm reply to a loud claim.
 
 Rules:
-- The joke must land on what is actually happening in this conversation: a specific thing someone said, a card that came up, the mood. A generic frog joke is a failure.
+- The joke must land on the thing you are answering, in its own words. The lines above are background for that one message and nothing more: never reach back past them for an older topic, and never re-run a joke the room has already been told. A generic frog joke is a failure.
 - Pepe is the only character in the image: the classic green meme frog. Describe his pose, expression, setting and props; his expression carries half the joke. No text, letters or words in the image.
 - Cards: zero by default. Add one or two, from the menu only, exact names, only when the card itself is part of the punchline - the card being argued about, the thing being offered or bought, a card whose picture answers the message. Never as decoration. Each gets one slot: ${SLOTS.join(', ')}.
 - Captions: the classic top and bottom meme lines, ALL CAPS, at most six words each. Either can be null. Short beats clever.
@@ -287,10 +297,18 @@ export function parseConcept(raw: string, knownAssets: Set<string>): GifConcept 
  */
 export function buildImagePrompt(scene: string): string {
   return (
-    'The classic sad-frog internet meme character: a humanoid green frog with a wide flat head, big bulging eyes with heavy half-closed eyelids, ' +
-    'and thick red-brown lips. ' +
+    // The scene leads. With the frog description first, "classic meme frog,
+    // MS Paint" matched the pictures the image model already had better than
+    // anything happening in the room, and it returned one of them - the
+    // brainlet at a computer desk, posted to the channel over a message that
+    // had nothing to do with computers. Naming the moment first, and refusing
+    // the known compositions outright, is what makes it draw instead of recall.
+    'Draw this exact moment, invented fresh for this description alone: ' +
     scene +
-    ' Crude MS Paint meme style, thick black outlines, flat colours. He is the only character. ' +
+    ' The character is a humanoid green frog with a wide flat head, big bulging eyes with heavy half-closed eyelids, ' +
+    'and thick red-brown lips. Crude MS Paint meme style, thick black outlines, flat colours. He is the only character. ' +
+    'Do not reproduce, redraw or compose this like any meme, template or picture you already know: no stock poses, ' +
+    'no computer desk, no office chair, no crying or smug variants, unless the description above asks for them. ' +
     'Medium-wide shot: his head and upper body sit in the middle of the frame, with empty background above his head, ' +
     'below his chin line and in both bottom corners. No text, no letters, no words, no numbers anywhere in the image.'
   );

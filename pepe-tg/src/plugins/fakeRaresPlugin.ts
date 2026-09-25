@@ -28,7 +28,7 @@ import { recentTurns } from '../conversation/shadow';
 import { runRecap } from '../actions/recapCommand';
 import { runMemoryCommand } from '../actions/memoryCommands';
 import { runBuildRequest, titlePrompt } from '../utils/buildRequests';
-import { describeGif, fgifAllowance, gifConfig, markGifPosted, mayOfferGif, parseFgif, recordFgif } from '../utils/memeGif';
+import { CONCEPT_TURNS, describeGif, fgifAllowance, gifConfig, markGifPosted, mayOfferGif, parseFgif, recordFgif } from '../utils/memeGif';
 import { makeMemeGif } from '../utils/memeGifMaker';
 import { sendAnimationFile, sendChatAction } from '../utils/telegramSend';
 import { characterFor } from '../conversation/characters';
@@ -571,7 +571,7 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
     try {
       const made = await makeMemeGif(
         runtime,
-        { mode: 'choice', ask: text, draftReply: reply, turns: recentTurns(message.roomId, 12), speakerNote: character?.gif?.vibe },
+        { mode: 'choice', ask: text, draftReply: reply, turns: recentTurns(message.roomId, CONCEPT_TURNS), speakerNote: character?.gif?.vibe },
         cfg,
       );
       if (!made) return false;
@@ -1236,7 +1236,7 @@ export const fakeRaresPlugin: Plugin = {
             try {
               const made = await makeMemeGif(
                 runtime,
-                { mode: 'command', ask: parseFgif(text)?.idea ?? '', turns: recentTurns(message.roomId, 12), speakerNote: characterFor(senderId)?.gif?.vibe },
+                { mode: 'command', ask: parseFgif(text)?.idea ?? '', turns: recentTurns(message.roomId, CONCEPT_TURNS), speakerNote: characterFor(senderId)?.gif?.vibe },
                 cfg,
               );
               const sent = made
