@@ -21,12 +21,6 @@ Rules for writing one, learned the hard way:
 
 <!-- Sections are ## [x.y.z], matching CHANGELOG.md. Newest first. -->
 
-## [5.19.0]
-
-🎙 PEPEDAWN — v5.19.0
-
-I have a voice now. Some replies I will say instead of type. It is not a nice voice. Ask me to "say it" if you want to hear one; tell me to "write it" if you would rather not.
-
 ## [5.18.0]
 
 🎫 PEPEDAWN — v5.18.0

@@ -12,8 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **PEPEDAWN talks, sometimes.** A conversational reply - written by the
   chat model exactly as before, which is where the personality lives - is
   spoken as a Telegram voice bubble instead of typed, through OpenAI
-  text-to-speech in a deliberately odd voice: a raven that has read every
-  Counterparty block, slow, raspy, deadpan, a croak on the odd word. One
+  text-to-speech in a deliberately odd voice - a swamp frog that learned to
+  talk from crypto Telegram, drunk at 3am; sample E of five, the owner's
+  pick. Unannounced: no what's-new, the room finds out by hearing it. One
   reply in four (`VOICE_RATE`), only when short and plain (no links, lists
   or card tags), never twice in a room inside ten minutes. "say it", "out
   loud", "voice" in the ask forces speech; "write it", "in text" forces
