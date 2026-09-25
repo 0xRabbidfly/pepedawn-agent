@@ -30,13 +30,14 @@ import { runMemoryCommand } from '../actions/memoryCommands';
 import { runBuildRequest, titlePrompt } from '../utils/buildRequests';
 import { CONCEPT_TURNS, describeGif, fgifAllowance, gifConfig, markGifPosted, mayOfferGif, parseFgif, recordFgif } from '../utils/memeGif';
 import { makeMemeGif } from '../utils/memeGifMaker';
-import { sendAnimationFile, sendChatAction } from '../utils/telegramSend';
+import { sendAnimationFile, sendChatAction, sendSticker } from '../utils/telegramSend';
 import { characterFor } from '../conversation/characters';
 import { sendVoiceMessage, shouldSpeak, synthesizeVoice, voiceConfig, voiceCostUsd } from '../utils/voice';
 import { callTextModel } from '../utils/modelGateway';
 import { sendRecapVideo, stripHtml } from '../utils/recapSend';
 import { rememberRoom } from '../conversation/roomMap';
 import { sendReaction } from '../utils/reactions';
+import { loadPack, markStickerPosted, mayPostSticker, stickerConfig, stickerFor } from '../utils/stickers';
 import {
   noteRoom,
   isXActivityQuestion, buildDigest, formatDigestForTelegram,
@@ -586,6 +587,26 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
     }
   };
 
+  // Or say it with a sticker. The cheapest of the three swaps and the loudest
+  // per byte, so it is tried last and gated hardest: a pack sticker goes out
+  // *instead* of the reply, never alongside it, and never on an exact answer.
+  // The pack is the vocabulary - reactions.ts cannot send a frog, this can.
+  const stickerIfChosen = async (): Promise<boolean> => {
+    if (plan.exactAnswer) return false;
+    const cfg = stickerConfig();
+    if (!mayPostSticker(message.roomId, cfg)) return false;
+    const token = (runtime.getSetting('TELEGRAM_BOT_TOKEN') as string) || '';
+    const chatId = telegramChatId(params);
+    if (!token || !chatId) return false;
+    const chosen = stickerFor(text, await loadPack(token, cfg.pack));
+    if (!chosen) return false;
+    if (!(await sendSticker(token, chatId, chosen.fileId, params?.ctx?.message?.message_id))) return false;
+    markStickerPosted(message.roomId);
+    await recordBotTurn(chosen.emoji || '(sticker)');
+    logger.info(`[Stickers] sent ${chosen.emoji || '?'} from ${cfg.pack} instead of typing.`);
+    return true;
+  };
+
   const fallbackCandidates =
     plan.selectedCandidates && plan.selectedCandidates.length > 0
       ? plan.selectedCandidates
@@ -699,7 +720,7 @@ async function executeSmartRouterPlan(context: SmartRouterExecutionContext): Pro
           return false;
         }
 
-        if (actionCallback && !(await gifIfChosen(response))) {
+        if (actionCallback && !(await gifIfChosen(response)) && !(await stickerIfChosen())) {
           if (!(await speakIfChosen(response))) {
             await actionCallback({
               text: response,

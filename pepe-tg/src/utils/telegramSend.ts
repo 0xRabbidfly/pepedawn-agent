@@ -69,6 +69,26 @@ export async function editMessageText(token: string, chatId: string, messageId: 
   return result !== null;
 }
 
+/**
+ * One sticker from a pack the bot owns, by file_id. Quiet on failure for the
+ * same reason sendReaction is: a sticker goes out *instead* of a reply, so a
+ * rejected one must leave silence, never an error in the room.
+ */
+export async function sendSticker(
+  token: string,
+  chatId: string,
+  fileId: string,
+  replyTo?: number,
+): Promise<boolean> {
+  if (!chatId || !fileId) return false;
+  const result = await call(token, 'sendSticker', {
+    chat_id: chatId,
+    sticker: fileId,
+    ...(replyTo ? { reply_parameters: { message_id: replyTo, allow_sending_without_reply: true } } : {}),
+  });
+  return result !== null;
+}
+
 export type MediaKind = 'photo' | 'video' | 'animation';
 
 /** A photo, video or animation by file_id or URL, with a plain caption and optional inline keyboard. Returns the sent message. */
