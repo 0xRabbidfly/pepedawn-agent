@@ -88,7 +88,7 @@ export const helpCommand: Action = {
 
 **Fake Market:** 📊
 \`/fm\` - Recent sales + listings (default 10)
-\`/fm CARDNAME\` - Live dispensers for any card (e.g. \`/fm FAKEASF\`)
+\`/fm ASSET\` - Live floor of any Counterparty asset: dispensers + DEX (e.g. \`/fm FAKEASF\`, \`/fm PEPECASH\`)
 
 **XCP Dispensers:** 💰
 \`/xcp\` - View verified XCP dispenser list

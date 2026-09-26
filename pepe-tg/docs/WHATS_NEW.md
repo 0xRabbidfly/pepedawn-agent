@@ -21,6 +21,12 @@ Rules for writing one, learned the hard way:
 
 <!-- Sections are ## [x.y.z], matching CHANGELOG.md. Newest first. -->
 
+## [5.25.0]
+
+🎰 PEPEDAWN — v5.25.0
+
+Ask me for a floor and you get one. "@pepedawn_bot what's the FAKEASF floor?" or /fm FAKEASF - the cheapest open dispensers and DEX sell orders, live, priced per unit. Not just fakes: any Counterparty asset works. /fm PEPECASH, /fm XCP, /fm whatever you're hunting.
+
 ## [5.18.0]
 
 🎫 PEPEDAWN — v5.18.0

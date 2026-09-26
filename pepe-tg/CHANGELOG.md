@@ -5,6 +5,44 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.25.0] - 2026-09-26
+
+### Added
+
+- **The floor of any Counterparty asset.** "@pepedawn_bot what's the FAKEASF
+  floor?" was answered from the card's lore - "no stated floor in the notes" -
+  with 24 dispensers open, the cheapest at 0.0075 BTC. A price question ("X
+  floor", "floor of X", "how much is X", "where can I buy X", "what's X going
+  for") now goes to `/fm X`, and `/fm` answers for any asset, not only Fake
+  Rares: the floor on dispensers and on the DEX, then the cheapest few of each,
+  live from Counterparty API v2 (`src/utils/assetMarket.ts`). A card from any of
+  the three collections is recognised however it is typed; any other asset
+  must be typed in capitals and exist on Counterparty, because MARKET and WHAT
+  are registered assets too. Uninvited price questions are left to the traders
+  asking each other. A name that is not an asset falls back to the Fake Rare it
+  is a typo of, as before - but a real asset is never corrected into a card.
+
+### Fixed
+
+- **Prices are per unit.** `/fm` showed a dispenser's rate - the price of a
+  whole dispense - as the unit price. Fake Rares mostly dispense one at a time,
+  so it hid; one FAKEASF dispenser sells two per dispense, and on PEPECASH the
+  "cheapest" dispenser it would have shown at 1 sat charges 1 BTC per unit.
+  Oracle dispensers, priced in USD, are converted at the oracle's last price.
+- **Every open dispenser is seen.** It fetched one page of every dispenser the
+  asset ever had (1,015 for FAKEASF) and kept the open ones; the API now
+  filters to open itself, paged.
+- **A slow Counterparty call can no longer freeze the bot.** On 2026-09-26 an
+  `/fm FAKEASF` call hung for five minutes, and because Telegram updates are
+  handled in batches, every message behind it waited until the plugin's 300s
+  handler timeout. The client's 30s timeout is an idle timeout and never fired.
+  Market lookups now share a real 15s deadline; the client no longer retries a
+  request its caller aborted, and its rate-limit retries are capped at three
+  (they were unbounded). An unreachable API is reported as such - a floor is
+  never guessed. Results are cached for a minute.
+- `/fm ASSET` no longer fails when the unrelated transaction-history service is
+  down.
+
 ## [5.24.0] - 2026-09-26
 
 ### Added

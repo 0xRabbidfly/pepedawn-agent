@@ -39,7 +39,11 @@ import { recallForSpeaker, settleRecall } from '../conversation/socialMemoryRunt
 import { anniversaryContext, anniversaryFact } from '../conversation/anniversaryRuntime';
 import { directoryEditFact, isActionRequest, isDirectoryEditRequest } from '../utils/directoryHelp';
 import { fakeSubmissionAnswer, isFakeSubmissionQuestion } from '../utils/submissionHelp';
+import { floorQuestionCandidates } from '../utils/assetMarket';
+import { DispenserQueryService } from './dispenserQuery';
 import { isInFullIndex } from '../data/fullCardIndex';
+import { isInCommonsIndex } from '../data/fakeCommonsIndex';
+import { isInRarePepesIndex } from '../data/rarePepesIndex';
 
 export type ConversationIntent = 'LORE' | 'FACTS' | 'CHAT' | 'NORESPONSE' | 'CMDROUTE';
 
@@ -1412,6 +1416,23 @@ Say briefly why it is worth a look — something true about the art, the artist 
       return { kind: 'CHAT', intent: 'CHAT', reason: 'submission_rules', retrieval: null, chatResponse: fakeSubmissionAnswer(), exactAnswer: true };
     }
 
+    // "what's the FAKEASF floor?" was answered from the card's lore - "no
+    // stated floor in the notes" - with 24 dispensers open. A price question
+    // goes to the live market, through the same /fm a person would type.
+    const floorCandidates = floorQuestionCandidates(trimmed);
+    if (floorCandidates.length) {
+      if (!invited) {
+        // Traders asking each other are not asking the bot. No API call either.
+        if (floorCandidates.some((c) => this.isCollectionCard(c.token))) return silent('unaddressed_floor');
+      } else {
+        const asset = await this.resolveFloorAsset(floorCandidates);
+        if (asset) {
+          logger.info({ query: trimmed.slice(0, 80), asset }, '[SmartRouter] Price question -> /fm');
+          return { kind: 'CMDROUTE', intent: 'CMDROUTE', reason: 'floor_question', retrieval: null, command: `/fm ${asset}` };
+        }
+      }
+    }
+
     if (this.isTasteQuestion(trimmed)) {
       // An opinion is not an exact fact. Uninvited, it is butting in.
       if (!invited) return silent('unaddressed_taste');
@@ -1752,6 +1773,29 @@ Say briefly why it is worth a look — something true about the art, the artist 
         candidate.source_type === 'card_data' && candidate.card_asset
     );
     return topCard?.card_asset ?? null;
+  }
+
+  private isCollectionCard(token: string): boolean {
+    return isInFullIndex(token) || isInCommonsIndex(token) || isInRarePepesIndex(token);
+  }
+
+  /**
+   * The asset a price question names. A card from any of the three
+   * collections is taken as typed. Anything else must be typed in capitals and
+   * exist on Counterparty: MARKET and WHAT are registered assets too, and
+   * "whats the market floor" is not a question about either.
+   */
+  private async resolveFloorAsset(candidates: Array<{ token: string; typedInCaps: boolean }>): Promise<string | null> {
+    for (const c of candidates) {
+      if (this.isCollectionCard(c.token)) return c.token;
+    }
+    const market = this.runtime.getService(DispenserQueryService.serviceType) as DispenserQueryService | null;
+    if (!market) return null;
+    for (const c of candidates) {
+      if (!c.typedInCaps) continue;
+      if ((await market.assetExists(c.token)) === true) return c.token;
+    }
+    return null;
   }
 
   private detectMentionedCard(text: string): string | null {

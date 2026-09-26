@@ -278,12 +278,17 @@ export class TokenScanClient extends Service {
     this.client.interceptors.response.use(
       (response) => response,
       async (error: AxiosError) => {
-        if (error.response?.status === 429) {
-          // Rate limit exceeded
+        // A request its caller gave up on stays given up: retrying an aborted
+        // request only fails again, after the backoff.
+        if (axios.isCancel(error) || error.code === 'ERR_CANCELED') throw error;
+        if (error.response?.status === 429 && ((error.config as any)?.__rateLimitCount || 0) < 3) {
+          // Rate limit exceeded. Bounded: this used to retry forever, and a
+          // user's command waiting on it freezes the bot's whole update loop.
           const retryAfter = error.response.headers['retry-after'] 
             ? parseInt(error.response.headers['retry-after'], 10) 
             : 60;
           logger.warn({ retryAfter }, 'Rate limit exceeded, will retry after delay');
+          (error.config as any).__rateLimitCount = ((error.config as any).__rateLimitCount || 0) + 1;
           await this.sleep(retryAfter * 1000);
           return this.client.request(error.config!);
         }

@@ -54,7 +54,7 @@ const HELPFUL_TIPS = [
   },
   {
     title: "📊 Market Activity Tracking",
-    text: "Use `/fm` to see recent sales and listings! Options:\n• `/fm` - Last 10 combined\n• `/fm S 5` - Last 5 sales\n• `/fm L 10` - Last 10 listings\n• `/fm CARDNAME` - Live dispensers for specific card!\n\nI auto-notify when new activity happens!",
+    text: "Use `/fm` to see recent sales and listings! Options:\n• `/fm` - Last 10 combined\n• `/fm S 5` - Last 5 sales\n• `/fm L 10` - Last 10 listings\n• `/fm ASSET` - Live floor of any Counterparty asset, dispensers and DEX!\n\nOr just ask me: \"what's the FAKEASF floor?\"\n\nI auto-notify when new activity happens!",
   },
   {
     title: "💎 XCP Dispenser List",

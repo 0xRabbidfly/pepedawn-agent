@@ -7,13 +7,15 @@
  * - /fm N - Last N sales and listings (combined)
  * - /fm S N - Last N sales only
  * - /fm L N - Last N listings only
- * - /fm CARDNAME - Active dispensers for a specific card (real-time)
+ * - /fm ASSET - Floor of any Counterparty asset: open dispensers and DEX sell
+ *   orders, priced per unit (real-time; see utils/assetMarket.ts)
  */
 
 import type { Action, HandlerCallback, IAgentRuntime, Memory, State } from '@elizaos/core';
 import { logger } from '@elizaos/core';
 import { TransactionHistory } from '../services/transactionHistory.js';
-import { DispenserQueryService, type DispenserListing } from '../services/dispenserQuery.js';
+import { DispenserQueryService } from '../services/dispenserQuery.js';
+import { formatAssetMarket } from '../utils/assetMarket.js';
 import type { Transaction } from '../types/transaction.js';
 import { FULL_CARD_INDEX } from '../data/fullCardIndex.js';
 import { findBestMatch, findTopMatches, FUZZY_MATCH_THRESHOLDS } from '../utils/fuzzyMatch.js';
@@ -26,6 +28,10 @@ interface ParseResult {
   type: 'SALE' | 'LISTING' | 'DISPENSER' | null;
   limit: number;
   asset?: string;
+  /** A Fake Rare the name is a likely typo of, tried only if the name is not an asset. */
+  closeCard?: string;
+  /** Near Fake Rares to suggest when neither resolves. */
+  suggestions?: string[];
   error: string | null;
 }
 
@@ -47,47 +53,19 @@ function parseCommand(text: string): ParseResult {
   
   if (cardMatch) {
     const cardInput = cardMatch[1].toUpperCase();
-    
-    // Try exact match first
+
+    // Any Counterparty asset, not only a Fake Rare: the API decides whether the
+    // name exists. A close Fake Rare is only a fallback for a name that does
+    // not - "/fm PEPECASH" must never be corrected into a card.
     const allAssets = FULL_CARD_INDEX.map(c => c.asset);
-    const exactMatch = allAssets.find(asset => asset.toUpperCase() === cardInput);
-    
-    if (exactMatch) {
-      return { type: 'DISPENSER', limit: 10, asset: exactMatch, error: null };
+    if (allAssets.includes(cardInput)) {
+      return { type: 'DISPENSER', limit: 10, asset: cardInput, error: null };
     }
-    
-    // Try fuzzy match (high confidence = 75%+)
-    const fuzzyMatch = findBestMatch(
-      cardInput, 
-      allAssets, 
-      FUZZY_MATCH_THRESHOLDS.HIGH_CONFIDENCE
-    );
-    
-    if (fuzzyMatch) {
-      logger.info(`Fuzzy matched "${cardInput}" → "${fuzzyMatch.name}" (${(fuzzyMatch.similarity * 100).toFixed(0)}%)`);
-      return { type: 'DISPENSER', limit: 10, asset: fuzzyMatch.name, error: null };
-    }
-    
-    // No match - show suggestions
-    const topMatches = findTopMatches(cardInput, allAssets, 3);
-    const suggestions = topMatches
+    const close = findBestMatch(cardInput, allAssets, FUZZY_MATCH_THRESHOLDS.HIGH_CONFIDENCE);
+    const suggestions = findTopMatches(cardInput, allAssets, 3)
       .filter(m => m.similarity >= FUZZY_MATCH_THRESHOLDS.MODERATE)
-      .map(m => m.name)
-      .join(', ');
-    
-    if (suggestions) {
-      return { 
-        type: null, 
-        limit: 0, 
-        error: `Card "${cardInput}" not found. Did you mean: ${suggestions}?` 
-      };
-    } else {
-      return { 
-        type: null, 
-        limit: 0, 
-        error: `Card "${cardInput}" not found in Fake Rares collection.` 
-      };
-    }
+      .map(m => m.name);
+    return { type: 'DISPENSER', limit: 10, asset: cardInput, closeCard: close?.name, suggestions, error: null };
   }
   
   // Match patterns: /fm N, /fm S N, /fm L N (handle @botname suffix)
@@ -234,37 +212,6 @@ function formatEmptyResponse(type: 'SALE' | 'LISTING' | null): string {
 }
 
 /**
- * Format dispensers for a specific asset (real-time data)
- * Shows: price | available/escrow | address (8 chars) | clickable link
- */
-function formatDispensersByAsset(
-  asset: string,
-  dispensers: DispenserListing[]
-): string {
-  if (dispensers.length === 0) {
-    return `ℹ️ No active dispensers found for *${asset}*\n\n💡 Dispensers may be closed or sold out. Check Horizon Market for DEX orders.`;
-  }
-  
-  // Limit to top 5 cheapest
-  const topFive = dispensers.slice(0, 5);
-  
-  let response = `🎰 *(${topFive.length}) Active Dispensers for ${asset} (lowest price):*\n`;
-  
-  for (const d of topFive) {
-    // Format price in BTC
-    const price = formatPrice(d.pricePerUnit, 'BTC');
-    
-    // Truncate address to first 8 chars with ellipsis
-    const addr = d.source.slice(0, 8) + '...';
-    
-    // Format with bullet point, no spacing between lines
-    response += `• ${price} BTC | ${d.giveRemaining}/${d.escrowQuantity} available | ${addr} | 🔗 [View](${buildTokenScanUrl(d.txHash)})\n`;
-  }
-  
-  return response;
-}
-
-/**
  * Format help/error message
  */
 function formatHelpMessage(): string {
@@ -275,7 +222,7 @@ Usage:
   /fm N - Last N sales and listings (max 20)
   /fm S N - Last N sales (max 20)
   /fm L N - Last N listings (max 20)
-  /fm CARDNAME - Active dispensers for card (real-time)`;
+  /fm ASSET - Floor of any Counterparty asset: dispensers + DEX (live)`;
 }
 
 /**
@@ -298,9 +245,35 @@ function truncateIfNeeded(message: string): string {
   return truncated + '\n\n⚠️ Message truncated due to length limit.';
 }
 
+/**
+ * The /fm ASSET reply. A name that is not an asset falls back to the Fake Rare
+ * it is most likely a typo of, as /fm always has; when Counterparty cannot be
+ * reached the reply says so - a floor is never guessed.
+ */
+async function marketResponse(service: DispenserQueryService, parsed: ParseResult): Promise<string> {
+  const asset = parsed.asset!;
+  try {
+    let market = await service.getAssetMarket(asset);
+    let note = '';
+    if (!market && parsed.closeCard) {
+      market = await service.getAssetMarket(parsed.closeCard);
+      if (market) note = `🔎 No asset called ${asset}; showing ${parsed.closeCard}.\n\n`;
+    }
+    if (!market) {
+      const hint = parsed.suggestions?.length ? ` Did you mean: ${parsed.suggestions.join(', ')}?` : '';
+      return `❌ ${asset} isn't a Counterparty asset.${hint}`;
+    }
+    logger.info(`/fm ${market.info.asset}: ${market.dispensers.length} dispensers, ${market.dex.length} DEX orders`);
+    return note + formatAssetMarket(market, buildTokenScanUrl);
+  } catch (error) {
+    logger.warn({ asset, error: String(error) }, '/fm market lookup failed');
+    return `⚠️ Couldn't reach Counterparty to check ${asset} just now. Try again in a minute.`;
+  }
+}
+
 export const fakeMarketAction: Action = {
   name: 'FAKE_MARKET_QUERY',
-  description: 'Query Fake Rare transaction history with /fm command',
+  description: 'Query Fake Rare transaction history, or the live floor of any Counterparty asset, with /fm',
   similes: ['MARKET_QUERY', 'FM', 'TRANSACTION_HISTORY'],
   examples: [],
   
@@ -340,7 +313,9 @@ export const fakeMarketAction: Action = {
       
       // Get TransactionHistory service
       const transactionHistory = runtime.getService(TransactionHistory.serviceType) as TransactionHistory;
-      if (!transactionHistory) {
+      // The floor of an asset is read live from Counterparty; only the sales
+      // and listings paths need the transaction history.
+      if (!transactionHistory && parseResult.type !== 'DISPENSER') {
         logger.error('TransactionHistory service not found');
         const errorMessage = formatSystemErrorMessage();
         if (callback) {
@@ -380,22 +355,13 @@ export const fakeMarketAction: Action = {
           };
         }
         
-        logger.info(`Fetching dispensers for asset: ${parseResult.asset}`);
-        const dispensers = await dispenserService.getActiveDispensersForAsset(
-          parseResult.asset!,
-          parseResult.limit
-        );
-        
-        response = formatDispensersByAsset(parseResult.asset!, dispensers);
-        
+        response = await marketResponse(dispenserService, parseResult);
         if (callback) {
           await callback({ 
             text: response,
             channelType: message.content.channelType 
           });
         }
-        
-        logger.info(`/fm ${parseResult.asset} complete: ${dispensers.length} active dispensers`);
         
         return {
           success: true,
