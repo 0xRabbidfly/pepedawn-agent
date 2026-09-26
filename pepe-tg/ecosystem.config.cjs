@@ -31,7 +31,12 @@ module.exports = {
     error_file: './logs/error.log',
     log_date_format: 'YYYY-MM-DD HH:mm:ss Z',
     listen_timeout: 8000,
-    kill_retry_time: 100,
-    cron_restart: '0 2 * * *'
+    kill_retry_time: 100
+    // No cron_restart. It restarted the bot at 02:00 daily "to prevent memory
+    // leaks" that were never measured - memory is flat through the day and
+    // back to the same level ten minutes after a restart - and it backed up
+    // nothing. The nightly stop now belongs to scripts/nightly-backup.sh,
+    // which stops the bot at 02:00, copies the database while nothing holds
+    // it, and starts it again (installed by scripts/setup-backup-cron.sh).
   }]
 };

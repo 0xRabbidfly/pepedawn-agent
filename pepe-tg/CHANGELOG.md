@@ -5,6 +5,45 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.24.0] - 2026-09-26
+
+### Added
+
+- **Production is backed up every night.** Until today it had no automatic
+  backup at all: the newest copy of the database was 36 days old, made by hand,
+  on the same disk as the database itself, and the state files in `src/data` -
+  lore ledger, social memory, backlog, room history - had never been backed up.
+  `scripts/nightly-backup.sh` runs at 02:00 UTC from root's crontab. PGlite's
+  data directory cannot be copied safely while it is written, so the job stops
+  the bot through PM2, waits for every process in the app's tree to exit and for
+  nothing to hold the database, copies it and `src/data` uncompressed, and
+  starts the bot before anything slow happens; it then waits for the router to
+  report ready. Compression, gzip and file-count checks and checksums follow at
+  low priority, with the bot back up. The last 3 nightly archives are kept;
+  hand-made backups are never pruned. Everything that can fail without
+  downtime - disk space, the lock, the destination - is checked before the
+  stop, and a failure after it, a kill included, starts the bot again. Tested
+  on the test bot under PM2: 3-5s down, ready in 17s, and each failure path
+  forced. `--check` runs the preflight alone.
+- **Backup failures reach the owner, and so does silence.** A failed night DMs
+  `MAINTAINER_OWNER_CHAT_ID` with the reason, and logs whether Telegram
+  accepted the alert. The job also writes `src/data/maintainer/backup-status.json`,
+  and the daily maintainer digest now opens with the last good backup - flagged
+  when it failed, or when there has been none for 26 hours, which is how a job
+  that stops running at all gets noticed.
+
+### Changed
+
+- **PM2 no longer restarts the bot at 02:00.** `cron_restart` was added in
+  October 2025 "to prevent memory leaks" that were never measured: memory is
+  flat through the day and back to the same level ten minutes after a restart,
+  and the memory limit has never been hit. The nightly stop now belongs to the
+  backup, which is the one reason to have it.
+- `scripts/setup-backup-cron.sh` installs the nightly job on the droplet,
+  idempotently, after running its preflight in cron's bare environment. It
+  refuses while PM2 still has a `cron_restart`. It used to install a weekly job
+  on whatever machine ran it, with the dev machine's paths baked in.
+
 ## [5.23.1] - 2026-09-25
 
 ### Fixed

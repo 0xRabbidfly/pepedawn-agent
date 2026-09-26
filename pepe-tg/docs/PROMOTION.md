@@ -168,8 +168,8 @@ ssh -i ~/.ssh/pepedawn root@134.122.45.20 \
 ```
 
 Then confirm the bot answers in the real channel. ~300 restarts is roughly one
-per day of uptime — a **nightly `cron_restart` at 02:00**, plus `pm2 delete` on
-every deploy. It is not a crash loop. Any in-memory state is lost daily, which
+per day of uptime — the **nightly backup's stop and start at 02:00 UTC**, plus
+`pm2 delete` on every deploy. It is not a crash loop. Any in-memory state is lost daily, which
 is why conversation history must persist to disk.
 
 ---
@@ -186,8 +186,17 @@ a deploy restarts the process, and **PGlite corrupts if killed mid-shutdown**.
   against a **0.3.12** data directory and failed to initialise. Use
   `scripts/query-db.js` from within `pepe-tg`, which resolves local
   `node_modules`.
-- Back up before any destructive data work, and keep the archive:
-  `tar -czf /root/elizadb-backup-$(date +%F-%H%M).tar.gz .eliza/.elizadb`.
+- **A backup runs every night at 02:00 UTC** — `scripts/nightly-backup.sh`,
+  from root's crontab (`scripts/setup-backup-cron.sh` installs it). It stops the
+  bot, confirms nothing holds the database, copies it and `src/data`, restarts,
+  then compresses and verifies at low priority. Archives are in
+  `/root/pepedawn-agent/backups`, the last 3 nightly kept. A failure DMs the
+  owner, and the daily maintainer digest reports the last good backup, so a job
+  that silently stops running is noticed too. `--check` runs the preflight alone.
+- On prod, stop the bot with `pm2 stop pepe-tg`, not `kill-bot.sh`: PM2 restarts
+  a process it did not stop itself.
+- Before destructive data work, take an extra backup the same way — the nightly
+  job can be run by hand — and keep it: hand-made archives are never pruned.
   Prod `/tmp` is a 984MB tmpfs — write large files to `/root`.
 
 ## Never call `getUpdates` by hand

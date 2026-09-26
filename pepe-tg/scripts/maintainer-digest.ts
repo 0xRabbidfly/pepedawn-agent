@@ -25,8 +25,8 @@ import { getParticipant } from '../src/utils/participants';
 import { callTextModel } from '../src/utils/modelGateway';
 import { sendTextMessage } from '../src/utils/telegramSend';
 import {
-  anomalies, buildClassifyPrompt, chunkForTelegram, countMatches, findCandidates, parseClassifyResponse,
-  parseDecisions, renderDigest, stats, triage, type DigestParts,
+  anomalies, backupLine, buildClassifyPrompt, chunkForTelegram, countMatches, findCandidates, parseClassifyResponse,
+  parseDecisions, renderDigest, stats, triage, type BackupStatus, type DigestParts,
 } from '../src/utils/maintainerDigest';
 
 const args = process.argv.slice(2);
@@ -116,6 +116,15 @@ const buildRequests = ticketsBetween(from, to).map((r) => ({
   who: nameOf(r.sender.id, r.sender.name || r.sender.username),
 }));
 
+// Written by scripts/nightly-backup.sh; absent until its first run.
+function readBackupStatus(): BackupStatus | null {
+  try {
+    return JSON.parse(readFileSync(join(dir, 'backup-status.json'), 'utf8'));
+  } catch {
+    return null;
+  }
+}
+
 const parts: DigestParts = {
   from, to,
   stats: stats(turns, decisions, extra),
@@ -123,6 +132,7 @@ const parts: DigestParts = {
   anomalies: anomalies(turns),
   notes,
   buildRequests,
+  backup: backupLine(readBackupStatus(), to),
 };
 const markdown = renderDigest(parts);
 

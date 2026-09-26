@@ -220,6 +220,39 @@ export interface DigestParts {
   notes?: string[];
   /** /fb tickets opened in the window: the room's build requests, for the proposer. */
   buildRequests?: Array<{ id: string; at: number; who: string; title: string; text: string; status: string }>;
+  /** One line on the nightly backup, from backupLine(). */
+  backup?: string;
+}
+
+/** What scripts/nightly-backup.sh writes to src/data/maintainer/backup-status.json. */
+export interface BackupStatus {
+  lastAttemptAt?: number;
+  ok?: boolean;
+  reason?: string | null;
+  lastSuccess?: { at: number; file?: string; bytes?: number | null; downtimeSec?: number | null; readySec?: number | null } | null;
+}
+
+/** A night's backup plus slack for a slow run: older than this, the job is not running. */
+export const BACKUP_STALE_MS = 26 * 3600_000;
+
+/**
+ * The digest's line on the nightly backup. The job alerts when it fails, but a
+ * job that never runs - cron not installed, droplet rebuilt - says nothing at
+ * all. Reporting the age of the last good backup every day catches that too.
+ */
+export function backupLine(status: BackupStatus | null, now: number): string {
+  const ago = (ms: number) => {
+    const h = Math.round((now - ms) / 3600_000);
+    return h < 1 ? 'under an hour ago' : h < 48 ? `${h}h ago` : `${Math.round(h / 24)} days ago`;
+  };
+  const good = status?.lastSuccess;
+  const lastGood = good ? `Last good one ${ago(good.at)}.` : 'There is no good one on record.';
+  if (!status || !status.lastAttemptAt) return '⚠️ 💾 No nightly backup has run. Is scripts/setup-backup-cron.sh installed?';
+  if (status.ok === false) return `⚠️ 💾 The last nightly backup FAILED ${ago(status.lastAttemptAt)}: ${status.reason || 'no reason given'}. ${lastGood}`;
+  if (!good || now - good.at > BACKUP_STALE_MS) return `⚠️ 💾 No backup for ${good ? ago(good.at).replace(' ago', '') : 'ever'}: the nightly job may have stopped running. ${lastGood}`;
+  const size = good.bytes ? `, ${Math.round(good.bytes / 1024 / 1024)}MB` : '';
+  const down = good.readySec != null ? `, bot back in ${good.readySec}s` : good.downtimeSec != null ? `, bot down ${good.downtimeSec}s` : '';
+  return `💾 Backup ok ${ago(good.at)}${size}${down}.`;
 }
 
 export function renderDigest(d: DigestParts): string {
@@ -233,6 +266,7 @@ export function renderDigest(d: DigestParts): string {
     `(${Object.entries(s.silentByReason).sort((a, b) => b[1] - a[1]).map(([r, n]) => `${r} ${n}`).join(', ') || 'none'}). ` +
     `Repeat guard ${s.repeatGuardHits}, card cooldown ${s.cardCooldownHits}, errors ${s.errors}.`
   );
+  if (d.backup) lines.push(d.backup);
 
   lines.push('', d.directives.length ? `🔴 DIRECTIVES — from the owner or an admin (${d.directives.length})` : '🔴 Directives: none');
   for (const it of d.directives) lines.push(...item(it));

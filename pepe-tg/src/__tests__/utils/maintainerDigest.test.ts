@@ -5,7 +5,7 @@
 import { describe, expect, it } from 'bun:test';
 import type { DayTurn } from '../../conversation/dayLog';
 import {
-  anomalies, buildClassifyPrompt, chunkForTelegram, countMatches, findCandidates, parseClassifyResponse,
+  anomalies, backupLine, buildClassifyPrompt, chunkForTelegram, countMatches, findCandidates, parseClassifyResponse,
   parseDecisions, renderDigest, stats, triage,
 } from '../../utils/maintainerDigest';
 
@@ -143,5 +143,41 @@ describe('the digest', () => {
     const chunks = chunkForTelegram(long, 1000);
     expect(chunks.every((ch) => ch.length <= 1000)).toBe(true);
     expect(chunks.join('\n\n').replace(/\s+/g, ' ')).toBe(long.replace(/\s+/g, ' '));
+  });
+});
+
+describe('the nightly backup line', () => {
+  const NOW = Date.UTC(2026, 8, 27, 13, 0);
+  const H = 3600_000;
+  const good = { at: NOW - 11 * H, file: 'elizadb-backup-nightly-x.tar.gz', bytes: 747_757_149, downtimeSec: 17, readySec: 54 };
+
+  it('says so quietly when last night worked', () => {
+    expect(backupLine({ lastAttemptAt: good.at, ok: true, lastSuccess: good }, NOW)).toBe('💾 Backup ok 11h ago, 713MB, bot back in 54s.');
+  });
+
+  it('flags a failed night, and still says when the last good one was', () => {
+    const line = backupLine({ lastAttemptAt: NOW - 11 * H, ok: false, reason: 'not enough disk space', lastSuccess: { ...good, at: NOW - 35 * H } }, NOW);
+    expect(line).toStartWith('⚠️');
+    expect(line).toContain('FAILED 11h ago: not enough disk space');
+    expect(line).toContain('Last good one 35h ago');
+  });
+
+  it('flags a job that has stopped running, which never alerts on its own', () => {
+    const line = backupLine({ lastAttemptAt: NOW - 3 * 24 * H, ok: true, lastSuccess: { ...good, at: NOW - 3 * 24 * H } }, NOW);
+    expect(line).toStartWith('⚠️');
+    expect(line).toContain('may have stopped running');
+  });
+
+  it('flags a job that has never run', () => {
+    expect(backupLine(null, NOW)).toContain('No nightly backup has run');
+  });
+
+  it('is rendered right under the stats', () => {
+    const md = renderDigest({
+      from: T0, to: T0 + H, stats: stats([], [], { repeatGuardHits: 0, cardCooldownHits: 0, errors: 0 }),
+      directives: [], suggestions: [], anomalies: [], backup: '💾 Backup ok 11h ago.',
+    });
+    const lines = md.split('\n');
+    expect(lines[3]).toBe('💾 Backup ok 11h ago.');
   });
 });

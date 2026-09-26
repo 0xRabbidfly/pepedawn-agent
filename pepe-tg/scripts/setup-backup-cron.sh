@@ -1,137 +1,51 @@
 #!/bin/bash
-# Setup weekly ElizaDB backup cron job
-# Run this once to install the cron job on your production server
+#
+# Install the nightly production backup, scripts/nightly-backup.sh, in root's
+# crontab on the droplet: 02:00 UTC, logging to logs/backup.log. Idempotent -
+# run it again and nothing changes - and every other crontab entry is kept.
+#
+#   ssh -i ~/.ssh/pepedawn root@134.122.45.20 \
+#     'cd /root/pepedawn-agent/pepe-tg && ./scripts/setup-backup-cron.sh'
+#
+# The job's preflight runs first under cron's own bare environment, so a
+# missing pm2 or python3 shows up now rather than at 02:00. It refuses while
+# PM2 still restarts the app on its own cron_restart: the two would collide at
+# the same minute. Deploy an ecosystem.config.cjs without it first.
+#
+# This used to install a weekly job that generated weekly-backup.sh with the
+# dev machine's paths baked in; it never ran on the droplet.
 
 set -e
+cd "$(dirname "$0")/.."
+PROJECT_DIR=$(pwd -P)
+MARKER="# pepedawn nightly backup (scripts/setup-backup-cron.sh)"
+LINE="0 2 * * * cd $PROJECT_DIR && ./scripts/nightly-backup.sh >> $PROJECT_DIR/logs/backup.log 2>&1"
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
-BACKUP_SCRIPT="$SCRIPT_DIR/backup-db.sh"
-CLEANUP_SCRIPT="$SCRIPT_DIR/cleanup-old-backups.sh"
-
-echo "🔧 Setting up weekly ElizaDB backup cron job..."
-echo ""
-echo "   Project: $PROJECT_DIR"
-echo "   Backup script: $BACKUP_SCRIPT"
-echo "   Cleanup script: $CLEANUP_SCRIPT"
-echo ""
-
-# Check if scripts exist
-if [ ! -f "$BACKUP_SCRIPT" ]; then
-    echo "❌ Backup script not found at $BACKUP_SCRIPT"
-    exit 1
+CRON_RESTART=$(pm2 jlist 2>/dev/null | python3 -c "
+import json, sys
+print(next((a['pm2_env'].get('cron_restart') or '' for a in json.load(sys.stdin) if a.get('name') == 'pepe-tg'), ''))
+" 2>/dev/null || true)
+if [ -n "$CRON_RESTART" ]; then
+  echo "❌ PM2 still restarts pepe-tg on cron_restart '$CRON_RESTART'."
+  echo "   Deploy the ecosystem.config.cjs that drops it, then run this again."
+  exit 1
 fi
 
-if [ ! -f "$CLEANUP_SCRIPT" ]; then
-    echo "⚠️  Cleanup script not found - creating it..."
-    cat > "$CLEANUP_SCRIPT" << 'CLEANUP_EOF'
-#!/bin/bash
-# Cleanup old ElizaDB backups (keep last 4 weeks)
+echo "Preflight, in cron's environment:"
+env -i HOME="$HOME" PATH=/usr/bin:/bin SHELL=/bin/sh ./scripts/nightly-backup.sh --check \
+  || { echo "❌ Preflight failed - nothing installed."; exit 1; }
 
-set -e
-
-BACKUP_DIR="../backups"
-KEEP_COUNT=4  # Keep last 4 weekly backups
-
-cd "$(dirname "$0")"
-
-echo "🧹 Cleaning up old backups..."
-echo "   Keeping last $KEEP_COUNT backups"
-
-# Count existing backups
-BACKUP_COUNT=$(ls -1 "$BACKUP_DIR"/elizadb-backup-*.tar.gz 2>/dev/null | wc -l)
-
-if [ "$BACKUP_COUNT" -le "$KEEP_COUNT" ]; then
-    echo "✅ Only $BACKUP_COUNT backups found - nothing to delete"
-    exit 0
-fi
-
-# Delete oldest backups (keep newest KEEP_COUNT)
-DELETE_COUNT=$((BACKUP_COUNT - KEEP_COUNT))
-echo "📦 Found $BACKUP_COUNT backups - deleting oldest $DELETE_COUNT"
-
-ls -1t "$BACKUP_DIR"/elizadb-backup-*.tar.gz | tail -n "$DELETE_COUNT" | while read -r file; do
-    SIZE=$(du -sh "$file" | cut -f1)
-    echo "   Deleting: $(basename "$file") ($SIZE)"
-    rm -f "$file"
-done
-
-echo "✅ Cleanup complete - $KEEP_COUNT backups remaining"
-CLEANUP_EOF
-    chmod +x "$CLEANUP_SCRIPT"
-fi
-
-# Make scripts executable
-chmod +x "$BACKUP_SCRIPT"
-chmod +x "$CLEANUP_SCRIPT"
-
-# Create wrapper script that handles both backup and cleanup
-WRAPPER_SCRIPT="$SCRIPT_DIR/weekly-backup.sh"
-cat > "$WRAPPER_SCRIPT" << EOF
-#!/bin/bash
-# Weekly backup wrapper - runs backup then cleanup
-set -e
-
-cd "$PROJECT_DIR"
-
-echo "============================================"
-echo "Weekly ElizaDB Backup - \$(date)"
-echo "============================================"
-
-# Run backup
-bash "$BACKUP_SCRIPT" "weekly-auto"
-
-# If backup succeeded, cleanup old backups
-if [ \$? -eq 0 ]; then
-    echo ""
-    bash "$CLEANUP_SCRIPT"
+mkdir -p logs
+CURRENT=$(crontab -l 2>/dev/null || true)
+if printf '%s\n' "$CURRENT" | grep -qxF "$LINE"; then
+  echo "✅ Already installed."
 else
-    echo "❌ Backup failed - skipping cleanup"
-    exit 1
+  # Replace any older line for this job (a moved project dir, say); keep the rest.
+  { printf '%s\n' "$CURRENT" | grep -vF "$MARKER" | grep -vF "scripts/nightly-backup.sh" || true
+    echo "$MARKER"
+    echo "$LINE"
+  } | crontab -
+  echo "✅ Installed."
 fi
-
-echo ""
-echo "✅ Weekly backup job complete"
-echo "============================================"
-EOF
-
-chmod +x "$WRAPPER_SCRIPT"
-
-# Add cron job (every Sunday at 2 AM)
-CRON_LINE="0 2 * * 0 cd $PROJECT_DIR && bash $WRAPPER_SCRIPT >> $PROJECT_DIR/logs/backup.log 2>&1"
-
-# Check if cron job already exists
-if crontab -l 2>/dev/null | grep -q "$WRAPPER_SCRIPT"; then
-    echo "⚠️  Cron job already exists - skipping installation"
-    echo ""
-    echo "Current cron job:"
-    crontab -l | grep "$WRAPPER_SCRIPT"
-else
-    # Add to crontab
-    (crontab -l 2>/dev/null; echo "# ElizaDB weekly backup (Sundays at 2 AM)") | crontab -
-    (crontab -l 2>/dev/null; echo "$CRON_LINE") | crontab -
-    
-    echo "✅ Cron job installed successfully!"
-    echo ""
-    echo "📅 Schedule: Every Sunday at 2:00 AM"
-    echo "📝 Log file: $PROJECT_DIR/logs/backup.log"
-    echo ""
-fi
-
-# Create logs directory
-mkdir -p "$PROJECT_DIR/logs"
-
-echo "📋 Current crontab:"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-crontab -l | grep -A1 "ElizaDB"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo ""
-echo "✅ Setup complete!"
-echo ""
-echo "💡 To test the backup manually:"
-echo "   cd $PROJECT_DIR && bash $WRAPPER_SCRIPT"
-echo ""
-echo "💡 To remove the cron job:"
-echo "   crontab -e  # then delete the ElizaDB backup lines"
-echo ""
-
+echo
+crontab -l

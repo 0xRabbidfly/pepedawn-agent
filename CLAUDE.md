@@ -66,7 +66,7 @@ not start. This has happened more than once.
 - opening PGlite directly while the bot runs — use `scripts/query-db.js`, which
   refuses when it detects a running bot
 
-**Recovery** (also in README.md "Database corruption"):
+**Recovery** (local):
 
 ```bash
 ./scripts/kill-bot.sh
@@ -79,6 +79,13 @@ Restorable copies live in `pepe-tg/.eliza/` (`.elizadb OLD`,
 `.elizadb post embedding`) and `backups/elizadb-backup-*.tar.gz`. Production is
 a separate database on the droplet and is unaffected by local corruption — it
 can also be pulled down as a last resort.
+
+**Production recovery** is the same with one difference: stop with
+`pm2 stop pepe-tg`, never `kill-bot.sh` — PM2 restarts anything it did not stop
+itself, so the bot would be back mid-restore. Restore the newest
+`/root/pepedawn-agent/backups/elizadb-backup-nightly-*.tar.gz` (and
+`state-backup-nightly-*` into `src/`, for the lore ledger, social memory and the
+rest of `src/data`), then `pm2 start pepe-tg`.
 
 ---
 
@@ -129,8 +136,15 @@ anonymous because the repo is public, so a stale `origin/master` looks like
 divergence — always `git fetch` first), and **`.env` is not deployed**, so a
 new variable must be added to the droplet by hand or the feature stays off.
 
-- **Nightly `cron_restart` at 02:00**, plus `pm2 delete` on every deploy. Any
-  in-memory state is lost daily — this is why conversation history must persist.
+- **Nightly backup at 02:00 UTC** (`scripts/nightly-backup.sh`, root's crontab,
+  installed by `scripts/setup-backup-cron.sh`). It stops the bot for well under a
+  minute, copies `.eliza/.elizadb` and `src/data` while nothing holds them,
+  restarts, then compresses into `/root/pepedawn-agent/backups` (last 3 nightly
+  kept; hand-made backups are never pruned). A failure DMs the owner; the 13:00
+  digest reports the age of the last good one. It replaced PM2's `cron_restart`,
+  which restarted at the same hour and backed up nothing — until 2026-09-26 prod
+  had no automatic backup at all. With `pm2 delete` on every deploy, in-memory
+  state is still lost daily — this is why conversation history must persist.
 - ~300 restarts ≈ one per day of uptime. Not a crash loop.
 - `deploy.sh` deletes `bun.lockb`, but the real lockfile is `bun.lock` — so it
   survives and builds are reproducible **by accident**. Don't "fix" that line.
