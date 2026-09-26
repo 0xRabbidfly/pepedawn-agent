@@ -38,6 +38,7 @@ import { recordTurn, recentTurns } from '../conversation/shadow';
 import { recallForSpeaker, settleRecall } from '../conversation/socialMemoryRuntime';
 import { anniversaryContext, anniversaryFact } from '../conversation/anniversaryRuntime';
 import { directoryEditFact, isActionRequest, isDirectoryEditRequest } from '../utils/directoryHelp';
+import { fakeSubmissionAnswer, isFakeSubmissionQuestion } from '../utils/submissionHelp';
 import { isInFullIndex } from '../data/fullCardIndex';
 
 export type ConversationIntent = 'LORE' | 'FACTS' | 'CHAT' | 'NORESPONSE' | 'CMDROUTE';
@@ -1400,6 +1401,15 @@ Say briefly why it is worth a look — something true about the art, the artist 
       if (!invited) return silent('unaddressed_site_request');
       logger.info({ query: trimmed.slice(0, 80) }, '[SmartRouter] Directory edit request -> claim form');
       return this.buildChatPlanAs(speaker, trimmed, roomId, null, undefined, { knownFact: directoryEditFact() });
+    }
+
+    // "how do you submit a fake application" came back as FAKESUBMIT, the
+    // card whose reverse mentions submissions. The answer is the wiki's
+    // submission rules, sent as is, as v3.13.0 did.
+    if (isFakeSubmissionQuestion(trimmed)) {
+      if (!invited) return silent('unaddressed_submission');
+      logger.info({ query: trimmed.slice(0, 80) }, '[SmartRouter] Fake submission question -> submission rules');
+      return { kind: 'CHAT', intent: 'CHAT', reason: 'submission_rules', retrieval: null, chatResponse: fakeSubmissionAnswer(), exactAnswer: true };
     }
 
     if (this.isTasteQuestion(trimmed)) {

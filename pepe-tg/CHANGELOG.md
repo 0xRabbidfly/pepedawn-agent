@@ -5,6 +5,23 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.23.1] - 2026-09-25
+
+### Fixed
+
+- **"How do I submit a fake?" gets the submission rules again, not a card.**
+  "Pepedawn how do you submit a fake application to join the collection ?"
+  was answered with FAKESUBMIT - the card whose reverse mentions
+  submissions - and the card attached. FACTS mode weights card facts above
+  the wiki, and since the vision pass there are enough of them to take all
+  six selected passages; on 21 August the same kind of question still drew
+  four wiki passages. v3.13.0 answered these with the canonical wiki link
+  and nothing else, and v4.0.0 dropped that when the router replaced it.
+  It is back (`src/utils/submissionHelp.ts`), sent as is: *Fake Rares
+  Submission Rules* and the wiki link. Only for someone asking how to
+  submit a fake - not lore, not the directory's claim form, not Fake
+  Commons, not an error report - and only when the bot is asked.
+
 ## [5.23.0] - 2026-09-25
 
 ### Added
