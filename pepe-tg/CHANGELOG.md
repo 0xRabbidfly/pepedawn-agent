@@ -5,6 +5,23 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.25.1] - 2026-09-26
+
+### Fixed
+
+- **Market lookups no longer stall on the droplet.** Measured there after
+  5.25.0 shipped: axios on Bun's node:https layer never answered 1 request in
+  90 as configured and 18 in 90 on fresh connections, while Bun's `fetch`
+  answered all 90 - and a stalled request is what froze the bot for five
+  minutes earlier today. `/fm` now uses `fetch`, with a 4s limit per attempt
+  and one retry, all inside the 15s deadline. The transaction monitor still
+  uses the axios client.
+- **The DEX floor reads two order books, not every order.** It fetched every
+  open order touching the asset; for XCP that is 2,400 rows over three pages to
+  find five. It now asks for the ASSET/XCP and ASSET/BTC books: `/fm XCP` went
+  from 5.8s to 0.2s, which also keeps the bot well inside Counterparty's rate
+  limit (a burst of lookups does hit HTTP 429, reported as "couldn't reach").
+
 ## [5.25.0] - 2026-09-26
 
 ### Added

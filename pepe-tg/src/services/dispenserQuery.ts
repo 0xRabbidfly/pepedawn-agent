@@ -7,16 +7,20 @@
  *
  *   GET /assets/{asset}                         does it exist, is it divisible
  *   GET /assets/{asset}/dispensers?status=open  every open dispenser
- *   GET /assets/{asset}/orders?status=open      every open DEX order
+ *   GET /orders/{asset}/XCP, /orders/{asset}/BTC  the two order books a floor is in
  *
  * The status filter is the API's, not ours. This used to fetch one page of
  * every dispenser the asset ever had and keep the open ones, so an asset with
  * a long history could have its live dispensers fall off the page.
+ *
+ * Requests use Bun's fetch, not the TokenScanClient's axios instance. Measured
+ * on the droplet on 2026-09-26: axios on Bun's node:https layer never answered
+ * 1 request in 90 as configured, and 18 in 90 when each opened a fresh
+ * connection; fetch, 0 in 90. One such request froze the bot for five minutes.
  */
 
 import type { IAgentRuntime } from '@elizaos/core';
 import { Service, logger } from '@elizaos/core';
-import { TokenScanClient } from './tokenscanClient.js';
 import { dexListings, dispenserListings, type AssetInfo, type AssetMarket } from '../utils/assetMarket.js';
 
 /** A market is a minute old at most: long enough to spare the API a burst of the same question. */
@@ -30,11 +34,7 @@ export const MARKET_TTL_MS = 60_000;
 export const MARKET_DEADLINE_MS = 15_000;
 const EXISTS_TTL_MS = 6 * 3600_000;
 
-/**
- * The signal alone is not a bound: the client's interceptor can sleep through
- * a rate-limit's retry-after before it notices. This race is one nothing
- * inside can extend.
- */
+/** A bound nothing inside can extend, whatever a request does with its signal. */
 function within<T>(work: Promise<T>, ms: number, what: string): Promise<T> {
   let timer: ReturnType<typeof setTimeout> | undefined;
   const late = new Promise<never>((_, reject) => {
@@ -45,6 +45,12 @@ function within<T>(work: Promise<T>, ms: number, what: string): Promise<T> {
 const MISSING_TTL_MS = 10 * 60_000;
 const PAGE = 1000;
 const MAX_PAGES = 5;
+/** One attempt at one request. A stalled attempt is retried, within the overall deadline. */
+const ATTEMPT_MS = 4_000;
+const ATTEMPTS = 2;
+const DEFAULT_API = 'https://api.counterparty.io:4000/v2';
+
+class NotFound extends Error {}
 
 export class DispenserQueryService extends Service {
   static serviceType = 'dispenserQuery';
@@ -53,47 +59,68 @@ export class DispenserQueryService extends Service {
   private markets = new Map<string, AssetMarket>();
   private existence = new Map<string, { exists: boolean; at: number }>();
 
-  private client(): any {
-    const tokenScanClient = this.runtime.getService(TokenScanClient.serviceType) as TokenScanClient;
-    if (!tokenScanClient) throw new Error('TokenScanClient service not available');
-    // The axios instance is private; it carries COUNTERPARTY_API_URL and retries.
-    return (tokenScanClient as any).client;
+  private apiUrl(): string {
+    return ((this.runtime.getSetting('COUNTERPARTY_API_URL') as string) || DEFAULT_API).replace(/\/+$/, '');
+  }
+
+  /**
+   * GET a Counterparty v2 path. Each attempt has its own short limit, and every
+   * attempt is bound by the caller's signal. 404 is NotFound; a 5xx, a network
+   * error or a stall is retried once; anything else is an error.
+   */
+  private async get(path: string, params: Record<string, string | number | boolean>, signal: AbortSignal): Promise<any> {
+    const qs = new URLSearchParams(Object.entries(params).map(([k, v]) => [k, String(v)])).toString();
+    const url = `${this.apiUrl()}${path}${qs ? `?${qs}` : ''}`;
+    let lastError: unknown;
+    for (let attempt = 1; attempt <= ATTEMPTS; attempt++) {
+      if (signal.aborted) break;
+      try {
+        const res = await fetch(url, {
+          headers: { Accept: 'application/json' },
+          signal: AbortSignal.any([signal, AbortSignal.timeout(ATTEMPT_MS)]),
+        });
+        if (res.status === 404) throw new NotFound(path);
+        if (res.status >= 500) throw new Error(`HTTP ${res.status}`);
+        if (!res.ok) throw Object.assign(new Error(`HTTP ${res.status}`), { final: true });
+        return await res.json();
+      } catch (error: any) {
+        if (error instanceof NotFound || error?.final) throw error;
+        lastError = error;
+        logger.warn({ path, attempt, error: String(error?.name || error) }, '[Market] request failed');
+      }
+    }
+    throw lastError ?? new Error(`gave up on ${path}`);
   }
 
   /** null when the API says there is no such asset. Throws when the API cannot be reached. */
   private async fetchInfo(asset: string, signal: AbortSignal): Promise<AssetInfo | null> {
+    let data: any;
     try {
-      const res = await this.client().get(`/assets/${encodeURIComponent(asset)}`, {
-        params: { verbose: true },
-        signal,
-      });
-      const r = res.data?.result;
-      if (!r?.asset) return null;
-      const supply = parseFloat(r.supply_normalized);
-      return {
-        asset: r.asset,
-        longname: r.asset_longname ?? null,
-        divisible: !!r.divisible,
-        locked: !!r.locked,
-        supply: Number.isFinite(supply) ? supply : undefined,
-      };
-    } catch (error: any) {
-      if (error?.response?.status === 404) return null;
+      data = await this.get(`/assets/${encodeURIComponent(asset)}`, { verbose: true }, signal);
+    } catch (error) {
+      if (error instanceof NotFound) return null;
       throw error;
     }
+    const r = data?.result;
+    if (!r?.asset) return null;
+    const supply = parseFloat(r.supply_normalized);
+    return {
+      asset: r.asset,
+      longname: r.asset_longname ?? null,
+      divisible: !!r.divisible,
+      locked: !!r.locked,
+      supply: Number.isFinite(supply) ? supply : undefined,
+    };
   }
 
   private async fetchAll(path: string, signal: AbortSignal): Promise<any[]> {
     const rows: any[] = [];
     let cursor: string | number | undefined;
     for (let page = 0; page < MAX_PAGES; page++) {
-      const res = await this.client().get(path, {
-        params: { status: 'open', verbose: true, limit: PAGE, ...(cursor ? { cursor } : {}) },
-        signal,
-      });
-      const result: any[] = res.data?.result ?? [];
+      const data = await this.get(path, { status: 'open', verbose: true, limit: PAGE, ...(cursor ? { cursor } : {}) }, signal);
+      const result: any[] = data?.result ?? [];
       rows.push(...result);
-      cursor = res.data?.next_cursor ?? undefined;
+      cursor = data?.next_cursor ?? undefined;
       if (!cursor || result.length < PAGE) break;
     }
     return rows;
@@ -103,7 +130,7 @@ export class DispenserQueryService extends Service {
    * Does this asset exist? Cached: hours when it does, minutes when it does
    * not. null when the API could not say - the caller decides what that means.
    */
-  async assetExists(asset: string, timeoutMs = 4000): Promise<boolean | null> {
+  async assetExists(asset: string, timeoutMs = 6000): Promise<boolean | null> {
     const key = asset.toUpperCase();
     const hit = this.existence.get(key);
     if (hit && Date.now() - hit.at < (hit.exists ? EXISTS_TTL_MS : MISSING_TTL_MS)) return hit.exists;
@@ -134,10 +161,15 @@ export class DispenserQueryService extends Service {
     this.existence.set(key, { exists: !!info, at: Date.now() });
     if (!info) return null;
 
-    const [dispenserRows, orderRows] = await Promise.all([
-      this.fetchAll(`/assets/${encodeURIComponent(info.asset)}/dispensers`, signal),
-      this.fetchAll(`/assets/${encodeURIComponent(info.asset)}/orders`, signal),
+    // The pair books, not /assets/{asset}/orders: that is every order touching
+    // the asset, and for XCP it is 2,400 rows over three pages to find five.
+    const a = encodeURIComponent(info.asset);
+    const books = ['XCP', 'BTC'].filter((quote) => quote !== info.asset);
+    const [dispenserRows, ...bookRows] = await Promise.all([
+      this.fetchAll(`/assets/${a}/dispensers`, signal),
+      ...books.map((quote) => this.fetchAll(`/orders/${a}/${quote}`, signal)),
     ]);
+    const orderRows = bookRows.flat();
     const market: AssetMarket = {
       info,
       dispensers: dispenserListings(dispenserRows),
