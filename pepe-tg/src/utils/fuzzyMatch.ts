@@ -177,3 +177,33 @@ export function getRankedMatches(
   return rankMatches(input, candidates).slice(0, topN);
 }
 
+
+/**
+ * The artist a partly typed name means - "nardo" for Pepenardo, "scrilla"
+ * for Rare Scrilla - or null when it could mean more than one.
+ *
+ * Edit distance alone treats a short name as a bad typo of whatever is
+ * nearest: "nardo" is two letters from TWardo and four from Pepenardo, so
+ * `/f c nardo` showed TWardo's cards (KEK-002). An artist whose name holds
+ * what was typed is a better answer than one a few letters away.
+ *
+ * Collaborations credit the same artist many times over ("AWRALPH x Rare
+ * Scrilla", "Rare Scrilla & Ghostface Killah"), so several names holding
+ * the input is not by itself ambiguous: the shortest is the artist, provided
+ * every other one contains it. "pepe" is in Pepenardo, Pepe Picasso and Pepe
+ * Le Hues, which do not contain each other - that is a guess, and returns
+ * null so the caller falls back to edit distance as before.
+ */
+export function findArtistByPartialName(input: string, artists: string[]): string | null {
+  const typed = normalizeForMatching(input);
+  if (typed.length < 4) return null;
+
+  const holding = artists
+    .map((name) => ({ name, key: normalizeForMatching(name) }))
+    .filter((a) => a.key.includes(typed))
+    .sort((a, b) => a.key.length - b.key.length || calculateSimilarity(input, b.name) - calculateSimilarity(input, a.name));
+  if (holding.length === 0) return null;
+
+  const artist = holding[0];
+  return holding.every((a) => a.key.includes(artist.key)) ? artist.name : null;
+}

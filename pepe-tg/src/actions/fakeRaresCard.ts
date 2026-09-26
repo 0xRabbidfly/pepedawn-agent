@@ -23,6 +23,7 @@ import { checkAndConvertGif } from "../utils/gifConversionHelper";
 import { type CommonsCardInfo, COMMONS_CARD_INDEX } from "../data/fakeCommonsIndex";
 import {
   calculateSimilarity,
+  findArtistByPartialName,
   findTopMatches,
   FUZZY_MATCH_THRESHOLDS,
   normalizeForMatching,
@@ -232,6 +233,14 @@ export function findCardsByArtistFuzzy(inputArtist: string): {
 
   const uniqueArtists = Array.from(artistNames);
   if (uniqueArtists.length === 0) return null;
+
+  // Part of a name ("nardo") is not a typo, so it must not lose to one
+  // (TWardo), and must not be told "spelling not your thing" - hence 1.
+  const partial = findArtistByPartialName(inputArtist, uniqueArtists);
+  if (partial) {
+    const cards = allCards.filter((card) => card.artist === partial);
+    if (cards.length > 0) return { cards, matchedArtist: partial, similarity: 1 };
+  }
 
   // Find best matching artist using fuzzy matching
   const artistMatches = uniqueArtists.map((artist) => ({

@@ -22,6 +22,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   submit a fake - not lore, not the directory's claim form, not Fake
   Commons, not an error report - and only when the bot is asked.
 
+- **`/f c nardo` shows Pepenardo, not TWardo (KEK-002).** Artist lookup was
+  edit distance alone, and "nardo" is two letters from TWardo but four from
+  Pepenardo; plain `/f nardo` made the same mistake. An artist whose name
+  holds what was typed now wins over one a few letters away, and is not
+  greeted with "spelling not your thing". Collaborations don't make that
+  ambiguous - "scrilla" is Rare Scrilla, though a dozen credits contain it -
+  but a fragment that fits different artists ("pepe", "mike") is still left
+  to edit distance, as before. Across every word of every credited name, 286
+  lookups change: most from "not found" to the artist, and a few from the
+  wrong artist to the right one (`pepedward` was Pepenardo, `code` was
+  Coldie, `annie` was Winnie).
+
 ## [5.23.0] - 2026-09-25
 
 ### Added
