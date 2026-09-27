@@ -14419,8 +14419,20 @@
     "artist": "SaSHA-256",
     "artistSlug": "SaSHA-256",
     "supply": 40,
-    "issuance": "November 2022",
-    "retired": true
+    "issuance": "January 2023",
+    "issuanceCount": 69,
+    "release": {
+      "date": "2023-01-06",
+      "block": 770564,
+      "txHash": "c2c1c6c61440d90a14c3a9532611b6d9a6d0b22855fe937d89942828e58b75fd",
+      "issuer": "1G9FNrVAzib6zYGxpbKmYqH1PnsC2sw3hP"
+    },
+    "directory": {
+      "image": "https://raw.githubusercontent.com/fakerares/cdn/refs/heads/main/cards/12/41_PREDICTIONS.jpg",
+      "small": "https://raw.githubusercontent.com/fakerares/cdn/refs/heads/main/optimized/12/41_PREDICTIONS.webp",
+      "video": null,
+      "url": "https://xcp.io/asset/PREDICTIONS"
+    }
   },
   {
     "asset": "FAKEFRIENDME",
