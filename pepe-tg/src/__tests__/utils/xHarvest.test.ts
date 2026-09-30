@@ -14,7 +14,7 @@ import {
   scoreInterest, cardsMentioned, parseHarvestResponse, mergePosts,
   selectForVolunteer, matchForConversation, formatForTelegram, readXaiSpend,
   markVolunteered, allPosts, _resetCache,
-  lastHarvestAt, recordHarvestRun, HARVEST_QUERIES, harvestQueries, mustFollow, isMustFollow,
+  lastHarvestAt, recordHarvestRun, HARVEST_QUERIES, harvestQueries, mustFollow, isMustFollow, searchWindow, xSearchTool,
   isXActivityQuestion, buildDigest, formatDigestForTelegram, volunteerLead,
   DEFAULT_HARVEST_CONFIG, type HarvestedPost,
 } from '../../utils/xHarvest';
@@ -614,13 +614,36 @@ describe('harvest cadence survives a restart', () => {
 
 describe('HARVEST_QUERIES', () => {
   it('no longer runs the phrase query, which never produced a used post', () => {
-    expect(HARVEST_QUERIES.map((q) => q.key)).toEqual(['market', 'curated']);
+    expect(HARVEST_QUERIES.map((q) => q.key)).toEqual(['market']);
   });
 
-  it('always asks for the must-follow accounts by name, their own posts not replies', () => {
+  it('one search for the accounts we follow, restricted to them by handle, their own posts not replies', () => {
     const q = harvestQueries();
-    expect(q.map((x) => x.key)).toEqual(['market', 'curated', 'must_follow']);
-    expect(q[2].instruction).toContain('@scrillaventura and @fakerares_xcp');
-    expect(q[2].instruction).toContain('not replies');
+    expect(q.map((x) => x.key)).toEqual(['market', 'accounts']);
+    expect(q[1].handles).toEqual(['subterranean_1', 'scrillaventura', 'fakerares_xcp']);
+    expect(q[1].instruction).toContain('@subterranean_1, @scrillaventura, @fakerares_xcp');
+    expect(q[1].instruction).toContain('not replies');
+    expect(q[1].instruction).toContain('Rare Pepe Lore Lesson');
+  });
+});
+
+describe('what a harvest searches (xAI bills X search per post fetched)', () => {
+  const DAY = 24 * 60 * 60 * 1000;
+  const T = Date.UTC(2026, 8, 30, 11, 18);
+
+  it('only since just before the last harvest - not the same seven days again', () => {
+    expect(searchWindow(T, T - DAY)).toEqual({ fromDate: '2026-09-28', days: 2 });
+  });
+
+  it('seven days at most: the first harvest, or one after a long gap', () => {
+    expect(searchWindow(T, 0)).toEqual({ fromDate: '2026-09-23', days: 7 });
+    expect(searchWindow(T, T - 30 * DAY)).toEqual({ fromDate: '2026-09-23', days: 7 });
+  });
+
+  it('the tool is date-bounded, and restricted to accounts only when the query names them', () => {
+    const [market, accounts] = harvestQueries();
+    const w = searchWindow(T, T - DAY);
+    expect(xSearchTool(market, w)).toEqual({ type: 'x_search', from_date: '2026-09-28' });
+    expect(xSearchTool(accounts, w)).toEqual({ type: 'x_search', from_date: '2026-09-28', allowed_x_handles: ['subterranean_1', 'scrillaventura', 'fakerares_xcp'] });
   });
 });

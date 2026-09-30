@@ -16,7 +16,7 @@ import { FileRoomHistoryStore } from '../conversation/fileRoomHistoryStore';
 import { appendDayTurn } from '../conversation/dayLog';
 import { TelemetryService } from './TelemetryService';
 import {
-  harvestQueries, RAW_POSTS_RULE, DEFAULT_HARVEST_CONFIG,
+  harvestQueries, RAW_POSTS_RULE, DEFAULT_HARVEST_CONFIG, searchWindow, xSearchTool, type HarvestQuery,
   parseHarvestResponse, mergePosts, selectForVolunteer, markVolunteered, roomForChat,
   formatForTelegram, readXaiSpend, lastHarvestAt, recordHarvestRun, volunteerLead,
   type HarvestedPost,
@@ -45,7 +45,15 @@ const XAI_MODEL = process.env.XAI_MODEL || 'grok-4.3';
 /** Boot is already busy; never fire an API call the instant the process is up. */
 const BOOT_STAGGER_MS = 5 * 60 * 1000;
 /** How far back each harvest looks. Overlaps the daily cadence so a missed run self-heals. */
-const HARVEST_WINDOW_DAYS = 7;
+/**
+ * Search rounds per call (xAI `max_turns`). Each X search fetches about ten
+ * posts whatever the date range, and xAI bills per post fetched - so the
+ * number of searches is the cost. Measured 2026-09-30: with two rounds the
+ * market query ran 2 searches (20 posts, $0.124) and the accounts query 3;
+ * with one round and "run exactly one X search" in the prompt, one each
+ * ($0.048 and $0.039). X_HARVEST_MAX_TURNS overrides.
+ */
+const MAX_TURNS = Math.max(1, parseInt(process.env.X_HARVEST_MAX_TURNS || '1', 10) || 1);
 
 export class XHarvestService extends Service {
   static serviceType = 'xHarvest';
@@ -129,13 +137,15 @@ export class XHarvestService extends Service {
     // Stamped before the queries fire, not after: the money is spent the moment
     // they go out, so a process killed mid-round must not let the next boot pay
     // for the same round again.
+    // Read before stamping: the window starts from the previous harvest.
+    const window = searchWindow(Date.now(), lastHarvestAt());
     recordHarvestRun();
 
     let added = 0;
     let total = 0;
     for (const q of harvestQueries()) {
       try {
-        const posts = await this.runQuery(q.key, q.instruction);
+        const posts = await this.runQuery(q, window);
         const result = mergePosts(posts);
         added += result.added;
         total = result.total;
@@ -148,8 +158,9 @@ export class XHarvestService extends Service {
     return { added, total };
   }
 
-  private async runQuery(key: string, instruction: string): Promise<HarvestedPost[]> {
-    const prompt = `${instruction} ${RAW_POSTS_RULE.replace('{DAYS}', String(HARVEST_WINDOW_DAYS))}`;
+  private async runQuery(q: HarvestQuery, window: { fromDate: string; days: number }): Promise<HarvestedPost[]> {
+    const key = q.key;
+    const prompt = `${q.instruction} ${RAW_POSTS_RULE.replace('{DAYS}', String(window.days))}`;
     const startedAt = Date.now();
     const res = await fetch(XAI_ENDPOINT, {
       method: 'POST',
@@ -157,8 +168,9 @@ export class XHarvestService extends Service {
       body: JSON.stringify({
         model: XAI_MODEL,
         max_output_tokens: 3000,
+        max_turns: MAX_TURNS,
         input: [{ role: 'user', content: prompt }],
-        tools: [{ type: 'x_search' }],
+        tools: [xSearchTool(q, window)],
       }),
     });
     if (!res.ok) throw new Error(`xAI HTTP ${res.status}: ${(await res.text()).slice(0, 200)}`);
