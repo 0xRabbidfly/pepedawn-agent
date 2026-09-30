@@ -60,6 +60,8 @@ export interface HarvestQuery {
   key: string;
   /** Natural-language instruction for the x_search tool. */
   instruction: string;
+  /** Restrict the search to these accounts (x_search `allowed_x_handles`, max 20). */
+  handles?: string[];
 }
 
 /**
@@ -112,24 +114,60 @@ export const HARVEST_QUERIES: HarvestQuery[] = [
       'Search X for posts about Counterparty XCP dispensers, Fake Rares or Rare Pepes ' +
       'sales, floor prices, drops or auctions.',
   },
-  {
-    key: 'curated',
-    instruction:
-      'Search X for the most recent posts by @subterranean_1, including the daily ' +
-      '"Rare Pepe Lore Lesson" series.',
-  },
 ];
 
-/** The fixed queries plus one for the must-follow accounts, by name. */
+/** Accounts searched by name. @subterranean_1 writes the daily "Rare Pepe Lore Lesson". */
+export const CURATED_ACCOUNTS = ['subterranean_1'];
+
+/**
+ * The market search, plus one search restricted to the accounts we follow by
+ * name. These were two searches ("curated" for @subterranean_1, "must_follow"
+ * for the rest) until 2026-09-30: must_follow cost the most per call ($0.11)
+ * and supplied 4 of the 38 posts volunteered in a month. Restricting the
+ * search with allowed_x_handles fetches only their posts - and xAI bills X
+ * search per post fetched.
+ */
 export function harvestQueries(): HarvestQuery[] {
-  const handles = mustFollow().map((h) => `@${h}`).join(' and ');
+  const handles = [...new Set([...CURATED_ACCOUNTS, ...mustFollow()])].slice(0, 20);
   return [
     ...HARVEST_QUERIES,
     {
-      key: 'must_follow',
-      instruction: `Search X for the most recent posts by ${handles} - their own posts, not replies to them.`,
+      key: 'accounts',
+      instruction:
+        `Search X for the most recent posts by ${handles.map((h) => `@${h}`).join(', ')} - their own posts, not replies to them - ` +
+        'including the daily "Rare Pepe Lore Lesson" series.',
+      handles,
     },
   ];
+}
+
+/** Longest look-back: the first harvest, or one after a long gap. */
+export const HARVEST_MAX_DAYS = 7;
+/** How far before the last harvest the next one starts, so nothing falls in the gap. */
+const HARVEST_OVERLAP_MS = 12 * 60 * 60 * 1000;
+const DAY_MS = 24 * 60 * 60 * 1000;
+
+/**
+ * What a harvest should search: posts since just before the last harvest.
+ *
+ * Every harvest used to look back seven days, so a daily run re-fetched six
+ * days it already had - and xAI bills X search at $5 per 1,000 posts fetched,
+ * which was most of the cost. `fromDate` is x_search's own filter
+ * (YYYY-MM-DD, UTC); `days` goes into the prompt.
+ */
+export function searchWindow(now: number, previousHarvestAt: number): { fromDate: string; days: number } {
+  const earliest = now - HARVEST_MAX_DAYS * DAY_MS;
+  const start = previousHarvestAt > 0 ? Math.max(earliest, previousHarvestAt - HARVEST_OVERLAP_MS) : earliest;
+  return { fromDate: new Date(start).toISOString().slice(0, 10), days: Math.max(1, Math.ceil((now - start) / DAY_MS)) };
+}
+
+/** The x_search tool for one query: date-bounded, and restricted to accounts when it names them. */
+export function xSearchTool(q: HarvestQuery, window: { fromDate: string }): Record<string, unknown> {
+  return {
+    type: 'x_search',
+    from_date: window.fromDate,
+    ...(q.handles?.length ? { allowed_x_handles: q.handles } : {}),
+  };
 }
 
 /**
@@ -144,6 +182,8 @@ export function harvestQueries(): HarvestQuery[] {
  * series drop, an auction and nine lore posts.
  */
 export const RAW_POSTS_RULE =
+  // One search: X search is billed per post fetched, ~10 per search (2026-09-30).
+  'Run exactly one X search. ' +
   'Return ONLY a JSON array, no prose and no code fences. Each element: ' +
   '{"author":"handle without @","date":"ISO 8601","text":"full text verbatim",' +
   '"url":"https://x.com/<handle>/status/<id>","likes":<int>,"retweets":<int>,"replies":<int>}. ' +

@@ -5,6 +5,30 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.25.2] - 2026-09-30
+
+### Changed
+
+- **The X harvest costs about a quarter of what it did.** It was PEPEDAWN's
+  largest AI cost - $2.33 of $2.47 over a week, about $10 a month - and xAI
+  bills X search per post fetched ($5 per 1,000), which was most of it. Three
+  changes, measured against xAI before release:
+  - **One X search per query.** Each search fetches about ten posts whatever
+    the date range, so the number of searches is the cost. The market query
+    had been running two (20 posts, $0.124); it now runs one (`max_turns: 1`
+    and "run exactly one X search" in the prompt; `X_HARVEST_MAX_TURNS`
+    overrides).
+  - **The followed accounts are one search, not two**, restricted to them
+    with `allowed_x_handles` (@subterranean_1, @scrillaventura,
+    @fakerares_xcp). `must_follow` cost the most per call and supplied 4 of the
+    38 posts volunteered in September.
+  - **Only posts since the last harvest** (x_search `from_date`, with 12 hours
+    of overlap), not the same seven days every day.
+
+  Measured: $0.087 for a run, against $0.19 and $0.42 the two days before -
+  about $2.60 a month - still keeping ~9 posts a run against the ~1.3 a day the
+  bot volunteers.
+
 ## [5.25.1] - 2026-09-26
 
 ### Fixed
