@@ -98,6 +98,14 @@ echo "Branch $BRANCH in $WT ($DIRECTIVES directive(s) from $GENERATED)"
 
 RUNLOG="$LOGDIR/maintainer-propose-$STAMP.log"
 cd "$WT/pepe-tg"
+# A fresh worktree has no node_modules. Without them the pre-commit hook's
+# tests cannot load @elizaos/core or tsup, so it refused every proposal's
+# commit - the 25 Sep, 27 Sep and 10 Oct runs all ended uncommitted. The
+# agent has no tool to install, so it happens here, before it runs.
+if ! bun install --frozen-lockfile >/dev/null 2>&1; then
+  echo "bun install failed in $WT/pepe-tg - the pre-commit hook will fail as well"
+fi
+( cd packages/plugin-telegram-fakerares && bun install --frozen-lockfile >/dev/null 2>&1 ) || true
 set +e
 claude -p "$PROMPT" \
   --permission-mode acceptEdits \
