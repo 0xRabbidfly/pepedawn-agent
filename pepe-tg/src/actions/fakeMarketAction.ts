@@ -20,6 +20,7 @@ import type { Transaction } from '../types/transaction.js';
 import { FULL_CARD_INDEX } from '../data/fullCardIndex.js';
 import { findBestMatch, findTopMatches, FUZZY_MATCH_THRESHOLDS } from '../utils/fuzzyMatch.js';
 import { buildTokenScanUrl } from '../utils/transactionUrls.js';
+import { formatUnits } from '../utils/marketAmounts.js';
 
 /**
  * Parse result with optional asset for dispenser queries
@@ -104,19 +105,6 @@ function parseCommand(text: string): ParseResult {
 }
 
 /**
- * Format price from satoshis to decimal string
- */
-function formatPrice(priceSatoshis: number, paymentAsset: string): string {
-  if (paymentAsset === 'BTC' || paymentAsset === 'XCP') {
-    const amount = priceSatoshis / 100000000;
-    return amount.toString().replace(/\.?0+$/, '');
-  }
-  // Generic: assume 8 decimals
-  const amount = priceSatoshis / 100000000;
-  return amount.toString().replace(/\.?0+$/, '');
-}
-
-/**
  * Format Unix timestamp to "MMM DD HH:mm" UTC format
  */
 function formatTimestamp(timestamp: number): string {
@@ -135,7 +123,7 @@ function formatTimestamp(timestamp: number): string {
  * Format a single transaction as a one-line entry
  */
 function formatTransactionLine(tx: Transaction): string {
-  const price = formatPrice(tx.price, tx.paymentAsset);
+  const price = formatUnits(tx.price);
   const timestamp = formatTimestamp(tx.timestamp);
   
   // Icons for transaction types

@@ -10,6 +10,7 @@ import type { IAgentRuntime } from '@elizaos/core';
 import { Service, logger } from '@elizaos/core';
 import type { FakeRareTransactionEvent } from '../types/transactionEvents.js';
 import { TransactionHistory } from './transactionHistory.js';
+import { formatUnits } from '../utils/marketAmounts.js';
 
 export class TelegramNotificationService extends Service {
   static serviceType = 'telegramNotification';
@@ -114,7 +115,7 @@ export class TelegramNotificationService extends Service {
    */
   private formatSaleNotification(event: FakeRareTransactionEvent): string {
     const amount = event.amount.toLocaleString();
-    const price = this.formatPrice(event.price, event.paymentAsset);
+    const price = this.formatPrice(event.price);
     const timestamp = this.formatTimestamp(event.timestamp);
     const icon = event.type === 'DIS_SALE' ? '💰' : '⚡';
     const typeIcon = event.type === 'DIS_SALE' ? '🎰' : '📊';
@@ -131,7 +132,7 @@ export class TelegramNotificationService extends Service {
    */
   private formatListingNotification(event: FakeRareTransactionEvent): string {
     const amount = event.amount.toLocaleString();
-    const price = this.formatPrice(event.price, event.paymentAsset);
+    const price = this.formatPrice(event.price);
     const timestamp = this.formatTimestamp(event.timestamp);
     const icon = event.type === 'DIS_LISTING' ? '📋' : '🔄';
     const typeIcon = event.type === 'DIS_LISTING' ? '🎰' : '📊';
@@ -148,23 +149,10 @@ export class TelegramNotificationService extends Service {
   }
 
   /**
-   * Format price from satoshis/smallest unit to decimal
+   * Format price from satoshis/smallest unit to decimal (see marketAmounts.ts)
    */
-  private formatPrice(priceSatoshis: number, paymentAsset: string): string {
-    if (priceSatoshis === 0) {
-      return '0';
-    }
-    // For BTC, convert satoshis to BTC (divide by 100000000)
-    if (paymentAsset === 'BTC') {
-      const btc = priceSatoshis / 100000000;
-      // Remove trailing zeros
-      return btc.toString().replace(/\.?0+$/, '');
-    }
-
-    // For XCP and other assets, assume same decimal places as BTC
-    // In practice, XCP might use different decimals, but TokenScan API uses satoshis
-    const amount = priceSatoshis / 100000000;
-    return amount === 0 ? '0' : amount.toString().replace(/\.?0+$/, '');
+  private formatPrice(priceSatoshis: number): string {
+    return formatUnits(priceSatoshis);
   }
 
   /**

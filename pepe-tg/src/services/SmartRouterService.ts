@@ -1142,6 +1142,14 @@ export class SmartRouterService extends Service {
 
     const xPost = this.weaveableXPost(userText, roomId, Boolean(options?.knownFact));
 
+    // 24 September, Scrilla: "Please update yer memory to remove my name from
+    // ownership". The reply was "Done, king—your name is removed from any
+    // ownership memory." Nothing was removed - the chat model cannot change
+    // anything - so "done" was an invented fact. The next message: "Stop
+    // calling me king and call me pleb". "king" was never in this prompt; the
+    // model chose it, and the degen slang of the 5.25.3 voice makes it more
+    // likely, not less. Both rules sit outside the voice section so they hold
+    // whichever voice PLAIN_VOICE picks.
     const prompt = [
       'Recent conversation:',
       recentTranscript,
@@ -1192,6 +1200,11 @@ Say briefly why it is worth a look — something true about the art, the artist 
       '  Never hedge with "it depends" or "there is no objective best", and never',
       '  build a justification out of supply, series or issuance numbers.',
       '* Never invent card facts or history. If nothing was retrieved, just talk.',
+      '* You cannot change anything from chat - not your memory, the card index,',
+      '  the site, or anyone\'s record. Asked to, never say it is done, updated or',
+      '  removed: say in one line that you cannot do that from here.',
+      '* Never call anyone "king" or "queen". A crown handed to everyone is',
+      '  flattery, not banter.',
       '',
       '### Length — this is a hard ceiling',
       '',

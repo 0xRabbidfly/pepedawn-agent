@@ -153,4 +153,29 @@ describe('the reply prompt', () => {
     expect(prompts.at(-1)).toContain('No metaphors, no similes, no poetic images');
     expect(prompts.at(-1)).not.toContain('reading the mempool like weather');
   });
+
+  // 24 September, Scrilla: "Stop calling me king and call me pleb". What one
+  // person is called is theirs to set here, by id. Nobody gets the crown.
+  it('crowns nobody, on the roster or off it', async () => {
+    const { router, prompts } = routerCapturingChatPrompt();
+    await router.planRouting("pepedawn it's not my site ser - it's the directory's", 'room-c4', true, '42');
+    expect(prompts.length).toBeGreaterThan(0);
+    expect(prompts.at(-1)).toContain('Never call anyone "king"');
+  });
+
+  // The rule lives outside the voice section, so the old voice keeps it too.
+  it('crowns nobody with PLAIN_VOICE=false either', async () => {
+    const saved = process.env.PLAIN_VOICE;
+    process.env.PLAIN_VOICE = 'false';
+    try {
+      const { router, prompts } = routerCapturingChatPrompt();
+      await router.planRouting("pepedawn it's not my site ser - it's the directory's", 'room-c5', true, '42');
+      expect(prompts.at(-1)).toContain('properly eccentric');
+      expect(prompts.at(-1)).toContain('Never call anyone "king"');
+      expect(prompts.at(-1)).toContain('You cannot change anything from chat');
+    } finally {
+      if (saved === undefined) delete process.env.PLAIN_VOICE;
+      else process.env.PLAIN_VOICE = saved;
+    }
+  });
 });

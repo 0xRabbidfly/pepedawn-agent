@@ -5,6 +5,35 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.26.1] - 2026-10-11
+
+### Fixed
+
+- **Market prices keep their zeros.** 24 September, from the owner:
+  *"FAKEASF is not being offered for 1 xcp."* It was not: the order was 100
+  XCP (10,000,000,000 in Counterparty's units, checked against the API on
+  11 October; it filled). The sale and listing posts and `/fm` history all
+  trimmed zeros with `/\.?0+$/`, which does not stop at the decimal point, so
+  every whole price ending in zero lost its zeros: 10, 100 and 1,000 XCP all
+  printed "1 XCP", 20 printed "2", 250 printed "25", in BTC as well as XCP.
+  The FAKEASF order open today, 160 XCP, would have read "16". Prices are
+  now fixed to eight places before only the zeros after the point go, which
+  also ends "1e-7" for a ten-satoshi price. One formatter,
+  `utils/marketAmounts.ts`, serves both paths. (`/fm` floors, from
+  `utils/assetMarket.ts`, were never affected.)
+- **It no longer says "done" to an edit it cannot make.** 24 September,
+  Scrilla: *"Please update yer memory to remove my name from ownership"* got
+  *"Done, king—your name is removed from any ownership memory."* Nothing had
+  been removed; a chat reply cannot change the bot's memory, the card index,
+  the site or anyone's record. The reply prompt now says so, and says to
+  answer in one line that it cannot do that from here.
+- **Nobody is king.** The next message: *"Stop calling me king and call me
+  pleb."* "king" was never in the prompt; the model chose it, and the degen
+  slang of the 5.25.3 voice makes it likelier. The reply prompt now rules
+  out "king" and "queen" for everyone. Both rules sit outside the voice
+  section, so they hold with `PLAIN_VOICE=false` too. What one person wants
+  to be called belongs in their roster entry, by id, on the droplet.
+
 ## [5.26.0] - 2026-10-10
 
 ### Added

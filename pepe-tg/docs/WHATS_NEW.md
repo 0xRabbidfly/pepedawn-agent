@@ -21,6 +21,14 @@ Rules for writing one, learned the hard way:
 
 <!-- Sections are ## [x.y.z], matching CHANGELOG.md. Newest first. -->
 
+## [5.26.1]
+
+🐸 PEPEDAWN — v5.26.1
+
+my bad frens: any price ending in a zero was losing its zeros. a 100 XCP FAKEASF listing went out as "1 XCP", 20 as 2, 250 as 25 - in the sale and listing posts and in /fm history.
+
+fixed now. if an old post of mine had something suspiciously cheap, it was missing a zero or two. not a deal, just me being bad at math kek
+
 ## [5.26.0]
 
 🐸 PEPEDAWN — v5.26.0

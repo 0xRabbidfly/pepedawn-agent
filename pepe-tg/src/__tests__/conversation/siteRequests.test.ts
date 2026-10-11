@@ -14,18 +14,19 @@ import * as modelGateway from '../../utils/modelGateway';
 import { CLAIM_URL } from '../../utils/directoryHelp';
 
 const LE_HUES = '424242';
+const SCRILLA = '434343';
 
 describe('a request to fix something on the directory', () => {
   let dir: string;
   const savedShadowDir = process.env.V5_SHADOW_DIR;
 
-  function router() {
+  function router(intent = 'FACTS') {
     const prompts: string[] = [];
     const spy = spyOn(modelGateway, 'callTextModel').mockImplementation(async (_rt: any, options: any) => {
       const isClassifier = String(options.prompt).includes('Return STRICT JSON');
       if (!isClassifier) prompts.push(String(options.prompt));
       return {
-        text: isClassifier ? '{"intent":"FACTS","command":""}' : 'a reply',
+        text: isClassifier ? `{"intent":"${intent}","command":""}` : 'a reply',
         tokensIn: 1, tokensOut: 1, model: 'test', cost: 0, duration: 0,
       } as any;
     });
@@ -80,5 +81,18 @@ describe('a request to fix something on the directory', () => {
     spy.mockRestore();
     expect(plan.kind).toBe('NORESPONSE');
     expect(plan.reason).toBe('unaddressed_site_request');
+  });
+
+  // The same afternoon, Scrilla: "Please update yer memory to remove my name
+  // from ownership" got "Done, king—your name is removed from any ownership
+  // memory." Nothing had been removed; the chat model cannot remove anything.
+  it('never tells anyone an edit it cannot make is done', async () => {
+    const { service, prompts, spy } = router('CHAT');
+    const plan = await service.planRouting('Please update yer memory to remove my name from ownership', 'room-site-3', true, SCRILLA);
+    spy.mockRestore();
+    expect(plan.kind).toBe('CHAT');
+    expect(prompts.length).toBeGreaterThan(0);
+    expect(prompts.at(-1)).toContain('You cannot change anything from chat');
+    expect(prompts.at(-1)).toContain('never say it is done');
   });
 });
