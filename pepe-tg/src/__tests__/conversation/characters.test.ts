@@ -143,4 +143,14 @@ describe('the reply prompt', () => {
     await router.planRouting('pepedawn im planning to assasinate him', 'room-c3', true);
     expect(prompts.at(-1) ?? '').not.toContain('Who is talking to you right now');
   });
+
+  it('asks for the dank plain voice, whoever is talking (utils/chatVoice.ts)', async () => {
+    const { router, prompts } = routerCapturingChatPrompt();
+    await router.planRouting('pepedawn how is the swamp today', 'room-c4', true, '42');
+    expect(prompts.length).toBeGreaterThan(0);
+    expect(prompts.at(-1)).toContain('### Voice');
+    expect(prompts.at(-1)).toContain('dank degen frog');
+    expect(prompts.at(-1)).toContain('No metaphors, no similes, no poetic images');
+    expect(prompts.at(-1)).not.toContain('reading the mempool like weather');
+  });
 });

@@ -5,6 +5,33 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.25.3] - 2026-10-10
+
+### Changed
+
+- **PEPEDAWN talks like the room now: dank, plain, kek.** 9 October, the
+  official channel: the group's owner reminded artists to claim their cards,
+  and PEPEDAWN answered "Artists, claim your card—let the dispenser know its
+  parentage before the blockchain misplaces the family tree. 🐸" He deleted
+  it: *"pepedawn i deleted yer message cuz that shit wasnt englishito."* Its
+  answer to that was "Fair, pleb—my grammar got rugged by the mempool." Both
+  came from the eccentric voice 5.8.0 asked for - a strange turn in most
+  replies, with "reading the mempool like weather, treating a dispenser as a
+  mood" offered as examples.
+
+  The owner's ask, 10 October: "more kek Pepe colloquial, less metaphor old
+  English weird" - and "dank". So the eccentric voice goes everywhere it was
+  asked for: the chat voice section (now `src/utils/chatVoice.ts`), the chat
+  system line, the character file, the FACTS answer prompt, and the lore
+  prompt ("The Book of Kek says..." is now "the wiki says..."). PEPEDAWN is a
+  dank degen frog: plain words, no metaphors or imagery, nothing old-timey,
+  Pepe slang as seasoning (gm, kek, ser, fren, feels good man), banter for
+  humour. Facts are still exact and never invented, and a mistake is owned in
+  one plain line. Sampled against the model before release: "my bad fren,
+  that was word salad kek", "gm fren 🐸 kek, we're so back".
+  `PLAIN_VOICE=false` restores the 5.9.0 chat voice section from the droplet
+  without a release.
+
 ## [5.25.2] - 2026-09-30
 
 ### Changed
