@@ -19,8 +19,12 @@ import {
   harvestQueries, RAW_POSTS_RULE, DEFAULT_HARVEST_CONFIG, searchWindow, xSearchTool, type HarvestQuery,
   parseHarvestResponse, mergePosts, selectForVolunteer, markVolunteered, roomForChat,
   formatForTelegram, readXaiSpend, lastHarvestAt, recordHarvestRun, volunteerLead,
-  type HarvestedPost,
+  quietSlotOpen, lastVolunteeredAt, type HarvestedPost,
 } from '../utils/xHarvest';
+import {
+  chooseQuietFill, composeQuietJoke, escapeHtml, jokeShare, jokeTemperature, quietJokesOn, readJokes, recordJoke,
+} from '../utils/quietJokes';
+import { callTextModel } from '../utils/modelGateway';
 
 const XAI_ENDPOINT = 'https://api.x.ai/v1/responses';
 
@@ -67,36 +71,52 @@ export class XHarvestService extends Service {
   private harvestMs = 24 * 60 * 60 * 1000;
   private volunteerCheckMs = 15 * 60 * 1000;
   private lastVolunteerAt: number | undefined;
+  private jokesOn = false;
+  /** A joke that failed its checks backs off for an hour, rather than retrying every check. */
+  private jokeFailedAt = 0;
   /** Template id of the last lead used, so the next one differs. */
   private lastLeadId: string | undefined;
   private history = new FileRoomHistoryStore();
 
   constructor(runtime: IAgentRuntime) {
     super(runtime);
+    const channels = (runtime.getSetting('TELEGRAM_CHANNEL_ID') as string) || '';
+    this.channelIds = channels.split(',').map((c) => c.trim()).filter(Boolean);
+    // The quiet-room jokes share the volunteer slot, so the slot runs when
+    // either is on - X harvesting can be off (it costs money) and the jokes
+    // still come.
+    this.jokesOn = quietJokesOn();
+
     const flag = runtime.getSetting('X_HARVEST_ENABLED');
     this.enabled = flag === true || flag === 'true';
-    if (!this.enabled) return;
-
-    this.apiKey = (runtime.getSetting('XAI_API_KEY') as string) || process.env.XAI_API_KEY || '';
-    if (!this.apiKey) {
-      logger.warn('XHarvestService: XAI_API_KEY not set - disabled');
-      this.enabled = false;
-      return;
+    if (this.enabled) {
+      this.apiKey = (runtime.getSetting('XAI_API_KEY') as string) || process.env.XAI_API_KEY || '';
+      if (!this.apiKey) {
+        logger.warn('XHarvestService: XAI_API_KEY not set - X harvest disabled');
+        this.enabled = false;
+      }
     }
+    if (!this.enabled && !this.jokesOn) return;
 
     const hours = parseFloat((runtime.getSetting('X_HARVEST_INTERVAL_HOURS') as string) || '24');
     if (Number.isFinite(hours) && hours > 0) this.harvestMs = hours * 60 * 60 * 1000;
 
-    const channels = (runtime.getSetting('TELEGRAM_CHANNEL_ID') as string) || '';
-    this.channelIds = channels.split(',').map((c) => c.trim()).filter(Boolean);
     if (this.channelIds.length === 0) {
-      logger.warn('XHarvestService: TELEGRAM_CHANNEL_ID not set - will harvest but never volunteer');
+      logger.warn('XHarvestService: TELEGRAM_CHANNEL_ID not set - will never volunteer');
     }
-    logger.info(`XHarvestService initialised (harvest every ${hours}h)`);
+    logger.info(
+      `XHarvestService initialised (${this.enabled ? `harvest every ${hours}h` : 'X harvest off'}; ` +
+      `quiet-room jokes ${this.jokesOn ? `on, ${Math.round(jokeShare() * 100)}% of X slots, temperature ${jokeTemperature()}` : 'off'})`
+    );
   }
 
   async start(): Promise<void> {
-    if (!this.enabled) return;
+    if (!this.enabled && !this.jokesOn) return;
+    this.volunteerTimer = setInterval(() => void this.maybeVolunteer(), this.volunteerCheckMs);
+    if (!this.enabled) {
+      logger.info('XHarvestService started (quiet-room jokes only)');
+      return;
+    }
 
     // The interval alone never governed anything. Production hard-restarts
     // nightly at 02:00 and again on every deploy, so the process never lived
@@ -121,7 +141,6 @@ export class XHarvestService extends Service {
       this.harvestTimer = setInterval(() => void this.harvestAll(), this.harvestMs);
     }, wait);
 
-    this.volunteerTimer = setInterval(() => void this.maybeVolunteer(), this.volunteerCheckMs);
     logger.info('XHarvestService started');
   }
 
@@ -255,10 +274,20 @@ export class XHarvestService extends Service {
         const historyKey = roomForChat(roomId) ?? (createUniqueUuid(this.runtime, roomId) as string);
         const turns = await this.history.load(historyKey);
         const lastUser = [...turns].reverse().find((t) => t.role === 'user');
-        const post = selectForVolunteer({
+        // The slot is one slot whatever fills it, and it survives a restart:
+        // the newest of this process's memory, the X store and the joke log.
+        const lastJoke = readJokes().at(-1)?.at;
+        const timing = {
           lastUserAt: lastUser?.at,
-          lastVolunteerAt: this.lastVolunteerAt,
-        });
+          lastVolunteerAt: Math.max(this.lastVolunteerAt ?? 0, lastVolunteeredAt() ?? 0, lastJoke ?? 0) || undefined,
+        };
+        if (!quietSlotOpen(timing)) continue;
+
+        const post = this.enabled ? selectForVolunteer(timing) : null;
+        const jokesNow = this.jokesOn && Date.now() - this.jokeFailedAt >= 60 * 60 * 1000;
+        const fill = chooseQuietFill({ hasPost: Boolean(post), jokesOn: jokesNow, roll: Math.random(), share: jokeShare() });
+        if (fill === 'joke' && (await this.volunteerJoke(roomId, historyKey))) continue;
+        // A joke that did not make it through its checks gives the slot back to the X post.
         if (!post) continue;
 
         const card = formatForTelegram(post, this.leadFor(post));
@@ -285,6 +314,37 @@ export class XHarvestService extends Service {
         logger.warn({ error, roomId }, 'XHarvest volunteer failed');
       }
     }
+  }
+
+  /**
+   * A random shitpost into the quiet room (utils/quietJokes.ts): drawn hot,
+   * checked cold, and kept so it is never said twice. True when one went out.
+   */
+  private async volunteerJoke(roomId: string, historyKey: string): Promise<boolean> {
+    const model = process.env.CHAT_MODEL || process.env.OPENAI_LARGE_MODEL || 'gpt-4o';
+    const joke = await composeQuietJoke({
+      history: readJokes(),
+      temperature: jokeTemperature(),
+      generate: async (prompt, systemPrompt, temperature) =>
+        (await callTextModel(this.runtime, {
+          model, prompt, systemPrompt, temperature, temperatureOnReasoning: true, maxTokens: 120, source: 'Quiet joke calls',
+        })).text,
+      judge: async (prompt) =>
+        (await callTextModel(this.runtime, { model, prompt, maxTokens: 60, source: 'Quiet joke calls' })).text,
+      log: (line) => logger.info(`[QuietJoke] ${line}`),
+    });
+    if (!joke) {
+      this.jokeFailedAt = Date.now();
+      logger.info('[QuietJoke] nothing passed the checks; the slot goes to the X post, if any');
+      return false;
+    }
+    if (!(await this.send(roomId, escapeHtml(joke.text)))) return false;
+    const at = Date.now();
+    recordJoke({ at, text: joke.text, ...joke.draw, chatId: roomId });
+    this.lastVolunteerAt = at;
+    appendDayTurn({ roomId: historyKey, role: 'bot', text: joke.text, at, kind: 'broadcast' });
+    logger.info(`[QuietJoke] posted to ${roomId}: ${joke.text.replace(/\n/g, ' / ')}`);
+    return true;
   }
 
   /**

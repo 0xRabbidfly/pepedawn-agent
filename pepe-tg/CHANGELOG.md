@@ -5,6 +5,51 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.27.0] - 2026-10-11
+
+### Added
+
+- **Quiet-room jokes.** 11 October, the owner: *"For moments of silence we
+  periodically show an x post - what if we sometimes just say something
+  really random and funny? Like 'just picked my nose and pulled out
+  pepecash - 🤑🐸 going on a spreeee!'"*, then *"Highly random / never
+  repetitive"* and *"Make temperature 100"*. The quiet-room slot (room silent
+  90 minutes, nothing volunteered for 6 hours) now goes to a random shitpost
+  whenever there is no X post to show, and a third of the time when there is
+  (`QUIET_JOKE_SHARE`). That is a different mix, not more posts.
+
+  Random is drawn, not hoped for: ten calls with one fixed prompt gave ten
+  "wen floor? my frog brain..." lines. Each joke now draws a format (36),
+  a topic (95), half the time a random object (60), its emoji (none 40% of
+  the time) and its slang (none 65%), avoiding everything drawn recently;
+  left to itself the model also ended half its jokes with "kek".
+  Never repetitive is checked: every joke is kept in
+  `src/data/quiet-jokes.jsonl`, the last 30 go into the prompt, and one too
+  close to any before it - by its words, its opening or its punchline - is
+  drawn again.
+
+  Temperature is 2, the API's ceiling (100 is rejected outright). At 1.8-2
+  between a third and a half of the lines end in junk ("жы җумһур"), so two
+  gates stand before the room: a local check (other scripts, junk
+  characters, anything price-shaped - after 5.26.1's "1 XCP" a joke must
+  never read as a listing - card and artist names, @mentions, scam bait,
+  the off-limits) and a cold second model call that rejects anything that is
+  not plain English. Four failed draws hand the slot back to the X post and
+  back off an hour. Measured: 24 jokes, 3 thrown out, about two model calls
+  per joke.
+
+  Shipped on, not in shadow, at the owner's call (constitution article V
+  otherwise asks for shadow first); `QUIET_JOKES=off` turns it off. The 13:00
+  digest lists every joke posted. The slot now runs with X harvesting off,
+  and its last use is read back from disk, so a restart no longer reopens it
+  - before, every nightly restart and deploy could volunteer an X post
+  within the first 90 quiet minutes.
+
+  No release note: *"Don't announce this release - just start with a
+  joke"*. `scripts/quiet-joke-now.ts` posts one now, made and logged exactly
+  as the bot makes them (`--dry-run` to only print one); the release opened
+  with it.
+
 ## [5.26.1] - 2026-10-11
 
 ### Fixed

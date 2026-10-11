@@ -222,6 +222,8 @@ export interface DigestParts {
   buildRequests?: Array<{ id: string; at: number; who: string; title: string; text: string; status: string }>;
   /** One line on the nightly backup, from backupLine(). */
   backup?: string;
+  /** The quiet-room jokes posted in the window (utils/quietJokes.ts), so the owner sees what went out. */
+  quietJokes?: Array<{ at: number; text: string }>;
 }
 
 /** What scripts/nightly-backup.sh writes to src/data/maintainer/backup-status.json. */
@@ -279,6 +281,12 @@ export function renderDigest(d: DigestParts): string {
   lines.push('', pb.length ? `🎫 FAKE BACKLOG — /fb tickets from the room (${pb.length}); build the ones that fit, one commit each` : '🎫 Fake backlog (/fb): no new tickets');
   for (const r of pb.slice(0, 12)) lines.push(`  • ${r.id} [${r.status}] ${hhmm(r.at)} ${r.who} — ${r.title}`, `      "${one(r.text).slice(0, 200)}"`);
   if (pb.length > 12) lines.push(`  …and ${pb.length - 12} more.`);
+
+  const jokes = d.quietJokes ?? [];
+  if (jokes.length) {
+    lines.push('', `🐸 Quiet-room jokes posted (${jokes.length})`);
+    for (const j of jokes.slice(0, 8)) lines.push(`  • ${hhmm(j.at)} "${one(j.text).slice(0, 200)}"`);
+  }
 
   lines.push('', d.anomalies.length ? `⚠️ Worth a look (${d.anomalies.length})` : '⚠️ Anomalies: none');
   for (const a of d.anomalies.slice(0, 10)) lines.push(`  • ${a}`);

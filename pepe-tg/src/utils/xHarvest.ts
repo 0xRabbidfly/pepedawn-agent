@@ -533,6 +533,35 @@ export function roomForChat(chatId: string): string | undefined {
 // ---------------------------------------------------------------- push
 
 /**
+ * Whether a quiet room may be offered something now. Shared by the X post
+ * and the quiet-room joke (utils/quietJokes.ts), which fill the same slot.
+ */
+export function quietSlotOpen(
+  opts: { lastUserAt?: number; lastVolunteerAt?: number; now?: number },
+  config: HarvestConfig = DEFAULT_HARVEST_CONFIG
+): boolean {
+  const now = opts.now ?? Date.now();
+  // An empty room is not a quiet room — with no history at all there is no
+  // conversation to join, and volunteering would be talking to nobody.
+  if (opts.lastUserAt === undefined) return false;
+  if (now - opts.lastUserAt < config.quietMs) return false;
+  if (opts.lastVolunteerAt !== undefined && now - opts.lastVolunteerAt < config.volunteerGapMs) return false;
+  return true;
+}
+
+/**
+ * When an X post was last volunteered, from the store. The service kept this
+ * in memory only, so every restart - nightly, and on each deploy - reopened
+ * the slot; with jokes filling slots that have no X post, that would mean a
+ * joke shortly after every restart.
+ */
+export function lastVolunteeredAt(posts: HarvestedPost[] = allPosts()): number | undefined {
+  let last: number | undefined;
+  for (const p of posts) if (p.volunteeredAt && (last === undefined || p.volunteeredAt > last)) last = p.volunteeredAt;
+  return last;
+}
+
+/**
  * Pick something to volunteer into a quiet room, or null.
  *
  * Deliberately conservative: the room must have been silent a while, PEPEDAWN
@@ -549,13 +578,7 @@ export function selectForVolunteer(
   config: HarvestConfig = DEFAULT_HARVEST_CONFIG
 ): HarvestedPost | null {
   const now = opts.now ?? Date.now();
-  // An empty room is not a quiet room — with no history at all there is no
-  // conversation to join, and volunteering would be talking to nobody.
-  if (opts.lastUserAt === undefined) return null;
-  if (now - opts.lastUserAt < config.quietMs) return null;
-  if (opts.lastVolunteerAt !== undefined && now - opts.lastVolunteerAt < config.volunteerGapMs) {
-    return null;
-  }
+  if (!quietSlotOpen(opts, config)) return null;
   // Must-follow accounts first, newest first. Everyone else only when the
   // post names a card: market chatter that merely mentions Rare Pepe in
   // passing is what got volunteered on 23 September, and it is never worth

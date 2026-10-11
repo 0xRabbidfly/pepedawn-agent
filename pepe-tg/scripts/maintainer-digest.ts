@@ -20,6 +20,7 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSy
 import { join } from 'path';
 import { readDayTurns } from '../src/conversation/dayLog';
 import { ticketsBetween } from '../src/utils/buildRequests';
+import { jokesBetween } from '../src/utils/quietJokes';
 import { allChats, roomsForChat } from '../src/conversation/roomMap';
 import { getParticipant } from '../src/utils/participants';
 import { callTextModel } from '../src/utils/modelGateway';
@@ -133,6 +134,7 @@ const parts: DigestParts = {
   notes,
   buildRequests,
   backup: backupLine(readBackupStatus(), to),
+  quietJokes: jokesBetween(from, to).map((j) => ({ at: j.at, text: j.text })),
 };
 const markdown = renderDigest(parts);
 

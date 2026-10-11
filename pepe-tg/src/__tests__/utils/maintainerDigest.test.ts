@@ -181,3 +181,17 @@ describe('the nightly backup line', () => {
     expect(lines[3]).toBe('💾 Backup ok 11h ago.');
   });
 });
+
+describe('quiet-room jokes in the digest', () => {
+  const base = { from: T0, to: T0 + 3600_000, stats: stats([], [], { repeatGuardHits: 0, cardCooldownHits: 0, errors: 0 }), directives: [], suggestions: [], anomalies: [] };
+
+  it('lists what went out, so the owner sees every one', () => {
+    const md = renderDigest({ ...base, quietJokes: [{ at: T0 + 60_000, text: 'nobody:\nme: croaking at the toaster' }] });
+    expect(md).toContain('🐸 Quiet-room jokes posted (1)');
+    expect(md).toContain('"nobody: me: croaking at the toaster"');
+  });
+
+  it('says nothing on a day without one', () => {
+    expect(renderDigest(base)).not.toContain('Quiet-room jokes');
+  });
+});
