@@ -55,6 +55,29 @@ export function isAimedAtSomeoneElse(text: string): boolean {
   return !/^pepedawn/i.test(greeted[1]) && !THE_ROOM.test(greeted[1]);
 }
 
+/**
+ * Speaks to a group of people in the room, by naming them: "if yer an
+ * artist", "artists,", "everyone -", "calling all".
+ *
+ * On 9 October the group's owner posted "dont forget to claim yer card if yer
+ * an artist who made a fake rare", and PEPEDAWN answered it - the 23 September
+ * claim-form announcement, paraphrased back to him again. Being invited says
+ * nothing about who a message is for. Narrow on purpose: the audience has to
+ * be named outright, never inferred.
+ */
+const TO_THE_ROOM: RegExp[] = [
+  /\bif\s+(?:you|u|ya|ye|yer|you['’]?re|ur)\s+(?:are\s+|r\s+)?(?:an?\s+)?(?:artist|creator)s?\b/i,
+  /^(?:attention|calling\s+all|hey|yo|ok|okay)?\s*(?:artists|creators|everyone|everybody|y['’]?all|folks)\s*[,:!–—-]/i,
+  /\bcalling\s+all\s+\w+/i,
+  /\b(?:any|all|every)\s+(?:artists?|creators?)\s+(?:who|that)\b/i,
+];
+
+/** Addressed to the room's artists, or to everyone, rather than to one person. */
+export function isAimedAtTheRoom(text: string): boolean {
+  const trimmed = text.trim();
+  return TO_THE_ROOM.some((re) => re.test(trimmed));
+}
+
 /** Nothing but the name: "pepedawn", "@pepedawn_bot". */
 export function isJustTheName(text: string): boolean {
   return text.replace(/@?pepedawn(_bot)?/gi, '').replace(/[^\p{L}\p{N}]/gu, '') === '';

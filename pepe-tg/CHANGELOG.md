@@ -5,6 +5,31 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.26.0] - 2026-10-10
+
+### Added
+
+- **An announcement to the room's artists is theirs, not the bot's — in
+  shadow first.** 9 October, from the group's owner: *"dont forget to claim
+  yer card if yer an artist who made a fake rare."* PEPEDAWN answered it,
+  paraphrasing his announcement back to him — the reply 5.14.0 was written to
+  stop, after his claim-form announcement on 23 September — and he deleted
+  it. 5.14.0 asks only whether the bot was invited, and this message was:
+  either as a reply to the card post just before it or inside his own
+  five-minute exchange (the digest does not carry which). Being invited, "an
+  artist **who** made" reads as a question, and that overrode the
+  classifier's silence.
+
+  A message that names its audience — "if yer an artist", "artists,",
+  "everyone -", "calling all" — and does not say PEPEDAWN's name is now left
+  to that audience, whether it replies to the bot or not. It changes when the
+  bot replies, so it ships in shadow (constitution, article V):
+  `ROOM_ANNOUNCEMENT_GATE` defaults to `shadow`, which logs
+  `[SmartRouter] Shadow: aimed at the room; would stay out` and changes
+  nothing. `enforce` holds the reply back, reacting with an emoji where the
+  post is worth one, under the reason `aimed_at_the_room`. `off` turns it
+  off.
+
 ## [5.25.3] - 2026-10-10
 
 ### Changed

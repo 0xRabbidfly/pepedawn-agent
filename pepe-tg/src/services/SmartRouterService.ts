@@ -26,7 +26,7 @@ import {
   type CardConstraint,
 } from '../utils/cardFacts';
 import { inActiveExchange, othersMidConversation } from '../conversation/cadenceGovernor';
-import { isAimedAtSomeoneElse, isBait, silenceWhenNamed } from '../utils/addressing';
+import { isAimedAtSomeoneElse, isAimedAtTheRoom, isBait, silenceWhenNamed } from '../utils/addressing';
 import { getCardInfo } from '../data/fullCardIndex';
 import { describeLook, describeTraitMatch } from '../utils/cardTraits';
 import {
@@ -56,6 +56,18 @@ export type ConversationIntent = 'LORE' | 'FACTS' | 'CHAT' | 'NORESPONSE' | 'CMD
  */
 function volunteerRepliesAllowed(): boolean {
   return process.env.VOLUNTEER_REPLIES === 'true';
+}
+
+/**
+ * Whether an invited message that speaks to a group of people - "if yer an
+ * artist", "everyone -" - is still left to them. It changes when PEPEDAWN
+ * replies, so it starts in shadow (constitution, article V): `shadow`, the
+ * default, only logs what it would have held back; `enforce` holds it back;
+ * `off` does neither.
+ */
+function roomAnnouncementGate(): 'enforce' | 'shadow' | 'off' {
+  const mode = (process.env.ROOM_ANNOUNCEMENT_GATE || '').trim().toLowerCase();
+  return mode === 'enforce' || mode === 'off' ? mode : 'shadow';
 }
 
 interface ConversationTurn {
@@ -1345,6 +1357,22 @@ Say briefly why it is worth a look — something true about the art, the artist 
       }
       return silent(reason);
     };
+    // Invited is not the same as addressed. 9 October, from the group's
+    // owner: "dont forget to claim yer card if yer an artist who made a fake
+    // rare". It was invited by one of the two things the gate checks - a reply
+    // to a bot post, or his own five-minute exchange; the digest cannot say
+    // which - and "an artist who made" reads as a question, so the classifier's
+    // silence was overridden below. The reply paraphrased his announcement
+    // back to him, the 23 September failure again, and he deleted it. A
+    // message that names its audience, and the audience is not PEPEDAWN, is
+    // theirs. Saying the bot's name still gets through.
+    if (invited && !namesTheBot(trimmed) && isAimedAtTheRoom(trimmed)) {
+      const gate = roomAnnouncementGate();
+      if (gate === 'enforce') return silentOrReact('aimed_at_the_room');
+      if (gate === 'shadow') {
+        logger.info({ query: trimmed.slice(0, 80) }, '[SmartRouter] Shadow: aimed at the room; would stay out');
+      }
+    }
     if (!invited && trimmed && !isQuestion) return silentOrReact('unaddressed_statement');
     if (!named && !engaged && othersMidConversation(recent, { id: speakerTelegramId }, now)) {
       return silent('others_mid_conversation');

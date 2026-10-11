@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'bun:test';
-import { silenceWhenNamed } from '../../utils/addressing';
+import { isAimedAtTheRoom, silenceWhenNamed } from '../../utils/addressing';
 
 /**
  * Drawn from the 88 production messages that named the bot and got silence.
@@ -61,5 +61,42 @@ describe('a message that names PEPEDAWN', () => {
   it('stays quiet on the bare name', () => {
     expect(silenceWhenNamed('pepedawn', false)).toBe('just_the_name');
     expect(silenceWhenNamed('@pepedawn_bot', false)).toBe('just_the_name');
+  });
+});
+
+/**
+ * The group's owner, 9 October: "dont forget to claim yer card if yer an
+ * artist who made a fake rare". PEPEDAWN answered it, and he deleted the
+ * answer. On 23 September it had answered his claim-form announcement too.
+ */
+describe('a message to the room', () => {
+  it('names its audience: the artists, or everyone', () => {
+    for (const text of [
+      'dont forget to claim yer card if yer an artist who made a fake rare',
+      'if u are an artist and u created a card - please use the claim form on the new site',
+      "if you're a creator, the form is pinned",
+      'if you’re an artist, claim it',
+      'artists, claim your cards',
+      'Everyone - series 19 is live',
+      'attention artists: the directory is up',
+      'calling all artists',
+      'any artist who made a fake rare should claim it',
+    ]) {
+      expect(isAimedAtTheRoom(text)).toBe(true);
+    }
+  });
+
+  it('is not a remark that merely mentions artists or everyone', () => {
+    for (const text of [
+      'who made FREEDOMKEK?',
+      'which artist made this one',
+      'if you were an artist what would you draw',
+      'everyone knows FREEDOMKEK',
+      'ser, that is wrong',
+      'hey crypsi - currently refactoring pepedawn',
+      'is the artist of PEPEDAWN on here',
+    ]) {
+      expect(isAimedAtTheRoom(text)).toBe(false);
+    }
   });
 });

@@ -21,6 +21,14 @@ Rules for writing one, learned the hard way:
 
 <!-- Sections are ## [x.y.z], matching CHANGELOG.md. Newest first. -->
 
+## [5.26.0]
+
+🐸 PEPEDAWN — v5.26.0
+
+got a message deleted on 9 october for not being english. fair, it was word salad.
+
+no more fancy metaphors. just a frog talking like the chat. gm, kek, feels good man.
+
 ## [5.25.0]
 
 🎰 PEPEDAWN — v5.25.0

@@ -233,6 +233,71 @@ describe('the router in a room where two others are talking', () => {
     expect(scrilla.reason).not.toMatch(/unaddressed|others_mid/);
   });
 
+  it('leaves an announcement to the room\'s artists to them, invited or not (ROOM_ANNOUNCEMENT_GATE)', async () => {
+    // 9 October, the group's owner, a minute after a card post and inside his
+    // own exchange with the bot: "dont forget to claim yer card if yer an
+    // artist who made a fake rare". Invited, and "an artist who made" reads
+    // as a question, so it was answered - his announcement paraphrased back
+    // to him, as on 23 September - and he deleted the reply. Made-up ids.
+    const OWNER = '7777';
+    const ANNOUNCEMENT = 'dont forget to claim yer card if yer an artist who made a fake rare';
+    const { recordTurn } = await import('../../conversation/shadow');
+    const inHisExchange = async (roomId: string) => {
+      const t = Date.now();
+      await recordTurn(roomId, { role: 'bot', text: '🎲 PEPESCIENTST • S 13 - C 14', at: t - 120_000 });
+      await recordTurn(roomId, {
+        role: 'user', text: 'CAKERARE on the move...', author: 'owner', authorId: OWNER, addressedBot: true, at: t - 60_000,
+      });
+    };
+    const saved = process.env.ROOM_ANNOUNCEMENT_GATE;
+    try {
+      // Shadow, the default: it is logged and nothing else changes. The
+      // classifier is still asked, as it was on the day.
+      delete process.env.ROOM_ANNOUNCEMENT_GATE;
+      const shadow = router();
+      await inHisExchange('room-announce-1');
+      const shadowed = await shadow.service.planRouting(ANNOUNCEMENT, 'room-announce-1', false, OWNER);
+      const shadowCalls = shadow.spy.mock.calls.length;
+      shadow.spy.mockRestore();
+      expect(shadowed.reason).not.toMatch(/aimed_at_the_room/);
+      expect(shadowCalls).toBeGreaterThan(0);
+
+      // Enforced: silence, and no model call spent on it.
+      process.env.ROOM_ANNOUNCEMENT_GATE = 'enforce';
+      const enforced = router();
+      await inHisExchange('room-announce-2');
+      const held = await enforced.service.planRouting(ANNOUNCEMENT, 'room-announce-2', false, OWNER);
+      // The other way it could have been invited: as a reply to a bot post.
+      const asReply = await enforced.service.planRouting(ANNOUNCEMENT, 'room-announce-3', true, OWNER);
+      const enforcedCalls = enforced.spy.mock.calls.length;
+      enforced.spy.mockRestore();
+      expect(held.kind).toBe('NORESPONSE');
+      expect(held.reason).toMatch(/^aimed_at_the_room/);
+      expect(asReply.kind).toBe('NORESPONSE');
+      expect(asReply.reason).toMatch(/^aimed_at_the_room/);
+      expect(enforcedCalls).toBe(0);
+
+      // Saying the name is still asking.
+      const named = router();
+      const asked = await named.service.planRouting(
+        '@pepedawn_bot tell them: if yer an artist who made a fake rare, claim yer card', 'room-announce-4', true, OWNER
+      );
+      named.spy.mockRestore();
+      expect(asked.reason).not.toMatch(/aimed_at_the_room/);
+
+      // And off is off.
+      process.env.ROOM_ANNOUNCEMENT_GATE = 'off';
+      const off = router();
+      await inHisExchange('room-announce-5');
+      const unheld = await off.service.planRouting(ANNOUNCEMENT, 'room-announce-5', false, OWNER);
+      off.spy.mockRestore();
+      expect(unheld.reason).not.toMatch(/aimed_at_the_room/);
+    } finally {
+      if (saved === undefined) delete process.env.ROOM_ANNOUNCEMENT_GATE;
+      else process.env.ROOM_ANNOUNCEMENT_GATE = saved;
+    }
+  });
+
   it('VOLUNTEER_REPLIES=true restores the old behaviour', async () => {
     process.env.VOLUNTEER_REPLIES = 'true';
     try {
