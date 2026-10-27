@@ -21,6 +21,8 @@ export interface ConversationTurn {
   at: number;
   /** True when this user turn @mentioned the bot or replied to it. */
   addressedBot?: boolean;
+  /** Said with nobody asking (a quiet-room opener). Carried to the day log, where the recap reads it. */
+  kind?: 'broadcast';
 }
 
 /**

@@ -138,6 +138,7 @@ export class RoomHistory {
       authorId: turn.authorId,
       text: turn.text,
       at: turn.at,
+      kind: turn.kind,
     });
 
     const next = this.prune([...turns, turn], turn.at);

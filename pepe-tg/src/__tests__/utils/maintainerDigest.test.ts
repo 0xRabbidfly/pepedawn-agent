@@ -182,16 +182,23 @@ describe('the nightly backup line', () => {
   });
 });
 
-describe('quiet-room jokes in the digest', () => {
+describe('quiet-room openers in the digest', () => {
   const base = { from: T0, to: T0 + 3600_000, stats: stats([], [], { repeatGuardHits: 0, cardCooldownHits: 0, errors: 0 }), directives: [], suggestions: [], anomalies: [] };
 
-  it('lists what went out, so the owner sees every one', () => {
-    const md = renderDigest({ ...base, quietJokes: [{ at: T0 + 60_000, text: 'nobody:\nme: croaking at the toaster' }] });
-    expect(md).toContain('🐸 Quiet-room jokes posted (1)');
-    expect(md).toContain('"nobody: me: croaking at the toaster"');
+  it('lists what went out and whether the room took it up', () => {
+    const md = renderDigest({
+      ...base,
+      quietOpeners: [
+        { at: T0 + 60_000, text: 'FAKEASF turns 5 today -\nwho has held it since?', replies: 3 },
+        { at: T0 + 120_000, text: 'anyone get a CAKERARE?', replies: 0 },
+      ],
+    });
+    expect(md).toContain('💬 Quiet-room openers posted (2)');
+    expect(md).toContain('"FAKEASF turns 5 today - who has held it since?" - 3 messages in 2h');
+    expect(md).toContain('"anyone get a CAKERARE?" - no one answered');
   });
 
   it('says nothing on a day without one', () => {
-    expect(renderDigest(base)).not.toContain('Quiet-room jokes');
+    expect(renderDigest(base)).not.toContain('Quiet-room openers');
   });
 });

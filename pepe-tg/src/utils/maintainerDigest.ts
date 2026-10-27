@@ -222,8 +222,12 @@ export interface DigestParts {
   buildRequests?: Array<{ id: string; at: number; who: string; title: string; text: string; status: string }>;
   /** One line on the nightly backup, from backupLine(). */
   backup?: string;
-  /** The quiet-room jokes posted in the window (utils/quietJokes.ts), so the owner sees what went out. */
-  quietJokes?: Array<{ at: number; text: string }>;
+  /**
+   * The quiet-room openers posted in the window (utils/quietOpeners.ts), with
+   * how many messages the room sent in the two hours after each - so the
+   * owner sees what went out and whether anyone took it up.
+   */
+  quietOpeners?: Array<{ at: number; text: string; replies: number }>;
 }
 
 /** What scripts/nightly-backup.sh writes to src/data/maintainer/backup-status.json. */
@@ -282,10 +286,13 @@ export function renderDigest(d: DigestParts): string {
   for (const r of pb.slice(0, 12)) lines.push(`  • ${r.id} [${r.status}] ${hhmm(r.at)} ${r.who} — ${r.title}`, `      "${one(r.text).slice(0, 200)}"`);
   if (pb.length > 12) lines.push(`  …and ${pb.length - 12} more.`);
 
-  const jokes = d.quietJokes ?? [];
-  if (jokes.length) {
-    lines.push('', `🐸 Quiet-room jokes posted (${jokes.length})`);
-    for (const j of jokes.slice(0, 8)) lines.push(`  • ${hhmm(j.at)} "${one(j.text).slice(0, 200)}"`);
+  const openers = d.quietOpeners ?? [];
+  if (openers.length) {
+    lines.push('', `💬 Quiet-room openers posted (${openers.length})`);
+    for (const o of openers.slice(0, 8)) {
+      const took = o.replies ? `${o.replies} message${o.replies === 1 ? '' : 's'} in 2h` : 'no one answered';
+      lines.push(`  • ${hhmm(o.at)} "${one(o.text).slice(0, 200)}" - ${took}`);
+    }
   }
 
   lines.push('', d.anomalies.length ? `⚠️ Worth a look (${d.anomalies.length})` : '⚠️ Anomalies: none');

@@ -20,7 +20,7 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSy
 import { join } from 'path';
 import { readDayTurns } from '../src/conversation/dayLog';
 import { ticketsBetween } from '../src/utils/buildRequests';
-import { jokesBetween } from '../src/utils/quietJokes';
+import { openersBetween } from '../src/utils/quietOpeners';
 import { allChats, roomsForChat } from '../src/conversation/roomMap';
 import { getParticipant } from '../src/utils/participants';
 import { callTextModel } from '../src/utils/modelGateway';
@@ -134,7 +134,11 @@ const parts: DigestParts = {
   notes,
   buildRequests,
   backup: backupLine(readBackupStatus(), to),
-  quietJokes: jokesBetween(from, to).map((j) => ({ at: j.at, text: j.text })),
+  quietOpeners: openersBetween(from, to).map((o) => {
+    const rooms = o.chatId ? roomsForChat(o.chatId) : [];
+    const replies = turns.filter((t) => t.role === 'user' && t.at > o.at && t.at - o.at <= 2 * 3600_000 && (!rooms.length || rooms.includes(t.roomId)));
+    return { at: o.at, text: o.text, replies: replies.length };
+  }),
 };
 const markdown = renderDigest(parts);
 

@@ -22,9 +22,12 @@ import {
   quietSlotOpen, lastVolunteeredAt, type HarvestedPost,
 } from '../utils/xHarvest';
 import {
-  chooseQuietFill, composeQuietJoke, escapeHtml, jokeShare, jokeTemperature, quietJokesOn, readJokes, recordJoke,
-} from '../utils/quietJokes';
+  composeQuietOpener, escapeHtml, openerDue, openerGapMs, openerHooks, quietOpenersOn, readOpeners, recordOpener,
+  type RecentSale,
+} from '../utils/quietOpeners';
 import { callTextModel } from '../utils/modelGateway';
+import { recordTurn } from '../conversation/shadow';
+import type { TransactionHistory } from './transactionHistory';
 
 const XAI_ENDPOINT = 'https://api.x.ai/v1/responses';
 
@@ -71,9 +74,9 @@ export class XHarvestService extends Service {
   private harvestMs = 24 * 60 * 60 * 1000;
   private volunteerCheckMs = 15 * 60 * 1000;
   private lastVolunteerAt: number | undefined;
-  private jokesOn = false;
-  /** A joke that failed its checks backs off for an hour, rather than retrying every check. */
-  private jokeFailedAt = 0;
+  private openersOn = false;
+  /** When an opener last failed its checks, per room: it backs off an hour rather than retrying every check. */
+  private openerFailedAt = new Map<string, number>();
   /** Template id of the last lead used, so the next one differs. */
   private lastLeadId: string | undefined;
   private history = new FileRoomHistoryStore();
@@ -82,10 +85,10 @@ export class XHarvestService extends Service {
     super(runtime);
     const channels = (runtime.getSetting('TELEGRAM_CHANNEL_ID') as string) || '';
     this.channelIds = channels.split(',').map((c) => c.trim()).filter(Boolean);
-    // The quiet-room jokes share the volunteer slot, so the slot runs when
-    // either is on - X harvesting can be off (it costs money) and the jokes
+    // The quiet-room openers share the volunteer slot, so the slot runs when
+    // either is on - X harvesting can be off (it costs money) and the openers
     // still come.
-    this.jokesOn = quietJokesOn();
+    this.openersOn = quietOpenersOn();
 
     const flag = runtime.getSetting('X_HARVEST_ENABLED');
     this.enabled = flag === true || flag === 'true';
@@ -96,7 +99,7 @@ export class XHarvestService extends Service {
         this.enabled = false;
       }
     }
-    if (!this.enabled && !this.jokesOn) return;
+    if (!this.enabled && !this.openersOn) return;
 
     const hours = parseFloat((runtime.getSetting('X_HARVEST_INTERVAL_HOURS') as string) || '24');
     if (Number.isFinite(hours) && hours > 0) this.harvestMs = hours * 60 * 60 * 1000;
@@ -106,15 +109,15 @@ export class XHarvestService extends Service {
     }
     logger.info(
       `XHarvestService initialised (${this.enabled ? `harvest every ${hours}h` : 'X harvest off'}; ` +
-      `quiet-room jokes ${this.jokesOn ? `on, ${Math.round(jokeShare() * 100)}% of X slots, temperature ${jokeTemperature()}` : 'off'})`
+      `quiet-room openers ${this.openersOn ? `on, at most one per ${openerGapMs() / 3600_000}h` : 'off'})`
     );
   }
 
   async start(): Promise<void> {
-    if (!this.enabled && !this.jokesOn) return;
+    if (!this.enabled && !this.openersOn) return;
     this.volunteerTimer = setInterval(() => void this.maybeVolunteer(), this.volunteerCheckMs);
     if (!this.enabled) {
-      logger.info('XHarvestService started (quiet-room jokes only)');
+      logger.info('XHarvestService started (quiet-room openers only)');
       return;
     }
 
@@ -275,19 +278,20 @@ export class XHarvestService extends Service {
         const turns = await this.history.load(historyKey);
         const lastUser = [...turns].reverse().find((t) => t.role === 'user');
         // The slot is one slot whatever fills it, and it survives a restart:
-        // the newest of this process's memory, the X store and the joke log.
-        const lastJoke = readJokes().at(-1)?.at;
+        // the newest of this process's memory, the X store and the opener log.
+        const lastOpener = readOpeners().filter((o) => o.chatId === roomId).at(-1)?.at;
         const timing = {
           lastUserAt: lastUser?.at,
-          lastVolunteerAt: Math.max(this.lastVolunteerAt ?? 0, lastVolunteeredAt() ?? 0, lastJoke ?? 0) || undefined,
+          lastVolunteerAt: Math.max(this.lastVolunteerAt ?? 0, lastVolunteeredAt() ?? 0, lastOpener ?? 0) || undefined,
         };
         if (!quietSlotOpen(timing)) continue;
 
+        // An opener when one is due and there is something real to ask about;
+        // otherwise the slot goes to the X post, as it did before the jokes.
+        const due = this.openersOn && openerDue({ ...timing, lastOpenerAt: lastOpener, failedAt: this.openerFailedAt.get(roomId) });
+        if (due && (await this.volunteerOpener(roomId, historyKey))) continue;
+
         const post = this.enabled ? selectForVolunteer(timing) : null;
-        const jokesNow = this.jokesOn && Date.now() - this.jokeFailedAt >= 60 * 60 * 1000;
-        const fill = chooseQuietFill({ hasPost: Boolean(post), jokesOn: jokesNow, roll: Math.random(), share: jokeShare() });
-        if (fill === 'joke' && (await this.volunteerJoke(roomId, historyKey))) continue;
-        // A joke that did not make it through its checks gives the slot back to the X post.
         if (!post) continue;
 
         const card = formatForTelegram(post, this.leadFor(post));
@@ -317,34 +321,52 @@ export class XHarvestService extends Service {
   }
 
   /**
-   * A random shitpost into the quiet room (utils/quietJokes.ts): drawn hot,
-   * checked cold, and kept so it is never said twice. True when one went out.
+   * A question for the quiet room (utils/quietOpeners.ts), built on something
+   * real - a new card, a recent sale, the series, a card's birthday - and
+   * checked before it goes. True when one went out.
    */
-  private async volunteerJoke(roomId: string, historyKey: string): Promise<boolean> {
+  private async volunteerOpener(roomId: string, historyKey: string): Promise<boolean> {
     const model = process.env.CHAT_MODEL || process.env.OPENAI_LARGE_MODEL || 'gpt-4o';
-    const joke = await composeQuietJoke({
-      history: readJokes(),
-      temperature: jokeTemperature(),
-      generate: async (prompt, systemPrompt, temperature) =>
-        (await callTextModel(this.runtime, {
-          model, prompt, systemPrompt, temperature, temperatureOnReasoning: true, maxTokens: 120, source: 'Quiet joke calls',
-        })).text,
+    const opener = await composeQuietOpener({
+      hooks: openerHooks({ sales: await this.recentSales() }),
+      history: readOpeners(),
+      generate: async (prompt, systemPrompt) =>
+        (await callTextModel(this.runtime, { model, prompt, systemPrompt, maxTokens: 120, source: 'Quiet opener calls' })).text,
       judge: async (prompt) =>
-        (await callTextModel(this.runtime, { model, prompt, maxTokens: 60, source: 'Quiet joke calls' })).text,
-      log: (line) => logger.info(`[QuietJoke] ${line}`),
+        (await callTextModel(this.runtime, { model, prompt, maxTokens: 60, source: 'Quiet opener calls' })).text,
+      log: (line) => logger.info(`[QuietOpener] ${line}`),
     });
-    if (!joke) {
-      this.jokeFailedAt = Date.now();
-      logger.info('[QuietJoke] nothing passed the checks; the slot goes to the X post, if any');
+    if (!opener) {
+      this.openerFailedAt.set(roomId, Date.now());
+      logger.info('[QuietOpener] nothing to ask, or nothing passed the checks; the slot goes to the X post, if any');
       return false;
     }
-    if (!(await this.send(roomId, escapeHtml(joke.text)))) return false;
+    if (!(await this.send(roomId, escapeHtml(opener.text)))) return false;
     const at = Date.now();
-    recordJoke({ at, text: joke.text, ...joke.draw, chatId: roomId });
+    recordOpener({
+      at, text: opener.text, hook: opener.hook.key, kind: opener.hook.kind, angle: opener.angle, shape: opener.shape,
+      cards: opener.hook.cards, chatId: roomId,
+    });
     this.lastVolunteerAt = at;
-    appendDayTurn({ roomId: historyKey, role: 'bot', text: joke.text, at, kind: 'broadcast' });
-    logger.info(`[QuietJoke] posted to ${roomId}: ${joke.text.replace(/\n/g, ' / ')}`);
+    // Into the conversation, so when the room answers the bot knows what it
+    // asked. The history mirrors every turn to the day log, as a broadcast here.
+    await recordTurn(historyKey, { role: 'bot', text: opener.text, at, kind: 'broadcast' });
+    logger.info(`[QuietOpener] posted to ${roomId} (${opener.hook.key}): ${opener.text.replace(/\n/g, ' / ')}`);
     return true;
+  }
+
+  /** Fake Rares sales the transaction monitor has seen lately, or none when it is not running. */
+  private async recentSales(): Promise<RecentSale[]> {
+    const history = this.runtime.getService('transactionHistory') as TransactionHistory | null;
+    if (!history) return [];
+    try {
+      return (await history.querySales(20))
+        .filter((t) => t.timestamp > 0)
+        // Block time is in seconds.
+        .map((t) => ({ asset: t.asset, at: t.timestamp < 1e12 ? t.timestamp * 1000 : t.timestamp, type: t.type as RecentSale['type'] }));
+    } catch {
+      return [];
+    }
   }
 
   /**

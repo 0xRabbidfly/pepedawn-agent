@@ -22,13 +22,6 @@ export interface ModelCallOptions {
   systemPrompt?: string;
   maxTokens?: number;
   temperature?: number;
-  /**
-   * Send `temperature` to a reasoning-family model as well. Those drop it by
-   * default, and callers that pass one today rely on that. The gpt-5.6
-   * family accepts it at reasoning_effort 'none', up to 2 (probed against
-   * gpt-5.6-luna on 2026-10-11); the quiet-room jokes are the one caller.
-   */
-  temperatureOnReasoning?: boolean;
   source: string;  // For telemetry (e.g., "Lore calls", "Visual Meme calls")
 }
 
@@ -101,9 +94,6 @@ export async function callTextModel(
     // Reasoning models need 2x tokens since they use internal reasoning
     requestParams.max_completion_tokens = options.maxTokens ? options.maxTokens * 2 : 600;
     requestParams.reasoning_effort = minimalEffort(options.model);
-    if (options.temperatureOnReasoning && options.temperature !== undefined) {
-      requestParams.temperature = options.temperature;
-    }
   } else {
     requestParams.max_tokens = options.maxTokens || 300;
     if (options.temperature !== undefined) {

@@ -534,7 +534,7 @@ export function roomForChat(chatId: string): string | undefined {
 
 /**
  * Whether a quiet room may be offered something now. Shared by the X post
- * and the quiet-room joke (utils/quietJokes.ts), which fill the same slot.
+ * and the quiet-room opener (utils/quietOpeners.ts), which fill the same slot.
  */
 export function quietSlotOpen(
   opts: { lastUserAt?: number; lastVolunteerAt?: number; now?: number },
@@ -552,8 +552,8 @@ export function quietSlotOpen(
 /**
  * When an X post was last volunteered, from the store. The service kept this
  * in memory only, so every restart - nightly, and on each deploy - reopened
- * the slot; with jokes filling slots that have no X post, that would mean a
- * joke shortly after every restart.
+ * the slot; with the 5.27.0 jokes filling slots that had no X post, that
+ * meant a joke shortly after every restart.
  */
 export function lastVolunteeredAt(posts: HarvestedPost[] = allPosts()): number | undefined {
   let last: number | undefined;

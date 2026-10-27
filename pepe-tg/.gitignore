@@ -23,4 +23,5 @@ src/data/rate-limits.json
 src/data/lore-proposals.json
 src/data/participants.json
 src/data/quiet-jokes.jsonl
+src/data/quiet-openers.jsonl
 src/data/x-harvest.json

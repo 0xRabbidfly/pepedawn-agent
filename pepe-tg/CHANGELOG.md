@@ -5,6 +5,62 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.28.0] - 2026-10-27
+
+### Changed
+
+- **Quiet-room openers replace the quiet-room jokes.** 27 October, the
+  owner: *"the telegram jokes are annoying - replace it with casual
+  conversation openers for the community"*, then *"it has to be topical,
+  fake rare related and something a member would ask honestly"*. In 16 days
+  5.27.0 posted 45 jokes into the official channel, about three a day, of
+  the "a snowman filed a complaint about unauthorized melting" kind.
+
+  When the quiet-room slot opens, PEPEDAWN may now ask the room one
+  question instead (`src/utils/quietOpeners.ts`). Topical means it starts
+  from a fact the bot can vouch for, never from the model: a card that came
+  out in the last 45 days, a Fake Rare that sold in the last three days
+  (from the transaction monitor - never the price, never the buyer), the
+  series still coming out (18, at 42 cards), or a card issued on this date
+  in an earlier year (314 days of the year have one). Each hook is used
+  once, a card asked about rests for 30 days, and the question has to say
+  why it comes up today ("turns 5 today", "one went from a dispenser
+  yesterday"). The angle (who has held it, does it hold up, the story
+  behind it...) and the shape of the message are drawn, so they do not
+  repeat; without that, ten birthdays in a row came out "X was issued 5
+  years ago today - does anyone remember it coming out?".
+
+  Honest is checked twice. Locally: it must be a question, name the card
+  it is about, and name no other card or artist; nothing about price, floor
+  or value; no claim the bot cannot make ("i just grabbed one", "my
+  collection"); no host talk ("hey everyone", "drop your ... below", 👇);
+  at most one emoji; nothing close to an earlier opener. Then a cold judge
+  call, given the same facts, rejects anything that states what the facts
+  do not, or reads like a quiz, an ad or engagement bait. Questions are
+  ordinary collector talk and never count against it.
+
+  Restraint: at most one opener a day per room (`QUIET_OPENER_GAP_HOURS`),
+  and only when somebody has spoken since the bot last volunteered anything
+  - a question nobody answered is not followed by another. With nothing
+  fresh to ask, or nothing that passes, the slot goes to the X post as it
+  did before 5.27.0, or to silence. Normal temperature; the model calls
+  are the chat model's, about two per opener.
+
+  An opener is written to the conversation history as well as the day log,
+  so when the room answers, PEPEDAWN knows what it asked. The 13:00 digest
+  lists each opener with how many messages followed it within two hours.
+  `scripts/quiet-opener-now.ts` posts one on demand (`--dry-run` to print
+  one, `--kind birthday` to pick the hook kind).
+
+### Removed
+
+- The quiet-room jokes: `src/utils/quietJokes.ts`,
+  `scripts/quiet-joke-now.ts`, and `QUIET_JOKES`, `QUIET_JOKE_SHARE`,
+  `QUIET_JOKE_TEMPERATURE` and `QUIET_JOKES_PATH`, none of which were set
+  in production. `src/data/quiet-jokes.jsonl` stays where it is, unread.
+  `callTextModel`'s `temperatureOnReasoning` option went with them; the
+  jokes were its only caller.
+
 ## [5.27.0] - 2026-10-11
 
 ### Added

@@ -19,6 +19,7 @@ import { subtitleFor, statsFor } from '../../utils/recapStrip';
 import { isDue, localDayStamp } from '../../services/RecapService';
 import { parseRecapArgs } from '../../actions/recapCommand';
 import { rememberRoom, roomsForChat, _resetRoomMap } from '../../conversation/roomMap';
+import { RoomHistory } from '../../conversation/roomHistory';
 import {
   appendDayTurn, dayBounds, dayLogPath, pruneDayLog, readDayTurns, _resetPruneCounter,
   type DayTurn,
@@ -232,6 +233,14 @@ describe('the day log', () => {
     appendDayTurn(turn());
     require('fs').appendFileSync(path, '{"roomId":"room-1","tex');
     expect(() => readDayTurns('room-1', AT - 1000, AT + 1000)).not.toThrow();
+  });
+
+  it('a turn the bot volunteered reaches it as a broadcast, once', async () => {
+    const history = new RoomHistory({ load: async () => [], save: async () => {} });
+    await history.append('room-1', { role: 'bot', text: 'FAKEASF turns 5 today - who has held it since?', at: AT, kind: 'broadcast' });
+    await history.append('room-1', { role: 'bot', text: 'a reply', at: AT + 1 });
+    const out = readDayTurns('room-1', AT - 1000, AT + 1000);
+    expect(out.map((t) => t.kind)).toEqual(['broadcast', undefined]);
   });
 
   it('drops turns past the horizon when pruned', () => {
