@@ -24,7 +24,11 @@ permissions:
 
 jobs:
   scrape-new-cards:
-    runs-on: ubuntu-latest
+    # Pinned, not ubuntu-latest: that label moved to Ubuntu 26.04 from
+    # October 2026, and Playwright 1.56 has no Chromium build for it, so
+    # "playwright install" failed the run before anything was scraped
+    # (6 November). Move with a Playwright upgrade that lists ubuntu26.04.
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout repository
