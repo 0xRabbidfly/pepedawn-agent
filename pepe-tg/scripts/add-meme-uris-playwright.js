@@ -209,7 +209,9 @@ async function main() {
   
   // Launch browser
   console.log('\n🌐 Launching browser...\n');
-  const browser = await chromium.launch({ headless: true });
+  // Installed Chrome with its sandbox on, as in add-new-cards.js: tokenscan.io
+  // is not our site.
+  const browser = await chromium.launch({ channel: 'chrome', chromiumSandbox: true, headless: true });
   const context = await browser.newContext({
     userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
   });

@@ -27,7 +27,9 @@ jobs:
     # Pinned, not ubuntu-latest: that label moved to Ubuntu 26.04 from
     # October 2026, and Playwright 1.56 has no Chromium build for it, so
     # "playwright install" failed the run before anything was scraped
-    # (6 November). Move with a Playwright upgrade that lists ubuntu26.04.
+    # (6 November). The scraper has since moved to Google Chrome and
+    # Playwright 1.65, which knows 26.04; the pin now just keeps the image
+    # predictable.
     runs-on: ubuntu-24.04
 
     steps:
@@ -41,11 +43,17 @@ jobs:
         with:
           bun-version: latest
       
+      # The scrapers browse sites we don't control, so they run Google Chrome
+      # with its sandbox on (Playwright's advice after the November 2026
+      # reports that its pinned Chromium was four critical CVEs behind).
+      # --force replaces the image's Chrome with Google's current stable on
+      # every run; without it, an installed Chrome is left as it is.
       - name: Install dependencies
         working-directory: pepe-tg
         run: |
           bun install
-          bunx playwright install --with-deps chromium
+          bunx playwright install --with-deps --force chrome
+          google-chrome --version
       
       # Pass 1 lists cards from the directory's /api/cards (the old /series-N/
       # pages are gone); pass 2 still needs the browser for pepe.wtf.

@@ -330,7 +330,11 @@ async function pass2ScrapeCard(page, baseCard) {
   console.log(`\n✅ PASS 1 Complete: ${pass1Results.length} cards in series ${seriesToScrape.join(', ')}\n`);
 
   // The browser is only needed for pepe.wtf, so it opens after the cheap pass.
-  const browser = await chromium.launch({ headless: true });
+  // pepe.wtf is a site we don't control, so this is the installed Google
+  // Chrome, which gets Chrome's security fixes, with its sandbox on - not
+  // Playwright's pinned Chromium, which runs unsandboxed by default and only
+  // moves when Playwright ships (November 2026: four critical CVEs behind).
+  const browser = await chromium.launch({ channel: 'chrome', chromiumSandbox: true, headless: true });
   const page = await browser.newPage();
   page.setDefaultTimeout(30000);
   

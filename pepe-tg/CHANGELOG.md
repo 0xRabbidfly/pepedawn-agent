@@ -5,6 +5,30 @@ All notable changes to PEPEDAWN will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.28.1] - 2026-11-07
+
+### Security
+
+- **The card scrapers browse with Google Chrome, sandboxed, not Playwright's
+  Chromium.** Early November it was reported that Playwright's pinned
+  Chromium (156.0.8078.4 in 1.64.1) predates Chrome's 27 October fix for
+  CVE-2026-118306, -118331, -118344 and -118348, and that Playwright
+  launches it with the sandbox off. Ours was older still: Playwright 1.56.1,
+  Chromium 141. The daily workflow opens pepe.wtf with it on a runner that
+  can open and merge a pull request to master. Playwright's own advice for
+  pages you don't control is `channel: 'chrome', chromiumSandbox: true`, so
+  `add-new-cards.js` and `add-meme-uris-playwright.js` now launch that, and
+  the workflow installs Google's current stable Chrome on every run
+  (`playwright install --force chrome`). Playwright itself moves to 1.65.0.
+  Production never launches a browser; only the package version changes
+  there.
+
+### Fixed
+
+- **The daily card update runs on `ubuntu-24.04`.** `ubuntu-latest` moved to
+  Ubuntu 26.04, which Playwright 1.56 had no browser for, and the 6 November
+  run failed before scraping anything.
+
 ## [5.28.0] - 2026-10-27
 
 ### Changed
