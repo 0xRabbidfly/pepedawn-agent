@@ -1,5 +1,5 @@
 {
- "fetchedAt": "2026-11-15",
+ "fetchedAt": "2026-11-16",
  "artists": [
   {
    "name": "0010",
@@ -34,6 +34,24 @@
   {
    "name": "80sKurt",
    "slug": "80skurt",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "80sKurt x Early Bird",
+   "slug": "80skurt-x-early-bird",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "80sKurt x Fake Sketch",
+   "slug": "80skurt-x-fake-sketch",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "80sKurt x Fake Sketch x Viva La Vandal",
+   "slug": "80skurt-x-fake-sketch-x-viva-la-vandal",
    "aliases": [],
    "hasProfile": false
   },
@@ -84,6 +102,12 @@
    "hasProfile": false
   },
   {
+   "name": "Afonso Caravagio x Aisha Venus",
+   "slug": "afonso-caravagio-x-aisha-venus",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
    "name": "Aisha Venus",
    "slug": "aisha-venus",
    "aliases": [],
@@ -116,6 +140,12 @@
   {
    "name": "Alth0tas",
    "slug": "alth0tas",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "Alth0tas x Regan",
+   "slug": "alth0tas-x-regan",
    "aliases": [],
    "hasProfile": false
   },
@@ -186,6 +216,12 @@
    "hasProfile": false
   },
   {
+   "name": "AWRALPH x Rare Scrilla",
+   "slug": "awralph-x-rare-scrilla",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
    "name": "Baldopg",
    "slug": "baldopg",
    "aliases": [],
@@ -203,6 +239,18 @@
    "aliases": [
     "Basqkek"
    ],
+   "hasProfile": false
+  },
+  {
+   "name": "Basqkek x Mr. HODLPIG",
+   "slug": "basqkek-x-mr-hodlpig",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "batz",
+   "slug": "batz",
+   "aliases": [],
    "hasProfile": false
   },
   {
@@ -256,6 +304,12 @@
   {
    "name": "Britts",
    "slug": "britts",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "Britts x Stas",
+   "slug": "britts-x-stas",
    "aliases": [],
    "hasProfile": false
   },
@@ -452,6 +506,18 @@
    "hasProfile": false
   },
   {
+   "name": "Crimson Rider x Gustavo",
+   "slug": "crimson-rider-x-gustavo",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "Crimson Rider x Rey",
+   "slug": "crimson-rider-x-rey",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
    "name": "Cronos One",
    "slug": "cronos-one",
    "aliases": [],
@@ -460,6 +526,12 @@
   {
    "name": "Crypsi",
    "slug": "crypsi",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "Crypsi x Coit",
+   "slug": "crypsi-x-coit",
    "aliases": [],
    "hasProfile": false
   },
@@ -570,6 +642,12 @@
    "hasProfile": false
   },
   {
+   "name": "DarkFluffyRabbit x DarkFarms",
+   "slug": "darkfluffyrabbit-x-darkfarms",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
    "name": "Darkknight",
    "slug": "darkknight",
    "aliases": [],
@@ -582,8 +660,20 @@
    "hasProfile": false
   },
   {
+   "name": "Darky x Indelible Trade",
+   "slug": "darky-x-indelible-trade",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
    "name": "davesta",
    "slug": "davesta",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "davesta x Pepe Le Hues",
+   "slug": "davesta-x-pepe-le-hues",
    "aliases": [],
    "hasProfile": false
   },
@@ -650,6 +740,12 @@
    "hasProfile": false
   },
   {
+   "name": "Dino x Rydes",
+   "slug": "dino-x-rydes",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
    "name": "DITACRYPTO",
    "slug": "ditacrypto",
    "aliases": [
@@ -666,6 +762,12 @@
   {
    "name": "DJ Q-Bert",
    "slug": "dj-q-bert",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "DJ Q-Bert x Rare Scrilla",
+   "slug": "dj-q-bert-x-rare-scrilla",
    "aliases": [],
    "hasProfile": false
   },
@@ -706,6 +808,12 @@
    "hasProfile": false
   },
   {
+   "name": "Dr. Greedy x FWD",
+   "slug": "dr-greedy-x-fwd",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
    "name": "Dr. Pep",
    "slug": "dr-pep",
    "aliases": [],
@@ -740,6 +848,12 @@
   {
    "name": "El Cholo Pepe",
    "slug": "el-cholo-pepe",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "El Cholo Pepe x Arwyn",
+   "slug": "el-cholo-pepe-x-arwyn",
    "aliases": [],
    "hasProfile": false
   },
@@ -800,6 +914,18 @@
    "hasProfile": false
   },
   {
+   "name": "Fake Sketch x 80sKurt",
+   "slug": "fake-sketch-x-80skurt",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "Fake Sketch x 80sKurt x Early Bird",
+   "slug": "fake-sketch-x-80skurt-x-early-bird",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
    "name": "FakeBuddha",
    "slug": "fakebuddha",
    "aliases": [],
@@ -820,6 +946,12 @@
   {
    "name": "Father John",
    "slug": "father-john",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "Father John x Chaotic Crypto",
+   "slug": "father-john-x-chaotic-crypto",
    "aliases": [],
    "hasProfile": false
   },
@@ -878,6 +1010,18 @@
    "hasProfile": false
   },
   {
+   "name": "FWD x DJ Kermit",
+   "slug": "fwd-x-dj-kermit",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "FWD x MR",
+   "slug": "fwd-x-mr",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
    "name": "Gary Cartlidge",
    "slug": "gary-cartlidge",
    "aliases": [],
@@ -932,6 +1076,12 @@
    "hasProfile": true
   },
   {
+   "name": "GrantYun",
+   "slug": "grantyun",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
    "name": "Greencross",
    "slug": "greencross",
    "aliases": [],
@@ -970,6 +1120,12 @@
   {
    "name": "Hammad",
    "slug": "hammad",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "Hammad x Doge-Style",
+   "slug": "hammad-x-doge-style",
    "aliases": [],
    "hasProfile": false
   },
@@ -1022,11 +1178,35 @@
    "hasProfile": false
   },
   {
+   "name": "Ill Bill x Viva La Vandal x Rare Scrilla",
+   "slug": "ill-bill-x-viva-la-vandal-x-rare-scrilla",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
    "name": "Indelible Trade",
    "slug": "indelible-trade",
    "aliases": [
     "Indelible"
    ],
+   "hasProfile": false
+  },
+  {
+   "name": "Indelible Trade & Ghostface Killah",
+   "slug": "indelible-trade-ghostface-killah",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "Indelible Trade x Cam",
+   "slug": "indelible-trade-x-cam",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "Indelible Trade x WetPotatoBrain",
+   "slug": "indelible-trade-x-wetpotatobrain",
+   "aliases": [],
    "hasProfile": false
   },
   {
@@ -1066,6 +1246,12 @@
     "Jack Kaido"
    ],
    "hasProfile": true
+  },
+  {
+   "name": "JackKaido",
+   "slug": "jackkaido",
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "Jaen",
@@ -1200,6 +1386,18 @@
    "hasProfile": false
   },
   {
+   "name": "Kaph x Mumbling Bearded Freak",
+   "slug": "kaph-x-mumbling-bearded-freak",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "Kaph x Prefer Wealth",
+   "slug": "kaph-x-prefer-wealth",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
    "name": "Katerine Escobar",
    "slug": "katerine-escobar",
    "aliases": [],
@@ -1304,6 +1502,12 @@
    "hasProfile": false
   },
   {
+   "name": "Lord Jaime V. Shill x Dita",
+   "slug": "lord-jaime-v-shill-x-dita",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
    "name": "Love Being",
    "slug": "love-being",
    "aliases": [
@@ -1326,6 +1530,12 @@
   {
    "name": "Luna",
    "slug": "luna",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "Luna x Al x Pepe",
+   "slug": "luna-x-al-x-pepe",
    "aliases": [],
    "hasProfile": false
   },
@@ -1446,9 +1656,11 @@
    "hasProfile": false
   },
   {
-   "name": "Michael Naples",
+   "name": "Naples",
    "slug": "michael-naples",
    "aliases": [
+    "Naples",
+    "Michael Naples",
     "Mike Naples"
    ],
    "hasProfile": false
@@ -1468,6 +1680,12 @@
   {
    "name": "Mike in Space",
    "slug": "mike-in-space",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "Mike in Space & Whoisit",
+   "slug": "mike-in-space-whoisit",
    "aliases": [],
    "hasProfile": false
   },
@@ -1520,6 +1738,12 @@
    "hasProfile": false
   },
   {
+   "name": "Mr. Hansel & Ghostface Killah",
+   "slug": "mr-hansel-ghostface-killah",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
    "name": "Mr. HODLPIG",
    "slug": "mr-hodlpig",
    "aliases": [],
@@ -1544,6 +1768,12 @@
    "hasProfile": false
   },
   {
+   "name": "Mr. P x StackItUp",
+   "slug": "mr-p-x-stackitup",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
    "name": "Mr. Spree",
    "slug": "mr-spree",
    "aliases": [],
@@ -1556,14 +1786,32 @@
    "hasProfile": false
   },
   {
+   "name": "Mrs. Micon x Doctor Phoenix",
+   "slug": "mrs-micon-x-doctor-phoenix",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
    "name": "MT",
    "slug": "mt",
    "aliases": [],
    "hasProfile": false
   },
   {
+   "name": "MT x Maya",
+   "slug": "mt-x-maya",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
    "name": "Mumbling Bearded Freak",
    "slug": "mumbling-bearded-freak",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "Mumbling Bearded Freak x Deep Honey",
+   "slug": "mumbling-bearded-freak-x-deep-honey",
    "aliases": [],
    "hasProfile": false
   },
@@ -1580,6 +1828,12 @@
    "hasProfile": false
   },
   {
+   "name": "Nay x Ry",
+   "slug": "nay-x-ry",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
    "name": "Ndhoz",
    "slug": "ndhoz",
    "aliases": [],
@@ -1592,6 +1846,12 @@
    "hasProfile": true
   },
   {
+   "name": "NessGraphics",
+   "slug": "nessgraphics",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
    "name": "netidx",
    "slug": "netidx",
    "aliases": [
@@ -1602,6 +1862,12 @@
   {
    "name": "NFTMANC",
    "slug": "nftmanc",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "nicedayJules",
+   "slug": "nicedayjules",
    "aliases": [],
    "hasProfile": false
   },
@@ -1713,6 +1979,12 @@
   },
   {
    "name": "Other World",
+   "slug": "other-world",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "Other World",
    "slug": "otherworld",
    "aliases": [],
    "hasProfile": true
@@ -1762,6 +2034,12 @@
   {
    "name": "Pepe Inside",
    "slug": "pepe-inside",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "Pepe Inside x Hammad",
+   "slug": "pepe-inside-x-hammad",
    "aliases": [],
    "hasProfile": false
   },
@@ -1820,6 +2098,12 @@
    "hasProfile": false
   },
   {
+   "name": "Pimpernel Jones x Indelible Trade",
+   "slug": "pimpernel-jones-x-indelible-trade",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
    "name": "pinocchio",
    "slug": "pinocchio",
    "aliases": [],
@@ -1856,6 +2140,12 @@
    "hasProfile": false
   },
   {
+   "name": "Prez1 x Kane Mayfield x ShowerShoes x Elekt1",
+   "slug": "prez1-x-kane-mayfield-x-showershoes-x-elekt1",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
    "name": "Prorok",
    "slug": "prorok",
    "aliases": [],
@@ -1864,6 +2154,12 @@
   {
    "name": "PUR",
    "slug": "pur",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "PUR x FWD",
+   "slug": "pur-x-fwd",
    "aliases": [],
    "hasProfile": false
   },
@@ -1916,6 +2212,18 @@
    "hasProfile": true
   },
   {
+   "name": "Rare Scrilla & Ghostface Killah",
+   "slug": "rare-scrilla-ghostface-killah",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "Rare Scrilla x Vlad Costea",
+   "slug": "rare-scrilla-x-vlad-costea",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
    "name": "Rarejay",
    "slug": "rarejay",
    "aliases": [],
@@ -1930,6 +2238,12 @@
   {
    "name": "realPepstein",
    "slug": "realpepstein",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "realPepstein x Rare Designer",
+   "slug": "realpepstein-x-rare-designer",
    "aliases": [],
    "hasProfile": false
   },
@@ -1980,6 +2294,12 @@
     "ROBNESS V2"
    ],
    "hasProfile": true
+  },
+  {
+   "name": "ROBNESS V2 x PEEPS",
+   "slug": "robness-v2-x-peeps",
+   "aliases": [],
+   "hasProfile": false
   },
   {
    "name": "rochigg",
@@ -2128,6 +2448,12 @@
    "hasProfile": false
   },
   {
+   "name": "Sir Barry Gibb x Maya",
+   "slug": "sir-barry-gibb-x-maya",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
    "name": "Skife",
    "slug": "skife",
    "aliases": [],
@@ -2188,6 +2514,12 @@
    "hasProfile": true
   },
   {
+   "name": "SuperTrip64",
+   "slug": "supertrip64",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
    "name": "T. Wade",
    "slug": "t-wade",
    "aliases": [],
@@ -2208,6 +2540,12 @@
   {
    "name": "Tek",
    "slug": "tek",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "Tek x Porkchop",
+   "slug": "tek-x-porkchop",
    "aliases": [],
    "hasProfile": false
   },
@@ -2238,8 +2576,20 @@
    "hasProfile": false
   },
   {
+   "name": "The Park x 80sKurt",
+   "slug": "the-park-x-80skurt",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
    "name": "Theo Goodman",
    "slug": "theo-goodman",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "Theo Goodman & MC Fanny",
+   "slug": "theo-goodman-mc-fanny",
    "aliases": [],
    "hasProfile": false
   },
@@ -2258,6 +2608,12 @@
   {
    "name": "Tizar Berandalan",
    "slug": "tizar-berandalan",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "Tj0",
+   "slug": "tj0",
    "aliases": [],
    "hasProfile": false
   },
@@ -2294,6 +2650,12 @@
   {
    "name": "TRITHEMIUSPEPE",
    "slug": "trithemiuspepe",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "-",
+   "slug": "unknown",
    "aliases": [],
    "hasProfile": false
   },
@@ -2338,6 +2700,12 @@
   {
    "name": "Viva La Vandal",
    "slug": "viva-la-vandal",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "Viva La Vandal x ShowerShoes",
+   "slug": "viva-la-vandal-x-showershoes",
    "aliases": [],
    "hasProfile": false
   },
@@ -2392,6 +2760,12 @@
   {
    "name": "Willie Waze",
    "slug": "willie-waze",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "Willie Waze x rochigg",
+   "slug": "willie-waze-x-rochigg",
    "aliases": [],
    "hasProfile": false
   },
@@ -2482,6 +2856,12 @@
   {
    "name": "ZETRA",
    "slug": "zetra",
+   "aliases": [],
+   "hasProfile": false
+  },
+  {
+   "name": "ZETRA x PurpleDrank7855",
+   "slug": "zetra-x-purpledrank7855",
    "aliases": [],
    "hasProfile": false
   },
